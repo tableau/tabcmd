@@ -13,8 +13,6 @@ session_class = session.Session
 
 
 class SessionTest(unittest.TestCase):
-
-
     @mock.patch('tabcmd2.pythontabcmd2.session.Session.create_session')
     def test_create_project_parser(self, mock_args):
         mock_obj = mock.Mock()
@@ -34,7 +32,6 @@ class SessionTest(unittest.TestCase):
         mock_obj = mock.Mock()
         mock_obj.pickle_auth_objects()
         mock_obj.pickle_auth_objects.assert_called_with()
-
 
 
 if __name__ == "__main__":

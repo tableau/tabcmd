@@ -11,7 +11,6 @@ create_project_command_class = create_project_parser.CreateProjectParser
 
 
 class CreateProjectParserTest(unittest.TestCase):
-
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=argparse.Namespace(parent_project_path="abcdef", description=None, content_permission=None))
     def test_create_project_parser_missing_required_name(self, mock_args):

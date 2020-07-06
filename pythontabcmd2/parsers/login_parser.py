@@ -2,7 +2,11 @@ import argparse
 import sys
 import shlex
 import getpass
-
+try:
+    from .. logger_config import get_logger
+except:
+    from logger_config import get_logger
+logger = get_logger('pythontabcmd2.login_parser')
 class LoginParser:
     
     def login_parser(self):
@@ -22,7 +26,7 @@ class LoginParser:
             password = None
         if args.token_name:
             if args.token is None:
-                print("please include the Personal Access Token")
+                logger.info("please include the Personal Access Token")
                 sys.exit()
         if args.site is None:
             args.site = ''

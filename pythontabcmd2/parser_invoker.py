@@ -7,15 +7,6 @@ import os
 from os import path, remove
 import logging
 try:
-    from . import tableauserverclient as TSC
-    from .constants_errors import Constants
-    from .session import *
-    from .commands.create_project import *
-    from .parsers.login_parser import *
-    from .parsers.create_project_parser import *
-    from .logger_config import get_logger
-
-except:
     import tableauserverclient as TSC  
     from constants_errors import Constants
     from session import *
@@ -23,18 +14,26 @@ except:
     from parsers.login_parser import *
     from parsers.create_project_parser import *
     from logger_config import get_logger
+except:
+    from . import tableauserverclient as TSC
+    from .constants_errors import Constants
+    from .session import *
+    from .commands.create_project import *
+    from .parsers.login_parser import *
+    from .parsers.create_project_parser import *
+    from .logger_config import get_logger
+    
 
 logger = get_logger('pythontabcmd2.parser_invoker')
 
-class ParserInvoker:  #Invoker
-   
+class ParserInvoker:  
     def __init__(self):
         """Initializes a parser through Argparse module"""
         parser = argparse.ArgumentParser()
         parser.add_argument('command', help='tabcmd commands to run')
         args = parser.parse_args(sys.argv[1:2])
         if not hasattr(self, args.command):
-            print('Unrecognized command please try again')
+            logger.info('Unrecognized command please try again')
             parser.print_help()
         getattr(self, args.command)()  # Invoke method with the same name
 
@@ -45,7 +44,7 @@ class ParserInvoker:  #Invoker
         username, password, site, server, token_name, personal_access_token = login_parser.login_parser()
         session = Session(server, username, password, token_name, site, personal_access_token)
         session.create_session()
-        logger.info('this is a test')
+        
 
 
     def createproject(self):
@@ -58,7 +57,7 @@ class ParserInvoker:  #Invoker
             create_new_project.create_project(server_object)
         except TSC.ServerResponseError as e:
             if e.code == constants_errors.invalid_credentials:
-                print("Authentication Error, Please login again") 
+                logger.info("Authentication Error, Please login again") 
 
 
     def deserialize(self):
@@ -71,20 +70,21 @@ class ParserInvoker:  #Invoker
                 server_object = pickle.load(input)
                 return signed_in_object, server_object
         except IOError:
-            print("****** Please login first ******")
+            logger.info("****** Please login first ******")
             sys.exit()
         
 
     def logout(self):
+        """ Method to log out from the current session """
         home_path = os.path.expanduser("~")
         file_path = os.path.join(home_path, 'tabcmd.pkl')
         signed_in_object, server_object = self.deserialize()
         server_object.auth.sign_out()
         if os.path.exists(file_path):
             os.remove(file_path)
-            print("Logged out successfully")
+            logger.info("Logged out successfully")
         else:
-            print("Not logged in")
+            logger.info("Not logged in")
 
 
         

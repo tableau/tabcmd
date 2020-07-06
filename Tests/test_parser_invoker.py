@@ -9,8 +9,8 @@ try:
     from .. pythontabcmd2 import parser_invoker
     parser_invoker_class = parser_invoker.ParserInvoker
    
-except Exception as e:
-    print("###### Absolute import failed", e)
+except Exception:
+    print("File import failed")
 
 class ParserInvokerTest(unittest.TestCase):
 

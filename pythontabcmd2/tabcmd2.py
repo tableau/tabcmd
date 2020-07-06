@@ -1,12 +1,10 @@
 try:
-    from parser_invoker import *
-except ImportError:
     from .parser_invoker import *
+except ImportError:
+    from parser_invoker import *
 
 
 class Tabcmd:
-
-
     def main(self):
         ParserInvoker()
 

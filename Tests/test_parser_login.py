@@ -11,8 +11,6 @@ login_parser_class = login_parser.LoginParser
 
 
 class CreateProjectParserTest(unittest.TestCase):
-
-
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=argparse.Namespace(site="https://localhost", 
                                                 token="abcdef", username=None, token_name="test" ))
@@ -35,12 +33,6 @@ class CreateProjectParserTest(unittest.TestCase):
         assert username == None
         assert token_name == "test"
         assert server == "test.com"
-
-
-
-
-
         
-
 if __name__ == "__main__":
     unittest.main()

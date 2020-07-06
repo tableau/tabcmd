@@ -2,13 +2,16 @@
 try:
     from . import tableauserverclient as TSC
     from .constants_errors import Constants
+    from .logger_config import get_logger
 except:
     import tableauserverclient as TSC  
     from constants_errors import Constants
+    from logger_config import get_logger
     
 import os
 import shlex  
 import dill as pickle
+logger = get_logger('pythontabcmd2.session')
 
 
 class Session:
@@ -21,17 +24,17 @@ class Session:
         self.personal_token = personal_token
 
     def create_session(self):
-
+        """ Method to authenticate user and establish connection """
         if self.username: 
             try: 
                 tableau_auth = TSC.TableauAuth(self.username, self.password, self.site)
                 tableau_server = TSC.Server(self.server, use_server_version=True)
                 signed_in_object = tableau_server.auth.sign_in(tableau_auth)
                 self.pickle_auth_objects(signed_in_object, tableau_server)
-                print("=======Successfully established connection=======")
+                logger.info("=======Successfully established connection=======")
             except TSC.ServerResponseError as e:
                 if e.code == constants_errors.login_error:
-                    print("Login Error, Please Login again")
+                    logger.info("Login Error, Please Login again")
 
         elif self.token_name:
             try:
@@ -39,12 +42,14 @@ class Session:
                 tableau_server = TSC.Server(self.server, use_server_version=True)
                 signed_in_object = tableau_server.auth.sign_in_with_personal_access_token(tableau_auth)
                 self.pickle_auth_objects(signed_in_object, tableau_server)
+                logger.info("=======Successfully established connection=======")
             except TSC.ServerResponseError as e:
                 if e.code == constants_errors.login_error:
-                    print("Login Error, Please Login again")
+                    logger.info("Login Error, Please Login again")
 
         
     def pickle_auth_objects(self, signed_in_object, tableau_server):
+        """ Method to pickle signed in object and tableau server object """
         signed_in_object_str= str(signed_in_object)
         home_path = os.path.expanduser("~")
         file_path = os.path.join(home_path, 'tabcmd.pkl')
