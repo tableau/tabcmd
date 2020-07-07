@@ -26,7 +26,7 @@ except:
 
 logger = get_logger('pythontabcmd2.parser_invoker')
 
-class ParserInvoker:  
+class ParserInvoker(Constants):  
     def __init__(self):
         """Initializes a parser through Argparse module"""
         parser = argparse.ArgumentParser()
@@ -37,7 +37,6 @@ class ParserInvoker:
             parser.print_help()
         getattr(self, args.command)()  # Invoke method with the same name
 
-
     def login(self):
         """ Method to parse login details of user"""
         login_parser = LoginParser()
@@ -45,8 +44,6 @@ class ParserInvoker:
         session = Session(server, username, password, token_name, site, personal_access_token)
         session.create_session()
         
-
-
     def createproject(self):
         """ Method that will be called when user enters create project on the command line"""
         create_project_parser_obj = CreateProjectParser()
@@ -56,9 +53,8 @@ class ParserInvoker:
             create_new_project = CreateProject(name, description, content_perm, parent_proj_path)
             create_new_project.create_project(server_object)
         except TSC.ServerResponseError as e:
-            if e.code == constants_errors.invalid_credentials:
+            if e.code == Constants.invalid_credentials:
                 logger.info("Authentication Error, Please login again") 
-
 
     def deserialize(self):
         """" Method to convert the pickle file back to an object """
@@ -73,7 +69,6 @@ class ParserInvoker:
             logger.info("****** Please login first ******")
             sys.exit()
         
-
     def logout(self):
         """ Method to log out from the current session """
         home_path = os.path.expanduser("~")

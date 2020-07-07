@@ -14,7 +14,7 @@ import dill as pickle
 logger = get_logger('pythontabcmd2.session')
 
 
-class Session:
+class Session(Constants):
     def __init__(self, server, username=None, password=None, token_name=None, site=None, personal_token=None):
         self.username = username 
         self.password = password 
@@ -33,7 +33,7 @@ class Session:
                 self.pickle_auth_objects(signed_in_object, tableau_server)
                 logger.info("=======Successfully established connection=======")
             except TSC.ServerResponseError as e:
-                if e.code == constants_errors.login_error:
+                if e.code == Constants.login_error:
                     logger.info("Login Error, Please Login again")
 
         elif self.token_name:
@@ -44,7 +44,7 @@ class Session:
                 self.pickle_auth_objects(signed_in_object, tableau_server)
                 logger.info("=======Successfully established connection=======")
             except TSC.ServerResponseError as e:
-                if e.code == constants_errors.login_error:
+                if e.code == Constants.login_error:
                     logger.info("Login Error, Please Login again")
 
         
