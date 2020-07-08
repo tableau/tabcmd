@@ -14,7 +14,7 @@ import dill as pickle
 logger = get_logger('pythontabcmd2.session')
 
 
-class Session(Constants):
+class Session:
     def __init__(self, server, username=None, password=None, token_name=None, site=None, personal_token=None):
         self.username = username 
         self.password = password 

@@ -10,23 +10,26 @@ try:
     import tableauserverclient as TSC  
     from constants_errors import Constants
     from session import *
-    from commands.create_project import *
+    from commands.create_project_command import *
+    from commands.delete_project_command import *
     from parsers.login_parser import *
     from parsers.create_project_parser import *
+    from parsers.delete_project_parser import *
     from logger_config import get_logger
 except:
     from . import tableauserverclient as TSC
     from .constants_errors import Constants
     from .session import *
-    from .commands.create_project import *
+    from .commands.create_project_command import *
+    from .commands.delete_project_command import *
     from .parsers.login_parser import *
     from .parsers.create_project_parser import *
+    from .parsers.delete_project_parser import *
     from .logger_config import get_logger
     
 
 logger = get_logger('pythontabcmd2.parser_invoker')
-
-class ParserInvoker(Constants):  
+class ParserInvoker:  
     def __init__(self):
         """Initializes a parser through Argparse module"""
         parser = argparse.ArgumentParser()
@@ -50,7 +53,7 @@ class ParserInvoker(Constants):
         name, description, content_perm, parent_proj_path = create_project_parser_obj.create_project_parser()
         signed_in_object, server_object = self.deserialize()
         try:
-            create_new_project = CreateProject(name, description, content_perm, parent_proj_path)
+            create_new_project = CreateProjectCommand(name, description, content_perm, parent_proj_path)
             create_new_project.create_project(server_object)
         except TSC.ServerResponseError as e:
             if e.code == Constants.invalid_credentials:
@@ -81,8 +84,16 @@ class ParserInvoker(Constants):
         else:
             logger.info("Not logged in")
 
-
-        
+    def deleteproject(self):
+        """ Method to delete a user specified project """
+        delete_project_parser_object = DeleteProjectParser()
+        name, parent_proj_path = delete_project_parser_object.delete_project_parser()
+        signed_in_object, server_object = self.deserialize()
+        try:
+            delete_user_passed_project = DeleteProjectCommand(name, parent_proj_path)
+            delete_user_passed_project.delete_project(server_object)
+        except TSC.ServerResponseError as e:
+            logger.info("Error deleteing: from parser invoker class")
 
 
 

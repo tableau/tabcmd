@@ -5,9 +5,9 @@ try:
 except:
     import tableauserverclient as TSC
     from logger_config import get_logger
-logger = get_logger('pythontabcmd2.create_project')
+logger = get_logger('pythontabcmd2.create_project_command')
 
-class CreateProject:
+class CreateProjectCommand:
     def __init__(self, name, description=None, content_permission=None, parent_path_name=None):
         self.name = name
         self.description= description

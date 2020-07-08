@@ -7,8 +7,8 @@ except ImportError:
 import argparse
 import os 
 import sys
-from ..pythontabcmd2.commands import create_project
-create_project_command_class = create_project.CreateProject
+from ..pythontabcmd2.commands import create_project_command
+create_project_command_class = create_project_command.CreateProjectCommand
 
 class CreteProjectCommandTest(unittest.TestCase):
     def test_command_create_project(self):
