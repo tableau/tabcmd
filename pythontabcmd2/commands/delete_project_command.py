@@ -22,7 +22,6 @@ class DeleteProjectCommand:
             logger.info("Error: Project not found, Please check project name")
 
     def find_project_id(self, newserver, project_name):
-
         all_project_items, pagination_item = newserver.projects.get()
         all_project_names = [(proj.name, proj.id) for proj in all_project_items]
         project_id = None

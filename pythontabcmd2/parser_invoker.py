@@ -12,9 +12,13 @@ try:
     from session import *
     from commands.create_project_command import *
     from commands.delete_project_command import *
+    from commands.create_group_command import *
+    from commands.delete_group_command import *
     from parsers.login_parser import *
     from parsers.create_project_parser import *
     from parsers.delete_project_parser import *
+    from parsers.create_group_parser import *
+    from parsers.delete_group_parser import *
     from logger_config import get_logger
 except:
     from . import tableauserverclient as TSC
@@ -22,9 +26,13 @@ except:
     from .session import *
     from .commands.create_project_command import *
     from .commands.delete_project_command import *
+    from .commands.create_group_command import *
+    from .commands.delete_group_command import *
     from .parsers.login_parser import *
     from .parsers.create_project_parser import *
     from .parsers.delete_project_parser import *
+    from .parsers.create_group_parser import *
+    from .parsers.delete_group_parser import *
     from .logger_config import get_logger
     
 
@@ -95,8 +103,25 @@ class ParserInvoker:
         except TSC.ServerResponseError as e:
             logger.info("Error deleteing: from parser invoker class")
 
+    def creategroup(self):
+        """ Method to create a user specified group """
+        create_group_parser_object = CreateGroupParser()
+        name = create_group_parser_object.create_group_parser()
+        signed_in_object, server_object = self.deserialize()
+        try:
+            create_group_obj = CreateGroupCommand(name)
+            create_group_obj.create_group(server_object)
+        except TSC.ServerResponseError as e:
+            logger.info("Error creating: from parser invoker class")
 
-
-
-
+    def deletegroup(self):
+        """ Method to delete a user specified group """
+        delete_group_parser_object = DeleteGroupParser()
+        name = delete_group_parser_object.delete_group_parser()
+        signed_in_object, server_object = self.deserialize()
+        try:
+            delete_user_passed_group = DeleteGroupCommand(name)
+            delete_user_passed_group.delete_group(server_object)
+        except TSC.ServerResponseError as e:
+            logger.info("Error deleteing: from parser invoker class")
 
