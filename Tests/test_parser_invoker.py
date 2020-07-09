@@ -25,11 +25,11 @@ class ParserInvokerTest(unittest.TestCase):
     @mock.patch('tabcmd2.pythontabcmd2.parser_invoker.ParserInvoker.createproject')
     def test_create_project(self, mock_args):
         # mock_obj = mock.Mock()
-        # pasrser_invoker_class_obj = parser_invoker_class()
+        # parser_invoker_class_obj = parser_invoker_class()
         create_project_parser_obj = CreateProjectParser()
         create_project_parser_obj.create_project_parser = mock.MagicMock(return_value = ["name", "description", "content_perm", "parent_proj_path"])
-        #pasrser_invoker_class_obj = parser_invoker_class()
-        #pasrser_invoker_class_obj.createproject()
+        # parser_invoker_class_obj = parser_invoker_class()
+        # parser_invoker_class_obj.createproject()
         # mock_obj.createproject.assert_called_with()
 
     @mock.patch('tabcmd2.pythontabcmd2.parser_invoker.ParserInvoker.logout')
