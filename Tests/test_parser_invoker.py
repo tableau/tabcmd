@@ -15,6 +15,13 @@ except Exception:
 
 class ParserInvokerTest(unittest.TestCase):
 
+    @mock.patch.object(sys, 'argv', ['', 'createproject','--name', 'testname'])
+    @mock.patch('tabcmd2.pythontabcmd2.parser_invoker.ParserInvoker.createproject')
+    def test_parser_called(self, mock_args):
+        # name = "testname"
+        # description = "testdesc"
+        parser_invoker_obj = parser_invoker_class()
+        mock_args.assert_called_once()
 
     @mock.patch('tabcmd2.pythontabcmd2.parser_invoker.ParserInvoker.login')
     def test_login(self, mock_args):

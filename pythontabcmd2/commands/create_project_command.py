@@ -25,7 +25,7 @@ class CreateProjectCommand:
             logger.info('Successfully created a new project called: %s' % project_item.name)
             return project_item
         except TSC.ServerResponseError as e:
-            print("server response error", e)
+            # print("server response error", e)
             logger.info('Error: We have already created this project: %s' % project_item.name)
 
     def find_project_id(self, newserver, parent_path_name):

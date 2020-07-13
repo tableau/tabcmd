@@ -6,34 +6,33 @@ import dill as pickle
 import os
 from os import path, remove
 import logging
-try:
-    import tableauserverclient as TSC  
-    from constants_errors import Constants
-    from session import *
-    from commands.create_project_command import *
-    from commands.delete_project_command import *
-    from commands.create_group_command import *
-    from commands.delete_group_command import *
-    from parsers.login_parser import *
-    from parsers.create_project_parser import *
-    from parsers.delete_project_parser import *
-    from parsers.create_group_parser import *
-    from parsers.delete_group_parser import *
-    from logger_config import get_logger
-except:
-    from . import tableauserverclient as TSC
-    from .constants_errors import Constants
-    from .session import *
-    from .commands.create_project_command import *
-    from .commands.delete_project_command import *
-    from .commands.create_group_command import *
-    from .commands.delete_group_command import *
-    from .parsers.login_parser import *
-    from .parsers.create_project_parser import *
-    from .parsers.delete_project_parser import *
-    from .parsers.create_group_parser import *
-    from .parsers.delete_group_parser import *
-    from .logger_config import get_logger
+import tableauserverclient as TSC  
+from constants_errors import Constants
+from session import *
+from commands.create_project_command import *
+from commands.delete_project_command import *
+from commands.create_group_command import *
+from commands.delete_group_command import *
+from parsers.login_parser import *
+from parsers.create_project_parser import *
+from parsers.delete_project_parser import *
+from parsers.create_group_parser import *
+from parsers.delete_group_parser import *
+from logger_config import get_logger
+# except:
+#     from . import tableauserverclient as TSC
+#     from .constants_errors import Constants
+#     from .session import *
+#     from .commands.create_project_command import *
+#     from .commands.delete_project_command import *
+#     from .commands.create_group_command import *
+#     from .commands.delete_group_command import *
+#     from .parsers.login_parser import *
+#     from .parsers.create_project_parser import *
+#     from .parsers.delete_project_parser import *
+#     from .parsers.create_group_parser import *
+#     from .parsers.delete_group_parser import *
+#     from .logger_config import get_logger
     
 
 logger = get_logger('pythontabcmd2.parser_invoker')
@@ -113,6 +112,7 @@ class ParserInvoker:
             create_group_obj.create_group(server_object)
         except TSC.ServerResponseError as e:
             logger.info("Error creating: from parser invoker class")
+
 
     def deletegroup(self):
         """ Method to delete a user specified group """

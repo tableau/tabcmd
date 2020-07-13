@@ -16,7 +16,7 @@ class DeleteGroupCommand:
             newserver.groups.delete(group_id)
             logger.info("Successfully deleted group") 
         except TSC.ServerResponseError as e:
-            logger.info("Error: Server error occured", e) 
+            logger.info("Error: Server error occured", e)    #TODO
         except:
             logger.info("Error: Group not found, Please check Group name")
 

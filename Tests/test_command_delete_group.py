@@ -1,3 +1,4 @@
+
 import unittest
 try:
     from unittest import mock
@@ -6,24 +7,24 @@ except ImportError:
 import argparse
 import os 
 import sys
-from ..pythontabcmd2.parsers import delete_group_parser
-delete_group_command_class = delete_group_parser.DeleteGroupParser
+from ..pythontabcmd2.commands import delete_project_command
+delete_project_command_class = delete_project_command.DeleteProjectCommand
 
-class DeleteGroupParserTest(unittest.TestCase):
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace())
-    def test_delete_group_parser_missing_required_name(self, mock_args):
-        with self.assertRaises(AttributeError):
-            delete_group_object = delete_group_command_class()
-            name = delete_group_object.delete_group_parser()
+class DeleteProjectCommandTest(unittest.TestCase):
+    def test_command_create_project_1(self):
+        with mock.patch.object(delete_project_command_class, 'delete_project', return_value="successfully deleted project"):
+            delete_project_command_object = delete_project_command_class("testproject", None)
+            assert delete_project_command_object.delete_project() == "successfully deleted project"
+    
+    def test_command_create_project_2(self):
+            mock_server_obj = mock.Mock()
+            test_project_name = "test_project"
+            delete_project_command_object = delete_project_command_class("testproject", None)
+            
+            # with mock.patch.object(delete_project_command_class, 'delete_project', return_value="successfully deleted project"):
+            #     delete_project_command_object = delete_project_command_class("testproject", None)
+            #     assert delete_project_command_object.delete_project() == "successfully deleted project"
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(name="testgroup"))
-    def test_delete_group_parser_required_name(self, mock_args):
-        raises = False
-        try: 
-            delete_group_object = delete_group_command_class()
-            name = delete_group_object.delete_group_parser()
-        except:
-            raises = True 
-        self.assertFalse(raises, "Exception Raised")
+
+if __name__ == "__main__":
+    unittest.main()
