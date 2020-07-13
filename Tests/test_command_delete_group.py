@@ -20,10 +20,6 @@ class DeleteProjectCommandTest(unittest.TestCase):
             mock_server_obj = mock.Mock()
             test_project_name = "test_project"
             delete_project_command_object = delete_project_command_class("testproject", None)
-            
-            # with mock.patch.object(delete_project_command_class, 'delete_project', return_value="successfully deleted project"):
-            #     delete_project_command_object = delete_project_command_class("testproject", None)
-            #     assert delete_project_command_object.delete_project() == "successfully deleted project"
 
 
 if __name__ == "__main__":

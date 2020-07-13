@@ -7,9 +7,7 @@ except:
     import tableauserverclient as TSC  
     from constants_errors import Constants
     from logger_config import get_logger
-    
 import os
-import shlex  
 import dill as pickle
 logger = get_logger('pythontabcmd2.session')
 
@@ -47,7 +45,6 @@ class Session:
                 if e.code == Constants.login_error:
                     logger.info("Login Error, Please Login again")
 
-        
     def pickle_auth_objects(self, signed_in_object, tableau_server):
         """ Method to pickle signed in object and tableau server object """
         signed_in_object_str= str(signed_in_object)

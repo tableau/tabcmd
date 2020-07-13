@@ -2,6 +2,7 @@ class GlobalOptions:
     
     @staticmethod
     def evaluate_project_path(path):
+        """ Method to parse the project path provided by the user"""
         if path[-1] != "/" :
             path = path + "/"
         newpath = path.rsplit('/')[-2]

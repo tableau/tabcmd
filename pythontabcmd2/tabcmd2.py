@@ -6,7 +6,9 @@ except ImportError:
 
 class Tabcmd:
     def main(self):
+        """Main method to call ParserInvoker class"""
         ParserInvoker()
+
 
 if __name__ == '__main__':
     main_object = Tabcmd()

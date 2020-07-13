@@ -6,12 +6,14 @@ except:
     from logger_config import get_logger
 logger = get_logger('pythontabcmd2.delete_project_command')
 
+
 class DeleteProjectCommand:
     def __init__(self, name, parent_project_path=None):
         self.name = name
         self.parent_project_path = parent_project_path
 
     def delete_project(self, newserver):
+        """Method to delete projectusing Tableauserverclient methods"""
         try:
             project_id = self.find_project_id(newserver, self.name)
             newserver.projects.delete(project_id)
@@ -21,7 +23,8 @@ class DeleteProjectCommand:
         except:
             logger.info("Error: Project not found, Please check project name")
 
-    def find_project_id(self, newserver, project_name):
+    def find_project_id(self, newserver, project_name):                         # TODO : Move to Separate class 
+        """ Method to find the project id given ther server instance and name of project"""
         all_project_items, pagination_item = newserver.projects.get()
         all_project_names = [(proj.name, proj.id) for proj in all_project_items]
         project_id = None

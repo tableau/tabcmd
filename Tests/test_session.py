@@ -8,7 +8,7 @@ import argparse
 import os 
 import sys
 
-from .. pythontabcmd2 import session
+from tabcmd2.pythontabcmd2 import session
 session_class = session.Session
 
 

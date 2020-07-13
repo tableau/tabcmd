@@ -12,6 +12,3 @@ def get_logger(name):
     console.setFormatter(logging.Formatter(log_format))
     logging.getLogger(name).addHandler(console)
     return logging.getLogger(name)
-
-
-    

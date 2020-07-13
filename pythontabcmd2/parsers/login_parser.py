@@ -3,12 +3,14 @@ import sys
 import shlex
 import getpass
 try:
-    from .. logger_config import get_logger
+    from ..logger_config import get_logger
 except:
     from logger_config import get_logger
 logger = get_logger('pythontabcmd2.login_parser')
+
+
 class LoginParser:
-    
+    """ Parses login arguments passed by the user"""
     def login_parser(self):
         parser = argparse.ArgumentParser(description='login command')
         parser.add_argument('--site', '-S', default=None, help='site of account holder' )
@@ -17,8 +19,6 @@ class LoginParser:
         group = parser.add_mutually_exclusive_group(required=True)
         group.add_argument('--username', '-u', help='username of account holder')
         group.add_argument('--token-name', '-n', help='name of the personal access token used to sign into the server')
-
-
         args = parser.parse_args(sys.argv[2:])
         if args.username:
             password = getpass.getpass("Password: ")
@@ -31,6 +31,3 @@ class LoginParser:
         if args.site is None:
             args.site = ''
         return args.username, password, args.site, args.server, args.token_name, args.token
-
-
-    

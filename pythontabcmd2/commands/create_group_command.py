@@ -12,9 +12,10 @@ class CreateGroupCommand:
         self.name = name
 
     def create_group(self, newserver):
+        """Method to create group using Tableauserverclient methods"""
         try:
             new_group = TSC.GroupItem(self.name)
             newserver.groups.create(new_group)
             logger.info("Successfully created group")
-        except TSC.ServerResponseError as e:
+        except TSC.ServerResponseError as e:      # TODO MAP ERROR
             logger.info("Error: Server error occurred: Group already exists")
