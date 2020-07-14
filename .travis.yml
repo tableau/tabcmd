@@ -2,11 +2,12 @@ language: python
 python:
   - "3.7"
 install:
-  - "pip install -e ."
+
   - "pip install pycodestyle"
 
 # command to run tests
-script:
+script:s
   # Tests
+
   - pycodestyle pythontabcmd2 tests
   - pytest
