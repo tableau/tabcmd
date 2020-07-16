@@ -4,10 +4,12 @@ python:
 install:
 
   - "pip install pycodestyle"
+  - "pip install -e ."
 
 # command to run tests
 script:
   # Tests
 
+  - python setup.py test
   - pycodestyle pythontabcmd2 tests
   - pytest
