@@ -4,8 +4,6 @@ try:
 except ImportError:
     import mock
 import argparse
-import os
-import sys
 from ..pythontabcmd2.parsers import delete_project_parser
 delete_project_parser_class = delete_project_parser.DeleteProjectParser
 

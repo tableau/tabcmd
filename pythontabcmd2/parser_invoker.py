@@ -1,43 +1,47 @@
-import argparse
-import sys
-from shlex import split
-import getpass
-import dill as pickle
-import os
-from os import path, remove
-import logging
-import tableauserverclient as TSC
-try: 
-    from constants_errors import Constants
+try:
+    from constants import Constants
     from session import *
     from commands.create_project_command import *
     from commands.delete_project_command import *
     from commands.create_group_command import *
     from commands.delete_group_command import *
+    from commands.create_user_command import *
+    from commands.remove_users_command import *
+    from commands.delete_users_command import *
     from parsers.login_parser import *
     from parsers.create_project_parser import *
     from parsers.delete_project_parser import *
     from parsers.create_group_parser import *
     from parsers.delete_group_parser import *
+    from parsers.create_user_parser import *
+    from parsers.remove_users_parser import *
+    from parsers.delete_users_parser import *
     from logger_config import get_logger
 except ModuleNotFoundError:
     from . import tableauserverclient as TSC
-    from .constants_errors import Constants
+    from .constants import Constants
     from .session import *
     from .commands.create_project_command import *
     from .commands.delete_project_command import *
     from .commands.create_group_command import *
     from .commands.delete_group_command import *
+    from .commands.create_user_command import *
+    from .commands.remove_users_command import *
+    from .commands.delete_users_command import *
     from .parsers.login_parser import *
     from .parsers.create_project_parser import *
     from .parsers.delete_project_parser import *
     from .parsers.create_group_parser import *
     from .parsers.delete_group_parser import *
-    from .logger_config import get_logger
-    
+    from .parsers.create_user_parser import *
+    from .parsers.remove_users_parser import *
+    from .parsers.delete_users_parser import *
+    from .logger_config import *
 
 logger = get_logger('pythontabcmd2.parser_invoker')
-class ParserInvoker:  
+
+
+class ParserInvoker:
     def __init__(self):
         """Initializes a parser through Argparse module"""
         parser = argparse.ArgumentParser()
@@ -57,7 +61,7 @@ class ParserInvoker:
         
     def createproject(self):
         """ Method that will be called when user enters create project on the command line"""
-        create_project_parser_obj = CreateProjectParser()
+        create_project_parser_obj = CreateProjectParser
         name, description, content_perm, parent_proj_path = create_project_parser_obj.create_project_parser()
         signed_in_object, server_object = self.deserialize()
         try:
@@ -126,3 +130,26 @@ class ParserInvoker:
         except TSC.ServerResponseError as e:
             logger.info("Error deleting check group name")
 
+    def createusers(self):
+        """ Method to create user on the server"""
+        create_user_parser_object = CreateUserParser()
+        lines_of_csv = create_user_parser_object.create_user_parser()
+        create_user_command_obj = CreateUserCommand()
+        signed_in_object, server_object = self.deserialize()
+        create_user_command_obj.create_user(server_object, lines_of_csv)
+
+    def removeusers(self):
+        """ Method to remove users from a specific group """
+        remove_users_parser_object = RemoveUserParser()
+        lines_of_csv, group_name = remove_users_parser_object.remove_user_parser()
+        remove_users_command_obj = RemoveUserCommand()
+        signed_in_object, server_object = self.deserialize()
+        remove_users_command_obj.remove_users(server_object, lines_of_csv, group_name)
+
+    def deleteusers(self):
+        """ Method to delete users from a specific group """
+        delete_users_parser_object = DeleteUserParser()
+        lines_of_csv = delete_users_parser_object.delete_user_parser()
+        delete_users_command_obj = DeleteUserCommand()
+        signed_in_object, server_object = self.deserialize()
+        delete_users_command_obj.delete_users(server_object, lines_of_csv)

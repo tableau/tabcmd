@@ -4,8 +4,6 @@ try:
 except ImportError:
     import mock
 import argparse
-import os 
-import sys
 from ..pythontabcmd2.parsers import delete_group_parser
 delete_group_command_class = delete_group_parser.DeleteGroupParser
 

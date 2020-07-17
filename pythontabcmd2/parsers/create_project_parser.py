@@ -1,7 +1,5 @@
 import argparse
 import sys
-import shlex
-import getpass
 try:
     from .global_options import *
 except ModuleNotFoundError:

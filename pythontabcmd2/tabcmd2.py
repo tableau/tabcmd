@@ -1,7 +1,9 @@
 try:
     from .parser_invoker import *
-except ImportError:
+    print("relative import works")
+except ModuleNotFoundError:
     from parser_invoker import *
+    print("absoulte import works")
 
 
 class Tabcmd:

@@ -4,8 +4,6 @@ try:
 except ImportError:
     import mock
 import argparse
-import os 
-import sys
 from ..pythontabcmd2.parsers import create_group_parser
 create_group_command_class = create_group_parser.CreateGroupParser
 
@@ -27,8 +25,3 @@ class CreateGroupParserTest(unittest.TestCase):
         except:
             raises = True 
         self.assertFalse(raises, "Exception Raised")
-
-
-
-if __name__ == "__main__":
-    unittest.main()

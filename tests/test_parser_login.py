@@ -4,8 +4,6 @@ try:
 except ImportError:
     import mock
 import argparse
-import os 
-import sys
 from ..pythontabcmd2.parsers import login_parser
 login_parser_class = login_parser.LoginParser
 
@@ -34,5 +32,5 @@ class CreateProjectParserTest(unittest.TestCase):
         assert token_name == "test"
         assert server == "test.com"
         
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#     unittest.main()

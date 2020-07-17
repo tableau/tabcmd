@@ -1,6 +1,5 @@
 import argparse
 import sys
-import shlex
 import getpass
 try:
     from ..logger_config import get_logger

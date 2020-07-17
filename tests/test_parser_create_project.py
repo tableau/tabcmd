@@ -4,8 +4,6 @@ try:
 except ImportError:
     import mock
 import argparse
-import os 
-import sys
 from ..pythontabcmd2.parsers import create_project_parser
 create_project_command_class = create_project_parser.CreateProjectParser
 
@@ -48,5 +46,5 @@ class CreateProjectParserTest(unittest.TestCase):
         assert content_perm == "perm"
         assert parent_proj_path == "abcdef"
 
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#     unittest.main()

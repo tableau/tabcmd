@@ -15,8 +15,5 @@ class CreateUserParser:
         parser.add_argument('--file', '-f', required=True, help='csv containing user details', type=argparse.FileType('r'))
         args = parser.parse_args(sys.argv[2:])
         csv_lines = [line.strip() for line in args.file.readlines()]
+        args.file.close()
         return csv_lines
-
-
-    def parse_lines(self, csv_lines):
-        pass

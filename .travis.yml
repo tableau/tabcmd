@@ -8,7 +8,7 @@ install:
 
 # command to run tests
 script:
-  # Tests
+  # tests
 
   - python setup.py test
   - pycodestyle pythontabcmd2 tests

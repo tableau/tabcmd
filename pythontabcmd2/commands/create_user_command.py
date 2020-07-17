@@ -13,19 +13,22 @@ class CreateUserCommand:
 
     def evaluate_csv_lines_call_create_user_command(self, csv_lines, server_object):
         for line in csv_lines:
-            username = line[0].lower()                      #TODO: BREAK THIS FUNCTION INTO TWO
-            password = line[1].lower()
-            full_name = line[2].lower()
-            license_level = line[3].lower()
-            admin_level = line[4].lower()
-            publisher = line[5].lower()
-            email = line[6].lower()
+            split_line = line.split(',')
+
+            username = split_line[0].lower()                      #TODO: BREAK THIS FUNCTION INTO TWO
+            password = split_line[1].lower()
+            full_name = split_line[2].lower()
+            license_level = split_line[3].lower()
+            admin_level = split_line[4].lower()
+            publisher = split_line[5].lower()
+            email = split_line[6].lower()
             site_role = self.evaluate_license_level_admin_level(license_level, admin_level, publisher)
             try:
                 new_user = TSC.UserItem(username, site_role)
-                server_object.users.update(new_user, password)
+                new_user_added = server_object.users.add(new_user)
+                server_object.users.update(new_user_added, password)     # error: 403022 - forbidden cannot change non local user password
             except TSC.ServerResponseError as e:
-                print("error create user command")
+                print("error create user command", e)                 # error: 400003 - bad request    401002: unauthprized access- login   409017 - resource conflict user already added to site
 
     def evaluate_license_level_admin_level(self, license_level, admin_level, publisher):
         site_role = None
@@ -35,15 +38,15 @@ class CreateUserCommand:
             site_role = 'SiteAdministratorCreator'
         if license_level == 'explorer' and (admin_level == 'site') and publisher == 'yes':
             site_role = 'SiteAdministratorExplorer'
-        if license_level == 'creator' and (admin_level is None or '') and publisher == 'yes':    #TODO: CHECK CASE IS NONE
+        if license_level == 'creator' and (admin_level == "none") and publisher == 'yes':    #TODO: CHECK CASE IS NONE
             site_role = 'Creator'
-        if license_level == 'explorer' and (admin_level is None or '') and publisher == 'yes':
+        if license_level == 'explorer' and (admin_level == "none") and publisher == 'yes':
             site_role = 'ExplorerCanPublish'
-        if license_level == 'explorer' and (admin_level is None or '') and publisher == 'yes':
+        if license_level == 'explorer' and (admin_level == "none") and publisher == 'yes':
             site_role = 'Explorer'
-        if license_level == 'viewer' and (admin_level is None or '') and publisher == 'no':
+        if license_level == 'viewer' and (admin_level == "none") and publisher == 'no':
             site_role = 'Viewer'
-        if license_level == 'unlicensed' and (admin_level is None or '') and publisher == 'no':
+        if license_level == 'unlicensed' and (admin_level == "none") and publisher == 'no':
             site_role = 'Unlicensed'
         return site_role
 

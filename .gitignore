@@ -3,3 +3,11 @@
 *.log
 *.vscode
 *.csv
+*.pytest_cache
+
+build/
+dist/
+*.egg-info/
+*.egg
+eggs/
+.eggs/

@@ -1,11 +1,10 @@
-
 try:
     from . import tableauserverclient as TSC
-    from .constants_errors import Constants
+    from .constants import Constants
     from .logger_config import get_logger
 except:
-    import tableauserverclient as TSC  
-    from constants_errors import Constants
+    import tableauserverclient as TSC
+    from constants import Constants
     from logger_config import get_logger
 import os
 import dill as pickle
