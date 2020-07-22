@@ -10,7 +10,9 @@ logger = get_logger('pythontabcmd2.login_parser')
 
 class LoginParser:
     """ Parses login arguments passed by the user"""
-    def login_parser(self):
+    @staticmethod
+    def login_parser():
+
         parser = argparse.ArgumentParser(description='login command')
         parser.add_argument('--site', '-S', default=None, help='site of account holder' )
         parser.add_argument('--server', '-s', required=True, help='server of account holder' )
@@ -21,12 +23,13 @@ class LoginParser:
         args = parser.parse_args(sys.argv[2:])
         if args.username:
             password = getpass.getpass("Password: ")
-        elif args.username is None:
-            password = None
+        else:
+            if args.username is None:
+                password = None
         if args.token_name:
-            if args.token is None:
+            if args.token is None:                                                      # TODO
                 logger.info("please include the Personal Access Token")
                 sys.exit()
         if args.site is None:
             args.site = ''
-        return args.username, password, args.site, args.server, args.token_name, args.token
+        return args, password

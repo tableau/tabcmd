@@ -9,7 +9,8 @@ except:
 
 
 class DeleteProjectParser:
-    def delete_project_parser(self):
+    @staticmethod
+    def delete_project_parser():
         """Method to parse delete project arguments passed by the user"""
         parser = argparse.ArgumentParser(description='delete project command')
         parser.add_argument('--name','-n', required=True, help='name of project to delete')
@@ -19,4 +20,4 @@ class DeleteProjectParser:
             evaluated_project_path = GlobalOptions.evaluate_project_path(args.parent_project_path)
         else:
             evaluated_project_path = args.parent_project_path
-        return args.name, evaluated_project_path
+        return args, evaluated_project_path

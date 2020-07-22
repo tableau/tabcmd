@@ -1,15 +1,19 @@
 try:
-    from .parser_invoker import *
-    print("relative import works")
+    from .tabcmd2_controller import *
+    from .context import *
 except ModuleNotFoundError:
-    from parser_invoker import *
-    print("absoulte import works")
+    from tabcmd2_controller import *
+    from context import *
+
+
 
 
 class Tabcmd:
     def main(self):
-        """Main method to call ParserInvoker class"""
-        ParserInvoker()
+        tabcmd_controller = Tabcmd2Controller()
+        command_strategy = tabcmd_controller.get_command_strategy()
+        command_context = Context(command_strategy)    # TODO
+        command_context.execute_command()
 
 
 if __name__ == '__main__':

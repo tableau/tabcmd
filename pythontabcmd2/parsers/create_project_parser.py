@@ -7,7 +7,9 @@ except ModuleNotFoundError:
 
 
 class CreateProjectParser:
-    def create_project_parser(self):
+
+    @staticmethod
+    def create_project_parser():
         """Method to parse create project arguments passed by the user"""
         parser = argparse.ArgumentParser(description='create project command')
         parser.add_argument('--name','-n', required=True, help='name of project')
@@ -19,5 +21,5 @@ class CreateProjectParser:
             evaluated_project_path = GlobalOptions.evaluate_project_path(args.parent_project_path)
         else:
             evaluated_project_path = args.parent_project_path
-        return args.name, args.description, args.content_permission, evaluated_project_path
+        return args, evaluated_project_path
 
