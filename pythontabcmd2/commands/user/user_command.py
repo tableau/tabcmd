@@ -1,7 +1,10 @@
 from commands.commands import Commands
+from commands.user.user_data import Userdata
 
 
 class UserCommand(Commands):
+    def __init__(self, csv_lines):
+        self.csv_lines = csv_lines
 
     @staticmethod
     def find_user_id(server, username):
@@ -26,3 +29,5 @@ class UserCommand(Commands):
                 group_item = group[1]
                 break
         return group_item
+
+

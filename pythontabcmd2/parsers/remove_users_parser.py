@@ -7,7 +7,9 @@ except ModuleNotFoundError:
 
 
 class RemoveUserParser:
-    def remove_user_parser(self):
+
+    @staticmethod
+    def remove_user_parser():
         """Method to parse remove user arguments passed by the user"""
         parser = argparse.ArgumentParser(description='remove user command')
         parser.add_argument('--group', '-g', required=True, help='name of group')
@@ -16,5 +18,7 @@ class RemoveUserParser:
         args = parser.parse_args(sys.argv[2:])
         csv_lines = [line.strip() for line in args.file.readlines()]
         args.file.close()
-        return csv_lines, args.group
+        return csv_lines, args
+
+
 # TODO: ARGUMENT --COMPLETE

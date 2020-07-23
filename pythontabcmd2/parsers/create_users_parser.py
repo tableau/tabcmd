@@ -1,7 +1,6 @@
 import argparse
 import sys
-import csv
-import getpass
+
 try:
     from .global_options import *
 except:
@@ -9,7 +8,8 @@ except:
 
 
 class CreateUserParser:
-    def create_user_parser(self):
+    @staticmethod
+    def create_user_parser():
         """Method to parse create user arguments passed """
         parser = argparse.ArgumentParser(description='create group command')
         parser.add_argument('--file', '-f', required=True, help='csv containing user details', type=argparse.FileType('r'))

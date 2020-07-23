@@ -4,8 +4,8 @@ try:
 except ImportError:
     import mock
 import argparse
-from ..pythontabcmd2.parsers import create_user_parser
-create_user_command_class = create_user_parser.CreateUserParser
+from ..pythontabcmd2.parsers import create_users_parser
+create_user_command_class = create_users_parser.CreateUserParser
 
 
 class CreateUserParserTest(unittest.TestCase):

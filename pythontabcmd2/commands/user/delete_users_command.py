@@ -1,4 +1,6 @@
+from commands.commands import Commands
 from commands.user.user_command import UserCommand
+from parsers.delete_users_parser import DeleteUserParser
 
 try:
     from tabcmd2.pythontabcmd2 import tableauserverclient as TSC
@@ -10,14 +12,27 @@ logger = get_logger('pythontabcmd2.delete_user_command')
 
 
 class DeleteUserCommand(UserCommand):
-    def delete_users(self, server_object, csv_lines):
-        self.evaluate_csv_lines_call_delete_user_command(server_object, csv_lines)
+    def __init__(self, csv_lines):
+        super().__init__(csv_lines)
 
-    def evaluate_csv_lines_call_delete_user_command(self, server, csv_lines):
+    @classmethod
+    def parse(cls):
+        csv_lines = DeleteUserParser.delete_user_parser()
+        return cls(csv_lines)
+
+    def run_command(self):
+        signed_in_object, server_object = Commands.deserialize()
+        self.delete_users(server_object, self.csv_lines)
+
+    def delete_users(self, server_object, csv_lines):
+        self.delete_user_command(server_object, csv_lines)
+
+    def delete_user_command(self, server, csv_lines):
         """Method to delete users using Tableauserverclient methods"""
-        for line in csv_lines:  # TODO: BREAK THIS FUNCTION INTO TWO
-            split_line = line.split(',')
-            username = split_line[0].lower()
+        command = Commands()
+        user_obj_list = command.get_user(csv_lines)
+        for user_obj in user_obj_list:
+            username = user_obj.username
             user_id = UserCommand.find_user_id(server, username)
             try:
                 server.users.remove(user_id)

@@ -13,7 +13,7 @@ import dill as pickle
 logger = get_logger('pythontabcmd2.session')
 
 
-class Session:
+class LoginCommand:
     def __init__(self, args, password):
         self.username = args.username
         self.password = password 
@@ -29,7 +29,6 @@ class Session:
 
     def run_command(self):
         self.create_session()
-
 
     def create_session(self):
         """ Method to authenticate user and establish connection """

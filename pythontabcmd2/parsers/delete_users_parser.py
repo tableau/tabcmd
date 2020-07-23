@@ -7,7 +7,8 @@ except ModuleNotFoundError:
 
 
 class DeleteUserParser:
-    def delete_user_parser(self):
+    @staticmethod
+    def delete_user_parser():
         """Method to parse delete user arguments passed by the user"""
         parser = argparse.ArgumentParser(description='delete user command')
         parser.add_argument('--file', '-f', required=True, help='csv containing user details',
