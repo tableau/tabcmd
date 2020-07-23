@@ -1,13 +1,17 @@
 try:
-    from setuptools import setup
+    from setuptools import setup, find_packages
 except ImportError:
     from distutils.core import setup
 
 setup(
     name='pythontabcmd2',
     url='https://github.com/tableau/tabcmd2',
-    packages=['pythontabcmd2', 'pythontabcmd2.commands', 'pythontabcmd2.parsers',
-              'pythontabcmd2.tableauserverclient'],
+    packages=find_packages(),
+    entry_points={
+        'console_scripts': [
+            'tabcmd2 = pythontabcmd2.tabcmd2:main'
+        ]
+    },
     test_suite='tests',
     install_requires=[
         'requests>=2.11,<3.0',
