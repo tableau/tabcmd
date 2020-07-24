@@ -1,13 +1,8 @@
-from commands.commands import Commands
-from commands.group.group_command import GroupCommand
-from parsers.delete_group_parser import DeleteGroupParser
-
-try:
-    from tabcmd2.pythontabcmd2 import tableauserverclient as TSC
-    from logger_config import get_logger
-except:
-    import tableauserverclient as TSC
-    from logger_config import get_logger
+from ..commands import Commands
+from .group_command import GroupCommand
+from .. import DeleteGroupParser
+from ... import tableauserverclient as TSC
+from .. import get_logger
 logger = get_logger('pythontabcmd2.delete_group_command')
 
 

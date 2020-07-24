@@ -1,10 +1,7 @@
 import argparse
 import sys
+from .global_options import *
 
-try:
-    from .global_options import *
-except:
-    from parsers.global_options import *
 
 class CreateGroupParser:
     @staticmethod

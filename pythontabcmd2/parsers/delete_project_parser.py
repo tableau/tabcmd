@@ -1,11 +1,6 @@
 import argparse
 import sys
-import shlex
-import getpass
-try:
-    from .global_options import *
-except:
-    from parsers.global_options import *
+from .global_options import *
 
 
 class DeleteProjectParser:

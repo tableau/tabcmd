@@ -1,13 +1,9 @@
-from commands.commands import Commands
-from commands.project.project_command import ProjectCommand
-from parsers.delete_project_parser import DeleteProjectParser
+from ..commands import Commands
+from .project_command import *
+from .. import DeleteProjectParser
+from ... import tableauserverclient as TSC
+from .. import get_logger
 
-try:
-    from tabcmd2.pythontabcmd2 import tableauserverclient as TSC
-    from logger_config import get_logger
-except:
-    import tableauserverclient as TSC
-    from logger_config import get_logger
 logger = get_logger('pythontabcmd2.delete_project_command')
 
 

@@ -1,13 +1,14 @@
 from .map_of_commands import CommandsMap
 from .commands.auth.login_command import *
-# from .commands.project.create_project_command import *
-# from .commands.project.delete_project_command import *
-# from .commands.group.delete_group_command import *
-# from .commands.group.create_group_command import *
-# from .commands.user.create_users_command import *
-# from .commands.user.delete_users_command import *
-# from .commands.user.remove_users_command import *
-# from .commands.auth.logout_command import *
+from .commands.project.create_project_command import *
+from .commands.project.delete_project_command import *
+from .commands.group.delete_group_command import *
+from .commands.group.create_group_command import *
+from .commands.user.create_users_command import *
+from .commands.user.delete_users_command import *
+from .commands.user.remove_users_command import *
+from .commands.auth.logout_command import *
+
 
 import sys
 

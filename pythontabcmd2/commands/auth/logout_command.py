@@ -1,12 +1,7 @@
-from commands.commands import Commands
-try:
-    from tabcmd2.pythontabcmd2 import tableauserverclient as TSC
-    from constants import Constants
-    from logger_config import get_logger
-except:
-    import tableauserverclient as TSC
-    from constants import Constants
-    from logger_config import get_logger
+from ..commands import Commands
+from .. import Constants
+from ... import tableauserverclient as TSC
+from .. import get_logger
 import os
 import dill as pickle
 logger = get_logger('pythontabcmd2.logout')

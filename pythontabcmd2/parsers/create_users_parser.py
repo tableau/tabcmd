@@ -1,10 +1,6 @@
 import argparse
 import sys
-
-try:
-    from .global_options import *
-except:
-    from parsers.global_options import *
+from .global_options import *
 
 
 class CreateUserParser:

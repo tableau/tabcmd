@@ -1,13 +1,9 @@
-from commands.commands import Commands
-from commands.user.user_command import UserCommand
-from parsers.remove_users_parser import RemoveUserParser
-
-try:
-    from tabcmd2.pythontabcmd2 import tableauserverclient as TSC
-    from logger_config import get_logger
-except:
-    import tableauserverclient as TSC
-    from logger_config import get_logger
+from ..commands import Commands
+from .. import Constants
+from .user_command import UserCommand
+from .. import RemoveUserParser
+from ... import tableauserverclient as TSC
+from .. import get_logger
 logger = get_logger('pythontabcmd2.remove_user_command')
 
 

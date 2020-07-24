@@ -1,11 +1,10 @@
 import argparse
 import sys
 import getpass
-try:
-    from ..logger_config import get_logger
-except:
-    from logger_config import get_logger
+from .global_options import *
+from ..logger_config import get_logger
 logger = get_logger('pythontabcmd2.login_parser')
+
 
 
 class LoginParser:

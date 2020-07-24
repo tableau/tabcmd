@@ -1,5 +1,5 @@
-from commands.commands import Commands
-from commands.user.user_data import Userdata
+from ..commands import Commands
+from .user_data import Userdata
 
 
 class UserCommand(Commands):
@@ -29,5 +29,3 @@ class UserCommand(Commands):
                 group_item = group[1]
                 break
         return group_item
-
-

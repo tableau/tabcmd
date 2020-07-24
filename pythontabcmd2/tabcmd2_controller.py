@@ -2,14 +2,6 @@ import argparse
 import sys
 import argparse
 from .logger_config import get_logger
-# try:
-#     from constants import Constants
-#     from logger_config import get_logger
-# except ModuleNotFoundError:
-#     from . import tableauserverclient as TSC
-#     from .constants import Constants
-#     from .logger_config import *
-
 logger = get_logger('pythontabcmd2.tabcmd2_controller')
 
 

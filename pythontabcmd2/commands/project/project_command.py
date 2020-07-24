@@ -1,4 +1,4 @@
-from commands.commands import Commands
+from ..commands import Commands
 
 
 class ProjectCommand(Commands):

@@ -2,9 +2,8 @@ from .command_strategy_interface import CommandStrategyInterface
 import os
 import sys
 import dill as pickle
-from logger_config import *
+from . import get_logger
 from .user.user_data import Userdata
-
 logger = get_logger('pythontabcmd2.commands')
 
 

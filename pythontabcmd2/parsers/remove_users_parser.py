@@ -1,9 +1,6 @@
 import argparse
 import sys
-try:
-    from .global_options import *
-except ModuleNotFoundError:
-    from parsers.global_options import *
+from .global_options import *
 
 
 class RemoveUserParser:

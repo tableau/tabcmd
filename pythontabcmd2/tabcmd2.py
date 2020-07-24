@@ -1,12 +1,5 @@
-try:
-    from .tabcmd2_controller import *
-    from .context import *
-except ModuleNotFoundError:
-    from tabcmd2_controller import *
-    from context import *
-
-
-
+from .tabcmd2_controller import *
+from .context import *
 
 
 def main():

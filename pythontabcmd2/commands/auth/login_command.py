@@ -1,5 +1,3 @@
-
-#from parsers.login_parser import LoginParser
 from .. import LoginParser
 from .. import Constants
 from ... import tableauserverclient as TSC
