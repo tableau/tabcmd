@@ -31,10 +31,11 @@ class CreateSiteCommand:
 
     def create_site_helper(self, server, site):
         """ Helper method to catch server errors thrown by tableauserverclient"""
+
         try:
-            new_site = server.sites.create(site)
-            logger.info('Successfully created a new site called: %s' % new_site.name)
-            return new_site
+            server.sites.create(site)
+            logger.info('Successfully created a new site called:')
         except TSC.ServerResponseError as e:
-            logger.info('Error: We have already created this project: %s' % new_site.name)
+            print(e)
+
 
