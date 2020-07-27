@@ -9,3 +9,5 @@ from .parsers.global_options import GlobalOptions
 from .parsers.create_users_parser import CreateUserParser
 from .constants import Constants
 from .logger_config import get_logger
+from .parsers.add_users_parser import AddUserParser
+from .tabcmd2_controller import Tabcmd2Controller

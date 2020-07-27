@@ -7,4 +7,8 @@ class CommandsMap:
                          "createusers": "CreateUserCommand",
                          "deleteusers": "DeleteUserCommand",
                          "removeusers": "RemoveUserCommand",
-                         "logout": "LogoutCommand"}
+                         "logout": "LogoutCommand",
+                         "addusers": "AddUserCommand",
+                         "createsiteusers": "CreateSiteUsersCommand",
+                         "createsite": "CreateSiteCommand",
+                         "deletesite": "DeleteSiteCommand"}

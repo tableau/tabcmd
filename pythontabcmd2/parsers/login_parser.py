@@ -13,6 +13,7 @@ class LoginParser:
     def login_parser():
 
         parser = argparse.ArgumentParser(description='login command')
+
         parser.add_argument('--site', '-S', default=None, help='site of account holder' )
         parser.add_argument('--server', '-s', required=True, help='server of account holder' )
         parser.add_argument('--token', '-t', default=None, help='personal access token used to sign into the server' )

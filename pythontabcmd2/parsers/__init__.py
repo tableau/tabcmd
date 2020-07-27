@@ -7,4 +7,5 @@ from .delete_project_parser import DeleteProjectParser
 from .login_parser import LoginParser
 from .global_options import GlobalOptions
 from .remove_users_parser import RemoveUserParser
+from .add_users_parser import AddUserParser
 

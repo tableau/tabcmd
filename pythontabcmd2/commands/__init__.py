@@ -12,3 +12,4 @@ from .. import DeleteUserParser
 from .. import DeleteProjectParser
 from .. import DeleteGroupParser
 from .. import RemoveUserParser
+from .. import AddUserParser

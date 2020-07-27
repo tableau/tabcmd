@@ -4,23 +4,23 @@ try:
 except ImportError:
     import mock
 import argparse
-from ..pythontabcmd2.parsers import create_group_parser
-create_group_command_class = create_group_parser.CreateGroupParser
+
+from pythontabcmd2.parsers.create_group_parser import CreateGroupParser
 
 class CreateGroupParserTest(unittest.TestCase):
-    # @mock.patch('argparse.ArgumentParser.parse_args',
-    #             return_value=argparse.Namespace())
-    # def test_create_group_parser_missing_required_name(self, mock_args):
-    #     with self.assertRaises(AttributeError):
-    #         create_group_object = create_group_command_class()
-    #         name = create_group_object.create_group_parser()
+    @mock.patch('argparse.ArgumentParser.parse_args',
+                return_value=argparse.Namespace(args="test"))
+    def test_create_group_parser_missing_required_name(self, mock_args):
+        create_group_object = CreateGroupParser()
+        group_name = create_group_object.create_group_parser()
+        assert group_name == argparse.Namespace(args='test')
 
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=argparse.Namespace(name="testgroup"))
     def test_create_group_parser_required_name(self, mock_args):
         raises = False
         try:
-            create_group_object = create_group_command_class()
+            create_group_object = CreateGroupParser()
             name = create_group_object.create_group_parser()
         except:
             raises = True
