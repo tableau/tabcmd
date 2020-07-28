@@ -10,6 +10,8 @@ from .commands.user.remove_users_command import *
 from .commands.auth.logout_command import *
 from .commands.user.add_users_command import *
 from .commands.site.create_site import *
+from .commands.user.create_site_users import *
+from .commands.site.delete_site_command import *
 
 
 import sys
