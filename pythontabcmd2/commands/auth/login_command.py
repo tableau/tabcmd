@@ -1,6 +1,6 @@
 from .. import LoginParser
 from .. import Constants
-from ... import tableauserverclient as TSC
+import tableauserverclient as TSC
 from .. import get_logger
 
 import os

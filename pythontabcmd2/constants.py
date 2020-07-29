@@ -10,5 +10,3 @@ class Constants:
     forbidden = "403022"
     user_already_member_of_site = "409017"
 
-
-

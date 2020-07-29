@@ -2,7 +2,7 @@ from ..commands import Commands
 from .. import Constants
 from .user_command import UserCommand
 from .. import AddUserParser
-from ... import tableauserverclient as TSC
+import tableauserverclient as TSC
 from .. import get_logger
 logger = get_logger('pythontabcmd2.add_user_command')
 

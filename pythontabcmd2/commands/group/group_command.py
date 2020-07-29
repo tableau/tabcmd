@@ -1,5 +1,5 @@
 from ..commands import Commands
-from ... import tableauserverclient as TSC
+import tableauserverclient as TSC
 from .. import get_logger
 
 

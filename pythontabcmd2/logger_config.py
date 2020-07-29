@@ -1,5 +1,6 @@
 import logging
 
+
 def get_logger(name):
     """function for logging statements to console and logfile"""
     log_format = '%(message)s'

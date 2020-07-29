@@ -1,7 +1,7 @@
 from ..commands import Commands
 from .group_command import GroupCommand
 from .. import DeleteGroupParser
-from ... import tableauserverclient as TSC
+import tableauserverclient as TSC
 from .. import get_logger
 logger = get_logger('pythontabcmd2.delete_group_command')
 

@@ -1,7 +1,7 @@
 from ..commands import Commands
 from .group_command import GroupCommand
 from .. import CreateGroupParser
-from ... import tableauserverclient as TSC
+import tableauserverclient as TSC
 from .. import get_logger
 logger = get_logger('pythontabcmd2.create_group_command')
 

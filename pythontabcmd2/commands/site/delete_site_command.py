@@ -1,7 +1,7 @@
 from .site_command import SiteCommand
 from .. import CreateProjectParser
 from ..commands import Commands
-from ... import tableauserverclient as TSC
+import tableauserverclient as TSC
 from .. import get_logger
 from ...parsers.delete_site_parser import DeleteSiteParser
 

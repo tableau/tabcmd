@@ -39,7 +39,9 @@ class Commands(CommandStrategyInterface):
         user_data.admin_level = split_line[4].lower()
         user_data.publisher = split_line[5].lower()
         user_data.email = split_line[6].lower()
-        user_data.site_role = self.evaluate_license_level_admin_level(user_data.license_level, user_data.admin_level, user_data.publisher)
+        user_data.site_role = self.evaluate_license_level_admin_level(user_data.license_level,
+                                                                      user_data.admin_level,
+                                                                      user_data.publisher)
         return user_data
 
     def evaluate_license_level_admin_level(self, license_level, admin_level, publisher):

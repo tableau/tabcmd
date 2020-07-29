@@ -7,7 +7,7 @@ logger = get_logger('pythontabcmd2.tabcmd2_controller')
 
 class Tabcmd2Controller:
     def __init__(self):
-       pass
+        pass
 
     def get_command_strategy(self):
         parser = argparse.ArgumentParser()
@@ -18,7 +18,6 @@ class Tabcmd2Controller:
             parser.print_help()
         else:
             return args.command
-
 
 
 

@@ -1,6 +1,6 @@
 from ..commands import Commands
 from .. import Constants
-from ... import tableauserverclient as TSC
+import tableauserverclient as TSC
 from .. import get_logger
 import os
 import dill as pickle
