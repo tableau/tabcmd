@@ -24,9 +24,7 @@ class DeleteGroupCommand(GroupCommand):
         try:
             group_id = GroupCommand.find_group_id(server, self.name)
             server.groups.delete(group_id)
-            logger.info("Successfully deleted group") 
+            logger.info("Successfully deleted group")
         except TSC.ServerResponseError as e:
-            logger.info("Error: Server error occurred", e)    #TODO Map Error code
-# code        except Un:
-#             logger.info("Error: Group not found, Please check Group name", e)
-
+            logger.info("Error: Server error occurred", e)
+            # TODO Map Error code

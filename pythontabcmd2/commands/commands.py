@@ -39,28 +39,38 @@ class Commands(CommandStrategyInterface):
         user_data.admin_level = split_line[4].lower()
         user_data.publisher = split_line[5].lower()
         user_data.email = split_line[6].lower()
-        user_data.site_role = self.evaluate_license_level_admin_level(user_data.license_level,
-                                                                      user_data.admin_level,
-                                                                      user_data.publisher)
+        user_data.site_role = \
+            self.evaluate_license_level_admin_level(user_data.license_level,
+                                                    user_data.admin_level,
+                                                    user_data.publisher)
         return user_data
 
-    def evaluate_license_level_admin_level(self, license_level, admin_level, publisher):
+    def evaluate_license_level_admin_level(self, license_level,
+                                           admin_level, publisher):
         site_role = None
-        if license_level == ('creator' or 'explorer' or 'viewer' or 'unlicensed' or '') and (
+        if license_level == ('creator' or 'explorer' or 'viewer' or
+                             'unlicensed' or '') and (
                 admin_level == 'system') and publisher == 'yes':
             site_role = 'SiteAdministrator'
-        if license_level == 'creator' and (admin_level == 'site') and publisher == 'yes':
+        if license_level == 'creator' and (admin_level == 'site') and \
+                publisher == 'yes':
             site_role = 'SiteAdministratorCreator'
-        if license_level == 'explorer' and (admin_level == 'site') and publisher == 'yes':
+        if license_level == 'explorer' and (admin_level == 'site') and \
+                publisher == 'yes':
             site_role = 'SiteAdministratorExplorer'
-        if license_level == 'creator' and (admin_level == "none") and publisher == 'yes':  # TODO: CHECK CASE IS NONE
+        if license_level == 'creator' and (admin_level == "none") and \
+                publisher == 'yes':  # TODO: CHECK CASE IS NONE
             site_role = 'Creator'
-        if license_level == 'explorer' and (admin_level == "none") and publisher == 'yes':
+        if license_level == 'explorer' and (admin_level == "none") and \
+                publisher == 'yes':
             site_role = 'ExplorerCanPublish'
-        if license_level == 'explorer' and (admin_level == "none") and publisher == 'yes':
+        if license_level == 'explorer' and (admin_level == "none") and \
+                publisher == 'yes':
             site_role = 'Explorer'
-        if license_level == 'viewer' and (admin_level == "none") and publisher == 'no':
+        if license_level == 'viewer' and (admin_level == "none") and \
+                publisher == 'no':
             site_role = 'Viewer'
-        if license_level == 'unlicensed' and (admin_level == "none") and publisher == 'no':
+        if license_level == 'unlicensed' and (admin_level == "none") and \
+                publisher == 'no':
             site_role = 'Unlicensed'
         return site_role

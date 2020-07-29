@@ -8,7 +8,9 @@ class CreateUserParser:
     def create_user_parser():
         """Method to parse create user arguments passed """
         parser = argparse.ArgumentParser(description='create group command')
-        parser.add_argument('--file', '-f', required=True, help='csv containing user details', type=argparse.FileType('r'))
+        parser.add_argument('--file', '-f', required=True,
+                            help='csv containing user details',
+                            type=argparse.FileType('r'))
         args = parser.parse_args(sys.argv[2:])
         csv_lines = [line.strip() for line in args.file.readlines()]
         args.file.close()

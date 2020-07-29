@@ -36,7 +36,9 @@ class CreateUserCommand(UserCommand):
                 server_object.users.update(new_user_added, password)
             except TSC.ServerResponseError as e:
                 if e.code == Constants.forbidden:
-                    logger.info("User is not local, and the user's credentials are not maintained on Tableau Server.")
+                    logger.info("User is not local, and the user's "
+                                "credentials are not maintained on"
+                                " Tableau Server.")
                 if e.code == Constants.invalid_credentials:
                     logger.info("Unauthorized access, Please login")
                 if e.code == Constants.user_already_member_of_site:

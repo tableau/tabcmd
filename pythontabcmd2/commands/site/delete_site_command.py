@@ -26,12 +26,11 @@ class DeleteSiteCommand:
         self.delete_site_helper(server, site_name)
 
     def create_site_helper(self, server, site_name):
-        """ Helper method to catch server errors thrown by tableauserverclient"""
+        """ Helper method to catch server errors thrown
+        by tableauserverclient"""
         site_id = SiteCommand.find_site_id()
         try:
             server.sites.delete(site_id)
             logger.info('Successfully deletes the site')
         except TSC.ServerResponseError as e:
             print(e)
-
-

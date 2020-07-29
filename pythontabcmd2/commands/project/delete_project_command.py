@@ -13,7 +13,8 @@ class DeleteProjectCommand(ProjectCommand):
 
     @classmethod
     def parse(cls):
-        args, evaluated_project_path = DeleteProjectParser.delete_project_parser()
+        args, evaluated_project_path = \
+            DeleteProjectParser.delete_project_parser()
         return cls(args, evaluated_project_path)
 
     def run_command(self):
@@ -21,12 +22,11 @@ class DeleteProjectCommand(ProjectCommand):
         self.delete_project(server_object)
 
     def delete_project(self, server):
-        """Method to delete projectusing Tableauserverclient methods"""
+        """Method to delete project using Tableauserverclient methods"""
         try:
             project_id = ProjectCommand.find_project_id(server, self.name)
             server.projects.delete(project_id)
-            logger.info("Successfully deleted project") 
+            logger.info("Successfully deleted project")
         except TSC.ServerResponseError as e:
-            logger.info("Error: Server error occured", e) 
-        except:
-            logger.info("Error: Project not found, Please check project name")
+            logger.info("Error: Server error occured", e)
+            # TODO ERROR

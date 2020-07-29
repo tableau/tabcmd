@@ -34,8 +34,7 @@ class DeleteUserCommand(UserCommand):
                 server.users.remove(user_id)
                 logger.info("Successfully removed")
             except TSC.ServerResponseError as e:
-                logger.info("Error: Server error occurred", e)  # TODO Map Error code
+                logger.info("Error: Server error occurred", e)
+                # TODO Map Error code
             except ValueError:
                 logger.info("Error user for ", username, "not found")
-
-

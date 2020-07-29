@@ -9,10 +9,9 @@ class DeleteSiteParser:
     def delete_site_parser():
         """Method to parse delete site arguments passed by the user"""
         parser = argparse.ArgumentParser(description='delete site command')
-        parser.add_argument('--site-name', '-s', required=True, help='name of site to delete')
+        parser.add_argument('--site-name', '-s', required=True,
+                            help='name of site to delete')
         args = parser.parse_args(sys.argv[2:])
         return args
 
-
-
-# TODO: COMPLETE, NOCOMPLETE OPTION, GLOBAL SITE OPTION
+# TODO: COMPLETE, NO COMPLETE OPTION, GLOBAL SITE OPTION

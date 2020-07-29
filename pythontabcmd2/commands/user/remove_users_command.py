@@ -4,6 +4,7 @@ from .user_command import UserCommand
 from .. import RemoveUserParser
 import tableauserverclient as TSC
 from .. import get_logger
+
 logger = get_logger('pythontabcmd2.remove_user_command')
 
 
@@ -36,5 +37,5 @@ class RemoveUserCommand(UserCommand):
                 server.groups.remove_user(group, user_id)
                 logger.info("Successfully removed")
             except TSC.ServerResponseError as e:
-                logger.info("Error: Server error occurred", e)    #TODO Map Error code
-
+                logger.info("Error: Server error occurred", e)
+                # TODO Map Error code

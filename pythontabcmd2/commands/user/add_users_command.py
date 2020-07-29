@@ -36,5 +36,5 @@ class AddUserCommand(UserCommand):
                 server.groups.add_user(group, user_id)
                 logger.info("Successfully added")
             except TSC.ServerResponseError as e:
-                logger.info("Error: Server error occurred", e)  # TODO Map Error code
-
+                logger.info("Error: Server error occurred", e)
+                # TODO Map Error code

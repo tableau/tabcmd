@@ -1,5 +1,3 @@
-
-
 class Userdata:
     def __init__(self):
         self.username = None
@@ -10,6 +8,3 @@ class Userdata:
         self.publisher = None
         self.email = None
         self.site_role = None
-
-
-    

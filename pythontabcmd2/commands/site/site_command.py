@@ -16,4 +16,3 @@ class SiteCommand(Commands):
                 site_id = site[1]
                 break
         return site_id
-
