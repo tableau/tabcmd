@@ -22,5 +22,3 @@
 #         create_user_object = create_user_command_class()
 #         file = create_user_object.create_user_parser()
 #         assert file == "test.csv"
-#
-

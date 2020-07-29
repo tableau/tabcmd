@@ -4,8 +4,8 @@ try:
 except ImportError:
     import mock
 import argparse
-
 from pythontabcmd2.parsers.create_group_parser import CreateGroupParser
+
 
 class CreateGroupParserTest(unittest.TestCase):
     @mock.patch('argparse.ArgumentParser.parse_args',
@@ -22,6 +22,6 @@ class CreateGroupParserTest(unittest.TestCase):
         try:
             create_group_object = CreateGroupParser()
             name = create_group_object.create_group_parser()
-        except:
+        except Exception:
             raises = True
         self.assertFalse(raises, "Exception Raised")

@@ -17,7 +17,8 @@
 #             name = delete_project_object.delete_project_parser()
 #
 #     @mock.patch('argparse.ArgumentParser.parse_args',
-#                 return_value=argparse.Namespace(name="testproject", parent_project_path=None))
+#                 return_value=argparse.
+#                 Namespace(name="testproject", parent_project_path=None))
 #     def test_delete_project_parser_required_name(self, mock_args):
 #         raises = False
 #         try:
@@ -28,18 +29,24 @@
 #         self.assertFalse(raises, "Exception Raised")
 #
 #     @mock.patch('argparse.ArgumentParser.parse_args',
-#                 return_value=argparse.Namespace(name="testproject", parent_project_path="abcdef"))
-#     def test_delete_project_parser_optional_arguments_parent_path(self, mock_args):
+#                 return_value=argparse.
+#                 Namespace(name="testproject", parent_project_path="abcdef"))
+#     def test_delete_project_parser_optional_arguments_parent_path
+#     (self, mock_args):
 #         delete_project_object = delete_project_parser_class()
-#         name, parent_proj_path = delete_project_object.delete_project_parser()
+#         name, parent_proj_path = delete_project_object.
+#         delete_project_parser()
 #         assert name == "testproject"
 #         assert parent_proj_path == "abcdef"
 #
 #     @mock.patch('argparse.ArgumentParser.parse_args',
-#                 return_value=argparse.Namespace(name="testproject", parent_project_path=None))
-#     def test_delete_project_parser_optional_arguments_parent_path_None(self, mock_args):
+#                 return_value=argparse.
+#                 Namespace(name="testproject", parent_project_path=None))
+#     def test_delete_project_parser_optional_arguments_parent_path_None
+#     (self, mock_args):
 #         delete_project_object = delete_project_parser_class()
-#         name, parent_proj_path = delete_project_object.delete_project_parser()
+#         name, parent_proj_path = delete_project_object.
+#         delete_project_parser()
 #         assert name == "testproject"
 #         assert parent_proj_path == None
 #

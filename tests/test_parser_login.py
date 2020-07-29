@@ -10,22 +10,27 @@
 #
 # class CreateProjectParserTest(unittest.TestCase):
 #     @mock.patch('argparse.ArgumentParser.parse_args',
-#                 return_value=argparse.Namespace(site="https://localhost",
-#                                                 token="abcdef", username=None, token_name="test" ))
+#                 return_value=argparse.
+#                 Namespace(site="https://localhost",
+#                 token="abcdef", username=None, token_name="test" ))
 #     def test_login_parser_missing_required_server(self, mock_args):
 #
 #         with self.assertRaises(AttributeError):
 #             login_parser_object = login_parser_class()
-#             username, password, site, server, token_name, token = login_parser_object.login_parser()
+#             username, password, site, server,
+#             token_name, token = login_parser_object.login_parser()
 #
 #     @mock.patch('argparse.ArgumentParser.parse_args',
-#                 return_value=argparse.Namespace(site="https://localhost", server="test.com",
-#                                                 token="abcdef", username=None, token_name="test" ))
+#                 return_value=argparse.'
+#                 Namespace(site="https://localhost",
+#                 server="test.com",
+#                 token="abcdef", username=None, token_name="test" ))
 #     def test_login_parser_optional_arguments(self, mock_args):
 #
 #
 #         login_parser_object = login_parser_class()
-#         username, password, site, server, token_name, token = login_parser_object.login_parser()
+#         username, password, site, server, token_name,
+#         token = login_parser_object.login_parser()
 #         assert site == "https://localhost"
 #         assert token == "abcdef"
 #         assert username == None
