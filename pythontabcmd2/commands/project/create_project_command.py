@@ -19,7 +19,7 @@ class CreateProjectCommand(ProjectCommand):
         return cls(args, evaluated_project_path)
 
     def run_command(self):
-        signed_in_object, server_object = Commands.deserialize()
+        server_object = Commands.deserialize()
         self.create_project(server_object)
 
     def create_project(self, server):
