@@ -2,6 +2,7 @@ from .command_strategy_interface import CommandStrategyInterface
 import os
 import sys
 import dill as pickle
+import json
 from . import get_logger
 from .user.user_data import Userdata
 logger = get_logger('pythontabcmd2.commands')
@@ -21,6 +22,24 @@ class Commands(CommandStrategyInterface):
         except IOError:
             logger.info("****** Please login first ******")
             sys.exit()
+
+    @staticmethod
+    def get_auth_from_json():
+        with open('data.txt') as json_file:
+            data = json.load(json_file)
+            for p in data['people']:
+                print('Name: ' + p['name'])
+                print('Website: ' + p['website'])
+                print('From: ' + p['from'])
+                print('')
+
+    @staticmethod
+    def deserialize():
+        pass
+
+    @staticmethod
+    def create_new_server():
+        pass
 
     def get_user(self, csv_file):
         user_list = []

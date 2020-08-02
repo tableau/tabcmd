@@ -2,6 +2,7 @@ from .. import LoginParser
 from .. import Constants
 import tableauserverclient as TSC
 from .. import get_logger
+import json
 
 import os
 import dill as pickle
@@ -37,6 +38,9 @@ class LoginCommand(Commands):
                 tableau_server = TSC.Server(self.server,
                                             use_server_version=True)
                 signed_in_object = tableau_server.auth.sign_in(tableau_auth)
+                print(tableau_server.auth_token)
+             #tableau_server._auth_token = 'token from json'
+               # tableau_server.authtoken -> save that to the json
                 self.pickle_auth_objects(signed_in_object, tableau_server)
                 logger.info("======Successfully established connection======")
             except TSC.ServerResponseError as e:
@@ -53,7 +57,11 @@ class LoginCommand(Commands):
                 signed_in_object = \
                     tableau_server.auth.sign_in_with_personal_access_token(
                         tableau_auth)
+                print(tableau_server.auth_token)
+                print(tableau_server.server_address)
+                print(tableau_server.site_id)
                 self.pickle_auth_objects(signed_in_object, tableau_server)
+                self.save_token_to_json_file(tableau_server.auth_token)
                 logger.info("======Successfully established connection======")
             except TSC.ServerResponseError as e:
                 if e.code == Constants.login_error:
@@ -67,3 +75,16 @@ class LoginCommand(Commands):
         with open(str(file_path), 'wb') as output:
             pickle.dump(signed_in_object_str, output, pickle.HIGHEST_PROTOCOL)
             pickle.dump(tableau_server, output, pickle.HIGHEST_PROTOCOL)
+
+    def save_token_to_json_file(self, token):
+        data={}
+        data['tableau_auth'] = []
+        data['tableau_auth'].append({
+            'token': token,
+        })
+        home_path = os.path.expanduser("~")
+        file_path = os.path.join(home_path, 'tableau_auth.json')
+        with open(str(file_path), 'w') as f:
+            json.dump(data, f)
+
+            print("successfully json written")
