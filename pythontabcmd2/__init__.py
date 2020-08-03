@@ -14,3 +14,5 @@ from .logger_config import get_logger
 from .parsers.add_users_parser import AddUserParser
 from .tabcmd2_controller import Tabcmd2Controller
 from .parsers.delete_site_parser import DeleteSiteParser
+from .parsers.parent_parser import ParentParser
+from .parsers.common_parser import CommonParser
