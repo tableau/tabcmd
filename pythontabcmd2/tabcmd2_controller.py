@@ -2,7 +2,7 @@ import argparse
 import sys
 import argparse
 from .logger_config import get_logger
-logger = get_logger('pythontabcmd2.tabcmd2_controller')
+logger = get_logger('pythontabcmd2.tabcmd2_controller', 'info')
 
 
 class Tabcmd2Controller:

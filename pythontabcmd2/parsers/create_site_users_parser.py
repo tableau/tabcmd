@@ -15,9 +15,12 @@ class CreateSiteUsersParser:
         parser.add_argument('--file', '-f', required=True,
                             help='csv containing user details',
                             type=argparse.FileType('r'))
+        parser.add_argument('--logging-level', '-l',
+                            choices=['debug', 'info', 'error'], default='error',
+                            help='desired logging level (set to error by default)')
         args = parser.parse_args(sys.argv[2:])
         csv_lines = [line.strip() for line in args.file.readlines()]
         args.file.close()
-        return csv_lines, args.role
+        return csv_lines, args
 
 # TODO: COMPLETE, NOCOMPLETE OPTION, GLOBAL SITE OPTION

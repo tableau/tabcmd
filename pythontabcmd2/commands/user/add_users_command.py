@@ -4,13 +4,19 @@ from .user_command import UserCommand
 from .. import AddUserParser
 import tableauserverclient as TSC
 from .. import get_logger
-logger = get_logger('pythontabcmd2.add_user_command')
+#logger = get_logger('pythontabcmd2.add_user_command')
 
 
 class AddUserCommand(UserCommand):
     def __init__(self, args, csv_lines):
         super().__init__(csv_lines)
         self.group = args.group
+        self.logging_level = args.logging_level
+
+    def log(self):
+        logger = get_logger('pythontabcmd2.add_user_command',
+                            self.logging_level)
+        return logger
 
     @classmethod
     def parse(cls):
@@ -26,6 +32,7 @@ class AddUserCommand(UserCommand):
 
     def add_user_command(self, server, csv_lines, group_name):
         """Method to add users to a group using Tableauserverclient methods"""
+        logger = self.log()
         command = Commands()
         user_obj_list = command.get_user(csv_lines)
         for user_obj in user_obj_list:
@@ -36,5 +43,5 @@ class AddUserCommand(UserCommand):
                 server.groups.add_user(group, user_id)
                 logger.info("Successfully added")
             except TSC.ServerResponseError as e:
-                logger.info("Error: Server error occurred", e)
+                logger.error("Error: Server error occurred", e)
                 # TODO Map Error code

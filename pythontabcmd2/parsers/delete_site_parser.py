@@ -11,6 +11,9 @@ class DeleteSiteParser:
         parser = argparse.ArgumentParser(description='delete site command')
         parser.add_argument('--site-name', '-s', required=True,
                             help='name of site to delete')
+        parser.add_argument('--logging-level', '-l',
+                            choices=['debug', 'info', 'error'], default='error',
+                            help='desired logging level (set to error by default)')
         args = parser.parse_args(sys.argv[2:])
         return args
 

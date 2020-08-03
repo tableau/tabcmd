@@ -3,7 +3,7 @@ import sys
 import getpass
 from .global_options import *
 from ..logger_config import get_logger
-logger = get_logger('pythontabcmd2.login_parser')
+logger = get_logger('pythontabcmd2.login_parser', 'info')
 
 
 class LoginParser:
@@ -21,6 +21,9 @@ class LoginParser:
                             help='personal access token to '
                                  'sign into the '
                                  'server')
+        parser.add_argument('--logging-level', '-l',
+                            choices=['debug', 'info', 'error'], default='error',
+                            help='desired logging level (set to error by default)')
         group = parser.add_mutually_exclusive_group(required=True)
         group.add_argument('--username', '-u',
                            help='username of account holder')

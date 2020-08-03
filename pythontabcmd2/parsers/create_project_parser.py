@@ -18,10 +18,15 @@ class CreateProjectParser(ParentParser):
                             help='description of project')
         parser.add_argument('--content-permission', '-c', default=None,
                             help='content permission of project')
+        parser.add_argument('--logging-level', '-l',
+                            choices=['debug', 'info', 'error'], default='error',
+                            help='desired logging level '
+                                 '(set to error by default)')
         args = parser.parse_args(sys.argv[2:])
         if args.parent_project_path is not None:
             evaluated_project_path = GlobalOptions.\
                 evaluate_project_path(args.parent_project_path)
         else:
             evaluated_project_path = args.parent_project_path
+        print(args)
         return args, evaluated_project_path

@@ -4,7 +4,7 @@ import tableauserverclient as TSC
 from .. import get_logger
 import os
 import dill as pickle
-logger = get_logger('pythontabcmd2.logout')
+logger = get_logger('pythontabcmd2.logout', 'info')
 
 
 class LogoutCommand(Commands):

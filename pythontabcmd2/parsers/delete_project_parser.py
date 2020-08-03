@@ -12,6 +12,9 @@ class DeleteProjectParser:
                             help='name of project to delete')
         parser.add_argument('--parent-project-path', '-p', default=None,
                             help='path of parent project')
+        parser.add_argument('--logging-level', '-l',
+                            choices=['debug', 'info', 'error'], default='error',
+                            help='desired logging level (set to error by default)')
         args = parser.parse_args(sys.argv[2:])
         if args.parent_project_path is not None:
             evaluated_project_path = \

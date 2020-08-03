@@ -26,6 +26,10 @@ class CreateSiteParser:
                                 'to add or remove users')
         group.add_argument('--no-site-mode', '-n', default=None,
                            help='Allows site admins to add or remove users')
+        parser.add_argument('--logging-level', '-l',
+                            choices=['debug', 'info', 'error'], default='error',
+                            help='desired logging level '
+                                 '(set to error by default)')
         args = parser.parse_args(sys.argv[2:])
 
         admin_mode = None
