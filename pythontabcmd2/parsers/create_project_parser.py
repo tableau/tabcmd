@@ -4,16 +4,16 @@ from .global_options import *
 from .parent_parser import ParentParser
 from .common_parser import CommonParser
 
+
 class CreateProjectParser(ParentParser):
 
     @staticmethod
     def create_project_parser():
         """Method to parse create project arguments passed by the user"""
-
-        # parser = argparse.ArgumentParser(description='create project command')
         parent_parser = ParentParser()
         parser = parent_parser.parent_parser_with_global_options()
         common_parser_obj = CommonParser()
+
         common_parser = common_parser_obj.common_parser_arguments()
         subparsers = parser.add_subparsers()
         create_project_parser = subparsers.add_parser('createproject',

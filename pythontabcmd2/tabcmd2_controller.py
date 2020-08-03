@@ -18,3 +18,4 @@ class Tabcmd2Controller:
             parser.print_help()
         else:
             return args.command
+

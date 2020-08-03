@@ -10,53 +10,53 @@ logger = get_logger('pythontabcmd2.commands', 'info')
 
 
 class Commands(CommandStrategyInterface):
+    # @staticmethod
+    # def deserialize():
+    #     """" Method to convert the pickle file back to an object """
+    #     try:
+    #         home_path = os.path.expanduser("~")
+    #         file_path = os.path.join(home_path, 'tabcmd.pkl')
+    #         with open(str(file_path), 'rb') as input:
+    #             signed_in_object = pickle.load(input)
+    #             server_object = pickle.load(input)
+    #             return signed_in_object, server_object
+    #     except IOError:
+    #         logger.info("****** Please login first ******")
+    #         sys.exit()
+
     @staticmethod
     def deserialize():
-        """" Method to convert the pickle file back to an object """
         try:
             home_path = os.path.expanduser("~")
-            file_path = os.path.join(home_path, 'tabcmd.pkl')
-            with open(str(file_path), 'rb') as input:
-                signed_in_object = pickle.load(input)
-                server_object = pickle.load(input)
-                return signed_in_object, server_object
+            file_path = os.path.join(home_path, 'tableau_auth.json')
+            with open(str(file_path), 'r') as input:
+                data = json.load(input)
+                token_from_json = None
+                server_from_json = None
+                site_id_from_json = None
+                for auth in data['tableau_auth']:
+                    token_from_json = auth['token']
+                    server_from_json = auth['server']
+                    site_id_from_json = auth['site']
+                print(token_from_json, server_from_json, site_id_from_json)
+                server = Commands.create_new_server(token_from_json,
+                                                    server_from_json,
+                                                    site_id_from_json)
+                return server
+
         except IOError:
             logger.info("****** Please login first ******")
             sys.exit()
 
-    # @staticmethod
-    # def deserialize():
-    #     try:
-    #         home_path = os.path.expanduser("~")
-    #         file_path = os.path.join(home_path, 'tableau_auth.json')
-    #         with open(str(file_path), 'r') as input:
-    #             data = json.load(input)
-    #             token_from_json = None
-    #             server_from_json = None
-    #             site_id_from_json = None
-    #             for auth in data['tableau_auth']:
-    #                 token_from_json = auth['token']
-    #                 server_from_json = auth['server']
-    #                 site_id_from_json = auth['site']
-    #             print(token_from_json, server_from_json, site_id_from_json)
-    #             server = Commands.create_new_server(token_from_json,
-    #                                                 server_from_json,
-    #                                                 site_id_from_json)
-    #             return server
-    #
-    #     except IOError:
-    #         logger.info("****** Please login first ******")
-    #         sys.exit()
-    #
-    #
-    # @staticmethod
-    # def create_new_server(token, server, site_id):
-    #     print("thisisserver",server)
-    #     print("this ist site", type(site_id))
-    #     tableau_server = TSC.Server(server, use_server_version=True)
-    #     tableau_server._auth_token = token
-    #     tableau_server._site_id = site_id
-    #     return tableau_server
+
+    @staticmethod
+    def create_new_server(token, server, site_id):
+        print("thisisserver",server)
+        print("this ist site", type(site_id))
+        tableau_server = TSC.Server(server, use_server_version=True)
+        tableau_server._auth_token = token
+        tableau_server._site_id = site_id
+        return tableau_server
 
     def get_user(self, csv_file):
         user_list = []

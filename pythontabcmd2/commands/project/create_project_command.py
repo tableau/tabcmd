@@ -26,8 +26,8 @@ class CreateProjectCommand(ProjectCommand):
         return cls(args, evaluated_project_path)
 
     def run_command(self):
-        #server_object = Commands.deserialize()
-        signed_in_object, server_object = Commands.deserialize()
+        server_object = Commands.deserialize()
+        # signed_in_object, server_object = Commands.deserialize()
         self.create_project(server_object)
 
     def create_project(self, server):
@@ -51,6 +51,6 @@ class CreateProjectCommand(ProjectCommand):
                         % project_item.name)
             return project_item
         except TSC.ServerResponseError as e:
-            logger.error('Error: We have already created '
+            logger.error('We have already created '
                                              'this project: %s'
                         % project_item.name)

@@ -56,14 +56,16 @@ class LoginCommand(Commands):
                                                 self.personal_token, self.site)
                 tableau_server = \
                     TSC.Server(self.server, use_server_version=True)
-                signed_in_object= tableau_server.auth.sign_in_with_personal_access_token(
+                signed_in_object = \
+                    tableau_server.auth.sign_in_with_personal_access_token(
                         tableau_auth)
                 print(tableau_server.auth_token)
                 print(tableau_server.server_address)
-                print(tableau_server.site_id)
-                self.pickle_auth_objects(signed_in_object, tableau_server)
-                # self.save_token_to_json_file(tableau_server.auth_token,
-                                            # self.server, self.site)
+                print("thisis siteidsaed", tableau_server.site_id)
+                #self.pickle_auth_objects(signed_in_object, tableau_server)
+                self.save_token_to_json_file(tableau_server.auth_token,
+                                             self.server,
+                                             tableau_server.site_id)
                 logger.info("======Successfully established connection======")
             except TSC.ServerResponseError as e:
                 if e.code == Constants.login_error:
