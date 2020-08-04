@@ -16,9 +16,7 @@ class Tabcmd2Controller:
         # parser.add_argument('command', help='tabcmd commands to run')
         parent_parser = ParentParser()
         parser = parent_parser.parent_parser_with_global_options()
-        subparsers = parser.add_subparsers()
-        main_parser = subparsers.add_parser('command parser', parents=[parser])
-        main_parser.add_argument('command', help='tabcmd commands to run')
+        parser.add_argument('command', help='tabcmd commands to run')
         args = parser.parse_args(sys.argv[1:2])
         if args.command is None:
             logger.info('Unrecognized command please try again')
