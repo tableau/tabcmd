@@ -10,19 +10,6 @@ logger = get_logger('pythontabcmd2.commands', 'info')
 
 
 class Commands(CommandStrategyInterface):
-    # @staticmethod
-    # def deserialize():
-    #     """" Method to convert the pickle file back to an object """
-    #     try:
-    #         home_path = os.path.expanduser("~")
-    #         file_path = os.path.join(home_path, 'tabcmd.pkl')
-    #         with open(str(file_path), 'rb') as input:
-    #             signed_in_object = pickle.load(input)
-    #             server_object = pickle.load(input)
-    #             return signed_in_object, server_object
-    #     except IOError:
-    #         logger.info("****** Please login first ******")
-    #         sys.exit()
 
     @staticmethod
     def deserialize():

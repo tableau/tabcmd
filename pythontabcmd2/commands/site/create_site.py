@@ -26,7 +26,7 @@ class CreateSiteCommand:
         return cls(args, admin_mode)
 
     def run_command(self):
-        signed_in_object, server_object = Commands.deserialize()
+        server_object = Commands.deserialize()
         self.create_site(server_object)
 
     def create_site(self, server):

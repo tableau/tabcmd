@@ -43,7 +43,9 @@ class LoginCommand(Commands):
                 tableau_server = TSC.Server(self.server,
                                             use_server_version=True)
                 signed_in_object = tableau_server.auth.sign_in(tableau_auth)
-                # self.pickle_auth_objects(signed_in_object, tableau_server)
+                self.save_token_to_json_file(tableau_server.auth_token,
+                                             self.server,
+                                             tableau_server.site_id)
                 logger.info("======Successfully established connection======")
             except TSC.ServerResponseError as e:
                 if e.code == Constants.login_error:
@@ -62,7 +64,6 @@ class LoginCommand(Commands):
                 print(tableau_server.auth_token)
                 print(tableau_server.server_address)
                 print("thisis siteidsaed", tableau_server.site_id)
-                #self.pickle_auth_objects(signed_in_object, tableau_server)
                 self.save_token_to_json_file(tableau_server.auth_token,
                                              self.server,
                                              tableau_server.site_id)
@@ -70,15 +71,6 @@ class LoginCommand(Commands):
             except TSC.ServerResponseError as e:
                 if e.code == Constants.login_error:
                     logger.error("Login Error, Please Login again")
-
-    # def pickle_auth_objects(self, signed_in_object, tableau_server):
-    #     """ Method to pickle signed in object and tableau server object """
-    #     signed_in_object_str = str(signed_in_object)
-    #     home_path = os.path.expanduser("~")
-    #     file_path = os.path.join(home_path, 'tabcmd.pkl')
-    #     with open(str(file_path), 'wb') as output:
-    #         pickle.dump(signed_in_object_str, output, pickle.HIGHEST_PROTOCOL)
-    #         pickle.dump(tableau_server, output, pickle.HIGHEST_PROTOCOL)
 
     def save_token_to_json_file(self, token, server, site_id):
         data={}
