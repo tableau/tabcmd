@@ -71,14 +71,14 @@ class LoginCommand(Commands):
                 if e.code == Constants.login_error:
                     logger.error("Login Error, Please Login again")
 
-    def pickle_auth_objects(self, signed_in_object, tableau_server):
-        """ Method to pickle signed in object and tableau server object """
-        signed_in_object_str = str(signed_in_object)
-        home_path = os.path.expanduser("~")
-        file_path = os.path.join(home_path, 'tabcmd.pkl')
-        with open(str(file_path), 'wb') as output:
-            pickle.dump(signed_in_object_str, output, pickle.HIGHEST_PROTOCOL)
-            pickle.dump(tableau_server, output, pickle.HIGHEST_PROTOCOL)
+    # def pickle_auth_objects(self, signed_in_object, tableau_server):
+    #     """ Method to pickle signed in object and tableau server object """
+    #     signed_in_object_str = str(signed_in_object)
+    #     home_path = os.path.expanduser("~")
+    #     file_path = os.path.join(home_path, 'tabcmd.pkl')
+    #     with open(str(file_path), 'wb') as output:
+    #         pickle.dump(signed_in_object_str, output, pickle.HIGHEST_PROTOCOL)
+    #         pickle.dump(tableau_server, output, pickle.HIGHEST_PROTOCOL)
 
     def save_token_to_json_file(self, token, server, site_id):
         data={}

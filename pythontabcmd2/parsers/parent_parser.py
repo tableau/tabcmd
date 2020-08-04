@@ -1,5 +1,4 @@
 import argparse
-from ..tabcmd2_controller import Tabcmd2Controller
 
 
 class ParentParser:
