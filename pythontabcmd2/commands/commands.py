@@ -13,10 +13,12 @@ class Commands(CommandStrategyInterface):
 
     def __init__(self, args):
         self.logging_level = args.logging_level
-        self.username = args.user
+        self.username = args.username #TODO: CHNAGE HERE TO USER AFTER
         self.password = args.password
         self.server = args.server
         self.site = args.site
+        self.token_name = args.token_name
+        self.personal_token = args.token
 
 
     @staticmethod
@@ -102,3 +104,8 @@ class Commands(CommandStrategyInterface):
                 publisher == 'no':
             site_role = 'Unlicensed'
         return site_role
+
+    # def log(self):
+    #     logger = get_logger('pythontabcmd2.create_project_command',
+    #                         self.logging_level)
+    #     return logger

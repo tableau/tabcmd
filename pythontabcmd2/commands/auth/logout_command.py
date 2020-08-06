@@ -21,8 +21,8 @@ class LogoutCommand(Commands):
     def logout(self):
         """ Method to log out from the current session """
         home_path = os.path.expanduser("~")
-        file_path = os.path.join(home_path, 'tabcmd.pkl')
-        signed_in_object, server_object = Commands.deserialize()
+        file_path = os.path.join(home_path, 'tableau_auth.json')
+        server_object = Commands.deserialize()
         server_object.auth.sign_out()
         if os.path.exists(file_path):
             os.remove(file_path)

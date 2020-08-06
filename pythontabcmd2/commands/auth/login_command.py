@@ -3,23 +3,15 @@ from .. import Constants
 import tableauserverclient as TSC
 from .. import get_logger
 import json
-
 import os
-
-
 from ..commands import Commands
+from .session import Session
 
-# logger = get_logger('pythontabcmd2.session')
 
 class LoginCommand(Commands):
-    def __init__(self, args, password):
-        self.username = args.username
-        self.password = password
-        self.server = args.server
-        self.site = args.site
-        self.token_name = args.token_name
-        self.personal_token = args.token
-        self.logging_level = args.logging_level
+    def __init__(self, args):
+        super().__init__(args)
+        self.args = args
 
     def log(self):
         logger = get_logger('pythontabcmd2.session', self.logging_level)
@@ -27,8 +19,8 @@ class LoginCommand(Commands):
 
     @classmethod
     def parse(cls):
-        args, password = LoginParser.login_parser()
-        return cls(args, password)
+        args = LoginParser.login_parser()
+        return cls(args)
 
     def run_command(self):
         self.create_session()
@@ -36,53 +28,33 @@ class LoginCommand(Commands):
     def create_session(self):
         """ Method to authenticate user and establish connection """
         logger = self.log()
-        if self.username:
-            try:
-                tableau_auth = TSC.TableauAuth(self.username,
-                                               self.password, self.site)
-                tableau_server = TSC.Server(self.server,
-                                            use_server_version=True)
-                signed_in_object = tableau_server.auth.sign_in(tableau_auth)
-                self.save_token_to_json_file(tableau_server.auth_token,
-                                             self.server,
-                                             tableau_server.site_id)
-                logger.info("======Successfully established connection======")
-            except TSC.ServerResponseError as e:
-                if e.code == Constants.login_error:
-                    logger.error("Login Error, Please Login again")
+        session = Session(self.args)
+        if self.args.cookie:
+            if self.args.token_name and self.args.token:
+                session.personal_access_token_authentication_with_token_save()
+            elif self.args.username and self.args.password:
+                session.username_password_authentication_with_token_save()
+            elif self.args.site:
+                pass
+            # update json and create session with saving token
+            elif self.args.server:
+                pass
+            # update json and create session with saving token
+        elif self.args.no_cookie:
+            if self.args.token_name:
+                session.no_cookie_save_session_creation_with_token()
+                logger.info("========Established Connection========")
+            elif self.args.username:
+                session.no_cookie_save_session_creation_with_username()
+                logger.info("========Established Connection========")
+        else:
+            if self.args.token_name:
+                session.personal_access_token_authentication_with_token_save()
+            elif self.args.username:
+                session.username_password_authentication_with_token_save()
 
-        elif self.token_name:
-            try:
-                tableau_auth = \
-                    TSC.PersonalAccessTokenAuth(self.token_name,
-                                                self.personal_token, self.site)
-                tableau_server = \
-                    TSC.Server(self.server, use_server_version=True)
-                signed_in_object = \
-                    tableau_server.auth.sign_in_with_personal_access_token(
-                        tableau_auth)
-                self.save_token_to_json_file(tableau_server.auth_token,
-                                             self.server,
-                                             tableau_server.site_id)
-                logger.info("======Successfully established connection======")
-            except TSC.ServerResponseError as e:
-                if e.code == Constants.login_error:
-                    logger.error("Login Error, Please Login again")
 
-    def save_token_to_json_file(self, token, server, site_id):
-        data={}
-        data['tableau_auth'] = []
-        data['tableau_auth'].append({
-            'token': token,
-            'server': server,
-            'site': site_id,
-        })
-        home_path = os.path.expanduser("~")
-        file_path = os.path.join(home_path, 'tableau_auth.json')
-        with open(str(file_path), 'w') as f:
-            json.dump(data, f)
 
-            print("successfully json written")
 
     def update_json_file(self):
         pass
