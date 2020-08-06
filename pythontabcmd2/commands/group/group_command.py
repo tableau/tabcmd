@@ -5,6 +5,7 @@ from .. import get_logger
 
 class GroupCommand(Commands):
     def __init__(self, args):
+        super().__init__(args)
         self.name = args.name
 
     @staticmethod

@@ -3,21 +3,20 @@ from ..commands import Commands
 import tableauserverclient as TSC
 from .. import get_logger
 from ...parsers.create_site_parser import CreateSiteParser
+from .site_command import SiteCommand
 
-#logger = get_logger('pythontabcmd2.create_site_command')
 
-
-class CreateSiteCommand:
+class CreateSiteCommand(SiteCommand):
     def __init__(self, args, admin_mode):
-        self.site_name = args.site_name
+        super().__init__(args)
         self.admin_mode = admin_mode
         self.url = args.url
         self.user_quota = args.user_quota
         self.storage_quota = args.storage_quota
-        self.logging_level = args.logging_level
 
     def log(self):
-        logger = get_logger('pythontabcmd2.create_site_command', self.logging_level)
+        logger = get_logger('pythontabcmd2.create_site_command',
+                            self.logging_level)
         return logger
 
     @classmethod
@@ -45,4 +44,4 @@ class CreateSiteCommand:
             server.sites.create(site)
             logger.info('Successfully created a new site called:')
         except TSC.ServerResponseError as e:
-            print(e)
+            logger.error('error creating site', e)

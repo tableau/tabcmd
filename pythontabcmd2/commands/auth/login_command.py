@@ -5,7 +5,7 @@ from .. import get_logger
 import json
 
 import os
-import dill as pickle
+
 
 from ..commands import Commands
 
@@ -61,9 +61,6 @@ class LoginCommand(Commands):
                 signed_in_object = \
                     tableau_server.auth.sign_in_with_personal_access_token(
                         tableau_auth)
-                print(tableau_server.auth_token)
-                print(tableau_server.server_address)
-                print("thisis siteidsaed", tableau_server.site_id)
                 self.save_token_to_json_file(tableau_server.auth_token,
                                              self.server,
                                              tableau_server.site_id)
@@ -86,3 +83,6 @@ class LoginCommand(Commands):
             json.dump(data, f)
 
             print("successfully json written")
+
+    def update_json_file(self):
+        pass

@@ -2,17 +2,22 @@ from .project_command import *
 from .. import CreateProjectParser
 import tableauserverclient as TSC
 from .. import get_logger
-
-# logger = get_logger('pythontabcmd2.create_project_command')
+from ..auth.login_command import LoginCommand
 
 
 class CreateProjectCommand(ProjectCommand):
 
     def __init__(self, args, evaluated_project_path):
         super().__init__(args, evaluated_project_path)
+        self.args = args
         self.description = args.description
         self.content_permission = args.content_permission
-        self.logging_level = args.logging_level
+
+
+    # def check_global_options_present(self):
+    #     if self.username or self.password or self.site or self.server:
+    #         create_new_session = LoginCommand(self.args, self.password)
+    #         create_new_session.create_session()
 
     def log(self):
         logger = get_logger('pythontabcmd2.create_project_command',
@@ -26,8 +31,8 @@ class CreateProjectCommand(ProjectCommand):
         return cls(args, evaluated_project_path)
 
     def run_command(self):
+        # self.check_global_options_present()
         server_object = Commands.deserialize()
-        # signed_in_object, server_object = Commands.deserialize()
         self.create_project(server_object)
 
     def create_project(self, server):

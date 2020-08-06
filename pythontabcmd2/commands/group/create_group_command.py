@@ -8,7 +8,6 @@ from .. import get_logger
 class CreateGroupCommand(GroupCommand):
     def __init__(self, args):
         super().__init__(args)
-        self.logging_level = args.logging_level
 
     def log(self):
         logger = get_logger('pythontabcmd2.create_group_command',
@@ -21,7 +20,7 @@ class CreateGroupCommand(GroupCommand):
         return cls(args)
 
     def run_command(self):
-        signed_in_object, server_object = Commands.deserialize()
+        server_object = Commands.deserialize()
         self.create_group(server_object)
 
     def create_group(self, server):
@@ -31,5 +30,5 @@ class CreateGroupCommand(GroupCommand):
             new_group = TSC.GroupItem(self.name)
             server.groups.create(new_group)
             logger.info("Successfully created group")
-        except TSC.ServerResponseError as e:      # TODO MAP ERROR
-            logger.error("Error: Server error occurred: Group already exists")
+        except TSC.ServerResponseError as e:
+            logger.error("Group already exists")

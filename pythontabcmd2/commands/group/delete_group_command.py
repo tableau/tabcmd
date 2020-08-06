@@ -3,13 +3,11 @@ from .group_command import GroupCommand
 from .. import DeleteGroupParser
 import tableauserverclient as TSC
 from .. import get_logger
-#logger = get_logger('pythontabcmd2.delete_group_command')
 
 
 class DeleteGroupCommand(GroupCommand):
     def __init__(self, args):
         super().__init__(args)
-        self.logging_level = args.logging_level
 
     @classmethod
     def parse(cls):
@@ -22,7 +20,7 @@ class DeleteGroupCommand(GroupCommand):
         return logger
 
     def run_command(self):
-        signed_in_object, server_object = Commands.deserialize()
+        server_object = Commands.deserialize()
         self.delete_group(server_object)
 
     def delete_group(self, server):
@@ -33,5 +31,5 @@ class DeleteGroupCommand(GroupCommand):
             server.groups.delete(group_id)
             logger.info("Successfully deleted group")
         except TSC.ServerResponseError as e:
-            logger.error("Error: Server error occurred", e)
+            logger.error("Server error occurred", e)
 

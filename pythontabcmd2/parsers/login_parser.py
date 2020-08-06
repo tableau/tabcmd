@@ -22,8 +22,10 @@ class LoginParser:
                                  'sign into the '
                                  'server')
         parser.add_argument('--logging-level', '-l',
-                            choices=['debug', 'info', 'error'], default='error',
-                            help='desired logging level (set to error by default)')
+                            choices=['debug', 'info', 'error'],
+                            default='error',
+                            help='desired logging level '
+                                 '(set to error by default)')
         group = parser.add_mutually_exclusive_group(required=True)
         group.add_argument('--username', '-u',
                            help='username of account holder')

@@ -11,7 +11,6 @@ class CreateSiteUsersCommand(UserCommand):
     def __init__(self, csv_lines, args):
         super().__init__(csv_lines)
         self.role = args.role
-        self.logging_level = args.logging_level
 
     def log(self):
         logger = get_logger('pythontabcmd2.create_site_users_command',
@@ -24,7 +23,7 @@ class CreateSiteUsersCommand(UserCommand):
         return cls(csv_lines, role)
 
     def run_command(self):
-        signed_in_object, server_object = Commands.deserialize()
+        server_object = Commands.deserialize()
         self.create_user(server_object, self.csv_lines, self.role)
 
     def create_user(self, server_object, csv_lines, role):

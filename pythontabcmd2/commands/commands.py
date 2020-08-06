@@ -11,6 +11,14 @@ logger = get_logger('pythontabcmd2.commands', 'info')
 
 class Commands(CommandStrategyInterface):
 
+    def __init__(self, args):
+        self.logging_level = args.logging_level
+        self.username = args.user
+        self.password = args.password
+        self.server = args.server
+        self.site = args.site
+
+
     @staticmethod
     def deserialize():
         try:
@@ -25,7 +33,6 @@ class Commands(CommandStrategyInterface):
                     token_from_json = auth['token']
                     server_from_json = auth['server']
                     site_id_from_json = auth['site']
-                print(token_from_json, server_from_json, site_id_from_json)
                 server = Commands.create_new_server(token_from_json,
                                                     server_from_json,
                                                     site_id_from_json)
@@ -38,8 +45,6 @@ class Commands(CommandStrategyInterface):
 
     @staticmethod
     def create_new_server(token, server, site_id):
-        print("thisisserver",server)
-        print("this ist site", type(site_id))
         tableau_server = TSC.Server(server, use_server_version=True)
         tableau_server._auth_token = token
         tableau_server._site_id = site_id

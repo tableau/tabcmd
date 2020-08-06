@@ -2,8 +2,9 @@ from ..commands import Commands
 
 
 class SiteCommand(Commands):
-    def __init__(self):
-        pass
+    def __init__(self, args):
+        super().__init__(args)
+        self.site_name = args.site_name
 
     @staticmethod
     def find_site_id(server, site_name):

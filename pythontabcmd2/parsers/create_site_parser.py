@@ -1,36 +1,38 @@
 import argparse
 import sys
 from .global_options import *
+from .parent_parser import ParentParser
 
 
 class CreateSiteParser:
-
     @staticmethod
     def create_site_parser():
         """Method to parse create site arguments passed by the user"""
-        parser = argparse.ArgumentParser(description='create site command')
-        parser.add_argument('--site-name', '-s', required=True,
-                            help='name of site')
-        parser.add_argument('--url', '-r', default=None,
-                            help='used in URLs to specify site')
-        parser.add_argument('--user-quota', '-u', type=int, default=None,
-                            help='Max number of user that '
-                                 'can be added to site')
-        parser.add_argument('--storage-quota', '-q', type=int, default=None,
-                            help='in MB amount of workbooks, extracts data '
-                                 'sources stored on site')
-        group = parser.add_mutually_exclusive_group()
-        group.add_argument('--site-mode', '-m',
+        parent_parser = ParentParser()
+        parser = parent_parser.parent_parser_with_global_options()
+        subparsers = parser.add_subparsers()
+        create_site_parser = subparsers.add_parser('createproject',
+                                                   parents=[parser])
+        create_site_parser.add_argument('--site-name', '-s', required=True,
+                                        help='name of site')
+        create_site_parser.add_argument('--url', '-r', default=None,
+                                        help='used in URLs to specify site')
+        create_site_parser.add_argument('--user-quota', type=int, default=None,
+                                        help='Max number of user that '
+                                             'can be added to site')
+        create_site_parser.add_argument('--storage-quota', type=int,
+                                        default=None,
+                                        help='in MB amount of workbooks, '
+                                             'extracts data '
+                                             'sources stored on site')
+        group = create_site_parser.add_mutually_exclusive_group()
+        group.add_argument('--site-mode',
                            default=None,
                            help='Does not allow site admins '
                                 'to add or remove users')
-        group.add_argument('--no-site-mode', '-n', default=None,
+        group.add_argument('--no-site-mode', default=None,
                            help='Allows site admins to add or remove users')
-        parser.add_argument('--logging-level', '-l',
-                            choices=['debug', 'info', 'error'], default='error',
-                            help='desired logging level '
-                                 '(set to error by default)')
-        args = parser.parse_args(sys.argv[2:])
+        args = create_site_parser.parse_args(sys.argv[2:])
 
         admin_mode = None
         if args.no_site_mode:

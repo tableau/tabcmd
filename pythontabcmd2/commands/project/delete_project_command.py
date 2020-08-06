@@ -4,13 +4,10 @@ from .. import DeleteProjectParser
 import tableauserverclient as TSC
 from .. import get_logger
 
-# logger = get_logger('pythontabcmd2.delete_project_command')
-
 
 class DeleteProjectCommand(ProjectCommand):
     def __init__(self, args, evaluated_project_path):
         super().__init__(args, evaluated_project_path)
-        self.logging_level = args.logging_level
 
     def log(self):
         logger = get_logger('pythontabcmd2.create_project_command',
@@ -24,7 +21,7 @@ class DeleteProjectCommand(ProjectCommand):
         return cls(args, evaluated_project_path)
 
     def run_command(self):
-        signed_in_object, server_object = Commands.deserialize()
+        server_object = Commands.deserialize()
         self.delete_project(server_object)
 
     def delete_project(self, server):
@@ -35,5 +32,6 @@ class DeleteProjectCommand(ProjectCommand):
             server.projects.delete(project_id)
             logger.info("Successfully deleted project")
         except TSC.ServerResponseError as e:
-            logger.error("Error: Server error occured", e)
-            # TODO ERROR
+            logger.error("Server error occurred", e)
+        except ValueError as e:
+            logger.error("Project does not exist")

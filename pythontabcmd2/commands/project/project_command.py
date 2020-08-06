@@ -4,8 +4,10 @@ from ..commands import Commands
 class ProjectCommand(Commands):
 
     def __init__(self, args, evaluated_project_path):
+        super().__init__(args)
         self.name = args.name
         self.parent_path_name = evaluated_project_path
+
 
     @staticmethod
     def find_project_id(server, parent_path_name):
@@ -19,3 +21,5 @@ class ProjectCommand(Commands):
                 project_id = project[1]
                 break
         return project_id
+
+
