@@ -28,33 +28,21 @@ class LoginCommand(Commands):
     def create_session(self):
         """ Method to authenticate user and establish connection """
         logger = self.log()
-        session = Session(self.args)
-        if self.args.cookie:
-            if self.args.token_name and self.args.token:
-                session.personal_access_token_authentication_with_token_save()
-            elif self.args.username and self.args.password:
-                session.username_password_authentication_with_token_save()
-            elif self.args.site:
-                pass
-            # update json and create session with saving token
-            elif self.args.server:
-                pass
-            # update json and create session with saving token
-        elif self.args.no_cookie:
-            if self.args.token_name:
-                session.no_cookie_save_session_creation_with_token()
-                logger.info("========Established Connection========")
-            elif self.args.username:
-                session.no_cookie_save_session_creation_with_username()
-                logger.info("========Established Connection========")
+        session = Session()
+        if self.args.username or self.args.site or self.args.password or \
+                self.args.server:
+            session.update_session(self.args)
+            session.check_for_missing_arguments()
+            signed_in_object \
+                = session.no_cookie_save_session_creation_with_username()
+        # print("this is from seesion", session.__dict__)
         else:
-            if self.args.token_name:
-                session.personal_access_token_authentication_with_token_save()
-            elif self.args.username:
-                session.username_password_authentication_with_token_save()
-
-
-
-
-    def update_json_file(self):
-        pass
+            signed_in_object = session.reuse_session()
+        if self.args.no_cookie:
+            home_path = os.path.expanduser("~")
+            file_path = os.path.join(home_path, 'tableau_auth.json')
+            if os.path.exists(file_path):
+                os.remove(file_path)
+        else:
+            session.save_token_to_json_file()
+        return signed_in_object

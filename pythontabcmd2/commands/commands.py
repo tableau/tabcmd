@@ -2,7 +2,6 @@ from .command_strategy_interface import CommandStrategyInterface
 import os
 import tableauserverclient as TSC
 import sys
-import dill as pickle
 import json
 from . import get_logger
 from .user.user_data import Userdata
