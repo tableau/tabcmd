@@ -56,53 +56,23 @@ class Session:
             self.logging_level = args.logging_level
 
     def check_for_missing_arguments(self):
-        if self.password is None:
+        # if self.password is None:
+        #     print("Please pass password")
+
+        # if self.username is None:
+        #     print("please pass username")
+        if self.username and self.password is None:
             print("Please pass password")
+        if self.password and self.username is None:
+            print("Please pass username")
+        if self.token and self.token_name is None:
+            print("Please pass Personal Access Token Name")
+        if self.token_name and self.token is None:
+            print("Please pass Tokem")
         if self.server is None:
             print("Please pass server")
         if self.site is None:
             print("please pass site")
-        if self.username is None:
-            print("please pass username")
-
-
-    def username_password_authentication_with_token_save(self):
-        logger = self.log()
-        try:
-            tableau_auth = TSC.TableauAuth(self.username,
-                                           self.password, self.site)
-            tableau_server = TSC.Server(self.server,
-                                        use_server_version=True)
-            signed_in_object = tableau_server.auth.sign_in(tableau_auth)
-            self.save_token_to_json_file(tableau_server.auth_token,
-                                         self.server,
-                                         tableau_server.site_id)
-            logger.info("======Successfully established connection======")
-
-        except TSC.ServerResponseError as e:
-            if e.code == Constants.login_error:
-                logger.error("Login Error, Please Login again")
-
-    def personal_access_token_authentication_with_token_save(self):
-        logger = self.log()
-
-        try:
-            tableau_auth = \
-                TSC.PersonalAccessTokenAuth(self.token_name,
-                                            self.personal_token, self.site)
-            tableau_server = \
-                TSC.Server(self.server, use_server_version=True)
-            signed_in_object = \
-                tableau_server.auth.sign_in_with_personal_access_token(
-                    tableau_auth)
-            self.save_token_to_json_file(tableau_server.auth_token,
-                                         self.server,
-                                         tableau_server.site_id)
-            logger.info("======Successfully established connection======")
-
-        except TSC.ServerResponseError as e:
-            if e.code == Constants.login_error:
-                logger.error("Login Error, Please Login again")
 
     def save_token_to_json_file(self):
         data = {}
@@ -145,7 +115,6 @@ class Session:
                                     use_server_version=True)
         tableau_server._auth_token = self.auth_token
         tableau_server._site_id = self.site_id
-        # tableau_server.use_server_version()
         return tableau_server
 
     def no_cookie_save_session_creation_with_token(self):
@@ -153,7 +122,7 @@ class Session:
         try:
             tableau_auth = \
                 TSC.PersonalAccessTokenAuth(self.token_name,
-                                            self.personal_token, self.site)
+                                            self.token, self.site)
             tableau_server = \
                 TSC.Server(self.server, use_server_version=True)
             signed_in_object = \
@@ -164,10 +133,10 @@ class Session:
             if e.code == Constants.login_error:
                 logger.error("Login Error, Please Login again")
 
-    def no_cookie_server_object_creation(self, token, site_id):
-        tableau_server = TSC.Server(self.server, use_server_version=True)
-        tableau_server._auth_token = token
-        tableau_server._site_id = site_id
-        return tableau_server
+    # def no_cookie_server_object_creation(self, token, site_id):
+    #     tableau_server = TSC.Server(self.server, use_server_version=True)
+    #     tableau_server._auth_token = token
+    #     tableau_server._site_id = site_id
+    #     return tableau_server
 
 
