@@ -20,10 +20,15 @@ class LoginParser:
         subparsers = parser.add_subparsers()
         login_parser = subparsers.add_parser('login', parents=[parser])
         args = login_parser.parse_args(sys.argv[2:])
+        if args.username and args.password is None:
+            args.password = getpass.getpass("Password:")
         if args.prompt and args.username:
             args.password = getpass.getpass("Password:")
         if args.prompt and args.token_name:
             args.token = getpass.getpass("Token:")
+        if args.no_prompt and args.password is None:
+            logger.error("Please provide password")
+            sys.exit()
         if args.site is None:
             args.site = ''
         return args

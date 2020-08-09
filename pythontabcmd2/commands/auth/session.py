@@ -1,3 +1,6 @@
+import getpass
+import sys
+
 from ..commands import Commands
 from .. import LoginParser
 from .. import Constants
@@ -21,7 +24,6 @@ class Session:
         self.read_from_json()
 
     def read_json(self):
-
         home_path = os.path.expanduser("~")
         file_path = os.path.join(home_path, 'tableau_auth.json')
         with open(str(file_path), 'r') as input:
@@ -32,10 +34,13 @@ class Session:
                 self.site = auth['site_name']
                 self.site_id = auth['site_id']
                 self.username = auth['username']
+                self.token_name = auth['personal_access_token_name']
+                self.token = auth['personal_access_token']
 
     def read_from_json(self):
         if self.check_json():
             self.read_json()
+
 
     def check_json(self):
         home_path = os.path.expanduser("~")
@@ -54,25 +59,48 @@ class Session:
             self.server = args.server
         if args.logging_level:
             self.logging_level = args.logging_level
+        if args.token_name:
+            self.token_name = args.token_name
+        if args.token:
+            self.token = args.token
+
 
     def check_for_missing_arguments(self):
-        # if self.password is None:
-        #     print("Please pass password")
 
-        # if self.username is None:
-        #     print("please pass username")
         if self.username and self.password is None:
-            print("Please pass password")
+            self.password = getpass.getpass("Password:")
         if self.password and self.username is None:
             print("Please pass username")
+            sys.exit()
         if self.token and self.token_name is None:
             print("Please pass Personal Access Token Name")
+            sys.exit()
         if self.token_name and self.token is None:
-            print("Please pass Tokem")
+            self.token = getpass.getpass("Token:")
         if self.server is None:
             print("Please pass server")
+            sys.exit()
         if self.site is None:
             print("please pass site")
+            sys.exit()
+
+
+    def create_json_file(self):
+        data = {}
+        data['tableau_auth'] = []
+        data['tableau_auth'].append({
+            'token': None,
+            'server': None,
+            'username': None,
+            'site_name': None,      #siteid is the site user passes
+            'site_id': None,
+            'personal_access_token_name': None,
+            'personal_access_token': None
+        })
+        home_path = os.path.expanduser("~")
+        file_path = os.path.join(home_path, 'tableau_auth.json')
+        with open(str(file_path), 'w') as f:
+            json.dump(data, f)
 
     def save_token_to_json_file(self):
         data = {}
@@ -83,6 +111,8 @@ class Session:
             'username': self.username,
             'site_name': self.site,      #siteid is the site user passes
             'site_id': self.site_id,
+            'personal_access_token_name': self.token_name,
+            'personal_access_token': self.token
         })
         home_path = os.path.expanduser("~")
         file_path = os.path.join(home_path, 'tableau_auth.json')
@@ -109,6 +139,7 @@ class Session:
             if e.code == Constants.login_error:
                 logger.error(" this is from here Login Error, Please Login "
                              "again", e)
+                sys.exit()
 
     def reuse_session(self):
         tableau_server = TSC.Server(self.server,
@@ -133,10 +164,8 @@ class Session:
             if e.code == Constants.login_error:
                 logger.error("Login Error, Please Login again")
 
-    # def no_cookie_server_object_creation(self, token, site_id):
-    #     tableau_server = TSC.Server(self.server, use_server_version=True)
-    #     tableau_server._auth_token = token
-    #     tableau_server._site_id = site_id
-    #     return tableau_server
+
+    def create_session(self):
+        pass
 
 
