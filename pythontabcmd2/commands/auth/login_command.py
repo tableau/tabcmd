@@ -66,6 +66,8 @@ class LoginCommand(Commands):
 Login Scenarios to cover:
 0. User forgets he has deleted credentials, and logs in without passing any 
 credentials - DONE 
+0: user has already logged in via username/password now wants to login via 
+tokens 
 0. User hasnt logged in before and just passes server:
 0: User has logged in before via login command but only passes server and 
 site - Prompt for password and continue
