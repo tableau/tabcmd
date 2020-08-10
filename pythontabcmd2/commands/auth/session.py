@@ -133,7 +133,7 @@ class Session:
             signed_in_object = tableau_server.auth.sign_in(tableau_auth)
             self.auth_token = tableau_server.auth_token
             self.site_id = tableau_server.site_id
-            return signed_in_object
+            return tableau_server
         except TSC.ServerResponseError as e:
             if e.code == Constants.login_error:
                 logger.error(" this is from here Login Error, Please Login "
@@ -158,7 +158,7 @@ class Session:
             signed_in_object = \
                 tableau_server.auth.sign_in_with_personal_access_token(
                     tableau_auth)
-            return tableau_server.auth_token, tableau_server.site_id
+            return tableau_server
         except TSC.ServerResponseError as e:
             if e.code == Constants.login_error:
                 logger.error("Login Error, Please Login again")
