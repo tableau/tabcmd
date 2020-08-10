@@ -33,4 +33,6 @@ class CreateProjectParser(ParentParser):
                 evaluate_project_path(args.parent_project_path)
         else:
             evaluated_project_path = args.parent_project_path
+        if args.site is None:
+            args.site = ''
         return args, evaluated_project_path

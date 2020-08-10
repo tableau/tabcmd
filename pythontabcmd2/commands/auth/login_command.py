@@ -31,12 +31,6 @@ class LoginCommand(Commands):
         """ Method to authenticate user and establish connection """
         logger = self.log()
         session = Session()
-        if self.args.username is None and self.args.password is None or \
-                self.args.token_name is None \
-                and \
-                self.args.token is None:
-            logger.info("Please enter login credentials")
-            sys.exit()
         if self.args.username or self.args.site or self.args.password or \
                 self.args.server:
             session.update_session(self.args)
@@ -52,6 +46,7 @@ class LoginCommand(Commands):
                 = session.no_cookie_save_session_creation_with_token()
         else:
             signed_in_object = session.reuse_session()
+            print("reusing session")
         if self.args.no_cookie:
             home_path = os.path.expanduser("~")
             file_path = os.path.join(home_path, 'tableau_auth.json')
@@ -64,28 +59,23 @@ class LoginCommand(Commands):
 
 """
 Login Scenarios to cover:
-0. User forgets he has deleted credentials, and logs in without passing any 
-credentials - DONE 
 0: user has already logged in via username/password now wants to login via 
 tokens 
-0. User hasnt logged in before and just passes server:
 0: User has logged in before via login command but only passes server and 
-site - Prompt for password and continue
+site - Prompt for password and continue DONE
 1: Login via login command using username/password -default save json
 [user passes all arguments including server and site] DONE
-1a. above, but user doesnt pass server or site-firsttime use of login command - prompt errrp DONE
+1a. above, but user doesnt pass server or site-firsttime use of login command -  DONE
 1b. user uses login command again, doesnt pass server or site , wants to use 
 whats saved DONE
 2. Login via login command using PAT and Token -default save json
 2a. above, but user doesnt pass server or site - take from json
 2b. user uses login command again, doesnt pass server or site , wants to use 
 whats saved 
-3. Login via login command username/password with no cookie
-3a. user has to pass server and site else error
-4. Login via login command username/password with cookie 
-4a. above, but user doesnt pass server or site - take from json
-4b. user uses login command again, doesnt pass server or site , wants to use 
-whats saved 
+3. Login via login command username/password with no cookie DONE
+3a. user has pass server and site else error DONE
+4. Login via login command username/password with cookie  DONE
+4a. above, but user doesnt pass server or site - take from json DONE
 3. Login via login command PAT/Token with no cookie 
 5. Login via login command PAT/Token with cookie 
 5a. above, but user doesnt pass server or site - take from json

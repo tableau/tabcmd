@@ -6,7 +6,6 @@ from ..auth.login_command import LoginCommand
 from ... import Session
 
 
-
 class CreateProjectCommand(ProjectCommand):
 
     def __init__(self, args, evaluated_project_path):
@@ -27,24 +26,21 @@ class CreateProjectCommand(ProjectCommand):
         return cls(args, evaluated_project_path)
 
     def run_command(self):
-        print(self.args)
         login_command = LoginCommand(self.args)
         server_object = login_command.create_session()
         self.create_project(server_object)
 
     def create_project(self, server):
         """Method to create project using tableauserverclient methods"""
-        print(self.name, self.description, self.content_permission)
-        project_path = ProjectCommand. \
-            find_project_id(server, self.parent_path_name)
-        print(self.name, self.description, self.content_permission,
-              project_path)
+        if self.parent_path_name is not None:
+            project_path = ProjectCommand. \
+                find_project_id(server, self.parent_path_name)
+        else:
+            project_path = None
         top_level_project = \
             TSC.ProjectItem(self.name, self.description,
                             self.content_permission, project_path)
-        top_level_project = self.create_project_helper(server,
-                                                       top_level_project)
-
+        self.create_project_helper(server, top_level_project)
 
     def create_project_helper(self, server, project_item):
         """ Helper method to catch server errors

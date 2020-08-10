@@ -41,7 +41,6 @@ class Session:
         if self.check_json():
             self.read_json()
 
-
     def check_json(self):
         home_path = os.path.expanduser("~")
         file_path = os.path.join(home_path, 'tableau_auth.json')
