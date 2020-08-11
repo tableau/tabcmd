@@ -8,7 +8,7 @@ class LoginCommand(Commands):
     def __init__(self, args):
         super().__init__(args)
         self.args = args
-        self.logger = log('pythontabcmd2.session', self.logging_level)
+        self.logger = log('pythontabcmd2.login_command', self.logging_level)
 
     @classmethod
     def parse(cls):
@@ -20,15 +20,16 @@ class LoginCommand(Commands):
 
     def create_session_login_command(self, args):
         """ Method to authenticate user and establish connection """
+        self.logger.info("========Creating a new session========")
         session = Session()
         session.create_session(args)
-        self.logger.info("Logged in successfully")
+
 
 
 """
 Login Scenarios to cover:
 0: user has already logged in via username/password now wants to login via 
-tokens 
+tokens
 0: User has logged in before via login command but only passes server and 
 site - Prompt for password and continue DONE
 1: Login via login command using username/password -default save json
