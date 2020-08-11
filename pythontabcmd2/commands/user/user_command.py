@@ -1,10 +1,11 @@
 from ..commands import Commands
-from .user_data import Userdata
 
 
 class UserCommand(Commands):
-    def __init__(self, csv_lines):
+    def __init__(self, csv_lines, args):
+        super().__init__(args)
         self.csv_lines = csv_lines
+
 
     @staticmethod
     def find_user_id(server, username):

@@ -2,17 +2,14 @@ from ..commands import Commands
 from .group_command import GroupCommand
 from .. import CreateGroupParser
 import tableauserverclient as TSC
-from .. import get_logger
+from .. import log
 
 
 class CreateGroupCommand(GroupCommand):
     def __init__(self, args):
         super().__init__(args)
-
-    def log(self):
-        logger = get_logger('pythontabcmd2.create_group_command',
-                            self.logging_level)
-        return logger
+        self.logger = log('pythontabcmd2.create_group_command',
+                          self.logging_level)
 
     @classmethod
     def parse(cls):
@@ -25,10 +22,9 @@ class CreateGroupCommand(GroupCommand):
 
     def create_group(self, server):
         """Method to create group using Tableauserverclient methods"""
-        logger = self.log()
         try:
             new_group = TSC.GroupItem(self.name)
             server.groups.create(new_group)
-            logger.info("Successfully created group")
+            self.logger.info("Successfully created group")
         except TSC.ServerResponseError as e:
-            logger.error("Group already exists")
+            self.logger.error("Group already exists")

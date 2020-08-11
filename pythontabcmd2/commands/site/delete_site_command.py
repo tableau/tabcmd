@@ -1,18 +1,15 @@
 from .site_command import SiteCommand
 from ..commands import Commands
 import tableauserverclient as TSC
-from .. import get_logger
+from .. import log
 from ...parsers.delete_site_parser import DeleteSiteParser
 
 
 class DeleteSiteCommand(SiteCommand):
     def __init__(self, args):
         super().__init__(args)
-
-    def log(self):
-        logger = get_logger('pythontabcmd2.delete_site_command',
-                            self.logging_level)
-        return logger
+        self.logger = log('pythontabcmd2.delete_site_command',
+                          self.logging_level)
 
     @classmethod
     def parse(cls):
@@ -30,10 +27,9 @@ class DeleteSiteCommand(SiteCommand):
     def delete_site_helper(self, server, site_name):
         """ Helper method to catch server errors thrown
         by tableauserverclient"""
-        logger = self.log()
         site_id = SiteCommand.find_site_id()
         try:
             server.sites.delete(site_id)
-            logger.info('Successfully deletes the site')
+            self.logger.info('Successfully deletes the site')
         except TSC.ServerResponseError as e:
             print(e)

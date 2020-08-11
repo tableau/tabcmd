@@ -3,13 +3,10 @@ from .. import Constants
 import tableauserverclient as TSC
 from .. import get_logger
 import os
-import dill as pickle
 logger = get_logger('pythontabcmd2.logout', 'info')
 
 
-class LogoutCommand(Commands):
-    def __init__(self):
-        pass
+class LogoutCommand:
 
     @classmethod
     def parse(cls):

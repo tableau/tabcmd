@@ -17,7 +17,8 @@ class CreateSiteUsersParser:
                             type=argparse.FileType('r'))
         parser.add_argument('--logging-level', '-l',
                             choices=['debug', 'info', 'error'], default='error',
-                            help='desired logging level (set to error by default)')
+                            help='desired logging level (set to error by '
+                                 'default)')
         args = parser.parse_args(sys.argv[2:])
         csv_lines = [line.strip() for line in args.file.readlines()]
         args.file.close()

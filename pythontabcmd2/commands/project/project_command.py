@@ -8,7 +8,6 @@ class ProjectCommand(Commands):
         self.name = args.name
         self.parent_path_name = evaluated_project_path
 
-
     @staticmethod
     def find_project_id(server, parent_path_name):
         """ Method to find project id given parent path name """

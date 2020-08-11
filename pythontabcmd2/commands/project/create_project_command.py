@@ -1,7 +1,7 @@
 from .project_command import *
 from .. import CreateProjectParser
 import tableauserverclient as TSC
-from .. import get_logger
+from .. import log
 from ..auth.login_command import LoginCommand
 from ... import Session
 
@@ -13,11 +13,8 @@ class CreateProjectCommand(ProjectCommand):
         self.args = args
         self.description = args.description
         self.content_permission = args.content_permission
-
-    def log(self):
-        logger = get_logger('pythontabcmd2.create_project_command',
-                            self.logging_level)
-        return logger
+        self.logger = log('pythontabcmd2.create_project_command',
+                          self.logging_level)
 
     @classmethod
     def parse(cls):
@@ -45,14 +42,14 @@ class CreateProjectCommand(ProjectCommand):
     def create_project_helper(self, server, project_item):
         """ Helper method to catch server errors
         thrown by tableauserverclient"""
-        logger = self.log()
+
         try:
             project_item = server.projects.create(project_item)
-            logger.info('Successfully created a new '
+            self.logger.info('Successfully created a new '
                         'project called: %s'
                         % project_item.name)
             return project_item
         except TSC.ServerResponseError as e:
-            logger.error('We have already created '
+            self.logger.error('We have already created '
                          'this project: %s'
                          % project_item.name)

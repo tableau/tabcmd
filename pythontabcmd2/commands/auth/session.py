@@ -67,7 +67,6 @@ class Session:
             self.token = args.token
 
     def check_for_missing_arguments(self):
-
         if self.username and self.password is None:
             self.password = getpass.getpass("Password:")
         if self.password and self.username is None:
@@ -101,13 +100,8 @@ class Session:
         with open(str(file_path), 'w') as f:
             json.dump(data, f)
 
-    def log(self):
-        logger = get_logger('pythontabcmd2.login',
-                            self.logging_level)
-        return logger
 
     def no_cookie_save_session_creation_with_username(self):
-        logger = self.log()
         try:
             tableau_auth = TSC.TableauAuth(self.username,
                                            self.password, self.site)
@@ -119,8 +113,8 @@ class Session:
             return tableau_server
         except TSC.ServerResponseError as e:
             if e.code == Constants.login_error:
-                logger.error(" this is from here Login Error, Please Login "
-                             "again", e)
+                self.logger.error(" this is from here Login Error, Please "
+                                  "Login again", e)
                 sys.exit()
 
     def reuse_session(self):
@@ -131,7 +125,6 @@ class Session:
         return tableau_server
 
     def no_cookie_save_session_creation_with_token(self):
-        logger = self.log()
         try:
             tableau_auth = \
                 TSC.PersonalAccessTokenAuth(self.token_name,
@@ -144,11 +137,10 @@ class Session:
             return tableau_server
         except TSC.ServerResponseError as e:
             if e.code == Constants.login_error:
-                logger.error("Login Error, Please Login again")
+                self.logger.error("Login Error, Please Login again")
 
     def create_session(self, args):
         signed_in_object = None
-        logger = self.log()
         if args.username or args.password:
             signed_in_object = self.create_new_session_using_username(args)
         elif args.token or args.token_name:

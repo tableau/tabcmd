@@ -1,7 +1,5 @@
-import sys
-
 from .. import LoginParser
-from .. import get_logger, log
+from .. import log
 from ..commands import Commands
 from .session import Session
 
@@ -18,13 +16,13 @@ class LoginCommand(Commands):
         return cls(args)
 
     def run_command(self):
-        self.create_session(self.args)
+        self.create_session_login_command(self.args)
 
-    def create_session(self, args):
+    def create_session_login_command(self, args):
         """ Method to authenticate user and establish connection """
         session = Session()
         session.create_session(args)
-        self.logger.info("Logging in.....")
+        self.logger.info("Logged in successfully")
 
 
 """

@@ -3,20 +3,15 @@ from .. import Constants
 from .user_command import UserCommand
 from .. import RemoveUserParser
 import tableauserverclient as TSC
-from .. import get_logger
-
-#logger = get_logger('pythontabcmd2.remove_user_command')
+from .. import log
 
 
 class RemoveUserCommand(UserCommand):
     def __init__(self, args, csv_lines):
-        super().__init__(csv_lines)
+        super().__init__(csv_lines, args)
         self.group = args.group
-        self.logging_level = args.logging_level
-
-    def log(self):
-        logger = get_logger('pythontabcmd2.remove_user_command', self.logging_level)
-        return logger
+        self.logger = log('pythontabcmd2.remove_user_command',
+                          self.logging_level)
 
     @classmethod
     def parse(cls):
@@ -32,7 +27,6 @@ class RemoveUserCommand(UserCommand):
 
     def remove_user_command(self, server, csv_lines, group_name):
         """Method to remove users using Tableauserverclient methods"""
-        logger = self.log()
         command = Commands()
         user_obj_list = command.get_user(csv_lines)
         for user_obj in user_obj_list:

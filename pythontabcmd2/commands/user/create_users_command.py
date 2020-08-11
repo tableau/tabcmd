@@ -3,23 +3,20 @@ from .. import Constants
 from .user_command import UserCommand
 from .. import CreateUserParser
 import tableauserverclient as TSC
-from .. import get_logger
-#logger = get_logger('pythontabcmd2.create_user_command')
+from .. import log
 
 
 class CreateUserCommand(UserCommand):
     def __init__(self, csv_lines, args):
-        super().__init__(csv_lines)
-        self.logging_level = args.logging_level
-
-    def log(self):
-        logger = get_logger('pythontabcmd2.session', self.logging_level)
-        return logger
+        super().__init__(args, csv_lines)
+        self.args = args
+        self.logger = log('pythontabcmd2.create_users_command',
+                          self.logging_level)
 
     @classmethod
     def parse(cls):
         csv_lines, args = CreateUserParser.create_user_parser()
-        return cls(csv_lines)
+        return cls(csv_lines, args)
 
     def run_command(self):
         signed_in_object, server_object = Commands.deserialize()
@@ -29,8 +26,7 @@ class CreateUserCommand(UserCommand):
         self.create_user_command(csv_lines, server_object)
 
     def create_user_command(self, csv_lines, server_object):
-        logger = self.log()
-        command = Commands()
+        command = Commands(self.args)
         user_obj_list = command.get_user(csv_lines)
         for user_obj in user_obj_list:
             username = user_obj.username
@@ -42,10 +38,10 @@ class CreateUserCommand(UserCommand):
                 server_object.users.update(new_user_added, password)
             except TSC.ServerResponseError as e:
                 if e.code == Constants.forbidden:
-                    logger.error("User is not local, and the user's "
-                                "credentials are not maintained on"
-                                " Tableau Server.")
+                    self.logger.error("User is not local, and the user's "
+                                      "credentials are not maintained on"
+                                      " Tableau Server.")
                 if e.code == Constants.invalid_credentials:
-                    logger.error("Unauthorized access, Please login")
+                    self.logger.error("Unauthorized access, Please login")
                 if e.code == Constants.user_already_member_of_site:
-                    logger.error("User already member of site")
+                    self.logger.error("User already member of site")
