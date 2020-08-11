@@ -10,7 +10,7 @@ from .parsers.create_users_parser import CreateUserParser
 from .parsers.create_site_parser import CreateSiteParser
 from .parsers.create_site_users_parser import CreateSiteUsersParser
 from .constants import Constants
-from .logger_config import get_logger
+from .logger_config import get_logger, log
 from .parsers.add_users_parser import AddUserParser
 from .tabcmd2_controller import Tabcmd2Controller
 from .parsers.delete_site_parser import DeleteSiteParser

@@ -1,6 +1,6 @@
 from .. import LoginParser
 from .. import Constants
-from .. import get_logger
+from .. import get_logger, log
 from .. import CreateGroupParser
 from .. import CreateProjectParser
 from .. import CreateUserParser

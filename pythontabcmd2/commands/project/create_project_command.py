@@ -26,8 +26,8 @@ class CreateProjectCommand(ProjectCommand):
         return cls(args, evaluated_project_path)
 
     def run_command(self):
-        login_command = LoginCommand(self.args)
-        server_object = login_command.create_session()
+        session = Session()
+        server_object = session.create_session(self.args)
         self.create_project(server_object)
 
     def create_project(self, server):

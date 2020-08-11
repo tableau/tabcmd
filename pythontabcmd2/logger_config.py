@@ -17,3 +17,8 @@ def get_logger(name, logging_level):
     console.setFormatter(logging.Formatter(log_format))
     logging.getLogger(name).addHandler(console)
     return logging.getLogger(name)
+
+
+def log(file_name, logging_level):
+    logger = get_logger(file_name, logging_level)
+    return logger
