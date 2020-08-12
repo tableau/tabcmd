@@ -3,7 +3,7 @@ from .group_command import GroupCommand
 from .. import DeleteGroupParser
 import tableauserverclient as TSC
 from .. import log
-
+from ... import Session
 
 class DeleteGroupCommand(GroupCommand):
     def __init__(self, args):
@@ -17,7 +17,8 @@ class DeleteGroupCommand(GroupCommand):
         return cls(args)
 
     def run_command(self):
-        server_object = Commands.deserialize()
+        session = Session()
+        server_object = session.create_session(self.args)
         self.delete_group(server_object)
 
     def delete_group(self, server):

@@ -3,7 +3,7 @@ from .group_command import GroupCommand
 from .. import CreateGroupParser
 import tableauserverclient as TSC
 from .. import log
-
+from ... import Session
 
 class CreateGroupCommand(GroupCommand):
     def __init__(self, args):
@@ -17,7 +17,8 @@ class CreateGroupCommand(GroupCommand):
         return cls(args)
 
     def run_command(self):
-        server_object = Commands.deserialize()
+        session = Session()
+        server_object = session.create_session(self.args)
         self.create_group(server_object)
 
     def create_group(self, server):

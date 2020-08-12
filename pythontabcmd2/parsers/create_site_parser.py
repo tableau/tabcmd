@@ -11,9 +11,9 @@ class CreateSiteParser:
         parent_parser = ParentParser()
         parser = parent_parser.parent_parser_with_global_options()
         subparsers = parser.add_subparsers()
-        create_site_parser = subparsers.add_parser('createproject',
+        create_site_parser = subparsers.add_parser('createsite',
                                                    parents=[parser])
-        create_site_parser.add_argument('--site-name', '-s', required=True,
+        create_site_parser.add_argument('--site-name', default=None,
                                         help='name of site')
         create_site_parser.add_argument('--url', '-r', default=None,
                                         help='used in URLs to specify site')
@@ -32,8 +32,9 @@ class CreateSiteParser:
                                 'to add or remove users')
         group.add_argument('--no-site-mode', default=None,
                            help='Allows site admins to add or remove users')
-        args = create_site_parser.parse_args(sys.argv[2:])
-
+        args = create_site_parser.parse_args(sys.argv[3:])
+        if args.site_name is None:
+            args.site_name = sys.argv[2]
         admin_mode = None
         if args.no_site_mode:
             admin_mode = "ContentOnly"

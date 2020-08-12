@@ -9,3 +9,13 @@ class CommonParser:
                             default=None,
                             help='path of parent project')
         return parser
+
+    @staticmethod
+    def read_file(file_name):
+        try:
+            with open(file_name) as f:
+                csv_lines = [line.strip() for line in f.readlines()]
+            f.close()
+        except IOError:
+            print("File not found")
+        return csv_lines

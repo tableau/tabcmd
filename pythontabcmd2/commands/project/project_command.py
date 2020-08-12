@@ -7,6 +7,8 @@ class ProjectCommand(Commands):
         super().__init__(args)
         self.name = args.name
         self.parent_path_name = evaluated_project_path
+        self.args = args
+
 
     @staticmethod
     def find_project_id(server, parent_path_name):

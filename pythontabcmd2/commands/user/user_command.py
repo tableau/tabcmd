@@ -5,6 +5,7 @@ class UserCommand(Commands):
     def __init__(self, csv_lines, args):
         super().__init__(args)
         self.csv_lines = csv_lines
+        self.args = args
 
 
     @staticmethod

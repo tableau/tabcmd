@@ -7,6 +7,7 @@ class GroupCommand(Commands):
     def __init__(self, args):
         super().__init__(args)
         self.name = args.name
+        self.args = args
 
     @staticmethod
     def find_group_id(server, group_name):

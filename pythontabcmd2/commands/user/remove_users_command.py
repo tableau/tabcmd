@@ -4,7 +4,7 @@ from .user_command import UserCommand
 from .. import RemoveUserParser
 import tableauserverclient as TSC
 from .. import log
-
+from ... import Session
 
 class RemoveUserCommand(UserCommand):
     def __init__(self, args, csv_lines):
@@ -19,7 +19,8 @@ class RemoveUserCommand(UserCommand):
         return cls(args, csv_lines)
 
     def run_command(self):
-        signed_in_object, server_object = Commands.deserialize()
+        session = Session()
+        server_object = session.create_session(self.args)
         self.remove_users(server_object, self.csv_lines, self.group)
 
     def remove_users(self, server_object, csv_lines, group_name):

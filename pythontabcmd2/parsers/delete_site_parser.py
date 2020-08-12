@@ -13,9 +13,11 @@ class DeleteSiteParser:
         subparsers = parser.add_subparsers()
         delete_site_parser = subparsers.add_parser('deletesite',
                                                    parents=[parser])
-        delete_site_parser.add_argument('--site-name', '-s', required=True,
+        delete_site_parser.add_argument('--site-name', default=None,
                                         help='name of site to delete')
-        args = delete_site_parser.parse_args(sys.argv[2:])
+        args = delete_site_parser.parse_args(sys.argv[3:])
+        if args.site_name is None:
+            args.site_name = sys.argv[2]
         return args
 
-# TODO: COMPLETE, NO COMPLETE OPTION, GLOBAL SITE OPTION
+# TODO: COMPLETE, NO COMPLETE OPTION

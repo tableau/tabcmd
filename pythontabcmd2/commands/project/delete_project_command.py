@@ -3,7 +3,7 @@ from .project_command import *
 from .. import DeleteProjectParser
 import tableauserverclient as TSC
 from .. import log
-
+from ... import Session
 
 class DeleteProjectCommand(ProjectCommand):
     def __init__(self, args, evaluated_project_path):
@@ -18,7 +18,8 @@ class DeleteProjectCommand(ProjectCommand):
         return cls(args, evaluated_project_path)
 
     def run_command(self):
-        server_object = Commands.deserialize()
+        session = Session()
+        server_object = session.create_session(self.args)
         self.delete_project(server_object)
 
     def delete_project(self, server):
