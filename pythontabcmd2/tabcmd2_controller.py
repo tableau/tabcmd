@@ -8,12 +8,8 @@ logger = get_logger('pythontabcmd2.tabcmd2_controller', 'info')
 
 
 class Tabcmd2Controller:
-    def __init__(self):
-        pass
 
     def get_command_strategy(self):
-        # parser = argparse.ArgumentParser()
-        # parser.add_argument('command', help='tabcmd commands to run')
         parent_parser = ParentParser()
         parser = parent_parser.parent_parser_with_global_options()
         parser.add_argument('command', help='tabcmd commands to run')

@@ -11,4 +11,5 @@ class CommandsMap:
                          "addusers": "AddUserCommand",
                          "createsiteusers": "CreateSiteUsersCommand",
                          "createsite": "CreateSiteCommand",
-                         "deletesite": "DeleteSiteCommand"}
+                         "deletesite": "DeleteSiteCommand",
+                         "deletesiteusers": "DeleteSiteUsersCommand"}

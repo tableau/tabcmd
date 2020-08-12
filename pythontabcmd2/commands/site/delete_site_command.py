@@ -9,6 +9,7 @@ from ... import Session
 class DeleteSiteCommand(SiteCommand):
     def __init__(self, args):
         super().__init__(args)
+        self.site_name = args.site_name
         self.logger = log('pythontabcmd2.delete_site_command',
                           self.logging_level)
 

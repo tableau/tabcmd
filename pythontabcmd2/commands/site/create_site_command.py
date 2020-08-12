@@ -10,6 +10,7 @@ from ... import Session
 class CreateSiteCommand(SiteCommand):
     def __init__(self, args, admin_mode):
         super().__init__(args)
+        self.site_name = args.site_name
         self.admin_mode = admin_mode
         self.url = args.url
         self.user_quota = args.user_quota

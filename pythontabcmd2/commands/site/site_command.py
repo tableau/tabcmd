@@ -4,7 +4,6 @@ from ..commands import Commands
 class SiteCommand(Commands):
     def __init__(self, args):
         super().__init__(args)
-        self.site_name = args.site_name
         self.args = args
 
 

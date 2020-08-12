@@ -12,7 +12,7 @@ from .commands.user.add_users_command import *
 from .commands.site.create_site_command import *
 from .commands.user.create_site_users import *
 from .commands.site.delete_site_command import *
-
+from .commands.site.delete_site_users_command import *
 
 import sys
 

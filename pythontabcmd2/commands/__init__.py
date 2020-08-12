@@ -12,3 +12,5 @@ from .. import AddUserParser
 from .. import CreateSiteUsersParser
 from .. import CreateSiteParser
 from .. import ParentParser
+from ..parsers.delete_site_users_parser import DeleteSiteUsersParser
+

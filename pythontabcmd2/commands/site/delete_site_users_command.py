@@ -1,22 +1,22 @@
 from ..commands import Commands
-from .. import Constants
-from .user_command import UserCommand
-from .. import DeleteUserParser
+from ..user.user_command import UserCommand
 import tableauserverclient as TSC
 from .. import log
 from ... import Session
+from .site_command import SiteCommand
+from .. import DeleteSiteUsersParser
 
 
-class DeleteUserCommand(UserCommand):
+class DeleteSiteUsersCommand(SiteCommand):
     def __init__(self, csv_lines, args):
-        super().__init__(csv_lines, args)
-        self.args = args
-        self.logger = log('pythontabcmd2.delete_users_command',
+        super().__init__(args)
+        self.csv_lines = csv_lines
+        self.logger = log('pythontabcmd2.delete_site_users_command',
                           self.logging_level)
 
     @classmethod
     def parse(cls):
-        csv_lines, args = DeleteUserParser.delete_user_parser()
+        csv_lines, args = DeleteSiteUsersParser.delete_site_users_parser()
         return cls(csv_lines, args)
 
     def run_command(self):
@@ -38,15 +38,16 @@ class DeleteUserCommand(UserCommand):
             user_id = UserCommand.find_user_id(server, username)
             try:
                 server.users.remove(user_id)
-                self.logger.info("Successfully removed user: {}".
+                self.logger.info("Successfully deleted user from site: {}".
                                  format(username))
                 number_of_users_deleted += 1
             except TSC.ServerResponseError as e:
-                self.logger.error("Error: Server error occurred", e)
+                self.logger.error(" Server error occurred", e)
                 # TODO Map Error code
             except ValueError:
                 self.logger.error(" Could not delete user: User {} not "
                                   "found".format(username))
         self.logger.info("======== 100% complete ========")
-        self.logger.info("======== Number of users deleted: {} =========".
+        self.logger.info("======== Number of users deleted from site: {} "
+                         "=========".
                          format(number_of_users_deleted))

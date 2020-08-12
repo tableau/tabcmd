@@ -10,7 +10,7 @@ class RemoveUserCommand(UserCommand):
     def __init__(self, args, csv_lines):
         super().__init__(csv_lines, args)
         self.group = args.group
-        self.logger = log('pythontabcmd2.remove_user_command',
+        self.logger = log('pythontabcmd2.remove_users_command',
                           self.logging_level)
 
     @classmethod
@@ -36,7 +36,7 @@ class RemoveUserCommand(UserCommand):
             group = UserCommand.find_group(server, group_name)
             try:
                 server.groups.remove_user(group, user_id)
-                logger.info("Successfully removed")
+                self.logger.info("Successfully removed")
             except TSC.ServerResponseError as e:
-                logger.error("Error: Server error occurred", e)
+                self.logger.error("Error: Server error occurred", e)
                 # TODO Map Error code
