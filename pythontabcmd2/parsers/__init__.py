@@ -12,3 +12,4 @@ from .create_site_users_parser import CreateSiteUsersParser
 from .delete_site_parser import DeleteSiteParser
 from .parent_parser import ParentParser
 from .delete_site_users_parser import DeleteSiteUsersParser
+from .edit_site_parser import EditSiteParser

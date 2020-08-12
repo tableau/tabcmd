@@ -19,3 +19,4 @@ from .parsers.common_parser import CommonParser
 from .commands.auth.session import Session
 from .parsers.delete_site_users_parser import DeleteSiteUsersParser
 from .commands.user.user_command import UserCommand
+from .parsers.edit_site_parser import EditSiteParser
