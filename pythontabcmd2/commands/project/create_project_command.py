@@ -46,10 +46,10 @@ class CreateProjectCommand(ProjectCommand):
         try:
             project_item = server.projects.create(project_item)
             self.logger.info('Successfully created a new '
-                        'project called: %s'
-                        % project_item.name)
+                             'project called: %s'
+                             % project_item.name)
             return project_item
         except TSC.ServerResponseError as e:
             self.logger.error('We have already created '
-                         'this project: %s'
-                         % project_item.name)
+                              'this project: %s'
+                              % project_item.name)

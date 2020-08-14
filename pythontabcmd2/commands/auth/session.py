@@ -96,9 +96,7 @@ class Session:
             if self.password is None:
                 self.password = getpass.getpass("Password:")
             self.check_for_missing_arguments()
-            self.logger.info("site: {}".format(
-                self.site))  # TODO: ASK
-            self.logger.info("server:".format(
+            self.logger.info("server: {}".format(
                 self.server))
             tableau_auth = TSC.TableauAuth(self.username,
                                            self.password, self.site)
@@ -112,7 +110,8 @@ class Session:
             return tableau_server
         except TSC.ServerResponseError as e:
             if e.code == Constants.login_error:
-                self.logger.error("Please Login again")
+                self.logger.error("Please Login again and check login "
+                                  "credentials")
 
     def reuse_session(self):
         tableau_server = TSC.Server(self.server,
@@ -122,8 +121,6 @@ class Session:
         return tableau_server
 
     def no_cookie_save_session_creation_with_token(self):
-        self.logger.info("site: {}".format(
-            self.site))
         self.logger.info("server: {}".format(
             self.server))
         try:
@@ -143,7 +140,8 @@ class Session:
             return tableau_server
         except TSC.ServerResponseError as e:
             if e.code == Constants.login_error:
-                self.logger.error("Login Error, Please Login again")
+                self.logger.error("Please Login again and check login "
+                                  "credentials")
 
     def create_session(self, args):
         signed_in_object = None
@@ -199,4 +197,3 @@ class Session:
         signed_in_object \
             = self.no_cookie_save_session_creation_with_token()
         return signed_in_object
-

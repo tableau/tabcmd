@@ -1,4 +1,5 @@
 import unittest
+
 try:
     from unittest import mock
 except ImportError:
@@ -9,19 +10,33 @@ from pythontabcmd2.parsers.create_group_parser import CreateGroupParser
 
 class CreateGroupParserTest(unittest.TestCase):
     @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(args="test"))
-    def test_create_group_parser_missing_required_name(self, mock_args):
-        create_group_object = CreateGroupParser()
-        group_name = create_group_object.create_group_parser()
-        assert group_name == argparse.Namespace(args='test')
+                return_value=argparse.Namespace(name="test"))
+    def test_create_group_parser_required_name(self, mock_args):
+        args = CreateGroupParser.create_group_parser()
+        assert getattr(args, "name") == getattr(mock_args.return_value, "name")
 
     @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(name="testgroup"))
-    def test_create_group_parser_required_name(self, mock_args):
-        raises = False
-        try:
-            create_group_object = CreateGroupParser()
-            name = create_group_object.create_group_parser()
-        except Exception:
-            raises = True
-        self.assertFalse(raises, "Exception Raised")
+                return_value=argparse.Namespace())
+    def test_create_group_parser_missing_required_name(self, mock_args):
+        args = CreateGroupParser.create_group_parser()
+        args_from_command = vars(args)
+        args_from_mock = vars(mock_args.return_value)
+        assert args_from_command == args_from_mock
+
+    @mock.patch('argparse.ArgumentParser.parse_args',
+                return_value=argparse.Namespace(name="test",
+                                                username="testname"))
+    def test_create_group_parser_username(self, mock_args):
+        args = CreateGroupParser.create_group_parser()
+        args_from_command = vars(args)
+        args_from_mock = vars(mock_args.return_value)
+        assert args_from_command == args_from_mock
+
+    @mock.patch('argparse.ArgumentParser.parse_args',
+                return_value=argparse.Namespace(name="test",
+                                                password="testpass"))
+    def test_create_group_parser_password(self, mock_args):
+        args = CreateGroupParser.create_group_parser()
+        args_from_command = vars(args)
+        args_from_mock = vars(mock_args.return_value)
+        assert args_from_command == args_from_mock

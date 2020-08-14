@@ -5,7 +5,6 @@ class CommandsMap:
                          "creategroup": "CreateGroupCommand",
                          "deletegroup": "DeleteGroupCommand",
                          "createusers": "CreateUserCommand",
-                         "deleteusers": "DeleteUserCommand",
                          "removeusers": "RemoveUserCommand",
                          "logout": "LogoutCommand",
                          "addusers": "AddUserCommand",
@@ -14,4 +13,5 @@ class CommandsMap:
                          "deletesite": "DeleteSiteCommand",
                          "deletesiteusers": "DeleteSiteUsersCommand",
                          "editsite": "EditSiteCommand",
-                         "listsites": "ListSiteCommand"}
+                         "listsites": "ListSiteCommand",
+                         "delete": "DeleteSource"}
