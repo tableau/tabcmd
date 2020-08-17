@@ -4,7 +4,6 @@ from .parsers.delete_project_parser import DeleteProjectParser
 from .parsers.delete_group_parser import DeleteGroupParser
 from .parsers.create_group_parser import CreateGroupParser
 from .parsers.remove_users_parser import RemoveUserParser
-from .parsers.delete_users_parser import DeleteUserParser
 from .parsers.global_options import GlobalOptions
 from .parsers.create_users_parser import CreateUserParser
 from .parsers.create_site_parser import CreateSiteParser
@@ -20,3 +19,5 @@ from .commands.auth.session import Session
 from .parsers.delete_site_users_parser import DeleteSiteUsersParser
 from .commands.user.user_command import UserCommand
 from .parsers.edit_site_parser import EditSiteParser
+from .parsers.logout_parser import LogoutParser
+from .parsers.publish_samples_parser import PublishSamplesParser

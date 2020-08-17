@@ -39,6 +39,7 @@ class CreateSiteCommand(SiteCommand):
         thrown by tableauserverclient"""
         try:
             server.sites.create(site)
-            self.logger.info('Successfully created a new site called:')
+            self.logger.info("Successfully created a new site called: {}"
+                             "".format(self.site_name))
         except TSC.ServerResponseError as e:
             self.logger.error('error creating site', e)

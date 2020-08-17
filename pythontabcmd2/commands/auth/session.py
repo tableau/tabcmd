@@ -20,7 +20,7 @@ class Session:
         self.last_login_using = None
         self.logging_level = "info"
         self.logger = log('pythontabcmd2.session', self.logging_level)
-        self.read_from_json()
+        self.read_from_json()\
 
     def get_file_path(self):
         home_path = os.path.expanduser("~")
@@ -111,7 +111,7 @@ class Session:
         except TSC.ServerResponseError as e:
             if e.code == Constants.login_error:
                 self.logger.error("Please Login again and check login "
-                                  "credentials")
+                                  "credentials", e)
 
     def reuse_session(self):
         tableau_server = TSC.Server(self.server,

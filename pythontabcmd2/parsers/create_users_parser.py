@@ -15,3 +15,4 @@ class CreateUserParser:
         args = create_users_parser.parse_args(sys.argv[3:])
         csv_lines = CommonParser.read_file(sys.argv[2])
         return csv_lines, args
+

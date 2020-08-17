@@ -2,7 +2,6 @@ from .create_group_parser import CreateGroupParser
 from .create_project_parser import CreateProjectParser
 from .create_users_parser import CreateUserParser
 from .delete_group_parser import DeleteGroupParser
-from .delete_users_parser import DeleteUserParser
 from .delete_project_parser import DeleteProjectParser
 from .login_parser import LoginParser
 from .global_options import GlobalOptions
@@ -13,3 +12,4 @@ from .delete_site_parser import DeleteSiteParser
 from .parent_parser import ParentParser
 from .delete_site_users_parser import DeleteSiteUsersParser
 from .edit_site_parser import EditSiteParser
+from .logout_parser import LogoutParser

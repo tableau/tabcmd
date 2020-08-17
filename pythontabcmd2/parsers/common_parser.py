@@ -12,6 +12,7 @@ class CommonParser:
 
     @staticmethod
     def read_file(file_name):
+        csv_lines = None
         try:
             with open(file_name) as f:
                 csv_lines = [line.strip() for line in f.readlines()]

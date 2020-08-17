@@ -15,6 +15,8 @@ class EditSiteParser:
                                       help='name of site')
         edit_site_parser.add_argument('--site-id', default=None,
                                       help='id of site')
+        edit_site_parser.add_argument('--url', default=None,
+                                      help='url of site')
         edit_site_parser.add_argument('--user-quota', type=int, default=None,
                                       help='Max number of user that '
                                            'can be added to site')
@@ -42,13 +44,15 @@ class EditSiteParser:
         group.add_argument('--no-site-mode', default=None,
                            help='Allows site admins to add or remove users')
         args = edit_site_parser.parse_args(sys.argv[3:])
-        if args.site_name is None:
-            args.site_name = sys.argv[2]
+        current_site_id_as_list = sys.argv[2:3]
+        current_site_id = ''.join(current_site_id_as_list)
         admin_mode = None
+        print("this is frim the parer", current_site_id, args.url,
+            args.site_name, args.site_id)
         if args.no_site_mode:
             admin_mode = "ContentOnly"
         if args.site_mode:
             admin_mode = "ContentAndUsers"
-        return args, admin_mode
+        return args, admin_mode, current_site_id
 
 

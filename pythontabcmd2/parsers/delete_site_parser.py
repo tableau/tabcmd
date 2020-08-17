@@ -20,4 +20,3 @@ class DeleteSiteParser:
             args.site_name = sys.argv[2]
         return args
 
-# TODO: COMPLETE, NO COMPLETE OPTION
