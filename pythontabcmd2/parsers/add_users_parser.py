@@ -2,6 +2,7 @@ import argparse
 import sys
 from .global_options import *
 from .parent_parser import ParentParser
+from .common_parser import CommonParser
 
 
 class AddUserParser:
@@ -13,13 +14,11 @@ class AddUserParser:
         subparsers = parser.add_subparsers()
         add_user_parser = subparsers.add_parser('adduser',
                                                 parents=[parser])
-        add_user_parser.add_argument('--group', '-g',
-                                     required=True, help='name of group')
-        add_user_parser.add_argument('--users',
-                                     required=True,
-                                     help='csv containing user details',
-                                     type=argparse.FileType('r'))
-        args = add_user_parser.parse_args(sys.argv[2:])
-        csv_lines = [line.strip() for line in args.file.readlines()]
-        args.file.close()
-        return csv_lines, args
+        add_user_parser.add_argument('--users', required=True,
+                                     help='csv containing user details')
+        args = add_user_parser.parse_args(sys.argv[3:])
+        group_name = sys.argv[2]
+        csv_lines = CommonParser.read_file(args.users)
+        if args.site is None or args.site == "Default":
+            args.site = ''
+        return csv_lines, args, group_name

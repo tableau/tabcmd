@@ -1,41 +1,70 @@
-# import unittest
-# try:
-#     from unittest import mock
-# except ImportError:
-#     import mock
-# import argparse
-# from ..pythontabcmd2.parsers import login_parser
-# login_parser_class = login_parser.LoginParser
-#
-#
-# class CreateProjectParserTest(unittest.TestCase):
-#     @mock.patch('argparse.ArgumentParser.parse_args',
-#                 return_value=argparse.
-#                 Namespace(site="https://localhost",
-#                 token="abcdef", username=None, token_name="test" ))
-#     def test_login_parser_missing_required_server(self, mock_args):
-#
-#         with self.assertRaises(AttributeError):
-#             login_parser_object = login_parser_class()
-#             username, password, site, server,
-#             token_name, token = login_parser_object.login_parser()
-#
-#     @mock.patch('argparse.ArgumentParser.parse_args',
-#                 return_value=argparse.'
-#                 Namespace(site="https://localhost",
-#                 server="test.com",
-#                 token="abcdef", username=None, token_name="test" ))
-#     def test_login_parser_optional_arguments(self, mock_args):
-#
-#
-#         login_parser_object = login_parser_class()
-#         username, password, site, server, token_name,
-#         token = login_parser_object.login_parser()
-#         assert site == "https://localhost"
-#         assert token == "abcdef"
-#         assert username == None
-#         assert token_name == "test"
-#         assert server == "test.com"
-#
-# # if __name__ == "__main__":
-# #     unittest.main()
+import unittest
+
+try:
+    from unittest import mock
+except ImportError:
+    import mock
+import argparse
+from pythontabcmd2.parsers.login_parser import LoginParser
+
+
+class LoginParserTest(unittest.TestCase):
+
+    @mock.patch('argparse.ArgumentParser.parse_args',
+                return_value=argparse.Namespace(
+                    server="https://localhost/",
+                    username="helloworld",
+                    site="",
+                    logging_level="info",
+                    password="testing123",
+                    no_prompt=True, token=None,
+                    token_name=None,
+                    cookie=True,
+                    no_cookie=False,
+                    prompt=False
+                ))
+    def test_login_parser_test_username_password(self, mock_args):
+        args = LoginParser.login_parser()
+        assert args == argparse.Namespace(server="https://localhost/",
+                                          username="helloworld",
+                                          site="",
+                                          logging_level="info",
+                                          password="testing123",
+                                          no_prompt=True, token=None,
+                                          token_name=None,
+                                          cookie=True,
+                                          no_cookie=False,
+                                          prompt=False)
+
+    @mock.patch('argparse.ArgumentParser.parse_args',
+                return_value=argparse.Namespace(
+                    server="https://localhost/",
+                    username=None,
+                    site="",
+                    logging_level="info",
+                    password=None,
+                    no_prompt=True, token=None,
+                    token_name="test",
+                    cookie=True,
+                    no_cookie=False,
+                    prompt=False))
+    def test_login_parser_token_name(self, mock_args):
+        with self.assertRaises(SystemExit):
+            args = LoginParser.login_parser()
+
+
+    @mock.patch('argparse.ArgumentParser.parse_args',
+                return_value=argparse.Namespace(
+                    server="https://localhost/",
+                    username="test",
+                    site="",
+                    logging_level="info",
+                    password=None,
+                    no_prompt=True, token=None,
+                    token_name=None,
+                    cookie=True,
+                    no_cookie=False,
+                    prompt=False))
+    def test_login_parser_username_pass(self, mock_args):
+        with self.assertRaises(SystemExit):
+            args = LoginParser.login_parser()

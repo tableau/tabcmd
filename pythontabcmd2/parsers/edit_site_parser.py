@@ -47,12 +47,12 @@ class EditSiteParser:
         current_site_id_as_list = sys.argv[2:3]
         current_site_id = ''.join(current_site_id_as_list)
         admin_mode = None
-        print("this is frim the parer", current_site_id, args.url,
-            args.site_name, args.site_id)
         if args.no_site_mode:
             admin_mode = "ContentOnly"
         if args.site_mode:
             admin_mode = "ContentAndUsers"
+        if args.site is None or args.site == "Default":
+            args.site = ''
         return args, admin_mode, current_site_id
 
 

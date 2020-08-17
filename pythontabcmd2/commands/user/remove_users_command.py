@@ -6,17 +6,19 @@ import tableauserverclient as TSC
 from .. import log
 from ... import Session
 
+
 class RemoveUserCommand(UserCommand):
-    def __init__(self, args, csv_lines):
+    def __init__(self, args, csv_lines, group_name):
         super().__init__(csv_lines, args)
-        self.group = args.group
+        self.args = args
+        self.group = group_name
         self.logger = log('pythontabcmd2.remove_users_command',
                           self.logging_level)
 
     @classmethod
     def parse(cls):
-        csv_lines, args = RemoveUserParser.remove_user_parser()
-        return cls(args, csv_lines)
+        csv_lines, args, group_name = RemoveUserParser.remove_user_parser()
+        return cls(args, csv_lines, group_name)
 
     def run_command(self):
         session = Session()
@@ -28,7 +30,7 @@ class RemoveUserCommand(UserCommand):
 
     def remove_user_command(self, server, csv_lines, group_name):
         """Method to remove users using Tableauserverclient methods"""
-        command = Commands()
+        command = Commands(self.args)
         user_obj_list = command.get_user(csv_lines)
         for user_obj in user_obj_list:
             username = user_obj.username

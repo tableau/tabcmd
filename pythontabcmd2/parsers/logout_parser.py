@@ -13,4 +13,6 @@ class LogoutParser:
         subparsers = parser.add_subparsers()
         logout_parser = subparsers.add_parser('logout', parents=[parser])
         args = logout_parser.parse_args(sys.argv[2:])
+        if args.site is None or args.site == "Default":
+            args.site = ''
         return args

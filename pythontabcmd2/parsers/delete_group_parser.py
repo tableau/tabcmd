@@ -18,4 +18,6 @@ class DeleteGroupParser:
                                          help='name of group to delete')
 
         args = delete_group_parser.parse_args(sys.argv[2:])
+        if args.site is None or args.site == "Default":
+            args.site = ''
         return args

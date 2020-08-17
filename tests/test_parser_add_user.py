@@ -1,27 +1,58 @@
-# import unittest
-# try:
-#     from unittest import mock
-# except ImportError:
-#     import mock
-# import argparse
-# from pythontabcmd2.parsers.add_users_parser import AddUserParser
-#
-#
-# class AddUserParserTest(unittest.TestCase):
-#
-#         @mock.patch('argparse.ArgumentParser.parse_args',
-#                     return_value=argparse.Namespace(name="test"))
-#         def test_create_group_parser_required_name(self, mock_args):
-#             create_group_object = AddUserParser()
-#             args = create_group_object.create_group_parser()
-#             assert getattr(args, "name") == getattr(mock_args.return_value,
-#                                                     "name")
-#
-#         @mock.patch('argparse.ArgumentParser.parse_args',
-#                     return_value=argparse.Namespace())
-#         def test_create_group_parser_missing_required_name(self, mock_args):
-#             create_group_object = AddUserParser()
-#             args = create_group_object.create_group_parser()
-#             args_from_command = vars(args)
-#             args_from_mock = vars(mock_args.return_value)
-#             assert args_from_command == args_from_mock
+import sys
+import unittest
+
+try:
+    from unittest import mock
+except ImportError:
+    import mock
+import argparse
+from pythontabcmd2.parsers.add_users_parser import AddUserParser
+
+
+class AddUsersParserTest(unittest.TestCase):
+    csv = ("testname", "testpassword", "test", "test", "test", "test")
+
+    @mock.patch('argparse.ArgumentParser.parse_args',
+                return_value=(argparse.Namespace(
+                                                 username="test",
+                                                 password="testpass",
+                                                 server="http://test",
+                                                 users="users.csv")))
+    def test_create_site_users_parser_role(self, mock_args):
+        with mock.patch('builtins.open', mock.mock_open(read_data='test')):
+            sys.argv = ["test_csv.csv", "test", "test1", "test2"]
+            csv_lines, args, group_name = AddUserParser.add_user_parser()
+            print(args)
+            args_from_command = vars(args)
+            args_from_mock = vars(mock_args.return_value)
+            self.assertEqual(args_from_command, args_from_mock)
+
+
+    @mock.patch('argparse.ArgumentParser.parse_args',
+                return_value=(argparse.Namespace(
+                                                 username="test",
+                                                 password="testpass",
+                                                 server="http://test")))
+    def test_add_user_parser_missing_group_name(self, mock_args):
+        with mock.patch('builtins.open', mock.mock_open(read_data='test')):
+            with self.assertRaises(AttributeError):
+                sys.argv = ["test_csv.csv", "test", "test1", "test2"]
+                csv_lines, args, group_name = AddUserParser.add_user_parser()
+                args_from_command = vars(args)
+                args_from_mock = vars(mock_args.return_value)
+                self.assertEqual(args_from_command, args_from_mock)
+
+    @mock.patch('argparse.ArgumentParser.parse_args',
+                return_value=(argparse.Namespace(users="test.csv",
+                                                 username="test",
+                                                 password="testpass",
+                                                 server="http://test")))
+    def test_add_user_parser_missing_group_name_present(self, mock_args):
+        with mock.patch('builtins.open', mock.mock_open(read_data='test')):
+
+            sys.argv = ["test_csv.csv", "test", "test1", "test2"]
+            csv_lines, args, group_name = AddUserParser.add_user_parser()
+            args_from_command = vars(args)
+            args_from_mock = vars(mock_args.return_value)
+            self.assertEqual(args_from_command, args_from_mock)
+

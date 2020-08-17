@@ -35,6 +35,6 @@ class LoginParser:
             args.password = getpass.getpass("Password:")
         if args.token_name and args.token is None:
             args.token = getpass.getpass("Token:")
-        if args.site is None:
+        if args.site is None or args.site == "Default":
             args.site = ''
         return args

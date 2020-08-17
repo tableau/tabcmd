@@ -7,17 +7,17 @@ from .. import log
 from ... import Session
 
 class AddUserCommand(UserCommand):
-    def __init__(self, args, csv_lines):
+    def __init__(self, args, csv_lines, group_name):
         super().__init__(args, csv_lines)
         self.args = args
-        self.group = args.group
+        self.group = group_name
         self.logger = log('pythontabcmd2.add_user_command',
                           self.logging_level)
 
     @classmethod
     def parse(cls):
-        csv_lines, args = AddUserParser.add_user_parser()
-        return cls(args, csv_lines)
+        csv_lines, args, group_name = AddUserParser.add_user_parser()
+        return cls(args, csv_lines, group_name)
 
     def run_command(self):
         session = Session()

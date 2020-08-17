@@ -40,6 +40,8 @@ class CreateSiteParser:
             admin_mode = "ContentOnly"
         if args.site_mode:
             admin_mode = "ContentAndUsers"
+        if args.site is None or args.site == "Default":
+            args.site = ''
         return args, admin_mode
 
 # TODO: EXTRACT ENCRYPTIONN MODE, RUN NOW ENABLED,

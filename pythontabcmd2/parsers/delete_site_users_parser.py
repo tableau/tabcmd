@@ -14,4 +14,6 @@ class DeleteSiteUsersParser:
                                                          parents=[parser])
         args = delete_site_users_parser.parse_args(sys.argv[3:])
         csv_lines = CommonParser.read_file(sys.argv[2])
+        if args.site is None or args.site == "Default":
+            args.site = ''
         return csv_lines, args

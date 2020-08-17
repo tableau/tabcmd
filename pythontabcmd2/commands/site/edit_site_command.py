@@ -65,7 +65,6 @@ class EditSiteCommand(SiteCommand):
         site_item = None
         all_sites, pagination_item = server.sites.get()
         for site in all_sites:
-            print(site.id, site.name, site.content_url, site.state, current_site)
             if site.content_url == current_site:
                 site_item = site
                 break

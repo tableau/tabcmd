@@ -31,6 +31,14 @@ class PublishSamplesCommand(ProjectCommand):
                 find_project_id(server, self.parent_path_name)
         else:
             project_path = None
+
+        #check is self.username is none:
+                # check if json present
+                    #yes -> get username/password
+                #no: login again
+
+
+
         # top_level_project = \
         #     TSC.ProjectItem(self.name, self.description,
         #                     self.content_permission, project_path)

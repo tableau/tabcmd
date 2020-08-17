@@ -17,6 +17,8 @@ class ListSitesParser:
                                            'the site can be enforced, '
                                            'enabled or disabled')
         args = edit_site_parser.parse_args(sys.argv[2:])
+        if args.site is None or args.site == "Default":
+            args.site = ''
         return args
 
 

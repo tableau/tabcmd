@@ -18,5 +18,7 @@ class DeleteSiteParser:
         args = delete_site_parser.parse_args(sys.argv[3:])
         if args.site_name is None:
             args.site_name = sys.argv[2]
+        if args.site is None or args.site == "Default":
+            args.site = ''
         return args
 
