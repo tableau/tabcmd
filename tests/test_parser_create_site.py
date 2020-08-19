@@ -39,7 +39,8 @@ class CreateSiteParserTest(unittest.TestCase):
                 return_value=argparse.Namespace(site_name=
                                                 "testsite", user_quota=12,
                                                 site_mode=None,
-                                                no_site_mode=None))
+                                                no_site_mode=None,
+                                                site="helloworld"))
     def test_create_site_parser_user_quota_integer(self, mock_args):
         args, mode = CreateSiteParser.create_site_parser()
         args_from_command = vars(args)

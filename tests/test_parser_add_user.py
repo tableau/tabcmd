@@ -17,8 +17,9 @@ class AddUsersParserTest(unittest.TestCase):
                                                  username="test",
                                                  password="testpass",
                                                  server="http://test",
-                                                 users="users.csv")))
-    def test_create_site_users_parser_role(self, mock_args):
+                                                 users="users.csv",
+                                                 site="helloworld")))
+    def test_add_users_parser_role(self, mock_args):
         with mock.patch('builtins.open', mock.mock_open(read_data='test')):
             sys.argv = ["test_csv.csv", "test", "test1", "test2"]
             csv_lines, args, group_name = AddUserParser.add_user_parser()
@@ -32,7 +33,8 @@ class AddUsersParserTest(unittest.TestCase):
                 return_value=(argparse.Namespace(
                                                  username="test",
                                                  password="testpass",
-                                                 server="http://test")))
+                                                 server="http://test",
+                site="helloworld")))
     def test_add_user_parser_missing_group_name(self, mock_args):
         with mock.patch('builtins.open', mock.mock_open(read_data='test')):
             with self.assertRaises(AttributeError):
@@ -46,7 +48,8 @@ class AddUsersParserTest(unittest.TestCase):
                 return_value=(argparse.Namespace(users="test.csv",
                                                  username="test",
                                                  password="testpass",
-                                                 server="http://test")))
+                                                 server="http://test",
+                                                 site="helloworld")))
     def test_add_user_parser_missing_group_name_present(self, mock_args):
         with mock.patch('builtins.open', mock.mock_open(read_data='test')):
 

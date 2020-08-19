@@ -40,6 +40,7 @@ class LogoutParserTest(unittest.TestCase):
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=argparse.Namespace())
     def test_logout_missing_args(self, mock_args):
-        args = LogoutParser.logout_parser()
-        assert args == argparse.Namespace()
+        with self.assertRaises(AttributeError):
+            args = LogoutParser.logout_parser()
+            assert args == argparse.Namespace()
 

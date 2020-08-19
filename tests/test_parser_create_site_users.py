@@ -16,7 +16,8 @@ class CreateSiteUsersParserTest(unittest.TestCase):
                 return_value=(argparse.Namespace(role="Unlicensed",
                                                  username="test",
                                                  password="testpass",
-                                                 server="http://test")))
+                                                 server="http://test",
+                                                 site="helloworld")))
     def test_create_site_users_parser_role(self, mock_args):
         with mock.patch('builtins.open', mock.mock_open(read_data='test')):
             sys.argv = ["test_csv.csv", "test", "test1", "test2"]

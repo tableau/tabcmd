@@ -10,7 +10,8 @@ class ParentParser:
         parser.add_argument('--username', '-u',
                             help='username of account holder')
         parser.add_argument('--site', '-t', default=None,
-                            help='Used in the URL to uniquely identify the site.')
+                            help='Used in the URL to uniquely identify the '
+                                 'site.')
         parser.add_argument('--password', '-p',
                             help='password of account holder')
         prompt_group = parser.add_mutually_exclusive_group()
