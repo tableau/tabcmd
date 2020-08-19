@@ -1,5 +1,3 @@
-import sys
-
 import tableauserverclient as TSC
 from .. import log
 from ... import Session

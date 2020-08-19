@@ -23,13 +23,7 @@ class ExportParser:
                                              'PDFRequestOptions',
                                              'pdf',
                                              'pdf'))
-        export_parser_group.add_argument('--fullpdf', dest='type',
-                                         action='store_const',
-                                         const=(
-                                             'populate_pdf',
-                                             'PDFRequestOptions',
-                                             'pdf',
-                                             'pdf'))
+        export_parser_group.add_argument('--fullpdf')
         export_parser_group.add_argument('--png', dest='type',
                                          action='store_const',
                                          const=('populate_image',
@@ -42,20 +36,20 @@ class ExportParser:
                                              'CSVRequestOptions',
                                              'csv',
                                              'csv'))
-        parser.add_argument('--pagelayout', default="landscape",
+        export_parser.add_argument('--pagelayout', default="landscape",
                             help='page orientation (landscape or portrait) of '
                                  'the exported PDF')
-        parser.add_argument('--pagesize', default="letter",
+        export_parser.add_argument('--pagesize', default="letter",
                             help='Set the page size of the exported PDF')
-        parser.add_argument('--width', default=800,
+        export_parser.add_argument('--width', default=800,
                             help='Set the width in pixels. Default is 800 px')
-        parser.add_argument('--filename', '-f',
+        export_parser.add_argument('--filename', '-f',
                             help='filename to store the exported data')
-        parser.add_argument('--height', default=600,
+        export_parser.add_argument('--height', default=600,
                             help='Sets the height in pixels. Default is 600 px')
-        parser.add_argument('--filter', '-vf', metavar='COLUMN:VALUE',
+        export_parser.add_argument('--filter', '-vf', metavar='COLUMN:VALUE',
                             help='View filter to apply to the view')
-        parser.add_argument('resource_id', help='LUID for the view')
+        export_parser.add_argument('--url', help='url of the view/workbook')
         args = export_parser.parse_args(sys.argv[2:])
         if args.site is None or args.site == "Default":
             args.site = ''

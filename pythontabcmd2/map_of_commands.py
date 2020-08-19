@@ -6,6 +6,7 @@ class CommandsMap:
                          "deletegroup": "DeleteGroupCommand",
                          "createusers": "CreateUserCommand",
                          "removeusers": "RemoveUserCommand",
+                         "export": "Export",
                          "logout": "LogoutCommand",
                          "addusers": "AddUserCommand",
                          "createsiteusers": "CreateSiteUsersCommand",

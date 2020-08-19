@@ -15,6 +15,7 @@ from .commands.site.delete_site_users_command import *
 from .commands.site.edit_site_command import *
 from .commands.site.list_sites_command import *
 from .commands.datasources_and_workbooks.delete_command import *
+from .commands.datasources_and_workbooks.export_command import *
 
 import sys
 
