@@ -16,7 +16,8 @@ class DeleteGroupParserTestT(unittest.TestCase):
                 return_value=(argparse.Namespace(name="hello",
                                                  username="test",
                                                  password="testpass",
-                                                 server="http://test")))
+                                                 server="http://test",
+                                                 site="helloworld")))
     def test_delete_group(self, mock_args):
         args = DeleteGroupParser.delete_group_parser()
         args_from_command = vars(args)
@@ -24,8 +25,9 @@ class DeleteGroupParserTestT(unittest.TestCase):
         self.assertEqual(args_from_command, args_from_mock)
 
     @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=(argparse.Namespace(name=None)))
+                return_value=(argparse.Namespace(name=None,site="helloworld")))
     def test_create_user_parser_required_name(self, mock_args):
+
         args = DeleteGroupParser.delete_group_parser()
         args_from_command = vars(args)
         args_from_mock = vars(mock_args.return_value)
@@ -34,7 +36,8 @@ class DeleteGroupParserTestT(unittest.TestCase):
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=(argparse.Namespace()))
     def test_create_user_parser_required_name_missing(self, mock_args):
-        args = DeleteGroupParser.delete_group_parser()
-        args_from_command = vars(args)
-        args_from_mock = vars(mock_args.return_value)
-        self.assertEqual(args_from_command, args_from_mock)
+        with self.assertRaises(AttributeError):
+            args = DeleteGroupParser.delete_group_parser()
+            args_from_command = vars(args)
+            args_from_mock = vars(mock_args.return_value)
+            self.assertEqual(args_from_command, args_from_mock)

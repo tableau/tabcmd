@@ -21,4 +21,4 @@ from .commands.user.user_command import UserCommand
 from .parsers.edit_site_parser import EditSiteParser
 from .parsers.logout_parser import LogoutParser
 from .parsers.publish_samples_parser import PublishSamplesParser
-from .parsers.delete_parser import DeleteDataSourceParser
+from .parsers.delete_parser import DeleteParser

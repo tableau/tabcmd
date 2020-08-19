@@ -14,5 +14,5 @@ class CommandsMap:
                          "deletesiteusers": "DeleteSiteUsersCommand",
                          "editsite": "EditSiteCommand",
                          "listsites": "ListSiteCommand",
-                         "delete": "DeleteDataSource",
+                         "delete": "Delete",
                          "publishsamples": "PublishSamplesCommand"}

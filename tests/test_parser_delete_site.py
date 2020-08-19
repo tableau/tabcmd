@@ -15,7 +15,8 @@ class DeleteSiteParserTest(unittest.TestCase):
                 return_value=argparse.Namespace(site_name="helloworld",
                                                 username="test",
                                                 password="testpass",
-                                                server="http://test"))
+                                                server="http://test",
+                                                site="helloworld"))
     def test_delete_project(self, mock_args):
         args= DeleteSiteParser.delete_site_parser()
         assert args == mock_args.return_value
@@ -25,7 +26,8 @@ class DeleteSiteParserTest(unittest.TestCase):
                 return_value=argparse.Namespace(site_name=None,
                                                 username="test",
                                                 password="testpass",
-                                                server="http://test"))
+                                                server="http://test",
+                                                site="helloworld"))
     def test_delete_project_required_name_none(self, mock_args):
         args = DeleteSiteParser.delete_site_parser()
         assert args == mock_args.return_value

@@ -11,3 +11,4 @@ dist/
 *.egg
 eggs/
 .eggs/
+pythontabcmd2/__pycache__/

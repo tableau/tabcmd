@@ -16,7 +16,8 @@ class DeleteProjectParserTest(unittest.TestCase):
                                                 username="test",
                                                 password="testpass",
                                                 server="http://test",
-                                                parent_project_path="/test/"))
+                                                parent_project_path="/test/",
+                                                site="helloworld"))
     def test_delete_project(self, mock_args):
 
         args, parent_project_path = DeleteProjectParser.delete_project_parser()
@@ -29,7 +30,8 @@ class DeleteProjectParserTest(unittest.TestCase):
                                                 username="test",
                                                 password="testpass",
                                                 server="http://test",
-                                                parent_project_path="/test/"))
+                                                parent_project_path="/test/",
+                                                site="helloworld"))
     def test_delete_project_required_name_none(self, mock_args):
         args, parent_project_path = DeleteProjectParser.delete_project_parser()
         assert parent_project_path == "test"
