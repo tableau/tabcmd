@@ -5,13 +5,13 @@
 
 A Python based app that replicates the functionality of the existing TabCMD command line utility
 
-* [Why \[project name\]?]()
+* [Why \[Tabcmd2\]?]()
 * [Demo](#demo)
 * [Get started](#get-started)
 	* [Prerequisites](#prerequisites)
 	* [Installation](#installation)
 	* [Configuration](#configuration)
-* [Run \[project name\]]()
+* [Run \[Tabcmd2\]]()
 * [Support](#support)
 * [Contributions](#contributions)
 
@@ -21,8 +21,8 @@ A Python based app that replicates the functionality of the existing TabCMD comm
  MacOS]
 * Authenticate using Personal Access Tokens [Existing Tabcmd does not support
  Personal Access Token Login]
-* Easily use public endpoints available in Tableau Server Client 
-* Add more functionality and extend for other automation tasks 
+* Easily use public endpoints available in Python based Tableau Server Client 
+* Add more functionality and extend script for other automation tasks 
 
 # Demo/Samples
 
