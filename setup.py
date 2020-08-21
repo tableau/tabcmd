@@ -16,7 +16,6 @@ setup(
     install_requires=[
         'requests>=2.11,<3.0',
         'urllib3>=1.24.3,<2.0',
-        'dill>=0.3',
         'tableauserverclient>=0.12'
     ],
     tests_require=[
