@@ -4,7 +4,7 @@ from ... import Session
 from .. import DeleteParser
 
 
-class Delete:
+class DeleteCommand:
     def __init__(self, args):
         self.workbook = args.workbook
         self.args = args

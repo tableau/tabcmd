@@ -6,7 +6,7 @@ class CommandsMap:
                          "deletegroup": "DeleteGroupCommand",
                          "createusers": "CreateUserCommand",
                          "removeusers": "RemoveUserCommand",
-                         "export": "Export",
+                         "export": "ExportCommand",
                          "logout": "LogoutCommand",
                          "addusers": "AddUserCommand",
                          "createsiteusers": "CreateSiteUsersCommand",
@@ -15,5 +15,6 @@ class CommandsMap:
                          "deletesiteusers": "DeleteSiteUsersCommand",
                          "editsite": "EditSiteCommand",
                          "listsites": "ListSiteCommand",
-                         "delete": "Delete",
+                         "delete": "DeleteCommand",
+                         "publish": "PublishCommand",
                          "publishsamples": "PublishSamplesCommand"}
