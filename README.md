@@ -5,13 +5,13 @@
 
 A Python based app that replicates the functionality of the existing TabCMD command line utility
 
-* [Why \Tabcmd2\?]()
+* [Why Tabcmd2\?]()
 * [Demo](#demo)
 * [Get started](#get-started)
 	* [Prerequisites](#prerequisites)
 	* [Installation](#installation)
 	* [Configuration](#configuration)
-* [Run \Tabcmd2\]()
+* [Run Tabcmd2]()
 * [Support](#support)
 * [Contributions](#contributions)
 
