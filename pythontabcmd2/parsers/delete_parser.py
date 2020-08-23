@@ -21,9 +21,9 @@ class DeleteParser:
         delete_parser.add_argument('--project', '-r', default=None,
                                    help='name of project to delete')
         delete_parser.add_argument('--datasource', default=None,
-                                  help='name of datasource to delete')
+                                   help='name of datasource to delete')
         delete_parser.add_argument('--workbook', default=None,
-                                  help='name of workbook to delete')
+                                   help='name of workbook to delete')
         args = delete_parser.parse_args(sys.argv[2:])
         if args.site is None or args.site == "Default":
             args.site = ''

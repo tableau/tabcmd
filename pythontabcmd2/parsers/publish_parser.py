@@ -28,7 +28,7 @@ class PublishParser(ParentParser):
                                          'if it already exists on '
                                          'the server.')
         # make overwrite and append flags mutually exclusive
-        publish_parser.add_argument('--project', '-r',
+        publish_parser.add_argument('--project', '-r', default=None,
                                     help='Publishes the workbook, '
                                          'data source, or data extract'
                                          ' into the specified project')
@@ -48,9 +48,9 @@ class PublishParser(ParentParser):
                                          'the workbook')
 
         args = publish_parser.parse_args(sys.argv[3:])
-        source = PublishParser.get_source_type(str(sys.argv[2]))
+        source = str(sys.argv[2])
+        # source = PublishParser.get_source_type(str(sys.argv[2]))
         filename = (sys.argv[2])
-        print(source)
         if args.parent_project_path is not None:
             evaluated_project_path = GlobalOptions. \
                 evaluate_project_path(args.parent_project_path)
@@ -60,21 +60,3 @@ class PublishParser(ParentParser):
             args.site = ''
         return args, evaluated_project_path, source, filename
 
-    @staticmethod       #ASK
-    def get_source_type(source):
-        source_list = source.split('.')
-        twbx = 'twbx'
-        twb = 'twb'
-        tdsx = 'tdsx'
-        tds = 'tds'
-        hyper = 'hyper'
-        if twbx in source_list:
-            return twbx
-        elif twb in source_list:
-            return twb
-        elif tdsx in source_list:
-            return tdsx
-        elif tds in source_list:
-            return tds
-        elif hyper in source_list:
-            return hyper

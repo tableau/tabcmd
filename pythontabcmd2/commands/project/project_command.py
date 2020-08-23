@@ -21,7 +21,6 @@ class ProjectCommand(Commands):
             if project[0] == parent_path_name:
                 project_id = project[1]
                 break
-        print(project_id)
         return project_id
 
 

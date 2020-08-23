@@ -49,6 +49,7 @@ class DeleteCommand:
                 matching_datasource, _ = server.workbooks.get(
                     req_option)
                 datasource_from_list = matching_datasource[0]
+                print(datasource_from_list)
                 server.datasources.delete(datasource_from_list.id)
             except IndexError:
                 self.logger.error("Please check if data source is present")
