@@ -135,6 +135,8 @@ class Session:
             signed_in_object = \
                 tableau_server.auth.sign_in_with_personal_access_token(
                     tableau_auth)
+            self.auth_token = tableau_server.auth_token
+            self.site_id = tableau_server.site_id
             self.last_login_using = "token"
             self.logger.info("=========Succeeded========")
             return tableau_server
