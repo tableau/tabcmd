@@ -60,6 +60,28 @@ To run Tabcmd2, follow these steps:
         * tabcmd2 createproject --name [project_name]
 
 
+# Available Commands
+1. addusers (to group)
+2. creategroup
+3. createproject
+4. createsite
+5. createsiteusers
+6. createusers
+7. delete workbook-name or datasource-name
+8. deletegroup
+9. deleteproject
+10. deletesite
+11. deletesiteusers
+12. deleteusers
+13. editsite
+14. export
+15. listsites
+16. login
+17. logout
+18. publish
+19. publishsamples
+20. removeusers
+
 
 # Contributions
 

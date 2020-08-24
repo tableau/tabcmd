@@ -24,10 +24,8 @@ class ExportCommand:
 
     def get_workbook(self, url):
         # check the size of list
-        separated_list = url.split("/")
-        print(separated_list)                           # FIX THIS
+        separated_list = url.split("/")                        # FIX THIS
         reversed_list = separated_list[::-1]
-        print(reversed_list)
         return reversed_list[1]
 
     def get_view(self, url):
@@ -35,7 +33,6 @@ class ExportCommand:
         separated_list = url.split("/")
         if len(separated_list) > 2:
             print("error")
-        print(separated_list)
         return '{}/sheets/{}'.format(separated_list[0], separated_list[1])
 
     def export(self, server):
@@ -62,6 +59,7 @@ class ExportCommand:
                 formatted_file_name = file_name_with_path
                 with open(formatted_file_name, 'wb') as f:
                     f.write(workbook_from_list.pdf)
+                    self.logger.info("Exported successfully")
 
             except TSC.ServerResponseError as e:
                 self.logger.error("Server error occurred")
@@ -76,7 +74,6 @@ class ExportCommand:
                                                      view))
                     matching_view, _ = server.views.get(
                         req_option)
-                    print(matching_view)
                     views_from_list = matching_view[0]
 
                     req_option_pdf = TSC.PDFRequestOptions(maxage=1)
@@ -90,6 +87,7 @@ class ExportCommand:
                     formatted_file_name = file_name_with_path
                     with open(formatted_file_name, 'wb') as f:
                         f.write(views_from_list.pdf)
+                        self.logger.info("Exported successfully")
 
                 except TSC.ServerResponseError as e:
                     self.logger.error("Server error occurred")
@@ -115,6 +113,7 @@ class ExportCommand:
                     formatted_file_name = file_name_with_path
                     with open(formatted_file_name, 'wb') as f:
                         f.write(views_from_list.csv)
+                        self.logger.info("Exported successfully")
 
                 except TSC.ServerResponseError as e:
                     self.logger.error("Server error occurred")
@@ -140,6 +139,7 @@ class ExportCommand:
                     formatted_file_name = file_name_with_path
                     with open(formatted_file_name, 'wb') as f:
                         f.write(views_from_list.png)
+                        self.logger.info("Exported successfully")
 
                 except TSC.ServerResponseError as e:
                     self.logger.error("Server error occurred")

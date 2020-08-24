@@ -27,7 +27,6 @@ class PublishCommand:
         self.publish(server_object)
 
     def publish(self, server):
-        print(self.source)
         if self.args.project is not None:
             project_id = \
                 ProjectCommand.find_project_id(server, self.args.project)
@@ -45,7 +44,7 @@ class PublishCommand:
             new_workbook = server.workbooks.publish(new_workbook,
                                                     self.file_name,
                                                     publish_mode)
-            print("Workbook {} published".format(
+            self.logger.info("Workbook {} published".format(
                 new_workbook.name))
 
         elif self.source == "tds" or self.source == "tdsx" or \
@@ -59,7 +58,7 @@ class PublishCommand:
             new_datasource = server.datasources.publish(new_datasource,
                                                         self.file_path,
                                                         publish_mode)
-            print("DataSource {} published".format(
+            self.logger.info("DataSource {} published".format(
                 new_datasource.name))
 
     def get_source_type(self, source):
