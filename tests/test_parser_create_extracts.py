@@ -18,8 +18,7 @@ class CreateExtractsParserTest(unittest.TestCase):
                                                 encrypt=None,
                                                 project="test123",
                                                 workbook="workbooktest",
-                                                include_all=
-                                                "https://localhost/",
+                                                include_all="test",
                                                 username="helloworld",
                                                 site="",
                                                 logging_level="info",
@@ -39,8 +38,7 @@ class CreateExtractsParserTest(unittest.TestCase):
                                           encrypt=None,
                                           project="test123",
                                           workbook="workbooktest",
-                                          include_all=
-                                          "https://localhost/",
+                                          include_all="test",
                                           username="helloworld",
                                           site="",
                                           logging_level="info",
@@ -64,8 +62,7 @@ class CreateExtractsParserTest(unittest.TestCase):
                                                 encrypt=None,
                                                 project="test123",
                                                 workbook="workbooktest",
-                                                include_all=
-                                                "https://localhost/",
+                                                include_all="test",
                                                 username="helloworld",
                                                 site="",
                                                 logging_level="info",
@@ -85,8 +82,7 @@ class CreateExtractsParserTest(unittest.TestCase):
                                               encrypt=None,
                                               project="test123",
                                               workbook="workbooktest",
-                                              include_all=
-                                              "https://localhost/",
+                                              include_all="test",
                                               username="helloworld",
                                               site="",
                                               logging_level="info",

@@ -12,7 +12,7 @@ class RunScheduleParser:
         parser = parent_parser.parent_parser_with_global_options()
         subparsers = parser.add_subparsers()
         runschedule_parser = subparsers.add_parser('runschedule',
-                                                         parents=[parser])
+                                                   parents=[parser])
         schedule = sys.argv[2]
         args = runschedule_parser.parse_args(sys.argv[2:])
         if args.site is None or args.site == "Default":

@@ -23,7 +23,8 @@ class RefreshExtractsParser:
         refresh_extract_parser.add_argument('--synchronous',
                                             help='Adds the full refresh'
                                                  ' operation to the queue used'
-                                                 ' by the Backgrounder process,'
+                                                 ' by the Backgrounder '
+                                                 'process,'
                                                  ' to be run as soon as a'
                                                  ' Backgrounder process'
                                                  ' is available.')
