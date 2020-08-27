@@ -50,7 +50,8 @@ To run Tabcmd2, follow these steps:
 1. To run a command:
     * `tabcmd2 [command_name] [--flags]`
     * Examples:
-        * `tabcmd2 login --username [username] --password [password] --server [server_name] --site [only_if_tableau_online]`
+        * `tabcmd2 login --username [username] --password [password] --server
+         [server_name] --site [site_name]`
         * `tabcmd2 createproject --name [project_name]`
 
 ### Available Commands
