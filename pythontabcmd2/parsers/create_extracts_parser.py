@@ -2,6 +2,7 @@ import argparse
 import sys
 from .global_options import *
 from .parent_parser import ParentParser
+from .common_parser import CommonParser
 
 
 class CreateExtractsParser:
@@ -10,9 +11,12 @@ class CreateExtractsParser:
         """Method to parse create extracts arguments passed by the user"""
         parent_parser = ParentParser()
         parser = parent_parser.parent_parser_with_global_options()
+        common_parser_obj = CommonParser()
+        common_parser = common_parser_obj.common_parser_arguments()
         subparsers = parser.add_subparsers()
         create_extract_parser = subparsers.add_parser('createextracts',
-                                                      parents=[parser])
+                                                      parents=[parser,
+                                                               common_parser])
         create_extract_parser.add_argument('--datasource', '-d',
                                            help='name of datasource')
         create_extract_parser.add_argument('--embedded-datasources',
@@ -32,7 +36,7 @@ class CreateExtractsParser:
                                            help='The name of the project'
                                                 ' that contains the target '
                                                 'resource')
-        create_extract_parser.add_argument('--url', '-u',
+        create_extract_parser.add_argument('--url',
                                            help='The canonical name for the '
                                                 'resource as it appears'
                                                 ' in the URL')

@@ -32,7 +32,7 @@ class DeleteExtractsParser:
                                            help='The name of the project'
                                                 ' that contains the target '
                                                 'resource')
-        delete_extract_parser.add_argument('--url', '-u',
+        delete_extract_parser.add_argument('--url',
                                            help='The canonical name for the '
                                                 'resource as it appears'
                                                 ' in the URL')

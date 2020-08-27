@@ -13,7 +13,6 @@ class CreateProjectParser(ParentParser):
         parent_parser = ParentParser()
         parser = parent_parser.parent_parser_with_global_options()
         common_parser_obj = CommonParser()
-
         common_parser = common_parser_obj.common_parser_arguments()
         subparsers = parser.add_subparsers()
         create_project_parser = subparsers.add_parser('createproject',
