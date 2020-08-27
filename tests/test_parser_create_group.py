@@ -10,7 +10,8 @@ from pythontabcmd2.parsers.create_group_parser import CreateGroupParser
 
 class CreateGroupParserTest(unittest.TestCase):
     @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(name="test", site="helloworld"))
+                return_value=argparse.Namespace(name="test",
+                                                site="helloworld"))
     def test_create_group_parser_required_name(self, mock_args):
 
         args = CreateGroupParser.create_group_parser()

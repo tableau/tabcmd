@@ -38,7 +38,8 @@ class AddUsersParserTest(unittest.TestCase):
         with mock.patch('builtins.open', mock.mock_open(read_data='test')):
             with self.assertRaises(AttributeError):
                 sys.argv = ["test_csv.csv", "test", "test1", "test2"]
-                csv_lines, args, group_name = RemoveUserParser.remove_user_parser()
+                csv_lines, args, group_name = RemoveUserParser.\
+                    remove_user_parser()
                 args_from_command = vars(args)
                 args_from_mock = vars(mock_args.return_value)
                 self.assertEqual(args_from_command, args_from_mock)

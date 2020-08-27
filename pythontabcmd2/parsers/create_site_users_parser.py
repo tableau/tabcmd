@@ -21,7 +21,3 @@ class CreateSiteUsersParser:
         if args.site is None or args.site == "Default":
             args.site = ''
         return csv_lines, args
-
-
-
-# TODO: COMPLETE, NO COMPLETE OPTION, GLOBAL SITE OPTION

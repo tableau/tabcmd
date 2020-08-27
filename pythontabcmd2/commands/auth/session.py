@@ -20,7 +20,7 @@ class Session:
         self.last_login_using = None
         self.logging_level = "info"
         self.logger = log('pythontabcmd2.session', self.logging_level)
-        self.read_from_json()\
+        self.read_from_json()
 
     def get_file_path(self):
         home_path = os.path.expanduser("~")
@@ -153,7 +153,8 @@ class Session:
             signed_in_object = self.create_new_session_using_token(args)
         elif args.site or args.server:
             last_login_username_present, last_login_token_name_present, \
-            username, token_name = self.check_last_login_username_token_name()
+                username, token_name = \
+                self.check_last_login_username_token_name()
             if last_login_username_present:
                 signed_in_object = self.create_new_session_using_username(args)
             elif last_login_token_name_present:
@@ -186,7 +187,8 @@ class Session:
                 if auth['last_login_using'] == "token":
                     last_login_token_name_present = True
             return last_login_username_present, \
-                   last_login_token_name_present, username, token_name
+                last_login_token_name_present, \
+                username, token_name
 
     def create_new_session_using_username(self, args):
         self.update_session(args)

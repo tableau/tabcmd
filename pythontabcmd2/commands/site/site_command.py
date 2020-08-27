@@ -6,7 +6,6 @@ class SiteCommand(Commands):
         super().__init__(args)
         self.args = args
 
-
     @staticmethod
     def find_site_id(server, site_name):
         """ Method to find the site id given site name"""

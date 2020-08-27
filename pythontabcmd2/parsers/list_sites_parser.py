@@ -20,5 +20,3 @@ class ListSitesParser:
         if args.site is None or args.site == "Default":
             args.site = ''
         return args
-
-

@@ -30,14 +30,14 @@ class CreateSiteParserTest(unittest.TestCase):
             args, mode = CreateSiteParser.create_site_parser()
 
     @mock.patch('argparse.ArgumentParser.parse_args',
-                    return_value=argparse.Namespace())
+                return_value=argparse.Namespace())
     def test_create_site_parser_missing_all_args(self, mock_args):
         with self.assertRaises(AttributeError):
             args, mode = CreateSiteParser.create_site_parser()
 
     @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(site_name=
-                                                "testsite", user_quota=12,
+                return_value=argparse.Namespace(site_name="testsite",
+                                                user_quota=12,
                                                 site_mode=None,
                                                 no_site_mode=None,
                                                 site="helloworld"))

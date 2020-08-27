@@ -13,8 +13,8 @@ class CreateExtractsParser:
         subparsers = parser.add_subparsers()
         create_group_parser = subparsers.add_parser('createextracts',
                                                     parents=[parser])
-        create_group_parser.add_argument('--name', '-n',
-                                         required=True, help='name of group')
+        create_group_parser.add_argument('--datasource', '-d',
+                                         help='name of datasource')
         args = create_group_parser.parse_args(sys.argv[2:])
         if args.site is None or args.site == "Default":
             args.site = ''

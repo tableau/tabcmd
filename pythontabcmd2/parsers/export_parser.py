@@ -29,7 +29,8 @@ class ExportParser:
                                         'portrait) of '
                                         'the exported PDF')
         export_parser.add_argument('--pagesize', default="letter",
-                                   help='Set the page size of the exported PDF')
+                                   help='Set the page size of the '
+                                        'exported PDF')
         export_parser.add_argument('--width', default=800,
                                    help='Set the width in pixels. Default is '
                                         '800 px')

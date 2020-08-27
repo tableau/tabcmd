@@ -49,7 +49,8 @@ class CreateProjectParserTest(unittest.TestCase):
     def test_create_project_parser_required_arguments_name(self, mock_args):
         raises = False
         try:
-            args, parent_proj_path = CreateProjectParser.create_project_parser()
+            args, parent_proj_path = CreateProjectParser.\
+                create_project_parser()
         except Exception:
             raises = True
         self.assertTrue(raises, True)

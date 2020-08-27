@@ -10,7 +10,6 @@ from pythontabcmd2.parsers.logout_parser import LogoutParser
 
 class LogoutParserTest(unittest.TestCase):
 
-
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=argparse.Namespace(
                     server="https://localhost/",
@@ -43,4 +42,3 @@ class LogoutParserTest(unittest.TestCase):
         with self.assertRaises(AttributeError):
             args = LogoutParser.logout_parser()
             assert args == argparse.Namespace()
-

@@ -5,6 +5,7 @@ import tableauserverclient as TSC
 from .. import log
 from ... import Session
 
+
 class DeleteProjectCommand(ProjectCommand):
     def __init__(self, args, evaluated_project_path):
         super().__init__(args, evaluated_project_path)

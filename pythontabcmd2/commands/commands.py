@@ -11,45 +11,13 @@ logger = get_logger('pythontabcmd2.commands', 'info')
 class Commands(CommandStrategyInterface):
 
     def __init__(self, args):
-        self.username = args.username #TODO: CHNAGE HERE TO USER AFTER
+        self.username = args.username
         self.password = args.password
         self.server = args.server
         self.site = args.site
         self.token_name = args.token_name
         self.personal_token = args.token
         self.logging_level = args.logging_level
-
-
-    # @staticmethod
-    # def deserialize():
-    #     try:
-    #         home_path = os.path.expanduser("~")
-    #         file_path = os.path.join(home_path, 'tableau_auth.json')
-    #         with open(str(file_path), 'r') as input:
-    #             data = json.load(input)
-    #             token_from_json = None
-    #             server_from_json = None
-    #             site_id_from_json = None
-    #             for auth in data['tableau_auth']:
-    #                 token_from_json = auth['token']
-    #                 server_from_json = auth['server']
-    #                 site_id_from_json = auth['site']
-    #             server = Commands.create_new_server(token_from_json,
-    #                                                 server_from_json,
-    #                                                 site_id_from_json)
-    #             return server
-    #
-    #     except IOError:
-    #         logger.info("****** Please login first ******")
-    #         sys.exit()
-
-
-    # @staticmethod
-    # def create_new_server(token, server, site_id):
-    #     tableau_server = TSC.Server(server, use_server_version=True)
-    #     tableau_server._auth_token = token
-    #     tableau_server._site_id = site_id
-    #     return tableau_server
 
     def get_user(self, csv_file):
         user_list = []

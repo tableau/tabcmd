@@ -6,6 +6,7 @@ import tableauserverclient as TSC
 from .. import log
 from ... import Session
 
+
 class AddUserCommand(UserCommand):
     def __init__(self, args, csv_lines, group_name):
         super().__init__(args, csv_lines)

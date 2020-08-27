@@ -7,7 +7,6 @@ class UserCommand(Commands):
         self.csv_lines = csv_lines
         self.args = args
 
-
     @staticmethod
     def find_user_id(server, username):
         """ Method to find the group id given group name"""

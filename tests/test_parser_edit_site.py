@@ -39,8 +39,8 @@ class EditSiteParserTest(unittest.TestCase):
             args, mode, siteid = EditSiteParser.edit_site_parser()
 
     @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(site_name=
-                                                "testsite", user_quota=12,
+                return_value=argparse.Namespace(site_name="testsite",
+                                                user_quota=12,
                                                 site_mode=None,
                                                 no_site_mode=None,
                                                 site="helloworld"))

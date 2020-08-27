@@ -6,7 +6,8 @@ try:
 except ImportError:
     import mock
 import argparse
-from pythontabcmd2.parsers.create_site_users_parser import CreateSiteUsersParser
+from pythontabcmd2.parsers.create_site_users_parser \
+    import CreateSiteUsersParser
 
 
 class CreateSiteUsersParserTest(unittest.TestCase):
@@ -32,10 +33,8 @@ class CreateSiteUsersParserTest(unittest.TestCase):
         with mock.patch('builtins.open', mock.mock_open(read_data='test')):
             with self.assertRaises(AttributeError):
                 sys.argv = ["test_csv.csv", "test", "test1", "test2"]
-                csv_lines, args = CreateSiteUsersParser.create_site_user_parser()
+                csv_lines, args = CreateSiteUsersParser.\
+                    create_site_user_parser()
                 args_from_command = vars(args)
                 args_from_mock = vars(mock_args.return_value)
                 self.assertEqual(args_from_command, args_from_mock)
-
-
-

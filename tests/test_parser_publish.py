@@ -24,8 +24,7 @@ class PublishParserTest(unittest.TestCase):
                 PublishParser.publish_parser()
 
     @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(name=
-                                                "testsite",
+                return_value=argparse.Namespace(name="testsite",
                                                 project="helloworld",
                                                 tabbed=True,
                                                 site="helloworld",

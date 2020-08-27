@@ -18,7 +18,8 @@ class PublishCommand:
 
     @classmethod
     def parse(cls):
-        args, evaluated_project_path, source, filename = PublishParser.publish_parser()
+        args, evaluated_project_path, source, filename = PublishParser.\
+            publish_parser()
         return cls(args, evaluated_project_path, source, filename)
 
     def run_command(self):

@@ -21,9 +21,12 @@ class EditSiteParser:
                                       help='Max number of user that '
                                            'can be added to site')
         edit_site_parser.add_argument('--status', default=None,
-                                      help='Set to ACTIVE to activate a site, '
-                                           'or to SUSPENDED to suspend a site.')
-        edit_site_parser.add_argument('--extract-encryption-mode', default=None,
+                                      help='Set to ACTIVE to activate'
+                                           ' a site, '
+                                           'or to SUSPENDED to suspend'
+                                           ' a site.')
+        edit_site_parser.add_argument('--extract-encryption-mode',
+                                      default=None,
                                       help='The extract encryption mode for '
                                            'the site can be enforced, '
                                            'enabled or disabled')
@@ -54,5 +57,3 @@ class EditSiteParser:
         if args.site is None or args.site == "Default":
             args.site = ''
         return args, admin_mode, current_site_id
-
-

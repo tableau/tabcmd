@@ -5,6 +5,7 @@ import tableauserverclient as TSC
 from .. import log
 from ... import Session
 
+
 class DeleteGroupCommand(GroupCommand):
     def __init__(self, args):
         super().__init__(args)
@@ -29,4 +30,3 @@ class DeleteGroupCommand(GroupCommand):
             self.logger.info("Successfully deleted group")
         except TSC.ServerResponseError as e:
             self.logger.error("Server error occurred", e)
-

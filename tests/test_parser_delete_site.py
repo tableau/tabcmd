@@ -18,9 +18,8 @@ class DeleteSiteParserTest(unittest.TestCase):
                                                 server="http://test",
                                                 site="helloworld"))
     def test_delete_project(self, mock_args):
-        args= DeleteSiteParser.delete_site_parser()
+        args = DeleteSiteParser.delete_site_parser()
         assert args == mock_args.return_value
-
 
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=argparse.Namespace(site_name=None,
@@ -32,7 +31,6 @@ class DeleteSiteParserTest(unittest.TestCase):
         args = DeleteSiteParser.delete_site_parser()
         assert args == mock_args.return_value
         assert args.site_name == mock_args.return_value.site_name
-
 
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=argparse.Namespace())

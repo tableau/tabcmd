@@ -25,7 +25,8 @@ class DeleteGroupParserTestT(unittest.TestCase):
         self.assertEqual(args_from_command, args_from_mock)
 
     @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=(argparse.Namespace(name=None,site="helloworld")))
+                return_value=(argparse.Namespace(name=None,
+                                                 site="helloworld")))
     def test_create_user_parser_required_name(self, mock_args):
 
         args = DeleteGroupParser.delete_group_parser()

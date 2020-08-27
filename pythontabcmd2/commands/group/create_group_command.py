@@ -5,6 +5,7 @@ import tableauserverclient as TSC
 from .. import log
 from ... import Session
 
+
 class CreateGroupCommand(GroupCommand):
     def __init__(self, args):
         super().__init__(args)

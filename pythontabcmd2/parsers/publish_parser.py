@@ -34,7 +34,8 @@ class PublishParser(ParentParser):
                                          ' into the specified project')
         publish_parser.add_argument('--db-username',
                                     help='Use this option to publish a '
-                                         'database user name with the workbook,'
+                                         'database user name with the '
+                                         'workbook,'
                                          ' data source, or data extract.')
         publish_parser.add_argument('--db-password',
                                     help=' publish a database password '
@@ -49,7 +50,6 @@ class PublishParser(ParentParser):
 
         args = publish_parser.parse_args(sys.argv[3:])
         source = str(sys.argv[2])
-        # source = PublishParser.get_source_type(str(sys.argv[2]))
         filename = (sys.argv[2])
         if args.parent_project_path is not None:
             evaluated_project_path = GlobalOptions. \
@@ -59,4 +59,3 @@ class PublishParser(ParentParser):
         if args.site is None or args.site == "Default":
             args.site = ''
         return args, evaluated_project_path, source, filename
-

@@ -24,7 +24,7 @@ class ExportCommand:
 
     def get_workbook(self, url):
         # check the size of list
-        separated_list = url.split("/")                        # FIX THIS
+        separated_list = url.split("/")
         reversed_list = separated_list[::-1]
         return reversed_list[1]
 
@@ -42,7 +42,8 @@ class ExportCommand:
             try:
                 req_option = TSC.RequestOptions()
                 req_option.filter.add(TSC.Filter("contentUrl",
-                                                 TSC.RequestOptions.Operator.Equals,
+                                                 TSC.RequestOptions.
+                                                 Operator.Equals,
                                                  workbook))
                 matching_workbook, _ = server.workbooks.get(
                     req_option)
@@ -70,7 +71,8 @@ class ExportCommand:
                 try:
                     req_option = TSC.RequestOptions()
                     req_option.filter.add(TSC.Filter("contentUrl",
-                                                     TSC.RequestOptions.Operator.Equals,
+                                                     TSC.RequestOptions.
+                                                     Operator.Equals,
                                                      view))
                     matching_view, _ = server.views.get(
                         req_option)
@@ -79,9 +81,10 @@ class ExportCommand:
                     req_option_pdf = TSC.PDFRequestOptions(maxage=1)
 
                     server.views.populate_pdf(views_from_list,
-                                                  req_option_pdf)
+                                              req_option_pdf)
                     if self.args.filename is None:
-                        file_name_with_path = '{}.pdf'.format(views_from_list.name)
+                        file_name_with_path = '{}.pdf'.format(views_from_list.
+                                                              name)
                     else:
                         file_name_with_path = self.args.filename
                     formatted_file_name = file_name_with_path
@@ -96,7 +99,8 @@ class ExportCommand:
                 try:
                     req_option = TSC.RequestOptions()
                     req_option.filter.add(TSC.Filter("contentUrl",
-                                                     TSC.RequestOptions.Operator.Equals,
+                                                     TSC.RequestOptions.
+                                                     Operator.Equals,
                                                      view))
                     matching_view, _ = server.views.get(
                         req_option)
@@ -122,7 +126,8 @@ class ExportCommand:
                 try:
                     req_option = TSC.RequestOptions()
                     req_option.filter.add(TSC.Filter("contentUrl",
-                                                     TSC.RequestOptions.Operator.Equals,
+                                                     TSC.RequestOptions.
+                                                     Operator.Equals,
                                                      view))
                     matching_view, _ = server.views.get(
                         req_option)

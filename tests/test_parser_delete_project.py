@@ -19,11 +19,9 @@ class DeleteProjectParserTest(unittest.TestCase):
                                                 parent_project_path="/test/",
                                                 site="helloworld"))
     def test_delete_project(self, mock_args):
-
         args, parent_project_path = DeleteProjectParser.delete_project_parser()
         assert parent_project_path == "test"
         assert args == mock_args.return_value
-
 
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=argparse.Namespace(name=None,
@@ -37,7 +35,6 @@ class DeleteProjectParserTest(unittest.TestCase):
         assert parent_project_path == "test"
         assert args == mock_args.return_value
         assert args.name == mock_args.return_value.name
-
 
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=argparse.Namespace())

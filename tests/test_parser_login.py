@@ -52,7 +52,6 @@ class LoginParserTest(unittest.TestCase):
         with self.assertRaises(SystemExit):
             args = LoginParser.login_parser()
 
-
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=argparse.Namespace(
                     server="https://localhost/",
