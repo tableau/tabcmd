@@ -22,17 +22,14 @@ class DeleteSiteParserTest(unittest.TestCase):
         assert args == mock_args.return_value
 
     @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(site_name=None,
+                return_value=argparse.Namespace(
                                                 username="test",
                                                 password="testpass",
                                                 server="http://test",
                                                 site="helloworld"))
     def test_delete_site_required_name_none(self, mock_args):
-
-        args = DeleteSiteParser.delete_site_parser()
-        args.site_name = "helloworld"
-        assert args == mock_args.return_value
-        assert args.site_name == mock_args.return_value.site_name
+        with self.assertRaises(AttributeError):
+            args = DeleteSiteParser.delete_site_parser()
 
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=argparse.Namespace())
