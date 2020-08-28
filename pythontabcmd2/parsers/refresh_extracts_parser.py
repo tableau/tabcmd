@@ -2,6 +2,7 @@ import argparse
 import sys
 from .global_options import *
 from .parent_parser import ParentParser
+from .common_parser import CommonParser
 
 
 class RefreshExtractsParser:
@@ -10,9 +11,12 @@ class RefreshExtractsParser:
         """Method to parse refresh extracts arguments passed by the user"""
         parent_parser = ParentParser()
         parser = parent_parser.parent_parser_with_global_options()
+        common_parser_obj = CommonParser()
+        common_parser = common_parser_obj.common_parser_arguments()
         subparsers = parser.add_subparsers()
         refresh_extract_parser = subparsers.add_parser('refreshextracts',
-                                                       parents=[parser])
+                                                       parents=[parser,
+                                                                common_parser])
         refresh_extract_parser.add_argument('--datasource',
                                             help='The name of the data source'
                                                  ' containing extracts'
