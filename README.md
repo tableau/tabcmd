@@ -61,21 +61,19 @@ To run Tabcmd2, follow these steps:
 3. createproject
 4. createsite
 5. createsiteusers
-6. createusers
-7. delete workbook-name or datasource-name
-8. deletegroup
-9. deleteproject
-10. deletesite
-11. deletesiteusers
-12. deleteusers
-13. editsite
-14. export
-15. listsites
-16. login
-17. logout
-18. publish
-19. publishsamples
-20. removeusers
+6. delete workbook-name or datasource-name
+7. deletegroup
+8. deleteproject
+9. deletesite
+10. deletesiteusers
+11. editsite
+12. export
+13. listsites
+14. login
+15. logout
+16. publish
+17. publishsamples
+18. removeusers
 
 ## Contributions
 
