@@ -17,7 +17,7 @@ class CommandsMap:
                          "listsites": "ListSiteCommand",
                          "delete": "DeleteCommand",
                          "publish": "PublishCommand",
-                         "createextracts" : "CreateExtracts",
+                         "createextracts": "CreateExtracts",
                          "decryptextracts": "DecryptExtracts",
                          "deleteextracts": "DeleteExtracts",
                          "encryptextracts": "EncryptExtracts",
