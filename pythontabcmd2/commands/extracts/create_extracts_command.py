@@ -22,4 +22,5 @@ class CreateExtracts:
         self.create_extract(server_object)
 
     def create_extract(self, server):
+        print("test")
         pass
