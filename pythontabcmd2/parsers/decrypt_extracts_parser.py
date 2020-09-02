@@ -14,7 +14,7 @@ class DecryptExtractsParser:
         decrypt_extract_parser = subparsers.add_parser('decryptextracts',
                                                        parents=[parser])
         site_name = sys.argv[2]
-        args = decrypt_extract_parser.parse_args(sys.argv[2:])
+        args = decrypt_extract_parser.parse_args(sys.argv[3:])
         if args.site is None or args.site == "Default":
             args.site = ''
         return args, site_name

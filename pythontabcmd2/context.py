@@ -16,7 +16,12 @@ from .commands.site.list_sites_command import *
 from .commands.datasources_and_workbooks.delete_command import *
 from .commands.datasources_and_workbooks.export_command import *
 from .commands.datasources_and_workbooks.publish_command import *
-
+from .commands.extracts.create_extracts_command import *
+from .commands.extracts.decrypt_extracts_command import *
+from .commands.extracts.delete_extracts_command import *
+from .commands.extracts.refresh_extracts_command import *
+from .commands.extracts.reencrypt_extracts_command import *
+from .commands.extracts.encrypt_extracts_command import *
 import sys
 
 
