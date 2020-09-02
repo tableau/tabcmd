@@ -47,7 +47,7 @@ class GetUrl:
     def check_if_extension_present(self, view):
         split_view = view.split(".")
         print(split_view, "check if extension")
-        if len(split_view) == 2:    # Edge case cheCK
+        if len(split_view) == 2:
             print(split_view[1])
             if split_view[1] == "pdf" or split_view[1] == "csv" or \
                     split_view[1] == "png" or split_view[1] == "twb" or \
@@ -198,7 +198,7 @@ class GetUrl:
         workbook = self.get_workbook(self.url)
         try:
             req_option = TSC.RequestOptions()
-            req_option.filter.add(TSC.Filter(TSC.RequestOptions.Field.Name,
+            req_option.filter.add(TSC.Filter("contentUrl",
                                              TSC.RequestOptions.
                                              Operator.Equals,
                                              workbook))
