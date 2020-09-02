@@ -1,5 +1,6 @@
 class CommandsMap:
     commands_hash_map = {"login": "LoginCommand",
+                         "get": "GetUrl",
                          "createproject": "CreateProjectCommand",
                          "deleteproject": "DeleteProjectCommand",
                          "creategroup": "CreateGroupCommand",

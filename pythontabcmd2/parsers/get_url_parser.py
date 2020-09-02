@@ -15,12 +15,13 @@ class GetUrlParser:
 
         common_parser = common_parser_obj.common_parser_arguments()
         subparsers = parser.add_subparsers()
-        delete_parser = subparsers.add_parser(
+        get_url_parser = subparsers.add_parser(
             'get',
             parents=[parser])
-        delete_parser.add_argument('--filename', '-f',
-                                   help='name of the file')
-        args = delete_parser.parse_args(sys.argv[2:])
+        get_url_parser.add_argument('--filename', '-f',
+                                    help='name of the file')
+        url = sys.argv[2]
+        args = get_url_parser.parse_args(sys.argv[3:])
         if args.site is None or args.site == "Default":
             args.site = ''
-        return args
+        return args, url

@@ -16,7 +16,7 @@ from .commands.site.list_sites_command import *
 from .commands.datasources_and_workbooks.delete_command import *
 from .commands.datasources_and_workbooks.export_command import *
 from .commands.datasources_and_workbooks.publish_command import *
-
+from .commands.datasources_and_workbooks.get_url_command import *
 import sys
 
 
