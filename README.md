@@ -12,6 +12,7 @@ A Python based app that replicates the functionality of the existing [Tabcmd com
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Run](#run)
+  * [Available Commands](#available-commands)
 * [Contributions](#contributions)
 
 ## Why Tabcmd2?
@@ -56,24 +57,51 @@ To run Tabcmd2, follow these steps:
 
 ### Available Commands
 
-1. addusers (to group)
-2. creategroup
-3. createproject
-4. createsite
-5. createsiteusers
-6. delete workbook-name or datasource-name
-7. deletegroup
-8. deleteproject
-9. deletesite
-10. deletesiteusers
-11. editsite
-12. export
-13. listsites
-14. login
-15. logout
-16. publish
-17. publishsamples
-18. removeusers
+This table lists the development status of all commands, listed in the same order as the tabcmd help.
+
+These are the column definitions:
+
+* TSC: API support is available in [TSC](https://github.com/tableau/server-client-python/)
+* Completed: Code implemented, manually tested, unit tests for parsing added
+* Done: Error handling, all unit tests, logging, code review, can produce docs, merged into master
+
+| Command | TSC | Completed | Done | Notes |
+|-|-|-|-|-|
+| addusers (to group) | Yes (single user) | :heavy_check_mark: |  |  |
+| createextracts | Yes |  |  |  |
+| creategroup | Yes | :heavy_check_mark:  |  |  |
+| createproject | Yes | :heavy_check_mark:  |  |  |
+| createsite | Yes | :heavy_check_mark:  |  |  |
+| createsiteusers | Yes | :heavy_check_mark:  |  |  |
+| createusers | Yes (single user) | :heavy_check_mark:  |  |  |
+| decryptextracts | Yes |  |  |  |
+| delete workbook-name or datasource-name | Yes | :heavy_check_mark:  |  |  |
+| deleteextracts | Yes |  |  |  |
+| deletegroup | Yes | :heavy_check_mark:  |  |  |
+| deleteproject | Yes | :heavy_check_mark:  |  |  |
+| deletesite | Yes | :heavy_check_mark:  |  |  |
+| deletesiteusers | Yes | :heavy_check_mark:  |  |  |
+| deleteusers | No |  |  |  |
+| editdomain | No |  |  |  |
+| editsite | Yes | :heavy_check_mark:  |  |  |
+| encryptextracts | Yes |  |  |  |
+| export | Yes | :heavy_check_mark:  |  |  |
+| get url | Yes |  |  |  |
+| initialuser | No |  |  |  |
+| listdomains | No |  |  |  |
+| listsites | Yes | :heavy_check_mark:  |  |  |
+| login | Yes | :heavy_check_mark:  |  |  |
+| logout | Yes | :heavy_check_mark:  |  |  |
+| publish | Yes | :heavy_check_mark:  |  |  |
+| publishsamples | No |  |  |  |
+| reencryptextracts | Yes |  |  |  |
+| refreshextracts | No |  |  |  |
+| removeusers | Yes | :heavy_check_mark:  |  |  |
+| reset_openid_sub | No |  |  |  |
+| runschedule | No |  |  |  |
+| set | No |  |  |  |
+| syncgroup | No |  |  |  |
+| version | N/A |  |  |  |
 
 ## Contributions
 
