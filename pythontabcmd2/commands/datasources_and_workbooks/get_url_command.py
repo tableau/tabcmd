@@ -38,12 +38,6 @@ class GetUrl:
                 sys.exit()
         return type_of_file
 
-    def get_workbook(self, url):
-        # check the size of list
-        separated_list = url.split("/")
-        reversed_list = separated_list[::-1]
-        return reversed_list[1]
-
     def check_if_extension_present(self, view):
         split_view = view.split(".")
         print(split_view, "check if extension")
