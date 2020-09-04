@@ -24,7 +24,7 @@ class CreateExtractsParser:
                                                 'of embedded data source '
                                                 'names within the target'
                                                 ' workbook. ')
-        create_extract_parser.add_argument('--encrypt', action='store_true',
+        create_extract_parser.add_argument('--encrypt', action='store_false',
                                            help='Create encrypted extract')
         create_extract_parser.add_argument('--include-all',
                                            action='store_false',

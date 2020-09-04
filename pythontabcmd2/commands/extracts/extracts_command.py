@@ -22,7 +22,7 @@ class ExtractsCommand(Commands):
         all_datasources, pagination_item = server.datasources.get()
         for datasource in all_datasources:
             if datasource.name == data_source_name:
-                data_source_item = data_source_name
+                data_source_item = datasource
                 break
         return data_source_item
 
