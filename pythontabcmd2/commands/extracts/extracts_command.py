@@ -36,7 +36,6 @@ class ExtractsCommand(Commands):
             if workbook.name == workbook_name:
                 workbook_id = workbook.id
                 break
-        print(workbook_id)
         return workbook_id
 
     @staticmethod
@@ -44,9 +43,7 @@ class ExtractsCommand(Commands):
         all_datasources, pagination_item = server.datasources.get()
         datasource_id = None
         for datasource in all_datasources:
-            print(datasource.name)
             if datasource.name == datasource_name:
                 datasource_id = datasource.id
                 break
-        print(datasource_id)
         return datasource_id

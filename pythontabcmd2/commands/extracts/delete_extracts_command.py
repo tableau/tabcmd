@@ -29,7 +29,6 @@ class DeleteExtracts(ExtractsCommand):
 
     def delete_extract(self, server):
         if self.args.datasource:
-            print(self.args.datasource)
             data_source_item = ExtractsCommand. \
                 get_data_source_item(server, self.args.datasource)
 

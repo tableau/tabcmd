@@ -28,7 +28,6 @@ class CreateExtracts(ExtractsCommand):
         self.create_extract(server_object)
 
     def create_extract(self, server):
-        print(self.args)
         if self.args.datasource:
 
             data_source_item = ExtractsCommand.\
