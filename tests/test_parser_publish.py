@@ -18,7 +18,7 @@ class PublishParserTest(unittest.TestCase):
 
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=argparse.Namespace())
-    def test_create_site_parser_missing_all_args(self, mock_args):
+    def test_publish_parser_missing_all_args(self, mock_args):
         with self.assertRaises(AttributeError):
             args, evaluated_project_path, source, filename = \
                 PublishParser.publish_parser()
@@ -29,7 +29,7 @@ class PublishParserTest(unittest.TestCase):
                                                 tabbed=True,
                                                 site="helloworld",
                                                 parent_project_path=None))
-    def test_create_site_parser_user_quota_integer(self, mock_args):
+    def test_publish_parser_user_quota_integer(self, mock_args):
         args, evaluated_project_path, source, filename = \
             PublishParser.publish_parser()
         args_from_command = vars(args)

@@ -23,7 +23,7 @@ class DecryptExtractsParserTest(unittest.TestCase):
                                                 no_cookie=False,
                                                 prompt=False
                                                 ))
-    def test_encrypt_extract_parser_optional_arguments(self, mock_args):
+    def test_decrypt_extract_parser_optional_arguments(self, mock_args):
         args, site_name = DecryptExtractsParser.decrypt_extracts_parser()
         assert args == argparse.Namespace(site_name="hellohello",
                                           username="helloworld",
