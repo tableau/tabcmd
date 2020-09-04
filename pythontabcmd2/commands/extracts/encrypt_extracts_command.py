@@ -11,6 +11,7 @@ class EncryptExtracts(ExtractsCommand):
     Command that encrypt all extracts on a site.
     If no site is specified, extracts on the default site will be encrypted.
     """
+
     def __init__(self, args, site_name):
         super().__init__(args)
         self.site_name = site_name
@@ -30,5 +31,10 @@ class EncryptExtracts(ExtractsCommand):
         self.encrypt_extract(server_object)
 
     def encrypt_extract(self, server):
-        site_id = SiteCommand.find_site_id(server, self.site_name)
-        server.sites.encrypt_extracts(site_id)
+        try:
+            site_id = SiteCommand.find_site_id(server, self.site_name)
+            job = server.sites.encrypt_extracts(site_id)
+            self.logger.info("Extract encrypted Successfully with "
+                             "JobID: {}".format(job.id))
+        except TSC.ServerResponseError as e:
+            self.logger.error('Server Error', e)

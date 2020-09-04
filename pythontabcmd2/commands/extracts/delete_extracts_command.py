@@ -29,12 +29,22 @@ class DeleteExtracts(ExtractsCommand):
 
     def delete_extract(self, server):
         if self.args.datasource:
-            data_source_item = ExtractsCommand. \
-                get_data_source_item(server, self.args.datasource)
+            try:
+                data_source_item = ExtractsCommand. \
+                    get_data_source_item(server, self.args.datasource)
 
-            server.datasources.delete_extract(data_source_item)
+                job = server.datasources.delete_extract(data_source_item)
+                self.logger.info("Extract deleted Successfully with "
+                                 "JobID: {}".format(job.id))
+            except TSC.ServerResponseError as e:
+                self.logger.error('Server Error', e)
         elif self.args.workbook:
-            workbook_item = ExtractsCommand.get_workbook_item(server,
-                                                              self.args
-                                                              .workbook)
-            server.workbooks.delete_extract(workbook_item)
+            try:
+                workbook_item = ExtractsCommand.get_workbook_item(server,
+                                                                  self.args
+                                                                  .workbook)
+                job = server.workbooks.delete_extract(workbook_item)
+                self.logger.info("Extract deleted Successfully with "
+                                 "JobID: {}".format(job.id))
+            except TSC.ServerResponseError as e:
+                self.logger.error('Server Error', e)

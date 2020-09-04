@@ -28,6 +28,10 @@ class DecryptExtracts(ExtractsCommand):
         self.decrypt_extract(server_object)
 
     def decrypt_extract(self, server):
-        site_id = SiteCommand.find_site_id(server, self.site_name)
-        server.sites.encrypt_extracts(site_id)
-        # try catch here
+        try:
+            site_id = SiteCommand.find_site_id(server, self.site_name)
+            job = server.sites.encrypt_extracts(site_id)
+            self.logger.info("Extract created Successfully with "
+                             "JobID: {}".format(job.id))
+        except TSC.ServerResponseError as e:
+            self.logger.error('Server Error', e)

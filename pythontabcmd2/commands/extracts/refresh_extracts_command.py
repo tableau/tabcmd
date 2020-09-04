@@ -11,6 +11,7 @@ class RefreshExtracts(ExtractsCommand):
     Command to Perform a full or incremental refresh of
     extracts belonging to the specified workbook or data source.
     """
+
     def __init__(self, args):
         super().__init__(args)
         self.args = args
@@ -30,12 +31,23 @@ class RefreshExtracts(ExtractsCommand):
 
     def refresh_extracts(self, server):
         if self.args.datasource:
-            datasource_id = ExtractsCommand.get_data_source_id(
-                server, self.args.datasource)
+            try:
+                datasource_id = ExtractsCommand.get_data_source_id(
+                    server, self.args.datasource)
 
-            server.datasources.refresh(datasource_id)
+                job = server.datasources.refresh(datasource_id)
+                self.logger.info("Extract refreshed Successfully with "
+                                 "JobID: {}".format(job.id))
+            except TSC.ServerResponseError as e:
+                self.logger.error('Server Error', e)
         elif self.args.workbook:
-            workbook_id = ExtractsCommand.get_workbook_id(server,
-                                                          self.args.workbook)
+            try:
+                workbook_id = ExtractsCommand.get_workbook_id(server,
+                                                              self.args
+                                                              .workbook)
 
-            server.workbooks.refresh(workbook_id)
+                job = server.workbooks.refresh(workbook_id)
+                self.logger.info("Extract refreshed Successfully with "
+                                 "JobID: {}".format(job.id))
+            except TSC.ServerResponseError as e:
+                self.logger.error('Server Error', e)

@@ -12,6 +12,7 @@ class ReencryptExtracts(ExtractsCommand):
     This command will regenerate the key encryption key and
     data encryption key. You must specify a site.
     """
+
     def __init__(self, args, site_name):
         super().__init__(args)
         self.site_name = site_name
@@ -31,5 +32,10 @@ class ReencryptExtracts(ExtractsCommand):
         self.reencrypt_extract(server_object)
 
     def reencrypt_extract(self, server):
-        site_id = SiteCommand.find_site_id(server, self.site_name)
-        server.sites.encrypt_extracts(site_id)
+        try:
+            site_id = SiteCommand.find_site_id(server, self.site_name)
+            job = server.sites.encrypt_extracts(site_id)
+            self.logger.info("Extract reencrypted Successfully with "
+                             "JobID: {}".format(job.id))
+        except TSC.ServerResponseError as e:
+            self.logger.error('Server Error', e)
