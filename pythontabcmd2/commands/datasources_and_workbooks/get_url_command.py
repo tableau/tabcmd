@@ -41,9 +41,7 @@ class GetUrl(DatasourcesAndWorkbooks):
 
     def check_if_extension_present(self, view):
         split_view = view.split(".")
-        print(split_view, "check if extension")
         if len(split_view) == 2:
-            print(split_view[1])
             if split_view[1] == "pdf" or split_view[1] == "csv" or \
                     split_view[1] == "png" or split_view[1] == "twb" or \
                     split_view[1] == "twbx" :  # add
@@ -55,7 +53,6 @@ class GetUrl(DatasourcesAndWorkbooks):
 
     def get_view_without_extension(self, view):
         split_view = view.split(".")
-        print("view withouy ext", split_view)
         return split_view[0]
 
     def get_workbook(self, url):
