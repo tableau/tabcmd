@@ -8,6 +8,12 @@ from ... import Session
 
 
 class CreateSiteUsersCommand(UserCommand):
+    """
+    Command to add users to a site, based on information supplied in a
+    comma-separated values (CSV) file. If the user is not already
+    created on the server, the command creates the user before adding
+    that user to the site
+    """
     def __init__(self, csv_lines, args):
         super().__init__(csv_lines, args)
         self.args = args

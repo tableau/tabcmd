@@ -5,6 +5,9 @@ from .session import Session
 
 
 class LoginCommand(Commands):
+    """
+    Logs in a Tableau Server user.
+    """
     def __init__(self, args):
         super().__init__(args)
         self.args = args

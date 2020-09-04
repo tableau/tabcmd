@@ -5,7 +5,7 @@ from .common_parser import CommonParser
 
 
 class GetUrlParser:
-
+    """Parser for the command geturl"""
     @staticmethod
     def get_url_parser():
         """Method to parse get url arguments passed by the user"""

@@ -4,6 +4,9 @@ from .common_parser import CommonParser
 
 
 class DeleteSiteUsersParser:
+    """
+    Parser for the command deletesiteusers
+    """
     @staticmethod
     def delete_site_users_parser():
         """Method to parse delete site arguments passed by the user"""

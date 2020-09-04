@@ -7,6 +7,9 @@ from ... import Session
 
 
 class DeleteSiteCommand(SiteCommand):
+    """
+    Command to delete a site
+    """
     def __init__(self, args):
         super().__init__(args)
         self.site_name = args.site_name

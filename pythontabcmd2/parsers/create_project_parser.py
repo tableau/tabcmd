@@ -6,7 +6,9 @@ from .common_parser import CommonParser
 
 
 class CreateProjectParser(ParentParser):
-
+    """
+    Parser for createproject command
+    """
     @staticmethod
     def create_project_parser():
         """Method to parse create project arguments passed by the user"""

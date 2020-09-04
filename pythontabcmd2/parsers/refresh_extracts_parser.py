@@ -6,6 +6,9 @@ from .common_parser import CommonParser
 
 
 class RefreshExtractsParser:
+    """
+    Parser to refreshextracts command
+    """
     @staticmethod
     def refresh_extracts_parser():
         """Method to parse refresh extracts arguments passed by the user"""

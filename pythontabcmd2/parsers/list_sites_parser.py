@@ -3,6 +3,9 @@ from .parent_parser import ParentParser
 
 
 class ListSitesParser:
+    """
+    Parser to list sites
+    """
     @staticmethod
     def list_site_parser():
         """Method to parse list sites arguments passed by the user"""

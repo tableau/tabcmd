@@ -8,6 +8,9 @@ from ... import Session
 
 
 class AddUserCommand(UserCommand):
+    """
+    Command to Adds users to a specified group
+    """
     def __init__(self, args, csv_lines, group_name):
         super().__init__(args, csv_lines)
         self.args = args

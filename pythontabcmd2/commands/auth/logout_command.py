@@ -8,6 +8,9 @@ from ... import Session
 
 
 class LogoutCommand:
+    """
+    Command to Log user out of the server
+    """
     def __init__(self, args):
         self.args = args
         self.logging_level = args.logging_level

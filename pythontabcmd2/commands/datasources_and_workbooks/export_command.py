@@ -6,6 +6,10 @@ from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
 class ExportCommand(DatasourcesAndWorkbooks):
+    """
+    Command to Export a view or workbook from Tableau Server and save
+    it to a file. This command can also export just the data used for a view
+    """
     def __init__(self, args, url):
         super().__init__(args)
         self.url = url

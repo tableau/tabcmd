@@ -3,6 +3,10 @@ from .parent_parser import ParentParser
 
 
 class CommonParser:
+    """
+    Common parser that contains flag parents project path that
+    will be shared among parsers
+    """
     def common_parser_arguments(self):
         parser = argparse.ArgumentParser(add_help=False)
         parser.add_argument('--parent-project-path',

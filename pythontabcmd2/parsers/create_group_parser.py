@@ -5,6 +5,9 @@ from .parent_parser import ParentParser
 
 
 class CreateGroupParser:
+    """
+    Parser for creategroup command
+    """
     @staticmethod
     def create_group_parser():
         """Method to parse create group arguments passed by the user"""

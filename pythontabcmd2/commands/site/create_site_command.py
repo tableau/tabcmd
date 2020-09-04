@@ -6,6 +6,9 @@ from ... import Session
 
 
 class CreateSiteCommand(SiteCommand):
+    """
+    Command to Create a site
+    """
     def __init__(self, args, admin_mode):
         super().__init__(args)
         self.site_name = args.site_name

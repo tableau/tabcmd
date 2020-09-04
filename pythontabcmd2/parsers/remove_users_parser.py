@@ -5,7 +5,9 @@ from .common_parser import CommonParser
 
 
 class RemoveUserParser:
-
+    """
+    Parser to removeusers command
+    """
     @staticmethod
     def remove_user_parser():
         """Method to parse remove user arguments passed by the user"""

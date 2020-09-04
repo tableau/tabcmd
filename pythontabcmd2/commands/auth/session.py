@@ -8,6 +8,9 @@ import os
 
 
 class Session:
+    """
+    Session class handles all authentication related work
+    """
     def __init__(self):
         self.username = None
         self.password = None

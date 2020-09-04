@@ -7,6 +7,10 @@ from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
 class PublishCommand(DatasourcesAndWorkbooks):
+    """
+    This command publishes the specified workbook (.twb(x)), data source
+    (.tds(x)), or extract (.hyper) to Tableau Server.
+    """
     def __init__(self, args, evaluated_project_path, source, filename):
         super().__init__(args)
         self.file_name = filename

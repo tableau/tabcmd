@@ -4,6 +4,9 @@ from .common_parser import CommonParser
 
 
 class CreateUserParser:
+    """
+    Parser for the command CreateUser
+    """
     @staticmethod
     def create_user_parser():
         """Method to parse create user arguments passed """

@@ -5,7 +5,9 @@ from .parent_parser import ParentParser
 
 
 class DeleteGroupParser:
-
+    """
+    Parser for the command deletegroup
+    """
     @staticmethod
     def delete_group_parser():
         """Method to parse delete group arguments passed by the user"""

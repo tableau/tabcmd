@@ -7,6 +7,10 @@ from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
 class GetUrl(DatasourcesAndWorkbooks):
+    """
+    This command gets the resource from Tableau Server that's represented
+    by the specified (partial) URL. The result is returned as a file.
+    """
     def __init__(self, args, url):
         super().__init__(args)
         self.url = url

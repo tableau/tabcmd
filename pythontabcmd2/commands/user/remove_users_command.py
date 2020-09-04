@@ -8,6 +8,9 @@ from ... import Session
 
 
 class RemoveUserCommand(UserCommand):
+    """
+     Command to remove users from the specified group
+    """
     def __init__(self, args, csv_lines, group_name):
         super().__init__(csv_lines, args)
         self.args = args

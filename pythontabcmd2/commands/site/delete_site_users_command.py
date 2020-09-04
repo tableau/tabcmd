@@ -8,6 +8,11 @@ from .. import DeleteSiteUsersParser
 
 
 class DeleteSiteUsersCommand(SiteCommand):
+    """
+    Command to Remove users from from the site that user is logged in to.
+    The users to be removed are specified in a file that contains
+    a simple list of one user name per line.
+    """
     def __init__(self, csv_lines, args):
         super().__init__(args)
         self.csv_lines = csv_lines

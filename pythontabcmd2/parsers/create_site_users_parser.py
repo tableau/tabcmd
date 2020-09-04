@@ -4,7 +4,9 @@ from .common_parser import CommonParser
 
 
 class CreateSiteUsersParser:
-
+    """
+    Parser for createsiteusers command
+    """
     @staticmethod
     def create_site_user_parser():
         """Method to parse create site users arguments passed by the user"""

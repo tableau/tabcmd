@@ -6,6 +6,9 @@ from .common_parser import CommonParser
 
 
 class EncryptExtractsParser:
+    """
+    Parser for the command encryptextracts
+    """
     @staticmethod
     def encrypt_extracts_parser():
         """Method to parse encrypt extracts arguments passed by the user"""

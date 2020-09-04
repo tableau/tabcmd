@@ -5,6 +5,9 @@ from .parent_parser import ParentParser
 
 
 class DeleteSiteParser:
+    """
+    Parser for the command deletesite
+    """
     @staticmethod
     def delete_site_parser():
         """Method to parse delete site arguments passed by the user"""

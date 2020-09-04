@@ -4,6 +4,9 @@ from .. import get_logger
 
 
 class GroupCommand(Commands):
+    """
+    This class acts as a base class for group related commands
+    """
     def __init__(self, args):
         super().__init__(args)
         self.name = args.name

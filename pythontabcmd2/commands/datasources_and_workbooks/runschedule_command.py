@@ -4,7 +4,11 @@ from ... import Session
 from .. import RunScheduleParser
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
+
 class RunSchedule(DatasourcesAndWorkbooks):
+    """
+    This command runs the specified schedule as it is on the server.
+    """
     def __init__(self, args, schedule):
         super().__init__(args)
         self.schedule = schedule

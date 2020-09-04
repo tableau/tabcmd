@@ -2,6 +2,9 @@ from ..commands import Commands
 
 
 class UserCommand(Commands):
+    """
+    This class acts as a base class for user related group of commands
+    """
     def __init__(self, csv_lines, args):
         super().__init__(args)
         self.csv_lines = csv_lines

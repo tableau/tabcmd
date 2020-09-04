@@ -3,6 +3,9 @@ import tableauserverclient as TSC
 
 
 class DatasourcesAndWorkbooks(Commands):
+    """
+    Base Class for Operations related to Datasources and Workbooks
+    """
     def __init__(self, args):
         super().__init__(args)
         self.args = args
