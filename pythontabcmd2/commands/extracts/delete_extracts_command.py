@@ -39,4 +39,3 @@ class DeleteExtracts(ExtractsCommand):
                                                               self.args
                                                               .workbook)
             server.workbooks.delete_extract(workbook_item)
-

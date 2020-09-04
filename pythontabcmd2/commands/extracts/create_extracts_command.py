@@ -45,4 +45,5 @@ class CreateExtracts(ExtractsCommand):
             server.workbooks.create_extract(workbook_item,
                                             encrypt=self.args.encrypt,
                                             includeAll=self.args.include_all,
-                                            datasources=self.args.embedded_datasources)
+                                            datasources=self.args.
+                                            embedded_datasources)

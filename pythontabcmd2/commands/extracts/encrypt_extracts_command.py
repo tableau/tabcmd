@@ -32,4 +32,3 @@ class EncryptExtracts(ExtractsCommand):
     def encrypt_extract(self, server):
         site_id = SiteCommand.find_site_id(server, self.site_name)
         server.sites.encrypt_extracts(site_id)
-        # include a try except and catch errors
