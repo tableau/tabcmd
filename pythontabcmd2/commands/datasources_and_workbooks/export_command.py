@@ -2,11 +2,12 @@ import tableauserverclient as TSC
 from .. import log
 from ... import Session
 from .. import ExportParser
+from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
-class ExportCommand:
+class ExportCommand(DatasourcesAndWorkbooks):
     def __init__(self, args, url):
-        self.args = args
+        super().__init__(args)
         self.url = url
         self.logging_level = args.logging_level
         self.logger = log('pythontabcmd2.export',
@@ -40,14 +41,8 @@ class ExportCommand:
         if self.args.fullpdf:  # its a workbook
             workbook = self.get_workbook(self.url)
             try:
-                req_option = TSC.RequestOptions()
-                req_option.filter.add(TSC.Filter("contentUrl",
-                                                 TSC.RequestOptions.
-                                                 Operator.Equals,
-                                                 workbook))
-                matching_workbook, _ = server.workbooks.get(
-                    req_option)
-                workbook_from_list = matching_workbook[0]
+                workbook_from_list = self.get_request_option_for_workbook(
+                    server, workbook)
 
                 req_option_pdf = TSC.PDFRequestOptions(maxage=1)
 
@@ -69,14 +64,8 @@ class ExportCommand:
             if self.args.pdf:  # its a view
                 view = self.get_view(self.url)
                 try:
-                    req_option = TSC.RequestOptions()
-                    req_option.filter.add(TSC.Filter("contentUrl",
-                                                     TSC.RequestOptions.
-                                                     Operator.Equals,
-                                                     view))
-                    matching_view, _ = server.views.get(
-                        req_option)
-                    views_from_list = matching_view[0]
+                    views_from_list = self.get_request_option_for_view(
+                        server, view)
 
                     req_option_pdf = TSC.PDFRequestOptions(maxage=1)
 
@@ -97,14 +86,8 @@ class ExportCommand:
             if self.args.csv:
                 view = self.get_view(self.url)
                 try:
-                    req_option = TSC.RequestOptions()
-                    req_option.filter.add(TSC.Filter("contentUrl",
-                                                     TSC.RequestOptions.
-                                                     Operator.Equals,
-                                                     view))
-                    matching_view, _ = server.views.get(
-                        req_option)
-                    views_from_list = matching_view[0]
+                    views_from_list = self.get_request_option_for_view(
+                        server, view)
 
                     req_option_csv = TSC.CSVRequestOptions(maxage=1)
 
@@ -124,17 +107,9 @@ class ExportCommand:
             if self.args.png:
                 view = self.get_view(self.url)
                 try:
-                    req_option = TSC.RequestOptions()
-                    req_option.filter.add(TSC.Filter("contentUrl",
-                                                     TSC.RequestOptions.
-                                                     Operator.Equals,
-                                                     view))
-                    matching_view, _ = server.views.get(
-                        req_option)
-                    views_from_list = matching_view[0]
-
+                    views_from_list = self.get_request_option_for_view(
+                        server, view)
                     req_option_csv = TSC.CSVRequestOptions(maxage=1)
-
                     server.views.populate_csv(views_from_list,
                                               req_option_csv)
                     if self.args.filename is None:
@@ -148,4 +123,4 @@ class ExportCommand:
 
                 except TSC.ServerResponseError as e:
                     self.logger.error("Server error occurred")
-        # if self.args.pdf or self.args.png -r self.args.csv:
+

@@ -3,11 +3,12 @@ from .. import log
 from ..project.project_command import ProjectCommand
 from ... import Session
 from .. import PublishParser
+from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
-class PublishCommand:
+class PublishCommand(DatasourcesAndWorkbooks):
     def __init__(self, args, evaluated_project_path, source, filename):
-        self.args = args
+        super().__init__(args)
         self.file_name = filename
         self.file_path = source
         self.project_path = evaluated_project_path

@@ -16,3 +16,5 @@ pythontabcmd2/__pycache__/
 *.png
 *.twbx
 *.hyper
+*.twb
+*.twbr

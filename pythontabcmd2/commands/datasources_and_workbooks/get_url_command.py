@@ -3,12 +3,13 @@ from .. import log
 from ... import Session
 from .. import GetUrlParser
 import sys
+from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
-class GetUrl:
+class GetUrl(DatasourcesAndWorkbooks):
     def __init__(self, args, url):
+        super().__init__(args)
         self.url = url
-        self.args = args
         self.logging_level = args.logging_level
         self.logger = log('pythontabcmd2.get_url_command',
                           self.logging_level)
@@ -59,36 +60,26 @@ class GetUrl:
 
     def get_workbook(self, url):
         separated_list = url.split("/")
-        print("separated list get view", separated_list,
-              separated_list[::-1][0])
         if self.check_if_extension_present(separated_list[::-1][0]):
             view_second_half_url = self.get_view_without_extension(
                 separated_list[::-1][0])
-            print("second half", view_second_half_url)
         else:
             view_second_half_url = separated_list[2]
-            print(separated_list[2])
         return view_second_half_url
 
     def get_view(self, url):
         # check the size of list
         separated_list = url.split("/")
-        print("separated list get view", separated_list,
-              separated_list[::-1][0])
         if self.check_if_extension_present(separated_list[::-1][0]):
             view_second_half_url = self.get_view_without_extension(
                 separated_list[::-1][0])
-            print("second half", view_second_half_url)
         else:
             view_second_half_url = separated_list[2]
-            print(separated_list[2])
-
         return '{}/sheets/{}'.format(separated_list[1], view_second_half_url)
 
     def get_url(self, server):
         """Method to get url using Tableauserverclient methods"""
         file_name = self.evaluate_file_name(self.args.filename, self.url)
-        print(file_name)
         if file_name == "pdf":
             self.generate_pdf(server)
         elif file_name == "png":
@@ -103,20 +94,10 @@ class GetUrl:
 
     def generate_pdf(self, server):
         view = self.get_view(self.url)
-        print(view)
         try:
-            req_option = TSC.RequestOptions()
-            req_option.filter.add(TSC.Filter("contentUrl",
-                                             TSC.RequestOptions.
-                                             Operator.Equals,
-                                             view))
-            matching_view, _ = server.views.get(
-                req_option)
-            print(matching_view)
-            views_from_list = matching_view[0]
-
+            views_from_list = self.get_request_option_for_view(
+                server, view)
             req_option_pdf = TSC.PDFRequestOptions(maxage=1)
-
             server.views.populate_pdf(views_from_list,
                                       req_option_pdf)
             if self.args.filename is None:
@@ -135,15 +116,8 @@ class GetUrl:
     def generate_png(self, server):
         view = self.get_view(self.url)
         try:
-            req_option = TSC.RequestOptions()
-            req_option.filter.add(TSC.Filter("contentUrl",
-                                             TSC.RequestOptions.
-                                             Operator.Equals,
-                                             view))
-            matching_view, _ = server.views.get(
-                req_option)
-            views_from_list = matching_view[0]
-
+            views_from_list = self.get_request_option_for_view(
+                server, view)
             req_option_csv = TSC.CSVRequestOptions(maxage=1)
 
             server.views.populate_csv(views_from_list,
@@ -163,14 +137,8 @@ class GetUrl:
     def generate_csv(self, server):
         view = self.get_view(self.url)
         try:
-            req_option = TSC.RequestOptions()
-            req_option.filter.add(TSC.Filter("contentUrl",
-                                             TSC.RequestOptions.
-                                             Operator.Equals,
-                                             view))
-            matching_view, _ = server.views.get(
-                req_option)
-            views_from_list = matching_view[0]
+            views_from_list = self.get_request_option_for_view(
+                server, view)
 
             req_option_csv = TSC.CSVRequestOptions(maxage=1)
 
@@ -191,14 +159,8 @@ class GetUrl:
     def generate_twb(self, server):
         workbook = self.get_workbook(self.url)
         try:
-            req_option = TSC.RequestOptions()
-            req_option.filter.add(TSC.Filter("contentUrl",
-                                             TSC.RequestOptions.
-                                             Operator.Equals,
-                                             workbook))
-            matching_workbook, _ = server.workbooks.get(
-                req_option)
-            workbook_from_list = matching_workbook[0]
+            workbook_from_list = self.get_request_option_for_view(
+                server, workbook)
 
             server.workbooks.download(workbook_from_list.id, filepath=None,
                                       no_extract=False)
