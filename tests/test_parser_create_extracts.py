@@ -1,5 +1,6 @@
 import unittest
 import sys
+
 try:
     from unittest import mock
 except ImportError:
@@ -148,7 +149,6 @@ class CreateExtractsParserTest(unittest.TestCase):
                                               workbook="workbooktest",
                                               include_all="test")
 
-
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=argparse.Namespace(datasource="testproject",
                                                 embedded_datasources='desc',
@@ -167,7 +167,6 @@ class CreateExtractsParserTest(unittest.TestCase):
                                               project="test123",
                                               include_all="test")
 
-
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=argparse.Namespace(datasource="testproject",
                                                 embedded_datasources='desc',
@@ -181,10 +180,10 @@ class CreateExtractsParserTest(unittest.TestCase):
         args = CreateExtractsParser.create_extracts_parser()
         with self.assertRaises(AssertionError):
             assert args == argparse.Namespace(
-                                              embedded_datasources='desc',
-                                              url="1234",
-                                              project="test123",
-                                              include_all="test")
+                embedded_datasources='desc',
+                url="1234",
+                project="test123",
+                include_all="test")
 
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=argparse.Namespace(datasource="testproject",
@@ -223,4 +222,3 @@ class CreateExtractsParserTest(unittest.TestCase):
                 url="1234",
                 project="test123",
                 include_all="test")
-

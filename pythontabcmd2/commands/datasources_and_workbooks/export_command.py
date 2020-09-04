@@ -127,4 +127,3 @@ class ExportCommand(DatasourcesAndWorkbooks):
 
                 except TSC.ServerResponseError as e:
                     self.logger.error("Server error occurred")
-

@@ -26,4 +26,3 @@ class ExportParserTest(unittest.TestCase):
     def test_export_parser_missing_all_args(self, mock_args):
         with self.assertRaises(AttributeError):
             args, url = ExportParser.export_parser()
-

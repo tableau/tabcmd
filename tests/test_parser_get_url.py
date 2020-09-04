@@ -15,7 +15,6 @@ class GetUrlParserTest(unittest.TestCase):
         with self.assertRaises(AttributeError):
             args, url = GetUrlParser.get_url_parser()
 
-
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=argparse.Namespace())
     def test_get_url_parser_missing_all_args(self, mock_args):

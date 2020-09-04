@@ -48,7 +48,7 @@ class GetUrl(DatasourcesAndWorkbooks):
         if len(split_view) == 2:
             if split_view[1] == "pdf" or split_view[1] == "csv" or \
                     split_view[1] == "png" or split_view[1] == "twb" or \
-                    split_view[1] == "twbx" :  # add
+                    split_view[1] == "twbx":  # add
                 # workbook
                 return True
             else:

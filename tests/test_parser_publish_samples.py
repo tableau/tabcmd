@@ -15,7 +15,6 @@ class PublishParserParserTest(unittest.TestCase):
         with self.assertRaises(AttributeError):
             args, path = PublishSamplesParser.publish_samples_parser()
 
-
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=argparse.Namespace())
     def test_publish_samples_parser_missing_all_args(self, mock_args):
