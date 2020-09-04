@@ -7,6 +7,8 @@ from ..site.site_command import SiteCommand
 
 
 class DecryptExtracts(ExtractsCommand):
+    """ Command that decrypts all extracts on a site. If no site is
+    specified, extracts on the default site will be decrypted."""
     def __init__(self, args, site_name):
         super().__init__(args)
         self.site_name = site_name

@@ -7,6 +7,11 @@ from ..site.site_command import SiteCommand
 
 
 class ReencryptExtracts(ExtractsCommand):
+    """
+    Command to Reencrypt all extracts on a site with new encryption keys.
+    This command will regenerate the key encryption key and
+    data encryption key. You must specify a site.
+    """
     def __init__(self, args, site_name):
         super().__init__(args)
         self.site_name = site_name

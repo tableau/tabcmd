@@ -7,6 +7,10 @@ from ..site.site_command import SiteCommand
 
 
 class RefreshExtracts(ExtractsCommand):
+    """
+    Command to Perform a full or incremental refresh of
+    extracts belonging to the specified workbook or data source.
+    """
     def __init__(self, args):
         super().__init__(args)
         self.args = args

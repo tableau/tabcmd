@@ -7,6 +7,9 @@ from ..extracts.extracts_command import ExtractsCommand
 
 
 class DeleteExtracts(ExtractsCommand):
+    """
+    Command to delete extracts for a published workbook or data source.
+    """
     def __init__(self, args):
         super().__init__(args)
         self.args = args
