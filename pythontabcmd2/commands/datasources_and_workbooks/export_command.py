@@ -44,10 +44,12 @@ class ExportCommand(DatasourcesAndWorkbooks):
         # handle orientation and page type options
         req_option_pdf = TSC.PDFRequestOptions(maxage=1)
         if self.args.pagelayout == 'landscape':
-            req_option_pdf.orientation = TSC.PDFRequestOptions.Orientation.Landscape
+            req_option_pdf.orientation =
+                TSC.PDFRequestOptions.Orientation.Landscape
         else:
-            req_option_pdf.orientation = TSC.PDFRequestOptions.Orientation.Portrait
-            
+            req_option_pdf.orientation =
+                TSC.PDFRequestOptions.Orientation.Portrait
+
         if self.args.pagesize == 'a3':
             req_option_pdf.page_type = TSC.PDFRequestOptions.PageType.A3
         elif self.args.pagesize == 'a4':
@@ -73,7 +75,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
         else:
             req_option_pdf.page_type = TSC.PDFRequestOptions.PageType.Letter
         return req_option_pdf
-        
+
     def export(self, server):
         """Method to export using Tableauserverclient methods"""
         if self.args.fullpdf:  # its a workbook
