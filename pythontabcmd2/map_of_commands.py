@@ -24,4 +24,5 @@ class CommandsMap:
                          "encryptextracts": "EncryptExtracts",
                          "reencryptextracts": "ReencryptExtracts",
                          "refreshextracts": "RefreshExtracts",
-                         "publishsamples": "PublishSamplesCommand"}
+                         "publishsamples": "PublishSamplesCommand",
+                         "help": "HelpCommand"}

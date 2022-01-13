@@ -19,7 +19,7 @@ class CreateProjectParser(ParentParser):
         subparsers = parser.add_subparsers()
         create_project_parser = subparsers.add_parser('createproject',
                                                       parents=[parser,
-                                                               common_parser])
+                                                               common_parser], conflict_handler='resolve')
         create_project_parser.add_argument('--name', '-n', required=True,
                                            help='name of project')
         create_project_parser.add_argument('--description', '-d', default=None,
