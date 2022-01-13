@@ -6,6 +6,7 @@ import os
 from .. import LogoutParser
 from ... import Session
 from .. import HelpParser
+from .. import ParentParser
 
 
 class HelpCommand:
@@ -21,5 +22,7 @@ class HelpCommand:
         return cls(args)
 
     def run_command(self):
-        print("THESE ARE THE ARGS", self.args)
-        print("HELLP WPRLD")
+        parent_parser = ParentParser()
+        parser = parent_parser.parent_parser_with_global_options()
+        HelpParser.print_help_description()
+        parser.print_help()

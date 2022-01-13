@@ -3,18 +3,14 @@ import sys
 import textwrap
 from .help_parser import HelpParser
 
-# class RawFormatter(argparse.HelpFormatter):
-#     def _fill_text(self, text, width, indent):
-#         return "\n".join([textwrap.fill(line, width) for line in
-#                           textwrap.indent(textwrap.dedent(text), indent).splitlines()])
-
 
 class ParentParser:
     """Parser that will be inherited by all commands. Contains
     authentication and logging level setting"""
 
     def parent_parser_with_global_options(self):
-        parser = argparse.ArgumentParser(usage=argparse.SUPPRESS, add_help=False)
+        parser = argparse.ArgumentParser(usage=argparse.SUPPRESS,
+                                         add_help=False)
         parser.add_argument('--server', '-s', metavar='',
                             help='server of account holder')
         parser.add_argument('--username', '-u', metavar='',

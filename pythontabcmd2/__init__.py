@@ -33,3 +33,4 @@ from .parsers.refresh_extracts_parser import RefreshExtractsParser
 from .parsers.reencrypt_parser import ReencryptExtractsParser
 from .parsers.get_url_parser import GetUrlParser
 from .parsers.help_parser import HelpParser
+from .map_of_commands import CommandsMap

@@ -20,7 +20,7 @@ class GetUrlParser:
             parents=[parser])
         get_url_parser.add_argument('--filename', '-f',
                                     help='name of the file')
-        url = sys.argv[2]
+        url = sys.argv[1]
         args = get_url_parser.parse_args(sys.argv[3:])
         if args.site is None or args.site == "Default":
             args.site = ''

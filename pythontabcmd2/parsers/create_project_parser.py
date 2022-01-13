@@ -9,6 +9,7 @@ class CreateProjectParser(ParentParser):
     """
     Parser for createproject command
     """
+
     @staticmethod
     def create_project_parser():
         """Method to parse create project arguments passed by the user"""
@@ -17,9 +18,10 @@ class CreateProjectParser(ParentParser):
         common_parser_obj = CommonParser()
         common_parser = common_parser_obj.common_parser_arguments()
         subparsers = parser.add_subparsers()
-        create_project_parser = subparsers.add_parser('createproject',
-                                                      parents=[parser,
-                                                               common_parser], conflict_handler='resolve')
+        create_project_parser = \
+            subparsers.add_parser('createproject', parents=[parser,
+                                                            common_parser],
+                                  conflict_handler='resolve')
         create_project_parser.add_argument('--name', '-n', required=True,
                                            help='name of project')
         create_project_parser.add_argument('--description', '-d', default=None,
@@ -29,6 +31,7 @@ class CreateProjectParser(ParentParser):
                                            help='content permission ')
 
         args = create_project_parser.parse_args(sys.argv[2:])
+        print("THESE ARE THE SYS ARGV", sys.argv)
         if args.parent_project_path is not None:
             evaluated_project_path = GlobalOptions. \
                 evaluate_project_path(args.parent_project_path)
