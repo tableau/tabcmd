@@ -14,7 +14,8 @@ class Tabcmd2Controller:
     def get_command_strategy(self):
         parent_parser = ParentParser()
         parser = parent_parser.parent_parser_with_global_options()
-        if len(sys.argv) > 2 and sys.argv[1] == "help" and sys.argv[2] == "commands":
+        if len(sys.argv) > 2 and sys.argv[1] == "help" \
+                and sys.argv[2] == "commands":
             HelpParser.print_help_description()
             Tabcmd2Controller.get_list_of_commands_available()
             parser.print_help()
@@ -41,5 +42,4 @@ class Tabcmd2Controller:
 
     @classmethod
     def print_formatted_list(cls, command, description_of_command):
-
         print(" %-20s %-15s %-5s" % (command, "--", description_of_command))
