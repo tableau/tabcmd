@@ -20,7 +20,8 @@ class Tabcmd2Controller:
             Tabcmd2Controller.get_list_of_commands_available()
             parser.print_help()
             sys.exit()
-        if sys.argv[1] == "help" and sys.argv[2] is not None:
+        if len(sys.argv) > 2 and sys.argv[1] == "help" and sys.argv[2] is not \
+                None:
             if sys.argv[2] in ParsersMap.parsers_hashmap:
                 ParsersMap.parsers_hashmap[sys.argv[2]]()
             else:

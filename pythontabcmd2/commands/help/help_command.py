@@ -26,5 +26,3 @@ class HelpCommand:
         parser = parent_parser.parent_parser_with_global_options()
         HelpParser.print_help_description()
         parser.print_help()
-        print("THESE ARE THE ARGS", self.args)
-        print("HELLP WPRLD")
