@@ -20,7 +20,6 @@ class Tabcmd2Controller:
             parser.print_help()
             sys.exit()
         if sys.argv[1] == "help" and sys.argv[2] is not None:
-            print("REQUESTING SPECIFIC COMMAND HELP")
             if sys.argv[2] in ParsersMap.parsers_hashmap:
                 ParsersMap.parsers_hashmap[sys.argv[2]]()
             else:

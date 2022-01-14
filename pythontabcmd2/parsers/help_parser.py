@@ -14,6 +14,4 @@ class HelpParser:
 
     @staticmethod
     def help_parser():
-        parser = argparse.ArgumentParser(usage=argparse.SUPPRESS, add_help=False)
-        parser.add_argument('--server', '-s', metavar='',
-                            help='server of account holder')
+        pass
