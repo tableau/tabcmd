@@ -4,6 +4,7 @@ from .parsers.parent_parser import ParentParser
 from .logger_config import get_logger
 from .parsers.help_parser import HelpParser
 from .map_of_commands import *
+from .map_of_parsers import *
 
 logger = get_logger('pythontabcmd2.tabcmd2_controller', 'info')
 
@@ -18,6 +19,13 @@ class Tabcmd2Controller:
             Tabcmd2Controller.get_list_of_commands_available()
             parser.print_help()
             sys.exit()
+        if sys.argv[1] == "help" and sys.argv[2] is not None:
+            print("REQUESTING SPECIFIC COMMAND HELP")
+            if sys.argv[2] in ParsersMap.parsers_hashmap:
+                ParsersMap.parsers_hashmap[sys.argv[2]]()
+            else:
+                print("Please check the command entered and try again")
+                sys.exit()
         parser.add_argument('command', nargs='?', default="help")
         args = parser.parse_args(sys.argv[1:2])
         if args.command is not None:

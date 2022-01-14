@@ -9,6 +9,7 @@ class CreateProjectParser(ParentParser):
     """
     Parser for createproject command
     """
+
     @staticmethod
     def create_project_parser():
         """Method to parse create project arguments passed by the user"""
@@ -37,3 +38,6 @@ class CreateProjectParser(ParentParser):
         if args.site is None or args.site == "Default":
             args.site = ''
         return args, evaluated_project_path
+
+
+
