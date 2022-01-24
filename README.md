@@ -26,6 +26,9 @@ A Python based app that replicates the functionality of the existing [Tabcmd com
 
 _coming soon_
 
+## Documentation
+Read the [documentation for Tabcmd2](docs/index.md).
+
 ## Get started
 
 This section describes how to install and configure Tabcmd2.
