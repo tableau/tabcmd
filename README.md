@@ -33,7 +33,11 @@ Or install the current work-in-progress version from Git\
 pip install git+https://github.com/tableau/tabcmd.git@development
 ```
 
-If you go this route, but want to switch back to the non-development version, you need to run the following command before installing the stable version:
+## Documentation
+
+Read the [full user documentation for Tabcmd2](docs/index.md).
+
+## Get started
 
 ```shell
 pip uninstall tabcmd
