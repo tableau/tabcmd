@@ -29,7 +29,7 @@ from .parsers.help_parser import *
 
 class ParsersMap:
     parsers_hashmap = {"login": LoginParser.login_parser,
-                        "get": GetUrlParser.get_url_parser,
+                       "get": GetUrlParser.get_url_parser,
                        "createproject":
                            CreateProjectParser.create_project_parser,
                        "deleteproject":

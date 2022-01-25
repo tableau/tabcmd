@@ -44,9 +44,13 @@ class ExportParser:
         export_parser.add_argument('--filter', '-vf', metavar='COLUMN:VALUE',
                                    help='View filter to apply to the view')
         args = export_parser.parse_args(sys.argv[3:])
+
         url = sys.argv[2]
+        print(sys.argv)
+        print(sys.argv[2])
         if args.site is None or args.site == "Default":
             args.site = ''
+        print(args)
         return args, url
 
 # TODO: ARGUMENT --COMPLETE
