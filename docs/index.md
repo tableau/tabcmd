@@ -1,7 +1,6 @@
--------------
-
+---
 title: tabcmd
--------------
+---
 
 Tableau provides the tabcmd command-line utility which you can use to automate site administration tasks on your Tableau Online site. For example, creating or deleting users, projects, and groups.
 
