@@ -13,6 +13,7 @@ class ExportParserTest(unittest.TestCase):
                 return_value=argparse.Namespace(url="helloworld", pdf=True,
                                                 fullpdf=False, site=""))
     def test_export_parser_file_type_pdf(self, mock_args):
+        url = "test"
         args, url = ExportParser.export_parser()
         assert args == argparse.Namespace(url="helloworld", pdf=True,
                                           fullpdf=False, site="")

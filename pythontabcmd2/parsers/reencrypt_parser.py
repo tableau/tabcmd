@@ -8,6 +8,7 @@ class ReencryptExtractsParser:
     """
     Parser to reencrypt command
     """
+
     @staticmethod
     def reencrypt_extracts_parser():
         """Method to parse reencrypt extracts arguments passed by the user"""
@@ -16,7 +17,10 @@ class ReencryptExtractsParser:
         subparsers = parser.add_subparsers()
         reencrypt_extract_parser = subparsers.add_parser('reencryptextracys',
                                                          parents=[parser])
-        site_name = sys.argv[2]
+        try:
+            site_name = sys.argv[2]
+        except Exception as ex:
+            print(ex)
         args = reencrypt_extract_parser.parse_args(sys.argv[2:])
         if args.site is None or args.site == "Default":
             args.site = ''

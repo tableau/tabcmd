@@ -16,7 +16,10 @@ class RunScheduleParser:
         subparsers = parser.add_subparsers()
         runschedule_parser = subparsers.add_parser('runschedule',
                                                    parents=[parser])
-        schedule = sys.argv[2]
+        try:
+            schedule = sys.argv[2]
+        except Exception as ex:
+            print(ex)
         args = runschedule_parser.parse_args(sys.argv[2:])
         if args.site is None or args.site == "Default":
             args.site = ''
