@@ -1,11 +1,14 @@
-tabcmd Commands
-Version: Current
+---
+title: tabcmd Commands
+layout: docs
+---
 
 You can use the following commands with the tabcmd command line tool in Tableau Online:
 
->**Important**: To ensure availability and avoid disruption with Tableau Online, make sure to upgrade your tabcmd client to a version greater than version 2020.2 before January 2022. The tabcmd versions are API backward compatible and should not require code changes. For more information, see Install tabcmd.
+**Important**: To ensure availability and avoid disruption with Tableau Online, make sure to upgrade your tabcmd client to a version greater than version 2020.2 before January 2022. The tabcmd versions are API backward compatible and should not require code changes. For more information, see Install tabcmd.
 
-
+* TOC
+{:toc}
 
 # addusers *group-name*
 Adds users to the specified group.
@@ -500,25 +503,25 @@ Deletes extracts for a published workbook or data source.
     <dd>A space-separated list of embedded data source names within the target workbook. Enclose data source names with double quotes if they contain spaces. Only available when deleting extracts for a workbook.</dd>
     <dt>--encrypt</dt>
     <dd>Create encrypted extract.</dd>
-    
+
     <dt>--include-all</dt>
-    
+
     <dd>Include all embedded data sources within target workbook.</dd>
-    
+
     <dt>--parent-project-path</dt>
-    
+
     <dd>Path of the project that is the parent of the project that contains the target resource. Must specify the project name with --project.</dd>
-    
+
     <dt>--project</dt>
-    
+
     <dd>The name of the project that contains the target resource. Only necessary if --workbook or --datasource is specified. If unspecified, the default project 'Default' is used.</dd>
-    
+
     <dt>-u, -url</dt>
-    
+
     <dd>The canonical name for the resource as it appears in the URL.</dd>
-    
+
     <dt>-w, -workbook</dt>
-    
+
     <dd>The name of the target workbook for extract deletion.</dd>
 </dl>
 
@@ -1113,7 +1116,7 @@ Publishes the specified workbook (.twb(x)), data source (.tds(x)), or extract (.
 
 If you are publishing a workbook, by default, all sheets in the workbook are published without database user names or passwords.
 
-The permissions initially assigned to the workbook or data source are copied from the project that the file is published to. Permissions for the published resource can be changed after the file has been published. 
+The permissions initially assigned to the workbook or data source are copied from the project that the file is published to. Permissions for the published resource can be changed after the file has been published.
 
 If the workbook contains user filters, one of the thumbnail options must be specified.
 
@@ -1260,7 +1263,7 @@ Performs a full or incremental refresh of extracts belonging to the specified wo
 
 This command takes the name of the workbook or data source as it appears on the server, not the file name when it was published. Only an administrator or the owner of the workbook or data source is allowed to perform this operation.
 
->Notes: 
+>Notes:
 * This method will fail and result in an error if your Server Administrator has disabled the RunNow setting for the site. For more information, see Tableau Server Settings(Link opens in a new window).
 * You can use tabcmd to refresh supported data sources that are hosted in the cloud. For example, SQL Server, MySQL, PostgreSQL on a cloud platform; Google Analytics; and so on.
 * To refresh on-premises data with tabcmd, the data source must be a type that can be configured for Tableau Bridge Recommended schedules. For all other data sources that connect to on-premises data, you can use Bridge or the command-line data extract utility. Learn more at Use Bridge to Keep Data Fresh and Automate Extract Refresh Tasks from the Command Line.
@@ -1312,7 +1315,7 @@ For example:
 
 * To specify a project called "Nested" that exists in a "Main" project, use the following syntax:
 `--parent-project-path "Main" --project "Nested"`
-* To specify a project called "Nested2" that is nested within the "Nested" project: 
+* To specify a project called "Nested2" that is nested within the "Nested" project:
 `--parent-project-path "Main/Nested" --project "Nested2"`
 </dd>
 
