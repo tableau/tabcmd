@@ -36,61 +36,61 @@ The remaining steps refer to this computer as “the tabcmd computer.”
 
 5. Complete the installation steps as appropriate for the operating system of the tabcmd computer:
 
-<details><summary>Windows</summary>
-By default tabcmd is installed to C:\Program Files\Tableau\Tableau Server\<version>\extras\Command Line Utility. You can change this during installation and recommend that you install tabcmd to a folder named tabcmd at the root of the C:\ drive (C:\tabcmd). This can make it easier to locate and run, and will accommodate some limitations with the Windows operating system if you add the tabcmd directory to the Windows PATH.
+    * **Windows**
+By default tabcmd is installed to ```C:\Program Files\Tableau\Tableau Server\<version>\extras\Command Line Utility```. You can change this during installation and recommend that you install tabcmd to a folder named tabcmd at the root of the C:\ drive (C:\tabcmd). This can make it easier to locate and run, and will accommodate some limitations with the Windows operating system if you add the tabcmd directory to the Windows PATH.
 
 
->**Note**: The tabcmd Setup program does not add the tabcmd directory to the Windows PATH variable. You can add it manually, or you can include the full path to tabcmd each time you call it.
+        >**Note**: The tabcmd Setup program does not add the tabcmd directory to the Windows PATH variable. You can add it manually, or you can include the full path to tabcmd each time you call it.
 
-You can install tabcmd in two ways on Windows:
+        You can install tabcmd in two ways on Windows:
 
-* Double-click the installer to follow the steps in the UI:
+        a. Double-click the installer to follow the steps in the UI:
 
-  * Accept the license agreement.
+       * Accept the license agreement.
 
-  * If you want to install to a non-default location, click Customize and type or browse to the location you want to install tabcmd to.
+       * If you want to install to a non-default location, click Customize and type or browse to the location you want to install tabcmd to.
 
-  * Click Install.
-    If you are prompted by Windows Defender Firewall or User Account Control, click Allow access.
+       * Click Install.
+         If you are prompted by Windows Defender Firewall or User Account Control, click Allow access.
 
-* Run the installer from a command prompt:
+        b. Run the installer from a command prompt:
 
-  * Open a command prompt as administrator on the tabcmd computer.
+        * Open a command prompt as administrator on the tabcmd computer.
 
-  * Navigate to the directory where you copied the tabcmd installer.
+        * Navigate to the directory where you copied the tabcmd installer.
 
-  * Install tabcmd:
+        * Install tabcmd:
 
-    ```tableau-setup-tabcmd-tableau-<version_code>-x64.exe /quiet ACCEPTEULA=1```
-   To install to a non-default location:
+            ```tableau-setup-tabcmd-tableau-<version_code>-x64.exe /quiet ACCEPTEULA=1```
+        To install to a non-default location:
 
-    ```tableau-setup-tabcmd-tableau-<version_code>-x64.exe /quiet ACCEPTEULA=1 INSTALLDIR="<path\to\install\directory>"```
-   For example:
+            ```tableau-setup-tabcmd-tableau-<version_code>-x64.exe /quiet ACCEPTEULA=1 INSTALLDIR="<path\to\install\directory>"```
+        For example:
 
-    ```tableau-setup-tabcmd-tableau-<version_code>-x64.exe /quiet ACCEPTEULA=1 INSTALLDIR="C:\tabcmd"```
-    For a complete list of command line options you can use with the tabcmd installer, run the installer with a /?. For more information on tabcmd installer command line options, see Install Switches and Properties for tabcmd (Windows).
+            ```tableau-setup-tabcmd-tableau-<version_code>-x64.exe /quiet ACCEPTEULA=1 INSTALLDIR="C:\tabcmd"```
+            For a complete list of command line options you can use with the tabcmd installer, run the installer with a /?. For more information on tabcmd installer command line options, see Install Switches and Properties for tabcmd (Windows).
 
-The tabcmd Setup program creates logs in C:\Users\<user>\AppData\Local\Temp you can use if you have problems installing tabcmd. The logs use the naming convention Tableau_Server_Command_Line_Utility_(<version_code>)_##############.log.
-</details>
+        The tabcmd Setup program creates logs in C:\Users\<user>\AppData\Local\Temp you can use if you have problems installing tabcmd. The logs use the naming convention Tableau_Server_Command_Line_Utility_(<version_code>)_##############.log.
 
-<details><summary>Linux</summary>
->**Note**: To run tabcmd on a Linux computer, you must have Java 8 (also called Java 1.8) installed. On RHEL-like systems this will be installed as a dependency when you install tabcmd. On Debian-like systems, you need to install Java 8 (1.8) separately if it is not already installed.
 
-1. Log on as a user with sudo access to the tabcmd computer.
+    * **Linux**
+        >**Note**: To run tabcmd on a Linux computer, you must have Java 8 (also called Java 1.8) installed. On RHEL-like systems this will be installed as a dependency when you install tabcmd. On Debian-like systems, you need to install Java 8 (1.8) separately if it is not already installed.
 
-2. Navigate to the directory where you copied the .rpm or .deb package that you downloaded.
+        a. Log on as a user with sudo access to the tabcmd computer.
 
-   * On RHEL-like distributions, including CentOS, run the following command:
+        b. Navigate to the directory where you copied the .rpm or .deb package that you downloaded.
 
-     ```sudo yum install tableau-tabcmd-<version>.noarch.rpm```
+        * On RHEL-like distributions, including CentOS, run the following command:
 
-   * On Ubuntu and Debian, run the following command:
+        ```sudo yum install tableau-tabcmd-<version>.noarch.rpm```
 
-     ```sudo apt-get install ./tableau-tabcmd-<version>_all.deb```
-</details>
-To uninstall tabcmd from a Linux computer, see the documentation for the Linux variety you are running.
+        * On Ubuntu and Debian, run the following command:
 
-6.(Optional) Add the fully qualified location where tabcmd is installed to your system path to allow you to run tabcmd commands without changing to that location, or specifying the location with each command. Steps to do this depend on the type and version of your operating system. For more information, see PATH_(variable).
+        ```sudo apt-get install ./tableau-tabcmd-<version>_all.deb```
+
+        To uninstall tabcmd from a Linux computer, see the documentation for the Linux variety you are running.
+
+6. (Optional) Add the fully qualified location where tabcmd is installed to your system path to allow you to run tabcmd commands without changing to that location, or specifying the location with each command. Steps to do this depend on the type and version of your operating system. For more information, see [PATH_(variable)](https://en.wikipedia.org/wiki/PATH_(variable)).
 
 # How to use tabcmd
 The basic steps for using tabcmd are as follows:
@@ -98,14 +98,13 @@ The basic steps for using tabcmd are as follows:
 1. Open the Command Prompt as an administrator.
 
 2. On a Windows computer, if you installed tabcmd on a computer other than the initial node, change to the directory where you installed tabcmd.
-
-    On a Linux computer, you do not need to change to the install directory.
+On a Linux computer, you do not need to change to the install directory.
 
 3. Run the tabcmd command.
 
 When you use tabcmd, you must establish an authenticated server session. The session identifies the server or Tableau Online site and the user running the session. You can start a session first, and then specify your command next, or you can start a session and execute a command all at once.
 
-Important: If you are using tabcmd to perform more than one task, you must run tasks one after another (serially), rather than at the same time (in parallel).
+>**Important**: If you are using tabcmd to perform more than one task, you must run tasks one after another (serially), rather than at the same time (in parallel).
 
 Commands (such as login) and the options (such as -s, -u, etc.) are not case sensitive, but the values you provide (such as User@Example.com) are case sensitive.
 
@@ -120,4 +119,4 @@ Here’s how to start a session and delete a workbook with one command—note th
 
 The options -s, -t, -u, and -p are among the tabcmd global variables, which can be used with any command.
 
-For more information, see tabcmd Commands.
+For more information, see [tabcmd Commands](tabcmd_cmd.md).
