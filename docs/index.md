@@ -4,15 +4,15 @@ title: tabcmd
 
 Tableau provides the tabcmd command-line utility which you can use to automate site administration tasks on your Tableau Online site. For example, creating or deleting users, projects, and groups.
 
->**Important**: To ensure availability and avoid disruption with Tableau Online, make sure to upgrade your tabcmd client to a version greater than version 2020.2 before January 2022. The tabcmd versions are API backward compatible and should not require code changes. For more information, see Install tabcmd.
+>**Important**: To ensure availability and avoid disruption with Tableau Online, make sure to upgrade your tabcmd client to a version greater than version 2020.2 before January 2022. The tabcmd versions are API backward compatible and should not require code changes. For more information, see [Install tabcmd](#install_tabcmd).
 
-# Install tabcmd
+# Install tabcmd {#install_tabcmd}
 
 When Tableau Server or Tableau Online is upgraded to a new version, if an updated version of tabcmd is required, you can download it from the Tableau Server Releases page on the Tableau website.
 
 For Tableau Server, we recommend you download the version that matches your server version. For Tableau Online, we recommend you always download the latest version to avoid issues caused by version incompatibilities. In either case, using an out of date version of tabcmd can cause errors and unpredictable results.
 
-1. Open a web browser and go to the Tableau Server Releases(Link opens in a new window) page. Go to this page even if you use Tableau Online.
+1. Open a web browser and go to the [Tableau Server Releases](https://www.tableau.com/support/releases/server?_ga=2.51032878.601314143.1643046979-174841.1636564315) page. Go to this page even if you use Tableau Online.
 
 2. If you're using:
 
@@ -20,6 +20,7 @@ For Tableau Server, we recommend you download the version that matches your serv
 * Tableau Server (Windows or Linux): select the release that matches your server version.
 
     In either case, if the expanded information shows maintenance releases, select the latest maintenance release or the one that matches your server version.
+    
 
 Select the server version you use (latest release for Tableau Online)
 
