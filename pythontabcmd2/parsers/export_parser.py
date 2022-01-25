@@ -12,6 +12,7 @@ class ExportParser:
     @staticmethod
     def export_parser():
         """Method to parse export arguments passed by the user"""
+        url = ""
         parent_parser = ParentParser()
         parser = parent_parser.parent_parser_with_global_options()
         subparsers = parser.add_subparsers()

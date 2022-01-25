@@ -12,6 +12,7 @@ class ReencryptExtractsParser:
     @staticmethod
     def reencrypt_extracts_parser():
         """Method to parse reencrypt extracts arguments passed by the user"""
+        site_name = ""
         parent_parser = ParentParser()
         parser = parent_parser.parent_parser_with_global_options()
         subparsers = parser.add_subparsers()

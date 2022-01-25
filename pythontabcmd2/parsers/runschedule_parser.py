@@ -11,6 +11,7 @@ class RunScheduleParser:
     @staticmethod
     def runschedule_parser():
         """Method to parse run-schedule arguments passed by the user"""
+        schedule = ""
         parent_parser = ParentParser()
         parser = parent_parser.parent_parser_with_global_options()
         subparsers = parser.add_subparsers()
