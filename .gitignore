@@ -12,8 +12,6 @@ dist/
 eggs/
 .eggs/
 pythontabcmd2/__pycache__/
-*.pdf
-*.png
 *.twbx
 *.hyper
 *.twb
