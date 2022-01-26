@@ -1,13 +1,13 @@
 ---
-title: Install Switches and Properties for tabcmd (Windows)
+title: Install Switches and Properties for tabcmd2 (Windows)
 layout: docs
 ---
 
 You can use the following switches when installing the Tableau Server Command Line Utility (tabcmd) version 2019.4.0 or later from the command line on Windows.
 
-<div class="alert alert-info"><strong>Important</strong>: To ensure availability and avoid disruption with Tableau Online, make sure to upgrade your tabcmd client to a version greater than version 2020.2 before January 2022. The tabcmd versions are API backward compatible and should not require code changes. For more information, see <a href="index.html#install_tabcmd">Install tabcmd</a>.</div>
+<div class="alert alert-info"><strong>Important</strong>: To ensure availability and avoid disruption with Tableau Online, make sure to upgrade your tabcmd2 client to a version greater than version 2020.2 before January 2022. The tabcmd2 versions are API backward compatible and should not require code changes. For more information, see <a href="index.html#install_tabcmd2">Install tabcmd</a>.</div>
 
-<div class="alert alert-info"><strong>Note</strong>: There are no equivalent switches for the Linux version of the tabcmd installer.</div>
+<div class="alert alert-info"><strong>Note</strong>: There are no equivalent switches for the Linux version of the tabcmd2 installer.</div>
 
 | Switch  | Description  | Comments  |
 |---|---|---|
@@ -20,4 +20,4 @@ You can use the following switches when installing the Tableau Server Command Li
 | Properties	  | Description	  | Comments  |
 |---|---|---|
 | `ACCEPTEULA=1|0`  | Accept the End User License Agreement (EULA). Required for quiet, silent, and passive install. 1 = accept the EULA, 0 = do not accept the EULA.  | If not included when using /passive, /silent or /quiet, Setup fails silently. If included but set to 0, Setup fails.  |
-|`INSTALLDIR="<path\to\installation\directory>"`  | Install tabcmd to the specified non-default install location.  |Specifies the location to install tabcmd. If not used, tabcmd is installed to `C:\Program Files\Tableau\Tableau Server\<version_code>\extras\Command Line Utility`. Example: `<Setup file> /silent INSTALLDIR="C:\tabcmd"`  |
+|`INSTALLDIR="<path\to\installation\directory>"`  | Install tabcmd2 to the specified non-default install location.  |Specifies the location to install tabcmd. If not used, tabcmd2 is installed to `C:\Program Files\Tableau\Tableau Server\<version_code>\extras\Command Line Utility`. Example: `<Setup file> /silent INSTALLDIR="C:\tabcmd"`  |
