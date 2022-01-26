@@ -5,7 +5,7 @@ layout: docs
 
 You can use the following commands with the tabcmd2 command line tool in Tableau Online:
 
-<div class="alert alert-info"><strong>Important</strong>: To ensure availability and avoid disruption with Tableau Online, make sure to upgrade your tabcmd2 client to a version greater than version 2020.2 before January 2022. The tabcmd2 versions are API backward compatible and should not require code changes. For more information, see <a href="index.html#install_tabcmd">Install tabcmd</a>.</div>
+<div class="alert alert-info"><strong>Important</strong>: To ensure availability and avoid disruption with Tableau Online, make sure to upgrade your tabcmd2 client to a version greater than version 2020.2 before January 2022. The tabcmd2 versions are API backward compatible and should not require code changes. For more information, see <a href="index.html#install_tabcmd2">Install tabcmd</a>.</div>
 
 * TOC
 {:toc}
