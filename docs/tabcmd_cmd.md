@@ -5,7 +5,7 @@ layout: docs
 
 You can use the following commands with the tabcmd command line tool in Tableau Online:
 
-**Important**: To ensure availability and avoid disruption with Tableau Online, make sure to upgrade your tabcmd client to a version greater than version 2020.2 before January 2022. The tabcmd versions are API backward compatible and should not require code changes. For more information, see Install tabcmd.
+<div class="alert alert-info"><strong>Important</strong>: To ensure availability and avoid disruption with Tableau Online, make sure to upgrade your tabcmd client to a version greater than version 2020.2 before January 2022. The tabcmd versions are API backward compatible and should not require code changes. For more information, see [Install tabcmd]({{ site.baseurl }}/docs/index.html).</div>
 
 * TOC
 {:toc}
@@ -15,158 +15,158 @@ Adds users to the specified group.
 
 ## Example
 
-`tabcmd addusers "Development" --users "users.csv"`
+`tabcmd addusers "Development" \-\-users "users.csv"`
 
 ## Options
-`--users`
+\-\-users
+: Add the users in the given .csv file to the specified group. The file should be a simple list with one user name per line. User names are not case sensitive. The users should already be created on Tableau Online.
 
-Add the users in the given .csv file to the specified group. The file should be a simple list with one user name per line. User names are not case sensitive. The users should already be created on Tableau Online.
+: For more information, see [CSV Import File Guidelines](https://help.tableau.com/current/online/en-us/csvguidelines.htm).
 
-For more information, see [CSV Import File Guidelines](https://help.tableau.com/current/online/en-us/csvguidelines.htm).
 
-# --[no-]complete
+# \-\-[no-]complete
 
-When set to complete this option requires that all rows be valid for any change to succeed. If not specified, --complete is used.
+When set to complete this option requires that all rows be valid for any change to succeed. If not specified, \-\-complete is used.
 
-Global options
-The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
-<dl>
-<dt>-h, --help</dt>
+<details>
 
-<dd>Displays the help for the command.
+<summary>Global options</summary>
 
->Note: Some commands listed may not apply when using tabcmd with Tableau Online.
-</dd>
+The following options are used by all tabcmd commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
-<dt>-s, --server</dt>
+-h, \-\-help
 
-<dd>The Tableau Online URL, which is required at least once to begin session.</dd>
+: Displays the help for the command.
 
-<dt>-u, --user</dt>
+Note: Some commands listed may not apply when using tabcmd with Tableau Online.
 
-<dd>The Tableau Online username, which is required at least once to begin session.</dd>
+-s, \-\-server
 
-<dt>-p, --password</dt>
+: The Tableau Online URL, which is required at least once to begin session.
 
-<dd>The Tableau Online password, which is required at least once to begin session.</dd>
+-u, \-\-user
 
-<dt>--password-file</dt>
+: The Tableau Online username, which is required at least once to begin session.
 
-<dd>Allows the password to be stored in the given .txt file rather than the command line for increased security.</dd>
+-p, \-\-password
 
-<dt>-t, --site</dt>
+: The Tableau Online password, which is required at least once to begin session.
 
-<dd>Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.</dd>
+\-\-password-file
 
-<dt>--no-prompt</dt>
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
 
-<dd>When specified, the command will not prompt for a password. If no valid password is provided the command will fail.</dd>
+-t, \-\-site
 
-<dt>--[no-]cookie</dt>
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
 
-<dd>When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.</dd>
+\-\-no-prompt
 
-<dt>--timeout</dt>
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
 
-<dd>Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.<dd>
+\-\-[no-]cookie
 
-<dt>--</dt>
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
 
-<dd>Specifies the end of options on the command line. You can use -- to indicate to tabcmd that anything that follows -- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use -- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+\-\-timeout
 
-          `tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1`</dd>
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
 
-</dl>
+\-\-
 
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+
+```tabcmd export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+
+</details>
 
 # createextracts
 Creates extracts for a published workbook or data source.
 
 ## Options
-<dl>
-<dt>-d, --datasource</dt>
 
-<dd>The name of the target data source for extract creation.</dd>
+-d, \-\-datasource
+: The name of the target data source for extract creation.
 
-<dt>--embedded-datasources</dt>
+\-\-embedded-datasources
 
-<dd>A space-separated list of embedded data source names within the target workbook. Enclose data source names with double quotes if they contain spaces. Only available when creating extracts for a workbook.</dd>
+: A space-separated list of embedded data source names within the target workbook. Enclose data source names with double quotes if they contain spaces. Only available when creating extracts for a workbook.
 
-<dt>--encrypt</dt>
+\-\-encrypt
 
-<dd>Create encrypted extract.</dd>
+: Create encrypted extract.
 
-<dt>--include-all</dt>
+\-\-include-all
 
-<dd>Include all embedded data sources within target workbook. Only available when creating extracts for workbook.</dd>
+: Include all embedded data sources within target workbook. Only available when creating extracts for workbook.
 
-<dt>--parent-project-path</dt>
+\-\-parent-project-path
 
-<dd>Path of the project that is the parent of the project that contains the target resource. Must specify the project name with `--project`.</dd>
+: Path of the project that is the parent of the project that contains the target resource. Must specify the project name with `\-\-project`.
 
-<dt>--project</dt>
+\-\-project
 
-<dd>The name of the project that contains the target resource. Only necessary if --workbook or --datasource is specified. If unspecified, the default project 'Default' is used.</dd>
+: The name of the project that contains the target resource. Only necessary if \-\-workbook or \-\-datasource is specified. If unspecified, the default project 'Default' is used.
 
-<dt>-u, -url</dt>
+-u, -url
 
-<dd>The canonical name for the resource as it appears in the URL.</dd>
+: The canonical name for the resource as it appears in the URL.
 
-<dt>-w, -workbook</dt>
+-w, -workbook
 
-<dd>The name of the target workbook for extract creation.</dd>
-</dl>
+: The name of the target workbook for extract creation.
+
 
 <details><summary>Global options</summary>
 
-The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
-<dl>
-<dt>-h, --help</dt>
+The following options are used by all tabcmd commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
-<dd>Displays the help for the command.
+-h, \-\-help
 
-Note: Some commands listed may not apply when using tabcmd with Tableau Online.</dd>
+: Displays the help for the command.
 
-<dt>-s, --server</dt>
+Note: Some commands listed may not apply when using tabcmd with Tableau Online.
 
-<dd>The Tableau Online URL, which is required at least once to begin session.</dd>
+-s, \-\-server
 
-<dt>-u, --user</dt>
+: The Tableau Online URL, which is required at least once to begin session.
 
-<dd>The Tableau Online username, which is required at least once to begin session.</dd>
+-u, \-\-user
 
-<dt>-p, --password</dt>
+: The Tableau Online username, which is required at least once to begin session.
 
-<dd>The Tableau Online password, which is required at least once to begin session.</dd>
+-p, \-\-password
 
-<dt>--password-file</dd>
+: The Tableau Online password, which is required at least once to begin session.
 
-<dd>Allows the password to be stored in the given .txt file rather than the command line for increased security.</dd>
+\-\-password-file
 
-<dt>-t, --site</dt>
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
 
-<dd>Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.</dd>
+-t, \-\-site
 
-<dt>--no-prompt</dt>
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
 
-<dd>When specified, the command will not prompt for a password. If no valid password is provided the command will fail.</dd>
+\-\-no-prompt
 
-<dt>--[no-]cookie</dt>
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
 
-<dd>When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.</dd>
+\-\-[no-]cookie
 
-<dt>--timeout</dt>
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
 
-<dd>Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.</dd>
+\-\-timeout
 
-<dt>--</dt>
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
 
-<dd>Specifies the end of options on the command line. You can use -- to indicate to tabcmd that anything that follows -- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use -- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+\-\-
 
-```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
-</dd>
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
 
-</dl>
+```tabcmd export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+
+
+
 </details>
 
 # creategroup *group-name*
@@ -178,54 +178,54 @@ Creates a group. Use addusers to add users after the group has been created.
 
 <details><summary>Global options</summary>
 
-The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
-<dl>
-<dt>-h, --help</dt>
+The following options are used by all tabcmd commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
-<dd>Displays the help for the command.
+-h, \-\-help
 
-Note: Some commands listed may not apply when using tabcmd with Tableau Online.</dd>
+: Displays the help for the command.
 
-<dt>-s, --server</dt>
+Note: Some commands listed may not apply when using tabcmd with Tableau Online.
 
-<dd>The Tableau Online URL, which is required at least once to begin session.</dd>
+-s, \-\-server
 
-<dt>-u, --user</dt>
+: The Tableau Online URL, which is required at least once to begin session.
 
-<dd>The Tableau Online username, which is required at least once to begin session.</dd>
+-u, \-\-user
 
-<dt>-p, --password</dt>
+: The Tableau Online username, which is required at least once to begin session.
 
-<dd>The Tableau Online password, which is required at least once to begin session.</dd>
+-p, \-\-password
 
-<dt>--password-file</dd>
+: The Tableau Online password, which is required at least once to begin session.
 
-<dd>Allows the password to be stored in the given .txt file rather than the command line for increased security.</dd>
+\-\-password-file
 
-<dt>-t, --site</dt>
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
 
-<dd>Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.</dd>
+-t, \-\-site
 
-<dt>--no-prompt</dt>
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
 
-<dd>When specified, the command will not prompt for a password. If no valid password is provided the command will fail.</dd>
+\-\-no-prompt
 
-<dt>--[no-]cookie</dt>
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
 
-<dd>When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.</dd>
+\-\-[no-]cookie
 
-<dt>--timeout</dt>
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
 
-<dd>Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.</dd>
+\-\-timeout
 
-<dt>--</dt>
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
 
-<dd>Specifies the end of options on the command line. You can use -- to indicate to tabcmd that anything that follows -- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use -- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+\-\-
 
-```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
-</dd>
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
 
-</dl>
+    ```tabcmd export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+
+
+
 </details>
 
 # createproject *project-name*
@@ -236,70 +236,70 @@ Creates a project.
 ```tabcmd createproject -n "Quarterly_Reports" -d "Workbooks showing quarterly sales reports."```
 
 ## Options
-<dl>
-<dt>-n, --name</dt>
 
-<dd>Specifies the name of the project that you want to create.</dd>
+-n, \-\-name
 
-<dt>--parent-project-path</dt>
+: Specifies the name of the project that you want to create.
 
-<dd>Specifies the name of the parent project for the nested project as specified with the -n option. For example, to specify a project called "Nested" that exists in a "Main" project, use the following syntax: ```--parent-project-path "Main" -n "Nested".```</dd>
+\-\-parent-project-path
 
-<dt>-d, --description</dt>
+: Specifies the name of the parent project for the nested project as specified with the -n option. For example, to specify a project called "Nested" that exists in a "Main" project, use the following syntax: ```\-\-parent-project-path "Main" -n "Nested".```
 
-<dd>Specifies a description for the project.</dd>
-</dl>
+-d, \-\-description
+
+: Specifies a description for the project.
+
 
 <details><summary>Global options</summary>
 
-The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
-<dl>
-<dt>-h, --help</dt>
+The following options are used by all tabcmd commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
-<dd>Displays the help for the command.
+-h, \-\-help
 
-Note: Some commands listed may not apply when using tabcmd with Tableau Online.</dd>
+: Displays the help for the command.
 
-<dt>-s, --server</dt>
+Note: Some commands listed may not apply when using tabcmd with Tableau Online.
 
-<dd>The Tableau Online URL, which is required at least once to begin session.</dd>
+-s, \-\-server
 
-<dt>-u, --user</dt>
+: The Tableau Online URL, which is required at least once to begin session.
 
-<dd>The Tableau Online username, which is required at least once to begin session.</dd>
+-u, \-\-user
 
-<dt>-p, --password</dt>
+: The Tableau Online username, which is required at least once to begin session.
 
-<dd>The Tableau Online password, which is required at least once to begin session.</dd>
+-p, \-\-password
 
-<dt>--password-file</dd>
+: The Tableau Online password, which is required at least once to begin session.
 
-<dd>Allows the password to be stored in the given .txt file rather than the command line for increased security.</dd>
+\-\-password-file
 
-<dt>-t, --site</dt>
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
 
-<dd>Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.</dd>
+-t, \-\-site
 
-<dt>--no-prompt</dt>
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
 
-<dd>When specified, the command will not prompt for a password. If no valid password is provided the command will fail.</dd>
+\-\-no-prompt
 
-<dt>--[no-]cookie</dt>
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
 
-<dd>When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.</dd>
+\-\-[no-]cookie
 
-<dt>--timeout</dt>
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
 
-<dd>Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.</dd>
+\-\-timeout
 
-<dt>--</dt>
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
 
-<dd>Specifies the end of options on the command line. You can use -- to indicate to tabcmd that anything that follows -- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use -- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+\-\-
 
-```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
-</dd>
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
 
-</dl>
+```tabcmd export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+
+
+
 </details>
 
 # createsiteusers *filename.csv*
@@ -308,107 +308,107 @@ Adds users to a site, based on information supplied in a comma-separated values 
 
 The CSV file must contain one or more user names and can also include (for each user) a password, full name, license type, administrator level, publisher (yes/no), and email address. For information about the format of the CSV file, see CSV Import File Guidelines.
 
-As an alternative to including administrator level and publisher permissions in the CSV file, you can pass access level information by including the --role option and specifying the site role you want to assign users listed in the CSV file.
+As an alternative to including administrator level and publisher permissions in the CSV file, you can pass access level information by including the \-\-role option and specifying the site role you want to assign users listed in the CSV file.
 
-By default, users are added to the site that you are logged in to. To add users to a different site, include the global --site option and specify that site. (You must have permissions to create users on the site you specify.)
+By default, users are added to the site that you are logged in to. To add users to a different site, include the global \-\-site option and specify that site. (You must have permissions to create users on the site you specify.)
 
 ## Example
 
-```tabcmd createsiteusers "users.csv" --role "Explorer"```
+```tabcmd createsiteusers "users.csv" \-\-role "Explorer"```
 
 ## Options
-<dl>
-<dt>--admin-type</dt>
 
-<dd>Deprecated. Use the --role option instead.</dd>
+\-\-admin-type
 
-<dt>--auth-type</dt>
+: Deprecated. Use the \-\-role option instead.
 
-<dd>Sets the authentication type (TableauID or SAML) for all users in the .csv file. If unspecified, the default is TableauID.
+\-\-auth-type
 
-Note: To use SAML authentication, the site itself must be SAML-enabled as well. For information, see Enable SAML Authentication on a Site.</dd>
+: Sets the authentication type (TableauID or SAML) for all users in the .csv file. If unspecified, the default is TableauID.
 
-<dt>--[no-]complete</dt>
+Note: To use SAML authentication, the site itself must be SAML-enabled as well. For information, see Enable SAML Authentication on a Site.
 
-<dd>Deprecated. Default error behavior: if there are more than 3 errors within a ten-row span, then the command will fail.</dd>
+\-\-[no-]complete
 
-<dt>--no-publisher</dt>
+: Deprecated. Default error behavior: if there are more than 3 errors within a ten-row span, then the command will fail.
 
-<dd>Deprecated. Use the `--role` option instead.</dd>
+\-\-no-publisher
 
-<dt>--nowait</dt>
+: Deprecated. Use the `\-\-role` option instead.
 
-<dd>Do not wait for asynchronous jobs to complete.</dd>
+\-\-nowait
 
-<dt>--publisher</dt>
+: Do not wait for asynchronous jobs to complete.
 
-<dd>Deprecated. Use the --role option instead.</dd>
+\-\-publisher
 
-<dt>--role</dt>
+: Deprecated. Use the \-\-role option instead.
 
-<dd>Specifies a site role for all users in the .csv file. When you want to assign site roles using the --role option, create a separate CSV file for each site role.
+\-\-role
+
+: Specifies a site role for all users in the .csv file. When you want to assign site roles using the \-\-role option, create a separate CSV file for each site role.
 
 Valid values are: ServerAdministrator, SiteAdministratorCreator, SiteAdministratorExplorer, SiteAdministrator, Creator, ExplorerCanPublish, Publisher, Explorer, Interactor, Viewer, and Unlicensed.
 
 The default is Unlicensed for new users and unchanged for existing users. Users are added as unlicensed also if you have a user-based server installation, and if the createsiteusers command creates a new user, but you have already reached the limit on the number of licenses for your users.
 
-Note: On a multi-site Tableau Server, if you want to assign the ServerAdministrator site role using the --role option, use the createusers command instead of createsiteusers.
-</dd>
-<dt>--silent-progress</dt>
+Note: On a multi-site Tableau Server, if you want to assign the ServerAdministrator site role using the \-\-role option, use the createusers command instead of createsiteusers.
 
-<dd>Do not display progress messages for the command.</dd>
-</dl>
+\-\-silent-progress
+
+: Do not display progress messages for the command.
+
 
 <details><summary>Global options</summary>
 
-The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
-<dl>
-<dt>-h, --help</dt>
+The following options are used by all tabcmd commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
-<dd>Displays the help for the command.
+-h, \-\-help
 
-Note: Some commands listed may not apply when using tabcmd with Tableau Online.</dd>
+: Displays the help for the command.
 
-<dt>-s, --server</dt>
+Note: Some commands listed may not apply when using tabcmd with Tableau Online.
 
-<dd>The Tableau Online URL, which is required at least once to begin session.</dd>
+-s, \-\-server
 
-<dt>-u, --user</dt>
+: The Tableau Online URL, which is required at least once to begin session.
 
-<dd>The Tableau Online username, which is required at least once to begin session.</dd>
+-u, \-\-user
 
-<dt>-p, --password</dt>
+: The Tableau Online username, which is required at least once to begin session.
 
-<dd>The Tableau Online password, which is required at least once to begin session.</dd>
+-p, \-\-password
 
-<dt>--password-file</dd>
+: The Tableau Online password, which is required at least once to begin session.
 
-<dd>Allows the password to be stored in the given .txt file rather than the command line for increased security.</dd>
+\-\-password-file
 
-<dt>-t, --site</dt>
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
 
-<dd>Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.</dd>
+-t, \-\-site
 
-<dt>--no-prompt</dt>
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
 
-<dd>When specified, the command will not prompt for a password. If no valid password is provided the command will fail.</dd>
+\-\-no-prompt
 
-<dt>--[no-]cookie</dt>
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
 
-<dd>When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.</dd>
+\-\-[no-]cookie
 
-<dt>--timeout</dt>
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
 
-<dd>Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.</dd>
+\-\-timeout
 
-<dt>--</dt>
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
 
-<dd>Specifies the end of options on the command line. You can use -- to indicate to tabcmd that anything that follows -- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use -- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+\-\-
 
-```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
-</dd>
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
 
-</dl>
+```tabcmd export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+
+
+
 </details>
 
 # delete workbook-name or datasource-name
@@ -421,74 +421,74 @@ This command takes the name of the workbook or data source as it is on the serve
 `tabcmd delete "Sales_Analysis"`
 
 ## Options
-<dl>
-<dt>-r, --project</dt>
 
-<dd>The name of the project containing the workbook or data source you want to delete. If not specified, the “Default” project is assumed.</dd>
+-r, \-\-project
 
-<dt>--parent-project-path</dt>
+: The name of the project containing the workbook or data source you want to delete. If not specified, the “Default” project is assumed.
 
-<dd>Specifies the name of the parent project for the nested project as specified with the -r option. For example, to specify a project called "Nested" that exists in a "Main" project, use the following syntax: --parent-project-path "Main" -r "Nested".</dd>
+\-\-parent-project-path
 
-<dt>--workbook</dt>
+: Specifies the name of the parent project for the nested project as specified with the -r option. For example, to specify a project called "Nested" that exists in a "Main" project, use the following syntax: \-\-parent-project-path "Main" -r "Nested".
 
-<dd>The name of the workbook you want to delete.</dd>
+\-\-workbook
 
-<dt>--datasource</dt>
+: The name of the workbook you want to delete.
 
-<dd>The name of the data source you want to delete.</dd>
-</dl>
+\-\-datasource
+
+: The name of the data source you want to delete.
+
 
 <details><summary>Global options</summary>
 
-The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
-<dl>
-<dt>-h, --help</dt>
+The following options are used by all tabcmd commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
-<dd>Displays the help for the command.
+-h, \-\-help
 
-Note: Some commands listed may not apply when using tabcmd with Tableau Online.</dd>
+: Displays the help for the command.
 
-<dt>-s, --server</dt>
+Note: Some commands listed may not apply when using tabcmd with Tableau Online.
 
-<dd>The Tableau Online URL, which is required at least once to begin session.</dd>
+-s, \-\-server
 
-<dt>-u, --user</dt>
+: The Tableau Online URL, which is required at least once to begin session.
 
-<dd>The Tableau Online username, which is required at least once to begin session.</dd>
+-u, \-\-user
 
-<dt>-p, --password</dt>
+: The Tableau Online username, which is required at least once to begin session.
 
-<dd>The Tableau Online password, which is required at least once to begin session.</dd>
+-p, \-\-password
 
-<dt>--password-file</dd>
+: The Tableau Online password, which is required at least once to begin session.
 
-<dd>Allows the password to be stored in the given .txt file rather than the command line for increased security.</dd>
+\-\-password-file
 
-<dt>-t, --site</dt>
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
 
-<dd>Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.</dd>
+-t, \-\-site
 
-<dt>--no-prompt</dt>
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
 
-<dd>When specified, the command will not prompt for a password. If no valid password is provided the command will fail.</dd>
+\-\-no-prompt
 
-<dt>--[no-]cookie</dt>
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
 
-<dd>When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.</dd>
+\-\-[no-]cookie
 
-<dt>--timeout</dt>
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
 
-<dd>Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.</dd>
+\-\-timeout
 
-<dt>--</dt>
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
 
-<dd>Specifies the end of options on the command line. You can use -- to indicate to tabcmd that anything that follows -- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use -- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+\-\-
 
-```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
-</dd>
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
 
-</dl>
+```tabcmd export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+
+
+
 </details>
 
 # deleteextracts
@@ -496,85 +496,85 @@ Note: Some commands listed may not apply when using tabcmd with Tableau Online.<
 Deletes extracts for a published workbook or data source.
 
 ## Options
-<dl>
-    <dt>-d, --datasource</dt>
-    <dd>The name of the target data source for extract deletion.</dd>
-    <dt>--embedded-datasources</dt>
-    <dd>A space-separated list of embedded data source names within the target workbook. Enclose data source names with double quotes if they contain spaces. Only available when deleting extracts for a workbook.</dd>
-    <dt>--encrypt</dt>
-    <dd>Create encrypted extract.</dd>
 
-    <dt>--include-all</dt>
+    -d, \-\-datasource
+    : The name of the target data source for extract deletion.
+    \-\-embedded-datasources
+    : A space-separated list of embedded data source names within the target workbook. Enclose data source names with double quotes if they contain spaces. Only available when deleting extracts for a workbook.
+    \-\-encrypt
+    : Create encrypted extract.
 
-    <dd>Include all embedded data sources within target workbook.</dd>
+    \-\-include-all
 
-    <dt>--parent-project-path</dt>
+    : Include all embedded data sources within target workbook.
 
-    <dd>Path of the project that is the parent of the project that contains the target resource. Must specify the project name with --project.</dd>
+    \-\-parent-project-path
 
-    <dt>--project</dt>
+    : Path of the project that is the parent of the project that contains the target resource. Must specify the project name with \-\-project.
 
-    <dd>The name of the project that contains the target resource. Only necessary if --workbook or --datasource is specified. If unspecified, the default project 'Default' is used.</dd>
+    \-\-project
 
-    <dt>-u, -url</dt>
+    : The name of the project that contains the target resource. Only necessary if \-\-workbook or \-\-datasource is specified. If unspecified, the default project 'Default' is used.
 
-    <dd>The canonical name for the resource as it appears in the URL.</dd>
+    -u, -url
 
-    <dt>-w, -workbook</dt>
+    : The canonical name for the resource as it appears in the URL.
 
-    <dd>The name of the target workbook for extract deletion.</dd>
-</dl>
+    -w, -workbook
+
+    : The name of the target workbook for extract deletion.
+
 
 <details><summary>Global options</summary>
 
-The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
-<dl>
-<dt>-h, --help</dt>
+The following options are used by all tabcmd commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
-<dd>Displays the help for the command.
+-h, \-\-help
 
-Note: Some commands listed may not apply when using tabcmd with Tableau Online.</dd>
+: Displays the help for the command.
 
-<dt>-s, --server</dt>
+Note: Some commands listed may not apply when using tabcmd with Tableau Online.
 
-<dd>The Tableau Online URL, which is required at least once to begin session.</dd>
+-s, \-\-server
 
-<dt>-u, --user</dt>
+: The Tableau Online URL, which is required at least once to begin session.
 
-<dd>The Tableau Online username, which is required at least once to begin session.</dd>
+-u, \-\-user
 
-<dt>-p, --password</dt>
+: The Tableau Online username, which is required at least once to begin session.
 
-<dd>The Tableau Online password, which is required at least once to begin session.</dd>
+-p, \-\-password
 
-<dt>--password-file</dd>
+: The Tableau Online password, which is required at least once to begin session.
 
-<dd>Allows the password to be stored in the given .txt file rather than the command line for increased security.</dd>
+\-\-password-file
 
-<dt>-t, --site</dt>
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
 
-<dd>Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.</dd>
+-t, \-\-site
 
-<dt>--no-prompt</dt>
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
 
-<dd>When specified, the command will not prompt for a password. If no valid password is provided the command will fail.</dd>
+\-\-no-prompt
 
-<dt>--[no-]cookie</dt>
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
 
-<dd>When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.</dd>
+\-\-[no-]cookie
 
-<dt>--timeout</dt>
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
 
-<dd>Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.</dd>
+\-\-timeout
 
-<dt>--</dt>
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
 
-<dd>Specifies the end of options on the command line. You can use -- to indicate to tabcmd that anything that follows -- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use -- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+\-\-
 
-```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
-</dd>
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
 
-</dl>
+```tabcmd export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+
+
+
 </details>
 
 
@@ -587,54 +587,54 @@ Deletes the specified group from the server.
 
 <details><summary>Global options</summary>
 
-The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
-<dl>
-<dt>-h, --help</dt>
+The following options are used by all tabcmd commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
-<dd>Displays the help for the command.
+-h, \-\-help
 
-Note: Some commands listed may not apply when using tabcmd with Tableau Online.</dd>
+: Displays the help for the command.
 
-<dt>-s, --server</dt>
+Note: Some commands listed may not apply when using tabcmd with Tableau Online.
 
-<dd>The Tableau Online URL, which is required at least once to begin session.</dd>
+-s, \-\-server
 
-<dt>-u, --user</dt>
+: The Tableau Online URL, which is required at least once to begin session.
 
-<dd>The Tableau Online username, which is required at least once to begin session.</dd>
+-u, \-\-user
 
-<dt>-p, --password</dt>
+: The Tableau Online username, which is required at least once to begin session.
 
-<dd>The Tableau Online password, which is required at least once to begin session.</dd>
+-p, \-\-password
 
-<dt>--password-file</dd>
+: The Tableau Online password, which is required at least once to begin session.
 
-<dd>Allows the password to be stored in the given .txt file rather than the command line for increased security.</dd>
+\-\-password-file
 
-<dt>-t, --site</dt>
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
 
-<dd>Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.</dd>
+-t, \-\-site
 
-<dt>--no-prompt</dt>
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
 
-<dd>When specified, the command will not prompt for a password. If no valid password is provided the command will fail.</dd>
+\-\-no-prompt
 
-<dt>--[no-]cookie</dt>
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
 
-<dd>When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.</dd>
+\-\-[no-]cookie
 
-<dt>--timeout</dt>
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
 
-<dd>Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.</dd>
+\-\-timeout
 
-<dt>--</dt>
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
 
-<dd>Specifies the end of options on the command line. You can use -- to indicate to tabcmd that anything that follows -- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use -- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+\-\-
 
-```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
-</dd>
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
 
-</dl>
+```tabcmd export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+
+
+
 </details>
 
 
@@ -648,63 +648,63 @@ Using tabcmd, you can specify only a top-level project in a project hierarchy. T
 `tabcmd deleteproject "Designs"`
 
 ## Option
-<dl>
 
-<dt>--parent-project-path</dt>
 
-<dd>Specifies the name of the parent project for the nested project as specified with the command. For example, to specify a project called "Designs" that exists in a "Main" project, use the following syntax: --parent-project-path "Main" "Designs".</dd>
-</dl>
+\-\-parent-project-path
+
+: Specifies the name of the parent project for the nested project as specified with the command. For example, to specify a project called "Designs" that exists in a "Main" project, use the following syntax: \-\-parent-project-path "Main" "Designs".
+
 
 <details><summary>Global options</summary>
 
-The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
-<dl>
-<dt>-h, --help</dt>
+The following options are used by all tabcmd commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
-<dd>Displays the help for the command.
+-h, \-\-help
 
-Note: Some commands listed may not apply when using tabcmd with Tableau Online.</dd>
+: Displays the help for the command.
 
-<dt>-s, --server</dt>
+Note: Some commands listed may not apply when using tabcmd with Tableau Online.
 
-<dd>The Tableau Online URL, which is required at least once to begin session.</dd>
+-s, \-\-server
 
-<dt>-u, --user</dt>
+: The Tableau Online URL, which is required at least once to begin session.
 
-<dd>The Tableau Online username, which is required at least once to begin session.</dd>
+-u, \-\-user
 
-<dt>-p, --password</dt>
+: The Tableau Online username, which is required at least once to begin session.
 
-<dd>The Tableau Online password, which is required at least once to begin session.</dd>
+-p, \-\-password
 
-<dt>--password-file</dd>
+: The Tableau Online password, which is required at least once to begin session.
 
-<dd>Allows the password to be stored in the given .txt file rather than the command line for increased security.</dd>
+\-\-password-file
 
-<dt>-t, --site</dt>
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
 
-<dd>Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.</dd>
+-t, \-\-site
 
-<dt>--no-prompt</dt>
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
 
-<dd>When specified, the command will not prompt for a password. If no valid password is provided the command will fail.</dd>
+\-\-no-prompt
 
-<dt>--[no-]cookie</dt>
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
 
-<dd>When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.</dd>
+\-\-[no-]cookie
 
-<dt>--timeout</dt>
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
 
-<dd>Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.</dd>
+\-\-timeout
 
-<dt>--</dt>
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
 
-<dd>Specifies the end of options on the command line. You can use -- to indicate to tabcmd that anything that follows -- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use -- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+\-\-
 
-```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
-</dd>
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
 
-</dl>
+```tabcmd export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+
+
+
 </details>
 
 
@@ -721,54 +721,54 @@ If the user owns content, the user's role is change to Unlicensed, but the user 
 
 <details><summary>Global options</summary>
 
-The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
-<dl>
-<dt>-h, --help</dt>
+The following options are used by all tabcmd commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
-<dd>Displays the help for the command.
+-h, \-\-help
 
-Note: Some commands listed may not apply when using tabcmd with Tableau Online.</dd>
+: Displays the help for the command.
 
-<dt>-s, --server</dt>
+Note: Some commands listed may not apply when using tabcmd with Tableau Online.
 
-<dd>The Tableau Online URL, which is required at least once to begin session.</dd>
+-s, \-\-server
 
-<dt>-u, --user</dt>
+: The Tableau Online URL, which is required at least once to begin session.
 
-<dd>The Tableau Online username, which is required at least once to begin session.</dd>
+-u, \-\-user
 
-<dt>-p, --password</dt>
+: The Tableau Online username, which is required at least once to begin session.
 
-<dd>The Tableau Online password, which is required at least once to begin session.</dd>
+-p, \-\-password
 
-<dt>--password-file</dd>
+: The Tableau Online password, which is required at least once to begin session.
 
-<dd>Allows the password to be stored in the given .txt file rather than the command line for increased security.</dd>
+\-\-password-file
 
-<dt>-t, --site</dt>
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
 
-<dd>Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.</dd>
+-t, \-\-site
 
-<dt>--no-prompt</dt>
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
 
-<dd>When specified, the command will not prompt for a password. If no valid password is provided the command will fail.</dd>
+\-\-no-prompt
 
-<dt>--[no-]cookie</dt>
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
 
-<dd>When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.</dd>
+\-\-[no-]cookie
 
-<dt>--timeout</dt>
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
 
-<dd>Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.</dd>
+\-\-timeout
 
-<dt>--</dt>
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
 
-<dd>Specifies the end of options on the command line. You can use -- to indicate to tabcmd that anything that follows -- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use -- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+\-\-
 
-```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
-</dd>
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
 
-</dl>
+```tabcmd export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+
+
+
 </details>
 
 
@@ -779,7 +779,7 @@ Note the following when you use this command:
 
 * **Permissions**: To export, you must have the **Export Image** permission. By default, this permission is Allowed or Inherited for all roles, although permissions can be set per workbook or view.
 
-* **Exporting data**: To export just the data for a view, use the --csv option. This exports the summary data used in a view to a .csv file.
+* **Exporting data**: To export just the data for a view, use the \-\-csv option. This exports the summary data used in a view to a .csv file.
 
 * **Specifying the view, workbook, or data to export**:
 
@@ -806,7 +806,7 @@ Note the following when you use this command:
     or, if filtering on a parameter and that parameter has a display name that matches the name of a measure or dimension:
     `?Parameters.<filter_name>=value`
 
-* **The saved file's format**: Your format options depend on what's being exported. A workbook can only be exported as a PDF using the --fullpdf argument. A view can be exported as a PDF (--pdf) or a PNG (--png).
+* **The saved file's format**: Your format options depend on what's being exported. A workbook can only be exported as a PDF using the \-\-fullpdf argument. A view can be exported as a PDF (\-\-pdf) or a PNG (\-\-png).
 
 * **The saved file's name and location** (optional): If you don't provide a name, it will be derived from the view or workbook name. If you don't provide a location, the file will be saved to your current working directory. Otherwise, you can specify a full path or one that's relative to your current working directory.
 Note: You must include a file name extension such as .csv or .pdf. The command does not automatically add an extension to the file name that you provide.
@@ -827,54 +827,54 @@ You can optionally add the URL parameter ?:refresh=yes to force a fresh data que
 
 Views
 
-tabcmd export "Q1Sales/Sales_Report" --csv -f "Weekly-Report.csv"
+tabcmd export "Q1Sales/Sales_Report" \-\-csv -f "Weekly-Report.csv"
 
-tabcmd export -t Sales "Sales/Sales_Analysis" --pdf -f "C:\Tableau_Workbooks\Weekly-Reports.pdf"
+tabcmd export -t Sales "Sales/Sales_Analysis" \-\-pdf -f "C:\Tableau_Workbooks\Weekly-Reports.pdf"
 
-tabcmd export "Finance/InvestmentGrowth" --png
+tabcmd export "Finance/InvestmentGrowth" \-\-png
 
-tabcmd export "Finance/InvestmentGrowth?:refresh=yes" --png
+tabcmd export "Finance/InvestmentGrowth?:refresh=yes" \-\-png
 
 Workbooks
 
-tabcmd export "Q1Sales/Sales_Report" --fullpdf
+tabcmd export "Q1Sales/Sales_Report" \-\-fullpdf
 
-tabcmd export "Sales/Sales_Analysis" --fullpdf --pagesize tabloid -f "C:\Tableau_Workbooks\Weekly-Reports.pdf"
+tabcmd export "Sales/Sales_Analysis" \-\-fullpdf \-\-pagesize tabloid -f "C:\Tableau_Workbooks\Weekly-Reports.pdf"
 
 Options
--f, --filename
+-f, \-\-filename
 
 Saves the file with the given filename and extension.
 
---csv
+\-\-csv
 
 View only. Export the view's data (summary data) in .csv format.
 
---pdf
+\-\-pdf
 
 View only. Export as a PDF.
 
---png
+\-\-png
 
 View only. Export as an image in .png format.
 
---fullpdf
+\-\-fullpdf
 
 Workbook only. Export as a PDF. The workbook must have been published with Show Sheets as Tabs enabled.
 
---pagelayout
+\-\-pagelayout
 
 Sets the page orientation (landscape or portrait) of the exported PDF. If not specified, its Tableau Desktop setting will be used.
 
---pagesize
+\-\-pagesize
 
 Sets the page size of the exported PDF as one of the following: unspecified, letter, legal, note folio, tabloid, ledger, statement, executive, a3, a4, a5, b4, b5, or quarto. Default is letter.
 
---width
+\-\-width
 
 Sets the width in pixels. Default is 800 px.
 
---height
+\-\-height
 
 Sets the height in pixels. Default is 600 px.
 
@@ -898,9 +898,9 @@ Use the string /workbooks/MetricsSummary_1.<extension> to get the workbook.
 
 File extension: The URL must include a file extension. The extension determines what's returned. A view can be returned in PDF, PNG, or CSV (summary data only) format. A Tableau workbook is returned as a TWB if it connects to a published data source or uses a live connection, or a TWBX if it connects to a data extract.
 
-Note: If you are downloading a view to a PDF or PNG file, and if you include a --filename parameter that includes the .pdf or .png extension, you do not have to include a .pdf or .png extension in the URL.
+Note: If you are downloading a view to a PDF or PNG file, and if you include a \-\-filename parameter that includes the .pdf or .png extension, you do not have to include a .pdf or .png extension in the URL.
 
-The saved file's name and location (optional): The name you use for --filename should include the file extension. If you don't provide a name and file extension, both will be derived from the URL string. If you don't provide a location, the file is saved to your current working directory. Otherwise, you can specify a full path or one that's relative to your current working directory.
+The saved file's name and location (optional): The name you use for \-\-filename should include the file extension. If you don't provide a name and file extension, both will be derived from the URL string. If you don't provide a location, the file is saved to your current working directory. Otherwise, you can specify a full path or one that's relative to your current working directory.
 
 PNG size (optional): If the saved file is a PNG, you can specify the size, in pixels, in the URL.
 
@@ -912,7 +912,7 @@ Examples
 
 Views
 
-tabcmd get "/views/Sales_Analysis/Sales_Report.png" --filename "Weekly-Report.png"
+tabcmd get "/views/Sales_Analysis/Sales_Report.png" \-\-filename "Weekly-Report.png"
 
 tabcmd get "/views/Finance/InvestmentGrowth.pdf" -f "Q1Growth.pdf"
 
@@ -930,69 +930,69 @@ tabcmd get "/workbooks/Sales_Analysis.twb" -f "C:\Tableau_Workbooks\Weekly-Repor
 
 <details><summary>Global options</summary>
 
-The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
-<dl>
-<dt>-h, --help</dt>
+The following options are used by all tabcmd commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
-<dd>Displays the help for the command.
+-h, \-\-help
 
-Note: Some commands listed may not apply when using tabcmd with Tableau Online.</dd>
+: Displays the help for the command.
 
-<dt>-s, --server</dt>
+Note: Some commands listed may not apply when using tabcmd with Tableau Online.
 
-<dd>The Tableau Online URL, which is required at least once to begin session.</dd>
+-s, \-\-server
 
-<dt>-u, --user</dt>
+: The Tableau Online URL, which is required at least once to begin session.
 
-<dd>The Tableau Online username, which is required at least once to begin session.</dd>
+-u, \-\-user
 
-<dt>-p, --password</dt>
+: The Tableau Online username, which is required at least once to begin session.
 
-<dd>The Tableau Online password, which is required at least once to begin session.</dd>
+-p, \-\-password
 
-<dt>--password-file</dd>
+: The Tableau Online password, which is required at least once to begin session.
 
-<dd>Allows the password to be stored in the given .txt file rather than the command line for increased security.</dd>
+\-\-password-file
 
-<dt>-t, --site</dt>
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
 
-<dd>Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.</dd>
+-t, \-\-site
 
-<dt>--no-prompt</dt>
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
 
-<dd>When specified, the command will not prompt for a password. If no valid password is provided the command will fail.</dd>
+\-\-no-prompt
 
-<dt>--[no-]cookie</dt>
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
 
-<dd>When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.</dd>
+\-\-[no-]cookie
 
-<dt>--timeout</dt>
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
 
-<dd>Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.</dd>
+\-\-timeout
 
-<dt>--</dt>
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
 
-<dd>Specifies the end of options on the command line. You can use -- to indicate to tabcmd that anything that follows -- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use -- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+\-\-
 
-```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
-</dd>
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
 
-</dl>
+```tabcmd export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+
+
+
 </details>
 
 
 # login
 Logs in a Tableau Online user.
 
-Use the --server, --site, --username, --password global options to create a session.
+Use the \-\-server, \-\-site, \-\-username, \-\-password global options to create a session.
 
 Note: When you use the tabcmd login command, you cannot use SAML single sign-on (SSO), even if your site is configured to use SAML. To log in, you must pass the user name and password of a user who has been created in your site. You will have the permissions of the Tableau Server user that you're signed in as.
 
-If you want to log in using the same information you've already used to create a session, just specify the --password option. The server and user name stored in the cookie will be used.
+If you want to log in using the same information you've already used to create a session, just specify the \-\-password option. The server and user name stored in the cookie will be used.
 
 If the server is using a port other than 80 (the default), you will need to specify the port.
 
-You need the --site (-t) option only if the server is running multiple sites and you are logging in to a site other than the Default site. If you do not provide a password you will be prompted for one. If the --no-prompt option is specified and no password is provided the command will fail.
+You need the \-\-site (-t) option only if the server is running multiple sites and you are logging in to a site other than the Default site. If you do not provide a password you will be prompted for one. If the \-\-no-prompt option is specified and no password is provided the command will fail.
 
 Once you log in, the session will continue until it expires on the server or the logout command is run.
 
@@ -1003,104 +1003,104 @@ Log in to the Tableau Online site with the specified site ID:
 `tabcmd login -s https://online.tableau.com -t siteID -u user@email.com -p password`
 
 ## Options
-<dl>
-<dt>-s, --server</dt>
 
-<dd>If you are running the command from a Tableau Server computer that’s on your network, you can use http://localhost. Otherwise, specify the computer's URL, such as http://bigbox.myco.com or http://bigbox.
+-s, \-\-server
+
+: If you are running the command from a Tableau Server computer that’s on your network, you can use http://localhost. Otherwise, specify the computer's URL, such as http://bigbox.myco.com or http://bigbox.
 
 If the server is using SSL, you will need to specify https:// in the computer's URL.
 
-For Tableau Online, specify the URL https://online.tableau.com.</dd>
+For Tableau Online, specify the URL https://online.tableau.com.
 
-<dt>-t, --site</dt>
+-t, \-\-site
 
-<dd>Include this option if the server has multiple sites, and you are logging in to a site other than the default site.
+: Include this option if the server has multiple sites, and you are logging in to a site other than the default site.
 
-The site ID is used in the URL to uniquely identify the site. For example, a site named West Coast Sales might have a site ID of west-coast-sales.</dd>
+The site ID is used in the URL to uniquely identify the site. For example, a site named West Coast Sales might have a site ID of west-coast-sales.
 
-<dt>-u, --username</dt>
+-u, \-\-username
 
-<dd>The user name of the user logging in. For Tableau Online, the user name is the user's email address.</dd>
+: The user name of the user logging in. For Tableau Online, the user name is the user's email address.
 
-<dt>-p, --password</dt>
+-p, \-\-password
 
-<dd>Password for the user specified for --username. If you do not provide a password you will be prompted for one.</dd>
+: Password for the user specified for \-\-username. If you do not provide a password you will be prompted for one.
 
-<dt>--password-file</dt>
+\-\-password-file
 
-<dd>Allows the password to be stored in the given filename.txt file rather than the command line, for increased security.</dd>
+: Allows the password to be stored in the given filename.txt file rather than the command line, for increased security.
 
-<dt>-x, --proxy</dt>
+-x, \-\-proxy
 
-<dd>Use to specify the HTTP proxy server and port (Host:Port) for the tabcmd request.</dd>
+: Use to specify the HTTP proxy server and port (Host:Port) for the tabcmd request.
 
-<dt>--no-prompt</dt>
+\-\-no-prompt
 
-<dd>Do not prompt for a password. If no password is specified, the login command will fail.</dd>
+: Do not prompt for a password. If no password is specified, the login command will fail.
 
-<dt>--cookie</dt>
+\-\-cookie
 
-<dd>Saves the session ID on login. Subsequent commands will not require a login. This value is the default for the command.</dd>
+: Saves the session ID on login. Subsequent commands will not require a login. This value is the default for the command.
 
-<dt>--no-cookie</dt>
+\-\-no-cookie
 
-<dd>Do not save the session ID information after a successful login. Subsequent commands will require a login.</dd>
+: Do not save the session ID information after a successful login. Subsequent commands will require a login.
 
-<dt>--timeout SECONDS</dt>
+\-\-timeout SECONDS
 
-<dd>The number of seconds the server should wait before processing the login command. Default: 30 seconds.</dd>
-</dl>
+: The number of seconds the server should wait before processing the login command. Default: 30 seconds.
+
 
 <details><summary>Global options</summary>
 
-The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
-<dl>
-<dt>-h, --help</dt>
+The following options are used by all tabcmd commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
-<dd>Displays the help for the command.
+-h, \-\-help
 
-Note: Some commands listed may not apply when using tabcmd with Tableau Online.</dd>
+: Displays the help for the command.
 
-<dt>-s, --server</dt>
+Note: Some commands listed may not apply when using tabcmd with Tableau Online.
 
-<dd>The Tableau Online URL, which is required at least once to begin session.</dd>
+-s, \-\-server
 
-<dt>-u, --user</dt>
+: The Tableau Online URL, which is required at least once to begin session.
 
-<dd>The Tableau Online username, which is required at least once to begin session.</dd>
+-u, \-\-user
 
-<dt>-p, --password</dt>
+: The Tableau Online username, which is required at least once to begin session.
 
-<dd>The Tableau Online password, which is required at least once to begin session.</dd>
+-p, \-\-password
 
-<dt>--password-file</dd>
+: The Tableau Online password, which is required at least once to begin session.
 
-<dd>Allows the password to be stored in the given .txt file rather than the command line for increased security.</dd>
+\-\-password-file
 
-<dt>-t, --site</dt>
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
 
-<dd>Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.</dd>
+-t, \-\-site
 
-<dt>--no-prompt</dt>
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
 
-<dd>When specified, the command will not prompt for a password. If no valid password is provided the command will fail.</dd>
+\-\-no-prompt
 
-<dt>--[no-]cookie</dt>
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
 
-<dd>When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.</dd>
+\-\-[no-]cookie
 
-<dt>--timeout</dt>
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
 
-<dd>Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.</dd>
+\-\-timeout
 
-<dt>--</dt>
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
 
-<dd>Specifies the end of options on the command line. You can use -- to indicate to tabcmd that anything that follows -- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use -- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+\-\-
 
-```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
-</dd>
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
 
-</dl>
+```tabcmd export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+
+
+
 </details>
 
 
@@ -1123,139 +1123,139 @@ If the workbook contains user filters, one of the thumbnail options must be spec
 ## Example
 
 `tabcmd publish "analysis_sfdc.hyper" -n "Sales Analysis"
---oauth-username "user-name" --save-oauth`
+\-\-oauth-username "user-name" \-\-save-oauth`
 
 If the file is not in the same directory as tabcmd, include the full path to the file.
 
-# Example
+## Example
 
-`tabcmd publish "\\computer\volume\Tableau Workbooks\analysis_sfdc.hyper" -n "Sales Analysis" --oauth-username "username" --save-oauth`
+`tabcmd publish "\\computer\volume\Tableau Workbooks\analysis_sfdc.hyper" -n "Sales Analysis" \-\-oauth-username "username" \-\-save-oauth`
 
-# Options
-<dl>
-<dt>-n, --name<dt>
+## Options
 
-<dd>Name of the workbook or data source on the server. If omitted, the workbook, data source, or data extract will be named after filename.</dd>
+-n, \-\-name
 
-<dt>-o, --overwrite</dt>
+: Name of the workbook or data source on the server. If omitted, the workbook, data source, or data extract will be named after filename.
 
-<dd>Overwrites the workbook, data source, or data extract if it already exists on the server.</dd>
+-o, \-\-overwrite
 
-<dt>-r, --project</dt>
+: Overwrites the workbook, data source, or data extract if it already exists on the server.
 
-<dd>Publishes the workbook, data source, or data extract into the specified project. Publishes to the “Default” project if not specified.</dd>
+-r, \-\-project
 
-<dt>--parent-project-path</dt>
+: Publishes the workbook, data source, or data extract into the specified project. Publishes to the “Default” project if not specified.
 
-<dd>Specifies the name of the parent project for the nested project as specified with the -r option. For example, to specify a project called "Nested" that exists in a "Main" project, use the following syntax: --parent-project-path "Main" -r "Nested".</dd>
+\-\-parent-project-path
 
-<dt>--db-username</dt>
+: Specifies the name of the parent project for the nested project as specified with the -r option. For example, to specify a project called "Nested" that exists in a "Main" project, use the following syntax: \-\-parent-project-path "Main" -r "Nested".
 
-<dd>Use this option to publish a database user name with the workbook, data source, or data extract.
+\-\-db-username
 
-If you connect to the data through a protected OAuth connection and access token, us the --oauth-username option instead.</dd>
+: Use this option to publish a database user name with the workbook, data source, or data extract.
 
-<dt>--db-password</dt>
+If you connect to the data through a protected OAuth connection and access token, us the \-\-oauth-username option instead.
 
-<dd>Use this option to publish a database password with the workbook, data source, or extract.</dd>
+\-\-db-password
 
-<dt>--save-db-password</dt>
+: Use this option to publish a database password with the workbook, data source, or extract.
 
-<dd>Stores the provided database password on the server.</dd>
+\-\-save-db-password
 
-<dt>--oauth-username</dt>
+: Stores the provided database password on the server.
 
-<dd>The email address of the user account. Connects the user through a preconfigured OAuth connection, if the user already has a saved access token for the cloud data source specified in --name. Access tokens are managed in user preferences.
+\-\-oauth-username
 
-For existing OAuth connections to the data source, use this option instead of --db-username and --db-password.</dd>
+: The email address of the user account. Connects the user through a preconfigured OAuth connection, if the user already has a saved access token for the cloud data source specified in \-\-name. Access tokens are managed in user preferences.
 
-<dt>--save-oauth</dt>
+For existing OAuth connections to the data source, use this option instead of \-\-db-username and \-\-db-password.
 
-<dd>Saves the credential specified by --oauth-username as an embedded credential with the published workbook or data source.
+\-\-save-oauth
+
+: Saves the credential specified by \-\-oauth-username as an embedded credential with the published workbook or data source.
 
 Subsequently, when the publisher or server administrator signs in to the server and edits the connection for that workbook or data source, the connection settings will show this OAuth credential as embedded in the content.
 
-If you want to schedule extract refreshes after publishing, you must include this option with --oauth-username. This is analogous to using --save-db-password with a traditional database connection.</dd>
+If you want to schedule extract refreshes after publishing, you must include this option with \-\-oauth-username. This is analogous to using \-\-save-db-password with a traditional database connection.
 
-<dt>--thumbnail-username</dt>
+\-\-thumbnail-username
 
-<dd>If the workbook contains user filters, the thumbnails will be generated based on what the specified user can see. Cannot be specified when --thumbnail-group option is set.</dd>
+: If the workbook contains user filters, the thumbnails will be generated based on what the specified user can see. Cannot be specified when \-\-thumbnail-group option is set.
 
-<dt>--thumbnail-group</dt>
+\-\-thumbnail-group
 
-<dd>If the workbook contains user filters, the thumbnails will be generated based on what the specified group can see. Cannot be specified when --thumbnail-usernameoption is set.</dd>
+: If the workbook contains user filters, the thumbnails will be generated based on what the specified group can see. Cannot be specified when \-\-thumbnail-usernameoption is set.
 
-<dt>--tabbed</dt>
+\-\-tabbed
 
-<dd>When a workbook with tabbed views is published, each sheet becomes a tab that viewers can use to navigate through the workbook. Note that this setting will override any sheet-level security.</dd>
+: When a workbook with tabbed views is published, each sheet becomes a tab that viewers can use to navigate through the workbook. Note that this setting will override any sheet-level security.
 
-<dt>--append</dt>
+\-\-append
 
-<dd>Append the extract file to the existing data source.</dd>
+: Append the extract file to the existing data source.
 
-<dt>--replace</dt>
+\-\-replace
 
-<dd>Use the extract file to replace the existing data source.</dd>
+: Use the extract file to replace the existing data source.
 
-<dt>--disable-uploader</dt>
+\-\-disable-uploader
 
-<dd>Disable the incremental file uploader.</dd>
+: Disable the incremental file uploader.
 
-<dt>--restart</dd>
+\-\-restart
 
-<dd>Restart the file upload.</dd>
-</dl>
+: Restart the file upload.
+
 
 <details><summary>Global options</summary>
 
-The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
-<dl>
-<dt>-h, --help</dt>
+The following options are used by all tabcmd commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
-<dd>Displays the help for the command.
+-h, \-\-help
 
-Note: Some commands listed may not apply when using tabcmd with Tableau Online.</dd>
+: Displays the help for the command.
 
-<dt>-s, --server</dt>
+Note: Some commands listed may not apply when using tabcmd with Tableau Online.
 
-<dd>The Tableau Online URL, which is required at least once to begin session.</dd>
+-s, \-\-server
 
-<dt>-u, --user</dt>
+: The Tableau Online URL, which is required at least once to begin session.
 
-<dd>The Tableau Online username, which is required at least once to begin session.</dd>
+-u, \-\-user
 
-<dt>-p, --password</dt>
+: The Tableau Online username, which is required at least once to begin session.
 
-<dd>The Tableau Online password, which is required at least once to begin session.</dd>
+-p, \-\-password
 
-<dt>--password-file</dd>
+: The Tableau Online password, which is required at least once to begin session.
 
-<dd>Allows the password to be stored in the given .txt file rather than the command line for increased security.</dd>
+\-\-password-file
 
-<dt>-t, --site</dt>
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
 
-<dd>Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.</dd>
+-t, \-\-site
 
-<dt>--no-prompt</dt>
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
 
-<dd>When specified, the command will not prompt for a password. If no valid password is provided the command will fail.</dd>
+\-\-no-prompt
 
-<dt>--[no-]cookie</dt>
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
 
-<dd>When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.</dd>
+\-\-[no-]cookie
 
-<dt>--timeout</dt>
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
 
-<dd>Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.</dd>
+\-\-timeout
 
-<dt>--</dt>
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
 
-<dd>Specifies the end of options on the command line. You can use -- to indicate to tabcmd that anything that follows -- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use -- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+\-\-
 
-```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
-</dd>
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
 
-</dl>
+```tabcmd export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+
+
+
 </details>
 
 # refreshextracts *workbook-name* or *datasource-name*
@@ -1263,125 +1263,126 @@ Performs a full or incremental refresh of extracts belonging to the specified wo
 
 This command takes the name of the workbook or data source as it appears on the server, not the file name when it was published. Only an administrator or the owner of the workbook or data source is allowed to perform this operation.
 
->Notes:
+<div class="alert alert-info"><strong>Notes:</strong>
+
 * This method will fail and result in an error if your Server Administrator has disabled the RunNow setting for the site. For more information, see Tableau Server Settings(Link opens in a new window).
 * You can use tabcmd to refresh supported data sources that are hosted in the cloud. For example, SQL Server, MySQL, PostgreSQL on a cloud platform; Google Analytics; and so on.
-* To refresh on-premises data with tabcmd, the data source must be a type that can be configured for Tableau Bridge Recommended schedules. For all other data sources that connect to on-premises data, you can use Bridge or the command-line data extract utility. Learn more at Use Bridge to Keep Data Fresh and Automate Extract Refresh Tasks from the Command Line.
+* To refresh on-premises data with tabcmd, the data source must be a type that can be configured for Tableau Bridge Recommended schedules. For all other data sources that connect to on-premises data, you can use Bridge or the command-line data extract utility. Learn more at Use Bridge to Keep Data Fresh and Automate Extract Refresh Tasks from the Command Line.</div>
 
 ## Examples
 
-`tabcmd refreshextracts --datasource sales_ds`
+`tabcmd refreshextracts \-\-datasource sales_ds`
 
-`tabcmd refreshextracts --project "Sales External" --datasource sales_ds`
+`tabcmd refreshextracts \-\-project "Sales External" \-\-datasource sales_ds`
 
-`tabcmd refreshextracts --project "Sales External" --parent-project-path "Main" --project "Sales External" --datasource sales_ds`
+`tabcmd refreshextracts \-\-project "Sales External" \-\-parent-project-path "Main" \-\-project "Sales External" \-\-datasource sales_ds`
 
-`tabcmd refreshextracts --workbook "My Workbook"`
+`tabcmd refreshextracts \-\-workbook "My Workbook"`
 
-`tabcmd refreshextracts --url SalesAnalysis
-tabcmd refreshextracts --workbook "My Workbook" --addcalculations`
+`tabcmd refreshextracts \-\-url SalesAnalysis
+tabcmd refreshextracts \-\-workbook "My Workbook" \-\-addcalculations`
 
-`tabcmd refreshextracts --datasource sales_ds --removecalculations`
+`tabcmd refreshextracts \-\-datasource sales_ds \-\-removecalculations`
 
 ## Options
-<dl>
-<dt>--incremental</dt>
 
-<dd>Runs the incremental refresh operation.</dd>
+\-\-incremental
 
-<dt>--synchronous</dt>
+: Runs the incremental refresh operation.
 
-<dd>Adds the full refresh operation to the queue used by the Backgrounder process, to be run as soon as a Backgrounder process is available. If a Backgrounder process is available, the operation is run immediately. The refresh operation appears on the Background Tasks report.
+\-\-synchronous
 
-During a synchronous refresh, tabcmd maintains a live connection to the server while the refresh operation is underway, polling every second until the background job is done.</dd>
+: Adds the full refresh operation to the queue used by the Backgrounder process, to be run as soon as a Backgrounder process is available. If a Backgrounder process is available, the operation is run immediately. The refresh operation appears on the Background Tasks report.
 
-<dt>--workbook</dt>
+During a synchronous refresh, tabcmd maintains a live connection to the server while the refresh operation is underway, polling every second until the background job is done.
 
-<dd>The name of the workbook containing extracts to refresh. If the workbook has spaces in its name, enclose it in quotes.</dd>
+\-\-workbook
 
-<dt>--datasource</dt>
+: The name of the workbook containing extracts to refresh. If the workbook has spaces in its name, enclose it in quotes.
 
-<dd>The name of the data source containing extracts to refresh.<dd>
+\-\-datasource
 
-<dt>--project</dt>
+: The name of the data source containing extracts to refresh.: 
 
-<dd>Use with --workbook or --datasource to identify a workbook or data source in a project other than Default. If not specified, the Default project is assumed.</dd>
+\-\-project
 
-<dt>--parent-project-path</dt>
+: Use with \-\-workbook or \-\-datasource to identify a workbook or data source in a project other than Default. If not specified, the Default project is assumed.
 
-<dd>Specifies the name of the parent project for the nested project as specified with the --project option.
+\-\-parent-project-path
+
+: Specifies the name of the parent project for the nested project as specified with the \-\-project option.
 
 For example:
 
 * To specify a project called "Nested" that exists in a "Main" project, use the following syntax:
-`--parent-project-path "Main" --project "Nested"`
+`\-\-parent-project-path "Main" \-\-project "Nested"`
 * To specify a project called "Nested2" that is nested within the "Nested" project:
-`--parent-project-path "Main/Nested" --project "Nested2"`
-</dd>
+`\-\-parent-project-path "Main/Nested" \-\-project "Nested2"`
 
-<dt>--url</dt>
 
-<dd>The name of the workbook as it appears in the URL. A workbook published as “Sales Analysis” has a URL name of “SalesAnalysis”.</dd>
+\-\-url
 
-<dt>--addcalculations</dt>
+: The name of the workbook as it appears in the URL. A workbook published as “Sales Analysis” has a URL name of “SalesAnalysis”.
 
-<dd>Use with --workbook to materialize calculations in the embedded extract of the workbook or --datasource to materialize calculations in the extract data source. Adds the operation to the queue used by the Backgrounder process. If a Backgrounder process is available, the operation runs immediately. This operation appears on the Background Tasks for Extracts administrative view.</dd>
+\-\-addcalculations
 
-<dt>--removecalculations</dt>
+: Use with \-\-workbook to materialize calculations in the embedded extract of the workbook or \-\-datasource to materialize calculations in the extract data source. Adds the operation to the queue used by the Backgrounder process. If a Backgrounder process is available, the operation runs immediately. This operation appears on the Background Tasks for Extracts administrative view.
 
-<dd>Use with --workbook or --datasource to remove calculations that were previously materialized. Adds the operation to the queue used by the Backgrounder process. If a Backgrounder process is available, the operation runs immediately. This operation appears on the Background Tasks for Extracts administrative view.</dd>
-</dl>
+\-\-removecalculations
+
+: Use with \-\-workbook or \-\-datasource to remove calculations that were previously materialized. Adds the operation to the queue used by the Backgrounder process. If a Backgrounder process is available, the operation runs immediately. This operation appears on the Background Tasks for Extracts administrative view.
+
 
 <details><summary>Global options</summary>
 
-The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
-<dl>
-<dt>-h, --help</dt>
+The following options are used by all tabcmd commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
-<dd>Displays the help for the command.
+-h, \-\-help
 
-Note: Some commands listed may not apply when using tabcmd with Tableau Online.</dd>
+: Displays the help for the command.
 
-<dt>-s, --server</dt>
+Note: Some commands listed may not apply when using tabcmd with Tableau Online.
 
-<dd>The Tableau Online URL, which is required at least once to begin session.</dd>
+-s, \-\-server
 
-<dt>-u, --user</dt>
+: The Tableau Online URL, which is required at least once to begin session.
 
-<dd>The Tableau Online username, which is required at least once to begin session.</dd>
+-u, \-\-user
 
-<dt>-p, --password</dt>
+: The Tableau Online username, which is required at least once to begin session.
 
-<dd>The Tableau Online password, which is required at least once to begin session.</dd>
+-p, \-\-password
 
-<dt>--password-file</dd>
+: The Tableau Online password, which is required at least once to begin session.
 
-<dd>Allows the password to be stored in the given .txt file rather than the command line for increased security.</dd>
+\-\-password-file
 
-<dt>-t, --site</dt>
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
 
-<dd>Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.</dd>
+-t, \-\-site
 
-<dt>--no-prompt</dt>
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
 
-<dd>When specified, the command will not prompt for a password. If no valid password is provided the command will fail.</dd>
+\-\-no-prompt
 
-<dt>--[no-]cookie</dt>
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
 
-<dd>When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.</dd>
+\-\-[no-]cookie
 
-<dt>--timeout</dt>
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
 
-<dd>Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.</dd>
+\-\-timeout
 
-<dt>--</dt>
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
 
-<dd>Specifies the end of options on the command line. You can use -- to indicate to tabcmd that anything that follows -- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use -- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+\-\-
 
-```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
-</dd>
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
 
-</dl>
+```tabcmd export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+
+
+
 </details>
 
 # removeusers *group-name*
@@ -1389,70 +1390,70 @@ Removes users from the specified group.
 
 ## Example
 
-`tabcmd removeusers "Development" --users "users.csv"`
+`tabcmd removeusers "Development" \-\-users "users.csv"`
 
 ## Options
-<dl>
 
-<dt>--users</dt>
 
-<dd>Remove the users in the given .csv file from the specified group. The file should be a simple list with one user name per line.</dd>
+\-\-users
 
-<dt>--[no-]complete</dt>
+: Remove the users in the given .csv file from the specified group. The file should be a simple list with one user name per line.
 
-<dd>Requires that all rows be valid for any change to succeed. If not specified --complete is used.</dd>
-</dl>
+\-\-[no-]complete
+
+: Requires that all rows be valid for any change to succeed. If not specified \-\-complete is used.
+
 
 <details><summary>Global options</summary>
 
-The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
-<dl>
-<dt>-h, --help</dt>
+The following options are used by all tabcmd commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
-<dd>Displays the help for the command.
+-h, \-\-help
 
-Note: Some commands listed may not apply when using tabcmd with Tableau Online.</dd>
+: Displays the help for the command.
 
-<dt>-s, --server</dt>
+Note: Some commands listed may not apply when using tabcmd with Tableau Online.
 
-<dd>The Tableau Online URL, which is required at least once to begin session.</dd>
+-s, \-\-server
 
-<dt>-u, --user</dt>
+: The Tableau Online URL, which is required at least once to begin session.
 
-<dd>The Tableau Online username, which is required at least once to begin session.</dd>
+-u, \-\-user
 
-<dt>-p, --password</dt>
+: The Tableau Online username, which is required at least once to begin session.
 
-<dd>The Tableau Online password, which is required at least once to begin session.</dd>
+-p, \-\-password
 
-<dt>--password-file</dd>
+: The Tableau Online password, which is required at least once to begin session.
 
-<dd>Allows the password to be stored in the given .txt file rather than the command line for increased security.</dd>
+\-\-password-file
 
-<dt>-t, --site</dt>
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
 
-<dd>Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.</dd>
+-t, \-\-site
 
-<dt>--no-prompt</dt>
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
 
-<dd>When specified, the command will not prompt for a password. If no valid password is provided the command will fail.</dd>
+\-\-no-prompt
 
-<dt>--[no-]cookie</dt>
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
 
-<dd>When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.</dd>
+\-\-[no-]cookie
 
-<dt>--timeout</dt>
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
 
-<dd>Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.</dd>
+\-\-timeout
 
-<dt>--</dt>
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
 
-<dd>Specifies the end of options on the command line. You can use -- to indicate to tabcmd that anything that follows -- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use -- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+\-\-
 
-```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
-</dd>
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
 
-</dl>
+```tabcmd export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+
+
+
 </details>
 
 # runschedule *schedule-name*
@@ -1464,58 +1465,56 @@ This command is not available for Tableau Online.
 
 Note: This method will fail and result in an error if your Server Administrator has disabled the RunNow setting for the site. For more information, see Tableau Server Settings(Link opens in a new window).
 
-# Example
+## Example
 
 ```tabcmd runschedule "5AM Sales Refresh"```
 
 <details><summary>Global options</summary>
 
-The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
-<dl>
-<dt>-h, --help</dt>
+The following options are used by all tabcmd commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
-<dd>Displays the help for the command.
+-h, \-\-help
 
-Note: Some commands listed may not apply when using tabcmd with Tableau Online.</dd>
+: Displays the help for the command.
 
-<dt>-s, --server</dt>
+Note: Some commands listed may not apply when using tabcmd with Tableau Online.
 
-<dd>The Tableau Online URL, which is required at least once to begin session.</dd>
+-s, \-\-server
 
-<dt>-u, --user</dt>
+: The Tableau Online URL, which is required at least once to begin session.
 
-<dd>The Tableau Online username, which is required at least once to begin session.</dd>
+-u, \-\-user
 
-<dt>-p, --password</dt>
+: The Tableau Online username, which is required at least once to begin session.
 
-<dd>The Tableau Online password, which is required at least once to begin session.</dd>
+-p, \-\-password
 
-<dt>--password-file</dd>
+: The Tableau Online password, which is required at least once to begin session.
 
-<dd>Allows the password to be stored in the given .txt file rather than the command line for increased security.</dd>
+\-\-password-file
 
-<dt>-t, --site</dt>
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
 
-<dd>Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.</dd>
+-t, \-\-site
 
-<dt>--no-prompt</dt>
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
 
-<dd>When specified, the command will not prompt for a password. If no valid password is provided the command will fail.</dd>
+\-\-no-prompt
 
-<dt>--[no-]cookie</dt>
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
 
-<dd>When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.</dd>
+\-\-[no-]cookie
 
-<dt>--timeout</dt>
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
 
-<dd>Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.</dd>
+\-\-timeout
 
-<dt>--</dt>
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
 
-<dd>Specifies the end of options on the command line. You can use -- to indicate to tabcmd that anything that follows -- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use -- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+\-\-
 
-```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
-</dd>
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
 
-</dl>
+```tabcmd export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+
 </details>
