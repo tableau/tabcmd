@@ -1,6 +1,7 @@
 ---
 title: tabcmd
 layout: docs
+permalink: /docs/index.html
 ---
 
 Tableau provides the tabcmd command-line utility which you can use to automate site administration tasks on your Tableau Online site. For example, creating or deleting users, projects, and groups.
@@ -19,34 +20,41 @@ For Tableau Server, we recommend you download the version that matches your serv
 
 2. If you're using:
 
-    - Tableau Online: select the latest Tableau Server release.
-    - Tableau Server (Windows or Linux): select the release that matches your server version.
+* Tableau Online, select the latest Tableau Server release.
+* Tableau Server (Windows or Linux): select the release that matches your server version.
 
-  In either case, if the expanded information shows maintenance releases, select the latest maintenance release or the one that matches your server version.
+    In either case, if the expanded information shows maintenance releases, select the latest maintenance release or the one that matches your server version.
 
-    ![Select the server version you use, which will probably be the latest release for Tableau Online](../assets/tabcmd_download1.png)
 
-    This takes you to the release notes page, called Resolved Issues, where you can read about security improvements and resolved issues.
+Select the server version you use (latest release for Tableau Online)
+
+This takes you to the release notes page, called Resolved Issues, where you can read about security improvements and resolved issues.
 
 3. Scroll to the Download Files section under the resolved issues, select the tabcmd download link that is compatible with the computer on which you’ll run the tabcmd commands.
 
-  ![Select the tabcmd installer for the computer you'll use it on (32- or 64-bit)](../assets/tabcmd_download.png)
+Select the tabcmd installer for the computer you'll use it on (32- or 64-bit)
 
-  The remaining steps refer to this computer as <em>the tabcmd computer</em>.
+The remaining steps refer to this computer as “the tabcmd computer.”
 
 4. Save the installer to the tabcmd computer, or a location accessible from that computer .
 
 5. Complete the installation steps as appropriate for the operating system of the tabcmd computer:
 
-  - **For Windows**:
+    * **Windows**
+By default tabcmd is installed to ```C:\Program Files\Tableau\Tableau Server\<version>\extras\Command Line Utility```. You can change this during installation and recommend that you install tabcmd to a folder named tabcmd at the root of the C:\ drive (`C:\tabcmd)`. This can make it easier to locate and run, and will accommodate some limitations with the Windows operating system if you add the tabcmd directory to the Windows PATH.
 
-    By default tabcmd is installed to ```C:\Program Files\Tableau\Tableau Server\<version>\extras\Command Line Utility```. You can change this during installation and recommend that you install tabcmd to a folder named tabcmd at the root of the C:\ drive (`C:\tabcmd)`. This can make it easier to locate and run, and will accommodate some limitations with the Windows operating system if you add the tabcmd directory to the Windows PATH.
+
         <div class="alert alert-info"><strong>Note</strong>: The tabcmd Setup program does not add the tabcmd directory to the Windows PATH variable. You can add it manually, or you can include the full path to tabcmd each time you call it.</div>
+
         You can install tabcmd in two ways on Windows:
+
         a. Double-click the installer to follow the steps in the UI:
-          * Accept the license agreement.
-          * If you want to install to a non-default location, click Customize and type or browse to the location you want to install tabcmd to.
-          * Click Install.
+
+       * Accept the license agreement.
+
+       * If you want to install to a non-default location, click Customize and type or browse to the location you want to install tabcmd to.
+
+       * Click Install.
          If you are prompted by Windows Defender Firewall or User Account Control, click Allow access.
 
         b. Run the installer from a command prompt:
@@ -74,8 +82,10 @@ For Tableau Server, we recommend you download the version that matches your serv
 
         The tabcmd Setup program creates logs in C:\Users\<user>\AppData\Local\Temp you can use if you have problems installing tabcmd. The logs use the naming convention Tableau_Server_Command_Line_Utility_(<version_code>)_##############.log.
 
-    - **For Linux**:
-          <div class="alert alert-info"><b>Note</b>: To run tabcmd on a Linux computer, you must have Java 8 (also called Java 1.8) installed. On RHEL-like systems this will be installed as a dependency when you install tabcmd. On Debian-like systems, you need to install Java 8 (1.8) separately if it is not already installed.</div>
+
+    * **Linux**
+        <div class="alert alert-info"><b>Note</b>: To run tabcmd on a Linux computer, you must have Java 8 (also called Java 1.8) installed. On RHEL-like systems this will be installed as a dependency when you install tabcmd. On Debian-like systems, you need to install Java 8 (1.8) separately if it is not already installed.
+
         a. Log on as a user with sudo access to the tabcmd computer.
 
         b. Navigate to the directory where you copied the .rpm or .deb package that you downloaded.

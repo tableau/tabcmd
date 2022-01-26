@@ -119,6 +119,25 @@ td
     padding: .3em;
     vertical-align: top;
 }
+/* Adding for definition lists */
+
+dt {
+    font-weight: bold;
+    text-decoration: none;
+  }
+ 
+dd {
+    margin: 0;
+    padding: 0 0 0.5em 0;
+  }
+
+details summary {
+    font-weight: bold;
+}
+
+details::before {
+    content: ▶
+}
 
 /* So the scroll bar width doesn't cause the page to jump */
 html {
