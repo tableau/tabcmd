@@ -1,13 +1,13 @@
 ---
-title: Install Switches and Properties for tabcmd2 (Windows)
+title: Install Switches and Properties for tabcmd (Windows)
 layout: docs
 ---
 
 You can use the following switches when installing the Tableau Server Command Line Utility (tabcmd) version 2019.4.0 or later from the command line on Windows.
 
-<div class="alert alert-info"><strong>Important</strong>: To ensure availability and avoid disruption with Tableau Online, make sure to upgrade your tabcmd2 client to a version greater than version 2020.2 before January 2022. The tabcmd2 versions are API backward compatible and should not require code changes. For more information, see <a href="index.html#install_tabcmd2">Install tabcmd</a>.</div>
+<div class="alert alert-info"><strong>Important</strong>: To ensure availability and avoid disruption with Tableau Online, make sure to upgrade your tabcmd client to a version greater than version 2020.2 before January 2022. The tabcmd versions are API backward compatible and should not require code changes. For more information, see <a href="index.html#install_tabcmd">Install tabcmd</a>.</div>
 
-<div class="alert alert-info"><strong>Note</strong>: There are no equivalent switches for the Linux version of the tabcmd2 installer.</div>
+<div class="alert alert-info"><strong>Note</strong>: There are no equivalent switches for the Linux version of the tabcmd installer.</div>
 
 <table>
     <thead>
@@ -63,8 +63,8 @@ You can use the following switches when installing the Tableau Server Command Li
         <tr>
             <td><code>INSTALLDIR="
 &lt;path\to\installation\directory&gt;"</code></td>
-            <td>Install tabcmd2 to the specified non-default install location.</td>
-            <td>Specifies the location to install tabcmd. If not used, tabcmd2 is installed to <code>C:\Program Files\Tableau\Tableau Server\&lt;version_code&gt;\extras\Command Line Utility</code>. 
+            <td>Install tabcmd to the specified non-default install location.</td>
+            <td>Specifies the location to install tabcmd. If not used, tabcmd is installed to <code>C:\Program Files\Tableau\Tableau Server\&lt;version_code&gt;\extras\Command Line Utility</code>. 
             
 Example: <code>&lt;Setup file&gt; /silent INSTALLDIR="C:\tabcmd"</code></td>
         </tr>
