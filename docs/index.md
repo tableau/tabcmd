@@ -1,5 +1,5 @@
 ---
-title: tabcmd
+title: tabcmd2
 layout: docs
 permalink: /docs/index.html
 ---
