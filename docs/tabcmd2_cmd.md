@@ -5,7 +5,7 @@ layout: docs
 
 You can use the following commands with the tabcmd2 command line tool in Tableau Online:
 
-<div class="alert alert-info"><strong>Important</strong>: To ensure availability and avoid disruption with Tableau Online, make sure to upgrade your tabcmd2 client to a version greater than version 2020.2 before January 2022. The tabcmd2 versions are API backward compatible and should not require code changes. For more information, see <a href="index.html#install_tabcmd2">Install tabcmd</a>.</div>
+<div class="alert alert-info"><strong>Important</strong>: To ensure availability and avoid disruption with Tableau Online, make sure to upgrade your tabcmd2 client to a version greater than version 2020.2 before January 2022. The tabcmd2 versions are API backward compatible and should not require code changes. For more information, see <a href="index.html#install_tabcmd2">Install tabcmd2</a>.</div>
 
 * TOC
 {:toc}
@@ -28,17 +28,15 @@ Adds users to the specified group.
 
 When set to complete this option requires that all rows be valid for any change to succeed. If not specified, \-\-complete is used.
 
-<details>
+## Global options
 
-<summary>Global options</summary>
-
-The following options are used by all tabcmd2 commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+The following options are used by all tabcmd2 commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
 -h, \-\-help
 
 : Displays the help for the command.
 
-Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd2 with Tableau Online.</div>
 
 -s, \-\-server
 
@@ -78,7 +76,6 @@ Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
 
 ```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
 
-</details>
 
 # createextracts
 Creates extracts for a published workbook or data source.
@@ -102,7 +99,7 @@ Creates extracts for a published workbook or data source.
 
 \-\-parent-project-path
 
-: Path of the project that is the parent of the project that contains the target resource. Must specify the project name with `\-\-project`.
+: Path of the project that is the parent of the project that contains the target resource. Must specify the project name with `--project`.
 
 \-\-project
 
@@ -117,15 +114,15 @@ Creates extracts for a published workbook or data source.
 : The name of the target workbook for extract creation.
 
 
-<details><summary>Global options</summary>
+## Global options
 
-The following options are used by all tabcmd2 commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+The following options are used by all tabcmd2 commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
 -h, \-\-help
 
 : Displays the help for the command.
 
-Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd2 with Tableau Online.</div>
 
 -s, \-\-server
 
@@ -166,9 +163,6 @@ Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
 ```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
 
 
-
-</details>
-
 # creategroup *group-name*
 Creates a group. Use addusers to add users after the group has been created.
 
@@ -176,15 +170,15 @@ Creates a group. Use addusers to add users after the group has been created.
 
 ```tabcmd2 creategroup "Development"```
 
-<details><summary>Global options</summary>
+## Global options
 
-The following options are used by all tabcmd2 commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+The following options are used by all tabcmd2 commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
 -h, \-\-help
 
 : Displays the help for the command.
 
-Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd2 with Tableau Online.</div>
 
 -s, \-\-server
 
@@ -226,7 +220,7 @@ Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
 
 
 
-</details>
+
 
 # createproject *project-name*
 Creates a project.
@@ -243,22 +237,22 @@ Creates a project.
 
 \-\-parent-project-path
 
-: Specifies the name of the parent project for the nested project as specified with the -n option. For example, to specify a project called "Nested" that exists in a "Main" project, use the following syntax: ```\-\-parent-project-path "Main" -n "Nested".```
+: Specifies the name of the parent project for the nested project as specified with the -n option. For example, to specify a project called "Nested" that exists in a "Main" project, use the following syntax: ```--parent-project-path "Main" -n "Nested".```
 
 -d, \-\-description
 
 : Specifies a description for the project.
 
 
-<details><summary>Global options</summary>
+## Global options
 
-The following options are used by all tabcmd2 commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+The following options are used by all tabcmd2 commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
 -h, \-\-help
 
 : Displays the help for the command.
 
-Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd2 with Tableau Online.</div>
 
 -s, \-\-server
 
@@ -298,15 +292,11 @@ Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
 
 ```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
 
-
-
-</details>
-
 # createsiteusers *filename.csv*
 
 Adds users to a site, based on information supplied in a comma-separated values (CSV) file. If the user is not already created on the server, the command creates the user before adding that user to the site.
 
-The CSV file must contain one or more user names and can also include (for each user) a password, full name, license type, administrator level, publisher (yes/no), and email address. For information about the format of the CSV file, see CSV Import File Guidelines.
+The CSV file must contain one or more user names and can also include (for each user) a password, full name, license type, administrator level, publisher (yes/no), and email address. For information about the format of the CSV file, see [CSV Import File Guidelines](https://help.tableau.com/current/online/en-us/csvguidelines.htm).
 
 As an alternative to including administrator level and publisher permissions in the CSV file, you can pass access level information by including the \-\-role option and specifying the site role you want to assign users listed in the CSV file.
 
@@ -326,7 +316,7 @@ By default, users are added to the site that you are logged in to. To add users 
 
 : Sets the authentication type (TableauID or SAML) for all users in the .csv file. If unspecified, the default is TableauID.
 
-Note: To use SAML authentication, the site itself must be SAML-enabled as well. For information, see Enable SAML Authentication on a Site.
+<div class="alert alert-info"><strong>Note</strong>: To use SAML authentication, the site itself must be SAML-enabled as well. For information, see <a href="https://help.tableau.com/current/online/en-us/saml_config_site.htm">Enable SAML Authentication on a Site</a>.</div>
 
 \-\-[no-]complete
 
@@ -334,7 +324,7 @@ Note: To use SAML authentication, the site itself must be SAML-enabled as well. 
 
 \-\-no-publisher
 
-: Deprecated. Use the `\-\-role` option instead.
+: Deprecated. Use the `--role` option instead.
 
 \-\-nowait
 
@@ -352,22 +342,22 @@ Valid values are: ServerAdministrator, SiteAdministratorCreator, SiteAdministrat
 
 The default is Unlicensed for new users and unchanged for existing users. Users are added as unlicensed also if you have a user-based server installation, and if the createsiteusers command creates a new user, but you have already reached the limit on the number of licenses for your users.
 
-Note: On a multi-site Tableau Server, if you want to assign the ServerAdministrator site role using the \-\-role option, use the createusers command instead of createsiteusers.
+<div class="alert alert-info"><strong>Note</strong>: On a multi-site Tableau Server, if you want to assign the ServerAdministrator site role using the \-\-role option, use the createusers command instead of createsiteusers.</div>
 
 \-\-silent-progress
 
 : Do not display progress messages for the command.
 
 
-<details><summary>Global options</summary>
+## Global options
 
-The following options are used by all tabcmd2 commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+The following options are used by all tabcmd2 commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
 -h, \-\-help
 
 : Displays the help for the command.
 
-Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd2 with Tableau Online.</div>
 
 -s, \-\-server
 
@@ -407,9 +397,6 @@ Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
 
 ```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
 
-
-
-</details>
 
 # delete workbook-name or datasource-name
 Deletes the specified workbook or data source from the server.
@@ -439,15 +426,15 @@ This command takes the name of the workbook or data source as it is on the serve
 : The name of the data source you want to delete.
 
 
-<details><summary>Global options</summary>
+## Global options
 
-The following options are used by all tabcmd2 commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+The following options are used by all tabcmd2 commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
 -h, \-\-help
 
 : Displays the help for the command.
 
-Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd2 with Tableau Online.</div>
 
 -s, \-\-server
 
@@ -489,7 +476,7 @@ Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
 
 
 
-</details>
+
 
 # deleteextracts
 
@@ -525,15 +512,15 @@ Deletes extracts for a published workbook or data source.
     : The name of the target workbook for extract deletion.
 
 
-<details><summary>Global options</summary>
+## Global options
 
-The following options are used by all tabcmd2 commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+The following options are used by all tabcmd2 commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
 -h, \-\-help
 
 : Displays the help for the command.
 
-Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd2 with Tableau Online.</div>
 
 -s, \-\-server
 
@@ -575,7 +562,7 @@ Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
 
 
 
-</details>
+
 
 
 # deletegroup *group-name*
@@ -585,15 +572,15 @@ Deletes the specified group from the server.
 
 `tabcmd2 deletegroup "Development"`
 
-<details><summary>Global options</summary>
+## Global options
 
-The following options are used by all tabcmd2 commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+The following options are used by all tabcmd2 commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
 -h, \-\-help
 
 : Displays the help for the command.
 
-Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd2 with Tableau Online.</div>
 
 -s, \-\-server
 
@@ -635,13 +622,13 @@ Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
 
 
 
-</details>
+
 
 
 # deleteproject *project-name*
 Deletes the specified project from the server.
 
-Using tabcmd, you can specify only a top-level project in a project hierarchy. To automate tasks you want to perform on a project within a parent project, use the equivalent Tableau REST API(Link opens in a new window) call.
+Using tabcmd, you can specify only a top-level project in a project hierarchy. To automate tasks you want to perform on a project within a parent project, use the equivalent Tableau [REST API](https://help.tableau.com/current/api/rest_api/en-us/help.htm#REST/rest_api_ref.htm) call.
 
 ## Example
 
@@ -655,15 +642,15 @@ Using tabcmd, you can specify only a top-level project in a project hierarchy. T
 : Specifies the name of the parent project for the nested project as specified with the command. For example, to specify a project called "Designs" that exists in a "Main" project, use the following syntax: \-\-parent-project-path "Main" "Designs".
 
 
-<details><summary>Global options</summary>
+## Global options
 
-The following options are used by all tabcmd2 commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+The following options are used by all tabcmd2 commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
 -h, \-\-help
 
 : Displays the help for the command.
 
-Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd2 with Tableau Online.</div>
 
 -s, \-\-server
 
@@ -705,7 +692,7 @@ Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
 
 
 
-</details>
+
 
 
 # deletesiteusers *filename.csv*
@@ -719,15 +706,15 @@ If the user owns content, the user's role is change to Unlicensed, but the user 
 
 `tabcmd2 deletesiteusers "users.csv"`
 
-<details><summary>Global options</summary>
+## Global options
 
-The following options are used by all tabcmd2 commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+The following options are used by all tabcmd2 commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
 -h, \-\-help
 
 : Displays the help for the command.
 
-Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd2 with Tableau Online.</div>
 
 -s, \-\-server
 
@@ -768,12 +755,8 @@ Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
 ```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
 
 
-
-</details>
-
-
 # export
-Exports a view or workbook from Tableau Online and saves it to a file. This command can also export just the data used for a view. View data is exported at the summary level. To export detail-level data, you must use the Tableau Server UI. For details, see Download Views and Workbooks(Link opens in a new window).
+Exports a view or workbook from Tableau Online and saves it to a file. This command can also export just the data used for a view. View data is exported at the summary level. To export detail-level data, you must use the Tableau Server UI. For details, see [Download Views and Workbooks](https://help.tableau.com/current/pro/desktop/en-us/export.htm).
 
 Note the following when you use this command:
 
@@ -809,39 +792,41 @@ Note the following when you use this command:
 * **The saved file's format**: Your format options depend on what's being exported. A workbook can only be exported as a PDF using the \-\-fullpdf argument. A view can be exported as a PDF (\-\-pdf) or a PNG (\-\-png).
 
 * **The saved file's name and location** (optional): If you don't provide a name, it will be derived from the view or workbook name. If you don't provide a location, the file will be saved to your current working directory. Otherwise, you can specify a full path or one that's relative to your current working directory.
-Note: You must include a file name extension such as .csv or .pdf. The command does not automatically add an extension to the file name that you provide.
 
-Dashboard web page objects not included in PDF exports: A dashboard can optionally include a web page object. If you are performing an export to PDF of a dashboard that includes a web page object, the web page object won't be included in the PDF.
 
-Non-ASCII and non-standard ASCII characters and PDF exports: If you are exporting a view or workbook with a name that includes a character outside the ASCII character set, or a non-standard ASCII character set, you need to URL encode (percent-encode) the character.
+    <div class="alert alert-info"><strong>Note</strong>: You must include a file name extension such as .csv or .pdf. The command does not automatically add an extension to the file name that you provide.</div>
 
-For example if your command includes the city Zürich, you need to URL encode it as Z%C3%BCrich:
+* **Dashboard web page objects not included in PDF exports**: A dashboard can optionally include a web page object. If you are performing an export to PDF of a dashboard that includes a web page object, the web page object won't be included in the PDF.
 
-tabcmd2 export "/Cities/Sheet1?locationCity=Z%C3%BCrich" -fullpdf
+* **Non-ASCII and non-standard ASCII characters and PDF exports**: If you are exporting a view or workbook with a name that includes a character outside the ASCII character set, or a non-standard ASCII character set, you need to URL encode (percent-encode) the character.
 
-Clearing the Cache to Use Real-Time Data
+    For example if your command includes the city Zürich, you need to URL encode it as Z%C3%BCrich:
 
-You can optionally add the URL parameter ?:refresh=yes to force a fresh data query instead of pulling the results from the cache. If you are using tabcmd2 with your own scripting and the refresh URL parameter is being used a great deal, this can have a negative impact on performance. It's recommended that you use refresh only when real-time data is required—for example, on a single dashboard instead of on an entire workbook.
+    ```tabcmd2 export "/Cities/Sheet1?locationCity=Z%C3%BCrich" -fullpdf```
+
+## Clearing the Cache to Use Real-Time Data
+
+You can optionally add the URL parameter `?:refresh=yes` to force a fresh data query instead of pulling the results from the cache. If you are using tabcmd2 with your own scripting and the refresh URL parameter is being used a great deal, this can have a negative impact on performance. It's recommended that you use refresh only when real-time data is required—for example, on a single dashboard instead of on an entire workbook.
 
 ## Examples
 
-Views
+### Views
 
-tabcmd2 export "Q1Sales/Sales_Report" \-\-csv -f "Weekly-Report.csv"
+```tabcmd2 export "Q1Sales/Sales_Report" --csv -f "Weekly-Report.csv"```
 
-tabcmd2 export -t Sales "Sales/Sales_Analysis" \-\-pdf -f "C:\Tableau_Workbooks\Weekly-Reports.pdf"
+```tabcmd2 export -t Sales "Sales/Sales_Analysis" --pdf -f "C:\Tableau_Workbooks\Weekly-Reports.pdf"```
 
-tabcmd2 export "Finance/InvestmentGrowth" \-\-png
+```tabcmd2 export "Finance/InvestmentGrowth" --png```
 
-tabcmd2 export "Finance/InvestmentGrowth?:refresh=yes" \-\-png
+```tabcmd2 export "Finance/InvestmentGrowth?:refresh=yes" --png```
 
-Workbooks
+### Workbooks
 
-tabcmd2 export "Q1Sales/Sales_Report" \-\-fullpdf
+```tabcmd2 export "Q1Sales/Sales_Report" --fullpdf```
 
-tabcmd2 export "Sales/Sales_Analysis" \-\-fullpdf \-\-pagesize tabloid -f "C:\Tableau_Workbooks\Weekly-Reports.pdf"
+```tabcmd2 export "Sales/Sales_Analysis" --fullpdf --pagesize tabloid -f "C:\Tableau_Workbooks\Weekly-Reports.pdf"```
 
-Options
+## Options
 -f, \-\-filename
 
 Saves the file with the given filename and extension.
@@ -878,65 +863,112 @@ Sets the width in pixels. Default is 800 px.
 
 Sets the height in pixels. Default is 600 px.
 
-Global options
-get url
-Gets the resource from Tableau Online that's represented by the specified (partial) URL. The result is returned as a file.
+## Global options
 
-Note the following when you use this command:
-
-Permissions: To get a file, you must have the Download/Web Save As permission. By default, this permission is allowed or inherited for all roles, although permissions can be set per workbook or view.
-
-Specifying a view or workbook to get: You specify a view to get using the "/views/<workbookname>/<viewname>.<extension>" string, and specify a workbook to get using the "/workbooks/<workbookname>.<extension>" string. Replace <workbookname> and <viewname> with the names of the workbook and view as they appear in the URL when you open the view in a browser and replace <extension> with the type of file you want to save. Do not use the session ID at the end of the URL (?:iid=<n>) or the "friendly" name of the workbook or view.
-
-For example, when you open a view Regional Totals in a workbook named Metrics Summary, the URL will look similar to this:
-
-/views/MetricsSummary_1/RegionalTotals?:iid=1
-
-Use the string /views/MetricsSummary_1/RegionalTotals.<extension> to get the view.
-
-Use the string /workbooks/MetricsSummary_1.<extension> to get the workbook.
-
-File extension: The URL must include a file extension. The extension determines what's returned. A view can be returned in PDF, PNG, or CSV (summary data only) format. A Tableau workbook is returned as a TWB if it connects to a published data source or uses a live connection, or a TWBX if it connects to a data extract.
-
-Note: If you are downloading a view to a PDF or PNG file, and if you include a \-\-filename parameter that includes the .pdf or .png extension, you do not have to include a .pdf or .png extension in the URL.
-
-The saved file's name and location (optional): The name you use for \-\-filename should include the file extension. If you don't provide a name and file extension, both will be derived from the URL string. If you don't provide a location, the file is saved to your current working directory. Otherwise, you can specify a full path or one that's relative to your current working directory.
-
-PNG size (optional): If the saved file is a PNG, you can specify the size, in pixels, in the URL.
-
-Clearing the cache to use real-time data
-
-You can optionally add the URL parameter ?:refresh=yes to force a fresh data query instead of pulling the results from the cache. If you are using tabcmd2 with your own scripting, using the refresh parameter a great deal can have a negative impact on performance. It's recommended that you use refresh only when real-time data is required—for example, on a single dashboard instead of on an entire workbook.
-
-Examples
-
-Views
-
-tabcmd2 get "/views/Sales_Analysis/Sales_Report.png" \-\-filename "Weekly-Report.png"
-
-tabcmd2 get "/views/Finance/InvestmentGrowth.pdf" -f "Q1Growth.pdf"
-
-tabcmd2 get "/views/Finance/InvestmentGrowth" -f "Q1Growth.pdf"
-
-tabcmd2 get "/views/Finance/InvestmentGrowth.csv"
-
-tabcmd2 get "/views/Finance/InvestmentGrowth.png?:size=640,480" -f growth.png
-
-tabcmd2 get "/views/Finance/InvestmentGrowth.png?:refresh=yes" -f growth.png
-
-Workbooks
-
-tabcmd2 get "/workbooks/Sales_Analysis.twb" -f "C:\Tableau_Workbooks\Weekly-Reports.twb"
-
-<details><summary>Global options</summary>
-
-The following options are used by all tabcmd2 commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+The following options are used by all tabcmd2 commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
 -h, \-\-help
 
 : Displays the help for the command.
 
-Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd2 with Tableau Online.</div>
+
+-s, \-\-server
+
+: The Tableau Online URL, which is required at least once to begin session.
+
+-u, \-\-user
+
+: The Tableau Online username, which is required at least once to begin session.
+
+-p, \-\-password
+
+: The Tableau Online password, which is required at least once to begin session.
+
+\-\-password-file
+
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
+
+-t, \-\-site
+
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
+
+\-\-no-prompt
+
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
+
+\-\-[no-]cookie
+
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
+
+\-\-timeout
+
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
+
+\-\-
+
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd2 that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd2 command, where -430105/Sheet1 is a required value for the export command.
+
+```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+
+# get *url*
+Gets the resource from Tableau Online that's represented by the specified (partial) URL. The result is returned as a file.
+
+Note the following when you use this command:
+
+* **Permissions**: To get a file, you must have the **Download/Web Save As** permission. By default, this permission is allowed or inherited for all roles, although permissions can be set per workbook or view.
+
+* **Specifying a view or workbook to get**: You specify a view to get using the "/views/<workbookname>/<viewname>.<extension>" string, and specify a workbook to get using the "/workbooks/<workbookname>.<extension>" string. Replace <workbookname> and <viewname> with the names of the workbook and view as they appear in the URL when you open the view in a browser and replace <extension> with the type of file you want to save. Do not use the session ID at the end of the URL (?:iid=<n>) or the "friendly" name of the workbook or view.
+
+    For example, when you open a view Regional Totals in a workbook named Metrics Summary, the URL will look similar to this:
+
+    ```/views/MetricsSummary_1/RegionalTotals?:iid=1```
+
+    Use the string /views/MetricsSummary_1/RegionalTotals.<extension> to get the view.
+
+    Use the string /workbooks/MetricsSummary_1.<extension> to get the workbook.
+
+* **File extension**: The URL must include a file extension. The extension determines what's returned. A view can be returned in PDF, PNG, or CSV (summary data only) format. A Tableau workbook is returned as a TWB if it connects to a published data source or uses a live connection, or a TWBX if it connects to a data extract.
+
+    <div class="alert alert-info"><strong>Note</strong>: If you are downloading a view to a PDF or PNG file, and if you include a \-\-filename parameter that includes the .pdf or .png extension, you do not have to include a .pdf or .png extension in the URL.</div>
+
+* **The saved file's name and location** (optional): The name you use for \-\-filename should include the file extension. If you don't provide a name and file extension, both will be derived from the URL string. If you don't provide a location, the file is saved to your current working directory. Otherwise, you can specify a full path or one that's relative to your current working directory.
+
+* **PNG size **(optional): If the saved file is a PNG, you can specify the size, in pixels, in the URL.
+
+## Clearing the cache to use real-time data
+
+You can optionally add the URL parameter ?:refresh=yes to force a fresh data query instead of pulling the results from the cache. If you are using tabcmd2 with your own scripting, using the refresh parameter a great deal can have a negative impact on performance. It's recommended that you use refresh only when real-time data is required—for example, on a single dashboard instead of on an entire workbook.
+
+## Examples
+
+### Views
+
+```tabcmd2 get "/views/Sales_Analysis/Sales_Report.png" \-\-filename "Weekly-Report.png"```
+
+```tabcmd2 get "/views/Finance/InvestmentGrowth.pdf" -f "Q1Growth.pdf"```
+
+```tabcmd2 get "/views/Finance/InvestmentGrowth" -f "Q1Growth.pdf"```
+
+```tabcmd2 get "/views/Finance/InvestmentGrowth.csv"```
+
+```tabcmd2 get "/views/Finance/InvestmentGrowth.png?:size=640,480" -f growth.png```
+
+```tabcmd2 get "/views/Finance/InvestmentGrowth.png?:refresh=yes" -f growth.png```
+
+### Workbooks
+
+```tabcmd2 get "/workbooks/Sales_Analysis.twb" -f "C:\Tableau_Workbooks\Weekly-Reports.twb"```
+
+## Global options
+
+The following options are used by all tabcmd2 commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+
+-h, \-\-help
+
+: Displays the help for the command.
+
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd2 with Tableau Online.</div>
 
 -s, \-\-server
 
@@ -977,16 +1009,12 @@ Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
 ```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
 
 
-
-</details>
-
-
 # login
 Logs in a Tableau Online user.
 
 Use the \-\-server, \-\-site, \-\-username, \-\-password global options to create a session.
 
-Note: When you use the tabcmd2 login command, you cannot use SAML single sign-on (SSO), even if your site is configured to use SAML. To log in, you must pass the user name and password of a user who has been created in your site. You will have the permissions of the Tableau Server user that you're signed in as.
+<div class="alert alert-info"><strong>Note</strong>: When you use the tabcmd2 login command, you cannot use SAML single sign-on (SSO), even if your site is configured to use SAML. To log in, you must pass the user name and password of a user who has been created in your site. You will have the permissions of the Tableau Server user that you're signed in as.</div>
 
 If you want to log in using the same information you've already used to create a session, just specify the \-\-password option. The server and user name stored in the cookie will be used.
 
@@ -1000,7 +1028,7 @@ Once you log in, the session will continue until it expires on the server or the
 
 Log in to the Tableau Online site with the specified site ID:
 
-`tabcmd2 login -s https://online.tableau.com -t siteID -u user@email.com -p password`
+```tabcmd2 login -s https://online.tableau.com -t siteID -u user@email.com -p password```
 
 ## Options
 
@@ -1051,15 +1079,15 @@ The site ID is used in the URL to uniquely identify the site. For example, a sit
 : The number of seconds the server should wait before processing the login command. Default: 30 seconds.
 
 
-<details><summary>Global options</summary>
+## Global options
 
-The following options are used by all tabcmd2 commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+The following options are used by all tabcmd2 commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
 -h, \-\-help
 
 : Displays the help for the command.
 
-Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd2 with Tableau Online.</div>
 
 -s, \-\-server
 
@@ -1098,10 +1126,6 @@ Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
 : Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd2 that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd2 command, where -430105/Sheet1 is a required value for the export command.
 
 ```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
-
-
-
-</details>
 
 
 # logout
@@ -1206,15 +1230,15 @@ If you want to schedule extract refreshes after publishing, you must include thi
 : Restart the file upload.
 
 
-<details><summary>Global options</summary>
+## Global options
 
-The following options are used by all tabcmd2 commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+The following options are used by all tabcmd2 commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
 -h, \-\-help
 
 : Displays the help for the command.
 
-Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd2 with Tableau Online.</div>
 
 -s, \-\-server
 
@@ -1256,7 +1280,7 @@ Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
 
 
 
-</details>
+
 
 # refreshextracts *workbook-name* or *datasource-name*
 Performs a full or incremental refresh of extracts belonging to the specified workbook or data source.
@@ -1265,9 +1289,9 @@ This command takes the name of the workbook or data source as it appears on the 
 
 <div class="alert alert-info"><strong>Notes:</strong>
 
-* This method will fail and result in an error if your Server Administrator has disabled the RunNow setting for the site. For more information, see Tableau Server Settings(Link opens in a new window).
+* This method will fail and result in an error if your Server Administrator has disabled the RunNow setting for the site. For more information, see [Tableau Server Settings](https://help.tableau.com/current/server/en-us/maintenance_set.htm).
 * You can use tabcmd2 to refresh supported data sources that are hosted in the cloud. For example, SQL Server, MySQL, PostgreSQL on a cloud platform; Google Analytics; and so on.
-* To refresh on-premises data with tabcmd, the data source must be a type that can be configured for Tableau Bridge Recommended schedules. For all other data sources that connect to on-premises data, you can use Bridge or the command-line data extract utility. Learn more at Use Bridge to Keep Data Fresh and Automate Extract Refresh Tasks from the Command Line.</div>
+* To refresh on-premises data with tabcmd, the data source must be a type that can be configured for Tableau Bridge [Recommended schedules](https://help.tableau.com/current/online/en-us/to_sync_schedule.htm). For all other data sources that connect to on-premises data, you can use Bridge or the command-line data extract utility. Learn more at [Use Bridge to Keep Data Fresh](https://help.tableau.com/current/online/en-us/qs_refresh_local_data.htm) and [Automate Extract Refresh Tasks from the Command Line](https://help.tableau.com/current/online/en-us/to_refresh_extract_commandline.htm).</div>
 
 ## Examples
 
@@ -1315,9 +1339,9 @@ During a synchronous refresh, tabcmd2 maintains a live connection to the server 
 For example:
 
 * To specify a project called "Nested" that exists in a "Main" project, use the following syntax:
-`\-\-parent-project-path "Main" \-\-project "Nested"`
+`--parent-project-path "Main" \-\-project "Nested"`
 * To specify a project called "Nested2" that is nested within the "Nested" project:
-`\-\-parent-project-path "Main/Nested" \-\-project "Nested2"`
+`--parent-project-path "Main/Nested" \-\-project "Nested2"`
 
 
 \-\-url
@@ -1333,15 +1357,15 @@ For example:
 : Use with \-\-workbook or \-\-datasource to remove calculations that were previously materialized. Adds the operation to the queue used by the Backgrounder process. If a Backgrounder process is available, the operation runs immediately. This operation appears on the Background Tasks for Extracts administrative view.
 
 
-<details><summary>Global options</summary>
+## Global options
 
-The following options are used by all tabcmd2 commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+The following options are used by all tabcmd2 commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
 -h, \-\-help
 
 : Displays the help for the command.
 
-Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd2 with Tableau Online.</div>
 
 -s, \-\-server
 
@@ -1383,7 +1407,7 @@ Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
 
 
 
-</details>
+
 
 # removeusers *group-name*
 Removes users from the specified group.
@@ -1404,15 +1428,15 @@ Removes users from the specified group.
 : Requires that all rows be valid for any change to succeed. If not specified \-\-complete is used.
 
 
-<details><summary>Global options</summary>
+## Global options
 
-The following options are used by all tabcmd2 commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+The following options are used by all tabcmd2 commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
 -h, \-\-help
 
 : Displays the help for the command.
 
-Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd2 with Tableau Online.</div>
 
 -s, \-\-server
 
@@ -1454,7 +1478,7 @@ Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
 
 
 
-</details>
+
 
 # runschedule *schedule-name*
 Runs the specified schedule.
@@ -1463,21 +1487,21 @@ This command takes the name of the schedule as it is on the server.
 
 This command is not available for Tableau Online.
 
-Note: This method will fail and result in an error if your Server Administrator has disabled the RunNow setting for the site. For more information, see Tableau Server Settings(Link opens in a new window).
+<div class="alert alert-info"><strong>Note</strong>: This method will fail and result in an error if your Server Administrator has disabled the RunNow setting for the site. For more information, see <a href="https://help.tableau.com/current/server/en-us/maintenance_set.htm">Tableau Server Settings</a>.</div>
 
 ## Example
 
 ```tabcmd2 runschedule "5AM Sales Refresh"```
 
-<details><summary>Global options</summary>
+## Global options
 
-The following options are used by all tabcmd2 commands. The `\-\-server`, `\-\-user`, and `\-\-password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+The following options are used by all tabcmd2 commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
 
 -h, \-\-help
 
 : Displays the help for the command.
 
-Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd2 with Tableau Online.</div>
 
 -s, \-\-server
 
@@ -1517,4 +1541,4 @@ Note: Some commands listed may not apply when using tabcmd2 with Tableau Online.
 
 ```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
 
-</details>
+

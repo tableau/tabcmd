@@ -28,15 +28,15 @@ For Tableau Server, we recommend you download the version that matches your serv
 
     In either case, if the expanded information shows maintenance releases, select the latest maintenance release or the one that matches your server version.
 
-    Select the server version you use (latest release for Tableau Online)
+    ![Select the server version you use (latest release for Tableau Online)](../assets/img/tabcmd_download1.png)
 
     This takes you to the release notes page, called Resolved Issues, where you can read about security improvements and resolved issues.
 
 1. Scroll to the Download Files section under the resolved issues, select the tabcmd2 download link that is compatible with the computer on which you’ll run the tabcmd2 commands.
 
-    ![Select the tabcmd2 installer for the computer you'll use it on (32- or 64-bit)](../assets/img/tabcmd_download1.png)
+    ![Select the tabcmd2 installer for the computer you'll use it on (32- or 64-bit)](../assets/img/tabcmd_download.png)
 
-    The remaining steps refer to this computer as “the tabcmd2 computer.”
+    The remaining steps refer to this computer as _the tabcmd2 computer_.
 
 1. Save the installer to the tabcmd2 computer, or a location accessible from that computer .
 
@@ -55,10 +55,10 @@ For Tableau Server, we recommend you download the version that matches your serv
 
        * Accept the license agreement.
 
-       * If you want to install to a non-default location, click Customize and type or browse to the location you want to install tabcmd2 to.
+       * If you want to install to a non-default location, click **Customize** and type or browse to the location you want to install tabcmd2 to.
 
-       * Click Install.
-         If you are prompted by Windows Defender Firewall or User Account Control, click Allow access.
+       * Click **Install**.     
+  If you are prompted by Windows Defender Firewall or User Account Control, click **Allow access**.
 
         b. Run the installer from a command prompt:
 
@@ -66,7 +66,7 @@ For Tableau Server, we recommend you download the version that matches your serv
 
         * Navigate to the directory where you copied the tabcmd2 installer.
 
-        * Install tabcmd:
+        * Install tabcmd2:
 
             ```
             tableau-setup-tabcmd-tableau-<version_code>-x64.exe /quiet ACCEPTEULA=1
@@ -81,9 +81,9 @@ For Tableau Server, we recommend you download the version that matches your serv
             ```
             tableau-setup-tabcmd-tableau-<version_code>-x64.exe /quiet ACCEPTEULA=1 INSTALLDIR="C:\tabcmd"
             ```
-            For a complete list of command line options you can use with the tabcmd2 installer, run the installer with a /?. For more information on tabcmd2 installer command line options, see Install Switches and Properties for tabcmd2 (Windows).
+            For a complete list of command line options you can use with the tabcmd2 installer, run the installer with a `/?`. For more information on tabcmd2 installer command line options, see [Install Switches and Properties for tabcmd2 (Windows)](tabcmd2_install_flags).
 
-        The tabcmd2 Setup program creates logs in C:\Users\<user>\AppData\Local\Temp you can use if you have problems installing tabcmd. The logs use the naming convention Tableau_Server_Command_Line_Utility_(<version_code>)_##############.log.
+        The tabcmd2 Setup program creates logs in `C:\Users\<user>\AppData\Local\Temp` you can use if you have problems installing tabcmd. The logs use the naming convention Tableau_Server_Command_Line_Utility_(<version_code>)_##############.log.
 
 
     * **Linux**
@@ -106,12 +106,12 @@ For Tableau Server, we recommend you download the version that matches your serv
 
 2. (Optional) Add the fully qualified location where tabcmd2 is installed to your system path to allow you to run tabcmd2 commands without changing to that location, or specifying the location with each command. Steps to do this depend on the type and version of your operating system. For more information, see [PATH_(variable)](https://en.wikipedia.org/wiki/PATH_(variable)).
 
-# How to use tabcmd
+# How to use tabcmd2
 The basic steps for using tabcmd2 are as follows:
 
 1. Open the Command Prompt as an administrator.
 
-2. On a Windows computer, if you installed tabcmd2 on a computer other than the initial node, change to the directory where you installed tabcmd.
+2. On a Windows computer, if you installed tabcmd2 on a computer other than the initial node, change to the directory where you installed tabcmd2.
 On a Linux computer, you do not need to change to the install directory.
 
 3. Run the tabcmd2 command.
@@ -133,4 +133,4 @@ Here’s how to start a session and delete a workbook with one command—note th
 
 The options -s, -t, -u, and -p are among the tabcmd2 global variables, which can be used with any command.
 
-For more information, see [tabcmd2 Commands](tabcmd_cmd).
+For more information, see [tabcmd2 Commands](tabcmd2_cmd).
