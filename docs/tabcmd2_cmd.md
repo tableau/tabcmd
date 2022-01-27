@@ -15,7 +15,7 @@ Adds users to the specified group.
 
 ## Example
 
-`tabcmd2 addusers "Development" \-\-users "users.csv"`
+`tabcmd2 addusers "Development" --users "users.csv"`
 
 ## Options
 \-\-users
@@ -74,7 +74,7 @@ The following options are used by all tabcmd2 commands. The `--server`, `--user`
 
 : Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd2 that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd2 command, where -430105/Sheet1 is a required value for the export command.
 
-```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+```tabcmd2 export --csv -f "D:\export10.csv" -- -430105/Sheet1```
 
 
 # createextracts
@@ -160,7 +160,7 @@ The following options are used by all tabcmd2 commands. The `--server`, `--user`
 
 : Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd2 that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd2 command, where -430105/Sheet1 is a required value for the export command.
 
-```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+```tabcmd2 export --csv -f "D:\export10.csv" -- -430105/Sheet1```
 
 
 # creategroup *group-name*
@@ -216,7 +216,7 @@ The following options are used by all tabcmd2 commands. The `--server`, `--user`
 
 : Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd2 that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd2 command, where -430105/Sheet1 is a required value for the export command.
 
-    ```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+    ```tabcmd2 export --csv -f "D:\export10.csv" -- -430105/Sheet1```
 
 
 
@@ -290,7 +290,7 @@ The following options are used by all tabcmd2 commands. The `--server`, `--user`
 
 : Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd2 that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd2 command, where -430105/Sheet1 is a required value for the export command.
 
-```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+```tabcmd2 export --csv -f "D:\export10.csv" -- -430105/Sheet1```
 
 # createsiteusers *filename.csv*
 
@@ -304,7 +304,7 @@ By default, users are added to the site that you are logged in to. To add users 
 
 ## Example
 
-```tabcmd2 createsiteusers "users.csv" \-\-role "Explorer"```
+```tabcmd2 createsiteusers "users.csv" --role "Explorer"```
 
 ## Options
 
@@ -332,7 +332,7 @@ By default, users are added to the site that you are logged in to. To add users 
 
 \-\-publisher
 
-: Deprecated. Use the \-\-role option instead.
+: Deprecated. Use the `--role` option instead.
 
 \-\-role
 
@@ -342,7 +342,7 @@ Valid values are: ServerAdministrator, SiteAdministratorCreator, SiteAdministrat
 
 The default is Unlicensed for new users and unchanged for existing users. Users are added as unlicensed also if you have a user-based server installation, and if the createsiteusers command creates a new user, but you have already reached the limit on the number of licenses for your users.
 
-<div class="alert alert-info"><strong>Note</strong>: On a multi-site Tableau Server, if you want to assign the ServerAdministrator site role using the \-\-role option, use the createusers command instead of createsiteusers.</div>
+<div class="alert alert-info"><strong>Note</strong>: On a multi-site Tableau Server, if you want to assign the ServerAdministrator site role using the <code>--role</code> option, use the createusers command instead of createsiteusers.</div>
 
 \-\-silent-progress
 
@@ -395,7 +395,7 @@ The following options are used by all tabcmd2 commands. The `--server`, `--user`
 
 : Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd2 that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd2 command, where -430105/Sheet1 is a required value for the export command.
 
-```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+```tabcmd2 export --csv -f "D:\export10.csv" -- -430105/Sheet1```
 
 
 # delete workbook-name or datasource-name
@@ -472,10 +472,7 @@ The following options are used by all tabcmd2 commands. The `--server`, `--user`
 
 : Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd2 that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd2 command, where -430105/Sheet1 is a required value for the export command.
 
-```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
-
-
-
+```tabcmd2 export --csv -f "D:\export10.csv" -- -430105/Sheet1```
 
 
 # deleteextracts
@@ -484,32 +481,32 @@ Deletes extracts for a published workbook or data source.
 
 ## Options
 
-    -d, \-\-datasource
-    : The name of the target data source for extract deletion.
-    \-\-embedded-datasources
-    : A space-separated list of embedded data source names within the target workbook. Enclose data source names with double quotes if they contain spaces. Only available when deleting extracts for a workbook.
-    \-\-encrypt
-    : Create encrypted extract.
+-d, \-\-datasource
+: The name of the target data source for extract deletion.
+\-\-embedded-datasources
+: A space-separated list of embedded data source names within the target workbook. Enclose data source names with double quotes if they contain spaces. Only available when deleting extracts for a workbook.
+\-\-encrypt
+: Create encrypted extract.
 
-    \-\-include-all
+\-\-include-all
 
-    : Include all embedded data sources within target workbook.
+: Include all embedded data sources within target workbook.
 
-    \-\-parent-project-path
+\-\-parent-project-path
 
-    : Path of the project that is the parent of the project that contains the target resource. Must specify the project name with \-\-project.
+: Path of the project that is the parent of the project that contains the target resource. Must specify the project name with \-\-project.
 
-    \-\-project
+\-\-project
 
-    : The name of the project that contains the target resource. Only necessary if \-\-workbook or \-\-datasource is specified. If unspecified, the default project 'Default' is used.
+: The name of the project that contains the target resource. Only necessary if \-\-workbook or \-\-datasource is specified. If unspecified, the default project 'Default' is used.
 
-    -u, -url
+-u, -url
 
-    : The canonical name for the resource as it appears in the URL.
+: The canonical name for the resource as it appears in the URL.
 
-    -w, -workbook
+-w, -workbook
 
-    : The name of the target workbook for extract deletion.
+: The name of the target workbook for extract deletion.
 
 
 ## Global options
@@ -558,11 +555,7 @@ The following options are used by all tabcmd2 commands. The `--server`, `--user`
 
 : Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd2 that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd2 command, where -430105/Sheet1 is a required value for the export command.
 
-```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
-
-
-
-
+```tabcmd2 export --csv -f "D:\export10.csv" -- -430105/Sheet1```
 
 
 # deletegroup *group-name*
@@ -618,11 +611,7 @@ The following options are used by all tabcmd2 commands. The `--server`, `--user`
 
 : Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd2 that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd2 command, where -430105/Sheet1 is a required value for the export command.
 
-```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
-
-
-
-
+```tabcmd2 export --csv -f "D:\export10.csv" -- -430105/Sheet1```
 
 
 # deleteproject *project-name*
@@ -688,19 +677,15 @@ The following options are used by all tabcmd2 commands. The `--server`, `--user`
 
 : Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd2 that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd2 command, where -430105/Sheet1 is a required value for the export command.
 
-```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
-
-
-
-
+```tabcmd2 export --csv -f "D:\export10.csv" -- -430105/Sheet1```
 
 
 # deletesiteusers *filename.csv*
 Removes users from from the site that you are logged in to. The users to be removed are specified in a file that contains a simple list of one user name per line. (No additional information is required beyond the user name.)
 
-By default, if the server has only one site, or if the user belongs to only one site, the user is also removed from the server. On a Tableau Server Enterprise installation, if the server contains multiple sites, users who are assigned the site role of Server Administrator are removed from the site but are not removed from the server.
+By default, if the server has only one site, or if the user belongs to only one site, the user is also removed from the server. On a Tableau Server Enterprise installation, if the server contains multiple sites, users who are assigned the site role of **Server Administrator** are removed from the site but are not removed from the server.
 
-If the user owns content, the user's role is change to Unlicensed, but the user is not removed from the server or the site. The content is still owned by that user. To remove the user completely, you must change the owner of the content and then try removing the user again.
+If the user owns content, the user's role is change to **Unlicensed**, but the user is not removed from the server or the site. The content is still owned by that user. To remove the user completely, you must change the owner of the content and then try removing the user again.
 
 ## Example
 
@@ -752,7 +737,7 @@ The following options are used by all tabcmd2 commands. The `--server`, `--user`
 
 : Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd2 that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd2 command, where -430105/Sheet1 is a required value for the export command.
 
-```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+```tabcmd2 export --csv -f "D:\export10.csv" -- -430105/Sheet1```
 
 
 # export
@@ -762,11 +747,11 @@ Note the following when you use this command:
 
 * **Permissions**: To export, you must have the **Export Image** permission. By default, this permission is Allowed or Inherited for all roles, although permissions can be set per workbook or view.
 
-* **Exporting data**: To export just the data for a view, use the \-\-csv option. This exports the summary data used in a view to a .csv file.
+* **Exporting data**: To export just the data for a view, use the `--csv` option. This exports the summary data used in a view to a .csv file.
 
 * **Specifying the view, workbook, or data to export**:
 
-    * Use part of the URL to identify what to export, specifically the "workbook/view" string as it appears in the URL for the workbook or view. Do not use the “friendly name,” and exclude the :iid=<n> session ID at the end of the URL.
+    * Use part of the URL to identify what to export, specifically the "workbook/view" string as it appears in the URL for the workbook or view. Do not use the “friendly name,” and exclude the `:iid=<n>` session ID at the end of the URL.
 
         For example, the Tableau sample view Global Temperatures in the Regionalworkbook has a URL similar to this: <server_name>/#/views/Regional/GlobalTemperatures?:iid=3
 
@@ -785,11 +770,14 @@ Note the following when you use this command:
         Note: The Tableau workbook that contains the [admin views](https://help.tableau.com/current/online/en-us/adminview.htm) cannot be exported.
 
     * To filter the data you download, add a parameter filter using this format:
-    `?<filter_name>=value`
-    or, if filtering on a parameter and that parameter has a display name that matches the name of a measure or dimension:
-    `?Parameters.<filter_name>=value`
+        
+        ```?<filter_name>=value```
+        
+        or, if filtering on a parameter and that parameter has a display name that matches the name of a measure or dimension:
 
-* **The saved file's format**: Your format options depend on what's being exported. A workbook can only be exported as a PDF using the \-\-fullpdf argument. A view can be exported as a PDF (\-\-pdf) or a PNG (\-\-png).
+        `?Parameters.<filter_name>=value`
+
+* **The saved file's format**: Your format options depend on what's being exported. A workbook can only be exported as a PDF using the `--fullpdf` argument. A view can be exported as a PDF (\-\-pdf) or a PNG (\-\-png).
 
 * **The saved file's name and location** (optional): If you don't provide a name, it will be derived from the view or workbook name. If you don't provide a location, the file will be saved to your current working directory. Otherwise, you can specify a full path or one that's relative to your current working directory.
 
@@ -845,7 +833,7 @@ View only. Export as an image in .png format.
 
 \-\-fullpdf
 
-Workbook only. Export as a PDF. The workbook must have been published with Show Sheets as Tabs enabled.
+Workbook only. Export as a PDF. The workbook must have been published with **Show Sheets as Tabs** enabled.
 
 \-\-pagelayout
 
@@ -909,7 +897,7 @@ The following options are used by all tabcmd2 commands. The `--server`, `--user`
 
 : Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd2 that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd2 command, where -430105/Sheet1 is a required value for the export command.
 
-```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+```tabcmd2 export --csv -f "D:\export10.csv" -- -430105/Sheet1```
 
 # get *url*
 Gets the resource from Tableau Online that's represented by the specified (partial) URL. The result is returned as a file.
@@ -930,7 +918,7 @@ Note the following when you use this command:
 
 * **File extension**: The URL must include a file extension. The extension determines what's returned. A view can be returned in PDF, PNG, or CSV (summary data only) format. A Tableau workbook is returned as a TWB if it connects to a published data source or uses a live connection, or a TWBX if it connects to a data extract.
 
-    <div class="alert alert-info"><strong>Note</strong>: If you are downloading a view to a PDF or PNG file, and if you include a \-\-filename parameter that includes the .pdf or .png extension, you do not have to include a .pdf or .png extension in the URL.</div>
+    <div class="alert alert-info"><strong>Note</strong>: If you are downloading a view to a PDF or PNG file, and if you include a <code>--filename</code> parameter that includes the .pdf or .png extension, you do not have to include a .pdf or .png extension in the URL.</div>
 
 * **The saved file's name and location** (optional): The name you use for \-\-filename should include the file extension. If you don't provide a name and file extension, both will be derived from the URL string. If you don't provide a location, the file is saved to your current working directory. Otherwise, you can specify a full path or one that's relative to your current working directory.
 
@@ -944,7 +932,7 @@ You can optionally add the URL parameter ?:refresh=yes to force a fresh data que
 
 ### Views
 
-```tabcmd2 get "/views/Sales_Analysis/Sales_Report.png" \-\-filename "Weekly-Report.png"```
+```tabcmd2 get "/views/Sales_Analysis/Sales_Report.png" --filename "Weekly-Report.png"```
 
 ```tabcmd2 get "/views/Finance/InvestmentGrowth.pdf" -f "Q1Growth.pdf"```
 
@@ -1006,15 +994,15 @@ The following options are used by all tabcmd2 commands. The `--server`, `--user`
 
 : Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd2 that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd2 command, where -430105/Sheet1 is a required value for the export command.
 
-```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+```tabcmd2 export --csv -f "D:\export10.csv" -- -430105/Sheet1```
 
 
 # login
 Logs in a Tableau Online user.
 
-Use the \-\-server, \-\-site, \-\-username, \-\-password global options to create a session.
+Use the `--server`, `--site`, `--username`, `--password` global options to create a session.
 
-<div class="alert alert-info"><strong>Note</strong>: When you use the tabcmd2 login command, you cannot use SAML single sign-on (SSO), even if your site is configured to use SAML. To log in, you must pass the user name and password of a user who has been created in your site. You will have the permissions of the Tableau Server user that you're signed in as.</div>
+<div class="alert alert-info"><strong>Note</strong>: When you use the **tabcmd2 login** command, you cannot use SAML single sign-on (SSO), even if your site is configured to use SAML. To log in, you must pass the user name and password of a user who has been created in your site. You will have the permissions of the Tableau Server user that you're signed in as.</div>
 
 If you want to log in using the same information you've already used to create a session, just specify the \-\-password option. The server and user name stored in the cookie will be used.
 
@@ -1125,7 +1113,7 @@ The following options are used by all tabcmd2 commands. The `--server`, `--user`
 
 : Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd2 that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd2 command, where -430105/Sheet1 is a required value for the export command.
 
-```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+```tabcmd2 export --csv -f "D:\export10.csv" -- -430105/Sheet1```
 
 
 # logout
@@ -1147,13 +1135,13 @@ If the workbook contains user filters, one of the thumbnail options must be spec
 ## Example
 
 `tabcmd2 publish "analysis_sfdc.hyper" -n "Sales Analysis"
-\-\-oauth-username "user-name" \-\-save-oauth`
+--oauth-username "user-name" --save-oauth`
 
 If the file is not in the same directory as tabcmd, include the full path to the file.
 
 ## Example
 
-`tabcmd2 publish "\\computer\volume\Tableau Workbooks\analysis_sfdc.hyper" -n "Sales Analysis" \-\-oauth-username "username" \-\-save-oauth`
+`tabcmd2 publish "\\computer\volume\Tableau Workbooks\analysis_sfdc.hyper" -n "Sales Analysis" --oauth-username "username" -e-save-oauth`
 
 ## Options
 
@@ -1276,37 +1264,36 @@ The following options are used by all tabcmd2 commands. The `--server`, `--user`
 
 : Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd2 that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd2 command, where -430105/Sheet1 is a required value for the export command.
 
-```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
-
-
-
+```tabcmd2 export --csv -f "D:\export10.csv" -- -430105/Sheet1```
 
 
 # refreshextracts *workbook-name* or *datasource-name*
+
 Performs a full or incremental refresh of extracts belonging to the specified workbook or data source.
 
 This command takes the name of the workbook or data source as it appears on the server, not the file name when it was published. Only an administrator or the owner of the workbook or data source is allowed to perform this operation.
 
 <div class="alert alert-info"><strong>Notes:</strong>
-
-* This method will fail and result in an error if your Server Administrator has disabled the RunNow setting for the site. For more information, see [Tableau Server Settings](https://help.tableau.com/current/server/en-us/maintenance_set.htm).
-* You can use tabcmd2 to refresh supported data sources that are hosted in the cloud. For example, SQL Server, MySQL, PostgreSQL on a cloud platform; Google Analytics; and so on.
-* To refresh on-premises data with tabcmd, the data source must be a type that can be configured for Tableau Bridge [Recommended schedules](https://help.tableau.com/current/online/en-us/to_sync_schedule.htm). For all other data sources that connect to on-premises data, you can use Bridge or the command-line data extract utility. Learn more at [Use Bridge to Keep Data Fresh](https://help.tableau.com/current/online/en-us/qs_refresh_local_data.htm) and [Automate Extract Refresh Tasks from the Command Line](https://help.tableau.com/current/online/en-us/to_refresh_extract_commandline.htm).</div>
+<ul>
+<li>This method will fail and result in an error if your Server Administrator has disabled the **RunNow** setting for the site. For more information, see [Tableau Server Settings](https://help.tableau.com/current/server/en-us/maintenance_set.htm).</li>
+<li>You can use tabcmd2 to refresh supported data sources that are hosted in the cloud. For example, SQL Server, MySQL, PostgreSQL on a cloud platform; Google Analytics; and so on.</li>
+<li>To refresh on-premises data with tabcmd, the data source must be a type that can be configured for Tableau Bridge [Recommended schedules](https://help.tableau.com/current/online/en-us/to_sync_schedule.htm). For all other data sources that connect to on-premises data, you can use Bridge or the command-line data extract utility. Learn more at [Use Bridge to Keep Data Fresh](https://help.tableau.com/current/online/en-us/qs_refresh_local_data.htm) and [Automate Extract Refresh Tasks from the Command Line](https://help.tableau.com/current/online/en-us/to_refresh_extract_commandline.htm).</li>
+</ul></div>
 
 ## Examples
 
-`tabcmd2 refreshextracts \-\-datasource sales_ds`
+`tabcmd2 refreshextracts --datasource sales_ds`
 
-`tabcmd2 refreshextracts \-\-project "Sales External" \-\-datasource sales_ds`
+`tabcmd2 refreshextracts --project "Sales External" --datasource sales_ds`
 
-`tabcmd2 refreshextracts \-\-project "Sales External" \-\-parent-project-path "Main" \-\-project "Sales External" \-\-datasource sales_ds`
+`tabcmd2 refreshextracts --project "Sales External" --parent-project-path "Main" --project "Sales External" --datasource sales_ds`
 
-`tabcmd2 refreshextracts \-\-workbook "My Workbook"`
+`tabcmd2 refreshextracts --workbook "My Workbook"`
 
-`tabcmd2 refreshextracts \-\-url SalesAnalysis
-tabcmd2 refreshextracts \-\-workbook "My Workbook" \-\-addcalculations`
+`tabcmd2 refreshextracts --url SalesAnalysis
+tabcmd2 refreshextracts --workbook "My Workbook" --addcalculations`
 
-`tabcmd2 refreshextracts \-\-datasource sales_ds \-\-removecalculations`
+`tabcmd2 refreshextracts --datasource sales_ds --removecalculations`
 
 ## Options
 
@@ -1339,9 +1326,9 @@ During a synchronous refresh, tabcmd2 maintains a live connection to the server 
 For example:
 
 * To specify a project called "Nested" that exists in a "Main" project, use the following syntax:
-`--parent-project-path "Main" \-\-project "Nested"`
+`--parent-project-path "Main" --project "Nested"`
 * To specify a project called "Nested2" that is nested within the "Nested" project:
-`--parent-project-path "Main/Nested" \-\-project "Nested2"`
+`--parent-project-path "Main/Nested" --project "Nested2"`
 
 
 \-\-url
@@ -1350,11 +1337,11 @@ For example:
 
 \-\-addcalculations
 
-: Use with \-\-workbook to materialize calculations in the embedded extract of the workbook or \-\-datasource to materialize calculations in the extract data source. Adds the operation to the queue used by the Backgrounder process. If a Backgrounder process is available, the operation runs immediately. This operation appears on the Background Tasks for Extracts administrative view.
+: Use with \-\-workbook to materialize calculations in the embedded extract of the workbook or \-\-datasource to materialize calculations in the extract data source. Adds the operation to the queue used by the Backgrounder process. If a Backgrounder process is available, the operation runs immediately. This operation appears on the [Background Tasks for Extracts](https://help.tableau.com/current/online/en-us/adminview_backgrnd.htm) administrative view.
 
 \-\-removecalculations
 
-: Use with \-\-workbook or \-\-datasource to remove calculations that were previously materialized. Adds the operation to the queue used by the Backgrounder process. If a Backgrounder process is available, the operation runs immediately. This operation appears on the Background Tasks for Extracts administrative view.
+: Use with \-\-workbook or \-\-datasource to remove calculations that were previously materialized. Adds the operation to the queue used by the Backgrounder process. If a Backgrounder process is available, the operation runs immediately. This operation appears on the [Background Tasks for Extracts](https://help.tableau.com/current/online/en-us/adminview_backgrnd.htm) administrative view.
 
 
 ## Global options
@@ -1403,10 +1390,7 @@ The following options are used by all tabcmd2 commands. The `--server`, `--user`
 
 : Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd2 that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd2 command, where -430105/Sheet1 is a required value for the export command.
 
-```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
-
-
-
+```tabcmd2 export --csv -f "D:\export10.csv" -- -430105/Sheet1```
 
 
 # removeusers *group-name*
@@ -1414,18 +1398,18 @@ Removes users from the specified group.
 
 ## Example
 
-`tabcmd2 removeusers "Development" \-\-users "users.csv"`
+`tabcmd2 removeusers "Development" --users "users.csv"`
 
 ## Options
 
 
 \-\-users
 
-: Remove the users in the given .csv file from the specified group. The file should be a simple list with one user name per line.
+: Remove the users in the given `.csv` file from the specified group. The file should be a simple list with one user name per line.
 
 \-\-[no-]complete
 
-: Requires that all rows be valid for any change to succeed. If not specified \-\-complete is used.
+: Requires that all rows be valid for any change to succeed. If not specified `--complete` is used.
 
 
 ## Global options
@@ -1474,10 +1458,7 @@ The following options are used by all tabcmd2 commands. The `--server`, `--user`
 
 : Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd2 that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd2 command, where -430105/Sheet1 is a required value for the export command.
 
-```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
-
-
-
+```tabcmd2 export --csv -f "D:\export10.csv" -- -430105/Sheet1```
 
 
 # runschedule *schedule-name*
@@ -1539,6 +1520,6 @@ The following options are used by all tabcmd2 commands. The `--server`, `--user`
 
 : Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd2 that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd2 command, where -430105/Sheet1 is a required value for the export command.
 
-```tabcmd2 export \-\-csv -f "D:\export10.csv" \-\- -430105/Sheet1```
+```tabcmd2 export --csv -f "D:\export10.csv" -- -430105/Sheet1```
 
 
