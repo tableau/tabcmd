@@ -7,7 +7,9 @@ from ... import Session
 
 
 class CreateProjectCommand(ProjectCommand):
-
+    """
+    Command to create a project
+    """
     def __init__(self, args, evaluated_project_path):
         super().__init__(args, evaluated_project_path)
         self.args = args

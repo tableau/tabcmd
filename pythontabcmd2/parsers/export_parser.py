@@ -5,7 +5,9 @@ from .common_parser import CommonParser
 
 
 class ExportParser:
-
+    """
+    Parser for the command export
+    """
     @staticmethod
     def export_parser():
         """Method to parse export arguments passed by the user"""

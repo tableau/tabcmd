@@ -2,12 +2,16 @@ import tableauserverclient as TSC
 from .. import log
 from ... import Session
 from .. import DeleteParser
+from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
-class DeleteCommand:
+class DeleteCommand(DatasourcesAndWorkbooks):
+    """
+    Command to delete the specified workbook or data source from the server.
+    """
     def __init__(self, args):
+        super().__init__(args)
         self.workbook = args.workbook
-        self.args = args
         self.logging_level = args.logging_level
         self.logger = log('pythontabcmd2.delete_command',
                           self.logging_level)

@@ -2,12 +2,16 @@ import tableauserverclient as TSC
 from .. import log
 from ... import Session
 from .. import RunScheduleParser
+from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
-class RunSchedule:
+class RunSchedule(DatasourcesAndWorkbooks):
+    """
+    This command runs the specified schedule as it is on the server.
+    """
     def __init__(self, args, schedule):
+        super().__init__(args)
         self.schedule = schedule
-        self.args = args
         self.logging_level = args.logging_level
         self.logger = log('pythontabcmd2.runschedule_command',
                           self.logging_level)

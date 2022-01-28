@@ -3,6 +3,9 @@ from .parent_parser import ParentParser
 
 
 class EditSiteParser:
+    """
+    Parser for the command editsite
+    """
     @staticmethod
     def edit_site_parser():
         """Method to parse edit site arguments passed by the user"""

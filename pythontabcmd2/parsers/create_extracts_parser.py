@@ -6,6 +6,9 @@ from .common_parser import CommonParser
 
 
 class CreateExtractsParser:
+    """
+    Parser for createextracts command
+    """
     @staticmethod
     def create_extracts_parser():
         """Method to parse create extracts arguments passed by the user"""

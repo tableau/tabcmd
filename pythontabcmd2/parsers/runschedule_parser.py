@@ -5,6 +5,9 @@ from .parent_parser import ParentParser
 
 
 class RunScheduleParser:
+    """
+    Parser to runschedule command
+    """
     @staticmethod
     def runschedule_parser():
         """Method to parse run-schedule arguments passed by the user"""

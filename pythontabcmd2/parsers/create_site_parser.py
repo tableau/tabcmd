@@ -5,6 +5,9 @@ from .parent_parser import ParentParser
 
 
 class CreateSiteParser:
+    """
+    Parser for createsite command
+    """
     @staticmethod
     def create_site_parser():
         """Method to parse create site arguments passed by the user"""

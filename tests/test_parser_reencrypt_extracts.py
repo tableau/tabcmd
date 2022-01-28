@@ -23,7 +23,7 @@ class ReencryptExtractsParserTest(unittest.TestCase):
                                                 no_cookie=False,
                                                 prompt=False
                                                 ))
-    def test_encrypt_extract_parser_optional_arguments(self, mock_args):
+    def test_reencrypt_extract_parser_optional_arguments(self, mock_args):
         args, site_name = ReencryptExtractsParser.reencrypt_extracts_parser()
         assert args == argparse.Namespace(site_name="hellohello",
                                           username="helloworld",
@@ -38,7 +38,7 @@ class ReencryptExtractsParserTest(unittest.TestCase):
 
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=argparse.Namespace())
-    def test_encrypt_extract_parser_missing_all_args(self, mock_args):
+    def test_reencrypt_extract_parser_missing_all_args(self, mock_args):
         with self.assertRaises(AttributeError):
             args, site_name = ReencryptExtractsParser.\
                 reencrypt_extracts_parser()
@@ -55,7 +55,7 @@ class ReencryptExtractsParserTest(unittest.TestCase):
                                                 no_cookie=False,
                                                 prompt=False
                                                 ))
-    def test_encrypt_extract_parser_missing_site_name(self, mock_args):
+    def test_reencrypt_extract_parser_missing_site_name(self, mock_args):
         site_name = None
         args = ReencryptExtractsParser.reencrypt_extracts_parser()
         with self.assertRaises(AssertionError):

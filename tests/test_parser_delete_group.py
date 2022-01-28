@@ -27,7 +27,7 @@ class DeleteGroupParserTestT(unittest.TestCase):
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=(argparse.Namespace(name=None,
                                                  site="helloworld")))
-    def test_create_user_parser_required_name(self, mock_args):
+    def test_delete_group_parser_required_name(self, mock_args):
 
         args = DeleteGroupParser.delete_group_parser()
         args_from_command = vars(args)
@@ -36,7 +36,7 @@ class DeleteGroupParserTestT(unittest.TestCase):
 
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=(argparse.Namespace()))
-    def test_create_user_parser_required_name_missing(self, mock_args):
+    def test_delete_group_parser_required_name_missing(self, mock_args):
         with self.assertRaises(AttributeError):
             args = DeleteGroupParser.delete_group_parser()
             args_from_command = vars(args)

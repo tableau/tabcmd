@@ -6,6 +6,9 @@ from .common_parser import CommonParser
 
 
 class DeleteProjectParser:
+    """
+    Parser for the command deleteproject
+    """
     @staticmethod
     def delete_project_parser():
         """Method to parse delete project arguments passed by the user"""

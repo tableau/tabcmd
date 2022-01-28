@@ -6,7 +6,9 @@ from .common_parser import CommonParser
 
 
 class PublishSamplesParser(ParentParser):
-
+    """
+    Parser to the command publishsamples
+    """
     @staticmethod
     def publish_samples_parser():
         """Method to parse publish samples arguments passed by the user"""

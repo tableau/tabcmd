@@ -50,7 +50,7 @@ class AddUsersParserTest(unittest.TestCase):
                                                  password="testpass",
                                                  server="http://test",
                                                  site="helloworld")))
-    def test_remove_usesr_parser_missing_group_name_present(self, mock_args):
+    def test_remove_users_parser_missing_group_name_present(self, mock_args):
         with mock.patch('builtins.open', mock.mock_open(read_data='test')):
             sys.argv = ["test_csv.csv", "test", "test1", "test2"]
             csv_lines, args, group_name = RemoveUserParser.remove_user_parser()

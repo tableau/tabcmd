@@ -22,6 +22,7 @@ from .commands.extracts.delete_extracts_command import *
 from .commands.extracts.refresh_extracts_command import *
 from .commands.extracts.reencrypt_extracts_command import *
 from .commands.extracts.encrypt_extracts_command import *
+from .commands.datasources_and_workbooks.get_url_command import *
 import sys
 
 

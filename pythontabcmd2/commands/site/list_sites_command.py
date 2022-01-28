@@ -6,6 +6,9 @@ from ... import Session
 
 
 class ListSiteCommand(SiteCommand):
+    """
+    Command to return a list of sites to which the logged in user belongs
+    """
     def __init__(self, args):
         super().__init__(args)
         self.logger = log('pythontabcmd2.list_sites_command',

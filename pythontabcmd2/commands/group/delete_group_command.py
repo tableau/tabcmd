@@ -7,6 +7,9 @@ from ... import Session
 
 
 class DeleteGroupCommand(GroupCommand):
+    """
+    This command deletes the specified group from the server
+    """
     def __init__(self, args):
         super().__init__(args)
         self.logger = log('pythontabcmd2.delete_group_command',

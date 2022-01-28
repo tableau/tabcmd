@@ -5,7 +5,7 @@ from .common_parser import CommonParser
 
 
 class DeleteParser:
-
+    """Parser for the command delete"""
     @staticmethod
     def delete_parser():
         """Method to parse delete data source arguments passed by the user"""

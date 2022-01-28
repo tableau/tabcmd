@@ -8,6 +8,12 @@ from ... import Session
 
 
 class EditSiteCommand(SiteCommand):
+    """
+    Command to change the name of a site or its web folder name.
+    Users can also use this command to allow or deny site administrators
+    the ability to add and remove users, or prevent users from
+    running certain tasks manually.
+    """
 
     def __init__(self, args, admin_mode, current_site_id):
         super().__init__(args)

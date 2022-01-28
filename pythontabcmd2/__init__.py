@@ -31,3 +31,4 @@ from .parsers.encrypt_extracts_parser import EncryptExtractsParser
 from .parsers.decrypt_extracts_parser import DecryptExtractsParser
 from .parsers.refresh_extracts_parser import RefreshExtractsParser
 from .parsers.reencrypt_parser import ReencryptExtractsParser
+from .parsers.get_url_parser import GetUrlParser

@@ -5,7 +5,6 @@ from .parent_parser import ParentParser
 
 class LogoutParser:
     """ Parses logout arguments passed by the user"""
-
     @staticmethod
     def logout_parser():
         parent_parser = ParentParser()

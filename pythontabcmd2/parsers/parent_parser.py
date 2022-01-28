@@ -2,7 +2,8 @@ import argparse
 
 
 class ParentParser:
-
+    """Parser that will be inherited by all commands. Contains
+    authentication and logging level setting"""
     def parent_parser_with_global_options(self):
         parser = argparse.ArgumentParser(add_help=False)
         parser.add_argument('--server', '-s',

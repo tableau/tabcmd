@@ -7,6 +7,9 @@ from ... import Session
 
 
 class DeleteProjectCommand(ProjectCommand):
+    """
+    Command to Delete the specified project from the server
+    """
     def __init__(self, args, evaluated_project_path):
         super().__init__(args, evaluated_project_path)
         self.logger = log('pythontabcmd2.delete_project_command',

@@ -10,7 +10,6 @@ logger = get_logger('pythontabcmd2.login_parser', 'info')
 
 class LoginParser:
     """ Parses login arguments passed by the user"""
-
     @staticmethod
     def login_parser():
 

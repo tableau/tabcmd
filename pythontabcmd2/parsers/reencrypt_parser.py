@@ -5,6 +5,9 @@ from .parent_parser import ParentParser
 
 
 class ReencryptExtractsParser:
+    """
+    Parser to reencrypt command
+    """
     @staticmethod
     def reencrypt_extracts_parser():
         """Method to parse reencrypt extracts arguments passed by the user"""

@@ -6,9 +6,12 @@ from .common_parser import CommonParser
 
 
 class AddUserParser:
+    """
+    Parser for AddUser command
+    """
     @staticmethod
     def add_user_parser():
-        """Method to parse create user arguments passed """
+        """Method to parse add user arguments passed """
         parent_parser = ParentParser()
         parser = parent_parser.parent_parser_with_global_options()
         subparsers = parser.add_subparsers()

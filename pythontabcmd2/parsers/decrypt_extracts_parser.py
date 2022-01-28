@@ -5,6 +5,9 @@ from .parent_parser import ParentParser
 
 
 class DecryptExtractsParser:
+    """
+    Parser for the command decryptextracts
+    """
     @staticmethod
     def decrypt_extracts_parser():
         """Method to parse decrypt extracts arguments passed by the user"""

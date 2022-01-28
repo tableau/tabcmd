@@ -6,6 +6,9 @@ from .common_parser import CommonParser
 
 
 class DeleteExtractsParser:
+    """
+    Parser for the command delete extracts
+    """
     @staticmethod
     def delete_extracts_parser():
         """Method to parse delete extracts arguments passed by the user"""

@@ -6,6 +6,10 @@ from ... import Session
 
 
 class PublishSamplesCommand(ProjectCommand):
+    """
+    Command to Publish Tableau Sample workbooks to the specified project.
+    Any existing samples will be overwritten.
+    """
 
     def __init__(self, args, evaluated_project_path):
         super().__init__(args, evaluated_project_path)
