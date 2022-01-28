@@ -1,0 +1,24 @@
+# Site settings
+title: tabcmd
+email: scot.marvin@tableau.com
+description: Connect to your web data from Tableau.
+baseurl: "/tabcmd2"
+# permalink: pretty
+defaults:
+  -
+    scope:
+      path: "" # Apply to all files
+    values:
+      layout: "default"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+    toc_levels: 1..1
+
+# Exclude
+exclude: ['node_modules', 'vendor']
+
+theme: jekyll-theme-minimal
