@@ -5,7 +5,7 @@ try:
 except ImportError:
     import mock
 import argparse
-from pythontabcmd2.parsers.create_project_parser import CreateProjectParser
+from pythontabcmd.parsers.create_project_parser import CreateProjectParser
 
 
 class CreateProjectParserTest(unittest.TestCase):

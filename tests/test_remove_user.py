@@ -6,7 +6,7 @@ try:
 except ImportError:
     import mock
 import argparse
-from pythontabcmd2.parsers.remove_users_parser import RemoveUserParser
+from pythontabcmd.parsers.remove_users_parser import RemoveUserParser
 
 
 class AddUsersParserTest(unittest.TestCase):

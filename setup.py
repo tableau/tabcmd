@@ -4,12 +4,12 @@ except ImportError:
     from distutils.core import setup
 
 setup(
-    name='pythontabcmd2',
-    url='https://github.com/tableau/tabcmd2',
+    name='pythontabcmd',
+    url='https://github.com/tableau/tabcmd',
     packages=find_packages(),
     entry_points={
         'console_scripts': [
-            'tabcmd2 = pythontabcmd2.tabcmd2:main'
+            'tabcmd = pythontabcmd.tabcmd:main'
         ]
     },
     test_suite='tests',

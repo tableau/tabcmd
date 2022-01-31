@@ -5,7 +5,7 @@ try:
 except ImportError:
     import mock
 import argparse
-from pythontabcmd2.parsers.get_url_parser import GetUrlParser
+from pythontabcmd.parsers.get_url_parser import GetUrlParser
 
 
 class GetUrlParserTest(unittest.TestCase):
