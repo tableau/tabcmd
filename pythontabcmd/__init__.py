@@ -11,7 +11,7 @@ from .parsers.create_site_users_parser import CreateSiteUsersParser
 from .constants import Constants
 from .logger_config import get_logger, log
 from .parsers.add_users_parser import AddUserParser
-from .tabcmd_controller import tabcmdController
+from .tabcmd_controller import TabcmdController
 from .parsers.delete_site_parser import DeleteSiteParser
 from .parsers.parent_parser import ParentParser
 from .parsers.common_parser import CommonParser

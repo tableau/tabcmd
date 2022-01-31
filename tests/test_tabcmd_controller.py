@@ -6,10 +6,10 @@ try:
 except ImportError:
     import mock
 import argparse
-from pythontabcmd.tabcmd_controller import tabcmdController
+from pythontabcmd.tabcmd_controller import TabcmdController
 
 
-class tabcmdControllerTest(unittest.TestCase):
+class TabcmdControllerTest(unittest.TestCase):
 
     @mock.patch.object(sys, 'argv', ['', 'createproject', '--name',
                                      'testname'])
@@ -17,7 +17,7 @@ class tabcmdControllerTest(unittest.TestCase):
                 '.CreateProjectCommand')
     def test_parser_called_command_project(self, mock_args):
         dic = {'CreateProjectCommand': 'createproject'}
-        tabcmd_controller = tabcmdController()
+        tabcmd_controller = TabcmdController()
         command = tabcmd_controller.get_command_strategy()
         assert command == dic['CreateProjectCommand']
 
@@ -26,6 +26,6 @@ class tabcmdControllerTest(unittest.TestCase):
                 '.CreateGroupCommand')
     def test_parser_called_command_group(self, mock_args):
         dic = {'CreateGroupCommand': 'creategroup'}
-        tabcmd_controller = tabcmdController()
+        tabcmd_controller = TabcmdController()
         command = tabcmd_controller.get_command_strategy()
         assert command == dic['CreateGroupCommand']

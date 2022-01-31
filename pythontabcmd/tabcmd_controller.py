@@ -9,7 +9,7 @@ from .map_of_parsers import *
 logger = get_logger('pythontabcmd.tabcmd_controller', 'info')
 
 
-class tabcmdController:
+class TabcmdController:
 
     def get_command_strategy(self):
         parent_parser = ParentParser()
@@ -17,7 +17,7 @@ class tabcmdController:
         if len(sys.argv) > 2 and sys.argv[1] == "help" \
                 and sys.argv[2] == "commands":
             HelpParser.print_help_description()
-            tabcmdController.get_list_of_commands_available()
+            TabcmdController.get_list_of_commands_available()
             parser.print_help()
             sys.exit()
         if len(sys.argv) > 2 and sys.argv[1] == "help" and sys.argv[2] is not \
@@ -39,7 +39,7 @@ class tabcmdController:
     @classmethod
     def get_list_of_commands_available(cls):
         for command, command_tuple in CommandsMap.commands_hash_map.items():
-            tabcmdController.print_formatted_list(command, command_tuple[1])
+            TabcmdController.print_formatted_list(command, command_tuple[1])
 
     @classmethod
     def print_formatted_list(cls, command, description_of_command):
