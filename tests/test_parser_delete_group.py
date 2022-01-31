@@ -6,7 +6,7 @@ try:
 except ImportError:
     import mock
 import argparse
-from pythontabcmd.parsers.delete_group_parser import DeleteGroupParser
+from tabcmd.parsers.delete_group_parser import DeleteGroupParser
 
 
 class DeleteGroupParserTestT(unittest.TestCase):

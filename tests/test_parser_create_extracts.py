@@ -6,7 +6,7 @@ try:
 except ImportError:
     import mock
 import argparse
-from pythontabcmd.parsers.create_extracts_parser import CreateExtractsParser
+from tabcmd.parsers.create_extracts_parser import CreateExtractsParser
 
 
 class CreateExtractsParserTest(unittest.TestCase):

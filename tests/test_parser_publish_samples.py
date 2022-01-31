@@ -5,7 +5,7 @@ try:
 except ImportError:
     import mock
 import argparse
-from pythontabcmd.parsers.publish_samples_parser import PublishSamplesParser
+from tabcmd.parsers.publish_samples_parser import PublishSamplesParser
 
 
 class PublishParserParserTest(unittest.TestCase):

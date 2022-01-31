@@ -5,7 +5,7 @@ try:
 except ImportError:
     import mock
 import argparse
-from pythontabcmd.parsers.list_sites_parser import ListSitesParser
+from tabcmd.parsers.list_sites_parser import ListSitesParser
 
 
 class ListSitesParserTest(unittest.TestCase):

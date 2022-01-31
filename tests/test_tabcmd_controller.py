@@ -6,7 +6,7 @@ try:
 except ImportError:
     import mock
 import argparse
-from pythontabcmd.tabcmd_controller import TabcmdController
+from tabcmd.tabcmd_controller import TabcmdController
 
 
 class TabcmdControllerTest(unittest.TestCase):

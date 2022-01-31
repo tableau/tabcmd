@@ -6,7 +6,7 @@ try:
 except ImportError:
     import mock
 import argparse
-from pythontabcmd.parsers.delete_project_parser import DeleteProjectParser
+from tabcmd.parsers.delete_project_parser import DeleteProjectParser
 
 
 class DeleteProjectParserTest(unittest.TestCase):
