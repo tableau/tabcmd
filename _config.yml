@@ -2,7 +2,7 @@
 title: tabcmd
 email: scot.marvin@tableau.com
 description: Connect to your web data from Tableau.
-baseurl: "/tabcmd2"
+baseurl: "/tabcmd"
 # permalink: pretty
 defaults:
   -
