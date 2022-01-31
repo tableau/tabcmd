@@ -13,7 +13,7 @@ class TabcmdControllerTest(unittest.TestCase):
 
     @mock.patch.object(sys, 'argv', ['', 'createproject', '--name',
                                      'testname'])
-    @mock.patch('pythontabcmd.commands.project.create_project_command'
+    @mock.patch('tabcmd.commands.project.create_project_command'
                 '.CreateProjectCommand')
     def test_parser_called_command_project(self, mock_args):
         dic = {'CreateProjectCommand': 'createproject'}
@@ -22,7 +22,7 @@ class TabcmdControllerTest(unittest.TestCase):
         assert command == dic['CreateProjectCommand']
 
     @mock.patch.object(sys, 'argv', ['', 'creategroup', '--name', 'testname'])
-    @mock.patch('pythontabcmd.commands.group.create_group_command'
+    @mock.patch('tabcmd.commands.group.create_group_command'
                 '.CreateGroupCommand')
     def test_parser_called_command_group(self, mock_args):
         dic = {'CreateGroupCommand': 'creategroup'}

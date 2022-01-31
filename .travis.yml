@@ -11,5 +11,5 @@ script:
   # tests
 
   - python setup.py test
-  - pycodestyle pythontabcmd tests
+  - pycodestyle tabcmd tests
   - pytest
