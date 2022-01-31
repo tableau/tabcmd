@@ -50,8 +50,7 @@ class ExportParser:
         args = export_parser.parse_args(sys.argv[ExportParser.USER_ARG_IDX:])
         try:
             url = sys.argv[ExportParser.USER_ARG_URL_IDX]
-        except Exception as ex:
-            print(ex)
+        except (Exception,):
             print("Please enter a valid URL")
             sys.exit()
         if args.site is None or args.site == "Default":
