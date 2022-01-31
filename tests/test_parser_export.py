@@ -29,5 +29,5 @@ class ExportParserTest(unittest.TestCase):
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=argparse.Namespace())
     def test_export_parser_missing_all_args(self, mock_args):
-        with self.assertRaises(AttributeError):
+        with self.assertRaises(Exception):
             args, url = ExportParser.export_parser()
