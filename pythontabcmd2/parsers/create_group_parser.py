@@ -8,6 +8,8 @@ class CreateGroupParser:
     """
     Parser for creategroup command
     """
+    USER_ARG_IDX = 2
+
     @staticmethod
     def create_group_parser():
         """Method to parse create group arguments passed by the user"""
@@ -18,7 +20,8 @@ class CreateGroupParser:
                                                     parents=[parser])
         create_group_parser.add_argument('--name', '-n',
                                          required=True, help='name of group')
-        args = create_group_parser.parse_args(sys.argv[2:])
+        args = create_group_parser.parse_args(sys.argv[CreateGroupParser.
+                                              USER_ARG_IDX:])
         if args.site is None or args.site == "Default":
             args.site = ''
         return args

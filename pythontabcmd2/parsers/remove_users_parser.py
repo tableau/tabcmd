@@ -8,6 +8,9 @@ class RemoveUserParser:
     """
     Parser to removeusers command
     """
+    USER_ARG_IDX = 3
+    USER_ARG_GROUP_NAME_IDX = 2
+
     @staticmethod
     def remove_user_parser():
         """Method to parse remove user arguments passed by the user"""
@@ -19,8 +22,9 @@ class RemoveUserParser:
 
         remove_users_parser.add_argument('--users', required=True,
                                          help='csv containing user details')
-        args = remove_users_parser.parse_args(sys.argv[3:])
-        group_name = sys.argv[2]
+        args = remove_users_parser.parse_args(sys.argv[RemoveUserParser.
+                                                       USER_ARG_IDX:])
+        group_name = sys.argv[RemoveUserParser.USER_ARG_GROUP_NAME_IDX]
         csv_lines = CommonParser.read_file(args.users)
         if args.site is None or args.site == "Default":
             args.site = ''

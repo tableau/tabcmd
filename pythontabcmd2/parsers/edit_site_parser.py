@@ -6,6 +6,10 @@ class EditSiteParser:
     """
     Parser for the command editsite
     """
+    USER_ARG_SITE_ID_START_IDX = 2
+    USER_ARG_SITE_ID_END_IDX = 3
+    USER_ARG_IDX = 3
+
     @staticmethod
     def edit_site_parser():
         """Method to parse edit site arguments passed by the user"""
@@ -49,8 +53,12 @@ class EditSiteParser:
                                 'to add or remove users')
         group.add_argument('--no-site-mode', default=None,
                            help='Allows site admins to add or remove users')
-        args = edit_site_parser.parse_args(sys.argv[3:])
-        current_site_id_as_list = sys.argv[2:3]
+        args = edit_site_parser.parse_args(sys.argv[EditSiteParser.
+                                           USER_ARG_IDX:])
+        current_site_id_as_list = sys.argv[EditSiteParser.
+                                           USER_ARG_SITE_ID_START_IDX:
+                                           EditSiteParser.
+                                           USER_ARG_SITE_ID_END_IDX]
         current_site_id = ''.join(current_site_id_as_list)
         admin_mode = None
         if args.no_site_mode:

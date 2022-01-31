@@ -7,6 +7,10 @@ from .common_parser import CommonParser
 
 class PublishParser(ParentParser):
     """Parser to the command publish"""
+    USER_ARG_IDX = 3
+    USER_ARG_SOURCE_IDX = 2
+    USER_ARG_FILE_NAME_IDX = 2
+
     @staticmethod
     def publish_parser():
         """Method to parse publish arguments passed by the user"""
@@ -48,9 +52,9 @@ class PublishParser(ParentParser):
                                          'use to navigate through '
                                          'the workbook')
 
-        args = publish_parser.parse_args(sys.argv[3:])
-        source = str(sys.argv[2])
-        filename = (sys.argv[2])
+        args = publish_parser.parse_args(sys.argv[PublishParser.USER_ARG_IDX:])
+        source = str(sys.argv[PublishParser.USER_ARG_SOURCE_IDX])
+        filename = (sys.argv[PublishParser.USER_ARG_FILE_NAME_IDX])
         if args.parent_project_path is not None:
             evaluated_project_path = GlobalOptions. \
                 evaluate_project_path(args.parent_project_path)

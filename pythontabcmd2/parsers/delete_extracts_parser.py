@@ -9,6 +9,8 @@ class DeleteExtractsParser:
     """
     Parser for the command delete extracts
     """
+    USER_ARG_IDX = 2
+
     @staticmethod
     def delete_extracts_parser():
         """Method to parse delete extracts arguments passed by the user"""
@@ -47,7 +49,9 @@ class DeleteExtractsParser:
                                            help='The name of the target '
                                                 'workbook for extract '
                                                 'creation.')
-        args = delete_extract_parser.parse_args(sys.argv[2:])
+        args = delete_extract_parser.parse_args(sys.argv[
+                                                DeleteExtractsParser.
+                                                USER_ARG_IDX:])
         if args.site is None or args.site == "Default":
             args.site = ''
         return args

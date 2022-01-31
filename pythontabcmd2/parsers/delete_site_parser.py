@@ -8,6 +8,8 @@ class DeleteSiteParser:
     """
     Parser for the command deletesite
     """
+    USER_ARG_IDX = 2
+
     @staticmethod
     def delete_site_parser():
         """Method to parse delete site arguments passed by the user"""

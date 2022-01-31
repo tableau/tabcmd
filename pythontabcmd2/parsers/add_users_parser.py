@@ -9,6 +9,9 @@ class AddUserParser:
     """
     Parser for AddUser command
     """
+    USER_ARG_IDX = 3
+    USER_GROUP_ARG_IDX = 2
+
     @staticmethod
     def add_user_parser():
         """Method to parse add user arguments passed """
@@ -19,8 +22,9 @@ class AddUserParser:
                                                 parents=[parser])
         add_user_parser.add_argument('--users', required=True,
                                      help='csv containing user details')
-        args = add_user_parser.parse_args(sys.argv[3:])
-        group_name = sys.argv[2]
+        args = add_user_parser.parse_args(sys.argv[AddUserParser.
+                                          USER_ARG_IDX:])
+        group_name = sys.argv[AddUserParser.USER_GROUP_ARG_IDX]
         csv_lines = CommonParser.read_file(args.users)
         if args.site is None or args.site == "Default":
             args.site = ''

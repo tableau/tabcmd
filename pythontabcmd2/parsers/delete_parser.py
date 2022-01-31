@@ -6,6 +6,8 @@ from .common_parser import CommonParser
 
 class DeleteParser:
     """Parser for the command delete"""
+    USER_ARG_IDX = 2
+
     @staticmethod
     def delete_parser():
         """Method to parse delete data source arguments passed by the user"""
@@ -24,7 +26,7 @@ class DeleteParser:
                                    help='name of datasource to delete')
         delete_parser.add_argument('--workbook', default=None,
                                    help='name of workbook to delete')
-        args = delete_parser.parse_args(sys.argv[2:])
+        args = delete_parser.parse_args(sys.argv[DeleteParser.USER_ARG_IDX:])
         if args.site is None or args.site == "Default":
             args.site = ''
         return args

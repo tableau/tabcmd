@@ -8,6 +8,9 @@ class DecryptExtractsParser:
     """
     Parser for the command decryptextracts
     """
+    USER_ARG_IDX = 2
+    USER_ARG_SITE_NAME_IDX = 2
+
     @staticmethod
     def decrypt_extracts_parser():
         """Method to parse decrypt extracts arguments passed by the user"""
@@ -16,8 +19,10 @@ class DecryptExtractsParser:
         subparsers = parser.add_subparsers()
         decrypt_extract_parser = subparsers.add_parser('decryptextracts',
                                                        parents=[parser])
-        site_name = sys.argv[2]
-        args = decrypt_extract_parser.parse_args(sys.argv[2:])
+        site_name = sys.argv[DecryptExtractsParser.USER_ARG_SITE_NAME_IDX]
+        args = decrypt_extract_parser.parse_args(sys.argv[
+                                                 DecryptExtractsParser.
+                                                 USER_ARG_IDX:])
         if args.site is None or args.site == "Default":
             args.site = ''
         return args, site_name

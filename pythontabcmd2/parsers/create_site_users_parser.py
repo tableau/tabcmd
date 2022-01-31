@@ -7,6 +7,9 @@ class CreateSiteUsersParser:
     """
     Parser for createsiteusers command
     """
+    USER_ARG_IDX = 3
+    USER_ARG_FILE_NAME_IDX = 2
+
     @staticmethod
     def create_site_user_parser():
         """Method to parse create site users arguments passed by the user"""
@@ -18,8 +21,11 @@ class CreateSiteUsersParser:
         create_site_users_parser.add_argument('--role', '-r',
                                               default="Unlicensed",
                                               help='name of site')
-        args = create_site_users_parser.parse_args(sys.argv[3:])
-        csv_lines = CommonParser.read_file(sys.argv[2])
+        args = create_site_users_parser.parse_args(sys.argv[
+                                                   CreateSiteUsersParser.
+                                                   USER_ARG_IDX:])
+        csv_lines = CommonParser.read_file(sys.argv[CreateSiteUsersParser.
+                                           USER_ARG_FILE_NAME_IDX])
         if args.site is None or args.site == "Default":
             args.site = ''
         return csv_lines, args

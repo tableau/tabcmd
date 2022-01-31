@@ -9,6 +9,8 @@ class CreateExtractsParser:
     """
     Parser for createextracts command
     """
+    USER_ARG_IDX = 2
+
     @staticmethod
     def create_extracts_parser():
         """Method to parse create extracts arguments passed by the user"""
@@ -47,7 +49,9 @@ class CreateExtractsParser:
                                            help='The name of the target '
                                                 'workbook for extract '
                                                 'creation.')
-        args = create_extract_parser.parse_args(sys.argv[2:])
+        args = create_extract_parser.parse_args(sys.argv[
+                                                CreateExtractsParser.
+                                                USER_ARG_IDX:])
         if args.site is None or args.site == "Default":
             args.site = ''
         return args

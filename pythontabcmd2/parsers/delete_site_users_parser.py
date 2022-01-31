@@ -7,6 +7,9 @@ class DeleteSiteUsersParser:
     """
     Parser for the command deletesiteusers
     """
+    USER_ARG_FILE_NAME_IDX = 2
+    USER_ARG_IDX = 3
+
     @staticmethod
     def delete_site_users_parser():
         """Method to parse delete site arguments passed by the user"""
@@ -15,8 +18,11 @@ class DeleteSiteUsersParser:
         subparsers = parser.add_subparsers()
         delete_site_users_parser = subparsers.add_parser('deletesiteusers',
                                                          parents=[parser])
-        args = delete_site_users_parser.parse_args(sys.argv[3:])
-        csv_lines = CommonParser.read_file(sys.argv[2])
+        args = delete_site_users_parser.parse_args(sys.argv[
+                                                   DeleteSiteUsersParser.
+                                                   USER_ARG_IDX:])
+        csv_lines = CommonParser.read_file(sys.argv[DeleteSiteUsersParser.
+                                           USER_ARG_FILE_NAME_IDX])
         if args.site is None or args.site == "Default":
             args.site = ''
         return csv_lines, args

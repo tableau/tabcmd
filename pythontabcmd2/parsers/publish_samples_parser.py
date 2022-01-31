@@ -9,6 +9,8 @@ class PublishSamplesParser(ParentParser):
     """
     Parser to the command publishsamples
     """
+    USER_ARG_IDX = 3
+
     @staticmethod
     def publish_samples_parser():
         """Method to parse publish samples arguments passed by the user"""
@@ -24,7 +26,9 @@ class PublishSamplesParser(ParentParser):
         publish_samples_parser.add_argument('--name', '-n', required=True,
                                             help='name of project')
 
-        args = publish_samples_parser.parse_args(sys.argv[2:])
+        args = publish_samples_parser.parse_args(sys.argv[
+                                                 PublishSamplesParser.
+                                                 USER_ARG_IDX:])
         if args.parent_project_path is not None:
             evaluated_project_path = GlobalOptions. \
                 evaluate_project_path(args.parent_project_path)

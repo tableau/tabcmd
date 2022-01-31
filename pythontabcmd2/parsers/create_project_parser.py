@@ -9,6 +9,7 @@ class CreateProjectParser(ParentParser):
     """
     Parser for createproject command
     """
+    USER_ARG_IDX = 2
 
     @staticmethod
     def create_project_parser():
@@ -30,8 +31,9 @@ class CreateProjectParser(ParentParser):
                                            default=None,
                                            help='content permission ')
 
-        args = create_project_parser.parse_args(sys.argv[2:])
-        print("THESE ARE THE SYS ARGV", sys.argv)
+        args = create_project_parser.parse_args(sys.argv[
+                                                CreateProjectParser.
+                                                USER_ARG_IDX:])
         if args.parent_project_path is not None:
             evaluated_project_path = GlobalOptions. \
                 evaluate_project_path(args.parent_project_path)
