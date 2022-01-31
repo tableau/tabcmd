@@ -1,11 +1,19 @@
+from .. import EncryptExtractsParser
 import tableauserverclient as TSC
 from .. import log
 from ... import Session
-from .. import EncryptExtractsParser
+from ..extracts.extracts_command import ExtractsCommand
+from ..site.site_command import SiteCommand
 
 
-class EncryptExtracts:
+class EncryptExtracts(ExtractsCommand):
+    """
+    Command that encrypt all extracts on a site.
+    If no site is specified, extracts on the default site will be encrypted.
+    """
+
     def __init__(self, args, site_name):
+        super().__init__(args)
         self.site_name = site_name
         self.args = args
         self.logging_level = args.logging_level
@@ -23,4 +31,10 @@ class EncryptExtracts:
         self.encrypt_extract(server_object)
 
     def encrypt_extract(self, server):
-        pass
+        try:
+            site_id = SiteCommand.find_site_id(server, self.site_name)
+            job = server.sites.encrypt_extracts(site_id)
+            self.logger.info("Extract encrypted Successfully with "
+                             "JobID: {}".format(job.id))
+        except TSC.ServerResponseError as e:
+            self.logger.error('Server Error', e)

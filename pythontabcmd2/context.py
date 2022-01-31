@@ -18,6 +18,12 @@ from .commands.datasources_and_workbooks.export_command import *
 from .commands.datasources_and_workbooks.publish_command import *
 from .commands.datasources_and_workbooks.get_url_command import *
 from .commands.help.help_command import *
+from .commands.extracts.create_extracts_command import *
+from .commands.extracts.decrypt_extracts_command import *
+from .commands.extracts.delete_extracts_command import *
+from .commands.extracts.refresh_extracts_command import *
+from .commands.extracts.reencrypt_extracts_command import *
+from .commands.extracts.encrypt_extracts_command import *
 import sys
 
 
