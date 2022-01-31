@@ -20,3 +20,5 @@ pythontabcmd2/__pycache__/
 *.twbr
 .idea
 *.DS_Store
+html
+*.html
