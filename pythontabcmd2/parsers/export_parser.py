@@ -8,9 +8,13 @@ class ExportParser:
     """
     Parser for the command export
     """
+    USER_ARG_IDX = 3
+    USER_ARG_URL_IDX = 2
+
     @staticmethod
     def export_parser():
         """Method to parse export arguments passed by the user"""
+        url = ""
         parent_parser = ParentParser()
         parser = parent_parser.parent_parser_with_global_options()
         subparsers = parser.add_subparsers()
@@ -43,8 +47,11 @@ class ExportParser:
                                         'is 600 px')
         export_parser.add_argument('--filter', '-vf', metavar='COLUMN:VALUE',
                                    help='View filter to apply to the view')
-        args = export_parser.parse_args(sys.argv[3:])
-        url = sys.argv[2]
+        args = export_parser.parse_args(sys.argv[ExportParser.USER_ARG_IDX:])
+        try:
+            url = sys.argv[ExportParser.USER_ARG_URL_IDX]
+        except (Exception,):
+            print("Please enter a valid URL")
         if args.site is None or args.site == "Default":
             args.site = ''
         return args, url

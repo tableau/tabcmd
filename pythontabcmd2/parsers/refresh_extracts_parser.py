@@ -9,6 +9,8 @@ class RefreshExtractsParser:
     """
     Parser to refreshextracts command
     """
+    USER_ARG_IDX = 2
+
     @staticmethod
     def refresh_extracts_parser():
         """Method to parse refresh extracts arguments passed by the user"""
@@ -64,7 +66,9 @@ class RefreshExtractsParser:
                                                  'workbook has '
                                                  'spaces in its name, enclose '
                                                  'it in quotes')
-        args = refresh_extract_parser.parse_args(sys.argv[2:])
+        args = refresh_extract_parser.parse_args(sys.argv[
+                                                 RefreshExtractsParser.
+                                                 USER_ARG_IDX:])
         if args.site is None or args.site == "Default":
             args.site = ''
         return args

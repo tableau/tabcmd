@@ -9,6 +9,8 @@ class DeleteProjectParser:
     """
     Parser for the command deleteproject
     """
+    USER_ARG_IDX = 2
+
     @staticmethod
     def delete_project_parser():
         """Method to parse delete project arguments passed by the user"""
@@ -23,7 +25,9 @@ class DeleteProjectParser:
                                                                common_parser])
         delete_project_parser.add_argument('--name', '-n', required=True,
                                            help='name of project to delete')
-        args = delete_project_parser.parse_args(sys.argv[2:])
+        args = delete_project_parser.parse_args(sys.argv[
+                                                DeleteProjectParser.
+                                                USER_ARG_IDX:])
         if args.parent_project_path is not None:
             evaluated_project_path = \
                 GlobalOptions.evaluate_project_path(args.parent_project_path)

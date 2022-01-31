@@ -17,6 +17,7 @@ from .commands.datasources_and_workbooks.delete_command import *
 from .commands.datasources_and_workbooks.export_command import *
 from .commands.datasources_and_workbooks.publish_command import *
 from .commands.datasources_and_workbooks.get_url_command import *
+from .commands.help.help_command import *
 import sys
 
 
@@ -28,6 +29,6 @@ class Context:
     def execute_command(self):
         command_strategy_type = getattr(sys.modules[__name__],
                                         CommandsMap.commands_hash_map.
-                                        get(self.command_strategy))
+                                        get(self.command_strategy)[0])
         command_strategy = command_strategy_type.parse()
         command_strategy.run_command()

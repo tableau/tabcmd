@@ -18,3 +18,7 @@ pythontabcmd2/__pycache__/
 *.hyper
 *.twb
 *.twbr
+.idea
+*.DS_Store
+html
+*.html

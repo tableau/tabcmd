@@ -8,6 +8,9 @@ class CreateSiteParser:
     """
     Parser for createsite command
     """
+    USER_ARG_IDX = 3
+    USER_ARG_SITE_NAME_IDX = 2
+
     @staticmethod
     def create_site_parser():
         """Method to parse create site arguments passed by the user"""
@@ -35,9 +38,10 @@ class CreateSiteParser:
                                 'to add or remove users')
         group.add_argument('--no-site-mode', default=None,
                            help='Allows site admins to add or remove users')
-        args = create_site_parser.parse_args(sys.argv[3:])
+        args = create_site_parser.parse_args(sys.argv[CreateSiteParser.
+                                             USER_ARG_IDX:])
         if args.site_name is None:
-            args.site_name = sys.argv[2]
+            args.site_name = sys.argv[CreateSiteParser.USER_ARG_SITE_NAME_IDX]
         admin_mode = None
         if args.no_site_mode:
             admin_mode = "ContentOnly"

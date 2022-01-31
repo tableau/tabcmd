@@ -9,6 +9,8 @@ class EncryptExtractsParser:
     """
     Parser for the command encryptextracts
     """
+    USER_ARG_IDX = 2
+
     @staticmethod
     def encrypt_extracts_parser():
         """Method to parse encrypt extracts arguments passed by the user"""
@@ -18,7 +20,9 @@ class EncryptExtractsParser:
         encrypt_extract_parser = subparsers.add_parser('encryptextracts',
                                                        parents=[parser])
         site_name = sys.argv[2]
-        args = encrypt_extract_parser.parse_args(sys.argv[2:])
+        args = encrypt_extract_parser.parse_args(sys.argv[
+                                                 EncryptExtractsParser.
+                                                 USER_ARG_IDX:])
         if args.site is None or args.site == "Default":
             args.site = ''
         return args, site_name

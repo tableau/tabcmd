@@ -10,6 +10,8 @@ logger = get_logger('pythontabcmd2.login_parser', 'info')
 
 class LoginParser:
     """ Parses login arguments passed by the user"""
+    USER_ARG_IDX = 2
+
     @staticmethod
     def login_parser():
 
@@ -18,7 +20,7 @@ class LoginParser:
 
         subparsers = parser.add_subparsers()
         login_parser = subparsers.add_parser('login', parents=[parser])
-        args = login_parser.parse_args(sys.argv[2:])
+        args = login_parser.parse_args(sys.argv[LoginParser.USER_ARG_IDX:])
 
         if args.prompt and args.username:
             args.password = getpass.getpass("Password:")
