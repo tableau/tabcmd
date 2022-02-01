@@ -37,7 +37,7 @@ class CreateExtracts(ExtractsCommand):
                 job = server.datasources.create_extract(data_source_item,
                                                         encrypt=self.args.
                                                         encrypt)
-                self.logger.info("Extract created Successfully with "
+                self.logger.info("Extract started Successfully with "
                                  "JobID: {}".format(job.id))
             except TSC.ServerResponseError as e:
                 self.logger.error('Server Error', e)
@@ -56,7 +56,7 @@ class CreateExtracts(ExtractsCommand):
                                                       datasources=self.args.
                                                       embedded_datasources)
 
-                self.logger.info("Extract created Successfully with "
+                self.logger.info("Extract started successfully with "
                                  "JobID: {}".format(job.id))
             except TSC.ServerResponseError as e:
                 self.logger.error('Server Error', e)

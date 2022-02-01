@@ -36,7 +36,7 @@ class RefreshExtracts(ExtractsCommand):
                     server, self.args.datasource)
 
                 job = server.datasources.refresh(datasource_id)
-                self.logger.info("Extract refreshed Successfully with "
+                self.logger.info("Extract refresh started with "
                                  "JobID: {}".format(job.id))
             except TSC.ServerResponseError as e:
                 self.logger.error('Server Error', e)

@@ -38,7 +38,7 @@ class CreateExtractsParser:
                                                 ' workbook. Only available '
                                                 'when creating extracts '
                                                 'for workbook.')
-        create_extract_parser.add_argument('--project', default='default',
+        create_extract_parser.add_argument('--project', default='None',
                                            help='The name of the project'
                                                 ' that contains the target '
                                                 'resource')

@@ -34,7 +34,7 @@ class DeleteExtracts(ExtractsCommand):
                     get_data_source_item(server, self.args.datasource)
 
                 job = server.datasources.delete_extract(data_source_item)
-                self.logger.info("Extract deleted Successfully with "
+                self.logger.info("Extract deletion started successfully with "
                                  "JobID: {}".format(job.id))
             except TSC.ServerResponseError as e:
                 self.logger.error('Server Error', e)
