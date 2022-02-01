@@ -29,15 +29,16 @@ class CreateExtractsParser:
                                                 'of embedded data source '
                                                 'names within the target'
                                                 ' workbook. ')
-        create_extract_parser.add_argument('--encrypt',
+        create_extract_parser.add_argument('--encrypt', action='store_false',
                                            help='Create encrypted extract')
         create_extract_parser.add_argument('--include-all',
+                                           action='store_false',
                                            help='Include all embedded data '
                                                 'sources within target'
                                                 ' workbook. Only available '
                                                 'when creating extracts '
                                                 'for workbook.')
-        create_extract_parser.add_argument('--project',
+        create_extract_parser.add_argument('--project', default='None',
                                            help='The name of the project'
                                                 ' that contains the target '
                                                 'resource')

@@ -22,3 +22,4 @@ tabcmd/__pycache__/
 *.DS_Store
 html
 *.html
+*.twbr
