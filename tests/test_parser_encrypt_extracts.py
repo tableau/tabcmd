@@ -5,7 +5,7 @@ try:
 except ImportError:
     import mock
 import argparse
-from pythontabcmd2.parsers.encrypt_extracts_parser \
+from tabcmd.parsers.encrypt_extracts_parser \
     import EncryptExtractsParser
 
 

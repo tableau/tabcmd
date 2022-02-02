@@ -5,7 +5,7 @@ try:
 except ImportError:
     import mock
 import argparse
-from pythontabcmd2.parsers.runschedule_parser import RunScheduleParser
+from tabcmd.parsers.runschedule_parser import RunScheduleParser
 
 
 class RunScheduleParserTest(unittest.TestCase):

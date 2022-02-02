@@ -5,7 +5,7 @@ try:
 except ImportError:
     import mock
 import argparse
-from pythontabcmd2.parsers.create_group_parser import CreateGroupParser
+from tabcmd.parsers.create_group_parser import CreateGroupParser
 
 
 class CreateGroupParserTest(unittest.TestCase):

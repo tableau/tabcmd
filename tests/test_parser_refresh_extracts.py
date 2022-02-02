@@ -5,7 +5,7 @@ try:
 except ImportError:
     import mock
 import argparse
-from pythontabcmd2.parsers.refresh_extracts_parser \
+from tabcmd.parsers.refresh_extracts_parser \
     import RefreshExtractsParser
 
 

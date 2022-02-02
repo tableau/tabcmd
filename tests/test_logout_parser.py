@@ -5,7 +5,7 @@ try:
 except ImportError:
     import mock
 import argparse
-from pythontabcmd2.parsers.logout_parser import LogoutParser
+from tabcmd.parsers.logout_parser import LogoutParser
 
 
 class LogoutParserTest(unittest.TestCase):
