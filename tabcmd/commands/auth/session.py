@@ -45,12 +45,12 @@ class Session:
         if self.server is None:
             self.logger.error("Please pass server")
             sys.exit()
-        if self.site is None:
+        if self.site is None: # they don't have to specify a site
             self.site = ''
 
     def _no_cookie_save_session_creation_with_username(self, args):
         try:
-            if self.password is None: # check for --no-prompt
+            if self.password is None and args.prompt == True:
                 self.password = getpass.getpass("Password:")
             self._check_for_missing_arguments()
             self.logger.info("server: {}".format(
@@ -74,7 +74,7 @@ class Session:
         self.logger.info("server: {}".format(
             self.server))
         try:
-            if self.token is None:  # check for --no-prompt
+            if self.token is None and args.prompt == True:
                 self.token = getpass.getpass("Token:")
             self._check_for_missing_arguments()
             tableau_auth = \
@@ -139,6 +139,8 @@ class Session:
 
     def _create_new_session_using_username(self, args):
         self._update_session_data(args)
+        # this seems to think it's getting a signed_in_object, but the method returns a TSC server object?
+        # also, what does the 'no_cookie' title mean here?
         signed_in_object \
             = self._no_cookie_save_session_creation_with_username(args)
         return signed_in_object
