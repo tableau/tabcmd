@@ -21,3 +21,11 @@ class TabcmdControllerTest(unittest.TestCase):
         command = tabcmd_controller.get_command_strategy()
         assert command == dic['CreateProjectCommand']
 
+    @mock.patch.object(sys, 'argv', ['', 'creategroup', '--name', 'testname'])
+    @mock.patch('tabcmd.commands.group.create_group_command'
+                '.CreateGroupCommand')
+    def test_parser_called_command_group(self, mock_args):
+        dic = {'CreateGroupCommand': 'creategroup'}
+        tabcmd_controller = TabcmdController()
+        command = tabcmd_controller.get_command_strategy()
+        assert command == dic['CreateGroupCommand']
