@@ -1,0 +1,57 @@
+# https://data-dive.com/multi-os-deployment-in-cloud-using-pyinstaller-and-github-actions
+# https://anshumanfauzdar.medium.com/using-github-actions-to-bundle-python-application-into-a-single-package-and-automatic-release-834bd42e0670
+
+name: Package
+
+on:
+  push:
+    tags:
+    #  - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+#    branches: master
+    branches: jac/pyinstaller
+
+jobs:
+  build-windows:
+    runs-on: windows-2019
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Install Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.7'
+          architecture: 'x64'
+      - name: Install requirements
+        run: |
+          python setup.py
+      - name: Run PyInstaller
+        run: |
+          pyinstaller tabcmd.py --clean --noconfirm
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Windows_tabcmd
+          path: dist/tabcmd.exe
+
+      - name: create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.event.head_commit.message }}
+          release_name: ${{ github.event.head_commit.message }}
+          overwrite: true
+          body: |
+            Test Release v1.0.0
+          draft: false
+          prerelease: false
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{steps.create_release.outputs.upload_url}}
+          asset_path: dist/tabcmd.exe
+          asset_name: Tabcmd-Windows-amd64.exe
+          asset_content_type: application/zip
