@@ -42,4 +42,6 @@ class ParentParser:
                            help='do not save session id')
         group.add_argument('--cookie', action='store_true',
                            help='save session id')
+        parser.add_argument('--no-certcheck', action='store_true',
+               help='When specified, tabcmd (the client) does not validate the server\'s SSL certificate.')
         return parser
