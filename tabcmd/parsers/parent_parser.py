@@ -62,7 +62,7 @@ class ParentParser:
         proxy_group = parser.add_mutually_exclusive_group()
         proxy_group.add_argument('--no-proxy', action='store_false', dest='proxy',
                help='When specified, an HTTP proxy will not be used.')
-        proxy_group.add_argument('--proxy', '-x', action='store_true', dest='proxy', metavar='Host:Port',
+        proxy_group.add_argument('--proxy', '-x', dest='proxy', metavar='Host:Port',
                help='Connect to Tableau Server using the specified HTTP proxy.')
 
         parser.add_argument('--use-certificate', '-c',
