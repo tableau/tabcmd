@@ -1,4 +1,4 @@
-name: Python tests (copied workflow from tsc)
+name: Python tests
 
 on: [push]
 
