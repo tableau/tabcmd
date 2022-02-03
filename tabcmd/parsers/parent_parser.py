@@ -12,7 +12,7 @@ class ParentParser:
         parser = argparse.ArgumentParser(usage=argparse.SUPPRESS,
                                          add_help=False)
         parser.add_argument('--server', '-s', metavar='',
-               help='The Tableau Server URL, which is required at least once to begin session.')
+               help='Use the specified Tableau Server URL. If no protocol is specified, http:// is assumed')
 
         credential_group = parser.add_mutually_exclusive_group()
         credential_group.add_argument('--username', '-u', metavar='',
@@ -32,9 +32,8 @@ class ParentParser:
                             help='personal access token to sign into the server')
 
         parser.add_argument('--site', '-t', default='', metavar='',
-               help='Indicates that the command applies to the site specified by the Tableau Server site\
-                     ID, surrounded by single quotes or double quotes. To specify the Default site, \
-                          leave this blank.')
+               help='Use the specified Tableau Server site. Specify an empty string ("") to force use of\
+                                 the default site')
 
         prompt_group = parser.add_mutually_exclusive_group()
         # the variable args.prompt will be set to false if --no-prompt is present
