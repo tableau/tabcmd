@@ -11,6 +11,7 @@ class Session:
     """
     Session class handles all authentication related work
     """
+
     def __init__(self):
         self.username = None
         self.password = None
@@ -113,15 +114,22 @@ class Session:
             return tableau_server
         except TSC.ServerResponseError as e:
             if e.code == Constants.login_error:
-                self.logger.error("Please Login again and check login "
-                                  "credentials", e)
+                self.logger.error("Please check "
+                                  "credentials and login again")
+                sys.exit()
 
     def reuse_session(self):
-        tableau_server = TSC.Server(self.server,
-                                    use_server_version=True)
-        tableau_server._auth_token = self.auth_token
-        tableau_server._site_id = self.site_id
-        return tableau_server
+        try:
+            tableau_server = TSC.Server(self.server,
+                                        use_server_version=True)
+            tableau_server._auth_token = self.auth_token
+            tableau_server._site_id = self.site_id
+            return tableau_server
+        except TSC.ServerResponseError as e:
+            if e.code == Constants.login_error:
+                self.logger.error("Cannot create a session, Please try "
+                                  "again with updated credentials")
+                sys.exit()
 
     def no_cookie_save_session_creation_with_token(self):
         self.logger.info("server: {}".format(
@@ -145,31 +153,40 @@ class Session:
             return tableau_server
         except TSC.ServerResponseError as e:
             if e.code == Constants.login_error:
-                self.logger.error("Please Login again and check login "
+                self.logger.error("Please check login "
                                   "credentials")
+                sys.exit()
 
     def create_session(self, args):
-        signed_in_object = None
-        if args.username or args.password:
-            signed_in_object = self.create_new_session_using_username(args)
-        elif args.token or args.token_name:
-            signed_in_object = self.create_new_session_using_token(args)
-        elif args.site or args.server:
-            last_login_username_present, last_login_token_name_present, \
-                username, token_name = \
-                self.check_last_login_username_token_name()
-            if last_login_username_present:
+        try:
+            signed_in_object = None
+            if args.username or args.password:
                 signed_in_object = self.create_new_session_using_username(args)
-            elif last_login_token_name_present:
+            elif args.token or args.token_name:
                 signed_in_object = self.create_new_session_using_token(args)
-        else:
-            self.logger.info("==========Continuing previous session========")
-            signed_in_object = self.reuse_session()
-        if args.no_cookie:
-            self.remove_json()
-        else:
-            self.save_token_to_json_file()
-        return signed_in_object
+            elif args.site or args.server:
+                last_login_username_present, last_login_token_name_present, \
+                username, token_name = \
+                    self.check_last_login_username_token_name()
+                if last_login_username_present:
+                    signed_in_object = self.create_new_session_using_username \
+                        (args)
+                elif last_login_token_name_present:
+                    signed_in_object = self.create_new_session_using_token \
+                        (args)
+            else:
+                self.logger.info("==========Continuing previous "
+                                 "session========")
+                signed_in_object = self.reuse_session()
+            if args.no_cookie:
+                self.remove_json()
+            else:
+                self.save_token_to_json_file()
+            return signed_in_object
+        except (Exception,):
+            self.logger.error("Cannot create a session, Please try "
+                              "again with updated credentials")
+            sys.exit()
 
     def remove_json(self):
         file_path = self.get_file_path()
@@ -190,14 +207,18 @@ class Session:
                 if auth['last_login_using'] == "token":
                     last_login_token_name_present = True
             return last_login_username_present, \
-                last_login_token_name_present, \
-                username, token_name
+                   last_login_token_name_present, \
+                   username, token_name
 
     def create_new_session_using_username(self, args):
-        self.update_session(args)
-        signed_in_object \
-            = self.no_cookie_save_session_creation_with_username()
-        return signed_in_object
+        try:
+            self.update_session(args)
+            signed_in_object \
+                = self.no_cookie_save_session_creation_with_username()
+            return signed_in_object
+        except TSC.ServerResponseError as e:
+            self.logger.error("Please check login credentials")
+            sys.exit()
 
     def create_new_session_using_token(self, args):
         self.update_session(args)

@@ -21,7 +21,8 @@ class LoginParser:
         subparsers = parser.add_subparsers()
         login_parser = subparsers.add_parser('login', parents=[parser])
         args = login_parser.parse_args(sys.argv[LoginParser.USER_ARG_IDX:])
-
+        print(args)
+        print("PROMPTS: ", args.prompt)
         if args.prompt and args.username:
             args.password = getpass.getpass("Password:")
         if args.prompt and args.token_name:
