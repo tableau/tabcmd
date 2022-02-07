@@ -166,14 +166,14 @@ class Session:
                 signed_in_object = self.create_new_session_using_token(args)
             elif args.site or args.server:
                 last_login_username_present, last_login_token_name_present, \
-                username, token_name = \
+                    username, token_name = \
                     self.check_last_login_username_token_name()
                 if last_login_username_present:
-                    signed_in_object = self.create_new_session_using_username \
-                        (args)
+                    signed_in_object = \
+                        self.create_new_session_using_username(args)
                 elif last_login_token_name_present:
-                    signed_in_object = self.create_new_session_using_token \
-                        (args)
+                    signed_in_object = \
+                        self.create_new_session_using_token(args)
             else:
                 self.logger.info("==========Continuing previous "
                                  "session========")
@@ -207,8 +207,7 @@ class Session:
                 if auth['last_login_using'] == "token":
                     last_login_token_name_present = True
             return last_login_username_present, \
-                   last_login_token_name_present, \
-                   username, token_name
+                last_login_token_name_present, username, token_name
 
     def create_new_session_using_username(self, args):
         try:
