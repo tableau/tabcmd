@@ -1,11 +1,14 @@
 import unittest
 
+
 from tabcmd.commands.user.user_command import UserCommand
+
 
 class UserDataTest(unittest.TestCase):
 
     def test_get_users_from_file(self):
-        test_content = ["username, pword, fname, license, admin, pub, email",\
+        test_content = [
+            "username, pword, fname, license, admin, pub, email",
             "username, pword, fname, license, admin, pub, email"]
         assert UserCommand.get_users_from_file(test_content) is not None
 
