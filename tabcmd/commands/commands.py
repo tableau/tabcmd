@@ -19,7 +19,6 @@ class Commands(CommandStrategyInterface):
         self.personal_token = args.token
         self.logging_level = args.logging_level
 
-
     @staticmethod
     def get_workbook_item(server, workbook_name):
         workbook_item = None

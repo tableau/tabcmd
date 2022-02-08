@@ -2,6 +2,7 @@ from posixpath import split
 from ..commands import Commands
 from .user_data import Userdata
 
+
 class UserCommand(Commands):
     """
     This class acts as a base class for user related group of commands
@@ -54,10 +55,8 @@ class UserCommand(Commands):
         user_data.admin_level = split_line[4]
         user_data.publisher = split_line[5]
         user_data.email = split_line[6]
-        user_data.site_role = \
-            UserCommand.evaluate_license_level_admin_level(user_data.license_level,
-                                                    user_data.admin_level,
-                                                    user_data.publisher)
+        user_data.site_role = UserCommand.evaluate_license_level_admin_level(
+            user_data.license_level, user_data.admin_level, user_data.publisher)
         return user_data
 
     @staticmethod
@@ -68,7 +67,7 @@ class UserCommand(Commands):
         admin_level = admin_level.lower()
         publisher = publisher.lower()
         site_role = None
-        #  don't need to check publisher for system/site admin
+        # don't need to check publisher for system/site admin
         if admin_level == 'system':
             site_role = 'SiteAdministrator'
         elif admin_level == 'site':
@@ -85,19 +84,17 @@ class UserCommand(Commands):
                 elif license_level == 'explorer':
                     site_role = 'ExplorerCanPublish'
                 else:
-                    site_role = 'Unlicensed' # is this the expected outcome?
-            else: # publisher == 'no':
+                    site_role = 'Unlicensed'  # is this the expected outcome?
+            else:  # publisher == 'no':
                 if license_level == 'explorer' or license_level == 'creator':
                     site_role = 'Explorer'
                 elif license_level == 'viewer':
                     site_role = 'Viewer'
-                else: #   if license_level == 'unlicensed'
+                else:  # if license_level == 'unlicensed'
                     site_role = 'Unlicensed'
         if site_role is None:
             site_role = 'Unlicensed'
         return site_role
-
-
 
     @staticmethod
     def find_group(server, group_name):
