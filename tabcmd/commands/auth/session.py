@@ -45,12 +45,12 @@ class Session:
         if self.server is None:
             self.logger.error("Please pass server")
             sys.exit()
-        if self.site is None: # they don't have to specify a site
+        if self.site is None:  # they don't have to specify a site
             self.site = ''
 
     def _no_cookie_save_session_creation_with_username(self, args):
         try:
-            if self.password is None and args.prompt == True:
+            if self.password is None and args.prompt is True:
                 self.password = getpass.getpass("Password:")
             self._check_for_missing_arguments()
             self.logger.info("server: {}".format(
@@ -69,12 +69,11 @@ class Session:
                 self.logger.error("Please Login again and check login "
                                   "credentials", e)
 
-
     def _no_cookie_save_session_creation_with_token(self, args):
         self.logger.info("server: {}".format(
             self.server))
         try:
-            if self.token is None and args.prompt == True:
+            if self.token is None and args.prompt is True:
                 self.token = getpass.getpass("Token:")
             self._check_for_missing_arguments()
             tableau_auth = \
@@ -97,7 +96,7 @@ class Session:
     def _create_server_connection(self, args):
         # args to handle here: proxy, --no-proxy, cert, --no-certcheck, timeout
         tableau_server = TSC.Server(self.server)
-        tableau_server.version = '3.16' # not sure what the ideal choice here is
+        tableau_server.version = '3.16'  # not sure what the ideal choice here is
         # can't just use server version because that doesn't work with no-certcheck
         if args.no_certcheck:
             tableau_server.add_http_options({'verify': False})
@@ -128,7 +127,6 @@ class Session:
             self.logger.error("Unable to find or create a session. Please check credentials and login again.")
             sys.exit()
 
-
         self.logger.info("==========Continuing previous session========")
         signed_in_object = self._reuse_session()
         if args.no_cookie:
@@ -151,7 +149,6 @@ class Session:
             = self._no_cookie_save_session_creation_with_token(args)
         return signed_in_object
 
-
     def _check_last_login_username_token_name(self):
         last_login_username_present = False
         last_login_token_name_present = False
@@ -172,14 +169,12 @@ class Session:
                 last_login_token_name_present, \
                 username, token_name
 
-
-### json file functions
+# json file functions
 
     def _get_file_path(self):
         home_path = os.path.expanduser("~")
         file_path = os.path.join(home_path, 'tableau_auth.json')
         return file_path
-
 
     def _read_from_json(self):
         if not self._check_json():
@@ -197,12 +192,10 @@ class Session:
                 self.token = auth['personal_access_token']
                 self.last_login_using = auth['last_login_using']
 
-
     def _check_json(self):
         home_path = os.path.expanduser("~")
         file_path = os.path.join(home_path, 'tableau_auth.json')
         return os.path.exists(file_path)
-
 
     def _save_token_to_json_file(self):
         data = {}
@@ -220,7 +213,6 @@ class Session:
         file_path = self._get_file_path()
         with open(str(file_path), 'w') as f:
             json.dump(data, f)
-
 
     def _remove_json(self):
         file_path = self._get_file_path()
