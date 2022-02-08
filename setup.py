@@ -26,8 +26,9 @@ setup(
     url='https://github.com/tableau/tabcmd',
 
     extras_require={
-        'test': test_requirements
-    }
+        'test': test_requirements,
+        'package': ['pyinstaller>=4.8']
+    },
     install_requires=[
         'requests>=2.11,<3.0',
         'setuptools>=24.3',
