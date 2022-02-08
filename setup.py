@@ -14,25 +14,27 @@ setup(
     name='tabcmd',
     author='Tableau',
     author_email='github@tableau.com',
-    url='https://github.com/tableau/tabcmd',
-    license='MIT',
-    packages=find_packages(),
+    description='A command line client for working with Tableau Server.',
     entry_points={
         'console_scripts': [
             'tabcmd = tabcmd.tabcmd:main'
         ]
     },
-    description='A command line client for working with Tableau Server.',
+    license='MIT',
+    packages=find_packages(),
     test_suite='tests',
-    setup_requires=pytest_runner,
-    install_requires=[
-        'requests>=2.11,<3.0',
-        'urllib3>=1.24.3,<2.0',
-        'tableauserverclient>=0.12'
-    ],
-    tests_require=test_requirements,
+    url='https://github.com/tableau/tabcmd',
+
     extras_require={
         'test': test_requirements
     }
-
+    install_requires=[
+        'requests>=2.11,<3.0',
+        'setuptools>=24.3',
+        'tableauserverclient>=0.12',
+        'urllib3>=1.24.3,<2.0',
+    ],
+    python_requires='>=3.6',
+    setup_requires=pytest_runner,
+    tests_require=test_requirements,
 )
