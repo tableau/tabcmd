@@ -5,9 +5,9 @@ import sys
 
 def main():
 
-    if sys.version_info < (3,6):
-        raise ImportError("Tabcmd requires Python 3.6 but you are on Python 2.\
-            Please update your python version.")
+    if sys.version_info < (3, 7):
+        raise ImportError("Tabcmd requires Python 3.7 but you are on " + sys.version_info +
+            " - please update your python version.")
 
     tabcmd_controller = TabcmdController()
     command_strategy = tabcmd_controller.get_command_strategy()
