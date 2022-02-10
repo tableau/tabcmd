@@ -13,6 +13,13 @@ Tableau provides the tabcmd command-line utility which you can use to automate s
 * TOC
 {:toc}
 
+# Why a new tabcmd? 
+The updated tabcmd command-line interface (CLI) allows you to do the following:
+* Run tabcmd commands on MacOS (the existing tabcmd does not officially support MacOS)
+* Authenticate using personal access tokens (the existing tabcmd does not support personal access token logins)
+* Use public endpoints available in the Python-based Tableau Server Client (TSC)
+* Add more functionality and extend the tabcmd script for other automation tasks
+
 # Install tabcmd {#install_tabcmd}
 
 When Tableau Server or Tableau Online is upgraded to a new version, if an updated version of tabcmd is required, you can download it from the Tableau Server Releases page on the Tableau website.
