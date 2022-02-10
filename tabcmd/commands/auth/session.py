@@ -1,6 +1,6 @@
 import getpass
 import sys
-from .. import Constants
+from ... import Constants
 import tableauserverclient as TSC
 from .. import log
 import json
@@ -25,15 +25,18 @@ class Session:
         self.logger = log('tabcmd.session', self.logging_level)
         self._read_from_json()
 
+    # called before we connect to the server
     def _update_session_data(self, args):
         if args.username:
             self.username = args.username
-        if args.site is not None:
-            self.site = args.site
+        if args.site is None:
+            args.site = ''
+        self.site = args.site
         if args.password:
             self.password = args.password
-        if args.server:
-            self.server = args.server
+        if args.server is None:
+            args.server = 'http://localhost'
+        self.server = args.server
         if args.logging_level:
             self.logging_level = args.logging_level
         if args.token_name:
@@ -41,119 +44,87 @@ class Session:
         if args.token:
             self.token = args.token
 
-    def _check_for_missing_arguments(self):
-        if self.server is None:
-            self.logger.error("Please pass server")
-            sys.exit()
-        if self.site is None:  # they don't have to specify a site
-            self.site = ''
+    def _create_new_username_credential(self, args):
+        if self.password is None and args.prompt is True:
+            self.password = getpass.getpass("Password:")
+        tableau_auth = TSC.TableauAuth(self.username, self.password, self.site)
+        self.last_login_using = "username"
+        return tableau_auth
 
-    def _no_cookie_save_session_creation_with_username(self, args):
+    def _create_new_token_credential(self, args):
+        if self.token is None and args.prompt is True:
+            self.token = getpass.getpass("Token:")
+        tableau_auth = TSC.PersonalAccessTokenAuth(self.token_name, self.token, self.site)
+        self.last_login_using = "token"
+        return tableau_auth
+
+    def _begin_session_or_fail(self, args, tableau_auth):
         try:
-            if self.password is None and args.prompt is True:
-                self.password = getpass.getpass("Password:")
-            self._check_for_missing_arguments()
-            self.logger.info("server: {}".format(
-                self.server))
-            tableau_auth = TSC.TableauAuth(self.username,
-                                           self.password, self.site)
             tableau_server = self._create_server_connection(args)
-            signed_in_object = tableau_server.auth.sign_in(tableau_auth)
+            tableau_server.auth.sign_in(tableau_auth)  # it's actually the same call for token or user-pass
             self.auth_token = tableau_server.auth_token
             self.site_id = tableau_server.site_id
-            self.last_login_using = "username"
             self.logger.info("=========Succeeded========")
-            return tableau_server
         except TSC.ServerResponseError as e:
             if e.code == Constants.login_error:
-                self.logger.error("Please Login again and check login "
-                                  "credentials", e)
-
-    def _no_cookie_save_session_creation_with_token(self, args):
-        self.logger.info("server: {}".format(
-            self.server))
-        try:
-            if self.token is None and args.prompt is True:
-                self.token = getpass.getpass("Token:")
-            self._check_for_missing_arguments()
-            tableau_auth = \
-                TSC.PersonalAccessTokenAuth(self.token_name,
-                                            self.token, self.site)
-            tableau_server = self._create_server_connection(args)
-            signed_in_object = \
-                tableau_server.auth.sign_in_with_personal_access_token(
-                    tableau_auth)
-            self.auth_token = tableau_server.auth_token
-            self.site_id = tableau_server.site_id
-            self.last_login_using = "token"
-            self.logger.info("=========Succeeded========")
-            return tableau_server
-        except TSC.ServerResponseError as e:
-            if e.code == Constants.login_error:
-                self.logger.error("Please Login again and check login "
-                                  "credentials")
-
-    def _create_server_connection(self, args):
-        # args to handle here: proxy, --no-proxy, cert, --no-certcheck, timeout
-        tableau_server = TSC.Server(self.server)
-        tableau_server.version = '3.16'  # not sure what the ideal choice here is
-        # can't just use server version because that doesn't work with no-certcheck
-        if args.no_certcheck:
-            tableau_server.add_http_options({'verify': False})
+                self.logger.error("Please check login credentials and try again.", e)
+                sys.exit(1)
         return tableau_server
 
-    def _reuse_session(self):
-        tableau_server = TSC.Server(self.server,
-                                    use_server_version=True)
+    def _create_server_connection(self, args):
+        self.logger.info("server: {}".format(self.server))
+        # args to handle here: proxy, --no-proxy, cert, --no-certcheck, timeout
+        tableau_server = TSC.Server(self.server)
+        if args.no_certcheck:
+            tableau_server.add_http_options({'verify': False})
+        tableau_server.use_server_version()  # this will attempt to contact the server
+        return tableau_server
+
+    def _reuse_session(self, args):
+        try:
+            tableau_server = self._create_server_connection(self, args)
+        except TSC.ServerResponseError as e:
+            self.auth_token = None
+            return None
         tableau_server._auth_token = self.auth_token
         tableau_server._site_id = self.site_id
+        # todo check current behavior: show this before or after successful login?
+        self.logger.info("==========Continuing previous session========")
         return tableau_server
 
     def create_session(self, args):
         signed_in_object = None
-        if args.username or args.password:
-            signed_in_object = self._create_new_session_using_username(args)
-        elif args.token or args.token_name:
-            signed_in_object = self._create_new_session_using_token(args)
-        elif args.site or args.server:
-            last_login_username_present, last_login_token_name_present, \
-                username, token_name = \
-                self._check_last_login_username_token_name()
-            if last_login_username_present:
-                signed_in_object = self._create_new_session_using_username(args)
-            elif last_login_token_name_present:
-                signed_in_object = self._create_new_session_using_token(args)
+        self._update_session_data(args)
+        if args.username:
+            credentials = self._create_new_username_credential(args)
+        elif args.token_name:
+            credentials = self._create_new_token_credential(args)
+        elif self._check_json():
+            self._read_from_json()
+            if self.auth_token:
+                signed_in_object = self._reuse_session(args)
+
+            if not signed_in_object:  # reused session may have expired
+                last_login_username_present, last_login_token_name_present = self._check_last_login_method()
+                if last_login_username_present:
+                    credentials = self._create_new_username_credential(args)
+                elif last_login_token_name_present:
+                    credentials = self._create_new_token_credential(args)
         else:
             self.logger.error("Unable to find or create a session. Please check credentials and login again.")
             sys.exit()
 
-        self.logger.info("==========Continuing previous session========")
-        signed_in_object = self._reuse_session()
+        if credentials and not signed_in_object:
+            signed_in_object = self._begin_session_or_fail(args, credentials)
         if args.no_cookie:
             self._remove_json()
         else:
             self._save_token_to_json_file()
         return signed_in_object
 
-    def _create_new_session_using_username(self, args):
-        self._update_session_data(args)
-        # this seems to think it's getting a signed_in_object, but the method returns a TSC server object?
-        # also, what does the 'no_cookie' title mean here?
-        signed_in_object \
-            = self._no_cookie_save_session_creation_with_username(args)
-        return signed_in_object
-
-    def _create_new_session_using_token(self, args):
-        self._update_session_data(args)
-        signed_in_object \
-            = self._no_cookie_save_session_creation_with_token(args)
-        return signed_in_object
-
     def _check_last_login_username_token_name(self):
         last_login_username_present = False
         last_login_token_name_present = False
-        username = False
-        token_name = False
         if not self._check_json():
             return
         # TODO can this call read_from_json instead of opening the file itself?
@@ -165,11 +136,9 @@ class Session:
                     last_login_username_present = True
                 if auth['last_login_using'] == "token":
                     last_login_token_name_present = True
-            return last_login_username_present, \
-                last_login_token_name_present, \
-                username, token_name
+            return last_login_username_present, last_login_token_name_present
 
-# json file functions
+    # json file functions
 
     def _get_file_path(self):
         home_path = os.path.expanduser("~")
