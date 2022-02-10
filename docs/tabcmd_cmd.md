@@ -3,7 +3,7 @@ title: tabcmd Commands
 layout: docs
 ---
 
-You can use the following commands with the tabcmd command line tool in Tableau Online:
+You can use the following commands with the tabcmd command-line tool in Tableau Online:
 
 <div class="alert alert-info"><strong>Important</strong>: To ensure availability and avoid disruption with Tableau Online, make sure to upgrade your tabcmd client to a version greater than version 2020.2 before January 2022. The tabcmd versions are API backward compatible and should not require code changes. For more information, see <a href="index.html#install_tabcmd">Install tabcmd</a>.</div>
 
@@ -19,7 +19,7 @@ Adds users to the specified group.
 
 ## Options
 \-\-users
-: Add the users in the given .csv file to the specified group. The file should be a simple list with one user name per line. User names are not case sensitive. The users should already be created on Tableau Online.
+: Add the users in the given .csv file to the specified group. The file should be a simple list with one user name per line. User names are not case-sensitive. The users should already be created on Tableau Online.
 
 : For more information, see [CSV Import File Guidelines](https://help.tableau.com/current/online/en-us/csvguidelines.htm).
 
@@ -1011,6 +1011,16 @@ If the server is using a port other than 80 (the default), you will need to spec
 You need the \-\-site (-t) option only if the server is running multiple sites and you are logging in to a site other than the Default site. If you do not provide a password you will be prompted for one. If the \-\-no-prompt option is specified and no password is provided the command will fail.
 
 Once you log in, the session will continue until it expires on the server or the logout command is run.
+
+## Log in using personal access tokens
+Create a personal access token (PAT) as described in [create tokens](https://help.tableau.com/current/server/en-us/security_personal_access_tokens.htm#create-tokens).
+For example:
+
+```tabcmd login —server “http://exampleserver.com" —site "examplesite" —token-name "tokenname" —token "exampletoken"```
+
+where:
+* `-tn, --token-name` is the token name for user.
+* `-to, --token` is the token specified for `--token-name`. If you do not provide a token, you will be prompted for one.
 
 ## Example
 
