@@ -72,7 +72,7 @@ class Session:
         return tableau_server
 
     def _create_server_connection(self, args):
-        self.logger.info("server: {}".format(self.server))
+        self._print_server_info()
         # args to handle here: proxy, --no-proxy, cert, --no-certcheck, timeout
         tableau_server = TSC.Server(self.server)
         if args.no_certcheck:
@@ -80,16 +80,29 @@ class Session:
         tableau_server.use_server_version()  # this will attempt to contact the server
         return tableau_server
 
+    def _print_server_info(self):
+
+        self.logger.info("===== Creating new session")
+        self.logger.info("===== Server: {}".format(self.server))
+        if self.username:
+            self.logger.info("===== Username: {}".format(self.username))
+        else:
+            self.logger.info("===== Token Name: {}".format(self.token_name))
+        self.logger.info("===== Site: {}".format(self.site))
+        self.logger.info("===== Connecting to the server...")
+
     def _reuse_session(self, args):
         try:
             tableau_server = self._create_server_connection(self, args)
-        except TSC.ServerResponseError as e:
+        except Exception as e:
+            self.logger.debug("Saved session token was invalid or something went wrong connecting to the server:")
+            self.logger.debug(e)
             self.auth_token = None
             return None
         tableau_server._auth_token = self.auth_token
         tableau_server._site_id = self.site_id
         # todo check current behavior: show this before or after successful login?
-        self.logger.info("==========Continuing previous session========")
+        self.logger.info("===== Continuing previous session")
         return tableau_server
 
     def create_session(self, args):
