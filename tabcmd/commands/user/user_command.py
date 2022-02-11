@@ -1,4 +1,3 @@
-from posixpath import split
 from ..commands import Commands
 from .user_data import Userdata
 
