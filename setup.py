@@ -21,6 +21,7 @@ setup(
     tests_require=[
         'requests-mock>=1.0,<2.0',
         'pytest',
+        'pycodestyle',
         'mock'
     ]
 )
