@@ -68,24 +68,6 @@ class Session:
             self.logger.info("=========Succeeded========")
         except TSC.ServerResponseError as e:
             if e.code == Constants.login_error:
-<<<<<<< HEAD
-                self.logger.error("Please check "
-                                  "credentials and login again")
-                sys.exit()
-
-    def reuse_session(self):
-        try:
-            tableau_server = TSC.Server(self.server,
-                                        use_server_version=True)
-            tableau_server._auth_token = self.auth_token
-            tableau_server._site_id = self.site_id
-            return tableau_server
-        except TSC.ServerResponseError as e:
-            if e.code == Constants.login_error:
-                self.logger.error("Cannot create a session, Please try "
-                                  "again with updated credentials")
-                sys.exit()
-=======
                 self.logger.error("Please check login credentials and try again.", e)
                 sys.exit(1)
         return tableau_server
@@ -98,7 +80,6 @@ class Session:
             tableau_server.add_http_options({'verify': False})
         tableau_server.use_server_version()  # this will attempt to contact the server
         return tableau_server
->>>>>>> development
 
     def _print_server_info(self):
 
@@ -113,60 +94,6 @@ class Session:
 
     def _reuse_session(self, args):
         try:
-<<<<<<< HEAD
-            if self.token is None:
-                self.token = getpass.getpass("Token:")
-            self.check_for_missing_arguments()
-            tableau_auth = \
-                TSC.PersonalAccessTokenAuth(self.token_name,
-                                            self.token, self.site)
-            tableau_server = \
-                TSC.Server(self.server, use_server_version=True)
-            signed_in_object = \
-                tableau_server.auth.sign_in_with_personal_access_token(
-                    tableau_auth)
-            self.auth_token = tableau_server.auth_token
-            self.site_id = tableau_server.site_id
-            self.last_login_using = "token"
-            self.logger.info("=========Succeeded========")
-            return tableau_server
-        except TSC.ServerResponseError as e:
-            if e.code == Constants.login_error:
-                self.logger.error("Please check login "
-                                  "credentials")
-                sys.exit()
-
-    def create_session(self, args):
-        try:
-            signed_in_object = None
-            if args.username or args.password:
-                signed_in_object = self.create_new_session_using_username(args)
-            elif args.token or args.token_name:
-                signed_in_object = self.create_new_session_using_token(args)
-            elif args.site or args.server:
-                last_login_username_present, last_login_token_name_present, \
-                    username, token_name = \
-                    self.check_last_login_username_token_name()
-                if last_login_username_present:
-                    signed_in_object = \
-                        self.create_new_session_using_username(args)
-                elif last_login_token_name_present:
-                    signed_in_object = \
-                        self.create_new_session_using_token(args)
-            else:
-                self.logger.info("==========Continuing previous "
-                                 "session========")
-                signed_in_object = self.reuse_session()
-            if args.no_cookie:
-                self.remove_json()
-            else:
-                self.save_token_to_json_file()
-            return signed_in_object
-        except (Exception,):
-            self.logger.error("Cannot create a session, Please try "
-                              "again with updated credentials")
-            sys.exit()
-=======
             tableau_server = self._create_server_connection(self, args)
         except Exception as e:
             self.logger.debug("Saved session token was invalid or something went wrong connecting to the server:")
@@ -208,7 +135,6 @@ class Session:
         else:
             self._save_token_to_json_file()
         return signed_in_object
->>>>>>> development
 
     def _check_last_login_username_token_name(self):
         last_login_username_present = False
@@ -224,22 +150,7 @@ class Session:
                     last_login_username_present = True
                 if auth['last_login_using'] == "token":
                     last_login_token_name_present = True
-<<<<<<< HEAD
-            return last_login_username_present, \
-                last_login_token_name_present, username, token_name
-
-    def create_new_session_using_username(self, args):
-        try:
-            self.update_session(args)
-            signed_in_object \
-                = self.no_cookie_save_session_creation_with_username()
-            return signed_in_object
-        except TSC.ServerResponseError as e:
-            self.logger.error("Please check login credentials")
-            sys.exit()
-=======
             return last_login_username_present, last_login_token_name_present
->>>>>>> development
 
     # json file functions
 
