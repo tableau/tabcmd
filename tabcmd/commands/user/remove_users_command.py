@@ -45,4 +45,3 @@ class RemoveUserCommand(UserCommand):
             except TSC.ServerResponseError as e:
                 self.logger.error("Error: Server error occurred", e)
                 # TODO Map Error code
-
