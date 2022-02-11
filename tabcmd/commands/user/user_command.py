@@ -1,19 +1,20 @@
 from ..commands import Commands
+import tableauserverclient as TSC
 
 
 class UserCommand(Commands):
     """
     This class acts as a base class for user related group of commands
     """
-    def __init__(self, csv_lines, args):
+    def __init__(self, args, csv_lines):
         super().__init__(args)
         self.csv_lines = csv_lines
         self.args = args
 
     @staticmethod
     def find_user_id(server, username):
-        """ Method to find the group id given group name"""
-        all_users, pagination_item = server.users.get()
+        """ Method to find the user id given username"""
+        all_users = list(TSC.Pager(server.users))
         all_user_names_ids = [(user.name, user._id) for user in all_users]
         user_id = None
         for user in all_user_names_ids:

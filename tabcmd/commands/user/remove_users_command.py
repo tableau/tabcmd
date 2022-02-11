@@ -12,7 +12,7 @@ class RemoveUserCommand(UserCommand):
      Command to remove users from the specified group
     """
     def __init__(self, args, csv_lines, group_name):
-        super().__init__(csv_lines, args)
+        super().__init__(args, csv_lines)
         self.args = args
         self.group = group_name
         self.logger = log('tabcmd.remove_users_command',
@@ -45,3 +45,4 @@ class RemoveUserCommand(UserCommand):
             except TSC.ServerResponseError as e:
                 self.logger.error("Error: Server error occurred", e)
                 # TODO Map Error code
+
