@@ -1,6 +1,7 @@
 import tableauserverclient as TSC
 from .. import log
-from ...parsers.list_sites_parser import ListSitesParser
+from .. import ListSitesParser
+from ..commands import Commands
 from .site_command import SiteCommand
 from ... import Session
 
@@ -9,26 +10,20 @@ class ListSiteCommand(SiteCommand):
     """
     Command to return a list of sites to which the logged in user belongs
     """
-    def __init__(self, args):
-        super().__init__(args)
-        self.logger = log('tabcmd.list_sites_command',
-                          self.logging_level)
-
     @classmethod
     def parse(cls):
         args = ListSitesParser.list_site_parser()
         return cls(args)
 
-    def run_command(self):
+    @staticmethod
+    def run_command(args):
+        logger = log(__name__, args.logging_level)
+        logger.debug("Launching command")
         session = Session()
-        server_object = session.create_session(self.args)
-        self.list_sites(server_object)
-
-    def list_sites(self, server):
-        """Method to list sites using tableauserverclient methods"""
+        server = session.create_session(args)
         try:
             all_sites, pagination_item = server.sites.get()
             for site in all_sites:
                 print(site.id, site.name, site.content_url, site.state)
         except TSC.ServerResponseError as e:
-            self.logger.error('error getting all sites', e)
+            Commands.exit_with_error(logger, 'error getting all sites', e)

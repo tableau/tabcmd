@@ -10,26 +10,20 @@ class DeleteGroupCommand(GroupCommand):
     """
     This command deletes the specified group from the server
     """
-    def __init__(self, args):
-        super().__init__(args)
-        self.logger = log('tabcmd.delete_group_command',
-                          self.logging_level)
-
     @classmethod
     def parse(cls):
         args = DeleteGroupParser.delete_group_parser()
         return cls(args)
 
-    def run_command(self):
+    @staticmethod
+    def run_command(args):
+        logger = log(__name__, args.logging_level)
+        logger.debug("Launching command")
         session = Session()
-        server_object = session.create_session(self.args)
-        self.delete_group(server_object)
-
-    def delete_group(self, server):
-        """Method to delete group using Tableauserverclient methods"""
+        server = session.create_session(args)
         try:
-            group_id = GroupCommand.find_group_id(server, self.name)
+            group_id = GroupCommand.find_group_id(server, args.group_name)
             server.groups.delete(group_id)
-            self.logger.info("Successfully deleted group")
+            logger.info("Successfully deleted group")
         except TSC.ServerResponseError as e:
-            self.logger.error("Server error occurred", e)
+            Commands.exit_with_error(logger, "Server Error:", e)

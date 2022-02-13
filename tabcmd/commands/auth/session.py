@@ -5,6 +5,7 @@ import tableauserverclient as TSC
 from .. import log
 import json
 import os
+from ..commands import Commands
 
 
 class Session:
@@ -67,8 +68,7 @@ class Session:
             self.logger.info("=========Succeeded========")
         except TSC.ServerResponseError as e:
             if e.code == Constants.login_error:
-                self.logger.error("Please check login credentials and try again.", e)
-                sys.exit(1)
+                Commands.exit_with_error(self.logger, "Please check login credentials and try again.", e)
         return tableau_server
 
     def _create_server_connection(self, args):
@@ -124,8 +124,9 @@ class Session:
                 elif last_login_token_name_present:
                     credentials = self._create_new_token_credential(args)
         else:
-            self.logger.error("Unable to find or create a session. Please check credentials and login again.")
-            sys.exit()
+            Commands.exit_with_error(
+                self.logger,
+                "Unable to find or create a session. Please check credentials and login again.")
 
         if credentials and not signed_in_object:
             signed_in_object = self._begin_session_or_fail(args, credentials)

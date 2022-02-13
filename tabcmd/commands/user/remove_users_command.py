@@ -1,5 +1,3 @@
-from ..commands import Commands
-from .. import Constants
 from .user_command import UserCommand
 from .. import RemoveUserParser
 import tableauserverclient as TSC
@@ -11,37 +9,33 @@ class RemoveUserCommand(UserCommand):
     """
      Command to remove users from the specified group
     """
-    def __init__(self, args, csv_lines, group_name):
-        super().__init__(args, csv_lines)
-        self.args = args
-        self.group = group_name
-        self.logger = log('tabcmd.remove_users_command',
-                          self.logging_level)
-
     @classmethod
     def parse(cls):
-        csv_lines, args, group_name = RemoveUserParser.remove_user_parser()
-        return cls(args, csv_lines, group_name)
+        args = RemoveUserParser.remove_user_parser()
+        return cls(args)
 
-    def run_command(self):
+    @staticmethod
+    def run_command(args):
+        logger = log(__name__, args.logging_level)
+        logger.debug("Launching command")
         session = Session()
-        server_object = session.create_session(self.args)
-        self.remove_users(server_object, self.csv_lines, self.group)
-
-    def remove_users(self, server_object, csv_lines, group_name):
-        self.remove_user_command(server_object, csv_lines, group_name)
-
-    def remove_user_command(self, server, csv_lines, group_name):
-        """Method to remove users using Tableauserverclient methods"""
-        command = Commands(self.args)
-        user_obj_list = command.get_user(csv_lines)
+        server = session.create_session(args)
+        number_of_users_removed = 0
+        number_of_errors = 0
+        user_obj_list = UserCommand.get_users_from_file(args.csv_lines)
         for user_obj in user_obj_list:
             username = user_obj.username
             user_id = UserCommand.find_user_id(server, username)
-            group = UserCommand.find_group(server, group_name)
+            group = UserCommand.find_group(server, args.group_name)
             try:
                 server.groups.remove_user(group, user_id)
-                self.logger.info("Successfully removed")
+                number_of_users_removed += 1
+                logger.info("Successfully removed {0} from {1}".format(user_obj.username, args.group_name))
             except TSC.ServerResponseError as e:
-                self.logger.error("Error: Server error occurred", e)
+                logger.error("Error: Server error occurred", e)
+                number_of_errors += 1
                 # TODO Map Error code
+        logger.info("======== 100% complete ========")
+        logger.info("======== Number of users removed: {} =========".format(number_of_users_removed))
+        if number_of_errors > 0:
+            logger.info("======== Number of errors {} =========".format(number_of_errors))

@@ -1,6 +1,9 @@
 class CommandStrategyInterface:
-    def parse(self):
+
+    @staticmethod
+    def parse(cls):
         pass
 
-    def run_command(self):
+    @staticmethod
+    def run_command(args):
         pass

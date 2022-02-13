@@ -5,9 +5,6 @@ class SiteCommand(Commands):
     """
     Acts as a base class for site related group of commands
     """
-    def __init__(self, args):
-        super().__init__(args)
-        self.args = args
 
     @staticmethod
     def find_site_id(server, site_name):

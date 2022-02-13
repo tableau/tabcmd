@@ -6,124 +6,108 @@ from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
 class ExportCommand(DatasourcesAndWorkbooks):
-    """
-    Command to Export a view or workbook from Tableau Server and save
-    it to a file. This command can also export just the data used for a view
-    """
-    def __init__(self, args, url):
-        super().__init__(args)
-        self.url = url
-        self.logging_level = args.logging_level
-        self.logger = log('tabcmd.export',
-                          self.logging_level)
 
     @classmethod
     def parse(cls):
         args, url = ExportParser.export_parser()
         return cls(args, url)
 
-    def run_command(self):
-        session = Session()
-        server_object = session.create_session(self.args)
-        self.export(server_object)
-
-    def get_workbook(self, url):
+    @staticmethod
+    def get_workbook(url):
         # check the size of list
         separated_list = url.split("/")
         reversed_list = separated_list[::-1]
         return reversed_list[1]
 
-    def get_view(self, url):
+    @staticmethod
+    def get_view(url):
         # check the size of list
         separated_list = url.split("/")
         if len(separated_list) > 2:
             print("error")
         return '{}/sheets/{}'.format(separated_list[0], separated_list[1])
 
-    def export(self, server):
-        """Method to export using Tableauserverclient methods"""
-        if self.args.fullpdf:  # its a workbook
-            workbook = self.get_workbook(self.url)
+    """
+    Command to Export a view_name or workbook from Tableau Server and save
+    it to a file. This command can also export just the data used for a view_name
+    """
+    @staticmethod
+    def run_command(args):
+        logger = log(__name__, args.logging_level)
+        logger.debug("Launching command")
+        session = Session()
+        server = session.create_session(args)
+
+        if args.fullpdf:  # its a workbook
+            workbook = ExportCommand.get_workbook(args.url)
             try:
-                workbook_from_list = self.get_request_option_for_workbook(
-                    server, workbook)
-
+                workbook_from_list = ExportCommand.get_request_option_for_workbook(logger, server, workbook)
                 req_option_pdf = TSC.PDFRequestOptions(maxage=1)
-
-                server.workbooks.populate_pdf(workbook_from_list,
-                                              req_option_pdf)
-                if self.args.filename is None:
+                server.workbooks.populate_pdf(workbook_from_list, req_option_pdf)
+                if args.filename is None:
                     file_name_with_path = '{}.pdf'.format(workbook)
                 else:
-                    file_name_with_path = self.args.filename
+                    file_name_with_path = args.filename
                 formatted_file_name = file_name_with_path
                 with open(formatted_file_name, 'wb') as f:
                     f.write(workbook_from_list.pdf)
-                    self.logger.info("Exported successfully")
+                    logger.info("Exported successfully")
 
             except TSC.ServerResponseError as e:
-                self.logger.error("Server error occurred")
+                ExportCommand.exit_with_error(logger, "Server Error:", e)
 
-        if self.args.pdf or self.args.png or self.args.csv:  # its a workbook
-            if self.args.pdf:  # its a view
-                view = self.get_view(self.url)
+        elif args.pdf or args.png or args.csv:  # its a workbook ????
+            if args.pdf:  # its a view_name
+                view = ExportCommand.get_view(args.url)
                 try:
-                    views_from_list = self.get_request_option_for_view(
-                        server, view)
-
+                    views_from_list = ExportCommand.get_request_option_for_view(logger, server, view)
                     req_option_pdf = TSC.PDFRequestOptions(maxage=1)
-
-                    server.views.populate_pdf(views_from_list,
-                                              req_option_pdf)
-                    if self.args.filename is None:
-                        file_name_with_path = '{}.pdf'.format(views_from_list.
-                                                              name)
+                    server.views.populate_pdf(views_from_list, req_option_pdf)
+                    if args.filename is None:
+                        file_name_with_path = '{}.pdf'.format(views_from_list.name)
                     else:
-                        file_name_with_path = self.args.filename
+                        file_name_with_path = args.filename
                     formatted_file_name = file_name_with_path
                     with open(formatted_file_name, 'wb') as f:
                         f.write(views_from_list.pdf)
-                        self.logger.info("Exported successfully")
+                        logger.info("Exported successfully")
 
                 except TSC.ServerResponseError as e:
-                    self.logger.error("Server error occurred")
-            if self.args.csv:
-                view = self.get_view(self.url)
+                    ExportCommand.exit_with_error(logger, 'Server Error', e)
+            if args.csv:
+                view = ExportCommand.get_view(args.url)
                 try:
-                    views_from_list = self.get_request_option_for_view(
-                        server, view)
-
+                    views_from_list = ExportCommand.get_request_option_for_view(logger, server, view)
                     req_option_csv = TSC.CSVRequestOptions(maxage=1)
-
-                    server.views.populate_csv(views_from_list,
-                                              req_option_csv)
-                    if self.args.filename is None:
+                    server.views.populate_csv(views_from_list, req_option_csv)
+                    if args.filename is None:
                         file_name_with_path = '{}.csv'.format(view)
                     else:
-                        file_name_with_path = self.args.filename
+                        file_name_with_path = args.filename
                     formatted_file_name = file_name_with_path
                     with open(formatted_file_name, 'wb') as f:
                         f.write(views_from_list.csv)
-                        self.logger.info("Exported successfully")
+                        logger.info("Exported successfully")
 
                 except TSC.ServerResponseError as e:
-                    self.logger.error("Server error occurred")
-            if self.args.png:
-                view = self.get_view(self.url)
+                    logger.error("Server error occurred")
+            if args.png:
+                view = ExportCommand.get_view(args.url)
                 try:
-                    views_from_list = self.get_request_option_for_view(
-                        server, view)
+                    views_from_list = ExportCommand.get_request_option_for_view(logger, server, view)
                     req_option_csv = TSC.CSVRequestOptions(maxage=1)
-                    server.views.populate_csv(views_from_list,
-                                              req_option_csv)
-                    if self.args.filename is None:
+                    server.views.populate_csv(views_from_list, req_option_csv)
+                    if args.filename is None:
                         file_name_with_path = '{}.png'.format(view)
                     else:
-                        file_name_with_path = self.args.filename
+                        file_name_with_path = args.filename
                     formatted_file_name = file_name_with_path
                     with open(formatted_file_name, 'wb') as f:
                         f.write(views_from_list.png)
-                        self.logger.info("Exported successfully")
+                        logger.info("Exported successfully")
 
                 except TSC.ServerResponseError as e:
-                    self.logger.error("Server error occurred")
+                    ExportCommand.exit_with_error(logger, 'Server Error', e)
+
+        else:
+            ExportCommand.exit_with_error(logger, "You must specify an export method")
