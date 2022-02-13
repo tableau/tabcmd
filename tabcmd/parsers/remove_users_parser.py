@@ -17,17 +17,14 @@ class RemoveUserParser:
         parent_parser = ParentParser()
         parser = parent_parser.parent_parser_with_global_options()
         subparsers = parser.add_subparsers()
-        remove_users_parser = subparsers.add_parser('removeusers',
-                                                    parents=[parser])
+        remove_users_parser = subparsers.add_parser('removeusers', parents=[parser])
 
-        remove_users_parser.add_argument('--users', required=True,
-                                         help='csv containing user details')
-        args = remove_users_parser.parse_args(sys.argv[RemoveUserParser.
-                                                       USER_ARG_IDX:])
-        group_name = sys.argv[RemoveUserParser.USER_ARG_GROUP_NAME_IDX]
-        csv_lines = CommonParser.read_file(args.users)
+        remove_users_parser.add_argument('--users', required=True, help='csv containing user details')
+        args = remove_users_parser.parse_args(sys.argv[RemoveUserParser.USER_ARG_IDX:])
+        args.group_name = sys.argv[RemoveUserParser.USER_ARG_GROUP_NAME_IDX]
+        args.csv_lines = CommonParser.read_file(args.users)
         if args.site is None or args.site == "Default":
             args.site = ''
-        return csv_lines, args, group_name
+        return args
 
 # TODO: ARGUMENT --COMPLETE

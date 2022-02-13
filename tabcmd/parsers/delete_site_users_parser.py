@@ -16,13 +16,9 @@ class DeleteSiteUsersParser:
         parent_parser = ParentParser()
         parser = parent_parser.parent_parser_with_global_options()
         subparsers = parser.add_subparsers()
-        delete_site_users_parser = subparsers.add_parser('deletesiteusers',
-                                                         parents=[parser])
-        args = delete_site_users_parser.parse_args(sys.argv[
-                                                   DeleteSiteUsersParser.
-                                                   USER_ARG_IDX:])
-        csv_lines = CommonParser.read_file(sys.argv[DeleteSiteUsersParser.
-                                           USER_ARG_FILE_NAME_IDX])
+        delete_site_users_parser = subparsers.add_parser('deletesiteusers', parents=[parser])
+        args = delete_site_users_parser.parse_args(sys.argv[DeleteSiteUsersParser.USER_ARG_IDX:])
+        args.csv_lines = CommonParser.read_file(sys.argv[DeleteSiteUsersParser.USER_ARG_FILE_NAME_IDX])
         if args.site is None or args.site == "Default":
             args.site = ''
-        return csv_lines, args
+        return args

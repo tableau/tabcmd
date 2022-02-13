@@ -13,15 +13,13 @@ class PublishParserTest(unittest.TestCase):
                 return_value=argparse.Namespace(name="helloworld"))
     def test_publish_parser_missing_overwrite(self, mock_args):
         with self.assertRaises(AttributeError):
-            args, evaluated_project_path, source, filename = \
-                PublishParser.publish_parser()
+            args = PublishParser.publish_parser()
 
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=argparse.Namespace())
     def test_publish_parser_missing_all_args(self, mock_args):
         with self.assertRaises(AttributeError):
-            args, evaluated_project_path, source, filename = \
-                PublishParser.publish_parser()
+            args = PublishParser.publish_parser()
 
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=argparse.Namespace(name="testsite",
@@ -30,8 +28,7 @@ class PublishParserTest(unittest.TestCase):
                                                 site="helloworld",
                                                 parent_project_path=None))
     def test_publish_parser_user_quota_integer(self, mock_args):
-        args, evaluated_project_path, source, filename = \
-            PublishParser.publish_parser()
+        args = PublishParser.publish_parser()
         args_from_command = vars(args)
         args_from_mock = vars(mock_args.return_value)
         assert args_from_command == args_from_mock

@@ -19,8 +19,8 @@ class DeleteProjectParserTest(unittest.TestCase):
                                                 parent_project_path="/test/",
                                                 site="helloworld"))
     def test_delete_project(self, mock_args):
-        args, parent_project_path = DeleteProjectParser.delete_project_parser()
-        assert parent_project_path == "test"
+        args = DeleteProjectParser.delete_project_parser()
+        assert args.parent_project_path == "test"
         assert args == mock_args.return_value
 
     @mock.patch('argparse.ArgumentParser.parse_args',
@@ -31,8 +31,8 @@ class DeleteProjectParserTest(unittest.TestCase):
                                                 parent_project_path="/test/",
                                                 site="helloworld"))
     def test_delete_project_required_name_none(self, mock_args):
-        args, parent_project_path = DeleteProjectParser.delete_project_parser()
-        assert parent_project_path == "test"
+        args = DeleteProjectParser.delete_project_parser()
+        assert args.parent_project_path == "test"
         assert args == mock_args.return_value
         assert args.name == mock_args.return_value.name
 
@@ -40,4 +40,4 @@ class DeleteProjectParserTest(unittest.TestCase):
                 return_value=argparse.Namespace())
     def test_delete_project_missing_args(self, mock_args):
         with self.assertRaises(AttributeError):
-            args, path = DeleteProjectParser.delete_project_parser()
+            args = DeleteProjectParser.delete_project_parser()

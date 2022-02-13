@@ -18,14 +18,11 @@ class AddUserParser:
         parent_parser = ParentParser()
         parser = parent_parser.parent_parser_with_global_options()
         subparsers = parser.add_subparsers()
-        add_user_parser = subparsers.add_parser('adduser',
-                                                parents=[parser])
-        add_user_parser.add_argument('--users', required=True,
-                                     help='csv containing user details')
-        args = add_user_parser.parse_args(sys.argv[AddUserParser.
-                                          USER_ARG_IDX:])
-        group_name = sys.argv[AddUserParser.USER_GROUP_ARG_IDX]
-        csv_lines = CommonParser.read_file(args.users)
+        add_user_parser = subparsers.add_parser('adduser', parents=[parser])
+        add_user_parser.add_argument('--users', required=True, help='csv containing user details')
+        args = add_user_parser.parse_args(sys.argv[AddUserParser.USER_ARG_IDX:])
+        args.group_name = sys.argv[AddUserParser.USER_GROUP_ARG_IDX]
+        args.csv_lines = CommonParser.read_file(args.users)
         if args.site is None or args.site == "Default":
             args.site = ''
-        return csv_lines, args, group_name
+        return args

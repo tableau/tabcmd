@@ -23,7 +23,7 @@ class RunScheduleParserTest(unittest.TestCase):
                     prompt=False
                 ))
     def test_runschedule_parser_optional_arguments(self, mock_args):
-        args, schedule = RunScheduleParser.runschedule_parser()
+        args = RunScheduleParser.runschedule_parser()
         assert args == argparse.Namespace(username="helloworld",
                                           site="",
                                           logging_level="info",
@@ -32,10 +32,11 @@ class RunScheduleParserTest(unittest.TestCase):
                                           token_name=None,
                                           cookie=True,
                                           no_cookie=False,
-                                          prompt=False)
+                                          prompt=False,
+                                          schedule='test1'), args
 
     @mock.patch('argparse.ArgumentParser.parse_args',
                 return_value=argparse.Namespace())
     def test_runschedule_parser_missing_all_args(self, mock_args):
         with self.assertRaises(AttributeError):
-            args, schedule = RunScheduleParser.runschedule_parser()
+            args = RunScheduleParser.runschedule_parser()
