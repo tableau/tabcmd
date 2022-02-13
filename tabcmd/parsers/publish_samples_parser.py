@@ -20,20 +20,13 @@ class PublishSamplesParser(ParentParser):
 
         common_parser = common_parser_obj.common_parser_arguments()
         subparsers = parser.add_subparsers()
-        publish_samples_parser = subparsers.add_parser('publishsamples',
-                                                       parents=[parser,
-                                                                common_parser])
-        publish_samples_parser.add_argument('--name', '-n', required=True,
-                                            help='name of project')
+        publish_samples_parser = subparsers.add_parser('publishsamples', parents=[parser, common_parser])
+        publish_samples_parser.add_argument('--name', '-n', required=True, help='name of project')
 
-        args = publish_samples_parser.parse_args(sys.argv[
-                                                 PublishSamplesParser.
-                                                 USER_ARG_IDX:])
+        args = publish_samples_parser.parse_args(sys.argv[PublishSamplesParser.USER_ARG_IDX:])
         if args.parent_project_path is not None:
-            evaluated_project_path = GlobalOptions. \
-                evaluate_project_path(args.parent_project_path)
-        else:
-            evaluated_project_path = args.parent_project_path
+            args.parent_project_path = GlobalOptions.evaluate_project_path(args.parent_project_path)
+
         if args.site is None or args.site == "Default":
             args.site = ''
-        return args, evaluated_project_path
+        return args

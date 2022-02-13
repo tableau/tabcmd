@@ -16,16 +16,10 @@ class CreateSiteUsersParser:
         parent_parser = ParentParser()
         parser = parent_parser.parent_parser_with_global_options()
         subparsers = parser.add_subparsers()
-        create_site_users_parser = subparsers.add_parser('createsiteusers',
-                                                         parents=[parser])
-        create_site_users_parser.add_argument('--role', '-r',
-                                              default="Unlicensed",
-                                              help='name of site')
-        args = create_site_users_parser.parse_args(sys.argv[
-                                                   CreateSiteUsersParser.
-                                                   USER_ARG_IDX:])
-        csv_lines = CommonParser.read_file(sys.argv[CreateSiteUsersParser.
-                                           USER_ARG_FILE_NAME_IDX])
+        create_site_users_parser = subparsers.add_parser('createsiteusers', parents=[parser])
+        create_site_users_parser.add_argument('--role', '-r', default="Unlicensed", help='name of site')
+        args = create_site_users_parser.parse_args(sys.argv[CreateSiteUsersParser.USER_ARG_IDX:])
+        args.csv_lines = CommonParser.read_file(sys.argv[CreateSiteUsersParser.USER_ARG_FILE_NAME_IDX])
         if args.site is None or args.site == "Default":
             args.site = ''
-        return csv_lines, args
+        return args

@@ -53,13 +53,12 @@ class PublishParser(ParentParser):
                                          'the workbook')
 
         args = publish_parser.parse_args(sys.argv[PublishParser.USER_ARG_IDX:])
-        source = str(sys.argv[PublishParser.USER_ARG_SOURCE_IDX])
-        filename = (sys.argv[PublishParser.USER_ARG_FILE_NAME_IDX])
+        args.source = str(sys.argv[PublishParser.USER_ARG_SOURCE_IDX])
+        args.filename = (sys.argv[PublishParser.USER_ARG_FILE_NAME_IDX])
         if args.parent_project_path is not None:
-            evaluated_project_path = GlobalOptions. \
-                evaluate_project_path(args.parent_project_path)
+            args.evaluated_project_path = GlobalOptions.evaluate_project_path(args.parent_project_path)
         else:
-            evaluated_project_path = args.parent_project_path
+            args.evaluated_project_path = args.parent_project_path
         if args.site is None or args.site == "Default":
             args.site = ''
-        return args, evaluated_project_path, source, filename
+        return args

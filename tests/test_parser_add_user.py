@@ -22,7 +22,7 @@ class AddUsersParserTest(unittest.TestCase):
     def test_add_users_parser_role(self, mock_args):
         with mock.patch('builtins.open', mock.mock_open(read_data='test')):
             sys.argv = ["test_csv.csv", "test", "test1", "test2"]
-            csv_lines, args, group_name = AddUserParser.add_user_parser()
+            args = AddUserParser.add_user_parser()
             print(args)
             args_from_command = vars(args)
             args_from_mock = vars(mock_args.return_value)
@@ -38,7 +38,7 @@ class AddUsersParserTest(unittest.TestCase):
         with mock.patch('builtins.open', mock.mock_open(read_data='test')):
             with self.assertRaises(AttributeError):
                 sys.argv = ["test_csv.csv", "test", "test1", "test2"]
-                csv_lines, args, group_name = AddUserParser.add_user_parser()
+                args = AddUserParser.add_user_parser()
                 args_from_command = vars(args)
                 args_from_mock = vars(mock_args.return_value)
                 self.assertEqual(args_from_command, args_from_mock)
@@ -52,7 +52,7 @@ class AddUsersParserTest(unittest.TestCase):
     def test_add_user_parser_missing_group_name_present(self, mock_args):
         with mock.patch('builtins.open', mock.mock_open(read_data='test')):
             sys.argv = ["test_csv.csv", "test", "test1", "test2"]
-            csv_lines, args, group_name = AddUserParser.add_user_parser()
+            args = AddUserParser.add_user_parser()
             args_from_command = vars(args)
             args_from_mock = vars(mock_args.return_value)
             self.assertEqual(args_from_command, args_from_mock)
