@@ -7,11 +7,6 @@ class UserCommand(Commands):
     """
     This class acts as a base class for user related group of commands
     """
-    def __init__(self, args, csv_lines):
-        super().__init__(args)
-        self.csv_lines = csv_lines
-        self.args = args
-
     @staticmethod
     def find_user_id(server, username):
         """ Method to find the user id given username"""

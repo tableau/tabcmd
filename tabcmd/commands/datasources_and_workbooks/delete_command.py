@@ -9,57 +9,47 @@ class DeleteCommand(DatasourcesAndWorkbooks):
     """
     Command to delete the specified workbook or data source from the server.
     """
-    def __init__(self, args):
-        super().__init__(args)
-        self.workbook = args.workbook
-        self.logging_level = args.logging_level
-        self.logger = log('tabcmd.delete_command',
-                          self.logging_level)
-
     @classmethod
     def parse(cls):
         args = DeleteParser.delete_parser()
         return cls(args)
 
-    def run_command(self):
+    @staticmethod
+    def run_command(args):
+        logger = log(__name__, args.logging_level)
+        logger.debug("Launching command")
         session = Session()
-        server_object = session.create_session(self.args)
-        self.delete(server_object)
-
-    def delete(self, server):
-        """Method to delete datasources_and_workbooks using
-        Tableauserverclient methods"""
-        if self.workbook:
+        server = session.create_session(args)
+        if args.workbook:
             # filter match the name and find id
             try:
                 req_option = TSC.RequestOptions()
                 req_option.filter.add(TSC.Filter(TSC.RequestOptions.Field.Name,
                                                  TSC.RequestOptions.
                                                  Operator.Equals,
-                                                 self.workbook))
-                matching_workbook, _ = server.workbooks.get(
-                    req_option)
+                                                 args.workbook))
+                matching_workbook, _ = server.workbooks.get(req_option)
                 workbook_from_list = matching_workbook[0]
                 server.workbooks.delete(workbook_from_list.id)
-                self.logger.info("Workbook {} deleted".format(
-                    workbook_from_list.name))
+                logger.info("Workbook {} deleted".format(workbook_from_list.name))
             except IndexError:
-                self.logger.error("Please check if workbook is present")
+                DeleteCommand.exit_with_error(logger, 'Workbook not found')
             except TSC.ServerResponseError as e:
-                self.logger.error("Server error occurred")
+                DeleteCommand.exit_with_error(logger, 'Server Error:', e)
 
-        if self.args.datasource:
+        elif args.datasource:
             try:
                 req_option = TSC.RequestOptions()
                 req_option.filter.add(TSC.Filter(TSC.RequestOptions.Field.Name,
                                                  TSC.RequestOptions.
                                                  Operator.Equals,
-                                                 self.args.datasource))
-                matching_datasource, _ = server.workbooks.get(
-                    req_option)
+                                                 args.datasource))
+                matching_datasource, _ = server.workbooks.get(req_option)
                 datasource_from_list = matching_datasource[0]
                 server.datasources.delete(datasource_from_list.id)
             except IndexError:
-                self.logger.error("Please check if data source is present")
+                DeleteCommand.exit_with_error(logger, 'Datasource not found')
             except TSC.ServerResponseError as e:
-                self.logger.error("Server error occurred")
+                DeleteCommand.exit_with_error(logger, 'Server Error:', e)
+        else:
+            DeleteCommand.exit_with_error(logger, "You must specify either a workbook or datasource")

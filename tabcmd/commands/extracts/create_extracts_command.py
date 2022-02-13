@@ -11,52 +11,35 @@ class CreateExtracts(ExtractsCommand):
     Command that creates extracts for a published workbook or data source.
     """
 
-    def __init__(self, args):
-        super().__init__(args)
-        self.args = args
-        self.logging_level = args.logging_level
-        self.logger = log('tabcmd.createextracts_command',
-                          self.logging_level)
-
     @classmethod
     def parse(cls):
         args = CreateExtractsParser.create_extracts_parser()
         return cls(args)
 
-    def run_command(self):
+    @staticmethod
+    def run_command(args):
+        logger = log(__name__, args.logging_level)
+        logger.debug("Launching command")
         session = Session()
-        server_object = session.create_session(self.args)
-        self.create_extract(server_object)
-
-    def create_extract(self, server):
-        if self.args.datasource:
+        server = session.create_session(args)
+        if args.datasource:
             try:
-                data_source_item = ExtractsCommand. \
-                    get_data_source_item(server, self.args.datasource)
-
-                job = server.datasources.create_extract(data_source_item,
-                                                        encrypt=self.args.
-                                                        encrypt)
-                self.logger.info("Extract started Successfully with "
-                                 "JobID: {}".format(job.id))
+                data_source_item = ExtractsCommand.get_data_source_item(server, args.datasource)
+                job = server.datasources.create_extract(data_source_item, encrypt=args.encrypt)
+                ExtractsCommand.print_success_message(logger, 'creation', job)
             except TSC.ServerResponseError as e:
-                self.logger.error('Server Error', e)
-        elif self.args.workbook:
+                ExtractsCommand.exit_with_error(logger, "Server Error:", e)
+        elif args.workbook:
             try:
-                project_id = ProjectCommand.find_project_id(server,
-                                                            self.args.project)
-                workbook_item = ExtractsCommand.get_workbook_item(server,
-                                                                  self.args
-                                                                  .workbook)
+                # this isn't used anywhere?
+                project_id = ProjectCommand.find_project_id(server, args.project)
+                workbook_item = ExtractsCommand.get_workbook_item(server, args.workbook)
                 job = server.workbooks.create_extract(workbook_item,
-                                                      encrypt=self.args.
-                                                      encrypt,
-                                                      includeAll=self.args.
-                                                      include_all,
-                                                      datasources=self.args.
-                                                      embedded_datasources)
-
-                self.logger.info("Extract started successfully with "
-                                 "JobID: {}".format(job.id))
+                                                      encrypt=args.encrypt,
+                                                      includeAll=args.include_all,
+                                                      datasources=args.embedded_datasources)
+                ExtractsCommand.print_success_message(logger, 'creation', job)
             except TSC.ServerResponseError as e:
-                self.logger.error('Server Error', e)
+                ExtractsCommand.exit_with_error(logger, "Server Error:", e)
+        else:
+            ExtractsCommand.exit_with_error(logger, "You must specify either a workbook or datasource")

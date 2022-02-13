@@ -1,5 +1,3 @@
-from ..commands import Commands
-from .. import Constants
 from .user_command import UserCommand
 from .. import AddUserParser
 import tableauserverclient as TSC
@@ -11,37 +9,32 @@ class AddUserCommand(UserCommand):
     """
     Command to Adds users to a specified group
     """
-    def __init__(self, args, csv_lines, group_name):
-        super().__init__(args, csv_lines)
-        self.args = args
-        self.group = group_name
-        self.logger = log('tabcmd.add_user_command',
-                          self.logging_level)
-
     @classmethod
     def parse(cls):
-        csv_lines, args, group_name = AddUserParser.add_user_parser()
-        return cls(args, csv_lines, group_name)
+        args = AddUserParser.add_user_parser()
+        return cls(args)
 
-    def run_command(self):
+    @staticmethod
+    def run_command(args):
+        logger = log(__name__, args.logging_level)
+        logger.debug("Launching command")
         session = Session()
-        server_object = session.create_session(self.args)
-        self.add_users(server_object, self.csv_lines, self.group)
-
-    def add_users(self, server_object, csv_lines, group_name):
-        self.add_user_command(server_object, csv_lines, group_name)
-
-    def add_user_command(self, server, csv_lines, group_name):
-        """Method to add users to a group using Tableauserverclient methods"""
-        command = Commands(self.args)
-        user_obj_list = command.get_user(csv_lines)
+        server = session.create_session(args)
+        number_of_users_added = 0
+        number_of_errors = 0
+        user_obj_list = UserCommand.get_users_from_file(args.csv_lines)
         for user_obj in user_obj_list:
             username = user_obj.username
             user_id = UserCommand.find_user_id(server, username)
-            group = UserCommand.find_group(server, group_name)
+            group = UserCommand.find_group(server, args.group_name)
             try:
                 server.groups.add_user(group, user_id)
-                self.logger.info("Successfully added")
+                number_of_users_added += 1
+                logger.info("Successfully added")
             except TSC.ServerResponseError as e:
-                self.logger.error("Error: Server error occurred", e)
-                # TODO Map Error code
+                logger.error("Error: Server error occurred", e)
+                number_of_errors += 1
+        logger.info("======== 100% complete ========")
+        logger.info("======== Number of users added: {} =========".format(number_of_users_added))
+        if number_of_errors > 0:
+            logger.info("======== Number of errors {} =========".format(number_of_errors))

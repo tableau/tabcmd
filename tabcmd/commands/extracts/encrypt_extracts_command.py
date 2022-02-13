@@ -11,30 +11,20 @@ class EncryptExtracts(ExtractsCommand):
     Command that encrypt all extracts on a site.
     If no site is specified, extracts on the default site will be encrypted.
     """
-
-    def __init__(self, args, site_name):
-        super().__init__(args)
-        self.site_name = site_name
-        self.args = args
-        self.logging_level = args.logging_level
-        self.logger = log('tabcmd.encryptextracts_command',
-                          self.logging_level)
-
     @classmethod
     def parse(cls):
-        args, site_name = EncryptExtractsParser.encrypt_extracts_parser()
-        return cls(args, site_name)
+        args = EncryptExtractsParser.encrypt_extracts_parser()
+        return cls(args)
 
-    def run_command(self):
+    @staticmethod
+    def run_command(args):
+        logger = log(__name__, args.logging_level)
+        logger.debug("Launching command")
         session = Session()
-        server_object = session.create_session(self.args)
-        self.encrypt_extract(server_object)
-
-    def encrypt_extract(self, server):
+        server = session.create_session(args)
         try:
-            site_id = SiteCommand.find_site_id(server, self.site_name)
+            site_id = SiteCommand.find_site_id(server, args.site_name)
             job = server.sites.encrypt_extracts(site_id)
-            self.logger.info("Extract encryption started with "
-                             "JobID: {}".format(job.id))
+            ExtractsCommand.print_success_message(logger, 'encryption', job)
         except TSC.ServerResponseError as e:
-            self.logger.error('Server Error', e)
+            ExtractsCommand.exit_with_error(logger, 'Server Error:', e)

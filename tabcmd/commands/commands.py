@@ -1,16 +1,11 @@
-from .command_strategy_interface import CommandStrategyInterface
-import os
-import tableauserverclient as TSC
-import sys
-import json
 from . import get_logger
-from .user.user_data import Userdata
-logger = get_logger('tabcmd.commands', 'info')
+import sys
 
 
-class Commands(CommandStrategyInterface):
+class Commands:
 
     def __init__(self, args):
+        self.logger = None
         self.username = args.username
         self.password = args.password
         self.server = args.server
@@ -18,6 +13,13 @@ class Commands(CommandStrategyInterface):
         self.token_name = args.token_name
         self.personal_token = args.token
         self.logging_level = args.logging_level
+
+    @staticmethod
+    def exit_with_error(logger, error_message, exception=None):
+        logger.error(error_message)
+        if exception:
+            logger.error(exception)
+        sys.exit(1)
 
     @staticmethod
     def get_workbook_item(server, workbook_name):

@@ -7,10 +7,6 @@ class GroupCommand(Commands):
     """
     This class acts as a base class for group related commands
     """
-    def __init__(self, args):
-        super().__init__(args)
-        self.name = args.name
-        self.args = args
 
     @staticmethod
     def find_group_id(server, group_name):

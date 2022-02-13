@@ -1,4 +1,3 @@
-import tableauserverclient as TSC
 from .. import log
 from ... import Session
 from .. import RunScheduleParser
@@ -9,22 +8,15 @@ class RunSchedule(DatasourcesAndWorkbooks):
     """
     This command runs the specified schedule as it is on the server.
     """
-    def __init__(self, args, schedule):
-        super().__init__(args)
-        self.schedule = schedule
-        self.logging_level = args.logging_level
-        self.logger = log('tabcmd.runschedule_command',
-                          self.logging_level)
-
     @classmethod
     def parse(cls):
-        args, schedule = RunScheduleParser.runschedule_parser()
-        return cls(args, schedule)
+        args = RunScheduleParser.runschedule_parser()
+        return cls(args)
 
-    def run_command(self):
+    @staticmethod
+    def run_command(args):
+        logger = log(__name__, args.logging_level)
+        logger.debug("Launching command")
         session = Session()
-        server_object = session.create_session(self.args)
-        self.run_schedule(server_object)
-
-    def run_schedule(self, server):
-        pass
+        server_object = session.create_session(args)
+        # TODO implement

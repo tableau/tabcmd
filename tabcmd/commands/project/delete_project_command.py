@@ -1,38 +1,34 @@
-from ..commands import Commands
 from .project_command import *
 from .. import DeleteProjectParser
 import tableauserverclient as TSC
 from .. import log
 from ... import Session
+from ..commands import Commands
 
 
 class DeleteProjectCommand(ProjectCommand):
     """
     Command to Delete the specified project from the server
     """
-    def __init__(self, args, evaluated_project_path):
-        super().__init__(args, evaluated_project_path)
-        self.logger = log('tabcmd.delete_project_command',
-                          self.logging_level)
-
     @classmethod
     def parse(cls):
-        args, evaluated_project_path = \
-            DeleteProjectParser.delete_project_parser()
-        return cls(args, evaluated_project_path)
+        args = DeleteProjectParser.delete_project_parser()
+        return cls(args)
 
-    def run_command(self):
+    @staticmethod
+    def run_command(args):
+        logger = log(__name__, args.logging_level)
+        logger.debug("Launching command")
         session = Session()
-        server_object = session.create_session(self.args)
-        self.delete_project(server_object)
-
-    def delete_project(self, server):
-        """Method to delete project using Tableauserverclient methods"""
+        server = session.create_session(args)
         try:
-            project_id = ProjectCommand.find_project_id(server, self.name)
-            server.projects.delete(project_id)
-            self.logger.info("Successfully deleted project")
-        except TSC.ServerResponseError as e:
-            self.logger.error("Server error occurred", e)
+            project_id = ProjectCommand.find_project_id(server, args.name)
         except ValueError as e:
-            self.logger.error("Project does not exist")
+            Commands.exit_with_error(
+                logger,
+                "Could not find project. Please check the name and try again")
+        try:
+            server.projects.delete(project_id)
+            logger.info("Successfully deleted project")
+        except TSC.ServerResponseError as e:
+            Commands.exit_with_error(logger, "Server error occurred", e)
