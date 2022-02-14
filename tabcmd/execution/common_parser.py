@@ -1,5 +1,4 @@
 import argparse
-from .parent_parser import ParentParser
 
 
 class CommonParser:
