@@ -1,7 +1,7 @@
 import tableauserverclient as TSC
-from .. import log
-from ... import Session
-from .. import ExportParser
+from tabcmd.execution.logger_config import log
+from ..auth.session import Session
+from tabcmd.parsers.export_parser import ExportParser
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 

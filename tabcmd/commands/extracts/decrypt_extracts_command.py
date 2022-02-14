@@ -1,7 +1,7 @@
-from .. import DecryptExtractsParser
+from tabcmd.parsers.decrypt_extracts_parser import DecryptExtractsParser
 import tableauserverclient as TSC
-from .. import log
-from ... import Session
+from tabcmd.execution.logger_config import log
+from ..auth.session import Session
 from ..extracts.extracts_command import ExtractsCommand
 from ..site.site_command import SiteCommand
 
@@ -12,7 +12,7 @@ class DecryptExtracts(ExtractsCommand):
     @classmethod
     def parse(cls):
         args = DecryptExtractsParser.decrypt_extracts_parser()
-        return cls(args)
+        return args
 
     @staticmethod
     def run_command(args):

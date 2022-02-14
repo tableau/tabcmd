@@ -1,8 +1,8 @@
 import tableauserverclient as TSC
-from .. import log
-from .. import EditSiteParser
+from tabcmd.execution.logger_config import log
+from tabcmd.parsers.edit_site_parser import EditSiteParser
 from .site_command import SiteCommand
-from ... import Session
+from ..auth.session import Session
 from ..commands import Commands
 
 
@@ -14,7 +14,7 @@ class EditSiteCommand(SiteCommand):
     @classmethod
     def parse(cls):
         args = EditSiteParser.edit_site_parser()
-        return cls(args)
+        return args
 
     @staticmethod
     def run_command(args):

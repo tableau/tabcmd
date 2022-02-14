@@ -1,6 +1,6 @@
-from .. import log
-from ... import Session
-from .. import RunScheduleParser
+from tabcmd.execution.logger_config import log
+from ..auth.session import Session
+from tabcmd.parsers.runschedule_parser import RunScheduleParser
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
@@ -11,7 +11,7 @@ class RunSchedule(DatasourcesAndWorkbooks):
     @classmethod
     def parse(cls):
         args = RunScheduleParser.runschedule_parser()
-        return cls(args)
+        return args
 
     @staticmethod
     def run_command(args):

@@ -1,7 +1,7 @@
-from .. import LogoutParser
-from .. import log
 import os
-from ... import Session
+from tabcmd.parsers.logout_parser import LogoutParser
+from tabcmd.execution.logger_config import log
+from ..auth.session import Session
 
 
 class LogoutCommand:
@@ -11,8 +11,7 @@ class LogoutCommand:
     @classmethod
     def parse(cls):
         args = LogoutParser.logout_parser()
-        return cls(args)
-
+        return args
 
     @staticmethod
     def run_command(args):

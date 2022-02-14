@@ -1,9 +1,9 @@
 from .project_command import *
-from .. import CreateProjectParser
-import tableauserverclient as TSC
-from .. import log
-from ... import Session
+from ..auth.session import Session
 from ..commands import Commands
+from tabcmd.parsers.create_project_parser import CreateProjectParser
+import tableauserverclient as TSC
+from tabcmd.execution.logger_config import log
 
 
 class CreateProjectCommand(ProjectCommand):
@@ -13,7 +13,7 @@ class CreateProjectCommand(ProjectCommand):
     @classmethod
     def parse(cls):
         args = CreateProjectParser.create_project_parser()
-        return cls(args)
+        return args
 
     @staticmethod
     def run_command(args):
@@ -30,7 +30,7 @@ class CreateProjectCommand(ProjectCommand):
                                             project_path)
         try:
             project_item = server.projects.create(top_level_project)
-            logger.info('Successfully created a new project called: ', top_level_project.name)
+            logger.info('Successfully created a new project called: {}'.format(top_level_project.name))
             return project_item
         except TSC.ServerResponseError as e:
             Commands.exit_with_error(logger, 'A project by this name already exists', e)

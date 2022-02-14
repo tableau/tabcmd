@@ -1,8 +1,8 @@
 import tableauserverclient as TSC
-from .. import log
+from tabcmd.execution.logger_config import log
 from ..project.project_command import ProjectCommand
-from ... import Session
-from .. import PublishParser
+from ..auth.session import Session
+from tabcmd.parsers.publish_parser import PublishParser
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
@@ -14,7 +14,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
     @classmethod
     def parse(cls):
         args = PublishParser.publish_parser()
-        return cls(args)
+        return args
 
     @staticmethod
     def run_command(args):

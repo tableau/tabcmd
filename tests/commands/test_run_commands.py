@@ -104,7 +104,7 @@ class RunCommandsTest(unittest.TestCase):
         runschedule_command.RunSchedule.run_command(mock_args)
         mock_session.assert_called()
 
-    #extracts
+    # extracts
     def test_create_extract(self, mock_session, mock_server):
         mock_session.return_value = mock_server
         mock_server.datasources = getter
@@ -153,7 +153,7 @@ class RunCommandsTest(unittest.TestCase):
         refresh_extracts_command.RefreshExtracts.run_command(mock_args)
         mock_session.assert_called()
 
-    #groups
+    # groups
     def test_create_group(self, mock_session, mock_server):
         mock_session.return_value = mock_server
         mock_args.group_name = 'name'
@@ -175,7 +175,7 @@ class RunCommandsTest(unittest.TestCase):
         help_command.HelpCommand.run_command(mock_args)
         mock_session.assert_not_called()
 
-    #project
+    # project
     def test_create_project(self, mock_session, mock_server):
         mock_session.return_value = mock_server
         mock_server.projects = getter
@@ -204,7 +204,7 @@ class RunCommandsTest(unittest.TestCase):
         # publish_samples_command.PublishSamplesCommand.run_command(mock_args)
         # mock_session.assert_called()
 
-    #site
+    # site
     def test_create_site(self, mock_session, mock_server):
         mock_session.return_value = mock_server
         mock_args.site_name = 'site-name'
@@ -276,4 +276,3 @@ class RunCommandsTest(unittest.TestCase):
         mock_session.assert_not_called()
         remove_users_command.RemoveUserCommand.run_command(mock_args)
         mock_session.assert_called()
-

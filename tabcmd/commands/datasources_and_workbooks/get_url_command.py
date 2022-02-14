@@ -1,7 +1,7 @@
 import tableauserverclient as TSC
-from .. import log
-from ... import Session
-from .. import GetUrlParser
+from tabcmd.execution.logger_config import log
+from ..auth.session import Session
+from tabcmd.parsers.get_url_parser import GetUrlParser
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
@@ -14,7 +14,7 @@ class GetUrl(DatasourcesAndWorkbooks):
     @classmethod
     def parse(cls):
         args = GetUrlParser.get_url_parser()
-        return cls(args)
+        return args
 
     @staticmethod
     def run_command(args):
@@ -41,7 +41,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             split_file_name = file_name.split('.')
             type_of_file = split_file_name[1]
         else:  # file_name is None:
-                                                                                        # grab from url
+            # grab from url
             split_url_to_get_extension = url.split('.')
             if len(split_url_to_get_extension) > 1:
                 type_of_file = split_url_to_get_extension[1]
@@ -86,7 +86,7 @@ class GetUrl(DatasourcesAndWorkbooks):
         try:
             views_from_list = GetUrl.get_request_option_for_view(logger, server, view)
             req_option_pdf = TSC.PDFRequestOptions(maxage=1)
-            server.views.populate_pdf(views_from_list , req_option_pdf)
+            server.views.populate_pdf(views_from_list, req_option_pdf)
             if args.filename is None:
                 file_name_with_path = '{}.pdf'.format(views_from_list .name)
             else:

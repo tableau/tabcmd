@@ -1,7 +1,5 @@
-import argparse
 import sys
-from .parent_parser import ParentParser
-from .common_parser import CommonParser
+from tabcmd.execution.parent_parser import ParentParser
 
 
 class ExportParser:

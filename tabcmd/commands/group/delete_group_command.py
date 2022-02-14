@@ -1,9 +1,9 @@
 from ..commands import Commands
 from .group_command import GroupCommand
-from .. import DeleteGroupParser
+from tabcmd.parsers.delete_group_parser import DeleteGroupParser
 import tableauserverclient as TSC
-from .. import log
-from ... import Session
+from tabcmd.execution.logger_config import log
+from ..auth.session import Session
 
 
 class DeleteGroupCommand(GroupCommand):
@@ -13,7 +13,7 @@ class DeleteGroupCommand(GroupCommand):
     @classmethod
     def parse(cls):
         args = DeleteGroupParser.delete_group_parser()
-        return cls(args)
+        return args
 
     @staticmethod
     def run_command(args):

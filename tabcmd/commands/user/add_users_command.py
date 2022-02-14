@@ -1,8 +1,8 @@
 from .user_command import UserCommand
-from .. import AddUserParser
+from tabcmd.parsers.add_users_parser import AddUserParser
 import tableauserverclient as TSC
-from .. import log
-from ... import Session
+from tabcmd.execution.logger_config import log
+from ..auth.session import Session
 
 
 class AddUserCommand(UserCommand):
@@ -12,7 +12,7 @@ class AddUserCommand(UserCommand):
     @classmethod
     def parse(cls):
         args = AddUserParser.add_user_parser()
-        return cls(args)
+        return args
 
     @staticmethod
     def run_command(args):

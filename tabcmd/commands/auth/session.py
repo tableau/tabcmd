@@ -1,8 +1,7 @@
 import getpass
-import sys
-from ... import Constants
+from ..constants import Constants
 import tableauserverclient as TSC
-from .. import log
+from tabcmd.execution.logger_config import log
 import json
 import os
 from ..commands import Commands

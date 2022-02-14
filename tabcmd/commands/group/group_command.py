@@ -1,6 +1,4 @@
 from ..commands import Commands
-import tableauserverclient as TSC
-from .. import get_logger
 
 
 class GroupCommand(Commands):

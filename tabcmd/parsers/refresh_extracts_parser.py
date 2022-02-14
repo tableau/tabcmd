@@ -1,8 +1,6 @@
-import argparse
 import sys
-from .global_options import *
-from .parent_parser import ParentParser
-from .common_parser import CommonParser
+from tabcmd.execution.parent_parser import ParentParser
+from tabcmd.execution.common_parser import CommonParser
 
 
 class RefreshExtractsParser:

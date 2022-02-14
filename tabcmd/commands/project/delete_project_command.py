@@ -1,8 +1,8 @@
 from .project_command import *
-from .. import DeleteProjectParser
+from tabcmd.parsers.delete_project_parser import DeleteProjectParser
 import tableauserverclient as TSC
-from .. import log
-from ... import Session
+from tabcmd.execution.logger_config import log
+from ..auth.session import Session
 from ..commands import Commands
 
 
@@ -13,7 +13,7 @@ class DeleteProjectCommand(ProjectCommand):
     @classmethod
     def parse(cls):
         args = DeleteProjectParser.delete_project_parser()
-        return cls(args)
+        return args
 
     @staticmethod
     def run_command(args):

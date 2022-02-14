@@ -1,5 +1,5 @@
 import sys
-from .parent_parser import ParentParser
+from tabcmd.execution.parent_parser import ParentParser
 
 
 class EditSiteParser:
@@ -37,7 +37,8 @@ class EditSiteParser:
         group.add_argument('--site-mode', default=None, help='Does not allow site admins to add or remove users')
         group.add_argument('--no-site-mode', default=None, help='Allows site admins to add or remove users')
         args = edit_site_parser.parse_args(sys.argv[EditSiteParser.USER_ARG_IDX:])
-        current_site_id_as_list = sys.argv[EditSiteParser.USER_ARG_SITE_ID_START_IDX:EditSiteParser.USER_ARG_SITE_ID_END_IDX]
+        current_site_id_as_list = \
+            sys.argv[EditSiteParser.USER_ARG_SITE_ID_START_IDX:EditSiteParser.USER_ARG_SITE_ID_END_IDX]
         args.current_site_id = ''.join(current_site_id_as_list)
         args.admin_mode = None
         if args.no_site_mode:

@@ -1,8 +1,8 @@
 from .site_command import SiteCommand
 import tableauserverclient as TSC
-from .. import log
-from .. import DeleteSiteParser
-from ... import Session
+from tabcmd.execution.logger_config import log
+from tabcmd.parsers.delete_site_parser import DeleteSiteParser
+from ..auth.session import Session
 from ..commands import Commands
 
 
@@ -13,7 +13,7 @@ class DeleteSiteCommand(SiteCommand):
     @classmethod
     def parse(cls):
         args = DeleteSiteParser.delete_site_parser()
-        return cls(args)
+        return args
 
     @staticmethod
     def run_command(args):

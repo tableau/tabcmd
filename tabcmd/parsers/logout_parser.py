@@ -1,6 +1,6 @@
 
 import sys
-from .parent_parser import ParentParser
+from tabcmd.execution.parent_parser import ParentParser
 
 
 class LogoutParser:
