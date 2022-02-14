@@ -23,7 +23,6 @@ class AddUsersParserTest(unittest.TestCase):
         with mock.patch('builtins.open', mock.mock_open(read_data='test')):
             sys.argv = ["test_csv.csv", "test", "test1", "test2"]
             args = AddUserParser.add_user_parser()
-            print(args)
             args_from_command = vars(args)
             args_from_mock = vars(mock_args.return_value)
             self.assertEqual(args_from_command, args_from_mock)
