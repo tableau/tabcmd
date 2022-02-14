@@ -1,25 +1,31 @@
-*.pyc
-*.pkl
+# general dev/ide files
 *.log
 *.vscode
 *.csv
-*.pytest_cache
+.idea
+*.DS_Store
 
+# python build files
 build/
 dist/
 *.egg-info/
 *.egg
 eggs/
 .eggs/
-tabcmd/__pycache__/
+__pycache__/
+*.pytest_cache
+*.pyc
+*.pkl
+
+# content
 *.pdf
 *.png
 *.twbx
 *.hyper
 *.twb
 *.twbr
-.idea
-*.DS_Store
 html
 *.html
 *.twbr
+
+*.spec
