@@ -1,7 +1,7 @@
 from .project_command import *
-from .. import PublishSamplesParser
-from .. import log
-from ... import Session
+from tabcmd.parsers.publish_samples_parser import PublishSamplesParser
+from tabcmd.execution.logger_config import log
+from ..auth.session import Session
 from ..commands import Commands
 
 
@@ -13,7 +13,7 @@ class PublishSamplesCommand(ProjectCommand):
     @classmethod
     def parse(cls):
         args = PublishSamplesParser.publish_samples_parser()
-        return cls(args)
+        return args
 
     @staticmethod
     def run_command(args):

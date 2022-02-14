@@ -1,9 +1,9 @@
 from ..user.user_command import UserCommand
 import tableauserverclient as TSC
-from .. import log
-from ... import Session
+from tabcmd.execution.logger_config import log
+from ..auth.session import Session
 from .site_command import SiteCommand
-from .. import DeleteSiteUsersParser
+from tabcmd.parsers.delete_site_users_parser import DeleteSiteUsersParser
 
 
 class DeleteSiteUsersCommand(SiteCommand):
@@ -15,7 +15,7 @@ class DeleteSiteUsersCommand(SiteCommand):
     @classmethod
     def parse(cls):
         args = DeleteSiteUsersParser.delete_site_users_parser()
-        return cls(args)
+        return args
 
     @staticmethod
     def run_command(args):

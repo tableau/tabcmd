@@ -1,7 +1,7 @@
 
-from .. import log
-from .. import HelpParser
-from .. import ParentParser
+from tabcmd.execution.logger_config import log
+from tabcmd.parsers.help_parser import HelpParser
+from tabcmd.execution.parent_parser import ParentParser
 
 
 class HelpCommand:
@@ -11,7 +11,7 @@ class HelpCommand:
     @classmethod
     def parse(cls):
         args = HelpParser.help_parser()
-        return cls(args)
+        return args
 
     @staticmethod
     def run_command(args):

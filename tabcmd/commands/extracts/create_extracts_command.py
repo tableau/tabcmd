@@ -1,7 +1,7 @@
 import tableauserverclient as TSC
-from .. import log
-from ... import Session
-from .. import CreateExtractsParser
+from tabcmd.execution.logger_config import log
+from ..auth.session import Session
+from tabcmd.parsers.create_extracts_parser import CreateExtractsParser
 from ..project.project_command import ProjectCommand
 from ..extracts.extracts_command import ExtractsCommand
 
@@ -14,7 +14,7 @@ class CreateExtracts(ExtractsCommand):
     @classmethod
     def parse(cls):
         args = CreateExtractsParser.create_extracts_parser()
-        return cls(args)
+        return args
 
     @staticmethod
     def run_command(args):

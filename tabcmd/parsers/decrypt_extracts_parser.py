@@ -1,7 +1,5 @@
-import argparse
 import sys
-from .global_options import *
-from .parent_parser import ParentParser
+from tabcmd.execution.parent_parser import ParentParser
 
 
 class DecryptExtractsParser:

@@ -1,9 +1,9 @@
 from ..commands import Commands
 from .group_command import GroupCommand
-from .. import CreateGroupParser
+from tabcmd.parsers.create_group_parser import CreateGroupParser
 import tableauserverclient as TSC
-from .. import log
-from ... import Session
+from tabcmd.execution.logger_config import log
+from ..auth.session import Session
 
 
 class CreateGroupCommand(GroupCommand):
@@ -13,7 +13,7 @@ class CreateGroupCommand(GroupCommand):
     @classmethod
     def parse(cls):
         args = CreateGroupParser.create_group_parser()
-        return cls(args)
+        return args
 
     @staticmethod
     def run_command(args):

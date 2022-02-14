@@ -1,7 +1,8 @@
-from .. import RefreshExtractsParser
+from tabcmd.execution.logger_config import log
+from tabcmd.parsers.refresh_extracts_parser import RefreshExtractsParser
 import tableauserverclient as TSC
-from .. import log
-from ... import Session
+from tabcmd.execution.logger_config import log
+from ..auth.session import Session
 from ..extracts.extracts_command import ExtractsCommand
 
 
@@ -12,7 +13,7 @@ class RefreshExtracts(ExtractsCommand):
     @classmethod
     def parse(cls):
         args = RefreshExtractsParser.refresh_extracts_parser()
-        return cls(args)
+        return args
 
     def run_command(args):
         logger = log(__name__, args.logging_level)

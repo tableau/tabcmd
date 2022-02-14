@@ -1,8 +1,8 @@
+from tabcmd.parsers.remove_users_parser import RemoveUserParser
 from .user_command import UserCommand
-from .. import RemoveUserParser
 import tableauserverclient as TSC
-from .. import log
-from ... import Session
+from tabcmd.execution.logger_config import log
+from ..auth.session import Session
 
 
 class RemoveUserCommand(UserCommand):
@@ -12,7 +12,7 @@ class RemoveUserCommand(UserCommand):
     @classmethod
     def parse(cls):
         args = RemoveUserParser.remove_user_parser()
-        return cls(args)
+        return args
 
     @staticmethod
     def run_command(args):

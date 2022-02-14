@@ -1,5 +1,5 @@
-from .. import LoginParser
-from .. import log
+from tabcmd.parsers.login_parser import LoginParser
+from tabcmd.execution.logger_config import log
 from ..commands import Commands
 from .session import Session
 
@@ -11,7 +11,7 @@ class LoginCommand(Commands):
     @classmethod
     def parse(cls):
         args = LoginParser.login_parser()
-        return cls(args)
+        return args
 
     @staticmethod
     def run_command(args):

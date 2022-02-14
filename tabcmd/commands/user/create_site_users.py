@@ -1,9 +1,9 @@
-from .. import Constants
+from tabcmd.commands.constants import Constants
 from .user_command import UserCommand
-from .. import CreateSiteUsersParser
+from tabcmd.parsers.create_site_users_parser import CreateSiteUsersParser
 import tableauserverclient as TSC
-from .. import log
-from ... import Session
+from tabcmd.execution.logger_config import log
+from ..auth.session import Session
 
 
 class CreateSiteUsersCommand(UserCommand):
@@ -15,7 +15,7 @@ class CreateSiteUsersCommand(UserCommand):
     @classmethod
     def parse(cls):
         args = CreateSiteUsersParser.create_site_user_parser()
-        return cls(args)
+        return args
 
     @staticmethod
     def run_command(args):
