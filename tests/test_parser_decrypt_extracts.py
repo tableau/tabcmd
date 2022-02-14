@@ -5,8 +5,7 @@ try:
 except ImportError:
     import mock
 import argparse
-from tabcmd.parsers.decrypt_extracts_parser \
-    import DecryptExtractsParser
+from tabcmd.parsers.decrypt_extracts_parser import DecryptExtractsParser
 
 
 class DecryptExtractsParserTest(unittest.TestCase):
@@ -25,7 +24,7 @@ class DecryptExtractsParserTest(unittest.TestCase):
                                                 ))
     def test_decrypt_extract_parser_optional_arguments(self, mock_args):
         args = DecryptExtractsParser.decrypt_extracts_parser()
-        assert args == argparse.Namespace(site_name="test1", #reading from sys.argv
+        assert args == argparse.Namespace(site_name="test1",  # reading from sys.argv
                                           username="helloworld",
                                           site="",
                                           logging_level="info",

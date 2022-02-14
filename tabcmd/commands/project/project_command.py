@@ -14,5 +14,3 @@ class ProjectCommand(Commands):
                 project_id = project[1]
                 break
         return project_id
-
-

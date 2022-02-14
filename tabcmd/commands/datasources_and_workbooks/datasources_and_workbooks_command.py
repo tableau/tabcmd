@@ -21,8 +21,6 @@ class DatasourcesAndWorkbooks(Commands):
         except IndexError:
             Commands.exit_with_error(logger, "Could not find view. Please check the name and try again.")
 
-
-
     @staticmethod
     def get_request_option_for_workbook(logger, server, workbook_content_url):
         try:

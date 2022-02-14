@@ -43,7 +43,6 @@ class CreateSiteUsersCommand(UserCommand):
                 if e.code == Constants.user_already_member_of_site:
                     logger.error("User: {} already member of site".format(username))
         logger.info("======== 100% complete ========")
-        logger.info("======== Number of users added: {} =========".
-                         format(number_of_users_added))
+        logger.info("======== Number of users added: {} =========".format(number_of_users_added))
         if number_of_errors > 0:
             logger.info("======== Number of errors {} =========".format(number_of_errors))

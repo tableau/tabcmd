@@ -26,4 +26,3 @@ class PublishSamplesCommand(ProjectCommand):
         else:
             project_path = None
         Commands.exit_with_error(logger, "Not yet implemented")
-

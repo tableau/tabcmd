@@ -37,5 +37,3 @@ class RefreshExtracts(ExtractsCommand):
                 ExtractsCommand.exit_with_error(logger, 'Server Error', e)
         else:
             ExtractsCommand.exit_with_error(logger, "You must specify either a workbook or datasource")
-
-

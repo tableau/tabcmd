@@ -19,7 +19,7 @@ class DeleteProjectParser:
 
         common_parser = common_parser_obj.common_parser_arguments()
         subparsers = parser.add_subparsers()
-        delete_project_parser = subparsers.add_parser('deleteproject', parents=[parser,common_parser])
+        delete_project_parser = subparsers.add_parser('deleteproject', parents=[parser, common_parser])
         delete_project_parser.add_argument('--name', '-n', required=True, help='name of project to delete')
         args = delete_project_parser.parse_args(sys.argv[DeleteProjectParser.USER_ARG_IDX:])
 

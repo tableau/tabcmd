@@ -19,7 +19,7 @@ class GetURlTests(unittest.TestCase):
         filetype = GetUrl.evaluate_file_name(mock_logger, filename, url)
         assert filetype == 'pdf', filetype
 
-"""
+    """
     GetUrl.evaluate_file_name(logger, filename, url)
     GetUrl.check_if_extension_present(view_name)
     GetUrl.get_view_without_extension(view_name)
@@ -29,4 +29,4 @@ class GetURlTests(unittest.TestCase):
     GetUrl.generate_pdf(logger, server, args)
     GetUrl.generate_png(logger, server, args)
     GetUrl.generate_csv(logger, server, args)
-"""
+    """
