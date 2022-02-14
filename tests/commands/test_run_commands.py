@@ -12,17 +12,29 @@ from tabcmd.commands.help import help_command
 from tabcmd.commands.project import create_project_command, delete_project_command, publish_samples_command
 from tabcmd.commands.site import create_site_command, delete_site_command, delete_site_users_command, \
     edit_site_command, list_sites_command
-from tabcmd.commands.user import add_users_command, create_site_users, remove_users_command
+from tabcmd.commands.user import add_users_command, create_site_users, remove_users_command, user_command
 
 mock_args = argparse.Namespace()
 mock_args.logging_level = 'info'
 
 getter = MagicMock()
 getter.get = MagicMock('get', return_value=([], 1))
+fake_item = MagicMock()
+fake_item.name = 'fake-name'
+getter.publish = MagicMock('publish', return_value=fake_item)
+
+fake_job = MagicMock()
+fake_job.id = 'fake-job-id'
+getter.create_extract = MagicMock('create_extract', return_value=fake_job)
+getter.decrypt_extract = MagicMock('decrypt_extract', return_value=fake_job)
+getter.delete_extract = MagicMock('delete_extract', return_value=fake_job)
+getter.encrypt_extracts = MagicMock('encrypt_extracts', return_value=fake_job)
+getter.reencrypt_extract = MagicMock('reencrypt_extract', return_value=fake_job)
+getter.refresh = MagicMock('refresh', return_value=fake_job)
 
 
 @patch('tableauserverclient.Server')
-@patch('tabcmd.Session.create_session')
+@patch('tabcmd.commands.auth.session.Session.create_session')
 class RunCommandsTest(unittest.TestCase):
 
     # auth
@@ -81,6 +93,7 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.source = 'dont.know'
         mock_args.project = 'project-name'
         mock_server.projects = getter
+
         mock_session.assert_not_called()
         publish_command.PublishCommand.run_command(mock_args)
         mock_session.assert_called()
@@ -211,7 +224,7 @@ class RunCommandsTest(unittest.TestCase):
         delete_site_command.DeleteSiteCommand.run_command(mock_args)
         mock_session.assert_called()
 
-    @patch('tabcmd.UserCommand.get_users_from_file')
+    @patch('tabcmd.commands.user.user_command.UserCommand.get_users_from_file')
     def test_delete_site_users(self, mock_file, mock_session, mock_server):
         mock_args.csv_users = []
         mock_file.return_value = []
@@ -237,7 +250,7 @@ class RunCommandsTest(unittest.TestCase):
         mock_session.assert_called()
 
     # users
-    @patch('tabcmd.UserCommand.get_users_from_file')
+    @patch('tabcmd.commands.user.user_command.UserCommand.get_users_from_file')
     def test_add_users(self, mock_file, mock_session, mock_server):
         mock_file.return_value = []
         mock_session.return_value = mock_server
@@ -247,7 +260,7 @@ class RunCommandsTest(unittest.TestCase):
         add_users_command.AddUserCommand.run_command(mock_args)
         mock_session.assert_called()
 
-    @patch('tabcmd.UserCommand.get_users_from_file')
+    @patch('tabcmd.commands.user.user_command.UserCommand.get_users_from_file')
     def test_create_site_users(self, mock_file, mock_session, mock_server):
         mock_file.return_value = []
         mock_session.return_value = mock_server
@@ -255,7 +268,7 @@ class RunCommandsTest(unittest.TestCase):
         create_site_users.CreateSiteUsersCommand.run_command(mock_args)
         mock_session.assert_called()
 
-    @patch('tabcmd.UserCommand.get_users_from_file')
+    @patch('tabcmd.commands.user.user_command.UserCommand.get_users_from_file')
     def test_remove_users(self, mock_file, mock_session, mock_server):
         mock_file.return_value = []
         mock_session.return_value = mock_server

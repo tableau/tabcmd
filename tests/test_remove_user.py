@@ -9,7 +9,7 @@ import argparse
 from tabcmd.parsers.remove_users_parser import RemoveUserParser
 
 
-class AddUsersParserTest(unittest.TestCase):
+class RemoveUsersParserTest(unittest.TestCase):
     csv = ("testname", "testpassword", "test", "test", "test", "test")
 
     @mock.patch('argparse.ArgumentParser.parse_args',
@@ -23,7 +23,6 @@ class AddUsersParserTest(unittest.TestCase):
         with mock.patch('builtins.open', mock.mock_open(read_data='test')):
             sys.argv = ["test_csv.csv", "test", "test1", "test2"]
             args = RemoveUserParser.remove_user_parser()
-            print(args)
             args_from_command = vars(args)
             args_from_mock = vars(mock_args.return_value)
             self.assertEqual(args_from_command, args_from_mock)
