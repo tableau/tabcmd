@@ -1,6 +1,4 @@
-import sys
-from tabcmd.execution.parent_parser import ParentParser
-from tabcmd.execution.common_parser import CommonParser
+from .global_options import *
 
 
 class DeleteSiteUsersParser:
@@ -11,14 +9,9 @@ class DeleteSiteUsersParser:
     USER_ARG_IDX = 3
 
     @staticmethod
-    def delete_site_users_parser():
+    def delete_site_users_parser(manager, command):
         """Method to parse delete site arguments passed by the user"""
-        parent_parser = ParentParser()
-        parser = parent_parser.parent_parser_with_global_options()
-        subparsers = parser.add_subparsers()
-        delete_site_users_parser = subparsers.add_parser('deletesiteusers', parents=[parser])
-        args = delete_site_users_parser.parse_args(sys.argv[DeleteSiteUsersParser.USER_ARG_IDX:])
-        args.csv_lines = CommonParser.read_file(sys.argv[DeleteSiteUsersParser.USER_ARG_FILE_NAME_IDX])
-        if args.site is None or args.site == "Default":
-            args.site = ''
-        return args
+        manager.include(command)
+        delete_site_users_parser = manager.include(command)
+        set_users_file_positional(delete_site_users_parser)
+

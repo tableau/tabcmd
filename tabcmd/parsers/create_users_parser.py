@@ -1,27 +1,17 @@
-import sys
-from tabcmd.execution.parent_parser import ParentParser
-from tabcmd.execution.common_parser import CommonParser
+from .global_options import *
 
 
 class CreateUserParser:
     """
     Parser for the command CreateUser
     """
-    USER_ARG_IDX = 3
-    USER_ARG_FILE_NAME_IDX = 2
 
     @staticmethod
-    def create_user_parser():
+    def create_user_parser(manager, command):
         """Method to parse create user arguments passed """
-        parent_parser = ParentParser()
-        parser = parent_parser.parent_parser_with_global_options()
-        subparsers = parser.add_subparsers()
-        create_users_parser = subparsers.add_parser('createusers',
-                                                    parents=[parser])
-        args = create_users_parser.parse_args(sys.argv[CreateUserParser.
-                                              USER_ARG_IDX:])
-        csv_lines = CommonParser.read_file(sys.argv[CreateUserParser.
-                                           USER_ARG_FILE_NAME_IDX])
-        if args.site is None or args.site == "Default":
-            args.site = ''
-        return csv_lines, args
+        create_users_parser = manager.include(command)
+        set_users_file_positional(create_users_parser)
+        set_role_arg(create_users_parser)
+        set_no_wait_option(create_users_parser)
+        set_completeness_options(create_users_parser)
+        set_silent_option(create_users_parser)

@@ -1,10 +1,10 @@
 import sys
-import argparse
 
 
 class HelpParser:
-    @classmethod
-    def print_help_description(cls):
+
+    @staticmethod
+    def print_help_description():
         description = \
             "tabcmd - Tableau Server Command Line Utility 2.0 \n \n" \
             "tabcmd help             -- Help for tabcmd commands \n" \
@@ -13,5 +13,5 @@ class HelpParser:
         sys.stdout.write(description)
 
     @staticmethod
-    def help_parser():
-        pass
+    def help_parser(manager, command):
+        manager.include(command)
