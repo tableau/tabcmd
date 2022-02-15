@@ -1,40 +1,27 @@
-from .map_of_commands import CommandsMap
-from tabcmd.commands.auth.login_command import *
-from tabcmd.commands.project.create_project_command import *
-from tabcmd.commands.project.delete_project_command import *
-from tabcmd.commands.group.delete_group_command import *
-from tabcmd.commands.group.create_group_command import *
-from tabcmd.commands.user.remove_users_command import *
-from tabcmd.commands.auth.logout_command import *
-from tabcmd.commands.user.add_users_command import *
-from tabcmd.commands.site.create_site_command import *
-from tabcmd.commands.user.create_site_users import *
-from tabcmd.commands.site.delete_site_command import *
-from tabcmd.commands.site.delete_site_users_command import *
-from tabcmd.commands.site.edit_site_command import *
-from tabcmd.commands.site.list_sites_command import *
-from tabcmd.commands.datasources_and_workbooks.delete_command import *
-from tabcmd.commands.datasources_and_workbooks.export_command import *
-from tabcmd.commands.datasources_and_workbooks.publish_command import *
-from tabcmd.commands.datasources_and_workbooks.get_url_command import *
-from tabcmd.commands.help.help_command import *
-from tabcmd.commands.extracts.create_extracts_command import *
-from tabcmd.commands.extracts.decrypt_extracts_command import *
-from tabcmd.commands.extracts.delete_extracts_command import *
-from tabcmd.commands.extracts.refresh_extracts_command import *
-from tabcmd.commands.extracts.reencrypt_extracts_command import *
-from tabcmd.commands.extracts.encrypt_extracts_command import *
 import sys
 
 
 class Context:
+    def __init__(self, parser):
+        self.parser = parser
 
-    def __init__(self, command_strategy):
-        self.command_strategy = command_strategy
-
-    def execute_command(self):
-        command_strategy_type = getattr(sys.modules[__name__],
-                                        CommandsMap.commands_hash_map.
-                                        get(self.command_strategy)[0])
-        args = command_strategy_type.parse()
-        command_strategy_type.run_command(args)
+    # during normal execution, leaving input as none will default to sys.argv
+    # for testing, we want to be able to pass in different updates
+    def parse_inputs(self, input=None):
+        parser = self.parser
+        if input is None and len(sys.argv) <= 1:  # no arguments given
+            parser.print_help()
+            sys.exit(0)
+        namespace = parser.parse_args(input)
+        # maybe argparse will do this?
+        if namespace.command == 'help':
+            parser.print_help()
+            sys.exit(0)
+        if not namespace.func:  # arguments did not match any command
+            parser.print_help()
+            sys.exit(1)
+        # if a subcommand was identified, call the function assigned to it
+        # this is the functional equivalent of the call by reflection in the previous structure
+        # https://stackoverflow.com/questions/49038616/argparse-subparsers-with-functions
+        namespace.func(namespace).run_command(namespace)
+        return namespace

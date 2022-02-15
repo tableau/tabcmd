@@ -10,9 +10,9 @@ def main():
                           sys.version_info + " - please update your python version.")
 
     tabcmd_controller = TabcmdController()
-    command_strategy = tabcmd_controller.get_command_strategy()
-    command_context = Context(command_strategy)
-    command_context.execute_command()
+    parser = tabcmd_controller.initialize_parsers()
+    command_context = Context(parser)
+    command_context.parse_inputs()
 
 
 if __name__ == "__main__":
