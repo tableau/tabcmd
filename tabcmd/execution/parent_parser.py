@@ -72,14 +72,14 @@ class ParentParser:
         # NOT YET IMPLEMENTED
         proxy_group = parser.add_mutually_exclusive_group()
         proxy_group.add_argument(
-             '--proxy', dest='proxy', metavar='<HOST:PORT>',
+             '-x', '--proxy', dest='proxy', metavar='<HOST:PORT>',
              help='Connect to Tableau Server using the specified HTTP proxy.')
         proxy_group.add_argument(
              '--no-proxy', action='store_false', dest='proxy',
              help='Do not use a HTTP proxy.')  # is this the default behavior?
 
         parser.add_argument(
-             '-s', '--server', metavar='<URL>',
+             '-s', '--server', default='http://localhost', metavar='<URL>',
              help='Use the specified Tableau Server URL. If no protocol is specified, http:// is assumed.')
         parser.add_argument(
              '-t', '--site', default='', metavar='SITEID',

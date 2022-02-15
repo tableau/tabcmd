@@ -1,24 +1,17 @@
-import sys
-from tabcmd.execution.parent_parser import ParentParser
+from .global_options import *
 
 
 class DecryptExtractsParser:
     """
     Parser for the command decryptextracts
     """
-    USER_ARG_IDX = 2
-    USER_ARG_SITE_NAME_IDX = 2
 
     @staticmethod
-    def decrypt_extracts_parser():
+    def decrypt_extracts_parser(manager, command):
         """Method to parse decrypt extracts arguments passed by the user"""
-        parent_parser = ParentParser()
-        parser = parent_parser.parent_parser_with_global_options()
-        subparsers = parser.add_subparsers()
-        decrypt_extract_parser = subparsers.add_parser('decryptextracts', parents=[parser])
-        args = decrypt_extract_parser.parse_args(sys.argv[DecryptExtractsParser.USER_ARG_IDX:])
+        decrypt_extract_parser = manager.include(command)
+        #TODO this argument is supposed to be optional - if not specified, do the default site
+        decrypt_extract_parser.add_argument('sitename', help='name of site')
 
-        args.site_name = sys.argv[DecryptExtractsParser.USER_ARG_SITE_NAME_IDX]
-        if args.site is None or args.site == "Default":
-            args.site = ''
-        return args
+
+
