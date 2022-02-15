@@ -5,6 +5,21 @@ class ParentParser:
     """Parser that will be inherited by all commands. Contains
     authentication and logging level setting"""
 
+    def __init__(self):
+        self.global_options = self.parent_parser_with_global_options()
+        self.root = argparse.ArgumentParser(parents=[self.global_options])
+        # https://stackoverflow.com/questions/7498595/python-argparse-add-argument-to-multiple-subparsers
+        self.subparsers = self.root.add_subparsers()
+
+    def get_root_parser(self):
+        return self.root
+
+    def include(self, command):
+        additional_parser = self.subparsers.add_parser(command[0], help=command[2], parents=[self.global_options])
+        # This line is where we actually set each parser to call the correct command
+        additional_parser.set_defaults(func=command[1])
+        return additional_parser
+
     # ordered alphabetically by short option - this is reflected directly in help output
     def parent_parser_with_global_options(self):
         parser = argparse.ArgumentParser(usage=argparse.SUPPRESS, add_help=False)
