@@ -28,4 +28,4 @@ html
 *.html
 *.twbr
 
-*.spec
+**/credentials.py
