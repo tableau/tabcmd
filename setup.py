@@ -24,7 +24,6 @@ setup(
     packages=find_packages(),
     test_suite='tests',
     url='https://github.com/tableau/tabcmd',
-
     extras_require={
         'test': test_requirements,
         'package': ['pyinstaller>=4.8']

@@ -13,13 +13,15 @@ class Context:
             parser.print_help()
             sys.exit(0)
         namespace = parser.parse_args(input)
-        # maybe argparse will do this?
-        if namespace.command == 'help':
-            parser.print_help()
-            sys.exit(0)
         if not namespace.func:  # arguments did not match any command
             parser.print_help()
             sys.exit(1)
+
+        # maybe argparse will do this?
+        if namespace.func == 'help':
+            parser.print_help()
+            sys.exit(0)
+
         # if a subcommand was identified, call the function assigned to it
         # this is the functional equivalent of the call by reflection in the previous structure
         # https://stackoverflow.com/questions/49038616/argparse-subparsers-with-functions

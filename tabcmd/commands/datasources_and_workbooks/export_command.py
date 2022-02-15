@@ -56,8 +56,8 @@ class ExportCommand(DatasourcesAndWorkbooks):
             except TSC.ServerResponseError as e:
                 ExportCommand.exit_with_error(logger, "Server Error:", e)
 
-        elif args.pdf or args.png or args.csv:  # its a workbook ????
-            if args.pdf:  # its a view_name
+        elif args.pdf or args.png or args.csv:  # it's a view
+            if args.pdf:
                 view = ExportCommand.get_view(args.url)
                 try:
                     views_from_list = ExportCommand.get_request_option_for_view(logger, server, view)

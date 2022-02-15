@@ -7,38 +7,24 @@ except ImportError:
     import mock
 import argparse
 from tabcmd.parsers.delete_group_parser import DeleteGroupParser
+from .common_setup import *
+
+commandname = 'deletegroup'
 
 
 class DeleteGroupParserTestT(unittest.TestCase):
-    csv = ("testname", "testpassword", "test", "test", "test", "test")
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=(argparse.Namespace(name="hello",
-                                                 username="test",
-                                                 password="testpass",
-                                                 server="http://test",
-                                                 site="helloworld")))
-    def test_delete_group(self, mock_args):
-        args = DeleteGroupParser.delete_group_parser()
-        args_from_command = vars(args)
-        args_from_mock = vars(mock_args.return_value)
-        self.assertEqual(args_from_command, args_from_mock)
+    @classmethod
+    def setUpClass(cls):
+        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
+        DeleteGroupParser.delete_group_parser(manager, mock_command)
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=(argparse.Namespace(name=None,
-                                                 site="helloworld")))
-    def test_delete_group_parser_required_name(self, mock_args):
+    def test_delete_group(self):
+        mock_args = [commandname, 'group-name']
+        args = self.parser_under_test.parse_args(mock_args)
+        assert args.groupname == 'group-name', args
 
-        args = DeleteGroupParser.delete_group_parser()
-        args_from_command = vars(args)
-        args_from_mock = vars(mock_args.return_value)
-        self.assertEqual(args_from_command, args_from_mock)
-
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=(argparse.Namespace()))
-    def test_delete_group_parser_required_name_missing(self, mock_args):
-        with self.assertRaises(AttributeError):
-            args = DeleteGroupParser.delete_group_parser()
-            args_from_command = vars(args)
-            args_from_mock = vars(mock_args.return_value)
-            self.assertEqual(args_from_command, args_from_mock)
+    def test_delete_group_parser_required_name_missing(self):
+        mock_args = [commandname]
+        with self.assertRaises(SystemExit):
+            args = self.parser_under_test.parse_args(mock_args)

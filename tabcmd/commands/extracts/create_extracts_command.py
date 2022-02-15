@@ -31,8 +31,6 @@ class CreateExtracts(ExtractsCommand):
                 ExtractsCommand.exit_with_error(logger, "Server Error:", e)
         elif args.workbook:
             try:
-                # this isn't used anywhere?
-                project_id = ProjectCommand.find_project_id(server, args.project)
                 workbook_item = ExtractsCommand.get_workbook_item(server, args.workbook)
                 job = server.workbooks.create_extract(workbook_item,
                                                       encrypt=args.encrypt,

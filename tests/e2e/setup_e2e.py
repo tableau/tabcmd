@@ -24,6 +24,7 @@ def prechecks():
     subprocess.check_call(["chdir"], shell=True)
     print("expecting built executable to be in " + launch_path + ":")
     subprocess.check_call(["dir", launch_path], shell=True)
+
     print("running", our_program)
 
 

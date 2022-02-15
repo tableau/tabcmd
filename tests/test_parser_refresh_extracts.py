@@ -1,60 +1,29 @@
 import unittest
+from tabcmd.parsers.refresh_extracts_parser import RefreshExtractsParser
+from .common_setup import *
 
-try:
-    from unittest import mock
-except ImportError:
-    import mock
-import argparse
-from tabcmd.parsers.refresh_extracts_parser \
-    import RefreshExtractsParser
+commandname = 'refreshextracts'
 
 
 class RefreshExtractsParserTest(unittest.TestCase):
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(
-                    username="helloworld",
-                    site="",
-                    logging_level="info",
-                    password="testing123",
-                    no_prompt=True, token=None,
-                    token_name=None,
-                    cookie=True,
-                    no_cookie=False,
-                    prompt=False,
-                    datasource="hello",
-                    incremental=True,
-                    synchronous=True,
-                    addcalculations=False,
-                    removecalculations=True,
-                    project="testproject",
-                    url="testurl",
-                    workbook="testworkbook"
-                ))
-    def test_refresh_extract_parser_optional_arguments(self, mock_args):
-        args = RefreshExtractsParser.refresh_extracts_parser()
-        assert args == argparse.Namespace(
-            username="helloworld",
-            site="",
-            logging_level="info",
-            password="testing123",
-            no_prompt=True, token=None,
-            token_name=None,
-            cookie=True,
-            no_cookie=False,
-            prompt=False,
-            datasource="hello",
-            incremental=True,
-            synchronous=True,
-            addcalculations=False,
-            removecalculations=True,
-            project="testproject",
-            url="testurl",
-            workbook="testworkbook")
+    @classmethod
+    def setUpClass(cls):
+        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
+        RefreshExtractsParser.refresh_extracts_parser(manager, mock_command)
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace())
-    def test_refresh_extract_parser_missing_all_args(self, mock_args):
-        with self.assertRaises(AttributeError):
-            args = RefreshExtractsParser \
-                .refresh_extracts_parser()
+    def test_refresh_extract_parser_conflicting_arguments(self):
+        mock_args = [commandname, '--datasource', "hello", '--workbook', 'testworkbook']
+        with self.assertRaises(SystemExit):
+            args = self.parser_under_test.parse_args(mock_args)
+
+    def test_refresh_extract_parser_optional_arguments(self):
+        mock_args = [commandname, '--datasource', "hello", '--incremental', 'True', '--removecalculations',
+                     '--project', "testproject", '--url', "testurl"]
+        args = self.parser_under_test.parse_args(mock_args)
+        assert args.incremental == 'True', args
+
+    def test_refresh_extract_parser_missing_all_args(self):
+        mock_args = [commandname]
+        with self.assertRaises(SystemExit):
+            args = self.parser_under_test.parse_args(mock_args)

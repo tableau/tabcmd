@@ -1,5 +1,6 @@
 from .global_options import *
 
+
 class RefreshExtractsParser:
     """
     Parser to refreshextracts command
@@ -12,6 +13,7 @@ class RefreshExtractsParser:
         target_group = refresh_extract_parser.add_mutually_exclusive_group(required=True)
         target_group.add_argument('--datasource')
         target_group.add_argument('--workbook')
+
         set_incremental_options(refresh_extract_parser)
         set_calculations_options(refresh_extract_parser)
         set_project_arg(refresh_extract_parser)
