@@ -13,4 +13,3 @@ class PublishSamplesParser:
         publish_samples_parser.add_argument('--name', '-n', dest='projectname', required=True,
                                             help='The name of the project.')
         set_parent_project_arg(publish_samples_parser)
-

@@ -12,4 +12,3 @@ class DeleteProjectParser:
         delete_project_parser = manager.include(command)
         delete_project_parser.add_argument('projectname', help='name of project to delete')
         set_parent_project_arg(delete_project_parser)
-

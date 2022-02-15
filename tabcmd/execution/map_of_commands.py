@@ -43,7 +43,8 @@ class CommandsMap:
         "deleteextracts": ("deleteextracts", DeleteExtracts, "Delete extracts for a published workbook or data source"),
         "encryptextracts": ("encryptextracts", EncryptExtracts, "Encrypt extracts on a site"),
         "reencryptextracts": ("reencryptextracts", ReencryptExtracts, "Reencrypt extracts on a site"),
-        "refreshextracts": ("refreshextracts", RefreshExtracts, "Refresh the extracts of a workbook or datasource on the server"),
+        "refreshextracts": ("refreshextracts", RefreshExtracts,
+                            "Refresh the extracts of a workbook or datasource on the server"),
 
         "creategroup": ("creategroup", CreateGroupCommand, "Create a local group"),
         "deletegroup": ("deletegroup", DeleteGroupCommand, "Delete a group"),

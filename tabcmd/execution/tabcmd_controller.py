@@ -16,9 +16,6 @@ class TabcmdController:
         commands = CommandsMap.commands_hash_map
         parsers = ParsersMap.parsers_hashmap
         for commandname in commands.keys():
-            print(commandname)
-            print(parsers[commandname])
-            print(commands[commandname])
             parsers[commandname](manager, commands[commandname])
 
         return parent

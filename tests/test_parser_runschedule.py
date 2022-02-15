@@ -6,37 +6,25 @@ except ImportError:
     import mock
 import argparse
 from tabcmd.parsers.runschedule_parser import RunScheduleParser
+from .common_setup import *
+
+
+commandname = 'runschedule'
 
 
 class RunScheduleParserTest(unittest.TestCase):
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(
-                    username="helloworld",
-                    site="",
-                    logging_level="info",
-                    password="testing123",
-                    no_prompt=True, token=None,
-                    token_name=None,
-                    cookie=True,
-                    no_cookie=False,
-                    prompt=False
-                ))
-    def test_runschedule_parser_optional_arguments(self, mock_args):
-        args = RunScheduleParser.runschedule_parser()
-        assert args == argparse.Namespace(username="helloworld",
-                                          site="",
-                                          logging_level="info",
-                                          password="testing123",
-                                          no_prompt=True, token=None,
-                                          token_name=None,
-                                          cookie=True,
-                                          no_cookie=False,
-                                          prompt=False,
-                                          schedule='test1'), args
+    @classmethod
+    def setUpClass(cls):
+        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
+        RunScheduleParser.runschedule_parser(manager, mock_command)
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace())
-    def test_runschedule_parser_missing_all_args(self, mock_args):
-        with self.assertRaises(AttributeError):
-            args = RunScheduleParser.runschedule_parser()
+    def test_runschedule_parser_required_name(self):
+        mock_args = [commandname, 'schedulename']
+        args = self.parser_under_test.parse_args(mock_args)
+        assert args.schedule == 'schedulename'
+
+    def test_runschedule_parser_missing_all_args(self):
+        mock_args = [commandname]
+        with self.assertRaises(SystemExit):
+            self.parser_under_test.parse_args(mock_args)

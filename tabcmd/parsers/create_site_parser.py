@@ -13,4 +13,3 @@ class CreateSiteParser:
         create_site_parser.add_argument('sitename', help='name of site')
         create_site_parser.add_argument('--url', '-r', default=None, help='used in URLs to specify site')
         set_site_args(create_site_parser)
-

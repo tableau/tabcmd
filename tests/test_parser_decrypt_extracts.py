@@ -6,64 +6,27 @@ except ImportError:
     import mock
 import argparse
 from tabcmd.parsers.decrypt_extracts_parser import DecryptExtractsParser
+from .common_setup import *
+
+
+commandname = 'decryptextracts'
 
 
 class DecryptExtractsParserTest(unittest.TestCase):
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(site_name="hellohello",
-                                                username="helloworld",
-                                                site="",
-                                                logging_level="info",
-                                                password="testing123",
-                                                no_prompt=True, token=None,
-                                                token_name=None,
-                                                cookie=True,
-                                                no_cookie=False,
-                                                prompt=False
-                                                ))
-    def test_decrypt_extract_parser_optional_arguments(self, mock_args):
-        args = DecryptExtractsParser.decrypt_extracts_parser()
-        assert args == argparse.Namespace(site_name="test1",  # reading from sys.argv
-                                          username="helloworld",
-                                          site="",
-                                          logging_level="info",
-                                          password="testing123",
-                                          no_prompt=True,
-                                          token=None,
-                                          token_name=None,
-                                          cookie=True,
-                                          no_cookie=False,
-                                          prompt=False, ), args
+    @classmethod
+    def setUpClass(cls):
+        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
+        DecryptExtractsParser.decrypt_extracts_parser(manager, mock_command)
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace())
-    def test_decrypt_extract_parser_missing_all_args(self, mock_args):
-        with self.assertRaises(AttributeError):
-            args = DecryptExtractsParser.decrypt_extracts_parser()
+    def test_decrypt_extract_parser_required_name(self):
+        mock_args = [commandname, 'site-name']
+        args = self.parser_under_test.parse_args(mock_args)
+        assert args.sitename == 'site-name', args
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(site_name=None,
-                                                username="helloworld",
-                                                site="",
-                                                logging_level="info",
-                                                password="testing123",
-                                                no_prompt=True, token=None,
-                                                token_name=None,
-                                                cookie=True,
-                                                no_cookie=False,
-                                                prompt=False
-                                                ))
-    def test_decrypt_extract_parser_missing_site_name(self, mock_args):
-        args = DecryptExtractsParser.decrypt_extracts_parser()
-        with self.assertRaises(AssertionError):
-            assert args == argparse.Namespace(site_name=None,
-                                              username="helloworld",
-                                              site="",
-                                              logging_level="info",
-                                              password="testing123",
-                                              no_prompt=True, token=None,
-                                              token_name=None,
-                                              cookie=True,
-                                              no_cookie=False,
-                                              prompt=False)
+    """
+    bug: the site name is supposed to be optional
+    def test_decrypt_extract_parser_missing_site_name(self):
+        mock_args = [commandname]
+        args = self.parser_under_test.parse_args(mock_args)
+    """
