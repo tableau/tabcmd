@@ -24,59 +24,6 @@ Adds users to the specified group.
 : For more information, see [CSV Import File Guidelines](https://help.tableau.com/current/online/en-us/csvguidelines.htm).
 
 
-# \-\-[no-]complete
-
-When set to complete this option requires that all rows be valid for any change to succeed. If not specified, \-\-complete is used.
-
-## Global options
-
-The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
-
--h, \-\-help
-
-: Displays the help for the command.
-
-<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd with Tableau Online.</div>
-
--s, \-\-server
-
-: The Tableau Online URL, which is required at least once to begin session.
-
--u, \-\-user
-
-: The Tableau Online username, which is required at least once to begin session.
-
--p, \-\-password
-
-: The Tableau Online password, which is required at least once to begin session.
-
-\-\-password-file
-
-: Allows the password to be stored in the given .txt file rather than the command line for increased security.
-
--t, \-\-site
-
-: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
-
-\-\-no-prompt
-
-: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
-
-\-\-[no-]cookie
-
-: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
-
-\-\-timeout
-
-: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
-
-\-\-
-
-: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
-
-```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
-
-
 # createextracts
 Creates extracts for a published workbook or data source.
 
@@ -1000,15 +947,15 @@ The following options are used by all tabcmd commands. The `--server`, `--user`,
 # login
 Logs in a Tableau Online user.
 
-Use the `--server`, `--site`, `--username`, `--password` global options to create a session.
+Use the `--server`, `--site`, `--username`, `--password` or `--site`, `--server`,  `--token-name`, `--token` global options to create a session.
 
-<div class="alert alert-info"><strong>Note</strong>: When you use the **tabcmd login** command, you cannot use SAML single sign-on (SSO), even if your site is configured to use SAML. To log in, you must pass the user name and password of a user who has been created in your site. You will have the permissions of the Tableau Server user that you're signed in as.</div>
+<div class="alert alert-info"><strong>Note</strong>: When you use the `tabcmd login` command, you cannot use SAML single sign-on (SSO), even if your site is configured to use SAML. To log in, you must pass the user name and password of a user who has been created in your site. You will have the permissions of the Tableau Server user that you're signed in as.</div>
 
-If you want to log in using the same information you've already used to create a session, just specify the \-\-password option. The server and user name stored in the cookie will be used.
+If you want to log in using the same information you've already used to create a session, just specify the \-\-password option or the \-\-token option. The server and user name stored in the cookie will be used.
 
 If the server is using a port other than 80 (the default), you will need to specify the port.
 
-You need the \-\-site (-t) option only if the server is running multiple sites and you are logging in to a site other than the Default site. If you do not provide a password you will be prompted for one. If the \-\-no-prompt option is specified and no password is provided the command will fail.
+You need the \-\-site (-t) option only if the server is running multiple sites and you are logging in to a site other than the Default site. If you do not provide a password you will be prompted for one. If the \-\-no-prompt option is specified and no password/token is provided, the command will fail.
 
 Once you log in, the session will continue until it expires on the server or the logout command is run.
 
@@ -1016,7 +963,7 @@ Once you log in, the session will continue until it expires on the server or the
 Create a personal access token (PAT) as described in [create tokens](https://help.tableau.com/current/server/en-us/security_personal_access_tokens.htm#create-tokens).
 For example:
 
-```tabcmd login —server “http://exampleserver.com" —site "examplesite" —token-name "tokenname" —token "exampletoken"```
+```tabcmd login --server “http://exampleserver.com" --site "examplesite" --token-name "tokenname" --token "exampletoken"```
 
 where:
 * `-tn, --token-name` is the token name for user.
@@ -1075,6 +1022,15 @@ The site ID is used in the URL to uniquely identify the site. For example, a sit
 \-\-timeout SECONDS
 
 : The number of seconds the server should wait before processing the login command. Default: 30 seconds.
+
+-tn, \-\-token-name
+
+: The token name for user.
+
+-to, \-\-token
+
+: The token specified for --token-name. If you do not provide a token, you will be prompted for one.
+
 
 
 ## Global options
