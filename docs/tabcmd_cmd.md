@@ -955,7 +955,7 @@ If you want to log in using the same information you've already used to create a
 
 If the server is using a port other than 80 (the default), you will need to specify the port.
 
-You need the \-\-site (-t) option only if the server is running multiple sites and you are logging in to a site other than the Default site. If you do not provide a password you will be prompted for one. If the \-\-no-prompt option is specified and no password/token is provided, the command will fail.
+You need the \-\-site (-t) option only if the server is running multiple sites and you are logging in to a site other than the Default site. If you do not provide a password you will be prompted for one. If the \-\-no-prompt option is specified and no password/token is provided, the command will fail. The command will fail if username/password is specified with token name/token.
 
 Once you log in, the session will continue until it expires on the server or the logout command is run.
 
