@@ -1,7 +1,7 @@
 import argparse
 import unittest
 from tabcmd.commands.auth.session import Session
-import credentials as credentials
+from tests.e2e import credentials
 
 
 # pytest -v tests/e2e/integration_tests.py

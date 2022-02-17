@@ -1,5 +1,5 @@
 import getpass
-from ... import Constants
+from tabcmd.commands.constants import Constants
 import tableauserverclient as TSC
 from tabcmd.execution.logger_config import log
 import json
