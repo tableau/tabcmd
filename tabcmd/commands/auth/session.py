@@ -99,7 +99,7 @@ class Session:
     def _validate_existing_signin(self, args):
         self.logger.info('=====Re-using existing session')
         tableau_server = Session._set_connection_options(self.server, args)
-        self._print_server_info()  # do we even have all of this? yes, TSC.server
+        self._print_server_info()
         try:
             tableau_server._set_auth(self.site_id, self.user_id, self.auth_token)
             if tableau_server.is_signed_in():
@@ -124,8 +124,6 @@ class Session:
             self.site_id = tableau_server.site_id
             self.user_id = tableau_server.user_id
             self.logger.debug("Signed into {0}{1} as {2}".format(self.server, self.site, self.user_id))
-            print("Signed into {0}{1} ({2}) as {3} ({4})".format(
-                self.server, self.site, self.site_id, self.username, self.user_id))
             self.logger.info("=========Succeeded========")
         except TSC.ServerResponseError as e:
             if e.code == Constants.login_error:

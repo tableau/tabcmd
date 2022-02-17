@@ -61,5 +61,9 @@ class Commands:
         return datasource_id
 
     @staticmethod
-    def exit_with_error(logger, message, e=None):
+    def exit_with_error(logger, message, exception=None):
+        if exception:
+            logger.error(message, exception)
+        else:
+            logger.error(message)
         sys.exit(1)

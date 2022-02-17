@@ -1,7 +1,11 @@
 import argparse
+import pytest
 import unittest
 from tabcmd.commands.auth.session import Session
-from tests.e2e import credentials
+try:
+    from tests.e2e import credentials
+except ImportError:
+    credentials = None
 
 
 # pytest -v tests/e2e/integration_tests.py
@@ -19,11 +23,16 @@ class E2EJsonTests(unittest.TestCase):
         assert new_session.server == 'SRVR', new_session.server
 
 
+@pytest.mark.skipif(not credentials, reason="'No credentials file found to run tests against a live server")
 class E2EServerTests(unittest.TestCase):
 
     saved_site_id = ''
 
     def test_log_in(self):
+        if not credentials:
+            return
+        # TODO current test command doesn't recognize skips - change to proper pytest
+        # TODO and then we can get rid of the check above
         args = argparse.Namespace(
             server=credentials.server,
             site=credentials.site,
@@ -46,6 +55,10 @@ class E2EServerTests(unittest.TestCase):
         E2EServerTests.saved_site_id = test_session.site_id
 
     def test_reuse_session(self):
+        if not credentials:
+            return
+        # TODO current test command doesn't recognize skips - change to proper pytest
+        # TODO and then we can get rid of the check above
         args = argparse.Namespace(
             server=None,
             site=None,
