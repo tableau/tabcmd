@@ -59,3 +59,7 @@ class Commands:
                 datasource_id = datasource.id
                 break
         return datasource_id
+
+    @staticmethod
+    def exit_with_error(logger, message, e=None):
+        sys.exit(1)
