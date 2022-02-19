@@ -39,13 +39,18 @@ Read the [full user documentation for Tabcmd2](docs/index.md).
 
 ## Get started
 
-```shell
-pip uninstall tabcmd
-```
+This section describes how to install and configure tabcmd.
 
 ### Run tabcmd
 
-To run tabcmd from your local copy, from a console window in the same directory as the file tabcmd.py:
+To work with tabcmd, you need the following:
+
+* MacOS / Windows
+* Python 3.7+ installed
+
+### Installation
+
+To install tabcmd, follow these steps:
 
 1. Clone the repo
 2. Run `pip install .`
@@ -62,7 +67,7 @@ To run tabcmd from your local copy, from a console window in the same directory 
 > coverage run -m pytest && coverage report -m
 
 - autoformat your code with black (https://pypi.org/project/black/)
-> black --line-length 120 src tests [--check]
+> black . [--check]
 
 - type check with mypy
 > mypy src tests
@@ -117,3 +122,8 @@ Copies of tabcmd that shipped with Tableau Server are referred to by the version
 At some point in the future, tabcmd will no longer be included with Tableau Server. 
 *We have no intention of breaking Server install flows.* 
 If you have specific suggestions or concerns on what that will look like, feel free to open an issue here or a thread on the Community Forums.
+
+
+See the LICENSE file for current open-source licensing and use information. See dev information at [contributing.md](./contributing.md)
+
+Before we can accept pull requests from contributors, we require a signed [Contributor License Agreement (CLA)](http://tableau.github.io/contributing.html).
