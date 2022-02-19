@@ -1,6 +1,11 @@
 name: Python tests
 
-on: [push]
+on:
+  push:
+    branches:
+      !gh*  # exclude docs branches from test passes
+      # maybe we should do a link-check or something instead
+      # https://github.com/marketplace/actions/my-broken-link-checker
 
 jobs:
   build:
