@@ -1,43 +1,23 @@
-import sys
 import unittest
+from tabcmd.parsers.delete_project_parser import DeleteProjectParser
+from .common_setup import *
 
-try:
-    from unittest import mock
-except ImportError:
-    import mock
-import argparse
-from pythontabcmd2.parsers.delete_project_parser import DeleteProjectParser
+commandname = 'deleteproject'
 
 
 class DeleteProjectParserTest(unittest.TestCase):
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(name="helloworld",
-                                                username="test",
-                                                password="testpass",
-                                                server="http://test",
-                                                parent_project_path="/test/",
-                                                site="helloworld"))
-    def test_delete_project(self, mock_args):
-        args, parent_project_path = DeleteProjectParser.delete_project_parser()
-        assert parent_project_path == "test"
-        assert args == mock_args.return_value
+    @classmethod
+    def setUpClass(cls):
+        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
+        DeleteProjectParser.delete_project_parser(manager, mock_command)
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(name=None,
-                                                username="test",
-                                                password="testpass",
-                                                server="http://test",
-                                                parent_project_path="/test/",
-                                                site="helloworld"))
-    def test_delete_project_required_name_none(self, mock_args):
-        args, parent_project_path = DeleteProjectParser.delete_project_parser()
-        assert parent_project_path == "test"
-        assert args == mock_args.return_value
-        assert args.name == mock_args.return_value.name
+    def test_delete_project(self):
+        mock_args = [commandname, 'project', '--parent-project-path', 'p']
+        args = self.parser_under_test.parse_args(mock_args)
+        assert args.parent_project_path == "p"
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace())
-    def test_delete_project_missing_args(self, mock_args):
-        with self.assertRaises(AttributeError):
-            args, path = DeleteProjectParser.delete_project_parser()
+    def test_delete_project_required_name_none(self):
+        mock_args = [commandname]
+        with self.assertRaises(SystemExit):
+            args = self.parser_under_test.parse_args(mock_args)

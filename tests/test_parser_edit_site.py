@@ -5,94 +5,49 @@ try:
 except ImportError:
     import mock
 import argparse
-from pythontabcmd2.parsers.edit_site_parser import EditSiteParser
+from tabcmd.parsers.edit_site_parser import EditSiteParser
+from .common_setup import *
+
+commandname = 'editsites'
 
 
 class EditSiteParserTest(unittest.TestCase):
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(site_name="testsite",
-                                                no_site_mode=None,
-                                                site="helloworld"))
-    def test_edit_site_parser_missing_site_mode(self, mock_args):
-        with self.assertRaises(AttributeError):
-            args, mode, siteid = EditSiteParser.edit_site_parser()
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(site_name="testsite",
-                                                site_mode=None,
-                                                site="helloworld"))
-    def test_edit_site_parser_missing_no_site_mode(self, mock_args):
-        with self.assertRaises(AttributeError):
-            args, mode, siteid = EditSiteParser.edit_site_parser()
+    @classmethod
+    def setUpClass(cls):
+        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
+        EditSiteParser.edit_site_parser(manager, mock_command)
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(site_name="testsite",
-                                                site="helloworld"))
-    def test_edit_site_parser_missing_both_site_modes(self, mock_args):
-        with self.assertRaises(AttributeError):
-            args, mode, siteid = EditSiteParser.edit_site_parser()
+    def test_edit_site_parser_optional_args_present(self):
+        mock_args = [commandname, 'site-to-edit', '--site-name', 'new-site-name', '--user-quota', '12']
+        args = self.parser_under_test.parse_args(mock_args)
+        assert args.sitename == 'site-to-edit', args
+        assert args.target == 'new-site-name', args
+        assert args.user_quota == 12, args
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace())
-    def test_edit_site_parser_missing_all_args(self, mock_args):
-        with self.assertRaises(AttributeError):
-            args, mode, siteid = EditSiteParser.edit_site_parser()
+    def test_edit_site_parser_missing_all_args(self):
+        mock_args = [commandname]
+        with self.assertRaises(SystemExit):
+            args = self.parser_under_test.parse_args(mock_args)
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(site_name="testsite",
-                                                user_quota=12,
-                                                site_mode=None,
-                                                no_site_mode=None,
-                                                site="helloworld"))
-    def test_edit_site_parser_user_quota_integer(self, mock_args):
-        args, mode, siteid = EditSiteParser.edit_site_parser()
-        args_from_command = vars(args)
-        args_from_mock = vars(mock_args.return_value)
-        assert args_from_command == args_from_mock
+    """
+    bug: this should probably exit unhappy?
+    def test_edit_site_parser_missing_all_args(self):
+        mock_args = [commandname, 'site-to-edit']
+        with self.assertRaises(SystemExit):
+            args = self.parser_under_test.parse_args(mock_args)
+    """
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(site_name="testsite",
-                                                storage_quota=3222,
-                                                user_quota=12,
-                                                site_mode=None,
-                                                no_site_mode=None,
-                                                site="helloworld"))
-    def test_edit_site_parser_storage_quota_integer(self, mock_args):
-        args, mode, siteid = EditSiteParser.edit_site_parser()
-        args_from_command = vars(args)
-        args_from_mock = vars(mock_args.return_value)
-        assert args_from_command == args_from_mock
+    def test_edit_site_parser_storage_quota_integer(self):
+        mock_args = [commandname, 'site-to-edit', '--storage-quota', '12']
+        args = self.parser_under_test.parse_args(mock_args)
+        assert args.sitename == 'site-to-edit', args
+        assert args.storage_quota == 12, args
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(
-                    username="helloworld",
-                    site="helloworld1",
-                    logging_level="info",
-                    password="testing123",
-                    no_prompt=True, token=None,
-                    token_name=None,
-                    no_site_mode=None,
-                    site_mode=None,
-                    cookie=True,
-                    no_cookie=False,
-                    prompt=False,
-                    status=None,
-                    site_id="1234",
-                    run_now_enabled=None
-                ))
-    def test_runschedule_parser_optional_arguments(self, mock_args):
-        args, mode, siteid = EditSiteParser.edit_site_parser()
-        assert args == argparse.Namespace(username="helloworld",
-                                          site="helloworld1",
-                                          site_mode=None,
-                                          no_site_mode=None,
-                                          logging_level="info",
-                                          password="testing123",
-                                          no_prompt=True, token=None,
-                                          token_name=None,
-                                          cookie=True,
-                                          no_cookie=False,
-                                          prompt=False,
-                                          status=None,
-                                          site_id="1234",
-                                          run_now_enabled=None)
+    def test_edit_site_parser_optional_arguments_archive(self):
+        mock_args = [commandname, 'site-to-edit', '--status', 'Archive', '--site-id', '1234',
+                     '--run-now-enabled', 'true']
+        args = self.parser_under_test.parse_args(mock_args)
+        assert args.site_id == '1234', args
+        assert args.status == 'Archive', args
+        assert args.run_now_enabled == 'true', args
