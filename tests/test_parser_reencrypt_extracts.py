@@ -5,67 +5,25 @@ try:
 except ImportError:
     import mock
 import argparse
-from pythontabcmd2.parsers.reencrypt_parser \
-    import ReencryptExtractsParser
+from tabcmd.parsers.reencrypt_parser import ReencryptExtractsParser
+from .common_setup import *
+
+commandname = 'reencryptextracts'
 
 
 class ReencryptExtractsParserTest(unittest.TestCase):
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(site_name="hellohello",
-                                                username="helloworld",
-                                                site="",
-                                                logging_level="info",
-                                                password="testing123",
-                                                no_prompt=True, token=None,
-                                                token_name=None,
-                                                cookie=True,
-                                                no_cookie=False,
-                                                prompt=False
-                                                ))
-    def test_reencrypt_extract_parser_optional_arguments(self, mock_args):
-        args, site_name = ReencryptExtractsParser.reencrypt_extracts_parser()
-        assert args == argparse.Namespace(site_name="hellohello",
-                                          username="helloworld",
-                                          site="",
-                                          logging_level="info",
-                                          password="testing123",
-                                          no_prompt=True, token=None,
-                                          token_name=None,
-                                          cookie=True,
-                                          no_cookie=False,
-                                          prompt=False, )
+    @classmethod
+    def setUpClass(cls):
+        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
+        ReencryptExtractsParser.reencrypt_extracts_parser(manager, mock_command)
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace())
-    def test_reencrypt_extract_parser_missing_all_args(self, mock_args):
-        with self.assertRaises(AttributeError):
-            args, site_name = ReencryptExtractsParser.\
-                reencrypt_extracts_parser()
+    def test_reencrypt_extract_parser_optional_arguments(self):
+        mock_args = [commandname, 'sitename']
+        args = self.parser_under_test.parse_args(mock_args)
+        assert args.sitename == 'sitename', args
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(site_name=None,
-                                                username="helloworld",
-                                                site="",
-                                                logging_level="info",
-                                                password="testing123",
-                                                no_prompt=True, token=None,
-                                                token_name=None,
-                                                cookie=True,
-                                                no_cookie=False,
-                                                prompt=False
-                                                ))
-    def test_reencrypt_extract_parser_missing_site_name(self, mock_args):
-        site_name = None
-        args = ReencryptExtractsParser.reencrypt_extracts_parser()
-        with self.assertRaises(AssertionError):
-            assert args == argparse.Namespace(site_name=None,
-                                              username="helloworld",
-                                              site="",
-                                              logging_level="info",
-                                              password="testing123",
-                                              no_prompt=True, token=None,
-                                              token_name=None,
-                                              cookie=True,
-                                              no_cookie=False,
-                                              prompt=False, )
+    def test_reencrypt_extract_parser_missing_all_args(self):
+        mock_args = [commandname]
+        with self.assertRaises(SystemExit):
+            args = self.parser_under_test.parse_args(mock_args)

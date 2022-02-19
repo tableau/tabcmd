@@ -5,26 +5,26 @@ try:
 except ImportError:
     import mock
 import argparse
-from pythontabcmd2.parsers.list_sites_parser import ListSitesParser
+from tabcmd.parsers.list_sites_parser import ListSitesParser
+from .common_setup import *
+
+
+commandname = 'listsites'
 
 
 class ListSitesParserTest(unittest.TestCase):
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace())
-    def test_list_site_parser_user_quota_integer_missing(self, mock_args):
-        with self.assertRaises(AttributeError):
-            args = ListSitesParser.list_site_parser()
-            args_from_command = vars(args)
-            args_from_mock = vars(mock_args.return_value)
-            assert args_from_command == args_from_mock
+    @classmethod
+    def setUpClass(cls):
+        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
+        ListSitesParser.list_site_parser(manager, mock_command)
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(username="hello",
-                                                password="hellotest",
-                                                site="helloworld"))
-    def test_list_site_parser_user_quota_integer(self, mock_args):
-        args = ListSitesParser.list_site_parser()
-        args_from_command = vars(args)
-        args_from_mock = vars(mock_args.return_value)
-        assert args_from_command == args_from_mock
+    def test_list_site_parser(self):
+        mock_args = [commandname]
+        args = self.parser_under_test.parse_args(mock_args)
+        assert args is not None
+
+    def test_list_site_parser_user_quota_integer(self):
+        mock_args = [commandname, '--get-extract-encryption-mode']
+        args = self.parser_under_test.parse_args(mock_args)
+        assert args.get_extract_encryption_mode is True

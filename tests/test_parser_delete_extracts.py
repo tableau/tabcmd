@@ -5,90 +5,38 @@ try:
 except ImportError:
     import mock
 import argparse
-from pythontabcmd2.parsers.delete_extracts_parser import DeleteExtractsParser
+from tabcmd.parsers.delete_extracts_parser import DeleteExtractsParser
+from .common_setup import *
+
+commandname = 'deleteextracts'
 
 
 class DeleteExtractsParserTest(unittest.TestCase):
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(datasource="testproject",
-                                                parent_project_path="abcdef",
-                                                embedded_datasources='desc',
-                                                url="1234",
-                                                encrypt=None,
-                                                project="test123",
-                                                workbook="workbooktest",
-                                                include_all="test",
-                                                username="helloworld",
-                                                site="",
-                                                logging_level="info",
-                                                password="testing123",
-                                                no_prompt=True, token=None,
-                                                token_name=None,
-                                                cookie=True,
-                                                no_cookie=False,
-                                                prompt=False,
-                                                ))
-    def test_delete_extract_parser_optional_arguments(self, mock_args):
-        args = DeleteExtractsParser.delete_extracts_parser()
-        assert args == argparse.Namespace(datasource="testproject",
-                                          parent_project_path="abcdef",
-                                          embedded_datasources='desc',
-                                          url="1234",
-                                          encrypt=None,
-                                          project="test123",
-                                          workbook="workbooktest",
-                                          include_all="test",
-                                          username="helloworld",
-                                          site="",
-                                          logging_level="info",
-                                          password="testing123",
-                                          no_prompt=True, token=None,
-                                          token_name=None,
-                                          cookie=True,
-                                          no_cookie=False,
-                                          prompt=False)
+    @classmethod
+    def setUpClass(cls):
+        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
+        DeleteExtractsParser.delete_extracts_parser(manager, mock_command)
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace())
-    def test_delete_extract_parser_missing_all_args(self, mock_args):
-        with self.assertRaises(AttributeError):
-            args = DeleteExtractsParser.delete_extracts_parser()
+    def test_delete_extract_parser_datasource(self):
+        mock_args = [commandname, '-d', 'ds-name', '--project', 'prjt', '--parent-project-path', 'ppp']
+        args = self.parser_under_test.parse_args(mock_args)
+        assert args.datasource == 'ds-name', args
+        assert args.projectname == 'prjt', args
+        assert args.parent_project_path == 'ppp'
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(datasource="testproject",
-                                                embedded_datasources='desc',
-                                                url="1234",
-                                                encrypt=None,
-                                                project="test123",
-                                                workbook="workbooktest",
-                                                include_all="test",
-                                                username="helloworld",
-                                                site="",
-                                                logging_level="info",
-                                                password="testing123",
-                                                no_prompt=True, token=None,
-                                                token_name=None,
-                                                cookie=True,
-                                                no_cookie=False,
-                                                prompt=False,
-                                                ))
-    def test_delete_extract_parser_missing_project_path(self, mock_args):
-        args = DeleteExtractsParser.delete_extracts_parser()
-        with self.assertRaises(AssertionError):
-            assert args != argparse.Namespace(datasource="testproject",
-                                              embedded_datasources='desc',
-                                              url="1234",
-                                              encrypt=None,
-                                              project="test123",
-                                              workbook="workbooktest",
-                                              include_all="test",
-                                              username="helloworld",
-                                              site="",
-                                              logging_level="info",
-                                              password="testing123",
-                                              no_prompt=True, token=None,
-                                              token_name=None,
-                                              cookie=True,
-                                              no_cookie=False,
-                                              prompt=False)
+    def test_delete_extract_parser_workbook(self):
+        mock_args = [commandname, '-w', 'wb-name']
+        args = self.parser_under_test.parse_args(mock_args)
+        assert args.workbook == 'wb-name', args
+        assert args.projectname == '', args
+
+    def test_delete_extract_parser_missing_all_args(self):
+        mock_args = [commandname]
+        with self.assertRaises(SystemExit):
+            args = self.parser_under_test.parse_args(mock_args)
+
+    def test_delete_extract_parser_ds_and_wb(self):
+        mock_args = [commandname, '-d', 'ds', '-w', 'wb']
+        with self.assertRaises(SystemExit):
+            args = self.parser_under_test.parse_args(mock_args)

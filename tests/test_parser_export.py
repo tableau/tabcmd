@@ -5,24 +5,25 @@ try:
 except ImportError:
     import mock
 import argparse
-from pythontabcmd2.parsers.export_parser import ExportParser
+from tabcmd.parsers.export_parser import ExportParser
+from .common_setup import *
+commandname = 'export'
 
 
 class ExportParserTest(unittest.TestCase):
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(pdf=True, fullpdf=True))
-    def test_export_parser_file_type_pdf(self, mock_args):
-        with self.assertRaises(AttributeError):
-            args, url = ExportParser.export_parser()
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace(pdf=True, fullpdf=False))
-    def test_export_parser_file_type_fullpdf(self, mock_args):
-        with self.assertRaises(AttributeError):
-            args, url = ExportParser.export_parser()
+    @classmethod
+    def setUpClass(cls):
+        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
+        ExportParser.export_parser(manager, mock_command)
 
-    @mock.patch('argparse.ArgumentParser.parse_args',
-                return_value=argparse.Namespace())
-    def test_export_parser_missing_all_args(self, mock_args):
-        with self.assertRaises(AttributeError):
-            args, url = ExportParser.export_parser()
+    def test_export_parser_file_type_pdf(self):
+        mock_args = mock_args = ['export', "helloworld", '--pdf']
+        args = self.parser_under_test.parse_args(mock_args)
+        assert args.pdf is True, args
+        assert args.url == 'helloworld', args
+
+    def test_export_parser_missing_all_args(self):
+        mock_args = [commandname]
+        with self.assertRaises(SystemExit):
+            args = self.parser_under_test.parse_args(mock_args)
