@@ -11,5 +11,8 @@ Developer Readme
 > pycodestyle tabcmd tests
 
 - packaging is done with pyinstaller, using github actions for cross-platform setup
-> pyinstaller tabcmd.py --clean --noconfirm
+> pyinstaller tabcmd/tabcmd.py --clean --noconfirm
+
 produces dist/tabcmd.exe
+> dist/tabcmd/tabcmd.exe --help
+> 
