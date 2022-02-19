@@ -1,46 +1,33 @@
-import subprocess
 import os
-import pytest
+import subprocess
+from tests.e2e import credentials
 
-try:
-    from tests.e2e import credentials
-except ImportError:
-    credentials = None  # type: ignore
-
+"""
+This script expects an executable to have been built by pyinstaller
+> pyinstaller tabcmd.py --clean --noconfirm
+"""
 our_program = "tabcmd.exe"
 launch_path = os.path.join("dist", "tabcmd")
 exe = os.path.join(launch_path, our_program)
 
 
-def login(extra="--language", value="en"):
-    if not credentials:
-        return
+def login():
     # --server, --site, --username, --password
-    args = [
-        "python",
-        "-m",
-        "tabcmd",
-        "login",
-        "--server",
-        credentials.server,
-        "--site",
-        credentials.site,
-        "--token",
-        credentials.token,
-        "--token-name",
-        credentials.token_name,
-        "--no-certcheck",
-        extra,
-        value,
-    ]
+    args = [exe, "login", "--server", credentials.SERVER_URL, "--site", credentials.SITE_NAME,
+            "--token", credentials.PAT, "--token-name", credentials.PAT_NAME, "--no-certcheck"]
     print(args)
     return subprocess.check_call(args, stderr=subprocess.STDOUT, shell=True)
 
 
-def get_executable():
+def prechecks():
     print("script is running in:")
     subprocess.check_call(["chdir"], shell=True)
     print("expecting built executable to be in " + launch_path + ":")
     subprocess.check_call(["dir", launch_path], shell=True)
+
     print("running", our_program)
-    return exe
+
+
+if __name__ == "__main__":
+    prechecks()
+    login()

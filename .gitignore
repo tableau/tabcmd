@@ -16,14 +16,8 @@ __pycache__/
 *.pytest_cache
 *.pyc
 *.pkl
-.coverage
-
-# code coverage outputs
-.coverage
-pytest.xml
 
 # content
-# todo probably want to add a workbook and ds in /res for getting started easily
 *.pdf
 *.png
 *.twbx
@@ -33,9 +27,5 @@ pytest.xml
 html
 *.html
 *.twbr
+
 **/credentials.py
-*.txt
-
-# doit
-.doit.*
-
