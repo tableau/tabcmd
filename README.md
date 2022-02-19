@@ -41,11 +41,14 @@ To install tabcmd, follow these steps:
 
 - packaging is done with pyinstaller. You can only build an executable for the platform you build on.
 > pyinstaller tabcmd.py --clean --noconfirm
+
 produces dist/tabcmd.exe
-
-
 To run tabcmd during development, from a console window in the same directory as the file tabcmd.py:
 
+
+> dist/tabcmd/tabcmd.exe --help
+
+or 
 * `python -m tabcmd.py [command_name] [--flags]`
     * Examples:
         * `tabcmd.py login --username [username] --password [password] --server [server_name] --site [site_name]`
