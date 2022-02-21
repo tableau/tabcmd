@@ -9,6 +9,7 @@ class DeleteCommand(DatasourcesAndWorkbooks):
     """
     Command to delete the specified workbook or data source from the server.
     """
+
     @classmethod
     def parse(cls):
         args = DeleteParser.delete_parser()
@@ -20,33 +21,45 @@ class DeleteCommand(DatasourcesAndWorkbooks):
         logger.debug("Launching command")
         session = Session()
         server = session.create_session(args)
-        if args.workbook:
-            # filter match the name and find id
+        located_workbook = None
+        located_datasource = None
+        req_option = TSC.RequestOptions()
+        possible_workbook = args.name if args.name else args.workbook
+        possible_datasource = args.name if args.name else args.datasource
+        try:
+            req_option.filter.add(TSC.Filter(TSC.RequestOptions.Field.Name,
+                                             TSC.RequestOptions.
+                                             Operator.Equals,
+                                             possible_workbook))
+            matching_workbook, _ = server.workbooks.get(req_option)
+            located_workbook = matching_workbook[0]
+
+        except IndexError:  # did not find a workbook so try if there is a datasource with that name
             try:
-                req_option = TSC.RequestOptions()
                 req_option.filter.add(TSC.Filter(TSC.RequestOptions.Field.Name,
                                                  TSC.RequestOptions.
                                                  Operator.Equals,
-                                                 args.workbook))
-                matching_workbook, _ = server.workbooks.get(req_option)
-                workbook_from_list = matching_workbook[0]
-                server.workbooks.delete(workbook_from_list.id)
-                logger.info("Workbook {} deleted".format(workbook_from_list.name))
+                                                 possible_datasource))
+                matching_datasource, _ = server.workbooks.get(req_option)
+                located_datasource = matching_datasource[0]
+            except IndexError:
+                DeleteCommand.exit_with_error(logger, 'No workbook or datasource found')
+
+        if args.workbook or located_workbook:
+            # filter match the name and find id
+            workbook_to_delete = located_workbook if located_workbook else args.workbook
+            try:
+                server.workbooks.delete(workbook_to_delete.id)
+                logger.info("Workbook {} deleted".format(workbook_to_delete.name))
             except IndexError:
                 DeleteCommand.exit_with_error(logger, 'Workbook not found')
             except TSC.ServerResponseError as e:
                 DeleteCommand.exit_with_error(logger, 'Server Error:', e)
 
-        elif args.datasource:
+        elif args.datasource or located_datasource:
+            datasource_to_delete = located_datasource if located_datasource else args.datasource
             try:
-                req_option = TSC.RequestOptions()
-                req_option.filter.add(TSC.Filter(TSC.RequestOptions.Field.Name,
-                                                 TSC.RequestOptions.
-                                                 Operator.Equals,
-                                                 args.datasource))
-                matching_datasource, _ = server.workbooks.get(req_option)
-                datasource_from_list = matching_datasource[0]
-                server.datasources.delete(datasource_from_list.id)
+                server.datasources.delete(datasource_to_delete.id)
             except IndexError:
                 DeleteCommand.exit_with_error(logger, 'Datasource not found')
             except TSC.ServerResponseError as e:
