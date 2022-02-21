@@ -14,9 +14,9 @@ class CreateGroupParserTest(unittest.TestCase):
         CreateGroupParser.create_group_parser(manager, mock_command)
 
     def test_creategroup_parser_required_name(self):
-        mock_args = [commandname, 'groupname']
+        mock_args = [commandname, 'name']
         args = self.parser_under_test.parse_args(mock_args)
-        assert args.groupname == 'groupname'
+        assert args.name == 'name'
 
     def test_creategroup_parser_missing_all_args(self):
         mock_args = [commandname]
