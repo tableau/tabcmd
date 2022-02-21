@@ -21,12 +21,12 @@ class CreateProjectCommand(ProjectCommand):
         logger.debug("Launching command")
         session = Session()
         server = session.create_session(args)
-        if args.parent_path_name is not None:
-            project_path = ProjectCommand.find_project_id(server, args.parent_path_name)
+        if args.parent_project_path is not None:
+            project_path = ProjectCommand.find_project_id(server, args.parent_project_path)
         else:
             project_path = None
 
-        top_level_project = TSC.ProjectItem(args.project_name, args.description, args.content_permission,
+        top_level_project = TSC.ProjectItem(args.name, args.description, None,
                                             project_path)
         try:
             project_item = server.projects.create(top_level_project)
