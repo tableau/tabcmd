@@ -57,7 +57,9 @@ class RunCommandsTest(unittest.TestCase):
     def test_delete(self, mock_session, mock_server):
         mock_session.return_value = mock_server
         mock_server.workbooks = getter
+        mock_server.datasources = getter
         mock_args.workbook = True
+        mock_args.datasource = False
         mock_session.assert_not_called()
         with self.assertRaises(SystemExit):
             delete_command.DeleteCommand.run_command(mock_args)
@@ -156,13 +158,14 @@ class RunCommandsTest(unittest.TestCase):
     # groups
     def test_create_group(self, mock_session, mock_server):
         mock_session.return_value = mock_server
-        mock_args.group_name = 'name'
+        mock_args.name = 'name'
         mock_session.assert_not_called()
         create_group_command.CreateGroupCommand.run_command(mock_args)
         mock_session.assert_called()
 
     def test_delete_group(self, mock_session, mock_server):
         mock_session.return_value = mock_server
+        mock_args.groupname = 'name'
         mock_server.groups = getter
         mock_session.assert_not_called()
         delete_group_command.DeleteGroupCommand.run_command(mock_args)
@@ -179,10 +182,10 @@ class RunCommandsTest(unittest.TestCase):
     def test_create_project(self, mock_session, mock_server):
         mock_session.return_value = mock_server
         mock_server.projects = getter
-        mock_args.project_name = 'name'
+        mock_args.name = 'name'
         mock_args.description = ''
         mock_args.content_permission = None
-        mock_args.parent_path_name = 'projects'
+        mock_args.parent_project_path = 'projects'
         mock_session.assert_not_called()
         create_project_command.CreateProjectCommand.run_command(mock_args)
         mock_session.assert_called()

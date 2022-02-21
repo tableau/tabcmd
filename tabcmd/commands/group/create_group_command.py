@@ -23,7 +23,7 @@ class CreateGroupCommand(GroupCommand):
         server = session.create_session(args)
         """Method to create group using Tableauserverclient methods"""
         try:
-            new_group = TSC.GroupItem(args.group_name)
+            new_group = TSC.GroupItem(args.name)
             server.groups.create(new_group)
             logger.info("Successfully created group")
         except TSC.ServerResponseError as e:
