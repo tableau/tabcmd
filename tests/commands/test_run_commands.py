@@ -57,7 +57,9 @@ class RunCommandsTest(unittest.TestCase):
     def test_delete(self, mock_session, mock_server):
         mock_session.return_value = mock_server
         mock_server.workbooks = getter
+        mock_server.datasources = getter
         mock_args.workbook = True
+        mock_args.datasource = False
         mock_session.assert_not_called()
         with self.assertRaises(SystemExit):
             delete_command.DeleteCommand.run_command(mock_args)
