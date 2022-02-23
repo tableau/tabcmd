@@ -30,12 +30,16 @@ class ParentParser:
         parser.add_argument(
              '-c', '--use-certificate', metavar='',
              help='Use client certificate to sign in. Required when mutual SSL is enabled.')
+
         cookies = parser.add_mutually_exclusive_group()
         cookies.add_argument(
              '--cookie', action='store_true',
              help='Save the session ID when signing in. Subsequent commands will NOT need \
                    to sign in again. This is the default behavior.')
-        # NOT YET IMPLEMENTED parser.add_argument('-h', '--help', metavar='', help="Display tabcmd help and exit.")
+        cookies.add_argument(
+             '--no-cookie', action='store_true',
+             help='Do not save the session ID when signing in. Subsequent commands will need to sign in again.')
+
         parser.add_argument(
              '-l', '--logging-level', choices=['DEBUG', 'INFO', 'ERROR'], default='info', metavar='',
              help='Use the specified logging level. If not specified, the default level is INFO.')
@@ -47,10 +51,6 @@ class ParentParser:
         parser.add_argument(
              '--no-prompt', action='store_true', help='no prompt for password')
 
-        cookies.add_argument(
-             '--no-cookie', action='store_true',
-             help='Do not save the session ID when signing in. Subsequent commands will need to sign in again.')
-
         auth_options = parser.add_mutually_exclusive_group()
         auth_options.add_argument(
              '-tn', '--token-name', metavar='<TOKEN NAME>',
@@ -60,7 +60,7 @@ class ParentParser:
              '-to', '--token', default=None, metavar='<TOKEN VALUE>',
              help='Use the specified Tableau Server Personal Access Token. Requires --token-name to be set.')
         parser.add_argument(
-             '-p', '--password', metavar='<PASSWORD>',
+             '-p', '--password', default=None, metavar='<PASSWORD>',
              help='Use the specified Tableau Server password. Requires --username to be set.')
 
         # NOT YET IMPLEMENTED

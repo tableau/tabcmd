@@ -22,6 +22,10 @@ class RemoveUserCommand(UserCommand):
         server = session.create_session(args)
         number_of_users_removed = 0
         number_of_errors = 0
+
+        if args.require_all_valid:
+            UserCommand.validate_file_for_import(args.csv_lines, logger)
+
         user_obj_list = UserCommand.get_users_from_file(args.csv_lines)
         for user_obj in user_obj_list:
             username = user_obj.username

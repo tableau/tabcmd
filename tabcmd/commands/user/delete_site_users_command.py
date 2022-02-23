@@ -1,8 +1,8 @@
-from ..user.user_command import UserCommand
+from tabcmd.commands.user.user_command import UserCommand
 import tableauserverclient as TSC
 from tabcmd.execution.logger_config import log
-from ..auth.session import Session
-from .site_command import SiteCommand
+from tabcmd.commands.auth.session import Session
+from tabcmd.commands.site.site_command import SiteCommand
 from tabcmd.parsers.delete_site_users_parser import DeleteSiteUsersParser
 
 
@@ -26,6 +26,10 @@ class DeleteSiteUsersCommand(SiteCommand):
 
         number_of_users_deleted = 0
         number_of_errors = 0
+
+        if args.require_all_valid:
+            UserCommand.validate_file_for_import(args.csv_lines, logger)
+
         user_obj_list = UserCommand.get_users_from_file(args.csv_lines)
         logger.info("======== 0% complete ========")
         for user_obj in user_obj_list:

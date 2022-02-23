@@ -13,3 +13,4 @@ class CreateSiteUsersParser:
         create_site_users_parser = manager.include(command)
         set_role_arg(create_site_users_parser)
         set_users_file_positional(create_site_users_parser)
+        set_completeness_options(create_site_users_parser)

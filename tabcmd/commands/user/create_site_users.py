@@ -25,6 +25,10 @@ class CreateSiteUsersCommand(UserCommand):
         server = session.create_session(args)
         number_of_users_added = 0
         number_of_errors = 0
+
+        if args.require_all_valid:
+            UserCommand.validate_file_for_import(args.csv_lines, logger, detailed=True)
+
         user_obj_list = UserCommand.get_users_from_file(args.csv_lines)
         logger.info("======== 0% complete ========")
         for user_obj in user_obj_list:

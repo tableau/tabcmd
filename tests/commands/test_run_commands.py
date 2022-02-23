@@ -9,10 +9,9 @@ from tabcmd.commands.extracts import create_extracts_command, delete_extracts_co
     encrypt_extracts_command, reencrypt_extracts_command, refresh_extracts_command
 from tabcmd.commands.group import create_group_command, delete_group_command
 from tabcmd.commands.help import help_command
-from tabcmd.commands.project import create_project_command, delete_project_command, publish_samples_command
-from tabcmd.commands.site import create_site_command, delete_site_command, delete_site_users_command, \
-    edit_site_command, list_sites_command
-from tabcmd.commands.user import add_users_command, create_site_users, remove_users_command, user_command
+from tabcmd.commands.project import create_project_command, delete_project_command
+from tabcmd.commands.site import create_site_command, delete_site_command, edit_site_command, list_sites_command
+from tabcmd.commands.user import add_users_command, create_site_users, remove_users_command, delete_site_users_command
 
 mock_args = argparse.Namespace()
 mock_args.logging_level = 'info'
@@ -230,6 +229,7 @@ class RunCommandsTest(unittest.TestCase):
     @patch('tabcmd.commands.user.user_command.UserCommand.get_users_from_file')
     def test_delete_site_users(self, mock_file, mock_session, mock_server):
         mock_args.csv_users = []
+        mock_args.require_all_valid = False
         mock_file.return_value = []
         mock_session.return_value = mock_server
         mock_session.assert_not_called()
@@ -259,12 +259,14 @@ class RunCommandsTest(unittest.TestCase):
         mock_session.return_value = mock_server
         mock_server.sites = getter
         mock_args.csv_lines = []
+        mock_args.require_all_valid = False
         mock_session.assert_not_called()
         add_users_command.AddUserCommand.run_command(mock_args)
         mock_session.assert_called()
 
     @patch('tabcmd.commands.user.user_command.UserCommand.get_users_from_file')
     def test_create_site_users(self, mock_file, mock_session, mock_server):
+        mock_args.require_all_valid = False
         mock_file.return_value = []
         mock_session.return_value = mock_server
         mock_session.assert_not_called()
@@ -276,6 +278,7 @@ class RunCommandsTest(unittest.TestCase):
         mock_file.return_value = []
         mock_session.return_value = mock_server
         mock_args.csv_lines = []
+        mock_args.require_all_valid = False
         mock_session.assert_not_called()
         remove_users_command.RemoveUserCommand.run_command(mock_args)
         mock_session.assert_called()
