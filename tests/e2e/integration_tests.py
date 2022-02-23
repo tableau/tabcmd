@@ -34,10 +34,10 @@ class E2EServerTests(unittest.TestCase):
         # TODO current test command doesn't recognize skips - change to proper pytest
         # TODO and then we can get rid of the check above
         args = argparse.Namespace(
-            server=credentials.server,
-            site=credentials.site,
-            token_name=credentials.token_name,
-            token=credentials.token,
+            server=credentials.SERVER_URL,
+            site=credentials.SITE_NAME,
+            token_name=credentials.PAT_NAME,
+            token=credentials.PAT,
             username=None,
             password=None,
             logging_level=None,

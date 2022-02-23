@@ -12,8 +12,6 @@ def _test_command(test_args: list[str]):
     return subprocess.check_call(calling_args)
 
 
-# this test fails because we don't have the positional groupname implemented
-"""
 def test_create_delete_group():
     command = "creategroup"
     arguments = [command, vars.group_name]
@@ -22,7 +20,6 @@ def test_create_delete_group():
     command = "deletegroup"
     arguments = [command, vars.group_name]
     _test_command(arguments)
-"""
 
 
 def test_login():
@@ -32,3 +29,4 @@ def test_login():
 
 if __name__ == "__main__":
     test_login()
+    # test_create_delete_group()

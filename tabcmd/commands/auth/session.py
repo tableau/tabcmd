@@ -45,7 +45,10 @@ class Session:
 
     @staticmethod
     def _allow_prompt(args):
-        return args.prompt is True or not args.no_prompt
+        try:
+            return not args.no_prompt
+        except Exception:
+            return True
 
     def _create_new_username_credential(self, args):
         self._update_session_data(args)

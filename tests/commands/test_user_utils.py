@@ -35,7 +35,6 @@ class UserDataTest(unittest.TestCase):
             actual = UserCommand.evaluate_license_level_admin_level(input[0], input[1], input[2])
             assert actual == input[3], input + [actual]
 
-
     def test_get_user_detail_empty_line(self):
         test_line = ""
         test_user = UserCommand.parse_line(test_line)
