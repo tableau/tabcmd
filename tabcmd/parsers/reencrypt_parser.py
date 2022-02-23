@@ -1,5 +1,4 @@
 import sys
-from tabcmd.execution.parent_parser import ParentParser
 
 
 class ReencryptExtractsParser:

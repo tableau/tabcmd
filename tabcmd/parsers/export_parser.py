@@ -1,7 +1,3 @@
-import sys
-from tabcmd.execution.parent_parser import ParentParser
-
-
 class ExportParser:
     """
     Parser for the command export

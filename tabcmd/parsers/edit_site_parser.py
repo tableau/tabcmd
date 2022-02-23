@@ -1,6 +1,3 @@
-from .global_options import *
-
-
 class EditSiteParser:
     """
     Parser for the command editsite

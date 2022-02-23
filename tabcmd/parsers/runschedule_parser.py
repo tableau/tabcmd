@@ -1,6 +1,3 @@
-import sys
-
-
 class RunScheduleParser:
     """
     Parser to runschedule command
