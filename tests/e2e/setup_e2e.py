@@ -19,8 +19,8 @@ def login():
         pytest.skip('No credentials file found to run tests against a live server')
 
     # --server, --site, --username, --password
-    args = [exe, "login", "--server", credentials.SERVER_URL, "--site", credentials.SITE_NAME,
-            "--token", credentials.PAT, "--token-name", credentials.PAT_NAME, "--no-certcheck"]
+    args = [exe, "login", "--server", credentials.server, "--site", credentials.site,
+            "--token", credentials.token, "--token-name", credentials.token_name, "--no-certcheck"]
     print(args)
     return subprocess.check_call(args, stderr=subprocess.STDOUT, shell=True)
 
