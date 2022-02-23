@@ -39,12 +39,16 @@ class UserCommand(Commands):
     @staticmethod
     def validate_file_for_import(csv_file, logger, detailed=False):
         num_errors = 0
+        num_lines = 0
         # encoding to UTF-8 defined in argparse option
         for line in csv_file:
             try:
+                num_lines += 1
                 if detailed:
+                    logger.debug("details - {}".format(line))
                     UserCommand.validate_user_detail_line(line)
                 else:
+                    logger.debug("username - {}".format(line))
                     UserCommand.validate_username(line)
             except Exception as exc:
                 logger.info("invalid line [{0}]: {1}".format(line, exc))
@@ -52,7 +56,7 @@ class UserCommand(Commands):
         if num_errors > 0:
             Commands.exit_with_error(
                 logger, "Invalid users in file - please fix {} problems and try again.".format(num_errors))
-        return
+        return num_lines
 
     # valid: username, domain/username, username@domain, domain/username@email
     @staticmethod
@@ -111,6 +115,7 @@ class UserCommand(Commands):
         if len(split_line) == 1:
             return split_line[0]
         else:
+
             return UserCommand.get_user_details(split_line)
 
     @staticmethod
