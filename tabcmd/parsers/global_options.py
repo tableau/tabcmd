@@ -44,14 +44,22 @@ def set_parent_project_arg(parser):
 
 
 def set_users_file_arg(parser):
-    parser.add_argument('--users', required=True, type=argparse.FileType('r', encoding='UTF-8'),
-                        help='CSV file containing a list of users.')
+    parser.add_argument(
+        "--users",
+        required=True,
+        type=argparse.FileType("r", encoding="UTF-8"),
+        help="CSV file containing a list of users.",
+    )
     return parser
 
 
 def set_users_file_positional(parser):
-    parser.add_argument('filename', metavar='filename.csv', type=argparse.FileType('r', encoding='UTF-8'),
-                        help='CSV file containing a list of users.')
+    parser.add_argument(
+        "filename",
+        metavar="filename.csv",
+        type=argparse.FileType("r", encoding="UTF-8"),
+        help="CSV file containing a list of users.",
+    )
     return parser
 
 

@@ -4,7 +4,7 @@ from tabcmd.execution.logger_config import log
 from ..auth.session import Session
 
 
-class LogoutCommand():
+class LogoutCommand:
     """
     Command to Log user out of the server
     """

@@ -21,7 +21,7 @@ class DeleteGroupParserTestT(unittest.TestCase):
     def test_delete_group(self):
         mock_args = [commandname, "group-name"]
         args = self.parser_under_test.parse_args(mock_args)
-        assert args.name == 'group-name', args
+        assert args.name == "group-name", args
 
     def test_delete_group_parser_required_name_missing(self):
         mock_args = [commandname]

@@ -48,7 +48,6 @@ getter.refresh = MagicMock("refresh", return_value=fake_job)
 @patch("tableauserverclient.Server")
 @patch("tabcmd.commands.auth.session.Session.create_session")
 class RunCommandsTest(unittest.TestCase):
-
     @staticmethod
     def _set_up_session(mock_session, mock_server):
         mock_session.return_value = mock_server
@@ -63,7 +62,7 @@ class RunCommandsTest(unittest.TestCase):
         login_command.LoginCommand.run_command(mock_args)
         mock_session.assert_called_with(mock_args)
 
-    @patch('tabcmd.commands.auth.session.Session.end_session_and_clear_data')
+    @patch("tabcmd.commands.auth.session.Session.end_session_and_clear_data")
     def test_logout(self, mock_end_session, mock_create_session, mock_server):
         logout_command.LogoutCommand.run_command(mock_args)
         mock_create_session.assert_not_called()
@@ -89,7 +88,7 @@ class RunCommandsTest(unittest.TestCase):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.workbooks = getter
         mock_args.fullpdf = True
-        mock_args.url = 'url/split/pieces'
+        mock_args.url = "url/split/pieces"
         with self.assertRaises(SystemExit):
             export_command.ExportCommand.run_command(mock_args)
             mock_session.assert_called()
@@ -99,8 +98,8 @@ class RunCommandsTest(unittest.TestCase):
     def test_get(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.views = getter
-        mock_args.url = 'url/split/stuff'
-        mock_args.filename = 'filename.pdf'
+        mock_args.url = "url/split/stuff"
+        mock_args.filename = "filename.pdf"
         with self.assertRaises(SystemExit):
             get_url_command.GetUrl.run_command(mock_args)
             mock_session.assert_called()
@@ -146,20 +145,20 @@ class RunCommandsTest(unittest.TestCase):
     def test_encrypt_extract(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.sites = getter
-        mock_args.site_name = 'name'
+        mock_args.site_name = "name"
         encrypt_extracts_command.EncryptExtracts.run_command(mock_args)
         mock_session.assert_called()
 
     def test_reencrypt_extract(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
-        mock_args.site_name = 'name'
+        mock_args.site_name = "name"
         mock_server.sites = getter
         reencrypt_extracts_command.ReencryptExtracts.run_command(mock_args)
         mock_session.assert_called()
 
     def test_refresh_extract(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
-        mock_args.datasource = 'datasource'
+        mock_args.datasource = "datasource"
         mock_server.datasources = getter
         refresh_extracts_command.RefreshExtracts.run_command(mock_args)
         mock_session.assert_called()
@@ -167,13 +166,13 @@ class RunCommandsTest(unittest.TestCase):
     # groups
     def test_create_group(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
-        mock_args.name = 'name'
+        mock_args.name = "name"
         create_group_command.CreateGroupCommand.run_command(mock_args)
         mock_session.assert_called()
 
     def test_delete_group(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
-        mock_args.name = 'name'
+        mock_args.name = "name"
         mock_server.groups = getter
         delete_group_command.DeleteGroupCommand.run_command(mock_args)
         mock_session.assert_called()
@@ -191,7 +190,7 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.name = "name"
         mock_args.description = ""
         mock_args.content_permission = None
-        mock_args.parent_project_path = 'projects'
+        mock_args.parent_project_path = "projects"
         create_project_command.CreateProjectCommand.run_command(mock_args)
         mock_session.assert_called()
 
@@ -206,7 +205,7 @@ class RunCommandsTest(unittest.TestCase):
     def test_publish_project(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.projects = getter
-        mock_args.parent_path_name = ''
+        mock_args.parent_path_name = ""
         # Not yet implemented
         # publish_samples_command.PublishSamplesCommand.run_command(mock_args)
         # mock_session.assert_called()
@@ -214,8 +213,8 @@ class RunCommandsTest(unittest.TestCase):
     # site
     def test_create_site(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
-        mock_args.site_name = 'site-name'
-        mock_args.url = 'site-content-url'
+        mock_args.site_name = "site-name"
+        mock_args.url = "site-content-url"
         mock_args.admin_mode = None
         mock_args.user_quota = (None,)
         mock_args.storage_quota = None
@@ -225,7 +224,7 @@ class RunCommandsTest(unittest.TestCase):
     def test_delete_site(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.sites = getter
-        mock_args.site_name = 'site-name'
+        mock_args.site_name = "site-name"
         delete_site_command.DeleteSiteCommand.run_command(mock_args)
         mock_session.assert_called()
 
@@ -245,11 +244,10 @@ class RunCommandsTest(unittest.TestCase):
         mock_session.assert_called()
 
 
-@patch('tableauserverclient.Server')
-@patch('tabcmd.commands.auth.session.Session.create_session')
-@patch('tabcmd.commands.user.user_command.UserCommand.get_users_from_file')
+@patch("tableauserverclient.Server")
+@patch("tabcmd.commands.auth.session.Session.create_session")
+@patch("tabcmd.commands.user.user_command.UserCommand.get_users_from_file")
 class RunUserCommandsTest(unittest.TestCase):
-
     @staticmethod
     def _set_up_file(mock_file):
         mock_file.return_value = []

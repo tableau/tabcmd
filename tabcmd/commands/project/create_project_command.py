@@ -28,11 +28,10 @@ class CreateProjectCommand(ProjectCommand):
             project_path = None
 
         logger.info("===== Creating project '{}' on the server...".format(args.name))
-        top_level_project = TSC.ProjectItem(args.name, args.description, None,
-                                            project_path)
+        top_level_project = TSC.ProjectItem(args.name, args.description, None, project_path)
         try:
             project_item = server.projects.create(top_level_project)
-            logger.info('===== Succeeded')
+            logger.info("===== Succeeded")
             return project_item
         except TSC.ServerResponseError as e:
-            Commands.exit_with_error(logger, 'Error', e)
+            Commands.exit_with_error(logger, "Error", e)

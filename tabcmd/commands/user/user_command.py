@@ -56,33 +56,40 @@ class UserCommand(Commands):
                 num_errors += 1
         if num_errors > 0:
             Commands.exit_with_error(
-                logger, "Invalid users in file - please fix {} problems and try again.".format(num_errors))
+                logger, "Invalid users in file - please fix {} problems and try again.".format(num_errors)
+            )
         return num_lines
 
     # valid: username, domain/username, username@domain, domain/username@email
     @staticmethod
     def validate_username(username):
-        if username is None or username == "" or username.strip(' ') == "":
+        if username is None or username == "" or username.strip(" ") == "":
             raise AttributeError("Username must be specified in csv file")
-        if username.find(' ') >= 0:
+        if username.find(" ") >= 0:
             raise AttributeError("Username cannot contain spaces")
         at_symbol = username.find("@")
 
         if at_symbol >= 0:
-            username = username[:at_symbol] + 'X' + username[at_symbol + 1:]
+            username = username[:at_symbol] + "X" + username[at_symbol + 1 :]
             if username.find("@") >= 0:
-                raise AttributeError("If a user name includes an @ character that represents anything other than a\
-                 domain separator, you need to refer to the symbol using the hexadecimal format: \\0x40")
+                raise AttributeError(
+                    "If a user name includes an @ character that represents anything other than a\
+                 domain separator, you need to refer to the symbol using the hexadecimal format: \\0x40"
+                )
 
     @staticmethod
     def validate_user_detail_line(incoming):
-        line = list(map(str.strip, incoming.split(',')))
+        line = list(map(str.strip, incoming.split(",")))
         if len(line) > 7:
-            raise AttributeError("The file contains {} columns, but there are only 7 valid columns in a user \
-             import csv file".format(len(line)))
+            raise AttributeError(
+                "The file contains {} columns, but there are only 7 valid columns in a user \
+             import csv file".format(
+                    len(line)
+                )
+            )
         username = line[Column.USERNAME.value]
         UserCommand.validate_username(username)
-        for i in range(1, len(line)-1):
+        for i in range(1, len(line) - 1):
             if not UserCommand.validate_item(line[i], Column(i)):
                 raise AttributeError("Invalid value for {0}: {1}".format(Column[i].name, line[i]))
 
@@ -91,9 +98,14 @@ class UserCommand(Commands):
         if item is None or item == "":
             # value can be empty for any column except user, which is checked elsewhere
             return True
-        if type == Column.LICENSE.value and item in license_roles or\
-                type == Column.ADMIN.value and item in admin_roles or \
-                type == Column.PUBLISHER.value and item in publish_options:
+        if (
+            type == Column.LICENSE.value
+            and item in license_roles
+            or type == Column.ADMIN.value
+            and item in admin_roles
+            or type == Column.PUBLISHER.value
+            and item in publish_options
+        ):
             return True
         return True
 
@@ -109,10 +121,10 @@ class UserCommand(Commands):
     def parse_line(line):
         if line is None:
             return None
-        if line is False or line == '\n' or line == "":
+        if line is False or line == "\n" or line == "":
             return None
         line = line.strip().lower()
-        split_line = list(map(str.strip, line.split(',')))
+        split_line = list(map(str.strip, line.split(",")))
         if len(split_line) == 1:
             return split_line[0]
         else:

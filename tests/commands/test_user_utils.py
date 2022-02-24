@@ -45,13 +45,13 @@ class UserDataTest(unittest.TestCase):
         test_line = "username, pword, fname, license, admin, pub, email"
         test_user = UserCommand.parse_line(test_line)
         print(test_user.username, test_user.password, test_user.full_name)
-        assert test_user.username == 'username', test_user.username
-        assert test_user.password == 'pword', test_user.password
-        assert test_user.full_name == 'fname', test_user.full_name
-        assert test_user.license_level == 'license', test_user.license_level
-        assert test_user.admin_level == 'admin', test_user.admin_level
-        assert test_user.publisher == 'pub', test_user.publisher
-        assert test_user.email == 'email', test_user.email
+        assert test_user.username == "username", test_user.username
+        assert test_user.password == "pword", test_user.password
+        assert test_user.full_name == "fname", test_user.full_name
+        assert test_user.license_level == "license", test_user.license_level
+        assert test_user.admin_level == "admin", test_user.admin_level
+        assert test_user.publisher == "pub", test_user.publisher
+        assert test_user.email == "email", test_user.email
         # assert test_user.site_role == 'Unlicensed', test_user.site_role
 
         def test_get_users_from_file_missing_elements(self):
@@ -59,13 +59,15 @@ class UserDataTest(unittest.TestCase):
                 ["username, pword, , yes, email"],
                 ["username"],
                 ["username, pword"],
-                ["username, pword, , , yes, email"]]
+                ["username, pword, , , yes, email"],
+            ]
             with self.assertRaises(AttributeError):
                 UserCommand.get_users_from_file(bad_content)
 
     valid_import_content = [
         "username, pword, fname, license, admin, pub, email",
-        "username, pword, fname, license, admin, pub, email"]
+        "username, pword, fname, license, admin, pub, email",
+    ]
 
     def test_get_users_from_file(self):
         assert UserCommand.get_users_from_file(UserDataTest.valid_import_content) is not None
@@ -80,7 +82,7 @@ class UserDataTest(unittest.TestCase):
         "domain/valid@tmail.com",
         "va!@#$%^&*()lid",
         "in@v@lid",
-        "in valid"
+        "in valid",
     ]
 
     def test_validate_username(self):

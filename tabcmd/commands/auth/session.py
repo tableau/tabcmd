@@ -100,7 +100,7 @@ class Session:
         self.logger.info("=====   Site: {}".format(self.site))
 
     def _validate_existing_signin(self, args):
-        self.logger.info('===== Continuing previous session')
+        self.logger.info("===== Continuing previous session")
         tableau_server = Session._set_connection_options(self.server, args)
         self._print_server_info()
         try:
@@ -108,10 +108,10 @@ class Session:
             if tableau_server.is_signed_in():
                 return tableau_server
         except TSC.ServerResponseError as e:
-            self.logger.info('===== Abandoning invalid session')
-            self.logger.debug('Invalid session token: ', e)
+            self.logger.info("===== Abandoning invalid session")
+            self.logger.debug("Invalid session token: ", e)
         except Exception as e:
-            self.logger.info('===== Abandoning invalid server connection:')
+            self.logger.info("===== Abandoning invalid server connection:")
             self.logger.debug("Error contacting the server: {}".format(e))
         self.auth_token = None
         return None
