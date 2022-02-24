@@ -8,6 +8,7 @@ class RunSchedule(DatasourcesAndWorkbooks):
     """
     This command runs the specified schedule as it is on the server.
     """
+
     @classmethod
     def parse(cls):
         args = RunScheduleParser.runschedule_parser()

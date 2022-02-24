@@ -9,7 +9,7 @@ import argparse
 from tabcmd.parsers.delete_site_users_parser import DeleteSiteUsersParser
 from .common_setup import *
 
-commandname = 'deletesiteusers'
+commandname = "deletesiteusers"
 
 
 class DeleteSiteUsersParserTest(unittest.TestCase):
@@ -21,10 +21,10 @@ class DeleteSiteUsersParserTest(unittest.TestCase):
         DeleteSiteUsersParser.delete_site_users_parser(manager, mock_command)
 
     def test_delete_site_user_parser(self):
-        with mock.patch('builtins.open', mock.mock_open(read_data='test')) as open_file:
+        with mock.patch("builtins.open", mock.mock_open(read_data="test")) as open_file:
             mock_args = [commandname, "users.csv"]
             args = self.parser_under_test.parse_args(mock_args)
-            open_file.assert_called_with('users.csv', 'r', -1, None, None)
+            open_file.assert_called_with("users.csv", "r", -1, None, None)
 
     def test_delete_site_user_parser_missing_arguments(self):
         mock_args = [commandname]

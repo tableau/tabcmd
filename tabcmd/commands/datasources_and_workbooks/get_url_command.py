@@ -38,11 +38,11 @@ class GetUrl(DatasourcesAndWorkbooks):
     def evaluate_file_name(logger, file_name, url):
         type_of_file = None
         if file_name is not None:
-            split_file_name = file_name.split('.')
+            split_file_name = file_name.split(".")
             type_of_file = split_file_name[1]
         else:  # file_name is None:
             # grab from url
-            split_url_to_get_extension = url.split('.')
+            split_url_to_get_extension = url.split(".")
             if len(split_url_to_get_extension) > 1:
                 type_of_file = split_url_to_get_extension[1]
             else:
@@ -78,7 +78,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             view_second_half_url = GetUrl.get_view_without_extension(separated_list[::-1][0])
         else:
             view_second_half_url = separated_list[2]
-        return '{}/sheets/{}'.format(separated_list[1], view_second_half_url)
+        return "{}/sheets/{}".format(separated_list[1], view_second_half_url)
 
     @staticmethod
     def generate_pdf(logger, server, args):
@@ -88,12 +88,12 @@ class GetUrl(DatasourcesAndWorkbooks):
             req_option_pdf = TSC.PDFRequestOptions(maxage=1)
             server.views.populate_pdf(views_from_list, req_option_pdf)
             if args.filename is None:
-                file_name_with_path = '{}.pdf'.format(views_from_list .name)
+                file_name_with_path = "{}.pdf".format(views_from_list.name)
             else:
                 file_name_with_path = args.filename
             formatted_file_name = file_name_with_path
-            with open(formatted_file_name, 'wb') as f:
-                f.write(views_from_list .pdf)
+            with open(formatted_file_name, "wb") as f:
+                f.write(views_from_list.pdf)
                 logger.info("Exported successfully")
         except TSC.ServerResponseError as e:
             GetUrl.exit_with_error(logger, "Server error:", e)
@@ -106,11 +106,11 @@ class GetUrl(DatasourcesAndWorkbooks):
             req_option_csv = TSC.CSVRequestOptions(maxage=1)
             server.views.populate_csv(views_from_list, req_option_csv)
             if args.filename is None:
-                file_name_with_path = '{}.png'.format(view)
+                file_name_with_path = "{}.png".format(view)
             else:
                 file_name_with_path = args.filename
             formatted_file_name = file_name_with_path
-            with open(formatted_file_name, 'wb') as f:
+            with open(formatted_file_name, "wb") as f:
                 f.write(views_from_list.png)
                 logger.info("Exported successfully")
         except TSC.ServerResponseError as e:
@@ -124,11 +124,11 @@ class GetUrl(DatasourcesAndWorkbooks):
             req_option_csv = TSC.CSVRequestOptions(maxage=1)
             server.views.populate_csv(views_from_list, req_option_csv)
             if args.filename is None:
-                file_name_with_path = '{}.csv'.format(view)
+                file_name_with_path = "{}.csv".format(view)
             else:
                 file_name_with_path = args.filename
             formatted_file_name = file_name_with_path
-            with open(formatted_file_name, 'wb') as f:
+            with open(formatted_file_name, "wb") as f:
                 f.write(views_from_list.csv)
                 logger.info("Exported successfully")
         except TSC.ServerResponseError as e:

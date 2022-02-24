@@ -10,6 +10,7 @@ class CreateSiteCommand(SiteCommand):
     """
     Command to Create a site
     """
+
     @classmethod
     def parse(cls):
         args = CreateSiteParser.create_site_parser()
@@ -21,10 +22,15 @@ class CreateSiteCommand(SiteCommand):
         logger.debug("Launching command")
         session = Session()
         server = session.create_session(args)
-        new_site = TSC.SiteItem(name=args.site_name, content_url=args.url, admin_mode=args.admin_mode,
-                                user_quota=args.user_quota, storage_quota=args.storage_quota)
+        new_site = TSC.SiteItem(
+            name=args.site_name,
+            content_url=args.url,
+            admin_mode=args.admin_mode,
+            user_quota=args.user_quota,
+            storage_quota=args.storage_quota,
+        )
         try:
             server.sites.create(new_site)
             logger.info("Successfully created a new site called: {}".format(args.site_name))
         except TSC.ServerResponseError as e:
-            Commands.exit_with_error(logger, 'error creating site', e)
+            Commands.exit_with_error(logger, "error creating site", e)

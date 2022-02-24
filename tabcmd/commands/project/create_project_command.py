@@ -10,6 +10,7 @@ class CreateProjectCommand(ProjectCommand):
     """
     Command to create a project
     """
+
     @classmethod
     def parse(cls):
         args = CreateProjectParser.create_project_parser()
@@ -26,11 +27,10 @@ class CreateProjectCommand(ProjectCommand):
         else:
             project_path = None
 
-        top_level_project = TSC.ProjectItem(args.name, args.description, None,
-                                            project_path)
+        top_level_project = TSC.ProjectItem(args.name, args.description, None, project_path)
         try:
             project_item = server.projects.create(top_level_project)
-            logger.info('Successfully created a new project called: {}'.format(top_level_project.name))
+            logger.info("Successfully created a new project called: {}".format(top_level_project.name))
             return project_item
         except TSC.ServerResponseError as e:
-            Commands.exit_with_error(logger, 'A project by this name already exists', e)
+            Commands.exit_with_error(logger, "A project by this name already exists", e)

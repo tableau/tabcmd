@@ -9,6 +9,7 @@ class AddUserCommand(UserCommand):
     """
     Command to Adds users to a specified group
     """
+
     @classmethod
     def parse(cls):
         args = AddUserParser.add_user_parser()
