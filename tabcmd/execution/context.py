@@ -18,7 +18,7 @@ class Context:
             sys.exit(1)
 
         # maybe argparse will do this?
-        if namespace.func == 'help':
+        if namespace.func == "help":
             parser.print_help()
             sys.exit(0)
 

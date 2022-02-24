@@ -8,7 +8,7 @@ class SiteCommand(Commands):
 
     @staticmethod
     def find_site_id(server, site_name):
-        """ Method to find the site id given site name"""
+        """Method to find the site id given site name"""
         all_sites, pagination_item = server.sites.get()
         all_site_names_ids = [(site.name, site.id) for site in all_sites]
         site_id = None

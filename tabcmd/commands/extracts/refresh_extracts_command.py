@@ -9,6 +9,7 @@ class RefreshExtracts(ExtractsCommand):
     """
     Command to Perform a full or incremental refresh of extracts belonging to the specified workbook or data source.
     """
+
     @classmethod
     def parse(cls):
         args = RefreshExtractsParser.refresh_extracts_parser()
@@ -23,16 +24,16 @@ class RefreshExtracts(ExtractsCommand):
             try:
                 datasource_id = ExtractsCommand.get_data_source_id(server, args.datasource)
                 job = server.datasources.refresh(datasource_id)
-                ExtractsCommand.print_success_message(logger, 'refresh', job)
+                ExtractsCommand.print_success_message(logger, "refresh", job)
             except TSC.ServerResponseError as e:
-                ExtractsCommand.exit_with_error(logger, 'Server Error', e)
+                ExtractsCommand.exit_with_error(logger, "Server Error", e)
 
         elif args.workbook:
             try:
                 workbook_id = ExtractsCommand.get_workbook_id(server, args.workbook)
                 job = server.workbooks.refresh(workbook_id)
-                ExtractsCommand.print_success_message(logger, 'refresh', job)
+                ExtractsCommand.print_success_message(logger, "refresh", job)
             except TSC.ServerResponseError as e:
-                ExtractsCommand.exit_with_error(logger, 'Server Error', e)
+                ExtractsCommand.exit_with_error(logger, "Server Error", e)
         else:
             ExtractsCommand.exit_with_error(logger, "You must specify either a workbook or datasource")

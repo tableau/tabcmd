@@ -13,6 +13,7 @@ class Session:
     """
     Session class handles all authentication related work
     """
+
     def __init__(self):
         self.username = None
         self._password = None  # underscore naming is a reminder that we don't save this
@@ -35,8 +36,8 @@ class Session:
         self.username = args.username or self.username
         if args.username:
             self._password = None
-        self.site = args.site or self.site or ''
-        self.server = args.server or self.server or 'http://localhost'
+        self.site = args.site or self.site or ""
+        self.server = args.server or self.server or "http://localhost"
         self.logging_level = args.logging_level or self.logging_level
         self.token_name = args.token_name or self.token_name
         if args.token_name:
@@ -57,14 +58,14 @@ class Session:
             if self._allow_prompt(args):
                 args.password = getpass.getpass("Password:")
             else:
-                raise SystemExit('No password entered')
+                raise SystemExit("No password entered")
 
         if self.username and args.password:
             credentials = TSC.TableauAuth(self.username, args.password, site_id=self.site)
             self.last_login_using = "username"
             return credentials
         else:
-            raise SystemExit('Couldn\'t find username')
+            raise SystemExit("Couldn't find username")
 
     def _create_new_token_credential(self, args):
         self._update_session_data(args)
@@ -72,20 +73,20 @@ class Session:
             if self._allow_prompt(args):
                 self.token = getpass.getpass("Token:")
             else:
-                raise SystemExit('No token value entered')
+                raise SystemExit("No token value entered")
         if self.token_name and self.token:
             credentials = TSC.PersonalAccessTokenAuth(self.token_name, self.token, site_id=self.site)
             self.last_login_using = "token"
             return credentials
         else:
-            raise SystemExit('Couldn\'t find token name')
+            raise SystemExit("Couldn't find token name")
 
     @staticmethod
     def _set_connection_options(server, args):
         # args to handle here: proxy, --no-proxy, cert, --no-certcheck, timeout
         tableau_server = TSC.Server(server)
         if args.no_certcheck:
-            tableau_server.add_http_options({'verify': False})
+            tableau_server.add_http_options({"verify": False})
             requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
         tableau_server.use_server_version()  # this will attempt to contact the server
         return tableau_server
@@ -100,7 +101,7 @@ class Session:
         self.logger.info("===== Connecting to the server...")
 
     def _validate_existing_signin(self, args):
-        self.logger.info('=====Re-using existing session')
+        self.logger.info("=====Re-using existing session")
         tableau_server = Session._set_connection_options(self.server, args)
         self._print_server_info()
         try:
@@ -108,10 +109,10 @@ class Session:
             if tableau_server.is_signed_in():
                 return tableau_server
         except TSC.ServerResponseError as e:
-            self.logger.info('=====Abandoning invalid session')
-            self.logger.debug('Invalid session token: ', e)
+            self.logger.info("=====Abandoning invalid session")
+            self.logger.debug("Invalid session token: ", e)
         except Exception as e:
-            self.logger.info('=====Abandoning invalid server connection:')
+            self.logger.info("=====Abandoning invalid server connection:")
             self.logger.debug("Error contacting the server: {}".format(e))
         self.auth_token = None
         return None
@@ -131,12 +132,14 @@ class Session:
         except TSC.ServerResponseError as e:
             if e.code == Constants.login_error:
                 Commands.exit_with_error(
-                    self.logger, "Signing in failed: Please check login credentials and try again.")
+                    self.logger, "Signing in failed: Please check login credentials and try again."
+                )
             else:
                 Commands.exit_with_error(
-                    self.logger, "Signing in failed: Please check login credentials and try again.", e)
+                    self.logger, "Signing in failed: Please check login credentials and try again.", e
+                )
         except Exception as e:
-            Commands.exit_with_error(self.logger, 'Server Error', e)
+            Commands.exit_with_error(self.logger, "Server Error", e)
         return tableau_server
 
     # external entry point:
@@ -174,7 +177,8 @@ class Session:
             signed_in_object = self._sign_in(credentials, args)
         if not signed_in_object:
             Commands.exit_with_error(
-                self.logger, "Unable to find or create a session. Please check credentials and login again.")
+                self.logger, "Unable to find or create a session. Please check credentials and login again."
+            )
 
         if args.no_cookie:
             self._remove_json()
@@ -196,55 +200,57 @@ class Session:
         self.last_login_using = None
 
     def _last_logged_in_by_username(self):
-        return self.last_login_using == 'username'
+        return self.last_login_using == "username"
 
     def _last_logged_in_by_token(self):
-        return self.last_login_using == 'token'
+        return self.last_login_using == "token"
 
     # json file functions ----------------------------------------------------
     def _get_file_path(self):
         home_path = os.path.expanduser("~")
-        file_path = os.path.join(home_path, 'tableau_auth.json')
+        file_path = os.path.join(home_path, "tableau_auth.json")
         return file_path
 
     def _read_from_json(self):
         if not self._check_json():
             return
         file_path = self._get_file_path()
-        with open(str(file_path), 'r') as file_contents:
+        with open(str(file_path), "r") as file_contents:
             data = json.load(file_contents)
-            for auth in data['tableau_auth']:
-                self.auth_token = auth['token']
-                self.server = auth['server']
-                self.site = auth['site_name']
-                self.site_id = auth['site_id']
-                self.username = auth['username']
-                self.user_id = auth['user_id']
-                self.token_name = auth['personal_access_token_name']
-                self.token = auth['personal_access_token']
-                self.last_login_using = auth['last_login_using']
+            for auth in data["tableau_auth"]:
+                self.auth_token = auth["token"]
+                self.server = auth["server"]
+                self.site = auth["site_name"]
+                self.site_id = auth["site_id"]
+                self.username = auth["username"]
+                self.user_id = auth["user_id"]
+                self.token_name = auth["personal_access_token_name"]
+                self.token = auth["personal_access_token"]
+                self.last_login_using = auth["last_login_using"]
 
     def _check_json(self):
         home_path = os.path.expanduser("~")
-        file_path = os.path.join(home_path, 'tableau_auth.json')
+        file_path = os.path.join(home_path, "tableau_auth.json")
         return os.path.exists(file_path)
 
     def _save_token_to_json_file(self):
         data = {}
-        data['tableau_auth'] = []
-        data['tableau_auth'].append({
-            'token': self.auth_token,
-            'server': self.server,
-            'username': self.username,
-            'user_id': self.user_id,
-            'site_name': self.site,
-            'site_id': self.site_id,
-            'personal_access_token_name': self.token_name,
-            'personal_access_token': self.token,
-            'last_login_using': self.last_login_using
-        })
+        data["tableau_auth"] = []
+        data["tableau_auth"].append(
+            {
+                "token": self.auth_token,
+                "server": self.server,
+                "username": self.username,
+                "user_id": self.user_id,
+                "site_name": self.site,
+                "site_id": self.site_id,
+                "personal_access_token_name": self.token_name,
+                "personal_access_token": self.token,
+                "last_login_using": self.last_login_using,
+            }
+        )
         file_path = self._get_file_path()
-        with open(str(file_path), 'w') as f:
+        with open(str(file_path), "w") as f:
             json.dump(data, f)
 
     def _remove_json(self):

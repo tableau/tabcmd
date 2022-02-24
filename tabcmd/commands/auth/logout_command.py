@@ -8,6 +8,7 @@ class LogoutCommand:
     """
     Command to Log user out of the server
     """
+
     @classmethod
     def parse(cls):
         args = LogoutParser.logout_parser()
@@ -19,7 +20,7 @@ class LogoutCommand:
         logger.debug("Launching command")
         # TODO move this logic into Session class
         home_path = os.path.expanduser("~")
-        file_path = os.path.join(home_path, 'tableau_auth.json')
+        file_path = os.path.join(home_path, "tableau_auth.json")
         session = Session()
         server_object = session.create_session(args)
         server_object.auth.sign_out()

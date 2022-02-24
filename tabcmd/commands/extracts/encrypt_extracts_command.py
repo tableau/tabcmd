@@ -11,6 +11,7 @@ class EncryptExtracts(ExtractsCommand):
     Command that encrypt all extracts on a site.
     If no site is specified, extracts on the default site will be encrypted.
     """
+
     @classmethod
     def parse(cls):
         args = EncryptExtractsParser.encrypt_extracts_parser()
@@ -25,6 +26,6 @@ class EncryptExtracts(ExtractsCommand):
         try:
             site_id = SiteCommand.find_site_id(server, args.site_name)
             job = server.sites.encrypt_extracts(site_id)
-            ExtractsCommand.print_success_message(logger, 'encryption', job)
+            ExtractsCommand.print_success_message(logger, "encryption", job)
         except TSC.ServerResponseError as e:
-            ExtractsCommand.exit_with_error(logger, 'Server Error:', e)
+            ExtractsCommand.exit_with_error(logger, "Server Error:", e)

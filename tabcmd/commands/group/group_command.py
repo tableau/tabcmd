@@ -8,7 +8,7 @@ class GroupCommand(Commands):
 
     @staticmethod
     def find_group_id(server, group_name):
-        """ Method to find the group id given group name"""
+        """Method to find the group id given group name"""
         all_groups, pagination_item = server.groups.get()
         all_group_names = [(group.name, group.id) for group in all_groups]
         group_id = None

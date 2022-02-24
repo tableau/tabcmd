@@ -2,6 +2,7 @@ class HelpCommand:
     """
     Command to show user help options
     """
+
     @classmethod
     def parse(cls):
         pass

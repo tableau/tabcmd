@@ -1,5 +1,4 @@
 class CommandStrategyInterface:
-
     @staticmethod
     def parse(cls):
         pass

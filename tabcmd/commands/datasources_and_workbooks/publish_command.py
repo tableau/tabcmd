@@ -11,6 +11,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
     This command publishes the specified workbook (.twb(x)), data source
     (.tds(x)), or extract (.hyper) to Tableau Server.
     """
+
     @classmethod
     def parse(cls):
         args = PublishParser.publish_parser()
@@ -29,7 +30,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
         if args.project is not None:
             project_id = ProjectCommand.find_project_id(server, args.project)
         else:
-            project_id = ''
+            project_id = ""
 
         if source == "twbx" or source == "twb":
             new_workbook = TSC.WorkbookItem(project_id, name=args.name, show_tabs=args.tabbed)  # TODO
@@ -51,12 +52,12 @@ class PublishCommand(DatasourcesAndWorkbooks):
 
     @staticmethod
     def get_source_type(args):
-        source_list = args.source.split('.')
-        twbx = 'twbx'
-        twb = 'twb'
-        tdsx = 'tdsx'
-        tds = 'tds'
-        hyper = 'hyper'
+        source_list = args.source.split(".")
+        twbx = "twbx"
+        twb = "twb"
+        tdsx = "tdsx"
+        tds = "tds"
+        hyper = "hyper"
         if twbx in source_list:
             return twbx
         elif twb in source_list:

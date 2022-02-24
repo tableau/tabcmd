@@ -10,6 +10,7 @@ class CreateGroupCommand(GroupCommand):
     """
     This command is used to create a group
     """
+
     @classmethod
     def parse(cls):
         args = CreateGroupParser.create_group_parser()

@@ -8,7 +8,6 @@ This is where we go through all the parsers and manually attach them to a comman
 
 
 class TabcmdController:
-
     def initialize_parsers(self):
         manager = ParentParser()
         parent = manager.get_root_parser()

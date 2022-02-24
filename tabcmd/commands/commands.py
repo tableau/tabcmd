@@ -2,7 +2,6 @@ import sys
 
 
 class Commands:
-
     def __init__(self, args):
         self.logger = None
         self.username = args.username

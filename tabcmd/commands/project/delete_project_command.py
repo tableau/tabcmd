@@ -10,6 +10,7 @@ class DeleteProjectCommand(ProjectCommand):
     """
     Command to Delete the specified project from the server
     """
+
     @classmethod
     def parse(cls):
         args = DeleteProjectParser.delete_project_parser()
@@ -24,9 +25,7 @@ class DeleteProjectCommand(ProjectCommand):
         try:
             project_id = ProjectCommand.find_project_id(server, args.name)
         except ValueError as e:
-            Commands.exit_with_error(
-                logger,
-                "Could not find project. Please check the name and try again")
+            Commands.exit_with_error(logger, "Could not find project. Please check the name and try again")
         try:
             server.projects.delete(project_id)
             logger.info("Successfully deleted project")
