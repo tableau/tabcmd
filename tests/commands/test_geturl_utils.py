@@ -4,20 +4,19 @@ from tabcmd.commands.datasources_and_workbooks.get_url_command import *
 
 
 class GetURlTests(unittest.TestCase):
-
     def test_evaluate_file_name_pdf(self):
         mock_logger = mock.MagicMock()
-        filename = 'filename.pdf'
+        filename = "filename.pdf"
         url = None
         filetype = GetUrl.evaluate_file_name(mock_logger, filename, url)
-        assert filetype == 'pdf', filetype
+        assert filetype == "pdf", filetype
 
     def test_evaluate_file_name_url(self):
         mock_logger = mock.MagicMock()
         filename = None
-        url = 'long-url-stuff-goes-here.pdf'
+        url = "long-url-stuff-goes-here.pdf"
         filetype = GetUrl.evaluate_file_name(mock_logger, filename, url)
-        assert filetype == 'pdf', filetype
+        assert filetype == "pdf", filetype
 
     """
     GetUrl.evaluate_file_name(logger, filename, url)

@@ -1,6 +1,7 @@
 import os
 import pytest
 import subprocess
+
 try:
     from tests.e2e import credentials
 except ImportError:
@@ -16,7 +17,7 @@ exe = os.path.join(launch_path, our_program)
 
 def login():
     if not credentials:
-        pytest.skip('No credentials file found to run tests against a live server')
+        pytest.skip("No credentials file found to run tests against a live server")
 
     # --server, --site, --username, --password
     args = [exe, "login", "--server", credentials.server, "--site", credentials.site,

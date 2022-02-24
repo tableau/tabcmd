@@ -34,4 +34,7 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
-        pycodestyle tabcmd tests
+
+    - name: Check formatting with black
+      run: |
+        black --line-length 120 tabcmd tests --check

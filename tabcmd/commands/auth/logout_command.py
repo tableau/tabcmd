@@ -8,6 +8,7 @@ class LogoutCommand():
     """
     Command to Log user out of the server
     """
+
     @classmethod
     def parse(cls):
         args = LogoutParser.logout_parser()

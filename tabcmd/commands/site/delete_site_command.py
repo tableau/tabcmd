@@ -10,6 +10,7 @@ class DeleteSiteCommand(SiteCommand):
     """
     Command to delete a site
     """
+
     @classmethod
     def parse(cls):
         args = DeleteSiteParser.delete_site_parser()
@@ -24,6 +25,6 @@ class DeleteSiteCommand(SiteCommand):
         site_id = SiteCommand.find_site_id(server, args.site_name)
         try:
             server.sites.delete(site_id)
-            logger.info('Successfully deleted the site')
+            logger.info("Successfully deleted the site")
         except TSC.ServerResponseError as e:
             Commands.exit_with_error(logger, "Server Error:", e)

@@ -2,7 +2,6 @@ import sys
 
 
 class Commands:
-
     def __init__(self, args):
         self.logger = None
         self.username = args.username
@@ -12,13 +11,6 @@ class Commands:
         self.token_name = args.token_name
         self.personal_token = args.token
         self.logging_level = args.logging_level
-
-    @staticmethod
-    def exit_with_error(logger, error_message, exception=None):
-        logger.error(error_message)
-        if exception:
-            logger.error(exception)
-        sys.exit(1)
 
     @staticmethod
     def get_workbook_item(server, workbook_name):

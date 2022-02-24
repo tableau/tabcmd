@@ -5,10 +5,21 @@ from unittest.mock import *
 import mock
 
 from tabcmd.commands.auth import login_command, logout_command
-from tabcmd.commands.datasources_and_workbooks import delete_command, \
-    export_command, get_url_command, publish_command, runschedule_command
-from tabcmd.commands.extracts import create_extracts_command, delete_extracts_command, decrypt_extracts_command, \
-    encrypt_extracts_command, reencrypt_extracts_command, refresh_extracts_command
+from tabcmd.commands.datasources_and_workbooks import (
+    delete_command,
+    export_command,
+    get_url_command,
+    publish_command,
+    runschedule_command,
+)
+from tabcmd.commands.extracts import (
+    create_extracts_command,
+    delete_extracts_command,
+    decrypt_extracts_command,
+    encrypt_extracts_command,
+    reencrypt_extracts_command,
+    refresh_extracts_command,
+)
 from tabcmd.commands.group import create_group_command, delete_group_command
 from tabcmd.commands.help import help_command
 from tabcmd.commands.project import create_project_command, delete_project_command
@@ -16,26 +27,26 @@ from tabcmd.commands.site import create_site_command, delete_site_command, edit_
 from tabcmd.commands.user import add_users_command, create_site_users, remove_users_command, delete_site_users_command
 
 mock_args = argparse.Namespace()
-mock_args.logging_level = 'info'
+mock_args.logging_level = "info"
 
 getter = MagicMock()
-getter.get = MagicMock('get', return_value=([], 1))
+getter.get = MagicMock("get", return_value=([], 1))
 fake_item = MagicMock()
-fake_item.name = 'fake-name'
-getter.publish = MagicMock('publish', return_value=fake_item)
+fake_item.name = "fake-name"
+getter.publish = MagicMock("publish", return_value=fake_item)
 
 fake_job = MagicMock()
-fake_job.id = 'fake-job-id'
-getter.create_extract = MagicMock('create_extract', return_value=fake_job)
-getter.decrypt_extract = MagicMock('decrypt_extract', return_value=fake_job)
-getter.delete_extract = MagicMock('delete_extract', return_value=fake_job)
-getter.encrypt_extracts = MagicMock('encrypt_extracts', return_value=fake_job)
-getter.reencrypt_extract = MagicMock('reencrypt_extract', return_value=fake_job)
-getter.refresh = MagicMock('refresh', return_value=fake_job)
+fake_job.id = "fake-job-id"
+getter.create_extract = MagicMock("create_extract", return_value=fake_job)
+getter.decrypt_extract = MagicMock("decrypt_extract", return_value=fake_job)
+getter.delete_extract = MagicMock("delete_extract", return_value=fake_job)
+getter.encrypt_extracts = MagicMock("encrypt_extracts", return_value=fake_job)
+getter.reencrypt_extract = MagicMock("reencrypt_extract", return_value=fake_job)
+getter.refresh = MagicMock("refresh", return_value=fake_job)
 
 
-@patch('tableauserverclient.Server')
-@patch('tabcmd.commands.auth.session.Session.create_session')
+@patch("tableauserverclient.Server")
+@patch("tabcmd.commands.auth.session.Session.create_session")
 class RunCommandsTest(unittest.TestCase):
 
     @staticmethod
@@ -97,8 +108,8 @@ class RunCommandsTest(unittest.TestCase):
     def test_publish(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_args.overwrite = False
-        mock_args.source = 'dont.know'
-        mock_args.project = 'project-name'
+        mock_args.source = "dont.know"
+        mock_args.project = "project-name"
         mock_server.projects = getter
 
         publish_command.PublishCommand.run_command(mock_args)
@@ -177,8 +188,8 @@ class RunCommandsTest(unittest.TestCase):
     def test_create_project(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.projects = getter
-        mock_args.name = 'name'
-        mock_args.description = ''
+        mock_args.name = "name"
+        mock_args.description = ""
         mock_args.content_permission = None
         mock_args.parent_project_path = 'projects'
         create_project_command.CreateProjectCommand.run_command(mock_args)
@@ -187,7 +198,7 @@ class RunCommandsTest(unittest.TestCase):
     def test_delete_project(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.projects = getter
-        mock_args.name = 'project-name'
+        mock_args.name = "project-name"
         mock_session.assert_not_called()
         delete_project_command.DeleteProjectCommand.run_command(mock_args)
         mock_session.assert_called()
@@ -206,7 +217,7 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.site_name = 'site-name'
         mock_args.url = 'site-content-url'
         mock_args.admin_mode = None
-        mock_args.user_quota = None,
+        mock_args.user_quota = (None,)
         mock_args.storage_quota = None
         create_site_command.CreateSiteCommand.run_command(mock_args)
         mock_session.assert_called()
@@ -221,7 +232,7 @@ class RunCommandsTest(unittest.TestCase):
     def test_edit_site(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.sites = getter
-        mock_args.site_name = 'site-name'
+        mock_args.site_name = "site-name"
         mock_session.assert_not_called()
         with self.assertRaises(SystemExit):
             edit_site_command.EditSiteCommand.run_command(mock_args)

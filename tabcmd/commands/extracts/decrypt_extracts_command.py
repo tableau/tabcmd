@@ -7,8 +7,9 @@ from ..site.site_command import SiteCommand
 
 
 class DecryptExtracts(ExtractsCommand):
-    """ Command that decrypts all extracts on a site. If no site is
+    """Command that decrypts all extracts on a site. If no site is
     specified, extracts on the default site will be decrypted."""
+
     @classmethod
     def parse(cls):
         args = DecryptExtractsParser.decrypt_extracts_parser()
@@ -23,6 +24,6 @@ class DecryptExtracts(ExtractsCommand):
         try:
             site_id = SiteCommand.find_site_id(server, args.site_name)
             job = server.sites.encrypt_extracts(site_id)
-            ExtractsCommand.print_success_message(logger, 'decryption', job)
+            ExtractsCommand.print_success_message(logger, "decryption", job)
         except TSC.ServerResponseError as e:
-            ExtractsCommand.exit_with_error(logger, 'Server Error:', e)
+            ExtractsCommand.exit_with_error(logger, "Server Error:", e)

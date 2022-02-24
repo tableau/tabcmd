@@ -2,7 +2,6 @@ import tableauserverclient as TSC
 from tabcmd.execution.logger_config import log
 from ..auth.session import Session
 from tabcmd.parsers.create_extracts_parser import CreateExtractsParser
-from ..project.project_command import ProjectCommand
 from ..extracts.extracts_command import ExtractsCommand
 
 
@@ -26,17 +25,19 @@ class CreateExtracts(ExtractsCommand):
             try:
                 data_source_item = ExtractsCommand.get_data_source_item(server, args.datasource)
                 job = server.datasources.create_extract(data_source_item, encrypt=args.encrypt)
-                ExtractsCommand.print_success_message(logger, 'creation', job)
+                ExtractsCommand.print_success_message(logger, "creation", job)
             except TSC.ServerResponseError as e:
                 ExtractsCommand.exit_with_error(logger, "Server Error:", e)
         elif args.workbook:
             try:
                 workbook_item = ExtractsCommand.get_workbook_item(server, args.workbook)
-                job = server.workbooks.create_extract(workbook_item,
-                                                      encrypt=args.encrypt,
-                                                      includeAll=args.include_all,
-                                                      datasources=args.embedded_datasources)
-                ExtractsCommand.print_success_message(logger, 'creation', job)
+                job = server.workbooks.create_extract(
+                    workbook_item,
+                    encrypt=args.encrypt,
+                    includeAll=args.include_all,
+                    datasources=args.embedded_datasources,
+                )
+                ExtractsCommand.print_success_message(logger, "creation", job)
             except TSC.ServerResponseError as e:
                 ExtractsCommand.exit_with_error(logger, "Server Error:", e)
         else:

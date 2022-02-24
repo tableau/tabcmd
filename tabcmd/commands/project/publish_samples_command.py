@@ -10,6 +10,7 @@ class PublishSamplesCommand(ProjectCommand):
     Command to Publish Tableau Sample workbooks to the specified project.
     Any existing samples will be overwritten.
     """
+
     @classmethod
     def parse(cls):
         args = PublishSamplesParser.publish_samples_parser()

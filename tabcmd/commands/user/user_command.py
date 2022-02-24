@@ -23,9 +23,10 @@ class UserCommand(Commands):
     """
     This class acts as a base class for user related group of commands
     """
+
     @staticmethod
     def find_user_id(server, username):
-        """ Method to find the user id given username"""
+        """Method to find the user id given username"""
         all_users = list(TSC.Pager(server.users))
         all_user_names_ids = [(user.name, user._id) for user in all_users]
         user_id = None
@@ -129,7 +130,8 @@ class UserCommand(Commands):
         user_data.publisher = values[5]
         user_data.email = values[6]
         user_data.site_role = UserCommand.evaluate_license_level_admin_level(
-            user_data.license_level, user_data.admin_level, user_data.publisher)
+            user_data.license_level, user_data.admin_level, user_data.publisher
+        )
         return user_data
 
     # https://help.tableau.com/current/server/en-us/csvguidelines.htm#settings_and_site_roles
@@ -141,37 +143,37 @@ class UserCommand(Commands):
         publisher = publisher.lower()
         site_role = None
         # don't need to check publisher for system/site admin
-        if admin_level == 'system':
-            site_role = 'SiteAdministrator'
-        elif admin_level == 'site':
-            if license_level == 'creator':
-                site_role = 'SiteAdministratorCreator'
-            elif license_level == 'explorer':
-                site_role = 'SiteAdministratorExplorer'
+        if admin_level == "system":
+            site_role = "SiteAdministrator"
+        elif admin_level == "site":
+            if license_level == "creator":
+                site_role = "SiteAdministratorCreator"
+            elif license_level == "explorer":
+                site_role = "SiteAdministratorExplorer"
             else:
-                site_role = 'SiteAdministratorExplorer'
+                site_role = "SiteAdministratorExplorer"
         else:  # if it wasn't 'system' or 'site' then we can treat it as 'none'
-            if publisher == 'yes':
-                if license_level == 'creator':
-                    site_role = 'Creator'
-                elif license_level == 'explorer':
-                    site_role = 'ExplorerCanPublish'
+            if publisher == "yes":
+                if license_level == "creator":
+                    site_role = "Creator"
+                elif license_level == "explorer":
+                    site_role = "ExplorerCanPublish"
                 else:
-                    site_role = 'Unlicensed'  # is this the expected outcome?
+                    site_role = "Unlicensed"  # is this the expected outcome?
             else:  # publisher == 'no':
-                if license_level == 'explorer' or license_level == 'creator':
-                    site_role = 'Explorer'
-                elif license_level == 'viewer':
-                    site_role = 'Viewer'
+                if license_level == "explorer" or license_level == "creator":
+                    site_role = "Explorer"
+                elif license_level == "viewer":
+                    site_role = "Viewer"
                 else:  # if license_level == 'unlicensed'
-                    site_role = 'Unlicensed'
+                    site_role = "Unlicensed"
         if site_role is None:
-            site_role = 'Unlicensed'
+            site_role = "Unlicensed"
         return site_role
 
     @staticmethod
     def find_group(server, group_name):
-        """ Method to find the group id given group name"""
+        """Method to find the group id given group name"""
         all_groups, pagination_item = server.groups.get()
         all_group_names = [(group.name, group) for group in all_groups]
         group_item = None

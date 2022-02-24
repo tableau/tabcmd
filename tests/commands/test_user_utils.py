@@ -10,24 +10,21 @@ class UserDataTest(unittest.TestCase):
     #       (SiteAdministrator/SiteAdministratorCreator/SiteAdministratorExplorer/ExplorerCanPublish/
     #       Creator/Viewer/Unlicensed)
     role_inputs = [
-        ['creator', 'system', 'yes', 'SiteAdministrator'],
-        ['None', 'system', 'no', 'SiteAdministrator'],
-        ['explorer', 'SysTEm', 'no', 'SiteAdministrator'],
-
-        ['creator', 'site', 'yes', 'SiteAdministratorCreator'],
-        ['explorer', 'site', 'yes', 'SiteAdministratorExplorer'],
-        ['creator', 'SITE', 'no', 'SiteAdministratorCreator'],
-
-        ['creator', 'none', 'yes', 'Creator'],
-        ['explorer', 'none', 'yes', 'ExplorerCanPublish'],
-        ['viewer', 'None', 'no', 'Viewer'],
-        ['explorer', 'no', 'yes', 'ExplorerCanPublish'],
-        ['EXPLORER', 'noNO', 'yes', 'ExplorerCanPublish'],
-        ['explorer', 'no', 'no', 'Explorer'],
-
-        ['unlicensed', 'none', 'no', 'Unlicensed'],
-        ['Chef', 'none', 'yes', 'Unlicensed'],
-        ['yes', 'yes', 'yes', 'Unlicensed'],
+        ["creator", "system", "yes", "SiteAdministrator"],
+        ["None", "system", "no", "SiteAdministrator"],
+        ["explorer", "SysTEm", "no", "SiteAdministrator"],
+        ["creator", "site", "yes", "SiteAdministratorCreator"],
+        ["explorer", "site", "yes", "SiteAdministratorExplorer"],
+        ["creator", "SITE", "no", "SiteAdministratorCreator"],
+        ["creator", "none", "yes", "Creator"],
+        ["explorer", "none", "yes", "ExplorerCanPublish"],
+        ["viewer", "None", "no", "Viewer"],
+        ["explorer", "no", "yes", "ExplorerCanPublish"],
+        ["EXPLORER", "noNO", "yes", "ExplorerCanPublish"],
+        ["explorer", "no", "no", "Explorer"],
+        ["unlicensed", "none", "no", "Unlicensed"],
+        ["Chef", "none", "yes", "Unlicensed"],
+        ["yes", "yes", "yes", "Unlicensed"],
     ]
 
     def test_evaluate_role(self):

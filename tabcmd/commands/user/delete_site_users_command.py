@@ -12,6 +12,7 @@ class DeleteSiteUsersCommand(SiteCommand):
     The users to be removed are specified in a file that contains
     a simple list of one user name per line.
     """
+
     @classmethod
     def parse(cls):
         args = DeleteSiteUsersParser.delete_site_users_parser()

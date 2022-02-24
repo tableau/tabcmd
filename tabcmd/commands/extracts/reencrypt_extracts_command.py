@@ -11,6 +11,7 @@ class ReencryptExtracts(ExtractsCommand):
     Command to Reencrypt all extracts on a site with new encryption keys.
     This command will regenerate the key encryption key and data encryption key. You must specify a site.
     """
+
     @classmethod
     def parse(cls):
         args = ReencryptExtractsParser.reencrypt_extracts_parser()
@@ -25,6 +26,6 @@ class ReencryptExtracts(ExtractsCommand):
         try:
             site_id = SiteCommand.find_site_id(server, args.site_name)
             job = server.sites.encrypt_extracts(site_id)
-            ExtractsCommand.print_success_message(logger, 're-encryption', job)
+            ExtractsCommand.print_success_message(logger, "re-encryption", job)
         except TSC.ServerResponseError as e:
-            ExtractsCommand.exit_with_error(logger, 'Server Error', e)
+            ExtractsCommand.exit_with_error(logger, "Server Error", e)

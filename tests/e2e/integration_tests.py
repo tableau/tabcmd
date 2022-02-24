@@ -2,6 +2,7 @@ import argparse
 import pytest
 import unittest
 from tabcmd.commands.auth.session import Session
+
 try:
     from tests.e2e import credentials
 except ImportError:
@@ -10,23 +11,22 @@ except ImportError:
 
 # pytest -v tests/e2e/integration_tests.py
 class E2EJsonTests(unittest.TestCase):
-
     def test_save_then_read(self):
         test_session = Session()
-        test_session.username = 'USN'
-        test_session.server = 'SRVR'
+        test_session.username = "USN"
+        test_session.server = "SRVR"
         test_session._save_token_to_json_file()
         new_session = Session()
         new_session._read_from_json()
-        assert new_session.username == 'USN', new_session.username
-        assert hasattr(new_session, 'password') is False, new_session
-        assert new_session.server == 'SRVR', new_session.server
+        assert new_session.username == "USN", new_session.username
+        assert hasattr(new_session, "password") is False, new_session
+        assert new_session.server == "SRVR", new_session.server
 
 
 @pytest.mark.skipif(not credentials, reason="'No credentials file found to run tests against a live server")
 class E2EServerTests(unittest.TestCase):
 
-    saved_site_id = ''
+    saved_site_id = ""
 
     def test_log_in(self):
         if not credentials:
@@ -45,7 +45,7 @@ class E2EServerTests(unittest.TestCase):
             prompt=True,
             no_prompt=False,
             proxy=None,
-            no_cookie=False
+            no_cookie=False,
         )
         test_session = Session()
         test_session.create_session(args)
@@ -71,7 +71,7 @@ class E2EServerTests(unittest.TestCase):
             prompt=True,
             no_prompt=False,
             proxy=None,
-            no_cookie=False
+            no_cookie=False,
         )
         test_session = Session()
         test_session.create_session(args)

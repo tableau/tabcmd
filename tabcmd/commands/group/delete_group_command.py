@@ -10,6 +10,7 @@ class DeleteGroupCommand(GroupCommand):
     """
     This command deletes the specified group from the server
     """
+
     @classmethod
     def parse(cls):
         args = DeleteGroupParser.delete_group_parser()

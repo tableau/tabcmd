@@ -8,6 +8,7 @@ class LoginCommand(Commands):
     """
     Logs in a Tableau Server user.
     """
+
     @classmethod
     def parse(cls):
         args = LoginParser.login_parser()

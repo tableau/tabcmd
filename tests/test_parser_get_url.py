@@ -8,11 +8,10 @@ import argparse
 from tabcmd.parsers.get_url_parser import GetUrlParser
 from .common_setup import *
 
-commandname = 'listsites'
+commandname = "listsites"
 
 
 class GetUrlParserTest(unittest.TestCase):
-
     @classmethod
     def setUpClass(cls):
         cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)

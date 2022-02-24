@@ -1,5 +1,5 @@
 class LoginParser:
-    """ Parses login arguments passed by the user"""
+    """Parses login arguments passed by the user"""
 
     @staticmethod
     def login_parser(manager, command):

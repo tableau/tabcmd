@@ -10,6 +10,7 @@ class CreateProjectCommand(ProjectCommand):
     """
     Command to create a project
     """
+
     @classmethod
     def parse(cls):
         args = CreateProjectParser.create_project_parser()

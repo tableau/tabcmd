@@ -7,8 +7,9 @@ from ..auth.session import Session
 
 class RemoveUserCommand(UserCommand):
     """
-     Command to remove users from the specified group
+    Command to remove users from the specified group
     """
+
     @classmethod
     def parse(cls):
         args = RemoveUserParser.remove_user_parser()

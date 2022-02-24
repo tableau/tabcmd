@@ -10,6 +10,7 @@ class ListSiteCommand(SiteCommand):
     """
     Command to return a list of sites to which the logged in user belongs
     """
+
     @classmethod
     def parse(cls):
         args = ListSitesParser.list_site_parser()
@@ -26,4 +27,4 @@ class ListSiteCommand(SiteCommand):
             for site in all_sites:
                 print(site.id, site.name, site.content_url, site.state)
         except TSC.ServerResponseError as e:
-            Commands.exit_with_error(logger, 'error getting all sites', e)
+            Commands.exit_with_error(logger, "error getting all sites", e)

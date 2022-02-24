@@ -12,6 +12,7 @@ class CreateSiteUsersCommand(UserCommand):
     If the user is not already created on the server, the command creates the user before adding
     that user to the site
     """
+
     @classmethod
     def parse(cls):
         args = CreateSiteUsersParser.create_site_user_parser()
