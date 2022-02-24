@@ -22,7 +22,7 @@ class DeleteGroupCommand(GroupCommand):
         session = Session()
         server = session.create_session(args)
         try:
-            group_id = GroupCommand.find_group_id(server, args.groupname)
+            group_id = GroupCommand.find_group_id(server, args.name)
             server.groups.delete(group_id)
             logger.info("Successfully deleted group")
         except TSC.ServerResponseError as e:

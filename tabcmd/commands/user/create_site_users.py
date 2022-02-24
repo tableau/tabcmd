@@ -32,8 +32,8 @@ class CreateSiteUsersCommand(UserCommand):
         if args.require_all_valid:
             UserCommand.validate_file_for_import(args.filename, logger, detailed=True)
 
-        logger.info("===== Adding users listed in {0} to {1}...".format(args.filename.name, creation_site))
-        user_obj_list = UserCommand.get_users_from_file(args.filename)
+        logger.info("===== Adding users listed in {0} to {1}...".format(args.users.name, creation_site))
+        user_obj_list = UserCommand.get_users_from_file(args.users)
         logger.info("======== 0% complete ========")
         error_list = []
         for user_obj in user_obj_list:

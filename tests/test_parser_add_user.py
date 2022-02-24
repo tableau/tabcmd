@@ -18,17 +18,17 @@ class AddUsersParserTest(unittest.TestCase):
         with mock.patch('builtins.open', mock.mock_open(read_data='users.csv')) as file:
             args_from_command = vars(self.parser_under_test.parse_args(cmd_line_input))
             print(args_from_command)
-            assert args_from_command['users'] is not None
-            assert args_from_command['func'] is not None  # has id'd a subcommand
-            assert args_from_command['groupname'] == 'group-name'
-            assert args_from_command['require_all_valid'] is True
+            assert args_from_command['users'] is not None, args_from_command
+            assert args_from_command['func'] is not None, args_from_command  # has id'd a subcommand
+            assert args_from_command['name'] == 'group-name', args_from_command
+            assert args_from_command['require_all_valid'] is True, args_from_command
 
     def test_add_users_parser_users_file(self):
         with mock.patch('builtins.open', mock.mock_open(read_data='test')) as open_file:
             mock_args = [commandname, 'group-name', '--users', "users.csv"]
             args = self.parser_under_test.parse_args(mock_args)
-            self.assertEqual(args.groupname, 'group-name')
-            open_file.assert_called_with('users.csv', 'r', -1, 'UTF-8', None)
+            self.assertEqual(args.name, 'group-name'), args
+            open_file.assert_called_with('users.csv', 'r', -1, 'UTF-8', None), args
 
     @mock.patch('builtins.open')
     def test_add_user_parser_missing_group_name(self, filereader):

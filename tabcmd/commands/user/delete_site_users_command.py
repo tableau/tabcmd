@@ -28,9 +28,9 @@ class DeleteSiteUsersCommand(SiteCommand):
         number_of_errors = 0
 
         if args.require_all_valid:
-            UserCommand.validate_file_for_import(args.csv_lines, logger)
+            UserCommand.validate_file_for_import(args.users, logger)
 
-        user_obj_list = UserCommand.get_users_from_file(args.csv_lines)
+        user_obj_list = UserCommand.get_users_from_file(args.users)
         logger.info("======== 0% complete ========")
         for user_obj in user_obj_list:
             username = user_obj.username
