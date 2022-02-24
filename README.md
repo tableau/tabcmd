@@ -1,6 +1,7 @@
 # Tabcmd
 
 [![Tableau Supported](https://img.shields.io/badge/Support%20Level-Tableau%20Supported-53bd92.svg)](https://www.tableau.com/support-levels-it-and-developer-tools)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 An open source Python based app that replicates the functionality of the existing [Tabcmd command line utility](https://help.tableau.com/current/server/en-us/tabcmd.htm).
 
@@ -36,8 +37,8 @@ To install tabcmd, follow these steps:
 > python setup.py test (deprecated)
 > pytest
 
-- style is enforced with pycodestyle, mostly using default settings. https://www.mankier.com/1/pycodestyle
-> pycodestyle tabcmd tests
+- autoformat your code with black (https://pypi.org/project/black/)
+> black --line-length 120 tabcmd tests [--check]
 
 - packaging is done with pyinstaller. You can only build an executable for the platform you build on.
 > pyinstaller tabcmd.py --clean --noconfirm
