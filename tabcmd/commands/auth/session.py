@@ -45,7 +45,10 @@ class Session:
 
     @staticmethod
     def _allow_prompt(args):
-        return args.prompt is True or not args.no_prompt
+        try:
+            return not args.no_prompt
+        except Exception:
+            return True
 
     def _create_new_username_credential(self, args):
         self._update_session_data(args)
@@ -118,8 +121,8 @@ class Session:
         tableau_server = Session._set_connection_options(self.server, args)
         self._print_server_info()  # do we even have all of this? well, we must
         tableau_server.use_server_version()
-        tableau_server.auth.sign_in(tableau_auth)  # it's the same call for token or user-pass
         try:
+            tableau_server.auth.sign_in(tableau_auth)  # it's the same call for token or user-pass
             self.auth_token = tableau_server.auth_token
             self.site_id = tableau_server.site_id
             self.user_id = tableau_server.user_id
