@@ -2,7 +2,6 @@ import tableauserverclient as TSC
 from tabcmd.execution.logger_config import log
 from ..auth.session import Session
 from tabcmd.parsers.create_extracts_parser import CreateExtractsParser
-from ..project.project_command import ProjectCommand
 from ..extracts.extracts_command import ExtractsCommand
 
 

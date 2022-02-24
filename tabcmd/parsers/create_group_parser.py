@@ -1,6 +1,3 @@
-from .global_options import *
-
-
 class CreateGroupParser:
     """
     Parser for creategroup command

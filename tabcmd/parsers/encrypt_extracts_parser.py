@@ -1,6 +1,3 @@
-from .global_options import *
-
-
 class EncryptExtractsParser:
     """
     Parser for the command encryptextracts

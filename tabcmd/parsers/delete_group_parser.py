@@ -1,6 +1,3 @@
-from .global_options import *
-
-
 class DeleteGroupParser:
     """
     Parser for the command deletegroup

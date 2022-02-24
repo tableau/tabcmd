@@ -14,13 +14,6 @@ class Commands:
         self.logging_level = args.logging_level
 
     @staticmethod
-    def exit_with_error(logger, error_message, exception=None):
-        logger.error(error_message)
-        if exception:
-            logger.error(exception)
-        sys.exit(1)
-
-    @staticmethod
     def get_workbook_item(server, workbook_name):
         workbook_item = None
         all_workbooks_items, pagination_item = server.workbooks.get()

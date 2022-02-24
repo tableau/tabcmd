@@ -1,6 +1,3 @@
-from .global_options import *
-
-
 class DecryptExtractsParser:
     """
     Parser for the command decryptextracts

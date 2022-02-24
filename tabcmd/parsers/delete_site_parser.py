@@ -1,6 +1,3 @@
-from .global_options import *
-
-
 class DeleteSiteParser:
     """
     Parser for the command deletesite

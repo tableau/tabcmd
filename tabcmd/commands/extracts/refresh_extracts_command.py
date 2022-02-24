@@ -1,4 +1,3 @@
-from tabcmd.execution.logger_config import log
 from tabcmd.parsers.refresh_extracts_parser import RefreshExtractsParser
 import tableauserverclient as TSC
 from tabcmd.execution.logger_config import log
