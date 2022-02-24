@@ -24,13 +24,13 @@ def login():
         exe,
         "login",
         "--server",
-        credentials.SERVER_URL,
+        credentials.server,
         "--site",
-        credentials.SITE_NAME,
+        credentials.site,
         "--token",
-        credentials.PAT,
+        credentials.token,
         "--token-name",
-        credentials.PAT_NAME,
+        credentials.token_name,
         "--no-certcheck",
     ]
     print(args)

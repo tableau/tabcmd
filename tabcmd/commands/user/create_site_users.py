@@ -24,26 +24,43 @@ class CreateSiteUsersCommand(UserCommand):
         logger.debug("Launching command")
         session = Session()
         server = session.create_session(args)
+        number_of_users_listed = 0
         number_of_users_added = 0
         number_of_errors = 0
-        user_obj_list = UserCommand.get_users_from_file(args.csv_lines)
+        # TODO: if --site/-s was specified, add the users to that site
+        creation_site = "current site"
+
+        if args.require_all_valid:
+            UserCommand.validate_file_for_import(args.filename, logger, detailed=True)
+
+        logger.info("===== Adding users listed in {0} to {1}...".format(args.users.name, creation_site))
+        user_obj_list = UserCommand.get_users_from_file(args.users)
         logger.info("======== 0% complete ========")
+        error_list = []
         for user_obj in user_obj_list:
-            username = user_obj.username
             try:
-                new_user = TSC.UserItem(username, args.role)
-                server.users.add(new_user)
-                logger.info("Successfully created user: {}".format(username))
+                number_of_users_listed += 1
+                # TODO: bring in other attributes in file
+                new_user = TSC.UserItem(user_obj.username, args.role)
+                result = server.users.add(new_user)
+                print(result)
+                logger.info("Successfully created user: {}".format(user_obj.username))
                 number_of_users_added += 1
             except TSC.ServerResponseError as e:
                 number_of_errors += 1
+                logger.debug("Failed to add user: {}".format(e))
                 if e.code == Constants.forbidden:
-                    logger.error("User is not local, and the user's credentials are not maintained on Tableau Server.")
+                    error = "User is not local, and the user's credentials are not maintained on Tableau Server."
                 if e.code == Constants.invalid_credentials:
-                    logger.error("Unauthorized access, Please login")
+                    error = "Unauthorized access, Please log in."
                 if e.code == Constants.user_already_member_of_site:
-                    logger.error("User: {} already member of site".format(username))
+                    error = "User: {} already member of site".format(user_obj.username)
+                error_list.append(error)
+                logger.debug(error)
         logger.info("======== 100% complete ========")
-        logger.info("======== Number of users added: {} =========".format(number_of_users_added))
+        logger.info("======== Lines processed: {} =========".format(number_of_users_listed))
+        # Lines skipped
+        logger.info("Number of users added: {}".format(number_of_users_added))
+        logger.info("Number of errors {}".format(number_of_errors))
         if number_of_errors > 0:
-            logger.info("======== Number of errors {} =========".format(number_of_errors))
+            logger.info("Error details: {}".format(error_list))

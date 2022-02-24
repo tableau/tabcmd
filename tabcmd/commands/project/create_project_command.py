@@ -27,10 +27,11 @@ class CreateProjectCommand(ProjectCommand):
         else:
             project_path = None
 
+        logger.info("===== Creating project '{}' on the server...".format(args.name))
         top_level_project = TSC.ProjectItem(args.name, args.description, None, project_path)
         try:
             project_item = server.projects.create(top_level_project)
-            logger.info("Successfully created a new project called: {}".format(top_level_project.name))
+            logger.info("===== Succeeded")
             return project_item
         except TSC.ServerResponseError as e:
-            Commands.exit_with_error(logger, "A project by this name already exists", e)
+            Commands.exit_with_error(logger, "Error", e)

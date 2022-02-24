@@ -33,14 +33,20 @@ class ParentParser:
             metavar="",
             help="Use client certificate to sign in. Required when mutual SSL is enabled.",
         )
+
         cookies = parser.add_mutually_exclusive_group()
         cookies.add_argument(
             "--cookie",
             action="store_true",
-            help="Save the session ID when signing in. Subsequent commands will NOT need \
-                   to sign in again. This is the default behavior.",
+            help="Save the session ID when signing in. Subsequent commands will NOT need to sign in again. This is \
+            the default behavior.",
         )
-        # NOT YET IMPLEMENTED parser.add_argument('-h', '--help', metavar='', help="Display tabcmd help and exit.")
+        cookies.add_argument(
+            "--no-cookie",
+            action="store_true",
+            help="Do not save the session ID when signing in. Subsequent commands will need to sign in again.",
+        )
+
         parser.add_argument(
             "-l",
             "--logging-level",
@@ -57,12 +63,6 @@ class ParentParser:
         )
 
         parser.add_argument("--no-prompt", action="store_true", help="no prompt for password")
-
-        cookies.add_argument(
-            "--no-cookie",
-            action="store_true",
-            help="Do not save the session ID when signing in. Subsequent commands will need to sign in again.",
-        )
 
         auth_options = parser.add_mutually_exclusive_group()
         auth_options.add_argument(
@@ -86,15 +86,14 @@ class ParentParser:
             help="Use the specified Tableau Server password. Requires --username to be set.",
         )
 
-        # NOT YET IMPLEMENTED
+        # TODO: not yet implemented? Should it work for a token too?
         parser.add_argument(
             "--password-file",
             metavar="<FILE>",
-            help="Allows the password to be stored in the given .txt file rather than the command \
-                    line for increased security.",
-        )  # TODO: not yet implemented? Should it work for a token too?
+            help="Read the password from the given .txt file rather than the command line for increased security.",
+        )
 
-        # NOT YET IMPLEMENTED
+        # TODO: NOT YET IMPLEMENTED
         proxy_group = parser.add_mutually_exclusive_group()
         proxy_group.add_argument(
             "-x",

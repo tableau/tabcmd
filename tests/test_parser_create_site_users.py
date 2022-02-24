@@ -22,7 +22,7 @@ class CreateSiteUsersParserTest(unittest.TestCase):
         with mock.patch("builtins.open", mock.mock_open(read_data="test")) as open_file:
             mock_args = [commandname, "users.csv"]
             args = self.parser_under_test.parse_args(mock_args)
-            open_file.assert_called_with("users.csv", "r", -1, None, None)
+            open_file.assert_called_with("users.csv", "r", -1, "UTF-8", None)
 
     def test_create_site_user_parser_missing_arguments(self):
         mock_args = [commandname]

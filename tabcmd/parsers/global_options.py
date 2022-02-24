@@ -45,13 +45,21 @@ def set_parent_project_arg(parser):
 
 def set_users_file_arg(parser):
     parser.add_argument(
-        "--users", required=True, type=argparse.FileType("r"), help="CSV file containing a list of users."
+        "--users",
+        required=True,
+        type=argparse.FileType("r", encoding="UTF-8"),
+        help="CSV file containing a list of users.",
     )
     return parser
 
 
 def set_users_file_positional(parser):
-    parser.add_argument("filename.csv", type=argparse.FileType("r"), help="CSV file containing a list of users.")
+    parser.add_argument(
+        "filename",
+        metavar="filename.csv",
+        type=argparse.FileType("r", encoding="UTF-8"),
+        help="CSV file containing a list of users.",
+    )
     return parser
 
 
@@ -93,13 +101,13 @@ def set_completeness_options(parser):
         "--complete",
         dest="require_all_valid",
         action="store_true",
-        help="Requires that all rows be valid for any change to succeed. If not specified --complete is used.",
+        help="Requires that all rows be valid for any change to succeed.",
     )
     completeness_group.add_argument(
         "--no-complete",
         dest="require_all_valid",
         action="store_false",
-        help="Requires that all rows be valid for any change to succeed. If not specified --complete is used.",
+        help="Allows a change to succeed when not all rows are valid. If not specified --complete is used.",
     )
     completeness_group.set_defaults(require_all_valid=True)
     return parser
@@ -237,7 +245,7 @@ def set_filename_arg(parser):
 
 
 def set_publish_args(parser):
-    parser.add_argument("--n", "--name", help="Name to publish the new datasource or workbook by.")
+    parser.add_argument("-n", "--name", help="Name to publish the new datasource or workbook by.")
 
     append_group = parser.add_mutually_exclusive_group()
     append_group.add_argument(

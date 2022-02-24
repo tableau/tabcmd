@@ -27,7 +27,8 @@ class DeleteProjectCommand(ProjectCommand):
         except ValueError as e:
             Commands.exit_with_error(logger, "Could not find project. Please check the name and try again")
         try:
+            logger.info("Deleting project '{}' from the server...".format(args.name))
             server.projects.delete(project_id)
-            logger.info("Successfully deleted project")
+            logger.info("Succeeded")
         except TSC.ServerResponseError as e:
             Commands.exit_with_error(logger, "Server error occurred", e)

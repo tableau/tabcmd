@@ -12,3 +12,4 @@ class DeleteSiteUsersParser:
         manager.include(command)
         delete_site_users_parser = manager.include(command)
         set_users_file_positional(delete_site_users_parser)
+        set_completeness_options(delete_site_users_parser)

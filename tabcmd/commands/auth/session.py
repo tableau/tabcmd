@@ -92,16 +92,15 @@ class Session:
         return tableau_server
 
     def _print_server_info(self):
-        self.logger.info("===== Server: {}".format(self.server))
+        self.logger.info("=====   Server: {}".format(self.server))
         if self.username:
-            self.logger.info("===== Username: {}".format(self.username))
+            self.logger.info("=====   Username: {}".format(self.username))
         else:
-            self.logger.info("===== Token Name: {}".format(self.token_name))
-        self.logger.info("===== Site: {}".format(self.site))
-        self.logger.info("===== Connecting to the server...")
+            self.logger.info("=====   Token Name: {}".format(self.token_name))
+        self.logger.info("=====   Site: {}".format(self.site))
 
     def _validate_existing_signin(self, args):
-        self.logger.info("=====Re-using existing session")
+        self.logger.info("===== Continuing previous session")
         tableau_server = Session._set_connection_options(self.server, args)
         self._print_server_info()
         try:
@@ -109,10 +108,10 @@ class Session:
             if tableau_server.is_signed_in():
                 return tableau_server
         except TSC.ServerResponseError as e:
-            self.logger.info("=====Abandoning invalid session")
+            self.logger.info("===== Abandoning invalid session")
             self.logger.debug("Invalid session token: ", e)
         except Exception as e:
-            self.logger.info("=====Abandoning invalid server connection:")
+            self.logger.info("===== Abandoning invalid server connection:")
             self.logger.debug("Error contacting the server: {}".format(e))
         self.auth_token = None
         return None
@@ -122,11 +121,13 @@ class Session:
         tableau_server = Session._set_connection_options(self.server, args)
         self._print_server_info()  # do we even have all of this? well, we must
         tableau_server.use_server_version()
+        self.logger.info("===== Connecting to the server...")
         try:
             tableau_server.auth.sign_in(tableau_auth)  # it's the same call for token or user-pass
             self.auth_token = tableau_server.auth_token
             self.site_id = tableau_server.site_id
             self.user_id = tableau_server.user_id
+            # TODO: get username and save to self.username, if we used token credentials?
             self.logger.debug("Signed into {0}{1} as {2}".format(self.server, self.site, self.user_id))
             self.logger.info("=========Succeeded========")
         except TSC.ServerResponseError as e:

@@ -10,10 +10,14 @@ def main():
             "Tabcmd requires Python 3.7 but you are on " + sys.version_info + " - please update your python version."
         )
 
-    tabcmd_controller = TabcmdController()
-    parser = tabcmd_controller.initialize_parsers()
-    command_context = Context(parser)
-    command_context.parse_inputs()
+    try:
+        tabcmd_controller = TabcmdController()
+        parser = tabcmd_controller.initialize_parsers()
+        command_context = Context(parser)
+        command_context.parse_inputs()
+    except Exception as any_exception:
+        print("Unexpected error: {}".format(any_exception))
+        sys.exit(1)
 
 
 if __name__ == "__main__":
