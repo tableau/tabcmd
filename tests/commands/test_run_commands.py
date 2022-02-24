@@ -43,6 +43,8 @@ class RunCommandsTest(unittest.TestCase):
         mock_session.return_value = mock_server
         assert mock_session is not None
         mock_session.assert_not_called()
+        global mock_args
+        mock_args = argparse.Namespace(logging_level="DEBUG")
 
     # auth
     def test_login(self, mock_session, mock_server):
@@ -65,6 +67,7 @@ class RunCommandsTest(unittest.TestCase):
         mock_server.datasources = getter
         mock_args.workbook = True
         mock_args.datasource = False
+        mock_args.name = "name for on server"
         with self.assertRaises(SystemExit):
             delete_command.DeleteCommand.run_command(mock_args)
             mock_session.assert_called()
@@ -117,6 +120,7 @@ class RunCommandsTest(unittest.TestCase):
 
     def test_decrypt(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
+        mock_args.site_name = "mock site"
         mock_server.sites = getter
         decrypt_extracts_command.DecryptExtracts.run_command(mock_args)
         mock_session.assert_called()
@@ -158,7 +162,7 @@ class RunCommandsTest(unittest.TestCase):
 
     def test_delete_group(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
-        mock_args.groupname = 'name'
+        mock_args.name = 'name'
         mock_server.groups = getter
         delete_group_command.DeleteGroupCommand.run_command(mock_args)
         mock_session.assert_called()
@@ -228,7 +232,7 @@ class RunCommandsTest(unittest.TestCase):
         mock_server.sites = getter
         list_sites_command.ListSiteCommand.run_command(mock_args)
         mock_session.assert_called()
-        
+
 
 @patch('tableauserverclient.Server')
 @patch('tabcmd.commands.auth.session.Session.create_session')
@@ -242,9 +246,9 @@ class RunUserCommandsTest(unittest.TestCase):
         return mock_file
 
     def test_add_users(self, mock_file, mock_session, mock_server):
-        mock_args.users = RunUserCommandsTest._set_up_file(mock_file)
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.sites = getter
+        mock_args.users = RunUserCommandsTest._set_up_file(mock_file)
         mock_args.name = "the-group"
         mock_args.require_all_valid = False
         add_users_command.AddUserCommand.run_command(mock_args)
@@ -258,16 +262,15 @@ class RunUserCommandsTest(unittest.TestCase):
         mock_session.assert_called()
 
     def test_create_site_users(self, mock_file, mock_session, mock_server):
-        mock_args.require_all_valid = False
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_args.users = RunUserCommandsTest._set_up_file(mock_file)
+        mock_args.require_all_valid = False
         create_site_users.CreateSiteUsersCommand.run_command(mock_args)
         mock_session.assert_called()
 
     def test_delete_site_users(self, mock_file, mock_session, mock_server):
-        mock_args.users = RunUserCommandsTest._set_up_file(mock_file)
-        mock_args.require_all_valid = False
         RunCommandsTest._set_up_session(mock_session, mock_server)
+        mock_args.filename = RunUserCommandsTest._set_up_file(mock_file)
+        mock_args.require_all_valid = False
         delete_site_users_command.DeleteSiteUsersCommand.run_command(mock_args)
         mock_session.assert_called()
-
