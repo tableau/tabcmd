@@ -23,41 +23,33 @@ An open source Python based app that replicates the functionality of the existin
 
 ## Get started
 
-####To work with tabcmd, you need to have **Python 3.7+** installed.
+A pre-compiled executable for Linux and Windows is available online in the [Tableau Documentation](https://help.tableau.com/current/server/en-us/tabcmd.htm#tabcmd-install).
 
-To install tabcmd, follow these steps:
+Alternately, you may work with the source code contained within this repositoy. Here is an example of how to clone and launch the application:
 
-1. Clone the repo
-2. Run `pip install .`
+```sh
+git clone https://github.com/tableau/tabcmd.git
+cd tabcmd
+python -m tabcmd help
+```
 
-- build
-> python setup.py build
+Here are some other commands you may be interested in:
 
-- run tests:
-> python setup.py test (deprecated)
-> pytest
+```sh
+tabcmd.py login --username [username] --password [password] --server [server_name] --site [site_name]
+tabcmd.py createproject --name [project_name]
+```
 
-- autoformat your code with black (https://pypi.org/project/black/)
-> black --line-length 120 tabcmd tests [--check]
+For more examples and information about the available commands and options, see the user documentation
 
-- packaging is done with pyinstaller. You can only build an executable for the platform you build on.
+## Packaging the application
+
+Packaging is done with pyinstaller. You can only build an executable for the platform you build on.
 > pyinstaller tabcmd.py --clean --noconfirm
 
 produces dist/tabcmd.exe
-To run tabcmd during development, from a console window in the same directory as the file tabcmd.py:
-
 
 > dist/tabcmd/tabcmd.exe --help
-
-or 
-* `python -m tabcmd.py [command_name] [--flags]`
-    * Examples:
-        * `tabcmd.py login --username [username] --password [password] --server [server_name] --site [site_name]`
-        * `tabcmd.py createproject --name [project_name]`
-        * `tabcmd.py help`
-        
-For more examples and information about the available commands and options, see the user documentation
-
 
 ## Contributions
 
@@ -85,4 +77,4 @@ The core design principles for this app are
 2. add commands/dreams/dream_command.py. It must have a method run_command.py(args) and the args object must contain all information needed from the user.
 3. in map_of_parsers.py, add an entry for your new parser, like "dreams": DreamParser.dream_parser
 4. in map_of_commands.py, add an entry for your new command, like "dream": ("dream", DreamCommand, "Think about picnics"),"
-5. add tests! 
+5. add tests!
