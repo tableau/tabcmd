@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - development
+      - '*coverage*'
   pull_request:
     branches:
       - development
