@@ -1,9 +1,5 @@
 import unittest
 
-try:
-    from unittest import mock
-except ImportError:
-    import mock
 import argparse
 from tabcmd.parsers.publish_samples_parser import PublishSamplesParser
 from .common_setup import *

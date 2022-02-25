@@ -1,9 +1,5 @@
 import unittest
 
-try:
-    from unittest import mock
-except ImportError:
-    import mock
 import argparse
 from tabcmd.parsers.delete_extracts_parser import DeleteExtractsParser
 from .common_setup import *

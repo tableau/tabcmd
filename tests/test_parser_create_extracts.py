@@ -1,6 +1,5 @@
 import unittest
 import sys
-from unittest import mock
 import argparse
 from tabcmd.parsers.create_extracts_parser import CreateExtractsParser
 from .common_setup import *

@@ -1,5 +1,4 @@
 import unittest
-from unittest import mock
 from tabcmd.parsers.create_group_parser import CreateGroupParser
 from .common_setup import *
 
