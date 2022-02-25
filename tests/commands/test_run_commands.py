@@ -2,8 +2,6 @@ import argparse
 import unittest
 from unittest.mock import *
 
-import mock
-
 from tabcmd.commands.auth import login_command, logout_command
 from tabcmd.commands.datasources_and_workbooks import (
     delete_command,
