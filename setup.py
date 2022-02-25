@@ -1,8 +1,5 @@
 import sys
-try:
-    from setuptools import setup, find_packages
-except ImportError:
-    from distutils.core import setup
+from setuptools import setup, find_packages
 
 # Only install pytest and runner when test command is run
 # This makes work easier for offline installs or low bandwidth machines
