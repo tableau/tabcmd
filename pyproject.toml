@@ -21,3 +21,6 @@ repository = "https://github.com/tableau/tabcmd"
 [project.scripts]
 tabcmd = "tabcmd.tabcmd:main"
 
+[tool.black]
+line-length=120
+
