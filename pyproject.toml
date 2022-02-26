@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tabcmd"
+authors = [
+  {name = "Tableau", email = "github@tableau.com"}
+]
+description = "A command line client for working with Tableau Server"
+license = "MIT"
+requires-python = ">=3.6"
+dependencies = [
+  "requests",
+  "tableauserverclient"
+]
+
+[project.urls]
+repository = "https://github.com/tableau/tabcmd"
+
+[project.scripts]
+tabcmd = "tabcmd.tabcmd:main"
+
