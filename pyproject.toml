@@ -15,6 +15,15 @@ dependencies = [
   "tableauserverclient"
 ]
 
+[project.optional-dependencies]
+test = [
+  "pytest"
+]
+
+package = [
+  "pyinstaller>=4.8"
+]
+
 [project.urls]
 repository = "https://github.com/tableau/tabcmd"
 
