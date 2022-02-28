@@ -110,9 +110,11 @@ class Session:
         except TSC.ServerResponseError as e:
             self.logger.info("===== Abandoning invalid session")
             self.logger.debug("Invalid session token: ", e)
+            Commands.exit_with_error(self.logger, e)
         except Exception as e:
             self.logger.info("===== Abandoning invalid server connection:")
             self.logger.debug("Error contacting the server: {}".format(e))
+            Commands.exit_with_error(self.logger, e)
         self.auth_token = None
         return None
 
@@ -131,16 +133,7 @@ class Session:
             self.logger.debug("Signed into {0}{1} as {2}".format(self.server, self.site, self.user_id))
             self.logger.info("=========Succeeded========")
         except TSC.ServerResponseError as e:
-            if e.code == Constants.login_error:
-                Commands.exit_with_error(
-                    self.logger, "Signing in failed: Please check login credentials and try again."
-                )
-            else:
-                Commands.exit_with_error(
-                    self.logger, "Signing in failed: Please check login credentials and try again.", e
-                )
-        except Exception as e:
-            Commands.exit_with_error(self.logger, "Server Error", e)
+            Commands.exit_with_error(self.logger, e)
         return tableau_server
 
     # external entry point:

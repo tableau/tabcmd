@@ -55,7 +55,28 @@ class Commands:
     @staticmethod
     def exit_with_error(logger, message, exception=None):
         if exception:
-            logger.error(message, exception)
+            Commands.check_common_error_codes(logger, exception)
         else:
             logger.error(message)
         sys.exit(1)
+
+    @staticmethod
+    def check_common_error_codes(logger, error):
+        if error.code.find("404") == 0:
+            logger.debug("Not Found: Resource cannot not be located")
+            logger.error("Not Found: Resource cannot not be located")
+        elif error.code.find("403") == 0:
+            logger.debug("Forbidden: Request was not authorized")
+            logger.error("Forbidden: Request was not authorized")
+        elif error.code.find("400") == 0:
+            logger.debug("Bad request: Tableau Server cannot parse or interpret the message in the request")
+            logger.error("Bad request: Tableau Server cannot parse or interpret the message in the request")
+        elif error.code.find("401") == 0:
+            logger.debug("User not Authenticated")
+            logger.error("User not Authenticated")
+        elif error.code.find("405") == 0:
+            logger.debug("Method not Allowed")
+            logger.error("Method not Allowed")
+        else:
+            logger.error("Error: Server error occurred", error.code)
+
