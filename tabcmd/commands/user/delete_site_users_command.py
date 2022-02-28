@@ -46,8 +46,14 @@ class DeleteSiteUsersCommand(SiteCommand):
                 number_of_errors += 1
                 # TODO Map Error code
             except ValueError:
-                logger.error(" Could not delete user: User {} not found".format(username))
+                logger.error(
+                    " Could not delete user: User {} not found".format(username)
+                )
                 number_of_errors += 1
         logger.info("======== 100% complete ========")
-        logger.info("======== Number of users deleted from site: {} =========".format(number_of_users_deleted))
+        logger.info(
+            "======== Number of users deleted from site: {} =========".format(
+                number_of_users_deleted
+            )
+        )
         logger.info("======== Number of errors {} =========".format(number_of_errors))

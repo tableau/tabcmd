@@ -28,7 +28,11 @@ class DeleteCommand(DatasourcesAndWorkbooks):
         possible_item = args.name or args.workbook or args.datasource
         try:
             req_option.filter.add(
-                TSC.Filter(TSC.RequestOptions.Field.Name, TSC.RequestOptions.Operator.Equals, possible_item)
+                TSC.Filter(
+                    TSC.RequestOptions.Field.Name,
+                    TSC.RequestOptions.Operator.Equals,
+                    possible_item,
+                )
             )
             matching_workbook, _ = server.workbooks.get(req_option)
             matching_datasource, _ = server.datasources.get(req_option)
@@ -42,7 +46,11 @@ class DeleteCommand(DatasourcesAndWorkbooks):
             DeleteCommand.exit_with_error(logger, "Exception occurred")
         if args.workbook or DeleteCommand.located_workbook:
             # filter match the name and find id
-            workbook_to_delete = DeleteCommand.located_workbook if DeleteCommand.located_workbook else args.workbook
+            workbook_to_delete = (
+                DeleteCommand.located_workbook
+                if DeleteCommand.located_workbook
+                else args.workbook
+            )
             try:
                 server.workbooks.delete(workbook_to_delete.id)
                 logger.info("Workbook {} deleted".format(workbook_to_delete.name))
@@ -53,7 +61,9 @@ class DeleteCommand(DatasourcesAndWorkbooks):
 
         elif args.datasource or DeleteCommand.located_datasource:
             datasource_to_delete = (
-                DeleteCommand.located_datasource if DeleteCommand.located_datasource else args.datasource
+                DeleteCommand.located_datasource
+                if DeleteCommand.located_datasource
+                else args.datasource
             )
             logger.info("Workbook {} deleted".format(datasource_to_delete.name))
             try:

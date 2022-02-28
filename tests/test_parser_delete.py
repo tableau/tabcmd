@@ -15,7 +15,9 @@ commandname = "delete"
 class DeleteParserTestT(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
+        cls.parser_under_test, manager, mock_command = initialize_test_pieces(
+            commandname
+        )
         DeleteParser.delete_parser(manager, mock_command)
 
     def test_delete_parser_no_object(self):

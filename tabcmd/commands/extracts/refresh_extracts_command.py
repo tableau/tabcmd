@@ -22,7 +22,9 @@ class RefreshExtracts(ExtractsCommand):
         server = session.create_session(args)
         if args.datasource:
             try:
-                datasource_id = ExtractsCommand.get_data_source_id(server, args.datasource)
+                datasource_id = ExtractsCommand.get_data_source_id(
+                    server, args.datasource
+                )
                 job = server.datasources.refresh(datasource_id)
                 ExtractsCommand.print_success_message(logger, "refresh", job)
             except TSC.ServerResponseError as e:
@@ -36,4 +38,6 @@ class RefreshExtracts(ExtractsCommand):
             except TSC.ServerResponseError as e:
                 ExtractsCommand.exit_with_error(logger, "Server Error", e)
         else:
-            ExtractsCommand.exit_with_error(logger, "You must specify either a workbook or datasource")
+            ExtractsCommand.exit_with_error(
+                logger, "You must specify either a workbook or datasource"
+            )

@@ -14,11 +14,20 @@ commandname = "editsites"
 class EditSiteParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
+        cls.parser_under_test, manager, mock_command = initialize_test_pieces(
+            commandname
+        )
         EditSiteParser.edit_site_parser(manager, mock_command)
 
     def test_edit_site_parser_optional_args_present(self):
-        mock_args = [commandname, "site-to-edit", "--site-name", "new-site-name", "--user-quota", "12"]
+        mock_args = [
+            commandname,
+            "site-to-edit",
+            "--site-name",
+            "new-site-name",
+            "--user-quota",
+            "12",
+        ]
         args = self.parser_under_test.parse_args(mock_args)
         assert args.sitename == "site-to-edit", args
         assert args.target == "new-site-name", args

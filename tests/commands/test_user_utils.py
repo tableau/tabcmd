@@ -29,7 +29,9 @@ class UserDataTest(unittest.TestCase):
 
     def test_evaluate_role(self):
         for input in UserDataTest.role_inputs:
-            actual = UserCommand.evaluate_license_level_admin_level(input[0], input[1], input[2])
+            actual = UserCommand.evaluate_license_level_admin_level(
+                input[0], input[1], input[2]
+            )
             assert actual == input[3], input + [actual]
 
     def test_get_user_detail_empty_line(self):
@@ -70,10 +72,15 @@ class UserDataTest(unittest.TestCase):
     ]
 
     def test_get_users_from_file(self):
-        assert UserCommand.get_users_from_file(UserDataTest.valid_import_content) is not None
+        assert (
+            UserCommand.get_users_from_file(UserDataTest.valid_import_content)
+            is not None
+        )
 
     def test_validate_import_file(self):
-        UserCommand.validate_file_for_import(UserDataTest.valid_import_content, UserDataTest.logger, detailed=True)
+        UserCommand.validate_file_for_import(
+            UserDataTest.valid_import_content, UserDataTest.logger, detailed=True
+        )
 
     usernames = [
         "valid",
@@ -98,7 +105,9 @@ class UserDataTest(unittest.TestCase):
 
     def test_validate_usernames_file(self):
         with self.assertRaises(AttributeError):
-            UserCommand.validate_file_user_names(UserDataTest.usernames, UserDataTest.logger)
+            UserCommand.validate_file_user_names(
+                UserDataTest.usernames, UserDataTest.logger
+            )
 
     def test_get_usernames_from_file(self):
         user_list = UserCommand.get_users_from_file(UserDataTest.usernames)

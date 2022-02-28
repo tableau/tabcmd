@@ -33,13 +33,19 @@ class PublishCommand(DatasourcesAndWorkbooks):
             project_id = ""
 
         if source == "twbx" or source == "twb":
-            new_workbook = TSC.WorkbookItem(project_id, name=args.name, show_tabs=args.tabbed)  # TODO
-            new_workbook = server.workbooks.publish(new_workbook, args.file_name, publish_mode)
+            new_workbook = TSC.WorkbookItem(
+                project_id, name=args.name, show_tabs=args.tabbed
+            )  # TODO
+            new_workbook = server.workbooks.publish(
+                new_workbook, args.file_name, publish_mode
+            )
             logger.info("Workbook {} published".format(new_workbook.name))
 
         elif source == "tds" or source == "tdsx" or source == "hyper":
             new_datasource = TSC.DatasourceItem(project_id, name=args.name)
-            new_datasource = server.datasources.publish(new_datasource, args.file_path, publish_mode)
+            new_datasource = server.datasources.publish(
+                new_datasource, args.file_path, publish_mode
+            )
             logger.info("DataSource {} published".format(new_datasource.name))
 
     @staticmethod

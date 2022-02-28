@@ -56,7 +56,10 @@ class UserCommand(Commands):
                 num_errors += 1
         if num_errors > 0:
             Commands.exit_with_error(
-                logger, "Invalid users in file - please fix {} problems and try again.".format(num_errors)
+                logger,
+                "Invalid users in file - please fix {} problems and try again.".format(
+                    num_errors
+                ),
             )
         return num_lines
 
@@ -91,7 +94,9 @@ class UserCommand(Commands):
         UserCommand.validate_username(username)
         for i in range(1, len(line) - 1):
             if not UserCommand.validate_item(line[i], Column(i)):
-                raise AttributeError("Invalid value for {0}: {1}".format(Column[i].name, line[i]))
+                raise AttributeError(
+                    "Invalid value for {0}: {1}".format(Column[i].name, line[i])
+                )
 
     @staticmethod
     def validate_item(item, type):

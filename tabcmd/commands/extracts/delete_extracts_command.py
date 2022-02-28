@@ -23,7 +23,9 @@ class DeleteExtracts(ExtractsCommand):
         server = session.create_session(args)
         if args.datasource:
             try:
-                data_source_item = ExtractsCommand.get_data_source_item(server, args.datasource)
+                data_source_item = ExtractsCommand.get_data_source_item(
+                    server, args.datasource
+                )
                 job = server.datasources.delete_extract(data_source_item)
                 ExtractsCommand.print_success_message(logger, "deletion", job)
             except TSC.ServerResponseError as e:
@@ -36,4 +38,6 @@ class DeleteExtracts(ExtractsCommand):
             except TSC.ServerResponseError as e:
                 ExtractsCommand.exit_with_error(logger, "Server Error:", e)
         else:
-            ExtractsCommand.exit_with_error(logger, "You must specify either a workbook or datasource")
+            ExtractsCommand.exit_with_error(
+                logger, "You must specify either a workbook or datasource"
+            )

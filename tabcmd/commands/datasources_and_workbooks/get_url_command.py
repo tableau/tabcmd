@@ -65,7 +65,9 @@ class GetUrl(DatasourcesAndWorkbooks):
     def get_workbook(url):
         separated_list = url.split("/")
         if GetUrl.check_if_extension_present(separated_list[::-1][0]):
-            view_second_half_url = GetUrl.get_view_without_extension(separated_list[::-1][0])
+            view_second_half_url = GetUrl.get_view_without_extension(
+                separated_list[::-1][0]
+            )
         else:
             view_second_half_url = separated_list[2]
         return view_second_half_url
@@ -75,7 +77,9 @@ class GetUrl(DatasourcesAndWorkbooks):
         # check the size of list
         separated_list = url.split("/")
         if GetUrl.check_if_extension_present(separated_list[::-1][0]):
-            view_second_half_url = GetUrl.get_view_without_extension(separated_list[::-1][0])
+            view_second_half_url = GetUrl.get_view_without_extension(
+                separated_list[::-1][0]
+            )
         else:
             view_second_half_url = separated_list[2]
         return "{}/sheets/{}".format(separated_list[1], view_second_half_url)
@@ -138,8 +142,12 @@ class GetUrl(DatasourcesAndWorkbooks):
     def generate_twb(logger, server, args):
         workbook = GetUrl.get_workbook(args.url)
         try:
-            target_workbook = GetUrl.get_request_option_for_view(logger, server, workbook)
-            server.workbooks.download(target_workbook.id, filepath=None, no_extract=False)
+            target_workbook = GetUrl.get_request_option_for_view(
+                logger, server, workbook
+            )
+            server.workbooks.download(
+                target_workbook.id, filepath=None, no_extract=False
+            )
             logger.info("Workbook {} exported".format(target_workbook.name))
         except TSC.ServerResponseError as e:
             GetUrl.exit_with_error(logger, "Server error:", e)

@@ -14,7 +14,9 @@ commandname = "export"
 class ExportParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
+        cls.parser_under_test, manager, mock_command = initialize_test_pieces(
+            commandname
+        )
         ExportParser.export_parser(manager, mock_command)
 
     def test_export_parser_file_type_pdf(self):

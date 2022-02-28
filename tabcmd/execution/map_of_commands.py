@@ -31,16 +31,48 @@ class CommandsMap:
     commands_hash_map = {
         "login": ("login", LoginCommand, "Sign in to the server"),
         "logout": ("logout", LogoutCommand, "Sign out from the server"),
-        "delete": ("delete", DeleteCommand, "Delete a workbook or data source from the server"),
-        "export": ("export", ExportCommand, "Export the data or image of a view from the server"),
+        "delete": (
+            "delete",
+            DeleteCommand,
+            "Delete a workbook or data source from the server",
+        ),
+        "export": (
+            "export",
+            ExportCommand,
+            "Export the data or image of a view from the server",
+        ),
         "get": ("get", GetUrl, "Get a file from the server"),
-        "publish": ("publish", PublishCommand, "Publish a workbook, data source, or extract to the server"),
+        "publish": (
+            "publish",
+            PublishCommand,
+            "Publish a workbook, data source, or extract to the server",
+        ),
         # run schedule
-        "createextracts": ("createextracts", CreateExtracts, "Create extracts for a published workbook or data source"),
-        "decryptextracts": ("decryptextracts", DecryptExtracts, "Decrypt extracts on a site"),
-        "deleteextracts": ("deleteextracts", DeleteExtracts, "Delete extracts for a published workbook or data source"),
-        "encryptextracts": ("encryptextracts", EncryptExtracts, "Encrypt extracts on a site"),
-        "reencryptextracts": ("reencryptextracts", ReencryptExtracts, "Reencrypt extracts on a site"),
+        "createextracts": (
+            "createextracts",
+            CreateExtracts,
+            "Create extracts for a published workbook or data source",
+        ),
+        "decryptextracts": (
+            "decryptextracts",
+            DecryptExtracts,
+            "Decrypt extracts on a site",
+        ),
+        "deleteextracts": (
+            "deleteextracts",
+            DeleteExtracts,
+            "Delete extracts for a published workbook or data source",
+        ),
+        "encryptextracts": (
+            "encryptextracts",
+            EncryptExtracts,
+            "Encrypt extracts on a site",
+        ),
+        "reencryptextracts": (
+            "reencryptextracts",
+            ReencryptExtracts,
+            "Reencrypt extracts on a site",
+        ),
         "refreshextracts": (
             "refreshextracts",
             RefreshExtracts,
@@ -50,14 +82,26 @@ class CommandsMap:
         "deletegroup": ("deletegroup", DeleteGroupCommand, "Delete a group"),
         "createproject": ("createproject", CreateProjectCommand, "Create a project"),
         "deleteproject": ("deleteproject", DeleteProjectCommand, "Delete a project"),
-        "publishsamples": ("publishsamples", PublishSamplesCommand, "publish samples to the server"),
+        "publishsamples": (
+            "publishsamples",
+            PublishSamplesCommand,
+            "publish samples to the server",
+        ),
         "createsite": ("createsite", CreateSiteCommand, "Create a site"),
         "deletesite": ("deletesite", DeleteSiteCommand, "Delete a site"),
         "editsite": ("editsite", EditSiteCommand, "Edit a site"),
         "listsites": ("listsites", ListSiteCommand, "List sites for user"),
         # not yet implemented "createusers": ("createusers", CreateUserCommand, "Create users on the server"),
         "addusers": ("addusers", AddUserCommand, "Add users to a group"),
-        "createsiteusers": ("createsiteusers", CreateSiteUsersCommand, "Create users on the current site"),
-        "deletesiteusers": ("deletesiteusers", DeleteSiteUsersCommand, "Delete site users"),
+        "createsiteusers": (
+            "createsiteusers",
+            CreateSiteUsersCommand,
+            "Create users on the current site",
+        ),
+        "deletesiteusers": (
+            "deletesiteusers",
+            DeleteSiteUsersCommand,
+            "Delete site users",
+        ),
         "removeusers": ("removeusers", RemoveUserCommand, "Remove users from a group"),
     }

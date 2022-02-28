@@ -61,7 +61,9 @@ class Session:
                 raise SystemExit("No password entered")
 
         if self.username and args.password:
-            credentials = TSC.TableauAuth(self.username, args.password, site_id=self.site)
+            credentials = TSC.TableauAuth(
+                self.username, args.password, site_id=self.site
+            )
             self.last_login_using = "username"
             return credentials
         else:
@@ -75,7 +77,9 @@ class Session:
             else:
                 raise SystemExit("No token value entered")
         if self.token_name and self.token:
-            credentials = TSC.PersonalAccessTokenAuth(self.token_name, self.token, site_id=self.site)
+            credentials = TSC.PersonalAccessTokenAuth(
+                self.token_name, self.token, site_id=self.site
+            )
             self.last_login_using = "token"
             return credentials
         else:
@@ -125,12 +129,16 @@ class Session:
         tableau_server.use_server_version()
         self.logger.info("===== Connecting to the server...")
         try:
-            tableau_server.auth.sign_in(tableau_auth)  # it's the same call for token or user-pass
+            tableau_server.auth.sign_in(
+                tableau_auth
+            )  # it's the same call for token or user-pass
             self.auth_token = tableau_server.auth_token
             self.site_id = tableau_server.site_id
             self.user_id = tableau_server.user_id
             # TODO: get username and save to self.username, if we used token credentials?
-            self.logger.debug("Signed into {0}{1} as {2}".format(self.server, self.site, self.user_id))
+            self.logger.debug(
+                "Signed into {0}{1} as {2}".format(self.server, self.site, self.user_id)
+            )
             self.logger.info("=========Succeeded========")
         except TSC.ServerResponseError as e:
             Commands.exit_with_error(self.logger, e)
@@ -167,11 +175,14 @@ class Session:
                 if credentials:
                     self.logger.info("=====Using saved credentials")
 
-        if credentials and not signed_in_object:  # logging in, not using an existing session
+        if (
+            credentials and not signed_in_object
+        ):  # logging in, not using an existing session
             signed_in_object = self._sign_in(credentials, args)
         if not signed_in_object:
             Commands.exit_with_error(
-                self.logger, "Unable to find or create a session. Please check credentials and login again."
+                self.logger,
+                "Unable to find or create a session. Please check credentials and login again.",
             )
 
         if args.no_cookie:

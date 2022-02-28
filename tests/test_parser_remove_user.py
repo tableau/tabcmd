@@ -10,7 +10,9 @@ commandname = "removeusers"
 class RemoveUsersParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
+        cls.parser_under_test, manager, mock_command = initialize_test_pieces(
+            commandname
+        )
         RemoveUserParser.remove_user_parser(manager, mock_command)
 
     def test_remove_users_parser_required_name(self):

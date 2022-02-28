@@ -14,7 +14,9 @@ commandname = "logout"
 class LogoutParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
+        cls.parser_under_test, manager, mock_command = initialize_test_pieces(
+            commandname
+        )
         LogoutParser.logout_parser(manager, mock_command)
 
     # Logout doesn't take any arguments, so it's a good one to check all the global args on

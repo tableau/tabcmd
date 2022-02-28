@@ -11,7 +11,9 @@ commandname = "createextracts"
 class CreateExtractsParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
+        cls.parser_under_test, manager, mock_command = initialize_test_pieces(
+            commandname
+        )
         CreateExtractsParser.create_extracts_parser(manager, mock_command)
 
     def test_create_extract_parser_missing_all_args(self):
@@ -20,7 +22,15 @@ class CreateExtractsParserTest(unittest.TestCase):
             args = self.parser_under_test.parse_args(mock_args)
 
     def test_create_extract_parser_missing_project_path(self):
-        mock_args = [commandname, "--project", "test123", "--workbook", "workbooktest", "--include-all", "test"]
+        mock_args = [
+            commandname,
+            "--project",
+            "test123",
+            "--workbook",
+            "workbooktest",
+            "--include-all",
+            "test",
+        ]
         with self.assertRaises(SystemExit):
             args = self.parser_under_test.parse_args(mock_args)
 

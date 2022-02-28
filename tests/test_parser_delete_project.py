@@ -8,7 +8,9 @@ commandname = "deleteproject"
 class DeleteProjectParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
+        cls.parser_under_test, manager, mock_command = initialize_test_pieces(
+            commandname
+        )
         DeleteProjectParser.delete_project_parser(manager, mock_command)
 
     def test_delete_project(self):
