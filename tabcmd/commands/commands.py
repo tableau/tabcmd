@@ -69,12 +69,8 @@ class Commands:
             logger.debug("Forbidden: Request was not authorized")
             logger.error("Forbidden: Request was not authorized")
         elif error.code.find("400") == 0:
-            logger.debug(
-                "Bad request: Tableau Server cannot parse or interpret the message in the request"
-            )
-            logger.error(
-                "Bad request: Tableau Server cannot parse or interpret the message in the request"
-            )
+            logger.debug("Bad request: Tableau Server cannot parse or interpret the message in the request")
+            logger.error("Bad request: Tableau Server cannot parse or interpret the message in the request")
         elif error.code.find("401") == 0:
             logger.debug("User not Authenticated")
             logger.error("User not Authenticated")

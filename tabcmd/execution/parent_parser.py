@@ -15,9 +15,7 @@ class ParentParser:
         return self.root
 
     def include(self, command):
-        additional_parser = self.subparsers.add_parser(
-            command[0], help=command[2], parents=[self.global_options]
-        )
+        additional_parser = self.subparsers.add_parser(command[0], help=command[2], parents=[self.global_options])
         # This line is where we actually set each parser to call the correct command
         additional_parser.set_defaults(func=command[1])
         return additional_parser
@@ -64,9 +62,7 @@ class ParentParser:
             help="When specified, tabcmd (the client) does not validate the server's SSL certificate.",
         )
 
-        parser.add_argument(
-            "--no-prompt", action="store_true", help="no prompt for password"
-        )
+        parser.add_argument("--no-prompt", action="store_true", help="no prompt for password")
 
         auth_options = parser.add_mutually_exclusive_group()
         auth_options.add_argument(

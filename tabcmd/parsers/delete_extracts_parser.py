@@ -16,6 +16,4 @@ class DeleteExtractsParser:
         # set_encryption_option(delete_extract_parser)
         set_project_arg(delete_extract_parser)
         set_parent_project_arg(delete_extract_parser)
-        delete_extract_parser.add_argument(
-            "--url", help="The canonical name for the resource as it appears in the URL"
-        )
+        delete_extract_parser.add_argument("--url", help="The canonical name for the resource as it appears in the URL")

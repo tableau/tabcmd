@@ -14,9 +14,7 @@ commandname = "Publish"
 class PublishParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(
-            commandname
-        )
+        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
         PublishParser.publish_parser(manager, mock_command)
 
     def test_publish_parser_required_name(self):

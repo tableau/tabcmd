@@ -35,22 +35,12 @@ class RemoveUserCommand(UserCommand):
             try:
                 server.groups.remove_user(group, user_id)
                 number_of_users_removed += 1
-                logger.info(
-                    "Successfully removed {0} from {1}".format(
-                        user_obj.username, args.group_name
-                    )
-                )
+                logger.info("Successfully removed {0} from {1}".format(user_obj.username, args.group_name))
             except TSC.ServerResponseError as e:
                 logger.error("Error: Server error occurred", e)
                 number_of_errors += 1
                 # TODO Map Error code
         logger.info("======== 100% complete ========")
-        logger.info(
-            "======== Number of users removed: {} =========".format(
-                number_of_users_removed
-            )
-        )
+        logger.info("======== Number of users removed: {} =========".format(number_of_users_removed))
         if number_of_errors > 0:
-            logger.info(
-                "======== Number of errors {} =========".format(number_of_errors)
-            )
+            logger.info("======== Number of errors {} =========".format(number_of_errors))

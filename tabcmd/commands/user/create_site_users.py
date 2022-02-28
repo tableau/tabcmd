@@ -33,11 +33,7 @@ class CreateSiteUsersCommand(UserCommand):
         if args.require_all_valid:
             UserCommand.validate_file_for_import(args.filename, logger, detailed=True)
 
-        logger.info(
-            "===== Adding users listed in {0} to {1}...".format(
-                args.users.name, creation_site
-            )
-        )
+        logger.info("===== Adding users listed in {0} to {1}...".format(args.users.name, creation_site))
         user_obj_list = UserCommand.get_users_from_file(args.users)
         logger.info("======== 0% complete ========")
         error_list = []
@@ -62,9 +58,7 @@ class CreateSiteUsersCommand(UserCommand):
                 error_list.append(error)
                 logger.debug(error)
         logger.info("======== 100% complete ========")
-        logger.info(
-            "======== Lines processed: {} =========".format(number_of_users_listed)
-        )
+        logger.info("======== Lines processed: {} =========".format(number_of_users_listed))
         # Lines skipped
         logger.info("Number of users added: {}".format(number_of_users_added))
         logger.info("Number of errors {}".format(number_of_errors))

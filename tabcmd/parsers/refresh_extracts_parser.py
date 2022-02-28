@@ -10,9 +10,7 @@ class RefreshExtractsParser:
     def refresh_extracts_parser(manager, command):
         """Method to parse refresh extracts arguments passed by the user"""
         refresh_extract_parser = manager.include(command)
-        target_group = refresh_extract_parser.add_mutually_exclusive_group(
-            required=True
-        )
+        target_group = refresh_extract_parser.add_mutually_exclusive_group(required=True)
         target_group.add_argument("--datasource")
         target_group.add_argument("--workbook")
 

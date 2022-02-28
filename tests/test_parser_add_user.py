@@ -9,9 +9,7 @@ commandname = "addusers"
 class AddUsersParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(
-            commandname
-        )
+        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
         AddUserParser.add_user_parser(manager, mock_command)
 
     def test_add_users_parser_role(self):
@@ -20,9 +18,7 @@ class AddUsersParserTest(unittest.TestCase):
             args_from_command = vars(self.parser_under_test.parse_args(cmd_line_input))
             print(args_from_command)
             assert args_from_command["users"] is not None, args_from_command
-            assert (
-                args_from_command["func"] is not None
-            ), args_from_command  # has id'd a subcommand
+            assert args_from_command["func"] is not None, args_from_command  # has id'd a subcommand
             assert args_from_command["name"] == "group-name", args_from_command
             assert args_from_command["require_all_valid"] is True, args_from_command
 

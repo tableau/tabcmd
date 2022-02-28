@@ -23,12 +23,8 @@ class CreateExtracts(ExtractsCommand):
         server = session.create_session(args)
         if args.datasource:
             try:
-                data_source_item = ExtractsCommand.get_data_source_item(
-                    server, args.datasource
-                )
-                job = server.datasources.create_extract(
-                    data_source_item, encrypt=args.encrypt
-                )
+                data_source_item = ExtractsCommand.get_data_source_item(server, args.datasource)
+                job = server.datasources.create_extract(data_source_item, encrypt=args.encrypt)
                 ExtractsCommand.print_success_message(logger, "creation", job)
             except TSC.ServerResponseError as e:
                 ExtractsCommand.exit_with_error(logger, "Server Error:", e)
@@ -45,6 +41,4 @@ class CreateExtracts(ExtractsCommand):
             except TSC.ServerResponseError as e:
                 ExtractsCommand.exit_with_error(logger, "Server Error:", e)
         else:
-            ExtractsCommand.exit_with_error(
-                logger, "You must specify either a workbook or datasource"
-            )
+            ExtractsCommand.exit_with_error(logger, "You must specify either a workbook or datasource")

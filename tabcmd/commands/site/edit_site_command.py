@@ -40,9 +40,7 @@ class EditSiteCommand(SiteCommand):
             site_item.state = args.status
         try:
             server.sites.update(site_item)
-            logger.info(
-                "Successfully updated the site called: {}".format(args.site_name)
-            )
+            logger.info("Successfully updated the site called: {}".format(args.site_name))
         except TSC.ServerResponseError as e:
             Commands.exit_with_error(logger, "error updating the site", e)
 

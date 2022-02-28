@@ -30,6 +30,4 @@ class CreateGroupCommand(GroupCommand):
             logger.info("Succeeded")
         except TSC.ServerResponseError as e:
             logger.debug(e)
-            Commands.exit_with_error(
-                logger, "Error while communicating with the server"
-            )
+            Commands.exit_with_error(logger, "Error while communicating with the server")

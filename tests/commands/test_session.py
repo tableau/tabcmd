@@ -33,9 +33,7 @@ mock_data_from_json = Namespace(
 )
 
 
-def _set_mocks_for_json_file_saved_username(
-    mock_json_load, auth_token, username, password
-):
+def _set_mocks_for_json_file_saved_username(mock_json_load, auth_token, username, password):
     mock_auth = vars(mock_data_from_json)
     mock_json_load.return_value = {"tableau_auth": [mock_auth]}
     mock_auth["token"] = auth_token
@@ -60,9 +58,7 @@ def _set_mocks_for_json_file_exists(mock_path, does_it_exist=True):
 class JsonTests(unittest.TestCase):
     def test_read_session_from_json(self, mock_open, mock_path, mock_load, mock_dump):
         _set_mocks_for_json_file_exists(mock_path)
-        _set_mocks_for_json_file_saved_username(
-            mock_load, "AUTHTOKEN", "USERNAME", "PASSWORD"
-        )
+        _set_mocks_for_json_file_saved_username(mock_load, "AUTHTOKEN", "USERNAME", "PASSWORD")
         test_session = Session()
         test_session._read_from_json()
         assert test_session.auth_token == "AUTHTOKEN"
@@ -239,9 +235,7 @@ class CreateSessionTests(unittest.TestCase):
         self, mock_tsc, mock_pass, mock_file, mock_path, mock_json_load, mock_json_dump
     ):
         _set_mocks_for_json_file_exists(mock_path, True)
-        _set_mocks_for_json_file_saved_username(
-            mock_json_load, "auth_token", None, "pppppword"
-        )
+        _set_mocks_for_json_file_saved_username(mock_json_load, "auth_token", None, "pppppword")
         test_args = Namespace(**vars(args_to_mock))
         test_args.token = "tn"
         test_args.token_name = "tnnnn"
@@ -256,9 +250,7 @@ class CreateSessionTests(unittest.TestCase):
     def test_create_session_with_saved_expired_username_session(
         self, mock_tsc, mock_pass, mock_file, mock_path, mock_json_load, mock_json_dump
     ):
-        _set_mocks_for_json_file_saved_username(
-            mock_json_load, "auth_token", "username", "pppppword"
-        )
+        _set_mocks_for_json_file_saved_username(mock_json_load, "auth_token", "username", "pppppword")
         _set_mocks_for_json_file_exists(mock_path, True)
         tsc_under_test = CreateSessionTests._set_mock_tsc_not_signed_in(mock_tsc)
         CreateSessionTests._set_mock_tsc_sign_in_succeeds(tsc_under_test)

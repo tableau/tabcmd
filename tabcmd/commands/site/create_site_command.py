@@ -31,8 +31,6 @@ class CreateSiteCommand(SiteCommand):
         )
         try:
             server.sites.create(new_site)
-            logger.info(
-                "Successfully created a new site called: {}".format(args.site_name)
-            )
+            logger.info("Successfully created a new site called: {}".format(args.site_name))
         except TSC.ServerResponseError as e:
             Commands.exit_with_error(logger, "error creating site", e)

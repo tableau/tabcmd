@@ -41,9 +41,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
         if args.fullpdf:  # its a workbook
             workbook = ExportCommand.get_workbook(args.url)
             try:
-                workbook_from_list = ExportCommand.get_request_option_for_workbook(
-                    logger, server, workbook
-                )
+                workbook_from_list = ExportCommand.get_request_option_for_workbook(logger, server, workbook)
                 req_option_pdf = TSC.PDFRequestOptions(maxage=1)
                 server.workbooks.populate_pdf(workbook_from_list, req_option_pdf)
                 if args.filename is None:
@@ -62,9 +60,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
             if args.pdf:
                 view = ExportCommand.get_view(args.url)
                 try:
-                    views_from_list = ExportCommand.get_request_option_for_view(
-                        logger, server, view
-                    )
+                    views_from_list = ExportCommand.get_request_option_for_view(logger, server, view)
                     req_option_pdf = TSC.PDFRequestOptions(maxage=1)
                     server.views.populate_pdf(views_from_list, req_option_pdf)
                     if args.filename is None:
@@ -81,9 +77,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
             if args.csv:
                 view = ExportCommand.get_view(args.url)
                 try:
-                    views_from_list = ExportCommand.get_request_option_for_view(
-                        logger, server, view
-                    )
+                    views_from_list = ExportCommand.get_request_option_for_view(logger, server, view)
                     req_option_csv = TSC.CSVRequestOptions(maxage=1)
                     server.views.populate_csv(views_from_list, req_option_csv)
                     if args.filename is None:
@@ -100,9 +94,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
             if args.png:
                 view = ExportCommand.get_view(args.url)
                 try:
-                    views_from_list = ExportCommand.get_request_option_for_view(
-                        logger, server, view
-                    )
+                    views_from_list = ExportCommand.get_request_option_for_view(logger, server, view)
                     req_option_csv = TSC.CSVRequestOptions(maxage=1)
                     server.views.populate_csv(views_from_list, req_option_csv)
                     if args.filename is None:

@@ -34,9 +34,7 @@ def evaluate_project_path(path):
 
 
 def set_parent_project_arg(parser):
-    parser.add_argument(
-        "--parent-project-path", default=None, help="path of parent project"
-    )
+    parser.add_argument("--parent-project-path", default=None, help="path of parent project")
     return parser
 
 
@@ -97,9 +95,7 @@ def set_role_arg(parser):
 
 
 def set_silent_option(parser):
-    parser.add_argument(
-        "--silent-progress", help="Do not display progress messages for the command."
-    )
+    parser.add_argument("--silent-progress", help="Do not display progress messages for the command.")
     return parser
 
 
@@ -178,24 +174,18 @@ def set_project_n_arg(parser):
 
 
 def set_project_arg(parser):
-    parser.add_argument(
-        "--project", dest="projectname", default="", help="The name of the project."
-    )
+    parser.add_argument("--project", dest="projectname", default="", help="The name of the project.")
     return parser
 
 
 # the help message for 'datasource' needs to be slightly different for each command
 def set_datasource_arg(parser):
-    parser.add_argument(
-        "--datasource", "-d", help="The name of the target data source."
-    )
+    parser.add_argument("--datasource", "-d", help="The name of the target data source.")
     return parser
 
 
 def set_site_url_arg(parser):
-    parser.add_argument(
-        "--url", help="The canonical name for the resource as it appears in the URL"
-    )
+    parser.add_argument("--url", help="The canonical name for the resource as it appears in the URL")
     return parser
 
 
@@ -206,19 +196,13 @@ def set_workbook_arg(parser):
 
 def set_ds_xor_wb_args(parser):
     target_type_group = parser.add_mutually_exclusive_group(required=True)
-    target_type_group.add_argument(
-        "-d", "--datasource", help="The name of the target datasource."
-    )
-    target_type_group.add_argument(
-        "-w", "--workbook", help="The name of the target workbook."
-    )
+    target_type_group.add_argument("-d", "--datasource", help="The name of the target datasource.")
+    target_type_group.add_argument("-w", "--workbook", help="The name of the target workbook.")
     return parser
 
 
 def set_description_arg(parser):
-    parser.add_argument(
-        "--description", "-d", help="Specifies a description for the item."
-    )
+    parser.add_argument("--description", "-d", help="Specifies a description for the item.")
     return parser
 
 
@@ -234,9 +218,7 @@ def set_content_url_arg(parser):
 
 # BUT this seems to be a mismatch between them? site id is listed in edit-site
 def set_site_id_arg(parser):
-    parser.add_argument(
-        "--site-id", help="Used in the URL to uniquely identify the site."
-    )
+    parser.add_argument("--site-id", help="Used in the URL to uniquely identify the site.")
     return parser
 
 
@@ -252,9 +234,7 @@ def set_site_status_arg(parser):
 
 # these options are all shared in create-site and edit-site
 def set_site_args(parser):
-    parser.add_argument(
-        "--user-quota", help="Maximum number of users that can be added to the site."
-    )
+    parser.add_argument("--user-quota", help="Maximum number of users that can be added to the site.")
 
     site_help = "Allows or denies site administrators the ability to add users to or remove users from the site."
     site_group = parser.add_mutually_exclusive_group()
@@ -301,15 +281,11 @@ def set_view_site_encryption(parser):
 
 # export --- mmmaaaannnyyyy options
 def set_filename_arg(parser):
-    parser.add_argument(
-        "-f", "--filename", help="Saves the file with the given filename and extension."
-    )
+    parser.add_argument("-f", "--filename", help="Saves the file with the given filename and extension.")
 
 
 def set_publish_args(parser):
-    parser.add_argument(
-        "-n", "--name", help="Name to publish the new datasource or workbook by."
-    )
+    parser.add_argument("-n", "--name", help="Name to publish the new datasource or workbook by.")
 
     append_group = parser.add_mutually_exclusive_group()
     append_group.add_argument(
@@ -341,20 +317,14 @@ def set_publish_args(parser):
         help="When a workbook with tabbed views is published, each sheet becomes a tab that viewers can use to \
         navigate through the workbook",
     )
-    parser.add_argument(
-        "--replace", help="Use the extract file to replace the existing data source."
-    )
-    parser.add_argument(
-        "--disable-uploader", help="Disable the incremental file uploader."
-    )
+    parser.add_argument("--replace", help="Use the extract file to replace the existing data source.")
+    parser.add_argument("--disable-uploader", help="Disable the incremental file uploader.")
     parser.add_argument("--restart", help="Restart the file upload.")
     parser.add_argument(
         "--encrypt-extracts",
         help="Encrypt extracts in the workbook, datasource, or extract being published to the server",
     )
-    parser.add_argument(
-        "--oauth-username", help="The email address of a preconfigured OAuth connection"
-    )
+    parser.add_argument("--oauth-username", help="The email address of a preconfigured OAuth connection")
     parser.add_argument("--save-oauth")
     parser.add_argument("--thumbnail-username")
     parser.add_argument("--thumbnail-group")  # not implemented in the REST API
@@ -363,9 +333,7 @@ def set_publish_args(parser):
 # refresh-extracts
 def set_incremental_options(parser):
     sync_group = parser.add_mutually_exclusive_group()
-    sync_group.add_argument(
-        "--incremental", help="Runs the incremental refresh operation."
-    )
+    sync_group.add_argument("--incremental", help="Runs the incremental refresh operation.")
     sync_group.add_argument(
         "--synchronous",
         help="Adds the full refresh operation to the queue used by the Backgrounder process, to be run as soon as a \
@@ -407,9 +375,7 @@ def set_domain_arguments(parser):
 # reset-openid-sub
 def set_target_users_arg(parser):
     target_users_group = parser.add_mutually_exclusive_group()
-    target_users_group.add_argument(
-        "--target-username", help="Clears sub value for the specified individual user."
-    )
+    target_users_group.add_argument("--target-username", help="Clears sub value for the specified individual user.")
     target_users_group.add_argument("--all", help="Clears sub values for all users.")
     return parser
 

@@ -11,9 +11,7 @@ commandname = "createextracts"
 class CreateExtractsParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(
-            commandname
-        )
+        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
         CreateExtractsParser.create_extracts_parser(manager, mock_command)
 
     def test_create_extract_parser_missing_all_args(self):

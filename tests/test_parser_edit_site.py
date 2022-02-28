@@ -14,9 +14,7 @@ commandname = "editsites"
 class EditSiteParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(
-            commandname
-        )
+        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
         EditSiteParser.edit_site_parser(manager, mock_command)
 
     def test_edit_site_parser_optional_args_present(self):

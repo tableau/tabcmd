@@ -8,9 +8,7 @@ class EditSiteParser:
         """Method to parse edit site arguments passed by the user"""
         edit_site_parser = manager.include(command)
         edit_site_parser.add_argument("sitename", help="name of site to update")
-        edit_site_parser.add_argument(
-            "--site-name", default=None, dest="target", help="new name of site"
-        )
+        edit_site_parser.add_argument("--site-name", default=None, dest="target", help="new name of site")
         edit_site_parser.add_argument("--site-id", default=None, help="id of site")
         edit_site_parser.add_argument("--url", default=None, help="url of site")
         edit_site_parser.add_argument(
