@@ -1,19 +1,14 @@
-from tabcmd.parsers.decrypt_extracts_parser import DecryptExtractsParser
 import tableauserverclient as TSC
+
+from tabcmd.commands.auth.session import Session
+from tabcmd.commands.extracts.extracts_command import ExtractsCommand
+from tabcmd.commands.site.site_command import SiteCommand
 from tabcmd.execution.logger_config import log
-from ..auth.session import Session
-from ..extracts.extracts_command import ExtractsCommand
-from ..site.site_command import SiteCommand
 
 
 class DecryptExtracts(ExtractsCommand):
     """Command that decrypts all extracts on a site. If no site is
     specified, extracts on the default site will be decrypted."""
-
-    @classmethod
-    def parse(cls):
-        args = DecryptExtractsParser.decrypt_extracts_parser()
-        return args
 
     @staticmethod
     def run_command(args):

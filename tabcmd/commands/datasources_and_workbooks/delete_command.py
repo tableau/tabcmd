@@ -1,7 +1,7 @@
 import tableauserverclient as TSC
+
+from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
-from ..auth.session import Session
-from tabcmd.parsers.delete_parser import DeleteParser
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
@@ -12,11 +12,6 @@ class DeleteCommand(DatasourcesAndWorkbooks):
 
     located_workbook = None
     located_datasource = None
-
-    @classmethod
-    def parse(cls):
-        args = DeleteParser.delete_parser()
-        return args
 
     @staticmethod
     def run_command(args):

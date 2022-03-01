@@ -1,12 +1,13 @@
 import getpass
-from tabcmd.commands.constants import Constants
-import tableauserverclient as TSC
-from tabcmd.execution.logger_config import log
 import json
 import os
-from ..commands import Commands
-from urllib3.exceptions import InsecureRequestWarning
+
 import requests
+import tableauserverclient as TSC
+from urllib3.exceptions import InsecureRequestWarning
+
+from tabcmd.commands.commands import Commands
+from tabcmd.execution.logger_config import log
 
 
 class Session:

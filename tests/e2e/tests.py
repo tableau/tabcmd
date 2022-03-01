@@ -1,4 +1,5 @@
 import subprocess
+import time
 
 from tests.e2e import setup_e2e
 from tests.e2e import vars
@@ -16,6 +17,8 @@ def test_create_delete_group():
     command = "creategroup"
     arguments = [command, vars.group_name]
     _test_command(arguments)
+
+    time.sleep(1)
 
     command = "deletegroup"
     arguments = [command, vars.group_name]

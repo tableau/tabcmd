@@ -1,8 +1,7 @@
-from .project_command import *
-from tabcmd.parsers.publish_samples_parser import PublishSamplesParser
+from tabcmd.commands.auth.session import Session
+from tabcmd.commands.commands import Commands
 from tabcmd.execution.logger_config import log
-from ..auth.session import Session
-from ..commands import Commands
+from .project_command import *
 
 
 class PublishSamplesCommand(ProjectCommand):
@@ -10,11 +9,6 @@ class PublishSamplesCommand(ProjectCommand):
     Command to Publish Tableau Sample workbooks to the specified project.
     Any existing samples will be overwritten.
     """
-
-    @classmethod
-    def parse(cls):
-        args = PublishSamplesParser.publish_samples_parser()
-        return args
 
     @staticmethod
     def run_command(args):

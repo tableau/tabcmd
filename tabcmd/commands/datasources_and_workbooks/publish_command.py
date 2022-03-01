@@ -1,8 +1,9 @@
 import tableauserverclient as TSC
+
+from tabcmd.commands.auth.session import Session
+from tabcmd.commands.commands import Commands
+from tabcmd.commands.project.project_command import ProjectCommand
 from tabcmd.execution.logger_config import log
-from ..project.project_command import ProjectCommand
-from ..auth.session import Session
-from tabcmd.parsers.publish_parser import PublishParser
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
@@ -11,11 +12,6 @@ class PublishCommand(DatasourcesAndWorkbooks):
     This command publishes the specified workbook (.twb(x)), data source
     (.tds(x)), or extract (.hyper) to Tableau Server.
     """
-
-    @classmethod
-    def parse(cls):
-        args = PublishParser.publish_parser()
-        return args
 
     @staticmethod
     def run_command(args):

@@ -1,7 +1,9 @@
-from ..commands import Commands
-import tableauserverclient as TSC
-from .user_data import Userdata
 from enum import IntEnum
+
+import tableauserverclient as TSC
+
+from tabcmd.commands.commands import Commands
+from .user_data import Userdata
 
 license_roles = ["creator", "explorer", "viewer", "unlicensed"]
 admin_roles = ["system", "site", "none"]

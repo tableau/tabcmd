@@ -1,20 +1,15 @@
-from ..commands import Commands
-from .group_command import GroupCommand
-from tabcmd.parsers.delete_group_parser import DeleteGroupParser
 import tableauserverclient as TSC
+
+from tabcmd.commands.auth.session import Session
+from tabcmd.commands.commands import Commands
 from tabcmd.execution.logger_config import log
-from ..auth.session import Session
+from .group_command import GroupCommand
 
 
 class DeleteGroupCommand(GroupCommand):
     """
     This command deletes the specified group from the server
     """
-
-    @classmethod
-    def parse(cls):
-        args = DeleteGroupParser.delete_group_parser()
-        return args
 
     @staticmethod
     def run_command(args):

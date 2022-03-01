@@ -1,18 +1,11 @@
-import os
-from tabcmd.parsers.logout_parser import LogoutParser
+from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
-from ..auth.session import Session
 
 
 class LogoutCommand:
     """
     Command to Log user out of the server
     """
-
-    @classmethod
-    def parse(cls):
-        args = LogoutParser.logout_parser()
-        return args
 
     @staticmethod
     def run_command(args):
