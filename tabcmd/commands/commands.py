@@ -67,7 +67,7 @@ class Commands:
             logger.error("{0} User not Authenticated".format(error.code))
         elif error.code.find("403") == 0:
             logger.error("{0} Forbidden: Request was not authorized".format(error.code))
-        if error.code.find("404") == 0:
+        elif error.code.find("404") == 0:
             logger.error("{0} Not Found: Resource cannot not be located".format(error.code))
         elif error.code.find("405") == 0:
             logger.error("{0} Method not Allowed".format(error.code))
