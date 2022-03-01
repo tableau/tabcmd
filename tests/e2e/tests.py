@@ -28,7 +28,7 @@ class Test_Commands(unittest.TestCase):
         self._run_command(arguments)
 
         time.sleep(1)
-        
+
         command = "deletegroup"
         arguments = [command, group_name]
         self._run_command(arguments)
