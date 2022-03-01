@@ -16,7 +16,10 @@ __pycache__/
 *.pytest_cache
 *.pyc
 *.pkl
+
+# code coverage outputs
 .coverage
+pytest.xml
 
 # content
 *.pdf
