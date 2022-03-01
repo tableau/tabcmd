@@ -28,7 +28,11 @@ class DeleteCommand(DatasourcesAndWorkbooks):
         possible_item = args.name or args.workbook or args.datasource
         try:
             req_option.filter.add(
-                TSC.Filter(TSC.RequestOptions.Field.Name, TSC.RequestOptions.Operator.Equals, possible_item)
+                TSC.Filter(
+                    TSC.RequestOptions.Field.Name,
+                    TSC.RequestOptions.Operator.Equals,
+                    possible_item,
+                )
             )
             matching_workbook, _ = server.workbooks.get(req_option)
             matching_datasource, _ = server.datasources.get(req_option)

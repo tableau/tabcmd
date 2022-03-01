@@ -56,7 +56,8 @@ class UserCommand(Commands):
                 num_errors += 1
         if num_errors > 0:
             Commands.exit_with_error(
-                logger, "Invalid users in file - please fix {} problems and try again.".format(num_errors)
+                logger,
+                "Invalid users in file - please fix {} problems and try again.".format(num_errors),
             )
         return num_lines
 

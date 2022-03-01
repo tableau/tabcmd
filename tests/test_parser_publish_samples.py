@@ -24,7 +24,13 @@ class PublishParserParserTest(unittest.TestCase):
             args = self.parser_under_test.parse_args(mock_args)
 
     def test_publish_samples_parser_optional_args(self):
-        mock_args = [commandname, "--name", "project", "--parent-project-path", "parent"]
+        mock_args = [
+            commandname,
+            "--name",
+            "project",
+            "--parent-project-path",
+            "parent",
+        ]
         args = self.parser_under_test.parse_args(mock_args)
         assert args.parent_project_path == "parent", args
         assert args.projectname == "project", args

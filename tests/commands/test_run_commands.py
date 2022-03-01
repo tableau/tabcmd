@@ -21,8 +21,18 @@ from tabcmd.commands.extracts import (
 from tabcmd.commands.group import create_group_command, delete_group_command
 from tabcmd.commands.help import help_command
 from tabcmd.commands.project import create_project_command, delete_project_command
-from tabcmd.commands.site import create_site_command, delete_site_command, edit_site_command, list_sites_command
-from tabcmd.commands.user import add_users_command, create_site_users, remove_users_command, delete_site_users_command
+from tabcmd.commands.site import (
+    create_site_command,
+    delete_site_command,
+    edit_site_command,
+    list_sites_command,
+)
+from tabcmd.commands.user import (
+    add_users_command,
+    create_site_users,
+    remove_users_command,
+    delete_site_users_command,
+)
 
 mock_args = argparse.Namespace()
 mock_args.logging_level = "info"

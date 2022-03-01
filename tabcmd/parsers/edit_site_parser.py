@@ -12,10 +12,15 @@ class EditSiteParser:
         edit_site_parser.add_argument("--site-id", default=None, help="id of site")
         edit_site_parser.add_argument("--url", default=None, help="url of site")
         edit_site_parser.add_argument(
-            "--user-quota", type=int, default=None, help="Max number of user that can be added to site"
+            "--user-quota",
+            type=int,
+            default=None,
+            help="Max number of user that can be added to site",
         )
         edit_site_parser.add_argument(
-            "--status", default=None, help="Set to ACTIVE to activate a site, or to SUSPENDED to suspend a site."
+            "--status",
+            default=None,
+            help="Set to ACTIVE to activate a site, or to SUSPENDED to suspend a site.",
         )
         edit_site_parser.add_argument(
             "--extract-encryption-mode",
@@ -34,5 +39,13 @@ class EditSiteParser:
             help="in MB amount of workbooks, extracts data sources stored on site",
         )
         group = edit_site_parser.add_mutually_exclusive_group()
-        group.add_argument("--site-mode", default=None, help="Does not allow site admins to add or remove users")
-        group.add_argument("--no-site-mode", default=None, help="Allows site admins to add or remove users")
+        group.add_argument(
+            "--site-mode",
+            default=None,
+            help="Does not allow site admins to add or remove users",
+        )
+        group.add_argument(
+            "--no-site-mode",
+            default=None,
+            help="Allows site admins to add or remove users",
+        )

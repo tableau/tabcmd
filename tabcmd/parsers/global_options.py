@@ -64,7 +64,11 @@ def set_users_file_positional(parser):
 
 
 def set_no_wait_option(parser):
-    parser.add_argument("--no-wait", action="store_true", help="Do not wait for asynchronous jobs to complete.")
+    parser.add_argument(
+        "--no-wait",
+        action="store_true",
+        help="Do not wait for asynchronous jobs to complete.",
+    )
     return parser
 
 
@@ -122,7 +126,9 @@ def set_embedded_datasources_options(parser):
         help="A space-separated list of embedded data source names within the target workbook.",
     )
     embedded_group.add_argument(
-        "--include-all", action="store_true", help="Include all embedded data sources within target workbook."
+        "--include-all",
+        action="store_true",
+        help="Include all embedded data sources within target workbook.",
     )
     return parser
 
@@ -130,7 +136,10 @@ def set_embedded_datasources_options(parser):
 # used in create extract. listed in delete-extract but makes no sense there
 def set_encryption_option(parser):
     parser.add_argument(
-        "--encrypt", dest="encrypt_extract", action="store_false", help="Encrypt the newly created extract."
+        "--encrypt",
+        dest="encrypt_extract",
+        action="store_false",
+        help="Encrypt the newly created extract.",
     )
     return parser
 
@@ -143,12 +152,24 @@ def set_encryption_option(parser):
 # for publish it uses -r for destination project name
 # but parser.site uses -r for site-content-url
 def set_project_r_arg(parser):
-    parser.add_argument("--project", "-r", dest="projectname", default="", help="The name of the project.")
+    parser.add_argument(
+        "--project",
+        "-r",
+        dest="projectname",
+        default="",
+        help="The name of the project.",
+    )
     return parser
 
 
 def set_project_n_arg(parser):
-    parser.add_argument("--project", "-n", dest="projectname", default="", help="The name of the project.")
+    parser.add_argument(
+        "--project",
+        "-n",
+        dest="projectname",
+        default="",
+        help="The name of the project.",
+    )
     return parser
 
 
@@ -187,7 +208,11 @@ def set_description_arg(parser):
 
 # create-site/update-site - lots of these options are never used elsewhere
 def set_content_url_arg(parser):
-    parser.add_argument("--url", "-r", help="Used in URLs to specify the site. Different from the site name.")
+    parser.add_argument(
+        "--url",
+        "-r",
+        help="Used in URLs to specify the site. Different from the site name.",
+    )
     return parser
 
 
@@ -213,10 +238,23 @@ def set_site_args(parser):
 
     site_help = "Allows or denies site administrators the ability to add users to or remove users from the site."
     site_group = parser.add_mutually_exclusive_group()
-    site_group.add_argument("--site-mode", dest="site_admin_user_management", action="store_true", help=site_help)
-    site_group.add_argument("--no-site-mode", dest="site_admin_user_management", action="store_false", help=site_help)
+    site_group.add_argument(
+        "--site-mode",
+        dest="site_admin_user_management",
+        action="store_true",
+        help=site_help,
+    )
+    site_group.add_argument(
+        "--no-site-mode",
+        dest="site_admin_user_management",
+        action="store_false",
+        help=site_help,
+    )
 
-    parser.add_argument("--storage-quota", help="In MB, the amount of data that can be stored on the site.")
+    parser.add_argument(
+        "--storage-quota",
+        help="In MB, the amount of data that can be stored on the site.",
+    )
 
     parser.add_argument(
         "--extract-encryption-mode",
@@ -235,7 +273,9 @@ def set_site_args(parser):
 # this option is only used by listsites
 def set_view_site_encryption(parser):
     parser.add_argument(
-        "--get-extract-encryption-mode", action="store_true", help="Include the extract encryption mode for each site."
+        "--get-extract-encryption-mode",
+        action="store_true",
+        help="Include the extract encryption mode for each site.",
     )
 
 
@@ -255,14 +295,22 @@ def set_publish_args(parser):
         help="Overwrites the workbook, data source, or data extract if it already exists on the server.",
     )
     append_group.add_argument(
-        "--append", action="store_true", help="Append the extract file to the existing data source."
+        "--append",
+        action="store_true",
+        help="Append the extract file to the existing data source.",
     )
     parser.add_argument(
         "--db-username",
         help="Use this option to publish a database user name with the workbook, data source, or data extract.",
     )
-    parser.add_argument("--db-password", help="publish a database password with the workbook, data source, or extract")
-    parser.add_argument("--save-db-password", help="Stores the provided database password on the server.")
+    parser.add_argument(
+        "--db-password",
+        help="publish a database password with the workbook, data source, or extract",
+    )
+    parser.add_argument(
+        "--save-db-password",
+        help="Stores the provided database password on the server.",
+    )
     parser.add_argument(
         "--tabbed",
         action="store_true",
@@ -297,10 +345,14 @@ def set_incremental_options(parser):
 def set_calculations_options(parser):
     calc_group = parser.add_mutually_exclusive_group()
     calc_group.add_argument(
-        "--addcalculations", action="store_true", help="Add precalculated data operations in the extract data source."
+        "--addcalculations",
+        action="store_true",
+        help="Add precalculated data operations in the extract data source.",
     )
     calc_group.add_argument(
-        "--removecalculations", action="store_true", help="Remove precalculated data in the extract data source."
+        "--removecalculations",
+        action="store_true",
+        help="Remove precalculated data in the extract data source.",
     )
     return parser
 
@@ -311,7 +363,10 @@ def set_calculations_options(parser):
 
 # edit-domain: none of these are used in other commands
 def set_domain_arguments(parser):
-    parser.add_argument("--id", help="The ID of domain to change. To get a list of domain IDs, use use listdomains.")
+    parser.add_argument(
+        "--id",
+        help="The ID of domain to change. To get a list of domain IDs, use use listdomains.",
+    )
     parser.add_argument("--name", help="The new name for the domain.")
     parser.add_argument("--nickname", help="The new nickname for the domain.")
     return parser
@@ -348,7 +403,9 @@ def set_update_group_args(parser):
 
 def set_upgrade_stop_option(parser):
     parser.add_argument(
-        "--stop", action="store_true", help="When specified, stops the in progress Upgrade Thumbnails job."
+        "--stop",
+        action="store_true",
+        help="When specified, stops the in progress Upgrade Thumbnails job.",
     )
     return parser
 

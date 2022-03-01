@@ -27,7 +27,14 @@ class CreateSiteParserTest(unittest.TestCase):
             args = self.parser_under_test.parse_args(mock_args)
 
     def test_create_site_parser_with_all_args(self):
-        mock_args = [commandname, "site-name", "--user-quota", "12", "--storage-quota", "12"]  # what else?
+        mock_args = [
+            commandname,
+            "site-name",
+            "--user-quota",
+            "12",
+            "--storage-quota",
+            "12",
+        ]  # what else?
         args = self.parser_under_test.parse_args(mock_args)
         assert args.sitename == "site-name", args
         assert args.user_quota == "12", args

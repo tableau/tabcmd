@@ -25,7 +25,12 @@ class ExportParser:
         export_parser.add_argument("--width", default=800, help="Set the width in pixels. Default is 800 px")
         export_parser.add_argument("--filename", "-f", help="filename to store the exported data")
         export_parser.add_argument("--height", default=600, help="Sets the height in pixels. Default is 600 px")
-        export_parser.add_argument("--filter", "-vf", metavar="COLUMN:VALUE", help="View filter to apply to the view")
+        export_parser.add_argument(
+            "--filter",
+            "-vf",
+            metavar="COLUMN:VALUE",
+            help="View filter to apply to the view",
+        )
 
 
 # TODO: ARGUMENT --COMPLETE

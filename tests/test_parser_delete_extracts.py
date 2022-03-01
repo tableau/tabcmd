@@ -14,7 +14,15 @@ class DeleteExtractsParserTest(unittest.TestCase):
         DeleteExtractsParser.delete_extracts_parser(manager, mock_command)
 
     def test_delete_extract_parser_datasource(self):
-        mock_args = [commandname, "-d", "ds-name", "--project", "prjt", "--parent-project-path", "ppp"]
+        mock_args = [
+            commandname,
+            "-d",
+            "ds-name",
+            "--project",
+            "prjt",
+            "--parent-project-path",
+            "ppp",
+        ]
         args = self.parser_under_test.parse_args(mock_args)
         assert args.datasource == "ds-name", args
         assert args.projectname == "prjt", args

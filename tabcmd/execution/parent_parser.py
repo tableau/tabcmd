@@ -103,7 +103,10 @@ class ParentParser:
             help="Connect to Tableau Server using the specified HTTP proxy.",
         )
         proxy_group.add_argument(
-            "--no-proxy", action="store_false", dest="proxy", help="Do not use a HTTP proxy."
+            "--no-proxy",
+            action="store_false",
+            dest="proxy",
+            help="Do not use a HTTP proxy.",
         )  # is this the default behavior?
 
         parser.add_argument(

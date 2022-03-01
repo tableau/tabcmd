@@ -25,7 +25,13 @@ class DatasourcesAndWorkbooks(Commands):
     def get_request_option_for_workbook(logger, server, workbook_content_url):
         try:
             req_option = TSC.RequestOptions()
-            req_option.filter.add(TSC.Filter("contentUrl", TSC.RequestOptions.Operator.Equals, workbook_content_url))
+            req_option.filter.add(
+                TSC.Filter(
+                    "contentUrl",
+                    TSC.RequestOptions.Operator.Equals,
+                    workbook_content_url,
+                )
+            )
             matching_workbooks, _ = server.workbooks.get(req_option)
             selected_workbook = matching_workbooks[0]
             return selected_workbook

@@ -42,7 +42,13 @@ class AddUsersParserTest(unittest.TestCase):
 
     @mock.patch("builtins.open")
     def test_add_user_parser_complete(self, filereader):
-        cmd_line_input = [commandname, "group-name", "--users", "users.csv", "--complete"]
+        cmd_line_input = [
+            commandname,
+            "group-name",
+            "--users",
+            "users.csv",
+            "--complete",
+        ]
         with mock.patch("builtins.open", mock.mock_open(read_data="users.csv")) as file:
             args_from_command = vars(self.parser_under_test.parse_args(cmd_line_input))
             assert args_from_command["require_all_valid"] is True, args_from_command

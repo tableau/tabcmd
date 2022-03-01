@@ -23,7 +23,10 @@ class E2EJsonTests(unittest.TestCase):
         assert new_session.server == "SRVR", new_session.server
 
 
-@pytest.mark.skipif(not credentials, reason="'No credentials file found to run tests against a live server")
+@pytest.mark.skipif(
+    not credentials,
+    reason="'No credentials file found to run tests against a live server",
+)
 class E2EServerTests(unittest.TestCase):
 
     saved_site_id = ""
