@@ -37,7 +37,12 @@ jobs:
 
     #  https://github.com/marketplace/actions/pytest-coverage-comment
     - name: Generate coverage report
-      run: coverage report -m > pytest-coverage.txt
+      run: |
+        coverage run -m pytest 
+        coverage report -m > pytest-coverage.txt
+        pwd
+        ls
+
     - name: Comment on pull request with coverage
       uses: MishaKav/pytest-coverage-comment@main
       with:
