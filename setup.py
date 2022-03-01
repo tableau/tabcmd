@@ -1,14 +1,11 @@
 import sys
-try:
-    from setuptools import setup, find_packages
-except ImportError:
-    from distutils.core import setup
+from setuptools import setup, find_packages
 
 # Only install pytest and runner when test command is run
 # This makes work easier for offline installs or low bandwidth machines
 needs_pytest = {'pytest', 'test', 'ptr'}.intersection(sys.argv)
 pytest_runner = ['pytest-runner'] if needs_pytest else []
-test_requirements = ['black', 'mock', 'pytest', 'requests-mock>=1.0,<2.0', 'pyinstaller']
+test_requirements = ['black','mock', 'pytest', 'pytest-cov', 'requests-mock>=1.0,<2.0', 'pyinstaller']
 
 setup(
     name='tabcmd',

@@ -33,9 +33,10 @@ To install tabcmd, follow these steps:
 - build
 > python setup.py build
 
-- run tests:
-> python setup.py test (deprecated)
+- run tests
 > pytest
+- with coverage calculation (https://coverage.readthedocs.io/en/6.3.2)
+> coverage run -m pytest && coverage report -m
 
 - autoformat your code with black (https://pypi.org/project/black/)
 > black --line-length 120 tabcmd tests [--check]
