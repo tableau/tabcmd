@@ -63,19 +63,17 @@ class Commands:
     @staticmethod
     def check_common_error_codes(logger, error):
         if error.code.find("404") == 0:
-            logger.debug("Not Found: Resource cannot not be located")
-            logger.error("Not Found: Resource cannot not be located")
+            logger.error("{0} Not Found: Resource cannot not be located".format(error.code))
         elif error.code.find("403") == 0:
-            logger.debug("Forbidden: Request was not authorized")
-            logger.error("Forbidden: Request was not authorized")
+            logger.error("{0} Forbidden: Request was not authorized".format(error.code))
         elif error.code.find("400") == 0:
-            logger.debug("Bad request: Tableau Server cannot parse or interpret the message in the request")
-            logger.error("Bad request: Tableau Server cannot parse or interpret the message in the request")
+            logger.error(
+                "{0} Bad request: Tableau Server cannot parse or interpret the message in the "
+                "request".format(error.code)
+            )
         elif error.code.find("401") == 0:
-            logger.debug("User not Authenticated")
-            logger.error("User not Authenticated")
+            logger.error("{0} User not Authenticated".format(error.code))
         elif error.code.find("405") == 0:
-            logger.debug("Method not Allowed")
-            logger.error("Method not Allowed")
+            logger.error("{0} Method not Allowed".format(error.code))
         else:
-            logger.error("Error: Server error occurred", error.code)
+            logger.error("{0} Error: Server error occurred".format(error.code), error.code)
