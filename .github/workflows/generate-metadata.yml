@@ -40,7 +40,9 @@ jobs:
       uses: MishaKav/pytest-coverage-comment@main
       with:
         pytest-coverage-path: ./pytest-coverage.txt
-        report-only-changed-files: true
+        # broken? Error: The head commit for this pull_request event is not ahead of the base commit.
+        #  Please submit an issue on this action's GitHub repo
+        # report-only-changed-files: true
 
     # TODO update badge on readme:
     # generate badge with https://pypi.org/project/coverage-badge/
