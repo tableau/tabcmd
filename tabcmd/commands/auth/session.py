@@ -181,6 +181,9 @@ class Session:
             self._save_token_to_json_file()
         return signed_in_object
 
+    def get_session_info(self):
+        return self.username, self.site, self.server
+
     # delete all saved info
     def end_session_and_clear_data(self):
         self._remove_json()

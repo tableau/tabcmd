@@ -23,8 +23,15 @@ class ListSiteCommand(SiteCommand):
         session = Session()
         server = session.create_session(args)
         try:
+            # TODO should wrap this in Commands so we always handle the server the same
+            # TODO we need to implement paging
             all_sites, pagination_item = server.sites.get()
+            logger.info("===== Listing sites for user {}...".format(session.get_session_info()[0]))
             for site in all_sites:
-                print(site.id, site.name, site.content_url, site.state)
+                print("NAME:", site.name)
+                print("SITEID:", site.content_url)
+                if args.get_extract_encryption_mode:
+                    print("EXTRACTENCRYPTION:", site.extract_encryption_mode)
+                print("")
         except TSC.ServerResponseError as e:
-            Commands.exit_with_error(logger, "error getting all sites", e)
+            Commands.exit_with_error(logger, e)

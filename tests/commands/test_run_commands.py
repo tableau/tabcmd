@@ -42,6 +42,9 @@ getter.get = MagicMock("get", return_value=([], 1))
 fake_item = MagicMock()
 fake_item.name = "fake-name"
 getter.publish = MagicMock("publish", return_value=fake_item)
+fake_item.id = "fake-id"
+fake_item.pdf = b"/pdf-representation-of-view"
+fake_item.extract_encryption_mode = "Disabled"
 
 fake_job = MagicMock()
 fake_job.id = "fake-job-id"
@@ -248,6 +251,7 @@ class RunCommandsTest(unittest.TestCase):
     def test_list_sites(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.sites = getter
+        mock_args.get_extract_encryption_mode = "Disabled"
         list_sites_command.ListSiteCommand.run_command(mock_args)
         mock_session.assert_called()
 
