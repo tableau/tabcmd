@@ -22,16 +22,22 @@ class CreateProjectCommand(ProjectCommand):
         logger.debug("Launching command")
         session = Session()
         server = session.create_session(args)
+        parent_id = None
+        readable_name = args.name
         if args.parent_project_path is not None:
-            project_path = ProjectCommand.find_project_id(server, args.parent_project_path)
-        else:
-            project_path = None
-
-        logger.info("===== Creating project '{}' on the server...".format(args.name))
-        top_level_project = TSC.ProjectItem(args.name, args.description, None, project_path)
+            try:
+                logger.info("===== Identifying parent project '{}' on the server...".format(args.parent_project_path))
+                parent = ProjectCommand.get_project_by_name_and_parent_path(server, None, args.parent_project_path)
+            except TSC.ServerResponseError as exc:
+                Commands.exit_with_error(logger, "Error fetching parent project", exc)
+            readable_name = "{0}/{1}".format(args.parent_project_path, args.name)
+            parent_id = parent.id
+            logger.debug("parent project path = `{0}`, id = {1}".format(args.parent_project_path, parent_id))
+        logger.info("===== Creating project '{}' on the server...".format(readable_name))
+        new_project = TSC.ProjectItem(args.name, args.description, None, parent_id)
         try:
-            project_item = server.projects.create(top_level_project)
+            project_item = server.projects.create(new_project)
             logger.info("===== Succeeded")
             return project_item
         except TSC.ServerResponseError as e:
-            Commands.exit_with_error(logger, "Error", e)
+            Commands.exit_with_error(logger, e)

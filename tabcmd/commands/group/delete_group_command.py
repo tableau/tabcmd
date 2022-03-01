@@ -23,8 +23,10 @@ class DeleteGroupCommand(GroupCommand):
         session = Session()
         server = session.create_session(args)
         try:
+            logger.info("Finding group {} on server...".format(args.name))
             group_id = GroupCommand.find_group_id(server, args.name)
+            logger.info("Deleting group {} on server...".format(group_id))
             server.groups.delete(group_id)
-            logger.info("Successfully deleted group")
+            logger.info("===== Succeeded")
         except TSC.ServerResponseError as e:
-            Commands.exit_with_error(logger, "Server Error:", e)
+            Commands.exit_with_error(logger, e)

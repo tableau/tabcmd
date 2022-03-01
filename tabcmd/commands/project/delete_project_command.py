@@ -22,13 +22,19 @@ class DeleteProjectCommand(ProjectCommand):
         logger.debug("Launching command")
         session = Session()
         server = session.create_session(args)
+        if args.parent_project_path:
+            logger.debug("parent path: {}".format(args.parent_project_path))
+
         try:
-            project_id = ProjectCommand.find_project_id(server, args.name)
-        except ValueError as e:
-            Commands.exit_with_error(logger, "Could not find project. Please check the name and try again")
+            logger.debug("Fetching project to be deleted: {}/{}".format(args.parent_project_path, args.name))
+            project = ProjectCommand.get_project_by_name_and_parent_path(server, args.name, args.parent_project_path)
+        except TSC.ServerResponseError as e:
+            Commands.exit_with_error(logger, e)
+        project_id = project.id
+
         try:
             logger.info("Deleting project '{}' from the server...".format(args.name))
             server.projects.delete(project_id)
-            logger.info("Succeeded")
+            logger.info("===== Succeeded")
         except TSC.ServerResponseError as e:
-            Commands.exit_with_error(logger, "Server error occurred", e)
+            Commands.exit_with_error(logger, "Failed to delete project", e)
