@@ -7,9 +7,14 @@ path = os.path.dirname(os.path.abspath(__file__))
 def get_logger(name, logging_level):
     """function for logging statements to console and logfile"""
     logging_level = getattr(logging, logging_level.upper())
-    # TODO: in INFO level, we should leave out the (name) field
-    log_format = "%(levelname)s %(name)s  %(message)s"
-    logging.basicConfig(level=logging_level, format=log_format, filename="test.log", filemode="w")
+    if logging_level == 20:
+        log_format = "%(message)s"
+
+    else:
+        log_format = "%(levelname)-5s %(asctime)-12s %(name)-10s  %(message)-10s"
+    logging.basicConfig(level=logging_level, format=log_format, filename="tabcmd.log", filemode="a", datefmt='%Y-%m'
+                                                                                                             '-%d '
+                                                                                                             '%H:%M:%S')
     console = logging.StreamHandler()
     console.setLevel(logging_level)
     console.setFormatter(logging.Formatter(log_format))
