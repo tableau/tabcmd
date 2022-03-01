@@ -2,8 +2,6 @@
 
 [![Tableau Supported](https://img.shields.io/badge/Support%20Level-Tableau%20Supported-53bd92.svg)](https://www.tableau.com/support-levels-it-and-developer-tools)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-![Tests](https://github.com/tableau/tabcmd/actions/workflows/run-tests/badge.svg)
-![Coverage](https://github.com/tableau/tabcmd/actions/workflows/coverage/badge.svg)
 
 An open source Python based app that replicates the functionality of the existing [Tabcmd command line utility](https://help.tableau.com/current/server/en-us/tabcmd.htm).
 
