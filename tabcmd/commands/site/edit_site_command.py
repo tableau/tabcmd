@@ -20,7 +20,7 @@ class EditSiteCommand(SiteCommand):
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
-        logger.debug("Launching command")
+        logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
         site_item = EditSiteCommand.get_site(server, args.site_name)

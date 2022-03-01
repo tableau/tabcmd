@@ -19,7 +19,7 @@ class GetUrl(DatasourcesAndWorkbooks):
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
-        logger.debug("Launching command")
+        logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
         file_type = GetUrl.evaluate_file_name(logger, args.filename, args.url)

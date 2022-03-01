@@ -9,7 +9,6 @@ def get_logger(name, logging_level):
     logging_level = getattr(logging, logging_level.upper())
     if logging_level == 20:
         log_format = "%(message)s"
-
     else:
         log_format = "%(levelname)-5s %(asctime)-12s %(name)-10s  %(message)-10s"
     logging.basicConfig(level=logging_level, format=log_format, filename="tabcmd.log", filemode="a", datefmt='%Y-%m'
