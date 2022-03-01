@@ -1,0 +1,52 @@
+# test-related stuff, but it doesn't need to run on every os/version of python
+name: Generate metadata
+
+on:
+  pull_request:
+    branches:
+      - development
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        python-version: ['3.7']
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python ${{ matrix.python-version }} on ${{ matrix.os }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e .[test]
+
+    - name: Check formatting with black
+      run: black --line-length 120 tabcmd tests --check
+
+    #  https://github.com/marketplace/actions/pytest-coverage-comment
+    - name: Generate coverage report
+      run: pytest --junitxml=pytest.xml --cov=tabcmd tests/ | tee pytest-coverage.txt
+
+    - name: Comment on pull request with coverage
+      uses: MishaKav/pytest-coverage-comment@main
+      with:
+        pytest-coverage-path: ./pytest-coverage.txt
+        # broken? Error: The head commit for this pull_request event is not ahead of the base commit.
+        #  Please submit an issue on this action's GitHub repo
+        # report-only-changed-files: true
+
+    # TODO update badge on readme:
+    # generate badge with https://pypi.org/project/coverage-badge/
+    # display it with https://github.com/Schneegans/dynamic-badges-action
+
+    # TODO track docstring coverage
+    # https://github.com/marketplace/actions/python-interrogate-check

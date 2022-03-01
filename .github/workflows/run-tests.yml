@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
         python-version: ['3.7', '3.8', '3.9', '3.10']
@@ -32,9 +32,4 @@ jobs:
         pip install -e .[test]
 
     - name: Test with pytest
-      run: |
-        pytest
-
-    - name: Check formatting with black
-      run: |
-        black --line-length 120 tabcmd tests --check
+      run: pytest
