@@ -1,5 +1,3 @@
-import tableauserverclient as TSC
-
 from tabcmd.commands.commands import Commands
 
 

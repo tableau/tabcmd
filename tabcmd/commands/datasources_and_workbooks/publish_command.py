@@ -1,7 +1,6 @@
 import tableauserverclient as TSC
 
 from tabcmd.commands.auth.session import Session
-from tabcmd.commands.commands import Commands
 from tabcmd.commands.project.project_command import ProjectCommand
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
