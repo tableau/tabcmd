@@ -1,6 +1,5 @@
 import unittest
 
-import argparse
 from tabcmd.parsers.delete_extracts_parser import DeleteExtractsParser
 from .common_setup import *
 
