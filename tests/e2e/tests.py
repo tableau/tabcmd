@@ -1,4 +1,5 @@
 import subprocess
+import time
 
 from tests.e2e import setup_e2e
 from tests.e2e import vars
@@ -17,7 +18,7 @@ def test_create_delete_group():
     arguments = [command, vars.group_name]
     _test_command(arguments)
 
-    sleep(1)
+    time.sleep(1)
 
     command = "deletegroup"
     arguments = [command, vars.group_name]
@@ -30,48 +31,49 @@ def test_login():
 
 
 def test_create_delete_project():
-        project_name = vars.project_name
+    project_name = vars.project_name
 
-        # project 1
-        parent_path = project_name
-        command = "createproject"
-        arguments = [command, "--name", project_name]
-        self._run_command(arguments)
+    # project 1
+    parent_path = project_name
+    command = "createproject"
+    arguments = [command, "--name", project_name]
+    _test_command(arguments)
 
-        time.sleep(1)
+    time.sleep(1)
 
-        # project 2
-        parent_path = project_name
-        command = "createproject"
-        arguments = [command, "--name", project_name, "--parent-project-path", parent_path]
-        self._run_command(arguments)
+    # project 2
+    parent_path = project_name
+    command = "createproject"
+    arguments = [command, "--name", project_name, "--parent-project-path", parent_path]
+    _test_command(arguments)
 
-        time.sleep(1)
+    time.sleep(1)
 
-        # project 3
-        parent_path = "{0}/{1}".format(project_name, project_name)
-        command = "createproject"
-        arguments = [command, "--name", project_name, "--parent-project-path", parent_path]
-        self._run_command(arguments)
+    # project 3
+    parent_path = "{0}/{1}".format(project_name, project_name)
+    command = "createproject"
+    arguments = [command, "--name", project_name, "--parent-project-path", parent_path]
+    _test_command(arguments)
 
-        time.sleep(1)
+    time.sleep(1)
 
-        # delete project 2 (containing 3)
-        command = "deleteproject"
-        arguments = [command, project_name, "--parent-project-path", project_name]
-        self._run_command(arguments)
+    # delete project 2 (containing 3)
+    command = "deleteproject"
+    arguments = [command, project_name, "--parent-project-path", project_name]
+    _test_command(arguments)
 
-        time.sleep(1)
+    time.sleep(1)
 
-        # delete project 1
-        command = "deleteproject"
-        arguments = [command, project_name]
-        self._run_command(arguments)
+    # delete project 1
+    command = "deleteproject"
+    arguments = [command, project_name]
+    _test_command(arguments)
 
-    def test_list_sites(self):
-        command = "listsites"
-        try:
-            self._run_command([command])
-        except Exception as e:
-            # often won't have permission for sites
-            print(e)
+
+def test_list_sites(self):
+    command = "listsites"
+    try:
+        _test_command([command])
+    except Exception as e:
+        # often won't have permission for sites
+        print(e)

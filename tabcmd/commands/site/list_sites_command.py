@@ -25,8 +25,9 @@ class ListSiteCommand(SiteCommand):
         try:
             # TODO should wrap this in Commands so we always handle the server the same
             # TODO we need to implement paging
+            # TODO should say `Listing sites for username`
             all_sites, pagination_item = server.sites.get()
-            logger.info("===== Listing sites for user {}...".format(session.get_session_info()[0]))
+            logger.info("===== Listing sites...")
             for site in all_sites:
                 print("NAME:", site.name)
                 print("SITEID:", site.content_url)
