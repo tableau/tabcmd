@@ -42,8 +42,8 @@ class DeleteCommand(DatasourcesAndWorkbooks):
                 DeleteCommand.located_datasource = matching_datasource[0]
             else:
                 DeleteCommand.exit_with_error(logger, "No workbook or datasource found")
-        except (Exception,):
-            DeleteCommand.exit_with_error(logger, "Exception occurred")
+        except Exception as e:
+            DeleteCommand.exit_with_error(logger, "Exception occurred", e)
         if args.workbook or DeleteCommand.located_workbook:
             # filter match the name and find id
             workbook_to_delete = DeleteCommand.located_workbook if DeleteCommand.located_workbook else args.workbook

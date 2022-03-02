@@ -11,9 +11,9 @@ def get_logger(name, logging_level):
         log_format = "%(message)s"
     else:
         log_format = "%(levelname)-5s %(asctime)-12s %(name)-10s  %(message)-10s"
-    logging.basicConfig(level=logging_level, format=log_format, filename="tabcmd.log", filemode="a", datefmt='%Y-%m'
-                                                                                                             '-%d '
-                                                                                                             '%H:%M:%S')
+    logging.basicConfig(
+        level=logging_level, format=log_format, filename="tabcmd.log", filemode="a", datefmt="%Y-%m" "-%d " "%H:%M:%S"
+    )
     console = logging.StreamHandler()
     console.setLevel(logging_level)
     console.setFormatter(logging.Formatter(log_format))
