@@ -1,9 +1,9 @@
 import tableauserverclient as TSC
+
+from tabcmd.commands.auth.session import Session
+from tabcmd.commands.commands import Commands
 from tabcmd.execution.logger_config import log
-from tabcmd.parsers.edit_site_parser import EditSiteParser
 from .site_command import SiteCommand
-from ..auth.session import Session
-from ..commands import Commands
 
 
 class EditSiteCommand(SiteCommand):
@@ -11,11 +11,6 @@ class EditSiteCommand(SiteCommand):
     Command to change the name of a site or its web folder name. Users can also use this command to allow or deny
     site administrators the ability to add and remove users, or prevent users from running certain tasks manually.
     """
-
-    @classmethod
-    def parse(cls):
-        args = EditSiteParser.edit_site_parser()
-        return args
 
     @staticmethod
     def run_command(args):

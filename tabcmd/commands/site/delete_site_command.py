@@ -1,20 +1,15 @@
-from .site_command import SiteCommand
 import tableauserverclient as TSC
+
+from tabcmd.commands.auth.session import Session
+from tabcmd.commands.commands import Commands
 from tabcmd.execution.logger_config import log
-from tabcmd.parsers.delete_site_parser import DeleteSiteParser
-from ..auth.session import Session
-from ..commands import Commands
+from .site_command import SiteCommand
 
 
 class DeleteSiteCommand(SiteCommand):
     """
     Command to delete a site
     """
-
-    @classmethod
-    def parse(cls):
-        args = DeleteSiteParser.delete_site_parser()
-        return args
 
     @staticmethod
     def run_command(args):

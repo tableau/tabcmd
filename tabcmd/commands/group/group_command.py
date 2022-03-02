@@ -1,4 +1,4 @@
-from ..commands import Commands
+from tabcmd.commands.commands import Commands
 
 
 class GroupCommand(Commands):

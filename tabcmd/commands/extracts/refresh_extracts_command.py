@@ -1,19 +1,14 @@
-from tabcmd.parsers.refresh_extracts_parser import RefreshExtractsParser
 import tableauserverclient as TSC
+
+from tabcmd.commands.auth.session import Session
+from tabcmd.commands.extracts.extracts_command import ExtractsCommand
 from tabcmd.execution.logger_config import log
-from ..auth.session import Session
-from ..extracts.extracts_command import ExtractsCommand
 
 
 class RefreshExtracts(ExtractsCommand):
     """
     Command to Perform a full or incremental refresh of extracts belonging to the specified workbook or data source.
     """
-
-    @classmethod
-    def parse(cls):
-        args = RefreshExtractsParser.refresh_extracts_parser()
-        return args
 
     def run_command(args):
         logger = log(__name__, args.logging_level)

@@ -1,7 +1,7 @@
 import tableauserverclient as TSC
+
+from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
-from ..auth.session import Session
-from tabcmd.parsers.get_url_parser import GetUrlParser
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
@@ -10,11 +10,6 @@ class GetUrl(DatasourcesAndWorkbooks):
     This command gets the resource from Tableau Server that's represented
     by the specified (partial) URL. The result is returned as a file.
     """
-
-    @classmethod
-    def parse(cls):
-        args = GetUrlParser.get_url_parser()
-        return args
 
     @staticmethod
     def run_command(args):
