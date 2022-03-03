@@ -71,7 +71,7 @@ class UserCommand(Commands):
         at_symbol = username.find("@")
 
         if at_symbol >= 0:
-            username = username[:at_symbol] + "X" + username[at_symbol + 1:]
+            username = username[:at_symbol] + "X" + username[at_symbol + 1 :]
             if username.find("@") >= 0:
                 raise AttributeError(
                     "If a user name includes an @ character that represents anything other than a domain separator, "
@@ -100,12 +100,12 @@ class UserCommand(Commands):
             # value can be empty for any column except user, which is checked elsewhere
             return True
         if (
-                type == Column.LICENSE.value
-                and item in license_roles
-                or type == Column.ADMIN.value
-                and item in admin_roles
-                or type == Column.PUBLISHER.value
-                and item in publish_options
+            type == Column.LICENSE.value
+            and item in license_roles
+            or type == Column.ADMIN.value
+            and item in admin_roles
+            or type == Column.PUBLISHER.value
+            and item in publish_options
         ):
             return True
         return True
