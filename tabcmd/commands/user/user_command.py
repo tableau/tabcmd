@@ -2,7 +2,6 @@ from ..commands import Commands
 import tableauserverclient as TSC
 from .user_data import Userdata
 from enum import IntEnum
-from tabcmd.execution.logger_config import log
 
 license_roles = ["creator", "explorer", "viewer", "unlicensed"]
 admin_roles = ["system", "site", "none"]
@@ -18,9 +17,6 @@ class Column(IntEnum):
     ADMIN = 4
     PUBLISHER = 5
     EMAIL = 6
-
-
-logger = log(__name__, "DEBUG")
 
 
 class UserCommand(Commands):
@@ -69,35 +65,23 @@ class UserCommand(Commands):
     @staticmethod
     def validate_username(username):
         if username is None or username == "" or username.strip(" ") == "":
-            logger.debug("Username must be specified in csv file")
             raise AttributeError("Username must be specified in csv file")
         if username.find(" ") >= 0:
-            logger.debug("Username cannot contain spaces")
             raise AttributeError("Username cannot contain spaces")
         at_symbol = username.find("@")
 
         if at_symbol >= 0:
             username = username[:at_symbol] + "X" + username[at_symbol + 1:]
             if username.find("@") >= 0:
-                logger.debug(
-                    "If a user name includes an @ character that represents anything other than a\
-                 domain separator, you need to refer to the symbol using the hexadecimal format: \\0x40"
-                )
                 raise AttributeError(
-                    "If a user name includes an @ character that represents anything other than a\
-                 domain separator, you need to refer to the symbol using the hexadecimal format: \\0x40"
+                    "If a user name includes an @ character that represents anything other than a domain separator, "
+                    "you need to refer to the symbol using the hexadecimal format: \\0x40"
                 )
 
     @staticmethod
     def validate_user_detail_line(incoming):
         line = list(map(str.strip, incoming.split(",")))
         if len(line) > 7:
-            logger.debug(
-                "The file contains {} columns, but there are only 7 valid columns in a user \
-             import csv file".format(
-                    len(line)
-                )
-            )
             raise AttributeError(
                 "The file contains {} columns, but there are only 7 valid columns in a user \
              import csv file".format(
@@ -108,7 +92,6 @@ class UserCommand(Commands):
         UserCommand.validate_username(username)
         for i in range(1, len(line) - 1):
             if not UserCommand.validate_item(line[i], Column(i)):
-                logger.debug("Invalid value for {0}: {1}".format(Column[i].name, line[i]))
                 raise AttributeError("Invalid value for {0}: {1}".format(Column[i].name, line[i]))
 
     @staticmethod
