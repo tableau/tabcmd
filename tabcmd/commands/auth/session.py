@@ -59,6 +59,7 @@ class Session:
             if self._allow_prompt(args):
                 args.password = getpass.getpass("Password:")
             else:
+                self.logger.debug("No password entered")
                 raise SystemExit("No password entered")
 
         if self.username and args.password:
@@ -66,6 +67,7 @@ class Session:
             self.last_login_using = "username"
             return credentials
         else:
+            self.logger.debug("Couldn't find username")
             raise SystemExit("Couldn't find username")
 
     def _create_new_token_credential(self, args):
@@ -80,6 +82,7 @@ class Session:
             self.last_login_using = "token"
             return credentials
         else:
+            self.logger.debug("Couldn't find token name")
             raise SystemExit("Couldn't find token name")
 
     @staticmethod
@@ -134,6 +137,7 @@ class Session:
             self.logger.debug("Signed into {0}{1} as {2}".format(self.server, self.site, self.user_id))
             self.logger.info("=========Succeeded========")
         except TSC.ServerResponseError as e:
+            self.logger.debug("Server error occurred", e)
             Commands.exit_with_error(self.logger, e)
         return tableau_server
 

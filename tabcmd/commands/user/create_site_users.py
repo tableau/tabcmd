@@ -16,7 +16,7 @@ class CreateSiteUsersCommand(UserCommand):
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
-        logger.debug("Launching command")
+        logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
         number_of_users_listed = 0

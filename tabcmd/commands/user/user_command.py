@@ -76,8 +76,8 @@ class UserCommand(Commands):
             username = username[:at_symbol] + "X" + username[at_symbol + 1 :]
             if username.find("@") >= 0:
                 raise AttributeError(
-                    "If a user name includes an @ character that represents anything other than a\
-                 domain separator, you need to refer to the symbol using the hexadecimal format: \\0x40"
+                    "If a user name includes an @ character that represents anything other than a domain separator, "
+                    "you need to refer to the symbol using the hexadecimal format: \\0x40"
                 )
 
     @staticmethod
