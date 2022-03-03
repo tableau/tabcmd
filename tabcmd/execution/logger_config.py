@@ -2,12 +2,13 @@ import logging
 import os
 
 path = os.path.dirname(os.path.abspath(__file__))
+PYTHON_INFO_LOGGING_LEVEL = 20
 
 
 def get_logger(name, logging_level):
     """function for logging statements to console and logfile"""
     logging_level = getattr(logging, logging_level.upper())
-    if logging_level == 20:
+    if logging_level == PYTHON_INFO_LOGGING_LEVEL:
         log_format = "%(message)s"
     else:
         log_format = "%(levelname)-5s %(asctime)-12s %(name)-10s  %(message)-10s"
