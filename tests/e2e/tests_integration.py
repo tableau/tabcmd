@@ -33,7 +33,8 @@ class E2EServerTests(unittest.TestCase):
 
     saved_site_id = ""
 
-    def test_log_in(self):
+    @staticmethod
+    def test_log_in():
         if not credentials:
             return
         # TODO current test command doesn't recognize skips - change to proper pytest
@@ -53,12 +54,12 @@ class E2EServerTests(unittest.TestCase):
             no_cookie=False,
         )
         test_session = Session()
-        test_session.create_session(args)
+        server = test_session.create_session(args)
         assert test_session.auth_token is not None
         assert test_session.site_id is not None
         assert test_session.user_id is not None
         E2EServerTests.saved_site_id = test_session.site_id
-        return test_session
+        return server
 
     def test_reuse_session(self):
         if not credentials:
