@@ -22,14 +22,17 @@ class CreateSiteUsersCommand(UserCommand):
         number_of_users_listed = 0
         number_of_users_added = 0
         number_of_errors = 0
-        # TODO: if --site/-s was specified, add the users to that site
-        creation_site = "current site"
+
+        if args.site:
+            creation_site = args.site
+        else:
+            creation_site = "current site"
 
         if args.require_all_valid:
             UserCommand.validate_file_for_import(args.filename, logger, detailed=True)
 
-        logger.info("===== Adding users listed in {0} to {1}...".format(args.users.name, creation_site))
-        user_obj_list = UserCommand.get_users_from_file(args.users)
+        logger.info("===== Adding users listed in {0} to {1}...".format(args.filename.name, creation_site))
+        user_obj_list = UserCommand.get_users_from_file(args.filename)
         logger.info("======== 0% complete ========")
         error_list = []
         for user_obj in user_obj_list:
