@@ -4,7 +4,6 @@ from tabcmd.commands.auth.session import Session
 from tabcmd.commands.project.project_command import ProjectCommand
 from tabcmd.execution.logger_config import log
 from tabcmd.commands.commands import Commands
-from tabcmd.parsers.publish_parser import PublishParser
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
@@ -56,7 +55,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
 
     @staticmethod
     def get_source_type(args):
-        source_list = args.source.split(".")
+        source_list = args.filename.split(".")
         twbx = "twbx"
         twb = "twb"
         tdsx = "tdsx"

@@ -108,7 +108,7 @@ class RunCommandsTest(unittest.TestCase):
     def test_publish(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_args.overwrite = False
-        mock_args.source = "dont.know"
+        mock_args.filename = "dont.know"
         mock_args.project = "project-name"
         mock_args.parent_project_path = "projects"
         mock_server.projects = getter
