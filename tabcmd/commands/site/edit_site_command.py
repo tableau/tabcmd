@@ -18,13 +18,13 @@ class EditSiteCommand(SiteCommand):
         logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
-        site_item = EditSiteCommand.get_site(server, args.site_name)
+        site_item = EditSiteCommand.get_site(server, args.sitename)
         if site_item is None:
             SiteCommand.exit_with_error(logger, "Site not found")
         if args.url is not None:
             site_item.content_url = args.url
-        if args.site_name is not None:
-            site_item.name = args.site_name
+        if args.sitename is not None:
+            site_item.name = args.sitename
         if args.site_id is not None:
             site_item.id = args.site_id
         if args.user_quota is not None:
@@ -35,7 +35,7 @@ class EditSiteCommand(SiteCommand):
             site_item.state = args.status
         try:
             server.sites.update(site_item)
-            logger.info("Successfully updated the site called: {}".format(args.site_name))
+            logger.info("Successfully updated the site called: {}".format(args.sitename))
         except TSC.ServerResponseError as e:
             Commands.exit_with_error(logger, "error updating the site", e)
 

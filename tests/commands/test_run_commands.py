@@ -117,8 +117,11 @@ class RunCommandsTest(unittest.TestCase):
 
     def test_runschedule(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
-        runschedule_command.RunSchedule.run_command(mock_args)
-        mock_session.assert_called()
+        mock_server.schedules = getter
+        mock_args.schedule = "myschedule"
+        with self.assertRaises(SystemExit):
+            runschedule_command.RunSchedule.run_command(mock_args)
+        # mock_session.assert_called()
 
     # extracts
     def test_create_extract(self, mock_session, mock_server):
@@ -146,7 +149,7 @@ class RunCommandsTest(unittest.TestCase):
     def test_encrypt_extract(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.sites = getter
-        mock_args.site_name = "name"
+        mock_args.sitename = "name"
         encrypt_extracts_command.EncryptExtracts.run_command(mock_args)
         mock_session.assert_called()
 
@@ -233,7 +236,7 @@ class RunCommandsTest(unittest.TestCase):
     def test_edit_site(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.sites = getter
-        mock_args.site_name = "site-name"
+        mock_args.sitename = "site-name"
         mock_session.assert_not_called()
         with self.assertRaises(SystemExit):
             edit_site_command.EditSiteCommand.run_command(mock_args)
@@ -274,8 +277,9 @@ class RunUserCommandsTest(unittest.TestCase):
 
     def test_create_site_users(self, mock_file, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
-        mock_args.users = RunUserCommandsTest._set_up_file(mock_file)
+        mock_args.filename = RunUserCommandsTest._set_up_file(mock_file)
         mock_args.require_all_valid = False
+        mock_args.site = None
         create_site_users.CreateSiteUsersCommand.run_command(mock_args)
         mock_session.assert_called()
 

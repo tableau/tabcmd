@@ -38,7 +38,7 @@ class CreateSiteUsersCommand(UserCommand):
         for user_obj in user_obj_list:
             try:
                 number_of_users_listed += 1
-                # TODO: bring in other attributes in file
+                # TODO: bring in other attributes in file, actually act on specific site
                 new_user = TSC.UserItem(user_obj.username, args.role)
                 result = server.users.add(new_user)
                 print(result)
@@ -57,8 +57,7 @@ class CreateSiteUsersCommand(UserCommand):
                 logger.debug(error)
         logger.info("======== 100% complete ========")
         logger.info("======== Lines processed: {} =========".format(number_of_users_listed))
-        # Lines skipped
+        logger.info("Lines skipped: {}".format(number_of_errors))
         logger.info("Number of users added: {}".format(number_of_users_added))
-        logger.info("Number of errors {}".format(number_of_errors))
         if number_of_errors > 0:
             logger.info("Error details: {}".format(error_list))

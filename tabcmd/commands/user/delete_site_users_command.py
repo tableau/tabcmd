@@ -23,8 +23,10 @@ class DeleteSiteUsersCommand(SiteCommand):
         number_of_users_deleted = 0
         number_of_errors = 0
 
+        # TODO: allow the user to change which site they are deleted from
+
         if args.require_all_valid:
-            UserCommand.validate_file_for_import(args.users, logger)
+            UserCommand.validate_file_for_import(args.filename, logger)
 
         user_obj_list = UserCommand.get_users_from_file(args.filename)
 

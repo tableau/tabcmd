@@ -19,7 +19,7 @@ class EncryptExtracts(ExtractsCommand):
         session = Session()
         server = session.create_session(args)
         try:
-            site_id = SiteCommand.find_site_id(server, args.site_name)
+            site_id = SiteCommand.find_site_id(server, args.sitename)
             job = server.sites.encrypt_extracts(site_id)
             ExtractsCommand.print_success_message(logger, "encryption", job)
         except TSC.ServerResponseError as e:
