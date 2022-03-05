@@ -37,14 +37,17 @@ from tabcmd.commands.user import (
 mock_args = argparse.Namespace()
 mock_args.logging_level = "info"
 
-getter = MagicMock()
-getter.get = MagicMock("get", return_value=([], 1))
 fake_item = MagicMock()
 fake_item.name = "fake-name"
-getter.publish = MagicMock("publish", return_value=fake_item)
+fake_item.id = "fake-id"
+fake_item.pdf = b"/pdf-representation-of-view"
 
 fake_job = MagicMock()
 fake_job.id = "fake-job-id"
+
+getter = MagicMock()
+getter.get = MagicMock("get", return_value=([fake_item], 1))
+getter.publish = MagicMock("publish", return_value=fake_item)
 getter.create_extract = MagicMock("create_extract", return_value=fake_job)
 getter.decrypt_extract = MagicMock("decrypt_extract", return_value=fake_job)
 getter.delete_extract = MagicMock("delete_extract", return_value=fake_job)
@@ -76,9 +79,6 @@ class RunCommandsTest(unittest.TestCase):
         mock_create_session.assert_not_called()
         mock_end_session.assert_called()
 
-    # datasources and workbooks
-    #     workbook_from_list = matching_workbook[0]
-    # IndexError: list index out of range
     def test_delete(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.workbooks = getter
@@ -86,39 +86,32 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.workbook = True
         mock_args.datasource = False
         mock_args.name = "name for on server"
-        with self.assertRaises(SystemExit):
-            delete_command.DeleteCommand.run_command(mock_args)
-            mock_session.assert_called()
+        delete_command.DeleteCommand.run_command(mock_args)
 
-    #     workbook_from_list = matching_workbook[0]
-    # IndexError: list index out of range
     def test_export(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.workbooks = getter
         mock_args.fullpdf = True
+        mock_args.filename = "filename.pdf"
         mock_args.url = "url/split/pieces"
-        with self.assertRaises(SystemExit):
-            export_command.ExportCommand.run_command(mock_args)
-            mock_session.assert_called()
+        export_command.ExportCommand.run_command(mock_args)
+        mock_session.assert_called()
 
-    #     views_from_list = matching_view[0]
-    # IndexError: list index out of range
     def test_get(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.views = getter
         mock_args.url = "url/split/stuff"
         mock_args.filename = "filename.pdf"
-        with self.assertRaises(SystemExit):
-            get_url_command.GetUrl.run_command(mock_args)
-            mock_session.assert_called()
+        get_url_command.GetUrl.run_command(mock_args)
+        mock_session.assert_called()
 
     def test_publish(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_args.overwrite = False
         mock_args.source = "dont.know"
         mock_args.project = "project-name"
+        mock_args.parent_project_path = "projects"
         mock_server.projects = getter
-
         publish_command.PublishCommand.run_command(mock_args)
         mock_session.assert_called()
 
@@ -207,13 +200,14 @@ class RunCommandsTest(unittest.TestCase):
         mock_server.projects = getter
         mock_args.name = "project-name"
         mock_session.assert_not_called()
+        mock_args.parent_project_path = "projects"
         delete_project_command.DeleteProjectCommand.run_command(mock_args)
         mock_session.assert_called()
 
     def test_publish_project(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.projects = getter
-        mock_args.parent_path_name = ""
+        mock_args.parent_project_name = ""
         # Not yet implemented
         # publish_samples_command.PublishSamplesCommand.run_command(mock_args)
         # mock_session.assert_called()

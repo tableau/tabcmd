@@ -12,7 +12,7 @@ class DatasourcesAndWorkbooks(Commands):
         super().__init__(args)
 
     @staticmethod
-    def get_request_option_for_view(logger, server, view_content_url):
+    def get_view_by_content_url(logger, server, view_content_url):
         try:
             req_option = TSC.RequestOptions()
             req_option.filter.add(TSC.Filter("contentUrl", TSC.RequestOptions.Operator.Equals, view_content_url))
@@ -23,7 +23,7 @@ class DatasourcesAndWorkbooks(Commands):
             Commands.exit_with_error(logger, "Could not find view. Please check the name and try again.")
 
     @staticmethod
-    def get_request_option_for_workbook(logger, server, workbook_content_url):
+    def get_wb_by_content_url(logger, server, workbook_content_url):
         try:
             req_option = TSC.RequestOptions()
             req_option.filter.add(

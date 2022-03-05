@@ -16,6 +16,7 @@ __pycache__/
 *.pytest_cache
 *.pyc
 *.pkl
+.coverage
 
 # code coverage outputs
 .coverage

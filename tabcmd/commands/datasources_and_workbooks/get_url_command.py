@@ -79,7 +79,7 @@ class GetUrl(DatasourcesAndWorkbooks):
     def generate_pdf(logger, server, args):
         view = GetUrl.get_view(args.url)
         try:
-            views_from_list = GetUrl.get_request_option_for_view(logger, server, view)
+            views_from_list = GetUrl.get_view_by_content_url(logger, server, view)
             req_option_pdf = TSC.PDFRequestOptions(maxage=1)
             server.views.populate_pdf(views_from_list, req_option_pdf)
             if args.filename is None:
@@ -97,7 +97,7 @@ class GetUrl(DatasourcesAndWorkbooks):
     def generate_png(logger, server, args):
         view = GetUrl.get_view(args.url)
         try:
-            views_from_list = GetUrl.get_request_option_for_view(logger, server, view)
+            views_from_list = GetUrl.get_view_by_content_url(logger, server, view)
             req_option_csv = TSC.CSVRequestOptions(maxage=1)
             server.views.populate_csv(views_from_list, req_option_csv)
             if args.filename is None:
@@ -115,7 +115,7 @@ class GetUrl(DatasourcesAndWorkbooks):
     def generate_csv(logger, server, args):
         view = GetUrl.get_view(args.url)
         try:
-            views_from_list = GetUrl.get_request_option_for_view(logger, server, view)
+            views_from_list = GetUrl.get_view_by_content_url(logger, server, view)
             req_option_csv = TSC.CSVRequestOptions(maxage=1)
             server.views.populate_csv(views_from_list, req_option_csv)
             if args.filename is None:
@@ -133,7 +133,7 @@ class GetUrl(DatasourcesAndWorkbooks):
     def generate_twb(logger, server, args):
         workbook = GetUrl.get_workbook(args.url)
         try:
-            target_workbook = GetUrl.get_request_option_for_view(logger, server, workbook)
+            target_workbook = GetUrl.get_view_by_content_url(logger, server, workbook)
             server.workbooks.download(target_workbook.id, filepath=None, no_extract=False)
             logger.info("Workbook {} exported".format(target_workbook.name))
         except TSC.ServerResponseError as e:

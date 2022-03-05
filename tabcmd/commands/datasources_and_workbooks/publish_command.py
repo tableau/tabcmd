@@ -3,6 +3,8 @@ import tableauserverclient as TSC
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.project.project_command import ProjectCommand
 from tabcmd.execution.logger_config import log
+from tabcmd.commands.commands import Commands
+from tabcmd.parsers.publish_parser import PublishParser
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
@@ -23,9 +25,16 @@ class PublishCommand(DatasourcesAndWorkbooks):
         source = PublishCommand.get_source_type(args)
 
         if args.project is not None:
-            project_id = ProjectCommand.find_project_id(server, args.project)
+            try:
+                project_id = ProjectCommand.get_project_by_name_and_parent_path(
+                    server, args.project, args.parent_project_path
+                )
+            except Exception as exc:
+                Commands.exit_with_error(logger, "Error fetching project for publishing", exc)
         else:
             project_id = ""
+            args.project = "default"
+            args.parent_project_path = ""
 
         if source == "twbx" or source == "twb":
             new_workbook = TSC.WorkbookItem(project_id, name=args.name, show_tabs=args.tabbed)  # TODO

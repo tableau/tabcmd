@@ -1,35 +1,71 @@
-import subprocess
+import datetime
 import time
+import subprocess
+import unittest
 
-from tests.e2e import setup_e2e
-from tests.e2e import vars
+from tests.e2e import vars, setup_e2e
 
-
-def _test_command(test_args: list[str]):
-    # this will raise an exception if it gets a non-zero return code
-    # that should bubble up and fail the test?
-    calling_args = [setup_e2e.exe] + test_args
-    print(calling_args)
-    return subprocess.check_call(calling_args)
+debug_log = "--logging-level=DEBUG"
 
 
-def test_create_delete_group():
-    command = "creategroup"
-    arguments = [command, vars.group_name]
-    _test_command(arguments)
+class Test_Commands(unittest.TestCase):
+    def _run_command(self, test_args: list[str]):
+        # this will raise an exception if it gets a non-zero return code
+        # that should bubble up and fail the test?
+        calling_args = [setup_e2e.exe] + test_args + [debug_log]
+        print(calling_args)
+        return subprocess.check_call(calling_args)
 
-    time.sleep(1)
+    @classmethod
+    def setup_class(cls):
+        setup_e2e.Setup.prechecks()
+        setup_e2e.Setup.login()
 
-    command = "deletegroup"
-    arguments = [command, vars.group_name]
-    _test_command(arguments)
+    def test_create_delete_group(self):
+        group_name = vars.group_name + str(datetime.datetime.now().microsecond)
+        command = "creategroup"
+        arguments = [command, group_name]
+        self._run_command(arguments)
 
+        time.sleep(1)
 
-def test_login():
-    setup_e2e.prechecks()
-    setup_e2e.login()
+        command = "deletegroup"
+        arguments = [command, group_name]
+        self._run_command(arguments)
 
+    def test_create_delete_project(self):
+        project_name = vars.project_name + str(datetime.datetime.now().microsecond)
+        # project 1
+        command = "createproject"
+        arguments = [command, "--name", project_name]
+        self._run_command(arguments)
 
-if __name__ == "__main__":
-    test_login()
-    # test_create_delete_group()
+        time.sleep(1)
+
+        # project 2
+        parent_path = project_name
+        command = "createproject"
+        arguments = [command, "--name", project_name, "--parent-project-path", parent_path]
+        self._run_command(arguments)
+
+        time.sleep(1)
+
+        # project 3
+        parent_path = "{0}/{1}".format(project_name, project_name)
+        command = "createproject"
+        arguments = [command, "--name", project_name, "--parent-project-path", parent_path]
+        self._run_command(arguments)
+
+        time.sleep(1)
+
+        # delete project 2 (containing 3)
+        command = "deleteproject"
+        arguments = [command, project_name, "--parent-project-path", project_name]
+        self._run_command(arguments)
+
+        time.sleep(1)
+
+        # delete project 1
+        command = "deleteproject"
+        arguments = [command, project_name]
+        self._run_command(arguments)
