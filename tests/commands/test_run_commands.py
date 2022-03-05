@@ -39,7 +39,6 @@ mock_args.logging_level = "info"
 
 fake_item = MagicMock()
 fake_item.name = "fake-name"
-getter.publish = MagicMock("publish", return_value=fake_item)
 fake_item.id = "fake-id"
 fake_item.pdf = b"/pdf-representation-of-view"
 fake_item.extract_encryption_mode = "Disabled"

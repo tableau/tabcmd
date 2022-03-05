@@ -8,12 +8,13 @@ from tests.e2e import vars, setup_e2e
 debug_log = "--logging-level=DEBUG"
 indexing_sleep_time = 1  # wait 1 second to confirm server has indexed updates
 
-def _run_command(test_args: list[str]):
-        # this will raise an exception if it gets a non-zero return code
-        # that should bubble up and fail the test?
-        calling_args = [setup_e2e.exe] + test_args + [debug_log]
-        print(calling_args)
-        return subprocess.check_call(calling_args)
+
+def _test_command(test_args: list[str]):
+    # this will raise an exception if it gets a non-zero return code
+    # that should bubble up and fail the test?
+    calling_args = [setup_e2e.exe] + test_args + [debug_log]
+    print(calling_args)
+    return subprocess.check_call(calling_args)
 
 
 def test_login():
@@ -31,6 +32,7 @@ def test_create_delete_group():
     command = "deletegroup"
     arguments = [command, vars.group_name]
     _test_command(arguments)
+
 
 def test_create_delete_project():
     project_name = vars.project_name
@@ -79,6 +81,7 @@ def test_list_sites(self):
     except Exception as e:
         # often won't have permission for sites
         print(e)
+
 
 def test_create_extract(self):
     command = "createextract"

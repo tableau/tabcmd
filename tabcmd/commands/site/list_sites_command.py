@@ -28,4 +28,3 @@ class ListSiteCommand(SiteCommand):
                 print("")
         except TSC.ServerResponseError as e:
             Commands.exit_with_error(logger, e)
-
