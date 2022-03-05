@@ -1,6 +1,7 @@
 from tabcmd.commands.commands import Commands
 import tableauserverclient as TSC
 
+
 class ProjectCommand(Commands):
     @staticmethod
     def get_project_by_name_and_parent_path(server, project_name, parent_path):
