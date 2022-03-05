@@ -1,9 +1,9 @@
 import tableauserverclient as TSC
+
+from tabcmd.commands.auth.session import Session
+from tabcmd.commands.commands import Commands
 from tabcmd.execution.logger_config import log
-from tabcmd.parsers.list_sites_parser import ListSitesParser
-from ..commands import Commands
 from .site_command import SiteCommand
-from ..auth.session import Session
 
 
 class ListSiteCommand(SiteCommand):
@@ -11,15 +11,10 @@ class ListSiteCommand(SiteCommand):
     Command to return a list of sites to which the logged in user belongs
     """
 
-    @classmethod
-    def parse(cls):
-        args = ListSitesParser.list_site_parser()
-        return args
-
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
-        logger.debug("Launching command")
+        logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
         try:

@@ -1,3 +1,6 @@
+import logging
+
+import tableauserverclient as TSC
 import sys
 
 
@@ -14,65 +17,58 @@ class Commands:
 
     @staticmethod
     def get_workbook_item(server, workbook_name):
-        workbook_item = None
-        all_workbooks_items, pagination_item = server.workbooks.get()
-        for workbook in all_workbooks_items:
-            if workbook.name == workbook_name:
-                workbook_item = workbook
-                break
-        return workbook_item
-
-    @staticmethod
-    def get_data_source_item(server, data_source_name):
-        data_source_item = None
-        all_datasources, pagination_item = server.datasources.get()
-        for datasource in all_datasources:
-            if datasource.name == data_source_name:
-                data_source_item = datasource
-                break
-        return data_source_item
+        return Commands.get_items_by_name(server.workbooks, workbook_name)[0]
 
     @staticmethod
     def get_workbook_id(server, workbook_name):
-        all_workbooks_items, pagination_item = server.workbooks.get()
-        workbook_id = None
-        for workbook in all_workbooks_items:
-            if workbook.name == workbook_name:
-                workbook_id = workbook.id
-                break
-        return workbook_id
+        return Commands.get_workbook_item(server, workbook_name).id
 
     @staticmethod
-    def get_data_source_id(server, datasource_name):
-        all_datasources, pagination_item = server.datasources.get()
-        datasource_id = None
-        for datasource in all_datasources:
-            if datasource.name == datasource_name:
-                datasource_id = datasource.id
-                break
-        return datasource_id
+    def get_data_source_item(server, data_source_name):
+        return Commands.get_items_by_name(server.datasources, data_source_name)[0]
+
+    @staticmethod
+    def get_data_source_id(server, data_source_name):
+        return Commands.get_data_source_item(server, data_source_name).id
+
+    @staticmethod
+    def get_items_by_name(item_endpoint, item_name):
+        # print("get `{0}` from {1}".format(item_name, item_endpoint))
+        req_option = TSC.RequestOptions()
+        req_option.filter.add(TSC.Filter(TSC.RequestOptions.Field.Name, TSC.RequestOptions.Operator.Equals, item_name))
+        all_items, pagination_item = item_endpoint.get(req_option)
+        if all_items is None or all_items == []:
+            raise TSC.ServerResponseError(
+                "404", "No items returned for name", "Fetching {0} from {1}".format(item_name, item_endpoint)
+            )
+        # if len(all_items) > 1:
+        #     print("multiple items of this name were found. Returning first page.")
+        return all_items
 
     @staticmethod
     def exit_with_error(logger, message, exception=None):
-        if exception:
-            Commands.check_common_error_codes(logger, exception)
-        else:
-            logger.error(message)
+        try:
+            if exception:
+                Commands.check_common_error_codes(logger, exception)
+            else:
+                logger.error(message)
+        except Exception as exc:
+            print("Error during log call - ".format(exc.__class__))
         sys.exit(1)
 
     @staticmethod
     def check_common_error_codes(logger, error):
-        if error.code.find("404") == 0:
-            logger.error("{0} Not Found: Resource cannot not be located".format(error.code))
-        elif error.code.find("403") == 0:
-            logger.error("{0} Forbidden: Request was not authorized".format(error.code))
-        elif error.code.find("400") == 0:
+        if error.code.find("400") == 0:
             logger.error(
                 "{0} Bad request: Tableau Server cannot parse or interpret the message in the "
                 "request".format(error.code)
             )
         elif error.code.find("401") == 0:
             logger.error("{0} User not Authenticated".format(error.code))
+        elif error.code.find("403") == 0:
+            logger.error("{0} Forbidden: Request was not authorized".format(error.code))
+        if error.code.find("404") == 0:
+            logger.error("{0} Not Found: Resource cannot not be located".format(error.code))
         elif error.code.find("405") == 0:
             logger.error("{0} Method not Allowed".format(error.code))
         else:

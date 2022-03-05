@@ -9,6 +9,6 @@ DO NOT #### add your credentials to this file.
 You can add them to credentials.py, which will never be checked in.
 """
 
-project_name = "Default"
+project_name = "not-default-name"
 group_name = "test-ing-group"
 workbook_name = "namebasic"

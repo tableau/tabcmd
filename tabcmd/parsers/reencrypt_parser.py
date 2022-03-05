@@ -1,6 +1,3 @@
-import sys
-
-
 class ReencryptExtractsParser:
     """
     Parser to reencrypt command

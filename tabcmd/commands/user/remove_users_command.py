@@ -1,8 +1,8 @@
-from tabcmd.parsers.remove_users_parser import RemoveUserParser
-from .user_command import UserCommand
 import tableauserverclient as TSC
+
+from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
-from ..auth.session import Session
+from .user_command import UserCommand
 
 
 class RemoveUserCommand(UserCommand):
@@ -10,15 +10,10 @@ class RemoveUserCommand(UserCommand):
     Command to remove users from the specified group
     """
 
-    @classmethod
-    def parse(cls):
-        args = RemoveUserParser.remove_user_parser()
-        return args
-
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
-        logger.debug("Launching command")
+        logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
         number_of_users_removed = 0

@@ -1,19 +1,19 @@
-import subprocess
+import datetime
 import time
+import subprocess
+import unittest
 
-from tests.e2e import setup_e2e
-from tests.e2e import vars
+from tests.e2e import vars, setup_e2e
 
 debug_log = "--logging-level=DEBUG"
 indexing_sleep_time = 1  # wait 1 second to confirm server has indexed updates
 
-
-def _test_command(test_args: list[str]):
-    # this will raise an exception if it gets a non-zero return code
-    # that should bubble up and fail the test?
-    calling_args = [setup_e2e.exe] + test_args
-    print(calling_args)
-    return subprocess.check_call(calling_args)
+def _run_command(test_args: list[str]):
+        # this will raise an exception if it gets a non-zero return code
+        # that should bubble up and fail the test?
+        calling_args = [setup_e2e.exe] + test_args + [debug_log]
+        print(calling_args)
+        return subprocess.check_call(calling_args)
 
 
 def test_login():

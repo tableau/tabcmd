@@ -1,8 +1,8 @@
-from tabcmd.parsers.delete_extracts_parser import DeleteExtractsParser
 import tableauserverclient as TSC
+
+from tabcmd.commands.auth.session import Session
+from tabcmd.commands.extracts.extracts_command import ExtractsCommand
 from tabcmd.execution.logger_config import log
-from ..auth.session import Session
-from ..extracts.extracts_command import ExtractsCommand
 
 
 class DeleteExtracts(ExtractsCommand):
@@ -10,15 +10,10 @@ class DeleteExtracts(ExtractsCommand):
     Command to delete extracts for a published workbook or data source.
     """
 
-    @classmethod
-    def parse(cls):
-        args = DeleteExtractsParser.delete_extracts_parser()
-        return args
-
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
-        logger.debug("Launching command")
+        logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
         if args.datasource:

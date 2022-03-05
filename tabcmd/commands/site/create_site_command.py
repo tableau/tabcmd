@@ -1,9 +1,9 @@
 import tableauserverclient as TSC
+
+from tabcmd.commands.auth.session import Session
+from tabcmd.commands.commands import Commands
 from tabcmd.execution.logger_config import log
-from tabcmd.parsers.create_site_parser import CreateSiteParser
 from .site_command import SiteCommand
-from ..auth.session import Session
-from ..commands import Commands
 
 
 class CreateSiteCommand(SiteCommand):
@@ -11,15 +11,10 @@ class CreateSiteCommand(SiteCommand):
     Command to Create a site
     """
 
-    @classmethod
-    def parse(cls):
-        args = CreateSiteParser.create_site_parser()
-        return args
-
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
-        logger.debug("Launching command")
+        logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
         new_site = TSC.SiteItem(

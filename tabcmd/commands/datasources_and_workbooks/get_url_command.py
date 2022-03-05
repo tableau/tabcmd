@@ -1,7 +1,7 @@
 import tableauserverclient as TSC
+
+from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
-from ..auth.session import Session
-from tabcmd.parsers.get_url_parser import GetUrlParser
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
@@ -11,15 +11,10 @@ class GetUrl(DatasourcesAndWorkbooks):
     by the specified (partial) URL. The result is returned as a file.
     """
 
-    @classmethod
-    def parse(cls):
-        args = GetUrlParser.get_url_parser()
-        return args
-
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
-        logger.debug("Launching command")
+        logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
         file_type = GetUrl.evaluate_file_name(logger, args.filename, args.url)
@@ -84,7 +79,7 @@ class GetUrl(DatasourcesAndWorkbooks):
     def generate_pdf(logger, server, args):
         view = GetUrl.get_view(args.url)
         try:
-            views_from_list = GetUrl.get_request_option_for_view(logger, server, view)
+            views_from_list = GetUrl.get_view_by_content_url(logger, server, view)
             req_option_pdf = TSC.PDFRequestOptions(maxage=1)
             server.views.populate_pdf(views_from_list, req_option_pdf)
             if args.filename is None:
@@ -102,7 +97,7 @@ class GetUrl(DatasourcesAndWorkbooks):
     def generate_png(logger, server, args):
         view = GetUrl.get_view(args.url)
         try:
-            views_from_list = GetUrl.get_request_option_for_view(logger, server, view)
+            views_from_list = GetUrl.get_view_by_content_url(logger, server, view)
             req_option_csv = TSC.CSVRequestOptions(maxage=1)
             server.views.populate_csv(views_from_list, req_option_csv)
             if args.filename is None:
@@ -120,7 +115,7 @@ class GetUrl(DatasourcesAndWorkbooks):
     def generate_csv(logger, server, args):
         view = GetUrl.get_view(args.url)
         try:
-            views_from_list = GetUrl.get_request_option_for_view(logger, server, view)
+            views_from_list = GetUrl.get_view_by_content_url(logger, server, view)
             req_option_csv = TSC.CSVRequestOptions(maxage=1)
             server.views.populate_csv(views_from_list, req_option_csv)
             if args.filename is None:
@@ -138,7 +133,7 @@ class GetUrl(DatasourcesAndWorkbooks):
     def generate_twb(logger, server, args):
         workbook = GetUrl.get_workbook(args.url)
         try:
-            target_workbook = GetUrl.get_request_option_for_view(logger, server, workbook)
+            target_workbook = GetUrl.get_view_by_content_url(logger, server, workbook)
             server.workbooks.download(target_workbook.id, filepath=None, no_extract=False)
             logger.info("Workbook {} exported".format(target_workbook.name))
         except TSC.ServerResponseError as e:
