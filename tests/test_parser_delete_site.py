@@ -14,7 +14,7 @@ class DeleteSiteParserTest(unittest.TestCase):
     def test_delete_site(self):
         mock_args = [commandname, "site-name"]
         args = self.parser_under_test.parse_args(mock_args)
-        assert args.sitename == "site-name", args
+        assert args.site_name == "site-name", args
 
     def test_delete_site_required_name_none(self):
         mock_args = [commandname]

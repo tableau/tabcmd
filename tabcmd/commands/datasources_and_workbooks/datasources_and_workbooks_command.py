@@ -1,5 +1,6 @@
-from ..commands import Commands
 import tableauserverclient as TSC
+
+from tabcmd.commands.commands import Commands
 
 
 class DatasourcesAndWorkbooks(Commands):

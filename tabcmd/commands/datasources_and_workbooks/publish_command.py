@@ -1,7 +1,8 @@
 import tableauserverclient as TSC
-from tabcmd.execution.logger_config import log
-from tabcmd.commands.project.project_command import ProjectCommand
+
 from tabcmd.commands.auth.session import Session
+from tabcmd.commands.project.project_command import ProjectCommand
+from tabcmd.execution.logger_config import log
 from tabcmd.commands.commands import Commands
 from tabcmd.parsers.publish_parser import PublishParser
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
@@ -13,15 +14,10 @@ class PublishCommand(DatasourcesAndWorkbooks):
     (.tds(x)), or extract (.hyper) to Tableau Server.
     """
 
-    @classmethod
-    def parse(cls):
-        args = PublishParser.publish_parser()
-        return args
-
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
-        logger.debug("Launching command")
+        logger.debug("======================= Launching command =======================")
         logger.debug(args)
         session = Session()
         server = session.create_session(args)

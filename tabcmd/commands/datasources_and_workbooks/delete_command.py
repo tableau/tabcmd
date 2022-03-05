@@ -1,7 +1,7 @@
 import tableauserverclient as TSC
+
+from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
-from ..auth.session import Session
-from tabcmd.parsers.delete_parser import DeleteParser
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
@@ -13,15 +13,10 @@ class DeleteCommand(DatasourcesAndWorkbooks):
     located_workbook = None
     located_datasource = None
 
-    @classmethod
-    def parse(cls):
-        args = DeleteParser.delete_parser()
-        return args
-
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
-        logger.debug("Launching command")
+        logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
         req_option = TSC.RequestOptions()
@@ -42,8 +37,8 @@ class DeleteCommand(DatasourcesAndWorkbooks):
                 DeleteCommand.located_datasource = matching_datasource[0]
             else:
                 DeleteCommand.exit_with_error(logger, "No workbook or datasource found")
-        except (Exception,):
-            DeleteCommand.exit_with_error(logger, "Exception occurred")
+        except Exception as e:
+            DeleteCommand.exit_with_error(logger, "Exception occurred", e)
         if args.workbook or DeleteCommand.located_workbook:
             # filter match the name and find id
             workbook_to_delete = DeleteCommand.located_workbook if DeleteCommand.located_workbook else args.workbook

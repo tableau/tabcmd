@@ -1,9 +1,9 @@
-from tabcmd.commands.user.user_command import UserCommand
 import tableauserverclient as TSC
-from tabcmd.execution.logger_config import log
+
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.site.site_command import SiteCommand
-from tabcmd.parsers.delete_site_users_parser import DeleteSiteUsersParser
+from tabcmd.commands.user.user_command import UserCommand
+from tabcmd.execution.logger_config import log
 
 
 class DeleteSiteUsersCommand(SiteCommand):
@@ -13,15 +13,10 @@ class DeleteSiteUsersCommand(SiteCommand):
     a simple list of one user name per line.
     """
 
-    @classmethod
-    def parse(cls):
-        args = DeleteSiteUsersParser.delete_site_users_parser()
-        return args
-
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
-        logger.debug("Launching command")
+        logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
 

@@ -1,9 +1,9 @@
-from tabcmd.parsers.reencrypt_parser import ReencryptExtractsParser
 import tableauserverclient as TSC
+
+from tabcmd.commands.auth.session import Session
+from tabcmd.commands.extracts.extracts_command import ExtractsCommand
+from tabcmd.commands.site.site_command import SiteCommand
 from tabcmd.execution.logger_config import log
-from ..auth.session import Session
-from ..extracts.extracts_command import ExtractsCommand
-from ..site.site_command import SiteCommand
 
 
 class ReencryptExtracts(ExtractsCommand):
@@ -12,15 +12,10 @@ class ReencryptExtracts(ExtractsCommand):
     This command will regenerate the key encryption key and data encryption key. You must specify a site.
     """
 
-    @classmethod
-    def parse(cls):
-        args = ReencryptExtractsParser.reencrypt_extracts_parser()
-        return args
-
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
-        logger.debug("Launching command")
+        logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
         try:

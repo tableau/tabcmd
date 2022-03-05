@@ -1,7 +1,7 @@
 import tableauserverclient as TSC
+
+from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
-from ..auth.session import Session
-from tabcmd.parsers.get_url_parser import GetUrlParser
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
@@ -11,15 +11,10 @@ class GetUrl(DatasourcesAndWorkbooks):
     by the specified (partial) URL. The result is returned as a file.
     """
 
-    @classmethod
-    def parse(cls):
-        args = GetUrlParser.get_url_parser()
-        return args
-
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
-        logger.debug("Launching command")
+        logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
         file_type = GetUrl.evaluate_file_name(logger, args.filename, args.url)

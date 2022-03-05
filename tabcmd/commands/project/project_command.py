@@ -1,6 +1,5 @@
-from ..commands import Commands
+from tabcmd.commands.commands import Commands
 import tableauserverclient as TSC
-
 
 class ProjectCommand(Commands):
     @staticmethod

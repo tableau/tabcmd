@@ -1,8 +1,8 @@
 import tableauserverclient as TSC
+
+from tabcmd.commands.auth.session import Session
+from tabcmd.commands.extracts.extracts_command import ExtractsCommand
 from tabcmd.execution.logger_config import log
-from ..auth.session import Session
-from tabcmd.parsers.create_extracts_parser import CreateExtractsParser
-from ..extracts.extracts_command import ExtractsCommand
 
 
 class CreateExtracts(ExtractsCommand):
@@ -10,15 +10,10 @@ class CreateExtracts(ExtractsCommand):
     Command that creates extracts for a published workbook or data source.
     """
 
-    @classmethod
-    def parse(cls):
-        args = CreateExtractsParser.create_extracts_parser()
-        return args
-
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
-        logger.debug("Launching command")
+        logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
         if args.datasource:

@@ -1,8 +1,8 @@
-from .user_command import UserCommand
-from tabcmd.parsers.add_users_parser import AddUserParser
 import tableauserverclient as TSC
+
+from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
-from ..auth.session import Session
+from .user_command import UserCommand
 
 
 class AddUserCommand(UserCommand):
@@ -10,15 +10,10 @@ class AddUserCommand(UserCommand):
     Command to Adds users to a specified group
     """
 
-    @classmethod
-    def parse(cls):
-        args = AddUserParser.add_user_parser()
-        return args
-
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
-        logger.debug("Launching command")
+        logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
         number_of_users_listed = 0

@@ -1,8 +1,6 @@
-from .project_command import *
-from tabcmd.parsers.publish_samples_parser import PublishSamplesParser
+from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
-from ..auth.session import Session
-from ..commands import Commands
+from .project_command import *
 
 
 class PublishSamplesCommand(ProjectCommand):
@@ -11,15 +9,10 @@ class PublishSamplesCommand(ProjectCommand):
     Any existing samples will be overwritten.
     """
 
-    @classmethod
-    def parse(cls):
-        args = PublishSamplesParser.publish_samples_parser()
-        return args
-
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
-        logger.debug("Launching command")
+        logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
         if args.parent_path_name is not None:

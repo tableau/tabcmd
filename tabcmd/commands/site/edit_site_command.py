@@ -1,9 +1,9 @@
 import tableauserverclient as TSC
+
+from tabcmd.commands.auth.session import Session
+from tabcmd.commands.commands import Commands
 from tabcmd.execution.logger_config import log
-from tabcmd.parsers.edit_site_parser import EditSiteParser
 from .site_command import SiteCommand
-from ..auth.session import Session
-from ..commands import Commands
 
 
 class EditSiteCommand(SiteCommand):
@@ -12,15 +12,10 @@ class EditSiteCommand(SiteCommand):
     site administrators the ability to add and remove users, or prevent users from running certain tasks manually.
     """
 
-    @classmethod
-    def parse(cls):
-        args = EditSiteParser.edit_site_parser()
-        return args
-
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
-        logger.debug("Launching command")
+        logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
         site_item = EditSiteCommand.get_site(server, args.site_name)

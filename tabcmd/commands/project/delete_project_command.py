@@ -1,9 +1,6 @@
-from .project_command import *
-from tabcmd.parsers.delete_project_parser import DeleteProjectParser
-import tableauserverclient as TSC
+from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
-from ..auth.session import Session
-from ..commands import Commands
+from .project_command import *
 
 
 class DeleteProjectCommand(ProjectCommand):
@@ -11,15 +8,10 @@ class DeleteProjectCommand(ProjectCommand):
     Command to Delete the specified project from the server
     """
 
-    @classmethod
-    def parse(cls):
-        args = DeleteProjectParser.delete_project_parser()
-        return args
-
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
-        logger.debug("Launching command")
+        logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
         if args.parent_project_path:

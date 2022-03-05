@@ -1,9 +1,8 @@
-from .project_command import *
-from ..auth.session import Session
-from ..commands import Commands
-from tabcmd.parsers.create_project_parser import CreateProjectParser
 import tableauserverclient as TSC
+
+from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
+from .project_command import *
 
 
 class CreateProjectCommand(ProjectCommand):
@@ -11,15 +10,10 @@ class CreateProjectCommand(ProjectCommand):
     Command to create a project
     """
 
-    @classmethod
-    def parse(cls):
-        args = CreateProjectParser.create_project_parser()
-        return args
-
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
-        logger.debug("Launching command")
+        logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
         parent_id = None
