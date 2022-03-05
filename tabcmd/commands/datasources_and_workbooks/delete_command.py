@@ -20,6 +20,8 @@ class DeleteCommand(DatasourcesAndWorkbooks):
         session = Session()
         server = session.create_session(args)
 
+        logger.info("===== Removing '{0}' from the server...".format(args.name or args.datasource or args.workbook))
+
         if args.workbook:
             item_type = "workbook"
             item_to_delete = DeleteCommand.get_workbook_item(server, args.workbook)
@@ -36,8 +38,6 @@ class DeleteCommand(DatasourcesAndWorkbooks):
                     item_type = "datasource"
                 except TSC.ServerResponseError:
                     DeleteCommand.exit_with_error(logger, "No workbook or datasource found")
-
-        logger.info("===== Removing {0} '{1}' from the server...".format(item_type, item_to_delete.name))
 
         try:
             if item_type == "workbook":
