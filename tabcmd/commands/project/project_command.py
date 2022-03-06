@@ -4,8 +4,8 @@ import tableauserverclient as TSC
 
 class ProjectCommand(Commands):
     @staticmethod
-    def get_project_by_name_and_parent_path(server, project_name, parent_path):
-        # print("get by name and path: {0}, {1}".format(project_name, parent_path))
+    def get_project_by_name_and_parent_path(logger, server, project_name, parent_path):
+        logger.debug("Project by name and path: {0}, {1}".format(project_name, parent_path))
         project = None
         if not project_name:
             project = ProjectCommand._get_parent_project_from_tree(
@@ -18,7 +18,7 @@ class ProjectCommand(Commands):
             )
         if not project:
             raise TSC.server.ServerResponseError(
-                "404", "Could not find project", "{0}/{1}".format(parent_path, project_name)
+                "404", "Could not find project {0}/{1}".format(parent_path, project_name)
             )
         return project
 

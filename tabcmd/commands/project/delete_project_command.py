@@ -19,7 +19,9 @@ class DeleteProjectCommand(ProjectCommand):
 
         try:
             logger.debug("Fetching project to be deleted: {}/{}".format(args.parent_project_path, args.name))
-            project = ProjectCommand.get_project_by_name_and_parent_path(server, args.name, args.parent_project_path)
+            project = ProjectCommand.get_project_by_name_and_parent_path(
+                logger, server, args.name, args.parent_project_path
+            )
         except TSC.ServerResponseError as e:
             Commands.exit_with_error(logger, e)
         project_id = project.id

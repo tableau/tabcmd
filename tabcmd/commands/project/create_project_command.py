@@ -21,7 +21,9 @@ class CreateProjectCommand(ProjectCommand):
         if args.parent_project_path is not None:
             try:
                 logger.info("===== Identifying parent project '{}' on the server...".format(args.parent_project_path))
-                parent = ProjectCommand.get_project_by_name_and_parent_path(server, None, args.parent_project_path)
+                parent = ProjectCommand.get_project_by_name_and_parent_path(
+                    logger, server, None, args.parent_project_path
+                )
             except TSC.ServerResponseError as exc:
                 Commands.exit_with_error(logger, "Error fetching parent project", exc)
             readable_name = "{0}/{1}".format(args.parent_project_path, args.name)

@@ -2,6 +2,8 @@ import argparse
 import unittest
 from unittest.mock import *
 
+import mock
+
 from tabcmd.commands.auth import login_command, logout_command
 from tabcmd.commands.datasources_and_workbooks import (
     delete_command,
@@ -100,7 +102,7 @@ class RunCommandsTest(unittest.TestCase):
     def test_get(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.views = getter
-        mock_args.url = "url/split/stuff"
+        mock_args.url = "views/workbook-name/view-name"
         mock_args.filename = "filename.pdf"
         get_url_command.GetUrl.run_command(mock_args)
         mock_session.assert_called()
@@ -108,9 +110,11 @@ class RunCommandsTest(unittest.TestCase):
     def test_publish(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_args.overwrite = False
-        mock_args.filename = "dont.know"
-        mock_args.project = "project-name"
+        mock_args.filename = "existing_file.twbx"
+        mock_args.projectname = "project-name"
         mock_args.parent_project_path = "projects"
+        mock_args.name = ""
+        mock_args.tabbed = True
         mock_server.projects = getter
         publish_command.PublishCommand.run_command(mock_args)
         mock_session.assert_called()

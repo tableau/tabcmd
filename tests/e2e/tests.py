@@ -69,3 +69,10 @@ class Test_Commands(unittest.TestCase):
         command = "deleteproject"
         arguments = [command, project_name]
         self._run_command(arguments)
+
+    def test_publish_export(self):
+        command = "publish"
+        local_file = "tests/assets/SampleWB.twbx"
+        arguments = [command, local_file]
+        self._run_command(arguments)
+        # TODO: export and get the file we just published

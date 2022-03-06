@@ -6,7 +6,6 @@ from tabcmd.execution.logger_config import log
 
 
 class RefreshExtracts(ExtractsCommand):
-
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)

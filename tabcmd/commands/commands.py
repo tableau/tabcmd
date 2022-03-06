@@ -1,7 +1,6 @@
-import logging
-
-import tableauserverclient as TSC
+import os
 import sys
+import tableauserverclient as TSC
 
 
 class Commands:
@@ -73,3 +72,18 @@ class Commands:
             logger.error("{0} Method not Allowed".format(error.code))
         else:
             logger.error("{0} Error: Server error occurred".format(error.code), error.code)
+
+    @staticmethod
+    def get_filename_extension_if_tableau_type(logger, filename):
+        logger.debug("Filename given: {}".format(filename))
+        source_file, source_type = os.path.splitext(filename)  # returns .ext
+        source_type = source_type.lstrip(".")
+        logger.debug("Parsed into {0}, {1}".format(source_file, source_type))
+        if not source_type:
+            raise ValueError("Filename `{}` must have a file extension.".format(filename))
+        possible_types = ["twbx", "twb", "tdsx", "tds", "hyper"]
+        if source_type in possible_types:
+            return source_type
+        raise ValueError(
+            "Filename `{0}` does not have an appropriate file extension: found `{1}`.".format(filename, source_type)
+        )

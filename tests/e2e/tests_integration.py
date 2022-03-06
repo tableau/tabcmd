@@ -1,4 +1,6 @@
 import argparse
+
+import mock
 import pytest
 import unittest
 from tabcmd.commands.auth.session import Session
@@ -89,4 +91,5 @@ class E2EServerTests(unittest.TestCase):
 
     def test_get_project(self):
         server = E2EServerTests.test_log_in()
-        ProjectCommand.get_project_by_name_and_parent_path(server, "Default", None)
+        logger = mock.MagicMock()
+        ProjectCommand.get_project_by_name_and_parent_path(logger, server, "Default", None)
