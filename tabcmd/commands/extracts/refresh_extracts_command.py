@@ -13,22 +13,19 @@ class RefreshExtracts(ExtractsCommand):
         session = Session()
         server = session.create_session(args)
         refresh_action = "refresh"
-        if args.datasource:
-            try:
-                # TODO: this message should have the projects passed with the ds name
-                # e.g instead of "regional" it should say "samples/regional"
-                ExtractsCommand.print_plan_message(logger, "datasource", args.datasource, "refreshed")
+        try:
+            if args.datasource:
+                logger.debug("Finding datasource `{}` on the server...".format(args.datasource))
+                ExtractsCommand.print_task_scheduling_message(logger, "datasource", args.datasource, "refreshed")
                 datasource_id = ExtractsCommand.get_data_source_id(server, args.datasource)
                 job = server.datasources.refresh(datasource_id)
-                ExtractsCommand.print_success_message(logger, refresh_action, job)
-            except TSC.ServerResponseError as e:
-                ExtractsCommand.exit_with_error(logger, e)
 
-        elif args.workbook:
-            try:
-                ExtractsCommand.print_plan_message(logger, "workbook", args.workbook, "refreshed")
+            elif args.workbook:
+                logger.debug("Finding workbook `{}` on the server...".format(args.workbook))
+                ExtractsCommand.print_task_scheduling_message(logger, "workbook", args.workbook, "refreshed")
                 workbook_id = ExtractsCommand.get_workbook_id(server, args.workbook)
                 job = server.workbooks.refresh(workbook_id)
-                ExtractsCommand.print_success_message(logger, refresh_action, job)
-            except TSC.ServerResponseError as e:
-                ExtractsCommand.exit_with_error(logger, e)
+
+        except TSC.ServerResponseError as e:
+            ExtractsCommand.exit_with_error(logger, "Error refreshing extracts", e)
+        ExtractsCommand.print_success_message(logger, refresh_action, job)

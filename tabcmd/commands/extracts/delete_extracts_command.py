@@ -16,19 +16,16 @@ class DeleteExtracts(ExtractsCommand):
         logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
-        if args.datasource:
-            try:
+        try:
+            if args.datasource:
+                logger.info("Finding datasource `{}` on the server...".format(args.datasource))
                 data_source_item = ExtractsCommand.get_data_source_item(server, args.datasource)
                 job = server.datasources.delete_extract(data_source_item)
-                ExtractsCommand.print_success_message(logger, "deletion", job)
-            except TSC.ServerResponseError as e:
-                ExtractsCommand.exit_with_error(logger, "Server Error:", e)
-        elif args.workbook:
-            try:
+            elif args.workbook:
+                logger.info("Finding workbook `{}` on the server...".format(args.workbook))
                 workbook_item = ExtractsCommand.get_workbook_item(server, args.workbook)
                 job = server.workbooks.delete_extract(workbook_item)
-                ExtractsCommand.print_success_message(logger, "deletion", job)
-            except TSC.ServerResponseError as e:
-                ExtractsCommand.exit_with_error(logger, "Server Error:", e)
-        else:
-            ExtractsCommand.exit_with_error(logger, "You must specify either a workbook or datasource")
+        except TSC.ServerResponseError as e:
+            ExtractsCommand.exit_with_error(logger, "Error deleting extract", e)
+
+        ExtractsCommand.print_success_message(logger, "deletion", job)
