@@ -37,7 +37,7 @@ class DeleteCommand(DatasourcesAndWorkbooks):
                     item_to_delete = DeleteCommand.get_data_source_item(server, args.name)
                     item_type = "datasource"
                 except TSC.ServerResponseError:
-                    DeleteCommand.exit_with_error(logger, "No workbook or datasource found")
+                    DeleteCommand.exit_with_error(logger, "You must specify a workbook or datasource")
 
         try:
             if item_type == "workbook":
@@ -46,4 +46,4 @@ class DeleteCommand(DatasourcesAndWorkbooks):
                 server.datasources.delete(item_to_delete.id)
             logger.info("===== Succeeded")
         except TSC.ServerResponseError as e:
-            DeleteCommand.exit_with_error(logger, e)
+            DeleteCommand.exit_with_error(logger, "Error deleting from server", e)

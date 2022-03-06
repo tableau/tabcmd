@@ -36,4 +36,4 @@ class CreateProjectCommand(ProjectCommand):
             logger.info("===== Succeeded")
             return project_item
         except TSC.ServerResponseError as e:
-            Commands.exit_with_error(logger, e)
+            Commands.exit_with_error(logger, "Error creating project", e)

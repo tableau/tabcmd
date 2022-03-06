@@ -31,7 +31,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
                     logger, server, args.projectname, args.parent_project_path
                 )
             except Exception as exc:
-                Commands.exit_with_error(logger, exc)
+                Commands.exit_with_error(logger, "Error getting project from server", exc)
         else:
             project_id = ""
             args.projectname = "default"

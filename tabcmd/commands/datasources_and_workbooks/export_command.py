@@ -42,7 +42,6 @@ class ExportCommand(DatasourcesAndWorkbooks):
                 server.workbooks.populate_pdf(workbook_from_list, req_option_pdf)
                 output = workbook_from_list.pdf
                 default_filename = "{}.pdf".format(workbook)
-                ExportCommand.save_to_file(args, logger, output, default_filename)
 
             elif args.pdf or args.png or args.csv:  # it's a view
 
@@ -54,27 +53,27 @@ class ExportCommand(DatasourcesAndWorkbooks):
                     server.views.populate_pdf(views_from_list, req_option_pdf)
                     output = views_from_list.pdf
                     default_filename = "{}.pdf".format(views_from_list.name)
-                    ExportCommand.save_to_file(args, logger, output, default_filename)
 
                 elif args.csv:
                     req_option_csv = TSC.CSVRequestOptions(maxage=1)
                     server.views.populate_csv(views_from_list, req_option_csv)
                     output = views_from_list.csv
                     default_filename = "{}.csv".format(view)
-                    ExportCommand.save_to_file(args, logger, output, default_filename)
 
                 elif args.png:
                     req_option_csv = TSC.CSVRequestOptions(maxage=1)
                     server.views.populate_csv(views_from_list, req_option_csv)
                     output = views_from_list.png
                     default_filename = "{}.png".format(view)
-                    ExportCommand.save_to_file(args, logger, output, default_filename)
-
             else:
                 ExportCommand.exit_with_error(logger, "You must specify an export method")
 
         except TSC.ServerResponseError as e:
-            ExportCommand.exit_with_error(logger, e)
+            ExportCommand.exit_with_error(logger, "Error exporting from server", e)
+        try:
+            ExportCommand.save_to_file(args, logger, output, default_filename)
+        except TSC.ServerResponseError as e:
+            ExportCommand.exit_with_error(logger, "Error saving to file", e)
 
     @staticmethod
     def save_to_file(args, logger, output, default_filename):

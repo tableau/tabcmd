@@ -23,7 +23,7 @@ class DeleteProjectCommand(ProjectCommand):
                 logger, server, args.name, args.parent_project_path
             )
         except TSC.ServerResponseError as e:
-            Commands.exit_with_error(logger, e)
+            Commands.exit_with_error(logger, "Error finding project", e)
         project_id = project.id
 
         try:
