@@ -17,9 +17,11 @@ class DeleteSiteCommand(SiteCommand):
         logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
-        site_id = SiteCommand.find_site_id(server, args.site_name)
+        site_id = server.sites.get_by_name(args.site_name)
+        if site_id == session.site_id:
+            Commands.exit_with_error(logger, "Cannot delete the site you are logged in to")
         try:
             server.sites.delete(site_id)
             logger.info("Successfully deleted the site")
         except TSC.ServerResponseError as e:
-            Commands.exit_with_error(logger, "Server Error:", e)
+            Commands.exit_with_error(logger, "Error deleting site", e)

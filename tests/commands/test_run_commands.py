@@ -130,9 +130,12 @@ class RunCommandsTest(unittest.TestCase):
     # extracts
     def test_create_extract(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
-        mock_server.datasources = getter
-        mock_args.datasource = True
+        mock_server.workbooks = getter
         mock_args.encrypt = False
+        mock_args.include_all = True
+        mock_args.datasource = None
+        mock_args.embedded_datasources = None
+        mock_args.workbook = "workbook"
         create_extracts_command.CreateExtracts.run_command(mock_args)
         mock_session.assert_called()
 
@@ -153,7 +156,7 @@ class RunCommandsTest(unittest.TestCase):
     def test_encrypt_extract(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.sites = getter
-        mock_args.sitename = "name"
+        mock_args.site_name = "name"
         encrypt_extracts_command.EncryptExtracts.run_command(mock_args)
         mock_session.assert_called()
 
@@ -240,15 +243,19 @@ class RunCommandsTest(unittest.TestCase):
     def test_edit_site(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.sites = getter
-        mock_args.sitename = "site-name"
+        mock_args.site_name = "site-name"
+        mock_args.url = "new-url"
+        mock_args.user_quota = "1"
+        mock_args.storage_quota = "1"
+        mock_args.status = "Suspended"
         mock_session.assert_not_called()
-        with self.assertRaises(SystemExit):
-            edit_site_command.EditSiteCommand.run_command(mock_args)
-            mock_session.assert_called()
+        edit_site_command.EditSiteCommand.run_command(mock_args)
+        mock_session.assert_called()
 
     def test_list_sites(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.sites = getter
+        mock_args.get_extract_encryption_mode = True
         list_sites_command.ListSiteCommand.run_command(mock_args)
         mock_session.assert_called()
 
