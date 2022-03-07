@@ -72,4 +72,4 @@ class Commands:
         elif error.code.find("405") == 0:
             logger.error("{0} Method not Allowed".format(error.code))
         else:
-            logger.error("{0} Error: Server error occurred".format(error.code), error.code)
+            logger.error("{0} Error: {1}".format(error.code, error.content))
