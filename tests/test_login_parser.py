@@ -100,13 +100,13 @@ class LoginParserTest(unittest.TestCase):
         with self.assertRaises(SystemExit):
             args = self.parser_under_test.parse_args(mock_args)
 
-    def test_password_passwordfile_conflict(self):
-        mock_args = [commandname, "--password", "the-pwd", "--passwordfile", "a-file-name"]
+    def test_password_password_file_conflict(self):
+        mock_args = [commandname, "--password", "the-pwd", "--password_file", "a-file-name"]
         with self.assertRaises(SystemExit):
             args = self.parser_under_test.parse_args(mock_args)
 
     def test_version(self):
-        mock_args = [commandname, "--version", "the-pwd", "--passwordfile", "a-file-name"]
+        mock_args = [commandname, "--version", "the-pwd", "--password_file", "a-file-name"]
         with self.assertRaises(SystemExit):
             # this runs an action and exits
             args = self.parser_under_test.parse_args(mock_args)

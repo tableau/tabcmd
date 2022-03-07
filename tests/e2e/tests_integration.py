@@ -17,6 +17,7 @@ class E2EJsonTests(unittest.TestCase):
         test_session = Session()
         test_session.username = "USN"
         test_session.server = "SRVR"
+        test_session.password_file = "users.csv"
         test_session._save_token_to_json_file()
         new_session = Session()
         new_session._read_from_json()
@@ -86,6 +87,28 @@ class E2EServerTests(unittest.TestCase):
         assert test_session.site_id is not None
         assert test_session.user_id is not None
         assert test_session.site_id == E2EServerTests.saved_site_id
+
+    def test_read_password_file(self):
+        if not credentials:
+            return
+        args = argparse.Namespace(
+            server=credentials.server,
+            site=credentials.site,
+            token_name=credentials.token_name,
+            token=None,
+            username=None,
+            password=None,
+            password_file="users.csv",
+            logging_level=None,
+            no_certcheck=True,
+            no_prompt=True,
+            proxy=None,
+            no_cookie=True,
+        )
+        test_session = Session()
+        with self.assertRaises(SystemExit):
+            # our file doesn't have a real token in it
+            test_session.create_session(args)
 
     def test_get_project(self):
         server = E2EServerTests.test_log_in()

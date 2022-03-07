@@ -1,0 +1,36 @@
+
+    def _reload_server_connection(self):
+        if self.connection.auth_token:
+            self.tableau_server._set_auth(self.site_id, self.user_id, self.connection.auth_token)
+        if not self.tableau_server.is_signed_in():
+            self.connection.auth_token = None
+
+
+
+        # TODO renew expired session
+        # self.tableau_server = Session._set_connection_options(self.server, self.connection)
+        # self._reload_server_connection()
+
+    def _validate_existing_signin(self):
+        self.logger.info("===== Continuing previous session")
+        self._print_server_info()
+        try:
+            if self.tableau_server and self.tableau_server.is_signed_in():
+                return self.tableau_server
+        except TSC.ServerResponseError as e:
+            self.logger.debug("Invalid session token", e)
+        except Exception as e:
+            self.logger.debug("Error contacting the server", e)
+        return None
+
+    def renew_session(self, args):
+        # with PAT, I should be able to avoid session expiry?
+        self._end_session()
+        self.logger.info("===== Signing in again to retry original command with a new session...")
+        self.create_session(args)
+
+def end_session():
+
+        if self.tableau_server:
+            self.tableau_server.auth.sign_out()
+            self.tableau_server = None

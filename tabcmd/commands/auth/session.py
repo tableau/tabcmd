@@ -17,11 +17,12 @@ class Session:
 
     def __init__(self):
         self.username = None
-        self._password = None  # underscore naming is a reminder that we don't save this
+        # we don't store the password
         self.user_id = None
         self.auth_token = None
         self.token_name = None
         self.token = None
+        self.password_file = None
         self.site = None  # The site name, or 'alpodev'
         self.site_id = None  # The site id, or 'abcd-1234-1234-1244-1234'
         self.server = None
@@ -32,18 +33,21 @@ class Session:
 
     # called before we connect to the server
     # generally, we don't want to overwrite stored data with nulls
-    # exception: if a username/token name was given, clear the associated password or token
     def _update_session_data(self, args):
+        # user id and site id are never passed in as args
+        # last_login_using and tableau_server are internal data
         self.username = args.username or self.username
-        if args.username:
-            self._password = None
         self.site = args.site or self.site or ""
         self.server = args.server or self.server or "http://localhost"
         self.logging_level = args.logging_level or self.logging_level
+        self.password_file = args.password_file
         self.token_name = args.token_name or self.token_name
-        if args.token_name:
-            self.token = None
         self.token = args.token or self.token
+
+    @staticmethod
+    def _read_password_from_file(filename):
+        with open(str(filename), "r") as file_contents:
+            return file_contents
 
     @staticmethod
     def _allow_prompt(args):
@@ -54,36 +58,39 @@ class Session:
 
     def _create_new_username_credential(self, args):
         self._update_session_data(args)
-        if args.password is None:
-            # TODO: implement passwordfile here
-            if self._allow_prompt(args):
-                args.password = getpass.getpass("Password:")
-            else:
-                self.logger.debug("No password entered")
-                raise SystemExit("No password entered")
+        if args.password:
+            password = args.password
+        elif self.password_file:
+            password = Session._read_password_from_file(self.password_file)
+        elif self._allow_prompt(args):
+            password = getpass.getpass("Password:")
+        else:
+            Commands.exit_with_error(self.logger, "No password entered")
 
-        if self.username and args.password:
-            credentials = TSC.TableauAuth(self.username, args.password, site_id=self.site)
+        if self.username and password:
+            credentials = TSC.TableauAuth(self.username, password, site_id=self.site)
             self.last_login_using = "username"
             return credentials
         else:
-            self.logger.debug("Couldn't find username")
-            raise SystemExit("Couldn't find username")
+            Commands.exit_with_error(self.logger, "Couldn't find username")
 
     def _create_new_token_credential(self, args):
         self._update_session_data(args)
-        if self.token is None:
-            if self._allow_prompt(args):
-                self.token = getpass.getpass("Token:")
-            else:
-                raise SystemExit("No token value entered")
-        if self.token_name and self.token:
-            credentials = TSC.PersonalAccessTokenAuth(self.token_name, self.token, site_id=self.site)
+        if self.token:
+            token = self.token
+        elif self.password_file:
+            token = Session._read_password_from_file(self.password_file)
+        elif self._allow_prompt(args):
+            token = getpass.getpass("Token:")
+        else:
+            Commands.exit_with_error(self.logger, "No token value entered")
+
+        if self.token_name and token:
+            credentials = TSC.PersonalAccessTokenAuth(self.token_name, token, site_id=self.site)
             self.last_login_using = "token"
             return credentials
         else:
-            self.logger.debug("Couldn't find token name")
-            raise SystemExit("Couldn't find token name")
+            Commands.exit_with_error(self.logger, "Couldn't find token name")
 
     @staticmethod
     def _set_connection_options(server, args):
@@ -123,6 +130,7 @@ class Session:
         return None
 
     def _sign_in(self, tableau_auth, args):
+        self.tableau_server = None
         self.logger.info("===== Creating new session")
         tableau_server = Session._set_connection_options(self.server, args)
         self._print_server_info()  # do we even have all of this? well, we must
@@ -130,16 +138,24 @@ class Session:
         self.logger.info("===== Connecting to the server...")
         try:
             tableau_server.auth.sign_in(tableau_auth)  # it's the same call for token or user-pass
-            self.auth_token = tableau_server.auth_token
             self.site_id = tableau_server.site_id
             self.user_id = tableau_server.user_id
-            # TODO: get username and save to self.username, if we used token credentials?
-            self.logger.debug("Signed into {0}{1} as {2}".format(self.server, self.site, self.user_id))
+            if not self.username:
+                self.username = tableau_server.users.get_by_id(self.user_id).name
+            self.logger.debug("Signed into {0}{1} as {2}".format(self.server, self.site, self.username))
             self.logger.info("=========Succeeded========")
         except TSC.ServerResponseError as e:
-            self.logger.debug("Server error occurred", e)
-            Commands.exit_with_error(self.logger, e)
+            Commands.exit_with_error(self.logger, "Server error occurred", e)
         return tableau_server
+
+    def _get_saved_credentials(self, args, credentials):
+        if self.last_login_using == "username":
+            credentials = self._create_new_username_credential(args)
+        elif self.last_login_using == "token":
+            credentials = self._create_new_token_credential(args)
+        if credentials:
+            self.logger.info("=====Using saved credentials")
+        return credentials
 
     # external entry point:
     def create_session(self, args):
@@ -148,15 +164,12 @@ class Session:
         if self._check_json():
             self._read_from_json()
 
-        # if the user passed in new username/token-name, we use those and scrap anything saved
         credentials = None
-        if args.username:
-            self.auth_token = None
-            self._password = None
+        if args.password or args.password_file:
+            self._end_session()
             credentials = self._create_new_username_credential(args)
-        elif args.token_name:
-            self.auth_token = None
-            self.token = None
+        elif args.token:
+            self._end_session()
             credentials = self._create_new_token_credential(args)
         else:  # no login arguments given - look for saved info
             # maybe we're already signed in!
@@ -168,7 +181,6 @@ class Session:
                     credentials = self._create_new_username_credential(args)
                 elif self._last_logged_in_by_token():
                     credentials = self._create_new_token_credential(args)
-
                 if credentials:
                     self.logger.info("=====Using saved credentials")
 
@@ -176,8 +188,7 @@ class Session:
             signed_in_object = self._sign_in(credentials, args)
         if not signed_in_object:
             Commands.exit_with_error(
-                self.logger,
-                "Unable to find or create a session. Please check credentials and login again.",
+                self.logger, "Unable to find or create a session. Please check credentials and login again."
             )
 
         if args.no_cookie:
@@ -186,8 +197,17 @@ class Session:
             self._save_token_to_json_file()
         return signed_in_object
 
-    # delete all saved info
     def end_session_and_clear_data(self):
+        self._end_session()
+        self.logger.info("===== Signed out")
+        self._clear_data()
+
+    def _end_session(self):
+        self.token = None
+        self.password = None
+
+        # delete all saved info
+    def _clear_data(self):
         self._remove_json()
         self.username = None
         self.user_id = None
@@ -198,6 +218,7 @@ class Session:
         self.site_id = None
         self.server = None
         self.last_login_using = None
+        self.password_file = None
 
     def _last_logged_in_by_username(self):
         return self.last_login_using == "username"
@@ -218,15 +239,19 @@ class Session:
         with open(str(file_path), "r") as file_contents:
             data = json.load(file_contents)
             for auth in data["tableau_auth"]:
-                self.auth_token = auth["token"]
-                self.server = auth["server"]
-                self.site = auth["site_name"]
-                self.site_id = auth["site_id"]
-                self.username = auth["username"]
-                self.user_id = auth["user_id"]
-                self.token_name = auth["personal_access_token_name"]
-                self.token = auth["personal_access_token"]
-                self.last_login_using = auth["last_login_using"]
+                try:
+                    self.auth_token = auth["token"]
+                    self.server = auth["server"]
+                    self.site = auth["site_name"]
+                    self.site_id = auth["site_id"]
+                    self.username = auth["username"]
+                    self.user_id = auth["user_id"]
+                    self.token_name = auth["personal_access_token_name"]
+                    self.token = auth["personal_access_token"]
+                    self.last_login_using = auth["last_login_using"]
+                    self.password_file = auth["password_file"]
+                except KeyError as e:
+                    self.logger.debug("Error reading values from stored json file: ", e)
 
     def _check_json(self):
         home_path = os.path.expanduser("~")
@@ -247,6 +272,7 @@ class Session:
                 "personal_access_token_name": self.token_name,
                 "personal_access_token": self.token,
                 "last_login_using": self.last_login_using,
+                "password_file": self.password_file,
             }
         )
         file_path = self._get_file_path()
