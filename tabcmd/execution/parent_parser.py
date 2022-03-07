@@ -26,12 +26,18 @@ class ParentParser:
 
         # The default behavior is to try certificates in the computer store, like a browser?
         # There is no option to say 'use defaults'
-        # NOT YET IMPLEMENTED
-        parser.add_argument(
+        certificates = parser.add_mutually_exclusive_group()
+        certificates.add_argument(
             "-c",
             "--use-certificate",
+            dest="certificate",
             metavar="",
             help="Use client certificate to sign in. Required when mutual SSL is enabled.",
+        )
+        certificates.add_argument(
+            "--no-certcheck",
+            action="store_true",
+            help="When specified, tabcmd (the client) does not validate the server's SSL certificate.",
         )
 
         cookies = parser.add_mutually_exclusive_group()
@@ -56,12 +62,6 @@ class ParentParser:
             help="Use the specified logging level. If not specified, the default level is INFO.",
         )
 
-        parser.add_argument(
-            "--no-certcheck",
-            action="store_true",
-            help="When specified, tabcmd (the client) does not validate the server's SSL certificate.",
-        )
-
         parser.add_argument("--no-prompt", action="store_true", help="no prompt for password")
 
         auth_options = parser.add_mutually_exclusive_group()
@@ -72,28 +72,33 @@ class ParentParser:
             help="The name of the Tableau Server Personal Access Token. If using a token to sign in,\
                   this is required at least once to begin session.",
         )
-        parser.add_argument(
+        auth_options.add_argument(
+            "-u",
+            "--username",
+            metavar="<USER>",
+            help="Use the specified Tableau Server username. For Tableau Online, this will be an email address.",
+        )
+
+        secret_values = parser.add_mutually_exclusive_group()
+        secret_values.add_argument(
             "-to",
             "--token",
             default=None,
             metavar="<TOKEN VALUE>",
             help="Use the specified Tableau Server Personal Access Token. Requires --token-name to be set.",
         )
-        parser.add_argument(
+        secret_values.add_argument(
             "-p",
             "--password",
             metavar="<PASSWORD>",
             help="Use the specified Tableau Server password. Requires --username to be set.",
         )
-
-        # TODO: not yet implemented? Should it work for a token too?
-        parser.add_argument(
+        secret_values.add_argument(
             "--password-file",
             metavar="<FILE>",
             help="Read the password from the given .txt file rather than the command line for increased security.",
         )
 
-        # TODO: NOT YET IMPLEMENTED
         proxy_group = parser.add_mutually_exclusive_group()
         proxy_group.add_argument(
             "-x",
@@ -125,19 +130,11 @@ class ParentParser:
                     force use of the default site',
         )
 
-        # NOT YET IMPLEMENTED
         parser.add_argument(
             "--timeout",
             metavar="<SECONDS>",  # can't use -t, it's already used for --site
             help="How long to wait, in seconds, for the server to complete processing the command. The default \
                     behavior is to wait until the server responds.",
-        )
-
-        auth_options.add_argument(
-            "-u",
-            "--username",
-            metavar="<USER>",
-            help="Use the specified Tableau Server username. For Tableau Online, this will be an email address.",
         )
 
         parser.add_argument(
