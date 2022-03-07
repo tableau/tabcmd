@@ -19,7 +19,7 @@ class ListSiteCommand(SiteCommand):
         server = session.create_session(args)
         try:
             sites = ListSiteCommand.get_sites(server)
-            logger.info("===== Listing sites...")
+            logger.info("===== Listing sites for user {}...".format(session.username))
             for site in sites:
                 print("NAME:", site.name)
                 print("SITEID:", site.content_url)
