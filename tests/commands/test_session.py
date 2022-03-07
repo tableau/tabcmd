@@ -248,7 +248,6 @@ class CreateSessionTests(unittest.TestCase):
         assert new_session.password_file == "filename", new_session
         assert mock_tsc.has_been_called()
 
-
     @mock.patch("tableauserverclient.Server")
     def test_create_session_with_active_session_saved(
         self, mock_tsc, mock_pass, mock_file, mock_path, mock_json_load, mock_json_dump

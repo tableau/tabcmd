@@ -207,6 +207,7 @@ class Session:
         self.password = None
 
         # delete all saved info
+
     def _clear_data(self):
         self._remove_json()
         self.username = None

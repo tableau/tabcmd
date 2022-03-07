@@ -23,7 +23,7 @@ class LoginParserTest(unittest.TestCase):
             "--username",
             "me",
             "--password",
-            "the-password"
+            "the-password",
         ]
         args = self.parser_under_test.parse_args(mock_args)
         assert args.username == "me", args
@@ -32,56 +32,31 @@ class LoginParserTest(unittest.TestCase):
         assert args.site == "the-site"
 
     def test_parsing_connection_settings(self):
-        mock_args = [
-            commandname,
-            "--no-certcheck",
-            "--proxy",
-            "the-proxy",
-            "--timeout",
-            "10"
-        ]
+        mock_args = [commandname, "--no-certcheck", "--proxy", "the-proxy", "--timeout", "10"]
         args = self.parser_under_test.parse_args(mock_args)
         assert args.no_certcheck is True, args
         assert args.proxy == "the-proxy", args
         assert args.timeout == "10", args
 
     def test_parsing_no_proxy_no_cert(self):
-        mock_args = [
-            commandname,
-            "--no-certcheck",
-            "--no-proxy"
-        ]
+        mock_args = [commandname, "--no-certcheck", "--no-proxy"]
         args = self.parser_under_test.parse_args(mock_args)
         assert args.no_certcheck is True, args
         assert args.proxy is False, args
 
     def test_parsing_cert(self):
-        mock_args = [
-            commandname,
-            "--use-certificate",
-            "certificate-name"
-        ]
+        mock_args = [commandname, "--use-certificate", "certificate-name"]
         args = self.parser_under_test.parse_args(mock_args)
         assert args.no_certcheck is False, args
         assert args.certificate == "certificate-name"
 
     def test_parsing_conflicting_cert_args(self):
-        mock_args = [
-            commandname,
-            "--no-certcheck",
-            "-c",
-            "cert-name"
-        ]
+        mock_args = [commandname, "--no-certcheck", "-c", "cert-name"]
         with self.assertRaises(SystemExit):
             args = self.parser_under_test.parse_args(mock_args)
 
     def test_parsing_conflicting_proxy_args(self):
-        mock_args = [
-            commandname,
-            "--no-proxy",
-            "-x",
-            "proxy-name"
-        ]
+        mock_args = [commandname, "--no-proxy", "-x", "proxy-name"]
         with self.assertRaises(SystemExit):
             args = self.parser_under_test.parse_args(mock_args)
 

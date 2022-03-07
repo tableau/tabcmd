@@ -13,4 +13,3 @@ class LogoutCommand:
         logger.debug("======================= Launching command =======================")
         session = Session()
         session.end_session_and_clear_data()
-        logger.info("===== Signed out")
