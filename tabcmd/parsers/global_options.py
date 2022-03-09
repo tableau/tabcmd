@@ -226,9 +226,7 @@ def set_common_site_args(parser):
 
     parser = set_site_id_options(parser)
 
-    parser.add_argument("--user-quota",
-                        type=int,
-                        help="Maximum number of users that can be added to the site.")
+    parser.add_argument("--user-quota", type=int, help="Maximum number of users that can be added to the site.")
 
     site_help = "Allows or denies site administrators the ability to add users to or remove users from the site."
     site_group = parser.add_mutually_exclusive_group()
