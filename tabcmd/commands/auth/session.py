@@ -133,8 +133,9 @@ class Session:
             self.auth_token = tableau_server.auth_token
             self.site_id = tableau_server.site_id
             self.user_id = tableau_server.user_id
-            # TODO: get username and save to self.username, if we used token credentials?
-            self.logger.debug("Signed into {0}{1} as {2}".format(self.server, self.site, self.user_id))
+            if not self.username:
+                self.username = tableau_server.users.get_by_id(self.user_id).name
+            self.logger.debug("Signed into {0}{1} as {2}".format(self.server, self.site, self.username))
             self.logger.info("=========Succeeded========")
         except TSC.ServerResponseError as e:
             self.logger.debug("Server error occurred", e)

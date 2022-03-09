@@ -18,13 +18,13 @@ class ListSiteCommand(SiteCommand):
         session = Session()
         server = session.create_session(args)
         try:
-            all_sites, pagination_item = server.sites.get()
-            logger.info("===== Listing sites...")
-            for site in all_sites:
-                logger.info("NAME:", site.name)
-                logger.info("SITEID:", site.content_url)
+            sites = ListSiteCommand.get_sites(server)
+            logger.info("===== Listing sites for user {}...".format(session.username))
+            for site in sites:
+                print("NAME:", site.name)
+                print("SITEID:", site.content_url)
                 if args.get_extract_encryption_mode:
-                    logger.info("EXTRACTENCRYPTION:", site.extract_encryption_mode)
-                logger.info("")
+                    print("EXTRACTENCRYPTION:", site.extract_encryption_mode)
+                print("")
         except TSC.ServerResponseError as e:
-            Commands.exit_with_error(logger, "Error listing sites", e)
+            Commands.exit_with_error(logger, e)
