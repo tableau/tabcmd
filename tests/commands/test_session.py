@@ -6,7 +6,6 @@ from tabcmd.commands.auth.session import Session
 import os
 
 args_to_mock = Namespace(
-    prompt=None,
     username=None,
     site=None,
     password=None,
@@ -16,8 +15,12 @@ args_to_mock = Namespace(
     token=None,
     logging_level=None,
     no_certcheck=None,
-    no_cookie=None,
-    no_prompt=None,
+    no_prompt=False,
+    no_cookie=False,
+    certificate=None,
+    proxy=None,
+    no_proxy=True,
+    timeout=None,
 )
 
 mock_data_from_json = Namespace(
@@ -32,17 +35,26 @@ mock_data_from_json = Namespace(
     personal_access_token_name=None,
     personal_access_token=None,
     last_login_using=None,
+    no_cookie=False,
+    certificate=None,
+    no_cert=True,
+    proxy=None,
+    no_proxy=True,
+    timeout=None,
+    no_prompt=False
 )
+
+fakeserver = "http://SRVR"
 
 
 def _set_mocks_for_json_file_saved_username(mock_json_load, auth_token, username):
     mock_auth = vars(mock_data_from_json)
     mock_json_load.return_value = {"tableau_auth": [mock_auth]}
-    mock_auth["token"] = auth_token
+    mock_auth["auth_token"] = auth_token
     mock_auth["username"] = username
-    mock_auth["server"] = "server"
+    mock_auth["server"] = fakeserver
     mock_auth["last_login_using"] = "username"
-    print(mock_auth)
+    mock_auth["no_certcheck"] = True
 
 
 def _set_mocks_for_json_file_exists(mock_path, does_it_exist=True):
@@ -66,12 +78,13 @@ class JsonTests(unittest.TestCase):
         assert hasattr(test_session.auth_token, "AUTHTOKEN") is False, test_session
         assert hasattr(test_session, "password") is False, test_session
         assert test_session.username == "USERNAME"
+        assert test_session.server_url == fakeserver, test_session.server_url
 
     def test_save_session_to_json(self, mock_open, mock_path, mock_load, mock_dump):
         _set_mocks_for_json_file_exists(mock_path)
         test_session = Session()
         test_session.username = "USN"
-        test_session.server = "SRVR"
+        test_session.server_url = fakeserver
         test_session._save_token_to_json_file()
         assert mock_dump.was_called()
 
@@ -86,16 +99,14 @@ class BuildCredentialsTests(unittest.TestCase):
     # Set: Create auth credentials
     # This first set of tests has no attributes set
     def test__create_new_token_credential_fails_no_args(self, mock_pass):
-        test_args = Namespace(**vars(args_to_mock))
         active_session = Session()
         with self.assertRaises(SystemExit):
-            active_session._create_new_token_credential(test_args)
+            active_session._create_new_token_credential()
 
     def test__create_new_username_credential_fails_no_args(self, mock_pass):
-        test_args = Namespace(**vars(args_to_mock))
         active_session = Session()
         with self.assertRaises(SystemExit):
-            active_session._create_new_username_credential(test_args)
+            active_session._create_new_username_credential(None)
 
     # These two already have a username saved and pass in a password as argument
     def test__create_new_token_credential_succeeds_new_token(self, mock_pass):
@@ -104,26 +115,24 @@ class BuildCredentialsTests(unittest.TestCase):
         active_session = Session()
         assert active_session.token is None, active_session.token
         active_session.token_name = "readable"
-        auth = active_session._create_new_token_credential(test_args)
+        auth = active_session._create_new_token_credential()
         assert auth is not None
         assert mock_pass.is_not_called()
 
     def test__create_new_username_credential_succeeds_new_password(self, mock_pass):
-        test_args = Namespace(**vars(args_to_mock))
-        test_args.password = "pword1"
+        test_password = "pword1"
         active_session = Session()
         active_session.username = "user"
         active_session.site = ""
-        auth = active_session._create_new_username_credential(test_args)
+        auth = active_session._create_new_username_credential(test_password)
         assert auth is not None
 
     # this one has a token saved
     def test__create_new_token_credential_succeeds_from_self(self, mock_pass):
-        test_args = Namespace(**vars(args_to_mock))
         active_session = Session()
         active_session.token = "gibberish2"
         active_session.token_name = "readable2"
-        auth = active_session._create_new_token_credential(test_args)
+        auth = active_session._create_new_token_credential()
         assert mock_pass.is_not_called()
         assert auth is not None
         assert auth.token_name == "readable2", auth
@@ -131,32 +140,30 @@ class BuildCredentialsTests(unittest.TestCase):
 
     # this one calls getpass because we don't store the password
     def test__create_new_username_credential_succeeds_from_self(self, mock_pass):
-        test_args = Namespace(**vars(args_to_mock))
         active_session = Session()
         active_session.username = "user3"
         active_session.site = ""
-        auth = active_session._create_new_username_credential(test_args)
+        auth = active_session._create_new_username_credential(None)
         assert mock_pass.has_been_called()
         assert auth is not None
         assert auth.username == "user3", auth
         assert auth.password == mock_pass(), auth
 
-    # These two have all info in args
-    # It fails because the method expects username/tokenname to already be saved to self
     def test__create_new_token_credential_succeeds_from_args(self, mock_pass):
         test_args = Namespace(**vars(args_to_mock))
         test_args.token = "gibberish"
         test_args.token_name = "readable"
         active_session = Session()
-        auth = active_session._create_new_token_credential(test_args)
+        active_session._update_session_data(test_args)
+        auth = active_session._create_new_token_credential()
 
     def test__create_new_username_credential_succeeds_from_args(self, mock_pass):
         test_args = Namespace(**vars(args_to_mock))
         test_args.username = "user"
         test_args.password = "pwordddddd"
         active_session = Session()
-        active_session.site = ""
-        auth = active_session._create_new_username_credential(test_args)
+        active_session._update_session_data(test_args)
+        auth = active_session._create_new_username_credential(test_args.password)
 
 
 class PromptingTests(unittest.TestCase):
@@ -194,6 +201,7 @@ class CreateSessionTests(unittest.TestCase):
         mock_path = _set_mocks_for_json_file_exists(mock_path, False)
         assert mock_path.exists("anything") is False
         test_args = Namespace(**vars(args_to_mock))
+        mock_tsc().users.get_by_id.return_value = None
         new_session = Session()
         with self.assertRaises(SystemExit):
             auth = new_session.create_session(test_args)
@@ -209,10 +217,11 @@ class CreateSessionTests(unittest.TestCase):
         test_args.token = "foo"
         new_session = Session()
         auth = new_session.create_session(test_args)
+        print(new_session)
         assert auth is not None, auth
         assert auth.auth_token is not None, auth.auth_token
         assert auth.auth_token.name is not None, auth.auth_token
-        assert new_session.token == "foo", new_session
+        assert new_session.token == "foo", new_session.token
         assert new_session.token_name == "tn", new_session
 
     @mock.patch("tableauserverclient.Server")
@@ -249,6 +258,22 @@ class CreateSessionTests(unittest.TestCase):
         assert mock_tsc.has_been_called()
 
     @mock.patch("tableauserverclient.Server")
+    def test_load_saved_session_data(
+            self, mock_tsc, mock_pass, mock_file, mock_path, mock_json_load, mock_json_dump
+    ):
+        _set_mocks_for_json_file_exists(mock_path, True)
+        _set_mocks_for_json_file_saved_username(mock_json_load, "auth_token", "username")
+        test_args = Namespace(**vars(args_to_mock))
+        new_session = Session()
+        new_session._read_existing_state()
+        new_session._update_session_data(test_args)
+        assert new_session, new_session
+        assert new_session.username == "username", new_session.username
+        assert new_session.server_url == fakeserver, new_session.server_url
+        assert mock_tsc.has_been_called()
+
+
+    @mock.patch("tableauserverclient.Server")
     def test_create_session_with_active_session_saved(
         self, mock_tsc, mock_pass, mock_file, mock_path, mock_json_load, mock_json_dump
     ):
@@ -257,6 +282,7 @@ class CreateSessionTests(unittest.TestCase):
         test_args = Namespace(**vars(args_to_mock))
         test_args.token = "tn"
         test_args.token_name = "tnnnn"
+        test_args.no_prompt = False
         new_session = Session()
 
         auth = new_session.create_session(test_args)
@@ -273,9 +299,10 @@ class CreateSessionTests(unittest.TestCase):
         tsc_under_test = CreateSessionTests._set_mock_tsc_not_signed_in(mock_tsc)
         CreateSessionTests._set_mock_tsc_sign_in_succeeds(tsc_under_test)
         test_args = Namespace(**vars(args_to_mock))
-
+        mock_pass.getpass.return_value = "success"
         new_session = Session()
         auth = new_session.create_session(test_args)
+        assert mock_pass.has_been_called()
         assert auth is not None, auth
         assert auth.auth_token is not None, auth.auth_token
         assert auth.auth_token == "cookiieeeee"
@@ -308,7 +335,7 @@ class ConnectionOptionsTest(unittest.TestCase):
         mock_session.site_id = "s"
         mock_session.user_id = "u"
         server = "anything"
-        Session._set_connection_options(server, mock_session)
+        mock_session._set_connection_options()
         assert mock_tsc.add_http_options.has_been_called()
 
     def test_certcheck_off(self, mock_tsc):
@@ -316,7 +343,7 @@ class ConnectionOptionsTest(unittest.TestCase):
         server = "anything"
         mock_session.site_id = "s"
         mock_session.user_id = "u"
-        Session._set_connection_options(server, mock_session)
+        mock_session._set_connection_options()
         mock_tsc.add_http_options.assert_not_called()
 
     """

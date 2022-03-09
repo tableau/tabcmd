@@ -5,7 +5,7 @@ import unittest
 
 from tests.e2e import vars, setup_e2e
 
-debug_log = "--logging-level=DEBUG"
+debug_log = "--logging-level=ERROR"
 
 
 class Test_Commands(unittest.TestCase):
@@ -18,10 +18,16 @@ class Test_Commands(unittest.TestCase):
 
     @classmethod
     def setup_class(cls):
+        Test_Commands.run_setup()
+
+    @staticmethod
+    def run_setup():
         setup_e2e.Setup.prechecks()
         setup_e2e.Setup.login()
 
     def test_create_delete_group(self):
+        if not setup_e2e.is_ready:
+            Test_Commands.run_setup()
         group_name = vars.group_name + str(datetime.datetime.now().microsecond)
         command = "creategroup"
         arguments = [command, group_name]
@@ -34,6 +40,8 @@ class Test_Commands(unittest.TestCase):
         self._run_command(arguments)
 
     def test_create_delete_project(self):
+        if not setup_e2e.is_ready:
+            Test_Commands.run_setup()
         project_name = vars.project_name + str(datetime.datetime.now().microsecond)
         # project 1
         command = "createproject"

@@ -50,7 +50,7 @@ class LogoutParserTest(unittest.TestCase):
     def test_logout_missing_server(self):
         mock_args = [commandname, "--logging-level", "DEBUG", "--username", "me"]
         args = self.parser_under_test.parse_args(mock_args)
-        assert args.server == "http://localhost", args
+        assert not args.server, args
         assert args.logging_level == "DEBUG", args
 
     def test_logout_missing_username(self):

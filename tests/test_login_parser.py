@@ -41,13 +41,13 @@ class LoginParserTest(unittest.TestCase):
     def test_parsing_no_proxy_no_cert(self):
         mock_args = [commandname, "--no-certcheck", "--no-proxy"]
         args = self.parser_under_test.parse_args(mock_args)
-        assert args.no_certcheck is True, args
-        assert args.proxy is False, args
+        assert args.no_certcheck, args
+        assert not args.proxy, args
 
     def test_parsing_cert(self):
         mock_args = [commandname, "--use-certificate", "certificate-name"]
         args = self.parser_under_test.parse_args(mock_args)
-        assert args.no_certcheck is False, args
+        assert not args.no_certcheck, args
         assert args.certificate == "certificate-name"
 
     def test_parsing_conflicting_cert_args(self):
@@ -63,7 +63,7 @@ class LoginParserTest(unittest.TestCase):
     def test_server_not_required(self):
         mock_args = [commandname, "--logging-level", "DEBUG", "--username", "me"]
         args = self.parser_under_test.parse_args(mock_args)
-        assert args.server == "http://localhost", args
+        assert not args.server, args
         assert args.logging_level == "DEBUG", args
 
     def test_username_not_required(self):

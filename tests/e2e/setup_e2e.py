@@ -10,7 +10,7 @@ except ImportError:
 our_program = "tabcmd.exe"
 launch_path = os.path.join("dist", "tabcmd")
 exe = os.path.join(launch_path, our_program)
-
+is_ready = False
 
 class Setup:
     @staticmethod
@@ -37,9 +37,11 @@ class Setup:
 
     @staticmethod
     def prechecks():
+        global is_ready
         print("script is running in:")
         subprocess.check_call(["chdir"], shell=True)
         print("expecting built executable to be in " + launch_path + ":")
         subprocess.check_call(["dir", launch_path], shell=True)
 
         print("running", our_program)
+        is_ready = True
