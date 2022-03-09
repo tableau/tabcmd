@@ -24,14 +24,14 @@ class DeleteExtractsParserTest(unittest.TestCase):
         ]
         args = self.parser_under_test.parse_args(mock_args)
         assert args.datasource == "ds-name", args
-        assert args.projectname == "prjt", args
+        assert args.project_name == "prjt", args
         assert args.parent_project_path == "ppp"
 
     def test_delete_extract_parser_workbook(self):
         mock_args = [commandname, "-w", "wb-name"]
         args = self.parser_under_test.parse_args(mock_args)
         assert args.workbook == "wb-name", args
-        assert args.projectname == "", args
+        assert args.project_name == "", args
 
     def test_delete_extract_parser_missing_all_args(self):
         mock_args = [commandname]

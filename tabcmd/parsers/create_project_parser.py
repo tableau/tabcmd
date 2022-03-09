@@ -11,6 +11,6 @@ class CreateProjectParser:
         """Method to parse create project arguments passed by the user"""
 
         create_project_parser = manager.include(command)
-        create_project_parser.add_argument("--name", "-n", required=True, help="name of project")
+        create_project_parser.add_argument("--name", "-n", dest="project_name", required=True, help="name of project")
         set_parent_project_arg(create_project_parser)
         set_description_arg(create_project_parser)

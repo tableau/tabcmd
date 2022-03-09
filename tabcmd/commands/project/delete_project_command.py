@@ -18,16 +18,16 @@ class DeleteProjectCommand(ProjectCommand):
             logger.debug("parent path: {}".format(args.parent_project_path))
 
         try:
-            logger.debug("Fetching project to be deleted: {}/{}".format(args.parent_project_path, args.name))
+            logger.debug("Fetching project to be deleted: {}/{}".format(args.parent_project_path, args.project_name))
             project = ProjectCommand.get_project_by_name_and_parent_path(
-                logger, server, args.name, args.parent_project_path
+                logger, server, args.project_name, args.parent_project_path
             )
         except TSC.ServerResponseError as e:
             Commands.exit_with_error(logger, "Error finding project", e)
         project_id = project.id
 
         try:
-            logger.info("Deleting project '{}' from the server...".format(args.name))
+            logger.info("Deleting project '{}' from the server...".format(args.project_name))
             server.projects.delete(project_id)
             logger.info("===== Succeeded")
         except TSC.ServerResponseError as e:

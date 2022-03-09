@@ -23,18 +23,18 @@ class PublishCommand(DatasourcesAndWorkbooks):
         session = Session()
         server = session.create_session(args)
 
-        logger.debug("Project details given: {0}, {1}".format(args.parent_project_path, args.projectname))
+        logger.debug("Project details given: {0}, {1}".format(args.parent_project_path, args.project_name))
 
-        if args.projectname:
+        if args.project_name:
             try:
                 project_id = ProjectCommand.get_project_by_name_and_parent_path(
-                    logger, server, args.projectname, args.parent_project_path
+                    logger, server, args.project_name, args.parent_project_path
                 )
             except Exception as exc:
                 Commands.exit_with_error(logger, "Error getting project from server", exc)
         else:
             project_id = ""
-            args.projectname = "default"
+            args.project_name = "default"
             args.parent_project_path = ""
 
         publish_mode = PublishCommand.get_publish_mode(args)

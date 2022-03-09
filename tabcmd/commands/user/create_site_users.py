@@ -23,8 +23,8 @@ class CreateSiteUsersCommand(UserCommand):
         number_of_users_added = 0
         number_of_errors = 0
 
-        if args.site:
-            creation_site = args.site
+        if args.site_name:
+            creation_site = args.site_name
         else:
             creation_site = "current site"
 

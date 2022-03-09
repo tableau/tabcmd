@@ -23,8 +23,8 @@ class EditSiteParserTest(unittest.TestCase):
             "12",
         ]
         args = self.parser_under_test.parse_args(mock_args)
-        assert args.sitename == "site-to-edit", args
-        assert args.target == "new-site-name", args
+        assert args.site_name == "site-to-edit", args
+        assert args.new_site_name == "new-site-name", args
         assert args.user_quota == 12, args
 
     def test_edit_site_parser_missing_all_args(self):
@@ -43,7 +43,7 @@ class EditSiteParserTest(unittest.TestCase):
     def test_edit_site_parser_storage_quota_integer(self):
         mock_args = [commandname, "site-to-edit", "--storage-quota", "12"]
         args = self.parser_under_test.parse_args(mock_args)
-        assert args.sitename == "site-to-edit", args
+        assert args.site_name == "site-to-edit", args
         assert args.storage_quota == 12, args
 
     def test_edit_site_parser_optional_arguments_archive(self):
@@ -51,7 +51,7 @@ class EditSiteParserTest(unittest.TestCase):
             commandname,
             "site-to-edit",
             "--status",
-            "Archive",
+            "ACTIVE",
             "--site-id",
             "1234",
             "--run-now-enabled",
@@ -59,5 +59,5 @@ class EditSiteParserTest(unittest.TestCase):
         ]
         args = self.parser_under_test.parse_args(mock_args)
         assert args.site_id == "1234", args
-        assert args.status == "Archive", args
+        assert args.status == "ACTIVE", args
         assert args.run_now_enabled == "true", args

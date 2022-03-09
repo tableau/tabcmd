@@ -23,7 +23,7 @@ class DeleteParserTestT(unittest.TestCase):
         mock_args = [commandname, "ds", "-r", "proj"]
         args = self.parser_under_test.parse_args(mock_args)
         assert args.name == "ds", args
-        assert args.projectname == "proj", args
+        assert args.project_name == "proj", args
 
     def test_delete_parser_missing_args(self):
         mock_args = [commandname, "--datasource"]

@@ -112,7 +112,7 @@ class RunCommandsTest(unittest.TestCase):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_args.overwrite = False
         mock_args.filename = "existing_file.twbx"
-        mock_args.projectname = "project-name"
+        mock_args.project_name = "project-name"
         mock_args.parent_project_path = "projects"
         mock_args.name = ""
         mock_args.tabbed = True
@@ -199,7 +199,7 @@ class RunCommandsTest(unittest.TestCase):
     def test_create_project(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.projects = getter
-        mock_args.name = "name"
+        mock_args.project_name = "name"
         mock_args.description = ""
         mock_args.content_permission = None
         mock_args.parent_project_path = "projects"
@@ -209,7 +209,7 @@ class RunCommandsTest(unittest.TestCase):
     def test_delete_project(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.projects = getter
-        mock_args.name = "project-name"
+        mock_args.project_name = "project-name"
         mock_session.assert_not_called()
         mock_args.parent_project_path = "projects"
         delete_project_command.DeleteProjectCommand.run_command(mock_args)
@@ -245,6 +245,7 @@ class RunCommandsTest(unittest.TestCase):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.sites = getter
         mock_args.site_name = "site-name"
+        mock_args.new_site_name = None
         mock_args.url = "new-url"
         mock_args.user_quota = "1"
         mock_args.storage_quota = "1"
@@ -291,7 +292,7 @@ class RunUserCommandsTest(unittest.TestCase):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_args.filename = RunUserCommandsTest._set_up_file(mock_file)
         mock_args.require_all_valid = False
-        mock_args.site = None
+        mock_args.site_name = None
         create_site_users.CreateSiteUsersCommand.run_command(mock_args)
         mock_session.assert_called()
 

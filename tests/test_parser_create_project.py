@@ -24,7 +24,7 @@ class CreateProjectParserTest(unittest.TestCase):
             "desc",
         ]
         args = self.parser_under_test.parse_args(mock_args)
-        assert args.name == "testproject"
+        assert args.project_name == "testproject"
         assert args.parent_project_path == "abcdef"
 
     def test_create_project_parser_required_arguments_name(self):
@@ -38,7 +38,7 @@ class CreateProjectParserTest(unittest.TestCase):
             "desc",
         ]
         args = self.parser_under_test.parse_args(mock_args)
-        assert args.name == "project-name"
+        assert args.project_name == "project-name"
         assert args.parent_project_path == "abcdef"
 
     def test_create_project_parser_required_arguments_missing_name(self):
