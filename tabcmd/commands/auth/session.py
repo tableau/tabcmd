@@ -184,7 +184,7 @@ class Session:
         if args.no_cookie:
             self._remove_json()
         else:
-            self._save_token_to_json_file()
+            self._save_session_to_json()
         return signed_in_object
 
     # delete all saved info
@@ -216,8 +216,10 @@ class Session:
         if not self._check_json():
             return
         file_path = self._get_file_path()
+        data = {}
         with open(str(file_path), "r") as file_contents:
             data = json.load(file_contents)
+        try:
             for auth in data["tableau_auth"]:
                 self.auth_token = auth["token"]
                 self.server = auth["server"]
@@ -228,15 +230,27 @@ class Session:
                 self.token_name = auth["personal_access_token_name"]
                 self.token = auth["personal_access_token"]
                 self.last_login_using = auth["last_login_using"]
+        except Exception as any_error:
+            self.logger.info("Error loading session from file: clearing saved values")
+            self.logger.debug(any_error)
+            self._remove_json()
 
     def _check_json(self):
         home_path = os.path.expanduser("~")
         file_path = os.path.join(home_path, "tableau_auth.json")
         return os.path.exists(file_path)
 
-    def _save_token_to_json_file(self):
-        data = {}
-        data["tableau_auth"] = []
+    def _save_session_to_json(self):
+        data = self._serialize_for_save()
+        self._save_file(data)
+
+    def _save_file(self, data):
+        file_path = self._get_file_path()
+        with open(str(file_path), "w") as f:
+            json.dump(data, f)
+
+    def _serialize_for_save(self):
+        data = {"tableau_auth": []}
         data["tableau_auth"].append(
             {
                 "token": self.auth_token,
@@ -250,11 +264,10 @@ class Session:
                 "last_login_using": self.last_login_using,
             }
         )
-        file_path = self._get_file_path()
-        with open(str(file_path), "w") as f:
-            json.dump(data, f)
+        return data
 
     def _remove_json(self):
         file_path = self._get_file_path()
+        self._save_file({})
         if os.path.exists(file_path):
             os.remove(file_path)

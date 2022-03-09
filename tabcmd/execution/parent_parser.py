@@ -1,5 +1,10 @@
 import argparse
 
+""" variable naming
+Trying to follow patterns at https://help.tableau.com/current/server/en-us/tabcmd_cmd.htm
+site-name, project-name, workbook-name, datasource-name, group-name, schedule-name, token-name
+BUT filename, username
+"""
 
 class ParentParser:
     """Parser that will be inherited by all commands. Contains

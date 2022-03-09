@@ -15,7 +15,7 @@ class E2EJsonTests(unittest.TestCase):
         test_session = Session()
         test_session.username = "USN"
         test_session.server = "SRVR"
-        test_session._save_token_to_json_file()
+        test_session._save_session_to_json()
         new_session = Session()
         new_session._read_from_json()
         assert new_session.username == "USN", new_session.username
