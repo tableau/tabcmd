@@ -13,8 +13,9 @@ class PublishSamplesParser:
         publish_samples_parser.add_argument(
             "--name",
             "-n",
-            dest="projectname",
+            dest="project_name",
             required=True,
-            help="The name of the project.",
+            help="Publishes the Tableau samples into the specified project. If the project name includes spaces, "
+            "enclose the entire name in quotes.",
         )
         set_parent_project_arg(publish_samples_parser)

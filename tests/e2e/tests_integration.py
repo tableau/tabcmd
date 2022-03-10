@@ -1,4 +1,6 @@
 import argparse
+
+import mock
 import pytest
 import unittest
 from tabcmd.commands.auth.session import Session
@@ -17,7 +19,7 @@ class E2EJsonTests(unittest.TestCase):
         test_session = Session()
         test_session.username = "USN"
         test_session.server = "SRVR"
-        test_session._save_token_to_json_file()
+        test_session._save_session_to_json()
         new_session = Session()
         new_session._read_from_json()
         assert new_session.username == "USN", new_session.username
@@ -89,4 +91,5 @@ class E2EServerTests(unittest.TestCase):
 
     def test_get_project(self):
         server = E2EServerTests.test_log_in()
-        ProjectCommand.get_project_by_name_and_parent_path(server, "Default", None)
+        logger = mock.MagicMock()
+        ProjectCommand.get_project_by_name_and_parent_path(logger, server, "Default", None)

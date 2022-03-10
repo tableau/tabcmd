@@ -1,7 +1,6 @@
-import logging
-
-import tableauserverclient as TSC
+import os
 import sys
+import tableauserverclient as TSC
 
 
 class Commands:
@@ -46,30 +45,68 @@ class Commands:
         return all_items
 
     @staticmethod
+    def get_site_for_command(logger, server, args, session):
+        if args.site_name:
+            site_item = server.sites.get_by_name(args.site_name)
+        else:
+            site_item = server.sites.get_by_id(session.site_id)
+        if not site_item:
+            Commands.exit_with_error(logger, "Could not get site info from server")
+        return site_item
+
+    @staticmethod
     def exit_with_error(logger, message, exception=None):
         try:
-            if exception:
-                Commands.check_common_error_codes(logger, exception)
-            else:
+            if message and not exception:
                 logger.error(message)
+            if exception:
+                if Commands.is_expired_session_error(exception):
+                    logger.info("Your session has expired. Signing out to clear session...")
+                    # TODO: add session as an argument to this method
+                    #  and add the full command line as a field in Session?
+                    # session.renew_session()
+                    return
+                if message:
+                    logger.debug(message)
+                Commands.check_common_error_codes(logger, exception)
         except Exception as exc:
-            print("Error during log call - ".format(exc.__class__))
+            print("Error during log call from exception - ".format(exc.__class__ or message))
         sys.exit(1)
 
     @staticmethod
+    def is_expired_session_error(error):
+        return error.code == "401002"
+
+    @staticmethod
     def check_common_error_codes(logger, error):
-        if error.code.find("400") == 0:
+        if error.code.startswith("400"):
             logger.error(
-                "{0} Bad request: Tableau Server cannot parse or interpret the message in the "
-                "request".format(error.code)
+                "{0} Bad request: Tableau Server cannot parse or interpret the message in the request".format(
+                    error.code
+                )
             )
-        elif error.code.find("401") == 0:
+        elif error.code.startswith("401"):
             logger.error("{0} User not Authenticated".format(error.code))
-        elif error.code.find("403") == 0:
+        elif error.code.startswith("403"):
             logger.error("{0} Forbidden: Request was not authorized".format(error.code))
-        if error.code.find("404") == 0:
-            logger.error("{0} Not Found: Resource cannot not be located".format(error.code))
-        elif error.code.find("405") == 0:
+        if error.code.startswith("404"):
+            logger.error("{0} Not Found: Resource cannot be located".format(error.code))
+        elif error.code.startswith("405"):
             logger.error("{0} Method not Allowed".format(error.code))
         else:
-            logger.error("{0} Error: {1}".format(error.code, error.content))
+            logger.error("{0} Error: Server error occurred".format(error.code), error.code)
+
+    @staticmethod
+    def get_filename_extension_if_tableau_type(logger, filename):
+        logger.debug("Filename given: {}".format(filename))
+        source_file, source_type = os.path.splitext(filename)  # returns .ext
+        source_type = source_type.lstrip(".")
+        logger.debug("Parsed into {0}, {1}".format(source_file, source_type))
+        if not source_type:
+            raise ValueError("Filename `{}` must have a file extension.".format(filename))
+        possible_types = ["twbx", "twb", "tdsx", "tds", "hyper"]
+        if source_type in possible_types:
+            return source_type
+        raise ValueError(
+            "Filename `{0}` does not have an appropriate file extension: found `{1}`.".format(filename, source_type)
+        )

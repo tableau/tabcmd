@@ -14,7 +14,7 @@ class CreateSiteParserTest(unittest.TestCase):
     def test_create_site_parser_just_a_name(self):
         mock_args = [commandname, "site-name"]
         args = self.parser_under_test.parse_args(mock_args)
-        assert args.sitename == "site-name"
+        assert args.site_name == "site-name", args
 
     def test_create_site_parser_missing_required_name(self):
         mock_args = [commandname]
@@ -36,6 +36,7 @@ class CreateSiteParserTest(unittest.TestCase):
             "12",
         ]  # what else?
         args = self.parser_under_test.parse_args(mock_args)
-        assert args.sitename == "site-name", args
-        assert args.user_quota == "12", args
-        assert args.storage_quota == "12", args
+        print(args)
+        assert args.site_name == "site-name", args
+        assert args.user_quota == 12, args
+        assert args.storage_quota == 12, args

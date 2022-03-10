@@ -120,6 +120,7 @@ class ParentParser:
             "-t",
             "--site",
             default="",
+            dest="site_name",
             metavar="SITEID",
             help='Use the specified Tableau Server site. Leave empty or specify an empty string ("") to \
                     force use of the default site',

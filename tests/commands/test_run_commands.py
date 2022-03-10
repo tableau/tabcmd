@@ -2,6 +2,8 @@ import argparse
 import unittest
 from unittest.mock import *
 
+import mock
+
 from tabcmd.commands.auth import login_command, logout_command
 from tabcmd.commands.datasources_and_workbooks import (
     delete_command,
@@ -101,7 +103,7 @@ class RunCommandsTest(unittest.TestCase):
     def test_get(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.views = getter
-        mock_args.url = "url/split/stuff"
+        mock_args.url = "views/workbook-name/view-name"
         mock_args.filename = "filename.pdf"
         get_url_command.GetUrl.run_command(mock_args)
         mock_session.assert_called()
@@ -109,24 +111,32 @@ class RunCommandsTest(unittest.TestCase):
     def test_publish(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_args.overwrite = False
-        mock_args.source = "dont.know"
-        mock_args.project = "project-name"
+        mock_args.filename = "existing_file.twbx"
+        mock_args.project_name = "project-name"
         mock_args.parent_project_path = "projects"
+        mock_args.name = ""
+        mock_args.tabbed = True
         mock_server.projects = getter
         publish_command.PublishCommand.run_command(mock_args)
         mock_session.assert_called()
 
     def test_runschedule(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
-        runschedule_command.RunSchedule.run_command(mock_args)
-        mock_session.assert_called()
+        mock_server.schedules = getter
+        mock_args.schedule = "myschedule"
+        with self.assertRaises(SystemExit):
+            runschedule_command.RunSchedule.run_command(mock_args)
+        # mock_session.assert_called()
 
     # extracts
     def test_create_extract(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
-        mock_server.datasources = getter
-        mock_args.datasource = True
+        mock_server.workbooks = getter
         mock_args.encrypt = False
+        mock_args.include_all = True
+        mock_args.datasource = None
+        mock_args.embedded_datasources = None
+        mock_args.workbook = "workbook"
         create_extracts_command.CreateExtracts.run_command(mock_args)
         mock_session.assert_called()
 
@@ -189,7 +199,7 @@ class RunCommandsTest(unittest.TestCase):
     def test_create_project(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.projects = getter
-        mock_args.name = "name"
+        mock_args.project_name = "name"
         mock_args.description = ""
         mock_args.content_permission = None
         mock_args.parent_project_path = "projects"
@@ -199,7 +209,7 @@ class RunCommandsTest(unittest.TestCase):
     def test_delete_project(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.projects = getter
-        mock_args.name = "project-name"
+        mock_args.project_name = "project-name"
         mock_session.assert_not_called()
         mock_args.parent_project_path = "projects"
         delete_project_command.DeleteProjectCommand.run_command(mock_args)
@@ -235,10 +245,14 @@ class RunCommandsTest(unittest.TestCase):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.sites = getter
         mock_args.site_name = "site-name"
+        mock_args.new_site_name = None
+        mock_args.url = "new-url"
+        mock_args.user_quota = "1"
+        mock_args.storage_quota = "1"
+        mock_args.status = "Suspended"
         mock_session.assert_not_called()
-        with self.assertRaises(SystemExit):
-            edit_site_command.EditSiteCommand.run_command(mock_args)
-            mock_session.assert_called()
+        edit_site_command.EditSiteCommand.run_command(mock_args)
+        mock_session.assert_called()
 
     def test_list_sites(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
@@ -276,8 +290,9 @@ class RunUserCommandsTest(unittest.TestCase):
 
     def test_create_site_users(self, mock_file, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
-        mock_args.users = RunUserCommandsTest._set_up_file(mock_file)
+        mock_args.filename = RunUserCommandsTest._set_up_file(mock_file)
         mock_args.require_all_valid = False
+        mock_args.site_name = None
         create_site_users.CreateSiteUsersCommand.run_command(mock_args)
         mock_session.assert_called()
 

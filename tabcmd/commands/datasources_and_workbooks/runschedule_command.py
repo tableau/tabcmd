@@ -13,5 +13,12 @@ class RunSchedule(DatasourcesAndWorkbooks):
         logger = log(__name__, args.logging_level)
         logger.debug("======================= Launching command =======================")
         session = Session()
-        server_object = session.create_session(args)
-        # TODO implement
+        server = session.create_session(args)
+        logger.info("Finding schedule {} on server...".format(args.schedule))
+        schedule = DatasourcesAndWorkbooks.get_items_by_name(server.schedules, args.schedule)[0]
+        if not schedule:
+            DatasourcesAndWorkbooks.exit_with_error(logger, "Could not find schedule")
+        logger.info("Found schedule")
+        DatasourcesAndWorkbooks.exit_with_error(logger, "Not yet implemented")
+
+        # TODO implement in REST/tsc
