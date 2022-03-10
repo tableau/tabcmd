@@ -84,8 +84,8 @@ class JsonTests(unittest.TestCase):
         _set_mocks_for_json_file_exists(mock_path)
         test_session = Session()
         test_session.username = "USN"
-        test_session.server_url = fakeserver
-        test_session._save_token_to_json_file()
+        test_session.server = "SRVR"
+        test_session._save_session_to_json()
         assert mock_dump.was_called()
 
 

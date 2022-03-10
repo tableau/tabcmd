@@ -14,3 +14,4 @@ class DeleteParser:
         delete_parser_group.add_argument("--workbook", required=False, help="The workbook to delete")
         delete_parser_group.add_argument("--datasource", required=False, help="The datasource to delete")
         set_project_r_arg(delete_parser)
+        set_parent_project_arg(delete_parser)

@@ -3,34 +3,26 @@ import argparse
 """
 Basics of options
 - if not otherwise specified, the value passed in with the option will be saved as args.option-name
-- all arguments in here are optional: names must be --option-name so users can tell it's optional
+- all arguments in here are optional: must be --argument so users can tell it's optional
 - options that just need to turn on or off a flag should be set with action=store_True/False
+
 Method naming conventions
 - I have named methods in here aaaa_arg if it returns a value we want, aaa_option if it's a flag
 - all methods in here should return a parser for nice fluent chaining
 
-All these options can be used with any command.
-Options are listed here in the same order as the 'global options' list online at
-https://help.tableau.com/current/server/en-us/tabcmd_cmd.htm#options7
+All these optional arguments could be used with any command. Ideally *all* optional args would be in here, so they can
+be kept updated together and simply listed on the relevant parser.
 
-Ideally *all* options would be in here, so they can be kept updated together and simply listed on the
-relevant parser
+Positional arguments will generally be set directly in each parser
+Naming note: cannot have hyphens in positional args 
+SO define them as add_argument([name for args attribute], metavar=[name to show in help])
+e.g add_argument(site, metavar='site-name')
+FOR site-name, project-name, workbook-name, datasource-name, group-name, schedule-name, token-name
+-> in args: site, project, workbook, ....
+BUT 
+1. filename, username -> filename, username in command/parser
+2. for optional arguments, try to use --site-name -> args.site_name
 """
-
-
-def evaluate_project_path(path):
-    last_index = 1
-    second_last_index = 2
-    """ Method to parse the project path provided by the user"""
-    first_dir_from_end = None
-    if path[-last_index] != "/":
-        path = path + "/"
-    new_path = path.rsplit("/")[-second_last_index]
-    for directory in new_path[::-last_index]:
-        if directory != " ":
-            first_dir_from_end = new_path
-            break
-    return first_dir_from_end
 
 
 def set_parent_project_arg(parser):
@@ -145,8 +137,6 @@ def set_encryption_option(parser):
 
 
 # item arguments: datasource, workbook, project, url ...
-# distinct from all the positional 'name' arguments for e.g deleteproject
-
 
 # for some reason in parser.project, publish-samples it uses -n for destination project name
 # for publish it uses -r for destination project name
@@ -155,7 +145,7 @@ def set_project_r_arg(parser):
     parser.add_argument(
         "--project",
         "-r",
-        dest="projectname",
+        dest="project_name",
         default="",
         help="The name of the project.",
     )
@@ -166,7 +156,7 @@ def set_project_n_arg(parser):
     parser.add_argument(
         "--project",
         "-n",
-        dest="projectname",
+        dest="project_name",
         default="",
         help="The name of the project.",
     )
@@ -174,7 +164,7 @@ def set_project_n_arg(parser):
 
 
 def set_project_arg(parser):
-    parser.add_argument("--project", dest="projectname", default="", help="The name of the project.")
+    parser.add_argument("--project", dest="project_name", default="", help="The name of the project.")
     return parser
 
 
@@ -194,6 +184,7 @@ def set_workbook_arg(parser):
     return parser
 
 
+# see also: delete parser has xor(--datasource, --workbook, name)
 def set_ds_xor_wb_args(parser):
     target_type_group = parser.add_mutually_exclusive_group(required=True)
     target_type_group.add_argument("-d", "--datasource", help="The name of the target datasource.")
@@ -203,22 +194,6 @@ def set_ds_xor_wb_args(parser):
 
 def set_description_arg(parser):
     parser.add_argument("--description", "-d", help="Specifies a description for the item.")
-    return parser
-
-
-# create-site/update-site - lots of these options are never used elsewhere
-def set_content_url_arg(parser):
-    parser.add_argument(
-        "--url",
-        "-r",
-        help="Used in URLs to specify the site. Different from the site name.",
-    )
-    return parser
-
-
-# BUT this seems to be a mismatch between them? site id is listed in edit-site
-def set_site_id_arg(parser):
-    parser.add_argument("--site-id", help="Used in the URL to uniquely identify the site.")
     return parser
 
 
@@ -232,9 +207,26 @@ def set_site_status_arg(parser):
     return parser
 
 
+# create-site/update-site - lots of these options are never used elsewhere
+# mismatched arguments: createsite says --url, editsite says --site-id
+# just let both commands use either of them
+def set_site_id_options(parser):
+    site_id = parser.add_mutually_exclusive_group()
+    site_id.add_argument("--site-id", help="Used in the URL to uniquely identify the site.")
+    site_id.add_argument(
+        "--url",
+        "-r",
+        help="Used in URLs to specify the site. Different from the site name.",
+    )
+    return parser
+
+
 # these options are all shared in create-site and edit-site
-def set_site_args(parser):
-    parser.add_argument("--user-quota", help="Maximum number of users that can be added to the site.")
+def set_common_site_args(parser):
+
+    parser = set_site_id_options(parser)
+
+    parser.add_argument("--user-quota", type=int, help="Maximum number of users that can be added to the site.")
 
     site_help = "Allows or denies site administrators the ability to add users to or remove users from the site."
     site_group = parser.add_mutually_exclusive_group()
@@ -253,6 +245,7 @@ def set_site_args(parser):
 
     parser.add_argument(
         "--storage-quota",
+        type=int,
         help="In MB, the amount of data that can be stored on the site.",
     )
 

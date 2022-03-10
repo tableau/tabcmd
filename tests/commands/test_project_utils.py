@@ -25,5 +25,5 @@ class ProjectsTest(unittest.TestCase):
     @mock.patch("tableauserverclient.Server")
     def test_get_project(self, mock_server):
         mock_server.projects.get = getter
-        ProjectCommand.get_project_by_name_and_parent_path(mock_server, "random_name", "")
+        ProjectCommand.get_project_by_name_and_parent_path(mock.MagicMock(), mock_server, "random_name", "")
         getter.assert_called()

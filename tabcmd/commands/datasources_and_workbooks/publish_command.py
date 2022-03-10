@@ -1,10 +1,11 @@
+import os.path
+
 import tableauserverclient as TSC
 
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.project.project_command import ProjectCommand
 from tabcmd.execution.logger_config import log
 from tabcmd.commands.commands import Commands
-from tabcmd.parsers.publish_parser import PublishParser
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
@@ -21,30 +22,42 @@ class PublishCommand(DatasourcesAndWorkbooks):
         logger.debug(args)
         session = Session()
         server = session.create_session(args)
-        publish_mode = PublishCommand.get_publish_mode(args)
-        source = PublishCommand.get_source_type(args)
 
-        if args.project is not None:
+        logger.debug("Project details given: {0}, {1}".format(args.parent_project_path, args.project_name))
+
+        if args.project_name:
             try:
                 project_id = ProjectCommand.get_project_by_name_and_parent_path(
-                    server, args.project, args.parent_project_path
+                    logger, server, args.project_name, args.parent_project_path
                 )
             except Exception as exc:
-                Commands.exit_with_error(logger, "Error fetching project for publishing", exc)
+                Commands.exit_with_error(logger, "Error getting project from server", exc)
         else:
             project_id = ""
-            args.project = "default"
+            args.project_name = "default"
             args.parent_project_path = ""
 
-        if source == "twbx" or source == "twb":
-            new_workbook = TSC.WorkbookItem(project_id, name=args.name, show_tabs=args.tabbed)  # TODO
-            new_workbook = server.workbooks.publish(new_workbook, args.file_name, publish_mode)
-            logger.info("Workbook {} published".format(new_workbook.name))
+        publish_mode = PublishCommand.get_publish_mode(args)
 
-        elif source == "tds" or source == "tdsx" or source == "hyper":
+        source = PublishCommand.get_filename_extension_if_tableau_type(logger, args.filename)
+        logger.info("===== Publishing '{}' to the server. This could take several minutes...".format(args.filename))
+        if source in ["twbx", "twb"]:
+            new_workbook = TSC.WorkbookItem(project_id, name=args.name, show_tabs=args.tabbed)
+            new_workbook = server.workbooks.publish(new_workbook, args.filename, publish_mode)
+            PublishCommand.print_success(logger, new_workbook)
+
+        elif source in ["tds", "tdsx", "hyper"]:
             new_datasource = TSC.DatasourceItem(project_id, name=args.name)
-            new_datasource = server.datasources.publish(new_datasource, args.file_path, publish_mode)
-            logger.info("DataSource {} published".format(new_datasource.name))
+            new_datasource = server.datasources.publish(new_datasource, args.filename, publish_mode)
+            PublishCommand.print_success(logger, new_datasource)
+
+    @staticmethod
+    def print_success(logger, item):
+        logger.info(
+            "===== File successfully published to the server at the following location:\n===== {}".format(
+                item.webpage_url
+            )
+        )
 
     @staticmethod
     def get_publish_mode(args):
@@ -53,22 +66,3 @@ class PublishCommand(DatasourcesAndWorkbooks):
         else:
             publish_mode = TSC.Server.PublishMode.CreateNew
         return publish_mode
-
-    @staticmethod
-    def get_source_type(args):
-        source_list = args.source.split(".")
-        twbx = "twbx"
-        twb = "twb"
-        tdsx = "tdsx"
-        tds = "tds"
-        hyper = "hyper"
-        if twbx in source_list:
-            return twbx
-        elif twb in source_list:
-            return twb
-        elif tdsx in source_list:
-            return tdsx
-        elif tds in source_list:
-            return tds
-        elif hyper in source_list:
-            return hyper

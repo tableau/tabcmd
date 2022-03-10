@@ -24,4 +24,4 @@ class DeleteGroupCommand(GroupCommand):
             server.groups.delete(group_id)
             logger.info("===== Succeeded")
         except TSC.ServerResponseError as e:
-            Commands.exit_with_error(logger, e)
+            Commands.exit_with_error(logger, "Error deleting group from server", e)

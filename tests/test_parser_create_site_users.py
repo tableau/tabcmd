@@ -30,4 +30,4 @@ class CreateSiteUsersParserTest(unittest.TestCase):
         with mock.patch("builtins.open", mock.mock_open(read_data="test")):
             mock_args = [commandname, "users.csv", "--site", "site-name"]
             args = self.parser_under_test.parse_args(mock_args)
-            assert args.site == "site-name", args
+            assert args.site_name == "site-name", args

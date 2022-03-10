@@ -14,9 +14,9 @@ class ReencryptExtractsParserTest(unittest.TestCase):
         ReencryptExtractsParser.reencrypt_extracts_parser(manager, mock_command)
 
     def test_reencrypt_extract_parser_optional_arguments(self):
-        mock_args = [commandname, "sitename"]
+        mock_args = [commandname, "site-name"]
         args = self.parser_under_test.parse_args(mock_args)
-        assert args.sitename == "sitename", args
+        assert args.site_name == "site-name", args
 
     def test_reencrypt_extract_parser_missing_all_args(self):
         mock_args = [commandname]

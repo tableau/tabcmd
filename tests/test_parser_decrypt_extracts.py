@@ -17,7 +17,7 @@ class DecryptExtractsParserTest(unittest.TestCase):
     def test_decrypt_extract_parser_required_name(self):
         mock_args = [commandname, "site-name"]
         args = self.parser_under_test.parse_args(mock_args)
-        assert args.sitename == "site-name", args
+        assert args.site_name == "site-name", args
 
     """
     bug: the site name is supposed to be optional

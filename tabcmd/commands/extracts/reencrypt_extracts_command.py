@@ -18,9 +18,10 @@ class ReencryptExtracts(ExtractsCommand):
         logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
+        site_item = ExtractsCommand.get_site_for_command(logger, server, args, session)
         try:
-            site_id = SiteCommand.find_site_id(server, args.site_name)
-            job = server.sites.encrypt_extracts(site_id)
-            ExtractsCommand.print_success_message(logger, "re-encryption", job)
+            ExtractsCommand.print_task_scheduling_message(logger, "site", site_item.name, "re-encrypted")
+            job = server.sites.encrypt_extracts(site_item.id)
         except TSC.ServerResponseError as e:
-            ExtractsCommand.exit_with_error(logger, "Server Error", e)
+            ExtractsCommand.exit_with_error(logger, "Error re-encrypting extract", e)
+        ExtractsCommand.print_success_message(logger, "re-encryption", job)

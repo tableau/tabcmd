@@ -16,7 +16,7 @@ class PublishParserParserTest(unittest.TestCase):
     def test_publish_samples_parser_name(self):
         mock_args = [commandname, "-n", "project"]
         args = self.parser_under_test.parse_args(mock_args)
-        assert args.projectname == "project", args
+        assert args.project_name == "project", args
 
     def test_publish_samples_parser_missing_all_args(self):
         mock_args = [commandname]
@@ -33,4 +33,4 @@ class PublishParserParserTest(unittest.TestCase):
         ]
         args = self.parser_under_test.parse_args(mock_args)
         assert args.parent_project_path == "parent", args
-        assert args.projectname == "project", args
+        assert args.project_name == "project", args
