@@ -22,7 +22,7 @@ class Session:
         self.token_name = None
         self.token = None
         self.password_file = None
-        self.site = None  # The site name, or 'alpodev'
+        self.site_name = None  # The site name, or 'alpodev'
         self.site_id = None  # The site id, or 'abcd-1234-1234-1244-1234'
         self.server_url = None
         self.last_command = None  # for when we have to renew the session then re-try
@@ -47,9 +47,8 @@ class Session:
         # last_login_using and tableau_server are internal data
         # self.command = args.???
         self.username = args.username or self.username
-        self.site = args.site or self.site or ""
+        self.site_name = args.site_name or self.site_name or ""
         self.server_url = args.server or self.server_url or "http://localhost"
-        print("log:", args.logging_level, self.logging_level)
         self.logging_level = args.logging_level or self.logging_level
         self.password_file = args.password_file
         self.token_name = args.token_name or self.token_name
@@ -84,7 +83,7 @@ class Session:
                 Commands.exit_with_error(self.logger, "No password entered")
 
         if self.username and password:
-            credentials = TSC.TableauAuth(self.username, password, site_id=self.site)
+            credentials = TSC.TableauAuth(self.username, password, site_id=self.site_name)
             self.last_login_using = "username"
             return credentials
         else:
@@ -101,7 +100,7 @@ class Session:
             Commands.exit_with_error(self.logger, "No token value entered")
 
         if self.token_name and token:
-            credentials = TSC.PersonalAccessTokenAuth(self.token_name, token, site_id=self.site)
+            credentials = TSC.PersonalAccessTokenAuth(self.token_name, token, site_id=self.site_name)
             self.last_login_using = "token"
             return credentials
         else:
@@ -132,7 +131,7 @@ class Session:
             self.logger.info("=====   Username: {}".format(self.username))
         else:
             self.logger.info("=====   Token Name: {}".format(self.token_name))
-        self.logger.info("=====   Site: {}".format(self.site))
+        self.logger.info("=====   Site: {}".format(self.site_name))
 
     def _validate_existing_signin(self):
         self.logger.info("===== Continuing previous session")
@@ -156,7 +155,7 @@ class Session:
             self.auth_token = self.tableau_server._auth_token
             if not self.username:
                 self.username = self.tableau_server.users.get_by_id(self.user_id).name
-            self.logger.debug("Signed into {0}{1} as {2}".format(self.server_url, self.site, self.username))
+            self.logger.debug("Signed into {0}{1} as {2}".format(self.server_url, self.site_name, self.username))
             self.logger.info("=========Succeeded========")
         except TSC.ServerResponseError as e:
             Commands.exit_with_error(self.logger, "Server error occurred", e)
@@ -230,7 +229,7 @@ class Session:
         self.auth_token = None
         self.token_name = None
         self.token = None
-        self.site = None
+        self.site_name = None
         self.site_id = None
         self.server = None
         self.last_login_using = None
@@ -260,29 +259,28 @@ class Session:
             data = json.load(file_contents)
         try:
             for auth in data["tableau_auth"]:
-                try:
-                    self.auth_token = auth["auth_token"]
-                    self.server_url = auth["server"]
-                    self.site = auth["site_name"]
-                    self.site_id = auth["site_id"]
-                    self.username = auth["username"]
-                    self.user_id = auth["user_id"]
-                    self.token_name = auth["personal_access_token_name"]
-                    self.token = auth["personal_access_token"]
-                    self.last_login_using = auth["last_login_using"]
-                    self.password_file = auth["password_file"]
-                    self.no_prompt = auth["no_prompt"]
-                    self.no_certcheck = auth["no_certcheck"]
-                    self.certificate = auth["certificate"]
-                    self.no_proxy = auth["no_proxy"]
-                    self.proxy = auth["proxy"]
-                    self.timeout = auth["timeout"]
-                except KeyError as e:
-                    self.logger.debug("Error reading values from stored json file: ", e)
-                    self._remove_json()
-                except Exception as any_error:
-                    self.logger.info("Error loading session from file: clearing saved values")
-                    self._remove_json()
+                self.auth_token = auth["auth_token"]
+                self.server_url = auth["server"]
+                self.site_name = auth["site_name"]
+                self.site_id = auth["site_id"]
+                self.username = auth["username"]
+                self.user_id = auth["user_id"]
+                self.token_name = auth["personal_access_token_name"]
+                self.token = auth["personal_access_token"]
+                self.last_login_using = auth["last_login_using"]
+                self.password_file = auth["password_file"]
+                self.no_prompt = auth["no_prompt"]
+                self.no_certcheck = auth["no_certcheck"]
+                self.certificate = auth["certificate"]
+                self.no_proxy = auth["no_proxy"]
+                self.proxy = auth["proxy"]
+                self.timeout = auth["timeout"]
+        except KeyError as e:
+            self.logger.debug("Error reading values from stored json file: ", e)
+            self._remove_json()
+        except Exception as any_error:
+            self.logger.info("Error loading session from file: clearing saved values")
+            self._remove_json()
 
     def _check_json(self):
         home_path = os.path.expanduser("~")
@@ -306,7 +304,7 @@ class Session:
                 "server": self.server_url,
                 "username": self.username,
                 "user_id": self.user_id,
-                "site_name": self.site,
+                "site_name": self.site_name,
                 "site_id": self.site_id,
                 "personal_access_token_name": self.token_name,
                 "personal_access_token": self.token,

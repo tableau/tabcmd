@@ -4,6 +4,8 @@ import pytest
 import unittest
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.project.project_command import *
+from tabcmd.execution.logger_config import log
+
 
 try:
     from tests.e2e import credentials
@@ -46,7 +48,7 @@ class E2EServerTests(unittest.TestCase):
         # TODO and then we can get rid of the check above
         args = argparse.Namespace(
             server=credentials.server,
-            site=credentials.site,
+            site_name=credentials.site,
             token_name=credentials.token_name,
             token=credentials.token,
             username=None,
@@ -77,7 +79,7 @@ class E2EServerTests(unittest.TestCase):
         # TODO and then we can get rid of the check above
         args = argparse.Namespace(
             server=None,
-            site=None,
+            site_name=None,
             token_name=None,
             token=None,
             username=None,
@@ -129,7 +131,8 @@ class E2EServerTests(unittest.TestCase):
 
 
     def test_get_project(self):
+        logger = log(__name__, "info")
         server = E2EServerTests.test_log_in()
-        ProjectCommand.get_project_by_name_and_parent_path(server, "Default", None)
+        ProjectCommand.get_project_by_name_and_parent_path(logger, server, "Default", None)
 
 logging.disable(logging.NOTSET)

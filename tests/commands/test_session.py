@@ -7,7 +7,7 @@ import os
 
 args_to_mock = Namespace(
     username=None,
-    site=None,
+    site_name=None,
     password=None,
     password_file=None,
     server=None,
