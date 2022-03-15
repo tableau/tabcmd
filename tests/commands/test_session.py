@@ -41,7 +41,7 @@ mock_data_from_json = Namespace(
     proxy=None,
     no_proxy=True,
     timeout=None,
-    no_prompt=False
+    no_prompt=False,
 )
 
 fakeserver = "http://SRVR"
@@ -258,9 +258,7 @@ class CreateSessionTests(unittest.TestCase):
         assert mock_tsc.has_been_called()
 
     @mock.patch("tableauserverclient.Server")
-    def test_load_saved_session_data(
-            self, mock_tsc, mock_pass, mock_file, mock_path, mock_json_load, mock_json_dump
-    ):
+    def test_load_saved_session_data(self, mock_tsc, mock_pass, mock_file, mock_path, mock_json_load, mock_json_dump):
         _set_mocks_for_json_file_exists(mock_path, True)
         _set_mocks_for_json_file_saved_username(mock_json_load, "auth_token", "username")
         test_args = Namespace(**vars(args_to_mock))
@@ -271,7 +269,6 @@ class CreateSessionTests(unittest.TestCase):
         assert new_session.username == "username", new_session.username
         assert new_session.server_url == fakeserver, new_session.server_url
         assert mock_tsc.has_been_called()
-
 
     @mock.patch("tableauserverclient.Server")
     def test_create_session_with_active_session_saved(

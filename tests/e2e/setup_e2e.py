@@ -12,6 +12,7 @@ launch_path = os.path.join("dist", "tabcmd")
 exe = os.path.join(launch_path, our_program)
 is_ready = False
 
+
 class Setup:
     @staticmethod
     def login():

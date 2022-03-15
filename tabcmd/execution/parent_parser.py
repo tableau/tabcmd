@@ -33,13 +33,13 @@ class ParentParser:
             default=None,
             metavar="",
             help="Use client certificate to sign in. Required when mutual SSL is enabled. "
-                 "(The default behavior is to try certificates from the store)",
+            "(The default behavior is to try certificates from the store)",
         )
         certificates.add_argument(
             "--no-certcheck",
             action="store_true",
             help="When specified, tabcmd (the client) does not validate the server's SSL certificate. "
-                 "(The default behavior is to try certificates from the store)",
+            "(The default behavior is to try certificates from the store)",
         )
 
         cookies = parser.add_mutually_exclusive_group()
