@@ -29,6 +29,7 @@ setup(
         'requests>=2.11,<3.0',
         'setuptools>=24.3',
         'tableauserverclient>=0.12',
+        'types-requests',
         'urllib3>=1.24.3,<2.0',
     ],
     python_requires='>=3.6',
