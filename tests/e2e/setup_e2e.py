@@ -5,7 +5,7 @@ import pytest
 try:
     from tests.e2e import credentials
 except ImportError:
-    credentials = None
+    credentials = None  # type: ignore
 
 our_program = "tabcmd.exe"
 launch_path = os.path.join("dist", "tabcmd")
