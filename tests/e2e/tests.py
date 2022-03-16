@@ -16,10 +16,22 @@ def _test_command(test_args: list[str]):
     print(calling_args)
     return subprocess.check_call(calling_args)
 
+    @classmethod
+    def setup_class(cls):
+        Test_Commands.run_setup()
 
-def test_login():
-    setup_e2e.prechecks()
-    setup_e2e.login()
+    @staticmethod
+    def run_setup():
+        setup_e2e.Setup.prechecks()
+        setup_e2e.Setup.login()
+
+    def test_create_delete_group(self):
+        if not setup_e2e.is_ready:
+            Test_Commands.run_setup()
+        group_name = vars.group_name + str(datetime.datetime.now().microsecond)
+        command = "creategroup"
+        arguments = [command, group_name]
+        self._run_command(arguments)
 
 
 def test_create_delete_group():
@@ -43,7 +55,7 @@ def test_create_delete_project():
     arguments = [command, "--name", project_name]
     _test_command(arguments)
 
-    time.sleep(1)
+    time.sleep(indexing_sleep_time)
 
     # project 2
     parent_path = project_name
