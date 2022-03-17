@@ -24,17 +24,17 @@ class DeleteCommand(DatasourcesAndWorkbooks):
 
         if args.workbook:
             item_type = "workbook"
-            item_to_delete = DeleteCommand.get_workbook_item(server, args.workbook)
+            item_to_delete = DeleteCommand.get_workbook_item(logger, server, args.workbook)
         elif args.datasource:
             item_type = "datasource"
-            item_to_delete = DeleteCommand.get_data_source_item(server, args.datasource)
+            item_to_delete = DeleteCommand.get_data_source_item(logger, server, args.datasource)
         else:
             try:
-                item_to_delete = DeleteCommand.get_workbook_item(server, args.name)
+                item_to_delete = DeleteCommand.get_workbook_item(logger, server, args.name)
                 item_type = "workbook"
             except TSC.ServerResponseError:
                 try:
-                    item_to_delete = DeleteCommand.get_data_source_item(server, args.name)
+                    item_to_delete = DeleteCommand.get_data_source_item(logger, server, args.name)
                     item_type = "datasource"
                 except TSC.ServerResponseError:
                     DeleteCommand.exit_with_error(logger, "You must specify a workbook or datasource")

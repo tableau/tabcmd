@@ -19,11 +19,11 @@ class DeleteExtracts(ExtractsCommand):
         try:
             if args.datasource:
                 logger.info("Finding datasource `{}` on the server...".format(args.datasource))
-                data_source_item = ExtractsCommand.get_data_source_item(server, args.datasource)
+                data_source_item = ExtractsCommand.get_data_source_item(logger, server, args.datasource)
                 job = server.datasources.delete_extract(data_source_item)
             elif args.workbook:
                 logger.info("Finding workbook `{}` on the server...".format(args.workbook))
-                workbook_item = ExtractsCommand.get_workbook_item(server, args.workbook)
+                workbook_item = ExtractsCommand.get_workbook_item(logger, server, args.workbook)
                 job = server.workbooks.delete_extract(workbook_item)
         except TSC.ServerResponseError as e:
             ExtractsCommand.exit_with_error(logger, "Error deleting extract", e)

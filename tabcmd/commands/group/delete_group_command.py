@@ -19,7 +19,7 @@ class DeleteGroupCommand(GroupCommand):
         server = session.create_session(args)
         try:
             logger.info("Finding group {} on server...".format(args.name))
-            group_id = GroupCommand.find_group_id(server, args.name)
+            group_id = GroupCommand.find_group_id(logger, server, args.name)
             logger.info("Deleting group {} on server...".format(group_id))
             server.groups.delete(group_id)
             logger.info("===== Succeeded")

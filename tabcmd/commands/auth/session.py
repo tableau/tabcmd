@@ -6,6 +6,7 @@ import tableauserverclient as TSC
 from urllib3.exceptions import InsecureRequestWarning
 
 from tabcmd.commands.commands import Commands
+from tabcmd.commands.constants import *
 from tabcmd.execution.logger_config import log
 
 
@@ -148,6 +149,7 @@ class Session:
         return None
 
     def _sign_in(self, tableau_auth):
+        self.logger.debug("Signing in to {0}{1} as {2}".format(self.server_url, self.site_name, self.username))
         try:
             self.tableau_server.auth.sign_in(tableau_auth)  # it's the same call for token or user-pass
             self.site_id = self.tableau_server.site_id
@@ -158,7 +160,7 @@ class Session:
             self.logger.debug("Signed into {0}{1} as {2}".format(self.server_url, self.site_name, self.username))
             self.logger.info("=========Succeeded========")
         except TSC.ServerResponseError as e:
-            Commands.exit_with_error(self.logger, "Server error occurred", e)
+            Commands.exit_with_error(self.logger, "Server response", e)
         return self.tableau_server
 
     def _get_saved_credentials(self):

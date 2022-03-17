@@ -7,5 +7,5 @@ class GroupCommand(Commands):
     """
 
     @staticmethod
-    def find_group_id(server, group_name):
-        return Commands.get_items_by_name(server.groups, group_name)[0].id
+    def find_group_id(logger, server, group_name):
+        return Commands.get_items_by_name(logger, server.groups, group_name)[0].id

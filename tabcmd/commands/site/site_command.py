@@ -13,4 +13,4 @@ class SiteCommand(Commands):
 
     @staticmethod
     def find_site_id(server, site_name):
-        return Commands.get_items_by_name(server.sites, site_name)[0].id
+        return Commands.get_items_by_name(logger, server.sites, site_name)[0].id

@@ -15,7 +15,7 @@ class RunSchedule(DatasourcesAndWorkbooks):
         session = Session()
         server = session.create_session(args)
         logger.info("Finding schedule {} on server...".format(args.schedule))
-        schedule = DatasourcesAndWorkbooks.get_items_by_name(server.schedules, args.schedule)[0]
+        schedule = DatasourcesAndWorkbooks.get_items_by_name(logger, server.schedules, args.schedule)[0]
         if not schedule:
             DatasourcesAndWorkbooks.exit_with_error(logger, "Could not find schedule")
         logger.info("Found schedule")
