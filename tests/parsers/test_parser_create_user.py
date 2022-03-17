@@ -4,7 +4,7 @@ import unittest
 from unittest import mock
 import argparse
 from tabcmd.parsers.create_users_parser import CreateUserParser
-from common_setup import *
+from .common_setup import *
 
 commandname = "createusers"
 

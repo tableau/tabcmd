@@ -2,7 +2,7 @@ import unittest
 
 import argparse
 from tabcmd.parsers.export_parser import ExportParser
-from common_setup import *
+from .common_setup import *
 
 commandname = "export"
 

@@ -1,6 +1,6 @@
 import unittest
 from tabcmd.parsers.delete_site_parser import DeleteSiteParser
-from common_setup import *
+from .common_setup import *
 
 commandname = "deletesite"
 

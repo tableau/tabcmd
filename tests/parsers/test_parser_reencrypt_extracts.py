@@ -2,7 +2,7 @@ import unittest
 
 import argparse
 from tabcmd.parsers.reencrypt_parser import ReencryptExtractsParser
-from common_setup import *
+from .common_setup import *
 
 commandname = "reencryptextracts"
 

@@ -2,7 +2,7 @@ import sys
 import unittest
 from unittest import mock
 from tabcmd.parsers.remove_users_parser import RemoveUserParser
-from common_setup import *
+from .common_setup import *
 
 commandname = "removeusers"
 

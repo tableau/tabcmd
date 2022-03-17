@@ -2,7 +2,7 @@ import unittest
 
 import argparse
 from tabcmd.parsers.create_project_parser import CreateProjectParser
-from common_setup import *
+from .common_setup import *
 
 commandname = "createproject"
 

@@ -2,7 +2,7 @@ import unittest
 
 import argparse
 from tabcmd.parsers.runschedule_parser import RunScheduleParser
-from common_setup import *
+from .common_setup import *
 
 
 commandname = "runschedule"

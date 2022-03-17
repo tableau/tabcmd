@@ -3,7 +3,7 @@ import unittest
 
 import argparse
 from tabcmd.parsers.delete_parser import DeleteParser
-from common_setup import *
+from .common_setup import *
 
 commandname = "delete"
 

@@ -2,7 +2,7 @@ import unittest
 
 import argparse
 from tabcmd.parsers.list_sites_parser import ListSitesParser
-from common_setup import *
+from .common_setup import *
 
 
 commandname = "listsites"

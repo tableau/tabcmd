@@ -2,7 +2,7 @@ import unittest
 
 import argparse
 from tabcmd.parsers.publish_samples_parser import PublishSamplesParser
-from common_setup import *
+from .common_setup import *
 
 commandname = "publishsamples"
 

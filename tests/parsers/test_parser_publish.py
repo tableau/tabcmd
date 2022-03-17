@@ -1,7 +1,7 @@
 import unittest
 from unittest import mock
 from tabcmd.parsers.publish_parser import PublishParser
-from common_setup import *
+from .common_setup import *
 
 commandname = "Publish"
 

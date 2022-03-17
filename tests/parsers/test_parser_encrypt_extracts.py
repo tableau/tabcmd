@@ -2,7 +2,7 @@ import unittest
 
 import argparse
 from tabcmd.parsers.encrypt_extracts_parser import EncryptExtractsParser
-from common_setup import *
+from .common_setup import *
 
 commandname = "encryptextracts"
 

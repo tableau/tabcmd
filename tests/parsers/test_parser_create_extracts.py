@@ -2,7 +2,7 @@ import unittest
 import sys
 import argparse
 from tabcmd.parsers.create_extracts_parser import CreateExtractsParser
-from common_setup import *
+from .common_setup import *
 
 commandname = "createextracts"
 

@@ -2,7 +2,7 @@ import unittest
 
 import argparse
 from tabcmd.parsers.edit_site_parser import EditSiteParser
-from common_setup import *
+from .common_setup import *
 
 commandname = "editsites"
 

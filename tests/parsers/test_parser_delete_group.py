@@ -3,7 +3,7 @@ import unittest
 
 import argparse
 from tabcmd.parsers.delete_group_parser import DeleteGroupParser
-from common_setup import *
+from .common_setup import *
 
 commandname = "deletegroup"
 
