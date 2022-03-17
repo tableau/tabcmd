@@ -1,6 +1,5 @@
 import sys
 
-from tabcmd.execution.context import Context
 from tabcmd.execution.tabcmd_controller import TabcmdController
 
 
@@ -12,10 +11,9 @@ def main():
         )
 
     try:
-        tabcmd_controller = TabcmdController()
-        parser = tabcmd_controller.initialize_parsers()
-        command_context = Context(parser)
-        command_context.parse_inputs()
+        print("Launching tabcmd")
+        parser = TabcmdController.initialize()
+        TabcmdController.run(parser)
     except Exception as any_exception:
         print("Unexpected error: {}".format(any_exception))
         sys.exit(1)
