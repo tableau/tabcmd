@@ -26,19 +26,19 @@ class TabcmdController:
             parser.print_help()
             sys.exit(0)
         namespace = parser.parse_args(input)
-        if not namespace.func:  # arguments did not match any command
+        try:
+            command_name = namespace.func
+        except AttributeError as aer:
             parser.print_help()
-            sys.exit(1)
+            sys.exit(2)
 
-        # maybe argparse will do this?
-        if namespace.func == "help":
-            print("argparse?")
-            # parser.print_help()
-            # sys.exit(0)
+        if not command_name:
+            parser.print_help()
+            sys.exit(0)
 
         # if a subcommand was identified, call the function assigned to it
         # this is the functional equivalent of the call by reflection in the previous structure
         # https://stackoverflow.com/questions/49038616/argparse-subparsers-with-functions
-        namespace.func(namespace).run_command(namespace)
+        namespace.func.run_command(namespace)
         return namespace
 

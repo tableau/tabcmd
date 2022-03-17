@@ -12,6 +12,7 @@ from tabcmd.commands.extracts.reencrypt_extracts_command import *
 from tabcmd.commands.extracts.refresh_extracts_command import *
 from tabcmd.commands.group.create_group_command import *
 from tabcmd.commands.group.delete_group_command import *
+from tabcmd.commands.help.help_command import *
 from tabcmd.commands.project.create_project_command import *
 from tabcmd.commands.project.delete_project_command import *
 from tabcmd.commands.project.publish_samples_command import PublishSamplesCommand
@@ -104,4 +105,6 @@ class CommandsMap:
             "Delete site users",
         ),
         "removeusers": ("removeusers", RemoveUserCommand, "Remove users from a group"),
+        "help": ("help", HelpCommand, "Show help and exit")
+
     }
