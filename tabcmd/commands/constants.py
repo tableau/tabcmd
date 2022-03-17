@@ -1,4 +1,3 @@
-
 class Constants:
     login_error = "401001"
     invalid_credentials = "401002"
@@ -9,24 +8,26 @@ class Constants:
 
 
 class Errors:
-
+    @staticmethod
     def is_expired_session(error):
         return error.code == Constants.invalid_credentials
 
-    def check_common_error_codes(logger, error):
+    # pass in a logger at defined level, so we can call this important or not
+    @staticmethod
+    def check_common_error_codes(log_out, error):
         if error.code.startswith("400"):
-            logger.error(
+            log_out.error(
                 "{0} Bad request: Tableau Server cannot parse or interpret the message in the request".format(
                     error.code
                 )
             )
         elif error.code.startswith("401"):
-            logger.error("{0} User not Authenticated".format(error.code))
+            log_out.error("{0} User not Authenticated".format(error.code))
         elif error.code.startswith("403"):
-            logger.error("{0} Forbidden: Request was not authorized".format(error.code))
+            log_out.error("{0} Forbidden: Request was not authorized".format(error.code))
         if error.code.startswith("404"):
-            logger.error("{0} Not Found: Resource cannot be located".format(error.code))
+            log_out.error("{0} Not Found: Resource cannot be located".format(error.code))
         elif error.code.startswith("405"):
-            logger.error("{0} Method not Allowed".format(error.code))
+            log_out.error("{0} Method not Allowed".format(error.code))
         else:
-            logger.error("{0} Error: Server error occurred".format(error.code), error.code)
+            log_out.error("{0} Error: Server error occurred".format(error.code), error.code)

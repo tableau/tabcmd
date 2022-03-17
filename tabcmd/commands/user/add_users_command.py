@@ -1,5 +1,6 @@
 import tableauserverclient as TSC
 
+from tabcmd.commands.constants import Errors
 from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
 from .user_command import UserCommand
@@ -25,20 +26,15 @@ class AddUserCommand(UserCommand):
         user_obj_list = UserCommand.get_users_from_file(args.users)
         for user_obj in user_obj_list:
             username = user_obj.username
-            user_id = UserCommand.find_user_id(server, username)
-            group = UserCommand.find_group(server, args.name)
+            user_id = UserCommand.find_user_id(logger, server, username)
+            group = UserCommand.find_group(logger, server, args.name)
             try:
                 number_of_users_listed += 1
                 server.groups.add_user(group, user_id)
                 number_of_users_added += 1
                 logger.info("Successfully added")
             except TSC.ServerResponseError as e:
-                if e.code.find("404") == 0:
-                    logger.info("  *** Item not found")
-                elif e.code.find("403") == 0:
-                    logger.info("  *** Permission Denied")
-                else:
-                    logger.error("Error: Server error occurred", e.code)
+                Errors.check_common_error_codes(logger.info(), e)
                 number_of_errors += 1
         if number_of_users_added == 0:
             logger.info("File does not contain any valid usernames")

@@ -1,6 +1,7 @@
 import tableauserverclient as TSC
 
 from tabcmd.commands.auth.session import Session
+from tabcmd.commands.constants import Errors
 from tabcmd.commands.site.site_command import SiteCommand
 from tabcmd.commands.user.user_command import UserCommand
 from tabcmd.execution.logger_config import log
@@ -33,15 +34,14 @@ class DeleteSiteUsersCommand(SiteCommand):
         logger.info("======== 0% complete ========")
         for user_obj in user_obj_list:
             username = user_obj.username
-            user_id = UserCommand.find_user_id(server, username)
+            user_id = UserCommand.find_user_id(logger, server, username)
             try:
                 server.users.remove(user_id)
                 logger.info("Successfully deleted user from site: {}".format(username))
                 number_of_users_deleted += 1
             except TSC.ServerResponseError as e:
-                logger.error(" Server error occurred", e)
+                Errors.check_common_error_codes(logger.info, e)
                 number_of_errors += 1
-                # TODO Map Error code
             except ValueError:
                 logger.error(" Could not delete user: User {} not found".format(username))
                 number_of_errors += 1

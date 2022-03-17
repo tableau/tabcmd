@@ -26,18 +26,6 @@ class UserCommand(Commands):
     This class acts as a base class for user related group of commands
     """
 
-    @staticmethod
-    def find_user_id(server, username):
-        """Method to find the user id given username"""
-        all_users = list(TSC.Pager(server.users))
-        all_user_names_ids = [(user.name, user._id) for user in all_users]
-        user_id = None
-        for user in all_user_names_ids:
-            if user[0] == username:
-                user_id = user[1]
-                break
-        return user_id
-
     # used in createusers, createsiteusers
     @staticmethod
     def validate_file_for_import(csv_file, logger, detailed=False):
@@ -184,15 +172,3 @@ class UserCommand(Commands):
         if site_role is None:
             site_role = "Unlicensed"
         return site_role
-
-    @staticmethod
-    def find_group(server, group_name):
-        """Method to find the group id given group name"""
-        all_groups, pagination_item = server.groups.get()
-        all_group_names = [(group.name, group) for group in all_groups]
-        group_item = None
-        for group in all_group_names:
-            if group[0] == group_name:
-                group_item = group[1]
-                break
-        return group_item

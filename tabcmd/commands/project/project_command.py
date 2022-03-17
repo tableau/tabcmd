@@ -46,7 +46,6 @@ class ProjectCommand(Commands):
             return ProjectCommand._get_project_by_name_and_parent(logger, server, hierarchy[0], None)
         else:
             name = hierarchy.pop(tree_height - 1)
-            return ProjectCommand._get_project_by_name_and_parent(logger, server, name,
-                                                                  ProjectCommand._get_parent_project_from_tree(logger,
-                                                                                                               server,
-                                                                                                               hierarchy))
+            return ProjectCommand._get_project_by_name_and_parent(
+                logger, server, name, ProjectCommand._get_parent_project_from_tree(logger, server, hierarchy)
+            )

@@ -1,6 +1,6 @@
 import os
 import sys
-import tabcmd.commands.constants as errors
+from tabcmd.commands.constants import Errors
 import tableauserverclient as TSC
 
 
@@ -22,6 +22,13 @@ class Commands:
     def get_data_source_id(logger, server, data_source_name):
         return Commands.get_data_source_item(logger, server, data_source_name).id
 
+    @staticmethod
+    def find_group(logger, server, group_name):
+        return Commands.get_items_by_name(logger, server.groups, group_name)[0]
+
+    @staticmethod
+    def find_user_id(logger, server, username):
+        return Commands.get_items_by_name(logger, server.users, username)[0].id
 
     @staticmethod
     def get_items_by_name(logger, item_endpoint, item_name):
@@ -37,6 +44,7 @@ class Commands:
             logger.debug("multiple items of this name were found. Returning first page.")
         return all_items
 
+    ## Actual server requests
     @staticmethod
     def get_site_for_command(logger, server, args, session):
         if args.site_name:
@@ -53,7 +61,7 @@ class Commands:
             if message and not exception:
                 logger.error(message)
             if exception:
-                if errors.is_expired_session(exception):
+                if Errors.is_expired_session(exception):
                     logger.info("Your session has expired. Signing out to clear session...")
                     # TODO: add session as an argument to this method
                     #  and add the full command line as a field in Session?
@@ -61,11 +69,10 @@ class Commands:
                     return
                 if message:
                     logger.debug(message)
-                errors.check_common_error_codes(logger, exception)
+                Errors.check_common_error_codes(logger.error, exception)
         except Exception as exc:
             print("Error during log call from exception - ".format(exc.__class__ or message))
         sys.exit(1)
-
 
     @staticmethod
     def get_filename_extension_if_tableau_type(logger, filename):
