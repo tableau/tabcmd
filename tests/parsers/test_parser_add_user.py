@@ -1,7 +1,7 @@
 import unittest
 from unittest import mock
 from tabcmd.parsers.add_users_parser import AddUserParser
-from .common_setup import *
+from common_setup import *
 
 commandname = "addusers"
 

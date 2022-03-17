@@ -4,7 +4,7 @@ import unittest
 from unittest import mock
 import argparse
 from tabcmd.parsers.delete_site_users_parser import DeleteSiteUsersParser
-from .common_setup import *
+from common_setup import *
 
 commandname = "deletesiteusers"
 

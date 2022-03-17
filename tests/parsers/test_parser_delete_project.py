@@ -1,6 +1,6 @@
 import unittest
 from tabcmd.parsers.delete_project_parser import DeleteProjectParser
-from .common_setup import *
+from common_setup import *
 
 commandname = "deleteproject"
 

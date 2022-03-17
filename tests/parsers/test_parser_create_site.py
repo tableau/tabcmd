@@ -1,6 +1,6 @@
 import unittest
 from tabcmd.parsers.create_site_parser import CreateSiteParser
-from .common_setup import *
+from common_setup import *
 
 commandname = "createsite"
 

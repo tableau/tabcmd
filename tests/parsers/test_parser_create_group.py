@@ -1,6 +1,6 @@
 import unittest
 from tabcmd.parsers.create_group_parser import CreateGroupParser
-from .common_setup import *
+from common_setup import *
 
 commandname = "creategroup"
 

@@ -1,6 +1,6 @@
 import unittest
 from tabcmd.parsers.refresh_extracts_parser import RefreshExtractsParser
-from .common_setup import *
+from common_setup import *
 
 commandname = "refreshextracts"
 
