@@ -60,7 +60,6 @@ class Session:
         self.no_proxy = args.no_proxy or self.no_proxy
         self.proxy = args.proxy or self.proxy
         self.timeout = args.timeout or self.timeout
-        self.tableau_server = TSC.Server(self.server_url)
 
     @staticmethod
     def _read_password_from_file(filename):
@@ -118,7 +117,7 @@ class Session:
     def _create_new_connection(self):
         self.logger.info("===== Creating new session")
         self.tableau_server = self._set_connection_options()
-        self._print_server_info()  # do we even have all of this? well, we must
+        self._print_server_info()
         self.logger.info("===== Connecting to the server...")
 
     def _read_existing_state(self):
@@ -135,6 +134,7 @@ class Session:
 
     def _validate_existing_signin(self):
         self.logger.info("===== Continuing previous session")
+        self.tableau_server = self._set_connection_options()
         try:
             if self.tableau_server and self.tableau_server.is_signed_in():
                 response = self.tableau_server.users.get_by_id(self.user_id)
