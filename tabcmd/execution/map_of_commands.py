@@ -105,6 +105,5 @@ class CommandsMap:
             "Delete site users",
         ),
         "removeusers": ("removeusers", RemoveUserCommand, "Remove users from a group"),
-        "help": ("help", HelpCommand, "Show help and exit")
-
+        "help": ("help", HelpCommand, "Show help and exit"),
     }

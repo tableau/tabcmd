@@ -5,7 +5,6 @@ import sys
 
 
 class TabcmdController:
-
     @staticmethod
     def initialize():
         manager = ParentParser()
@@ -41,4 +40,3 @@ class TabcmdController:
         # https://stackoverflow.com/questions/49038616/argparse-subparsers-with-functions
         namespace.func.run_command(namespace)
         return namespace
-

@@ -7,12 +7,11 @@ from tabcmd.execution.tabcmd_controller import TabcmdController
 
 
 class ExecutionTests(unittest.TestCase):
-
     @mock.patch("sys.argv", [""])
     def test_run_e2e(self):
         parser = TabcmdController.initialize()
         TabcmdController.run(parser, ["help"])
-            # check exit code = 0?
+        # check exit code = 0?
 
     def test_run_initialize(self):
         TabcmdController.initialize()
