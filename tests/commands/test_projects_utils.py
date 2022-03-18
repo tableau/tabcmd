@@ -1,9 +1,7 @@
 import unittest
 from unittest import mock
 
-import tableauserverclient
-
-from tabcmd.commands.project.project_command import ProjectCommand
+from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
 
 fake_item = mock.MagicMock()
@@ -17,13 +15,13 @@ class ProjectsTest(unittest.TestCase):
 
     @staticmethod
     def test_parent_path_to_list():
-        assert ProjectCommand._parse_project_path_to_list(None) == []
-        assert ProjectCommand._parse_project_path_to_list("") == [""]
-        assert ProjectCommand._parse_project_path_to_list("parent") == ["parent"]
-        assert ProjectCommand._parse_project_path_to_list("parent/child") == ["parent", "child"]
+        assert Server._parse_project_path_to_list(None) == []
+        assert Server._parse_project_path_to_list("") == [""]
+        assert Server._parse_project_path_to_list("parent") == ["parent"]
+        assert Server._parse_project_path_to_list("parent/child") == ["parent", "child"]
 
     @mock.patch("tableauserverclient.Server")
     def test_get_project(self, mock_server):
         mock_server.projects.get = getter
-        ProjectCommand.get_project_by_name_and_parent_path(mock.MagicMock(), mock_server, "random_name", "")
+        Server.get_project_by_name_and_parent_path(mock.MagicMock(), mock_server, "random_name", "")
         getter.assert_called()

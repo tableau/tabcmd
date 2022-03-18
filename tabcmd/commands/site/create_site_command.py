@@ -1,15 +1,23 @@
 import tableauserverclient as TSC
 
+from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
-from tabcmd.commands.commands import Commands
+from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
-from .site_command import SiteCommand
 
 
-class CreateSiteCommand(SiteCommand):
+class CreateSiteCommand(Server):
     """
     Command to Create a site
     """
+
+    name: str = "createsite"
+    description: str = "Create a site"
+
+    @staticmethod
+    def define_args(create_site_parser):
+        create_site_parser.add_argument("site_name", metavar="site-name", help="name of site")
+        set_common_site_args(create_site_parser)
 
     @staticmethod
     def run_command(args):
@@ -28,4 +36,4 @@ class CreateSiteCommand(SiteCommand):
             server.sites.create(new_site)
             logger.info("Successfully created a new site called: {}".format(args.site_name))
         except TSC.ServerResponseError as e:
-            Commands.exit_with_error(logger, "error creating site", e)
+            Server.exit_with_error(logger, "error creating site", e)

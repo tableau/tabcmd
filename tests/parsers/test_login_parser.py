@@ -1,6 +1,7 @@
 import unittest
 from unittest import mock
-from tabcmd.parsers.login_parser import LoginParser
+
+from tabcmd.commands.auth.login_command import LoginCommand
 from .common_setup import *
 
 commandname = "login"
@@ -10,8 +11,7 @@ commandname = "login"
 class LoginParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
-        LoginParser.login_parser(manager, mock_command)
+        cls.parser_under_test = initialize_test_pieces(commandname, LoginCommand)
 
     def test_Login_username_password(self):
         mock_args = [

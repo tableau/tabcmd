@@ -1,14 +1,24 @@
 import tableauserverclient as TSC
 
+from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
+from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
-from .project_command import *
 
 
-class CreateProjectCommand(ProjectCommand):
+class CreateProjectCommand(Server):
     """
     Command to create a project
     """
+
+    name: str = "createproject"
+    description: str = "Create a project"
+
+    @staticmethod
+    def define_args(create_project_parser):
+        create_project_parser.add_argument("--name", "-n", dest="project_name", required=True, help="name of project")
+        set_parent_project_arg(create_project_parser)
+        set_description_arg(create_project_parser)
 
     @staticmethod
     def run_command(args):
@@ -21,11 +31,9 @@ class CreateProjectCommand(ProjectCommand):
         if args.parent_project_path is not None:
             try:
                 logger.info("===== Identifying parent project '{}' on the server...".format(args.parent_project_path))
-                parent = ProjectCommand.get_project_by_name_and_parent_path(
-                    logger, server, None, args.parent_project_path
-                )
+                parent = Server.get_project_by_name_and_parent_path(logger, server, None, args.parent_project_path)
             except TSC.ServerResponseError as exc:
-                Commands.exit_with_error(logger, "Error fetching parent project", exc)
+                Server.exit_with_error(logger, "Error fetching parent project", exc)
             readable_name = "{0}/{1}".format(args.parent_project_path, args.project_name)
             parent_id = parent.id
             logger.debug("parent project path = `{0}`, id = {1}".format(args.parent_project_path, parent_id))
@@ -36,4 +44,4 @@ class CreateProjectCommand(ProjectCommand):
             logger.info("===== Succeeded")
             return project_item
         except TSC.ServerResponseError as e:
-            Commands.exit_with_error(logger, "Error creating project", e)
+            Server.exit_with_error(logger, "Error creating project", e)

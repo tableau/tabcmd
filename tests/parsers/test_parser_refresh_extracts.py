@@ -1,5 +1,6 @@
 import unittest
-from tabcmd.parsers.refresh_extracts_parser import RefreshExtractsParser
+
+from tabcmd.commands.extracts.refresh_extracts_command import RefreshExtracts
 from .common_setup import *
 
 commandname = "refreshextracts"
@@ -8,8 +9,7 @@ commandname = "refreshextracts"
 class RefreshExtractsParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
-        RefreshExtractsParser.refresh_extracts_parser(manager, mock_command)
+        cls.parser_under_test = initialize_test_pieces(commandname, RefreshExtracts)
 
     def test_refresh_extract_parser_conflicting_arguments(self):
         mock_args = [commandname, "--datasource", "hello", "--workbook", "testworkbook"]

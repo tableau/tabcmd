@@ -11,6 +11,13 @@ class EncryptExtracts(ExtractsCommand):
     If no site is specified, extracts on the default site will be encrypted.
     """
 
+    name: str = "encryptextracts"
+    description: str = "Encrypt extracts on a site"
+
+    @staticmethod
+    def define_args(encrypt_extract_parser):
+        encrypt_extract_parser.add_argument("site_name", metavar="site-name", help="name of site")
+
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)

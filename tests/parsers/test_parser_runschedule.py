@@ -1,9 +1,7 @@
 import unittest
 
-import argparse
-from tabcmd.parsers.runschedule_parser import RunScheduleParser
+from tabcmd.commands.datasources_and_workbooks.runschedule_command import RunSchedule
 from .common_setup import *
-
 
 commandname = "runschedule"
 
@@ -11,8 +9,7 @@ commandname = "runschedule"
 class RunScheduleParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
-        RunScheduleParser.runschedule_parser(manager, mock_command)
+        cls.parser_under_test = initialize_test_pieces(commandname, RunSchedule)
 
     def test_runschedule_parser_required_name(self):
         mock_args = [commandname, "schedulename"]

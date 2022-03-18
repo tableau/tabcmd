@@ -1,7 +1,6 @@
 import unittest
 
-import argparse
-from tabcmd.parsers.reencrypt_parser import ReencryptExtractsParser
+from tabcmd.commands.extracts.reencrypt_extracts_command import ReencryptExtracts
 from .common_setup import *
 
 commandname = "reencryptextracts"
@@ -10,8 +9,7 @@ commandname = "reencryptextracts"
 class ReencryptExtractsParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
-        ReencryptExtractsParser.reencrypt_extracts_parser(manager, mock_command)
+        cls.parser_under_test = initialize_test_pieces(commandname, ReencryptExtracts)
 
     def test_reencrypt_extract_parser_optional_arguments(self):
         mock_args = [commandname, "site-name"]

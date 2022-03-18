@@ -1,7 +1,7 @@
-import sys
 import unittest
 from unittest import mock
-from tabcmd.parsers.remove_users_parser import RemoveUserParser
+
+from tabcmd.commands.user.remove_users_command import RemoveUserCommand
 from .common_setup import *
 
 commandname = "removeusers"
@@ -10,8 +10,7 @@ commandname = "removeusers"
 class RemoveUsersParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
-        RemoveUserParser.remove_user_parser(manager, mock_command)
+        cls.parser_under_test = initialize_test_pieces(commandname, RemoveUserCommand)
 
     def test_remove_users_parser_required_name(self):
         with mock.patch("builtins.open", mock.mock_open(read_data="test")) as open_file:

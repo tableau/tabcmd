@@ -1,9 +1,7 @@
-import sys
 import unittest
-
 from unittest import mock
-import argparse
-from tabcmd.parsers.create_site_users_parser import CreateSiteUsersParser
+
+from tabcmd.commands.user.create_site_users import CreateSiteUsersCommand
 from .common_setup import *
 
 commandname = "createsiteusers"
@@ -12,8 +10,7 @@ commandname = "createsiteusers"
 class CreateSiteUsersParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
-        CreateSiteUsersParser.create_site_user_parser(manager, mock_command)
+        cls.parser_under_test = initialize_test_pieces(commandname, CreateSiteUsersCommand)
 
     def test_create_site_users_parser_users_file(self):
         with mock.patch("builtins.open", mock.mock_open(read_data="test")) as open_file:

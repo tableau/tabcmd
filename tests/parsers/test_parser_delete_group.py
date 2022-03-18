@@ -1,8 +1,6 @@
-import sys
 import unittest
 
-import argparse
-from tabcmd.parsers.delete_group_parser import DeleteGroupParser
+from tabcmd.commands.group.delete_group_command import DeleteGroupCommand
 from .common_setup import *
 
 commandname = "deletegroup"
@@ -11,8 +9,7 @@ commandname = "deletegroup"
 class DeleteGroupParserTestT(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
-        DeleteGroupParser.delete_group_parser(manager, mock_command)
+        cls.parser_under_test = initialize_test_pieces(commandname, DeleteGroupCommand)
 
     def test_delete_group(self):
         mock_args = [commandname, "group-name"]

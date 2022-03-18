@@ -1,7 +1,6 @@
 import unittest
 
-import argparse
-from tabcmd.parsers.create_project_parser import CreateProjectParser
+from tabcmd.commands.project.create_project_command import CreateProjectCommand
 from .common_setup import *
 
 commandname = "createproject"
@@ -10,8 +9,7 @@ commandname = "createproject"
 class CreateProjectParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
-        CreateProjectParser.create_project_parser(manager, mock_command)
+        cls.parser_under_test = initialize_test_pieces(commandname, CreateProjectCommand)
 
     def test_create_project_parser_optional_arguments(self):
         mock_args = [

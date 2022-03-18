@@ -8,6 +8,13 @@ class RunSchedule(DatasourcesAndWorkbooks):
     This command runs the specified schedule as it is on the server.
     """
 
+    name: str = "runschedule"
+    description: str = "runschedule"
+
+    @staticmethod
+    def define_args(runschedule_parser):
+        runschedule_parser.add_argument("schedule", help="name of schedule")
+
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
@@ -15,7 +22,7 @@ class RunSchedule(DatasourcesAndWorkbooks):
         session = Session()
         server = session.create_session(args)
         logger.info("Finding schedule {} on server...".format(args.schedule))
-        schedule = DatasourcesAndWorkbooks.get_items_by_name(server.schedules, args.schedule)[0]
+        schedule = DatasourcesAndWorkbooks.get_items_by_name(logger, server.schedules, args.schedule)[0]
         if not schedule:
             DatasourcesAndWorkbooks.exit_with_error(logger, "Could not find schedule")
         logger.info("Found schedule")

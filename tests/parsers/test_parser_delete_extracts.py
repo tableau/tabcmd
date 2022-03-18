@@ -1,6 +1,6 @@
 import unittest
 
-from tabcmd.parsers.delete_extracts_parser import DeleteExtractsParser
+from tabcmd.commands.extracts.delete_extracts_command import DeleteExtracts
 from .common_setup import *
 
 commandname = "deleteextracts"
@@ -9,8 +9,7 @@ commandname = "deleteextracts"
 class DeleteExtractsParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
-        DeleteExtractsParser.delete_extracts_parser(manager, mock_command)
+        cls.parser_under_test = initialize_test_pieces(commandname, DeleteExtracts)
 
     def test_delete_extract_parser_datasource(self):
         mock_args = [

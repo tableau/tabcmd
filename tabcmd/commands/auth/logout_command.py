@@ -1,12 +1,20 @@
-from tabcmd.commands.commands import Commands
 from tabcmd.commands.auth.session import Session
+from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
 
 
-class LogoutCommand(Commands):
+class LogoutCommand(Server):
     """
     Command to Log user out of the server
     """
+
+    name: str = "logout"
+    description: str = "Sign out from the server"
+
+    @staticmethod
+    def define_args(parser):
+        # has no options
+        pass
 
     @staticmethod
     def run_command(args):

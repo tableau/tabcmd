@@ -1,15 +1,21 @@
 import tableauserverclient as TSC
 
 from tabcmd.commands.auth.session import Session
-from tabcmd.commands.commands import Commands
+from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
-from .group_command import GroupCommand
 
 
-class CreateGroupCommand(GroupCommand):
+class CreateGroupCommand(Server):
     """
     This command is used to create a group
     """
+
+    name: str = "creategroup"
+    description: str = "Create a local group"
+
+    @staticmethod
+    def define_args(create_group_parser):
+        create_group_parser.add_argument("name")
 
     @staticmethod
     def run_command(args):
@@ -23,4 +29,4 @@ class CreateGroupCommand(GroupCommand):
             server.groups.create(new_group)
             logger.info("Succeeded")
         except TSC.ServerResponseError as e:
-            Commands.exit_with_error(logger, "Error while communicating with the server")
+            Server.exit_with_error(logger, "Error while communicating with the server")

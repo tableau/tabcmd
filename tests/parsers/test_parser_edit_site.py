@@ -1,7 +1,6 @@
 import unittest
 
-import argparse
-from tabcmd.parsers.edit_site_parser import EditSiteParser
+from tabcmd.commands.site.edit_site_command import EditSiteCommand
 from .common_setup import *
 
 commandname = "editsites"
@@ -10,8 +9,7 @@ commandname = "editsites"
 class EditSiteParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
-        EditSiteParser.edit_site_parser(manager, mock_command)
+        cls.parser_under_test = initialize_test_pieces(commandname, EditSiteCommand)
 
     def test_edit_site_parser_optional_args_present(self):
         mock_args = [

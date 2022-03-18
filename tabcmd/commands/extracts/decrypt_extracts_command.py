@@ -9,6 +9,14 @@ class DecryptExtracts(ExtractsCommand):
     """Command that decrypts all extracts on a site. If no site is
     specified, extracts on the default site will be decrypted."""
 
+    name: str = "decryptextracts"
+    description: str = "Decrypt extracts on a site"
+
+    @staticmethod
+    def define_args(decrypt_extract_parser):
+        # TODO this argument is supposed to be optional - if not specified, do the default site
+        decrypt_extract_parser.add_argument("site_name", metavar="site-name", help="name of site")
+
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)

@@ -3,7 +3,7 @@ import logging
 import pytest
 import unittest
 from tabcmd.commands.auth.session import Session
-from tabcmd.commands.project.project_command import *
+from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
 
 
@@ -132,7 +132,7 @@ class E2EServerTests(unittest.TestCase):
     def test_get_project(self):
         logger = log(__name__, "info")
         server = E2EServerTests.test_log_in()
-        ProjectCommand.get_project_by_name_and_parent_path(logger, server, "Default", None)
+        Server.get_project_by_name_and_parent_path(logger, server, "Default", None)
 
 
 logging.disable(logging.NOTSET)

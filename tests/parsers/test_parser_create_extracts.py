@@ -1,7 +1,6 @@
 import unittest
-import sys
-import argparse
-from tabcmd.parsers.create_extracts_parser import CreateExtractsParser
+
+from tabcmd.commands.extracts.create_extracts_command import CreateExtracts
 from .common_setup import *
 
 commandname = "createextracts"
@@ -10,8 +9,7 @@ commandname = "createextracts"
 class CreateExtractsParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
-        CreateExtractsParser.create_extracts_parser(manager, mock_command)
+        cls.parser_under_test = initialize_test_pieces(commandname, CreateExtracts)
 
     def test_create_extract_parser_missing_all_args(self):
         mock_args = [commandname]

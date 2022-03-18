@@ -7,21 +7,21 @@ from tabcmd.execution.global_options import *
 from .user_data import UserCommand
 
 
-class CreateSiteUsersCommand(UserCommand):
+class CreateUsersCommand(UserCommand):
     """
     Command to add users to a site, based on information supplied in a comma-separated values (CSV) file.
     If the user is not already created on the server, the command creates the user before adding
     that user to the site
     """
 
-    name: str = "createsiteusers"
+    name: str = "createUsers"
     description: str = "Create users on the current site"
 
     @staticmethod
-    def define_args(create_site_users_parser):
-        set_role_arg(create_site_users_parser)
-        set_users_file_positional(create_site_users_parser)
-        set_completeness_options(create_site_users_parser)
+    def define_args(create_users_parser):
+        set_role_arg(create_users_parser)
+        set_users_file_positional(create_users_parser)
+        set_completeness_options(create_users_parser)
 
     @staticmethod
     def run_command(args):

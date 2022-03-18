@@ -3,6 +3,7 @@ import tableauserverclient as TSC
 from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
+from tabcmd.execution.global_options import *
 
 
 class GetUrl(DatasourcesAndWorkbooks):
@@ -10,6 +11,16 @@ class GetUrl(DatasourcesAndWorkbooks):
     This command gets the resource from Tableau Server that's represented
     by the specified (partial) URL. The result is returned as a file.
     """
+
+    name: str = "get"
+    description: str = "Get a file from the server"
+
+    @staticmethod
+    def define_args(get_url_parser):
+        get_url_parser.add_argument("url", help="url that identifies the view or workbook to export")
+        set_filename_arg(get_url_parser)
+        # TODO add args for png size in pixels, refresh
+        # to send to the server these are both just set on the url?
 
     @staticmethod
     def run_command(args):

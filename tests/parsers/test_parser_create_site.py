@@ -1,5 +1,6 @@
 import unittest
-from tabcmd.parsers.create_site_parser import CreateSiteParser
+
+from tabcmd.commands.site.create_site_command import CreateSiteCommand
 from .common_setup import *
 
 commandname = "createsite"
@@ -8,8 +9,7 @@ commandname = "createsite"
 class CreateSiteParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
-        CreateSiteParser.create_site_parser(manager, mock_command)
+        cls.parser_under_test = initialize_test_pieces(commandname, CreateSiteCommand)
 
     def test_create_site_parser_just_a_name(self):
         mock_args = [commandname, "site-name"]

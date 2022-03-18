@@ -1,11 +1,9 @@
-import os.path
-
 import tableauserverclient as TSC
 
+from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
-from tabcmd.commands.project.project_command import ProjectCommand
+from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
-from tabcmd.commands.commands import Commands
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
@@ -14,6 +12,21 @@ class PublishCommand(DatasourcesAndWorkbooks):
     This command publishes the specified workbook (.twb(x)), data source
     (.tds(x)), or extract (.hyper) to Tableau Server.
     """
+
+    name: str = "publish"
+    description: str = "Publish a workbook, data source, or extract to the server"
+
+    @staticmethod
+    def define_args(publish_parser):
+        publish_parser.add_argument(
+            "filename",
+            metavar="filename.twbx|tdsx|hyper",
+            # this is not actually a File type because we just pass the path to tsc
+            help="Existing local file to publish.",
+        )
+        set_publish_args(publish_parser)
+        set_project_r_arg(publish_parser)
+        set_parent_project_arg(publish_parser)
 
     @staticmethod
     def run_command(args):
@@ -27,11 +40,11 @@ class PublishCommand(DatasourcesAndWorkbooks):
 
         if args.project_name:
             try:
-                project_id = ProjectCommand.get_project_by_name_and_parent_path(
+                project_id = Server.get_project_by_name_and_parent_path(
                     logger, server, args.project_name, args.parent_project_path
                 )
             except Exception as exc:
-                Commands.exit_with_error(logger, "Error getting project from server", exc)
+                Server.exit_with_error(logger, "Error getting project from server", exc)
         else:
             project_id = ""
             args.project_name = "default"

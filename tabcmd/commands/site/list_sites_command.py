@@ -1,15 +1,22 @@
 import tableauserverclient as TSC
 
+from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
-from tabcmd.commands.commands import Commands
+from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
-from .site_command import SiteCommand
 
 
-class ListSiteCommand(SiteCommand):
+class ListSiteCommand(Server):
     """
     Command to return a list of sites to which the logged in user belongs
     """
+
+    name: str = "listsites"
+    description: str = "List sites for user"
+
+    @staticmethod
+    def define_args(list_site_parser):
+        set_view_site_encryption(list_site_parser)
 
     @staticmethod
     def run_command(args):
@@ -18,7 +25,7 @@ class ListSiteCommand(SiteCommand):
         session = Session()
         server = session.create_session(args)
         try:
-            sites = ListSiteCommand.get_sites(server)
+            sites = Server.get_sites(server)
             logger.info("===== Listing sites for user {}...".format(session.username))
             for site in sites:
                 print("NAME:", site.name)
@@ -27,4 +34,4 @@ class ListSiteCommand(SiteCommand):
                     print("EXTRACTENCRYPTION:", site.extract_encryption_mode)
                 print("")
         except TSC.ServerResponseError as e:
-            Commands.exit_with_error(logger, e)
+            Server.exit_with_error(logger, e)

@@ -1,5 +1,5 @@
 import unittest
-from tabcmd.commands.user.user_command import UserCommand
+from tabcmd.commands.user.user_data import UserCommand
 from tabcmd.execution.logger_config import log
 
 
