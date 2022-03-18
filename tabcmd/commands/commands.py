@@ -71,7 +71,7 @@ class Commands:
                     logger.debug(message)
                 Errors.check_common_error_codes(logger.error, exception)
         except Exception as exc:
-            print("Error during log call from exception - ".format(exc.__class__ or message))
+            print("Error during log call from exception - {}".format(exc.__class__ or message))
         sys.exit(1)
 
     @staticmethod

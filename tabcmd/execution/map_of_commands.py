@@ -60,7 +60,7 @@ from typing import Callable, List
 
 
 class CommandsMap:
-    commands_hash_map: List[tuple[str, Callable, str]] = [
+    commands_hash_map: List[tuple[str, Callable, str, Callable]] = [
         # not yet implemented "createusers": ("createusers", CreateUserCommand, "Create users on the server"),
         # run schedule
         ("addusers", AddUserCommand, "Add users to a group", AddUserParser.add_user_parser),
