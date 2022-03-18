@@ -1,12 +1,15 @@
-from tabcmd.commands.commands import Commands
+from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
 from .session import Session
 
 
-class LoginCommand(Commands):
+class LoginCommand(Server):
     """
     Logs in a Tableau Server user.
     """
+
+    name: str = "login"
+    description: str = "Log in to site"
 
     @staticmethod
     def run_command(args):

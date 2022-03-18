@@ -5,7 +5,7 @@ import tableauserverclient as TSC
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.project.project_command import ProjectCommand
 from tabcmd.execution.logger_config import log
-from tabcmd.commands.commands import Commands
+from tabcmd.commands.server import Server
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
@@ -14,6 +14,9 @@ class PublishCommand(DatasourcesAndWorkbooks):
     This command publishes the specified workbook (.twb(x)), data source
     (.tds(x)), or extract (.hyper) to Tableau Server.
     """
+
+    name: str = "publish"
+    description: str = "Publish a workbook, data source, or extract to the server"
 
     @staticmethod
     def run_command(args):
@@ -31,7 +34,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
                     logger, server, args.project_name, args.parent_project_path
                 )
             except Exception as exc:
-                Commands.exit_with_error(logger, "Error getting project from server", exc)
+                Server.exit_with_error(logger, "Error getting project from server", exc)
         else:
             project_id = ""
             args.project_name = "default"

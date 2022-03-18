@@ -2,7 +2,7 @@ from enum import IntEnum
 
 import tableauserverclient as TSC
 
-from tabcmd.commands.commands import Commands
+from tabcmd.commands.server import Server
 from .user_data import Userdata
 
 license_roles = ["creator", "explorer", "viewer", "unlicensed"]
@@ -21,7 +21,7 @@ class Column(IntEnum):
     EMAIL = 6
 
 
-class UserCommand(Commands):
+class UserCommand(Server):
     """
     This class acts as a base class for user related group of commands
     """
@@ -45,7 +45,7 @@ class UserCommand(Commands):
                 logger.info("invalid line [{0}]: {1}".format(line, exc))
                 num_errors += 1
         if num_errors > 0:
-            Commands.exit_with_error(
+            Server.exit_with_error(
                 logger, "Invalid users in file - please fix {} problems and try again.".format(num_errors)
             )
         return num_lines

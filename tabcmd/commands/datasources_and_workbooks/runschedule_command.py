@@ -8,6 +8,9 @@ class RunSchedule(DatasourcesAndWorkbooks):
     This command runs the specified schedule as it is on the server.
     """
 
+    name: str = "runschedule"
+    description: str = "runschedule"
+
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)

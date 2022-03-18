@@ -1,13 +1,10 @@
-from tabcmd.commands.commands import Commands
+from tabcmd.commands.server import Server
 
 
-class ExtractsCommand(Commands):
+class ExtractsCommand(Server):
     """
     Base class for extracts group of commands
     """
-
-    def __init__(self, args):
-        super().__init__(args)
 
     # TODO: this message should have the projects passed with the ds name
     # e.g instead of "regional" it should say "samples/regional"

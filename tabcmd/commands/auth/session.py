@@ -5,7 +5,7 @@ import requests
 import tableauserverclient as TSC
 from urllib3.exceptions import InsecureRequestWarning
 
-from tabcmd.commands.commands import Commands
+from tabcmd.commands.server import Server
 from tabcmd.commands.constants import *
 from tabcmd.execution.logger_config import log
 
@@ -80,14 +80,14 @@ class Session:
             elif self._allow_prompt():
                 password = getpass.getpass("Password:")
             else:
-                Commands.exit_with_error(self.logger, "No password entered")
+                Server.exit_with_error(self.logger, "No password entered")
 
         if self.username and password:
             credentials = TSC.TableauAuth(self.username, password, site_id=self.site_name)
             self.last_login_using = "username"
             return credentials
         else:
-            Commands.exit_with_error(self.logger, "Couldn't find username")
+            Server.exit_with_error(self.logger, "Couldn't find username")
 
     def _create_new_token_credential(self):
         if self.token:
@@ -97,14 +97,14 @@ class Session:
         elif self._allow_prompt():
             token = getpass.getpass("Token:")
         else:
-            Commands.exit_with_error(self.logger, "No token value entered")
+            Server.exit_with_error(self.logger, "No token value entered")
 
         if self.token_name and token:
             credentials = TSC.PersonalAccessTokenAuth(self.token_name, token, site_id=self.site_name)
             self.last_login_using = "token"
             return credentials
         else:
-            Commands.exit_with_error(self.logger, "Couldn't find token name")
+            Server.exit_with_error(self.logger, "Couldn't find token name")
 
     def _set_connection_options(self):
         # args to handle here: proxy, --no-proxy, cert, --no-certcheck, timeout
@@ -160,7 +160,7 @@ class Session:
             self.logger.debug("Signed into {0}{1} as {2}".format(self.server_url, self.site_name, self.username))
             self.logger.info("=========Succeeded========")
         except TSC.ServerResponseError as e:
-            Commands.exit_with_error(self.logger, "Server response", e)
+            Server.exit_with_error(self.logger, "Server response", e)
         return self.tableau_server
 
     def _get_saved_credentials(self):
@@ -205,7 +205,7 @@ class Session:
             signed_in_object = self._sign_in(credentials)
 
         if not signed_in_object:
-            Commands.exit_with_error(
+            Server.exit_with_error(
                 self.logger, "Unable to find or create a session. Please check credentials and login again."
             )
         if args.no_cookie:

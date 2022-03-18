@@ -4,31 +4,35 @@ from tabcmd.commands.constants import Errors
 import tableauserverclient as TSC
 
 
-class Commands:
+class Server:
     # syntactic sugar for specific content types
     @staticmethod
     def get_workbook_item(logger, server, workbook_name):
-        return Commands.get_items_by_name(logger, server.workbooks, workbook_name)[0]
+        return Server.get_items_by_name(logger, server.workbooks, workbook_name)[0]
 
     @staticmethod
     def get_workbook_id(logger, server, workbook_name):
-        return Commands.get_workbook_item(logger, server, workbook_name).id
+        return Server.get_workbook_item(logger, server, workbook_name).id
 
     @staticmethod
     def get_data_source_item(logger, server, data_source_name):
-        return Commands.get_items_by_name(logger, server.datasources, data_source_name)[0]
+        return Server.get_items_by_name(logger, server.datasources, data_source_name)[0]
 
     @staticmethod
     def get_data_source_id(logger, server, data_source_name):
-        return Commands.get_data_source_item(logger, server, data_source_name).id
+        return Server.get_data_source_item(logger, server, data_source_name).id
 
     @staticmethod
     def find_group(logger, server, group_name):
-        return Commands.get_items_by_name(logger, server.groups, group_name)[0]
+        return Server.get_items_by_name(logger, server.groups, group_name)[0]
+
+    @staticmethod
+    def find_group_id(logger, server, group_name):
+        return Server.get_items_by_name(logger, server.groups, group_name)[0].id
 
     @staticmethod
     def find_user_id(logger, server, username):
-        return Commands.get_items_by_name(logger, server.users, username)[0].id
+        return Server.get_items_by_name(logger, server.users, username)[0].id
 
     @staticmethod
     def get_items_by_name(logger, item_endpoint, item_name):
@@ -48,11 +52,11 @@ class Commands:
     @staticmethod
     def get_site_for_command(logger, server, args, session):
         if args.site_name:
-            site_item = Commands.get_items_by_name(logger, server.sites, args.site_name)[0]
+            site_item = Server.get_items_by_name(logger, server.sites, args.site_name)[0]
         else:
             site_item = server.sites.get_by_id(session.site_id)
         if not site_item:
-            Commands.exit_with_error(logger, "Could not get site info from server")
+            Server.exit_with_error(logger, "Could not get site info from server")
         return site_item
 
     @staticmethod

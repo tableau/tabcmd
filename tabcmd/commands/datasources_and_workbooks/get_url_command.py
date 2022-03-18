@@ -11,6 +11,9 @@ class GetUrl(DatasourcesAndWorkbooks):
     by the specified (partial) URL. The result is returned as a file.
     """
 
+    name: str = "get"
+    description: str = "Get a file from the server"
+
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)

@@ -10,6 +10,9 @@ class DeleteCommand(DatasourcesAndWorkbooks):
     Command to delete the specified workbook or data source from the server.
     """
 
+    name: str = "delete"
+    description: str = "Delete a workbook or data source from the server"
+
     located_workbook = None
     located_datasource = None
 

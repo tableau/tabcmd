@@ -1,9 +1,9 @@
 import tableauserverclient as TSC
 
-from tabcmd.commands.commands import Commands
+from tabcmd.commands.server import Server
 
 
-class DatasourcesAndWorkbooks(Commands):
+class DatasourcesAndWorkbooks(Server):
     """
     Base Class for Operations related to Datasources and Workbooks
     """
@@ -20,7 +20,7 @@ class DatasourcesAndWorkbooks(Commands):
             selected_view = matching_views[0]
             return selected_view
         except IndexError:
-            Commands.exit_with_error(logger, "Could not find view. Please check the name and try again.")
+            Server.exit_with_error(logger, "Could not find view. Please check the name and try again.")
 
     @staticmethod
     def get_wb_by_content_url(logger, server, workbook_content_url):
@@ -37,4 +37,4 @@ class DatasourcesAndWorkbooks(Commands):
             selected_workbook = matching_workbooks[0]
             return selected_workbook
         except IndexError:
-            Commands.exit_with_error(logger, "Could not find view. Please check the name and try again.")
+            Server.exit_with_error(logger, "Could not find view. Please check the name and try again.")

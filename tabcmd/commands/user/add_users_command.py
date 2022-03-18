@@ -11,6 +11,9 @@ class AddUserCommand(UserCommand):
     Command to Adds users to a specified group
     """
 
+    name: str = "addusers"
+    description: str = "Add users to a group"
+
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)

@@ -13,6 +13,9 @@ class CreateSiteUsersCommand(UserCommand):
     that user to the site
     """
 
+    name: str = "createsiteusers"
+    description: str = "Create users on the current site"
+
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)

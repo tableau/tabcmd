@@ -10,6 +10,9 @@ class CreateExtracts(ExtractsCommand):
     Command that creates extracts for a published workbook or data source.
     """
 
+    name: str = "createextracts"
+    description: str = "Create extracts for a published workbook or data source"
+
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)

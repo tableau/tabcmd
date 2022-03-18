@@ -14,6 +14,9 @@ class DeleteSiteUsersCommand(SiteCommand):
     a simple list of one user name per line.
     """
 
+    name: str = "deletesiteusers"
+    description: str = "Delete site users"
+
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)

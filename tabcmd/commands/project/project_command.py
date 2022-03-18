@@ -1,8 +1,8 @@
-from tabcmd.commands.commands import Commands
+from tabcmd.commands.server import Server
 import tableauserverclient as TSC
 
 
-class ProjectCommand(Commands):
+class ProjectCommand(Server):
     @staticmethod
     def get_project_by_name_and_parent_path(logger, server, project_name, parent_path):
         logger.debug("Project by name and path: {0}, {1}".format(project_name, parent_path))
@@ -26,7 +26,7 @@ class ProjectCommand(Commands):
 
     @staticmethod
     def _get_project_by_name_and_parent(logger, server, project_name, parent):
-        # print("get by name and parent: {0}, {1}".format(project_name, parent))
+        logger.debug("get by name and parent: {0}, {1}".format(project_name, parent))
         # get by name to narrow down the list
         projects = ProjectCommand.get_items_by_name(logger, server.projects, project_name)
         if parent is not None:
@@ -38,7 +38,7 @@ class ProjectCommand(Commands):
 
     @staticmethod
     def _get_parent_project_from_tree(logger, server, hierarchy):
-        # print("get from tree: {0}".format(hierarchy))
+        logger.debug("get parent project from tree: {0}".format(hierarchy))
         tree_height = len(hierarchy)
         if tree_height == 0:
             return None

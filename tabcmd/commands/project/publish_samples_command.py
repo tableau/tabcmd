@@ -9,6 +9,9 @@ class PublishSamplesCommand(ProjectCommand):
     Any existing samples will be overwritten.
     """
 
+    name: str = "publishsamples"
+    description: str = "Publish samples to the server"
+
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
@@ -19,4 +22,4 @@ class PublishSamplesCommand(ProjectCommand):
             project_path = ProjectCommand.find_project_id(server, args.parent_path_name)
         else:
             project_path = None
-        Commands.exit_with_error(logger, "Not yet implemented")
+        Server.exit_with_error(logger, "Not yet implemented")

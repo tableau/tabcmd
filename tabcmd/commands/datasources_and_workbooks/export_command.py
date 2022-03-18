@@ -6,6 +6,10 @@ from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
 class ExportCommand(DatasourcesAndWorkbooks):
+
+    name: str = "export"
+    description: str = "Export the data or image of a view from the server"
+
     @staticmethod
     def get_content_url_for_workbook(url):
         # check the size of list

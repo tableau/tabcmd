@@ -12,6 +12,9 @@ class ReencryptExtracts(ExtractsCommand):
     This command will regenerate the key encryption key and data encryption key. You must specify a site.
     """
 
+    name: str = "reencryptextracts"
+    description: str = "Reencrypt extracts on a site"
+
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)

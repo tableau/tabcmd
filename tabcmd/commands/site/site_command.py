@@ -1,7 +1,7 @@
-from tabcmd.commands.commands import Commands
+from tabcmd.commands.server import Server
 
 
-class SiteCommand(Commands):
+class SiteCommand(Server):
     """
     Acts as a base class for site related group of commands
     """
@@ -13,4 +13,4 @@ class SiteCommand(Commands):
 
     @staticmethod
     def find_site_id(server, site_name):
-        return Commands.get_items_by_name(logger, server.sites, site_name)[0].id
+        return Server.get_items_by_name(logger, server.sites, site_name)[0].id

@@ -6,6 +6,10 @@ from tabcmd.execution.logger_config import log
 
 
 class RefreshExtracts(ExtractsCommand):
+
+    name: str = "refreshextracts"
+    description: str = "Refresh the extracts of a workbook or datasource on the server"
+
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)

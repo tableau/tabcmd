@@ -8,6 +8,9 @@ class DeleteProjectCommand(ProjectCommand):
     Command to Delete the specified project from the server
     """
 
+    name: str = "deleteproject"
+    description: str = "Delete a project"
+
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
@@ -23,7 +26,7 @@ class DeleteProjectCommand(ProjectCommand):
                 logger, server, args.project_name, args.parent_project_path
             )
         except TSC.ServerResponseError as e:
-            Commands.exit_with_error(logger, "Error finding project", e)
+            Server.exit_with_error(logger, "Error finding project", e)
         project_id = project.id
 
         try:
@@ -31,4 +34,4 @@ class DeleteProjectCommand(ProjectCommand):
             server.projects.delete(project_id)
             logger.info("===== Succeeded")
         except TSC.ServerResponseError as e:
-            Commands.exit_with_error(logger, "Failed to delete project", e)
+            Server.exit_with_error(logger, "Failed to delete project", e)

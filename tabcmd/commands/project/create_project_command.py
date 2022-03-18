@@ -10,6 +10,9 @@ class CreateProjectCommand(ProjectCommand):
     Command to create a project
     """
 
+    name: str = "createproject"
+    description: str = "Create a project"
+
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
@@ -25,7 +28,7 @@ class CreateProjectCommand(ProjectCommand):
                     logger, server, None, args.parent_project_path
                 )
             except TSC.ServerResponseError as exc:
-                Commands.exit_with_error(logger, "Error fetching parent project", exc)
+                Server.exit_with_error(logger, "Error fetching parent project", exc)
             readable_name = "{0}/{1}".format(args.parent_project_path, args.project_name)
             parent_id = parent.id
             logger.debug("parent project path = `{0}`, id = {1}".format(args.parent_project_path, parent_id))
@@ -36,4 +39,4 @@ class CreateProjectCommand(ProjectCommand):
             logger.info("===== Succeeded")
             return project_item
         except TSC.ServerResponseError as e:
-            Commands.exit_with_error(logger, "Error creating project", e)
+            Server.exit_with_error(logger, "Error creating project", e)
