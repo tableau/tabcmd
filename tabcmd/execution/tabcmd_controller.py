@@ -1,5 +1,4 @@
 from .map_of_commands import *
-from .map_of_parsers import *
 from .parent_parser import ParentParser
 import sys
 
@@ -11,20 +10,20 @@ class TabcmdController:
         parent = manager.get_root_parser()
 
         commands = CommandsMap.commands_hash_map
-        parsers = ParsersMap.parsers_hashmap
-        for commandname in commands.keys():
-            parsers[commandname](manager, commands[commandname])
+        for command in commands:
+            command_specific_setup = command[3]
+            command_specific_setup(manager, command)
         return parent
 
     # during normal execution, leaving input as none will default to sys.argv
     # for testing, we want to be able to pass in different updates
     @staticmethod
-    def run(parser, input=None):
+    def run(parser, user_input=None):
 
-        if input is None and len(sys.argv) <= 1:  # no arguments given
+        if user_input is None and len(sys.argv) <= 1:  # no arguments given
             parser.print_help()
             sys.exit(0)
-        namespace = parser.parse_args(input)
+        namespace = parser.parse_args(user_input)
         try:
             command_name = namespace.func
         except AttributeError as aer:
