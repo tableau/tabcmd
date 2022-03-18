@@ -1,9 +1,10 @@
+import tableauserverclient as TSC
 from tabcmd.commands.auth.session import Session
+from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
-from .project_command import *
 
 
-class DeleteProjectCommand(ProjectCommand):
+class DeleteProjectCommand(Server):
     """
     Command to Delete the specified project from the server
     """
@@ -22,7 +23,7 @@ class DeleteProjectCommand(ProjectCommand):
 
         try:
             logger.debug("Fetching project to be deleted: {}/{}".format(args.parent_project_path, args.project_name))
-            project = ProjectCommand.get_project_by_name_and_parent_path(
+            project = Server.get_project_by_name_and_parent_path(
                 logger, server, args.project_name, args.parent_project_path
             )
         except TSC.ServerResponseError as e:

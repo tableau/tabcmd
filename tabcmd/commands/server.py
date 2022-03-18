@@ -48,7 +48,12 @@ class Server:
             logger.debug("multiple items of this name were found. Returning first page.")
         return all_items
 
-    ## Actual server requests
+    # Actual server requests
+    @staticmethod
+    def get_sites(server):
+        sites, pagination = server.sites.get()
+        return sites
+
     @staticmethod
     def get_site_for_command(logger, server, args, session):
         if args.site_name:
@@ -92,3 +97,50 @@ class Server:
         raise ValueError(
             "Filename `{0}` does not have an appropriate file extension: found `{1}`.".format(filename, source_type)
         )
+
+    @staticmethod
+    def get_project_by_name_and_parent_path(logger, server, project_name, parent_path):
+        logger.debug("Project by name and path: {0}, {1}".format(project_name, parent_path))
+        project_tree = Server._parse_project_path_to_list(parent_path)
+        if not project_name:
+            project = Server._get_parent_project_from_tree(logger, server, project_tree)
+        else:
+            parent = Server._get_parent_project_from_tree(logger, server, project_tree)
+            project = Server._get_project_by_name_and_parent(logger, server, project_name, parent)
+        if not project:
+            raise TSC.server.ServerResponseError(
+                "404", "Could not find project {0}/{1}".format(parent_path, project_name)
+            )
+        return project
+
+    @staticmethod
+    def _parse_project_path_to_list(project_path):
+        if project_path is None:
+            return []
+        return project_path.split("/")
+
+    @staticmethod
+    def _get_project_by_name_and_parent(logger, server, project_name, parent):
+        logger.debug("get by name and parent: {0}, {1}".format(project_name, parent))
+        # get by name to narrow down the list
+        projects = Server.get_items_by_name(logger, server.projects, project_name)
+        if parent is not None:
+            parent_id = parent.id
+            for project in projects:
+                if project.parent_id == parent_id:
+                    return project
+        return projects[0]
+
+    @staticmethod
+    def _get_parent_project_from_tree(logger, server, hierarchy):
+        logger.debug("get parent project from tree: {0}".format(hierarchy))
+        tree_height = len(hierarchy)
+        if tree_height == 0:
+            return None
+        elif tree_height == 1:
+            return Server._get_project_by_name_and_parent(logger, server, hierarchy[0], None)
+        else:
+            name = hierarchy.pop(tree_height - 1)
+            return Server._get_project_by_name_and_parent(
+                logger, server, name, Server._get_parent_project_from_tree(logger, server, hierarchy)
+            )

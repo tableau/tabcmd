@@ -3,10 +3,9 @@ import tableauserverclient as TSC
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
-from .site_command import SiteCommand
 
 
-class EditSiteCommand(SiteCommand):
+class EditSiteCommand(Server):
     """
     Command to change the name of a site or its web folder name. Users can also use this command to allow or deny
     site administrators the ability to add and remove users, or prevent users from running certain tasks manually.
@@ -22,7 +21,7 @@ class EditSiteCommand(SiteCommand):
         session = Session()
         server = session.create_session(args)
 
-        site_item = SiteCommand.get_site_for_command(logger, server, args, session)
+        site_item = Server.get_site_for_command(logger, server, args, session)
         if args.url:
             site_item.content_url = args.url
         if args.user_quota:

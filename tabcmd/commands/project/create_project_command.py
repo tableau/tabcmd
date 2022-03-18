@@ -1,11 +1,11 @@
 import tableauserverclient as TSC
 
+from tabcmd.commands.server import Server
 from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
-from .project_command import *
 
 
-class CreateProjectCommand(ProjectCommand):
+class CreateProjectCommand(Server):
     """
     Command to create a project
     """
@@ -24,9 +24,7 @@ class CreateProjectCommand(ProjectCommand):
         if args.parent_project_path is not None:
             try:
                 logger.info("===== Identifying parent project '{}' on the server...".format(args.parent_project_path))
-                parent = ProjectCommand.get_project_by_name_and_parent_path(
-                    logger, server, None, args.parent_project_path
-                )
+                parent = Server.get_project_by_name_and_parent_path(logger, server, None, args.parent_project_path)
             except TSC.ServerResponseError as exc:
                 Server.exit_with_error(logger, "Error fetching parent project", exc)
             readable_name = "{0}/{1}".format(args.parent_project_path, args.project_name)

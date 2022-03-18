@@ -2,8 +2,6 @@ import argparse
 import unittest
 from unittest.mock import *
 
-import mock
-
 from tabcmd.commands.auth import login_command, logout_command
 from tabcmd.commands.datasources_and_workbooks import (
     delete_command,
@@ -264,7 +262,7 @@ class RunCommandsTest(unittest.TestCase):
 
 @patch("tableauserverclient.Server")
 @patch("tabcmd.commands.auth.session.Session.create_session")
-@patch("tabcmd.commands.user.user_command.UserCommand.get_users_from_file")
+@patch("tabcmd.commands.user.user_data.UserCommand.get_users_from_file")
 class RunUserCommandsTest(unittest.TestCase):
     @staticmethod
     def _set_up_file(mock_file):

@@ -3,10 +3,9 @@ import tableauserverclient as TSC
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
-from .site_command import SiteCommand
 
 
-class ListSiteCommand(SiteCommand):
+class ListSiteCommand(Server):
     """
     Command to return a list of sites to which the logged in user belongs
     """
@@ -21,7 +20,7 @@ class ListSiteCommand(SiteCommand):
         session = Session()
         server = session.create_session(args)
         try:
-            sites = ListSiteCommand.get_sites(server)
+            sites = Server.get_sites(server)
             logger.info("===== Listing sites for user {}...".format(session.username))
             for site in sites:
                 print("NAME:", site.name)

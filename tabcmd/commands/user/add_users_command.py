@@ -3,7 +3,7 @@ import tableauserverclient as TSC
 from tabcmd.commands.constants import Errors
 from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
-from .user_command import UserCommand
+from .user_data import UserCommand
 
 
 class AddUserCommand(UserCommand):

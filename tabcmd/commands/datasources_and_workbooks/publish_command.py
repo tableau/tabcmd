@@ -3,7 +3,6 @@ import os.path
 import tableauserverclient as TSC
 
 from tabcmd.commands.auth.session import Session
-from tabcmd.commands.project.project_command import ProjectCommand
 from tabcmd.execution.logger_config import log
 from tabcmd.commands.server import Server
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
@@ -30,7 +29,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
 
         if args.project_name:
             try:
-                project_id = ProjectCommand.get_project_by_name_and_parent_path(
+                project_id = Server.get_project_by_name_and_parent_path(
                     logger, server, args.project_name, args.parent_project_path
                 )
             except Exception as exc:

@@ -3,10 +3,9 @@ import tableauserverclient as TSC
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
-from .site_command import SiteCommand
 
 
-class CreateSiteCommand(SiteCommand):
+class CreateSiteCommand(Server):
     """
     Command to Create a site
     """

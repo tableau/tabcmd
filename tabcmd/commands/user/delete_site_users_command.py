@@ -2,12 +2,12 @@ import tableauserverclient as TSC
 
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.constants import Errors
-from tabcmd.commands.site.site_command import SiteCommand
-from tabcmd.commands.user.user_command import UserCommand
+from tabcmd.commands.server import Server
+from tabcmd.commands.user.user_data import UserCommand
 from tabcmd.execution.logger_config import log
 
 
-class DeleteSiteUsersCommand(SiteCommand):
+class DeleteSiteUsersCommand(Server):
     """
     Command to Remove users from the site that user is logged in to.
     The users to be removed are specified in a file that contains

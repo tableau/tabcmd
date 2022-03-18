@@ -2,7 +2,6 @@ import tableauserverclient as TSC
 
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.extracts.extracts_command import ExtractsCommand
-from tabcmd.commands.site.site_command import SiteCommand
 from tabcmd.execution.logger_config import log
 
 
