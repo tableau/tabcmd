@@ -1,4 +1,6 @@
 import tableauserverclient as TSC
+
+from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
@@ -11,6 +13,11 @@ class DeleteProjectCommand(Server):
 
     name: str = "deleteproject"
     description: str = "Delete a project"
+
+    @staticmethod
+    def define_args(delete_project_parser):
+        delete_project_parser.add_argument("project_name", metavar="project-name", help="name of project to delete")
+        set_parent_project_arg(delete_project_parser)
 
     @staticmethod
     def run_command(args):

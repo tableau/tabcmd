@@ -14,6 +14,10 @@ class DeleteGroupCommand(Server):
     description: str = "Delete a group"
 
     @staticmethod
+    def define_args(delete_group_parser):
+        delete_group_parser.add_argument("name", help="name of group to delete")
+
+    @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
         logger.debug("======================= Launching command =======================")

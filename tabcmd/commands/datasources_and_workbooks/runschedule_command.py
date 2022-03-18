@@ -12,6 +12,10 @@ class RunSchedule(DatasourcesAndWorkbooks):
     description: str = "runschedule"
 
     @staticmethod
+    def define_args(runschedule_parser):
+        runschedule_parser.add_argument("schedule", help="name of schedule")
+
+    @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
         logger.debug("======================= Launching command =======================")

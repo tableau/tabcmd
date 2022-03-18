@@ -1,5 +1,6 @@
 import tableauserverclient as TSC
 
+from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.extracts.extracts_command import ExtractsCommand
 from tabcmd.execution.logger_config import log
@@ -12,6 +13,15 @@ class CreateExtracts(ExtractsCommand):
 
     name: str = "createextracts"
     description: str = "Create extracts for a published workbook or data source"
+
+    @staticmethod
+    def define_args(create_extract_parser):
+        set_ds_xor_wb_args(create_extract_parser)
+        set_embedded_datasources_options(create_extract_parser)
+        set_encryption_option(create_extract_parser)
+        set_project_arg(create_extract_parser)
+        set_parent_project_arg(create_extract_parser)
+        set_site_url_arg(create_extract_parser)
 
     @staticmethod
     def run_command(args):

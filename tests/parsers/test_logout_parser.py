@@ -1,8 +1,8 @@
-import unittest
-
-from unittest import mock
 import argparse
-from tabcmd.parsers.logout_parser import LogoutParser
+import unittest
+from unittest import mock
+
+from tabcmd.commands.auth.logout_command import LogoutCommand
 from .common_setup import *
 
 commandname = "logout"
@@ -11,8 +11,7 @@ commandname = "logout"
 class LogoutParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
-        LogoutParser.logout_parser(manager, mock_command)
+        cls.parser_under_test = initialize_test_pieces(commandname, LogoutCommand)
 
     # Logout doesn't take any arguments, so it's a good one to check all the global args on
 

@@ -1,5 +1,6 @@
 import tableauserverclient as TSC
 
+from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.constants import Errors
 from tabcmd.execution.logger_config import log
@@ -13,6 +14,12 @@ class RemoveUserCommand(UserCommand):
 
     name: str = "removeusers"
     description: str = "Remove users from a group"
+
+    @staticmethod
+    def define_args(remove_users_parser):
+        remove_users_parser.add_argument("groupname", help="The group to remove users from.")
+        set_users_file_arg(remove_users_parser)
+        set_completeness_options(remove_users_parser)
 
     @staticmethod
     def run_command(args):

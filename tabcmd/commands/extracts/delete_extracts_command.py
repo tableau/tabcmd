@@ -1,5 +1,6 @@
 import tableauserverclient as TSC
 
+from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.extracts.extracts_command import ExtractsCommand
 from tabcmd.execution.logger_config import log
@@ -12,6 +13,15 @@ class DeleteExtracts(ExtractsCommand):
 
     name: str = "deleteextracts"
     description: str = "Delete extracts for a published workbook or data source"
+
+    @staticmethod
+    def define_args(delete_extract_parser):
+        set_ds_xor_wb_args(delete_extract_parser)
+        set_embedded_datasources_options(delete_extract_parser)
+        # set_encryption_option(delete_extract_parser)
+        set_project_arg(delete_extract_parser)
+        set_parent_project_arg(delete_extract_parser)
+        delete_extract_parser.add_argument("--url", help="The canonical name for the resource as it appears in the URL")
 
     @staticmethod
     def run_command(args):

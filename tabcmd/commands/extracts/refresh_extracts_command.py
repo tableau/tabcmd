@@ -1,5 +1,6 @@
 import tableauserverclient as TSC
 
+from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.extracts.extracts_command import ExtractsCommand
 from tabcmd.execution.logger_config import log
@@ -9,6 +10,22 @@ class RefreshExtracts(ExtractsCommand):
 
     name: str = "refreshextracts"
     description: str = "Refresh the extracts of a workbook or datasource on the server"
+
+    @staticmethod
+    def define_args(refresh_extract_parser):
+        target_group = refresh_extract_parser.add_mutually_exclusive_group(required=True)
+        target_group.add_argument("--datasource")
+        target_group.add_argument("--workbook")
+
+        set_incremental_options(refresh_extract_parser)
+        set_calculations_options(refresh_extract_parser)
+        set_project_arg(refresh_extract_parser)
+        set_parent_project_arg(refresh_extract_parser)
+        refresh_extract_parser.add_argument(
+            "--url",
+            help="The name of the workbook as it appears in the URL. A workbook published as “Sales Analysis” \
+            has a URL name of “SalesAnalysis”.",
+        )
 
     @staticmethod
     def run_command(args):

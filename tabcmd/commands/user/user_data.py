@@ -1,4 +1,5 @@
 from enum import IntEnum
+
 from tabcmd.commands.server import Server
 
 

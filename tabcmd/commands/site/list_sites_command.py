@@ -1,5 +1,6 @@
 import tableauserverclient as TSC
 
+from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
@@ -12,6 +13,10 @@ class ListSiteCommand(Server):
 
     name: str = "listsites"
     description: str = "List sites for user"
+
+    @staticmethod
+    def define_args(list_site_parser):
+        set_view_site_encryption(list_site_parser)
 
     @staticmethod
     def run_command(args):

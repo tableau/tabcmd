@@ -3,6 +3,7 @@ import tableauserverclient as TSC
 from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
+from tabcmd.execution.global_options import *
 
 
 class DeleteCommand(DatasourcesAndWorkbooks):
@@ -15,6 +16,15 @@ class DeleteCommand(DatasourcesAndWorkbooks):
 
     located_workbook = None
     located_datasource = None
+
+    @staticmethod
+    def define_args(delete_parser):
+        delete_parser_group = delete_parser.add_mutually_exclusive_group(required=True)
+        delete_parser_group.add_argument("name", nargs="?", help="The datasource or workbook to delete")
+        delete_parser_group.add_argument("--workbook", required=False, help="The workbook to delete")
+        delete_parser_group.add_argument("--datasource", required=False, help="The datasource to delete")
+        set_project_r_arg(delete_parser)
+        set_parent_project_arg(delete_parser)
 
     @staticmethod
     def run_command(args):

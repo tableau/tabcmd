@@ -1,9 +1,7 @@
 import unittest
 
-import argparse
-from tabcmd.parsers.decrypt_extracts_parser import DecryptExtractsParser
+from tabcmd.commands.extracts.decrypt_extracts_command import DecryptExtracts
 from .common_setup import *
-
 
 commandname = "decryptextracts"
 
@@ -11,8 +9,7 @@ commandname = "decryptextracts"
 class DecryptExtractsParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
-        DecryptExtractsParser.decrypt_extracts_parser(manager, mock_command)
+        cls.parser_under_test = initialize_test_pieces(commandname, DecryptExtracts)
 
     def test_decrypt_extract_parser_required_name(self):
         mock_args = [commandname, "site-name"]

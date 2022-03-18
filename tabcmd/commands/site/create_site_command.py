@@ -1,5 +1,6 @@
 import tableauserverclient as TSC
 
+from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
@@ -12,6 +13,11 @@ class CreateSiteCommand(Server):
 
     name: str = "createsite"
     description: str = "Create a site"
+
+    @staticmethod
+    def define_args(create_site_parser):
+        create_site_parser.add_argument("site_name", metavar="site-name", help="name of site")
+        set_common_site_args(create_site_parser)
 
     @staticmethod
     def run_command(args):

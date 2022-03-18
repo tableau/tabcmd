@@ -1,7 +1,8 @@
 import tableauserverclient as TSC
 
-from tabcmd.commands.server import Server
+from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
+from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
 
 
@@ -12,6 +13,12 @@ class CreateProjectCommand(Server):
 
     name: str = "createproject"
     description: str = "Create a project"
+
+    @staticmethod
+    def define_args(create_project_parser):
+        create_project_parser.add_argument("--name", "-n", dest="project_name", required=True, help="name of project")
+        set_parent_project_arg(create_project_parser)
+        set_description_arg(create_project_parser)
 
     @staticmethod
     def run_command(args):

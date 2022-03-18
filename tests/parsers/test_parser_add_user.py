@@ -1,6 +1,7 @@
 import unittest
 from unittest import mock
-from tabcmd.parsers.add_users_parser import AddUserParser
+
+from tabcmd.commands.user.add_users_command import AddUserCommand
 from .common_setup import *
 
 commandname = "addusers"
@@ -9,8 +10,7 @@ commandname = "addusers"
 class AddUsersParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
-        AddUserParser.add_user_parser(manager, mock_command)
+        cls.parser_under_test = initialize_test_pieces(commandname, AddUserCommand)
 
     def test_add_users_parser_role(self):
         cmd_line_input = [commandname, "group-name", "--users", "users.csv"]

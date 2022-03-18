@@ -14,6 +14,10 @@ class CreateGroupCommand(Server):
     description: str = "Create a local group"
 
     @staticmethod
+    def define_args(create_group_parser):
+        create_group_parser.add_argument("name")
+
+    @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
         logger.debug("======================= Launching command =======================")

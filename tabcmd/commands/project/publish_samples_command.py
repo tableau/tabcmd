@@ -1,5 +1,4 @@
-from tabcmd.commands.auth.session import Session
-from tabcmd.execution.logger_config import log
+from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
@@ -13,6 +12,18 @@ class PublishSamplesCommand(Server):
 
     name: str = "publishsamples"
     description: str = "Publish samples to the server"
+
+    @staticmethod
+    def define_args(publish_samples_parser):
+        publish_samples_parser.add_argument(
+            "--name",
+            "-n",
+            dest="project_name",
+            required=True,
+            help="Publishes the Tableau samples into the specified project. If the project name includes spaces, "
+            "enclose the entire name in quotes.",
+        )
+        set_parent_project_arg(publish_samples_parser)
 
     @staticmethod
     def run_command(args):

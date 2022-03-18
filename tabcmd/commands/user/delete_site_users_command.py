@@ -1,5 +1,6 @@
 import tableauserverclient as TSC
 
+from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.constants import Errors
 from tabcmd.commands.server import Server
@@ -16,6 +17,11 @@ class DeleteSiteUsersCommand(Server):
 
     name: str = "deletesiteusers"
     description: str = "Delete site users"
+
+    @staticmethod
+    def define_args(delete_site_users_parser):
+        set_users_file_positional(delete_site_users_parser)
+        set_completeness_options(delete_site_users_parser)
 
     @staticmethod
     def run_command(args):

@@ -1,5 +1,6 @@
 import unittest
-from tabcmd.parsers.create_group_parser import CreateGroupParser
+
+from tabcmd.commands.group.create_group_command import CreateGroupCommand
 from .common_setup import *
 
 commandname = "creategroup"
@@ -8,8 +9,7 @@ commandname = "creategroup"
 class CreateGroupParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
-        CreateGroupParser.create_group_parser(manager, mock_command)
+        cls.parser_under_test = initialize_test_pieces(commandname, CreateGroupCommand)
 
     def test_creategroup_parser_required_name(self):
         mock_args = [commandname, "name"]

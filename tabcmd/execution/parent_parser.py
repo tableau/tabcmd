@@ -16,9 +16,12 @@ class ParentParser:
         return self.root
 
     def include(self, command):
-        additional_parser = self.subparsers.add_parser(command[0], help=command[2], parents=[self.global_options])
+        additional_parser = self.subparsers.add_parser(
+            command.name, help=command.description, parents=[self.global_options]
+        )
         # This line is where we actually set each parser to call the correct command
-        additional_parser.set_defaults(func=command[1])
+        additional_parser.set_defaults(func=command)
+        command.define_args(additional_parser)
         return additional_parser
 
     # ordered alphabetically by short option - this is reflected directly in help output

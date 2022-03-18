@@ -1,5 +1,6 @@
 import tableauserverclient as TSC
 
+from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
@@ -13,6 +14,16 @@ class EditSiteCommand(Server):
 
     name: str = "editsite"
     description: str = "Edit a site"
+
+    @staticmethod
+    def define_args(edit_site_parser):
+        edit_site_parser.add_argument("site_name", metavar="site-name", help="name of site to update")
+        edit_site_parser.add_argument(
+            "--site-name", default=None, dest="new_site_name", help="The name of the site that's displayed."
+        )
+
+        set_common_site_args(edit_site_parser)
+        set_site_status_arg(edit_site_parser)
 
     @staticmethod
     def run_command(args):

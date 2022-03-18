@@ -1,9 +1,7 @@
-import sys
 import unittest
-
 from unittest import mock
-import argparse
-from tabcmd.parsers.delete_site_users_parser import DeleteSiteUsersParser
+
+from tabcmd.commands.user.delete_site_users_command import DeleteSiteUsersCommand
 from .common_setup import *
 
 commandname = "deletesiteusers"
@@ -14,8 +12,7 @@ class DeleteSiteUsersParserTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
-        DeleteSiteUsersParser.delete_site_users_parser(manager, mock_command)
+        cls.parser_under_test = initialize_test_pieces(commandname, DeleteSiteUsersCommand)
 
     def test_delete_site_user_parser(self):
         with mock.patch("builtins.open", mock.mock_open(read_data="test")) as open_file:

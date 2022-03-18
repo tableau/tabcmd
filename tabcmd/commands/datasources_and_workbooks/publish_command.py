@@ -1,10 +1,9 @@
-import os.path
-
 import tableauserverclient as TSC
 
+from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
-from tabcmd.execution.logger_config import log
 from tabcmd.commands.server import Server
+from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 
@@ -16,6 +15,18 @@ class PublishCommand(DatasourcesAndWorkbooks):
 
     name: str = "publish"
     description: str = "Publish a workbook, data source, or extract to the server"
+
+    @staticmethod
+    def define_args(publish_parser):
+        publish_parser.add_argument(
+            "filename",
+            metavar="filename.twbx|tdsx|hyper",
+            # this is not actually a File type because we just pass the path to tsc
+            help="Existing local file to publish.",
+        )
+        set_publish_args(publish_parser)
+        set_project_r_arg(publish_parser)
+        set_parent_project_arg(publish_parser)
 
     @staticmethod
     def run_command(args):

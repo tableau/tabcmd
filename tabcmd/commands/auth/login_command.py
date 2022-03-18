@@ -12,6 +12,11 @@ class LoginCommand(Server):
     description: str = "Log in to site"
 
     @staticmethod
+    def define_args(parser):
+        # just uses global options
+        pass
+
+    @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
         logger.debug("======================= Launching command =======================")

@@ -1,9 +1,7 @@
 import unittest
 
-import argparse
-from tabcmd.parsers.list_sites_parser import ListSitesParser
+from tabcmd.commands.site.list_sites_command import ListSiteCommand
 from .common_setup import *
-
 
 commandname = "listsites"
 
@@ -11,8 +9,7 @@ commandname = "listsites"
 class ListSitesParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
-        ListSitesParser.list_site_parser(manager, mock_command)
+        cls.parser_under_test = initialize_test_pieces(commandname, ListSiteCommand)
 
     def test_list_site_parser(self):
         mock_args = [commandname]

@@ -1,6 +1,7 @@
+import sys
+
 from .map_of_commands import *
 from .parent_parser import ParentParser
-import sys
 
 
 class TabcmdController:
@@ -11,8 +12,7 @@ class TabcmdController:
 
         commands = CommandsMap.commands_hash_map
         for command in commands:
-            command_specific_setup = command[3]
-            command_specific_setup(manager, command)
+            manager.include(command)
         return parent
 
     # during normal execution, leaving input as none will default to sys.argv

@@ -1,7 +1,6 @@
 import unittest
 
-import argparse
-from tabcmd.parsers.publish_samples_parser import PublishSamplesParser
+from tabcmd.commands.project.publish_samples_command import PublishSamplesCommand
 from .common_setup import *
 
 commandname = "publishsamples"
@@ -10,8 +9,7 @@ commandname = "publishsamples"
 class PublishParserParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
-        PublishSamplesParser.publish_samples_parser(manager, mock_command)
+        cls.parser_under_test = initialize_test_pieces(commandname, PublishSamplesCommand)
 
     def test_publish_samples_parser_name(self):
         mock_args = [commandname, "-n", "project"]

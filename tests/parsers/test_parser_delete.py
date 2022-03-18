@@ -1,8 +1,6 @@
-import sys
 import unittest
 
-import argparse
-from tabcmd.parsers.delete_parser import DeleteParser
+from tabcmd.commands.datasources_and_workbooks.delete_command import DeleteCommand
 from .common_setup import *
 
 commandname = "delete"
@@ -11,8 +9,7 @@ commandname = "delete"
 class DeleteParserTestT(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
-        DeleteParser.delete_parser(manager, mock_command)
+        cls.parser_under_test = initialize_test_pieces(commandname, DeleteCommand)
 
     def test_delete_parser_no_object(self):
         mock_args = [commandname]

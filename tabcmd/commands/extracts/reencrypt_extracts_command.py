@@ -15,6 +15,10 @@ class ReencryptExtracts(ExtractsCommand):
     description: str = "Reencrypt extracts on a site"
 
     @staticmethod
+    def define_args(reencrypt_extract_parser):
+        reencrypt_extract_parser.add_argument("site_name", metavar="site-name", help="The site to encrypt extracts for")
+
+    @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
         logger.debug("======================= Launching command =======================")

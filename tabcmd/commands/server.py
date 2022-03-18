@@ -1,7 +1,9 @@
 import os
 import sys
-from tabcmd.commands.constants import Errors
+
 import tableauserverclient as TSC
+
+from tabcmd.commands.constants import Errors
 
 
 class Server:

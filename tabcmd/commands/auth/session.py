@@ -1,12 +1,12 @@
 import getpass
 import json
 import os
+
 import requests
 import tableauserverclient as TSC
 from urllib3.exceptions import InsecureRequestWarning
 
 from tabcmd.commands.server import Server
-from tabcmd.commands.constants import *
 from tabcmd.execution.logger_config import log
 
 

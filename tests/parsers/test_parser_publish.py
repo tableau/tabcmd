@@ -1,6 +1,6 @@
 import unittest
-from unittest import mock
-from tabcmd.parsers.publish_parser import PublishParser
+
+from tabcmd.commands.datasources_and_workbooks.publish_command import PublishCommand
 from .common_setup import *
 
 commandname = "Publish"
@@ -9,8 +9,7 @@ commandname = "Publish"
 class PublishParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.parser_under_test, manager, mock_command = initialize_test_pieces(commandname)
-        PublishParser.publish_parser(manager, mock_command)
+        cls.parser_under_test = initialize_test_pieces(commandname, PublishCommand)
 
     def test_publish_parser_required_name(self):
         mock_args = [commandname, "filename.hyper"]
