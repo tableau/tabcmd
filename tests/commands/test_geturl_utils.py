@@ -43,7 +43,7 @@ class GetURlTests(unittest.TestCase):
         filetype = GetUrl.check_if_extension_present(filename)
         assert filetype is True
 
-    def test_check_for_extension_no_ext(self):
+    def test_check_for_extension_pdf(self):
         filename = "workbooks/workbook/viewname.pdf"
         filetype = GetUrl.check_if_extension_present(filename)
         assert filetype is True

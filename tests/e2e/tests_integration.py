@@ -10,7 +10,7 @@ from tabcmd.execution.logger_config import log
 try:
     from tests.e2e import credentials
 except ImportError:
-    credentials = None
+    credentials = None  # type: ignore
 
 fakeserver = "http://SRVR"
 logging.disable(logging.ERROR)
