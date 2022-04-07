@@ -68,7 +68,7 @@ class Commands:
                     return
                 if message:
                     logger.debug(message)
-                Commands.check_common_error_codes(logger, exception)
+                Commands.check_common_error_codes_and_explain(logger, exception)
         except Exception as exc:
             print("Error during log call from exception - {} {}".format(exc.__class__, message))
         sys.exit(1)

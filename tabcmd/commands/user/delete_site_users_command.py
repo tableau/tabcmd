@@ -30,26 +30,28 @@ class DeleteSiteUsersCommand(Server):
         session = Session()
         server = session.create_session(args)
 
+        if args.site_name:
+            target_site = args.site_name
+        else:
+            target_site = "current site"
+
+        logger.info("Deleting users listed in {0} from site '{1}'".format(args.filename.name, target_site))
+
+        UserCommand.validate_file_for_import(args.filename, logger, strict=args.require_all_valid)
         number_of_users_deleted = 0
         number_of_errors = 0
-
-        # TODO: allow the user to change which site they are deleted from
-
-        if args.require_all_valid:
-            UserCommand.validate_file_for_import(args.filename, logger)
-
-        user_obj_list = UserCommand.get_users_from_file(args.filename)
+        user_obj_list = UserCommand.get_users_from_file(args.filename, logger)
 
         logger.info("======== 0% complete ========")
         for user_obj in user_obj_list:
-            username = user_obj.username
+            username = user_obj.name
             user_id = UserCommand.find_user_id(logger, server, username)
             try:
                 server.users.remove(user_id)
                 logger.info("Successfully deleted user from site: {}".format(username))
                 number_of_users_deleted += 1
             except TSC.ServerResponseError as e:
-                Errors.check_common_error_codes(logger.info, e)
+                Errors.check_common_error_codes_and_explain(logger.info, e)
                 number_of_errors += 1
             except ValueError:
                 logger.error(" Could not delete user: User {} not found".format(username))

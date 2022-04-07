@@ -108,7 +108,7 @@ class Session:
 
     def _set_connection_options(self):
         # args to handle here: proxy, --no-proxy, cert, --no-certcheck, timeout
-        tableau_server = TSC.Server(self.server_url)
+        tableau_server = TSC.Server(self.server_url, use_server_version=False)
         if self.no_certcheck:
             tableau_server.add_http_options({"verify": False})
             requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
