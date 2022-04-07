@@ -1,18 +1,15 @@
 import unittest
 
-import tabcmd.commands.user.user_data
-from tabcmd.commands.user.user_data import UserCommand
+from tabcmd.commands.user.user_data import UserCommand, Userdata
 from tabcmd.execution.logger_config import log
 import io
+import tableauserverclient as TSC
 from typing import List
 
 
 class UserDataTest(unittest.TestCase):
     logger = log("UserDataTest", "debug")
-    # [license_level, admin_level, publisher] ---> expected_role
-    # [(explorer/creator/viewer/unlicensed), (system/site/none), (yes/no) --->
-    #       (SiteAdministrator/SiteAdministratorCreator/SiteAdministratorExplorer/ExplorerCanPublish/
-    #       Creator/Viewer/Unlicensed)
+
     role_inputs = [
         ["creator", "system", "yes", "SiteAdministrator"],
         ["None", "system", "no", "SiteAdministrator"],
@@ -31,68 +28,12 @@ class UserDataTest(unittest.TestCase):
         ["yes", "yes", "yes", "Unlicensed"],
     ]
 
-    def test_evaluate_role(self):
-        for input in UserDataTest.role_inputs:
-            actual = UserCommand.evaluate_license_level_admin_level(input[0], input[1], input[2])
-            assert actual == input[3], input + [actual]
-
-    def test_get_user_detail_empty_line(self):
-        test_line = ""
-        test_user = UserCommand.parse_line(test_line)
-        assert test_user is None
-
-    def test_validate_user_detail_standard(self):
-        test_line = "username, pword, fname, creator, site, 1, email"
-        UserCommand.validate_user_detail_line(test_line)
-
-    def test_get_user_detail_standard(self):
-        test_line = "username, pword, fname, license, admin, pub, email"
-        test_user = UserCommand.parse_line(test_line)
-        print(test_user.username, test_user.password, test_user.full_name)
-        assert test_user.username == "username", test_user.username
-        assert test_user.password == "pword", test_user.password
-        assert test_user.full_name == "fname", test_user.full_name
-        assert test_user.license_level == "license", test_user.license_level
-        assert test_user.admin_level == "admin", test_user.admin_level
-        assert test_user.publisher == "pub", test_user.publisher
-        assert test_user.email == "email", test_user.email
-        # assert test_user.site_role == 'Unlicensed', test_user.site_role
-
-        def test_get_users_from_file_missing_elements(self):
-            bad_content = [
-                ["username, pword, , yes, email"],
-                ["username"],
-                ["username, pword"],
-                ["username, pword, , , yes, email"],
-            ]
-            with self.assertRaises(AttributeError):
-                UserCommand.get_users_from_file(bad_content)
-
     valid_import_content = [
-        "username, pword, fname, license, admin, pub, email",
-        "username, pword, fname, license, admin, pub, email",
+        "username, pword, fname, creator, site, yes, email",
+        "username, pword, fname, explorer, none, no, email",
     ]
 
-    valid_username_content = [
-        "jfitzgerald@tableau.com"
-    ]
-
-    def _mock_file_content(self, content: List[str]):
-        file_content = "\n".join(content)
-        return io.TextIOWrapper(io.BytesIO(str.encode(file_content)))
-
-    def test_get_users_from_file(self):
-        test_data = self._mock_file_content(UserDataTest.valid_username_content)
-        user_list = UserCommand.get_users_from_file(test_data)
-        assert user_list is not None
-        assert len(user_list) == 1
-        assert isinstance(user_list[0], tabcmd.commands.user.user_data.Userdata)
-        assert user_list[0].username == "jfitzgerald@tableau.com"
-
-    def test_validate_import_file(self):
-        test_data = self._mock_file_content(UserDataTest.valid_import_content)
-        num_lines = UserCommand.validate_file_for_import(test_data, UserDataTest.logger, detailed=True)
-        assert num_lines == 2, "Expected two lines to be parsed, got {}".format(num_lines)
+    valid_username_content = ["jfitzgerald@tableau.com"]
 
     usernames = [
         "valid",
@@ -104,16 +45,72 @@ class UserDataTest(unittest.TestCase):
         "in valid",
     ]
 
-    def test_validate_username(self):
-        UserCommand.validate_username(UserDataTest.usernames[0])
-        UserCommand.validate_username(UserDataTest.usernames[1])
-        UserCommand.validate_username(UserDataTest.usernames[2])
-        UserCommand.validate_username(UserDataTest.usernames[3])
-        UserCommand.validate_username(UserDataTest.usernames[4])
+    def test_validate_usernames(self):
+        UserCommand._validate_username_or_throw(UserDataTest.usernames[0])
+        UserCommand._validate_username_or_throw(UserDataTest.usernames[1])
+        UserCommand._validate_username_or_throw(UserDataTest.usernames[2])
+        UserCommand._validate_username_or_throw(UserDataTest.usernames[3])
+        UserCommand._validate_username_or_throw(UserDataTest.usernames[4])
         with self.assertRaises(AttributeError):
-            UserCommand.validate_username(UserDataTest.usernames[5])
+            UserCommand._validate_username_or_throw(UserDataTest.usernames[5])
         with self.assertRaises(AttributeError):
-            UserCommand.validate_username(UserDataTest.usernames[6])
+            UserCommand._validate_username_or_throw(UserDataTest.usernames[6])
+
+    def test_evaluate_role(self):
+        for input in UserDataTest.role_inputs:
+            actual = UserCommand.evaluate_site_role(input[0], input[1], input[2])
+            assert actual == input[3], input + [actual]
+
+    def test_get_user_detail_empty_line(self):
+        test_line = ""
+        test_user = UserCommand._parse_line(test_line)
+        assert test_user is None
+
+    def test_get_user_detail_standard(self):
+        test_line = "username, pword, fname, license, admin, pub, email"
+        test_user: TSC.UserItem = UserCommand._parse_line(test_line)
+        assert test_user.name == "username", test_user.name
+        assert test_user.fullname == "fname", test_user.fullname
+        assert test_user.site_role == "Unlicensed", test_user.site_role
+        assert test_user.email == "email", test_user.email
+
+    def test_get_user_details_only_username(self):
+        test_line = "username"
+        test_user: TSC.UserItem = UserCommand._parse_line(test_line)
+
+    def test_populate_user_details_only_some(self):
+        values = ["username", "", "", "creator", "admin"]
+        data = Userdata()
+        data.populate(values)
+
+    def test_populate_user_details_all(self):
+        values = UserDataTest.valid_import_content[0]
+        data = Userdata()
+        data.populate(values)
+
+    def test_validate_user_detail_standard(self):
+        test_line = "username, pword, fname, creator, site, 1, email"
+        UserCommand._validate_user_or_throw(test_line, UserDataTest.logger)
+
+    # for file handling
+    def _mock_file_content(self, content: List[str]):
+        file_content = "\n".join(content)
+        return io.BytesIO(file_content.encode())
+
+    def test_get_users_from_file_missing_elements(self):
+        bad_content = [
+            ["username, pword, , yes, email"],
+            ["username"],
+            ["username, pword"],
+            ["username, pword, , , yes, email"],
+        ]
+        with self.assertRaises(AttributeError):
+            UserCommand.get_users_from_file(bad_content)
+
+    def test_validate_import_file(self):
+        test_data = self._mock_file_content(UserDataTest.valid_import_content)
+        num_lines = UserCommand.validate_file_for_import(test_data, UserDataTest.logger, detailed=True)
+        assert num_lines == 2, "Expected two lines to be parsed, got {}".format(num_lines)
 
     def test_validate_usernames_file(self):
         test_data = self._mock_file_content(UserDataTest.usernames)
@@ -128,5 +125,4 @@ class UserDataTest(unittest.TestCase):
     def test_get_usernames_from_file(self):
         test_data = self._mock_file_content(UserDataTest.usernames)
         user_list = UserCommand.get_users_from_file(test_data)
-        assert user_list[0].username == "valid", user_list
-
+        assert user_list[0].name == "valid", user_list
