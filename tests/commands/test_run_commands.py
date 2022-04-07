@@ -264,14 +264,15 @@ class RunCommandsTest(unittest.TestCase):
     # TODO: get typings for argparse
     class NamedObject(NamedTuple):
         name: str
-
     ArgparseFile = Union[TextIO, NamedObject]
 
     @staticmethod
-    def _set_up_file(content=["Test"]) -> ArgparseFile:
-        file_content = "\n".join(content)
-        mock = io.BytesIO(str.encode(file_content))
-        mock.name = "mock_file_argparsed"
+    def _set_up_file(content=["Test", "", "Test", ""]) -> ArgparseFile:
+        # the empty string represents EOF
+        # the tests run through the file twice, first to validate then to fetch
+        mock = MagicMock(io.TextIOWrapper)
+        mock.readline.side_effect = content
+        mock.name = "file-mock"
         return mock
 
     def test_add_users(self, mock_session, mock_server):

@@ -1,10 +1,11 @@
 import unittest
-
+from unittest.mock import *
 from tabcmd.commands.user.user_data import UserCommand, Userdata
 from tabcmd.execution.logger_config import log
+
+from typing import List, NamedTuple, TextIO, Union
 import io
 import tableauserverclient as TSC
-from typing import List
 
 
 class UserDataTest(unittest.TestCase):
@@ -31,6 +32,7 @@ class UserDataTest(unittest.TestCase):
     valid_import_content = [
         "username, pword, fname, creator, site, yes, email",
         "username, pword, fname, explorer, none, no, email",
+        ""
     ]
 
     valid_username_content = ["jfitzgerald@tableau.com"]
@@ -43,6 +45,7 @@ class UserDataTest(unittest.TestCase):
         "va!@#$%^&*()lid",
         "in@v@lid",
         "in valid",
+        ""
     ]
 
     def test_validate_usernames(self):
@@ -92,10 +95,19 @@ class UserDataTest(unittest.TestCase):
         test_line = "username, pword, fname, creator, site, 1, email"
         UserCommand._validate_user_or_throw(test_line, UserDataTest.logger)
 
+
+    # TODO: get typings for argparse
+    class NamedObject(NamedTuple):
+        name: str
+    ArgparseFile = Union[TextIO, NamedObject]
     # for file handling
-    def _mock_file_content(self, content: List[str]):
-        file_content = "\n".join(content)
-        return io.BytesIO(file_content.encode())
+    def _mock_file_content(self, content: List[str]) -> ArgparseFile:
+        # the empty string represents EOF
+        # the tests run through the file twice, first to validate then to fetch
+        mock = MagicMock(io.TextIOWrapper)
+        mock.readline.side_effect = content
+        mock.name = "file-mock"
+        return mock
 
     def test_get_users_from_file_missing_elements(self):
         bad_content = [

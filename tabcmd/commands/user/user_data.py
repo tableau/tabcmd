@@ -84,7 +84,7 @@ class UserCommand(Server):
         num_errors = 0
         num_lines = 0
         csv_file.seek(0)  # set to start of file in case it has been read earlier
-        line = csv_file.readline().decode()
+        line = csv_file.readline()  # this is a string when running 
         while line and line != "":
             try:
                 if detailed:
@@ -97,9 +97,9 @@ class UserCommand(Server):
             except Exception as exc:
                 logger.info("invalid line [{0}]: {1}".format(line, exc))
                 num_errors += 1
-            line = csv_file.readline().decode()
+            line = csv_file.readline()
         if strict and num_errors > 0:
-            UserCommand.exit_with_error(
+            Errors.exit_with_error(
                 logger, "Invalid users in file - please fix {} problems and try again.".format(num_errors)
             )
         return num_lines
@@ -153,13 +153,13 @@ class UserCommand(Server):
         if logger:
             logger.debug("Reading from file {}".format(csv_file.name))
         user_list = []
-        line = csv_file.readline().decode()
+        line = csv_file.readline()
         if logger:
             logger.debug("> {}".format(line))
         while line and not line == "":
             user: TSC.UserItem = UserCommand._parse_line(line)
             user_list.append(user)
-            line = csv_file.readline().decode()
+            line = csv_file.readline()
         return user_list
 
     @staticmethod
@@ -169,9 +169,7 @@ class UserCommand(Server):
         if line is False or line == "\n" or line == "":
             return None
         line: str = line.strip().lower()
-        print(line)
         line_parts: List[str] = line.split(",")
-        print(line_parts)
         data = Userdata()
         values: List[str] = list(map(str.strip, line_parts))
         data.populate(values)
@@ -221,11 +219,12 @@ class UserCommand(Server):
         n_users_handled: int = 0
         number_of_errors: int = 0
         n_users_listed: int = UserCommand.validate_file_for_import(args.users, logger, strict=args.require_all_valid)
+        logger.debug("Found {} users in file".format(n_users_listed))
 
         try:
             group = UserCommand.find_group(logger, server, args.name)
         except TSC.ServerResponseError as e:
-            UserCommand.exit_with_error(logger, exception=e)
+            Errors.exit_with_error(logger, "Could not get group", exception=e)
         user_obj_list: List[TSC.UserItem] = UserCommand.get_users_from_file(args.users)
         logger.debug("Successfully parsed {} users".format(len(user_obj_list)))
         for user_obj in user_obj_list:
@@ -236,6 +235,9 @@ class UserCommand(Server):
             except TSC.ServerResponseError as e:
                 Errors.check_common_error_codes_and_explain(logger, e)
                 number_of_errors += 1
+                user_id = None
+                logger.debug("Skipping user {}".format(username))
+                continue
 
             try:
                 server_method(group, user_id)
@@ -244,6 +246,7 @@ class UserCommand(Server):
             except TSC.ServerResponseError as e:
                 Errors.check_common_error_codes_and_explain(logger.info, e)
                 number_of_errors += 1
+                logger.debug("Error at user {}".format(username))
         logger.info("======== 100% complete ========")
         logger.info("======== Number of users listed: {} =========".format(n_users_listed))
         logger.info("======== Number of users {}: {} =========".format(action_name, n_users_handled))
