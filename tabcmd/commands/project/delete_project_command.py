@@ -34,7 +34,7 @@ class DeleteProjectCommand(Server):
                 logger, server, args.project_name, args.parent_project_path
             )
         except TSC.ServerResponseError as e:
-            Server.exit_with_error(logger, "Error finding project", e)
+            Errors.exit_with_error(logger, "Error finding project", e)
         project_id = project.id
 
         try:
@@ -42,4 +42,4 @@ class DeleteProjectCommand(Server):
             server.projects.delete(project_id)
             logger.info("===== Succeeded")
         except TSC.ServerResponseError as e:
-            Server.exit_with_error(logger, "Failed to delete project", e)
+            Errors.exit_with_error(logger, "Failed to delete project", e)

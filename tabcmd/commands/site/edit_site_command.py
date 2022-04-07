@@ -45,4 +45,4 @@ class EditSiteCommand(Server):
             server.sites.update(site_item)
             logger.info("Successfully updated the site `{}`".format(site_item.name))
         except TSC.ServerResponseError as e:
-            Server.exit_with_error(logger, "Error editing site", e)
+            Errors.exit_with_error(logger, "Error editing site", e)

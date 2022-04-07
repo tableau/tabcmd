@@ -1,5 +1,4 @@
 import os
-import sys
 
 import tableauserverclient as TSC
 
@@ -50,7 +49,6 @@ class Server:
             logger.debug("multiple items of this name were found. Returning first page.")
         return all_items
 
-    # Actual server requests
     @staticmethod
     def get_sites(server):
         sites, pagination = server.sites.get()
@@ -63,27 +61,8 @@ class Server:
         else:
             site_item = server.sites.get_by_id(session.site_id)
         if not site_item:
-            Server.exit_with_error(logger, "Could not get site info from server")
+            Errors.exit_with_error(logger, "Could not get site info from server")
         return site_item
-
-    @staticmethod
-    def exit_with_error(logger, message, exception=None):
-        try:
-            if message and not exception:
-                logger.error(message)
-            if exception:
-                if Errors.is_expired_session(exception):
-                    logger.info("Your session has expired. Signing out to clear session...")
-                    # TODO: add session as an argument to this method
-                    #  and add the full command line as a field in Session?
-                    # session.renew_session()
-                    return
-                if message:
-                    logger.debug(message)
-                Errors.check_common_error_codes(logger.error, exception)
-        except Exception as exc:
-            print("Error during log call from exception - {}".format(exc.__class__ or message))
-        sys.exit(1)
 
     @staticmethod
     def get_filename_extension_if_tableau_type(logger, filename):

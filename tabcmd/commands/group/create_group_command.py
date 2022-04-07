@@ -29,4 +29,4 @@ class CreateGroupCommand(Server):
             server.groups.create(new_group)
             logger.info("Succeeded")
         except TSC.ServerResponseError as e:
-            Server.exit_with_error(logger, "Error while communicating with the server")
+            Errors.exit_with_error(logger, "Error while communicating with the server")
