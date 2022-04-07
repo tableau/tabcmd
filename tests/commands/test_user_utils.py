@@ -1,6 +1,10 @@
 import unittest
+
+import tabcmd.commands.user.user_data
 from tabcmd.commands.user.user_data import UserCommand
 from tabcmd.execution.logger_config import log
+import io
+from typing import List
 
 
 class UserDataTest(unittest.TestCase):
@@ -69,11 +73,26 @@ class UserDataTest(unittest.TestCase):
         "username, pword, fname, license, admin, pub, email",
     ]
 
+    valid_username_content = [
+        "jfitzgerald@tableau.com"
+    ]
+
+    def _mock_file_content(self, content: List[str]):
+        file_content = "\n".join(content)
+        return io.TextIOWrapper(io.BytesIO(str.encode(file_content)))
+
     def test_get_users_from_file(self):
-        assert UserCommand.get_users_from_file(UserDataTest.valid_import_content) is not None
+        test_data = self._mock_file_content(UserDataTest.valid_username_content)
+        user_list = UserCommand.get_users_from_file(test_data)
+        assert user_list is not None
+        assert len(user_list) == 1
+        assert isinstance(user_list[0], tabcmd.commands.user.user_data.Userdata)
+        assert user_list[0].username == "jfitzgerald@tableau.com"
 
     def test_validate_import_file(self):
-        UserCommand.validate_file_for_import(UserDataTest.valid_import_content, UserDataTest.logger, detailed=True)
+        test_data = self._mock_file_content(UserDataTest.valid_import_content)
+        num_lines = UserCommand.validate_file_for_import(test_data, UserDataTest.logger, detailed=True)
+        assert num_lines == 2, "Expected two lines to be parsed, got {}".format(num_lines)
 
     usernames = [
         "valid",
@@ -97,9 +116,17 @@ class UserDataTest(unittest.TestCase):
             UserCommand.validate_username(UserDataTest.usernames[6])
 
     def test_validate_usernames_file(self):
-        with self.assertRaises(AttributeError):
-            UserCommand.validate_file_user_names(UserDataTest.usernames, UserDataTest.logger)
+        test_data = self._mock_file_content(UserDataTest.usernames)
+        n = UserCommand.validate_file_for_import(test_data, UserDataTest.logger)
+        assert n == 5, "Exactly 5 of the lines were valid, counted {}".format(n)
+
+    def test_validate_usernames_file_strict(self):
+        test_data = self._mock_file_content(UserDataTest.usernames)
+        with self.assertRaises(SystemExit):
+            UserCommand.validate_file_for_import(test_data, UserDataTest.logger, strict=True)
 
     def test_get_usernames_from_file(self):
-        user_list = UserCommand.get_users_from_file(UserDataTest.usernames)
-        assert user_list[0] == "valid", user_list
+        test_data = self._mock_file_content(UserDataTest.usernames)
+        user_list = UserCommand.get_users_from_file(test_data)
+        assert user_list[0].username == "valid", user_list
+

@@ -1,6 +1,10 @@
 from enum import IntEnum
-
+from typing import List, Callable, Dict, NoReturn
 from tabcmd.commands.server import Server
+from tabcmd.commands.constants import Errors
+
+import io
+import tableauserverclient as TSC
 
 
 class Userdata:
@@ -38,26 +42,30 @@ class UserCommand(Server):
 
     # used in createusers, createsiteusers
     @staticmethod
-    def validate_file_for_import(csv_file, logger, detailed=False):
+    def validate_file_for_import(csv_file: io.TextIOWrapper, logger, detailed=False, strict=False):
         num_errors = 0
         num_lines = 0
-        # encoding to UTF-8 defined in argparse option
-        for line in csv_file:
+        csv_file.seek(0)  # set to start of file in case it has been read earlier
+        line = csv_file.readline()
+        while line and line != "":
             try:
-                num_lines += 1
                 if detailed:
                     logger.debug("details - {}".format(line))
                     UserCommand.validate_user_detail_line(line)
                 else:
                     logger.debug("username - {}".format(line))
                     UserCommand.validate_username(line)
+                num_lines += 1
+
             except Exception as exc:
                 logger.info("invalid line [{0}]: {1}".format(line, exc))
                 num_errors += 1
-        if num_errors > 0:
-            Server.exit_with_error(
+            line = csv_file.readline()
+        if strict and num_errors > 0:
+            UserCommand.exit_with_error(
                 logger, "Invalid users in file - please fix {} problems and try again.".format(num_errors)
             )
+
         return num_lines
 
     # valid: username, domain/username, username@domain, domain/username@email
@@ -70,7 +78,7 @@ class UserCommand(Server):
         at_symbol = username.find("@")
 
         if at_symbol >= 0:
-            username = username[:at_symbol] + "X" + username[at_symbol + 1 :]
+            username = username[:at_symbol] + "X" + username[at_symbol + 1:]
             if username.find("@") >= 0:
                 raise AttributeError(
                     "If a user name includes an @ character that represents anything other than a domain separator, "
@@ -99,26 +107,30 @@ class UserCommand(Server):
             # value can be empty for any column except user, which is checked elsewhere
             return True
         if (
-            type == Column.LICENSE.value
-            and item in license_roles
-            or type == Column.ADMIN.value
-            and item in admin_roles
-            or type == Column.PUBLISHER.value
-            and item in publish_options
+                type == Column.LICENSE.value and item in license_roles
+                or type == Column.ADMIN.value and item in admin_roles
+                or type == Column.PUBLISHER.value and item in publish_options
         ):
             return True
         return True
 
     @staticmethod
-    def get_users_from_file(csv_file):
+    def get_users_from_file(csv_file: io.TextIOWrapper, logger=None) -> List[Userdata]:
+        csv_file.seek(0)  # set to start of file in case it has been read earlier
+        if logger:
+            logger.debug("Reading from file {}".format(csv_file.name))
         user_list = []
-        for line in csv_file:
+        line = csv_file.readline()
+        if logger:
+            logger.debug("> {}".format(line))
+        while line:
             users_data = UserCommand.parse_line(line)
             user_list.append(users_data)
+            line = csv_file.readline()
         return user_list
 
     @staticmethod
-    def parse_line(line):
+    def parse_line(line) -> Userdata:
         if line is None:
             return None
         if line is False or line == "\n" or line == "":
@@ -126,10 +138,15 @@ class UserCommand(Server):
         line = line.strip().lower()
         split_line = list(map(str.strip, line.split(",")))
         if len(split_line) == 1:
-            return split_line[0]
+            return UserCommand.get_simple_user(split_line[0])
         else:
-
             return UserCommand.get_user_details(split_line)
+
+    @staticmethod
+    def get_simple_user(value):
+        user_data = Userdata()
+        user_data.username = value
+        return user_data
 
     @staticmethod
     def get_user_details(values):
@@ -182,3 +199,4 @@ class UserCommand(Server):
         if site_role is None:
             site_role = "Unlicensed"
         return site_role
+
