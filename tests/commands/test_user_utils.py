@@ -32,7 +32,7 @@ class UserDataTest(unittest.TestCase):
     valid_import_content = [
         "username, pword, fname, creator, site, yes, email",
         "username, pword, fname, explorer, none, no, email",
-        ""
+        "",
     ]
 
     valid_username_content = ["jfitzgerald@tableau.com"]
@@ -45,7 +45,7 @@ class UserDataTest(unittest.TestCase):
         "va!@#$%^&*()lid",
         "in@v@lid",
         "in valid",
-        ""
+        "",
     ]
 
     def test_validate_usernames(self):
@@ -95,10 +95,10 @@ class UserDataTest(unittest.TestCase):
         test_line = "username, pword, fname, creator, site, 1, email"
         UserCommand._validate_user_or_throw(test_line, UserDataTest.logger)
 
-
     # TODO: get typings for argparse
     class NamedObject(NamedTuple):
         name: str
+
     ArgparseFile = Union[TextIO, NamedObject]
     # for file handling
     def _mock_file_content(self, content: List[str]) -> ArgparseFile:

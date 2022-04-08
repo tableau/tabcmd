@@ -84,14 +84,14 @@ class UserCommand(Server):
         num_errors = 0
         num_lines = 0
         csv_file.seek(0)  # set to start of file in case it has been read earlier
-        line = csv_file.readline()  # this is a string when running 
+        line: str = csv_file.readline()
         while line and line != "":
             try:
                 if detailed:
                     # do not print passwords
                     UserCommand._validate_user_or_throw(line, logger)
                 else:
-                    logger.debug("username - {}".format(line))
+                    logger.debug("> username - {}".format(line))
                     UserCommand._validate_username_or_throw(line)
                 num_lines += 1
             except Exception as exc:
@@ -124,7 +124,7 @@ class UserCommand(Server):
     @staticmethod
     def _validate_user_or_throw(incoming, logger) -> NoReturn:
         line = list(map(str.strip, incoming.split(",")))
-        logger.debug("details - {}".format(line[0]))
+        logger.debug("> details - {}".format(line[0]))
         if len(line) > Column.MAX:
             raise AttributeError(
                 "The file contains {} columns, but there are only {} valid columns in a user \
@@ -225,6 +225,7 @@ class UserCommand(Server):
             group = UserCommand.find_group(logger, server, args.name)
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, "Could not get group", exception=e)
+
         user_obj_list: List[TSC.UserItem] = UserCommand.get_users_from_file(args.users)
         logger.debug("Successfully parsed {} users".format(len(user_obj_list)))
         for user_obj in user_obj_list:

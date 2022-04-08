@@ -13,4 +13,3 @@ class Commands:
         self.token_name = args.token_name
         self.personal_token = args.token
         self.logging_level = args.logging_level
-

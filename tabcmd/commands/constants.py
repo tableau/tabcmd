@@ -13,11 +13,12 @@ class Constants:
 class Errors:
     @staticmethod
     def exit_with_error(logger, message, exception=None):
+        logger.debug("exit with error")
         try:
             if message and not exception:
                 logger.error(message)
             if exception:
-                if Errors.is_expired_session_error(exception):
+                if Errors.is_expired_session(exception):
                     logger.info("Your session has expired. Signing out to clear session...")
                     # TODO: add session as an argument to this method
                     #  and add the full command line as a field in Session?
@@ -37,6 +38,7 @@ class Errors:
     # pass in a logger at defined level, so we can call this important or not
     @staticmethod
     def check_common_error_codes_and_explain(logger, error):
+        logger.debug(error)
         if error.code.startswith("400"):
             logger.error(
                 "{0} Bad request: Tableau Server cannot parse or interpret the message in the request".format(
@@ -47,9 +49,9 @@ class Errors:
             logger.error("{0} User not Authenticated".format(error.code))
         elif error.code.startswith("403"):
             logger.error("{0} Forbidden: Request was not authorized".format(error.code))
-        if error.code.startswith("404"):
+        elif error.code.startswith("404"):
             logger.error("{0} Not Found: Resource cannot be located".format(error.code))
         elif error.code.startswith("405"):
             logger.error("{0} Method not Allowed".format(error.code))
         else:
-            logger.error("{0} Error: Server error occurred".format(error.code), error.code)
+            logger.error("{0} Error: Server error occurred".format(error.code))

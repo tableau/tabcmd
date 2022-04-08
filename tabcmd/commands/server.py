@@ -37,7 +37,7 @@ class Server:
 
     @staticmethod
     def get_items_by_name(logger, item_endpoint, item_name):
-        logger.debug("get `{0}` from {1}".format(item_name, item_endpoint))
+        logger.debug("get `{0}`(name) from {1}".format(item_name, item_endpoint))
         req_option = TSC.RequestOptions()
         req_option.filter.add(TSC.Filter(TSC.RequestOptions.Field.Name, TSC.RequestOptions.Operator.Equals, item_name))
         all_items, pagination_item = item_endpoint.get(req_option)
@@ -57,8 +57,10 @@ class Server:
     @staticmethod
     def get_site_for_command(logger, server, args, session):
         if args.site_name:
+            logger.debug("Get site {} by name".format(args.site_name))
             site_item = Server.get_items_by_name(logger, server.sites, args.site_name)[0]
         else:
+            logger.debug("Get site {} by id".format(session.site_id))
             site_item = server.sites.get_by_id(session.site_id)
         if not site_item:
             Errors.exit_with_error(logger, "Could not get site info from server")

@@ -4,6 +4,7 @@ from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 from tabcmd.commands.constants import Errors
 
+
 class RunSchedule(DatasourcesAndWorkbooks):
     """
     This command runs the specified schedule as it is on the server.

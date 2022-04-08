@@ -264,6 +264,7 @@ class RunCommandsTest(unittest.TestCase):
     # TODO: get typings for argparse
     class NamedObject(NamedTuple):
         name: str
+
     ArgparseFile = Union[TextIO, NamedObject]
 
     @staticmethod

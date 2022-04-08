@@ -152,6 +152,9 @@ class Session:
         self.logger.debug("Signing in to {0}{1} as {2}".format(self.server_url, self.site_name, self.username))
         try:
             self.tableau_server.auth.sign_in(tableau_auth)  # it's the same call for token or user-pass
+        except TSC.ServerResponseError as e:
+            Errors.exit_with_error(self.logger, "Error signing in", e)
+        try:
             self.site_id = self.tableau_server.site_id
             self.user_id = self.tableau_server.user_id
             self.auth_token = self.tableau_server._auth_token
@@ -161,6 +164,7 @@ class Session:
             self.logger.info("=========Succeeded========")
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(self.logger, "Server response", e)
+
         return self.tableau_server
 
     def _get_saved_credentials(self):
