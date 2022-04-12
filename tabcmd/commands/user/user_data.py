@@ -60,7 +60,7 @@ CHOICES: List[List[str]] = [
 ]
 
 
-# username, password, display_name, license, admin_level, publishing, email
+# username, password, display_name, license, admin_level, publishing, email, auth type
 class Column(IntEnum):
     USERNAME = 0
     PASS = 1
@@ -79,11 +79,14 @@ class UserCommand(Server):
     This class acts as a base class for user related group of commands
     """
 
-    # used in createusers, createsiteusers
+    # read the file containing usernames or user details and validate each line
+    # log out any errors encountered
+    # returns the number of valid lines in the file
+    # @param boolean strict: if true, die if any errors are found
     @staticmethod
     def validate_file_for_import(csv_file: io.TextIOWrapper, logger, detailed=False, strict=False) -> int:
         num_errors = 0
-        num_lines = 0
+        num_valid_lines = 0
         csv_file.seek(0)  # set to start of file in case it has been read earlier
         line: str = csv_file.readline()
         while line and line != "":
@@ -94,7 +97,7 @@ class UserCommand(Server):
                 else:
                     logger.debug("> username - {}".format(line))
                     UserCommand._validate_username_or_throw(line)
-                num_lines += 1
+                num_valid_lines += 1
             except Exception as exc:
                 logger.info("invalid line [{0}]: {1}".format(line, exc))
                 num_errors += 1
@@ -103,7 +106,7 @@ class UserCommand(Server):
             Errors.exit_with_error(
                 logger, "Invalid users in file - please fix {} problems and try again.".format(num_errors)
             )
-        return num_lines
+        return num_valid_lines
 
     # valid: username, domain/username, username@domain, domain/username@email
     @staticmethod
@@ -157,7 +160,7 @@ class UserCommand(Server):
         line = csv_file.readline()
         if logger:
             logger.debug("> {}".format(line))
-        while line and not line == "":
+        while line:
             user: Optional[TSC.UserItem] = UserCommand._parse_line(line)
             if user:
                 user_list.append(user)
@@ -166,9 +169,7 @@ class UserCommand(Server):
 
     @staticmethod
     def _parse_line(line: str) -> Optional[TSC.UserItem]:
-        if line is None:
-            return None
-        if line is False or line == "\n" or line == "":
+        if line is None or line is False or line == "\n" or line == "":
             return None
         line = line.strip().lower()
         line_parts: List[str] = line.split(",")

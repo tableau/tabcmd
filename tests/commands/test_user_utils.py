@@ -3,7 +3,7 @@ from unittest.mock import *
 from tabcmd.commands.user.user_data import UserCommand, Userdata
 from tabcmd.execution.logger_config import log
 
-from typing import List, NamedTuple, TextIO, Union
+from typing import List
 import io
 import tableauserverclient as TSC
 
@@ -60,9 +60,9 @@ class UserDataTest(unittest.TestCase):
             UserCommand._validate_username_or_throw(UserDataTest.usernames[6])
 
     def test_evaluate_role(self):
-        for input in UserDataTest.role_inputs:
-            actual = UserCommand.evaluate_site_role(input[0], input[1], input[2])
-            assert actual == input[3], input + [actual]
+        for line in UserDataTest.role_inputs:
+            actual = UserCommand.evaluate_site_role(line[0], line[1], line[2])
+            assert actual == line[3], line + [actual]
 
     def test_get_user_detail_empty_line(self):
         test_line = ""
@@ -89,35 +89,31 @@ class UserDataTest(unittest.TestCase):
     def test_populate_user_details_all(self):
         values = UserDataTest.valid_import_content[0]
         data = Userdata()
-        data.populate(values)
+        data.populate([values])
 
     def test_validate_user_detail_standard(self):
         test_line = "username, pword, fname, creator, site, 1, email"
         UserCommand._validate_user_or_throw(test_line, UserDataTest.logger)
 
-    # TODO: get typings for argparse
-    class NamedObject(NamedTuple):
-        name: str
-
-    ArgparseFile = Union[TextIO, NamedObject]
     # for file handling
-    def _mock_file_content(self, content: List[str]) -> ArgparseFile:
+    def _mock_file_content(self, content: List[str]) -> io.TextIOWrapper:
         # the empty string represents EOF
         # the tests run through the file twice, first to validate then to fetch
         mock = MagicMock(io.TextIOWrapper)
+        content.append("")  # EOF
         mock.readline.side_effect = content
         mock.name = "file-mock"
         return mock
 
     def test_get_users_from_file_missing_elements(self):
         bad_content = [
-            ["username, pword, , yes, email"],
-            ["username"],
-            ["username, pword"],
-            ["username, pword, , , yes, email"],
+            "username, pword, , yes, email",
+            "username",
+            "username, pword",
+            "username, pword, , , yes, email",
         ]
-        with self.assertRaises(AttributeError):
-            UserCommand.get_users_from_file(bad_content)
+        test_data = self._mock_file_content(bad_content)
+        UserCommand.get_users_from_file(test_data)
 
     def test_validate_import_file(self):
         test_data = self._mock_file_content(UserDataTest.valid_import_content)
