@@ -30,30 +30,38 @@ class DeleteSiteUsersCommand(Server):
         session = Session()
         server = session.create_session(args)
 
+        if args.site_name:
+            target_site = args.site_name
+        else:
+            target_site = "current site"
+
+        logger.info("Deleting users listed in {0} from site '{1}'".format(args.filename.name, target_site))
+
+        UserCommand.validate_file_for_import(args.filename, logger, strict=args.require_all_valid)
         number_of_users_deleted = 0
         number_of_errors = 0
+        user_obj_list = UserCommand.get_users_from_file(args.filename, logger)
 
-        # TODO: allow the user to change which site they are deleted from
-
-        if args.require_all_valid:
-            UserCommand.validate_file_for_import(args.filename, logger)
-
-        user_obj_list = UserCommand.get_users_from_file(args.filename)
-
+        logger.debug("Successfully parsed {} users".format(len(user_obj_list)))
         logger.info("======== 0% complete ========")
+
+        error_list = []
         for user_obj in user_obj_list:
-            username = user_obj.username
-            user_id = UserCommand.find_user_id(logger, server, username)
+            user_id = UserCommand.find_user_id(logger, server, user_obj.name)
             try:
                 server.users.remove(user_id)
-                logger.info("Successfully deleted user from site: {}".format(username))
+                logger.info("Successfully deleted user from site: {}".format(user_obj.name))
                 number_of_users_deleted += 1
             except TSC.ServerResponseError as e:
-                Errors.check_common_error_codes(logger.info, e)
+                Errors.check_common_error_codes_and_explain(logger.info, e)
                 number_of_errors += 1
+                error_list.append(e)
             except ValueError:
-                logger.error(" Could not delete user: User {} not found".format(username))
+                logger.error(" Could not delete user: User {} not found".format(user_obj.name))
+                error_list.append(e)
                 number_of_errors += 1
         logger.info("======== 100% complete ========")
         logger.info("======== Number of users deleted from site: {} =========".format(number_of_users_deleted))
         logger.info("======== Number of errors {} =========".format(number_of_errors))
+        if number_of_errors > 0:
+            logger.info("Error details: \n{}".format(error_list))

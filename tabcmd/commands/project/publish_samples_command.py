@@ -35,4 +35,4 @@ class PublishSamplesCommand(Server):
             project_path = Server.find_project_id(server, args.parent_path_name)
         else:
             project_path = None
-        Server.exit_with_error(logger, "Not yet implemented")
+        Errors.exit_with_error(logger, "Not yet implemented")

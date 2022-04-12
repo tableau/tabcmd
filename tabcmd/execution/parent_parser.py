@@ -152,7 +152,7 @@ class ParentParser:
             "-v",
             "--version",
             action="version",
-            version="%(prog)s (v2.pre-release)",
+            version="tabcmd - Tableau Server Command Line Utility 2.0 (pre-release)\n \n",
             help="Show version information and exit.",
         )
 

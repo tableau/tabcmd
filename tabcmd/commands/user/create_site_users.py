@@ -38,21 +38,17 @@ class CreateSiteUsersCommand(UserCommand):
         else:
             creation_site = "current site"
 
-        if args.require_all_valid:
-            UserCommand.validate_file_for_import(args.filename, logger, detailed=True)
+        UserCommand.validate_file_for_import(args.filename, logger, detailed=True, strict=args.require_all_valid)
 
         logger.info("===== Adding users listed in {0} to {1}...".format(args.filename.name, creation_site))
-        user_obj_list = UserCommand.get_users_from_file(args.filename)
+        user_obj_list = UserCommand.get_users_from_file(args.filename, logger)
         logger.info("======== 0% complete ========")
         error_list = []
         for user_obj in user_obj_list:
             try:
                 number_of_users_listed += 1
-                # TODO: bring in other attributes in file, actually act on specific site
-                new_user = TSC.UserItem(user_obj.username, args.role)
-                result = server.users.add(new_user)
-                print(result)
-                logger.info("Successfully created user: {}".format(user_obj.username))
+                result = server.users.add(user_obj)
+                logger.info("Successfully created user on {} {}".format(user_obj.name, creation_site))
                 number_of_users_added += 1
             except TSC.ServerResponseError as e:
                 number_of_errors += 1
@@ -62,7 +58,7 @@ class CreateSiteUsersCommand(UserCommand):
                 if e.code == Constants.invalid_credentials:
                     error = "Unauthorized access, Please log in."
                 if e.code == Constants.user_already_member_of_site:
-                    error = "User: {} already member of site".format(user_obj.username)
+                    error = "User: {} already member of site".format(user_obj.name)
                 error_list.append(error)
                 logger.debug(error)
         logger.info("======== 100% complete ========")

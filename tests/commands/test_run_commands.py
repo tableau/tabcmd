@@ -33,6 +33,8 @@ from tabcmd.commands.user import (
     remove_users_command,
     delete_site_users_command,
 )
+from typing import List, NamedTuple, TextIO, Union
+import io
 
 mock_args = argparse.Namespace()
 mock_args.logging_level = "info"
@@ -259,44 +261,54 @@ class RunCommandsTest(unittest.TestCase):
         list_sites_command.ListSiteCommand.run_command(mock_args)
         mock_session.assert_called()
 
+    # TODO: get typings for argparse
+    class NamedObject(NamedTuple):
+        name: str
 
-@patch("tableauserverclient.Server")
-@patch("tabcmd.commands.auth.session.Session.create_session")
-@patch("tabcmd.commands.user.user_data.UserCommand.get_users_from_file")
-class RunUserCommandsTest(unittest.TestCase):
+    ArgparseFile = Union[TextIO, NamedObject]
+
     @staticmethod
-    def _set_up_file(mock_file):
-        mock_file.return_value = []
-        mock_file.name = "MOCK"
-        return mock_file
+    def _set_up_file(content=["Test", "", "Test", ""]) -> ArgparseFile:
+        # the empty string represents EOF
+        # the tests run through the file twice, first to validate then to fetch
+        mock = MagicMock(io.TextIOWrapper)
+        mock.readline.side_effect = content
+        mock.name = "file-mock"
+        return mock
 
-    def test_add_users(self, mock_file, mock_session, mock_server):
+    def test_add_users(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
-        mock_server.sites = getter
-        mock_args.users = RunUserCommandsTest._set_up_file(mock_file)
+        mock_server.groups = getter
+        mock_server.users = getter
+        mock_args.users = RunCommandsTest._set_up_file()
         mock_args.name = "the-group"
         mock_args.require_all_valid = False
         add_users_command.AddUserCommand.run_command(mock_args)
         mock_session.assert_called()
 
-    def test_remove_users(self, mock_file, mock_session, mock_server):
+    def test_remove_users(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
-        mock_args.users = RunUserCommandsTest._set_up_file(mock_file)
+        mock_server.groups = getter
+        mock_server.users = getter
+        mock_args.name = "group-removing-from"
+        mock_args.users = RunCommandsTest._set_up_file()
         mock_args.require_all_valid = False
         remove_users_command.RemoveUserCommand.run_command(mock_args)
         mock_session.assert_called()
 
-    def test_create_site_users(self, mock_file, mock_session, mock_server):
+    def test_create_site_users(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
-        mock_args.filename = RunUserCommandsTest._set_up_file(mock_file)
+        mock_args.filename = RunCommandsTest._set_up_file()
         mock_args.require_all_valid = False
         mock_args.site_name = None
         create_site_users.CreateSiteUsersCommand.run_command(mock_args)
         mock_session.assert_called()
 
-    def test_delete_site_users(self, mock_file, mock_session, mock_server):
+    def test_delete_site_users(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
-        mock_args.filename = RunUserCommandsTest._set_up_file(mock_file)
-        mock_args.require_all_valid = False
+        mock_server.users = getter
+        mock_args.filename = RunCommandsTest._set_up_file()
+        mock_args.site_name = None
+        mock_args.require_all_valid = True
         delete_site_users_command.DeleteSiteUsersCommand.run_command(mock_args)
         mock_session.assert_called()

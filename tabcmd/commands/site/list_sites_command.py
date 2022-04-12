@@ -34,4 +34,4 @@ class ListSiteCommand(Server):
                     print("EXTRACTENCRYPTION:", site.extract_encryption_mode)
                 print("")
         except TSC.ServerResponseError as e:
-            Server.exit_with_error(logger, e)
+            Errors.exit_with_error(logger, e)

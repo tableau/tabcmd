@@ -33,7 +33,7 @@ class CreateProjectCommand(Server):
                 logger.info("===== Identifying parent project '{}' on the server...".format(args.parent_project_path))
                 parent = Server.get_project_by_name_and_parent_path(logger, server, None, args.parent_project_path)
             except TSC.ServerResponseError as exc:
-                Server.exit_with_error(logger, "Error fetching parent project", exc)
+                Errors.exit_with_error(logger, "Error fetching parent project", exc)
             readable_name = "{0}/{1}".format(args.parent_project_path, args.project_name)
             parent_id = parent.id
             logger.debug("parent project path = `{0}`, id = {1}".format(args.parent_project_path, parent_id))
@@ -44,4 +44,4 @@ class CreateProjectCommand(Server):
             logger.info("===== Succeeded")
             return project_item
         except TSC.ServerResponseError as e:
-            Server.exit_with_error(logger, "Error creating project", e)
+            Errors.exit_with_error(logger, "Error creating project", e)

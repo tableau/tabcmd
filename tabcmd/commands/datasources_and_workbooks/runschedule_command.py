@@ -2,6 +2,8 @@ from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
+from tabcmd.commands.constants import Errors
+
 
 class RunSchedule(DatasourcesAndWorkbooks):
     """
@@ -24,8 +26,8 @@ class RunSchedule(DatasourcesAndWorkbooks):
         logger.info("Finding schedule {} on server...".format(args.schedule))
         schedule = DatasourcesAndWorkbooks.get_items_by_name(logger, server.schedules, args.schedule)[0]
         if not schedule:
-            DatasourcesAndWorkbooks.exit_with_error(logger, "Could not find schedule")
+            Errors.exit_with_error(logger, "Could not find schedule")
         logger.info("Found schedule")
-        DatasourcesAndWorkbooks.exit_with_error(logger, "Not yet implemented")
+        Errors.exit_with_error(logger, "Not yet implemented")
 
         # TODO implement in REST/tsc

@@ -16,13 +16,13 @@ class RemoveUsersParserTest(unittest.TestCase):
         with mock.patch("builtins.open", mock.mock_open(read_data="test")) as open_file:
             mock_args = [commandname, "group-name", "--users", "file"]
             args = self.parser_under_test.parse_args(mock_args)
-            assert args.groupname == "group-name"
+            self.assertEqual(args.name, "group-name")
 
     def test_remove_users_parser_users_file(self):
         with mock.patch("builtins.open", mock.mock_open(read_data="test")) as open_file:
             mock_args = [commandname, "group-name", "--users", "users.csv"]
             args = self.parser_under_test.parse_args(mock_args)
-            self.assertEqual(args.groupname, "group-name")
+            self.assertEqual(args.name, "group-name")
             open_file.assert_called_with("users.csv", "r", -1, "UTF-8", None)
 
     def test_remove_users_parser_missing_group_name(self):
