@@ -1,5 +1,7 @@
+import argparse
+import logging
 from enum import IntEnum
-from typing import List, Callable, Dict, NoReturn
+from typing import List, Callable, Optional
 from tabcmd.commands.server import Server
 from tabcmd.commands.constants import Errors
 
@@ -18,8 +20,7 @@ class Userdata:
         self.email = None
         self.auth = None
 
-    def populate(self, values: List[str]) -> NoReturn:
-        self.__init__()  # populate all with None
+    def populate(self, values: List[str]) -> None:
         n_values = len(values)
         self.name = values[0]
         if n_values >= 2:
@@ -37,7 +38,7 @@ class Userdata:
         if n_values >= 8:
             self.auth = values[7]
 
-    def to_tsc_user(self):
+    def to_tsc_user(self) -> TSC.UserItem:
         site_role = UserCommand.evaluate_site_role(self.license_level, self.admin_level, self.publisher)
         if not site_role:
             raise AttributeError("Site role is required")
@@ -47,7 +48,7 @@ class Userdata:
         return user
 
 
-CHOICES = [
+CHOICES: List[List[str]] = [
     [],
     [],
     [],
@@ -106,7 +107,7 @@ class UserCommand(Server):
 
     # valid: username, domain/username, username@domain, domain/username@email
     @staticmethod
-    def _validate_username_or_throw(username) -> NoReturn:
+    def _validate_username_or_throw(username) -> None:
         if username is None or username == "" or username.strip(" ") == "":
             raise AttributeError("Username must be specified in csv file")
         if username.find(" ") >= 0:
@@ -122,7 +123,7 @@ class UserCommand(Server):
                 )
 
     @staticmethod
-    def _validate_user_or_throw(incoming, logger) -> NoReturn:
+    def _validate_user_or_throw(incoming, logger) -> None:
         line = list(map(str.strip, incoming.split(",")))
         logger.debug("> details - {}".format(line[0]))
         if len(line) > Column.MAX:
@@ -134,18 +135,18 @@ class UserCommand(Server):
             )
         username = line[Column.USERNAME.value]
         UserCommand._validate_username_or_throw(username)
-        for column_type in range(1, len(line) - 1):
-            logger.debug("column {}".format(column_type), line[column_type])
-            UserCommand._validate_item(line[column_type], column_type)
+        for i in range(1, len(CHOICES) - 1):
+            logger.debug("column {}: {}".format(Column(i).name, line[i]))
+            UserCommand._validate_item(line[i], CHOICES[i], Column(i))
 
     @staticmethod
-    def _validate_item(item: str, column_type: int) -> NoReturn:
+    def _validate_item(item: str, possible_values: List[str], column_type) -> None:
         if item is None or item == "":
             # value can be empty for any column except user, which is checked elsewhere
             return
-        if item in CHOICES[column_type] or CHOICES[column_type] == []:
+        if item in possible_values or possible_values == []:
             return
-        raise AttributeError("Invalid value for {0}: {1}".format(Column[column_type].name, item))
+        raise AttributeError("Invalid value for {0}: {1}".format(column_type, item))
 
     @staticmethod
     def get_users_from_file(csv_file: io.TextIOWrapper, logger=None) -> List[TSC.UserItem]:
@@ -157,18 +158,19 @@ class UserCommand(Server):
         if logger:
             logger.debug("> {}".format(line))
         while line and not line == "":
-            user: TSC.UserItem = UserCommand._parse_line(line)
-            user_list.append(user)
+            user: Optional[TSC.UserItem] = UserCommand._parse_line(line)
+            if user:
+                user_list.append(user)
             line = csv_file.readline()
         return user_list
 
     @staticmethod
-    def _parse_line(line: str) -> TSC.UserItem:
+    def _parse_line(line: str) -> Optional[TSC.UserItem]:
         if line is None:
             return None
         if line is False or line == "\n" or line == "":
             return None
-        line: str = line.strip().lower()
+        line = line.strip().lower()
         line_parts: List[str] = line.split(",")
         data = Userdata()
         values: List[str] = list(map(str.strip, line_parts))
@@ -184,7 +186,6 @@ class UserCommand(Server):
         license_level = license_level.lower()
         admin_level = admin_level.lower()
         publisher = publisher.lower()
-        site_role = None
         # don't need to check publisher for system/site admin
         if admin_level == "system":
             site_role = "SiteAdministrator"
@@ -215,28 +216,32 @@ class UserCommand(Server):
         return site_role
 
     @staticmethod
-    def act_on_users(logger: object, server: object, action_name: str, server_method: Callable, args: Dict) -> NoReturn:
+    def act_on_users(
+        logger: logging.Logger, server: object, action_name: str, server_method: Callable, args: argparse.Namespace
+    ) -> None:
         n_users_handled: int = 0
         number_of_errors: int = 0
         n_users_listed: int = UserCommand.validate_file_for_import(args.users, logger, strict=args.require_all_valid)
         logger.debug("Found {} users in file".format(n_users_listed))
 
+        group = None
         try:
             group = UserCommand.find_group(logger, server, args.name)
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, "Could not get group", exception=e)
 
+        error_list = []
         user_obj_list: List[TSC.UserItem] = UserCommand.get_users_from_file(args.users)
         logger.debug("Successfully parsed {} users".format(len(user_obj_list)))
         for user_obj in user_obj_list:
-            username: str = user_obj.name
+            username: str = user_obj.name or "unknown user"
             try:
                 user_id: str = UserCommand.find_user_id(logger, server, username)
                 logger.debug("{} user {} ({})".format(action_name, username, user_id))
             except TSC.ServerResponseError as e:
                 Errors.check_common_error_codes_and_explain(logger, e)
                 number_of_errors += 1
-                user_id = None
+                error_list.append(e)
                 logger.debug("Skipping user {}".format(username))
                 continue
 
@@ -247,9 +252,12 @@ class UserCommand(Server):
             except TSC.ServerResponseError as e:
                 Errors.check_common_error_codes_and_explain(logger.info, e)
                 number_of_errors += 1
+                error_list.append(e)
                 logger.debug("Error at user {}".format(username))
+
         logger.info("======== 100% complete ========")
         logger.info("======== Number of users listed: {} =========".format(n_users_listed))
         logger.info("======== Number of users {}: {} =========".format(action_name, n_users_handled))
+        logger.info("======== Number of errors {} =========".format(number_of_errors))
         if number_of_errors > 0:
-            logger.info("======== Number of errors {} =========".format(number_of_errors))
+            logger.info("Error details: \n{}".format(error_list))
