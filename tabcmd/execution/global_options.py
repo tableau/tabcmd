@@ -129,7 +129,7 @@ def set_embedded_datasources_options(parser):
 def set_encryption_option(parser):
     parser.add_argument(
         "--encrypt",
-        dest="encrypt_extract",
+        dest="encrypt",
         action="store_false",
         help="Encrypt the newly created extract.",
     )
