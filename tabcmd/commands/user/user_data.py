@@ -132,13 +132,11 @@ class UserCommand(Server):
         if len(line) > Column.MAX:
             raise AttributeError(
                 "The file contains {} columns, but there are only {} valid columns in a user \
-                 import csv file".format(
-                    len(line), Column.MAX
-                )
+                 import csv file".format(len(line), Column.MAX)
             )
         username = line[Column.USERNAME.value]
         UserCommand._validate_username_or_throw(username)
-        for i in range(1, len(CHOICES) - 1):
+        for i in range(1, len(line)):
             logger.debug("column {}: {}".format(Column(i).name, line[i]))
             UserCommand._validate_item(line[i], CHOICES[i], Column(i))
 
