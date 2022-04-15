@@ -11,7 +11,6 @@ def main():
         )
 
     try:
-        print("Launching tabcmd")
         parser = TabcmdController.initialize()
         TabcmdController.run(parser)
     except Exception as any_exception:
