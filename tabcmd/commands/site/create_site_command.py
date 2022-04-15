@@ -36,4 +36,7 @@ class CreateSiteCommand(Server):
             server.sites.create(new_site)
             logger.info("Successfully created a new site called: {}".format(args.site_name))
         except TSC.ServerResponseError as e:
+            if args.continue_if_exists and Errors.is_resource_conflict(e):
+                logger.info("Site called {} already exists".format(args.site_name))
+                return
             Errors.exit_with_error(logger, "error creating site", e)

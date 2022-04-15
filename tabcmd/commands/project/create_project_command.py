@@ -4,6 +4,7 @@ from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
+from tabcmd.commands.constants import Errors
 
 
 class CreateProjectCommand(Server):
@@ -28,7 +29,7 @@ class CreateProjectCommand(Server):
         server = session.create_session(args)
         parent_id = None
         readable_name = args.project_name
-        if args.parent_project_path is not None:
+        if args.parent_project_path:
             try:
                 logger.info("===== Identifying parent project '{}' on the server...".format(args.parent_project_path))
                 parent = Server.get_project_by_name_and_parent_path(logger, server, None, args.parent_project_path)
@@ -44,4 +45,7 @@ class CreateProjectCommand(Server):
             logger.info("===== Succeeded")
             return project_item
         except TSC.ServerResponseError as e:
+            if args.continue_if_exists and Errors.is_resource_conflict(e):
+                logger.info("Project called {} already exists".format(args.project_name))
+                return
             Errors.exit_with_error(logger, "Error creating project", e)

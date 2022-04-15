@@ -45,6 +45,12 @@ class ParentParser:
             "(The default behavior is to try certificates from the store)",
         )
 
+        parser.add_argument(
+            "--continue-if-exists",
+            action="store_false",
+            help="Treat resource conflicts as item creation success e.g project already exists"
+        )
+
         cookies = parser.add_mutually_exclusive_group()
         cookies.add_argument(
             "--cookie",
