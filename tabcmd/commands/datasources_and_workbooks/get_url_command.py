@@ -4,6 +4,7 @@ from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 from tabcmd.execution.global_options import *
+from tabcmd.commands.constants import Errors
 
 
 class GetUrl(DatasourcesAndWorkbooks):
@@ -35,7 +36,7 @@ class GetUrl(DatasourcesAndWorkbooks):
         elif file_type == "twbx" or file_type == "twb":
             GetUrl.download_and_save_wb(logger, server, args, file_type)
         else:
-            GetUrl.exit_with_error(logger, "The url must include a file extension")
+            Errors.exit_with_error(logger, "The url must include a file extension")
 
     @staticmethod
     def get_download_type(logger, file_name, url):
@@ -57,23 +58,33 @@ class GetUrl(DatasourcesAndWorkbooks):
         return split_parts[0]
 
     @staticmethod
-    def get_workbook_name(url):
+    def get_workbook_name(logger, url):  # something like 'workbooks/Regional.twbx'
+        url = url.lstrip('//')  # lose leading slash
         separated_list = url.split("/")
-        workbook_name = GetUrl.get_name_without_possible_extension(separated_list[2])
+        if len(separated_list) < 2:
+            message = "You must provide a complete url path to the item. Found: '{}'".format(url)
+            Errors.exit_with_error(logger, message=message)
+        workbook_name = GetUrl.get_name_without_possible_extension(separated_list[1])
+        logger.debug("Got workbook name '{}' from url '{}'".format(workbook_name, url))
         return workbook_name
 
     @staticmethod
-    def get_view_url(url):
-        # check the size of list
+    def get_view_url(logger, url):
+        url = url.lstrip('//')  # lose leading slash
         separated_list = url.split("/")
+        if len(separated_list) < 3:
+            message = "You must provide a complete url path to the item. Found: '{}'".format(url)
+            Errors.exit_with_error(logger, message=message)
         workbook_name = separated_list[2]
         view_name = GetUrl.get_name_without_possible_extension(separated_list[::-1][0])
-        return "{}/sheets/{}".format(workbook_name, view_name)
+        view_url = "{}/sheets/{}".format(workbook_name, view_name)
+        logger.debug("Got view url '{}' from url '{}'".format(view_url, url))
+        return view_url
 
     @staticmethod
     def get_target_view(args, logger, server):
         try:
-            view = GetUrl.get_view_url(args.url)
+            view = GetUrl.get_view_url(logger, args.url)
         except Exception as e:
             GetUrl.exit_with_error(logger, "Could not get contenturl for view", e)
         logger.debug("view url: " + view)
@@ -103,7 +114,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             server.views.populate_csv(target_view, req_option_csv)
             return target_view.png
         else:
-            GetUrl.exit_with_error("Unknown filetype")
+            Errors.exit_with_error("Unknown filetype")
 
     @staticmethod
     def download_and_save_view(logger, server, args, filetype):
@@ -124,7 +135,7 @@ class GetUrl(DatasourcesAndWorkbooks):
 
     @staticmethod
     def download_and_save_wb(logger, server, args, filetype):
-        workbook = GetUrl.get_workbook_name(args.url)
+        workbook = GetUrl.get_workbook_name(logger, args.url)
         logger.debug("Generating " + filetype + " for workbook " + workbook)
         formatted_file_name = GetUrl.set_file_name(workbook, args.filename, filetype)
         try:
