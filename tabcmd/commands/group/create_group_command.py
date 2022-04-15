@@ -3,6 +3,7 @@ import tableauserverclient as TSC
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
+from tabcmd.commands.constants import Errors
 
 
 class CreateGroupCommand(Server):
@@ -29,4 +30,7 @@ class CreateGroupCommand(Server):
             server.groups.create(new_group)
             logger.info("Succeeded")
         except TSC.ServerResponseError as e:
+            if args.continue_if_exists and Errors.is_resource_conflict(e):
+                logger.info("Group called {} already exists".format(args.name))
+                return
             Errors.exit_with_error(logger, "Error while communicating with the server")
