@@ -125,11 +125,16 @@ class Session:
             Errors.exit_with_error(self.logger, "Couldn't find token name")
 
     def _set_connection_options(self):
-        # args to handle here: proxy, --no-proxy, cert, --no-certcheck, timeout
-        tableau_server = TSC.Server(self.server_url, use_server_version=False)
+        # args still to be handled here:
+        # proxy, --no-proxy,
+        # cert
+        # timeout
+        http_options = {}
         if self.no_certcheck:
-            tableau_server.add_http_options({"verify": False})
+            http_options = {"verify": False}
             requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
+        tableau_server = TSC.Server(self.server_url, use_server_version=True, http_options=http_options)
+
         return tableau_server
 
     def _create_new_connection(self):
@@ -167,7 +172,7 @@ class Session:
         return None
 
     def _sign_in(self, tableau_auth):
-        self.logger.debug("Signing in to {0}{1} as {2}".format(self.server_url, self.site_name, self.username))
+        self.logger.debug("Signing in to {0}/{1} as {2}".format(self.server_url, self.site_name, self.username))
         try:
             self.tableau_server.auth.sign_in(tableau_auth)  # it's the same call for token or user-pass
         except TSC.ServerResponseError as e:
