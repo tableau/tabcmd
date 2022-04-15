@@ -1,6 +1,7 @@
 import tableauserverclient as TSC
 from tabcmd.commands.server import Server
 from tabcmd.commands.constants import Errors
+from tabcmd.commands.constants import Errors
 
 
 class DatasourcesAndWorkbooks(Server):
@@ -12,33 +13,29 @@ class DatasourcesAndWorkbooks(Server):
         super().__init__(args)
 
     @staticmethod
-    def get_view_by_content_url(logger, server, view_content_url) -> TSC.ViewItem:
-        logger.debug("Fetching view with id {}".format(view_content_url))
+    def get_view_by_content_url(logger, server, view_content_url):
         try:
             req_option = TSC.RequestOptions()
             req_option.filter.add(TSC.Filter("contentUrl", TSC.RequestOptions.Operator.Equals, view_content_url))
             matching_views, _ = server.views.get(req_option)
+            if len(matching_views) == 0:
+                raise ValueError("Could not find view " + view_content_url + ". Please check the name and try again")
             selected_view = matching_views[0]
+            return selected_view
         except Exception as e:
-            Errors.exit_with_error(logger, "Could not find view. Please check the name and try again.", e)
-
-        return selected_view
+            Errors.exit_with_error(logger, exception=e)
 
     @staticmethod
-    def get_wb_by_content_url(logger, server, workbook_content_url) -> TSC.WorkbookItem:
-        logger.debug("fetch workbook with id {}".format(workbook_content_url))
+    def get_wb_by_content_url(logger, server, workbook_content_url):
         try:
             req_option = TSC.RequestOptions()
-            req_option.filter.add(
-                TSC.Filter(
-                    "contentUrl",
-                    TSC.RequestOptions.Operator.Equals,
-                    workbook_content_url,
-                )
-            )
+            req_option.filter.add(TSC.Filter("contentUrl", TSC.RequestOptions.Operator.Equals, workbook_content_url))
             matching_workbooks, _ = server.workbooks.get(req_option)
+            if len(matching_workbooks) == 0:
+                raise ValueError(
+                    "Could not find workbook " + workbook_content_url + ". Please check the name and try again.",
+                )
             selected_workbook = matching_workbooks[0]
-        except Exception:
-            Errors.exit_with_error(logger, "Could not find workbook. Please check the name and try again.")
-
-        return selected_workbook
+            return selected_workbook
+        except Exception as e:
+            Errors.exit_with_error(logger, exception=e)

@@ -10,7 +10,10 @@ class Server:
     # syntactic sugar for specific content types
     @staticmethod
     def get_workbook_item(logger, server, workbook_name):
-        return Server.get_items_by_name(logger, server.workbooks, workbook_name)[0]
+        try:
+            return Server.get_items_by_name(logger, server.workbooks, workbook_name)[0]
+        except Exception as e:
+            Errors.exit_with_error(logger, "Workbook not found (errorCode)", e)
 
     @staticmethod
     def get_workbook_id(logger, server, workbook_name):
@@ -18,7 +21,10 @@ class Server:
 
     @staticmethod
     def get_data_source_item(logger, server, data_source_name):
-        return Server.get_items_by_name(logger, server.datasources, data_source_name)[0]
+        try:
+            return Server.get_items_by_name(logger, server.datasources, data_source_name)[0]
+        except Exception as e:
+            Errors.exit_with_error(logger, "Datasource not found (errorCode)", e)
 
     @staticmethod
     def get_data_source_id(logger, server, data_source_name):
@@ -26,11 +32,14 @@ class Server:
 
     @staticmethod
     def find_group(logger, server, group_name):
-        return Server.get_items_by_name(logger, server.groups, group_name)[0]
+        try:
+            return Server.get_items_by_name(logger, server.groups, group_name)[0]
+        except Exception as e:
+            Errors.exit_with_error(logger, "Group not found (errorCode=6)", e)
 
     @staticmethod
     def find_group_id(logger, server, group_name):
-        return Server.get_items_by_name(logger, server.groups, group_name)[0].id
+        return Server.find_group(logger, server, group_name)[0].id
 
     @staticmethod
     def find_user_id(logger, server, username):
@@ -41,11 +50,13 @@ class Server:
         logger.debug("get `{0}`(name) from {1}".format(item_name, item_endpoint))
         req_option = TSC.RequestOptions()
         req_option.filter.add(TSC.Filter(TSC.RequestOptions.Field.Name, TSC.RequestOptions.Operator.Equals, item_name))
-        all_items, pagination_item = item_endpoint.get(req_option)
+        try:
+            all_items, pagination_item = item_endpoint.get(req_option)
+        except TSC.ServerResponseError as exc:
+            Errors.check_common_error_codes_and_explain(logger, exc)
+            all_items = []
         if all_items is None or all_items == []:
-            raise TSC.ServerResponseError(
-                "404", "No items returned for name", "Fetching {0} from {1}".format(item_name, item_endpoint)
-            )
+            raise ValueError("*** Unexpected response from the server: Item not found ({})".format(item_name))
         if len(all_items) > 1:
             logger.debug("{}+ items of this name were found. Returning first page.".format(len(all_items)))
         return all_items
@@ -96,8 +107,10 @@ class Server:
             parent = Server._get_parent_project_from_tree(logger, server, project_tree)
             project = Server._get_project_by_name_and_parent(logger, server, project_name, parent)
         if not project:
-            raise TSC.server.ServerResponseError(
-                "404", "Could not find project {0}/{1}".format(parent_path, project_name)
+            raise ValueError(
+                "*** Unexpected response from the server: Could not find project {0}/{1}".format(
+                    parent_path, project_name
+                )
             )
         return project
 
