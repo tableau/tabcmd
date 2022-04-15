@@ -4,6 +4,7 @@ from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.extracts.extracts_command import ExtractsCommand
 from tabcmd.execution.logger_config import log
+from tabcmd.commands.constants import Errors
 
 
 class RefreshExtracts(ExtractsCommand):
@@ -14,8 +15,8 @@ class RefreshExtracts(ExtractsCommand):
     @staticmethod
     def define_args(refresh_extract_parser):
         target_group = refresh_extract_parser.add_mutually_exclusive_group(required=True)
-        target_group.add_argument("--datasource")
-        target_group.add_argument("--workbook")
+        target_group.add_argument("-d", "--datasource")
+        target_group.add_argument("-w", "--workbook")
 
         set_incremental_options(refresh_extract_parser)
         set_calculations_options(refresh_extract_parser)
@@ -48,5 +49,5 @@ class RefreshExtracts(ExtractsCommand):
                 job = server.workbooks.refresh(workbook_id)
 
         except TSC.ServerResponseError as e:
-            ExtractsCommand.exit_with_error(logger, "Error refreshing extracts", e)
+            Errors.exit_with_error(logger, "Error refreshing extracts", e)
         ExtractsCommand.print_success_message(logger, refresh_action, job)
