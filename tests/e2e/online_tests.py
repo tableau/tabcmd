@@ -1,4 +1,5 @@
 import os
+import pytest
 import subprocess
 import time
 import unittest
@@ -24,7 +25,7 @@ def _test_command(test_args: list[str]):
     # dist/exe calling_args = [setup_e2e.exe] + test_args + [debug_log]
     calling_args = ["python", "-m", "tabcmd"] + test_args + [debug_log] + ["--no-certcheck"]
     print(calling_args)
-    # return subprocess.check_call(calling_args)
+    return subprocess.check_call(calling_args)
 
 
 # This calls dist/tabcmd/tabcmd.exe
@@ -112,24 +113,28 @@ class OnlineCommandTest(unittest.TestCase):
     TWBX_FILE_WITHOUT_EXTRACT = "simple-data.twbx"
     TWBX_WITHOUT_EXTRACT_NAME = "WorkbookWithoutExtract"
 
+    @pytest.mark.order(1)
     def test_login(self):
         try:
-            setup_e2e.Setup.login()
+            setup_e2e.login()
         except Exception as e:
             raise SystemExit(2)
 
+    @pytest.mark.order(2)
     def test_create_site_users(self):
         command = "createsiteusers"
         users = os.path.join("tests", "assets", "detailed_users.csv")
         arguments = [command, users, "--role", "Publisher"]
         _test_command(arguments)
 
+    @pytest.mark.order(3)
     def test_creategroup(self):
         groupname = group_name
         command = "creategroup"
         arguments = [command, groupname]
         _test_command(arguments)
 
+    @pytest.mark.order(4)
     def test_add_users_to_group(self):
         groupname = group_name
         command = "addusers"
@@ -137,6 +142,7 @@ class OnlineCommandTest(unittest.TestCase):
         arguments = [command, groupname, "--users", filename]
         _test_command(arguments)
 
+    @pytest.mark.order(5)
     def test_remove_users_to_group(self):
         groupname = group_name
         command = "removeusers"
@@ -144,12 +150,14 @@ class OnlineCommandTest(unittest.TestCase):
         arguments = [command, groupname, "--users", filename]
         _test_command(arguments)
 
+    @pytest.mark.order(6)
     def test_deletegroup(self):
         groupname = group_name
         command = "deletegroup"
         arguments = [command, groupname]
         _test_command(arguments)
 
+    @pytest.mark.order(7)
     def test_publish_samples(self):
         project_name = "sample-proj"
         self._create_project(project_name)
@@ -158,44 +166,47 @@ class OnlineCommandTest(unittest.TestCase):
         self._publish_samples(project_name)
         self._delete_project(project_name)
 
+    @pytest.mark.order(8)
     def test_create_projects(self):
         # project 1
         self._create_project(project_name)
         time.sleep(indexing_sleep_time)
         # project 2
-        self._create_project(project_name, project_name)
+        self._create_project("project_name_2", project_name)
         time.sleep(indexing_sleep_time)
         # project 3
         parent_path = "{0}/{1}".format(project_name, project_name)
         self._create_project(project_name, parent_path)
         time.sleep(indexing_sleep_time)
 
+    @pytest.mark.order(9)
     def test_delete_projects(self):
-        self._delete_project(project_name, project_name)  # project 2
+        self._delete_project("project_name_2", project_name)  # project 2
         self._delete_project(project_name)
 
+    @pytest.mark.order(10)
     def test_publish(self):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         self._publish_wb(file, name_on_server)
 
-    """
-    I have no idea why but these exact same commands succeed run alone,
-    and fail here 
+    @pytest.mark.order(10)
     def test__get_wb(self):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         self._get_workbook(wb_name_on_server + ".twbx")
 
+    @pytest.mark.order(10)
     def test__get_view(self):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         self._get_view(wb_name_on_server, sheet_name + ".pdf")
-    """
 
+    @pytest.mark.order(11)
     def test__delete_wb(self):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         self._delete_wb(name_on_server)
 
+    @pytest.mark.order(12)
     def test_create_extract(self):
         # This workbook doesn't work for creating an extract
         name_on_server = OnlineCommandTest.TWBX_WITHOUT_EXTRACT_NAME
@@ -203,10 +214,12 @@ class OnlineCommandTest(unittest.TestCase):
         self._publish_wb(file, name_on_server)
         # which damn workbook will work here self._create_extract(name_on_server)
 
+    @pytest.mark.order(13)
     def test_refresh_extract(self):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         self._refresh_extract(name_on_server)
 
+    @pytest.mark.order(14)
     def test_delete_extract(self):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
@@ -224,6 +237,7 @@ class OnlineCommandTest(unittest.TestCase):
     # def test_logout(self):
     #   _test_command(["logout"])
 
+    @pytest.mark.order(15)
     def test_export(self):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
@@ -233,6 +247,7 @@ class OnlineCommandTest(unittest.TestCase):
         arguments = [command, friendly_name, "--fullpdf", "-f", "exported_file.pdf"]
         _test_command(arguments)
 
+    @pytest.mark.order(16)
     def test_delete_site_users(self):
         command = "deletesiteusers"
         users = os.path.join("tests", "assets", "usernames.csv")
