@@ -109,15 +109,16 @@ class GetUrl(DatasourcesAndWorkbooks):
     def download_and_save_view(logger, server, args, filetype):
         target_view = GetUrl.get_target_view(args, logger, server)
         formatted_file_name = GetUrl.set_file_name(target_view.name, args.filename, filetype)
-        logger.debug("Generating " + formatted_file_name)
         try:
+            logger.info("===== Requesting '{}' from the server...".format(target_view))
             data = GetUrl.populate_data(server, target_view, filetype)
         except TSC.ServerResponseError as e:
             GetUrl.exit_with_error(logger, exception=e)
         try:
             with open(formatted_file_name, "wb") as f:
+                logger.info("===== Found attachment: {}".format(formatted_file_name))
                 f.write(data)
-                logger.info("View `{}` exported successfully".format(target_view.name))
+                logger.info("===== Saved {} to '{}'".format(args.url, formatted_file_name))
         except Exception as e:
             GetUrl.exit_with_error(logger, exception=e)
 
@@ -127,12 +128,14 @@ class GetUrl(DatasourcesAndWorkbooks):
         logger.debug("Generating " + filetype + " for workbook " + workbook)
         formatted_file_name = GetUrl.set_file_name(workbook, args.filename, filetype)
         try:
+            logger.info("===== Requesting '{}' from the server...".format(args.url))
             target_workbook = GetUrl.get_wb_by_content_url(logger, server, workbook)
         except TSC.ServerResponseError as e:
             GetUrl.exit_with_error(logger, exception=e)
         try:
-            server.workbooks.download(target_workbook.id, filepath=args.filename, no_extract=False)
-            logger.info("Workbook `{}` exported".format(target_workbook.name))
+            logger.info("===== Found attachment: {}".format(formatted_file_name))
+            server.workbooks.download(target_workbook.id, filepath=formatted_file_name, no_extract=False)
+            logger.info("===== Saved {} to '{}'".format(args.url, formatted_file_name))
         except TSC.ServerResponseError as e:
             logger.debug("Error downloading workbook")
             GetUrl.exit_with_error(logger, exception=e)
