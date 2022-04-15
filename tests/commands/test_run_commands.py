@@ -20,7 +20,7 @@ from tabcmd.commands.extracts import (
 )
 from tabcmd.commands.group import create_group_command, delete_group_command
 from tabcmd.commands.help import help_command
-from tabcmd.commands.project import create_project_command, delete_project_command
+from tabcmd.commands.project import create_project_command, delete_project_command, publish_samples_command
 from tabcmd.commands.site import (
     create_site_command,
     delete_site_command,
@@ -215,13 +215,13 @@ class RunCommandsTest(unittest.TestCase):
         delete_project_command.DeleteProjectCommand.run_command(mock_args)
         mock_session.assert_called()
 
-    def test_publish_project(self, mock_session, mock_server):
+    def test_publish_samples(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.projects = getter
-        mock_args.parent_project_name = ""
-        # Not yet implemented
-        # publish_samples_command.PublishSamplesCommand.run_command(mock_args)
-        # mock_session.assert_called()
+        mock_args.project_name = "gloop"
+        mock_args.parent_project_path = ""
+        publish_samples_command.PublishSamplesCommand.run_command(mock_args)
+        mock_session.assert_called()
 
     # site
     def test_create_site(self, mock_session, mock_server):
