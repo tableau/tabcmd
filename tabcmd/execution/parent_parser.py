@@ -48,7 +48,7 @@ class ParentParser:
         parser.add_argument(
             "--continue-if-exists",
             action="store_false",
-            help="Treat resource conflicts as item creation success e.g project already exists"
+            help="Treat resource conflicts as item creation success e.g project already exists",
         )
 
         cookies = parser.add_mutually_exclusive_group()

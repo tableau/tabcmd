@@ -12,22 +12,20 @@ class Constants:
 
 
 class Errors:
-
     @staticmethod
     def is_expired_session(error):
-        if hasattr(error, 'code'):
+        if hasattr(error, "code"):
             return error.code == Constants.invalid_credentials
 
     @staticmethod
     def is_resource_conflict(error):
-        if hasattr(error, 'code'):
+        if hasattr(error, "code"):
             return error.code.startswith(Constants.resource_conflict_general)
 
     @staticmethod
     def is_login_error(error):
-        if hasattr(error, 'code'):
+        if hasattr(error, "code"):
             return error.code == Constants.login_error
-
 
     @staticmethod
     def exit_with_error(logger, message, exception=None):
