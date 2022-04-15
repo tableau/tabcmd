@@ -91,15 +91,20 @@ class UserCommand(Server):
         line: str = csv_file.readline()
         while line and line != "":
             try:
+                printable_line = line
                 if detailed:
                     # do not print passwords
+                    printable_line = line.split(",")[0]
                     UserCommand._validate_user_or_throw(line, logger)
                 else:
                     logger.debug("> username - {}".format(line))
                     UserCommand._validate_username_or_throw(line)
                 num_valid_lines += 1
+            except IndexError as ie:
+                logger.info("invalid line [{0}]: expecting {1} columns".format(printable_line, Column.MAX))
+                num_errors += 1
             except Exception as exc:
-                logger.info("invalid line [{0}]: {1}".format(line, exc))
+                logger.info("invalid line [{0}]: {1}".format(printable_line, exc))
                 num_errors += 1
             line = csv_file.readline()
         if strict and num_errors > 0:
@@ -251,7 +256,7 @@ class UserCommand(Server):
                 n_users_handled += 1
                 logger.info("Successfully {0} {1} for group {2}".format(action_name, username, group))
             except TSC.ServerResponseError as e:
-                Errors.check_common_error_codes_and_explain(logger.info, e)
+                Errors.check_common_error_codes_and_explain(logger, e)
                 number_of_errors += 1
                 error_list.append(e)
                 logger.debug("Error at user {}".format(username))
