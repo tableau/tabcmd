@@ -105,8 +105,16 @@ class RunCommandsTest(unittest.TestCase):
     def test_get(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.views = getter
-        mock_args.url = "views/workbook-name/view-name"
+        mock_args.url = "/views/workbook-name/view-name"
         mock_args.filename = "filename.pdf"
+        get_url_command.GetUrl.run_command(mock_args)
+        mock_session.assert_called()
+
+    def test_get_workbook(self, mock_session, mock_server):
+        RunCommandsTest._set_up_session(mock_session, mock_server)
+        mock_server.views = getter
+        mock_args.url = "/workbooks/workbook-name"
+        mock_args.filename = "filename.twbx"
         get_url_command.GetUrl.run_command(mock_args)
         mock_session.assert_called()
 

@@ -10,7 +10,7 @@ class GetURlTests(unittest.TestCase):
     def test_evaluate_file_name_pdf(self):
         filename = "filename.pdf"
         url = None
-        filetype = GetUrl.evaluate_file_name(mock_logger, filename, url)
+        filetype = GetUrl.get_file_type_from_filename(mock_logger, filename, url)
         assert filetype == "pdf", filetype
 
     def test_evaluate_file_name_url(self):
@@ -34,19 +34,19 @@ class GetURlTests(unittest.TestCase):
             filetype = Server.get_filename_extension_if_tableau_type(mock_logger, filename)
 
     def test_check_for_extension_no_ext(self):
-        filename = "project/workbook/viewname"
-        filetype = GetUrl.check_if_extension_present(filename)
-        assert filetype is False
+        filename = "workbook/viewname"
+        filetype = GetUrl.get_file_extension(filename)
+        assert not filetype
 
     def test_check_for_extension_twb(self):
-        filename = "project/workbook/viewname.twb"
-        filetype = GetUrl.check_if_extension_present(filename)
-        assert filetype is True
+        filename = "workbooks/viewname.twb"
+        filetype = GetUrl.get_file_extension(filename)
+        assert filetype
 
     def test_check_for_extension_pdf(self):
         filename = "workbooks/workbook/viewname.pdf"
-        filetype = GetUrl.check_if_extension_present(filename)
-        assert filetype is True
+        filetype = GetUrl.get_file_extension(filename)
+        assert filetype
 
     """
     GetUrl.get_view_without_extension(view_name)
