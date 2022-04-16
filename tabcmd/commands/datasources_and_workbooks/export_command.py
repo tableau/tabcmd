@@ -76,10 +76,10 @@ class ExportCommand(DatasourcesAndWorkbooks):
                     filename = "{}.pdf".format(view_item.name)
                 elif args.csv:
                     output = ExportCommand.download_csv(server, view_item)
-                    filename = "{}.csv".format(view_content_url)
+                    filename = "{}.csv".format(view_item.name)
                 elif args.png:
                     output = ExportCommand.download_png(server, view_item)
-                    filename = "{}.png".format(view_content_url)
+                    filename = "{}.png".format(view_item.name)
             except Exception as e:
                 Errors.exit_with_error(logger, "Error downloading view from server", e)
 
@@ -93,7 +93,6 @@ class ExportCommand(DatasourcesAndWorkbooks):
 
         except Exception as e:
             Errors.exit_with_error(logger, "Error saving to file", e)
-
 
     @staticmethod
     def download_pdf(server, view_item):

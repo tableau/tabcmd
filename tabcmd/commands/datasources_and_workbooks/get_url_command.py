@@ -3,6 +3,7 @@ import tableauserverclient as TSC
 from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
+from tabcmd.commands.datasources_and_workbooks.export_command import ExportCommand
 from tabcmd.execution.global_options import *
 from tabcmd.commands.constants import Errors
 
@@ -121,20 +122,23 @@ class GetUrl(DatasourcesAndWorkbooks):
         workbook_name = name_parts[2]
         return "{}/sheets/{}".format(workbook_name, view_name)
 
+
+    @staticmethod
+    def filename_from_args(file_argument, item, filetype):
+        if file_argument is None:
+            file_argument = "{}.{}".format(item.name, filetype)
+        return file_argument
+
     @staticmethod
     def generate_pdf(logger, server, args):
-        view = GetUrl.get_view_url(args.url)
+        view_url = GetUrl.get_view_url(args.url)
         try:
-            views_from_list = GetUrl.get_view_by_content_url(logger, server, view)
+            view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view_url)
             req_option_pdf = TSC.PDFRequestOptions(maxage=1)
-            server.views.populate_pdf(views_from_list, req_option_pdf)
-            if args.filename is None:
-                file_name_with_path = "{}.pdf".format(views_from_list.name)
-            else:
-                file_name_with_path = args.filename
-            formatted_file_name = file_name_with_path
-            with open(formatted_file_name, "wb") as f:
-                f.write(views_from_list.pdf)
+            server.views.populate_pdf(view_item, req_option_pdf)
+            filename = GetUrl.filename_from_args(args.filename, view_item.name, ".pdf")
+            with open(filename, "wb") as f:
+                f.write(view_item.pdf)
                 logger.info("Exported successfully")
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, "Server error:", e)
@@ -143,44 +147,37 @@ class GetUrl(DatasourcesAndWorkbooks):
     def generate_png(logger, server, args):
         view = GetUrl.get_view_url(args.url)
         try:
-            views_from_list = GetUrl.get_view_by_content_url(logger, server, view)
+            view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view)
             req_option_csv = TSC.CSVRequestOptions(maxage=1)
-            server.views.populate_csv(views_from_list, req_option_csv)
-            if args.filename is None:
-                file_name_with_path = "{}.png".format(view)
-            else:
-                file_name_with_path = args.filename
-            formatted_file_name = file_name_with_path
-            with open(formatted_file_name, "wb") as f:
-                f.write(views_from_list.png)
+            server.views.populate_csv(view_item, req_option_csv)
+            filename = GetUrl.filename_from_args(args.filename, view_item.name, ".png")
+            with open(filename, "wb") as f:
+                f.write(view_item.png)
                 logger.info("Exported successfully")
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, "Server error:", e)
 
     @staticmethod
     def generate_csv(logger, server, args):
-        view = GetUrl.get_view_url(args.url)
+        view_url = GetUrl.get_view_url(args.url)
         try:
-            views_from_list = GetUrl.get_view_by_content_url(logger, server, view)
+            view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view_url)
             req_option_csv = TSC.CSVRequestOptions(maxage=1)
-            server.views.populate_csv(views_from_list, req_option_csv)
-            if args.filename is None:
-                file_name_with_path = "{}.csv".format(view)
-            else:
-                file_name_with_path = args.filename
-            formatted_file_name = file_name_with_path
-            with open(formatted_file_name, "wb") as f:
-                f.write(views_from_list.csv)
+            server.views.populate_csv(view_item, req_option_csv)
+            file_name_with_path = GetUrl.filename_from_args(args.filename, view_item, ".csv")
+            with open(file_name_with_path, "wb") as f:
+                f.write(view_item.csv)
                 logger.info("Exported successfully")
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, "Server error:", e)
+
 
     @staticmethod
     def generate_twb(logger, server, args):
         workbook = GetUrl.get_workbook_name(logger, args.url)
         try:
-            target_workbook = GetUrl.get_view_by_content_url(logger, server, workbook)
-            server.workbooks.download(target_workbook.id, filepath=None, no_extract=False)
+            target_workbook = GetUrl.get_wb_by_content_url(logger, server, workbook)
+            server.workbooks.download(target_workbook.id, filepath=args.filename, no_extract=False)
             logger.info("Workbook {} exported".format(target_workbook.name))
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, "Server error:", e)
