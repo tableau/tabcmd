@@ -21,18 +21,16 @@ class CreateGroupCommand(Server):
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
-        print(_("HelloHelloWorld"))
-        logger.debug(_("======================= Launching command ======================="))
-        logger.info(_("helloworld"))
+        logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
         try:
-            logger.info("Creating group '{}' on the server...".format(args.name))
+            logger.info(_('Creating group ''{name}'' on the server').format(name=args.name))
             new_group = TSC.GroupItem(args.name)
             server.groups.create(new_group)
             logger.info(_("Succeeded"))
         except TSC.ServerResponseError as e:
             if args.continue_if_exists and Errors.is_resource_conflict(e):
-                logger.info(_("Group called {} already exists".format(args.name)))
+                logger.info(_("Group called ''{}'' already exists").format(args.name))
                 return
             Errors.exit_with_error(logger, "Error while communicating with the server")
