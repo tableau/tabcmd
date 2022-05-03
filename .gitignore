@@ -34,4 +34,5 @@ html
 *.twbr
 
 **/credentials.py
+*.txt
 

@@ -158,7 +158,7 @@ class BuildCredentialsTests(unittest.TestCase):
         active_session = Session()
         active_session.username = "user3"
         active_session.site = ""
-        auth = active_session._create_new_credential(None, None)
+        auth = active_session._create_new_credential(None, Session.PASSWORD_CRED_TYPE)
         assert mock_pass.has_been_called()
         assert auth is not None
         assert auth.username == "user3", auth
@@ -261,13 +261,12 @@ class CreateSessionTests(unittest.TestCase):
         mock_path = _set_mocks_for_json_file_exists(mock_path, False)
         test_args = Namespace(**vars(args_to_mock))
         test_args.username = "uuuu"
-        print(os.path.dirname(__file__))
         # filename = os.path.join(os.path.dirname(__file__),"test_credential_file.txt")
-        test_args.password_file = os.getcwd()+"/test_credential_file.txt"
+        # test_args.password_file = os.getcwd()+"/test_credential_file.txt"
+        test_args.password_file = "filename"
         mock_cred_file = _set_mocks_for_creds_file(mock_file)
-        print(mock_cred_file.readlines())
+        test_args.password = mock_cred_file.readlines()
         new_session = Session()
-
         auth = new_session.create_session(test_args)
         assert auth is not None, auth
         assert auth.auth_token is not None, auth.auth_token
@@ -315,6 +314,7 @@ class CreateSessionTests(unittest.TestCase):
         CreateSessionTests._set_mock_tsc_sign_in_succeeds(tsc_under_test)
         test_args = Namespace(**vars(args_to_mock))
         mock_pass.getpass.return_value = "success"
+        test_args.password = "eqweqwe"
         new_session = Session()
         auth = new_session.create_session(test_args)
         assert mock_pass.has_been_called()

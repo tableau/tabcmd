@@ -67,18 +67,12 @@ class Session:
 
     @staticmethod
     def _read_password_from_file(filename):
-
-
-        # Get the current working directory
-        cwd = os.getcwd()
-        print("filename: ", filename)
-        print("cwd: ", cwd)
         credential = None
         with open(str(filename), "r") as file_contents:
-            contents = file_contents.readlines()
-            # for row in reader:
-            #     credential = row
-            return contents
+            reader = file_contents.readlines()
+            for row in reader:
+                credential = row
+            return credential
 
     def _allow_prompt(self):
         try:
@@ -94,8 +88,6 @@ class Session:
                 password = getpass.getpass("Password:")
             else:
                 Errors.exit_with_error(self.logger, "No password entered")
-
-        print(self.username, "credential type: ", credential_type)
 
         if credential_type == Session.PASSWORD_CRED_TYPE and self.username and password:
             credentials = TSC.TableauAuth(self.username, password, site_id=self.site_name)
@@ -118,7 +110,6 @@ class Session:
             Errors.exit_with_error(self.logger, "No token value entered")
 
         if self.token_name and token:
-            print(self.token_name, token)
             credentials = TSC.PersonalAccessTokenAuth(self.token_name, token, site_id=self.site_name)
             self.last_login_using = "token"
             return credentials
@@ -188,7 +179,7 @@ class Session:
 
     def _get_saved_credentials(self):
         if self.last_login_using == "username":
-            credentials = self._create_new_credential(None, None)
+            credentials = self._create_new_credential(None, Session.PASSWORD_CRED_TYPE)
         elif self.last_login_using == "token":
             credentials = self._create_new_token_credential()
         else:
