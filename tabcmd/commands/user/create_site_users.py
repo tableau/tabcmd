@@ -5,6 +5,7 @@ from tabcmd.commands.constants import Constants
 from tabcmd.execution.logger_config import log
 from tabcmd.execution.global_options import *
 from .user_data import UserCommand
+from tabcmd import _
 
 
 class CreateSiteUsersCommand(UserCommand):
@@ -40,7 +41,7 @@ class CreateSiteUsersCommand(UserCommand):
 
         UserCommand.validate_file_for_import(args.filename, logger, detailed=True, strict=args.require_all_valid)
 
-        logger.info("===== Adding users listed in {0} to {1}...".format(args.filename.name, creation_site))
+        logger.info(_("===== Adding users listed in {0} to {1}...").format(args.filename.name, creation_site))
         user_obj_list = UserCommand.get_users_from_file(args.filename, logger)
         logger.info("======== 0% complete ========")
         error_list = []
