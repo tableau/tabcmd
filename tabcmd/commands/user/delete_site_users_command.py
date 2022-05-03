@@ -6,6 +6,7 @@ from tabcmd.commands.constants import Errors
 from tabcmd.commands.server import Server
 from tabcmd.commands.user.user_data import UserCommand
 from tabcmd.execution.logger_config import log
+from tabcmd import _
 
 
 class DeleteSiteUsersCommand(Server):
@@ -35,7 +36,7 @@ class DeleteSiteUsersCommand(Server):
         else:
             target_site = "current site"
 
-        logger.info("Deleting users listed in {0} from site '{1}'".format(args.filename.name, target_site))
+        logger.info(_("Deleting users listed in {0} from site '{1}'").format(args.filename.name, target_site))
 
         UserCommand.validate_file_for_import(args.filename, logger, strict=args.require_all_valid)
         number_of_users_deleted = 0
