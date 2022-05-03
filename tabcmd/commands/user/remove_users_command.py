@@ -2,6 +2,7 @@ from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
 from .user_data import UserCommand
+from tabcmd import _
 
 
 class RemoveUserCommand(UserCommand):
@@ -25,6 +26,6 @@ class RemoveUserCommand(UserCommand):
         session = Session()
         server = session.create_session(args)
 
-        logger.info("Removing users listed in {0} from group '{1}'".format(args.users.name, args.name))
+        logger.info(_("Removing users listed in {0} from group '{1}'").format(args.users.name, args.name))
 
         UserCommand.act_on_users(logger, server, "removed", server.groups.remove_user, args)
