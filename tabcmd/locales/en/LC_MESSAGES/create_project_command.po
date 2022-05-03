@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-05-02 22:30-0400\n"
+"POT-Creation-Date: 2022-05-02 22:49-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,4 +14,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
 
+
+#: tabcmd/commands/project/create_project_command.py:42
+msgid "===== Creating project '{}' on the server..."
+msgstr "===== Creating project '{}' on the server..."
+
+#: tabcmd/commands/project/create_project_command.py:46
+msgid "===== Succeeded"
+msgstr "===== Succeeded"
 
