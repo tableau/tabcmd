@@ -1,6 +1,7 @@
 from argparse import Namespace
 import unittest
 from unittest import mock
+from unittest.mock import patch, mock_open
 
 from tabcmd.commands.auth.session import Session
 import os
@@ -65,6 +66,20 @@ def _set_mocks_for_json_file_exists(mock_path, does_it_exist=True):
     return mock_path
 
 
+def _set_mocks_for_creds_file(mock_file):
+    # patch("builtins.open", mock_open(read_data="dummypassword"))
+    # dummy_file = mock_open()
+    # dummy_file.return_value = "dummypassword"
+    # return dummy_file
+    mock_file.readlines.return_value = "dummypassword"
+    return mock_file
+
+    # with mock.patch('builtins.open', mock.mock_open(read_data='dummypassword')):
+    #     with open(file_path) as f:
+    #
+    #         return print(f.read())
+
+
 @mock.patch("json.dump")
 @mock.patch("json.load")
 @mock.patch("os.path")
@@ -106,7 +121,7 @@ class BuildCredentialsTests(unittest.TestCase):
     def test__create_new_username_credential_fails_no_args(self, mock_pass):
         active_session = Session()
         with self.assertRaises(SystemExit):
-            active_session._create_new_username_credential(None)
+            active_session._create_new_credential(None, None)
 
     # These two already have a username saved and pass in a password as argument
     def test__create_new_token_credential_succeeds_new_token(self, mock_pass):
@@ -124,7 +139,7 @@ class BuildCredentialsTests(unittest.TestCase):
         active_session = Session()
         active_session.username = "user"
         active_session.site = ""
-        auth = active_session._create_new_username_credential(test_password)
+        auth = active_session._create_new_credential(test_password, Session.PASSWORD_CRED_TYPE)
         assert auth is not None
 
     # this one has a token saved
@@ -143,7 +158,7 @@ class BuildCredentialsTests(unittest.TestCase):
         active_session = Session()
         active_session.username = "user3"
         active_session.site = ""
-        auth = active_session._create_new_username_credential(None)
+        auth = active_session._create_new_credential(None, None)
         assert mock_pass.has_been_called()
         assert auth is not None
         assert auth.username == "user3", auth
@@ -163,7 +178,7 @@ class BuildCredentialsTests(unittest.TestCase):
         test_args.password = "pwordddddd"
         active_session = Session()
         active_session._update_session_data(test_args)
-        auth = active_session._create_new_username_credential(test_args.password)
+        auth = active_session._create_new_credential(test_args.password, Session.PASSWORD_CRED_TYPE)
 
 
 class PromptingTests(unittest.TestCase):
@@ -217,7 +232,6 @@ class CreateSessionTests(unittest.TestCase):
         test_args.token = "foo"
         new_session = Session()
         auth = new_session.create_session(test_args)
-        print(new_session)
         assert auth is not None, auth
         assert auth.auth_token is not None, auth.auth_token
         assert auth.auth_token.name is not None, auth.auth_token
@@ -247,7 +261,11 @@ class CreateSessionTests(unittest.TestCase):
         mock_path = _set_mocks_for_json_file_exists(mock_path, False)
         test_args = Namespace(**vars(args_to_mock))
         test_args.username = "uuuu"
-        test_args.password_file = "filename"
+        print(os.path.dirname(__file__))
+        # filename = os.path.join(os.path.dirname(__file__),"test_credential_file.txt")
+        test_args.password_file = os.getcwd()+"/test_credential_file.txt"
+        mock_cred_file = _set_mocks_for_creds_file(mock_file)
+        print(mock_cred_file.readlines())
         new_session = Session()
 
         auth = new_session.create_session(test_args)
