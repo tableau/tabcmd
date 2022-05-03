@@ -1,26 +1,30 @@
 
-
 import os
 import locale
 import gettext
 import subprocess
 
-domain = 'create_group_command'
+domain = 'delete_group_command'
 current_locale, encoding = locale.getdefaultlocale()
+
+if current_locale not in ["en_GB", "fr_CA",  "zh_TW"]:
+    abbreviated_locale = current_locale.split("_")[0]
+    if abbreviated_locale not in ["de", "es", "fr", "ga", "it", "ja", "ko", "pt", "sv", "zh"]:
+        current_locale = "en"
+
 current_directory = os.path.dirname(__file__)
 # locale_path = current_directory + '/locales/' + current_locale + '/LC_MESSAGES/'
 locale_path = "tabcmd/locales/"
 
+# Have this run as a part of setup.py?
 # subprocess.run(["tabcmd/i18n/pygettext.py", "-d", "create_group_command", "-o",
-#                 "tabcmd/locales/el_GR/LC_MESSAGES/create_group_command.po",
-#                 "tabcmd/commands/group/create_group_command.py"])
-# subprocess.run(["tabcmd/i18n/msgfmt.py", "-o",
-#                 "tabcmd/locales/el_GR/LC_MESSAGES/create_group_command.mo",
-#                 "tabcmd/locales/el_GR/LC_MESSAGES/create_group_command"])
+#                 "tabcmd/locales/"+current_locale+"/LC_MESSAGES/delete_group_command.po",
+#                 "tabcmd/commands/group/delete_group_command.py"])
+subprocess.run(["tabcmd/i18n/msgfmt.py", "-o",
+                "tabcmd/locales/"+current_locale+"/LC_MESSAGES/delete_group_command.mo",
+                "tabcmd/locales/"+current_locale+"/LC_MESSAGES/delete_group_command"])
 
 
-language = gettext.translation(domain, localedir=locale_path, languages=["el_GR"], fallback = True)
+language = gettext.translation(domain, localedir=locale_path, languages=[current_locale], fallback = True)
 language.install()
 _ = language.gettext  # Greek
-#
-# print(_("helloworld"))
