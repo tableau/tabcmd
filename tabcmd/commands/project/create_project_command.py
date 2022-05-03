@@ -5,6 +5,7 @@ from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
 from tabcmd.commands.constants import Errors
+from tabcmd import _
 
 
 class CreateProjectCommand(Server):
@@ -38,11 +39,11 @@ class CreateProjectCommand(Server):
             readable_name = "{0}/{1}".format(args.parent_project_path, args.project_name)
             parent_id = parent.id
             logger.debug("parent project path = `{0}`, id = {1}".format(args.parent_project_path, parent_id))
-        logger.info("===== Creating project '{}' on the server...".format(readable_name))
+        logger.info(_("===== Creating project '{}' on the server...").format(readable_name))
         new_project = TSC.ProjectItem(args.project_name, args.description, None, parent_id)
         try:
             project_item = server.projects.create(new_project)
-            logger.info("===== Succeeded")
+            logger.info(_("===== Succeeded"))
             return project_item
         except TSC.ServerResponseError as e:
             if args.continue_if_exists and Errors.is_resource_conflict(e):
