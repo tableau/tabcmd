@@ -4,7 +4,7 @@ import locale
 import gettext
 import subprocess
 
-domain = 'create_project_command'
+domain = 'delete_project_command'
 current_locale, encoding = locale.getdefaultlocale()
 
 if current_locale not in ["en_GB", "fr_CA",  "zh_TW"]:
@@ -17,12 +17,12 @@ current_directory = os.path.dirname(__file__)
 locale_path = "tabcmd/locales/"
 
 # Have this run as a part of setup.py?
-subprocess.run(["tabcmd/i18n/pygettext.py", "-d", "create_group_command", "-o",
-                "tabcmd/locales/"+current_locale+"/LC_MESSAGES/create_project_command.po",
-                "tabcmd/commands/group/create_project_command.py"])
+# subprocess.run(["tabcmd/i18n/pygettext.py", "-d", "delete_project_command", "-o",
+#                 "tabcmd/locales/"+current_locale+"/LC_MESSAGES/delete_project_command.po",
+#                 "tabcmd/commands/project/delete_project_command.py"])
 subprocess.run(["tabcmd/i18n/msgfmt.py", "-o",
-                "tabcmd/locales/"+current_locale+"/LC_MESSAGES/create_project_command.mo",
-                "tabcmd/locales/"+current_locale+"/LC_MESSAGES/create_project_command"])
+                "tabcmd/locales/"+current_locale+"/LC_MESSAGES/delete_project_command.mo",
+                "tabcmd/locales/"+current_locale+"/LC_MESSAGES/delete_project_command"])
 
 
 language = gettext.translation(domain, localedir=locale_path, languages=[current_locale], fallback = True)

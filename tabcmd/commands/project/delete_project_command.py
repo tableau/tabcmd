@@ -1,9 +1,11 @@
 import tableauserverclient as TSC
 
+from tabcmd.commands.constants import Errors
 from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
+from tabcmd import _
 
 
 class DeleteProjectCommand(Server):
@@ -38,8 +40,8 @@ class DeleteProjectCommand(Server):
         project_id = project.id
 
         try:
-            logger.info("Deleting project '{}' from the server...".format(args.project_name))
+            logger.info(_("Deleting project '{}' from the server...").format(args.project_name))
             server.projects.delete(project_id)
-            logger.info("===== Succeeded")
+            logger.info(_("===== Succeeded"))
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, "Failed to delete project", e)
