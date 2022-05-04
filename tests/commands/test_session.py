@@ -65,21 +65,6 @@ def _set_mocks_for_json_file_exists(mock_path, does_it_exist=True):
     mock_path.exists.return_value = does_it_exist
     return mock_path
 
-
-def _set_mocks_for_creds_file(mock_file):
-    # patch("builtins.open", mock_open(read_data="dummypassword"))
-    # dummy_file = mock_open()
-    # dummy_file.return_value = "dummypassword"
-    # return dummy_file
-    mock_file.readlines.return_value = "dummypassword"
-    return mock_file
-
-    # with mock.patch('builtins.open', mock.mock_open(read_data='dummypassword')):
-    #     with open(file_path) as f:
-    #
-    #         return print(f.read())
-
-
 @mock.patch("json.dump")
 @mock.patch("json.load")
 @mock.patch("os.path")
@@ -255,22 +240,37 @@ class CreateSessionTests(unittest.TestCase):
         assert mock_tsc.has_been_called()
 
     @mock.patch("tableauserverclient.Server")
-    def test_create_session_first_time_with_password_file(
+    def test_create_session_first_time_with_password_file_as_password(
         self, mock_tsc, mock_pass, mock_file, mock_path, mock_json_load, mock_json_dump
     ):
         mock_path = _set_mocks_for_json_file_exists(mock_path, False)
         test_args = Namespace(**vars(args_to_mock))
         test_args.username = "uuuu"
-        # filename = os.path.join(os.path.dirname(__file__),"test_credential_file.txt")
-        # test_args.password_file = os.getcwd()+"/test_credential_file.txt"
         test_args.password_file = "filename"
-        mock_cred_file = _set_mocks_for_creds_file(mock_file)
-        test_args.password = mock_cred_file.readlines()
-        new_session = Session()
-        auth = new_session.create_session(test_args)
+        with mock.patch('builtins.open', mock.mock_open(read_data="my_password")):
+            new_session = Session()
+            auth = new_session.create_session(test_args)
+
         assert auth is not None, auth
         assert auth.auth_token is not None, auth.auth_token
         assert new_session.username == "uuuu", new_session
+        assert new_session.password_file == "filename", new_session
+        assert mock_tsc.has_been_called()
+
+    @mock.patch("tableauserverclient.Server")
+    def test_create_session_first_time_with_password_file_as_token(
+        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json_load, mock_json_dump
+    ):
+        mock_path = _set_mocks_for_json_file_exists(mock_path, False)
+        test_args = Namespace(**vars(args_to_mock))
+        test_args.token_name ="mytoken"
+        test_args.password_file = "filename"
+        with mock.patch('builtins.open', mock.mock_open(read_data="my_token")):
+            new_session = Session()
+            auth = new_session.create_session(test_args)
+
+        assert auth is not None, auth
+        assert auth.auth_token is not None, auth.auth_token
         assert new_session.password_file == "filename", new_session
         assert mock_tsc.has_been_called()
 
