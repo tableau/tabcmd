@@ -146,7 +146,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             logger.debug("Fetched view item {}".format(view_item.name))
             req_option_pdf = TSC.PDFRequestOptions(maxage=1)
             server.views.populate_pdf(view_item, req_option_pdf)
-            filename = GetUrl.filename_from_args(args.filename, view_item.name, ".pdf")
+            filename = GetUrl.filename_from_args(args.filename, view_item.name, "pdf")
             with open(filename, "wb") as f:
                 f.write(view_item.pdf)
             logger.info("Saved {} to '{}'".format(args.url, filename))
@@ -160,7 +160,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view)
             req_option_csv = TSC.CSVRequestOptions(maxage=1)
             server.views.populate_csv(view_item, req_option_csv)
-            filename = GetUrl.filename_from_args(args.filename, view_item.name, ".png")
+            filename = GetUrl.filename_from_args(args.filename, view_item.name, "png")
             with open(filename, "wb") as f:
                 f.write(view_item.png)
             logger.info("Saved {} to '{}'".format(args.url, filename))
@@ -174,7 +174,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view_url)
             req_option_csv = TSC.CSVRequestOptions(maxage=1)
             server.views.populate_csv(view_item, req_option_csv)
-            file_name_with_path = GetUrl.filename_from_args(args.filename, view_item.name, ".csv")
+            file_name_with_path = GetUrl.filename_from_args(args.filename, view_item.name, "csv")
             with open(file_name_with_path, "wb") as f:
                 f.write(view_item.csv)
             logger.info("Saved {} to '{}'".format(args.url, file_name_with_path))
