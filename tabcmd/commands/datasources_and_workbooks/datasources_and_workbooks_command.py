@@ -19,9 +19,10 @@ class DatasourcesAndWorkbooks(Server):
             req_option.filter.add(TSC.Filter("contentUrl", TSC.RequestOptions.Operator.Equals, view_content_url))
             matching_views, _ = server.views.get(req_option)
             selected_view = matching_views[0]
-            return selected_view
         except Exception as e:
             Errors.exit_with_error(logger, "Could not find view. Please check the name and try again.", e)
+
+        return selected_view
 
     @staticmethod
     def get_wb_by_content_url(logger, server, workbook_content_url) -> TSC.WorkbookItem:
@@ -37,6 +38,7 @@ class DatasourcesAndWorkbooks(Server):
             )
             matching_workbooks, _ = server.workbooks.get(req_option)
             selected_workbook = matching_workbooks[0]
-            return selected_workbook
         except Exception:
             Errors.exit_with_error(logger, "Could not find workbook. Please check the name and try again.")
+
+        return selected_workbook

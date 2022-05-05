@@ -41,6 +41,9 @@ To install tabcmd, follow these steps:
 - autoformat your code with black (https://pypi.org/project/black/)
 > black --line-length 120 tabcmd tests [--check]
 
+- type check with mypy
+> mypy tabcmd tests
+
 - packaging is done with pyinstaller. You can only build an executable for the platform you build on.
 > pyinstaller tabcmd.py --clean --noconfirm
 
