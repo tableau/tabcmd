@@ -7,6 +7,7 @@ from tabcmd.commands.datasources_and_workbooks.export_command import ExportComma
 from tabcmd.execution.global_options import *
 from tabcmd.commands.constants import Errors
 
+
 class GetUrl(DatasourcesAndWorkbooks):
     """
     This command gets the resource from Tableau Server that's represented
@@ -50,7 +51,6 @@ class GetUrl(DatasourcesAndWorkbooks):
             else:
                 Errors.exit_with_error(logger, message="No valid file extension found in url or filename")
 
-
     @staticmethod
     def evaluate_content_type(logger, url):
         # specify a view to get using "/views/<workbookname>/<viewname>.<extension>"
@@ -61,7 +61,6 @@ class GetUrl(DatasourcesAndWorkbooks):
             return "workbook"
         else:
             Errors.exit_with_error(logger, message="Content requested must be a view or workbook")
-
 
     @staticmethod
     def get_file_type_from_filename(logger, file_name, url):
@@ -113,15 +112,13 @@ class GetUrl(DatasourcesAndWorkbooks):
     def get_view_url(url):  # "/views/wb-name/view-name" -> wb-name/sheets/view-name
         name_parts = url.split("/")  # ['', 'views', 'wb-name', 'view-name']
         if len(name_parts) != 4:
-            raise ValueError(
-                "The url given did not match the expected format: 'views/workbook-name/view-name'")
+            raise ValueError("The url given did not match the expected format: 'views/workbook-name/view-name'")
         view_name = name_parts[::-1][0]
         view_name = GetUrl.strip_query_params(view_name)
         view_name = GetUrl.strip_extension(view_name)
 
         workbook_name = name_parts[2]
         return "{}/sheets/{}".format(workbook_name, view_name)
-
 
     @staticmethod
     def filename_from_args(file_argument, item, filetype):
@@ -170,7 +167,6 @@ class GetUrl(DatasourcesAndWorkbooks):
                 logger.info("Exported successfully")
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, "Server error:", e)
-
 
     @staticmethod
     def generate_twb(logger, server, args):

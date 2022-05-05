@@ -5,6 +5,7 @@ from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 from tabcmd.commands.constants import Errors
 
+
 class ExportCommand(DatasourcesAndWorkbooks):
 
     name: str = "export"
@@ -48,7 +49,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
         session = Session()
         server = session.create_session(args)
         logger.info("===== Requesting '{0}' from the server...".format(args.url))
-        view_content_url, wb_content_url = ExportCommand.parse_url_to_workbook_and_view(args.url)
+        view_content_url, wb_content_url = ExportCommand.parse_export_url_to_workbook_and_view(args.url)
         logger.debug("Parsed to {}, {}".format(wb_content_url, view_content_url))
         if args.fullpdf:  # it's a workbook
             try:
@@ -60,9 +61,9 @@ class ExportCommand(DatasourcesAndWorkbooks):
                 req_option_pdf = TSC.PDFRequestOptions(maxage=1)
                 server.workbooks.populate_pdf(workbook_item, req_option_pdf)
             except Exception as e:
-                Errors.exit_with_error(logger, "Error downloading workbook pdf")
+                Errors.exit_with_error(logger, "Error downloading workbook pdf", e)
             output = workbook_item.pdf
-            filename = "{}.pdf".format(wb_content_url)
+            default_filename = "{}.pdf".format(wb_content_url)
 
         elif args.pdf or args.png or args.csv:  # it's a view
             try:
@@ -73,13 +74,13 @@ class ExportCommand(DatasourcesAndWorkbooks):
             try:
                 if args.pdf:
                     output = ExportCommand.download_pdf(server, view_item)
-                    filename = "{}.pdf".format(view_item.name)
+                    default_filename = "{}.pdf".format(view_item.name)
                 elif args.csv:
                     output = ExportCommand.download_csv(server, view_item)
-                    filename = "{}.csv".format(view_item.name)
+                    default_filename = "{}.csv".format(view_item.name)
                 elif args.png:
                     output = ExportCommand.download_png(server, view_item)
-                    filename = "{}.png".format(view_item.name)
+                    default_filename = "{}.png".format(view_item.name)
             except Exception as e:
                 Errors.exit_with_error(logger, "Error downloading view from server", e)
 
@@ -87,7 +88,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
             ExportCommand.exit_with_error(logger, "You must specify an export method")
 
         try:
-            save_name = args.filename or filename
+            save_name = args.filename or default_filename
             ExportCommand.save_to_file(logger, output, save_name)
             logger.info("===== Saved {0} to '{1}'".format(args.url, save_name))
 
@@ -114,7 +115,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
         return view_item.png
 
     @staticmethod
-    def parse_url_to_workbook_and_view(url):
+    def parse_export_url_to_workbook_and_view(url):
         # input should be workbook_name/view_name
         if not url.find("/"):
             return None, None
