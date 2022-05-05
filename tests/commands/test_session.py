@@ -67,17 +67,8 @@ def _set_mocks_for_json_file_exists(mock_path, does_it_exist=True):
 
 
 def _set_mocks_for_creds_file(mock_file):
-    # patch("builtins.open", mock_open(read_data="dummypassword"))
-    # dummy_file = mock_open()
-    # dummy_file.return_value = "dummypassword"
-    # return dummy_file
     mock_file.readlines.return_value = "dummypassword"
     return mock_file
-
-    # with mock.patch('builtins.open', mock.mock_open(read_data='dummypassword')):
-    #     with open(file_path) as f:
-    #
-    #         return print(f.read())
 
 
 @mock.patch("json.dump")
