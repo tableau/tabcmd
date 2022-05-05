@@ -32,7 +32,6 @@ def _test_command(test_args: list[str]):
 
 
 class E2ETests(unittest.TestCase):
-
     def test_create_delete_group(self):
         command = "creategroup"
         arguments = [command, group_name]

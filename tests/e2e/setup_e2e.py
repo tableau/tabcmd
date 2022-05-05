@@ -14,9 +14,7 @@ exe = os.path.join(launch_path, our_program)
 
 def make_installer():
     # TODO: add command to run pyinstaller
-    executable = [
-        exe
-    ]
+    executable = [exe]
 
 
 def login():
