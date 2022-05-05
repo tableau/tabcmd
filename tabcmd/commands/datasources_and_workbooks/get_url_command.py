@@ -19,7 +19,9 @@ class GetUrl(DatasourcesAndWorkbooks):
 
     @staticmethod
     def define_args(get_url_parser):
-        get_url_parser.add_argument("url", help="url that identifies the view or workbook to export")
+        get_url_parser.add_argument("url",
+                                    help="url that identifies the view or workbook to export\n"
+                                         "e.g: /workbooks/workbook-name.twbx or views/view-name.pdf")
         set_filename_arg(get_url_parser)
         # these don't need arguments, although that would be a good future addition
         # tabcmd get "/views/Finance/InvestmentGrowth.png?:size=640,480" -f growth.png
@@ -38,7 +40,7 @@ class GetUrl(DatasourcesAndWorkbooks):
         content_type = GetUrl.evaluate_content_type(logger, args.url)
         if content_type == "workbook":
             if file_type == "twbx" or file_type == "twb":
-                GetUrl.generate_twb(logger, server, args)
+                GetUrl.generate_twb(logger, server, args, file_type)
             else:
                 Errors.exit_with_error(logger, message="A workbook can only be exported as twb or twbx")
         else:  # content type = view
@@ -60,21 +62,26 @@ class GetUrl(DatasourcesAndWorkbooks):
         elif url.find("/workbooks/") == 0:
             return "workbook"
         else:
-            Errors.exit_with_error(logger, message="Content requested must be a view or workbook")
+            Errors.exit_with_error(logger, message="Content url must be in the format /views/workbook-name/view-name or /workbooks/workbook-name")
 
     @staticmethod
     def get_file_type_from_filename(logger, file_name, url):
         type_of_file = None
-        if file_name is not None:
+
+        if file_name:
             logger.debug("Get file type from filename: {}".format(file_name))
             type_of_file = GetUrl.get_file_extension(file_name)
-        elif url.index(".") > 0:  # file_name is None, grab from url
+        else:
             logger.debug("Get file type from url: {}".format(url))
-            type_of_file = GetUrl.get_file_extension(url)
-        if not type_of_file:
-            Errors.exit_with_error(logger, "The url must include a file extension")
+            if url and url.find(".") > 0:
+                type_of_file = GetUrl.get_file_extension(url)
 
+        if not type_of_file:
+            Errors.exit_with_error(logger, "The url must include a file extension if no filename is specified")
+
+        logger.debug("extension from command line is {}".format(type_of_file))
         if type_of_file in ["pdf", "csv", "png", "twb", "twbx"]:
+            logger.debug("Valid file type")
             return type_of_file
 
         Errors.exit_with_error(logger, "The file type {} is invalid".format(type_of_file))
@@ -121,9 +128,9 @@ class GetUrl(DatasourcesAndWorkbooks):
         return "{}/sheets/{}".format(workbook_name, view_name)
 
     @staticmethod
-    def filename_from_args(file_argument, item, filetype):
+    def filename_from_args(file_argument, item_name, filetype):
         if file_argument is None:
-            file_argument = "{}.{}".format(item.name, filetype)
+            file_argument = "{}.{}".format(item_name, filetype)
         return file_argument
 
     @staticmethod
@@ -131,12 +138,13 @@ class GetUrl(DatasourcesAndWorkbooks):
         view_url = GetUrl.get_view_url(args.url)
         try:
             view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view_url)
+            logger.debug("Fetched view item {}".format(view_item.name))
             req_option_pdf = TSC.PDFRequestOptions(maxage=1)
             server.views.populate_pdf(view_item, req_option_pdf)
             filename = GetUrl.filename_from_args(args.filename, view_item.name, ".pdf")
             with open(filename, "wb") as f:
                 f.write(view_item.pdf)
-                logger.info("Exported successfully")
+            logger.info("Saved {} to '{}'".format(args.url, filename))
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, "Server error:", e)
 
@@ -150,7 +158,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             filename = GetUrl.filename_from_args(args.filename, view_item.name, ".png")
             with open(filename, "wb") as f:
                 f.write(view_item.png)
-                logger.info("Exported successfully")
+            logger.info("Saved {} to '{}'".format(args.url, filename))
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, "Server error:", e)
 
@@ -161,19 +169,20 @@ class GetUrl(DatasourcesAndWorkbooks):
             view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view_url)
             req_option_csv = TSC.CSVRequestOptions(maxage=1)
             server.views.populate_csv(view_item, req_option_csv)
-            file_name_with_path = GetUrl.filename_from_args(args.filename, view_item, ".csv")
+            file_name_with_path = GetUrl.filename_from_args(args.filename, view_item.name, ".csv")
             with open(file_name_with_path, "wb") as f:
                 f.write(view_item.csv)
-                logger.info("Exported successfully")
+            logger.info("Saved {} to '{}'".format(args.url, file_name_with_path))
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, "Server error:", e)
 
     @staticmethod
-    def generate_twb(logger, server, args):
-        workbook = GetUrl.get_workbook_name(logger, args.url)
+    def generate_twb(logger, server, args, file_extension):
+        workbook_name = GetUrl.get_workbook_name(logger, args.url)
         try:
-            target_workbook = GetUrl.get_wb_by_content_url(logger, server, workbook)
-            server.workbooks.download(target_workbook.id, filepath=args.filename, no_extract=False)
-            logger.info("Workbook {} exported".format(target_workbook.name))
+            target_workbook = GetUrl.get_wb_by_content_url(logger, server, workbook_name)
+            file_name_with_path = GetUrl.filename_from_args(args.filename, workbook_name, file_extension)
+            server.workbooks.download(target_workbook.id, filepath=file_name_with_path, no_extract=False)
+            logger.info("Saved {} to '{}'".format(args.url, file_name_with_path))
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, "Server error:", e)

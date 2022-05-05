@@ -41,12 +41,17 @@ class GetURlTests(unittest.TestCase):
     def test_check_for_extension_twb(self):
         filename = "workbooks/viewname.twb"
         filetype = GetUrl.get_file_extension(filename)
-        assert filetype
+        assert filetype == "twb", filetype
+
+    def test_check_for_extension_twbx(self):
+        filename = "workbooks/viewname.twbx"
+        filetype = GetUrl.get_file_extension(filename)
+        assert filetype == "twbx", filetype
 
     def test_check_for_extension_pdf(self):
         filename = "workbooks/workbook/viewname.pdf"
         filetype = GetUrl.get_file_extension(filename)
-        assert filetype
+        assert filetype == "pdf", filetype
 
     """
     GetUrl.get_view_without_extension(view_name)
