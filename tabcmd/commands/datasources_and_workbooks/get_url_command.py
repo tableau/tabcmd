@@ -19,9 +19,11 @@ class GetUrl(DatasourcesAndWorkbooks):
 
     @staticmethod
     def define_args(get_url_parser):
-        get_url_parser.add_argument("url",
-                                    help="url that identifies the view or workbook to export\n"
-                                         "e.g: /workbooks/workbook-name.twbx or views/view-name.pdf")
+        get_url_parser.add_argument(
+            "url",
+            help="url that identifies the view or workbook to export\n"
+            "e.g: /workbooks/workbook-name.twbx or views/view-name.pdf",
+        )
         set_filename_arg(get_url_parser)
         # these don't need arguments, although that would be a good future addition
         # tabcmd get "/views/Finance/InvestmentGrowth.png?:size=640,480" -f growth.png
@@ -62,7 +64,10 @@ class GetUrl(DatasourcesAndWorkbooks):
         elif url.find("/workbooks/") == 0:
             return "workbook"
         else:
-            Errors.exit_with_error(logger, message="Content url must be in the format /views/workbook-name/view-name or /workbooks/workbook-name")
+            Errors.exit_with_error(
+                logger,
+                message="Content url must be in the format /views/workbook-name/view-name or /workbooks/workbook-name",
+            )
 
     @staticmethod
     def get_file_type_from_filename(logger, file_name, url):
