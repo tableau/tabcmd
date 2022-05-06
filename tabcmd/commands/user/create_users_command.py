@@ -63,6 +63,5 @@ class CreateUsersCommand(UserCommand):
         logger.info("Number of users added: {}".format(number_of_users_added))
         if number_of_errors > 0:
             logger.debug("Explaining {} errors".format(number_of_errors))
-        for e in error_list:
-            Errors.check_common_error_codes_and_explain(logger, e)
-
+        for exception in error_list:
+            Errors.check_common_error_codes_and_explain(logger, exception)
