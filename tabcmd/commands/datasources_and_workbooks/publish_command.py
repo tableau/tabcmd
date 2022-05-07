@@ -30,7 +30,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
 
     @staticmethod
     def run_command(args):
-        logger = log(__name__, args.logging_level)
+        logger = log(__class__.__name__, args.logging_level)
         logger.debug("======================= Launching command =======================")
         logger.debug(args)
         session = Session()
