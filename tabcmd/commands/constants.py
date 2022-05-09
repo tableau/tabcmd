@@ -29,8 +29,8 @@ class Errors:
 
     @staticmethod
     def exit_with_error(logger, message, exception=None):
-        logger.debug("exit with error")
         try:
+            logger.debug("exit with error")
             if message and not exception:
                 logger.error(message)
             if exception:
