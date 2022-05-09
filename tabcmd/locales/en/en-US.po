@@ -1,14 +1,29 @@
-# Tabcmd message strings
+# Tabcmd output strings
 # Copyright (C) YEAR Tableau Software
-#
 
 "Project-Id-Version: PACKAGE VERSION\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
 
+# check in properties files from the monolith in all languages
+# automated properties -> po http://docs.translatehouse.org/projects/translate-toolkit/en/latest/commands/prop2po.html
+# gettext: po -> mo
 
 # SECTION: results messages
+
+msgid "tabcmd.result.succeeded" #common.output.succeeded=
+msgstr "===== Succeeded"
+
+msgid "tabcmd.percentage.zero" #session.monitorjob.percent_complete
+msgstr "======== 0% complete ========"  # {0}% complete
+
+msgid "tabcmd.percentage.hundred"
+msgstr "======== 100% complete ========"
+
+# These outcome reporting lines were all returned from the server in clientxml
+# https://sourcegraph.prod.tableautools.com/teams/near/-/blob/workgroup/src/shared/libraries/tab-strings/res/localization/shared_wg_en.properties
+# how much of this can be replaced by server responses?
 
 msgid "tabcmd.result.already_exists.group"
 msgstr "Group called ''{}'' already exists"
@@ -22,17 +37,11 @@ msgstr "Error creating group"
 msgid "tabcmd.result.failed.create.user"
 msgstr "Failed to add user: {}"
 
-msgid "tabcmd.result.failed.find.group"
+msgid "tabcmd.result.failed.find.group" #publish.errors.server_resource_not_found
 msgstr "Error fetching group"
 
-msgid "tabcmd.result.failed.find.parent_project"
+msgid "tabcmd.result.failed.find.parent_project" publish.errors.server_resource_not_found
 msgstr "Error fetching parent project"
-
-msgid "tabcmd.find.parent_project"
-msgstr "===== Identifying parent project '{}' on the server..."
-
-msgid "tabcmd.result.succeeded"
-msgstr "===== Succeeded"
 
 msgid "tabcmd.result.success.create_user"
 msgstr "Successfully created user: {}"
@@ -46,11 +55,8 @@ msgstr "Successfully deleted user from site: {}"
 msgid "tabcmd.result.success.user_actions"
 msgstr "Successfully {0} {1} for group {2}"
 
-msgid "tabcmd.percentage.zero"
-msgstr "======== 0% complete ========"
-
-msgid "tabcmd.percentage.hundred"
-msgstr "======== 100% complete ========"
+msgid "tabcmd.delete.users"
+msgstr "======== Deleted {} user(s)"
 
 msgid "tabcmd.report.lines_processed"
 msgstr "======== Lines processed: {} ========="
@@ -104,86 +110,84 @@ msgstr "publishsamples expects the specified project to exist already"
 msgid "tabcmd.result.failure.publish_samples"
 msgstr "Failed publishing samples to project"
 
-
 # SECTION: action descriptions
 
+# These first few are intermediate actions, not the intended core actions
 msgid "tabcmd.launching"
 msgstr "======================= Launching command ======================="
 
-msgid "tabcmd.add.users.to_x"
-msgstr "Adding users listed in {0} to '{1}'"
-
-msgid "tabcmd.create.group"
-msgstr "Creating group {name} on the server"
-
-msgid "tabcmd.create.project"
-msgstr "===== Creating project '{}' on the server..."
-
-msgid "tabcmd.add.users.to_site"
-msgstr "===== Adding users listed in {0} to {1}..."
-
-msgid "tabcmd.create.users"
-msgstr "===== Adding users listed in {0} to {1}..."
-
-msgid "tabcmd.find.group"
+msgid "tabcmd.find.group" #n/a
 msgstr "Finding group ''{}'' on server..."
 
-msgid "tabcmd.delete.group"
+msgid "tabcmd.find.parent_project"
+msgstr "===== Identifying parent project '{}' on the server..."
+
+# Each actual command has a status line in translation
+msgid "tabcmd.create.group" #creategroup.status
+msgstr "Creating group {name} on the server"
+
+msgid "tabcmd.create.project" #createproject.status
+msgstr "===== Creating project '{}' on the server..."
+
+msgid "tabcmd.add.users.to_site" #createsiteusers.status, addusers.status, createusers.status
+msgstr "===== Adding users listed in {0} to {1}..."
+
+msgid "tabcmd.create.users" #createusers.status
+msgstr "===== Adding users listed in {0} to the server..."
+
+msgid "tabcmd.delete.group" #deletegroup.status
 msgstr "Deleting group ''{}'' on server..."
 
-msgid "tabcmd.delete.project"
+msgid "tabcmd.delete.project" #deleteproject.status
 msgstr "Deleting project '{}' from the server..."
 
-msgid "tabcmd.delete.users"
-msgstr "======== Deleted {} user(s)"
-
-msgid "tabcmd.delete.users.site"
+msgid "tabcmd.delete.users.site" #deletesiteusers.status
 msgstr "Deleting site users listed in {0}..."
 
-msgid "tabcmd.remove.users.from_group"
+msgid "tabcmd.remove.users.from_group" #removeusers.status
 msgstr "Removing users listed in {0} from the group {1}..."
 
-msgid "tabcmd.delete.users.from_server"
+msgid "tabcmd.delete.users.from_server" #deleteusers.status
 msgstr "Removing users listed in {0} from the server..."
 
 
 # SECTION: help messages/argument descriptions
-msgid "tabcmd.command.description.create_group"
+msgid "tabcmd.command.description.create_group" #creategroup.short_description
 msgstr "Create a local group"
 
 msgid "tabcmd.command.arg.description.create_group.name"
 msgstr "Name of the new group"
 
-msgid "tabcmd.command.description.create_project"
+msgid "tabcmd.command.description.create_project" #createproject.short_description
 msgstr "Create a project"
 
-msgid "tabcmd.command.arg.description.create_project.name"
+msgid "tabcmd.command.arg.description.create_project.name" #createproject.options.name
 msgstr "Name of the new project"
 
-msgid "tabcmd.command.description.delete_group"
+msgid "tabcmd.command.description.delete_group" #deletegroup.short_description
 msgstr "Delete a group"
 
-msgid "tabcmd.command.arg.description.delete_group.name"
+msgid "tabcmd.command.arg.description.delete_group.name" #deletegroup.short_description
 msgstr "Name of group to delete"
 
-msgid "tabcmd.command.description.create_users"
+msgid "tabcmd.command.description.create_users" #createusers.short_description
 msgstr "Create users on the current site"
 
-msgid "tabcmd.command.description.deletesiteusers"
+msgid "tabcmd.command.description.deletesiteusers" #deletesiteusers.short_description
 msgstr "Delete site users"
 
-msgid "tabcmd.command.description.remove_users"
+msgid "tabcmd.command.description.remove_users" # removeusers.options.users
 msgstr "Remove users from a group"
 
-msgid "tabcmd.command.description.createsiteusers"
+msgid "tabcmd.command.description.createsiteusers" #createsiteusers.short_description
 msgstr "Create users on the current site"
 
-msgid "tabcmd.command.description.remove_users.argument.name"
+msgid "tabcmd.command.description.remove_users.argument.name" #addusers.short_description
 msgstr "The group to remove users from."
 
-msgid "tabcmd.command.description.publish_samples"
+msgid "tabcmd.command.description.publish_samples" #publishsamples.short_description
 msgstr "Publish samples to the server"
 
-msgid "tabcmd.command.description.publish_samples.argument.project_name"
+msgid "tabcmd.command.description.publish_samples.argument.project_name" #publishsamples.options.projectname
 msgstr "Publishes the Tableau samples into the specified project. If the project name includes spaces, "
             "enclose the entire name in quotes."
