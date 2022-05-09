@@ -18,6 +18,9 @@ class Session:
     TOKEN_CRED_TYPE = "token"
     PASSWORD_CRED_TYPE = "password"
 
+    TOKEN_CRED_TYPE = "token"
+    PASSWORD_CRED_TYPE = "password"
+
     def __init__(self):
         self.username = None
         # we don't store the password
@@ -40,7 +43,7 @@ class Session:
         self.timeout = None
 
         self.logging_level = "info"
-        self.logger = log(__name__, self.logging_level)
+        self.logger = log(__class__.__name__, self.logging_level)
         self._read_from_json()
         self.tableau_server = None  # this one is an object that doesn't get persisted in the file
 

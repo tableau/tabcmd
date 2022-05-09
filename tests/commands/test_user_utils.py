@@ -33,6 +33,8 @@ class UserDataTest(unittest.TestCase):
         "username, pword, fname, creator, site, yes, email",
         "username, pword, fname, explorer, none, no, email",
         "",
+        "u",
+        "p",
     ]
 
     valid_username_content = ["jfitzgerald@tableau.com"]

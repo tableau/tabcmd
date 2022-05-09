@@ -5,6 +5,7 @@ from tabcmd.commands.auth.session import Session
 from tabcmd.commands.constants import Errors
 from tabcmd.execution.logger_config import log
 from .user_data import UserCommand
+from tabcmd import _
 
 
 class AddUserCommand(UserCommand):
@@ -23,11 +24,11 @@ class AddUserCommand(UserCommand):
 
     @staticmethod
     def run_command(args):
-        logger = log(__name__, args.logging_level)
-        logger.debug("======================= Launching command =======================")
+        logger = log(__class__.__name__, args.logging_level)
+        logger.debug("tabcmd.launching")
         session = Session()
         server = session.create_session(args)
 
-        logger.info("Adding users listed in {0} to group '{1}'".format(args.users.name, args.name))
+        logger.info(_("tabcmd.add.users.to_x").format(args.users.name, args.name))
 
         UserCommand.act_on_users(logger, server, "added", server.groups.add_user, args)

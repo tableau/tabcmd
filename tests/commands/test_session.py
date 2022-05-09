@@ -65,6 +65,12 @@ def _set_mocks_for_json_file_exists(mock_path, does_it_exist=True):
     mock_path.exists.return_value = does_it_exist
     return mock_path
 
+
+def _set_mocks_for_creds_file(mock_file):
+    mock_file.readlines.return_value = "dummypassword"
+    return mock_file
+
+
 @mock.patch("json.dump")
 @mock.patch("json.load")
 @mock.patch("os.path")
@@ -246,6 +252,8 @@ class CreateSessionTests(unittest.TestCase):
         mock_path = _set_mocks_for_json_file_exists(mock_path, False)
         test_args = Namespace(**vars(args_to_mock))
         test_args.username = "uuuu"
+        # filename = os.path.join(os.path.dirname(__file__),"test_credential_file.txt")
+        # test_args.password_file = os.getcwd()+"/test_credential_file.txt"
         test_args.password_file = "filename"
         with mock.patch('builtins.open', mock.mock_open(read_data="my_password")):
             new_session = Session()

@@ -91,20 +91,25 @@ class UserCommand(Server):
         line: str = csv_file.readline()
         while line and line != "":
             try:
+                printable_line = line
                 if detailed:
                     # do not print passwords
+                    printable_line = line.split(",")[0]
                     UserCommand._validate_user_or_throw(line, logger)
                 else:
                     logger.debug("> username - {}".format(line))
                     UserCommand._validate_username_or_throw(line)
                 num_valid_lines += 1
+            except IndexError as ie:
+                logger.info("invalid line [{0}]: expecting {1} columns".format(printable_line, Column.MAX))
+                num_errors += 1
             except Exception as exc:
-                logger.info("invalid line [{0}]: {1}".format(line, exc))
+                logger.info("invalid line [{0}]: {1}".format(printable_line, exc))
                 num_errors += 1
             line = csv_file.readline()
         if strict and num_errors > 0:
             Errors.exit_with_error(
-                logger, "Invalid users in file - please fix {} problems and try again.".format(num_errors)
+                logger, "tabcmd.report.errors.user_csv".format(num_errors)
             )
         return num_valid_lines
 
@@ -112,33 +117,26 @@ class UserCommand(Server):
     @staticmethod
     def _validate_username_or_throw(username) -> None:
         if username is None or username == "" or username.strip(" ") == "":
-            raise AttributeError("Username must be specified in csv file")
+            raise AttributeError("tabcmd.report.error.user_csv.need_username")
         if username.find(" ") >= 0:
-            raise AttributeError("Username cannot contain spaces")
+            raise AttributeError("tabcmd.report.error.user.no_spaces_in_username")
         at_symbol = username.find("@")
 
         if at_symbol >= 0:
             username = username[:at_symbol] + "X" + username[at_symbol + 1 :]
             if username.find("@") >= 0:
-                raise AttributeError(
-                    "If a user name includes an @ character that represents anything other than a domain separator, "
-                    "you need to refer to the symbol using the hexadecimal format: \\0x40"
-                )
+                raise AttributeError("tabcmd.report.error.user_csv.at_char")
 
     @staticmethod
     def _validate_user_or_throw(incoming, logger) -> None:
         line = list(map(str.strip, incoming.split(",")))
         logger.debug("> details - {}".format(line[0]))
         if len(line) > Column.MAX:
-            raise AttributeError(
-                "The file contains {} columns, but there are only {} valid columns in a user \
-                 import csv file".format(
-                    len(line), Column.MAX
-                )
+            raise AttributeError("tabcmd.report.error.user_csv.too_many_columns".format(len(line), Column.MAX)
             )
         username = line[Column.USERNAME.value]
         UserCommand._validate_username_or_throw(username)
-        for i in range(1, len(CHOICES) - 1):
+        for i in range(1, len(line)):
             logger.debug("column {}: {}".format(Column(i).name, line[i]))
             UserCommand._validate_item(line[i], CHOICES[i], Column(i))
 
@@ -149,7 +147,7 @@ class UserCommand(Server):
             return
         if item in possible_values or possible_values == []:
             return
-        raise AttributeError("Invalid value for {0}: {1}".format(column_type, item))
+        raise AttributeError("tabcmd.report.error.generic_attribute".format(column_type, item))
 
     @staticmethod
     def get_users_from_file(csv_file: io.TextIOWrapper, logger=None) -> List[TSC.UserItem]:
@@ -223,17 +221,17 @@ class UserCommand(Server):
         n_users_handled: int = 0
         number_of_errors: int = 0
         n_users_listed: int = UserCommand.validate_file_for_import(args.users, logger, strict=args.require_all_valid)
-        logger.debug("Found {} users in file".format(n_users_listed))
+        logger.debug("tabcmd.report.users_listed".format(n_users_listed))
 
         group = None
         try:
             group = UserCommand.find_group(logger, server, args.name)
         except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, "Could not get group", exception=e)
+            Errors.exit_with_error(logger, "tabcmd.result.failed.find.group", exception=e)
 
         error_list = []
         user_obj_list: List[TSC.UserItem] = UserCommand.get_users_from_file(args.users)
-        logger.debug("Successfully parsed {} users".format(len(user_obj_list)))
+        logger.debug("tabcmd.result.success.parsed_users".format(len(user_obj_list)))
         for user_obj in user_obj_list:
             username: str = user_obj.name or "unknown user"
             try:
@@ -249,16 +247,16 @@ class UserCommand(Server):
             try:
                 server_method(group, user_id)
                 n_users_handled += 1
-                logger.info("Successfully {0} {1} for group {2}".format(action_name, username, group))
+                logger.info("tabcmd.result.success.user_actions".format(action_name, username, group))
             except TSC.ServerResponseError as e:
-                Errors.check_common_error_codes_and_explain(logger.info, e)
+                Errors.check_common_error_codes_and_explain(logger, e)
                 number_of_errors += 1
                 error_list.append(e)
-                logger.debug("Error at user {}".format(username))
+                logger.debug("tabcmd.result.failure.user".format(username))
 
-        logger.info("======== 100% complete ========")
-        logger.info("======== Number of users listed: {} =========".format(n_users_listed))
-        logger.info("======== Number of users {}: {} =========".format(action_name, n_users_handled))
-        logger.info("======== Number of errors {} =========".format(number_of_errors))
+        logger.info("tabcmd.percentage.hundred")
+        logger.info("tabcmd.report.users_listed".format(n_users_listed))
+        logger.info("tabcmd.report.users_acted_on".format(action_name, n_users_handled))
+        logger.info("tabcmd.report.errors.count".format(number_of_errors))
         if number_of_errors > 0:
-            logger.info("Error details: \n{}".format(error_list))
+            logger.info("tabcmd.report.errors".format(error_list))

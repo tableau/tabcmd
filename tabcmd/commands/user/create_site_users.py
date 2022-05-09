@@ -5,6 +5,7 @@ from tabcmd.commands.constants import Constants
 from tabcmd.execution.logger_config import log
 from tabcmd.execution.global_options import *
 from .user_data import UserCommand
+from tabcmd import _
 
 
 class CreateSiteUsersCommand(UserCommand):
@@ -15,7 +16,7 @@ class CreateSiteUsersCommand(UserCommand):
     """
 
     name: str = "createsiteusers"
-    description: str = "Create users on the current site"
+    description: str = "tabcmd.command.description.createsiteusers"
 
     @staticmethod
     def define_args(create_site_users_parser):
@@ -25,30 +26,27 @@ class CreateSiteUsersCommand(UserCommand):
 
     @staticmethod
     def run_command(args):
-        logger = log(__name__, args.logging_level)
-        logger.debug("======================= Launching command =======================")
+        logger = log(__class__.__name__, args.logging_level)
+        logger.debug("tabcmd.launching")
         session = Session()
         server = session.create_session(args)
         number_of_users_listed = 0
         number_of_users_added = 0
         number_of_errors = 0
 
-        if args.site_name:
-            creation_site = args.site_name
-        else:
-            creation_site = "current site"
+        creation_site = "current site"
 
         UserCommand.validate_file_for_import(args.filename, logger, detailed=True, strict=args.require_all_valid)
 
-        logger.info("===== Adding users listed in {0} to {1}...".format(args.filename.name, creation_site))
+        logger.info(_("tabcmd.add.users.to_x").format(args.filename.name, creation_site))
         user_obj_list = UserCommand.get_users_from_file(args.filename, logger)
-        logger.info("======== 0% complete ========")
+        logger.info("tabcmd.percentage.zero")
         error_list = []
         for user_obj in user_obj_list:
             try:
                 number_of_users_listed += 1
                 result = server.users.add(user_obj)
-                logger.info("Successfully created user on {} {}".format(user_obj.name, creation_site))
+                logger.info("tabcmd.result.success.create_user".format(user_obj.name))
                 number_of_users_added += 1
             except TSC.ServerResponseError as e:
                 number_of_errors += 1
@@ -61,9 +59,9 @@ class CreateSiteUsersCommand(UserCommand):
                     error = "User: {} already member of site".format(user_obj.name)
                 error_list.append(error)
                 logger.debug(error)
-        logger.info("======== 100% complete ========")
-        logger.info("======== Lines processed: {} =========".format(number_of_users_listed))
-        logger.info("Lines skipped: {}".format(number_of_errors))
-        logger.info("Number of users added: {}".format(number_of_users_added))
+        logger.info("tabcmd.percentage.hundred")
+        logger.info("tabcmd.report.lines_processed".format(number_of_users_listed))
+        logger.info("tabcmd.report.lines_skipped".format(number_of_errors))
+        logger.info("tabcmd.report.users_added".format(number_of_users_added))
         if number_of_errors > 0:
-            logger.info("Error details: {}".format(error_list))
+            logger.info("tabcmd.report.errors".format(error_list))

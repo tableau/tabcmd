@@ -1,9 +1,11 @@
 import tableauserverclient as TSC
 
+from tabcmd.commands.constants import Errors
 from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
+from tabcmd import _
 
 
 class DeleteProjectCommand(Server):
@@ -12,7 +14,7 @@ class DeleteProjectCommand(Server):
     """
 
     name: str = "deleteproject"
-    description: str = "Delete a project"
+    description: str = "tabcmd.help.command.deleteproject"
 
     @staticmethod
     def define_args(delete_project_parser):
@@ -21,25 +23,25 @@ class DeleteProjectCommand(Server):
 
     @staticmethod
     def run_command(args):
-        logger = log(__name__, args.logging_level)
-        logger.debug("======================= Launching command =======================")
+        logger = log(__class__.__name__, args.logging_level)
+        logger.debug("tabcmd.launching")
         session = Session()
         server = session.create_session(args)
         if args.parent_project_path:
             logger.debug("parent path: {}".format(args.parent_project_path))
 
         try:
-            logger.debug("Fetching project to be deleted: {}/{}".format(args.parent_project_path, args.project_name))
+            logger.debug("tabcmd.find.project".format(args.parent_project_path, args.project_name))
             project = Server.get_project_by_name_and_parent_path(
                 logger, server, args.project_name, args.parent_project_path
             )
         except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, "Error finding project", e)
+            Errors.exit_with_error(logger, "tabcmd.result.failure.find.project", e)
         project_id = project.id
 
         try:
-            logger.info("Deleting project '{}' from the server...".format(args.project_name))
+            logger.info(_("tabcmd.delete.project").format(args.project_name))
             server.projects.delete(project_id)
-            logger.info("===== Succeeded")
+            logger.info(_("tabcmd.succeeded"))
         except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, "Failed to delete project", e)
+            Errors.exit_with_error(logger, "tabcmd.result.failure.delete.project", e)

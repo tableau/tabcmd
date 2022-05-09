@@ -5,7 +5,7 @@ path = os.path.dirname(os.path.abspath(__file__))
 PYTHON_INFO_LOGGING_LEVEL = 20
 
 
-def get_logger(name, logging_level):
+def configure_log(name, logging_level):
     """function for logging statements to console and logfile"""
     logging_level = getattr(logging, logging_level.upper())
     if logging_level == PYTHON_INFO_LOGGING_LEVEL:
@@ -23,5 +23,5 @@ def get_logger(name, logging_level):
 
 
 def log(file_name, logging_level):
-    logger = get_logger(file_name, logging_level)
+    logger = configure_log(file_name, logging_level)
     return logger

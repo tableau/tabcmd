@@ -18,7 +18,7 @@ class LoginCommand(Server):
 
     @staticmethod
     def run_command(args):
-        logger = log(__name__, args.logging_level)
+        logger = log(__class__.__name__, args.logging_level)
         logger.debug("======================= Launching command =======================")
         session = Session()
         session.create_session(args)
