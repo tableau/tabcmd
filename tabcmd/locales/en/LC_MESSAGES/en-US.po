@@ -1,68 +1,76 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR ORGANIZATION
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Tabcmd message strings
+# Copyright (C) YEAR Tableau Software
 #
-msgid ""
-msgstr ""
+
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-05-03 10:17-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
 
 
-#: tabcmd/commands/user/add_users_command.py:32
-msgid "Adding users listed in {0} to group '{1}'"
-msgstr "Adding users listed in {0} to group '{1}'"
+# SECTION: results messages
 
-#: tabcmd/commands/group/create_group_command.py:28
-msgid "Creating group {name} on the server"
-msgstr "Creating group {name} on the server"
-
-#: tabcmd/commands/group/create_group_command.py:34
-msgid "Group called ''{}'' already exists"
+msgid "tabcmd.result.already_exists.group"
 msgstr "Group called ''{}'' already exists"
 
-#: tabcmd/commands/project/create_project_command.py:42
-msgid "===== Creating project '{}' on the server..."
-msgstr "===== Creating project '{}' on the server..."
+msgid "tabcmd.result.failed.delete.group"
+msgstr "Error deleting group from server"
 
-#: tabcmd/commands/group/create_group_command.py:31
-#: tabcmd/commands/group/delete_group_command.py:33
-#: tabcmd/commands/project/create_project_command.py:46
-#: tabcmd/commands/project/delete_project_command.py:45
-msgid "===== Succeeded"
+msgid "tabcmd.result.failed.create.group"
+msgstr "Error creating group"
+
+msgid "tabcmd.result.failed.create.group"
+msgstr "Error creating group"
+
+msgid "tabcmd.result.succeeded"
 msgstr "===== Succeeded"
 
-#: tabcmd/commands/user/create_site_users.py:44
-msgid "===== Adding users listed in {0} to {1}..."
+
+# SECTION: action descriptions
+
+msgid "tabcmd.launching"
+msgstr "======================= Launching command ======================="
+
+msgid "tabcmd.add.users.to_group"
+msgstr "Adding users listed in {0} to group '{1}'"
+
+msgid "tabcmd.create.group"
+msgstr "Creating group {name} on the server"
+
+msgid "tabcmd.create.project"
+msgstr "===== Creating project '{}' on the server..."
+
+msgid "tabcmd.add.users.to_site"
 msgstr "===== Adding users listed in {0} to {1}..."
 
-#: tabcmd/commands/user/create_users_command.py:44
-msgid "===== Adding users listed in {0} to {1}..."
+msgid "tabcmd.create.users"
 msgstr "===== Adding users listed in {0} to {1}..."
 
-#: tabcmd/commands/group/delete_group_command.py:29
-msgid "Finding group ''{}'' on server..."
+msgid "tabcmd.find.group"
 msgstr "Finding group ''{}'' on server..."
 
-#: tabcmd/commands/group/delete_group_command.py:31
-msgid "Deleting group ''{}'' on server..."
+msgid "tabcmd.delete.group"
 msgstr "Deleting group ''{}'' on server..."
 
-#: tabcmd/commands/project/delete_project_command.py:43
-msgid "Deleting project '{}' from the server..."
+msgid "tabcmd.delete.project"
 msgstr "Deleting project '{}' from the server..."
 
-#: tabcmd/commands/user/delete_site_users_command.py:39
-msgid "Deleting site users listed in {0}..."
+msgid "tabcmd.delete.users.site"
 msgstr "Deleting site users listed in {0} from the server..."
 
-#: tabcmd/commands/user/remove_users_command.py:29
-msgid "Removing users listed in {0} from the group {1}..."
+msgid "tabcmd.remove.users.from_group"
 msgstr "Removing users listed in {0} from the group {1}..."
 
+
+# SECTION: help messages/argument descriptions
+msgid "tabcmd.command.description.create_group"
+msgstr "Create a local group"
+
+msgid "tabcmd.command.arg.description.create_group.name"
+msgstr "Name of the new group"
+
+msgid "tabcmd.command.description.delete_group"
+msgstr "Delete a group"
+
+msgid "tabcmd.command.arg.description.delete_group.name"
+msgstr "name of group to delete"

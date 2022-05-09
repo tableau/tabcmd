@@ -39,14 +39,14 @@ class CreateProjectCommand(Server):
             readable_name = "{0}/{1}".format(args.parent_project_path, args.project_name)
             parent_id = parent.id
             logger.debug("parent project path = `{0}`, id = {1}".format(args.parent_project_path, parent_id))
-        logger.info(_("===== Creating project '{}' on the server...").format(readable_name))
+        logger.info(_("tabcmd.create.project").format(readable_name))
         new_project = TSC.ProjectItem(args.project_name, args.description, None, parent_id)
         try:
             project_item = server.projects.create(new_project)
-            logger.info(_("===== Succeeded"))
+            logger.info(_("tabcmd.succeeded"))
             return project_item
         except TSC.ServerResponseError as e:
             if args.continue_if_exists and Errors.is_resource_conflict(e):
-                logger.info("Project called {} already exists".format(args.project_name))
+                logger.info("tabcmd.result.already_exists".format(args.project_name))
                 return
-            Errors.exit_with_error(logger, "Error creating project", e)
+            Errors.exit_with_error(logger, "tabcmd.result.failed.createproject", e)
