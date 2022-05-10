@@ -27,8 +27,8 @@ class Session:
         self.token_name = None
         self.token = None
         self.password_file = None
-        self.site_name = None  # The site name, or 'alpodev'
-        self.site_id = None  # The site id, or 'abcd-1234-1234-1244-1234'
+        self.site_name = None  # The site name, e.g 'alpodev'
+        self.site_id = None  # The site id, e.g 'abcd-1234-1234-1244-1234'
         self.server_url = None
         self.last_command = None  # for when we have to renew the session then re-try
         self.last_login_using = None
@@ -51,8 +51,11 @@ class Session:
         # user id and site id are never passed in as args
         # last_login_using and tableau_server are internal data
         # self.command = args.???
+        # TODO: if server/username/token are changed, clear others
         self.username = args.username or self.username
         self.site_name = args.site_name or self.site_name or ""
+        if self.site_name == "default":
+            self.site_name = ""
         self.server_url = args.server or self.server_url or "http://localhost"
         self.logging_level = args.logging_level or self.logging_level
         self.password_file = args.password_file
