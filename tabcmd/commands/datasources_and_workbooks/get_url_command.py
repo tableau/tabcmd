@@ -4,6 +4,7 @@ from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 from tabcmd.execution.global_options import *
+from tabcmd import _
 
 
 class GetUrl(DatasourcesAndWorkbooks):
@@ -13,7 +14,8 @@ class GetUrl(DatasourcesAndWorkbooks):
     """
 
     name: str = "get"
-    description: str = "Get a file from the server"
+    description: str = _("get.short_description")
+")
 
     @staticmethod
     def define_args(get_url_parser):

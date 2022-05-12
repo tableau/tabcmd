@@ -3,6 +3,7 @@ import tableauserverclient as TSC
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.extracts.extracts_command import ExtractsCommand
 from tabcmd.execution.logger_config import log
+from tabcmd import _
 
 
 class DecryptExtracts(ExtractsCommand):
@@ -10,7 +11,7 @@ class DecryptExtracts(ExtractsCommand):
     specified, extracts on the default site will be decrypted."""
 
     name: str = "decryptextracts"
-    description: str = "Decrypt extracts on a site"
+    description: str = _("decryptextracts.short_description")
 
     @staticmethod
     def define_args(decrypt_extract_parser):

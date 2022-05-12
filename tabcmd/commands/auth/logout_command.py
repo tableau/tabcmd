@@ -1,6 +1,7 @@
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
+from tabcmd import _
 
 
 class LogoutCommand(Server):
@@ -9,7 +10,7 @@ class LogoutCommand(Server):
     """
 
     name: str = "logout"
-    description: str = "Sign out from the server"
+    description: str = _("logout.short_description")
 
     @staticmethod
     def define_args(parser):

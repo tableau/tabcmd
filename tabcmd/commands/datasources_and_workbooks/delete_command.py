@@ -4,6 +4,7 @@ from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 from tabcmd.execution.global_options import *
+from tabcmd import _
 
 
 class DeleteCommand(DatasourcesAndWorkbooks):
@@ -12,7 +13,7 @@ class DeleteCommand(DatasourcesAndWorkbooks):
     """
 
     name: str = "delete"
-    description: str = "Delete a workbook or data source from the server"
+    description: str = _("delete.short_description")
 
     located_workbook = None
     located_datasource = None
@@ -21,8 +22,8 @@ class DeleteCommand(DatasourcesAndWorkbooks):
     def define_args(delete_parser):
         delete_parser_group = delete_parser.add_mutually_exclusive_group(required=True)
         delete_parser_group.add_argument("name", nargs="?", help="The datasource or workbook to delete")
-        delete_parser_group.add_argument("--workbook", required=False, help="The workbook to delete")
-        delete_parser_group.add_argument("--datasource", required=False, help="The datasource to delete")
+        delete_parser_group.add_argument("--workbook", required=False, help=_("delete.options.workbook"))
+        delete_parser_group.add_argument("--datasource", required=False, help=_("delete.options.datasource"))
         set_project_r_arg(delete_parser)
         set_parent_project_arg(delete_parser)
 
@@ -33,7 +34,7 @@ class DeleteCommand(DatasourcesAndWorkbooks):
         session = Session()
         server = session.create_session(args)
 
-        logger.info("===== Removing '{0}' from the server...".format(args.name or args.datasource or args.workbook))
+        logger.info(_("delete.status").format(args.name or args.datasource or args.workbook))
 
         if args.workbook:
             item_type = "workbook"

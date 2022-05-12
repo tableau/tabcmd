@@ -4,6 +4,7 @@ from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.extracts.extracts_command import ExtractsCommand
 from tabcmd.execution.logger_config import log
+from tabcmd import _
 
 
 class CreateExtracts(ExtractsCommand):
@@ -12,7 +13,7 @@ class CreateExtracts(ExtractsCommand):
     """
 
     name: str = "createextracts"
-    description: str = "Create extracts for a published workbook or data source"
+    description: str = _("createextracts.short_description")
 
     @staticmethod
     def define_args(create_extract_parser):
@@ -47,6 +48,6 @@ class CreateExtracts(ExtractsCommand):
                     datasources=args.embedded_datasources,
                 )
         except TSC.ServerResponseError as e:
-            ExtractsCommand.exit_with_error(logger, "Error creating extracts", e)
+            ExtractsCommand.exit_with_error(logger, _("createextracts.errors.error"), e)
 
         ExtractsCommand.print_success_message(logger, "creation", job)

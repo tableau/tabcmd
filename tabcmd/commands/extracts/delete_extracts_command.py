@@ -4,6 +4,7 @@ from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.extracts.extracts_command import ExtractsCommand
 from tabcmd.execution.logger_config import log
+from tabcmd import _
 
 
 class DeleteExtracts(ExtractsCommand):
@@ -12,7 +13,7 @@ class DeleteExtracts(ExtractsCommand):
     """
 
     name: str = "deleteextracts"
-    description: str = "Delete extracts for a published workbook or data source"
+    description: str = _("deleteextracts.short_description")
 
     @staticmethod
     def define_args(delete_extract_parser):
@@ -21,7 +22,7 @@ class DeleteExtracts(ExtractsCommand):
         # set_encryption_option(delete_extract_parser)
         set_project_arg(delete_extract_parser)
         set_parent_project_arg(delete_extract_parser)
-        delete_extract_parser.add_argument("--url", help="The canonical name for the resource as it appears in the URL")
+        delete_extract_parser.add_argument("--url", help=_("createextracts.options.url"))
 
     @staticmethod
     def run_command(args):
@@ -39,6 +40,6 @@ class DeleteExtracts(ExtractsCommand):
                 workbook_item = ExtractsCommand.get_workbook_item(logger, server, args.workbook)
                 job = server.workbooks.delete_extract(workbook_item)
         except TSC.ServerResponseError as e:
-            ExtractsCommand.exit_with_error(logger, "Error deleting extract", e)
+            ExtractsCommand.exit_with_error(logger, _("deleteextracts.errors.error"), e)
 
         ExtractsCommand.print_success_message(logger, "deletion", job)

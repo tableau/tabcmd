@@ -3,7 +3,7 @@ import tableauserverclient as TSC
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
-
+from tabcmd import _
 
 class DeleteSiteCommand(Server):
     """
@@ -11,7 +11,7 @@ class DeleteSiteCommand(Server):
     """
 
     name: str = "deletesite"
-    description: str = "Delete a site"
+    description: str = _("deletesite.short_description")
 
     @staticmethod
     def define_args(delete_site_parser):
@@ -20,7 +20,7 @@ class DeleteSiteCommand(Server):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug("======================= Launching command =======================")
+        logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
         site_id = server.sites.get_by_name(args.site_name)

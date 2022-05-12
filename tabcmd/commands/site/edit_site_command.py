@@ -4,6 +4,7 @@ from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
+from tabcmd import _
 
 
 class EditSiteCommand(Server):
@@ -13,13 +14,13 @@ class EditSiteCommand(Server):
     """
 
     name: str = "editsite"
-    description: str = "Edit a site"
+    description: str = _("editsite.short_description")
 
     @staticmethod
     def define_args(edit_site_parser):
         edit_site_parser.add_argument("site_name", metavar="site-name", help="name of site to update")
         edit_site_parser.add_argument(
-            "--site-name", default=None, dest="new_site_name", help="The name of the site that's displayed."
+            "--site-name", default=None, dest="new_site_name", help=_("editsite.options.site-name")
         )
 
         set_common_site_args(edit_site_parser)
@@ -28,7 +29,7 @@ class EditSiteCommand(Server):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug("======================= Launching command =======================")
+        logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
 

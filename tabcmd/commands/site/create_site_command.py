@@ -4,6 +4,7 @@ from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
+from tabcmd import _
 
 
 class CreateSiteCommand(Server):
@@ -12,7 +13,7 @@ class CreateSiteCommand(Server):
     """
 
     name: str = "createsite"
-    description: str = "Create a site"
+    description: str = _("Create a site")
 
     @staticmethod
     def define_args(create_site_parser):
@@ -22,7 +23,7 @@ class CreateSiteCommand(Server):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug("======================= Launching command =======================")
+        logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
         new_site = TSC.SiteItem(
@@ -37,6 +38,6 @@ class CreateSiteCommand(Server):
             logger.info("Successfully created a new site called: {}".format(args.site_name))
         except TSC.ServerResponseError as e:
             if args.continue_if_exists and Errors.is_resource_conflict(e):
-                logger.info("Site called {} already exists".format(args.site_name))
+                logger.info(_("createsite.errors.site_name_already_exists").format(args.site_name))
                 return
             Errors.exit_with_error(logger, "error creating site", e)

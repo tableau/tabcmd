@@ -1,6 +1,7 @@
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
 from .session import Session
+from tabcmd import _
 
 
 class LoginCommand(Server):
@@ -9,7 +10,7 @@ class LoginCommand(Server):
     """
 
     name: str = "login"
-    description: str = "Log in to site"
+    description: str = _("login.short_description")
 
     @staticmethod
     def define_args(parser):

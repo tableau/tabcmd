@@ -3,21 +3,22 @@ import tableauserverclient as TSC
 from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
+from tabcmd import _
 
 
 class ExportCommand(DatasourcesAndWorkbooks):
 
     name: str = "export"
-    description: str = "Export the data or image of a view from the server"
+    description: str = _("export.short_description")
 
     @staticmethod
     def define_args(export_parser):
         export_parser.add_argument("url", help="url of the workbook or view to export")
         export_parser_group = export_parser.add_mutually_exclusive_group(required=True)
-        export_parser_group.add_argument("--pdf", action="store_true", help="pdf of a view")
-        export_parser_group.add_argument("--fullpdf", action="store_true", help="fullpdf of workbook")
-        export_parser_group.add_argument("--png", action="store_true", help="png of a view")
-        export_parser_group.add_argument("--csv", action="store_true", help="csv of a view")
+        export_parser_group.add_argument("--pdf", action="store_true", help=_("export.options.pdf"))
+        export_parser_group.add_argument("--fullpdf", action="store_true", help=_("export.options.fullpdf"))
+        export_parser_group.add_argument("--png", action="store_true", help=_("export.options.png"))
+        export_parser_group.add_argument("--csv", action="store_true", help=_("export.options.csv"))
 
         export_parser.add_argument(
             "--pagelayout",
@@ -28,7 +29,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
         export_parser.add_argument("--pagesize", default="letter", help="Set the page size of the exported PDF")
         export_parser.add_argument("--width", default=800, help="Set the width in pixels. Default is 800 px")
         export_parser.add_argument("--filename", "-f", help="filename to store the exported data")
-        export_parser.add_argument("--height", default=600, help="Sets the height in pixels. Default is 600 px")
+        export_parser.add_argument("--height", default=600, help=_("export.options.height"))
         export_parser.add_argument(
             "--filter",
             "-vf",
@@ -64,7 +65,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
         logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
-        logger.info("===== Requesting '{0}' from the server...".format(args.url))
+        logger.info(_("export.status").format(args.url))
         try:
             if args.fullpdf:  # it's a workbook
                 workbook = ExportCommand.get_content_url_for_workbook(args.url)
@@ -112,4 +113,4 @@ class ExportCommand(DatasourcesAndWorkbooks):
         logger.info("===== Found attachment: {}".format(file_name_with_path))
         with open(file_name_with_path, "wb") as f:
             f.write(output)
-            logger.info("===== Saved {0} to '{1}'".format(args.url, file_name_with_path))
+            logger.info(_("export.success").format(args.url, file_name_with_path))

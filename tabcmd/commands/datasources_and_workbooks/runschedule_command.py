@@ -3,6 +3,7 @@ from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
 from tabcmd.commands.constants import Errors
+from tabcmd import _
 
 
 class RunSchedule(DatasourcesAndWorkbooks):
@@ -11,7 +12,7 @@ class RunSchedule(DatasourcesAndWorkbooks):
     """
 
     name: str = "runschedule"
-    description: str = "runschedule"
+    description: str = _("runschedule.short_description")
 
     @staticmethod
     def define_args(runschedule_parser):

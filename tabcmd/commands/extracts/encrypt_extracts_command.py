@@ -3,6 +3,8 @@ import tableauserverclient as TSC
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.extracts.extracts_command import ExtractsCommand
 from tabcmd.execution.logger_config import log
+from tabcmd import _
+
 
 
 class EncryptExtracts(ExtractsCommand):
@@ -12,7 +14,7 @@ class EncryptExtracts(ExtractsCommand):
     """
 
     name: str = "encryptextracts"
-    description: str = "Encrypt extracts on a site"
+    description: str = _("encryptextracts.short_description")
 
     @staticmethod
     def define_args(encrypt_extract_parser):
