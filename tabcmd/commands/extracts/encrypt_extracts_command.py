@@ -6,7 +6,6 @@ from tabcmd.execution.logger_config import log
 from tabcmd.execution.localize import _
 
 
-
 class EncryptExtracts(ExtractsCommand):
     """
     Command that encrypt all extracts on a site.

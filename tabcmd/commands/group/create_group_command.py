@@ -11,13 +11,13 @@ class CreateGroupCommand(Server):
     """
     This command is used to create a group
     """
+
     name: str = "creategroup"
     description: str = "tabcmd.command.description.create_group"
 
     @staticmethod
     def define_args(create_group_parser):
         create_group_parser.add_argument("name", help="tabcmd.command.arg.description.create_group.name")
-
 
     @staticmethod
     def run_command(args):

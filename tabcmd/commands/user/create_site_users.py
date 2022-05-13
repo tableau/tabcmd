@@ -40,28 +40,21 @@ class CreateSiteUsersCommand(UserCommand):
 
         logger.info(_("tabcmd.add.users.to_x").format(args.filename.name, creation_site))
         user_obj_list = UserCommand.get_users_from_file(args.filename, logger)
-        logger.info("tabcmd.percentage.zero")
+        logger.info(_("tabcmd.percentage.zero"))
         error_list = []
         for user_obj in user_obj_list:
             try:
                 number_of_users_listed += 1
                 result = server.users.add(user_obj)
-                logger.info("tabcmd.result.success.create_user".format(user_obj.name))
+                logger.info(_("tabcmd.result.success.create_user").format(user_obj.name))
                 number_of_users_added += 1
             except TSC.ServerResponseError as e:
                 number_of_errors += 1
-                logger.debug("Failed to add user: {}".format(e))
-                if e.code == Constants.forbidden:
-                    error = "User is not local, and the user's credentials are not maintained on Tableau Server."
-                if e.code == Constants.invalid_credentials:
-                    error = "Unauthorized access, Please log in."
-                if e.code == Constants.user_already_member_of_site:
-                    error = "User: {} already member of site".format(user_obj.name)
-                error_list.append(error)
-                logger.debug(error)
-        logger.info("tabcmd.percentage.hundred")
-        logger.info("tabcmd.report.lines_processed".format(number_of_users_listed))
-        logger.info("tabcmd.report.lines_skipped".format(number_of_errors))
-        logger.info("tabcmd.report.users_added".format(number_of_users_added))
+                error_list.append(e)
+                logger.debug(e)
+        logger.info(_("tabcmd.percentage.hundred"))
+        logger.info(_("importcsvsummary.line.processed").format(number_of_users_listed))
+        logger.info(_("importcsvsummary.line.skipped").format(number_of_errors))
+        logger.info(_("importcsvsummary.users.added.count").format(number_of_users_added))
         if number_of_errors > 0:
-            logger.info("tabcmd.report.errors".format(error_list))
+            logger.info(_("importcsvsummary.error.details").format(error_list))

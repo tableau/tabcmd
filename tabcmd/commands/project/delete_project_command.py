@@ -14,11 +14,11 @@ class DeleteProjectCommand(Server):
     """
 
     name: str = "deleteproject"
-    description: str = "tabcmd.help.command.deleteproject"
+    description: str = _("deleteproject.short_description")
 
     @staticmethod
     def define_args(delete_project_parser):
-        delete_project_parser.add_argument("project_name", metavar="project-name", help="name of project to delete")
+        delete_project_parser.add_argument("project_name", metavar="project-name", help=_("createproject.options.name"))
         set_parent_project_arg(delete_project_parser)
 
     @staticmethod
@@ -31,17 +31,17 @@ class DeleteProjectCommand(Server):
             logger.debug("parent path: {}".format(args.parent_project_path))
 
         try:
-            logger.debug("tabcmd.find.project".format(args.parent_project_path, args.project_name))
+            logger.debug(_("deleteproject.status").format(args.parent_project_path, args.project_name))
             project = Server.get_project_by_name_and_parent_path(
                 logger, server, args.project_name, args.parent_project_path
             )
         except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, "tabcmd.result.failure.find.project", e)
+            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
         project_id = project.id
 
         try:
-            logger.info(_("tabcmd.delete.project").format(args.project_name))
+            logger.info(_("deleteproject.status").format(args.project_name))
             server.projects.delete(project_id)
-            logger.info(_("tabcmd.succeeded"))
+            logger.info(_("common.output.succeeded"))
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, "tabcmd.result.failure.delete.project", e)

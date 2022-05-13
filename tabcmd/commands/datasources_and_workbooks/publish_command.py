@@ -9,7 +9,6 @@ from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 from tabcmd.execution.localize import _
 
 
-
 class PublishCommand(DatasourcesAndWorkbooks):
     """
     This command publishes the specified workbook (.twb(x)), data source
@@ -70,9 +69,8 @@ class PublishCommand(DatasourcesAndWorkbooks):
     @staticmethod
     def print_success(logger, item):
         logger.info(
-            _("===== File successfully published to the server at the following location:\n=====") + "{}".format(
-                item.webpage_url
-            )
+            _("===== File successfully published to the server at the following location:\n=====")
+            + "{}".format(item.webpage_url)
         )
 
     @staticmethod

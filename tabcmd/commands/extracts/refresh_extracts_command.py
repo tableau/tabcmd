@@ -7,6 +7,7 @@ from tabcmd.execution.logger_config import log
 from tabcmd.commands.constants import Errors
 from tabcmd.execution.localize import _
 
+
 class RefreshExtracts(ExtractsCommand):
 
     name: str = "refreshextracts"
@@ -22,10 +23,7 @@ class RefreshExtracts(ExtractsCommand):
         set_calculations_options(refresh_extract_parser)
         set_project_arg(refresh_extract_parser)
         set_parent_project_arg(refresh_extract_parser)
-        refresh_extract_parser.add_argument(
-            "--url",
-            help=_("refreshextracts.options.url")
-        )
+        refresh_extract_parser.add_argument("--url", help=_("refreshextracts.options.url"))
 
     @staticmethod
     def run_command(args):

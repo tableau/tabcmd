@@ -15,9 +15,7 @@ class RemoveUserCommand(UserCommand):
 
     @staticmethod
     def define_args(remove_users_parser):
-        remove_users_parser.add_argument(
-            "name",
-            help="tabcmd.command.description.remove_users.argument.name")
+        remove_users_parser.add_argument("name", help="tabcmd.command.description.remove_users.argument.name")
         set_users_file_arg(remove_users_parser)
         set_completeness_options(remove_users_parser)
 

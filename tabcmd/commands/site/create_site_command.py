@@ -44,7 +44,8 @@ class CreateSiteCommand(Server):
                     logger.info(_("createsite.errors.site_name_already_exists").format(args.site_name))
                     return
                 else:
-                    Errors.exit_with_error(logger,
-                                           _("createsite.errors.site_name_already_exists").format(args.site_name))
+                    Errors.exit_with_error(
+                        logger, _("createsite.errors.site_name_already_exists").format(args.site_name)
+                    )
 
             Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)

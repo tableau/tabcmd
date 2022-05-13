@@ -25,7 +25,7 @@ class DecryptExtracts(ExtractsCommand):
         server = session.create_session(args)
         site_item = ExtractsCommand.get_site_for_command_or_throw(logger, server, args)
         try:
-            ExtractsCommand.print_task_scheduling_message(logger, "site", site_item.name, "decrypted")
+            logger.info(_("decryptextracts.status").format(args.site_name))
             job = server.sites.decrypt_extracts(site_item.id)
         except TSC.ServerResponseError as e:
             ExtractsCommand.exit_with_error(logger, "Error decrypting extracts", e)

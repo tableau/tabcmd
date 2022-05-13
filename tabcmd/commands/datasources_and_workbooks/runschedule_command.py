@@ -10,6 +10,7 @@ class RunSchedule(DatasourcesAndWorkbooks):
     """
     This command runs the specified schedule as it is on the server.
     """
+
     name: str = "runschedule"
     description: str = _("runschedule.short_description")
 
