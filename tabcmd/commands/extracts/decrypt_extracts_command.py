@@ -15,8 +15,7 @@ class DecryptExtracts(ExtractsCommand):
 
     @staticmethod
     def define_args(decrypt_extract_parser):
-        # TODO this argument is supposed to be optional - if not specified, do the default site
-        decrypt_extract_parser.add_argument("site_name", metavar="site-name", help="name of site")
+        decrypt_extract_parser.add_argument("site_name", required=True, metavar="site-name", help="name of site")
 
     @staticmethod
     def run_command(args):
@@ -24,7 +23,7 @@ class DecryptExtracts(ExtractsCommand):
         logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
-        site_item = ExtractsCommand.get_site_for_command(logger, server, args, session)
+        site_item = ExtractsCommand.get_site_for_command_or_throw(logger, server, args)
         try:
             ExtractsCommand.print_task_scheduling_message(logger, "site", site_item.name, "decrypted")
             job = server.sites.decrypt_extracts(site_item.id)
