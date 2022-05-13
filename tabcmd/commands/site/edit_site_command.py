@@ -2,9 +2,10 @@ import tableauserverclient as TSC
 
 from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
+from tabcmd.commands.constants import Errors
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
-from tabcmd import _
+from tabcmd.execution.localize import _
 
 
 class EditSiteCommand(Server):
@@ -18,7 +19,7 @@ class EditSiteCommand(Server):
 
     @staticmethod
     def define_args(edit_site_parser):
-        edit_site_parser.add_argument("site_name", metavar="site-name", help="name of site to update")
+        edit_site_parser.add_argument("site_name", metavar="site-name", help="editsite.options.site-name")
         edit_site_parser.add_argument(
             "--site-name", default=None, dest="new_site_name", help=_("editsite.options.site-name")
         )
@@ -33,7 +34,7 @@ class EditSiteCommand(Server):
         session = Session()
         server = session.create_session(args)
 
-        site_item = Server.get_site_for_command(logger, server, args, session)
+        site_item = Server.get_site_for_command_or_throw(logger, server, args)
         if args.url:
             site_item.content_url = args.url
         if args.user_quota:
@@ -43,7 +44,9 @@ class EditSiteCommand(Server):
         if args.status:
             site_item.state = args.status
         try:
+            logger.info(_("editsite.status").format(site_item.name))
             server.sites.update(site_item)
-            logger.info("Successfully updated the site `{}`".format(site_item.name))
+            logger.info(_("common.output.succeeded"))
+
         except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, "Error editing site", e)
+            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)

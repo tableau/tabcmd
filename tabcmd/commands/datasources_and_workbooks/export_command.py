@@ -3,7 +3,7 @@ import tableauserverclient as TSC
 from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
-from tabcmd import _
+from tabcmd.execution.localize import _
 
 
 class ExportCommand(DatasourcesAndWorkbooks):
@@ -62,7 +62,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug("======================= Launching command =======================")
+        logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
         logger.info(_("export.status").format(args.url))

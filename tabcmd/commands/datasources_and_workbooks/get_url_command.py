@@ -4,7 +4,7 @@ from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 from tabcmd.execution.global_options import *
-from tabcmd import _
+from tabcmd.execution.localize import _
 
 
 class GetUrl(DatasourcesAndWorkbooks):
@@ -15,11 +15,10 @@ class GetUrl(DatasourcesAndWorkbooks):
 
     name: str = "get"
     description: str = _("get.short_description")
-")
 
     @staticmethod
     def define_args(get_url_parser):
-        get_url_parser.add_argument("url", help="url that identifies the view or workbook to export")
+        get_url_parser.add_argument("url", help=_("get.errors.requires_url"))
         set_filename_arg(get_url_parser)
         # TODO add args for png size in pixels, refresh
         # to send to the server these are both just set on the url?
@@ -27,7 +26,7 @@ class GetUrl(DatasourcesAndWorkbooks):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug("======================= Launching command =======================")
+        logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
         file_type = GetUrl.evaluate_file_name(logger, args.filename, args.url)
@@ -40,7 +39,7 @@ class GetUrl(DatasourcesAndWorkbooks):
         elif file_type == "twbx" or file_type == "twb":
             GetUrl.generate_twb(logger, server, args)
         else:
-            GetUrl.exit_with_error(logger, "Error file extension not found")
+            GetUrl.exit_with_error(logger, _("tabcmd.get.extension.not_found"))
 
     @staticmethod
     def evaluate_file_name(logger, file_name, url):
@@ -54,7 +53,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             if len(split_url_to_get_extension) > 1:
                 type_of_file = split_url_to_get_extension[1]
             else:
-                GetUrl.exit_with_error(logger, "File extension not found")
+                GetUrl.exit_with_error(logger, _("tabcmd.error.extension.not_found"))
         return type_of_file
 
     @staticmethod
@@ -102,9 +101,9 @@ class GetUrl(DatasourcesAndWorkbooks):
             formatted_file_name = file_name_with_path
             with open(formatted_file_name, "wb") as f:
                 f.write(views_from_list.pdf)
-                logger.info("Exported successfully")
+                logger.info(_("export_success"), views_from_list.name, formatted_file_name)
         except TSC.ServerResponseError as e:
-            GetUrl.exit_with_error(logger, "Server error:", e)
+            GetUrl.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
 
     @staticmethod
     def generate_png(logger, server, args):
@@ -120,9 +119,9 @@ class GetUrl(DatasourcesAndWorkbooks):
             formatted_file_name = file_name_with_path
             with open(formatted_file_name, "wb") as f:
                 f.write(views_from_list.png)
-                logger.info("Exported successfully")
+                logger.info(_("export_success"), views_from_list.name, formatted_file_name)
         except TSC.ServerResponseError as e:
-            GetUrl.exit_with_error(logger, "Server error:", e)
+            GetUrl.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
 
     @staticmethod
     def generate_csv(logger, server, args):
@@ -138,16 +137,22 @@ class GetUrl(DatasourcesAndWorkbooks):
             formatted_file_name = file_name_with_path
             with open(formatted_file_name, "wb") as f:
                 f.write(views_from_list.csv)
-                logger.info("Exported successfully")
+                logger.info(_("export_success"), views_from_list.name, formatted_file_name)
         except TSC.ServerResponseError as e:
-            GetUrl.exit_with_error(logger, "Server error:", e)
+            GetUrl.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
 
     @staticmethod
     def generate_twb(logger, server, args):
         workbook = GetUrl.get_workbook(args.url)
         try:
             target_workbook = GetUrl.get_view_by_content_url(logger, server, workbook)
-            server.workbooks.download(target_workbook.id, filepath=None, no_extract=False)
-            logger.info("Workbook {} exported".format(target_workbook.name))
+            file_target = None
+            if args.filename is None:
+                file_target = target_workbook.name
+            else:
+                file_target = args.filename
+
+            server.workbooks.download(target_workbook.id, filepath=file_target, no_extract=False)
+            logger.info(_("export_success"), target_workbook.name, file_target)
         except TSC.ServerResponseError as e:
-            GetUrl.exit_with_error(logger, "Server error:", e)
+            GetUrl.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)

@@ -1,20 +1,31 @@
 
 import locale
 import gettext
+from typing import Any
 
 
-def set_locale(language: str = None):
-    current_locale = validate_lang(language) or get_default_locale() or "en"
-    locale_path = "tabcmd/locales/"
-    domain = 'tabcmd'
-
-    # fallback=True means if loading the translated files fails, strings will be returned
-    language = gettext.translation(domain, localedir=locale_path, languages=[current_locale], fallback=True)
-    language.install()  # I believe this is the expensive call
-    return language
+def _identity_func(x: Any) -> Any:
+    x
 
 
-def get_default_locale():
+# The client should present text in the OS language, or english if not present.
+def set_client_locale() -> gettext:
+    try:
+        current_locale = _get_default_locale() or "en"
+        locale_path = "tabcmd/locales/"
+        domain = 'tabcmd'
+
+        # fallback=True means if loading the translated files fails, strings will be returned
+        language = gettext.translation(domain, localedir=locale_path, languages=[current_locale], fallback=True)
+        language.install()  # I believe this is the expensive call
+        _ = language.gettext
+    except Exception as e:
+        print(e)
+        _ = _identity_func()
+    return _
+
+
+def _get_default_locale():
     current_locale, encoding = locale.getdefaultlocale()
     current_locale = validate_lang(current_locale)
     return current_locale
@@ -30,3 +41,6 @@ def validate_lang(requested_locale):
         if abbreviated_locale in ["de", "es", "fr", "ga", "it", "ja", "ko", "pt", "sv", "zh"]:
             return abbreviated_locale
     return None
+
+
+_ = set_client_locale()

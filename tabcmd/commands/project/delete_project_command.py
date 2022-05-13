@@ -5,7 +5,7 @@ from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
-from tabcmd import _
+from tabcmd.execution.localize import _
 
 
 class DeleteProjectCommand(Server):
@@ -24,7 +24,7 @@ class DeleteProjectCommand(Server):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug("tabcmd.launching")
+        logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
         if args.parent_project_path:

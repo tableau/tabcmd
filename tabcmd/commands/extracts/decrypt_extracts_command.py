@@ -3,7 +3,7 @@ import tableauserverclient as TSC
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.extracts.extracts_command import ExtractsCommand
 from tabcmd.execution.logger_config import log
-from tabcmd import _
+from tabcmd.execution.localize import _
 
 
 class DecryptExtracts(ExtractsCommand):
@@ -15,12 +15,12 @@ class DecryptExtracts(ExtractsCommand):
 
     @staticmethod
     def define_args(decrypt_extract_parser):
-        decrypt_extract_parser.add_argument("site_name", required=True, metavar="site-name", help="name of site")
+        decrypt_extract_parser.add_argument("site_name", metavar="site-name", help=_("editsite.options.site-name"))
 
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug("======================= Launching command =======================")
+        logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
         site_item = ExtractsCommand.get_site_for_command_or_throw(logger, server, args)

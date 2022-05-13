@@ -1,13 +1,12 @@
 import gettext
 import unittest
-import mock
-import tabcmd.execution.localize as loc
+from tabcmd.execution.localize import set_client_locale
 
 
 class LocaleTests(unittest.TestCase):
 
     def test_defaults(self):
-        lang = loc.set_locale()
-        assert lang is not None
-        assert isinstance(lang, gettext.NullTranslations)
+        _ = set_client_locale()
         assert _ is not None
+        # False: bound method != function ?
+        # assert _ == gettext.NullTranslations.gettext

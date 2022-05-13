@@ -3,9 +3,10 @@ import tableauserverclient as TSC
 from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
+from tabcmd.commands.constants import Errors
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
-from tabcmd import _
+from tabcmd.execution.localize import _
 
 
 
@@ -33,7 +34,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug("======================= Launching command =======================")
+        logger.debug(_("tabcmd.launching"))
         logger.debug(args)
         session = Session()
         server = session.create_session(args)
@@ -46,7 +47,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
                     logger, server, args.project_name, args.parent_project_path
                 )
             except Exception as exc:
-                Errors.exit_with_error(logger, "Error getting project from server", exc)
+                Errors.exit_with_error(logger, _("publish.errors.server_resource_not_found"), exc)
         else:
             project_id = ""
             args.project_name = "default"

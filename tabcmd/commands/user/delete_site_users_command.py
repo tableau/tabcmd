@@ -6,7 +6,7 @@ from tabcmd.commands.constants import Errors
 from tabcmd.commands.server import Server
 from tabcmd.commands.user.user_data import UserCommand
 from tabcmd.execution.logger_config import log
-from tabcmd import _
+from tabcmd.execution.localize import _
 
 
 class DeleteSiteUsersCommand(Server):
@@ -27,7 +27,7 @@ class DeleteSiteUsersCommand(Server):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug("tabcmd.launching")
+        logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
 

@@ -2,7 +2,7 @@ from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
 from .user_data import UserCommand
-from tabcmd import _
+from tabcmd.execution.localize import _
 
 
 class RemoveUserCommand(UserCommand):
@@ -24,7 +24,7 @@ class RemoveUserCommand(UserCommand):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug("tabcmd.launching")
+        logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
 

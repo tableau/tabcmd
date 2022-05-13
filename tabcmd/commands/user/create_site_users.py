@@ -5,7 +5,7 @@ from tabcmd.commands.constants import Constants
 from tabcmd.execution.logger_config import log
 from tabcmd.execution.global_options import *
 from .user_data import UserCommand
-from tabcmd import _
+from tabcmd.execution.localize import _
 
 
 class CreateSiteUsersCommand(UserCommand):
@@ -27,7 +27,7 @@ class CreateSiteUsersCommand(UserCommand):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug("tabcmd.launching")
+        logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
         number_of_users_listed = 0

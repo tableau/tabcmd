@@ -4,6 +4,8 @@ from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
 from tabcmd.commands.constants import Errors
 
+from tabcmd.execution.localize import _
+
 
 class PublishSamplesCommand(Server):
     """
@@ -21,14 +23,14 @@ class PublishSamplesCommand(Server):
             "-n",
             dest="project_name",
             required=True,
-            help="tabcmd.command.description.publish_samples.argument.project_name",
+            help=_("tabcmd.command.description.publish_samples.argument.project_name"),
         )
         set_parent_project_arg(publish_samples_parser)  # args.parent_project_name
 
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug("tabcmd.launching")
+        logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
         if args.parent_project_path is not None:
@@ -40,7 +42,7 @@ class PublishSamplesCommand(Server):
                 logger, server, args.project_name, project_path
             )
         except Exception as e:
-            Errors.exit_with_error(logger, "tabcmd.report.error.publish_samples.expected_project", exception=e)
+            Errors.exit_with_error(logger, _("tabcmd.report.error.publish_samples.expected_project"), exception=e)
 
         try:
             server.projects.update(project, samples=True)
