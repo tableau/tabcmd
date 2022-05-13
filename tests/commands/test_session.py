@@ -255,7 +255,7 @@ class CreateSessionTests(unittest.TestCase):
         # filename = os.path.join(os.path.dirname(__file__),"test_credential_file.txt")
         # test_args.password_file = os.getcwd()+"/test_credential_file.txt"
         test_args.password_file = "filename"
-        with mock.patch('builtins.open', mock.mock_open(read_data="my_password")):
+        with mock.patch("builtins.open", mock.mock_open(read_data="my_password")):
             new_session = Session()
             auth = new_session.create_session(test_args)
 
@@ -271,9 +271,9 @@ class CreateSessionTests(unittest.TestCase):
     ):
         mock_path = _set_mocks_for_json_file_exists(mock_path, False)
         test_args = Namespace(**vars(args_to_mock))
-        test_args.token_name ="mytoken"
+        test_args.token_name = "mytoken"
         test_args.password_file = "filename"
-        with mock.patch('builtins.open', mock.mock_open(read_data="my_token")):
+        with mock.patch("builtins.open", mock.mock_open(read_data="my_token")):
             new_session = Session()
             auth = new_session.create_session(test_args)
 

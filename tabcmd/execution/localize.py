@@ -1,7 +1,7 @@
-
 import locale
 import gettext
 from typing import Any
+from typing import Callable
 
 
 def _identity_func(x: Any) -> Any:
@@ -9,19 +9,21 @@ def _identity_func(x: Any) -> Any:
 
 
 # The client should present text in the OS language, or english if not present.
-def set_client_locale() -> gettext:
+def set_client_locale() -> Callable:
     try:
         current_locale = _get_default_locale() or "en"
         locale_path = "tabcmd/locales/"
-        domain = 'tabcmd'
+        domain = "tabcmd"
 
         # fallback=True means if loading the translated files fails, strings will be returned
-        language = gettext.translation(domain, localedir=locale_path, languages=[current_locale], fallback=True)
+        language: gettext.NullTranslations = gettext.translation(
+            domain, localedir=locale_path, languages=[current_locale], fallback=True
+        )
         language.install()  # I believe this is the expensive call
         _ = language.gettext
     except Exception as e:
         print(e)
-        _ = _identity_func()
+        _ = _identity_func
     return _
 
 

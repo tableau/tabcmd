@@ -63,12 +63,6 @@ msgstr "Successfully {0} {1} for group {2}"
 msgid "tabcmd.delete.users"
 msgstr "======== Deleted {} user(s)"
 
-msgid "tabcmd.report.lines_processed"
-msgstr "======== Lines processed: {} ========="
-
-msgid "tabcmd.report.lines_skipped"
-msgstr "Lines skipped: {}"
-
 msgid "tabcmd.result.failure.user"
 msgstr "Error at user {}"
 
