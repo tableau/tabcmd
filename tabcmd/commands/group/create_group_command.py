@@ -4,20 +4,20 @@ from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
 from tabcmd.commands.constants import Errors
-from tabcmd import _
+from tabcmd.execution.localize import _
 
 
 class CreateGroupCommand(Server):
     """
     This command is used to create a group
     """
+
     name: str = "creategroup"
     description: str = "tabcmd.command.description.create_group"
 
     @staticmethod
     def define_args(create_group_parser):
         create_group_parser.add_argument("name", help="tabcmd.command.arg.description.create_group.name")
-
 
     @staticmethod
     def run_command(args):

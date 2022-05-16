@@ -3,7 +3,7 @@ import tableauserverclient as TSC
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.extracts.extracts_command import ExtractsCommand
 from tabcmd.execution.logger_config import log
-from tabcmd import _
+from tabcmd.execution.localize import _
 
 
 class ReencryptExtracts(ExtractsCommand):
@@ -17,7 +17,7 @@ class ReencryptExtracts(ExtractsCommand):
 
     @staticmethod
     def define_args(reencrypt_extract_parser):
-        reencrypt_extract_parser.add_argument("site_name", metavar="site-name", help="The site to encrypt extracts for")
+        reencrypt_extract_parser.add_argument("site_name", metavar="site-name", help=_("editsite.options.site-name"))
 
     @staticmethod
     def run_command(args):
@@ -25,7 +25,7 @@ class ReencryptExtracts(ExtractsCommand):
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
-        site_item = ExtractsCommand.get_site_for_command(logger, server, args, session)
+        site_item = ExtractsCommand.get_site_for_command_or_throw(logger, server, args)
         try:
             ExtractsCommand.print_task_scheduling_message(logger, "site", site_item.name, "re-encrypted")
             job = server.sites.encrypt_extracts(site_item.id)

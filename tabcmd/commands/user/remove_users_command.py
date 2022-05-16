@@ -2,7 +2,7 @@ from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
 from .user_data import UserCommand
-from tabcmd import _
+from tabcmd.execution.localize import _
 
 
 class RemoveUserCommand(UserCommand):
@@ -15,16 +15,14 @@ class RemoveUserCommand(UserCommand):
 
     @staticmethod
     def define_args(remove_users_parser):
-        remove_users_parser.add_argument(
-            "name",
-            help="tabcmd.command.description.remove_users.argument.name")
+        remove_users_parser.add_argument("name", help="tabcmd.command.description.remove_users.argument.name")
         set_users_file_arg(remove_users_parser)
         set_completeness_options(remove_users_parser)
 
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug("tabcmd.launching")
+        logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
 

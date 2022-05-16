@@ -1,6 +1,7 @@
 import os
 
 import tableauserverclient as TSC
+import tableauserverclient.server
 
 from tabcmd.commands.constants import Errors
 
@@ -54,16 +55,17 @@ class Server:
         sites, pagination = server.sites.get()
         return sites
 
+    # Try the site arg as name or id of a site, else throw
     @staticmethod
-    def get_site_for_command(logger, server, args, session):
+    def get_site_for_command_or_throw(logger, server, args):
         if args.site_name:
             logger.debug("Get site {} by name".format(args.site_name))
             site_item = Server.get_items_by_name(logger, server.sites, args.site_name)[0]
         else:
-            logger.debug("Get site {} by id".format(session.site_id))
-            site_item = server.sites.get_by_id(session.site_id)
+            logger.debug("Try get site {} by id".format(args.site_name))
+            site_item = server.sites.get_by_id(args.site_name)
         if not site_item:
-            Errors.exit_with_error(logger, "Could not get site info from server")
+            return None
         return site_item
 
     @staticmethod

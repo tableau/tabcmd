@@ -4,7 +4,7 @@ from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.extracts.extracts_command import ExtractsCommand
 from tabcmd.execution.logger_config import log
-from tabcmd import _
+from tabcmd.execution.localize import _
 
 
 class CreateExtracts(ExtractsCommand):

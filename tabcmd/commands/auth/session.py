@@ -15,6 +15,7 @@ class Session:
     """
     Session class handles all authentication related work
     """
+
     TOKEN_CRED_TYPE = "token"
     PASSWORD_CRED_TYPE = "password"
 

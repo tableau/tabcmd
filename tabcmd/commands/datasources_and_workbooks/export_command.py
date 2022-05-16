@@ -3,7 +3,7 @@ import tableauserverclient as TSC
 from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
-from tabcmd import _
+from tabcmd.execution.localize import _
 
 
 class ExportCommand(DatasourcesAndWorkbooks):

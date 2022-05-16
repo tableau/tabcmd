@@ -1,7 +1,7 @@
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
 from .session import Session
-from tabcmd import _
+from tabcmd.execution.localize import _
 
 
 class LoginCommand(Server):

@@ -3,8 +3,9 @@ import tableauserverclient as TSC
 from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
+from tabcmd.commands.constants import Errors
 from tabcmd.execution.logger_config import log
-from tabcmd import _
+from tabcmd.execution.localize import _
 
 
 class CreateSiteCommand(Server):
@@ -13,11 +14,11 @@ class CreateSiteCommand(Server):
     """
 
     name: str = "createsite"
-    description: str = _("Create a site")
+    description: str = _("createsite.short_description")
 
     @staticmethod
     def define_args(create_site_parser):
-        create_site_parser.add_argument("site_name", metavar="site-name", help="name of site")
+        create_site_parser.add_argument("site_name", metavar="site-name", help=_("editsite.options.site-name"))
         set_common_site_args(create_site_parser)
 
     @staticmethod
@@ -34,10 +35,17 @@ class CreateSiteCommand(Server):
             storage_quota=args.storage_quota,
         )
         try:
+            logger.info(_("createsite.status").format(args.site_name))
             server.sites.create(new_site)
-            logger.info("Successfully created a new site called: {}".format(args.site_name))
+            logger.info(_("common.output.succeeded"))
         except TSC.ServerResponseError as e:
-            if args.continue_if_exists and Errors.is_resource_conflict(e):
-                logger.info(_("createsite.errors.site_name_already_exists").format(args.site_name))
-                return
-            Errors.exit_with_error(logger, "error creating site", e)
+            if Errors.is_resource_conflict(e):
+                if args.continue_if_exists:
+                    logger.info(_("createsite.errors.site_name_already_exists").format(args.site_name))
+                    return
+                else:
+                    Errors.exit_with_error(
+                        logger, _("createsite.errors.site_name_already_exists").format(args.site_name)
+                    )
+
+            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
