@@ -1,0 +1,1800 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=None"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: None"
+"Language: None"
+#:
+msgid "permissions.labels.capabilities.read"
+msgstr "Afficher\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.write"
+msgstr "Remplacer\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.write.legacy"
+msgstr "Enregistrer\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.delete"
+msgstr "Supprimer\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.filter"
+msgstr "Filtrer\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.add_tag"
+msgstr "Ajouter une balise\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.add_favorite"
+msgstr "Ajouter un favori\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.add_comment"
+msgstr "Ajouter des commentaires\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.add_comment.legacy"
+msgstr "Ajouter un commentaire\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.view_comments"
+msgstr "Afficher les commentaires\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.vud"
+msgstr "T\u00e9l\u00e9charger les donn\u00e9es compl\u00e8tes :"
+
+#:
+msgid "permissions.labels.capabilities.export_image"
+msgstr "T\u00e9l\u00e9charger l\u02bcimage/le PDF :"
+
+#:
+msgid "permissions.labels.capabilities.export_data"
+msgstr "T\u00e9l\u00e9charger les donn\u00e9es r\u00e9sum\u00e9es :"
+
+#:
+msgid "permissions.labels.capabilities.export_xml"
+msgstr "T\u00e9l\u00e9charger/Enregistrer une copie\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.export_xml.legacy"
+msgstr "T\u00e9l\u00e9charger/Enregistrer sous\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.save_customized_view"
+msgstr "Enregistrer la vue personnalis\u00e9e\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.share_view"
+msgstr "Partager une vue personnalis\u00e9e\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.stateful_url"
+msgstr "Lien permanent\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.change_hierarchy"
+msgstr "D\u00e9placer\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.change_permissions"
+msgstr "D\u00e9finir les autorisations\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.exclude"
+msgstr "Exclure\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.keep_only"
+msgstr "Garder exclusivement\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.select"
+msgstr "S\u00e9lectionner les rep\u00e8res\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.tooltip"
+msgstr "Afficher les infobulles\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.highlight"
+msgstr "Surlignage de la l\u00e9gende\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.url_link"
+msgstr "Lien vers des URL externes\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.administrator"
+msgstr "Administrateur\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.content_admin"
+msgstr "Administrateur de contenu\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.create_groups"
+msgstr "Cr\u00e9er des groupes\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.rename"
+msgstr "Renommer\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.transfer_ownership"
+msgstr "Transf\u00e9rer la propri\u00e9t\u00e9 :"
+
+#:
+msgid "permissions.labels.capabilities.project_leader"
+msgstr "Responsable du projet\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.publish"
+msgstr "Publier\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.connect"
+msgstr "Connexion\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.draw"
+msgstr "Trac\u00e9\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.web_authoring"
+msgstr "Modification sur le Web :"
+
+#:
+msgid "permissions.labels.capabilities.xml_save_as"
+msgstr "Enregistrer sous\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.create_refresh_metrics"
+msgstr "Cr\u00e9er/actualiser des m\u00e9triques\u00a0:"
+
+#:
+msgid "permissions.labels.capabilities.explain_data"
+msgstr "Ex\u00e9cuter Explique-moi les donn\u00e9es\u00a0:"
+
+#:
+msgid "permissions.labels.roles.wb_view"
+msgstr "Afficher"
+
+#:
+msgid "permissions.labels.roles.wb_explore"
+msgstr "Explorer"
+
+#:
+msgid "permissions.labels.roles.wb_publish"
+msgstr "Publier"
+
+#:
+msgid "permissions.labels.roles.wb_administer"
+msgstr "Administrer"
+
+#:
+msgid "permissions.labels.roles.ds_view"
+msgstr "Afficher"
+
+#:
+msgid "permissions.labels.roles.ds_explore"
+msgstr "Explorer"
+
+#:
+msgid "permissions.labels.roles.ds_publish"
+msgstr "Publier"
+
+#:
+msgid "permissions.labels.roles.ds_administer"
+msgstr "Administrer"
+
+#:
+msgid "permissions.labels.roles.viewer"
+msgstr "Viewer"
+
+#:
+msgid "permissions.labels.roles.interactor"
+msgstr "Interacteur"
+
+#:
+msgid "permissions.labels.roles.editor"
+msgstr "\u00c9diteur"
+
+#:
+msgid "permissions.labels.roles.ds_connector"
+msgstr "Connecteur de source de donn\u00e9es"
+
+#:
+msgid "permissions.labels.roles.ds_editor"
+msgstr "\u00c9diteur de source de donn\u00e9es"
+
+#:
+msgid "permissions.labels.roles.administrator"
+msgstr "Administrateur"
+
+#:
+msgid "permissions.labels.roles.project_leader"
+msgstr "Responsable du projet"
+
+#:
+msgid "permissions.labels.roles.publisher"
+msgstr "Publicateur"
+
+#:
+msgid "permissions.labels.roles.custom"
+msgstr "Personnalis\u00e9"
+
+#:
+msgid "permissions.labels.roles.none"
+msgstr "Aucun"
+
+# Used in Storage class in tab-core
+
+#:
+msgid "formats.messages.disk_space.in_mb"
+msgstr "{0}\u00a0Mo"
+
+#:
+msgid "formats.messages.disk_space.in_kb"
+msgstr "{0} Ko"
+
+# Publishing-related errors and strings
+
+#:
+msgid "errors.argument.flow_description.too_long"
+msgstr "La description du flux est trop longue ({0} caract\u00e8res). Elle doit comporter moins de {1} caract\u00e8res\u00a0:\n{2}"
+
+#:
+msgid "errors.argument.workbook_name.too_long"
+msgstr "Le nom du classeur est trop long ({0} caract\u00e8res).  Il doit comporter moins de {1} caract\u00e8res\u00a0:\n{2}"
+
+#:
+msgid "errors.argument.workbook_name.empty"
+msgstr "Le nom du classeur est vide."
+
+#:
+msgid "errors.argument.workbook_description.too_long"
+msgstr "La description du classeur est trop longue ({0} caract\u00e8res). Elle doit comporter moins de {1} caract\u00e8res\u00a0:\n{2}"
+
+#:
+msgid "errors.argument.worksheet_name.too_long"
+msgstr "Le nom de la feuille de calcul est trop long ({0} caract\u00e8res). Il doit comporter moins de {1} caract\u00e8res\u00a0:\n{2}"
+
+#:
+msgid "errors.argument.datasource_name.too_long"
+msgstr "Le nom de la source de donn\u00e9es est trop long ({0} caract\u00e8res). Il doit comporter moins de {1} caract\u00e8res :\n{2}"
+
+#:
+msgid "errors.argument.datasource_name.empty"
+msgstr "Le nom de la source de donn\u00e9es est vide."
+
+#:
+msgid "errors.argument.datasource_description.too_long"
+msgstr "La description de la source de donn\u00e9es est trop longue ({0} caract\u00e8res). Elle doit comporter moins de {1} caract\u00e8res :\n{2}"
+
+#:
+msgid "errors.argument.dataconnection_column.too_long"
+msgstr "DataConnection column {0} is too long ({1} characters).  It must be shorter than {2} characters:\n{3}"
+
+#:
+msgid "errors.argument.tag.too_long"
+msgstr "La balise est trop longue ({0} caract\u00e8res). Elle doit comporter moins de {1} caract\u00e8res :\n{2}"
+
+#:
+msgid "errors.argument.workbook_file.missing_or_empty"
+msgstr "Le fichier du classeur est manquant ou vide."
+
+#:
+msgid "errors.argument.internal"
+msgstr "Erreur de serveur interne.  Argument manquant ou non valide."
+
+#:
+msgid "errors.argument.thumbnail.invalid_format"
+msgstr "Le format de miniature du classeur n\u02bcest pas valide. Ce doit \u00eatre un fichier PNG avec une r\u00e9solution de 300x300 au maximum."
+
+#:
+msgid "errors.html_403.disabled_resource.workbook"
+msgstr "D\u00e9sol\u00e9, ce classeur est d\u00e9sactiv\u00e9.  Contactez votre administrateur."
+
+#:
+msgid "errors.html_404.missing_or_unauthorized_resource.project"
+msgstr "D\u00e9sol\u00e9, le projet que vous recherchez n\u02bcexiste pas ou vous n\u02bcavez pas l\u02bcautorisation de le voir."
+
+#:
+msgid "errors.html_404.missing_or_unauthorized_resource.personal_space"
+msgstr "D\u00e9sol\u00e9, le projet que vous recherchez n\u02bcexiste pas ou vous n\u02bc\u00eates pas autoris\u00e9 \u00e0 le consulter."
+
+#:
+msgid "errors.html_404.missing_or_unauthorized_resource.datasource"
+msgstr "D\u00e9sol\u00e9, la source de donn\u00e9es que vous recherchez n\u02bcexiste pas."
+
+#:
+msgid "errors.labels.formatted_request_id"
+msgstr "ID de la requ\u00eate : {0}"
+
+#:
+msgid "errors.links.delete_datasources"
+msgstr "Supprimer les sources de donn\u00e9es"
+
+#:
+msgid "errors.links.delete_workbooks"
+msgstr "Supprimer les classeurs"
+
+#:
+msgid "errors.permissions.publish.datasource.licensing"
+msgstr "Vous devez disposer des droits \u02bcInteracteur\u02bc pour publier une source de donn\u00e9es."
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite"
+msgstr "Il existe d\u00e9j\u00e0 une source de donn\u00e9es intitul\u00e9e "{0}" dans le projet "{1}". Vous n\u02bc\u00eates pas autoris\u00e9 \u00e0 la remplacer."
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite_personal_space"
+msgstr "Il existe d\u00e9j\u00e0 une source de donn\u00e9es intitul\u00e9e "{0}" dans l\u02bcespace personnel. Vous n\u02bc\u00eates pas autoris\u00e9 \u00e0 la remplacer."
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite_short"
+msgstr "Il existe d\u00e9j\u00e0 une source de donn\u00e9es intitul\u00e9e "{0}" dans le projet "{1}"."
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
+msgstr "Il existe d\u00e9j\u00e0 une source de donn\u00e9es intitul\u00e9e "{0}" dans l\u02bcespace personnel.""
+
+#:
+msgid "errors.permissions.publish.datasource.non_existent"
+msgstr "La source de donn\u00e9es "{0}" n\u02bcexiste pas."
+
+#:
+msgid "errors.permissions.publish.datasource.general"
+msgstr "D\u00e9sol\u00e9, vous ne disposez pas des autorisations n\u00e9cessaires pour effectuer une publication dans cette source de donn\u00e9es."
+
+#:
+msgid "errors.permissions.publish.project.explicit_publisher_detail"
+msgstr "Vous ne disposez pas du droit de publication."
+
+#:
+msgid "errors.permissions.publish.project.general"
+msgstr "D\u00e9sol\u00e9, vous ne disposez pas des autorisations n\u00e9cessaires pour effectuer une publication dans ce projet."
+
+#:
+msgid "errors.permissions.publish.project.non_existent"
+msgstr "Le projet "{0}" n\u02bcexiste pas."
+
+#:
+msgid "errors.permissions.publish.project.not_writable"
+msgstr "Vous n\u02bc\u00eates pas autoris\u00e9 \u00e0 \u00e9crire sur le projet "{0}"."
+
+#:
+msgid "errors.permissions.publish.project.unspecified"
+msgstr "Vous devez sp\u00e9cifier un projet"
+
+#:
+msgid "errors.permissions.publish.workbook.disabled"
+msgstr "Le classeur "{0}" est d\u00e9sactiv\u00e9."
+
+#:
+msgid "errors.permissions.publish.workbook.general"
+msgstr "Il existe d\u00e9j\u00e0 un classeur de ce nom dans le projet sur lequel vous publiez. Pour publier, renommez votre classeur."
+
+#:
+msgid "errors.permissions.publish.workbook.general_personal_space"
+msgstr "Il existe d\u00e9j\u00e0 un classeur de ce nom dans l\u02bcespace personnel sur lequel vous publiez. Pour publier, renommez votre classeur."
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite"
+msgstr "Il existe d\u00e9j\u00e0 un classeur intitul\u00e9 "{0}" dans le projet "{1}". Vous n\u02bc\u00eates pas autoris\u00e9 \u00e0 le remplacer."
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite_personal_space"
+msgstr "Il existe d\u00e9j\u00e0 un classeur intitul\u00e9 "{0}" dans l\u02bcespace personnel. Vous n\u02bc\u00eates pas autoris\u00e9 \u00e0 le remplacer."
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite_short"
+msgstr "Il existe d\u00e9j\u00e0 un classeur intitul\u00e9 "{0}" dans le projet "{1}"."
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
+msgstr "Il existe d\u00e9j\u00e0 un classeur intitul\u00e9 "{0}" dans l\u02bcespace personnel."
+
+#:
+msgid "errors.reportable.impersonation.group_and_user"
+msgstr "Sp\u00e9cifiez seulement \u02bcimpersonate_username\u02bc ou \u02bcimpersonate_groupname\u02bc, et non les deux."
+
+#:
+msgid "errors.reportable.impersonation.user_not_found"
+msgstr "L\u02bcutilisateur \u02bc{0}\u02bc n\u02bcexiste pas."
+
+#:
+msgid "errors.reportable.impersonation.group_not_found"
+msgstr "Le groupe \u02bc{0}\u02bc n\u02bcexiste pas."
+
+# errors.public.validation.hasextract is copied from the C++ file codegen strings.data IDS_PUBLIC_VALIDATION_ERROR_HASEXTRACT
+
+#:
+msgid "errors.public.validation.hasextract"
+msgstr "Les classeurs enregistr\u00e9s sur Tableau Public doivent utiliser des extraits Tableau actifs. Faites un clic droit sur la source de donn\u00e9es et s\u00e9lectionnez Utiliser l\u02bcextrait avant de publier. La source de donn\u00e9es, \u02bc{0}\u02bc, n\u02bcest pas un extrait actif."
+
+#:
+msgid "errors.publish.dataserver_datasource_not_found"
+msgstr "Source de donn\u00e9es \u02bc{0}\u02bc introuvable pour le classeur \u02bc{1}\u02bc."
+
+#:
+msgid "errors.publish.datasource_update_mode"
+msgstr "Mode de mise \u00e0 jour inconnu\u00a0: \u02bc{0}\u02bc."
+
+#:
+msgid "errors.publish.workbook.concurrent_update"
+msgstr "Un classeur du m\u00eame nom est d\u00e9j\u00e0 en cours de publication ou de modification. Attendez que la t\u00e2che soit termin\u00e9e avant de r\u00e9essayer."
+
+#:
+msgid "errors.publish.workbook.restricted"
+msgstr "Le classeur contient des types de connexions non autoris\u00e9s sur ce serveur."
+
+#:
+msgid "errors.publish.datasource.concurrent_update"
+msgstr "Une source de donn\u00e9es du m\u00eame nom est d\u00e9j\u00e0 en cours de publication ou de modification. Attendez que la t\u00e2che soit termin\u00e9e avant de r\u00e9essayer."
+
+#:
+msgid "errors.publish.datasource.restricted"
+msgstr "La source de donn\u00e9es contient un type de connexion non autoris\u00e9 sur ce serveur."
+
+#:
+msgid "errors.publish.datasource.connection_check"
+msgstr "{0} n\u02bca pas pu \u00e9tablir une connexion \u00e0 votre source de donn\u00e9es."
+
+#:
+msgid "errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption"
+msgstr "Le classeur ne peut pas \u00eatre publi\u00e9 avec un extrait crypt\u00e9. L\u02bcadministrateur de site a d\u00e9sactiv\u00e9 le cryptage d\u02bcextrait sur ce site. Vous devez publier le classeur avec un extrait non crypt\u00e9."
+
+#:
+msgid "errors.publish.datasource.requested_extract_encryption_on_site_with_disabled_encryption"
+msgstr "La source de donn\u00e9es ne peut pas \u00eatre publi\u00e9e en tant qu\u02bcextrait crypt\u00e9. L\u02bcadministrateur de site a d\u00e9sactiv\u00e9 le cryptage d\u02bcextrait sur ce site. Vous devez publier l\u02bcextrait non crypt\u00e9."
+
+#:
+msgid "errors.publish.workbook.requested_no_extract_encryption_on_site_with_enforced_encryption"
+msgstr "Le classeur ne peut pas \u00eatre publi\u00e9 avec un extrait non crypt\u00e9. L\u02bcadministrateur de site a appliqu\u00e9 le cryptage d\u02bcextrait sur ce site. Vous devez publier le classeur et sp\u00e9cifier le cryptage d\u02bcextrait."
+
+#:
+msgid "errors.publish.datasource.requested_no_extract_encryption_on_site_with_enforced_encryption"
+msgstr "L\u02bcextrait de source de donn\u00e9es ne peut pas \u00eatre publi\u00e9 non crypt\u00e9. L\u02bcadministrateur de site a appliqu\u00e9 le cryptage d\u02bcextrait sur ce site. Vous devez publier l\u02bcextrait crypt\u00e9."
+
+#:
+msgid "errors.publish.has_unfinished_extract_creation_job"
+msgstr "Cette ressource ne peut pas \u00eatre publi\u00e9e parce que des travaux de cr\u00e9ation d\u02bcextrait sont en attente ou non termin\u00e9s. Veuillez patienter ou annuler ces travaux puis r\u00e9essayez."
+
+#:
+msgid "errors.publishing.storage_quota_exceeded.message"
+msgstr "Quota de stockage du site d\u00e9pass\u00e9."
+
+#:
+msgid "errors.publishing.request_size_exceeded"
+msgstr "Ce fichier ne peut pas \u00eatre publi\u00e9 parce que la taille de la demande est de {0}\u00a0octets, ce qui d\u00e9passe la limite de taille de {1}\u00a0octets."
+
+#:
+msgid "errors.publishing.request_size_unknown"
+msgstr "Impossible de d\u00e9terminer la taille de la demande."
+
+#:
+msgid "errors.site.quota_exceeded"
+msgstr "Le contenu que vous essayez de charger va d\u00e9passer la capacit\u00e9 du site de {0}."
+
+#:
+msgid "errors.personal_space.quota_exceeded"
+msgstr "Ce contenu d\u00e9passe la capacit\u00e9 de votre espace personnel de {0}."
+
+#:
+msgid "errors.web_authoring.workbook_deleted"
+msgstr "Le classeur \u02bc{0}\u02bc a \u00e9t\u00e9 supprim\u00e9.  Pour enregistrer en tant que nouveau classeur, choisissez \u02bcEnregistrer sous\u02bc."
+
+#:
+msgid "errors.web_authoring.workbook_changed"
+msgstr "Un autre utilisateur a modifi\u00e9 et enregistr\u00e9 ce classeur depuis que vous avez commenc\u00e9 \u00e0 l\u02bc\u00e9diter. Par cons\u00e9quent, vous ne pouvez plus apporter de modifications au classeur d\u02bcorigine. Utilisez la commande \u02bcEnregistrer sous\u02bc pour cr\u00e9er un nouveau classeur contenant vos modifications."
+
+#:
+msgid "labels.publish.embed_credentials"
+msgstr "Ajouter un mot de passe \u00e0 la source de donn\u00e9es"
+
+#:
+msgid "errors.publish.workbook.google_no_embedded_credentials"
+msgstr "Ce classeur comporte une source de donn\u00e9es {0} qui n\u00e9cessite des informations d\u02bcidentification int\u00e9gr\u00e9es. Pour enregistrer sous un nouveau classeur, s\u00e9lectionnez \u02bc{1}\u02bc."
+
+#:
+msgid "errors.publish.datasource.google_no_embedded_credentials"
+msgstr "Cette source de donn\u00e9es comporte une connexion {0} qui n\u00e9cessite des informations d\u02bcidentification int\u00e9gr\u00e9es.  Veuillez publier cette source de donn\u00e9es depuis Tableau Desktop avec des informations d\u02bcidentification int\u00e9gr\u00e9es."
+
+#:
+msgid "errors.publish.datasource.federated_oauth_datasource_failed"
+msgstr "Les informations d\u02bcidentification pour une ou plusieurs connexions dans votre source de donn\u00e9es ont expir\u00e9. Supprimez les informations d\u02bcidentification enregistr\u00e9es pour cette source de donn\u00e9es dans votre page Param\u00e8tres de compte sur Tableau Server ou Tableau Online, puis connectez-vous \u00e0 nouveau \u00e0 la source de donn\u00e9es."
+
+#:
+msgid "errors.publish.workbook.missing_oauth_credential"
+msgstr "Les informations d\u02bcidentification \u02bc{0}\u02bc sont manquantes ou ne peuvent \u00eatre utilis\u00e9es pour se connecter \u00e0 la source de donn\u00e9es ou au classeur."
+
+#:
+msgid "errors.publish.version_incompatible.message"
+msgstr "Les versions de bureau et de serveur ne sont pas compatibles."
+
+#:
+msgid "errors.publish.version_incompatible.details"
+msgstr "Version du bureau \u02bc{0}\u02bc, Version du document de serveur \u02bc{1}\u02bc."
+
+#:
+msgid "errors.publish.datasource.managed_keychain.unique_cv_suggestions"
+msgstr "La publication a \u00e9chou\u00e9 en raison d\u02bcun conflit. Renvoyez votre modification."
+
+#:
+msgid "errors.publish.permissions_are_locked"
+msgstr "Les permissions sont verrouill\u00e9es dans le projet dans lequel vous publiez. Pour publier ce classeur, utilisez les permissions par d\u00e9faut et r\u00e9essayez."
+
+#:
+msgid "errors.publish.datasource.not.found"
+msgstr "Impossible de trouver cette source de donn\u00e9es sur le serveur."
+
+#:
+msgid "errors.publish.extracts.disabled"
+msgstr "L\u02bcenregistrement pour des sources de donn\u00e9es d\u02bcarchives bas\u00e9es sur des extraits n\u02bcest pas encore pris en charge."
+
+#:
+msgid "errors.publish.datasource.timeout"
+msgstr "La publication a expir\u00e9 apr\u00e8s {0} secondes. Essayez d\u02bcutiliser Tableau Desktop pour publier cette source de donn\u00e9es."
+
+#:
+msgid "errors.publish.data_role.permission_not_null"
+msgstr "Impossible de d\u00e9finir des autorisations explicites pour les sources de donn\u00e9es avec ce type de donn\u00e9es."
+
+#:
+msgid "errors.download.extracts.timeout"
+msgstr "La publication a expir\u00e9 apr\u00e8s {0} secondes parce que cette source de donn\u00e9es comporte un fichier d\u02bcextrait volumineux. Essayez d\u02bcutiliser Tableau Desktop pour publier cette source de donn\u00e9es."
+
+#:
+msgid "errors.publish.datasource.invalid_extract_update_time"
+msgstr "Param\u00e8tre extractUpdateTime sp\u00e9cifi\u00e9 non valide\u00a0: {0}"
+
+#:
+msgid "errors.publish.async.serialization"
+msgstr "Impossible de s\u00e9rialiser l\u02bcerreur d\u02bc\u00e9tat du travail de publication"
+
+#:
+msgid "errors.permissions.view.datasources"
+msgstr "Vous devez disposer des droits \u02bcInteracteur\u02bc pour afficher la liste des sources de donn\u00e9es."
+
+# oauth related errors
+
+#:
+msgid "errors.oauth.invalid_oauth_class"
+msgstr "\u02bc{0}\u02bc n\u02bcest pas un type de connexion OAuth valide."
+
+#:
+msgid "errors.xmlapi.bad_request"
+msgstr "Requ\u00eate incorrecte"
+
+#:
+msgid "errors.xmlapi.unauthorized"
+msgstr "Action non autoris\u00e9e"
+
+#:
+msgid "errors.xmlapi.forbidden"
+msgstr "Autorisations insuffisantes"
+
+#:
+msgid "errors.xmlapi.system_user_not_found"
+msgstr "Le compte utilisateur est verrouill\u00e9 ou non valide."
+
+#:
+msgid "errors.xmlapi.site_user_not_found"
+msgstr "Ce compte utilisateur n\u02bcest pas actif. Pour obtenir de l\u02bcaide, contactez votre administrateur {0}."
+
+#:
+msgid "errors.xmlapi.not_found"
+msgstr "\u00c9l\u00e9ment introuvable"
+
+#:
+msgid "errors.xmlapi.concurrent_update"
+msgstr "Mise \u00e0 jour simultan\u00e9e"
+
+#:
+msgid "errors.xmlapi.internal_server_error"
+msgstr "Erreur de serveur interne"
+
+#:
+msgid "errors.xmlapi.illegal_state"
+msgstr "\u00c9tat non valide"
+
+#:
+msgid "errors.xmlapi.invalid_parameter"
+msgstr "Param\u00e8tre non valide"
+
+#:
+msgid "errors.xmlapi.already_exists"
+msgstr "Existe d\u00e9j\u00e0"
+
+#:
+msgid "errors.xmlapi.site_suspended"
+msgstr "Ce site a \u00e9t\u00e9 suspendu. Vous devez \u00eatre un administrateur syst\u00e8me pour vous connecter."
+
+#:
+msgid "errors.xmlapi.site_locked"
+msgstr "Ce site a \u00e9t\u00e9 verrouill\u00e9. Impossible de se connecter pour le moment."
+
+#:
+msgid "errors.xmlapi.permission_modification"
+msgstr "Publication impossible avec les permissions modifi\u00e9es"
+
+#:
+msgid "errors.xmlapi.update_desktop"
+msgstr "Pour ouvrir des classeurs cr\u00e9\u00e9s par d\u02bcautres auteurs, veuillez t\u00e9l\u00e9charger la version la plus r\u00e9cente de Tableau Desktop Public Edition sur le site http://public.tableau.com/"
+
+#:
+msgid "errors.xmlapi.throttled.summary"
+msgstr "Nombre excessif de demandes"
+
+#:
+msgid "errors.xmlapi.throttled.detail"
+msgstr "Nombre de demandes excessif pour \u02bc{0}\u02bc. Veuillez r\u00e9essayer apr\u00e8s {1}."
+
+#:
+msgid "datasource.publish.check.unpublishable"
+msgstr "Impossible de publier la source de donn\u00e9es."
+
+#:
+msgid "datasource.publish.check.publishable.extract_required"
+msgstr "N\u00e9cessite la cr\u00e9ation d\u02bcun extrait \u00e0 la publication."
+
+#:
+msgid "datasource.publish.check.publishable.credentials_required"
+msgstr "{1} acc\u00e8dera temporairement aux informations d\u02bcidentification fournies pour \u02bc{0}\u02bc afin de confirmer qu\u02bcil peut conserver une connexion de donn\u00e9es en direct."
+
+#:
+msgid "datasource.publish.check.publishable.server_unreachable"
+msgstr "{1} ne peut pas atteindre \u02bc{0}\u02bc. La publication cr\u00e9era un extrait."
+
+#:
+msgid "publish.bundles.workbook.subscription.subject"
+msgstr "Votre classeur {0} est pr\u00eat pour vous."
+
+#:
+msgid "publish.bundles.workbook.subscription.message"
+msgstr "Vos donn\u00e9es Salesforce ont \u00e9t\u00e9 ajout\u00e9es au classeur. Acc\u00e9dez \u00e0 votre projet {0} pour d\u00e9marrer."
+
+#:
+msgid "extracts.status.finished.upload.workbook"
+msgstr "Chargement des extraits termin\u00e9 (nouvel ID d\u02bcextrait :{0}) pour le classeur \u02bc{1}\u02bc {2}"
+
+#:
+msgid "extracts.status.finished.refresh.workbook"
+msgstr "Actualisation des extraits termin\u00e9e (nouvel ID d\u02bcextrait :{0}) pour le classeur \u02bc{1}\u02bc {2}"
+
+#:
+msgid "extracts.status.finished.increment.workbook"
+msgstr "Incr\u00e9mentation des extraits termin\u00e9e (nouvel ID d\u02bcextrait\u00a0:{0}) pour le classeur \u02bc{1}\u02bc {2}"
+
+#:
+msgid "extracts.status.finished.encrypt.workbook"
+msgstr "Cryptage des extraits termin\u00e9 (nouvel ID d\u02bcextrait\u00a0: {0}) pour le classeur \u02bc{1}\u02bc"
+
+#:
+msgid "extracts.status.finished.decrypt.workbook"
+msgstr "D\u00e9cryptage des extraits termin\u00e9 (nouvel ID d\u02bcextrait\u00a0: {0}) pour le classeur \u02bc{1}\u02bc"
+
+#:
+msgid "extracts.status.finished.rekey.workbook"
+msgstr "Re-cryptage des extraits termin\u00e9 (nouvel ID d\u02bcextrait\u00a0: {0}) pour le classeur \u02bc{1}\u02bc"
+
+#:
+msgid "extracts.status.finished.create.workbook"
+msgstr "Cr\u00e9ation d\u02bcextraits termin\u00e9e (nouvel ID d\u02bcextrait\u00a0: {0}) pour le classeur \u02bc{1}\u02bc {2}"
+
+#:
+msgid "extracts.status.finished.remove.workbook"
+msgstr "Modification de l\u02bcextrait sur "En direct" termin\u00e9e (ID de la source de donn\u00e9es : {0}) pour le classeur \u02bc{1}\u02bc"
+
+#:
+msgid "extracts.status.finished.upload.datasource"
+msgstr "Chargement des extraits termin\u00e9 (nouvel ID d\u02bcextrait\u00a0:{0}) pour la source de donn\u00e9es \u02bc{1}\u02bc {2}"
+
+#:
+msgid "extracts.status.finished.refresh.datasource"
+msgstr "Actualisation des extraits termin\u00e9e (nouvel ID d\u02bcextrait:{0}) pour la source de donn\u00e9es \u02bc{1}\u02bc {2}"
+
+#:
+msgid "extracts.status.finished.increment.datasource"
+msgstr "Incr\u00e9mentation des extraits termin\u00e9e (nouvel ID d\u02bcextrait\u00a0:{0}) pour la source de donn\u00e9es \u02bc{1}\u02bc {2}"
+
+#:
+msgid "extracts.status.finished.append.datasource"
+msgstr "Ajout des extraits termin\u00e9 (nouvel ID d\u02bcextrait\u00a0:{0}) pour la source de donn\u00e9es \u02bc{1}\u02bc {2}"
+
+#:
+msgid "extracts.status.finished.replace.datasource"
+msgstr "Remplacement des extraits termin\u00e9 (nouvel ID d\u02bcextrait\u00a0:{0}) pour la source de donn\u00e9es \u02bc{1}\u02bc {2}"
+
+#:
+msgid "extracts.status.finished.encrypt.datasource"
+msgstr "Cryptage des extraits termin\u00e9 (nouvel ID d\u02bcextrait\u00a0:{0}) pour la source de donn\u00e9es \u02bc{1}\u02bc"
+
+#:
+msgid "extracts.status.finished.decrypt.datasource"
+msgstr "D\u00e9cryptage des extraits termin\u00e9 (nouvel ID d\u02bcextrait\u00a0:{0}) pour la source de donn\u00e9es \u02bc{1}\u02bc"
+
+#:
+msgid "extracts.status.finished.rekey.datasource"
+msgstr "Re-cryptage des extraits termin\u00e9 (nouvel ID d\u02bcextrait\u00a0:{0}) pour la source de donn\u00e9es \u02bc{1}\u02bc"
+
+#:
+msgid "extracts.status.finished.encrypt.flow"
+msgstr "Le cryptage des extraits pour le flux \u02bc{0}\u02bc est termin\u00e9"
+
+#:
+msgid "extracts.status.finished.decrypt.flow"
+msgstr "Le d\u00e9cryptage des extraits pour le flux \u02bc{0}\u02bc est termin\u00e9"
+
+#:
+msgid "extracts.status.finished.rekey.flow"
+msgstr "Le recryptage des extraits pour le flux \u02bc{0}\u02bc est termin\u00e9"
+
+#:
+msgid "extracts.status.finished.encrypt.flowdraft"
+msgstr "Le cryptage des extraits pour le brouillon de flux \u02bc{0}\u02bc est termin\u00e9"
+
+#:
+msgid "extracts.status.finished.decrypt.flowdraft"
+msgstr "Le d\u00e9cryptage des extraits pour le brouillon de flux \u02bc{0}\u02bc est termin\u00e9"
+
+#:
+msgid "extracts.status.finished.rekey.flowdraft"
+msgstr "Le recryptage des extraits pour le brouillon de flux \u02bc{0}\u02bc est termin\u00e9"
+
+#:
+msgid "extracts.status.finished.create.datasource"
+msgstr "Cr\u00e9ation d\u02bcextraits termin\u00e9e (ID du nouvel extrait\u00a0: {0}) pour la source de donn\u00e9es \u02bc{1}\u02bc {2}"
+
+#:
+msgid "extracts.status.finished.remove.datasource"
+msgstr "Modification de l\u02bcextrait sur "En direct" termin\u00e9e pour la source de donn\u00e9es \u02bc{1}\u02bc"
+
+#:
+msgid "extracts.status.encryption_key"
+msgstr "ID de la cl\u00e9 de cryptage\u00a0: \u02bc{0}\u02bc."
+
+#:
+msgid "extracts.status.encryption_keys"
+msgstr "ID de l\u02bcancienne cl\u00e9 de cryptage\u00a0: "{0}\u02bc, ID de la nouvelle cl\u00e9 de cryptage\u00a0: \u02bc{1}\u02bc."
+
+#:
+msgid "extracts.errors.upload"
+msgstr "Erreur de chargement des extraits pour {0}\u00a0: \u02bc{1}\u02bc"
+
+#:
+msgid "extracts.errors.refresh"
+msgstr "Erreur lors de l\u02bcactualisation des extraits pour {0} \u02bc{1}\u02bc"
+
+#:
+msgid "extracts.errors.create"
+msgstr "Erreur lors de la cr\u00e9ation d\u02bcextraits pour {0} \u02bc{1}\u02bc."
+
+#:
+msgid "extracts.errors.increment"
+msgstr "Erreur d\u02bcincr\u00e9mentation des extraits pour {0}\u00a0: \u02bc{1}\u02bc"
+
+#:
+msgid "extracts.errors.append"
+msgstr "Erreur d\u02bcajout des extraits pour {0}\u00a0: \u02bc{1}\u02bc"
+
+#:
+msgid "extracts.errors.replace"
+msgstr "Erreur de remplacement des extraits pour {0}\u00a0: \u02bc{1}\u02bc"
+
+#:
+msgid "extracts.errors.download"
+msgstr "Erreur de t\u00e9l\u00e9chargement des extraits pour {0}\u00a0: \u02bc{1}\u02bc"
+
+#:
+msgid "extracts.errors.remove"
+msgstr "Erreur de suppression d\u02bcextraits pour {0}\u00a0: \u02bc{1}\u02bc."
+
+#:
+msgid "extracts.errors.title"
+msgstr "Le processus extrait l\u02bcerreur"
+
+#:
+msgid "extracts.errors.nothing_to_upload"
+msgstr "Aucun extrait \u00e0 charger pour {0}\u00a0: \u02bc{1}\u02bc"
+
+#:
+msgid "extracts.errors.nothing_to_refresh"
+msgstr "Aucun extrait \u00e0 actualiser pour {0}\u00a0: \u02bc{1}\u02bc"
+
+#:
+msgid "extracts.errors.nothing_to_increment"
+msgstr "Aucun extrait \u00e0 incr\u00e9menter pour {0}\u00a0: \u02bc{1}\u02bc"
+
+#:
+msgid "extracts.errors.nothing_to_append"
+msgstr "Aucun extrait \u00e0 ajouter pour {0}\u00a0: \u02bc{1}\u02bc"
+
+#:
+msgid "extracts.errors.nothing_to_replace"
+msgstr "Aucun extrait \u00e0 remplacer pour {0}\u00a0: \u02bc{1}\u02bc"
+
+#:
+msgid "extracts.errors.refresh_summary"
+msgstr "Erreur d\u02bcactualisation des extraits"
+
+#:
+msgid "extracts.errors.encrypt_summary"
+msgstr "Erreur de cryptage des extraits"
+
+#:
+msgid "extracts.errors.rekey_summary"
+msgstr "Erreur de re-cryptage des extraits"
+
+#:
+msgid "extracts.errors.decrypt_summary"
+msgstr "Erreur de d\u00e9cryptage des extraits"
+
+#:
+msgid "extracts.errors.remove_summary"
+msgstr "Erreur de suppression d\u02bcextraits"
+
+#:
+msgid "extracts.errors.create_summary"
+msgstr "Erreur de cr\u00e9ation d\u02bcextraits"
+
+#:
+msgid "extracts.errors.datasource_overwritten"
+msgstr "L\u02bcactualisation a \u00e9chou\u00e9 car la source de donn\u00e9es a \u00e9t\u00e9 remplac\u00e9e par une autre t\u00e2che pendant le traitement. Relancez l\u02bcactualisation pour r\u00e9soudre le probl\u00e8me."
+
+#:
+msgid "extracts.errors.workbook_overwritten"
+msgstr "L\u02bcactualisation a \u00e9chou\u00e9 car le classeur a \u00e9t\u00e9 remplac\u00e9 par une autre t\u00e2che pendant le traitement. Relancez l\u02bcactualisation pour r\u00e9soudre le probl\u00e8me."
+
+#:
+msgid "extracts.errors.encrypt"
+msgstr "Erreur lors du cryptage des extraits pour {0} \u02bc{1}\u02bc"
+
+#:
+msgid "extracts.errors.decrypt"
+msgstr "Erreur lors du d\u00e9cryptage des extraits pour {0} \u02bc{1}\u02bc"
+
+#:
+msgid "extracts.errors.rekey"
+msgstr "Erreur lors du re-cryptage des extraits pour {0} \u02bc{1}\u02bc"
+
+#:
+msgid "extracts.errors.encrypt_datasource_overwritten"
+msgstr "Le cryptage des extraits a \u00e9chou\u00e9 parce que la source de donn\u00e9es a \u00e9t\u00e9 remplac\u00e9e par une autre t\u00e2che lors du traitement."
+
+#:
+msgid "extracts.errors.encrypt_workbook_overwritten"
+msgstr "Le cryptage des extraits a \u00e9chou\u00e9 parce que le classeur a \u00e9t\u00e9 remplac\u00e9 par une autre t\u00e2che lors du traitement."
+
+#:
+msgid "extracts.errors.rekey_datasource_overwritten"
+msgstr "Le re-cryptage des extraits a \u00e9chou\u00e9 parce que la source de donn\u00e9es a \u00e9t\u00e9 remplac\u00e9e par une autre t\u00e2che lors du traitement."
+
+#:
+msgid "extracts.errors.rekey_workbook_overwritten"
+msgstr "Le re-cryptage des extraits a \u00e9chou\u00e9 parce que le classeur a \u00e9t\u00e9 remplac\u00e9 par une autre t\u00e2che lors du traitement."
+
+#:
+msgid "extracts.errors.decrypt_datasource_overwritten"
+msgstr "Le d\u00e9cryptage des extraits a \u00e9chou\u00e9 parce que la source de donn\u00e9es a \u00e9t\u00e9 remplac\u00e9e par une autre t\u00e2che lors du traitement."
+
+#:
+msgid "extracts.errors.decrypt_workbook_overwritten"
+msgstr "Le d\u00e9cryptage des extraits a \u00e9chou\u00e9 parce que le classeur a \u00e9t\u00e9 remplac\u00e9 par une autre t\u00e2che lors du traitement."
+
+#:
+msgid "extracts.errors.remove_datasource_overwritten"
+msgstr "Impossible de modifier une source de donn\u00e9es sur "En direct" parce qu\u02bcelle a \u00e9t\u00e9 remplac\u00e9e par une autre t\u00e2che."
+
+#:
+msgid "extracts.errors.remove_workbook_overwritten"
+msgstr "Impossible de modifier un classeur sur "En direct" parce qu\u02bcil a \u00e9t\u00e9 remplac\u00e9 par une autre t\u00e2che."
+
+#:
+msgid "extracts.errors.create_datasource_overwritten"
+msgstr "Impossible d\u02bcextraire une source de donn\u00e9es parce qu\u02bcelle a \u00e9t\u00e9 remplac\u00e9e par une autre t\u00e2che."
+
+#:
+msgid "extracts.errors.create_workbook_overwritten"
+msgstr "Impossible d\u02bcextraire un classeur parce qu\u02bcil a \u00e9t\u00e9 remplac\u00e9 par une autre t\u00e2che."
+
+#:
+msgid "extracts.site_mode_change_details"
+msgstr "Le mode de cryptage de l\u02bcextrait de site a chang\u00e9 de \u02bc{0}\u02bc en \u02bc{1}\u02bc."
+
+#:
+msgid "extracts.errors.encryption_not_licensed"
+msgstr "Cette op\u00e9ration a \u00e9chou\u00e9 parce que le cryptage d\u02bcextrait n\u02bcest pas sous licence. Pour effectuer cette op\u00e9ration, vous devez renouveler votre licence ou d\u00e9crypter votre extrait."
+
+#:
+msgid "extracts.errors.operation_cancelled_detail"
+msgstr "L\u02bcop\u00e9ration de suppression d\u02bcextrait pour {0} (source de donn\u00e9es\u00a0: {2}) a expir\u00e9."
+
+#:
+msgid "workbooks.messages.load_error"
+msgstr "Impossible de charger le classeur {0}"
+
+#:
+msgid "workbooks.messages.locked"
+msgstr "Un autre utilisateur modifie actuellement le classeur \u02bc{0}\u02bc.  Recommencez ult\u00e9rieurement."
+
+#:
+msgid "workbooks.new_workbook.default_name"
+msgstr "Nouveau classeur"
+
+#:
+msgid "workbooks.new_datasource.default_name"
+msgstr "Nouvelle source de donn\u00e9es"
+
+#:
+msgid "datasources.messages.load_error"
+msgstr "Impossible de charger la source de donn\u00e9es {0}"
+
+#:
+msgid "metrics.new_metric.default_name"
+msgstr "Nouvelle m\u00e9trique"
+
+#:
+msgid "messages.timeout_error.summary"
+msgstr "Erreur de d\u00e9lai d\u02bcattente"
+
+#:
+msgid "messages.timeout_error.task_canceled"
+msgstr "Annulation d\u02bcune t\u00e2che qui a pris plus de {0}\u00a0secondes"
+
+#:
+msgid "subscriptions.manage_my_subscriptions"
+msgstr "G\u00e9rer mes abonnements"
+
+#:
+msgid "subscriptions.message_greeting"
+msgstr "Bonjour,"
+
+#:
+msgid "subscriptions.subscribed_footer"
+msgstr "Voici votre abonnement \u00e0 {0}"
+
+#:
+msgid "subscriptions.subscribed_workbook"
+msgstr "classeur"
+
+#:
+msgid "subscriptions.subscribed_view"
+msgstr "vue"
+
+#:
+msgid "subscriptions.fullstop"
+msgstr "."
+
+#:
+msgid "subscriptions.extract_refresh_footer"
+msgstr "Vous recevez cet e-mail d\u02bcabonnement lorsque les donn\u00e9es sont actualis\u00e9es."
+
+#:
+msgid "subscriptions.explore_the_viz"
+msgstr "Explorer la visualisation"
+
+#:
+msgid "subscriptions.explore_the_workbook"
+msgstr "Explorer le classeur"
+
+#:
+msgid "subscriptions.pdf_attached"
+msgstr "Votre PDF Tableau est joint."
+
+#:
+msgid "subscriptions.access_live_content"
+msgstr "Vous pouvez acc\u00e9der \u00e0 la vue en direct du contenu ici"
+
+#:
+msgid "subscriptions.warning_deprecated_type"
+msgstr "obsol\u00e8te"
+
+#:
+msgid "subscriptions.warning_extract_refresh_type"
+msgstr "\u00e9checs de l\u02bcactualisation d\u02bcextrait"
+
+#:
+msgid "subscriptions.warning_flow_run_type"
+msgstr "\u00e9chec de l\u02bcex\u00e9cution du flux"
+
+#:
+msgid "subscriptions.warning_introduction_general"
+msgstr "Les avertissements sur la qualit\u00e9 des donn\u00e9es suivants concernent ce(tte) {0}."
+
+#:
+msgid "subscriptions.warning_introduction_view"
+msgstr "Pour plus d\u02bcinformations, consultez l\u02bconglet D\u00e9tails des donn\u00e9es dans la vue"
+
+#:
+msgid "subscriptions.warning_introduction_workbook"
+msgstr "Pour plus d\u02bcinformations, consultez la page Classeur"
+
+#:
+msgid "subscriptions.warning_maintenance_type"
+msgstr "en cours de maintenance"
+
+#:
+msgid "subscriptions.warning_permission_error"
+msgstr "Cet avertissement concerne une ressource que vous n\u02bc\u00eates pas autoris\u00e9 \u00e0 consulter."
+
+#:
+msgid "subscriptions.warning_redacted"
+msgstr "Autorisations requises"
+
+#:
+msgid "subscriptions.warning_sensitve_type"
+msgstr "donn\u00e9es sensibles"
+
+#:
+msgid "subscriptions.warning_severe"
+msgstr "Avertissement important sur la qualit\u00e9 des donn\u00e9es"
+
+#:
+msgid "subscriptions.warning_stale_type"
+msgstr "dnn\u00e9es obsol\u00e8tes"
+
+#:
+msgid "subscriptions.warning_standard"
+msgstr "Avertissement sur la qualit\u00e9 des donn\u00e9es"
+
+#:
+msgid "subscriptions.warning_error_type"
+msgstr "type d\u02bcavertissement inconnu"
+
+#:
+msgid "subscriptions.warning_warning_type"
+msgstr "avertissement"
+
+#:
+msgid "errors.subscriptions.image_render_failed"
+msgstr "Impossible d\u02bceffectuer un rendu correct de l\u02bcinstantan\u00e9 de la vue \u02bc{0}\u02bc."
+
+#:
+msgid "errors.subscriptions.see_live_view"
+msgstr "Pour voir la vue en ligne, acc\u00e9dez \u00e0 {0}."
+
+#:
+msgid "errors.subscriptions.disabled_on_server"
+msgstr "Le param\u00e8tre des abonnements \u00e0 l\u02bc\u00e9chelle du serveur n\u02bcest pas activ\u00e9. Impossible de traiter les abonnements."
+
+#:
+msgid "errors.subscriptions.disabled_on_site"
+msgstr "Les abonnements sont d\u00e9sactiv\u00e9s pour le site."
+
+#:
+msgid "errors.subscriptions.site_is_locked"
+msgstr "Le site est verrouill\u00e9. Impossible de traiter les abonnements."
+
+#:
+msgid "errors.subscriptions.orphan"
+msgstr "Les classeurs et les vues associ\u00e9s \u00e0 cet abonnement sont introuvables."
+
+#:
+msgid "errors.subscriptions.user_unlicensed"
+msgstr "L\u02bcabonnement de l\u02bcutilisateur sans licence est ignor\u00e9."
+
+#:
+msgid "errors.subscriptions.smtp_unreacheable"
+msgstr "Impossible de joindre l\u02bch\u00f4te SMTP. V\u00e9rifiez si SMTP a \u00e9t\u00e9 configur\u00e9."
+
+#:
+msgid "errors.subscriptions.uncategorized_error"
+msgstr "Erreur inconnue"
+
+#:
+msgid "errors.subscriptions.pdf_render_failed"
+msgstr "Impossible d\u02bcafficher un rendu correct de la pi\u00e8ce jointe PDF pour cet e-mail."
+
+#:
+msgid "errors.subscriptions.pdf_limit_exceeded"
+msgstr "Le fichier PDF g\u00e9n\u00e9r\u00e9 d\u00e9passe la limite de taille de {0}\u00a0Mo et n\u02bca pas pu \u00eatre joint \u00e0 cet e-mail."
+
+#:
+msgid "errors.subscriptions.attachments_not_enabled"
+msgstr "L\u02bcabonnement a \u00e9chou\u00e9 en raison de la d\u00e9sactivation des pi\u00e8ces jointes d\u02bce-mail. Contactez votre administrateur Tableau pour plus de d\u00e9tails."
+
+#:
+msgid "errors.subscriptions.pdf_email_failed"
+msgstr "Impossible de joindre le PDF g\u00e9n\u00e9r\u00e9 \u00e0 cet e-mail."
+
+#:
+msgid "errors.subscriptions.learn_more_troubleshoot"
+msgstr "<a hre"
+
+#:
+msgid "errors.subscriptions.bad_extract_refresh_subscription_configuration"
+msgstr "L\u02bcabonnement a \u00e9t\u00e9 suspendu parce que le classeur contient plusieurs programmations d\u02bcactualisations d\u02bcextraits. Pour reprendre, mettez \u00e0 jour la fr\u00e9quence sur Selon la programmation s\u00e9lectionn\u00e9e."
+
+#:
+msgid "errors.subscriptions.subscription_failed_refresh_failure"
+msgstr "L\u02bcactualisation d\u02bcextrait a \u00e9chou\u00e9 pour la source de donn\u00e9es."
+
+#:
+msgid "errors.subscriptions.multiple_extracts_for_extract_refresh_subscription"
+msgstr "Le classeur contient plusieurs programmations d\u02bcactualisation d\u02bcextrait. Mettez \u00e0 jour la fr\u00e9quence sur Selon la programmation s\u00e9lectionn\u00e9e."
+
+#:
+msgid "errors.subscriptions.datasource_is_missing_password"
+msgstr "Erreur de connexion \u00e0 la source de donn\u00e9es. V\u00e9rifiez les informations d\u02bcidentification sur toutes les connexions de sources de donn\u00e9es pour le classeur."
+
+#:
+msgid "subscriptions.results_summary.sg"
+msgstr "{0} abonnement(s) sur {1} envoy\u00e9(s) depuis la programmation \u02bc{2}\u02bc."
+
+#:
+msgid "subscriptions.results_summary.pl"
+msgstr "{0} abonnements sur {1} envoy\u00e9s depuis la programmation \u02bc{2}\u02bc."
+
+#:
+msgid "subscriptions.results_views_per_subscription.sg"
+msgstr "{0} ({1} sur 1\u00a0vue r\u00e9ussie)"
+
+#:
+msgid "subscriptions.results_views_per_subscription.pl"
+msgstr "{0} ({1} sur {2}\u00a0vues r\u00e9ussie(s))"
+
+#:
+msgid "subscriptions.results_views_per_subscription.more"
+msgstr "({0} de plus)"
+
+#:
+msgid "subscriptions.results_views_per_subscription.failed"
+msgstr "{0} ({1} sur {2} vues ont \u00e9chou\u00e9)."
+
+#:
+msgid "subscriptions.results_header.all_shown.failures.sg"
+msgstr "1\u00a0\u00e9chec"
+
+#:
+msgid "subscriptions.results_header.all_shown.failures.pl"
+msgstr "{0}\u00a0\u00e9checs"
+
+#:
+msgid "subscriptions.results_header.all_shown.warnings.sg"
+msgstr "1\u00a0avertissement"
+
+#:
+msgid "subscriptions.results_header.all_shown.warnings.pl"
+msgstr "{0}\u00a0avertissements"
+
+#:
+msgid "subscriptions.results_header.some_hidden.failures.pl.sg"
+msgstr "{0} \u00e9checs (1\u00a0masqu\u00e9, voir les journaux)"
+
+#:
+msgid "subscriptions.results_header.some_hidden.failures.pl.pl"
+msgstr "{0}\u00a0\u00e9checs ({1}\u00a0masqu\u00e9(s), voir les journaux)"
+
+#:
+msgid "subscriptions.results_header.some_hidden.warnings.pl.sg"
+msgstr "{0}\u00a0avertissements (1\u00a0masqu\u00e9, voir les journaux)"
+
+#:
+msgid "subscriptions.results_header.some_hidden.warnings.pl.pl"
+msgstr "{0}\u00a0avertissements ({1}\u00a0masqu\u00e9(s), voir les journaux)"
+
+#:
+msgid "dataalerts.manage_my_data_alerts"
+msgstr "G\u00e9rer les alertes"
+
+#:
+msgid "dataalerts.edit_data_alert"
+msgstr "Modifier l\u02bcalerte"
+
+#:
+msgid "dataalerts.remove_user_from_data_alert"
+msgstr "Me supprimer"
+
+#:
+msgid "dataalerts.add_user_to_data_alert"
+msgstr "M\u02bcajouter \u00e0 cette alerte"
+
+#:
+msgid "dataalerts.greater_or_equal"
+msgstr "{0} \u00e9tait sup\u00e9rieur ou \u00e9gal \u00e0 {1}."
+
+#:
+msgid "dataalerts.greater"
+msgstr "{0} \u00e9tait sup\u00e9rieur \u00e0 {1}."
+
+#:
+msgid "dataalerts.less_or_equal"
+msgstr "{0} \u00e9tait inf\u00e9rieur ou \u00e9gal \u00e0 {1}."
+
+#:
+msgid "dataalerts.less"
+msgstr "{0} \u00e9tait inf\u00e9rieur \u00e0 {1}."
+
+#:
+msgid "dataalerts.equal"
+msgstr "{0} \u00e9tait \u00e9gal \u00e0 {1}."
+
+#:
+msgid "dataalerts.email_alt_text"
+msgstr "Vue utilis\u00e9e par l\u02bcalerte bas\u00e9e sur les donn\u00e9es\u00a0: {0}"
+
+#:
+msgid "dataalerts.email_alt_text_hidden_view"
+msgstr "Vue utilis\u00e9e par l\u02bcalerte bas\u00e9e sur les donn\u00e9es\u00a0: {0} avec application des modifications"
+
+#:
+msgid "dataalerts.alert_triggered_for_the_view"
+msgstr "Alerte d\u00e9clench\u00e9e pour la vue"
+
+#:
+msgid "dataalerts.failure.email.subject"
+msgstr "L\u02bcalerte bas\u00e9e sur les donn\u00e9es ne fonctionne pas pour\u00a0: {0}"
+
+#:
+msgid "dataalerts.failure.status"
+msgstr "Votre alerte <i>{0}</i> ne fonctionne pas"
+
+#:
+msgid "dataalerts.failure.view.details.alert"
+msgstr "Afficher cette alerte"
+
+#:
+msgid "dataalerts.failure.explanation"
+msgstr "Votre alerte bas\u00e9e sur les donn\u00e9es, <i>{0}</i>, ne fonctionne pas actuellement. Les destinataires ne seront donc pas notifi\u00e9s si la condition des donn\u00e9es est vraie. Vous recevrez une notification lorsque l\u02bcalerte fonctionnera \u00e0 nouveau."
+
+#:
+msgid "dataalerts.failure.affected.alert"
+msgstr "Alerte bas\u00e9e sur les donn\u00e9es concern\u00e9e"
+
+#:
+msgid "dataalerts.failure.time"
+msgstr "\u00c9chec de l\u02bcalerte temporelle"
+
+#:
+msgid "dataalerts.failure.cause"
+msgstr "Il arrive que des alertes \u00e9chouent en raison de probl\u00e8mes temporaires de r\u00e9seau, qui se r\u00e9solvent d\u02bceux-m\u00eames. Vous pouvez \u00e9galement essayer de recr\u00e9er l\u02bcalerte sur la vue de donn\u00e9es d\u02bcorigine, ou d\u00e9panner les causes courantes des \u00e9checs d\u02bcalerte, par exemple\u00a0:"
+
+#:
+msgid "dataalerts.failure.changed.view"
+msgstr "Un classeur, une vue ou un champ de donn\u00e9es supprim\u00e9(e) ou renomm\u00e9(e)."
+
+#:
+msgid "dataalerts.failure.expired.credentials"
+msgstr "Informations d\u02bcidentification de la base de donn\u00e9es expir\u00e9es int\u00e9gr\u00e9es dans les classeurs."
+
+#:
+msgid "dataalerts.failure.datasource.error"
+msgstr "Une source de donn\u00e9es inaccessible."
+
+#:
+msgid "dataalerts.failure.email.footer"
+msgstr "Vous recevez cet e-mail sur {0} parce qu\u02bcune alerte a \u00e9chou\u00e9."
+
+#:
+msgid "dataalerts.failure.troubleshooting"
+msgstr "Pour v\u00e9rifier si l\u02bcun des probl\u00e8mes susmentionn\u00e9s provoque l\u02bc\u00e9chec de votre alerte, cliquez sur le bouton ci-dessous."
+
+#:
+msgid "dataalerts.success.email.subject"
+msgstr "L\u02bcalerte bas\u00e9e sur les donn\u00e9es a red\u00e9marr\u00e9 pour\u00a0: {0}"
+
+#:
+msgid "dataalerts.success.status"
+msgstr "Votre alerte <i>{0}</i> a red\u00e9marr\u00e9"
+
+#:
+msgid "dataalerts.success.explanation"
+msgstr "Votre alerte bas\u00e9e sur les donn\u00e9es, <i>{0}</i>, fonctionne \u00e0 nouveau. Les destinataires seront donc notifi\u00e9s si la condition des donn\u00e9es est vraie."
+
+#:
+msgid "dataalerts.failure.error.internalError"
+msgstr "Erreur interne d\u02bcalerte bas\u00e9e sur les donn\u00e9es"
+
+#:
+msgid "dataalerts.failure.error.invalidDataAlertSpecification"
+msgstr "Sp\u00e9cification d\u02bcalerte bas\u00e9e sur les donn\u00e9es non valide"
+
+#:
+msgid "dataalerts.failure.error.summaryTableNotFound"
+msgstr "Table de donn\u00e9es r\u00e9sum\u00e9es introuvable"
+
+#:
+msgid "dataalerts.failure.error.unclassifiedError"
+msgstr "Erreur non classifi\u00e9e"
+
+#:
+msgid "dataalerts.failure.error.viewContentNotFound"
+msgstr "Impossible de trouver le contenu {0} de la vue avec alerte bas\u00e9e sur les donn\u00e9es"
+
+#:
+msgid "dataalerts.failure.error.viewNotFound"
+msgstr "Impossible de localiser la vue avec alerte bas\u00e9e sur les donn\u00e9es"
+
+#:
+msgid "dataalerts.failure.error.workbookNotFound"
+msgstr "Classeur introuvable"
+
+#:
+msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
+msgstr "Aucun axe trouv\u00e9 pour le champ {0}"
+
+#:
+msgid "dataalerts.failure.error.paneDescriptorNotFound"
+msgstr "{0}"
+
+#:
+msgid "dataalerts.failure.error.unsupportedComparisonExpression"
+msgstr "Expression de comparaison non prise en charge {0}"
+
+#:
+msgid "dataalerts.failure.error.nonConstComparisonOp"
+msgstr "Aucun op\u00e9rateur de comparaison constante d\u00e9tect\u00e9\u00a0: {0}"
+
+#:
+msgid "dataalerts.failure.error.cannotAddFilter"
+msgstr "\u00c9chec de l\u02bcajout de filtre \u00e0 l\u02bcalerte de donn\u00e9es"
+
+#:
+msgid "dataalerts.failure.error.sheetNotAlertable"
+msgstr "La feuille {0} n\u02bca pas de donn\u00e9es prises en charge pour les alertes. {1}"
+
+#:
+msgid "dataalerts.failure.error.dataAlertMeasureNotFound"
+msgstr "Impossible de s\u00e9lectionner la mesure. {0}"
+
+#:
+msgid "dataalerts.failure.error.tooManyMeasuresForDataAlert"
+msgstr "Nombre incorrect de mesures d\u00e9tect\u00e9.{0}"
+
+#:
+msgid "dataalerts.failure.error.thresholdParseError"
+msgstr "\u00c9chec de l\u02bcanalyse du texte de seuil {0}. {1}"
+
+#:
+msgid "dataalerts.failure.error.dataAlertPresModelCreationError"
+msgstr "Erreur lors de la s\u00e9rialisation de l\u02bcalerte. {0}"
+
+#:
+msgid "dataalerts.failure.error.cannotDrawDataAlertDialog"
+msgstr "Impossible de cr\u00e9er la bo\u00eete de dialogue de l\u02bcalerte de donn\u00e9es."
+
+#:
+msgid "dataalerts.failure.error.unsupportedDataAlertType"
+msgstr "Le type d\u02bcalerte de donn\u00e9es {0} n\u02bcest pas pris en charge actuellement."
+
+#:
+msgid "dataalerts.failure.suspend.email.subject"
+msgstr "L\u02bcalerte bas\u00e9e sur les donn\u00e9es est suspendue pour\u00a0: {0}"
+
+#:
+msgid "dataalerts.failure.suspend.email.status"
+msgstr "Votre alerte {0} a \u00e9t\u00e9 suspendue"
+
+#:
+msgid "dataalerts.failure.suspend.email.explanation"
+msgstr "Pendant qu\u02bcelle est suspendue, nous n\u02bc\u00e9valuons pas la vue et nous n\u02bcalertons pas les destinataires. Une fois le correctif appliqu\u00e9, vous pouvez reprendre l\u02bcalerte dans <a hre"
+
+#:
+msgid "dataalerts.failure.suspend.view.name.prefix"
+msgstr "Vue"
+
+#:
+msgid "dataalerts.failure.suspend.time"
+msgstr "Dur\u00e9e de la suspension"
+
+#:
+msgid "dataalerts.failure.suspend.email.footer"
+msgstr "Vous recevez cet e-mail parce que votre alerte a \u00e9t\u00e9 suspendue."
+
+#:
+msgid "dataalerts.failure.suspend.email.view.name.my.content"
+msgstr "Mon contenu"
+
+#:
+msgid "dataalerts.failure.suspend.view.alerts"
+msgstr "Afficher les alertes"
+
+#:
+msgid "metricsservices.failure.affected.metric"
+msgstr "M\u00e9trique affect\u00e9e"
+
+#:
+msgid "metricsservices.failure.cause"
+msgstr "Il arrive que les actualisations de m\u00e9triques \u00e9chouent en raison de probl\u00e8mes de connectivit\u00e9 temporaires qui se r\u00e9solvent d\u02bceux-m\u00eames. Voici d\u02bcautres raisons pouvant entra\u00eener l\u02bc\u00e9chec d\u02bcune actualisation de m\u00e9trique\u00a0:"
+
+#:
+msgid "metricsservices.failure.changed.view"
+msgstr "Un classeur, une vue ou un champ de donn\u00e9es supprim\u00e9(e) ou renomm\u00e9(e)"
+
+#:
+msgid "metricsservices.failure.permissions.error"
+msgstr "Modification des autorisations pour la vue connect\u00e9e"
+
+#:
+msgid "metricsservices.failure.email.footer"
+msgstr "Vous recevez cet e-mail \u00e0 {0} en raison de l\u02bc\u00e9chec de l\u02bcactualisation de votre m\u00e9trique."
+
+#:
+msgid "metricsservices.failure.email.subject"
+msgstr "L\u02bcactualisation de m\u00e9trique ne fonctionne pas pour\u00a0: {0}"
+
+#:
+msgid "metricsservices.failure.expired.credentials"
+msgstr "Identifiants pour la base de donn\u00e9es expir\u00e9s int\u00e9gr\u00e9s dans un classeur"
+
+#:
+msgid "metricsservices.failure.explanation"
+msgstr "Il n\u02bcest pas possible d\u02bcactualiser votre m\u00e9trique. Les donn\u00e9es de m\u00e9trique ne sont donc pas mises \u00e0 jour. Vous recevrez une notification par e-mail lorsque l\u02bcactualisation de m\u00e9trique fonctionnera \u00e0 nouveau."
+
+#:
+msgid "metricsservices.failure.status"
+msgstr "\u00c9chec d\u02bcactualisation de votre m\u00e9trique "{0}""
+
+#:
+msgid "metricsservices.failure.suspend.email.explanation"
+msgstr "Tant que l\u02bcactualisation de m\u00e9triques est suspendue, vos donn\u00e9es de m\u00e9triques ne sont pas mises \u00e0 jour. Une fois qu\u02bcun correctif a \u00e9t\u00e9 appliqu\u00e9, vous pouvez reprendre l\u02bcactualisation de m\u00e9triques."
+
+#:
+msgid "metricsservices.failure.suspend.email.footer"
+msgstr "Vous recevez cet e-mail \u00e0 {0} parce que l\u02bcactualisation de votre m\u00e9trique a \u00e9t\u00e9 suspendue."
+
+#:
+msgid "metricsservices.failure.suspend.email.status"
+msgstr "L\u02bcactualisation pour votre m\u00e9trique "{0}" a \u00e9t\u00e9 suspendue"
+
+#:
+msgid "metricsservices.failure.suspend.email.subject"
+msgstr "Actualisation de m\u00e9trique suspendue pour\u00a0: {0}"
+
+#:
+msgid "metricsservices.failure.suspend.time"
+msgstr "Dur\u00e9e de la suspension"
+
+#:
+msgid "metricsservices.failure.suspend.view.metric"
+msgstr "Acc\u00e9der \u00e0 la m\u00e9trique"
+
+#:
+msgid "metricsservices.failure.suspend.view.name.prefix"
+msgstr "Vue connect\u00e9e"
+
+#:
+msgid "metricsservices.failure.time"
+msgstr "Heure d\u02bc\u00e9chec de l\u02bcactualisation"
+
+#:
+msgid "metricsservices.failure.troubleshooting"
+msgstr "Pour v\u00e9rifier si l\u02bcun des probl\u00e8mes r\u00e9pertori\u00e9s ci-dessus emp\u00eache l\u02bcactualisation de votre m\u00e9trique, cliquez sur le bouton ci-dessous. Vous pouvez \u00e9galement essayer de recr\u00e9er la m\u00e9trique sur la vue connect\u00e9e."
+
+#:
+msgid "metricsservices.failure.view.details.metric"
+msgstr "Acc\u00e9der \u00e0 la m\u00e9trique"
+
+#:
+msgid "metricsservices.failure.view.name.prefix"
+msgstr "Vue connect\u00e9e"
+
+#:
+msgid "metricsservices.success.email.subject"
+msgstr "L\u02bcactualisation de m\u00e9trique a repris pour\u00a0: {0}"
+
+#:
+msgid "metricsservices.success.explanation"
+msgstr "L\u02bcactualisation de votre m\u00e9trique fonctionne \u00e0 nouveau. Elle recherchera les mises \u00e0 jour de vos donn\u00e9es de m\u00e9trique."
+
+#:
+msgid "metricsservices.success.status"
+msgstr "L\u02bcactualisation pour votre m\u00e9trique "{0}" a repris"
+
+#:
+msgid "errors.staticimages.generic"
+msgstr "Erreur lors de la g\u00e9n\u00e9ration d\u02bcimages statiques pour le classeur {0}. {1}."
+
+#:
+msgid "errors.internal_error.request.message"
+msgstr "{0} n\u02bca pas pu satisfaire la requ\u00eate."
+
+#:
+msgid "errors.permissions.limited_user_visibility"
+msgstr "Erreur d\u02bcex\u00e9cution de la requ\u00eate. L\u02bcutilisateur doit \u00eatre un administrateur ou poss\u00e9der le r\u00f4le Creator pour interroger d\u02bcautres utilisateurs lorsque l\u02bcoption Visibilit\u00e9 des utilisateurs est d\u00e9finie sur Limit\u00e9."
+
+#:
+msgid "local_names.system_user.guest.name"
+msgstr "Invit\u00e9"
+
+#:
+msgid "local_names.group.all_users.name"
+msgstr "Tous les utilisateurs"
+
+#:
+msgid "local_names.containers.personal_space.name"
+msgstr "Espace personnel"
+
+#:
+msgid "password_reset.email.subject"
+msgstr "Ce lien vous permettra de r\u00e9initialiser votre mot de passe"
+
+#:
+msgid "password_reset.email.body"
+msgstr "Bonjour {0},<br/><br/>Vous venez de demander la r\u00e9initialisation de votre mot de passe.<br/><br/> Pour modifier votre mot de passe Tableau Server, {1} ou collez le lien suivant dans votre navigateur\u00a0: {2}<br/><br/>Ce lien expire dans 48 heures, veillez donc \u00e0 proc\u00e9der \u00e0 l\u02bcop\u00e9ration sans plus tarder.<br/><br/>Si vous n\u02bcavez pas demand\u00e9 la r\u00e9initialisation du mot de passe, informez-en votre administrateur.<br/><br/>Merci d\u02bcutiliser Tableau!<br/>L\u02bc\u00e9quipe Tableau"
+
+#:
+msgid "password_reset.email.link"
+msgstr "cliquez ici"
+
+#:
+msgid "hours.pl"
+msgstr "{0} heures"
+
+#:
+msgid "hours.sg"
+msgstr "1 heure"
+
+#:
+msgid "minutes.pl"
+msgstr "{0} minutes"
+
+#:
+msgid "minutes.sg"
+msgstr "1 minute"
+
+#:
+msgid "seconds.pl"
+msgstr "{0} secondes"
+
+#:
+msgid "seconds.sg"
+msgstr "1 seconde"
+
+#:
+msgid "dataconnections.classes.tableau_server_site"
+msgstr "Site Tableau Server"
+
+#:
+msgid "materializeviews.errors.workbook_not_in_project"
+msgstr "Le projet "{0}\u02bc ne contient pas le classeur \u02bc{1}\u02bc"
+
+#:
+msgid "materializeviews.errors.workbook_has_no_extract"
+msgstr "Impossible de mettre \u00e0 jour le param\u00e8tre Vues mat\u00e9rialis\u00e9es pour le classeur \u02bc{0}\u02bc. \u00c0 l\u02bcheure actuelle, seuls les classeurs comportant des extraits int\u00e9gr\u00e9s sont pris en charge"
+
+#:
+msgid "materializeviews.errors.workbook_updating_errors"
+msgstr "Erreurs d\u00e9tect\u00e9es lors de la mise \u00e0 jour du param\u00e8tre Vues mat\u00e9rialis\u00e9es pour les classeurs"
+
+#:
+msgid "materializeviews.errors.workbook_too_large"
+msgstr "Impossible de mettre \u00e0 jour le param\u00e8tre Vues mat\u00e9rialis\u00e9es pour le classeur \u02bc{0}\u02bc parce que la limite du classeur exc\u00e8de la limite de {1} Go"
+
+#:
+msgid "materializeviews.errors.project_path_not_exists"
+msgstr "Le chemin d\u02bcacc\u00e8s du projet \u02bc{0}\u02bc n\u02bcexiste pas"
+
+#:
+msgid "materializeviews.errors.feature_disabled"
+msgstr "Impossible de mettre \u00e0 jour le param\u00e8tre Vues mat\u00e9rialis\u00e9es pour le classeur \u02bc{0}\u02bc parce que la fonctionnalit\u00e9 est actuellement d\u00e9sactiv\u00e9e"
+
+#:
+msgid "materializeviews.errors.update_materialized_views_setting_failed"
+msgstr "Impossible de mettre \u00e0 jour le param\u00e8tre Vues mat\u00e9rialis\u00e9es pour le classeur \u02bc{0}\u02bc"
+
+#:
+msgid "materializeviews.errors.site_not_enabled"
+msgstr "Ce site n\u02bcest pas activ\u00e9 pour les vues mat\u00e9rialis\u00e9es. Contactez votre administrateur"
+
+#:
+msgid "materializeviews.errors.encrypted_extracts_not_supported"
+msgstr "La fonction Vues mat\u00e9rialis\u00e9es ne prend actuellement pas en charge les classeurs comportant des extraits crypt\u00e9s."
+
+#:
+msgid "materializedviews.finished.create"
+msgstr "Vues mat\u00e9rialis\u00e9es cr\u00e9\u00e9es avec l\u02bc\u00e9tat \u02bc{0}\u02bc pour le classeur \u02bc{1}\u02bc"
+
+#:
+msgid "materializedviews.finished.delete"
+msgstr "Vues mat\u00e9rialis\u00e9es supprim\u00e9es pour l\u02bcID de classeur\u00a0: {0}"
+
+#:
+msgid "materializedviews.finished.encrypt"
+msgstr "Cryptage termin\u00e9 des vues mat\u00e9rialis\u00e9es pour le classeur \u02bc{0}\u02bc"
+
+#:
+msgid "materializedviews.finished.decrypt"
+msgstr "D\u00e9cryptage termin\u00e9 des vues mat\u00e9rialis\u00e9es pour le classeur \u02bc{0}\u02bc"
+
+#:
+msgid "materializedviews.finished.rekey"
+msgstr "Recryptage termin\u00e9 des vues mat\u00e9rialis\u00e9es pour le classeur \u02bc{0}\u02bc"
+
+#:
+msgid "materializedviews.status.encryption_key"
+msgstr "ID de la cl\u00e9 de cryptage\u00a0: \u02bc{0}\u02bc."
+
+#:
+msgid "materializedviews.status.encryption_keys"
+msgstr "ID de l\u02bcancienne cl\u00e9 de cryptage\u00a0: \u02bc{0}\u02bc, ID de la nouvelle cl\u00e9 de cryptage\u00a0: \u02bc{1}\u02bc."
+
+#:
+msgid "materializedviews.status.encryption_type"
+msgstr "Type de source de donn\u00e9es de cryptage\u00a0: \u02bc{0}\u02bc"
+
+#:
+msgid "customizedviews.namedSharingPrefix"
+msgstr "Version partag\u00e9e"
+
+#:
+msgid "flows.drafts.default_name"
+msgstr "Nouveau flux"
+
+#:
+msgid "content_type.project"
+msgstr "Projet"
+
+#:
+msgid "content_type.workbook"
+msgstr "Classeur"
+
+#:
+msgid "content_type.view"
+msgstr "Vue"
+
+#:
+msgid "content_type.datasource"
+msgstr "Source de donn\u00e9es"
+
+#:
+msgid "content_type.flow"
+msgstr "Flux"
+
+#:
+msgid "content_type.metric"
+msgstr "M\u00e9trique"
+
+#:
+msgid "content_type.collection"
+msgstr "Collection"
+
+#:
+msgid "content_type.visualization"
+msgstr "Visualisation"
+
+#:
+msgid "content_type.askdata_visualization"
+msgstr "Visualisation Parlez aux donn\u00e9es"
+
+#:
+msgid "content_type.explaindata_explanation"
+msgstr "Explication"
+
+#:
+msgid "content_type.publishedconnection"
+msgstr "Connexion virtuelle"
+
+#:
+msgid "content_type.publishedconnectiontable"
+msgstr "Table de connexion virtuelle"
+
+#:
+msgid "upgradethumbnails.status.server_started"
+msgstr "R\u00e9ponse du serveur : la mise \u00e0 niveau des images miniatures a d\u00e9marr\u00e9"
+
+#:
+msgid "upgradethumbnails.status.server_stopped"
+msgstr "R\u00e9ponse du serveur\u00a0: %d travaux arr\u00eat\u00e9s"
+
+#:
+msgid "dataquality.message.refresh_failed"
+msgstr "\u00c9chec de l\u02bcactualisation\u00a0: {0}"
+
+#:
+msgid "dataquality.message.last_successful"
+msgstr "Derni\u00e8re op\u00e9ration r\u00e9ussie\u00a0: {0}"
+
+#:
+msgid "dataquality.message.next_scheduled"
+msgstr "Prochaine programmation\u00a0: {0}"
+
+#:
+msgid "dataquality.message.flow_run_output_steps_failed"
+msgstr "L\u02bcex\u00e9cution de {0} \u00e9tapes de sortie sur {1} a \u00e9chou\u00e9"
+
+#:
+msgid "importcsvsummary.error.details"
+msgstr "D\u00e9tails de l\u02bcerreur\u00a0:"
+
+#:
+msgid "importcsvsummary.remainingerrors"
+msgstr "(autres erreurs non affich\u00e9es)"
+
+#:
+msgid "importcsvsummary.error.line"
+msgstr "ligne {0} pour l\u02bcutilisateur \u02bc{1}\u02bc\u00a0: \u02bc{2}\u02bc"
+
+#:
+msgid "importcsvsummary.line.processed"
+msgstr "Lignes trait\u00e9es\u00a0: {0}"
+
+#:
+msgid "importcsvsummary.line.skipped"
+msgstr "Lignes ignor\u00e9es\u00a0: {0}"
+
+#:
+msgid "importcsvsummary.users.added.count"
+msgstr "Nombre d\u02bcutilisateurs ajout\u00e9s\u00a0: {0}"
+
+#:
+msgid "importcsvsummary.errors.count"
+msgstr "Nombre d\u02bcerreurs\u00a0: {0}"
+
+#:
+msgid "importcsvsummary.error.unexpected_extension"
+msgstr "Extension de nom de fichier inattendue pour le fichier CSV"
+
+#:
+msgid "importcsvsummary.error.size_limit"
+msgstr "Le fichier CSV d\u00e9passe la limite de taille de {0}"
+
+#:
+msgid "importcsvsummary.error.local.password_mismatch"
+msgstr "La mise \u00e0 jour de l\u02bcutilisateur de site local requiert un mot de passe vide ou correspondant"
+
+#:
+msgid "importcsvsummary.error.local.password_required"
+msgstr "Cr\u00e9ation d\u02bcun utilisateur syst\u00e8me local lorsque l\u02bcauthentification locale exige un mot de passe"
+
+#:
+msgid "importcsvsummary.error.ad.user_not_found"
+msgstr "Utilisateur AD \u02bc{0}\u02bc introuvable"
+
+#:
+msgid "importcsvsummary.error.too_many_errors"
+msgstr "Trop grand nombre d\u02bcerreurs dans le fichier CSV"
+
+#:
+msgid "audit.errors.wdc_not_allowlisted"
+msgstr "Le connecteur de donn\u00e9es Web ne figure pas dans la liste des connecteurs autoris\u00e9s. Pour obtenir de l\u02bcaide, consultez https://help.tableau.com/current/online/fr-fr/to_keep_data_fresh.htm"
+
+#:
+msgid "user.input.name.err.too_long"
+msgstr "le nom d\u00e9passe le nombre maximum de caract\u00e8res {0}"
+
+#:
+msgid "user.input.name.err.empty"
+msgstr "le nom ne peut pas \u00eatre vide"
+
+#:
+msgid "askdata.title"
+msgstr "Parlez aux donn\u00e9es"
+
+#:
+msgid "slack.app.upgrade.email.notification.subject"
+msgstr "Mise \u00e0 jour de l\u02bcapplication Tableau pour Slack"
+
+#:
+msgid "slack.app.upgrade.email.notification.introduction"
+msgstr "Une mise \u00e0 jour est disponible pour l\u02bcapplication Tableau pour Slack et peut \u00eatre r\u00e9install\u00e9e maintenant afin de fonctionner avec la prochaine version de Tableau Online. Tableau recommande de r\u00e9installer l\u02bcapplication pour conserver les performances de l\u02bcapplication et utiliser ses nouvelles fonctionnalit\u00e9s. Informez-vous sur les modifications et les nouvelles fonctionnalit\u00e9s dans l\u02bcarticle <a styl"
+
+#:
+msgid "slack.app.upgrade.email.notification.action"
+msgstr "Pour conna\u00eetre les \u00e9tapes de mise \u00e0 jour et de r\u00e9installation, voir <a styl"
+
+#:
+msgid "slack.app.upgrade.email.notification.steps"
+msgstr "Cette notification de service a \u00e9t\u00e9 publi\u00e9e par Tableau Online."
+
+#:
+msgid "slack.app.upgrade.email.notification.reason"
+msgstr "Vous recevez cette notification parce que vous \u00eates l\u02bcadministrateur d\u02bcun site Tableau Online connect\u00e9 \u00e0 Slack."
+
+#:
+msgid "slack.app.upgrade.email.notification.footer.privacy"
+msgstr "Consultez notre <a styl"
+
+#:
+msgid "unifiedconsumption.tcrm.folders.private"
+msgstr "Mon application priv\u00e9e"
+

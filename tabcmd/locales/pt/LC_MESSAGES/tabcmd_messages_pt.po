@@ -1,0 +1,1416 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=None"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: None"
+"Language: None"
+#:
+msgid "commandlineutils.errors.bad_value"
+msgstr "A op\u00e7\u00e3o ''{0}'' tem um valor inapropriado de ''{1}''. Deve ser um: {2}"
+
+#:
+msgid "commandlineutils.errors.not_integer"
+msgstr "O valor ''{0}'' para op\u00e7\u00e3o ''{1}'' n\u00e3o \u00e9 um inteiro"
+
+#:
+msgid "common.errors.empty_file"
+msgstr "O arquivo ''{0}'' est\u00e1 vazio"
+
+#:
+msgid "common.errors.file_not_found"
+msgstr "N\u00e3o \u00e9 poss\u00edvel abrir o arquivo ''{0}''"
+
+#:
+msgid "common.errors.invalid_file_path"
+msgstr "Caminho de arquivo inv\u00e1lido ''{0}''"
+
+#:
+msgid "common.errors.folder_path_not_found"
+msgstr "N\u00e3o foi poss\u00edvel localizar o diret\u00f3rio ''{0}''"
+
+#:
+msgid "common.errors.access_denied"
+msgstr "Acesso negado ao arquivo ''{0}''. Verifique se o seu caminho \u00e9 v\u00e1lido e se o nome do seu arquivo n\u00e3o corresponde ao diret\u00f3rio existente"
+
+#:
+msgid "common.errors.requires_csv_file"
+msgstr "O comando ''{0}'' requer um arquivo CSV"
+
+#:
+msgid "common.errors.requires_group_name"
+msgstr "O comando ''{0}'' requer um nome de grupo"
+
+#:
+msgid "common.errors.requires_site_name"
+msgstr "O comando ''{0}'' requer um nome do site"
+
+#:
+msgid "common.errors.options_conflict"
+msgstr "Op\u00e7\u00f5es novas e obsoletas para especificar a fun\u00e7\u00e3o do usu\u00e1rio espec\u00edfica, onde for especificado. Somente uma pode ser usada"
+
+#:
+msgid "common.errors.csv_sizelimit"
+msgstr "O arquivo CSV referenciado excede o limite de tamanho de 100MB. Divida o conte\u00fado do arquivo em arquivos CSV menores e importe-os separadamente."
+
+#:
+msgid "common.options.admin-type"
+msgstr "[Obsoleto] Atribui [ou remove] o direito de administrador do site para todos os usu\u00e1rios no arquivo CSV. Essa configura\u00e7\u00e3o pode ser sobrescrita pelos valores em linhas individuais no arquivo CSV. {0} pode ser: {1}, {2}, ou {3}. Se n\u00e3o especificado: {3} para novos usu\u00e1rios, inalterado para usu\u00e1rios existentes"
+
+#:
+msgid "common.options.complete"
+msgstr "Requer [ou n\u00e3o] que todas as linhas sejam v\u00e1lidas para que qualquer altera\u00e7\u00e3o seja bem-sucedida. Padr\u00e3o: {0}"
+
+#:
+msgid "common.options.license"
+msgstr "[Obsoleto] Define todo o n\u00edvel de licen\u00e7a padr\u00e3o para todos os usu\u00e1rios. Isso pode ser sobrescrito pelo valor no arquivo CSV. {0} pode ser {1}, {2} ou {3}"
+
+#:
+msgid "common.options.nowait"
+msgstr "N\u00e3o aguarde o trabalho ser conclu\u00eddo"
+
+#:
+msgid "common.options.publisher"
+msgstr "[Obsoleto] Atribui [ou remove] o direito de publica\u00e7\u00e3o para todos os usu\u00e1rios no arquivo CSV. Essa configura\u00e7\u00e3o pode ser sobrescrita pelos valores em linhas individuais no arquivo CSV. Padr\u00e3o se n\u00e3o especificado:  para novos usu\u00e1rios, inalterado para usu\u00e1rios existentes"
+
+#:
+msgid "common.options.silent-progress"
+msgstr "N\u00e3o exiba mensagens de progresso para o trabalho"
+
+#:
+msgid "common.options.sysadmin-type"
+msgstr "[Obsoleto] Atribui [ou remove] o direito de administrador do site para todos os usu\u00e1rios no arquivo CSV. Essa configura\u00e7\u00e3o pode ser sobrescrita pelos valores em linhas individuais no arquivo CSV. {0} pode ser: {1},{2} ,{3} ou {4}. Padr\u00e3o se n\u00e3o especificado: {4} para novos usu\u00e1rios, inalterado para usu\u00e1rios existentes"
+
+#:
+msgid "common.output.job_queued_success"
+msgstr "Trabalho enfileirado"
+
+#:
+msgid "common.output.succeeded"
+msgstr "Bem-sucedido"
+
+#:
+msgid "common.options.role"
+msgstr "Define a fun\u00e7\u00e3o padr\u00e3o para todos os usu\u00e1rios afetados. Valores legais para {0}: {1}. Se n\u00e3o especificado, o servidor usa o valor padr\u00e3o: {2}"
+
+#:
+msgid "addusers.options.users"
+msgstr "Arquivo que cont\u00e9m uma lista de usu\u00e1rios, um por linha, para adicionar ao grupo"
+
+#:
+msgid "addusers.short_description"
+msgstr "Adicionar usu\u00e1rios a um grupo"
+
+#:
+msgid "addusers.status"
+msgstr "Adicionando usu\u00e1rios listados em {0} ao grupo {1}..."
+
+#:
+msgid "creategroup.short_description"
+msgstr "Criar um grupo local"
+
+#:
+msgid "creategroup.status"
+msgstr "Criando grupo ''{0}'' no servidor..."
+
+#:
+msgid "creategroup.options.role"
+msgstr "Define a fun\u00e7\u00e3o que ser\u00e1 definida para usu\u00e1rios do grupo no momento do logon. Os valores legais de {0}: {1}. A fun\u00e7\u00e3o de site de um usu\u00e1rio s\u00f3 ser\u00e1 definida para esse valor se for menos restritiva que a fun\u00e7\u00e3o de site atual do usu\u00e1rio. Se n\u00e3o especificada, nenhuma fun\u00e7\u00e3o ser\u00e1 definida para usu\u00e1rios desse grupo ao fazer logon."
+
+#:
+msgid "createextracts.errors.required_argument"
+msgstr "O comando createextracts requer uma URL de pasta de trabalho, um nome de pasta de trabalho ou um nome de fonte de dados"
+
+#:
+msgid "createextracts.errors.error"
+msgstr "Erro ao criar a extra\u00e7\u00e3o"
+
+#:
+msgid "createextracts.for.datasource"
+msgstr "Criar extra\u00e7\u00e3o para a fonte de dados ''{0}''"
+
+#:
+msgid "createextracts.for.workbook_name"
+msgstr "Criar extra\u00e7\u00e3o para a pasta de trabalho de nome ''{0}''"
+
+#:
+msgid "createextracts.for.workbook_url"
+msgstr "Criar extra\u00e7\u00e3o para a pasta de trabalho com URL ''{0}''"
+
+#:
+msgid "createextracts.options.datasource"
+msgstr "O nome da fonte de dados de destino para criar a extra\u00e7\u00e3o"
+
+#:
+msgid "createextracts.options.embedded-datasources"
+msgstr "Uma lista de espa\u00e7o separado de nomes de fontes de dados inseridas nesta pasta de trabalho de destino. Coloque os nomes da fonte de dados com aspas duplas se apresentarem espa\u00e7os. Dispon\u00edvel somente ao criar extra\u00e7\u00f5es para a pasta de trabalho."
+
+#:
+msgid "createextracts.options.encrypt"
+msgstr "Criar extra\u00e7\u00e3o criptografada."
+
+#:
+msgid "createextracts.options.include-all"
+msgstr "Incluir todas as fontes de dados inseridas na pasta de trabalho de destino. Dispon\u00edvel somente ao criar extra\u00e7\u00f5es para a pasta de trabalho."
+
+#:
+msgid "createextracts.options.parent-project-path"
+msgstr "O caminho do pai do projeto que cont\u00e9m o recurso de destino. \u00c9 necess\u00e1rio especificar o nome do projeto com --project."
+
+#:
+msgid "createextracts.options.project"
+msgstr "O nome do projeto que cont\u00e9m o recurso de destino. Somente necess\u00e1rio se {0} ou {1} estiver especificado. Se n\u00e3o estiver especificado, o projeto padr\u00e3o ''{2}'' \u00e9 usado"
+
+#:
+msgid "createextracts.options.url"
+msgstr "O nome can\u00f4nico do recurso, conforme ele aparece na URL"
+
+#:
+msgid "createextracts.options.workbook"
+msgstr "O nome da pasta de trabalho de destino para criar a extra\u00e7\u00e3o"
+
+#:
+msgid "createextracts.short_description"
+msgstr "Criar extra\u00e7\u00f5es para uma pasta de trabalho ou fonte de dados publicada"
+
+#:
+msgid "createextracts.workbook.include-all"
+msgstr "Incluir todas as fontes de dados inseridas dentro na pasta de trabalho de destino"
+
+#:
+msgid "createextracts.workbook.embedded-datasource-names"
+msgstr "Com nomes de fontes de dados inseridas"
+
+#:
+msgid "createproject.options.description"
+msgstr "Descri\u00e7\u00e3o do projeto"
+
+#:
+msgid "createproject.options.name"
+msgstr "Nome do projeto"
+
+#:
+msgid "createproject.options.parent-project-path"
+msgstr "O caminho do projeto que ter\u00e1 o novo projeto. Caso n\u00e3o seja especificado, ser\u00e1 criado no n\u00edvel de raiz do site"
+
+#:
+msgid "createproject.short_description"
+msgstr "Criar um projeto"
+
+#:
+msgid "createproject.status"
+msgstr "Criando projeto ''{0}'' no servidor..."
+
+#:
+msgid "createsite.errors.invalid_url_option"
+msgstr "A op\u00e7\u00e3o URL fica inv\u00e1lida ao criar v\u00e1rios sites. Execute novamente o comando ap\u00f3s remover a op\u00e7\u00e3o de URL ou criar cada site separadamente"
+
+#:
+msgid "createsite.errors.site_name_already_exists"
+msgstr "J\u00e1 existe um site com o nome ''{0}''. Tente um nome do site diferente."
+
+#:
+msgid "createsite.errors.site_id_already_exists"
+msgstr "J\u00e1 existe um site com a ID ''{0}''. Use -r para especificar uma ID de site diferente. Consulte tabcmd createsite para obter mais informa\u00e7\u00f5es."
+
+#:
+msgid "createsite.options.allow-mobile-snapshots"
+msgstr "Permitir [ou negar] instant\u00e2neos m\u00f3veis. O padr\u00e3o \u00e9 permitir instant\u00e2neos m\u00f3veis"
+
+#:
+msgid "createsite.options.allow-subscriptions"
+msgstr "Permitir [ou negar] assinaturas para este site. O padr\u00e3o \u00e9 a configura\u00e7\u00e3o padr\u00e3o do servidor. As assinaturas n\u00e3o podem ser habilitadas se as assinaturas do servidor estiverem desabilitadas"
+
+#:
+msgid "createsite.options.allow-web-authoring"
+msgstr "Permitir [ou negar] a cria\u00e7\u00e3o na Web para este site. O padr\u00e3o \u00e9 permitir a cria\u00e7\u00e3o na Web"
+
+#:
+msgid "createsite.options.metrics-level"
+msgstr "0 para nenhuma cole\u00e7\u00e3o, 100 para todas as cole\u00e7\u00f5es"
+
+#:
+msgid "createsite.options.guest-access-enabled"
+msgstr "A permiss\u00e3o de acesso de convidado para visualizar exibi\u00e7\u00f5es para aqueles que n\u00e3o fizeram logon na conta do Tableau Server"
+
+#:
+msgid "createsite.options.site-mode"
+msgstr "Permitir [ou negar] administrador de site no gerenciamento de usu\u00e1rios no site"
+
+#:
+msgid "createsite.options.storage-quota"
+msgstr "Cota de armazenamento do site em MB"
+
+#:
+msgid "createsite.options.subscription-email"
+msgstr "E-mail usado para assinaturas"
+
+#:
+msgid "createsite.options.subscription-footer"
+msgstr "O rodap\u00e9 usado para assinaturas"
+
+#:
+msgid "createsite.options.url"
+msgstr "ID do site"
+
+#:
+msgid "createsite.options.user-quota"
+msgstr "Quantidade m\u00e1xima de usu\u00e1rios no site"
+
+#:
+msgid "createsite.options.extract_encryption_mode"
+msgstr "Modo de criptografia de extra\u00e7\u00e3o: desabilitado, habilitado ou imposto. Caso n\u00e3o esteja definido, o valor padr\u00e3o \u00e9 usado."
+
+#:
+msgid "createsite.options.web_extraction_enabled"
+msgstr "Permitir [ou negar] extrair a cria\u00e7\u00e3o ou alterar as extra\u00e7\u00e3os para funcionar neste site. O padr\u00e3o \u00e9 permitir."
+
+#:
+msgid "createsite.options.run_now_enabled"
+msgstr "Permitir [ou negar] Executar agora para este site. O padr\u00e3o \u00e9 permitir o Executar agora."
+
+#:
+msgid "createsite.options.time_zone"
+msgstr "Fuso hor\u00e1rio a ser usado com extra\u00e7\u00f5es nesse site. O padr\u00e3o n\u00e3o est\u00e1 definido para usar o fuso hor\u00e1rio do servidor."
+
+#:
+msgid "createsite.short_description"
+msgstr "Criar um site"
+
+#:
+msgid "createsite.status"
+msgstr "Criar site ''{0}'' no servidor..."
+
+#:
+msgid "createsiteusers.options.auth-type"
+msgstr "Atribui o tipo de autentica\u00e7\u00e3o para todos os usu\u00e1rios no arquivo CSV. Para o Tableau Online, {0} pode ser {1} (padr\u00e3o) ou {2}. Para o Tableau Server, {0} pode ser Local (padr\u00e3o) ou {2}."
+
+#:
+msgid "createsiteusers.description"
+msgstr "Crie usu\u00e1rios no site atual. Os usu\u00e1rios s\u00e3o lidos do arquivo CSV dado. As colunas do arquivo podem ser na ordem mostrada abaixo.{0}1. Nome de usu\u00e1rio{0}2. Senha        (Ignorada ao usar o Active Directory){0}3. Nome amig\u00e1vel   (Ignorado ao usar o Active Directory){0}4. N\u00edvel de licen\u00e7a ({1}, {2}, {3}, {4} ou {5}){0}5. Administrador ({6}/{7}){0}6. Publicador ({8}/{9}/1 ou {10}/{11}/0){0}7. E-mail (apenas para o Tableau Public){0}O arquivo pode ter menos colunas. Por exemplo, ele pode ser uma lista simples com um nome de usu\u00e1rio por linha. \u00c9 poss\u00edvel usar aspas se um valor contiver v\u00edrgulas. O tabcmd espera pelo t\u00e9rmino da tarefa {12}.  Voc\u00ea pode escolher n\u00e3o esperar pelo t\u00e9rmino da tarefa no servidor e, em vez disso, retornar imediatamente ao passar o marcador {13}. Administradores de sistema n\u00e3o podem ser criados ou removidos pelo uso desse comando. Use ''{14}'' em vez disso"
+
+#:
+msgid "createsiteusers.short_description"
+msgstr "Criar usu\u00e1rios no site atual"
+
+#:
+msgid "createsiteusers.status"
+msgstr "Adicionando usu\u00e1rios listados em {0} ao site atual..."
+
+#:
+msgid "createusers.description"
+msgstr "Crie usu\u00e1rios. Os usu\u00e1rios s\u00e3o lidos do arquivo CSV dado. As colunas do arquivo podem ser na ordem mostrada abaixo.{0}1. Nome de usu\u00e1rio{0}2. Senha        (Ignorada ao usar o Active Directory){0}3. Nome amig\u00e1vel   (Ignorado ao usar o Active Directory){0}4. N\u00edvel de licen\u00e7a ({1}, {2}, {3}, {4} ou {5}){0}5. Administrador ({6}/{7}/{8}/{9}){0}6. Publicador ({10}/{11}/1 ou {12}/{13}/0){0}7. E-mail (apenas para o Tableau Public){0}O arquivo pode ter menos colunas. Por exemplo, ele pode ser uma lista simples com um nome de usu\u00e1rio por linha. \u00c9 poss\u00edvel usar aspas se um valor contiver v\u00edrgulas. O tabcmd espera pelo t\u00e9rmino da tarefa {14}.  Voc\u00ea pode escolher n\u00e3o esperar pelo t\u00e9rmino da tarefa no servidor e, em vez disso, retornar imediatamente ao passar o marcador {15}"
+
+#:
+msgid "createusers.short_description"
+msgstr "Criar usu\u00e1rios no servidor"
+
+#:
+msgid "createusers.status"
+msgstr "Adicionando usu\u00e1rios listados em {0} ao servidor"
+
+#:
+msgid "decryptextracts.short_description"
+msgstr "Descriptografar extra\u00e7\u00f5es em um site"
+
+#:
+msgid "decryptextracts.status"
+msgstr "Agendando decodifica\u00e7\u00f5es de extra\u00e7\u00f5es no site {0}..."
+
+#:
+msgid "delete.errors.mutually_exclusive"
+msgstr "N\u00e3o \u00e9 poss\u00edvel especificar a pasta de trabalho e a fonte de dados para excluir"
+
+#:
+msgid "delete.errors.requires_workbook_datasource"
+msgstr "O comando ''{0}'' requer um nome da pasta de trabalho ou nome da fonte de dados"
+
+#:
+msgid "delete.options.datasource"
+msgstr "Fonte de dados a ser exclu\u00edda"
+
+#:
+msgid "delete.options.parent-project-path"
+msgstr "O caminho do pai do projeto que cont\u00e9m a pasta de trabalho/fonte de dados a ser exclu\u00edda. \u00c9 necess\u00e1rio especificar o nome do projeto com --project."
+
+#:
+msgid "delete.options.project"
+msgstr "O projeto que cont\u00e9m a pasta de trabalho/fonte de dados a ser exclu\u00edda. O projeto padr\u00e3o \u00e9 ''{0}''"
+
+#:
+msgid "delete.options.workbook"
+msgstr "Pasta de trabalho a ser exclu\u00edda"
+
+#:
+msgid "delete.short_description"
+msgstr "Exclua uma pasta de trabalho ou fonte de dados do servidor"
+
+#:
+msgid "delete.status"
+msgstr "Removendo {0} ''{1}'' do servidor..."
+
+#:
+msgid "deleteextracts.errors.required_argument"
+msgstr "O comando deleteextracts requer uma URL de pasta de trabalho, um nome de pasta de trabalho ou um nome de fonte de dados"
+
+#:
+msgid "deleteextracts.errors.error"
+msgstr "Erro ao excluir a extra\u00e7\u00e3o"
+
+#:
+msgid "deleteextracts.for.datasource"
+msgstr "Excluir extra\u00e7\u00e3o para a fonte de dados ''{0}''"
+
+#:
+msgid "deleteextracts.for.workbook_name"
+msgstr "Excluir extra\u00e7\u00e3o para a pasta de trabalho de nome ''{0}''"
+
+#:
+msgid "deleteextracts.for.workbook_url"
+msgstr "Excluir extra\u00e7\u00e3o para a pasta de trabalho com URL ''{0}''"
+
+#:
+msgid "deleteextracts.options.datasource"
+msgstr "O nome da fonte de dados de destino para exclus\u00e3o da extra\u00e7\u00e3o"
+
+#:
+msgid "deleteextracts.options.embedded-datasources"
+msgstr "Uma lista de espa\u00e7o separado de nomes de fontes de dados inseridas nesta pasta de trabalho de destino. Coloque os nomes da fonte de dados com aspas duplas se apresentarem espa\u00e7os. Dispon\u00edvel somente ao excluir extra\u00e7\u00f5es para a pasta de trabalho."
+
+#:
+msgid "deleteextracts.options.include-all"
+msgstr "Incluir todas as fontes de dados inseridas dentro na pasta de trabalho de destino"
+
+#:
+msgid "deleteextracts.options.parent-project-path"
+msgstr "O caminho do pai do projeto que cont\u00e9m o recurso de destino. \u00c9 necess\u00e1rio especificar o nome do projeto com --project."
+
+#:
+msgid "deleteextracts.options.project"
+msgstr "O nome do projeto que cont\u00e9m o recurso de destino. Somente necess\u00e1rio se {0} ou {1} estiver especificado. Se n\u00e3o estiver especificado, o projeto padr\u00e3o ''{2}'' \u00e9 usado"
+
+#:
+msgid "deleteextracts.options.url"
+msgstr "O nome can\u00f4nico do recurso, conforme ele aparece na URL"
+
+#:
+msgid "deleteextracts.options.workbook"
+msgstr "O nome da pasta de trabalho de destino para excluir a extra\u00e7\u00e3o"
+
+#:
+msgid "deleteextracts.short_description"
+msgstr "Excluir extra\u00e7\u00f5es para uma pasta de trabalho ou fonte de dados publicada"
+
+#:
+msgid "deleteextracts.workbook.include-all"
+msgstr "Incluir todas as fontes de dados inseridas dentro na pasta de trabalho de destino"
+
+#:
+msgid "deleteextracts.workbook.embedded-datasource-names"
+msgstr "Com nomes de fontes de dados inseridas"
+
+#:
+msgid "deletegroup.short_description"
+msgstr "Excluir um grupo"
+
+#:
+msgid "deletegroup.status"
+msgstr "Excluindo o grupo ''{0}'' do servidor..."
+
+#:
+msgid "deleteproject.errors.requires_project_name"
+msgstr "O comando ''{0}'' requer um nome de projeto"
+
+#:
+msgid "deleteproject.options.parent-project-path"
+msgstr "O caminho do pai do projeto a ser exclu\u00eddo. \u00c9 necess\u00e1rio especificar o nome do projeto com --project."
+
+#:
+msgid "deleteproject.short_description"
+msgstr "Excluir um projeto"
+
+#:
+msgid "deleteproject.status"
+msgstr "Excluindo o projeto ''{0}'' do servidor..."
+
+#:
+msgid "deletesite.errors.logged_into_this_site"
+msgstr "N\u00e3o \u00e9 poss\u00edvel excluir o site ao qual voc\u00ea est\u00e1 atualmente conectado"
+
+#:
+msgid "deletesite.short_description"
+msgstr "Excluir um site"
+
+#:
+msgid "deletesite.status"
+msgstr "Excluindo o site ''{0}'' do servidor..."
+
+#:
+msgid "deletesiteusers.description"
+msgstr "Exclua usu\u00e1rios do site. Os usu\u00e1rios s\u00e3o lidos de um determinado arquivo CSV. O arquivo \u00e9 uma lista simples de um nome de usu\u00e1rio por linha"
+
+#:
+msgid "deletesiteusers.short_description"
+msgstr "Excluir usu\u00e1rios do site"
+
+#:
+msgid "deletesiteusers.status"
+msgstr "Excluindo usu\u00e1rios do site listados no {0} do servidor..."
+
+#:
+msgid "deleteusers.description"
+msgstr "Exclua usu\u00e1rios. Os usu\u00e1rios s\u00e3o lidos de um determinado arquivo de valor separado por v\u00edrgula (CSV). O arquivo \u00e9 uma lista simples de um nome de usu\u00e1rio por linha"
+
+#:
+msgid "deleteusers.short_description"
+msgstr "Excluir usu\u00e1rios"
+
+#:
+msgid "deleteusers.status"
+msgstr "Excluindo usu\u00e1rios listados no {0} do servidor..."
+
+#:
+msgid "editdomain.description"
+msgstr "Edite um dom\u00ednio. Use o comando ''{0}'' para exibir uma lista de dom\u00ednios para edi\u00e7\u00e3o"
+
+#:
+msgid "editdomain.errors.requires_nickname_name"
+msgstr "Uma op\u00e7\u00e3o ''{0}'' ou ''{1}'' deve ser especificada"
+
+#:
+msgid "editdomain.options.id"
+msgstr "ID do dom\u00ednio"
+
+#:
+msgid "editdomain.options.name"
+msgstr "Nome do dom\u00ednio"
+
+#:
+msgid "editdomain.options.nickname"
+msgstr "Apelido do dom\u00ednio"
+
+#:
+msgid "editdomain.short_description"
+msgstr "Edite um dom\u00ednio"
+
+#:
+msgid "editdomain.output"
+msgstr "{0}ID{1}Nickname{1}{1}Name{0}"
+
+#:
+msgid "editdomain.status"
+msgstr "Edite o dom\u00ednio com ID ''{0}'' no servidor..."
+
+#:
+msgid "editsite.errors.invalid_site-id"
+msgstr "A op\u00e7\u00e3o {0} fica inv\u00e1lida ao criar v\u00e1rios sites. Execute novamente o comando ap\u00f3s remover a op\u00e7\u00e3o {0} ou edite cada site separadamente"
+
+#:
+msgid "editsite.errors.invalid_site-name"
+msgstr "A op\u00e7\u00e3o {0} fica inv\u00e1lida ao criar v\u00e1rios sites. Execute novamente o comando ap\u00f3s remover a op\u00e7\u00e3o {0} ou edite cada site separadamente"
+
+#:
+msgid "editsite.options.allow-mobile-snapshots"
+msgstr "Permitir [ou negar] instant\u00e2neos m\u00f3veis"
+
+#:
+msgid "editsite.options.allow-subscriptions"
+msgstr "Permitir [ou negar] as assinaturas para este site"
+
+#:
+msgid "editsite.options.allow-web-authoring"
+msgstr "Permitir [ou negar] a cria\u00e7\u00e3o na Web para este site"
+
+#:
+msgid "editsite.options.cache-warmup"
+msgstr "Permitir [ou negar] aquecimento de cache para este site"
+
+#:
+msgid "editsite.options.cache-warmup-threshold"
+msgstr "Limite em dias para determinar o intervalo de tempo entre as visualiza\u00e7\u00f5es de uma exibi\u00e7\u00e3o para desencadear um aquecimento"
+
+#:
+msgid "editsite.options.site-name"
+msgstr "Exiba o nome do site"
+
+#:
+msgid "editsite.options.status"
+msgstr "Alterar a disponibilidade do site. Deve ser ''{0}'' ou ''{1}''"
+
+#:
+msgid "editsite.options.allow-materialized-views"
+msgstr "Permitir [ou recusar] exibi\u00e7\u00f5es materializadas para este site"
+
+#:
+msgid "editsite.options.extract_encryption_mode"
+msgstr "Modo de criptografia de extra\u00e7\u00e3o: desabilitado, habilitado ou imposto. Caso n\u00e3o esteja definido, n\u00e3o ser\u00e1 alterado no servidor."
+
+#:
+msgid "editsite.options.web_extraction_enabled"
+msgstr "Permitir [ou negar] a cria\u00e7\u00e3o de extra\u00e7\u00e3o ou altera\u00e7\u00e3o de extra\u00e7\u00f5es funcionem neste site. A configura\u00e7\u00e3o padr\u00e3o \u00e9 permitir."
+
+#:
+msgid "editsite.options.run_now_enabled"
+msgstr "Permitir [ou negar] Executar agora para este site. O padr\u00e3o \u00e9 permitir o Executar agora"
+
+#:
+msgid "editsite.options.time_zone"
+msgstr "Fuso hor\u00e1rio a ser usado com extra\u00e7\u00f5es nesse site"
+
+#:
+msgid "editsite.options.use_default_time_zone"
+msgstr "Fuso hor\u00e1rio a ser usado com extra\u00e7\u00f5es n\u00e3o definido nesse site, em vez disso ele usar\u00e1 o fuso hor\u00e1rio padr\u00e3o do servidor."
+
+#:
+msgid "editsite.short_description"
+msgstr "Edite um site"
+
+#:
+msgid "editsite.status"
+msgstr "Edite o site ''{0}'' no servidor..."
+
+#:
+msgid "encryptextracts.short_description"
+msgstr "Criptografar extra\u00e7\u00f5es em um site"
+
+#:
+msgid "encryptextracts.status"
+msgstr "Agendando criptografias de extra\u00e7\u00f5es no site {0}..."
+
+#:
+msgid "export.errors.need_country_and_languge"
+msgstr "As op\u00e7\u00f5es --pa\u00eds e --idioma devem ser usadas juntas"
+
+#:
+msgid "export.errors.white_space_workbook_view"
+msgstr "O nome da pasta de trabalho ou da exibi\u00e7\u00e3o a ser exportada n\u00e3o pode incluir espa\u00e7os. Use o nome normalizado da pasta de trabalho ou da exibi\u00e7\u00e3o, conforme aparece na URL."
+
+#:
+msgid "export.errors.requires_workbook_view_name"
+msgstr "O comando ''{0}'' requer um nome <workbook>/<view>"
+
+#:
+msgid "export.errors.requires_workbook_view_param"
+msgstr "O comando ''{0}'' requer um par\u00e2metro <workbook>/<view>, e deve haver pelo menos uma barra (/) neste par\u00e2metro"
+
+#:
+msgid "export.options.country"
+msgstr "Se n\u00e3o estiver usando o local padr\u00e3o do usu\u00e1rio, a abrevia\u00e7\u00e3o de pa\u00eds do local (encontre no Registro de marca secund\u00e1ria de idioma IANA). Deve usar com o --idioma"
+
+#:
+msgid "export.options.csv"
+msgstr "Exporte dados em formato CSV (padr\u00e3o)"
+
+#:
+msgid "export.options.fullpdf"
+msgstr "Exporte exibi\u00e7\u00f5es visuais em formato PDF (se a pasta de trabalho foi publicada com guias)"
+
+#:
+msgid "export.options.height"
+msgstr "Define a altura. Deve ser um valor integral (padr\u00e3o: 600 pixels)"
+
+#:
+msgid "export.options.language"
+msgstr "Se n\u00e3o estiver usando o local padr\u00e3o do usu\u00e1rio, a abrevia\u00e7\u00e3o de idioma do local (encontre no Registro de marca secund\u00e1ria de idioma IANA). Deve usar com o --pa\u00eds"
+
+#:
+msgid "export.options.pagelayout"
+msgstr "Define a orienta\u00e7\u00e3o da p\u00e1gina do PDF exportado. Valores legais: {0}. Se n\u00e3o especificado, a configura\u00e7\u00e3o no Tableau Desktop ser\u00e1 usada"
+
+#:
+msgid "export.options.pagesize"
+msgstr "Define o tamanho da p\u00e1gina do PDF exportado. Valores legais: {0} (padr\u00e3o: ''{1}'')"
+
+#:
+msgid "export.options.pdf"
+msgstr "Exporte dados em formato PDF"
+
+#:
+msgid "export.options.png"
+msgstr "Exporte dados em formato PNG"
+
+#:
+msgid "export.options.width"
+msgstr "Define a largura. Deve ser um valor integral (padr\u00e3o: 800 pixels)"
+
+#:
+msgid "export.short_description"
+msgstr "Exporte os dados ou imagem de uma exibi\u00e7\u00e3o do servidor"
+
+#:
+msgid "export.status"
+msgstr "Solicitando ''{0}'' do servidor..."
+
+#:
+msgid "export.success"
+msgstr "Salvou {0} para ''{1}''"
+
+#:
+msgid "extracts.workbook.errors.requires_datasources_or_include_all"
+msgstr "Comando {0} para a pasta de trabalho exige o sinalizador de fonte de dados inserida ou incluir todas"
+
+#:
+msgid "fileuploader.progress"
+msgstr "Progresso de upload: {0}%"
+
+#:
+msgid "get.description"
+msgstr "Obtenha um arquivo do servidor. O arquivo ser\u00e1 nomeado ap\u00f3s o \u00faltimo componente do caminho, caso nenhum argumento do arquivo seja especificado"
+
+#:
+msgid "get.errors.requires_url"
+msgstr "O comando ''{0}'' requer um URL"
+
+#:
+msgid "get.options.file"
+msgstr "Nome para salvar o arquivo como"
+
+#:
+msgid "get.short_description"
+msgstr "Obtenha um arquivo do servidor"
+
+#:
+msgid "help.available_commands"
+msgstr "Comandos dispon\u00edveis:"
+
+#:
+msgid "help.command_options"
+msgstr "Op\u00e7\u00f5es de comando:"
+
+#:
+msgid "help.description0"
+msgstr "Mostre Ajuda para um comando espec\u00edfico"
+
+#:
+msgid "help.description1"
+msgstr "Listar todos os comandos dispon\u00edveis"
+
+#:
+msgid "help.errors.unknown_command"
+msgstr "Comando desconhecido: {0}"
+
+#:
+msgid "help.global_options"
+msgstr "Op\u00e7\u00f5es globais:"
+
+#:
+msgid "help.short_description"
+msgstr "Ajuda para os comandos tabcmd"
+
+#:
+msgid "httputils.found_attachment"
+msgstr "Anexo encontrado: {0}"
+
+#:
+msgid "httputils.mapped_attachment"
+msgstr "Anexo encontrado: {0} (remapeado para {1})"
+
+#:
+msgid "initialuser.errors.username_and_password_required"
+msgstr "O nome de usu\u00e1rio e a senha s\u00e3o obrigat\u00f3rios"
+
+#:
+msgid "initialuser.options.friendly-name"
+msgstr "Nome amig\u00e1vel"
+
+#:
+msgid "initialuser.short_description"
+msgstr "Crie um usu\u00e1rio inicial em um servidor n\u00e3o inicializado"
+
+#:
+msgid "listdomains.description"
+msgstr "Listar dom\u00ednios"
+
+#:
+msgid "listdomains.status"
+msgstr "Listando dom\u00ednios do servidor..."
+
+#:
+msgid "listsites.output"
+msgstr "{0}{0}NAME: {1} {0}SITEID: ''{2}''"
+
+#:
+msgid "listsites.output_extended"
+msgstr "{0}{0}NAME: {1} {0}SITEID: ''{2}''{0}EXTRACTENCRYPTION: {3}"
+
+#:
+msgid "listsites.short_description"
+msgstr "Listar sites para usu\u00e1rio"
+
+#:
+msgid "listsites.status"
+msgstr "Listando sites para usu\u00e1rio {0}..."
+
+#:
+msgid "listsites.options.get_extract_encryption_mode"
+msgstr "Imprimir modo de criptografia de extra\u00e7\u00e3o do(s) site(s)"
+
+#:
+msgid "login.description"
+msgstr "Efetuar logon no servidor. A sua sess\u00e3o continuar\u00e1 at\u00e9 que expire no servidor ou voc\u00ea use {0}"
+
+#:
+msgid "login.short_description"
+msgstr "Fa\u00e7a logon no serviodor"
+
+#:
+msgid "logout.short_description"
+msgstr "Sair do servidor"
+
+#:
+msgid "publish.description"
+msgstr "Publique uma pasta de trabalho, fonte de dados ou extra\u00e7\u00e3o no servidor"
+
+#:
+msgid "publish.errors.invalid_datasource_update_file_type"
+msgstr "Tipo de arquivo incorreto ''{0}'' para atualiza\u00e7\u00e3o de uma fonte de dados. Substituir/anexar somente aplica-se a um arquivo de extra\u00e7\u00e3o (.tde)"
+
+#:
+msgid "publish.errors.invalid_name_option"
+msgstr "Op\u00e7\u00e3o {0} \u00e9 inv\u00e1lida ao publicar v\u00e1rios itens"
+
+#:
+msgid "publish.errors.invalid_publish_file_type"
+msgstr "Tipo de arquivo incorreto ''{0}'' para publica\u00e7\u00e3o, era esperado um arquivo .tde, .tds, .tdsx, .twb ou .twbx"
+
+#:
+msgid "publish.errors.mutually_exclusive_option"
+msgstr "Use somente um de {0} ou {1}"
+
+#:
+msgid "publish.errors.requires_resource_file"
+msgstr "O comando ''{0}'' requer uma pasta de trabalho, fonte de dados ou arquivo de extra\u00e7\u00e3o"
+
+#:
+msgid "publish.errors.unexpected_server_response"
+msgstr "Resposta inesperada do servidor: {0}"
+
+#:
+msgid "publish.errors.server_resource_not_found"
+msgstr "O recurso especificado n\u00e3o existe ou voc\u00ea n\u00e3o tem permiss\u00e3o para v\u00ea-lo. Verifique o nome e as permiss\u00f5es do projeto"
+
+#:
+msgid "publish.options.append"
+msgstr "Anexe o arquivo de extra\u00e7\u00e3o \u00e0 fonte de dados existente"
+
+#:
+msgid "publish.options.async"
+msgstr "Publicar de forma ass\u00edncrona"
+
+#:
+msgid "publish.options.db-password"
+msgstr "Senha do banco de dados para todas as fontes de dados"
+
+#:
+msgid "publish.options.db-username"
+msgstr "Nome de usu\u00e1rio do banco de dados para todas as fontes de dados"
+
+#:
+msgid "publish.options.description"
+msgstr "Descri\u00e7\u00e3o da pasta de trabalho ou fonte de dados"
+
+#:
+msgid "publish.options.encrypt_extracts"
+msgstr "Criptografar extra\u00e7\u00f5es no servidor"
+
+#:
+msgid "publish.options.name"
+msgstr "O nome da pasta de trabalho/fonte de dados no servidor. Se omitido, a pasta de trabalho/fonte de dados ser\u00e1 nomeado de acordo com nome de arquivo, sem a extens\u00e3o twb(x), tds(x) ou tde. Publicar um arquivo .tde criar\u00e1 uma fonte de dados"
+
+#:
+msgid "publish.options.oauth-username"
+msgstr "Use as credenciais salvas na cadeia de chaves associada ao USERNAME para publicar"
+
+#:
+msgid "publish.options.overwrite"
+msgstr "Sobrescreva a pasta de trabalho/fonte de dados existente, se houver"
+
+#:
+msgid "publish.options.project"
+msgstr "Projeto para publicar a pasta de trabalho/fonte de dados para"
+
+#:
+msgid "publish.options.parent-project-path"
+msgstr "O caminho do pai do projeto para publicar a pasta de trabalho/fonte de dados para"
+
+#:
+msgid "publish.options.replace"
+msgstr "Substitua o arquivo de extra\u00e7\u00e3o para a fonte de dados existente"
+
+#:
+msgid "publish.options.restart"
+msgstr "Reinicia o envio de arquivos"
+
+#:
+msgid "publish.options.save-db-password"
+msgstr "Armazene a senha do banco de dados no servidor"
+
+#:
+msgid "publish.options.save-oauth"
+msgstr "Insira as credenciais OAuth especificadas com {0}"
+
+#:
+msgid "publish.options.tabbed"
+msgstr "Publique com as exibi\u00e7\u00f5es em guias habilitadas"
+
+#:
+msgid "publish.options.thumbnail-groupname"
+msgstr "Se a pasta de trabalho contiver quaisquer filtros de usu\u00e1rio, represente esse grupo enquanto computa as miniaturas"
+
+#:
+msgid "publish.options.thumbnail-username"
+msgstr "Se a pasta de trabalho contiver quaisquer filtros de usu\u00e1rio, represente esse usu\u00e1rio enquanto computa as miniaturas"
+
+#:
+msgid "publish.status"
+msgstr "Publicando ''{0}'' para o servidor. Isso pode demorar v\u00e1rios minutos..."
+
+#:
+msgid "publish.success"
+msgstr "Arquivo publicado com \u00eaxito no servidor no seguinte local:"
+
+#:
+msgid "publishsamples.options.parent-project-path"
+msgstr "O caminho do pai do projeto no qual publicar amostras. \u00c9 necess\u00e1rio especificar o nome do projeto com --project."
+
+#:
+msgid "publishsamples.options.projectname"
+msgstr "Nome do projeto ao qual as amostras ser\u00e3o publicadas"
+
+#:
+msgid "publishsamples.short_description"
+msgstr "Publica pastas de trabalho de exemplo ao projeto especificado. Amostras atuais ser\u00e3o substitu\u00eddas."
+
+#:
+msgid "publishsamples.status"
+msgstr "Publicando amostras..."
+
+#:
+msgid "reencryptextracts.short_description"
+msgstr "Criptografar novamente as extra\u00e7\u00f5es em um site"
+
+#:
+msgid "reencryptextracts.status"
+msgstr "Agendando novas criptografias de extra\u00e7\u00f5es no site {0}..."
+
+#:
+msgid "refreshextracts.errors.required_argument"
+msgstr "O comando refreshextracts requer uma URL de pasta de trabalho, um nome de pasta de trabalho ou um nome de fonte de dados"
+
+#:
+msgid "refreshextracts.errors.add_and_remove_calculations"
+msgstr "N\u00e3o \u00e9 poss\u00edvel executar atualiza\u00e7\u00e3o com ambas as op\u00e7\u00f5es --addcalculations e --removecalculations"
+
+#:
+msgid "refreshextracts.errors.calculations_and_incremental"
+msgstr "N\u00e3o \u00e9 poss\u00edvel adicionar ou remover c\u00e1lculos materializados durante atualiza\u00e7\u00f5es incrementais de extra\u00e7\u00e3o"
+
+#:
+msgid "refreshextracts.errors.error"
+msgstr "Erro na atualiza\u00e7\u00e3o de extra\u00e7\u00f5es"
+
+#:
+msgid "refreshextracts.options.datasource"
+msgstr "O nome da fonte de dados a ser atualizada"
+
+#:
+msgid "refreshextracts.options.incremental"
+msgstr "Execute uma atualiza\u00e7\u00e3o em incrementos (se suportada)"
+
+#:
+msgid "refreshextracts.options.parent-project-path"
+msgstr "O caminho do pai do projeto que cont\u00e9m a extra\u00e7\u00e3o a ser atualizada. \u00c9 necess\u00e1rio especificar o nome do projeto com --project."
+
+#:
+msgid "refreshextracts.options.project"
+msgstr "O nome do projeto que cont\u00e9m a pasta de trabalho/fonte de dados. Somente necess\u00e1rio se {0} ou {1} estiver especificado. Se n\u00e3o estiver especificado, o projeto padr\u00e3o ''{2}'' \u00e9 usado"
+
+#:
+msgid "refreshextracts.options.synchronous"
+msgstr "Aguarde a atualiza\u00e7\u00e3o ser executada e conclua antes da sair"
+
+#:
+msgid "refreshextracts.options.url"
+msgstr "O nome can\u00f4nico da pasta de trabalho ou da exibi\u00e7\u00e3o, conforme ele aparece na URL"
+
+#:
+msgid "refreshextracts.options.workbook"
+msgstr "O nome da pasta de trabalho a ser atualizada"
+
+#:
+msgid "refreshextracts.options.addcalculations"
+msgstr "Adiciona c\u00e1lculos materializados na extra\u00e7\u00e3o"
+
+#:
+msgid "refreshextracts.options.removecalculations"
+msgstr "Remove c\u00e1lculos materializados da extra\u00e7\u00e3o"
+
+#:
+msgid "refreshextracts.short_description"
+msgstr "Atualize as extra\u00e7\u00f5es de uma pasta de trabalho ou fonte de dados no servidor"
+
+#:
+msgid "refreshextracts.status_incremented"
+msgstr "Agendando extra\u00e7\u00f5es para {0} ''{1}'' a serem incrementadas agora..."
+
+#:
+msgid "refreshextracts.status_refreshed"
+msgstr "Agendando extra\u00e7\u00f5es para {0} ''{1}'' a serem atualizadas agora..."
+
+#:
+msgid "removeusers.options.users"
+msgstr "Arquivo que cont\u00e9m uma lista de usu\u00e1rios, um por linha, para remover do grupo"
+
+#:
+msgid "removeusers.short_description"
+msgstr "Remova usu\u00e1rios de um grupo"
+
+#:
+msgid "removeusers.status"
+msgstr "Removendo usu\u00e1rios listados em {0} do grupo {1}..."
+
+#:
+msgid "runschedule.errors.requires_schedule_name"
+msgstr "O comando ''{0}'' requer um nome de agenda"
+
+#:
+msgid "runschedule.short_description"
+msgstr "Executar uma agenda"
+
+#:
+msgid "runschedule.status"
+msgstr "Executando agenda ''{0}'' no servidor..."
+
+#:
+msgid "materializeviews.short_description"
+msgstr "Atualizar e verificar as configura\u00e7\u00f5es de exibi\u00e7\u00f5es materializadas para sites/pastas de trabalho"
+
+#:
+msgid "materializeviews.status.site"
+msgstr "Atualizando configura\u00e7\u00e3o de exibi\u00e7\u00f5es materializadas do site ''{0}''..."
+
+#:
+msgid "materializeviews.status.workbook"
+msgstr "Atualizando configura\u00e7\u00e3o de exibi\u00e7\u00f5es materializadas da pasta de trabalho ''{0}''..."
+
+#:
+msgid "materializeviews.errors.invalid_workbook_arguments"
+msgstr "O comando materializeviews requer um argumento de um nome de pasta de trabalho"
+
+#:
+msgid "materializeviews.errors.invalid_site_arguments"
+msgstr "O comando materializeviews requer um argumento de uma ID de site"
+
+#:
+msgid "materializeviews.errors.invalid_workbook_option"
+msgstr "Use ''{0}'' ou ''{1}'' com ''{2}''"
+
+#:
+msgid "materializeviews.errors.invalid_project_path"
+msgstr "Use ''{1}'' com ''{0}''"
+
+#:
+msgid "materializeviews.errors.invalid_site_option"
+msgstr "Use ''{0}'' com ''{1}''"
+
+#:
+msgid "materializeviews.errors.site_mode_conflict"
+msgstr "Use ''{0}'' ou ''{1}'' para alterar o modo de exibi\u00e7\u00f5es materializadas do site"
+
+#:
+msgid "materializeviews.errors.site_not_updated"
+msgstr "Site ''{0}'' n\u00e3o atualizado, somente administradores de servidor podem alterar a configura\u00e7\u00e3o de exibi\u00e7\u00f5es materializadas"
+
+#:
+msgid "materializeviews.errors.invalid_argument_options_combination"
+msgstr "Use ''{0}'' ou ''{1}'' para alterar a configura\u00e7\u00e3o de exibi\u00e7\u00f5es materializadas"
+
+#:
+msgid "materializeviews.options.materialize_now"
+msgstr "Use ''{0}'' para agendar a materializa\u00e7\u00e3o da pasta de trabalho selecionada imediatamente"
+
+#:
+msgid "materializeviews.options.project"
+msgstr "Use ''{0}''  para especificar o nome do projeto"
+
+#:
+msgid "materializeviews.options.parent_project_path"
+msgstr "Use ''{0}'' para especificar o caminho do projeto principal para ''{1}''"
+
+#:
+msgid "materializeviews.options.allow_workbook"
+msgstr "Use ''{0}'' para habilitar/desabilitar exibi\u00e7\u00f5es materializadas da pasta de trabalho"
+
+#:
+msgid "materializeviews.options.allow_site"
+msgstr "Use ''{0}'' para habilitar/desabilitar exibi\u00e7\u00f5es materializadas do site"
+
+#:
+msgid "materializeviews.options.selected_workbooks"
+msgstr "Use ''{0}'' para habilitar as pastas de trabalho selecionadas no site, usadas com a op\u00e7\u00e3o ''{1}''. Essa \u00e9 a op\u00e7\u00e3o padr\u00e3o"
+
+#:
+msgid "materializeviews.options.all_workbooks"
+msgstr "Use ''{0}'' para habilitar todas as pastas de trabalho no site, usadas com a op\u00e7\u00e3o ''{1}''"
+
+#:
+msgid "session.auto_site_login"
+msgstr "Logon autom\u00e1tico no site: {0}"
+
+#:
+msgid "session.certificate-alias"
+msgstr "Alias de certificado: {0}"
+
+#:
+msgid "session.connecting"
+msgstr "Conectando-se ao servidor..."
+
+#:
+msgid "session.continuing_session"
+msgstr "Continuando a sess\u00e3o anterior"
+
+#:
+msgid "session.errors.auth_required"
+msgstr "Autoriza\u00e7\u00e3o necess\u00e1ria"
+
+#:
+msgid "session.errors.invalid_keystore_password"
+msgstr "A senha do reposit\u00f3rio de chaves est\u00e1 incorreta. Informe a senha correta e tente novamente"
+
+#:
+msgid "session.errors.invalid_redirect"
+msgstr "N\u00e3o \u00e9 poss\u00edvel redirecionar para uma URL inv\u00e1lida: {0}"
+
+#:
+msgid "session.errors.keystore_pwdfile_create"
+msgstr "N\u00e3o \u00e9 poss\u00edvel criar o arquivo de senha do reposit\u00f3rio de chaves, erro: {0}"
+
+#:
+msgid "session.errors.missing_arguments"
+msgstr "N\u00e3o \u00e9 poss\u00edvel efetuar logon devido \u00e0 falta de argumentos: {0}"
+
+#:
+msgid "session.errors.no_redirect_found"
+msgstr "Nenhum endere\u00e7o de redirecionamento na resposta de redire\u00e7\u00e3o"
+
+#:
+msgid "session.errors.no_sslcafile_found"
+msgstr "N\u00e3o foi poss\u00edvel localizar um arquivo de autoridade de certifica\u00e7\u00e3o (CA) nestes locais: ''{0}''. O arquivo CA \u00e9 usado para garantir a comunica\u00e7\u00e3o segura com o Tableau Server. Para obter informa\u00e7\u00f5es sobre a cria\u00e7\u00e3o de um arquivo CA, consulte a ajuda do Tableau Server. Para se conectar ao Tableau Server sem validar o seu certificado SSL, use o sinalizador --no-certcheck."
+
+#:
+msgid "session.errors.script_no_password"
+msgstr "Tabcmd foi executado de um script ou IDE, mas a nenhuma senha foi fornecida. Uma senha deve ser fornecida como um argumento para tabcmd, a fim de efetuar logon."
+
+#:
+msgid "session.errors.session_expired"
+msgstr "A sess\u00e3o expirou"
+
+#:
+msgid "session.errors.unsupported_command"
+msgstr "O comando n\u00e3o \u00e9 suportado por este servidor"
+
+#:
+msgid "session.keystore.notice"
+msgstr "Deseja armazenar a senha no local para evitar digitar a senha da pr\u00f3xima vez? [responda sim ou n\u00e3o]"
+
+#:
+msgid "session.keystore.password"
+msgstr "Senha do reposit\u00f3rio de chaves:"
+
+#:
+msgid "session.keystore.pwdfile_create"
+msgstr "Criar arquivo de senha do reposit\u00f3rio de chaves no caminho: {0}"
+
+#:
+msgid "session.keystore.pwdfile_remove"
+msgstr "Remova o arquivo de senha do reposit\u00f3rio de chaves que cont\u00e9m a senha incorreta"
+
+#:
+msgid "session.login"
+msgstr "Fazendo logon..."
+
+#:
+msgid "session.logout"
+msgstr "Saiu"
+
+#:
+msgid "session.monitorjob.errors.no_jobid"
+msgstr "N\u00e3o \u00e9 poss\u00edvel monitorar o trabalho.  Nenhum job_id encontrado: {0}"
+
+#:
+msgid "session.monitorjob.percent_complete"
+msgstr "{0}% conclu\u00eddo"
+
+#:
+msgid "session.new_session"
+msgstr "Criando nova sess\u00e3o"
+
+#:
+msgid "session.no-certificate-found"
+msgstr "Nenhum certificado de cliente encontrado"
+
+#:
+msgid "session.not_default_site_member"
+msgstr "Voc\u00ea n\u00e3o \u00e9 um membro do site padr\u00e3o. Selecione um SITEID nos sites a seguir:"
+
+#:
+msgid "session.not_site_member"
+msgstr "Voc\u00ea n\u00e3o \u00e9 um membro do site  ''{0}''. Selecione um SITEID nos sites a seguir:"
+
+#:
+msgid "session.options.help"
+msgstr "Exiba a ajuda tabcmd"
+
+#:
+msgid "session.options.no-certcheck"
+msgstr "N\u00e3o valide o certificado SSL"
+
+#:
+msgid "session.options.no-cookie"
+msgstr "N\u00e3o salve o ID da sess\u00e3o ao efetuar logon. Os comandos subsequentes ir\u00e3o necessitar efetuar o logon novamente. Se n\u00e3o for especificado, o padr\u00e3o \u00e9 salvar o ID da sess\u00e3o"
+
+#:
+msgid "session.options.no-prompt"
+msgstr "N\u00e3o solicite uma senha"
+
+#:
+msgid "session.options.no-proxy"
+msgstr "N\u00e3o use um proxy HTTP"
+
+#:
+msgid "session.options.password"
+msgstr "Use a senha do Tableau Server especificada"
+
+#:
+msgid "session.options.password-file"
+msgstr "Leia a senha do Tableau Server de FILE"
+
+#:
+msgid "session.options.proxy"
+msgstr "Use o proxy HTTP especificado"
+
+#:
+msgid "session.options.server"
+msgstr "Use a URL do Tableau Server especificada. Se nenhum protocolo for especificado, http:// ser\u00e1 usado"
+
+#:
+msgid "session.options.site"
+msgstr "Use o site do Tableau Server especificado. Especifique uma cadeia de caracteres vazia ('''') para for\u00e7ar o uso do site padr\u00e3o"
+
+#:
+msgid "session.options.timeout"
+msgstr "Quanto tempo esperar, em segundos, para que o servidor conclua o processamento do comando. O padr\u00e3o \u00e9 aguardar at\u00e9 que o servidor responda"
+
+#:
+msgid "session.options.use-certificate"
+msgstr "Utilize o certificado de cliente para entrada"
+
+#:
+msgid "session.options.username"
+msgstr "Use o nome de usu\u00e1rio do Tableau Server especificado"
+
+#:
+msgid "session.password"
+msgstr "Senha:"
+
+#:
+msgid "session.retrying_task"
+msgstr "Fazendo logon novamente para tentar o comando original com uma nova sess\u00e3o..."
+
+#:
+msgid "session.session_expired_login"
+msgstr "A sess\u00e3o expirou. Fazendo logon para limpar a sess\u00e3o..."
+
+#:
+msgid "session.site_list"
+msgstr "{0}{0}NAME: {1}{0}SITEID: ''{2}''"
+
+#:
+msgid "session.using-certificate"
+msgstr "Utiliza\u00e7\u00e3o do certificado de cliente para entrada"
+
+#:
+msgid "session.inferred_username"
+msgstr "Fazendo logon como usu\u00e1rio ''{0}'' uma vez que n\u00e3o foi fornecido nenhum --sinalizador de nome de usu\u00e1rio"
+
+#:
+msgid "sessiondata.errors.bad_api"
+msgstr "API de servidor formada incorretamente: {0}"
+
+#:
+msgid "sessiondata.errors.no_server_api"
+msgstr "N\u00e3o \u00e9 poss\u00edvel localizar a vers\u00e3o de API do servidor na resposta"
+
+#:
+msgid "sessiondata.errors.version_mismatch"
+msgstr "A vers\u00e3o do Tabcmd {0} (API {1}) n\u00e3o corresponde \u00e0 vers\u00e3o do Tableau Server {2} (API {3})"
+
+#:
+msgid "sessionoptions.errors.ambiguous_scheme"
+msgstr "Especifique ''{0}'' ou ''{1}'' antes do nome do servidor"
+
+#:
+msgid "sessionoptions.errors.bad_password_file"
+msgstr "N\u00e3o \u00e9 poss\u00edvel ler a senha no arquivo ''{0}''"
+
+#:
+msgid "sessionoptions.errors.bad_protocol"
+msgstr "O protocolo ''{0}'' n\u00e3o \u00e9 suportado"
+
+#:
+msgid "sessionoptions.errors.bad_proxy_format"
+msgstr "O formato do Proxy n\u00e3o corresponde HOST:PORT: {0}"
+
+#:
+msgid "sessionoptions.errors.bad_timeout"
+msgstr "Argumento n\u00e3o num\u00e9rico para {0} ''{1}'' ignorado"
+
+#:
+msgid "set.description"
+msgstr "Defina uma configura\u00e7\u00e3o no servidor. Use !setting para desativar uma configura\u00e7\u00e3o"
+
+#:
+msgid "set.errors.requires_setting_name"
+msgstr "O comando ''{0}'' requer um nome de configura\u00e7\u00e3o"
+
+#:
+msgid "set.errors.single_setting_name"
+msgstr "O comando ''{0}'' usa um \u00fanico nome de configura\u00e7\u00e3o"
+
+#:
+msgid "set.short_description"
+msgstr "Defina uma configura\u00e7\u00e3o no servidor"
+
+#:
+msgid "setsetting.status"
+msgstr "Configurando ''{0}'' para {1}"
+
+#:
+msgid "syncgroup.errors.server_admin"
+msgstr "A fun\u00e7\u00e3o m\u00ednima do site de um grupo n\u00e3o pode ser definida como '' ServerAdministrator ''."
+
+#:
+msgid "syncgroup.options.role"
+msgstr "Define a fun\u00e7\u00e3o padr\u00e3o de todos os usu\u00e1rios no grupo. Valores legais para {0}: {1}. Se um usu\u00e1rio j\u00e1 existe, a fun\u00e7\u00e3o determinada somente \u00e9 aplicada caso seja menos restritiva que a fun\u00e7\u00e3o atual do usu\u00e1rio. Se n\u00e3o for especificado, o padr\u00e3o \u00e9 {2} para novos usu\u00e1rios e n\u00e3o alterado para usu\u00e1rios existentes"
+
+#:
+msgid "syncgroup.options.overwritesiterole"
+msgstr "Permite que a fun\u00e7\u00e3o do usu\u00e1rio no site seja alterada para uma com menos privil\u00e9gio usando --role e sobrescrevendo o comportamento padr\u00e3o."
+
+#:
+msgid "syncgroup.options.grantlicensemode"
+msgstr "Quando conceder a um usu\u00e1rio a licen\u00e7a especificada no grupo. Os valores legais s\u00e3o: {0}. Se nenhum valor for passado, ''na sincroniza\u00e7\u00e3o'' ser\u00e1 usado como o valor padr\u00e3o."
+
+#:
+msgid "syncgroup.short_description"
+msgstr "Sincronize o servidor com um grupo do Active Directory"
+
+#:
+msgid "syncgroup.status"
+msgstr "Sincronizando o servidor com o grupo do Active Directory {0}..."
+
+#:
+msgid "syncgroup.options.sysadmin-type"
+msgstr "[Obsoleto. Usar --fun\u00e7\u00e3o.] Atribui [ou remove] o direito de administrador de todos os usu\u00e1rios do grupo. {0} pode ser: {1}, {2}, {3} ou {4}."
+
+#:
+msgid "syncgroup.options.license"
+msgstr "[Obsoleto. Usar --fun\u00e7\u00e3o.] Configura o n\u00edvel de licen\u00e7a padr\u00e3o para todos os usu\u00e1rios do grupo. {0} pode ser: {1}, {2} ou {3}."
+
+#:
+msgid "syncgroup.options.publisher"
+msgstr "[Obsoleto. Usar --fun\u00e7\u00e3o.] Atribui [ou remove] o direito de publica\u00e7\u00e3o para todos os usu\u00e1rios do grupo."
+
+#:
+msgid "tabcmd.mutually_exclusive_options"
+msgstr "N\u00e3o \u00e9 poss\u00edvel especificar ''{0}'' e ''{1}'' no mesmo comando"
+
+#:
+msgid "tabcmdparser.errors.ambiguous_option"
+msgstr "Op\u00e7\u00e3o amb\u00edgua ''{0}'' entre as op\u00e7\u00f5es: {1}"
+
+#:
+msgid "tabcmdparser.warning.unexpected_dash"
+msgstr "Tra\u00e7o inesperado detectado no argumento: {0}. Os tra\u00e7os v\u00e1lidos s\u00e3o -, --. Este erro geralmente ocorre ao copiar/colar de um editor de texto com formata\u00e7\u00e3o. Tente digitar novamente o tra\u00e7o para o argumento na linha de comando."
+
+#:
+msgid "resetopenidsub.short_description"
+msgstr "Redefina um OpenID Connect SubId para um usu\u00e1rio"
+
+#:
+msgid "resetopenidsub.options.targetusername"
+msgstr "Usu\u00e1rio a ser redefinido"
+
+#:
+msgid "resetopenidsub.options.all"
+msgstr "Redefinir todos os usu\u00e1rios"
+
+#:
+msgid "version.description"
+msgstr "Imprimir informa\u00e7\u00f5es de vers\u00e3o"
+
+#:
+msgid "vizqlsession.errors.cannot_create_session"
+msgstr "Falha ao criar uma sess\u00e3o VizQl no servidor"
+
+#:
+msgid "vizqlsession.errors.no_command_result"
+msgstr "N\u00e3o foi poss\u00edvel encontrar o resultado do comando: {0}"
+
+#:
+msgid "vizqlsession.errors.session_already_closed"
+msgstr "Objeto da sess\u00e3o VizQl j\u00e1 fechado"
+
+#:
+msgid "vizqlsession.errors.cannot_parse_response"
+msgstr "N\u00e3o \u00e9 poss\u00edvel analisar a cadeia de caracteres de resposta JSON: {0}"
+
+#:
+msgid "upgradethumbnails.short_description"
+msgstr "Isso executar\u00e1 o trabalho Atualizar miniaturas do processador em segundo plano. Renderizar\u00e1 todas as miniaturas geradas antes do Tableau 2018.2 para uma alta resolu\u00e7\u00e3o, al\u00e9m de talvez colocar uma carga maior que a usual no Tableau Server e em fontes de dados externas. Se ocorrer algum problema, o trabalho poder\u00e1 ser interrompido executando tabcmd upgradethumbnails --server <server> --stop"
+
+#:
+msgid "upgradethumbnails.options.stop"
+msgstr "Interromper todos os trabalhos de atualiza\u00e7\u00e3o de miniaturas relacionados"
+
+#:
+msgid "upgradethumbnails.status.running"
+msgstr "Iniciando atualiza\u00e7\u00e3o de miniaturas"
+
+#:
+msgid "upgradethumbnails.status.not_running"
+msgstr "Nenhuma atualiza\u00e7\u00e3o de miniaturas sendo iniciada"
+
+#:
+msgid "upgradethumbnails.status.cancelling"
+msgstr "Trabalhos de cancelamento de atualiza\u00e7\u00e3o de miniaturas"
+
+#:
+msgid "upgradethumbnails.continue_promt"
+msgstr "Deseja continuar? Insira 1 para Sim, 0 para N\u00e3o (1/0)"
+
+#:
+msgid "upgradethumbnails.invalid_response"
+msgstr "Resposta inv\u00e1lida"
+
+#:
+msgid "validateidpmetadata.options.digest_algorithms"
+msgstr "Uma lista de algoritmos resumidos separados por espa\u00e7o. Valores legais para {0}: {1}. Se n\u00e3o for especificado, o servidor usar\u00e1 os valores da configura\u00e7\u00e3o do servidor: {2}"
+
+#:
+msgid "validateidpmetadata.options.min_allowed_rsa_key_size"
+msgstr "Se n\u00e3o for especificado, o servidor usar\u00e1 valores da defini\u00e7\u00e3o de configura\u00e7\u00e3o do servidor: {0}"
+
+#:
+msgid "validateidpmetadata.options.min_allowed_elliptic_curve_size"
+msgstr "Se n\u00e3o for especificado, o servidor usar\u00e1 valores da defini\u00e7\u00e3o de configura\u00e7\u00e3o do servidor: {0}"
+
+#:
+msgid "validateidpmetadata.options.site_names"
+msgstr "Uma lista de nomes de sites separados por espa\u00e7os em que deve ser realizada a valida\u00e7\u00e3o de certificado. Se ela n\u00e3o for especificada, todos os sites ser\u00e3o inspecionados."
+
+#:
+msgid "validateidpmetadata.short_description"
+msgstr "Identifica sites do Tableau Server configurados com IdPs usando o algoritmo resumido n\u00e3o-seguro, SHA-1. Este comando tamb\u00e9m identifica IdPs que est\u00e3o usando certificados com um tamanho de chave RSA insuficiente ou tamanho de curva el\u00edptica."
+

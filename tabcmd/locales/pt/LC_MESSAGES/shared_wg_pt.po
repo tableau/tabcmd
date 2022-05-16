@@ -1,0 +1,1800 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=None"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: None"
+"Language: None"
+#:
+msgid "permissions.labels.capabilities.read"
+msgstr "Visualizar:"
+
+#:
+msgid "permissions.labels.capabilities.write"
+msgstr "Substituir:"
+
+#:
+msgid "permissions.labels.capabilities.write.legacy"
+msgstr "Salvar:"
+
+#:
+msgid "permissions.labels.capabilities.delete"
+msgstr "Excluir:"
+
+#:
+msgid "permissions.labels.capabilities.filter"
+msgstr "Filtrar:"
+
+#:
+msgid "permissions.labels.capabilities.add_tag"
+msgstr "Adicionar marca:"
+
+#:
+msgid "permissions.labels.capabilities.add_favorite"
+msgstr "Adicionar favorito:"
+
+#:
+msgid "permissions.labels.capabilities.add_comment"
+msgstr "Adicionar coment\u00e1rios:"
+
+#:
+msgid "permissions.labels.capabilities.add_comment.legacy"
+msgstr "Adicionar coment\u00e1rio:"
+
+#:
+msgid "permissions.labels.capabilities.view_comments"
+msgstr "Visualizar coment\u00e1rios:"
+
+#:
+msgid "permissions.labels.capabilities.vud"
+msgstr "Baixar dados completos:"
+
+#:
+msgid "permissions.labels.capabilities.export_image"
+msgstr "Baixar imagem/PDF:"
+
+#:
+msgid "permissions.labels.capabilities.export_data"
+msgstr "Baixar dados de resumo:"
+
+#:
+msgid "permissions.labels.capabilities.export_xml"
+msgstr "Baixar/Salvar uma c\u00f3pia:"
+
+#:
+msgid "permissions.labels.capabilities.export_xml.legacy"
+msgstr "Baixar/salvar como:"
+
+#:
+msgid "permissions.labels.capabilities.save_customized_view"
+msgstr "Salvar exibi\u00e7\u00e3o personalizada:"
+
+#:
+msgid "permissions.labels.capabilities.share_view"
+msgstr "Compartilhar personalizado:"
+
+#:
+msgid "permissions.labels.capabilities.stateful_url"
+msgstr "Permalink:"
+
+#:
+msgid "permissions.labels.capabilities.change_hierarchy"
+msgstr "Mover:"
+
+#:
+msgid "permissions.labels.capabilities.change_permissions"
+msgstr "Definir permiss\u00f5es:"
+
+#:
+msgid "permissions.labels.capabilities.exclude"
+msgstr "Excluir:"
+
+#:
+msgid "permissions.labels.capabilities.keep_only"
+msgstr "Manter apenas:"
+
+#:
+msgid "permissions.labels.capabilities.select"
+msgstr "Selecionar marcas:"
+
+#:
+msgid "permissions.labels.capabilities.tooltip"
+msgstr "Exibir dicas de ferramenta:"
+
+#:
+msgid "permissions.labels.capabilities.highlight"
+msgstr "Destaque da legenda:"
+
+#:
+msgid "permissions.labels.capabilities.url_link"
+msgstr "Vincular a URLs externas:"
+
+#:
+msgid "permissions.labels.capabilities.administrator"
+msgstr "Administrador:"
+
+#:
+msgid "permissions.labels.capabilities.content_admin"
+msgstr "Administrador de conte\u00fado:"
+
+#:
+msgid "permissions.labels.capabilities.create_groups"
+msgstr "Criar grupos:"
+
+#:
+msgid "permissions.labels.capabilities.rename"
+msgstr "Renomear:"
+
+#:
+msgid "permissions.labels.capabilities.transfer_ownership"
+msgstr "Transferir propriedade:"
+
+#:
+msgid "permissions.labels.capabilities.project_leader"
+msgstr "L\u00edder do projeto:"
+
+#:
+msgid "permissions.labels.capabilities.publish"
+msgstr "Publicar:"
+
+#:
+msgid "permissions.labels.capabilities.connect"
+msgstr "Conectar:"
+
+#:
+msgid "permissions.labels.capabilities.draw"
+msgstr "Desenho:"
+
+#:
+msgid "permissions.labels.capabilities.web_authoring"
+msgstr "Edi\u00e7\u00e3o na Web:"
+
+#:
+msgid "permissions.labels.capabilities.xml_save_as"
+msgstr "Salvar como:"
+
+#:
+msgid "permissions.labels.capabilities.create_refresh_metrics"
+msgstr "Criar/atualizar m\u00e9tricas:"
+
+#:
+msgid "permissions.labels.capabilities.explain_data"
+msgstr "Executar Explique os dados"
+
+#:
+msgid "permissions.labels.roles.wb_view"
+msgstr "Visualizar"
+
+#:
+msgid "permissions.labels.roles.wb_explore"
+msgstr "Explorar"
+
+#:
+msgid "permissions.labels.roles.wb_publish"
+msgstr "Publicar"
+
+#:
+msgid "permissions.labels.roles.wb_administer"
+msgstr "Administrador"
+
+#:
+msgid "permissions.labels.roles.ds_view"
+msgstr "Visualizar"
+
+#:
+msgid "permissions.labels.roles.ds_explore"
+msgstr "Explorar"
+
+#:
+msgid "permissions.labels.roles.ds_publish"
+msgstr "Publicar"
+
+#:
+msgid "permissions.labels.roles.ds_administer"
+msgstr "Administrador"
+
+#:
+msgid "permissions.labels.roles.viewer"
+msgstr "Viewer"
+
+#:
+msgid "permissions.labels.roles.interactor"
+msgstr "Interagente"
+
+#:
+msgid "permissions.labels.roles.editor"
+msgstr "Editor"
+
+#:
+msgid "permissions.labels.roles.ds_connector"
+msgstr "Conector da fonte de dados"
+
+#:
+msgid "permissions.labels.roles.ds_editor"
+msgstr "Editor de fontes de dados"
+
+#:
+msgid "permissions.labels.roles.administrator"
+msgstr "Administrador"
+
+#:
+msgid "permissions.labels.roles.project_leader"
+msgstr "L\u00edder do projeto"
+
+#:
+msgid "permissions.labels.roles.publisher"
+msgstr "Publicador"
+
+#:
+msgid "permissions.labels.roles.custom"
+msgstr "Personalizado"
+
+#:
+msgid "permissions.labels.roles.none"
+msgstr "Nenhum"
+
+# Used in Storage class in tab-core
+
+#:
+msgid "formats.messages.disk_space.in_mb"
+msgstr "{0} MB"
+
+#:
+msgid "formats.messages.disk_space.in_kb"
+msgstr "{0} KB"
+
+# Publishing-related errors and strings
+
+#:
+msgid "errors.argument.flow_description.too_long"
+msgstr "A descri\u00e7\u00e3o do fluxo \u00e9 muito longa ({0} caracteres).  Ela deve ter menos de {1} caracteres:\n{2}"
+
+#:
+msgid "errors.argument.workbook_name.too_long"
+msgstr "O nome da pasta de trabalho \u00e9 muito longo ({0} caracteres).  Ele deve ter menos de {1} caracteres:\n{2}"
+
+#:
+msgid "errors.argument.workbook_name.empty"
+msgstr "O campo do nome da pasta de trabalho est\u00e1 vazio."
+
+#:
+msgid "errors.argument.workbook_description.too_long"
+msgstr "A descri\u00e7\u00e3o da pasta de trabalho \u00e9 muito longa ({0} caracteres).  Ela deve ter menos de {1} caracteres:\n{2}"
+
+#:
+msgid "errors.argument.worksheet_name.too_long"
+msgstr "O nome da planilha \u00e9 muito longo ({0} caracteres). Ele deve ter menos de {1} caracteres:\n{2}"
+
+#:
+msgid "errors.argument.datasource_name.too_long"
+msgstr "O nome da fonte de dados \u00e9 muito longo ({0} caracteres). Ele deve ter menos de {1} caracteres:\n{2}"
+
+#:
+msgid "errors.argument.datasource_name.empty"
+msgstr "O nome da fonte de dados est\u00e1 vazio."
+
+#:
+msgid "errors.argument.datasource_description.too_long"
+msgstr "A descri\u00e7\u00e3o da fonte de dados \u00e9 muito longa ({0} caracteres). Ela deve ter menos de {1} caracteres:\n{2}"
+
+#:
+msgid "errors.argument.dataconnection_column.too_long"
+msgstr "DataConnection column {0} is too long ({1} characters).  It must be shorter than {2} characters:\n{3}"
+
+#:
+msgid "errors.argument.tag.too_long"
+msgstr "A marca \u00e9 muito longa ({0} caracteres).  Ela deve ter menos de {1} caracteres:\n{2}"
+
+#:
+msgid "errors.argument.workbook_file.missing_or_empty"
+msgstr "Arquivo da pasta de trabalho est\u00e1 vazio ou \u00e9 inexistente."
+
+#:
+msgid "errors.argument.internal"
+msgstr "Erro de servidor interno.  Argumento ausente ou inv\u00e1lido."
+
+#:
+msgid "errors.argument.thumbnail.invalid_format"
+msgstr "O formato da miniatura da pasta de trabalho \u00e9 inv\u00e1lido. Deve ser PNG com resolu\u00e7\u00e3o de 300x300 ou menos."
+
+#:
+msgid "errors.html_403.disabled_resource.workbook"
+msgstr "Esta pasta de trabalho est\u00e1 desabilitada. Contate o administrador."
+
+#:
+msgid "errors.html_404.missing_or_unauthorized_resource.project"
+msgstr "O projeto que voc\u00ea estava procurando n\u00e3o existe ou voc\u00ea n\u00e3o tem permiss\u00e3o para v\u00ea-lo."
+
+#:
+msgid "errors.html_404.missing_or_unauthorized_resource.personal_space"
+msgstr "O espa\u00e7o pessoal que voc\u00ea estava procurando n\u00e3o existe ou voc\u00ea n\u00e3o tem permiss\u00e3o para v\u00ea-lo."
+
+#:
+msgid "errors.html_404.missing_or_unauthorized_resource.datasource"
+msgstr "A fonte de dados que voc\u00ea est\u00e1 procurando n\u00e3o existe."
+
+#:
+msgid "errors.labels.formatted_request_id"
+msgstr "ID da solicita\u00e7\u00e3o: {0}"
+
+#:
+msgid "errors.links.delete_datasources"
+msgstr "Excluir fontes de dados"
+
+#:
+msgid "errors.links.delete_workbooks"
+msgstr "Excluir pastas de trabalho"
+
+#:
+msgid "errors.permissions.publish.datasource.licensing"
+msgstr "Voc\u00ea deve ser um ''Interagente'' para publicar uma fonte de dados."
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite"
+msgstr "Uma fonte de dados denominada "{0}" j\u00e1 existe no projeto "{1}". Voc\u00ea n\u00e3o tem permiss\u00e3o para substitu\u00ed-la."
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite_personal_space"
+msgstr "Uma fonte de dados denominada "{0}" j\u00e1 existe no Espa\u00e7o pessoal. Voc\u00ea n\u00e3o tem permiss\u00e3o para substitu\u00ed-la."
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite_short"
+msgstr "Uma fonte de dados denominada "{0}" j\u00e1 existe no projeto "{1}"."
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
+msgstr "Uma fonte de dados denominada "{0}" j\u00e1 existe no Espa\u00e7o pessoal.""
+
+#:
+msgid "errors.permissions.publish.datasource.non_existent"
+msgstr "A fonte de dados "{0}" n\u00e3o existe."
+
+#:
+msgid "errors.permissions.publish.datasource.general"
+msgstr "Voc\u00ea n\u00e3o tem permiss\u00e3o para publicar esta fonte de dados."
+
+#:
+msgid "errors.permissions.publish.project.explicit_publisher_detail"
+msgstr "Voc\u00ea n\u00e3o tem o direito de Publica\u00e7\u00e3o."
+
+#:
+msgid "errors.permissions.publish.project.general"
+msgstr "Voc\u00ea n\u00e3o tem permiss\u00e3o para publicar este projeto."
+
+#:
+msgid "errors.permissions.publish.project.non_existent"
+msgstr "O projeto "{0}" n\u00e3o existe."
+
+#:
+msgid "errors.permissions.publish.project.not_writable"
+msgstr "Voc\u00ea n\u00e3o tem permiss\u00e3o para gravar no projeto "{0}"."
+
+#:
+msgid "errors.permissions.publish.project.unspecified"
+msgstr "Voc\u00ea deve especificar um projeto"
+
+#:
+msgid "errors.permissions.publish.workbook.disabled"
+msgstr "A pasta de trabalho "{0}" est\u00e1 desabilitada."
+
+#:
+msgid "errors.permissions.publish.workbook.general"
+msgstr "J\u00e1 existe uma pasta de trabalho com este nome no projeto ao qual voc\u00ea est\u00e1 publicando. Para publicar, renomeie sua pasta de trabalho."
+
+#:
+msgid "errors.permissions.publish.workbook.general_personal_space"
+msgstr "J\u00e1 existe uma pasta de trabalho com este nome no Espa\u00e7o pessoal no qual voc\u00ea est\u00e1 publicando. Para publicar, renomeie sua pasta de trabalho."
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite"
+msgstr "Uma pasta de trabalho denominada "{0}" j\u00e1 existe no projeto "{1}". Voc\u00ea n\u00e3o tem permiss\u00e3o para substitu\u00ed-la."
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite_personal_space"
+msgstr "Uma pasta de trabalho denominada "{0}" j\u00e1 existe no Espa\u00e7o pessoal. Voc\u00ea n\u00e3o tem permiss\u00e3o para substitu\u00ed-la."
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite_short"
+msgstr "Uma pasta de trabalho denominada "{0}" j\u00e1 existe no projeto "{1}"."
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
+msgstr "Uma pasta de trabalho denominada "{0}" j\u00e1 existe no Espa\u00e7o pessoal."
+
+#:
+msgid "errors.reportable.impersonation.group_and_user"
+msgstr "Especifique ''impersonate_username'' ou ''impersonate_groupname'', mas n\u00e3o os dois."
+
+#:
+msgid "errors.reportable.impersonation.user_not_found"
+msgstr "O usu\u00e1rio ''{0}'' n\u00e3o existe."
+
+#:
+msgid "errors.reportable.impersonation.group_not_found"
+msgstr "O grupo ''{0}'' n\u00e3o existe."
+
+# errors.public.validation.hasextract is copied from the C++ file codegen strings.data IDS_PUBLIC_VALIDATION_ERROR_HASEXTRACT
+
+#:
+msgid "errors.public.validation.hasextract"
+msgstr "As pastas de trabalho salvas no Tableau Public devem usar extra\u00e7\u00f5es do Tableau ativas. Clique com o bot\u00e3o direito na fonte de dados e selecione Usar extra\u00e7\u00e3o antes de publicar. A fonte de dados, ''{0}'', n\u00e3o \u00e9 uma extra\u00e7\u00e3o ativa."
+
+#:
+msgid "errors.publish.dataserver_datasource_not_found"
+msgstr "Fonte de dados {0} n\u00e3o encontrada para a pasta de trabalho ''{1}''."
+
+#:
+msgid "errors.publish.datasource_update_mode"
+msgstr "Modo de atualiza\u00e7\u00e3o desconhecido: ''{0}''."
+
+#:
+msgid "errors.publish.workbook.concurrent_update"
+msgstr "Uma pasta de trabalho com o mesmo nome est\u00e1 atualmente sendo publicada ou modificada. Aguarde a conclus\u00e3o da tarefa, antes de tentar novamente."
+
+#:
+msgid "errors.publish.workbook.restricted"
+msgstr "A pasta de trabalho cont\u00e9m tipos de conex\u00e3o que n\u00e3o s\u00e3o permitidos nesse servidor."
+
+#:
+msgid "errors.publish.datasource.concurrent_update"
+msgstr "Uma fonte de dados com o mesmo nome est\u00e1 atualmente sendo publicada ou modificada. Aguarde a conclus\u00e3o da tarefa, antes de tentar novamente."
+
+#:
+msgid "errors.publish.datasource.restricted"
+msgstr "A fonte de dados cont\u00e9m um tipo de conex\u00e3o que n\u00e3o \u00e9 permitido nesse servidor."
+
+#:
+msgid "errors.publish.datasource.connection_check"
+msgstr "{0} falhou ao estabelecer uma conex\u00e3o din\u00e2mica com a sua fonte de dados."
+
+#:
+msgid "errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption"
+msgstr "A pasta de trabalho n\u00e3o pode ser publicada com uma extra\u00e7\u00e3o criptografada. O administrador de site desabilitou a criptografia de extra\u00e7\u00e3o neste site. \u00c9 necess\u00e1rio publicar a pasta de trabalho com uma extra\u00e7\u00e3o n\u00e3o criptografada."
+
+#:
+msgid "errors.publish.datasource.requested_extract_encryption_on_site_with_disabled_encryption"
+msgstr "A fonte de dados n\u00e3o pode ser publicada como uma extra\u00e7\u00e3o criptografada. O administrador de site desabilitou a criptografia de extra\u00e7\u00e3o neste site. \u00c9 necess\u00e1rio publicar a pasta de trabalho com uma extra\u00e7\u00e3o n\u00e3o criptografada."
+
+#:
+msgid "errors.publish.workbook.requested_no_extract_encryption_on_site_with_enforced_encryption"
+msgstr "A pasta de trabalho n\u00e3o pode ser publicada com uma extra\u00e7\u00e3o n\u00e3o criptografada. O administrador de site for\u00e7ou a criptografia de extra\u00e7\u00e3o neste site. \u00c9 necess\u00e1rio publicar a pasta de trabalho e especificar uma criptografia de extra\u00e7\u00e3o."
+
+#:
+msgid "errors.publish.datasource.requested_no_extract_encryption_on_site_with_enforced_encryption"
+msgstr "A extra\u00e7\u00e3o da fonte de dados n\u00e3o pode ser publicada n\u00e3o criptografada. O administrador de site for\u00e7ou a criptografia de extra\u00e7\u00e3o neste site. \u00c9 necess\u00e1rio publicar a extra\u00e7\u00e3o criptografada."
+
+#:
+msgid "errors.publish.has_unfinished_extract_creation_job"
+msgstr "Este recurso n\u00e3o pode ser publicado porque h\u00e1 trabalhos de cria\u00e7\u00e3o de extra\u00e7\u00e3o pendentes ou n\u00e3o finalizados. Aguarde ou cancele esses trabalhos e tente novamente."
+
+#:
+msgid "errors.publishing.storage_quota_exceeded.message"
+msgstr "Cota de armazenamento do site excedida."
+
+#:
+msgid "errors.publishing.request_size_exceeded"
+msgstr "Este arquivo n\u00e3o pode ser publicado porque o tamanho da solicita\u00e7\u00e3o \u00e9 de {0} bytes, que excede o limite de tamanho de bytes em {1} bytes."
+
+#:
+msgid "errors.publishing.request_size_unknown"
+msgstr "O tamanho da solicita\u00e7\u00e3o n\u00e3o p\u00f4de ser determinado."
+
+#:
+msgid "errors.site.quota_exceeded"
+msgstr "O conte\u00fado que voc\u00ea est\u00e1 tentando carregar exceder\u00e1 a capacidade do site em {0}."
+
+#:
+msgid "errors.personal_space.quota_exceeded"
+msgstr "Este conte\u00fado excede a capacidade do seu Espa\u00e7o Pessoal em {0}."
+
+#:
+msgid "errors.web_authoring.workbook_deleted"
+msgstr "A pasta de trabalho ''{0}'' foi exclu\u00edda.  Escolha ''Salvar como'' para salvar como nova pasta de trabalho."
+
+#:
+msgid "errors.web_authoring.workbook_changed"
+msgstr "Outro usu\u00e1rio editou e salvou esta pasta de trabalho desde que voc\u00ea iniciou a edi\u00e7\u00e3o. Portanto, voc\u00ea n\u00e3o pode mais atualizar a pasta de trabalho original. Use Salvar como para criar uma nova pasta de trabalho com suas altera\u00e7\u00f5es."
+
+#:
+msgid "labels.publish.embed_credentials"
+msgstr "Inserir senha para fonte de dados"
+
+#:
+msgid "errors.publish.workbook.google_no_embedded_credentials"
+msgstr "Esta pasta de trabalho cont\u00e9m uma fonte de dados do {0} que exige credenciais inseridas. Para salvar como outra pasta de trabalho, selecione ''{1}''."
+
+#:
+msgid "errors.publish.datasource.google_no_embedded_credentials"
+msgstr "Esta fonte de dados cont\u00e9m uma conex\u00e3o com o {0} que requer credenciais inseridas.  Publique esta fonte de dados do Tableau Desktop com credenciais inseridas."
+
+#:
+msgid "errors.publish.datasource.federated_oauth_datasource_failed"
+msgstr "As credenciais de uma ou mais conex\u00f5es na fonte de dados expiraram. Exclua as credenciais salvas para esta fonte de dados na p\u00e1gina Configura\u00e7\u00f5es de conta no Tableau Server ou Tableau Online, em seguida conecte-se \u00e0 fonte de dados novamente."
+
+#:
+msgid "errors.publish.workbook.missing_oauth_credential"
+msgstr "A credencial ''{0}'' n\u00e3o foi encontrada ou n\u00e3o pode ser usada para conex\u00e3o com a fonte de dados ou pasta de trabalho."
+
+#:
+msgid "errors.publish.version_incompatible.message"
+msgstr "As vers\u00f5es de desktop e servidor s\u00e3o incompat\u00edveis."
+
+#:
+msgid "errors.publish.version_incompatible.details"
+msgstr "Vers\u00e3o de desktop ''{0}'', Vers\u00e3o do documento de servidor ''{1}''."
+
+#:
+msgid "errors.publish.datasource.managed_keychain.unique_cv_suggestions"
+msgstr "A publica\u00e7\u00e3o falhou devido a um conflito. Envie a altera\u00e7\u00e3o novamente."
+
+#:
+msgid "errors.publish.permissions_are_locked"
+msgstr "As permiss\u00f5es est\u00e3o bloqueadas no projeto da publica\u00e7\u00e3o. Para publicar esta pasta de trabalho, use as permiss\u00f5es padr\u00e3o e tente novamente."
+
+#:
+msgid "errors.publish.datasource.not.found"
+msgstr "N\u00e3o foi poss\u00edvel localizar esta fonte de dados no Tableau Server."
+
+#:
+msgid "errors.publish.extracts.disabled"
+msgstr "Ainda n\u00e3o h\u00e1 suporte para salvar fontes de dados de arquivo baseadas em extra\u00e7\u00e3o."
+
+#:
+msgid "errors.publish.datasource.timeout"
+msgstr "A publica\u00e7\u00e3o atinge o tempo limite ap\u00f3s {0} segundos. Tente usar o Tableau Desktop para publicar esta fonte de dados."
+
+#:
+msgid "errors.publish.data_role.permission_not_null"
+msgstr "N\u00e3o \u00e9 poss\u00edvel definir permiss\u00f5es expl\u00edcitas para fontes de dados da fun\u00e7\u00e3o de dados do tipo."
+
+#:
+msgid "errors.download.extracts.timeout"
+msgstr "A publica\u00e7\u00e3o atinge o tempo limite ap\u00f3s {0} segundos porque esta fonte de dados \u00e9 um arquivo de extra\u00e7\u00e3o grande. Tente usar o Tableau Desktop para publicar a fonte de dados."
+
+#:
+msgid "errors.publish.datasource.invalid_extract_update_time"
+msgstr "extractUpdateTime inv\u00e1lido especificado: {0}"
+
+#:
+msgid "errors.publish.async.serialization"
+msgstr "N\u00e3o foi poss\u00edvel serializar o erro de status de trabalho de publica\u00e7\u00e3o"
+
+#:
+msgid "errors.permissions.view.datasources"
+msgstr "Voc\u00ea deve ser um ''Interagente'' para visualizar a lista fontes de dados."
+
+# oauth related errors
+
+#:
+msgid "errors.oauth.invalid_oauth_class"
+msgstr "''{0}'' n\u00e3o \u00e9 um tipo de conex\u00e3o OAuth v\u00e1lido."
+
+#:
+msgid "errors.xmlapi.bad_request"
+msgstr "Solicita\u00e7\u00e3o inv\u00e1lida"
+
+#:
+msgid "errors.xmlapi.unauthorized"
+msgstr "N\u00e3o autorizado"
+
+#:
+msgid "errors.xmlapi.forbidden"
+msgstr "Sem permiss\u00f5es suficientes"
+
+#:
+msgid "errors.xmlapi.system_user_not_found"
+msgstr "Conta de usu\u00e1rio bloqueada ou inv\u00e1lida."
+
+#:
+msgid "errors.xmlapi.site_user_not_found"
+msgstr "Essa conta de usu\u00e1rio n\u00e3o est\u00e1 ativa. Para obter ajuda, entre em contato com o seu {0} administrador."
+
+#:
+msgid "errors.xmlapi.not_found"
+msgstr "Item n\u00e3o encontrado"
+
+#:
+msgid "errors.xmlapi.concurrent_update"
+msgstr "Atualiza\u00e7\u00e3o simult\u00e2nea"
+
+#:
+msgid "errors.xmlapi.internal_server_error"
+msgstr "Erro de servidor interno"
+
+#:
+msgid "errors.xmlapi.illegal_state"
+msgstr "Estado ilegal"
+
+#:
+msgid "errors.xmlapi.invalid_parameter"
+msgstr "Par\u00e2metro inv\u00e1lido"
+
+#:
+msgid "errors.xmlapi.already_exists"
+msgstr "J\u00e1 existe"
+
+#:
+msgid "errors.xmlapi.site_suspended"
+msgstr "Este site foi suspenso. Voc\u00ea deve ser um administrador de sistema para fazer logon."
+
+#:
+msgid "errors.xmlapi.site_locked"
+msgstr "Este site foi bloqueado. No momento, n\u00e3o \u00e9 permitido entrar."
+
+#:
+msgid "errors.xmlapi.permission_modification"
+msgstr "N\u00e3o \u00e9 poss\u00edvel publicar com permiss\u00f5es modificadas"
+
+#:
+msgid "errors.xmlapi.update_desktop"
+msgstr "Para abrir pastas de trabalho criadas por outros autores, baixe a vers\u00e3o mais recente do Tableau Desktop Public Edition em http://public.tableau.com/"
+
+#:
+msgid "errors.xmlapi.throttled.summary"
+msgstr "Excesso de solicita\u00e7\u00f5es"
+
+#:
+msgid "errors.xmlapi.throttled.detail"
+msgstr "Muitas solicita\u00e7\u00f5es para ''{0}''. Tente novamente ap\u00f3s {1}."
+
+#:
+msgid "datasource.publish.check.unpublishable"
+msgstr "N\u00e3o foi poss\u00edvel publicar a fonte de dados."
+
+#:
+msgid "datasource.publish.check.publishable.extract_required"
+msgstr "Exige a cria\u00e7\u00e3o de uma extra\u00e7\u00e3o ao publicar."
+
+#:
+msgid "datasource.publish.check.publishable.credentials_required"
+msgstr "{1} acessar\u00e1 temporariamente as credenciais fornecidas para ''{0}'' para confirmar que \u00e9 capaz de manter uma conex\u00e3o de dados em tempo real."
+
+#:
+msgid "datasource.publish.check.publishable.server_unreachable"
+msgstr "{1} n\u00e3o pode acessar ''{0}''. A publica\u00e7\u00e3o criar\u00e1 uma extra\u00e7\u00e3o."
+
+#:
+msgid "publish.bundles.workbook.subscription.subject"
+msgstr "A pasta de trabalho {0} est\u00e1 pronta para voc\u00ea."
+
+#:
+msgid "publish.bundles.workbook.subscription.message"
+msgstr "Os dados do Salesforce foram adicionados \u00e0 pasta de trabalho. Para come\u00e7ar, acesse o projeto {0}."
+
+#:
+msgid "extracts.status.finished.upload.workbook"
+msgstr "Carregamento de extra\u00e7\u00f5es conclu\u00eddo (novo id de extra\u00e7\u00e3o:{0}) para a Pasta de trabalho ''{1}'' {2}"
+
+#:
+msgid "extracts.status.finished.refresh.workbook"
+msgstr "Atualiza\u00e7\u00e3o de extra\u00e7\u00f5es conclu\u00edda (novo id de extra\u00e7\u00e3o:{0}) para a Pasta de trabalho ''{1}'' {2}"
+
+#:
+msgid "extracts.status.finished.increment.workbook"
+msgstr "Incremento de extra\u00e7\u00f5es conclu\u00eddo (novo id de extra\u00e7\u00e3o:{0}) para a Pasta de trabalho ''{1}'' {2}"
+
+#:
+msgid "extracts.status.finished.encrypt.workbook"
+msgstr "Criptografia de extra\u00e7\u00f5es conclu\u00edda (nova id de extra\u00e7\u00e3o:{0}) para a pasta de trabalho ''{1}''"
+
+#:
+msgid "extracts.status.finished.decrypt.workbook"
+msgstr "Decodifica\u00e7\u00e3o de extra\u00e7\u00f5es conclu\u00edda (nova id de extra\u00e7\u00e3o:{0}) para a pasta de trabalho ''{1}''"
+
+#:
+msgid "extracts.status.finished.rekey.workbook"
+msgstr "Nova criptografia de extra\u00e7\u00f5es conclu\u00edda (nova id de extra\u00e7\u00e3o:{0}) para a pasta de trabalho ''{1}''"
+
+#:
+msgid "extracts.status.finished.create.workbook"
+msgstr "Cria\u00e7\u00e3o de extra\u00e7\u00f5es conclu\u00edda (nova id de extra\u00e7\u00e3o: {0}) para a pasta de trabalho ''{1}'' {2}"
+
+#:
+msgid "extracts.status.finished.remove.workbook"
+msgstr "A altera\u00e7\u00e3o de extra\u00e7\u00e3o (ID da fonte de dados:{0}) para Em tempo real para a pasta de trabalho ''{1}'' foi conclu\u00edda"
+
+#:
+msgid "extracts.status.finished.upload.datasource"
+msgstr "Carregamento de extra\u00e7\u00f5es conclu\u00eddo (novo id de extra\u00e7\u00e3o:{0}) para a Fonte de dados ''{1}'' {2}"
+
+#:
+msgid "extracts.status.finished.refresh.datasource"
+msgstr "Atualiza\u00e7\u00e3o de extra\u00e7\u00f5es conclu\u00edda (novo id de extra\u00e7\u00e3o:{0}) para a Fonte de dados ''{1}'' {2}"
+
+#:
+msgid "extracts.status.finished.increment.datasource"
+msgstr "Incremento de extra\u00e7\u00f5es conclu\u00eddo (novo id de extra\u00e7\u00e3o:{0}) para a Fonte de dados ''{1}'' {2}"
+
+#:
+msgid "extracts.status.finished.append.datasource"
+msgstr "Anexa\u00e7\u00e3o de extra\u00e7\u00f5es conclu\u00eddo (novo id de extra\u00e7\u00e3o:{0}) para a Fonte de dados ''{1}'' {2}"
+
+#:
+msgid "extracts.status.finished.replace.datasource"
+msgstr "Substitui\u00e7\u00e3o de extra\u00e7\u00f5es conclu\u00edda (novo id de extra\u00e7\u00e3o:{0}) para a Fonte de dados ''{1}'' {2}"
+
+#:
+msgid "extracts.status.finished.encrypt.datasource"
+msgstr "Criptografia de extra\u00e7\u00f5es conclu\u00edda (nova id de extra\u00e7\u00e3o:{0}) para a fonte de dados ''{1}''"
+
+#:
+msgid "extracts.status.finished.decrypt.datasource"
+msgstr "Decodifica\u00e7\u00e3o de extra\u00e7\u00f5es conclu\u00edda (nova id de extra\u00e7\u00e3o:{0}) para a fonte de dados ''{1}''"
+
+#:
+msgid "extracts.status.finished.rekey.datasource"
+msgstr "Nova criptografia de extra\u00e7\u00f5es conclu\u00edda (nova id de extra\u00e7\u00e3o:{0}) para a fonte de dados ''{1}''"
+
+#:
+msgid "extracts.status.finished.encrypt.flow"
+msgstr "Criptografia de extra\u00e7\u00f5es para o fluxo ''{0}'' conclu\u00edda"
+
+#:
+msgid "extracts.status.finished.decrypt.flow"
+msgstr "Decodifica\u00e7\u00e3o de extra\u00e7\u00f5es para o fluxo ''{0}'' conclu\u00edda"
+
+#:
+msgid "extracts.status.finished.rekey.flow"
+msgstr "Nova criptografia de extra\u00e7\u00f5es para o fluxo ''{0}'' conclu\u00edda"
+
+#:
+msgid "extracts.status.finished.encrypt.flowdraft"
+msgstr "Criptografia de rascunho de extra\u00e7\u00f5es para fluxo ''{0}'' conclu\u00edda"
+
+#:
+msgid "extracts.status.finished.decrypt.flowdraft"
+msgstr "Descriptografia de rascunho de extra\u00e7\u00f5es para fluxo ''{0}'' conclu\u00edda"
+
+#:
+msgid "extracts.status.finished.rekey.flowdraft"
+msgstr "Nova criptografia finalizada de rascunho de extra\u00e7\u00f5es para fluxo ''{0}''"
+
+#:
+msgid "extracts.status.finished.create.datasource"
+msgstr "Cria\u00e7\u00e3o de extra\u00e7\u00f5es conclu\u00edda (nova id de extra\u00e7\u00e3o: {0}) para a fonte de dados ''{1}'' {2}"
+
+#:
+msgid "extracts.status.finished.remove.datasource"
+msgstr "A altera\u00e7\u00e3o de extra\u00e7\u00e3o para em tempo real para a fonte de dados ''{1}'' foi conclu\u00edda"
+
+#:
+msgid "extracts.status.encryption_key"
+msgstr "ID da chave de criptografia: ''{0}''."
+
+#:
+msgid "extracts.status.encryption_keys"
+msgstr "ID antiga da chave de criptografia: ''{0}'', nova ID da chave de criptografia: ''{1}''."
+
+#:
+msgid "extracts.errors.upload"
+msgstr "Erro no upload de extra\u00e7\u00f5es para {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.refresh"
+msgstr "Ocorreu um erro ao atualizar as extra\u00e7\u00f5es de {0} ''{1}''"
+
+#:
+msgid "extracts.errors.create"
+msgstr "Erro ao criar as extra\u00e7\u00f5es para {0} ''{1}''."
+
+#:
+msgid "extracts.errors.increment"
+msgstr "Erro ao incrementar extra\u00e7\u00f5es para {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.append"
+msgstr "Erro ao anexar extra\u00e7\u00f5es para {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.replace"
+msgstr "Erro ao substituir extra\u00e7\u00f5es para {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.download"
+msgstr "Erro no download de extra\u00e7\u00f5es para {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.remove"
+msgstr "Erro ao remover extra\u00e7\u00f5es para {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.title"
+msgstr "Erro de extra\u00e7\u00e3o do processo"
+
+#:
+msgid "extracts.errors.nothing_to_upload"
+msgstr "N\u00e3o h\u00e1 extra\u00e7\u00f5es a serem carregadas para {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.nothing_to_refresh"
+msgstr "N\u00e3o h\u00e1 extra\u00e7\u00f5es a serem atualizadas para {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.nothing_to_increment"
+msgstr "N\u00e3o h\u00e1 extra\u00e7\u00f5es a serem incrementadas para {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.nothing_to_append"
+msgstr "N\u00e3o h\u00e1 extra\u00e7\u00f5es a serem anexadas para {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.nothing_to_replace"
+msgstr "N\u00e3o h\u00e1 extra\u00e7\u00f5es a serem substitu\u00eddas para {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.refresh_summary"
+msgstr "Erro de atualiza\u00e7\u00e3o de extra\u00e7\u00f5es"
+
+#:
+msgid "extracts.errors.encrypt_summary"
+msgstr "Erro na criptografia de extra\u00e7\u00f5es"
+
+#:
+msgid "extracts.errors.rekey_summary"
+msgstr "Erro na nova criptografia de extra\u00e7\u00f5es"
+
+#:
+msgid "extracts.errors.decrypt_summary"
+msgstr "Erro na decodifica\u00e7\u00e3o de extra\u00e7\u00f5es"
+
+#:
+msgid "extracts.errors.remove_summary"
+msgstr "Erro ao remover extra\u00e7\u00f5es"
+
+#:
+msgid "extracts.errors.create_summary"
+msgstr "Erro de cria\u00e7\u00e3o de extra\u00e7\u00f5es"
+
+#:
+msgid "extracts.errors.datasource_overwritten"
+msgstr "A atualiza\u00e7\u00e3o falhou porque a fonte de dados foi sobrescrita por outra tarefa durante o processamento. Envie a atualiza\u00e7\u00e3o novamente para corrigir."
+
+#:
+msgid "extracts.errors.workbook_overwritten"
+msgstr "A atualiza\u00e7\u00e3o falhou porque a pasta de trabalho foi sobrescrita por outra tarefa durante o processamento. Envie a atualiza\u00e7\u00e3o novamente para corrigir."
+
+#:
+msgid "extracts.errors.encrypt"
+msgstr "Ocorreu um erro ao criptografar as extra\u00e7\u00f5es de {0} ''{1}''"
+
+#:
+msgid "extracts.errors.decrypt"
+msgstr "Ocorreu um erro ao decodificar as extra\u00e7\u00f5es de {0} ''{1}''"
+
+#:
+msgid "extracts.errors.rekey"
+msgstr "Ocorreu um erro ao criptografar novamente as extra\u00e7\u00f5es de {0} ''{1}''"
+
+#:
+msgid "extracts.errors.encrypt_datasource_overwritten"
+msgstr "A criptografia da extra\u00e7\u00e3o falhou porque a fonte de dados foi sobrescrita por outra tarefa durante o processamento."
+
+#:
+msgid "extracts.errors.encrypt_workbook_overwritten"
+msgstr "A criptografia da extra\u00e7\u00e3o falhou porque a pasta de trabalho foi sobrescrita por outra tarefa durante o processamento."
+
+#:
+msgid "extracts.errors.rekey_datasource_overwritten"
+msgstr "A nova criptografia da extra\u00e7\u00e3o falhou porque a fonte de dados foi sobrescrita por outra tarefa durante o processamento."
+
+#:
+msgid "extracts.errors.rekey_workbook_overwritten"
+msgstr "A nova criptografia da extra\u00e7\u00e3o falhou porque a pasta de trabalho foi sobrescrita por outra tarefa durante o processamento."
+
+#:
+msgid "extracts.errors.decrypt_datasource_overwritten"
+msgstr "A decodifica\u00e7\u00e3o da extra\u00e7\u00e3o falhou porque a fonte de dados foi sobrescrita por outra tarefa durante o processamento."
+
+#:
+msgid "extracts.errors.decrypt_workbook_overwritten"
+msgstr "A decodifica\u00e7\u00e3o da extra\u00e7\u00e3o falhou porque a pasta de trabalho foi sobrescrita por outra tarefa durante o processamento."
+
+#:
+msgid "extracts.errors.remove_datasource_overwritten"
+msgstr "A fonte de dados n\u00e3o p\u00f4de ser alterada para tempo real porque foi substitu\u00edda por outra tarefa."
+
+#:
+msgid "extracts.errors.remove_workbook_overwritten"
+msgstr "A pasta de trabalho n\u00e3o p\u00f4de ser alterada para tempo real porque foi substitu\u00edda por outra tarefa."
+
+#:
+msgid "extracts.errors.create_datasource_overwritten"
+msgstr "A fonte de dados n\u00e3o p\u00f4de ser extra\u00edda porque foi substitu\u00edda por outra tarefa."
+
+#:
+msgid "extracts.errors.create_workbook_overwritten"
+msgstr "A pasta de trabalho n\u00e3o p\u00f4de ser extra\u00edda porque foi substitu\u00edda por outra tarefa."
+
+#:
+msgid "extracts.site_mode_change_details"
+msgstr "Modo de criptografia de extra\u00e7\u00e3o de site alterado de ''{0}'' para ''{1}''."
+
+#:
+msgid "extracts.errors.encryption_not_licensed"
+msgstr "Falha na opera\u00e7\u00e3o porque a criptografia da extra\u00e7\u00e3o n\u00e3o \u00e9 licenciada. Para executar esta opera\u00e7\u00e3o, revise sua licen\u00e7a ou decodifique sua extra\u00e7\u00e3o."
+
+#:
+msgid "extracts.errors.operation_cancelled_detail"
+msgstr "Opera\u00e7\u00e3o de remo\u00e7\u00e3o de extra\u00e7\u00e3o para {0} (fonte de dados: {2}) atingiu o tempo limite."
+
+#:
+msgid "workbooks.messages.load_error"
+msgstr "N\u00e3o \u00e9 poss\u00edvel carregar a Pasta de trabalho {0}"
+
+#:
+msgid "workbooks.messages.locked"
+msgstr "A pasta de trabalho ''{0}'' est\u00e1 sendo modificada por outro usu\u00e1rio.  Tente novamente mais tarde."
+
+#:
+msgid "workbooks.new_workbook.default_name"
+msgstr "Nova pasta de trabalho"
+
+#:
+msgid "workbooks.new_datasource.default_name"
+msgstr "Nova fonte de dados"
+
+#:
+msgid "datasources.messages.load_error"
+msgstr "N\u00e3o \u00e9 poss\u00edvel carregar a fonte de dados {0}."
+
+#:
+msgid "metrics.new_metric.default_name"
+msgstr "Nova m\u00e9trica"
+
+#:
+msgid "messages.timeout_error.summary"
+msgstr "Erro de tempo limite excedido"
+
+#:
+msgid "messages.timeout_error.task_canceled"
+msgstr "Cancelando a tarefa que demorou mais que {0} segundos"
+
+#:
+msgid "subscriptions.manage_my_subscriptions"
+msgstr "Gerenciar minhas assinaturas"
+
+#:
+msgid "subscriptions.message_greeting"
+msgstr "Ol\u00e1,"
+
+#:
+msgid "subscriptions.subscribed_footer"
+msgstr "Sua assinatura de {0} est\u00e1 aqui"
+
+#:
+msgid "subscriptions.subscribed_workbook"
+msgstr "pasta de trabalho"
+
+#:
+msgid "subscriptions.subscribed_view"
+msgstr "exibi\u00e7\u00e3o"
+
+#:
+msgid "subscriptions.fullstop"
+msgstr "."
+
+#:
+msgid "subscriptions.extract_refresh_footer"
+msgstr "Voc\u00ea recebe este e-mail de assinatura quando os dados s\u00e3o atualizados."
+
+#:
+msgid "subscriptions.explore_the_viz"
+msgstr "Explorar a visualiza\u00e7\u00e3o"
+
+#:
+msgid "subscriptions.explore_the_workbook"
+msgstr "Explorar a pasta de trabalho"
+
+#:
+msgid "subscriptions.pdf_attached"
+msgstr "Seu Tableau PDF est\u00e1 em anexo."
+
+#:
+msgid "subscriptions.access_live_content"
+msgstr "Voc\u00ea pode acessar a exibi\u00e7\u00e3o em tempo real do conte\u00fado aqui"
+
+#:
+msgid "subscriptions.warning_deprecated_type"
+msgstr "obsoleto"
+
+#:
+msgid "subscriptions.warning_extract_refresh_type"
+msgstr "falha ao atualizar a extra\u00e7\u00e3o"
+
+#:
+msgid "subscriptions.warning_flow_run_type"
+msgstr "falha ao executar o fluxo"
+
+#:
+msgid "subscriptions.warning_introduction_general"
+msgstr "Os avisos de qualidade de dados a seguir afetam este {0}."
+
+#:
+msgid "subscriptions.warning_introduction_view"
+msgstr "Para obter mais informa\u00e7\u00f5es, consulte a guia Detalhes de dados na visualiza\u00e7\u00e3o"
+
+#:
+msgid "subscriptions.warning_introduction_workbook"
+msgstr "Para obter mais informa\u00e7\u00f5es, consulte a p\u00e1gina da pasta de trabalho"
+
+#:
+msgid "subscriptions.warning_maintenance_type"
+msgstr "em manuten\u00e7\u00e3o"
+
+#:
+msgid "subscriptions.warning_permission_error"
+msgstr "Este aviso est\u00e1 em um ativo que voc\u00ea n\u00e3o tem permiss\u00e3o para ver."
+
+#:
+msgid "subscriptions.warning_redacted"
+msgstr "Permiss\u00f5es necess\u00e1rias"
+
+#:
+msgid "subscriptions.warning_sensitve_type"
+msgstr "dados confidenciais"
+
+#:
+msgid "subscriptions.warning_severe"
+msgstr "Aviso de qualidade dos dados importante"
+
+#:
+msgid "subscriptions.warning_stale_type"
+msgstr "dados obsoletos"
+
+#:
+msgid "subscriptions.warning_standard"
+msgstr "Aviso de qualidade de dados"
+
+#:
+msgid "subscriptions.warning_error_type"
+msgstr "tipo de aviso desconhecido"
+
+#:
+msgid "subscriptions.warning_warning_type"
+msgstr "aviso"
+
+#:
+msgid "errors.subscriptions.image_render_failed"
+msgstr "O instant\u00e2neo da exibi\u00e7\u00e3o ''{0}'' n\u00e3o pode ser renderizado corretamente."
+
+#:
+msgid "errors.subscriptions.see_live_view"
+msgstr "Para ver a exibi\u00e7\u00e3o on-line, acesse {0}."
+
+#:
+msgid "errors.subscriptions.disabled_on_server"
+msgstr "A configura\u00e7\u00e3o de assinaturas em todo o site n\u00e3o est\u00e1 ativada. N\u00e3o \u00e9 poss\u00edvel processar assinaturas."
+
+#:
+msgid "errors.subscriptions.disabled_on_site"
+msgstr "As assinaturas est\u00e3o desativadas no site."
+
+#:
+msgid "errors.subscriptions.site_is_locked"
+msgstr "O site est\u00e1 bloqueado. N\u00e3o \u00e9 poss\u00edvel processar Assinaturas."
+
+#:
+msgid "errors.subscriptions.orphan"
+msgstr "A pasta de trabalho e as exibi\u00e7\u00f5es associadas a esta assinatura n\u00e3o puderam ser encontradas."
+
+#:
+msgid "errors.subscriptions.user_unlicensed"
+msgstr "Ignorando assinatura do usu\u00e1rio n\u00e3o licenciado."
+
+#:
+msgid "errors.subscriptions.smtp_unreacheable"
+msgstr "N\u00e3o \u00e9 poss\u00edvel acessar o host SMTP. Verifique se o SMTP foi configurado."
+
+#:
+msgid "errors.subscriptions.uncategorized_error"
+msgstr "Erro desconhecido"
+
+#:
+msgid "errors.subscriptions.pdf_render_failed"
+msgstr "O PDF anexo neste email n\u00e3o p\u00f4de ser renderizado adequadamente."
+
+#:
+msgid "errors.subscriptions.pdf_limit_exceeded"
+msgstr "O PDF gerado \u00e9 maior que o limite de tamanho de {0}MB e n\u00e3o p\u00f4de ser anexado a este e-mail."
+
+#:
+msgid "errors.subscriptions.attachments_not_enabled"
+msgstr "Ocorreu uma falha nesta assinatura porque os anexos de e-mail foram desabilitados. Entre em contato com seu administrador do Tableau para obter detalhes."
+
+#:
+msgid "errors.subscriptions.pdf_email_failed"
+msgstr "N\u00e3o foi poss\u00edvel anexar o PDF gerado a este e-mail."
+
+#:
+msgid "errors.subscriptions.learn_more_troubleshoot"
+msgstr "<a hre"
+
+#:
+msgid "errors.subscriptions.bad_extract_refresh_subscription_configuration"
+msgstr "A assinatura foi suspensa porque a pasta de trabalho cont\u00e9m v\u00e1rias agendas de atualiza\u00e7\u00e3o de extra\u00e7\u00e3o. Para retomar, atualize a frequ\u00eancia para No hor\u00e1rio selecionado."
+
+#:
+msgid "errors.subscriptions.subscription_failed_refresh_failure"
+msgstr "Falha na atualiza\u00e7\u00e3o da extra\u00e7\u00e3o da fonte de dados."
+
+#:
+msgid "errors.subscriptions.multiple_extracts_for_extract_refresh_subscription"
+msgstr "A pasta de trabalho cont\u00e9m v\u00e1rias agendas de atualiza\u00e7\u00e3o de extra\u00e7\u00e3o. Atualize a frequ\u00eancia para No hor\u00e1rio selecionado."
+
+#:
+msgid "errors.subscriptions.datasource_is_missing_password"
+msgstr "Erro de conex\u00e3o com a fonte de dados. Verifique as credenciais em todas as conex\u00f5es de fonte de dados da pasta de trabalho."
+
+#:
+msgid "subscriptions.results_summary.sg"
+msgstr "{0} de {1} assinaturas enviada(s) da agenda ''{2}''."
+
+#:
+msgid "subscriptions.results_summary.pl"
+msgstr "{0} de {1} assinaturas enviadas da agenda ''{2}''."
+
+#:
+msgid "subscriptions.results_views_per_subscription.sg"
+msgstr "{0} ({1} de 1 exibi\u00e7\u00e3o bem-sucedida)"
+
+#:
+msgid "subscriptions.results_views_per_subscription.pl"
+msgstr "{0} ({1} de {2} exibi\u00e7\u00f5es bem-sucedidas)"
+
+#:
+msgid "subscriptions.results_views_per_subscription.more"
+msgstr "({0} mais)"
+
+#:
+msgid "subscriptions.results_views_per_subscription.failed"
+msgstr "{0} (falha em {1} de {2} exibi\u00e7\u00f5es)."
+
+#:
+msgid "subscriptions.results_header.all_shown.failures.sg"
+msgstr "1 falha"
+
+#:
+msgid "subscriptions.results_header.all_shown.failures.pl"
+msgstr "{0}falhas"
+
+#:
+msgid "subscriptions.results_header.all_shown.warnings.sg"
+msgstr "1 aviso"
+
+#:
+msgid "subscriptions.results_header.all_shown.warnings.pl"
+msgstr "{0} avisos"
+
+#:
+msgid "subscriptions.results_header.some_hidden.failures.pl.sg"
+msgstr "{0} falhas (1 oculta, consulte os logs)"
+
+#:
+msgid "subscriptions.results_header.some_hidden.failures.pl.pl"
+msgstr "{0} falhas ({1} ocultas, consulte os logs)"
+
+#:
+msgid "subscriptions.results_header.some_hidden.warnings.pl.sg"
+msgstr "{0} avisos (1 oculto, consulte os logs)"
+
+#:
+msgid "subscriptions.results_header.some_hidden.warnings.pl.pl"
+msgstr "{0} avisos ({1} ocultos, consulte os logs)"
+
+#:
+msgid "dataalerts.manage_my_data_alerts"
+msgstr "Gerenciar alertas"
+
+#:
+msgid "dataalerts.edit_data_alert"
+msgstr "Editar alerta"
+
+#:
+msgid "dataalerts.remove_user_from_data_alert"
+msgstr "Remover-me"
+
+#:
+msgid "dataalerts.add_user_to_data_alert"
+msgstr "Adicionar-me a este alerta"
+
+#:
+msgid "dataalerts.greater_or_equal"
+msgstr "{0} era superior ou igual a {1}."
+
+#:
+msgid "dataalerts.greater"
+msgstr "{0} era superior a {1}."
+
+#:
+msgid "dataalerts.less_or_equal"
+msgstr "{0} era inferior ou igual a {1}."
+
+#:
+msgid "dataalerts.less"
+msgstr "{0} era inferior a {1}."
+
+#:
+msgid "dataalerts.equal"
+msgstr "{0} era igual a {1}."
+
+#:
+msgid "dataalerts.email_alt_text"
+msgstr "Exibi\u00e7\u00e3o usada por alerta acionado por dados: {0}"
+
+#:
+msgid "dataalerts.email_alt_text_hidden_view"
+msgstr "Exibi\u00e7\u00e3o usada por alerta acionado por dados: {0} com altera\u00e7\u00f5es aplicadas"
+
+#:
+msgid "dataalerts.alert_triggered_for_the_view"
+msgstr "Alerta acionado para a exibi\u00e7\u00e3o"
+
+#:
+msgid "dataalerts.failure.email.subject"
+msgstr "O alerta acionado por dados n\u00e3o est\u00e1 funcionando para: {0}"
+
+#:
+msgid "dataalerts.failure.status"
+msgstr "O alerta <i>{0}</i> n\u00e3o est\u00e1 funcionando"
+
+#:
+msgid "dataalerts.failure.view.details.alert"
+msgstr "Exibir este alerta"
+
+#:
+msgid "dataalerts.failure.explanation"
+msgstr "O alerta acionado por dados, <i>{0}</i>, n\u00e3o est\u00e1 funcionando neste momento, por isso os destinat\u00e1rios n\u00e3o ser\u00e3o notificados quando a condi\u00e7\u00e3o dos dados for verdadeira. Voc\u00ea receber\u00e1 uma notifica\u00e7\u00e3o por e-mail quando o alerta estiver funcionando novamente."
+
+#:
+msgid "dataalerts.failure.affected.alert"
+msgstr "Alerta acionado por dados afetado"
+
+#:
+msgid "dataalerts.failure.time"
+msgstr "Falha no alerta de tempo"
+
+#:
+msgid "dataalerts.failure.cause"
+msgstr "Algumas vezes os alertas falham devido a problemas de rede tempor\u00e1rios, que se resolvem sozinhos. Tamb\u00e9m \u00e9 poss\u00edvel tentar recriar o alerta na exibi\u00e7\u00e3o de dados original ou usar solu\u00e7\u00f5es de causas comuns de falhas em alertas, como estas:"
+
+#:
+msgid "dataalerts.failure.changed.view"
+msgstr "Uma pasta de trabalho, uma exibi\u00e7\u00e3o ou um campo de dados foi removido(a) ou renomeado(a)."
+
+#:
+msgid "dataalerts.failure.expired.credentials"
+msgstr "Credenciais de banco de dados expiradas foram inseridas em uma pasta de trabalho."
+
+#:
+msgid "dataalerts.failure.datasource.error"
+msgstr "Uma fonte de dados inacess\u00edvel."
+
+#:
+msgid "dataalerts.failure.email.footer"
+msgstr "Voc\u00ea est\u00e1 recebendo este e-mail em {0} devido a uma falha de alerta."
+
+#:
+msgid "dataalerts.failure.troubleshooting"
+msgstr "Para verificar se qualquer um dos problemas listados acima est\u00e1 causando a falha no alerta, clique no bot\u00e3o abaixo."
+
+#:
+msgid "dataalerts.success.email.subject"
+msgstr "O alerta acionado por dados reiniciou para: {0}"
+
+#:
+msgid "dataalerts.success.status"
+msgstr "Seu alerta <i>{0}</i> foi reiniciado"
+
+#:
+msgid "dataalerts.success.explanation"
+msgstr "Seu alerta acionado por dados, <i>{0}</i>, est\u00e1 funcionando novamente e os destinat\u00e1rios ser\u00e3o notificados quando a condi\u00e7\u00e3o dos dados for verdadeira."
+
+#:
+msgid "dataalerts.failure.error.internalError"
+msgstr "Erro interno do Alerta de dados"
+
+#:
+msgid "dataalerts.failure.error.invalidDataAlertSpecification"
+msgstr "Especifica\u00e7\u00e3o inv\u00e1lida do Alerta de dados"
+
+#:
+msgid "dataalerts.failure.error.summaryTableNotFound"
+msgstr "Tabela de dados de resumo n\u00e3o encontrada"
+
+#:
+msgid "dataalerts.failure.error.unclassifiedError"
+msgstr "Erro n\u00e3o classificado"
+
+#:
+msgid "dataalerts.failure.error.viewContentNotFound"
+msgstr "Conte\u00fado {0} da exibi\u00e7\u00e3o do Alerta de dados n\u00e3o encontrado"
+
+#:
+msgid "dataalerts.failure.error.viewNotFound"
+msgstr "A exibi\u00e7\u00e3o do alerta de dados n\u00e3o pode ser localizada"
+
+#:
+msgid "dataalerts.failure.error.workbookNotFound"
+msgstr "Pasta de trabalho n\u00e3o encontrada"
+
+#:
+msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
+msgstr "Nenhum eixo encontrado para o campo {0}"
+
+#:
+msgid "dataalerts.failure.error.paneDescriptorNotFound"
+msgstr "{0}"
+
+#:
+msgid "dataalerts.failure.error.unsupportedComparisonExpression"
+msgstr "Express\u00e3o de compara\u00e7\u00e3o {0} n\u00e3o compat\u00edvel"
+
+#:
+msgid "dataalerts.failure.error.nonConstComparisonOp"
+msgstr "Operador de compara\u00e7\u00e3o n\u00e3o constante detectado: {0}"
+
+#:
+msgid "dataalerts.failure.error.cannotAddFilter"
+msgstr "Falha ao adicionar filtro ao alerta de dados"
+
+#:
+msgid "dataalerts.failure.error.sheetNotAlertable"
+msgstr "A planilha {0} tem dados com suporte para alertas. {1}"
+
+#:
+msgid "dataalerts.failure.error.dataAlertMeasureNotFound"
+msgstr "N\u00e3o \u00e9 poss\u00edvel selecionar medida. {0}"
+
+#:
+msgid "dataalerts.failure.error.tooManyMeasuresForDataAlert"
+msgstr "N\u00famero incorreto de medidas detectado.{0}"
+
+#:
+msgid "dataalerts.failure.error.thresholdParseError"
+msgstr "Falha ao analisar texto de limite {0}. {1}"
+
+#:
+msgid "dataalerts.failure.error.dataAlertPresModelCreationError"
+msgstr "Erro ao serializar alerta. {0}"
+
+#:
+msgid "dataalerts.failure.error.cannotDrawDataAlertDialog"
+msgstr "Falha ao abrir a caixa de di\u00e1logo do alerta."
+
+#:
+msgid "dataalerts.failure.error.unsupportedDataAlertType"
+msgstr "O tipo de alerta de dados {0} n\u00e3o \u00e9 aceito no momento."
+
+#:
+msgid "dataalerts.failure.suspend.email.subject"
+msgstr "O alerta acionado por dados est\u00e1 suspenso para: {0}"
+
+#:
+msgid "dataalerts.failure.suspend.email.status"
+msgstr "Seu alerta {0} foi suspenso"
+
+#:
+msgid "dataalerts.failure.suspend.email.explanation"
+msgstr "Enquanto suspenso, n\u00e3o avaliaremos os destinat\u00e1rios da exibi\u00e7\u00e3o ou do alerta. Depois que uma corre\u00e7\u00e3o tiver sido feita, voc\u00ea poder\u00e1 retomar o alerta em <a hre"
+
+#:
+msgid "dataalerts.failure.suspend.view.name.prefix"
+msgstr "Visualizar"
+
+#:
+msgid "dataalerts.failure.suspend.time"
+msgstr "Tempo de suspens\u00e3o"
+
+#:
+msgid "dataalerts.failure.suspend.email.footer"
+msgstr "Voc\u00ea est\u00e1 recebendo este e-mail porque seu alerta foi suspenso."
+
+#:
+msgid "dataalerts.failure.suspend.email.view.name.my.content"
+msgstr "Meu conte\u00fado"
+
+#:
+msgid "dataalerts.failure.suspend.view.alerts"
+msgstr "Ver alertas"
+
+#:
+msgid "metricsservices.failure.affected.metric"
+msgstr "M\u00e9trica afetada"
+
+#:
+msgid "metricsservices.failure.cause"
+msgstr "Certas vezes, h\u00e1 falha nas atualiza\u00e7\u00f5es de m\u00e9trica devido a prolemas de conex\u00e3o tempor\u00e1rios, que se resolvem por si s\u00f3. Outros motivos comuns de falha na atualiza\u00e7\u00e3o de m\u00e9trica incluem:"
+
+#:
+msgid "metricsservices.failure.changed.view"
+msgstr "Uma pasta de trabalho, uma exibi\u00e7\u00e3o ou um campo de dados foi removida ou renomeada."
+
+#:
+msgid "metricsservices.failure.permissions.error"
+msgstr "Uma altera\u00e7\u00e3o nas permiss\u00f5es da exibi\u00e7\u00e3o conectada"
+
+#:
+msgid "metricsservices.failure.email.footer"
+msgstr "Voc\u00ea est\u00e1 recebendo este e-mail em {0} devido a uma falha na atualiza\u00e7\u00e3o da m\u00e9trica."
+
+#:
+msgid "metricsservices.failure.email.subject"
+msgstr "A atualiza\u00e7\u00e3o de m\u00e9trica n\u00e3o est\u00e1 funcionando para: {0}"
+
+#:
+msgid "metricsservices.failure.expired.credentials"
+msgstr "Credenciais de banco de dados expiradas foram inseridas em uma pasta de trabalho."
+
+#:
+msgid "metricsservices.failure.explanation"
+msgstr "Sua m\u00e9trica n\u00e3o pode ser atualizada, portanto, ela n\u00e3o tem sido atualizada. Voc\u00ea receber\u00e1 uma notifica\u00e7\u00e3o por e-mail quando a atualiza\u00e7\u00e3o da m\u00e9trica estiver funcionando novamente."
+
+#:
+msgid "metricsservices.failure.status"
+msgstr "Sua m\u00e9trica "{0}" n\u00e3o est\u00e1 atualizando"
+
+#:
+msgid "metricsservices.failure.suspend.email.explanation"
+msgstr "Enquanto a atualiza\u00e7\u00e3o de m\u00e9trica estiver suspensa, os dados da m\u00e9trica n\u00e3o ser\u00e3o atualizados. Ap\u00f3s a corre\u00e7\u00e3o, \u00e9 poss\u00edvel retomar a atualiza\u00e7\u00e3o da m\u00e9trica."
+
+#:
+msgid "metricsservices.failure.suspend.email.footer"
+msgstr "Voc\u00ea est\u00e1 recebendo este e-mail em {0} porque a atualiza\u00e7\u00e3o da m\u00e9trica foi suspensa."
+
+#:
+msgid "metricsservices.failure.suspend.email.status"
+msgstr "A atualiza\u00e7\u00e3o da m\u00e9trica "{0}" foi suspensa"
+
+#:
+msgid "metricsservices.failure.suspend.email.subject"
+msgstr "A atualiza\u00e7\u00e3o de m\u00e9trica foi suspensa para: {0}"
+
+#:
+msgid "metricsservices.failure.suspend.time"
+msgstr "Tempo de suspens\u00e3o"
+
+#:
+msgid "metricsservices.failure.suspend.view.metric"
+msgstr "Acessar a M\u00e9trica"
+
+#:
+msgid "metricsservices.failure.suspend.view.name.prefix"
+msgstr "Exibi\u00e7\u00e3o conectada"
+
+#:
+msgid "metricsservices.failure.time"
+msgstr "Hor\u00e1rio da falha na atualiza\u00e7\u00e3o"
+
+#:
+msgid "metricsservices.failure.troubleshooting"
+msgstr "Para verificar se algum dos problemas listados acima est\u00e1 ocasionando falha na atualiza\u00e7\u00e3o da m\u00e9trica, clique no bot\u00e3o abaixo. Al\u00e9m disso, experimente recriar a m\u00e9trica na exibi\u00e7\u00e3o conectada."
+
+#:
+msgid "metricsservices.failure.view.details.metric"
+msgstr "Acessar a M\u00e9trica"
+
+#:
+msgid "metricsservices.failure.view.name.prefix"
+msgstr "Exibi\u00e7\u00e3o conectada"
+
+#:
+msgid "metricsservices.success.email.subject"
+msgstr "A atualiza\u00e7\u00e3o de m\u00e9trica foi retomada para: {0}"
+
+#:
+msgid "metricsservices.success.explanation"
+msgstr "A atualiza\u00e7\u00e3o de sua m\u00e9trica est\u00e1 em funcionamento novamente, ent\u00e3o ela verificar\u00e1 por atualiza\u00e7\u00f5es dos dados de m\u00e9trica."
+
+#:
+msgid "metricsservices.success.status"
+msgstr "A atualiza\u00e7\u00e3o da m\u00e9trica "{0}" foi retomada"
+
+#:
+msgid "errors.staticimages.generic"
+msgstr "Erro ao gerar imagens est\u00e1ticas para pasta de trabalho {0}. {1}."
+
+#:
+msgid "errors.internal_error.request.message"
+msgstr "{0} n\u00e3o conseguiu satisfazer a solicita\u00e7\u00e3o."
+
+#:
+msgid "errors.permissions.limited_user_visibility"
+msgstr "Erro ao concluir a consulta. O usu\u00e1rio deve ser um administrador ou criador para executar a consulta em outros usu\u00e1rios se a Visibilidade do usu\u00e1rio estiver definida como limitada"
+
+#:
+msgid "local_names.system_user.guest.name"
+msgstr "Convidado"
+
+#:
+msgid "local_names.group.all_users.name"
+msgstr "Todos os usu\u00e1rios"
+
+#:
+msgid "local_names.containers.personal_space.name"
+msgstr "Espa\u00e7o pessoal"
+
+#:
+msgid "password_reset.email.subject"
+msgstr "Este \u00e9 o link para redefinir a sua senha"
+
+#:
+msgid "password_reset.email.body"
+msgstr "Ol\u00e1 {0},<br/><br/>Voc\u00ea solicitou uma altera\u00e7\u00e3o de senha.<br/><br/> Para redefinir a sua senha do Tableau Server, {1} ou cole o link a seguir no seu navegador: {2}<br/><br/>Este link ficar\u00e1 v\u00e1lido apenas por 48 horas, ent\u00e3o n\u00e3o esque\u00e7a de acess\u00e1-lo o quanto antes.<br/><br/>Se n\u00e3o foi voc\u00ea quem solicitou a altera\u00e7\u00e3o da senha, informe o administrador do servidor.<br/><br/>Obrigado por usar o  Tableau!<br/>Equipe Tableau"
+
+#:
+msgid "password_reset.email.link"
+msgstr "clique aqui"
+
+#:
+msgid "hours.pl"
+msgstr "{0} horas"
+
+#:
+msgid "hours.sg"
+msgstr "1 hora"
+
+#:
+msgid "minutes.pl"
+msgstr "{0} minutos"
+
+#:
+msgid "minutes.sg"
+msgstr "1 minuto"
+
+#:
+msgid "seconds.pl"
+msgstr "{0} segundos"
+
+#:
+msgid "seconds.sg"
+msgstr "1 segundo"
+
+#:
+msgid "dataconnections.classes.tableau_server_site"
+msgstr "Site do Tableau Server"
+
+#:
+msgid "materializeviews.errors.workbook_not_in_project"
+msgstr "O projeto ''{0}'' n\u00e3o cont\u00e9m a pasta de trabalho ''{1}''"
+
+#:
+msgid "materializeviews.errors.workbook_has_no_extract"
+msgstr "Falha ao atualizar a configura\u00e7\u00e3o de exibi\u00e7\u00f5es materializadas para a pasta de trabalho ''{0}''. No momento, h\u00e1 suporte somente para pastas de trabalho com extra\u00e7\u00f5es inseridas"
+
+#:
+msgid "materializeviews.errors.workbook_updating_errors"
+msgstr "Erros encontrados ao atualizar a configura\u00e7\u00e3o de exibi\u00e7\u00f5es materializadas para pastas de trabalho"
+
+#:
+msgid "materializeviews.errors.workbook_too_large"
+msgstr "Falha ao atualizar a configura\u00e7\u00e3o de exibi\u00e7\u00f5es materializadas para a pasta de trabalho ''{0}'', porque o tamanho da pasta de trabalho excede o limite de {1} GB"
+
+#:
+msgid "materializeviews.errors.project_path_not_exists"
+msgstr "O caminho do projeto ''{0}'' n\u00e3o existe."
+
+#:
+msgid "materializeviews.errors.feature_disabled"
+msgstr "Falha ao atualizar a configura\u00e7\u00e3o de exibi\u00e7\u00f5es materializadas para a pasta de trabalho ''{0}'', porque o recurso est\u00e1 desabilitado no momento."
+
+#:
+msgid "materializeviews.errors.update_materialized_views_setting_failed"
+msgstr "Falha ao atualizar a configura\u00e7\u00e3o de exibi\u00e7\u00f5es materializadas para a pasta de trabalho ''{0}''"
+
+#:
+msgid "materializeviews.errors.site_not_enabled"
+msgstr "Este site n\u00e3o est\u00e1 habilitado para exibi\u00e7\u00f5es materializadas. Entre em contato com o administrador"
+
+#:
+msgid "materializeviews.errors.encrypted_extracts_not_supported"
+msgstr "No momento, o recurso de exibi\u00e7\u00f5es materializadas n\u00e3o oferece suporte a pastas de trabalho com extra\u00e7\u00f5es criptografadas."
+
+#:
+msgid "materializedviews.finished.create"
+msgstr "Exibi\u00e7\u00f5es materializadas criadas com status ''{0}'' para a pasta de trabalho ''{1}''"
+
+#:
+msgid "materializedviews.finished.delete"
+msgstr "Exibi\u00e7\u00f5es materializadas exclu\u00eddas para id da pasta de trabalho: {0}"
+
+#:
+msgid "materializedviews.finished.encrypt"
+msgstr "Criptografia conclu\u00edda de exibi\u00e7\u00f5es materializadas para pasta de trabalho ''{0}''"
+
+#:
+msgid "materializedviews.finished.decrypt"
+msgstr "Decodifica\u00e7\u00e3o conclu\u00edda de exibi\u00e7\u00f5es materializadas para pasta de trabalho ''{0}''"
+
+#:
+msgid "materializedviews.finished.rekey"
+msgstr "Nova criptografia conclu\u00edda de exibi\u00e7\u00f5es materializadas para a pasta de trabalho ''{0}''"
+
+#:
+msgid "materializedviews.status.encryption_key"
+msgstr "ID da chave de criptografia: ''{0}''."
+
+#:
+msgid "materializedviews.status.encryption_keys"
+msgstr "ID antiga da chave de criptografia: ''{0}'', nova ID da chave de criptografia: ''{1}''."
+
+#:
+msgid "materializedviews.status.encryption_type"
+msgstr "Tipo de fonte de dados de criptografia: ''{0}''"
+
+#:
+msgid "customizedviews.namedSharingPrefix"
+msgstr "Vers\u00e3o compartilhada"
+
+#:
+msgid "flows.drafts.default_name"
+msgstr "Novo fluxo"
+
+#:
+msgid "content_type.project"
+msgstr "Projeto"
+
+#:
+msgid "content_type.workbook"
+msgstr "Pasta de trabalho"
+
+#:
+msgid "content_type.view"
+msgstr "Visualizar"
+
+#:
+msgid "content_type.datasource"
+msgstr "Fonte de dados"
+
+#:
+msgid "content_type.flow"
+msgstr "Fluxo"
+
+#:
+msgid "content_type.metric"
+msgstr "M\u00e9trica"
+
+#:
+msgid "content_type.collection"
+msgstr "Cole\u00e7\u00e3o"
+
+#:
+msgid "content_type.visualization"
+msgstr "Visualiza\u00e7\u00e3o"
+
+#:
+msgid "content_type.askdata_visualization"
+msgstr "Visualiza\u00e7\u00e3o de Pergunte aos dados"
+
+#:
+msgid "content_type.explaindata_explanation"
+msgstr "Explica\u00e7\u00e3o"
+
+#:
+msgid "content_type.publishedconnection"
+msgstr "Conex\u00e3o virtual"
+
+#:
+msgid "content_type.publishedconnectiontable"
+msgstr "Tabela de conex\u00e3o virtual"
+
+#:
+msgid "upgradethumbnails.status.server_started"
+msgstr "Resposta do servidor: atualiza\u00e7\u00e3o de miniaturas iniciada!"
+
+#:
+msgid "upgradethumbnails.status.server_stopped"
+msgstr "Resposta do servidor: %d trabalhos interrompidos"
+
+#:
+msgid "dataquality.message.refresh_failed"
+msgstr "Atualiza\u00e7\u00e3o falhou: {0}"
+
+#:
+msgid "dataquality.message.last_successful"
+msgstr "\u00daltima bem-sucedida: {0}"
+
+#:
+msgid "dataquality.message.next_scheduled"
+msgstr "Pr\u00f3ximo agendado: {0}"
+
+#:
+msgid "dataquality.message.flow_run_output_steps_failed"
+msgstr "{0}/{1} etapas de sa\u00edda falharam ao executar failed to run"
+
+#:
+msgid "importcsvsummary.error.details"
+msgstr "Detalhes do erro:"
+
+#:
+msgid "importcsvsummary.remainingerrors"
+msgstr "(erros restantes que n\u00e3o aparecem)"
+
+#:
+msgid "importcsvsummary.error.line"
+msgstr "linha {0} para o usu\u00e1rio ''{1}'': ''{2}''"
+
+#:
+msgid "importcsvsummary.line.processed"
+msgstr "Linhas processadas: {0}"
+
+#:
+msgid "importcsvsummary.line.skipped"
+msgstr "Linhas ignoradas: {0}"
+
+#:
+msgid "importcsvsummary.users.added.count"
+msgstr "N\u00famero de usu\u00e1rios adicionados: {0}"
+
+#:
+msgid "importcsvsummary.errors.count"
+msgstr "N\u00famero de erros: {0}"
+
+#:
+msgid "importcsvsummary.error.unexpected_extension"
+msgstr "Extens\u00e3o de nome de arquivo inesperada para arquivo CSV"
+
+#:
+msgid "importcsvsummary.error.size_limit"
+msgstr "O arquivo CSV excede o limite de tamanho de {0}"
+
+#:
+msgid "importcsvsummary.error.local.password_mismatch"
+msgstr "A atualiza\u00e7\u00e3o do usu\u00e1rio do site local requer uma senha vazia ou correspondente"
+
+#:
+msgid "importcsvsummary.error.local.password_required"
+msgstr "Cria\u00e7\u00e3o de usu\u00e1rio do sistema local quando Auth \u00e9 local requer senha"
+
+#:
+msgid "importcsvsummary.error.ad.user_not_found"
+msgstr "Usu\u00e1rio AD n\u00e3o encontrado ''{0}''"
+
+#:
+msgid "importcsvsummary.error.too_many_errors"
+msgstr "Muitos erros encontrados no arquivo CSV"
+
+#:
+msgid "audit.errors.wdc_not_allowlisted"
+msgstr "O conector de dados da Web n\u00e3o est\u00e1 permitido na lista. Para obter ajuda, consulte: https://help.tableau.com/current/online/pt-br/to_keep_data_fresh.htm"
+
+#:
+msgid "user.input.name.err.too_long"
+msgstr "o nome \u00e9 maior do que o n\u00famero m\u00e1ximo de caracteres {0}"
+
+#:
+msgid "user.input.name.err.empty"
+msgstr "o nome n\u00e3o pode ficar em branco"
+
+#:
+msgid "askdata.title"
+msgstr "Pergunte aos dados"
+
+#:
+msgid "slack.app.upgrade.email.notification.subject"
+msgstr "Atualiza\u00e7\u00e3o do aplicativo Tableau para Slack"
+
+#:
+msgid "slack.app.upgrade.email.notification.introduction"
+msgstr "Uma atualiza\u00e7\u00e3o est\u00e1 dispon\u00edvel para o aplicativo Tableau para Slack e pode ser reinstalada agora para funcionar com a pr\u00f3xima vers\u00e3o do Tableau Online. A Tableau recomenda reinstalar o aplicativo para manter o desempenho dele e usar novos recursos. Procure por novos recursos e mudan\u00e7as em <a styl"
+
+#:
+msgid "slack.app.upgrade.email.notification.action"
+msgstr "Para obter as etapas de atualiza\u00e7\u00e3o e reinstala\u00e7\u00e3o, consulte <a styl"
+
+#:
+msgid "slack.app.upgrade.email.notification.steps"
+msgstr "Esta notifica\u00e7\u00e3o de servi\u00e7o foi publicada pelo Tableau Online."
+
+#:
+msgid "slack.app.upgrade.email.notification.reason"
+msgstr "Voc\u00ea est\u00e1 recebendo esta notifica\u00e7\u00e3o porque \u00e9 administrador de um site do Tableau Online conectado ao Slack."
+
+#:
+msgid "slack.app.upgrade.email.notification.footer.privacy"
+msgstr "Leia nossa <a styl"
+
+#:
+msgid "unifiedconsumption.tcrm.folders.private"
+msgstr "Meu aplicativo privado"
+
