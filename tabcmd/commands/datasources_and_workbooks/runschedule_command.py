@@ -21,7 +21,7 @@ class RunSchedule(DatasourcesAndWorkbooks):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug("======================= Launching command =======================")
+        logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
         logger.info("Finding schedule {} on server...".format(args.schedule))
