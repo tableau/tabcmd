@@ -16,7 +16,7 @@ class CreateUsersCommand(UserCommand):
     """
 
     name: str = "createUsers"
-    description: str = _("createusers.description")
+    description: str = _("createusers.short_description")
 
     @staticmethod
     def define_args(create_users_parser):
@@ -43,7 +43,7 @@ class CreateUsersCommand(UserCommand):
 
         logger.info(_("createusers.status").format(args.filename.name))
         user_obj_list = UserCommand.get_users_from_file(args.filename, logger)
-        logger.info("tabcmd.percentage.zero")
+        logger.info(_("session.monitorjob.percent_complete"))
         error_list = []
         for user_obj in user_obj_list:
             try:
@@ -57,7 +57,7 @@ class CreateUsersCommand(UserCommand):
                 number_of_errors += 1
                 error_list.append(e)
                 logger.debug(e)
-        logger.info(_("tabcmd.percentage.hundred"))
+        logger.info(_("session.monitorjob.percent_complete").format(100))
         logger.info(_("importcsvsummary.line.processed").format(number_of_users_listed))
         logger.info(_("importcsvsummary.line.skipped").format(number_of_errors))
         logger.info(_("tabcmd.report.users_added").format(number_of_users_added))

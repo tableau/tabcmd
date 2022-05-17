@@ -117,13 +117,13 @@ class UserCommand(Server):
         if username is None or username == "" or username.strip(" ") == "":
             raise AttributeError(_("user.input.name.err.empty"))
         if username.find(" ") >= 0:
-            raise AttributeError("tabcmd.report.error.user.no_spaces_in_username")
+            raise AttributeError(_("tabcmd.report.error.user.no_spaces_in_username"))
         at_symbol = username.find("@")
 
         if at_symbol >= 0:
             username = username[:at_symbol] + "X" + username[at_symbol + 1 :]
             if username.find("@") >= 0:
-                raise AttributeError("tabcmd.report.error.user_csv.at_char")
+                raise AttributeError(_("tabcmd.report.error.user_csv.at_char"))
 
     @staticmethod
     def _validate_user_or_throw(incoming, logger) -> None:

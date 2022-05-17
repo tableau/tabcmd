@@ -15,16 +15,6 @@
 # gettext or Babel : po -> mo during packaging  (https://www.mattlayman.com/blog/2015/i18n/)
 # strings in template that are not in .properties should remain in English?
 
-# SECTION: results messages
-
-msgid "tabcmd.result.succeeded" #common.output.succeeded=
-msgstr "===== Succeeded"
-
-msgid "tabcmd.percentage.zero" #session.monitorjob.percent_complete
-msgstr "======== 0% complete ========"  # {0}% complete
-
-msgid "tabcmd.percentage.hundred"
-msgstr "======== 100% complete ========"
 
 # These outcome reporting lines were all returned from the server in clientxml
 # https://sourcegraph.prod.tableautools.com/teams/near/-/blob/workgroup/src/shared/libraries/tab-strings/res/localization/shared_wg_en.properties
@@ -36,66 +26,21 @@ msgstr "Group called ''{}'' already exists"
 msgid "tabcmd.result.failed.delete.group"
 msgstr "Error deleting group from server"
 
-msgid "tabcmd.result.failed.create.group"
-msgstr "Error creating group"
-
-msgid "tabcmd.result.failed.create.user"
-msgstr "Failed to add user: {}"
-
-msgid "tabcmd.result.failed.find.group" #publish.errors.server_resource_not_found
-msgstr "Error fetching group"
-
-msgid "tabcmd.result.failed.find.parent_project" publish.errors.server_resource_not_found
-msgstr "Error fetching parent project"
-
 msgid "tabcmd.result.success.create_user"
 msgstr "Successfully created user: {}"
-
-msgid "tabcmd.result.success.parsed_users"
-msgstr "Successfully parsed {} users"
-
-msgid "tabcmd.result.success.delete_user"
-msgstr "Successfully deleted user from site: {}"
-
-msgid "tabcmd.result.success.user_actions"
-msgstr "Successfully {0} {1} for group {2}"
-
-msgid "tabcmd.delete.users"
-msgstr "======== Deleted {} user(s)"
-
-msgid "tabcmd.result.failure.user"
-msgstr "Error at user {}"
-
-msgid "tabcmd.report.users_listed"
-msgstr "======== Number of users listed: {} ========="
-
-msgid "tabcmd.report.users_acted_on"
-msgstr "======== Number of users {}: {} ========="
 
 msgid "tabcmd.report.users_added"
 msgstr "Number of users added: {}"
 
-msgid "tabcmd.report.users_deleted"
-msgstr "======== Number of users deleted from site: {} ========="
-
-msgid "tabcmd.report.errors.count"
-msgstr "======== Number of errors {} ========="
-
 msgid "tabcmd.report.errors"
-msgstr "Error details: \n{}" # importcsvsummary.error.details
-
-msgid "tabcmd.report.errors.user_csv"
-msgstr "Invalid users in file - please fix {} problems and try again."
+msgstr "Error details: \n{}"
 
 msgid "tabcmd.report.error.user_csv.too_many_columns"
 msgstr "The file contains {} columns, but there are only {} valid columns in a user import csv file"
 
-msgid "tabcmd.report.error.user_csv.at_char
+msgid "tabcmd.report.error.user_csv.at_char"
 msgstr "If a user name includes an @ character that represents anything other than a domain separator, "
                     "you need to refer to the symbol using the hexadecimal format: \\0x40"
-
-msgid "tabcmd.report.error.user_csv.need_username"
-msgstr "Username must be specified in csv file"
 
 msgid "tabcmd.report.error.user.no_spaces_in_username"
 msgstr "Username cannot contain spaces"
@@ -109,44 +54,18 @@ msgstr "publishsamples expects the specified project to exist already"
 msgid "tabcmd.result.failure.publish_samples"
 msgstr "Failed publishing samples to project"
 
-# SECTION: action descriptions
-
-# These first few are intermediate actions, not the intended core actions
 msgid "tabcmd.launching"
 msgstr "======================= Launching command ======================="
 
-msgid "tabcmd.find.group" #n/a
+msgid "tabcmd.find.group"
 msgstr "Finding group ''{}'' on server..."
 
-msgid "tabcmd.find.parent_project"
-msgstr "===== Identifying parent project '{}' on the server..."
-
 # Each actual command has a status line in translation
-msgid "tabcmd.create.group" #creategroup.status
-msgstr "Creating group {name} on the server"
 
-msgid "tabcmd.create.project" #createproject.status
-msgstr "===== Creating project '{}' on the server..."
-
-msgid "tabcmd.add.users.to_site" #createsiteusers.status, addusers.status, createusers.status
+msgid "tabcmd.add.users.to_site"
 msgstr "===== Adding users listed in {0} to {1}..."
 
-msgid "tabcmd.create.users" #createusers.status
-msgstr "===== Adding users listed in {0} to the server..."
-
-msgid "tabcmd.delete.group" #deletegroup.status
-msgstr "Deleting group ''{}'' on server..."
-
-msgid "tabcmd.delete.project" #deleteproject.status
-msgstr "Deleting project '{}' from the server..."
-
-msgid "tabcmd.delete.users.site" #deletesiteusers.status
-msgstr "Deleting site users listed in {0}..."
-
-msgid "tabcmd.remove.users.from_group" #removeusers.status
-msgstr "Removing users listed in {0} from the group {1}..."
-
-msgid "tabcmd.delete.users.from_server" #deleteusers.status
+msgid "tabcmd.delete.users.from_server"
 msgstr "Removing users listed in {0} from the server..."
 
 msgid "tabcmd.get.extension.not_found"

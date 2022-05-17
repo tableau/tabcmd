@@ -58,6 +58,6 @@ class DeleteCommand(DatasourcesAndWorkbooks):
                 server.workbooks.delete(item_to_delete.id)
             else:
                 server.datasources.delete(item_to_delete.id)
-            logger.info("===== Succeeded")
+            logger.info(_("common.output.succeeded"))
         except TSC.ServerResponseError as e:
             DeleteCommand.exit_with_error(logger, "Error deleting from server", e)

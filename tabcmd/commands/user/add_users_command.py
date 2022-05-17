@@ -11,7 +11,7 @@ class AddUserCommand(UserCommand):
     """
 
     name: str = "addusers"
-    description: str = "Add users to a group"
+    description: str = _("addusers.short_description")
 
     @staticmethod
     def define_args(add_user_parser):
@@ -26,6 +26,6 @@ class AddUserCommand(UserCommand):
         session = Session()
         server = session.create_session(args)
 
-        logger.info(_("tabcmd.add.users.to_x").format(args.users.name, args.name))
+        logger.info(_("tabcmd.add.users.to_site").format(args.users.name, args.name))
 
         UserCommand.act_on_users(logger, server, "added", server.groups.add_user, args)

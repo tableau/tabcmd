@@ -13,11 +13,11 @@ class DeleteGroupCommand(Server):
     """
 
     name: str = "deletegroup"
-    description: str = "tabcmd.command.description.delete_group"
+    description: str = _("deletegroup.short_description")
 
     @staticmethod
     def define_args(delete_group_parser):
-        delete_group_parser.add_argument("name", help="tabcmd.command.arg.description.delete_group.name")
+        delete_group_parser.add_argument("name")
 
     @staticmethod
     def run_command(args):
@@ -28,7 +28,7 @@ class DeleteGroupCommand(Server):
         try:
             logger.info(_("tabcmd.find.group").format(args.name))
             group_id = Server.find_group_id(logger, server, args.name)
-            logger.info(_("tabcmd.delete.group").format(group_id))
+            logger.info(_("deletegroup.status").format(group_id))
             server.groups.delete(group_id)
             logger.info(_("tabcmd.result.succeeded"))
         except TSC.ServerResponseError as e:

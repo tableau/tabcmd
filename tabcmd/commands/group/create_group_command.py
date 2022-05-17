@@ -13,11 +13,11 @@ class CreateGroupCommand(Server):
     """
 
     name: str = "creategroup"
-    description: str = "tabcmd.command.description.create_group"
+    description: str = _("creategroup.short_description")
 
     @staticmethod
     def define_args(create_group_parser):
-        create_group_parser.add_argument("name", help="tabcmd.command.arg.description.create_group.name")
+        create_group_parser.add_argument("name")
 
     @staticmethod
     def run_command(args):
@@ -26,7 +26,7 @@ class CreateGroupCommand(Server):
         session = Session()
         server = session.create_session(args)
         try:
-            logger.info(_("tabcmd.create.group").format(name=args.name))
+            logger.info(_("creategroup.status").format(name=args.name))
             new_group = TSC.GroupItem(args.name)
             server.groups.create(new_group)
             logger.info(_("tabcmd.result.succeeded"))

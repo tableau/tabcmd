@@ -1,4 +1,5 @@
 import sys
+from tabcmd.execution.localize import _
 
 
 class Constants:
@@ -35,7 +36,7 @@ class Errors:
                 logger.error(message)
             if exception:
                 if Errors.is_expired_session(exception):
-                    logger.info("Your session has expired. Signing out to clear session...")
+                    logger.info(_("session.session_expired_login"))
                     # TODO: add session as an argument to this method
                     #  and add the full command line as a field in Session?
                     # session.renew_session()

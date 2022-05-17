@@ -14,7 +14,7 @@ class PublishSamplesCommand(Server):
     """
 
     name: str = "publishsamples"
-    description: str = "tabcmd.command.description.publish_samples"
+    description: str = _("publishsamples.short_description")
 
     @staticmethod
     def define_args(publish_samples_parser):
@@ -23,7 +23,6 @@ class PublishSamplesCommand(Server):
             "-n",
             dest="project_name",
             required=True,
-            help=_("tabcmd.command.description.publish_samples.argument.project_name"),
         )
         set_parent_project_arg(publish_samples_parser)  # args.parent_project_name
 
@@ -47,4 +46,4 @@ class PublishSamplesCommand(Server):
         try:
             server.projects.update(project, samples=True)
         except Exception as e:
-            Errors.exit_with_error(logger, "tabcmd.result.failure.publish_samples", exception=e)
+            Errors.exit_with_error(logger, _("tabcmd.result.failure.publish_samples"), exception=e)

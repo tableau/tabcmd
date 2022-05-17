@@ -11,11 +11,11 @@ class RemoveUserCommand(UserCommand):
     """
 
     name: str = "removeusers"
-    description: str = "tabcmd.command.description.remove_users"
+    description: str = _("removeusers.short_description")
 
     @staticmethod
     def define_args(remove_users_parser):
-        remove_users_parser.add_argument("name", help="tabcmd.command.description.remove_users.argument.name")
+        remove_users_parser.add_argument("name", help="The group to remove users from.")
         set_users_file_arg(remove_users_parser)
         set_completeness_options(remove_users_parser)
 
