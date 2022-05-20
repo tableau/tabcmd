@@ -1196,7 +1196,7 @@ msgstr "Utilisez l''URL Tableau Server sp\u00e9cifi\u00e9e. Si aucun protocole n
 
 #:
 msgid "session.options.site"
-msgstr "Utilisez le site Tableau Server sp\u00e9cifi\u00e9. Entrez une cha\u00eene vide ("") pour forcer l''utilisation du site par d\u00e9faut."
+msgstr "Utilisez le site Tableau Server sp\u00e9cifi\u00e9. Entrez une cha\u00eene vide () pour forcer l''utilisation du site par d\u00e9faut."
 
 #:
 msgid "session.options.timeout"
@@ -1288,7 +1288,7 @@ msgstr "D\u00e9finition de ''{0}'' sur {1}"
 
 #:
 msgid "syncgroup.errors.server_admin"
-msgstr "Le r\u00f4le sur le site minimum d''un groupe ne peut pas \u00eatre d\u00e9fini sur "ServerAdministrator"."
+msgstr "Le r\u00f4le sur le site minimum d''un groupe ne peut pas \u00eatre d\u00e9fini sur ServerAdministrator."
 
 #:
 msgid "syncgroup.options.role"

@@ -1196,7 +1196,7 @@ msgstr "98302-表:Usé thé spéçıfıéď Täbłéäű Şéяvéя UЯŁ. İf 
 
 #:
 msgid "session.options.site"
-msgstr "01122-表:Usé thé spéçıfıéď Täbłéäű Şéяvéя sıté. Şpéçıfy äฑ émpty stяıฑg ("") to foяçé űsé of thé ďéfäűłt sıté|"
+msgstr "01122-表:Usé thé spéçıfıéď Täbłéäű Şéяvéя sıté. Şpéçıfy äฑ émpty stяıฑg () to foяçé űsé of thé ďéfäűłt sıté|"
 
 #:
 msgid "session.options.timeout"

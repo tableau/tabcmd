@@ -1196,7 +1196,7 @@ msgstr "Utilizza l''URL di Tableau Server specificato. Se non viene specificato 
 
 #:
 msgid "session.options.site"
-msgstr "Utilizzare il sito specificato di Tableau Server. Specifica una stringa vuota ("") per forzare l''utilizzo del sito predefinito"
+msgstr "Utilizzare il sito specificato di Tableau Server. Specifica una stringa vuota () per forzare l''utilizzo del sito predefinito"
 
 #:
 msgid "session.options.timeout"

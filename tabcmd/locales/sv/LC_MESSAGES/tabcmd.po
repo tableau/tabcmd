@@ -1,3 +1,73 @@
+# Tabcmd output strings
+# Copyright (C) YEAR Tableau Software
+
+# We are varying the gettext process a little because we want to
+# re-use the existing translated strings in the old client
+# manually annotate each string and use a string id
+# manually generate a template file with id -> original string
+# check in properties files from the monolith in all languages
+# automate: two properties files -> po http://docs.translatehouse.org/projects/translate-toolkit/en/latest/commands/prop2po.html
+# gettext or Babel : po -> mo during packaging  (https://www.mattlayman.com/blog/2015/i18n/)
+# strings in template that are not in .properties should remain in English?
+
+
+# These outcome reporting lines were all returned from the server in clientxml
+# https://sourcegraph.prod.tableautools.com/teams/near/-/blob/workgroup/src/shared/libraries/tab-strings/res/localization/shared_wg_en.properties
+# how much of this can be replaced by server responses?
+
+msgid "tabcmd.result.already_exists.group"
+msgstr "Group called ''{}'' already exists"
+
+msgid "tabcmd.result.failed.delete.group"
+msgstr "Error deleting group from server"
+
+msgid "tabcmd.result.success.create_user"
+msgstr "Successfully created user: {}"
+
+msgid "tabcmd.report.users_added"
+msgstr "Number of users added: {}"
+
+msgid "tabcmd.report.errors"
+msgstr "Error details: \n{}"
+
+msgid "tabcmd.report.error.user_csv.too_many_columns"
+msgstr "The file contains {} columns, but there are only {} valid columns in a user import csv file"
+
+msgid "tabcmd.report.error.user_csv.at_char"
+msgstr "If a user name includes an @ character that represents anything other than a domain separator, "
+                    "you need to refer to the symbol using the hexadecimal format: \\0x40"
+
+msgid "tabcmd.report.error.user.no_spaces_in_username"
+msgstr "Username cannot contain spaces"
+
+msgid "tabcmd.report.error.generic_attribute"
+msgstr "Invalid value for {0}: {1}"
+
+msgid "tabcmd.report.error.publish_samples.expected_project"
+msgstr "publishsamples expects the specified project to exist already"
+
+msgid "tabcmd.result.failure.publish_samples"
+msgstr "Failed publishing samples to project"
+
+msgid "tabcmd.launching"
+msgstr "======================= Launching command ======================="
+
+msgid "tabcmd.find.group"
+msgstr "Finding group ''{}'' on server..."
+
+# Each actual command has a status line in translation
+
+msgid "tabcmd.add.users.to_site"
+msgstr "===== Adding users listed in {0} to {1}..."
+
+msgid "tabcmd.delete.users.from_server"
+msgstr "Removing users listed in {0} from the server..."
+
+msgid "tabcmd.get.extension.not_found"
+msgstr "You must specify a file type in the url or filename"
+
+msgid "tabcmd.run_schedule.options.schedule"
+msgstr "Name of the schedule to run"
 msgid ""
 msgstr ""
 "MIME-Version: 1.0"
@@ -1797,4 +1867,1422 @@ msgstr "L\u00e4s v\u00e5r <a styl"
 #:
 msgid "unifiedconsumption.tcrm.folders.private"
 msgstr "Min privata app"
+
+
+msgid ""
+msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=None"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: None"
+"Language: None"
+#:
+msgid "commandlineutils.errors.bad_value"
+msgstr "Alternativet ''{0}'' har det felaktiga v\u00e4rdet ''{1}''. Det m\u00e5ste vara n\u00e5got av: {2}"
+
+#:
+msgid "commandlineutils.errors.not_integer"
+msgstr "V\u00e4rdet ''{0}'' f\u00f6r alternativet ''{1}'' \u00e4r inte ett heltal"
+
+#:
+msgid "common.errors.empty_file"
+msgstr "Filen ''{0}'' \u00e4r tom"
+
+#:
+msgid "common.errors.file_not_found"
+msgstr "Det g\u00e5r inte att \u00f6ppna filen ''{0}''"
+
+#:
+msgid "common.errors.invalid_file_path"
+msgstr "Ogiltig fils\u00f6kv\u00e4g: ''{0}''"
+
+#:
+msgid "common.errors.folder_path_not_found"
+msgstr "Det g\u00e5r inte att hitta katalogen ''{0}''"
+
+#:
+msgid "common.errors.access_denied"
+msgstr "\u00c5tkomst nekad till filen ''{0}''. Kontrollera att s\u00f6kv\u00e4gen \u00e4r giltig och att filnamnet inte matchar en befintlig katalog"
+
+#:
+msgid "common.errors.requires_csv_file"
+msgstr "Kommandot ''{0}'' kr\u00e4ver CSV-fil"
+
+#:
+msgid "common.errors.requires_group_name"
+msgstr "Kommandot ''{0}'' kr\u00e4ver ett gruppnamn"
+
+#:
+msgid "common.errors.requires_site_name"
+msgstr "Kommandot ''{0}'' kr\u00e4ver ett webbplatsnamn"
+
+#:
+msgid "common.errors.options_conflict"
+msgstr "Nya och inaktuella alternativ f\u00f6r att specificera anv\u00e4ndarrollen har angetts. Endast ett kan anv\u00e4ndas"
+
+#:
+msgid "common.errors.csv_sizelimit"
+msgstr "Den CSV-fil som du refererar till \u00f6verskrider storleksgr\u00e4nsen p\u00e5 100 MB. Dela upp filens inneh\u00e5ll i mindre CSV-filer och importera dem sedan separat."
+
+#:
+msgid "common.options.admin-type"
+msgstr "[Inaktuellt] Tilldelar [eller tar bort] webbplatsadministrat\u00f6rsr\u00e4ttigheten f\u00f6r alla anv\u00e4ndare i CSV-filen. Den h\u00e4r inst\u00e4llningen kan \u00e5sidos\u00e4ttas med v\u00e4rdena p\u00e5 de enskilda raderna i CSV-filen. {0} kan vara: {1}, {2} eller {3}. Om inget anges: {3} f\u00f6r nya anv\u00e4ndare, of\u00f6r\u00e4ndrat f\u00f6r befintliga anv\u00e4ndare"
+
+#:
+msgid "common.options.complete"
+msgstr "Kr\u00e4ver [eller kr\u00e4ver inte] att alla rader m\u00e5ste vara giltiga om n\u00e5gon \u00e4ndring ska kunna g\u00f6ras. Standard: {0}"
+
+#:
+msgid "common.options.license"
+msgstr "[Inaktuellt] St\u00e4ller in standardlicensniv\u00e5n f\u00f6r alla anv\u00e4ndare. Detta kan \u00e5sidos\u00e4ttas med v\u00e4rdet i CSV-filen. {0} kan vara {1}, {2} eller {3}"
+
+#:
+msgid "common.options.nowait"
+msgstr "V\u00e4nta inte p\u00e5 att jobbet ska slutf\u00f6ras"
+
+#:
+msgid "common.options.publisher"
+msgstr "[Inaktuellt] Tilldelar [eller tar bort] publiceringsr\u00e4tten f\u00f6r alla anv\u00e4ndare i CSV-filen. Den h\u00e4r inst\u00e4llningen kan \u00e5sidos\u00e4ttas med v\u00e4rdena p\u00e5 de enskilda raderna i CSV-filen. Standard, om inget annat angetts: falskt f\u00f6r nya anv\u00e4ndare, of\u00f6r\u00e4ndrat f\u00f6r befintliga anv\u00e4ndare"
+
+#:
+msgid "common.options.silent-progress"
+msgstr "Visa inte f\u00f6rloppsmeddelanden f\u00f6r jobbet"
+
+#:
+msgid "common.options.sysadmin-type"
+msgstr "[Inaktuellt] Tilldelar [eller tar bort] webbplatsadministrat\u00f6rsr\u00e4ttigheten f\u00f6r alla anv\u00e4ndare i CSV-filen. Den h\u00e4r inst\u00e4llningen kan \u00e5sidos\u00e4ttas med v\u00e4rdena p\u00e5 de enskilda raderna i CSV-filen. {0} kan vara: {1}, {2}, {3} eller {4}. Om inget anges: {4} f\u00f6r nya anv\u00e4ndare, of\u00f6r\u00e4ndrat f\u00f6r befintliga anv\u00e4ndare"
+
+#:
+msgid "common.output.job_queued_success"
+msgstr "Jobb i k\u00f6"
+
+#:
+msgid "common.output.succeeded"
+msgstr "Klart"
+
+#:
+msgid "common.options.role"
+msgstr "St\u00e4ller in standardrollen f\u00f6r alla p\u00e5verkade anv\u00e4ndare. Giltiga v\u00e4rden f\u00f6r {0}: {1}. Om inget annat anges anv\u00e4nder servern standardv\u00e4rdet: {2}"
+
+#:
+msgid "addusers.options.users"
+msgstr "En fil som inneh\u00e5ller en lista med anv\u00e4ndare, en per rad, som ska l\u00e4ggas till i gruppen"
+
+#:
+msgid "addusers.short_description"
+msgstr "L\u00e4gg till anv\u00e4ndare till en grupp"
+
+#:
+msgid "addusers.status"
+msgstr "L\u00e4gger till anv\u00e4ndare listade i {0} till gruppen {1} ..."
+
+#:
+msgid "creategroup.short_description"
+msgstr "Skapa en lokal grupp"
+
+#:
+msgid "creategroup.status"
+msgstr "Skapar gruppen ''{0}'' p\u00e5 servern ..."
+
+#:
+msgid "creategroup.options.role"
+msgstr "St\u00e4ller in den roll som ska anges f\u00f6r anv\u00e4ndare i gruppen vid inloggning. Giltiga v\u00e4rden f\u00f6r {0}: {1}. En anv\u00e4ndares webbplatsroll st\u00e4lls bara in p\u00e5 det h\u00e4r v\u00e4rdet om det \u00e4r mindre restriktivt \u00e4n anv\u00e4ndarens aktuella webbplatsroll. Om inget anges st\u00e4lls ingen roll in f\u00f6r anv\u00e4ndare i den h\u00e4r gruppen vid inloggning."
+
+#:
+msgid "createextracts.errors.required_argument"
+msgstr "Kommandot createextracts kr\u00e4ver en arbetsboks-URL, ett arbetsboksnamn eller ett datak\u00e4llsnamn."
+
+#:
+msgid "createextracts.errors.error"
+msgstr "Fel vid skapande av extrakt"
+
+#:
+msgid "createextracts.for.datasource"
+msgstr "Skapar extrakt f\u00f6r datak\u00e4llan ''{0}''"
+
+#:
+msgid "createextracts.for.workbook_name"
+msgstr "Skapar extrakt f\u00f6r arbetsboken med namnet ''{0}''"
+
+#:
+msgid "createextracts.for.workbook_url"
+msgstr "Skapar extrakt f\u00f6r arbetsboken med URL:en ''{0}''"
+
+#:
+msgid "createextracts.options.datasource"
+msgstr "Namnet p\u00e5 m\u00e5ldatak\u00e4llan f\u00f6r generering av extrakt"
+
+#:
+msgid "createextracts.options.embedded-datasources"
+msgstr "En blankstegsavgr\u00e4nsad lista med namn p\u00e5 inb\u00e4ddade datak\u00e4llsnamn i m\u00e5larbetsboken. Omslut datak\u00e4llsnamn med dubbla citattecken om de inneh\u00e5ller blanksteg. Endast tillg\u00e4ngligt n\u00e4r du skapar extrakt f\u00f6r en arbetsbok."
+
+#:
+msgid "createextracts.options.encrypt"
+msgstr "Skapa krypterat extrakt."
+
+#:
+msgid "createextracts.options.include-all"
+msgstr "Inkludera alla inb\u00e4ddade datak\u00e4llor i m\u00e5larbetsboken. Endast tillg\u00e4ngligt n\u00e4r du skapar extrakt f\u00f6r en arbetsbok."
+
+#:
+msgid "createextracts.options.parent-project-path"
+msgstr "S\u00f6kv\u00e4gen f\u00f6r projektet \u00e4r \u00f6verordnad projektet som inneh\u00e5ller m\u00e5lresursen. Du m\u00e5ste ange projektnamnet med --projekt."
+
+#:
+msgid "createextracts.options.project"
+msgstr "Namnet p\u00e5 det projekt som inneh\u00e5ller m\u00e5lresursen. Beh\u00f6vs bara om {0} eller {1} har angetts. Om det inte anges anv\u00e4nds standardprojektet ''{2}''."
+
+#:
+msgid "createextracts.options.url"
+msgstr "Resursens kanoniska namn som den visas i webbadressen"
+
+#:
+msgid "createextracts.options.workbook"
+msgstr "Namnet p\u00e5 m\u00e5larbetsboken vid generering av extrakt"
+
+#:
+msgid "createextracts.short_description"
+msgstr "Skapa extrakt f\u00f6r en publicerad arbetsbok eller datak\u00e4lla"
+
+#:
+msgid "createextracts.workbook.include-all"
+msgstr "Inkludera alla inb\u00e4ddade datak\u00e4llor i m\u00e5larbetsboken"
+
+#:
+msgid "createextracts.workbook.embedded-datasource-names"
+msgstr "Med inb\u00e4ddade datak\u00e4llsnamn"
+
+#:
+msgid "createproject.options.description"
+msgstr "Beskrivning av projektet"
+
+#:
+msgid "createproject.options.name"
+msgstr "Projektets namn"
+
+#:
+msgid "createproject.options.parent-project-path"
+msgstr "Projekts\u00f6kv\u00e4g som kommer att inneh\u00e5lla det nya projektet. Om inget anges skapas den p\u00e5 webbplatsens rotniv\u00e5"
+
+#:
+msgid "createproject.short_description"
+msgstr "Skapa ett projekt"
+
+#:
+msgid "createproject.status"
+msgstr "Skapar projektet ''{0}'' p\u00e5 servern ..."
+
+#:
+msgid "createsite.errors.invalid_url_option"
+msgstr "URL-alternativet \u00e4r ogiltigt om du skapar flera webbplatser. K\u00f6r kommandot p\u00e5 nytt efter det att du har tagit bort URL-alternativet, eller skapa varje webbplats separat"
+
+#:
+msgid "createsite.errors.site_name_already_exists"
+msgstr "Det finns redan en webbplats med namnet ''{0}''. F\u00f6rs\u00f6k med ett annat webbplatsnamn."
+
+#:
+msgid "createsite.errors.site_id_already_exists"
+msgstr "Det finns redan en webbplats med ID:t ''{0}''. Specificera ett annat webbplats-ID genom att anv\u00e4nda -r. Mer information finns i hj\u00e4lpen till tabcmd createsite."
+
+#:
+msgid "createsite.options.allow-mobile-snapshots"
+msgstr "Till\u00e5t [eller neka] mobila \u00f6gonblicksbilder. Standardinst\u00e4llningen \u00e4r att till\u00e5ta mobila \u00f6gonblicksbilder"
+
+#:
+msgid "createsite.options.allow-subscriptions"
+msgstr "Till\u00e5t [eller neka] prenumerationer f\u00f6r den h\u00e4r webbplatsen. Standarinst\u00e4llningen \u00e4r serverns standardinst\u00e4llning. Prenumerationer kan inte aktiveras om serverprenumerationer har inaktiverats"
+
+#:
+msgid "createsite.options.allow-web-authoring"
+msgstr "Till\u00e5t [eller neka] webbf\u00f6rfattande f\u00f6r den h\u00e4r webbplatsen. Standardinst\u00e4llningen \u00e4r att till\u00e5ta webbf\u00f6rfattande"
+
+#:
+msgid "createsite.options.metrics-level"
+msgstr "0 f\u00f6r ingen samling, 100 f\u00f6r alla samlingar"
+
+#:
+msgid "createsite.options.guest-access-enabled"
+msgstr "G\u00e4st\u00e5tkomstbeh\u00f6righet att se vyer f\u00f6r dem som inte har loggat in p\u00e5 n\u00e5got Tableau Server-konto"
+
+#:
+msgid "createsite.options.site-mode"
+msgstr "Till\u00e5t [eller neka] webbplatsadministrat\u00f6ren anv\u00e4ndarhantering p\u00e5 webbplatsen"
+
+#:
+msgid "createsite.options.storage-quota"
+msgstr "Webbplatslagringskvot i MB"
+
+#:
+msgid "createsite.options.subscription-email"
+msgstr "E-postadress som anv\u00e4nds f\u00f6r prenumerationer"
+
+#:
+msgid "createsite.options.subscription-footer"
+msgstr "Sidfot som anv\u00e4nds f\u00f6r prenumerationer"
+
+#:
+msgid "createsite.options.url"
+msgstr "Webbplatsens webbplats-ID"
+
+#:
+msgid "createsite.options.user-quota"
+msgstr "Maximalt antal webbplatsanv\u00e4ndare"
+
+#:
+msgid "createsite.options.extract_encryption_mode"
+msgstr "Extraktkrypteringsl\u00e4ge: inaktiverat, aktiverat eller framtvingat. Om inget anges till\u00e4mpas standardv\u00e4rdet."
+
+#:
+msgid "createsite.options.web_extraction_enabled"
+msgstr "Till\u00e5t [eller neka] skapande och \u00e4ndrande av extrakt till live f\u00f6r den h\u00e4r webbplatsen. Standardinst\u00e4llningen \u00e4r att till\u00e5ta."
+
+#:
+msgid "createsite.options.run_now_enabled"
+msgstr "Till\u00e5t [eller neka] alternativet K\u00f6r nu f\u00f6r den h\u00e4r webbplatsen. Standardinst\u00e4llningen \u00e4r K\u00f6r nu."
+
+#:
+msgid "createsite.options.time_zone"
+msgstr "Den tidszon som ska anv\u00e4ndas f\u00f6r extrakt p\u00e5 den h\u00e4r webbplatsen. Standardinst\u00e4llningen \u00e4r upph\u00e4vd s\u00e5 att serverns tidszon ska kunna anv\u00e4ndas."
+
+#:
+msgid "createsite.short_description"
+msgstr "Skapa en webbplats"
+
+#:
+msgid "createsite.status"
+msgstr "Skapa webbplatse ''{0}'' p\u00e5 servern ..."
+
+#:
+msgid "createsiteusers.options.auth-type"
+msgstr "Tilldelar autentiseringstypen f\u00f6r alla anv\u00e4ndare i CSV-filen. F\u00f6r Tableau Online kan {0} vara {1} (standard) eller {2}. F\u00f6r Tableau Server kan {0} vara lokal (standard) eller {2}."
+
+#:
+msgid "createsiteusers.description"
+msgstr "Skapa anv\u00e4ndare p\u00e5 den aktuella webbplatsen. Anv\u00e4ndarna l\u00e4ses in fr\u00e5n den angivna CSV-filen. Filen kan ha kolumnerna i den ordning som visas nedan.{0}1. Anv\u00e4ndarnamn{0}2. L\u00f6senord        (Ignoreras om Active Directory anv\u00e4nds){0}3. Eget namn   (Ignoreras om Active Directory anv\u00e4nds){0}4. Licensniv\u00e5 ({1}, {2}, {3}, {4} eller {5}){0}5. Administrat\u00f6r ({6}/{7}){0}6. Utgivare ({8}/{9}/1 eller {10}/{11}/0){0}7. E-post (endast f\u00f6r Tableau Public){0}Filen kan ha f\u00e4rre kolumner. Den kan t.ex. vara en enkel lista med ett anv\u00e4ndarnamn per rad. Du kan anv\u00e4nda citattecken om ett v\u00e4rde inneh\u00e5ller kommatecken. Tabcmd v\u00e4ntar p\u00e5 att uppgiften {12} ska slutf\u00f6ras. Du kan v\u00e4lja att inte v\u00e4nta p\u00e5 att uppgiften ska slutf\u00f6ras p\u00e5 servern och ist\u00e4llet \u00e5terv\u00e4nda direkt genom att passera flaggan {13}. Systemadministrat\u00f6rer kan inte skapas eller degraderas med det h\u00e4r kommandot. Anv\u00e4nd ''{14}'' ist\u00e4llet"
+
+#:
+msgid "createsiteusers.short_description"
+msgstr "Skapa anv\u00e4ndare p\u00e5 den aktuella webbplatsen"
+
+#:
+msgid "createsiteusers.status"
+msgstr "L\u00e4gger till anv\u00e4ndare listade i {0} till den aktuella webbplatsen ..."
+
+#:
+msgid "createusers.description"
+msgstr "Skapa anv\u00e4ndare. Anv\u00e4ndarna l\u00e4ses in fr\u00e5n den angivna CSV-filen. Filen kan ha kolumnerna i den ordning som visas nedan.{0}1. Anv\u00e4ndarnamn{0}2. L\u00f6senord        (Ignoreras om Active Directory anv\u00e4nds){0}3. Eget namn   (Ignoreras om Active Directory anv\u00e4nds){0}4. Licensniv\u00e5 ({1}, {2}, {3}, {4} eller {5}){0}5. Administrat\u00f6r ({6}/{7}/{8}/{9}){0}6. Utgivare ({10}/{11}/1 eller {12}/{13}/0){0}7. E-post (endast f\u00f6r Tableau Public){0}Filen kan ha f\u00e4rre kolumner. Den kan t.ex. vara en enkel lista med ett anv\u00e4ndarnamn per rad. Du kan anv\u00e4nda citattecken om ett v\u00e4rde inneh\u00e5ller kommatecken. Tabcmd v\u00e4ntar p\u00e5 att uppgiften {14} ska slutf\u00f6ras. Du kan v\u00e4lja att inte v\u00e4nta p\u00e5 att uppgiften ska slutf\u00f6ras p\u00e5 servern och ist\u00e4llet \u00e5terv\u00e4nda direkt genom att passera flaggan {15}"
+
+#:
+msgid "createusers.short_description"
+msgstr "Skapa anv\u00e4ndare p\u00e5 servern"
+
+#:
+msgid "createusers.status"
+msgstr "L\u00e4gger till anv\u00e4ndare listade i {0} p\u00e5 servern"
+
+#:
+msgid "decryptextracts.short_description"
+msgstr "Dekryptera extrakt p\u00e5 en webbplats"
+
+#:
+msgid "decryptextracts.status"
+msgstr "Schemal\u00e4gger dekryptering av extrakt p\u00e5 webbplatsen {0} ..."
+
+#:
+msgid "delete.errors.mutually_exclusive"
+msgstr "Det g\u00e5r inte att ange b\u00e5de en arbetsbok och en datak\u00e4lla som ska tas bort"
+
+#:
+msgid "delete.errors.requires_workbook_datasource"
+msgstr "Kommandot ''{0}'' kr\u00e4ver ett namn p\u00e5 en arbetsbok eller en datak\u00e4lla"
+
+#:
+msgid "delete.options.datasource"
+msgstr "Datak\u00e4lla som ska tas bort"
+
+#:
+msgid "delete.options.parent-project-path"
+msgstr "S\u00f6kv\u00e4g till det \u00f6verordnade projekt som inneh\u00e5ller den arbetsbok/datak\u00e4lla som ska tas bort. Du m\u00e5ste specificera projektnamnet med --project."
+
+#:
+msgid "delete.options.project"
+msgstr "Projektet som innehller den arbetsbok/datak\u00e4lla som ska tas bort. Standardprojektet \u00e4r ''{0}''"
+
+#:
+msgid "delete.options.workbook"
+msgstr "Arbetsbok som ska tas bort"
+
+#:
+msgid "delete.short_description"
+msgstr "Ta bort en arbetsbok eller en datak\u00e4lla fr\u00e5n servern"
+
+#:
+msgid "delete.status"
+msgstr "Tar bort {0} ''{1}'' fr\u00e5n servern ..."
+
+#:
+msgid "deleteextracts.errors.required_argument"
+msgstr "Kommandot deleteextracts kr\u00e4ver en arbetsboks-URL, ett arbetsboksnamn eller ett datak\u00e4llsnamn"
+
+#:
+msgid "deleteextracts.errors.error"
+msgstr "Fel vid borttagande av extrakt"
+
+#:
+msgid "deleteextracts.for.datasource"
+msgstr "Tar bort extrakt f\u00f6r datak\u00e4llan ''{0}''"
+
+#:
+msgid "deleteextracts.for.workbook_name"
+msgstr "Tar bort extrakt f\u00f6r arbetsboken med namnet ''{0}''"
+
+#:
+msgid "deleteextracts.for.workbook_url"
+msgstr "Tar bort extrakt f\u00f6r arbetsboken med URL:en ''{0}''"
+
+#:
+msgid "deleteextracts.options.datasource"
+msgstr "Namnet p\u00e5 m\u00e5ldatak\u00e4llan f\u00f6r borttagande av extrakt"
+
+#:
+msgid "deleteextracts.options.embedded-datasources"
+msgstr "En blankstegsavgr\u00e4nsad lista med namn p\u00e5 inb\u00e4ddade datak\u00e4llsnamn i m\u00e5larbetsboken. Omslut datak\u00e4llsnamn med dubbla citattecken om de inneh\u00e5ller blanksteg. Endast tillg\u00e4ngligt n\u00e4r du tar bort extrakt fr\u00e5n en arbetsbok."
+
+#:
+msgid "deleteextracts.options.include-all"
+msgstr "Inkludera alla inb\u00e4ddade datak\u00e4llor i m\u00e5larbetsboken"
+
+#:
+msgid "deleteextracts.options.parent-project-path"
+msgstr "S\u00f6kv\u00e4gen f\u00f6r projektet \u00e4r \u00f6verordnad projektet som inneh\u00e5ller m\u00e5lresursen. Du m\u00e5ste ange projektnamnet med --projekt."
+
+#:
+msgid "deleteextracts.options.project"
+msgstr "Namnet p\u00e5 det projekt som inneh\u00e5ller m\u00e5lresursen. Beh\u00f6vs bara om {0} eller {1} har angetts. Om det inte anges anv\u00e4nds standardprojektet ''{2}''."
+
+#:
+msgid "deleteextracts.options.url"
+msgstr "Resursens kanoniska namn som den visas i webbadressen"
+
+#:
+msgid "deleteextracts.options.workbook"
+msgstr "Namnet p\u00e5 m\u00e5larbetsboken vid borttagning av extrakt"
+
+#:
+msgid "deleteextracts.short_description"
+msgstr "Ta bort extrakt f\u00f6r en publicerad arbetsbok eller datak\u00e4lla"
+
+#:
+msgid "deleteextracts.workbook.include-all"
+msgstr "Inkludera alla inb\u00e4ddade datak\u00e4llor i m\u00e5larbetsboken"
+
+#:
+msgid "deleteextracts.workbook.embedded-datasource-names"
+msgstr "Med inb\u00e4ddade datak\u00e4llsnamn"
+
+#:
+msgid "deletegroup.short_description"
+msgstr "Ta bort en grupp"
+
+#:
+msgid "deletegroup.status"
+msgstr "Tar bort gruppen ''{0}'' fr\u00e5n servern ..."
+
+#:
+msgid "deleteproject.errors.requires_project_name"
+msgstr "Kommandot ''{0}'' kr\u00e4ver ett projektnamn"
+
+#:
+msgid "deleteproject.options.parent-project-path"
+msgstr "S\u00f6kv\u00e4g till det \u00f6verordnade projekt till det projekt som ska tas bort. Du m\u00e5ste specificera projektnamnet med --project."
+
+#:
+msgid "deleteproject.short_description"
+msgstr "Ta bort ett projekt"
+
+#:
+msgid "deleteproject.status"
+msgstr "Tar bort projektet ''{0}'' fr\u00e5n servern ..."
+
+#:
+msgid "deletesite.errors.logged_into_this_site"
+msgstr "Du kan inte ta bort den webbplats som du f\u00f6r tillf\u00e4llet \u00e4r inloggad p\u00e5"
+
+#:
+msgid "deletesite.short_description"
+msgstr "Ta bort en webbplats"
+
+#:
+msgid "deletesite.status"
+msgstr "Tar bort webbplatsen ''{0}'' fr\u00e5n servern ..."
+
+#:
+msgid "deletesiteusers.description"
+msgstr "Ta bort webbplatsanv\u00e4ndare. Anv\u00e4ndarna l\u00e4ses in fr\u00e5n den angivna CSV-filen. Filen \u00e4r en enkel lista med ett anv\u00e4ndarnamn per rad"
+
+#:
+msgid "deletesiteusers.short_description"
+msgstr "Ta bort webbplatsanv\u00e4ndare"
+
+#:
+msgid "deletesiteusers.status"
+msgstr "Tar bort webbplatsanv\u00e4ndare listade i {0} fr\u00e5n servern ..."
+
+#:
+msgid "deleteusers.description"
+msgstr "Ta bort anv\u00e4ndare. Anv\u00e4ndarna l\u00e4ses in fr\u00e5n den angivna CSV-filen. Filen \u00e4r en enkel lista med ett anv\u00e4ndarnamn per rad"
+
+#:
+msgid "deleteusers.short_description"
+msgstr "Ta bort anv\u00e4ndare"
+
+#:
+msgid "deleteusers.status"
+msgstr "Tar bort anv\u00e4ndare listade i {0} fr\u00e5n servern ..."
+
+#:
+msgid "editdomain.description"
+msgstr "Redigera en dom\u00e4n. Visa en lista med dom\u00e4ner f\u00f6r redigering med kommandot ''{0}''"
+
+#:
+msgid "editdomain.errors.requires_nickname_name"
+msgstr "Du m\u00e5ste ange ett ''{0}''-alternativ eller ett ''{1}''-alternativ"
+
+#:
+msgid "editdomain.options.id"
+msgstr "Dom\u00e4nens ID"
+
+#:
+msgid "editdomain.options.name"
+msgstr "Dom\u00e4nens namn"
+
+#:
+msgid "editdomain.options.nickname"
+msgstr "Dom\u00e4nens smeknamn"
+
+#:
+msgid "editdomain.short_description"
+msgstr "Redigera en dom\u00e4n"
+
+#:
+msgid "editdomain.output"
+msgstr "{0}ID{1}Smeknamn{1}{1}Namn{0}"
+
+#:
+msgid "editdomain.status"
+msgstr "Redigera dom\u00e4nen med ID:t ''{0}'' p\u00e5 servern ..."
+
+#:
+msgid "editsite.errors.invalid_site-id"
+msgstr "Alternativet {0} \u00e4r ogiltigt n\u00e4r du redigera flera platser. K\u00f6r om kommandet efter att du har tagit bort alternativet {0} eller redigera varje plats separat"
+
+#:
+msgid "editsite.errors.invalid_site-name"
+msgstr "Alternativet {0} \u00e4r ogiltigt n\u00e4r du redigera flera platser. K\u00f6r om kommandet efter att du har tagit bort alternativet {0} eller redigera varje plats separat"
+
+#:
+msgid "editsite.options.allow-mobile-snapshots"
+msgstr "Till\u00e5t [eller neka] mobila \u00f6gonblicksbilder"
+
+#:
+msgid "editsite.options.allow-subscriptions"
+msgstr "Till\u00e5t [eller neka] prenumerationer p\u00e5 den h\u00e4r webbplatsen"
+
+#:
+msgid "editsite.options.allow-web-authoring"
+msgstr "Till\u00e5t [eller neka] webbf\u00f6rfattande f\u00f6r den h\u00e4r webbplatsen"
+
+#:
+msgid "editsite.options.cache-warmup"
+msgstr "Till\u00e5t [eller neka] cacheuppv\u00e4rmning f\u00f6r den h\u00e4r webbplatsen"
+
+#:
+msgid "editsite.options.cache-warmup-threshold"
+msgstr "Tr\u00f6skelv\u00e4rde i dagar f\u00f6r hur nyligen en vy m\u00e5ste ha visats f\u00f6r att aktivera uppv\u00e4rmning"
+
+#:
+msgid "editsite.options.site-name"
+msgstr "Webbplatsens visningsnamn"
+
+#:
+msgid "editsite.options.status"
+msgstr "\u00c4ndra webbplatsens tillg\u00e4nglighet. M\u00e5ste vara ''{0}'' eller ''{1}''"
+
+#:
+msgid "editsite.options.allow-materialized-views"
+msgstr "Till\u00e5t [eller neka] materialiserade vyer f\u00f6r den h\u00e4r webbplatsen"
+
+#:
+msgid "editsite.options.extract_encryption_mode"
+msgstr "Extraktkrypteringsl\u00e4ge: inaktiverat, aktiverat eller framtvingat. Om inget anges s\u00e5 \u00e4ndras det inte p\u00e5 servern."
+
+#:
+msgid "editsite.options.web_extraction_enabled"
+msgstr "Till\u00e5t [eller neka] skapande och \u00e4ndrande av extrakt till live f\u00f6r den h\u00e4r webbplatsen. Standardinst\u00e4llningen \u00e4r att till\u00e5ta."
+
+#:
+msgid "editsite.options.run_now_enabled"
+msgstr "Till\u00e5t [eller neka] alternativet K\u00f6r nu f\u00f6r den h\u00e4r webbplatsen. Standardinst\u00e4llningen \u00e4r K\u00f6r nu"
+
+#:
+msgid "editsite.options.time_zone"
+msgstr "Tidszon som ska anv\u00e4ndas med extrakt p\u00e5 den h\u00e4r webbplatsen"
+
+#:
+msgid "editsite.options.use_default_time_zone"
+msgstr "Upph\u00e4v tidszon som ska anv\u00e4ndas med extrakt p\u00e5 den h\u00e4r webbplatsen. Den kommer att anv\u00e4nda serverns standardtidszon ist\u00e4llet"
+
+#:
+msgid "editsite.short_description"
+msgstr "Redigera en webbplats"
+
+#:
+msgid "editsite.status"
+msgstr "Redigera webbplatsen ''{0}'' p\u00e5 servern ..."
+
+#:
+msgid "encryptextracts.short_description"
+msgstr "Kryptera extrakt p\u00e5 en webbplats"
+
+#:
+msgid "encryptextracts.status"
+msgstr "Schemal\u00e4gger kryptering av extrakt p\u00e5 webbplatsen {0} ..."
+
+#:
+msgid "export.errors.need_country_and_languge"
+msgstr "Alternativen --country och --language m\u00e5ste anv\u00e4ndas tillsammans"
+
+#:
+msgid "export.errors.white_space_workbook_view"
+msgstr "Namnet p\u00e5 den arbetsbok eller vy som ska exporteras f\u00e5r inte inneh\u00e5lla blanksteg. Anv\u00e4nd arbetsbokens eller vyns normaliserade namn s\u00e5 som det visas i URL:en."
+
+#:
+msgid "export.errors.requires_workbook_view_name"
+msgstr "Kommandot ''{0}'' kr\u00e4ver ett namn p\u00e5 <workbook>/<view>"
+
+#:
+msgid "export.errors.requires_workbook_view_param"
+msgstr "Kommandot ''{0}'' kr\u00e4ver en <workbook>/<view>-parameter, och parametern m\u00e5ste inneh\u00e5lla minst ett snedstreck (/)"
+
+#:
+msgid "export.options.country"
+msgstr "Om du inte anv\u00e4nder anv\u00e4ndarens standardspr\u00e5kzon, s\u00e5 ange spr\u00e5kzonens landsf\u00f6rkortning (finns i IANA Language Subtag Registry). M\u00e5ste anv\u00e4ndas med --language"
+
+#:
+msgid "export.options.csv"
+msgstr "Exportera data i CSV-format (standard)"
+
+#:
+msgid "export.options.fullpdf"
+msgstr "Exportera visuella vyer i PDF-format (om arbetsboken publicerades med flikar)"
+
+#:
+msgid "export.options.height"
+msgstr "St\u00e4ller in h\u00f6jden. M\u00e5ste vara ett heltalsv\u00e4rde (standard: 600 bildpunkter)"
+
+#:
+msgid "export.options.language"
+msgstr "Om du inte anv\u00e4nder anv\u00e4ndarens standardspr\u00e5kzon, s\u00e5 ange spr\u00e5kzonens spr\u00e5kf\u00f6rkortning (finns i IANA Language Subtag Registry). M\u00e5ste anv\u00e4ndas med --country"
+
+#:
+msgid "export.options.pagelayout"
+msgstr "St\u00e4ller in sidorienteringen f\u00f6r den exporterade PDF-filen. Giltiga v\u00e4rden: {0}. Om inget anges anv\u00e4nds inst\u00e4llningen i Tableau Desktop"
+
+#:
+msgid "export.options.pagesize"
+msgstr "St\u00e4ller in sidstorleken f\u00f6r den exporterade PDF-filen. Giltiga v\u00e4rden: {0} (standard: ''{1}'')"
+
+#:
+msgid "export.options.pdf"
+msgstr "Exportera data i PDF-format"
+
+#:
+msgid "export.options.png"
+msgstr "Exportera data i PNG-format"
+
+#:
+msgid "export.options.width"
+msgstr "St\u00e4ller in bredden. M\u00e5ste vara ett heltalsv\u00e4rde (standard: 800 bildpunkter)"
+
+#:
+msgid "export.short_description"
+msgstr "Exportera en vys data eller avbildning fr\u00e5n servern"
+
+#:
+msgid "export.status"
+msgstr "Beg\u00e4r ''{0}'' fr\u00e5n servern ..."
+
+#:
+msgid "export.success"
+msgstr "Sparade {0} till ''{1}''"
+
+#:
+msgid "extracts.workbook.errors.requires_datasources_or_include_all"
+msgstr "Kommandot {0} f\u00f6r arbetsboken kr\u00e4ver antingen en inb\u00e4ddad datak\u00e4lla eller flaggan include-all."
+
+#:
+msgid "fileuploader.progress"
+msgstr "\u00d6verf\u00f6ringsf\u00f6rlopp: {0}%"
+
+#:
+msgid "get.description"
+msgstr "H\u00e4mta en fil fr\u00e5n servern. Filen namnges efter den sista komponenten i s\u00f6kv\u00e4gen om inget filnamnsargument har angetts"
+
+#:
+msgid "get.errors.requires_url"
+msgstr "Kommandot ''{0}'' kr\u00e4ver en URL"
+
+#:
+msgid "get.options.file"
+msgstr "Namnge f\u00f6r att spara filen som"
+
+#:
+msgid "get.short_description"
+msgstr "H\u00e4mta en fil fr\u00e5n servern"
+
+#:
+msgid "help.available_commands"
+msgstr "Tillg\u00e4ngliga kommandon:"
+
+#:
+msgid "help.command_options"
+msgstr "Kommandoalternativ:"
+
+#:
+msgid "help.description0"
+msgstr "Visa hj\u00e4lp f\u00f6r ett specifikt kommando"
+
+#:
+msgid "help.description1"
+msgstr "Lista alla tillg\u00e4ngliga kommandon"
+
+#:
+msgid "help.errors.unknown_command"
+msgstr "Ok\u00e4nt kommando: {0}"
+
+#:
+msgid "help.global_options"
+msgstr "Globala alternativ:"
+
+#:
+msgid "help.short_description"
+msgstr "Hj\u00e4lp f\u00f6r tabcmd-kommandon"
+
+#:
+msgid "httputils.found_attachment"
+msgstr "Hittad bilaga: {0}"
+
+#:
+msgid "httputils.mapped_attachment"
+msgstr "Hittad bilaga: {0} (ommappad till {1})"
+
+#:
+msgid "initialuser.errors.username_and_password_required"
+msgstr "B\u00e5de anv\u00e4ndarnamn och l\u00f6senord m\u00e5ste anges"
+
+#:
+msgid "initialuser.options.friendly-name"
+msgstr "Eget namn"
+
+#:
+msgid "initialuser.short_description"
+msgstr "Skapa en initial anv\u00e4ndare p\u00e5 en oinitierad server"
+
+#:
+msgid "listdomains.description"
+msgstr "Lista dom\u00e4ner"
+
+#:
+msgid "listdomains.status"
+msgstr "Listar dom\u00e4ner fr\u00e5n servern ..."
+
+#:
+msgid "listsites.output"
+msgstr "{0}{0}NAMN: {1} {0}WEBBPLATS-ID: ''{2}''"
+
+#:
+msgid "listsites.output_extended"
+msgstr "{0}{0}NAMN: {1} {0}WEBBPLATS-ID: ''{2}''{0}EXTRAKTKRYPTERING: {3}"
+
+#:
+msgid "listsites.short_description"
+msgstr "Lista webbplatser f\u00f6r anv\u00e4ndare"
+
+#:
+msgid "listsites.status"
+msgstr "Listar webbplatser f\u00f6r anv\u00e4ndaren {0} ..."
+
+#:
+msgid "listsites.options.get_extract_encryption_mode"
+msgstr "Skriv ut extraktkrypteringsl\u00e4ge f\u00f6r webbplatsen/webbplatserna"
+
+#:
+msgid "login.description"
+msgstr "Logga in p\u00e5 servern. Din session forts\u00e4tter till den upph\u00f6r att g\u00e4lla p\u00e5 den server du anv\u00e4nder {0}"
+
+#:
+msgid "login.short_description"
+msgstr "Logga in p\u00e5 servern"
+
+#:
+msgid "logout.short_description"
+msgstr "Logga ut fr\u00e5n servern"
+
+#:
+msgid "publish.description"
+msgstr "Publicera en arbetsbok, en datak\u00e4lla eller ett extrakt p\u00e5 servern"
+
+#:
+msgid "publish.errors.invalid_datasource_update_file_type"
+msgstr "Felaktig filtyp, ''{0}'', f\u00f6r uppdatering av en datak\u00e4lla. Ers\u00e4ttning/till\u00e4gg g\u00e4ller enbart f\u00f6r extraktfiler (.tde)"
+
+#:
+msgid "publish.errors.invalid_name_option"
+msgstr "{0}-alternativet \u00e4r ogiltigt vid publicering av flera objekt"
+
+#:
+msgid "publish.errors.invalid_publish_file_type"
+msgstr "Felaktig filtyp, ''{0}'', f\u00f6r publicering. En .tde-, .tds-, .tdsx-, .twb- eller .twbx-fil f\u00f6rv\u00e4ntades"
+
+#:
+msgid "publish.errors.mutually_exclusive_option"
+msgstr "Anv\u00e4nd endast endera av {0} eller {1}"
+
+#:
+msgid "publish.errors.requires_resource_file"
+msgstr "Kommandot ''{0}'' kr\u00e4ver en arbetsbok, den datak\u00e4lla eller en extraktfil"
+
+#:
+msgid "publish.errors.unexpected_server_response"
+msgstr "Ov\u00e4ntat svar fr\u00e5n servern: {0}"
+
+#:
+msgid "publish.errors.server_resource_not_found"
+msgstr "Den resurs du angav finns inte, eller s\u00e5 har du inte beh\u00f6righet att se den. Kontrollera ditt projektnamn och dina beh\u00f6righeter"
+
+#:
+msgid "publish.options.append"
+msgstr "L\u00e4gg till extraktfil till befintlig datak\u00e4lla"
+
+#:
+msgid "publish.options.async"
+msgstr "Publicera asynkront"
+
+#:
+msgid "publish.options.db-password"
+msgstr "Databasl\u00f6senord f\u00f6r alla datak\u00e4llor"
+
+#:
+msgid "publish.options.db-username"
+msgstr "Databasanv\u00e4ndarnamn f\u00f6r alla datak\u00e4llor"
+
+#:
+msgid "publish.options.description"
+msgstr "Beskrivning av arbetsboken eller datak\u00e4llan"
+
+#:
+msgid "publish.options.encrypt_extracts"
+msgstr "Kryptera extrakt p\u00e5 servern"
+
+#:
+msgid "publish.options.name"
+msgstr "Arbetsbokens/datak\u00e4llans namn p\u00e5 servern. Om det inte anges namnges arbetsboken/datak\u00e4llan efter filnamnet, utan filnamnstill\u00e4gget twb(x), tds(x) eller tde. Om du publicerar en .tde-fil skapas en datak\u00e4lla"
+
+#:
+msgid "publish.options.oauth-username"
+msgstr "Publicera genom att anv\u00e4nda de inloggningsuppgifter som sparats i den servernyckelring som associerats med USERNAME"
+
+#:
+msgid "publish.options.overwrite"
+msgstr "Skriv \u00f6ver eventuell befintlig arbetsbok/datak\u00e4lla"
+
+#:
+msgid "publish.options.project"
+msgstr "Projekt som arbetsboken/datak\u00e4llan ska publiceras till"
+
+#:
+msgid "publish.options.parent-project-path"
+msgstr "S\u00f6kv\u00e4g till det \u00f6verordnade projektet till det projekt som arbetsboken/datak\u00e4llan ska publiceras till"
+
+#:
+msgid "publish.options.replace"
+msgstr "Ers\u00e4tt extraktfilen p\u00e5 befintlig datak\u00e4lla"
+
+#:
+msgid "publish.options.restart"
+msgstr "Startar om filuppladdningen"
+
+#:
+msgid "publish.options.save-db-password"
+msgstr "Lagrar databasl\u00f6senordet p\u00e5 servern"
+
+#:
+msgid "publish.options.save-oauth"
+msgstr "B\u00e4dda in de OAuth-inloggningsuppgifter som angetts med {0}"
+
+#:
+msgid "publish.options.tabbed"
+msgstr "Publicera med tabbvyer aktiverat"
+
+#:
+msgid "publish.options.thumbnail-groupname"
+msgstr "Om arbetsboken inneh\u00e5ller n\u00e5gra anv\u00e4ndarfilter s\u00e5 imitera den h\u00e4r gruppen vid ber\u00e4kning av miniatyrer"
+
+#:
+msgid "publish.options.thumbnail-username"
+msgstr "Om arbetsboken inneh\u00e5ller n\u00e5gra anv\u00e4ndarfilter s\u00e5 imitera den h\u00e4r anv\u00e4ndaren vid ber\u00e4kning av miniatyrer"
+
+#:
+msgid "publish.status"
+msgstr "Publicerar ''{0}'' till servern. Detta kan ta flera minuter ..."
+
+#:
+msgid "publish.success"
+msgstr "Filen har publicerats till servern p\u00e5 f\u00f6ljande plats:"
+
+#:
+msgid "publishsamples.options.parent-project-path"
+msgstr "S\u00f6kv\u00e4g till det \u00f6verordnade projekt till det projekt som exempel ska publiceras till. Du m\u00e5ste specificera projektnamnet med --project."
+
+#:
+msgid "publishsamples.options.projectname"
+msgstr "Namn p\u00e5 det projekt som exempel ska publiceras till"
+
+#:
+msgid "publishsamples.short_description"
+msgstr "Publicerar exempelarbetsb\u00f6cker till det angivna projektet. Befintliga exempel skrivs \u00f6ver."
+
+#:
+msgid "publishsamples.status"
+msgstr "Publicerar exempel ..."
+
+#:
+msgid "reencryptextracts.short_description"
+msgstr "Kryptera om extrakt p\u00e5 en webbplats"
+
+#:
+msgid "reencryptextracts.status"
+msgstr "Schemal\u00e4gger omkryptering av extrakt p\u00e5 webbplatsen {0} ..."
+
+#:
+msgid "refreshextracts.errors.required_argument"
+msgstr "Kommandot refreshextracts kr\u00e4ver en arbetsboks-URL, ett arbetsboksnamn eller ett datak\u00e4llsnamn"
+
+#:
+msgid "refreshextracts.errors.add_and_remove_calculations"
+msgstr "Det g\u00e5r inte att k\u00f6ra en uppdatering med b\u00e5da alternativen --addcalculations och --removecalculations"
+
+#:
+msgid "refreshextracts.errors.calculations_and_incremental"
+msgstr "Det g\u00e5r inte att l\u00e4gga till eller ta bort materialiserade ber\u00e4kningar under en inkrementell extraktuppdatering"
+
+#:
+msgid "refreshextracts.errors.error"
+msgstr "Fel vid uppdatering av extrakt"
+
+#:
+msgid "refreshextracts.options.datasource"
+msgstr "Namnet p\u00e5 den datak\u00e4lla som ska uppdateras"
+
+#:
+msgid "refreshextracts.options.incremental"
+msgstr "Genomf\u00f6r en inkrementell uppdatering (om detta st\u00f6ds)"
+
+#:
+msgid "refreshextracts.options.parent-project-path"
+msgstr "S\u00f6kv\u00e4g till det \u00f6verordnade projekt som inneh\u00e5ller det extrakt som ska uppdateras. Du m\u00e5ste specificera projektnamnet med --project."
+
+#:
+msgid "refreshextracts.options.project"
+msgstr "Namnet p\u00e5 det projekt som inneh\u00e5ller arbetsboken/datak\u00e4llan. \u00c4r enbart n\u00f6dv\u00e4ndigt om {0} eller {1} anges. Om inget anges anv\u00e4nds standardprojektet ''{2}''"
+
+#:
+msgid "refreshextracts.options.synchronous"
+msgstr "V\u00e4nta tills uppdateringen \u00e4r klar innan du avslutar"
+
+#:
+msgid "refreshextracts.options.url"
+msgstr "Arbetsbokens eller vyns kanoniska namn s\u00e5 som det visas i URL:en"
+
+#:
+msgid "refreshextracts.options.workbook"
+msgstr "Namnet p\u00e5 den arbetsbok som ska uppdateras"
+
+#:
+msgid "refreshextracts.options.addcalculations"
+msgstr "L\u00e4gger till materialiserade ber\u00e4kningar i extraktet"
+
+#:
+msgid "refreshextracts.options.removecalculations"
+msgstr "Tar bort materialiserade ber\u00e4kningar fr\u00e5n extraktet"
+
+#:
+msgid "refreshextracts.short_description"
+msgstr "Uppdatera en arbetsboks eller datak\u00e4llas extrakt p\u00e5 servern"
+
+#:
+msgid "refreshextracts.status_incremented"
+msgstr "Schemal\u00e4gger extrakten f\u00f6r {0} ''{1}'' till att \u00f6kas stegvis nu ..."
+
+#:
+msgid "refreshextracts.status_refreshed"
+msgstr "Schemal\u00e4gger extrakten f\u00f6r {0} ''{1}'' till att uppdateras nu ..."
+
+#:
+msgid "removeusers.options.users"
+msgstr "En fil som inneh\u00e5ller en lista med anv\u00e4ndare, en per rad, som ska tas bort fr\u00e5n gruppen"
+
+#:
+msgid "removeusers.short_description"
+msgstr "Ta bort anv\u00e4ndare fr\u00e5n en grupp"
+
+#:
+msgid "removeusers.status"
+msgstr "Tar bort anv\u00e4ndare listade i {0} fr\u00e5n gruppen {1} ..."
+
+#:
+msgid "runschedule.errors.requires_schedule_name"
+msgstr "Kommandot ''{0}'' kr\u00e4ver ett schemanamn"
+
+#:
+msgid "runschedule.short_description"
+msgstr "K\u00f6r ett schema"
+
+#:
+msgid "runschedule.status"
+msgstr "K\u00f6r schemat ''{0}'' p\u00e5 servern ..."
+
+#:
+msgid "materializeviews.short_description"
+msgstr "Uppdatera och kontrollera inst\u00e4llningarna f\u00f6r materialiserade vyer f\u00f6r webbplatser/arbetsb\u00f6cker"
+
+#:
+msgid "materializeviews.status.site"
+msgstr "Uppdaterar inst\u00e4llningen f\u00f6r materialiserade vyer f\u00f6r webbplatsen ''{0}'' ..."
+
+#:
+msgid "materializeviews.status.workbook"
+msgstr "Uppdaterar inst\u00e4llningen f\u00f6r materialiserade vyer f\u00f6r arbetsboken ''{0}'' ..."
+
+#:
+msgid "materializeviews.errors.invalid_workbook_arguments"
+msgstr "Kommandot materializeviews kr\u00e4ver ett argument f\u00f6r ett arbetsboksnamn"
+
+#:
+msgid "materializeviews.errors.invalid_site_arguments"
+msgstr "Kommandot materializeviews kr\u00e4ver ett argument f\u00f6r ett webbplats-ID"
+
+#:
+msgid "materializeviews.errors.invalid_workbook_option"
+msgstr "Anv\u00e4nd ''{0}'' eller ''{1}'' med ''{2}''"
+
+#:
+msgid "materializeviews.errors.invalid_project_path"
+msgstr "Anv\u00e4nd ''{1}'' med ''{0}''"
+
+#:
+msgid "materializeviews.errors.invalid_site_option"
+msgstr "Anv\u00e4nd ''{0}'' med ''{1}''"
+
+#:
+msgid "materializeviews.errors.site_mode_conflict"
+msgstr "\u00c4ndra webbplatsens l\u00e4ge f\u00f6r materialiserade vyer genom att anv\u00e4nda ''{0}'' eller ''{1}''"
+
+#:
+msgid "materializeviews.errors.site_not_updated"
+msgstr "Webbplatsen ''{0}'' har inte uppdaterats. Endast serveradministrat\u00f6rer kan \u00e4ndra inst\u00e4llningen f\u00f6r materialiserade vyer"
+
+#:
+msgid "materializeviews.errors.invalid_argument_options_combination"
+msgstr "\u00c4ndra inst\u00e4llningen f\u00f6r materialiserade vyer genom att anv\u00e4nda ''{0}'' eller ''{1}''"
+
+#:
+msgid "materializeviews.options.materialize_now"
+msgstr "Schemal\u00e4gg materialiseringen f\u00f6r en given arbetsbok direkt med ''{0}''"
+
+#:
+msgid "materializeviews.options.project"
+msgstr "Specificera ett projekt namn med hj\u00e4lp av ''{0}''"
+
+#:
+msgid "materializeviews.options.parent_project_path"
+msgstr "Anv\u00e4nd ''{0}'' f\u00f6r att specificera s\u00f6kv\u00e4gen f\u00f6r ett \u00f6verordnat projekt till ''{1}''"
+
+#:
+msgid "materializeviews.options.allow_workbook"
+msgstr "Anv\u00e4nd ''{0}'' f\u00f6r att aktivera/inaktivera materialiserade vyer f\u00f6r en arbetsbok"
+
+#:
+msgid "materializeviews.options.allow_site"
+msgstr "Anv\u00e4nd ''{0}'' f\u00f6r att aktivera/inaktivera materialiserade vyer f\u00f6r en webbplats"
+
+#:
+msgid "materializeviews.options.selected_workbooks"
+msgstr "Anv\u00e4nd ''{0}'' f\u00f6r att aktivera utvalda arbetsb\u00f6cker p\u00e5 webbplatsen. Anv\u00e4nds med alternativet ''{1}''. Detta \u00e4r standardalternativet"
+
+#:
+msgid "materializeviews.options.all_workbooks"
+msgstr "Anv\u00e4nd ''{0}'' f\u00f6r att aktivera alla arbetsb\u00f6cker p\u00e5 webbplatsen. Anv\u00e4nds med alternativet ''{1}''"
+
+#:
+msgid "session.auto_site_login"
+msgstr "Logga in automatiskt p\u00e5 webbplatsen: {0}"
+
+#:
+msgid "session.certificate-alias"
+msgstr "Certifikatsalias: {0}"
+
+#:
+msgid "session.connecting"
+msgstr "Ansluter till servern ..."
+
+#:
+msgid "session.continuing_session"
+msgstr "Forts\u00e4tter f\u00f6reg\u00e5ende session"
+
+#:
+msgid "session.errors.auth_required"
+msgstr "Beh\u00f6righet kr\u00e4vs"
+
+#:
+msgid "session.errors.invalid_keystore_password"
+msgstr "Keystore-l\u00f6senordet \u00e4r fel. Anv\u00e4nd korrekt l\u00f6senord och f\u00f6rs\u00f6k igen"
+
+#:
+msgid "session.errors.invalid_redirect"
+msgstr "Det g\u00e5r inte att omdirigera till en ogiltig URL: {0}"
+
+#:
+msgid "session.errors.keystore_pwdfile_create"
+msgstr "Det gick inte att skapa n\u00e5gon keystore-l\u00f6senordsfil. Fel: {0}"
+
+#:
+msgid "session.errors.missing_arguments"
+msgstr "Det g\u00e5r inte att logga in eftersom argument saknas: {0}"
+
+#:
+msgid "session.errors.no_redirect_found"
+msgstr "Omdirigeringsadress saknas i omdirigeringssvar"
+
+#:
+msgid "session.errors.no_sslcafile_found"
+msgstr "Det gick inte att hitta n\u00e5gon CA-fil (Certificate Authority) p\u00e5 dessa platser: ''{0}''. CA-filen anv\u00e4nds f\u00f6r att s\u00e4kerst\u00e4lla s\u00e4ker kommunikation med Tableau Server. Mer information om att skapa en CA-fil finns i hj\u00e4lpen till Tableau Server. F\u00f6r att ansluta till Tableau Server utan att validera dess SSL-certifikat, anv\u00e4nd flaggan --no-certcheck."
+
+#:
+msgid "session.errors.script_no_password"
+msgstr "Tabcmd k\u00f6rdes fr\u00e5n ett skript eller IDE, men inget l\u00f6senord tillhandah\u00f6lls. Ett l\u00f6senord m\u00e5ste tillhandah\u00e5llas som ett argument till tabcmd f\u00f6r att det ska g\u00e5 att logga in."
+
+#:
+msgid "session.errors.session_expired"
+msgstr "Din session har upph\u00f6rt"
+
+#:
+msgid "session.errors.unsupported_command"
+msgstr "Kommandot st\u00f6ds inte av den h\u00e4r servern"
+
+#:
+msgid "session.keystore.notice"
+msgstr "Vill du lagra l\u00f6senordet lokalt f\u00f6r att undvika att skriva in l\u00f6senordet n\u00e4sta g\u00e5ng? [svara ja eller nej]"
+
+#:
+msgid "session.keystore.password"
+msgstr "Keystore-l\u00f6senord:"
+
+#:
+msgid "session.keystore.pwdfile_create"
+msgstr "Skapa Keystore-l\u00f6senordsfil p\u00e5 s\u00f6kv\u00e4gen: {0}"
+
+#:
+msgid "session.keystore.pwdfile_remove"
+msgstr "Ta bort Keystore-l\u00f6senordsfilen som inneh\u00e5ller fel l\u00f6senord"
+
+#:
+msgid "session.login"
+msgstr "Loggar in ..."
+
+#:
+msgid "session.logout"
+msgstr "Utloggad"
+
+#:
+msgid "session.monitorjob.errors.no_jobid"
+msgstr "Det g\u00e5r inte att \u00f6vervaka jobbet. Inget jobb_ID hittades: {0}"
+
+#:
+msgid "session.monitorjob.percent_complete"
+msgstr "{0}% klart"
+
+#:
+msgid "session.new_session"
+msgstr "Skapar ny session"
+
+#:
+msgid "session.no-certificate-found"
+msgstr "Det gick inte att hitta n\u00e5got giltigt klientcertifikat"
+
+#:
+msgid "session.not_default_site_member"
+msgstr "Du \u00e4r inte medlem p\u00e5 standardplatsen. V\u00e4lj ett WEBBPLATS-ID fr\u00e5n f\u00f6ljande platser:"
+
+#:
+msgid "session.not_site_member"
+msgstr "Du \u00e4r inte medlem p\u00e5 webbplatsen {0}. V\u00e4lj ett WEBBPLATS-ID fr\u00e5n f\u00f6ljande platser:"
+
+#:
+msgid "session.options.help"
+msgstr "Visa hj\u00e4lp f\u00f6r tabcmd"
+
+#:
+msgid "session.options.no-certcheck"
+msgstr "Validera inte SSL-certifikatet"
+
+#:
+msgid "session.options.no-cookie"
+msgstr "Spara inte sessions-ID vid inloggning. F\u00f6ljande kommandon m\u00e5ste logga in p\u00e5 nytt. Om detta inte anges \u00e4r standard att spara sessions-ID"
+
+#:
+msgid "session.options.no-prompt"
+msgstr "Fr\u00e5ga inte om l\u00f6senord"
+
+#:
+msgid "session.options.no-proxy"
+msgstr "Anv\u00e4nd ingen HTTP-proxy"
+
+#:
+msgid "session.options.password"
+msgstr "Anv\u00e4nd det angivna l\u00f6senordet f\u00f6r Tableau Server"
+
+#:
+msgid "session.options.password-file"
+msgstr "L\u00e4s l\u00f6senordet till Tableau Server fr\u00e5n FILE"
+
+#:
+msgid "session.options.proxy"
+msgstr "Anv\u00e4nd den angivna HTTP-proxyn"
+
+#:
+msgid "session.options.server"
+msgstr "Anv\u00e4nd den angivna webbadressen f\u00f6r Tableau Server. Om inget protokoll anges antas http:// g\u00e4lla"
+
+#:
+msgid "session.options.site"
+msgstr "Anv\u00e4nd den angivna platsen f\u00f6r Tableau Server. Ange en tom str\u00e4ng () f\u00f6r att tvinga anv\u00e4ndning av standardplatsen"
+
+#:
+msgid "session.options.timeout"
+msgstr "Hur l\u00e4nge, m\u00e4tt i sekunder, ska man v\u00e4nta p\u00e5 att servern ska slutf\u00f6ra kommandok\u00f6rningen. Som standard ska man v\u00e4nta tills servern svarar"
+
+#:
+msgid "session.options.use-certificate"
+msgstr "Anv\u00e4nd klientcertifikatet f\u00f6r att logga in"
+
+#:
+msgid "session.options.username"
+msgstr "Anv\u00e4nd det angivna anv\u00e4ndarnamnet f\u00f6r Tableau Server"
+
+#:
+msgid "session.password"
+msgstr "L\u00f6senord:"
+
+#:
+msgid "session.retrying_task"
+msgstr "Loggar in igen f\u00f6r att f\u00f6rs\u00f6ka ursprungskommandot p\u00e5 nytt med en ny session..."
+
+#:
+msgid "session.session_expired_login"
+msgstr "Din session har upph\u00f6rt. Loggar ut f\u00f6r att rensa sessionen ..."
+
+#:
+msgid "session.site_list"
+msgstr "{0}{0}NAMN: {1}{0}WEBBPLATS-ID: ''{2}''"
+
+#:
+msgid "session.using-certificate"
+msgstr "Anv\u00e4nd klientcertifikat f\u00f6r att logga in"
+
+#:
+msgid "session.inferred_username"
+msgstr "Loggar in som {0}'' eftersom ingen --anv\u00e4ndarnamnsflagga angavs"
+
+#:
+msgid "sessiondata.errors.bad_api"
+msgstr "Missformad server API: {0}"
+
+#:
+msgid "sessiondata.errors.no_server_api"
+msgstr "Det gick inte att hitta serverns API-version i svaret"
+
+#:
+msgid "sessiondata.errors.version_mismatch"
+msgstr "Tabcmd-versionen({0}API {1}) matchar inte Tableau Server-versionen({2}API {3})"
+
+#:
+msgid "sessionoptions.errors.ambiguous_scheme"
+msgstr "Ange ''{0}'' eller ''{1}'' f\u00f6re servernamnet"
+
+#:
+msgid "sessionoptions.errors.bad_password_file"
+msgstr "Det g\u00e5r inte att l\u00e4sa l\u00f6senordet fr\u00e5n filen ''{0}''"
+
+#:
+msgid "sessionoptions.errors.bad_protocol"
+msgstr "Protokoll ''{0}'' st\u00f6ds inte"
+
+#:
+msgid "sessionoptions.errors.bad_proxy_format"
+msgstr "Proxyformatet matchar inte HOST:PORT: {0}"
+
+#:
+msgid "sessionoptions.errors.bad_timeout"
+msgstr "Icke-numeriskt argument till {0} ''{1}'' ignorerades"
+
+#:
+msgid "set.description"
+msgstr "V\u00e4lj en inst\u00e4llning p\u00e5 servern. Anv\u00e4nd !setting f\u00f6r att st\u00e4nga av en inst\u00e4llning"
+
+#:
+msgid "set.errors.requires_setting_name"
+msgstr "Kommandot ''{0}'' beh\u00f6ver ett inst\u00e4llningsnamn"
+
+#:
+msgid "set.errors.single_setting_name"
+msgstr "Kommandot ''{0}'' anv\u00e4nder ett enskilt inst\u00e4llningsnamn"
+
+#:
+msgid "set.short_description"
+msgstr "St\u00e4lla in en inst\u00e4llning p\u00e5 servern"
+
+#:
+msgid "setsetting.status"
+msgstr "St\u00e4ller in ''{0}'' p\u00e5 {1}"
+
+#:
+msgid "syncgroup.errors.server_admin"
+msgstr "Den minsta platsrollen f\u00f6r en grupp kan inte vara ServerAdministrator."
+
+#:
+msgid "syncgroup.options.role"
+msgstr "St\u00e4ller in standardroller f\u00f6r alla anv\u00e4ndare i gruppen. Giltiga v\u00e4rden f\u00f6r {0}: {1}. In en anv\u00e4ndare redan finns till\u00e4mpas den givna rollenom den \u00e4r mindre begr\u00e4nsande \u00e4n anv\u00e4ndarens aktuella roll. Om den inte anges \u00e4r standard {2} f\u00f6r nya anv\u00e4ndare och of\u00f6r\u00e4ndrat f\u00f6r befintliga anv\u00e4ndare"
+
+#:
+msgid "syncgroup.options.overwritesiterole"
+msgstr "L\u00e5t anv\u00e4ndarens platsroll \u00e4ndras till en med mindre \u00e5tkomst n\u00e4r --role anv\u00e4nds, vilket f\u00e5r f\u00f6retr\u00e4de \u00f6ver standardbeteendet."
+
+#:
+msgid "syncgroup.options.grantlicensemode"
+msgstr "N\u00e4r man ska tilldela en licens som \u00e4r tilldelad en grupp till en anv\u00e4ndare. Till\u00e5tna v\u00e4rden \u00e4r: {0}. Om inget v\u00e4rde anges kommer on-sync anv\u00e4ndas som standardv\u00e4rde."
+
+#:
+msgid "syncgroup.short_description"
+msgstr "Synkronisera servern med en Active Directory-grupp"
+
+#:
+msgid "syncgroup.status"
+msgstr "Synkroniserar servern med en Active Directory-grupp {0}..."
+
+#:
+msgid "syncgroup.options.sysadmin-type"
+msgstr "[Anv\u00e4nds inte l\u00e4ngre. Anv\u00e4nd --role ist\u00e4llet.] Tilldelar [eller tar bort] adminbeh\u00f6righeter till alla anv\u00e4ndare i gruppen.  {0} kan vara: {1}, {2}, {3}, eller {4}."
+
+#:
+msgid "syncgroup.options.license"
+msgstr "[Anv\u00e4nds inte l\u00e4ngre. Anv\u00e4nd --role i st\u00e4llet.] St\u00e4ller in standardlicensniv\u00e5n f\u00f6r alla anv\u00e4ndare i gruppen. {0} kan vara {1}, {2} eller {3}."
+
+#:
+msgid "syncgroup.options.publisher"
+msgstr "[Anv\u00e4nds inte l\u00e4ngre. Anv\u00e4nd --role ist\u00e4llet.] Tilldelar [eller tar bort] publiceringsbeh\u00f6righeter till alla anv\u00e4ndare i gruppen."
+
+#:
+msgid "tabcmd.mutually_exclusive_options"
+msgstr "Det g\u00e5r inte att ange ''{0}'' och ''{1}'' i samma kommando"
+
+#:
+msgid "tabcmdparser.errors.ambiguous_option"
+msgstr "Tvetydigt alternativ ''{0}'' bland alternativen: {1}"
+
+#:
+msgid "tabcmdparser.warning.unexpected_dash"
+msgstr "Ov\u00e4ntat bindestreck p\u00e5tr\u00e4ffades i argumentet: {0}. Giltiga bindestreck \u00e4r -, --. Det h\u00e4r felet uppst\u00e5r ofta n\u00e4r man kopierar/klistrar in fr\u00e5n en textredigerare med formatering. Prova med att skriva bindestrecket f\u00f6r argumentet igen i kommandoraden."
+
+#:
+msgid "resetopenidsub.short_description"
+msgstr "\u00c5terst\u00e4ll ett OpenID Connect SubId f\u00f6r en anv\u00e4ndare"
+
+#:
+msgid "resetopenidsub.options.targetusername"
+msgstr "Anv\u00e4ndare som ska \u00e5terst\u00e4llas"
+
+#:
+msgid "resetopenidsub.options.all"
+msgstr "\u00c5terst\u00e4ll alla anv\u00e4ndare"
+
+#:
+msgid "version.description"
+msgstr "Skriv ut versioninformation"
+
+#:
+msgid "vizqlsession.errors.cannot_create_session"
+msgstr "Det gick inte att skapa en VizQI-session p\u00e5 servern"
+
+#:
+msgid "vizqlsession.errors.no_command_result"
+msgstr "Det gick inte att hitta kommandoresultatet: {0}"
+
+#:
+msgid "vizqlsession.errors.session_already_closed"
+msgstr "VizQl-sessionens objekt \u00e4r redan st\u00e4ngt"
+
+#:
+msgid "vizqlsession.errors.cannot_parse_response"
+msgstr "Det g\u00e5r inte att analysera JSON-svarsstr\u00e4ngen: {0}"
+
+#:
+msgid "upgradethumbnails.short_description"
+msgstr "Detta kommer att k\u00f6ra bakgrundsjobbet Upgrade Thumbnails. Tableau 2018.2. Detta kan medf\u00f6ra en h\u00f6gre arbetsbelastning \u00e4n normalt p\u00e5 Tableau Server och externa datak\u00e4llor. and external datasources. Om problem uppst\u00e5r kan jobbet avbrytas genom att k\u00f6ra tabcmd upgradethumbnails --server <server> --stopp"
+
+#:
+msgid "upgradethumbnails.options.stop"
+msgstr "Avbryt alla jobb relaterade till uppgradering av miniatyrer"
+
+#:
+msgid "upgradethumbnails.status.running"
+msgstr "Startar miniatyruppgraderingen"
+
+#:
+msgid "upgradethumbnails.status.not_running"
+msgstr "Miniatyruppgraderingen startar inte"
+
+#:
+msgid "upgradethumbnails.status.cancelling"
+msgstr "Avbryter uppgraderingsjobb f\u00f6r miniatyrer"
+
+#:
+msgid "upgradethumbnails.continue_promt"
+msgstr "Vill du forts\u00e4tta? Tryck 1 f\u00f6r Ja, 0 f\u00f6r Nej (1/0)"
+
+#:
+msgid "upgradethumbnails.invalid_response"
+msgstr "Ogiltigt svar"
+
+#:
+msgid "validateidpmetadata.options.digest_algorithms"
+msgstr "En blankstegsavgr\u00e4nsad lista \u00f6ver sammanfattningsalgoritmer. Giltiga v\u00e4rden f\u00f6r {0}: {1}. Om detta inte anges anv\u00e4nder servern v\u00e4rden fr\u00e5n serverns konfigurationsinst\u00e4llning: {2}"
+
+#:
+msgid "validateidpmetadata.options.min_allowed_rsa_key_size"
+msgstr "Om detta inte anges anv\u00e4nder servern v\u00e4rden fr\u00e5n serverns konfigurationsinst\u00e4llning: {0}"
+
+#:
+msgid "validateidpmetadata.options.min_allowed_elliptic_curve_size"
+msgstr "Om detta inte anges anv\u00e4nder servern v\u00e4rden fr\u00e5n serverns konfigurationsinst\u00e4llning: {0}"
+
+#:
+msgid "validateidpmetadata.options.site_names"
+msgstr "En blankstegsavgr\u00e4nsad f\u00f6rteckning \u00f6ver webbplatsnamn d\u00e4r certifikatvalidering ska k\u00f6ras. Om detta inte anges kommer alla webbplatser att inspekteras."
+
+#:
+msgid "validateidpmetadata.short_description"
+msgstr "Identifierar Tableau Server-webbplatser som har konfigurerats med IdP:er med den os\u00e4kra sammanfattningsalgoritmen SHA-1. Detta kommando identifierar ocks\u00e5 IdP:er som anv\u00e4nder certifikat med en otillr\u00e4cklig RSA-nyckelstorlek eller eliptisk kurvstorlek."
+
 

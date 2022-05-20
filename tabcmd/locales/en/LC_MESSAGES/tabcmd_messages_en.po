@@ -1196,7 +1196,7 @@ msgstr "Use the specified Tableau Server URL. If no protocol is specified, http:
 
 #:
 msgid "session.options.site"
-msgstr "Use the specified Tableau Server site. Specify an empty string ("") to force use of the default site"
+msgstr "Use the specified Tableau Server site. Specify an empty string () to force use of the default site"
 
 #:
 msgid "session.options.timeout"

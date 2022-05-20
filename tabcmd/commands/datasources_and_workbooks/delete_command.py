@@ -34,7 +34,7 @@ class DeleteCommand(DatasourcesAndWorkbooks):
         session = Session()
         server = session.create_session(args)
 
-        logger.info(_("delete.status").format(args.name or args.datasource or args.workbook))
+        logger.info(_("delete.status").format(args.name or args.datasource or args.workbook, ""))
 
         if args.workbook:
             item_type = "workbook"

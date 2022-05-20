@@ -26,7 +26,7 @@ class CreateGroupCommand(Server):
         session = Session()
         server = session.create_session(args)
         try:
-            logger.info(_("creategroup.status").format(name=args.name))
+            logger.info(_("creategroup.status").format(args.name))
             new_group = TSC.GroupItem(args.name)
             server.groups.create(new_group)
             logger.info(_("tabcmd.result.succeeded"))

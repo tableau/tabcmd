@@ -104,7 +104,7 @@ class UserCommand(Server):
                     UserCommand._validate_username_or_throw(line)
                 num_valid_lines += 1
             except Exception as exc:
-                logger.info(_("importcsvsummary.error.line").format(printable_line, exc))
+                logger.info(_("importcsvsummary.error.line").format(printable_line, exc, ""))
                 num_errors += 1
             line = csv_file.readline()
         if strict and num_errors > 0:

@@ -1,11 +1,6 @@
 # Tabcmd output strings
 # Copyright (C) YEAR Tableau Software
 
-"Project-Id-Version: PACKAGE VERSION\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Generated-By: pygettext.py 1.5\n"
-
 # We are varying the gettext process a little because we want to
 # re-use the existing translated strings in the old client
 # manually annotate each string and use a string id

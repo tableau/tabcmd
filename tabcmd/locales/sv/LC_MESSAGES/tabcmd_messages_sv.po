@@ -1156,7 +1156,7 @@ msgstr "Du \u00e4r inte medlem p\u00e5 standardplatsen. V\u00e4lj ett WEBBPLATS-
 
 #:
 msgid "session.not_site_member"
-msgstr "Du \u00e4r inte medlem p\u00e5 webbplatsen "{0}". V\u00e4lj ett WEBBPLATS-ID fr\u00e5n f\u00f6ljande platser:"
+msgstr "Du \u00e4r inte medlem p\u00e5 webbplatsen {0}. V\u00e4lj ett WEBBPLATS-ID fr\u00e5n f\u00f6ljande platser:"
 
 #:
 msgid "session.options.help"
@@ -1196,7 +1196,7 @@ msgstr "Anv\u00e4nd den angivna webbadressen f\u00f6r Tableau Server. Om inget p
 
 #:
 msgid "session.options.site"
-msgstr "Anv\u00e4nd den angivna platsen f\u00f6r Tableau Server. Ange en tom str\u00e4ng ("") f\u00f6r att tvinga anv\u00e4ndning av standardplatsen"
+msgstr "Anv\u00e4nd den angivna platsen f\u00f6r Tableau Server. Ange en tom str\u00e4ng () f\u00f6r att tvinga anv\u00e4ndning av standardplatsen"
 
 #:
 msgid "session.options.timeout"
@@ -1288,7 +1288,7 @@ msgstr "St\u00e4ller in ''{0}'' p\u00e5 {1}"
 
 #:
 msgid "syncgroup.errors.server_admin"
-msgstr "Den minsta platsrollen f\u00f6r en grupp kan inte vara "ServerAdministrator"."
+msgstr "Den minsta platsrollen f\u00f6r en grupp kan inte vara ServerAdministrator."
 
 #:
 msgid "syncgroup.options.role"
@@ -1300,7 +1300,7 @@ msgstr "L\u00e5t anv\u00e4ndarens platsroll \u00e4ndras till en med mindre \u00e
 
 #:
 msgid "syncgroup.options.grantlicensemode"
-msgstr "N\u00e4r man ska tilldela en licens som \u00e4r tilldelad en grupp till en anv\u00e4ndare. Till\u00e5tna v\u00e4rden \u00e4r: {0}. Om inget v\u00e4rde anges kommer "on-sync" anv\u00e4ndas som standardv\u00e4rde."
+msgstr "N\u00e4r man ska tilldela en licens som \u00e4r tilldelad en grupp till en anv\u00e4ndare. Till\u00e5tna v\u00e4rden \u00e4r: {0}. Om inget v\u00e4rde anges kommer on-sync anv\u00e4ndas som standardv\u00e4rde."
 
 #:
 msgid "syncgroup.short_description"

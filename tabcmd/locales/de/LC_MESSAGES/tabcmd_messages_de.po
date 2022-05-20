@@ -156,7 +156,7 @@ msgstr "Alle eingebetteten Datenquellen in der Zielarbeitsmappe einschlie\u00dfe
 
 #:
 msgid "createextracts.options.parent-project-path"
-msgstr "Pfad zum Projekt, das dem Projekt \u00fcbergeordneten ist, in dem die Zielressource enthalten ist. F\u00fcr die Angabe des Projektnamens ist "--project" erforderlich."
+msgstr "Pfad zum Projekt, das dem Projekt \u00fcbergeordneten ist, in dem die Zielressource enthalten ist. F\u00fcr die Angabe des Projektnamens ist --project erforderlich."
 
 #:
 msgid "createextracts.options.project"
@@ -268,7 +268,7 @@ msgstr "Erlauben [oder verweigern] Sie Extrakterstellung und Extrakt zu Live \u0
 
 #:
 msgid "createsite.options.run_now_enabled"
-msgstr "Erlauben [oder verweigern] Sie die Option "Jetzt Ausf\u00fchren" f\u00fcr diese Site. Der Standard ist "Jetzt Ausf\u00fchren" zu erlauben."
+msgstr "Erlauben [oder verweigern] Sie die Option Jetzt Ausf\u00fchren f\u00fcr diese Site. Der Standard ist Jetzt Ausf\u00fchren zu erlauben."
 
 #:
 msgid "createsite.options.time_zone"
@@ -332,7 +332,7 @@ msgstr "Zu l\u00f6schende Datenquelle"
 
 #:
 msgid "delete.options.parent-project-path"
-msgstr "Pfad zu dem dem Projekt \u00fcbergeordneten Element, in dem die zu l\u00f6schende Arbeitsmappe/Datenquelle enthalten ist. F\u00fcr die Angabe des Projektnamens ist "--project" erforderlich."
+msgstr "Pfad zu dem dem Projekt \u00fcbergeordneten Element, in dem die zu l\u00f6schende Arbeitsmappe/Datenquelle enthalten ist. F\u00fcr die Angabe des Projektnamens ist --project erforderlich."
 
 #:
 msgid "delete.options.project"
@@ -384,7 +384,7 @@ msgstr "Schlie\u00dfen Sie alle eingebetteten Datenquellen in der Zielarbeitsmap
 
 #:
 msgid "deleteextracts.options.parent-project-path"
-msgstr "Pfad zum Projekt, das dem Projekt \u00fcbergeordneten ist, in dem die Zielressource enthalten ist. F\u00fcr die Angabe des Projektnamens ist "--project" erforderlich."
+msgstr "Pfad zum Projekt, das dem Projekt \u00fcbergeordneten ist, in dem die Zielressource enthalten ist. F\u00fcr die Angabe des Projektnamens ist --project erforderlich."
 
 #:
 msgid "deleteextracts.options.project"
@@ -424,7 +424,7 @@ msgstr "F\u00fcr den Befehl ''{0}'' ist ein Projektname erforderlich"
 
 #:
 msgid "deleteproject.options.parent-project-path"
-msgstr "Pfad zu dem dem Projekt \u00fcbergeordneten Element, das gel\u00f6scht werden soll. F\u00fcr die Angabe des Projektnamens ist "--project" erforderlich."
+msgstr "Pfad zu dem dem Projekt \u00fcbergeordneten Element, das gel\u00f6scht werden soll. F\u00fcr die Angabe des Projektnamens ist --project erforderlich."
 
 #:
 msgid "deleteproject.short_description"
@@ -552,7 +552,7 @@ msgstr "Erlauben [oder verweigern] Sie Extrakterstellung und Extrakt zu Live \u0
 
 #:
 msgid "editsite.options.run_now_enabled"
-msgstr "Erlauben [oder verweigern] Sie die Option "Jetzt Ausf\u00fchren" f\u00fcr diese Site. Der Standard ist "Jetzt Ausf\u00fchren" zu erlauben"
+msgstr "Erlauben [oder verweigern] Sie die Option Jetzt Ausf\u00fchren f\u00fcr diese Site. Der Standard ist Jetzt Ausf\u00fchren zu erlauben"
 
 #:
 msgid "editsite.options.time_zone"
@@ -872,7 +872,7 @@ msgstr "Datei wurde erfolgreich auf dem Server unter dem folgenden Speicherort g
 
 #:
 msgid "publishsamples.options.parent-project-path"
-msgstr "Pfad zu dem dem Projekt \u00fcbergeordneten Element, f\u00fcr das Beispiele ver\u00f6ffentlicht werden sollen. F\u00fcr die Angabe des Projektnamens ist "--project" erforderlich."
+msgstr "Pfad zu dem dem Projekt \u00fcbergeordneten Element, f\u00fcr das Beispiele ver\u00f6ffentlicht werden sollen. F\u00fcr die Angabe des Projektnamens ist --project erforderlich."
 
 #:
 msgid "publishsamples.options.projectname"
@@ -900,7 +900,7 @@ msgstr "F\u00fcr den Befehl ''refreshextracts'' ist entweder eine Arbeitsmappen-
 
 #:
 msgid "refreshextracts.errors.add_and_remove_calculations"
-msgstr "Aktualisierung kann nicht mit den beiden Optionen "--addcalculations" und "--removecalculations" durchgef\u00fchrt werden."
+msgstr "Aktualisierung kann nicht mit den beiden Optionen --addcalculations und --removecalculations durchgef\u00fchrt werden."
 
 #:
 msgid "refreshextracts.errors.calculations_and_incremental"
@@ -920,7 +920,7 @@ msgstr "Inkrementelle Aktualisierung (wenn unterst\u00fctzt) ausf\u00fchren"
 
 #:
 msgid "refreshextracts.options.parent-project-path"
-msgstr "Pfad zu dem dem Projekt \u00fcbergeordneten Element, in dem das zu aktualisierende Extrakt enthalten ist. F\u00fcr die Angabe des Projektnamens ist "--project" erforderlich."
+msgstr "Pfad zu dem dem Projekt \u00fcbergeordneten Element, in dem das zu aktualisierende Extrakt enthalten ist. F\u00fcr die Angabe des Projektnamens ist --project erforderlich."
 
 #:
 msgid "refreshextracts.options.project"
@@ -996,11 +996,11 @@ msgstr "Materialisierte Ansichts-Umgebung f\u00fcr Arbeitsmappe ''{0}'' wird akt
 
 #:
 msgid "materializeviews.errors.invalid_workbook_arguments"
-msgstr "Der Befehl "materializeviews" ben\u00f6tigt ein Argument eines Namens einer Arbeitsmappe"
+msgstr "Der Befehl materializeviews ben\u00f6tigt ein Argument eines Namens einer Arbeitsmappe"
 
 #:
 msgid "materializeviews.errors.invalid_site_arguments"
-msgstr "Der Befehl "materializeviews" ben\u00f6tigt ein Argument einer Site-ID"
+msgstr "Der Befehl materializeviews ben\u00f6tigt ein Argument einer Site-ID"
 
 #:
 msgid "materializeviews.errors.invalid_workbook_option"
@@ -1388,7 +1388,7 @@ msgstr "Upgrade von Miniaturbildern abbrechen"
 
 #:
 msgid "upgradethumbnails.continue_promt"
-msgstr "M\u00f6chten Sie fortfahren? Geben Sie 1 f\u00fcr "Ja" ein und 0 f\u00fcr "Nein" (1/0)."
+msgstr "M\u00f6chten Sie fortfahren? Geben Sie 1 f\u00fcr Ja ein und 0 f\u00fcr Nein (1/0)."
 
 #:
 msgid "upgradethumbnails.invalid_response"

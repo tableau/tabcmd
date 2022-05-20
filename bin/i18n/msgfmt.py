@@ -122,6 +122,7 @@ def make(filename, outfile):
     # Start off assuming Latin-1, so everything decodes without failure,
     # until we know the exact encoding
     encoding = 'latin-1'
+    encoding = 'utf-8'
 
     # Parse the catalog
     lno = 0
