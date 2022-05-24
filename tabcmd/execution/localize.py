@@ -11,13 +11,12 @@ translate = None
 def _(string_key: str) -> str:
     global translate
     if not translate:
-        print("Lazy loading a language")
         translate = set_client_locale(None)
     return translate(string_key)
 
 
 def _identity_func(x: Any) -> Any:
-    x
+    return x
 
 
 # The client should present text in the OS language, or english if not present.
@@ -38,7 +37,7 @@ def set_client_locale(lang: str = None) -> Callable:
                 translate = _load_language(lang, domain, locale_path)
                 break
         except Exception as e:
-            print("Failed to load language ", lang, ":", e)
+            print("Failed to load language '", lang, "':", e)
 
     return translate or _identity_func
 

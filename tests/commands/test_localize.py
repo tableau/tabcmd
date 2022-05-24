@@ -15,32 +15,32 @@ class LocaleTests(unittest.TestCase):
         translations = set_client_locale()
         assert translations is not None
 
-        assert _("tabcmd.launching") == "======================= Launching command ======================="
+        assert translations("tabcmd.launching") == "======================= Launching command ======================="
 
     def test_en_smoke_publish_errors(self):
         # 8 incidents of this string
         translations = set_client_locale()
         assert translations is not None
 
-        assert _("publish.errors.unexpected_server_response") == "Unexpected response from the server: {0}"
+        assert translations("publish.errors.unexpected_server_response") == "Unexpected response from the server: {0}"
 
     def test_en_smoke_output_succeeded(self):
         # 8 incidents of this string
         translations = set_client_locale()
         assert translations is not None
 
-        assert _("common.output.succeeded") == "Succeeded"
+        assert translations("common.output.succeeded") == "Succeeded"
 
     def test_en_smoke_percent_complete(self):
         # 5 incidents of this string
         translations = set_client_locale()
         assert translations is not None
 
-        assert _("session.monitorjob.percent_complete") == "{0}% complete"
+        assert translations("session.monitorjob.percent_complete") == "{0}% complete"
 
     def test_en_smoke_line_processed(self):
         # 5 incidents of this string
         translations = set_client_locale()
         assert translations is not None
 
-        assert _("importcsvsummary.line.processed") == "Lines processed: {0}"
+        assert translations("importcsvsummary.line.processed") == "Lines processed: {0}"
