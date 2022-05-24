@@ -4,6 +4,7 @@ from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 from tabcmd.execution.global_options import *
+from tabcmd.commands.constants import Errors
 
 
 class DeleteCommand(DatasourcesAndWorkbooks):
@@ -50,7 +51,7 @@ class DeleteCommand(DatasourcesAndWorkbooks):
                     item_to_delete = DeleteCommand.get_data_source_item(logger, server, args.name)
                     item_type = "datasource"
                 except TSC.ServerResponseError:
-                    DeleteCommand.exit_with_error(logger, "You must specify a workbook or datasource")
+                    Errors.exit_with_error(logger, "You must specify a workbook or datasource")
 
         try:
             if item_type == "workbook":
@@ -59,4 +60,4 @@ class DeleteCommand(DatasourcesAndWorkbooks):
                 server.datasources.delete(item_to_delete.id)
             logger.info("===== Succeeded")
         except TSC.ServerResponseError as e:
-            DeleteCommand.exit_with_error(logger, "Error deleting from server", e)
+            Errors.exit_with_error(logger, "Error deleting from server", e)

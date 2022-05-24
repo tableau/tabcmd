@@ -19,8 +19,9 @@ class DatasourcesAndWorkbooks(Server):
             matching_views, _ = server.views.get(req_option)
             selected_view = matching_views[0]
             return selected_view
-        except IndexError:
-            Errors.exit_with_error(logger, "Could not find view. Please check the name and try again.")
+        except IndexError as e:
+            Errors.exit_with_error(
+                logger, "Could not find view {}. Please check the name and try again.".format(view_content_url))
 
     @staticmethod
     def get_wb_by_content_url(logger, server, workbook_content_url):
@@ -36,5 +37,6 @@ class DatasourcesAndWorkbooks(Server):
             matching_workbooks, _ = server.workbooks.get(req_option)
             selected_workbook = matching_workbooks[0]
             return selected_workbook
-        except IndexError:
-            Errors.exit_with_error(logger, "Could not find view. Please check the name and try again.")
+        except IndexError as e:
+            Errors.exit_with_error(
+                logger, "Could not find workbook {}. Please check the name and try again.".format(workbook_content_url))
