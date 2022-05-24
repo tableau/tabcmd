@@ -2,6 +2,7 @@ import sys
 
 from .map_of_commands import *
 from .parent_parser import ParentParser
+from .localize import set_client_locale
 
 
 class TabcmdController:
@@ -24,6 +25,10 @@ class TabcmdController:
             sys.exit(0)
         user_input = user_input or sys.argv[1:]
         namespace = parser.parse_args(user_input)
+
+        if namespace.language:
+            set_client_locale(namespace.language)
+
         try:
             command_name = namespace.func
         except AttributeError as aer:

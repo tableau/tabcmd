@@ -166,8 +166,7 @@ class ParentParser:
         parser.add_argument(
             "--language",
             choices=["de", "en", "es", "fr", "it", "ja", "ko", "pt", "sv", "zh"],
-            help="Set the client language to use for logging and in server requests. "
-            "Exported data will be returned in this lang/locale. "
-            "Default will be to use your computer locale for logging messages, and your user locale on server for exporting data",
+            help="Set the language to use. Exported data will be returned in this lang/locale."
+            "If not set, the client will use your computer locale, and the server will use your user account locale",
         )
         return parser
