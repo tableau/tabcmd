@@ -232,7 +232,7 @@ class UserCommand(Server):
             username: str = user_obj.name or "unknown user"
             try:
                 user_id: str = UserCommand.find_user_id(logger, server, username)
-                logger.debug("{} user {} ({})".format(servermethod.__name__, username, user_id))
+                logger.debug("{} user {} ({})".format(action_name, username, user_id))
             except TSC.ServerResponseError as e:
                 Errors.check_common_error_codes_and_explain(logger, e)
                 number_of_errors += 1
