@@ -36,6 +36,3 @@ html
 **/credentials.py
 password.txt
 *.txt
-
-# localization files
-.mo
