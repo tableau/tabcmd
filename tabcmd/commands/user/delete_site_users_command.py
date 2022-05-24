@@ -46,7 +46,7 @@ class DeleteSiteUsersCommand(Server):
             try:
                 user_id = UserCommand.find_user_id(logger, server, user_obj.name)
                 server.users.remove(user_id)
-                logger.debug("user {} ({})".format(user_obj.name, user_id))
+                logger.debug(_("tabcmd.result.success.delete_user").format(user_obj.name, user_id))
                 number_of_users_deleted += 1
             except Exception as e:
                 Errors.check_common_error_codes_and_explain(logger, e)

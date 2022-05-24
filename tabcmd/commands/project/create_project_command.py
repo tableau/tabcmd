@@ -34,6 +34,7 @@ class CreateProjectCommand(Server):
         readable_name = args.project_name
         if args.parent_project_path:
             try:
+                logger.info(_("tabcmd.find.parent_project").format(args.parent_project_path))
                 parent = Server.get_project_by_name_and_parent_path(logger, server, None, args.parent_project_path)
             except TSC.ServerResponseError as exc:
                 Errors.exit_with_error(logger, _("publish.errors.server_resource_not_found"), exc)

@@ -4,12 +4,9 @@ from enum import IntEnum
 from typing import List, Callable, Optional
 from tabcmd.commands.server import Server
 from tabcmd.commands.constants import Errors
-from tabcmd.execution.localize import set_client_locale
-
+from tabcmd.execution.localize import _
 import io
 import tableauserverclient as TSC
-
-_ = set_client_locale()
 
 
 class Userdata:
@@ -230,23 +227,23 @@ class UserCommand(Server):
 
         error_list = []
         user_obj_list: List[TSC.UserItem] = UserCommand.get_users_from_file(args.users)
-        logger.debug("Users: {}".format(len(user_obj_list)))
+        logger.debug(_("tabcmd.result.success.parsed_users").format(len(user_obj_list)))
         for user_obj in user_obj_list:
             username: str = user_obj.name or "unknown user"
             try:
                 user_id: str = UserCommand.find_user_id(logger, server, username)
-                logger.debug("user {} ({})".format(username, user_id))
+                logger.debug("{} user {} ({})".format(servermethod.__name__, username, user_id))
             except TSC.ServerResponseError as e:
                 Errors.check_common_error_codes_and_explain(logger, e)
                 number_of_errors += 1
                 error_list.append(e)
-                logger.debug("Skipping user {}".format(username))
+                logger.debug(_("tabcmd.result.failure.user").format(username))
                 continue
 
             try:
                 server_method(group, user_id)
                 n_users_handled += 1
-                logger.info(_("common.output.succeeded").format(action_name, username, group))
+                logger.info(_("tabcmd.result.success.user_actions").format(action_name, username, group))
             except TSC.ServerResponseError as e:
                 Errors.check_common_error_codes_and_explain(logger, e)
                 number_of_errors += 1
