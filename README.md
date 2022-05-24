@@ -35,13 +35,16 @@ To install tabcmd, follow these steps:
 
 - run tests
 > pytest
-- run tests against a live server (you must provide server info and credentials)
+- run tests against a live server
+> python -m tabcmd login {your server info here}
 > pytest -q tests\e2e\online_tests.py -r pfE
 - with coverage calculation (https://coverage.readthedocs.io/en/6.3.2)
 > coverage run -m pytest && coverage report -m
 
 - autoformat your code with black (https://pypi.org/project/black/)
 > black --line-length 120 tabcmd tests [--check]
+- check types
+> mypy
 
 - packaging is done with pyinstaller. You can only build an executable for the platform you build on.
 > pyinstaller tabcmd\tabcmd.py --clean --noconfirm
