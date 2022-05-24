@@ -3,6 +3,7 @@ import tableauserverclient as TSC
 from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
+from tabcmd.commands.constants import Errors
 
 
 class ExportCommand(DatasourcesAndWorkbooks):
@@ -51,7 +52,9 @@ class ExportCommand(DatasourcesAndWorkbooks):
         separated_list = url.split("/")
         if len(separated_list) > 2:
             print("error")
-        return "{}/sheets/{}".format(separated_list[0], separated_list[1])
+        workbook_name = separated_list[0]
+        view_name = separated_list[1]
+        return "{}/sheets/{}".format(workbook_name, view_name)
 
     """
     Command to Export a view_name or workbook from Tableau Server and save
@@ -76,40 +79,40 @@ class ExportCommand(DatasourcesAndWorkbooks):
 
             elif args.pdf or args.png or args.csv:  # it's a view
 
-                view = ExportCommand.get_content_url_for_view(args.url)
-                views_from_list = ExportCommand.get_view_by_content_url(logger, server, view)
+                view_url = ExportCommand.get_content_url_for_view(args.url)
+                view = ExportCommand.get_view_by_content_url(logger, server, view_url)
 
                 if args.pdf:
                     req_option_pdf = TSC.PDFRequestOptions(maxage=1)
-                    server.views.populate_pdf(views_from_list, req_option_pdf)
-                    output = views_from_list.pdf
-                    default_filename = "{}.pdf".format(views_from_list.name)
+                    server.views.populate_pdf(view, req_option_pdf)
+                    output = view.pdf
+                    default_filename = "{}.pdf".format(view.name)
 
                 elif args.csv:
                     req_option_csv = TSC.CSVRequestOptions(maxage=1)
-                    server.views.populate_csv(views_from_list, req_option_csv)
-                    output = views_from_list.csv
-                    default_filename = "{}.csv".format(view)
+                    server.views.populate_csv(view, req_option_csv)
+                    output = view.csv
+                    default_filename = "{}.csv".format(view.name)
 
                 elif args.png:
                     req_option_csv = TSC.CSVRequestOptions(maxage=1)
-                    server.views.populate_csv(views_from_list, req_option_csv)
-                    output = views_from_list.png
-                    default_filename = "{}.png".format(view)
+                    server.views.populate_csv(view, req_option_csv)
+                    output = view.png
+                    default_filename = "{}.png".format(view.name)
             else:
-                ExportCommand.exit_with_error(logger, "You must specify an export method")
+                Errors.exit_with_error(logger, "You must specify an export method")
 
         except TSC.ServerResponseError as e:
-            ExportCommand.exit_with_error(logger, "Error exporting from server", e)
+            Errors.exit_with_error(logger, "Error exporting from server", e)
         try:
             ExportCommand.save_to_file(args, logger, output, default_filename)
         except TSC.ServerResponseError as e:
-            ExportCommand.exit_with_error(logger, "Error saving to file", e)
+            Errors.exit_with_error(logger, "Error saving to file", e)
 
     @staticmethod
     def save_to_file(args, logger, output, default_filename):
-        file_name_with_path = args.filename or default_filename
-        logger.info("===== Found attachment: {}".format(file_name_with_path))
-        with open(file_name_with_path, "wb") as f:
+        output_file = args.filename or default_filename
+        logger.info("===== Found attachment: {}".format(output_file))
+        with open(output_file, "wb") as f:
             f.write(output)
-            logger.info("===== Saved {0} to '{1}'".format(args.url, file_name_with_path))
+            logger.info("===== Saved {0} to '{1}'".format(args.url, output_file))
