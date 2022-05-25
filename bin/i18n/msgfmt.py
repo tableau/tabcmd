@@ -101,6 +101,9 @@ def make(filename, outfile):
     STR = 2
     CTXT = 3
 
+    encoding = 'utf-8'
+    print("Assumed encoding", encoding)
+
     # Compute .mo name from .po name and arguments
     if filename.endswith('.po'):
         infile = filename
@@ -110,7 +113,7 @@ def make(filename, outfile):
         outfile = os.path.splitext(infile)[0] + '.mo'
 
     try:
-        with open(infile, 'rb') as f:
+        with open(infile, 'r', encoding=encoding) as f:
             lines = f.readlines()
     except IOError as msg:
         print(msg, file=sys.stderr)
@@ -119,15 +122,9 @@ def make(filename, outfile):
     section = msgctxt = None
     fuzzy = 0
 
-    # Start off assuming Latin-1, so everything decodes without failure,
-    # until we know the exact encoding
-    encoding = 'latin-1'
-    encoding = 'utf-8'
-
     # Parse the catalog
     lno = 0
     for l in lines:
-        l = l.decode(encoding)
         lno += 1
         # If we get a comment line after a msgstr, this is a new entry
         if l[0] == '#' and section == STR:
@@ -153,7 +150,7 @@ def make(filename, outfile):
                 if not msgid:
                     # See whether there is an encoding declaration
                     p = HeaderParser()
-                    charset = p.parsestr(msgstr.decode(encoding)).get_content_charset()
+                    charset = p.parsestr(msgstr).get_content_charset()
                     if charset:
                         encoding = charset
             section = ID
@@ -198,8 +195,7 @@ def make(filename, outfile):
         elif section == STR:
             msgstr += l.encode(encoding)
         else:
-            print('Syntax error on %s:%d' % (infile, lno), \
-                  'before:', file=sys.stderr)
+            print('Syntax error on %s:%d' % (infile, lno), 'before:', file=sys.stderr)
             print(l, file=sys.stderr)
             sys.exit(1)
     # Add last entry
