@@ -423,7 +423,7 @@ msgstr "A data source named ''{0}'' already exists in project ''{1}''."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "A datasource named ''{0}'' already exists in Personal Space.""
+msgstr "A datasource named ''{0}'' already exists in Personal Space."
 
 #:
 msgid "errors.permissions.publish.datasource.non_existent"
