@@ -4,8 +4,9 @@ import subprocess
 import ftfy
 
 LOCALES = [
-    "en", "de", "es", "fr", "ga", "it", "pt",
-    "sv", "ja", "ko",  "zh"]
+    # "en", "de", "es", "fr", "ga", "it", "pt",
+    # "sv", "ja", "ko",
+    "zh"]
 
 """
 https://pydoit.org/
@@ -76,7 +77,8 @@ def task_po():
                                          "--language", current_locale,  # for the .po header
                                          LOC_PATH + "/"+basename+".properties",
                                          LOC_PATH + "/LC_MESSAGES/"+basename+".po"])
-                # print("\n", result)
+                print("\n", result)
+                print("stdout:", result.stdout)
                 print("stderr:", result.stderr)
     return {
         'actions': [process_locales],
