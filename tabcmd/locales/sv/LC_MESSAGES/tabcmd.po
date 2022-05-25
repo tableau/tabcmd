@@ -1,14 +1,1805 @@
-# Tabcmd output strings
-# Copyright (C) YEAR Tableau Software
+msgid ""
+msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=utf-8"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: None"
+"Language: sv"
+#:
+msgid "permissions.labels.capabilities.read"
+msgstr "Vy:"
 
-# We are varying the gettext process a little because we want to
-# re-use the existing translated strings in the old client
-# manually annotate each string and use a string id
-# manually generate a template file with id -> original string
-# check in properties files from the monolith in all languages
-# automate: two properties files -> po http://docs.translatehouse.org/projects/translate-toolkit/en/latest/commands/prop2po.html
-# gettext or Babel : po -> mo during packaging  (https://www.mattlayman.com/blog/2015/i18n/)
-# strings in template that are not in .properties should remain in English?
+#:
+msgid "permissions.labels.capabilities.write"
+msgstr "Skriv över:"
+
+#:
+msgid "permissions.labels.capabilities.write.legacy"
+msgstr "Spara:"
+
+#:
+msgid "permissions.labels.capabilities.delete"
+msgstr "Ta bort:"
+
+#:
+msgid "permissions.labels.capabilities.filter"
+msgstr "Filtrera:"
+
+#:
+msgid "permissions.labels.capabilities.add_tag"
+msgstr "Lägg till tagg:"
+
+#:
+msgid "permissions.labels.capabilities.add_favorite"
+msgstr "Lägg till favorit:"
+
+#:
+msgid "permissions.labels.capabilities.add_comment"
+msgstr "Lägg till kommentarer:"
+
+#:
+msgid "permissions.labels.capabilities.add_comment.legacy"
+msgstr "Lägg till kommentar:"
+
+#:
+msgid "permissions.labels.capabilities.view_comments"
+msgstr "Visa kommentarer:"
+
+#:
+msgid "permissions.labels.capabilities.vud"
+msgstr "Ladda ner fullständiga data:"
+
+#:
+msgid "permissions.labels.capabilities.export_image"
+msgstr "Ladda ner bild/PDF:"
+
+#:
+msgid "permissions.labels.capabilities.export_data"
+msgstr "Ladda ner sammanfattningsdata:"
+
+#:
+msgid "permissions.labels.capabilities.export_xml"
+msgstr "Ladda ner/spara en kopia:"
+
+#:
+msgid "permissions.labels.capabilities.export_xml.legacy"
+msgstr "Ladda ner/spara som:"
+
+#:
+msgid "permissions.labels.capabilities.save_customized_view"
+msgstr "Spara anpassad vy:"
+
+#:
+msgid "permissions.labels.capabilities.share_view"
+msgstr "Dela anpassad:"
+
+#:
+msgid "permissions.labels.capabilities.stateful_url"
+msgstr "Permalänk:"
+
+#:
+msgid "permissions.labels.capabilities.change_hierarchy"
+msgstr "Flytta:"
+
+#:
+msgid "permissions.labels.capabilities.change_permissions"
+msgstr "Ange behörigheter:"
+
+#:
+msgid "permissions.labels.capabilities.exclude"
+msgstr "Uteslut:"
+
+#:
+msgid "permissions.labels.capabilities.keep_only"
+msgstr "Behåll endast:"
+
+#:
+msgid "permissions.labels.capabilities.select"
+msgstr "Välj markeringar:"
+
+#:
+msgid "permissions.labels.capabilities.tooltip"
+msgstr "Visa verktygstips:"
+
+#:
+msgid "permissions.labels.capabilities.highlight"
+msgstr "Framhävning av teckenförklaring:"
+
+#:
+msgid "permissions.labels.capabilities.url_link"
+msgstr "Länka till externa URL:er:"
+
+#:
+msgid "permissions.labels.capabilities.administrator"
+msgstr "Administratör:"
+
+#:
+msgid "permissions.labels.capabilities.content_admin"
+msgstr "Innehållsadministratör:"
+
+#:
+msgid "permissions.labels.capabilities.create_groups"
+msgstr "Skapa grupper:"
+
+#:
+msgid "permissions.labels.capabilities.rename"
+msgstr "Byt namn:"
+
+#:
+msgid "permissions.labels.capabilities.transfer_ownership"
+msgstr "Överför ägarskap:"
+
+#:
+msgid "permissions.labels.capabilities.project_leader"
+msgstr "Projektledare:"
+
+#:
+msgid "permissions.labels.capabilities.publish"
+msgstr "Publicera:"
+
+#:
+msgid "permissions.labels.capabilities.connect"
+msgstr "Anslut:"
+
+#:
+msgid "permissions.labels.capabilities.draw"
+msgstr "Ritning:"
+
+#:
+msgid "permissions.labels.capabilities.web_authoring"
+msgstr "Webbredigering:"
+
+#:
+msgid "permissions.labels.capabilities.xml_save_as"
+msgstr "Spara som:"
+
+#:
+msgid "permissions.labels.capabilities.create_refresh_metrics"
+msgstr "Skapa/uppdatera mätvärden:"
+
+#:
+msgid "permissions.labels.capabilities.explain_data"
+msgstr "Kör Förklara data:"
+
+#:
+msgid "permissions.labels.roles.wb_view"
+msgstr "Visa"
+
+#:
+msgid "permissions.labels.roles.wb_explore"
+msgstr "Utforska"
+
+#:
+msgid "permissions.labels.roles.wb_publish"
+msgstr "Publicera"
+
+#:
+msgid "permissions.labels.roles.wb_administer"
+msgstr "Administrera"
+
+#:
+msgid "permissions.labels.roles.ds_view"
+msgstr "Visa"
+
+#:
+msgid "permissions.labels.roles.ds_explore"
+msgstr "Utforska"
+
+#:
+msgid "permissions.labels.roles.ds_publish"
+msgstr "Publicera"
+
+#:
+msgid "permissions.labels.roles.ds_administer"
+msgstr "Administrera"
+
+#:
+msgid "permissions.labels.roles.viewer"
+msgstr "Viewer"
+
+#:
+msgid "permissions.labels.roles.interactor"
+msgstr "Interactor"
+
+#:
+msgid "permissions.labels.roles.editor"
+msgstr "Redigerare"
+
+#:
+msgid "permissions.labels.roles.ds_connector"
+msgstr "Datakällskoppling"
+
+#:
+msgid "permissions.labels.roles.ds_editor"
+msgstr "Redigerare för datakälla"
+
+#:
+msgid "permissions.labels.roles.administrator"
+msgstr "Administratör"
+
+#:
+msgid "permissions.labels.roles.project_leader"
+msgstr "Projektledare"
+
+#:
+msgid "permissions.labels.roles.publisher"
+msgstr "Utgivare"
+
+#:
+msgid "permissions.labels.roles.custom"
+msgstr "Anpassat"
+
+#:
+msgid "permissions.labels.roles.none"
+msgstr "Inget"
+
+#:
+msgid "formats.messages.disk_space.in_mb"
+msgstr "{0} MB"
+
+#:
+msgid "formats.messages.disk_space.in_kb"
+msgstr "{0} kB"
+
+#:
+msgid "errors.argument.flow_description.too_long"
+msgstr "Flödesbeskrivningen är för lång ({0} tecken).  Den måste vara kortare än {1} tecken:\{2}"
+
+#:
+msgid "errors.argument.workbook_name.too_long"
+msgstr "Arbetsbokens namn är för långt ({0} tecken).  Det måste vara kortare än {1} tecken:{2}"
+
+#:
+msgid "errors.argument.workbook_name.empty"
+msgstr "Arbetsbokens namn är tomt."
+
+#:
+msgid "errors.argument.workbook_description.too_long"
+msgstr "Arbetsbokens beskrivning är för lång ({0} tecken).  Den måste vara kortare än {1} tecken:{2}"
+
+#:
+msgid "errors.argument.worksheet_name.too_long"
+msgstr "Arbetsbladets namn är för långt ({0} tecken).  Det måste vara kortare än {1} tecken:{2}"
+
+#:
+msgid "errors.argument.datasource_name.too_long"
+msgstr "Datakällans namn är för långt ({0} tecken).  Det måste vara kortare än {1} tecken:{2}"
+
+#:
+msgid "errors.argument.datasource_name.empty"
+msgstr "Datakällans namn är tomt."
+
+#:
+msgid "errors.argument.datasource_description.too_long"
+msgstr "Datakällans beskrivning är för lång ({0} tecken).  Den måste vara kortare än {1} tecken:{2}"
+
+#:
+msgid "errors.argument.dataconnection_column.too_long"
+msgstr "DataConnection column {0} is too long ({1} characters).  It must be shorter than {2} characters:{3}"
+
+#:
+msgid "errors.argument.tag.too_long"
+msgstr "Taggen är för lång ({0} tecken).  Den måste vara kortare än {1} tecken:{2}"
+
+#:
+msgid "errors.argument.workbook_file.missing_or_empty"
+msgstr "Arbetsboksfilen saknas eller är tom."
+
+#:
+msgid "errors.argument.internal"
+msgstr "Internt serverfel. Saknat eller ogiltigt argument."
+
+#:
+msgid "errors.argument.thumbnail.invalid_format"
+msgstr "Arbetsbokens miniatyrbildsformat är ogiltigt. Måste vara en PNG med upplösning 300x300 eller mindre."
+
+#:
+msgid "errors.html_403.disabled_resource.workbook"
+msgstr "Den arbetsboken är inaktiverad. Kontakta administratören."
+
+#:
+msgid "errors.html_404.missing_or_unauthorized_resource.project"
+msgstr "Projektet du letade efter finns inte eller så har du inte behörighet att se det projektet."
+
+#:
+msgid "errors.html_404.missing_or_unauthorized_resource.personal_space"
+msgstr "Den personliga ytan du letade efter finns inte eller så har du inte behörighet att se det den."
+
+#:
+msgid "errors.html_404.missing_or_unauthorized_resource.datasource"
+msgstr "Den datakällan du letade efter finns inte."
+
+#:
+msgid "errors.labels.formatted_request_id"
+msgstr "Begärande-ID: {0}"
+
+#:
+msgid "errors.links.delete_datasources"
+msgstr "Ta bort datakällor"
+
+#:
+msgid "errors.links.delete_workbooks"
+msgstr "Ta bort arbetsböcker"
+
+#:
+msgid "errors.permissions.publish.datasource.licensing"
+msgstr "Du måste vara ''Interactor'' för att publicera en datakälla."
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite"
+msgstr "Det finns redan en datakälla med namnet {0} i projektet {1}. Du har inte behörighet att skriva över den."
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite_personal_space"
+msgstr "Det finns redan en datakälla med namnet {0} i den personliga ytan. Du har inte behörighet att skriva över den."
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite_short"
+msgstr "Det finns redan en datakälla med namnet {0} i projektet {1}."
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
+msgstr "Det finns redan en datakälla med namnet {0} i den personliga ytan."
+
+#:
+msgid "errors.permissions.publish.datasource.non_existent"
+msgstr "Datakällan {0} finns inte."
+
+#:
+msgid "errors.permissions.publish.datasource.general"
+msgstr "Du har tyvärr inte behörighet att publicera den här datakällan."
+
+#:
+msgid "errors.permissions.publish.project.explicit_publisher_detail"
+msgstr "Du har inte publiceringsbehörighet."
+
+#:
+msgid "errors.permissions.publish.project.general"
+msgstr "Du har inte behörighet att publicera till det här projektet."
+
+#:
+msgid "errors.permissions.publish.project.non_existent"
+msgstr "Projektet {0} finns inte."
+
+#:
+msgid "errors.permissions.publish.project.not_writable"
+msgstr "Du har inte behörighet att skriva till projektet {0}."
+
+#:
+msgid "errors.permissions.publish.project.unspecified"
+msgstr "Du måste ange ett projekt"
+
+#:
+msgid "errors.permissions.publish.workbook.disabled"
+msgstr "Arbetsboken {0} är inaktiverad."
+
+#:
+msgid "errors.permissions.publish.workbook.general"
+msgstr "Det finns redan en arbetsbok med det här namnet i det projekt du publicerar till. Byt namn på arbetsboken för att publicera."
+
+#:
+msgid "errors.permissions.publish.workbook.general_personal_space"
+msgstr "Det finns redan en arbetsbok med det här namnet i den personliga yta du publicerar till. Byt namn på arbetsboken för att publicera."
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite"
+msgstr "Det finns redan en arbetsbok med namnet {0} i projektet {1}. Du har inte behörighet att skriva över den."
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite_personal_space"
+msgstr "Det finns redan en arbetsbok med namnet {0} i den personliga ytan. Du har inte behörighet att skriva över den."
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite_short"
+msgstr "Det finns redan en arbetsbok med namnet {0} i projektet {1}."
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
+msgstr "Det finns redan en arbetsbok med namnet {0} i den personliga ytan."
+
+#:
+msgid "errors.reportable.impersonation.group_and_user"
+msgstr "Ange endast "impersonate_username" eller "impersonate_groupname" inte båda."
+
+#:
+msgid "errors.reportable.impersonation.user_not_found"
+msgstr "Användaren {0} finns inte."
+
+#:
+msgid "errors.reportable.impersonation.group_not_found"
+msgstr "Gruppen {0} finns inte. "
+
+#:
+msgid "errors.public.validation.hasextract"
+msgstr "Arbetsböcker som sparats till Tableau Public måste använda aktiva Tableau-extrakt. Högerklicka på datakällan och välj Använd extrakt innan publicering. Datakällan {0} är inte ett aktivt extrakt."
+
+#:
+msgid "errors.publish.dataserver_datasource_not_found"
+msgstr "Datakällan {0} hittades inte för arbetsboken {1}."
+
+#:
+msgid "errors.publish.datasource_update_mode"
+msgstr "Okänt uppdateringsläge: {0}."
+
+#:
+msgid "errors.publish.workbook.concurrent_update"
+msgstr "En arbetsbok med samma namn publiceras eller ändras just nu. Vänta tills uppgiften slutförs innan du försöker på nytt."
+
+#:
+msgid "errors.publish.workbook.restricted"
+msgstr "Arbetsboken innehåller anslutningstyper som inte tillåts på den här servern."
+
+#:
+msgid "errors.publish.datasource.concurrent_update"
+msgstr "En datakälla med samma namn håller på att publiceras eller ändras. Vänta tills aktiviteten är slutförd innan du försöker igen."
+
+#:
+msgid "errors.publish.datasource.restricted"
+msgstr "Datakällan innehåller en anslutningstyp som inte tillåts på den här servern."
+
+#:
+msgid "errors.publish.datasource.connection_check"
+msgstr "{0} kunde inte upprätta en anslutning till din datakälla."
+
+#:
+msgid "errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption"
+msgstr "Arbetsboken kan inte publiceras med ett krypterat extrakt. Webbplatsadministratören har inaktiverat extraktkryptering på den här webbplatsen. Du måste publicera arbetsboken med ett okrypterat extrakt."
+
+#:
+msgid "errors.publish.datasource.requested_extract_encryption_on_site_with_disabled_encryption"
+msgstr "Datakällan kan inte publiceras som ett krypterat extrakt. Webbplatsadministratören har inaktiverat extraktkryptering på den här webbplatsen. Du måste publicera extraktet okrypterat."
+
+#:
+msgid "errors.publish.workbook.requested_no_extract_encryption_on_site_with_enforced_encryption"
+msgstr "Arbetsboken kan inte publiceras med ett okrypterat extrakt. Webbplatsadministratören har framtvingat extraktkryptering på den här webbplatsen. Du måste publicera arbetsboken och ange extraktkryptering."
+
+#:
+msgid "errors.publish.datasource.requested_no_extract_encryption_on_site_with_enforced_encryption"
+msgstr "Datakällextraktet kan inte publiceras okrypterat. Webbplatsadministratören har framtvingat extraktkryptering på den här webbplatsen. Du måste publicera extraktet krypterat."
+
+#:
+msgid "errors.publish.has_unfinished_extract_creation_job"
+msgstr "Den här resursen kan inte publiceras eftersom det finns väntande eller oavslutade extraktskapandejobb relaterade till den. Vänta eller avbryt jobben och försök igen."
+
+#:
+msgid "errors.publishing.storage_quota_exceeded.message"
+msgstr "Webbplatslagringskvoten överskreds."
+
+#:
+msgid "errors.publishing.request_size_exceeded"
+msgstr "Den här filen kan inte publiceras eftersom begärandestorleken är {0} byte vilket överskrider bytestorleksgränsen med {1} byte."
+
+#:
+msgid "errors.publishing.request_size_unknown"
+msgstr "Begärandestorleken kunde inte fastställas."
+
+#:
+msgid "errors.site.quota_exceeded"
+msgstr "Innehållet du försöker ladda upp kommer att överskrida webbplatsens kapacitet med {0}."
+
+#:
+msgid "errors.personal_space.quota_exceeded"
+msgstr "Det här innehållet överskrider kapaciteten på din personliga yta med {0}."
+
+#:
+msgid "errors.web_authoring.workbook_deleted"
+msgstr "Arbetsboken {0} togs bort. Välj Spara som för att spara som ny arbetsbok."
+
+#:
+msgid "errors.web_authoring.workbook_changed"
+msgstr "En annan användare har redigerat och sparat den här arbetsboken sedan du började redigera. Därmed kan du inte längre uppdatera den ursprungliga arbetsboken. Använd Spara som för att skapa en ny arbetsbok med dina ändringar."
+
+#:
+msgid "labels.publish.embed_credentials"
+msgstr "Inbäddat lösenord för datakälla"
+
+#:
+msgid "errors.publish.workbook.google_no_embedded_credentials"
+msgstr "Den här arbetsboken innehåller en {0}-datakälla som kräver inbäddade inloggningsuppgifter. Spara som en annan arbetsbok genom att välja {1}."
+
+#:
+msgid "errors.publish.datasource.google_no_embedded_credentials"
+msgstr "Den här datakällan innehåller en {0}-anslutning som kräver inbäddade inloggningsuppgifter. Publicera den här datakällan från Tableau Desktop med inbäddade inloggningsuppgifter."
+
+#:
+msgid "errors.publish.datasource.federated_oauth_datasource_failed"
+msgstr "Inloggningsuppgifter för en eller flera anslutningar i din datakälla har gått ut. Ta bort de sparade inloggningsuppgifterna för den här datakällan på din sida för Kontoinställningar på  Tableau Server eller Tableau Online och anslut därefter till datakällan igen."
+
+#:
+msgid "errors.publish.workbook.missing_oauth_credential"
+msgstr "Inloggningsuppgiften {0} hittades inte eller kan inte användas för att ansluta till datakällan eller arbetsboken."
+
+#:
+msgid "errors.publish.version_incompatible.message"
+msgstr "Skrivbords- och serverversionerna är inkompatibla."
+
+#:
+msgid "errors.publish.version_incompatible.details"
+msgstr "Skrivbordsversion {0}, Serverdokumentversion {1}."
+
+#:
+msgid "errors.publish.datasource.managed_keychain.unique_cv_suggestions"
+msgstr "Publiceringen misslyckades på grund av en konflikt. Skicka in ändringen igen."
+
+#:
+msgid "errors.publish.permissions_are_locked"
+msgstr "Behörigheterna är låsta i projektet du publicerar till. Publicera den här arbetsboken genom att använda standardbehörigheterna och försöka igen."
+
+#:
+msgid "errors.publish.datasource.not.found"
+msgstr "Det gick inte att hitta den här datakällan på servern."
+
+#:
+msgid "errors.publish.extracts.disabled"
+msgstr "Spara för extraktbaserade, arkivdatakällor stöds inte än."
+
+#:
+msgid "errors.publish.datasource.timeout"
+msgstr "Publiceringen fick timeout efter {0} sekunder. Försök använda Tableau Desktop för att publicera den här datakällan."
+
+#:
+msgid "errors.publish.data_role.permission_not_null"
+msgstr "Det går inte att ange uttryckliga behörigheter för datakällor av typen dataroll."
+
+#:
+msgid "errors.download.extracts.timeout"
+msgstr "Publiceringen fick timeout efter {0} sekunder eftersom datakällan har en stor extraktfil. Försök använda Tableau Desktop för att publicera den här datakällan."
+
+#:
+msgid "errors.publish.datasource.invalid_extract_update_time"
+msgstr "Ogiltig extractUpdateTime angavs: {0}"
+
+#:
+msgid "errors.publish.async.serialization"
+msgstr "Det gick inte att serialisera publiceringsjobbstatusfel"
+
+#:
+msgid "errors.permissions.view.datasources"
+msgstr "Du måste vara ''Interactor'' för att visa listan med datakällor."
+
+#:
+msgid "errors.oauth.invalid_oauth_class"
+msgstr "{0} är inte en giltig OAuth-anslutningstyp."
+
+#:
+msgid "errors.xmlapi.bad_request"
+msgstr "Felaktig begäran"
+
+#:
+msgid "errors.xmlapi.unauthorized"
+msgstr "Ej auktoriserad"
+
+#:
+msgid "errors.xmlapi.forbidden"
+msgstr "Inte tillräckliga behörigheter"
+
+#:
+msgid "errors.xmlapi.system_user_not_found"
+msgstr "Användarkontot låst eller ogiltigt."
+
+#:
+msgid "errors.xmlapi.site_user_not_found"
+msgstr "Det här användarkontot är inte aktivt. Kontakta {0}-administratören för hjälp."
+
+#:
+msgid "errors.xmlapi.not_found"
+msgstr "Objektet hittades inte"
+
+#:
+msgid "errors.xmlapi.concurrent_update"
+msgstr "Samtidig uppdatering"
+
+#:
+msgid "errors.xmlapi.internal_server_error"
+msgstr "Internt serverfel"
+
+#:
+msgid "errors.xmlapi.illegal_state"
+msgstr "Otillåtet tillstånd"
+
+#:
+msgid "errors.xmlapi.invalid_parameter"
+msgstr "Ogiltig parameter"
+
+#:
+msgid "errors.xmlapi.already_exists"
+msgstr "Finns redan"
+
+#:
+msgid "errors.xmlapi.site_suspended"
+msgstr "Den här webbplatsen har suspenderats. Du måste vara systemadministratör för att logga in."
+
+#:
+msgid "errors.xmlapi.site_locked"
+msgstr "Webbplatsen har låsts. Inloggning är inte tillåten just nu."
+
+#:
+msgid "errors.xmlapi.permission_modification"
+msgstr "Det går inte att publicera med ändrade behörigheter"
+
+#:
+msgid "errors.xmlapi.update_desktop"
+msgstr "Öppna arbetsböcker som skapats av andra skapare genom att ladda ner den senaste versionen av Tableau Desktop Public Edition från http://public.tableau.com/"
+
+#:
+msgid "errors.xmlapi.throttled.summary"
+msgstr "För många begäranden"
+
+#:
+msgid "errors.xmlapi.throttled.detail"
+msgstr "För många anrop till "{0}". Försök åter efter {1}."
+
+#:
+msgid "datasource.publish.check.unpublishable"
+msgstr "Det gick inte att publicera datakällan."
+
+#:
+msgid "datasource.publish.check.publishable.extract_required"
+msgstr "Kräver att du skapar ett extrakt vid publicering."
+
+#:
+msgid "datasource.publish.check.publishable.credentials_required"
+msgstr "{1} kommer tillfälligt att använda de inloggningsuppgifter som angetts för {0} för att bekräfta att den kan upprätthålla en livedataanslutning."
+
+#:
+msgid "datasource.publish.check.publishable.server_unreachable"
+msgstr "{1} kan inte nå {0}. Publicering skapar ett extrakt."
+
+#:
+msgid "publish.bundles.workbook.subscription.subject"
+msgstr "Din arbetsbok {0} är redo för dig."
+
+#:
+msgid "publish.bundles.workbook.subscription.message"
+msgstr "Dina Salesforce-data lades till i arbetsboken. Gå till dina {0}-projekt för att komma igång."
+
+#:
+msgid "extracts.status.finished.upload.workbook"
+msgstr "Slutförde uppladdningen av extrakt (nytt extrakt-ID: {0}) för arbetsboken {1} {2}"
+
+#:
+msgid "extracts.status.finished.refresh.workbook"
+msgstr "Slutförde uppdateringen av extrakt (nytt extrakt-ID: {0}) för arbetsboken {1} {2}"
+
+#:
+msgid "extracts.status.finished.increment.workbook"
+msgstr "Slutförde inkrement av extrakt (nytt extrakt-ID: {0}) för arbetsboken {1} {2}"
+
+#:
+msgid "extracts.status.finished.encrypt.workbook"
+msgstr "Slutförde kryptering av extrakt (nytt extrakt-ID:{0}) för arbetsboken {1}"
+
+#:
+msgid "extracts.status.finished.decrypt.workbook"
+msgstr "Slutförde dekryptering av extrakt (nytt extrakt-ID:{0}) för arbetsboken {1}"
+
+#:
+msgid "extracts.status.finished.rekey.workbook"
+msgstr "Slutförde återkryptering av extrakt (nytt extrakt-ID:{0}) för arbetsboken {1}"
+
+#:
+msgid "extracts.status.finished.create.workbook"
+msgstr "Slutförde skapande av extrakt (nytt extrakt-ID:{0}) för arbetsboken {1} {2}"
+
+#:
+msgid "extracts.status.finished.remove.workbook"
+msgstr "Slutförde ändra extrakt (datakälla-ID:{0}) till live för arbetsboken {1}"
+
+#:
+msgid "extracts.status.finished.upload.datasource"
+msgstr "Slutförde uppladdningen av extrakt (nytt extrakt-ID: {0}) för datakällan {1} {2}"
+
+#:
+msgid "extracts.status.finished.refresh.datasource"
+msgstr "Uppdatering av extrakt har slutförts (nytt extrakt-ID: {0}) för datakällan ''{1}'' {2}"
+
+#:
+msgid "extracts.status.finished.increment.datasource"
+msgstr "Utökning av extrakt har slutförts (nytt extrakt-ID: {0}) för datakällan ''{1}'' {2}"
+
+#:
+msgid "extracts.status.finished.append.datasource"
+msgstr "Tillägg av extrakt har slutförts (nytt extrakt-ID: {0}) för datakällan ''{1}'' {2}"
+
+#:
+msgid "extracts.status.finished.replace.datasource"
+msgstr "Ersättning av extrakt har slutförts (nytt extrakt-ID: {0}) för datakällan ''{1}'' {2}"
+
+#:
+msgid "extracts.status.finished.encrypt.datasource"
+msgstr "Kryptering av extrakt har slutförts (nytt extrakt-ID:{0}) för datakällan ''{1}''"
+
+#:
+msgid "extracts.status.finished.decrypt.datasource"
+msgstr "Dekryptering av extrakt har slutförts (nytt extrakt-ID:{0}) för datakällan ''{1}''"
+
+#:
+msgid "extracts.status.finished.rekey.datasource"
+msgstr "Omkryptering av extrakt har slutförts (nytt extrakt-ID:{0}) för datakällan ''{1}''"
+
+#:
+msgid "extracts.status.finished.encrypt.flow"
+msgstr "Kryptering av extrakt för flödet ''{0}'' har slutförts"
+
+#:
+msgid "extracts.status.finished.decrypt.flow"
+msgstr "Dekryptering av extrakt för flödet ''{0}'' har slutförts"
+
+#:
+msgid "extracts.status.finished.rekey.flow"
+msgstr "Omkryptering av extrakt för flödet ''{0}'' har slutförts"
+
+#:
+msgid "extracts.status.finished.encrypt.flowdraft"
+msgstr "Kryptering av extrakt för flödesutkastet ''{0}'' har slutförts"
+
+#:
+msgid "extracts.status.finished.decrypt.flowdraft"
+msgstr "Dekryptering av extrakt för flödesutkastet ''{0}'' har slutförts"
+
+#:
+msgid "extracts.status.finished.rekey.flowdraft"
+msgstr "Omkryptering av extrakt för flödesutkastet ''{0}'' har slutförts"
+
+#:
+msgid "extracts.status.finished.create.datasource"
+msgstr "Extrakten har skapats (nytt extrakt-ID: {0}) för datakällan ''{1}'' {2}"
+
+#:
+msgid "extracts.status.finished.remove.datasource"
+msgstr "Extrakten har ändrats till live för datakällan ''{1}''"
+
+#:
+msgid "extracts.status.encryption_key"
+msgstr "ID för krypteringsnyckel: ''{0}''."
+
+#:
+msgid "extracts.status.encryption_keys"
+msgstr "Gammalt ID för krypteringsnyckel: ''{0}'', nytt ID för krypteringsnyckel: ''{1}''."
+
+#:
+msgid "extracts.errors.upload"
+msgstr "Fel vid uppladdning av extrakt för {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.refresh"
+msgstr "Det inträffade ett fel när extrakten för {0} ''{1}'' skulle uppdateras"
+
+#:
+msgid "extracts.errors.create"
+msgstr "Det inträffade ett fel när extrakten för {0} ''{1}'' skulle skapas."
+
+#:
+msgid "extracts.errors.increment"
+msgstr "Fel vid utökning av extrakt för {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.append"
+msgstr "Fel vid tillägg av extrakt för {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.replace"
+msgstr "Fel vid ersättning av extrakt för {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.download"
+msgstr "Fel vid nerladdning av extrakt för {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.remove"
+msgstr "Fel vid borttagning av extrakt för {0}: ''{1}''."
+
+#:
+msgid "extracts.errors.title"
+msgstr "Fel vid extraktbearbetning"
+
+#:
+msgid "extracts.errors.nothing_to_upload"
+msgstr "Det finns inga extrakt att ladda upp för {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.nothing_to_refresh"
+msgstr "Det finns inga extrakt att uppdatera för {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.nothing_to_increment"
+msgstr "Det finns inga extrakt att utöka för {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.nothing_to_append"
+msgstr "Det finns inga extrakt att lägga till för {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.nothing_to_replace"
+msgstr "Det finns inga extrakt att ersätta för {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.refresh_summary"
+msgstr "Fel vid uppdatering av extrakt"
+
+#:
+msgid "extracts.errors.encrypt_summary"
+msgstr "Fel vid kryptering av extrakt"
+
+#:
+msgid "extracts.errors.rekey_summary"
+msgstr "Fel vid omkryptering av extrakt"
+
+#:
+msgid "extracts.errors.decrypt_summary"
+msgstr "Fel vid dekryptering av extrakt"
+
+#:
+msgid "extracts.errors.remove_summary"
+msgstr "Fel vid borttagning av extrakt"
+
+#:
+msgid "extracts.errors.create_summary"
+msgstr "Det inträffade ett fel när extraktet skulle skapas"
+
+#:
+msgid "extracts.errors.datasource_overwritten"
+msgstr "Uppdateringen misslyckades eftersom datakällan skrevs över av en annan uppgift under bearbetningen. Uppdatera igen för att korrigera det."
+
+#:
+msgid "extracts.errors.workbook_overwritten"
+msgstr "Uppdateringen misslyckades eftersom arbetsboken skrevs över av en annan uppgift under bearbetningen. Uppdatera igen för att korrigera det."
+
+#:
+msgid "extracts.errors.encrypt"
+msgstr "Det inträffade ett fel när extrakten för {0} ''{1}'' skulle krypteras"
+
+#:
+msgid "extracts.errors.decrypt"
+msgstr "Det inträffade ett fel när extrakten för {0} ''{1}'' skulle dekrypteras"
+
+#:
+msgid "extracts.errors.rekey"
+msgstr "Det inträffade ett fel när extrakten för {0} ''{1}'' skulle krypteras om"
+
+#:
+msgid "extracts.errors.encrypt_datasource_overwritten"
+msgstr "Krypteringen av extraktet misslyckades eftersom datakällan skrevs över av en annan uppgift under bearbetningen."
+
+#:
+msgid "extracts.errors.encrypt_workbook_overwritten"
+msgstr "Krypteringen av extraktet misslyckades eftersom arbetsboken skrevs över av en annan uppgift under bearbetningen."
+
+#:
+msgid "extracts.errors.rekey_datasource_overwritten"
+msgstr "Omkrypteringen av extraktet misslyckades eftersom datakällan skrevs över av en annan uppgift under bearbetningen."
+
+#:
+msgid "extracts.errors.rekey_workbook_overwritten"
+msgstr "Omkrypteringen av extraktet misslyckades eftersom arbetsboken skrevs över av en annan uppgift under bearbetningen."
+
+#:
+msgid "extracts.errors.decrypt_datasource_overwritten"
+msgstr "Dekrypteringen av extraktet misslyckades eftersom datakällan skrevs över av en annan uppgift under bearbetningen."
+
+#:
+msgid "extracts.errors.decrypt_workbook_overwritten"
+msgstr "Dekrypteringen av extraktet misslyckades eftersom arbetsboken skrevs över av en annan uppgift under bearbetningen."
+
+#:
+msgid "extracts.errors.remove_datasource_overwritten"
+msgstr "Det gick inte att ändra datakällan till live eftersom den har skrivits över av en annan uppgift."
+
+#:
+msgid "extracts.errors.remove_workbook_overwritten"
+msgstr "Det gick inte att ändra arbetsboken till live eftersom den har skrivits över av en annan uppgift."
+
+#:
+msgid "extracts.errors.create_datasource_overwritten"
+msgstr "Det gick inte att extrahera datakällan eftersom den har skrivits över av en annan uppgift."
+
+#:
+msgid "extracts.errors.create_workbook_overwritten"
+msgstr "Det gick inte att extrahera arbetsboken eftersom den har skrivits över av en annan uppgift."
+
+#:
+msgid "extracts.site_mode_change_details"
+msgstr "Webbplatsens extraktkrypteringsläge har ändrats från ''{0}'' till ''{1}''."
+
+#:
+msgid "extracts.errors.encryption_not_licensed"
+msgstr "Åtgärden misslyckades eftersom extraktkryptering inte ingår i licensen. Om du vill utföra den här åtgärden måste du förnya licensen eller dekryptera extraktet."
+
+#:
+msgid "extracts.errors.operation_cancelled_detail"
+msgstr "Tidsgränsen för borttagningen av extrakt för {0} (datakälla: {2}) överskreds."
+
+#:
+msgid "workbooks.messages.load_error"
+msgstr "Det gick inte att läsa in arbetsboken {0}"
+
+#:
+msgid "workbooks.messages.locked"
+msgstr "Arbetsboken ''{0}'' ändras av en annan användare just nu. Försök igen senare."
+
+#:
+msgid "workbooks.new_workbook.default_name"
+msgstr "Ny arbetsbok"
+
+#:
+msgid "workbooks.new_datasource.default_name"
+msgstr "Ny datakälla"
+
+#:
+msgid "datasources.messages.load_error"
+msgstr "Det gick inte att läsa in datakällan {0}"
+
+#:
+msgid "metrics.new_metric.default_name"
+msgstr "Nytt mätvärde"
+
+#:
+msgid "messages.timeout_error.summary"
+msgstr "Tidsgränsfel"
+
+#:
+msgid "messages.timeout_error.task_canceled"
+msgstr "Avbryter uppgift som tog mer än {0} sekunder"
+
+#:
+msgid "subscriptions.manage_my_subscriptions"
+msgstr "Hantera mina prenumerationer"
+
+#:
+msgid "subscriptions.message_greeting"
+msgstr "Hej!"
+
+#:
+msgid "subscriptions.subscribed_footer"
+msgstr "Här kommer din prenumeration på"
+
+#:
+msgid "subscriptions.subscribed_workbook"
+msgstr "arbetsbok"
+
+#:
+msgid "subscriptions.subscribed_view"
+msgstr "vy"
+
+#:
+msgid "subscriptions.fullstop"
+msgstr "."
+
+#:
+msgid "subscriptions.extract_refresh_footer"
+msgstr "Du får det här prenumerationsmejlet när data uppdateras."
+
+#:
+msgid "subscriptions.explore_the_viz"
+msgstr "Utforska visualiseringen"
+
+#:
+msgid "subscriptions.explore_the_workbook"
+msgstr "Utforska arbetsboken"
+
+#:
+msgid "subscriptions.pdf_attached"
+msgstr "Din Tableau PDF-fil är bifogad."
+
+#:
+msgid "subscriptions.access_live_content"
+msgstr "Du kan se livevyn över innehållet här"
+
+#:
+msgid "subscriptions.warning_deprecated_type"
+msgstr "inaktuell"
+
+#:
+msgid "subscriptions.warning_extract_refresh_type"
+msgstr "extraktuppdateringen misslyckades"
+
+#:
+msgid "subscriptions.warning_flow_run_type"
+msgstr "flödeskörningen misslyckades"
+
+#:
+msgid "subscriptions.warning_introduction_general"
+msgstr "Följande datakvalitetsvarningar påverkar {0}."
+
+#:
+msgid "subscriptions.warning_introduction_view"
+msgstr "Du hittar mer information på fliken Datainformation i vyn"
+
+#:
+msgid "subscriptions.warning_introduction_workbook"
+msgstr "Du hittar mer information på sidan med arbetsboken"
+
+#:
+msgid "subscriptions.warning_maintenance_type"
+msgstr "underhåll utförs"
+
+#:
+msgid "subscriptions.warning_permission_error"
+msgstr "Den här varningen gäller en resurs du saknar behörighet att se."
+
+#:
+msgid "subscriptions.warning_redacted"
+msgstr "Behörighet krävs"
+
+#:
+msgid "subscriptions.warning_sensitve_type"
+msgstr "känsliga data"
+
+#:
+msgid "subscriptions.warning_severe"
+msgstr "Viktig datakvalitetsvarning"
+
+#:
+msgid "subscriptions.warning_stale_type"
+msgstr "inaktuella data"
+
+#:
+msgid "subscriptions.warning_standard"
+msgstr "Datakvalitetsvarning"
+
+#:
+msgid "subscriptions.warning_error_type"
+msgstr "okänd varningstyp"
+
+#:
+msgid "subscriptions.warning_warning_type"
+msgstr "varning"
+
+#:
+msgid "errors.subscriptions.image_render_failed"
+msgstr "Det gick inte att återge ögonblicksbilden av vyn ''{0}'' korrekt."
+
+#:
+msgid "errors.subscriptions.see_live_view"
+msgstr "Om du vill visa vyn online går du till {0}."
+
+#:
+msgid "errors.subscriptions.disabled_on_server"
+msgstr "Serveromfattande prenumerationsinställningar har inte aktiverats. Det går inte att bearbeta prenumerationer."
+
+#:
+msgid "errors.subscriptions.disabled_on_site"
+msgstr "Prenumerationer har inaktiverats för webbplatsen."
+
+#:
+msgid "errors.subscriptions.site_is_locked"
+msgstr "Webbplatsen är låst. Det går inte att bearbeta prenumerationer."
+
+#:
+msgid "errors.subscriptions.orphan"
+msgstr "Det gick inte att hitta arbetsboken och vyerna som är kopplade till den här prenumerationen."
+
+#:
+msgid "errors.subscriptions.user_unlicensed"
+msgstr "Den olicensierade användarens prenumeration hoppas över."
+
+#:
+msgid "errors.subscriptions.smtp_unreacheable"
+msgstr "Det gick inte att nå SMTP-värden. Kontrollera att SMTP har konfigurerats."
+
+#:
+msgid "errors.subscriptions.uncategorized_error"
+msgstr "Okänt fel"
+
+#:
+msgid "errors.subscriptions.pdf_render_failed"
+msgstr "Det gick inte att återge PDF-bilagan för det här mejlet korrekt."
+
+#:
+msgid "errors.subscriptions.pdf_limit_exceeded"
+msgstr "Den genererade PDF-filen överskrider storleksgränsen på {0} MB och kan inte bifogas det här mejlet."
+
+#:
+msgid "errors.subscriptions.attachments_not_enabled"
+msgstr "Den här prenumerationen misslyckades eftersom e-postbilagor har inaktiverats. Kontakta Tableau-administratören för mer information."
+
+#:
+msgid "errors.subscriptions.pdf_email_failed"
+msgstr "Det gick inte att bifoga den genererade PDF-filen i det här mejlet."
+
+#:
+msgid "errors.subscriptions.learn_more_troubleshoot"
+msgstr "<a hre"
+
+#:
+msgid "errors.subscriptions.bad_extract_refresh_subscription_configuration"
+msgstr "Prenumerationen har inaktiverats eftersom arbetsboken innehåller flera scheman för extraktuppdatering. Om du vill återuppta den uppdaterar du intervallet till På valt schema."
+
+#:
+msgid "errors.subscriptions.subscription_failed_refresh_failure"
+msgstr "Extraktuppdateringen för datakällan misslyckades."
+
+#:
+msgid "errors.subscriptions.multiple_extracts_for_extract_refresh_subscription"
+msgstr "Arbetsboken innehåller flera scheman för extraktuppdatering. Uppdatera intervallet till På valt schema."
+
+#:
+msgid "errors.subscriptions.datasource_is_missing_password"
+msgstr "Anslutningsfel hos datakällan. Kontrollera inloggningsuppgifterna för alla anslutningar till datakällor för arbetsboken."
+
+#:
+msgid "subscriptions.results_summary.sg"
+msgstr "{0} av {1} prenumeration har skickats från schemat ''{2}''."
+
+#:
+msgid "subscriptions.results_summary.pl"
+msgstr "{0} av {1} prenumerationer har skickats från schemat ''{2}''."
+
+#:
+msgid "subscriptions.results_views_per_subscription.sg"
+msgstr "{0} ({1} av 1 visning lyckades)"
+
+#:
+msgid "subscriptions.results_views_per_subscription.pl"
+msgstr "{0} ({1} av {2} visningar lyckades)"
+
+#:
+msgid "subscriptions.results_views_per_subscription.more"
+msgstr "({0} till)"
+
+#:
+msgid "subscriptions.results_views_per_subscription.failed"
+msgstr "{0} ({1} av {2} visningar misslyckades)."
+
+#:
+msgid "subscriptions.results_header.all_shown.failures.sg"
+msgstr "1 fel"
+
+#:
+msgid "subscriptions.results_header.all_shown.failures.pl"
+msgstr "{0} fel"
+
+#:
+msgid "subscriptions.results_header.all_shown.warnings.sg"
+msgstr "1 varning"
+
+#:
+msgid "subscriptions.results_header.all_shown.warnings.pl"
+msgstr "{0} varningar"
+
+#:
+msgid "subscriptions.results_header.some_hidden.failures.pl.sg"
+msgstr "{0} fel (1 dolt, läs loggarna)"
+
+#:
+msgid "subscriptions.results_header.some_hidden.failures.pl.pl"
+msgstr "{0} fel ({1} dolda, läs loggarna)"
+
+#:
+msgid "subscriptions.results_header.some_hidden.warnings.pl.sg"
+msgstr "{0} varningar (1 dold, läs loggarna)"
+
+#:
+msgid "subscriptions.results_header.some_hidden.warnings.pl.pl"
+msgstr "{0} varningar ({1} dolda, läs loggarna)"
+
+#:
+msgid "dataalerts.manage_my_data_alerts"
+msgstr "Hantera aviseringar"
+
+#:
+msgid "dataalerts.edit_data_alert"
+msgstr "Redigera avisering"
+
+#:
+msgid "dataalerts.remove_user_from_data_alert"
+msgstr "Ta bort mig"
+
+#:
+msgid "dataalerts.add_user_to_data_alert"
+msgstr "Lägg till mig i den här aviseringen"
+
+#:
+msgid "dataalerts.greater_or_equal"
+msgstr "{0} var större än eller lika med {1}."
+
+#:
+msgid "dataalerts.greater"
+msgstr "{0} var större än {1}."
+
+#:
+msgid "dataalerts.less_or_equal"
+msgstr "{0} var mindre än eller lika med {1}."
+
+#:
+msgid "dataalerts.less"
+msgstr "{0} var mindre än {1}."
+
+#:
+msgid "dataalerts.equal"
+msgstr "{0} var lika med {1}."
+
+#:
+msgid "dataalerts.email_alt_text"
+msgstr "Vy som används av datadriven avisering: {0}"
+
+#:
+msgid "dataalerts.email_alt_text_hidden_view"
+msgstr "Vy som används av datadriven avisering: {0} med införda ändringar"
+
+#:
+msgid "dataalerts.alert_triggered_for_the_view"
+msgstr "Avisering har utlösts för vyn"
+
+#:
+msgid "dataalerts.failure.email.subject"
+msgstr "Datadriven avisering fungerar inte för: {0}"
+
+#:
+msgid "dataalerts.failure.status"
+msgstr "Aviseringen <i>{0}</i> fungerar inte"
+
+#:
+msgid "dataalerts.failure.view.details.alert"
+msgstr "Visa den här aviseringen"
+
+#:
+msgid "dataalerts.failure.explanation"
+msgstr "Den datadrivna aviseringen <i>{0}</i> fungerar inte just nu, så mottagarna aviseras inte när datavillkoret är sant. Du får ett mejl när aviseringen fungerar igen."
+
+#:
+msgid "dataalerts.failure.affected.alert"
+msgstr "Datadriven avisering som påverkas"
+
+#:
+msgid "dataalerts.failure.time"
+msgstr "Tid då aviseringen misslyckades"
+
+#:
+msgid "dataalerts.failure.cause"
+msgstr "Ibland misslyckas aviseringar på grund av tillfälliga nätverksproblem, som går över av sig själv. Du kan också prova med att återskapa aviseringen i den ursprungliga datavyn eller felsöka vanliga orsaker till problemet som:"
+
+#:
+msgid "dataalerts.failure.changed.view"
+msgstr "En arbetsbok, en vy eller ett datafält har tagits bort eller fått ett annat namn."
+
+#:
+msgid "dataalerts.failure.expired.credentials"
+msgstr "Utgångna inloggningsuppgifter för en databas i en arbetsbok."
+
+#:
+msgid "dataalerts.failure.datasource.error"
+msgstr "En otillgänglig datakälla."
+
+#:
+msgid "dataalerts.failure.email.footer"
+msgstr "Du får det här mejlet  {0} på grund av ett aviseringsfel."
+
+#:
+msgid "dataalerts.failure.troubleshooting"
+msgstr "Kontrollera om något av problemen ovan är orsak till att aviseringen misslyckas genom att klicka på knappen nedan."
+
+#:
+msgid "dataalerts.success.email.subject"
+msgstr "Datadriven avisering har återupptagits för: {0}"
+
+#:
+msgid "dataalerts.success.status"
+msgstr "Aviseringen <i>{0}</i> har återupptagits"
+
+#:
+msgid "dataalerts.success.explanation"
+msgstr "Den datadrivna aviseringen <i>{0}</i> fungerar igen, så mottagarna aviseras när datavillkoret är sant."
+
+#:
+msgid "dataalerts.failure.error.internalError"
+msgstr "Internt fel för dataavisering"
+
+#:
+msgid "dataalerts.failure.error.invalidDataAlertSpecification"
+msgstr "Ogiltig specifikation för dataavisering"
+
+#:
+msgid "dataalerts.failure.error.summaryTableNotFound"
+msgstr "Det gick inte att hitta den sammanfattade datatabellen"
+
+#:
+msgid "dataalerts.failure.error.unclassifiedError"
+msgstr "Oklassificerat fel"
+
+#:
+msgid "dataalerts.failure.error.viewContentNotFound"
+msgstr "Det gick inte att hitta innehållet {0} i dataaviseringsyvn"
+
+#:
+msgid "dataalerts.failure.error.viewNotFound"
+msgstr "Det gick inte att hitta dataaviseringsyvn"
+
+#:
+msgid "dataalerts.failure.error.workbookNotFound"
+msgstr "Det gick inte att hitta arbetsboken"
+
+#:
+msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
+msgstr "Ingen axel hittades för fältet {0}"
+
+#:
+msgid "dataalerts.failure.error.paneDescriptorNotFound"
+msgstr "{0}"
+
+#:
+msgid "dataalerts.failure.error.unsupportedComparisonExpression"
+msgstr "Jämförelseuttrycket {0} stöds inte"
+
+#:
+msgid "dataalerts.failure.error.nonConstComparisonOp"
+msgstr "Ingen konstant jämförelseoperator kunde identifieras: {0}"
+
+#:
+msgid "dataalerts.failure.error.cannotAddFilter"
+msgstr "Det gick inte att lägga till filtret i dataaviseringen"
+
+#:
+msgid "dataalerts.failure.error.sheetNotAlertable"
+msgstr "Bladet {0} har data som stöds för aviseringar. {1}"
+
+#:
+msgid "dataalerts.failure.error.dataAlertMeasureNotFound"
+msgstr "Det gick inte att välja måttet. {0}"
+
+#:
+msgid "dataalerts.failure.error.tooManyMeasuresForDataAlert"
+msgstr "Felaktigt antal mått har identifierats.{0}"
+
+#:
+msgid "dataalerts.failure.error.thresholdParseError"
+msgstr "Det gick inte att tolka tröskeltexten {0}. {1}"
+
+#:
+msgid "dataalerts.failure.error.dataAlertPresModelCreationError"
+msgstr "Fel vid serialisering av avisering. {0}"
+
+#:
+msgid "dataalerts.failure.error.cannotDrawDataAlertDialog"
+msgstr "Det gick inte att rita upp dialogrutan för dataavisering."
+
+#:
+msgid "dataalerts.failure.error.unsupportedDataAlertType"
+msgstr "Dataaviseringstypen {0} stöds inte just nu."
+
+#:
+msgid "dataalerts.failure.suspend.email.subject"
+msgstr "Datadriven avisering har inaktiverats för: {0}"
+
+#:
+msgid "dataalerts.failure.suspend.email.status"
+msgstr "Aviseringen {0} har inaktiverats"
+
+#:
+msgid "dataalerts.failure.suspend.email.explanation"
+msgstr "Så länge inaktiveringen gäller utvärderas inte vyn och mottagarna aviseras inte heller. Så snart en korrigering har gjorts kan du återuppta aviseringen i <a hre"
+
+#:
+msgid "dataalerts.failure.suspend.view.name.prefix"
+msgstr "Vy"
+
+#:
+msgid "dataalerts.failure.suspend.time"
+msgstr "Tid då inaktiveringen började"
+
+#:
+msgid "dataalerts.failure.suspend.email.footer"
+msgstr "Du får det här mejlet eftersom din avisering har inaktiverats."
+
+#:
+msgid "dataalerts.failure.suspend.email.view.name.my.content"
+msgstr "Mitt innehåll"
+
+#:
+msgid "dataalerts.failure.suspend.view.alerts"
+msgstr "Visa aviseringar"
+
+#:
+msgid "metricsservices.failure.affected.metric"
+msgstr "Mätvärden som påverkas"
+
+#:
+msgid "metricsservices.failure.cause"
+msgstr "Ibland misslyckas uppdateringar av mätvärden på grund av tillfälliga anslutningsproblem, som går över av sig själv. Några andra vanliga orsaker till varför uppdatering av mätvärden kan misslyckas är:"
+
+#:
+msgid "metricsservices.failure.changed.view"
+msgstr "En arbetsbok, en vy eller ett datafält har tagits bort eller fått ett annat namn."
+
+#:
+msgid "metricsservices.failure.permissions.error"
+msgstr "Ändrade behörigheter för den anslutna vyn"
+
+#:
+msgid "metricsservices.failure.email.footer"
+msgstr "Du får det här mejlet  {0} på grund av ett fel med uppdateringen av dina mätvärden."
+
+#:
+msgid "metricsservices.failure.email.subject"
+msgstr "Uppdatering av mätvärden fungerar inte för: {0}"
+
+#:
+msgid "metricsservices.failure.expired.credentials"
+msgstr "Utgångna inloggningsuppgifter för en databas i en arbetsbok."
+
+#:
+msgid "metricsservices.failure.explanation"
+msgstr "Det går inte att uppdatera mätvärdet, och mätdata uppdateras därför inte heller. Du får ett mejl när uppdateringen av mätvärden fungerar igen."
+
+#:
+msgid "metricsservices.failure.status"
+msgstr "Mätvärdet "{0}" uppdateras inte"
+
+#:
+msgid "metricsservices.failure.suspend.email.explanation"
+msgstr "När uppdatering av mätvärden är inaktiverat uppdateras inte mätdata. Så snart en korrigering har gjorts kan du återuppta uppdateringen av mätvärden."
+
+#:
+msgid "metricsservices.failure.suspend.email.footer"
+msgstr "Du får det här mejlet {0} eftersom uppdateringen av dina mätvärden har inaktiverats."
+
+#:
+msgid "metricsservices.failure.suspend.email.status"
+msgstr "Uppdatering av mätvärdet "{0}" har inaktiverats"
+
+#:
+msgid "metricsservices.failure.suspend.email.subject"
+msgstr "Uppdatering av mätvärde har inaktiverats för: {0}"
+
+#:
+msgid "metricsservices.failure.suspend.time"
+msgstr "Tid då inaktiveringen började"
+
+#:
+msgid "metricsservices.failure.suspend.view.metric"
+msgstr "Gå till mätvärde"
+
+#:
+msgid "metricsservices.failure.suspend.view.name.prefix"
+msgstr "Ansluten vy"
+
+#:
+msgid "metricsservices.failure.time"
+msgstr "Tid för misslyckad uppdatering"
+
+#:
+msgid "metricsservices.failure.troubleshooting"
+msgstr "Kontrollera om något av problemen ovan är orsak till att uppdateringen misslyckas genom att klicka på knappen nedan. Du kan också prova med att återskapa mätvärdet i den anslutna vyn."
+
+#:
+msgid "metricsservices.failure.view.details.metric"
+msgstr "Gå till mätvärde"
+
+#:
+msgid "metricsservices.failure.view.name.prefix"
+msgstr "Ansluten vy"
+
+#:
+msgid "metricsservices.success.email.subject"
+msgstr "Uppdatering av mätvärde har återupptagits för: {0}"
+
+#:
+msgid "metricsservices.success.explanation"
+msgstr "Uppdateringen av mätvärdet fungerar igen, och mätdata kontrollas för att se om de behöver uppdateras."
+
+#:
+msgid "metricsservices.success.status"
+msgstr "Uppdateringen av mätvärdet "{0}" har återupptagits"
+
+#:
+msgid "errors.staticimages.generic"
+msgstr "Det inträffade ett fel när statiska bilder för arbetsboken {0} skulle skapas. {1}."
+
+#:
+msgid "errors.internal_error.request.message"
+msgstr "{0} kunde inte utföra begäran."
+
+#:
+msgid "errors.permissions.limited_user_visibility"
+msgstr "Det gick inte att slutföra frågan. Användaren måste vara administratör eller Creator för att fråga andra användare om Användarsynlighet är inställd på begränsad."
+
+#:
+msgid "local_names.system_user.guest.name"
+msgstr "Gäst"
+
+#:
+msgid "local_names.group.all_users.name"
+msgstr "Alla användare"
+
+#:
+msgid "local_names.containers.personal_space.name"
+msgstr "Personlig yta"
+
+#:
+msgid "password_reset.email.subject"
+msgstr "Här är länken för lösenordsåterställning"
+
+#:
+msgid "password_reset.email.body"
+msgstr "Hej {0}!<br/><br/>Du begärde nyligen återställning av ditt lösenord.<br/><br/> Om du vill ändra ditt Tableau Server-lösenord {1} eller klistrar in följande länk i webbläsaren: {2}<br/><br/>Den här länken upphör att gälla om 48 timmar, så gör det helst med en gång.<br/><br/>Om du inte har begärt återställning av ditt lösenord bör du tala om detta för serveradministratören.<br/><br/>Tack för att du använder Tableau!<br/>Vi som jobbar hos Tableau"
+
+#:
+msgid "password_reset.email.link"
+msgstr "klickar du här"
+
+#:
+msgid "hours.pl"
+msgstr "{0} timmar"
+
+#:
+msgid "hours.sg"
+msgstr "1 timme"
+
+#:
+msgid "minutes.pl"
+msgstr "{0} minuter"
+
+#:
+msgid "minutes.sg"
+msgstr "1 minut"
+
+#:
+msgid "seconds.pl"
+msgstr "{0} sekunder"
+
+#:
+msgid "seconds.sg"
+msgstr "1 sekund"
+
+#:
+msgid "dataconnections.classes.tableau_server_site"
+msgstr "Tableau Server-webbplats"
+
+#:
+msgid "materializeviews.errors.workbook_not_in_project"
+msgstr "Projektet ''{0}'' innehåller inte arbetsboken ''{1}''"
+
+#:
+msgid "materializeviews.errors.workbook_has_no_extract"
+msgstr "Det gick inte att uppdatera inställningen för materialiserade vyer för arbetsboken ''{0}''. För tillfället stöds bara arbetsböcker med inbäddade extrakt."
+
+#:
+msgid "materializeviews.errors.workbook_updating_errors"
+msgstr "Fel hittades när inställningen för materialiserade vyer för arbetsböcker uppdaterades"
+
+#:
+msgid "materializeviews.errors.workbook_too_large"
+msgstr "Det gick inte att uppdatera inställningen för materialiserade vyer för arbetsboken ''{0}'' eftersom arbetsbokens storlek överskrider gränsen på {1} GB."
+
+#:
+msgid "materializeviews.errors.project_path_not_exists"
+msgstr "Projektsökvägen ''{0}'' finns inte"
+
+#:
+msgid "materializeviews.errors.feature_disabled"
+msgstr "Det gick inte att uppdatera inställningen för materialiserade vyer för arbetsboken ''{0}'' eftersom funktionen är inaktiverad just nu."
+
+#:
+msgid "materializeviews.errors.update_materialized_views_setting_failed"
+msgstr "Det gick inte att uppdatera inställningen för materialiserade vyer för arbetsboken ''{0}''."
+
+#:
+msgid "materializeviews.errors.site_not_enabled"
+msgstr "Den här webbplatsen har inte aktiverats för materialiserade vyer. Kontakta administratören."
+
+#:
+msgid "materializeviews.errors.encrypted_extracts_not_supported"
+msgstr "Funktionen för materialiserade vyer har inte stöd för arbetsböcker med krypterade extrakt just nu"
+
+#:
+msgid "materializedviews.finished.create"
+msgstr "Materialiserade vyer med statusen ''{0}'' har skapats för arbetsboken ''{1}''"
+
+#:
+msgid "materializedviews.finished.delete"
+msgstr "Materialiserade vyer för arbetsbok-ID:t {0} har tagits bort"
+
+#:
+msgid "materializedviews.finished.encrypt"
+msgstr "Kryptering av materialiserade vyer för arbetsboken ''{0}'' har slutförts"
+
+#:
+msgid "materializedviews.finished.decrypt"
+msgstr "Dekryptering av materialiserade vyer för arbetsboken ''{0}'' har slutförts"
+
+#:
+msgid "materializedviews.finished.rekey"
+msgstr "Omkryptering av materialiserade vyer för arbetsboken ''{0}'' har slutförts"
+
+#:
+msgid "materializedviews.status.encryption_key"
+msgstr "ID för krypteringsnyckel: ''{0}''."
+
+#:
+msgid "materializedviews.status.encryption_keys"
+msgstr "Gammalt ID för krypteringsnyckel: ''{0}'', nytt ID för krypteringsnyckel: ''{1}''."
+
+#:
+msgid "materializedviews.status.encryption_type"
+msgstr "Typ av krypteringsdatakälla: ''{0}''"
+
+#:
+msgid "customizedviews.namedSharingPrefix"
+msgstr "Delad version"
+
+#:
+msgid "flows.drafts.default_name"
+msgstr "Nytt flöde"
+
+#:
+msgid "content_type.project"
+msgstr "Projekt"
+
+#:
+msgid "content_type.workbook"
+msgstr "Arbetsbok"
+
+#:
+msgid "content_type.view"
+msgstr "Vy"
+
+#:
+msgid "content_type.datasource"
+msgstr "Datakälla"
+
+#:
+msgid "content_type.flow"
+msgstr "Flöde"
+
+#:
+msgid "content_type.metric"
+msgstr "Metriska"
+
+#:
+msgid "content_type.collection"
+msgstr "Samling"
+
+#:
+msgid "content_type.visualization"
+msgstr "Visualisering"
+
+#:
+msgid "content_type.askdata_visualization"
+msgstr "Fråga data-visualisering"
+
+#:
+msgid "content_type.explaindata_explanation"
+msgstr "Förklaring"
+
+#:
+msgid "content_type.publishedconnection"
+msgstr "Virtuell anslutning"
+
+#:
+msgid "content_type.publishedconnectiontable"
+msgstr "Tabell i virtuell anslutning"
+
+#:
+msgid "upgradethumbnails.status.server_started"
+msgstr "Serversvar: Uppgradering av miniatyrer har påbörjats."
+
+#:
+msgid "upgradethumbnails.status.server_stopped"
+msgstr "Serversvar: %d jobb har stoppats"
+
+#:
+msgid "dataquality.message.refresh_failed"
+msgstr "Uppdateringen misslyckades: {0}"
+
+#:
+msgid "dataquality.message.last_successful"
+msgstr "Senast genomfört utan fel: {0}"
+
+#:
+msgid "dataquality.message.next_scheduled"
+msgstr "Nästa schemalagda: {0}"
+
+#:
+msgid "dataquality.message.flow_run_output_steps_failed"
+msgstr "{0}/{1} utgångssteg kunde inte köras"
+
+#:
+msgid "importcsvsummary.error.details"
+msgstr "Felinformation:"
+
+#:
+msgid "importcsvsummary.remainingerrors"
+msgstr "(återstående fel visas inte)"
+
+#:
+msgid "importcsvsummary.error.line"
+msgstr "rad {0} för användare ''{1}'': ''{2}''"
+
+#:
+msgid "importcsvsummary.line.processed"
+msgstr "Bearbetade rader: {0}"
+
+#:
+msgid "importcsvsummary.line.skipped"
+msgstr "Överhoppade rader: {0}"
+
+#:
+msgid "importcsvsummary.users.added.count"
+msgstr "Antal tillagda användare: {0}"
+
+#:
+msgid "importcsvsummary.errors.count"
+msgstr "Antal fel: {0}"
+
+#:
+msgid "importcsvsummary.error.unexpected_extension"
+msgstr "Oväntat filnamnstillägg för CSV-fil"
+
+#:
+msgid "importcsvsummary.error.size_limit"
+msgstr "CSV-filen överskrider storleksgränsen på {0}"
+
+#:
+msgid "importcsvsummary.error.local.password_mismatch"
+msgstr "Uppdatering av lokal webbplatsanvändare kräver tomt eller matchande lösenord"
+
+#:
+msgid "importcsvsummary.error.local.password_required"
+msgstr "Det krävs lösenord för att skapa en lokal systemanvändare när autentiseringen är lokal"
+
+#:
+msgid "importcsvsummary.error.ad.user_not_found"
+msgstr "Det gick inte att hitta AD-användaren ''{0}''"
+
+#:
+msgid "importcsvsummary.error.too_many_errors"
+msgstr "För många fel i CSV-filen"
+
+#:
+msgid "audit.errors.wdc_not_allowlisted"
+msgstr "Webbdatakopplingen finns inte i godkännandelistan. Läs mer på: https://help.tableau.com/current/online/sv-se/to_keep_data_fresh.htm"
+
+#:
+msgid "user.input.name.err.too_long"
+msgstr "namnet är längre än det högsta tillåtna antalet tecken {0}"
+
+#:
+msgid "user.input.name.err.empty"
+msgstr "namnet får inte vara tomt"
+
+#:
+msgid "askdata.title"
+msgstr "Fråga data"
+
+#:
+msgid "slack.app.upgrade.email.notification.subject"
+msgstr "Uppdatering för Tableau-programmet för Slack"
+
+#:
+msgid "slack.app.upgrade.email.notification.introduction"
+msgstr "Det finns en uppdatering för Tableau-programmet för Slack, som kan installeras om nu för att fungera med nästa version av Tableau Online. Tableau rekommenderar att du installerar om programmet så att det fortsätter att fungera som det ska och så att du kan använda nya funktioner. Du kan läsa om nya funktioner och förändringar i <a styl"
+
+#:
+msgid "slack.app.upgrade.email.notification.action"
+msgstr "Du hittar uppdaterings- och ominstallationssteg i <a styl"
+
+#:
+msgid "slack.app.upgrade.email.notification.steps"
+msgstr "Det här tjänstmeddelandet har publicerats av Tableau Online."
+
+#:
+msgid "slack.app.upgrade.email.notification.reason"
+msgstr "Du får det här meddelandet eftersom du är administratör för en Tableau Online-webbplats som är ansluten till Slack."
+
+#:
+msgid "slack.app.upgrade.email.notification.footer.privacy"
+msgstr "Läs vår <a styl"
+
+#:
+msgid "unifiedconsumption.tcrm.folders.private"
+msgstr "Min privata app"
+
+
+msgid ""
+msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=utf-8"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: None"
+"Language: sv"
+# Copyright (C) YEAR Tableau Software
 
 
 # These outcome reporting lines were all returned from the server in clientxml
@@ -71,1891 +1862,90 @@ msgstr "Name of the schedule to run"
 msgid ""
 msgstr ""
 "MIME-Version: 1.0"
-"Content-Type: text/plain; charset=None"
+"Content-Type: text/plain; charset=utf-8"
 "Content-Transfer-Encoding: 8bit"
 "X-Generator: prop2po"
 "Project-Id-Version: None"
-"Language: None"
-#:
-msgid "permissions.labels.capabilities.read"
-msgstr "Vy:"
-
-#:
-msgid "permissions.labels.capabilities.write"
-msgstr "Skriv \u00f6ver:"
-
-#:
-msgid "permissions.labels.capabilities.write.legacy"
-msgstr "Spara:"
-
-#:
-msgid "permissions.labels.capabilities.delete"
-msgstr "Ta bort:"
-
-#:
-msgid "permissions.labels.capabilities.filter"
-msgstr "Filtrera:"
-
-#:
-msgid "permissions.labels.capabilities.add_tag"
-msgstr "L\u00e4gg till tagg:"
-
-#:
-msgid "permissions.labels.capabilities.add_favorite"
-msgstr "L\u00e4gg till favorit:"
-
-#:
-msgid "permissions.labels.capabilities.add_comment"
-msgstr "L\u00e4gg till kommentarer:"
-
-#:
-msgid "permissions.labels.capabilities.add_comment.legacy"
-msgstr "L\u00e4gg till kommentar:"
-
-#:
-msgid "permissions.labels.capabilities.view_comments"
-msgstr "Visa kommentarer:"
-
-#:
-msgid "permissions.labels.capabilities.vud"
-msgstr "Ladda ner fullst\u00e4ndiga data:"
-
-#:
-msgid "permissions.labels.capabilities.export_image"
-msgstr "Ladda ner bild/PDF:"
-
-#:
-msgid "permissions.labels.capabilities.export_data"
-msgstr "Ladda ner sammanfattningsdata:"
-
-#:
-msgid "permissions.labels.capabilities.export_xml"
-msgstr "Ladda ner/spara en kopia:"
-
-#:
-msgid "permissions.labels.capabilities.export_xml.legacy"
-msgstr "Ladda ner/spara som:"
-
-#:
-msgid "permissions.labels.capabilities.save_customized_view"
-msgstr "Spara anpassad vy:"
-
-#:
-msgid "permissions.labels.capabilities.share_view"
-msgstr "Dela anpassad:"
-
-#:
-msgid "permissions.labels.capabilities.stateful_url"
-msgstr "Permal\u00e4nk:"
-
-#:
-msgid "permissions.labels.capabilities.change_hierarchy"
-msgstr "Flytta:"
-
-#:
-msgid "permissions.labels.capabilities.change_permissions"
-msgstr "Ange beh\u00f6righeter:"
-
-#:
-msgid "permissions.labels.capabilities.exclude"
-msgstr "Uteslut:"
-
-#:
-msgid "permissions.labels.capabilities.keep_only"
-msgstr "Beh\u00e5ll endast:"
-
-#:
-msgid "permissions.labels.capabilities.select"
-msgstr "V\u00e4lj markeringar:"
-
-#:
-msgid "permissions.labels.capabilities.tooltip"
-msgstr "Visa verktygstips:"
-
-#:
-msgid "permissions.labels.capabilities.highlight"
-msgstr "Framh\u00e4vning av teckenf\u00f6rklaring:"
-
-#:
-msgid "permissions.labels.capabilities.url_link"
-msgstr "L\u00e4nka till externa URL:er:"
-
-#:
-msgid "permissions.labels.capabilities.administrator"
-msgstr "Administrat\u00f6r:"
-
-#:
-msgid "permissions.labels.capabilities.content_admin"
-msgstr "Inneh\u00e5llsadministrat\u00f6r:"
-
-#:
-msgid "permissions.labels.capabilities.create_groups"
-msgstr "Skapa grupper:"
-
-#:
-msgid "permissions.labels.capabilities.rename"
-msgstr "Byt namn:"
-
-#:
-msgid "permissions.labels.capabilities.transfer_ownership"
-msgstr "\u00d6verf\u00f6r \u00e4garskap:"
-
-#:
-msgid "permissions.labels.capabilities.project_leader"
-msgstr "Projektledare:"
-
-#:
-msgid "permissions.labels.capabilities.publish"
-msgstr "Publicera:"
-
-#:
-msgid "permissions.labels.capabilities.connect"
-msgstr "Anslut:"
-
-#:
-msgid "permissions.labels.capabilities.draw"
-msgstr "Ritning:"
-
-#:
-msgid "permissions.labels.capabilities.web_authoring"
-msgstr "Webbredigering:"
-
-#:
-msgid "permissions.labels.capabilities.xml_save_as"
-msgstr "Spara som:"
-
-#:
-msgid "permissions.labels.capabilities.create_refresh_metrics"
-msgstr "Skapa/uppdatera m\u00e4tv\u00e4rden:"
-
-#:
-msgid "permissions.labels.capabilities.explain_data"
-msgstr "K\u00f6r F\u00f6rklara data:"
-
-#:
-msgid "permissions.labels.roles.wb_view"
-msgstr "Visa"
-
-#:
-msgid "permissions.labels.roles.wb_explore"
-msgstr "Utforska"
-
-#:
-msgid "permissions.labels.roles.wb_publish"
-msgstr "Publicera"
-
-#:
-msgid "permissions.labels.roles.wb_administer"
-msgstr "Administrera"
-
-#:
-msgid "permissions.labels.roles.ds_view"
-msgstr "Visa"
-
-#:
-msgid "permissions.labels.roles.ds_explore"
-msgstr "Utforska"
-
-#:
-msgid "permissions.labels.roles.ds_publish"
-msgstr "Publicera"
-
-#:
-msgid "permissions.labels.roles.ds_administer"
-msgstr "Administrera"
-
-#:
-msgid "permissions.labels.roles.viewer"
-msgstr "Viewer"
-
-#:
-msgid "permissions.labels.roles.interactor"
-msgstr "Interactor"
-
-#:
-msgid "permissions.labels.roles.editor"
-msgstr "Redigerare"
-
-#:
-msgid "permissions.labels.roles.ds_connector"
-msgstr "Datak\u00e4llskoppling"
-
-#:
-msgid "permissions.labels.roles.ds_editor"
-msgstr "Redigerare f\u00f6r datak\u00e4lla"
-
-#:
-msgid "permissions.labels.roles.administrator"
-msgstr "Administrat\u00f6r"
-
-#:
-msgid "permissions.labels.roles.project_leader"
-msgstr "Projektledare"
-
-#:
-msgid "permissions.labels.roles.publisher"
-msgstr "Utgivare"
-
-#:
-msgid "permissions.labels.roles.custom"
-msgstr "Anpassat"
-
-#:
-msgid "permissions.labels.roles.none"
-msgstr "Inget"
-
-# Used in Storage class in tab-core
-
-#:
-msgid "formats.messages.disk_space.in_mb"
-msgstr "{0} MB"
-
-#:
-msgid "formats.messages.disk_space.in_kb"
-msgstr "{0} kB"
-
-# Publishing-related errors and strings
-
-#:
-msgid "errors.argument.flow_description.too_long"
-msgstr "Fl\u00f6desbeskrivningen \u00e4r f\u00f6r l\u00e5ng ({0} tecken).  Den m\u00e5ste vara kortare \u00e4n {1} tecken:\n{2}"
-
-#:
-msgid "errors.argument.workbook_name.too_long"
-msgstr "Arbetsbokens namn \u00e4r f\u00f6r l\u00e5ngt ({0} tecken).  Det m\u00e5ste vara kortare \u00e4n {1} tecken:\n{2}"
-
-#:
-msgid "errors.argument.workbook_name.empty"
-msgstr "Arbetsbokens namn \u00e4r tomt."
-
-#:
-msgid "errors.argument.workbook_description.too_long"
-msgstr "Arbetsbokens beskrivning \u00e4r f\u00f6r l\u00e5ng ({0} tecken).  Den m\u00e5ste vara kortare \u00e4n {1} tecken:\n{2}"
-
-#:
-msgid "errors.argument.worksheet_name.too_long"
-msgstr "Arbetsbladets namn \u00e4r f\u00f6r l\u00e5ngt ({0} tecken).  Det m\u00e5ste vara kortare \u00e4n {1} tecken:\n{2}"
-
-#:
-msgid "errors.argument.datasource_name.too_long"
-msgstr "Datak\u00e4llans namn \u00e4r f\u00f6r l\u00e5ngt ({0} tecken).  Det m\u00e5ste vara kortare \u00e4n {1} tecken:\n{2}"
-
-#:
-msgid "errors.argument.datasource_name.empty"
-msgstr "Datak\u00e4llans namn \u00e4r tomt."
-
-#:
-msgid "errors.argument.datasource_description.too_long"
-msgstr "Datak\u00e4llans beskrivning \u00e4r f\u00f6r l\u00e5ng ({0} tecken).  Den m\u00e5ste vara kortare \u00e4n {1} tecken:\n{2}"
-
-#:
-msgid "errors.argument.dataconnection_column.too_long"
-msgstr "DataConnection column {0} is too long ({1} characters).  It must be shorter than {2} characters:\n{3}"
-
-#:
-msgid "errors.argument.tag.too_long"
-msgstr "Taggen \u00e4r f\u00f6r l\u00e5ng ({0} tecken).  Den m\u00e5ste vara kortare \u00e4n {1} tecken:\n{2}"
-
-#:
-msgid "errors.argument.workbook_file.missing_or_empty"
-msgstr "Arbetsboksfilen saknas eller \u00e4r tom."
-
-#:
-msgid "errors.argument.internal"
-msgstr "Internt serverfel. Saknat eller ogiltigt argument."
-
-#:
-msgid "errors.argument.thumbnail.invalid_format"
-msgstr "Arbetsbokens miniatyrbildsformat \u00e4r ogiltigt. M\u00e5ste vara en PNG med uppl\u00f6sning 300x300 eller mindre."
-
-#:
-msgid "errors.html_403.disabled_resource.workbook"
-msgstr "Den arbetsboken \u00e4r inaktiverad. Kontakta administrat\u00f6ren."
-
-#:
-msgid "errors.html_404.missing_or_unauthorized_resource.project"
-msgstr "Projektet du letade efter finns inte eller s\u00e5 har du inte beh\u00f6righet att se det projektet."
-
-#:
-msgid "errors.html_404.missing_or_unauthorized_resource.personal_space"
-msgstr "Den personliga ytan du letade efter finns inte eller s\u00e5 har du inte beh\u00f6righet att se det den."
-
-#:
-msgid "errors.html_404.missing_or_unauthorized_resource.datasource"
-msgstr "Den datak\u00e4llan du letade efter finns inte."
-
-#:
-msgid "errors.labels.formatted_request_id"
-msgstr "Beg\u00e4rande-ID: {0}"
-
-#:
-msgid "errors.links.delete_datasources"
-msgstr "Ta bort datak\u00e4llor"
-
-#:
-msgid "errors.links.delete_workbooks"
-msgstr "Ta bort arbetsb\u00f6cker"
-
-#:
-msgid "errors.permissions.publish.datasource.licensing"
-msgstr "Du m\u00e5ste vara ''Interactor'' f\u00f6r att publicera en datak\u00e4lla."
-
-#:
-msgid "errors.permissions.publish.datasource.overwrite"
-msgstr "Det finns redan en datak\u00e4lla med namnet {0} i projektet {1}. Du har inte beh\u00f6righet att skriva \u00f6ver den."
-
-#:
-msgid "errors.permissions.publish.datasource.overwrite_personal_space"
-msgstr "Det finns redan en datak\u00e4lla med namnet {0} i den personliga ytan. Du har inte beh\u00f6righet att skriva \u00f6ver den."
-
-#:
-msgid "errors.permissions.publish.datasource.overwrite_short"
-msgstr "Det finns redan en datak\u00e4lla med namnet {0} i projektet {1}."
-
-#:
-msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "Det finns redan en datak\u00e4lla med namnet {0} i den personliga ytan."
-
-#:
-msgid "errors.permissions.publish.datasource.non_existent"
-msgstr "Datak\u00e4llan {0} finns inte."
-
-#:
-msgid "errors.permissions.publish.datasource.general"
-msgstr "Du har tyv\u00e4rr inte beh\u00f6righet att publicera den h\u00e4r datak\u00e4llan."
-
-#:
-msgid "errors.permissions.publish.project.explicit_publisher_detail"
-msgstr "Du har inte publiceringsbeh\u00f6righet."
-
-#:
-msgid "errors.permissions.publish.project.general"
-msgstr "Du har inte beh\u00f6righet att publicera till det h\u00e4r projektet."
-
-#:
-msgid "errors.permissions.publish.project.non_existent"
-msgstr "Projektet {0} finns inte."
-
-#:
-msgid "errors.permissions.publish.project.not_writable"
-msgstr "Du har inte beh\u00f6righet att skriva till projektet {0}."
-
-#:
-msgid "errors.permissions.publish.project.unspecified"
-msgstr "Du m\u00e5ste ange ett projekt"
-
-#:
-msgid "errors.permissions.publish.workbook.disabled"
-msgstr "Arbetsboken {0} \u00e4r inaktiverad."
-
-#:
-msgid "errors.permissions.publish.workbook.general"
-msgstr "Det finns redan en arbetsbok med det h\u00e4r namnet i det projekt du publicerar till. Byt namn p\u00e5 arbetsboken f\u00f6r att publicera."
-
-#:
-msgid "errors.permissions.publish.workbook.general_personal_space"
-msgstr "Det finns redan en arbetsbok med det h\u00e4r namnet i den personliga yta du publicerar till. Byt namn p\u00e5 arbetsboken f\u00f6r att publicera."
-
-#:
-msgid "errors.permissions.publish.workbook.overwrite"
-msgstr "Det finns redan en arbetsbok med namnet {0} i projektet {1}. Du har inte beh\u00f6righet att skriva \u00f6ver den."
-
-#:
-msgid "errors.permissions.publish.workbook.overwrite_personal_space"
-msgstr "Det finns redan en arbetsbok med namnet {0} i den personliga ytan. Du har inte beh\u00f6righet att skriva \u00f6ver den."
-
-#:
-msgid "errors.permissions.publish.workbook.overwrite_short"
-msgstr "Det finns redan en arbetsbok med namnet {0} i projektet {1}."
-
-#:
-msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
-msgstr "Det finns redan en arbetsbok med namnet {0} i den personliga ytan."
-
-#:
-msgid "errors.reportable.impersonation.group_and_user"
-msgstr "Ange endast impersonate_username eller impersonate_groupname inte b\u00e5da."
-
-#:
-msgid "errors.reportable.impersonation.user_not_found"
-msgstr "Anv\u00e4ndaren {0} finns inte."
-
-#:
-msgid "errors.reportable.impersonation.group_not_found"
-msgstr "Gruppen {0} finns inte."
-
-# errors.public.validation.hasextract is copied from the C++ file codegen strings.data IDS_PUBLIC_VALIDATION_ERROR_HASEXTRACT
-
-#:
-msgid "errors.public.validation.hasextract"
-msgstr "Arbetsb\u00f6cker som sparats till Tableau Public m\u00e5ste anv\u00e4nda aktiva Tableau-extrakt. H\u00f6gerklicka p\u00e5 datak\u00e4llan och v\u00e4lj Anv\u00e4nd extrakt innan publicering. Datak\u00e4llan {0} \u00e4r inte ett aktivt extrakt."
-
-#:
-msgid "errors.publish.dataserver_datasource_not_found"
-msgstr "Datak\u00e4llan {0} hittades inte f\u00f6r arbetsboken {1}."
-
-#:
-msgid "errors.publish.datasource_update_mode"
-msgstr "Ok\u00e4nt uppdateringsl\u00e4ge: {0}."
-
-#:
-msgid "errors.publish.workbook.concurrent_update"
-msgstr "En arbetsbok med samma namn publiceras eller \u00e4ndras just nu. V\u00e4nta tills uppgiften slutf\u00f6rs innan du f\u00f6rs\u00f6ker p\u00e5 nytt."
-
-#:
-msgid "errors.publish.workbook.restricted"
-msgstr "Arbetsboken inneh\u00e5ller anslutningstyper som inte till\u00e5ts p\u00e5 den h\u00e4r servern."
-
-#:
-msgid "errors.publish.datasource.concurrent_update"
-msgstr "En datak\u00e4lla med samma namn h\u00e5ller p\u00e5 att publiceras eller \u00e4ndras. V\u00e4nta tills aktiviteten \u00e4r slutf\u00f6rd innan du f\u00f6rs\u00f6ker igen."
-
-#:
-msgid "errors.publish.datasource.restricted"
-msgstr "Datak\u00e4llan inneh\u00e5ller en anslutningstyp som inte till\u00e5ts p\u00e5 den h\u00e4r servern."
-
-#:
-msgid "errors.publish.datasource.connection_check"
-msgstr "{0} kunde inte uppr\u00e4tta en anslutning till din datak\u00e4lla."
-
-#:
-msgid "errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption"
-msgstr "Arbetsboken kan inte publiceras med ett krypterat extrakt. Webbplatsadministrat\u00f6ren har inaktiverat extraktkryptering p\u00e5 den h\u00e4r webbplatsen. Du m\u00e5ste publicera arbetsboken med ett okrypterat extrakt."
-
-#:
-msgid "errors.publish.datasource.requested_extract_encryption_on_site_with_disabled_encryption"
-msgstr "Datak\u00e4llan kan inte publiceras som ett krypterat extrakt. Webbplatsadministrat\u00f6ren har inaktiverat extraktkryptering p\u00e5 den h\u00e4r webbplatsen. Du m\u00e5ste publicera extraktet okrypterat."
-
-#:
-msgid "errors.publish.workbook.requested_no_extract_encryption_on_site_with_enforced_encryption"
-msgstr "Arbetsboken kan inte publiceras med ett okrypterat extrakt. Webbplatsadministrat\u00f6ren har framtvingat extraktkryptering p\u00e5 den h\u00e4r webbplatsen. Du m\u00e5ste publicera arbetsboken och ange extraktkryptering."
-
-#:
-msgid "errors.publish.datasource.requested_no_extract_encryption_on_site_with_enforced_encryption"
-msgstr "Datak\u00e4llextraktet kan inte publiceras okrypterat. Webbplatsadministrat\u00f6ren har framtvingat extraktkryptering p\u00e5 den h\u00e4r webbplatsen. Du m\u00e5ste publicera extraktet krypterat."
-
-#:
-msgid "errors.publish.has_unfinished_extract_creation_job"
-msgstr "Den h\u00e4r resursen kan inte publiceras eftersom det finns v\u00e4ntande eller oavslutade extraktskapandejobb relaterade till den. V\u00e4nta eller avbryt jobben och f\u00f6rs\u00f6k igen."
-
-#:
-msgid "errors.publishing.storage_quota_exceeded.message"
-msgstr "Webbplatslagringskvoten \u00f6verskreds."
-
-#:
-msgid "errors.publishing.request_size_exceeded"
-msgstr "Den h\u00e4r filen kan inte publiceras eftersom beg\u00e4randestorleken \u00e4r {0} byte vilket \u00f6verskrider bytestorleksgr\u00e4nsen med {1} byte."
-
-#:
-msgid "errors.publishing.request_size_unknown"
-msgstr "Beg\u00e4randestorleken kunde inte fastst\u00e4llas."
-
-#:
-msgid "errors.site.quota_exceeded"
-msgstr "Inneh\u00e5llet du f\u00f6rs\u00f6ker ladda upp kommer att \u00f6verskrida webbplatsens kapacitet med {0}."
-
-#:
-msgid "errors.personal_space.quota_exceeded"
-msgstr "Det h\u00e4r inneh\u00e5llet \u00f6verskrider kapaciteten p\u00e5 din personliga yta med {0}."
-
-#:
-msgid "errors.web_authoring.workbook_deleted"
-msgstr "Arbetsboken {0} togs bort. V\u00e4lj Spara som f\u00f6r att spara som ny arbetsbok."
-
-#:
-msgid "errors.web_authoring.workbook_changed"
-msgstr "En annan anv\u00e4ndare har redigerat och sparat den h\u00e4r arbetsboken sedan du b\u00f6rjade redigera. D\u00e4rmed kan du inte l\u00e4ngre uppdatera den ursprungliga arbetsboken. Anv\u00e4nd Spara som f\u00f6r att skapa en ny arbetsbok med dina \u00e4ndringar."
-
-#:
-msgid "labels.publish.embed_credentials"
-msgstr "Inb\u00e4ddat l\u00f6senord f\u00f6r datak\u00e4lla"
-
-#:
-msgid "errors.publish.workbook.google_no_embedded_credentials"
-msgstr "Den h\u00e4r arbetsboken inneh\u00e5ller en {0}-datak\u00e4lla som kr\u00e4ver inb\u00e4ddade inloggningsuppgifter. Spara som en annan arbetsbok genom att v\u00e4lja {1}."
-
-#:
-msgid "errors.publish.datasource.google_no_embedded_credentials"
-msgstr "Den h\u00e4r datak\u00e4llan inneh\u00e5ller en {0}-anslutning som kr\u00e4ver inb\u00e4ddade inloggningsuppgifter. Publicera den h\u00e4r datak\u00e4llan fr\u00e5n Tableau Desktop med inb\u00e4ddade inloggningsuppgifter."
-
-#:
-msgid "errors.publish.datasource.federated_oauth_datasource_failed"
-msgstr "Inloggningsuppgifter f\u00f6r en eller flera anslutningar i din datak\u00e4lla har g\u00e5tt ut. Ta bort de sparade inloggningsuppgifterna f\u00f6r den h\u00e4r datak\u00e4llan p\u00e5 din sida f\u00f6r Kontoinst\u00e4llningar p\u00e5  Tableau Server eller Tableau Online och anslut d\u00e4refter till datak\u00e4llan igen."
-
-#:
-msgid "errors.publish.workbook.missing_oauth_credential"
-msgstr "Inloggningsuppgiften {0} hittades inte eller kan inte anv\u00e4ndas f\u00f6r att ansluta till datak\u00e4llan eller arbetsboken."
-
-#:
-msgid "errors.publish.version_incompatible.message"
-msgstr "Skrivbords- och serverversionerna \u00e4r inkompatibla."
-
-#:
-msgid "errors.publish.version_incompatible.details"
-msgstr "Skrivbordsversion {0}, Serverdokumentversion {1}."
-
-#:
-msgid "errors.publish.datasource.managed_keychain.unique_cv_suggestions"
-msgstr "Publiceringen misslyckades p\u00e5 grund av en konflikt. Skicka in \u00e4ndringen igen."
-
-#:
-msgid "errors.publish.permissions_are_locked"
-msgstr "Beh\u00f6righeterna \u00e4r l\u00e5sta i projektet du publicerar till. Publicera den h\u00e4r arbetsboken genom att anv\u00e4nda standardbeh\u00f6righeterna och f\u00f6rs\u00f6ka igen."
-
-#:
-msgid "errors.publish.datasource.not.found"
-msgstr "Det gick inte att hitta den h\u00e4r datak\u00e4llan p\u00e5 servern."
-
-#:
-msgid "errors.publish.extracts.disabled"
-msgstr "Spara f\u00f6r extraktbaserade, arkivdatak\u00e4llor st\u00f6ds inte \u00e4n."
-
-#:
-msgid "errors.publish.datasource.timeout"
-msgstr "Publiceringen fick timeout efter {0} sekunder. F\u00f6rs\u00f6k anv\u00e4nda Tableau Desktop f\u00f6r att publicera den h\u00e4r datak\u00e4llan."
-
-#:
-msgid "errors.publish.data_role.permission_not_null"
-msgstr "Det g\u00e5r inte att ange uttryckliga beh\u00f6righeter f\u00f6r datak\u00e4llor av typen dataroll."
-
-#:
-msgid "errors.download.extracts.timeout"
-msgstr "Publiceringen fick timeout efter {0} sekunder eftersom datak\u00e4llan har en stor extraktfil. F\u00f6rs\u00f6k anv\u00e4nda Tableau Desktop f\u00f6r att publicera den h\u00e4r datak\u00e4llan."
-
-#:
-msgid "errors.publish.datasource.invalid_extract_update_time"
-msgstr "Ogiltig extractUpdateTime angavs: {0}"
-
-#:
-msgid "errors.publish.async.serialization"
-msgstr "Det gick inte att serialisera publiceringsjobbstatusfel"
-
-#:
-msgid "errors.permissions.view.datasources"
-msgstr "Du m\u00e5ste vara ''Interactor'' f\u00f6r att visa listan med datak\u00e4llor."
-
-# oauth related errors
-
-#:
-msgid "errors.oauth.invalid_oauth_class"
-msgstr "{0} \u00e4r inte en giltig OAuth-anslutningstyp."
-
-#:
-msgid "errors.xmlapi.bad_request"
-msgstr "Felaktig beg\u00e4ran"
-
-#:
-msgid "errors.xmlapi.unauthorized"
-msgstr "Ej auktoriserad"
-
-#:
-msgid "errors.xmlapi.forbidden"
-msgstr "Inte tillr\u00e4ckliga beh\u00f6righeter"
-
-#:
-msgid "errors.xmlapi.system_user_not_found"
-msgstr "Anv\u00e4ndarkontot l\u00e5st eller ogiltigt."
-
-#:
-msgid "errors.xmlapi.site_user_not_found"
-msgstr "Det h\u00e4r anv\u00e4ndarkontot \u00e4r inte aktivt. Kontakta {0}-administrat\u00f6ren f\u00f6r hj\u00e4lp."
-
-#:
-msgid "errors.xmlapi.not_found"
-msgstr "Objektet hittades inte"
-
-#:
-msgid "errors.xmlapi.concurrent_update"
-msgstr "Samtidig uppdatering"
-
-#:
-msgid "errors.xmlapi.internal_server_error"
-msgstr "Internt serverfel"
-
-#:
-msgid "errors.xmlapi.illegal_state"
-msgstr "Otill\u00e5tet tillst\u00e5nd"
-
-#:
-msgid "errors.xmlapi.invalid_parameter"
-msgstr "Ogiltig parameter"
-
-#:
-msgid "errors.xmlapi.already_exists"
-msgstr "Finns redan"
-
-#:
-msgid "errors.xmlapi.site_suspended"
-msgstr "Den h\u00e4r webbplatsen har suspenderats. Du m\u00e5ste vara systemadministrat\u00f6r f\u00f6r att logga in."
-
-#:
-msgid "errors.xmlapi.site_locked"
-msgstr "Webbplatsen har l\u00e5sts. Inloggning \u00e4r inte till\u00e5ten just nu."
-
-#:
-msgid "errors.xmlapi.permission_modification"
-msgstr "Det g\u00e5r inte att publicera med \u00e4ndrade beh\u00f6righeter"
-
-#:
-msgid "errors.xmlapi.update_desktop"
-msgstr "\u00d6ppna arbetsb\u00f6cker som skapats av andra skapare genom att ladda ner den senaste versionen av Tableau Desktop Public Edition fr\u00e5n http://public.tableau.com/"
-
-#:
-msgid "errors.xmlapi.throttled.summary"
-msgstr "F\u00f6r m\u00e5nga beg\u00e4randen"
-
-#:
-msgid "errors.xmlapi.throttled.detail"
-msgstr "F\u00f6r m\u00e5nga anrop till {0}. F\u00f6rs\u00f6k \u00e5ter efter {1}."
-
-#:
-msgid "datasource.publish.check.unpublishable"
-msgstr "Det gick inte att publicera datak\u00e4llan."
-
-#:
-msgid "datasource.publish.check.publishable.extract_required"
-msgstr "Kr\u00e4ver att du skapar ett extrakt vid publicering."
-
-#:
-msgid "datasource.publish.check.publishable.credentials_required"
-msgstr "{1} kommer tillf\u00e4lligt att anv\u00e4nda de inloggningsuppgifter som angetts f\u00f6r {0} f\u00f6r att bekr\u00e4fta att den kan uppr\u00e4tth\u00e5lla en livedataanslutning."
-
-#:
-msgid "datasource.publish.check.publishable.server_unreachable"
-msgstr "{1} kan inte n\u00e5 {0}. Publicering skapar ett extrakt."
-
-#:
-msgid "publish.bundles.workbook.subscription.subject"
-msgstr "Din arbetsbok {0} \u00e4r redo f\u00f6r dig."
-
-#:
-msgid "publish.bundles.workbook.subscription.message"
-msgstr "Dina Salesforce-data lades till i arbetsboken. G\u00e5 till dina {0}-projekt f\u00f6r att komma ig\u00e5ng."
-
-#:
-msgid "extracts.status.finished.upload.workbook"
-msgstr "Slutf\u00f6rde uppladdningen av extrakt (nytt extrakt-ID: {0}) f\u00f6r arbetsboken {1} {2}"
-
-#:
-msgid "extracts.status.finished.refresh.workbook"
-msgstr "Slutf\u00f6rde uppdateringen av extrakt (nytt extrakt-ID: {0}) f\u00f6r arbetsboken {1} {2}"
-
-#:
-msgid "extracts.status.finished.increment.workbook"
-msgstr "Slutf\u00f6rde inkrement av extrakt (nytt extrakt-ID: {0}) f\u00f6r arbetsboken {1} {2}"
-
-#:
-msgid "extracts.status.finished.encrypt.workbook"
-msgstr "Slutf\u00f6rde kryptering av extrakt (nytt extrakt-ID:{0}) f\u00f6r arbetsboken {1}"
-
-#:
-msgid "extracts.status.finished.decrypt.workbook"
-msgstr "Slutf\u00f6rde dekryptering av extrakt (nytt extrakt-ID:{0}) f\u00f6r arbetsboken {1}"
-
-#:
-msgid "extracts.status.finished.rekey.workbook"
-msgstr "Slutf\u00f6rde \u00e5terkryptering av extrakt (nytt extrakt-ID:{0}) f\u00f6r arbetsboken {1}"
-
-#:
-msgid "extracts.status.finished.create.workbook"
-msgstr "Slutf\u00f6rde skapande av extrakt (nytt extrakt-ID:{0}) f\u00f6r arbetsboken {1} {2}"
-
-#:
-msgid "extracts.status.finished.remove.workbook"
-msgstr "Slutf\u00f6rde \u00e4ndra extrakt (datak\u00e4lla-ID:{0}) till live f\u00f6r arbetsboken {1}"
-
-#:
-msgid "extracts.status.finished.upload.datasource"
-msgstr "Slutf\u00f6rde uppladdningen av extrakt (nytt extrakt-ID: {0}) f\u00f6r datak\u00e4llan {1} {2}"
-
-#:
-msgid "extracts.status.finished.refresh.datasource"
-msgstr "Uppdatering av extrakt har slutf\u00f6rts (nytt extrakt-ID: {0}) f\u00f6r datak\u00e4llan ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.increment.datasource"
-msgstr "Ut\u00f6kning av extrakt har slutf\u00f6rts (nytt extrakt-ID: {0}) f\u00f6r datak\u00e4llan ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.append.datasource"
-msgstr "Till\u00e4gg av extrakt har slutf\u00f6rts (nytt extrakt-ID: {0}) f\u00f6r datak\u00e4llan ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.replace.datasource"
-msgstr "Ers\u00e4ttning av extrakt har slutf\u00f6rts (nytt extrakt-ID: {0}) f\u00f6r datak\u00e4llan ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.encrypt.datasource"
-msgstr "Kryptering av extrakt har slutf\u00f6rts (nytt extrakt-ID:{0}) f\u00f6r datak\u00e4llan ''{1}''"
-
-#:
-msgid "extracts.status.finished.decrypt.datasource"
-msgstr "Dekryptering av extrakt har slutf\u00f6rts (nytt extrakt-ID:{0}) f\u00f6r datak\u00e4llan ''{1}''"
-
-#:
-msgid "extracts.status.finished.rekey.datasource"
-msgstr "Omkryptering av extrakt har slutf\u00f6rts (nytt extrakt-ID:{0}) f\u00f6r datak\u00e4llan ''{1}''"
-
-#:
-msgid "extracts.status.finished.encrypt.flow"
-msgstr "Kryptering av extrakt f\u00f6r fl\u00f6det ''{0}'' har slutf\u00f6rts"
-
-#:
-msgid "extracts.status.finished.decrypt.flow"
-msgstr "Dekryptering av extrakt f\u00f6r fl\u00f6det ''{0}'' har slutf\u00f6rts"
-
-#:
-msgid "extracts.status.finished.rekey.flow"
-msgstr "Omkryptering av extrakt f\u00f6r fl\u00f6det ''{0}'' har slutf\u00f6rts"
-
-#:
-msgid "extracts.status.finished.encrypt.flowdraft"
-msgstr "Kryptering av extrakt f\u00f6r fl\u00f6desutkastet ''{0}'' har slutf\u00f6rts"
-
-#:
-msgid "extracts.status.finished.decrypt.flowdraft"
-msgstr "Dekryptering av extrakt f\u00f6r fl\u00f6desutkastet ''{0}'' har slutf\u00f6rts"
-
-#:
-msgid "extracts.status.finished.rekey.flowdraft"
-msgstr "Omkryptering av extrakt f\u00f6r fl\u00f6desutkastet ''{0}'' har slutf\u00f6rts"
-
-#:
-msgid "extracts.status.finished.create.datasource"
-msgstr "Extrakten har skapats (nytt extrakt-ID: {0}) f\u00f6r datak\u00e4llan ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.remove.datasource"
-msgstr "Extrakten har \u00e4ndrats till live f\u00f6r datak\u00e4llan ''{1}''"
-
-#:
-msgid "extracts.status.encryption_key"
-msgstr "ID f\u00f6r krypteringsnyckel: ''{0}''."
-
-#:
-msgid "extracts.status.encryption_keys"
-msgstr "Gammalt ID f\u00f6r krypteringsnyckel: ''{0}'', nytt ID f\u00f6r krypteringsnyckel: ''{1}''."
-
-#:
-msgid "extracts.errors.upload"
-msgstr "Fel vid uppladdning av extrakt f\u00f6r {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.refresh"
-msgstr "Det intr\u00e4ffade ett fel n\u00e4r extrakten f\u00f6r {0} ''{1}'' skulle uppdateras"
-
-#:
-msgid "extracts.errors.create"
-msgstr "Det intr\u00e4ffade ett fel n\u00e4r extrakten f\u00f6r {0} ''{1}'' skulle skapas."
-
-#:
-msgid "extracts.errors.increment"
-msgstr "Fel vid ut\u00f6kning av extrakt f\u00f6r {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.append"
-msgstr "Fel vid till\u00e4gg av extrakt f\u00f6r {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.replace"
-msgstr "Fel vid ers\u00e4ttning av extrakt f\u00f6r {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.download"
-msgstr "Fel vid nerladdning av extrakt f\u00f6r {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.remove"
-msgstr "Fel vid borttagning av extrakt f\u00f6r {0}: ''{1}''."
-
-#:
-msgid "extracts.errors.title"
-msgstr "Fel vid extraktbearbetning"
-
-#:
-msgid "extracts.errors.nothing_to_upload"
-msgstr "Det finns inga extrakt att ladda upp f\u00f6r {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.nothing_to_refresh"
-msgstr "Det finns inga extrakt att uppdatera f\u00f6r {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.nothing_to_increment"
-msgstr "Det finns inga extrakt att ut\u00f6ka f\u00f6r {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.nothing_to_append"
-msgstr "Det finns inga extrakt att l\u00e4gga till f\u00f6r {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.nothing_to_replace"
-msgstr "Det finns inga extrakt att ers\u00e4tta f\u00f6r {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.refresh_summary"
-msgstr "Fel vid uppdatering av extrakt"
-
-#:
-msgid "extracts.errors.encrypt_summary"
-msgstr "Fel vid kryptering av extrakt"
-
-#:
-msgid "extracts.errors.rekey_summary"
-msgstr "Fel vid omkryptering av extrakt"
-
-#:
-msgid "extracts.errors.decrypt_summary"
-msgstr "Fel vid dekryptering av extrakt"
-
-#:
-msgid "extracts.errors.remove_summary"
-msgstr "Fel vid borttagning av extrakt"
-
-#:
-msgid "extracts.errors.create_summary"
-msgstr "Det intr\u00e4ffade ett fel n\u00e4r extraktet skulle skapas"
-
-#:
-msgid "extracts.errors.datasource_overwritten"
-msgstr "Uppdateringen misslyckades eftersom datak\u00e4llan skrevs \u00f6ver av en annan uppgift under bearbetningen. Uppdatera igen f\u00f6r att korrigera det."
-
-#:
-msgid "extracts.errors.workbook_overwritten"
-msgstr "Uppdateringen misslyckades eftersom arbetsboken skrevs \u00f6ver av en annan uppgift under bearbetningen. Uppdatera igen f\u00f6r att korrigera det."
-
-#:
-msgid "extracts.errors.encrypt"
-msgstr "Det intr\u00e4ffade ett fel n\u00e4r extrakten f\u00f6r {0} ''{1}'' skulle krypteras"
-
-#:
-msgid "extracts.errors.decrypt"
-msgstr "Det intr\u00e4ffade ett fel n\u00e4r extrakten f\u00f6r {0} ''{1}'' skulle dekrypteras"
-
-#:
-msgid "extracts.errors.rekey"
-msgstr "Det intr\u00e4ffade ett fel n\u00e4r extrakten f\u00f6r {0} ''{1}'' skulle krypteras om"
-
-#:
-msgid "extracts.errors.encrypt_datasource_overwritten"
-msgstr "Krypteringen av extraktet misslyckades eftersom datak\u00e4llan skrevs \u00f6ver av en annan uppgift under bearbetningen."
-
-#:
-msgid "extracts.errors.encrypt_workbook_overwritten"
-msgstr "Krypteringen av extraktet misslyckades eftersom arbetsboken skrevs \u00f6ver av en annan uppgift under bearbetningen."
-
-#:
-msgid "extracts.errors.rekey_datasource_overwritten"
-msgstr "Omkrypteringen av extraktet misslyckades eftersom datak\u00e4llan skrevs \u00f6ver av en annan uppgift under bearbetningen."
-
-#:
-msgid "extracts.errors.rekey_workbook_overwritten"
-msgstr "Omkrypteringen av extraktet misslyckades eftersom arbetsboken skrevs \u00f6ver av en annan uppgift under bearbetningen."
-
-#:
-msgid "extracts.errors.decrypt_datasource_overwritten"
-msgstr "Dekrypteringen av extraktet misslyckades eftersom datak\u00e4llan skrevs \u00f6ver av en annan uppgift under bearbetningen."
-
-#:
-msgid "extracts.errors.decrypt_workbook_overwritten"
-msgstr "Dekrypteringen av extraktet misslyckades eftersom arbetsboken skrevs \u00f6ver av en annan uppgift under bearbetningen."
-
-#:
-msgid "extracts.errors.remove_datasource_overwritten"
-msgstr "Det gick inte att \u00e4ndra datak\u00e4llan till live eftersom den har skrivits \u00f6ver av en annan uppgift."
-
-#:
-msgid "extracts.errors.remove_workbook_overwritten"
-msgstr "Det gick inte att \u00e4ndra arbetsboken till live eftersom den har skrivits \u00f6ver av en annan uppgift."
-
-#:
-msgid "extracts.errors.create_datasource_overwritten"
-msgstr "Det gick inte att extrahera datak\u00e4llan eftersom den har skrivits \u00f6ver av en annan uppgift."
-
-#:
-msgid "extracts.errors.create_workbook_overwritten"
-msgstr "Det gick inte att extrahera arbetsboken eftersom den har skrivits \u00f6ver av en annan uppgift."
-
-#:
-msgid "extracts.site_mode_change_details"
-msgstr "Webbplatsens extraktkrypteringsl\u00e4ge har \u00e4ndrats fr\u00e5n ''{0}'' till ''{1}''."
-
-#:
-msgid "extracts.errors.encryption_not_licensed"
-msgstr "\u00c5tg\u00e4rden misslyckades eftersom extraktkryptering inte ing\u00e5r i licensen. Om du vill utf\u00f6ra den h\u00e4r \u00e5tg\u00e4rden m\u00e5ste du f\u00f6rnya licensen eller dekryptera extraktet."
-
-#:
-msgid "extracts.errors.operation_cancelled_detail"
-msgstr "Tidsgr\u00e4nsen f\u00f6r borttagningen av extrakt f\u00f6r {0} (datak\u00e4lla: {2}) \u00f6verskreds."
-
-#:
-msgid "workbooks.messages.load_error"
-msgstr "Det gick inte att l\u00e4sa in arbetsboken {0}"
-
-#:
-msgid "workbooks.messages.locked"
-msgstr "Arbetsboken ''{0}'' \u00e4ndras av en annan anv\u00e4ndare just nu. F\u00f6rs\u00f6k igen senare."
-
-#:
-msgid "workbooks.new_workbook.default_name"
-msgstr "Ny arbetsbok"
-
-#:
-msgid "workbooks.new_datasource.default_name"
-msgstr "Ny datak\u00e4lla"
-
-#:
-msgid "datasources.messages.load_error"
-msgstr "Det gick inte att l\u00e4sa in datak\u00e4llan {0}"
-
-#:
-msgid "metrics.new_metric.default_name"
-msgstr "Nytt m\u00e4tv\u00e4rde"
-
-#:
-msgid "messages.timeout_error.summary"
-msgstr "Tidsgr\u00e4nsfel"
-
-#:
-msgid "messages.timeout_error.task_canceled"
-msgstr "Avbryter uppgift som tog mer \u00e4n {0} sekunder"
-
-#:
-msgid "subscriptions.manage_my_subscriptions"
-msgstr "Hantera mina prenumerationer"
-
-#:
-msgid "subscriptions.message_greeting"
-msgstr "Hej!"
-
-#:
-msgid "subscriptions.subscribed_footer"
-msgstr "H\u00e4r kommer din prenumeration p\u00e5"
-
-#:
-msgid "subscriptions.subscribed_workbook"
-msgstr "arbetsbok"
-
-#:
-msgid "subscriptions.subscribed_view"
-msgstr "vy"
-
-#:
-msgid "subscriptions.fullstop"
-msgstr "."
-
-#:
-msgid "subscriptions.extract_refresh_footer"
-msgstr "Du f\u00e5r det h\u00e4r prenumerationsmejlet n\u00e4r data uppdateras."
-
-#:
-msgid "subscriptions.explore_the_viz"
-msgstr "Utforska visualiseringen"
-
-#:
-msgid "subscriptions.explore_the_workbook"
-msgstr "Utforska arbetsboken"
-
-#:
-msgid "subscriptions.pdf_attached"
-msgstr "Din Tableau PDF-fil \u00e4r bifogad."
-
-#:
-msgid "subscriptions.access_live_content"
-msgstr "Du kan se livevyn \u00f6ver inneh\u00e5llet h\u00e4r"
-
-#:
-msgid "subscriptions.warning_deprecated_type"
-msgstr "inaktuell"
-
-#:
-msgid "subscriptions.warning_extract_refresh_type"
-msgstr "extraktuppdateringen misslyckades"
-
-#:
-msgid "subscriptions.warning_flow_run_type"
-msgstr "fl\u00f6desk\u00f6rningen misslyckades"
-
-#:
-msgid "subscriptions.warning_introduction_general"
-msgstr "F\u00f6ljande datakvalitetsvarningar p\u00e5verkar {0}."
-
-#:
-msgid "subscriptions.warning_introduction_view"
-msgstr "Du hittar mer information p\u00e5 fliken Datainformation i vyn"
-
-#:
-msgid "subscriptions.warning_introduction_workbook"
-msgstr "Du hittar mer information p\u00e5 sidan med arbetsboken"
-
-#:
-msgid "subscriptions.warning_maintenance_type"
-msgstr "underh\u00e5ll utf\u00f6rs"
-
-#:
-msgid "subscriptions.warning_permission_error"
-msgstr "Den h\u00e4r varningen g\u00e4ller en resurs du saknar beh\u00f6righet att se."
-
-#:
-msgid "subscriptions.warning_redacted"
-msgstr "Beh\u00f6righet kr\u00e4vs"
-
-#:
-msgid "subscriptions.warning_sensitve_type"
-msgstr "k\u00e4nsliga data"
-
-#:
-msgid "subscriptions.warning_severe"
-msgstr "Viktig datakvalitetsvarning"
-
-#:
-msgid "subscriptions.warning_stale_type"
-msgstr "inaktuella data"
-
-#:
-msgid "subscriptions.warning_standard"
-msgstr "Datakvalitetsvarning"
-
-#:
-msgid "subscriptions.warning_error_type"
-msgstr "ok\u00e4nd varningstyp"
-
-#:
-msgid "subscriptions.warning_warning_type"
-msgstr "varning"
-
-#:
-msgid "errors.subscriptions.image_render_failed"
-msgstr "Det gick inte att \u00e5terge \u00f6gonblicksbilden av vyn ''{0}'' korrekt."
-
-#:
-msgid "errors.subscriptions.see_live_view"
-msgstr "Om du vill visa vyn online g\u00e5r du till {0}."
-
-#:
-msgid "errors.subscriptions.disabled_on_server"
-msgstr "Serveromfattande prenumerationsinst\u00e4llningar har inte aktiverats. Det g\u00e5r inte att bearbeta prenumerationer."
-
-#:
-msgid "errors.subscriptions.disabled_on_site"
-msgstr "Prenumerationer har inaktiverats f\u00f6r webbplatsen."
-
-#:
-msgid "errors.subscriptions.site_is_locked"
-msgstr "Webbplatsen \u00e4r l\u00e5st. Det g\u00e5r inte att bearbeta prenumerationer."
-
-#:
-msgid "errors.subscriptions.orphan"
-msgstr "Det gick inte att hitta arbetsboken och vyerna som \u00e4r kopplade till den h\u00e4r prenumerationen."
-
-#:
-msgid "errors.subscriptions.user_unlicensed"
-msgstr "Den olicensierade anv\u00e4ndarens prenumeration hoppas \u00f6ver."
-
-#:
-msgid "errors.subscriptions.smtp_unreacheable"
-msgstr "Det gick inte att n\u00e5 SMTP-v\u00e4rden. Kontrollera att SMTP har konfigurerats."
-
-#:
-msgid "errors.subscriptions.uncategorized_error"
-msgstr "Ok\u00e4nt fel"
-
-#:
-msgid "errors.subscriptions.pdf_render_failed"
-msgstr "Det gick inte att \u00e5terge PDF-bilagan f\u00f6r det h\u00e4r mejlet korrekt."
-
-#:
-msgid "errors.subscriptions.pdf_limit_exceeded"
-msgstr "Den genererade PDF-filen \u00f6verskrider storleksgr\u00e4nsen p\u00e5 {0} MB och kan inte bifogas det h\u00e4r mejlet."
-
-#:
-msgid "errors.subscriptions.attachments_not_enabled"
-msgstr "Den h\u00e4r prenumerationen misslyckades eftersom e-postbilagor har inaktiverats. Kontakta Tableau-administrat\u00f6ren f\u00f6r mer information."
-
-#:
-msgid "errors.subscriptions.pdf_email_failed"
-msgstr "Det gick inte att bifoga den genererade PDF-filen i det h\u00e4r mejlet."
-
-#:
-msgid "errors.subscriptions.learn_more_troubleshoot"
-msgstr "<a hre"
-
-#:
-msgid "errors.subscriptions.bad_extract_refresh_subscription_configuration"
-msgstr "Prenumerationen har inaktiverats eftersom arbetsboken inneh\u00e5ller flera scheman f\u00f6r extraktuppdatering. Om du vill \u00e5teruppta den uppdaterar du intervallet till P\u00e5 valt schema."
-
-#:
-msgid "errors.subscriptions.subscription_failed_refresh_failure"
-msgstr "Extraktuppdateringen f\u00f6r datak\u00e4llan misslyckades."
-
-#:
-msgid "errors.subscriptions.multiple_extracts_for_extract_refresh_subscription"
-msgstr "Arbetsboken inneh\u00e5ller flera scheman f\u00f6r extraktuppdatering. Uppdatera intervallet till P\u00e5 valt schema."
-
-#:
-msgid "errors.subscriptions.datasource_is_missing_password"
-msgstr "Anslutningsfel hos datak\u00e4llan. Kontrollera inloggningsuppgifterna f\u00f6r alla anslutningar till datak\u00e4llor f\u00f6r arbetsboken."
-
-#:
-msgid "subscriptions.results_summary.sg"
-msgstr "{0} av {1} prenumeration har skickats fr\u00e5n schemat ''{2}''."
-
-#:
-msgid "subscriptions.results_summary.pl"
-msgstr "{0} av {1} prenumerationer har skickats fr\u00e5n schemat ''{2}''."
-
-#:
-msgid "subscriptions.results_views_per_subscription.sg"
-msgstr "{0} ({1} av 1 visning lyckades)"
-
-#:
-msgid "subscriptions.results_views_per_subscription.pl"
-msgstr "{0} ({1} av {2} visningar lyckades)"
-
-#:
-msgid "subscriptions.results_views_per_subscription.more"
-msgstr "({0} till)"
-
-#:
-msgid "subscriptions.results_views_per_subscription.failed"
-msgstr "{0} ({1} av {2} visningar misslyckades)."
-
-#:
-msgid "subscriptions.results_header.all_shown.failures.sg"
-msgstr "1 fel"
-
-#:
-msgid "subscriptions.results_header.all_shown.failures.pl"
-msgstr "{0} fel"
-
-#:
-msgid "subscriptions.results_header.all_shown.warnings.sg"
-msgstr "1 varning"
-
-#:
-msgid "subscriptions.results_header.all_shown.warnings.pl"
-msgstr "{0} varningar"
-
-#:
-msgid "subscriptions.results_header.some_hidden.failures.pl.sg"
-msgstr "{0} fel (1 dolt, l\u00e4s loggarna)"
-
-#:
-msgid "subscriptions.results_header.some_hidden.failures.pl.pl"
-msgstr "{0} fel ({1} dolda, l\u00e4s loggarna)"
-
-#:
-msgid "subscriptions.results_header.some_hidden.warnings.pl.sg"
-msgstr "{0} varningar (1 dold, l\u00e4s loggarna)"
-
-#:
-msgid "subscriptions.results_header.some_hidden.warnings.pl.pl"
-msgstr "{0} varningar ({1} dolda, l\u00e4s loggarna)"
-
-#:
-msgid "dataalerts.manage_my_data_alerts"
-msgstr "Hantera aviseringar"
-
-#:
-msgid "dataalerts.edit_data_alert"
-msgstr "Redigera avisering"
-
-#:
-msgid "dataalerts.remove_user_from_data_alert"
-msgstr "Ta bort mig"
-
-#:
-msgid "dataalerts.add_user_to_data_alert"
-msgstr "L\u00e4gg till mig i den h\u00e4r aviseringen"
-
-#:
-msgid "dataalerts.greater_or_equal"
-msgstr "{0} var st\u00f6rre \u00e4n eller lika med {1}."
-
-#:
-msgid "dataalerts.greater"
-msgstr "{0} var st\u00f6rre \u00e4n {1}."
-
-#:
-msgid "dataalerts.less_or_equal"
-msgstr "{0} var mindre \u00e4n eller lika med {1}."
-
-#:
-msgid "dataalerts.less"
-msgstr "{0} var mindre \u00e4n {1}."
-
-#:
-msgid "dataalerts.equal"
-msgstr "{0} var lika med {1}."
-
-#:
-msgid "dataalerts.email_alt_text"
-msgstr "Vy som anv\u00e4nds av datadriven avisering: {0}"
-
-#:
-msgid "dataalerts.email_alt_text_hidden_view"
-msgstr "Vy som anv\u00e4nds av datadriven avisering: {0} med inf\u00f6rda \u00e4ndringar"
-
-#:
-msgid "dataalerts.alert_triggered_for_the_view"
-msgstr "Avisering har utl\u00f6sts f\u00f6r vyn"
-
-#:
-msgid "dataalerts.failure.email.subject"
-msgstr "Datadriven avisering fungerar inte f\u00f6r: {0}"
-
-#:
-msgid "dataalerts.failure.status"
-msgstr "Aviseringen <i>{0}</i> fungerar inte"
-
-#:
-msgid "dataalerts.failure.view.details.alert"
-msgstr "Visa den h\u00e4r aviseringen"
-
-#:
-msgid "dataalerts.failure.explanation"
-msgstr "Den datadrivna aviseringen <i>{0}</i> fungerar inte just nu, s\u00e5 mottagarna aviseras inte n\u00e4r datavillkoret \u00e4r sant. Du f\u00e5r ett mejl n\u00e4r aviseringen fungerar igen."
-
-#:
-msgid "dataalerts.failure.affected.alert"
-msgstr "Datadriven avisering som p\u00e5verkas"
-
-#:
-msgid "dataalerts.failure.time"
-msgstr "Tid d\u00e5 aviseringen misslyckades"
-
-#:
-msgid "dataalerts.failure.cause"
-msgstr "Ibland misslyckas aviseringar p\u00e5 grund av tillf\u00e4lliga n\u00e4tverksproblem, som g\u00e5r \u00f6ver av sig sj\u00e4lv. Du kan ocks\u00e5 prova med att \u00e5terskapa aviseringen i den ursprungliga datavyn eller fels\u00f6ka vanliga orsaker till problemet som:"
-
-#:
-msgid "dataalerts.failure.changed.view"
-msgstr "En arbetsbok, en vy eller ett dataf\u00e4lt har tagits bort eller f\u00e5tt ett annat namn."
-
-#:
-msgid "dataalerts.failure.expired.credentials"
-msgstr "Utg\u00e5ngna inloggningsuppgifter f\u00f6r en databas i en arbetsbok."
-
-#:
-msgid "dataalerts.failure.datasource.error"
-msgstr "En otillg\u00e4nglig datak\u00e4lla."
-
-#:
-msgid "dataalerts.failure.email.footer"
-msgstr "Du f\u00e5r det h\u00e4r mejlet  {0} p\u00e5 grund av ett aviseringsfel."
-
-#:
-msgid "dataalerts.failure.troubleshooting"
-msgstr "Kontrollera om n\u00e5got av problemen ovan \u00e4r orsak till att aviseringen misslyckas genom att klicka p\u00e5 knappen nedan."
-
-#:
-msgid "dataalerts.success.email.subject"
-msgstr "Datadriven avisering har \u00e5terupptagits f\u00f6r: {0}"
-
-#:
-msgid "dataalerts.success.status"
-msgstr "Aviseringen <i>{0}</i> har \u00e5terupptagits"
-
-#:
-msgid "dataalerts.success.explanation"
-msgstr "Den datadrivna aviseringen <i>{0}</i> fungerar igen, s\u00e5 mottagarna aviseras n\u00e4r datavillkoret \u00e4r sant."
-
-#:
-msgid "dataalerts.failure.error.internalError"
-msgstr "Internt fel f\u00f6r dataavisering"
-
-#:
-msgid "dataalerts.failure.error.invalidDataAlertSpecification"
-msgstr "Ogiltig specifikation f\u00f6r dataavisering"
-
-#:
-msgid "dataalerts.failure.error.summaryTableNotFound"
-msgstr "Det gick inte att hitta den sammanfattade datatabellen"
-
-#:
-msgid "dataalerts.failure.error.unclassifiedError"
-msgstr "Oklassificerat fel"
-
-#:
-msgid "dataalerts.failure.error.viewContentNotFound"
-msgstr "Det gick inte att hitta inneh\u00e5llet {0} i dataaviseringsyvn"
-
-#:
-msgid "dataalerts.failure.error.viewNotFound"
-msgstr "Det gick inte att hitta dataaviseringsyvn"
-
-#:
-msgid "dataalerts.failure.error.workbookNotFound"
-msgstr "Det gick inte att hitta arbetsboken"
-
-#:
-msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
-msgstr "Ingen axel hittades f\u00f6r f\u00e4ltet {0}"
-
-#:
-msgid "dataalerts.failure.error.paneDescriptorNotFound"
-msgstr "{0}"
-
-#:
-msgid "dataalerts.failure.error.unsupportedComparisonExpression"
-msgstr "J\u00e4mf\u00f6relseuttrycket {0} st\u00f6ds inte"
-
-#:
-msgid "dataalerts.failure.error.nonConstComparisonOp"
-msgstr "Ingen konstant j\u00e4mf\u00f6relseoperator kunde identifieras: {0}"
-
-#:
-msgid "dataalerts.failure.error.cannotAddFilter"
-msgstr "Det gick inte att l\u00e4gga till filtret i dataaviseringen"
-
-#:
-msgid "dataalerts.failure.error.sheetNotAlertable"
-msgstr "Bladet {0} har data som st\u00f6ds f\u00f6r aviseringar. {1}"
-
-#:
-msgid "dataalerts.failure.error.dataAlertMeasureNotFound"
-msgstr "Det gick inte att v\u00e4lja m\u00e5ttet. {0}"
-
-#:
-msgid "dataalerts.failure.error.tooManyMeasuresForDataAlert"
-msgstr "Felaktigt antal m\u00e5tt har identifierats.{0}"
-
-#:
-msgid "dataalerts.failure.error.thresholdParseError"
-msgstr "Det gick inte att tolka tr\u00f6skeltexten {0}. {1}"
-
-#:
-msgid "dataalerts.failure.error.dataAlertPresModelCreationError"
-msgstr "Fel vid serialisering av avisering. {0}"
-
-#:
-msgid "dataalerts.failure.error.cannotDrawDataAlertDialog"
-msgstr "Det gick inte att rita upp dialogrutan f\u00f6r dataavisering."
-
-#:
-msgid "dataalerts.failure.error.unsupportedDataAlertType"
-msgstr "Dataaviseringstypen {0} st\u00f6ds inte just nu."
-
-#:
-msgid "dataalerts.failure.suspend.email.subject"
-msgstr "Datadriven avisering har inaktiverats f\u00f6r: {0}"
-
-#:
-msgid "dataalerts.failure.suspend.email.status"
-msgstr "Aviseringen {0} har inaktiverats"
-
-#:
-msgid "dataalerts.failure.suspend.email.explanation"
-msgstr "S\u00e5 l\u00e4nge inaktiveringen g\u00e4ller utv\u00e4rderas inte vyn och mottagarna aviseras inte heller. S\u00e5 snart en korrigering har gjorts kan du \u00e5teruppta aviseringen i <a hre"
-
-#:
-msgid "dataalerts.failure.suspend.view.name.prefix"
-msgstr "Vy"
-
-#:
-msgid "dataalerts.failure.suspend.time"
-msgstr "Tid d\u00e5 inaktiveringen b\u00f6rjade"
-
-#:
-msgid "dataalerts.failure.suspend.email.footer"
-msgstr "Du f\u00e5r det h\u00e4r mejlet eftersom din avisering har inaktiverats."
-
-#:
-msgid "dataalerts.failure.suspend.email.view.name.my.content"
-msgstr "Mitt inneh\u00e5ll"
-
-#:
-msgid "dataalerts.failure.suspend.view.alerts"
-msgstr "Visa aviseringar"
-
-#:
-msgid "metricsservices.failure.affected.metric"
-msgstr "M\u00e4tv\u00e4rden som p\u00e5verkas"
-
-#:
-msgid "metricsservices.failure.cause"
-msgstr "Ibland misslyckas uppdateringar av m\u00e4tv\u00e4rden p\u00e5 grund av tillf\u00e4lliga anslutningsproblem, som g\u00e5r \u00f6ver av sig sj\u00e4lv. N\u00e5gra andra vanliga orsaker till varf\u00f6r uppdatering av m\u00e4tv\u00e4rden kan misslyckas \u00e4r:"
-
-#:
-msgid "metricsservices.failure.changed.view"
-msgstr "En arbetsbok, en vy eller ett dataf\u00e4lt har tagits bort eller f\u00e5tt ett annat namn."
-
-#:
-msgid "metricsservices.failure.permissions.error"
-msgstr "\u00c4ndrade beh\u00f6righeter f\u00f6r den anslutna vyn"
-
-#:
-msgid "metricsservices.failure.email.footer"
-msgstr "Du f\u00e5r det h\u00e4r mejlet  {0} p\u00e5 grund av ett fel med uppdateringen av dina m\u00e4tv\u00e4rden."
-
-#:
-msgid "metricsservices.failure.email.subject"
-msgstr "Uppdatering av m\u00e4tv\u00e4rden fungerar inte f\u00f6r: {0}"
-
-#:
-msgid "metricsservices.failure.expired.credentials"
-msgstr "Utg\u00e5ngna inloggningsuppgifter f\u00f6r en databas i en arbetsbok."
-
-#:
-msgid "metricsservices.failure.explanation"
-msgstr "Det g\u00e5r inte att uppdatera m\u00e4tv\u00e4rdet, och m\u00e4tdata uppdateras d\u00e4rf\u00f6r inte heller. Du f\u00e5r ett mejl n\u00e4r uppdateringen av m\u00e4tv\u00e4rden fungerar igen."
-
-#:
-msgid "metricsservices.failure.status"
-msgstr "M\u00e4tv\u00e4rdet {0} uppdateras inte"
-
-#:
-msgid "metricsservices.failure.suspend.email.explanation"
-msgstr "N\u00e4r uppdatering av m\u00e4tv\u00e4rden \u00e4r inaktiverat uppdateras inte m\u00e4tdata. S\u00e5 snart en korrigering har gjorts kan du \u00e5teruppta uppdateringen av m\u00e4tv\u00e4rden."
-
-#:
-msgid "metricsservices.failure.suspend.email.footer"
-msgstr "Du f\u00e5r det h\u00e4r mejlet {0} eftersom uppdateringen av dina m\u00e4tv\u00e4rden har inaktiverats."
-
-#:
-msgid "metricsservices.failure.suspend.email.status"
-msgstr "Uppdatering av m\u00e4tv\u00e4rdet {0} har inaktiverats"
-
-#:
-msgid "metricsservices.failure.suspend.email.subject"
-msgstr "Uppdatering av m\u00e4tv\u00e4rde har inaktiverats f\u00f6r: {0}"
-
-#:
-msgid "metricsservices.failure.suspend.time"
-msgstr "Tid d\u00e5 inaktiveringen b\u00f6rjade"
-
-#:
-msgid "metricsservices.failure.suspend.view.metric"
-msgstr "G\u00e5 till m\u00e4tv\u00e4rde"
-
-#:
-msgid "metricsservices.failure.suspend.view.name.prefix"
-msgstr "Ansluten vy"
-
-#:
-msgid "metricsservices.failure.time"
-msgstr "Tid f\u00f6r misslyckad uppdatering"
-
-#:
-msgid "metricsservices.failure.troubleshooting"
-msgstr "Kontrollera om n\u00e5got av problemen ovan \u00e4r orsak till att uppdateringen misslyckas genom att klicka p\u00e5 knappen nedan. Du kan ocks\u00e5 prova med att \u00e5terskapa m\u00e4tv\u00e4rdet i den anslutna vyn."
-
-#:
-msgid "metricsservices.failure.view.details.metric"
-msgstr "G\u00e5 till m\u00e4tv\u00e4rde"
-
-#:
-msgid "metricsservices.failure.view.name.prefix"
-msgstr "Ansluten vy"
-
-#:
-msgid "metricsservices.success.email.subject"
-msgstr "Uppdatering av m\u00e4tv\u00e4rde har \u00e5terupptagits f\u00f6r: {0}"
-
-#:
-msgid "metricsservices.success.explanation"
-msgstr "Uppdateringen av m\u00e4tv\u00e4rdet fungerar igen, och m\u00e4tdata kontrollas f\u00f6r att se om de beh\u00f6ver uppdateras."
-
-#:
-msgid "metricsservices.success.status"
-msgstr "Uppdateringen av m\u00e4tv\u00e4rdet {0} har \u00e5terupptagits"
-
-#:
-msgid "errors.staticimages.generic"
-msgstr "Det intr\u00e4ffade ett fel n\u00e4r statiska bilder f\u00f6r arbetsboken {0} skulle skapas. {1}."
-
-#:
-msgid "errors.internal_error.request.message"
-msgstr "{0} kunde inte utf\u00f6ra beg\u00e4ran."
-
-#:
-msgid "errors.permissions.limited_user_visibility"
-msgstr "Det gick inte att slutf\u00f6ra fr\u00e5gan. Anv\u00e4ndaren m\u00e5ste vara administrat\u00f6r eller Creator f\u00f6r att fr\u00e5ga andra anv\u00e4ndare om Anv\u00e4ndarsynlighet \u00e4r inst\u00e4lld p\u00e5 begr\u00e4nsad."
-
-#:
-msgid "local_names.system_user.guest.name"
-msgstr "G\u00e4st"
-
-#:
-msgid "local_names.group.all_users.name"
-msgstr "Alla anv\u00e4ndare"
-
-#:
-msgid "local_names.containers.personal_space.name"
-msgstr "Personlig yta"
-
-#:
-msgid "password_reset.email.subject"
-msgstr "H\u00e4r \u00e4r l\u00e4nken f\u00f6r l\u00f6senords\u00e5terst\u00e4llning"
-
-#:
-msgid "password_reset.email.body"
-msgstr "Hej {0}!<br/><br/>Du beg\u00e4rde nyligen \u00e5terst\u00e4llning av ditt l\u00f6senord.<br/><br/> Om du vill \u00e4ndra ditt Tableau Server-l\u00f6senord {1} eller klistrar in f\u00f6ljande l\u00e4nk i webbl\u00e4saren: {2}<br/><br/>Den h\u00e4r l\u00e4nken upph\u00f6r att g\u00e4lla om 48 timmar, s\u00e5 g\u00f6r det helst med en g\u00e5ng.<br/><br/>Om du inte har beg\u00e4rt \u00e5terst\u00e4llning av ditt l\u00f6senord b\u00f6r du tala om detta f\u00f6r serveradministrat\u00f6ren.<br/><br/>Tack f\u00f6r att du anv\u00e4nder Tableau!<br/>Vi som jobbar hos Tableau"
-
-#:
-msgid "password_reset.email.link"
-msgstr "klickar du h\u00e4r"
-
-#:
-msgid "hours.pl"
-msgstr "{0} timmar"
-
-#:
-msgid "hours.sg"
-msgstr "1 timme"
-
-#:
-msgid "minutes.pl"
-msgstr "{0} minuter"
-
-#:
-msgid "minutes.sg"
-msgstr "1 minut"
-
-#:
-msgid "seconds.pl"
-msgstr "{0} sekunder"
-
-#:
-msgid "seconds.sg"
-msgstr "1 sekund"
-
-#:
-msgid "dataconnections.classes.tableau_server_site"
-msgstr "Tableau Server-webbplats"
-
-#:
-msgid "materializeviews.errors.workbook_not_in_project"
-msgstr "Projektet ''{0}'' inneh\u00e5ller inte arbetsboken ''{1}''"
-
-#:
-msgid "materializeviews.errors.workbook_has_no_extract"
-msgstr "Det gick inte att uppdatera inst\u00e4llningen f\u00f6r materialiserade vyer f\u00f6r arbetsboken ''{0}''. F\u00f6r tillf\u00e4llet st\u00f6ds bara arbetsb\u00f6cker med inb\u00e4ddade extrakt."
-
-#:
-msgid "materializeviews.errors.workbook_updating_errors"
-msgstr "Fel hittades n\u00e4r inst\u00e4llningen f\u00f6r materialiserade vyer f\u00f6r arbetsb\u00f6cker uppdaterades"
-
-#:
-msgid "materializeviews.errors.workbook_too_large"
-msgstr "Det gick inte att uppdatera inst\u00e4llningen f\u00f6r materialiserade vyer f\u00f6r arbetsboken ''{0}'' eftersom arbetsbokens storlek \u00f6verskrider gr\u00e4nsen p\u00e5 {1} GB."
-
-#:
-msgid "materializeviews.errors.project_path_not_exists"
-msgstr "Projekts\u00f6kv\u00e4gen ''{0}'' finns inte"
-
-#:
-msgid "materializeviews.errors.feature_disabled"
-msgstr "Det gick inte att uppdatera inst\u00e4llningen f\u00f6r materialiserade vyer f\u00f6r arbetsboken ''{0}'' eftersom funktionen \u00e4r inaktiverad just nu."
-
-#:
-msgid "materializeviews.errors.update_materialized_views_setting_failed"
-msgstr "Det gick inte att uppdatera inst\u00e4llningen f\u00f6r materialiserade vyer f\u00f6r arbetsboken ''{0}''."
-
-#:
-msgid "materializeviews.errors.site_not_enabled"
-msgstr "Den h\u00e4r webbplatsen har inte aktiverats f\u00f6r materialiserade vyer. Kontakta administrat\u00f6ren."
-
-#:
-msgid "materializeviews.errors.encrypted_extracts_not_supported"
-msgstr "Funktionen f\u00f6r materialiserade vyer har inte st\u00f6d f\u00f6r arbetsb\u00f6cker med krypterade extrakt just nu"
-
-#:
-msgid "materializedviews.finished.create"
-msgstr "Materialiserade vyer med statusen ''{0}'' har skapats f\u00f6r arbetsboken ''{1}''"
-
-#:
-msgid "materializedviews.finished.delete"
-msgstr "Materialiserade vyer f\u00f6r arbetsbok-ID:t {0} har tagits bort"
-
-#:
-msgid "materializedviews.finished.encrypt"
-msgstr "Kryptering av materialiserade vyer f\u00f6r arbetsboken ''{0}'' har slutf\u00f6rts"
-
-#:
-msgid "materializedviews.finished.decrypt"
-msgstr "Dekryptering av materialiserade vyer f\u00f6r arbetsboken ''{0}'' har slutf\u00f6rts"
-
-#:
-msgid "materializedviews.finished.rekey"
-msgstr "Omkryptering av materialiserade vyer f\u00f6r arbetsboken ''{0}'' har slutf\u00f6rts"
-
-#:
-msgid "materializedviews.status.encryption_key"
-msgstr "ID f\u00f6r krypteringsnyckel: ''{0}''."
-
-#:
-msgid "materializedviews.status.encryption_keys"
-msgstr "Gammalt ID f\u00f6r krypteringsnyckel: ''{0}'', nytt ID f\u00f6r krypteringsnyckel: ''{1}''."
-
-#:
-msgid "materializedviews.status.encryption_type"
-msgstr "Typ av krypteringsdatak\u00e4lla: ''{0}''"
-
-#:
-msgid "customizedviews.namedSharingPrefix"
-msgstr "Delad version"
-
-#:
-msgid "flows.drafts.default_name"
-msgstr "Nytt fl\u00f6de"
-
-#:
-msgid "content_type.project"
-msgstr "Projekt"
-
-#:
-msgid "content_type.workbook"
-msgstr "Arbetsbok"
-
-#:
-msgid "content_type.view"
-msgstr "Vy"
-
-#:
-msgid "content_type.datasource"
-msgstr "Datak\u00e4lla"
-
-#:
-msgid "content_type.flow"
-msgstr "Fl\u00f6de"
-
-#:
-msgid "content_type.metric"
-msgstr "Metriska"
-
-#:
-msgid "content_type.collection"
-msgstr "Samling"
-
-#:
-msgid "content_type.visualization"
-msgstr "Visualisering"
-
-#:
-msgid "content_type.askdata_visualization"
-msgstr "Fr\u00e5ga data-visualisering"
-
-#:
-msgid "content_type.explaindata_explanation"
-msgstr "F\u00f6rklaring"
-
-#:
-msgid "content_type.publishedconnection"
-msgstr "Virtuell anslutning"
-
-#:
-msgid "content_type.publishedconnectiontable"
-msgstr "Tabell i virtuell anslutning"
-
-#:
-msgid "upgradethumbnails.status.server_started"
-msgstr "Serversvar: Uppgradering av miniatyrer har p\u00e5b\u00f6rjats."
-
-#:
-msgid "upgradethumbnails.status.server_stopped"
-msgstr "Serversvar: %d jobb har stoppats"
-
-#:
-msgid "dataquality.message.refresh_failed"
-msgstr "Uppdateringen misslyckades: {0}"
-
-#:
-msgid "dataquality.message.last_successful"
-msgstr "Senast genomf\u00f6rt utan fel: {0}"
-
-#:
-msgid "dataquality.message.next_scheduled"
-msgstr "N\u00e4sta schemalagda: {0}"
-
-#:
-msgid "dataquality.message.flow_run_output_steps_failed"
-msgstr "{0}/{1} utg\u00e5ngssteg kunde inte k\u00f6ras"
-
-#:
-msgid "importcsvsummary.error.details"
-msgstr "Felinformation:"
-
-#:
-msgid "importcsvsummary.remainingerrors"
-msgstr "(\u00e5terst\u00e5ende fel visas inte)"
-
-#:
-msgid "importcsvsummary.error.line"
-msgstr "rad {0} f\u00f6r anv\u00e4ndare ''{1}'': ''{2}''"
-
-#:
-msgid "importcsvsummary.line.processed"
-msgstr "Bearbetade rader: {0}"
-
-#:
-msgid "importcsvsummary.line.skipped"
-msgstr "\u00d6verhoppade rader: {0}"
-
-#:
-msgid "importcsvsummary.users.added.count"
-msgstr "Antal tillagda anv\u00e4ndare: {0}"
-
-#:
-msgid "importcsvsummary.errors.count"
-msgstr "Antal fel: {0}"
-
-#:
-msgid "importcsvsummary.error.unexpected_extension"
-msgstr "Ov\u00e4ntat filnamnstill\u00e4gg f\u00f6r CSV-fil"
-
-#:
-msgid "importcsvsummary.error.size_limit"
-msgstr "CSV-filen \u00f6verskrider storleksgr\u00e4nsen p\u00e5 {0}"
-
-#:
-msgid "importcsvsummary.error.local.password_mismatch"
-msgstr "Uppdatering av lokal webbplatsanv\u00e4ndare kr\u00e4ver tomt eller matchande l\u00f6senord"
-
-#:
-msgid "importcsvsummary.error.local.password_required"
-msgstr "Det kr\u00e4vs l\u00f6senord f\u00f6r att skapa en lokal systemanv\u00e4ndare n\u00e4r autentiseringen \u00e4r lokal"
-
-#:
-msgid "importcsvsummary.error.ad.user_not_found"
-msgstr "Det gick inte att hitta AD-anv\u00e4ndaren ''{0}''"
-
-#:
-msgid "importcsvsummary.error.too_many_errors"
-msgstr "F\u00f6r m\u00e5nga fel i CSV-filen"
-
-#:
-msgid "audit.errors.wdc_not_allowlisted"
-msgstr "Webbdatakopplingen finns inte i godk\u00e4nnandelistan. L\u00e4s mer p\u00e5: https://help.tableau.com/current/online/sv-se/to_keep_data_fresh.htm"
-
-#:
-msgid "user.input.name.err.too_long"
-msgstr "namnet \u00e4r l\u00e4ngre \u00e4n det h\u00f6gsta till\u00e5tna antalet tecken {0}"
-
-#:
-msgid "user.input.name.err.empty"
-msgstr "namnet f\u00e5r inte vara tomt"
-
-#:
-msgid "askdata.title"
-msgstr "Fr\u00e5ga data"
-
-#:
-msgid "slack.app.upgrade.email.notification.subject"
-msgstr "Uppdatering f\u00f6r Tableau-programmet f\u00f6r Slack"
-
-#:
-msgid "slack.app.upgrade.email.notification.introduction"
-msgstr "Det finns en uppdatering f\u00f6r Tableau-programmet f\u00f6r Slack, som kan installeras om nu f\u00f6r att fungera med n\u00e4sta version av Tableau Online. Tableau rekommenderar att du installerar om programmet s\u00e5 att det forts\u00e4tter att fungera som det ska och s\u00e5 att du kan anv\u00e4nda nya funktioner. Du kan l\u00e4sa om nya funktioner och f\u00f6r\u00e4ndringar i <a styl"
-
-#:
-msgid "slack.app.upgrade.email.notification.action"
-msgstr "Du hittar uppdaterings- och ominstallationssteg i <a styl"
-
-#:
-msgid "slack.app.upgrade.email.notification.steps"
-msgstr "Det h\u00e4r tj\u00e4nstmeddelandet har publicerats av Tableau Online."
-
-#:
-msgid "slack.app.upgrade.email.notification.reason"
-msgstr "Du f\u00e5r det h\u00e4r meddelandet eftersom du \u00e4r administrat\u00f6r f\u00f6r en Tableau Online-webbplats som \u00e4r ansluten till Slack."
-
-#:
-msgid "slack.app.upgrade.email.notification.footer.privacy"
-msgstr "L\u00e4s v\u00e5r <a styl"
-
-#:
-msgid "unifiedconsumption.tcrm.folders.private"
-msgstr "Min privata app"
-
-
-msgid ""
-msgstr ""
-"MIME-Version: 1.0"
-"Content-Type: text/plain; charset=None"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: prop2po"
-"Project-Id-Version: None"
-"Language: None"
+"Language: sv"
 #:
 msgid "commandlineutils.errors.bad_value"
-msgstr "Alternativet ''{0}'' har det felaktiga v\u00e4rdet ''{1}''. Det m\u00e5ste vara n\u00e5got av: {2}"
+msgstr "Alternativet ''{0}'' har det felaktiga värdet ''{1}''. Det måste vara något av: {2}"
 
 #:
 msgid "commandlineutils.errors.not_integer"
-msgstr "V\u00e4rdet ''{0}'' f\u00f6r alternativet ''{1}'' \u00e4r inte ett heltal"
+msgstr "Värdet ''{0}'' för alternativet ''{1}'' är inte ett heltal"
 
 #:
 msgid "common.errors.empty_file"
-msgstr "Filen ''{0}'' \u00e4r tom"
+msgstr "Filen ''{0}'' är tom"
 
 #:
 msgid "common.errors.file_not_found"
-msgstr "Det g\u00e5r inte att \u00f6ppna filen ''{0}''"
+msgstr "Det går inte att öppna filen ''{0}''"
 
 #:
 msgid "common.errors.invalid_file_path"
-msgstr "Ogiltig fils\u00f6kv\u00e4g: ''{0}''"
+msgstr "Ogiltig filsökväg: ''{0}''"
 
 #:
 msgid "common.errors.folder_path_not_found"
-msgstr "Det g\u00e5r inte att hitta katalogen ''{0}''"
+msgstr "Det går inte att hitta katalogen ''{0}''"
 
 #:
 msgid "common.errors.access_denied"
-msgstr "\u00c5tkomst nekad till filen ''{0}''. Kontrollera att s\u00f6kv\u00e4gen \u00e4r giltig och att filnamnet inte matchar en befintlig katalog"
+msgstr "Åtkomst nekad till filen ''{0}''. Kontrollera att sökvägen är giltig och att filnamnet inte matchar en befintlig katalog"
 
 #:
 msgid "common.errors.requires_csv_file"
-msgstr "Kommandot ''{0}'' kr\u00e4ver CSV-fil"
+msgstr "Kommandot ''{0}'' kräver CSV-fil"
 
 #:
 msgid "common.errors.requires_group_name"
-msgstr "Kommandot ''{0}'' kr\u00e4ver ett gruppnamn"
+msgstr "Kommandot ''{0}'' kräver ett gruppnamn"
 
 #:
 msgid "common.errors.requires_site_name"
-msgstr "Kommandot ''{0}'' kr\u00e4ver ett webbplatsnamn"
+msgstr "Kommandot ''{0}'' kräver ett webbplatsnamn"
 
 #:
 msgid "common.errors.options_conflict"
-msgstr "Nya och inaktuella alternativ f\u00f6r att specificera anv\u00e4ndarrollen har angetts. Endast ett kan anv\u00e4ndas"
+msgstr "Nya och inaktuella alternativ för att specificera användarrollen har angetts. Endast ett kan användas"
 
 #:
 msgid "common.errors.csv_sizelimit"
-msgstr "Den CSV-fil som du refererar till \u00f6verskrider storleksgr\u00e4nsen p\u00e5 100 MB. Dela upp filens inneh\u00e5ll i mindre CSV-filer och importera dem sedan separat."
+msgstr "Den CSV-fil som du refererar till överskrider storleksgränsen på 100 MB. Dela upp filens innehåll i mindre CSV-filer och importera dem sedan separat."
 
 #:
 msgid "common.options.admin-type"
-msgstr "[Inaktuellt] Tilldelar [eller tar bort] webbplatsadministrat\u00f6rsr\u00e4ttigheten f\u00f6r alla anv\u00e4ndare i CSV-filen. Den h\u00e4r inst\u00e4llningen kan \u00e5sidos\u00e4ttas med v\u00e4rdena p\u00e5 de enskilda raderna i CSV-filen. {0} kan vara: {1}, {2} eller {3}. Om inget anges: {3} f\u00f6r nya anv\u00e4ndare, of\u00f6r\u00e4ndrat f\u00f6r befintliga anv\u00e4ndare"
+msgstr "[Inaktuellt] Tilldelar [eller tar bort] webbplatsadministratörsrättigheten för alla användare i CSV-filen. Den här inställningen kan åsidosättas med värdena på de enskilda raderna i CSV-filen. {0} kan vara: {1}, {2} eller {3}. Om inget anges: {3} för nya användare, oförändrat för befintliga användare"
 
 #:
 msgid "common.options.complete"
-msgstr "Kr\u00e4ver [eller kr\u00e4ver inte] att alla rader m\u00e5ste vara giltiga om n\u00e5gon \u00e4ndring ska kunna g\u00f6ras. Standard: {0}"
+msgstr "Kräver [eller kräver inte] att alla rader måste vara giltiga om någon ändring ska kunna göras. Standard: {0}"
 
 #:
 msgid "common.options.license"
-msgstr "[Inaktuellt] St\u00e4ller in standardlicensniv\u00e5n f\u00f6r alla anv\u00e4ndare. Detta kan \u00e5sidos\u00e4ttas med v\u00e4rdet i CSV-filen. {0} kan vara {1}, {2} eller {3}"
+msgstr "[Inaktuellt] Ställer in standardlicensnivån för alla användare. Detta kan åsidosättas med värdet i CSV-filen. {0} kan vara {1}, {2} eller {3}"
 
 #:
 msgid "common.options.nowait"
-msgstr "V\u00e4nta inte p\u00e5 att jobbet ska slutf\u00f6ras"
+msgstr "Vänta inte på att jobbet ska slutföras"
 
 #:
 msgid "common.options.publisher"
-msgstr "[Inaktuellt] Tilldelar [eller tar bort] publiceringsr\u00e4tten f\u00f6r alla anv\u00e4ndare i CSV-filen. Den h\u00e4r inst\u00e4llningen kan \u00e5sidos\u00e4ttas med v\u00e4rdena p\u00e5 de enskilda raderna i CSV-filen. Standard, om inget annat angetts: falskt f\u00f6r nya anv\u00e4ndare, of\u00f6r\u00e4ndrat f\u00f6r befintliga anv\u00e4ndare"
+msgstr "[Inaktuellt] Tilldelar [eller tar bort] publiceringsrätten för alla användare i CSV-filen. Den här inställningen kan åsidosättas med värdena på de enskilda raderna i CSV-filen. Standard, om inget annat angetts: falskt för nya användare, oförändrat för befintliga användare"
 
 #:
 msgid "common.options.silent-progress"
-msgstr "Visa inte f\u00f6rloppsmeddelanden f\u00f6r jobbet"
+msgstr "Visa inte förloppsmeddelanden för jobbet"
 
 #:
 msgid "common.options.sysadmin-type"
-msgstr "[Inaktuellt] Tilldelar [eller tar bort] webbplatsadministrat\u00f6rsr\u00e4ttigheten f\u00f6r alla anv\u00e4ndare i CSV-filen. Den h\u00e4r inst\u00e4llningen kan \u00e5sidos\u00e4ttas med v\u00e4rdena p\u00e5 de enskilda raderna i CSV-filen. {0} kan vara: {1}, {2}, {3} eller {4}. Om inget anges: {4} f\u00f6r nya anv\u00e4ndare, of\u00f6r\u00e4ndrat f\u00f6r befintliga anv\u00e4ndare"
+msgstr "[Inaktuellt] Tilldelar [eller tar bort] webbplatsadministratörsrättigheten för alla användare i CSV-filen. Den här inställningen kan åsidosättas med värdena på de enskilda raderna i CSV-filen. {0} kan vara: {1}, {2}, {3} eller {4}. Om inget anges: {4} för nya användare, oförändrat för befintliga användare"
 
 #:
 msgid "common.output.job_queued_success"
-msgstr "Jobb i k\u00f6"
+msgstr "Jobb i kö"
 
 #:
 msgid "common.output.succeeded"
@@ -1963,19 +1953,19 @@ msgstr "Klart"
 
 #:
 msgid "common.options.role"
-msgstr "St\u00e4ller in standardrollen f\u00f6r alla p\u00e5verkade anv\u00e4ndare. Giltiga v\u00e4rden f\u00f6r {0}: {1}. Om inget annat anges anv\u00e4nder servern standardv\u00e4rdet: {2}"
+msgstr "Ställer in standardrollen för alla påverkade användare. Giltiga värden för {0}: {1}. Om inget annat anges använder servern standardvärdet: {2}"
 
 #:
 msgid "addusers.options.users"
-msgstr "En fil som inneh\u00e5ller en lista med anv\u00e4ndare, en per rad, som ska l\u00e4ggas till i gruppen"
+msgstr "En fil som innehåller en lista med användare, en per rad, som ska läggas till i gruppen"
 
 #:
 msgid "addusers.short_description"
-msgstr "L\u00e4gg till anv\u00e4ndare till en grupp"
+msgstr "Lägg till användare till en grupp"
 
 #:
 msgid "addusers.status"
-msgstr "L\u00e4gger till anv\u00e4ndare listade i {0} till gruppen {1} ..."
+msgstr "Lägger till användare listade i {0} till gruppen {1} ..."
 
 #:
 msgid "creategroup.short_description"
@@ -1983,15 +1973,15 @@ msgstr "Skapa en lokal grupp"
 
 #:
 msgid "creategroup.status"
-msgstr "Skapar gruppen ''{0}'' p\u00e5 servern ..."
+msgstr "Skapar gruppen ''{0}'' på servern ..."
 
 #:
 msgid "creategroup.options.role"
-msgstr "St\u00e4ller in den roll som ska anges f\u00f6r anv\u00e4ndare i gruppen vid inloggning. Giltiga v\u00e4rden f\u00f6r {0}: {1}. En anv\u00e4ndares webbplatsroll st\u00e4lls bara in p\u00e5 det h\u00e4r v\u00e4rdet om det \u00e4r mindre restriktivt \u00e4n anv\u00e4ndarens aktuella webbplatsroll. Om inget anges st\u00e4lls ingen roll in f\u00f6r anv\u00e4ndare i den h\u00e4r gruppen vid inloggning."
+msgstr "Ställer in den roll som ska anges för användare i gruppen vid inloggning. Giltiga värden för {0}: {1}. En användares webbplatsroll ställs bara in på det här värdet om det är mindre restriktivt än användarens aktuella webbplatsroll. Om inget anges ställs ingen roll in för användare i den här gruppen vid inloggning."
 
 #:
 msgid "createextracts.errors.required_argument"
-msgstr "Kommandot createextracts kr\u00e4ver en arbetsboks-URL, ett arbetsboksnamn eller ett datak\u00e4llsnamn."
+msgstr "Kommandot createextracts kräver en arbetsboks-URL, ett arbetsboksnamn eller ett datakällsnamn."
 
 #:
 msgid "createextracts.errors.error"
@@ -1999,23 +1989,23 @@ msgstr "Fel vid skapande av extrakt"
 
 #:
 msgid "createextracts.for.datasource"
-msgstr "Skapar extrakt f\u00f6r datak\u00e4llan ''{0}''"
+msgstr "Skapar extrakt för datakällan ''{0}''"
 
 #:
 msgid "createextracts.for.workbook_name"
-msgstr "Skapar extrakt f\u00f6r arbetsboken med namnet ''{0}''"
+msgstr "Skapar extrakt för arbetsboken med namnet ''{0}''"
 
 #:
 msgid "createextracts.for.workbook_url"
-msgstr "Skapar extrakt f\u00f6r arbetsboken med URL:en ''{0}''"
+msgstr "Skapar extrakt för arbetsboken med URL:en ''{0}''"
 
 #:
 msgid "createextracts.options.datasource"
-msgstr "Namnet p\u00e5 m\u00e5ldatak\u00e4llan f\u00f6r generering av extrakt"
+msgstr "Namnet på måldatakällan för generering av extrakt"
 
 #:
 msgid "createextracts.options.embedded-datasources"
-msgstr "En blankstegsavgr\u00e4nsad lista med namn p\u00e5 inb\u00e4ddade datak\u00e4llsnamn i m\u00e5larbetsboken. Omslut datak\u00e4llsnamn med dubbla citattecken om de inneh\u00e5ller blanksteg. Endast tillg\u00e4ngligt n\u00e4r du skapar extrakt f\u00f6r en arbetsbok."
+msgstr "En blankstegsavgränsad lista med namn på inbäddade datakällsnamn i målarbetsboken. Omslut datakällsnamn med dubbla citattecken om de innehåller blanksteg. Endast tillgängligt när du skapar extrakt för en arbetsbok."
 
 #:
 msgid "createextracts.options.encrypt"
@@ -2023,15 +2013,15 @@ msgstr "Skapa krypterat extrakt."
 
 #:
 msgid "createextracts.options.include-all"
-msgstr "Inkludera alla inb\u00e4ddade datak\u00e4llor i m\u00e5larbetsboken. Endast tillg\u00e4ngligt n\u00e4r du skapar extrakt f\u00f6r en arbetsbok."
+msgstr "Inkludera alla inbäddade datakällor i målarbetsboken. Endast tillgängligt när du skapar extrakt för en arbetsbok."
 
 #:
 msgid "createextracts.options.parent-project-path"
-msgstr "S\u00f6kv\u00e4gen f\u00f6r projektet \u00e4r \u00f6verordnad projektet som inneh\u00e5ller m\u00e5lresursen. Du m\u00e5ste ange projektnamnet med --projekt."
+msgstr "Sökvägen för projektet är överordnad projektet som innehåller målresursen. Du måste ange projektnamnet med --projekt."
 
 #:
 msgid "createextracts.options.project"
-msgstr "Namnet p\u00e5 det projekt som inneh\u00e5ller m\u00e5lresursen. Beh\u00f6vs bara om {0} eller {1} har angetts. Om det inte anges anv\u00e4nds standardprojektet ''{2}''."
+msgstr "Namnet på det projekt som innehåller målresursen. Behövs bara om {0} eller {1} har angetts. Om det inte anges används standardprojektet ''{2}''."
 
 #:
 msgid "createextracts.options.url"
@@ -2039,19 +2029,19 @@ msgstr "Resursens kanoniska namn som den visas i webbadressen"
 
 #:
 msgid "createextracts.options.workbook"
-msgstr "Namnet p\u00e5 m\u00e5larbetsboken vid generering av extrakt"
+msgstr "Namnet på målarbetsboken vid generering av extrakt"
 
 #:
 msgid "createextracts.short_description"
-msgstr "Skapa extrakt f\u00f6r en publicerad arbetsbok eller datak\u00e4lla"
+msgstr "Skapa extrakt för en publicerad arbetsbok eller datakälla"
 
 #:
 msgid "createextracts.workbook.include-all"
-msgstr "Inkludera alla inb\u00e4ddade datak\u00e4llor i m\u00e5larbetsboken"
+msgstr "Inkludera alla inbäddade datakällor i målarbetsboken"
 
 #:
 msgid "createextracts.workbook.embedded-datasource-names"
-msgstr "Med inb\u00e4ddade datak\u00e4llsnamn"
+msgstr "Med inbäddade datakällsnamn"
 
 #:
 msgid "createproject.options.description"
@@ -2063,7 +2053,7 @@ msgstr "Projektets namn"
 
 #:
 msgid "createproject.options.parent-project-path"
-msgstr "Projekts\u00f6kv\u00e4g som kommer att inneh\u00e5lla det nya projektet. Om inget anges skapas den p\u00e5 webbplatsens rotniv\u00e5"
+msgstr "Projektsökväg som kommer att innehålla det nya projektet. Om inget anges skapas den på webbplatsens rotnivå"
 
 #:
 msgid "createproject.short_description"
@@ -2071,43 +2061,43 @@ msgstr "Skapa ett projekt"
 
 #:
 msgid "createproject.status"
-msgstr "Skapar projektet ''{0}'' p\u00e5 servern ..."
+msgstr "Skapar projektet ''{0}'' på servern ..."
 
 #:
 msgid "createsite.errors.invalid_url_option"
-msgstr "URL-alternativet \u00e4r ogiltigt om du skapar flera webbplatser. K\u00f6r kommandot p\u00e5 nytt efter det att du har tagit bort URL-alternativet, eller skapa varje webbplats separat"
+msgstr "URL-alternativet är ogiltigt om du skapar flera webbplatser. Kör kommandot på nytt efter det att du har tagit bort URL-alternativet, eller skapa varje webbplats separat"
 
 #:
 msgid "createsite.errors.site_name_already_exists"
-msgstr "Det finns redan en webbplats med namnet ''{0}''. F\u00f6rs\u00f6k med ett annat webbplatsnamn."
+msgstr "Det finns redan en webbplats med namnet ''{0}''. Försök med ett annat webbplatsnamn."
 
 #:
 msgid "createsite.errors.site_id_already_exists"
-msgstr "Det finns redan en webbplats med ID:t ''{0}''. Specificera ett annat webbplats-ID genom att anv\u00e4nda -r. Mer information finns i hj\u00e4lpen till tabcmd createsite."
+msgstr "Det finns redan en webbplats med ID:t ''{0}''. Specificera ett annat webbplats-ID genom att använda -r. Mer information finns i hjälpen till tabcmd createsite."
 
 #:
 msgid "createsite.options.allow-mobile-snapshots"
-msgstr "Till\u00e5t [eller neka] mobila \u00f6gonblicksbilder. Standardinst\u00e4llningen \u00e4r att till\u00e5ta mobila \u00f6gonblicksbilder"
+msgstr "Tillåt [eller neka] mobila ögonblicksbilder. Standardinställningen är att tillåta mobila ögonblicksbilder"
 
 #:
 msgid "createsite.options.allow-subscriptions"
-msgstr "Till\u00e5t [eller neka] prenumerationer f\u00f6r den h\u00e4r webbplatsen. Standarinst\u00e4llningen \u00e4r serverns standardinst\u00e4llning. Prenumerationer kan inte aktiveras om serverprenumerationer har inaktiverats"
+msgstr "Tillåt [eller neka] prenumerationer för den här webbplatsen. Standarinställningen är serverns standardinställning. Prenumerationer kan inte aktiveras om serverprenumerationer har inaktiverats"
 
 #:
 msgid "createsite.options.allow-web-authoring"
-msgstr "Till\u00e5t [eller neka] webbf\u00f6rfattande f\u00f6r den h\u00e4r webbplatsen. Standardinst\u00e4llningen \u00e4r att till\u00e5ta webbf\u00f6rfattande"
+msgstr "Tillåt [eller neka] webbförfattande för den här webbplatsen. Standardinställningen är att tillåta webbförfattande"
 
 #:
 msgid "createsite.options.metrics-level"
-msgstr "0 f\u00f6r ingen samling, 100 f\u00f6r alla samlingar"
+msgstr "0 för ingen samling, 100 för alla samlingar"
 
 #:
 msgid "createsite.options.guest-access-enabled"
-msgstr "G\u00e4st\u00e5tkomstbeh\u00f6righet att se vyer f\u00f6r dem som inte har loggat in p\u00e5 n\u00e5got Tableau Server-konto"
+msgstr "Gäståtkomstbehörighet att se vyer för dem som inte har loggat in på något Tableau Server-konto"
 
 #:
 msgid "createsite.options.site-mode"
-msgstr "Till\u00e5t [eller neka] webbplatsadministrat\u00f6ren anv\u00e4ndarhantering p\u00e5 webbplatsen"
+msgstr "Tillåt [eller neka] webbplatsadministratören användarhantering på webbplatsen"
 
 #:
 msgid "createsite.options.storage-quota"
@@ -2115,11 +2105,11 @@ msgstr "Webbplatslagringskvot i MB"
 
 #:
 msgid "createsite.options.subscription-email"
-msgstr "E-postadress som anv\u00e4nds f\u00f6r prenumerationer"
+msgstr "E-postadress som används för prenumerationer"
 
 #:
 msgid "createsite.options.subscription-footer"
-msgstr "Sidfot som anv\u00e4nds f\u00f6r prenumerationer"
+msgstr "Sidfot som används för prenumerationer"
 
 #:
 msgid "createsite.options.url"
@@ -2127,23 +2117,23 @@ msgstr "Webbplatsens webbplats-ID"
 
 #:
 msgid "createsite.options.user-quota"
-msgstr "Maximalt antal webbplatsanv\u00e4ndare"
+msgstr "Maximalt antal webbplatsanvändare"
 
 #:
 msgid "createsite.options.extract_encryption_mode"
-msgstr "Extraktkrypteringsl\u00e4ge: inaktiverat, aktiverat eller framtvingat. Om inget anges till\u00e4mpas standardv\u00e4rdet."
+msgstr "Extraktkrypteringsläge: inaktiverat, aktiverat eller framtvingat. Om inget anges tillämpas standardvärdet."
 
 #:
 msgid "createsite.options.web_extraction_enabled"
-msgstr "Till\u00e5t [eller neka] skapande och \u00e4ndrande av extrakt till live f\u00f6r den h\u00e4r webbplatsen. Standardinst\u00e4llningen \u00e4r att till\u00e5ta."
+msgstr "Tillåt [eller neka] skapande och ändrande av extrakt till live för den här webbplatsen. Standardinställningen är att tillåta."
 
 #:
 msgid "createsite.options.run_now_enabled"
-msgstr "Till\u00e5t [eller neka] alternativet K\u00f6r nu f\u00f6r den h\u00e4r webbplatsen. Standardinst\u00e4llningen \u00e4r K\u00f6r nu."
+msgstr "Tillåt [eller neka] alternativet Kör nu för den här webbplatsen. Standardinställningen är Kör nu."
 
 #:
 msgid "createsite.options.time_zone"
-msgstr "Den tidszon som ska anv\u00e4ndas f\u00f6r extrakt p\u00e5 den h\u00e4r webbplatsen. Standardinst\u00e4llningen \u00e4r upph\u00e4vd s\u00e5 att serverns tidszon ska kunna anv\u00e4ndas."
+msgstr "Den tidszon som ska användas för extrakt på den här webbplatsen. Standardinställningen är upphävd så att serverns tidszon ska kunna användas."
 
 #:
 msgid "createsite.short_description"
@@ -2151,63 +2141,63 @@ msgstr "Skapa en webbplats"
 
 #:
 msgid "createsite.status"
-msgstr "Skapa webbplatse ''{0}'' p\u00e5 servern ..."
+msgstr "Skapa webbplatse ''{0}'' på servern ..."
 
 #:
 msgid "createsiteusers.options.auth-type"
-msgstr "Tilldelar autentiseringstypen f\u00f6r alla anv\u00e4ndare i CSV-filen. F\u00f6r Tableau Online kan {0} vara {1} (standard) eller {2}. F\u00f6r Tableau Server kan {0} vara lokal (standard) eller {2}."
+msgstr "Tilldelar autentiseringstypen för alla användare i CSV-filen. För Tableau Online kan {0} vara {1} (standard) eller {2}. För Tableau Server kan {0} vara lokal (standard) eller {2}."
 
 #:
 msgid "createsiteusers.description"
-msgstr "Skapa anv\u00e4ndare p\u00e5 den aktuella webbplatsen. Anv\u00e4ndarna l\u00e4ses in fr\u00e5n den angivna CSV-filen. Filen kan ha kolumnerna i den ordning som visas nedan.{0}1. Anv\u00e4ndarnamn{0}2. L\u00f6senord        (Ignoreras om Active Directory anv\u00e4nds){0}3. Eget namn   (Ignoreras om Active Directory anv\u00e4nds){0}4. Licensniv\u00e5 ({1}, {2}, {3}, {4} eller {5}){0}5. Administrat\u00f6r ({6}/{7}){0}6. Utgivare ({8}/{9}/1 eller {10}/{11}/0){0}7. E-post (endast f\u00f6r Tableau Public){0}Filen kan ha f\u00e4rre kolumner. Den kan t.ex. vara en enkel lista med ett anv\u00e4ndarnamn per rad. Du kan anv\u00e4nda citattecken om ett v\u00e4rde inneh\u00e5ller kommatecken. Tabcmd v\u00e4ntar p\u00e5 att uppgiften {12} ska slutf\u00f6ras. Du kan v\u00e4lja att inte v\u00e4nta p\u00e5 att uppgiften ska slutf\u00f6ras p\u00e5 servern och ist\u00e4llet \u00e5terv\u00e4nda direkt genom att passera flaggan {13}. Systemadministrat\u00f6rer kan inte skapas eller degraderas med det h\u00e4r kommandot. Anv\u00e4nd ''{14}'' ist\u00e4llet"
+msgstr "Skapa användare på den aktuella webbplatsen. Användarna läses in från den angivna CSV-filen. Filen kan ha kolumnerna i den ordning som visas nedan.{0}1. Användarnamn{0}2. Lösenord        (Ignoreras om Active Directory används){0}3. Eget namn   (Ignoreras om Active Directory används){0}4. Licensnivå ({1}, {2}, {3}, {4} eller {5}){0}5. Administratör ({6}/{7}){0}6. Utgivare ({8}/{9}/1 eller {10}/{11}/0){0}7. E-post (endast för Tableau Public){0}Filen kan ha färre kolumner. Den kan t.ex. vara en enkel lista med ett användarnamn per rad. Du kan använda citattecken om ett värde innehåller kommatecken. Tabcmd väntar på att uppgiften {12} ska slutföras. Du kan välja att inte vänta på att uppgiften ska slutföras på servern och istället återvända direkt genom att passera flaggan {13}. Systemadministratörer kan inte skapas eller degraderas med det här kommandot. Använd ''{14}'' istället"
 
 #:
 msgid "createsiteusers.short_description"
-msgstr "Skapa anv\u00e4ndare p\u00e5 den aktuella webbplatsen"
+msgstr "Skapa användare på den aktuella webbplatsen"
 
 #:
 msgid "createsiteusers.status"
-msgstr "L\u00e4gger till anv\u00e4ndare listade i {0} till den aktuella webbplatsen ..."
+msgstr "Lägger till användare listade i {0} till den aktuella webbplatsen ..."
 
 #:
 msgid "createusers.description"
-msgstr "Skapa anv\u00e4ndare. Anv\u00e4ndarna l\u00e4ses in fr\u00e5n den angivna CSV-filen. Filen kan ha kolumnerna i den ordning som visas nedan.{0}1. Anv\u00e4ndarnamn{0}2. L\u00f6senord        (Ignoreras om Active Directory anv\u00e4nds){0}3. Eget namn   (Ignoreras om Active Directory anv\u00e4nds){0}4. Licensniv\u00e5 ({1}, {2}, {3}, {4} eller {5}){0}5. Administrat\u00f6r ({6}/{7}/{8}/{9}){0}6. Utgivare ({10}/{11}/1 eller {12}/{13}/0){0}7. E-post (endast f\u00f6r Tableau Public){0}Filen kan ha f\u00e4rre kolumner. Den kan t.ex. vara en enkel lista med ett anv\u00e4ndarnamn per rad. Du kan anv\u00e4nda citattecken om ett v\u00e4rde inneh\u00e5ller kommatecken. Tabcmd v\u00e4ntar p\u00e5 att uppgiften {14} ska slutf\u00f6ras. Du kan v\u00e4lja att inte v\u00e4nta p\u00e5 att uppgiften ska slutf\u00f6ras p\u00e5 servern och ist\u00e4llet \u00e5terv\u00e4nda direkt genom att passera flaggan {15}"
+msgstr "Skapa användare. Användarna läses in från den angivna CSV-filen. Filen kan ha kolumnerna i den ordning som visas nedan.{0}1. Användarnamn{0}2. Lösenord        (Ignoreras om Active Directory används){0}3. Eget namn   (Ignoreras om Active Directory används){0}4. Licensnivå ({1}, {2}, {3}, {4} eller {5}){0}5. Administratör ({6}/{7}/{8}/{9}){0}6. Utgivare ({10}/{11}/1 eller {12}/{13}/0){0}7. E-post (endast för Tableau Public){0}Filen kan ha färre kolumner. Den kan t.ex. vara en enkel lista med ett användarnamn per rad. Du kan använda citattecken om ett värde innehåller kommatecken. Tabcmd väntar på att uppgiften {14} ska slutföras. Du kan välja att inte vänta på att uppgiften ska slutföras på servern och istället återvända direkt genom att passera flaggan {15}"
 
 #:
 msgid "createusers.short_description"
-msgstr "Skapa anv\u00e4ndare p\u00e5 servern"
+msgstr "Skapa användare på servern"
 
 #:
 msgid "createusers.status"
-msgstr "L\u00e4gger till anv\u00e4ndare listade i {0} p\u00e5 servern"
+msgstr "Lägger till användare listade i {0} på servern"
 
 #:
 msgid "decryptextracts.short_description"
-msgstr "Dekryptera extrakt p\u00e5 en webbplats"
+msgstr "Dekryptera extrakt på en webbplats"
 
 #:
 msgid "decryptextracts.status"
-msgstr "Schemal\u00e4gger dekryptering av extrakt p\u00e5 webbplatsen {0} ..."
+msgstr "Schemalägger dekryptering av extrakt på webbplatsen {0} ..."
 
 #:
 msgid "delete.errors.mutually_exclusive"
-msgstr "Det g\u00e5r inte att ange b\u00e5de en arbetsbok och en datak\u00e4lla som ska tas bort"
+msgstr "Det går inte att ange både en arbetsbok och en datakälla som ska tas bort"
 
 #:
 msgid "delete.errors.requires_workbook_datasource"
-msgstr "Kommandot ''{0}'' kr\u00e4ver ett namn p\u00e5 en arbetsbok eller en datak\u00e4lla"
+msgstr "Kommandot ''{0}'' kräver ett namn på en arbetsbok eller en datakälla"
 
 #:
 msgid "delete.options.datasource"
-msgstr "Datak\u00e4lla som ska tas bort"
+msgstr "Datakälla som ska tas bort"
 
 #:
 msgid "delete.options.parent-project-path"
-msgstr "S\u00f6kv\u00e4g till det \u00f6verordnade projekt som inneh\u00e5ller den arbetsbok/datak\u00e4lla som ska tas bort. Du m\u00e5ste specificera projektnamnet med --project."
+msgstr "Sökväg till det överordnade projekt som innehåller den arbetsbok/datakälla som ska tas bort. Du måste specificera projektnamnet med --project."
 
 #:
 msgid "delete.options.project"
-msgstr "Projektet som innehller den arbetsbok/datak\u00e4lla som ska tas bort. Standardprojektet \u00e4r ''{0}''"
+msgstr "Projektet som innehller den arbetsbok/datakälla som ska tas bort. Standardprojektet är ''{0}''"
 
 #:
 msgid "delete.options.workbook"
@@ -2215,15 +2205,15 @@ msgstr "Arbetsbok som ska tas bort"
 
 #:
 msgid "delete.short_description"
-msgstr "Ta bort en arbetsbok eller en datak\u00e4lla fr\u00e5n servern"
+msgstr "Ta bort en arbetsbok eller en datakälla från servern"
 
 #:
 msgid "delete.status"
-msgstr "Tar bort {0} ''{1}'' fr\u00e5n servern ..."
+msgstr "Tar bort {0} ''{1}'' från servern ..."
 
 #:
 msgid "deleteextracts.errors.required_argument"
-msgstr "Kommandot deleteextracts kr\u00e4ver en arbetsboks-URL, ett arbetsboksnamn eller ett datak\u00e4llsnamn"
+msgstr "Kommandot deleteextracts kräver en arbetsboks-URL, ett arbetsboksnamn eller ett datakällsnamn"
 
 #:
 msgid "deleteextracts.errors.error"
@@ -2231,35 +2221,35 @@ msgstr "Fel vid borttagande av extrakt"
 
 #:
 msgid "deleteextracts.for.datasource"
-msgstr "Tar bort extrakt f\u00f6r datak\u00e4llan ''{0}''"
+msgstr "Tar bort extrakt för datakällan ''{0}''"
 
 #:
 msgid "deleteextracts.for.workbook_name"
-msgstr "Tar bort extrakt f\u00f6r arbetsboken med namnet ''{0}''"
+msgstr "Tar bort extrakt för arbetsboken med namnet ''{0}''"
 
 #:
 msgid "deleteextracts.for.workbook_url"
-msgstr "Tar bort extrakt f\u00f6r arbetsboken med URL:en ''{0}''"
+msgstr "Tar bort extrakt för arbetsboken med URL:en ''{0}''"
 
 #:
 msgid "deleteextracts.options.datasource"
-msgstr "Namnet p\u00e5 m\u00e5ldatak\u00e4llan f\u00f6r borttagande av extrakt"
+msgstr "Namnet på måldatakällan för borttagande av extrakt"
 
 #:
 msgid "deleteextracts.options.embedded-datasources"
-msgstr "En blankstegsavgr\u00e4nsad lista med namn p\u00e5 inb\u00e4ddade datak\u00e4llsnamn i m\u00e5larbetsboken. Omslut datak\u00e4llsnamn med dubbla citattecken om de inneh\u00e5ller blanksteg. Endast tillg\u00e4ngligt n\u00e4r du tar bort extrakt fr\u00e5n en arbetsbok."
+msgstr "En blankstegsavgränsad lista med namn på inbäddade datakällsnamn i målarbetsboken. Omslut datakällsnamn med dubbla citattecken om de innehåller blanksteg. Endast tillgängligt när du tar bort extrakt från en arbetsbok."
 
 #:
 msgid "deleteextracts.options.include-all"
-msgstr "Inkludera alla inb\u00e4ddade datak\u00e4llor i m\u00e5larbetsboken"
+msgstr "Inkludera alla inbäddade datakällor i målarbetsboken"
 
 #:
 msgid "deleteextracts.options.parent-project-path"
-msgstr "S\u00f6kv\u00e4gen f\u00f6r projektet \u00e4r \u00f6verordnad projektet som inneh\u00e5ller m\u00e5lresursen. Du m\u00e5ste ange projektnamnet med --projekt."
+msgstr "Sökvägen för projektet är överordnad projektet som innehåller målresursen. Du måste ange projektnamnet med --projekt."
 
 #:
 msgid "deleteextracts.options.project"
-msgstr "Namnet p\u00e5 det projekt som inneh\u00e5ller m\u00e5lresursen. Beh\u00f6vs bara om {0} eller {1} har angetts. Om det inte anges anv\u00e4nds standardprojektet ''{2}''."
+msgstr "Namnet på det projekt som innehåller målresursen. Behövs bara om {0} eller {1} har angetts. Om det inte anges används standardprojektet ''{2}''."
 
 #:
 msgid "deleteextracts.options.url"
@@ -2267,19 +2257,19 @@ msgstr "Resursens kanoniska namn som den visas i webbadressen"
 
 #:
 msgid "deleteextracts.options.workbook"
-msgstr "Namnet p\u00e5 m\u00e5larbetsboken vid borttagning av extrakt"
+msgstr "Namnet på målarbetsboken vid borttagning av extrakt"
 
 #:
 msgid "deleteextracts.short_description"
-msgstr "Ta bort extrakt f\u00f6r en publicerad arbetsbok eller datak\u00e4lla"
+msgstr "Ta bort extrakt för en publicerad arbetsbok eller datakälla"
 
 #:
 msgid "deleteextracts.workbook.include-all"
-msgstr "Inkludera alla inb\u00e4ddade datak\u00e4llor i m\u00e5larbetsboken"
+msgstr "Inkludera alla inbäddade datakällor i målarbetsboken"
 
 #:
 msgid "deleteextracts.workbook.embedded-datasource-names"
-msgstr "Med inb\u00e4ddade datak\u00e4llsnamn"
+msgstr "Med inbäddade datakällsnamn"
 
 #:
 msgid "deletegroup.short_description"
@@ -2287,15 +2277,15 @@ msgstr "Ta bort en grupp"
 
 #:
 msgid "deletegroup.status"
-msgstr "Tar bort gruppen ''{0}'' fr\u00e5n servern ..."
+msgstr "Tar bort gruppen ''{0}'' från servern ..."
 
 #:
 msgid "deleteproject.errors.requires_project_name"
-msgstr "Kommandot ''{0}'' kr\u00e4ver ett projektnamn"
+msgstr "Kommandot ''{0}'' kräver ett projektnamn"
 
 #:
 msgid "deleteproject.options.parent-project-path"
-msgstr "S\u00f6kv\u00e4g till det \u00f6verordnade projekt till det projekt som ska tas bort. Du m\u00e5ste specificera projektnamnet med --project."
+msgstr "Sökväg till det överordnade projekt till det projekt som ska tas bort. Du måste specificera projektnamnet med --project."
 
 #:
 msgid "deleteproject.short_description"
@@ -2303,11 +2293,11 @@ msgstr "Ta bort ett projekt"
 
 #:
 msgid "deleteproject.status"
-msgstr "Tar bort projektet ''{0}'' fr\u00e5n servern ..."
+msgstr "Tar bort projektet ''{0}'' från servern ..."
 
 #:
 msgid "deletesite.errors.logged_into_this_site"
-msgstr "Du kan inte ta bort den webbplats som du f\u00f6r tillf\u00e4llet \u00e4r inloggad p\u00e5"
+msgstr "Du kan inte ta bort den webbplats som du för tillfället är inloggad på"
 
 #:
 msgid "deletesite.short_description"
@@ -2315,55 +2305,55 @@ msgstr "Ta bort en webbplats"
 
 #:
 msgid "deletesite.status"
-msgstr "Tar bort webbplatsen ''{0}'' fr\u00e5n servern ..."
+msgstr "Tar bort webbplatsen ''{0}'' från servern ..."
 
 #:
 msgid "deletesiteusers.description"
-msgstr "Ta bort webbplatsanv\u00e4ndare. Anv\u00e4ndarna l\u00e4ses in fr\u00e5n den angivna CSV-filen. Filen \u00e4r en enkel lista med ett anv\u00e4ndarnamn per rad"
+msgstr "Ta bort webbplatsanvändare. Användarna läses in från den angivna CSV-filen. Filen är en enkel lista med ett användarnamn per rad"
 
 #:
 msgid "deletesiteusers.short_description"
-msgstr "Ta bort webbplatsanv\u00e4ndare"
+msgstr "Ta bort webbplatsanvändare"
 
 #:
 msgid "deletesiteusers.status"
-msgstr "Tar bort webbplatsanv\u00e4ndare listade i {0} fr\u00e5n servern ..."
+msgstr "Tar bort webbplatsanvändare listade i {0} från servern ..."
 
 #:
 msgid "deleteusers.description"
-msgstr "Ta bort anv\u00e4ndare. Anv\u00e4ndarna l\u00e4ses in fr\u00e5n den angivna CSV-filen. Filen \u00e4r en enkel lista med ett anv\u00e4ndarnamn per rad"
+msgstr "Ta bort användare. Användarna läses in från den angivna CSV-filen. Filen är en enkel lista med ett användarnamn per rad"
 
 #:
 msgid "deleteusers.short_description"
-msgstr "Ta bort anv\u00e4ndare"
+msgstr "Ta bort användare"
 
 #:
 msgid "deleteusers.status"
-msgstr "Tar bort anv\u00e4ndare listade i {0} fr\u00e5n servern ..."
+msgstr "Tar bort användare listade i {0} från servern ..."
 
 #:
 msgid "editdomain.description"
-msgstr "Redigera en dom\u00e4n. Visa en lista med dom\u00e4ner f\u00f6r redigering med kommandot ''{0}''"
+msgstr "Redigera en domän. Visa en lista med domäner för redigering med kommandot ''{0}''"
 
 #:
 msgid "editdomain.errors.requires_nickname_name"
-msgstr "Du m\u00e5ste ange ett ''{0}''-alternativ eller ett ''{1}''-alternativ"
+msgstr "Du måste ange ett ''{0}''-alternativ eller ett ''{1}''-alternativ"
 
 #:
 msgid "editdomain.options.id"
-msgstr "Dom\u00e4nens ID"
+msgstr "Domänens ID"
 
 #:
 msgid "editdomain.options.name"
-msgstr "Dom\u00e4nens namn"
+msgstr "Domänens namn"
 
 #:
 msgid "editdomain.options.nickname"
-msgstr "Dom\u00e4nens smeknamn"
+msgstr "Domänens smeknamn"
 
 #:
 msgid "editdomain.short_description"
-msgstr "Redigera en dom\u00e4n"
+msgstr "Redigera en domän"
 
 #:
 msgid "editdomain.output"
@@ -2371,35 +2361,35 @@ msgstr "{0}ID{1}Smeknamn{1}{1}Namn{0}"
 
 #:
 msgid "editdomain.status"
-msgstr "Redigera dom\u00e4nen med ID:t ''{0}'' p\u00e5 servern ..."
+msgstr "Redigera domänen med ID:t ''{0}'' på servern ..."
 
 #:
 msgid "editsite.errors.invalid_site-id"
-msgstr "Alternativet {0} \u00e4r ogiltigt n\u00e4r du redigera flera platser. K\u00f6r om kommandet efter att du har tagit bort alternativet {0} eller redigera varje plats separat"
+msgstr "Alternativet {0} är ogiltigt när du redigera flera platser. Kör om kommandet efter att du har tagit bort alternativet {0} eller redigera varje plats separat"
 
 #:
 msgid "editsite.errors.invalid_site-name"
-msgstr "Alternativet {0} \u00e4r ogiltigt n\u00e4r du redigera flera platser. K\u00f6r om kommandet efter att du har tagit bort alternativet {0} eller redigera varje plats separat"
+msgstr "Alternativet {0} är ogiltigt när du redigera flera platser. Kör om kommandet efter att du har tagit bort alternativet {0} eller redigera varje plats separat"
 
 #:
 msgid "editsite.options.allow-mobile-snapshots"
-msgstr "Till\u00e5t [eller neka] mobila \u00f6gonblicksbilder"
+msgstr "Tillåt [eller neka] mobila ögonblicksbilder"
 
 #:
 msgid "editsite.options.allow-subscriptions"
-msgstr "Till\u00e5t [eller neka] prenumerationer p\u00e5 den h\u00e4r webbplatsen"
+msgstr "Tillåt [eller neka] prenumerationer på den här webbplatsen"
 
 #:
 msgid "editsite.options.allow-web-authoring"
-msgstr "Till\u00e5t [eller neka] webbf\u00f6rfattande f\u00f6r den h\u00e4r webbplatsen"
+msgstr "Tillåt [eller neka] webbförfattande för den här webbplatsen"
 
 #:
 msgid "editsite.options.cache-warmup"
-msgstr "Till\u00e5t [eller neka] cacheuppv\u00e4rmning f\u00f6r den h\u00e4r webbplatsen"
+msgstr "Tillåt [eller neka] cacheuppvärmning för den här webbplatsen"
 
 #:
 msgid "editsite.options.cache-warmup-threshold"
-msgstr "Tr\u00f6skelv\u00e4rde i dagar f\u00f6r hur nyligen en vy m\u00e5ste ha visats f\u00f6r att aktivera uppv\u00e4rmning"
+msgstr "Tröskelvärde i dagar för hur nyligen en vy måste ha visats för att aktivera uppvärmning"
 
 #:
 msgid "editsite.options.site-name"
@@ -2407,31 +2397,31 @@ msgstr "Webbplatsens visningsnamn"
 
 #:
 msgid "editsite.options.status"
-msgstr "\u00c4ndra webbplatsens tillg\u00e4nglighet. M\u00e5ste vara ''{0}'' eller ''{1}''"
+msgstr "Ändra webbplatsens tillgänglighet. Måste vara ''{0}'' eller ''{1}''"
 
 #:
 msgid "editsite.options.allow-materialized-views"
-msgstr "Till\u00e5t [eller neka] materialiserade vyer f\u00f6r den h\u00e4r webbplatsen"
+msgstr "Tillåt [eller neka] materialiserade vyer för den här webbplatsen"
 
 #:
 msgid "editsite.options.extract_encryption_mode"
-msgstr "Extraktkrypteringsl\u00e4ge: inaktiverat, aktiverat eller framtvingat. Om inget anges s\u00e5 \u00e4ndras det inte p\u00e5 servern."
+msgstr "Extraktkrypteringsläge: inaktiverat, aktiverat eller framtvingat. Om inget anges så ändras det inte på servern."
 
 #:
 msgid "editsite.options.web_extraction_enabled"
-msgstr "Till\u00e5t [eller neka] skapande och \u00e4ndrande av extrakt till live f\u00f6r den h\u00e4r webbplatsen. Standardinst\u00e4llningen \u00e4r att till\u00e5ta."
+msgstr "Tillåt [eller neka] skapande och ändrande av extrakt till live för den här webbplatsen. Standardinställningen är att tillåta."
 
 #:
 msgid "editsite.options.run_now_enabled"
-msgstr "Till\u00e5t [eller neka] alternativet K\u00f6r nu f\u00f6r den h\u00e4r webbplatsen. Standardinst\u00e4llningen \u00e4r K\u00f6r nu"
+msgstr "Tillåt [eller neka] alternativet Kör nu för den här webbplatsen. Standardinställningen är Kör nu"
 
 #:
 msgid "editsite.options.time_zone"
-msgstr "Tidszon som ska anv\u00e4ndas med extrakt p\u00e5 den h\u00e4r webbplatsen"
+msgstr "Tidszon som ska användas med extrakt på den här webbplatsen"
 
 #:
 msgid "editsite.options.use_default_time_zone"
-msgstr "Upph\u00e4v tidszon som ska anv\u00e4ndas med extrakt p\u00e5 den h\u00e4r webbplatsen. Den kommer att anv\u00e4nda serverns standardtidszon ist\u00e4llet"
+msgstr "Upphäv tidszon som ska användas med extrakt på den här webbplatsen. Den kommer att använda serverns standardtidszon istället"
 
 #:
 msgid "editsite.short_description"
@@ -2439,35 +2429,35 @@ msgstr "Redigera en webbplats"
 
 #:
 msgid "editsite.status"
-msgstr "Redigera webbplatsen ''{0}'' p\u00e5 servern ..."
+msgstr "Redigera webbplatsen ''{0}'' på servern ..."
 
 #:
 msgid "encryptextracts.short_description"
-msgstr "Kryptera extrakt p\u00e5 en webbplats"
+msgstr "Kryptera extrakt på en webbplats"
 
 #:
 msgid "encryptextracts.status"
-msgstr "Schemal\u00e4gger kryptering av extrakt p\u00e5 webbplatsen {0} ..."
+msgstr "Schemalägger kryptering av extrakt på webbplatsen {0} ..."
 
 #:
 msgid "export.errors.need_country_and_languge"
-msgstr "Alternativen --country och --language m\u00e5ste anv\u00e4ndas tillsammans"
+msgstr "Alternativen --country och --language måste användas tillsammans"
 
 #:
 msgid "export.errors.white_space_workbook_view"
-msgstr "Namnet p\u00e5 den arbetsbok eller vy som ska exporteras f\u00e5r inte inneh\u00e5lla blanksteg. Anv\u00e4nd arbetsbokens eller vyns normaliserade namn s\u00e5 som det visas i URL:en."
+msgstr "Namnet på den arbetsbok eller vy som ska exporteras får inte innehålla blanksteg. Använd arbetsbokens eller vyns normaliserade namn så som det visas i URL:en."
 
 #:
 msgid "export.errors.requires_workbook_view_name"
-msgstr "Kommandot ''{0}'' kr\u00e4ver ett namn p\u00e5 <workbook>/<view>"
+msgstr "Kommandot ''{0}'' kräver ett namn på <workbook>/<view>"
 
 #:
 msgid "export.errors.requires_workbook_view_param"
-msgstr "Kommandot ''{0}'' kr\u00e4ver en <workbook>/<view>-parameter, och parametern m\u00e5ste inneh\u00e5lla minst ett snedstreck (/)"
+msgstr "Kommandot ''{0}'' kräver en <workbook>/<view>-parameter, och parametern måste innehålla minst ett snedstreck (/)"
 
 #:
 msgid "export.options.country"
-msgstr "Om du inte anv\u00e4nder anv\u00e4ndarens standardspr\u00e5kzon, s\u00e5 ange spr\u00e5kzonens landsf\u00f6rkortning (finns i IANA Language Subtag Registry). M\u00e5ste anv\u00e4ndas med --language"
+msgstr "Om du inte använder användarens standardspråkzon, så ange språkzonens landsförkortning (finns i IANA Language Subtag Registry). Måste användas med --language"
 
 #:
 msgid "export.options.csv"
@@ -2479,19 +2469,19 @@ msgstr "Exportera visuella vyer i PDF-format (om arbetsboken publicerades med fl
 
 #:
 msgid "export.options.height"
-msgstr "St\u00e4ller in h\u00f6jden. M\u00e5ste vara ett heltalsv\u00e4rde (standard: 600 bildpunkter)"
+msgstr "Ställer in höjden. Måste vara ett heltalsvärde (standard: 600 bildpunkter)"
 
 #:
 msgid "export.options.language"
-msgstr "Om du inte anv\u00e4nder anv\u00e4ndarens standardspr\u00e5kzon, s\u00e5 ange spr\u00e5kzonens spr\u00e5kf\u00f6rkortning (finns i IANA Language Subtag Registry). M\u00e5ste anv\u00e4ndas med --country"
+msgstr "Om du inte använder användarens standardspråkzon, så ange språkzonens språkförkortning (finns i IANA Language Subtag Registry). Måste användas med --country"
 
 #:
 msgid "export.options.pagelayout"
-msgstr "St\u00e4ller in sidorienteringen f\u00f6r den exporterade PDF-filen. Giltiga v\u00e4rden: {0}. Om inget anges anv\u00e4nds inst\u00e4llningen i Tableau Desktop"
+msgstr "Ställer in sidorienteringen för den exporterade PDF-filen. Giltiga värden: {0}. Om inget anges används inställningen i Tableau Desktop"
 
 #:
 msgid "export.options.pagesize"
-msgstr "St\u00e4ller in sidstorleken f\u00f6r den exporterade PDF-filen. Giltiga v\u00e4rden: {0} (standard: ''{1}'')"
+msgstr "Ställer in sidstorleken för den exporterade PDF-filen. Giltiga värden: {0} (standard: ''{1}'')"
 
 #:
 msgid "export.options.pdf"
@@ -2503,15 +2493,15 @@ msgstr "Exportera data i PNG-format"
 
 #:
 msgid "export.options.width"
-msgstr "St\u00e4ller in bredden. M\u00e5ste vara ett heltalsv\u00e4rde (standard: 800 bildpunkter)"
+msgstr "Ställer in bredden. Måste vara ett heltalsvärde (standard: 800 bildpunkter)"
 
 #:
 msgid "export.short_description"
-msgstr "Exportera en vys data eller avbildning fr\u00e5n servern"
+msgstr "Exportera en vys data eller avbildning från servern"
 
 #:
 msgid "export.status"
-msgstr "Beg\u00e4r ''{0}'' fr\u00e5n servern ..."
+msgstr "Begär ''{0}'' från servern ..."
 
 #:
 msgid "export.success"
@@ -2519,31 +2509,31 @@ msgstr "Sparade {0} till ''{1}''"
 
 #:
 msgid "extracts.workbook.errors.requires_datasources_or_include_all"
-msgstr "Kommandot {0} f\u00f6r arbetsboken kr\u00e4ver antingen en inb\u00e4ddad datak\u00e4lla eller flaggan include-all."
+msgstr "Kommandot {0} för arbetsboken kräver antingen en inbäddad datakälla eller flaggan include-all."
 
 #:
 msgid "fileuploader.progress"
-msgstr "\u00d6verf\u00f6ringsf\u00f6rlopp: {0}%"
+msgstr "Överföringsförlopp: {0}%"
 
 #:
 msgid "get.description"
-msgstr "H\u00e4mta en fil fr\u00e5n servern. Filen namnges efter den sista komponenten i s\u00f6kv\u00e4gen om inget filnamnsargument har angetts"
+msgstr "Hämta en fil från servern. Filen namnges efter den sista komponenten i sökvägen om inget filnamnsargument har angetts"
 
 #:
 msgid "get.errors.requires_url"
-msgstr "Kommandot ''{0}'' kr\u00e4ver en URL"
+msgstr "Kommandot ''{0}'' kräver en URL"
 
 #:
 msgid "get.options.file"
-msgstr "Namnge f\u00f6r att spara filen som"
+msgstr "Namnge för att spara filen som"
 
 #:
 msgid "get.short_description"
-msgstr "H\u00e4mta en fil fr\u00e5n servern"
+msgstr "Hämta en fil från servern"
 
 #:
 msgid "help.available_commands"
-msgstr "Tillg\u00e4ngliga kommandon:"
+msgstr "Tillgängliga kommandon:"
 
 #:
 msgid "help.command_options"
@@ -2551,15 +2541,15 @@ msgstr "Kommandoalternativ:"
 
 #:
 msgid "help.description0"
-msgstr "Visa hj\u00e4lp f\u00f6r ett specifikt kommando"
+msgstr "Visa hjälp för ett specifikt kommando"
 
 #:
 msgid "help.description1"
-msgstr "Lista alla tillg\u00e4ngliga kommandon"
+msgstr "Lista alla tillgängliga kommandon"
 
 #:
 msgid "help.errors.unknown_command"
-msgstr "Ok\u00e4nt kommando: {0}"
+msgstr "Okänt kommando: {0}"
 
 #:
 msgid "help.global_options"
@@ -2567,7 +2557,7 @@ msgstr "Globala alternativ:"
 
 #:
 msgid "help.short_description"
-msgstr "Hj\u00e4lp f\u00f6r tabcmd-kommandon"
+msgstr "Hjälp för tabcmd-kommandon"
 
 #:
 msgid "httputils.found_attachment"
@@ -2579,7 +2569,7 @@ msgstr "Hittad bilaga: {0} (ommappad till {1})"
 
 #:
 msgid "initialuser.errors.username_and_password_required"
-msgstr "B\u00e5de anv\u00e4ndarnamn och l\u00f6senord m\u00e5ste anges"
+msgstr "Både användarnamn och lösenord måste anges"
 
 #:
 msgid "initialuser.options.friendly-name"
@@ -2587,15 +2577,15 @@ msgstr "Eget namn"
 
 #:
 msgid "initialuser.short_description"
-msgstr "Skapa en initial anv\u00e4ndare p\u00e5 en oinitierad server"
+msgstr "Skapa en initial användare på en oinitierad server"
 
 #:
 msgid "listdomains.description"
-msgstr "Lista dom\u00e4ner"
+msgstr "Lista domäner"
 
 #:
 msgid "listdomains.status"
-msgstr "Listar dom\u00e4ner fr\u00e5n servern ..."
+msgstr "Listar domäner från servern ..."
 
 #:
 msgid "listsites.output"
@@ -2607,63 +2597,63 @@ msgstr "{0}{0}NAMN: {1} {0}WEBBPLATS-ID: ''{2}''{0}EXTRAKTKRYPTERING: {3}"
 
 #:
 msgid "listsites.short_description"
-msgstr "Lista webbplatser f\u00f6r anv\u00e4ndare"
+msgstr "Lista webbplatser för användare"
 
 #:
 msgid "listsites.status"
-msgstr "Listar webbplatser f\u00f6r anv\u00e4ndaren {0} ..."
+msgstr "Listar webbplatser för användaren {0} ..."
 
 #:
 msgid "listsites.options.get_extract_encryption_mode"
-msgstr "Skriv ut extraktkrypteringsl\u00e4ge f\u00f6r webbplatsen/webbplatserna"
+msgstr "Skriv ut extraktkrypteringsläge för webbplatsen/webbplatserna"
 
 #:
 msgid "login.description"
-msgstr "Logga in p\u00e5 servern. Din session forts\u00e4tter till den upph\u00f6r att g\u00e4lla p\u00e5 den server du anv\u00e4nder {0}"
+msgstr "Logga in på servern. Din session fortsätter till den upphör att gälla på den server du använder {0}"
 
 #:
 msgid "login.short_description"
-msgstr "Logga in p\u00e5 servern"
+msgstr "Logga in på servern"
 
 #:
 msgid "logout.short_description"
-msgstr "Logga ut fr\u00e5n servern"
+msgstr "Logga ut från servern"
 
 #:
 msgid "publish.description"
-msgstr "Publicera en arbetsbok, en datak\u00e4lla eller ett extrakt p\u00e5 servern"
+msgstr "Publicera en arbetsbok, en datakälla eller ett extrakt på servern"
 
 #:
 msgid "publish.errors.invalid_datasource_update_file_type"
-msgstr "Felaktig filtyp, ''{0}'', f\u00f6r uppdatering av en datak\u00e4lla. Ers\u00e4ttning/till\u00e4gg g\u00e4ller enbart f\u00f6r extraktfiler (.tde)"
+msgstr "Felaktig filtyp, ''{0}'', för uppdatering av en datakälla. Ersättning/tillägg gäller enbart för extraktfiler (.tde)"
 
 #:
 msgid "publish.errors.invalid_name_option"
-msgstr "{0}-alternativet \u00e4r ogiltigt vid publicering av flera objekt"
+msgstr "{0}-alternativet är ogiltigt vid publicering av flera objekt"
 
 #:
 msgid "publish.errors.invalid_publish_file_type"
-msgstr "Felaktig filtyp, ''{0}'', f\u00f6r publicering. En .tde-, .tds-, .tdsx-, .twb- eller .twbx-fil f\u00f6rv\u00e4ntades"
+msgstr "Felaktig filtyp, ''{0}'', för publicering. En .tde-, .tds-, .tdsx-, .twb- eller .twbx-fil förväntades"
 
 #:
 msgid "publish.errors.mutually_exclusive_option"
-msgstr "Anv\u00e4nd endast endera av {0} eller {1}"
+msgstr "Använd endast endera av {0} eller {1}"
 
 #:
 msgid "publish.errors.requires_resource_file"
-msgstr "Kommandot ''{0}'' kr\u00e4ver en arbetsbok, den datak\u00e4lla eller en extraktfil"
+msgstr "Kommandot ''{0}'' kräver en arbetsbok, den datakälla eller en extraktfil"
 
 #:
 msgid "publish.errors.unexpected_server_response"
-msgstr "Ov\u00e4ntat svar fr\u00e5n servern: {0}"
+msgstr "Oväntat svar från servern: {0}"
 
 #:
 msgid "publish.errors.server_resource_not_found"
-msgstr "Den resurs du angav finns inte, eller s\u00e5 har du inte beh\u00f6righet att se den. Kontrollera ditt projektnamn och dina beh\u00f6righeter"
+msgstr "Den resurs du angav finns inte, eller så har du inte behörighet att se den. Kontrollera ditt projektnamn och dina behörigheter"
 
 #:
 msgid "publish.options.append"
-msgstr "L\u00e4gg till extraktfil till befintlig datak\u00e4lla"
+msgstr "Lägg till extraktfil till befintlig datakälla"
 
 #:
 msgid "publish.options.async"
@@ -2671,43 +2661,43 @@ msgstr "Publicera asynkront"
 
 #:
 msgid "publish.options.db-password"
-msgstr "Databasl\u00f6senord f\u00f6r alla datak\u00e4llor"
+msgstr "Databaslösenord för alla datakällor"
 
 #:
 msgid "publish.options.db-username"
-msgstr "Databasanv\u00e4ndarnamn f\u00f6r alla datak\u00e4llor"
+msgstr "Databasanvändarnamn för alla datakällor"
 
 #:
 msgid "publish.options.description"
-msgstr "Beskrivning av arbetsboken eller datak\u00e4llan"
+msgstr "Beskrivning av arbetsboken eller datakällan"
 
 #:
 msgid "publish.options.encrypt_extracts"
-msgstr "Kryptera extrakt p\u00e5 servern"
+msgstr "Kryptera extrakt på servern"
 
 #:
 msgid "publish.options.name"
-msgstr "Arbetsbokens/datak\u00e4llans namn p\u00e5 servern. Om det inte anges namnges arbetsboken/datak\u00e4llan efter filnamnet, utan filnamnstill\u00e4gget twb(x), tds(x) eller tde. Om du publicerar en .tde-fil skapas en datak\u00e4lla"
+msgstr "Arbetsbokens/datakällans namn på servern. Om det inte anges namnges arbetsboken/datakällan efter filnamnet, utan filnamnstillägget twb(x), tds(x) eller tde. Om du publicerar en .tde-fil skapas en datakälla"
 
 #:
 msgid "publish.options.oauth-username"
-msgstr "Publicera genom att anv\u00e4nda de inloggningsuppgifter som sparats i den servernyckelring som associerats med USERNAME"
+msgstr "Publicera genom att använda de inloggningsuppgifter som sparats i den servernyckelring som associerats med USERNAME"
 
 #:
 msgid "publish.options.overwrite"
-msgstr "Skriv \u00f6ver eventuell befintlig arbetsbok/datak\u00e4lla"
+msgstr "Skriv över eventuell befintlig arbetsbok/datakälla"
 
 #:
 msgid "publish.options.project"
-msgstr "Projekt som arbetsboken/datak\u00e4llan ska publiceras till"
+msgstr "Projekt som arbetsboken/datakällan ska publiceras till"
 
 #:
 msgid "publish.options.parent-project-path"
-msgstr "S\u00f6kv\u00e4g till det \u00f6verordnade projektet till det projekt som arbetsboken/datak\u00e4llan ska publiceras till"
+msgstr "Sökväg till det överordnade projektet till det projekt som arbetsboken/datakällan ska publiceras till"
 
 #:
 msgid "publish.options.replace"
-msgstr "Ers\u00e4tt extraktfilen p\u00e5 befintlig datak\u00e4lla"
+msgstr "Ersätt extraktfilen på befintlig datakälla"
 
 #:
 msgid "publish.options.restart"
@@ -2715,11 +2705,11 @@ msgstr "Startar om filuppladdningen"
 
 #:
 msgid "publish.options.save-db-password"
-msgstr "Lagrar databasl\u00f6senordet p\u00e5 servern"
+msgstr "Lagrar databaslösenordet på servern"
 
 #:
 msgid "publish.options.save-oauth"
-msgstr "B\u00e4dda in de OAuth-inloggningsuppgifter som angetts med {0}"
+msgstr "Bädda in de OAuth-inloggningsuppgifter som angetts med {0}"
 
 #:
 msgid "publish.options.tabbed"
@@ -2727,11 +2717,11 @@ msgstr "Publicera med tabbvyer aktiverat"
 
 #:
 msgid "publish.options.thumbnail-groupname"
-msgstr "Om arbetsboken inneh\u00e5ller n\u00e5gra anv\u00e4ndarfilter s\u00e5 imitera den h\u00e4r gruppen vid ber\u00e4kning av miniatyrer"
+msgstr "Om arbetsboken innehåller några användarfilter så imitera den här gruppen vid beräkning av miniatyrer"
 
 #:
 msgid "publish.options.thumbnail-username"
-msgstr "Om arbetsboken inneh\u00e5ller n\u00e5gra anv\u00e4ndarfilter s\u00e5 imitera den h\u00e4r anv\u00e4ndaren vid ber\u00e4kning av miniatyrer"
+msgstr "Om arbetsboken innehåller några användarfilter så imitera den här användaren vid beräkning av miniatyrer"
 
 #:
 msgid "publish.status"
@@ -2739,19 +2729,19 @@ msgstr "Publicerar ''{0}'' till servern. Detta kan ta flera minuter ..."
 
 #:
 msgid "publish.success"
-msgstr "Filen har publicerats till servern p\u00e5 f\u00f6ljande plats:"
+msgstr "Filen har publicerats till servern på följande plats:"
 
 #:
 msgid "publishsamples.options.parent-project-path"
-msgstr "S\u00f6kv\u00e4g till det \u00f6verordnade projekt till det projekt som exempel ska publiceras till. Du m\u00e5ste specificera projektnamnet med --project."
+msgstr "Sökväg till det överordnade projekt till det projekt som exempel ska publiceras till. Du måste specificera projektnamnet med --project."
 
 #:
 msgid "publishsamples.options.projectname"
-msgstr "Namn p\u00e5 det projekt som exempel ska publiceras till"
+msgstr "Namn på det projekt som exempel ska publiceras till"
 
 #:
 msgid "publishsamples.short_description"
-msgstr "Publicerar exempelarbetsb\u00f6cker till det angivna projektet. Befintliga exempel skrivs \u00f6ver."
+msgstr "Publicerar exempelarbetsböcker till det angivna projektet. Befintliga exempel skrivs över."
 
 #:
 msgid "publishsamples.status"
@@ -2759,23 +2749,23 @@ msgstr "Publicerar exempel ..."
 
 #:
 msgid "reencryptextracts.short_description"
-msgstr "Kryptera om extrakt p\u00e5 en webbplats"
+msgstr "Kryptera om extrakt på en webbplats"
 
 #:
 msgid "reencryptextracts.status"
-msgstr "Schemal\u00e4gger omkryptering av extrakt p\u00e5 webbplatsen {0} ..."
+msgstr "Schemalägger omkryptering av extrakt på webbplatsen {0} ..."
 
 #:
 msgid "refreshextracts.errors.required_argument"
-msgstr "Kommandot refreshextracts kr\u00e4ver en arbetsboks-URL, ett arbetsboksnamn eller ett datak\u00e4llsnamn"
+msgstr "Kommandot refreshextracts kräver en arbetsboks-URL, ett arbetsboksnamn eller ett datakällsnamn"
 
 #:
 msgid "refreshextracts.errors.add_and_remove_calculations"
-msgstr "Det g\u00e5r inte att k\u00f6ra en uppdatering med b\u00e5da alternativen --addcalculations och --removecalculations"
+msgstr "Det går inte att köra en uppdatering med båda alternativen --addcalculations och --removecalculations"
 
 #:
 msgid "refreshextracts.errors.calculations_and_incremental"
-msgstr "Det g\u00e5r inte att l\u00e4gga till eller ta bort materialiserade ber\u00e4kningar under en inkrementell extraktuppdatering"
+msgstr "Det går inte att lägga till eller ta bort materialiserade beräkningar under en inkrementell extraktuppdatering"
 
 #:
 msgid "refreshextracts.errors.error"
@@ -2783,151 +2773,151 @@ msgstr "Fel vid uppdatering av extrakt"
 
 #:
 msgid "refreshextracts.options.datasource"
-msgstr "Namnet p\u00e5 den datak\u00e4lla som ska uppdateras"
+msgstr "Namnet på den datakälla som ska uppdateras"
 
 #:
 msgid "refreshextracts.options.incremental"
-msgstr "Genomf\u00f6r en inkrementell uppdatering (om detta st\u00f6ds)"
+msgstr "Genomför en inkrementell uppdatering (om detta stöds)"
 
 #:
 msgid "refreshextracts.options.parent-project-path"
-msgstr "S\u00f6kv\u00e4g till det \u00f6verordnade projekt som inneh\u00e5ller det extrakt som ska uppdateras. Du m\u00e5ste specificera projektnamnet med --project."
+msgstr "Sökväg till det överordnade projekt som innehåller det extrakt som ska uppdateras. Du måste specificera projektnamnet med --project."
 
 #:
 msgid "refreshextracts.options.project"
-msgstr "Namnet p\u00e5 det projekt som inneh\u00e5ller arbetsboken/datak\u00e4llan. \u00c4r enbart n\u00f6dv\u00e4ndigt om {0} eller {1} anges. Om inget anges anv\u00e4nds standardprojektet ''{2}''"
+msgstr "Namnet på det projekt som innehåller arbetsboken/datakällan. Är enbart nödvändigt om {0} eller {1} anges. Om inget anges används standardprojektet ''{2}''"
 
 #:
 msgid "refreshextracts.options.synchronous"
-msgstr "V\u00e4nta tills uppdateringen \u00e4r klar innan du avslutar"
+msgstr "Vänta tills uppdateringen är klar innan du avslutar"
 
 #:
 msgid "refreshextracts.options.url"
-msgstr "Arbetsbokens eller vyns kanoniska namn s\u00e5 som det visas i URL:en"
+msgstr "Arbetsbokens eller vyns kanoniska namn så som det visas i URL:en"
 
 #:
 msgid "refreshextracts.options.workbook"
-msgstr "Namnet p\u00e5 den arbetsbok som ska uppdateras"
+msgstr "Namnet på den arbetsbok som ska uppdateras"
 
 #:
 msgid "refreshextracts.options.addcalculations"
-msgstr "L\u00e4gger till materialiserade ber\u00e4kningar i extraktet"
+msgstr "Lägger till materialiserade beräkningar i extraktet"
 
 #:
 msgid "refreshextracts.options.removecalculations"
-msgstr "Tar bort materialiserade ber\u00e4kningar fr\u00e5n extraktet"
+msgstr "Tar bort materialiserade beräkningar från extraktet"
 
 #:
 msgid "refreshextracts.short_description"
-msgstr "Uppdatera en arbetsboks eller datak\u00e4llas extrakt p\u00e5 servern"
+msgstr "Uppdatera en arbetsboks eller datakällas extrakt på servern"
 
 #:
 msgid "refreshextracts.status_incremented"
-msgstr "Schemal\u00e4gger extrakten f\u00f6r {0} ''{1}'' till att \u00f6kas stegvis nu ..."
+msgstr "Schemalägger extrakten för {0} ''{1}'' till att ökas stegvis nu ..."
 
 #:
 msgid "refreshextracts.status_refreshed"
-msgstr "Schemal\u00e4gger extrakten f\u00f6r {0} ''{1}'' till att uppdateras nu ..."
+msgstr "Schemalägger extrakten för {0} ''{1}'' till att uppdateras nu ..."
 
 #:
 msgid "removeusers.options.users"
-msgstr "En fil som inneh\u00e5ller en lista med anv\u00e4ndare, en per rad, som ska tas bort fr\u00e5n gruppen"
+msgstr "En fil som innehåller en lista med användare, en per rad, som ska tas bort från gruppen"
 
 #:
 msgid "removeusers.short_description"
-msgstr "Ta bort anv\u00e4ndare fr\u00e5n en grupp"
+msgstr "Ta bort användare från en grupp"
 
 #:
 msgid "removeusers.status"
-msgstr "Tar bort anv\u00e4ndare listade i {0} fr\u00e5n gruppen {1} ..."
+msgstr "Tar bort användare listade i {0} från gruppen {1} ..."
 
 #:
 msgid "runschedule.errors.requires_schedule_name"
-msgstr "Kommandot ''{0}'' kr\u00e4ver ett schemanamn"
+msgstr "Kommandot ''{0}'' kräver ett schemanamn"
 
 #:
 msgid "runschedule.short_description"
-msgstr "K\u00f6r ett schema"
+msgstr "Kör ett schema"
 
 #:
 msgid "runschedule.status"
-msgstr "K\u00f6r schemat ''{0}'' p\u00e5 servern ..."
+msgstr "Kör schemat ''{0}'' på servern ..."
 
 #:
 msgid "materializeviews.short_description"
-msgstr "Uppdatera och kontrollera inst\u00e4llningarna f\u00f6r materialiserade vyer f\u00f6r webbplatser/arbetsb\u00f6cker"
+msgstr "Uppdatera och kontrollera inställningarna för materialiserade vyer för webbplatser/arbetsböcker"
 
 #:
 msgid "materializeviews.status.site"
-msgstr "Uppdaterar inst\u00e4llningen f\u00f6r materialiserade vyer f\u00f6r webbplatsen ''{0}'' ..."
+msgstr "Uppdaterar inställningen för materialiserade vyer för webbplatsen ''{0}'' ..."
 
 #:
 msgid "materializeviews.status.workbook"
-msgstr "Uppdaterar inst\u00e4llningen f\u00f6r materialiserade vyer f\u00f6r arbetsboken ''{0}'' ..."
+msgstr "Uppdaterar inställningen för materialiserade vyer för arbetsboken ''{0}'' ..."
 
 #:
 msgid "materializeviews.errors.invalid_workbook_arguments"
-msgstr "Kommandot materializeviews kr\u00e4ver ett argument f\u00f6r ett arbetsboksnamn"
+msgstr "Kommandot materializeviews kräver ett argument för ett arbetsboksnamn"
 
 #:
 msgid "materializeviews.errors.invalid_site_arguments"
-msgstr "Kommandot materializeviews kr\u00e4ver ett argument f\u00f6r ett webbplats-ID"
+msgstr "Kommandot materializeviews kräver ett argument för ett webbplats-ID"
 
 #:
 msgid "materializeviews.errors.invalid_workbook_option"
-msgstr "Anv\u00e4nd ''{0}'' eller ''{1}'' med ''{2}''"
+msgstr "Använd ''{0}'' eller ''{1}'' med ''{2}''"
 
 #:
 msgid "materializeviews.errors.invalid_project_path"
-msgstr "Anv\u00e4nd ''{1}'' med ''{0}''"
+msgstr "Använd ''{1}'' med ''{0}''"
 
 #:
 msgid "materializeviews.errors.invalid_site_option"
-msgstr "Anv\u00e4nd ''{0}'' med ''{1}''"
+msgstr "Använd ''{0}'' med ''{1}''"
 
 #:
 msgid "materializeviews.errors.site_mode_conflict"
-msgstr "\u00c4ndra webbplatsens l\u00e4ge f\u00f6r materialiserade vyer genom att anv\u00e4nda ''{0}'' eller ''{1}''"
+msgstr "Ändra webbplatsens läge för materialiserade vyer genom att använda ''{0}'' eller ''{1}''"
 
 #:
 msgid "materializeviews.errors.site_not_updated"
-msgstr "Webbplatsen ''{0}'' har inte uppdaterats. Endast serveradministrat\u00f6rer kan \u00e4ndra inst\u00e4llningen f\u00f6r materialiserade vyer"
+msgstr "Webbplatsen ''{0}'' har inte uppdaterats. Endast serveradministratörer kan ändra inställningen för materialiserade vyer"
 
 #:
 msgid "materializeviews.errors.invalid_argument_options_combination"
-msgstr "\u00c4ndra inst\u00e4llningen f\u00f6r materialiserade vyer genom att anv\u00e4nda ''{0}'' eller ''{1}''"
+msgstr "Ändra inställningen för materialiserade vyer genom att använda ''{0}'' eller ''{1}''"
 
 #:
 msgid "materializeviews.options.materialize_now"
-msgstr "Schemal\u00e4gg materialiseringen f\u00f6r en given arbetsbok direkt med ''{0}''"
+msgstr "Schemalägg materialiseringen för en given arbetsbok direkt med ''{0}''"
 
 #:
 msgid "materializeviews.options.project"
-msgstr "Specificera ett projekt namn med hj\u00e4lp av ''{0}''"
+msgstr "Specificera ett projekt namn med hjälp av ''{0}''"
 
 #:
 msgid "materializeviews.options.parent_project_path"
-msgstr "Anv\u00e4nd ''{0}'' f\u00f6r att specificera s\u00f6kv\u00e4gen f\u00f6r ett \u00f6verordnat projekt till ''{1}''"
+msgstr "Använd ''{0}'' för att specificera sökvägen för ett överordnat projekt till ''{1}''"
 
 #:
 msgid "materializeviews.options.allow_workbook"
-msgstr "Anv\u00e4nd ''{0}'' f\u00f6r att aktivera/inaktivera materialiserade vyer f\u00f6r en arbetsbok"
+msgstr "Använd ''{0}'' för att aktivera/inaktivera materialiserade vyer för en arbetsbok"
 
 #:
 msgid "materializeviews.options.allow_site"
-msgstr "Anv\u00e4nd ''{0}'' f\u00f6r att aktivera/inaktivera materialiserade vyer f\u00f6r en webbplats"
+msgstr "Använd ''{0}'' för att aktivera/inaktivera materialiserade vyer för en webbplats"
 
 #:
 msgid "materializeviews.options.selected_workbooks"
-msgstr "Anv\u00e4nd ''{0}'' f\u00f6r att aktivera utvalda arbetsb\u00f6cker p\u00e5 webbplatsen. Anv\u00e4nds med alternativet ''{1}''. Detta \u00e4r standardalternativet"
+msgstr "Använd ''{0}'' för att aktivera utvalda arbetsböcker på webbplatsen. Används med alternativet ''{1}''. Detta är standardalternativet"
 
 #:
 msgid "materializeviews.options.all_workbooks"
-msgstr "Anv\u00e4nd ''{0}'' f\u00f6r att aktivera alla arbetsb\u00f6cker p\u00e5 webbplatsen. Anv\u00e4nds med alternativet ''{1}''"
+msgstr "Använd ''{0}'' för att aktivera alla arbetsböcker på webbplatsen. Används med alternativet ''{1}''"
 
 #:
 msgid "session.auto_site_login"
-msgstr "Logga in automatiskt p\u00e5 webbplatsen: {0}"
+msgstr "Logga in automatiskt på webbplatsen: {0}"
 
 #:
 msgid "session.certificate-alias"
@@ -2939,27 +2929,27 @@ msgstr "Ansluter till servern ..."
 
 #:
 msgid "session.continuing_session"
-msgstr "Forts\u00e4tter f\u00f6reg\u00e5ende session"
+msgstr "Fortsätter föregående session"
 
 #:
 msgid "session.errors.auth_required"
-msgstr "Beh\u00f6righet kr\u00e4vs"
+msgstr "Behörighet krävs"
 
 #:
 msgid "session.errors.invalid_keystore_password"
-msgstr "Keystore-l\u00f6senordet \u00e4r fel. Anv\u00e4nd korrekt l\u00f6senord och f\u00f6rs\u00f6k igen"
+msgstr "Keystore-lösenordet är fel. Använd korrekt lösenord och försök igen"
 
 #:
 msgid "session.errors.invalid_redirect"
-msgstr "Det g\u00e5r inte att omdirigera till en ogiltig URL: {0}"
+msgstr "Det går inte att omdirigera till en ogiltig URL: {0}"
 
 #:
 msgid "session.errors.keystore_pwdfile_create"
-msgstr "Det gick inte att skapa n\u00e5gon keystore-l\u00f6senordsfil. Fel: {0}"
+msgstr "Det gick inte att skapa någon keystore-lösenordsfil. Fel: {0}"
 
 #:
 msgid "session.errors.missing_arguments"
-msgstr "Det g\u00e5r inte att logga in eftersom argument saknas: {0}"
+msgstr "Det går inte att logga in eftersom argument saknas: {0}"
 
 #:
 msgid "session.errors.no_redirect_found"
@@ -2967,35 +2957,35 @@ msgstr "Omdirigeringsadress saknas i omdirigeringssvar"
 
 #:
 msgid "session.errors.no_sslcafile_found"
-msgstr "Det gick inte att hitta n\u00e5gon CA-fil (Certificate Authority) p\u00e5 dessa platser: ''{0}''. CA-filen anv\u00e4nds f\u00f6r att s\u00e4kerst\u00e4lla s\u00e4ker kommunikation med Tableau Server. Mer information om att skapa en CA-fil finns i hj\u00e4lpen till Tableau Server. F\u00f6r att ansluta till Tableau Server utan att validera dess SSL-certifikat, anv\u00e4nd flaggan --no-certcheck."
+msgstr "Det gick inte att hitta någon CA-fil (Certificate Authority) på dessa platser: ''{0}''. CA-filen används för att säkerställa säker kommunikation med Tableau Server. Mer information om att skapa en CA-fil finns i hjälpen till Tableau Server. För att ansluta till Tableau Server utan att validera dess SSL-certifikat, använd flaggan --no-certcheck."
 
 #:
 msgid "session.errors.script_no_password"
-msgstr "Tabcmd k\u00f6rdes fr\u00e5n ett skript eller IDE, men inget l\u00f6senord tillhandah\u00f6lls. Ett l\u00f6senord m\u00e5ste tillhandah\u00e5llas som ett argument till tabcmd f\u00f6r att det ska g\u00e5 att logga in."
+msgstr "Tabcmd kördes från ett skript eller IDE, men inget lösenord tillhandahölls. Ett lösenord måste tillhandahållas som ett argument till tabcmd för att det ska gå att logga in."
 
 #:
 msgid "session.errors.session_expired"
-msgstr "Din session har upph\u00f6rt"
+msgstr "Din session har upphört"
 
 #:
 msgid "session.errors.unsupported_command"
-msgstr "Kommandot st\u00f6ds inte av den h\u00e4r servern"
+msgstr "Kommandot stöds inte av den här servern"
 
 #:
 msgid "session.keystore.notice"
-msgstr "Vill du lagra l\u00f6senordet lokalt f\u00f6r att undvika att skriva in l\u00f6senordet n\u00e4sta g\u00e5ng? [svara ja eller nej]"
+msgstr "Vill du lagra lösenordet lokalt för att undvika att skriva in lösenordet nästa gång? [svara ja eller nej]"
 
 #:
 msgid "session.keystore.password"
-msgstr "Keystore-l\u00f6senord:"
+msgstr "Keystore-lösenord:"
 
 #:
 msgid "session.keystore.pwdfile_create"
-msgstr "Skapa Keystore-l\u00f6senordsfil p\u00e5 s\u00f6kv\u00e4gen: {0}"
+msgstr "Skapa Keystore-lösenordsfil på sökvägen: {0}"
 
 #:
 msgid "session.keystore.pwdfile_remove"
-msgstr "Ta bort Keystore-l\u00f6senordsfilen som inneh\u00e5ller fel l\u00f6senord"
+msgstr "Ta bort Keystore-lösenordsfilen som innehåller fel lösenord"
 
 #:
 msgid "session.login"
@@ -3007,7 +2997,7 @@ msgstr "Utloggad"
 
 #:
 msgid "session.monitorjob.errors.no_jobid"
-msgstr "Det g\u00e5r inte att \u00f6vervaka jobbet. Inget jobb_ID hittades: {0}"
+msgstr "Det går inte att övervaka jobbet. Inget jobb_ID hittades: {0}"
 
 #:
 msgid "session.monitorjob.percent_complete"
@@ -3019,19 +3009,19 @@ msgstr "Skapar ny session"
 
 #:
 msgid "session.no-certificate-found"
-msgstr "Det gick inte att hitta n\u00e5got giltigt klientcertifikat"
+msgstr "Det gick inte att hitta något giltigt klientcertifikat"
 
 #:
 msgid "session.not_default_site_member"
-msgstr "Du \u00e4r inte medlem p\u00e5 standardplatsen. V\u00e4lj ett WEBBPLATS-ID fr\u00e5n f\u00f6ljande platser:"
+msgstr "Du är inte medlem på standardplatsen. Välj ett WEBBPLATS-ID från följande platser:"
 
 #:
 msgid "session.not_site_member"
-msgstr "Du \u00e4r inte medlem p\u00e5 webbplatsen {0}. V\u00e4lj ett WEBBPLATS-ID fr\u00e5n f\u00f6ljande platser:"
+msgstr "Du är inte medlem på webbplatsen "{0}". Välj ett WEBBPLATS-ID från följande platser:"
 
 #:
 msgid "session.options.help"
-msgstr "Visa hj\u00e4lp f\u00f6r tabcmd"
+msgstr "Visa hjälp för tabcmd"
 
 #:
 msgid "session.options.no-certcheck"
@@ -3039,59 +3029,59 @@ msgstr "Validera inte SSL-certifikatet"
 
 #:
 msgid "session.options.no-cookie"
-msgstr "Spara inte sessions-ID vid inloggning. F\u00f6ljande kommandon m\u00e5ste logga in p\u00e5 nytt. Om detta inte anges \u00e4r standard att spara sessions-ID"
+msgstr "Spara inte sessions-ID vid inloggning. Följande kommandon måste logga in på nytt. Om detta inte anges är standard att spara sessions-ID"
 
 #:
 msgid "session.options.no-prompt"
-msgstr "Fr\u00e5ga inte om l\u00f6senord"
+msgstr "Fråga inte om lösenord"
 
 #:
 msgid "session.options.no-proxy"
-msgstr "Anv\u00e4nd ingen HTTP-proxy"
+msgstr "Använd ingen HTTP-proxy"
 
 #:
 msgid "session.options.password"
-msgstr "Anv\u00e4nd det angivna l\u00f6senordet f\u00f6r Tableau Server"
+msgstr "Använd det angivna lösenordet för Tableau Server"
 
 #:
 msgid "session.options.password-file"
-msgstr "L\u00e4s l\u00f6senordet till Tableau Server fr\u00e5n FILE"
+msgstr "Läs lösenordet till Tableau Server från FILE"
 
 #:
 msgid "session.options.proxy"
-msgstr "Anv\u00e4nd den angivna HTTP-proxyn"
+msgstr "Använd den angivna HTTP-proxyn"
 
 #:
 msgid "session.options.server"
-msgstr "Anv\u00e4nd den angivna webbadressen f\u00f6r Tableau Server. Om inget protokoll anges antas http:// g\u00e4lla"
+msgstr "Använd den angivna webbadressen för Tableau Server. Om inget protokoll anges antas http:// gälla"
 
 #:
 msgid "session.options.site"
-msgstr "Anv\u00e4nd den angivna platsen f\u00f6r Tableau Server. Ange en tom str\u00e4ng () f\u00f6r att tvinga anv\u00e4ndning av standardplatsen"
+msgstr "Använd den angivna platsen för Tableau Server. Ange en tom sträng ("") för att tvinga användning av standardplatsen"
 
 #:
 msgid "session.options.timeout"
-msgstr "Hur l\u00e4nge, m\u00e4tt i sekunder, ska man v\u00e4nta p\u00e5 att servern ska slutf\u00f6ra kommandok\u00f6rningen. Som standard ska man v\u00e4nta tills servern svarar"
+msgstr "Hur länge, mätt i sekunder, ska man vänta på att servern ska slutföra kommandokörningen. Som standard ska man vänta tills servern svarar"
 
 #:
 msgid "session.options.use-certificate"
-msgstr "Anv\u00e4nd klientcertifikatet f\u00f6r att logga in"
+msgstr "Använd klientcertifikatet för att logga in"
 
 #:
 msgid "session.options.username"
-msgstr "Anv\u00e4nd det angivna anv\u00e4ndarnamnet f\u00f6r Tableau Server"
+msgstr "Använd det angivna användarnamnet för Tableau Server"
 
 #:
 msgid "session.password"
-msgstr "L\u00f6senord:"
+msgstr "Lösenord:"
 
 #:
 msgid "session.retrying_task"
-msgstr "Loggar in igen f\u00f6r att f\u00f6rs\u00f6ka ursprungskommandot p\u00e5 nytt med en ny session..."
+msgstr "Loggar in igen för att försöka ursprungskommandot på nytt med en ny session..."
 
 #:
 msgid "session.session_expired_login"
-msgstr "Din session har upph\u00f6rt. Loggar ut f\u00f6r att rensa sessionen ..."
+msgstr "Din session har upphört. Loggar ut för att rensa sessionen ..."
 
 #:
 msgid "session.site_list"
@@ -3099,11 +3089,11 @@ msgstr "{0}{0}NAMN: {1}{0}WEBBPLATS-ID: ''{2}''"
 
 #:
 msgid "session.using-certificate"
-msgstr "Anv\u00e4nd klientcertifikat f\u00f6r att logga in"
+msgstr "Använd klientcertifikat för att logga in"
 
 #:
 msgid "session.inferred_username"
-msgstr "Loggar in som {0}'' eftersom ingen --anv\u00e4ndarnamnsflagga angavs"
+msgstr "Loggar in som {0}'' eftersom ingen --användarnamnsflagga angavs"
 
 #:
 msgid "sessiondata.errors.bad_api"
@@ -3119,15 +3109,15 @@ msgstr "Tabcmd-versionen({0}API {1}) matchar inte Tableau Server-versionen({2}AP
 
 #:
 msgid "sessionoptions.errors.ambiguous_scheme"
-msgstr "Ange ''{0}'' eller ''{1}'' f\u00f6re servernamnet"
+msgstr "Ange ''{0}'' eller ''{1}'' före servernamnet"
 
 #:
 msgid "sessionoptions.errors.bad_password_file"
-msgstr "Det g\u00e5r inte att l\u00e4sa l\u00f6senordet fr\u00e5n filen ''{0}''"
+msgstr "Det går inte att läsa lösenordet från filen ''{0}''"
 
 #:
 msgid "sessionoptions.errors.bad_protocol"
-msgstr "Protokoll ''{0}'' st\u00f6ds inte"
+msgstr "Protokoll ''{0}'' stöds inte"
 
 #:
 msgid "sessionoptions.errors.bad_proxy_format"
@@ -3139,39 +3129,39 @@ msgstr "Icke-numeriskt argument till {0} ''{1}'' ignorerades"
 
 #:
 msgid "set.description"
-msgstr "V\u00e4lj en inst\u00e4llning p\u00e5 servern. Anv\u00e4nd !setting f\u00f6r att st\u00e4nga av en inst\u00e4llning"
+msgstr "Välj en inställning på servern. Använd !setting för att stänga av en inställning"
 
 #:
 msgid "set.errors.requires_setting_name"
-msgstr "Kommandot ''{0}'' beh\u00f6ver ett inst\u00e4llningsnamn"
+msgstr "Kommandot ''{0}'' behöver ett inställningsnamn"
 
 #:
 msgid "set.errors.single_setting_name"
-msgstr "Kommandot ''{0}'' anv\u00e4nder ett enskilt inst\u00e4llningsnamn"
+msgstr "Kommandot ''{0}'' använder ett enskilt inställningsnamn"
 
 #:
 msgid "set.short_description"
-msgstr "St\u00e4lla in en inst\u00e4llning p\u00e5 servern"
+msgstr "Ställa in en inställning på servern"
 
 #:
 msgid "setsetting.status"
-msgstr "St\u00e4ller in ''{0}'' p\u00e5 {1}"
+msgstr "Ställer in ''{0}'' på {1}"
 
 #:
 msgid "syncgroup.errors.server_admin"
-msgstr "Den minsta platsrollen f\u00f6r en grupp kan inte vara ServerAdministrator."
+msgstr "Den minsta platsrollen för en grupp kan inte vara "ServerAdministrator"."
 
 #:
 msgid "syncgroup.options.role"
-msgstr "St\u00e4ller in standardroller f\u00f6r alla anv\u00e4ndare i gruppen. Giltiga v\u00e4rden f\u00f6r {0}: {1}. In en anv\u00e4ndare redan finns till\u00e4mpas den givna rollenom den \u00e4r mindre begr\u00e4nsande \u00e4n anv\u00e4ndarens aktuella roll. Om den inte anges \u00e4r standard {2} f\u00f6r nya anv\u00e4ndare och of\u00f6r\u00e4ndrat f\u00f6r befintliga anv\u00e4ndare"
+msgstr "Ställer in standardroller för alla användare i gruppen. Giltiga värden för {0}: {1}. In en användare redan finns tillämpas den givna rollenom den är mindre begränsande än användarens aktuella roll. Om den inte anges är standard {2} för nya användare och oförändrat för befintliga användare"
 
 #:
 msgid "syncgroup.options.overwritesiterole"
-msgstr "L\u00e5t anv\u00e4ndarens platsroll \u00e4ndras till en med mindre \u00e5tkomst n\u00e4r --role anv\u00e4nds, vilket f\u00e5r f\u00f6retr\u00e4de \u00f6ver standardbeteendet."
+msgstr "Låt användarens platsroll ändras till en med mindre åtkomst när --role används, vilket får företräde över standardbeteendet."
 
 #:
 msgid "syncgroup.options.grantlicensemode"
-msgstr "N\u00e4r man ska tilldela en licens som \u00e4r tilldelad en grupp till en anv\u00e4ndare. Till\u00e5tna v\u00e4rden \u00e4r: {0}. Om inget v\u00e4rde anges kommer on-sync anv\u00e4ndas som standardv\u00e4rde."
+msgstr "När man ska tilldela en licens som är tilldelad en grupp till en användare. Tillåtna värden är: {0}. Om inget värde anges kommer "on-sync" användas som standardvärde."
 
 #:
 msgid "syncgroup.short_description"
@@ -3183,19 +3173,19 @@ msgstr "Synkroniserar servern med en Active Directory-grupp {0}..."
 
 #:
 msgid "syncgroup.options.sysadmin-type"
-msgstr "[Anv\u00e4nds inte l\u00e4ngre. Anv\u00e4nd --role ist\u00e4llet.] Tilldelar [eller tar bort] adminbeh\u00f6righeter till alla anv\u00e4ndare i gruppen.  {0} kan vara: {1}, {2}, {3}, eller {4}."
+msgstr "[Används inte längre. Använd --role istället.] Tilldelar [eller tar bort] adminbehörigheter till alla användare i gruppen.  {0} kan vara: {1}, {2}, {3}, eller {4}."
 
 #:
 msgid "syncgroup.options.license"
-msgstr "[Anv\u00e4nds inte l\u00e4ngre. Anv\u00e4nd --role i st\u00e4llet.] St\u00e4ller in standardlicensniv\u00e5n f\u00f6r alla anv\u00e4ndare i gruppen. {0} kan vara {1}, {2} eller {3}."
+msgstr "[Används inte längre. Använd --role i stället.] Ställer in standardlicensnivån för alla användare i gruppen. {0} kan vara {1}, {2} eller {3}."
 
 #:
 msgid "syncgroup.options.publisher"
-msgstr "[Anv\u00e4nds inte l\u00e4ngre. Anv\u00e4nd --role ist\u00e4llet.] Tilldelar [eller tar bort] publiceringsbeh\u00f6righeter till alla anv\u00e4ndare i gruppen."
+msgstr "[Används inte längre. Använd --role istället.] Tilldelar [eller tar bort] publiceringsbehörigheter till alla användare i gruppen."
 
 #:
 msgid "tabcmd.mutually_exclusive_options"
-msgstr "Det g\u00e5r inte att ange ''{0}'' och ''{1}'' i samma kommando"
+msgstr "Det går inte att ange ''{0}'' och ''{1}'' i samma kommando"
 
 #:
 msgid "tabcmdparser.errors.ambiguous_option"
@@ -3203,19 +3193,19 @@ msgstr "Tvetydigt alternativ ''{0}'' bland alternativen: {1}"
 
 #:
 msgid "tabcmdparser.warning.unexpected_dash"
-msgstr "Ov\u00e4ntat bindestreck p\u00e5tr\u00e4ffades i argumentet: {0}. Giltiga bindestreck \u00e4r -, --. Det h\u00e4r felet uppst\u00e5r ofta n\u00e4r man kopierar/klistrar in fr\u00e5n en textredigerare med formatering. Prova med att skriva bindestrecket f\u00f6r argumentet igen i kommandoraden."
+msgstr "Oväntat bindestreck påträffades i argumentet: {0}. Giltiga bindestreck är -, --. Det här felet uppstår ofta när man kopierar/klistrar in från en textredigerare med formatering. Prova med att skriva bindestrecket för argumentet igen i kommandoraden."
 
 #:
 msgid "resetopenidsub.short_description"
-msgstr "\u00c5terst\u00e4ll ett OpenID Connect SubId f\u00f6r en anv\u00e4ndare"
+msgstr "Återställ ett OpenID Connect SubId för en användare"
 
 #:
 msgid "resetopenidsub.options.targetusername"
-msgstr "Anv\u00e4ndare som ska \u00e5terst\u00e4llas"
+msgstr "Användare som ska återställas"
 
 #:
 msgid "resetopenidsub.options.all"
-msgstr "\u00c5terst\u00e4ll alla anv\u00e4ndare"
+msgstr "Återställ alla användare"
 
 #:
 msgid "version.description"
@@ -3223,7 +3213,7 @@ msgstr "Skriv ut versioninformation"
 
 #:
 msgid "vizqlsession.errors.cannot_create_session"
-msgstr "Det gick inte att skapa en VizQI-session p\u00e5 servern"
+msgstr "Det gick inte att skapa en VizQI-session på servern"
 
 #:
 msgid "vizqlsession.errors.no_command_result"
@@ -3231,15 +3221,15 @@ msgstr "Det gick inte att hitta kommandoresultatet: {0}"
 
 #:
 msgid "vizqlsession.errors.session_already_closed"
-msgstr "VizQl-sessionens objekt \u00e4r redan st\u00e4ngt"
+msgstr "VizQl-sessionens objekt är redan stängt"
 
 #:
 msgid "vizqlsession.errors.cannot_parse_response"
-msgstr "Det g\u00e5r inte att analysera JSON-svarsstr\u00e4ngen: {0}"
+msgstr "Det går inte att analysera JSON-svarssträngen: {0}"
 
 #:
 msgid "upgradethumbnails.short_description"
-msgstr "Detta kommer att k\u00f6ra bakgrundsjobbet Upgrade Thumbnails. Tableau 2018.2. Detta kan medf\u00f6ra en h\u00f6gre arbetsbelastning \u00e4n normalt p\u00e5 Tableau Server och externa datak\u00e4llor. and external datasources. Om problem uppst\u00e5r kan jobbet avbrytas genom att k\u00f6ra tabcmd upgradethumbnails --server <server> --stopp"
+msgstr "Detta kommer att köra bakgrundsjobbet Upgrade Thumbnails. Tableau 2018.2. Detta kan medföra en högre arbetsbelastning än normalt på Tableau Server och externa datakällor. and external datasources. Om problem uppstår kan jobbet avbrytas genom att köra tabcmd upgradethumbnails --server <server> --stopp"
 
 #:
 msgid "upgradethumbnails.options.stop"
@@ -3255,11 +3245,11 @@ msgstr "Miniatyruppgraderingen startar inte"
 
 #:
 msgid "upgradethumbnails.status.cancelling"
-msgstr "Avbryter uppgraderingsjobb f\u00f6r miniatyrer"
+msgstr "Avbryter uppgraderingsjobb för miniatyrer"
 
 #:
 msgid "upgradethumbnails.continue_promt"
-msgstr "Vill du forts\u00e4tta? Tryck 1 f\u00f6r Ja, 0 f\u00f6r Nej (1/0)"
+msgstr "Vill du fortsätta? Tryck 1 för Ja, 0 för Nej (1/0)"
 
 #:
 msgid "upgradethumbnails.invalid_response"
@@ -3267,22 +3257,22 @@ msgstr "Ogiltigt svar"
 
 #:
 msgid "validateidpmetadata.options.digest_algorithms"
-msgstr "En blankstegsavgr\u00e4nsad lista \u00f6ver sammanfattningsalgoritmer. Giltiga v\u00e4rden f\u00f6r {0}: {1}. Om detta inte anges anv\u00e4nder servern v\u00e4rden fr\u00e5n serverns konfigurationsinst\u00e4llning: {2}"
+msgstr "En blankstegsavgränsad lista över sammanfattningsalgoritmer. Giltiga värden för {0}: {1}. Om detta inte anges använder servern värden från serverns konfigurationsinställning: {2}"
 
 #:
 msgid "validateidpmetadata.options.min_allowed_rsa_key_size"
-msgstr "Om detta inte anges anv\u00e4nder servern v\u00e4rden fr\u00e5n serverns konfigurationsinst\u00e4llning: {0}"
+msgstr "Om detta inte anges använder servern värden från serverns konfigurationsinställning: {0}"
 
 #:
 msgid "validateidpmetadata.options.min_allowed_elliptic_curve_size"
-msgstr "Om detta inte anges anv\u00e4nder servern v\u00e4rden fr\u00e5n serverns konfigurationsinst\u00e4llning: {0}"
+msgstr "Om detta inte anges använder servern värden från serverns konfigurationsinställning: {0}"
 
 #:
 msgid "validateidpmetadata.options.site_names"
-msgstr "En blankstegsavgr\u00e4nsad f\u00f6rteckning \u00f6ver webbplatsnamn d\u00e4r certifikatvalidering ska k\u00f6ras. Om detta inte anges kommer alla webbplatser att inspekteras."
+msgstr "En blankstegsavgränsad förteckning över webbplatsnamn där certifikatvalidering ska köras. Om detta inte anges kommer alla webbplatser att inspekteras."
 
 #:
 msgid "validateidpmetadata.short_description"
-msgstr "Identifierar Tableau Server-webbplatser som har konfigurerats med IdP:er med den os\u00e4kra sammanfattningsalgoritmen SHA-1. Detta kommando identifierar ocks\u00e5 IdP:er som anv\u00e4nder certifikat med en otillr\u00e4cklig RSA-nyckelstorlek eller eliptisk kurvstorlek."
+msgstr "Identifierar Tableau Server-webbplatser som har konfigurerats med IdP:er med den osäkra sammanfattningsalgoritmen SHA-1. Detta kommando identifierar också IdP:er som använder certifikat med en otillräcklig RSA-nyckelstorlek eller eliptisk kurvstorlek."
 
 

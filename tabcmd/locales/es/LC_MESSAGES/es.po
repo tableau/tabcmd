@@ -1,14 +1,12 @@
-# Tabcmd output strings
+msgid ""
+msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=utf-8"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: None"
+"Language: es"
 # Copyright (C) YEAR Tableau Software
-
-# We are varying the gettext process a little because we want to
-# re-use the existing translated strings in the old client
-# manually annotate each string and use a string id
-# manually generate a template file with id -> original string
-# check in properties files from the monolith in all languages
-# automate: two properties files -> po http://docs.translatehouse.org/projects/translate-toolkit/en/latest/commands/prop2po.html
-# gettext or Babel : po -> mo during packaging  (https://www.mattlayman.com/blog/2015/i18n/)
-# strings in template that are not in .properties should remain in English?
 
 
 # These outcome reporting lines were all returned from the server in clientxml

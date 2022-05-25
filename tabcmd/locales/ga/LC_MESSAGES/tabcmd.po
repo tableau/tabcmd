@@ -1,11 +1,79 @@
 msgid ""
 msgstr ""
 "MIME-Version: 1.0"
-"Content-Type: text/plain; charset=None"
+"Content-Type: text/plain; charset=utf-8"
 "Content-Transfer-Encoding: 8bit"
 "X-Generator: prop2po"
 "Project-Id-Version: None"
-"Language: None"
+"Language: ga"
+# Copyright (C) YEAR Tableau Software
+
+
+# These outcome reporting lines were all returned from the server in clientxml
+# https://sourcegraph.prod.tableautools.com/teams/near/-/blob/workgroup/src/shared/libraries/tab-strings/res/localization/shared_wg_en.properties
+# how much of this can be replaced by server responses?
+
+msgid "tabcmd.result.already_exists.group"
+msgstr "Group called ''{}'' already exists"
+
+msgid "tabcmd.result.failed.delete.group"
+msgstr "Error deleting group from server"
+
+msgid "tabcmd.result.success.create_user"
+msgstr "Successfully created user: {}"
+
+msgid "tabcmd.report.users_added"
+msgstr "Number of users added: {}"
+
+msgid "tabcmd.report.errors"
+msgstr "Error details: \n{}"
+
+msgid "tabcmd.report.error.user_csv.too_many_columns"
+msgstr "The file contains {} columns, but there are only {} valid columns in a user import csv file"
+
+msgid "tabcmd.report.error.user_csv.at_char"
+msgstr "If a user name includes an @ character that represents anything other than a domain separator, "
+                    "you need to refer to the symbol using the hexadecimal format: \\0x40"
+
+msgid "tabcmd.report.error.user.no_spaces_in_username"
+msgstr "Username cannot contain spaces"
+
+msgid "tabcmd.report.error.generic_attribute"
+msgstr "Invalid value for {0}: {1}"
+
+msgid "tabcmd.report.error.publish_samples.expected_project"
+msgstr "publishsamples expects the specified project to exist already"
+
+msgid "tabcmd.result.failure.publish_samples"
+msgstr "Failed publishing samples to project"
+
+msgid "tabcmd.launching"
+msgstr "======================= Launching command ======================="
+
+msgid "tabcmd.find.group"
+msgstr "Finding group ''{}'' on server..."
+
+# Each actual command has a status line in translation
+
+msgid "tabcmd.add.users.to_site"
+msgstr "===== Adding users listed in {0} to {1}..."
+
+msgid "tabcmd.delete.users.from_server"
+msgstr "Removing users listed in {0} from the server..."
+
+msgid "tabcmd.get.extension.not_found"
+msgstr "You must specify a file type in the url or filename"
+
+msgid "tabcmd.run_schedule.options.schedule"
+msgstr "Name of the schedule to run"
+msgid ""
+msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=utf-8"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: None"
+"Language: ga"
 #:
 msgid "permissions.labels.capabilities.read"
 msgstr "61764-表:Ɣıéὠ:|"
@@ -234,8 +302,6 @@ msgstr "87916-表:Çűstom|"
 msgid "permissions.labels.roles.none"
 msgstr "80467-表:Ñoฑé|"
 
-# Used in Storage class in tab-core
-
 #:
 msgid "formats.messages.disk_space.in_mb"
 msgstr "28794-表:{0} MB|"
@@ -243,8 +309,6 @@ msgstr "28794-表:{0} MB|"
 #:
 msgid "formats.messages.disk_space.in_kb"
 msgstr "28732-表:{0} KB|"
-
-# Publishing-related errors and strings
 
 #:
 msgid "errors.argument.flow_description.too_long"
@@ -332,23 +396,23 @@ msgstr "62054-表:Yoű műst bé äฑ ''İฑtéяäçtoя'' to pűbłısh ä �
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite"
-msgstr "64947-表:Å ďätä soűяçé ฑäméď {0} äłяéäďy éxısts ıฑ pяojéçt {1}. Yoű ďo ฑot hävé péяmıssıoฑs to ovéяὠяıté ıt.|"
+msgstr "64947-表:Å ďätä soűяçé ฑäméď "{0}" äłяéäďy éxısts ıฑ pяojéçt "{1}". Yoű ďo ฑot hävé péяmıssıoฑs to ovéяὠяıté ıt.|"
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_personal_space"
-msgstr "98835-表:Å ďätä soűяçé ฑäméď {0} äłяéäďy éxısts ıฑ Péяsoฑäł Şpäçé. Yoű ďo ฑot hävé péяmıssıoฑs to ovéяὠяıté ıt.|"
+msgstr "98835-表:Å ďätä soűяçé ฑäméď "{0}" äłяéäďy éxısts ıฑ Péяsoฑäł Şpäçé. Yoű ďo ฑot hävé péяmıssıoฑs to ovéяὠяıté ıt.|"
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short"
-msgstr "46800-表:Å ďätä soűяçé ฑäméď {0} äłяéäďy éxısts ıฑ pяojéçt {1}.|"
+msgstr "46800-表:Å ďätä soűяçé ฑäméď "{0}" äłяéäďy éxısts ıฑ pяojéçt "{1}".|"
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "75382-表:Å ďätäsoűяçé ฑäméď {0} äłяéäďy éxısts ıฑ Péяsoฑäł Şpäçé.|"
+msgstr "75382-表:Å ďätäsoűяçé ฑäméď "{0}" äłяéäďy éxısts ıฑ Péяsoฑäł Şpäçé."|"
 
 #:
 msgid "errors.permissions.publish.datasource.non_existent"
-msgstr "16798-表:Ðätä soűяçé {0} ďoés ฑot éxıst.|"
+msgstr "16798-表:Ðätä soűяçé "{0}" ďoés ฑot éxıst.|"
 
 #:
 msgid "errors.permissions.publish.datasource.general"
@@ -364,11 +428,11 @@ msgstr "23522-表:Şoяяy, yoű ďo ฑot hävé péяmıssıoฑ to pűbłısh
 
 #:
 msgid "errors.permissions.publish.project.non_existent"
-msgstr "52716-表:Pяojéçt {0} ďoés ฑot éxıst.|"
+msgstr "52716-表:Pяojéçt "{0}" ďoés ฑot éxıst.|"
 
 #:
 msgid "errors.permissions.publish.project.not_writable"
-msgstr "86386-表:Yoű ďo ฑot hävé péяmıssıoฑ to ὠяıté to thé pяojéçt {0}.|"
+msgstr "86386-表:Yoű ďo ฑot hävé péяmıssıoฑ to ὠяıté to thé pяojéçt "{0}".|"
 
 #:
 msgid "errors.permissions.publish.project.unspecified"
@@ -376,7 +440,7 @@ msgstr "13265-表:Yoű műst spéçıfy ä pяojéçt|"
 
 #:
 msgid "errors.permissions.publish.workbook.disabled"
-msgstr "24223-表:Thé ὠoяkbook {0} ıs ďısäbłéď.|"
+msgstr "24223-表:Thé ὠoяkbook "{0}" ıs ďısäbłéď.|"
 
 #:
 msgid "errors.permissions.publish.workbook.general"
@@ -388,19 +452,19 @@ msgstr "82209-表:Å ὠoяkbook ὠıth thıs ฑämé éxısts ıฑ thé Pé�
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite"
-msgstr "41928-表:Å ὠoяkbook ฑäméď {0} äłяéäďy éxısts ıฑ pяojéçt {1}. Yoű ďo ฑot hävé péяmıssıoฑs to ovéяὠяıté ıt.|"
+msgstr "41928-表:Å ὠoяkbook ฑäméď "{0}" äłяéäďy éxısts ıฑ pяojéçt "{1}". Yoű ďo ฑot hävé péяmıssıoฑs to ovéяὠяıté ıt.|"
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_personal_space"
-msgstr "03262-表:Å ὠoяkbook ฑäméď {0} äłяéäďy éxısts ıฑ Péяsoฑäł Şpäçé. Yoű ďo ฑot hävé péяmıssıoฑs to ovéяὠяıté ıt.|"
+msgstr "03262-表:Å ὠoяkbook ฑäméď "{0}" äłяéäďy éxısts ıฑ Péяsoฑäł Şpäçé. Yoű ďo ฑot hävé péяmıssıoฑs to ovéяὠяıté ıt.|"
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short"
-msgstr "40805-表:Å ὠoяkbook ฑäméď {0} äłяéäďy éxısts ıฑ pяojéçt {1}.|"
+msgstr "40805-表:Å ὠoяkbook ฑäméď "{0}" äłяéäďy éxısts ıฑ pяojéçt "{1}".|"
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
-msgstr "07937-表:Å ὠoяkbook ฑäméď {0} äłяéäďy éxısts ıฑ Péяsoฑäł Şpäçé.|"
+msgstr "07937-表:Å ὠoяkbook ฑäméď "{0}" äłяéäďy éxısts ıฑ Péяsoฑäł Şpäçé.|"
 
 #:
 msgid "errors.reportable.impersonation.group_and_user"
@@ -412,9 +476,7 @@ msgstr "75116-表:Uséя ''{0}'' ďoés ฑot éxıst.|"
 
 #:
 msgid "errors.reportable.impersonation.group_not_found"
-msgstr "38668-表:Gяoűp ''{0}'' ďoés ฑot éxıst.|"
-
-# errors.public.validation.hasextract is copied from the C++ file codegen strings.data IDS_PUBLIC_VALIDATION_ERROR_HASEXTRACT
+msgstr "38668-表:Gяoűp ''{0}'' ďoés ฑot éxıst.| "
 
 #:
 msgid "errors.public.validation.hasextract"
@@ -502,7 +564,7 @@ msgstr "87075-表:Émbéď pässὠoяď foя ďätä soűяçé|"
 
 #:
 msgid "errors.publish.workbook.google_no_embedded_credentials"
-msgstr "43948-表:Thıs ὠoяkbook çoฑtäıฑs ä {0} ďätä soűяçé ὠhıçh яéqűıяés émbéďďéď çяéďéฑtıäłs. To sävé äs äฑothéя ὠoяkbook, séłéçt {1}.|"
+msgstr "43948-表:Thıs ὠoяkbook çoฑtäıฑs ä {0} ďätä soűяçé ὠhıçh яéqűıяés émbéďďéď çяéďéฑtıäłs. To sävé äs äฑothéя ὠoяkbook, séłéçt "{1}".|"
 
 #:
 msgid "errors.publish.datasource.google_no_embedded_credentials"
@@ -563,8 +625,6 @@ msgstr "03191-表:Çoűłď ฑot séяıäłıžé pűbłıshıฑg job stätű
 #:
 msgid "errors.permissions.view.datasources"
 msgstr "57975-表:Yoű műst bé äฑ ''İฑtéяäçtoя'' to vıéὠ thé łıst of ďätä soűяçés.|"
-
-# oauth related errors
 
 #:
 msgid "errors.oauth.invalid_oauth_class"
@@ -1432,7 +1492,7 @@ msgstr "30381-表:Yoűя métяıç ısฑ''t äbłé to яéfяésh, so thé m�
 
 #:
 msgid "metricsservices.failure.status"
-msgstr "41822-表:Yoűя métяıç {0} ısฑ''t яéfяéshıฑg|"
+msgstr "41822-表:Yoűя métяıç "{0}" ısฑ''t яéfяéshıฑg|"
 
 #:
 msgid "metricsservices.failure.suspend.email.explanation"
@@ -1444,7 +1504,7 @@ msgstr "57131-表:Yoű äяé яéçéıvıฑg thıs émäıł ät {0} béçä�
 
 #:
 msgid "metricsservices.failure.suspend.email.status"
-msgstr "37122-表:Яéfяésh foя yoűя métяıç {0} häs bééฑ sűspéฑďéď|"
+msgstr "37122-表:Яéfяésh foя yoűя métяıç "{0}" häs bééฑ sűspéฑďéď|"
 
 #:
 msgid "metricsservices.failure.suspend.email.subject"
@@ -1488,7 +1548,7 @@ msgstr "78182-表:Thé яéfяésh foя yoűя métяıç ıs ὠoяkıฑg äg�
 
 #:
 msgid "metricsservices.success.status"
-msgstr "88005-表:Яéfяésh foя yoűя métяıç {0} häs яésűméď|"
+msgstr "88005-表:Яéfяésh foя yoűя métяıç "{0}" häs яésűméď|"
 
 #:
 msgid "errors.staticimages.generic"
@@ -1799,84 +1859,14 @@ msgid "unifiedconsumption.tcrm.folders.private"
 msgstr "50752-表:My Pяıväté Åpp|"
 
 
-# Tabcmd output strings
-# Copyright (C) YEAR Tableau Software
-
-# We are varying the gettext process a little because we want to
-# re-use the existing translated strings in the old client
-# manually annotate each string and use a string id
-# manually generate a template file with id -> original string
-# check in properties files from the monolith in all languages
-# automate: two properties files -> po http://docs.translatehouse.org/projects/translate-toolkit/en/latest/commands/prop2po.html
-# gettext or Babel : po -> mo during packaging  (https://www.mattlayman.com/blog/2015/i18n/)
-# strings in template that are not in .properties should remain in English?
-
-
-# These outcome reporting lines were all returned from the server in clientxml
-# https://sourcegraph.prod.tableautools.com/teams/near/-/blob/workgroup/src/shared/libraries/tab-strings/res/localization/shared_wg_en.properties
-# how much of this can be replaced by server responses?
-
-msgid "tabcmd.result.already_exists.group"
-msgstr "Group called ''{}'' already exists"
-
-msgid "tabcmd.result.failed.delete.group"
-msgstr "Error deleting group from server"
-
-msgid "tabcmd.result.success.create_user"
-msgstr "Successfully created user: {}"
-
-msgid "tabcmd.report.users_added"
-msgstr "Number of users added: {}"
-
-msgid "tabcmd.report.errors"
-msgstr "Error details: \n{}"
-
-msgid "tabcmd.report.error.user_csv.too_many_columns"
-msgstr "The file contains {} columns, but there are only {} valid columns in a user import csv file"
-
-msgid "tabcmd.report.error.user_csv.at_char"
-msgstr "If a user name includes an @ character that represents anything other than a domain separator, "
-                    "you need to refer to the symbol using the hexadecimal format: \\0x40"
-
-msgid "tabcmd.report.error.user.no_spaces_in_username"
-msgstr "Username cannot contain spaces"
-
-msgid "tabcmd.report.error.generic_attribute"
-msgstr "Invalid value for {0}: {1}"
-
-msgid "tabcmd.report.error.publish_samples.expected_project"
-msgstr "publishsamples expects the specified project to exist already"
-
-msgid "tabcmd.result.failure.publish_samples"
-msgstr "Failed publishing samples to project"
-
-msgid "tabcmd.launching"
-msgstr "======================= Launching command ======================="
-
-msgid "tabcmd.find.group"
-msgstr "Finding group ''{}'' on server..."
-
-# Each actual command has a status line in translation
-
-msgid "tabcmd.add.users.to_site"
-msgstr "===== Adding users listed in {0} to {1}..."
-
-msgid "tabcmd.delete.users.from_server"
-msgstr "Removing users listed in {0} from the server..."
-
-msgid "tabcmd.get.extension.not_found"
-msgstr "You must specify a file type in the url or filename"
-
-msgid "tabcmd.run_schedule.options.schedule"
-msgstr "Name of the schedule to run"
 msgid ""
 msgstr ""
 "MIME-Version: 1.0"
-"Content-Type: text/plain; charset=None"
+"Content-Type: text/plain; charset=utf-8"
 "Content-Transfer-Encoding: 8bit"
 "X-Generator: prop2po"
 "Project-Id-Version: None"
-"Language: None"
+"Language: ga"
 #:
 msgid "commandlineutils.errors.bad_value"
 msgstr "30813-表:Õptıoฑ ''{0}'' häs ä bäď väłűé of ''{1}''. Műst bé one of: {2}|"
@@ -3067,7 +3057,7 @@ msgstr "98302-表:Usé thé spéçıfıéď Täbłéäű Şéяvéя UЯŁ. İf 
 
 #:
 msgid "session.options.site"
-msgstr "01122-表:Usé thé spéçıfıéď Täbłéäű Şéяvéя sıté. Şpéçıfy äฑ émpty stяıฑg () to foяçé űsé of thé ďéfäűłt sıté|"
+msgstr "01122-表:Usé thé spéçıfıéď Täbłéäű Şéяvéя sıté. Şpéçıfy äฑ émpty stяıฑg ("") to foяçé űsé of thé ďéfäűłt sıté|"
 
 #:
 msgid "session.options.timeout"

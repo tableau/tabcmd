@@ -1,18 +1,86 @@
 msgid ""
 msgstr ""
 "MIME-Version: 1.0"
-"Content-Type: text/plain; charset=None"
+"Content-Type: text/plain; charset=utf-8"
 "Content-Transfer-Encoding: 8bit"
 "X-Generator: prop2po"
 "Project-Id-Version: None"
-"Language: None"
+"Language: de"
+# Copyright (C) YEAR Tableau Software
+
+
+# These outcome reporting lines were all returned from the server in clientxml
+# https://sourcegraph.prod.tableautools.com/teams/near/-/blob/workgroup/src/shared/libraries/tab-strings/res/localization/shared_wg_en.properties
+# how much of this can be replaced by server responses?
+
+msgid "tabcmd.result.already_exists.group"
+msgstr "Group called ''{}'' already exists"
+
+msgid "tabcmd.result.failed.delete.group"
+msgstr "Error deleting group from server"
+
+msgid "tabcmd.result.success.create_user"
+msgstr "Successfully created user: {}"
+
+msgid "tabcmd.report.users_added"
+msgstr "Number of users added: {}"
+
+msgid "tabcmd.report.errors"
+msgstr "Error details: \n{}"
+
+msgid "tabcmd.report.error.user_csv.too_many_columns"
+msgstr "The file contains {} columns, but there are only {} valid columns in a user import csv file"
+
+msgid "tabcmd.report.error.user_csv.at_char"
+msgstr "If a user name includes an @ character that represents anything other than a domain separator, "
+                    "you need to refer to the symbol using the hexadecimal format: \\0x40"
+
+msgid "tabcmd.report.error.user.no_spaces_in_username"
+msgstr "Username cannot contain spaces"
+
+msgid "tabcmd.report.error.generic_attribute"
+msgstr "Invalid value for {0}: {1}"
+
+msgid "tabcmd.report.error.publish_samples.expected_project"
+msgstr "publishsamples expects the specified project to exist already"
+
+msgid "tabcmd.result.failure.publish_samples"
+msgstr "Failed publishing samples to project"
+
+msgid "tabcmd.launching"
+msgstr "======================= Launching command ======================="
+
+msgid "tabcmd.find.group"
+msgstr "Finding group ''{}'' on server..."
+
+# Each actual command has a status line in translation
+
+msgid "tabcmd.add.users.to_site"
+msgstr "===== Adding users listed in {0} to {1}..."
+
+msgid "tabcmd.delete.users.from_server"
+msgstr "Removing users listed in {0} from the server..."
+
+msgid "tabcmd.get.extension.not_found"
+msgstr "You must specify a file type in the url or filename"
+
+msgid "tabcmd.run_schedule.options.schedule"
+msgstr "Name of the schedule to run"
+msgid ""
+msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=utf-8"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: None"
+"Language: de"
 #:
 msgid "permissions.labels.capabilities.read"
 msgstr "Ansicht:"
 
 #:
 msgid "permissions.labels.capabilities.write"
-msgstr "\u00dcberschreiben:"
+msgstr "Überschreiben:"
 
 #:
 msgid "permissions.labels.capabilities.write.legacy"
@@ -20,7 +88,7 @@ msgstr "Speichern:"
 
 #:
 msgid "permissions.labels.capabilities.delete"
-msgstr "L\u00f6schen:"
+msgstr "Löschen:"
 
 #:
 msgid "permissions.labels.capabilities.filter"
@@ -28,19 +96,19 @@ msgstr "Filter:"
 
 #:
 msgid "permissions.labels.capabilities.add_tag"
-msgstr "Tag hinzuf\u00fcgen:"
+msgstr "Tag hinzufügen:"
 
 #:
 msgid "permissions.labels.capabilities.add_favorite"
-msgstr "Favorit hinzuf\u00fcgen:"
+msgstr "Favorit hinzufügen:"
 
 #:
 msgid "permissions.labels.capabilities.add_comment"
-msgstr "Kommentare hinzuf\u00fcgen:"
+msgstr "Kommentare hinzufügen:"
 
 #:
 msgid "permissions.labels.capabilities.add_comment.legacy"
-msgstr "Kommentar hinzuf\u00fcgen:"
+msgstr "Kommentar hinzufügen:"
 
 #:
 msgid "permissions.labels.capabilities.view_comments"
@@ -48,7 +116,7 @@ msgstr "Kommentare anzeigen:"
 
 #:
 msgid "permissions.labels.capabilities.vud"
-msgstr "Vollst\u00e4ndige Daten herunterladen:"
+msgstr "Vollständige Daten herunterladen:"
 
 #:
 msgid "permissions.labels.capabilities.export_image"
@@ -88,7 +156,7 @@ msgstr "Berechtigungen festlegen:"
 
 #:
 msgid "permissions.labels.capabilities.exclude"
-msgstr "Ausschlie\u00dfen:"
+msgstr "Ausschließen:"
 
 #:
 msgid "permissions.labels.capabilities.keep_only"
@@ -96,7 +164,7 @@ msgstr "Nur beibehalten:"
 
 #:
 msgid "permissions.labels.capabilities.select"
-msgstr "Markierungen ausw\u00e4hlen:"
+msgstr "Markierungen auswählen:"
 
 #:
 msgid "permissions.labels.capabilities.tooltip"
@@ -128,7 +196,7 @@ msgstr "Umbenennen:"
 
 #:
 msgid "permissions.labels.capabilities.transfer_ownership"
-msgstr "Besitzrecht \u00fcbertragen:"
+msgstr "Besitzrecht übertragen:"
 
 #:
 msgid "permissions.labels.capabilities.project_leader"
@@ -136,7 +204,7 @@ msgstr "Projektleiter:"
 
 #:
 msgid "permissions.labels.capabilities.publish"
-msgstr "Ver\u00f6ffentlichen:"
+msgstr "Veröffentlichen:"
 
 #:
 msgid "permissions.labels.capabilities.connect"
@@ -160,7 +228,7 @@ msgstr "Metriken erstellen/aktualisieren:"
 
 #:
 msgid "permissions.labels.capabilities.explain_data"
-msgstr "Erkl\u00e4r die Daten ausf\u00fchren:"
+msgstr ""Erklär die Daten" ausführen:"
 
 #:
 msgid "permissions.labels.roles.wb_view"
@@ -172,7 +240,7 @@ msgstr "Untersuchen"
 
 #:
 msgid "permissions.labels.roles.wb_publish"
-msgstr "Ver\u00f6ffentlichen"
+msgstr "Veröffentlichen"
 
 #:
 msgid "permissions.labels.roles.wb_administer"
@@ -188,7 +256,7 @@ msgstr "Untersuchen"
 
 #:
 msgid "permissions.labels.roles.ds_publish"
-msgstr "Ver\u00f6ffentlichen"
+msgstr "Veröffentlichen"
 
 #:
 msgid "permissions.labels.roles.ds_administer"
@@ -224,7 +292,7 @@ msgstr "Projektleiter"
 
 #:
 msgid "permissions.labels.roles.publisher"
-msgstr "Ver\u00f6ffentlicher"
+msgstr "Veröffentlicher"
 
 #:
 msgid "permissions.labels.roles.custom"
@@ -234,8 +302,6 @@ msgstr "Benutzerdefiniert"
 msgid "permissions.labels.roles.none"
 msgstr "Keiner"
 
-# Used in Storage class in tab-core
-
 #:
 msgid "formats.messages.disk_space.in_mb"
 msgstr "{0} MB"
@@ -244,15 +310,13 @@ msgstr "{0} MB"
 msgid "formats.messages.disk_space.in_kb"
 msgstr "{0} KB"
 
-# Publishing-related errors and strings
-
 #:
 msgid "errors.argument.flow_description.too_long"
-msgstr "Schemabeschreibung ist zu lang ({0} Zeichen). Die Beschreibung muss k\u00fcrzer als {1} Zeichen sein:\n{2}"
+msgstr "Schemabeschreibung ist zu lang ({0} Zeichen). Die Beschreibung muss kürzer als {1} Zeichen sein:{2}"
 
 #:
 msgid "errors.argument.workbook_name.too_long"
-msgstr "Arbeitsmappenname ist zu lang ({0} Zeichen). Er muss k\u00fcrzer als {1} Zeichen sein:\n{2}"
+msgstr "Arbeitsmappenname ist zu lang ({0} Zeichen). Er muss kürzer als {1} Zeichen sein:{2}"
 
 #:
 msgid "errors.argument.workbook_name.empty"
@@ -260,15 +324,15 @@ msgstr "Arbeitsmappenname ist leer,"
 
 #:
 msgid "errors.argument.workbook_description.too_long"
-msgstr "Arbeitsmappenbeschreibung ist zu lang ({0} Zeichen). Die Beschreibung muss k\u00fcrzer als {1} Zeichen sein:\n{2}"
+msgstr "Arbeitsmappenbeschreibung ist zu lang ({0} Zeichen). Die Beschreibung muss kürzer als {1} Zeichen sein:{2}"
 
 #:
 msgid "errors.argument.worksheet_name.too_long"
-msgstr "Arbeitsblattname ist zu lang ({0} Zeichen). Er muss k\u00fcrzer als {1} Zeichen sein:\n{2}"
+msgstr "Arbeitsblattname ist zu lang ({0} Zeichen). Er muss kürzer als {1} Zeichen sein:{2}"
 
 #:
 msgid "errors.argument.datasource_name.too_long"
-msgstr "Datenquellenname ist zu lang ({0} Zeichen). Er muss k\u00fcrzer als {1} Zeichen sein:\n{2}"
+msgstr "Datenquellenname ist zu lang ({0} Zeichen). Er muss kürzer als {1} Zeichen sein:{2}"
 
 #:
 msgid "errors.argument.datasource_name.empty"
@@ -276,15 +340,15 @@ msgstr "Der Datenquellenname ist leer."
 
 #:
 msgid "errors.argument.datasource_description.too_long"
-msgstr "Datenquellenbeschreibung ist zu lang ({0} Zeichen). Die Beschreibung muss k\u00fcrzer als {1} Zeichen sein:\n{2}"
+msgstr "Datenquellenbeschreibung ist zu lang ({0} Zeichen). Die Beschreibung muss kürzer als {1} Zeichen sein:{2}"
 
 #:
 msgid "errors.argument.dataconnection_column.too_long"
-msgstr "DataConnection column {0} is too long ({1} characters).  It must be shorter than {2} characters:\n{3}"
+msgstr "DataConnection column {0} is too long ({1} characters).  It must be shorter than {2} characters:{3}"
 
 #:
 msgid "errors.argument.tag.too_long"
-msgstr "Tag ist zu lang ({0} Zeichen). Es muss k\u00fcrzer sein als {1} Zeichen:\n{2}"
+msgstr "Tag ist zu lang ({0} Zeichen). Es muss kürzer sein als {1} Zeichen:{2}"
 
 #:
 msgid "errors.argument.workbook_file.missing_or_empty"
@@ -292,11 +356,11 @@ msgstr "Arbeitsmappendatei fehlt oder ist leer."
 
 #:
 msgid "errors.argument.internal"
-msgstr "Interner Serverfehler. Fehlendes und ung\u00fcltiges Argument."
+msgstr "Interner Serverfehler. Fehlendes und ungültiges Argument."
 
 #:
 msgid "errors.argument.thumbnail.invalid_format"
-msgstr "Format der Arbeitsmappen-Miniaturansichten ist ung\u00fcltig. Muss PNG mit Aufl\u00f6sung von 300 x 300 oder weniger sein."
+msgstr "Format der Arbeitsmappen-Miniaturansichten ist ungültig. Muss PNG mit Auflösung von 300 x 300 oder weniger sein."
 
 #:
 msgid "errors.html_403.disabled_resource.workbook"
@@ -304,11 +368,11 @@ msgstr "Diese Arbeitsmappe wurde leider deaktiviert. Wenden Sie sich an Ihren Ad
 
 #:
 msgid "errors.html_404.missing_or_unauthorized_resource.project"
-msgstr "Das gesuchte Projekt ist leider nicht vorhanden, oder Sie verf\u00fcgen nicht \u00fcber die Berechtigung zum Anzeigen dieses Projekts."
+msgstr "Das gesuchte Projekt ist leider nicht vorhanden, oder Sie verfügen nicht über die Berechtigung zum Anzeigen dieses Projekts."
 
 #:
 msgid "errors.html_404.missing_or_unauthorized_resource.personal_space"
-msgstr "Der gesuchte pers\u00f6nliche Bereich ist leider nicht vorhanden, oder Sie verf\u00fcgen nicht \u00fcber die Berechtigung, um diesen anzuzeigen."
+msgstr "Der gesuchte persönliche Bereich ist leider nicht vorhanden, oder Sie verfügen nicht über die Berechtigung, um diesen anzuzeigen."
 
 #:
 msgid "errors.html_404.missing_or_unauthorized_resource.datasource"
@@ -320,23 +384,23 @@ msgstr "Anforderungs-ID: {0}"
 
 #:
 msgid "errors.links.delete_datasources"
-msgstr "Datenquellen l\u00f6schen"
+msgstr "Datenquellen löschen"
 
 #:
 msgid "errors.links.delete_workbooks"
-msgstr "Arbeitsmappen l\u00f6schen"
+msgstr "Arbeitsmappen löschen"
 
 #:
 msgid "errors.permissions.publish.datasource.licensing"
-msgstr "Sie m\u00fcssen ''Interaktor'' sein, um eine Datenquelle ver\u00f6ffentlichen zu k\u00f6nnen."
+msgstr "Sie müssen ''Interaktor'' sein, um eine Datenquelle veröffentlichen zu können."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite"
-msgstr "Eine Datenquelle mit dem Namen ''{0}'' ist im Projekt ''{1}'' bereits vorhanden. Sie verf\u00fcgen nicht \u00fcber Berechtigungen zum \u00dcberschreiben."
+msgstr "Eine Datenquelle mit dem Namen ''{0}'' ist im Projekt ''{1}'' bereits vorhanden. Sie verfügen nicht über Berechtigungen zum Überschreiben."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_personal_space"
-msgstr "Eine Datenquelle mit dem Namen ''{0}'' ist bereits im pers\u00f6nlichen Bereich vorhanden. Sie verf\u00fcgen nicht \u00fcber Berechtigungen zum \u00dcberschreiben."
+msgstr "Eine Datenquelle mit dem Namen ''{0}'' ist bereits im persönlichen Bereich vorhanden. Sie verfügen nicht über Berechtigungen zum Überschreiben."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short"
@@ -344,23 +408,23 @@ msgstr "Eine Datenquelle mit dem Namen ''{0}'' ist im Projekt ''{1}'' bereits vo
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "Eine Datenquelle mit dem Namen {0} ist bereits im pers\u00f6nlichen Bereich vorhanden."
+msgstr "Eine Datenquelle mit dem Namen "{0}" ist bereits im persönlichen Bereich vorhanden.""
 
 #:
 msgid "errors.permissions.publish.datasource.non_existent"
-msgstr "Datenquelle {0} ist nicht vorhanden."
+msgstr "Datenquelle "{0}" ist nicht vorhanden."
 
 #:
 msgid "errors.permissions.publish.datasource.general"
-msgstr "Sie verf\u00fcgen leider nicht \u00fcber die Berechtigung zur Ver\u00f6ffentlichung f\u00fcr diese Datenquelle."
+msgstr "Sie verfügen leider nicht über die Berechtigung zur Veröffentlichung für diese Datenquelle."
 
 #:
 msgid "errors.permissions.publish.project.explicit_publisher_detail"
-msgstr "Sie verf\u00fcgen \u00fcber keine Ver\u00f6ffentlichungsberechtigungen."
+msgstr "Sie verfügen über keine Veröffentlichungsberechtigungen."
 
 #:
 msgid "errors.permissions.publish.project.general"
-msgstr "Sie verf\u00fcgen leider nicht \u00fcber die Berechtigung zur Ver\u00f6ffentlichung f\u00fcr dieses Projekt."
+msgstr "Sie verfügen leider nicht über die Berechtigung zur Veröffentlichung für dieses Projekt."
 
 #:
 msgid "errors.permissions.publish.project.non_existent"
@@ -368,11 +432,11 @@ msgstr "Projekt ''{0}'' ist nicht vorhanden."
 
 #:
 msgid "errors.permissions.publish.project.not_writable"
-msgstr "Sie verf\u00fcgen nicht \u00fcber die Berechtigung zum Schreiben in das Projekt ''{0}''."
+msgstr "Sie verfügen nicht über die Berechtigung zum Schreiben in das Projekt ''{0}''."
 
 #:
 msgid "errors.permissions.publish.project.unspecified"
-msgstr "Sie m\u00fcssen ein Projekt angeben."
+msgstr "Sie müssen ein Projekt angeben."
 
 #:
 msgid "errors.permissions.publish.workbook.disabled"
@@ -380,19 +444,19 @@ msgstr "Die Arbeitsmappe ''{0}'' wurde deaktiviert."
 
 #:
 msgid "errors.permissions.publish.workbook.general"
-msgstr "Eine Arbeitsmappe mit diesem Namen ist bereits in dem Projekt vorhanden, in das Sie ver\u00f6ffentlichen. Benennen Sie Ihre Arbeitsmappe zum Ver\u00f6ffentlichen um."
+msgstr "Eine Arbeitsmappe mit diesem Namen ist bereits in dem Projekt vorhanden, in das Sie veröffentlichen. Benennen Sie Ihre Arbeitsmappe zum Veröffentlichen um."
 
 #:
 msgid "errors.permissions.publish.workbook.general_personal_space"
-msgstr "Eine Arbeitsmappe mit diesem Namen ist bereits im pers\u00f6nlichen Bereich vorhanden, in dem Sie ver\u00f6ffentlichen. Benennen Sie Ihre Arbeitsmappe zum Ver\u00f6ffentlichen um."
+msgstr "Eine Arbeitsmappe mit diesem Namen ist bereits im persönlichen Bereich vorhanden, in dem Sie veröffentlichen. Benennen Sie Ihre Arbeitsmappe zum Veröffentlichen um."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite"
-msgstr "Eine Arbeitsmappe mit dem Namen ''{0}'' ist bereits im Projekt ''{1}'' vorhanden. Sie verf\u00fcgen nicht \u00fcber Berechtigungen zum \u00dcberschreiben."
+msgstr "Eine Arbeitsmappe mit dem Namen ''{0}'' ist bereits im Projekt ''{1}'' vorhanden. Sie verfügen nicht über Berechtigungen zum Überschreiben."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_personal_space"
-msgstr "Eine Arbeitsmappe mit dem Namen ''{0}'' ist bereits im pers\u00f6nlichen Bereich vorhanden. Sie verf\u00fcgen nicht \u00fcber Berechtigungen zum \u00dcberschreiben."
+msgstr "Eine Arbeitsmappe mit dem Namen ''{0}'' ist bereits im persönlichen Bereich vorhanden. Sie verfügen nicht über Berechtigungen zum Überschreiben."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short"
@@ -400,7 +464,7 @@ msgstr "Eine Arbeitsmappe mit dem Namen ''{0}'' ist bereits im Projekt ''{1}'' v
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
-msgstr "Eine Arbeitsmappe mit dem Namen {0} ist bereits im pers\u00f6nlichen Bereich vorhanden."
+msgstr "Eine Arbeitsmappe mit dem Namen "{0}" ist bereits im persönlichen Bereich vorhanden."
 
 #:
 msgid "errors.reportable.impersonation.group_and_user"
@@ -412,17 +476,15 @@ msgstr "Der Benutzer ''{0}'' ist nicht vorhanden."
 
 #:
 msgid "errors.reportable.impersonation.group_not_found"
-msgstr "Gruppe ''{0}'' existiert nicht."
-
-# errors.public.validation.hasextract is copied from the C++ file codegen strings.data IDS_PUBLIC_VALIDATION_ERROR_HASEXTRACT
+msgstr "Gruppe ''{0}'' existiert nicht. "
 
 #:
 msgid "errors.public.validation.hasextract"
-msgstr "Arbeitsmappen, die in Tableau Public gespeichert sind, m\u00fcssen aktive Tableau-Extrakte verwenden. Klicken Sie mit der rechten Maustaste auf die Datenquelle und w\u00e4hlen Sie vor der Ver\u00f6ffentlichung Extrakt verwenden, Die Datenquelle, ''{0}'', ist kein aktives Extrakt."
+msgstr "Arbeitsmappen, die in Tableau Public gespeichert sind, müssen aktive Tableau-Extrakte verwenden. Klicken Sie mit der rechten Maustaste auf die Datenquelle und wählen Sie vor der Veröffentlichung "Extrakt verwenden", Die Datenquelle, ''{0}'', ist kein aktives Extrakt."
 
 #:
 msgid "errors.publish.dataserver_datasource_not_found"
-msgstr "Datenquelle ''{0}'' wurde f\u00fcr Arbeitsmappe ''{1}'' nicht gefunden."
+msgstr "Datenquelle ''{0}'' wurde für Arbeitsmappe ''{1}'' nicht gefunden."
 
 #:
 msgid "errors.publish.datasource_update_mode"
@@ -430,19 +492,19 @@ msgstr "Unbekannter Aktualisierungsmodus: ''{0}''."
 
 #:
 msgid "errors.publish.workbook.concurrent_update"
-msgstr "Eine Arbeitsmappe mit diesem Namen wird gerade ver\u00f6ffentlicht oder ge\u00e4ndert. Warten Sie, bis die Aufgabe abgeschlossen ist, bevor Sie es erneut versuchen."
+msgstr "Eine Arbeitsmappe mit diesem Namen wird gerade veröffentlicht oder geändert. Warten Sie, bis die Aufgabe abgeschlossen ist, bevor Sie es erneut versuchen."
 
 #:
 msgid "errors.publish.workbook.restricted"
-msgstr "Die Arbeitsmappe enth\u00e4lt Verbindungstypen, die auf diesem Server nicht zul\u00e4ssig sind."
+msgstr "Die Arbeitsmappe enthält Verbindungstypen, die auf diesem Server nicht zulässig sind."
 
 #:
 msgid "errors.publish.datasource.concurrent_update"
-msgstr "Eine Datenquelle mit diesem Namen wird gerade ver\u00f6ffentlicht oder ge\u00e4ndert. Warten Sie, bis die Aufgabe abgeschlossen ist, bevor Sie es erneut versuchen."
+msgstr "Eine Datenquelle mit diesem Namen wird gerade veröffentlicht oder geändert. Warten Sie, bis die Aufgabe abgeschlossen ist, bevor Sie es erneut versuchen."
 
 #:
 msgid "errors.publish.datasource.restricted"
-msgstr "Die Datenquelle enth\u00e4lt einen Verbindungstyp, der auf diesem Server nicht zul\u00e4ssig ist."
+msgstr "Die Datenquelle enthält einen Verbindungstyp, der auf diesem Server nicht zulässig ist."
 
 #:
 msgid "errors.publish.datasource.connection_check"
@@ -450,71 +512,71 @@ msgstr "{0} konnte keine Verbindung zu Ihrer Datenquelle herstellen."
 
 #:
 msgid "errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption"
-msgstr "Die Arbeitsmappe mit verschl\u00fcsseltem Extrakt kann nicht ver\u00f6ffentlicht werden. Der Site-Administrator hat die Extraktverschl\u00fcsselung auf dieser Site deaktiviert. Sie m\u00fcssen die Arbeitsmappe mit einem unverschl\u00fcsselten Extrakt ver\u00f6ffentlichen."
+msgstr "Die Arbeitsmappe mit verschlüsseltem Extrakt kann nicht veröffentlicht werden. Der Site-Administrator hat die Extraktverschlüsselung auf dieser Site deaktiviert. Sie müssen die Arbeitsmappe mit einem unverschlüsselten Extrakt veröffentlichen."
 
 #:
 msgid "errors.publish.datasource.requested_extract_encryption_on_site_with_disabled_encryption"
-msgstr "Die Datenquelle kann nicht als verschl\u00fcsselter Extrakt ver\u00f6ffentlicht werden. Der Site-Administrator hat die Extraktverschl\u00fcsselung auf dieser Site deaktiviert. Sie m\u00fcssen den Extrakt unverschl\u00fcsselt ver\u00f6ffentlichen."
+msgstr "Die Datenquelle kann nicht als verschlüsselter Extrakt veröffentlicht werden. Der Site-Administrator hat die Extraktverschlüsselung auf dieser Site deaktiviert. Sie müssen den Extrakt unverschlüsselt veröffentlichen."
 
 #:
 msgid "errors.publish.workbook.requested_no_extract_encryption_on_site_with_enforced_encryption"
-msgstr "Die Arbeitsmappe kann nicht mit einem verschl\u00fcsselten Extrakt ver\u00f6ffentlicht werden. Der Site-Administrator hat die Extraktverschl\u00fcsselung auf dieser Site festgelegt. Sie m\u00fcssen die Arbeitsmappe ver\u00f6ffentlichen und eine Extraktverschl\u00fcsselung angeben."
+msgstr "Die Arbeitsmappe kann nicht mit einem verschlüsselten Extrakt veröffentlicht werden. Der Site-Administrator hat die Extraktverschlüsselung auf dieser Site festgelegt. Sie müssen die Arbeitsmappe veröffentlichen und eine Extraktverschlüsselung angeben."
 
 #:
 msgid "errors.publish.datasource.requested_no_extract_encryption_on_site_with_enforced_encryption"
-msgstr "Der Datenquellenextrakt kann nicht unverschl\u00fcsselt ver\u00f6ffentlicht werden. Der Site-Administrator hat die Extraktverschl\u00fcsselung auf dieser Site festgelegt. Sie m\u00fcssen den Extrakt verschl\u00fcsselt ver\u00f6ffentlichen."
+msgstr "Der Datenquellenextrakt kann nicht unverschlüsselt veröffentlicht werden. Der Site-Administrator hat die Extraktverschlüsselung auf dieser Site festgelegt. Sie müssen den Extrakt verschlüsselt veröffentlichen."
 
 #:
 msgid "errors.publish.has_unfinished_extract_creation_job"
-msgstr "Diese Ressource kann nicht ver\u00f6ffentlicht werden, da damit verbundene Auftr\u00e4ge zur Erstellung von Ausz\u00fcgen ausstehen oder unvollendet sind. Bitte warten Sie oder stornieren Sie diese Auftr\u00e4ge und versuchen Sie es dann erneut."
+msgstr "Diese Ressource kann nicht veröffentlicht werden, da damit verbundene Aufträge zur Erstellung von Auszügen ausstehen oder unvollendet sind. Bitte warten Sie oder stornieren Sie diese Aufträge und versuchen Sie es dann erneut."
 
 #:
 msgid "errors.publishing.storage_quota_exceeded.message"
-msgstr "Sitespeicherkontingent wurde \u00fcberschritten."
+msgstr "Sitespeicherkontingent wurde überschritten."
 
 #:
 msgid "errors.publishing.request_size_exceeded"
-msgstr "Diese Datei kann nicht ver\u00f6ffentlicht werden, da die Gr\u00f6\u00dfe der Anfrage {0} Bytes betr\u00e4gt, wodurch das Bytegr\u00f6\u00dfenlimit um {1} Bytes \u00fcberschritten wird."
+msgstr "Diese Datei kann nicht veröffentlicht werden, da die Größe der Anfrage {0} Bytes beträgt, wodurch das Bytegrößenlimit um {1} Bytes überschritten wird."
 
 #:
 msgid "errors.publishing.request_size_unknown"
-msgstr "Die Gr\u00f6\u00dfe der Anfrage konnte nicht ermittelt werden."
+msgstr "Die Größe der Anfrage konnte nicht ermittelt werden."
 
 #:
 msgid "errors.site.quota_exceeded"
-msgstr "Das Kontingent, das Sie hochzuladen versuchen, \u00fcberschreitet die Kapazit\u00e4t der Site um {0}."
+msgstr "Das Kontingent, das Sie hochzuladen versuchen, überschreitet die Kapazität der Site um {0}."
 
 #:
 msgid "errors.personal_space.quota_exceeded"
-msgstr "Dieser Inhalt \u00fcberschreitet die Kapazit\u00e4t Ihres pers\u00f6nlichen Bereichs um {0}."
+msgstr "Dieser Inhalt überschreitet die Kapazität Ihres persönlichen Bereichs um {0}."
 
 #:
 msgid "errors.web_authoring.workbook_deleted"
-msgstr "Die Arbeitsmappe ''{0}'' wurde gel\u00f6scht. W\u00e4hlen Sie ''Speichern unter'', und sie als neue Arbeitsmappe zu speichern."
+msgstr "Die Arbeitsmappe ''{0}'' wurde gelöscht. Wählen Sie ''Speichern unter'', und sie als neue Arbeitsmappe zu speichern."
 
 #:
 msgid "errors.web_authoring.workbook_changed"
-msgstr "Nachdem Sie begonnen haben, diese Arbeitsmappe zu bearbeiten, hat ein anderer Benutzer die Arbeitsmappe bearbeitet und gespeichert. Sie k\u00f6nnen die urspr\u00fcngliche Arbeitsmappe daher nicht mehr aktualisieren. W\u00e4hlen Sie ''Speichern unter'', um eine neue Arbeitsmappe mit Ihren \u00c4nderungen zu erstellen."
+msgstr "Nachdem Sie begonnen haben, diese Arbeitsmappe zu bearbeiten, hat ein anderer Benutzer die Arbeitsmappe bearbeitet und gespeichert. Sie können die ursprüngliche Arbeitsmappe daher nicht mehr aktualisieren. Wählen Sie ''Speichern unter'', um eine neue Arbeitsmappe mit Ihren Änderungen zu erstellen."
 
 #:
 msgid "labels.publish.embed_credentials"
-msgstr "Kennwort einbetten f\u00fcr Datenquelle"
+msgstr "Kennwort einbetten für Datenquelle"
 
 #:
 msgid "errors.publish.workbook.google_no_embedded_credentials"
-msgstr "Diese Arbeitsmappe enth\u00e4lt eine {0}-Datenquelle, f\u00fcr die eingebettete Anmeldeinformationen erforderlich sind. W\u00e4hlen Sie ''{1}'' aus, um sie als eine andere Arbeitsmappe zu speichern."
+msgstr "Diese Arbeitsmappe enthält eine {0}-Datenquelle, für die eingebettete Anmeldeinformationen erforderlich sind. Wählen Sie ''{1}'' aus, um sie als eine andere Arbeitsmappe zu speichern."
 
 #:
 msgid "errors.publish.datasource.google_no_embedded_credentials"
-msgstr "Diese Datenquelle enth\u00e4lt eine {0}-Verbindung, f\u00fcr die eingebettete Anmeldeinformationen erforderlich sind. Ver\u00f6ffentlichen Sie diese Datenquelle \u00fcber Tableau Desktop mit eingebetteten Anmeldeinformationen."
+msgstr "Diese Datenquelle enthält eine {0}-Verbindung, für die eingebettete Anmeldeinformationen erforderlich sind. Veröffentlichen Sie diese Datenquelle über Tableau Desktop mit eingebetteten Anmeldeinformationen."
 
 #:
 msgid "errors.publish.datasource.federated_oauth_datasource_failed"
-msgstr "Anmeldeinformationen f\u00fcr eine oder mehrere Verbindungen in Ihrer Datenquelle sind abgelaufen. L\u00f6schen Sie die gespeicherten Anmeldeinformationen f\u00fcr diese Datenquelle auf Ihrer Kontoeinstellungen-Seite auf Tableau Server oder Tableau Online, und verbinden Sie sich mit der Datenquelle erneut."
+msgstr "Anmeldeinformationen für eine oder mehrere Verbindungen in Ihrer Datenquelle sind abgelaufen. Löschen Sie die gespeicherten Anmeldeinformationen für diese Datenquelle auf Ihrer Kontoeinstellungen-Seite auf Tableau Server oder Tableau Online, und verbinden Sie sich mit der Datenquelle erneut."
 
 #:
 msgid "errors.publish.workbook.missing_oauth_credential"
-msgstr "Die Anmeldeinformationen ''{0}'' wurden nicht gefunden oder k\u00f6nnen nicht f\u00fcr die Verbindung mit dieser Datenquelle bzw. dieser Arbeitsmappe verwendet werden."
+msgstr "Die Anmeldeinformationen ''{0}'' wurden nicht gefunden oder können nicht für die Verbindung mit dieser Datenquelle bzw. dieser Arbeitsmappe verwendet werden."
 
 #:
 msgid "errors.publish.version_incompatible.message"
@@ -526,11 +588,11 @@ msgstr "Desktopversion ''{0}'', Serverdokumentversion ''{1}''."
 
 #:
 msgid "errors.publish.datasource.managed_keychain.unique_cv_suggestions"
-msgstr "Die Ver\u00f6ffentlichung konnte aufgrund eines Konflikts nicht durchgef\u00fchrt werden. Bitte senden Sie Ihre \u00c4nderung erneut."
+msgstr "Die Veröffentlichung konnte aufgrund eines Konflikts nicht durchgeführt werden. Bitte senden Sie Ihre Änderung erneut."
 
 #:
 msgid "errors.publish.permissions_are_locked"
-msgstr "Im Projekt, in das die Ver\u00f6ffentlichung erfolgen soll, sind die Berechtigungen gesperrt. Zum Ver\u00f6ffentlichen dieser Arbeitsmappe verwenden Sie die Standardberechtigungen, und wiederholen Sie den Vorgang."
+msgstr "Im Projekt, in das die Veröffentlichung erfolgen soll, sind die Berechtigungen gesperrt. Zum Veröffentlichen dieser Arbeitsmappe verwenden Sie die Standardberechtigungen, und wiederholen Sie den Vorgang."
 
 #:
 msgid "errors.publish.datasource.not.found"
@@ -538,41 +600,39 @@ msgstr "Diese Datenquelle konnte auf dem Server nicht gefunden werden."
 
 #:
 msgid "errors.publish.extracts.disabled"
-msgstr "Bis auf extraktbasierte Datenquellen werden Archivdatenquellen noch nicht unterst\u00fctzt."
+msgstr "Bis auf extraktbasierte Datenquellen werden Archivdatenquellen noch nicht unterstützt."
 
 #:
 msgid "errors.publish.datasource.timeout"
-msgstr "Bei der Ver\u00f6ffentlichung trat nach {0} Sekunden eine Zeit\u00fcberschreitung auf. Bitte versuchen Sie Tableau Desktop zu verwenden um diese Datenquelle zu ver\u00f6ffentlichen."
+msgstr "Bei der Veröffentlichung trat nach {0} Sekunden eine Zeitüberschreitung auf. Bitte versuchen Sie Tableau Desktop zu verwenden um diese Datenquelle zu veröffentlichen."
 
 #:
 msgid "errors.publish.data_role.permission_not_null"
-msgstr "F\u00fcr Datenquellen des Typs Datenrolle k\u00f6nnen keine explizite Berechtigungen eingestellt werden."
+msgstr "Für Datenquellen des Typs Datenrolle können keine explizite Berechtigungen eingestellt werden."
 
 #:
 msgid "errors.download.extracts.timeout"
-msgstr "Bei der Ver\u00f6ffentlichung trat nach {0} Sekunden eine Zeit\u00fcberschreitung auf, da diese Datenquellen eine gro\u00dfe Extraktdatei enth\u00e4lt. Bitte versuchen Sie Tableau Desktop zu verwenden um diese Datenquelle zu ver\u00f6ffentlichen."
+msgstr "Bei der Veröffentlichung trat nach {0} Sekunden eine Zeitüberschreitung auf, da diese Datenquellen eine große Extraktdatei enthält. Bitte versuchen Sie Tableau Desktop zu verwenden um diese Datenquelle zu veröffentlichen."
 
 #:
 msgid "errors.publish.datasource.invalid_extract_update_time"
-msgstr "Ung\u00fcltige extractUpdateTime angegeben: {0}"
+msgstr "Ungültige extractUpdateTime angegeben: {0}"
 
 #:
 msgid "errors.publish.async.serialization"
-msgstr "Fehler beim Serialisieren des Status des Ver\u00f6ffentlichungsauftrags"
+msgstr "Fehler beim Serialisieren des Status des Veröffentlichungsauftrags"
 
 #:
 msgid "errors.permissions.view.datasources"
-msgstr "Sie m\u00fcssen ''Interaktor'' sein, um die Liste der Datenquellen anzeigen zu k\u00f6nnen."
-
-# oauth related errors
+msgstr "Sie müssen ''Interaktor'' sein, um die Liste der Datenquellen anzeigen zu können."
 
 #:
 msgid "errors.oauth.invalid_oauth_class"
-msgstr "''{0}'' ist kein g\u00fcltiger OAuth-Verbindungstyp."
+msgstr "''{0}'' ist kein gültiger OAuth-Verbindungstyp."
 
 #:
 msgid "errors.xmlapi.bad_request"
-msgstr "Ung\u00fcltige Anforderung"
+msgstr "Ungültige Anforderung"
 
 #:
 msgid "errors.xmlapi.unauthorized"
@@ -584,11 +644,11 @@ msgstr "Berechtigungen unzureichend"
 
 #:
 msgid "errors.xmlapi.system_user_not_found"
-msgstr "Benutzerkonto ist gesperrt oder ung\u00fcltig."
+msgstr "Benutzerkonto ist gesperrt oder ungültig."
 
 #:
 msgid "errors.xmlapi.site_user_not_found"
-msgstr "Dieses Benutzerkonto ist nicht aktiv. Wenden Sie sich an Ihren {0}-Administrator, wenn Sie Hilfe ben\u00f6tigen."
+msgstr "Dieses Benutzerkonto ist nicht aktiv. Wenden Sie sich an Ihren {0}-Administrator, wenn Sie Hilfe benötigen."
 
 #:
 msgid "errors.xmlapi.not_found"
@@ -604,11 +664,11 @@ msgstr "Interner Serverfehler"
 
 #:
 msgid "errors.xmlapi.illegal_state"
-msgstr "Unzul\u00e4ssiger Status"
+msgstr "Unzulässiger Status"
 
 #:
 msgid "errors.xmlapi.invalid_parameter"
-msgstr "Ung\u00fcltiger Parameter"
+msgstr "Ungültiger Parameter"
 
 #:
 msgid "errors.xmlapi.already_exists"
@@ -616,19 +676,19 @@ msgstr "Ist bereits vorhanden"
 
 #:
 msgid "errors.xmlapi.site_suspended"
-msgstr "Die Verf\u00fcgbarkeit dieser Site wurde aufgehoben. Sie m\u00fcssen Systemadministrator sein, um sich anzumelden."
+msgstr "Die Verfügbarkeit dieser Site wurde aufgehoben. Sie müssen Systemadministrator sein, um sich anzumelden."
 
 #:
 msgid "errors.xmlapi.site_locked"
-msgstr "Diese Site wurde gesperrt. Anmeldungen sind derzeit nicht m\u00f6glich."
+msgstr "Diese Site wurde gesperrt. Anmeldungen sind derzeit nicht möglich."
 
 #:
 msgid "errors.xmlapi.permission_modification"
-msgstr "Ver\u00f6ffentlichung mit ge\u00e4nderten Berechtigungen nicht m\u00f6glich"
+msgstr "Veröffentlichung mit geänderten Berechtigungen nicht möglich"
 
 #:
 msgid "errors.xmlapi.update_desktop"
-msgstr "Um von anderen Autoren erstellte Arbeitsmappen zu \u00f6ffnen, laden Sie die neueste Version von Tableau Desktop Public Edition unter http://public.tableau.com/ herunter"
+msgstr "Um von anderen Autoren erstellte Arbeitsmappen zu öffnen, laden Sie die neueste Version von Tableau Desktop Public Edition unter http://public.tableau.com/ herunter"
 
 #:
 msgid "errors.xmlapi.throttled.summary"
@@ -636,23 +696,23 @@ msgstr "Zu viele Anforderungen"
 
 #:
 msgid "errors.xmlapi.throttled.detail"
-msgstr "Zu viele Anforderungen f\u00fcr ''{0}''. Versuchen Sie es nach {1} Sekunde(n) erneut."
+msgstr "Zu viele Anforderungen für ''{0}''. Versuchen Sie es nach {1} Sekunde(n) erneut."
 
 #:
 msgid "datasource.publish.check.unpublishable"
-msgstr "Die Datenquelle konnte nicht ver\u00f6ffentlicht werden."
+msgstr "Die Datenquelle konnte nicht veröffentlicht werden."
 
 #:
 msgid "datasource.publish.check.publishable.extract_required"
-msgstr "Bei Ver\u00f6ffentlichung muss ein Extrakt erstellt werden."
+msgstr "Bei Veröffentlichung muss ein Extrakt erstellt werden."
 
 #:
 msgid "datasource.publish.check.publishable.credentials_required"
-msgstr "{1} greift vor\u00fcbergehend auf die f\u00fcr ''{0}'' bereitgestellten Anmeldeinformationen zu, um zu best\u00e4tigen, dass eine Live-Datenverbindung aufrecht erhalten werden kann."
+msgstr "{1} greift vorübergehend auf die für ''{0}'' bereitgestellten Anmeldeinformationen zu, um zu bestätigen, dass eine Live-Datenverbindung aufrecht erhalten werden kann."
 
 #:
 msgid "datasource.publish.check.publishable.server_unreachable"
-msgstr "{1} kann ''{0}'' nicht erreichen. Bei Ver\u00f6ffentlichung wird ein Extrakt erstellt."
+msgstr "{1} kann ''{0}'' nicht erreichen. Bei Veröffentlichung wird ein Extrakt erstellt."
 
 #:
 msgid "publish.bundles.workbook.subscription.subject"
@@ -660,143 +720,143 @@ msgstr "Ihre Arbeitsmappe {0} ist bereit."
 
 #:
 msgid "publish.bundles.workbook.subscription.message"
-msgstr "Ihre Salesforce-Daten wurden der Arbeitsmappe hinzugef\u00fcgt. Gehen Sie zu Ihrem {0}-Projekt, um zu beginnen."
+msgstr "Ihre Salesforce-Daten wurden der Arbeitsmappe hinzugefügt. Gehen Sie zu Ihrem {0}-Projekt, um zu beginnen."
 
 #:
 msgid "extracts.status.finished.upload.workbook"
-msgstr "Hochladen von Extrakten (neue Extrakt-ID: {0}) f\u00fcr Arbeitsmappe ''{1}'' {2} ist abgeschlossen"
+msgstr "Hochladen von Extrakten (neue Extrakt-ID: {0}) für Arbeitsmappe ''{1}'' {2} ist abgeschlossen"
 
 #:
 msgid "extracts.status.finished.refresh.workbook"
-msgstr "Aktualisierung von Extrakten (neue Extrakt-ID:{0}) f\u00fcr Arbeitsmappe ''{1}'' {2} ist abgeschlossen"
+msgstr "Aktualisierung von Extrakten (neue Extrakt-ID:{0}) für Arbeitsmappe ''{1}'' {2} ist abgeschlossen"
 
 #:
 msgid "extracts.status.finished.increment.workbook"
-msgstr "Inkrementierung von Extrakten (neue Extrakt-ID:{0}) f\u00fcr Arbeitsmappe ''{1}'' {2} ist abgeschlossen"
+msgstr "Inkrementierung von Extrakten (neue Extrakt-ID:{0}) für Arbeitsmappe ''{1}'' {2} ist abgeschlossen"
 
 #:
 msgid "extracts.status.finished.encrypt.workbook"
-msgstr "Verschl\u00fcsselung von Extrakten (neue Extrakt-ID: {0}) f\u00fcr Arbeitsmappe ''{1}''  ist abgeschlossen"
+msgstr "Verschlüsselung von Extrakten (neue Extrakt-ID: {0}) für Arbeitsmappe ''{1}''  ist abgeschlossen"
 
 #:
 msgid "extracts.status.finished.decrypt.workbook"
-msgstr "Entschl\u00fcsselung von Extrakten (neue Extrakt-ID: {0}) f\u00fcr Arbeitsmappe ''{1}''  ist abgeschlossen"
+msgstr "Entschlüsselung von Extrakten (neue Extrakt-ID: {0}) für Arbeitsmappe ''{1}''  ist abgeschlossen"
 
 #:
 msgid "extracts.status.finished.rekey.workbook"
-msgstr "Erneute Verschl\u00fcsselung von Extrakten (neue Extrakt-ID: {0}) f\u00fcr Arbeitsmappe ''{1}''  ist abgeschlossen"
+msgstr "Erneute Verschlüsselung von Extrakten (neue Extrakt-ID: {0}) für Arbeitsmappe ''{1}''  ist abgeschlossen"
 
 #:
 msgid "extracts.status.finished.create.workbook"
-msgstr "Erstellung von Extrakten (neue Extrakt-ID: {0}) f\u00fcr Arbeitsmappe ''{1}'' ist abgeschlossen {2}"
+msgstr "Erstellung von Extrakten (neue Extrakt-ID: {0}) für Arbeitsmappe ''{1}'' ist abgeschlossen {2}"
 
 #:
 msgid "extracts.status.finished.remove.workbook"
-msgstr "Extrakt (Datenquellen-ID:{0}) zu Live \u00e4ndern f\u00fcr Arbeitsmappe ''{1}'' ist abgeschlossen"
+msgstr "Extrakt (Datenquellen-ID:{0}) zu Live ändern für Arbeitsmappe ''{1}'' ist abgeschlossen"
 
 #:
 msgid "extracts.status.finished.upload.datasource"
-msgstr "Hochladen von Extrakten (neue Extrakt-ID:{0}) f\u00fcr Datenquelle ''{1}'' {2} ist abgeschlossen"
+msgstr "Hochladen von Extrakten (neue Extrakt-ID:{0}) für Datenquelle ''{1}'' {2} ist abgeschlossen"
 
 #:
 msgid "extracts.status.finished.refresh.datasource"
-msgstr "Aktualisierung von Extrakten (neue Extrakt-ID:{0}) f\u00fcr Datenquelle ''{1}'' {2} ist abgeschlossen"
+msgstr "Aktualisierung von Extrakten (neue Extrakt-ID:{0}) für Datenquelle ''{1}'' {2} ist abgeschlossen"
 
 #:
 msgid "extracts.status.finished.increment.datasource"
-msgstr "Inkrementierung von Extrakten (neue Extrakt-ID:{0}) f\u00fcr Datenquelle ''{1}'' {2} ist abgeschlossen"
+msgstr "Inkrementierung von Extrakten (neue Extrakt-ID:{0}) für Datenquelle ''{1}'' {2} ist abgeschlossen"
 
 #:
 msgid "extracts.status.finished.append.datasource"
-msgstr "Anh\u00e4ngen von Extrakten (neue Extrakt-ID:{0}) f\u00fcr Datenquelle ''{1}'' {2} ist abgeschlossen"
+msgstr "Anhängen von Extrakten (neue Extrakt-ID:{0}) für Datenquelle ''{1}'' {2} ist abgeschlossen"
 
 #:
 msgid "extracts.status.finished.replace.datasource"
-msgstr "Aktualisieren von Extrakten (neue Extrakt-ID:{0}) f\u00fcr Datenquelle ''{1}'' {2} ist abgeschlossen"
+msgstr "Aktualisieren von Extrakten (neue Extrakt-ID:{0}) für Datenquelle ''{1}'' {2} ist abgeschlossen"
 
 #:
 msgid "extracts.status.finished.encrypt.datasource"
-msgstr "Verschl\u00fcsselung von Extrakten (neue Extrakt-ID: {0}) f\u00fcr Datenquelle ''{1}''  ist abgeschlossen"
+msgstr "Verschlüsselung von Extrakten (neue Extrakt-ID: {0}) für Datenquelle ''{1}''  ist abgeschlossen"
 
 #:
 msgid "extracts.status.finished.decrypt.datasource"
-msgstr "Entschl\u00fcsselung von Extrakten (neue Extrakt-ID: {0}) f\u00fcr Datenquelle ''{1}''  ist abgeschlossen"
+msgstr "Entschlüsselung von Extrakten (neue Extrakt-ID: {0}) für Datenquelle ''{1}''  ist abgeschlossen"
 
 #:
 msgid "extracts.status.finished.rekey.datasource"
-msgstr "Erneute Verschl\u00fcsselung von Extrakten (neue Extrakt-ID: {0}) f\u00fcr Datenquelle ''{1}''  ist abgeschlossen"
+msgstr "Erneute Verschlüsselung von Extrakten (neue Extrakt-ID: {0}) für Datenquelle ''{1}''  ist abgeschlossen"
 
 #:
 msgid "extracts.status.finished.encrypt.flow"
-msgstr "Die Verschl\u00fcssung der Extrakte f\u00fcr Schema ''{0}'' wurde abgeschlossen"
+msgstr "Die Verschlüssung der Extrakte für Schema ''{0}'' wurde abgeschlossen"
 
 #:
 msgid "extracts.status.finished.decrypt.flow"
-msgstr "Die Entschl\u00fcsselung der Extrakte f\u00fcr Schema ''{0}'' wurde abgeschlossen"
+msgstr "Die Entschlüsselung der Extrakte für Schema ''{0}'' wurde abgeschlossen"
 
 #:
 msgid "extracts.status.finished.rekey.flow"
-msgstr "Die erneute Verschl\u00fcsselung der Extrakte f\u00fcr Schema ''{0}'' wurde abgeschlossen"
+msgstr "Die erneute Verschlüsselung der Extrakte für Schema ''{0}'' wurde abgeschlossen"
 
 #:
 msgid "extracts.status.finished.encrypt.flowdraft"
-msgstr "Die Verschl\u00fcssung der Extrakte f\u00fcr Schemaentwurf ''{0}'' wurde abgeschlossen"
+msgstr "Die Verschlüssung der Extrakte für Schemaentwurf ''{0}'' wurde abgeschlossen"
 
 #:
 msgid "extracts.status.finished.decrypt.flowdraft"
-msgstr "Die Entschl\u00fcssung der Extrakte f\u00fcr Schemaentwurf ''{0}'' wurde abgeschlossen"
+msgstr "Die Entschlüssung der Extrakte für Schemaentwurf ''{0}'' wurde abgeschlossen"
 
 #:
 msgid "extracts.status.finished.rekey.flowdraft"
-msgstr "Die erneute Verschl\u00fcssung der Extrakte f\u00fcr Schemaentwurf ''{0}'' wurde abgeschlossen"
+msgstr "Die erneute Verschlüssung der Extrakte für Schemaentwurf ''{0}'' wurde abgeschlossen"
 
 #:
 msgid "extracts.status.finished.create.datasource"
-msgstr "Erstellung von Extrakten (neue Extrakt-ID: {0}) f\u00fcr Datenquelle ''{1}'' {2} ist abgeschlossen"
+msgstr "Erstellung von Extrakten (neue Extrakt-ID: {0}) für Datenquelle ''{1}'' {2} ist abgeschlossen"
 
 #:
 msgid "extracts.status.finished.remove.datasource"
-msgstr "Extrakt zu Live \u00e4ndern f\u00fcr Datenquelle ''{1}'' ist abgeschlossen"
+msgstr "Extrakt zu Live ändern für Datenquelle ''{1}'' ist abgeschlossen"
 
 #:
 msgid "extracts.status.encryption_key"
-msgstr "Verschl\u00fcsselungsschl\u00fcssel-ID: ''{0}''."
+msgstr "Verschlüsselungsschlüssel-ID: ''{0}''."
 
 #:
 msgid "extracts.status.encryption_keys"
-msgstr "Alte Verschl\u00fcsselungsschl\u00fcssel-ID: ''{0}'', neue Verschl\u00fcsselungsschl\u00fcssel-ID: ''{1}''."
+msgstr "Alte Verschlüsselungsschlüssel-ID: ''{0}'', neue Verschlüsselungsschlüssel-ID: ''{1}''."
 
 #:
 msgid "extracts.errors.upload"
-msgstr "Fehler beim Hochladen von Extrakten f\u00fcr {0}: ''{1}''"
+msgstr "Fehler beim Hochladen von Extrakten für {0}: ''{1}''"
 
 #:
 msgid "extracts.errors.refresh"
-msgstr "Ein Fehler ist aufgetreten beim Aktualisieren der Extrakte f\u00fcr {0} ''{1}''"
+msgstr "Ein Fehler ist aufgetreten beim Aktualisieren der Extrakte für {0} ''{1}''"
 
 #:
 msgid "extracts.errors.create"
-msgstr "Fehler beim Erstellen von Extrakten f\u00fcr {0} ''{1}''."
+msgstr "Fehler beim Erstellen von Extrakten für {0} ''{1}''."
 
 #:
 msgid "extracts.errors.increment"
-msgstr "Fehler beim Inkrementieren von Extrakten f\u00fcr {0}: ''{1}''"
+msgstr "Fehler beim Inkrementieren von Extrakten für {0}: ''{1}''"
 
 #:
 msgid "extracts.errors.append"
-msgstr "Fehler beim Anh\u00e4ngen von Extrakten f\u00fcr {0}: ''{1}''"
+msgstr "Fehler beim Anhängen von Extrakten für {0}: ''{1}''"
 
 #:
 msgid "extracts.errors.replace"
-msgstr "Fehler beim Ersetzen von Extrakten f\u00fcr {0}: ''{1}''"
+msgstr "Fehler beim Ersetzen von Extrakten für {0}: ''{1}''"
 
 #:
 msgid "extracts.errors.download"
-msgstr "Fehler beim Herunterladen von Extrakten f\u00fcr {0}: ''{1}''"
+msgstr "Fehler beim Herunterladen von Extrakten für {0}: ''{1}''"
 
 #:
 msgid "extracts.errors.remove"
-msgstr "Fehler beim L\u00f6schen von Extrakten f\u00fcr {0}: ''{1}''."
+msgstr "Fehler beim Löschen von Extrakten für {0}: ''{1}''."
 
 #:
 msgid "extracts.errors.title"
@@ -804,23 +864,23 @@ msgstr "Fehler beim Verarbeiten von Extrakten"
 
 #:
 msgid "extracts.errors.nothing_to_upload"
-msgstr "Keine hochzuladenden Extrakte f\u00fcr {0}: ''{1}''"
+msgstr "Keine hochzuladenden Extrakte für {0}: ''{1}''"
 
 #:
 msgid "extracts.errors.nothing_to_refresh"
-msgstr "Keine zu aktualisierenden Extrakte f\u00fcr {0}: ''{1}''"
+msgstr "Keine zu aktualisierenden Extrakte für {0}: ''{1}''"
 
 #:
 msgid "extracts.errors.nothing_to_increment"
-msgstr "Keine zu inkrementierenden Extrakte f\u00fcr {0}: ''{1}''"
+msgstr "Keine zu inkrementierenden Extrakte für {0}: ''{1}''"
 
 #:
 msgid "extracts.errors.nothing_to_append"
-msgstr "Keine anzuh\u00e4ngenden Extrakte f\u00fcr {0}: ''{1}''"
+msgstr "Keine anzuhängenden Extrakte für {0}: ''{1}''"
 
 #:
 msgid "extracts.errors.nothing_to_replace"
-msgstr "Keine zu ersetzenden Extrakte f\u00fcr {0}: ''{1}''"
+msgstr "Keine zu ersetzenden Extrakte für {0}: ''{1}''"
 
 #:
 msgid "extracts.errors.refresh_summary"
@@ -828,15 +888,15 @@ msgstr "Fehler beim Aktualisieren der Extrakte"
 
 #:
 msgid "extracts.errors.encrypt_summary"
-msgstr "Fehler beim Verschl\u00fcsseln von Extrakten"
+msgstr "Fehler beim Verschlüsseln von Extrakten"
 
 #:
 msgid "extracts.errors.rekey_summary"
-msgstr "Fehler beim erneuten Verschl\u00fcsseln von Extrakten"
+msgstr "Fehler beim erneuten Verschlüsseln von Extrakten"
 
 #:
 msgid "extracts.errors.decrypt_summary"
-msgstr "Fehler beim Entschl\u00fcsseln von Extrakten"
+msgstr "Fehler beim Entschlüsseln von Extrakten"
 
 #:
 msgid "extracts.errors.remove_summary"
@@ -848,75 +908,75 @@ msgstr "Fehler beim Erstellen von Extrakten"
 
 #:
 msgid "extracts.errors.datasource_overwritten"
-msgstr "Die Aktualisierung ist fehlgeschlagen, da die Datenquelle w\u00e4hrend der Verarbeitung von einer anderen Aufgabe \u00fcberschrieben wurde. Aktualisieren Sie erneut, um dies zu korrigieren."
+msgstr "Die Aktualisierung ist fehlgeschlagen, da die Datenquelle während der Verarbeitung von einer anderen Aufgabe überschrieben wurde. Aktualisieren Sie erneut, um dies zu korrigieren."
 
 #:
 msgid "extracts.errors.workbook_overwritten"
-msgstr "Die Aktualisierung ist fehlgeschlagen, da die Arbeitsmappe w\u00e4hrend der Verarbeitung von einer anderen Aufgabe \u00fcberschrieben wurde. Aktualisieren Sie erneut, um dies zu korrigieren."
+msgstr "Die Aktualisierung ist fehlgeschlagen, da die Arbeitsmappe während der Verarbeitung von einer anderen Aufgabe überschrieben wurde. Aktualisieren Sie erneut, um dies zu korrigieren."
 
 #:
 msgid "extracts.errors.encrypt"
-msgstr "Beim Verschl\u00fcsseln der Extrakte f\u00fcr {0} ''{1}'' ist ein Fehler aufgetreten"
+msgstr "Beim Verschlüsseln der Extrakte für {0} ''{1}'' ist ein Fehler aufgetreten"
 
 #:
 msgid "extracts.errors.decrypt"
-msgstr "Beim Entschl\u00fcsseln der Extrakte f\u00fcr {0} ''{1}'' ist ein Fehler aufgetreten"
+msgstr "Beim Entschlüsseln der Extrakte für {0} ''{1}'' ist ein Fehler aufgetreten"
 
 #:
 msgid "extracts.errors.rekey"
-msgstr "Beim Entschl\u00fcsseln der Extrakte f\u00fcr {0} ''{1}'' ist ein Fehler aufgetreten"
+msgstr "Beim Entschlüsseln der Extrakte für {0} ''{1}'' ist ein Fehler aufgetreten"
 
 #:
 msgid "extracts.errors.encrypt_datasource_overwritten"
-msgstr "Die Verschl\u00fcsselung der Extrakte ist fehlgeschlagen, da die Datenquelle w\u00e4hrend der Verarbeitung von einer anderen Aufgabe \u00fcberschrieben wurde."
+msgstr "Die Verschlüsselung der Extrakte ist fehlgeschlagen, da die Datenquelle während der Verarbeitung von einer anderen Aufgabe überschrieben wurde."
 
 #:
 msgid "extracts.errors.encrypt_workbook_overwritten"
-msgstr "Die Verschl\u00fcsselung der Extrakte ist fehlgeschlagen, da die Arbeitsmappe w\u00e4hrend der Verarbeitung von einer anderen Aufgabe \u00fcberschrieben wurde."
+msgstr "Die Verschlüsselung der Extrakte ist fehlgeschlagen, da die Arbeitsmappe während der Verarbeitung von einer anderen Aufgabe überschrieben wurde."
 
 #:
 msgid "extracts.errors.rekey_datasource_overwritten"
-msgstr "Die erneute Verschl\u00fcsselung der Extrakte ist fehlgeschlagen, da die Datenquelle w\u00e4hrend der Verarbeitung von einer anderen Aufgabe \u00fcberschrieben wurde."
+msgstr "Die erneute Verschlüsselung der Extrakte ist fehlgeschlagen, da die Datenquelle während der Verarbeitung von einer anderen Aufgabe überschrieben wurde."
 
 #:
 msgid "extracts.errors.rekey_workbook_overwritten"
-msgstr "Die erneute Verschl\u00fcsselung der Extrakte ist fehlgeschlagen, da die Arbeitsmappe w\u00e4hrend der Verarbeitung von einer anderen Aufgabe \u00fcberschrieben wurde."
+msgstr "Die erneute Verschlüsselung der Extrakte ist fehlgeschlagen, da die Arbeitsmappe während der Verarbeitung von einer anderen Aufgabe überschrieben wurde."
 
 #:
 msgid "extracts.errors.decrypt_datasource_overwritten"
-msgstr "Die Entschl\u00fcsselung der Extrakte ist fehlgeschlagen, da die Datenquelle w\u00e4hrend der Verarbeitung von einer anderen Aufgabe \u00fcberschrieben wurde."
+msgstr "Die Entschlüsselung der Extrakte ist fehlgeschlagen, da die Datenquelle während der Verarbeitung von einer anderen Aufgabe überschrieben wurde."
 
 #:
 msgid "extracts.errors.decrypt_workbook_overwritten"
-msgstr "Die Entschl\u00fcsselung der Extrakte ist fehlgeschlagen, da die Arbeitsmappe w\u00e4hrend der Verarbeitung von einer anderen Aufgabe \u00fcberschrieben wurde."
+msgstr "Die Entschlüsselung der Extrakte ist fehlgeschlagen, da die Arbeitsmappe während der Verarbeitung von einer anderen Aufgabe überschrieben wurde."
 
 #:
 msgid "extracts.errors.remove_datasource_overwritten"
-msgstr "Die Datenquelle konnte nicht zu Live ge\u00e4ndert werden, da es durch eine andere Aufgabe \u00fcberschrieben wurde."
+msgstr "Die Datenquelle konnte nicht zu Live geändert werden, da es durch eine andere Aufgabe überschrieben wurde."
 
 #:
 msgid "extracts.errors.remove_workbook_overwritten"
-msgstr "Die Arbeitsmappe konnte nicht zu Live ge\u00e4ndert werden, da es durch eine andere Aufgabe \u00fcberschritten wurde."
+msgstr "Die Arbeitsmappe konnte nicht zu Live geändert werden, da es durch eine andere Aufgabe überschritten wurde."
 
 #:
 msgid "extracts.errors.create_datasource_overwritten"
-msgstr "Die Datenquelle konnte nicht extrahiert werden, da es durch eine andere Aufgabe \u00fcberschritten wurde."
+msgstr "Die Datenquelle konnte nicht extrahiert werden, da es durch eine andere Aufgabe überschritten wurde."
 
 #:
 msgid "extracts.errors.create_workbook_overwritten"
-msgstr "Die Arbeitsmappe konnte nicht extrahiert werden, da es durch eine andere Aufgabe \u00fcberschritten wurde."
+msgstr "Die Arbeitsmappe konnte nicht extrahiert werden, da es durch eine andere Aufgabe überschritten wurde."
 
 #:
 msgid "extracts.site_mode_change_details"
-msgstr "Verschl\u00fcsselungsmodus der Site-Extrakte ge\u00e4ndert von ''{0}'' zu ''{1}''."
+msgstr "Verschlüsselungsmodus der Site-Extrakte geändert von ''{0}'' zu ''{1}''."
 
 #:
 msgid "extracts.errors.encryption_not_licensed"
-msgstr "Dieser Vorgang ist fehlgeschlagen, weil die Extraktverschl\u00fcsselung nicht lizenziert ist. Um diesen Vorgang auszuf\u00fchren, m\u00fcssen Sie Ihre Lizenz erneuern oder Ihren Extrakt entschl\u00fcsseln."
+msgstr "Dieser Vorgang ist fehlgeschlagen, weil die Extraktverschlüsselung nicht lizenziert ist. Um diesen Vorgang auszuführen, müssen Sie Ihre Lizenz erneuern oder Ihren Extrakt entschlüsseln."
 
 #:
 msgid "extracts.errors.operation_cancelled_detail"
-msgstr "Der Vorgang Extrakt entfernen f\u00fcr {0} (Datenquelle: {2}) wurde abgebrochen."
+msgstr "Der Vorgang Extrakt entfernen für {0} (Datenquelle: {2}) wurde abgebrochen."
 
 #:
 msgid "workbooks.messages.load_error"
@@ -924,7 +984,7 @@ msgstr "Arbeitsmappe {0} konnte nicht geladen werden"
 
 #:
 msgid "workbooks.messages.locked"
-msgstr "Die Arbeitsmappe ''{0}'' wird momentan von einem anderen Benutzer ge\u00e4ndert. Wiederholen Sie den Vorgang sp\u00e4ter."
+msgstr "Die Arbeitsmappe ''{0}'' wird momentan von einem anderen Benutzer geändert. Wiederholen Sie den Vorgang später."
 
 #:
 msgid "workbooks.new_workbook.default_name"
@@ -944,11 +1004,11 @@ msgstr "Neue Metrik"
 
 #:
 msgid "messages.timeout_error.summary"
-msgstr "Zeit\u00fcberschreitungsfehler"
+msgstr "Zeitüberschreitungsfehler"
 
 #:
 msgid "messages.timeout_error.task_canceled"
-msgstr "L\u00e4nger als {0} Sekunden dauernde Aufgabe wird abgebrochen"
+msgstr "Länger als {0} Sekunden dauernde Aufgabe wird abgebrochen"
 
 #:
 msgid "subscriptions.manage_my_subscriptions"
@@ -992,7 +1052,7 @@ msgstr "Ihr Tableau PDF befindet sich im Anhang."
 
 #:
 msgid "subscriptions.access_live_content"
-msgstr "Sie k\u00f6nnen hier auf die Live-Ansicht zugreifen"
+msgstr "Sie können hier auf die Live-Ansicht zugreifen"
 
 #:
 msgid "subscriptions.warning_deprecated_type"
@@ -1004,15 +1064,15 @@ msgstr "Extraktaktualisierung fehlgeschlagen"
 
 #:
 msgid "subscriptions.warning_flow_run_type"
-msgstr "Schemaausf\u00fchrung fehlgeschlagen"
+msgstr "Schemaausführung fehlgeschlagen"
 
 #:
 msgid "subscriptions.warning_introduction_general"
-msgstr "Die folgenden Datenqualit\u00e4tswarnungen wirken sich auf dieses {0} aus."
+msgstr "Die folgenden Datenqualitätswarnungen wirken sich auf dieses {0} aus."
 
 #:
 msgid "subscriptions.warning_introduction_view"
-msgstr "Weitere Informationen finden Sie auf der Registerkarte Datendetails in der Ansicht"
+msgstr "Weitere Informationen finden Sie auf der Registerkarte "Datendetails" in der Ansicht"
 
 #:
 msgid "subscriptions.warning_introduction_workbook"
@@ -1024,7 +1084,7 @@ msgstr "Wird gewartet"
 
 #:
 msgid "subscriptions.warning_permission_error"
-msgstr "Diese Warnung bezieht sich auf eine Ressource, f\u00fcr die Sie keine Berechtigungen zum Anzeigen haben."
+msgstr "Diese Warnung bezieht sich auf eine Ressource, für die Sie keine Berechtigungen zum Anzeigen haben."
 
 #:
 msgid "subscriptions.warning_redacted"
@@ -1036,7 +1096,7 @@ msgstr "Vertrauliche Daten"
 
 #:
 msgid "subscriptions.warning_severe"
-msgstr "Wichtige Datenqualit\u00e4tswarnung"
+msgstr "Wichtige Datenqualitätswarnung"
 
 #:
 msgid "subscriptions.warning_stale_type"
@@ -1044,7 +1104,7 @@ msgstr "Veraltete Daten"
 
 #:
 msgid "subscriptions.warning_standard"
-msgstr "Datenqualit\u00e4tswarnung"
+msgstr "Datenqualitätswarnung"
 
 #:
 msgid "subscriptions.warning_error_type"
@@ -1060,19 +1120,19 @@ msgstr "Der Snapshot der Ansicht ''{0}'' konnte nicht korrekt gerendert werden."
 
 #:
 msgid "errors.subscriptions.see_live_view"
-msgstr "\u00d6ffnen Sie {0}, um die Ansicht online anzuzeigen."
+msgstr "Öffnen Sie {0}, um die Ansicht online anzuzeigen."
 
 #:
 msgid "errors.subscriptions.disabled_on_server"
-msgstr "Die serverweite Abonnementeinstellung ist nicht aktiviert. Abonnements k\u00f6nnen nicht verarbeitet werden."
+msgstr "Die serverweite Abonnementeinstellung ist nicht aktiviert. Abonnements können nicht verarbeitet werden."
 
 #:
 msgid "errors.subscriptions.disabled_on_site"
-msgstr "Abonnements sind f\u00fcr die Site deaktiviert."
+msgstr "Abonnements sind für die Site deaktiviert."
 
 #:
 msgid "errors.subscriptions.site_is_locked"
-msgstr "Die Site ist gesperrt. Abonnements k\u00f6nnen nicht verarbeitet werden."
+msgstr "Die Site ist gesperrt. Abonnements können nicht verarbeitet werden."
 
 #:
 msgid "errors.subscriptions.orphan"
@@ -1080,11 +1140,11 @@ msgstr "Mit diesem Abonnement verbundene Arbeitsmappe und Ansichten konnten nich
 
 #:
 msgid "errors.subscriptions.user_unlicensed"
-msgstr "Abonnement f\u00fcr nicht lizenzierten Benutzer wird \u00fcbersprungen."
+msgstr "Abonnement für nicht lizenzierten Benutzer wird übersprungen."
 
 #:
 msgid "errors.subscriptions.smtp_unreacheable"
-msgstr "SMTP-Host kann nicht erreicht werden. Pr\u00fcfen Sie, ob SMTP konfiguriert wurde."
+msgstr "SMTP-Host kann nicht erreicht werden. Prüfen Sie, ob SMTP konfiguriert wurde."
 
 #:
 msgid "errors.subscriptions.uncategorized_error"
@@ -1092,19 +1152,19 @@ msgstr "Unbekannter Fehler"
 
 #:
 msgid "errors.subscriptions.pdf_render_failed"
-msgstr "Der PDF-Anhang f\u00fcr diese E-Mail konnte nicht richtig gerendert werden."
+msgstr "Der PDF-Anhang für diese E-Mail konnte nicht richtig gerendert werden."
 
 #:
 msgid "errors.subscriptions.pdf_limit_exceeded"
-msgstr "Das erzeugte PDF ist gr\u00f6\u00dfer als es die {0}MB Gr\u00f6\u00dfenbegrenzung erlaubt und konnte an diese E-Mail nicht anh\u00e4ngt werden."
+msgstr "Das erzeugte PDF ist größer als es die {0}MB Größenbegrenzung erlaubt und konnte an diese E-Mail nicht anhängt werden."
 
 #:
 msgid "errors.subscriptions.attachments_not_enabled"
-msgstr "Dieses Abonnement ist fehlgeschlagen, da die E-Mail-Anh\u00e4nge deaktiviert waren. Kontaktieren Sie Ihren Tableau-Administrator f\u00fcr Details."
+msgstr "Dieses Abonnement ist fehlgeschlagen, da die E-Mail-Anhänge deaktiviert waren. Kontaktieren Sie Ihren Tableau-Administrator für Details."
 
 #:
 msgid "errors.subscriptions.pdf_email_failed"
-msgstr "Das erzeugte PDF konnte nicht an diese E-Mail angeh\u00e4ngt werden."
+msgstr "Das erzeugte PDF konnte nicht an diese E-Mail angehängt werden."
 
 #:
 msgid "errors.subscriptions.learn_more_troubleshoot"
@@ -1112,7 +1172,7 @@ msgstr "<a hre"
 
 #:
 msgid "errors.subscriptions.bad_extract_refresh_subscription_configuration"
-msgstr "Das Abonnement wurde abgebrochen, da die Arbeitsmappe mehrere Zeitpl\u00e4ne f\u00fcr die Extraktaktualisierung enth\u00e4lt. Updaten Sie, um fortzufahren die H\u00e4ufigkeit auf Ausgew\u00e4hlter Zeitplan."
+msgstr "Das Abonnement wurde abgebrochen, da die Arbeitsmappe mehrere Zeitpläne für die Extraktaktualisierung enthält. Updaten Sie, um fortzufahren die Häufigkeit auf Ausgewählter Zeitplan."
 
 #:
 msgid "errors.subscriptions.subscription_failed_refresh_failure"
@@ -1120,11 +1180,11 @@ msgstr "Die Extraktaktualisierung auf der Datenquelle ist fehlgeschlagen."
 
 #:
 msgid "errors.subscriptions.multiple_extracts_for_extract_refresh_subscription"
-msgstr "Die Arbeitsmappe enth\u00e4lt mehrere Zeitpl\u00e4ne f\u00fcr die Extraktaktualisierung. Updaten Sie die H\u00e4ufigkeit auf Ausgew\u00e4hlter Zeitplan."
+msgstr "Die Arbeitsmappe enthält mehrere Zeitpläne für die Extraktaktualisierung. Updaten Sie die Häufigkeit auf Ausgewählter Zeitplan."
 
 #:
 msgid "errors.subscriptions.datasource_is_missing_password"
-msgstr "Datenquellen-Verbindungsfehler. \u00dcberpr\u00fcfen Sie die Anmeldeinformationen auf allen Datenquellenverbindungen f\u00fcr die Arbeitsmappe."
+msgstr "Datenquellen-Verbindungsfehler. Überprüfen Sie die Anmeldeinformationen auf allen Datenquellenverbindungen für die Arbeitsmappe."
 
 #:
 msgid "subscriptions.results_summary.sg"
@@ -1196,15 +1256,15 @@ msgstr "Mich entfernen"
 
 #:
 msgid "dataalerts.add_user_to_data_alert"
-msgstr "Mich zu dieser Benachrichtigung hinzuf\u00fcgen"
+msgstr "Mich zu dieser Benachrichtigung hinzufügen"
 
 #:
 msgid "dataalerts.greater_or_equal"
-msgstr "{0} war gr\u00f6\u00dfer oder gleich {1}."
+msgstr "{0} war größer oder gleich {1}."
 
 #:
 msgid "dataalerts.greater"
-msgstr "{0} war gr\u00f6\u00dfer als {1}."
+msgstr "{0} war größer als {1}."
 
 #:
 msgid "dataalerts.less_or_equal"
@@ -1224,15 +1284,15 @@ msgstr "Von datengesteuerter Benachrichtigung verwendete Ansicht: {0}"
 
 #:
 msgid "dataalerts.email_alt_text_hidden_view"
-msgstr "Von datengesteuerter Benachrichtigung verwendete Ansicht: {0} mit \u00c4nderungen angewendet"
+msgstr "Von datengesteuerter Benachrichtigung verwendete Ansicht: {0} mit Änderungen angewendet"
 
 #:
 msgid "dataalerts.alert_triggered_for_the_view"
-msgstr "Warnung f\u00fcr die Ansicht ausgel\u00f6st"
+msgstr "Warnung für die Ansicht ausgelöst"
 
 #:
 msgid "dataalerts.failure.email.subject"
-msgstr "Datengesteuerte Benachrichtigung funktioniert nicht f\u00fcr: {0}"
+msgstr "Datengesteuerte Benachrichtigung funktioniert nicht für: {0}"
 
 #:
 msgid "dataalerts.failure.status"
@@ -1244,7 +1304,7 @@ msgstr "Diese Benachrichtigung anzeigen"
 
 #:
 msgid "dataalerts.failure.explanation"
-msgstr "Ihre datengesteuerte Benachrichtigung, <i>{0}</i>, funktioniert momentan nicht. Daher werden die Empf\u00e4nger nicht benachrichtigt, wenn die Datenbedingung wahr ist. Wenn die Benachrichtigung wieder funktioniert, erhalten Sie eine E-Mail."
+msgstr "Ihre datengesteuerte Benachrichtigung, <i>{0}</i>, funktioniert momentan nicht. Daher werden die Empfänger nicht benachrichtigt, wenn die Datenbedingung wahr ist. Wenn die Benachrichtigung wieder funktioniert, erhalten Sie eine E-Mail."
 
 #:
 msgid "dataalerts.failure.affected.alert"
@@ -1256,7 +1316,7 @@ msgstr "Zeitpunkt des Benachrichtigungsfehlers"
 
 #:
 msgid "dataalerts.failure.cause"
-msgstr "Gelegentlich treten Benachrichtigungsfehler infolge vor\u00fcbergehender Netzwerkprobleme auf, die sich von alleine beheben. Sie k\u00f6nnen auch versuchen, die Benachrichtigung in der urspr\u00fcnglichen Datenansicht neu zu erstellen, oder h\u00e4ufige Ursachen von Benachrichtigungsfehlern beseitigen. Beispiele:"
+msgstr "Gelegentlich treten Benachrichtigungsfehler infolge vorübergehender Netzwerkprobleme auf, die sich von alleine beheben. Sie können auch versuchen, die Benachrichtigung in der ursprünglichen Datenansicht neu zu erstellen, oder häufige Ursachen von Benachrichtigungsfehlern beseitigen. Beispiele:"
 
 #:
 msgid "dataalerts.failure.changed.view"
@@ -1276,11 +1336,11 @@ msgstr "Sie erhalten diese E-Mail um {0} aufgrund eines Benachrichtigungsfehlers
 
 #:
 msgid "dataalerts.failure.troubleshooting"
-msgstr "Um zu \u00fcberpr\u00fcfen, ob eines der oben aufgef\u00fchrten Probleme den Benachrichtigungsfehler verursacht, klicken Sie auf die folgende Schaltfl\u00e4che."
+msgstr "Um zu überprüfen, ob eines der oben aufgeführten Probleme den Benachrichtigungsfehler verursacht, klicken Sie auf die folgende Schaltfläche."
 
 #:
 msgid "dataalerts.success.email.subject"
-msgstr "Datengesteuerte Benachrichtigung wurde fortgesetzt f\u00fcr: {0}"
+msgstr "Datengesteuerte Benachrichtigung wurde fortgesetzt für: {0}"
 
 #:
 msgid "dataalerts.success.status"
@@ -1288,7 +1348,7 @@ msgstr "Ihre Benachrichtigung <i>{0}</i> wurde fortgesetzt."
 
 #:
 msgid "dataalerts.success.explanation"
-msgstr "Ihre datengesteuerte Warnung, <i>{0}</i>, funktioniert wieder, sodass die Empf\u00e4nger benachrichtigt werden, wenn die Datenbedingung wahr ist."
+msgstr "Ihre datengesteuerte Warnung, <i>{0}</i>, funktioniert wieder, sodass die Empfänger benachrichtigt werden, wenn die Datenbedingung wahr ist."
 
 #:
 msgid "dataalerts.failure.error.internalError"
@@ -1296,7 +1356,7 @@ msgstr "Datenbenachrichtigung, interner Fehler"
 
 #:
 msgid "dataalerts.failure.error.invalidDataAlertSpecification"
-msgstr "Ung\u00fcltige Datenbenachrichtigungsspezifikation"
+msgstr "Ungültige Datenbenachrichtigungsspezifikation"
 
 #:
 msgid "dataalerts.failure.error.summaryTableNotFound"
@@ -1320,7 +1380,7 @@ msgstr "Arbeitsmappe nicht gefunden"
 
 #:
 msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
-msgstr "Keine Achse gefunden f\u00fcr Feld {0}"
+msgstr "Keine Achse gefunden für Feld {0}"
 
 #:
 msgid "dataalerts.failure.error.paneDescriptorNotFound"
@@ -1328,7 +1388,7 @@ msgstr "{0}"
 
 #:
 msgid "dataalerts.failure.error.unsupportedComparisonExpression"
-msgstr "Nicht unterst\u00fctzter Vergleichsausdruck {0}"
+msgstr "Nicht unterstützter Vergleichsausdruck {0}"
 
 #:
 msgid "dataalerts.failure.error.nonConstComparisonOp"
@@ -1336,15 +1396,15 @@ msgstr "Variabler Vergleichsoperator ermittelt: {0}"
 
 #:
 msgid "dataalerts.failure.error.cannotAddFilter"
-msgstr "Hinzuf\u00fcgen von Filter zu Datenbenachrichtigung ist fehlgeschlagen"
+msgstr "Hinzufügen von Filter zu Datenbenachrichtigung ist fehlgeschlagen"
 
 #:
 msgid "dataalerts.failure.error.sheetNotAlertable"
-msgstr "Blatt {0} verf\u00fcgt \u00fcber unterst\u00fctzte Daten f\u00fcr Benachrichtigungen. {1}"
+msgstr "Blatt {0} verfügt über unterstützte Daten für Benachrichtigungen. {1}"
 
 #:
 msgid "dataalerts.failure.error.dataAlertMeasureNotFound"
-msgstr "Kennzahl kann nicht ausgew\u00e4hlt werden. {0}"
+msgstr "Kennzahl kann nicht ausgewählt werden. {0}"
 
 #:
 msgid "dataalerts.failure.error.tooManyMeasuresForDataAlert"
@@ -1364,11 +1424,11 @@ msgstr "Dialogfeld zur Datenbenachrichtigung kann nicht gezeichnet werden."
 
 #:
 msgid "dataalerts.failure.error.unsupportedDataAlertType"
-msgstr "Der Typ der Datenbenachrichtigung {0} wird derzeit nicht unterst\u00fctzt."
+msgstr "Der Typ der Datenbenachrichtigung {0} wird derzeit nicht unterstützt."
 
 #:
 msgid "dataalerts.failure.suspend.email.subject"
-msgstr "Datengesteuerte Benachrichtigung ausgesetzt f\u00fcr: {0}"
+msgstr "Datengesteuerte Benachrichtigung ausgesetzt für: {0}"
 
 #:
 msgid "dataalerts.failure.suspend.email.status"
@@ -1376,7 +1436,7 @@ msgstr "Ihre Benachrichtigung {0} wurde ausgesetzt"
 
 #:
 msgid "dataalerts.failure.suspend.email.explanation"
-msgstr "W\u00e4hrend der Aussetzung wird die Ansicht nicht evaluiert und Empf\u00e4nger werden nicht benachrichtigt. Nach einer Behebung kann die Benachrichtigung unter <a hre"
+msgstr "Während der Aussetzung wird die Ansicht nicht evaluiert und Empfänger werden nicht benachrichtigt. Nach einer Behebung kann die Benachrichtigung unter <a hre"
 
 #:
 msgid "dataalerts.failure.suspend.view.name.prefix"
@@ -1404,7 +1464,7 @@ msgstr "Betroffene Metrik"
 
 #:
 msgid "metricsservices.failure.cause"
-msgstr "Manchmal schlagen Metrikaktualisierungen aufgrund von tempor\u00e4ren Verbindungsproblemen fehl, welche automatisch gel\u00f6st werden. Andere h\u00e4ufige Gr\u00fcnde, warum eine Metrikaktualisierung fehlschlagen kann, sind:"
+msgstr "Manchmal schlagen Metrikaktualisierungen aufgrund von temporären Verbindungsproblemen fehl, welche automatisch gelöst werden. Andere häufige Gründe, warum eine Metrikaktualisierung fehlschlagen kann, sind:"
 
 #:
 msgid "metricsservices.failure.changed.view"
@@ -1412,7 +1472,7 @@ msgstr "Ein(e) entfernte(s) oder umbenannte(s) Arbeitsmappe, Ansicht oder Datenf
 
 #:
 msgid "metricsservices.failure.permissions.error"
-msgstr "Eine \u00c4nderung in den Berechtigungen f\u00fcr die verbundene Ansicht"
+msgstr "Eine Änderung in den Berechtigungen für die verbundene Ansicht"
 
 #:
 msgid "metricsservices.failure.email.footer"
@@ -1420,7 +1480,7 @@ msgstr "Sie erhalten diese E-Mail um {0}, aufgrund eines Fehlers mit Ihrer Metri
 
 #:
 msgid "metricsservices.failure.email.subject"
-msgstr "Metrikaktualisierung funktioniert nicht f\u00fcr: {0}"
+msgstr "Metrikaktualisierung funktioniert nicht für: {0}"
 
 #:
 msgid "metricsservices.failure.expired.credentials"
@@ -1432,11 +1492,11 @@ msgstr "Ihre Metrik kann nicht aktualisiert werden, deshalb werden Ihre Metrikda
 
 #:
 msgid "metricsservices.failure.status"
-msgstr "Ihre Metrik {0} ist nicht aktualisiert"
+msgstr "Ihre Metrik "{0}" ist nicht aktualisiert"
 
 #:
 msgid "metricsservices.failure.suspend.email.explanation"
-msgstr "W\u00e4hrend die Metrikaktualisierung ausgesetzt ist, werden Ihre Metrikdaten nicht upgedated. Nachdem eine Reparatur ausgef\u00fchrt wurde, k\u00f6nnen Sie die Metrikaktualisierung fortf\u00fchren."
+msgstr "Während die Metrikaktualisierung ausgesetzt ist, werden Ihre Metrikdaten nicht upgedated. Nachdem eine Reparatur ausgeführt wurde, können Sie die Metrikaktualisierung fortführen."
 
 #:
 msgid "metricsservices.failure.suspend.email.footer"
@@ -1444,11 +1504,11 @@ msgstr "Sie erhalten diese E-Mail um {0}, da Ihre Metrikaktualisierung ausgesetz
 
 #:
 msgid "metricsservices.failure.suspend.email.status"
-msgstr "Die Aktualisierung f\u00fcr Ihre Metrik {0} wurde abgebrochen"
+msgstr "Die Aktualisierung für Ihre Metrik "{0}" wurde abgebrochen"
 
 #:
 msgid "metricsservices.failure.suspend.email.subject"
-msgstr "Metrikaktualisierung abgebrochen f\u00fcr: {0}"
+msgstr "Metrikaktualisierung abgebrochen für: {0}"
 
 #:
 msgid "metricsservices.failure.suspend.time"
@@ -1468,7 +1528,7 @@ msgstr "Zeitpunkt des Aktualisierungsfehlers"
 
 #:
 msgid "metricsservices.failure.troubleshooting"
-msgstr "Um zu kontrollieren, ob eine der oben angef\u00fchrten Probleme dazu f\u00fchren, dass Ihre Metrikaktualisierung fehlschl\u00e4gt, klicken Sie auf die Schaltfl\u00e4che unten. Sie k\u00f6nnen auch versuchen, die Metrik auf der verbundenen Ansicht nachzustellen."
+msgstr "Um zu kontrollieren, ob eine der oben angeführten Probleme dazu führen, dass Ihre Metrikaktualisierung fehlschlägt, klicken Sie auf die Schaltfläche unten. Sie können auch versuchen, die Metrik auf der verbundenen Ansicht nachzustellen."
 
 #:
 msgid "metricsservices.failure.view.details.metric"
@@ -1480,27 +1540,27 @@ msgstr "Verbundene Ansicht"
 
 #:
 msgid "metricsservices.success.email.subject"
-msgstr "Metrikaktualisierung wird fortgefahren f\u00fcr: {0}"
+msgstr "Metrikaktualisierung wird fortgefahren für: {0}"
 
 #:
 msgid "metricsservices.success.explanation"
-msgstr "Die Aktualisierung f\u00fcr Ihre Kennzahl funktioniert wieder und sie sucht nach Aktualisierungen f\u00fcr Ihre Kennzahldaten."
+msgstr "Die Aktualisierung für Ihre Kennzahl funktioniert wieder und sie sucht nach Aktualisierungen für Ihre Kennzahldaten."
 
 #:
 msgid "metricsservices.success.status"
-msgstr "Die Aktualisierung f\u00fcr Ihre Metrik {0} wird fortgefahren"
+msgstr "Die Aktualisierung für Ihre Metrik "{0}" wird fortgefahren"
 
 #:
 msgid "errors.staticimages.generic"
-msgstr "Fehler beim Generieren statischer Bilder f\u00fcr Arbeitsmappe {0}. {1}."
+msgstr "Fehler beim Generieren statischer Bilder für Arbeitsmappe {0}. {1}."
 
 #:
 msgid "errors.internal_error.request.message"
-msgstr "{0} konnte die Anforderung nicht ausf\u00fchren."
+msgstr "{0} konnte die Anforderung nicht ausführen."
 
 #:
 msgid "errors.permissions.limited_user_visibility"
-msgstr "Fehler beim Ausf\u00fchren der Abfrage. Der Benutzer muss ein Administrator oder Creator sein, um andere Benutzer abzufragen, wenn die Nutzersichtbarkeit auf limitiert eingestellt ist."
+msgstr "Fehler beim Ausführen der Abfrage. Der Benutzer muss ein Administrator oder Creator sein, um andere Benutzer abzufragen, wenn die Nutzersichtbarkeit auf limitiert eingestellt ist."
 
 #:
 msgid "local_names.system_user.guest.name"
@@ -1512,15 +1572,15 @@ msgstr "Alle Benutzer"
 
 #:
 msgid "local_names.containers.personal_space.name"
-msgstr "Pers\u00f6nlicher Bereich"
+msgstr "Persönlicher Bereich"
 
 #:
 msgid "password_reset.email.subject"
-msgstr "Mit diesem Link k\u00f6nnen Sie Ihr Kennwort zur\u00fccksetzen."
+msgstr "Mit diesem Link können Sie Ihr Kennwort zurücksetzen."
 
 #:
 msgid "password_reset.email.body"
-msgstr "Hallo {0},<br/><br/>Sie haben soeben eine Zur\u00fccksetzung Ihres Kennworts angefordert.<br/><br/> Um Ihr Tableau Server-Kennwort zu \u00e4ndern, {1} oder kopieren Sie den folgenden Link in Ihren Browser: {2}<br/><br/>Er l\u00e4uft in 48 Stunden ab, Sie sollten ihn also gleich verwenden.<br/><br/>Wenn Sie die Zur\u00fccksetzung Ihres Kennworts nicht angefordert haben, sollten Sie das Ihrem Serveradministrator mitteilen.<br/><br/>Danke, dass Sie Tableau verwenden.<br/>Das Tableau-Team"
+msgstr "Hallo {0},<br/><br/>Sie haben soeben eine Zurücksetzung Ihres Kennworts angefordert.<br/><br/> Um Ihr Tableau Server-Kennwort zu ändern, {1} oder kopieren Sie den folgenden Link in Ihren Browser: {2}<br/><br/>Er läuft in 48 Stunden ab, Sie sollten ihn also gleich verwenden.<br/><br/>Wenn Sie die Zurücksetzung Ihres Kennworts nicht angefordert haben, sollten Sie das Ihrem Serveradministrator mitteilen.<br/><br/>Danke, dass Sie Tableau verwenden.<br/>Das Tableau-Team"
 
 #:
 msgid "password_reset.email.link"
@@ -1556,19 +1616,19 @@ msgstr "Tableau Server-Site"
 
 #:
 msgid "materializeviews.errors.workbook_not_in_project"
-msgstr "Projekt ''{0}'' enth\u00e4lt Arbeitsmappe ''{1}'' nicht"
+msgstr "Projekt ''{0}'' enthält Arbeitsmappe ''{1}'' nicht"
 
 #:
 msgid "materializeviews.errors.workbook_has_no_extract"
-msgstr "Das Aktualisieren der materialisierten Ansichts-Umgebung f\u00fcr die Arbeitsmappe ''{0}'' ist fehlgeschlagen, Momentan werden nur Arbeitsmappen mit eingebetteten Extrakten unterst\u00fctzt."
+msgstr "Das Aktualisieren der materialisierten Ansichts-Umgebung für die Arbeitsmappe ''{0}'' ist fehlgeschlagen, Momentan werden nur Arbeitsmappen mit eingebetteten Extrakten unterstützt."
 
 #:
 msgid "materializeviews.errors.workbook_updating_errors"
-msgstr "Beim Aktualisieren der materialisierten Ansichts-Umgebung f\u00fcr Arbeitsmappen wurden Fehler gefunden"
+msgstr "Beim Aktualisieren der materialisierten Ansichts-Umgebung für Arbeitsmappen wurden Fehler gefunden"
 
 #:
 msgid "materializeviews.errors.workbook_too_large"
-msgstr "Das Aktualisieren der materialisierten Ansichts-Umgebung der Arbeitsmappe ''{0}'' ist fehlgeschlagen, da die Arbeitsmappe das Limit von  {1} GB \u00fcberschreitet."
+msgstr "Das Aktualisieren der materialisierten Ansichts-Umgebung der Arbeitsmappe ''{0}'' ist fehlgeschlagen, da die Arbeitsmappe das Limit von  {1} GB überschreitet."
 
 #:
 msgid "materializeviews.errors.project_path_not_exists"
@@ -1576,11 +1636,11 @@ msgstr "Projektpfad ''{0}'' ist nicht vorhanden."
 
 #:
 msgid "materializeviews.errors.feature_disabled"
-msgstr "Das Aktualisieren der materialisierten Ansichts-Umgebung f\u00fcr Arbeitsmappe ''{0}'' ist fehlgeschlagen, da diese Funktion zurzeit deaktiviert ist"
+msgstr "Das Aktualisieren der materialisierten Ansichts-Umgebung für Arbeitsmappe ''{0}'' ist fehlgeschlagen, da diese Funktion zurzeit deaktiviert ist"
 
 #:
 msgid "materializeviews.errors.update_materialized_views_setting_failed"
-msgstr "Das Aktualisieren der materialisierten Ansichts-Umgebung f\u00fcr Arbeitsmappe ''{0}'' ist fehlgeschlagen,"
+msgstr "Das Aktualisieren der materialisierten Ansichts-Umgebung für Arbeitsmappe ''{0}'' ist fehlgeschlagen,"
 
 #:
 msgid "materializeviews.errors.site_not_enabled"
@@ -1588,39 +1648,39 @@ msgstr "Auf dieser Site sind materialisierte Ansichten nicht aktiviert. Wenden S
 
 #:
 msgid "materializeviews.errors.encrypted_extracts_not_supported"
-msgstr "Die Funktion Materialisierte Ansichten unterst\u00fctzt Arbeitsmappen mit verschl\u00fcsselten Extrakten derzeit nicht"
+msgstr "Die Funktion Materialisierte Ansichten unterstützt Arbeitsmappen mit verschlüsselten Extrakten derzeit nicht"
 
 #:
 msgid "materializedviews.finished.create"
-msgstr "Erstellte materialisierte Ansichten mit dem Status ''{0}'' f\u00fcr Arbeitsmappe ''{1}''"
+msgstr "Erstellte materialisierte Ansichten mit dem Status ''{0}'' für Arbeitsmappe ''{1}''"
 
 #:
 msgid "materializedviews.finished.delete"
-msgstr "Gel\u00f6schte materialisierte Ansichten f\u00fcr die Arbeitsmappen-ID: {0}"
+msgstr "Gelöschte materialisierte Ansichten für die Arbeitsmappen-ID: {0}"
 
 #:
 msgid "materializedviews.finished.encrypt"
-msgstr "Abgeschlossene Verschl\u00fcsselung der materialisierten Ansichten f\u00fcr die Arbeitsmappe ''{0}''"
+msgstr "Abgeschlossene Verschlüsselung der materialisierten Ansichten für die Arbeitsmappe ''{0}''"
 
 #:
 msgid "materializedviews.finished.decrypt"
-msgstr "Abgeschlossene Entschl\u00fcsselung der materialisierten Ansichten f\u00fcr die Arbeitsmappe ''{0}''"
+msgstr "Abgeschlossene Entschlüsselung der materialisierten Ansichten für die Arbeitsmappe ''{0}''"
 
 #:
 msgid "materializedviews.finished.rekey"
-msgstr "Abgeschlossene erneute Verschl\u00fcsselung der materialisierten Ansichten f\u00fcr die Arbeitsmappe ''{0}''"
+msgstr "Abgeschlossene erneute Verschlüsselung der materialisierten Ansichten für die Arbeitsmappe ''{0}''"
 
 #:
 msgid "materializedviews.status.encryption_key"
-msgstr "Verschl\u00fcsselungsschl\u00fcssel-ID: ''{0}''."
+msgstr "Verschlüsselungsschlüssel-ID: ''{0}''."
 
 #:
 msgid "materializedviews.status.encryption_keys"
-msgstr "Alte Verschl\u00fcsselungsschl\u00fcssel-ID: ''{0}'', neue Verschl\u00fcsselungsschl\u00fcssel-ID: ''{1}''."
+msgstr "Alte Verschlüsselungsschlüssel-ID: ''{0}'', neue Verschlüsselungsschlüssel-ID: ''{1}''."
 
 #:
 msgid "materializedviews.status.encryption_type"
-msgstr "Typ der Datenquellenverschl\u00fcsselung: ''{0}''"
+msgstr "Typ der Datenquellenverschlüsselung: ''{0}''"
 
 #:
 msgid "customizedviews.namedSharingPrefix"
@@ -1664,11 +1724,11 @@ msgstr "Visualisierung"
 
 #:
 msgid "content_type.askdata_visualization"
-msgstr "Frag die Daten-Visualisierung"
+msgstr ""Frag die Daten"-Visualisierung"
 
 #:
 msgid "content_type.explaindata_explanation"
-msgstr "Erl\u00e4uterung"
+msgstr "Erläuterung"
 
 #:
 msgid "content_type.publishedconnection"
@@ -1684,7 +1744,7 @@ msgstr "Serverantwort: Miniatorbildupgrade gestartet!"
 
 #:
 msgid "upgradethumbnails.status.server_stopped"
-msgstr "Serverantwort: %d Auftr\u00e4ge angehalten"
+msgstr "Serverantwort: %d Aufträge angehalten"
 
 #:
 msgid "dataquality.message.refresh_failed"
@@ -1692,15 +1752,15 @@ msgstr "Fehler bei Aktualisierung: {0}"
 
 #:
 msgid "dataquality.message.last_successful"
-msgstr "Letzte erfolgreiche Ausf\u00fchrung: {0}"
+msgstr "Letzte erfolgreiche Ausführung: {0}"
 
 #:
 msgid "dataquality.message.next_scheduled"
-msgstr "N\u00e4chste geplante Ausf\u00fchrung: {0}"
+msgstr "Nächste geplante Ausführung: {0}"
 
 #:
 msgid "dataquality.message.flow_run_output_steps_failed"
-msgstr "{0}/{1} Ausgabeschritte konnten nicht ausgef\u00fchrt werden"
+msgstr "{0}/{1} Ausgabeschritte konnten nicht ausgeführt werden"
 
 #:
 msgid "importcsvsummary.error.details"
@@ -1712,7 +1772,7 @@ msgstr "(verbleibende Fehler werden nicht angezeigt)"
 
 #:
 msgid "importcsvsummary.error.line"
-msgstr "Zeile {0} f\u00fcr Benutzer ''{1}'': ''{2}''"
+msgstr "Zeile {0} für Benutzer ''{1}'': ''{2}''"
 
 #:
 msgid "importcsvsummary.line.processed"
@@ -1720,11 +1780,11 @@ msgstr "Verarbeitete Zeilen: {0}"
 
 #:
 msgid "importcsvsummary.line.skipped"
-msgstr "\u00dcbersprungene Zeilen: {0}"
+msgstr "Übersprungene Zeilen: {0}"
 
 #:
 msgid "importcsvsummary.users.added.count"
-msgstr "Anzahl hinzugef\u00fcgter Benutzer: {0}"
+msgstr "Anzahl hinzugefügter Benutzer: {0}"
 
 #:
 msgid "importcsvsummary.errors.count"
@@ -1732,15 +1792,15 @@ msgstr "Fehleranzahl: {0}"
 
 #:
 msgid "importcsvsummary.error.unexpected_extension"
-msgstr "Unerwartete Dateinamenerweiterung f\u00fcr CSV-Datei"
+msgstr "Unerwartete Dateinamenerweiterung für CSV-Datei"
 
 #:
 msgid "importcsvsummary.error.size_limit"
-msgstr "CSV-Datei \u00fcberschreitet Gr\u00f6\u00dfenlimit von {0}"
+msgstr "CSV-Datei überschreitet Größenlimit von {0}"
 
 #:
 msgid "importcsvsummary.error.local.password_mismatch"
-msgstr "Aktualisierung des lokalen Site-Benutzers erfordert leeres oder \u00fcbereinstimmendes Kennwort"
+msgstr "Aktualisierung des lokalen Site-Benutzers erfordert leeres oder übereinstimmendes Kennwort"
 
 #:
 msgid "importcsvsummary.error.local.password_required"
@@ -1752,7 +1812,7 @@ msgstr "AD-Benutzer nicht gefunden ''{0}''"
 
 #:
 msgid "importcsvsummary.error.too_many_errors"
-msgstr "CSV-Datei enth\u00e4lt zu viele Fehler"
+msgstr "CSV-Datei enthält zu viele Fehler"
 
 #:
 msgid "audit.errors.wdc_not_allowlisted"
@@ -1760,7 +1820,7 @@ msgstr "Der Webdaten-Connector befindet sich nicht auf der Zulassungsliste. Hilf
 
 #:
 msgid "user.input.name.err.too_long"
-msgstr "Name ist l\u00e4nger als die maximale Anzahl von Zeichen {0}"
+msgstr "Name ist länger als die maximale Anzahl von Zeichen {0}"
 
 #:
 msgid "user.input.name.err.empty"
@@ -1772,11 +1832,11 @@ msgstr "Frag die Daten"
 
 #:
 msgid "slack.app.upgrade.email.notification.subject"
-msgstr "Update f\u00fcr Tableau-App f\u00fcr Slack"
+msgstr "Update für Tableau-App für Slack"
 
 #:
 msgid "slack.app.upgrade.email.notification.introduction"
-msgstr "F\u00fcr die Tableau-App f\u00fcr Slack ist ein Update verf\u00fcgbar, das jetzt neu installiert werden kann und mit der n\u00e4chsten Tableau Online-Version kompatibel ist. Tableau empfiehlt die Neuinstallation der App, um die App-Leistung zu erhalten und neue Funktionen zu nutzen. Die neuen Funktionen und \u00c4nderungen finden Sie unter <a styl"
+msgstr "Für die Tableau-App für Slack ist ein Update verfügbar, das jetzt neu installiert werden kann und mit der nächsten Tableau Online-Version kompatibel ist. Tableau empfiehlt die Neuinstallation der App, um die App-Leistung zu erhalten und neue Funktionen zu nutzen. Die neuen Funktionen und Änderungen finden Sie unter <a styl"
 
 #:
 msgid "slack.app.upgrade.email.notification.action"
@@ -1784,7 +1844,7 @@ msgstr "Die Schritte zur Aktualisierung und Neuinstallation finden Sie unter <a 
 
 #:
 msgid "slack.app.upgrade.email.notification.steps"
-msgstr "Diese Dienstbenachrichtigung wurde von Tableau Online ver\u00f6ffentlicht."
+msgstr "Diese Dienstbenachrichtigung wurde von Tableau Online veröffentlicht."
 
 #:
 msgid "slack.app.upgrade.email.notification.reason"
@@ -1799,91 +1859,21 @@ msgid "unifiedconsumption.tcrm.folders.private"
 msgstr "Meine private App"
 
 
-# Tabcmd output strings
-# Copyright (C) YEAR Tableau Software
-
-# We are varying the gettext process a little because we want to
-# re-use the existing translated strings in the old client
-# manually annotate each string and use a string id
-# manually generate a template file with id -> original string
-# check in properties files from the monolith in all languages
-# automate: two properties files -> po http://docs.translatehouse.org/projects/translate-toolkit/en/latest/commands/prop2po.html
-# gettext or Babel : po -> mo during packaging  (https://www.mattlayman.com/blog/2015/i18n/)
-# strings in template that are not in .properties should remain in English?
-
-
-# These outcome reporting lines were all returned from the server in clientxml
-# https://sourcegraph.prod.tableautools.com/teams/near/-/blob/workgroup/src/shared/libraries/tab-strings/res/localization/shared_wg_en.properties
-# how much of this can be replaced by server responses?
-
-msgid "tabcmd.result.already_exists.group"
-msgstr "Group called ''{}'' already exists"
-
-msgid "tabcmd.result.failed.delete.group"
-msgstr "Error deleting group from server"
-
-msgid "tabcmd.result.success.create_user"
-msgstr "Successfully created user: {}"
-
-msgid "tabcmd.report.users_added"
-msgstr "Number of users added: {}"
-
-msgid "tabcmd.report.errors"
-msgstr "Error details: \n{}"
-
-msgid "tabcmd.report.error.user_csv.too_many_columns"
-msgstr "The file contains {} columns, but there are only {} valid columns in a user import csv file"
-
-msgid "tabcmd.report.error.user_csv.at_char"
-msgstr "If a user name includes an @ character that represents anything other than a domain separator, "
-                    "you need to refer to the symbol using the hexadecimal format: \\0x40"
-
-msgid "tabcmd.report.error.user.no_spaces_in_username"
-msgstr "Username cannot contain spaces"
-
-msgid "tabcmd.report.error.generic_attribute"
-msgstr "Invalid value for {0}: {1}"
-
-msgid "tabcmd.report.error.publish_samples.expected_project"
-msgstr "publishsamples expects the specified project to exist already"
-
-msgid "tabcmd.result.failure.publish_samples"
-msgstr "Failed publishing samples to project"
-
-msgid "tabcmd.launching"
-msgstr "======================= Launching command ======================="
-
-msgid "tabcmd.find.group"
-msgstr "Finding group ''{}'' on server..."
-
-# Each actual command has a status line in translation
-
-msgid "tabcmd.add.users.to_site"
-msgstr "===== Adding users listed in {0} to {1}..."
-
-msgid "tabcmd.delete.users.from_server"
-msgstr "Removing users listed in {0} from the server..."
-
-msgid "tabcmd.get.extension.not_found"
-msgstr "You must specify a file type in the url or filename"
-
-msgid "tabcmd.run_schedule.options.schedule"
-msgstr "Name of the schedule to run"
 msgid ""
 msgstr ""
 "MIME-Version: 1.0"
-"Content-Type: text/plain; charset=None"
+"Content-Type: text/plain; charset=utf-8"
 "Content-Transfer-Encoding: 8bit"
 "X-Generator: prop2po"
 "Project-Id-Version: None"
-"Language: None"
+"Language: de"
 #:
 msgid "commandlineutils.errors.bad_value"
 msgstr "Option ''{0}'' weist den fehlerhaften Wert ''{1}'' auf. Muss einer sein von: {2}"
 
 #:
 msgid "commandlineutils.errors.not_integer"
-msgstr "Wert ''{0}'' f\u00fcr Option ''{1}'' ist keine Ganzzahl"
+msgstr "Wert ''{0}'' für Option ''{1}'' ist keine Ganzzahl"
 
 #:
 msgid "common.errors.empty_file"
@@ -1891,11 +1881,11 @@ msgstr "Datei ''{0}'' ist leer"
 
 #:
 msgid "common.errors.file_not_found"
-msgstr "Datei ''{0}'' kann nicht ge\u00f6ffnet werden"
+msgstr "Datei ''{0}'' kann nicht geöffnet werden"
 
 #:
 msgid "common.errors.invalid_file_path"
-msgstr "Ung\u00fcltiger Dateipfad ''{0}''"
+msgstr "Ungültiger Dateipfad ''{0}''"
 
 #:
 msgid "common.errors.folder_path_not_found"
@@ -1903,19 +1893,19 @@ msgstr "Verzeichnis ''{0}'' konnte nicht gefunden werden"
 
 #:
 msgid "common.errors.access_denied"
-msgstr "Auf auf die Datei ''{0}'' konnte nicht zugegriffen werden. Kontrollieren Sie, ob der Pfad korrekt ist und ob der Dateiname nicht mit einem vorhanden Verzeichnis \u00fcbereinstimmt."
+msgstr "Auf auf die Datei ''{0}'' konnte nicht zugegriffen werden. Kontrollieren Sie, ob der Pfad korrekt ist und ob der Dateiname nicht mit einem vorhanden Verzeichnis übereinstimmt."
 
 #:
 msgid "common.errors.requires_csv_file"
-msgstr "F\u00fcr Befehl ''{0}'' ist eine CSV-Datei erforderlich"
+msgstr "Für Befehl ''{0}'' ist eine CSV-Datei erforderlich"
 
 #:
 msgid "common.errors.requires_group_name"
-msgstr "F\u00fcr den Befehl ''{0}'' ist ein Gruppenname erforderlich"
+msgstr "Für den Befehl ''{0}'' ist ein Gruppenname erforderlich"
 
 #:
 msgid "common.errors.requires_site_name"
-msgstr "F\u00fcr Befehl ''{0}'' ist ein Site-Name erforderlich"
+msgstr "Für Befehl ''{0}'' ist ein Site-Name erforderlich"
 
 #:
 msgid "common.errors.options_conflict"
@@ -1923,19 +1913,19 @@ msgstr "Es wurden neue und veraltete Optionen zum Angeben der Benutzerrolle ange
 
 #:
 msgid "common.errors.csv_sizelimit"
-msgstr "Die CSV-Datei, die Sie referenzieren, \u00fcberschreitet die maximale Dateigr\u00f6\u00dfe von 100 MB. Teilen Sie den Inhalt der Datei auf kleinere CSV-Dateien auf und importieren Sie diese getrennt."
+msgstr "Die CSV-Datei, die Sie referenzieren, überschreitet die maximale Dateigröße von 100 MB. Teilen Sie den Inhalt der Datei auf kleinere CSV-Dateien auf und importieren Sie diese getrennt."
 
 #:
 msgid "common.options.admin-type"
-msgstr "[Veraltet] Weist das Websiteadministratorrecht f\u00fcr alle Benutzer in der CSV-Datei zu [oder entfernt es]. Diese Einstellung kann durch die Werte auf einzelnen Zeilen in der CSV-Datei \u00fcberschrieben werden. {0} kann wie folgt lauten: {1}, {2} oder {3}. Wenn keine Angabe erfolgt: {3} f\u00fcr neue Benutzer, unver\u00e4ndert f\u00fcr vorhandene Benutzer"
+msgstr "[Veraltet] Weist das Websiteadministratorrecht für alle Benutzer in der CSV-Datei zu [oder entfernt es]. Diese Einstellung kann durch die Werte auf einzelnen Zeilen in der CSV-Datei überschrieben werden. {0} kann wie folgt lauten: {1}, {2} oder {3}. Wenn keine Angabe erfolgt: {3} für neue Benutzer, unverändert für vorhandene Benutzer"
 
 #:
 msgid "common.options.complete"
-msgstr "Erfordert [oder nicht], dass alle Zeilen g\u00fcltig sind, damit eine beliebige \u00c4nderung erfolgreich ist. Standard: {0}"
+msgstr "Erfordert [oder nicht], dass alle Zeilen gültig sind, damit eine beliebige Änderung erfolgreich ist. Standard: {0}"
 
 #:
 msgid "common.options.license"
-msgstr "[Veraltet] Legt die Standardlizenzstufe f\u00fcr alle Benutzer fest. Wird m\u00f6glicherweise durch den Wert in der CSV-Datei \u00fcberschrieben. {0} kann {1}, {2} oder {3} sein"
+msgstr "[Veraltet] Legt die Standardlizenzstufe für alle Benutzer fest. Wird möglicherweise durch den Wert in der CSV-Datei überschrieben. {0} kann {1}, {2} oder {3} sein"
 
 #:
 msgid "common.options.nowait"
@@ -1943,15 +1933,15 @@ msgstr "Nicht auf Abschluss des Auftrags warten"
 
 #:
 msgid "common.options.publisher"
-msgstr "[Veraltet] Weist das Ver\u00f6ffentlichungsrecht f\u00fcr alle Benutzer in der CSV-Datei zu [oder entfernt es]. Diese Einstellung wird m\u00f6glicherweise durch die Werte in einzelnen Zeilen in der CSV-Datei \u00fcberschrieben. Standard, wenn keine Angabe erfolgt: falsch f\u00fcr neue Benutzer, unver\u00e4ndert f\u00fcr vorhandene Benutzer"
+msgstr "[Veraltet] Weist das Veröffentlichungsrecht für alle Benutzer in der CSV-Datei zu [oder entfernt es]. Diese Einstellung wird möglicherweise durch die Werte in einzelnen Zeilen in der CSV-Datei überschrieben. Standard, wenn keine Angabe erfolgt: falsch für neue Benutzer, unverändert für vorhandene Benutzer"
 
 #:
 msgid "common.options.silent-progress"
-msgstr "Keine Statusmeldungen f\u00fcr den Auftrag anzeigen"
+msgstr "Keine Statusmeldungen für den Auftrag anzeigen"
 
 #:
 msgid "common.options.sysadmin-type"
-msgstr "[Veraltet] Weist das Websiteadministratorrecht f\u00fcr alle Benutzer in der CSV-Datei zu [oder entfernt es]. Diese Einstellung wird m\u00f6glicherweise durch die Werte in einzelnen Zeilen in der CSV-Datei \u00fcberschrieben. {0} kann wie folgt lauten: {1}, {2}, {3} oder {4}. Standard, wenn keine Angabe erfolgt: {4} f\u00fcr neue Benutzer, unver\u00e4ndert f\u00fcr vorhandene Benutzer"
+msgstr "[Veraltet] Weist das Websiteadministratorrecht für alle Benutzer in der CSV-Datei zu [oder entfernt es]. Diese Einstellung wird möglicherweise durch die Werte in einzelnen Zeilen in der CSV-Datei überschrieben. {0} kann wie folgt lauten: {1}, {2}, {3} oder {4}. Standard, wenn keine Angabe erfolgt: {4} für neue Benutzer, unverändert für vorhandene Benutzer"
 
 #:
 msgid "common.output.job_queued_success"
@@ -1963,19 +1953,19 @@ msgstr "Erfolgreich"
 
 #:
 msgid "common.options.role"
-msgstr "Legt die Standardrolle f\u00fcr alle betroffenen Benutzer fest. G\u00fcltige Werte f\u00fcr {0}: {1}. Wenn keine Angabe erfolgt, verwendet der Server den Standardwert: {2}"
+msgstr "Legt die Standardrolle für alle betroffenen Benutzer fest. Gültige Werte für {0}: {1}. Wenn keine Angabe erfolgt, verwendet der Server den Standardwert: {2}"
 
 #:
 msgid "addusers.options.users"
-msgstr "Datei, die eine Liste der Benutzer (einer pro Zeile) enth\u00e4lt, die zur Gruppe hinzugef\u00fcgt werden sollen"
+msgstr "Datei, die eine Liste der Benutzer (einer pro Zeile) enthält, die zur Gruppe hinzugefügt werden sollen"
 
 #:
 msgid "addusers.short_description"
-msgstr "Gruppe Benutzer hinzuf\u00fcgen"
+msgstr "Gruppe Benutzer hinzufügen"
 
 #:
 msgid "addusers.status"
-msgstr "In {0} aufgelistete Benutzer zu Gruppe {1} hinzuf\u00fcgen..."
+msgstr "In {0} aufgelistete Benutzer zu Gruppe {1} hinzufügen..."
 
 #:
 msgid "creategroup.short_description"
@@ -1987,11 +1977,11 @@ msgstr "Gruppe ''{0}'' wird auf dem Server erstellt..."
 
 #:
 msgid "creategroup.options.role"
-msgstr "Legt die Rolle fest, die f\u00fcr Benutzer in der Gruppe bei der Anmeldung festgelegt wird. Zul\u00e4ssige Werte f\u00fcr {0}: {1}. Die Site-Rolle eines Benutzers wird nur dann f\u00fcr diesen Wert festgelegt, wenn diese weniger restriktiv ist als die aktuelle Site-Rolle des Benutzers. Wenn keine Angabe vorliegt, wird f\u00fcr Benutzer dieser Gruppe beim Anmelden keine Rolle festgelegt."
+msgstr "Legt die Rolle fest, die für Benutzer in der Gruppe bei der Anmeldung festgelegt wird. Zulässige Werte für {0}: {1}. Die Site-Rolle eines Benutzers wird nur dann für diesen Wert festgelegt, wenn diese weniger restriktiv ist als die aktuelle Site-Rolle des Benutzers. Wenn keine Angabe vorliegt, wird für Benutzer dieser Gruppe beim Anmelden keine Rolle festgelegt."
 
 #:
 msgid "createextracts.errors.required_argument"
-msgstr "F\u00fcr den Befehl ''createextracts'' ist entweder eine Arbeitsmappen-URL, ein Arbeitsmappenname oder ein Datenquellenname erforderlich."
+msgstr "Für den Befehl ''createextracts'' ist entweder eine Arbeitsmappen-URL, ein Arbeitsmappenname oder ein Datenquellenname erforderlich."
 
 #:
 msgid "createextracts.errors.error"
@@ -2003,51 +1993,51 @@ msgstr "Extrakt von Datenquelle ''{0}'' wird erstellt"
 
 #:
 msgid "createextracts.for.workbook_name"
-msgstr "Extrakt f\u00fcr Arbeitsmappe mit Namen ''{0}'' erstellen"
+msgstr "Extrakt für Arbeitsmappe mit Namen ''{0}'' erstellen"
 
 #:
 msgid "createextracts.for.workbook_url"
-msgstr "Extrakt f\u00fcr Arbeitsmappe mit URL ''{0}'' erstellen"
+msgstr "Extrakt für Arbeitsmappe mit URL ''{0}'' erstellen"
 
 #:
 msgid "createextracts.options.datasource"
-msgstr "Der Name der Zieldatenquelle f\u00fcr Extrakterstellung"
+msgstr "Der Name der Zieldatenquelle für Extrakterstellung"
 
 #:
 msgid "createextracts.options.embedded-datasources"
-msgstr "Eine durch Leerzeichen getrennte Liste von eingebetteten Datenquellen in der Zielarbeitsmappe. Schlie\u00dfen Sie Datenquellennamen in doppelten Anf\u00fchrungszeichen ein, falls sie Leerzeichen enthalten. Nur m\u00f6glich beim Erstellen von Extrakten einer Arbeitsmappe."
+msgstr "Eine durch Leerzeichen getrennte Liste von eingebetteten Datenquellen in der Zielarbeitsmappe. Schließen Sie Datenquellennamen in doppelten Anführungszeichen ein, falls sie Leerzeichen enthalten. Nur möglich beim Erstellen von Extrakten einer Arbeitsmappe."
 
 #:
 msgid "createextracts.options.encrypt"
-msgstr "Erstellen Sie einen verschl\u00fcsselten Extrakt."
+msgstr "Erstellen Sie einen verschlüsselten Extrakt."
 
 #:
 msgid "createextracts.options.include-all"
-msgstr "Alle eingebetteten Datenquellen in der Zielarbeitsmappe einschlie\u00dfen. Nur m\u00f6glich beim Erstellen von Extrakten f\u00fcr die Arbeitsmappe."
+msgstr "Alle eingebetteten Datenquellen in der Zielarbeitsmappe einschließen. Nur möglich beim Erstellen von Extrakten für die Arbeitsmappe."
 
 #:
 msgid "createextracts.options.parent-project-path"
-msgstr "Pfad zum Projekt, das dem Projekt \u00fcbergeordneten ist, in dem die Zielressource enthalten ist. F\u00fcr die Angabe des Projektnamens ist --project erforderlich."
+msgstr "Pfad zum Projekt, das dem Projekt übergeordneten ist, in dem die Zielressource enthalten ist. Für die Angabe des Projektnamens ist "--project" erforderlich."
 
 #:
 msgid "createextracts.options.project"
-msgstr "Der Name des Projekts, das die Zielressource enth\u00e4lt. Ist nur erforderlich, wenn {0} oder {1} nicht angegeben ist. Wenn keine Angabe erfolgt, wird das Standardprojekt ''{2}'' verwendet."
+msgstr "Der Name des Projekts, das die Zielressource enthält. Ist nur erforderlich, wenn {0} oder {1} nicht angegeben ist. Wenn keine Angabe erfolgt, wird das Standardprojekt ''{2}'' verwendet."
 
 #:
 msgid "createextracts.options.url"
-msgstr "Der kanonische Name f\u00fcr die Ressource, wie er in der URL angezeigt wird"
+msgstr "Der kanonische Name für die Ressource, wie er in der URL angezeigt wird"
 
 #:
 msgid "createextracts.options.workbook"
-msgstr "Der Name der Zielarbeitsmappe f\u00fcr Extrakterstellung"
+msgstr "Der Name der Zielarbeitsmappe für Extrakterstellung"
 
 #:
 msgid "createextracts.short_description"
-msgstr "Erstellen Sie Extrakte f\u00fcr eine ver\u00f6ffentlichte Arbeitsmappe oder Datenquelle"
+msgstr "Erstellen Sie Extrakte für eine veröffentlichte Arbeitsmappe oder Datenquelle"
 
 #:
 msgid "createextracts.workbook.include-all"
-msgstr "Schlie\u00dfen Sie alle eingebetteten Datenquellen in der Zielarbeitsmappe ein"
+msgstr "Schließen Sie alle eingebetteten Datenquellen in der Zielarbeitsmappe ein"
 
 #:
 msgid "createextracts.workbook.embedded-datasource-names"
@@ -2075,7 +2065,7 @@ msgstr "Projekt ''{0}'' wird auf dem Server erstellt..."
 
 #:
 msgid "createsite.errors.invalid_url_option"
-msgstr "Die URL-Option ist beim Erstellen mehrerer Websites ung\u00fcltig. F\u00fchren Sie den Befehl nach dem Entfernen der URL-Option erneut aus oder erstellen Sie jede Website einzeln."
+msgstr "Die URL-Option ist beim Erstellen mehrerer Websites ungültig. Führen Sie den Befehl nach dem Entfernen der URL-Option erneut aus oder erstellen Sie jede Website einzeln."
 
 #:
 msgid "createsite.errors.site_name_already_exists"
@@ -2087,23 +2077,23 @@ msgstr "Eine Site mit der ID ''{0}'' ist bereits vorhanden. Verwenden Sie ''-r''
 
 #:
 msgid "createsite.options.allow-mobile-snapshots"
-msgstr "Erlauben [oder verweigern] Sie mobile Snapshots. Standardm\u00e4\u00dfig sind mobile Snapshots zul\u00e4ssig"
+msgstr "Erlauben [oder verweigern] Sie mobile Snapshots. Standardmäßig sind mobile Snapshots zulässig"
 
 #:
 msgid "createsite.options.allow-subscriptions"
-msgstr "Erlauben [oder verweigern] Sie Abonnements f\u00fcr diese Website. Standard ist die Serverstandardeinstellung. Wenn Serverabonnements deaktiviert sind, k\u00f6nnen Abonnements nicht aktiviert werden"
+msgstr "Erlauben [oder verweigern] Sie Abonnements für diese Website. Standard ist die Serverstandardeinstellung. Wenn Serverabonnements deaktiviert sind, können Abonnements nicht aktiviert werden"
 
 #:
 msgid "createsite.options.allow-web-authoring"
-msgstr "Erlauben [oder verweigern] Sie die Webdokumenterstellung f\u00fcr diese Site. Standardm\u00e4\u00dfig ist die Webdokumenterstellung zul\u00e4ssig"
+msgstr "Erlauben [oder verweigern] Sie die Webdokumenterstellung für diese Site. Standardmäßig ist die Webdokumenterstellung zulässig"
 
 #:
 msgid "createsite.options.metrics-level"
-msgstr "0 f\u00fcr keine Sammlung, 100 f\u00fcr alle Sammlungen"
+msgstr "0 für keine Sammlung, 100 für alle Sammlungen"
 
 #:
 msgid "createsite.options.guest-access-enabled"
-msgstr "Gastzugriffsberechtigung zum Anzeigen von Ansichten f\u00fcr Personen, die nicht an einem Tableau Server-Konto angemeldet sind"
+msgstr "Gastzugriffsberechtigung zum Anzeigen von Ansichten für Personen, die nicht an einem Tableau Server-Konto angemeldet sind"
 
 #:
 msgid "createsite.options.site-mode"
@@ -2115,11 +2105,11 @@ msgstr "Websitespeicherkontingent in MB"
 
 #:
 msgid "createsite.options.subscription-email"
-msgstr "F\u00fcr Abonnements verwendete E-Mail"
+msgstr "Für Abonnements verwendete E-Mail"
 
 #:
 msgid "createsite.options.subscription-footer"
-msgstr "F\u00fcr Abonnements verwendete Fu\u00dfzeile"
+msgstr "Für Abonnements verwendete Fußzeile"
 
 #:
 msgid "createsite.options.url"
@@ -2131,19 +2121,19 @@ msgstr "Maximum an Websitebenutzern"
 
 #:
 msgid "createsite.options.extract_encryption_mode"
-msgstr "Extraktverschl\u00fcsselungsmodus: deaktiviert, aktiviert oder erzwungen. Wenn Sie keine Festlegung treffen, wird der Standardwert verwendet."
+msgstr "Extraktverschlüsselungsmodus: deaktiviert, aktiviert oder erzwungen. Wenn Sie keine Festlegung treffen, wird der Standardwert verwendet."
 
 #:
 msgid "createsite.options.web_extraction_enabled"
-msgstr "Erlauben [oder verweigern] Sie Extrakterstellung und Extrakt zu Live \u00e4ndern f\u00fcr diese Site. Der Standard ist erlauben."
+msgstr "Erlauben [oder verweigern] Sie Extrakterstellung und Extrakt zu Live ändern für diese Site. Der Standard ist erlauben."
 
 #:
 msgid "createsite.options.run_now_enabled"
-msgstr "Erlauben [oder verweigern] Sie die Option Jetzt Ausf\u00fchren f\u00fcr diese Site. Der Standard ist Jetzt Ausf\u00fchren zu erlauben."
+msgstr "Erlauben [oder verweigern] Sie die Option "Jetzt Ausführen" für diese Site. Der Standard ist "Jetzt Ausführen" zu erlauben."
 
 #:
 msgid "createsite.options.time_zone"
-msgstr "Zeitzone, die f\u00fcr Extrakte auf dieser Site genutzt wird. Standardm\u00e4\u00dfig ist keine Zeitzone festgelegt und es wird die Zeitzone des Benutzers verwendet."
+msgstr "Zeitzone, die für Extrakte auf dieser Site genutzt wird. Standardmäßig ist keine Zeitzone festgelegt und es wird die Zeitzone des Benutzers verwendet."
 
 #:
 msgid "createsite.short_description"
@@ -2155,11 +2145,11 @@ msgstr "Website ''{0}'' auf dem Server erstellen..."
 
 #:
 msgid "createsiteusers.options.auth-type"
-msgstr "Zuweisung des Authentifizierungstyps f\u00fcr alle Benutzer in der CSV-Datei. F\u00fcr Tableau Online kann {0} {1} (Standard) oder {2} sein. F\u00fcr Tableau Server kann {0} Lokal (Standard) oder {2} sein."
+msgstr "Zuweisung des Authentifizierungstyps für alle Benutzer in der CSV-Datei. Für Tableau Online kann {0} {1} (Standard) oder {2} sein. Für Tableau Server kann {0} Lokal (Standard) oder {2} sein."
 
 #:
 msgid "createsiteusers.description"
-msgstr "Erstellen Sie Benutzer auf der aktuellen Website. Die Benutzer werden aus der angegebenen CSV-Datei gelesen. Die Datei kann \u00fcber Spalten in der im Folgenden angezeigten Reihenfolge verf\u00fcgen.{0}1. Benutzername{0}2. Kennwort (wird bei Verwendung von Active Directory ignoriert){0}3. Anzeigename (wird bei Verwendung von Active Directory ignoriert){0}4. Lizenzstufe ({1}, {2}, {3}, {4} oder {5})5. Administrator ({6}/{7}){0}6. Ver\u00f6ffentlicher ({6}/{7}/1 oder {8}/{9}/0){0}7. E-Mail (nur f\u00fcr Tableau Public){0}Die Datei kann weniger Spalten aufweisen. Beispielsweise kann es sich hierbei um eine einfache Liste mit einem Benutzernamen pro Zeile handeln. Sie k\u00f6nnen Anf\u00fchrungszeichen verwenden, wenn ein Wert Kommas enth\u00e4lt. Tabcmd wartet, bis die {10}-Aufgabe abgeschlossen ist. Sie m\u00f6chten m\u00f6glicherweise nicht warten, bis die Aufgabe auf dem Server abgeschlossen ist und stattdessen die R\u00fcckgabe sofort vornehmen, indem Sie das Flag {11} \u00fcbergeben. Systemadministratoren k\u00f6nnen mit diesem Befehl weder erstellt noch degradiert werden. Verwenden Sie stattdessen ''{12}''"
+msgstr "Erstellen Sie Benutzer auf der aktuellen Website. Die Benutzer werden aus der angegebenen CSV-Datei gelesen. Die Datei kann über Spalten in der im Folgenden angezeigten Reihenfolge verfügen.{0}1. Benutzername{0}2. Kennwort (wird bei Verwendung von Active Directory ignoriert){0}3. Anzeigename (wird bei Verwendung von Active Directory ignoriert){0}4. Lizenzstufe ({1}, {2}, {3}, {4} oder {5})5. Administrator ({6}/{7}){0}6. Veröffentlicher ({6}/{7}/1 oder {8}/{9}/0){0}7. E-Mail (nur für Tableau Public){0}Die Datei kann weniger Spalten aufweisen. Beispielsweise kann es sich hierbei um eine einfache Liste mit einem Benutzernamen pro Zeile handeln. Sie können Anführungszeichen verwenden, wenn ein Wert Kommas enthält. Tabcmd wartet, bis die {10}-Aufgabe abgeschlossen ist. Sie möchten möglicherweise nicht warten, bis die Aufgabe auf dem Server abgeschlossen ist und stattdessen die Rückgabe sofort vornehmen, indem Sie das Flag {11} übergeben. Systemadministratoren können mit diesem Befehl weder erstellt noch degradiert werden. Verwenden Sie stattdessen ''{12}''"
 
 #:
 msgid "createsiteusers.short_description"
@@ -2167,11 +2157,11 @@ msgstr "Benutzer auf der aktuellen Website erstellen"
 
 #:
 msgid "createsiteusers.status"
-msgstr "In {0} aufgelistete Benutzer zur aktuellen Website hinzuf\u00fcgen..."
+msgstr "In {0} aufgelistete Benutzer zur aktuellen Website hinzufügen..."
 
 #:
 msgid "createusers.description"
-msgstr "Erstellen Sie Benutzer auf der aktuellen Website. Die Benutzer werden aus der angegebenen CSV-Datei gelesen. Die Datei kann \u00fcber Spalten in der im Folgenden angezeigten Reihenfolge verf\u00fcgen.{0}1. Benutzername{0}2. Kennwort (wird bei Verwendung von Active Directory ignoriert){0}3. Anzeigename (wird bei Verwendung von Active Directory ignoriert){0}4. Lizenzstufe ({1}, {2}, {3}, {4} oder {5})5. Administrator ({6}/{7}/{8}/{9}){0}6. Ver\u00f6ffentlicher ({10}/{11}/1 oder {12}/{13}/0){0}7. E-Mail (nur f\u00fcr Tableau Public){0}Die Datei kann weniger Spalten aufweisen. Beispielsweise kann es sich hierbei um eine einfache Liste mit einem Benutzernamen pro Zeile handeln. Sie k\u00f6nnen Anf\u00fchrungszeichen verwenden, wenn ein Wert Kommas enth\u00e4lt. Tabcmd wartet, bis die {14}-Aufgabe abgeschlossen ist. Sie m\u00f6chten m\u00f6glicherweise nicht warten, bis die Aufgabe auf dem Server abgeschlossen ist und stattdessen die R\u00fcckgabe sofort vornehmen, indem Sie das Flag {15} \u00fcbergeben."
+msgstr "Erstellen Sie Benutzer auf der aktuellen Website. Die Benutzer werden aus der angegebenen CSV-Datei gelesen. Die Datei kann über Spalten in der im Folgenden angezeigten Reihenfolge verfügen.{0}1. Benutzername{0}2. Kennwort (wird bei Verwendung von Active Directory ignoriert){0}3. Anzeigename (wird bei Verwendung von Active Directory ignoriert){0}4. Lizenzstufe ({1}, {2}, {3}, {4} oder {5})5. Administrator ({6}/{7}/{8}/{9}){0}6. Veröffentlicher ({10}/{11}/1 oder {12}/{13}/0){0}7. E-Mail (nur für Tableau Public){0}Die Datei kann weniger Spalten aufweisen. Beispielsweise kann es sich hierbei um eine einfache Liste mit einem Benutzernamen pro Zeile handeln. Sie können Anführungszeichen verwenden, wenn ein Wert Kommas enthält. Tabcmd wartet, bis die {14}-Aufgabe abgeschlossen ist. Sie möchten möglicherweise nicht warten, bis die Aufgabe auf dem Server abgeschlossen ist und stattdessen die Rückgabe sofort vornehmen, indem Sie das Flag {15} übergeben."
 
 #:
 msgid "createusers.short_description"
@@ -2179,43 +2169,43 @@ msgstr "Benutzer auf dem Server erstellen"
 
 #:
 msgid "createusers.status"
-msgstr "In {0} aufgelistete Benutzer werden zum Server hinzugef\u00fcgt"
+msgstr "In {0} aufgelistete Benutzer werden zum Server hinzugefügt"
 
 #:
 msgid "decryptextracts.short_description"
-msgstr "Extrakte auf einer Site verschl\u00fcsseln"
+msgstr "Extrakte auf einer Site verschlüsseln"
 
 #:
 msgid "decryptextracts.status"
-msgstr "Planung von Extrakten auf Site {0} zur Entschl\u00fcsselung..."
+msgstr "Planung von Extrakten auf Site {0} zur Entschlüsselung..."
 
 #:
 msgid "delete.errors.mutually_exclusive"
-msgstr "L\u00f6schen einer Arbeitsmappe und einer Datenquelle kann nicht gleichzeitig angegeben werden"
+msgstr "Löschen einer Arbeitsmappe und einer Datenquelle kann nicht gleichzeitig angegeben werden"
 
 #:
 msgid "delete.errors.requires_workbook_datasource"
-msgstr "F\u00fcr den Befehl ''{0}'' ist ein Arbeitsmappen- oder Datenquellenname erforderlich"
+msgstr "Für den Befehl ''{0}'' ist ein Arbeitsmappen- oder Datenquellenname erforderlich"
 
 #:
 msgid "delete.options.datasource"
-msgstr "Zu l\u00f6schende Datenquelle"
+msgstr "Zu löschende Datenquelle"
 
 #:
 msgid "delete.options.parent-project-path"
-msgstr "Pfad zu dem dem Projekt \u00fcbergeordneten Element, in dem die zu l\u00f6schende Arbeitsmappe/Datenquelle enthalten ist. F\u00fcr die Angabe des Projektnamens ist --project erforderlich."
+msgstr "Pfad zu dem dem Projekt übergeordneten Element, in dem die zu löschende Arbeitsmappe/Datenquelle enthalten ist. Für die Angabe des Projektnamens ist "--project" erforderlich."
 
 #:
 msgid "delete.options.project"
-msgstr "Das Projekt, in dem die zu l\u00f6schende Arbeitsmappe/Datenquelle enthalten ist. Das Standardprojekt lautet ''{0}''."
+msgstr "Das Projekt, in dem die zu löschende Arbeitsmappe/Datenquelle enthalten ist. Das Standardprojekt lautet ''{0}''."
 
 #:
 msgid "delete.options.workbook"
-msgstr "Zu l\u00f6schende Arbeitsmappe"
+msgstr "Zu löschende Arbeitsmappe"
 
 #:
 msgid "delete.short_description"
-msgstr "Arbeitsmappe oder Datenquelle vom Server l\u00f6schen"
+msgstr "Arbeitsmappe oder Datenquelle vom Server löschen"
 
 #:
 msgid "delete.status"
@@ -2223,59 +2213,59 @@ msgstr "{0} ''{1}'' wird vom Server entfernt..."
 
 #:
 msgid "deleteextracts.errors.required_argument"
-msgstr "F\u00fcr den Befehl ''deleteextracts'' ist entweder eine Arbeitsmappen-URL, ein Arbeitsmappenname oder ein Datenquellenname erforderlich"
+msgstr "Für den Befehl ''deleteextracts'' ist entweder eine Arbeitsmappen-URL, ein Arbeitsmappenname oder ein Datenquellenname erforderlich"
 
 #:
 msgid "deleteextracts.errors.error"
-msgstr "Fehler beim L\u00f6schen des Extraktes"
+msgstr "Fehler beim Löschen des Extraktes"
 
 #:
 msgid "deleteextracts.for.datasource"
-msgstr "Extrakt von Datenquelle ''{0}'' wird gel\u00f6scht"
+msgstr "Extrakt von Datenquelle ''{0}'' wird gelöscht"
 
 #:
 msgid "deleteextracts.for.workbook_name"
-msgstr "Extrakt f\u00fcr Arbeitsmappe mit Namen ''{0}'' l\u00f6schen"
+msgstr "Extrakt für Arbeitsmappe mit Namen ''{0}'' löschen"
 
 #:
 msgid "deleteextracts.for.workbook_url"
-msgstr "Extrakt f\u00fcr Arbeitsmappe mit URL ''{0}'' l\u00f6schen"
+msgstr "Extrakt für Arbeitsmappe mit URL ''{0}'' löschen"
 
 #:
 msgid "deleteextracts.options.datasource"
-msgstr "Der Name der Zieldatenquelle f\u00fcr Extraktentfernung"
+msgstr "Der Name der Zieldatenquelle für Extraktentfernung"
 
 #:
 msgid "deleteextracts.options.embedded-datasources"
-msgstr "Eine durch Leerzeichen getrennte Liste von eingebetteten Datenquellen in der Zielarbeitsmappe. Schlie\u00dfen Sie Datenquellennamen in doppelten Anf\u00fchrungszeichen ein, falls sie Leerzeichen enthalten. Nur m\u00f6glich beim L\u00f6schen von Extrakten einer Arbeitsmappe."
+msgstr "Eine durch Leerzeichen getrennte Liste von eingebetteten Datenquellen in der Zielarbeitsmappe. Schließen Sie Datenquellennamen in doppelten Anführungszeichen ein, falls sie Leerzeichen enthalten. Nur möglich beim Löschen von Extrakten einer Arbeitsmappe."
 
 #:
 msgid "deleteextracts.options.include-all"
-msgstr "Schlie\u00dfen Sie alle eingebetteten Datenquellen in der Zielarbeitsmappe ein"
+msgstr "Schließen Sie alle eingebetteten Datenquellen in der Zielarbeitsmappe ein"
 
 #:
 msgid "deleteextracts.options.parent-project-path"
-msgstr "Pfad zum Projekt, das dem Projekt \u00fcbergeordneten ist, in dem die Zielressource enthalten ist. F\u00fcr die Angabe des Projektnamens ist --project erforderlich."
+msgstr "Pfad zum Projekt, das dem Projekt übergeordneten ist, in dem die Zielressource enthalten ist. Für die Angabe des Projektnamens ist "--project" erforderlich."
 
 #:
 msgid "deleteextracts.options.project"
-msgstr "Der Name des Projekts, das die Zielressource enth\u00e4lt. Ist nur erforderlich, wenn {0} oder {1} nicht angegeben ist. Wenn keine Angabe erfolgt, wird das Standardprojekt ''{2}'' verwendet."
+msgstr "Der Name des Projekts, das die Zielressource enthält. Ist nur erforderlich, wenn {0} oder {1} nicht angegeben ist. Wenn keine Angabe erfolgt, wird das Standardprojekt ''{2}'' verwendet."
 
 #:
 msgid "deleteextracts.options.url"
-msgstr "Der kanonische Name f\u00fcr die Ressource, wie er in der URL angezeigt wird"
+msgstr "Der kanonische Name für die Ressource, wie er in der URL angezeigt wird"
 
 #:
 msgid "deleteextracts.options.workbook"
-msgstr "Der Name der Zielarbeitsmappe f\u00fcr Extraktentfernung"
+msgstr "Der Name der Zielarbeitsmappe für Extraktentfernung"
 
 #:
 msgid "deleteextracts.short_description"
-msgstr "L\u00f6schen Sie Extrakte f\u00fcr eine ver\u00f6ffentlichte Arbeitsmappe oder Datenquelle"
+msgstr "Löschen Sie Extrakte für eine veröffentlichte Arbeitsmappe oder Datenquelle"
 
 #:
 msgid "deleteextracts.workbook.include-all"
-msgstr "Schlie\u00dfen Sie alle eingebetteten Datenquellen in der Zielarbeitsmappe ein"
+msgstr "Schließen Sie alle eingebetteten Datenquellen in der Zielarbeitsmappe ein"
 
 #:
 msgid "deleteextracts.workbook.embedded-datasource-names"
@@ -2283,67 +2273,67 @@ msgstr "Mit eingebetteten Datasource-Namen"
 
 #:
 msgid "deletegroup.short_description"
-msgstr "Gruppe l\u00f6schen"
+msgstr "Gruppe löschen"
 
 #:
 msgid "deletegroup.status"
-msgstr "Gruppe ''{0}'' wird vom Server gel\u00f6scht..."
+msgstr "Gruppe ''{0}'' wird vom Server gelöscht..."
 
 #:
 msgid "deleteproject.errors.requires_project_name"
-msgstr "F\u00fcr den Befehl ''{0}'' ist ein Projektname erforderlich"
+msgstr "Für den Befehl ''{0}'' ist ein Projektname erforderlich"
 
 #:
 msgid "deleteproject.options.parent-project-path"
-msgstr "Pfad zu dem dem Projekt \u00fcbergeordneten Element, das gel\u00f6scht werden soll. F\u00fcr die Angabe des Projektnamens ist --project erforderlich."
+msgstr "Pfad zu dem dem Projekt übergeordneten Element, das gelöscht werden soll. Für die Angabe des Projektnamens ist "--project" erforderlich."
 
 #:
 msgid "deleteproject.short_description"
-msgstr "Projekt l\u00f6schen"
+msgstr "Projekt löschen"
 
 #:
 msgid "deleteproject.status"
-msgstr "Projekt ''{0}'' wird vom Server gel\u00f6scht..."
+msgstr "Projekt ''{0}'' wird vom Server gelöscht..."
 
 #:
 msgid "deletesite.errors.logged_into_this_site"
-msgstr "Site, bei der Sie aktuell angemeldet sind, kann nicht gel\u00f6scht werden"
+msgstr "Site, bei der Sie aktuell angemeldet sind, kann nicht gelöscht werden"
 
 #:
 msgid "deletesite.short_description"
-msgstr "Website l\u00f6schen"
+msgstr "Website löschen"
 
 #:
 msgid "deletesite.status"
-msgstr "Website ''{0}'' wird vom Server gel\u00f6scht..."
+msgstr "Website ''{0}'' wird vom Server gelöscht..."
 
 #:
 msgid "deletesiteusers.description"
-msgstr "L\u00f6schen Sie Websitebenutzer. Die Benutzer werden aus der angegebenen CSV-Datei gelesen. Die Datei ist eine einfache Liste, die aus einem Benutzernamen pro Zeile besteht."
+msgstr "Löschen Sie Websitebenutzer. Die Benutzer werden aus der angegebenen CSV-Datei gelesen. Die Datei ist eine einfache Liste, die aus einem Benutzernamen pro Zeile besteht."
 
 #:
 msgid "deletesiteusers.short_description"
-msgstr "Websitebenutzer l\u00f6schen"
+msgstr "Websitebenutzer löschen"
 
 #:
 msgid "deletesiteusers.status"
-msgstr "In {0} aufgelistete Websitebenutzer werden vom Server gel\u00f6scht..."
+msgstr "In {0} aufgelistete Websitebenutzer werden vom Server gelöscht..."
 
 #:
 msgid "deleteusers.description"
-msgstr "L\u00f6schen Sie Benutzer. Die Benutzer werden aus der angegebenen CSV-Datei gelesen. Die Datei ist eine einfache Liste, die aus einem Benutzernamen pro Zeile besteht."
+msgstr "Löschen Sie Benutzer. Die Benutzer werden aus der angegebenen CSV-Datei gelesen. Die Datei ist eine einfache Liste, die aus einem Benutzernamen pro Zeile besteht."
 
 #:
 msgid "deleteusers.short_description"
-msgstr "Benutzer l\u00f6schen"
+msgstr "Benutzer löschen"
 
 #:
 msgid "deleteusers.status"
-msgstr "In {0} aufgelistete Benutzer werden vom Server gel\u00f6scht..."
+msgstr "In {0} aufgelistete Benutzer werden vom Server gelöscht..."
 
 #:
 msgid "editdomain.description"
-msgstr "Bearbeiten Sie eine Dom\u00e4ne. Verwenden Sie den Befehl ''{0}'' zum Anzeigen einer Liste der Dom\u00e4nen f\u00fcr die Bearbeitung."
+msgstr "Bearbeiten Sie eine Domäne. Verwenden Sie den Befehl ''{0}'' zum Anzeigen einer Liste der Domänen für die Bearbeitung."
 
 #:
 msgid "editdomain.errors.requires_nickname_name"
@@ -2351,19 +2341,19 @@ msgstr "Es muss entweder eine ''{0}''- oder eine ''{1}''-Option angegeben werden
 
 #:
 msgid "editdomain.options.id"
-msgstr "ID der Dom\u00e4ne"
+msgstr "ID der Domäne"
 
 #:
 msgid "editdomain.options.name"
-msgstr "Name der Dom\u00e4ne"
+msgstr "Name der Domäne"
 
 #:
 msgid "editdomain.options.nickname"
-msgstr "Kurzname der Dom\u00e4ne"
+msgstr "Kurzname der Domäne"
 
 #:
 msgid "editdomain.short_description"
-msgstr "Dom\u00e4ne bearbeiten"
+msgstr "Domäne bearbeiten"
 
 #:
 msgid "editdomain.output"
@@ -2371,15 +2361,15 @@ msgstr "{0}ID{1}Kurzname{1}{1}Name{0}"
 
 #:
 msgid "editdomain.status"
-msgstr "Dom\u00e4ne mit ID ''{0}'' auf dem Server bearbeiten..."
+msgstr "Domäne mit ID ''{0}'' auf dem Server bearbeiten..."
 
 #:
 msgid "editsite.errors.invalid_site-id"
-msgstr "Die Option {0} ist beim Bearbeiten mehrerer Websites ung\u00fcltig. F\u00fchren Sie den Befehl nach dem Entfernen der Option {0} erneut aus oder bearbeiten Sie jede Website einzeln."
+msgstr "Die Option {0} ist beim Bearbeiten mehrerer Websites ungültig. Führen Sie den Befehl nach dem Entfernen der Option {0} erneut aus oder bearbeiten Sie jede Website einzeln."
 
 #:
 msgid "editsite.errors.invalid_site-name"
-msgstr "Die Option {0} ist beim Bearbeiten mehrerer Websites ung\u00fcltig. F\u00fchren Sie den Befehl nach dem Entfernen der Option {0} erneut aus oder bearbeiten Sie jede Website einzeln."
+msgstr "Die Option {0} ist beim Bearbeiten mehrerer Websites ungültig. Führen Sie den Befehl nach dem Entfernen der Option {0} erneut aus oder bearbeiten Sie jede Website einzeln."
 
 #:
 msgid "editsite.options.allow-mobile-snapshots"
@@ -2387,19 +2377,19 @@ msgstr "Mobile Snapshots erlauben [oder verweigern]"
 
 #:
 msgid "editsite.options.allow-subscriptions"
-msgstr "Abonnements f\u00fcr diese Website erlauben [oder verweigern]"
+msgstr "Abonnements für diese Website erlauben [oder verweigern]"
 
 #:
 msgid "editsite.options.allow-web-authoring"
-msgstr "Webdokumenterstellung f\u00fcr diese Site erlauben [oder verweigern]"
+msgstr "Webdokumenterstellung für diese Site erlauben [oder verweigern]"
 
 #:
 msgid "editsite.options.cache-warmup"
-msgstr "Cache Warmup f\u00fcr diese Site zulassen [oder verweigern]"
+msgstr "Cache Warmup für diese Site zulassen [oder verweigern]"
 
 #:
 msgid "editsite.options.cache-warmup-threshold"
-msgstr "Schwellenwert f\u00fcr die Anzahl der Tage, die seit der letzten Anzeige der Ansicht vergangen sein d\u00fcrfen, um ein Warmup auszul\u00f6sen"
+msgstr "Schwellenwert für die Anzahl der Tage, die seit der letzten Anzeige der Ansicht vergangen sein dürfen, um ein Warmup auszulösen"
 
 #:
 msgid "editsite.options.site-name"
@@ -2407,31 +2397,31 @@ msgstr "Name der Website anzeigen"
 
 #:
 msgid "editsite.options.status"
-msgstr "Verf\u00fcgbarkeit der Website \u00e4ndern. Muss ''{0}'' oder ''{1}'' sein"
+msgstr "Verfügbarkeit der Website ändern. Muss ''{0}'' oder ''{1}'' sein"
 
 #:
 msgid "editsite.options.allow-materialized-views"
-msgstr "Materialisierte Ansichten f\u00fcr diese Site erlauben [oder verweigern]"
+msgstr "Materialisierte Ansichten für diese Site erlauben [oder verweigern]"
 
 #:
 msgid "editsite.options.extract_encryption_mode"
-msgstr "Extraktverschl\u00fcsselungsmodus: deaktiviert, aktiviert oder erzwungen. Wenn Sie keine Festlegung treffen, erfolgt keine \u00c4nderung auf dem Server."
+msgstr "Extraktverschlüsselungsmodus: deaktiviert, aktiviert oder erzwungen. Wenn Sie keine Festlegung treffen, erfolgt keine Änderung auf dem Server."
 
 #:
 msgid "editsite.options.web_extraction_enabled"
-msgstr "Erlauben [oder verweigern] Sie Extrakterstellung und Extrakt zu Live \u00e4ndern f\u00fcr diese Site. Die Standardeinstellung ist erlauben."
+msgstr "Erlauben [oder verweigern] Sie Extrakterstellung und Extrakt zu Live ändern für diese Site. Die Standardeinstellung ist erlauben."
 
 #:
 msgid "editsite.options.run_now_enabled"
-msgstr "Erlauben [oder verweigern] Sie die Option Jetzt Ausf\u00fchren f\u00fcr diese Site. Der Standard ist Jetzt Ausf\u00fchren zu erlauben"
+msgstr "Erlauben [oder verweigern] Sie die Option "Jetzt Ausführen" für diese Site. Der Standard ist "Jetzt Ausführen" zu erlauben"
 
 #:
 msgid "editsite.options.time_zone"
-msgstr "Zeitzone, die f\u00fcr Extrakte auf dieser Site verwendet wird"
+msgstr "Zeitzone, die für Extrakte auf dieser Site verwendet wird"
 
 #:
 msgid "editsite.options.use_default_time_zone"
-msgstr "Die Zeitzone, die f\u00fcr Extrakte auf dieser Site verwendet werden soll, ist nicht eingerichtet, stattdessen wird die Zeitzone des Standardservers verwendet"
+msgstr "Die Zeitzone, die für Extrakte auf dieser Site verwendet werden soll, ist nicht eingerichtet, stattdessen wird die Zeitzone des Standardservers verwendet"
 
 #:
 msgid "editsite.short_description"
@@ -2443,15 +2433,15 @@ msgstr "Website ''{0}'' auf dem Server bearbeiten..."
 
 #:
 msgid "encryptextracts.short_description"
-msgstr "Extrakte auf einer Site verschl\u00fcsseln"
+msgstr "Extrakte auf einer Site verschlüsseln"
 
 #:
 msgid "encryptextracts.status"
-msgstr "Planung von Extrakten auf Site {0} zur Verschl\u00fcsselung..."
+msgstr "Planung von Extrakten auf Site {0} zur Verschlüsselung..."
 
 #:
 msgid "export.errors.need_country_and_languge"
-msgstr "Die Optionen --Land und --Sprache m\u00fcssen zusammen verwendet werden."
+msgstr "Die Optionen --Land und --Sprache müssen zusammen verwendet werden."
 
 #:
 msgid "export.errors.white_space_workbook_view"
@@ -2459,15 +2449,15 @@ msgstr "Der Name der zu exportierenden Arbeitsmappe oder Ansicht darf keine Leer
 
 #:
 msgid "export.errors.requires_workbook_view_name"
-msgstr "F\u00fcr den Befehl ''{0}'' ist ein <workbook>/<view>-Name erforderlich."
+msgstr "Für den Befehl ''{0}'' ist ein <workbook>/<view>-Name erforderlich."
 
 #:
 msgid "export.errors.requires_workbook_view_param"
-msgstr "F\u00fcr den Befehl ''{0}'' ist ein <workbook>/<view>-Parameter erforderlich, und es muss mindestens ein Schr\u00e4gstrich (/) in diesem Parameter vorhanden sein."
+msgstr "Für den Befehl ''{0}'' ist ein <workbook>/<view>-Parameter erforderlich, und es muss mindestens ein Schrägstrich (/) in diesem Parameter vorhanden sein."
 
 #:
 msgid "export.options.country"
-msgstr "Wenn das standardm\u00e4\u00dfige Gebietsschema des Benutzers nicht verwendet wird, muss die Landesabk\u00fcrzung f\u00fcr Gebietsschema (zu finden in der IANA Language Subtag Registry) mit --Sprache verwendet werden."
+msgstr "Wenn das standardmäßige Gebietsschema des Benutzers nicht verwendet wird, muss die Landesabkürzung für Gebietsschema (zu finden in der IANA Language Subtag Registry) mit --Sprache verwendet werden."
 
 #:
 msgid "export.options.csv"
@@ -2475,23 +2465,23 @@ msgstr "Daten im CSV-Format (Standard) exportieren"
 
 #:
 msgid "export.options.fullpdf"
-msgstr "Visuelle Ansichten im PDF-Format (wenn die Arbeitsmappe mit Registerkarten ver\u00f6ffentlicht wurde) exportieren"
+msgstr "Visuelle Ansichten im PDF-Format (wenn die Arbeitsmappe mit Registerkarten veröffentlicht wurde) exportieren"
 
 #:
 msgid "export.options.height"
-msgstr "Legt die H\u00f6he fest. Muss ein Ganzzahlwert (Standard: 600 Pixel) sein"
+msgstr "Legt die Höhe fest. Muss ein Ganzzahlwert (Standard: 600 Pixel) sein"
 
 #:
 msgid "export.options.language"
-msgstr "Wenn das standardm\u00e4\u00dfige Gebietsschema des Benutzers nicht verwendet wird, muss die Sprachabk\u00fcrzung f\u00fcr Gebietsschema (zu finden in der IANA Language Subtag Registry) mit --Land verwendet werden."
+msgstr "Wenn das standardmäßige Gebietsschema des Benutzers nicht verwendet wird, muss die Sprachabkürzung für Gebietsschema (zu finden in der IANA Language Subtag Registry) mit --Land verwendet werden."
 
 #:
 msgid "export.options.pagelayout"
-msgstr "Legt die Seitenausrichtung der exportierten PDF-Datei fest. Zul\u00e4ssige Werte: {0}. Wenn keine Angabe erfolgt, wird die Einstellung in Tableau Desktop verwendet"
+msgstr "Legt die Seitenausrichtung der exportierten PDF-Datei fest. Zulässige Werte: {0}. Wenn keine Angabe erfolgt, wird die Einstellung in Tableau Desktop verwendet"
 
 #:
 msgid "export.options.pagesize"
-msgstr "Legt die Seitengr\u00f6\u00dfe der exportierten PDF-Datei fest. Zul\u00e4ssige Werte: {0} (Standard: ''{1}'')"
+msgstr "Legt die Seitengröße der exportierten PDF-Datei fest. Zulässige Werte: {0} (Standard: ''{1}'')"
 
 #:
 msgid "export.options.pdf"
@@ -2519,7 +2509,7 @@ msgstr "{0} wurde unter ''{1}'' gespeichert"
 
 #:
 msgid "extracts.workbook.errors.requires_datasources_or_include_all"
-msgstr "Befehl {0} f\u00fcr Arbeitsmappe erfordert entweder eine eingebettete Datenquelle oder ein Include-All-Flag."
+msgstr "Befehl {0} für Arbeitsmappe erfordert entweder eine eingebettete Datenquelle oder ein Include-All-Flag."
 
 #:
 msgid "fileuploader.progress"
@@ -2531,7 +2521,7 @@ msgstr "Rufen Sie eine Datei vom Server ab. Die Datei wird nach der letzten Komp
 
 #:
 msgid "get.errors.requires_url"
-msgstr "F\u00fcr den Befehl ''{0}'' ist eine URL erforderlich"
+msgstr "Für den Befehl ''{0}'' ist eine URL erforderlich"
 
 #:
 msgid "get.options.file"
@@ -2543,7 +2533,7 @@ msgstr "Datei vom Server abrufen"
 
 #:
 msgid "help.available_commands"
-msgstr "Verf\u00fcgbare Befehle:"
+msgstr "Verfügbare Befehle:"
 
 #:
 msgid "help.command_options"
@@ -2551,11 +2541,11 @@ msgstr "Befehlsoptionen:"
 
 #:
 msgid "help.description0"
-msgstr "Hilfe f\u00fcr einen bestimmten Befehl anzeigen"
+msgstr "Hilfe für einen bestimmten Befehl anzeigen"
 
 #:
 msgid "help.description1"
-msgstr "Alle verf\u00fcgbaren Befehle auflisten"
+msgstr "Alle verfügbaren Befehle auflisten"
 
 #:
 msgid "help.errors.unknown_command"
@@ -2567,7 +2557,7 @@ msgstr "Globale Optionen:"
 
 #:
 msgid "help.short_description"
-msgstr "Hilfe f\u00fcr tabcmd-Befehle"
+msgstr "Hilfe für tabcmd-Befehle"
 
 #:
 msgid "httputils.found_attachment"
@@ -2579,7 +2569,7 @@ msgstr "Gefundene Anlage: {0} (erneut zu {1} zugeordnet)"
 
 #:
 msgid "initialuser.errors.username_and_password_required"
-msgstr "Es m\u00fcssen Benutzername und Kennwort angegeben werden."
+msgstr "Es müssen Benutzername und Kennwort angegeben werden."
 
 #:
 msgid "initialuser.options.friendly-name"
@@ -2591,11 +2581,11 @@ msgstr "Einen ersten Benutzer auf einem nicht initialisierten Server erstellen"
 
 #:
 msgid "listdomains.description"
-msgstr "Dom\u00e4nen auflisten"
+msgstr "Domänen auflisten"
 
 #:
 msgid "listdomains.status"
-msgstr "Dom\u00e4nen werden vom Server aufgelistet..."
+msgstr "Domänen werden vom Server aufgelistet..."
 
 #:
 msgid "listsites.output"
@@ -2603,23 +2593,23 @@ msgstr "{0}{0}NAME: {1} {0}SITEID: ''{2}''"
 
 #:
 msgid "listsites.output_extended"
-msgstr "{0}{0}NAME: {1} {0}SITE-ID: ''{2}''{0}EXTRAKT-VERSCHL\u00dcSSELUNG: {3}"
+msgstr "{0}{0}NAME: {1} {0}SITE-ID: ''{2}''{0}EXTRAKT-VERSCHLÜSSELUNG: {3}"
 
 #:
 msgid "listsites.short_description"
-msgstr "Websites f\u00fcr Benutzer auflisten"
+msgstr "Websites für Benutzer auflisten"
 
 #:
 msgid "listsites.status"
-msgstr "Websites f\u00fcr Benutzer {0} werden aufgelistet..."
+msgstr "Websites für Benutzer {0} werden aufgelistet..."
 
 #:
 msgid "listsites.options.get_extract_encryption_mode"
-msgstr "Extraktverschl\u00fcsselungsmodus der Site(s) drucken"
+msgstr "Extraktverschlüsselungsmodus der Site(s) drucken"
 
 #:
 msgid "login.description"
-msgstr "Melden Sie sich am Server an. Ihre Sitzung wird fortgesetzt, bis sie auf dem Server abl\u00e4uft oder Sie {0} verwenden."
+msgstr "Melden Sie sich am Server an. Ihre Sitzung wird fortgesetzt, bis sie auf dem Server abläuft oder Sie {0} verwenden."
 
 #:
 msgid "login.short_description"
@@ -2631,19 +2621,19 @@ msgstr "Vom Server abmelden"
 
 #:
 msgid "publish.description"
-msgstr "Arbeitsmappe, Datenquelle oder Extrakt auf dem Server ver\u00f6ffentlichen"
+msgstr "Arbeitsmappe, Datenquelle oder Extrakt auf dem Server veröffentlichen"
 
 #:
 msgid "publish.errors.invalid_datasource_update_file_type"
-msgstr "Falscher Datentyp ''{0}'' f\u00fcr das Aktualisieren einer Datenquelle. Das Ersetzen/Anf\u00fcgen gilt nur f\u00fcr eine Extraktdatei (.tde)."
+msgstr "Falscher Datentyp ''{0}'' für das Aktualisieren einer Datenquelle. Das Ersetzen/Anfügen gilt nur für eine Extraktdatei (.tde)."
 
 #:
 msgid "publish.errors.invalid_name_option"
-msgstr "Option {0} ist beim Ver\u00f6ffentlichen mehrerer Elemente ung\u00fcltig"
+msgstr "Option {0} ist beim Veröffentlichen mehrerer Elemente ungültig"
 
 #:
 msgid "publish.errors.invalid_publish_file_type"
-msgstr "Falscher Dateityp ''{0}'' f\u00fcr die Ver\u00f6ffentlichung, erwartet wurde eine .tde-, .tds-, .tdsx-, .twb- oder .twbx-Datei"
+msgstr "Falscher Dateityp ''{0}'' für die Veröffentlichung, erwartet wurde eine .tde-, .tds-, .tdsx-, .twb- oder .twbx-Datei"
 
 #:
 msgid "publish.errors.mutually_exclusive_option"
@@ -2651,7 +2641,7 @@ msgstr "Nur eins von {0} oder {1} verwenden"
 
 #:
 msgid "publish.errors.requires_resource_file"
-msgstr "F\u00fcr den Befehl ''{0}'' ist eine Arbeitsmappe, Datenquelle oder Extraktdatei erforderlich"
+msgstr "Für den Befehl ''{0}'' ist eine Arbeitsmappe, Datenquelle oder Extraktdatei erforderlich"
 
 #:
 msgid "publish.errors.unexpected_server_response"
@@ -2659,23 +2649,23 @@ msgstr "Unerwartete Antwort vom Server: {0}"
 
 #:
 msgid "publish.errors.server_resource_not_found"
-msgstr "Die von Ihnen angegebene Ressource exisitiert nicht oder Sie haben nicht die Berechtigung, sie einzusehen. Pr\u00fcfen Sie Ihren Projektnamen und Ihre Berechtigungen."
+msgstr "Die von Ihnen angegebene Ressource exisitiert nicht oder Sie haben nicht die Berechtigung, sie einzusehen. Prüfen Sie Ihren Projektnamen und Ihre Berechtigungen."
 
 #:
 msgid "publish.options.append"
-msgstr "Extraktdatei an vorhandene Datenquelle anf\u00fcgen"
+msgstr "Extraktdatei an vorhandene Datenquelle anfügen"
 
 #:
 msgid "publish.options.async"
-msgstr "Asynchron ver\u00f6ffentlichen"
+msgstr "Asynchron veröffentlichen"
 
 #:
 msgid "publish.options.db-password"
-msgstr "Datenbankkennwort f\u00fcr alle Datenquellen"
+msgstr "Datenbankkennwort für alle Datenquellen"
 
 #:
 msgid "publish.options.db-username"
-msgstr "Datenbankbenutzername f\u00fcr alle Datenquellen"
+msgstr "Datenbankbenutzername für alle Datenquellen"
 
 #:
 msgid "publish.options.description"
@@ -2683,27 +2673,27 @@ msgstr "Beschreibung der Arbeitsmappe oder Datenquelle"
 
 #:
 msgid "publish.options.encrypt_extracts"
-msgstr "Extrakte auf dem Server verschl\u00fcsseln"
+msgstr "Extrakte auf dem Server verschlüsseln"
 
 #:
 msgid "publish.options.name"
-msgstr "Arbeitsmappen-/Datenquellenname auf dem Server. Wenn keine Angabe erfolgt, wird die Arbeitsmappe/Datenquelle nach dem Dateinamen ohne die Erweiterung twb(x), tds(x) oder tde benannt. Durch das Ver\u00f6ffentlichen einer .tde-Datei wird eine Datenquelle erstellt"
+msgstr "Arbeitsmappen-/Datenquellenname auf dem Server. Wenn keine Angabe erfolgt, wird die Arbeitsmappe/Datenquelle nach dem Dateinamen ohne die Erweiterung twb(x), tds(x) oder tde benannt. Durch das Veröffentlichen einer .tde-Datei wird eine Datenquelle erstellt"
 
 #:
 msgid "publish.options.oauth-username"
-msgstr "Auf dem Serverschl\u00fcsselbund gespeicherte Anmeldeinformationen verwenden, die mit dem zu ver\u00f6ffentlichenden USERNAME verkn\u00fcpft sind"
+msgstr "Auf dem Serverschlüsselbund gespeicherte Anmeldeinformationen verwenden, die mit dem zu veröffentlichenden USERNAME verknüpft sind"
 
 #:
 msgid "publish.options.overwrite"
-msgstr "Vorhandene Arbeitsmappe/Datenquelle ggf. \u00fcberschreiben"
+msgstr "Vorhandene Arbeitsmappe/Datenquelle ggf. überschreiben"
 
 #:
 msgid "publish.options.project"
-msgstr "Projekt zum Ver\u00f6ffentlichen der Arbeitsmappe/Datenquelle zu"
+msgstr "Projekt zum Veröffentlichen der Arbeitsmappe/Datenquelle zu"
 
 #:
 msgid "publish.options.parent-project-path"
-msgstr "Pfad zu dem dem Projekt \u00fcbergeordneten Element, f\u00fcr das die Arbeitsmappe/Datenquelle ver\u00f6ffentlicht werden soll"
+msgstr "Pfad zu dem dem Projekt übergeordneten Element, für das die Arbeitsmappe/Datenquelle veröffentlicht werden soll"
 
 #:
 msgid "publish.options.replace"
@@ -2723,19 +2713,19 @@ msgstr "Mit {0} angegebene OAuth-Anmeldeinformationen einbetten"
 
 #:
 msgid "publish.options.tabbed"
-msgstr "Bei aktivierten Ansichten im Registerformat ver\u00f6ffentlichen"
+msgstr "Bei aktivierten Ansichten im Registerformat veröffentlichen"
 
 #:
 msgid "publish.options.thumbnail-groupname"
-msgstr "Identit\u00e4t dieser Gruppe wechseln, w\u00e4hrend die Miniaturbilder berechnet werden, wenn die Arbeitsmappe Benutzerfilter enth\u00e4lt"
+msgstr "Identität dieser Gruppe wechseln, während die Miniaturbilder berechnet werden, wenn die Arbeitsmappe Benutzerfilter enthält"
 
 #:
 msgid "publish.options.thumbnail-username"
-msgstr "Identit\u00e4t dieses Benutzers wechseln, w\u00e4hrend die Miniaturbilder berechnet werden, wenn die Arbeitsmappe Benutzerfilter enth\u00e4lt"
+msgstr "Identität dieses Benutzers wechseln, während die Miniaturbilder berechnet werden, wenn die Arbeitsmappe Benutzerfilter enthält"
 
 #:
 msgid "publish.status"
-msgstr "''{0}'' wird auf dem Server ver\u00f6ffentlicht. Dies kann einige Minuten dauern..."
+msgstr "''{0}'' wird auf dem Server veröffentlicht. Dies kann einige Minuten dauern..."
 
 #:
 msgid "publish.success"
@@ -2743,39 +2733,39 @@ msgstr "Datei wurde erfolgreich auf dem Server unter dem folgenden Speicherort g
 
 #:
 msgid "publishsamples.options.parent-project-path"
-msgstr "Pfad zu dem dem Projekt \u00fcbergeordneten Element, f\u00fcr das Beispiele ver\u00f6ffentlicht werden sollen. F\u00fcr die Angabe des Projektnamens ist --project erforderlich."
+msgstr "Pfad zu dem dem Projekt übergeordneten Element, für das Beispiele veröffentlicht werden sollen. Für die Angabe des Projektnamens ist "--project" erforderlich."
 
 #:
 msgid "publishsamples.options.projectname"
-msgstr "Name des Projekts, in dem Beispiele ver\u00f6ffentlicht werden sollen"
+msgstr "Name des Projekts, in dem Beispiele veröffentlicht werden sollen"
 
 #:
 msgid "publishsamples.short_description"
-msgstr "Ver\u00f6ffentlicht Beispielarbeitsmappen im angegebenen Projekt. Bereits vorhandene Beispiele werden \u00fcberschrieben."
+msgstr "Veröffentlicht Beispielarbeitsmappen im angegebenen Projekt. Bereits vorhandene Beispiele werden überschrieben."
 
 #:
 msgid "publishsamples.status"
-msgstr "Beispiele werden ver\u00f6ffentlicht..."
+msgstr "Beispiele werden veröffentlicht..."
 
 #:
 msgid "reencryptextracts.short_description"
-msgstr "Extrakte auf einer Site erneut verschl\u00fcsseln"
+msgstr "Extrakte auf einer Site erneut verschlüsseln"
 
 #:
 msgid "reencryptextracts.status"
-msgstr "Planung von Extrakten auf Site {0} zur erneuten Verschl\u00fcsselung\u2026"
+msgstr "Planung von Extrakten auf Site {0} zur erneuten Verschlüsselung…"
 
 #:
 msgid "refreshextracts.errors.required_argument"
-msgstr "F\u00fcr den Befehl ''refreshextracts'' ist entweder eine Arbeitsmappen-URL, ein Arbeitsmappenname oder ein Datenquellenname erforderlich"
+msgstr "Für den Befehl ''refreshextracts'' ist entweder eine Arbeitsmappen-URL, ein Arbeitsmappenname oder ein Datenquellenname erforderlich"
 
 #:
 msgid "refreshextracts.errors.add_and_remove_calculations"
-msgstr "Aktualisierung kann nicht mit den beiden Optionen --addcalculations und --removecalculations durchgef\u00fchrt werden."
+msgstr "Aktualisierung kann nicht mit den beiden Optionen "--addcalculations" und "--removecalculations" durchgeführt werden."
 
 #:
 msgid "refreshextracts.errors.calculations_and_incremental"
-msgstr "Erf\u00fcllte Berechnungen k\u00f6nnen w\u00e4hrend einer inkrementellen Extraktaktualisierung nicht hinzugef\u00fcgt oder entfernt werden."
+msgstr "Erfüllte Berechnungen können während einer inkrementellen Extraktaktualisierung nicht hinzugefügt oder entfernt werden."
 
 #:
 msgid "refreshextracts.errors.error"
@@ -2787,23 +2777,23 @@ msgstr "Der Name der zu aktualisierenden Datenquelle"
 
 #:
 msgid "refreshextracts.options.incremental"
-msgstr "Inkrementelle Aktualisierung (wenn unterst\u00fctzt) ausf\u00fchren"
+msgstr "Inkrementelle Aktualisierung (wenn unterstützt) ausführen"
 
 #:
 msgid "refreshextracts.options.parent-project-path"
-msgstr "Pfad zu dem dem Projekt \u00fcbergeordneten Element, in dem das zu aktualisierende Extrakt enthalten ist. F\u00fcr die Angabe des Projektnamens ist --project erforderlich."
+msgstr "Pfad zu dem dem Projekt übergeordneten Element, in dem das zu aktualisierende Extrakt enthalten ist. Für die Angabe des Projektnamens ist "--project" erforderlich."
 
 #:
 msgid "refreshextracts.options.project"
-msgstr "Der Name des Projekts, das die Arbeitsmappe bzw. die Datenquelle enth\u00e4lt. Ist nur erforderlich, wenn {0} oder {1} nicht angegeben ist. Wenn keine Angabe erfolgt, wird das Standardprojekt ''{2}'' verwendet"
+msgstr "Der Name des Projekts, das die Arbeitsmappe bzw. die Datenquelle enthält. Ist nur erforderlich, wenn {0} oder {1} nicht angegeben ist. Wenn keine Angabe erfolgt, wird das Standardprojekt ''{2}'' verwendet"
 
 #:
 msgid "refreshextracts.options.synchronous"
-msgstr "Auf Ausf\u00fchrung der Aktualisierung warten und vor dem Beenden abschlie\u00dfen"
+msgstr "Auf Ausführung der Aktualisierung warten und vor dem Beenden abschließen"
 
 #:
 msgid "refreshextracts.options.url"
-msgstr "Der kanonische Name f\u00fcr die Arbeitsmappe oder die Ansicht wie er in der URL angezeigt wird"
+msgstr "Der kanonische Name für die Arbeitsmappe oder die Ansicht wie er in der URL angezeigt wird"
 
 #:
 msgid "refreshextracts.options.workbook"
@@ -2811,11 +2801,11 @@ msgstr "Der Name der zu aktualisierenden Arbeitsmappe"
 
 #:
 msgid "refreshextracts.options.addcalculations"
-msgstr "Dem Extrakt werden erf\u00fcllte Berechnungen hinzugef\u00fcgt."
+msgstr "Dem Extrakt werden erfüllte Berechnungen hinzugefügt."
 
 #:
 msgid "refreshextracts.options.removecalculations"
-msgstr "Vom Extrakt werden erf\u00fcllte Berechtigungen entfernt."
+msgstr "Vom Extrakt werden erfüllte Berechtigungen entfernt."
 
 #:
 msgid "refreshextracts.short_description"
@@ -2823,15 +2813,15 @@ msgstr "Extrakte einer Arbeitsmappe oder Datenquelle auf dem Server aktualisiere
 
 #:
 msgid "refreshextracts.status_incremented"
-msgstr "Extrakte f\u00fcr {0} ''{1}'', die jetzt inkrementiert werden sollen, werden geplant..."
+msgstr "Extrakte für {0} ''{1}'', die jetzt inkrementiert werden sollen, werden geplant..."
 
 #:
 msgid "refreshextracts.status_refreshed"
-msgstr "Extrakte f\u00fcr {0} ''{1}'', die jetzt aktualisiert werden sollen, werden geplant..."
+msgstr "Extrakte für {0} ''{1}'', die jetzt aktualisiert werden sollen, werden geplant..."
 
 #:
 msgid "removeusers.options.users"
-msgstr "Datei, die eine Liste der aus der Gruppe zu entfernenden Benutzer, einer pro Zeile, enth\u00e4lt"
+msgstr "Datei, die eine Liste der aus der Gruppe zu entfernenden Benutzer, einer pro Zeile, enthält"
 
 #:
 msgid "removeusers.short_description"
@@ -2843,35 +2833,35 @@ msgstr "In {0} aufgelistete Benutzer werden aus der Gruppe {1} entfernt..."
 
 #:
 msgid "runschedule.errors.requires_schedule_name"
-msgstr "F\u00fcr den Befehl ''{0}'' ist ein Zeitplanname erforderlich"
+msgstr "Für den Befehl ''{0}'' ist ein Zeitplanname erforderlich"
 
 #:
 msgid "runschedule.short_description"
-msgstr "Zeitplan ausf\u00fchren"
+msgstr "Zeitplan ausführen"
 
 #:
 msgid "runschedule.status"
-msgstr "Zeitplan ''{0}'' wird auf dem Server ausgef\u00fchrt..."
+msgstr "Zeitplan ''{0}'' wird auf dem Server ausgeführt..."
 
 #:
 msgid "materializeviews.short_description"
-msgstr "Aktualisieren und kontrollieren der materialisierten Ansichts-Umgebung f\u00fcr Sites/Arbeitsmappen"
+msgstr "Aktualisieren und kontrollieren der materialisierten Ansichts-Umgebung für Sites/Arbeitsmappen"
 
 #:
 msgid "materializeviews.status.site"
-msgstr "Materialisierte Ansichts-Umgebung f\u00fcr Site ''{0}'' wird aktualisiert..."
+msgstr "Materialisierte Ansichts-Umgebung für Site ''{0}'' wird aktualisiert..."
 
 #:
 msgid "materializeviews.status.workbook"
-msgstr "Materialisierte Ansichts-Umgebung f\u00fcr Arbeitsmappe ''{0}'' wird aktualisiert..."
+msgstr "Materialisierte Ansichts-Umgebung für Arbeitsmappe ''{0}'' wird aktualisiert..."
 
 #:
 msgid "materializeviews.errors.invalid_workbook_arguments"
-msgstr "Der Befehl materializeviews ben\u00f6tigt ein Argument eines Namens einer Arbeitsmappe"
+msgstr "Der Befehl "materializeviews" benötigt ein Argument eines Namens einer Arbeitsmappe"
 
 #:
 msgid "materializeviews.errors.invalid_site_arguments"
-msgstr "Der Befehl materializeviews ben\u00f6tigt ein Argument einer Site-ID"
+msgstr "Der Befehl "materializeviews" benötigt ein Argument einer Site-ID"
 
 #:
 msgid "materializeviews.errors.invalid_workbook_option"
@@ -2887,15 +2877,15 @@ msgstr "Verwenden Sie ''{0}'' mit ''{1}''"
 
 #:
 msgid "materializeviews.errors.site_mode_conflict"
-msgstr "Verwenden Sie ''{0}'' oder ''{1}'' um den materialisierten Ansichtsmodus auf dieser Site zu \u00e4ndern"
+msgstr "Verwenden Sie ''{0}'' oder ''{1}'' um den materialisierten Ansichtsmodus auf dieser Site zu ändern"
 
 #:
 msgid "materializeviews.errors.site_not_updated"
-msgstr "Site ''{0}'' wurde nicht aktualisiert, nur Serveradministratoren k\u00f6nnen die materialisierte Ansichts-Umgebung \u00e4ndern"
+msgstr "Site ''{0}'' wurde nicht aktualisiert, nur Serveradministratoren können die materialisierte Ansichts-Umgebung ändern"
 
 #:
 msgid "materializeviews.errors.invalid_argument_options_combination"
-msgstr "Verwenden Sie ''{0}'' oder ''{1}'' um die materialisierte Ansichts-Umgebung zu \u00e4ndern"
+msgstr "Verwenden Sie ''{0}'' oder ''{1}'' um die materialisierte Ansichts-Umgebung zu ändern"
 
 #:
 msgid "materializeviews.options.materialize_now"
@@ -2907,19 +2897,19 @@ msgstr "Verwenden Sie ''{0}'' um einen Projektnamen festzulegen"
 
 #:
 msgid "materializeviews.options.parent_project_path"
-msgstr "Verwenden Sie ''{0}'' um den \u00fcbergeordneten Projektpfad auf ''{1}'' festzulegen"
+msgstr "Verwenden Sie ''{0}'' um den übergeordneten Projektpfad auf ''{1}'' festzulegen"
 
 #:
 msgid "materializeviews.options.allow_workbook"
-msgstr "Verwenden Sie ''{0}'' um materialisierte Ansichten f\u00fcr die Arbeitsmappe zu aktivieren/deaktivieren"
+msgstr "Verwenden Sie ''{0}'' um materialisierte Ansichten für die Arbeitsmappe zu aktivieren/deaktivieren"
 
 #:
 msgid "materializeviews.options.allow_site"
-msgstr "Verwenden Sie ''{0}'' um materialisierte Ansichten f\u00fcr die Site zu aktivieren/deaktivieren"
+msgstr "Verwenden Sie ''{0}'' um materialisierte Ansichten für die Site zu aktivieren/deaktivieren"
 
 #:
 msgid "materializeviews.options.selected_workbooks"
-msgstr "Verwenden Sie ''{0}'' um ausgew\u00e4hlte Arbeitsmappen in der Site zu aktivieren, die mit Option  ''{1}'' verwendet werden. Dies ist die Standardeinstellung"
+msgstr "Verwenden Sie ''{0}'' um ausgewählte Arbeitsmappen in der Site zu aktivieren, die mit Option  ''{1}'' verwendet werden. Dies ist die Standardeinstellung"
 
 #:
 msgid "materializeviews.options.all_workbooks"
@@ -2951,7 +2941,7 @@ msgstr "Das Keystore-Kennwort ist falsch. Geben Sie das richtige Kennwort ein un
 
 #:
 msgid "session.errors.invalid_redirect"
-msgstr "Umleitung zu ung\u00fcltiger URL nicht m\u00f6glich: {0}"
+msgstr "Umleitung zu ungültiger URL nicht möglich: {0}"
 
 #:
 msgid "session.errors.keystore_pwdfile_create"
@@ -2959,7 +2949,7 @@ msgstr "Keystore-Kennwortdatei kann nicht erstellt werden, Fehler: {0}"
 
 #:
 msgid "session.errors.missing_arguments"
-msgstr "Anmeldung aufgrund fehlender Argumente nicht m\u00f6glich: {0}"
+msgstr "Anmeldung aufgrund fehlender Argumente nicht möglich: {0}"
 
 #:
 msgid "session.errors.no_redirect_found"
@@ -2967,11 +2957,11 @@ msgstr "Keine Umleitungsadresse in Umleitungsantwort"
 
 #:
 msgid "session.errors.no_sslcafile_found"
-msgstr "An den folgenden Speicherorten wurde keine Datei einer Zertifizierungsstelle (ZS) gefunden: ''{0}''. Die ZS-Datei wird f\u00fcr die sichere Kommunikation mit Tableau Server ben\u00f6tigt. Informationen zur Erstellung einer ZS-Datei finden Sie in der Tableau Server-Hilfe. Um eine Verbindung mit Tableau Server ohne Validierung des SSL-Zertifikats herzustellen, verwenden Sie das Flag --no-certcheck."
+msgstr "An den folgenden Speicherorten wurde keine Datei einer Zertifizierungsstelle (ZS) gefunden: ''{0}''. Die ZS-Datei wird für die sichere Kommunikation mit Tableau Server benötigt. Informationen zur Erstellung einer ZS-Datei finden Sie in der Tableau Server-Hilfe. Um eine Verbindung mit Tableau Server ohne Validierung des SSL-Zertifikats herzustellen, verwenden Sie das Flag --no-certcheck."
 
 #:
 msgid "session.errors.script_no_password"
-msgstr "Tabcmd wurde aus einem Skript oder aus IDE heraus ausgef\u00fchrt, jedoch wurde kein Kennwort angegeben. Zum Anmelden muss ein Kennwort als Argument f\u00fcr tabcmd angegeben werden."
+msgstr "Tabcmd wurde aus einem Skript oder aus IDE heraus ausgeführt, jedoch wurde kein Kennwort angegeben. Zum Anmelden muss ein Kennwort als Argument für tabcmd angegeben werden."
 
 #:
 msgid "session.errors.session_expired"
@@ -2979,11 +2969,11 @@ msgstr "Ihre Sitzung ist abgelaufen"
 
 #:
 msgid "session.errors.unsupported_command"
-msgstr "Befehlt wird durch diesen Server nicht unterst\u00fctzt"
+msgstr "Befehlt wird durch diesen Server nicht unterstützt"
 
 #:
 msgid "session.keystore.notice"
-msgstr "M\u00f6chten Sie das Kennwort lokal speichern, damit Sie es beim n\u00e4chsten Mal nicht erneut eingeben m\u00fcssen? [''Ja'' oder ''Nein'' angeben]"
+msgstr "Möchten Sie das Kennwort lokal speichern, damit Sie es beim nächsten Mal nicht erneut eingeben müssen? [''Ja'' oder ''Nein'' angeben]"
 
 #:
 msgid "session.keystore.password"
@@ -3007,7 +2997,7 @@ msgstr "Abgemeldet"
 
 #:
 msgid "session.monitorjob.errors.no_jobid"
-msgstr "Auftrag kann nicht \u00fcberwacht werden. Es wurde keine ''job_id'' gefunden: {0}"
+msgstr "Auftrag kann nicht überwacht werden. Es wurde keine ''job_id'' gefunden: {0}"
 
 #:
 msgid "session.monitorjob.percent_complete"
@@ -3019,15 +3009,15 @@ msgstr "Neue Sitzung erstellen"
 
 #:
 msgid "session.no-certificate-found"
-msgstr "Kein g\u00fcltiges Client-Zertifikat gefunden"
+msgstr "Kein gültiges Client-Zertifikat gefunden"
 
 #:
 msgid "session.not_default_site_member"
-msgstr "Sie sind kein Mitglied der Standardwebsite. W\u00e4hlen Sie eine SITEID aus den folgenden Websites aus:"
+msgstr "Sie sind kein Mitglied der Standardwebsite. Wählen Sie eine SITEID aus den folgenden Websites aus:"
 
 #:
 msgid "session.not_site_member"
-msgstr "Sie sind kein Mitglied der Website ''{0}''. W\u00e4hlen Sie eine SITEID aus den folgenden Websites aus:"
+msgstr "Sie sind kein Mitglied der Website ''{0}''. Wählen Sie eine SITEID aus den folgenden Websites aus:"
 
 #:
 msgid "session.options.help"
@@ -3035,11 +3025,11 @@ msgstr "tabcmd-Hilfe anzeigen"
 
 #:
 msgid "session.options.no-certcheck"
-msgstr "SSL-Zertifikat nicht \u00fcberpr\u00fcfen"
+msgstr "SSL-Zertifikat nicht überprüfen"
 
 #:
 msgid "session.options.no-cookie"
-msgstr "Speichern Sie die Sitzungs-ID beim Anmelden nicht. Folgebefehle m\u00fcssen sich erneut anmelden. Wenn keine Angabe erfolgt, wird standardm\u00e4\u00dfig die Sitzungs-ID gespeichert"
+msgstr "Speichern Sie die Sitzungs-ID beim Anmelden nicht. Folgebefehle müssen sich erneut anmelden. Wenn keine Angabe erfolgt, wird standardmäßig die Sitzungs-ID gespeichert"
 
 #:
 msgid "session.options.no-prompt"
@@ -3071,7 +3061,7 @@ msgstr "Verwenden Sie die angegebene Tableau Server-Website. Geben Sie eine leer
 
 #:
 msgid "session.options.timeout"
-msgstr "Wartedauer in Sekunden, die es dauert, bis der Server den Befehl verarbeitet hat. Standardm\u00e4\u00dfig wird so lange gewartet, bis der Server antwortet"
+msgstr "Wartedauer in Sekunden, die es dauert, bis der Server den Befehl verarbeitet hat. Standardmäßig wird so lange gewartet, bis der Server antwortet"
 
 #:
 msgid "session.options.use-certificate"
@@ -3087,11 +3077,11 @@ msgstr "Kennwort:"
 
 #:
 msgid "session.retrying_task"
-msgstr "Erneute Anmeldung f\u00fcr erneuten Versuch des urspr\u00fcnglichen Befehls mit einer neuen Sitzung \u2026"
+msgstr "Erneute Anmeldung für erneuten Versuch des ursprünglichen Befehls mit einer neuen Sitzung …"
 
 #:
 msgid "session.session_expired_login"
-msgstr "Ihre Sitzung ist abgelaufen. Abmeldung zum L\u00f6schen der Sitzung \u2026"
+msgstr "Ihre Sitzung ist abgelaufen. Abmeldung zum Löschen der Sitzung …"
 
 #:
 msgid "session.site_list"
@@ -3127,7 +3117,7 @@ msgstr "Kennwort aus Datei ''{0}'' kann nicht gelesen werden"
 
 #:
 msgid "sessionoptions.errors.bad_protocol"
-msgstr "Protokoll ''{0}'' wird nicht unterst\u00fctzt"
+msgstr "Protokoll ''{0}'' wird nicht unterstützt"
 
 #:
 msgid "sessionoptions.errors.bad_proxy_format"
@@ -3143,11 +3133,11 @@ msgstr "Legen Sie eine Einstellung auf dem Server fest. Verwenden Sie ''Einstell
 
 #:
 msgid "set.errors.requires_setting_name"
-msgstr "F\u00fcr den Befehl ''{0}'' ist ein Einstellungsname erforderlich"
+msgstr "Für den Befehl ''{0}'' ist ein Einstellungsname erforderlich"
 
 #:
 msgid "set.errors.single_setting_name"
-msgstr "Der Befehl ''{0}'' \u00fcbernimmt einen einzelnen Einstellungsnamen"
+msgstr "Der Befehl ''{0}'' übernimmt einen einzelnen Einstellungsnamen"
 
 #:
 msgid "set.short_description"
@@ -3163,15 +3153,15 @@ msgstr "Die minimale Site-spezifische Rolle einer Gruppe kann nicht auf ''Server
 
 #:
 msgid "syncgroup.options.role"
-msgstr "Legt die Standardrolle f\u00fcr alle Benutzer in der Gruppe fest. Zul\u00e4ssige Werte f\u00fcr {0}: {1}. Wenn ein Benutzer bereits vorhanden ist, wird die angegebene Rolle nur dann zugewiesen, wenn sie weniger restriktiv ist als die aktuelle Rolle des Benutzers. Ist der Wert nicht angegeben, lautet die Standardeinstellung f\u00fcr neue Benutzer {2}. F\u00fcr bestehende Benutzer ergeben sich keine \u00c4nderungen."
+msgstr "Legt die Standardrolle für alle Benutzer in der Gruppe fest. Zulässige Werte für {0}: {1}. Wenn ein Benutzer bereits vorhanden ist, wird die angegebene Rolle nur dann zugewiesen, wenn sie weniger restriktiv ist als die aktuelle Rolle des Benutzers. Ist der Wert nicht angegeben, lautet die Standardeinstellung für neue Benutzer {2}. Für bestehende Benutzer ergeben sich keine Änderungen."
 
 #:
 msgid "syncgroup.options.overwritesiterole"
-msgstr "L\u00e4sst eine \u00c4nderung der Site-Rolle eines Benutzers mithilfe von --role in eine Rolle mit weniger Berechtigungen zu und setzt das Standardverhalten au\u00dfer Kraft."
+msgstr "Lässt eine Änderung der Site-Rolle eines Benutzers mithilfe von --role in eine Rolle mit weniger Berechtigungen zu und setzt das Standardverhalten außer Kraft."
 
 #:
 msgid "syncgroup.options.grantlicensemode"
-msgstr "Wenn einem Benutzer die in der Gruppe angegebene Lizenz erteilt werden soll. G\u00fcltige Werte sind: {0}. Wird kein Wert weitergegeben, wird ''bei der Synchronisierung'' als Standardwert verwendet."
+msgstr "Wenn einem Benutzer die in der Gruppe angegebene Lizenz erteilt werden soll. Gültige Werte sind: {0}. Wird kein Wert weitergegeben, wird ''bei der Synchronisierung'' als Standardwert verwendet."
 
 #:
 msgid "syncgroup.short_description"
@@ -3183,19 +3173,19 @@ msgstr "Server wird mit Active Directory-Gruppe {0} synchronisiert..."
 
 #:
 msgid "syncgroup.options.sysadmin-type"
-msgstr "[Veraltet. Verwenden Sie stattdessen --Rolle.] Weist dem Administator Rechte f\u00fcr alle Benutzer in der Gruppe zu [oder entfernt diese]. {0} kann {1}, {2}, {3} oder {4} sein."
+msgstr "[Veraltet. Verwenden Sie stattdessen --Rolle.] Weist dem Administator Rechte für alle Benutzer in der Gruppe zu [oder entfernt diese]. {0} kann {1}, {2}, {3} oder {4} sein."
 
 #:
 msgid "syncgroup.options.license"
-msgstr "[Veraltet. Verwenden Sie stattdessen --Rolle.] Legt die Standardlizenzstufe f\u00fcr alle Benutzer in der Gruppe fest. {0} kann {1}, {2} oder {3} sein"
+msgstr "[Veraltet. Verwenden Sie stattdessen --Rolle.] Legt die Standardlizenzstufe für alle Benutzer in der Gruppe fest. {0} kann {1}, {2} oder {3} sein"
 
 #:
 msgid "syncgroup.options.publisher"
-msgstr "[Veraltet. Verwenden Sie stattdessen --Rolle.] Weist das Ver\u00f6ffentlichungsrecht allen Benutzern in der Gruppe zu [oder entfernt es]."
+msgstr "[Veraltet. Verwenden Sie stattdessen --Rolle.] Weist das Veröffentlichungsrecht allen Benutzern in der Gruppe zu [oder entfernt es]."
 
 #:
 msgid "tabcmd.mutually_exclusive_options"
-msgstr "''{0}'' und ''{1}'' k\u00f6nnen nicht im selben Befehl angegeben werden"
+msgstr "''{0}'' und ''{1}'' können nicht im selben Befehl angegeben werden"
 
 #:
 msgid "tabcmdparser.errors.ambiguous_option"
@@ -3203,19 +3193,19 @@ msgstr "Mehrdeutige Option ''{0}'' unter den Optionen: {1}"
 
 #:
 msgid "tabcmdparser.warning.unexpected_dash"
-msgstr "Unerwarteter Strich in Argument: {0}. Folgende Striche sind g\u00fcltig: -, --. Dieser Fehler tritt h\u00e4ufig auf, wenn eine Zeichenfolge mit Formatierung aus einem Texteditor kopiert und eingef\u00fcgt wird. Versuchen Sie, den Strich f\u00fcr das Argument in der Befehlszeile erneut einzugeben."
+msgstr "Unerwarteter Strich in Argument: {0}. Folgende Striche sind gültig: -, --. Dieser Fehler tritt häufig auf, wenn eine Zeichenfolge mit Formatierung aus einem Texteditor kopiert und eingefügt wird. Versuchen Sie, den Strich für das Argument in der Befehlszeile erneut einzugeben."
 
 #:
 msgid "resetopenidsub.short_description"
-msgstr "Zur\u00fccksetzen einer OpenID Connect SubId f\u00fcr einen Benutzer"
+msgstr "Zurücksetzen einer OpenID Connect SubId für einen Benutzer"
 
 #:
 msgid "resetopenidsub.options.targetusername"
-msgstr "Benutzer, der zur\u00fcckgesetzt werden soll"
+msgstr "Benutzer, der zurückgesetzt werden soll"
 
 #:
 msgid "resetopenidsub.options.all"
-msgstr "Alle Benutzer zur\u00fccksetzen"
+msgstr "Alle Benutzer zurücksetzen"
 
 #:
 msgid "version.description"
@@ -3239,7 +3229,7 @@ msgstr "JSON-Antwortzeichenfolge kann nicht analysiert werden: {0}"
 
 #:
 msgid "upgradethumbnails.short_description"
-msgstr "Damit wird der Job der Hintergrundprozesskomponente f\u00fcr das Upgrade der Miniaturbilder durchgef\u00fchrt. Damit werden alle Miniaturbilder, die mit einer Version vor Tableau 2018.2 erstellt wurden, erneut mit hoher Aufl\u00f6sung gerendert. Dabei k\u00f6nnen ungew\u00f6hnlich hohe Verarbeitungslasten f\u00fcr Tableau Server und externe Datenquellen entstehen. Wenn es zu Problemen kommt, kann der Job durch Ausf\u00fchrung von tabcmd upgradethumbnails --server <server> --stop angehalten werden."
+msgstr "Damit wird der Job der Hintergrundprozesskomponente für das Upgrade der Miniaturbilder durchgeführt. Damit werden alle Miniaturbilder, die mit einer Version vor Tableau 2018.2 erstellt wurden, erneut mit hoher Auflösung gerendert. Dabei können ungewöhnlich hohe Verarbeitungslasten für Tableau Server und externe Datenquellen entstehen. Wenn es zu Problemen kommt, kann der Job durch Ausführung von tabcmd upgradethumbnails --server <server> --stop angehalten werden."
 
 #:
 msgid "upgradethumbnails.options.stop"
@@ -3259,15 +3249,15 @@ msgstr "Upgrade von Miniaturbildern abbrechen"
 
 #:
 msgid "upgradethumbnails.continue_promt"
-msgstr "M\u00f6chten Sie fortfahren? Geben Sie 1 f\u00fcr Ja ein und 0 f\u00fcr Nein (1/0)."
+msgstr "Möchten Sie fortfahren? Geben Sie 1 für "Ja" ein und 0 für "Nein" (1/0)."
 
 #:
 msgid "upgradethumbnails.invalid_response"
-msgstr "Ung\u00fcltige Antwort"
+msgstr "Ungültige Antwort"
 
 #:
 msgid "validateidpmetadata.options.digest_algorithms"
-msgstr "Eine durch Leerzeichen getrennte Liste mit Digest-Algorithmen. Zul\u00e4ssige Werte f\u00fcr {0}: {1}. Sofern keine Angabe erfolgt, nutzt der Server Werte der Serverkonfigurationseinstellung: {2}"
+msgstr "Eine durch Leerzeichen getrennte Liste mit Digest-Algorithmen. Zulässige Werte für {0}: {1}. Sofern keine Angabe erfolgt, nutzt der Server Werte der Serverkonfigurationseinstellung: {2}"
 
 #:
 msgid "validateidpmetadata.options.min_allowed_rsa_key_size"
@@ -3279,10 +3269,10 @@ msgstr "Wenn keine Angabe vorhanden ist, verwendet der Server die Werte aus der 
 
 #:
 msgid "validateidpmetadata.options.site_names"
-msgstr "Eine durch Leerzeichen getrennte Liste mit Site-Namen, f\u00fcr die die Zertifikatspr\u00fcfung durchgef\u00fchrt wird. Wenn keine Angabe erfolgt, werden alle Sites gepr\u00fcft."
+msgstr "Eine durch Leerzeichen getrennte Liste mit Site-Namen, für die die Zertifikatsprüfung durchgeführt wird. Wenn keine Angabe erfolgt, werden alle Sites geprüft."
 
 #:
 msgid "validateidpmetadata.short_description"
-msgstr "Identifiziert Tableau Server-Sites, die mit IdPs konfiguriert sind, die den unsicheren Digest-Algorithmus, SHA-1, verwenden. Dieser Befehl identifiziert auch IdPs, die Zertifikate mit einer unzureichenden RSA-Schl\u00fcssell\u00e4nge oder elliptischen Kurvengr\u00f6\u00dfe verwenden."
+msgstr "Identifiziert Tableau Server-Sites, die mit IdPs konfiguriert sind, die den unsicheren Digest-Algorithmus, SHA-1, verwenden. Dieser Befehl identifiziert auch IdPs, die Zertifikate mit einer unzureichenden RSA-Schlüssellänge oder elliptischen Kurvengröße verwenden."
 
 
