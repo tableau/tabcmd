@@ -1,1800 +1,2153 @@
+#. extracted from tabcmd/locales/es\shared_wg_es.properties
+#, fuzzy
 msgid ""
 msgstr ""
-"MIME-Version: 1.0"
-"Content-Type: text/plain; charset=None"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: prop2po"
-"Project-Id-Version: None"
-"Language: None"
-#:
-msgid "permissions.labels.capabilities.read"
-msgstr "Vista:"
-
-#:
-msgid "permissions.labels.capabilities.write"
-msgstr "Sobrescribir:"
-
-#:
-msgid "permissions.labels.capabilities.write.legacy"
-msgstr "Guardar:"
-
-#:
-msgid "permissions.labels.capabilities.delete"
-msgstr "Eliminar:"
-
-#:
-msgid "permissions.labels.capabilities.filter"
-msgstr "Filtrar:"
-
-#:
-msgid "permissions.labels.capabilities.add_tag"
-msgstr "A\u00f1adir etiqueta:"
-
-#:
-msgid "permissions.labels.capabilities.add_favorite"
-msgstr "A\u00f1adir favorito:"
-
-#:
-msgid "permissions.labels.capabilities.add_comment"
-msgstr "A\u00f1adir comentarios:"
-
-#:
-msgid "permissions.labels.capabilities.add_comment.legacy"
-msgstr "A\u00f1adir comentario:"
-
-#:
-msgid "permissions.labels.capabilities.view_comments"
-msgstr "Ver comentarios:"
-
-#:
-msgid "permissions.labels.capabilities.vud"
-msgstr "Descargar datos completos:"
-
-#:
-msgid "permissions.labels.capabilities.export_image"
-msgstr "Descargar imagen/PDF:"
-
-#:
-msgid "permissions.labels.capabilities.export_data"
-msgstr "Descargar datos de resumen:"
-
-#:
-msgid "permissions.labels.capabilities.export_xml"
-msgstr "Descargar/Guardar una copia:"
-
-#:
-msgid "permissions.labels.capabilities.export_xml.legacy"
-msgstr "Descargar/Guardar como:"
-
-#:
-msgid "permissions.labels.capabilities.save_customized_view"
-msgstr "Guardar vista personalizada:"
-
-#:
-msgid "permissions.labels.capabilities.share_view"
-msgstr "Recurso compartido personalizado:"
-
-#:
-msgid "permissions.labels.capabilities.stateful_url"
-msgstr "V\u00ednculo permanente:"
-
-#:
-msgid "permissions.labels.capabilities.change_hierarchy"
-msgstr "Mover:"
-
-#:
-msgid "permissions.labels.capabilities.change_permissions"
-msgstr "Configurar permisos:"
-
-#:
-msgid "permissions.labels.capabilities.exclude"
-msgstr "Excluir:"
-
-#:
-msgid "permissions.labels.capabilities.keep_only"
-msgstr "Mantener solo:"
-
-#:
-msgid "permissions.labels.capabilities.select"
-msgstr "Seleccionar marcas:"
-
-#:
-msgid "permissions.labels.capabilities.tooltip"
-msgstr "Ver Descripciones emergentes:"
-
-#:
-msgid "permissions.labels.capabilities.highlight"
-msgstr "Resaltado de leyenda:"
-
-#:
-msgid "permissions.labels.capabilities.url_link"
-msgstr "Enlace a URL externas:"
-
-#:
-msgid "permissions.labels.capabilities.administrator"
-msgstr "Administrador:"
-
-#:
-msgid "permissions.labels.capabilities.content_admin"
-msgstr "Administrador de contenido:"
-
-#:
-msgid "permissions.labels.capabilities.create_groups"
-msgstr "Crear grupos:"
-
-#:
-msgid "permissions.labels.capabilities.rename"
-msgstr "Cambiar nombre:"
-
-#:
-msgid "permissions.labels.capabilities.transfer_ownership"
-msgstr "Transferir propiedad:"
-
-#:
-msgid "permissions.labels.capabilities.project_leader"
-msgstr "L\u00edder de proyecto:"
-
-#:
-msgid "permissions.labels.capabilities.publish"
-msgstr "Publicar:"
-
-#:
-msgid "permissions.labels.capabilities.connect"
-msgstr "Conectar:"
-
-#:
-msgid "permissions.labels.capabilities.draw"
-msgstr "Dibujo:"
-
-#:
-msgid "permissions.labels.capabilities.web_authoring"
-msgstr "Edici\u00f3n web:"
-
-#:
-msgid "permissions.labels.capabilities.xml_save_as"
-msgstr "Guardar como:"
-
-#:
-msgid "permissions.labels.capabilities.create_refresh_metrics"
-msgstr "Crear/Actualizar m\u00e9tricas:"
-
-#:
-msgid "permissions.labels.capabilities.explain_data"
-msgstr "Ejecutar Explique los datos:"
-
-#:
-msgid "permissions.labels.roles.wb_view"
-msgstr "Vista"
-
-#:
-msgid "permissions.labels.roles.wb_explore"
-msgstr "Explorar"
-
-#:
-msgid "permissions.labels.roles.wb_publish"
-msgstr "Publicar"
-
-#:
-msgid "permissions.labels.roles.wb_administer"
-msgstr "Administrar"
-
-#:
-msgid "permissions.labels.roles.ds_view"
-msgstr "Vista"
-
-#:
-msgid "permissions.labels.roles.ds_explore"
-msgstr "Explorar"
-
-#:
-msgid "permissions.labels.roles.ds_publish"
-msgstr "Publicar"
-
-#:
-msgid "permissions.labels.roles.ds_administer"
-msgstr "Administrar"
-
-#:
-msgid "permissions.labels.roles.viewer"
-msgstr "Viewer"
-
-#:
-msgid "permissions.labels.roles.interactor"
-msgstr "Interaccionador"
-
-#:
-msgid "permissions.labels.roles.editor"
-msgstr "Editor"
-
-#:
-msgid "permissions.labels.roles.ds_connector"
-msgstr "Conector de fuente de datos"
-
-#:
-msgid "permissions.labels.roles.ds_editor"
-msgstr "Editor de fuente de datos"
-
-#:
-msgid "permissions.labels.roles.administrator"
-msgstr "Administrador"
-
-#:
-msgid "permissions.labels.roles.project_leader"
-msgstr "L\u00edder de proyecto"
-
-#:
-msgid "permissions.labels.roles.publisher"
-msgstr "Publicador"
-
-#:
-msgid "permissions.labels.roles.custom"
-msgstr "Personalizado"
-
-#:
-msgid "permissions.labels.roles.none"
-msgstr "Ninguno"
-
-# Used in Storage class in tab-core
-
-#:
-msgid "formats.messages.disk_space.in_mb"
-msgstr "{0} MB"
-
-#:
-msgid "formats.messages.disk_space.in_kb"
-msgstr "{0} KB"
-
-# Publishing-related errors and strings
-
-#:
-msgid "errors.argument.flow_description.too_long"
-msgstr "La descripci\u00f3n del flujo es demasiado larga ({0} caracteres).  Debe ser inferior a {1} caracteres:\n{2}"
-
-#:
-msgid "errors.argument.workbook_name.too_long"
-msgstr "El nombre del libro de trabajo es demasiado largo ({0} caracteres)  Debe ser menor que {1} caracteres:\n{2}"
-
-#:
-msgid "errors.argument.workbook_name.empty"
-msgstr "El nombre del libro de trabajo est\u00e1 vac\u00edo."
-
-#:
-msgid "errors.argument.workbook_description.too_long"
-msgstr "La descripci\u00f3n del libro de trabajo es demasiado larga ({0} caracteres). Debe tener menos de {1} caracteres:\n{2}"
-
-#:
-msgid "errors.argument.worksheet_name.too_long"
-msgstr "El nombre de la hoja de trabajo es demasiado largo ({0} caracteres). Debe ser menor que {1} caracteres:\n{2}"
-
-#:
-msgid "errors.argument.datasource_name.too_long"
-msgstr "El nombre de la fuente de datos es demasiado largo ({0} caracteres). Debe tener menos de {1} caracteres:\n{2}"
-
-#:
-msgid "errors.argument.datasource_name.empty"
-msgstr "El nombre de la fuente de datos est\u00e1 vac\u00edo."
-
-#:
-msgid "errors.argument.datasource_description.too_long"
-msgstr "La descripci\u00f3n de la fuente de datos es demasiado larga ({0} caracteres). Debe tener menos de {1} caracteres:\n{2}"
-
-#:
-msgid "errors.argument.dataconnection_column.too_long"
-msgstr "DataConnection column {0} is too long ({1} characters).  It must be shorter than {2} characters:\n{3}"
-
-#:
-msgid "errors.argument.tag.too_long"
-msgstr "La etiqueta es demasiado larga ({0} caracteres). Debe ser menor que {1} caracteres:\n{2}"
-
-#:
-msgid "errors.argument.workbook_file.missing_or_empty"
-msgstr "El libro de trabajo no existe o est\u00e1 vac\u00edo."
-
-#:
-msgid "errors.argument.internal"
-msgstr "Error interno del servidor.  Argumento que falta o no es v\u00e1lido."
-
-#:
-msgid "errors.argument.thumbnail.invalid_format"
-msgstr "El formato de la miniatura del libro de trabajo no es v\u00e1lido. Debe tener formato PNG con una resoluci\u00f3n de 300x300 o menos."
-
-#:
-msgid "errors.html_403.disabled_resource.workbook"
-msgstr "Lo lamentamos, el libro de trabajo est\u00e1 deshabilitado.  Comun\u00edquese con el administrador."
-
-#:
-msgid "errors.html_404.missing_or_unauthorized_resource.project"
-msgstr "Lo sentimos, el proyecto que buscaba no existe, o bien, no tiene permiso para ver dicho proyecto."
-
-#:
-msgid "errors.html_404.missing_or_unauthorized_resource.personal_space"
-msgstr "Lo sentimos, el espacio personal que busca no existe o no tiene los permisos necesarios para verlo."
-
-#:
-msgid "errors.html_404.missing_or_unauthorized_resource.datasource"
-msgstr "Lo sentimos, pero la fuente de datos que busca no existe."
-
-#:
-msgid "errors.labels.formatted_request_id"
-msgstr "ID de solicitud: {0}"
-
-#:
-msgid "errors.links.delete_datasources"
-msgstr "Eliminar fuentes de datos"
-
-#:
-msgid "errors.links.delete_workbooks"
-msgstr "Eliminar libros de trabajo"
-
-#:
-msgid "errors.permissions.publish.datasource.licensing"
-msgstr "Debe ser un ''interaccionador'' para publicar una fuente de datos."
-
-#:
-msgid "errors.permissions.publish.datasource.overwrite"
-msgstr "Ya existe una fuente de datos {0} en el proyecto {1}. No tiene permisos para sobrescribirla."
-
-#:
-msgid "errors.permissions.publish.datasource.overwrite_personal_space"
-msgstr "Ya existe una fuente de datos {0} en el Espacio personal. No tiene permisos para sobrescribirla."
-
-#:
-msgid "errors.permissions.publish.datasource.overwrite_short"
-msgstr "Ya existe una fuente de datos {0} en el proyecto {1}."
-
-#:
-msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "Ya existe una fuente de datos {0} en el Espacio personal."
-
-#:
-msgid "errors.permissions.publish.datasource.non_existent"
-msgstr "La fuente de datos {0} no existe."
-
-#:
-msgid "errors.permissions.publish.datasource.general"
-msgstr "Lo lamentamos, no tiene permiso para publicar en esta fuente de datos."
-
-#:
-msgid "errors.permissions.publish.project.explicit_publisher_detail"
-msgstr "No tiene derecho de publicaci\u00f3n."
-
-#:
-msgid "errors.permissions.publish.project.general"
-msgstr "Lo lamentamos, no tiene permiso para publicar en este proyecto."
-
-#:
-msgid "errors.permissions.publish.project.non_existent"
-msgstr "El proyecto {0} no existe."
-
-#:
-msgid "errors.permissions.publish.project.not_writable"
-msgstr "No tiene permisos para escribir en el proyecto {0}."
-
-#:
-msgid "errors.permissions.publish.project.unspecified"
-msgstr "Debe especificar un proyecto"
-
-#:
-msgid "errors.permissions.publish.workbook.disabled"
-msgstr "El libro de trabajo {0} est\u00e1 deshabilitado."
-
-#:
-msgid "errors.permissions.publish.workbook.general"
-msgstr "Ya existe un libro de trabajo con este nombre en el proyecto en el que est\u00e1 publicando. Para publicarlo, cambie el nombre del libro de trabajo."
-
-#:
-msgid "errors.permissions.publish.workbook.general_personal_space"
-msgstr "Ya existe un libro de trabajo con este nombre en el Espacio personal en el que quiere publicar. Para publicar, cambie el nombre del libro de trabajo."
-
-#:
-msgid "errors.permissions.publish.workbook.overwrite"
-msgstr "Ya existe un libro de trabajo {0} en el proyecto {1}. No tiene permisos para sobrescribirlo."
-
-#:
-msgid "errors.permissions.publish.workbook.overwrite_personal_space"
-msgstr "Ya existe un libro de trabajo {0} en el Espacio personal. No tiene permisos para sobrescribirlo."
-
-#:
-msgid "errors.permissions.publish.workbook.overwrite_short"
-msgstr "Ya existe un libro de trabajo {0} en el proyecto {1}."
-
-#:
-msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
-msgstr "Ya existe un libro de trabajo {0} en el Espacio personal."
-
-#:
-msgid "errors.reportable.impersonation.group_and_user"
-msgstr "Especifique solo un ''impersonate_username'' o ''impersonate_groupname'', no ambos."
-
-#:
-msgid "errors.reportable.impersonation.user_not_found"
-msgstr "El usuario ''{0}'' no existe."
-
-#:
-msgid "errors.reportable.impersonation.group_not_found"
-msgstr "El grupo ''{0}'' no existe."
-
-# errors.public.validation.hasextract is copied from the C++ file codegen strings.data IDS_PUBLIC_VALIDATION_ERROR_HASEXTRACT
-
-#:
-msgid "errors.public.validation.hasextract"
-msgstr "Los libros de trabajo guardados en Tableau Public deben usar extracciones activas de Tableau. Haga clic con el bot\u00f3n derecho sobre la fuente de datos y seleccione Usar extracci\u00f3n antes de publicar. La fuente de datos ''{0}'' no es una extracci\u00f3n activa."
-
-#:
-msgid "errors.publish.dataserver_datasource_not_found"
-msgstr "No se encontr\u00f3 la fuente de datos ''{0}'' para el libro de trabajo ''{1}''."
-
-#:
-msgid "errors.publish.datasource_update_mode"
-msgstr "Modo de actualizaci\u00f3n desconocido: ''{0}''."
-
-#:
-msgid "errors.publish.workbook.concurrent_update"
-msgstr "Ya se est\u00e1 publicando o modificando un libro de trabajo con el mismo nombre. Espere a que se complete la tarea antes de volverlo a intentar."
-
-#:
-msgid "errors.publish.workbook.restricted"
-msgstr "El libro de trabajo contiene tipos de conexiones que no se permiten en este servidor."
-
-#:
-msgid "errors.publish.datasource.concurrent_update"
-msgstr "Ya se est\u00e1 publicando o modificando una fuente de datos con el mismo nombre. Espere a que se complete la tarea antes de volverlo a intentar."
-
-#:
-msgid "errors.publish.datasource.restricted"
-msgstr "La fuente de datos contiene un tipo de conexi\u00f3n que no se permite en este servidor."
-
-#:
-msgid "errors.publish.datasource.connection_check"
-msgstr "{0} no ha podido establecer una conexi\u00f3n con la fuente de datos."
-
-#:
-msgid "errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption"
-msgstr "El libro de trabajo no se puede publicar con una extracci\u00f3n cifrada. El administrador del sitio ha deshabilitado el cifrado de las extracciones en este sitio. Debe publicar el libro de trabajo con una extracci\u00f3n sin cifrar."
-
-#:
-msgid "errors.publish.datasource.requested_extract_encryption_on_site_with_disabled_encryption"
-msgstr "La fuente de datos no se puede publicar como extracci\u00f3n cifrada. El administrador del sitio ha deshabilitado el cifrado de las extracciones en este sitio. Debe publicar la extracci\u00f3n sin cifrar."
-
-#:
-msgid "errors.publish.workbook.requested_no_extract_encryption_on_site_with_enforced_encryption"
-msgstr "El libro de trabajo no se puede publicar con una extracci\u00f3n sin cifrar. El administrador del sitio requiere el cifrado de las extracciones en este sitio. Debe publicar el libro de trabajo especificando el cifrado de las extracciones."
-
-#:
-msgid "errors.publish.datasource.requested_no_extract_encryption_on_site_with_enforced_encryption"
-msgstr "La extracci\u00f3n de fuente de datos no se puede publicar sin cifrar. El administrador del sitio requiere el cifrado de las extracciones en este sitio. Debe publicar la extracci\u00f3n cifrada."
-
-#:
-msgid "errors.publish.has_unfinished_extract_creation_job"
-msgstr "Este recurso no se puede publicar porque quedan trabajos de creaci\u00f3n de extracciones pendientes o sin finalizar vinculados a \u00e9l. Espere o cancele esos trabajos y vuelva a intentarlo."
-
-#:
-msgid "errors.publishing.storage_quota_exceeded.message"
-msgstr "Se excedi\u00f3 la cuota de almacenamiento del sitio."
-
-#:
-msgid "errors.publishing.request_size_exceeded"
-msgstr "Este archivo no se puede publicar porque el tama\u00f1o de la solicitud es de {0} bytes, lo que supera el l\u00edmite de bytes por {1} bytes."
-
-#:
-msgid "errors.publishing.request_size_unknown"
-msgstr "No se ha podido determinar el tama\u00f1o de la solicitud."
-
-#:
-msgid "errors.site.quota_exceeded"
-msgstr "El contenido que intenta cargar exceder\u00e1 la capacidad del sitio en {0}."
-
-#:
-msgid "errors.personal_space.quota_exceeded"
-msgstr "El contenido supera la capacidad de su Espacio personal por {0}."
-
-#:
-msgid "errors.web_authoring.workbook_deleted"
-msgstr "El libro de trabajo ''{0}'' fue eliminado.  Elija ''Guardar como'' para guardar como nuevo libro de trabajo."
-
-#:
-msgid "errors.web_authoring.workbook_changed"
-msgstr "Otro usuario ha editado y guardado este libro de trabajo desde que comenz\u00f3 a editarlo. Por lo tanto, ya no puede actualizar el libro de trabajo original. Use Guardar como para crear un nuevo libro de trabajo con sus cambios."
-
-#:
-msgid "labels.publish.embed_credentials"
-msgstr "Insertar contrase\u00f1a insertada para la fuente de datos"
-
-#:
-msgid "errors.publish.workbook.google_no_embedded_credentials"
-msgstr "Este libro de trabajo contiene una fuente de datos {0} que requiere credenciales insertadas. Para guardar como otro libro de trabajo, seleccione ''{1}''."
-
-#:
-msgid "errors.publish.datasource.google_no_embedded_credentials"
-msgstr "Esta fuente de datos contiene una conexi\u00f3n {0} que requiere credenciales insertadas. Publique esta fuente de datos desde Tableau Desktop con credenciales incrustadas."
-
-#:
-msgid "errors.publish.datasource.federated_oauth_datasource_failed"
-msgstr "Las credenciales de una o m\u00e1s de las conexiones de su fuente de datos han caducado. Elimine las credenciales guardadas de esta fuente de datos en la p\u00e1gina de configuraci\u00f3n de su cuenta en Tableau Server o Tableau Online y vuelva a conectarse a la fuente de datos."
-
-#:
-msgid "errors.publish.workbook.missing_oauth_credential"
-msgstr "No se encontr\u00f3 la credencial ''{0}'' o no se puede usar para conectar a la fuente de datos o  libro de trabajo."
-
-#:
-msgid "errors.publish.version_incompatible.message"
-msgstr "Las versiones de escritorio y de servidor no son compatibles."
-
-#:
-msgid "errors.publish.version_incompatible.details"
-msgstr "Versi\u00f3n de escritorio ''{0}'', Documento de servidor versi\u00f3n ''{1}''."
-
-#:
-msgid "errors.publish.datasource.managed_keychain.unique_cv_suggestions"
-msgstr "Error en la publicaci\u00f3n debido a un conflicto. Reenv\u00ede el cambio."
-
-#:
-msgid "errors.publish.permissions_are_locked"
-msgstr "El proyecto en el que est\u00e1 publicando tiene los permisos bloqueados. Para publicar en este libro de trabajo, utilice los permisos predeterminados e int\u00e9ntelo de nuevo."
-
-#:
-msgid "errors.publish.datasource.not.found"
-msgstr "No se pudo encontrar esta fuente de datos en el servidor."
-
-#:
-msgid "errors.publish.extracts.disabled"
-msgstr "Guardar para fuentes de datos de archivos basadas en extracciones que no sean compatibles todav\u00eda."
-
-#:
-msgid "errors.publish.datasource.timeout"
-msgstr "La publicaci\u00f3n expir\u00f3 tras {0} segundos. Utilice Tableau Desktop para publicar esta fuente de datos."
-
-#:
-msgid "errors.publish.data_role.permission_not_null"
-msgstr "No se pueden establecer permisos expl\u00edcitos para las fuentes de datos de este tipo de funci\u00f3n de datos."
-
-#:
-msgid "errors.download.extracts.timeout"
-msgstr "La publicaci\u00f3n expir\u00f3 tras {0} segundos porque la fuente de datos tiene un archivo de extracci\u00f3n demasiado grande. Utilice Tableau Desktop para publicar esta fuente de datos."
-
-#:
-msgid "errors.publish.datasource.invalid_extract_update_time"
-msgstr "Valor extractUpdateTime no v\u00e1lido indicado: {0}"
-
-#:
-msgid "errors.publish.async.serialization"
-msgstr "Error de estado que impide serializar la publicaci\u00f3n del trabajo"
-
-#:
-msgid "errors.permissions.view.datasources"
-msgstr "Debe ser ''Interaccionador'' para ver la lista de fuentes de datos."
-
-# oauth related errors
-
-#:
-msgid "errors.oauth.invalid_oauth_class"
-msgstr "''{0}'' no es un tipo de conexi\u00f3n OAuth v\u00e1lido."
-
-#:
-msgid "errors.xmlapi.bad_request"
-msgstr "Solicitud incorrecta"
-
-#:
-msgid "errors.xmlapi.unauthorized"
-msgstr "No autorizado"
-
-#:
-msgid "errors.xmlapi.forbidden"
-msgstr "Faltan permisos"
-
-#:
-msgid "errors.xmlapi.system_user_not_found"
-msgstr "La cuenta de usuario est\u00e1 bloqueada o no es v\u00e1lida."
-
-#:
-msgid "errors.xmlapi.site_user_not_found"
-msgstr "Esta cuenta de usuario no est\u00e1 activa. Para obtener ayuda, p\u00f3ngase en contacto con su {0} administrador."
-
-#:
-msgid "errors.xmlapi.not_found"
-msgstr "Elemento no encontrado"
-
-#:
-msgid "errors.xmlapi.concurrent_update"
-msgstr "Actualizaci\u00f3n simult\u00e1nea"
-
-#:
-msgid "errors.xmlapi.internal_server_error"
-msgstr "Error interno del servidor"
-
-#:
-msgid "errors.xmlapi.illegal_state"
-msgstr "Estado no v\u00e1lido"
-
-#:
-msgid "errors.xmlapi.invalid_parameter"
-msgstr "Par\u00e1metro no v\u00e1lido"
-
-#:
-msgid "errors.xmlapi.already_exists"
-msgstr "Ya existe"
-
-#:
-msgid "errors.xmlapi.site_suspended"
-msgstr "Este sitio se ha suspendido. Debe ser un administrador de sistema para iniciar sesi\u00f3n."
-
-#:
-msgid "errors.xmlapi.site_locked"
-msgstr "Este sitio se ha bloqueado. No se permite iniciar sesi\u00f3n en este momento."
-
-#:
-msgid "errors.xmlapi.permission_modification"
-msgstr "No se puede publicar con permisos modificados"
-
-#:
-msgid "errors.xmlapi.update_desktop"
-msgstr "Para abrir los libros de trabajo que han creado otros autores, descargue la versi\u00f3n m\u00e1s reciente de Tableau Desktop Public Edition en http://public.tableau.com/"
-
-#:
-msgid "errors.xmlapi.throttled.summary"
-msgstr "Demasiadas solicitudes"
-
-#:
-msgid "errors.xmlapi.throttled.detail"
-msgstr "Hay demasiadas solicitudes para ''{0}''. Vuelva a intentarlo despu\u00e9s de {1}."
-
-#:
-msgid "datasource.publish.check.unpublishable"
-msgstr "No se ha podido publicar la fuente de datos."
-
-#:
-msgid "datasource.publish.check.publishable.extract_required"
-msgstr "Se debe crear una extracci\u00f3n al publicar."
-
-#:
-msgid "datasource.publish.check.publishable.credentials_required"
-msgstr "{1} acceder\u00e1 de manera temporal a las credenciales proporcionadas en relaci\u00f3n con ''{0}'' para confirmar que puede conservar una conexi\u00f3n de datos en tiempo real."
-
-#:
-msgid "datasource.publish.check.publishable.server_unreachable"
-msgstr "{1} no puede acceder a ''{0}''. Al publicar se crear\u00e1 una extracci\u00f3n."
-
-#:
-msgid "publish.bundles.workbook.subscription.subject"
-msgstr "Su libro de trabajo {0} ya est\u00e1 listo."
-
-#:
-msgid "publish.bundles.workbook.subscription.message"
-msgstr "Se han a\u00f1adido los datos de Salesforce al libro de trabajo. Vaya a su proyecto {0} para empezar."
-
-#:
-msgid "extracts.status.finished.upload.workbook"
-msgstr "Carga de extracciones finalizada (ID de extracci\u00f3n nuevo: {0}) para el libro de trabajo ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.refresh.workbook"
-msgstr "Actualizaci\u00f3n finalizada de extracciones (id de extracci\u00f3n nuevo:{0}) para libro de trabajo ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.increment.workbook"
-msgstr "Incrementos finalizados de extracciones (id de extracci\u00f3n nuevo:{0}) para libro de trabajo ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.encrypt.workbook"
-msgstr "Cifrado de extracciones finalizado (ID de extracci\u00f3n nueva: {0}) para el libro de trabajo ''{1}''"
-
-#:
-msgid "extracts.status.finished.decrypt.workbook"
-msgstr "Descifrado de extracciones finalizado (ID de extracci\u00f3n nueva: {0}) para el libro de trabajo ''{1}''"
-
-#:
-msgid "extracts.status.finished.rekey.workbook"
-msgstr "Recifrado de extracciones finalizado (ID de extracci\u00f3n nueva: {0}) para el libro de trabajo ''{1}''"
-
-#:
-msgid "extracts.status.finished.create.workbook"
-msgstr "Creaci\u00f3n de extracci\u00f3n finalizada (nueva ID de extracci\u00f3n:{0}) para el libro de trabajo ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.remove.workbook"
-msgstr "Cambio de extracci\u00f3n (nueva ID de fuente de datos:{0}) a tiempo real para el libro de trabajo ''{1}''"
-
-#:
-msgid "extracts.status.finished.upload.datasource"
-msgstr "Carga finalizada de extracciones (id de extracci\u00f3n nuevo:{0}) para fuente de datos ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.refresh.datasource"
-msgstr "Actualizaci\u00f3n finalizada de extracciones (id de extracci\u00f3n nuevo:{0}) para fuente de datos ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.increment.datasource"
-msgstr "Incrementos finalizados de extracciones (id de extracci\u00f3n nuevo:{0}) para fuente de datos ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.append.datasource"
-msgstr "Operaci\u00f3n de adjuntar finalizada de extracciones (id de extracci\u00f3n nuevo:{0}) para fuente de datos ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.replace.datasource"
-msgstr "Reemplazo finalizado de extracciones (id de extracci\u00f3n nuevo:{0}) para fuente de datos ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.encrypt.datasource"
-msgstr "Cifrado de extracciones finalizado (ID de extracci\u00f3n nueva: {0}) para la fuente de datos ''{1}''"
-
-#:
-msgid "extracts.status.finished.decrypt.datasource"
-msgstr "{0}) para la fuente de datos ''{1}''"
-
-#:
-msgid "extracts.status.finished.rekey.datasource"
-msgstr "Recifrado de extracciones finalizado (ID de extracci\u00f3n nueva: {0}) para la fuente de datos ''{1}''"
-
-#:
-msgid "extracts.status.finished.encrypt.flow"
-msgstr "Se ha finalizado el cifrado de extracciones para el flujo ''{0}''"
-
-#:
-msgid "extracts.status.finished.decrypt.flow"
-msgstr "Se ha finalizado el descifrado de extracciones para el flujo ''{0}''"
-
-#:
-msgid "extracts.status.finished.rekey.flow"
-msgstr "Se ha finalizado el recifrado de extracciones para el flujo ''{0}''"
-
-#:
-msgid "extracts.status.finished.encrypt.flowdraft"
-msgstr "Se ha finalizado el cifrado de las extracciones para el borrador de flujo ''{0}''"
-
-#:
-msgid "extracts.status.finished.decrypt.flowdraft"
-msgstr "Se ha finalizado el cifrado de las extracciones para el borrador de flujo ''{0}''"
-
-#:
-msgid "extracts.status.finished.rekey.flowdraft"
-msgstr "Se ha finalizado el recifrado de las extracciones para el borrador de flujo ''{0}''"
-
-#:
-msgid "extracts.status.finished.create.datasource"
-msgstr "Creaci\u00f3n de extracciones finalizada (nueva ID de extracci\u00f3n:{0}) para la fuente de datos ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.remove.datasource"
-msgstr "Cambio de extracci\u00f3n a tiempo real para la fuente de datos ''{1}''"
-
-#:
-msgid "extracts.status.encryption_key"
-msgstr "ID de clave de cifrado: ''{0}''."
-
-#:
-msgid "extracts.status.encryption_keys"
-msgstr "ID de clave de cifrado antigua: ''{0}''; ID de clave de cifrado nueva: ''{1}''."
-
-#:
-msgid "extracts.errors.upload"
-msgstr "Error al cargar extracciones para {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.refresh"
-msgstr "Se ha producido un error al actualizar extracciones para {0} ''{1}''"
-
-#:
-msgid "extracts.errors.create"
-msgstr "Error al crear las extracciones de {0} ''{1}''."
-
-#:
-msgid "extracts.errors.increment"
-msgstr "Error al incrementar extracciones para {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.append"
-msgstr "Error al adjuntar extracciones para {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.replace"
-msgstr "Error al reemplazar extracciones para {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.download"
-msgstr "Error al descargar extracciones para {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.remove"
-msgstr "Error al eliminar extracciones para {0}: ''{1}''."
-
-#:
-msgid "extracts.errors.title"
-msgstr "Error de extracciones de proceso"
-
-#:
-msgid "extracts.errors.nothing_to_upload"
-msgstr "No hay extracciones para cargar para {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.nothing_to_refresh"
-msgstr "No hay extracciones para actualizar para {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.nothing_to_increment"
-msgstr "No hay extracciones para incrementar para {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.nothing_to_append"
-msgstr "No hay extracciones para adjuntar para {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.nothing_to_replace"
-msgstr "No hay extracciones para reemplazar para {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.refresh_summary"
-msgstr "Error de extracciones de actualizaci\u00f3n"
-
-#:
-msgid "extracts.errors.encrypt_summary"
-msgstr "Error al cifrar extracciones"
-
-#:
-msgid "extracts.errors.rekey_summary"
-msgstr "Error al volver a cifrar extracciones"
-
-#:
-msgid "extracts.errors.decrypt_summary"
-msgstr "Error al descifrar extracciones"
-
-#:
-msgid "extracts.errors.remove_summary"
-msgstr "Error al eliminar extracciones"
-
-#:
-msgid "extracts.errors.create_summary"
-msgstr "Error al crear extracciones"
-
-#:
-msgid "extracts.errors.datasource_overwritten"
-msgstr "Fall\u00f3 la actualizaci\u00f3n debido a que la fuente de datos fue sobrescrita por otra tarea durante el procesamiento.  Actualice el env\u00edo para corregir."
-
-#:
-msgid "extracts.errors.workbook_overwritten"
-msgstr "Fall\u00f3 la actualizaci\u00f3n debido a que el libro de trabajo fue sobrescrito por otra tarea durante el procesamiento.  Actualice el env\u00edo para corregir."
-
-#:
-msgid "extracts.errors.encrypt"
-msgstr "Se ha producido un error al cifrar las extracciones para {0} ''{1}''"
-
-#:
-msgid "extracts.errors.decrypt"
-msgstr "Se ha producido un error al descifrar las extracciones para {0} ''{1}''"
-
-#:
-msgid "extracts.errors.rekey"
-msgstr "Se ha producido un error al volver a cifrar las extracciones para {0} ''{1}''"
-
-#:
-msgid "extracts.errors.encrypt_datasource_overwritten"
-msgstr "Se ha producido un error al cifrar la extracci\u00f3n debido a que otra tarea sobrescribi\u00f3 la fuente de datos durante el procesamiento."
-
-#:
-msgid "extracts.errors.encrypt_workbook_overwritten"
-msgstr "Se ha producido un error al cifrar la extracci\u00f3n debido a que otra tarea sobrescribi\u00f3 el libro de trabajo durante el procesamiento."
-
-#:
-msgid "extracts.errors.rekey_datasource_overwritten"
-msgstr "Se ha producido un error al volver a cifrar la extracci\u00f3n debido a que otra tarea sobrescribi\u00f3 la fuente de datos durante el procesamiento."
-
-#:
-msgid "extracts.errors.rekey_workbook_overwritten"
-msgstr "Se ha producido un error al volver a cifrar la extracci\u00f3n debido a que otra tarea sobrescribi\u00f3 el libro de trabajo durante el procesamiento."
-
-#:
-msgid "extracts.errors.decrypt_datasource_overwritten"
-msgstr "Se ha producido un error al descifrar la extracci\u00f3n debido a que otra tarea sobrescribi\u00f3 la fuente de datos durante el procesamiento."
-
-#:
-msgid "extracts.errors.decrypt_workbook_overwritten"
-msgstr "Se ha producido un error al descifrar la extracci\u00f3n debido a que otra tarea sobrescribi\u00f3 el libro de trabajo durante el procesamiento."
-
-#:
-msgid "extracts.errors.remove_datasource_overwritten"
-msgstr "La fuente de datos no se puede cambiar a tiempo real por que otra tarea la ha sustituido."
-
-#:
-msgid "extracts.errors.remove_workbook_overwritten"
-msgstr "El libro de trabajo no se puede cambiar a tiempo real porque otra tarea lo ha sustituido."
-
-#:
-msgid "extracts.errors.create_datasource_overwritten"
-msgstr "La fuente de datos no se puede extraer porque otra tarea la ha sustituido."
-
-#:
-msgid "extracts.errors.create_workbook_overwritten"
-msgstr "El libro de trabajo no se puede extraer porque otra tarea lo ha sustituido."
-
-#:
-msgid "extracts.site_mode_change_details"
-msgstr "Se ha cambiado el modo de cifrado de la extracci\u00f3n del sitio de ''{0}'' a ''{1}''."
-
-#:
-msgid "extracts.errors.encryption_not_licensed"
-msgstr "Se ha producido un error en esta operaci\u00f3n porque el cifrado de extracciones no cuenta con licencia. Para realizar esta operaci\u00f3n, debe renovar la licencia o descifrar la extracci\u00f3n."
-
-#:
-msgid "extracts.errors.operation_cancelled_detail"
-msgstr "El tiempo de la operaci\u00f3n para eliminar la extracci\u00f3n para {0} (fuente de datos: {2}) ha expirado."
-
-#:
-msgid "workbooks.messages.load_error"
-msgstr "No se puede cargar el libro de trabajo {0}"
-
-#:
-msgid "workbooks.messages.locked"
-msgstr "El libro de trabajo ''{0}'' actualmente est\u00e1 siendo modificado por otro usuario.  Intente nuevamente."
-
-#:
-msgid "workbooks.new_workbook.default_name"
-msgstr "Nuevo libro de trabajo"
-
-#:
-msgid "workbooks.new_datasource.default_name"
-msgstr "Nueva fuente de datos"
-
-#:
-msgid "datasources.messages.load_error"
-msgstr "No se puede cargar la fuente de datos {0}"
-
-#:
-msgid "metrics.new_metric.default_name"
-msgstr "Nueva m\u00e9trica"
-
-#:
-msgid "messages.timeout_error.summary"
-msgstr "Error de tiempo de espera"
-
-#:
-msgid "messages.timeout_error.task_canceled"
-msgstr "La cancelaci\u00f3n de una tarea que tarda m\u00e1s de {0} segundos"
-
-#:
-msgid "subscriptions.manage_my_subscriptions"
-msgstr "Administrar mis suscripciones"
-
-#:
-msgid "subscriptions.message_greeting"
-msgstr "Hola:"
-
-#:
-msgid "subscriptions.subscribed_footer"
-msgstr "Esta es su sucripci\u00f3n a {0}"
-
-#:
-msgid "subscriptions.subscribed_workbook"
-msgstr "libro de trabajo"
-
-#:
-msgid "subscriptions.subscribed_view"
-msgstr "ver"
-
-#:
-msgid "subscriptions.fullstop"
-msgstr "."
-
-#:
-msgid "subscriptions.extract_refresh_footer"
-msgstr "Recibir\u00e1 este correo electr\u00f3nico de la suscripci\u00f3n cuando se actualicen los datos."
-
-#:
-msgid "subscriptions.explore_the_viz"
-msgstr "Explorar la visualizaci\u00f3n"
-
-#:
-msgid "subscriptions.explore_the_workbook"
-msgstr "Explorar el libro de trabajo"
-
-#:
-msgid "subscriptions.pdf_attached"
-msgstr "Se adjunta el PDF de Tableau."
-
-#:
-msgid "subscriptions.access_live_content"
-msgstr "Puede acceder a la vista en directo de su contenido aqu\u00ed"
-
-#:
-msgid "subscriptions.warning_deprecated_type"
-msgstr "obsoleto"
-
-#:
-msgid "subscriptions.warning_extract_refresh_type"
-msgstr "error en la actualizaci\u00f3n de extracci\u00f3n"
-
-#:
-msgid "subscriptions.warning_flow_run_type"
-msgstr "error en la ejecuci\u00f3n del flujo"
-
-#:
-msgid "subscriptions.warning_introduction_general"
-msgstr "Las siguientes advertencias de calidad de los datos afectan a {0}."
-
-#:
-msgid "subscriptions.warning_introduction_view"
-msgstr "Para obtener m\u00e1s informaci\u00f3n, consulte la pesta\u00f1a Detalles de los datos en la vista"
-
-#:
-msgid "subscriptions.warning_introduction_workbook"
-msgstr "Para obtener m\u00e1s informaci\u00f3n, consulte la p\u00e1gina del libro de trabajo"
-
-#:
-msgid "subscriptions.warning_maintenance_type"
-msgstr "en mantenimiento"
-
-#:
-msgid "subscriptions.warning_permission_error"
-msgstr "Esta advertencia est\u00e1 relacionada con un activo que no puede ver por falta de permisos."
-
-#:
-msgid "subscriptions.warning_redacted"
-msgstr "Permisos necesarios"
-
-#:
-msgid "subscriptions.warning_sensitve_type"
-msgstr "datos confidenciales"
-
-#:
-msgid "subscriptions.warning_severe"
-msgstr "Advertencia de calidad de los datos importante"
-
-#:
-msgid "subscriptions.warning_stale_type"
-msgstr "datos obsoletos"
-
-#:
-msgid "subscriptions.warning_standard"
-msgstr "Advertencia de calidad de los datos"
-
-#:
-msgid "subscriptions.warning_error_type"
-msgstr "tipo de advertencia desconocido"
-
-#:
-msgid "subscriptions.warning_warning_type"
-msgstr "advertencia"
-
-#:
-msgid "errors.subscriptions.image_render_failed"
-msgstr "No se pudo procesar la instant\u00e1nea de la vista ''{0}'' correctamente."
-
-#:
-msgid "errors.subscriptions.see_live_view"
-msgstr "Para ver la vita en l\u00ednea, vaya a {0}."
-
-#:
-msgid "errors.subscriptions.disabled_on_server"
-msgstr "La configuraci\u00f3n de suscripciones en todo el servidor no est\u00e1 activada. No se pueden procesar las suscripciones."
-
-#:
-msgid "errors.subscriptions.disabled_on_site"
-msgstr "Se han desactivado las suscripciones para este sitio."
-
-#:
-msgid "errors.subscriptions.site_is_locked"
-msgstr "El sitio est\u00e1 bloqueado. No se pueden procesar las suscripciones."
-
-#:
-msgid "errors.subscriptions.orphan"
-msgstr "No se han encontrado los libros de trabajo ni las vistas asociados con esta suscripci\u00f3n."
-
-#:
-msgid "errors.subscriptions.user_unlicensed"
-msgstr "Omisi\u00f3n de suscripci\u00f3n de usuario sin licencia."
-
-#:
-msgid "errors.subscriptions.smtp_unreacheable"
-msgstr "No se puede conectar con el host de SMTP. Compruebe si SMTP se ha configurado."
-
-#:
-msgid "errors.subscriptions.uncategorized_error"
-msgstr "Error desconocido"
-
-#:
-msgid "errors.subscriptions.pdf_render_failed"
-msgstr "El PDF adjunto a este correo electr\u00f3nico no se pudo representar correctamente."
-
-#:
-msgid "errors.subscriptions.pdf_limit_exceeded"
-msgstr "El PDF generado no se puede adjuntar a este correo electr\u00f3nico porque supera el l\u00edmite de {0} MB de tama\u00f1o."
-
-#:
-msgid "errors.subscriptions.attachments_not_enabled"
-msgstr "Se produjo un error en la suscripci\u00f3n porque los adjuntos al correo electr\u00f3nico estaban desactivados. P\u00f3ngase en contacto con su administrador de Tableau para obtener m\u00e1s informaci\u00f3n."
-
-#:
-msgid "errors.subscriptions.pdf_email_failed"
-msgstr "El PDF generado no se pudo adjuntar a este correo electr\u00f3nico."
-
-#:
-msgid "errors.subscriptions.learn_more_troubleshoot"
-msgstr "<a hre"
-
-#:
-msgid "errors.subscriptions.bad_extract_refresh_subscription_configuration"
-msgstr "La suscripci\u00f3n se ha suspendido porque el libro de trabajo contiene varios programas de actualizaci\u00f3n de extracci\u00f3n. Para reanudarla, cambie la frecuencia a Seg\u00fan el programa seleccionado."
-
-#:
-msgid "errors.subscriptions.subscription_failed_refresh_failure"
-msgstr "Error al actualizar la extracci\u00f3n de la fuente de datos."
-
-#:
-msgid "errors.subscriptions.multiple_extracts_for_extract_refresh_subscription"
-msgstr "El libro de trabajo contiene varios programas de actualizaci\u00f3n de extracci\u00f3n. Cambie la frecuencia a Seg\u00fan el programa seleccionado."
-
-#:
-msgid "errors.subscriptions.datasource_is_missing_password"
-msgstr "Error de conexi\u00f3n a la fuente de datos. Compruebe las credenciales de las conexiones de todas las fuentes de datos del libro de trabajo."
-
-#:
-msgid "subscriptions.results_summary.sg"
-msgstr "{0} de {1} suscripci\u00f3n enviada del programa ''{2}''."
-
-#:
-msgid "subscriptions.results_summary.pl"
-msgstr "{0} de {1} suscripciones enviadas del programa ''{2}''."
-
-#:
-msgid "subscriptions.results_views_per_subscription.sg"
-msgstr "{0} ({1} de 1 vista tuvo \u00e9xito)"
-
-#:
-msgid "subscriptions.results_views_per_subscription.pl"
-msgstr "{0} ({1} de {2} vistas tuvieron \u00e9xito)"
-
-#:
-msgid "subscriptions.results_views_per_subscription.more"
-msgstr "({0} m\u00e1s)"
-
-#:
-msgid "subscriptions.results_views_per_subscription.failed"
-msgstr "{0} ({1} de {2} vistas fallidas)."
-
-#:
-msgid "subscriptions.results_header.all_shown.failures.sg"
-msgstr "1 error"
-
-#:
-msgid "subscriptions.results_header.all_shown.failures.pl"
-msgstr "{0} fallas"
-
-#:
-msgid "subscriptions.results_header.all_shown.warnings.sg"
-msgstr "1 advertencia"
-
-#:
-msgid "subscriptions.results_header.all_shown.warnings.pl"
-msgstr "{0} advertencias"
-
-#:
-msgid "subscriptions.results_header.some_hidden.failures.pl.sg"
-msgstr "{0} errores (1 oculto, consulte los registros)"
-
-#:
-msgid "subscriptions.results_header.some_hidden.failures.pl.pl"
-msgstr "{0} fallas ({1} oculta, consulte los registros)"
-
-#:
-msgid "subscriptions.results_header.some_hidden.warnings.pl.sg"
-msgstr "{0} advertencias (1 oculta, consulte los registros)"
-
-#:
-msgid "subscriptions.results_header.some_hidden.warnings.pl.pl"
-msgstr "{0} advertencias ({1} oculta, consulte los registros)"
-
-#:
-msgid "dataalerts.manage_my_data_alerts"
-msgstr "Administrar alertas"
-
-#:
-msgid "dataalerts.edit_data_alert"
-msgstr "Editar alerta"
-
-#:
-msgid "dataalerts.remove_user_from_data_alert"
-msgstr "Eliminarme"
-
-#:
-msgid "dataalerts.add_user_to_data_alert"
-msgstr "A\u00f1adirme a esta alerta"
-
-#:
-msgid "dataalerts.greater_or_equal"
-msgstr "{0} era superior o igual a {1}."
-
-#:
-msgid "dataalerts.greater"
-msgstr "{0} era superior a {1}."
-
-#:
-msgid "dataalerts.less_or_equal"
-msgstr "{0} era inferior o igual a {1}."
-
-#:
-msgid "dataalerts.less"
-msgstr "{0} era inferior a {1}."
-
-#:
-msgid "dataalerts.equal"
-msgstr "{0} era igual a {1}."
-
-#:
-msgid "dataalerts.email_alt_text"
-msgstr "Vista usada por la alerta: {0}"
-
-#:
-msgid "dataalerts.email_alt_text_hidden_view"
-msgstr "Vista usada por la alerta: {0} con cambios aplicados"
-
-#:
-msgid "dataalerts.alert_triggered_for_the_view"
-msgstr "Alerta activada para la vista"
-
-#:
-msgid "dataalerts.failure.email.subject"
-msgstr "La alerta no funciona para: {0}"
-
-#:
-msgid "dataalerts.failure.status"
-msgstr "Su alerta <i>{0}</i> no funciona"
-
-#:
-msgid "dataalerts.failure.view.details.alert"
-msgstr "Ver esta alerta"
-
-#:
-msgid "dataalerts.failure.explanation"
-msgstr "La alerta <i>{0}</i> no funciona en este momento, de modo que no se notificar\u00e1 a los destinatarios cuando la condici\u00f3n de los datos sea verdadera. Recibir\u00e1 una notificaci\u00f3n por correo electr\u00f3nico cuando la alerta vuelva a funcionar."
-
-#:
-msgid "dataalerts.failure.affected.alert"
-msgstr "Alerta afectada"
-
-#:
-msgid "dataalerts.failure.time"
-msgstr "Error en la alerta de tiempo"
-
-#:
-msgid "dataalerts.failure.cause"
-msgstr "En ocasiones, las alertas fallan debido a problemas de red temporales que se resuelven por s\u00ed solos. Como alternativa, intente volver a crear la alerta en la vista de datos original o solucionar problemas de fallos habituales de alertas, como los siguientes:"
-
-#:
-msgid "dataalerts.failure.changed.view"
-msgstr "Se ha eliminado o renombrado un libro de trabajo, vista o campo de datos."
-
-#:
-msgid "dataalerts.failure.expired.credentials"
-msgstr "Han caducado las credenciales de base de datos incrustadas en un libro de trabajo."
-
-#:
-msgid "dataalerts.failure.datasource.error"
-msgstr "Una fuente de datos inaccesible."
-
-#:
-msgid "dataalerts.failure.email.footer"
-msgstr "Est\u00e1 recibiendo este mensaje en {0} debido al error de una alerta."
-
-#:
-msgid "dataalerts.failure.troubleshooting"
-msgstr "Para comprobar si alguno de los problemas indicados anteriormente est\u00e1 causando el error de su alerta, haga clic en el bot\u00f3n siguiente."
-
-#:
-msgid "dataalerts.success.email.subject"
-msgstr "Se ha reanudado la alerta para: {0}"
-
-#:
-msgid "dataalerts.success.status"
-msgstr "Se ha reanudado su alerta <i>{0}</i>"
-
-#:
-msgid "dataalerts.success.explanation"
-msgstr "Su alerta <i>{0}</i> ya vuelve a funcionar, de modo que se notificar\u00e1 a los destinatarios cuando la condici\u00f3n de los datos sea verdadera."
-
-#:
-msgid "dataalerts.failure.error.internalError"
-msgstr "Error interno de alerta de datos"
-
-#:
-msgid "dataalerts.failure.error.invalidDataAlertSpecification"
-msgstr "Especificaci\u00f3n no v\u00e1lida de alerta"
-
-#:
-msgid "dataalerts.failure.error.summaryTableNotFound"
-msgstr "No se encontr\u00f3 la tabla de datos de resumen"
-
-#:
-msgid "dataalerts.failure.error.unclassifiedError"
-msgstr "Error no clasificado"
-
-#:
-msgid "dataalerts.failure.error.viewContentNotFound"
-msgstr "No se encontr\u00f3 el contenido de {0} de la vista de alerta de datos"
-
-#:
-msgid "dataalerts.failure.error.viewNotFound"
-msgstr "No se encontr\u00f3 la vista de alerta de datos"
-
-#:
-msgid "dataalerts.failure.error.workbookNotFound"
-msgstr "No se encontr\u00f3 el libro de trabajo"
-
-#:
-msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
-msgstr "No se ha encontrado ning\u00fan eje para el campo {0}"
-
-#:
-msgid "dataalerts.failure.error.paneDescriptorNotFound"
-msgstr "{0}"
-
-#:
-msgid "dataalerts.failure.error.unsupportedComparisonExpression"
-msgstr "Expresi\u00f3n de comparaci\u00f3n no compatible {0}"
-
-#:
-msgid "dataalerts.failure.error.nonConstComparisonOp"
-msgstr "No se ha detectado ning\u00fan operador de comparaci\u00f3n constante: {0}"
-
-#:
-msgid "dataalerts.failure.error.cannotAddFilter"
-msgstr "Se ha producido un error al a\u00f1adir un filtro a la alerta de datos"
-
-#:
-msgid "dataalerts.failure.error.sheetNotAlertable"
-msgstr "La hoja {0} no contiene datos compatibles con las alertas. {1}"
-
-#:
-msgid "dataalerts.failure.error.dataAlertMeasureNotFound"
-msgstr "No se puede seleccionar una medida. {0}"
-
-#:
-msgid "dataalerts.failure.error.tooManyMeasuresForDataAlert"
-msgstr "Se ha detectado un n\u00famero de medidas incorrecto.{0}"
-
-#:
-msgid "dataalerts.failure.error.thresholdParseError"
-msgstr "Error al analizar el texto del umbral {0}. {1}"
-
-#:
-msgid "dataalerts.failure.error.dataAlertPresModelCreationError"
-msgstr "Se ha producido un error al serializar la alerta. {0}"
-
-#:
-msgid "dataalerts.failure.error.cannotDrawDataAlertDialog"
-msgstr "Se ha producido un error al crear el di\u00e1logo de alerta."
-
-#:
-msgid "dataalerts.failure.error.unsupportedDataAlertType"
-msgstr "Actualmente no se admite el tipo de alerta {0}."
-
-#:
-msgid "dataalerts.failure.suspend.email.subject"
-msgstr "Se ha suspendido la alerta para: {0}"
-
-#:
-msgid "dataalerts.failure.suspend.email.status"
-msgstr "Se ha suspendido su alerta {0}"
-
-#:
-msgid "dataalerts.failure.suspend.email.explanation"
-msgstr "En estado suspendido, no evaluaremos los destinatarios de la alerta o la vista. Una vez que se haya solucionado, puede reanudar la alerta en <a hre"
-
-#:
-msgid "dataalerts.failure.suspend.view.name.prefix"
-msgstr "Vista"
-
-#:
-msgid "dataalerts.failure.suspend.time"
-msgstr "Tiempo de suspensi\u00f3n"
-
-#:
-msgid "dataalerts.failure.suspend.email.footer"
-msgstr "Ha recibido este correo electr\u00f3nico porque su alerta se ha suspendido."
-
-#:
-msgid "dataalerts.failure.suspend.email.view.name.my.content"
-msgstr "Mi contenido"
-
-#:
-msgid "dataalerts.failure.suspend.view.alerts"
-msgstr "Ver alertas"
-
-#:
-msgid "metricsservices.failure.affected.metric"
-msgstr "M\u00e9trica afectada"
-
-#:
-msgid "metricsservices.failure.cause"
-msgstr "En algunos casos, las actualizaciones de m\u00e9tricas no se completan debido a problemas de conexi\u00f3n aislados que se resuelven autom\u00e1ticamente. Estas son otras posibles razones de los fallos al actualizar las m\u00e9tricas:"
-
-#:
-msgid "metricsservices.failure.changed.view"
-msgstr "Se ha eliminado o cambiado el nombre de un libro de trabajo, vista o campo de datos"
-
-#:
-msgid "metricsservices.failure.permissions.error"
-msgstr "Se han modificado los permisos de la vista conectada"
-
-#:
-msgid "metricsservices.failure.email.footer"
-msgstr "Se le ha enviado este mensaje a {0} debido a un error durante la actualizaci\u00f3n de la m\u00e9trica."
-
-#:
-msgid "metricsservices.failure.email.subject"
-msgstr "Error en la actualizaci\u00f3n de la m\u00e9trica de: {0}"
-
-#:
-msgid "metricsservices.failure.expired.credentials"
-msgstr "Han caducado las credenciales de base de datos insertadas en un libro de trabajo"
-
-#:
-msgid "metricsservices.failure.explanation"
-msgstr "Su m\u00e9trica no se puede actualizar, por tanto, no se aplican los cambios. Recibir\u00e1 un correo electr\u00f3nico informativo cuando la actualizaci\u00f3n de la m\u00e9trica se reanude."
-
-#:
-msgid "metricsservices.failure.status"
-msgstr "La m\u00e9trica {0} no se est\u00e1 actualizando"
-
-#:
-msgid "metricsservices.failure.suspend.email.explanation"
-msgstr "Hasta que se reanude la actualizaci\u00f3n, no se aplicar\u00e1n los cambios a los datos de la m\u00e9trica. Una vez solucionado el problema, podr\u00e1 reanudar la actualizaci\u00f3n."
-
-#:
-msgid "metricsservices.failure.suspend.email.footer"
-msgstr "Se ha enviado este correo electr\u00f3nico a {0} porque la actualizaci\u00f3n de la m\u00e9trica se ha suspendido."
-
-#:
-msgid "metricsservices.failure.suspend.email.status"
-msgstr "Se ha suspendido la actualizaci\u00f3n de la m\u00e9trica {0}"
-
-#:
-msgid "metricsservices.failure.suspend.email.subject"
-msgstr "Se ha suspendido la actualizaci\u00f3n de la m\u00e9trica de: {0}"
-
-#:
-msgid "metricsservices.failure.suspend.time"
-msgstr "Tiempo de suspensi\u00f3n"
-
-#:
-msgid "metricsservices.failure.suspend.view.metric"
-msgstr "Ir a la m\u00e9trica"
-
-#:
-msgid "metricsservices.failure.suspend.view.name.prefix"
-msgstr "Vista conectada"
-
-#:
-msgid "metricsservices.failure.time"
-msgstr "Hora del error de actualizaci\u00f3n"
-
-#:
-msgid "metricsservices.failure.troubleshooting"
-msgstr "Para comprobar si otros problemas provocan el error en la actualizaci\u00f3n de la m\u00e9trica, haga clic en el bot\u00f3n que aparece m\u00e1s abajo. Puede intentar volver a crear la m\u00e9trica en la vista conectada."
-
-#:
-msgid "metricsservices.failure.view.details.metric"
-msgstr "Ir a la m\u00e9trica"
-
-#:
-msgid "metricsservices.failure.view.name.prefix"
-msgstr "Vista conectada"
-
-#:
-msgid "metricsservices.success.email.subject"
-msgstr "Se ha reanudado la actualizaci\u00f3n de la m\u00e9trica de: {0}"
-
-#:
-msgid "metricsservices.success.explanation"
-msgstr "La actualizaci\u00f3n de su m\u00e9trica vuelve a funcionar, ahora se buscar\u00e1n las actualizaciones en los datos de sus m\u00e9tricas."
-
-#:
-msgid "metricsservices.success.status"
-msgstr "Se ha reanudado la actualizaci\u00f3n de la m\u00e9trica {0}"
-
-#:
-msgid "errors.staticimages.generic"
-msgstr "Error al generar im\u00e1genes est\u00e1ticas para el libro de trabajo {0}. {1}."
-
-#:
-msgid "errors.internal_error.request.message"
-msgstr "{0} no pudo satisfacer la solicitud."
-
-#:
-msgid "errors.permissions.limited_user_visibility"
-msgstr "Error al completar la consulta. El usuario debe tener permisos de administrador o creador para consultar a otros usuarios sobre la configuraci\u00f3n de la Visibilidad de usuario"
-
-#:
-msgid "local_names.system_user.guest.name"
-msgstr "Invitado"
-
-#:
-msgid "local_names.group.all_users.name"
-msgstr "Todos los usuarios"
-
-#:
-msgid "local_names.containers.personal_space.name"
-msgstr "Espacio personal"
-
-#:
-msgid "password_reset.email.subject"
-msgstr "Este es el enlace para restablecer la contrase\u00f1a"
-
-#:
-msgid "password_reset.email.body"
-msgstr "Hola, {0}:<br/><br/>Ha solicitado el restablecimiento de su contrase\u00f1a.<br/><br/> Para cambiar la contrase\u00f1a de Tableau Server, {1} o pegue el siguiente enlace en el navegador: {2}<br/><br/>Este enlace expirar\u00e1 en 48 horas, as\u00ed que tome las medidas necesarias lo antes posible.<br/><br/>Si no ha solicitado el restablecimiento de la contrase\u00f1a, recomendamos que se ponga en contacto con el administrador de servidor.<br/><br/>Gracias por usar Tableau.<br/>El equipo de Tableau"
-
-#:
-msgid "password_reset.email.link"
-msgstr "haga clic aqu\u00ed"
-
-#:
-msgid "hours.pl"
-msgstr "{0} horas"
-
-#:
-msgid "hours.sg"
-msgstr "1 hora"
-
-#:
-msgid "minutes.pl"
-msgstr "{0} minutos"
-
-#:
-msgid "minutes.sg"
-msgstr "1 minuto"
-
-#:
-msgid "seconds.pl"
-msgstr "{0} segundos"
-
-#:
-msgid "seconds.sg"
-msgstr "1 segundo"
-
-#:
-msgid "dataconnections.classes.tableau_server_site"
-msgstr "Sitio de Tableau Server"
-
-#:
-msgid "materializeviews.errors.workbook_not_in_project"
-msgstr "El proyecto ''{0}'' no contiene el libro de trabajo ''{1}''"
-
-#:
-msgid "materializeviews.errors.workbook_has_no_extract"
-msgstr "No se pudo actualizar la configuraci\u00f3n de las vistas materializadas del libro de trabajo ''{0}''. Actualmente, solo se admiten los libros de trabajo con extracciones incrustadas"
-
-#:
-msgid "materializeviews.errors.workbook_updating_errors"
-msgstr "Se han encontrado errores al actualizar la configuraci\u00f3n de las vistas materializadas para los libros de trabajo"
-
-#:
-msgid "materializeviews.errors.workbook_too_large"
-msgstr "Error al actualizar la configuraci\u00f3n de las vistas materializadas para el libro de trabajo ''{0}'' porque el tama\u00f1o del libro de trabajo supera el limite de {1} GB"
-
-#:
-msgid "materializeviews.errors.project_path_not_exists"
-msgstr "La ruta del proyecto ''{0}'' no existe."
-
-#:
-msgid "materializeviews.errors.feature_disabled"
-msgstr "Error al actualizar la configuraci\u00f3n de las vistas materializadas para el libro de trabajo ''{0}'' porque la funci\u00f3n est\u00e1 actualmente deshabilitada"
-
-#:
-msgid "materializeviews.errors.update_materialized_views_setting_failed"
-msgstr "Error al actualizar la configuraci\u00f3n de las vistas materializadas para el libro de trabajo ''{0}''"
-
-#:
-msgid "materializeviews.errors.site_not_enabled"
-msgstr "Este sitio no est\u00e1 habilitado para vistas materializadas. P\u00f3ngase en contacto con su administrador"
-
-#:
-msgid "materializeviews.errors.encrypted_extracts_not_supported"
-msgstr "Por el momento, la funci\u00f3n Vistas materializadas no admite libros de trabajo con extracciones cifradas."
-
-#:
-msgid "materializedviews.finished.create"
-msgstr "Se han creado las vistas materializadas con el estado ''{0}'' del libro de trabajo ''{1}''"
-
-#:
-msgid "materializedviews.finished.delete"
-msgstr "Se han eliminado las vistas materializadas del libro de trabajo con id: {0}"
-
-#:
-msgid "materializedviews.finished.encrypt"
-msgstr "Se ha completado el cifrado de vistas materializadas para el libro de trabajo ''{0}''"
-
-#:
-msgid "materializedviews.finished.decrypt"
-msgstr "Se ha completado el descifrado de vistas materializadas para el libro de trabajo ''{0}''"
-
-#:
-msgid "materializedviews.finished.rekey"
-msgstr "Se ha completado el recifrado de vistas materializadas para el libro de trabajo ''{0}''"
-
-#:
-msgid "materializedviews.status.encryption_key"
-msgstr "ID de clave de cifrado: ''{0}''."
-
-#:
-msgid "materializedviews.status.encryption_keys"
-msgstr "ID de clave de cifrado antigua: ''{0}''; ID de clave de cifrado nueva: ''{1}''."
-
-#:
-msgid "materializedviews.status.encryption_type"
-msgstr "Tipo de cifrado de la fuente de datos: ''{0}''"
-
-#:
-msgid "customizedviews.namedSharingPrefix"
-msgstr "Versi\u00f3n compartida"
-
-#:
-msgid "flows.drafts.default_name"
-msgstr "Nuevo flujo"
-
-#:
-msgid "content_type.project"
-msgstr "Proyecto"
-
-#:
-msgid "content_type.workbook"
-msgstr "Libro de trabajo"
-
-#:
-msgid "content_type.view"
-msgstr "Vista"
-
-#:
-msgid "content_type.datasource"
-msgstr "Fuente de datos"
-
-#:
-msgid "content_type.flow"
-msgstr "Flujo"
-
-#:
-msgid "content_type.metric"
-msgstr "M\u00e9trica"
-
-#:
-msgid "content_type.collection"
-msgstr "Colecci\u00f3n"
-
-#:
-msgid "content_type.visualization"
-msgstr "Visualizaci\u00f3n"
-
-#:
-msgid "content_type.askdata_visualization"
-msgstr "Visualizaci\u00f3n de Pregunte a los datos"
-
-#:
-msgid "content_type.explaindata_explanation"
-msgstr "Explicaci\u00f3n"
-
-#:
-msgid "content_type.publishedconnection"
-msgstr "Conexi\u00f3n virtual"
-
-#:
-msgid "content_type.publishedconnectiontable"
-msgstr "Tabla de la conexi\u00f3n virtual"
-
-#:
-msgid "upgradethumbnails.status.server_started"
-msgstr "Respuesta del servidor: la actualizaci\u00f3n de miniaturas ha comenzado."
-
-#:
-msgid "upgradethumbnails.status.server_stopped"
-msgstr "Respuesta del servidor: se han detenido %d trabajos"
-
-#:
-msgid "dataquality.message.refresh_failed"
-msgstr "Error de acualizaci\u00f3n: {0}"
-
-#:
-msgid "dataquality.message.last_successful"
-msgstr "Realizado correctamente por \u00faltima vez: {0}"
-
-#:
-msgid "dataquality.message.next_scheduled"
-msgstr "Pr\u00f3xima programaci\u00f3n: {0}"
-
-#:
-msgid "dataquality.message.flow_run_output_steps_failed"
-msgstr "No fue posible ejecutar {0}/{1} pasos de salida"
-
-#:
-msgid "importcsvsummary.error.details"
-msgstr "Detalles del error:"
-
-#:
-msgid "importcsvsummary.remainingerrors"
-msgstr "(errores restantes no mostrados)"
-
-#:
-msgid "importcsvsummary.error.line"
-msgstr "l\u00ednea {0} para usuario ''{1}'': ''{2}''"
-
-#:
-msgid "importcsvsummary.line.processed"
-msgstr "L\u00edneas procesadas: {0}"
-
-#:
-msgid "importcsvsummary.line.skipped"
-msgstr "L\u00edneas omitidas: {0}"
-
-#:
-msgid "importcsvsummary.users.added.count"
-msgstr "N\u00famero de usuarios a\u00f1adidos: {0}"
-
-#:
-msgid "importcsvsummary.errors.count"
-msgstr "N\u00famero de errores: {0}"
-
-#:
-msgid "importcsvsummary.error.unexpected_extension"
-msgstr "Extensi\u00f3n de nombre de archivo inesperada para el archivo .csv"
-
-#:
-msgid "importcsvsummary.error.size_limit"
-msgstr "CsvFile sobrepasa el tama\u00f1o l\u00edmite de {0}"
-
-#:
-msgid "importcsvsummary.error.local.password_mismatch"
-msgstr "La actualizaci\u00f3n del usuario del sitio local requiere una contrase\u00f1a vac\u00eda o coincidente"
-
-#:
-msgid "importcsvsummary.error.local.password_required"
-msgstr "La creaci\u00f3n del usuario del sistema local cuando Auth es Local requiere una contrase\u00f1a"
-
-#:
-msgid "importcsvsummary.error.ad.user_not_found"
-msgstr "No se ha encontrado al usuario AD ''{0}''"
-
-#:
-msgid "importcsvsummary.error.too_many_errors"
-msgstr "Se han encontrado demasiados errores en el archivo .csv"
-
-#:
-msgid "audit.errors.wdc_not_allowlisted"
-msgstr "El conector de datos web no se encuentra en la lista de admisi\u00f3n. Para obtener ayuda, consulte: https://help.tableau.com/current/online/es-es/to_keep_data_fresh.htm"
-
-#:
-msgid "user.input.name.err.too_long"
-msgstr "el nombre supera el l\u00edmite de caracteres {0}"
-
-#:
-msgid "user.input.name.err.empty"
-msgstr "el nombre no puede quedar vac\u00edo"
-
-#:
-msgid "askdata.title"
-msgstr "Pregunte a los datos"
-
-#:
-msgid "slack.app.upgrade.email.notification.subject"
-msgstr "Actualizaci\u00f3n en la aplicaci\u00f3n de Tableau para Slack"
-
-#:
-msgid "slack.app.upgrade.email.notification.introduction"
-msgstr "Hay una actualizaci\u00f3n disponible para la aplicaci\u00f3n de Tableau para Slack que se puede volver a instalar ahora para que funcione con la siguiente versi\u00f3n de Tableau Online. Tableau recomienda volver a instalar la aplicaci\u00f3n para conseguir el mejor rendimiento y nuevas funcionalidades para los usuarios. Puede echar un vistazo a los cambios y funciones nuevas en <a styl"
-
-#:
-msgid "slack.app.upgrade.email.notification.action"
-msgstr "Para actualizar y consultar los pasos para volver a instalar la aplicaci\u00f3n, consulte <a styl"
-
-#:
-msgid "slack.app.upgrade.email.notification.steps"
-msgstr "Esta notificaci\u00f3n de servicio ha sido publicada por Tableau Online."
-
-#:
-msgid "slack.app.upgrade.email.notification.reason"
-msgstr "Recibe esta notificaci\u00f3n porque desempe\u00f1a la funci\u00f3n de administrador en un sitio de Tableau Online conectado a Slack."
-
-#:
-msgid "slack.app.upgrade.email.notification.footer.privacy"
-msgstr "Lea nuestra <a styl"
-
-#:
-msgid "unifiedconsumption.tcrm.folders.private"
-msgstr "Mi aplicaci\u00f3n privada"
-
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-25 04:01-0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.6.2\n"
+
+#: permissions.labels.capabilities.read
+msgid "Vista:"
+msgstr ""
+
+#: permissions.labels.capabilities.write
+msgid "Sobrescribir:"
+msgstr ""
+
+#: permissions.labels.capabilities.write.legacy
+msgid "Guardar:"
+msgstr ""
+
+#: permissions.labels.capabilities.delete
+msgid "Eliminar:"
+msgstr ""
+
+#: permissions.labels.capabilities.filter
+msgid "Filtrar:"
+msgstr ""
+
+#: permissions.labels.capabilities.add_tag
+msgid "Añadir etiqueta:"
+msgstr ""
+
+#: permissions.labels.capabilities.add_favorite
+msgid "Añadir favorito:"
+msgstr ""
+
+#: permissions.labels.capabilities.add_comment
+msgid "Añadir comentarios:"
+msgstr ""
+
+#: permissions.labels.capabilities.add_comment.legacy
+msgid "Añadir comentario:"
+msgstr ""
+
+#: permissions.labels.capabilities.view_comments
+msgid "Ver comentarios:"
+msgstr ""
+
+#: permissions.labels.capabilities.vud
+msgid "Descargar datos completos:"
+msgstr ""
+
+#: permissions.labels.capabilities.export_image
+msgid "Descargar imagen/PDF:"
+msgstr ""
+
+#: permissions.labels.capabilities.export_data
+msgid "Descargar datos de resumen:"
+msgstr ""
+
+#: permissions.labels.capabilities.export_xml
+msgid "Descargar/Guardar una copia:"
+msgstr ""
+
+#: permissions.labels.capabilities.export_xml.legacy
+msgid "Descargar/Guardar como:"
+msgstr ""
+
+#: permissions.labels.capabilities.save_customized_view
+msgid "Guardar vista personalizada:"
+msgstr ""
+
+#: permissions.labels.capabilities.share_view
+msgid "Recurso compartido personalizado:"
+msgstr ""
+
+#: permissions.labels.capabilities.stateful_url
+msgid "Vínculo permanente:"
+msgstr ""
+
+#: permissions.labels.capabilities.change_hierarchy
+msgid "Mover:"
+msgstr ""
+
+#: permissions.labels.capabilities.change_permissions
+msgid "Configurar permisos:"
+msgstr ""
+
+#: permissions.labels.capabilities.exclude
+msgid "Excluir:"
+msgstr ""
+
+#: permissions.labels.capabilities.keep_only
+msgid "Mantener solo:"
+msgstr ""
+
+#: permissions.labels.capabilities.select
+msgid "Seleccionar marcas:"
+msgstr ""
+
+#: permissions.labels.capabilities.tooltip
+msgid "Ver Descripciones emergentes:"
+msgstr ""
+
+#: permissions.labels.capabilities.highlight
+msgid "Resaltado de leyenda:"
+msgstr ""
+
+#: permissions.labels.capabilities.url_link
+msgid "Enlace a URL externas:"
+msgstr ""
+
+#: permissions.labels.capabilities.administrator
+msgid "Administrador:"
+msgstr ""
+
+#: permissions.labels.capabilities.content_admin
+msgid "Administrador de contenido:"
+msgstr ""
+
+#: permissions.labels.capabilities.create_groups
+msgid "Crear grupos:"
+msgstr ""
+
+#: permissions.labels.capabilities.rename
+msgid "Cambiar nombre:"
+msgstr ""
+
+#: permissions.labels.capabilities.transfer_ownership
+msgid "Transferir propiedad:"
+msgstr ""
+
+#: permissions.labels.capabilities.project_leader
+msgid "Líder de proyecto:"
+msgstr ""
+
+#: permissions.labels.capabilities.publish
+msgid "Publicar:"
+msgstr ""
+
+#: permissions.labels.capabilities.connect
+msgid "Conectar:"
+msgstr ""
+
+#: permissions.labels.capabilities.draw
+msgid "Dibujo:"
+msgstr ""
+
+#: permissions.labels.capabilities.web_authoring
+msgid "Edición web:"
+msgstr ""
+
+#: permissions.labels.capabilities.xml_save_as
+msgid "Guardar como:"
+msgstr ""
+
+#: permissions.labels.capabilities.create_refresh_metrics
+msgid "Crear/Actualizar métricas:"
+msgstr ""
+
+#: permissions.labels.capabilities.explain_data
+msgid "Ejecutar Explique los datos:"
+msgstr ""
+
+#: permissions.labels.roles.wb_view
+msgctxt "permissions.labels.roles.wb_view"
+"permissions.labels.roles.wb_view"
+"permissions.labels.roles.wb_view"
+msgid "Vista"
+msgstr ""
+
+#: permissions.labels.roles.wb_explore
+msgctxt "permissions.labels.roles.wb_explore"
+msgid "Explorar"
+msgstr ""
+
+#: permissions.labels.roles.wb_publish
+msgctxt "permissions.labels.roles.wb_publish"
+msgid "Publicar"
+msgstr ""
+
+#: permissions.labels.roles.wb_administer
+msgctxt "permissions.labels.roles.wb_administer"
+msgid "Administrar"
+msgstr ""
+
+#: permissions.labels.roles.ds_view
+msgctxt "permissions.labels.roles.ds_view"
+msgid "Vista"
+msgstr ""
+
+#: permissions.labels.roles.ds_explore
+msgctxt "permissions.labels.roles.ds_explore"
+msgid "Explorar"
+msgstr ""
+
+#: permissions.labels.roles.ds_publish
+msgctxt "permissions.labels.roles.ds_publish"
+msgid "Publicar"
+msgstr ""
+
+#: permissions.labels.roles.ds_administer
+msgctxt "permissions.labels.roles.ds_administer"
+msgid "Administrar"
+msgstr ""
+
+#: permissions.labels.roles.viewer
+msgid "Viewer"
+msgstr ""
+
+#: permissions.labels.roles.interactor
+msgid "Interaccionador"
+msgstr ""
+
+#: permissions.labels.roles.editor
+msgid "Editor"
+msgstr ""
+
+#: permissions.labels.roles.ds_connector
+msgid "Conector de fuente de datos"
+msgstr ""
+
+#: permissions.labels.roles.ds_editor
+msgid "Editor de fuente de datos"
+msgstr ""
+
+#: permissions.labels.roles.administrator
+msgid "Administrador"
+msgstr ""
+
+#: permissions.labels.roles.project_leader
+msgid "Líder de proyecto"
+msgstr ""
+
+#: permissions.labels.roles.publisher
+msgid "Publicador"
+msgstr ""
+
+#: permissions.labels.roles.custom
+msgid "Personalizado"
+msgstr ""
+
+#: permissions.labels.roles.none
+msgid "Ninguno"
+msgstr ""
+
+#.
+#. # Used in Storage class in tab-core
+#: formats.messages.disk_space.in_mb
+msgid "{0} MB"
+msgstr ""
+
+#: formats.messages.disk_space.in_kb
+msgid "{0} KB"
+msgstr ""
+
+#.
+#. # Publishing-related errors and strings
+#: errors.argument.flow_description.too_long
+msgid ""
+"La descripción del flujo es demasiado larga ({0} caracteres).  Debe ser "
+"inferior a {1} caracteres:"
+msgstr ""
+
+#: %7B2%7D
+msgctxt "{2}"
+msgid ""
+msgstr ""
+
+#: errors.argument.workbook_name.too_long
+msgid ""
+"El nombre del libro de trabajo es demasiado largo ({0} caracteres)  Debe ser "
+"menor que {1} caracteres:"
+msgstr ""
+
+#: errors.argument.workbook_name.empty
+msgid "El nombre del libro de trabajo está vacío."
+msgstr ""
+
+#: errors.argument.workbook_description.too_long
+msgid ""
+"La descripción del libro de trabajo es demasiado larga ({0} caracteres). "
+"Debe tener menos de {1} caracteres:"
+msgstr ""
+
+#: errors.argument.worksheet_name.too_long
+msgid ""
+"El nombre de la hoja de trabajo es demasiado largo ({0} caracteres). Debe "
+"ser menor que {1} caracteres:"
+msgstr ""
+
+#: errors.argument.datasource_name.too_long
+msgid ""
+"El nombre de la fuente de datos es demasiado largo ({0} caracteres). Debe "
+"tener menos de {1} caracteres:"
+msgstr ""
+
+#: errors.argument.datasource_name.empty
+msgid "El nombre de la fuente de datos está vacío."
+msgstr ""
+
+#: errors.argument.datasource_description.too_long
+msgid ""
+"La descripción de la fuente de datos es demasiado larga ({0} caracteres). "
+"Debe tener menos de {1} caracteres:"
+msgstr ""
+
+#: errors.argument.dataconnection_column.too_long
+msgid ""
+"DataConnection column {0} is too long ({1} characters).  It must be shorter "
+"than {2} characters:"
+msgstr ""
+
+#: %7B3%7D
+msgctxt "{3}"
+msgid ""
+msgstr ""
+
+#: errors.argument.tag.too_long
+msgid ""
+"La etiqueta es demasiado larga ({0} caracteres). Debe ser menor que {1} "
+"caracteres:"
+msgstr ""
+
+#: errors.argument.workbook_file.missing_or_empty
+msgid "El libro de trabajo no existe o está vacío."
+msgstr ""
+
+#: errors.argument.internal
+msgid "Error interno del servidor.  Argumento que falta o no es válido."
+msgstr ""
+
+#: errors.argument.thumbnail.invalid_format
+msgid ""
+"El formato de la miniatura del libro de trabajo no es válido. Debe tener "
+"formato PNG con una resolución de 300x300 o menos."
+msgstr ""
+
+#: errors.html_403.disabled_resource.workbook
+msgid ""
+"Lo lamentamos, el libro de trabajo está deshabilitado.  Comuníquese con el "
+"administrador."
+msgstr ""
+
+#: errors.html_404.missing_or_unauthorized_resource.project
+msgid ""
+"Lo sentimos, el proyecto que buscaba no existe, o bien, no tiene permiso "
+"para ver dicho proyecto."
+msgstr ""
+
+#: errors.html_404.missing_or_unauthorized_resource.personal_space
+msgid ""
+"Lo sentimos, el espacio personal que busca no existe o no tiene los permisos "
+"necesarios para verlo."
+msgstr ""
+
+#: errors.html_404.missing_or_unauthorized_resource.datasource
+msgid "Lo sentimos, pero la fuente de datos que busca no existe."
+msgstr ""
+
+#: errors.labels.formatted_request_id
+msgid "ID de solicitud: {0}"
+msgstr ""
+
+#: errors.links.delete_datasources
+msgid "Eliminar fuentes de datos"
+msgstr ""
+
+#: errors.links.delete_workbooks
+msgid "Eliminar libros de trabajo"
+msgstr ""
+
+#: errors.permissions.publish.datasource.licensing
+msgid "Debe ser un ''interaccionador'' para publicar una fuente de datos."
+msgstr ""
+
+#: errors.permissions.publish.datasource.overwrite
+msgid ""
+"Ya existe una fuente de datos \"{0}\" en el proyecto \"{1}\". No tiene "
+"permisos para sobrescribirla."
+msgstr ""
+
+#: errors.permissions.publish.datasource.overwrite_personal_space
+msgid ""
+"Ya existe una fuente de datos \"{0}\" en el Espacio personal. No tiene "
+"permisos para sobrescribirla."
+msgstr ""
+
+#: errors.permissions.publish.datasource.overwrite_short
+msgid "Ya existe una fuente de datos \"{0}\" en el proyecto \"{1}\"."
+msgstr ""
+
+#: errors.permissions.publish.datasource.overwrite_short_personal_space
+msgid "Ya existe una fuente de datos \"{0}\" en el Espacio personal.\""
+msgstr ""
+
+#: errors.permissions.publish.datasource.non_existent
+msgid "La fuente de datos \"{0}\" no existe."
+msgstr ""
+
+#: errors.permissions.publish.datasource.general
+msgid "Lo lamentamos, no tiene permiso para publicar en esta fuente de datos."
+msgstr ""
+
+#: errors.permissions.publish.project.explicit_publisher_detail
+msgid "No tiene derecho de publicación."
+msgstr ""
+
+#: errors.permissions.publish.project.general
+msgid "Lo lamentamos, no tiene permiso para publicar en este proyecto."
+msgstr ""
+
+#: errors.permissions.publish.project.non_existent
+msgid "El proyecto \"{0}\" no existe."
+msgstr ""
+
+#: errors.permissions.publish.project.not_writable
+msgid "No tiene permisos para escribir en el proyecto \"{0}\"."
+msgstr ""
+
+#: errors.permissions.publish.project.unspecified
+msgid "Debe especificar un proyecto"
+msgstr ""
+
+#: errors.permissions.publish.workbook.disabled
+msgid "El libro de trabajo \"{0}\" está deshabilitado."
+msgstr ""
+
+#: errors.permissions.publish.workbook.general
+msgid ""
+"Ya existe un libro de trabajo con este nombre en el proyecto en el que está "
+"publicando. Para publicarlo, cambie el nombre del libro de trabajo."
+msgstr ""
+
+#: errors.permissions.publish.workbook.general_personal_space
+msgid ""
+"Ya existe un libro de trabajo con este nombre en el Espacio personal en el "
+"que quiere publicar. Para publicar, cambie el nombre del libro de trabajo."
+msgstr ""
+
+#: errors.permissions.publish.workbook.overwrite
+msgid ""
+"Ya existe un libro de trabajo \"{0}\" en el proyecto \"{1}\". No tiene "
+"permisos para sobrescribirlo."
+msgstr ""
+
+#: errors.permissions.publish.workbook.overwrite_personal_space
+msgid ""
+"Ya existe un libro de trabajo \"{0}\" en el Espacio personal. No tiene "
+"permisos para sobrescribirlo."
+msgstr ""
+
+#: errors.permissions.publish.workbook.overwrite_short
+msgid "Ya existe un libro de trabajo \"{0}\" en el proyecto \"{1}\"."
+msgstr ""
+
+#: errors.permissions.publish.workbook.overwrite_short_personal_space
+msgid "Ya existe un libro de trabajo \"{0}\" en el Espacio personal."
+msgstr ""
+
+#: errors.reportable.impersonation.group_and_user
+msgid ""
+"Especifique solo un ''impersonate_username'' o ''impersonate_groupname'', no "
+"ambos."
+msgstr ""
+
+#: errors.reportable.impersonation.user_not_found
+msgid "El usuario ''{0}'' no existe."
+msgstr ""
+
+#: errors.reportable.impersonation.group_not_found
+msgid "El grupo ''{0}'' no existe."
+msgstr ""
+
+#. # errors.public.validation.hasextract is copied from the C++ file codegen strings.data IDS_PUBLIC_VALIDATION_ERROR_HASEXTRACT
+#: errors.public.validation.hasextract
+msgid ""
+"Los libros de trabajo guardados en Tableau Public deben usar extracciones "
+"activas de Tableau. Haga clic con el botón derecho sobre la fuente de datos "
+"y seleccione Usar extracción antes de publicar. La fuente de datos ''{0}'' "
+"no es una extracción activa."
+msgstr ""
+
+#: errors.publish.dataserver_datasource_not_found
+msgid ""
+"No se encontró la fuente de datos ''{0}'' para el libro de trabajo ''{1}''."
+msgstr ""
+
+#: errors.publish.datasource_update_mode
+msgid "Modo de actualización desconocido: ''{0}''."
+msgstr ""
+
+#: errors.publish.workbook.concurrent_update
+msgid ""
+"Ya se está publicando o modificando un libro de trabajo con el mismo nombre. "
+"Espere a que se complete la tarea antes de volverlo a intentar."
+msgstr ""
+
+#: errors.publish.workbook.restricted
+msgid ""
+"El libro de trabajo contiene tipos de conexiones que no se permiten en este "
+"servidor."
+msgstr ""
+
+#: errors.publish.datasource.concurrent_update
+msgid ""
+"Ya se está publicando o modificando una fuente de datos con el mismo nombre. "
+"Espere a que se complete la tarea antes de volverlo a intentar."
+msgstr ""
+
+#: errors.publish.datasource.restricted
+msgid ""
+"La fuente de datos contiene un tipo de conexión que no se permite en este "
+"servidor."
+msgstr ""
+
+#: errors.publish.datasource.connection_check
+msgid "{0} no ha podido establecer una conexión con la fuente de datos."
+msgstr ""
+
+#: errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption
+msgid ""
+"El libro de trabajo no se puede publicar con una extracción cifrada. El "
+"administrador del sitio ha deshabilitado el cifrado de las extracciones en "
+"este sitio. Debe publicar el libro de trabajo con una extracción sin cifrar."
+msgstr ""
+
+#: errors.publish.datasource.requested_extract_encryption_on_site_with_disabled_encryption
+msgid ""
+"La fuente de datos no se puede publicar como extracción cifrada. El "
+"administrador del sitio ha deshabilitado el cifrado de las extracciones en "
+"este sitio. Debe publicar la extracción sin cifrar."
+msgstr ""
+
+#: errors.publish.workbook.requested_no_extract_encryption_on_site_with_enforced_encryption
+msgid ""
+"El libro de trabajo no se puede publicar con una extracción sin cifrar. El "
+"administrador del sitio requiere el cifrado de las extracciones en este "
+"sitio. Debe publicar el libro de trabajo especificando el cifrado de las "
+"extracciones."
+msgstr ""
+
+#: errors.publish.datasource.requested_no_extract_encryption_on_site_with_enforced_encryption
+msgid ""
+"La extracción de fuente de datos no se puede publicar sin cifrar. El "
+"administrador del sitio requiere el cifrado de las extracciones en este "
+"sitio. Debe publicar la extracción cifrada."
+msgstr ""
+
+#: errors.publish.has_unfinished_extract_creation_job
+msgid ""
+"Este recurso no se puede publicar porque quedan trabajos de creación de "
+"extracciones pendientes o sin finalizar vinculados a él. Espere o cancele "
+"esos trabajos y vuelva a intentarlo."
+msgstr ""
+
+#: errors.publishing.storage_quota_exceeded.message
+msgid "Se excedió la cuota de almacenamiento del sitio."
+msgstr ""
+
+#: errors.publishing.request_size_exceeded
+msgid ""
+"Este archivo no se puede publicar porque el tamaño de la solicitud es de {0} "
+"bytes, lo que supera el límite de bytes por {1} bytes."
+msgstr ""
+
+#: errors.publishing.request_size_unknown
+msgid "No se ha podido determinar el tamaño de la solicitud."
+msgstr ""
+
+#: errors.site.quota_exceeded
+msgid "El contenido que intenta cargar excederá la capacidad del sitio en {0}."
+msgstr ""
+
+#: errors.personal_space.quota_exceeded
+msgid "El contenido supera la capacidad de su Espacio personal por {0}."
+msgstr ""
+
+#: errors.web_authoring.workbook_deleted
+msgid ""
+"El libro de trabajo ''{0}'' fue eliminado.  Elija ''Guardar como'' para "
+"guardar como nuevo libro de trabajo."
+msgstr ""
+
+#: errors.web_authoring.workbook_changed
+msgid ""
+"Otro usuario ha editado y guardado este libro de trabajo desde que comenzó a "
+"editarlo. Por lo tanto, ya no puede actualizar el libro de trabajo original. "
+"Use Guardar como para crear un nuevo libro de trabajo con sus cambios."
+msgstr ""
+
+#: labels.publish.embed_credentials
+msgid "Insertar contraseña insertada para la fuente de datos"
+msgstr ""
+
+#: errors.publish.workbook.google_no_embedded_credentials
+msgid ""
+"Este libro de trabajo contiene una fuente de datos {0} que requiere "
+"credenciales insertadas. Para guardar como otro libro de trabajo, seleccione "
+"''{1}''."
+msgstr ""
+
+#: errors.publish.datasource.google_no_embedded_credentials
+msgid ""
+"Esta fuente de datos contiene una conexión {0} que requiere credenciales "
+"insertadas. Publique esta fuente de datos desde Tableau Desktop con "
+"credenciales incrustadas."
+msgstr ""
+
+#: errors.publish.datasource.federated_oauth_datasource_failed
+msgid ""
+"Las credenciales de una o más de las conexiones de su fuente de datos han "
+"caducado. Elimine las credenciales guardadas de esta fuente de datos en la "
+"página de configuración de su cuenta en Tableau Server o Tableau Online y "
+"vuelva a conectarse a la fuente de datos."
+msgstr ""
+
+#: errors.publish.workbook.missing_oauth_credential
+msgid ""
+"No se encontró la credencial ''{0}'' o no se puede usar para conectar a la "
+"fuente de datos o  libro de trabajo."
+msgstr ""
+
+#: errors.publish.version_incompatible.message
+msgid "Las versiones de escritorio y de servidor no son compatibles."
+msgstr ""
+
+#: errors.publish.version_incompatible.details
+msgid "Versión de escritorio ''{0}'', Documento de servidor versión ''{1}''."
+msgstr ""
+
+#: errors.publish.datasource.managed_keychain.unique_cv_suggestions
+msgid "Error en la publicación debido a un conflicto. Reenvíe el cambio."
+msgstr ""
+
+#: errors.publish.permissions_are_locked
+msgid ""
+"El proyecto en el que está publicando tiene los permisos bloqueados. Para "
+"publicar en este libro de trabajo, utilice los permisos predeterminados e "
+"inténtelo de nuevo."
+msgstr ""
+
+#: errors.publish.datasource.not.found
+msgid "No se pudo encontrar esta fuente de datos en el servidor."
+msgstr ""
+
+#: errors.publish.extracts.disabled
+msgid ""
+"Guardar para fuentes de datos de archivos basadas en extracciones que no "
+"sean compatibles todavía."
+msgstr ""
+
+#: errors.publish.datasource.timeout
+msgid ""
+"La publicación expiró tras {0} segundos. Utilice Tableau Desktop para "
+"publicar esta fuente de datos."
+msgstr ""
+
+#: errors.publish.data_role.permission_not_null
+msgid ""
+"No se pueden establecer permisos explícitos para las fuentes de datos de "
+"este tipo de función de datos."
+msgstr ""
+
+#: errors.download.extracts.timeout
+msgid ""
+"La publicación expiró tras {0} segundos porque la fuente de datos tiene un "
+"archivo de extracción demasiado grande. Utilice Tableau Desktop para "
+"publicar esta fuente de datos."
+msgstr ""
+
+#: errors.publish.datasource.invalid_extract_update_time
+msgid "Valor extractUpdateTime no válido indicado: {0}"
+msgstr ""
+
+#: errors.publish.async.serialization
+msgid "Error de estado que impide serializar la publicación del trabajo"
+msgstr ""
+
+#: errors.permissions.view.datasources
+msgid "Debe ser ''Interaccionador'' para ver la lista de fuentes de datos."
+msgstr ""
+
+#.
+#. # oauth related errors
+#: errors.oauth.invalid_oauth_class
+msgid "''{0}'' no es un tipo de conexión OAuth válido."
+msgstr ""
+
+#: errors.xmlapi.bad_request
+msgid "Solicitud incorrecta"
+msgstr ""
+
+#: errors.xmlapi.unauthorized
+msgid "No autorizado"
+msgstr ""
+
+#: errors.xmlapi.forbidden
+msgid "Faltan permisos"
+msgstr ""
+
+#: errors.xmlapi.system_user_not_found
+msgid "La cuenta de usuario está bloqueada o no es válida."
+msgstr ""
+
+#: errors.xmlapi.site_user_not_found
+msgid ""
+"Esta cuenta de usuario no está activa. Para obtener ayuda, póngase en "
+"contacto con su {0} administrador."
+msgstr ""
+
+#: errors.xmlapi.not_found
+msgid "Elemento no encontrado"
+msgstr ""
+
+#: errors.xmlapi.concurrent_update
+msgid "Actualización simultánea"
+msgstr ""
+
+#: errors.xmlapi.internal_server_error
+msgid "Error interno del servidor"
+msgstr ""
+
+#: errors.xmlapi.illegal_state
+msgid "Estado no válido"
+msgstr ""
+
+#: errors.xmlapi.invalid_parameter
+msgid "Parámetro no válido"
+msgstr ""
+
+#: errors.xmlapi.already_exists
+msgid "Ya existe"
+msgstr ""
+
+#: errors.xmlapi.site_suspended
+msgid ""
+"Este sitio se ha suspendido. Debe ser un administrador de sistema para "
+"iniciar sesión."
+msgstr ""
+
+#: errors.xmlapi.site_locked
+msgid ""
+"Este sitio se ha bloqueado. No se permite iniciar sesión en este momento."
+msgstr ""
+
+#: errors.xmlapi.permission_modification
+msgid "No se puede publicar con permisos modificados"
+msgstr ""
+
+#: errors.xmlapi.update_desktop
+msgid ""
+"Para abrir los libros de trabajo que han creado otros autores, descargue la "
+"versión más reciente de Tableau Desktop Public Edition en http://public."
+"tableau.com/"
+msgstr ""
+
+#: errors.xmlapi.throttled.summary
+msgid "Demasiadas solicitudes"
+msgstr ""
+
+#: errors.xmlapi.throttled.detail
+msgid ""
+"Hay demasiadas solicitudes para ''{0}''. Vuelva a intentarlo después de {1}."
+msgstr ""
+
+#: datasource.publish.check.unpublishable
+msgid "No se ha podido publicar la fuente de datos."
+msgstr ""
+
+#: datasource.publish.check.publishable.extract_required
+msgid "Se debe crear una extracción al publicar."
+msgstr ""
+
+#: datasource.publish.check.publishable.credentials_required
+msgid ""
+"{1} accederá de manera temporal a las credenciales proporcionadas en "
+"relación con ''{0}'' para confirmar que puede conservar una conexión de "
+"datos en tiempo real."
+msgstr ""
+
+#: datasource.publish.check.publishable.server_unreachable
+msgid "{1} no puede acceder a ''{0}''. Al publicar se creará una extracción."
+msgstr ""
+
+#: publish.bundles.workbook.subscription.subject
+msgid "Su libro de trabajo {0} ya está listo."
+msgstr ""
+
+#: publish.bundles.workbook.subscription.message
+msgid ""
+"Se han añadido los datos de Salesforce al libro de trabajo. Vaya a su "
+"proyecto {0} para empezar."
+msgstr ""
+
+#: extracts.status.finished.upload.workbook
+msgid ""
+"Carga de extracciones finalizada (ID de extracción nuevo: {0}) para el libro "
+"de trabajo ''{1}'' {2}"
+msgstr ""
+
+#: extracts.status.finished.refresh.workbook
+msgid ""
+"Actualización finalizada de extracciones (id de extracción nuevo:{0}) para "
+"libro de trabajo ''{1}'' {2}"
+msgstr ""
+
+#: extracts.status.finished.increment.workbook
+msgid ""
+"Incrementos finalizados de extracciones (id de extracción nuevo:{0}) para "
+"libro de trabajo ''{1}'' {2}"
+msgstr ""
+
+#: extracts.status.finished.encrypt.workbook
+msgid ""
+"Cifrado de extracciones finalizado (ID de extracción nueva: {0}) para el "
+"libro de trabajo ''{1}''"
+msgstr ""
+
+#: extracts.status.finished.decrypt.workbook
+msgid ""
+"Descifrado de extracciones finalizado (ID de extracción nueva: {0}) para el "
+"libro de trabajo ''{1}''"
+msgstr ""
+
+#: extracts.status.finished.rekey.workbook
+msgid ""
+"Recifrado de extracciones finalizado (ID de extracción nueva: {0}) para el "
+"libro de trabajo ''{1}''"
+msgstr ""
+
+#: extracts.status.finished.create.workbook
+msgid ""
+"Creación de extracción finalizada (nueva ID de extracción:{0}) para el libro "
+"de trabajo ''{1}'' {2}"
+msgstr ""
+
+#: extracts.status.finished.remove.workbook
+msgid ""
+"Cambio de extracción (nueva ID de fuente de datos:{0}) a tiempo real para el "
+"libro de trabajo ''{1}''"
+msgstr ""
+
+#: extracts.status.finished.upload.datasource
+msgid ""
+"Carga finalizada de extracciones (id de extracción nuevo:{0}) para fuente de "
+"datos ''{1}'' {2}"
+msgstr ""
+
+#: extracts.status.finished.refresh.datasource
+msgid ""
+"Actualización finalizada de extracciones (id de extracción nuevo:{0}) para "
+"fuente de datos ''{1}'' {2}"
+msgstr ""
+
+#: extracts.status.finished.increment.datasource
+msgid ""
+"Incrementos finalizados de extracciones (id de extracción nuevo:{0}) para "
+"fuente de datos ''{1}'' {2}"
+msgstr ""
+
+#: extracts.status.finished.append.datasource
+msgid ""
+"Operación de adjuntar finalizada de extracciones (id de extracción nuevo:{0})"
+" para fuente de datos ''{1}'' {2}"
+msgstr ""
+
+#: extracts.status.finished.replace.datasource
+msgid ""
+"Reemplazo finalizado de extracciones (id de extracción nuevo:{0}) para "
+"fuente de datos ''{1}'' {2}"
+msgstr ""
+
+#: extracts.status.finished.encrypt.datasource
+msgid ""
+"Cifrado de extracciones finalizado (ID de extracción nueva: {0}) para la "
+"fuente de datos ''{1}''"
+msgstr ""
+
+#: extracts.status.finished.decrypt.datasource
+msgid "{0}) para la fuente de datos ''{1}''"
+msgstr ""
+
+#: extracts.status.finished.rekey.datasource
+msgid ""
+"Recifrado de extracciones finalizado (ID de extracción nueva: {0}) para la "
+"fuente de datos ''{1}''"
+msgstr ""
+
+#: extracts.status.finished.encrypt.flow
+msgid "Se ha finalizado el cifrado de extracciones para el flujo ''{0}''"
+msgstr ""
+
+#: extracts.status.finished.decrypt.flow
+msgid "Se ha finalizado el descifrado de extracciones para el flujo ''{0}''"
+msgstr ""
+
+#: extracts.status.finished.rekey.flow
+msgid "Se ha finalizado el recifrado de extracciones para el flujo ''{0}''"
+msgstr ""
+
+#: extracts.status.finished.encrypt.flowdraft
+msgctxt "extracts.status.finished.encrypt.flowdraft"
+msgid ""
+"Se ha finalizado el cifrado de las extracciones para el borrador de flujo "
+"''{0}''"
+msgstr ""
+
+#: extracts.status.finished.decrypt.flowdraft
+msgctxt "extracts.status.finished.decrypt.flowdraft"
+msgid ""
+"Se ha finalizado el cifrado de las extracciones para el borrador de flujo "
+"''{0}''"
+msgstr ""
+
+#: extracts.status.finished.rekey.flowdraft
+msgid ""
+"Se ha finalizado el recifrado de las extracciones para el borrador de flujo "
+"''{0}''"
+msgstr ""
+
+#: extracts.status.finished.create.datasource
+msgid ""
+"Creación de extracciones finalizada (nueva ID de extracción:{0}) para la "
+"fuente de datos ''{1}'' {2}"
+msgstr ""
+
+#: extracts.status.finished.remove.datasource
+msgid "Cambio de extracción a tiempo real para la fuente de datos ''{1}''"
+msgstr ""
+
+#: extracts.status.encryption_key
+msgctxt "extracts.status.encryption_key"
+msgid "ID de clave de cifrado: ''{0}''."
+msgstr ""
+
+#: extracts.status.encryption_keys
+msgctxt "extracts.status.encryption_keys"
+msgid ""
+"ID de clave de cifrado antigua: ''{0}''; ID de clave de cifrado nueva: "
+"''{1}''."
+msgstr ""
+
+#: extracts.errors.upload
+msgid "Error al cargar extracciones para {0}: ''{1}''"
+msgstr ""
+
+#: extracts.errors.refresh
+msgid "Se ha producido un error al actualizar extracciones para {0} ''{1}''"
+msgstr ""
+
+#: extracts.errors.create
+msgid "Error al crear las extracciones de {0} ''{1}''."
+msgstr ""
+
+#: extracts.errors.increment
+msgid "Error al incrementar extracciones para {0}: ''{1}''"
+msgstr ""
+
+#: extracts.errors.append
+msgid "Error al adjuntar extracciones para {0}: ''{1}''"
+msgstr ""
+
+#: extracts.errors.replace
+msgid "Error al reemplazar extracciones para {0}: ''{1}''"
+msgstr ""
+
+#: extracts.errors.download
+msgid "Error al descargar extracciones para {0}: ''{1}''"
+msgstr ""
+
+#: extracts.errors.remove
+msgid "Error al eliminar extracciones para {0}: ''{1}''."
+msgstr ""
+
+#: extracts.errors.title
+msgid "Error de extracciones de proceso"
+msgstr ""
+
+#: extracts.errors.nothing_to_upload
+msgid "No hay extracciones para cargar para {0}: ''{1}''"
+msgstr ""
+
+#: extracts.errors.nothing_to_refresh
+msgid "No hay extracciones para actualizar para {0}: ''{1}''"
+msgstr ""
+
+#: extracts.errors.nothing_to_increment
+msgid "No hay extracciones para incrementar para {0}: ''{1}''"
+msgstr ""
+
+#: extracts.errors.nothing_to_append
+msgid "No hay extracciones para adjuntar para {0}: ''{1}''"
+msgstr ""
+
+#: extracts.errors.nothing_to_replace
+msgid "No hay extracciones para reemplazar para {0}: ''{1}''"
+msgstr ""
+
+#: extracts.errors.refresh_summary
+msgid "Error de extracciones de actualización"
+msgstr ""
+
+#: extracts.errors.encrypt_summary
+msgid "Error al cifrar extracciones"
+msgstr ""
+
+#: extracts.errors.rekey_summary
+msgid "Error al volver a cifrar extracciones"
+msgstr ""
+
+#: extracts.errors.decrypt_summary
+msgid "Error al descifrar extracciones"
+msgstr ""
+
+#: extracts.errors.remove_summary
+msgid "Error al eliminar extracciones"
+msgstr ""
+
+#: extracts.errors.create_summary
+msgid "Error al crear extracciones"
+msgstr ""
+
+#: extracts.errors.datasource_overwritten
+msgid ""
+"Falló la actualización debido a que la fuente de datos fue sobrescrita por "
+"otra tarea durante el procesamiento.  Actualice el envío para corregir."
+msgstr ""
+
+#: extracts.errors.workbook_overwritten
+msgid ""
+"Falló la actualización debido a que el libro de trabajo fue sobrescrito por "
+"otra tarea durante el procesamiento.  Actualice el envío para corregir."
+msgstr ""
+
+#: extracts.errors.encrypt
+msgid "Se ha producido un error al cifrar las extracciones para {0} ''{1}''"
+msgstr ""
+
+#: extracts.errors.decrypt
+msgid "Se ha producido un error al descifrar las extracciones para {0} ''{1}''"
+msgstr ""
+
+#: extracts.errors.rekey
+msgid ""
+"Se ha producido un error al volver a cifrar las extracciones para {0} ''{1}''"
+msgstr ""
+
+#: extracts.errors.encrypt_datasource_overwritten
+msgid ""
+"Se ha producido un error al cifrar la extracción debido a que otra tarea "
+"sobrescribió la fuente de datos durante el procesamiento."
+msgstr ""
+
+#: extracts.errors.encrypt_workbook_overwritten
+msgid ""
+"Se ha producido un error al cifrar la extracción debido a que otra tarea "
+"sobrescribió el libro de trabajo durante el procesamiento."
+msgstr ""
+
+#: extracts.errors.rekey_datasource_overwritten
+msgid ""
+"Se ha producido un error al volver a cifrar la extracción debido a que otra "
+"tarea sobrescribió la fuente de datos durante el procesamiento."
+msgstr ""
+
+#: extracts.errors.rekey_workbook_overwritten
+msgid ""
+"Se ha producido un error al volver a cifrar la extracción debido a que otra "
+"tarea sobrescribió el libro de trabajo durante el procesamiento."
+msgstr ""
+
+#: extracts.errors.decrypt_datasource_overwritten
+msgid ""
+"Se ha producido un error al descifrar la extracción debido a que otra tarea "
+"sobrescribió la fuente de datos durante el procesamiento."
+msgstr ""
+
+#: extracts.errors.decrypt_workbook_overwritten
+msgid ""
+"Se ha producido un error al descifrar la extracción debido a que otra tarea "
+"sobrescribió el libro de trabajo durante el procesamiento."
+msgstr ""
+
+#: extracts.errors.remove_datasource_overwritten
+msgid ""
+"La fuente de datos no se puede cambiar a tiempo real por que otra tarea la "
+"ha sustituido."
+msgstr ""
+
+#: extracts.errors.remove_workbook_overwritten
+msgid ""
+"El libro de trabajo no se puede cambiar a tiempo real porque otra tarea lo "
+"ha sustituido."
+msgstr ""
+
+#: extracts.errors.create_datasource_overwritten
+msgid ""
+"La fuente de datos no se puede extraer porque otra tarea la ha sustituido."
+msgstr ""
+
+#: extracts.errors.create_workbook_overwritten
+msgid ""
+"El libro de trabajo no se puede extraer porque otra tarea lo ha sustituido."
+msgstr ""
+
+#: extracts.site_mode_change_details
+msgid ""
+"Se ha cambiado el modo de cifrado de la extracción del sitio de ''{0}'' a "
+"''{1}''."
+msgstr ""
+
+#: extracts.errors.encryption_not_licensed
+msgid ""
+"Se ha producido un error en esta operación porque el cifrado de extracciones "
+"no cuenta con licencia. Para realizar esta operación, debe renovar la "
+"licencia o descifrar la extracción."
+msgstr ""
+
+#: extracts.errors.operation_cancelled_detail
+msgid ""
+"El tiempo de la operación para eliminar la extracción para {0} (fuente de "
+"datos: {2}) ha expirado."
+msgstr ""
+
+#: workbooks.messages.load_error
+msgid "No se puede cargar el libro de trabajo {0}"
+msgstr ""
+
+#: workbooks.messages.locked
+msgid ""
+"El libro de trabajo ''{0}'' actualmente está siendo modificado por otro "
+"usuario.  Intente nuevamente."
+msgstr ""
+
+#: workbooks.new_workbook.default_name
+msgid "Nuevo libro de trabajo"
+msgstr ""
+
+#: workbooks.new_datasource.default_name
+msgid "Nueva fuente de datos"
+msgstr ""
+
+#: datasources.messages.load_error
+msgid "No se puede cargar la fuente de datos {0}"
+msgstr ""
+
+#: metrics.new_metric.default_name
+msgid "Nueva métrica"
+msgstr ""
+
+#: messages.timeout_error.summary
+msgid "Error de tiempo de espera"
+msgstr ""
+
+#: messages.timeout_error.task_canceled
+msgid "La cancelación de una tarea que tarda más de {0} segundos"
+msgstr ""
+
+#: subscriptions.manage_my_subscriptions
+msgid "Administrar mis suscripciones"
+msgstr ""
+
+#: subscriptions.message_greeting
+msgid "Hola:"
+msgstr ""
+
+#: subscriptions.subscribed_footer
+msgid "Esta es su sucripción a {0}"
+msgstr ""
+
+#: subscriptions.subscribed_workbook
+msgid "libro de trabajo"
+msgstr ""
+
+#: subscriptions.subscribed_view
+msgid "ver"
+msgstr ""
+
+#: subscriptions.fullstop
+msgid "."
+msgstr ""
+
+#: subscriptions.extract_refresh_footer
+msgid ""
+"Recibirá este correo electrónico de la suscripción cuando se actualicen los "
+"datos."
+msgstr ""
+
+#: subscriptions.explore_the_viz
+msgid "Explorar la visualización"
+msgstr ""
+
+#: subscriptions.explore_the_workbook
+msgid "Explorar el libro de trabajo"
+msgstr ""
+
+#: subscriptions.pdf_attached
+msgid "Se adjunta el PDF de Tableau."
+msgstr ""
+
+#: subscriptions.access_live_content
+msgid "Puede acceder a la vista en directo de su contenido aquí"
+msgstr ""
+
+#: subscriptions.warning_deprecated_type
+msgid "obsoleto"
+msgstr ""
+
+#: subscriptions.warning_extract_refresh_type
+msgid "error en la actualización de extracción"
+msgstr ""
+
+#: subscriptions.warning_flow_run_type
+msgid "error en la ejecución del flujo"
+msgstr ""
+
+#: subscriptions.warning_introduction_general
+msgid "Las siguientes advertencias de calidad de los datos afectan a {0}."
+msgstr ""
+
+#: subscriptions.warning_introduction_view
+msgid ""
+"Para obtener más información, consulte la pestaña Detalles de los datos en "
+"la vista"
+msgstr ""
+
+#: subscriptions.warning_introduction_workbook
+msgid "Para obtener más información, consulte la página del libro de trabajo"
+msgstr ""
+
+#: subscriptions.warning_maintenance_type
+msgid "en mantenimiento"
+msgstr ""
+
+#: subscriptions.warning_permission_error
+msgid ""
+"Esta advertencia está relacionada con un activo que no puede ver por falta "
+"de permisos."
+msgstr ""
+
+#: subscriptions.warning_redacted
+msgid "Permisos necesarios"
+msgstr ""
+
+#: subscriptions.warning_sensitve_type
+msgid "datos confidenciales"
+msgstr ""
+
+#: subscriptions.warning_severe
+msgid "Advertencia de calidad de los datos importante"
+msgstr ""
+
+#: subscriptions.warning_stale_type
+msgid "datos obsoletos"
+msgstr ""
+
+#: subscriptions.warning_standard
+msgid "Advertencia de calidad de los datos"
+msgstr ""
+
+#: subscriptions.warning_error_type
+msgid "tipo de advertencia desconocido"
+msgstr ""
+
+#: subscriptions.warning_warning_type
+msgid "advertencia"
+msgstr ""
+
+#: errors.subscriptions.image_render_failed
+msgid "No se pudo procesar la instantánea de la vista ''{0}'' correctamente."
+msgstr ""
+
+#: errors.subscriptions.see_live_view
+msgid "Para ver la vita en línea, vaya a {0}."
+msgstr ""
+
+#: errors.subscriptions.disabled_on_server
+msgid ""
+"La configuración de suscripciones en todo el servidor no está activada. No "
+"se pueden procesar las suscripciones."
+msgstr ""
+
+#: errors.subscriptions.disabled_on_site
+msgid "Se han desactivado las suscripciones para este sitio."
+msgstr ""
+
+#: errors.subscriptions.site_is_locked
+msgid "El sitio está bloqueado. No se pueden procesar las suscripciones."
+msgstr ""
+
+#: errors.subscriptions.orphan
+msgid ""
+"No se han encontrado los libros de trabajo ni las vistas asociados con esta "
+"suscripción."
+msgstr ""
+
+#: errors.subscriptions.user_unlicensed
+msgid "Omisión de suscripción de usuario sin licencia."
+msgstr ""
+
+#: errors.subscriptions.smtp_unreacheable
+msgid ""
+"No se puede conectar con el host de SMTP. Compruebe si SMTP se ha "
+"configurado."
+msgstr ""
+
+#: errors.subscriptions.uncategorized_error
+msgid "Error desconocido"
+msgstr ""
+
+#: errors.subscriptions.pdf_render_failed
+msgid ""
+"El PDF adjunto a este correo electrónico no se pudo representar "
+"correctamente."
+msgstr ""
+
+#: errors.subscriptions.pdf_limit_exceeded
+msgid ""
+"El PDF generado no se puede adjuntar a este correo electrónico porque supera "
+"el límite de {0} MB de tamaño."
+msgstr ""
+
+#: errors.subscriptions.attachments_not_enabled
+msgid ""
+"Se produjo un error en la suscripción porque los adjuntos al correo "
+"electrónico estaban desactivados. Póngase en contacto con su administrador "
+"de Tableau para obtener más información."
+msgstr ""
+
+#: errors.subscriptions.pdf_email_failed
+msgid "El PDF generado no se pudo adjuntar a este correo electrónico."
+msgstr ""
+
+#: errors.subscriptions.learn_more_troubleshoot
+msgid ""
+"<a href=\"https://onlinehelp.tableau.com/current/server/es-es/"
+"subscribe_trouble.htm\">Más información</a>"
+msgstr ""
+
+#: errors.subscriptions.bad_extract_refresh_subscription_configuration
+msgid ""
+"La suscripción se ha suspendido porque el libro de trabajo contiene varios "
+"programas de actualización de extracción. Para reanudarla, cambie la "
+"frecuencia a Según el programa seleccionado."
+msgstr ""
+
+#: errors.subscriptions.subscription_failed_refresh_failure
+msgid "Error al actualizar la extracción de la fuente de datos."
+msgstr ""
+
+#: errors.subscriptions.multiple_extracts_for_extract_refresh_subscription
+msgid ""
+"El libro de trabajo contiene varios programas de actualización de "
+"extracción. Cambie la frecuencia a Según el programa seleccionado."
+msgstr ""
+
+#: errors.subscriptions.datasource_is_missing_password
+msgid ""
+"Error de conexión a la fuente de datos. Compruebe las credenciales de las "
+"conexiones de todas las fuentes de datos del libro de trabajo."
+msgstr ""
+
+#: subscriptions.results_summary.sg
+msgid "{0} de {1} suscripción enviada del programa ''{2}''."
+msgstr ""
+
+#: subscriptions.results_summary.pl
+msgid "{0} de {1} suscripciones enviadas del programa ''{2}''."
+msgstr ""
+
+#: subscriptions.results_views_per_subscription.sg
+msgid "{0} ({1} de 1 vista tuvo éxito)"
+msgstr ""
+
+#: subscriptions.results_views_per_subscription.pl
+msgid "{0} ({1} de {2} vistas tuvieron éxito)"
+msgstr ""
+
+#: subscriptions.results_views_per_subscription.more
+msgid "({0} más)"
+msgstr ""
+
+#: subscriptions.results_views_per_subscription.failed
+msgid "{0} ({1} de {2} vistas fallidas)."
+msgstr ""
+
+#: subscriptions.results_header.all_shown.failures.sg
+msgid "1 error"
+msgstr ""
+
+#: subscriptions.results_header.all_shown.failures.pl
+msgid "{0} fallas"
+msgstr ""
+
+#: subscriptions.results_header.all_shown.warnings.sg
+msgid "1 advertencia"
+msgstr ""
+
+#: subscriptions.results_header.all_shown.warnings.pl
+msgid "{0} advertencias"
+msgstr ""
+
+#: subscriptions.results_header.some_hidden.failures.pl.sg
+msgid "{0} errores (1 oculto, consulte los registros)"
+msgstr ""
+
+#: subscriptions.results_header.some_hidden.failures.pl.pl
+msgid "{0} fallas ({1} oculta, consulte los registros)"
+msgstr ""
+
+#: subscriptions.results_header.some_hidden.warnings.pl.sg
+msgid "{0} advertencias (1 oculta, consulte los registros)"
+msgstr ""
+
+#: subscriptions.results_header.some_hidden.warnings.pl.pl
+msgid "{0} advertencias ({1} oculta, consulte los registros)"
+msgstr ""
+
+#: dataalerts.manage_my_data_alerts
+msgid "Administrar alertas"
+msgstr ""
+
+#: dataalerts.edit_data_alert
+msgid "Editar alerta"
+msgstr ""
+
+#: dataalerts.remove_user_from_data_alert
+msgid "Eliminarme"
+msgstr ""
+
+#: dataalerts.add_user_to_data_alert
+msgid "Añadirme a esta alerta"
+msgstr ""
+
+#: dataalerts.greater_or_equal
+msgid "{0} era superior o igual a {1}."
+msgstr ""
+
+#: dataalerts.greater
+msgid "{0} era superior a {1}."
+msgstr ""
+
+#: dataalerts.less_or_equal
+msgid "{0} era inferior o igual a {1}."
+msgstr ""
+
+#: dataalerts.less
+msgid "{0} era inferior a {1}."
+msgstr ""
+
+#: dataalerts.equal
+msgid "{0} era igual a {1}."
+msgstr ""
+
+#: dataalerts.email_alt_text
+msgid "Vista usada por la alerta: {0}"
+msgstr ""
+
+#: dataalerts.email_alt_text_hidden_view
+msgid "Vista usada por la alerta: {0} con cambios aplicados"
+msgstr ""
+
+#: dataalerts.alert_triggered_for_the_view
+msgid "Alerta activada para la vista"
+msgstr ""
+
+#: dataalerts.failure.email.subject
+msgid "La alerta no funciona para: {0}"
+msgstr ""
+
+#: dataalerts.failure.status
+msgid "Su alerta <i>{0}</i> no funciona"
+msgstr ""
+
+#: dataalerts.failure.view.details.alert
+msgid "Ver esta alerta"
+msgstr ""
+
+#: dataalerts.failure.explanation
+msgid ""
+"La alerta <i>{0}</i> no funciona en este momento, de modo que no se "
+"notificará a los destinatarios cuando la condición de los datos sea "
+"verdadera. Recibirá una notificación por correo electrónico cuando la alerta "
+"vuelva a funcionar."
+msgstr ""
+
+#: dataalerts.failure.affected.alert
+msgid "Alerta afectada"
+msgstr ""
+
+#: dataalerts.failure.time
+msgid "Error en la alerta de tiempo"
+msgstr ""
+
+#: dataalerts.failure.cause
+msgid ""
+"En ocasiones, las alertas fallan debido a problemas de red temporales que se "
+"resuelven por sí solos. Como alternativa, intente volver a crear la alerta "
+"en la vista de datos original o solucionar problemas de fallos habituales de "
+"alertas, como los siguientes:"
+msgstr ""
+
+#: dataalerts.failure.changed.view
+msgid ""
+"Se ha eliminado o renombrado un libro de trabajo, vista o campo de datos."
+msgstr ""
+
+#: dataalerts.failure.expired.credentials
+msgid ""
+"Han caducado las credenciales de base de datos incrustadas en un libro de "
+"trabajo."
+msgstr ""
+
+#: dataalerts.failure.datasource.error
+msgid "Una fuente de datos inaccesible."
+msgstr ""
+
+#: dataalerts.failure.email.footer
+msgid "Está recibiendo este mensaje en {0} debido al error de una alerta."
+msgstr ""
+
+#: dataalerts.failure.troubleshooting
+msgid ""
+"Para comprobar si alguno de los problemas indicados anteriormente está "
+"causando el error de su alerta, haga clic en el botón siguiente."
+msgstr ""
+
+#: dataalerts.success.email.subject
+msgid "Se ha reanudado la alerta para: {0}"
+msgstr ""
+
+#: dataalerts.success.status
+msgid "Se ha reanudado su alerta <i>{0}</i>"
+msgstr ""
+
+#: dataalerts.success.explanation
+msgid ""
+"Su alerta <i>{0}</i> ya vuelve a funcionar, de modo que se notificará a los "
+"destinatarios cuando la condición de los datos sea verdadera."
+msgstr ""
+
+#: dataalerts.failure.error.internalError
+msgid "Error interno de alerta de datos"
+msgstr ""
+
+#: dataalerts.failure.error.invalidDataAlertSpecification
+msgid "Especificación no válida de alerta"
+msgstr ""
+
+#: dataalerts.failure.error.summaryTableNotFound
+msgid "No se encontró la tabla de datos de resumen"
+msgstr ""
+
+#: dataalerts.failure.error.unclassifiedError
+msgid "Error no clasificado"
+msgstr ""
+
+#: dataalerts.failure.error.viewContentNotFound
+msgid "No se encontró el contenido de {0} de la vista de alerta de datos"
+msgstr ""
+
+#: dataalerts.failure.error.viewNotFound
+msgid "No se encontró la vista de alerta de datos"
+msgstr ""
+
+#: dataalerts.failure.error.workbookNotFound
+msgid "No se encontró el libro de trabajo"
+msgstr ""
+
+#: dataalerts.failure.error.paneDescriptorAxisNotFound
+msgid "No se ha encontrado ningún eje para el campo {0}"
+msgstr ""
+
+#: dataalerts.failure.error.paneDescriptorNotFound
+msgid "{0}"
+msgstr ""
+
+#: dataalerts.failure.error.unsupportedComparisonExpression
+msgid "Expresión de comparación no compatible {0}"
+msgstr ""
+
+#: dataalerts.failure.error.nonConstComparisonOp
+msgid "No se ha detectado ningún operador de comparación constante: {0}"
+msgstr ""
+
+#: dataalerts.failure.error.cannotAddFilter
+msgid "Se ha producido un error al añadir un filtro a la alerta de datos"
+msgstr ""
+
+#: dataalerts.failure.error.sheetNotAlertable
+msgid "La hoja {0} no contiene datos compatibles con las alertas. {1}"
+msgstr ""
+
+#: dataalerts.failure.error.dataAlertMeasureNotFound
+msgid "No se puede seleccionar una medida. {0}"
+msgstr ""
+
+#: dataalerts.failure.error.tooManyMeasuresForDataAlert
+msgid "Se ha detectado un número de medidas incorrecto.{0}"
+msgstr ""
+
+#: dataalerts.failure.error.thresholdParseError
+msgid "Error al analizar el texto del umbral {0}. {1}"
+msgstr ""
+
+#: dataalerts.failure.error.dataAlertPresModelCreationError
+msgid "Se ha producido un error al serializar la alerta. {0}"
+msgstr ""
+
+#: dataalerts.failure.error.cannotDrawDataAlertDialog
+msgid "Se ha producido un error al crear el diálogo de alerta."
+msgstr ""
+
+#: dataalerts.failure.error.unsupportedDataAlertType
+msgid "Actualmente no se admite el tipo de alerta {0}."
+msgstr ""
+
+#: dataalerts.failure.suspend.email.subject
+msgid "Se ha suspendido la alerta para: {0}"
+msgstr ""
+
+#: dataalerts.failure.suspend.email.status
+msgid "Se ha suspendido su alerta {0}"
+msgstr ""
+
+#: dataalerts.failure.suspend.email.explanation
+msgid ""
+"En estado suspendido, no evaluaremos los destinatarios de la alerta o la "
+"vista. Una vez que se haya solucionado, puede reanudar la alerta en <a href="
+"\"{0}\" style=\"font-size:14px;font-family: Benton Sans Medium;color:#"
+"4996B2\">{1}."
+msgstr ""
+
+#: dataalerts.failure.suspend.view.name.prefix
+msgctxt "dataalerts.failure.suspend.view.name.prefix"
+msgid "Vista"
+msgstr ""
+
+#: dataalerts.failure.suspend.time
+msgctxt "dataalerts.failure.suspend.time"
+msgid "Tiempo de suspensión"
+msgstr ""
+
+#: dataalerts.failure.suspend.email.footer
+msgid "Ha recibido este correo electrónico porque su alerta se ha suspendido."
+msgstr ""
+
+#: dataalerts.failure.suspend.email.view.name.my.content
+msgid "Mi contenido"
+msgstr ""
+
+#: dataalerts.failure.suspend.view.alerts
+msgid "Ver alertas"
+msgstr ""
+
+#: metricsservices.failure.affected.metric
+msgid "Métrica afectada"
+msgstr ""
+
+#: metricsservices.failure.cause
+msgid ""
+"En algunos casos, las actualizaciones de métricas no se completan debido a "
+"problemas de conexión aislados que se resuelven automáticamente. Estas son "
+"otras posibles razones de los fallos al actualizar las métricas:"
+msgstr ""
+
+#: metricsservices.failure.changed.view
+msgid ""
+"Se ha eliminado o cambiado el nombre de un libro de trabajo, vista o campo "
+"de datos"
+msgstr ""
+
+#: metricsservices.failure.permissions.error
+msgid "Se han modificado los permisos de la vista conectada"
+msgstr ""
+
+#: metricsservices.failure.email.footer
+msgid ""
+"Se le ha enviado este mensaje a {0} debido a un error durante la "
+"actualización de la métrica."
+msgstr ""
+
+#: metricsservices.failure.email.subject
+msgid "Error en la actualización de la métrica de: {0}"
+msgstr ""
+
+#: metricsservices.failure.expired.credentials
+msgid ""
+"Han caducado las credenciales de base de datos insertadas en un libro de "
+"trabajo"
+msgstr ""
+
+#: metricsservices.failure.explanation
+msgid ""
+"Su métrica no se puede actualizar, por tanto, no se aplican los cambios. "
+"Recibirá un correo electrónico informativo cuando la actualización de la "
+"métrica se reanude."
+msgstr ""
+
+#: metricsservices.failure.status
+msgid "La métrica \"{0}\" no se está actualizando"
+msgstr ""
+
+#: metricsservices.failure.suspend.email.explanation
+msgid ""
+"Hasta que se reanude la actualización, no se aplicarán los cambios a los "
+"datos de la métrica. Una vez solucionado el problema, podrá reanudar la "
+"actualización."
+msgstr ""
+
+#: metricsservices.failure.suspend.email.footer
+msgid ""
+"Se ha enviado este correo electrónico a {0} porque la actualización de la "
+"métrica se ha suspendido."
+msgstr ""
+
+#: metricsservices.failure.suspend.email.status
+msgid "Se ha suspendido la actualización de la métrica \"{0}\""
+msgstr ""
+
+#: metricsservices.failure.suspend.email.subject
+msgid "Se ha suspendido la actualización de la métrica de: {0}"
+msgstr ""
+
+#: metricsservices.failure.suspend.time
+msgctxt "metricsservices.failure.suspend.time"
+msgid "Tiempo de suspensión"
+msgstr ""
+
+#: metricsservices.failure.suspend.view.metric
+msgctxt "metricsservices.failure.suspend.view.metric"
+msgid "Ir a la métrica"
+msgstr ""
+
+#: metricsservices.failure.suspend.view.name.prefix
+msgctxt "metricsservices.failure.suspend.view.name.prefix"
+msgid "Vista conectada"
+msgstr ""
+
+#: metricsservices.failure.time
+msgid "Hora del error de actualización"
+msgstr ""
+
+#: metricsservices.failure.troubleshooting
+msgid ""
+"Para comprobar si otros problemas provocan el error en la actualización de "
+"la métrica, haga clic en el botón que aparece más abajo. Puede intentar "
+"volver a crear la métrica en la vista conectada."
+msgstr ""
+
+#: metricsservices.failure.view.details.metric
+msgctxt "metricsservices.failure.view.details.metric"
+msgid "Ir a la métrica"
+msgstr ""
+
+#: metricsservices.failure.view.name.prefix
+msgctxt "metricsservices.failure.view.name.prefix"
+msgid "Vista conectada"
+msgstr ""
+
+#: metricsservices.success.email.subject
+msgid "Se ha reanudado la actualización de la métrica de: {0}"
+msgstr ""
+
+#: metricsservices.success.explanation
+msgid ""
+"La actualización de su métrica vuelve a funcionar, ahora se buscarán las "
+"actualizaciones en los datos de sus métricas."
+msgstr ""
+
+#: metricsservices.success.status
+msgid "Se ha reanudado la actualización de la métrica \"{0}\""
+msgstr ""
+
+#: errors.staticimages.generic
+msgid "Error al generar imágenes estáticas para el libro de trabajo {0}. {1}."
+msgstr ""
+
+#: errors.internal_error.request.message
+msgid "{0} no pudo satisfacer la solicitud."
+msgstr ""
+
+#: errors.permissions.limited_user_visibility
+msgid ""
+"Error al completar la consulta. El usuario debe tener permisos de "
+"administrador o creador para consultar a otros usuarios sobre la "
+"configuración de la Visibilidad de usuario"
+msgstr ""
+
+#: local_names.system_user.guest.name
+msgid "Invitado"
+msgstr ""
+
+#: local_names.group.all_users.name
+msgid "Todos los usuarios"
+msgstr ""
+
+#: local_names.containers.personal_space.name
+msgid "Espacio personal"
+msgstr ""
+
+#: password_reset.email.subject
+msgid "Este es el enlace para restablecer la contraseña"
+msgstr ""
+
+#: password_reset.email.body
+msgid ""
+"Hola, {0}:<br/><br/>Ha solicitado el restablecimiento de su contraseña.<br/><"
+"br/> Para cambiar la contraseña de Tableau Server, {1} o pegue el siguiente "
+"enlace en el navegador: {2}<br/><br/>Este enlace expirará en 48 horas, así "
+"que tome las medidas necesarias lo antes posible.<br/><br/>Si no ha "
+"solicitado el restablecimiento de la contraseña, recomendamos que se ponga "
+"en contacto con el administrador de servidor.<br/><br/>Gracias por usar "
+"Tableau.<br/>El equipo de Tableau"
+msgstr ""
+
+#: password_reset.email.link
+msgid "haga clic aquí"
+msgstr ""
+
+#: hours.pl
+msgid "{0} horas"
+msgstr ""
+
+#: hours.sg
+msgid "1 hora"
+msgstr ""
+
+#: minutes.pl
+msgid "{0} minutos"
+msgstr ""
+
+#: minutes.sg
+msgid "1 minuto"
+msgstr ""
+
+#: seconds.pl
+msgid "{0} segundos"
+msgstr ""
+
+#: seconds.sg
+msgid "1 segundo"
+msgstr ""
+
+#: dataconnections.classes.tableau_server_site
+msgid "Sitio de Tableau Server"
+msgstr ""
+
+#: materializeviews.errors.workbook_not_in_project
+msgid "El proyecto ''{0}'' no contiene el libro de trabajo ''{1}''"
+msgstr ""
+
+#: materializeviews.errors.workbook_has_no_extract
+msgid ""
+"No se pudo actualizar la configuración de las vistas materializadas del "
+"libro de trabajo ''{0}''. Actualmente, solo se admiten los libros de trabajo "
+"con extracciones incrustadas"
+msgstr ""
+
+#: materializeviews.errors.workbook_updating_errors
+msgid ""
+"Se han encontrado errores al actualizar la configuración de las vistas "
+"materializadas para los libros de trabajo"
+msgstr ""
+
+#: materializeviews.errors.workbook_too_large
+msgid ""
+"Error al actualizar la configuración de las vistas materializadas para el "
+"libro de trabajo ''{0}'' porque el tamaño del libro de trabajo supera el "
+"limite de {1} GB"
+msgstr ""
+
+#: materializeviews.errors.project_path_not_exists
+msgid "La ruta del proyecto ''{0}'' no existe."
+msgstr ""
+
+#: materializeviews.errors.feature_disabled
+msgid ""
+"Error al actualizar la configuración de las vistas materializadas para el "
+"libro de trabajo ''{0}'' porque la función está actualmente deshabilitada"
+msgstr ""
+
+#: materializeviews.errors.update_materialized_views_setting_failed
+msgid ""
+"Error al actualizar la configuración de las vistas materializadas para el "
+"libro de trabajo ''{0}''"
+msgstr ""
+
+#: materializeviews.errors.site_not_enabled
+msgid ""
+"Este sitio no está habilitado para vistas materializadas. Póngase en "
+"contacto con su administrador"
+msgstr ""
+
+#: materializeviews.errors.encrypted_extracts_not_supported
+msgid ""
+"Por el momento, la función Vistas materializadas no admite libros de trabajo "
+"con extracciones cifradas."
+msgstr ""
+
+#: materializedviews.finished.create
+msgid ""
+"Se han creado las vistas materializadas con el estado ''{0}'' del libro de "
+"trabajo ''{1}''"
+msgstr ""
+
+#: materializedviews.finished.delete
+msgid ""
+"Se han eliminado las vistas materializadas del libro de trabajo con id: {0}"
+msgstr ""
+
+#: materializedviews.finished.encrypt
+msgid ""
+"Se ha completado el cifrado de vistas materializadas para el libro de "
+"trabajo ''{0}''"
+msgstr ""
+
+#: materializedviews.finished.decrypt
+msgid ""
+"Se ha completado el descifrado de vistas materializadas para el libro de "
+"trabajo ''{0}''"
+msgstr ""
+
+#: materializedviews.finished.rekey
+msgid ""
+"Se ha completado el recifrado de vistas materializadas para el libro de "
+"trabajo ''{0}''"
+msgstr ""
+
+#: materializedviews.status.encryption_key
+msgctxt "materializedviews.status.encryption_key"
+msgid "ID de clave de cifrado: ''{0}''."
+msgstr ""
+
+#: materializedviews.status.encryption_keys
+msgctxt "materializedviews.status.encryption_keys"
+msgid ""
+"ID de clave de cifrado antigua: ''{0}''; ID de clave de cifrado nueva: "
+"''{1}''."
+msgstr ""
+
+#: materializedviews.status.encryption_type
+msgid "Tipo de cifrado de la fuente de datos: ''{0}''"
+msgstr ""
+
+#: customizedviews.namedSharingPrefix
+msgid "Versión compartida"
+msgstr ""
+
+#: flows.drafts.default_name
+msgid "Nuevo flujo"
+msgstr ""
+
+#: content_type.project
+msgid "Proyecto"
+msgstr ""
+
+#: content_type.workbook
+msgid "Libro de trabajo"
+msgstr ""
+
+#: content_type.view
+msgctxt "content_type.view"
+msgid "Vista"
+msgstr ""
+
+#: content_type.datasource
+msgid "Fuente de datos"
+msgstr ""
+
+#: content_type.flow
+msgid "Flujo"
+msgstr ""
+
+#: content_type.metric
+msgid "Métrica"
+msgstr ""
+
+#: content_type.collection
+msgid "Colección"
+msgstr ""
+
+#: content_type.visualization
+msgid "Visualización"
+msgstr ""
+
+#: content_type.askdata_visualization
+msgid "Visualización de Pregunte a los datos"
+msgstr ""
+
+#: content_type.explaindata_explanation
+msgid "Explicación"
+msgstr ""
+
+#: content_type.publishedconnection
+msgid "Conexión virtual"
+msgstr ""
+
+#: content_type.publishedconnectiontable
+msgid "Tabla de la conexión virtual"
+msgstr ""
+
+#: upgradethumbnails.status.server_started
+msgid "Respuesta del servidor: la actualización de miniaturas ha comenzado."
+msgstr ""
+
+#: upgradethumbnails.status.server_stopped
+msgid "Respuesta del servidor: se han detenido %d trabajos"
+msgstr ""
+
+#: dataquality.message.refresh_failed
+msgid "Error de acualización: {0}"
+msgstr ""
+
+#: dataquality.message.last_successful
+msgid "Realizado correctamente por última vez: {0}"
+msgstr ""
+
+#: dataquality.message.next_scheduled
+msgid "Próxima programación: {0}"
+msgstr ""
+
+#: dataquality.message.flow_run_output_steps_failed
+msgid "No fue posible ejecutar {0}/{1} pasos de salida"
+msgstr ""
+
+#: importcsvsummary.error.details
+msgid "Detalles del error:"
+msgstr ""
+
+#: importcsvsummary.remainingerrors
+msgid "(errores restantes no mostrados)"
+msgstr ""
+
+#: importcsvsummary.error.line
+msgid "línea {0} para usuario ''{1}'': ''{2}''"
+msgstr ""
+
+#: importcsvsummary.line.processed
+msgid "Líneas procesadas: {0}"
+msgstr ""
+
+#: importcsvsummary.line.skipped
+msgid "Líneas omitidas: {0}"
+msgstr ""
+
+#: importcsvsummary.users.added.count
+msgid "Número de usuarios añadidos: {0}"
+msgstr ""
+
+#: importcsvsummary.errors.count
+msgid "Número de errores: {0}"
+msgstr ""
+
+#: importcsvsummary.error.unexpected_extension
+msgid "Extensión de nombre de archivo inesperada para el archivo .csv"
+msgstr ""
+
+#: importcsvsummary.error.size_limit
+msgid "CsvFile sobrepasa el tamaño límite de {0}"
+msgstr ""
+
+#: importcsvsummary.error.local.password_mismatch
+msgid ""
+"La actualización del usuario del sitio local requiere una contraseña vacía o "
+"coincidente"
+msgstr ""
+
+#: importcsvsummary.error.local.password_required
+msgid ""
+"La creación del usuario del sistema local cuando Auth es Local requiere una "
+"contraseña"
+msgstr ""
+
+#: importcsvsummary.error.ad.user_not_found
+msgid "No se ha encontrado al usuario AD ''{0}''"
+msgstr ""
+
+#: importcsvsummary.error.too_many_errors
+msgid "Se han encontrado demasiados errores en el archivo .csv"
+msgstr ""
+
+#: audit.errors.wdc_not_allowlisted
+msgid ""
+"El conector de datos web no se encuentra en la lista de admisión. Para "
+"obtener ayuda, consulte: https://help.tableau.com/current/online/es-es/"
+"to_keep_data_fresh.htm"
+msgstr ""
+
+#: user.input.name.err.too_long
+msgid "el nombre supera el límite de caracteres {0}"
+msgstr ""
+
+#: user.input.name.err.empty
+msgid "el nombre no puede quedar vacío"
+msgstr ""
+
+#: askdata.title
+msgid "Pregunte a los datos"
+msgstr ""
+
+#: slack.app.upgrade.email.notification.subject
+msgid "Actualización en la aplicación de Tableau para Slack"
+msgstr ""
+
+#: slack.app.upgrade.email.notification.introduction
+msgid ""
+"Hay una actualización disponible para la aplicación de Tableau para Slack "
+"que se puede volver a instalar ahora para que funcione con la siguiente "
+"versión de Tableau Online. Tableau recomienda volver a instalar la "
+"aplicación para conseguir el mejor rendimiento y nuevas funcionalidades para "
+"los usuarios. Puede echar un vistazo a los cambios y funciones nuevas en <a "
+"style=\"text-decoration: none; color: #E8762C;\" href=\"https://help.tableau."
+"com/current/online/es-es/whatsnew_online.htm#tableau-slack\">Novedades de "
+"Tableau Online.</a>"
+msgstr ""
+
+#: slack.app.upgrade.email.notification.action
+msgid ""
+"Para actualizar y consultar los pasos para volver a instalar la aplicación, "
+"consulte <a style=\"text-decoration: none; color: #E8762C;\" href=\"https"
+"://help.tableau.com/current/online/es-es/slack_admin.htm#update\">Actualizar "
+"la aplicación de  Tableau para Slack.</a>  Si tiene varios sitios de Tableau "
+"Online, vuelva a instalar la aplicación en cada sitio."
+msgstr ""
+
+#: slack.app.upgrade.email.notification.steps
+msgid "Esta notificación de servicio ha sido publicada por Tableau Online."
+msgstr ""
+
+#: slack.app.upgrade.email.notification.reason
+msgid ""
+"Recibe esta notificación porque desempeña la función de administrador en un "
+"sitio de Tableau Online conectado a Slack."
+msgstr ""
+
+#: slack.app.upgrade.email.notification.footer.privacy
+msgid ""
+"Lea nuestra <a style=\"text-decoration: none; color: #E8762C;\" href=\"http"
+"://www.tableau.com/es-es/privacy\">Política de privacidad</a>"
+msgstr ""
+
+#: unifiedconsumption.tcrm.folders.private
+msgid "Mi aplicación privada"
+msgstr ""

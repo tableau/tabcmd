@@ -1,1800 +1,1972 @@
+#. extracted from tabcmd/locales/ko\shared_wg_ko.properties
+#, fuzzy
 msgid ""
 msgstr ""
-"MIME-Version: 1.0"
-"Content-Type: text/plain; charset=None"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: prop2po"
-"Project-Id-Version: None"
-"Language: None"
-#:
-msgid "permissions.labels.capabilities.read"
-msgstr "\ubcf4\uae30:"
-
-#:
-msgid "permissions.labels.capabilities.write"
-msgstr "\ub36e\uc5b4\uc4f0\uae30:"
-
-#:
-msgid "permissions.labels.capabilities.write.legacy"
-msgstr "\uc800\uc7a5:"
-
-#:
-msgid "permissions.labels.capabilities.delete"
-msgstr "\uc0ad\uc81c:"
-
-#:
-msgid "permissions.labels.capabilities.filter"
-msgstr "\ud544\ud130:"
-
-#:
-msgid "permissions.labels.capabilities.add_tag"
-msgstr "\ud0dc\uadf8 \ucd94\uac00:"
-
-#:
-msgid "permissions.labels.capabilities.add_favorite"
-msgstr "\uc990\uaca8\ucc3e\uae30 \ucd94\uac00:"
-
-#:
-msgid "permissions.labels.capabilities.add_comment"
-msgstr "\ub313\uae00 \ucd94\uac00:"
-
-#:
-msgid "permissions.labels.capabilities.add_comment.legacy"
-msgstr "\ub313\uae00 \ucd94\uac00:"
-
-#:
-msgid "permissions.labels.capabilities.view_comments"
-msgstr "\ub313\uae00 \ubcf4\uae30:"
-
-#:
-msgid "permissions.labels.capabilities.vud"
-msgstr "\uc804\uccb4 \ub370\uc774\ud130 \ub2e4\uc6b4\ub85c\ub4dc:"
-
-#:
-msgid "permissions.labels.capabilities.export_image"
-msgstr "\uc774\ubbf8\uc9c0/PDF \ub2e4\uc6b4\ub85c\ub4dc:"
-
-#:
-msgid "permissions.labels.capabilities.export_data"
-msgstr "\uc694\uc57d \ub370\uc774\ud130 \ub2e4\uc6b4\ub85c\ub4dc:"
-
-#:
-msgid "permissions.labels.capabilities.export_xml"
-msgstr "\ubcf5\uc0ac\ubcf8 \ub2e4\uc6b4\ub85c\ub4dc/\uc800\uc7a5:"
-
-#:
-msgid "permissions.labels.capabilities.export_xml.legacy"
-msgstr "\ub2e4\ub978 \uc774\ub984\uc73c\ub85c \ub2e4\uc6b4\ub85c\ub4dc/\uc800\uc7a5:"
-
-#:
-msgid "permissions.labels.capabilities.save_customized_view"
-msgstr "\uc0ac\uc6a9\uc790 \uc9c0\uc815 \ubdf0 \uc800\uc7a5:"
-
-#:
-msgid "permissions.labels.capabilities.share_view"
-msgstr "\uc0ac\uc6a9\uc790 \uc9c0\uc815 \ud56d\ubaa9 \uacf5\uc720:"
-
-#:
-msgid "permissions.labels.capabilities.stateful_url"
-msgstr "\uace0\uc815 \ub9c1\ud06c:"
-
-#:
-msgid "permissions.labels.capabilities.change_hierarchy"
-msgstr "\uc774\ub3d9:"
-
-#:
-msgid "permissions.labels.capabilities.change_permissions"
-msgstr "\uc0ac\uc6a9 \uad8c\ud55c \uc124\uc815:"
-
-#:
-msgid "permissions.labels.capabilities.exclude"
-msgstr "\uc81c\uc678:"
-
-#:
-msgid "permissions.labels.capabilities.keep_only"
-msgstr "\uc774 \ud56d\ubaa9\ub9cc \uc720\uc9c0:"
-
-#:
-msgid "permissions.labels.capabilities.select"
-msgstr "\ub9c8\ud06c \uc120\ud0dd:"
-
-#:
-msgid "permissions.labels.capabilities.tooltip"
-msgstr "\ub3c4\uad6c \uc124\uba85 \ubcf4\uae30:"
-
-#:
-msgid "permissions.labels.capabilities.highlight"
-msgstr "\ubc94\ub840 \ud558\uc774\ub77c\uc774\ud2b8:"
-
-#:
-msgid "permissions.labels.capabilities.url_link"
-msgstr "\uc678\ubd80 URL\ub85c \uc5f0\uacb0\ub418\ub294 \ub9c1\ud06c:"
-
-#:
-msgid "permissions.labels.capabilities.administrator"
-msgstr "\uad00\ub9ac\uc790:"
-
-#:
-msgid "permissions.labels.capabilities.content_admin"
-msgstr "\ucf58\ud150\uce20 \uad00\ub9ac\uc790:"
-
-#:
-msgid "permissions.labels.capabilities.create_groups"
-msgstr "\uadf8\ub8f9 \ub9cc\ub4e4\uae30:"
-
-#:
-msgid "permissions.labels.capabilities.rename"
-msgstr "\uc774\ub984 \ubc14\uafb8\uae30:"
-
-#:
-msgid "permissions.labels.capabilities.transfer_ownership"
-msgstr "\uc18c\uc720\uad8c \uc774\uc804:"
-
-#:
-msgid "permissions.labels.capabilities.project_leader"
-msgstr "\ud504\ub85c\uc81d\ud2b8 \ub9ac\ub354:"
-
-#:
-msgid "permissions.labels.capabilities.publish"
-msgstr "\uac8c\uc2dc:"
-
-#:
-msgid "permissions.labels.capabilities.connect"
-msgstr "\uc5f0\uacb0:"
-
-#:
-msgid "permissions.labels.capabilities.draw"
-msgstr "\uadf8\ub9ac\uae30:"
-
-#:
-msgid "permissions.labels.capabilities.web_authoring"
-msgstr "\uc6f9 \ud3b8\uc9d1:"
-
-#:
-msgid "permissions.labels.capabilities.xml_save_as"
-msgstr "\ub2e4\ub978 \uc774\ub984\uc73c\ub85c \uc800\uc7a5:"
-
-#:
-msgid "permissions.labels.capabilities.create_refresh_metrics"
-msgstr "\uba54\ud2b8\ub9ad \ub9cc\ub4e4\uae30/\uc0c8\ub85c \uace0\uce68:"
-
-#:
-msgid "permissions.labels.capabilities.explain_data"
-msgstr "\ub370\uc774\ud130 \uc124\uba85 \uc2e4\ud589:"
-
-#:
-msgid "permissions.labels.roles.wb_view"
-msgstr "\ubcf4\uae30"
-
-#:
-msgid "permissions.labels.roles.wb_explore"
-msgstr "\ud0d0\uc0c9"
-
-#:
-msgid "permissions.labels.roles.wb_publish"
-msgstr "\uac8c\uc2dc"
-
-#:
-msgid "permissions.labels.roles.wb_administer"
-msgstr "\uad00\ub9ac"
-
-#:
-msgid "permissions.labels.roles.ds_view"
-msgstr "\ubcf4\uae30"
-
-#:
-msgid "permissions.labels.roles.ds_explore"
-msgstr "\ud0d0\uc0c9"
-
-#:
-msgid "permissions.labels.roles.ds_publish"
-msgstr "\uac8c\uc2dc"
-
-#:
-msgid "permissions.labels.roles.ds_administer"
-msgstr "\uad00\ub9ac"
-
-#:
-msgid "permissions.labels.roles.viewer"
-msgstr "Viewer"
-
-#:
-msgid "permissions.labels.roles.interactor"
-msgstr "\uc778\ud130\ub799\ud130"
-
-#:
-msgid "permissions.labels.roles.editor"
-msgstr "\uc5d0\ub514\ud130"
-
-#:
-msgid "permissions.labels.roles.ds_connector"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8 \ucee4\ub125\ud130"
-
-#:
-msgid "permissions.labels.roles.ds_editor"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8 \uc5d0\ub514\ud130"
-
-#:
-msgid "permissions.labels.roles.administrator"
-msgstr "\uad00\ub9ac\uc790"
-
-#:
-msgid "permissions.labels.roles.project_leader"
-msgstr "\ud504\ub85c\uc81d\ud2b8 \ub9ac\ub354"
-
-#:
-msgid "permissions.labels.roles.publisher"
-msgstr "\uac8c\uc2dc\uc790"
-
-#:
-msgid "permissions.labels.roles.custom"
-msgstr "\uc0ac\uc6a9\uc790 \uc9c0\uc815"
-
-#:
-msgid "permissions.labels.roles.none"
-msgstr "\uc5c6\uc74c"
-
-# Used in Storage class in tab-core
-
-#:
-msgid "formats.messages.disk_space.in_mb"
-msgstr "{0}MB"
-
-#:
-msgid "formats.messages.disk_space.in_kb"
-msgstr "{0}KB"
-
-# Publishing-related errors and strings
-
-#:
-msgid "errors.argument.flow_description.too_long"
-msgstr "\ud750\ub984 \uc124\uba85\uc774 \ub108\ubb34 \uae41\ub2c8\ub2e4({0}\uc790). {1}\uc790\ubcf4\ub2e4 \uc9e7\uc544\uc57c \ud569\ub2c8\ub2e4.\n{2}"
-
-#:
-msgid "errors.argument.workbook_name.too_long"
-msgstr "\ud1b5\ud569 \ubb38\uc11c \uc774\ub984\uc774 \ub108\ubb34 \uae41\ub2c8\ub2e4({0}\uc790).  {1}\uc790\ubcf4\ub2e4 \uc9e7\uc544\uc57c \ud569\ub2c8\ub2e4.\n{2}"
-
-#:
-msgid "errors.argument.workbook_name.empty"
-msgstr "\ud1b5\ud569 \ubb38\uc11c \uc774\ub984\uc774 \ube44\uc5b4 \uc788\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.argument.workbook_description.too_long"
-msgstr "\ud1b5\ud569 \ubb38\uc11c \uc124\uba85\uc774 \ub108\ubb34 \uae41\ub2c8\ub2e4({0}\uc790). {1}\uc790\ubcf4\ub2e4 \uc9e7\uc544\uc57c \ud569\ub2c8\ub2e4.\n{2}"
-
-#:
-msgid "errors.argument.worksheet_name.too_long"
-msgstr "\uc6cc\ud06c\uc2dc\ud2b8 \uc774\ub984\uc774 \ub108\ubb34 \uae41\ub2c8\ub2e4({0}\uc790). {1}\uc790\ubcf4\ub2e4 \uc9e7\uc544\uc57c \ud569\ub2c8\ub2e4.\n{2}"
-
-#:
-msgid "errors.argument.datasource_name.too_long"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8 \uc774\ub984\uc774 \ub108\ubb34 \uae41\ub2c8\ub2e4({0}\uc790). {1}\uc790\ubcf4\ub2e4 \uc9e7\uc544\uc57c \ud569\ub2c8\ub2e4.\n{2}"
-
-#:
-msgid "errors.argument.datasource_name.empty"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8\uc774 \ube44\uc5b4 \uc788\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.argument.datasource_description.too_long"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8 \uc124\uba85\uc774 \ub108\ubb34 \uae41\ub2c8\ub2e4({0}\uc790). {1}\uc790\ubcf4\ub2e4 \uc9e7\uc544\uc57c \ud569\ub2c8\ub2e4.\n{2}"
-
-#:
-msgid "errors.argument.dataconnection_column.too_long"
-msgstr "DataConnection column {0} is too long ({1} characters).  It must be shorter than {2} characters:\n{3}"
-
-#:
-msgid "errors.argument.tag.too_long"
-msgstr "\ud0dc\uadf8\uac00 \ub108\ubb34 \uae41\ub2c8\ub2e4({0}\uc790). {1}\uc790\ubcf4\ub2e4 \uc9e7\uc544\uc57c \ud569\ub2c8\ub2e4.\n{2}"
-
-#:
-msgid "errors.argument.workbook_file.missing_or_empty"
-msgstr "\ud1b5\ud569 \ubb38\uc11c \ud30c\uc77c\uc774 \uc5c6\uac70\ub098 \ube44\uc5b4 \uc788\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.argument.internal"
-msgstr "\ub0b4\ubd80 \uc11c\ubc84 \uc624\ub958\uc785\ub2c8\ub2e4.  \uc778\uc218\uac00 \uc5c6\uac70\ub098 \uc798\ubabb\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.argument.thumbnail.invalid_format"
-msgstr "\ud1b5\ud569 \ubb38\uc11c \ucd95\uc18c\ud310 \ud615\uc2dd\uc774 \uc798\ubabb\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \ud574\uc0c1\ub3c4\uac00 300x300 \uc774\ud558\uc778 PNG\uc5ec\uc57c \ud569\ub2c8\ub2e4."
-
-#:
-msgid "errors.html_403.disabled_resource.workbook"
-msgstr "\uc8c4\uc1a1\ud569\ub2c8\ub2e4. \ud574\ub2f9 \ud1b5\ud569 \ubb38\uc11c\ub294 \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.  \uad00\ub9ac\uc790\uc5d0\uac8c \ubb38\uc758\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "errors.html_404.missing_or_unauthorized_resource.project"
-msgstr "\uc8c4\uc1a1\ud569\ub2c8\ub2e4. \ucc3e\ub294 \ud504\ub85c\uc81d\ud2b8\uac00 \uc5c6\uac70\ub098 \ud574\ub2f9 \ud504\ub85c\uc81d\ud2b8\ub97c \ubcfc \uc218 \uc788\ub294 \uc0ac\uc6a9 \uad8c\ud55c\uc774 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.html_404.missing_or_unauthorized_resource.personal_space"
-msgstr "\uc8c4\uc1a1\ud569\ub2c8\ub2e4. \ucc3e\ub294 \uac1c\uc778 \uacf5\uac04\uc774 \uc5c6\uac70\ub098 \ud574\ub2f9 \uacf5\uac04\uc744 \ubcfc \uc218 \uc788\ub294 \uc0ac\uc6a9 \uad8c\ud55c\uc774 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.html_404.missing_or_unauthorized_resource.datasource"
-msgstr "\uc8c4\uc1a1\ud569\ub2c8\ub2e4. \ucc3e\ub294 \ub370\uc774\ud130 \uc6d0\ubcf8\uc774 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.labels.formatted_request_id"
-msgstr "\uc694\uccad ID: {0}"
-
-#:
-msgid "errors.links.delete_datasources"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8 \uc0ad\uc81c"
-
-#:
-msgid "errors.links.delete_workbooks"
-msgstr "\ud1b5\ud569 \ubb38\uc11c \uc0ad\uc81c"
-
-#:
-msgid "errors.permissions.publish.datasource.licensing"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8\uc744 \uac8c\uc2dc\ud558\ub824\uba74 ''\uc778\ud130\ub799\ud130''\uc5ec\uc57c \ud569\ub2c8\ub2e4."
-
-#:
-msgid "errors.permissions.publish.datasource.overwrite"
-msgstr "\uc774\ub984\uc774 {0}\uc778 \ub370\uc774\ud130 \uc6d0\ubcf8\uc774 \ud504\ub85c\uc81d\ud2b8 {1}\uc5d0 \uc774\ubbf8 \uc788\uc2b5\ub2c8\ub2e4. \ub36e\uc5b4\uc4f8 \uc0ac\uc6a9 \uad8c\ud55c\uc774 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.permissions.publish.datasource.overwrite_personal_space"
-msgstr "\uc774\ub984\uc774 {0}\uc778 \ub370\uc774\ud130 \uc6d0\ubcf8\uc774 \uac1c\uc778 \uacf5\uac04\uc5d0 \uc774\ubbf8 \uc788\uc2b5\ub2c8\ub2e4. \ub36e\uc5b4\uc4f8 \uc0ac\uc6a9 \uad8c\ud55c\uc774 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.permissions.publish.datasource.overwrite_short"
-msgstr "\uc774\ub984\uc774 {0}\uc778 \ub370\uc774\ud130 \uc6d0\ubcf8\uc774 \ud504\ub85c\uc81d\ud2b8 {1}\uc5d0 \uc774\ubbf8 \uc788\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "\uc774\ub984\uc774 {0}\uc778 \ub370\uc774\ud130 \uc6d0\ubcf8\uc774 \uac1c\uc778 \uacf5\uac04\uc5d0 \uc774\ubbf8 \uc788\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.permissions.publish.datasource.non_existent"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8 {0}\uc774(\uac00) \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.permissions.publish.datasource.general"
-msgstr "\uc8c4\uc1a1\ud569\ub2c8\ub2e4. \uc774 \ub370\uc774\ud130 \uc6d0\ubcf8\uc744 \uac8c\uc2dc\ud560 \uc218 \uc788\ub294 \uc0ac\uc6a9 \uad8c\ud55c\uc774 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.permissions.publish.project.explicit_publisher_detail"
-msgstr "\uac8c\uc2dc \uad8c\ud55c\uc774 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.permissions.publish.project.general"
-msgstr "\uc8c4\uc1a1\ud569\ub2c8\ub2e4. \uc774 \ud504\ub85c\uc81d\ud2b8\uc5d0 \uac8c\uc2dc\ud560 \uc218 \uc788\ub294 \uc0ac\uc6a9 \uad8c\ud55c\uc774 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.permissions.publish.project.non_existent"
-msgstr "{0} \ud504\ub85c\uc81d\ud2b8\uac00 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.permissions.publish.project.not_writable"
-msgstr "{0} \ud504\ub85c\uc81d\ud2b8\uc5d0 \uc4f8 \uc218 \uc788\ub294 \uc0ac\uc6a9 \uad8c\ud55c\uc774 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.permissions.publish.project.unspecified"
-msgstr "\ud504\ub85c\uc81d\ud2b8\ub97c \uc9c0\uc815\ud574\uc57c \ud569\ub2c8\ub2e4."
-
-#:
-msgid "errors.permissions.publish.workbook.disabled"
-msgstr "{0} \ud1b5\ud569 \ubb38\uc11c\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.permissions.publish.workbook.general"
-msgstr "\uac8c\uc2dc\ud558\ub824\ub294 \ud504\ub85c\uc81d\ud2b8\uc5d0 \uc774 \uc774\ub984\uc758 \ud1b5\ud569 \ubb38\uc11c\uac00 \uc874\uc7ac\ud569\ub2c8\ub2e4. \uac8c\uc2dc\ud558\ub824\uba74 \ud1b5\ud569 \ubb38\uc11c\uc758 \uc774\ub984\uc744 \ubc14\uafb8\uc2ed\uc2dc\uc624."
-
-#:
-msgid "errors.permissions.publish.workbook.general_personal_space"
-msgstr "\uac8c\uc2dc\ud558\ub824\ub294 \uac1c\uc778 \uacf5\uac04\uc5d0 \uc774 \uc774\ub984\uc758 \ud1b5\ud569 \ubb38\uc11c\uac00 \uc874\uc7ac\ud569\ub2c8\ub2e4. \uac8c\uc2dc\ud558\ub824\uba74 \ud1b5\ud569 \ubb38\uc11c\uc758 \uc774\ub984\uc744 \ubc14\uafb8\uc2ed\uc2dc\uc624."
-
-#:
-msgid "errors.permissions.publish.workbook.overwrite"
-msgstr "\uc774\ub984\uc774 {0}\uc778 \ud1b5\ud569 \ubb38\uc11c\uac00 \ud504\ub85c\uc81d\ud2b8 {1}\uc5d0 \uc774\ubbf8 \uc788\uc2b5\ub2c8\ub2e4. \ub36e\uc5b4\uc4f8 \uc0ac\uc6a9 \uad8c\ud55c\uc774 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.permissions.publish.workbook.overwrite_personal_space"
-msgstr "\uc774\ub984\uc774 {0}\uc778 \ud1b5\ud569 \ubb38\uc11c\uac00 \uac1c\uc778 \uacf5\uac04\uc5d0 \uc774\ubbf8 \uc788\uc2b5\ub2c8\ub2e4. \ub36e\uc5b4\uc4f8 \uc0ac\uc6a9 \uad8c\ud55c\uc774 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.permissions.publish.workbook.overwrite_short"
-msgstr "\uc774\ub984\uc774 {0}\uc778 \ud1b5\ud569 \ubb38\uc11c\uac00 \ud504\ub85c\uc81d\ud2b8 {1}\uc5d0 \uc774\ubbf8 \uc788\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
-msgstr "\uc774\ub984\uc774 {0}\uc778 \ud1b5\ud569 \ubb38\uc11c\uac00 \uac1c\uc778 \uacf5\uac04\uc5d0 \uc774\ubbf8 \uc788\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.reportable.impersonation.group_and_user"
-msgstr "''impersonate_username'' \ub610\ub294 ''impersonate_groupname'' \uc911 \ud558\ub098\ub9cc \uc9c0\uc815\ud569\ub2c8\ub2e4."
-
-#:
-msgid "errors.reportable.impersonation.user_not_found"
-msgstr "''{0}'' \uc0ac\uc6a9\uc790\uac00 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.reportable.impersonation.group_not_found"
-msgstr "''{0}'' \uadf8\ub8f9\uc774 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-# errors.public.validation.hasextract is copied from the C++ file codegen strings.data IDS_PUBLIC_VALIDATION_ERROR_HASEXTRACT
-
-#:
-msgid "errors.public.validation.hasextract"
-msgstr "Tableau Public\uc5d0 \uc800\uc7a5\ub41c \ud1b5\ud569 \ubb38\uc11c\ub294 \ud65c\uc131 Tableau \ucd94\ucd9c\uc744 \uc0ac\uc6a9\ud574\uc57c \ud569\ub2c8\ub2e4. \uac8c\uc2dc\ud558\uae30 \uc804\uc5d0 \ub370\uc774\ud130 \uc6d0\ubcf8\uc744 \ub9c8\uc6b0\uc2a4 \uc624\ub978\ucabd \ub2e8\ucd94\ub85c \ud074\ub9ad\ud558\uc5ec [\ucd94\ucd9c \uc0ac\uc6a9]\uc744 \uc120\ud0dd\ud569\ub2c8\ub2e4. \ub370\uc774\ud130 \uc6d0\ubcf8 ''{0}''\uc774(\uac00) \ud65c\uc131 \ucd94\ucd9c\uc774 \uc544\ub2d9\ub2c8\ub2e4."
-
-#:
-msgid "errors.publish.dataserver_datasource_not_found"
-msgstr "''{0}'' \ub370\uc774\ud130 \uc6d0\ubcf8\uc774 ''{1}'' \ud1b5\ud569 \ubb38\uc11c\uc5d0 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.publish.datasource_update_mode"
-msgstr "\uc54c \uc218 \uc5c6\ub294 \uc5c5\ub370\uc774\ud2b8 \ubaa8\ub4dc: ''{0}''."
-
-#:
-msgid "errors.publish.workbook.concurrent_update"
-msgstr "\ub3d9\uc77c\ud55c \uc774\ub984\uc758 \ud1b5\ud569 \ubb38\uc11c\uac00 \ud604\uc7ac \uac8c\uc2dc \ub610\ub294 \uc218\uc815\ub418\uace0 \uc788\uc2b5\ub2c8\ub2e4. \uc791\uc5c5\uc774 \uc644\ub8cc\ub420 \ub54c\uae4c\uc9c0 \uae30\ub2e4\ub9b0 \ud6c4 \ub2e4\uc2dc \uc2dc\ub3c4\ud574 \uc8fc\uc2ed\uc2dc\uc624."
-
-#:
-msgid "errors.publish.workbook.restricted"
-msgstr "\ud1b5\ud569 \ubb38\uc11c\uc5d0 \uc774 \uc11c\ubc84\uc5d0 \ud5c8\uc6a9\ub418\uc9c0 \uc54a\ub294 \uc5f0\uacb0 \uc720\ud615\uc774 \uc788\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.publish.datasource.concurrent_update"
-msgstr "\ub3d9\uc77c\ud55c \uc774\ub984\uc758 \ub370\uc774\ud130 \uc6d0\ubcf8\uc774 \ud604\uc7ac \uac8c\uc2dc \ub610\ub294 \uc218\uc815\ub418\uace0 \uc788\uc2b5\ub2c8\ub2e4. \uc791\uc5c5\uc774 \uc644\ub8cc\ub420 \ub54c\uae4c\uc9c0 \uae30\ub2e4\ub9b0 \ud6c4 \ub2e4\uc2dc \uc2dc\ub3c4\ud574 \uc8fc\uc2ed\uc2dc\uc624."
-
-#:
-msgid "errors.publish.datasource.restricted"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8\uc5d0 \uc774 \uc11c\ubc84\uc5d0 \ud5c8\uc6a9\ub418\uc9c0 \uc54a\ub294 \uc5f0\uacb0 \uc720\ud615\uc774 \uc788\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.publish.datasource.connection_check"
-msgstr "{0}\uc5d0\uc11c \ub370\uc774\ud130 \uc6d0\ubcf8\uc5d0 \ub300\ud55c \uc5f0\uacb0\uc744 \uc124\uc815\ud558\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption"
-msgstr "\uc554\ud638\ud654\ub41c \ucd94\ucd9c\uc744 \uc0ac\uc6a9\ud558\uc5ec \ud1b5\ud569 \ubb38\uc11c\ub97c \uac8c\uc2dc\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \uc0ac\uc774\ud2b8 \uad00\ub9ac\uc790\uac00 \uc774 \uc0ac\uc774\ud2b8\uc5d0\uc11c \ucd94\ucd9c \uc554\ud638\ud654\ub97c \uc0ac\uc6a9\ud558\uc9c0 \uc54a\ub3c4\ub85d \uc124\uc815\ud588\uc2b5\ub2c8\ub2e4. \uc554\ud638\ud654\ub418\uc9c0 \uc54a\uc740 \ucd94\ucd9c\uc744 \uc0ac\uc6a9\ud558\uc5ec \ud1b5\ud569 \ubb38\uc11c\ub97c \uac8c\uc2dc\ud574\uc57c \ud569\ub2c8\ub2e4."
-
-#:
-msgid "errors.publish.datasource.requested_extract_encryption_on_site_with_disabled_encryption"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8\uc744 \uc554\ud638\ud654\ub41c \ucd94\ucd9c\ub85c \uac8c\uc2dc\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \uc0ac\uc774\ud2b8 \uad00\ub9ac\uc790\uac00 \uc774 \uc0ac\uc774\ud2b8\uc5d0\uc11c \ucd94\ucd9c \uc554\ud638\ud654\ub97c \uc0ac\uc6a9\ud558\uc9c0 \uc54a\ub3c4\ub85d \uc124\uc815\ud588\uc2b5\ub2c8\ub2e4. \uc554\ud638\ud654\ub418\uc9c0 \uc54a\uc740 \ucd94\ucd9c\uc744 \uac8c\uc2dc\ud574\uc57c \ud569\ub2c8\ub2e4."
-
-#:
-msgid "errors.publish.workbook.requested_no_extract_encryption_on_site_with_enforced_encryption"
-msgstr "\uc554\ud638\ud654\ub418\uc9c0 \uc54a\uc740 \ucd94\ucd9c\uc744 \uc0ac\uc6a9\ud558\uc5ec \ud1b5\ud569 \ubb38\uc11c\ub97c \uac8c\uc2dc\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \uc0ac\uc774\ud2b8 \uad00\ub9ac\uc790\uac00 \uc774 \uc0ac\uc774\ud2b8\uc5d0 \ucd94\ucd9c \uc554\ud638\ud654\ub97c \uc801\uc6a9\ud588\uc2b5\ub2c8\ub2e4. \ud1b5\ud569 \ubb38\uc11c\ub97c \uac8c\uc2dc\ud558\uace0 \ucd94\ucd9c \uc554\ud638\ud654\ub97c \uc9c0\uc815\ud574\uc57c \ud569\ub2c8\ub2e4."
-
-#:
-msgid "errors.publish.datasource.requested_no_extract_encryption_on_site_with_enforced_encryption"
-msgstr "\uc554\ud638\ud654\ub418\uc9c0 \uc54a\uc740 \ub370\uc774\ud130 \uc6d0\ubcf8 \ucd94\ucd9c\uc744 \uac8c\uc2dc\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \uc0ac\uc774\ud2b8 \uad00\ub9ac\uc790\uac00 \uc774 \uc0ac\uc774\ud2b8\uc5d0 \ucd94\ucd9c \uc554\ud638\ud654\ub97c \uc801\uc6a9\ud588\uc2b5\ub2c8\ub2e4. \ucd94\ucd9c\uc744 \uc554\ud638\ud654\ub41c \uc0c1\ud0dc\ub85c \uac8c\uc2dc\ud574\uc57c \ud569\ub2c8\ub2e4."
-
-#:
-msgid "errors.publish.has_unfinished_extract_creation_job"
-msgstr "\uc774 \ub9ac\uc18c\uc2a4\ub294 \ubcf4\ub958 \uc911\uc774\uac70\ub098 \uc644\ub8cc\ub418\uc9c0 \uc54a\uc740 \ucd94\ucd9c \ub9cc\ub4e4\uae30 \uc791\uc5c5\uc774 \uad00\ub828\ub418\uc5b4 \uc788\uae30 \ub54c\ubb38\uc5d0 \uac8c\uc2dc\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \ud574\ub2f9 \uc791\uc5c5\uc774 \uc644\ub8cc\ub420 \ub54c\uae4c\uc9c0 \uae30\ub2e4\ub9ac\uac70\ub098 \uc791\uc5c5\uc744 \ucde8\uc18c\ud55c \ud6c4 \ub2e4\uc2dc \uc2dc\ub3c4\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "errors.publishing.storage_quota_exceeded.message"
-msgstr "\uc0ac\uc774\ud2b8 \uc800\uc7a5\uc18c \ud560\ub2f9\ub7c9\uc774 \ucd08\uacfc\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.publishing.request_size_exceeded"
-msgstr "\uc694\uccad \ud06c\uae30({0}\ubc14\uc774\ud2b8)\uac00 \ubc14\uc774\ud2b8 \ud06c\uae30 \uc81c\ud55c({1}\ubc14\uc774\ud2b8)\uc744 \ucd08\uacfc\ud558\ubbc0\ub85c \uc774 \ud30c\uc77c\uc744 \uac8c\uc2dc\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.publishing.request_size_unknown"
-msgstr "\uc694\uccad \ud06c\uae30\ub97c \ud655\uc778\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.site.quota_exceeded"
-msgstr "\uc5c5\ub85c\ub4dc\ud558\ub824\ub294 \ucf58\ud150\uce20 \ud06c\uae30\uac00 \uc0ac\uc774\ud2b8 \uc6a9\ub7c9\ubcf4\ub2e4 {0}\ub9cc\ud07c \ud07d\ub2c8\ub2e4."
-
-#:
-msgid "errors.personal_space.quota_exceeded"
-msgstr "\uc774 \ucf58\ud150\uce20\ub294 \uac1c\uc778 \uacf5\uac04 \uc6a9\ub7c9\uc744 {0}\ub9cc\ud07c \ucd08\uacfc\ud569\ub2c8\ub2e4."
-
-#:
-msgid "errors.web_authoring.workbook_deleted"
-msgstr "''{0}'' \ud1b5\ud569 \ubb38\uc11c\uac00 \uc0ad\uc81c\ub418\uc5c8\uc2b5\ub2c8\ub2e4.  \uc0c8 \ud1b5\ud569 \ubb38\uc11c\ub85c \uc800\uc7a5\ud558\ub824\uba74 ''\ub2e4\ub978 \uc774\ub984\uc73c\ub85c \uc800\uc7a5''\uc744 \uc120\ud0dd\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "errors.web_authoring.workbook_changed"
-msgstr "\ud3b8\uc9d1\uc744 \uc2dc\uc791\ud55c \uc774\ud6c4 \ub2e4\ub978 \uc0ac\uc6a9\uc790\uac00 \uc774 \ud1b5\ud569 \ubb38\uc11c\ub97c \ud3b8\uc9d1\ud558\uace0 \uc800\uc7a5\ud588\uc2b5\ub2c8\ub2e4. \ub530\ub77c\uc11c \ub354 \uc774\uc0c1 \uc6d0\ubcf8 \ud1b5\ud569 \ubb38\uc11c\ub97c \uc5c5\ub370\uc774\ud2b8\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. [\ub2e4\ub978 \uc774\ub984\uc73c\ub85c \uc800\uc7a5]\uc744 \uc0ac\uc6a9\ud558\uc5ec \ubcc0\uacbd \ub0b4\uc6a9\uc744 \ud3ec\ud568\ud55c \uc0c8 \ud1b5\ud569 \ubb38\uc11c\ub97c \ub9cc\ub4dc\uc2ed\uc2dc\uc624."
-
-#:
-msgid "labels.publish.embed_credentials"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8\uc5d0 \ub300\ud55c \ube44\ubc00\ubc88\ud638 \ub0b4\uc7a5"
-
-#:
-msgid "errors.publish.workbook.google_no_embedded_credentials"
-msgstr "\uc774 \ud1b5\ud569 \ubb38\uc11c\uc5d0\ub294 \ub0b4\uc7a5\ub41c \uc790\uaca9 \uc99d\uba85\uc774 \ud544\uc694\ud55c {0} \ub370\uc774\ud130 \uc6d0\ubcf8\uc774 \ud3ec\ud568\ub418\uc5b4 \uc788\uc2b5\ub2c8\ub2e4. \ub2e4\ub978 \ud1b5\ud569 \ubb38\uc11c\ub85c \uc800\uc7a5\ud558\ub824\uba74 ''{1}''\uc744(\ub97c) \uc120\ud0dd\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "errors.publish.datasource.google_no_embedded_credentials"
-msgstr "\uc774 \ub370\uc774\ud130 \uc6d0\ubcf8\uc5d0\ub294 \ub0b4\uc7a5\ub41c \uc790\uaca9 \uc99d\uba85\uc774 \ud544\uc694\ud55c {0} \uc5f0\uacb0\uc774 \ud3ec\ud568\ub418\uc5b4 \uc788\uc2b5\ub2c8\ub2e4. \ub0b4\uc7a5\ub41c \uc790\uaca9 \uc99d\uba85\uc744 \uc0ac\uc6a9\ud558\uc5ec Tableau Desktop\uc5d0\uc11c \uc774 \ub370\uc774\ud130 \uc6d0\ubcf8\uc744 \uac8c\uc2dc\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "errors.publish.datasource.federated_oauth_datasource_failed"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8\uc5d0 \uc788\ub294 \ud558\ub098 \uc774\uc0c1\uc758 \uc5f0\uacb0\uc5d0 \ub300\ud55c \uc790\uaca9 \uc99d\uba85\uc774 \ub9cc\ub8cc\ub418\uc5c8\uc2b5\ub2c8\ub2e4. Tableau Server \ub610\ub294 Tableau Online\uc758 \uacc4\uc815 \uc124\uc815 \ud398\uc774\uc9c0\uc5d0\uc11c \uc774 \ub370\uc774\ud130 \uc6d0\ubcf8\uc5d0 \ub300\ud574 \uc800\uc7a5\ub41c \uc790\uaca9 \uc99d\uba85\uc744 \uc0ad\uc81c\ud55c \ub2e4\uc74c \ub370\uc774\ud130 \uc6d0\ubcf8\uc5d0 \ub2e4\uc2dc \uc5f0\uacb0\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "errors.publish.workbook.missing_oauth_credential"
-msgstr "\uc790\uaca9 \uc99d\uba85 ''{0}''\uc744(\ub97c) \ucc3e\uc744 \uc218 \uc5c6\uac70\ub098 \ub370\uc774\ud130 \uc6d0\ubcf8 \ub610\ub294 \ud1b5\ud569 \ubb38\uc11c\uc5d0 \uc5f0\uacb0\ud558\ub294 \ub370 \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.publish.version_incompatible.message"
-msgstr "\ub370\uc2a4\ud06c\ud1b1 \ubc84\uc804\uacfc \uc11c\ubc84 \ubc84\uc804\uc774 \ud638\ud658\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.publish.version_incompatible.details"
-msgstr "\ub370\uc2a4\ud06c\ud1b1 \ubc84\uc804\uc740 ''{0}''\uc774\uace0 \uc11c\ubc84 \ubb38\uc11c \ubc84\uc804\uc740 ''{1}''\uc785\ub2c8\ub2e4."
-
-#:
-msgid "errors.publish.datasource.managed_keychain.unique_cv_suggestions"
-msgstr "\ucda9\ub3cc\ub85c \uc778\ud574 \uac8c\uc2dc\ud558\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4. \ubcc0\uacbd \ub0b4\uc6a9\uc744 \ub2e4\uc2dc \uc2e4\ud589 \uc758\ub8b0\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "errors.publish.permissions_are_locked"
-msgstr "\uac8c\uc2dc\ud558\ub824\ub294 \ub300\uc0c1 \ud504\ub85c\uc81d\ud2b8\uc5d0\uc11c \uc0ac\uc6a9 \uad8c\ud55c\uc774 \uc7a0\uaca8 \uc788\uc2b5\ub2c8\ub2e4. \uc774 \ud1b5\ud569 \ubb38\uc11c\ub97c \uac8c\uc2dc\ud558\ub824\uba74 \uae30\ubcf8 \uc0ac\uc6a9 \uad8c\ud55c\uc744 \uc0ac\uc6a9\ud558\uc5ec \ub2e4\uc2dc \uc2dc\ub3c4\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "errors.publish.datasource.not.found"
-msgstr "\uc11c\ubc84\uc5d0\uc11c \uc774 \ub370\uc774\ud130 \uc6d0\ubcf8\uc744 \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.publish.extracts.disabled"
-msgstr "\ucd94\ucd9c \uae30\ubc18 \uc544\uce74\uc774\ube0c \ub370\uc774\ud130 \uc6d0\ubcf8\uc744 \uc800\uc7a5\ud558\ub294 \uae30\ub2a5\uc740 \uc544\uc9c1 \uc9c0\uc6d0\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.publish.datasource.timeout"
-msgstr "{0}\ucd08 \ud6c4 \uac8c\uc2dc \uc2dc\uac04\uc774 \ucd08\uacfc\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \uc774 \ub370\uc774\ud130 \uc6d0\ubcf8\uc744 \uac8c\uc2dc\ud558\ub824\uba74 Tableau Desktop\uc744 \uc0ac\uc6a9\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "errors.publish.data_role.permission_not_null"
-msgstr "\ub370\uc774\ud130 \uc5ed\ud560 \uc720\ud615\uc758 \ub370\uc774\ud130 \uc6d0\ubcf8\uc5d0 \ub300\ud55c \uba85\uc2dc\uc801 \uc0ac\uc6a9 \uad8c\ud55c\uc744 \uc124\uc815\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.download.extracts.timeout"
-msgstr "\uc774 \ub370\uc774\ud130 \uc6d0\ubcf8\uc5d0 \ub300\uaddc\ubaa8 \ucd94\ucd9c \ud30c\uc77c\uc774 \uc788\uc5b4\uc11c {0}\ucd08 \ud6c4 \uac8c\uc2dc \uc2dc\uac04\uc774 \ucd08\uacfc\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \uc774 \ub370\uc774\ud130 \uc6d0\ubcf8\uc744 \uac8c\uc2dc\ud558\ub824\uba74 Tableau Desktop\uc744 \uc0ac\uc6a9\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "errors.publish.datasource.invalid_extract_update_time"
-msgstr "\uc798\ubabb\ub41c extractUpdateTime\uc774 \uc9c0\uc815\ub428: {0}"
-
-#:
-msgid "errors.publish.async.serialization"
-msgstr "\uac8c\uc2dc \uc791\uc5c5 \uc0c1\ud0dc \uc624\ub958\ub97c \uc9c1\ub82c\ud654\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.permissions.view.datasources"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8\uc758 \ubaa9\ub85d\uc744 \ubcf4\ub824\uba74 ''\uc778\ud130\ub799\ud130''\uc5ec\uc57c \ud569\ub2c8\ub2e4."
-
-# oauth related errors
-
-#:
-msgid "errors.oauth.invalid_oauth_class"
-msgstr "''{0}''\uc740(\ub294) \uc720\ud6a8\ud55c OAuth \uc5f0\uacb0 \uc720\ud615\uc774 \uc544\ub2d9\ub2c8\ub2e4."
-
-#:
-msgid "errors.xmlapi.bad_request"
-msgstr "\uc798\ubabb\ub41c \uc694\uccad"
-
-#:
-msgid "errors.xmlapi.unauthorized"
-msgstr "\uad8c\ud55c \uc5c6\uc74c"
-
-#:
-msgid "errors.xmlapi.forbidden"
-msgstr "\uc0ac\uc6a9 \uad8c\ud55c \ubd80\uc871"
-
-#:
-msgid "errors.xmlapi.system_user_not_found"
-msgstr "\uc0ac\uc6a9\uc790 \uacc4\uc815\uc774 \uc7a0\uaca8 \uc788\uac70\ub098 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.xmlapi.site_user_not_found"
-msgstr "\uc0ac\uc6a9\uc790 \uacc4\uc815\uc774 \ud65c\uc131 \uc0c1\ud0dc\uac00 \uc544\ub2d9\ub2c8\ub2e4. \ub3c4\uc6c0\uc774 \ud544\uc694\ud558\uba74 {0} \uad00\ub9ac\uc790\uc5d0\uac8c \ubb38\uc758\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "errors.xmlapi.not_found"
-msgstr "\ud56d\ubaa9 \ucc3e\uc744 \uc218 \uc5c6\uc74c"
-
-#:
-msgid "errors.xmlapi.concurrent_update"
-msgstr "\ub3d9\uc2dc \uc5c5\ub370\uc774\ud2b8"
-
-#:
-msgid "errors.xmlapi.internal_server_error"
-msgstr "\ub0b4\ubd80 \uc11c\ubc84 \uc624\ub958"
-
-#:
-msgid "errors.xmlapi.illegal_state"
-msgstr "\uc798\ubabb\ub41c \uc0c1\ud0dc"
-
-#:
-msgid "errors.xmlapi.invalid_parameter"
-msgstr "\uc798\ubabb\ub41c \ub9e4\uac1c \ubcc0\uc218"
-
-#:
-msgid "errors.xmlapi.already_exists"
-msgstr "\uc774\ubbf8 \uc874\uc7ac"
-
-#:
-msgid "errors.xmlapi.site_suspended"
-msgstr "\uc774 \uc0ac\uc774\ud2b8\ub294 \uc77c\uc2dc \uc911\ub2e8\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \ub85c\uadf8\uc778\ud558\ub824\uba74 \uc2dc\uc2a4\ud15c \uad00\ub9ac\uc790\uc5ec\uc57c \ud569\ub2c8\ub2e4."
-
-#:
-msgid "errors.xmlapi.site_locked"
-msgstr "\uc774 \uc0ac\uc774\ud2b8\ub294 \uc7a0\uacbc\uc2b5\ub2c8\ub2e4. \uc9c0\uae08\uc740 \ub85c\uadf8\uc778\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.xmlapi.permission_modification"
-msgstr "\uc218\uc815\ub41c \uc0ac\uc6a9 \uad8c\ud55c\uc744 \uc0ac\uc6a9\ud558\uc5ec \uac8c\uc2dc\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.xmlapi.update_desktop"
-msgstr "\ub2e4\ub978 \uc791\uc131\uc790\uac00 \ub9cc\ub4e0 \ud1b5\ud569 \ubb38\uc11c\ub97c \uc5f4\ub824\uba74 http://public.tableau.com/\uc5d0\uc11c Tableau Desktop Public Edition\uc758 \ucd5c\uc2e0 \ubc84\uc804\uc744 \ub2e4\uc6b4\ub85c\ub4dc\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "errors.xmlapi.throttled.summary"
-msgstr "\uc694\uccad\uc774 \ub108\ubb34 \ub9ce\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.xmlapi.throttled.detail"
-msgstr "''{0}''\uc5d0 \ub300\ud55c \uc694\uccad\uc774 \ub108\ubb34 \ub9ce\uc2b5\ub2c8\ub2e4. {1} \ud6c4\uc5d0 \ub2e4\uc2dc \uc2dc\ub3c4\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "datasource.publish.check.unpublishable"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8\uc744 \uac8c\uc2dc\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "datasource.publish.check.publishable.extract_required"
-msgstr "\uac8c\uc2dc\uc5d0 \ub300\ud55c \ucd94\ucd9c\uc744 \ub9cc\ub4e4\uc5b4\uc57c \ud569\ub2c8\ub2e4."
-
-#:
-msgid "datasource.publish.check.publishable.credentials_required"
-msgstr "\ub77c\uc774\ube0c \ub370\uc774\ud130 \uc5f0\uacb0\uc744 \uc720\uc9c0\ud560 \uc218 \uc788\ub294\uc9c0 \ud655\uc778\ud558\uae30 \uc704\ud574 {1}\uc5d0\uc11c ''{0}''\uc5d0 \ub300\ud574 \uc81c\uacf5\ub41c \uc790\uaca9 \uc99d\uba85\uc5d0 \uc77c\uc2dc\uc801\uc73c\ub85c \uc561\uc138\uc2a4\ud569\ub2c8\ub2e4."
-
-#:
-msgid "datasource.publish.check.publishable.server_unreachable"
-msgstr "{1}\uc5d0\uc11c ''{0}''\uc5d0 \uc5f0\uacb0\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \uac8c\uc2dc\ud558\uba74 \ucd94\ucd9c\uc774 \ub9cc\ub4e4\uc5b4\uc9d1\ub2c8\ub2e4."
-
-#:
-msgid "publish.bundles.workbook.subscription.subject"
-msgstr "{0} \ud1b5\ud569 \ubb38\uc11c\uac00 \uc900\ube44\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "publish.bundles.workbook.subscription.message"
-msgstr "Salesforce \ub370\uc774\ud130\uac00 \ud1b5\ud569 \ubb38\uc11c\uc5d0 \ucd94\uac00\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \uc2dc\uc791\ud558\ub824\uba74 {0} \ud504\ub85c\uc81d\ud2b8\ub85c \uc774\ub3d9\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "extracts.status.finished.upload.workbook"
-msgstr "\ud1b5\ud569 \ubb38\uc11c ''{1}'' {2}\uc5d0 \ub300\ud55c \ucd94\ucd9c \uc5c5\ub85c\ub4dc\ub97c \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4(\uc0c8 \ucd94\ucd9c ID: {0})."
-
-#:
-msgid "extracts.status.finished.refresh.workbook"
-msgstr "\ud1b5\ud569 \ubb38\uc11c ''{1}'' {2}\uc5d0 \ub300\ud55c \ucd94\ucd9c \uc0c8\ub85c \uace0\uce68\uc744 \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4(\uc0c8 \ucd94\ucd9c ID: {0})"
-
-#:
-msgid "extracts.status.finished.increment.workbook"
-msgstr "\ud1b5\ud569 \ubb38\uc11c ''{1}'' {2}\uc5d0 \ub300\ud55c \ucd94\ucd9c \uc99d\ubd84\uc744 \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4(\uc0c8 \ucd94\ucd9c ID: {0})"
-
-#:
-msgid "extracts.status.finished.encrypt.workbook"
-msgstr "\ud1b5\ud569 \ubb38\uc11c ''{1}''\uc5d0 \ub300\ud55c \ucd94\ucd9c \uc554\ud638\ud654\ub97c \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4(\uc0c8 \ucd94\ucd9c ID: {0})."
-
-#:
-msgid "extracts.status.finished.decrypt.workbook"
-msgstr "\ud1b5\ud569 \ubb38\uc11c ''{1}''\uc5d0 \ub300\ud55c \ucd94\ucd9c \uc554\ud638 \ud574\ub3c5\uc744 \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4(\uc0c8 \ucd94\ucd9c ID: {0})."
-
-#:
-msgid "extracts.status.finished.rekey.workbook"
-msgstr "\ud1b5\ud569 \ubb38\uc11c ''{1}''\uc5d0 \ub300\ud55c \ucd94\ucd9c \uc7ac\uc554\ud638\ud654\ub97c \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4(\uc0c8 \ucd94\ucd9c ID: {0})."
-
-#:
-msgid "extracts.status.finished.create.workbook"
-msgstr "\ud1b5\ud569 \ubb38\uc11c ''{1}'' {2}\uc5d0 \ub300\ud55c \ucd94\ucd9c \uc0dd\uc131\uc744 \ub9c8\ucce4\uc2b5\ub2c8\ub2e4(\uc0c8 \ucd94\ucd9c ID: {0})."
-
-#:
-msgid "extracts.status.finished.remove.workbook"
-msgstr "\ud1b5\ud569 \ubb38\uc11c ''{1}''\uc5d0 \ub300\ud55c \ucd94\ucd9c(\ub370\uc774\ud130 \uc6d0\ubcf8 ID: {0})\uc744 \ub77c\uc774\ube0c\ub85c \ubcc0\uacbd\ud558\ub294 \uc791\uc5c5\uc744 \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "extracts.status.finished.upload.datasource"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8 ''{1}'' {2}\uc5d0 \ub300\ud55c \ucd94\ucd9c \uc5c5\ub85c\ub4dc\ub97c \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4(\uc0c8 \ucd94\ucd9c ID: {0})"
-
-#:
-msgid "extracts.status.finished.refresh.datasource"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8 ''{1}'' {2}\uc5d0 \ub300\ud55c \ucd94\ucd9c \uc0c8\ub85c \uace0\uce68\uc744 \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4(\uc0c8 \ucd94\ucd9c ID: {0})"
-
-#:
-msgid "extracts.status.finished.increment.datasource"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8 ''{1}'' {2}\uc5d0 \ub300\ud55c \ucd94\ucd9c \uc99d\ubd84\uc744 \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4(\uc0c8 \ucd94\ucd9c ID: {0})"
-
-#:
-msgid "extracts.status.finished.append.datasource"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8 ''{1}'' {2}\uc5d0 \ub300\ud55c \ucd94\ucd9c \ucd94\uac00\ub97c \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4(\uc0c8 \ucd94\ucd9c ID: {0})"
-
-#:
-msgid "extracts.status.finished.replace.datasource"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8 ''{1}'' {2}\uc5d0 \ub300\ud55c \ucd94\ucd9c \ubc14\uafb8\uae30\ub97c \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4(\uc0c8 \ucd94\ucd9c ID: {0})"
-
-#:
-msgid "extracts.status.finished.encrypt.datasource"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8 ''{1}''\uc5d0 \ub300\ud55c \ucd94\ucd9c \uc554\ud638\ud654\ub97c \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4(\uc0c8 \ucd94\ucd9c ID: {0})."
-
-#:
-msgid "extracts.status.finished.decrypt.datasource"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8 ''{1}''\uc5d0 \ub300\ud55c \ucd94\ucd9c \uc554\ud638 \ud574\ub3c5\uc744 \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4(\uc0c8 \ucd94\ucd9c ID: {0})."
-
-#:
-msgid "extracts.status.finished.rekey.datasource"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8 ''{1}''\uc5d0 \ub300\ud55c \ucd94\ucd9c \uc7ac\uc554\ud638\ud654\ub97c \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4(\uc0c8 \ucd94\ucd9c ID: {0})."
-
-#:
-msgid "extracts.status.finished.encrypt.flow"
-msgstr "''{0}'' \ud750\ub984\uc5d0 \ub300\ud55c \ucd94\ucd9c \uc554\ud638\ud654\ub97c \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "extracts.status.finished.decrypt.flow"
-msgstr "''{0}'' \ud750\ub984\uc5d0 \ub300\ud55c \ucd94\ucd9c \uc554\ud638 \ud574\ub3c5\uc744 \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "extracts.status.finished.rekey.flow"
-msgstr "''{0}'' \ud750\ub984\uc5d0 \ub300\ud55c \ucd94\ucd9c \uc7ac\uc554\ud638\ud654\ub97c \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "extracts.status.finished.encrypt.flowdraft"
-msgstr "\ud750\ub984 \ucd08\uc548 ''{0}''\uc5d0 \ub300\ud55c \ucd94\ucd9c \uc554\ud638\ud654\ub97c \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "extracts.status.finished.decrypt.flowdraft"
-msgstr "\ud750\ub984 \ucd08\uc548 ''{0}''\uc5d0 \ub300\ud55c \ucd94\ucd9c \uc554\ud638 \ud574\ub3c5\uc744 \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "extracts.status.finished.rekey.flowdraft"
-msgstr "\ud750\ub984 \ucd08\uc548 ''{0}''\uc5d0 \ub300\ud55c \ucd94\ucd9c \uc7ac\uc554\ud638\ud654\ub97c \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "extracts.status.finished.create.datasource"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8 ''{1}'' {2}\uc5d0 \ub300\ud55c \ucd94\ucd9c \uc0dd\uc131\uc744 \ub9c8\ucce4\uc2b5\ub2c8\ub2e4(\uc0c8 \ucd94\ucd9c ID: {0})."
-
-#:
-msgid "extracts.status.finished.remove.datasource"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8 ''{1}''\uc5d0 \ub300\ud55c \ucd94\ucd9c\uc744 \ub77c\uc774\ube0c\ub85c \ubcc0\uacbd\ud558\ub294 \uc791\uc5c5\uc744 \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "extracts.status.encryption_key"
-msgstr "\uc554\ud638\ud654 \ud0a4 ID: ''{0}''."
-
-#:
-msgid "extracts.status.encryption_keys"
-msgstr "\uc774\uc804 \uc554\ud638\ud654 \ud0a4 ID: ''{0}'', \uc0c8 \uc554\ud638\ud654 \ud0a4 ID: ''{1}''."
-
-#:
-msgid "extracts.errors.upload"
-msgstr "{0}\uc758 \ucd94\ucd9c\uc744 \uc5c5\ub85c\ub4dc\ud558\ub294 \ub3d9\uc548 \uc624\ub958 \ubc1c\uc0dd: ''{1}''"
-
-#:
-msgid "extracts.errors.refresh"
-msgstr "\ub2e4\uc74c \ucd94\ucd9c\uc744 \uc0c8\ub85c \uace0\uce58\ub294 \ub3d9\uc548 \uc624\ub958 \ubc1c\uc0dd: {0} ''{1}''"
-
-#:
-msgid "extracts.errors.create"
-msgstr "{0} ''{1}''\uc5d0 \ub300\ud55c \ucd94\ucd9c\uc744 \ub9cc\ub4dc\ub294 \ub3d9\uc548 \uc624\ub958\uac00 \ubc1c\uc0dd\ud588\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "extracts.errors.increment"
-msgstr "{0}\uc758 \ucd94\ucd9c\uc744 \uc99d\ubd84\ud558\ub294 \ub3d9\uc548 \uc624\ub958 \ubc1c\uc0dd: ''{1}''"
-
-#:
-msgid "extracts.errors.append"
-msgstr "{0}\uc758 \ucd94\ucd9c\uc744 \ucd94\uac00\ud558\ub294 \ub3d9\uc548 \uc624\ub958 \ubc1c\uc0dd: ''{1}''"
-
-#:
-msgid "extracts.errors.replace"
-msgstr "{0}\uc758 \ucd94\ucd9c\uc744 \ubc14\uafb8\ub294 \ub3d9\uc548 \uc624\ub958 \ubc1c\uc0dd: ''{1}''"
-
-#:
-msgid "extracts.errors.download"
-msgstr "{0}\uc758 \ucd94\ucd9c\uc744 \ub2e4\uc6b4\ub85c\ub4dc\ud558\ub294 \ub3d9\uc548 \uc624\ub958 \ubc1c\uc0dd: ''{1}''"
-
-#:
-msgid "extracts.errors.remove"
-msgstr "{0}\uc758 \ucd94\ucd9c\uc744 \uc81c\uac70\ud558\ub294 \ub3d9\uc548 \uc624\ub958 \ubc1c\uc0dd: ''{1}''."
-
-#:
-msgid "extracts.errors.title"
-msgstr "\ucd94\ucd9c \ucc98\ub9ac \uc624\ub958"
-
-#:
-msgid "extracts.errors.nothing_to_upload"
-msgstr "{0}\uc5d0 \ub300\ud574 \uc5c5\ub85c\ub4dc\ud560 \ucd94\ucd9c \uc5c6\uc74c: ''{1}''"
-
-#:
-msgid "extracts.errors.nothing_to_refresh"
-msgstr "{0}\uc5d0 \ub300\ud574 \uc0c8\ub85c \uace0\uce60 \ucd94\ucd9c \uc5c6\uc74c: ''{1}''"
-
-#:
-msgid "extracts.errors.nothing_to_increment"
-msgstr "\uc99d\ubd84\ud560 {0}\uc758 \ucd94\ucd9c \uc5c6\uc74c: ''{1}''"
-
-#:
-msgid "extracts.errors.nothing_to_append"
-msgstr "{0}\uc5d0 \ub300\ud574 \ucd94\uac00\ud560 \ucd94\ucd9c \uc5c6\uc74c: ''{1}''"
-
-#:
-msgid "extracts.errors.nothing_to_replace"
-msgstr "{0}\uc5d0 \ub300\ud574 \ubc14\uafc0 \ucd94\ucd9c \uc5c6\uc74c: ''{1}''"
-
-#:
-msgid "extracts.errors.refresh_summary"
-msgstr "\ucd94\ucd9c \uc0c8\ub85c \uace0\uce68 \uc624\ub958"
-
-#:
-msgid "extracts.errors.encrypt_summary"
-msgstr "\ucd94\ucd9c \uc554\ud638\ud654 \uc624\ub958"
-
-#:
-msgid "extracts.errors.rekey_summary"
-msgstr "\ucd94\ucd9c \uc7ac\uc554\ud638\ud654 \uc624\ub958"
-
-#:
-msgid "extracts.errors.decrypt_summary"
-msgstr "\ucd94\ucd9c \uc554\ud638 \ud574\ub3c5 \uc624\ub958"
-
-#:
-msgid "extracts.errors.remove_summary"
-msgstr "\ucd94\ucd9c \uc81c\uac70 \uc624\ub958"
-
-#:
-msgid "extracts.errors.create_summary"
-msgstr "\ucd94\ucd9c \ub9cc\ub4e4\uae30 \uc624\ub958"
-
-#:
-msgid "extracts.errors.datasource_overwritten"
-msgstr "\ucc98\ub9ac \uc911\uc5d0 \ub2e4\ub978 \uc791\uc5c5\uc5d0\uc11c \ub370\uc774\ud130 \uc6d0\ubcf8\uc744 \ub36e\uc5b4\uc37c\uae30 \ub54c\ubb38\uc5d0 \uc0c8\ub85c \uace0\uce68\uc5d0 \uc2e4\ud328\ud588\uc2b5\ub2c8\ub2e4. \uc218\uc815\ud558\ub824\uba74 \ub2e4\uc2dc \uc0c8\ub85c \uace0\uce68\uc744 \uc2e4\ud589 \uc758\ub8b0\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "extracts.errors.workbook_overwritten"
-msgstr "\ucc98\ub9ac \uc911\uc5d0 \ub2e4\ub978 \uc791\uc5c5\uc5d0\uc11c \ud1b5\ud569 \ubb38\uc11c\ub97c \ub36e\uc5b4\uc37c\uae30 \ub54c\ubb38\uc5d0 \uc0c8\ub85c \uace0\uce58\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4. \uc218\uc815\ud558\ub824\uba74 \ub2e4\uc2dc \uc0c8\ub85c \uace0\uce68\uc744 \uc2e4\ud589 \uc758\ub8b0\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "extracts.errors.encrypt"
-msgstr "\ub2e4\uc74c \ucd94\ucd9c\uc744 \uc554\ud638\ud654\ud558\ub294 \ub3d9\uc548 \uc624\ub958 \ubc1c\uc0dd: {0} ''{1}''"
-
-#:
-msgid "extracts.errors.decrypt"
-msgstr "\ub2e4\uc74c \ucd94\ucd9c\uc744 \uc554\ud638 \ud574\ub3c5\ud558\ub294 \ub3d9\uc548 \uc624\ub958 \ubc1c\uc0dd: {0} ''{1}''"
-
-#:
-msgid "extracts.errors.rekey"
-msgstr "\ub2e4\uc74c \ucd94\ucd9c\uc744 \uc7ac\uc554\ud638\ud654\ud558\ub294 \ub3d9\uc548 \uc624\ub958 \ubc1c\uc0dd: {0} ''{1}''"
-
-#:
-msgid "extracts.errors.encrypt_datasource_overwritten"
-msgstr "\ucc98\ub9ac \uc911\uc5d0 \ub2e4\ub978 \uc791\uc5c5\uc5d0\uc11c \ub370\uc774\ud130 \uc6d0\ubcf8\uc744 \ub36e\uc5b4\uc37c\uae30 \ub54c\ubb38\uc5d0 \ucd94\ucd9c \uc554\ud638\ud654\uac00 \uc2e4\ud328\ud588\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "extracts.errors.encrypt_workbook_overwritten"
-msgstr "\ucc98\ub9ac \uc911\uc5d0 \ub2e4\ub978 \uc791\uc5c5\uc5d0\uc11c \ud1b5\ud569 \ubb38\uc11c\ub97c \ub36e\uc5b4\uc37c\uae30 \ub54c\ubb38\uc5d0 \ucd94\ucd9c \uc554\ud638\ud654\uac00 \uc2e4\ud328\ud588\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "extracts.errors.rekey_datasource_overwritten"
-msgstr "\ucc98\ub9ac \uc911\uc5d0 \ub2e4\ub978 \uc791\uc5c5\uc5d0\uc11c \ub370\uc774\ud130 \uc6d0\ubcf8\uc744 \ub36e\uc5b4\uc37c\uae30 \ub54c\ubb38\uc5d0 \ucd94\ucd9c \uc7ac\uc554\ud638\ud654\uac00 \uc2e4\ud328\ud588\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "extracts.errors.rekey_workbook_overwritten"
-msgstr "\ucc98\ub9ac \uc911\uc5d0 \ub2e4\ub978 \uc791\uc5c5\uc5d0\uc11c \ud1b5\ud569 \ubb38\uc11c\ub97c \ub36e\uc5b4\uc37c\uae30 \ub54c\ubb38\uc5d0 \ucd94\ucd9c \uc7ac\uc554\ud638\ud654\uac00 \uc2e4\ud328\ud588\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "extracts.errors.decrypt_datasource_overwritten"
-msgstr "\ucc98\ub9ac \uc911\uc5d0 \ub2e4\ub978 \uc791\uc5c5\uc5d0\uc11c \ub370\uc774\ud130 \uc6d0\ubcf8\uc744 \ub36e\uc5b4\uc37c\uae30 \ub54c\ubb38\uc5d0 \ucd94\ucd9c \uc554\ud638 \ud574\ub3c5\uc774 \uc2e4\ud328\ud588\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "extracts.errors.decrypt_workbook_overwritten"
-msgstr "\ucc98\ub9ac \uc911\uc5d0 \ub2e4\ub978 \uc791\uc5c5\uc5d0\uc11c \ud1b5\ud569 \ubb38\uc11c\ub97c \ub36e\uc5b4\uc37c\uae30 \ub54c\ubb38\uc5d0 \ucd94\ucd9c \uc554\ud638 \ud574\ub3c5\uc774 \uc2e4\ud328\ud588\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "extracts.errors.remove_datasource_overwritten"
-msgstr "\ub2e4\ub978 \uc791\uc5c5\uc5d0 \uc758\ud574 \ub36e\uc5b4\uc368\uc9c4 \ub370\uc774\ud130 \uc6d0\ubcf8\uc740 \ub77c\uc774\ube0c\ub85c \ubcc0\uacbd\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "extracts.errors.remove_workbook_overwritten"
-msgstr "\ub2e4\ub978 \uc791\uc5c5\uc5d0 \uc758\ud574 \ub36e\uc5b4\uc368\uc9c4 \ud1b5\ud569 \ubb38\uc11c\ub294 \ub77c\uc774\ube0c\ub85c \ubcc0\uacbd\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "extracts.errors.create_datasource_overwritten"
-msgstr "\ub2e4\ub978 \uc791\uc5c5\uc5d0 \uc758\ud574 \ub36e\uc5b4\uc368\uc9c4 \ub370\uc774\ud130 \uc6d0\ubcf8\uc740 \ucd94\ucd9c\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "extracts.errors.create_workbook_overwritten"
-msgstr "\ub2e4\ub978 \uc791\uc5c5\uc5d0 \uc758\ud574 \ub36e\uc5b4\uc368\uc9c4 \ud1b5\ud569 \ubb38\uc11c\ub294 \ucd94\ucd9c\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "extracts.site_mode_change_details"
-msgstr "\uc0ac\uc774\ud2b8 \ucd94\ucd9c \uc554\ud638\ud654 \ubaa8\ub4dc\ub97c ''{0}''\uc5d0\uc11c ''{1}''(\uc73c)\ub85c \ubcc0\uacbd\ud588\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "extracts.errors.encryption_not_licensed"
-msgstr "\uc774 \uc791\uc5c5\uc740 \ucd94\ucd9c \uc554\ud638\ud654\uc5d0 \ub300\ud55c \ub77c\uc774\uc120\uc2a4\uac00 \uc5c6\uae30 \ub54c\ubb38\uc5d0 \uc2e4\ud328\ud588\uc2b5\ub2c8\ub2e4. \uc774 \uc791\uc5c5\uc744 \uc218\ud589\ud558\ub824\uba74 \ub77c\uc774\uc120\uc2a4\ub97c \uac31\uc2e0\ud558\uac70\ub098 \ucd94\ucd9c\uc744 \uc554\ud638 \ud574\ub3c5\ud574\uc57c \ud569\ub2c8\ub2e4."
-
-#:
-msgid "extracts.errors.operation_cancelled_detail"
-msgstr "{0}(\ub370\uc774\ud130 \uc6d0\ubcf8: {2})\uc5d0 \ub300\ud55c \ucd94\ucd9c \uc81c\uac70 \uc791\uc5c5 \uc2dc\uac04\uc774 \ucd08\uacfc\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "workbooks.messages.load_error"
-msgstr "{0} \ud1b5\ud569 \ubb38\uc11c\ub97c \ub85c\ub4dc\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "workbooks.messages.locked"
-msgstr "\ub2e4\ub978 \uc0ac\uc6a9\uc790\uac00 \ud604\uc7ac ''{0}'' \ud1b5\ud569 \ubb38\uc11c\ub97c \uc218\uc815\ud558\uace0 \uc788\uc2b5\ub2c8\ub2e4.  \ub098\uc911\uc5d0 \ub2e4\uc2dc \uc2dc\ub3c4\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "workbooks.new_workbook.default_name"
-msgstr "\uc0c8 \ud1b5\ud569 \ubb38\uc11c"
-
-#:
-msgid "workbooks.new_datasource.default_name"
-msgstr "\uc0c8 \ub370\uc774\ud130 \uc6d0\ubcf8"
-
-#:
-msgid "datasources.messages.load_error"
-msgstr "{0} \ub370\uc774\ud130 \uc6d0\ubcf8\uc744 \ub85c\ub4dc\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "metrics.new_metric.default_name"
-msgstr "\uc0c8 \uba54\ud2b8\ub9ad"
-
-#:
-msgid "messages.timeout_error.summary"
-msgstr "\uc2dc\uac04 \ucd08\uacfc \uc624\ub958"
-
-#:
-msgid "messages.timeout_error.task_canceled"
-msgstr "{0}\ucd08\ubcf4\ub2e4 \uc624\ub798 \uac78\ub9b0 \uc791\uc5c5\uc744 \ucde8\uc18c\ud558\ub294 \uc911"
-
-#:
-msgid "subscriptions.manage_my_subscriptions"
-msgstr "\ub0b4 \uad6c\ub3c5 \uad00\ub9ac"
-
-#:
-msgid "subscriptions.message_greeting"
-msgstr "\uc548\ub155\ud558\uc138\uc694."
-
-#:
-msgid "subscriptions.subscribed_footer"
-msgstr "\ud604\uc7ac \uad6c\ub3c5\ud558\ub294 {0}\uc785\ub2c8\ub2e4."
-
-#:
-msgid "subscriptions.subscribed_workbook"
-msgstr "\ud1b5\ud569 \ubb38\uc11c"
-
-#:
-msgid "subscriptions.subscribed_view"
-msgstr "\ubdf0"
-
-#:
-msgid "subscriptions.fullstop"
-msgstr "."
-
-#:
-msgid "subscriptions.extract_refresh_footer"
-msgstr "\ub370\uc774\ud130\uac00 \uc0c8\ub85c \uace0\uccd0\uc9c0\uba74 \uc774 \uad6c\ub3c5 \uc774\uba54\uc77c\uc774 \ubc1c\uc1a1\ub429\ub2c8\ub2e4."
-
-#:
-msgid "subscriptions.explore_the_viz"
-msgstr "\ube44\uc8fc\uc5bc\ub9ac\uc81c\uc774\uc158 \ud0d0\uc0c9"
-
-#:
-msgid "subscriptions.explore_the_workbook"
-msgstr "\ud1b5\ud569 \ubb38\uc11c \ud0d0\uc0c9"
-
-#:
-msgid "subscriptions.pdf_attached"
-msgstr "Tableau PDF\uac00 \ucca8\ubd80\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "subscriptions.access_live_content"
-msgstr "\ucf58\ud150\uce20\uc758 \ub77c\uc774\ube0c \ubdf0\ub97c \uc5ec\uae30\uc11c \uc561\uc138\uc2a4\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "subscriptions.warning_deprecated_type"
-msgstr "\ub354 \uc774\uc0c1 \uc0ac\uc6a9\ub418\uc9c0 \uc54a\uc74c"
-
-#:
-msgid "subscriptions.warning_extract_refresh_type"
-msgstr "\ucd94\ucd9c \uc0c8\ub85c \uace0\uce68 \uc2e4\ud328"
-
-#:
-msgid "subscriptions.warning_flow_run_type"
-msgstr "\ud750\ub984 \uc2e4\ud589 \uc2e4\ud328"
-
-#:
-msgid "subscriptions.warning_introduction_general"
-msgstr "\ub2e4\uc74c \ub370\uc774\ud130 \ud488\uc9c8 \uacbd\uace0\uac00 \uc774 {0}\uc5d0 \uc601\ud5a5\uc744 \ubbf8\uce69\ub2c8\ub2e4."
-
-#:
-msgid "subscriptions.warning_introduction_view"
-msgstr "\uc790\uc138\ud55c \ub0b4\uc6a9\uc740 \ubdf0\uc758 \ub370\uc774\ud130 \uc138\ubd80 \uc815\ubcf4 \ud0ed\uc744 \ucc38\uc870\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "subscriptions.warning_introduction_workbook"
-msgstr "\uc790\uc138\ud55c \ub0b4\uc6a9\uc740 \ud1b5\ud569 \ubb38\uc11c \ud398\uc774\uc9c0\ub97c \ucc38\uc870\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "subscriptions.warning_maintenance_type"
-msgstr "\uc720\uc9c0 \uad00\ub9ac \uc911"
-
-#:
-msgid "subscriptions.warning_permission_error"
-msgstr "\uc774\ub294 \ubcf4\uae30 \uad8c\ud55c\uc774 \uc5c6\ub294 \uc790\uc0b0\uc5d0 \ub300\ud55c \uacbd\uace0\uc785\ub2c8\ub2e4."
-
-#:
-msgid "subscriptions.warning_redacted"
-msgstr "\uc0ac\uc6a9 \uad8c\ud55c \ud544\uc694"
-
-#:
-msgid "subscriptions.warning_sensitve_type"
-msgstr "\uc911\uc694\ud55c \ub370\uc774\ud130"
-
-#:
-msgid "subscriptions.warning_severe"
-msgstr "\uc911\uc694 \ub370\uc774\ud130 \ud488\uc9c8 \uacbd\uace0"
-
-#:
-msgid "subscriptions.warning_stale_type"
-msgstr "\uc624\ub798\ub41c \ub370\uc774\ud130"
-
-#:
-msgid "subscriptions.warning_standard"
-msgstr "\ub370\uc774\ud130 \ud488\uc9c8 \uacbd\uace0"
-
-#:
-msgid "subscriptions.warning_error_type"
-msgstr "\uc54c \uc218 \uc5c6\ub294 \uacbd\uace0 \uc720\ud615"
-
-#:
-msgid "subscriptions.warning_warning_type"
-msgstr "\uacbd\uace0"
-
-#:
-msgid "errors.subscriptions.image_render_failed"
-msgstr "\ubdf0 ''{0}''\uc758 \uc2a4\ub0c5\uc0f7\uc744 \uc801\uc808\ud558\uac8c \ub80c\ub354\ub9c1\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.subscriptions.see_live_view"
-msgstr "\uc628\ub77c\uc778\uc73c\ub85c \ubdf0\ub97c \ubcf4\ub824\uba74 {0}(\uc73c)\ub85c \uc774\ub3d9\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "errors.subscriptions.disabled_on_server"
-msgstr "\uc11c\ubc84 \uc804\uccb4 \uad6c\ub3c5 \uc124\uc815\uc744 \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \uad6c\ub3c5\uc744 \ucc98\ub9ac\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.subscriptions.disabled_on_site"
-msgstr "\uc0ac\uc774\ud2b8\uc5d0\uc11c \uad6c\ub3c5\uc744 \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.subscriptions.site_is_locked"
-msgstr "\uc0ac\uc774\ud2b8\uac00 \uc7a0\uaca8 \uc788\uc2b5\ub2c8\ub2e4. \uad6c\ub3c5\uc744 \ucc98\ub9ac\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.subscriptions.orphan"
-msgstr "\uc774 \uad6c\ub3c5\uacfc \uc5f0\uad00\ub41c \ud1b5\ud569 \ubb38\uc11c \ubc0f \ubdf0\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.subscriptions.user_unlicensed"
-msgstr "\ub77c\uc774\uc120\uc2a4\uac00 \uc5c6\ub294 \uc0ac\uc6a9\uc790\uc758 \uad6c\ub3c5\uc744 \uac74\ub108\ub701\ub2c8\ub2e4."
-
-#:
-msgid "errors.subscriptions.smtp_unreacheable"
-msgstr "SMTP \ud638\uc2a4\ud2b8\uc5d0 \uc5f0\uacb0\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. SMTP\uac00 \uad6c\uc131\ub418\uc5b4 \uc788\ub294\uc9c0 \ud655\uc778\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "errors.subscriptions.uncategorized_error"
-msgstr "\uc54c \uc218 \uc5c6\ub294 \uc624\ub958"
-
-#:
-msgid "errors.subscriptions.pdf_render_failed"
-msgstr "\uc774 \uc774\uba54\uc77c\uc758 PDF \ucca8\ubd80 \ud30c\uc77c\uc744 \uc801\uc808\ud558\uac8c \ub80c\ub354\ub9c1\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.subscriptions.pdf_limit_exceeded"
-msgstr "\uc0dd\uc131\ub41c PDF\ub294 \ud06c\uae30 \uc81c\ud55c\uc778 {0}MB\ubcf4\ub2e4 \ucee4\uc11c \uc774 \uc774\uba54\uc77c\uc5d0 \ucca8\ubd80\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.subscriptions.attachments_not_enabled"
-msgstr "\uc774\uba54\uc77c \ucca8\ubd80 \ud30c\uc77c\uc774 \uc0ac\uc6a9\ub418\uc9c0 \uc54a\ub3c4\ub85d \uc124\uc815\ub418\uc5b4 \uc788\uc5b4\uc11c \uc774 \uad6c\ub3c5\uc774 \uc2e4\ud328\ud588\uc2b5\ub2c8\ub2e4. \uc790\uc138\ud55c \ub0b4\uc6a9\uc740 Tableau \uad00\ub9ac\uc790\uc5d0\uac8c \ubb38\uc758\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "errors.subscriptions.pdf_email_failed"
-msgstr "\uc0dd\uc131\ub41c PDF\ub294 \uc774 \uc774\uba54\uc77c\uc5d0 \ucca8\ubd80\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.subscriptions.learn_more_troubleshoot"
-msgstr "<a hre"
-
-#:
-msgid "errors.subscriptions.bad_extract_refresh_subscription_configuration"
-msgstr "\ud1b5\ud569 \ubb38\uc11c\uc5d0 \uc5ec\ub7ec \ucd94\ucd9c \uc0c8\ub85c \uace0\uce68 \uc77c\uc815\uc774 \ud3ec\ud568\ub418\uc5b4 \uc788\uc73c\ubbc0\ub85c \uad6c\ub3c5\uc774 \uc77c\uc2dc \uc911\ub2e8\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \ub2e4\uc2dc \uc2dc\uc791\ud558\ub824\uba74 \ube48\ub3c4\ub97c [\uc120\ud0dd\ub41c \uc77c\uc815\uc5d0 \ub530\ub77c]\ub85c \uc5c5\ub370\uc774\ud2b8\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "errors.subscriptions.subscription_failed_refresh_failure"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8\uc758 \ucd94\ucd9c \uc0c8\ub85c \uace0\uce68\uc774 \uc2e4\ud328\ud588\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.subscriptions.multiple_extracts_for_extract_refresh_subscription"
-msgstr "\ud1b5\ud569 \ubb38\uc11c\uc5d0 \uc5ec\ub7ec \ucd94\ucd9c \uc0c8\ub85c \uace0\uce68 \uc77c\uc815\uc774 \ud3ec\ud568\ub418\uc5b4 \uc788\uc2b5\ub2c8\ub2e4. \ube48\ub3c4\ub97c [\uc120\ud0dd\ub41c \uc77c\uc815\uc5d0 \ub530\ub77c]\ub85c \uc5c5\ub370\uc774\ud2b8\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "errors.subscriptions.datasource_is_missing_password"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8 \uc5f0\uacb0 \uc624\ub958\uc785\ub2c8\ub2e4. \ud1b5\ud569 \ubb38\uc11c\uc758 \ubaa8\ub4e0 \ub370\uc774\ud130 \uc6d0\ubcf8 \uc5f0\uacb0\uc5d0\uc11c \uc790\uaca9 \uc99d\uba85\uc744 \ud655\uc778\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "subscriptions.results_summary.sg"
-msgstr "{0}/{1}\uac1c\uc758 \uad6c\ub3c5\uc774 ''{2}'' \uc77c\uc815\uc5d0\uc11c \uc804\uc1a1\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "subscriptions.results_summary.pl"
-msgstr "{0}/{1}\uac1c\uc758 \uad6c\ub3c5\uc774 ''{2}'' \uc77c\uc815\uc5d0\uc11c \uc804\uc1a1\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "subscriptions.results_views_per_subscription.sg"
-msgstr "{0}({1}/1\ud68c \ubdf0\uac00 \uc131\uacf5\ud568)"
-
-#:
-msgid "subscriptions.results_views_per_subscription.pl"
-msgstr "{0}({1}/{2}\ud68c \ubdf0\uac00 \uc131\uacf5\ud568)"
-
-#:
-msgid "subscriptions.results_views_per_subscription.more"
-msgstr "({0} \ucd94\uac00)"
-
-#:
-msgid "subscriptions.results_views_per_subscription.failed"
-msgstr "{0}({1}/{2}\uac1c \ubdf0\uac00 \uc2e4\ud328\ud568)."
-
-#:
-msgid "subscriptions.results_header.all_shown.failures.sg"
-msgstr "\uc2e4\ud328 1\ud68c"
-
-#:
-msgid "subscriptions.results_header.all_shown.failures.pl"
-msgstr "\uc2e4\ud328 {0}\uac1c"
-
-#:
-msgid "subscriptions.results_header.all_shown.warnings.sg"
-msgstr "\uacbd\uace0 1\uac1c"
-
-#:
-msgid "subscriptions.results_header.all_shown.warnings.pl"
-msgstr "\uacbd\uace0 {0}\uac1c"
-
-#:
-msgid "subscriptions.results_header.some_hidden.failures.pl.sg"
-msgstr "\uc2e4\ud328 {0}\ud68c(1\ud68c \uc228\uaca8\uc9d0, \ub85c\uadf8 \ucc38\uc870)"
-
-#:
-msgid "subscriptions.results_header.some_hidden.failures.pl.pl"
-msgstr "\uc2e4\ud328 {0}\uac1c({1}\uac1c \uc228\uaca8\uc9d0, \ub85c\uadf8 \ucc38\uc870)"
-
-#:
-msgid "subscriptions.results_header.some_hidden.warnings.pl.sg"
-msgstr "\uacbd\uace0 {0}\uac1c(1\uac1c \uc228\uaca8\uc9d0, \ub85c\uadf8 \ucc38\uc870)"
-
-#:
-msgid "subscriptions.results_header.some_hidden.warnings.pl.pl"
-msgstr "\uacbd\uace0 {0}\uac1c({1}\uac1c \uc228\uaca8\uc9d0, \ub85c\uadf8 \ucc38\uc870)"
-
-#:
-msgid "dataalerts.manage_my_data_alerts"
-msgstr "\uc54c\ub9bc \uad00\ub9ac"
-
-#:
-msgid "dataalerts.edit_data_alert"
-msgstr "\uc54c\ub9bc \ud3b8\uc9d1"
-
-#:
-msgid "dataalerts.remove_user_from_data_alert"
-msgstr "\ubcf8\uc778 \uc81c\uac70"
-
-#:
-msgid "dataalerts.add_user_to_data_alert"
-msgstr "\uc774 \uc54c\ub9bc\uc5d0 \ub098\ub97c \ucd94\uac00"
-
-#:
-msgid "dataalerts.greater_or_equal"
-msgstr "{0}\uc774(\uac00) {1}\ubcf4\ub2e4 \ud06c\uac70\ub098 \uac19\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "dataalerts.greater"
-msgstr "{0}\uc774(\uac00) {1}\ubcf4\ub2e4 \ud07d\ub2c8\ub2e4."
-
-#:
-msgid "dataalerts.less_or_equal"
-msgstr "{0}\uc774(\uac00) {1}\ubcf4\ub2e4 \uc791\uac70\ub098 \uac19\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "dataalerts.less"
-msgstr "{0}\uc774(\uac00) {1}\ubcf4\ub2e4 \uc791\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "dataalerts.equal"
-msgstr "{0}\uc774(\uac00) {1}\uacfc(\uc640) \uac19\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "dataalerts.email_alt_text"
-msgstr "\ub370\uc774\ud130 \uae30\ubc18 \uc54c\ub9bc\uc5d0 \uc0ac\uc6a9\ub41c \ubcf4\uae30: {0}"
-
-#:
-msgid "dataalerts.email_alt_text_hidden_view"
-msgstr "\ub370\uc774\ud130 \uae30\ubc18 \uc54c\ub9bc\uc5d0 \uc0ac\uc6a9\ub41c \ubcf4\uae30: {0}\uc5d0 \ubcc0\uacbd \ub0b4\uc6a9\uc774 \uc801\uc6a9\ub428"
-
-#:
-msgid "dataalerts.alert_triggered_for_the_view"
-msgstr "\ubdf0\uc5d0 \ubc1c\uc0dd\ud55c \uc54c\ub9bc"
-
-#:
-msgid "dataalerts.failure.email.subject"
-msgstr "\ub2e4\uc74c\uc5d0 \ub300\ud55c \ub370\uc774\ud130 \uae30\ubc18 \uc54c\ub9bc\uc774 \uc791\ub3d9\ud558\uc9c0 \uc54a\uc74c: {0}"
-
-#:
-msgid "dataalerts.failure.status"
-msgstr "\uc54c\ub9bc <i>{0}</i>\uc774(\uac00) \uc791\ub3d9\ud558\uc9c0 \uc54a\uc74c"
-
-#:
-msgid "dataalerts.failure.view.details.alert"
-msgstr "\uc774 \uc54c\ub9bc \ubcf4\uae30"
-
-#:
-msgid "dataalerts.failure.explanation"
-msgstr "\uc9c0\uae08 \ub370\uc774\ud130 \uae30\ubc18 \uc54c\ub9bc <i>{0}</i>\uc774(\uac00) \uc791\ub3d9\ud558\uc9c0 \uc54a\uae30 \ub54c\ubb38\uc5d0 \ub370\uc774\ud130 \uc870\uac74\uc744 \ucda9\uc871\ud558\ub294 \uacbd\uc6b0 \uc218\uc2e0\uc790\uc5d0\uac8c \uc54c\ub9bc\uc774 \uc804\ub2ec\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4. \uc54c\ub9bc\uc774 \ub2e4\uc2dc \uc791\ub3d9\ud558\uba74 \uc774\uba54\uc77c \uc54c\ub9bc\uc744 \ubc1b\uc744 \uc218 \uc788\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "dataalerts.failure.affected.alert"
-msgstr "\uc601\ud5a5\ubc1b\ub294 \ub370\uc774\ud130 \uae30\ubc18 \uc54c\ub9bc"
-
-#:
-msgid "dataalerts.failure.time"
-msgstr "\uc77c\uc2dc\uc801 \uc54c\ub9bc \uc2e4\ud328"
-
-#:
-msgid "dataalerts.failure.cause"
-msgstr "\uacbd\uc6b0\uc5d0 \ub530\ub77c \uc77c\uc2dc\uc801\uc778 \ub124\ud2b8\uc6cc\ud06c \ubb38\uc81c\ub85c \uc778\ud574 \uc54c\ub9bc\uc774 \uc2e4\ud328\ud560 \uc218 \uc788\uc73c\uba70, \uc774\ub7ec\ud55c \ubb38\uc81c\ub294 \uc790\ub3d9\uc801\uc73c\ub85c \ud574\uacb0\ub429\ub2c8\ub2e4. \uc6d0\ub798 \ub370\uc774\ud130 \ubdf0\uc5d0\uc11c \uc54c\ub9bc\uc744 \ub2e4\uc2dc \ub9cc\ub4e4\uac70\ub098 \ub2e4\uc74c\uacfc \uac19\uc740 \uc54c\ub9bc \uc2e4\ud328\uc758 \uc77c\ubc18\uc801\uc778 \uc6d0\uc778\uc744 \ucc3e\uc544 \ud574\uacb0\ud560 \uc218\ub3c4 \uc788\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "dataalerts.failure.changed.view"
-msgstr "\ud1b5\ud569 \ubb38\uc11c, \ubdf0 \ub610\ub294 \ub370\uc774\ud130 \ud544\ub4dc\uac00 \uc81c\uac70\ub418\uac70\ub098 \uc774\ub984\uc774 \ubc14\ub00c\uc5c8\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "dataalerts.failure.expired.credentials"
-msgstr "\ud1b5\ud569 \ubb38\uc11c\uc5d0 \ub0b4\uc7a5\ub41c \ub370\uc774\ud130\ubca0\uc774\uc2a4 \uc790\uaca9 \uc99d\uba85\uc774 \ub9cc\ub8cc\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "dataalerts.failure.datasource.error"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8\uc5d0 \uc561\uc138\uc2a4\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "dataalerts.failure.email.footer"
-msgstr "\uc54c\ub9bc \uc2e4\ud328\ub85c \uc778\ud574 \uc774 \uc774\uba54\uc77c\uc774 {0} \uc8fc\uc18c\ub85c \ubc1c\uc1a1\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "dataalerts.failure.troubleshooting"
-msgstr "\uc704\uc5d0 \ub098\uc640 \uc788\ub294 \ubb38\uc81c \uc911 \ud558\ub098\uac00 \uc54c\ub9bc \uc2e4\ud328\uc758 \uc6d0\uc778\uc778\uc9c0 \ud655\uc778\ud558\ub824\uba74 \uc544\ub798 \ub2e8\ucd94\ub97c \ud074\ub9ad\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "dataalerts.success.email.subject"
-msgstr "\ub2e4\uc74c\uc5d0 \ub300\ud55c \ub370\uc774\ud130 \uae30\ubc18 \uc54c\ub9bc\uc774 \ub2e4\uc2dc \uc2dc\uc791\ub428: {0}"
-
-#:
-msgid "dataalerts.success.status"
-msgstr "\uc54c\ub9bc <i>{0}</i>\uc774(\uac00) \ub2e4\uc2dc \uc2dc\uc791\ub428"
-
-#:
-msgid "dataalerts.success.explanation"
-msgstr "\ub370\uc774\ud130 \uae30\ubc18 \uc54c\ub9bc(<i>{0}</i>)\uc774 \ub2e4\uc2dc \uc791\ub3d9\ud558\ubbc0\ub85c \ub370\uc774\ud130 \uc870\uac74\uc774 true\uc778 \uacbd\uc6b0 \uc218\uc2e0\uc790\uc5d0\uac8c \uc54c\ub9bc\uc774 \uc804\ub2ec\ub429\ub2c8\ub2e4."
-
-#:
-msgid "dataalerts.failure.error.internalError"
-msgstr "\ub370\uc774\ud130 \uc54c\ub9bc \ub0b4\ubd80 \uc624\ub958"
-
-#:
-msgid "dataalerts.failure.error.invalidDataAlertSpecification"
-msgstr "\uc798\ubabb\ub41c \ub370\uc774\ud130 \uc54c\ub9bc \uc9c0\uc815"
-
-#:
-msgid "dataalerts.failure.error.summaryTableNotFound"
-msgstr "\uc694\uc57d \ub370\uc774\ud130 \ud14c\uc774\ube14\uc744 \ucc3e\uc744 \uc218 \uc5c6\uc74c"
-
-#:
-msgid "dataalerts.failure.error.unclassifiedError"
-msgstr "\ubd84\ub958\ub418\uc9c0 \uc54a\uc740 \uc624\ub958"
-
-#:
-msgid "dataalerts.failure.error.viewContentNotFound"
-msgstr "\ub370\uc774\ud130 \uc54c\ub9bc \ubdf0\uc758 {0} \ucf58\ud150\uce20\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc74c"
-
-#:
-msgid "dataalerts.failure.error.viewNotFound"
-msgstr "\ub370\uc774\ud130 \uc54c\ub9bc \ubdf0\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc74c"
-
-#:
-msgid "dataalerts.failure.error.workbookNotFound"
-msgstr "\ud1b5\ud569 \ubb38\uc11c\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc74c"
-
-#:
-msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
-msgstr "{0} \ud544\ub4dc\uc758 \ucd95\uc744 \ucc3e\uc744 \uc218 \uc5c6\uc74c"
-
-#:
-msgid "dataalerts.failure.error.paneDescriptorNotFound"
-msgstr "{0}"
-
-#:
-msgid "dataalerts.failure.error.unsupportedComparisonExpression"
-msgstr "\uc9c0\uc6d0\ub418\uc9c0 \uc54a\ub294 \ube44\uad50 \uc2dd {0}"
-
-#:
-msgid "dataalerts.failure.error.nonConstComparisonOp"
-msgstr "\ube44\uc0c1\uc218 \ube44\uad50 \uc5f0\uc0b0\uc790\uac00 \uac80\uc0c9\ub428: {0}"
-
-#:
-msgid "dataalerts.failure.error.cannotAddFilter"
-msgstr "\ub370\uc774\ud130 \uc54c\ub9bc\uc5d0 \ud544\ud130\ub97c \ucd94\uac00\ud558\uc9c0 \ubabb\ud568"
-
-#:
-msgid "dataalerts.failure.error.sheetNotAlertable"
-msgstr "{0} \uc2dc\ud2b8\ub294 \uc54c\ub9bc \ub370\uc774\ud130\ub97c \uc9c0\uc6d0\ud569\ub2c8\ub2e4. {1}"
-
-#:
-msgid "dataalerts.failure.error.dataAlertMeasureNotFound"
-msgstr "\uce21\uc815\uac12\uc744 \uc120\ud0dd\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. {0}"
-
-#:
-msgid "dataalerts.failure.error.tooManyMeasuresForDataAlert"
-msgstr "\uc798\ubabb\ub41c \uce21\uc815\uac12 \uc218\uac00 \uac80\uc0c9\ub418\uc5c8\uc2b5\ub2c8\ub2e4.{0}"
-
-#:
-msgid "dataalerts.failure.error.thresholdParseError"
-msgstr "\uc784\uacc4\uac12 \ud14d\uc2a4\ud2b8 {0}\uc744(\ub97c) \uad6c\ubb38 \ubd84\uc11d\ud558\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4. {1}"
-
-#:
-msgid "dataalerts.failure.error.dataAlertPresModelCreationError"
-msgstr "\uc54c\ub9bc\uc744 \uc9c1\ub82c\ud654\ud558\ub294 \ub3d9\uc548 \uc624\ub958\uac00 \ubc1c\uc0dd\ud588\uc2b5\ub2c8\ub2e4. {0}"
-
-#:
-msgid "dataalerts.failure.error.cannotDrawDataAlertDialog"
-msgstr "\ub370\uc774\ud130 \uc54c\ub9bc \ub300\ud654 \uc0c1\uc790\ub97c \uadf8\ub9ac\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "dataalerts.failure.error.unsupportedDataAlertType"
-msgstr "\ub370\uc774\ud130 \uc54c\ub9bc \uc720\ud615 {0}\uc740(\ub294) \ud604\uc7ac \uc9c0\uc6d0\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "dataalerts.failure.suspend.email.subject"
-msgstr "{0}\uc5d0 \ub300\ud55c \ub370\uc774\ud130 \uae30\ubc18 \uc54c\ub9bc \uc77c\uc2dc \uc911\ub2e8\ub428"
-
-#:
-msgid "dataalerts.failure.suspend.email.status"
-msgstr "{0} \uc54c\ub9bc\uc774 \uc77c\uc2dc \uc911\ub2e8\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "dataalerts.failure.suspend.email.explanation"
-msgstr "\uc77c\uc2dc \uc911\ub2e8\ub41c \ub3d9\uc548\uc5d0\ub294 \ubdf0 \ub610\ub294 \uc54c\ub9bc \uc218\uc2e0\uc790\ub97c \ud3c9\uac00\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \uc218\uc815\uc744 \uc644\ub8cc\ud55c \ud6c4 \ub2e4\uc74c \uc704\uce58\uc5d0\uc11c \uc54c\ub9bc\uc744 \ub2e4\uc2dc \uc2dc\uc791\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. <a hre"
-
-#:
-msgid "dataalerts.failure.suspend.view.name.prefix"
-msgstr "\ubdf0"
-
-#:
-msgid "dataalerts.failure.suspend.time"
-msgstr "\uc77c\uc2dc \uc911\ub2e8 \uc2dc\uac04"
-
-#:
-msgid "dataalerts.failure.suspend.email.footer"
-msgstr "\uc0ac\uc6a9\uc790\uc758 \uc54c\ub9bc\uc774 \uc77c\uc2dc \uc911\ub2e8\ub418\uc5b4\uc11c \uc774 \uc774\uba54\uc77c\uc774 \ubc1c\uc1a1\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "dataalerts.failure.suspend.email.view.name.my.content"
-msgstr "\ub0b4 \ucf58\ud150\uce20"
-
-#:
-msgid "dataalerts.failure.suspend.view.alerts"
-msgstr "\uc54c\ub9bc \ubcf4\uae30"
-
-#:
-msgid "metricsservices.failure.affected.metric"
-msgstr "\uc601\ud5a5\ubc1b\ub294 \uba54\ud2b8\ub9ad"
-
-#:
-msgid "metricsservices.failure.cause"
-msgstr "\uacbd\uc6b0\uc5d0 \ub530\ub77c \uc77c\uc2dc\uc801\uc778 \uc5f0\uacb0 \ubb38\uc81c\ub85c \uc778\ud574 \uba54\ud2b8\ub9ad \uc0c8\ub85c \uace0\uce68\uc774 \uc2e4\ud328\ud558\uba70, \uc774\ub7ec\ud55c \ubb38\uc81c\ub294 \uc790\ub3d9\uc801\uc73c\ub85c \ud574\uacb0\ub429\ub2c8\ub2e4. \uba54\ud2b8\ub9ad \uc0c8\ub85c \uace0\uce68\uc774 \uc2e4\ud328\ud560 \uc218 \uc788\ub294 \ub2e4\ub978 \uc77c\ubc18\uc801\uc778 \uc774\uc720\uc5d0\ub294 \ub2e4\uc74c\uc774 \ud3ec\ud568\ub429\ub2c8\ub2e4."
-
-#:
-msgid "metricsservices.failure.changed.view"
-msgstr "\ud1b5\ud569 \ubb38\uc11c, \ubdf0 \ub610\ub294 \ub370\uc774\ud130 \ud544\ub4dc\uac00 \uc81c\uac70\ub418\uac70\ub098 \uc774\ub984\uc774 \ubc14\ub01c"
-
-#:
-msgid "metricsservices.failure.permissions.error"
-msgstr "\uc5f0\uacb0\ub41c \ubdf0\uc758 \uc0ac\uc6a9 \uad8c\ud55c \ubcc0\uacbd"
-
-#:
-msgid "metricsservices.failure.email.footer"
-msgstr "\uba54\ud2b8\ub9ad \uc0c8\ub85c \uace0\uce68\uc774 \uc2e4\ud328\ud558\uc5ec {0} \uc8fc\uc18c\ub85c \uc774 \uc774\uba54\uc77c\uc774 \ubc1c\uc1a1\ub41c \uac83\uc785\ub2c8\ub2e4."
-
-#:
-msgid "metricsservices.failure.email.subject"
-msgstr "\ub2e4\uc74c\uc5d0 \ub300\ud55c \uba54\ud2b8\ub9ad \uc0c8\ub85c \uace0\uce68\uc774 \uc791\ub3d9\ud558\uc9c0 \uc54a\uc74c: {0}"
-
-#:
-msgid "metricsservices.failure.expired.credentials"
-msgstr "\ud1b5\ud569 \ubb38\uc11c\uc5d0 \ub0b4\uc7a5\ub41c \ub370\uc774\ud130\ubca0\uc774\uc2a4 \uc790\uaca9 \uc99d\uba85\uc774 \ub9cc\ub8cc\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "metricsservices.failure.explanation"
-msgstr "\uba54\ud2b8\ub9ad\uc744 \uc0c8\ub85c \uace0\uce60 \uc218 \uc5c6\uae30 \ub54c\ubb38\uc5d0 \uba54\ud2b8\ub9ad \ub370\uc774\ud130\uac00 \uc5c5\ub370\uc774\ud2b8\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4. \uba54\ud2b8\ub9ad \uc0c8\ub85c \uace0\uce68\uc774 \ub2e4\uc2dc \uc791\ub3d9\ud558\uba74 \uc774\uba54\uc77c \uc54c\ub9bc\uc774 \uc218\uc2e0\ub429\ub2c8\ub2e4."
-
-#:
-msgid "metricsservices.failure.status"
-msgstr "\uba54\ud2b8\ub9ad {0}\uc774(\uac00) \uc0c8\ub85c \uace0\uccd0\uc9c0\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "metricsservices.failure.suspend.email.explanation"
-msgstr "\uba54\ud2b8\ub9ad \uc0c8\ub85c \uace0\uce68\uc774 \uc77c\uc2dc \uc911\ub2e8\ub41c \ub3d9\uc548\uc5d0\ub294 \uba54\ud2b8\ub9ad \ub370\uc774\ud130\uac00 \uc5c5\ub370\uc774\ud2b8\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4. \uc218\uc815\uc744 \uc801\uc6a9\ud55c \ud6c4 \uba54\ud2b8\ub9ad \uc0c8\ub85c \uace0\uce68\uc744 \ub2e4\uc2dc \uc2dc\uc791\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "metricsservices.failure.suspend.email.footer"
-msgstr "\uba54\ud2b8\ub9ad \uc0c8\ub85c \uace0\uce68\uc774 \uc77c\uc2dc \uc911\ub2e8\ub418\uc5b4\uc11c \uc774 \uc774\uba54\uc77c\uc774 {0} \uc8fc\uc18c\ub85c \ubc1c\uc1a1\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "metricsservices.failure.suspend.email.status"
-msgstr "\uba54\ud2b8\ub9ad {0}\uc5d0 \ub300\ud55c \uc0c8\ub85c \uace0\uce68\uc774 \uc77c\uc2dc \uc911\ub2e8\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "metricsservices.failure.suspend.email.subject"
-msgstr "{0}\uc5d0 \ub300\ud55c \uba54\ud2b8\ub9ad \uc0c8\ub85c \uace0\uce68 \uc77c\uc2dc \uc911\ub2e8\ub428"
-
-#:
-msgid "metricsservices.failure.suspend.time"
-msgstr "\uc77c\uc2dc \uc911\ub2e8 \uc2dc\uac04"
-
-#:
-msgid "metricsservices.failure.suspend.view.metric"
-msgstr "\uba54\ud2b8\ub9ad\uc73c\ub85c \uc774\ub3d9"
-
-#:
-msgid "metricsservices.failure.suspend.view.name.prefix"
-msgstr "\uc5f0\uacb0\ub41c \ubdf0"
-
-#:
-msgid "metricsservices.failure.time"
-msgstr "\uc0c8\ub85c \uace0\uce68 \uc2e4\ud328 \uc2dc\uac04"
-
-#:
-msgid "metricsservices.failure.troubleshooting"
-msgstr "\uc704\uc5d0 \ub098\uc640 \uc788\ub294 \ubb38\uc81c \uc911 \ud558\ub098\uac00 \uba54\ud2b8\ub9ad \uc0c8\ub85c \uace0\uce68 \uc2e4\ud328\uc758 \uc6d0\uc778\uc778\uc9c0 \ud655\uc778\ud558\ub824\uba74 \uc544\ub798 \ub2e8\ucd94\ub97c \ud074\ub9ad\ud558\uc2ed\uc2dc\uc624. \uc5f0\uacb0\ub41c \ubdf0\uc5d0\uc11c \uba54\ud2b8\ub9ad\uc744 \ub2e4\uc2dc \ub9cc\ub4e4 \uc218\ub3c4 \uc788\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "metricsservices.failure.view.details.metric"
-msgstr "\uba54\ud2b8\ub9ad\uc73c\ub85c \uc774\ub3d9"
-
-#:
-msgid "metricsservices.failure.view.name.prefix"
-msgstr "\uc5f0\uacb0\ub41c \ubdf0"
-
-#:
-msgid "metricsservices.success.email.subject"
-msgstr "\ub2e4\uc74c\uc5d0 \ub300\ud55c \uba54\ud2b8\ub9ad \uc0c8\ub85c \uace0\uce68\uc774 \ub2e4\uc2dc \uc2dc\uc791\ub428: {0}"
-
-#:
-msgid "metricsservices.success.explanation"
-msgstr "\uba54\ud2b8\ub9ad\uc5d0 \ub300\ud55c \uc0c8\ub85c \uace0\uce68\uc774 \ub2e4\uc2dc \uc791\ub3d9\ud558\uace0 \uc788\uc73c\ubbc0\ub85c \uba54\ud2b8\ub9ad \ub370\uc774\ud130\uc758 \uc5c5\ub370\uc774\ud2b8\uac00 \uc788\ub294\uc9c0 \ud655\uc778\ub429\ub2c8\ub2e4."
-
-#:
-msgid "metricsservices.success.status"
-msgstr "\uba54\ud2b8\ub9ad {0}\uc5d0 \ub300\ud55c \uc0c8\ub85c \uace0\uce68\uc774 \ub2e4\uc2dc \uc2dc\uc791\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.staticimages.generic"
-msgstr "{0} \ud1b5\ud569 \ubb38\uc11c\uc5d0 \ub300\ud55c \uc815\uc801 \uc774\ubbf8\uc9c0\ub97c \uc0dd\uc131\ud558\ub294 \ub3d9\uc548 \uc624\ub958\uac00 \ubc1c\uc0dd\ud588\uc2b5\ub2c8\ub2e4. {1}."
-
-#:
-msgid "errors.internal_error.request.message"
-msgstr "{0}\uc774(\uac00) \uc694\uccad\uc744 \ucc98\ub9ac\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "errors.permissions.limited_user_visibility"
-msgstr "\ucffc\ub9ac\ub97c \uc644\ub8cc\ud558\ub294 \uc911 \uc624\ub958\uac00 \ubc1c\uc0dd\ud588\uc2b5\ub2c8\ub2e4. [\uc0ac\uc6a9\uc790 \ud45c\uc2dc \uc720\ud615]\uc774 [\uc81c\ud55c]\uc73c\ub85c \uc124\uc815\ub41c \uacbd\uc6b0 \ub2e4\ub978 \uc0ac\uc6a9\uc790\ub97c \ucffc\ub9ac\ud558\ub824\uba74 \uad00\ub9ac\uc790\uc774\uac70\ub098 Creator\uc5ec\uc57c \ud569\ub2c8\ub2e4."
-
-#:
-msgid "local_names.system_user.guest.name"
-msgstr "\uac8c\uc2a4\ud2b8"
-
-#:
-msgid "local_names.group.all_users.name"
-msgstr "\ubaa8\ub4e0 \uc0ac\uc6a9\uc790"
-
-#:
-msgid "local_names.containers.personal_space.name"
-msgstr "\uac1c\uc778 \uacf5\uac04"
-
-#:
-msgid "password_reset.email.subject"
-msgstr "\ube44\ubc00\ubc88\ud638\ub97c \uc7ac\uc124\uc815\ud560 \uc218 \uc788\ub294 \ub9c1\ud06c\uc785\ub2c8\ub2e4."
-
-#:
-msgid "password_reset.email.body"
-msgstr "{0} \ub2d8 \uc548\ub155\ud558\uc138\uc694.<br/><br/>\ubc29\uae08, \ube44\ubc00\ubc88\ud638 \uc7ac\uc124\uc815\uc744 \uc694\uccad\ud558\uc168\uc2b5\ub2c8\ub2e4.<br/><br/> Tableau Server \ube44\ubc00\ubc88\ud638\ub97c \uc7ac\uc124\uc815\ud558\ub824\uba74 {1}\ud558\uac70\ub098 \ub2e4\uc74c \ub9c1\ud06c\ub97c \ube0c\ub77c\uc6b0\uc800\uc5d0 \ubd99\uc5ec \ub123\uc73c\uc2ed\uc2dc\uc624. \ub9c1\ud06c: {2}<br/><br/>\uc774 \ub9c1\ud06c\ub294 48\uc2dc\uac04 \ud6c4 \ub9cc\ub8cc\ub418\uc624\ub2c8 \uc9c0\uae08 \ubc14\ub85c \uc774\uc6a9\ud558\uc2dc\uae30 \ubc14\ub78d\ub2c8\ub2e4.<br/><br/>\ube44\ubc00\ubc88\ud638 \uc7ac\uc124\uc815\uc744 \uc694\uccad\ud558\uc9c0 \uc54a\uc73c\uc2e0 \uacbd\uc6b0 \uc11c\ubc84 \uad00\ub9ac\uc790\uc5d0\uac8c \ud574\ub2f9 \uc0ac\uc2e4\uc744 \uc54c\ub9ac\uc2e4 \uc218\ub3c4 \uc788\uc2b5\ub2c8\ub2e4.<br/><br/>Tableau\ub97c \uc0ac\uc6a9\ud574 \uc8fc\uc154\uc11c \uac10\uc0ac\ud569\ub2c8\ub2e4!<br/>Tableau \ud300 \uc77c\ub3d9"
-
-#:
-msgid "password_reset.email.link"
-msgstr "\uc5ec\uae30\ub97c \ud074\ub9ad"
-
-#:
-msgid "hours.pl"
-msgstr "{0}\uc2dc\uac04"
-
-#:
-msgid "hours.sg"
-msgstr "1\uc2dc\uac04"
-
-#:
-msgid "minutes.pl"
-msgstr "{0}\ubd84"
-
-#:
-msgid "minutes.sg"
-msgstr "1\ubd84"
-
-#:
-msgid "seconds.pl"
-msgstr "{0}\ucd08"
-
-#:
-msgid "seconds.sg"
-msgstr "1\ucd08"
-
-#:
-msgid "dataconnections.classes.tableau_server_site"
-msgstr "Tableau Server \uc0ac\uc774\ud2b8"
-
-#:
-msgid "materializeviews.errors.workbook_not_in_project"
-msgstr "''{0}'' \ud504\ub85c\uc81d\ud2b8\uac00 ''{1}'' \ud1b5\ud569 \ubb38\uc11c\ub97c \ud3ec\ud568\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "materializeviews.errors.workbook_has_no_extract"
-msgstr "''{0}'' \ud1b5\ud569 \ubb38\uc11c\uc758 \uad6c\uccb4\ud654\ub41c \ubdf0 \uc124\uc815\uc744 \uc5c5\ub370\uc774\ud2b8\ud558\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4. \ud604\uc7ac \ub0b4\uc7a5\ub41c \ucd94\ucd9c\uc774 \uc788\ub294 \ud1b5\ud569 \ubb38\uc11c\ub9cc \uc9c0\uc6d0\ub429\ub2c8\ub2e4."
-
-#:
-msgid "materializeviews.errors.workbook_updating_errors"
-msgstr "\ud1b5\ud569 \ubb38\uc11c\uc758 \uad6c\uccb4\ud654\ub41c \ubdf0 \uc124\uc815\uc744 \uc5c5\ub370\uc774\ud2b8\ud558\ub294 \ub3d9\uc548 \uc624\ub958\uac00 \ubc1c\uacac\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "materializeviews.errors.workbook_too_large"
-msgstr "''{0}'' \ud1b5\ud569 \ubb38\uc11c\uc758 \uad6c\uccb4\ud654\ub41c \ubdf0 \uc124\uc815\uc744 \uc5c5\ub370\uc774\ud2b8\ud558\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4. \ud1b5\ud569 \ubb38\uc11c \ud06c\uae30\uac00 \uc81c\ud55c({1}GB)\uc744 \ucd08\uacfc\ud569\ub2c8\ub2e4."
-
-#:
-msgid "materializeviews.errors.project_path_not_exists"
-msgstr "\ud504\ub85c\uc81d\ud2b8 \uacbd\ub85c ''{0}''\uc774(\uac00) \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "materializeviews.errors.feature_disabled"
-msgstr "''{0}'' \ud1b5\ud569 \ubb38\uc11c\uc758 \uad6c\uccb4\ud654\ub41c \ubdf0 \uc124\uc815\uc744 \uc5c5\ub370\uc774\ud2b8\ud558\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4. \ud574\ub2f9 \uae30\ub2a5\uc774 \ud604\uc7ac \uc0ac\uc6a9\ub418\uc9c0 \uc54a\ub3c4\ub85d \uc124\uc815\ub418\uc5b4 \uc788\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "materializeviews.errors.update_materialized_views_setting_failed"
-msgstr "''{0}'' \ud1b5\ud569 \ubb38\uc11c\uc758 \uad6c\uccb4\ud654\ub41c \ubdf0 \uc124\uc815\uc744 \uc5c5\ub370\uc774\ud2b8\ud558\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "materializeviews.errors.site_not_enabled"
-msgstr "\uc774 \uc0ac\uc774\ud2b8\uac00 \uad6c\uccb4\ud654\ub41c \ubdf0\ub97c \uc0ac\uc6a9\ud558\ub3c4\ub85d \uc124\uc815\ub418\uc9c0 \uc54a\uc558\uc2b5\ub2c8\ub2e4. \uad00\ub9ac\uc790\uc5d0\uac8c \ubb38\uc758\ud558\uc2ed\uc2dc\uc624."
-
-#:
-msgid "materializeviews.errors.encrypted_extracts_not_supported"
-msgstr "\uad6c\uccb4\ud654\ub41c \ubdf0 \uae30\ub2a5\uc740 \ud604\uc7ac \uc554\ud638\ud654\ub41c \ucd94\ucd9c\uc774 \uc788\ub294 \ud1b5\ud569 \ubb38\uc11c\ub97c \uc9c0\uc6d0\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "materializedviews.finished.create"
-msgstr "''{1}'' \ud1b5\ud569 \ubb38\uc11c\uc5d0 \ub300\ud55c ''{0}'' \uc0c1\ud0dc\uc758 \uad6c\uccb4\ud654\ub41c \ubdf0\ub97c \ub9cc\ub4e4\uc5c8\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "materializedviews.finished.delete"
-msgstr "\ud1b5\ud569 \ubb38\uc11c ID: {0}\uc5d0 \ub300\ud55c \uad6c\uccb4\ud654\ub41c \ubdf0\ub97c \uc0ad\uc81c\ud588\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "materializedviews.finished.encrypt"
-msgstr "\ud1b5\ud569 \ubb38\uc11c ''{0}''\uc5d0 \ub300\ud55c \uad6c\uccb4\ud654\ub41c \ubdf0\uc758 \uc554\ud638\ud654\ub97c \ub9c8\ucce4\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "materializedviews.finished.decrypt"
-msgstr "\ud1b5\ud569 \ubb38\uc11c ''{0}''\uc5d0 \ub300\ud55c \uad6c\uccb4\ud654\ub41c \ubdf0\uc758 \uc554\ud638 \ud574\ub3c5\uc744 \ub9c8\ucce4\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "materializedviews.finished.rekey"
-msgstr "\ud1b5\ud569 \ubb38\uc11c ''{0}''\uc5d0 \ub300\ud55c \uad6c\uccb4\ud654\ub41c \ubdf0\uc758 \uc7ac\uc554\ud638\ud654\ub97c \ub9c8\ucce4\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "materializedviews.status.encryption_key"
-msgstr "\uc554\ud638\ud654 \ud0a4 ID: ''{0}''."
-
-#:
-msgid "materializedviews.status.encryption_keys"
-msgstr "\uc774\uc804 \uc554\ud638\ud654 \ud0a4 ID: ''{0}'', \uc0c8 \uc554\ud638\ud654 \ud0a4 ID: ''{1}''."
-
-#:
-msgid "materializedviews.status.encryption_type"
-msgstr "\uc554\ud638\ud654 \ub370\uc774\ud130 \uc6d0\ubcf8 \uc720\ud615: ''{0}''"
-
-#:
-msgid "customizedviews.namedSharingPrefix"
-msgstr "\uacf5\uc720 \ubc84\uc804"
-
-#:
-msgid "flows.drafts.default_name"
-msgstr "\uc0c8 \ud750\ub984"
-
-#:
-msgid "content_type.project"
-msgstr "\ud504\ub85c\uc81d\ud2b8"
-
-#:
-msgid "content_type.workbook"
-msgstr "\ud1b5\ud569 \ubb38\uc11c"
-
-#:
-msgid "content_type.view"
-msgstr "\ubdf0"
-
-#:
-msgid "content_type.datasource"
-msgstr "\ub370\uc774\ud130 \uc6d0\ubcf8"
-
-#:
-msgid "content_type.flow"
-msgstr "\ud750\ub984"
-
-#:
-msgid "content_type.metric"
-msgstr "\uba54\ud2b8\ub9ad"
-
-#:
-msgid "content_type.collection"
-msgstr "\ubaa8\uc74c"
-
-#:
-msgid "content_type.visualization"
-msgstr "\ube44\uc8fc\uc5bc\ub9ac\uc81c\uc774\uc158"
-
-#:
-msgid "content_type.askdata_visualization"
-msgstr "\ub370\uc774\ud130\uc5d0 \uc9c8\ubb38 \ube44\uc8fc\uc5bc\ub9ac\uc81c\uc774\uc158"
-
-#:
-msgid "content_type.explaindata_explanation"
-msgstr "\uc124\uba85"
-
-#:
-msgid "content_type.publishedconnection"
-msgstr "\uac00\uc0c1 \uc5f0\uacb0"
-
-#:
-msgid "content_type.publishedconnectiontable"
-msgstr "\uac00\uc0c1 \uc5f0\uacb0 \ud14c\uc774\ube14"
-
-#:
-msgid "upgradethumbnails.status.server_started"
-msgstr "\uc11c\ubc84 \uc751\ub2f5: \ucd95\uc18c\ud310 \uc5c5\uadf8\ub808\uc774\ub4dc\uac00 \uc2dc\uc791\ub418\uc5c8\uc2b5\ub2c8\ub2e4!"
-
-#:
-msgid "upgradethumbnails.status.server_stopped"
-msgstr "\uc11c\ubc84 \uc751\ub2f5: %d\uac1c \uc791\uc5c5\uc774 \uc911\uc9c0\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "dataquality.message.refresh_failed"
-msgstr "\uc0c8\ub85c \uace0\uce68 \uc2e4\ud328: {0}"
-
-#:
-msgid "dataquality.message.last_successful"
-msgstr "\ub9c8\uc9c0\ub9c9 \uc131\uacf5: {0}"
-
-#:
-msgid "dataquality.message.next_scheduled"
-msgstr "\ub2e4\uc74c \uc608\uc57d: {0}"
-
-#:
-msgid "dataquality.message.flow_run_output_steps_failed"
-msgstr "{0}/{1}\uac1c\uc758 \ucd9c\ub825 \ub2e8\uacc4\ub97c \uc2e4\ud589\ud558\uc9c0 \ubabb\ud568"
-
-#:
-msgid "importcsvsummary.error.details"
-msgstr "\uc624\ub958 \uc138\ubd80 \uc815\ubcf4:"
-
-#:
-msgid "importcsvsummary.remainingerrors"
-msgstr "(\ub098\uba38\uc9c0 \uc624\ub958\ub294 \ud45c\uc2dc\ub418\uc9c0 \uc54a\uc74c)"
-
-#:
-msgid "importcsvsummary.error.line"
-msgstr "''{1}'' \uc0ac\uc6a9\uc790\uc758 \ub77c\uc778 {0}: ''{2}''"
-
-#:
-msgid "importcsvsummary.line.processed"
-msgstr "\ucc98\ub9ac\ud55c \ub77c\uc778 \uc218: {0}"
-
-#:
-msgid "importcsvsummary.line.skipped"
-msgstr "\uac74\ub108\ub6f4 \ub77c\uc778 \uc218: {0}"
-
-#:
-msgid "importcsvsummary.users.added.count"
-msgstr "\ucd94\uac00\ub41c \uc0ac\uc6a9\uc790 \uc218: {0}"
-
-#:
-msgid "importcsvsummary.errors.count"
-msgstr "\uc624\ub958 \uc218: {0}"
-
-#:
-msgid "importcsvsummary.error.unexpected_extension"
-msgstr "CSV \ud30c\uc77c\uc758 \uc608\uae30\uce58 \uc54a\uc740 \ud30c\uc77c \ud655\uc7a5\uba85"
-
-#:
-msgid "importcsvsummary.error.size_limit"
-msgstr "CSV \ud30c\uc77c\uc774 \ud06c\uae30 \uc81c\ud55c({0})\uc744 \ucd08\uacfc\ud568"
-
-#:
-msgid "importcsvsummary.error.local.password_mismatch"
-msgstr "\ub85c\uceec \uc0ac\uc774\ud2b8 \uc0ac\uc6a9\uc790\ub97c \uc5c5\ub370\uc774\ud2b8\ud558\ub824\uba74 \ube44\ubc00\ubc88\ud638\uac00 \ube44\uc5b4 \uc788\uac70\ub098 \uc77c\uce58\ud574\uc57c \ud568"
-
-#:
-msgid "importcsvsummary.error.local.password_required"
-msgstr "\uc778\uc99d \ubc29\uc2dd\uc774 \ub85c\uceec\uc778 \uacbd\uc6b0 \ub85c\uceec \uc2dc\uc2a4\ud15c \uc0ac\uc6a9\uc790\ub97c \ub9cc\ub4e4\ub824\uba74 \ube44\ubc00\ubc88\ud638\uac00 \ud544\uc694\ud568"
-
-#:
-msgid "importcsvsummary.error.ad.user_not_found"
-msgstr "AD \uc0ac\uc6a9\uc790 ''{0}''\uc744(\ub97c) \ucc3e\uc744 \uc218 \uc5c6\uc74c"
-
-#:
-msgid "importcsvsummary.error.too_many_errors"
-msgstr "CSV \ud30c\uc77c\uc5d0 \ub108\ubb34 \ub9ce\uc740 \uc624\ub958 \ubc1c\uc0dd"
-
-#:
-msgid "audit.errors.wdc_not_allowlisted"
-msgstr "\uc6f9 \ub370\uc774\ud130 \ucee4\ub125\ud130\uac00 \ud5c8\uc6a9 \ubaa9\ub85d\uc5d0 \uc5c6\uc2b5\ub2c8\ub2e4. \ub3c4\uc6c0\uc774 \ud544\uc694\ud558\uba74 \ub2e4\uc74c\uc744 \ucc38\uc870\ud558\uc2ed\uc2dc\uc624. https://help.tableau.com/current/online/ko-kr/to_keep_data_fresh.htm"
-
-#:
-msgid "user.input.name.err.too_long"
-msgstr "\uc774\ub984\uc774 \ucd5c\ub300 \ubb38\uc790 \uc218({0}\uc790)\ubcf4\ub2e4 \uae41\ub2c8\ub2e4."
-
-#:
-msgid "user.input.name.err.empty"
-msgstr "\uc774\ub984\uc740 \ube44\uc6cc \ub458 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "askdata.title"
-msgstr "\ub370\uc774\ud130\uc5d0 \uc9c8\ubb38"
-
-#:
-msgid "slack.app.upgrade.email.notification.subject"
-msgstr "Slack\uc6a9 Tableau \uc571 \uc5c5\ub370\uc774\ud2b8"
-
-#:
-msgid "slack.app.upgrade.email.notification.introduction"
-msgstr "Slack\uc6a9 Tableau \uc571\uc5d0 \ub300\ud55c \uc5c5\ub370\uc774\ud2b8\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc788\uc73c\uba70 \ub2e4\uc74c\ubc88 Tableau Online \ub9b4\ub9ac\uc2a4\uc640 \uc791\ub3d9\ud560 \uc218 \uc788\ub3c4\ub85d \uc9c0\uae08 \ub2e4\uc2dc \uc124\uce58\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. Tableau\ub294 \uc571 \uc131\ub2a5\uc744 \uc720\uc9c0\ud558\uace0 \uc0c8\ub85c\uc6b4 \uae30\ub2a5\uc744 \uc0ac\uc6a9\ud558\uae30 \uc704\ud574 \uc571\uc744 \ub2e4\uc2dc \uc124\uce58\ud560 \uac83\uc744 \uad8c\uc7a5\ud569\ub2c8\ub2e4. \uc0c8\ub85c\uc6b4 \uae30\ub2a5 \ubc0f \ubcc0\uacbd\ub41c \uae30\ub2a5\uc740 <a styl"
-
-#:
-msgid "slack.app.upgrade.email.notification.action"
-msgstr "\uc5c5\ub370\uc774\ud2b8 \ub2e8\uacc4 \ubc0f \ub2e4\uc2dc \uc124\uce58 \ub2e8\uacc4\ub294 <a styl"
-
-#:
-msgid "slack.app.upgrade.email.notification.steps"
-msgstr "\uc774 \uc11c\ube44\uc2a4 \uc54c\ub9bc\uc740 Tableau Online\uc5d0\uc11c \uac8c\uc2dc\ud588\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "slack.app.upgrade.email.notification.reason"
-msgstr "Slack\uc5d0 \uc5f0\uacb0\ub41c Tableau Online \uc0ac\uc774\ud2b8\uc758 \uad00\ub9ac\uc790\uc774\uae30 \ub54c\ubb38\uc5d0 \ubcf8 \uc54c\ub9bc\uc774 \uadc0\ud558\uc5d0\uac8c \ubc1c\uc1a1\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
-
-#:
-msgid "slack.app.upgrade.email.notification.footer.privacy"
-msgstr "<a styl"
-
-#:
-msgid "unifiedconsumption.tcrm.folders.private"
-msgstr "\ub0b4 \ube44\uacf5\uac1c \uc571"
-
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-25 04:01-0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.6.2\n"
+
+#: permissions.labels.capabilities.read
+msgid "보기:"
+msgstr ""
+
+#: permissions.labels.capabilities.write
+msgid "덮어쓰기:"
+msgstr ""
+
+#: permissions.labels.capabilities.write.legacy
+msgid "저장:"
+msgstr ""
+
+#: permissions.labels.capabilities.delete
+msgid "삭제:"
+msgstr ""
+
+#: permissions.labels.capabilities.filter
+msgid "필터:"
+msgstr ""
+
+#: permissions.labels.capabilities.add_tag
+msgid "태그 추가:"
+msgstr ""
+
+#: permissions.labels.capabilities.add_favorite
+msgid "즐겨찾기 추가:"
+msgstr ""
+
+#: permissions.labels.capabilities.add_comment
+msgctxt "permissions.labels.capabilities.add_comment"
+msgid "댓글 추가:"
+msgstr ""
+
+#: permissions.labels.capabilities.add_comment.legacy
+msgctxt "permissions.labels.capabilities.add_comment.legacy"
+msgid "댓글 추가:"
+msgstr ""
+
+#: permissions.labels.capabilities.view_comments
+msgid "댓글 보기:"
+msgstr ""
+
+#: permissions.labels.capabilities.vud
+msgid "전체 데이터 다운로드:"
+msgstr ""
+
+#: permissions.labels.capabilities.export_image
+msgid "이미지/PDF 다운로드:"
+msgstr ""
+
+#: permissions.labels.capabilities.export_data
+msgid "요약 데이터 다운로드:"
+msgstr ""
+
+#: permissions.labels.capabilities.export_xml
+msgid "복사본 다운로드/저장:"
+msgstr ""
+
+#: permissions.labels.capabilities.export_xml.legacy
+msgid "다른 이름으로 다운로드/저장:"
+msgstr ""
+
+#: permissions.labels.capabilities.save_customized_view
+msgid "사용자 지정 뷰 저장:"
+msgstr ""
+
+#: permissions.labels.capabilities.share_view
+msgid "사용자 지정 항목 공유:"
+msgstr ""
+
+#: permissions.labels.capabilities.stateful_url
+msgid "고정 링크:"
+msgstr ""
+
+#: permissions.labels.capabilities.change_hierarchy
+msgid "이동:"
+msgstr ""
+
+#: permissions.labels.capabilities.change_permissions
+msgid "사용 권한 설정:"
+msgstr ""
+
+#: permissions.labels.capabilities.exclude
+msgid "제외:"
+msgstr ""
+
+#: permissions.labels.capabilities.keep_only
+msgid "이 항목만 유지:"
+msgstr ""
+
+#: permissions.labels.capabilities.select
+msgid "마크 선택:"
+msgstr ""
+
+#: permissions.labels.capabilities.tooltip
+msgid "도구 설명 보기:"
+msgstr ""
+
+#: permissions.labels.capabilities.highlight
+msgid "범례 하이라이트:"
+msgstr ""
+
+#: permissions.labels.capabilities.url_link
+msgid "외부 URL로 연결되는 링크:"
+msgstr ""
+
+#: permissions.labels.capabilities.administrator
+msgid "관리자:"
+msgstr ""
+
+#: permissions.labels.capabilities.content_admin
+msgid "콘텐츠 관리자:"
+msgstr ""
+
+#: permissions.labels.capabilities.create_groups
+msgid "그룹 만들기:"
+msgstr ""
+
+#: permissions.labels.capabilities.rename
+msgid "이름 바꾸기:"
+msgstr ""
+
+#: permissions.labels.capabilities.transfer_ownership
+msgid "소유권 이전:"
+msgstr ""
+
+#: permissions.labels.capabilities.project_leader
+msgid "프로젝트 리더:"
+msgstr ""
+
+#: permissions.labels.capabilities.publish
+msgid "게시:"
+msgstr ""
+
+#: permissions.labels.capabilities.connect
+msgid "연결:"
+msgstr ""
+
+#: permissions.labels.capabilities.draw
+msgid "그리기:"
+msgstr ""
+
+#: permissions.labels.capabilities.web_authoring
+msgid "웹 편집:"
+msgstr ""
+
+#: permissions.labels.capabilities.xml_save_as
+msgid "다른 이름으로 저장:"
+msgstr ""
+
+#: permissions.labels.capabilities.create_refresh_metrics
+msgid "메트릭 만들기/새로 고침:"
+msgstr ""
+
+#: permissions.labels.capabilities.explain_data
+msgid "데이터 설명 실행:"
+msgstr ""
+
+#: permissions.labels.roles.wb_view
+msgctxt "permissions.labels.roles.wb_view"
+msgid "보기"
+msgstr ""
+
+#: permissions.labels.roles.wb_explore
+msgctxt "permissions.labels.roles.wb_explore"
+msgid "탐색"
+msgstr ""
+
+#: permissions.labels.roles.wb_publish
+msgctxt "permissions.labels.roles.wb_publish"
+msgid "게시"
+msgstr ""
+
+#: permissions.labels.roles.wb_administer
+msgctxt "permissions.labels.roles.wb_administer"
+msgid "관리"
+msgstr ""
+
+#: permissions.labels.roles.ds_view
+msgctxt "permissions.labels.roles.ds_view"
+msgid "보기"
+msgstr ""
+
+#: permissions.labels.roles.ds_explore
+msgctxt "permissions.labels.roles.ds_explore"
+msgid "탐색"
+msgstr ""
+
+#: permissions.labels.roles.ds_publish
+msgctxt "permissions.labels.roles.ds_publish"
+msgid "게시"
+msgstr ""
+
+#: permissions.labels.roles.ds_administer
+msgctxt "permissions.labels.roles.ds_administer"
+msgid "관리"
+msgstr ""
+
+#: permissions.labels.roles.viewer
+msgid "Viewer"
+msgstr ""
+
+#: permissions.labels.roles.interactor
+msgid "인터랙터"
+msgstr ""
+
+#: permissions.labels.roles.editor
+msgid "에디터"
+msgstr ""
+
+#: permissions.labels.roles.ds_connector
+msgid "데이터 원본 커넥터"
+msgstr ""
+
+#: permissions.labels.roles.ds_editor
+msgid "데이터 원본 에디터"
+msgstr ""
+
+#: permissions.labels.roles.administrator
+msgid "관리자"
+msgstr ""
+
+#: permissions.labels.roles.project_leader
+msgid "프로젝트 리더"
+msgstr ""
+
+#: permissions.labels.roles.publisher
+msgid "게시자"
+msgstr ""
+
+#: permissions.labels.roles.custom
+msgid "사용자 지정"
+msgstr ""
+
+#: permissions.labels.roles.none
+msgid "없음"
+msgstr ""
+
+#.
+#. # Used in Storage class in tab-core
+#: formats.messages.disk_space.in_mb
+msgid "{0}MB"
+msgstr ""
+
+#: formats.messages.disk_space.in_kb
+msgid "{0}KB"
+msgstr ""
+
+#.
+#. # Publishing-related errors and strings
+#: errors.argument.flow_description.too_long
+msgid "흐름 설명이 너무 깁니다({0}자). {1}자보다 짧아야 합니다."
+msgstr ""
+
+#: %7B2%7D
+msgctxt "{2}"
+msgid ""
+msgstr ""
+
+#: errors.argument.workbook_name.too_long
+msgid "통합 문서 이름이 너무 깁니다({0}자).  {1}자보다 짧아야 합니다."
+msgstr ""
+
+#: errors.argument.workbook_name.empty
+msgid "통합 문서 이름이 비어 있습니다."
+msgstr ""
+
+#: errors.argument.workbook_description.too_long
+msgid "통합 문서 설명이 너무 깁니다({0}자). {1}자보다 짧아야 합니다."
+msgstr ""
+
+#: errors.argument.worksheet_name.too_long
+msgid "워크시트 이름이 너무 깁니다({0}자). {1}자보다 짧아야 합니다."
+msgstr ""
+
+#: errors.argument.datasource_name.too_long
+msgid "데이터 원본 이름이 너무 깁니다({0}자). {1}자보다 짧아야 합니다."
+msgstr ""
+
+#: errors.argument.datasource_name.empty
+msgid "데이터 원본이 비어 있습니다."
+msgstr ""
+
+#: errors.argument.datasource_description.too_long
+msgid "데이터 원본 설명이 너무 깁니다({0}자). {1}자보다 짧아야 합니다."
+msgstr ""
+
+#: errors.argument.dataconnection_column.too_long
+msgid ""
+"DataConnection column {0} is too long ({1} characters).  It must be shorter "
+"than {2} characters:"
+msgstr ""
+
+#: %7B3%7D
+msgctxt "{3}"
+msgid ""
+msgstr ""
+
+#: errors.argument.tag.too_long
+msgid "태그가 너무 깁니다({0}자). {1}자보다 짧아야 합니다."
+msgstr ""
+
+#: errors.argument.workbook_file.missing_or_empty
+msgid "통합 문서 파일이 없거나 비어 있습니다."
+msgstr ""
+
+#: errors.argument.internal
+msgid "내부 서버 오류입니다.  인수가 없거나 잘못되었습니다."
+msgstr ""
+
+#: errors.argument.thumbnail.invalid_format
+msgid "통합 문서 축소판 형식이 잘못되었습니다. 해상도가 300x300 이하인 PNG여야 "
+"합니다."
+msgstr ""
+
+#: errors.html_403.disabled_resource.workbook
+msgid "죄송합니다. 해당 통합 문서는 사용할 수 없습니다.  관리자에게 문의하십시오."
+msgstr ""
+
+#: errors.html_404.missing_or_unauthorized_resource.project
+msgid "죄송합니다. 찾는 프로젝트가 없거나 해당 프로젝트를 볼 수 있는 사용 권한이 "
+"없습니다."
+msgstr ""
+
+#: errors.html_404.missing_or_unauthorized_resource.personal_space
+msgid "죄송합니다. 찾는 개인 공간이 없거나 해당 공간을 볼 수 있는 사용 권한이 "
+"없습니다."
+msgstr ""
+
+#: errors.html_404.missing_or_unauthorized_resource.datasource
+msgid "죄송합니다. 찾는 데이터 원본이 없습니다."
+msgstr ""
+
+#: errors.labels.formatted_request_id
+msgid "요청 ID: {0}"
+msgstr ""
+
+#: errors.links.delete_datasources
+msgid "데이터 원본 삭제"
+msgstr ""
+
+#: errors.links.delete_workbooks
+msgid "통합 문서 삭제"
+msgstr ""
+
+#: errors.permissions.publish.datasource.licensing
+msgid "데이터 원본을 게시하려면 ''인터랙터''여야 합니다."
+msgstr ""
+
+#: errors.permissions.publish.datasource.overwrite
+msgid "이름이 \"{0}\"인 데이터 원본이 프로젝트 \"{1}\"에 이미 있습니다. 덮어쓸 사용 "
+"권한이 없습니다."
+msgstr ""
+
+#: errors.permissions.publish.datasource.overwrite_personal_space
+msgid "이름이 \"{0}\"인 데이터 원본이 개인 공간에 이미 있습니다. 덮어쓸 사용 권한이 "
+"없습니다."
+msgstr ""
+
+#: errors.permissions.publish.datasource.overwrite_short
+msgid "이름이 \"{0}\"인 데이터 원본이 프로젝트 \"{1}\"에 이미 있습니다."
+msgstr ""
+
+#: errors.permissions.publish.datasource.overwrite_short_personal_space
+msgid "이름이 \"{0}\"인 데이터 원본이 개인 공간에 이미 있습니다.\""
+msgstr ""
+
+#: errors.permissions.publish.datasource.non_existent
+msgid "데이터 원본 \"{0}\"이(가) 없습니다."
+msgstr ""
+
+#: errors.permissions.publish.datasource.general
+msgid "죄송합니다. 이 데이터 원본을 게시할 수 있는 사용 권한이 없습니다."
+msgstr ""
+
+#: errors.permissions.publish.project.explicit_publisher_detail
+msgid "게시 권한이 없습니다."
+msgstr ""
+
+#: errors.permissions.publish.project.general
+msgid "죄송합니다. 이 프로젝트에 게시할 수 있는 사용 권한이 없습니다."
+msgstr ""
+
+#: errors.permissions.publish.project.non_existent
+msgid "\"{0}\" 프로젝트가 없습니다."
+msgstr ""
+
+#: errors.permissions.publish.project.not_writable
+msgid "\"{0}\" 프로젝트에 쓸 수 있는 사용 권한이 없습니다."
+msgstr ""
+
+#: errors.permissions.publish.project.unspecified
+msgid "프로젝트를 지정해야 합니다."
+msgstr ""
+
+#: errors.permissions.publish.workbook.disabled
+msgid "\"{0}\" 통합 문서를 사용할 수 없습니다."
+msgstr ""
+
+#: errors.permissions.publish.workbook.general
+msgid "게시하려는 프로젝트에 이 이름의 통합 문서가 존재합니다. 게시하려면 통합 "
+"문서의 이름을 바꾸십시오."
+msgstr ""
+
+#: errors.permissions.publish.workbook.general_personal_space
+msgid "게시하려는 개인 공간에 이 이름의 통합 문서가 존재합니다. 게시하려면 통합 "
+"문서의 이름을 바꾸십시오."
+msgstr ""
+
+#: errors.permissions.publish.workbook.overwrite
+msgid "이름이 \"{0}\"인 통합 문서가 프로젝트 \"{1}\"에 이미 있습니다. 덮어쓸 사용 "
+"권한이 없습니다."
+msgstr ""
+
+#: errors.permissions.publish.workbook.overwrite_personal_space
+msgid "이름이 \"{0}\"인 통합 문서가 개인 공간에 이미 있습니다. 덮어쓸 사용 권한이 "
+"없습니다."
+msgstr ""
+
+#: errors.permissions.publish.workbook.overwrite_short
+msgid "이름이 \"{0}\"인 통합 문서가 프로젝트 \"{1}\"에 이미 있습니다."
+msgstr ""
+
+#: errors.permissions.publish.workbook.overwrite_short_personal_space
+msgid "이름이 \"{0}\"인 통합 문서가 개인 공간에 이미 있습니다."
+msgstr ""
+
+#: errors.reportable.impersonation.group_and_user
+msgid "''impersonate_username'' 또는 ''impersonate_groupname'' 중 하나만 지정합니다."
+msgstr ""
+
+#: errors.reportable.impersonation.user_not_found
+msgid "''{0}'' 사용자가 없습니다."
+msgstr ""
+
+#: errors.reportable.impersonation.group_not_found
+msgid "''{0}'' 그룹이 없습니다."
+msgstr ""
+
+#. # errors.public.validation.hasextract is copied from the C++ file codegen strings.data IDS_PUBLIC_VALIDATION_ERROR_HASEXTRACT
+#: errors.public.validation.hasextract
+msgid ""
+"Tableau Public에 저장된 통합 문서는 활성 Tableau 추출을 사용해야 합니다. "
+"게시하기 전에 데이터 원본을 마우스 오른쪽 단추로 클릭하여 [추출 사용]을 "
+"선택합니다. 데이터 원본 ''{0}''이(가) 활성 추출이 아닙니다."
+msgstr ""
+
+#: errors.publish.dataserver_datasource_not_found
+msgid "''{0}'' 데이터 원본이 ''{1}'' 통합 문서에 없습니다."
+msgstr ""
+
+#: errors.publish.datasource_update_mode
+msgid "알 수 없는 업데이트 모드: ''{0}''."
+msgstr ""
+
+#: errors.publish.workbook.concurrent_update
+msgid "동일한 이름의 통합 문서가 현재 게시 또는 수정되고 있습니다. 작업이 완료될 "
+"때까지 기다린 후 다시 시도해 주십시오."
+msgstr ""
+
+#: errors.publish.workbook.restricted
+msgid "통합 문서에 이 서버에 허용되지 않는 연결 유형이 있습니다."
+msgstr ""
+
+#: errors.publish.datasource.concurrent_update
+msgid "동일한 이름의 데이터 원본이 현재 게시 또는 수정되고 있습니다. 작업이 완료될 "
+"때까지 기다린 후 다시 시도해 주십시오."
+msgstr ""
+
+#: errors.publish.datasource.restricted
+msgid "데이터 원본에 이 서버에 허용되지 않는 연결 유형이 있습니다."
+msgstr ""
+
+#: errors.publish.datasource.connection_check
+msgid "{0}에서 데이터 원본에 대한 연결을 설정하지 못했습니다."
+msgstr ""
+
+#: errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption
+msgid ""
+"암호화된 추출을 사용하여 통합 문서를 게시할 수 없습니다. 사이트 관리자가 이 "
+"사이트에서 추출 암호화를 사용하지 않도록 설정했습니다. 암호화되지 않은 "
+"추출을 사용하여 통합 문서를 게시해야 합니다."
+msgstr ""
+
+#: errors.publish.datasource.requested_extract_encryption_on_site_with_disabled_encryption
+msgid ""
+"데이터 원본을 암호화된 추출로 게시할 수 없습니다. 사이트 관리자가 이 "
+"사이트에서 추출 암호화를 사용하지 않도록 설정했습니다. 암호화되지 않은 "
+"추출을 게시해야 합니다."
+msgstr ""
+
+#: errors.publish.workbook.requested_no_extract_encryption_on_site_with_enforced_encryption
+msgid ""
+"암호화되지 않은 추출을 사용하여 통합 문서를 게시할 수 없습니다. 사이트 "
+"관리자가 이 사이트에 추출 암호화를 적용했습니다. 통합 문서를 게시하고 추출 "
+"암호화를 지정해야 합니다."
+msgstr ""
+
+#: errors.publish.datasource.requested_no_extract_encryption_on_site_with_enforced_encryption
+msgid ""
+"암호화되지 않은 데이터 원본 추출을 게시할 수 없습니다. 사이트 관리자가 이 "
+"사이트에 추출 암호화를 적용했습니다. 추출을 암호화된 상태로 게시해야 합니다."
+msgstr ""
+
+#: errors.publish.has_unfinished_extract_creation_job
+msgid ""
+"이 리소스는 보류 중이거나 완료되지 않은 추출 만들기 작업이 관련되어 있기 "
+"때문에 게시할 수 없습니다. 해당 작업이 완료될 때까지 기다리거나 작업을 "
+"취소한 후 다시 시도하십시오."
+msgstr ""
+
+#: errors.publishing.storage_quota_exceeded.message
+msgid "사이트 저장소 할당량이 초과되었습니다."
+msgstr ""
+
+#: errors.publishing.request_size_exceeded
+msgid "요청 크기({0}바이트)가 바이트 크기 제한({1}바이트)을 초과하므로 이 파일을 "
+"게시할 수 없습니다."
+msgstr ""
+
+#: errors.publishing.request_size_unknown
+msgid "요청 크기를 확인할 수 없습니다."
+msgstr ""
+
+#: errors.site.quota_exceeded
+msgid "업로드하려는 콘텐츠 크기가 사이트 용량보다 {0}만큼 큽니다."
+msgstr ""
+
+#: errors.personal_space.quota_exceeded
+msgid "이 콘텐츠는 개인 공간 용량을 {0}만큼 초과합니다."
+msgstr ""
+
+#: errors.web_authoring.workbook_deleted
+msgid "''{0}'' 통합 문서가 삭제되었습니다.  새 통합 문서로 저장하려면 ''다른 "
+"이름으로 저장''을 선택하십시오."
+msgstr ""
+
+#: errors.web_authoring.workbook_changed
+msgid ""
+"편집을 시작한 이후 다른 사용자가 이 통합 문서를 편집하고 저장했습니다. "
+"따라서 더 이상 원본 통합 문서를 업데이트할 수 없습니다. [다른 이름으로 저장]"
+"을 사용하여 변경 내용을 포함한 새 통합 문서를 만드십시오."
+msgstr ""
+
+#: labels.publish.embed_credentials
+msgid "데이터 원본에 대한 비밀번호 내장"
+msgstr ""
+
+#: errors.publish.workbook.google_no_embedded_credentials
+msgid ""
+"이 통합 문서에는 내장된 자격 증명이 필요한 {0} 데이터 원본이 포함되어 "
+"있습니다. 다른 통합 문서로 저장하려면 ''{1}''을(를) 선택하십시오."
+msgstr ""
+
+#: errors.publish.datasource.google_no_embedded_credentials
+msgid ""
+"이 데이터 원본에는 내장된 자격 증명이 필요한 {0} 연결이 포함되어 있습니다. "
+"내장된 자격 증명을 사용하여 Tableau Desktop에서 이 데이터 원본을 "
+"게시하십시오."
+msgstr ""
+
+#: errors.publish.datasource.federated_oauth_datasource_failed
+msgid ""
+"데이터 원본에 있는 하나 이상의 연결에 대한 자격 증명이 만료되었습니다. "
+"Tableau Server 또는 Tableau Online의 계정 설정 페이지에서 이 데이터 원본에 "
+"대해 저장된 자격 증명을 삭제한 다음 데이터 원본에 다시 연결하십시오."
+msgstr ""
+
+#: errors.publish.workbook.missing_oauth_credential
+msgid "자격 증명 ''{0}''을(를) 찾을 수 없거나 데이터 원본 또는 통합 문서에 연결하는 "
+"데 사용할 수 없습니다."
+msgstr ""
+
+#: errors.publish.version_incompatible.message
+msgid "데스크톱 버전과 서버 버전이 호환되지 않습니다."
+msgstr ""
+
+#: errors.publish.version_incompatible.details
+msgid "데스크톱 버전은 ''{0}''이고 서버 문서 버전은 ''{1}''입니다."
+msgstr ""
+
+#: errors.publish.datasource.managed_keychain.unique_cv_suggestions
+msgid "충돌로 인해 게시하지 못했습니다. 변경 내용을 다시 실행 의뢰하십시오."
+msgstr ""
+
+#: errors.publish.permissions_are_locked
+msgid ""
+"게시하려는 대상 프로젝트에서 사용 권한이 잠겨 있습니다. 이 통합 문서를 "
+"게시하려면 기본 사용 권한을 사용하여 다시 시도하십시오."
+msgstr ""
+
+#: errors.publish.datasource.not.found
+msgid "서버에서 이 데이터 원본을 찾을 수 없습니다."
+msgstr ""
+
+#: errors.publish.extracts.disabled
+msgid "추출 기반 아카이브 데이터 원본을 저장하는 기능은 아직 지원되지 않습니다."
+msgstr ""
+
+#: errors.publish.datasource.timeout
+msgid "{0}초 후 게시 시간이 초과되었습니다. 이 데이터 원본을 게시하려면 Tableau "
+"Desktop을 사용하십시오."
+msgstr ""
+
+#: errors.publish.data_role.permission_not_null
+msgid "데이터 역할 유형의 데이터 원본에 대한 명시적 사용 권한을 설정할 수 없습니다."
+msgstr ""
+
+#: errors.download.extracts.timeout
+msgid ""
+"이 데이터 원본에 대규모 추출 파일이 있어서 {0}초 후 게시 시간이 "
+"초과되었습니다. 이 데이터 원본을 게시하려면 Tableau Desktop을 사용하십시오."
+msgstr ""
+
+#: errors.publish.datasource.invalid_extract_update_time
+msgid "잘못된 extractUpdateTime이 지정됨: {0}"
+msgstr ""
+
+#: errors.publish.async.serialization
+msgid "게시 작업 상태 오류를 직렬화할 수 없습니다."
+msgstr ""
+
+#: errors.permissions.view.datasources
+msgid "데이터 원본의 목록을 보려면 ''인터랙터''여야 합니다."
+msgstr ""
+
+#.
+#. # oauth related errors
+#: errors.oauth.invalid_oauth_class
+msgid "''{0}''은(는) 유효한 OAuth 연결 유형이 아닙니다."
+msgstr ""
+
+#: errors.xmlapi.bad_request
+msgid "잘못된 요청"
+msgstr ""
+
+#: errors.xmlapi.unauthorized
+msgid "권한 없음"
+msgstr ""
+
+#: errors.xmlapi.forbidden
+msgid "사용 권한 부족"
+msgstr ""
+
+#: errors.xmlapi.system_user_not_found
+msgid "사용자 계정이 잠겨 있거나 유효하지 않습니다."
+msgstr ""
+
+#: errors.xmlapi.site_user_not_found
+msgid "사용자 계정이 활성 상태가 아닙니다. 도움이 필요하면 {0} 관리자에게 "
+"문의하십시오."
+msgstr ""
+
+#: errors.xmlapi.not_found
+msgid "항목 찾을 수 없음"
+msgstr ""
+
+#: errors.xmlapi.concurrent_update
+msgid "동시 업데이트"
+msgstr ""
+
+#: errors.xmlapi.internal_server_error
+msgid "내부 서버 오류"
+msgstr ""
+
+#: errors.xmlapi.illegal_state
+msgid "잘못된 상태"
+msgstr ""
+
+#: errors.xmlapi.invalid_parameter
+msgid "잘못된 매개 변수"
+msgstr ""
+
+#: errors.xmlapi.already_exists
+msgid "이미 존재"
+msgstr ""
+
+#: errors.xmlapi.site_suspended
+msgid "이 사이트는 일시 중단되었습니다. 로그인하려면 시스템 관리자여야 합니다."
+msgstr ""
+
+#: errors.xmlapi.site_locked
+msgid "이 사이트는 잠겼습니다. 지금은 로그인할 수 없습니다."
+msgstr ""
+
+#: errors.xmlapi.permission_modification
+msgid "수정된 사용 권한을 사용하여 게시할 수 없습니다."
+msgstr ""
+
+#: errors.xmlapi.update_desktop
+msgid ""
+"다른 작성자가 만든 통합 문서를 열려면 http://public.tableau.com/에서 Tableau "
+"Desktop Public Edition의 최신 버전을 다운로드하십시오."
+msgstr ""
+
+#: errors.xmlapi.throttled.summary
+msgid "요청이 너무 많습니다."
+msgstr ""
+
+#: errors.xmlapi.throttled.detail
+msgid "''{0}''에 대한 요청이 너무 많습니다. {1} 후에 다시 시도하십시오."
+msgstr ""
+
+#: datasource.publish.check.unpublishable
+msgid "데이터 원본을 게시할 수 없습니다."
+msgstr ""
+
+#: datasource.publish.check.publishable.extract_required
+msgid "게시에 대한 추출을 만들어야 합니다."
+msgstr ""
+
+#: datasource.publish.check.publishable.credentials_required
+msgid ""
+"라이브 데이터 연결을 유지할 수 있는지 확인하기 위해 {1}에서 ''{0}''에 대해 "
+"제공된 자격 증명에 일시적으로 액세스합니다."
+msgstr ""
+
+#: datasource.publish.check.publishable.server_unreachable
+msgid "{1}에서 ''{0}''에 연결할 수 없습니다. 게시하면 추출이 만들어집니다."
+msgstr ""
+
+#: publish.bundles.workbook.subscription.subject
+msgid "{0} 통합 문서가 준비되었습니다."
+msgstr ""
+
+#: publish.bundles.workbook.subscription.message
+msgid "Salesforce 데이터가 통합 문서에 추가되었습니다. 시작하려면 {0} 프로젝트로 "
+"이동하십시오."
+msgstr ""
+
+#: extracts.status.finished.upload.workbook
+msgid "통합 문서 ''{1}'' {2}에 대한 추출 업로드를 완료했습니다(새 추출 ID: {0})."
+msgstr ""
+
+#: extracts.status.finished.refresh.workbook
+msgid "통합 문서 ''{1}'' {2}에 대한 추출 새로 고침을 완료했습니다(새 추출 ID: {0})"
+msgstr ""
+
+#: extracts.status.finished.increment.workbook
+msgid "통합 문서 ''{1}'' {2}에 대한 추출 증분을 완료했습니다(새 추출 ID: {0})"
+msgstr ""
+
+#: extracts.status.finished.encrypt.workbook
+msgid "통합 문서 ''{1}''에 대한 추출 암호화를 완료했습니다(새 추출 ID: {0})."
+msgstr ""
+
+#: extracts.status.finished.decrypt.workbook
+msgid "통합 문서 ''{1}''에 대한 추출 암호 해독을 완료했습니다(새 추출 ID: {0})."
+msgstr ""
+
+#: extracts.status.finished.rekey.workbook
+msgid "통합 문서 ''{1}''에 대한 추출 재암호화를 완료했습니다(새 추출 ID: {0})."
+msgstr ""
+
+#: extracts.status.finished.create.workbook
+msgid "통합 문서 ''{1}'' {2}에 대한 추출 생성을 마쳤습니다(새 추출 ID: {0})."
+msgstr ""
+
+#: extracts.status.finished.remove.workbook
+msgid "통합 문서 ''{1}''에 대한 추출(데이터 원본 ID: {0})을 라이브로 변경하는 "
+"작업을 완료했습니다."
+msgstr ""
+
+#: extracts.status.finished.upload.datasource
+msgid "데이터 원본 ''{1}'' {2}에 대한 추출 업로드를 완료했습니다(새 추출 ID: {0})"
+msgstr ""
+
+#: extracts.status.finished.refresh.datasource
+msgid "데이터 원본 ''{1}'' {2}에 대한 추출 새로 고침을 완료했습니다(새 추출 ID: {0})"
+msgstr ""
+
+#: extracts.status.finished.increment.datasource
+msgid "데이터 원본 ''{1}'' {2}에 대한 추출 증분을 완료했습니다(새 추출 ID: {0})"
+msgstr ""
+
+#: extracts.status.finished.append.datasource
+msgid "데이터 원본 ''{1}'' {2}에 대한 추출 추가를 완료했습니다(새 추출 ID: {0})"
+msgstr ""
+
+#: extracts.status.finished.replace.datasource
+msgid "데이터 원본 ''{1}'' {2}에 대한 추출 바꾸기를 완료했습니다(새 추출 ID: {0})"
+msgstr ""
+
+#: extracts.status.finished.encrypt.datasource
+msgid "데이터 원본 ''{1}''에 대한 추출 암호화를 완료했습니다(새 추출 ID: {0})."
+msgstr ""
+
+#: extracts.status.finished.decrypt.datasource
+msgid "데이터 원본 ''{1}''에 대한 추출 암호 해독을 완료했습니다(새 추출 ID: {0})."
+msgstr ""
+
+#: extracts.status.finished.rekey.datasource
+msgid "데이터 원본 ''{1}''에 대한 추출 재암호화를 완료했습니다(새 추출 ID: {0})."
+msgstr ""
+
+#: extracts.status.finished.encrypt.flow
+msgid "''{0}'' 흐름에 대한 추출 암호화를 완료했습니다."
+msgstr ""
+
+#: extracts.status.finished.decrypt.flow
+msgid "''{0}'' 흐름에 대한 추출 암호 해독을 완료했습니다."
+msgstr ""
+
+#: extracts.status.finished.rekey.flow
+msgid "''{0}'' 흐름에 대한 추출 재암호화를 완료했습니다."
+msgstr ""
+
+#: extracts.status.finished.encrypt.flowdraft
+msgid "흐름 초안 ''{0}''에 대한 추출 암호화를 완료했습니다."
+msgstr ""
+
+#: extracts.status.finished.decrypt.flowdraft
+msgid "흐름 초안 ''{0}''에 대한 추출 암호 해독을 완료했습니다."
+msgstr ""
+
+#: extracts.status.finished.rekey.flowdraft
+msgid "흐름 초안 ''{0}''에 대한 추출 재암호화를 완료했습니다."
+msgstr ""
+
+#: extracts.status.finished.create.datasource
+msgid "데이터 원본 ''{1}'' {2}에 대한 추출 생성을 마쳤습니다(새 추출 ID: {0})."
+msgstr ""
+
+#: extracts.status.finished.remove.datasource
+msgid "데이터 원본 ''{1}''에 대한 추출을 라이브로 변경하는 작업을 완료했습니다."
+msgstr ""
+
+#: extracts.status.encryption_key
+msgctxt "extracts.status.encryption_key"
+msgid "암호화 키 ID: ''{0}''."
+msgstr ""
+
+#: extracts.status.encryption_keys
+msgctxt "extracts.status.encryption_keys"
+msgid "이전 암호화 키 ID: ''{0}'', 새 암호화 키 ID: ''{1}''."
+msgstr ""
+
+#: extracts.errors.upload
+msgid "{0}의 추출을 업로드하는 동안 오류 발생: ''{1}''"
+msgstr ""
+
+#: extracts.errors.refresh
+msgid "다음 추출을 새로 고치는 동안 오류 발생: {0} ''{1}''"
+msgstr ""
+
+#: extracts.errors.create
+msgid "{0} ''{1}''에 대한 추출을 만드는 동안 오류가 발생했습니다."
+msgstr ""
+
+#: extracts.errors.increment
+msgid "{0}의 추출을 증분하는 동안 오류 발생: ''{1}''"
+msgstr ""
+
+#: extracts.errors.append
+msgid "{0}의 추출을 추가하는 동안 오류 발생: ''{1}''"
+msgstr ""
+
+#: extracts.errors.replace
+msgid "{0}의 추출을 바꾸는 동안 오류 발생: ''{1}''"
+msgstr ""
+
+#: extracts.errors.download
+msgid "{0}의 추출을 다운로드하는 동안 오류 발생: ''{1}''"
+msgstr ""
+
+#: extracts.errors.remove
+msgid "{0}의 추출을 제거하는 동안 오류 발생: ''{1}''."
+msgstr ""
+
+#: extracts.errors.title
+msgid "추출 처리 오류"
+msgstr ""
+
+#: extracts.errors.nothing_to_upload
+msgid "{0}에 대해 업로드할 추출 없음: ''{1}''"
+msgstr ""
+
+#: extracts.errors.nothing_to_refresh
+msgid "{0}에 대해 새로 고칠 추출 없음: ''{1}''"
+msgstr ""
+
+#: extracts.errors.nothing_to_increment
+msgid "증분할 {0}의 추출 없음: ''{1}''"
+msgstr ""
+
+#: extracts.errors.nothing_to_append
+msgid "{0}에 대해 추가할 추출 없음: ''{1}''"
+msgstr ""
+
+#: extracts.errors.nothing_to_replace
+msgid "{0}에 대해 바꿀 추출 없음: ''{1}''"
+msgstr ""
+
+#: extracts.errors.refresh_summary
+msgid "추출 새로 고침 오류"
+msgstr ""
+
+#: extracts.errors.encrypt_summary
+msgid "추출 암호화 오류"
+msgstr ""
+
+#: extracts.errors.rekey_summary
+msgid "추출 재암호화 오류"
+msgstr ""
+
+#: extracts.errors.decrypt_summary
+msgid "추출 암호 해독 오류"
+msgstr ""
+
+#: extracts.errors.remove_summary
+msgid "추출 제거 오류"
+msgstr ""
+
+#: extracts.errors.create_summary
+msgid "추출 만들기 오류"
+msgstr ""
+
+#: extracts.errors.datasource_overwritten
+msgid ""
+"처리 중에 다른 작업에서 데이터 원본을 덮어썼기 때문에 새로 고침에 "
+"실패했습니다. 수정하려면 다시 새로 고침을 실행 의뢰하십시오."
+msgstr ""
+
+#: extracts.errors.workbook_overwritten
+msgid "처리 중에 다른 작업에서 통합 문서를 덮어썼기 때문에 새로 고치지 못했습니다. "
+"수정하려면 다시 새로 고침을 실행 의뢰하십시오."
+msgstr ""
+
+#: extracts.errors.encrypt
+msgid "다음 추출을 암호화하는 동안 오류 발생: {0} ''{1}''"
+msgstr ""
+
+#: extracts.errors.decrypt
+msgid "다음 추출을 암호 해독하는 동안 오류 발생: {0} ''{1}''"
+msgstr ""
+
+#: extracts.errors.rekey
+msgid "다음 추출을 재암호화하는 동안 오류 발생: {0} ''{1}''"
+msgstr ""
+
+#: extracts.errors.encrypt_datasource_overwritten
+msgid "처리 중에 다른 작업에서 데이터 원본을 덮어썼기 때문에 추출 암호화가 "
+"실패했습니다."
+msgstr ""
+
+#: extracts.errors.encrypt_workbook_overwritten
+msgid "처리 중에 다른 작업에서 통합 문서를 덮어썼기 때문에 추출 암호화가 "
+"실패했습니다."
+msgstr ""
+
+#: extracts.errors.rekey_datasource_overwritten
+msgid "처리 중에 다른 작업에서 데이터 원본을 덮어썼기 때문에 추출 재암호화가 "
+"실패했습니다."
+msgstr ""
+
+#: extracts.errors.rekey_workbook_overwritten
+msgid "처리 중에 다른 작업에서 통합 문서를 덮어썼기 때문에 추출 재암호화가 "
+"실패했습니다."
+msgstr ""
+
+#: extracts.errors.decrypt_datasource_overwritten
+msgid "처리 중에 다른 작업에서 데이터 원본을 덮어썼기 때문에 추출 암호 해독이 "
+"실패했습니다."
+msgstr ""
+
+#: extracts.errors.decrypt_workbook_overwritten
+msgid "처리 중에 다른 작업에서 통합 문서를 덮어썼기 때문에 추출 암호 해독이 "
+"실패했습니다."
+msgstr ""
+
+#: extracts.errors.remove_datasource_overwritten
+msgid "다른 작업에 의해 덮어써진 데이터 원본은 라이브로 변경할 수 없습니다."
+msgstr ""
+
+#: extracts.errors.remove_workbook_overwritten
+msgid "다른 작업에 의해 덮어써진 통합 문서는 라이브로 변경할 수 없습니다."
+msgstr ""
+
+#: extracts.errors.create_datasource_overwritten
+msgid "다른 작업에 의해 덮어써진 데이터 원본은 추출할 수 없습니다."
+msgstr ""
+
+#: extracts.errors.create_workbook_overwritten
+msgid "다른 작업에 의해 덮어써진 통합 문서는 추출할 수 없습니다."
+msgstr ""
+
+#: extracts.site_mode_change_details
+msgid "사이트 추출 암호화 모드를 ''{0}''에서 ''{1}''(으)로 변경했습니다."
+msgstr ""
+
+#: extracts.errors.encryption_not_licensed
+msgid ""
+"이 작업은 추출 암호화에 대한 라이선스가 없기 때문에 실패했습니다. 이 작업을 "
+"수행하려면 라이선스를 갱신하거나 추출을 암호 해독해야 합니다."
+msgstr ""
+
+#: extracts.errors.operation_cancelled_detail
+msgid "{0}(데이터 원본: {2})에 대한 추출 제거 작업 시간이 초과되었습니다."
+msgstr ""
+
+#: workbooks.messages.load_error
+msgid "{0} 통합 문서를 로드할 수 없습니다."
+msgstr ""
+
+#: workbooks.messages.locked
+msgid "다른 사용자가 현재 ''{0}'' 통합 문서를 수정하고 있습니다.  나중에 다시 "
+"시도하십시오."
+msgstr ""
+
+#: workbooks.new_workbook.default_name
+msgid "새 통합 문서"
+msgstr ""
+
+#: workbooks.new_datasource.default_name
+msgid "새 데이터 원본"
+msgstr ""
+
+#: datasources.messages.load_error
+msgid "{0} 데이터 원본을 로드할 수 없습니다."
+msgstr ""
+
+#: metrics.new_metric.default_name
+msgid "새 메트릭"
+msgstr ""
+
+#: messages.timeout_error.summary
+msgid "시간 초과 오류"
+msgstr ""
+
+#: messages.timeout_error.task_canceled
+msgid "{0}초보다 오래 걸린 작업을 취소하는 중"
+msgstr ""
+
+#: subscriptions.manage_my_subscriptions
+msgid "내 구독 관리"
+msgstr ""
+
+#: subscriptions.message_greeting
+msgid "안녕하세요."
+msgstr ""
+
+#: subscriptions.subscribed_footer
+msgid "현재 구독하는 {0}입니다."
+msgstr ""
+
+#: subscriptions.subscribed_workbook
+msgctxt "subscriptions.subscribed_workbook"
+msgid "통합 문서"
+msgstr ""
+
+#: subscriptions.subscribed_view
+msgctxt "subscriptions.subscribed_view"
+"subscriptions.subscribed_view"
+msgid "뷰"
+msgstr ""
+
+#: subscriptions.fullstop
+msgid "."
+msgstr ""
+
+#: subscriptions.extract_refresh_footer
+msgid "데이터가 새로 고쳐지면 이 구독 이메일이 발송됩니다."
+msgstr ""
+
+#: subscriptions.explore_the_viz
+msgid "비주얼리제이션 탐색"
+msgstr ""
+
+#: subscriptions.explore_the_workbook
+msgid "통합 문서 탐색"
+msgstr ""
+
+#: subscriptions.pdf_attached
+msgid "Tableau PDF가 첨부되었습니다."
+msgstr ""
+
+#: subscriptions.access_live_content
+msgid "콘텐츠의 라이브 뷰를 여기서 액세스할 수 있습니다."
+msgstr ""
+
+#: subscriptions.warning_deprecated_type
+msgid "더 이상 사용되지 않음"
+msgstr ""
+
+#: subscriptions.warning_extract_refresh_type
+msgid "추출 새로 고침 실패"
+msgstr ""
+
+#: subscriptions.warning_flow_run_type
+msgid "흐름 실행 실패"
+msgstr ""
+
+#: subscriptions.warning_introduction_general
+msgid "다음 데이터 품질 경고가 이 {0}에 영향을 미칩니다."
+msgstr ""
+
+#: subscriptions.warning_introduction_view
+msgid "자세한 내용은 뷰의 데이터 세부 정보 탭을 참조하십시오."
+msgstr ""
+
+#: subscriptions.warning_introduction_workbook
+msgid "자세한 내용은 통합 문서 페이지를 참조하십시오."
+msgstr ""
+
+#: subscriptions.warning_maintenance_type
+msgid "유지 관리 중"
+msgstr ""
+
+#: subscriptions.warning_permission_error
+msgid "이는 보기 권한이 없는 자산에 대한 경고입니다."
+msgstr ""
+
+#: subscriptions.warning_redacted
+msgid "사용 권한 필요"
+msgstr ""
+
+#: subscriptions.warning_sensitve_type
+msgid "중요한 데이터"
+msgstr ""
+
+#: subscriptions.warning_severe
+msgid "중요 데이터 품질 경고"
+msgstr ""
+
+#: subscriptions.warning_stale_type
+msgid "오래된 데이터"
+msgstr ""
+
+#: subscriptions.warning_standard
+msgid "데이터 품질 경고"
+msgstr ""
+
+#: subscriptions.warning_error_type
+msgid "알 수 없는 경고 유형"
+msgstr ""
+
+#: subscriptions.warning_warning_type
+msgid "경고"
+msgstr ""
+
+#: errors.subscriptions.image_render_failed
+msgid "뷰 ''{0}''의 스냅샷을 적절하게 렌더링할 수 없습니다."
+msgstr ""
+
+#: errors.subscriptions.see_live_view
+msgid "온라인으로 뷰를 보려면 {0}(으)로 이동하십시오."
+msgstr ""
+
+#: errors.subscriptions.disabled_on_server
+msgid "서버 전체 구독 설정을 사용할 수 없습니다. 구독을 처리할 수 없습니다."
+msgstr ""
+
+#: errors.subscriptions.disabled_on_site
+msgid "사이트에서 구독을 사용할 수 없습니다."
+msgstr ""
+
+#: errors.subscriptions.site_is_locked
+msgid "사이트가 잠겨 있습니다. 구독을 처리할 수 없습니다."
+msgstr ""
+
+#: errors.subscriptions.orphan
+msgid "이 구독과 연관된 통합 문서 및 뷰를 찾을 수 없습니다."
+msgstr ""
+
+#: errors.subscriptions.user_unlicensed
+msgid "라이선스가 없는 사용자의 구독을 건너뜁니다."
+msgstr ""
+
+#: errors.subscriptions.smtp_unreacheable
+msgid "SMTP 호스트에 연결할 수 없습니다. SMTP가 구성되어 있는지 확인하십시오."
+msgstr ""
+
+#: errors.subscriptions.uncategorized_error
+msgid "알 수 없는 오류"
+msgstr ""
+
+#: errors.subscriptions.pdf_render_failed
+msgid "이 이메일의 PDF 첨부 파일을 적절하게 렌더링할 수 없습니다."
+msgstr ""
+
+#: errors.subscriptions.pdf_limit_exceeded
+msgid "생성된 PDF는 크기 제한인 {0}MB보다 커서 이 이메일에 첨부할 수 없습니다."
+msgstr ""
+
+#: errors.subscriptions.attachments_not_enabled
+msgid ""
+"이메일 첨부 파일이 사용되지 않도록 설정되어 있어서 이 구독이 실패했습니다. "
+"자세한 내용은 Tableau 관리자에게 문의하십시오."
+msgstr ""
+
+#: errors.subscriptions.pdf_email_failed
+msgid "생성된 PDF는 이 이메일에 첨부할 수 없습니다."
+msgstr ""
+
+#: errors.subscriptions.learn_more_troubleshoot
+msgid ""
+"<a href=\"https://onlinehelp.tableau.com/current/server/ko-kr/"
+"subscribe_trouble.htm\">자세히 알아보기</a>"
+msgstr ""
+
+#: errors.subscriptions.bad_extract_refresh_subscription_configuration
+msgid ""
+"통합 문서에 여러 추출 새로 고침 일정이 포함되어 있으므로 구독이 일시 "
+"중단되었습니다. 다시 시작하려면 빈도를 [선택된 일정에 따라]로 "
+"업데이트하십시오."
+msgstr ""
+
+#: errors.subscriptions.subscription_failed_refresh_failure
+msgid "데이터 원본의 추출 새로 고침이 실패했습니다."
+msgstr ""
+
+#: errors.subscriptions.multiple_extracts_for_extract_refresh_subscription
+msgid "통합 문서에 여러 추출 새로 고침 일정이 포함되어 있습니다. 빈도를 [선택된 "
+"일정에 따라]로 업데이트하십시오."
+msgstr ""
+
+#: errors.subscriptions.datasource_is_missing_password
+msgid "데이터 원본 연결 오류입니다. 통합 문서의 모든 데이터 원본 연결에서 자격 "
+"증명을 확인하십시오."
+msgstr ""
+
+#: subscriptions.results_summary.sg
+msgctxt "subscriptions.results_summary.sg"
+msgid "{0}/{1}개의 구독이 ''{2}'' 일정에서 전송되었습니다."
+msgstr ""
+
+#: subscriptions.results_summary.pl
+msgctxt "subscriptions.results_summary.pl"
+msgid "{0}/{1}개의 구독이 ''{2}'' 일정에서 전송되었습니다."
+msgstr ""
+
+#: subscriptions.results_views_per_subscription.sg
+msgid "{0}({1}/1회 뷰가 성공함)"
+msgstr ""
+
+#: subscriptions.results_views_per_subscription.pl
+msgid "{0}({1}/{2}회 뷰가 성공함)"
+msgstr ""
+
+#: subscriptions.results_views_per_subscription.more
+msgid "({0} 추가)"
+msgstr ""
+
+#: subscriptions.results_views_per_subscription.failed
+msgid "{0}({1}/{2}개 뷰가 실패함)."
+msgstr ""
+
+#: subscriptions.results_header.all_shown.failures.sg
+msgid "실패 1회"
+msgstr ""
+
+#: subscriptions.results_header.all_shown.failures.pl
+msgid "실패 {0}개"
+msgstr ""
+
+#: subscriptions.results_header.all_shown.warnings.sg
+msgid "경고 1개"
+msgstr ""
+
+#: subscriptions.results_header.all_shown.warnings.pl
+msgid "경고 {0}개"
+msgstr ""
+
+#: subscriptions.results_header.some_hidden.failures.pl.sg
+msgid "실패 {0}회(1회 숨겨짐, 로그 참조)"
+msgstr ""
+
+#: subscriptions.results_header.some_hidden.failures.pl.pl
+msgid "실패 {0}개({1}개 숨겨짐, 로그 참조)"
+msgstr ""
+
+#: subscriptions.results_header.some_hidden.warnings.pl.sg
+msgid "경고 {0}개(1개 숨겨짐, 로그 참조)"
+msgstr ""
+
+#: subscriptions.results_header.some_hidden.warnings.pl.pl
+msgid "경고 {0}개({1}개 숨겨짐, 로그 참조)"
+msgstr ""
+
+#: dataalerts.manage_my_data_alerts
+msgid "알림 관리"
+msgstr ""
+
+#: dataalerts.edit_data_alert
+msgid "알림 편집"
+msgstr ""
+
+#: dataalerts.remove_user_from_data_alert
+msgid "본인 제거"
+msgstr ""
+
+#: dataalerts.add_user_to_data_alert
+msgid "이 알림에 나를 추가"
+msgstr ""
+
+#: dataalerts.greater_or_equal
+msgid "{0}이(가) {1}보다 크거나 같습니다."
+msgstr ""
+
+#: dataalerts.greater
+msgid "{0}이(가) {1}보다 큽니다."
+msgstr ""
+
+#: dataalerts.less_or_equal
+msgid "{0}이(가) {1}보다 작거나 같습니다."
+msgstr ""
+
+#: dataalerts.less
+msgid "{0}이(가) {1}보다 작습니다."
+msgstr ""
+
+#: dataalerts.equal
+msgid "{0}이(가) {1}과(와) 같습니다."
+msgstr ""
+
+#: dataalerts.email_alt_text
+msgid "데이터 기반 알림에 사용된 보기: {0}"
+msgstr ""
+
+#: dataalerts.email_alt_text_hidden_view
+msgid "데이터 기반 알림에 사용된 보기: {0}에 변경 내용이 적용됨"
+msgstr ""
+
+#: dataalerts.alert_triggered_for_the_view
+msgid "뷰에 발생한 알림"
+msgstr ""
+
+#: dataalerts.failure.email.subject
+msgid "다음에 대한 데이터 기반 알림이 작동하지 않음: {0}"
+msgstr ""
+
+#: dataalerts.failure.status
+msgid "알림 <i>{0}</i>이(가) 작동하지 않음"
+msgstr ""
+
+#: dataalerts.failure.view.details.alert
+msgid "이 알림 보기"
+msgstr ""
+
+#: dataalerts.failure.explanation
+msgid ""
+"지금 데이터 기반 알림 <i>{0}</i>이(가) 작동하지 않기 때문에 데이터 조건을 "
+"충족하는 경우 수신자에게 알림이 전달되지 않습니다. 알림이 다시 작동하면 "
+"이메일 알림을 받을 수 있습니다."
+msgstr ""
+
+#: dataalerts.failure.affected.alert
+msgid "영향받는 데이터 기반 알림"
+msgstr ""
+
+#: dataalerts.failure.time
+msgid "일시적 알림 실패"
+msgstr ""
+
+#: dataalerts.failure.cause
+msgid ""
+"경우에 따라 일시적인 네트워크 문제로 인해 알림이 실패할 수 있으며, 이러한 "
+"문제는 자동적으로 해결됩니다. 원래 데이터 뷰에서 알림을 다시 만들거나 다음과 "
+"같은 알림 실패의 일반적인 원인을 찾아 해결할 수도 있습니다."
+msgstr ""
+
+#: dataalerts.failure.changed.view
+msgid "통합 문서, 뷰 또는 데이터 필드가 제거되거나 이름이 바뀌었습니다."
+msgstr ""
+
+#: dataalerts.failure.expired.credentials
+msgctxt "dataalerts.failure.expired.credentials"
+msgid "통합 문서에 내장된 데이터베이스 자격 증명이 만료되었습니다."
+msgstr ""
+
+#: dataalerts.failure.datasource.error
+msgid "데이터 원본에 액세스할 수 없습니다."
+msgstr ""
+
+#: dataalerts.failure.email.footer
+msgid "알림 실패로 인해 이 이메일이 {0} 주소로 발송되었습니다."
+msgstr ""
+
+#: dataalerts.failure.troubleshooting
+msgid "위에 나와 있는 문제 중 하나가 알림 실패의 원인인지 확인하려면 아래 단추를 "
+"클릭하십시오."
+msgstr ""
+
+#: dataalerts.success.email.subject
+msgid "다음에 대한 데이터 기반 알림이 다시 시작됨: {0}"
+msgstr ""
+
+#: dataalerts.success.status
+msgid "알림 <i>{0}</i>이(가) 다시 시작됨"
+msgstr ""
+
+#: dataalerts.success.explanation
+msgid "데이터 기반 알림(<i>{0}</i>)이 다시 작동하므로 데이터 조건이 true인 경우 "
+"수신자에게 알림이 전달됩니다."
+msgstr ""
+
+#: dataalerts.failure.error.internalError
+msgid "데이터 알림 내부 오류"
+msgstr ""
+
+#: dataalerts.failure.error.invalidDataAlertSpecification
+msgid "잘못된 데이터 알림 지정"
+msgstr ""
+
+#: dataalerts.failure.error.summaryTableNotFound
+msgid "요약 데이터 테이블을 찾을 수 없음"
+msgstr ""
+
+#: dataalerts.failure.error.unclassifiedError
+msgid "분류되지 않은 오류"
+msgstr ""
+
+#: dataalerts.failure.error.viewContentNotFound
+msgid "데이터 알림 뷰의 {0} 콘텐츠를 찾을 수 없음"
+msgstr ""
+
+#: dataalerts.failure.error.viewNotFound
+msgid "데이터 알림 뷰를 찾을 수 없음"
+msgstr ""
+
+#: dataalerts.failure.error.workbookNotFound
+msgid "통합 문서를 찾을 수 없음"
+msgstr ""
+
+#: dataalerts.failure.error.paneDescriptorAxisNotFound
+msgid "{0} 필드의 축을 찾을 수 없음"
+msgstr ""
+
+#: dataalerts.failure.error.paneDescriptorNotFound
+msgid "{0}"
+msgstr ""
+
+#: dataalerts.failure.error.unsupportedComparisonExpression
+msgid "지원되지 않는 비교 식 {0}"
+msgstr ""
+
+#: dataalerts.failure.error.nonConstComparisonOp
+msgid "비상수 비교 연산자가 검색됨: {0}"
+msgstr ""
+
+#: dataalerts.failure.error.cannotAddFilter
+msgid "데이터 알림에 필터를 추가하지 못함"
+msgstr ""
+
+#: dataalerts.failure.error.sheetNotAlertable
+msgid "{0} 시트는 알림 데이터를 지원합니다. {1}"
+msgstr ""
+
+#: dataalerts.failure.error.dataAlertMeasureNotFound
+msgid "측정값을 선택할 수 없습니다. {0}"
+msgstr ""
+
+#: dataalerts.failure.error.tooManyMeasuresForDataAlert
+msgid "잘못된 측정값 수가 검색되었습니다.{0}"
+msgstr ""
+
+#: dataalerts.failure.error.thresholdParseError
+msgid "임계값 텍스트 {0}을(를) 구문 분석하지 못했습니다. {1}"
+msgstr ""
+
+#: dataalerts.failure.error.dataAlertPresModelCreationError
+msgid "알림을 직렬화하는 동안 오류가 발생했습니다. {0}"
+msgstr ""
+
+#: dataalerts.failure.error.cannotDrawDataAlertDialog
+msgid "데이터 알림 대화 상자를 그리지 못했습니다."
+msgstr ""
+
+#: dataalerts.failure.error.unsupportedDataAlertType
+msgid "데이터 알림 유형 {0}은(는) 현재 지원되지 않습니다."
+msgstr ""
+
+#: dataalerts.failure.suspend.email.subject
+msgid "{0}에 대한 데이터 기반 알림 일시 중단됨"
+msgstr ""
+
+#: dataalerts.failure.suspend.email.status
+msgid "{0} 알림이 일시 중단되었습니다."
+msgstr ""
+
+#: dataalerts.failure.suspend.email.explanation
+msgid ""
+"일시 중단된 동안에는 뷰 또는 알림 수신자를 평가할 수 없습니다. 수정을 완료한 "
+"후 다음 위치에서 알림을 다시 시작할 수 있습니다. <a href=\"{0}\" style"
+"=\"font-size:14px;font-family: Benton Sans Medium;color:#4996B2\">{1}."
+msgstr ""
+
+#: dataalerts.failure.suspend.view.name.prefix
+msgctxt "dataalerts.failure.suspend.view.name.prefix"
+msgid "뷰"
+msgstr ""
+
+#: dataalerts.failure.suspend.time
+msgctxt "dataalerts.failure.suspend.time"
+msgid "일시 중단 시간"
+msgstr ""
+
+#: dataalerts.failure.suspend.email.footer
+msgid "사용자의 알림이 일시 중단되어서 이 이메일이 발송되었습니다."
+msgstr ""
+
+#: dataalerts.failure.suspend.email.view.name.my.content
+msgid "내 콘텐츠"
+msgstr ""
+
+#: dataalerts.failure.suspend.view.alerts
+msgid "알림 보기"
+msgstr ""
+
+#: metricsservices.failure.affected.metric
+msgid "영향받는 메트릭"
+msgstr ""
+
+#: metricsservices.failure.cause
+msgid ""
+"경우에 따라 일시적인 연결 문제로 인해 메트릭 새로 고침이 실패하며, 이러한 "
+"문제는 자동적으로 해결됩니다. 메트릭 새로 고침이 실패할 수 있는 다른 "
+"일반적인 이유에는 다음이 포함됩니다."
+msgstr ""
+
+#: metricsservices.failure.changed.view
+msgid "통합 문서, 뷰 또는 데이터 필드가 제거되거나 이름이 바뀜"
+msgstr ""
+
+#: metricsservices.failure.permissions.error
+msgid "연결된 뷰의 사용 권한 변경"
+msgstr ""
+
+#: metricsservices.failure.email.footer
+msgid "메트릭 새로 고침이 실패하여 {0} 주소로 이 이메일이 발송된 것입니다."
+msgstr ""
+
+#: metricsservices.failure.email.subject
+msgid "다음에 대한 메트릭 새로 고침이 작동하지 않음: {0}"
+msgstr ""
+
+#: metricsservices.failure.expired.credentials
+msgctxt "metricsservices.failure.expired.credentials"
+msgid "통합 문서에 내장된 데이터베이스 자격 증명이 만료되었습니다."
+msgstr ""
+
+#: metricsservices.failure.explanation
+msgid ""
+"메트릭을 새로 고칠 수 없기 때문에 메트릭 데이터가 업데이트되지 않습니다. "
+"메트릭 새로 고침이 다시 작동하면 이메일 알림이 수신됩니다."
+msgstr ""
+
+#: metricsservices.failure.status
+msgid "메트릭 \"{0}\"이(가) 새로 고쳐지지 않습니다."
+msgstr ""
+
+#: metricsservices.failure.suspend.email.explanation
+msgid ""
+"메트릭 새로 고침이 일시 중단된 동안에는 메트릭 데이터가 업데이트되지 "
+"않습니다. 수정을 적용한 후 메트릭 새로 고침을 다시 시작할 수 있습니다."
+msgstr ""
+
+#: metricsservices.failure.suspend.email.footer
+msgid "메트릭 새로 고침이 일시 중단되어서 이 이메일이 {0} 주소로 발송되었습니다."
+msgstr ""
+
+#: metricsservices.failure.suspend.email.status
+msgid "메트릭 \"{0}\"에 대한 새로 고침이 일시 중단되었습니다."
+msgstr ""
+
+#: metricsservices.failure.suspend.email.subject
+msgid "{0}에 대한 메트릭 새로 고침 일시 중단됨"
+msgstr ""
+
+#: metricsservices.failure.suspend.time
+msgctxt "metricsservices.failure.suspend.time"
+msgid "일시 중단 시간"
+msgstr ""
+
+#: metricsservices.failure.suspend.view.metric
+msgctxt "metricsservices.failure.suspend.view.metric"
+msgid "메트릭으로 이동"
+msgstr ""
+
+#: metricsservices.failure.suspend.view.name.prefix
+msgctxt "metricsservices.failure.suspend.view.name.prefix"
+msgid "연결된 뷰"
+msgstr ""
+
+#: metricsservices.failure.time
+msgid "새로 고침 실패 시간"
+msgstr ""
+
+#: metricsservices.failure.troubleshooting
+msgid ""
+"위에 나와 있는 문제 중 하나가 메트릭 새로 고침 실패의 원인인지 확인하려면 "
+"아래 단추를 클릭하십시오. 연결된 뷰에서 메트릭을 다시 만들 수도 있습니다."
+msgstr ""
+
+#: metricsservices.failure.view.details.metric
+msgctxt "metricsservices.failure.view.details.metric"
+msgid "메트릭으로 이동"
+msgstr ""
+
+#: metricsservices.failure.view.name.prefix
+msgctxt "metricsservices.failure.view.name.prefix"
+msgid "연결된 뷰"
+msgstr ""
+
+#: metricsservices.success.email.subject
+msgid "다음에 대한 메트릭 새로 고침이 다시 시작됨: {0}"
+msgstr ""
+
+#: metricsservices.success.explanation
+msgid "메트릭에 대한 새로 고침이 다시 작동하고 있으므로 메트릭 데이터의 업데이트가 "
+"있는지 확인됩니다."
+msgstr ""
+
+#: metricsservices.success.status
+msgid "메트릭 \"{0}\"에 대한 새로 고침이 다시 시작되었습니다."
+msgstr ""
+
+#: errors.staticimages.generic
+msgid "{0} 통합 문서에 대한 정적 이미지를 생성하는 동안 오류가 발생했습니다. {1}."
+msgstr ""
+
+#: errors.internal_error.request.message
+msgid "{0}이(가) 요청을 처리할 수 없습니다."
+msgstr ""
+
+#: errors.permissions.limited_user_visibility
+msgid ""
+"쿼리를 완료하는 중 오류가 발생했습니다. [사용자 표시 유형]이 [제한]으로 "
+"설정된 경우 다른 사용자를 쿼리하려면 관리자이거나 Creator여야 합니다."
+msgstr ""
+
+#: local_names.system_user.guest.name
+msgid "게스트"
+msgstr ""
+
+#: local_names.group.all_users.name
+msgid "모든 사용자"
+msgstr ""
+
+#: local_names.containers.personal_space.name
+msgid "개인 공간"
+msgstr ""
+
+#: password_reset.email.subject
+msgid "비밀번호를 재설정할 수 있는 링크입니다."
+msgstr ""
+
+#: password_reset.email.body
+msgid ""
+"{0} 님 안녕하세요.<br/><br/>방금, 비밀번호 재설정을 요청하셨습니다.<br/><br/"
+"> Tableau Server 비밀번호를 재설정하려면 {1}하거나 다음 링크를 브라우저에 "
+"붙여 넣으십시오. 링크: {2}<br/><br/>이 링크는 48시간 후 만료되오니 지금 바로 "
+"이용하시기 바랍니다.<br/><br/>비밀번호 재설정을 요청하지 않으신 경우 서버 "
+"관리자에게 해당 사실을 알리실 수도 있습니다.<br/><br/>Tableau를 사용해 "
+"주셔서 감사합니다!<br/>Tableau 팀 일동"
+msgstr ""
+
+#: password_reset.email.link
+msgid "여기를 클릭"
+msgstr ""
+
+#: hours.pl
+msgid "{0}시간"
+msgstr ""
+
+#: hours.sg
+msgid "1시간"
+msgstr ""
+
+#: minutes.pl
+msgid "{0}분"
+msgstr ""
+
+#: minutes.sg
+msgid "1분"
+msgstr ""
+
+#: seconds.pl
+msgid "{0}초"
+msgstr ""
+
+#: seconds.sg
+msgid "1초"
+msgstr ""
+
+#: dataconnections.classes.tableau_server_site
+msgid "Tableau Server 사이트"
+msgstr ""
+
+#: materializeviews.errors.workbook_not_in_project
+msgid "''{0}'' 프로젝트가 ''{1}'' 통합 문서를 포함하지 않습니다."
+msgstr ""
+
+#: materializeviews.errors.workbook_has_no_extract
+msgid "''{0}'' 통합 문서의 구체화된 뷰 설정을 업데이트하지 못했습니다. 현재 내장된 "
+"추출이 있는 통합 문서만 지원됩니다."
+msgstr ""
+
+#: materializeviews.errors.workbook_updating_errors
+msgid "통합 문서의 구체화된 뷰 설정을 업데이트하는 동안 오류가 발견되었습니다."
+msgstr ""
+
+#: materializeviews.errors.workbook_too_large
+msgid "''{0}'' 통합 문서의 구체화된 뷰 설정을 업데이트하지 못했습니다. 통합 문서 "
+"크기가 제한({1}GB)을 초과합니다."
+msgstr ""
+
+#: materializeviews.errors.project_path_not_exists
+msgid "프로젝트 경로 ''{0}''이(가) 없습니다."
+msgstr ""
+
+#: materializeviews.errors.feature_disabled
+msgid "''{0}'' 통합 문서의 구체화된 뷰 설정을 업데이트하지 못했습니다. 해당 기능이 "
+"현재 사용되지 않도록 설정되어 있습니다."
+msgstr ""
+
+#: materializeviews.errors.update_materialized_views_setting_failed
+msgid "''{0}'' 통합 문서의 구체화된 뷰 설정을 업데이트하지 못했습니다."
+msgstr ""
+
+#: materializeviews.errors.site_not_enabled
+msgid "이 사이트가 구체화된 뷰를 사용하도록 설정되지 않았습니다. 관리자에게 "
+"문의하십시오."
+msgstr ""
+
+#: materializeviews.errors.encrypted_extracts_not_supported
+msgid "구체화된 뷰 기능은 현재 암호화된 추출이 있는 통합 문서를 지원하지 않습니다."
+msgstr ""
+
+#: materializedviews.finished.create
+msgid "''{1}'' 통합 문서에 대한 ''{0}'' 상태의 구체화된 뷰를 만들었습니다."
+msgstr ""
+
+#: materializedviews.finished.delete
+msgid "통합 문서 ID: {0}에 대한 구체화된 뷰를 삭제했습니다."
+msgstr ""
+
+#: materializedviews.finished.encrypt
+msgid "통합 문서 ''{0}''에 대한 구체화된 뷰의 암호화를 마쳤습니다."
+msgstr ""
+
+#: materializedviews.finished.decrypt
+msgid "통합 문서 ''{0}''에 대한 구체화된 뷰의 암호 해독을 마쳤습니다."
+msgstr ""
+
+#: materializedviews.finished.rekey
+msgid "통합 문서 ''{0}''에 대한 구체화된 뷰의 재암호화를 마쳤습니다."
+msgstr ""
+
+#: materializedviews.status.encryption_key
+msgctxt "materializedviews.status.encryption_key"
+msgid "암호화 키 ID: ''{0}''."
+msgstr ""
+
+#: materializedviews.status.encryption_keys
+msgctxt "materializedviews.status.encryption_keys"
+msgid "이전 암호화 키 ID: ''{0}'', 새 암호화 키 ID: ''{1}''."
+msgstr ""
+
+#: materializedviews.status.encryption_type
+msgid "암호화 데이터 원본 유형: ''{0}''"
+msgstr ""
+
+#: customizedviews.namedSharingPrefix
+msgid "공유 버전"
+msgstr ""
+
+#: flows.drafts.default_name
+msgid "새 흐름"
+msgstr ""
+
+#: content_type.project
+msgid "프로젝트"
+msgstr ""
+
+#: content_type.workbook
+msgctxt "content_type.workbook"
+msgid "통합 문서"
+msgstr ""
+
+#: content_type.view
+msgctxt "content_type.view"
+msgid "뷰"
+msgstr ""
+
+#: content_type.datasource
+msgid "데이터 원본"
+msgstr ""
+
+#: content_type.flow
+msgid "흐름"
+msgstr ""
+
+#: content_type.metric
+msgid "메트릭"
+msgstr ""
+
+#: content_type.collection
+msgid "모음"
+msgstr ""
+
+#: content_type.visualization
+msgid "비주얼리제이션"
+msgstr ""
+
+#: content_type.askdata_visualization
+msgid "데이터에 질문 비주얼리제이션"
+msgstr ""
+
+#: content_type.explaindata_explanation
+msgid "설명"
+msgstr ""
+
+#: content_type.publishedconnection
+msgid "가상 연결"
+msgstr ""
+
+#: content_type.publishedconnectiontable
+msgid "가상 연결 테이블"
+msgstr ""
+
+#: upgradethumbnails.status.server_started
+msgid "서버 응답: 축소판 업그레이드가 시작되었습니다!"
+msgstr ""
+
+#: upgradethumbnails.status.server_stopped
+msgid "서버 응답: %d개 작업이 중지되었습니다."
+msgstr ""
+
+#: dataquality.message.refresh_failed
+msgid "새로 고침 실패: {0}"
+msgstr ""
+
+#: dataquality.message.last_successful
+msgid "마지막 성공: {0}"
+msgstr ""
+
+#: dataquality.message.next_scheduled
+msgid "다음 예약: {0}"
+msgstr ""
+
+#: dataquality.message.flow_run_output_steps_failed
+msgid "{0}/{1}개의 출력 단계를 실행하지 못함"
+msgstr ""
+
+#: importcsvsummary.error.details
+msgid "오류 세부 정보:"
+msgstr ""
+
+#: importcsvsummary.remainingerrors
+msgid "(나머지 오류는 표시되지 않음)"
+msgstr ""
+
+#: importcsvsummary.error.line
+msgid "''{1}'' 사용자의 라인 {0}: ''{2}''"
+msgstr ""
+
+#: importcsvsummary.line.processed
+msgid "처리한 라인 수: {0}"
+msgstr ""
+
+#: importcsvsummary.line.skipped
+msgid "건너뛴 라인 수: {0}"
+msgstr ""
+
+#: importcsvsummary.users.added.count
+msgid "추가된 사용자 수: {0}"
+msgstr ""
+
+#: importcsvsummary.errors.count
+msgid "오류 수: {0}"
+msgstr ""
+
+#: importcsvsummary.error.unexpected_extension
+msgid "CSV 파일의 예기치 않은 파일 확장명"
+msgstr ""
+
+#: importcsvsummary.error.size_limit
+msgid "CSV 파일이 크기 제한({0})을 초과함"
+msgstr ""
+
+#: importcsvsummary.error.local.password_mismatch
+msgid "로컬 사이트 사용자를 업데이트하려면 비밀번호가 비어 있거나 일치해야 함"
+msgstr ""
+
+#: importcsvsummary.error.local.password_required
+msgid "인증 방식이 로컬인 경우 로컬 시스템 사용자를 만들려면 비밀번호가 필요함"
+msgstr ""
+
+#: importcsvsummary.error.ad.user_not_found
+msgid "AD 사용자 ''{0}''을(를) 찾을 수 없음"
+msgstr ""
+
+#: importcsvsummary.error.too_many_errors
+msgid "CSV 파일에 너무 많은 오류 발생"
+msgstr ""
+
+#: audit.errors.wdc_not_allowlisted
+msgid ""
+"웹 데이터 커넥터가 허용 목록에 없습니다. 도움이 필요하면 다음을 "
+"참조하십시오. https://help.tableau.com/current/online/ko-kr/"
+"to_keep_data_fresh.htm"
+msgstr ""
+
+#: user.input.name.err.too_long
+msgid "이름이 최대 문자 수({0}자)보다 깁니다."
+msgstr ""
+
+#: user.input.name.err.empty
+msgid "이름은 비워 둘 수 없습니다."
+msgstr ""
+
+#: askdata.title
+msgid "데이터에 질문"
+msgstr ""
+
+#: slack.app.upgrade.email.notification.subject
+msgid "Slack용 Tableau 앱 업데이트"
+msgstr ""
+
+#: slack.app.upgrade.email.notification.introduction
+msgid ""
+"Slack용 Tableau 앱에 대한 업데이트를 사용할 수 있으며 다음번 Tableau Online "
+"릴리스와 작동할 수 있도록 지금 다시 설치할 수 있습니다. Tableau는 앱 성능을 "
+"유지하고 새로운 기능을 사용하기 위해 앱을 다시 설치할 것을 권장합니다. "
+"새로운 기능 및 변경된 기능은 <a style=\"text-decoration: none; color: "
+"#E8762C;\" href=\"https://help.tableau.com/current/online/ko-kr/"
+"whatsnew_online.htm#tableau-slack\">Tableau Online의 새로운 기능</a>을 "
+"참조하십시오."
+msgstr ""
+
+#: slack.app.upgrade.email.notification.action
+msgid ""
+"업데이트 단계 및 다시 설치 단계는 <a style=\"text-decoration: none; color: "
+"#E8762C;\" href=\"https://help.tableau.com/current/online/ko-kr/slack_admin."
+"htm#update\">Slack용 Tableau 앱 업데이트</a>를 참조하십시오. 여러 Tableau "
+"Online 사이트가 있는 경우 각 사이트에 앱을 다시 설치하십시오."
+msgstr ""
+
+#: slack.app.upgrade.email.notification.steps
+msgid "이 서비스 알림은 Tableau Online에서 게시했습니다."
+msgstr ""
+
+#: slack.app.upgrade.email.notification.reason
+msgid "Slack에 연결된 Tableau Online 사이트의 관리자이기 때문에 본 알림이 귀하에게 "
+"발송되었습니다."
+msgstr ""
+
+#: slack.app.upgrade.email.notification.footer.privacy
+msgid ""
+"<a style=\"text-decoration: none; color: #E8762C;\" href=\"http://www.tableau"
+".com/ko-kr/privacy\">개인정보 취급방침</a> 읽기"
+msgstr ""
+
+#: unifiedconsumption.tcrm.folders.private
+msgid "내 비공개 앱"
+msgstr ""

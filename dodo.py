@@ -50,7 +50,7 @@ def task_convert():
 def task_po():
     """
     For all languages: generate a .po file from each .properties file
-    requires: pip install prop2po
+    requires: pip install translate-toolkit -- NOT prop2po, it has fewer options (it lacks personality)
     help: http://docs.translatehouse.org/projects/translate-toolkit/en/latest/commands/prop2po.html
     Run when we copy in updated properties files AFTER task_convert - so all files are utf-8
     """
@@ -60,9 +60,9 @@ def task_po():
                 basename = os.path.basename(file).split(".")[0]
                 print("processing", basename)
                 result = subprocess.run(["prop2po",
-                                "--encoding=utf-8",
-                                "tabcmd/locales/" + current_locale + "/"+basename+".properties",
-                                "tabcmd/locales/" + current_locale + "/LC_MESSAGES/"+basename+".po"])
+                                         "--personality=java-utf8",
+                                         "tabcmd/locales/" + current_locale + "/"+basename+".properties",
+                                         "tabcmd/locales/" + current_locale + "/LC_MESSAGES/"+basename+".po"])
                 print(result)
                 print("stdout:", result.stdout)
                 print("stderr:", result.stderr)

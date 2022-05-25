@@ -1,1416 +1,1653 @@
+#. extracted from tabcmd/locales/ja\tabcmd_messages_ja.properties
+#, fuzzy
 msgid ""
 msgstr ""
-"MIME-Version: 1.0"
-"Content-Type: text/plain; charset=None"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: prop2po"
-"Project-Id-Version: None"
-"Language: None"
-#:
-msgid "commandlineutils.errors.bad_value"
-msgstr "\u30aa\u30d7\u30b7\u30e7\u30f3 ''{0}'' \u306e\u5024 ''{1}'' \u304c\u4e0d\u6b63\u3067\u3059\u3002\u6b21\u306e\u3044\u305a\u308c\u304b\u3067\u3042\u308b\u3053\u3068\u304c\u5fc5\u8981\u3067\u3059: {2}"
-
-#:
-msgid "commandlineutils.errors.not_integer"
-msgstr "\u30aa\u30d7\u30b7\u30e7\u30f3 ''{1}'' \u306e\u5024 ''{0}'' \u304c\u6574\u6570\u3067\u306f\u3042\u308a\u307e\u305b\u3093"
-
-#:
-msgid "common.errors.empty_file"
-msgstr "\u30d5\u30a1\u30a4\u30eb ''{0}'' \u304c\u7a7a\u3067\u3059"
-
-#:
-msgid "common.errors.file_not_found"
-msgstr "\u30d5\u30a1\u30a4\u30eb ''{0}'' \u3092\u958b\u304f\u3053\u3068\u304c\u3067\u304d\u307e\u305b\u3093"
-
-#:
-msgid "common.errors.invalid_file_path"
-msgstr "\u5411\u3053\u3046\u306a\u30d5\u30a1\u30a4\u30eb \u30d1\u30b9 ''{0}''"
-
-#:
-msgid "common.errors.folder_path_not_found"
-msgstr "\u30c7\u30a3\u30ec\u30af\u30c8\u30ea ''{0}'' \u304c\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f\u3002"
-
-#:
-msgid "common.errors.access_denied"
-msgstr "\u30d5\u30a1\u30a4\u30eb ''{0}'' \u3078\u306e\u30a2\u30af\u30bb\u30b9\u304c\u62d2\u5426\u3055\u308c\u307e\u3057\u305f\u3002\u30d1\u30b9\u304c\u6709\u52b9\u3067\u3001\u30d5\u30a1\u30a4\u30eb\u540d\u304c\u65e2\u5b58\u306e\u30c7\u30a3\u30ec\u30af\u30c8\u30ea\u3068\u4e00\u81f4\u3057\u306a\u3044\u3053\u3068\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044"
-
-#:
-msgid "common.errors.requires_csv_file"
-msgstr "''{0}'' \u30b3\u30de\u30f3\u30c9\u3067\u306f\u3001CSV \u30d5\u30a1\u30a4\u30eb\u304c\u5fc5\u8981\u3067\u3059"
-
-#:
-msgid "common.errors.requires_group_name"
-msgstr "''{0}'' \u30b3\u30de\u30f3\u30c9\u3067\u306f\u3001\u30b0\u30eb\u30fc\u30d7\u540d\u304c\u5fc5\u8981\u3067\u3059"
-
-#:
-msgid "common.errors.requires_site_name"
-msgstr "''{0}'' \u30b3\u30de\u30f3\u30c9\u3067\u306f\u3001\u30b5\u30a4\u30c8\u540d\u304c\u5fc5\u8981\u3067\u3059"
-
-#:
-msgid "common.errors.options_conflict"
-msgstr "\u30e6\u30fc\u30b6\u30fc \u30ed\u30fc\u30eb\u3092\u6307\u5b9a\u3059\u308b\u305f\u3081\u306e\u65b0\u3057\u3044\u30aa\u30d7\u30b7\u30e7\u30f3\u3068\u5ec3\u6b62\u3055\u308c\u305f\u30aa\u30d7\u30b7\u30e7\u30f3\u304c\u6307\u5b9a\u3055\u308c\u307e\u3057\u305f\u3002\u4f7f\u7528\u3067\u304d\u308b\u306e\u306f 1 \u500b\u3060\u3051\u3067\u3059"
-
-#:
-msgid "common.errors.csv_sizelimit"
-msgstr "\u53c2\u7167 CSV \u30d5\u30a1\u30a4\u30eb\u306f 100 MB \u306e\u30b5\u30a4\u30ba\u5236\u9650\u3092\u8d85\u3048\u3066\u3044\u307e\u3059\u3002\u30d5\u30a1\u30a4\u30eb\u306e\u30b3\u30f3\u30c6\u30f3\u30c4\u3092\u30b5\u30a4\u30ba\u306e\u5c0f\u3055\u306a CSV \u30d5\u30a1\u30a4\u30eb\u306b\u5206\u5272\u3057\u3001\u500b\u5225\u306b\u30a4\u30f3\u30dd\u30fc\u30c8\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
-
-#:
-msgid "common.options.admin-type"
-msgstr "[\u5ec3\u6b62\u4e88\u5b9a] CSV \u30d5\u30a1\u30a4\u30eb\u306e\u3059\u3079\u3066\u306e\u30e6\u30fc\u30b6\u30fc\u306b\u5bfe\u3057\u3066\u3001\u30b5\u30a4\u30c8\u7ba1\u7406\u6a29\u9650\u3092\u5272\u308a\u5f53\u3066 [\u307e\u305f\u306f\u524a\u9664] \u3057\u307e\u3059\u3002\u3053\u306e\u8a2d\u5b9a\u306f\u3001CSV \u30d5\u30a1\u30a4\u30eb\u306e\u500b\u5225\u306e\u884c\u306e\u5024\u3067\u30aa\u30fc\u30d0\u30fc\u30e9\u30a4\u30c9\u3067\u304d\u307e\u3059\u3002{0} \u306b\u306f\u3001{1}\u3001{2}\u3001\u307e\u305f\u306f {3} \u3092\u6307\u5b9a\u3067\u304d\u307e\u3059\u3002\u5024\u3092\u6307\u5b9a\u3057\u306a\u3044\u5834\u5408\u306f\u3001\u65b0\u898f\u30e6\u30fc\u30b6\u30fc\u306b\u5bfe\u3057\u3066\u306f {3} \u304c\u8a2d\u5b9a\u3055\u308c\u3001\u65e2\u5b58\u306e\u30e6\u30fc\u30b6\u30fc\u306b\u5bfe\u3057\u3066\u306f\u5024\u306f\u5909\u66f4\u3055\u308c\u307e\u305b\u3093"
-
-#:
-msgid "common.options.complete"
-msgstr "\u5909\u66f4\u304c\u6b63\u5e38\u306b\u884c\u308f\u308c\u308b\u305f\u3081\u306b\u3001\u3059\u3079\u3066\u306e\u884c\u304c\u6709\u52b9\u3067\u3042\u308b\u3053\u3068\u3092\u8981\u6c42\u3057\u307e\u3059 [\u307e\u305f\u306f\u8981\u6c42\u3057\u307e\u305b\u3093]\u3002\u65e2\u5b9a\u5024: {0}"
-
-#:
-msgid "common.options.license"
-msgstr "[\u5ec3\u6b62\u4e88\u5b9a] \u3059\u3079\u3066\u306e\u30e6\u30fc\u30b6\u30fc\u306b\u5bfe\u3057\u3066\u3001\u65e2\u5b9a\u306e\u30e9\u30a4\u30bb\u30f3\u30b9 \u30ec\u30d9\u30eb\u3092\u8a2d\u5b9a\u3057\u307e\u3059\u3002\u3053\u306e\u8a2d\u5b9a\u306f\u3001CSV \u30d5\u30a1\u30a4\u30eb\u306e\u5024\u3067\u30aa\u30fc\u30d0\u30fc\u30e9\u30a4\u30c9\u3067\u304d\u307e\u3059\u3002{0} \u306b\u306f\u3001{1}\u3001{2}\u3001\u307e\u305f\u306f {3} \u3092\u6307\u5b9a\u3067\u304d\u307e\u3059"
-
-#:
-msgid "common.options.nowait"
-msgstr "\u30b8\u30e7\u30d6\u304c\u5b8c\u4e86\u3059\u308b\u307e\u3067\u5f85\u6a5f\u3057\u306a\u3044"
-
-#:
-msgid "common.options.publisher"
-msgstr "[\u5ec3\u6b62\u4e88\u5b9a] CSV \u30d5\u30a1\u30a4\u30eb\u306e\u3059\u3079\u3066\u306e\u30e6\u30fc\u30b6\u30fc\u306b\u5bfe\u3057\u3066\u3001\u30d1\u30d6\u30ea\u30c3\u30b7\u30e5\u6a29\u9650\u3092\u5272\u308a\u5f53\u3066 [\u307e\u305f\u306f\u524a\u9664] \u3057\u307e\u3059\u3002\u3053\u306e\u8a2d\u5b9a\u306f\u3001CSV \u30d5\u30a1\u30a4\u30eb\u306e\u500b\u5225\u306e\u884c\u306e\u5024\u3067\u30aa\u30fc\u30d0\u30fc\u30e9\u30a4\u30c9\u3067\u304d\u307e\u3059\u3002\u5024\u3092\u6307\u5b9a\u3057\u306a\u3044\u5834\u5408\u306e\u65e2\u5b9a\u5024: \u65b0\u898f\u30e6\u30fc\u30b6\u30fc\u306e\u5834\u5408\u306f false\u3001\u65e2\u5b58\u306e\u30e6\u30fc\u30b6\u30fc\u306e\u5834\u5408\u306f\u672a\u5909\u66f4"
-
-#:
-msgid "common.options.silent-progress"
-msgstr "\u30b8\u30e7\u30d6\u306b\u5bfe\u3057\u3066\u9032\u884c\u72b6\u6cc1\u30e1\u30c3\u30bb\u30fc\u30b8\u3092\u8868\u793a\u3057\u306a\u3044"
-
-#:
-msgid "common.options.sysadmin-type"
-msgstr "[\u5ec3\u6b62\u4e88\u5b9a] CSV \u30d5\u30a1\u30a4\u30eb\u306e\u3059\u3079\u3066\u306e\u30e6\u30fc\u30b6\u30fc\u306b\u5bfe\u3057\u3066\u3001\u30b5\u30a4\u30c8\u7ba1\u7406\u6a29\u9650\u3092\u5272\u308a\u5f53\u3066 [\u307e\u305f\u306f\u524a\u9664] \u3057\u307e\u3059\u3002\u3053\u306e\u8a2d\u5b9a\u306f\u3001CSV \u30d5\u30a1\u30a4\u30eb\u306e\u500b\u5225\u306e\u884c\u306e\u5024\u3067\u30aa\u30fc\u30d0\u30fc\u30e9\u30a4\u30c9\u3067\u304d\u307e\u3059\u3002{0} \u306b\u306f\u3001{1}\u3001{2}\u3001{3}\u3001\u307e\u305f\u306f {4} \u3092\u6307\u5b9a\u3067\u304d\u307e\u3059\u3002\u5024\u3092\u6307\u5b9a\u3057\u306a\u3044\u5834\u5408\u306e\u65e2\u5b9a\u5024: \u65b0\u898f\u30e6\u30fc\u30b6\u30fc\u306e\u5834\u5408\u306f {4}\u3001\u65e2\u5b58\u306e\u30e6\u30fc\u30b6\u30fc\u306e\u5834\u5408\u306f\u672a\u5909\u66f4"
-
-#:
-msgid "common.output.job_queued_success"
-msgstr "\u30b8\u30e7\u30d6\u304c\u30ad\u30e5\u30fc\u306b\u767b\u9332\u3055\u308c\u307e\u3057\u305f"
-
-#:
-msgid "common.output.succeeded"
-msgstr "\u6b63\u5e38\u306b\u7d42\u4e86\u3057\u307e\u3057\u305f"
-
-#:
-msgid "common.options.role"
-msgstr "\u5f71\u97ff\u3092\u53d7\u3051\u308b\u3059\u3079\u3066\u306e\u30e6\u30fc\u30b6\u30fc\u306e\u65e2\u5b9a\u306e\u30ed\u30fc\u30eb\u3092\u8a2d\u5b9a\u3057\u307e\u3059\u3002{0} \u306e\u6709\u52b9\u306a\u5024\u306f {1} \u3067\u3059\u3002\u6307\u5b9a\u3055\u308c\u3066\u3044\u306a\u3044\u5834\u5408\u3001\u30b5\u30fc\u30d0\u30fc\u306f\u65e2\u5b9a\u5024 {2} \u3092\u4f7f\u7528\u3057\u307e\u3059\u3002"
-
-#:
-msgid "addusers.options.users"
-msgstr "\u30b0\u30eb\u30fc\u30d7\u306b\u8ffd\u52a0\u3059\u308b\u30e6\u30fc\u30b6\u30fc\u306e\u30ea\u30b9\u30c8\u3092 1 \u884c\u306b 1 \u4eba\u306e\u30e6\u30fc\u30b6\u30fc\u305a\u3064\u542b\u3080\u30d5\u30a1\u30a4\u30eb"
-
-#:
-msgid "addusers.short_description"
-msgstr "\u30e6\u30fc\u30b6\u30fc\u3092\u30b0\u30eb\u30fc\u30d7\u306b\u8ffd\u52a0"
-
-#:
-msgid "addusers.status"
-msgstr "{0} \u306b\u30ea\u30b9\u30c8\u3055\u308c\u305f\u30e6\u30fc\u30b6\u30fc\u3092\u30b0\u30eb\u30fc\u30d7 {1} \u306b\u8ffd\u52a0\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "creategroup.short_description"
-msgstr "\u30ed\u30fc\u30ab\u30eb \u30b0\u30eb\u30fc\u30d7\u306e\u4f5c\u6210"
-
-#:
-msgid "creategroup.status"
-msgstr "\u30b0\u30eb\u30fc\u30d7 ''{0}'' \u3092\u30b5\u30fc\u30d0\u30fc\u4e0a\u3067\u4f5c\u6210\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "creategroup.options.role"
-msgstr "\u30ed\u30b0\u30a4\u30f3\u6642\u306b\u30b0\u30eb\u30fc\u30d7\u5185\u306e\u30e6\u30fc\u30b6\u30fc\u306b\u5bfe\u3057\u3066\u8a2d\u5b9a\u3055\u308c\u308b\u30ed\u30fc\u30eb\u3092\u8a2d\u5b9a\u3057\u307e\u3059\u3002{0} \u306e\u6709\u52b9\u306a\u5024: {1}\u3002\u30e6\u30fc\u30b6\u30fc\u306e\u30b5\u30a4\u30c8 \u30ed\u30fc\u30eb\u306f\u3001\u30e6\u30fc\u30b6\u30fc\u306e\u73fe\u5728\u306e\u30ed\u30fc\u30eb\u3088\u308a\u3082\u5236\u9650\u304c\u7de9\u3044\u5834\u5408\u306b\u306e\u307f\u3053\u306e\u5024\u306b\u8a2d\u5b9a\u3055\u308c\u307e\u3059\u3002\u5024\u3092\u6307\u5b9a\u3057\u306a\u3044\u5834\u5408\u3001\u30ed\u30b0\u30a4\u30f3\u6642\u306b\u3053\u306e\u30b0\u30eb\u30fc\u30d7\u306e\u30e6\u30fc\u30b6\u30fc\u306b\u306f\u30ed\u30fc\u30eb\u304c\u8a2d\u5b9a\u3055\u308c\u307e\u305b\u3093\u3002"
-
-#:
-msgid "createextracts.errors.required_argument"
-msgstr "createextracts \u30b3\u30de\u30f3\u30c9\u3067\u306f\u3001\u30ef\u30fc\u30af\u30d6\u30c3\u30af URL\u3001\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u540d\u3001\u307e\u305f\u306f\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u540d\u304c\u5fc5\u8981\u3067\u3059\u3002"
-
-#:
-msgid "createextracts.errors.error"
-msgstr "\u62bd\u51fa\u306e\u4f5c\u6210\u30a8\u30e9\u30fc"
-
-#:
-msgid "createextracts.for.datasource"
-msgstr "\u30c7\u30fc\u30bf\u30bd\u30fc\u30b9 ''{0}'' \u306e\u62bd\u51fa\u3092\u4f5c\u6210\u3057\u3066\u3044\u307e\u3059"
-
-#:
-msgid "createextracts.for.workbook_name"
-msgstr "\u540d\u524d\u304c ''{0}'' \u3067\u3042\u308b\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u306e\u62bd\u51fa\u3092\u4f5c\u6210\u3057\u3066\u3044\u307e\u3059"
-
-#:
-msgid "createextracts.for.workbook_url"
-msgstr "URL \u304c ''{0}'' \u3067\u3042\u308b\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u306e\u62bd\u51fa\u3092\u4f5c\u6210\u3057\u3066\u3044\u307e\u3059"
-
-#:
-msgid "createextracts.options.datasource"
-msgstr "\u62bd\u51fa\u4f5c\u6210\u7528\u306e\u30bf\u30fc\u30b2\u30c3\u30c8 \u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u306e\u540d\u524d"
-
-#:
-msgid "createextracts.options.embedded-datasources"
-msgstr "\u30bf\u30fc\u30b2\u30c3\u30c8 \u30ef\u30fc\u30af\u30d6\u30c3\u30af\u5185\u306e\u57cb\u3081\u8fbc\u307f\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u540d\u3092\u30b9\u30da\u30fc\u30b9\u3067\u533a\u5207\u3063\u305f\u30ea\u30b9\u30c8\u3002\u30b9\u30da\u30fc\u30b9\u304c\u542b\u307e\u308c\u308b\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u540d\u306f\u4e8c\u91cd\u5f15\u7528\u7b26\u3067\u56f2\u3093\u3067\u304f\u3060\u3055\u3044\u3002\u3053\u308c\u306f\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u306e\u62bd\u51fa\u3092\u4f5c\u6210\u3059\u308b\u5834\u5408\u306b\u306e\u307f\u4f7f\u7528\u3067\u304d\u307e\u3059\u3002"
-
-#:
-msgid "createextracts.options.encrypt"
-msgstr "\u6697\u53f7\u5316\u3055\u308c\u305f\u62bd\u51fa\u3092\u4f5c\u6210\u3057\u307e\u3059\u3002"
-
-#:
-msgid "createextracts.options.include-all"
-msgstr "\u30bf\u30fc\u30b2\u30c3\u30c8 \u30ef\u30fc\u30af\u30d6\u30c3\u30af\u5185\u306e\u57cb\u3081\u8fbc\u307f\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u3092\u3059\u3079\u3066\u542b\u3081\u307e\u3059\u3002\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u306e\u62bd\u51fa\u3092\u4f5c\u6210\u3059\u308b\u5834\u5408\u306b\u306e\u307f\u4f7f\u7528\u3067\u304d\u307e\u3059\u3002"
-
-#:
-msgid "createextracts.options.parent-project-path"
-msgstr "\u30bf\u30fc\u30b2\u30c3\u30c8 \u30ea\u30bd\u30fc\u30b9\u3092\u542b\u3080\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306e\u89aa\u3067\u3042\u308b\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306e\u30d1\u30b9\u3002\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u540d\u3092 --project \u3067\u6307\u5b9a\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002"
-
-#:
-msgid "createextracts.options.project"
-msgstr "\u30bf\u30fc\u30b2\u30c3\u30c8 \u30ea\u30bd\u30fc\u30b9\u3092\u542b\u3080\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306e\u540d\u524d\u3002{0} \u307e\u305f\u306f {1} \u304c\u6307\u5b9a\u3055\u308c\u3066\u3044\u308b\u5834\u5408\u306b\u306e\u307f\u5fc5\u8981\u3067\u3059\u3002\u6307\u5b9a\u3055\u308c\u3066\u3044\u306a\u3044\u5834\u5408\u306f\u3001\u65e2\u5b9a\u306e\u30d7\u30ed\u30b8\u30a7\u30af\u30c8 ''{2}'' \u304c\u4f7f\u7528\u3055\u308c\u307e\u3059\u3002"
-
-#:
-msgid "createextracts.options.url"
-msgstr "\u30ea\u30bd\u30fc\u30b9\u306e URL \u306b\u6307\u5b9a\u3055\u308c\u308b\u6b63\u898f\u540d"
-
-#:
-msgid "createextracts.options.workbook"
-msgstr "\u62bd\u51fa\u4f5c\u6210\u7528\u306e\u30bf\u30fc\u30b2\u30c3\u30c8 \u30ef\u30fc\u30af\u30d6\u30c3\u30af\u306e\u540d\u524d"
-
-#:
-msgid "createextracts.short_description"
-msgstr "\u30d1\u30d6\u30ea\u30c3\u30b7\u30e5\u3055\u308c\u305f\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u307e\u305f\u306f\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u7528\u306e\u62bd\u51fa\u3092\u4f5c\u6210"
-
-#:
-msgid "createextracts.workbook.include-all"
-msgstr "\u30bf\u30fc\u30b2\u30c3\u30c8 \u30ef\u30fc\u30af\u30d6\u30c3\u30af\u5185\u306e\u57cb\u3081\u8fbc\u307f\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u3092\u3059\u3079\u3066\u542b\u3081\u308b"
-
-#:
-msgid "createextracts.workbook.embedded-datasource-names"
-msgstr "\u57cb\u3081\u8fbc\u307f\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u540d\u3042\u308a"
-
-#:
-msgid "createproject.options.description"
-msgstr "\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306e\u8aac\u660e"
-
-#:
-msgid "createproject.options.name"
-msgstr "\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306e\u540d\u524d"
-
-#:
-msgid "createproject.options.parent-project-path"
-msgstr "\u65b0\u3057\u3044\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u3092\u542b\u3080\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306e\u30d1\u30b9\u3002\u6307\u5b9a\u3057\u306a\u3044\u5834\u5408\u3001\u30b5\u30a4\u30c8 \u30eb\u30fc\u30c8 \u30ec\u30d9\u30eb\u3067\u4f5c\u6210\u3055\u308c\u307e\u3059"
-
-#:
-msgid "createproject.short_description"
-msgstr "\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306e\u4f5c\u6210"
-
-#:
-msgid "createproject.status"
-msgstr "\u30d7\u30ed\u30b8\u30a7\u30af\u30c8 ''{0}'' \u3092\u30b5\u30fc\u30d0\u30fc\u4e0a\u3067\u4f5c\u6210\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "createsite.errors.invalid_url_option"
-msgstr "\u8907\u6570\u306e\u30b5\u30a4\u30c8\u3092\u4f5c\u6210\u3059\u308b\u5834\u5408\u306f\u3001URL \u30aa\u30d7\u30b7\u30e7\u30f3\u306f\u7121\u52b9\u3067\u3059\u3002URL \u30aa\u30d7\u30b7\u30e7\u30f3\u3092\u524a\u9664\u3057\u3066\u304b\u3089\u30b3\u30de\u30f3\u30c9\u3092\u518d\u5b9f\u884c\u3059\u308b\u304b\u3001\u5404\u30b5\u30a4\u30c8\u3092\u500b\u5225\u306b\u4f5c\u6210\u3057\u3066\u304f\u3060\u3055\u3044"
-
-#:
-msgid "createsite.errors.site_name_already_exists"
-msgstr "''{0}'' \u3068\u3044\u3046\u540d\u524d\u306e\u30b5\u30a4\u30c8\u304c\u3059\u3067\u306b\u5b58\u5728\u3057\u307e\u3059\u3002\u5225\u306e\u30b5\u30a4\u30c8\u540d\u3092\u304a\u8a66\u3057\u304f\u3060\u3055\u3044\u3002"
-
-#:
-msgid "createsite.errors.site_id_already_exists"
-msgstr "''{0}'' \u3068\u3044\u3046 ID \u306e\u30b5\u30a4\u30c8\u306f\u3001\u3059\u3067\u306b\u5b58\u5728\u3057\u3066\u3044\u307e\u3059\u3002-r \u3092\u4f7f\u7528\u3057\u3066\u5225\u306e\u30b5\u30a4\u30c8 ID \u3092\u6307\u5b9a\u3057\u3066\u304f\u3060\u3055\u3044\u3002\u8a73\u7d30\u306b\u3064\u3044\u3066\u306f\u3001tabcmd createsite \u306e\u30d8\u30eb\u30d7\u3092\u53c2\u7167\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
-
-#:
-msgid "createsite.options.allow-mobile-snapshots"
-msgstr "\u30e2\u30d0\u30a4\u30eb \u30b9\u30ca\u30c3\u30d7\u30b7\u30e7\u30c3\u30c8\u3092\u8a31\u53ef [\u307e\u305f\u306f\u62d2\u5426] \u3057\u307e\u3059\u3002\u65e2\u5b9a\u3067\u306f\u3001\u30e2\u30d0\u30a4\u30eb \u30b9\u30ca\u30c3\u30d7\u30b7\u30e7\u30c3\u30c8\u3092\u8a31\u53ef\u3057\u307e\u3059"
-
-#:
-msgid "createsite.options.allow-subscriptions"
-msgstr "\u3053\u306e\u30b5\u30a4\u30c8\u306e\u30b5\u30d6\u30b9\u30af\u30ea\u30d7\u30b7\u30e7\u30f3\u3092\u8a31\u53ef [\u307e\u305f\u306f\u62d2\u5426] \u3057\u307e\u3059\u3002\u65e2\u5b9a\u3067\u306f\u3001\u30b5\u30fc\u30d0\u30fc\u306e\u65e2\u5b9a\u8a2d\u5b9a\u304c\u4f7f\u7528\u3055\u308c\u307e\u3059\u3002\u30b5\u30fc\u30d0\u30fc\u3067\u30b5\u30d6\u30b9\u30af\u30ea\u30d7\u30b7\u30e7\u30f3\u304c\u7121\u52b9\u306b\u306a\u3063\u3066\u3044\u308b\u5834\u5408\u306f\u3001\u30b5\u30d6\u30b9\u30af\u30ea\u30d7\u30b7\u30e7\u30f3\u3092\u6709\u52b9\u306b\u3067\u304d\u307e\u305b\u3093"
-
-#:
-msgid "createsite.options.allow-web-authoring"
-msgstr "\u3053\u306e\u30b5\u30a4\u30c8\u306e Web \u4f5c\u6210\u3092\u8a31\u53ef [\u307e\u305f\u306f\u62d2\u5426] \u3057\u307e\u3059\u3002\u65e2\u5b9a\u3067\u306f\u3001Web \u4f5c\u6210\u3092\u8a31\u53ef\u3057\u307e\u3059"
-
-#:
-msgid "createsite.options.metrics-level"
-msgstr "\u30b3\u30ec\u30af\u30b7\u30e7\u30f3\u306a\u3057\u306e\u5834\u5408\u306f 0\u3001\u3059\u3079\u3066\u306e\u30b3\u30ec\u30af\u30b7\u30e7\u30f3\u306e\u5834\u5408\u306f 100"
-
-#:
-msgid "createsite.options.guest-access-enabled"
-msgstr "Tableau Server \u30a2\u30ab\u30a6\u30f3\u30c8\u306b\u30b5\u30a4\u30f3\u30a4\u30f3\u3057\u3066\u3044\u306a\u3044\u30e6\u30fc\u30b6\u30fc\u304c\u30d3\u30e5\u30fc\u3092\u8868\u793a\u3059\u308b\u305f\u3081\u306e\u30b2\u30b9\u30c8 \u30a2\u30af\u30bb\u30b9 \u30d1\u30fc\u30df\u30c3\u30b7\u30e7\u30f3"
-
-#:
-msgid "createsite.options.site-mode"
-msgstr "\u30b5\u30a4\u30c8\u7ba1\u7406\u8005\u306b\u5bfe\u3057\u3066\u3001\u30b5\u30a4\u30c8\u306e\u30e6\u30fc\u30b6\u30fc\u7ba1\u7406\u3092\u8a31\u53ef [\u307e\u305f\u306f\u62d2\u5426] \u3057\u307e\u3059"
-
-#:
-msgid "createsite.options.storage-quota"
-msgstr "\u30b5\u30a4\u30c8\u4fdd\u5b58\u5bb9\u91cf (MB)"
-
-#:
-msgid "createsite.options.subscription-email"
-msgstr "\u30b5\u30d6\u30b9\u30af\u30ea\u30d7\u30b7\u30e7\u30f3\u3067\u30e1\u30fc\u30eb\u3092\u4f7f\u7528"
-
-#:
-msgid "createsite.options.subscription-footer"
-msgstr "\u30b5\u30d6\u30b9\u30af\u30ea\u30d7\u30b7\u30e7\u30f3\u3067\u30d5\u30c3\u30bf\u30fc\u3092\u4f7f\u7528"
-
-#:
-msgid "createsite.options.url"
-msgstr "\u30b5\u30a4\u30c8\u306e\u30b5\u30a4\u30c8 ID"
-
-#:
-msgid "createsite.options.user-quota"
-msgstr "\u30b5\u30a4\u30c8\u306e\u6700\u5927\u30e6\u30fc\u30b6\u30fc\u6570"
-
-#:
-msgid "createsite.options.extract_encryption_mode"
-msgstr "\u62bd\u51fa\u6697\u53f7\u5316\u30e2\u30fc\u30c9: \u7121\u52b9\u3001\u6709\u52b9\u3001\u307e\u305f\u306f\u5b9f\u884c\u3002\u8a2d\u5b9a\u3057\u306a\u3044\u5834\u5408\u3001\u65e2\u5b9a\u5024\u304c\u4f7f\u7528\u3055\u308c\u307e\u3059\u3002"
-
-#:
-msgid "createsite.options.web_extraction_enabled"
-msgstr "\u3053\u306e\u30b5\u30a4\u30c8\u3067\u62bd\u51fa\u306e\u4f5c\u6210\u3068\u30e9\u30a4\u30d6\u3078\u306e\u5909\u66f4\u3092\u8a31\u53ef [\u307e\u305f\u306f\u62d2\u5426] \u3057\u307e\u3059\u3002\u65e2\u5b9a\u3067\u306f\u8a31\u53ef\u3057\u307e\u3059\u3002"
-
-#:
-msgid "createsite.options.run_now_enabled"
-msgstr "\u3053\u306e\u30b5\u30a4\u30c8\u306b\u5bfe\u3057\u3066 [\u4eca\u3059\u3050\u5b9f\u884c] \u30aa\u30d7\u30b7\u30e7\u30f3\u3092\u8a31\u53ef [\u307e\u305f\u306f\u62d2\u5426] \u3057\u307e\u3059\u3002\u65e2\u5b9a\u3067\u306f [\u4eca\u3059\u3050\u5b9f\u884c] \u3092\u8a31\u53ef\u3059\u308b\u3088\u3046\u306b\u8a2d\u5b9a\u3055\u308c\u3066\u3044\u307e\u3059\u3002"
-
-#:
-msgid "createsite.options.time_zone"
-msgstr "\u3053\u306e\u30b5\u30a4\u30c8\u306e\u62bd\u51fa\u3067\u4f7f\u7528\u3055\u308c\u308b\u30bf\u30a4\u30e0 \u30be\u30fc\u30f3\u3002\u65e2\u5b9a\u306f\u8a2d\u5b9a\u89e3\u9664\u3055\u308c\u3001\u30b5\u30fc\u30d0\u30fc\u306e\u30bf\u30a4\u30e0 \u30be\u30fc\u30f3\u304c\u4f7f\u7528\u3055\u308c\u307e\u3059\u3002"
-
-#:
-msgid "createsite.short_description"
-msgstr "\u30b5\u30a4\u30c8\u306e\u4f5c\u6210"
-
-#:
-msgid "createsite.status"
-msgstr "\u30b5\u30a4\u30c8 ''{0}'' \u3092\u30b5\u30fc\u30d0\u30fc\u4e0a\u3067\u4f5c\u6210\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "createsiteusers.options.auth-type"
-msgstr "CSV \u30d5\u30a1\u30a4\u30eb\u3067\u3001\u5168\u30e6\u30fc\u30b6\u30fc\u306e\u8a8d\u8a3c\u30bf\u30a4\u30d7\u3092\u5272\u308a\u5f53\u3066\u307e\u3059\u3002Tableau Online \u306e\u5834\u5408\u3001{0} \u306f {1} (\u30c7\u30d5\u30a9\u30eb\u30c8) \u307e\u305f\u306f {2} \u3067\u3059\u3002Tableau Server \u306e\u5834\u5408\u3001{0} \u306f\u30ed\u30fc\u30ab\u30eb (\u30c7\u30d5\u30a9\u30eb\u30c8) \u307e\u305f\u306f {2} \u3067\u3059\u3002"
-
-#:
-msgid "createsiteusers.description"
-msgstr "\u73fe\u5728\u306e\u30b5\u30a4\u30c8\u3067\u30e6\u30fc\u30b6\u30fc\u3092\u4f5c\u6210\u3057\u307e\u3059\u3002\u30e6\u30fc\u30b6\u30fc\u306f\u3001\u6307\u5b9a\u3055\u308c\u305f CSV \u30d5\u30a1\u30a4\u30eb\u304b\u3089\u8aad\u307f\u8fbc\u307e\u308c\u307e\u3059\u3002\u30d5\u30a1\u30a4\u30eb\u306b\u306f\u3001\u4ee5\u4e0b\u306e\u5217\u3092\u3053\u306e\u9806\u5e8f\u3067\u542b\u3080\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002{0}1. \u30e6\u30fc\u30b6\u30fc\u540d{0}2. \u30d1\u30b9\u30ef\u30fc\u30c9 (Active Directory \u3092\u4f7f\u7528\u3059\u308b\u5834\u5408\u306f\u7121\u8996\u3055\u308c\u307e\u3059){0}3. \u30d5\u30ec\u30f3\u30c9\u30ea\u540d (Active Directory \u3092\u4f7f\u7528\u3059\u308b\u5834\u5408\u306f\u7121\u8996\u3055\u308c\u307e\u3059){0}4. \u30e9\u30a4\u30bb\u30f3\u30b9 \u30ec\u30d9\u30eb ({1}\u3001{2}\u3001{3}\u3001{4}\u3001\u307e\u305f\u306f{5}){0}5. \u7ba1\u7406\u8005 ({6}/{7}){0}6. \u30d1\u30d6\u30ea\u30c3\u30b7\u30e3\u30fc ({8}/{9}/1 \u307e\u305f\u306f {10}/{11}/0){0}7. \u30e1\u30fc\u30eb (Tableau Public \u306e\u307f){0}\u30d5\u30a1\u30a4\u30eb\u306e\u5217\u306e\u6570\u306f\u3001\u3053\u3053\u306b\u793a\u3057\u305f\u6570\u3088\u308a\u5c11\u306a\u304f\u3066\u3082\u304b\u307e\u3044\u307e\u305b\u3093\u3002\u305f\u3068\u3048\u3070\u30011 \u884c \u306b\u30e6\u30fc\u30b6\u30fc\u540d\u306e\u307f\u3092\u542b\u3080\u30b7\u30f3\u30d7\u30eb\u306a\u30ea\u30b9\u30c8\u3092\u6307\u5b9a\u3059\u308b\u3053\u3068\u3082\u3067\u304d\u307e\u3059\u3002\u5024\u306b\u30b3\u30f3\u30de\u304c\u542b\u307e\u308c\u3066\u3044\u308b\u5834\u5408\u306f\u3001\u5f15\u7528\u7b26\u3092\u4f7f\u7528\u3067\u304d\u307e\u3059\u3002tabcmd \u306f\u3001{12} \u30bf\u30b9\u30af\u304c\u5b8c\u4e86\u3059\u308b\u306e\u3092\u5f85\u6a5f\u3057\u307e\u3059\u3002{13} \u30d5\u30e9\u30b0\u3092\u6e21\u3059\u3053\u3068\u306b\u3088\u308a\u3001\u30bf\u30b9\u30af\u304c\u30b5\u30fc\u30d0\u30fc\u4e0a\u3067\u5b8c\u4e86\u3059\u308b\u306e\u3092\u5f85\u6a5f\u305b\u305a\u306b\u3001\u3059\u3050\u306b\u623b\u308b\u3088\u3046\u306b\u6307\u5b9a\u3067\u304d\u307e\u3059\u3002\u3053\u306e\u30b3\u30de\u30f3\u30c9\u3092\u4f7f\u7528\u3057\u3066\u30b7\u30b9\u30c6\u30e0\u7ba1\u7406\u8005\u3092\u4f5c\u6210\u3057\u305f\u308a\u3001\u30b7\u30b9\u30c6\u30e0\u7ba1\u7406\u8005\u304b\u3089\u30e6\u30fc\u30b6\u30fc\u3092\u5916\u3057\u305f\u308a\u3059\u308b\u3053\u3068\u306f\u3067\u304d\u307e\u305b\u3093\u3002\u4ee3\u308f\u308a\u306b\u3001''{14}'' \u3092\u4f7f\u7528\u3057\u3066\u304f\u3060\u3055\u3044"
-
-#:
-msgid "createsiteusers.short_description"
-msgstr "\u73fe\u5728\u306e\u30b5\u30a4\u30c8\u4e0a\u3067\u30e6\u30fc\u30b6\u30fc\u3092\u4f5c\u6210\u3057\u307e\u3059"
-
-#:
-msgid "createsiteusers.status"
-msgstr "{0} \u306b\u30ea\u30b9\u30c8\u3055\u308c\u305f\u30e6\u30fc\u30b6\u30fc\u3092\u73fe\u5728\u306e\u30b5\u30a4\u30c8\u306b\u8ffd\u52a0\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "createusers.description"
-msgstr "\u30e6\u30fc\u30b6\u30fc\u3092\u4f5c\u6210\u3057\u307e\u3059\u3002\u30e6\u30fc\u30b6\u30fc\u306f\u3001\u6307\u5b9a\u3055\u308c\u305f CSV \u30d5\u30a1\u30a4\u30eb\u304b\u3089\u8aad\u307f\u8fbc\u307e\u308c\u307e\u3059\u3002\u30d5\u30a1\u30a4\u30eb\u306b\u306f\u3001\u4ee5\u4e0b\u306e\u5217\u3092\u3053\u306e\u9806\u5e8f\u3067\u542b\u3080\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002{0}1. \u30e6\u30fc\u30b6\u30fc\u540d{0}2. \u30d1\u30b9\u30ef\u30fc\u30c9 (Active Directory \u3092\u4f7f\u7528\u3059\u308b\u5834\u5408\u306f\u7121\u8996\u3055\u308c\u307e\u3059){0}3. \u30d5\u30ec\u30f3\u30c9\u30ea\u540d (Active Directory \u3092\u4f7f\u7528\u3059\u308b\u5834\u5408\u306f\u7121\u8996\u3055\u308c\u307e\u3059){0}4. \u30e9\u30a4\u30bb\u30f3\u30b9 \u30ec\u30d9\u30eb ({1}\u3001{2}\u3001{3}\u3001{4}\u3001\u307e\u305f\u306f{5}){0}5. \u7ba1\u7406\u8005 ({6}/{7}/{8}/{9}){0}6. \u30d1\u30d6\u30ea\u30c3\u30b7\u30e3\u30fc ({10}/{11}/1 \u307e\u305f\u306f {12}/{13}/0){0}7. \u30e1\u30fc\u30eb (Tableau Public \u306e\u307f){0}\u30d5\u30a1\u30a4\u30eb\u306e\u5217\u306f\u3001\u3053\u3053\u306b\u793a\u3057\u305f\u6570\u3088\u308a\u5c11\u306a\u304f\u3066\u3082\u304b\u307e\u3044\u307e\u305b\u3093\u3002\u305f\u3068\u3048\u3070\u30011 \u884c \u306b\u30e6\u30fc\u30b6\u30fc\u540d\u306e\u307f\u3092\u542b\u3080\u30b7\u30f3\u30d7\u30eb\u306a\u30ea\u30b9\u30c8\u3092\u6307\u5b9a\u3059\u308b\u3053\u3068\u3082\u3067\u304d\u307e\u3059\u3002\u5024\u306b\u30b3\u30f3\u30de\u304c\u542b\u307e\u308c\u3066\u3044\u308b\u5834\u5408\u306f\u3001\u5f15\u7528\u7b26\u3092\u4f7f\u7528\u3067\u304d\u307e\u3059\u3002tabcmd \u306f\u3001{14} \u30bf\u30b9\u30af\u304c\u5b8c\u4e86\u3059\u308b\u306e\u3092\u5f85\u6a5f\u3057\u307e\u3059\u3002{15} \u30d5\u30e9\u30b0\u3092\u6e21\u3059\u3053\u3068\u306b\u3088\u308a\u3001\u30bf\u30b9\u30af\u304c\u30b5\u30fc\u30d0\u30fc\u4e0a\u3067\u5b8c\u4e86\u3059\u308b\u306e\u3092\u5f85\u6a5f\u305b\u305a\u306b\u3001\u3059\u3050\u306b\u623b\u308b\u3088\u3046\u306b\u6307\u5b9a\u3067\u304d\u307e\u3059\u3002"
-
-#:
-msgid "createusers.short_description"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u4e0a\u3067\u30e6\u30fc\u30b6\u30fc\u3092\u4f5c\u6210\u3057\u307e\u3059"
-
-#:
-msgid "createusers.status"
-msgstr "{0} \u306b\u30ea\u30b9\u30c8\u3055\u308c\u305f\u30e6\u30fc\u30b6\u30fc\u3092\u30b5\u30fc\u30d0\u30fc\u306b\u8ffd\u52a0\u3057\u3066\u3044\u307e\u3059"
-
-#:
-msgid "decryptextracts.short_description"
-msgstr "\u30b5\u30a4\u30c8\u3067\u62bd\u51fa\u3092\u8907\u5408\u5316\u3059\u308b"
-
-#:
-msgid "decryptextracts.status"
-msgstr "\u30b5\u30a4\u30c8 {0} \u3067\u8907\u5408\u5316\u3059\u308b\u62bd\u51fa\u3092\u30b9\u30b1\u30b8\u30e5\u30fc\u30eb\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "delete.errors.mutually_exclusive"
-msgstr "\u524a\u9664\u3059\u308b\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u3068\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u306e\u4e21\u65b9\u3092\u6307\u5b9a\u3059\u308b\u3053\u3068\u306f\u3067\u304d\u307e\u305b\u3093"
-
-#:
-msgid "delete.errors.requires_workbook_datasource"
-msgstr "''{0}'' \u30b3\u30de\u30f3\u30c9\u3067\u306f\u3001\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u540d\u307e\u305f\u306f\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u540d\u304c\u5fc5\u8981\u3067\u3059"
-
-#:
-msgid "delete.options.datasource"
-msgstr "\u524a\u9664\u3059\u308b\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9"
-
-#:
-msgid "delete.options.parent-project-path"
-msgstr "\u524a\u9664\u3059\u308b\u30ef\u30fc\u30af\u30d6\u30c3\u30af/\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u3092\u542b\u3080\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306e\u89aa\u306e\u30d1\u30b9\u3002\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u540d\u3092 --project \u3067\u6307\u5b9a\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002"
-
-#:
-msgid "delete.options.project"
-msgstr "\u524a\u9664\u3059\u308b\u30ef\u30fc\u30af\u30d6\u30c3\u30af/\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u3092\u542b\u3080\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u3002\u65e2\u5b9a\u306e\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306f ''{0}'' \u3067\u3059"
-
-#:
-msgid "delete.options.workbook"
-msgstr "\u524a\u9664\u3059\u308b\u30ef\u30fc\u30af\u30d6\u30c3\u30af"
-
-#:
-msgid "delete.short_description"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u304b\u3089\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u307e\u305f\u306f\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u3092\u524a\u9664\u3057\u307e\u3059"
-
-#:
-msgid "delete.status"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u304b\u3089 {0} ''{1}'' \u3092\u524a\u9664\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "deleteextracts.errors.required_argument"
-msgstr "deleteextracts \u30b3\u30de\u30f3\u30c9\u3067\u306f\u3001\u30ef\u30fc\u30af\u30d6\u30c3\u30af URL\u3001\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u540d\u3001\u307e\u305f\u306f\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u540d\u304c\u5fc5\u8981\u3067\u3059"
-
-#:
-msgid "deleteextracts.errors.error"
-msgstr "\u62bd\u51fa\u306e\u524a\u9664\u30a8\u30e9\u30fc"
-
-#:
-msgid "deleteextracts.for.datasource"
-msgstr "\u30c7\u30fc\u30bf\u30bd\u30fc\u30b9 ''{0}'' \u306e\u62bd\u51fa\u3092\u524a\u9664\u3057\u3066\u3044\u307e\u3059"
-
-#:
-msgid "deleteextracts.for.workbook_name"
-msgstr "\u540d\u524d\u304c ''{0}'' \u3067\u3042\u308b\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u306e\u62bd\u51fa\u3092\u524a\u9664\u3057\u3066\u3044\u307e\u3059"
-
-#:
-msgid "deleteextracts.for.workbook_url"
-msgstr "URL \u304c ''{0}'' \u3067\u3042\u308b\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u306e\u62bd\u51fa\u3092\u524a\u9664\u3057\u3066\u3044\u307e\u3059"
-
-#:
-msgid "deleteextracts.options.datasource"
-msgstr "\u62bd\u51fa\u524a\u9664\u7528\u306e\u30bf\u30fc\u30b2\u30c3\u30c8 \u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u306e\u540d\u524d"
-
-#:
-msgid "deleteextracts.options.embedded-datasources"
-msgstr "\u30bf\u30fc\u30b2\u30c3\u30c8 \u30ef\u30fc\u30af\u30d6\u30c3\u30af\u5185\u306e\u57cb\u3081\u8fbc\u307f\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u540d\u3092\u30b9\u30da\u30fc\u30b9\u3067\u533a\u5207\u3063\u305f\u30ea\u30b9\u30c8\u3002\u30b9\u30da\u30fc\u30b9\u304c\u542b\u307e\u308c\u308b\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u540d\u306f\u4e8c\u91cd\u5f15\u7528\u7b26\u3067\u56f2\u3093\u3067\u304f\u3060\u3055\u3044\u3002\u3053\u308c\u306f\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u306e\u62bd\u51fa\u3092\u524a\u9664\u3059\u308b\u5834\u5408\u306b\u306e\u307f\u4f7f\u7528\u3067\u304d\u307e\u3059\u3002"
-
-#:
-msgid "deleteextracts.options.include-all"
-msgstr "\u30bf\u30fc\u30b2\u30c3\u30c8 \u30ef\u30fc\u30af\u30d6\u30c3\u30af\u5185\u306e\u57cb\u3081\u8fbc\u307f\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u3092\u3059\u3079\u3066\u542b\u3081\u308b"
-
-#:
-msgid "deleteextracts.options.parent-project-path"
-msgstr "\u30bf\u30fc\u30b2\u30c3\u30c8 \u30ea\u30bd\u30fc\u30b9\u3092\u542b\u3080\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306e\u89aa\u3067\u3042\u308b\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306e\u30d1\u30b9\u3002\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u540d\u3092 --project \u3067\u6307\u5b9a\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002"
-
-#:
-msgid "deleteextracts.options.project"
-msgstr "\u30bf\u30fc\u30b2\u30c3\u30c8 \u30ea\u30bd\u30fc\u30b9\u3092\u542b\u3080\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306e\u540d\u524d\u3002{0} \u307e\u305f\u306f {1} \u304c\u6307\u5b9a\u3055\u308c\u3066\u3044\u308b\u5834\u5408\u306b\u306e\u307f\u5fc5\u8981\u3067\u3059\u3002\u6307\u5b9a\u3055\u308c\u3066\u3044\u306a\u3044\u5834\u5408\u306f\u3001\u65e2\u5b9a\u306e\u30d7\u30ed\u30b8\u30a7\u30af\u30c8 ''{2}'' \u304c\u4f7f\u7528\u3055\u308c\u307e\u3059\u3002"
-
-#:
-msgid "deleteextracts.options.url"
-msgstr "\u30ea\u30bd\u30fc\u30b9\u306e URL \u306b\u6307\u5b9a\u3055\u308c\u308b\u6b63\u898f\u540d"
-
-#:
-msgid "deleteextracts.options.workbook"
-msgstr "\u62bd\u51fa\u524a\u9664\u7528\u306e\u30bf\u30fc\u30b2\u30c3\u30c8 \u30ef\u30fc\u30af\u30d6\u30c3\u30af\u306e\u540d\u524d"
-
-#:
-msgid "deleteextracts.short_description"
-msgstr "\u30d1\u30d6\u30ea\u30c3\u30b7\u30e5\u3055\u308c\u305f\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u307e\u305f\u306f\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u7528\u306e\u62bd\u51fa\u3092\u524a\u9664"
-
-#:
-msgid "deleteextracts.workbook.include-all"
-msgstr "\u30bf\u30fc\u30b2\u30c3\u30c8 \u30ef\u30fc\u30af\u30d6\u30c3\u30af\u5185\u306e\u57cb\u3081\u8fbc\u307f\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u3092\u3059\u3079\u3066\u542b\u3081\u308b"
-
-#:
-msgid "deleteextracts.workbook.embedded-datasource-names"
-msgstr "\u57cb\u3081\u8fbc\u307f\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u540d\u3042\u308a"
-
-#:
-msgid "deletegroup.short_description"
-msgstr "\u30b0\u30eb\u30fc\u30d7\u306e\u524a\u9664"
-
-#:
-msgid "deletegroup.status"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u304b\u3089\u30b0\u30eb\u30fc\u30d7 ''{0}'' \u3092\u524a\u9664\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "deleteproject.errors.requires_project_name"
-msgstr "''{0}'' \u30b3\u30de\u30f3\u30c9\u3067\u306f\u3001\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u540d\u304c\u5fc5\u8981\u3067\u3059"
-
-#:
-msgid "deleteproject.options.parent-project-path"
-msgstr "\u524a\u9664\u3059\u308b\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306e\u89aa\u306e\u30d1\u30b9\u3002\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u540d\u3092 --project \u3067\u6307\u5b9a\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002"
-
-#:
-msgid "deleteproject.short_description"
-msgstr "\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306e\u524a\u9664"
-
-#:
-msgid "deleteproject.status"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u304b\u3089\u30d7\u30ed\u30b8\u30a7\u30af\u30c8 ''{0}'' \u3092\u524a\u9664\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "deletesite.errors.logged_into_this_site"
-msgstr "\u73fe\u5728\u30ed\u30b0\u30a4\u30f3\u3057\u3066\u3044\u308b\u30b5\u30a4\u30c8\u3092\u524a\u9664\u3067\u304d\u307e\u305b\u3093"
-
-#:
-msgid "deletesite.short_description"
-msgstr "\u30b5\u30a4\u30c8\u306e\u524a\u9664"
-
-#:
-msgid "deletesite.status"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u304b\u3089\u30b5\u30a4\u30c8 ''{0}'' \u3092\u524a\u9664\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "deletesiteusers.description"
-msgstr "\u30b5\u30a4\u30c8 \u30e6\u30fc\u30b6\u30fc\u3092\u524a\u9664\u3057\u307e\u3059\u3002\u30e6\u30fc\u30b6\u30fc\u306f\u3001\u6307\u5b9a\u3055\u308c\u305f CSV \u30d5\u30a1\u30a4\u30eb\u304b\u3089\u8aad\u307f\u8fbc\u307e\u308c\u307e\u3059\u3002\u30d5\u30a1\u30a4\u30eb\u306f\u30011 \u884c \u306b 1 \u4eba\u306e\u30e6\u30fc\u30b6\u30fc\u540d\u3092\u542b\u3080\u30b7\u30f3\u30d7\u30eb\u306a\u30ea\u30b9\u30c8\u3067\u3059"
-
-#:
-msgid "deletesiteusers.short_description"
-msgstr "\u30b5\u30a4\u30c8 \u30e6\u30fc\u30b6\u30fc\u306e\u524a\u9664"
-
-#:
-msgid "deletesiteusers.status"
-msgstr "{0} \u306b\u30ea\u30b9\u30c8\u3055\u308c\u305f\u30b5\u30a4\u30c8 \u30e6\u30fc\u30b6\u30fc\u3092\u30b5\u30fc\u30d0\u30fc\u304b\u3089\u524a\u9664\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "deleteusers.description"
-msgstr "\u30e6\u30fc\u30b6\u30fc\u3092\u524a\u9664\u3057\u307e\u3059\u3002\u30e6\u30fc\u30b6\u30fc\u306f\u3001\u6307\u5b9a\u3055\u308c\u305f\u30b3\u30f3\u30de\u533a\u5207\u308a\u5024 (CSV) \u30d5\u30a1\u30a4\u30eb\u304b\u3089\u8aad\u307f\u8fbc\u307e\u308c\u307e\u3059\u3002\u30d5\u30a1\u30a4\u30eb\u306f\u30011 \u884c \u306b 1 \u4eba\u306e\u30e6\u30fc\u30b6\u30fc\u540d\u3092\u542b\u3080\u30b7\u30f3\u30d7\u30eb\u306a\u30ea\u30b9\u30c8\u3067\u3059"
-
-#:
-msgid "deleteusers.short_description"
-msgstr "\u30e6\u30fc\u30b6\u30fc\u306e\u524a\u9664"
-
-#:
-msgid "deleteusers.status"
-msgstr "{0} \u306b\u30ea\u30b9\u30c8\u3055\u308c\u305f\u30e6\u30fc\u30b6\u30fc\u3092\u30b5\u30fc\u30d0\u30fc\u304b\u3089\u524a\u9664\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "editdomain.description"
-msgstr "\u30c9\u30e1\u30a4\u30f3\u3092\u7de8\u96c6\u3057\u307e\u3059\u3002\u7de8\u96c6\u3059\u308b\u30c9\u30e1\u30a4\u30f3\u306e\u30ea\u30b9\u30c8\u3092\u8868\u793a\u3059\u308b\u306b\u306f\u3001''{0}'' \u30b3\u30de\u30f3\u30c9\u3092\u4f7f\u7528\u3057\u307e\u3059"
-
-#:
-msgid "editdomain.errors.requires_nickname_name"
-msgstr "''{0}'' \u30aa\u30d7\u30b7\u30e7\u30f3\u307e\u305f\u306f ''{1}'' \u30aa\u30d7\u30b7\u30e7\u30f3\u3092\u6307\u5b9a\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059"
-
-#:
-msgid "editdomain.options.id"
-msgstr "\u30c9\u30e1\u30a4\u30f3\u306e ID"
-
-#:
-msgid "editdomain.options.name"
-msgstr "\u30c9\u30e1\u30a4\u30f3\u306e\u540d\u524d"
-
-#:
-msgid "editdomain.options.nickname"
-msgstr "\u30c9\u30e1\u30a4\u30f3\u306e\u30cb\u30c3\u30af\u30cd\u30fc\u30e0"
-
-#:
-msgid "editdomain.short_description"
-msgstr "\u30c9\u30e1\u30a4\u30f3\u306e\u7de8\u96c6"
-
-#:
-msgid "editdomain.output"
-msgstr "{0}ID{1}\u30cb\u30c3\u30af\u30cd\u30fc\u30e0{1}{1}\u540d\u524d{0}"
-
-#:
-msgid "editdomain.status"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u4e0a\u306e ID ''{0}'' \u306e\u30c9\u30e1\u30a4\u30f3\u3092\u7de8\u96c6\u3057\u307e\u3059..."
-
-#:
-msgid "editsite.errors.invalid_site-id"
-msgstr "\u8907\u6570\u306e\u30b5\u30a4\u30c8\u3092\u7de8\u96c6\u3059\u308b\u5834\u5408\u3001{0} \u30aa\u30d7\u30b7\u30e7\u30f3\u306f\u7121\u52b9\u3067\u3059\u3002{0} \u30aa\u30d7\u30b7\u30e7\u30f3\u3092\u524a\u9664\u3057\u3066\u304b\u3089\u30b3\u30de\u30f3\u30c9\u3092\u518d\u5b9f\u884c\u3059\u308b\u304b\u3001\u5404\u30b5\u30a4\u30c8\u3092\u500b\u5225\u306b\u7de8\u96c6\u3057\u3066\u304f\u3060\u3055\u3044"
-
-#:
-msgid "editsite.errors.invalid_site-name"
-msgstr "\u8907\u6570\u306e\u30b5\u30a4\u30c8\u3092\u7de8\u96c6\u3059\u308b\u5834\u5408\u3001{0} \u30aa\u30d7\u30b7\u30e7\u30f3\u306f\u7121\u52b9\u3067\u3059\u3002{0} \u30aa\u30d7\u30b7\u30e7\u30f3\u3092\u524a\u9664\u3057\u3066\u304b\u3089\u30b3\u30de\u30f3\u30c9\u3092\u518d\u5b9f\u884c\u3059\u308b\u304b\u3001\u5404\u30b5\u30a4\u30c8\u3092\u500b\u5225\u306b\u7de8\u96c6\u3057\u3066\u304f\u3060\u3055\u3044"
-
-#:
-msgid "editsite.options.allow-mobile-snapshots"
-msgstr "\u30e2\u30d0\u30a4\u30eb \u30b9\u30ca\u30c3\u30d7\u30b7\u30e7\u30c3\u30c8\u3092\u8a31\u53ef [\u307e\u305f\u306f\u62d2\u5426] \u3059\u308b"
-
-#:
-msgid "editsite.options.allow-subscriptions"
-msgstr "\u3053\u306e\u30b5\u30a4\u30c8\u306e\u30b5\u30d6\u30b9\u30af\u30ea\u30d7\u30b7\u30e7\u30f3\u3092\u8a31\u53ef [\u307e\u305f\u306f\u62d2\u5426] \u3059\u308b"
-
-#:
-msgid "editsite.options.allow-web-authoring"
-msgstr "\u3053\u306e\u30b5\u30a4\u30c8\u306e Web \u4f5c\u6210\u3092\u8a31\u53ef [\u307e\u305f\u306f\u62d2\u5426] \u3059\u308b"
-
-#:
-msgid "editsite.options.cache-warmup"
-msgstr "\u3053\u306e\u30b5\u30a4\u30c8\u306e\u30ad\u30e3\u30c3\u30b7\u30e5 \u30a6\u30a9\u30fc\u30e0\u30d1\u30c3\u30d7\u3092\u8a31\u53ef [\u307e\u305f\u306f\u62d2\u5426]"
-
-#:
-msgid "editsite.options.cache-warmup-threshold"
-msgstr "\u30a6\u30a9\u30fc\u30e0\u30a2\u30c3\u30d7\u3092\u30c8\u30ea\u30ac\u30fc\u3059\u308b\u305f\u3081\u306e\u3001\u30d3\u30e5\u30fc\u304c\u6700\u8fd1\u3044\u3064\u95b2\u89a7\u3055\u308c\u305f\u304b\u306b\u5bfe\u3059\u308b\u3057\u304d\u3044\u5024 (\u65e5\u5358\u4f4d)"
-
-#:
-msgid "editsite.options.site-name"
-msgstr "\u30b5\u30a4\u30c8\u306e\u8868\u793a\u540d"
-
-#:
-msgid "editsite.options.status"
-msgstr "\u30b5\u30a4\u30c8\u304c\u5229\u7528\u53ef\u80fd\u304b\u3069\u3046\u304b\u3092\u5909\u66f4\u3057\u307e\u3059\u3002''{0}'' \u307e\u305f\u306f ''{1}'' \u3092\u6307\u5b9a\u3057\u307e\u3059"
-
-#:
-msgid "editsite.options.allow-materialized-views"
-msgstr "\u3053\u306e\u30b5\u30a4\u30c8\u306e\u5177\u4f53\u5316\u3055\u308c\u305f\u30d3\u30e5\u30fc\u304c\u8a31\u53ef/\u62d2\u5426\u3055\u308c\u3066\u3044\u307e\u3059"
-
-#:
-msgid "editsite.options.extract_encryption_mode"
-msgstr "\u62bd\u51fa\u6697\u53f7\u5316\u30e2\u30fc\u30c9: \u7121\u52b9\u3001\u6709\u52b9\u3001\u307e\u305f\u306f\u5b9f\u884c\u3002\u8a2d\u5b9a\u3057\u306a\u3044\u5834\u5408\u3001\u30b5\u30fc\u30d0\u30fc\u3067\u5909\u66f4\u306f\u884c\u308f\u308c\u307e\u305b\u3093\u3002"
-
-#:
-msgid "editsite.options.web_extraction_enabled"
-msgstr "\u3053\u306e\u30b5\u30a4\u30c8\u3067\u62bd\u51fa\u306e\u4f5c\u6210\u304a\u3088\u3073\u30e9\u30a4\u30d6\u3078\u306e\u5909\u66f4\u3092\u8a31\u53ef [\u307e\u305f\u306f\u62d2\u5426] \u3057\u307e\u3059\u3002\u65e2\u5b9a\u306e\u8a2d\u5b9a\u3067\u306f\u8a31\u53ef\u3057\u307e\u3059\u3002"
-
-#:
-msgid "editsite.options.run_now_enabled"
-msgstr "\u3053\u306e\u30b5\u30a4\u30c8\u306b\u5bfe\u3057\u3066 [\u4eca\u3059\u3050\u5b9f\u884c] \u30aa\u30d7\u30b7\u30e7\u30f3\u3092\u8a31\u53ef [\u307e\u305f\u306f\u62d2\u5426] \u3057\u307e\u3059\u3002\u65e2\u5b9a\u3067\u306f [\u4eca\u3059\u3050\u5b9f\u884c] \u3092\u8a31\u53ef\u3059\u308b\u3088\u3046\u306b\u8a2d\u5b9a\u3055\u308c\u3066\u3044\u307e\u3059"
-
-#:
-msgid "editsite.options.time_zone"
-msgstr "\u3053\u306e\u30b5\u30a4\u30c8\u306e\u62bd\u51fa\u3067\u4f7f\u7528\u3055\u308c\u308b\u30bf\u30a4\u30e0 \u30be\u30fc\u30f3"
-
-#:
-msgid "editsite.options.use_default_time_zone"
-msgstr "\u3053\u306e\u30b5\u30a4\u30c8\u306e\u62bd\u51fa\u3067\u4f7f\u7528\u3055\u308c\u308b\u30bf\u30a4\u30e0 \u30be\u30fc\u30f3\u3092\u8a2d\u5b9a\u89e3\u9664\u3057\u307e\u3059\u3002\u305d\u306e\u4ee3\u308f\u308a\u3001\u65e2\u5b9a\u306e\u30b5\u30fc\u30d0\u30fc \u30bf\u30a4\u30e0 \u30be\u30fc\u30f3\u3092\u4f7f\u7528\u3057\u307e\u3059"
-
-#:
-msgid "editsite.short_description"
-msgstr "\u30b5\u30a4\u30c8\u306e\u7de8\u96c6"
-
-#:
-msgid "editsite.status"
-msgstr "\u30b5\u30a4\u30c8 ''{0}'' \u3092\u30b5\u30fc\u30d0\u30fc\u4e0a\u3067\u7de8\u96c6\u3057\u307e\u3059..."
-
-#:
-msgid "encryptextracts.short_description"
-msgstr "\u30b5\u30a4\u30c8\u3067\u62bd\u51fa\u3092\u6697\u53f7\u5316\u3059\u308b"
-
-#:
-msgid "encryptextracts.status"
-msgstr "\u30b5\u30a4\u30c8 {0} \u3067\u6697\u53f7\u5316\u3059\u308b\u62bd\u51fa\u3092\u30b9\u30b1\u30b8\u30e5\u30fc\u30eb\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "export.errors.need_country_and_languge"
-msgstr "\u30aa\u30d7\u30b7\u30e7\u30f3\u306e\u300c--country\u300d\u3068\u300c--language\u300d\u306f\u30bb\u30c3\u30c8\u3067\u4f7f\u7528\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059"
-
-#:
-msgid "export.errors.white_space_workbook_view"
-msgstr "\u30a8\u30af\u30b9\u30dd\u30fc\u30c8\u3059\u308b\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u3084\u30d3\u30e5\u30fc\u306e\u540d\u524d\u306b\u30b9\u30da\u30fc\u30b9\u3092\u542b\u3081\u308b\u3053\u3068\u306f\u3067\u304d\u307e\u305b\u3093\u3002URL \u306b\u8868\u793a\u3055\u308c\u308b\u6a19\u6e96\u5316\u3055\u308c\u305f\u540d\u524d\u3092\u4f7f\u7528\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
-
-#:
-msgid "export.errors.requires_workbook_view_name"
-msgstr "''{0}'' \u30b3\u30de\u30f3\u30c9\u306b\u306f\u3001<workbook>/<view> \u540d\u304c\u5fc5\u8981\u3067\u3059"
-
-#:
-msgid "export.errors.requires_workbook_view_param"
-msgstr "''{0}'' \u30b3\u30de\u30f3\u30c9\u306b\u306f <workbook>/<view> \u30d1\u30e9\u30e1\u30fc\u30bf\u30fc\u304c\u5fc5\u8981\u3067\u3059\u3002\u3053\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u30fc\u306b\u306f\u3001\u5c11\u306a\u304f\u3068\u3082 1 \u500b\u306e\u30b9\u30e9\u30c3\u30b7\u30e5 (/) \u304c\u5fc5\u8981\u3067\u3059"
-
-#:
-msgid "export.options.country"
-msgstr "\u65e2\u5b9a\u306e\u30e6\u30fc\u30b6\u30fc \u30ed\u30b1\u30fc\u30eb\u3092\u4f7f\u7528\u3057\u306a\u3044\u5834\u5408\u306f\u3001\u30ed\u30b1\u30fc\u30eb\u306e\u56fd\u306e\u7565\u540d (IANA Language Subtag Registry \u304b\u3089\u691c\u7d22) \u3092\u4f7f\u7528\u3057\u307e\u3059\u3002\u300c--language\u300d\u3068\u30bb\u30c3\u30c8\u3067\u4f7f\u7528\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059"
-
-#:
-msgid "export.options.csv"
-msgstr "\u30c7\u30fc\u30bf\u3092 CSV \u5f62\u5f0f\u3067\u30a8\u30af\u30b9\u30dd\u30fc\u30c8 (\u65e2\u5b9a)"
-
-#:
-msgid "export.options.fullpdf"
-msgstr "\u30d3\u30b8\u30e5\u30a2\u30eb \u30d3\u30e5\u30fc\u3092 PDF \u5f62\u5f0f\u3067\u30a8\u30af\u30b9\u30dd\u30fc\u30c8 (\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u304c\u30bf\u30d6\u4ed8\u304d\u3067\u30d1\u30d6\u30ea\u30c3\u30b7\u30e5\u3055\u308c\u305f\u5834\u5408)"
-
-#:
-msgid "export.options.height"
-msgstr "\u9ad8\u3055\u3092\u8a2d\u5b9a\u3057\u307e\u3059\u3002\u6574\u6570\u5024\u3067\u3042\u308b\u3053\u3068\u304c\u5fc5\u8981\u3067\u3059 (\u65e2\u5b9a: 600 \u30d4\u30af\u30bb\u30eb)"
-
-#:
-msgid "export.options.language"
-msgstr "\u65e2\u5b9a\u306e\u30e6\u30fc\u30b6\u30fc \u30ed\u30b1\u30fc\u30eb\u3092\u4f7f\u7528\u3057\u306a\u3044\u5834\u5408\u306f\u3001\u30ed\u30b1\u30fc\u30eb\u306e\u8a00\u8a9e\u306e\u7701\u7565\u540d (IANA Language Subtag Registry \u304b\u3089\u691c\u7d22) \u3092\u4f7f\u7528\u3057\u307e\u3059\u3002\u300c--country\u300d\u3068\u30bb\u30c3\u30c8\u3067\u4f7f\u7528\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059"
-
-#:
-msgid "export.options.pagelayout"
-msgstr "\u30a8\u30af\u30b9\u30dd\u30fc\u30c8\u3055\u308c\u305f PDF \u306e\u30da\u30fc\u30b8\u306e\u65b9\u5411\u3092\u8a2d\u5b9a\u3057\u307e\u3059\u3002\u6709\u52b9\u306a\u5024: {0}\u3002\u6307\u5b9a\u3055\u308c\u3066\u3044\u306a\u3044\u5834\u5408\u306f\u3001Tableau Desktop \u306e\u8a2d\u5b9a\u304c\u4f7f\u7528\u3055\u308c\u307e\u3059"
-
-#:
-msgid "export.options.pagesize"
-msgstr "\u30a8\u30af\u30b9\u30dd\u30fc\u30c8\u3055\u308c\u305f PDF \u306e\u30da\u30fc\u30b8 \u30b5\u30a4\u30ba\u3092\u8a2d\u5b9a\u3057\u307e\u3059\u3002\u6709\u52b9\u306a\u5024: {0} (\u65e2\u5b9a: ''{1}'')"
-
-#:
-msgid "export.options.pdf"
-msgstr "PDF \u5f62\u5f0f\u3067\u30c7\u30fc\u30bf\u3092\u30a8\u30af\u30b9\u30dd\u30fc\u30c8"
-
-#:
-msgid "export.options.png"
-msgstr "PNG \u5f62\u5f0f\u3067\u30c7\u30fc\u30bf\u3092\u30a8\u30af\u30b9\u30dd\u30fc\u30c8"
-
-#:
-msgid "export.options.width"
-msgstr "\u5e45\u3092\u8a2d\u5b9a\u3057\u307e\u3059\u3002\u6574\u6570\u5024\u3067\u3042\u308b\u3053\u3068\u304c\u5fc5\u8981\u3067\u3059 (\u65e2\u5b9a: 800 \u30d4\u30af\u30bb\u30eb)"
-
-#:
-msgid "export.short_description"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u304b\u3089\u3001\u30d3\u30e5\u30fc\u306e\u30c7\u30fc\u30bf\u307e\u305f\u306f\u30a4\u30e1\u30fc\u30b8\u3092\u30a8\u30af\u30b9\u30dd\u30fc\u30c8"
-
-#:
-msgid "export.status"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u304b\u3089 ''{0}'' \u3092\u8981\u6c42\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "export.success"
-msgstr "{0} \u3092 ''{1}'' \u306b\u4fdd\u5b58\u3057\u307e\u3057\u305f"
-
-#:
-msgid "extracts.workbook.errors.requires_datasources_or_include_all"
-msgstr "\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u306e\u30b3\u30de\u30f3\u30c9 {0} \u3067\u306f\u57cb\u3081\u8fbc\u307f\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u307e\u305f\u306f include-all \u30d5\u30e9\u30b0\u304c\u5fc5\u8981\u3067\u3059"
-
-#:
-msgid "fileuploader.progress"
-msgstr "\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9\u9032\u884c\u72b6\u6cc1: {0}%"
-
-#:
-msgid "get.description"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u304b\u3089\u30d5\u30a1\u30a4\u30eb\u3092\u53d6\u5f97\u3057\u307e\u3059\u3002\u30d5\u30a1\u30a4\u30eb\u540d\u5f15\u6570\u304c\u6307\u5b9a\u3055\u308c\u3066\u3044\u306a\u3044\u5834\u5408\u306f\u3001\u30d1\u30b9\u306e\u6700\u5f8c\u306e\u69cb\u6210\u8981\u7d20\u306b\u5f93\u3063\u3066\u30d5\u30a1\u30a4\u30eb\u306e\u540d\u524d\u304c\u4ed8\u3051\u3089\u308c\u307e\u3059"
-
-#:
-msgid "get.errors.requires_url"
-msgstr "''{0}'' \u30b3\u30de\u30f3\u30c9\u3067\u306f\u3001URL \u304c\u5fc5\u8981\u3067\u3059"
-
-#:
-msgid "get.options.file"
-msgstr "\u30d5\u30a1\u30a4\u30eb\u3092\u4fdd\u5b58\u3059\u308b\u540d\u524d"
-
-#:
-msgid "get.short_description"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u304b\u3089\u30d5\u30a1\u30a4\u30eb\u3092\u53d6\u5f97"
-
-#:
-msgid "help.available_commands"
-msgstr "\u5229\u7528\u53ef\u80fd\u306a\u30b3\u30de\u30f3\u30c9:"
-
-#:
-msgid "help.command_options"
-msgstr "\u30b3\u30de\u30f3\u30c9 \u30aa\u30d7\u30b7\u30e7\u30f3:"
-
-#:
-msgid "help.description0"
-msgstr "\u7279\u5b9a\u306e\u30b3\u30de\u30f3\u30c9\u306e\u30d8\u30eb\u30d7\u3092\u8868\u793a"
-
-#:
-msgid "help.description1"
-msgstr "\u5229\u7528\u53ef\u80fd\u306a\u3059\u3079\u3066\u306e\u30b3\u30de\u30f3\u30c9\u3092\u30ea\u30b9\u30c8"
-
-#:
-msgid "help.errors.unknown_command"
-msgstr "\u4e0d\u660e\u306a\u30b3\u30de\u30f3\u30c9: {0}"
-
-#:
-msgid "help.global_options"
-msgstr "\u30b0\u30ed\u30fc\u30d0\u30eb \u30aa\u30d7\u30b7\u30e7\u30f3:"
-
-#:
-msgid "help.short_description"
-msgstr "tabcmd \u30b3\u30de\u30f3\u30c9\u306e\u30d8\u30eb\u30d7"
-
-#:
-msgid "httputils.found_attachment"
-msgstr "\u6dfb\u4ed8\u30d5\u30a1\u30a4\u30eb\u304c\u898b\u3064\u304b\u308a\u307e\u3057\u305f: {0}"
-
-#:
-msgid "httputils.mapped_attachment"
-msgstr "\u6dfb\u4ed8\u30d5\u30a1\u30a4\u30eb\u304c\u898b\u3064\u304b\u308a\u307e\u3057\u305f: {0} ({1} \u306b\u518d\u30de\u30c3\u30d4\u30f3\u30b0\u3055\u308c\u307e\u3057\u305f)"
-
-#:
-msgid "initialuser.errors.username_and_password_required"
-msgstr "\u30e6\u30fc\u30b6\u30fc\u540d\u3068\u30d1\u30b9\u30ef\u30fc\u30c9\u306e\u4e21\u65b9\u304c\u5fc5\u8981\u3067\u3059"
-
-#:
-msgid "initialuser.options.friendly-name"
-msgstr "\u30d5\u30ec\u30f3\u30c9\u30ea\u30fc\u540d"
-
-#:
-msgid "initialuser.short_description"
-msgstr "\u521d\u671f\u5316\u3055\u308c\u3066\u3044\u306a\u3044\u30b5\u30fc\u30d0\u30fc\u4e0a\u3067\u6700\u521d\u306e\u30e6\u30fc\u30b6\u30fc\u3092\u4f5c\u6210\u3057\u307e\u3059"
-
-#:
-msgid "listdomains.description"
-msgstr "\u30c9\u30e1\u30a4\u30f3\u306e\u30ea\u30b9\u30c8"
-
-#:
-msgid "listdomains.status"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u306e\u30c9\u30e1\u30a4\u30f3\u3092\u30ea\u30b9\u30c8\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "listsites.output"
-msgstr "{0}{0}\u540d\u524d: {1} {0}\u30b5\u30a4\u30c8 ID: ''{2}''"
-
-#:
-msgid "listsites.output_extended"
-msgstr "{0}{0}\u540d\u524d: {1} {0}\u30b5\u30a4\u30c8 ID: ''{2}''{0}\u62bd\u51fa\u306e\u6697\u53f7\u5316: {3}"
-
-#:
-msgid "listsites.short_description"
-msgstr "\u30e6\u30fc\u30b6\u30fc\u306e\u30b5\u30a4\u30c8\u3092\u30ea\u30b9\u30c8"
-
-#:
-msgid "listsites.status"
-msgstr "\u30e6\u30fc\u30b6\u30fc {0} \u306e\u30b5\u30a4\u30c8\u3092\u30ea\u30b9\u30c8\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "listsites.options.get_extract_encryption_mode"
-msgstr "\u30b5\u30a4\u30c8\u306e\u62bd\u51fa\u6697\u53f7\u5316\u30e2\u30fc\u30c9\u3092\u5370\u5237\u3059\u308b"
-
-#:
-msgid "login.description"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u306b\u30b5\u30a4\u30f3\u30a4\u30f3\u3057\u307e\u3059\u3002\u30bb\u30c3\u30b7\u30e7\u30f3\u306f\u3001\u30b5\u30fc\u30d0\u30fc\u4e0a\u3067\u671f\u9650\u5207\u308c\u306b\u306a\u308b\u304b\u3001{0} \u3092\u4f7f\u7528\u3059\u308b\u307e\u3067\u5f15\u304d\u7d9a\u304d\u6709\u52b9\u3067\u3059"
-
-#:
-msgid "login.short_description"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u306b\u30b5\u30a4\u30f3\u30a4\u30f3"
-
-#:
-msgid "logout.short_description"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u304b\u3089\u30b5\u30a4\u30f3\u30a2\u30a6\u30c8"
-
-#:
-msgid "publish.description"
-msgstr "\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u3001\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u3001\u307e\u305f\u306f\u62bd\u51fa\u3092\u30b5\u30fc\u30d0\u30fc\u306b\u30d1\u30d6\u30ea\u30c3\u30b7\u30e5"
-
-#:
-msgid "publish.errors.invalid_datasource_update_file_type"
-msgstr "\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u66f4\u65b0\u306e\u305f\u3081\u306e\u30d5\u30a1\u30a4\u30eb \u30bf\u30a4\u30d7 ''{0}'' \u304c\u6b63\u3057\u304f\u3042\u308a\u307e\u305b\u3093\u3002\u7f6e\u63db/\u8ffd\u52a0\u306f\u3001\u62bd\u51fa (.tde) \u30d5\u30a1\u30a4\u30eb\u306b\u306e\u307f\u9069\u7528\u3055\u308c\u307e\u3059"
-
-#:
-msgid "publish.errors.invalid_name_option"
-msgstr "\u8907\u6570\u306e\u30a2\u30a4\u30c6\u30e0\u306e\u30d1\u30d6\u30ea\u30c3\u30b7\u30e5\u6642\u306b\u306f\u3001{0} \u30aa\u30d7\u30b7\u30e7\u30f3\u306f\u7121\u52b9\u3067\u3059"
-
-#:
-msgid "publish.errors.invalid_publish_file_type"
-msgstr "\u30d1\u30d6\u30ea\u30c3\u30b7\u30e5\u306e\u305f\u3081\u306e\u30d5\u30a1\u30a4\u30eb \u30bf\u30a4\u30d7 ''{0}'' \u304c\u6b63\u3057\u304f\u3042\u308a\u307e\u305b\u3093\u3002.tde\u3001.tds\u3001.tdsx\u3001.twb\u3001\u307e\u305f\u306f .twbx \u30d5\u30a1\u30a4\u30eb\u304c\u6709\u52b9\u3067\u3059"
-
-#:
-msgid "publish.errors.mutually_exclusive_option"
-msgstr "{0} \u307e\u305f\u306f {1} \u306e\u3044\u305a\u308c\u304b 1 \u500b\u306e\u307f\u3092\u4f7f\u7528"
-
-#:
-msgid "publish.errors.requires_resource_file"
-msgstr "''{0}'' \u30b3\u30de\u30f3\u30c9\u3067\u306f\u3001\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u3001\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u3001\u307e\u305f\u306f\u62bd\u51fa\u30d5\u30a1\u30a4\u30eb\u304c\u5fc5\u8981\u3067\u3059"
-
-#:
-msgid "publish.errors.unexpected_server_response"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u304b\u3089\u306e\u4e88\u671f\u3057\u306a\u3044\u5fdc\u7b54: {0}"
-
-#:
-msgid "publish.errors.server_resource_not_found"
-msgstr "\u6307\u5b9a\u3055\u308c\u305f\u30ea\u30bd\u30fc\u30b9\u306f\u5b58\u5728\u3057\u306a\u3044\u304b\u3001\u305d\u306e\u30ea\u30bd\u30fc\u30b9\u3092\u8868\u793a\u3067\u304d\u308b\u30d1\u30fc\u30df\u30c3\u30b7\u30e7\u30f3\u304c\u3042\u308a\u307e\u305b\u3093\u3002\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u540d\u3068\u30d1\u30fc\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
-
-#:
-msgid "publish.options.append"
-msgstr "\u62bd\u51fa\u30d5\u30a1\u30a4\u30eb\u3092\u65e2\u5b58\u306e\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u306b\u8ffd\u52a0"
-
-#:
-msgid "publish.options.async"
-msgstr "\u975e\u540c\u671f\u3067\u30d1\u30d6\u30ea\u30c3\u30b7\u30e5"
-
-#:
-msgid "publish.options.db-password"
-msgstr "\u3059\u3079\u3066\u306e\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u306e\u30c7\u30fc\u30bf\u30d9\u30fc\u30b9 \u30d1\u30b9\u30ef\u30fc\u30c9"
-
-#:
-msgid "publish.options.db-username"
-msgstr "\u3059\u3079\u3066\u306e\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u306e\u30c7\u30fc\u30bf\u30d9\u30fc\u30b9 \u30e6\u30fc\u30b6\u30fc\u540d"
-
-#:
-msgid "publish.options.description"
-msgstr "\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u307e\u305f\u306f\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u306e\u8aac\u660e"
-
-#:
-msgid "publish.options.encrypt_extracts"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u3067\u62bd\u51fa\u3092\u6697\u53f7\u5316\u3059\u308b"
-
-#:
-msgid "publish.options.name"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u4e0a\u306e\u30ef\u30fc\u30af\u30d6\u30c3\u30af/\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u540d\u3002\u7701\u7565\u3057\u305f\u5834\u5408\u306f\u3001\u30d5\u30a1\u30a4\u30eb\u540d\u304b\u3089 twb(x)\u3001tds(x)\u3001\u307e\u305f\u306f tde \u62e1\u5f35\u5b50\u3092\u9664\u3044\u305f\u540d\u524d\u306b\u5f93\u3063\u3066\u30ef\u30fc\u30af\u30d6\u30c3\u30af/\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u306e\u540d\u524d\u304c\u4ed8\u3051\u3089\u308c\u307e\u3059\u3002.tde \u30d5\u30a1\u30a4\u30eb\u3092\u30d1\u30d6\u30ea\u30c3\u30b7\u30e5\u3059\u308b\u3068\u3001\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u304c\u4f5c\u6210\u3055\u308c\u307e\u3059"
-
-#:
-msgid "publish.options.oauth-username"
-msgstr "\u30d1\u30d6\u30ea\u30c3\u30b7\u30e5\u3092\u884c\u3046\u30e6\u30fc\u30b6\u30fc\u540d\u306b\u95a2\u9023\u4ed8\u3051\u3089\u308c\u305f\u30b5\u30fc\u30d0\u30fc  \u30ad\u30fc\u30c1\u30a7\u30fc\u30f3\u306b\u4fdd\u5b58\u3055\u308c\u305f\u8a8d\u8a3c\u8cc7\u683c\u60c5\u5831\u3092\u4f7f\u7528\u3059\u308b"
-
-#:
-msgid "publish.options.overwrite"
-msgstr "\u65e2\u5b58\u306e\u30ef\u30fc\u30af\u30d6\u30c3\u30af/\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9 (\u5b58\u5728\u3059\u308b\u5834\u5408) \u3092\u4e0a\u66f8\u304d"
-
-#:
-msgid "publish.options.project"
-msgstr "\u30ef\u30fc\u30af\u30d6\u30c3\u30af/\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u3092\u30d1\u30d6\u30ea\u30c3\u30b7\u30e5\u3059\u308b\u30d7\u30ed\u30b8\u30a7\u30af\u30c8"
-
-#:
-msgid "publish.options.parent-project-path"
-msgstr "\u30ef\u30fc\u30af\u30d6\u30c3\u30af/\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u306e\u30d1\u30d6\u30ea\u30c3\u30b7\u30e5\u5148\u3067\u3042\u308b\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306e\u89aa\u306e\u30d1\u30b9"
-
-#:
-msgid "publish.options.replace"
-msgstr "\u62bd\u51fa\u30d5\u30a1\u30a4\u30eb\u3092\u65e2\u5b58\u306e\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u306b\u7f6e\u63db"
-
-#:
-msgid "publish.options.restart"
-msgstr "\u30d5\u30a1\u30a4\u30eb\u306e\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9\u3092\u518d\u958b"
-
-#:
-msgid "publish.options.save-db-password"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u306b\u30c7\u30fc\u30bf\u30d9\u30fc\u30b9 \u30d1\u30b9\u30ef\u30fc\u30c9\u3092\u4fdd\u7ba1"
-
-#:
-msgid "publish.options.save-oauth"
-msgstr "{0} \u3067\u6307\u5b9a\u3055\u308c\u305f OAuth \u8a8d\u8a3c\u8cc7\u683c\u60c5\u5831\u3092\u57cb\u3081\u8fbc\u307f"
-
-#:
-msgid "publish.options.tabbed"
-msgstr "\u30bf\u30d6\u4ed8\u304d\u30d3\u30e5\u30fc\u3092\u6709\u52b9\u306b\u3057\u3066\u30d1\u30d6\u30ea\u30c3\u30b7\u30e5"
-
-#:
-msgid "publish.options.thumbnail-groupname"
-msgstr "\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u306b\u30e6\u30fc\u30b6\u30fc \u30d5\u30a3\u30eb\u30bf\u30fc\u304c\u542b\u307e\u308c\u3066\u3044\u308b\u5834\u5408\u306f\u3001\u30b5\u30e0\u30cd\u30a4\u30eb\u306e\u8a08\u7b97\u4e2d\u306b\u3053\u306e\u30b0\u30eb\u30fc\u30d7\u3092\u507d\u88c5\u3057\u307e\u3059"
-
-#:
-msgid "publish.options.thumbnail-username"
-msgstr "\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u306b\u30e6\u30fc\u30b6\u30fc \u30d5\u30a3\u30eb\u30bf\u30fc\u304c\u542b\u307e\u308c\u3066\u3044\u308b\u5834\u5408\u306f\u3001\u30b5\u30e0\u30cd\u30a4\u30eb\u306e\u8a08\u7b97\u4e2d\u306b\u3053\u306e\u30e6\u30fc\u30b6\u30fc\u3092\u507d\u88c5\u3057\u307e\u3059"
-
-#:
-msgid "publish.status"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u306b ''{0}'' \u3092\u30d1\u30d6\u30ea\u30c3\u30b7\u30e5\u3057\u3066\u3044\u307e\u3059\u3002\u3053\u306e\u51e6\u7406\u306b\u306f\u6570\u5206\u304b\u304b\u308b\u3053\u3068\u304c\u3042\u308a\u307e\u3059..."
-
-#:
-msgid "publish.success"
-msgstr "\u30d5\u30a1\u30a4\u30eb\u304c\u30b5\u30fc\u30d0\u30fc\u306e\u6b21\u306e\u5834\u6240\u306b\u6b63\u5e38\u306b\u30d1\u30d6\u30ea\u30c3\u30b7\u30e5\u3055\u308c\u307e\u3057\u305f:"
-
-#:
-msgid "publishsamples.options.parent-project-path"
-msgstr "\u30b5\u30f3\u30d7\u30eb\u306e\u30d1\u30d6\u30ea\u30c3\u30b7\u30e5\u5148\u3067\u3042\u308b\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306e\u89aa\u306e\u30d1\u30b9\u3002\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u540d\u3092 --project \u3067\u6307\u5b9a\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059"
-
-#:
-msgid "publishsamples.options.projectname"
-msgstr "\u30b5\u30f3\u30d7\u30eb\u306e\u30d1\u30d6\u30ea\u30c3\u30b7\u30e5\u5148\u306e\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u540d"
-
-#:
-msgid "publishsamples.short_description"
-msgstr "\u6307\u5b9a\u3055\u308c\u305f\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306b\u30b5\u30f3\u30d7\u30eb \u30ef\u30fc\u30af\u30d6\u30c3\u30af\u3092\u30d1\u30d6\u30ea\u30c3\u30b7\u30e5\u3057\u307e\u3059\u3002\u65e2\u5b58\u306e\u30b5\u30f3\u30d7\u30eb\u306f\u4e0a\u66f8\u304d\u3055\u308c\u307e\u3059\u3002"
-
-#:
-msgid "publishsamples.status"
-msgstr "\u30d1\u30d6\u30ea\u30c3\u30b7\u30e5\u306e\u30b5\u30f3\u30d7\u30eb..."
-
-#:
-msgid "reencryptextracts.short_description"
-msgstr "\u30b5\u30a4\u30c8\u3067\u62bd\u51fa\u3092\u518d\u6697\u53f7\u5316\u3059\u308b"
-
-#:
-msgid "reencryptextracts.status"
-msgstr "\u30b5\u30a4\u30c8 {0} \u306e\u62bd\u51fa\u306e\u518d\u6697\u53f7\u5316\u3092\u30b9\u30b1\u30b8\u30e5\u30fc\u30eb\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "refreshextracts.errors.required_argument"
-msgstr "refreshextracts \u30b3\u30de\u30f3\u30c9\u3067\u306f\u3001\u30ef\u30fc\u30af\u30d6\u30c3\u30af URL\u3001\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u540d\u3001\u307e\u305f\u306f\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u540d\u304c\u5fc5\u8981\u3067\u3059"
-
-#:
-msgid "refreshextracts.errors.add_and_remove_calculations"
-msgstr "--addcalculations \u3068 --removecalculations \u30aa\u30d7\u30b7\u30e7\u30f3\u306e\u4e21\u65b9\u3092\u4f7f\u7528\u3059\u308b\u66f4\u65b0\u3092\u5b9f\u884c\u3067\u304d\u307e\u305b\u3093"
-
-#:
-msgid "refreshextracts.errors.calculations_and_incremental"
-msgstr "\u5897\u5206\u62bd\u51fa\u66f4\u65b0\u306e\u9593\u306f\u5177\u4f53\u5316\u3055\u308c\u305f\u8a08\u7b97\u3092\u8ffd\u52a0\u307e\u305f\u306f\u524a\u9664\u3067\u304d\u307e\u305b\u3093"
-
-#:
-msgid "refreshextracts.errors.error"
-msgstr "\u62bd\u51fa\u306e\u66f4\u65b0\u30a8\u30e9\u30fc"
-
-#:
-msgid "refreshextracts.options.datasource"
-msgstr "\u66f4\u65b0\u3059\u308b\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u306e\u540d\u524d"
-
-#:
-msgid "refreshextracts.options.incremental"
-msgstr "\u5897\u5206\u66f4\u65b0\u3092\u5b9f\u884c (\u30b5\u30dd\u30fc\u30c8\u3055\u308c\u3066\u3044\u308b\u5834\u5408)"
-
-#:
-msgid "refreshextracts.options.parent-project-path"
-msgstr "\u66f4\u65b0\u3059\u308b\u62bd\u51fa\u3092\u542b\u3080\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306e\u89aa\u306e\u30d1\u30b9\u3002\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u540d\u3092 --project \u3067\u6307\u5b9a\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002"
-
-#:
-msgid "refreshextracts.options.project"
-msgstr "\u30ef\u30fc\u30af\u30d6\u30c3\u30af/\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u3092\u542b\u3080\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306e\u540d\u524d\u3002{0} \u307e\u305f\u306f {1} \u304c\u6307\u5b9a\u3055\u308c\u3066\u3044\u308b\u5834\u5408\u306b\u306e\u307f\u5fc5\u8981\u3067\u3059\u3002\u6307\u5b9a\u3055\u308c\u3066\u3044\u306a\u3044\u5834\u5408\u306f\u3001\u65e2\u5b9a\u306e\u30d7\u30ed\u30b8\u30a7\u30af\u30c8 ''{2}'' \u304c\u4f7f\u7528\u3055\u308c\u307e\u3059"
-
-#:
-msgid "refreshextracts.options.synchronous"
-msgstr "\u66f4\u65b0\u304c\u5b9f\u884c\u3055\u308c\u3066\u3001\u5b8c\u4e86\u3059\u308b\u306e\u3092\u5f85\u6a5f\u3057\u3066\u304b\u3089\u3001\u7d42\u4e86\u3059\u308b"
-
-#:
-msgid "refreshextracts.options.url"
-msgstr "\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u307e\u305f\u306f\u30d3\u30e5\u30fc\u306e\u3001URL \u306b\u6307\u5b9a\u3055\u308c\u308b\u6b63\u898f\u540d"
-
-#:
-msgid "refreshextracts.options.workbook"
-msgstr "\u66f4\u65b0\u3059\u308b\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u306e\u540d\u524d"
-
-#:
-msgid "refreshextracts.options.addcalculations"
-msgstr "\u5177\u4f53\u5316\u3055\u308c\u305f\u8a08\u7b97\u3092\u62bd\u51fa\u306b\u8ffd\u52a0\u3059\u308b"
-
-#:
-msgid "refreshextracts.options.removecalculations"
-msgstr "\u62bd\u51fa\u304b\u3089\u5177\u4f53\u5316\u3055\u308c\u305f\u8a08\u7b97\u3092\u524a\u9664\u3059\u308b"
-
-#:
-msgid "refreshextracts.short_description"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u4e0a\u306e\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u307e\u305f\u306f\u30c7\u30fc\u30bf \u30bd\u30fc\u30b9\u306e\u62bd\u51fa\u3092\u66f4\u65b0"
-
-#:
-msgid "refreshextracts.status_incremented"
-msgstr "{0} ''{1}'' \u306e\u62bd\u51fa\u306e\u5897\u5206\u3092\u30b9\u30b1\u30b8\u30e5\u30fc\u30eb\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "refreshextracts.status_refreshed"
-msgstr "{0} ''{1}'' \u306e\u62bd\u51fa\u306e\u66f4\u65b0\u3092\u30b9\u30b1\u30b8\u30e5\u30fc\u30eb\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "removeusers.options.users"
-msgstr "\u30b0\u30eb\u30fc\u30d7\u304b\u3089\u524a\u9664\u3059\u308b\u30e6\u30fc\u30b6\u30fc\u306e\u30ea\u30b9\u30c8\u3092 1 \u884c\u306b 1 \u4eba\u306e\u30e6\u30fc\u30b6\u30fc\u305a\u3064\u542b\u3080\u30d5\u30a1\u30a4\u30eb"
-
-#:
-msgid "removeusers.short_description"
-msgstr "\u30e6\u30fc\u30b6\u30fc\u3092\u30b0\u30eb\u30fc\u30d7\u304b\u3089\u524a\u9664"
-
-#:
-msgid "removeusers.status"
-msgstr "{0} \u306b\u30ea\u30b9\u30c8\u3055\u308c\u305f\u30e6\u30fc\u30b6\u30fc\u3092\u30b0\u30eb\u30fc\u30d7 {1} \u304b\u3089\u524a\u9664\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "runschedule.errors.requires_schedule_name"
-msgstr "''{0}'' \u30b3\u30de\u30f3\u30c9\u3067\u306f\u3001\u30b9\u30b1\u30b8\u30e5\u30fc\u30eb\u540d\u304c\u5fc5\u8981\u3067\u3059"
-
-#:
-msgid "runschedule.short_description"
-msgstr "\u30b9\u30b1\u30b8\u30e5\u30fc\u30eb\u3092\u5b9f\u884c"
-
-#:
-msgid "runschedule.status"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u4e0a\u3067\u3001\u30b9\u30b1\u30b8\u30e5\u30fc\u30eb ''{0}'' \u3092\u5b9f\u884c\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "materializeviews.short_description"
-msgstr "\u30b5\u30a4\u30c8/\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u306e\u5177\u4f53\u5316\u3055\u308c\u305f\u30d3\u30e5\u30fc\u8a2d\u5b9a\u3092\u66f4\u65b0\u3057\u3066\u78ba\u8a8d\u3059\u308b"
-
-#:
-msgid "materializeviews.status.site"
-msgstr "\u30b5\u30a4\u30c8 ''{0}'' \u306e\u5177\u4f53\u5316\u3055\u308c\u305f\u30d3\u30e5\u30fc\u8a2d\u5b9a\u3092\u66f4\u65b0\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "materializeviews.status.workbook"
-msgstr "\u30ef\u30fc\u30af\u30d6\u30c3\u30af ''{0}'' \u306e\u5177\u4f53\u5316\u3055\u308c\u305f\u30d3\u30e5\u30fc\u8a2d\u5b9a\u3092\u66f4\u65b0\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "materializeviews.errors.invalid_workbook_arguments"
-msgstr "\u5177\u4f53\u5316\u3055\u308c\u305f\u30d3\u30e5\u30fc \u30b3\u30de\u30f3\u30c9\u306b\u306f\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u540d\u306e\u5f15\u6570\u304c 1 \u3064\u5fc5\u8981\u3067\u3059"
-
-#:
-msgid "materializeviews.errors.invalid_site_arguments"
-msgstr "\u5177\u4f53\u5316\u3055\u308c\u305f\u30d3\u30e5\u30fc \u30b3\u30de\u30f3\u30c9\u306b\u306f\u30b5\u30a4\u30c8 ID \u306e\u5f15\u6570\u304c 1 \u3064\u5fc5\u8981\u3067\u3059"
-
-#:
-msgid "materializeviews.errors.invalid_workbook_option"
-msgstr "''{2}'' \u3068\u5171\u306b ''{0}'' \u307e\u305f\u306f ''{1}'' \u3092\u4f7f\u7528\u3057\u3066\u304f\u3060\u3055\u3044"
-
-#:
-msgid "materializeviews.errors.invalid_project_path"
-msgstr "''{0}'' \u3068\u5171\u306b ''{1}'' \u3092\u4f7f\u7528\u3057\u3066\u304f\u3060\u3055\u3044"
-
-#:
-msgid "materializeviews.errors.invalid_site_option"
-msgstr "''{1}'' \u3068\u5171\u306b ''{0}'' \u3092\u4f7f\u7528\u3057\u3066\u304f\u3060\u3055\u3044"
-
-#:
-msgid "materializeviews.errors.site_mode_conflict"
-msgstr "\u30b5\u30a4\u30c8\u306e\u5177\u4f53\u5316\u3055\u308c\u305f\u30d3\u30e5\u30fc \u30e2\u30fc\u30c9\u3092\u5909\u66f4\u3059\u308b\u306b\u306f ''{0}'' \u307e\u305f\u306f ''{1}'' \u3092\u4f7f\u7528\u3057\u3066\u304f\u3060\u3055\u3044"
-
-#:
-msgid "materializeviews.errors.site_not_updated"
-msgstr "\u30b5\u30a4\u30c8 ''{0}'' \u306f\u66f4\u65b0\u3055\u308c\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u5177\u4f53\u5316\u3055\u308c\u305f\u30d3\u30e5\u30fc\u306e\u8a2d\u5b9a\u306f\u30b5\u30fc\u30d0\u30fc\u7ba1\u7406\u8005\u306e\u307f\u304c\u5909\u66f4\u3067\u304d\u307e\u3059"
-
-#:
-msgid "materializeviews.errors.invalid_argument_options_combination"
-msgstr "\u5177\u4f53\u5316\u3055\u308c\u305f\u30d3\u30e5\u30fc\u306e\u8a2d\u5b9a\u3092\u5909\u66f4\u3059\u308b\u306b\u306f ''{0}'' \u307e\u305f\u306f ''{1}'' \u3092\u4f7f\u7528\u3057\u3066\u304f\u3060\u3055\u3044"
-
-#:
-msgid "materializeviews.options.materialize_now"
-msgstr "\u6307\u5b9a\u3057\u305f\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u306e\u30de\u30c6\u30ea\u30a2\u30eb\u5316\u3092\u3059\u3050\u306b\u30b9\u30b1\u30b8\u30e5\u30fc\u30eb\u3059\u308b\u306b\u306f ''{0}'' \u3092\u4f7f\u7528\u3057\u3066\u304f\u3060\u3055\u3044"
-
-#:
-msgid "materializeviews.options.project"
-msgstr "\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u540d\u3092\u6307\u5b9a\u3059\u308b\u306b\u306f ''{0}'' \u3092\u4f7f\u7528\u3057\u3066\u304f\u3060\u3055\u3044"
-
-#:
-msgid "materializeviews.options.parent_project_path"
-msgstr "\u89aa\u30d7\u30ed\u30b8\u30a7\u30af\u30c8 \u30d1\u30b9\u3092 ''{1}'' \u306b\u6307\u5b9a\u3059\u308b\u306b\u306f ''{0}'' \u3092\u4f7f\u7528\u3057\u3066\u304f\u3060\u3055\u3044"
-
-#:
-msgid "materializeviews.options.allow_workbook"
-msgstr "\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u3067\u5177\u4f53\u5316\u3055\u308c\u305f\u30d3\u30e5\u30fc\u3092\u6709\u52b9/\u7121\u52b9\u306b\u3059\u308b\u306b\u306f ''{0}'' \u3092\u4f7f\u7528\u3057\u3066\u304f\u3060\u3055\u3044"
-
-#:
-msgid "materializeviews.options.allow_site"
-msgstr "\u30b5\u30a4\u30c8\u3067\u5177\u4f53\u5316\u3055\u308c\u305f\u30d3\u30e5\u30fc\u3092\u6709\u52b9/\u7121\u52b9\u306b\u3059\u308b\u306b\u306f ''{0}'' \u3092\u4f7f\u7528\u3057\u3066\u304f\u3060\u3055\u3044"
-
-#:
-msgid "materializeviews.options.selected_workbooks"
-msgstr "\u30b5\u30a4\u30c8\u3067\u9078\u629e\u3055\u308c\u305f\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u3092\u6709\u52b9\u306b\u3059\u308b\u306b\u306f ''{0}'' \u3092\u4f7f\u7528\u3057\u3066\u304f\u3060\u3055\u3044\u3002\u3053\u308c\u306f\u30aa\u30d7\u30b7\u30e7\u30f3 ''{1}'' \u3068\u5171\u306b\u4f7f\u7528\u3055\u308c\u307e\u3059\u3002\u3053\u308c\u306f\u65e2\u5b9a\u306e\u30aa\u30d7\u30b7\u30e7\u30f3\u3067\u3059"
-
-#:
-msgid "materializeviews.options.all_workbooks"
-msgstr "\u30b5\u30a4\u30c8\u3067\u3059\u3079\u3066\u306e\u30ef\u30fc\u30af\u30d6\u30c3\u30af\u3092\u6709\u52b9\u306b\u3059\u308b\u306b\u306f ''{0}'' \u3092\u4f7f\u7528\u3057\u3066\u304f\u3060\u3055\u3044\u3002\u3053\u308c\u306f\u30aa\u30d7\u30b7\u30e7\u30f3 ''{1}'' \u3068\u5171\u306b\u4f7f\u7528\u3055\u308c\u307e\u3059"
-
-#:
-msgid "session.auto_site_login"
-msgstr "\u30b5\u30a4\u30c8\u3078\u306e\u81ea\u52d5\u30b5\u30a4\u30f3\u30a4\u30f3: {0}"
-
-#:
-msgid "session.certificate-alias"
-msgstr "\u8a3c\u660e\u66f8\u306e\u5225\u540d: {0}"
-
-#:
-msgid "session.connecting"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u306b\u63a5\u7d9a\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "session.continuing_session"
-msgstr "\u524d\u306e\u30bb\u30c3\u30b7\u30e7\u30f3\u3092\u7d9a\u884c\u3057\u3066\u3044\u307e\u3059"
-
-#:
-msgid "session.errors.auth_required"
-msgstr "\u6a29\u9650\u304c\u5fc5\u8981\u3067\u3059"
-
-#:
-msgid "session.errors.invalid_keystore_password"
-msgstr "\u30ad\u30fc\u30b9\u30c8\u30a2 \u30d1\u30b9\u30ef\u30fc\u30c9\u304c\u6b63\u3057\u304f\u3042\u308a\u307e\u305b\u3093\u3002\u6b63\u3057\u3044\u30d1\u30b9\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u518d\u8a66\u884c\u3057\u3066\u304f\u3060\u3055\u3044"
-
-#:
-msgid "session.errors.invalid_redirect"
-msgstr "URL \u304c\u7121\u52b9\u306a\u305f\u3081\u3001\u30ea\u30c0\u30a4\u30ec\u30af\u30c8\u3067\u304d\u307e\u305b\u3093: {0}"
-
-#:
-msgid "session.errors.keystore_pwdfile_create"
-msgstr "\u30ad\u30fc\u30b9\u30c8\u30a2 \u30d1\u30b9\u30ef\u30fc\u30c9 \u30d5\u30a1\u30a4\u30eb\u3092\u4f5c\u6210\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u30a8\u30e9\u30fc: {0}"
-
-#:
-msgid "session.errors.missing_arguments"
-msgstr "\u5f15\u6570\u304c\u6307\u5b9a\u3055\u308c\u3066\u3044\u306a\u3044\u305f\u3081\u3001\u30b5\u30a4\u30f3\u30a4\u30f3\u3067\u304d\u307e\u305b\u3093: {0}"
-
-#:
-msgid "session.errors.no_redirect_found"
-msgstr "\u30ea\u30c0\u30a4\u30ec\u30af\u30c8\u5fdc\u7b54\u306b\u30ea\u30c0\u30a4\u30ec\u30af\u30c8 \u30a2\u30c9\u30ec\u30b9\u304c\u3042\u308a\u307e\u305b\u3093"
-
-#:
-msgid "session.errors.no_sslcafile_found"
-msgstr "\u6b21\u306e\u5834\u6240\u3067\u8a3c\u660e\u6a5f\u95a2 (CA) \u30d5\u30a1\u30a4\u30eb\u3092\u898b\u3064\u3051\u308b\u3053\u3068\u304c\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f: ''{0}''\u3002CA \u30d5\u30a1\u30a4\u30eb\u306f Tableau Server \u3068\u306e\u4fdd\u8b77\u3055\u308c\u305f\u901a\u4fe1\u3092\u884c\u3046\u3053\u3068\u304c\u3067\u304d\u308b\u3088\u3046\u306b\u4f7f\u7528\u3055\u308c\u307e\u3059\u3002CA \u30d5\u30a1\u30a4\u30eb\u306e\u4f5c\u6210\u306e\u8a73\u7d30\u306b\u3064\u3044\u3066\u306f\u3001Tableau Server \u30d8\u30eb\u30d7\u3092\u53c2\u7167\u3057\u3066\u304f\u3060\u3055\u3044\u3002SSL \u8a3c\u660e\u66f8\u3092\u691c\u8a3c\u305b\u305a\u306b Tableau Server \u306b\u63a5\u7d9a\u3059\u308b\u306b\u306f\u3001--no-certcheck \u30d5\u30e9\u30b0\u3092\u4f7f\u7528\u3057\u307e\u3059\u3002"
-
-#:
-msgid "session.errors.script_no_password"
-msgstr "Tabcmd \u304c\u30b9\u30af\u30ea\u30d7\u30c8\u307e\u305f\u306f IDE \u304b\u3089\u5b9f\u884c\u3055\u308c\u307e\u3057\u305f\u304c\u3001\u30d1\u30b9\u30ef\u30fc\u30c9\u304c\u6307\u5b9a\u3055\u308c\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u30ed\u30b0\u30a4\u30f3\u3059\u308b\u306b\u306f\u3001tabcmd \u3078\u306e\u5f15\u6570\u3068\u3057\u3066\u30d1\u30b9\u30ef\u30fc\u30c9\u3092\u6307\u5b9a\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002"
-
-#:
-msgid "session.errors.session_expired"
-msgstr "\u30bb\u30c3\u30b7\u30e7\u30f3\u306e\u6709\u52b9\u671f\u9650\u304c\u5207\u308c\u307e\u3057\u305f"
-
-#:
-msgid "session.errors.unsupported_command"
-msgstr "\u30b3\u30de\u30f3\u30c9\u306f\u3001\u3053\u306e\u30b5\u30fc\u30d0\u30fc\u3067\u30b5\u30dd\u30fc\u30c8\u3055\u308c\u3066\u3044\u307e\u305b\u3093"
-
-#:
-msgid "session.keystore.notice"
-msgstr "\u30d1\u30b9\u30ef\u30fc\u30c9\u3092\u30ed\u30fc\u30ab\u30eb\u306b\u4fdd\u5b58\u3057\u3066\u3001\u6b21\u56de\u306e\u30d1\u30b9\u30ef\u30fc\u30c9\u5165\u529b\u3092\u7701\u7565\u3057\u307e\u3059\u304b\u3002 [\u306f\u3044/\u3044\u3044\u3048]"
-
-#:
-msgid "session.keystore.password"
-msgstr "\u30ad\u30fc\u30b9\u30c8\u30a2 \u30d1\u30b9\u30ef\u30fc\u30c9:"
-
-#:
-msgid "session.keystore.pwdfile_create"
-msgstr "\u6b21\u306e\u30d1\u30b9\u306b\u30ad\u30fc\u30b9\u30c8\u30a2 \u30d1\u30b9\u30ef\u30fc\u30c9\u3092\u4f5c\u6210\u3057\u307e\u3059: {0}"
-
-#:
-msgid "session.keystore.pwdfile_remove"
-msgstr "\u6b63\u3057\u304f\u306a\u3044\u30d1\u30b9\u30ef\u30fc\u30c9\u3092\u542b\u3080\u30ad\u30fc\u30b9\u30c8\u30a2 \u30d1\u30b9\u30ef\u30fc\u30c9 \u30d5\u30a1\u30a4\u30eb\u3092\u524a\u9664\u3059\u308b"
-
-#:
-msgid "session.login"
-msgstr "\u30b5\u30a4\u30f3\u30a4\u30f3\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "session.logout"
-msgstr "\u30b5\u30a4\u30f3\u30a2\u30a6\u30c8\u3057\u307e\u3057\u305f"
-
-#:
-msgid "session.monitorjob.errors.no_jobid"
-msgstr "\u30b8\u30e7\u30d6\u3092\u76e3\u8996\u3067\u304d\u307e\u305b\u3093\u3002job_id \u304c\u898b\u3064\u304b\u308a\u307e\u305b\u3093: {0}"
-
-#:
-msgid "session.monitorjob.percent_complete"
-msgstr "{0}% \u5b8c\u4e86"
-
-#:
-msgid "session.new_session"
-msgstr "\u65b0\u3057\u3044\u30bb\u30c3\u30b7\u30e7\u30f3\u3092\u4f5c\u6210\u3057\u3066\u3044\u307e\u3059"
-
-#:
-msgid "session.no-certificate-found"
-msgstr "\u6709\u52b9\u306a\u30af\u30e9\u30a4\u30a2\u30f3\u30c8\u8a3c\u660e\u66f8\u304c\u898b\u3064\u304b\u308a\u307e\u305b\u3093"
-
-#:
-msgid "session.not_default_site_member"
-msgstr "\u65e2\u5b9a\u306e\u30b5\u30a4\u30c8\u306e\u30e1\u30f3\u30d0\u30fc\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u6b21\u306e\u30b5\u30a4\u30c8\u304b\u3089\u30b5\u30a4\u30c8 ID \u3092\u9078\u629e\u3057\u3066\u304f\u3060\u3055\u3044:"
-
-#:
-msgid "session.not_site_member"
-msgstr "\u30b5\u30a4\u30c8 ''{0}'' \u306e\u30e1\u30f3\u30d0\u30fc\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u6b21\u306e\u30b5\u30a4\u30c8\u304b\u3089\u30b5\u30a4\u30c8 ID \u3092\u9078\u629e\u3057\u3066\u304f\u3060\u3055\u3044:"
-
-#:
-msgid "session.options.help"
-msgstr "tabcmd \u306e\u30d8\u30eb\u30d7\u3092\u8868\u793a"
-
-#:
-msgid "session.options.no-certcheck"
-msgstr "SSL \u8a3c\u660e\u66f8\u3092\u691c\u8a3c\u3057\u306a\u3044"
-
-#:
-msgid "session.options.no-cookie"
-msgstr "\u30b5\u30a4\u30f3\u30a4\u30f3\u6642\u306b\u30bb\u30c3\u30b7\u30e7\u30f3 ID \u3092\u4fdd\u5b58\u3057\u307e\u305b\u3093\u3002\u5f8c\u7d9a\u306e\u30b3\u30de\u30f3\u30c9\u3092\u5b9f\u884c\u3059\u308b\u969b\u306b\u306f\u3001\u518d\u5ea6\u30b5\u30a4\u30f3\u30a4\u30f3\u304c\u5fc5\u8981\u306b\u306a\u308a\u307e\u3059\u3002\u6307\u5b9a\u3057\u306a\u3044\u5834\u5408\u3001\u65e2\u5b9a\u3067\u306f\u30bb\u30c3\u30b7\u30e7\u30f3 ID \u304c\u4fdd\u5b58\u3055\u308c\u307e\u3059"
-
-#:
-msgid "session.options.no-prompt"
-msgstr "\u30d1\u30b9\u30ef\u30fc\u30c9\u306e\u5165\u529b\u3092\u6c42\u3081\u306a\u3044"
-
-#:
-msgid "session.options.no-proxy"
-msgstr "HTTP \u30d7\u30ed\u30ad\u30b7\u3092\u4f7f\u7528\u3057\u306a\u3044"
-
-#:
-msgid "session.options.password"
-msgstr "\u6307\u5b9a\u3055\u308c\u305f Tableau Server \u30d1\u30b9\u30ef\u30fc\u30c9\u3092\u4f7f\u7528"
-
-#:
-msgid "session.options.password-file"
-msgstr "\u30d5\u30a1\u30a4\u30eb\u304b\u3089 Tableau Server \u30d1\u30b9\u30ef\u30fc\u30c9\u3092\u8aad\u307f\u8fbc\u3080"
-
-#:
-msgid "session.options.proxy"
-msgstr "\u6307\u5b9a\u3055\u308c\u305f HTTP \u30d7\u30ed\u30ad\u30b7\u3092\u4f7f\u7528"
-
-#:
-msgid "session.options.server"
-msgstr "\u6307\u5b9a\u3055\u308c\u305f Tableau Server URL \u3092\u4f7f\u7528\u3057\u307e\u3059\u3002\u30d7\u30ed\u30c8\u30b3\u30eb\u304c\u6307\u5b9a\u3055\u308c\u3066\u3044\u306a\u3044\u5834\u5408\u306f\u3001http:// \u3067\u3042\u308b\u3068\u898b\u306a\u3055\u308c\u307e\u3059"
-
-#:
-msgid "session.options.site"
-msgstr "\u6307\u5b9a\u3057\u305f Tableau Server \u30b5\u30a4\u30c8\u3092\u4f7f\u7528\u3057\u307e\u3059\u3002\u7a7a\u306e\u6587\u5b57\u5217 ('''') \u3092\u6307\u5b9a\u3059\u308b\u3068\u3001\u65e2\u5b9a\u306e\u30b5\u30a4\u30c8\u304c\u5f37\u5236\u7684\u306b\u4f7f\u7528\u3055\u308c\u307e\u3059"
-
-#:
-msgid "session.options.timeout"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u304c\u30b3\u30de\u30f3\u30c9\u306e\u51e6\u7406\u304c\u5b8c\u4e86\u3059\u308b\u307e\u3067\u5f85\u6a5f\u3059\u308b\u6642\u9593\u3092\u79d2\u5358\u4f4d\u3067\u6307\u5b9a\u3057\u307e\u3059\u3002\u65e2\u5b9a\u3067\u306f\u3001\u30b5\u30fc\u30d0\u30fc\u304b\u3089\u5fdc\u7b54\u304c\u8fd4\u3063\u3066\u304f\u308b\u307e\u3067\u5f85\u6a5f\u3057\u307e\u3059"
-
-#:
-msgid "session.options.use-certificate"
-msgstr "\u30af\u30e9\u30a4\u30a2\u30f3\u30c8\u8a3c\u660e\u66f8\u3092\u4f7f\u7528\u3057\u3066\u30b5\u30a4\u30f3\u30a4\u30f3\u3057\u3066\u304f\u3060\u3055\u3044"
-
-#:
-msgid "session.options.username"
-msgstr "\u6307\u5b9a\u3055\u308c\u305f Tableau Server \u30e6\u30fc\u30b6\u30fc\u540d\u3092\u4f7f\u7528"
-
-#:
-msgid "session.password"
-msgstr "\u30d1\u30b9\u30ef\u30fc\u30c9:"
-
-#:
-msgid "session.retrying_task"
-msgstr "\u65b0\u3057\u3044\u30bb\u30c3\u30b7\u30e7\u30f3\u3067\u5143\u306e\u30b3\u30de\u30f3\u30c9\u3092\u518d\u8a66\u884c\u3059\u308b\u305f\u3081\u306b\u3082\u3046\u4e00\u5ea6\u30b5\u30a4\u30f3\u30a4\u30f3\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "session.session_expired_login"
-msgstr "\u30bb\u30c3\u30b7\u30e7\u30f3\u306e\u6709\u52b9\u671f\u9650\u304c\u5207\u308c\u307e\u3057\u305f\u3002\u30bb\u30c3\u30b7\u30e7\u30f3\u3092\u30af\u30ea\u30a2\u3059\u308b\u305f\u3081\u306b\u30b5\u30a4\u30f3\u30a2\u30a6\u30c8\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "session.site_list"
-msgstr "{0}{0}\u540d\u524d: {1}{0}\u30b5\u30a4\u30c8 ID: ''{2}''"
-
-#:
-msgid "session.using-certificate"
-msgstr "\u30af\u30e9\u30a4\u30a2\u30f3\u30c8\u8a3c\u660e\u66f8\u3092\u4f7f\u7528\u3057\u305f\u30b5\u30a4\u30f3\u30a4\u30f3"
-
-#:
-msgid "session.inferred_username"
-msgstr "--username \u30d5\u30e9\u30b0\u304c\u6307\u5b9a\u3055\u308c\u3066\u3044\u306a\u3044\u305f\u3081\u3001\u30e6\u30fc\u30b6\u30fc ''{0}'' \u3068\u3057\u3066\u30ed\u30b0\u30a4\u30f3\u3057\u3066\u3044\u307e\u3059"
-
-#:
-msgid "sessiondata.errors.bad_api"
-msgstr "\u30b5\u30fc\u30d0\u30fc API \u304c\u6b63\u3057\u304f\u3042\u308a\u307e\u305b\u3093: {0}"
-
-#:
-msgid "sessiondata.errors.no_server_api"
-msgstr "\u5fdc\u7b54\u306b\u30b5\u30fc\u30d0\u30fc API \u30d0\u30fc\u30b8\u30e7\u30f3\u304c\u898b\u3064\u304b\u308a\u307e\u305b\u3093"
-
-#:
-msgid "sessiondata.errors.version_mismatch"
-msgstr "tabcmd \u306e\u30d0\u30fc\u30b8\u30e7\u30f3 {0} (API {1}) \u304c\u3001Tableau Server \u306e\u30d0\u30fc\u30b8\u30e7\u30f3 {2} (API {3}) \u3068\u4e00\u81f4\u3057\u307e\u305b\u3093"
-
-#:
-msgid "sessionoptions.errors.ambiguous_scheme"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u540d\u306e\u524d\u306b ''{0}'' \u307e\u305f\u306f ''{1}'' \u3092\u6307\u5b9a\u3057\u307e\u3059"
-
-#:
-msgid "sessionoptions.errors.bad_password_file"
-msgstr "\u30d5\u30a1\u30a4\u30eb ''{0}'' \u304b\u3089\u30d1\u30b9\u30ef\u30fc\u30c9\u3092\u8aad\u307f\u8fbc\u3081\u307e\u305b\u3093"
-
-#:
-msgid "sessionoptions.errors.bad_protocol"
-msgstr "\u30d7\u30ed\u30c8\u30b3\u30eb ''{0}'' \u306f\u30b5\u30dd\u30fc\u30c8\u3055\u308c\u3066\u3044\u307e\u305b\u3093"
-
-#:
-msgid "sessionoptions.errors.bad_proxy_format"
-msgstr "\u30d7\u30ed\u30ad\u30b7\u306e\u5f62\u5f0f\u304c\u3001\u30db\u30b9\u30c8:\u30dd\u30fc\u30c8\u306b\u4e00\u81f4\u3057\u3066\u3044\u307e\u305b\u3093: {0}"
-
-#:
-msgid "sessionoptions.errors.bad_timeout"
-msgstr "{0} ''{1}'' \u3078\u306e\u975e\u6570\u5024\u306e\u5f15\u6570\u306f\u7121\u8996\u3055\u308c\u307e\u3059"
-
-#:
-msgid "set.description"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u4e0a\u3067\u8a2d\u5b9a\u3092\u884c\u3044\u307e\u3059\u3002\u8a2d\u5b9a\u3092\u30aa\u30d5\u306b\u3059\u308b\u306b\u306f\u3001!setting \u3092\u4f7f\u7528\u3057\u307e\u3059"
-
-#:
-msgid "set.errors.requires_setting_name"
-msgstr "''{0}'' \u30b3\u30de\u30f3\u30c9\u3067\u306f\u3001\u8a2d\u5b9a\u540d\u304c\u5fc5\u8981\u3067\u3059"
-
-#:
-msgid "set.errors.single_setting_name"
-msgstr "''{0}'' \u30b3\u30de\u30f3\u30c9\u306f\u3001\u5358\u4e00\u306e\u8a2d\u5b9a\u540d\u3092\u53d7\u3051\u53d6\u308a\u307e\u3059"
-
-#:
-msgid "set.short_description"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u4e0a\u3067\u8a2d\u5b9a\u3092\u884c\u3044\u307e\u3059"
-
-#:
-msgid "setsetting.status"
-msgstr "''{0}'' \u3092 {1} \u306b\u8a2d\u5b9a\u3057\u3066\u3044\u307e\u3059"
-
-#:
-msgid "syncgroup.errors.server_admin"
-msgstr "\u30b0\u30eb\u30fc\u30d7\u306e\u6700\u4f4e\u9650\u306e\u30b5\u30a4\u30c8 \u30ed\u30fc\u30eb\u306f\u3001[ServerAdministrator] \u306b\u8a2d\u5b9a\u3067\u304d\u307e\u305b\u3093\u3002"
-
-#:
-msgid "syncgroup.options.role"
-msgstr "\u30b0\u30eb\u30fc\u30d7\u5185\u306e\u3059\u3079\u3066\u306e\u30e6\u30fc\u30b6\u30fc\u306e\u65e2\u5b9a\u306e\u30ed\u30fc\u30eb\u3092\u8a2d\u5b9a\u3057\u307e\u3059\u3002{0} \u306e\u6709\u52b9\u306a\u5024\u306f {1} \u3067\u3059\u3002\u30e6\u30fc\u30b6\u30fc\u304c\u65e2\u306b\u5b58\u5728\u3059\u308b\u5834\u5408\u3001\u6307\u5b9a\u3057\u305f\u30ed\u30fc\u30eb\u306f\u3001\u30e6\u30fc\u30b6\u30fc\u306e\u73fe\u5728\u306e\u30ed\u30fc\u30eb\u3088\u308a\u3082\u5236\u9650\u304c\u7de9\u3044\u5834\u5408\u306b\u306e\u307f\u9069\u7528\u3055\u308c\u307e\u3059\u3002\u5024\u3092\u6307\u5b9a\u3057\u306a\u3044\u5834\u5408\u306e\u65e2\u5b9a\u5024: \u65b0\u898f\u30e6\u30fc\u30b6\u30fc\u306e\u5834\u5408\u306f {2}\u3001\u65e2\u5b58\u306e\u30e6\u30fc\u30b6\u30fc\u306e\u5834\u5408\u306f\u672a\u5909\u66f4\u3067\u3059"
-
-#:
-msgid "syncgroup.options.overwritesiterole"
-msgstr "\u300c--role\u300d\u3092\u4f7f\u7528\u3057\u3066\u65e2\u5b9a\u306e\u52d5\u4f5c\u3092\u30aa\u30fc\u30d0\u30fc\u30e9\u30a4\u30c9\u3059\u308b\u3053\u3068\u3067\u3001\u30e6\u30fc\u30b6\u30fc\u306e\u30b5\u30a4\u30c8 \u30ed\u30fc\u30eb\u306e\u6a29\u9650\u3092\u3088\u308a\u4f4e\u3044\u3082\u306e\u306b\u5909\u66f4\u3067\u304d\u308b\u3088\u3046\u306b\u3057\u307e\u3059\u3002"
-
-#:
-msgid "syncgroup.options.grantlicensemode"
-msgstr "\u30b0\u30eb\u30fc\u30d7\u3067\u6307\u5b9a\u3055\u308c\u305f\u30e9\u30a4\u30bb\u30f3\u30b9\u3092\u30e6\u30fc\u30b6\u30fc\u306b\u4ed8\u4e0e\u3059\u308b\u6642\u671f\u3002\u6709\u52b9\u306a\u5024\u306f {0} \u3067\u3059\u3002\u5024\u304c\u6e21\u3055\u308c\u306a\u3044\u5834\u5408\u3001\u65e2\u5b9a\u5024\u3068\u3057\u3066 ''on-sync'' \u304c\u4f7f\u7528\u3055\u308c\u307e\u3059\u3002"
-
-#:
-msgid "syncgroup.short_description"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u3092 Active Directory \u30b0\u30eb\u30fc\u30d7\u3068\u540c\u671f"
-
-#:
-msgid "syncgroup.status"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u3092 Active Directory \u30b0\u30eb\u30fc\u30d7 {0} \u3068\u540c\u671f\u3057\u3066\u3044\u307e\u3059..."
-
-#:
-msgid "syncgroup.options.sysadmin-type"
-msgstr "[\u5ec3\u6b62\u4e88\u5b9a\u3002\u4ee3\u308f\u308a\u306b\u300c--role\u300d\u3092\u4f7f\u7528\u3057\u3066\u304f\u3060\u3055\u3044\u3002] \u30b0\u30eb\u30fc\u30d7\u5185\u306e\u3059\u3079\u3066\u306e\u30e6\u30fc\u30b6\u30fc\u306b\u7ba1\u7406\u8005\u6a29\u9650\u3092\u5272\u308a\u5f53\u3066 [\u307e\u305f\u306f\u524a\u9664] \u3057\u307e\u3059\u3002{0} \u306b\u306f\u3001{1}\u3001{2}\u3001{3}\u3001\u307e\u305f\u306f {4} \u3092\u4f7f\u7528\u3067\u304d\u307e\u3059\u3002"
-
-#:
-msgid "syncgroup.options.license"
-msgstr "[\u5ec3\u6b62\u4e88\u5b9a\u3002\u4ee3\u308f\u308a\u306b\u300c--role\u300d\u3092\u4f7f\u7528\u3057\u3066\u304f\u3060\u3055\u3044\u3002\u30b0\u30eb\u30fc\u30d7\u5185\u306e\u3059\u3079\u3066\u306e\u30e6\u30fc\u30b6\u30fc\u306b\u65e2\u5b9a\u306e\u30e9\u30a4\u30bb\u30f3\u30b9 \u30ec\u30d9\u30eb\u3092\u8a2d\u5b9a\u3057\u3066\u304f\u3060\u3055\u3044\u3002{0} \u306b\u306f {1}\u3001{2}\u3001\u307e\u305f\u306f {3} \u3092\u4f7f\u7528\u3067\u304d\u307e\u3059\u3002"
-
-#:
-msgid "syncgroup.options.publisher"
-msgstr "[\u5ec3\u6b62\u4e88\u5b9a\u3002\u4ee3\u308f\u308a\u306b\u300c--role\u300d\u3092\u4f7f\u7528\u3057\u3066\u304f\u3060\u3055\u3044\u3002\u30b0\u30eb\u30fc\u30d7\u5185\u306e\u3059\u3079\u3066\u306e\u30e6\u30fc\u30b6\u30fc\u306b\u30d1\u30d6\u30ea\u30c3\u30b7\u30e5\u6a29\u9650\u3092\u5272\u308a\u5f53\u3066 [\u307e\u305f\u306f\u524a\u9664] \u3057\u3066\u304f\u3060\u3055\u3044\u3002"
-
-#:
-msgid "tabcmd.mutually_exclusive_options"
-msgstr "\u540c\u3058\u30b3\u30de\u30f3\u30c9\u5185\u3067 ''{0}'' \u3068 ''{1}'' \u3092\u6307\u5b9a\u3067\u304d\u307e\u305b\u3093"
-
-#:
-msgid "tabcmdparser.errors.ambiguous_option"
-msgstr "\u30aa\u30d7\u30b7\u30e7\u30f3\u5185\u3067\u30aa\u30d7\u30b7\u30e7\u30f3 ''{0}'' \u306e\u6307\u5b9a\u304c\u3042\u3044\u307e\u3044\u3067\u3059: {1}"
-
-#:
-msgid "tabcmdparser.warning.unexpected_dash"
-msgstr "\u5f15\u6570: {0} \u3067\u4e88\u671f\u3057\u306a\u3044\u30c0\u30c3\u30b7\u30e5\u304c\u691c\u51fa\u3055\u308c\u307e\u3057\u305f\u3002\u6709\u52b9\u306a\u30c0\u30c3\u30b7\u30e5\u306f - \u307e\u305f\u306f -- \u3067\u3059\u3002\u3053\u306e\u30a8\u30e9\u30fc\u306f\u3001\u66f8\u5f0f\u8a2d\u5b9a\u3055\u308c\u305f\u30c6\u30ad\u30b9\u30c8 \u30a8\u30c7\u30a3\u30bf\u30fc\u304b\u3089\u30b3\u30d4\u30fc\u3084\u8cbc\u308a\u4ed8\u3051\u3092\u884c\u3046\u5834\u5408\u306b\u591a\u304f\u767a\u751f\u3057\u307e\u3059\u3002\u30b3\u30de\u30f3\u30c9 \u30e9\u30a4\u30f3\u3067\u5f15\u6570\u306e\u30c0\u30c3\u30b7\u30e5\u3092\u518d\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
-
-#:
-msgid "resetopenidsub.short_description"
-msgstr "\u30e6\u30fc\u30b6\u30fc\u306e OpenID \u63a5\u7d9a\u30b5\u30d6 ID \u3092\u30ea\u30bb\u30c3\u30c8"
-
-#:
-msgid "resetopenidsub.options.targetusername"
-msgstr "\u30ea\u30bb\u30c3\u30c8\u3055\u308c\u308b\u30e6\u30fc\u30b6\u30fc"
-
-#:
-msgid "resetopenidsub.options.all"
-msgstr "\u3059\u3079\u3066\u306e\u30e6\u30fc\u30b6\u30fc\u3092\u30ea\u30bb\u30c3\u30c8"
-
-#:
-msgid "version.description"
-msgstr "\u30d0\u30fc\u30b8\u30e7\u30f3\u60c5\u5831\u3092\u51fa\u529b\u3057\u307e\u3059"
-
-#:
-msgid "vizqlsession.errors.cannot_create_session"
-msgstr "\u30b5\u30fc\u30d0\u30fc\u4e0a\u3067 VizQl \u30bb\u30c3\u30b7\u30e7\u30f3\u3092\u4f5c\u6210\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f"
-
-#:
-msgid "vizqlsession.errors.no_command_result"
-msgstr "\u30b3\u30de\u30f3\u30c9\u7d50\u679c\u304c\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f\u3002{0}"
-
-#:
-msgid "vizqlsession.errors.session_already_closed"
-msgstr "VizQl \u30bb\u30c3\u30b7\u30e7\u30f3 \u30aa\u30d6\u30b8\u30a7\u30af\u30c8\u304c\u65e2\u306b\u9589\u3058\u3089\u308c\u3066\u3044\u307e\u3059"
-
-#:
-msgid "vizqlsession.errors.cannot_parse_response"
-msgstr "JSON \u5fdc\u7b54\u6587\u5b57\u5217\u3092\u89e3\u6790\u3067\u304d\u307e\u305b\u3093: {0}"
-
-#:
-msgid "upgradethumbnails.short_description"
-msgstr "\u3053\u308c\u306b\u3088\u308a\u3001\u30b5\u30e0\u30cd\u30a4\u30eb\u306e\u30a2\u30c3\u30d7\u30b0\u30ec\u30fc\u30c9\u306e\u30d0\u30c3\u30af\u30b0\u30e9\u30a6\u30f3\u30c0\u30fc \u30b8\u30e7\u30d6\u304c\u5b9f\u884c\u3055\u308c\u307e\u3059\u3002Tableau 2018.2 \u3088\u308a\u3082\u524d\u306b\u751f\u6210\u3055\u308c\u305f\u30b5\u30e0\u30cd\u30a4\u30eb\u304c\u9ad8\u89e3\u50cf\u5ea6\u306b\u30ec\u30f3\u30c0\u30ea\u30f3\u30b0\u3055\u308c\u307e\u3059\u3002Tableau Server \u3068\u5916\u90e8\u30c7\u30fc\u30bf\u30bd\u30fc\u30b9\u306b\u901a\u5e38\u3088\u308a\u3082\u9ad8\u3044\u8ca0\u8377\u304c\u304b\u304b\u308b\u53ef\u80fd\u6027\u304c\u3042\u308a\u307e\u3059\u3002\u554f\u984c\u304c\u767a\u751f\u3057\u305f\u5834\u5408\u3001tabcmd upgradethumbnails --server <server> --stop \u3092\u5b9f\u884c\u3057\u3066\u30b8\u30e7\u30d6\u3092\u505c\u6b62\u3067\u304d\u307e\u3059\u3002"
-
-#:
-msgid "upgradethumbnails.options.stop"
-msgstr "\u30b5\u30e0\u30cd\u30a4\u30eb\u306e\u30a2\u30c3\u30d7\u30b0\u30ec\u30fc\u30c9\u306b\u95a2\u9023\u3059\u308b\u3059\u3079\u3066\u306e\u30b8\u30e7\u30d6\u3092\u505c\u6b62\u3057\u307e\u3059"
-
-#:
-msgid "upgradethumbnails.status.running"
-msgstr "\u30b5\u30e0\u30cd\u30a4\u30eb\u306e\u30a2\u30c3\u30d7\u30b0\u30ec\u30fc\u30c9\u3092\u958b\u59cb\u3057\u3066\u3044\u307e\u3059"
-
-#:
-msgid "upgradethumbnails.status.not_running"
-msgstr "\u30b5\u30e0\u30cd\u30a4\u30eb\u306e\u30a2\u30c3\u30d7\u30b0\u30ec\u30fc\u30c9\u3092\u958b\u59cb\u3057\u307e\u305b\u3093"
-
-#:
-msgid "upgradethumbnails.status.cancelling"
-msgstr "\u30b5\u30e0\u30cd\u30a4\u30eb\u306e\u30a2\u30c3\u30d7\u30b0\u30ec\u30fc\u30c9 \u30b8\u30e7\u30d6\u3092\u30ad\u30e3\u30f3\u30bb\u30eb\u3057\u3066\u3044\u307e\u3059"
-
-#:
-msgid "upgradethumbnails.continue_promt"
-msgstr "\u7d9a\u884c\u3057\u307e\u3059\u304b? \u7d9a\u884c\u3059\u308b\u5834\u5408\u306f 1\u3001\u7d9a\u884c\u3057\u306a\u3044\u5834\u5408\u306f 0 \u3092\u5165\u529b\u3057\u307e\u3059 (1/0)"
-
-#:
-msgid "upgradethumbnails.invalid_response"
-msgstr "\u7121\u52b9\u306a\u5fdc\u7b54"
-
-#:
-msgid "validateidpmetadata.options.digest_algorithms"
-msgstr "\u30c0\u30a4\u30b8\u30a7\u30b9\u30c8 \u30a2\u30eb\u30b4\u30ea\u30ba\u30e0\u3092\u30b9\u30da\u30fc\u30b9\u3067\u533a\u5207\u3063\u305f\u30ea\u30b9\u30c8\u3002 {0} \u306e\u6709\u52b9\u306a\u5024: {1}\u3002\u6307\u5b9a\u3057\u306a\u3044\u5834\u5408\u3001\u30b5\u30fc\u30d0\u30fc\u3067\u306f\u30b5\u30fc\u30d0\u30fc\u69cb\u6210\u8a2d\u5b9a\u306e\u5024\u304c\u4f7f\u7528\u3055\u308c\u307e\u3059: {2}"
-
-#:
-msgid "validateidpmetadata.options.min_allowed_rsa_key_size"
-msgstr "\u6307\u5b9a\u3057\u306a\u3044\u5834\u5408\u3001\u30b5\u30fc\u30d0\u30fc\u306f\u30b5\u30fc\u30d0\u30fc\u69cb\u6210\u306e\u8a2d\u5b9a\u5024 {0} \u3092\u4f7f\u7528\u3057\u307e\u3059\u3002"
-
-#:
-msgid "validateidpmetadata.options.min_allowed_elliptic_curve_size"
-msgstr "\u6307\u5b9a\u3057\u306a\u3044\u5834\u5408\u3001\u30b5\u30fc\u30d0\u30fc\u306f\u30b5\u30fc\u30d0\u30fc\u69cb\u6210\u306e\u8a2d\u5b9a\u5024 {0} \u3092\u4f7f\u7528\u3057\u307e\u3059\u3002"
-
-#:
-msgid "validateidpmetadata.options.site_names"
-msgstr "\u8a3c\u660e\u66f8\u306e\u691c\u8a3c\u304c\u5b9f\u884c\u3055\u308c\u308b\u30b5\u30a4\u30c8\u3092\u30b9\u30da\u30fc\u30b9\u3067\u533a\u5207\u3063\u305f\u30ea\u30b9\u30c8\u3002\u6307\u5b9a\u3057\u306a\u3044\u5834\u5408\u306f\u3001\u3059\u3079\u3066\u306e\u30b5\u30a4\u30c8\u304c\u691c\u67fb\u3055\u308c\u307e\u3059\u3002"
-
-#:
-msgid "validateidpmetadata.short_description"
-msgstr "\u5b89\u5168\u3067\u306a\u3044\u30c0\u30a4\u30b8\u30a7\u30b9\u30c8 \u30a2\u30eb\u30b4\u30ea\u30ba\u30e0 SHA-1 \u3092\u4f7f\u7528\u3057\u305f IdP \u3067\u69cb\u6210\u3055\u308c\u3066\u3044\u308b Tableau Server \u30b5\u30a4\u30c8\u3092\u8b58\u5225\u3057\u307e\u3059\u3002\u3053\u306e\u30b3\u30de\u30f3\u30c9\u306f\u3001\u30b5\u30a4\u30ba\u304c\u4e0d\u5341\u5206\u306a RSA \u30ad\u30fc\u307e\u305f\u306f\u30b5\u30a4\u30ba\u304c\u4e0d\u5341\u5206\u306a\u6955\u5186\u66f2\u7dda\u306e\u8a3c\u660e\u66f8\u3092\u4f7f\u7528\u3057\u3066\u3044\u308b IdP \u3082\u8b58\u5225\u3057\u307e\u3059\u3002"
-
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-25 04:01-0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.6.2\n"
+
+#: commandlineutils.errors.bad_value
+msgid "オプション ''{0}'' の値 ''{1}'' が不正です。次のいずれかであることが必要です:"
+" {2}"
+msgstr ""
+
+#: commandlineutils.errors.not_integer
+msgid "オプション ''{1}'' の値 ''{0}'' が整数ではありません"
+msgstr ""
+
+#: common.errors.empty_file
+msgid "ファイル ''{0}'' が空です"
+msgstr ""
+
+#: common.errors.file_not_found
+msgid "ファイル ''{0}'' を開くことができません"
+msgstr ""
+
+#: common.errors.invalid_file_path
+msgid "向こうなファイル パス ''{0}''"
+msgstr ""
+
+#: common.errors.folder_path_not_found
+msgid "ディレクトリ ''{0}'' が見つかりませんでした。"
+msgstr ""
+
+#: common.errors.access_denied
+msgid "ファイル ''{0}'' へのアクセスが拒否されました。パスが有効で、ファイル名が既存"
+"のディレクトリと一致しないことを確認してください"
+msgstr ""
+
+#: common.errors.requires_csv_file
+msgid "''{0}'' コマンドでは、CSV ファイルが必要です"
+msgstr ""
+
+#: common.errors.requires_group_name
+msgid "''{0}'' コマンドでは、グループ名が必要です"
+msgstr ""
+
+#: common.errors.requires_site_name
+msgid "''{0}'' コマンドでは、サイト名が必要です"
+msgstr ""
+
+#: common.errors.options_conflict
+msgid "ユーザー ロールを指定するための新しいオプションと廃止されたオプションが指定さ"
+"れました。使用できるのは 1 個だけです"
+msgstr ""
+
+#: common.errors.csv_sizelimit
+msgid ""
+"参照 CSV ファイルは 100 MB のサイズ制限を超えています。"
+"ファイルのコンテンツをサイズの小さな CSV "
+"ファイルに分割し、個別にインポートしてください。"
+msgstr ""
+
+#: common.options.admin-type
+msgid ""
+"[廃止予定] CSV ファイルのすべてのユーザーに対して、サイト管理権限を割り当て "
+"[または削除] します。この設定は、CSV "
+"ファイルの個別の行の値でオーバーライドできます。{0} には、{1}、{2}、または "
+"{3} を指定できます。値を指定しない場合は、新規ユーザーに対しては {3} "
+"が設定され、既存のユーザーに対しては値は変更されません"
+msgstr ""
+
+#: common.options.complete
+msgid "変更が正常に行われるために、すべての行が有効であることを要求します "
+"[または要求しません]。既定値: {0}"
+msgstr ""
+
+#: common.options.license
+msgid ""
+"[廃止予定] すべてのユーザーに対して、既定のライセンス "
+"レベルを設定します。この設定は、CSV ファイルの値でオーバーライドできます。{0}"
+" には、{1}、{2}、または {3} を指定できます"
+msgstr ""
+
+#: common.options.nowait
+msgid "ジョブが完了するまで待機しない"
+msgstr ""
+
+#: common.options.publisher
+msgid ""
+"[廃止予定] CSV ファイルのすべてのユーザーに対して、"
+"パブリッシュ権限を割り当て [または削除] します。この設定は、CSV "
+"ファイルの個別の行の値でオーバーライドできます。値を指定しない場合の既定値: "
+"新規ユーザーの場合は false、既存のユーザーの場合は未変更"
+msgstr ""
+
+#: common.options.silent-progress
+msgid "ジョブに対して進行状況メッセージを表示しない"
+msgstr ""
+
+#: common.options.sysadmin-type
+msgid ""
+"[廃止予定] CSV ファイルのすべてのユーザーに対して、サイト管理権限を割り当て "
+"[または削除] します。この設定は、CSV "
+"ファイルの個別の行の値でオーバーライドできます。{0} には、{1}、{2}、{3}、"
+"または {4} を指定できます。値を指定しない場合の既定値: 新規ユーザーの場合は "
+"{4}、既存のユーザーの場合は未変更"
+msgstr ""
+
+#: common.output.job_queued_success
+msgid "ジョブがキューに登録されました"
+msgstr ""
+
+#: common.output.succeeded
+msgid "正常に終了しました"
+msgstr ""
+
+#: common.options.role
+msgid ""
+"影響を受けるすべてのユーザーの既定のロールを設定します。{0} の有効な値は {1} "
+"です。指定されていない場合、サーバーは既定値 {2} を使用します。"
+msgstr ""
+
+#: addusers.options.users
+msgid "グループに追加するユーザーのリストを 1 行に 1 人のユーザーずつ含むファイル"
+msgstr ""
+
+#: addusers.short_description
+msgid "ユーザーをグループに追加"
+msgstr ""
+
+#: addusers.status
+msgid "{0} にリストされたユーザーをグループ {1} に追加しています..."
+msgstr ""
+
+#: creategroup.short_description
+msgid "ローカル グループの作成"
+msgstr ""
+
+#: creategroup.status
+msgid "グループ ''{0}'' をサーバー上で作成しています..."
+msgstr ""
+
+#: creategroup.options.role
+msgid ""
+"ログイン時にグループ内のユーザーに対して設定されるロールを設定します。{0} "
+"の有効な値: {1}。ユーザーのサイト ロールは、ユーザーの現在のロールよりも制限"
+"が緩い場合にのみこの値に設定されます。値を指定しない場合、ログイン時にこのグ"
+"ループのユーザーにはロールが設定されません。"
+msgstr ""
+
+#: createextracts.errors.required_argument
+msgid "createextracts コマンドでは、ワークブック URL、ワークブック名、またはデータ "
+"ソース名が必要です。"
+msgstr ""
+
+#: createextracts.errors.error
+msgid "抽出の作成エラー"
+msgstr ""
+
+#: createextracts.for.datasource
+msgid "データソース ''{0}'' の抽出を作成しています"
+msgstr ""
+
+#: createextracts.for.workbook_name
+msgid "名前が ''{0}'' であるワークブックの抽出を作成しています"
+msgstr ""
+
+#: createextracts.for.workbook_url
+msgid "URL が ''{0}'' であるワークブックの抽出を作成しています"
+msgstr ""
+
+#: createextracts.options.datasource
+msgid "抽出作成用のターゲット データ ソースの名前"
+msgstr ""
+
+#: createextracts.options.embedded-datasources
+msgid ""
+"ターゲット ワークブック内の埋め込みデータ "
+"ソース名をスペースで区切ったリスト。スペースが含まれるデータ ソース名は二重引"
+"用符で囲んでください。これはワークブックの抽出を作成する場合にのみ使用できま"
+"す。"
+msgstr ""
+
+#: createextracts.options.encrypt
+msgid "暗号化された抽出を作成します。"
+msgstr ""
+
+#: createextracts.options.include-all
+msgid "ターゲット ワークブック内の埋め込みデータ "
+"ソースをすべて含めます。ワークブックの抽出を作成する場合にのみ使用できます。"
+msgstr ""
+
+#: createextracts.options.parent-project-path
+msgctxt "createextracts.options.parent-project-path"
+msgid "ターゲット リソースを含むプロジェクトの親であるプロジェクトのパス。"
+"プロジェクト名を --project で指定する必要があります。"
+msgstr ""
+
+#: createextracts.options.project
+msgctxt "createextracts.options.project"
+msgid ""
+"ターゲット リソースを含むプロジェクトの名前。{0} または {1} "
+"が指定されている場合にのみ必要です。指定されていない場合は、"
+"既定のプロジェクト ''{2}'' が使用されます。"
+msgstr ""
+
+#: createextracts.options.url
+msgctxt "createextracts.options.url"
+msgid "リソースの URL に指定される正規名"
+msgstr ""
+
+#: createextracts.options.workbook
+msgid "抽出作成用のターゲット ワークブックの名前"
+msgstr ""
+
+#: createextracts.short_description
+msgid "パブリッシュされたワークブックまたはデータ ソース用の抽出を作成"
+msgstr ""
+
+#: createextracts.workbook.include-all
+msgctxt "createextracts.workbook.include-all"
+"createextracts.workbook.include-all"
+msgid "ターゲット ワークブック内の埋め込みデータ ソースをすべて含める"
+msgstr ""
+
+#: createextracts.workbook.embedded-datasource-names
+msgctxt "createextracts.workbook.embedded-datasource-names"
+msgid "埋め込みデータ ソース名あり"
+msgstr ""
+
+#: createproject.options.description
+msgid "プロジェクトの説明"
+msgstr ""
+
+#: createproject.options.name
+msgid "プロジェクトの名前"
+msgstr ""
+
+#: createproject.options.parent-project-path
+msgid "新しいプロジェクトを含むプロジェクトのパス。指定しない場合、サイト ルート "
+"レベルで作成されます"
+msgstr ""
+
+#: createproject.short_description
+msgid "プロジェクトの作成"
+msgstr ""
+
+#: createproject.status
+msgid "プロジェクト ''{0}'' をサーバー上で作成しています..."
+msgstr ""
+
+#: createsite.errors.invalid_url_option
+msgid ""
+"複数のサイトを作成する場合は、URL オプションは無効です。URL オプションを削除"
+"してからコマンドを再実行するか、各サイトを個別に作成してください"
+msgstr ""
+
+#: createsite.errors.site_name_already_exists
+msgid "''{0}'' という名前のサイトがすでに存在します。別のサイト名をお試しください。"
+msgstr ""
+
+#: createsite.errors.site_id_already_exists
+msgid ""
+"''{0}'' という ID のサイトは、すでに存在しています。-r を使用して別のサイト "
+"ID を指定してください。詳細については、tabcmd createsite "
+"のヘルプを参照してください。"
+msgstr ""
+
+#: createsite.options.allow-mobile-snapshots
+msgid "モバイル スナップショットを許可 [または拒否] します。既定では、モバイル "
+"スナップショットを許可します"
+msgstr ""
+
+#: createsite.options.allow-subscriptions
+msgid ""
+"このサイトのサブスクリプションを許可 [または拒否] します。既定では、サーバー"
+"の既定設定が使用されます。サーバーでサブスクリプションが無効になっている場合"
+"は、サブスクリプションを有効にできません"
+msgstr ""
+
+#: createsite.options.allow-web-authoring
+msgid "このサイトの Web 作成を許可 [または拒否] します。既定では、Web "
+"作成を許可します"
+msgstr ""
+
+#: createsite.options.metrics-level
+msgid "コレクションなしの場合は 0、すべてのコレクションの場合は 100"
+msgstr ""
+
+#: createsite.options.guest-access-enabled
+msgid "Tableau Server "
+"アカウントにサインインしていないユーザーがビューを表示するためのゲスト "
+"アクセス パーミッション"
+msgstr ""
+
+#: createsite.options.site-mode
+msgid "サイト管理者に対して、サイトのユーザー管理を許可 [または拒否] します"
+msgstr ""
+
+#: createsite.options.storage-quota
+msgid "サイト保存容量 (MB)"
+msgstr ""
+
+#: createsite.options.subscription-email
+msgid "サブスクリプションでメールを使用"
+msgstr ""
+
+#: createsite.options.subscription-footer
+msgid "サブスクリプションでフッターを使用"
+msgstr ""
+
+#: createsite.options.url
+msgid "サイトのサイト ID"
+msgstr ""
+
+#: createsite.options.user-quota
+msgid "サイトの最大ユーザー数"
+msgstr ""
+
+#: createsite.options.extract_encryption_mode
+msgid "抽出暗号化モード: "
+"無効、有効、または実行。設定しない場合、既定値が使用されます。"
+msgstr ""
+
+#: createsite.options.web_extraction_enabled
+msgid "このサイトで抽出の作成とライブへの変更を許可 [または拒否] "
+"します。既定では許可します。"
+msgstr ""
+
+#: createsite.options.run_now_enabled
+msgid "このサイトに対して [今すぐ実行] オプションを許可 [または拒否] します。"
+"既定では [今すぐ実行] を許可するように設定されています。"
+msgstr ""
+
+#: createsite.options.time_zone
+msgid "このサイトの抽出で使用されるタイム ゾーン。既定は設定解除され、"
+"サーバーのタイム ゾーンが使用されます。"
+msgstr ""
+
+#: createsite.short_description
+msgid "サイトの作成"
+msgstr ""
+
+#: createsite.status
+msgid "サイト ''{0}'' をサーバー上で作成しています..."
+msgstr ""
+
+#: createsiteusers.options.auth-type
+msgid ""
+"CSV ファイルで、全ユーザーの認証タイプを割り当てます。Tableau Online "
+"の場合、{0} は {1} (デフォルト) または {2} です。Tableau Server の場合、{0} "
+"はローカル (デフォルト) または {2} です。"
+msgstr ""
+
+#: createsiteusers.description
+msgid ""
+"現在のサイトでユーザーを作成します。ユーザーは、指定された CSV ファイルから読"
+"み込まれます。ファイルには、以下の列をこの順序で含むことができます。{0}1. "
+"ユーザー名{0}2. パスワード (Active Directory を使用する場合は無視されます){0}"
+"3. フレンドリ名 (Active Directory を使用する場合は無視されます){0}4. "
+"ライセンス レベル ({1}、{2}、{3}、{4}、または{5}){0}5. 管理者 ({6}/{7}){0}6. "
+"パブリッシャー ({8}/{9}/1 または {10}/{11}/0){0}7. メール (Tableau Public の"
+"み){0}ファイルの列の数は、ここに示した数より少なくてもかまいません。たとえば"
+"、1 行 にユーザー名のみを含むシンプルなリストを指定することもできます。値にコ"
+"ンマが含まれている場合は、引用符を使用できます。tabcmd は、{12} "
+"タスクが完了するのを待機します。{13} フラグを渡すことにより、タスクがサーバー"
+"上で完了するのを待機せずに、すぐに戻るように指定できます。このコマンドを使用"
+"してシステム管理者を作成したり、システム管理者からユーザーを外したりすること"
+"はできません。代わりに、''{14}'' を使用してください"
+msgstr ""
+
+#: createsiteusers.short_description
+msgid "現在のサイト上でユーザーを作成します"
+msgstr ""
+
+#: createsiteusers.status
+msgid "{0} にリストされたユーザーを現在のサイトに追加しています..."
+msgstr ""
+
+#: createusers.description
+msgid ""
+"ユーザーを作成します。ユーザーは、指定された CSV ファイルから読み込まれます。"
+"ファイルには、以下の列をこの順序で含むことができます。{0}1. ユーザー名{0}2. "
+"パスワード (Active Directory を使用する場合は無視されます){0}3. フレンドリ名 "
+"(Active Directory を使用する場合は無視されます){0}4. ライセンス レベル "
+"({1}、{2}、{3}、{4}、または{5}){0}5. 管理者 ({6}/{7}/{8}/{9}){0}6. "
+"パブリッシャー ({10}/{11}/1 または {12}/{13}/0){0}7. メール (Tableau Public "
+"のみ){0}ファイルの列は、ここに示した数より少なくてもかまいません。たとえば、"
+"1 行 にユーザー名のみを含むシンプルなリストを指定することもできます。値にコン"
+"マが含まれている場合は、引用符を使用できます。tabcmd は、{14} "
+"タスクが完了するのを待機します。{15} フラグを渡すことにより、タスクがサーバー"
+"上で完了するのを待機せずに、すぐに戻るように指定できます。"
+msgstr ""
+
+#: createusers.short_description
+msgid "サーバー上でユーザーを作成します"
+msgstr ""
+
+#: createusers.status
+msgid "{0} にリストされたユーザーをサーバーに追加しています"
+msgstr ""
+
+#: decryptextracts.short_description
+msgid "サイトで抽出を複合化する"
+msgstr ""
+
+#: decryptextracts.status
+msgid "サイト {0} で複合化する抽出をスケジュールしています..."
+msgstr ""
+
+#: delete.errors.mutually_exclusive
+msgid "削除するワークブックとデータ ソースの両方を指定することはできません"
+msgstr ""
+
+#: delete.errors.requires_workbook_datasource
+msgid "''{0}'' コマンドでは、ワークブック名またはデータ ソース名が必要です"
+msgstr ""
+
+#: delete.options.datasource
+msgid "削除するデータ ソース"
+msgstr ""
+
+#: delete.options.parent-project-path
+msgid "削除するワークブック/データ ソースを含むプロジェクトの親のパス。"
+"プロジェクト名を --project で指定する必要があります。"
+msgstr ""
+
+#: delete.options.project
+msgid "削除するワークブック/データ ソースを含むプロジェクト。既定のプロジェクトは "
+"''{0}'' です"
+msgstr ""
+
+#: delete.options.workbook
+msgid "削除するワークブック"
+msgstr ""
+
+#: delete.short_description
+msgid "サーバーからワークブックまたはデータ ソースを削除します"
+msgstr ""
+
+#: delete.status
+msgid "サーバーから {0} ''{1}'' を削除しています..."
+msgstr ""
+
+#: deleteextracts.errors.required_argument
+msgid "deleteextracts コマンドでは、ワークブック URL、ワークブック名、またはデータ "
+"ソース名が必要です"
+msgstr ""
+
+#: deleteextracts.errors.error
+msgid "抽出の削除エラー"
+msgstr ""
+
+#: deleteextracts.for.datasource
+msgid "データソース ''{0}'' の抽出を削除しています"
+msgstr ""
+
+#: deleteextracts.for.workbook_name
+msgid "名前が ''{0}'' であるワークブックの抽出を削除しています"
+msgstr ""
+
+#: deleteextracts.for.workbook_url
+msgid "URL が ''{0}'' であるワークブックの抽出を削除しています"
+msgstr ""
+
+#: deleteextracts.options.datasource
+msgid "抽出削除用のターゲット データ ソースの名前"
+msgstr ""
+
+#: deleteextracts.options.embedded-datasources
+msgid ""
+"ターゲット ワークブック内の埋め込みデータ "
+"ソース名をスペースで区切ったリスト。スペースが含まれるデータ ソース名は二重引"
+"用符で囲んでください。これはワークブックの抽出を削除する場合にのみ使用できま"
+"す。"
+msgstr ""
+
+#: deleteextracts.options.include-all
+msgctxt "deleteextracts.options.include-all"
+msgid "ターゲット ワークブック内の埋め込みデータ ソースをすべて含める"
+msgstr ""
+
+#: deleteextracts.options.parent-project-path
+msgctxt "deleteextracts.options.parent-project-path"
+msgid "ターゲット リソースを含むプロジェクトの親であるプロジェクトのパス。"
+"プロジェクト名を --project で指定する必要があります。"
+msgstr ""
+
+#: deleteextracts.options.project
+msgctxt "deleteextracts.options.project"
+msgid ""
+"ターゲット リソースを含むプロジェクトの名前。{0} または {1} "
+"が指定されている場合にのみ必要です。指定されていない場合は、"
+"既定のプロジェクト ''{2}'' が使用されます。"
+msgstr ""
+
+#: deleteextracts.options.url
+msgctxt "deleteextracts.options.url"
+msgid "リソースの URL に指定される正規名"
+msgstr ""
+
+#: deleteextracts.options.workbook
+msgid "抽出削除用のターゲット ワークブックの名前"
+msgstr ""
+
+#: deleteextracts.short_description
+msgid "パブリッシュされたワークブックまたはデータ ソース用の抽出を削除"
+msgstr ""
+
+#: deleteextracts.workbook.include-all
+msgctxt "deleteextracts.workbook.include-all"
+msgid "ターゲット ワークブック内の埋め込みデータ ソースをすべて含める"
+msgstr ""
+
+#: deleteextracts.workbook.embedded-datasource-names
+msgctxt "deleteextracts.workbook.embedded-datasource-names"
+msgid "埋め込みデータ ソース名あり"
+msgstr ""
+
+#: deletegroup.short_description
+msgid "グループの削除"
+msgstr ""
+
+#: deletegroup.status
+msgid "サーバーからグループ ''{0}'' を削除しています..."
+msgstr ""
+
+#: deleteproject.errors.requires_project_name
+msgid "''{0}'' コマンドでは、プロジェクト名が必要です"
+msgstr ""
+
+#: deleteproject.options.parent-project-path
+msgid "削除するプロジェクトの親のパス。プロジェクト名を --project "
+"で指定する必要があります。"
+msgstr ""
+
+#: deleteproject.short_description
+msgid "プロジェクトの削除"
+msgstr ""
+
+#: deleteproject.status
+msgid "サーバーからプロジェクト ''{0}'' を削除しています..."
+msgstr ""
+
+#: deletesite.errors.logged_into_this_site
+msgid "現在ログインしているサイトを削除できません"
+msgstr ""
+
+#: deletesite.short_description
+msgid "サイトの削除"
+msgstr ""
+
+#: deletesite.status
+msgid "サーバーからサイト ''{0}'' を削除しています..."
+msgstr ""
+
+#: deletesiteusers.description
+msgid ""
+"サイト ユーザーを削除します。ユーザーは、指定された CSV "
+"ファイルから読み込まれます。ファイルは、1 行 に 1 "
+"人のユーザー名を含むシンプルなリストです"
+msgstr ""
+
+#: deletesiteusers.short_description
+msgid "サイト ユーザーの削除"
+msgstr ""
+
+#: deletesiteusers.status
+msgid "{0} にリストされたサイト ユーザーをサーバーから削除しています..."
+msgstr ""
+
+#: deleteusers.description
+msgid ""
+"ユーザーを削除します。ユーザーは、指定されたコンマ区切り値 (CSV) "
+"ファイルから読み込まれます。ファイルは、1 行 に 1 "
+"人のユーザー名を含むシンプルなリストです"
+msgstr ""
+
+#: deleteusers.short_description
+msgid "ユーザーの削除"
+msgstr ""
+
+#: deleteusers.status
+msgid "{0} にリストされたユーザーをサーバーから削除しています..."
+msgstr ""
+
+#: editdomain.description
+msgid "ドメインを編集します。編集するドメインのリストを表示するには、''{0}'' "
+"コマンドを使用します"
+msgstr ""
+
+#: editdomain.errors.requires_nickname_name
+msgid "''{0}'' オプションまたは ''{1}'' オプションを指定する必要があります"
+msgstr ""
+
+#: editdomain.options.id
+msgid "ドメインの ID"
+msgstr ""
+
+#: editdomain.options.name
+msgid "ドメインの名前"
+msgstr ""
+
+#: editdomain.options.nickname
+msgid "ドメインのニックネーム"
+msgstr ""
+
+#: editdomain.short_description
+msgid "ドメインの編集"
+msgstr ""
+
+#: editdomain.output
+msgid "{0}ID{1}ニックネーム{1}{1}名前{0}"
+msgstr ""
+
+#: editdomain.status
+msgid "サーバー上の ID ''{0}'' のドメインを編集します..."
+msgstr ""
+
+#: editsite.errors.invalid_site-id
+msgctxt "editsite.errors.invalid_site-id"
+msgid ""
+"複数のサイトを編集する場合、{0} オプションは無効です。{0} オプションを削除し"
+"てからコマンドを再実行するか、各サイトを個別に編集してください"
+msgstr ""
+
+#: editsite.errors.invalid_site-name
+msgctxt "editsite.errors.invalid_site-name"
+msgid ""
+"複数のサイトを編集する場合、{0} オプションは無効です。{0} オプションを削除し"
+"てからコマンドを再実行するか、各サイトを個別に編集してください"
+msgstr ""
+
+#: editsite.options.allow-mobile-snapshots
+msgid "モバイル スナップショットを許可 [または拒否] する"
+msgstr ""
+
+#: editsite.options.allow-subscriptions
+msgid "このサイトのサブスクリプションを許可 [または拒否] する"
+msgstr ""
+
+#: editsite.options.allow-web-authoring
+msgid "このサイトの Web 作成を許可 [または拒否] する"
+msgstr ""
+
+#: editsite.options.cache-warmup
+msgid "このサイトのキャッシュ ウォームパップを許可 [または拒否]"
+msgstr ""
+
+#: editsite.options.cache-warmup-threshold
+msgid "ウォームアップをトリガーするための、"
+"ビューが最近いつ閲覧されたかに対するしきい値 (日単位)"
+msgstr ""
+
+#: editsite.options.site-name
+msgid "サイトの表示名"
+msgstr ""
+
+#: editsite.options.status
+msgid "サイトが利用可能かどうかを変更します。''{0}'' または ''{1}'' を指定します"
+msgstr ""
+
+#: editsite.options.allow-materialized-views
+msgid "このサイトの具体化されたビューが許可/拒否されています"
+msgstr ""
+
+#: editsite.options.extract_encryption_mode
+msgid "抽出暗号化モード: "
+"無効、有効、または実行。設定しない場合、サーバーで変更は行われません。"
+msgstr ""
+
+#: editsite.options.web_extraction_enabled
+msgid "このサイトで抽出の作成およびライブへの変更を許可 [または拒否] "
+"します。既定の設定では許可します。"
+msgstr ""
+
+#: editsite.options.run_now_enabled
+msgid "このサイトに対して [今すぐ実行] オプションを許可 [または拒否] します。"
+"既定では [今すぐ実行] を許可するように設定されています"
+msgstr ""
+
+#: editsite.options.time_zone
+msgid "このサイトの抽出で使用されるタイム ゾーン"
+msgstr ""
+
+#: editsite.options.use_default_time_zone
+msgid "このサイトの抽出で使用されるタイム ゾーンを設定解除します。その代わり、"
+"既定のサーバー タイム ゾーンを使用します"
+msgstr ""
+
+#: editsite.short_description
+msgid "サイトの編集"
+msgstr ""
+
+#: editsite.status
+msgid "サイト ''{0}'' をサーバー上で編集します..."
+msgstr ""
+
+#: encryptextracts.short_description
+msgid "サイトで抽出を暗号化する"
+msgstr ""
+
+#: encryptextracts.status
+msgid "サイト {0} で暗号化する抽出をスケジュールしています..."
+msgstr ""
+
+#: export.errors.need_country_and_languge
+msgid "オプションの「--country」と「--language」はセットで使用する必要があります"
+msgstr ""
+
+#: export.errors.white_space_workbook_view
+msgid "エクスポートするワークブックやビューの名前にスペースを含めることはできません"
+"。URL に表示される標準化された名前を使用してください。"
+msgstr ""
+
+#: export.errors.requires_workbook_view_name
+msgid "''{0}'' コマンドには、<workbook>/<view> 名が必要です"
+msgstr ""
+
+#: export.errors.requires_workbook_view_param
+msgid ""
+"''{0}'' コマンドには <workbook>/<view> "
+"パラメーターが必要です。このパラメーターには、少なくとも 1 個のスラッシュ (/)"
+" が必要です"
+msgstr ""
+
+#: export.options.country
+msgid ""
+"既定のユーザー ロケールを使用しない場合は、ロケールの国の略名 (IANA Language "
+"Subtag Registry から検索) "
+"を使用します。「--language」とセットで使用する必要があります"
+msgstr ""
+
+#: export.options.csv
+msgid "データを CSV 形式でエクスポート (既定)"
+msgstr ""
+
+#: export.options.fullpdf
+msgid "ビジュアル ビューを PDF 形式でエクスポート "
+"(ワークブックがタブ付きでパブリッシュされた場合)"
+msgstr ""
+
+#: export.options.height
+msgid "高さを設定します。整数値であることが必要です (既定: 600 ピクセル)"
+msgstr ""
+
+#: export.options.language
+msgid ""
+"既定のユーザー ロケールを使用しない場合は、ロケールの言語の省略名 (IANA "
+"Language Subtag Registry から検索) "
+"を使用します。「--country」とセットで使用する必要があります"
+msgstr ""
+
+#: export.options.pagelayout
+msgid ""
+"エクスポートされた PDF のページの方向を設定します。有効な値: "
+"{0}。指定されていない場合は、Tableau Desktop の設定が使用されます"
+msgstr ""
+
+#: export.options.pagesize
+msgid "エクスポートされた PDF のページ サイズを設定します。有効な値: {0} (既定: "
+"''{1}'')"
+msgstr ""
+
+#: export.options.pdf
+msgid "PDF 形式でデータをエクスポート"
+msgstr ""
+
+#: export.options.png
+msgid "PNG 形式でデータをエクスポート"
+msgstr ""
+
+#: export.options.width
+msgid "幅を設定します。整数値であることが必要です (既定: 800 ピクセル)"
+msgstr ""
+
+#: export.short_description
+msgid "サーバーから、ビューのデータまたはイメージをエクスポート"
+msgstr ""
+
+#: export.status
+msgid "サーバーから ''{0}'' を要求しています..."
+msgstr ""
+
+#: export.success
+msgid "{0} を ''{1}'' に保存しました"
+msgstr ""
+
+#: extracts.workbook.errors.requires_datasources_or_include_all
+msgid "ワークブックのコマンド {0} では埋め込みデータ ソースまたは include-all "
+"フラグが必要です"
+msgstr ""
+
+#: fileuploader.progress
+msgid "アップロード進行状況: {0}%"
+msgstr ""
+
+#: get.description
+msgid "サーバーからファイルを取得します。ファイル名引数が指定されていない場合は、パ"
+"スの最後の構成要素に従ってファイルの名前が付けられます"
+msgstr ""
+
+#: get.errors.requires_url
+msgid "''{0}'' コマンドでは、URL が必要です"
+msgstr ""
+
+#: get.options.file
+msgid "ファイルを保存する名前"
+msgstr ""
+
+#: get.short_description
+msgid "サーバーからファイルを取得"
+msgstr ""
+
+#: help.available_commands
+msgid "利用可能なコマンド:"
+msgstr ""
+
+#: help.command_options
+msgid "コマンド オプション:"
+msgstr ""
+
+#: help.description0
+msgid "特定のコマンドのヘルプを表示"
+msgstr ""
+
+#: help.description1
+msgid "利用可能なすべてのコマンドをリスト"
+msgstr ""
+
+#: help.errors.unknown_command
+msgid "不明なコマンド: {0}"
+msgstr ""
+
+#: help.global_options
+msgid "グローバル オプション:"
+msgstr ""
+
+#: help.short_description
+msgid "tabcmd コマンドのヘルプ"
+msgstr ""
+
+#: httputils.found_attachment
+msgid "添付ファイルが見つかりました: {0}"
+msgstr ""
+
+#: httputils.mapped_attachment
+msgid "添付ファイルが見つかりました: {0} ({1} に再マッピングされました)"
+msgstr ""
+
+#: initialuser.errors.username_and_password_required
+msgid "ユーザー名とパスワードの両方が必要です"
+msgstr ""
+
+#: initialuser.options.friendly-name
+msgid "フレンドリー名"
+msgstr ""
+
+#: initialuser.short_description
+msgid "初期化されていないサーバー上で最初のユーザーを作成します"
+msgstr ""
+
+#: listdomains.description
+msgid "ドメインのリスト"
+msgstr ""
+
+#: listdomains.status
+msgid "サーバーのドメインをリストしています..."
+msgstr ""
+
+#: listsites.output
+msgid "{0}{0}名前: {1} {0}サイト ID: ''{2}''"
+msgstr ""
+
+#: listsites.output_extended
+msgid "{0}{0}名前: {1} {0}サイト ID: ''{2}''{0}抽出の暗号化: {3}"
+msgstr ""
+
+#: listsites.short_description
+msgid "ユーザーのサイトをリスト"
+msgstr ""
+
+#: listsites.status
+msgid "ユーザー {0} のサイトをリストしています..."
+msgstr ""
+
+#: listsites.options.get_extract_encryption_mode
+msgid "サイトの抽出暗号化モードを印刷する"
+msgstr ""
+
+#: login.description
+msgid "サーバーにサインインします。セッションは、サーバー上で期限切れになるか、{0} "
+"を使用するまで引き続き有効です"
+msgstr ""
+
+#: login.short_description
+msgid "サーバーにサインイン"
+msgstr ""
+
+#: logout.short_description
+msgid "サーバーからサインアウト"
+msgstr ""
+
+#: publish.description
+msgid "ワークブック、データ ソース、または抽出をサーバーにパブリッシュ"
+msgstr ""
+
+#: publish.errors.invalid_datasource_update_file_type
+msgid "データ ソース更新のためのファイル タイプ ''{0}'' "
+"が正しくありません。置換/追加は、抽出 (.tde) ファイルにのみ適用されます"
+msgstr ""
+
+#: publish.errors.invalid_name_option
+msgid "複数のアイテムのパブリッシュ時には、{0} オプションは無効です"
+msgstr ""
+
+#: publish.errors.invalid_publish_file_type
+msgid ""
+"パブリッシュのためのファイル タイプ ''{0}'' が正しくありません。.tde、.tds、."
+"tdsx、.twb、または .twbx ファイルが有効です"
+msgstr ""
+
+#: publish.errors.mutually_exclusive_option
+msgid "{0} または {1} のいずれか 1 個のみを使用"
+msgstr ""
+
+#: publish.errors.requires_resource_file
+msgid "''{0}'' コマンドでは、ワークブック、データ "
+"ソース、または抽出ファイルが必要です"
+msgstr ""
+
+#: publish.errors.unexpected_server_response
+msgid "サーバーからの予期しない応答: {0}"
+msgstr ""
+
+#: publish.errors.server_resource_not_found
+msgid "指定されたリソースは存在しないか、そのリソースを表示できるパーミッションがあ"
+"りません。プロジェクト名とパーミッションを確認してください。"
+msgstr ""
+
+#: publish.options.append
+msgid "抽出ファイルを既存のデータ ソースに追加"
+msgstr ""
+
+#: publish.options.async
+msgid "非同期でパブリッシュ"
+msgstr ""
+
+#: publish.options.db-password
+msgid "すべてのデータ ソースのデータベース パスワード"
+msgstr ""
+
+#: publish.options.db-username
+msgid "すべてのデータ ソースのデータベース ユーザー名"
+msgstr ""
+
+#: publish.options.description
+msgid "ワークブックまたはデータ ソースの説明"
+msgstr ""
+
+#: publish.options.encrypt_extracts
+msgid "サーバーで抽出を暗号化する"
+msgstr ""
+
+#: publish.options.name
+msgid ""
+"サーバー上のワークブック/データ ソース名。省略した場合は、ファイル名から "
+"twb(x)、tds(x)、または tde 拡張子を除いた名前に従ってワークブック/データ "
+"ソースの名前が付けられます。.tde ファイルをパブリッシュすると、データ "
+"ソースが作成されます"
+msgstr ""
+
+#: publish.options.oauth-username
+msgid "パブリッシュを行うユーザー名に関連付けられたサーバー  "
+"キーチェーンに保存された認証資格情報を使用する"
+msgstr ""
+
+#: publish.options.overwrite
+msgid "既存のワークブック/データ ソース (存在する場合) を上書き"
+msgstr ""
+
+#: publish.options.project
+msgid "ワークブック/データ ソースをパブリッシュするプロジェクト"
+msgstr ""
+
+#: publish.options.parent-project-path
+msgid "ワークブック/データ ソースのパブリッシュ先であるプロジェクトの親のパス"
+msgstr ""
+
+#: publish.options.replace
+msgid "抽出ファイルを既存のデータ ソースに置換"
+msgstr ""
+
+#: publish.options.restart
+msgid "ファイルのアップロードを再開"
+msgstr ""
+
+#: publish.options.save-db-password
+msgid "サーバーにデータベース パスワードを保管"
+msgstr ""
+
+#: publish.options.save-oauth
+msgid "{0} で指定された OAuth 認証資格情報を埋め込み"
+msgstr ""
+
+#: publish.options.tabbed
+msgid "タブ付きビューを有効にしてパブリッシュ"
+msgstr ""
+
+#: publish.options.thumbnail-groupname
+msgid "ワークブックにユーザー "
+"フィルターが含まれている場合は、サムネイルの計算中にこのグループを偽装します"
+msgstr ""
+
+#: publish.options.thumbnail-username
+msgid "ワークブックにユーザー "
+"フィルターが含まれている場合は、サムネイルの計算中にこのユーザーを偽装します"
+msgstr ""
+
+#: publish.status
+msgid "サーバーに ''{0}'' "
+"をパブリッシュしています。この処理には数分かかることがあります..."
+msgstr ""
+
+#: publish.success
+msgid "ファイルがサーバーの次の場所に正常にパブリッシュされました:"
+msgstr ""
+
+#: publishsamples.options.parent-project-path
+msgid "サンプルのパブリッシュ先であるプロジェクトの親のパス。プロジェクト名を --"
+"project で指定する必要があります"
+msgstr ""
+
+#: publishsamples.options.projectname
+msgid "サンプルのパブリッシュ先のプロジェクト名"
+msgstr ""
+
+#: publishsamples.short_description
+msgid "指定されたプロジェクトにサンプル "
+"ワークブックをパブリッシュします。既存のサンプルは上書きされます。"
+msgstr ""
+
+#: publishsamples.status
+msgid "パブリッシュのサンプル..."
+msgstr ""
+
+#: reencryptextracts.short_description
+msgid "サイトで抽出を再暗号化する"
+msgstr ""
+
+#: reencryptextracts.status
+msgid "サイト {0} の抽出の再暗号化をスケジュールしています..."
+msgstr ""
+
+#: refreshextracts.errors.required_argument
+msgid "refreshextracts コマンドでは、ワークブック URL、ワークブック名、またはデータ "
+"ソース名が必要です"
+msgstr ""
+
+#: refreshextracts.errors.add_and_remove_calculations
+msgid "--addcalculations と --removecalculations "
+"オプションの両方を使用する更新を実行できません"
+msgstr ""
+
+#: refreshextracts.errors.calculations_and_incremental
+msgid "増分抽出更新の間は具体化された計算を追加または削除できません"
+msgstr ""
+
+#: refreshextracts.errors.error
+msgid "抽出の更新エラー"
+msgstr ""
+
+#: refreshextracts.options.datasource
+msgid "更新するデータ ソースの名前"
+msgstr ""
+
+#: refreshextracts.options.incremental
+msgid "増分更新を実行 (サポートされている場合)"
+msgstr ""
+
+#: refreshextracts.options.parent-project-path
+msgid "更新する抽出を含むプロジェクトの親のパス。プロジェクト名を --project "
+"で指定する必要があります。"
+msgstr ""
+
+#: refreshextracts.options.project
+msgid ""
+"ワークブック/データ ソースを含むプロジェクトの名前。{0} または {1} "
+"が指定されている場合にのみ必要です。指定されていない場合は、"
+"既定のプロジェクト ''{2}'' が使用されます"
+msgstr ""
+
+#: refreshextracts.options.synchronous
+msgid "更新が実行されて、完了するのを待機してから、終了する"
+msgstr ""
+
+#: refreshextracts.options.url
+msgid "ワークブックまたはビューの、URL に指定される正規名"
+msgstr ""
+
+#: refreshextracts.options.workbook
+msgid "更新するワークブックの名前"
+msgstr ""
+
+#: refreshextracts.options.addcalculations
+msgid "具体化された計算を抽出に追加する"
+msgstr ""
+
+#: refreshextracts.options.removecalculations
+msgid "抽出から具体化された計算を削除する"
+msgstr ""
+
+#: refreshextracts.short_description
+msgid "サーバー上のワークブックまたはデータ ソースの抽出を更新"
+msgstr ""
+
+#: refreshextracts.status_incremented
+msgid "{0} ''{1}'' の抽出の増分をスケジュールしています..."
+msgstr ""
+
+#: refreshextracts.status_refreshed
+msgid "{0} ''{1}'' の抽出の更新をスケジュールしています..."
+msgstr ""
+
+#: removeusers.options.users
+msgid "グループから削除するユーザーのリストを 1 行に 1 人のユーザーずつ含むファイル"
+msgstr ""
+
+#: removeusers.short_description
+msgid "ユーザーをグループから削除"
+msgstr ""
+
+#: removeusers.status
+msgid "{0} にリストされたユーザーをグループ {1} から削除しています..."
+msgstr ""
+
+#: runschedule.errors.requires_schedule_name
+msgid "''{0}'' コマンドでは、スケジュール名が必要です"
+msgstr ""
+
+#: runschedule.short_description
+msgid "スケジュールを実行"
+msgstr ""
+
+#: runschedule.status
+msgid "サーバー上で、スケジュール ''{0}'' を実行しています..."
+msgstr ""
+
+#: materializeviews.short_description
+msgid "サイト/ワークブックの具体化されたビュー設定を更新して確認する"
+msgstr ""
+
+#: materializeviews.status.site
+msgid "サイト ''{0}'' の具体化されたビュー設定を更新しています..."
+msgstr ""
+
+#: materializeviews.status.workbook
+msgid "ワークブック ''{0}'' の具体化されたビュー設定を更新しています..."
+msgstr ""
+
+#: materializeviews.errors.invalid_workbook_arguments
+msgid "具体化されたビュー コマンドにはワークブック名の引数が 1 つ必要です"
+msgstr ""
+
+#: materializeviews.errors.invalid_site_arguments
+msgid "具体化されたビュー コマンドにはサイト ID の引数が 1 つ必要です"
+msgstr ""
+
+#: materializeviews.errors.invalid_workbook_option
+msgid "''{2}'' と共に ''{0}'' または ''{1}'' を使用してください"
+msgstr ""
+
+#: materializeviews.errors.invalid_project_path
+msgid "''{0}'' と共に ''{1}'' を使用してください"
+msgstr ""
+
+#: materializeviews.errors.invalid_site_option
+msgid "''{1}'' と共に ''{0}'' を使用してください"
+msgstr ""
+
+#: materializeviews.errors.site_mode_conflict
+msgid "サイトの具体化されたビュー モードを変更するには ''{0}'' または ''{1}'' "
+"を使用してください"
+msgstr ""
+
+#: materializeviews.errors.site_not_updated
+msgid "サイト ''{0}'' は更新されませんでした。具体化されたビューの設定はサーバー管理"
+"者のみが変更できます"
+msgstr ""
+
+#: materializeviews.errors.invalid_argument_options_combination
+msgid "具体化されたビューの設定を変更するには ''{0}'' または ''{1}'' "
+"を使用してください"
+msgstr ""
+
+#: materializeviews.options.materialize_now
+msgid "指定したワークブックのマテリアル化をすぐにスケジュールするには ''{0}'' "
+"を使用してください"
+msgstr ""
+
+#: materializeviews.options.project
+msgid "プロジェクト名を指定するには ''{0}'' を使用してください"
+msgstr ""
+
+#: materializeviews.options.parent_project_path
+msgid "親プロジェクト パスを ''{1}'' に指定するには ''{0}'' を使用してください"
+msgstr ""
+
+#: materializeviews.options.allow_workbook
+msgid "ワークブックで具体化されたビューを有効/無効にするには ''{0}'' "
+"を使用してください"
+msgstr ""
+
+#: materializeviews.options.allow_site
+msgid "サイトで具体化されたビューを有効/無効にするには ''{0}'' を使用してください"
+msgstr ""
+
+#: materializeviews.options.selected_workbooks
+msgid ""
+"サイトで選択されたワークブックを有効にするには ''{0}'' を使用してください。"
+"これはオプション ''{1}'' と共に使用されます。これは既定のオプションです"
+msgstr ""
+
+#: materializeviews.options.all_workbooks
+msgid "サイトですべてのワークブックを有効にするには ''{0}'' を使用してください。"
+"これはオプション ''{1}'' と共に使用されます"
+msgstr ""
+
+#: session.auto_site_login
+msgid "サイトへの自動サインイン: {0}"
+msgstr ""
+
+#: session.certificate-alias
+msgid "証明書の別名: {0}"
+msgstr ""
+
+#: session.connecting
+msgid "サーバーに接続しています..."
+msgstr ""
+
+#: session.continuing_session
+msgid "前のセッションを続行しています"
+msgstr ""
+
+#: session.errors.auth_required
+msgid "権限が必要です"
+msgstr ""
+
+#: session.errors.invalid_keystore_password
+msgid "キーストア "
+"パスワードが正しくありません。正しいパスワードを入力して再試行してください"
+msgstr ""
+
+#: session.errors.invalid_redirect
+msgid "URL が無効なため、リダイレクトできません: {0}"
+msgstr ""
+
+#: session.errors.keystore_pwdfile_create
+msgid "キーストア パスワード ファイルを作成できませんでした。エラー: {0}"
+msgstr ""
+
+#: session.errors.missing_arguments
+msgid "引数が指定されていないため、サインインできません: {0}"
+msgstr ""
+
+#: session.errors.no_redirect_found
+msgid "リダイレクト応答にリダイレクト アドレスがありません"
+msgstr ""
+
+#: session.errors.no_sslcafile_found
+msgid ""
+"次の場所で証明機関 (CA) ファイルを見つけることができませんでした: ''{0}''。"
+"CA ファイルは Tableau Server "
+"との保護された通信を行うことができるように使用されます。CA "
+"ファイルの作成の詳細については、Tableau Server ヘルプを参照してください。SSL "
+"証明書を検証せずに Tableau Server に接続するには、--no-certcheck "
+"フラグを使用します。"
+msgstr ""
+
+#: session.errors.script_no_password
+msgid ""
+"Tabcmd がスクリプトまたは IDE "
+"から実行されましたが、パスワードが指定されませんでした。ログインするには、"
+"tabcmd への引数としてパスワードを指定する必要があります。"
+msgstr ""
+
+#: session.errors.session_expired
+msgid "セッションの有効期限が切れました"
+msgstr ""
+
+#: session.errors.unsupported_command
+msgid "コマンドは、このサーバーでサポートされていません"
+msgstr ""
+
+#: session.keystore.notice
+msgid "パスワードをローカルに保存して、次回のパスワード入力を省略しますか。 "
+"[はい/いいえ]"
+msgstr ""
+
+#: session.keystore.password
+msgid "キーストア パスワード:"
+msgstr ""
+
+#: session.keystore.pwdfile_create
+msgid "次のパスにキーストア パスワードを作成します: {0}"
+msgstr ""
+
+#: session.keystore.pwdfile_remove
+msgid "正しくないパスワードを含むキーストア パスワード ファイルを削除する"
+msgstr ""
+
+#: session.login
+msgid "サインインしています..."
+msgstr ""
+
+#: session.logout
+msgid "サインアウトしました"
+msgstr ""
+
+#: session.monitorjob.errors.no_jobid
+msgid "ジョブを監視できません。job_id が見つかりません: {0}"
+msgstr ""
+
+#: session.monitorjob.percent_complete
+msgid "{0}% 完了"
+msgstr ""
+
+#: session.new_session
+msgid "新しいセッションを作成しています"
+msgstr ""
+
+#: session.no-certificate-found
+msgid "有効なクライアント証明書が見つかりません"
+msgstr ""
+
+#: session.not_default_site_member
+msgid "既定のサイトのメンバーではありません。次のサイトからサイト ID "
+"を選択してください:"
+msgstr ""
+
+#: session.not_site_member
+msgid "サイト ''{0}'' のメンバーではありません。次のサイトからサイト ID "
+"を選択してください:"
+msgstr ""
+
+#: session.options.help
+msgid "tabcmd のヘルプを表示"
+msgstr ""
+
+#: session.options.no-certcheck
+msgid "SSL 証明書を検証しない"
+msgstr ""
+
+#: session.options.no-cookie
+msgid ""
+"サインイン時にセッション ID を保存しません。後続のコマンドを実行する際には、"
+"再度サインインが必要になります。指定しない場合、既定ではセッション ID "
+"が保存されます"
+msgstr ""
+
+#: session.options.no-prompt
+msgid "パスワードの入力を求めない"
+msgstr ""
+
+#: session.options.no-proxy
+msgid "HTTP プロキシを使用しない"
+msgstr ""
+
+#: session.options.password
+msgid "指定された Tableau Server パスワードを使用"
+msgstr ""
+
+#: session.options.password-file
+msgid "ファイルから Tableau Server パスワードを読み込む"
+msgstr ""
+
+#: session.options.proxy
+msgid "指定された HTTP プロキシを使用"
+msgstr ""
+
+#: session.options.server
+msgid "指定された Tableau Server URL "
+"を使用します。プロトコルが指定されていない場合は、http:// "
+"であると見なされます"
+msgstr ""
+
+#: session.options.site
+msgid "指定した Tableau Server サイトを使用します。空の文字列 ('''') "
+"を指定すると、既定のサイトが強制的に使用されます"
+msgstr ""
+
+#: session.options.timeout
+msgid "サーバーがコマンドの処理が完了するまで待機する時間を秒単位で指定します。既定"
+"では、サーバーから応答が返ってくるまで待機します"
+msgstr ""
+
+#: session.options.use-certificate
+msgid "クライアント証明書を使用してサインインしてください"
+msgstr ""
+
+#: session.options.username
+msgid "指定された Tableau Server ユーザー名を使用"
+msgstr ""
+
+#: session.password
+msgid "パスワード:"
+msgstr ""
+
+#: session.retrying_task
+msgid "新しいセッションで元のコマンドを再試行するためにもう一度サインインしています."
+".."
+msgstr ""
+
+#: session.session_expired_login
+msgid "セッションの有効期限が切れました。セッションをクリアするためにサインアウトし"
+"ています..."
+msgstr ""
+
+#: session.site_list
+msgid "{0}{0}名前: {1}{0}サイト ID: ''{2}''"
+msgstr ""
+
+#: session.using-certificate
+msgid "クライアント証明書を使用したサインイン"
+msgstr ""
+
+#: session.inferred_username
+msgid "--username フラグが指定されていないため、ユーザー ''{0}'' "
+"としてログインしています"
+msgstr ""
+
+#: sessiondata.errors.bad_api
+msgid "サーバー API が正しくありません: {0}"
+msgstr ""
+
+#: sessiondata.errors.no_server_api
+msgid "応答にサーバー API バージョンが見つかりません"
+msgstr ""
+
+#: sessiondata.errors.version_mismatch
+msgid ""
+"tabcmd のバージョン {0} (API {1}) が、Tableau Server のバージョン {2} (API "
+"{3}) と一致しません"
+msgstr ""
+
+#: sessionoptions.errors.ambiguous_scheme
+msgid "サーバー名の前に ''{0}'' または ''{1}'' を指定します"
+msgstr ""
+
+#: sessionoptions.errors.bad_password_file
+msgid "ファイル ''{0}'' からパスワードを読み込めません"
+msgstr ""
+
+#: sessionoptions.errors.bad_protocol
+msgid "プロトコル ''{0}'' はサポートされていません"
+msgstr ""
+
+#: sessionoptions.errors.bad_proxy_format
+msgid "プロキシの形式が、ホスト:ポートに一致していません: {0}"
+msgstr ""
+
+#: sessionoptions.errors.bad_timeout
+msgid "{0} ''{1}'' への非数値の引数は無視されます"
+msgstr ""
+
+#: set.description
+msgid "サーバー上で設定を行います。設定をオフにするには、!setting を使用します"
+msgstr ""
+
+#: set.errors.requires_setting_name
+msgid "''{0}'' コマンドでは、設定名が必要です"
+msgstr ""
+
+#: set.errors.single_setting_name
+msgid "''{0}'' コマンドは、単一の設定名を受け取ります"
+msgstr ""
+
+#: set.short_description
+msgid "サーバー上で設定を行います"
+msgstr ""
+
+#: setsetting.status
+msgid "''{0}'' を {1} に設定しています"
+msgstr ""
+
+#: syncgroup.errors.server_admin
+msgid "グループの最低限のサイト ロールは、[ServerAdministrator] に設定できません。"
+msgstr ""
+
+#: syncgroup.options.role
+msgid ""
+"グループ内のすべてのユーザーの既定のロールを設定します。{0} の有効な値は {1} "
+"です。ユーザーが既に存在する場合、指定したロールは、ユーザーの現在のロールよ"
+"りも制限が緩い場合にのみ適用されます。値を指定しない場合の既定値: "
+"新規ユーザーの場合は {2}、既存のユーザーの場合は未変更です"
+msgstr ""
+
+#: syncgroup.options.overwritesiterole
+msgid "「--role」を使用して既定の動作をオーバーライドすることで、ユーザーのサイト "
+"ロールの権限をより低いものに変更できるようにします。"
+msgstr ""
+
+#: syncgroup.options.grantlicensemode
+msgid ""
+"グループで指定されたライセンスをユーザーに付与する時期。有効な値は {0} "
+"です。値が渡されない場合、既定値として ''on-sync'' が使用されます。"
+msgstr ""
+
+#: syncgroup.short_description
+msgid "サーバーを Active Directory グループと同期"
+msgstr ""
+
+#: syncgroup.status
+msgid "サーバーを Active Directory グループ {0} と同期しています..."
+msgstr ""
+
+#: syncgroup.options.sysadmin-type
+msgid ""
+"[廃止予定。代わりに「--role」を使用してください。] "
+"グループ内のすべてのユーザーに管理者権限を割り当て [または削除] します。{0} "
+"には、{1}、{2}、{3}、または {4} を使用できます。"
+msgstr ""
+
+#: syncgroup.options.license
+msgid ""
+"[廃止予定。代わりに「--role」を使用してください。"
+"グループ内のすべてのユーザーに既定のライセンス レベルを設定してください。{0} "
+"には {1}、{2}、または {3} を使用できます。"
+msgstr ""
+
+#: syncgroup.options.publisher
+msgid ""
+"[廃止予定。代わりに「--role」を使用してください。"
+"グループ内のすべてのユーザーにパブリッシュ権限を割り当て [または削除] "
+"してください。"
+msgstr ""
+
+#: tabcmd.mutually_exclusive_options
+msgid "同じコマンド内で ''{0}'' と ''{1}'' を指定できません"
+msgstr ""
+
+#: tabcmdparser.errors.ambiguous_option
+msgid "オプション内でオプション ''{0}'' の指定があいまいです: {1}"
+msgstr ""
+
+#: tabcmdparser.warning.unexpected_dash
+msgid ""
+"引数: {0} で予期しないダッシュが検出されました。有効なダッシュは - または -- "
+"です。このエラーは、書式設定されたテキスト "
+"エディターからコピーや貼り付けを行う場合に多く発生します。コマンド "
+"ラインで引数のダッシュを再入力してください。"
+msgstr ""
+
+#: resetopenidsub.short_description
+msgid "ユーザーの OpenID 接続サブ ID をリセット"
+msgstr ""
+
+#: resetopenidsub.options.targetusername
+msgid "リセットされるユーザー"
+msgstr ""
+
+#: resetopenidsub.options.all
+msgid "すべてのユーザーをリセット"
+msgstr ""
+
+#: version.description
+msgid "バージョン情報を出力します"
+msgstr ""
+
+#: vizqlsession.errors.cannot_create_session
+msgid "サーバー上で VizQl セッションを作成できませんでした"
+msgstr ""
+
+#: vizqlsession.errors.no_command_result
+msgid "コマンド結果が見つかりませんでした。{0}"
+msgstr ""
+
+#: vizqlsession.errors.session_already_closed
+msgid "VizQl セッション オブジェクトが既に閉じられています"
+msgstr ""
+
+#: vizqlsession.errors.cannot_parse_response
+msgid "JSON 応答文字列を解析できません: {0}"
+msgstr ""
+
+#: upgradethumbnails.short_description
+msgid ""
+"これにより、サムネイルのアップグレードのバックグラウンダー "
+"ジョブが実行されます。Tableau 2018.2 "
+"よりも前に生成されたサムネイルが高解像度にレンダリングされます。Tableau "
+"Server と外部データソースに通常よりも高い負荷がかかる可能性があります。問題が"
+"発生した場合、tabcmd upgradethumbnails --server <server> --stop "
+"を実行してジョブを停止できます。"
+msgstr ""
+
+#: upgradethumbnails.options.stop
+msgid "サムネイルのアップグレードに関連するすべてのジョブを停止します"
+msgstr ""
+
+#: upgradethumbnails.status.running
+msgid "サムネイルのアップグレードを開始しています"
+msgstr ""
+
+#: upgradethumbnails.status.not_running
+msgid "サムネイルのアップグレードを開始しません"
+msgstr ""
+
+#: upgradethumbnails.status.cancelling
+msgid "サムネイルのアップグレード ジョブをキャンセルしています"
+msgstr ""
+
+#: upgradethumbnails.continue_promt
+msgid "続行しますか? 続行する場合は 1、続行しない場合は 0 を入力します (1/0)"
+msgstr ""
+
+#: upgradethumbnails.invalid_response
+msgid "無効な応答"
+msgstr ""
+
+#: validateidpmetadata.options.digest_algorithms
+msgid ""
+"ダイジェスト アルゴリズムをスペースで区切ったリスト。 {0} の有効な値: "
+"{1}。指定しない場合、サーバーではサーバー構成設定の値が使用されます: {2}"
+msgstr ""
+
+#: validateidpmetadata.options.min_allowed_rsa_key_size
+msgctxt "validateidpmetadata.options.min_allowed_rsa_key_size"
+msgid "指定しない場合、サーバーはサーバー構成の設定値 {0} を使用します。"
+msgstr ""
+
+#: validateidpmetadata.options.min_allowed_elliptic_curve_size
+msgctxt "validateidpmetadata.options.min_allowed_elliptic_curve_size"
+msgid "指定しない場合、サーバーはサーバー構成の設定値 {0} を使用します。"
+msgstr ""
+
+#: validateidpmetadata.options.site_names
+msgid "証明書の検証が実行されるサイトをスペースで区切ったリスト。指定しない場合は、"
+"すべてのサイトが検査されます。"
+msgstr ""
+
+#: validateidpmetadata.short_description
+msgid ""
+"安全でないダイジェスト アルゴリズム SHA-1 を使用した IdP で構成されている "
+"Tableau Server サイトを識別します。このコマンドは、サイズが不十分な RSA "
+"キーまたはサイズが不十分な楕円曲線の証明書を使用している IdP も識別します。"
+msgstr ""

@@ -1,1800 +1,2053 @@
+#. extracted from tabcmd/locales/en\shared_wg_en.properties
+#, fuzzy
 msgid ""
 msgstr ""
-"MIME-Version: 1.0"
-"Content-Type: text/plain; charset=None"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: prop2po"
-"Project-Id-Version: None"
-"Language: None"
-#:
-msgid "permissions.labels.capabilities.read"
-msgstr "View:"
-
-#:
-msgid "permissions.labels.capabilities.write"
-msgstr "Overwrite:"
-
-#:
-msgid "permissions.labels.capabilities.write.legacy"
-msgstr "Save:"
-
-#:
-msgid "permissions.labels.capabilities.delete"
-msgstr "Delete:"
-
-#:
-msgid "permissions.labels.capabilities.filter"
-msgstr "Filter:"
-
-#:
-msgid "permissions.labels.capabilities.add_tag"
-msgstr "Add Tag:"
-
-#:
-msgid "permissions.labels.capabilities.add_favorite"
-msgstr "Add Favorite:"
-
-#:
-msgid "permissions.labels.capabilities.add_comment"
-msgstr "Add Comments:"
-
-#:
-msgid "permissions.labels.capabilities.add_comment.legacy"
-msgstr "Add Comment:"
-
-#:
-msgid "permissions.labels.capabilities.view_comments"
-msgstr "View Comments:"
-
-#:
-msgid "permissions.labels.capabilities.vud"
-msgstr "Download Full Data:"
-
-#:
-msgid "permissions.labels.capabilities.export_image"
-msgstr "Download Image/PDF:"
-
-#:
-msgid "permissions.labels.capabilities.export_data"
-msgstr "Download Summary Data:"
-
-#:
-msgid "permissions.labels.capabilities.export_xml"
-msgstr "Download/Save A Copy:"
-
-#:
-msgid "permissions.labels.capabilities.export_xml.legacy"
-msgstr "Download/Save As:"
-
-#:
-msgid "permissions.labels.capabilities.save_customized_view"
-msgstr "Save Customized View:"
-
-#:
-msgid "permissions.labels.capabilities.share_view"
-msgstr "Share Customized:"
-
-#:
-msgid "permissions.labels.capabilities.stateful_url"
-msgstr "Permalink:"
-
-#:
-msgid "permissions.labels.capabilities.change_hierarchy"
-msgstr "Move:"
-
-#:
-msgid "permissions.labels.capabilities.change_permissions"
-msgstr "Set Permissions:"
-
-#:
-msgid "permissions.labels.capabilities.exclude"
-msgstr "Exclude:"
-
-#:
-msgid "permissions.labels.capabilities.keep_only"
-msgstr "Keep Only:"
-
-#:
-msgid "permissions.labels.capabilities.select"
-msgstr "Select Marks:"
-
-#:
-msgid "permissions.labels.capabilities.tooltip"
-msgstr "View Tooltips:"
-
-#:
-msgid "permissions.labels.capabilities.highlight"
-msgstr "Legend Highlighting:"
-
-#:
-msgid "permissions.labels.capabilities.url_link"
-msgstr "Link to Exernal Urls:"
-
-#:
-msgid "permissions.labels.capabilities.administrator"
-msgstr "Administrator:"
-
-#:
-msgid "permissions.labels.capabilities.content_admin"
-msgstr "Content Administrator:"
-
-#:
-msgid "permissions.labels.capabilities.create_groups"
-msgstr "Create Groups:"
-
-#:
-msgid "permissions.labels.capabilities.rename"
-msgstr "Rename:"
-
-#:
-msgid "permissions.labels.capabilities.transfer_ownership"
-msgstr "Transfer Ownership:"
-
-#:
-msgid "permissions.labels.capabilities.project_leader"
-msgstr "Project Leader:"
-
-#:
-msgid "permissions.labels.capabilities.publish"
-msgstr "Publish:"
-
-#:
-msgid "permissions.labels.capabilities.connect"
-msgstr "Connect:"
-
-#:
-msgid "permissions.labels.capabilities.draw"
-msgstr "Drawing:"
-
-#:
-msgid "permissions.labels.capabilities.web_authoring"
-msgstr "Web Edit:"
-
-#:
-msgid "permissions.labels.capabilities.xml_save_as"
-msgstr "Save As:"
-
-#:
-msgid "permissions.labels.capabilities.create_refresh_metrics"
-msgstr "Create/Refresh Metrics:"
-
-#:
-msgid "permissions.labels.capabilities.explain_data"
-msgstr "Run Explain Data:"
-
-#:
-msgid "permissions.labels.roles.wb_view"
-msgstr "View"
-
-#:
-msgid "permissions.labels.roles.wb_explore"
-msgstr "Explore"
-
-#:
-msgid "permissions.labels.roles.wb_publish"
-msgstr "Publish"
-
-#:
-msgid "permissions.labels.roles.wb_administer"
-msgstr "Administer"
-
-#:
-msgid "permissions.labels.roles.ds_view"
-msgstr "View"
-
-#:
-msgid "permissions.labels.roles.ds_explore"
-msgstr "Explore"
-
-#:
-msgid "permissions.labels.roles.ds_publish"
-msgstr "Publish"
-
-#:
-msgid "permissions.labels.roles.ds_administer"
-msgstr "Administer"
-
-#:
-msgid "permissions.labels.roles.viewer"
-msgstr "Viewer"
-
-#:
-msgid "permissions.labels.roles.interactor"
-msgstr "Interactor"
-
-#:
-msgid "permissions.labels.roles.editor"
-msgstr "Editor"
-
-#:
-msgid "permissions.labels.roles.ds_connector"
-msgstr "Data Source Connector"
-
-#:
-msgid "permissions.labels.roles.ds_editor"
-msgstr "Data Source Editor"
-
-#:
-msgid "permissions.labels.roles.administrator"
-msgstr "Administrator"
-
-#:
-msgid "permissions.labels.roles.project_leader"
-msgstr "Project Leader"
-
-#:
-msgid "permissions.labels.roles.publisher"
-msgstr "Publisher"
-
-#:
-msgid "permissions.labels.roles.custom"
-msgstr "Custom"
-
-#:
-msgid "permissions.labels.roles.none"
-msgstr "None"
-
-# Used in Storage class in tab-core
-
-#:
-msgid "formats.messages.disk_space.in_mb"
-msgstr "{0} MB"
-
-#:
-msgid "formats.messages.disk_space.in_kb"
-msgstr "{0} KB"
-
-# Publishing-related errors and strings
-
-#:
-msgid "errors.argument.flow_description.too_long"
-msgstr "Flow description is too long ({0} characters).  It must be shorter than {1} characters:\n{2}"
-
-#:
-msgid "errors.argument.workbook_name.too_long"
-msgstr "Workbook name is too long ({0} characters).  It must be shorter than {1} characters:\n{2}"
-
-#:
-msgid "errors.argument.workbook_name.empty"
-msgstr "Workbook name is empty."
-
-#:
-msgid "errors.argument.workbook_description.too_long"
-msgstr "Workbook description is too long ({0} characters).  It must be shorter than {1} characters:\n{2}"
-
-#:
-msgid "errors.argument.worksheet_name.too_long"
-msgstr "Worksheet name is too long ({0} characters). It must be shorter than {1} characters:\n{2}"
-
-#:
-msgid "errors.argument.datasource_name.too_long"
-msgstr "Datasource name is too long ({0} characters). It must be shorter than {1} characters:\n{2}"
-
-#:
-msgid "errors.argument.datasource_name.empty"
-msgstr "Datasource name is empty."
-
-#:
-msgid "errors.argument.datasource_description.too_long"
-msgstr "Datasource description is too long ({0} characters). It must be shorter than {1} characters:\n{2}"
-
-#:
-msgid "errors.argument.dataconnection_column.too_long"
-msgstr "DataConnection column {0} is too long ({1} characters).  It must be shorter than {2} characters:\n{3}"
-
-#:
-msgid "errors.argument.tag.too_long"
-msgstr "Tag is too long ({0} characters). It must be shorter than {1} characters:\n{2}"
-
-#:
-msgid "errors.argument.workbook_file.missing_or_empty"
-msgstr "Workbook file is missing or empty."
-
-#:
-msgid "errors.argument.internal"
-msgstr "Internal server error.  Missing or invalid argument."
-
-#:
-msgid "errors.argument.thumbnail.invalid_format"
-msgstr "Workbook thumbnail format is invalid. Must be PNG with resolution of 300x300 or less."
-
-#:
-msgid "errors.html_403.disabled_resource.workbook"
-msgstr "Sorry, that workbook is disabled.  Contact your administrator."
-
-#:
-msgid "errors.html_404.missing_or_unauthorized_resource.project"
-msgstr "Sorry, the project you were looking for does not exist, or you do not have permission to see that project."
-
-#:
-msgid "errors.html_404.missing_or_unauthorized_resource.personal_space"
-msgstr "Sorry, the personal space you were looking for does not exist, or you do not have permission to see it."
-
-#:
-msgid "errors.html_404.missing_or_unauthorized_resource.datasource"
-msgstr "Sorry, the datasource you were looking for does not exist."
-
-#:
-msgid "errors.labels.formatted_request_id"
-msgstr "Request ID: {0}"
-
-#:
-msgid "errors.links.delete_datasources"
-msgstr "Delete Datasources"
-
-#:
-msgid "errors.links.delete_workbooks"
-msgstr "Delete Workbooks"
-
-#:
-msgid "errors.permissions.publish.datasource.licensing"
-msgstr "You must be an ''Interactor'' to publish a data source."
-
-#:
-msgid "errors.permissions.publish.datasource.overwrite"
-msgstr "A data source named {0} already exists in project {1}. You do not have permissions to overwrite it."
-
-#:
-msgid "errors.permissions.publish.datasource.overwrite_personal_space"
-msgstr "A data source named {0} already exists in Personal Space. You do not have permissions to overwrite it."
-
-#:
-msgid "errors.permissions.publish.datasource.overwrite_short"
-msgstr "A data source named {0} already exists in project {1}."
-
-#:
-msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "A datasource named {0} already exists in Personal Space."
-
-#:
-msgid "errors.permissions.publish.datasource.non_existent"
-msgstr "Data source {0} does not exist."
-
-#:
-msgid "errors.permissions.publish.datasource.general"
-msgstr "Sorry, you do not have permission to publish to this datasource."
-
-#:
-msgid "errors.permissions.publish.project.explicit_publisher_detail"
-msgstr "You do not have the Publishing right."
-
-#:
-msgid "errors.permissions.publish.project.general"
-msgstr "Sorry, you do not have permission to publish to this project."
-
-#:
-msgid "errors.permissions.publish.project.non_existent"
-msgstr "Project {0} does not exist."
-
-#:
-msgid "errors.permissions.publish.project.not_writable"
-msgstr "You do not have permission to write to the project {0}."
-
-#:
-msgid "errors.permissions.publish.project.unspecified"
-msgstr "You must specify a project"
-
-#:
-msgid "errors.permissions.publish.workbook.disabled"
-msgstr "The workbook {0} is disabled."
-
-#:
-msgid "errors.permissions.publish.workbook.general"
-msgstr "A workbook with this name exists in the project you are publishing to. To publish, rename your workbook."
-
-#:
-msgid "errors.permissions.publish.workbook.general_personal_space"
-msgstr "A workbook with this name exists in the Personal Space you are publishing to. To publish, rename your workbook."
-
-#:
-msgid "errors.permissions.publish.workbook.overwrite"
-msgstr "A workbook named {0} already exists in project {1}. You do not have permissions to overwrite it."
-
-#:
-msgid "errors.permissions.publish.workbook.overwrite_personal_space"
-msgstr "A workbook named {0} already exists in Personal Space. You do not have permissions to overwrite it."
-
-#:
-msgid "errors.permissions.publish.workbook.overwrite_short"
-msgstr "A workbook named {0} already exists in project {1}."
-
-#:
-msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
-msgstr "A workbook named {0} already exists in Personal Space."
-
-#:
-msgid "errors.reportable.impersonation.group_and_user"
-msgstr "Only specify one of ''impersonate_username'' or ''impersonate_groupname'', not both."
-
-#:
-msgid "errors.reportable.impersonation.user_not_found"
-msgstr "User ''{0}'' does not exist."
-
-#:
-msgid "errors.reportable.impersonation.group_not_found"
-msgstr "Group ''{0}'' does not exist."
-
-# errors.public.validation.hasextract is copied from the C++ file codegen strings.data IDS_PUBLIC_VALIDATION_ERROR_HASEXTRACT
-
-#:
-msgid "errors.public.validation.hasextract"
-msgstr "Workbooks saved to Tableau Public must use active Tableau extracts. Right-click the data source and select Use Extract before publishing. The data source, ''{0}'', is not an active extract."
-
-#:
-msgid "errors.publish.dataserver_datasource_not_found"
-msgstr "Datasource ''{0}'' not found for workbook ''{1}''."
-
-#:
-msgid "errors.publish.datasource_update_mode"
-msgstr "Unknown update mode: ''{0}''."
-
-#:
-msgid "errors.publish.workbook.concurrent_update"
-msgstr "A workbook with the same name is currently being published or modified. Wait until the task completes before you try again."
-
-#:
-msgid "errors.publish.workbook.restricted"
-msgstr "The workbook contains connections types that are not allowed on this server."
-
-#:
-msgid "errors.publish.datasource.concurrent_update"
-msgstr "A data source with the same name is currently being published or modified. Wait until the task completes before you try again."
-
-#:
-msgid "errors.publish.datasource.restricted"
-msgstr "The data source contains a connection type that is not allowed on this server."
-
-#:
-msgid "errors.publish.datasource.connection_check"
-msgstr "{0} failed to establish a connection to your datasource."
-
-#:
-msgid "errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption"
-msgstr "The workbook cannot be published with an encrypted extract. The site administrator has disabled extract encryption on this site. You must publish the workbook with an unencrypted extract."
-
-#:
-msgid "errors.publish.datasource.requested_extract_encryption_on_site_with_disabled_encryption"
-msgstr "The data source cannot be published as an encrypted extract. The site administrator has disabled extract encryption on this site. You must publish the extract unencrypted."
-
-#:
-msgid "errors.publish.workbook.requested_no_extract_encryption_on_site_with_enforced_encryption"
-msgstr "The workbook cannot be published with an unencrypted extract. The site administrator has enforced extract encryption on this site. You must publish the workbook and specify extract encryption."
-
-#:
-msgid "errors.publish.datasource.requested_no_extract_encryption_on_site_with_enforced_encryption"
-msgstr "The data source extract cannot be published unencrypted. The site administrator has enforced extract encryption on this site. You must publish the extract encrypted."
-
-#:
-msgid "errors.publish.has_unfinished_extract_creation_job"
-msgstr "This resource cannot be published because there are pending or unfinished extract creation jobs related to it. Please wait or cancel those jobs then try again."
-
-#:
-msgid "errors.publishing.storage_quota_exceeded.message"
-msgstr "Site storage quota exceeded."
-
-#:
-msgid "errors.publishing.request_size_exceeded"
-msgstr "This file cannot be published because the request size is {0} bytes which exceeds byte size limit by {1} bytes."
-
-#:
-msgid "errors.publishing.request_size_unknown"
-msgstr "The request size could not be determined."
-
-#:
-msgid "errors.site.quota_exceeded"
-msgstr "The content you are trying to upload will exceed the site''s capacity by {0}."
-
-#:
-msgid "errors.personal_space.quota_exceeded"
-msgstr "This content exceeds your Personal Space capacity by {0}."
-
-#:
-msgid "errors.web_authoring.workbook_deleted"
-msgstr "The workbook ''{0}'' was deleted.  Please choose ''Save As'' to save as new workbook."
-
-#:
-msgid "errors.web_authoring.workbook_changed"
-msgstr "Another user has edited and saved this workbook since you began editing. Therefore, you can no longer update the original workbook. Use Save As to create a new workbook with your changes."
-
-#:
-msgid "labels.publish.embed_credentials"
-msgstr "Embed password for data source"
-
-#:
-msgid "errors.publish.workbook.google_no_embedded_credentials"
-msgstr "This workbook contains a {0} data source which requires embedded credentials. To save as another workbook, select {1}."
-
-#:
-msgid "errors.publish.datasource.google_no_embedded_credentials"
-msgstr "This data source contains a {0} connection which requires embedded credentials.  Please publish this data source from Tableau Desktop with embedded credentials."
-
-#:
-msgid "errors.publish.datasource.federated_oauth_datasource_failed"
-msgstr "Credentials for one or more connections in your data source have expired. Delete the saved credentials for this data source on your Account Settings page on Tableau Server or Tableau Online, and then connect to the data source again."
-
-#:
-msgid "errors.publish.workbook.missing_oauth_credential"
-msgstr "The credential ''{0}'' was not found or cannot be used to connect to the data source or workbook."
-
-#:
-msgid "errors.publish.version_incompatible.message"
-msgstr "Desktop and server versions are incompatible."
-
-#:
-msgid "errors.publish.version_incompatible.details"
-msgstr "Desktop version ''{0}'', Server document version ''{1}''."
-
-#:
-msgid "errors.publish.datasource.managed_keychain.unique_cv_suggestions"
-msgstr "Publish failed because of a conflict. Please resubmit your change."
-
-#:
-msgid "errors.publish.permissions_are_locked"
-msgstr "Permissions are locked in the project you are publishing to. To publish this workbook, use the default permissions and try again."
-
-#:
-msgid "errors.publish.datasource.not.found"
-msgstr "Could not find this datasource on Server."
-
-#:
-msgid "errors.publish.extracts.disabled"
-msgstr "Save for extract-based, archive datasources not supported yet."
-
-#:
-msgid "errors.publish.datasource.timeout"
-msgstr "Publish timed out after {0} seconds. Please try to use Tableau Desktop to publish this datasource."
-
-#:
-msgid "errors.publish.data_role.permission_not_null"
-msgstr "Cannot set explicit permissions for datasources of type data role."
-
-#:
-msgid "errors.download.extracts.timeout"
-msgstr "Publish timed out after {0} seconds because this datasource has a large extract file. Please try to use Tableau Desktop to publish this datasource."
-
-#:
-msgid "errors.publish.datasource.invalid_extract_update_time"
-msgstr "Invalid extractUpdateTime specified: {0}"
-
-#:
-msgid "errors.publish.async.serialization"
-msgstr "Could not serialize publishing job status error"
-
-#:
-msgid "errors.permissions.view.datasources"
-msgstr "You must be an ''Interactor'' to view the list of data sources."
-
-# oauth related errors
-
-#:
-msgid "errors.oauth.invalid_oauth_class"
-msgstr "''{0}'' is not a valid OAuth connection type."
-
-#:
-msgid "errors.xmlapi.bad_request"
-msgstr "Bad request"
-
-#:
-msgid "errors.xmlapi.unauthorized"
-msgstr "Not authorized"
-
-#:
-msgid "errors.xmlapi.forbidden"
-msgstr "Not enough permissions"
-
-#:
-msgid "errors.xmlapi.system_user_not_found"
-msgstr "User account locked or invalid."
-
-#:
-msgid "errors.xmlapi.site_user_not_found"
-msgstr "This user account is not active. For help, contact your {0} administrator."
-
-#:
-msgid "errors.xmlapi.not_found"
-msgstr "Item not found"
-
-#:
-msgid "errors.xmlapi.concurrent_update"
-msgstr "Concurrent update"
-
-#:
-msgid "errors.xmlapi.internal_server_error"
-msgstr "Internal server error"
-
-#:
-msgid "errors.xmlapi.illegal_state"
-msgstr "Illegal state"
-
-#:
-msgid "errors.xmlapi.invalid_parameter"
-msgstr "Invalid parameter"
-
-#:
-msgid "errors.xmlapi.already_exists"
-msgstr "Already exists"
-
-#:
-msgid "errors.xmlapi.site_suspended"
-msgstr "This site has been suspended. You must be a System Administrator to sign in."
-
-#:
-msgid "errors.xmlapi.site_locked"
-msgstr "This site has been locked. Signing in is not allowed at this time."
-
-#:
-msgid "errors.xmlapi.permission_modification"
-msgstr "Cannot publish with modified permissions"
-
-#:
-msgid "errors.xmlapi.update_desktop"
-msgstr "To open workbooks created by other authors, please download the latest version of Tableau Desktop Public Edition from http://public.tableau.com/"
-
-#:
-msgid "errors.xmlapi.throttled.summary"
-msgstr "Too many requests"
-
-#:
-msgid "errors.xmlapi.throttled.detail"
-msgstr "Too many requests for ''{0}''. Please retry after {1}."
-
-#:
-msgid "datasource.publish.check.unpublishable"
-msgstr "Could not publish data source."
-
-#:
-msgid "datasource.publish.check.publishable.extract_required"
-msgstr "Requires creating an extract on publish."
-
-#:
-msgid "datasource.publish.check.publishable.credentials_required"
-msgstr "{1} will temporarily access the credentials provided for ''{0}'' to confirm it can maintain a live data connection."
-
-#:
-msgid "datasource.publish.check.publishable.server_unreachable"
-msgstr "{1} cannot reach ''{0}''. Publishing will create an extract."
-
-#:
-msgid "publish.bundles.workbook.subscription.subject"
-msgstr "Your workbook {0} is ready for you."
-
-#:
-msgid "publish.bundles.workbook.subscription.message"
-msgstr "Your Salesforce data was added to the workbook. Go to your {0} project to get started."
-
-#:
-msgid "extracts.status.finished.upload.workbook"
-msgstr "Finished upload of extracts (new extract id:{0}) for Workbook ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.refresh.workbook"
-msgstr "Finished refresh of extracts (new extract id:{0}) for Workbook ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.increment.workbook"
-msgstr "Finished increment of extracts (new extract id:{0}) for Workbook ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.encrypt.workbook"
-msgstr "Finished encryption of extracts (new extract id:{0}) for Workbook ''{1}''"
-
-#:
-msgid "extracts.status.finished.decrypt.workbook"
-msgstr "Finished decryption of extracts (new extract id:{0}) for Workbook ''{1}''"
-
-#:
-msgid "extracts.status.finished.rekey.workbook"
-msgstr "Finished reencryption of extracts (new extract id:{0}) for Workbook ''{1}''"
-
-#:
-msgid "extracts.status.finished.create.workbook"
-msgstr "Finished creation of extracts (new extract id:{0}) for workbook ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.remove.workbook"
-msgstr "Finished change extract (data source id:{0}) to live for workbook ''{1}''"
-
-#:
-msgid "extracts.status.finished.upload.datasource"
-msgstr "Finished upload of extracts (new extract id:{0}) for Data Source ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.refresh.datasource"
-msgstr "Finished refresh of extracts (new extract id:{0}) for Data Source ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.increment.datasource"
-msgstr "Finished increment of extracts (new extract id:{0}) for Data Source ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.append.datasource"
-msgstr "Finished append of extracts (new extract id:{0}) for Data Source ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.replace.datasource"
-msgstr "Finished replace of extracts (new extract id:{0}) for Data Source ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.encrypt.datasource"
-msgstr "Finished encryption of extracts (new extract id:{0}) for Data Source ''{1}''"
-
-#:
-msgid "extracts.status.finished.decrypt.datasource"
-msgstr "Finished decryption of extracts (new extract id:{0}) for Data Source ''{1}''"
-
-#:
-msgid "extracts.status.finished.rekey.datasource"
-msgstr "Finished reencryption of extracts (new extract id:{0}) for Data Source ''{1}''"
-
-#:
-msgid "extracts.status.finished.encrypt.flow"
-msgstr "Finished encryption of extracts for flow ''{0}''"
-
-#:
-msgid "extracts.status.finished.decrypt.flow"
-msgstr "Finished decryption of extracts for flow ''{0}''"
-
-#:
-msgid "extracts.status.finished.rekey.flow"
-msgstr "Finished reencryption of extracts for flow ''{0}''"
-
-#:
-msgid "extracts.status.finished.encrypt.flowdraft"
-msgstr "Finished encryption of extracts for flow draft ''{0}''"
-
-#:
-msgid "extracts.status.finished.decrypt.flowdraft"
-msgstr "Finished decryption of extracts for flow draft ''{0}''"
-
-#:
-msgid "extracts.status.finished.rekey.flowdraft"
-msgstr "Finished reencryption of extracts for flow draft ''{0}''"
-
-#:
-msgid "extracts.status.finished.create.datasource"
-msgstr "Finished creation of extracts (new extract id:{0}) for data source ''{1}'' {2}"
-
-#:
-msgid "extracts.status.finished.remove.datasource"
-msgstr "Finished change extract to live for data source ''{1}''"
-
-#:
-msgid "extracts.status.encryption_key"
-msgstr "Encryption key ID: ''{0}''."
-
-#:
-msgid "extracts.status.encryption_keys"
-msgstr "Old encryption key ID: ''{0}'', new encryption key ID: ''{1}''."
-
-#:
-msgid "extracts.errors.upload"
-msgstr "Error uploading extracts for {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.refresh"
-msgstr "An error occurred when refreshing extracts for the {0} ''{1}''"
-
-#:
-msgid "extracts.errors.create"
-msgstr "Error creating extracts for the {0} ''{1}''."
-
-#:
-msgid "extracts.errors.increment"
-msgstr "Error incrementing extracts for {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.append"
-msgstr "Error appending extracts for {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.replace"
-msgstr "Error replacing extracts for {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.download"
-msgstr "Error downloading extracts for {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.remove"
-msgstr "Error removing extracts for {0}: ''{1}''."
-
-#:
-msgid "extracts.errors.title"
-msgstr "Process extracts error"
-
-#:
-msgid "extracts.errors.nothing_to_upload"
-msgstr "No extracts to upload for {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.nothing_to_refresh"
-msgstr "No extracts to refresh for {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.nothing_to_increment"
-msgstr "No extracts to increment for {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.nothing_to_append"
-msgstr "No extracts to append for {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.nothing_to_replace"
-msgstr "No extracts to replace for {0}: ''{1}''"
-
-#:
-msgid "extracts.errors.refresh_summary"
-msgstr "Refresh Extracts Error"
-
-#:
-msgid "extracts.errors.encrypt_summary"
-msgstr "Encrypt Extracts Error"
-
-#:
-msgid "extracts.errors.rekey_summary"
-msgstr "Reencrypt Extracts Error"
-
-#:
-msgid "extracts.errors.decrypt_summary"
-msgstr "Decrypt Extracts Error"
-
-#:
-msgid "extracts.errors.remove_summary"
-msgstr "Remove Extracts Error"
-
-#:
-msgid "extracts.errors.create_summary"
-msgstr "Create Extracts Error"
-
-#:
-msgid "extracts.errors.datasource_overwritten"
-msgstr "Refresh failed because the datasource was overwritten by another task during processing.  Submit refresh again to correct."
-
-#:
-msgid "extracts.errors.workbook_overwritten"
-msgstr "Refresh failed because the workbook was overwritten by another task during processing.  Submit refresh again to correct."
-
-#:
-msgid "extracts.errors.encrypt"
-msgstr "An error occurred when encrypting extracts for the {0} ''{1}''"
-
-#:
-msgid "extracts.errors.decrypt"
-msgstr "An error occurred when decrypting extracts for the {0} ''{1}''"
-
-#:
-msgid "extracts.errors.rekey"
-msgstr "An error occurred when reencrypting extracts for the {0} ''{1}''"
-
-#:
-msgid "extracts.errors.encrypt_datasource_overwritten"
-msgstr "Extract encryption failed because the datasource was overwritten by another task during processing."
-
-#:
-msgid "extracts.errors.encrypt_workbook_overwritten"
-msgstr "Extract encryption failed because the workbook was overwritten by another task during processing."
-
-#:
-msgid "extracts.errors.rekey_datasource_overwritten"
-msgstr "Extract reencryption failed because the datasource was overwritten by another task during processing."
-
-#:
-msgid "extracts.errors.rekey_workbook_overwritten"
-msgstr "Extract reencryption failed because the workbook was overwritten by another task during processing."
-
-#:
-msgid "extracts.errors.decrypt_datasource_overwritten"
-msgstr "Extract decryption failed because the datasource was overwritten by another task during processing."
-
-#:
-msgid "extracts.errors.decrypt_workbook_overwritten"
-msgstr "Extract decryption failed because the workbook was overwritten by another task during processing."
-
-#:
-msgid "extracts.errors.remove_datasource_overwritten"
-msgstr "Data source couldn''t be changed to live because it was overwritten by another task."
-
-#:
-msgid "extracts.errors.remove_workbook_overwritten"
-msgstr "Workbook couldn''t be changed to live because it was overwritten by another task."
-
-#:
-msgid "extracts.errors.create_datasource_overwritten"
-msgstr "Data source couldn''t be extracted because it was overwritten by another task."
-
-#:
-msgid "extracts.errors.create_workbook_overwritten"
-msgstr "Workbook couldn''t be extracted because it was overwritten by another task."
-
-#:
-msgid "extracts.site_mode_change_details"
-msgstr "Changed site extract encryption mode from ''{0}'' to ''{1}''."
-
-#:
-msgid "extracts.errors.encryption_not_licensed"
-msgstr "This operation has failed because extract encryption is not licensed. To perform this operation, you must renew your license or decrypt your extract."
-
-#:
-msgid "extracts.errors.operation_cancelled_detail"
-msgstr "Remove extract operation for {0} (data source: {2}) timed out."
-
-#:
-msgid "workbooks.messages.load_error"
-msgstr "Unable to load Workbook {0}"
-
-#:
-msgid "workbooks.messages.locked"
-msgstr "The workbook ''{0}'' is currently being modified by another user.  Please try again later."
-
-#:
-msgid "workbooks.new_workbook.default_name"
-msgstr "New Workbook"
-
-#:
-msgid "workbooks.new_datasource.default_name"
-msgstr "New Data Source"
-
-#:
-msgid "datasources.messages.load_error"
-msgstr "Unable to load Data Source {0}"
-
-#:
-msgid "metrics.new_metric.default_name"
-msgstr "New Metric"
-
-#:
-msgid "messages.timeout_error.summary"
-msgstr "Timeout Error"
-
-#:
-msgid "messages.timeout_error.task_canceled"
-msgstr "Canceling task that took longer than {0} seconds"
-
-#:
-msgid "subscriptions.manage_my_subscriptions"
-msgstr "Manage my subscriptions"
-
-#:
-msgid "subscriptions.message_greeting"
-msgstr "Hi,"
-
-#:
-msgid "subscriptions.subscribed_footer"
-msgstr "Here''s your subscription to the {0}"
-
-#:
-msgid "subscriptions.subscribed_workbook"
-msgstr "workbook"
-
-#:
-msgid "subscriptions.subscribed_view"
-msgstr "view"
-
-#:
-msgid "subscriptions.fullstop"
-msgstr "."
-
-#:
-msgid "subscriptions.extract_refresh_footer"
-msgstr "You receive this subscription email when data is refreshed."
-
-#:
-msgid "subscriptions.explore_the_viz"
-msgstr "Explore the viz"
-
-#:
-msgid "subscriptions.explore_the_workbook"
-msgstr "Explore the workbook"
-
-#:
-msgid "subscriptions.pdf_attached"
-msgstr "Your Tableau PDF is attached."
-
-#:
-msgid "subscriptions.access_live_content"
-msgstr "You can access the live view of the content here"
-
-#:
-msgid "subscriptions.warning_deprecated_type"
-msgstr "deprecated"
-
-#:
-msgid "subscriptions.warning_extract_refresh_type"
-msgstr "extract refresh failed"
-
-#:
-msgid "subscriptions.warning_flow_run_type"
-msgstr "flow run failed"
-
-#:
-msgid "subscriptions.warning_introduction_general"
-msgstr "The following data quality warnings affect this {0}."
-
-#:
-msgid "subscriptions.warning_introduction_view"
-msgstr "For more information, see the Data Details tab in the view"
-
-#:
-msgid "subscriptions.warning_introduction_workbook"
-msgstr "For more information, see the workbook page"
-
-#:
-msgid "subscriptions.warning_maintenance_type"
-msgstr "under maintenance"
-
-#:
-msgid "subscriptions.warning_permission_error"
-msgstr "This warning is on an asset you do not have permissions to see."
-
-#:
-msgid "subscriptions.warning_redacted"
-msgstr "Permissions required"
-
-#:
-msgid "subscriptions.warning_sensitve_type"
-msgstr "sensitive data"
-
-#:
-msgid "subscriptions.warning_severe"
-msgstr "Important data quality warning"
-
-#:
-msgid "subscriptions.warning_stale_type"
-msgstr "stale data"
-
-#:
-msgid "subscriptions.warning_standard"
-msgstr "Data quality warning"
-
-#:
-msgid "subscriptions.warning_error_type"
-msgstr "unknown warning type"
-
-#:
-msgid "subscriptions.warning_warning_type"
-msgstr "warning"
-
-#:
-msgid "errors.subscriptions.image_render_failed"
-msgstr "The snapshot of the view ''{0}'' could not be properly rendered."
-
-#:
-msgid "errors.subscriptions.see_live_view"
-msgstr "To see the view online, go to {0}."
-
-#:
-msgid "errors.subscriptions.disabled_on_server"
-msgstr "Server-wide subscriptions setting is not enabled. Cannot process subscriptions."
-
-#:
-msgid "errors.subscriptions.disabled_on_site"
-msgstr "Subscriptions are disabled for site."
-
-#:
-msgid "errors.subscriptions.site_is_locked"
-msgstr "Site is locked. Cannot process Subscriptions."
-
-#:
-msgid "errors.subscriptions.orphan"
-msgstr "Workbook and views associated with this subscription could not be found."
-
-#:
-msgid "errors.subscriptions.user_unlicensed"
-msgstr "Skipping unlicensed user''s subscription."
-
-#:
-msgid "errors.subscriptions.smtp_unreacheable"
-msgstr "Unable to reach SMTP host. Check if SMTP has been configured."
-
-#:
-msgid "errors.subscriptions.uncategorized_error"
-msgstr "Unknown error"
-
-#:
-msgid "errors.subscriptions.pdf_render_failed"
-msgstr "The PDF attachment for this email could not be properly rendered."
-
-#:
-msgid "errors.subscriptions.pdf_limit_exceeded"
-msgstr "The generated PDF is larger than the {0}MB size limit and could not be attached to this email."
-
-#:
-msgid "errors.subscriptions.attachments_not_enabled"
-msgstr "This subscription failed because email attachments were disabled. Contact your Tableau administrator for details."
-
-#:
-msgid "errors.subscriptions.pdf_email_failed"
-msgstr "The generated PDF could not be attached to this email."
-
-#:
-msgid "errors.subscriptions.learn_more_troubleshoot"
-msgstr "<a hre"
-
-#:
-msgid "errors.subscriptions.bad_extract_refresh_subscription_configuration"
-msgstr "Subscription suspended because the workbook contains multiple extract refresh schedules. To resume, update frequency to On Selected Schedule."
-
-#:
-msgid "errors.subscriptions.subscription_failed_refresh_failure"
-msgstr "The extract refresh on the data source failed."
-
-#:
-msgid "errors.subscriptions.multiple_extracts_for_extract_refresh_subscription"
-msgstr "The workbook contains multiple extract refresh schedules. Update frequency to On Selected Schedule."
-
-#:
-msgid "errors.subscriptions.datasource_is_missing_password"
-msgstr "Data source connection error. Check the credentials on all data source connections for the workbook."
-
-#:
-msgid "subscriptions.results_summary.sg"
-msgstr "{0} of {1} subscription sent from schedule ''{2}''."
-
-#:
-msgid "subscriptions.results_summary.pl"
-msgstr "{0} of {1} subscriptions sent from schedule ''{2}''."
-
-#:
-msgid "subscriptions.results_views_per_subscription.sg"
-msgstr "{0} ({1} of 1 view succeeded)"
-
-#:
-msgid "subscriptions.results_views_per_subscription.pl"
-msgstr "{0} ({1} of {2} views succeeded)"
-
-#:
-msgid "subscriptions.results_views_per_subscription.more"
-msgstr "({0} more)"
-
-#:
-msgid "subscriptions.results_views_per_subscription.failed"
-msgstr "{0} ({1} of {2} views failed)."
-
-#:
-msgid "subscriptions.results_header.all_shown.failures.sg"
-msgstr "1 failure"
-
-#:
-msgid "subscriptions.results_header.all_shown.failures.pl"
-msgstr "{0} failures"
-
-#:
-msgid "subscriptions.results_header.all_shown.warnings.sg"
-msgstr "1 warning"
-
-#:
-msgid "subscriptions.results_header.all_shown.warnings.pl"
-msgstr "{0} warnings"
-
-#:
-msgid "subscriptions.results_header.some_hidden.failures.pl.sg"
-msgstr "{0} failures (1 hidden, see logs)"
-
-#:
-msgid "subscriptions.results_header.some_hidden.failures.pl.pl"
-msgstr "{0} failures ({1} hidden, see logs)"
-
-#:
-msgid "subscriptions.results_header.some_hidden.warnings.pl.sg"
-msgstr "{0} warnings (1 hidden, see logs)"
-
-#:
-msgid "subscriptions.results_header.some_hidden.warnings.pl.pl"
-msgstr "{0} warnings ({1} hidden, see logs)"
-
-#:
-msgid "dataalerts.manage_my_data_alerts"
-msgstr "Manage alerts"
-
-#:
-msgid "dataalerts.edit_data_alert"
-msgstr "Edit alert"
-
-#:
-msgid "dataalerts.remove_user_from_data_alert"
-msgstr "Remove me"
-
-#:
-msgid "dataalerts.add_user_to_data_alert"
-msgstr "Add me to this alert"
-
-#:
-msgid "dataalerts.greater_or_equal"
-msgstr "{0} was above or equal to {1}."
-
-#:
-msgid "dataalerts.greater"
-msgstr "{0} was above {1}."
-
-#:
-msgid "dataalerts.less_or_equal"
-msgstr "{0} was below or equal to {1}."
-
-#:
-msgid "dataalerts.less"
-msgstr "{0} was below {1}."
-
-#:
-msgid "dataalerts.equal"
-msgstr "{0} was equal to {1}."
-
-#:
-msgid "dataalerts.email_alt_text"
-msgstr "View used by data-driven alert: {0}"
-
-#:
-msgid "dataalerts.email_alt_text_hidden_view"
-msgstr "View used by data-driven alert: {0} with changes applied"
-
-#:
-msgid "dataalerts.alert_triggered_for_the_view"
-msgstr "Alert triggered for the view"
-
-#:
-msgid "dataalerts.failure.email.subject"
-msgstr "Data-driven alert isn''t working for: {0}"
-
-#:
-msgid "dataalerts.failure.status"
-msgstr "Your Alert <i>{0}</i> is Not Working"
-
-#:
-msgid "dataalerts.failure.view.details.alert"
-msgstr "View this alert"
-
-#:
-msgid "dataalerts.failure.explanation"
-msgstr "Your data-driven alert, <i>{0}</i>, isn''t working right now, so recipients won''t be notified when the data condition is true. You''ll receive an email notification when the alert is working again."
-
-#:
-msgid "dataalerts.failure.affected.alert"
-msgstr "Affected data-driven alert"
-
-#:
-msgid "dataalerts.failure.time"
-msgstr "Time alert failed"
-
-#:
-msgid "dataalerts.failure.cause"
-msgstr "Sometimes alerts fail due to temporary network issues, which resolve themselves. You can also try recreating the alert on the original data view, or troubleshoot common causes of alert failure like these:"
-
-#:
-msgid "dataalerts.failure.changed.view"
-msgstr "A removed or renamed workbook, view, or data field."
-
-#:
-msgid "dataalerts.failure.expired.credentials"
-msgstr "Expired database credentials embedded in a workbook."
-
-#:
-msgid "dataalerts.failure.datasource.error"
-msgstr "An inaccessible data source."
-
-#:
-msgid "dataalerts.failure.email.footer"
-msgstr "You are receiving this email at {0} because of an alert failure."
-
-#:
-msgid "dataalerts.failure.troubleshooting"
-msgstr "To check if any of the issues listed above are causing your alert to fail, click the button below."
-
-#:
-msgid "dataalerts.success.email.subject"
-msgstr "Data-driven alert has resumed for: {0}"
-
-#:
-msgid "dataalerts.success.status"
-msgstr "Your Alert <i>{0}</i> has resumed"
-
-#:
-msgid "dataalerts.success.explanation"
-msgstr "Your data-driven alert, <i>{0}</i>, is working again, so recipients will be notified when the data condition is true."
-
-#:
-msgid "dataalerts.failure.error.internalError"
-msgstr "Data Alert internal error"
-
-#:
-msgid "dataalerts.failure.error.invalidDataAlertSpecification"
-msgstr "Invalid Data Alert specification"
-
-#:
-msgid "dataalerts.failure.error.summaryTableNotFound"
-msgstr "Summary data table not found"
-
-#:
-msgid "dataalerts.failure.error.unclassifiedError"
-msgstr "Unclassified error"
-
-#:
-msgid "dataalerts.failure.error.viewContentNotFound"
-msgstr "Data Alert view''s {0} content not found"
-
-#:
-msgid "dataalerts.failure.error.viewNotFound"
-msgstr "Data alert view cannot be located"
-
-#:
-msgid "dataalerts.failure.error.workbookNotFound"
-msgstr "Workbook not found"
-
-#:
-msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
-msgstr "No axis found for field {0}"
-
-#:
-msgid "dataalerts.failure.error.paneDescriptorNotFound"
-msgstr "{0}"
-
-#:
-msgid "dataalerts.failure.error.unsupportedComparisonExpression"
-msgstr "Unsupported comparison expression {0}"
-
-#:
-msgid "dataalerts.failure.error.nonConstComparisonOp"
-msgstr "Non constant comparison operator detected: {0}"
-
-#:
-msgid "dataalerts.failure.error.cannotAddFilter"
-msgstr "Adding Filter to data alert failed"
-
-#:
-msgid "dataalerts.failure.error.sheetNotAlertable"
-msgstr "Sheet {0} does have supported data for alerts. {1}"
-
-#:
-msgid "dataalerts.failure.error.dataAlertMeasureNotFound"
-msgstr "Cannot select measure. {0}"
-
-#:
-msgid "dataalerts.failure.error.tooManyMeasuresForDataAlert"
-msgstr "Incorrect number of measures detected.{0}"
-
-#:
-msgid "dataalerts.failure.error.thresholdParseError"
-msgstr "Failed to parse threshold text {0}. {1}"
-
-#:
-msgid "dataalerts.failure.error.dataAlertPresModelCreationError"
-msgstr "Error while serializing alert. {0}"
-
-#:
-msgid "dataalerts.failure.error.cannotDrawDataAlertDialog"
-msgstr "Failed to draw data alert dialog."
-
-#:
-msgid "dataalerts.failure.error.unsupportedDataAlertType"
-msgstr "Data alert type {0} is currently unsupported."
-
-#:
-msgid "dataalerts.failure.suspend.email.subject"
-msgstr "Data-driven alert is suspended for: {0}"
-
-#:
-msgid "dataalerts.failure.suspend.email.status"
-msgstr "Your alert {0} has been suspended"
-
-#:
-msgid "dataalerts.failure.suspend.email.explanation"
-msgstr "While suspended, we will not evaluate the view or alert recipients. After a fix has been made, you can resume the alert in <a hre"
-
-#:
-msgid "dataalerts.failure.suspend.view.name.prefix"
-msgstr "View"
-
-#:
-msgid "dataalerts.failure.suspend.time"
-msgstr "Time of suspension"
-
-#:
-msgid "dataalerts.failure.suspend.email.footer"
-msgstr "You are receiving this email because your alert was suspended."
-
-#:
-msgid "dataalerts.failure.suspend.email.view.name.my.content"
-msgstr "My Content"
-
-#:
-msgid "dataalerts.failure.suspend.view.alerts"
-msgstr "View Alerts"
-
-#:
-msgid "metricsservices.failure.affected.metric"
-msgstr "Affected metric"
-
-#:
-msgid "metricsservices.failure.cause"
-msgstr "Sometimes metric refreshes fail due to temporary connectivity issues, which resolve themselves. Other common reasons why a metric refresh might fail include:"
-
-#:
-msgid "metricsservices.failure.changed.view"
-msgstr "A removed or renamed workbook, view, or data field"
-
-#:
-msgid "metricsservices.failure.permissions.error"
-msgstr "A change in permissions for the connected view"
-
-#:
-msgid "metricsservices.failure.email.footer"
-msgstr "You are receiving this email at {0} because of a failure with your metric refresh."
-
-#:
-msgid "metricsservices.failure.email.subject"
-msgstr "Metric refresh isn''t working for: {0}"
-
-#:
-msgid "metricsservices.failure.expired.credentials"
-msgstr "Expired database credentials embedded in a workbook"
-
-#:
-msgid "metricsservices.failure.explanation"
-msgstr "Your metric isn''t able to refresh, so the metric data isn''t updating. You''ll receive an email notification when the metric refresh is working again."
-
-#:
-msgid "metricsservices.failure.status"
-msgstr "Your metric {0} isn''t refreshing"
-
-#:
-msgid "metricsservices.failure.suspend.email.explanation"
-msgstr "While the metric refresh is suspended, your metric data will not update. After a fix has been made, you can resume the metric refresh."
-
-#:
-msgid "metricsservices.failure.suspend.email.footer"
-msgstr "You are receiving this email at {0} because your metric refresh was suspended."
-
-#:
-msgid "metricsservices.failure.suspend.email.status"
-msgstr "Refresh for your metric {0} has been suspended"
-
-#:
-msgid "metricsservices.failure.suspend.email.subject"
-msgstr "Metric refresh suspended for: {0}"
-
-#:
-msgid "metricsservices.failure.suspend.time"
-msgstr "Time of suspension"
-
-#:
-msgid "metricsservices.failure.suspend.view.metric"
-msgstr "Go to Metric"
-
-#:
-msgid "metricsservices.failure.suspend.view.name.prefix"
-msgstr "Connected view"
-
-#:
-msgid "metricsservices.failure.time"
-msgstr "Time of refresh failure"
-
-#:
-msgid "metricsservices.failure.troubleshooting"
-msgstr "To check if any of the issues listed above are causing your metric refresh to fail, click the button below. You can also try recreating the metric on the connected view."
-
-#:
-msgid "metricsservices.failure.view.details.metric"
-msgstr "Go to Metric"
-
-#:
-msgid "metricsservices.failure.view.name.prefix"
-msgstr "Connected view"
-
-#:
-msgid "metricsservices.success.email.subject"
-msgstr "Metric refresh has resumed for: {0}"
-
-#:
-msgid "metricsservices.success.explanation"
-msgstr "The refresh for your metric is working again, so it will check for updates to your metric data."
-
-#:
-msgid "metricsservices.success.status"
-msgstr "Refresh for your metric {0} has resumed"
-
-#:
-msgid "errors.staticimages.generic"
-msgstr "Error generating static images for workbook {0}. {1}."
-
-#:
-msgid "errors.internal_error.request.message"
-msgstr "{0} was unable to satisfy the request."
-
-#:
-msgid "errors.permissions.limited_user_visibility"
-msgstr "Error completing query. User must be an admin or creator to query other users if User Visibility is set to limited"
-
-#:
-msgid "local_names.system_user.guest.name"
-msgstr "Guest"
-
-#:
-msgid "local_names.group.all_users.name"
-msgstr "All Users"
-
-#:
-msgid "local_names.containers.personal_space.name"
-msgstr "Personal Space"
-
-#:
-msgid "password_reset.email.subject"
-msgstr "Here''s the link to reset your password"
-
-#:
-msgid "password_reset.email.body"
-msgstr "Hi {0},<br/><br/>You just requested a password reset.<br/><br/> To change your Tableau Server password, {1} or paste the following link into your browser: {2}<br/><br/>This link will expire in 48 hours, so take care of it right away.<br/><br/>If you didn''t request a password reset, you may want to let your server admin know.<br/><br/>Thanks for using Tableau!<br/>The Tableau Team"
-
-#:
-msgid "password_reset.email.link"
-msgstr "click here"
-
-#:
-msgid "hours.pl"
-msgstr "{0} hours"
-
-#:
-msgid "hours.sg"
-msgstr "1 hour"
-
-#:
-msgid "minutes.pl"
-msgstr "{0} minutes"
-
-#:
-msgid "minutes.sg"
-msgstr "1 minute"
-
-#:
-msgid "seconds.pl"
-msgstr "{0} seconds"
-
-#:
-msgid "seconds.sg"
-msgstr "1 second"
-
-#:
-msgid "dataconnections.classes.tableau_server_site"
-msgstr "Tableau Server Site"
-
-#:
-msgid "materializeviews.errors.workbook_not_in_project"
-msgstr "Project ''{0}'' does not contain workbook ''{1}''"
-
-#:
-msgid "materializeviews.errors.workbook_has_no_extract"
-msgstr "Failed to update materialized views setting for workbook ''{0}'', currently only workbooks with embedded extracts are supported"
-
-#:
-msgid "materializeviews.errors.workbook_updating_errors"
-msgstr "Errors found while updating materialized views setting for workbooks"
-
-#:
-msgid "materializeviews.errors.workbook_too_large"
-msgstr "Failed to update materialized views setting for workbook ''{0}'' because the size of workbook exceeds the limit of {1} GB"
-
-#:
-msgid "materializeviews.errors.project_path_not_exists"
-msgstr "Project path ''{0}'' does not exist"
-
-#:
-msgid "materializeviews.errors.feature_disabled"
-msgstr "Failed to update materialized views setting for workbook ''{0}'' because feature is currently disabled"
-
-#:
-msgid "materializeviews.errors.update_materialized_views_setting_failed"
-msgstr "Failed to update materialized views setting for workbook ''{0}''"
-
-#:
-msgid "materializeviews.errors.site_not_enabled"
-msgstr "This site is not enabled for materialized views. Contact your administrator"
-
-#:
-msgid "materializeviews.errors.encrypted_extracts_not_supported"
-msgstr "Materialized views feature currently does not support workbooks with encrypted extracts"
-
-#:
-msgid "materializedviews.finished.create"
-msgstr "Created materialized views with status ''{0}'' for workbook ''{1}''"
-
-#:
-msgid "materializedviews.finished.delete"
-msgstr "Deleted materialized views for workbook id: {0}"
-
-#:
-msgid "materializedviews.finished.encrypt"
-msgstr "Finished encryption of materialized views for workbook ''{0}''"
-
-#:
-msgid "materializedviews.finished.decrypt"
-msgstr "Finished decryption of materialized views for workbook ''{0}''"
-
-#:
-msgid "materializedviews.finished.rekey"
-msgstr "Finished reencryption of materialized views for workbook ''{0}''"
-
-#:
-msgid "materializedviews.status.encryption_key"
-msgstr "Encryption key ID: ''{0}''."
-
-#:
-msgid "materializedviews.status.encryption_keys"
-msgstr "Old encryption key ID: ''{0}'', new encryption key ID: ''{1}''."
-
-#:
-msgid "materializedviews.status.encryption_type"
-msgstr "Encryption datasource type: ''{0}''"
-
-#:
-msgid "customizedviews.namedSharingPrefix"
-msgstr "Shared version"
-
-#:
-msgid "flows.drafts.default_name"
-msgstr "New Flow"
-
-#:
-msgid "content_type.project"
-msgstr "Project"
-
-#:
-msgid "content_type.workbook"
-msgstr "Workbook"
-
-#:
-msgid "content_type.view"
-msgstr "View"
-
-#:
-msgid "content_type.datasource"
-msgstr "Data Source"
-
-#:
-msgid "content_type.flow"
-msgstr "Flow"
-
-#:
-msgid "content_type.metric"
-msgstr "Metric"
-
-#:
-msgid "content_type.collection"
-msgstr "Collection"
-
-#:
-msgid "content_type.visualization"
-msgstr "Visualization"
-
-#:
-msgid "content_type.askdata_visualization"
-msgstr "Ask Data Visualization"
-
-#:
-msgid "content_type.explaindata_explanation"
-msgstr "Explanation"
-
-#:
-msgid "content_type.virtualconnection"
-msgstr "Virtual Connection"
-
-#:
-msgid "content_type.virtualconnectiontable"
-msgstr "Virtual Connection Table"
-
-#:
-msgid "upgradethumbnails.status.server_started"
-msgstr "Server Response: Started thumbnails upgrade!"
-
-#:
-msgid "upgradethumbnails.status.server_stopped"
-msgstr "Server Response: Stopped %d jobs"
-
-#:
-msgid "dataquality.message.refresh_failed"
-msgstr "Refresh failed: {0}"
-
-#:
-msgid "dataquality.message.last_successful"
-msgstr "Last successful: {0}"
-
-#:
-msgid "dataquality.message.next_scheduled"
-msgstr "Next scheduled: {0}"
-
-#:
-msgid "dataquality.message.flow_run_output_steps_failed"
-msgstr "{0}/{1} output steps failed to run"
-
-#:
-msgid "importcsvsummary.error.details"
-msgstr "Error details:"
-
-#:
-msgid "importcsvsummary.remainingerrors"
-msgstr "(remaining errors not shown)"
-
-#:
-msgid "importcsvsummary.error.line"
-msgstr "line {0} for user ''{1}'': ''{2}''"
-
-#:
-msgid "importcsvsummary.line.processed"
-msgstr "Lines processed: {0}"
-
-#:
-msgid "importcsvsummary.line.skipped"
-msgstr "Lines skipped: {0}"
-
-#:
-msgid "importcsvsummary.users.added.count"
-msgstr "Number of users added: {0}"
-
-#:
-msgid "importcsvsummary.errors.count"
-msgstr "Number of errors: {0}"
-
-#:
-msgid "importcsvsummary.error.unexpected_extension"
-msgstr "Unexpected filename extension for CSV file"
-
-#:
-msgid "importcsvsummary.error.size_limit"
-msgstr "CsvFile exceeds size limit of {0}"
-
-#:
-msgid "importcsvsummary.error.local.password_mismatch"
-msgstr "Update of local site user requires empty or matching password"
-
-#:
-msgid "importcsvsummary.error.local.password_required"
-msgstr "Creation of local system user when Auth is Local requires password"
-
-#:
-msgid "importcsvsummary.error.ad.user_not_found"
-msgstr "AD user not found ''{0}''"
-
-#:
-msgid "importcsvsummary.error.too_many_errors"
-msgstr "Too many errors encountered in CSV file"
-
-#:
-msgid "audit.errors.wdc_not_allowlisted"
-msgstr "Web data connector is not allowlisted. For help, please refer to: https://help.tableau.com/current/online/en-us/to_keep_data_fresh.htm"
-
-#:
-msgid "user.input.name.err.too_long"
-msgstr "name is longer than the maximum number of characters {0}"
-
-#:
-msgid "user.input.name.err.empty"
-msgstr "name cannot be empty"
-
-#:
-msgid "askdata.title"
-msgstr "Ask Data"
-
-#:
-msgid "slack.app.upgrade.email.notification.subject"
-msgstr "Tableau App for Slack Update"
-
-#:
-msgid "slack.app.upgrade.email.notification.introduction"
-msgstr "An update is available for the Tableau app for Slack and can be reinstalled now to work with the next Tableau Online release. Tableau recommends reinstalling the app to maintain app performance and use new features. Look for new features and changes in <a styl"
-
-#:
-msgid "slack.app.upgrade.email.notification.action"
-msgstr "For update and reinstallation steps, see <a styl"
-
-#:
-msgid "slack.app.upgrade.email.notification.steps"
-msgstr "This service notification has been published by Tableau Online."
-
-#:
-msgid "slack.app.upgrade.email.notification.reason"
-msgstr "You are receiving this notification because you are an administrator of a Tableau Online site connected to Slack."
-
-#:
-msgid "slack.app.upgrade.email.notification.footer.privacy"
-msgstr "Read our <a styl"
-
-#:
-msgid "unifiedconsumption.tcrm.folders.private"
-msgstr "My Private App"
-
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-25 04:01-0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.6.2\n"
+
+#: permissions.labels.capabilities.read
+msgid "View:"
+msgstr ""
+
+#: permissions.labels.capabilities.write
+msgid "Overwrite:"
+msgstr ""
+
+#: permissions.labels.capabilities.write.legacy
+msgid "Save:"
+msgstr ""
+
+#: permissions.labels.capabilities.delete
+msgid "Delete:"
+msgstr ""
+
+#: permissions.labels.capabilities.filter
+msgid "Filter:"
+msgstr ""
+
+#: permissions.labels.capabilities.add_tag
+msgid "Add Tag:"
+msgstr ""
+
+#: permissions.labels.capabilities.add_favorite
+msgid "Add Favorite:"
+msgstr ""
+
+#: permissions.labels.capabilities.add_comment
+msgid "Add Comments:"
+msgstr ""
+
+#: permissions.labels.capabilities.add_comment.legacy
+msgid "Add Comment:"
+msgstr ""
+
+#: permissions.labels.capabilities.view_comments
+msgid "View Comments:"
+msgstr ""
+
+#: permissions.labels.capabilities.vud
+msgid "Download Full Data:"
+msgstr ""
+
+#: permissions.labels.capabilities.export_image
+msgid "Download Image/PDF:"
+msgstr ""
+
+#: permissions.labels.capabilities.export_data
+msgid "Download Summary Data:"
+msgstr ""
+
+#: permissions.labels.capabilities.export_xml
+msgid "Download/Save A Copy:"
+msgstr ""
+
+#: permissions.labels.capabilities.export_xml.legacy
+msgid "Download/Save As:"
+msgstr ""
+
+#: permissions.labels.capabilities.save_customized_view
+msgid "Save Customized View:"
+msgstr ""
+
+#: permissions.labels.capabilities.share_view
+msgid "Share Customized:"
+msgstr ""
+
+#: permissions.labels.capabilities.stateful_url
+msgid "Permalink:"
+msgstr ""
+
+#: permissions.labels.capabilities.change_hierarchy
+msgid "Move:"
+msgstr ""
+
+#: permissions.labels.capabilities.change_permissions
+msgid "Set Permissions:"
+msgstr ""
+
+#: permissions.labels.capabilities.exclude
+msgid "Exclude:"
+msgstr ""
+
+#: permissions.labels.capabilities.keep_only
+msgid "Keep Only:"
+msgstr ""
+
+#: permissions.labels.capabilities.select
+msgid "Select Marks:"
+msgstr ""
+
+#: permissions.labels.capabilities.tooltip
+msgid "View Tooltips:"
+msgstr ""
+
+#: permissions.labels.capabilities.highlight
+msgid "Legend Highlighting:"
+msgstr ""
+
+#: permissions.labels.capabilities.url_link
+msgid "Link to Exernal Urls:"
+msgstr ""
+
+#: permissions.labels.capabilities.administrator
+msgid "Administrator:"
+msgstr ""
+
+#: permissions.labels.capabilities.content_admin
+msgid "Content Administrator:"
+msgstr ""
+
+#: permissions.labels.capabilities.create_groups
+msgid "Create Groups:"
+msgstr ""
+
+#: permissions.labels.capabilities.rename
+msgid "Rename:"
+msgstr ""
+
+#: permissions.labels.capabilities.transfer_ownership
+msgid "Transfer Ownership:"
+msgstr ""
+
+#: permissions.labels.capabilities.project_leader
+msgid "Project Leader:"
+msgstr ""
+
+#: permissions.labels.capabilities.publish
+msgid "Publish:"
+msgstr ""
+
+#: permissions.labels.capabilities.connect
+msgid "Connect:"
+msgstr ""
+
+#: permissions.labels.capabilities.draw
+msgid "Drawing:"
+msgstr ""
+
+#: permissions.labels.capabilities.web_authoring
+msgid "Web Edit:"
+msgstr ""
+
+#: permissions.labels.capabilities.xml_save_as
+msgid "Save As:"
+msgstr ""
+
+#: permissions.labels.capabilities.create_refresh_metrics
+msgid "Create/Refresh Metrics:"
+msgstr ""
+
+#: permissions.labels.capabilities.explain_data
+msgid "Run Explain Data:"
+msgstr ""
+
+#: permissions.labels.roles.wb_view
+msgctxt "permissions.labels.roles.wb_view"
+"permissions.labels.roles.wb_view"
+"permissions.labels.roles.wb_view"
+msgid "View"
+msgstr ""
+
+#: permissions.labels.roles.wb_explore
+msgctxt "permissions.labels.roles.wb_explore"
+msgid "Explore"
+msgstr ""
+
+#: permissions.labels.roles.wb_publish
+msgctxt "permissions.labels.roles.wb_publish"
+msgid "Publish"
+msgstr ""
+
+#: permissions.labels.roles.wb_administer
+msgctxt "permissions.labels.roles.wb_administer"
+msgid "Administer"
+msgstr ""
+
+#: permissions.labels.roles.ds_view
+msgctxt "permissions.labels.roles.ds_view"
+msgid "View"
+msgstr ""
+
+#: permissions.labels.roles.ds_explore
+msgctxt "permissions.labels.roles.ds_explore"
+msgid "Explore"
+msgstr ""
+
+#: permissions.labels.roles.ds_publish
+msgctxt "permissions.labels.roles.ds_publish"
+msgid "Publish"
+msgstr ""
+
+#: permissions.labels.roles.ds_administer
+msgctxt "permissions.labels.roles.ds_administer"
+msgid "Administer"
+msgstr ""
+
+#: permissions.labels.roles.viewer
+msgid "Viewer"
+msgstr ""
+
+#: permissions.labels.roles.interactor
+msgid "Interactor"
+msgstr ""
+
+#: permissions.labels.roles.editor
+msgid "Editor"
+msgstr ""
+
+#: permissions.labels.roles.ds_connector
+msgid "Data Source Connector"
+msgstr ""
+
+#: permissions.labels.roles.ds_editor
+msgid "Data Source Editor"
+msgstr ""
+
+#: permissions.labels.roles.administrator
+msgid "Administrator"
+msgstr ""
+
+#: permissions.labels.roles.project_leader
+msgid "Project Leader"
+msgstr ""
+
+#: permissions.labels.roles.publisher
+msgid "Publisher"
+msgstr ""
+
+#: permissions.labels.roles.custom
+msgid "Custom"
+msgstr ""
+
+#: permissions.labels.roles.none
+msgid "None"
+msgstr ""
+
+#.
+#. # Used in Storage class in tab-core
+#: formats.messages.disk_space.in_mb
+msgid "{0} MB"
+msgstr ""
+
+#: formats.messages.disk_space.in_kb
+msgid "{0} KB"
+msgstr ""
+
+#.
+#. # Publishing-related errors and strings
+#: errors.argument.flow_description.too_long
+msgid ""
+"Flow description is too long ({0} characters).  It must be shorter than {1} "
+"characters:\n"
+"{2}"
+msgstr ""
+
+#: errors.argument.workbook_name.too_long
+msgid ""
+"Workbook name is too long ({0} characters).  It must be shorter than {1} "
+"characters:\n"
+"{2}"
+msgstr ""
+
+#: errors.argument.workbook_name.empty
+msgid "Workbook name is empty."
+msgstr ""
+
+#: errors.argument.workbook_description.too_long
+msgid ""
+"Workbook description is too long ({0} characters).  It must be shorter than "
+"{1} characters:\n"
+"{2}"
+msgstr ""
+
+#: errors.argument.worksheet_name.too_long
+msgid ""
+"Worksheet name is too long ({0} characters). It must be shorter than {1} "
+"characters:\n"
+"{2}"
+msgstr ""
+
+#: errors.argument.datasource_name.too_long
+msgid ""
+"Datasource name is too long ({0} characters). It must be shorter than {1} "
+"characters:\n"
+"{2}"
+msgstr ""
+
+#: errors.argument.datasource_name.empty
+msgid "Datasource name is empty."
+msgstr ""
+
+#: errors.argument.datasource_description.too_long
+msgid ""
+"Datasource description is too long ({0} characters). It must be shorter than "
+"{1} characters:\n"
+"{2}"
+msgstr ""
+
+#: errors.argument.dataconnection_column.too_long
+msgid ""
+"DataConnection column {0} is too long ({1} characters).  It must be shorter "
+"than {2} characters:\n"
+"{3}"
+msgstr ""
+
+#: errors.argument.tag.too_long
+msgid ""
+"Tag is too long ({0} characters). It must be shorter than {1} characters:\n"
+"{2}"
+msgstr ""
+
+#: errors.argument.workbook_file.missing_or_empty
+msgid "Workbook file is missing or empty."
+msgstr ""
+
+#: errors.argument.internal
+msgid "Internal server error.  Missing or invalid argument."
+msgstr ""
+
+#: errors.argument.thumbnail.invalid_format
+msgid ""
+"Workbook thumbnail format is invalid. Must be PNG with resolution of 300x300 "
+"or less."
+msgstr ""
+
+#: errors.html_403.disabled_resource.workbook
+msgid "Sorry, that workbook is disabled.  Contact your administrator."
+msgstr ""
+
+#: errors.html_404.missing_or_unauthorized_resource.project
+msgid ""
+"Sorry, the project you were looking for does not exist, or you do not have "
+"permission to see that project."
+msgstr ""
+
+#: errors.html_404.missing_or_unauthorized_resource.personal_space
+msgid ""
+"Sorry, the personal space you were looking for does not exist, or you do not "
+"have permission to see it."
+msgstr ""
+
+#: errors.html_404.missing_or_unauthorized_resource.datasource
+msgid "Sorry, the datasource you were looking for does not exist."
+msgstr ""
+
+#: errors.labels.formatted_request_id
+msgid "Request ID: {0}"
+msgstr ""
+
+#: errors.links.delete_datasources
+msgid "Delete Datasources"
+msgstr ""
+
+#: errors.links.delete_workbooks
+msgid "Delete Workbooks"
+msgstr ""
+
+#: errors.permissions.publish.datasource.licensing
+msgid "You must be an ''Interactor'' to publish a data source."
+msgstr ""
+
+#: errors.permissions.publish.datasource.overwrite
+msgid ""
+"A data source named \"{0}\" already exists in project \"{1}\". You do not "
+"have permissions to overwrite it."
+msgstr ""
+
+#: errors.permissions.publish.datasource.overwrite_personal_space
+msgid ""
+"A data source named \"{0}\" already exists in Personal Space. You do not "
+"have permissions to overwrite it."
+msgstr ""
+
+#: errors.permissions.publish.datasource.overwrite_short
+msgid "A data source named \"{0}\" already exists in project \"{1}\"."
+msgstr ""
+
+#: errors.permissions.publish.datasource.overwrite_short_personal_space
+msgid "A datasource named \"{0}\" already exists in Personal Space.\""
+msgstr ""
+
+#: errors.permissions.publish.datasource.non_existent
+msgid "Data source \"{0}\" does not exist."
+msgstr ""
+
+#: errors.permissions.publish.datasource.general
+msgid "Sorry, you do not have permission to publish to this datasource."
+msgstr ""
+
+#: errors.permissions.publish.project.explicit_publisher_detail
+msgid "You do not have the Publishing right."
+msgstr ""
+
+#: errors.permissions.publish.project.general
+msgid "Sorry, you do not have permission to publish to this project."
+msgstr ""
+
+#: errors.permissions.publish.project.non_existent
+msgid "Project \"{0}\" does not exist."
+msgstr ""
+
+#: errors.permissions.publish.project.not_writable
+msgid "You do not have permission to write to the project \"{0}\"."
+msgstr ""
+
+#: errors.permissions.publish.project.unspecified
+msgid "You must specify a project"
+msgstr ""
+
+#: errors.permissions.publish.workbook.disabled
+msgid "The workbook \"{0}\" is disabled."
+msgstr ""
+
+#: errors.permissions.publish.workbook.general
+msgid ""
+"A workbook with this name exists in the project you are publishing to. To "
+"publish, rename your workbook."
+msgstr ""
+
+#: errors.permissions.publish.workbook.general_personal_space
+msgid ""
+"A workbook with this name exists in the Personal Space you are publishing "
+"to. To publish, rename your workbook."
+msgstr ""
+
+#: errors.permissions.publish.workbook.overwrite
+msgid ""
+"A workbook named \"{0}\" already exists in project \"{1}\". You do not have "
+"permissions to overwrite it."
+msgstr ""
+
+#: errors.permissions.publish.workbook.overwrite_personal_space
+msgid ""
+"A workbook named \"{0}\" already exists in Personal Space. You do not have "
+"permissions to overwrite it."
+msgstr ""
+
+#: errors.permissions.publish.workbook.overwrite_short
+msgid "A workbook named \"{0}\" already exists in project \"{1}\"."
+msgstr ""
+
+#: errors.permissions.publish.workbook.overwrite_short_personal_space
+msgid "A workbook named \"{0}\" already exists in Personal Space."
+msgstr ""
+
+#: errors.reportable.impersonation.group_and_user
+msgid ""
+"Only specify one of ''impersonate_username'' or ''impersonate_groupname'', "
+"not both."
+msgstr ""
+
+#: errors.reportable.impersonation.user_not_found
+msgid "User ''{0}'' does not exist."
+msgstr ""
+
+#: errors.reportable.impersonation.group_not_found
+msgid "Group ''{0}'' does not exist."
+msgstr ""
+
+#. # errors.public.validation.hasextract is copied from the C++ file codegen strings.data IDS_PUBLIC_VALIDATION_ERROR_HASEXTRACT
+#: errors.public.validation.hasextract
+msgid ""
+"Workbooks saved to Tableau Public must use active Tableau extracts. Right-"
+"click the data source and select Use Extract before publishing. The data "
+"source, ''{0}'', is not an active extract."
+msgstr ""
+
+#: errors.publish.dataserver_datasource_not_found
+msgid "Datasource ''{0}'' not found for workbook ''{1}''."
+msgstr ""
+
+#: errors.publish.datasource_update_mode
+msgid "Unknown update mode: ''{0}''."
+msgstr ""
+
+#: errors.publish.workbook.concurrent_update
+msgid ""
+"A workbook with the same name is currently being published or modified. Wait "
+"until the task completes before you try again."
+msgstr ""
+
+#: errors.publish.workbook.restricted
+msgid ""
+"The workbook contains connections types that are not allowed on this server."
+msgstr ""
+
+#: errors.publish.datasource.concurrent_update
+msgid ""
+"A data source with the same name is currently being published or modified. "
+"Wait until the task completes before you try again."
+msgstr ""
+
+#: errors.publish.datasource.restricted
+msgid ""
+"The data source contains a connection type that is not allowed on this "
+"server."
+msgstr ""
+
+#: errors.publish.datasource.connection_check
+msgid "{0} failed to establish a connection to your datasource."
+msgstr ""
+
+#: errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption
+msgid ""
+"The workbook cannot be published with an encrypted extract. The site "
+"administrator has disabled extract encryption on this site. You must publish "
+"the workbook with an unencrypted extract."
+msgstr ""
+
+#: errors.publish.datasource.requested_extract_encryption_on_site_with_disabled_encryption
+msgid ""
+"The data source cannot be published as an encrypted extract. The site "
+"administrator has disabled extract encryption on this site. You must publish "
+"the extract unencrypted."
+msgstr ""
+
+#: errors.publish.workbook.requested_no_extract_encryption_on_site_with_enforced_encryption
+msgid ""
+"The workbook cannot be published with an unencrypted extract. The site "
+"administrator has enforced extract encryption on this site. You must publish "
+"the workbook and specify extract encryption."
+msgstr ""
+
+#: errors.publish.datasource.requested_no_extract_encryption_on_site_with_enforced_encryption
+msgid ""
+"The data source extract cannot be published unencrypted. The site "
+"administrator has enforced extract encryption on this site. You must publish "
+"the extract encrypted."
+msgstr ""
+
+#: errors.publish.has_unfinished_extract_creation_job
+msgid ""
+"This resource cannot be published because there are pending or unfinished "
+"extract creation jobs related to it. Please wait or cancel those jobs then "
+"try again."
+msgstr ""
+
+#: errors.publishing.storage_quota_exceeded.message
+msgid "Site storage quota exceeded."
+msgstr ""
+
+#: errors.publishing.request_size_exceeded
+msgid ""
+"This file cannot be published because the request size is {0} bytes which "
+"exceeds byte size limit by {1} bytes."
+msgstr ""
+
+#: errors.publishing.request_size_unknown
+msgid "The request size could not be determined."
+msgstr ""
+
+#: errors.site.quota_exceeded
+msgid ""
+"The content you are trying to upload will exceed the site''s capacity by {0}."
+msgstr ""
+
+#: errors.personal_space.quota_exceeded
+msgid "This content exceeds your Personal Space capacity by {0}."
+msgstr ""
+
+#: errors.web_authoring.workbook_deleted
+msgid ""
+"The workbook ''{0}'' was deleted.  Please choose ''Save As'' to save as new "
+"workbook."
+msgstr ""
+
+#: errors.web_authoring.workbook_changed
+msgid ""
+"Another user has edited and saved this workbook since you began editing. "
+"Therefore, you can no longer update the original workbook. Use Save As to "
+"create a new workbook with your changes."
+msgstr ""
+
+#: labels.publish.embed_credentials
+msgid "Embed password for data source"
+msgstr ""
+
+#: errors.publish.workbook.google_no_embedded_credentials
+msgid ""
+"This workbook contains a {0} data source which requires embedded "
+"credentials. To save as another workbook, select \"{1}\"."
+msgstr ""
+
+#: errors.publish.datasource.google_no_embedded_credentials
+msgid ""
+"This data source contains a {0} connection which requires embedded "
+"credentials.  Please publish this data source from Tableau Desktop with "
+"embedded credentials."
+msgstr ""
+
+#: errors.publish.datasource.federated_oauth_datasource_failed
+msgid ""
+"Credentials for one or more connections in your data source have expired. "
+"Delete the saved credentials for this data source on your Account Settings "
+"page on Tableau Server or Tableau Online, and then connect to the data "
+"source again."
+msgstr ""
+
+#: errors.publish.workbook.missing_oauth_credential
+msgid ""
+"The credential ''{0}'' was not found or cannot be used to connect to the "
+"data source or workbook."
+msgstr ""
+
+#: errors.publish.version_incompatible.message
+msgid "Desktop and server versions are incompatible."
+msgstr ""
+
+#: errors.publish.version_incompatible.details
+msgid "Desktop version ''{0}'', Server document version ''{1}''."
+msgstr ""
+
+#: errors.publish.datasource.managed_keychain.unique_cv_suggestions
+msgid "Publish failed because of a conflict. Please resubmit your change."
+msgstr ""
+
+#: errors.publish.permissions_are_locked
+msgid ""
+"Permissions are locked in the project you are publishing to. To publish this "
+"workbook, use the default permissions and try again."
+msgstr ""
+
+#: errors.publish.datasource.not.found
+msgid "Could not find this datasource on Server."
+msgstr ""
+
+#: errors.publish.extracts.disabled
+msgid "Save for extract-based, archive datasources not supported yet."
+msgstr ""
+
+#: errors.publish.datasource.timeout
+msgid ""
+"Publish timed out after {0} seconds. Please try to use Tableau Desktop to "
+"publish this datasource."
+msgstr ""
+
+#: errors.publish.data_role.permission_not_null
+msgid "Cannot set explicit permissions for datasources of type data role."
+msgstr ""
+
+#: errors.download.extracts.timeout
+msgid ""
+"Publish timed out after {0} seconds because this datasource has a large "
+"extract file. Please try to use Tableau Desktop to publish this datasource."
+msgstr ""
+
+#: errors.publish.datasource.invalid_extract_update_time
+msgid "Invalid extractUpdateTime specified: {0}"
+msgstr ""
+
+#: errors.publish.async.serialization
+msgid "Could not serialize publishing job status error"
+msgstr ""
+
+#: errors.permissions.view.datasources
+msgid "You must be an ''Interactor'' to view the list of data sources."
+msgstr ""
+
+#.
+#. # oauth related errors
+#: errors.oauth.invalid_oauth_class
+msgid "''{0}'' is not a valid OAuth connection type."
+msgstr ""
+
+#: errors.xmlapi.bad_request
+msgid "Bad request"
+msgstr ""
+
+#: errors.xmlapi.unauthorized
+msgid "Not authorized"
+msgstr ""
+
+#: errors.xmlapi.forbidden
+msgid "Not enough permissions"
+msgstr ""
+
+#: errors.xmlapi.system_user_not_found
+msgid "User account locked or invalid."
+msgstr ""
+
+#: errors.xmlapi.site_user_not_found
+msgid ""
+"This user account is not active. For help, contact your {0} administrator."
+msgstr ""
+
+#: errors.xmlapi.not_found
+msgid "Item not found"
+msgstr ""
+
+#: errors.xmlapi.concurrent_update
+msgid "Concurrent update"
+msgstr ""
+
+#: errors.xmlapi.internal_server_error
+msgid "Internal server error"
+msgstr ""
+
+#: errors.xmlapi.illegal_state
+msgid "Illegal state"
+msgstr ""
+
+#: errors.xmlapi.invalid_parameter
+msgid "Invalid parameter"
+msgstr ""
+
+#: errors.xmlapi.already_exists
+msgid "Already exists"
+msgstr ""
+
+#: errors.xmlapi.site_suspended
+msgid ""
+"This site has been suspended. You must be a System Administrator to sign in."
+msgstr ""
+
+#: errors.xmlapi.site_locked
+msgid "This site has been locked. Signing in is not allowed at this time."
+msgstr ""
+
+#: errors.xmlapi.permission_modification
+msgid "Cannot publish with modified permissions"
+msgstr ""
+
+#: errors.xmlapi.update_desktop
+msgid ""
+"To open workbooks created by other authors, please download the latest "
+"version of Tableau Desktop Public Edition from http://public.tableau.com/"
+msgstr ""
+
+#: errors.xmlapi.throttled.summary
+msgid "Too many requests"
+msgstr ""
+
+#: errors.xmlapi.throttled.detail
+msgid "Too many requests for ''{0}''. Please retry after {1}."
+msgstr ""
+
+#: datasource.publish.check.unpublishable
+msgid "Could not publish data source."
+msgstr ""
+
+#: datasource.publish.check.publishable.extract_required
+msgid "Requires creating an extract on publish."
+msgstr ""
+
+#: datasource.publish.check.publishable.credentials_required
+msgid ""
+"{1} will temporarily access the credentials provided for ''{0}'' to confirm "
+"it can maintain a live data connection."
+msgstr ""
+
+#: datasource.publish.check.publishable.server_unreachable
+msgid "{1} cannot reach ''{0}''. Publishing will create an extract."
+msgstr ""
+
+#: publish.bundles.workbook.subscription.subject
+msgid "Your workbook {0} is ready for you."
+msgstr ""
+
+#: publish.bundles.workbook.subscription.message
+msgid ""
+"Your Salesforce data was added to the workbook. Go to your {0} project to "
+"get started."
+msgstr ""
+
+#: extracts.status.finished.upload.workbook
+msgid ""
+"Finished upload of extracts (new extract id:{0}) for Workbook ''{1}'' {2}"
+msgstr ""
+
+#: extracts.status.finished.refresh.workbook
+msgid ""
+"Finished refresh of extracts (new extract id:{0}) for Workbook ''{1}'' {2}"
+msgstr ""
+
+#: extracts.status.finished.increment.workbook
+msgid ""
+"Finished increment of extracts (new extract id:{0}) for Workbook ''{1}'' {2}"
+msgstr ""
+
+#: extracts.status.finished.encrypt.workbook
+msgid ""
+"Finished encryption of extracts (new extract id:{0}) for Workbook ''{1}''"
+msgstr ""
+
+#: extracts.status.finished.decrypt.workbook
+msgid ""
+"Finished decryption of extracts (new extract id:{0}) for Workbook ''{1}''"
+msgstr ""
+
+#: extracts.status.finished.rekey.workbook
+msgid ""
+"Finished reencryption of extracts (new extract id:{0}) for Workbook ''{1}''"
+msgstr ""
+
+#: extracts.status.finished.create.workbook
+msgid ""
+"Finished creation of extracts (new extract id:{0}) for workbook ''{1}'' {2}"
+msgstr ""
+
+#: extracts.status.finished.remove.workbook
+msgid ""
+"Finished change extract (data source id:{0}) to live for workbook ''{1}''"
+msgstr ""
+
+#: extracts.status.finished.upload.datasource
+msgid ""
+"Finished upload of extracts (new extract id:{0}) for Data Source ''{1}'' {2}"
+msgstr ""
+
+#: extracts.status.finished.refresh.datasource
+msgid ""
+"Finished refresh of extracts (new extract id:{0}) for Data Source ''{1}'' {2}"
+msgstr ""
+
+#: extracts.status.finished.increment.datasource
+msgid ""
+"Finished increment of extracts (new extract id:{0}) for Data Source ''{1}'' "
+"{2}"
+msgstr ""
+
+#: extracts.status.finished.append.datasource
+msgid ""
+"Finished append of extracts (new extract id:{0}) for Data Source ''{1}'' {2}"
+msgstr ""
+
+#: extracts.status.finished.replace.datasource
+msgid ""
+"Finished replace of extracts (new extract id:{0}) for Data Source ''{1}'' {2}"
+msgstr ""
+
+#: extracts.status.finished.encrypt.datasource
+msgid ""
+"Finished encryption of extracts (new extract id:{0}) for Data Source ''{1}''"
+msgstr ""
+
+#: extracts.status.finished.decrypt.datasource
+msgid ""
+"Finished decryption of extracts (new extract id:{0}) for Data Source ''{1}''"
+msgstr ""
+
+#: extracts.status.finished.rekey.datasource
+msgid ""
+"Finished reencryption of extracts (new extract id:{0}) for Data Source "
+"''{1}''"
+msgstr ""
+
+#: extracts.status.finished.encrypt.flow
+msgid "Finished encryption of extracts for flow ''{0}''"
+msgstr ""
+
+#: extracts.status.finished.decrypt.flow
+msgid "Finished decryption of extracts for flow ''{0}''"
+msgstr ""
+
+#: extracts.status.finished.rekey.flow
+msgid "Finished reencryption of extracts for flow ''{0}''"
+msgstr ""
+
+#: extracts.status.finished.encrypt.flowdraft
+msgid "Finished encryption of extracts for flow draft ''{0}''"
+msgstr ""
+
+#: extracts.status.finished.decrypt.flowdraft
+msgid "Finished decryption of extracts for flow draft ''{0}''"
+msgstr ""
+
+#: extracts.status.finished.rekey.flowdraft
+msgid "Finished reencryption of extracts for flow draft ''{0}''"
+msgstr ""
+
+#: extracts.status.finished.create.datasource
+msgid ""
+"Finished creation of extracts (new extract id:{0}) for data source ''{1}'' "
+"{2}"
+msgstr ""
+
+#: extracts.status.finished.remove.datasource
+msgid "Finished change extract to live for data source ''{1}''"
+msgstr ""
+
+#: extracts.status.encryption_key
+msgctxt "extracts.status.encryption_key"
+msgid "Encryption key ID: ''{0}''."
+msgstr ""
+
+#: extracts.status.encryption_keys
+msgctxt "extracts.status.encryption_keys"
+msgid "Old encryption key ID: ''{0}'', new encryption key ID: ''{1}''."
+msgstr ""
+
+#: extracts.errors.upload
+msgid "Error uploading extracts for {0}: ''{1}''"
+msgstr ""
+
+#: extracts.errors.refresh
+msgid "An error occurred when refreshing extracts for the {0} ''{1}''"
+msgstr ""
+
+#: extracts.errors.create
+msgid "Error creating extracts for the {0} ''{1}''."
+msgstr ""
+
+#: extracts.errors.increment
+msgid "Error incrementing extracts for {0}: ''{1}''"
+msgstr ""
+
+#: extracts.errors.append
+msgid "Error appending extracts for {0}: ''{1}''"
+msgstr ""
+
+#: extracts.errors.replace
+msgid "Error replacing extracts for {0}: ''{1}''"
+msgstr ""
+
+#: extracts.errors.download
+msgid "Error downloading extracts for {0}: ''{1}''"
+msgstr ""
+
+#: extracts.errors.remove
+msgid "Error removing extracts for {0}: ''{1}''."
+msgstr ""
+
+#: extracts.errors.title
+msgid "Process extracts error"
+msgstr ""
+
+#: extracts.errors.nothing_to_upload
+msgid "No extracts to upload for {0}: ''{1}''"
+msgstr ""
+
+#: extracts.errors.nothing_to_refresh
+msgid "No extracts to refresh for {0}: ''{1}''"
+msgstr ""
+
+#: extracts.errors.nothing_to_increment
+msgid "No extracts to increment for {0}: ''{1}''"
+msgstr ""
+
+#: extracts.errors.nothing_to_append
+msgid "No extracts to append for {0}: ''{1}''"
+msgstr ""
+
+#: extracts.errors.nothing_to_replace
+msgid "No extracts to replace for {0}: ''{1}''"
+msgstr ""
+
+#: extracts.errors.refresh_summary
+msgid "Refresh Extracts Error"
+msgstr ""
+
+#: extracts.errors.encrypt_summary
+msgid "Encrypt Extracts Error"
+msgstr ""
+
+#: extracts.errors.rekey_summary
+msgid "Reencrypt Extracts Error"
+msgstr ""
+
+#: extracts.errors.decrypt_summary
+msgid "Decrypt Extracts Error"
+msgstr ""
+
+#: extracts.errors.remove_summary
+msgid "Remove Extracts Error"
+msgstr ""
+
+#: extracts.errors.create_summary
+msgid "Create Extracts Error"
+msgstr ""
+
+#: extracts.errors.datasource_overwritten
+msgid ""
+"Refresh failed because the datasource was overwritten by another task during "
+"processing.  Submit refresh again to correct."
+msgstr ""
+
+#: extracts.errors.workbook_overwritten
+msgid ""
+"Refresh failed because the workbook was overwritten by another task during "
+"processing.  Submit refresh again to correct."
+msgstr ""
+
+#: extracts.errors.encrypt
+msgid "An error occurred when encrypting extracts for the {0} ''{1}''"
+msgstr ""
+
+#: extracts.errors.decrypt
+msgid "An error occurred when decrypting extracts for the {0} ''{1}''"
+msgstr ""
+
+#: extracts.errors.rekey
+msgid "An error occurred when reencrypting extracts for the {0} ''{1}''"
+msgstr ""
+
+#: extracts.errors.encrypt_datasource_overwritten
+msgid ""
+"Extract encryption failed because the datasource was overwritten by another "
+"task during processing."
+msgstr ""
+
+#: extracts.errors.encrypt_workbook_overwritten
+msgid ""
+"Extract encryption failed because the workbook was overwritten by another "
+"task during processing."
+msgstr ""
+
+#: extracts.errors.rekey_datasource_overwritten
+msgid ""
+"Extract reencryption failed because the datasource was overwritten by "
+"another task during processing."
+msgstr ""
+
+#: extracts.errors.rekey_workbook_overwritten
+msgid ""
+"Extract reencryption failed because the workbook was overwritten by another "
+"task during processing."
+msgstr ""
+
+#: extracts.errors.decrypt_datasource_overwritten
+msgid ""
+"Extract decryption failed because the datasource was overwritten by another "
+"task during processing."
+msgstr ""
+
+#: extracts.errors.decrypt_workbook_overwritten
+msgid ""
+"Extract decryption failed because the workbook was overwritten by another "
+"task during processing."
+msgstr ""
+
+#: extracts.errors.remove_datasource_overwritten
+msgid ""
+"Data source couldn''t be changed to live because it was overwritten by "
+"another task."
+msgstr ""
+
+#: extracts.errors.remove_workbook_overwritten
+msgid ""
+"Workbook couldn''t be changed to live because it was overwritten by another "
+"task."
+msgstr ""
+
+#: extracts.errors.create_datasource_overwritten
+msgid ""
+"Data source couldn''t be extracted because it was overwritten by another "
+"task."
+msgstr ""
+
+#: extracts.errors.create_workbook_overwritten
+msgid ""
+"Workbook couldn''t be extracted because it was overwritten by another task."
+msgstr ""
+
+#: extracts.site_mode_change_details
+msgid "Changed site extract encryption mode from ''{0}'' to ''{1}''."
+msgstr ""
+
+#: extracts.errors.encryption_not_licensed
+msgid ""
+"This operation has failed because extract encryption is not licensed. To "
+"perform this operation, you must renew your license or decrypt your extract."
+msgstr ""
+
+#: extracts.errors.operation_cancelled_detail
+msgid "Remove extract operation for {0} (data source: {2}) timed out."
+msgstr ""
+
+#: workbooks.messages.load_error
+msgid "Unable to load Workbook {0}"
+msgstr ""
+
+#: workbooks.messages.locked
+msgid ""
+"The workbook ''{0}'' is currently being modified by another user.  Please "
+"try again later."
+msgstr ""
+
+#: workbooks.new_workbook.default_name
+msgid "New Workbook"
+msgstr ""
+
+#: workbooks.new_datasource.default_name
+msgid "New Data Source"
+msgstr ""
+
+#: datasources.messages.load_error
+msgid "Unable to load Data Source {0}"
+msgstr ""
+
+#: metrics.new_metric.default_name
+msgid "New Metric"
+msgstr ""
+
+#: messages.timeout_error.summary
+msgid "Timeout Error"
+msgstr ""
+
+#: messages.timeout_error.task_canceled
+msgid "Canceling task that took longer than {0} seconds"
+msgstr ""
+
+#: subscriptions.manage_my_subscriptions
+msgid "Manage my subscriptions"
+msgstr ""
+
+#: subscriptions.message_greeting
+msgid "Hi,"
+msgstr ""
+
+#: subscriptions.subscribed_footer
+msgid "Here''s your subscription to the {0}"
+msgstr ""
+
+#: subscriptions.subscribed_workbook
+msgid "workbook"
+msgstr ""
+
+#: subscriptions.subscribed_view
+msgid "view"
+msgstr ""
+
+#: subscriptions.fullstop
+msgid "."
+msgstr ""
+
+#: subscriptions.extract_refresh_footer
+msgid "You receive this subscription email when data is refreshed."
+msgstr ""
+
+#: subscriptions.explore_the_viz
+msgid "Explore the viz"
+msgstr ""
+
+#: subscriptions.explore_the_workbook
+msgid "Explore the workbook"
+msgstr ""
+
+#: subscriptions.pdf_attached
+msgid "Your Tableau PDF is attached."
+msgstr ""
+
+#: subscriptions.access_live_content
+msgid "You can access the live view of the content here"
+msgstr ""
+
+#: subscriptions.warning_deprecated_type
+msgid "deprecated"
+msgstr ""
+
+#: subscriptions.warning_extract_refresh_type
+msgid "extract refresh failed"
+msgstr ""
+
+#: subscriptions.warning_flow_run_type
+msgid "flow run failed"
+msgstr ""
+
+#: subscriptions.warning_introduction_general
+msgid "The following data quality warnings affect this {0}."
+msgstr ""
+
+#: subscriptions.warning_introduction_view
+msgid "For more information, see the Data Details tab in the view"
+msgstr ""
+
+#: subscriptions.warning_introduction_workbook
+msgid "For more information, see the workbook page"
+msgstr ""
+
+#: subscriptions.warning_maintenance_type
+msgid "under maintenance"
+msgstr ""
+
+#: subscriptions.warning_permission_error
+msgid "This warning is on an asset you do not have permissions to see."
+msgstr ""
+
+#: subscriptions.warning_redacted
+msgid "Permissions required"
+msgstr ""
+
+#: subscriptions.warning_sensitve_type
+msgid "sensitive data"
+msgstr ""
+
+#: subscriptions.warning_severe
+msgid "Important data quality warning"
+msgstr ""
+
+#: subscriptions.warning_stale_type
+msgid "stale data"
+msgstr ""
+
+#: subscriptions.warning_standard
+msgid "Data quality warning"
+msgstr ""
+
+#: subscriptions.warning_error_type
+msgid "unknown warning type"
+msgstr ""
+
+#: subscriptions.warning_warning_type
+msgid "warning"
+msgstr ""
+
+#: errors.subscriptions.image_render_failed
+msgid "The snapshot of the view ''{0}'' could not be properly rendered."
+msgstr ""
+
+#: errors.subscriptions.see_live_view
+msgid "To see the view online, go to {0}."
+msgstr ""
+
+#: errors.subscriptions.disabled_on_server
+msgid ""
+"Server-wide subscriptions setting is not enabled. Cannot process "
+"subscriptions."
+msgstr ""
+
+#: errors.subscriptions.disabled_on_site
+msgid "Subscriptions are disabled for site."
+msgstr ""
+
+#: errors.subscriptions.site_is_locked
+msgid "Site is locked. Cannot process Subscriptions."
+msgstr ""
+
+#: errors.subscriptions.orphan
+msgid ""
+"Workbook and views associated with this subscription could not be found."
+msgstr ""
+
+#: errors.subscriptions.user_unlicensed
+msgid "Skipping unlicensed user''s subscription."
+msgstr ""
+
+#: errors.subscriptions.smtp_unreacheable
+msgid "Unable to reach SMTP host. Check if SMTP has been configured."
+msgstr ""
+
+#: errors.subscriptions.uncategorized_error
+msgid "Unknown error"
+msgstr ""
+
+#: errors.subscriptions.pdf_render_failed
+msgid "The PDF attachment for this email could not be properly rendered."
+msgstr ""
+
+#: errors.subscriptions.pdf_limit_exceeded
+msgid ""
+"The generated PDF is larger than the {0}MB size limit and could not be "
+"attached to this email."
+msgstr ""
+
+#: errors.subscriptions.attachments_not_enabled
+msgid ""
+"This subscription failed because email attachments were disabled. Contact "
+"your Tableau administrator for details."
+msgstr ""
+
+#: errors.subscriptions.pdf_email_failed
+msgid "The generated PDF could not be attached to this email."
+msgstr ""
+
+#: errors.subscriptions.learn_more_troubleshoot
+msgid ""
+"<a href=\"https://onlinehelp.tableau.com/current/server/en-us/"
+"subscribe_trouble.htm\">Learn More</a>"
+msgstr ""
+
+#: errors.subscriptions.bad_extract_refresh_subscription_configuration
+msgid ""
+"Subscription suspended because the workbook contains multiple extract "
+"refresh schedules. To resume, update frequency to On Selected Schedule."
+msgstr ""
+
+#: errors.subscriptions.subscription_failed_refresh_failure
+msgid "The extract refresh on the data source failed."
+msgstr ""
+
+#: errors.subscriptions.multiple_extracts_for_extract_refresh_subscription
+msgid ""
+"The workbook contains multiple extract refresh schedules. Update frequency "
+"to On Selected Schedule."
+msgstr ""
+
+#: errors.subscriptions.datasource_is_missing_password
+msgid ""
+"Data source connection error. Check the credentials on all data source "
+"connections for the workbook."
+msgstr ""
+
+#: subscriptions.results_summary.sg
+msgid "{0} of {1} subscription sent from schedule ''{2}''."
+msgstr ""
+
+#: subscriptions.results_summary.pl
+msgid "{0} of {1} subscriptions sent from schedule ''{2}''."
+msgstr ""
+
+#: subscriptions.results_views_per_subscription.sg
+msgid "{0} ({1} of 1 view succeeded)"
+msgstr ""
+
+#: subscriptions.results_views_per_subscription.pl
+msgid "{0} ({1} of {2} views succeeded)"
+msgstr ""
+
+#: subscriptions.results_views_per_subscription.more
+msgid "({0} more)"
+msgstr ""
+
+#: subscriptions.results_views_per_subscription.failed
+msgid "{0} ({1} of {2} views failed)."
+msgstr ""
+
+#: subscriptions.results_header.all_shown.failures.sg
+msgid "1 failure"
+msgstr ""
+
+#: subscriptions.results_header.all_shown.failures.pl
+msgid "{0} failures"
+msgstr ""
+
+#: subscriptions.results_header.all_shown.warnings.sg
+msgid "1 warning"
+msgstr ""
+
+#: subscriptions.results_header.all_shown.warnings.pl
+msgid "{0} warnings"
+msgstr ""
+
+#: subscriptions.results_header.some_hidden.failures.pl.sg
+msgid "{0} failures (1 hidden, see logs)"
+msgstr ""
+
+#: subscriptions.results_header.some_hidden.failures.pl.pl
+msgid "{0} failures ({1} hidden, see logs)"
+msgstr ""
+
+#: subscriptions.results_header.some_hidden.warnings.pl.sg
+msgid "{0} warnings (1 hidden, see logs)"
+msgstr ""
+
+#: subscriptions.results_header.some_hidden.warnings.pl.pl
+msgid "{0} warnings ({1} hidden, see logs)"
+msgstr ""
+
+#: dataalerts.manage_my_data_alerts
+msgid "Manage alerts"
+msgstr ""
+
+#: dataalerts.edit_data_alert
+msgid "Edit alert"
+msgstr ""
+
+#: dataalerts.remove_user_from_data_alert
+msgid "Remove me"
+msgstr ""
+
+#: dataalerts.add_user_to_data_alert
+msgid "Add me to this alert"
+msgstr ""
+
+#: dataalerts.greater_or_equal
+msgid "{0} was above or equal to {1}."
+msgstr ""
+
+#: dataalerts.greater
+msgid "{0} was above {1}."
+msgstr ""
+
+#: dataalerts.less_or_equal
+msgid "{0} was below or equal to {1}."
+msgstr ""
+
+#: dataalerts.less
+msgid "{0} was below {1}."
+msgstr ""
+
+#: dataalerts.equal
+msgid "{0} was equal to {1}."
+msgstr ""
+
+#: dataalerts.email_alt_text
+msgid "View used by data-driven alert: {0}"
+msgstr ""
+
+#: dataalerts.email_alt_text_hidden_view
+msgid "View used by data-driven alert: {0} with changes applied"
+msgstr ""
+
+#: dataalerts.alert_triggered_for_the_view
+msgid "Alert triggered for the view"
+msgstr ""
+
+#: dataalerts.failure.email.subject
+msgid "Data-driven alert isn''t working for: {0}"
+msgstr ""
+
+#: dataalerts.failure.status
+msgid "Your Alert <i>{0}</i> is Not Working"
+msgstr ""
+
+#: dataalerts.failure.view.details.alert
+msgid "View this alert"
+msgstr ""
+
+#: dataalerts.failure.explanation
+msgid ""
+"Your data-driven alert, <i>{0}</i>, isn''t working right now, so recipients "
+"won''t be notified when the data condition is true. You''ll receive an email "
+"notification when the alert is working again."
+msgstr ""
+
+#: dataalerts.failure.affected.alert
+msgid "Affected data-driven alert"
+msgstr ""
+
+#: dataalerts.failure.time
+msgid "Time alert failed"
+msgstr ""
+
+#: dataalerts.failure.cause
+msgid ""
+"Sometimes alerts fail due to temporary network issues, which resolve "
+"themselves. You can also try recreating the alert on the original data view, "
+"or troubleshoot common causes of alert failure like these:"
+msgstr ""
+
+#: dataalerts.failure.changed.view
+msgid "A removed or renamed workbook, view, or data field."
+msgstr ""
+
+#: dataalerts.failure.expired.credentials
+msgid "Expired database credentials embedded in a workbook."
+msgstr ""
+
+#: dataalerts.failure.datasource.error
+msgid "An inaccessible data source."
+msgstr ""
+
+#: dataalerts.failure.email.footer
+msgid "You are receiving this email at {0} because of an alert failure."
+msgstr ""
+
+#: dataalerts.failure.troubleshooting
+msgid ""
+"To check if any of the issues listed above are causing your alert to fail, "
+"click the button below."
+msgstr ""
+
+#: dataalerts.success.email.subject
+msgid "Data-driven alert has resumed for: {0}"
+msgstr ""
+
+#: dataalerts.success.status
+msgid "Your Alert <i>{0}</i> has resumed"
+msgstr ""
+
+#: dataalerts.success.explanation
+msgid ""
+"Your data-driven alert, <i>{0}</i>, is working again, so recipients will be "
+"notified when the data condition is true."
+msgstr ""
+
+#: dataalerts.failure.error.internalError
+msgid "Data Alert internal error"
+msgstr ""
+
+#: dataalerts.failure.error.invalidDataAlertSpecification
+msgid "Invalid Data Alert specification"
+msgstr ""
+
+#: dataalerts.failure.error.summaryTableNotFound
+msgid "Summary data table not found"
+msgstr ""
+
+#: dataalerts.failure.error.unclassifiedError
+msgid "Unclassified error"
+msgstr ""
+
+#: dataalerts.failure.error.viewContentNotFound
+msgid "Data Alert view''s {0} content not found"
+msgstr ""
+
+#: dataalerts.failure.error.viewNotFound
+msgid "Data alert view cannot be located"
+msgstr ""
+
+#: dataalerts.failure.error.workbookNotFound
+msgid "Workbook not found"
+msgstr ""
+
+#: dataalerts.failure.error.paneDescriptorAxisNotFound
+msgid "No axis found for field {0}"
+msgstr ""
+
+#: dataalerts.failure.error.paneDescriptorNotFound
+msgid "{0}"
+msgstr ""
+
+#: dataalerts.failure.error.unsupportedComparisonExpression
+msgid "Unsupported comparison expression {0}"
+msgstr ""
+
+#: dataalerts.failure.error.nonConstComparisonOp
+msgid "Non constant comparison operator detected: {0}"
+msgstr ""
+
+#: dataalerts.failure.error.cannotAddFilter
+msgid "Adding Filter to data alert failed"
+msgstr ""
+
+#: dataalerts.failure.error.sheetNotAlertable
+msgid "Sheet {0} does have supported data for alerts. {1}"
+msgstr ""
+
+#: dataalerts.failure.error.dataAlertMeasureNotFound
+msgid "Cannot select measure. {0}"
+msgstr ""
+
+#: dataalerts.failure.error.tooManyMeasuresForDataAlert
+msgid "Incorrect number of measures detected.{0}"
+msgstr ""
+
+#: dataalerts.failure.error.thresholdParseError
+msgid "Failed to parse threshold text {0}. {1}"
+msgstr ""
+
+#: dataalerts.failure.error.dataAlertPresModelCreationError
+msgid "Error while serializing alert. {0}"
+msgstr ""
+
+#: dataalerts.failure.error.cannotDrawDataAlertDialog
+msgid "Failed to draw data alert dialog."
+msgstr ""
+
+#: dataalerts.failure.error.unsupportedDataAlertType
+msgid "Data alert type {0} is currently unsupported."
+msgstr ""
+
+#: dataalerts.failure.suspend.email.subject
+msgid "Data-driven alert is suspended for: {0}"
+msgstr ""
+
+#: dataalerts.failure.suspend.email.status
+msgid "Your alert {0} has been suspended"
+msgstr ""
+
+#: dataalerts.failure.suspend.email.explanation
+msgid ""
+"While suspended, we will not evaluate the view or alert recipients. After a "
+"fix has been made, you can resume the alert in <a href=\"{0}\" style=\"font-"
+"size:14px;font-family: Benton Sans Medium;color:#4996B2\">{1}."
+msgstr ""
+
+#: dataalerts.failure.suspend.view.name.prefix
+msgctxt "dataalerts.failure.suspend.view.name.prefix"
+msgid "View"
+msgstr ""
+
+#: dataalerts.failure.suspend.time
+msgctxt "dataalerts.failure.suspend.time"
+msgid "Time of suspension"
+msgstr ""
+
+#: dataalerts.failure.suspend.email.footer
+msgid "You are receiving this email because your alert was suspended."
+msgstr ""
+
+#: dataalerts.failure.suspend.email.view.name.my.content
+msgid "My Content"
+msgstr ""
+
+#: dataalerts.failure.suspend.view.alerts
+msgid "View Alerts"
+msgstr ""
+
+#: metricsservices.failure.affected.metric
+msgid "Affected metric"
+msgstr ""
+
+#: metricsservices.failure.cause
+msgid ""
+"Sometimes metric refreshes fail due to temporary connectivity issues, which "
+"resolve themselves. Other common reasons why a metric refresh might fail "
+"include:"
+msgstr ""
+
+#: metricsservices.failure.changed.view
+msgid "A removed or renamed workbook, view, or data field"
+msgstr ""
+
+#: metricsservices.failure.permissions.error
+msgid "A change in permissions for the connected view"
+msgstr ""
+
+#: metricsservices.failure.email.footer
+msgid ""
+"You are receiving this email at {0} because of a failure with your metric "
+"refresh."
+msgstr ""
+
+#: metricsservices.failure.email.subject
+msgid "Metric refresh isn''t working for: {0}"
+msgstr ""
+
+#: metricsservices.failure.expired.credentials
+msgid "Expired database credentials embedded in a workbook"
+msgstr ""
+
+#: metricsservices.failure.explanation
+msgid ""
+"Your metric isn''t able to refresh, so the metric data isn''t updating. "
+"You''ll receive an email notification when the metric refresh is working "
+"again."
+msgstr ""
+
+#: metricsservices.failure.status
+msgid "Your metric \"{0}\" isn''t refreshing"
+msgstr ""
+
+#: metricsservices.failure.suspend.email.explanation
+msgid ""
+"While the metric refresh is suspended, your metric data will not update. "
+"After a fix has been made, you can resume the metric refresh."
+msgstr ""
+
+#: metricsservices.failure.suspend.email.footer
+msgid ""
+"You are receiving this email at {0} because your metric refresh was "
+"suspended."
+msgstr ""
+
+#: metricsservices.failure.suspend.email.status
+msgid "Refresh for your metric \"{0}\" has been suspended"
+msgstr ""
+
+#: metricsservices.failure.suspend.email.subject
+msgid "Metric refresh suspended for: {0}"
+msgstr ""
+
+#: metricsservices.failure.suspend.time
+msgctxt "metricsservices.failure.suspend.time"
+msgid "Time of suspension"
+msgstr ""
+
+#: metricsservices.failure.suspend.view.metric
+msgctxt "metricsservices.failure.suspend.view.metric"
+msgid "Go to Metric"
+msgstr ""
+
+#: metricsservices.failure.suspend.view.name.prefix
+msgctxt "metricsservices.failure.suspend.view.name.prefix"
+msgid "Connected view"
+msgstr ""
+
+#: metricsservices.failure.time
+msgid "Time of refresh failure"
+msgstr ""
+
+#: metricsservices.failure.troubleshooting
+msgid ""
+"To check if any of the issues listed above are causing your metric refresh "
+"to fail, click the button below. You can also try recreating the metric on "
+"the connected view."
+msgstr ""
+
+#: metricsservices.failure.view.details.metric
+msgctxt "metricsservices.failure.view.details.metric"
+msgid "Go to Metric"
+msgstr ""
+
+#: metricsservices.failure.view.name.prefix
+msgctxt "metricsservices.failure.view.name.prefix"
+msgid "Connected view"
+msgstr ""
+
+#: metricsservices.success.email.subject
+msgid "Metric refresh has resumed for: {0}"
+msgstr ""
+
+#: metricsservices.success.explanation
+msgid ""
+"The refresh for your metric is working again, so it will check for updates "
+"to your metric data."
+msgstr ""
+
+#: metricsservices.success.status
+msgid "Refresh for your metric \"{0}\" has resumed"
+msgstr ""
+
+#: errors.staticimages.generic
+msgid "Error generating static images for workbook {0}. {1}."
+msgstr ""
+
+#: errors.internal_error.request.message
+msgid "{0} was unable to satisfy the request."
+msgstr ""
+
+#: errors.permissions.limited_user_visibility
+msgid ""
+"Error completing query. User must be an admin or creator to query other "
+"users if User Visibility is set to limited"
+msgstr ""
+
+#: local_names.system_user.guest.name
+msgid "Guest"
+msgstr ""
+
+#: local_names.group.all_users.name
+msgid "All Users"
+msgstr ""
+
+#: local_names.containers.personal_space.name
+msgid "Personal Space"
+msgstr ""
+
+#: password_reset.email.subject
+msgid "Here''s the link to reset your password"
+msgstr ""
+
+#: password_reset.email.body
+msgid ""
+"Hi {0},<br/><br/>You just requested a password reset.<br/><br/> To change "
+"your Tableau Server password, {1} or paste the following link into your "
+"browser: {2}<br/><br/>This link will expire in 48 hours, so take care of it "
+"right away.<br/><br/>If you didn''t request a password reset, you may want "
+"to let your server admin know.<br/><br/>Thanks for using Tableau!<br/>The "
+"Tableau Team"
+msgstr ""
+
+#: password_reset.email.link
+msgid "click here"
+msgstr ""
+
+#: hours.pl
+msgid "{0} hours"
+msgstr ""
+
+#: hours.sg
+msgid "1 hour"
+msgstr ""
+
+#: minutes.pl
+msgid "{0} minutes"
+msgstr ""
+
+#: minutes.sg
+msgid "1 minute"
+msgstr ""
+
+#: seconds.pl
+msgid "{0} seconds"
+msgstr ""
+
+#: seconds.sg
+msgid "1 second"
+msgstr ""
+
+#: dataconnections.classes.tableau_server_site
+msgid "Tableau Server Site"
+msgstr ""
+
+#: materializeviews.errors.workbook_not_in_project
+msgid "Project ''{0}'' does not contain workbook ''{1}''"
+msgstr ""
+
+#: materializeviews.errors.workbook_has_no_extract
+msgid ""
+"Failed to update materialized views setting for workbook ''{0}'', currently "
+"only workbooks with embedded extracts are supported"
+msgstr ""
+
+#: materializeviews.errors.workbook_updating_errors
+msgid "Errors found while updating materialized views setting for workbooks"
+msgstr ""
+
+#: materializeviews.errors.workbook_too_large
+msgid ""
+"Failed to update materialized views setting for workbook ''{0}'' because the "
+"size of workbook exceeds the limit of {1} GB"
+msgstr ""
+
+#: materializeviews.errors.project_path_not_exists
+msgid "Project path ''{0}'' does not exist"
+msgstr ""
+
+#: materializeviews.errors.feature_disabled
+msgid ""
+"Failed to update materialized views setting for workbook ''{0}'' because "
+"feature is currently disabled"
+msgstr ""
+
+#: materializeviews.errors.update_materialized_views_setting_failed
+msgid "Failed to update materialized views setting for workbook ''{0}''"
+msgstr ""
+
+#: materializeviews.errors.site_not_enabled
+msgid ""
+"This site is not enabled for materialized views. Contact your administrator"
+msgstr ""
+
+#: materializeviews.errors.encrypted_extracts_not_supported
+msgid ""
+"Materialized views feature currently does not support workbooks with "
+"encrypted extracts"
+msgstr ""
+
+#: materializedviews.finished.create
+msgid "Created materialized views with status ''{0}'' for workbook ''{1}''"
+msgstr ""
+
+#: materializedviews.finished.delete
+msgid "Deleted materialized views for workbook id: {0}"
+msgstr ""
+
+#: materializedviews.finished.encrypt
+msgid "Finished encryption of materialized views for workbook ''{0}''"
+msgstr ""
+
+#: materializedviews.finished.decrypt
+msgid "Finished decryption of materialized views for workbook ''{0}''"
+msgstr ""
+
+#: materializedviews.finished.rekey
+msgid "Finished reencryption of materialized views for workbook ''{0}''"
+msgstr ""
+
+#: materializedviews.status.encryption_key
+msgctxt "materializedviews.status.encryption_key"
+msgid "Encryption key ID: ''{0}''."
+msgstr ""
+
+#: materializedviews.status.encryption_keys
+msgctxt "materializedviews.status.encryption_keys"
+msgid "Old encryption key ID: ''{0}'', new encryption key ID: ''{1}''."
+msgstr ""
+
+#: materializedviews.status.encryption_type
+msgid "Encryption datasource type: ''{0}''"
+msgstr ""
+
+#: customizedviews.namedSharingPrefix
+msgid "Shared version"
+msgstr ""
+
+#: flows.drafts.default_name
+msgid "New Flow"
+msgstr ""
+
+#: content_type.project
+msgid "Project"
+msgstr ""
+
+#: content_type.workbook
+msgid "Workbook"
+msgstr ""
+
+#: content_type.view
+msgctxt "content_type.view"
+msgid "View"
+msgstr ""
+
+#: content_type.datasource
+msgid "Data Source"
+msgstr ""
+
+#: content_type.flow
+msgid "Flow"
+msgstr ""
+
+#: content_type.metric
+msgid "Metric"
+msgstr ""
+
+#: content_type.collection
+msgid "Collection"
+msgstr ""
+
+#: content_type.visualization
+msgid "Visualization"
+msgstr ""
+
+#: content_type.askdata_visualization
+msgid "Ask Data Visualization"
+msgstr ""
+
+#: content_type.explaindata_explanation
+msgid "Explanation"
+msgstr ""
+
+#: content_type.virtualconnection
+msgid "Virtual Connection"
+msgstr ""
+
+#: content_type.virtualconnectiontable
+msgid "Virtual Connection Table"
+msgstr ""
+
+#: upgradethumbnails.status.server_started
+msgid "Server Response: Started thumbnails upgrade!"
+msgstr ""
+
+#: upgradethumbnails.status.server_stopped
+msgid "Server Response: Stopped %d jobs"
+msgstr ""
+
+#: dataquality.message.refresh_failed
+msgid "Refresh failed: {0}"
+msgstr ""
+
+#: dataquality.message.last_successful
+msgid "Last successful: {0}"
+msgstr ""
+
+#: dataquality.message.next_scheduled
+msgid "Next scheduled: {0}"
+msgstr ""
+
+#: dataquality.message.flow_run_output_steps_failed
+msgid "{0}/{1} output steps failed to run"
+msgstr ""
+
+#: importcsvsummary.error.details
+msgid "Error details:"
+msgstr ""
+
+#: importcsvsummary.remainingerrors
+msgid "(remaining errors not shown)"
+msgstr ""
+
+#: importcsvsummary.error.line
+msgid "line {0} for user ''{1}'': ''{2}''"
+msgstr ""
+
+#: importcsvsummary.line.processed
+msgid "Lines processed: {0}"
+msgstr ""
+
+#: importcsvsummary.line.skipped
+msgid "Lines skipped: {0}"
+msgstr ""
+
+#: importcsvsummary.users.added.count
+msgid "Number of users added: {0}"
+msgstr ""
+
+#: importcsvsummary.errors.count
+msgid "Number of errors: {0}"
+msgstr ""
+
+#: importcsvsummary.error.unexpected_extension
+msgid "Unexpected filename extension for CSV file"
+msgstr ""
+
+#: importcsvsummary.error.size_limit
+msgid "CsvFile exceeds size limit of {0}"
+msgstr ""
+
+#: importcsvsummary.error.local.password_mismatch
+msgid "Update of local site user requires empty or matching password"
+msgstr ""
+
+#: importcsvsummary.error.local.password_required
+msgid "Creation of local system user when Auth is Local requires password"
+msgstr ""
+
+#: importcsvsummary.error.ad.user_not_found
+msgid "AD user not found ''{0}''"
+msgstr ""
+
+#: importcsvsummary.error.too_many_errors
+msgid "Too many errors encountered in CSV file"
+msgstr ""
+
+#: audit.errors.wdc_not_allowlisted
+msgid ""
+"Web data connector is not allowlisted. For help, please refer to: "
+"https://help.tableau.com/current/online/en-us/to_keep_data_fresh.htm"
+msgstr ""
+
+#: user.input.name.err.too_long
+msgid "name is longer than the maximum number of characters {0}"
+msgstr ""
+
+#: user.input.name.err.empty
+msgid "name cannot be empty"
+msgstr ""
+
+#: askdata.title
+msgid "Ask Data"
+msgstr ""
+
+#: slack.app.upgrade.email.notification.subject
+msgid "Tableau App for Slack Update"
+msgstr ""
+
+#: slack.app.upgrade.email.notification.introduction
+msgid ""
+"An update is available for the Tableau app for Slack and can be reinstalled "
+"now to work with the next Tableau Online release. Tableau recommends "
+"reinstalling the app to maintain app performance and use new features. Look "
+"for new features and changes in <a style=\"text-decoration: none; color: "
+"#E8762C;\" href=\"https://help.tableau.com/current/online/en-us/"
+"whatsnew_online.htm#tableau-slack\">What''s New in Tableau Online.</a>"
+msgstr ""
+
+#: slack.app.upgrade.email.notification.action
+msgid ""
+"For update and reinstallation steps, see <a style=\"text-decoration: none; "
+"color: #E8762C;\" href=\"https://help.tableau.com/current/online/en-us/"
+"slack_admin.htm#update\">Update your Tableau for Slack app.</a>  If you have "
+"multiple Tableau Online sites, reinstall the app in each site."
+msgstr ""
+
+#: slack.app.upgrade.email.notification.steps
+msgid "This service notification has been published by Tableau Online."
+msgstr ""
+
+#: slack.app.upgrade.email.notification.reason
+msgid ""
+"You are receiving this notification because you are an administrator of a "
+"Tableau Online site connected to Slack."
+msgstr ""
+
+#: slack.app.upgrade.email.notification.footer.privacy
+msgid ""
+"Read our <a style=\"text-decoration: none; color: #E8762C;\" href=\"http"
+"://www.tableau.com/privacy\">Privacy Policy</a>"
+msgstr ""
+
+#: unifiedconsumption.tcrm.folders.private
+msgid "My Private App"
+msgstr ""

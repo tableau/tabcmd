@@ -1,1800 +1,1892 @@
+#. extracted from tabcmd/locales/zh\shared_wg_zh.properties
+#, fuzzy
 msgid ""
 msgstr ""
-"MIME-Version: 1.0"
-"Content-Type: text/plain; charset=None"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: prop2po"
-"Project-Id-Version: None"
-"Language: None"
-#:
-msgid "permissions.labels.capabilities.read"
-msgstr "\u89c6\u56fe:"
-
-#:
-msgid "permissions.labels.capabilities.write"
-msgstr "\u8986\u76d6:"
-
-#:
-msgid "permissions.labels.capabilities.write.legacy"
-msgstr "\u4fdd\u5b58:"
-
-#:
-msgid "permissions.labels.capabilities.delete"
-msgstr "\u5220\u9664:"
-
-#:
-msgid "permissions.labels.capabilities.filter"
-msgstr "\u7b5b\u9009\u5668:"
-
-#:
-msgid "permissions.labels.capabilities.add_tag"
-msgstr "\u6dfb\u52a0\u6807\u8bb0:"
-
-#:
-msgid "permissions.labels.capabilities.add_favorite"
-msgstr "\u6dfb\u52a0\u6536\u85cf\u5939:"
-
-#:
-msgid "permissions.labels.capabilities.add_comment"
-msgstr "\u6dfb\u52a0\u6ce8\u91ca:"
-
-#:
-msgid "permissions.labels.capabilities.add_comment.legacy"
-msgstr "\u6dfb\u52a0\u6ce8\u91ca:"
-
-#:
-msgid "permissions.labels.capabilities.view_comments"
-msgstr "\u67e5\u770b\u6ce8\u91ca:"
-
-#:
-msgid "permissions.labels.capabilities.vud"
-msgstr "\u4e0b\u8f7d\u5b8c\u6574\u6570\u636e:"
-
-#:
-msgid "permissions.labels.capabilities.export_image"
-msgstr "\u4e0b\u8f7d\u56fe\u50cf/PDF:"
-
-#:
-msgid "permissions.labels.capabilities.export_data"
-msgstr "\u4e0b\u8f7d\u6458\u8981\u6570\u636e:"
-
-#:
-msgid "permissions.labels.capabilities.export_xml"
-msgstr "\u4e0b\u8f7d/\u53e6\u5b58\u4e3a\u526f\u672c:"
-
-#:
-msgid "permissions.labels.capabilities.export_xml.legacy"
-msgstr "\u4e0b\u8f7d/\u53e6\u5b58\u4e3a:"
-
-#:
-msgid "permissions.labels.capabilities.save_customized_view"
-msgstr "\u4fdd\u5b58\u81ea\u5b9a\u4e49\u89c6\u56fe:"
-
-#:
-msgid "permissions.labels.capabilities.share_view"
-msgstr "\u5171\u4eab\u81ea\u5b9a\u4e49:"
-
-#:
-msgid "permissions.labels.capabilities.stateful_url"
-msgstr "\u6c38\u4e45\u94fe\u63a5:"
-
-#:
-msgid "permissions.labels.capabilities.change_hierarchy"
-msgstr "\u79fb\u52a8:"
-
-#:
-msgid "permissions.labels.capabilities.change_permissions"
-msgstr "\u8bbe\u7f6e\u6743\u9650:"
-
-#:
-msgid "permissions.labels.capabilities.exclude"
-msgstr "\u6392\u9664:"
-
-#:
-msgid "permissions.labels.capabilities.keep_only"
-msgstr "\u53ea\u4fdd\u7559:"
-
-#:
-msgid "permissions.labels.capabilities.select"
-msgstr "\u9009\u62e9\u6807\u8bb0:"
-
-#:
-msgid "permissions.labels.capabilities.tooltip"
-msgstr "\u67e5\u770b\u5de5\u5177\u63d0\u793a:"
-
-#:
-msgid "permissions.labels.capabilities.highlight"
-msgstr "\u56fe\u4f8b\u7a81\u51fa\u663e\u793a:"
-
-#:
-msgid "permissions.labels.capabilities.url_link"
-msgstr "\u94fe\u63a5\u5230\u5916\u90e8 Url:"
-
-#:
-msgid "permissions.labels.capabilities.administrator"
-msgstr "\u7ba1\u7406\u5458:"
-
-#:
-msgid "permissions.labels.capabilities.content_admin"
-msgstr "\u5185\u5bb9\u7ba1\u7406\u5458:"
-
-#:
-msgid "permissions.labels.capabilities.create_groups"
-msgstr "\u521b\u5efa\u7fa4\u7ec4:"
-
-#:
-msgid "permissions.labels.capabilities.rename"
-msgstr "\u91cd\u547d\u540d:"
-
-#:
-msgid "permissions.labels.capabilities.transfer_ownership"
-msgstr "\u8f6c\u79fb\u6240\u6709\u6743:"
-
-#:
-msgid "permissions.labels.capabilities.project_leader"
-msgstr "\u9879\u76ee\u4e3b\u7ba1:"
-
-#:
-msgid "permissions.labels.capabilities.publish"
-msgstr "\u53d1\u5e03:"
-
-#:
-msgid "permissions.labels.capabilities.connect"
-msgstr "\u8fde\u63a5:"
-
-#:
-msgid "permissions.labels.capabilities.draw"
-msgstr "\u7ed8\u5236:"
-
-#:
-msgid "permissions.labels.capabilities.web_authoring"
-msgstr "Web \u7f16\u8f91:"
-
-#:
-msgid "permissions.labels.capabilities.xml_save_as"
-msgstr "\u53e6\u5b58\u4e3a:"
-
-#:
-msgid "permissions.labels.capabilities.create_refresh_metrics"
-msgstr "\u521b\u5efa/\u5237\u65b0\u6307\u6807:"
-
-#:
-msgid "permissions.labels.capabilities.explain_data"
-msgstr "\u8fd0\u884c\u201c\u6570\u636e\u89e3\u91ca\u201d\u529f\u80fd:"
-
-#:
-msgid "permissions.labels.roles.wb_view"
-msgstr "\u89c6\u56fe"
-
-#:
-msgid "permissions.labels.roles.wb_explore"
-msgstr "\u6d4f\u89c8"
-
-#:
-msgid "permissions.labels.roles.wb_publish"
-msgstr "\u53d1\u5e03"
-
-#:
-msgid "permissions.labels.roles.wb_administer"
-msgstr "\u7ba1\u7406"
-
-#:
-msgid "permissions.labels.roles.ds_view"
-msgstr "\u89c6\u56fe"
-
-#:
-msgid "permissions.labels.roles.ds_explore"
-msgstr "\u6d4f\u89c8"
-
-#:
-msgid "permissions.labels.roles.ds_publish"
-msgstr "\u53d1\u5e03"
-
-#:
-msgid "permissions.labels.roles.ds_administer"
-msgstr "\u7ba1\u7406"
-
-#:
-msgid "permissions.labels.roles.viewer"
-msgstr "Viewer(\u67e5\u770b\u8005)"
-
-#:
-msgid "permissions.labels.roles.interactor"
-msgstr "\u4ea4\u4e92\u8005"
-
-#:
-msgid "permissions.labels.roles.editor"
-msgstr "\u7f16\u8f91\u8005"
-
-#:
-msgid "permissions.labels.roles.ds_connector"
-msgstr "\u6570\u636e\u6e90\u8fde\u63a5\u8005"
-
-#:
-msgid "permissions.labels.roles.ds_editor"
-msgstr "\u6570\u636e\u6e90\u7f16\u8f91\u8005"
-
-#:
-msgid "permissions.labels.roles.administrator"
-msgstr "\u7ba1\u7406\u5458"
-
-#:
-msgid "permissions.labels.roles.project_leader"
-msgstr "\u9879\u76ee\u4e3b\u7ba1"
-
-#:
-msgid "permissions.labels.roles.publisher"
-msgstr "\u53d1\u5e03\u8005"
-
-#:
-msgid "permissions.labels.roles.custom"
-msgstr "\u81ea\u5b9a\u4e49"
-
-#:
-msgid "permissions.labels.roles.none"
-msgstr "\u65e0"
-
-# Used in Storage class in tab-core
-
-#:
-msgid "formats.messages.disk_space.in_mb"
-msgstr "{0} MB"
-
-#:
-msgid "formats.messages.disk_space.in_kb"
-msgstr "{0} KB"
-
-# Publishing-related errors and strings
-
-#:
-msgid "errors.argument.flow_description.too_long"
-msgstr "\u6d41\u7a0b\u63cf\u8ff0\u8fc7\u957f({0} \u4e2a\u5b57\u7b26)\u3002\u5176\u957f\u5ea6\u5fc5\u987b\u5c0f\u4e8e {1} \u4e2a\u5b57\u7b26:\n{2}"
-
-#:
-msgid "errors.argument.workbook_name.too_long"
-msgstr "\u5de5\u4f5c\u7c3f\u540d\u79f0\u8fc7\u957f(\u6700\u591a\u4e3a {0} \u4e2a\u5b57\u7b26)\u3002\u5176\u957f\u5ea6\u5fc5\u987b\u5c0f\u4e8e {1} \u4e2a\u5b57\u7b26:\n{2}"
-
-#:
-msgid "errors.argument.workbook_name.empty"
-msgstr "\u5de5\u4f5c\u7c3f\u540d\u79f0\u4e3a\u7a7a\u3002"
-
-#:
-msgid "errors.argument.workbook_description.too_long"
-msgstr "\u5de5\u4f5c\u7c3f\u63cf\u8ff0\u8fc7\u957f({0} \u4e2a\u5b57\u7b26)\u3002\u5176\u957f\u5ea6\u5fc5\u987b\u5c0f\u4e8e {1} \u4e2a\u5b57\u7b26:\n{2}"
-
-#:
-msgid "errors.argument.worksheet_name.too_long"
-msgstr "\u5de5\u4f5c\u8868\u540d\u79f0\u8fc7\u957f(\u6700\u591a\u4e3a {0} \u4e2a\u5b57\u7b26)\u3002\u5176\u957f\u5ea6\u5fc5\u987b\u5c0f\u4e8e {1} \u4e2a\u5b57\u7b26:\n{2}"
-
-#:
-msgid "errors.argument.datasource_name.too_long"
-msgstr "\u6570\u636e\u6e90\u540d\u79f0\u8fc7\u957f({0} \u4e2a\u5b57\u7b26)\u3002\u5176\u957f\u5ea6\u5fc5\u987b\u5c0f\u4e8e {1} \u4e2a\u5b57\u7b26:\n{2}"
-
-#:
-msgid "errors.argument.datasource_name.empty"
-msgstr "\u6570\u636e\u6e90\u540d\u79f0\u4e3a\u7a7a\u3002"
-
-#:
-msgid "errors.argument.datasource_description.too_long"
-msgstr "\u6570\u636e\u6e90\u63cf\u8ff0\u8fc7\u957f({0} \u4e2a\u5b57\u7b26)\u3002\u5176\u957f\u5ea6\u5fc5\u987b\u5c0f\u4e8e {1} \u4e2a\u5b57\u7b26:\n{2}"
-
-#:
-msgid "errors.argument.dataconnection_column.too_long"
-msgstr "DataConnection column {0} is too long ({1} characters).  It must be shorter than {2} characters:\n{3}"
-
-#:
-msgid "errors.argument.tag.too_long"
-msgstr "\u6807\u8bb0\u8fc7\u957f({0} \u4e2a\u5b57\u7b26)\u3002\u5176\u957f\u5ea6\u5fc5\u987b\u5c0f\u4e8e {1} \u4e2a\u5b57\u7b26:\n{2}"
-
-#:
-msgid "errors.argument.workbook_file.missing_or_empty"
-msgstr "\u5de5\u4f5c\u7c3f\u6587\u4ef6\u7f3a\u5931\u6216\u4e3a\u7a7a\u3002"
-
-#:
-msgid "errors.argument.internal"
-msgstr "\u5185\u90e8\u670d\u52a1\u5668\u9519\u8bef\u3002\u53c2\u6570\u7f3a\u5931\u6216\u65e0\u6548\u3002"
-
-#:
-msgid "errors.argument.thumbnail.invalid_format"
-msgstr "\u5de5\u4f5c\u7c3f\u7f29\u7565\u56fe\u683c\u5f0f\u65e0\u6548\u3002\u5fc5\u987b\u662f\u5206\u8fa8\u7387\u4e3a 300x300 \u6216\u66f4\u4f4e\u7684 PNG\u3002"
-
-#:
-msgid "errors.html_403.disabled_resource.workbook"
-msgstr "\u62b1\u6b49\uff0c\u8be5\u5de5\u4f5c\u7c3f\u5df2\u7981\u7528\u3002\u8bf7\u4e0e\u7ba1\u7406\u5458\u8054\u7cfb\u3002"
-
-#:
-msgid "errors.html_404.missing_or_unauthorized_resource.project"
-msgstr "\u62b1\u6b49\uff0c\u60a8\u67e5\u627e\u7684\u9879\u76ee\u4e0d\u5b58\u5728\uff0c\u6216\u8005\u60a8\u65e0\u6743\u67e5\u770b\u8be5\u9879\u76ee\u3002"
-
-#:
-msgid "errors.html_404.missing_or_unauthorized_resource.personal_space"
-msgstr "\u62b1\u6b49\uff0c\u60a8\u8981\u67e5\u627e\u7684\u4e2a\u4eba\u7a7a\u95f4\u4e0d\u5b58\u5728\uff0c\u6216\u8005\u60a8\u6ca1\u6709\u67e5\u770b\u6743\u9650\u3002"
-
-#:
-msgid "errors.html_404.missing_or_unauthorized_resource.datasource"
-msgstr "\u62b1\u6b49\uff0c\u60a8\u67e5\u627e\u7684\u6570\u636e\u6e90\u4e0d\u5b58\u5728\u3002"
-
-#:
-msgid "errors.labels.formatted_request_id"
-msgstr "\u8bf7\u6c42 ID: {0}"
-
-#:
-msgid "errors.links.delete_datasources"
-msgstr "\u5220\u9664\u6570\u636e\u6e90"
-
-#:
-msgid "errors.links.delete_workbooks"
-msgstr "\u5220\u9664\u5de5\u4f5c\u7c3f"
-
-#:
-msgid "errors.permissions.publish.datasource.licensing"
-msgstr "\u60a8\u5fc5\u987b\u662f\u201c\u4ea4\u4e92\u8005\u201d\uff0c\u624d\u80fd\u53d1\u5e03\u6570\u636e\u6e90\u3002"
-
-#:
-msgid "errors.permissions.publish.datasource.overwrite"
-msgstr "\u9879\u76ee\u201c{1}\u201d\u4e2d\u5df2\u5b58\u5728\u540d\u4e3a\u201c{0}\u201d\u7684\u6570\u636e\u6e90\u3002\u60a8\u6ca1\u6709\u8986\u76d6\u5b83\u7684\u6743\u9650\u3002"
-
-#:
-msgid "errors.permissions.publish.datasource.overwrite_personal_space"
-msgstr "\u4e2a\u4eba\u7a7a\u95f4\u4e2d\u5df2\u5b58\u5728\u540d\u4e3a\u201c{0}\u201d\u7684\u6570\u636e\u6e90\u3002\u60a8\u6ca1\u6709\u8986\u76d6\u5b83\u7684\u6743\u9650\u3002"
-
-#:
-msgid "errors.permissions.publish.datasource.overwrite_short"
-msgstr "\u9879\u76ee\u201c{1}\u201d\u4e2d\u5df2\u5b58\u5728\u540d\u4e3a\u201c{0}\u201d\u7684\u6570\u636e\u6e90\u3002"
-
-#:
-msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "\u4e2a\u4eba\u7a7a\u95f4\u4e2d\u5df2\u5b58\u5728\u540d\u4e3a\u201c{0}\u201d\u7684\u6570\u636e\u6e90\u3002"
-
-#:
-msgid "errors.permissions.publish.datasource.non_existent"
-msgstr "\u6570\u636e\u6e90\u201c{0}\u201d\u4e0d\u5b58\u5728\u3002"
-
-#:
-msgid "errors.permissions.publish.datasource.general"
-msgstr "\u62b1\u6b49\uff0c\u60a8\u65e0\u6743\u53d1\u5e03\u5230\u6b64\u6570\u636e\u6e90\u3002"
-
-#:
-msgid "errors.permissions.publish.project.explicit_publisher_detail"
-msgstr "\u60a8\u6ca1\u6709\u53d1\u5e03\u6743\u9650\u3002"
-
-#:
-msgid "errors.permissions.publish.project.general"
-msgstr "\u62b1\u6b49\uff0c\u60a8\u65e0\u6743\u53d1\u5e03\u6b64\u9879\u76ee\u3002"
-
-#:
-msgid "errors.permissions.publish.project.non_existent"
-msgstr "\u9879\u76ee\u201c{0}\u201d\u4e0d\u5b58\u5728\u3002"
-
-#:
-msgid "errors.permissions.publish.project.not_writable"
-msgstr "\u60a8\u6ca1\u6709\u5199\u5165\u9879\u76ee\u201c{0}\u201d\u7684\u6743\u9650\u3002"
-
-#:
-msgid "errors.permissions.publish.project.unspecified"
-msgstr "\u5fc5\u987b\u6307\u5b9a\u9879\u76ee"
-
-#:
-msgid "errors.permissions.publish.workbook.disabled"
-msgstr "\u5de5\u4f5c\u7c3f\u201c{0}\u201d\u5df2\u7981\u7528\u3002"
-
-#:
-msgid "errors.permissions.publish.workbook.general"
-msgstr "\u8981\u53d1\u5e03\u5230\u7684\u9879\u76ee\u4e2d\u5b58\u5728\u5177\u6709\u6b64\u540d\u79f0\u7684\u5de5\u4f5c\u7c3f\u3002\u82e5\u8981\u53d1\u5e03\uff0c\u8bf7\u91cd\u547d\u540d\u60a8\u7684\u5de5\u4f5c\u7c3f\u3002"
-
-#:
-msgid "errors.permissions.publish.workbook.general_personal_space"
-msgstr "\u60a8\u8981\u53d1\u5e03\u5230\u7684\u4e2a\u4eba\u7a7a\u95f4\u4e2d\u5df2\u5b58\u5728\u540c\u540d\u5de5\u4f5c\u7c3f\u3002\u82e5\u8981\u53d1\u5e03\uff0c\u8bf7\u91cd\u547d\u540d\u5de5\u4f5c\u7c3f\u3002"
-
-#:
-msgid "errors.permissions.publish.workbook.overwrite"
-msgstr "\u9879\u76ee\u201c{1}\u201d\u4e2d\u5df2\u5b58\u5728\u540d\u4e3a\u201c{0}\u201d\u7684\u5de5\u4f5c\u7c3f\u3002\u60a8\u6ca1\u6709\u8986\u76d6\u5b83\u7684\u6743\u9650\u3002"
-
-#:
-msgid "errors.permissions.publish.workbook.overwrite_personal_space"
-msgstr "\u4e2a\u4eba\u7a7a\u95f4\u4e2d\u5df2\u5b58\u5728\u540d\u4e3a\u201c{0}\u201d\u7684\u5de5\u4f5c\u7c3f\u3002\u60a8\u6ca1\u6709\u8986\u76d6\u5b83\u7684\u6743\u9650\u3002"
-
-#:
-msgid "errors.permissions.publish.workbook.overwrite_short"
-msgstr "\u9879\u76ee\u201c{1}\u201d\u4e2d\u5df2\u5b58\u5728\u540d\u4e3a\u201c{0}\u201d\u7684\u5de5\u4f5c\u7c3f\u3002"
-
-#:
-msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
-msgstr "\u4e2a\u4eba\u7a7a\u95f4\u4e2d\u5df2\u5b58\u5728\u540d\u4e3a\u201c{0}\u201d\u7684\u5de5\u4f5c\u7c3f\u3002"
-
-#:
-msgid "errors.reportable.impersonation.group_and_user"
-msgstr "\u4ec5\u6307\u5b9a\u201cimpersonate_username\u201d\u6216\u201cimpersonate_groupname\u201d\u4e4b\u4e00\uff0c\u800c\u4e0d\u662f\u4e24\u4e2a\u90fd\u6307\u5b9a\u3002"
-
-#:
-msgid "errors.reportable.impersonation.user_not_found"
-msgstr "\u7528\u6237\u201c{0}\u201d\u4e0d\u5b58\u5728\u3002"
-
-#:
-msgid "errors.reportable.impersonation.group_not_found"
-msgstr "\u7ec4\u201c{0}\u201d\u4e0d\u5b58\u5728\u3002"
-
-# errors.public.validation.hasextract is copied from the C++ file codegen strings.data IDS_PUBLIC_VALIDATION_ERROR_HASEXTRACT
-
-#:
-msgid "errors.public.validation.hasextract"
-msgstr "\u4fdd\u5b58\u5230 Tableau Public \u7684\u5de5\u4f5c\u7c3f\u5fc5\u987b\u4f7f\u7528\u6d3b\u52a8 Tableau \u6570\u636e\u63d0\u53d6\u3002\u53f3\u952e\u5355\u51fb\u6570\u636e\u6e90\uff0c\u7136\u540e\u5728\u53d1\u5e03\u4e4b\u524d\u9009\u62e9\u201c\u4f7f\u7528\u6570\u636e\u63d0\u53d6\u201d\u3002\u6570\u636e\u6e90\u201c{0}\u201d\u4e0d\u662f\u6d3b\u52a8\u6570\u636e\u63d0\u53d6\u3002"
-
-#:
-msgid "errors.publish.dataserver_datasource_not_found"
-msgstr "\u672a\u627e\u5230\u5de5\u4f5c\u7c3f\u201c{1}\u201d\u7684\u6570\u636e\u6e90\u201c{0}\u201d\u3002"
-
-#:
-msgid "errors.publish.datasource_update_mode"
-msgstr "\u672a\u77e5\u66f4\u65b0\u6a21\u5f0f:''{0}''."
-
-#:
-msgid "errors.publish.workbook.concurrent_update"
-msgstr "\u76ee\u524d\u6b63\u5728\u53d1\u5e03\u6216\u4fee\u6539\u5177\u6709\u76f8\u540c\u540d\u79f0\u7684\u5de5\u4f5c\u7c3f\u3002\u8bf7\u7b49\u5230\u4efb\u52a1\u5b8c\u6210\u540e\u91cd\u8bd5\u3002"
-
-#:
-msgid "errors.publish.workbook.restricted"
-msgstr "\u5de5\u4f5c\u7c3f\u5305\u542b\u6b64\u670d\u52a1\u5668\u4e0d\u5141\u8bb8\u7684\u8fde\u63a5\u7c7b\u578b\u3002"
-
-#:
-msgid "errors.publish.datasource.concurrent_update"
-msgstr "\u76ee\u524d\u6b63\u5728\u53d1\u5e03\u6216\u4fee\u6539\u5177\u6709\u76f8\u540c\u540d\u79f0\u7684\u6570\u636e\u6e90\u3002\u8bf7\u7b49\u5230\u4efb\u52a1\u5b8c\u6210\u540e\u91cd\u8bd5\u3002"
-
-#:
-msgid "errors.publish.datasource.restricted"
-msgstr "\u6570\u636e\u6e90\u5305\u542b\u6b64\u670d\u52a1\u5668\u4e0a\u4e0d\u5141\u8bb8\u7684\u8fde\u63a5\u7c7b\u578b\u3002"
-
-#:
-msgid "errors.publish.datasource.connection_check"
-msgstr "{0} \u65e0\u6cd5\u5efa\u7acb\u6570\u636e\u6e90\u8fde\u63a5\u3002"
-
-#:
-msgid "errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption"
-msgstr "\u65e0\u6cd5\u53d1\u5e03\u5305\u542b\u52a0\u5bc6\u6570\u636e\u63d0\u53d6\u7684\u5de5\u4f5c\u7c3f\u3002\u7ad9\u70b9\u7ba1\u7406\u5458\u5df2\u5728\u6b64\u7ad9\u70b9\u4e0a\u7981\u7528\u4e86\u6570\u636e\u63d0\u53d6\u52a0\u5bc6\u3002\u60a8\u5fc5\u987b\u53d1\u5e03\u5305\u542b\u672a\u52a0\u5bc6\u6570\u636e\u63d0\u53d6\u7684\u5de5\u4f5c\u7c3f\u3002"
-
-#:
-msgid "errors.publish.datasource.requested_extract_encryption_on_site_with_disabled_encryption"
-msgstr "\u65e0\u6cd5\u4ee5\u52a0\u5bc6\u6570\u636e\u63d0\u53d6\u7684\u5f62\u5f0f\u53d1\u5e03\u6570\u636e\u6e90\u3002\u7ad9\u70b9\u7ba1\u7406\u5458\u5df2\u5728\u6b64\u7ad9\u70b9\u4e0a\u7981\u7528\u4e86\u6570\u636e\u63d0\u53d6\u52a0\u5bc6\u3002\u60a8\u5fc5\u987b\u53d1\u5e03\u672a\u52a0\u5bc6\u7684\u6570\u636e\u63d0\u53d6\u3002"
-
-#:
-msgid "errors.publish.workbook.requested_no_extract_encryption_on_site_with_enforced_encryption"
-msgstr "\u65e0\u6cd5\u53d1\u5e03\u5305\u542b\u672a\u52a0\u5bc6\u6570\u636e\u63d0\u53d6\u7684\u5de5\u4f5c\u7c3f\u3002\u7ad9\u70b9\u7ba1\u7406\u5458\u5df2\u5728\u6b64\u7ad9\u70b9\u4e0a\u5f3a\u5236\u5b9e\u65bd\u4e86\u6570\u636e\u63d0\u53d6\u52a0\u5bc6\u3002\u60a8\u5fc5\u987b\u53d1\u5e03\u5de5\u4f5c\u7c3f\u5e76\u6307\u5b9a\u6570\u636e\u63d0\u53d6\u52a0\u5bc6\u3002"
-
-#:
-msgid "errors.publish.datasource.requested_no_extract_encryption_on_site_with_enforced_encryption"
-msgstr "\u65e0\u6cd5\u53d1\u5e03\u672a\u52a0\u5bc6\u7684\u6570\u636e\u6e90\u6570\u636e\u63d0\u53d6\u3002\u7ad9\u70b9\u7ba1\u7406\u5458\u5df2\u5728\u6b64\u7ad9\u70b9\u4e0a\u5f3a\u5236\u5b9e\u65bd\u4e86\u6570\u636e\u63d0\u53d6\u52a0\u5bc6\u3002\u60a8\u5fc5\u987b\u53d1\u5e03\u52a0\u5bc6\u7684\u6570\u636e\u63d0\u53d6\u3002"
-
-#:
-msgid "errors.publish.has_unfinished_extract_creation_job"
-msgstr "\u65e0\u6cd5\u53d1\u5e03\u6b64\u8d44\u6e90\uff0c\u539f\u56e0\u662f\u5b58\u5728\u4e0e\u5176\u76f8\u5173\u7684\u5f85\u5b9a\u6216\u672a\u5b8c\u6210\u6570\u636e\u63d0\u53d6\u521b\u5efa\u4f5c\u4e1a\u3002\u8bf7\u7b49\u5f85\u6216\u53d6\u6d88\u8fd9\u4e9b\u4f5c\u4e1a\uff0c\u7136\u540e\u91cd\u8bd5\u3002"
-
-#:
-msgid "errors.publishing.storage_quota_exceeded.message"
-msgstr "\u5df2\u8d85\u8fc7\u7ad9\u70b9\u5b58\u50a8\u914d\u989d\u3002"
-
-#:
-msgid "errors.publishing.request_size_exceeded"
-msgstr "\u65e0\u6cd5\u53d1\u5e03\u6b64\u6587\u4ef6\uff0c\u56e0\u4e3a\u8bf7\u6c42\u5927\u5c0f\u4e3a {0} \u5b57\u8282\uff0c\u8d85\u51fa\u5b57\u8282\u5927\u5c0f\u9650\u5236 {1} \u5b57\u8282\u3002"
-
-#:
-msgid "errors.publishing.request_size_unknown"
-msgstr "\u65e0\u6cd5\u786e\u5b9a\u8bf7\u6c42\u5927\u5c0f\u3002"
-
-#:
-msgid "errors.site.quota_exceeded"
-msgstr "\u60a8\u5c1d\u8bd5\u4e0a\u8f7d\u7684\u5185\u5bb9\u5c06\u8d85\u51fa {0} \u7684\u7ad9\u70b9\u5bb9\u91cf\u3002"
-
-#:
-msgid "errors.personal_space.quota_exceeded"
-msgstr "\u6b64\u5185\u5bb9\u8d85\u51fa\u60a8\u7684\u4e2a\u4eba\u7a7a\u95f4\u5bb9\u91cf {0}\u3002"
-
-#:
-msgid "errors.web_authoring.workbook_deleted"
-msgstr "\u5df2\u5220\u9664\u5de5\u4f5c\u7c3f {0}\u3002\u8bf7\u9009\u62e9\u201c\u53e6\u5b58\u4e3a\u201d\u4ee5\u53e6\u5b58\u65b0\u5de5\u4f5c\u7c3f\u3002"
-
-#:
-msgid "errors.web_authoring.workbook_changed"
-msgstr "\u81ea\u60a8\u5f00\u59cb\u7f16\u8f91\u540e\u53e6\u4e00\u4e2a\u7528\u6237\u5df2\u7f16\u8f91\u5e76\u4fdd\u5b58\u4e86\u6b64\u5de5\u4f5c\u7c3f\u3002\u56e0\u6b64\uff0c\u60a8\u65e0\u6cd5\u518d\u66f4\u65b0\u539f\u59cb\u5de5\u4f5c\u7c3f\u3002\u8bf7\u901a\u8fc7\u201c\u53e6\u5b58\u4e3a\u201d\u4f7f\u7528\u60a8\u6240\u505a\u66f4\u6539\u65b0\u5efa\u4e00\u4e2a\u5de5\u4f5c\u7c3f\u3002"
-
-#:
-msgid "labels.publish.embed_credentials"
-msgstr "\u5d4c\u5165\u6570\u636e\u6e90\u7684\u5bc6\u7801"
-
-#:
-msgid "errors.publish.workbook.google_no_embedded_credentials"
-msgstr "\u6b64\u5de5\u4f5c\u7c3f\u5305\u542b\u9700\u8981\u5d4c\u5165\u5f0f\u51ed\u636e\u7684 {0} \u6570\u636e\u6e90\u3002\u82e5\u8981\u53e6\u5b58\u4e3a\u5176\u4ed6\u5de5\u4f5c\u7c3f\uff0c\u8bf7\u9009\u62e9\u201c{1}\u201d\u3002"
-
-#:
-msgid "errors.publish.datasource.google_no_embedded_credentials"
-msgstr "\u6b64\u6570\u636e\u6e90\u5305\u542b\u9700\u8981\u5d4c\u5165\u5f0f\u51ed\u636e\u7684 {0} \u8fde\u63a5\u3002\u8bf7\u4f7f\u7528\u5d4c\u5165\u5f0f\u51ed\u636e\u4ece Tableau Desktop \u4e2d\u53d1\u5e03\u6b64\u6570\u636e\u6e90\u3002"
-
-#:
-msgid "errors.publish.datasource.federated_oauth_datasource_failed"
-msgstr "\u6570\u636e\u6e90\u4e2d\u4e00\u4e2a\u6216\u591a\u4e2a\u8fde\u63a5\u7684\u51ed\u636e\u5df2\u8fc7\u671f\u3002\u8bf7\u5728 Tableau Server \u6216 Tableau Online \u4e0a\u7684\u201c\u5e10\u6237\u8bbe\u7f6e\u201d\u9875\u9762\u4e2d\u5220\u9664\u4e3a\u6b64\u6570\u636e\u6e90\u4fdd\u5b58\u7684\u51ed\u636e\uff0c\u7136\u540e\u518d\u6b21\u8fde\u63a5\u5230\u6570\u636e\u6e90\u3002"
-
-#:
-msgid "errors.publish.workbook.missing_oauth_credential"
-msgstr "\u627e\u4e0d\u5230\u51ed\u636e\u201c{0}\u201d\u6216\u8005\u65e0\u6cd5\u4f7f\u7528\u5b83\u8fde\u63a5\u5230\u6570\u636e\u6e90\u6216\u5de5\u4f5c\u7c3f\u3002"
-
-#:
-msgid "errors.publish.version_incompatible.message"
-msgstr "Desktop \u548c Server \u7248\u672c\u4e0d\u517c\u5bb9\u3002"
-
-#:
-msgid "errors.publish.version_incompatible.details"
-msgstr "Desktop \u7248\u672c\u201c{0}\u201d\uff0cServer \u6587\u6863\u7248\u672c\u201c{1}\u201d\u3002"
-
-#:
-msgid "errors.publish.datasource.managed_keychain.unique_cv_suggestions"
-msgstr "\u7531\u4e8e\u5b58\u5728\u51b2\u7a81\uff0c\u53d1\u5e03\u5931\u8d25\u3002\u8bf7\u91cd\u65b0\u63d0\u4ea4\u6240\u505a\u66f4\u6539\u3002"
-
-#:
-msgid "errors.publish.permissions_are_locked"
-msgstr "\u6743\u9650\u5728\u60a8\u53d1\u5e03\u5230\u7684\u9879\u76ee\u4e2d\u5df2\u9501\u5b9a\u3002\u82e5\u8981\u53d1\u5e03\u6b64\u5de5\u4f5c\u7c3f\uff0c\u8bf7\u4f7f\u7528\u9ed8\u8ba4\u6743\u9650\u5e76\u91cd\u8bd5\u3002"
-
-#:
-msgid "errors.publish.datasource.not.found"
-msgstr "\u5728\u670d\u52a1\u5668\u4e0a\u627e\u4e0d\u5230\u6b64\u6570\u636e\u6e90\u3002"
-
-#:
-msgid "errors.publish.extracts.disabled"
-msgstr "\u5c1a\u4e0d\u652f\u6301\u4e3a\u57fa\u4e8e\u6570\u636e\u63d0\u53d6\u7684\u5b58\u6863\u6570\u636e\u6e90\u4fdd\u5b58\u3002"
-
-#:
-msgid "errors.publish.datasource.timeout"
-msgstr "\u53d1\u5e03\u5728 {0} \u79d2\u540e\u8d85\u65f6\u3002\u8bf7\u5c1d\u8bd5\u4f7f\u7528 Tableau Desktop \u6765\u53d1\u5e03\u6b64\u6570\u636e\u6e90\u3002"
-
-#:
-msgid "errors.publish.data_role.permission_not_null"
-msgstr "\u65e0\u6cd5\u4e3a\u6570\u636e\u89d2\u8272\u7c7b\u578b\u7684\u6570\u636e\u6e90\u8bbe\u7f6e\u663e\u5f0f\u6743\u9650\u3002"
-
-#:
-msgid "errors.download.extracts.timeout"
-msgstr "\u53d1\u5e03\u5728 {0} \u79d2\u540e\u8d85\u65f6\uff0c\u539f\u56e0\u662f\u6b64\u6570\u636e\u6e90\u6709\u5f88\u5927\u7684\u6570\u636e\u63d0\u53d6\u6587\u4ef6\u3002\u8bf7\u5c1d\u8bd5\u4f7f\u7528 Tableau Desktop \u6765\u53d1\u5e03\u6b64\u6570\u636e\u6e90\u3002"
-
-#:
-msgid "errors.publish.datasource.invalid_extract_update_time"
-msgstr "\u6307\u5b9a\u7684 extractUpdateTime \u65e0\u6548: {0}"
-
-#:
-msgid "errors.publish.async.serialization"
-msgstr "\u65e0\u6cd5\u5e8f\u5217\u5316\u53d1\u5e03\u4f5c\u4e1a\u72b6\u6001\u9519\u8bef"
-
-#:
-msgid "errors.permissions.view.datasources"
-msgstr "\u60a8\u5fc5\u987b\u662f\u201c\u4ea4\u4e92\u8005\u201d\u624d\u80fd\u67e5\u770b\u6570\u636e\u6e90\u5217\u8868\u3002"
-
-# oauth related errors
-
-#:
-msgid "errors.oauth.invalid_oauth_class"
-msgstr "\u201c{0}\u201d\u4e0d\u662f\u6709\u6548\u7684 OAuth \u8fde\u63a5\u7c7b\u578b\u3002"
-
-#:
-msgid "errors.xmlapi.bad_request"
-msgstr "\u9519\u8bef\u8bf7\u6c42"
-
-#:
-msgid "errors.xmlapi.unauthorized"
-msgstr "\u672a\u6388\u6743"
-
-#:
-msgid "errors.xmlapi.forbidden"
-msgstr "\u6743\u9650\u4e0d\u8db3"
-
-#:
-msgid "errors.xmlapi.system_user_not_found"
-msgstr "\u7528\u6237\u5e10\u6237\u5df2\u9501\u5b9a\u6216\u65e0\u6548\u3002"
-
-#:
-msgid "errors.xmlapi.site_user_not_found"
-msgstr "\u6b64\u7528\u6237\u5e10\u6237\u672a\u6fc0\u6d3b\u3002\u8bf7\u8054\u7cfb\u60a8\u7684 {0} \u7ba1\u7406\u5458\u5bfb\u6c42\u5e2e\u52a9\u3002"
-
-#:
-msgid "errors.xmlapi.not_found"
-msgstr "\u672a\u627e\u5230\u9879"
-
-#:
-msgid "errors.xmlapi.concurrent_update"
-msgstr "\u5e76\u53d1\u66f4\u65b0"
-
-#:
-msgid "errors.xmlapi.internal_server_error"
-msgstr "\u5185\u90e8\u670d\u52a1\u5668\u9519\u8bef"
-
-#:
-msgid "errors.xmlapi.illegal_state"
-msgstr "\u975e\u6cd5\u72b6\u6001"
-
-#:
-msgid "errors.xmlapi.invalid_parameter"
-msgstr "\u65e0\u6548\u53c2\u6570"
-
-#:
-msgid "errors.xmlapi.already_exists"
-msgstr "\u5df2\u5b58\u5728"
-
-#:
-msgid "errors.xmlapi.site_suspended"
-msgstr "\u6b64\u7ad9\u70b9\u5df2\u6302\u8d77\u3002\u60a8\u5fc5\u987b\u662f\u7cfb\u7edf\u7ba1\u7406\u5458\u624d\u80fd\u767b\u5f55\u3002"
-
-#:
-msgid "errors.xmlapi.site_locked"
-msgstr "\u6b64\u7ad9\u70b9\u5df2\u9501\u5b9a\u3002\u6b64\u65f6\u4e0d\u5141\u8bb8\u767b\u5f55\u3002"
-
-#:
-msgid "errors.xmlapi.permission_modification"
-msgstr "\u65e0\u6cd5\u5728\u4fee\u6539\u4e86\u6743\u9650\u7684\u60c5\u51b5\u4e0b\u53d1\u5e03"
-
-#:
-msgid "errors.xmlapi.update_desktop"
-msgstr "\u82e5\u8981\u6253\u5f00\u5176\u4ed6\u4f5c\u8005\u521b\u5efa\u7684\u5de5\u4f5c\u7c3f\uff0c\u8bf7\u4ece http://public.tableau.com/ \u4e0b\u8f7d\u6700\u65b0\u7248\u672c\u7684 Tableau Desktop Public Edition"
-
-#:
-msgid "errors.xmlapi.throttled.summary"
-msgstr "\u8bf7\u6c42\u8fc7\u591a"
-
-#:
-msgid "errors.xmlapi.throttled.detail"
-msgstr "\u5bf9\u201c{0}\u201d\u7684\u8bf7\u6c42\u592a\u591a\uff0c\u8bf7\u5728 {1} \u540e\u91cd\u8bd5\u3002"
-
-#:
-msgid "datasource.publish.check.unpublishable"
-msgstr "\u65e0\u6cd5\u53d1\u5e03\u6570\u636e\u6e90\u3002"
-
-#:
-msgid "datasource.publish.check.publishable.extract_required"
-msgstr "\u9700\u8981\u5728\u53d1\u5e03\u65f6\u521b\u5efa\u6570\u636e\u63d0\u53d6\u3002"
-
-#:
-msgid "datasource.publish.check.publishable.credentials_required"
-msgstr "{1} \u5c06\u4e34\u65f6\u8bbf\u95ee\u4e3a ''{0}'' \u63d0\u4f9b\u7684\u51ed\u636e\u6765\u786e\u8ba4\u5b83\u53ef\u4fdd\u6301\u5b9e\u65f6\u6570\u636e\u8fde\u63a5\u3002"
-
-#:
-msgid "datasource.publish.check.publishable.server_unreachable"
-msgstr "{1} \u65e0\u6cd5\u8bbf\u95ee ''{0}''\u3002\u53d1\u5e03\u65f6\u5c06\u521b\u5efa\u6570\u636e\u63d0\u53d6\u3002"
-
-#:
-msgid "publish.bundles.workbook.subscription.subject"
-msgstr "\u60a8\u7684\u5de5\u4f5c\u7c3f {0} \u5df2\u51c6\u5907\u5c31\u7eea\u3002"
-
-#:
-msgid "publish.bundles.workbook.subscription.message"
-msgstr "\u60a8\u7684 Salesforce \u6570\u636e\u5df2\u6dfb\u52a0\u5230\u5de5\u4f5c\u7c3f\u3002\u8f6c\u5230\u60a8\u7684 {0} \u9879\u76ee\u4ee5\u5f00\u59cb\u3002"
-
-#:
-msgid "extracts.status.finished.upload.workbook"
-msgstr "\u5df2\u5b8c\u6210\u5de5\u4f5c\u7c3f ''{1}'' {2} \u7684\u6570\u636e\u63d0\u53d6\u4e0a\u8f7d(\u65b0\u6570\u636e\u63d0\u53d6 ID: {0})"
-
-#:
-msgid "extracts.status.finished.refresh.workbook"
-msgstr "\u5df2\u5b8c\u6210\u5de5\u4f5c\u7c3f\u201c{1}\u201d{2} \u7684\u6570\u636e\u63d0\u53d6\u5237\u65b0(\u65b0\u6570\u636e\u63d0\u53d6 ID: {0})"
-
-#:
-msgid "extracts.status.finished.increment.workbook"
-msgstr "\u5df2\u5b8c\u6210\u5de5\u4f5c\u7c3f\u201c{1}\u201d{2} \u7684\u6570\u636e\u63d0\u53d6\u9012\u589e(\u65b0\u6570\u636e\u63d0\u53d6 ID: {0})"
-
-#:
-msgid "extracts.status.finished.encrypt.workbook"
-msgstr "\u5df2\u5b8c\u6210\u5de5\u4f5c\u7c3f\u201c{1}\u201d\u7684\u6570\u636e\u63d0\u53d6\u52a0\u5bc6(\u65b0\u6570\u636e\u63d0\u53d6 ID: {0})"
-
-#:
-msgid "extracts.status.finished.decrypt.workbook"
-msgstr "\u5df2\u5b8c\u6210\u5de5\u4f5c\u7c3f\u201c{1}\u201d\u7684\u6570\u636e\u63d0\u53d6\u89e3\u5bc6(\u65b0\u6570\u636e\u63d0\u53d6 ID: {0})"
-
-#:
-msgid "extracts.status.finished.rekey.workbook"
-msgstr "\u5df2\u5b8c\u6210\u5de5\u4f5c\u7c3f\u201c{1}\u201d\u7684\u6570\u636e\u63d0\u53d6\u91cd\u65b0\u52a0\u5bc6(\u65b0\u6570\u636e\u63d0\u53d6 ID: {0})"
-
-#:
-msgid "extracts.status.finished.create.workbook"
-msgstr "\u5df2\u5b8c\u6210\u5de5\u4f5c\u7c3f\u201c{1}\u201d\u7684\u6570\u636e\u63d0\u53d6\u521b\u5efa(\u65b0\u6570\u636e\u63d0\u53d6 ID: {0}){2}"
-
-#:
-msgid "extracts.status.finished.remove.workbook"
-msgstr "\u5df2\u5b8c\u6210\u5de5\u4f5c\u7c3f\u201c{1}\u201d\u7684\u5b9e\u65f6\u6570\u636e\u63d0\u53d6\u66f4\u6539(\u6570\u636e\u6e90 ID:{0})"
-
-#:
-msgid "extracts.status.finished.upload.datasource"
-msgstr "\u5df2\u5b8c\u6210\u6570\u636e\u6e90\u201c{1}\u201d{2} \u7684\u6570\u636e\u63d0\u53d6\u4e0a\u8f7d(\u65b0\u6570\u636e\u63d0\u53d6 ID: {0})"
-
-#:
-msgid "extracts.status.finished.refresh.datasource"
-msgstr "\u5df2\u5b8c\u6210\u6570\u636e\u6e90\u201c{1}\u201d{2} \u7684\u6570\u636e\u63d0\u53d6\u5237\u65b0(\u65b0\u6570\u636e\u63d0\u53d6 ID: {0})"
-
-#:
-msgid "extracts.status.finished.increment.datasource"
-msgstr "\u5df2\u5b8c\u6210\u6570\u636e\u6e90\u201c{1}\u201d{2} \u7684\u6570\u636e\u63d0\u53d6\u9012\u589e(\u65b0\u6570\u636e\u63d0\u53d6 ID: {0})"
-
-#:
-msgid "extracts.status.finished.append.datasource"
-msgstr "\u5df2\u5b8c\u6210\u6570\u636e\u6e90\u201c{1}\u201d{2} \u7684\u6570\u636e\u63d0\u53d6\u8ffd\u52a0(\u65b0\u6570\u636e\u63d0\u53d6 ID: {0})"
-
-#:
-msgid "extracts.status.finished.replace.datasource"
-msgstr "\u5df2\u5b8c\u6210\u6570\u636e\u6e90\u201c{1}\u201d{2} \u7684\u6570\u636e\u63d0\u53d6\u66ff\u6362(\u65b0\u6570\u636e\u63d0\u53d6 ID: {0})"
-
-#:
-msgid "extracts.status.finished.encrypt.datasource"
-msgstr "\u5df2\u5b8c\u6210\u6570\u636e\u6e90\u201c{1}\u201d \u7684\u6570\u636e\u63d0\u53d6\u52a0\u5bc6(\u65b0\u6570\u636e\u63d0\u53d6 ID: {0})"
-
-#:
-msgid "extracts.status.finished.decrypt.datasource"
-msgstr "\u5df2\u5b8c\u6210\u6570\u636e\u6e90\u201c{1}\u201d \u7684\u6570\u636e\u63d0\u53d6\u89e3\u5bc6(\u65b0\u6570\u636e\u63d0\u53d6 ID: {0})"
-
-#:
-msgid "extracts.status.finished.rekey.datasource"
-msgstr "\u5df2\u5b8c\u6210\u6570\u636e\u6e90\u201c{1}\u201d \u7684\u6570\u636e\u63d0\u53d6\u91cd\u65b0\u52a0\u5bc6(\u65b0\u6570\u636e\u63d0\u53d6 ID: {0})"
-
-#:
-msgid "extracts.status.finished.encrypt.flow"
-msgstr "\u5df2\u5b8c\u6210\u6d41\u7a0b\u201c{0}\u201d\u7684\u6570\u636e\u63d0\u53d6\u52a0\u5bc6"
-
-#:
-msgid "extracts.status.finished.decrypt.flow"
-msgstr "\u5df2\u5b8c\u6210\u6d41\u7a0b\u201c{0}\u201d\u7684\u6570\u636e\u63d0\u53d6\u89e3\u5bc6"
-
-#:
-msgid "extracts.status.finished.rekey.flow"
-msgstr "\u5df2\u5b8c\u6210\u6d41\u7a0b\u201c{0}\u201d\u7684\u6570\u636e\u63d0\u53d6\u91cd\u65b0\u52a0\u5bc6"
-
-#:
-msgid "extracts.status.finished.encrypt.flowdraft"
-msgstr "\u5df2\u5b8c\u6210\u6d41\u7a0b\u8349\u7a3f\u201c{0}\u201d\u7684\u6570\u636e\u63d0\u53d6\u52a0\u5bc6"
-
-#:
-msgid "extracts.status.finished.decrypt.flowdraft"
-msgstr "\u5df2\u5b8c\u6210\u6d41\u7a0b\u8349\u7a3f\u201c{0}\u201d\u7684\u6570\u636e\u63d0\u53d6\u89e3\u5bc6"
-
-#:
-msgid "extracts.status.finished.rekey.flowdraft"
-msgstr "\u5df2\u5b8c\u6210\u6d41\u7a0b\u8349\u7a3f\u201c{0}\u201d\u7684\u6570\u636e\u63d0\u53d6\u91cd\u65b0\u52a0\u5bc6"
-
-#:
-msgid "extracts.status.finished.create.datasource"
-msgstr "\u5df2\u5b8c\u6210\u6570\u636e\u6e90\u201c{1}\u201d \u7684\u6570\u636e\u63d0\u53d6\u521b\u5efa(\u65b0\u6570\u636e\u63d0\u53d6 ID: {0}){2}"
-
-#:
-msgid "extracts.status.finished.remove.datasource"
-msgstr "\u5df2\u5b8c\u6210\u6570\u636e\u6e90\u201c{1}\u201d\u7684\u5b9e\u65f6\u6570\u636e\u63d0\u53d6\u66f4\u6539"
-
-#:
-msgid "extracts.status.encryption_key"
-msgstr "\u52a0\u5bc6\u5bc6\u94a5 ID:\u201c{0}|\u201d\u3002"
-
-#:
-msgid "extracts.status.encryption_keys"
-msgstr "\u65e7\u52a0\u5bc6\u5bc6\u94a5 ID:\u201c{0}\u201d\uff0c\u65b0\u52a0\u5bc6\u5bc6\u94a5 ID:\u201c{1}\u201d\u3002"
-
-#:
-msgid "extracts.errors.upload"
-msgstr "\u4e0a\u8f7d {0} \u7684\u6570\u636e\u63d0\u53d6\u65f6\u51fa\u9519: ''{1}''"
-
-#:
-msgid "extracts.errors.refresh"
-msgstr "\u5237\u65b0 {0} ''{1}'' \u7684\u6570\u636e\u63d0\u53d6\u65f6\u51fa\u9519"
-
-#:
-msgid "extracts.errors.create"
-msgstr "\u4e3a {0} \u521b\u5efa\u6570\u636e\u63d0\u53d6\u65f6\u51fa\u9519\u201c{1}\u201d\u3002"
-
-#:
-msgid "extracts.errors.increment"
-msgstr "\u9012\u589e {0} \u7684\u6570\u636e\u63d0\u53d6\u65f6\u51fa\u9519: ''{1}''"
-
-#:
-msgid "extracts.errors.append"
-msgstr "\u8ffd\u52a0 {0} \u7684\u6570\u636e\u63d0\u53d6\u65f6\u51fa\u9519: ''{1}''"
-
-#:
-msgid "extracts.errors.replace"
-msgstr "\u66ff\u6362 {0} \u7684\u6570\u636e\u63d0\u53d6\u65f6\u51fa\u9519: ''{1}''"
-
-#:
-msgid "extracts.errors.download"
-msgstr "\u4e0b\u8f7d {0} \u7684\u6570\u636e\u63d0\u53d6\u65f6\u51fa\u9519: ''{1}''"
-
-#:
-msgid "extracts.errors.remove"
-msgstr "\u4e3a {0} \u79fb\u9664\u6570\u636e\u63d0\u53d6\u65f6\u51fa\u9519:\u201c{1}\u201d\u3002"
-
-#:
-msgid "extracts.errors.title"
-msgstr "\u5904\u7406\u6570\u636e\u63d0\u53d6\u9519\u8bef"
-
-#:
-msgid "extracts.errors.nothing_to_upload"
-msgstr "\u6ca1\u6709\u8981\u4e3a {0} \u4e0a\u8f7d\u7684\u6570\u636e\u63d0\u53d6:''{1}''"
-
-#:
-msgid "extracts.errors.nothing_to_refresh"
-msgstr "\u6ca1\u6709\u8981\u4e3a {0} \u5237\u65b0\u7684\u6570\u636e\u63d0\u53d6:''{1}''"
-
-#:
-msgid "extracts.errors.nothing_to_increment"
-msgstr "\u6ca1\u6709\u8981\u4e3a {0} \u9012\u589e\u7684\u6570\u636e\u63d0\u53d6: ''{1}''"
-
-#:
-msgid "extracts.errors.nothing_to_append"
-msgstr "\u6ca1\u6709\u8981\u4e3a {0} \u8ffd\u52a0\u7684\u6570\u636e\u63d0\u53d6:''{1}''"
-
-#:
-msgid "extracts.errors.nothing_to_replace"
-msgstr "\u6ca1\u6709\u8981\u4e3a {0} \u66ff\u6362\u7684\u6570\u636e\u63d0\u53d6:''{1}''"
-
-#:
-msgid "extracts.errors.refresh_summary"
-msgstr "\u5237\u65b0\u6570\u636e\u63d0\u53d6\u9519\u8bef"
-
-#:
-msgid "extracts.errors.encrypt_summary"
-msgstr "\u52a0\u5bc6\u6570\u636e\u63d0\u53d6\u9519\u8bef"
-
-#:
-msgid "extracts.errors.rekey_summary"
-msgstr "\u91cd\u65b0\u52a0\u5bc6\u6570\u636e\u63d0\u53d6\u9519\u8bef"
-
-#:
-msgid "extracts.errors.decrypt_summary"
-msgstr "\u89e3\u5bc6\u6570\u636e\u63d0\u53d6\u9519\u8bef"
-
-#:
-msgid "extracts.errors.remove_summary"
-msgstr "\u79fb\u9664\u6570\u636e\u63d0\u53d6\u9519\u8bef"
-
-#:
-msgid "extracts.errors.create_summary"
-msgstr "\u521b\u5efa\u6570\u636e\u63d0\u53d6\u9519\u8bef"
-
-#:
-msgid "extracts.errors.datasource_overwritten"
-msgstr "\u5237\u65b0\u5931\u8d25\uff0c\u56e0\u4e3a\u5728\u5904\u7406\u671f\u95f4\u8be5\u6570\u636e\u6e90\u5df2\u7531\u5176\u4ed6\u4efb\u52a1\u8986\u76d6\u3002\u8bf7\u518d\u6b21\u63d0\u4ea4\u5237\u65b0\u4ee5\u8fdb\u884c\u66f4\u6b63\u3002"
-
-#:
-msgid "extracts.errors.workbook_overwritten"
-msgstr "\u5237\u65b0\u5931\u8d25\uff0c\u56e0\u4e3a\u5728\u5904\u7406\u671f\u95f4\u8be5\u5de5\u4f5c\u7c3f\u5df2\u7531\u5176\u4ed6\u4efb\u52a1\u8986\u76d6\u3002\u8bf7\u518d\u6b21\u63d0\u4ea4\u5237\u65b0\u4ee5\u8fdb\u884c\u66f4\u6b63\u3002"
-
-#:
-msgid "extracts.errors.encrypt"
-msgstr "\u5bf9 {0}\u201c{1}\u201d\u7684\u6570\u636e\u63d0\u53d6\u8fdb\u884c\u52a0\u5bc6\u65f6\u51fa\u9519"
-
-#:
-msgid "extracts.errors.decrypt"
-msgstr "\u5bf9 {0}\u201c{1}\u201d\u7684\u6570\u636e\u63d0\u53d6\u8fdb\u884c\u89e3\u5bc6\u65f6\u51fa\u9519"
-
-#:
-msgid "extracts.errors.rekey"
-msgstr "\u5bf9 {0}\u201c{1}\u201d\u7684\u6570\u636e\u63d0\u53d6\u8fdb\u884c\u91cd\u65b0\u52a0\u5bc6\u65f6\u51fa\u9519"
-
-#:
-msgid "extracts.errors.encrypt_datasource_overwritten"
-msgstr "\u6570\u636e\u63d0\u53d6\u52a0\u5bc6\u5931\u8d25\uff0c\u56e0\u4e3a\u5728\u5904\u7406\u671f\u95f4\u6570\u636e\u6e90\u5df2\u88ab\u53e6\u4e00\u4e2a\u4efb\u52a1\u8986\u76d6\u3002"
-
-#:
-msgid "extracts.errors.encrypt_workbook_overwritten"
-msgstr "\u6570\u636e\u63d0\u53d6\u52a0\u5bc6\u5931\u8d25\uff0c\u56e0\u4e3a\u5728\u5904\u7406\u671f\u95f4\u5de5\u4f5c\u7c3f\u5df2\u88ab\u53e6\u4e00\u4e2a\u4efb\u52a1\u8986\u76d6\u3002"
-
-#:
-msgid "extracts.errors.rekey_datasource_overwritten"
-msgstr "\u6570\u636e\u63d0\u53d6\u91cd\u65b0\u52a0\u5bc6\u5931\u8d25\uff0c\u56e0\u4e3a\u5728\u5904\u7406\u671f\u95f4\u6570\u636e\u6e90\u5df2\u88ab\u53e6\u4e00\u4e2a\u4efb\u52a1\u8986\u76d6\u3002"
-
-#:
-msgid "extracts.errors.rekey_workbook_overwritten"
-msgstr "\u6570\u636e\u63d0\u53d6\u91cd\u65b0\u52a0\u5bc6\u5931\u8d25\uff0c\u56e0\u4e3a\u5728\u5904\u7406\u671f\u95f4\u5de5\u4f5c\u7c3f\u5df2\u88ab\u53e6\u4e00\u4e2a\u4efb\u52a1\u8986\u76d6\u3002"
-
-#:
-msgid "extracts.errors.decrypt_datasource_overwritten"
-msgstr "\u6570\u636e\u63d0\u53d6\u89e3\u5bc6\u5931\u8d25\uff0c\u56e0\u4e3a\u5728\u5904\u7406\u671f\u95f4\u6570\u636e\u6e90\u5df2\u88ab\u53e6\u4e00\u4e2a\u4efb\u52a1\u8986\u76d6\u3002"
-
-#:
-msgid "extracts.errors.decrypt_workbook_overwritten"
-msgstr "\u6570\u636e\u63d0\u53d6\u89e3\u5bc6\u5931\u8d25\uff0c\u56e0\u4e3a\u5728\u5904\u7406\u671f\u95f4\u5de5\u4f5c\u7c3f\u5df2\u88ab\u53e6\u4e00\u4e2a\u4efb\u52a1\u8986\u76d6\u3002"
-
-#:
-msgid "extracts.errors.remove_datasource_overwritten"
-msgstr "\u65e0\u6cd5\u5c06\u6570\u636e\u6e90\u66f4\u6539\u4e3a\u5b9e\u65f6\uff0c\u56e0\u4e3a\u53e6\u4e00\u4e2a\u4efb\u52a1\u8986\u76d6\u4e86\u8be5\u6570\u636e\u6e90\u3002"
-
-#:
-msgid "extracts.errors.remove_workbook_overwritten"
-msgstr "\u65e0\u6cd5\u5c06\u5de5\u4f5c\u7c3f\u66f4\u6539\u4e3a\u5b9e\u65f6\uff0c\u56e0\u4e3a\u53e6\u4e00\u4e2a\u4efb\u52a1\u8986\u76d6\u4e86\u8be5\u5de5\u4f5c\u7c3f\u3002"
-
-#:
-msgid "extracts.errors.create_datasource_overwritten"
-msgstr "\u65e0\u6cd5\u63d0\u53d6\u6570\u636e\u6e90\uff0c\u56e0\u4e3a\u53e6\u4e00\u4e2a\u4efb\u52a1\u8986\u76d6\u4e86\u8be5\u6570\u636e\u6e90\u3002"
-
-#:
-msgid "extracts.errors.create_workbook_overwritten"
-msgstr "\u65e0\u6cd5\u63d0\u53d6\u5de5\u4f5c\u7c3f\uff0c\u56e0\u4e3a\u53e6\u4e00\u4e2a\u4efb\u52a1\u8986\u76d6\u4e86\u8be5\u5de5\u4f5c\u7c3f\u3002"
-
-#:
-msgid "extracts.site_mode_change_details"
-msgstr "\u5c06\u7ad9\u70b9\u6570\u636e\u63d0\u53d6\u52a0\u5bc6\u6a21\u5f0f\u4ece\u201c{0}\u201d\u66f4\u6539\u4e3a\u201c{1}\u201d\u3002"
-
-#:
-msgid "extracts.errors.encryption_not_licensed"
-msgstr "\u6b64\u64cd\u4f5c\u7531\u4e8e\u6570\u636e\u63d0\u53d6\u52a0\u5bc6\u672a\u83b7\u8bb8\u53ef\u5df2\u5931\u8d25\u3002\u82e5\u8981\u6267\u884c\u6b64\u64cd\u4f5c\uff0c\u60a8\u5fc5\u987b\u7eed\u8ba2\u8bb8\u53ef\u8bc1\u6216\u5c06\u6570\u636e\u63d0\u53d6\u89e3\u5bc6\u3002"
-
-#:
-msgid "extracts.errors.operation_cancelled_detail"
-msgstr "{0} (\u6570\u636e\u6e90: {2})\u7684\u79fb\u9664\u6570\u636e\u63d0\u53d6\u64cd\u4f5c\u8d85\u65f6\u3002"
-
-#:
-msgid "workbooks.messages.load_error"
-msgstr "\u65e0\u6cd5\u52a0\u8f7d\u5de5\u4f5c\u7c3f {0}"
-
-#:
-msgid "workbooks.messages.locked"
-msgstr "\u53e6\u4e00\u4e2a\u7528\u6237\u6b63\u5728\u4fee\u6539\u5de5\u4f5c\u7c3f\u201c{0}\u201d\u3002\u8bf7\u7a0d\u540e\u91cd\u8bd5\u3002"
-
-#:
-msgid "workbooks.new_workbook.default_name"
-msgstr "\u65b0\u5efa\u5de5\u4f5c\u7c3f"
-
-#:
-msgid "workbooks.new_datasource.default_name"
-msgstr "\u65b0\u5efa\u6570\u636e\u6e90"
-
-#:
-msgid "datasources.messages.load_error"
-msgstr "\u65e0\u6cd5\u52a0\u8f7d\u6570\u636e\u6e90 {0}"
-
-#:
-msgid "metrics.new_metric.default_name"
-msgstr "\u65b0\u6307\u6807"
-
-#:
-msgid "messages.timeout_error.summary"
-msgstr "\u8d85\u65f6\u9519\u8bef"
-
-#:
-msgid "messages.timeout_error.task_canceled"
-msgstr "\u6b63\u5728\u53d6\u6d88\u7528\u65f6\u8d85\u8fc7 {0} \u79d2\u7684\u4efb\u52a1"
-
-#:
-msgid "subscriptions.manage_my_subscriptions"
-msgstr "\u7ba1\u7406\u6211\u7684\u8ba2\u9605"
-
-#:
-msgid "subscriptions.message_greeting"
-msgstr "\u60a8\u597d\uff0c"
-
-#:
-msgid "subscriptions.subscribed_footer"
-msgstr "\u8fd9\u91cc\u662f\u60a8\u7684 {0} \u8ba2\u9605"
-
-#:
-msgid "subscriptions.subscribed_workbook"
-msgstr "\u5de5\u4f5c\u7c3f"
-
-#:
-msgid "subscriptions.subscribed_view"
-msgstr "\u89c6\u56fe"
-
-#:
-msgid "subscriptions.fullstop"
-msgstr "."
-
-#:
-msgid "subscriptions.extract_refresh_footer"
-msgstr "\u5237\u65b0\u6570\u636e\u65f6\uff0c\u60a8\u5c06\u6536\u5230\u6b64\u8ba2\u9605\u7535\u5b50\u90ae\u4ef6\u3002"
-
-#:
-msgid "subscriptions.explore_the_viz"
-msgstr "\u6d4f\u89c8\u53ef\u89c6\u5316\u9879"
-
-#:
-msgid "subscriptions.explore_the_workbook"
-msgstr "\u6d4f\u89c8\u5de5\u4f5c\u7c3f"
-
-#:
-msgid "subscriptions.pdf_attached"
-msgstr "\u5df2\u9644\u52a0\u60a8\u7684 Tableau PDF\u3002"
-
-#:
-msgid "subscriptions.access_live_content"
-msgstr "\u60a8\u53ef\u4ee5\u5728\u6b64\u5904\u8bbf\u95ee\u5185\u5bb9\u7684\u5b9e\u65f6\u89c6\u56fe"
-
-#:
-msgid "subscriptions.warning_deprecated_type"
-msgstr "\u5df2\u5f03\u7528"
-
-#:
-msgid "subscriptions.warning_extract_refresh_type"
-msgstr "\u6570\u636e\u63d0\u53d6\u5237\u65b0\u5931\u8d25"
-
-#:
-msgid "subscriptions.warning_flow_run_type"
-msgstr "\u6d41\u7a0b\u8fd0\u884c\u5931\u8d25"
-
-#:
-msgid "subscriptions.warning_introduction_general"
-msgstr "\u4ee5\u4e0b\u6570\u636e\u8d28\u91cf\u8b66\u544a\u4f1a\u5f71\u54cd\u6b64 {0}\u3002"
-
-#:
-msgid "subscriptions.warning_introduction_view"
-msgstr "\u6709\u5173\u8be6\u7ec6\u4fe1\u606f\uff0c\u8bf7\u53c2\u89c1\u89c6\u56fe\u4e2d\u7684\u201c\u6570\u636e\u8be6\u7ec6\u4fe1\u606f\u201d\u9009\u9879\u5361"
-
-#:
-msgid "subscriptions.warning_introduction_workbook"
-msgstr "\u6709\u5173\u8be6\u7ec6\u4fe1\u606f\uff0c\u8bf7\u53c2\u89c1\u5de5\u4f5c\u7c3f\u9875\u9762"
-
-#:
-msgid "subscriptions.warning_maintenance_type"
-msgstr "\u7ef4\u62a4\u4e2d"
-
-#:
-msgid "subscriptions.warning_permission_error"
-msgstr "\u6b64\u8b66\u544a\u9488\u5bf9\u60a8\u65e0\u6743\u67e5\u770b\u7684\u8d44\u4ea7\u3002"
-
-#:
-msgid "subscriptions.warning_redacted"
-msgstr "\u9700\u8981\u6743\u9650"
-
-#:
-msgid "subscriptions.warning_sensitve_type"
-msgstr "\u654f\u611f\u6570\u636e"
-
-#:
-msgid "subscriptions.warning_severe"
-msgstr "\u91cd\u8981\u6570\u636e\u8d28\u91cf\u8b66\u544a"
-
-#:
-msgid "subscriptions.warning_stale_type"
-msgstr "\u8fc7\u671f\u6570\u636e"
-
-#:
-msgid "subscriptions.warning_standard"
-msgstr "\u6570\u636e\u8d28\u91cf\u8b66\u544a"
-
-#:
-msgid "subscriptions.warning_error_type"
-msgstr "\u672a\u77e5\u8b66\u544a\u7c7b\u578b"
-
-#:
-msgid "subscriptions.warning_warning_type"
-msgstr "\u8b66\u544a"
-
-#:
-msgid "errors.subscriptions.image_render_failed"
-msgstr "\u65e0\u6cd5\u6b63\u786e\u5448\u73b0\u89c6\u56fe\u201c{0}\u201d\u7684\u5feb\u7167\u3002"
-
-#:
-msgid "errors.subscriptions.see_live_view"
-msgstr "\u82e5\u8981\u5728\u7ebf\u67e5\u770b\u89c6\u56fe\uff0c\u8bf7\u8f6c\u5230 {0}\u3002"
-
-#:
-msgid "errors.subscriptions.disabled_on_server"
-msgstr "\u672a\u542f\u7528\u670d\u52a1\u5668\u8303\u56f4\u8ba2\u9605\u8bbe\u7f6e\u3002\u65e0\u6cd5\u5904\u7406\u8ba2\u9605\u3002"
-
-#:
-msgid "errors.subscriptions.disabled_on_site"
-msgstr "\u4e3a\u7ad9\u70b9\u7981\u7528\u4e86\u8ba2\u9605\u3002"
-
-#:
-msgid "errors.subscriptions.site_is_locked"
-msgstr "\u7f51\u7ad9\u88ab\u9501\u5b9a\u3002\u65e0\u6cd5\u5904\u7406\u8ba2\u9605\u3002"
-
-#:
-msgid "errors.subscriptions.orphan"
-msgstr "\u627e\u4e0d\u5230\u4e0e\u6b64\u8ba2\u9605\u5173\u8054\u7684\u5de5\u4f5c\u7c3f\u548c\u89c6\u56fe\u3002"
-
-#:
-msgid "errors.subscriptions.user_unlicensed"
-msgstr "\u6b63\u5728\u8df3\u8fc7\u975e\u6388\u6743\u7528\u6237\u7684\u8ba2\u9605\u3002"
-
-#:
-msgid "errors.subscriptions.smtp_unreacheable"
-msgstr "\u65e0\u6cd5\u8fde\u63a5 SMTP \u4e3b\u673a\u3002\u8bf7\u68c0\u67e5\u662f\u5426\u5df2\u914d\u7f6e\u4e86 SMTP\u3002"
-
-#:
-msgid "errors.subscriptions.uncategorized_error"
-msgstr "\u672a\u77e5\u9519\u8bef"
-
-#:
-msgid "errors.subscriptions.pdf_render_failed"
-msgstr "\u65e0\u6cd5\u6b63\u786e\u5448\u73b0\u6b64\u7535\u5b50\u90ae\u4ef6\u7684 PDF \u9644\u4ef6\u3002"
-
-#:
-msgid "errors.subscriptions.pdf_limit_exceeded"
-msgstr "\u751f\u6210\u7684 PDF \u5927\u4e8e {0}MB \u7684\u5927\u5c0f\u9650\u5236\uff0c\u56e0\u6b64\u65e0\u6cd5\u9644\u52a0\u5230\u6b64\u7535\u5b50\u90ae\u4ef6\u3002"
-
-#:
-msgid "errors.subscriptions.attachments_not_enabled"
-msgstr "\u6b64\u8ba2\u9605\u7531\u4e8e\u7535\u5b50\u90ae\u4ef6\u9644\u52a0\u5df2\u7981\u7528\u800c\u5931\u8d25\u3002\u6709\u5173\u8be6\u7ec6\u4fe1\u606f\uff0c\u8bf7\u4e0e Tableau \u7ba1\u7406\u5458\u8054\u7cfb\u3002"
-
-#:
-msgid "errors.subscriptions.pdf_email_failed"
-msgstr "\u65e0\u6cd5\u5c06\u751f\u6210\u7684 PDF \u9644\u52a0\u5230\u6b64\u7535\u5b50\u90ae\u4ef6\u3002"
-
-#:
-msgid "errors.subscriptions.learn_more_troubleshoot"
-msgstr "<a hre"
-
-#:
-msgid "errors.subscriptions.bad_extract_refresh_subscription_configuration"
-msgstr "\u8ba2\u9605\u7531\u4e8e\u5de5\u4f5c\u7c3f\u5305\u542b\u591a\u4e2a\u6570\u636e\u63d0\u53d6\u5237\u65b0\u8ba1\u5212\u800c\u5df2\u6302\u8d77\u3002\u82e5\u8981\u6062\u590d\uff0c\u8bf7\u5c06\u9891\u7387\u66f4\u65b0\u4e3a\u201c\u6309\u6240\u9009\u8ba1\u5212\u201d\u3002"
-
-#:
-msgid "errors.subscriptions.subscription_failed_refresh_failure"
-msgstr "\u6570\u636e\u6e90\u4e0a\u7684\u6570\u636e\u63d0\u53d6\u5237\u65b0\u5931\u8d25\u3002"
-
-#:
-msgid "errors.subscriptions.multiple_extracts_for_extract_refresh_subscription"
-msgstr "\u5de5\u4f5c\u7c3f\u5305\u542b\u591a\u4e2a\u6570\u636e\u63d0\u53d6\u5237\u65b0\u8ba1\u5212\u3002\u8bf7\u5c06\u9891\u7387\u66f4\u65b0\u4e3a\u201c\u6309\u6240\u9009\u8ba1\u5212\u201d\u3002"
-
-#:
-msgid "errors.subscriptions.datasource_is_missing_password"
-msgstr "\u6570\u636e\u6e90\u8fde\u63a5\u9519\u8bef\u3002\u8bf7\u68c0\u67e5\u5de5\u4f5c\u7c3f\u7684\u6240\u6709\u6570\u636e\u6e90\u8fde\u63a5\u7684\u51ed\u636e\u3002"
-
-#:
-msgid "subscriptions.results_summary.sg"
-msgstr "\u4ece\u8ba1\u5212 ''{2}'' \u53d1\u6765\u7684\u8ba2\u9605 {1} \u7684 {0}\u3002"
-
-#:
-msgid "subscriptions.results_summary.pl"
-msgstr "\u4ece\u8ba1\u5212 ''{2}''. \u53d1\u6765\u7684\u8ba2\u9605 {1} \u4e2d\u7684 {0}\u3002"
-
-#:
-msgid "subscriptions.results_views_per_subscription.sg"
-msgstr "{0}\uff081 \u89c6\u56fe\u7684 {1} \u6210\u529f\uff09"
-
-#:
-msgid "subscriptions.results_views_per_subscription.pl"
-msgstr "{0}\uff08 {2} \u89c6\u56fe\u7684 {1} \u6210\u529f\uff09"
-
-#:
-msgid "subscriptions.results_views_per_subscription.more"
-msgstr "\uff08{0} \u66f4\u591a\uff09"
-
-#:
-msgid "subscriptions.results_views_per_subscription.failed"
-msgstr "{0} ({1}/{2} \u4e2a\u89c6\u56fe\u5931\u8d25)\u3002"
-
-#:
-msgid "subscriptions.results_header.all_shown.failures.sg"
-msgstr "1 \u4e2a\u6545\u969c"
-
-#:
-msgid "subscriptions.results_header.all_shown.failures.pl"
-msgstr "{0} \u6545\u969c"
-
-#:
-msgid "subscriptions.results_header.all_shown.warnings.sg"
-msgstr "1 \u8b66\u544a"
-
-#:
-msgid "subscriptions.results_header.all_shown.warnings.pl"
-msgstr "{0} \u8b66\u544a"
-
-#:
-msgid "subscriptions.results_header.some_hidden.failures.pl.sg"
-msgstr "{0} \u4e2a\u6545\u969c(1 \u4e2a\u9690\u85cf\uff0c\u89c1\u65e5\u5fd7)"
-
-#:
-msgid "subscriptions.results_header.some_hidden.failures.pl.pl"
-msgstr "{0} \u6545\u969c\uff08{1} \u9690\u85cf\uff0c\u89c1\u65e5\u5fd7\uff09"
-
-#:
-msgid "subscriptions.results_header.some_hidden.warnings.pl.sg"
-msgstr "{0} \u8b66\u544a\uff081 \u9690\u85cf\uff0c\u89c1\u65e5\u5fd7\uff09"
-
-#:
-msgid "subscriptions.results_header.some_hidden.warnings.pl.pl"
-msgstr "{0} \u8b66\u544a\uff08{1} \u9690\u85cf\uff0c\u89c1\u65e5\u5fd7\uff09"
-
-#:
-msgid "dataalerts.manage_my_data_alerts"
-msgstr "\u7ba1\u7406\u901a\u77e5"
-
-#:
-msgid "dataalerts.edit_data_alert"
-msgstr "\u7f16\u8f91\u901a\u77e5"
-
-#:
-msgid "dataalerts.remove_user_from_data_alert"
-msgstr "\u79fb\u9664\u6211"
-
-#:
-msgid "dataalerts.add_user_to_data_alert"
-msgstr "\u5c06\u6211\u6dfb\u52a0\u81f3\u6b64\u901a\u77e5"
-
-#:
-msgid "dataalerts.greater_or_equal"
-msgstr "{0} \u9ad8\u4e8e\u6216\u7b49\u4e8e {1}\u3002"
-
-#:
-msgid "dataalerts.greater"
-msgstr "{0} \u9ad8\u4e8e {1}\u3002"
-
-#:
-msgid "dataalerts.less_or_equal"
-msgstr "{0} \u4f4e\u4e8e\u6216\u7b49\u4e8e {1}\u3002"
-
-#:
-msgid "dataalerts.less"
-msgstr "{0} \u4f4e\u4e8e {1}\u3002"
-
-#:
-msgid "dataalerts.equal"
-msgstr "{0} \u7b49\u4e8e {1}\u3002"
-
-#:
-msgid "dataalerts.email_alt_text"
-msgstr "\u6570\u636e\u9a71\u52a8\u578b\u901a\u77e5\u4f7f\u7528\u7684\u89c6\u56fe: {0}"
-
-#:
-msgid "dataalerts.email_alt_text_hidden_view"
-msgstr "\u6570\u636e\u9a71\u52a8\u578b\u901a\u77e5\u4f7f\u7528\u7684\u89c6\u56fe: {0}\uff0c\u5df2\u5e94\u7528\u66f4\u6539"
-
-#:
-msgid "dataalerts.alert_triggered_for_the_view"
-msgstr "\u89c6\u56fe\u89e6\u53d1\u7684\u901a\u77e5"
-
-#:
-msgid "dataalerts.failure.email.subject"
-msgstr "\u6570\u636e\u9a71\u52a8\u578b\u901a\u77e5\u5bf9\u4e8e {0} \u672a\u5de5\u4f5c"
-
-#:
-msgid "dataalerts.failure.status"
-msgstr "\u60a8\u7684\u901a\u77e5 <i>{0}</i> \u672a\u5de5\u4f5c"
-
-#:
-msgid "dataalerts.failure.view.details.alert"
-msgstr "\u67e5\u770b\u6b64\u901a\u77e5"
-
-#:
-msgid "dataalerts.failure.explanation"
-msgstr "\u60a8\u7684\u6570\u636e\u9a71\u52a8\u578b\u901a\u77e5 <i>{0}</i> \u76ee\u524d\u672a\u5de5\u4f5c\uff0c\u56e0\u6b64\uff0c\u5728\u6ee1\u8db3\u6570\u636e\u6761\u4ef6\u65f6\uff0c\u6536\u4ef6\u4eba\u5c06\u4e0d\u4f1a\u6536\u5230\u901a\u77e5\u3002\u60a8\u5c06\u5728\u901a\u77e5\u518d\u6b21\u5de5\u4f5c\u65f6\u6536\u5230\u7535\u5b50\u90ae\u4ef6\u901a\u77e5\u3002"
-
-#:
-msgid "dataalerts.failure.affected.alert"
-msgstr "\u53d7\u5f71\u54cd\u7684\u6570\u636e\u9a71\u52a8\u578b\u901a\u77e5"
-
-#:
-msgid "dataalerts.failure.time"
-msgstr "\u65f6\u95f4\u901a\u77e5\u5931\u8d25"
-
-#:
-msgid "dataalerts.failure.cause"
-msgstr "\u901a\u77e5\u6709\u65f6\u4f1a\u56e0\u6682\u65f6\u6027\u7684\u7f51\u7edc\u95ee\u9898\u800c\u5931\u8d25\uff0c\u8fd9\u4e9b\u95ee\u9898\u53ef\u81ea\u884c\u89e3\u51b3\u3002\u60a8\u4e5f\u53ef\u4ee5\u5c1d\u8bd5\u5728\u539f\u59cb\u89c6\u56fe\u4e0a\u91cd\u65b0\u521b\u5efa\u901a\u77e5\uff0c\u6216\u8005\u6392\u67e5\u5982\u4e0b\u5e38\u89c1\u7684\u901a\u77e5\u5931\u8d25\u539f\u56e0\uff1a"
-
-#:
-msgid "dataalerts.failure.changed.view"
-msgstr "\u79fb\u9664\u6216\u91cd\u547d\u540d\u4e86\u5de5\u4f5c\u7c3f\u3001\u89c6\u56fe\u6216\u6570\u636e\u5b57\u6bb5\u3002"
-
-#:
-msgid "dataalerts.failure.expired.credentials"
-msgstr "\u5de5\u4f5c\u7c3f\u4e2d\u5d4c\u5165\u7684\u6570\u636e\u5e93\u51ed\u636e\u5df2\u8fc7\u671f\u3002"
-
-#:
-msgid "dataalerts.failure.datasource.error"
-msgstr "\u6570\u636e\u6e90\u65e0\u6cd5\u8bbf\u95ee\u3002"
-
-#:
-msgid "dataalerts.failure.email.footer"
-msgstr "\u7531\u4e8e\u901a\u77e5\u5931\u8d25\uff0c\u56e0\u6b64\u60a8\u5728 {0} \u6536\u5230\u6b64\u7535\u5b50\u90ae\u4ef6\u3002"
-
-#:
-msgid "dataalerts.failure.troubleshooting"
-msgstr "\u82e5\u8981\u68c0\u67e5\u662f\u5426\u6709\u4e0a\u9762\u5217\u51fa\u7684\u4efb\u4f55\u5bfc\u81f4\u901a\u77e5\u5931\u8d25\u7684\u95ee\u9898\uff0c\u8bf7\u5355\u51fb\u4e0b\u9762\u7684\u6309\u94ae\u3002"
-
-#:
-msgid "dataalerts.success.email.subject"
-msgstr "\u6570\u636e\u9a71\u52a8\u578b\u901a\u77e5\u5bf9\u4e8e {0} \u5df2\u6062\u590d"
-
-#:
-msgid "dataalerts.success.status"
-msgstr "\u60a8\u7684\u901a\u77e5 <i>{0}</i> \u5df2\u6062\u590d"
-
-#:
-msgid "dataalerts.success.explanation"
-msgstr "\u60a8\u7684\u6570\u636e\u9a71\u52a8\u578b\u901a\u77e5 <i>{0}</i> \u5df2\u518d\u6b21\u5de5\u4f5c\uff0c\u56e0\u6b64\uff0c\u5728\u6ee1\u8db3\u6570\u636e\u6761\u4ef6\u65f6\uff0c\u6536\u4ef6\u4eba\u5c06\u4f1a\u6536\u5230\u901a\u77e5\u3002"
-
-#:
-msgid "dataalerts.failure.error.internalError"
-msgstr "\u6570\u636e\u901a\u77e5\u5185\u90e8\u9519\u8bef"
-
-#:
-msgid "dataalerts.failure.error.invalidDataAlertSpecification"
-msgstr "\u65e0\u6548\u7684\u6570\u636e\u901a\u77e5\u6307\u5b9a"
-
-#:
-msgid "dataalerts.failure.error.summaryTableNotFound"
-msgstr "\u627e\u4e0d\u5230\u6458\u8981\u6570\u636e\u8868"
-
-#:
-msgid "dataalerts.failure.error.unclassifiedError"
-msgstr "\u672a\u5206\u7c7b\u7684\u9519\u8bef"
-
-#:
-msgid "dataalerts.failure.error.viewContentNotFound"
-msgstr "\u627e\u4e0d\u5230\u6570\u636e\u901a\u77e5\u89c6\u56fe\u7684 {0} \u5185\u5bb9"
-
-#:
-msgid "dataalerts.failure.error.viewNotFound"
-msgstr "\u627e\u4e0d\u5230\u6570\u636e\u901a\u77e5\u89c6\u56fe"
-
-#:
-msgid "dataalerts.failure.error.workbookNotFound"
-msgstr "\u627e\u4e0d\u5230\u5de5\u4f5c\u7c3f"
-
-#:
-msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
-msgstr "\u672a\u627e\u5230\u5b57\u6bb5 {0} \u7684\u8f74"
-
-#:
-msgid "dataalerts.failure.error.paneDescriptorNotFound"
-msgstr "{0}"
-
-#:
-msgid "dataalerts.failure.error.unsupportedComparisonExpression"
-msgstr "\u4e0d\u652f\u6301\u7684\u6bd4\u8f83\u8868\u8fbe\u5f0f {0}"
-
-#:
-msgid "dataalerts.failure.error.nonConstComparisonOp"
-msgstr "\u68c0\u6d4b\u5230\u975e\u5e38\u91cf\u6bd4\u8f83\u8fd0\u7b97\u7b26: {0}"
-
-#:
-msgid "dataalerts.failure.error.cannotAddFilter"
-msgstr "\u5411\u6570\u636e\u901a\u77e5\u4e2d\u6dfb\u52a0\u7b5b\u9009\u5668\u5931\u8d25"
-
-#:
-msgid "dataalerts.failure.error.sheetNotAlertable"
-msgstr "\u5de5\u4f5c\u8868 {0} \u6ca1\u6709\u652f\u6301\u7684\u901a\u77e5\u6570\u636e\u3002{1}"
-
-#:
-msgid "dataalerts.failure.error.dataAlertMeasureNotFound"
-msgstr "\u65e0\u6cd5\u9009\u62e9\u5ea6\u91cf\u3002{0}"
-
-#:
-msgid "dataalerts.failure.error.tooManyMeasuresForDataAlert"
-msgstr "\u68c0\u6d4b\u5230\u7684\u5ea6\u91cf\u6570\u4e0d\u6b63\u786e\u3002{0}"
-
-#:
-msgid "dataalerts.failure.error.thresholdParseError"
-msgstr "\u672a\u80fd\u89e3\u6790\u9608\u503c\u6587\u672c {0}\u3002{1}"
-
-#:
-msgid "dataalerts.failure.error.dataAlertPresModelCreationError"
-msgstr "\u5e8f\u5217\u5316\u901a\u77e5\u65f6\u51fa\u9519\u3002{0}"
-
-#:
-msgid "dataalerts.failure.error.cannotDrawDataAlertDialog"
-msgstr "\u672a\u80fd\u7ed8\u5236\u6570\u636e\u901a\u77e5\u5bf9\u8bdd\u6846"
-
-#:
-msgid "dataalerts.failure.error.unsupportedDataAlertType"
-msgstr "\u6570\u636e\u901a\u77e5\u7c7b\u578b {0} \u5f53\u524d\u4e0d\u53d7\u652f\u6301\u3002"
-
-#:
-msgid "dataalerts.failure.suspend.email.subject"
-msgstr "\u6570\u636e\u9a71\u52a8\u578b\u901a\u77e5\u5bf9\u4e8e {0} \u5df2\u6302\u8d77"
-
-#:
-msgid "dataalerts.failure.suspend.email.status"
-msgstr "\u60a8\u7684\u901a\u77e5 {0} \u5df2\u6302\u8d77"
-
-#:
-msgid "dataalerts.failure.suspend.email.explanation"
-msgstr "\u5904\u4e8e\u6302\u8d77\u72b6\u6001\u65f6\uff0c\u6211\u4eec\u5c06\u4e0d\u4f1a\u5bf9\u89c6\u56fe\u6216\u901a\u77e5\u63a5\u6536\u8005\u8fdb\u884c\u8bc4\u4f30\u3002\u8fdb\u884c\u4fee\u590d\u4e4b\u540e\uff0c\u60a8\u53ef\u4ee5\u6062\u590d <a hre"
-
-#:
-msgid "dataalerts.failure.suspend.view.name.prefix"
-msgstr "\u89c6\u56fe"
-
-#:
-msgid "dataalerts.failure.suspend.time"
-msgstr "\u6302\u8d77\u65f6\u95f4"
-
-#:
-msgid "dataalerts.failure.suspend.email.footer"
-msgstr "\u60a8\u4e4b\u6240\u4ee5\u6536\u5230\u6b64\u7535\u5b50\u90ae\u4ef6\uff0c\u539f\u56e0\u662f\u60a8\u7684\u901a\u77e5\u5df2\u6302\u8d77\u3002"
-
-#:
-msgid "dataalerts.failure.suspend.email.view.name.my.content"
-msgstr "\u6211\u7684\u5185\u5bb9"
-
-#:
-msgid "dataalerts.failure.suspend.view.alerts"
-msgstr "\u67e5\u770b\u901a\u77e5"
-
-#:
-msgid "metricsservices.failure.affected.metric"
-msgstr "\u53d7\u5f71\u54cd\u7684\u6307\u6807"
-
-#:
-msgid "metricsservices.failure.cause"
-msgstr "\u6307\u6807\u5237\u65b0\u6709\u65f6\u4f1a\u7531\u4e8e\u6682\u65f6\u6027\u7684\u8fde\u63a5\u95ee\u9898\u800c\u5931\u8d25\uff0c\u8fd9\u4e9b\u95ee\u9898\u53ef\u81ea\u884c\u89e3\u51b3\u3002\u6307\u6807\u5237\u65b0\u53ef\u80fd\u5931\u8d25\u7684\u5176\u4ed6\u539f\u56e0\u5305\u62ec:"
-
-#:
-msgid "metricsservices.failure.changed.view"
-msgstr "\u79fb\u9664\u6216\u91cd\u547d\u540d\u4e86\u5de5\u4f5c\u7c3f\u3001\u89c6\u56fe\u6216\u6570\u636e\u5b57\u6bb5"
-
-#:
-msgid "metricsservices.failure.permissions.error"
-msgstr "\u5df2\u8fde\u63a5\u89c6\u56fe\u7684\u6743\u9650\u66f4\u6539"
-
-#:
-msgid "metricsservices.failure.email.footer"
-msgstr "\u7531\u4e8e\u6307\u6807\u5237\u65b0\u5931\u8d25\uff0c\u56e0\u6b64\u60a8\u5728 {0} \u6536\u5230\u6b64\u7535\u5b50\u90ae\u4ef6\u3002"
-
-#:
-msgid "metricsservices.failure.email.subject"
-msgstr "\u6307\u6807\u5237\u65b0\u5bf9\u4e8e {0} \u4e0d\u8d77\u4f5c\u7528"
-
-#:
-msgid "metricsservices.failure.expired.credentials"
-msgstr "\u5de5\u4f5c\u7c3f\u4e2d\u5d4c\u5165\u7684\u6570\u636e\u5e93\u51ed\u636e\u5df2\u8fc7\u671f"
-
-#:
-msgid "metricsservices.failure.explanation"
-msgstr "\u60a8\u7684\u6307\u6807\u65e0\u6cd5\u5237\u65b0\uff0c\u56e0\u6b64\u6307\u6807\u6570\u636e\u672a\u66f4\u65b0\u3002\u60a8\u5c06\u5728\u6307\u6807\u5237\u65b0\u518d\u6b21\u5de5\u4f5c\u65f6\u6536\u5230\u7535\u5b50\u90ae\u4ef6\u901a\u77e5\u3002"
-
-#:
-msgid "metricsservices.failure.status"
-msgstr "\u6307\u6807\u201c{0}\u201d\u672a\u5237\u65b0"
-
-#:
-msgid "metricsservices.failure.suspend.email.explanation"
-msgstr "\u5728\u6307\u6807\u5237\u65b0\u6302\u8d77\u65f6\uff0c\u60a8\u7684\u6307\u6807\u6570\u636e\u5c06\u4e0d\u4f1a\u66f4\u65b0\u3002\u8fdb\u884c\u4fee\u590d\u4e4b\u540e\uff0c\u60a8\u53ef\u4ee5\u6062\u590d\u6307\u6807\u5237\u65b0\u3002"
-
-#:
-msgid "metricsservices.failure.suspend.email.footer"
-msgstr "\u60a8\u4e4b\u6240\u4ee5\u5728 {0} \u6536\u5230\u6b64\u7535\u5b50\u90ae\u4ef6\uff0c\u539f\u56e0\u662f\u60a8\u7684\u6307\u6807\u5237\u65b0\u5df2\u6302\u8d77\u3002"
-
-#:
-msgid "metricsservices.failure.suspend.email.status"
-msgstr "\u6307\u6807\u201c{0}\u201d\u7684\u5237\u65b0\u5df2\u6302\u8d77"
-
-#:
-msgid "metricsservices.failure.suspend.email.subject"
-msgstr "{0} \u7684\u6307\u6807\u5237\u65b0\u5df2\u6302\u8d77"
-
-#:
-msgid "metricsservices.failure.suspend.time"
-msgstr "\u6302\u8d77\u65f6\u95f4"
-
-#:
-msgid "metricsservices.failure.suspend.view.metric"
-msgstr "\u8f6c\u5230\u6307\u6807"
-
-#:
-msgid "metricsservices.failure.suspend.view.name.prefix"
-msgstr "\u8fde\u63a5\u7684\u89c6\u56fe"
-
-#:
-msgid "metricsservices.failure.time"
-msgstr "\u5237\u65b0\u5931\u8d25\u65f6\u95f4"
-
-#:
-msgid "metricsservices.failure.troubleshooting"
-msgstr "\u82e5\u8981\u68c0\u67e5\u662f\u5426\u6709\u4e0a\u9762\u5217\u51fa\u7684\u4efb\u4f55\u95ee\u9898\u5bfc\u81f4\u60a8\u7684\u6307\u6807\u5237\u65b0\u5931\u8d25\uff0c\u8bf7\u5355\u51fb\u4e0b\u9762\u7684\u6309\u94ae\u3002\u60a8\u4e5f\u53ef\u4ee5\u5c1d\u8bd5\u5728\u8fde\u63a5\u7684\u89c6\u56fe\u4e0a\u91cd\u65b0\u521b\u5efa\u6307\u6807\u3002"
-
-#:
-msgid "metricsservices.failure.view.details.metric"
-msgstr "\u8f6c\u5230\u6307\u6807"
-
-#:
-msgid "metricsservices.failure.view.name.prefix"
-msgstr "\u8fde\u63a5\u7684\u89c6\u56fe"
-
-#:
-msgid "metricsservices.success.email.subject"
-msgstr "{0} \u7684\u6307\u6807\u5237\u65b0\u5df2\u6062\u590d"
-
-#:
-msgid "metricsservices.success.explanation"
-msgstr "\u60a8\u7684\u6307\u6807\u7684\u5237\u65b0\u5df2\u518d\u6b21\u5de5\u4f5c\uff0c\u56e0\u6b64\u5b83\u5c06\u68c0\u67e5\u60a8\u7684\u6307\u6807\u6570\u636e\u662f\u5426\u6709\u66f4\u65b0\u3002"
-
-#:
-msgid "metricsservices.success.status"
-msgstr "\u6307\u6807\u201c{0}\u201d\u7684\u5237\u65b0\u5df2\u6062\u590d"
-
-#:
-msgid "errors.staticimages.generic"
-msgstr "\u4e3a\u5de5\u4f5c\u7c3f {0} \u751f\u6210\u9759\u6001\u56fe\u50cf\u65f6\u51fa\u9519\u3002{1}\u3002"
-
-#:
-msgid "errors.internal_error.request.message"
-msgstr "{0} \u65e0\u6cd5\u6ee1\u8db3\u8bf7\u6c42\u3002"
-
-#:
-msgid "errors.permissions.limited_user_visibility"
-msgstr "\u5b8c\u6210\u67e5\u8be2\u65f6\u51fa\u9519\u3002\u5982\u679c\u201c\u7528\u6237\u53ef\u89c1\u6027\u201d\u8bbe\u7f6e\u4e3a\u6709\u9650\uff0c\u5219\u7528\u6237\u5fc5\u987b\u662f\u7ba1\u7406\u5458\u6216\u521b\u5efa\u8005\u624d\u80fd\u67e5\u8be2\u5176\u4ed6\u7528\u6237"
-
-#:
-msgid "local_names.system_user.guest.name"
-msgstr "\u6765\u5bbe"
-
-#:
-msgid "local_names.group.all_users.name"
-msgstr "\u6240\u6709\u7528\u6237"
-
-#:
-msgid "local_names.containers.personal_space.name"
-msgstr "\u4e2a\u4eba\u7a7a\u95f4"
-
-#:
-msgid "password_reset.email.subject"
-msgstr "\u6b64\u5904\u662f\u7528\u4e8e\u91cd\u7f6e\u60a8\u7684\u5bc6\u7801\u7684\u94fe\u63a5"
-
-#:
-msgid "password_reset.email.body"
-msgstr "\u60a8\u597d {0}\uff0c<br/><br/>\u60a8\u521a\u624d\u8bf7\u6c42\u4e86\u91cd\u7f6e\u5bc6\u7801\u3002<br/><br/>\u82e5\u8981\u66f4\u6539\u60a8\u7684 Tableau Server \u5bc6\u7801\uff0c{1} \u6216\u5c06\u4e0b\u9762\u7684\u94fe\u63a5\u7c98\u8d34\u5230\u60a8\u7684\u6d4f\u89c8\u5668\u4e2d: {2}<br/><br/>\u6b64\u94fe\u63a5\u5c06\u5728 48 \u5c0f\u65f6\u540e\u5931\u6548\uff0c\u6240\u4ee5\u8bf7\u7acb\u5373\u8fdb\u884c\u5904\u7406\u3002<br/><br/>\u5982\u679c\u60a8\u6ca1\u6709\u8bf7\u6c42\u91cd\u7f6e\u5bc6\u7801\uff0c\u60a8\u53ef\u80fd\u9700\u8981\u544a\u8bc9\u60a8\u7684\u670d\u52a1\u5668\u7ba1\u7406\u5458\u3002<br/><br/>\u611f\u8c22\u60a8\u4f7f\u7528 Tableau!<br/>Tableau \u56e2\u961f"
-
-#:
-msgid "password_reset.email.link"
-msgstr "\u5355\u51fb\u6b64\u5904"
-
-#:
-msgid "hours.pl"
-msgstr "{0} \u5c0f\u65f6"
-
-#:
-msgid "hours.sg"
-msgstr "1 \u5c0f\u65f6"
-
-#:
-msgid "minutes.pl"
-msgstr "{0} \u5206\u949f"
-
-#:
-msgid "minutes.sg"
-msgstr "1 \u5206\u949f"
-
-#:
-msgid "seconds.pl"
-msgstr "{0} \u79d2"
-
-#:
-msgid "seconds.sg"
-msgstr "1 \u79d2"
-
-#:
-msgid "dataconnections.classes.tableau_server_site"
-msgstr "Tableau Server \u7ad9\u70b9"
-
-#:
-msgid "materializeviews.errors.workbook_not_in_project"
-msgstr "\u9879\u76ee\u201c{0}\u201d\u672a\u5305\u542b\u5de5\u4f5c\u7c3f\u201c{1}\u201d"
-
-#:
-msgid "materializeviews.errors.workbook_has_no_extract"
-msgstr "\u672a\u80fd\u4e3a\u5de5\u4f5c\u7c3f\u201c{0}\u201d\u66f4\u65b0\u5b9e\u4f53\u5316\u89c6\u56fe\u8bbe\u7f6e\uff0c\u5f53\u524d\u4ec5\u652f\u6301\u5305\u542b\u5d4c\u5165\u5f0f\u6570\u636e\u63d0\u53d6\u7684\u5de5\u4f5c\u7c3f"
-
-#:
-msgid "materializeviews.errors.workbook_updating_errors"
-msgstr "\u4e3a\u5de5\u4f5c\u7c3f\u66f4\u65b0\u5b9e\u4f53\u5316\u89c6\u56fe\u65f6\u53d1\u73b0\u9519\u8bef"
-
-#:
-msgid "materializeviews.errors.workbook_too_large"
-msgstr "\u672a\u80fd\u4e3a\u5de5\u4f5c\u7c3f\u201c{0}\u201d\u66f4\u65b0\u5b9e\u4f53\u5316\u89c6\u56fe\u8bbe\u7f6e\uff0c\u539f\u56e0\u662f\u5de5\u4f5c\u7c3f\u7684\u5927\u5c0f\u8d85\u8fc7 {1} GB \u7684\u9650\u5236"
-
-#:
-msgid "materializeviews.errors.project_path_not_exists"
-msgstr "\u9879\u76ee\u8def\u5f84\u201c{0}\u201d\u4e0d\u5b58\u5728"
-
-#:
-msgid "materializeviews.errors.feature_disabled"
-msgstr "\u672a\u80fd\u4e3a\u5de5\u4f5c\u7c3f\u201c{0}\u201d\u66f4\u65b0\u5b9e\u4f53\u5316\u89c6\u56fe\u8bbe\u7f6e\uff0c\u539f\u56e0\u662f\u529f\u80fd\u5f53\u524d\u5df2\u7981\u7528"
-
-#:
-msgid "materializeviews.errors.update_materialized_views_setting_failed"
-msgstr "\u672a\u80fd\u4e3a\u5de5\u4f5c\u7c3f\u201c{0}\u201d\u66f4\u65b0\u5b9e\u4f53\u5316\u89c6\u56fe\u8bbe\u7f6e"
-
-#:
-msgid "materializeviews.errors.site_not_enabled"
-msgstr "\u6ca1\u6709\u4e3a\u5b9e\u4f53\u5316\u89c6\u56fe\u542f\u7528\u6b64\u7ad9\u70b9\u3002\u8bf7\u4e0e\u7ba1\u7406\u5458\u8054\u7cfb"
-
-#:
-msgid "materializeviews.errors.encrypted_extracts_not_supported"
-msgstr "\u5b9e\u4f53\u5316\u89c6\u56fe\u529f\u80fd\u5f53\u524d\u4e0d\u652f\u6301\u5305\u542b\u5df2\u52a0\u5bc6\u6570\u636e\u63d0\u53d6\u7684\u5de5\u4f5c\u7c3f"
-
-#:
-msgid "materializedviews.finished.create"
-msgstr "\u5df2\u4e3a\u5de5\u4f5c\u7c3f\u201c{1}\u201d\u521b\u5efa\u72b6\u6001\u4e3a\u201c{0}\u201d\u7684\u5b9e\u4f53\u5316\u89c6\u56fe"
-
-#:
-msgid "materializedviews.finished.delete"
-msgstr "\u5df2\u4e3a\u5de5\u4f5c\u7c3f ID {0} \u5220\u9664\u5b9e\u4f53\u5316\u89c6\u56fe:"
-
-#:
-msgid "materializedviews.finished.encrypt"
-msgstr "\u5df2\u5b8c\u6210\u5de5\u4f5c\u7c3f\u201c{0}\u201d\u5b9e\u4f53\u5316\u89c6\u56fe\u7684\u52a0\u5bc6"
-
-#:
-msgid "materializedviews.finished.decrypt"
-msgstr "\u5df2\u5b8c\u6210\u5de5\u4f5c\u7c3f\u201c{0}\u201d\u5b9e\u4f53\u5316\u89c6\u56fe\u7684\u89e3\u5bc6"
-
-#:
-msgid "materializedviews.finished.rekey"
-msgstr "\u5df2\u5b8c\u6210\u5de5\u4f5c\u7c3f\u201c{0}\u201d\u5b9e\u4f53\u5316\u89c6\u56fe\u7684\u91cd\u65b0\u52a0\u5bc6"
-
-#:
-msgid "materializedviews.status.encryption_key"
-msgstr "\u52a0\u5bc6\u5bc6\u94a5 ID:\u201c{0}|\u201d\u3002"
-
-#:
-msgid "materializedviews.status.encryption_keys"
-msgstr "\u65e7\u52a0\u5bc6\u5bc6\u94a5 ID:\u201c{0}\u201d\uff0c\u65b0\u52a0\u5bc6\u5bc6\u94a5 ID:\u201c{1}\u201d\u3002"
-
-#:
-msgid "materializedviews.status.encryption_type"
-msgstr "\u52a0\u5bc6\u6570\u636e\u6e90\u7c7b\u578b:\u201c{0}\u201d"
-
-#:
-msgid "customizedviews.namedSharingPrefix"
-msgstr "\u5171\u4eab\u7248\u672c"
-
-#:
-msgid "flows.drafts.default_name"
-msgstr "\u65b0\u5efa\u6d41\u7a0b"
-
-#:
-msgid "content_type.project"
-msgstr "\u9879\u76ee"
-
-#:
-msgid "content_type.workbook"
-msgstr "\u5de5\u4f5c\u7c3f"
-
-#:
-msgid "content_type.view"
-msgstr "\u89c6\u56fe"
-
-#:
-msgid "content_type.datasource"
-msgstr "\u6570\u636e\u6e90"
-
-#:
-msgid "content_type.flow"
-msgstr "\u6d41\u7a0b"
-
-#:
-msgid "content_type.metric"
-msgstr "\u6307\u6807"
-
-#:
-msgid "content_type.collection"
-msgstr "\u96c6\u5408"
-
-#:
-msgid "content_type.visualization"
-msgstr "\u53ef\u89c6\u5316"
-
-#:
-msgid "content_type.askdata_visualization"
-msgstr "\u201c\u6570\u636e\u95ee\u7b54\u201d\u529f\u80fd\u53ef\u89c6\u5316\u9879"
-
-#:
-msgid "content_type.explaindata_explanation"
-msgstr "\u89e3\u91ca"
-
-#:
-msgid "content_type.publishedconnection"
-msgstr "\u865a\u62df\u8fde\u63a5"
-
-#:
-msgid "content_type.publishedconnectiontable"
-msgstr "\u865a\u62df\u8fde\u63a5\u8868"
-
-#:
-msgid "upgradethumbnails.status.server_started"
-msgstr "\u670d\u52a1\u5668\u54cd\u5e94: \u5df2\u542f\u52a8\u7f29\u7565\u56fe\u5347\u7ea7!"
-
-#:
-msgid "upgradethumbnails.status.server_stopped"
-msgstr "\u670d\u52a1\u5668\u54cd\u5e94: \u5df2\u505c\u6b62 %d \u4e2a\u4f5c\u4e1a"
-
-#:
-msgid "dataquality.message.refresh_failed"
-msgstr "\u5237\u65b0\u5931\u8d25: {0}"
-
-#:
-msgid "dataquality.message.last_successful"
-msgstr "\u4e0a\u6b21\u6210\u529f: {0}"
-
-#:
-msgid "dataquality.message.next_scheduled"
-msgstr "\u4e0b\u6b21\u8ba1\u5212: {0}"
-
-#:
-msgid "dataquality.message.flow_run_output_steps_failed"
-msgstr "{0}/{1} \u4e2a\u8f93\u51fa\u6b65\u9aa4\u8fd0\u884c\u5931\u8d25"
-
-#:
-msgid "importcsvsummary.error.details"
-msgstr "\u9519\u8bef\u8be6\u7ec6\u4fe1\u606f:"
-
-#:
-msgid "importcsvsummary.remainingerrors"
-msgstr "(\u5176\u4f59\u9519\u8bef\u672a\u663e\u793a)"
-
-#:
-msgid "importcsvsummary.error.line"
-msgstr "\u7528\u6237\u201c{1}\u201d\u7684\u884c {0} :\u201c{2}\u201d"
-
-#:
-msgid "importcsvsummary.line.processed"
-msgstr "\u5df2\u5904\u7406\u884c\u6570: {0}"
-
-#:
-msgid "importcsvsummary.line.skipped"
-msgstr "\u5df2\u8df3\u8fc7\u884c\u6570: {0}"
-
-#:
-msgid "importcsvsummary.users.added.count"
-msgstr "\u6dfb\u52a0\u7684\u7528\u6237\u6570: {0}"
-
-#:
-msgid "importcsvsummary.errors.count"
-msgstr "\u9519\u8bef\u6570: {0}"
-
-#:
-msgid "importcsvsummary.error.unexpected_extension"
-msgstr "CSV \u6587\u4ef6\u7684\u610f\u5916\u6587\u4ef6\u6269\u5c55\u540d"
-
-#:
-msgid "importcsvsummary.error.size_limit"
-msgstr "CsvFile \u8d85\u51fa\u5927\u5c0f\u9650\u5236 {0}"
-
-#:
-msgid "importcsvsummary.error.local.password_mismatch"
-msgstr "\u66f4\u65b0\u672c\u5730\u7ad9\u70b9\u7528\u6237\u9700\u8981\u7a7a\u5bc6\u7801\u6216\u5339\u914d\u5bc6\u7801"
-
-#:
-msgid "importcsvsummary.error.local.password_required"
-msgstr "\u5f53\u201cAuth\u201d\u4e3a\u201cLocal\u201d\u65f6\u521b\u5efa\u672c\u5730\u7cfb\u7edf\u7528\u6237\u9700\u8981\u5bc6\u7801"
-
-#:
-msgid "importcsvsummary.error.ad.user_not_found"
-msgstr "\u627e\u4e0d\u5230 AD \u7528\u6237\u201c{0}\u201d"
-
-#:
-msgid "importcsvsummary.error.too_many_errors"
-msgstr "CSV \u6587\u4ef6\u4e2d\u9047\u5230\u7684\u9519\u8bef\u592a\u591a"
-
-#:
-msgid "audit.errors.wdc_not_allowlisted"
-msgstr "\u4e0d\u5141\u8bb8\u5217\u51fa Web \u6570\u636e\u8fde\u63a5\u5668\u3002\u5982\u9700\u5e2e\u52a9\uff0c\u8bf7\u53c2\u9605: https://help.tableau.com/current/online/zh-cn/to_keep_data_fresh.htm"
-
-#:
-msgid "user.input.name.err.too_long"
-msgstr "\u540d\u79f0\u957f\u5ea6\u8d85\u8fc7\u6700\u5927\u5b57\u7b26\u6570 {0}"
-
-#:
-msgid "user.input.name.err.empty"
-msgstr "\u540d\u79f0\u4e0d\u80fd\u4e3a\u7a7a"
-
-#:
-msgid "askdata.title"
-msgstr "\u201c\u6570\u636e\u95ee\u7b54\u201d\u529f\u80fd"
-
-#:
-msgid "slack.app.upgrade.email.notification.subject"
-msgstr "\u9002\u7528\u4e8e Slack \u7684 Tableau \u5e94\u7528\u8f6f\u4ef6\u66f4\u65b0"
-
-#:
-msgid "slack.app.upgrade.email.notification.introduction"
-msgstr "\u9488\u5bf9 Slake \u7684 Tableau \u5e94\u7528\u8f6f\u4ef6\u5df2\u7ecf\u6709\u4e86\u66f4\u65b0\uff0c\u73b0\u5728\u53ef\u4ee5\u91cd\u65b0\u5b89\u88c5\uff0c\u4ee5\u4fbf\u4e0e\u4e0b\u4e00\u4e2a Tableau Online \u7248\u672c\u914d\u5408\u4f7f\u7528\u3002Tableau \u5efa\u8bae\u91cd\u65b0\u5b89\u88c5\u5e94\u7528\u8f6f\u4ef6\uff0c\u4ee5\u4fdd\u6301\u5e94\u7528\u8f6f\u4ef6\u7684\u6027\u80fd\u5e76\u4f7f\u7528\u65b0\u529f\u80fd\u3002\u5728  <a styl"
-
-#:
-msgid "slack.app.upgrade.email.notification.action"
-msgstr "\u6709\u5173\u66f4\u65b0\u548c\u91cd\u65b0\u5b89\u88c5\u6b65\u9aa4\uff0c\u8bf7\u53c2\u89c1 <a styl"
-
-#:
-msgid "slack.app.upgrade.email.notification.steps"
-msgstr "\u6b64\u670d\u52a1\u901a\u77e5\u5df2\u901a\u8fc7 Tableau Online \u53d1\u5e03\u3002"
-
-#:
-msgid "slack.app.upgrade.email.notification.reason"
-msgstr "\u60a8\u6536\u5230\u6b64\u901a\u77e5\u662f\u56e0\u4e3a\u60a8\u662f\u8fde\u63a5\u5230 Slack \u7684 Tableau Online \u7ad9\u70b9\u7684\u7ba1\u7406\u5458\u3002"
-
-#:
-msgid "slack.app.upgrade.email.notification.footer.privacy"
-msgstr "\u9605\u8bfb\u6211\u4eec\u7684<a styl"
-
-#:
-msgid "unifiedconsumption.tcrm.folders.private"
-msgstr "\u6211\u7684\u79c1\u6709\u5e94\u7528"
-
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-25 04:01-0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.6.2\n"
+
+#: permissions.labels.capabilities.read
+msgid "视图:"
+msgstr ""
+
+#: permissions.labels.capabilities.write
+msgid "覆盖:"
+msgstr ""
+
+#: permissions.labels.capabilities.write.legacy
+msgid "保存:"
+msgstr ""
+
+#: permissions.labels.capabilities.delete
+msgid "删除:"
+msgstr ""
+
+#: permissions.labels.capabilities.filter
+msgid "筛选器:"
+msgstr ""
+
+#: permissions.labels.capabilities.add_tag
+msgid "添加标记:"
+msgstr ""
+
+#: permissions.labels.capabilities.add_favorite
+msgid "添加收藏夹:"
+msgstr ""
+
+#: permissions.labels.capabilities.add_comment
+msgctxt "permissions.labels.capabilities.add_comment"
+msgid "添加注释:"
+msgstr ""
+
+#: permissions.labels.capabilities.add_comment.legacy
+msgctxt "permissions.labels.capabilities.add_comment.legacy"
+msgid "添加注释:"
+msgstr ""
+
+#: permissions.labels.capabilities.view_comments
+msgid "查看注释:"
+msgstr ""
+
+#: permissions.labels.capabilities.vud
+msgid "下载完整数据:"
+msgstr ""
+
+#: permissions.labels.capabilities.export_image
+msgid "下载图像/PDF:"
+msgstr ""
+
+#: permissions.labels.capabilities.export_data
+msgid "下载摘要数据:"
+msgstr ""
+
+#: permissions.labels.capabilities.export_xml
+msgid "下载/另存为副本:"
+msgstr ""
+
+#: permissions.labels.capabilities.export_xml.legacy
+msgid "下载/另存为:"
+msgstr ""
+
+#: permissions.labels.capabilities.save_customized_view
+msgid "保存自定义视图:"
+msgstr ""
+
+#: permissions.labels.capabilities.share_view
+msgid "共享自定义:"
+msgstr ""
+
+#: permissions.labels.capabilities.stateful_url
+msgid "永久链接:"
+msgstr ""
+
+#: permissions.labels.capabilities.change_hierarchy
+msgid "移动:"
+msgstr ""
+
+#: permissions.labels.capabilities.change_permissions
+msgid "设置权限:"
+msgstr ""
+
+#: permissions.labels.capabilities.exclude
+msgid "排除:"
+msgstr ""
+
+#: permissions.labels.capabilities.keep_only
+msgid "只保留:"
+msgstr ""
+
+#: permissions.labels.capabilities.select
+msgid "选择标记:"
+msgstr ""
+
+#: permissions.labels.capabilities.tooltip
+msgid "查看工具提示:"
+msgstr ""
+
+#: permissions.labels.capabilities.highlight
+msgid "图例突出显示:"
+msgstr ""
+
+#: permissions.labels.capabilities.url_link
+msgid "链接到外部 Url:"
+msgstr ""
+
+#: permissions.labels.capabilities.administrator
+msgid "管理员:"
+msgstr ""
+
+#: permissions.labels.capabilities.content_admin
+msgid "内容管理员:"
+msgstr ""
+
+#: permissions.labels.capabilities.create_groups
+msgid "创建群组:"
+msgstr ""
+
+#: permissions.labels.capabilities.rename
+msgid "重命名:"
+msgstr ""
+
+#: permissions.labels.capabilities.transfer_ownership
+msgid "转移所有权:"
+msgstr ""
+
+#: permissions.labels.capabilities.project_leader
+msgid "项目主管:"
+msgstr ""
+
+#: permissions.labels.capabilities.publish
+msgid "发布:"
+msgstr ""
+
+#: permissions.labels.capabilities.connect
+msgid "连接:"
+msgstr ""
+
+#: permissions.labels.capabilities.draw
+msgid "绘制:"
+msgstr ""
+
+#: permissions.labels.capabilities.web_authoring
+msgid "Web 编辑:"
+msgstr ""
+
+#: permissions.labels.capabilities.xml_save_as
+msgid "另存为:"
+msgstr ""
+
+#: permissions.labels.capabilities.create_refresh_metrics
+msgid "创建/刷新指标:"
+msgstr ""
+
+#: permissions.labels.capabilities.explain_data
+msgid "运行“数据解释”功能:"
+msgstr ""
+
+#: permissions.labels.roles.wb_view
+msgctxt "permissions.labels.roles.wb_view"
+"permissions.labels.roles.wb_view"
+"permissions.labels.roles.wb_view"
+"permissions.labels.roles.wb_view"
+msgid "视图"
+msgstr ""
+
+#: permissions.labels.roles.wb_explore
+msgctxt "permissions.labels.roles.wb_explore"
+msgid "浏览"
+msgstr ""
+
+#: permissions.labels.roles.wb_publish
+msgctxt "permissions.labels.roles.wb_publish"
+msgid "发布"
+msgstr ""
+
+#: permissions.labels.roles.wb_administer
+msgctxt "permissions.labels.roles.wb_administer"
+msgid "管理"
+msgstr ""
+
+#: permissions.labels.roles.ds_view
+msgctxt "permissions.labels.roles.ds_view"
+msgid "视图"
+msgstr ""
+
+#: permissions.labels.roles.ds_explore
+msgctxt "permissions.labels.roles.ds_explore"
+msgid "浏览"
+msgstr ""
+
+#: permissions.labels.roles.ds_publish
+msgctxt "permissions.labels.roles.ds_publish"
+msgid "发布"
+msgstr ""
+
+#: permissions.labels.roles.ds_administer
+msgctxt "permissions.labels.roles.ds_administer"
+msgid "管理"
+msgstr ""
+
+#: permissions.labels.roles.viewer
+msgid "Viewer(查看者)"
+msgstr ""
+
+#: permissions.labels.roles.interactor
+msgid "交互者"
+msgstr ""
+
+#: permissions.labels.roles.editor
+msgid "编辑者"
+msgstr ""
+
+#: permissions.labels.roles.ds_connector
+msgid "数据源连接者"
+msgstr ""
+
+#: permissions.labels.roles.ds_editor
+msgid "数据源编辑者"
+msgstr ""
+
+#: permissions.labels.roles.administrator
+msgid "管理员"
+msgstr ""
+
+#: permissions.labels.roles.project_leader
+msgid "项目主管"
+msgstr ""
+
+#: permissions.labels.roles.publisher
+msgid "发布者"
+msgstr ""
+
+#: permissions.labels.roles.custom
+msgid "自定义"
+msgstr ""
+
+#: permissions.labels.roles.none
+msgid "无"
+msgstr ""
+
+#.
+#. # Used in Storage class in tab-core
+#: formats.messages.disk_space.in_mb
+msgid "{0} MB"
+msgstr ""
+
+#: formats.messages.disk_space.in_kb
+msgid "{0} KB"
+msgstr ""
+
+#.
+#. # Publishing-related errors and strings
+#: errors.argument.flow_description.too_long
+msgid "流程描述过长({0} 个字符)。其长度必须小于 {1} 个字符:"
+msgstr ""
+
+#: %7B2%7D
+msgctxt "{2}"
+msgid ""
+msgstr ""
+
+#: errors.argument.workbook_name.too_long
+msgid "工作簿名称过长(最多为 {0} 个字符)。其长度必须小于 {1} 个字符:"
+msgstr ""
+
+#: errors.argument.workbook_name.empty
+msgid "工作簿名称为空。"
+msgstr ""
+
+#: errors.argument.workbook_description.too_long
+msgid "工作簿描述过长({0} 个字符)。其长度必须小于 {1} 个字符:"
+msgstr ""
+
+#: errors.argument.worksheet_name.too_long
+msgid "工作表名称过长(最多为 {0} 个字符)。其长度必须小于 {1} 个字符:"
+msgstr ""
+
+#: errors.argument.datasource_name.too_long
+msgid "数据源名称过长({0} 个字符)。其长度必须小于 {1} 个字符:"
+msgstr ""
+
+#: errors.argument.datasource_name.empty
+msgid "数据源名称为空。"
+msgstr ""
+
+#: errors.argument.datasource_description.too_long
+msgid "数据源描述过长({0} 个字符)。其长度必须小于 {1} 个字符:"
+msgstr ""
+
+#: errors.argument.dataconnection_column.too_long
+msgid ""
+"DataConnection column {0} is too long ({1} characters).  It must be shorter "
+"than {2} characters:"
+msgstr ""
+
+#: %7B3%7D
+msgctxt "{3}"
+msgid ""
+msgstr ""
+
+#: errors.argument.tag.too_long
+msgid "标记过长({0} 个字符)。其长度必须小于 {1} 个字符:"
+msgstr ""
+
+#: errors.argument.workbook_file.missing_or_empty
+msgid "工作簿文件缺失或为空。"
+msgstr ""
+
+#: errors.argument.internal
+msgid "内部服务器错误。参数缺失或无效。"
+msgstr ""
+
+#: errors.argument.thumbnail.invalid_format
+msgid "工作簿缩略图格式无效。必须是分辨率为 300x300 或更低的 PNG。"
+msgstr ""
+
+#: errors.html_403.disabled_resource.workbook
+msgid "抱歉，该工作簿已禁用。请与管理员联系。"
+msgstr ""
+
+#: errors.html_404.missing_or_unauthorized_resource.project
+msgid "抱歉，您查找的项目不存在，或者您无权查看该项目。"
+msgstr ""
+
+#: errors.html_404.missing_or_unauthorized_resource.personal_space
+msgid "抱歉，您要查找的个人空间不存在，或者您没有查看权限。"
+msgstr ""
+
+#: errors.html_404.missing_or_unauthorized_resource.datasource
+msgid "抱歉，您查找的数据源不存在。"
+msgstr ""
+
+#: errors.labels.formatted_request_id
+msgid "请求 ID: {0}"
+msgstr ""
+
+#: errors.links.delete_datasources
+msgid "删除数据源"
+msgstr ""
+
+#: errors.links.delete_workbooks
+msgid "删除工作簿"
+msgstr ""
+
+#: errors.permissions.publish.datasource.licensing
+msgid "您必须是“交互者”，才能发布数据源。"
+msgstr ""
+
+#: errors.permissions.publish.datasource.overwrite
+msgid "项目“{1}”中已存在名为“{0}”的数据源。您没有覆盖它的权限。"
+msgstr ""
+
+#: errors.permissions.publish.datasource.overwrite_personal_space
+msgid "个人空间中已存在名为“{0}”的数据源。您没有覆盖它的权限。"
+msgstr ""
+
+#: errors.permissions.publish.datasource.overwrite_short
+msgid "项目“{1}”中已存在名为“{0}”的数据源。"
+msgstr ""
+
+#: errors.permissions.publish.datasource.overwrite_short_personal_space
+msgid "个人空间中已存在名为“{0}”的数据源。"
+msgstr ""
+
+#: errors.permissions.publish.datasource.non_existent
+msgid "数据源“{0}”不存在。"
+msgstr ""
+
+#: errors.permissions.publish.datasource.general
+msgid "抱歉，您无权发布到此数据源。"
+msgstr ""
+
+#: errors.permissions.publish.project.explicit_publisher_detail
+msgid "您没有发布权限。"
+msgstr ""
+
+#: errors.permissions.publish.project.general
+msgid "抱歉，您无权发布此项目。"
+msgstr ""
+
+#: errors.permissions.publish.project.non_existent
+msgid "项目“{0}”不存在。"
+msgstr ""
+
+#: errors.permissions.publish.project.not_writable
+msgid "您没有写入项目“{0}”的权限。"
+msgstr ""
+
+#: errors.permissions.publish.project.unspecified
+msgid "必须指定项目"
+msgstr ""
+
+#: errors.permissions.publish.workbook.disabled
+msgid "工作簿“{0}”已禁用。"
+msgstr ""
+
+#: errors.permissions.publish.workbook.general
+msgid "要发布到的项目中存在具有此名称的工作簿。若要发布，请重命名您的工作簿。"
+msgstr ""
+
+#: errors.permissions.publish.workbook.general_personal_space
+msgid "您要发布到的个人空间中已存在同名工作簿。若要发布，请重命名工作簿。"
+msgstr ""
+
+#: errors.permissions.publish.workbook.overwrite
+msgid "项目“{1}”中已存在名为“{0}”的工作簿。您没有覆盖它的权限。"
+msgstr ""
+
+#: errors.permissions.publish.workbook.overwrite_personal_space
+msgid "个人空间中已存在名为“{0}”的工作簿。您没有覆盖它的权限。"
+msgstr ""
+
+#: errors.permissions.publish.workbook.overwrite_short
+msgid "项目“{1}”中已存在名为“{0}”的工作簿。"
+msgstr ""
+
+#: errors.permissions.publish.workbook.overwrite_short_personal_space
+msgid "个人空间中已存在名为“{0}”的工作簿。"
+msgstr ""
+
+#: errors.reportable.impersonation.group_and_user
+msgid "仅指定“impersonate_username”或“impersonate_groupname”之一，而不是两个都指定。"
+msgstr ""
+
+#: errors.reportable.impersonation.user_not_found
+msgid "用户“{0}”不存在。"
+msgstr ""
+
+#: errors.reportable.impersonation.group_not_found
+msgid "组“{0}”不存在。"
+msgstr ""
+
+#. # errors.public.validation.hasextract is copied from the C++ file codegen strings.data IDS_PUBLIC_VALIDATION_ERROR_HASEXTRACT
+#: errors.public.validation.hasextract
+msgid ""
+"保存到 Tableau Public 的工作簿必须使用活动 Tableau 数据提取。右键单击数据源，"
+"然后在发布之前选择“使用数据提取”。数据源“{0}”不是活动数据提取。"
+msgstr ""
+
+#: errors.publish.dataserver_datasource_not_found
+msgid "未找到工作簿“{1}”的数据源“{0}”。"
+msgstr ""
+
+#: errors.publish.datasource_update_mode
+msgid "未知更新模式:''{0}''."
+msgstr ""
+
+#: errors.publish.workbook.concurrent_update
+msgid "目前正在发布或修改具有相同名称的工作簿。请等到任务完成后重试。"
+msgstr ""
+
+#: errors.publish.workbook.restricted
+msgid "工作簿包含此服务器不允许的连接类型。"
+msgstr ""
+
+#: errors.publish.datasource.concurrent_update
+msgid "目前正在发布或修改具有相同名称的数据源。请等到任务完成后重试。"
+msgstr ""
+
+#: errors.publish.datasource.restricted
+msgid "数据源包含此服务器上不允许的连接类型。"
+msgstr ""
+
+#: errors.publish.datasource.connection_check
+msgid "{0} 无法建立数据源连接。"
+msgstr ""
+
+#: errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption
+msgid "无法发布包含加密数据提取的工作簿。站点管理员已在此站点上禁用了数据提取加密。"
+"您必须发布包含未加密数据提取的工作簿。"
+msgstr ""
+
+#: errors.publish.datasource.requested_extract_encryption_on_site_with_disabled_encryption
+msgid "无法以加密数据提取的形式发布数据源。站点管理员已在此站点上禁用了数据提取加密"
+"。您必须发布未加密的数据提取。"
+msgstr ""
+
+#: errors.publish.workbook.requested_no_extract_encryption_on_site_with_enforced_encryption
+msgid "无法发布包含未加密数据提取的工作簿。站点管理员已在此站点上强制实施了数据提取"
+"加密。您必须发布工作簿并指定数据提取加密。"
+msgstr ""
+
+#: errors.publish.datasource.requested_no_extract_encryption_on_site_with_enforced_encryption
+msgid "无法发布未加密的数据源数据提取。站点管理员已在此站点上强制实施了数据提取加密"
+"。您必须发布加密的数据提取。"
+msgstr ""
+
+#: errors.publish.has_unfinished_extract_creation_job
+msgid "无法发布此资源，原因是存在与其相关的待定或未完成数据提取创建作业。请等待或取"
+"消这些作业，然后重试。"
+msgstr ""
+
+#: errors.publishing.storage_quota_exceeded.message
+msgid "已超过站点存储配额。"
+msgstr ""
+
+#: errors.publishing.request_size_exceeded
+msgid "无法发布此文件，因为请求大小为 {0} 字节，超出字节大小限制 {1} 字节。"
+msgstr ""
+
+#: errors.publishing.request_size_unknown
+msgid "无法确定请求大小。"
+msgstr ""
+
+#: errors.site.quota_exceeded
+msgid "您尝试上载的内容将超出 {0} 的站点容量。"
+msgstr ""
+
+#: errors.personal_space.quota_exceeded
+msgid "此内容超出您的个人空间容量 {0}。"
+msgstr ""
+
+#: errors.web_authoring.workbook_deleted
+msgid "已删除工作簿 {0}。请选择“另存为”以另存新工作簿。"
+msgstr ""
+
+#: errors.web_authoring.workbook_changed
+msgid "自您开始编辑后另一个用户已编辑并保存了此工作簿。因此，您无法再更新原始工作簿"
+"。请通过“另存为”使用您所做更改新建一个工作簿。"
+msgstr ""
+
+#: labels.publish.embed_credentials
+msgid "嵌入数据源的密码"
+msgstr ""
+
+#: errors.publish.workbook.google_no_embedded_credentials
+msgid "此工作簿包含需要嵌入式凭据的 {0} 数据源。若要另存为其他工作簿，请选择“{1}”。"
+msgstr ""
+
+#: errors.publish.datasource.google_no_embedded_credentials
+msgid "此数据源包含需要嵌入式凭据的 {0} 连接。请使用嵌入式凭据从 Tableau Desktop "
+"中发布此数据源。"
+msgstr ""
+
+#: errors.publish.datasource.federated_oauth_datasource_failed
+msgid ""
+"数据源中一个或多个连接的凭据已过期。请在 Tableau Server 或 Tableau Online "
+"上的“帐户设置”页面中删除为此数据源保存的凭据，然后再次连接到数据源。"
+msgstr ""
+
+#: errors.publish.workbook.missing_oauth_credential
+msgid "找不到凭据“{0}”或者无法使用它连接到数据源或工作簿。"
+msgstr ""
+
+#: errors.publish.version_incompatible.message
+msgid "Desktop 和 Server 版本不兼容。"
+msgstr ""
+
+#: errors.publish.version_incompatible.details
+msgid "Desktop 版本“{0}”，Server 文档版本“{1}”。"
+msgstr ""
+
+#: errors.publish.datasource.managed_keychain.unique_cv_suggestions
+msgid "由于存在冲突，发布失败。请重新提交所做更改。"
+msgstr ""
+
+#: errors.publish.permissions_are_locked
+msgid "权限在您发布到的项目中已锁定。若要发布此工作簿，请使用默认权限并重试。"
+msgstr ""
+
+#: errors.publish.datasource.not.found
+msgid "在服务器上找不到此数据源。"
+msgstr ""
+
+#: errors.publish.extracts.disabled
+msgid "尚不支持为基于数据提取的存档数据源保存。"
+msgstr ""
+
+#: errors.publish.datasource.timeout
+msgid "发布在 {0} 秒后超时。请尝试使用 Tableau Desktop 来发布此数据源。"
+msgstr ""
+
+#: errors.publish.data_role.permission_not_null
+msgid "无法为数据角色类型的数据源设置显式权限。"
+msgstr ""
+
+#: errors.download.extracts.timeout
+msgid "发布在 {0} 秒后超时，原因是此数据源有很大的数据提取文件。请尝试使用 Tableau "
+"Desktop 来发布此数据源。"
+msgstr ""
+
+#: errors.publish.datasource.invalid_extract_update_time
+msgid "指定的 extractUpdateTime 无效: {0}"
+msgstr ""
+
+#: errors.publish.async.serialization
+msgid "无法序列化发布作业状态错误"
+msgstr ""
+
+#: errors.permissions.view.datasources
+msgid "您必须是“交互者”才能查看数据源列表。"
+msgstr ""
+
+#.
+#. # oauth related errors
+#: errors.oauth.invalid_oauth_class
+msgid "“{0}”不是有效的 OAuth 连接类型。"
+msgstr ""
+
+#: errors.xmlapi.bad_request
+msgid "错误请求"
+msgstr ""
+
+#: errors.xmlapi.unauthorized
+msgid "未授权"
+msgstr ""
+
+#: errors.xmlapi.forbidden
+msgid "权限不足"
+msgstr ""
+
+#: errors.xmlapi.system_user_not_found
+msgid "用户帐户已锁定或无效。"
+msgstr ""
+
+#: errors.xmlapi.site_user_not_found
+msgid "此用户帐户未激活。请联系您的 {0} 管理员寻求帮助。"
+msgstr ""
+
+#: errors.xmlapi.not_found
+msgid "未找到项"
+msgstr ""
+
+#: errors.xmlapi.concurrent_update
+msgid "并发更新"
+msgstr ""
+
+#: errors.xmlapi.internal_server_error
+msgid "内部服务器错误"
+msgstr ""
+
+#: errors.xmlapi.illegal_state
+msgid "非法状态"
+msgstr ""
+
+#: errors.xmlapi.invalid_parameter
+msgid "无效参数"
+msgstr ""
+
+#: errors.xmlapi.already_exists
+msgid "已存在"
+msgstr ""
+
+#: errors.xmlapi.site_suspended
+msgid "此站点已挂起。您必须是系统管理员才能登录。"
+msgstr ""
+
+#: errors.xmlapi.site_locked
+msgid "此站点已锁定。此时不允许登录。"
+msgstr ""
+
+#: errors.xmlapi.permission_modification
+msgid "无法在修改了权限的情况下发布"
+msgstr ""
+
+#: errors.xmlapi.update_desktop
+msgid ""
+"若要打开其他作者创建的工作簿，请从 http://public.tableau.com/ 下载最新版本的 "
+"Tableau Desktop Public Edition"
+msgstr ""
+
+#: errors.xmlapi.throttled.summary
+msgid "请求过多"
+msgstr ""
+
+#: errors.xmlapi.throttled.detail
+msgid "对“{0}”的请求太多，请在 {1} 后重试。"
+msgstr ""
+
+#: datasource.publish.check.unpublishable
+msgid "无法发布数据源。"
+msgstr ""
+
+#: datasource.publish.check.publishable.extract_required
+msgid "需要在发布时创建数据提取。"
+msgstr ""
+
+#: datasource.publish.check.publishable.credentials_required
+msgid "{1} 将临时访问为 ''{0}'' 提供的凭据来确认它可保持实时数据连接。"
+msgstr ""
+
+#: datasource.publish.check.publishable.server_unreachable
+msgid "{1} 无法访问 ''{0}''。发布时将创建数据提取。"
+msgstr ""
+
+#: publish.bundles.workbook.subscription.subject
+msgid "您的工作簿 {0} 已准备就绪。"
+msgstr ""
+
+#: publish.bundles.workbook.subscription.message
+msgid "您的 Salesforce 数据已添加到工作簿。转到您的 {0} 项目以开始。"
+msgstr ""
+
+#: extracts.status.finished.upload.workbook
+msgid "已完成工作簿 ''{1}'' {2} 的数据提取上载(新数据提取 ID: {0})"
+msgstr ""
+
+#: extracts.status.finished.refresh.workbook
+msgid "已完成工作簿“{1}”{2} 的数据提取刷新(新数据提取 ID: {0})"
+msgstr ""
+
+#: extracts.status.finished.increment.workbook
+msgid "已完成工作簿“{1}”{2} 的数据提取递增(新数据提取 ID: {0})"
+msgstr ""
+
+#: extracts.status.finished.encrypt.workbook
+msgid "已完成工作簿“{1}”的数据提取加密(新数据提取 ID: {0})"
+msgstr ""
+
+#: extracts.status.finished.decrypt.workbook
+msgid "已完成工作簿“{1}”的数据提取解密(新数据提取 ID: {0})"
+msgstr ""
+
+#: extracts.status.finished.rekey.workbook
+msgid "已完成工作簿“{1}”的数据提取重新加密(新数据提取 ID: {0})"
+msgstr ""
+
+#: extracts.status.finished.create.workbook
+msgid "已完成工作簿“{1}”的数据提取创建(新数据提取 ID: {0}){2}"
+msgstr ""
+
+#: extracts.status.finished.remove.workbook
+msgid "已完成工作簿“{1}”的实时数据提取更改(数据源 ID:{0})"
+msgstr ""
+
+#: extracts.status.finished.upload.datasource
+msgid "已完成数据源“{1}”{2} 的数据提取上载(新数据提取 ID: {0})"
+msgstr ""
+
+#: extracts.status.finished.refresh.datasource
+msgid "已完成数据源“{1}”{2} 的数据提取刷新(新数据提取 ID: {0})"
+msgstr ""
+
+#: extracts.status.finished.increment.datasource
+msgid "已完成数据源“{1}”{2} 的数据提取递增(新数据提取 ID: {0})"
+msgstr ""
+
+#: extracts.status.finished.append.datasource
+msgid "已完成数据源“{1}”{2} 的数据提取追加(新数据提取 ID: {0})"
+msgstr ""
+
+#: extracts.status.finished.replace.datasource
+msgid "已完成数据源“{1}”{2} 的数据提取替换(新数据提取 ID: {0})"
+msgstr ""
+
+#: extracts.status.finished.encrypt.datasource
+msgid "已完成数据源“{1}” 的数据提取加密(新数据提取 ID: {0})"
+msgstr ""
+
+#: extracts.status.finished.decrypt.datasource
+msgid "已完成数据源“{1}” 的数据提取解密(新数据提取 ID: {0})"
+msgstr ""
+
+#: extracts.status.finished.rekey.datasource
+msgid "已完成数据源“{1}” 的数据提取重新加密(新数据提取 ID: {0})"
+msgstr ""
+
+#: extracts.status.finished.encrypt.flow
+msgid "已完成流程“{0}”的数据提取加密"
+msgstr ""
+
+#: extracts.status.finished.decrypt.flow
+msgid "已完成流程“{0}”的数据提取解密"
+msgstr ""
+
+#: extracts.status.finished.rekey.flow
+msgid "已完成流程“{0}”的数据提取重新加密"
+msgstr ""
+
+#: extracts.status.finished.encrypt.flowdraft
+msgid "已完成流程草稿“{0}”的数据提取加密"
+msgstr ""
+
+#: extracts.status.finished.decrypt.flowdraft
+msgid "已完成流程草稿“{0}”的数据提取解密"
+msgstr ""
+
+#: extracts.status.finished.rekey.flowdraft
+msgid "已完成流程草稿“{0}”的数据提取重新加密"
+msgstr ""
+
+#: extracts.status.finished.create.datasource
+msgid "已完成数据源“{1}” 的数据提取创建(新数据提取 ID: {0}){2}"
+msgstr ""
+
+#: extracts.status.finished.remove.datasource
+msgid "已完成数据源“{1}”的实时数据提取更改"
+msgstr ""
+
+#: extracts.status.encryption_key
+msgctxt "extracts.status.encryption_key"
+msgid "加密密钥 ID:“{0}|”。"
+msgstr ""
+
+#: extracts.status.encryption_keys
+msgctxt "extracts.status.encryption_keys"
+msgid "旧加密密钥 ID:“{0}”，新加密密钥 ID:“{1}”。"
+msgstr ""
+
+#: extracts.errors.upload
+msgid "上载 {0} 的数据提取时出错: ''{1}''"
+msgstr ""
+
+#: extracts.errors.refresh
+msgid "刷新 {0} ''{1}'' 的数据提取时出错"
+msgstr ""
+
+#: extracts.errors.create
+msgid "为 {0} 创建数据提取时出错“{1}”。"
+msgstr ""
+
+#: extracts.errors.increment
+msgid "递增 {0} 的数据提取时出错: ''{1}''"
+msgstr ""
+
+#: extracts.errors.append
+msgid "追加 {0} 的数据提取时出错: ''{1}''"
+msgstr ""
+
+#: extracts.errors.replace
+msgid "替换 {0} 的数据提取时出错: ''{1}''"
+msgstr ""
+
+#: extracts.errors.download
+msgid "下载 {0} 的数据提取时出错: ''{1}''"
+msgstr ""
+
+#: extracts.errors.remove
+msgid "为 {0} 移除数据提取时出错:“{1}”。"
+msgstr ""
+
+#: extracts.errors.title
+msgid "处理数据提取错误"
+msgstr ""
+
+#: extracts.errors.nothing_to_upload
+msgid "没有要为 {0} 上载的数据提取:''{1}''"
+msgstr ""
+
+#: extracts.errors.nothing_to_refresh
+msgid "没有要为 {0} 刷新的数据提取:''{1}''"
+msgstr ""
+
+#: extracts.errors.nothing_to_increment
+msgid "没有要为 {0} 递增的数据提取: ''{1}''"
+msgstr ""
+
+#: extracts.errors.nothing_to_append
+msgid "没有要为 {0} 追加的数据提取:''{1}''"
+msgstr ""
+
+#: extracts.errors.nothing_to_replace
+msgid "没有要为 {0} 替换的数据提取:''{1}''"
+msgstr ""
+
+#: extracts.errors.refresh_summary
+msgid "刷新数据提取错误"
+msgstr ""
+
+#: extracts.errors.encrypt_summary
+msgid "加密数据提取错误"
+msgstr ""
+
+#: extracts.errors.rekey_summary
+msgid "重新加密数据提取错误"
+msgstr ""
+
+#: extracts.errors.decrypt_summary
+msgid "解密数据提取错误"
+msgstr ""
+
+#: extracts.errors.remove_summary
+msgid "移除数据提取错误"
+msgstr ""
+
+#: extracts.errors.create_summary
+msgid "创建数据提取错误"
+msgstr ""
+
+#: extracts.errors.datasource_overwritten
+msgid "刷新失败，因为在处理期间该数据源已由其他任务覆盖。请再次提交刷新以进行更正。"
+msgstr ""
+
+#: extracts.errors.workbook_overwritten
+msgid "刷新失败，因为在处理期间该工作簿已由其他任务覆盖。请再次提交刷新以进行更正。"
+msgstr ""
+
+#: extracts.errors.encrypt
+msgid "对 {0}“{1}”的数据提取进行加密时出错"
+msgstr ""
+
+#: extracts.errors.decrypt
+msgid "对 {0}“{1}”的数据提取进行解密时出错"
+msgstr ""
+
+#: extracts.errors.rekey
+msgid "对 {0}“{1}”的数据提取进行重新加密时出错"
+msgstr ""
+
+#: extracts.errors.encrypt_datasource_overwritten
+msgid "数据提取加密失败，因为在处理期间数据源已被另一个任务覆盖。"
+msgstr ""
+
+#: extracts.errors.encrypt_workbook_overwritten
+msgid "数据提取加密失败，因为在处理期间工作簿已被另一个任务覆盖。"
+msgstr ""
+
+#: extracts.errors.rekey_datasource_overwritten
+msgid "数据提取重新加密失败，因为在处理期间数据源已被另一个任务覆盖。"
+msgstr ""
+
+#: extracts.errors.rekey_workbook_overwritten
+msgid "数据提取重新加密失败，因为在处理期间工作簿已被另一个任务覆盖。"
+msgstr ""
+
+#: extracts.errors.decrypt_datasource_overwritten
+msgid "数据提取解密失败，因为在处理期间数据源已被另一个任务覆盖。"
+msgstr ""
+
+#: extracts.errors.decrypt_workbook_overwritten
+msgid "数据提取解密失败，因为在处理期间工作簿已被另一个任务覆盖。"
+msgstr ""
+
+#: extracts.errors.remove_datasource_overwritten
+msgid "无法将数据源更改为实时，因为另一个任务覆盖了该数据源。"
+msgstr ""
+
+#: extracts.errors.remove_workbook_overwritten
+msgid "无法将工作簿更改为实时，因为另一个任务覆盖了该工作簿。"
+msgstr ""
+
+#: extracts.errors.create_datasource_overwritten
+msgid "无法提取数据源，因为另一个任务覆盖了该数据源。"
+msgstr ""
+
+#: extracts.errors.create_workbook_overwritten
+msgid "无法提取工作簿，因为另一个任务覆盖了该工作簿。"
+msgstr ""
+
+#: extracts.site_mode_change_details
+msgid "将站点数据提取加密模式从“{0}”更改为“{1}”。"
+msgstr ""
+
+#: extracts.errors.encryption_not_licensed
+msgid "此操作由于数据提取加密未获许可已失败。若要执行此操作，您必须续订许可证或将数"
+"据提取解密。"
+msgstr ""
+
+#: extracts.errors.operation_cancelled_detail
+msgid "{0} (数据源: {2})的移除数据提取操作超时。"
+msgstr ""
+
+#: workbooks.messages.load_error
+msgid "无法加载工作簿 {0}"
+msgstr ""
+
+#: workbooks.messages.locked
+msgid "另一个用户正在修改工作簿“{0}”。请稍后重试。"
+msgstr ""
+
+#: workbooks.new_workbook.default_name
+msgid "新建工作簿"
+msgstr ""
+
+#: workbooks.new_datasource.default_name
+msgid "新建数据源"
+msgstr ""
+
+#: datasources.messages.load_error
+msgid "无法加载数据源 {0}"
+msgstr ""
+
+#: metrics.new_metric.default_name
+msgid "新指标"
+msgstr ""
+
+#: messages.timeout_error.summary
+msgid "超时错误"
+msgstr ""
+
+#: messages.timeout_error.task_canceled
+msgid "正在取消用时超过 {0} 秒的任务"
+msgstr ""
+
+#: subscriptions.manage_my_subscriptions
+msgid "管理我的订阅"
+msgstr ""
+
+#: subscriptions.message_greeting
+msgid "您好，"
+msgstr ""
+
+#: subscriptions.subscribed_footer
+msgid "这里是您的 {0} 订阅"
+msgstr ""
+
+#: subscriptions.subscribed_workbook
+msgctxt "subscriptions.subscribed_workbook"
+msgid "工作簿"
+msgstr ""
+
+#: subscriptions.subscribed_view
+msgctxt "subscriptions.subscribed_view"
+msgid "视图"
+msgstr ""
+
+#: subscriptions.fullstop
+msgid "."
+msgstr ""
+
+#: subscriptions.extract_refresh_footer
+msgid "刷新数据时，您将收到此订阅电子邮件。"
+msgstr ""
+
+#: subscriptions.explore_the_viz
+msgid "浏览可视化项"
+msgstr ""
+
+#: subscriptions.explore_the_workbook
+msgid "浏览工作簿"
+msgstr ""
+
+#: subscriptions.pdf_attached
+msgid "已附加您的 Tableau PDF。"
+msgstr ""
+
+#: subscriptions.access_live_content
+msgid "您可以在此处访问内容的实时视图"
+msgstr ""
+
+#: subscriptions.warning_deprecated_type
+msgid "已弃用"
+msgstr ""
+
+#: subscriptions.warning_extract_refresh_type
+msgid "数据提取刷新失败"
+msgstr ""
+
+#: subscriptions.warning_flow_run_type
+msgid "流程运行失败"
+msgstr ""
+
+#: subscriptions.warning_introduction_general
+msgid "以下数据质量警告会影响此 {0}。"
+msgstr ""
+
+#: subscriptions.warning_introduction_view
+msgid "有关详细信息，请参见视图中的“数据详细信息”选项卡"
+msgstr ""
+
+#: subscriptions.warning_introduction_workbook
+msgid "有关详细信息，请参见工作簿页面"
+msgstr ""
+
+#: subscriptions.warning_maintenance_type
+msgid "维护中"
+msgstr ""
+
+#: subscriptions.warning_permission_error
+msgid "此警告针对您无权查看的资产。"
+msgstr ""
+
+#: subscriptions.warning_redacted
+msgid "需要权限"
+msgstr ""
+
+#: subscriptions.warning_sensitve_type
+msgid "敏感数据"
+msgstr ""
+
+#: subscriptions.warning_severe
+msgid "重要数据质量警告"
+msgstr ""
+
+#: subscriptions.warning_stale_type
+msgid "过期数据"
+msgstr ""
+
+#: subscriptions.warning_standard
+msgid "数据质量警告"
+msgstr ""
+
+#: subscriptions.warning_error_type
+msgid "未知警告类型"
+msgstr ""
+
+#: subscriptions.warning_warning_type
+msgid "警告"
+msgstr ""
+
+#: errors.subscriptions.image_render_failed
+msgid "无法正确呈现视图“{0}”的快照。"
+msgstr ""
+
+#: errors.subscriptions.see_live_view
+msgid "若要在线查看视图，请转到 {0}。"
+msgstr ""
+
+#: errors.subscriptions.disabled_on_server
+msgid "未启用服务器范围订阅设置。无法处理订阅。"
+msgstr ""
+
+#: errors.subscriptions.disabled_on_site
+msgid "为站点禁用了订阅。"
+msgstr ""
+
+#: errors.subscriptions.site_is_locked
+msgid "网站被锁定。无法处理订阅。"
+msgstr ""
+
+#: errors.subscriptions.orphan
+msgid "找不到与此订阅关联的工作簿和视图。"
+msgstr ""
+
+#: errors.subscriptions.user_unlicensed
+msgid "正在跳过非授权用户的订阅。"
+msgstr ""
+
+#: errors.subscriptions.smtp_unreacheable
+msgid "无法连接 SMTP 主机。请检查是否已配置了 SMTP。"
+msgstr ""
+
+#: errors.subscriptions.uncategorized_error
+msgid "未知错误"
+msgstr ""
+
+#: errors.subscriptions.pdf_render_failed
+msgid "无法正确呈现此电子邮件的 PDF 附件。"
+msgstr ""
+
+#: errors.subscriptions.pdf_limit_exceeded
+msgid "生成的 PDF 大于 {0}MB 的大小限制，因此无法附加到此电子邮件。"
+msgstr ""
+
+#: errors.subscriptions.attachments_not_enabled
+msgid "此订阅由于电子邮件附加已禁用而失败。有关详细信息，请与 Tableau 管理员联系。"
+msgstr ""
+
+#: errors.subscriptions.pdf_email_failed
+msgid "无法将生成的 PDF 附加到此电子邮件。"
+msgstr ""
+
+#: errors.subscriptions.learn_more_troubleshoot
+msgid ""
+"<a href=\"https://onlinehelp.tableau.com/current/server/zh-cn/"
+"subscribe_trouble.htm\">了解更多信息</a>"
+msgstr ""
+
+#: errors.subscriptions.bad_extract_refresh_subscription_configuration
+msgid "订阅由于工作簿包含多个数据提取刷新计划而已挂起。若要恢复，请将频率更新为“按所"
+"选计划”。"
+msgstr ""
+
+#: errors.subscriptions.subscription_failed_refresh_failure
+msgid "数据源上的数据提取刷新失败。"
+msgstr ""
+
+#: errors.subscriptions.multiple_extracts_for_extract_refresh_subscription
+msgid "工作簿包含多个数据提取刷新计划。请将频率更新为“按所选计划”。"
+msgstr ""
+
+#: errors.subscriptions.datasource_is_missing_password
+msgid "数据源连接错误。请检查工作簿的所有数据源连接的凭据。"
+msgstr ""
+
+#: subscriptions.results_summary.sg
+msgid "从计划 ''{2}'' 发来的订阅 {1} 的 {0}。"
+msgstr ""
+
+#: subscriptions.results_summary.pl
+msgid "从计划 ''{2}''. 发来的订阅 {1} 中的 {0}。"
+msgstr ""
+
+#: subscriptions.results_views_per_subscription.sg
+msgid "{0}（1 视图的 {1} 成功）"
+msgstr ""
+
+#: subscriptions.results_views_per_subscription.pl
+msgid "{0}（ {2} 视图的 {1} 成功）"
+msgstr ""
+
+#: subscriptions.results_views_per_subscription.more
+msgid "（{0} 更多）"
+msgstr ""
+
+#: subscriptions.results_views_per_subscription.failed
+msgid "{0} ({1}/{2} 个视图失败)。"
+msgstr ""
+
+#: subscriptions.results_header.all_shown.failures.sg
+msgid "1 个故障"
+msgstr ""
+
+#: subscriptions.results_header.all_shown.failures.pl
+msgid "{0} 故障"
+msgstr ""
+
+#: subscriptions.results_header.all_shown.warnings.sg
+msgid "1 警告"
+msgstr ""
+
+#: subscriptions.results_header.all_shown.warnings.pl
+msgid "{0} 警告"
+msgstr ""
+
+#: subscriptions.results_header.some_hidden.failures.pl.sg
+msgid "{0} 个故障(1 个隐藏，见日志)"
+msgstr ""
+
+#: subscriptions.results_header.some_hidden.failures.pl.pl
+msgid "{0} 故障（{1} 隐藏，见日志）"
+msgstr ""
+
+#: subscriptions.results_header.some_hidden.warnings.pl.sg
+msgid "{0} 警告（1 隐藏，见日志）"
+msgstr ""
+
+#: subscriptions.results_header.some_hidden.warnings.pl.pl
+msgid "{0} 警告（{1} 隐藏，见日志）"
+msgstr ""
+
+#: dataalerts.manage_my_data_alerts
+msgid "管理通知"
+msgstr ""
+
+#: dataalerts.edit_data_alert
+msgid "编辑通知"
+msgstr ""
+
+#: dataalerts.remove_user_from_data_alert
+msgid "移除我"
+msgstr ""
+
+#: dataalerts.add_user_to_data_alert
+msgid "将我添加至此通知"
+msgstr ""
+
+#: dataalerts.greater_or_equal
+msgid "{0} 高于或等于 {1}。"
+msgstr ""
+
+#: dataalerts.greater
+msgid "{0} 高于 {1}。"
+msgstr ""
+
+#: dataalerts.less_or_equal
+msgid "{0} 低于或等于 {1}。"
+msgstr ""
+
+#: dataalerts.less
+msgid "{0} 低于 {1}。"
+msgstr ""
+
+#: dataalerts.equal
+msgid "{0} 等于 {1}。"
+msgstr ""
+
+#: dataalerts.email_alt_text
+msgid "数据驱动型通知使用的视图: {0}"
+msgstr ""
+
+#: dataalerts.email_alt_text_hidden_view
+msgid "数据驱动型通知使用的视图: {0}，已应用更改"
+msgstr ""
+
+#: dataalerts.alert_triggered_for_the_view
+msgid "视图触发的通知"
+msgstr ""
+
+#: dataalerts.failure.email.subject
+msgid "数据驱动型通知对于 {0} 未工作"
+msgstr ""
+
+#: dataalerts.failure.status
+msgid "您的通知 <i>{0}</i> 未工作"
+msgstr ""
+
+#: dataalerts.failure.view.details.alert
+msgid "查看此通知"
+msgstr ""
+
+#: dataalerts.failure.explanation
+msgid "您的数据驱动型通知 <i>{0}</i> 目前未工作，因此，在满足数据条件时，收件人将不"
+"会收到通知。您将在通知再次工作时收到电子邮件通知。"
+msgstr ""
+
+#: dataalerts.failure.affected.alert
+msgid "受影响的数据驱动型通知"
+msgstr ""
+
+#: dataalerts.failure.time
+msgid "时间通知失败"
+msgstr ""
+
+#: dataalerts.failure.cause
+msgid "通知有时会因暂时性的网络问题而失败，这些问题可自行解决。您也可以尝试在原始视"
+"图上重新创建通知，或者排查如下常见的通知失败原因："
+msgstr ""
+
+#: dataalerts.failure.changed.view
+msgid "移除或重命名了工作簿、视图或数据字段。"
+msgstr ""
+
+#: dataalerts.failure.expired.credentials
+msgid "工作簿中嵌入的数据库凭据已过期。"
+msgstr ""
+
+#: dataalerts.failure.datasource.error
+msgid "数据源无法访问。"
+msgstr ""
+
+#: dataalerts.failure.email.footer
+msgid "由于通知失败，因此您在 {0} 收到此电子邮件。"
+msgstr ""
+
+#: dataalerts.failure.troubleshooting
+msgid "若要检查是否有上面列出的任何导致通知失败的问题，请单击下面的按钮。"
+msgstr ""
+
+#: dataalerts.success.email.subject
+msgid "数据驱动型通知对于 {0} 已恢复"
+msgstr ""
+
+#: dataalerts.success.status
+msgid "您的通知 <i>{0}</i> 已恢复"
+msgstr ""
+
+#: dataalerts.success.explanation
+msgid "您的数据驱动型通知 <i>{0}</i> "
+"已再次工作，因此，在满足数据条件时，收件人将会收到通知。"
+msgstr ""
+
+#: dataalerts.failure.error.internalError
+msgid "数据通知内部错误"
+msgstr ""
+
+#: dataalerts.failure.error.invalidDataAlertSpecification
+msgid "无效的数据通知指定"
+msgstr ""
+
+#: dataalerts.failure.error.summaryTableNotFound
+msgid "找不到摘要数据表"
+msgstr ""
+
+#: dataalerts.failure.error.unclassifiedError
+msgid "未分类的错误"
+msgstr ""
+
+#: dataalerts.failure.error.viewContentNotFound
+msgid "找不到数据通知视图的 {0} 内容"
+msgstr ""
+
+#: dataalerts.failure.error.viewNotFound
+msgid "找不到数据通知视图"
+msgstr ""
+
+#: dataalerts.failure.error.workbookNotFound
+msgid "找不到工作簿"
+msgstr ""
+
+#: dataalerts.failure.error.paneDescriptorAxisNotFound
+msgid "未找到字段 {0} 的轴"
+msgstr ""
+
+#: dataalerts.failure.error.paneDescriptorNotFound
+msgid "{0}"
+msgstr ""
+
+#: dataalerts.failure.error.unsupportedComparisonExpression
+msgid "不支持的比较表达式 {0}"
+msgstr ""
+
+#: dataalerts.failure.error.nonConstComparisonOp
+msgid "检测到非常量比较运算符: {0}"
+msgstr ""
+
+#: dataalerts.failure.error.cannotAddFilter
+msgid "向数据通知中添加筛选器失败"
+msgstr ""
+
+#: dataalerts.failure.error.sheetNotAlertable
+msgid "工作表 {0} 没有支持的通知数据。{1}"
+msgstr ""
+
+#: dataalerts.failure.error.dataAlertMeasureNotFound
+msgid "无法选择度量。{0}"
+msgstr ""
+
+#: dataalerts.failure.error.tooManyMeasuresForDataAlert
+msgid "检测到的度量数不正确。{0}"
+msgstr ""
+
+#: dataalerts.failure.error.thresholdParseError
+msgid "未能解析阈值文本 {0}。{1}"
+msgstr ""
+
+#: dataalerts.failure.error.dataAlertPresModelCreationError
+msgid "序列化通知时出错。{0}"
+msgstr ""
+
+#: dataalerts.failure.error.cannotDrawDataAlertDialog
+msgid "未能绘制数据通知对话框"
+msgstr ""
+
+#: dataalerts.failure.error.unsupportedDataAlertType
+msgid "数据通知类型 {0} 当前不受支持。"
+msgstr ""
+
+#: dataalerts.failure.suspend.email.subject
+msgid "数据驱动型通知对于 {0} 已挂起"
+msgstr ""
+
+#: dataalerts.failure.suspend.email.status
+msgid "您的通知 {0} 已挂起"
+msgstr ""
+
+#: dataalerts.failure.suspend.email.explanation
+msgid ""
+"处于挂起状态时，我们将不会对视图或通知接收者进行评估。进行修复之后，"
+"您可以恢复 <a href=\"{0}\" style=\"font-size:14px;font-family: Benton Sans "
+"Medium;color:#4996B2\">{1} 中的通知。"
+msgstr ""
+
+#: dataalerts.failure.suspend.view.name.prefix
+msgctxt "dataalerts.failure.suspend.view.name.prefix"
+msgid "视图"
+msgstr ""
+
+#: dataalerts.failure.suspend.time
+msgctxt "dataalerts.failure.suspend.time"
+msgid "挂起时间"
+msgstr ""
+
+#: dataalerts.failure.suspend.email.footer
+msgid "您之所以收到此电子邮件，原因是您的通知已挂起。"
+msgstr ""
+
+#: dataalerts.failure.suspend.email.view.name.my.content
+msgid "我的内容"
+msgstr ""
+
+#: dataalerts.failure.suspend.view.alerts
+msgid "查看通知"
+msgstr ""
+
+#: metricsservices.failure.affected.metric
+msgid "受影响的指标"
+msgstr ""
+
+#: metricsservices.failure.cause
+msgid "指标刷新有时会由于暂时性的连接问题而失败，这些问题可自行解决。指标刷新可能失"
+"败的其他原因包括:"
+msgstr ""
+
+#: metricsservices.failure.changed.view
+msgid "移除或重命名了工作簿、视图或数据字段"
+msgstr ""
+
+#: metricsservices.failure.permissions.error
+msgid "已连接视图的权限更改"
+msgstr ""
+
+#: metricsservices.failure.email.footer
+msgid "由于指标刷新失败，因此您在 {0} 收到此电子邮件。"
+msgstr ""
+
+#: metricsservices.failure.email.subject
+msgid "指标刷新对于 {0} 不起作用"
+msgstr ""
+
+#: metricsservices.failure.expired.credentials
+msgid "工作簿中嵌入的数据库凭据已过期"
+msgstr ""
+
+#: metricsservices.failure.explanation
+msgid "您的指标无法刷新，因此指标数据未更新。您将在指标刷新再次工作时收到电子邮件通"
+"知。"
+msgstr ""
+
+#: metricsservices.failure.status
+msgid "指标“{0}”未刷新"
+msgstr ""
+
+#: metricsservices.failure.suspend.email.explanation
+msgid "在指标刷新挂起时，您的指标数据将不会更新。进行修复之后，您可以恢复指标刷新。"
+msgstr ""
+
+#: metricsservices.failure.suspend.email.footer
+msgid "您之所以在 {0} 收到此电子邮件，原因是您的指标刷新已挂起。"
+msgstr ""
+
+#: metricsservices.failure.suspend.email.status
+msgid "指标“{0}”的刷新已挂起"
+msgstr ""
+
+#: metricsservices.failure.suspend.email.subject
+msgid "{0} 的指标刷新已挂起"
+msgstr ""
+
+#: metricsservices.failure.suspend.time
+msgctxt "metricsservices.failure.suspend.time"
+msgid "挂起时间"
+msgstr ""
+
+#: metricsservices.failure.suspend.view.metric
+msgctxt "metricsservices.failure.suspend.view.metric"
+msgid "转到指标"
+msgstr ""
+
+#: metricsservices.failure.suspend.view.name.prefix
+msgctxt "metricsservices.failure.suspend.view.name.prefix"
+msgid "连接的视图"
+msgstr ""
+
+#: metricsservices.failure.time
+msgid "刷新失败时间"
+msgstr ""
+
+#: metricsservices.failure.troubleshooting
+msgid "若要检查是否有上面列出的任何问题导致您的指标刷新失败，请单击下面的按钮。您也"
+"可以尝试在连接的视图上重新创建指标。"
+msgstr ""
+
+#: metricsservices.failure.view.details.metric
+msgctxt "metricsservices.failure.view.details.metric"
+msgid "转到指标"
+msgstr ""
+
+#: metricsservices.failure.view.name.prefix
+msgctxt "metricsservices.failure.view.name.prefix"
+msgid "连接的视图"
+msgstr ""
+
+#: metricsservices.success.email.subject
+msgid "{0} 的指标刷新已恢复"
+msgstr ""
+
+#: metricsservices.success.explanation
+msgid "您的指标的刷新已再次工作，因此它将检查您的指标数据是否有更新。"
+msgstr ""
+
+#: metricsservices.success.status
+msgid "指标“{0}”的刷新已恢复"
+msgstr ""
+
+#: errors.staticimages.generic
+msgid "为工作簿 {0} 生成静态图像时出错。{1}。"
+msgstr ""
+
+#: errors.internal_error.request.message
+msgid "{0} 无法满足请求。"
+msgstr ""
+
+#: errors.permissions.limited_user_visibility
+msgid "完成查询时出错。如果“用户可见性”设置为有限，则用户必须是管理员或创建者才能查"
+"询其他用户"
+msgstr ""
+
+#: local_names.system_user.guest.name
+msgid "来宾"
+msgstr ""
+
+#: local_names.group.all_users.name
+msgid "所有用户"
+msgstr ""
+
+#: local_names.containers.personal_space.name
+msgid "个人空间"
+msgstr ""
+
+#: password_reset.email.subject
+msgid "此处是用于重置您的密码的链接"
+msgstr ""
+
+#: password_reset.email.body
+msgid ""
+"您好 {0}，<br/><br/>您刚才请求了重置密码。<br/><br/>若要更改您的 Tableau "
+"Server 密码，{1} 或将下面的链接粘贴到您的浏览器中: {2}<br/><br/>此链接将在 "
+"48 小时后失效，所以请立即进行处理。<br/><br/"
+">如果您没有请求重置密码，您可能需要告诉您的服务器管理员。<br/><br/"
+">感谢您使用 Tableau!<br/>Tableau 团队"
+msgstr ""
+
+#: password_reset.email.link
+msgid "单击此处"
+msgstr ""
+
+#: hours.pl
+msgid "{0} 小时"
+msgstr ""
+
+#: hours.sg
+msgid "1 小时"
+msgstr ""
+
+#: minutes.pl
+msgid "{0} 分钟"
+msgstr ""
+
+#: minutes.sg
+msgid "1 分钟"
+msgstr ""
+
+#: seconds.pl
+msgid "{0} 秒"
+msgstr ""
+
+#: seconds.sg
+msgid "1 秒"
+msgstr ""
+
+#: dataconnections.classes.tableau_server_site
+msgid "Tableau Server 站点"
+msgstr ""
+
+#: materializeviews.errors.workbook_not_in_project
+msgid "项目“{0}”未包含工作簿“{1}”"
+msgstr ""
+
+#: materializeviews.errors.workbook_has_no_extract
+msgid "未能为工作簿“{0}”更新实体化视图设置，当前仅支持包含嵌入式数据提取的工作簿"
+msgstr ""
+
+#: materializeviews.errors.workbook_updating_errors
+msgid "为工作簿更新实体化视图时发现错误"
+msgstr ""
+
+#: materializeviews.errors.workbook_too_large
+msgid "未能为工作簿“{0}”更新实体化视图设置，原因是工作簿的大小超过 {1} GB 的限制"
+msgstr ""
+
+#: materializeviews.errors.project_path_not_exists
+msgid "项目路径“{0}”不存在"
+msgstr ""
+
+#: materializeviews.errors.feature_disabled
+msgid "未能为工作簿“{0}”更新实体化视图设置，原因是功能当前已禁用"
+msgstr ""
+
+#: materializeviews.errors.update_materialized_views_setting_failed
+msgid "未能为工作簿“{0}”更新实体化视图设置"
+msgstr ""
+
+#: materializeviews.errors.site_not_enabled
+msgid "没有为实体化视图启用此站点。请与管理员联系"
+msgstr ""
+
+#: materializeviews.errors.encrypted_extracts_not_supported
+msgid "实体化视图功能当前不支持包含已加密数据提取的工作簿"
+msgstr ""
+
+#: materializedviews.finished.create
+msgid "已为工作簿“{1}”创建状态为“{0}”的实体化视图"
+msgstr ""
+
+#: materializedviews.finished.delete
+msgid "已为工作簿 ID {0} 删除实体化视图:"
+msgstr ""
+
+#: materializedviews.finished.encrypt
+msgid "已完成工作簿“{0}”实体化视图的加密"
+msgstr ""
+
+#: materializedviews.finished.decrypt
+msgid "已完成工作簿“{0}”实体化视图的解密"
+msgstr ""
+
+#: materializedviews.finished.rekey
+msgid "已完成工作簿“{0}”实体化视图的重新加密"
+msgstr ""
+
+#: materializedviews.status.encryption_key
+msgctxt "materializedviews.status.encryption_key"
+msgid "加密密钥 ID:“{0}|”。"
+msgstr ""
+
+#: materializedviews.status.encryption_keys
+msgctxt "materializedviews.status.encryption_keys"
+msgid "旧加密密钥 ID:“{0}”，新加密密钥 ID:“{1}”。"
+msgstr ""
+
+#: materializedviews.status.encryption_type
+msgid "加密数据源类型:“{0}”"
+msgstr ""
+
+#: customizedviews.namedSharingPrefix
+msgid "共享版本"
+msgstr ""
+
+#: flows.drafts.default_name
+msgid "新建流程"
+msgstr ""
+
+#: content_type.project
+msgid "项目"
+msgstr ""
+
+#: content_type.workbook
+msgctxt "content_type.workbook"
+msgid "工作簿"
+msgstr ""
+
+#: content_type.view
+msgctxt "content_type.view"
+msgid "视图"
+msgstr ""
+
+#: content_type.datasource
+msgid "数据源"
+msgstr ""
+
+#: content_type.flow
+msgid "流程"
+msgstr ""
+
+#: content_type.metric
+msgid "指标"
+msgstr ""
+
+#: content_type.collection
+msgid "集合"
+msgstr ""
+
+#: content_type.visualization
+msgid "可视化"
+msgstr ""
+
+#: content_type.askdata_visualization
+msgid "“数据问答”功能可视化项"
+msgstr ""
+
+#: content_type.explaindata_explanation
+msgid "解释"
+msgstr ""
+
+#: content_type.publishedconnection
+msgid "虚拟连接"
+msgstr ""
+
+#: content_type.publishedconnectiontable
+msgid "虚拟连接表"
+msgstr ""
+
+#: upgradethumbnails.status.server_started
+msgid "服务器响应: 已启动缩略图升级!"
+msgstr ""
+
+#: upgradethumbnails.status.server_stopped
+msgid "服务器响应: 已停止 %d 个作业"
+msgstr ""
+
+#: dataquality.message.refresh_failed
+msgid "刷新失败: {0}"
+msgstr ""
+
+#: dataquality.message.last_successful
+msgid "上次成功: {0}"
+msgstr ""
+
+#: dataquality.message.next_scheduled
+msgid "下次计划: {0}"
+msgstr ""
+
+#: dataquality.message.flow_run_output_steps_failed
+msgid "{0}/{1} 个输出步骤运行失败"
+msgstr ""
+
+#: importcsvsummary.error.details
+msgid "错误详细信息:"
+msgstr ""
+
+#: importcsvsummary.remainingerrors
+msgid "(其余错误未显示)"
+msgstr ""
+
+#: importcsvsummary.error.line
+msgid "用户“{1}”的行 {0} :“{2}”"
+msgstr ""
+
+#: importcsvsummary.line.processed
+msgid "已处理行数: {0}"
+msgstr ""
+
+#: importcsvsummary.line.skipped
+msgid "已跳过行数: {0}"
+msgstr ""
+
+#: importcsvsummary.users.added.count
+msgid "添加的用户数: {0}"
+msgstr ""
+
+#: importcsvsummary.errors.count
+msgid "错误数: {0}"
+msgstr ""
+
+#: importcsvsummary.error.unexpected_extension
+msgid "CSV 文件的意外文件扩展名"
+msgstr ""
+
+#: importcsvsummary.error.size_limit
+msgid "CsvFile 超出大小限制 {0}"
+msgstr ""
+
+#: importcsvsummary.error.local.password_mismatch
+msgid "更新本地站点用户需要空密码或匹配密码"
+msgstr ""
+
+#: importcsvsummary.error.local.password_required
+msgid "当“Auth”为“Local”时创建本地系统用户需要密码"
+msgstr ""
+
+#: importcsvsummary.error.ad.user_not_found
+msgid "找不到 AD 用户“{0}”"
+msgstr ""
+
+#: importcsvsummary.error.too_many_errors
+msgid "CSV 文件中遇到的错误太多"
+msgstr ""
+
+#: audit.errors.wdc_not_allowlisted
+msgid ""
+"不允许列出 Web 数据连接器。如需帮助，请参阅: https://help.tableau.com/"
+"current/online/zh-cn/to_keep_data_fresh.htm"
+msgstr ""
+
+#: user.input.name.err.too_long
+msgid "名称长度超过最大字符数 {0}"
+msgstr ""
+
+#: user.input.name.err.empty
+msgid "名称不能为空"
+msgstr ""
+
+#: askdata.title
+msgid "“数据问答”功能"
+msgstr ""
+
+#: slack.app.upgrade.email.notification.subject
+msgid "适用于 Slack 的 Tableau 应用软件更新"
+msgstr ""
+
+#: slack.app.upgrade.email.notification.introduction
+msgid ""
+"针对 Slake 的 Tableau 应用软件已经有了更新，现在可以重新安装，以便与下一个 "
+"Tableau Online 版本配合使用。Tableau "
+"建议重新安装应用软件，以保持应用软件的性能并使用新功能。在  <a style=\"text-"
+"decoration: none; color: #E8762C;\" href=\"https://help.tableau.com/current/"
+"online/zh-cn/whatsnew_online.htm#tableau-slack\">Tableau Online "
+"新增功能</a>中查找新功能和变更。"
+msgstr ""
+
+#: slack.app.upgrade.email.notification.action
+msgid ""
+"有关更新和重新安装步骤，请参见 <a style=\"text-decoration: none; color: "
+"#E8762C;\" href=\"https://help.tableau.com/current/online/zh-cn/slack_admin."
+"htm#update\">更新 Tableau for Slack 应用软件</a>。如果您有多个 Tableau "
+"Online 站点，请在每个站点中重新安装该应用软件。"
+msgstr ""
+
+#: slack.app.upgrade.email.notification.steps
+msgid "此服务通知已通过 Tableau Online 发布。"
+msgstr ""
+
+#: slack.app.upgrade.email.notification.reason
+msgid "您收到此通知是因为您是连接到 Slack 的 Tableau Online 站点的管理员。"
+msgstr ""
+
+#: slack.app.upgrade.email.notification.footer.privacy
+msgid ""
+"阅读我们的<a style=\"text-decoration: none; color: #E8762C;\" href=\"http"
+"://www.tableau.com/zh-cn/privacy\">隐私政策</a>"
+msgstr ""
+
+#: unifiedconsumption.tcrm.folders.private
+msgid "我的私有应用"
+msgstr ""

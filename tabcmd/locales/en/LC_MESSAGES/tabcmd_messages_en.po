@@ -1,1416 +1,1661 @@
+#. extracted from tabcmd/locales/en\tabcmd_messages_en.properties
+#, fuzzy
 msgid ""
 msgstr ""
-"MIME-Version: 1.0"
-"Content-Type: text/plain; charset=None"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: prop2po"
-"Project-Id-Version: None"
-"Language: None"
-#:
-msgid "commandlineutils.errors.bad_value"
-msgstr "Option ''{0}'' has a bad value of ''{1}''. Must be one of: {2}"
-
-#:
-msgid "commandlineutils.errors.not_integer"
-msgstr "Value ''{0}'' for option ''{1}'' is not an integer"
-
-#:
-msgid "common.errors.empty_file"
-msgstr "File ''{0}'' is empty"
-
-#:
-msgid "common.errors.file_not_found"
-msgstr "Cannot open file ''{0}''"
-
-#:
-msgid "common.errors.invalid_file_path"
-msgstr "Invalid file path ''{0}''"
-
-#:
-msgid "common.errors.folder_path_not_found"
-msgstr "Could not find directory ''{0}''"
-
-#:
-msgid "common.errors.access_denied"
-msgstr "Access denied to file ''{0}''. Check that your path is valid and your file name does not match an existing directory"
-
-#:
-msgid "common.errors.requires_csv_file"
-msgstr "The ''{0}'' command requires a CSV file"
-
-#:
-msgid "common.errors.requires_group_name"
-msgstr "The ''{0}'' command requires a group name"
-
-#:
-msgid "common.errors.requires_site_name"
-msgstr "The ''{0}'' command requires a site name"
-
-#:
-msgid "common.errors.options_conflict"
-msgstr "New and deprecated options to specify user role were specified. Only one can be used"
-
-#:
-msgid "common.errors.csv_sizelimit"
-msgstr "The CSV file you are referencing exceeds the size limit of 100MB. Divide the contents of the file into smaller CSV files and then import them separately."
-
-#:
-msgid "common.options.admin-type"
-msgstr "[Deprecated] Assigns [or removes] the site admin right for all users in the CSV file. This setting may be overridden by the values on individual rows in the CSV file. {0} may be: {1}, {2}, or {3}. If not specified: {3} for new users, unchanged for existing users"
-
-#:
-msgid "common.options.complete"
-msgstr "Require [or not] that all rows be valid for any change to succeed. Default: {0}"
-
-#:
-msgid "common.options.license"
-msgstr "[Deprecated] Sets the default license level for all users. This may be overridden by the value in the CSV file. {0} can be {1}, {2}, or {3}"
-
-#:
-msgid "common.options.nowait"
-msgstr "Do not wait for the job to complete"
-
-#:
-msgid "common.options.publisher"
-msgstr "[Deprecated] Assigns [or removes] the publish right for all users in the CSV file. This setting may be overridden by the values on individual rows in the CSV file. Default if not specified: false for new users, unchanged for existing users"
-
-#:
-msgid "common.options.silent-progress"
-msgstr "Do not display progress messages for the job"
-
-#:
-msgid "common.options.sysadmin-type"
-msgstr "[Deprecated] Assigns [or removes] the site admin right for all users in the CSV file. This setting may be overridden by the values on individual rows in the CSV file. {0} can be: {1}, {2}, {3}, or {4}. Default if not specified: {4} for new users, unchanged for existing users"
-
-#:
-msgid "common.output.job_queued_success"
-msgstr "Job queued"
-
-#:
-msgid "common.output.succeeded"
-msgstr "Succeeded"
-
-#:
-msgid "common.options.role"
-msgstr "Sets the default role for all affected users. Legal values for {0}: {1}. If unspecified, server uses default value: {2}"
-
-#:
-msgid "addusers.options.users"
-msgstr "File that contains a list of users, one per line, to add to the group"
-
-#:
-msgid "addusers.short_description"
-msgstr "Add users to a group"
-
-#:
-msgid "addusers.status"
-msgstr "Adding users listed in {0} to group {1}..."
-
-#:
-msgid "creategroup.short_description"
-msgstr "Create a local group"
-
-#:
-msgid "creategroup.status"
-msgstr "Creating group ''{0}'' on the server..."
-
-#:
-msgid "creategroup.options.role"
-msgstr "Sets the role that will be set for users in the group upon login. Legal values for {0}: {1}. A user''s site role will only be set to this value if it is less restrictive than the user''s current site role. If unspecified, no role will be set for users of this group on login."
-
-#:
-msgid "createextracts.errors.required_argument"
-msgstr "The createextracts command requires either a workbook URL, a workbook name, or a data source name."
-
-#:
-msgid "createextracts.errors.error"
-msgstr "Error creating extract"
-
-#:
-msgid "createextracts.for.datasource"
-msgstr "Creating extract for data source ''{0}''"
-
-#:
-msgid "createextracts.for.workbook_name"
-msgstr "Creating extract for workbook with name ''{0}''"
-
-#:
-msgid "createextracts.for.workbook_url"
-msgstr "Creating extract for workbook with URL ''{0}''"
-
-#:
-msgid "createextracts.options.datasource"
-msgstr "The name of the target data source for extract creation"
-
-#:
-msgid "createextracts.options.embedded-datasources"
-msgstr "A space-separated list of embedded data source names within the target workbook. Enclose data source names with double quotes if they contain spaces. Only available when creating extracts for a workbook."
-
-#:
-msgid "createextracts.options.encrypt"
-msgstr "Create encrypted extract."
-
-#:
-msgid "createextracts.options.include-all"
-msgstr "Include all embedded data sources within target workbook. Only available when creating extracts for workbook."
-
-#:
-msgid "createextracts.options.parent-project-path"
-msgstr "Path of the project that is the parent of the project that contains the target resource. Must specify the project name with --project."
-
-#:
-msgid "createextracts.options.project"
-msgstr "The name of the project that contains the target resource. Only necessary if {0} or {1} is specified. If unspecified, the default project ''{2}'' is used."
-
-#:
-msgid "createextracts.options.url"
-msgstr "The canonical name for the resource as it appears in the URL"
-
-#:
-msgid "createextracts.options.workbook"
-msgstr "The name of the target workbook for extract creation"
-
-#:
-msgid "createextracts.short_description"
-msgstr "Create extracts for a published workbook or data source"
-
-#:
-msgid "createextracts.workbook.include-all"
-msgstr "Include all embedded data sources within target workbook"
-
-#:
-msgid "createextracts.workbook.embedded-datasource-names"
-msgstr "With embedded data source names"
-
-#:
-msgid "createproject.options.description"
-msgstr "Description of the project"
-
-#:
-msgid "createproject.options.name"
-msgstr "Name of the project"
-
-#:
-msgid "createproject.options.parent-project-path"
-msgstr "Path of the project that will contain the new project. If not given, it will be created at the site root level"
-
-#:
-msgid "createproject.short_description"
-msgstr "Create a project"
-
-#:
-msgid "createproject.status"
-msgstr "Creating project ''{0}'' on the server..."
-
-#:
-msgid "createsite.errors.invalid_url_option"
-msgstr "The URL option is invalid when creating multiple sites. Re-run the command after removing the URL option or create each site separately"
-
-#:
-msgid "createsite.errors.site_name_already_exists"
-msgstr "A site with the name ''{0}'' already exists. Try a different site name."
-
-#:
-msgid "createsite.errors.site_id_already_exists"
-msgstr "A site with the ID ''{0}'' already exists. Use -r to specify a different site ID. See tabcmd createsite help for more information."
-
-#:
-msgid "createsite.options.allow-mobile-snapshots"
-msgstr "Allow [or-deny] mobile snapshots. Default is to allow mobile snapshots"
-
-#:
-msgid "createsite.options.allow-subscriptions"
-msgstr "Allow [or deny] subscriptions for this site. Default is the server default setting. Subscriptions cannot be enabled if server subscriptions are disabled"
-
-#:
-msgid "createsite.options.allow-web-authoring"
-msgstr "Allow [or deny] web authoring for this site. Default is to allow web authoring"
-
-#:
-msgid "createsite.options.metrics-level"
-msgstr "0 for no collection, 100 for all collections"
-
-#:
-msgid "createsite.options.guest-access-enabled"
-msgstr "Guest access permission to see views for those that are not signed into a Tableau Server account"
-
-#:
-msgid "createsite.options.site-mode"
-msgstr "Allow [or deny] site administrator from user management on site"
-
-#:
-msgid "createsite.options.storage-quota"
-msgstr "Site storage quota in MB"
-
-#:
-msgid "createsite.options.subscription-email"
-msgstr "Email used for subscriptions"
-
-#:
-msgid "createsite.options.subscription-footer"
-msgstr "Footer used for subscriptions"
-
-#:
-msgid "createsite.options.url"
-msgstr "Site ID of the site"
-
-#:
-msgid "createsite.options.user-quota"
-msgstr "Maximum site users"
-
-#:
-msgid "createsite.options.extract_encryption_mode"
-msgstr "Extract encryption mode: disabled, enabled, or enforced. If not set, default value is used."
-
-#:
-msgid "createsite.options.web_extraction_enabled"
-msgstr "Allow [or deny] extract creation and changing extracts to live for this site. Default is allowed."
-
-#:
-msgid "createsite.options.run_now_enabled"
-msgstr "Allow [or deny] Run Now option for this site. Default is set to allow Run Now."
-
-#:
-msgid "createsite.options.time_zone"
-msgstr "Time zone to be used with extracts on this site. Default is unset to use the server''s time zone."
-
-#:
-msgid "createsite.short_description"
-msgstr "Create a site"
-
-#:
-msgid "createsite.status"
-msgstr "Create site ''{0}'' on the server..."
-
-#:
-msgid "createsiteusers.options.auth-type"
-msgstr "Assigns the authentication type for all users in the CSV file. For Tableau Online, {0} may be {1} (default) or {2}. For Tableau Server, {0} may be Local (default) or {2}."
-
-#:
-msgid "createsiteusers.description"
-msgstr "Create users on the current site. The users are read from the given CSV file. The file can have the columns in the order shown below.{0}1. Username{0}2. Password        (Ignored if using Active Directory){0}3. Friendly Name   (Ignored if using Active Directory){0}4. License Level ({1}, {2}, {3}, {4} or {5}){0}5. Administrator ({6}/{7}){0}6. Publisher ({8}/{9}/1 or {10}/{11}/0){0}7. Email (only for Tableau Public){0}The file can have fewer columns. For example, it can be a simple list with one user name per line. You can use quotation marks if a value contains commas. Tabcmd waits for the {12} task to complete.  You may choose not to wait for the task to complete on the server and instead return immediately by passing the {13} flag. System administrators cannot be created or demoted using this command. Use ''{14}'' instead"
-
-#:
-msgid "createsiteusers.short_description"
-msgstr "Create users on the current site"
-
-#:
-msgid "createsiteusers.status"
-msgstr "Adding users listed in {0} to current site..."
-
-#:
-msgid "createusers.description"
-msgstr "Create users. The users are read from the given CSV file. The file can have the columns in the order shown below.{0}1. Username{0}2. Password        (Ignored if using Active Directory){0}3. Friendly Name   (Ignored if using Active Directory){0}4. License Level ({1}, {2}, {3}, {4} or {5}){0}5. Administrator ({6}/{7}/{8}/{9}){0}6. Publisher ({10}/{11}/1 or {12}/{13}/0){0}7. Email (only for Tableau Public){0}The file can have fewer columns. For example, it can be a simple list with one user name per line. You can use quotation marks if a value contains commas. Tabcmd waits for the {14} task to complete.  You may choose not to wait for the task to complete on the server and instead return immediately by passing the {15} flag"
-
-#:
-msgid "createusers.short_description"
-msgstr "Create users on the server"
-
-#:
-msgid "createusers.status"
-msgstr "Adding users listed in {0} to the server"
-
-#:
-msgid "decryptextracts.short_description"
-msgstr "Decrypt extracts on a site"
-
-#:
-msgid "decryptextracts.status"
-msgstr "Scheduling extracts on site {0} to be decrypted..."
-
-#:
-msgid "delete.errors.mutually_exclusive"
-msgstr "Cannot specify both a workbook and data source to delete"
-
-#:
-msgid "delete.errors.requires_workbook_datasource"
-msgstr "The ''{0}'' command requires a workbook name or data source name"
-
-#:
-msgid "delete.options.datasource"
-msgstr "Data source to delete"
-
-#:
-msgid "delete.options.parent-project-path"
-msgstr "Path of the parent of the project that contains the workbook/data source to delete. Must specify the project name with --project."
-
-#:
-msgid "delete.options.project"
-msgstr "The project that contains the workbook/data source to delete. Default project is ''{0}''"
-
-#:
-msgid "delete.options.workbook"
-msgstr "Workbook to delete"
-
-#:
-msgid "delete.short_description"
-msgstr "Delete a workbook or data source from the server"
-
-#:
-msgid "delete.status"
-msgstr "Removing {0} ''{1}'' from the server..."
-
-#:
-msgid "deleteextracts.errors.required_argument"
-msgstr "The deleteextracts command requires either a workbook URL, a workbook name, or a data source name"
-
-#:
-msgid "deleteextracts.errors.error"
-msgstr "Error deleting extract"
-
-#:
-msgid "deleteextracts.for.datasource"
-msgstr "Deleting extract for data source ''{0}''"
-
-#:
-msgid "deleteextracts.for.workbook_name"
-msgstr "Deleting extract for workbook with name ''{0}''"
-
-#:
-msgid "deleteextracts.for.workbook_url"
-msgstr "Deleting extract for workbook with URL ''{0}''"
-
-#:
-msgid "deleteextracts.options.datasource"
-msgstr "The name of the target data source for extract deletion"
-
-#:
-msgid "deleteextracts.options.embedded-datasources"
-msgstr "A space-separated list of embedded data source names within the target workbook. Enclose data source names with double quotes if they contain spaces. Only available when deleting extracts for a workbook."
-
-#:
-msgid "deleteextracts.options.include-all"
-msgstr "Include all embedded data sources within target workbook"
-
-#:
-msgid "deleteextracts.options.parent-project-path"
-msgstr "Path of the project that is the parent of the project that contains the target resource. Must specify the project name with --project."
-
-#:
-msgid "deleteextracts.options.project"
-msgstr "The name of the project that contains the target resource. Only necessary if {0} or {1} is specified. If unspecified, the default project ''{2}'' is used."
-
-#:
-msgid "deleteextracts.options.url"
-msgstr "The canonical name for the resource as it appears in the URL"
-
-#:
-msgid "deleteextracts.options.workbook"
-msgstr "The name of the target workbook for extract deletion"
-
-#:
-msgid "deleteextracts.short_description"
-msgstr "Delete extracts for a published workbook or data source"
-
-#:
-msgid "deleteextracts.workbook.include-all"
-msgstr "Include all embedded data sources within target workbook"
-
-#:
-msgid "deleteextracts.workbook.embedded-datasource-names"
-msgstr "With embedded datasource names"
-
-#:
-msgid "deletegroup.short_description"
-msgstr "Delete a group"
-
-#:
-msgid "deletegroup.status"
-msgstr "Deleting group ''{0}'' from the server..."
-
-#:
-msgid "deleteproject.errors.requires_project_name"
-msgstr "The ''{0}'' command requires a project name"
-
-#:
-msgid "deleteproject.options.parent-project-path"
-msgstr "Path of the parent of the project to delete. Must specify the project name with --project."
-
-#:
-msgid "deleteproject.short_description"
-msgstr "Delete a project"
-
-#:
-msgid "deleteproject.status"
-msgstr "Deleting project ''{0}'' from the server..."
-
-#:
-msgid "deletesite.errors.logged_into_this_site"
-msgstr "Cannot delete the site you are currently logged into"
-
-#:
-msgid "deletesite.short_description"
-msgstr "Delete a site"
-
-#:
-msgid "deletesite.status"
-msgstr "Deleting site ''{0}'' from the server..."
-
-#:
-msgid "deletesiteusers.description"
-msgstr "Delete site users. The users are read from the given CSV file. The file is a simple list of one user name per line"
-
-#:
-msgid "deletesiteusers.short_description"
-msgstr "Delete site users"
-
-#:
-msgid "deletesiteusers.status"
-msgstr "Deleting site users listed in {0} from the server..."
-
-#:
-msgid "deleteusers.description"
-msgstr "Delete users. The users are read from the given comma separated value (CSV) file. The file is a simple list of one user name per line"
-
-#:
-msgid "deleteusers.short_description"
-msgstr "Delete users"
-
-#:
-msgid "deleteusers.status"
-msgstr "Deleting users listed in {0} from the server..."
-
-#:
-msgid "editdomain.description"
-msgstr "Edit a domain. Use the ''{0}'' command to view a list of domains for editing"
-
-#:
-msgid "editdomain.errors.requires_nickname_name"
-msgstr "Either a ''{0}'' option or a ''{1}'' option must be specified"
-
-#:
-msgid "editdomain.options.id"
-msgstr "ID of the domain"
-
-#:
-msgid "editdomain.options.name"
-msgstr "Name of the domain"
-
-#:
-msgid "editdomain.options.nickname"
-msgstr "Nickname of the domain"
-
-#:
-msgid "editdomain.short_description"
-msgstr "Edit a domain"
-
-#:
-msgid "editdomain.output"
-msgstr "{0}ID{1}Nickname{1}{1}Name{0}"
-
-#:
-msgid "editdomain.status"
-msgstr "Edit domain with ID ''{0}'' on the server..."
-
-#:
-msgid "editsite.errors.invalid_site-id"
-msgstr "The {0} option is invalid when editing multiple sites. Re-run the command after removing the {0} option or edit each site separately"
-
-#:
-msgid "editsite.errors.invalid_site-name"
-msgstr "The {0} option is invalid when editing multiple sites. Re-run the command after removing the {0} option or edit each site separately"
-
-#:
-msgid "editsite.options.allow-mobile-snapshots"
-msgstr "Allow [or-deny] mobile snapshots"
-
-#:
-msgid "editsite.options.allow-subscriptions"
-msgstr "Allow [or deny] subscriptions for this site"
-
-#:
-msgid "editsite.options.allow-web-authoring"
-msgstr "Allow [or-deny] web authoring for this site"
-
-#:
-msgid "editsite.options.cache-warmup"
-msgstr "Allow [or deny] cache warmup for this site"
-
-#:
-msgid "editsite.options.cache-warmup-threshold"
-msgstr "Threshold in days for how recently a view must have been viewed to trigger warmup"
-
-#:
-msgid "editsite.options.site-name"
-msgstr "Display name of the site"
-
-#:
-msgid "editsite.options.status"
-msgstr "Change availability of site. Must be either ''{0}'' or ''{1}''"
-
-#:
-msgid "editsite.options.allow-materialized-views"
-msgstr "Allow [or deny] materialized views for this site"
-
-#:
-msgid "editsite.options.extract_encryption_mode"
-msgstr "Extract encryption mode: disabled, enabled, or enforced. If not set, then it is not changed on the server."
-
-#:
-msgid "editsite.options.web_extraction_enabled"
-msgstr "Allow [or deny] extract creation and changing extracts to live for this site. The default setting is allowed."
-
-#:
-msgid "editsite.options.run_now_enabled"
-msgstr "Allow [or deny] Run Now option for this site. Default is set to allow Run Now"
-
-#:
-msgid "editsite.options.time_zone"
-msgstr "Time zone to be used with extracts on this site"
-
-#:
-msgid "editsite.options.use_default_time_zone"
-msgstr "Unset time zone to be used with extracts on this site, it will use default server time zone instead"
-
-#:
-msgid "editsite.short_description"
-msgstr "Edit a site"
-
-#:
-msgid "editsite.status"
-msgstr "Edit site ''{0}'' on the server..."
-
-#:
-msgid "encryptextracts.short_description"
-msgstr "Encrypt extracts on a site"
-
-#:
-msgid "encryptextracts.status"
-msgstr "Scheduling extracts on site {0} to be encrypted..."
-
-#:
-msgid "export.errors.need_country_and_languge"
-msgstr "The options --country and --language must be used together"
-
-#:
-msgid "export.errors.white_space_workbook_view"
-msgstr "The name of the workbook or view to export cannot include spaces. Use the normalized name of the workbook or view as it appears in the URL."
-
-#:
-msgid "export.errors.requires_workbook_view_name"
-msgstr "The ''{0}'' command requires a <workbook>/<view> name"
-
-#:
-msgid "export.errors.requires_workbook_view_param"
-msgstr "The ''{0}'' command requires a <workbook>/<view> parameter, and there must be at least one slash (/) in this parameter"
-
-#:
-msgid "export.options.country"
-msgstr "If not using user''s default locale, the country abbreviation for locale (find in IANA Language Subtag Registry). Must use with --language"
-
-#:
-msgid "export.options.csv"
-msgstr "Export data in CSV format (default)"
-
-#:
-msgid "export.options.fullpdf"
-msgstr "Export visual views in PDF format (if workbook was published with tabs)"
-
-#:
-msgid "export.options.height"
-msgstr "Sets the height. Must be an integer value (default: 600 pixels)"
-
-#:
-msgid "export.options.language"
-msgstr "If not using user''s default locale, the language abbreviation for locale (find in IANA Language Subtag Registry). Must use with --country"
-
-#:
-msgid "export.options.pagelayout"
-msgstr "Sets the page orientation of the exported PDF. Legal values: {0}. If unspecified, the setting in Tableau Desktop will be used"
-
-#:
-msgid "export.options.pagesize"
-msgstr "Sets the page size of the exported PDF. Legal values: {0} (default: ''{1}'')"
-
-#:
-msgid "export.options.pdf"
-msgstr "Export data in PDF format"
-
-#:
-msgid "export.options.png"
-msgstr "Export data in PNG format"
-
-#:
-msgid "export.options.width"
-msgstr "Sets the width. Must be an integer value (default: 800 pixels)"
-
-#:
-msgid "export.short_description"
-msgstr "Export the data or image of a view from the server"
-
-#:
-msgid "export.status"
-msgstr "Requesting ''{0}'' from the server..."
-
-#:
-msgid "export.success"
-msgstr "Saved {0} to ''{1}''"
-
-#:
-msgid "extracts.workbook.errors.requires_datasources_or_include_all"
-msgstr "Command {0} for workbook requires either embedded data source or include-all flag."
-
-#:
-msgid "fileuploader.progress"
-msgstr "Upload progress: {0}%"
-
-#:
-msgid "get.description"
-msgstr "Get a file from the server. The file will be named after the last component of the path if no filename argument is specified"
-
-#:
-msgid "get.errors.requires_url"
-msgstr "The ''{0}'' command requires an URL"
-
-#:
-msgid "get.options.file"
-msgstr "Name to save the file as"
-
-#:
-msgid "get.short_description"
-msgstr "Get a file from the server"
-
-#:
-msgid "help.available_commands"
-msgstr "Available commands:"
-
-#:
-msgid "help.command_options"
-msgstr "Command options:"
-
-#:
-msgid "help.description0"
-msgstr "Show Help for a specific command"
-
-#:
-msgid "help.description1"
-msgstr "List all available commands"
-
-#:
-msgid "help.errors.unknown_command"
-msgstr "Unknown command: {0}"
-
-#:
-msgid "help.global_options"
-msgstr "Global options:"
-
-#:
-msgid "help.short_description"
-msgstr "Help for tabcmd commands"
-
-#:
-msgid "httputils.found_attachment"
-msgstr "Found attachment: {0}"
-
-#:
-msgid "httputils.mapped_attachment"
-msgstr "Found attachment: {0} (re-mapped to {1})"
-
-#:
-msgid "initialuser.errors.username_and_password_required"
-msgstr "Both username and password are required"
-
-#:
-msgid "initialuser.options.friendly-name"
-msgstr "Friendly name"
-
-#:
-msgid "initialuser.short_description"
-msgstr "Create an initial user on an uninitialized server"
-
-#:
-msgid "listdomains.description"
-msgstr "List domains"
-
-#:
-msgid "listdomains.status"
-msgstr "Listing domains from the server..."
-
-#:
-msgid "listsites.output"
-msgstr "{0}{0}NAME: {1} {0}SITEID: ''{2}''"
-
-#:
-msgid "listsites.output_extended"
-msgstr "{0}{0}NAME: {1} {0}SITEID: ''{2}''{0}EXTRACTENCRYPTION: {3}"
-
-#:
-msgid "listsites.short_description"
-msgstr "List sites for user"
-
-#:
-msgid "listsites.status"
-msgstr "Listing sites for user {0}..."
-
-#:
-msgid "listsites.options.get_extract_encryption_mode"
-msgstr "Print extract encryption mode of the site(s)"
-
-#:
-msgid "login.description"
-msgstr "Sign in to the server. Your session will continue until it expires on the server or you use {0}"
-
-#:
-msgid "login.short_description"
-msgstr "Sign in to the server"
-
-#:
-msgid "logout.short_description"
-msgstr "Sign out from the server"
-
-#:
-msgid "publish.description"
-msgstr "Publish a workbook, data source, or extract to the server"
-
-#:
-msgid "publish.errors.invalid_datasource_update_file_type"
-msgstr "Incorrect file type ''{0}'' for updating a data source. Replacing/appending only applies to an extract (.tde) file"
-
-#:
-msgid "publish.errors.invalid_name_option"
-msgstr "{0} option is invalid when publishing multiple items"
-
-#:
-msgid "publish.errors.invalid_publish_file_type"
-msgstr "Incorrect file type ''{0}'' for publishing, expected a .tde, .tds, .tdsx, .twb, or .twbx file"
-
-#:
-msgid "publish.errors.mutually_exclusive_option"
-msgstr "Use only one of {0} or {1}"
-
-#:
-msgid "publish.errors.requires_resource_file"
-msgstr "The ''{0}'' command requires a workbook, data source, or extract file"
-
-#:
-msgid "publish.errors.unexpected_server_response"
-msgstr "Unexpected response from the server: {0}"
-
-#:
-msgid "publish.errors.server_resource_not_found"
-msgstr "The resource you specified does not exist, or you do not have permission to see it. Check your project name and permissions"
-
-#:
-msgid "publish.options.append"
-msgstr "Append extract file to existing data source"
-
-#:
-msgid "publish.options.async"
-msgstr "Publish asynchronously"
-
-#:
-msgid "publish.options.db-password"
-msgstr "Database password for all data sources"
-
-#:
-msgid "publish.options.db-username"
-msgstr "Database username for all data sources"
-
-#:
-msgid "publish.options.description"
-msgstr "Description of the workbook or data source"
-
-#:
-msgid "publish.options.encrypt_extracts"
-msgstr "Encrypt extracts on the server"
-
-#:
-msgid "publish.options.name"
-msgstr "Workbook/data source name on the server. If omitted, the workbook/data source will be named after the file name, without the twb(x), tds(x), or tde extension. Publishing a .tde file will create a data source"
-
-#:
-msgid "publish.options.oauth-username"
-msgstr "Use the credentials saved on the server keychain associated with USERNAME to publish"
-
-#:
-msgid "publish.options.overwrite"
-msgstr "Overwrite the existing workbook/data source, if any"
-
-#:
-msgid "publish.options.project"
-msgstr "Project to publish the workbook/data source to"
-
-#:
-msgid "publish.options.parent-project-path"
-msgstr "Path of the parent of the project to publish the workbook/data source to"
-
-#:
-msgid "publish.options.replace"
-msgstr "Replace extract file to existing data source"
-
-#:
-msgid "publish.options.restart"
-msgstr "Restarts the file upload"
-
-#:
-msgid "publish.options.save-db-password"
-msgstr "Store the database password on server"
-
-#:
-msgid "publish.options.save-oauth"
-msgstr "Embed the OAuth credentials specified with {0}"
-
-#:
-msgid "publish.options.tabbed"
-msgstr "Publish with tabbed views enabled"
-
-#:
-msgid "publish.options.thumbnail-groupname"
-msgstr "If the workbook contains any user filters, impersonate this group while computing thumbnails"
-
-#:
-msgid "publish.options.thumbnail-username"
-msgstr "If the workbook contains any user filters, impersonate this user while computing thumbnails"
-
-#:
-msgid "publish.status"
-msgstr "Publishing ''{0}'' to the server. This could take several minutes..."
-
-#:
-msgid "publish.success"
-msgstr "File successfully published to the server at the following location:"
-
-#:
-msgid "publishsamples.options.parent-project-path"
-msgstr "Path of the parent of the project to publish samples to. Must specify the project name with --project"
-
-#:
-msgid "publishsamples.options.projectname"
-msgstr "Name of the project to publish samples to"
-
-#:
-msgid "publishsamples.short_description"
-msgstr "Publishes sample workbooks to the specified project. Existing samples will be overwritten."
-
-#:
-msgid "publishsamples.status"
-msgstr "Publishing samples..."
-
-#:
-msgid "reencryptextracts.short_description"
-msgstr "Reencrypt extracts on a site"
-
-#:
-msgid "reencryptextracts.status"
-msgstr "Scheduling extracts on site {0} to be reencrypted..."
-
-#:
-msgid "refreshextracts.errors.required_argument"
-msgstr "The refreshextracts command requires either a workbook URL, a workbook name, or a data source name"
-
-#:
-msgid "refreshextracts.errors.add_and_remove_calculations"
-msgstr "Cannot run refresh with both --addcalculations and --removecalculations options"
-
-#:
-msgid "refreshextracts.errors.calculations_and_incremental"
-msgstr "Cannot add or remove materialized calculations during incremental extract refresh"
-
-#:
-msgid "refreshextracts.errors.error"
-msgstr "Error refreshing extract"
-
-#:
-msgid "refreshextracts.options.datasource"
-msgstr "The name of the data source to refresh"
-
-#:
-msgid "refreshextracts.options.incremental"
-msgstr "Perform an incremental refresh (if supported)"
-
-#:
-msgid "refreshextracts.options.parent-project-path"
-msgstr "Path of the parent of the project that contains the extract to refresh. Must specify the project name with --project."
-
-#:
-msgid "refreshextracts.options.project"
-msgstr "The name of the project that contains the workbook/data source. Only necessary if {0} or {1} is specified. If unspecified, the default project ''{2}'' is used"
-
-#:
-msgid "refreshextracts.options.synchronous"
-msgstr "Wait for the refresh to run and finish before exiting"
-
-#:
-msgid "refreshextracts.options.url"
-msgstr "The canonical name for the workbook or view as it appears in the URL"
-
-#:
-msgid "refreshextracts.options.workbook"
-msgstr "The name of the workbook to refresh"
-
-#:
-msgid "refreshextracts.options.addcalculations"
-msgstr "Adds materialized calculations into the extract"
-
-#:
-msgid "refreshextracts.options.removecalculations"
-msgstr "Removes materialized calculations from the extract"
-
-#:
-msgid "refreshextracts.short_description"
-msgstr "Refresh the extracts of a workbook or data source on the server"
-
-#:
-msgid "refreshextracts.status_incremented"
-msgstr "Scheduling extracts for {0} ''{1}'' to be incremented now..."
-
-#:
-msgid "refreshextracts.status_refreshed"
-msgstr "Scheduling extracts for {0} ''{1}'' to be refreshed now..."
-
-#:
-msgid "removeusers.options.users"
-msgstr "File that contains a list of users, one per line, to remove from the group"
-
-#:
-msgid "removeusers.short_description"
-msgstr "Remove users from a group"
-
-#:
-msgid "removeusers.status"
-msgstr "Removing users listed in {0} from the group {1}..."
-
-#:
-msgid "runschedule.errors.requires_schedule_name"
-msgstr "The ''{0}'' command requires a schedule name"
-
-#:
-msgid "runschedule.short_description"
-msgstr "Run a schedule"
-
-#:
-msgid "runschedule.status"
-msgstr "Running schedule ''{0}'' on the server..."
-
-#:
-msgid "materializeviews.short_description"
-msgstr "Update and check on materialized views settings for sites/workbooks"
-
-#:
-msgid "materializeviews.status.site"
-msgstr "Updating materialized views setting for site ''{0}''..."
-
-#:
-msgid "materializeviews.status.workbook"
-msgstr "Updating materialized views setting for workbook ''{0}''..."
-
-#:
-msgid "materializeviews.errors.invalid_workbook_arguments"
-msgstr "The materializeviews command requires one argument of a workbook name"
-
-#:
-msgid "materializeviews.errors.invalid_site_arguments"
-msgstr "The materializeviews command requires one argument of a site ID"
-
-#:
-msgid "materializeviews.errors.invalid_workbook_option"
-msgstr "Use ''{0}'' or ''{1}'' with ''{2}''"
-
-#:
-msgid "materializeviews.errors.invalid_project_path"
-msgstr "Use ''{1}'' with ''{0}''"
-
-#:
-msgid "materializeviews.errors.invalid_site_option"
-msgstr "Use ''{0}'' with ''{1}''"
-
-#:
-msgid "materializeviews.errors.site_mode_conflict"
-msgstr "Use ''{0}'' or ''{1}'' to change site materialized views mode"
-
-#:
-msgid "materializeviews.errors.site_not_updated"
-msgstr "Site ''{0}'' not updated, only server administrators can change materialized views setting"
-
-#:
-msgid "materializeviews.errors.invalid_argument_options_combination"
-msgstr "Use ''{0}'' or ''{1}'' to change materialized views setting"
-
-#:
-msgid "materializeviews.options.materialize_now"
-msgstr "Use ''{0}'' to schedule materialization for given workbook immediately"
-
-#:
-msgid "materializeviews.options.project"
-msgstr "Use ''{0}''  to specify project name"
-
-#:
-msgid "materializeviews.options.parent_project_path"
-msgstr "Use ''{0}'' to specify parent project path to ''{1}''"
-
-#:
-msgid "materializeviews.options.allow_workbook"
-msgstr "Use ''{0}'' to enable/disable materialized views for workbook"
-
-#:
-msgid "materializeviews.options.allow_site"
-msgstr "Use ''{0}'' to enable/disable materialized views for site"
-
-#:
-msgid "materializeviews.options.selected_workbooks"
-msgstr "Use ''{0}'' to enable selected workbooks in the site, used with the option ''{1}''. This is the default option"
-
-#:
-msgid "materializeviews.options.all_workbooks"
-msgstr "Use ''{0}'' to enable all workbooks in the site, used with the option ''{1}''"
-
-#:
-msgid "session.auto_site_login"
-msgstr "Auto-sign in to site: {0}"
-
-#:
-msgid "session.certificate-alias"
-msgstr "Certificate alias: {0}"
-
-#:
-msgid "session.connecting"
-msgstr "Connecting to the server..."
-
-#:
-msgid "session.continuing_session"
-msgstr "Continuing previous session"
-
-#:
-msgid "session.errors.auth_required"
-msgstr "Authorization required"
-
-#:
-msgid "session.errors.invalid_keystore_password"
-msgstr "Keystore password is wrong. Please input correct password and retry"
-
-#:
-msgid "session.errors.invalid_redirect"
-msgstr "Cannot redirect to invalid URL: {0}"
-
-#:
-msgid "session.errors.keystore_pwdfile_create"
-msgstr "Cannot create keystore password file, error: {0}"
-
-#:
-msgid "session.errors.missing_arguments"
-msgstr "Cannot sign in because of missing arguments: {0}"
-
-#:
-msgid "session.errors.no_redirect_found"
-msgstr "No redirection address in redirect response"
-
-#:
-msgid "session.errors.no_sslcafile_found"
-msgstr "Could not find a Certificate Authority (CA) file in these locations: ''{0}''. The CA file is used to help ensure secure communication with Tableau Server. For information on creating a CA file, see the Tableau Server help. To connect to Tableau Server without validating its SSL certificate, use the --no-certcheck flag."
-
-#:
-msgid "session.errors.script_no_password"
-msgstr "Tabcmd was run from a script or IDE but no password was provided. A password must be provided as an argument to tabcmd in order to log in."
-
-#:
-msgid "session.errors.session_expired"
-msgstr "Your session has expired"
-
-#:
-msgid "session.errors.unsupported_command"
-msgstr "Command not supported by this server"
-
-#:
-msgid "session.keystore.notice"
-msgstr "Do you want to store password in local to avoid typing password next time? [anwser yes or no]"
-
-#:
-msgid "session.keystore.password"
-msgstr "Keystore Password:"
-
-#:
-msgid "session.keystore.pwdfile_create"
-msgstr "Create keystore password file in path: {0}"
-
-#:
-msgid "session.keystore.pwdfile_remove"
-msgstr "Remove the keystore password file which contains wrong password"
-
-#:
-msgid "session.login"
-msgstr "Signing in..."
-
-#:
-msgid "session.logout"
-msgstr "Signed out"
-
-#:
-msgid "session.monitorjob.errors.no_jobid"
-msgstr "Cannot monitor job. No job_id found: {0}"
-
-#:
-msgid "session.monitorjob.percent_complete"
-msgstr "{0}% complete"
-
-#:
-msgid "session.new_session"
-msgstr "Creating new session"
-
-#:
-msgid "session.no-certificate-found"
-msgstr "No valid client certificate found"
-
-#:
-msgid "session.not_default_site_member"
-msgstr "You are not a member of the default site. Select a SITEID from the following sites:"
-
-#:
-msgid "session.not_site_member"
-msgstr "You are not a member of site ''{0}''. Select a SITEID from the following sites:"
-
-#:
-msgid "session.options.help"
-msgstr "Display tabcmd Help"
-
-#:
-msgid "session.options.no-certcheck"
-msgstr "Do not validate the SSL certificate"
-
-#:
-msgid "session.options.no-cookie"
-msgstr "Do not save the session ID when signing in. Subsequent commands will need to sign in again. If unspecified, default is to save the session ID"
-
-#:
-msgid "session.options.no-prompt"
-msgstr "Do not prompt for a password"
-
-#:
-msgid "session.options.no-proxy"
-msgstr "Do not use a HTTP proxy"
-
-#:
-msgid "session.options.password"
-msgstr "Use the specified Tableau Server password"
-
-#:
-msgid "session.options.password-file"
-msgstr "Read the Tableau Server password from FILE"
-
-#:
-msgid "session.options.proxy"
-msgstr "Use the specified HTTP proxy"
-
-#:
-msgid "session.options.server"
-msgstr "Use the specified Tableau Server URL. If no protocol is specified, http:// is assumed"
-
-#:
-msgid "session.options.site"
-msgstr "Use the specified Tableau Server site. Specify an empty string () to force use of the default site"
-
-#:
-msgid "session.options.timeout"
-msgstr "How long to wait, in seconds, for the server to complete processing the command. The default is to wait until the server responds"
-
-#:
-msgid "session.options.use-certificate"
-msgstr "Use client certificate to sign in"
-
-#:
-msgid "session.options.username"
-msgstr "Use the specified Tableau Server user name"
-
-#:
-msgid "session.password"
-msgstr "Password:"
-
-#:
-msgid "session.retrying_task"
-msgstr "Signing in again to retry original command with a new session..."
-
-#:
-msgid "session.session_expired_login"
-msgstr "Your session has expired. Signing out to clear session..."
-
-#:
-msgid "session.site_list"
-msgstr "{0}{0}NAME: {1}{0}SITEID: ''{2}''"
-
-#:
-msgid "session.using-certificate"
-msgstr "Using client certificate to sign in"
-
-#:
-msgid "session.inferred_username"
-msgstr "Logging in as user ''{0}'' since no --username flag was given"
-
-#:
-msgid "sessiondata.errors.bad_api"
-msgstr "Malformed server API: {0}"
-
-#:
-msgid "sessiondata.errors.no_server_api"
-msgstr "Cannot find server API version in response"
-
-#:
-msgid "sessiondata.errors.version_mismatch"
-msgstr "Tabcmd version {0} (API {1}) does not match Tableau Server version {2} (API {3})"
-
-#:
-msgid "sessionoptions.errors.ambiguous_scheme"
-msgstr "Specify ''{0}'' or ''{1}'' before the server name"
-
-#:
-msgid "sessionoptions.errors.bad_password_file"
-msgstr "Cannot read password from file ''{0}''"
-
-#:
-msgid "sessionoptions.errors.bad_protocol"
-msgstr "Protocol ''{0}'' is not supported"
-
-#:
-msgid "sessionoptions.errors.bad_proxy_format"
-msgstr "Proxy format does not match HOST:PORT: {0}"
-
-#:
-msgid "sessionoptions.errors.bad_timeout"
-msgstr "Non-numeric argument to {0} ''{1}'' ignored"
-
-#:
-msgid "set.description"
-msgstr "Set a setting on the server. Use !setting to turn a setting off"
-
-#:
-msgid "set.errors.requires_setting_name"
-msgstr "The ''{0}'' command requires a setting name"
-
-#:
-msgid "set.errors.single_setting_name"
-msgstr "The ''{0}'' command take a single setting name"
-
-#:
-msgid "set.short_description"
-msgstr "Set a setting on the server"
-
-#:
-msgid "setsetting.status"
-msgstr "Setting ''{0}'' to {1}"
-
-#:
-msgid "syncgroup.errors.server_admin"
-msgstr "Minimum site role of a group cannot be set to ''ServerAdministrator''."
-
-#:
-msgid "syncgroup.options.role"
-msgstr "Sets the default role for all users in the group. Legal values for {0}: {1}. If a user already exists, the given role is only applied if it''s less restrictive than the user''s current role. If unspecified, default is {2} for new users and unchanged for existing users"
-
-#:
-msgid "syncgroup.options.overwritesiterole"
-msgstr "Allow''s a user''s site role to be changed to a less privileged one when using --role, overriding the default behavior."
-
-#:
-msgid "syncgroup.options.grantlicensemode"
-msgstr "When to grant a user the license specified on the group. Legal values are: {0}. If no value is passed in ''on-sync'' will be used as the default value."
-
-#:
-msgid "syncgroup.short_description"
-msgstr "Synchronize the server with an Active Directory group"
-
-#:
-msgid "syncgroup.status"
-msgstr "Synchronizing server with Active Directory group {0}..."
-
-#:
-msgid "syncgroup.options.sysadmin-type"
-msgstr "[Deprecated. Use --role instead.] Assigns [or removes] the admin right for all users in the group. {0} can be: {1}, {2}, {3}, or {4}."
-
-#:
-msgid "syncgroup.options.license"
-msgstr "[Deprecated. Use --role instead.] Sets the default license level for all users in the group. {0} can be {1}, {2}, or {3}."
-
-#:
-msgid "syncgroup.options.publisher"
-msgstr "[Deprecated. Use --role instead.] Assigns [or removes] the publish right for all users in the group."
-
-#:
-msgid "tabcmd.mutually_exclusive_options"
-msgstr "Cannot specify ''{0}'' and ''{1}'' in the same command"
-
-#:
-msgid "tabcmdparser.errors.ambiguous_option"
-msgstr "Ambiguous option ''{0}'' among options: {1}"
-
-#:
-msgid "tabcmdparser.warning.unexpected_dash"
-msgstr "Unexpected dash detected in argument: {0}. Valid dashes are -, --. This error often occurs when copy/pasting from a text editor with formatting. Try re-typing the dash for the argument in the command line."
-
-#:
-msgid "resetopenidsub.short_description"
-msgstr "Reset an OpenID Connect SubId for a user"
-
-#:
-msgid "resetopenidsub.options.targetusername"
-msgstr "User to be reset"
-
-#:
-msgid "resetopenidsub.options.all"
-msgstr "Reset all users"
-
-#:
-msgid "version.description"
-msgstr "Print version information"
-
-#:
-msgid "vizqlsession.errors.cannot_create_session"
-msgstr "Failed to create a VizQl session on the server"
-
-#:
-msgid "vizqlsession.errors.no_command_result"
-msgstr "Could not find command result: {0}"
-
-#:
-msgid "vizqlsession.errors.session_already_closed"
-msgstr "VizQl session object already closed"
-
-#:
-msgid "vizqlsession.errors.cannot_parse_response"
-msgstr "Cannot parse JSON response string: {0}"
-
-#:
-msgid "upgradethumbnails.short_description"
-msgstr "This will run the Upgrade Thumbnails backgrounder job. This will rerender to high resolution any thumbnails generated prior to Tableau 2018.2. This can put higher than usual load on Tableau Server and external datasources. If any problems arise, the job can be stopped by running tabcmd upgradethumbnails --server <server> --stop"
-
-#:
-msgid "upgradethumbnails.options.stop"
-msgstr "Stop all upgrade thumbnails related jobs"
-
-#:
-msgid "upgradethumbnails.status.running"
-msgstr "Starting thumbnails upgrade"
-
-#:
-msgid "upgradethumbnails.status.not_running"
-msgstr "Not starting thumbnails upgrade"
-
-#:
-msgid "upgradethumbnails.status.cancelling"
-msgstr "Cancelling thumbnails upgrade jobs"
-
-#:
-msgid "upgradethumbnails.continue_promt"
-msgstr "Do you wish to continue? Enter 1 for Yes, 0 for No (1/0)"
-
-#:
-msgid "upgradethumbnails.invalid_response"
-msgstr "Invalid response"
-
-#:
-msgid "validateidpmetadata.options.digest_algorithms"
-msgstr "A space-separated list of digest algorithms. Legal values for {0}: {1}. If not specified, server uses values from server configuration setting: {2}"
-
-#:
-msgid "validateidpmetadata.options.min_allowed_rsa_key_size"
-msgstr "If not specified, server uses values from server configuration setting: {0}"
-
-#:
-msgid "validateidpmetadata.options.min_allowed_elliptic_curve_size"
-msgstr "If not specified, server uses values from server configuration setting: {0}"
-
-#:
-msgid "validateidpmetadata.options.site_names"
-msgstr "A space-separated list of site names on which to perform certificate validation. If not specified, then all sites are inspected."
-
-#:
-msgid "validateidpmetadata.short_description"
-msgstr "Identifies Tableau Server sites that are configured with IdPs using the insecure digest algorithm, SHA-1. This command also identifies IdPs that are using certificates with an insufficient RSA key size or elliptic curve size."
-
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-25 04:01-0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.6.2\n"
+
+#: commandlineutils.errors.bad_value
+msgid "Option ''{0}'' has a bad value of ''{1}''. Must be one of: {2}"
+msgstr ""
+
+#: commandlineutils.errors.not_integer
+msgid "Value ''{0}'' for option ''{1}'' is not an integer"
+msgstr ""
+
+#: common.errors.empty_file
+msgid "File ''{0}'' is empty"
+msgstr ""
+
+#: common.errors.file_not_found
+msgid "Cannot open file ''{0}''"
+msgstr ""
+
+#: common.errors.invalid_file_path
+msgid "Invalid file path ''{0}''"
+msgstr ""
+
+#: common.errors.folder_path_not_found
+msgid "Could not find directory ''{0}''"
+msgstr ""
+
+#: common.errors.access_denied
+msgid ""
+"Access denied to file ''{0}''. Check that your path is valid and your file "
+"name does not match an existing directory"
+msgstr ""
+
+#: common.errors.requires_csv_file
+msgid "The ''{0}'' command requires a CSV file"
+msgstr ""
+
+#: common.errors.requires_group_name
+msgid "The ''{0}'' command requires a group name"
+msgstr ""
+
+#: common.errors.requires_site_name
+msgid "The ''{0}'' command requires a site name"
+msgstr ""
+
+#: common.errors.options_conflict
+msgid ""
+"New and deprecated options to specify user role were specified. Only one can "
+"be used"
+msgstr ""
+
+#: common.errors.csv_sizelimit
+msgid ""
+"The CSV file you are referencing exceeds the size limit of 100MB. Divide the "
+"contents of the file into smaller CSV files and then import them separately."
+msgstr ""
+
+#: common.options.admin-type
+msgid ""
+"[Deprecated] Assigns [or removes] the site admin right for all users in the "
+"CSV file. This setting may be overridden by the values on individual rows in "
+"the CSV file. {0} may be: {1}, {2}, or {3}. If not specified: {3} for new "
+"users, unchanged for existing users"
+msgstr ""
+
+#: common.options.complete
+msgid ""
+"Require [or not] that all rows be valid for any change to succeed. Default: "
+"{0}"
+msgstr ""
+
+#: common.options.license
+msgid ""
+"[Deprecated] Sets the default license level for all users. This may be "
+"overridden by the value in the CSV file. {0} can be {1}, {2}, or {3}"
+msgstr ""
+
+#: common.options.nowait
+msgid "Do not wait for the job to complete"
+msgstr ""
+
+#: common.options.publisher
+msgid ""
+"[Deprecated] Assigns [or removes] the publish right for all users in the CSV "
+"file. This setting may be overridden by the values on individual rows in the "
+"CSV file. Default if not specified: false for new users, unchanged for "
+"existing users"
+msgstr ""
+
+#: common.options.silent-progress
+msgid "Do not display progress messages for the job"
+msgstr ""
+
+#: common.options.sysadmin-type
+msgid ""
+"[Deprecated] Assigns [or removes] the site admin right for all users in the "
+"CSV file. This setting may be overridden by the values on individual rows in "
+"the CSV file. {0} can be: {1}, {2}, {3}, or {4}. Default if not specified: "
+"{4} for new users, unchanged for existing users"
+msgstr ""
+
+#: common.output.job_queued_success
+msgid "Job queued"
+msgstr ""
+
+#: common.output.succeeded
+msgid "Succeeded"
+msgstr ""
+
+#: common.options.role
+msgid ""
+"Sets the default role for all affected users. Legal values for {0}: {1}. If "
+"unspecified, server uses default value: {2}"
+msgstr ""
+
+#: addusers.options.users
+msgid "File that contains a list of users, one per line, to add to the group"
+msgstr ""
+
+#: addusers.short_description
+msgid "Add users to a group"
+msgstr ""
+
+#: addusers.status
+msgid "Adding users listed in {0} to group {1}..."
+msgstr ""
+
+#: creategroup.short_description
+msgid "Create a local group"
+msgstr ""
+
+#: creategroup.status
+msgid "Creating group ''{0}'' on the server..."
+msgstr ""
+
+#: creategroup.options.role
+msgid ""
+"Sets the role that will be set for users in the group upon login. Legal "
+"values for {0}: {1}. A user''s site role will only be set to this value if "
+"it is less restrictive than the user''s current site role. If unspecified, "
+"no role will be set for users of this group on login."
+msgstr ""
+
+#: createextracts.errors.required_argument
+msgid ""
+"The createextracts command requires either a workbook URL, a workbook name, "
+"or a data source name."
+msgstr ""
+
+#: createextracts.errors.error
+msgid "Error creating extract"
+msgstr ""
+
+#: createextracts.for.datasource
+msgid "Creating extract for data source ''{0}''"
+msgstr ""
+
+#: createextracts.for.workbook_name
+msgid "Creating extract for workbook with name ''{0}''"
+msgstr ""
+
+#: createextracts.for.workbook_url
+msgid "Creating extract for workbook with URL ''{0}''"
+msgstr ""
+
+#: createextracts.options.datasource
+msgid "The name of the target data source for extract creation"
+msgstr ""
+
+#: createextracts.options.embedded-datasources
+msgid ""
+"A space-separated list of embedded data source names within the target "
+"workbook. Enclose data source names with double quotes if they contain "
+"spaces. Only available when creating extracts for a workbook."
+msgstr ""
+
+#: createextracts.options.encrypt
+msgid "Create encrypted extract."
+msgstr ""
+
+#: createextracts.options.include-all
+msgid ""
+"Include all embedded data sources within target workbook. Only available "
+"when creating extracts for workbook."
+msgstr ""
+
+#: createextracts.options.parent-project-path
+msgctxt "createextracts.options.parent-project-path"
+msgid ""
+"Path of the project that is the parent of the project that contains the "
+"target resource. Must specify the project name with --project."
+msgstr ""
+
+#: createextracts.options.project
+msgctxt "createextracts.options.project"
+msgid ""
+"The name of the project that contains the target resource. Only necessary if "
+"{0} or {1} is specified. If unspecified, the default project ''{2}'' is used."
+msgstr ""
+
+#: createextracts.options.url
+msgctxt "createextracts.options.url"
+msgid "The canonical name for the resource as it appears in the URL"
+msgstr ""
+
+#: createextracts.options.workbook
+msgid "The name of the target workbook for extract creation"
+msgstr ""
+
+#: createextracts.short_description
+msgid "Create extracts for a published workbook or data source"
+msgstr ""
+
+#: createextracts.workbook.include-all
+msgctxt "createextracts.workbook.include-all"
+"createextracts.workbook.include-all"
+msgid "Include all embedded data sources within target workbook"
+msgstr ""
+
+#: createextracts.workbook.embedded-datasource-names
+msgid "With embedded data source names"
+msgstr ""
+
+#: createproject.options.description
+msgid "Description of the project"
+msgstr ""
+
+#: createproject.options.name
+msgid "Name of the project"
+msgstr ""
+
+#: createproject.options.parent-project-path
+msgid ""
+"Path of the project that will contain the new project. If not given, it will "
+"be created at the site root level"
+msgstr ""
+
+#: createproject.short_description
+msgid "Create a project"
+msgstr ""
+
+#: createproject.status
+msgid "Creating project ''{0}'' on the server..."
+msgstr ""
+
+#: createsite.errors.invalid_url_option
+msgid ""
+"The URL option is invalid when creating multiple sites. Re-run the command "
+"after removing the URL option or create each site separately"
+msgstr ""
+
+#: createsite.errors.site_name_already_exists
+msgid "A site with the name ''{0}'' already exists. Try a different site name."
+msgstr ""
+
+#: createsite.errors.site_id_already_exists
+msgid ""
+"A site with the ID ''{0}'' already exists. Use -r to specify a different "
+"site ID. See tabcmd createsite help for more information."
+msgstr ""
+
+#: createsite.options.allow-mobile-snapshots
+msgid "Allow [or-deny] mobile snapshots. Default is to allow mobile snapshots"
+msgstr ""
+
+#: createsite.options.allow-subscriptions
+msgid ""
+"Allow [or deny] subscriptions for this site. Default is the server default "
+"setting. Subscriptions cannot be enabled if server subscriptions are disabled"
+msgstr ""
+
+#: createsite.options.allow-web-authoring
+msgid ""
+"Allow [or deny] web authoring for this site. Default is to allow web "
+"authoring"
+msgstr ""
+
+#: createsite.options.metrics-level
+msgid "0 for no collection, 100 for all collections"
+msgstr ""
+
+#: createsite.options.guest-access-enabled
+msgid ""
+"Guest access permission to see views for those that are not signed into a "
+"Tableau Server account"
+msgstr ""
+
+#: createsite.options.site-mode
+msgid "Allow [or deny] site administrator from user management on site"
+msgstr ""
+
+#: createsite.options.storage-quota
+msgid "Site storage quota in MB"
+msgstr ""
+
+#: createsite.options.subscription-email
+msgid "Email used for subscriptions"
+msgstr ""
+
+#: createsite.options.subscription-footer
+msgid "Footer used for subscriptions"
+msgstr ""
+
+#: createsite.options.url
+msgid "Site ID of the site"
+msgstr ""
+
+#: createsite.options.user-quota
+msgid "Maximum site users"
+msgstr ""
+
+#: createsite.options.extract_encryption_mode
+msgid ""
+"Extract encryption mode: disabled, enabled, or enforced. If not set, default "
+"value is used."
+msgstr ""
+
+#: createsite.options.web_extraction_enabled
+msgid ""
+"Allow [or deny] extract creation and changing extracts to live for this "
+"site. Default is allowed."
+msgstr ""
+
+#: createsite.options.run_now_enabled
+msgid ""
+"Allow [or deny] Run Now option for this site. Default is set to allow Run "
+"Now."
+msgstr ""
+
+#: createsite.options.time_zone
+msgid ""
+"Time zone to be used with extracts on this site. Default is unset to use the "
+"server''s time zone."
+msgstr ""
+
+#: createsite.short_description
+msgid "Create a site"
+msgstr ""
+
+#: createsite.status
+msgid "Create site ''{0}'' on the server..."
+msgstr ""
+
+#: createsiteusers.options.auth-type
+msgid ""
+"Assigns the authentication type for all users in the CSV file. For Tableau "
+"Online, {0} may be {1} (default) or {2}. For Tableau Server, {0} may be "
+"Local (default) or {2}."
+msgstr ""
+
+#: createsiteusers.description
+msgid ""
+"Create users on the current site. The users are read from the given CSV "
+"file. The file can have the columns in the order shown below.{0}1. "
+"Username{0}2. Password        (Ignored if using Active Directory){0}3. "
+"Friendly Name   (Ignored if using Active Directory){0}4. License Level ({1}, "
+"{2}, {3}, {4} or {5}){0}5. Administrator ({6}/{7}){0}6. Publisher ({8}/{9}/1 "
+"or {10}/{11}/0){0}7. Email (only for Tableau Public){0}The file can have "
+"fewer columns. For example, it can be a simple list with one user name per "
+"line. You can use quotation marks if a value contains commas. Tabcmd waits "
+"for the {12} task to complete.  You may choose not to wait for the task to "
+"complete on the server and instead return immediately by passing the {13} "
+"flag. System administrators cannot be created or demoted using this command. "
+"Use ''{14}'' instead"
+msgstr ""
+
+#: createsiteusers.short_description
+msgid "Create users on the current site"
+msgstr ""
+
+#: createsiteusers.status
+msgid "Adding users listed in {0} to current site..."
+msgstr ""
+
+#: createusers.description
+msgid ""
+"Create users. The users are read from the given CSV file. The file can have "
+"the columns in the order shown below.{0}1. Username{0}2. Password        ("
+"Ignored if using Active Directory){0}3. Friendly Name   (Ignored if using "
+"Active Directory){0}4. License Level ({1}, {2}, {3}, {4} or {5}){0}5. "
+"Administrator ({6}/{7}/{8}/{9}){0}6. Publisher ({10}/{11}/1 or "
+"{12}/{13}/0){0}7. Email (only for Tableau Public){0}The file can have fewer "
+"columns. For example, it can be a simple list with one user name per line. "
+"You can use quotation marks if a value contains commas. Tabcmd waits for the "
+"{14} task to complete.  You may choose not to wait for the task to complete "
+"on the server and instead return immediately by passing the {15} flag"
+msgstr ""
+
+#: createusers.short_description
+msgid "Create users on the server"
+msgstr ""
+
+#: createusers.status
+msgid "Adding users listed in {0} to the server"
+msgstr ""
+
+#: decryptextracts.short_description
+msgid "Decrypt extracts on a site"
+msgstr ""
+
+#: decryptextracts.status
+msgid "Scheduling extracts on site {0} to be decrypted..."
+msgstr ""
+
+#: delete.errors.mutually_exclusive
+msgid "Cannot specify both a workbook and data source to delete"
+msgstr ""
+
+#: delete.errors.requires_workbook_datasource
+msgid "The ''{0}'' command requires a workbook name or data source name"
+msgstr ""
+
+#: delete.options.datasource
+msgid "Data source to delete"
+msgstr ""
+
+#: delete.options.parent-project-path
+msgid ""
+"Path of the parent of the project that contains the workbook/data source to "
+"delete. Must specify the project name with --project."
+msgstr ""
+
+#: delete.options.project
+msgid ""
+"The project that contains the workbook/data source to delete. Default "
+"project is ''{0}''"
+msgstr ""
+
+#: delete.options.workbook
+msgid "Workbook to delete"
+msgstr ""
+
+#: delete.short_description
+msgid "Delete a workbook or data source from the server"
+msgstr ""
+
+#: delete.status
+msgid "Removing {0} ''{1}'' from the server..."
+msgstr ""
+
+#: deleteextracts.errors.required_argument
+msgid ""
+"The deleteextracts command requires either a workbook URL, a workbook name, "
+"or a data source name"
+msgstr ""
+
+#: deleteextracts.errors.error
+msgid "Error deleting extract"
+msgstr ""
+
+#: deleteextracts.for.datasource
+msgid "Deleting extract for data source ''{0}''"
+msgstr ""
+
+#: deleteextracts.for.workbook_name
+msgid "Deleting extract for workbook with name ''{0}''"
+msgstr ""
+
+#: deleteextracts.for.workbook_url
+msgid "Deleting extract for workbook with URL ''{0}''"
+msgstr ""
+
+#: deleteextracts.options.datasource
+msgid "The name of the target data source for extract deletion"
+msgstr ""
+
+#: deleteextracts.options.embedded-datasources
+msgid ""
+"A space-separated list of embedded data source names within the target "
+"workbook. Enclose data source names with double quotes if they contain "
+"spaces. Only available when deleting extracts for a workbook."
+msgstr ""
+
+#: deleteextracts.options.include-all
+msgctxt "deleteextracts.options.include-all"
+msgid "Include all embedded data sources within target workbook"
+msgstr ""
+
+#: deleteextracts.options.parent-project-path
+msgctxt "deleteextracts.options.parent-project-path"
+msgid ""
+"Path of the project that is the parent of the project that contains the "
+"target resource. Must specify the project name with --project."
+msgstr ""
+
+#: deleteextracts.options.project
+msgctxt "deleteextracts.options.project"
+msgid ""
+"The name of the project that contains the target resource. Only necessary if "
+"{0} or {1} is specified. If unspecified, the default project ''{2}'' is used."
+msgstr ""
+
+#: deleteextracts.options.url
+msgctxt "deleteextracts.options.url"
+msgid "The canonical name for the resource as it appears in the URL"
+msgstr ""
+
+#: deleteextracts.options.workbook
+msgid "The name of the target workbook for extract deletion"
+msgstr ""
+
+#: deleteextracts.short_description
+msgid "Delete extracts for a published workbook or data source"
+msgstr ""
+
+#: deleteextracts.workbook.include-all
+msgctxt "deleteextracts.workbook.include-all"
+msgid "Include all embedded data sources within target workbook"
+msgstr ""
+
+#: deleteextracts.workbook.embedded-datasource-names
+msgid "With embedded datasource names"
+msgstr ""
+
+#: deletegroup.short_description
+msgid "Delete a group"
+msgstr ""
+
+#: deletegroup.status
+msgid "Deleting group ''{0}'' from the server..."
+msgstr ""
+
+#: deleteproject.errors.requires_project_name
+msgid "The ''{0}'' command requires a project name"
+msgstr ""
+
+#: deleteproject.options.parent-project-path
+msgid ""
+"Path of the parent of the project to delete. Must specify the project name "
+"with --project."
+msgstr ""
+
+#: deleteproject.short_description
+msgid "Delete a project"
+msgstr ""
+
+#: deleteproject.status
+msgid "Deleting project ''{0}'' from the server..."
+msgstr ""
+
+#: deletesite.errors.logged_into_this_site
+msgid "Cannot delete the site you are currently logged into"
+msgstr ""
+
+#: deletesite.short_description
+msgid "Delete a site"
+msgstr ""
+
+#: deletesite.status
+msgid "Deleting site ''{0}'' from the server..."
+msgstr ""
+
+#: deletesiteusers.description
+msgid ""
+"Delete site users. The users are read from the given CSV file. The file is a "
+"simple list of one user name per line"
+msgstr ""
+
+#: deletesiteusers.short_description
+msgid "Delete site users"
+msgstr ""
+
+#: deletesiteusers.status
+msgid "Deleting site users listed in {0} from the server..."
+msgstr ""
+
+#: deleteusers.description
+msgid ""
+"Delete users. The users are read from the given comma separated value (CSV) "
+"file. The file is a simple list of one user name per line"
+msgstr ""
+
+#: deleteusers.short_description
+msgid "Delete users"
+msgstr ""
+
+#: deleteusers.status
+msgid "Deleting users listed in {0} from the server..."
+msgstr ""
+
+#: editdomain.description
+msgid ""
+"Edit a domain. Use the ''{0}'' command to view a list of domains for editing"
+msgstr ""
+
+#: editdomain.errors.requires_nickname_name
+msgid "Either a ''{0}'' option or a ''{1}'' option must be specified"
+msgstr ""
+
+#: editdomain.options.id
+msgid "ID of the domain"
+msgstr ""
+
+#: editdomain.options.name
+msgid "Name of the domain"
+msgstr ""
+
+#: editdomain.options.nickname
+msgid "Nickname of the domain"
+msgstr ""
+
+#: editdomain.short_description
+msgid "Edit a domain"
+msgstr ""
+
+#: editdomain.output
+msgid "{0}ID{1}Nickname{1}{1}Name{0}"
+msgstr ""
+
+#: editdomain.status
+msgid "Edit domain with ID ''{0}'' on the server..."
+msgstr ""
+
+#: editsite.errors.invalid_site-id
+msgctxt "editsite.errors.invalid_site-id"
+msgid ""
+"The {0} option is invalid when editing multiple sites. Re-run the command "
+"after removing the {0} option or edit each site separately"
+msgstr ""
+
+#: editsite.errors.invalid_site-name
+msgctxt "editsite.errors.invalid_site-name"
+msgid ""
+"The {0} option is invalid when editing multiple sites. Re-run the command "
+"after removing the {0} option or edit each site separately"
+msgstr ""
+
+#: editsite.options.allow-mobile-snapshots
+msgid "Allow [or-deny] mobile snapshots"
+msgstr ""
+
+#: editsite.options.allow-subscriptions
+msgid "Allow [or deny] subscriptions for this site"
+msgstr ""
+
+#: editsite.options.allow-web-authoring
+msgid "Allow [or-deny] web authoring for this site"
+msgstr ""
+
+#: editsite.options.cache-warmup
+msgid "Allow [or deny] cache warmup for this site"
+msgstr ""
+
+#: editsite.options.cache-warmup-threshold
+msgid ""
+"Threshold in days for how recently a view must have been viewed to trigger "
+"warmup"
+msgstr ""
+
+#: editsite.options.site-name
+msgid "Display name of the site"
+msgstr ""
+
+#: editsite.options.status
+msgid "Change availability of site. Must be either ''{0}'' or ''{1}''"
+msgstr ""
+
+#: editsite.options.allow-materialized-views
+msgid "Allow [or deny] materialized views for this site"
+msgstr ""
+
+#: editsite.options.extract_encryption_mode
+msgid ""
+"Extract encryption mode: disabled, enabled, or enforced. If not set, then it "
+"is not changed on the server."
+msgstr ""
+
+#: editsite.options.web_extraction_enabled
+msgid ""
+"Allow [or deny] extract creation and changing extracts to live for this "
+"site. The default setting is allowed."
+msgstr ""
+
+#: editsite.options.run_now_enabled
+msgid ""
+"Allow [or deny] Run Now option for this site. Default is set to allow Run Now"
+msgstr ""
+
+#: editsite.options.time_zone
+msgid "Time zone to be used with extracts on this site"
+msgstr ""
+
+#: editsite.options.use_default_time_zone
+msgid ""
+"Unset time zone to be used with extracts on this site, it will use default "
+"server time zone instead"
+msgstr ""
+
+#: editsite.short_description
+msgid "Edit a site"
+msgstr ""
+
+#: editsite.status
+msgid "Edit site ''{0}'' on the server..."
+msgstr ""
+
+#: encryptextracts.short_description
+msgid "Encrypt extracts on a site"
+msgstr ""
+
+#: encryptextracts.status
+msgid "Scheduling extracts on site {0} to be encrypted..."
+msgstr ""
+
+#: export.errors.need_country_and_languge
+msgid "The options --country and --language must be used together"
+msgstr ""
+
+#: export.errors.white_space_workbook_view
+msgid ""
+"The name of the workbook or view to export cannot include spaces. Use the "
+"normalized name of the workbook or view as it appears in the URL."
+msgstr ""
+
+#: export.errors.requires_workbook_view_name
+msgid "The ''{0}'' command requires a <workbook>/<view> name"
+msgstr ""
+
+#: export.errors.requires_workbook_view_param
+msgid ""
+"The ''{0}'' command requires a <workbook>/<view> parameter, and there must "
+"be at least one slash (/) in this parameter"
+msgstr ""
+
+#: export.options.country
+msgid ""
+"If not using user''s default locale, the country abbreviation for locale ("
+"find in IANA Language Subtag Registry). Must use with --language"
+msgstr ""
+
+#: export.options.csv
+msgid "Export data in CSV format (default)"
+msgstr ""
+
+#: export.options.fullpdf
+msgid "Export visual views in PDF format (if workbook was published with tabs)"
+msgstr ""
+
+#: export.options.height
+msgid "Sets the height. Must be an integer value (default: 600 pixels)"
+msgstr ""
+
+#: export.options.language
+msgid ""
+"If not using user''s default locale, the language abbreviation for locale ("
+"find in IANA Language Subtag Registry). Must use with --country"
+msgstr ""
+
+#: export.options.pagelayout
+msgid ""
+"Sets the page orientation of the exported PDF. Legal values: {0}. If "
+"unspecified, the setting in Tableau Desktop will be used"
+msgstr ""
+
+#: export.options.pagesize
+msgid ""
+"Sets the page size of the exported PDF. Legal values: {0} (default: ''{1}'')"
+msgstr ""
+
+#: export.options.pdf
+msgid "Export data in PDF format"
+msgstr ""
+
+#: export.options.png
+msgid "Export data in PNG format"
+msgstr ""
+
+#: export.options.width
+msgid "Sets the width. Must be an integer value (default: 800 pixels)"
+msgstr ""
+
+#: export.short_description
+msgid "Export the data or image of a view from the server"
+msgstr ""
+
+#: export.status
+msgid "Requesting ''{0}'' from the server..."
+msgstr ""
+
+#: export.success
+msgid "Saved {0} to ''{1}''"
+msgstr ""
+
+#: extracts.workbook.errors.requires_datasources_or_include_all
+msgid ""
+"Command {0} for workbook requires either embedded data source or include-all "
+"flag."
+msgstr ""
+
+#: fileuploader.progress
+msgid "Upload progress: {0}%"
+msgstr ""
+
+#: get.description
+msgid ""
+"Get a file from the server. The file will be named after the last component "
+"of the path if no filename argument is specified"
+msgstr ""
+
+#: get.errors.requires_url
+msgid "The ''{0}'' command requires an URL"
+msgstr ""
+
+#: get.options.file
+msgid "Name to save the file as"
+msgstr ""
+
+#: get.short_description
+msgid "Get a file from the server"
+msgstr ""
+
+#: help.available_commands
+msgid "Available commands:"
+msgstr ""
+
+#: help.command_options
+msgid "Command options:"
+msgstr ""
+
+#: help.description0
+msgid "Show Help for a specific command"
+msgstr ""
+
+#: help.description1
+msgid "List all available commands"
+msgstr ""
+
+#: help.errors.unknown_command
+msgid "Unknown command: {0}"
+msgstr ""
+
+#: help.global_options
+msgid "Global options:"
+msgstr ""
+
+#: help.short_description
+msgid "Help for tabcmd commands"
+msgstr ""
+
+#: httputils.found_attachment
+msgid "Found attachment: {0}"
+msgstr ""
+
+#: httputils.mapped_attachment
+msgid "Found attachment: {0} (re-mapped to {1})"
+msgstr ""
+
+#: initialuser.errors.username_and_password_required
+msgid "Both username and password are required"
+msgstr ""
+
+#: initialuser.options.friendly-name
+msgid "Friendly name"
+msgstr ""
+
+#: initialuser.short_description
+msgid "Create an initial user on an uninitialized server"
+msgstr ""
+
+#: listdomains.description
+msgid "List domains"
+msgstr ""
+
+#: listdomains.status
+msgid "Listing domains from the server..."
+msgstr ""
+
+#: listsites.output
+msgid "{0}{0}NAME: {1} {0}SITEID: ''{2}''"
+msgstr ""
+
+#: listsites.output_extended
+msgid "{0}{0}NAME: {1} {0}SITEID: ''{2}''{0}EXTRACTENCRYPTION: {3}"
+msgstr ""
+
+#: listsites.short_description
+msgid "List sites for user"
+msgstr ""
+
+#: listsites.status
+msgid "Listing sites for user {0}..."
+msgstr ""
+
+#: listsites.options.get_extract_encryption_mode
+msgid "Print extract encryption mode of the site(s)"
+msgstr ""
+
+#: login.description
+msgid ""
+"Sign in to the server. Your session will continue until it expires on the "
+"server or you use {0}"
+msgstr ""
+
+#: login.short_description
+msgid "Sign in to the server"
+msgstr ""
+
+#: logout.short_description
+msgid "Sign out from the server"
+msgstr ""
+
+#: publish.description
+msgid "Publish a workbook, data source, or extract to the server"
+msgstr ""
+
+#: publish.errors.invalid_datasource_update_file_type
+msgid ""
+"Incorrect file type ''{0}'' for updating a data source. Replacing/appending "
+"only applies to an extract (.tde) file"
+msgstr ""
+
+#: publish.errors.invalid_name_option
+msgid "{0} option is invalid when publishing multiple items"
+msgstr ""
+
+#: publish.errors.invalid_publish_file_type
+msgid ""
+"Incorrect file type ''{0}'' for publishing, expected a .tde, .tds, .tdsx, ."
+"twb, or .twbx file"
+msgstr ""
+
+#: publish.errors.mutually_exclusive_option
+msgid "Use only one of {0} or {1}"
+msgstr ""
+
+#: publish.errors.requires_resource_file
+msgid "The ''{0}'' command requires a workbook, data source, or extract file"
+msgstr ""
+
+#: publish.errors.unexpected_server_response
+msgid "Unexpected response from the server: {0}"
+msgstr ""
+
+#: publish.errors.server_resource_not_found
+msgid ""
+"The resource you specified does not exist, or you do not have permission to "
+"see it. Check your project name and permissions"
+msgstr ""
+
+#: publish.options.append
+msgid "Append extract file to existing data source"
+msgstr ""
+
+#: publish.options.async
+msgid "Publish asynchronously"
+msgstr ""
+
+#: publish.options.db-password
+msgid "Database password for all data sources"
+msgstr ""
+
+#: publish.options.db-username
+msgid "Database username for all data sources"
+msgstr ""
+
+#: publish.options.description
+msgid "Description of the workbook or data source"
+msgstr ""
+
+#: publish.options.encrypt_extracts
+msgid "Encrypt extracts on the server"
+msgstr ""
+
+#: publish.options.name
+msgid ""
+"Workbook/data source name on the server. If omitted, the workbook/data "
+"source will be named after the file name, without the twb(x), tds(x), or tde "
+"extension. Publishing a .tde file will create a data source"
+msgstr ""
+
+#: publish.options.oauth-username
+msgid ""
+"Use the credentials saved on the server keychain associated with USERNAME to "
+"publish"
+msgstr ""
+
+#: publish.options.overwrite
+msgid "Overwrite the existing workbook/data source, if any"
+msgstr ""
+
+#: publish.options.project
+msgid "Project to publish the workbook/data source to"
+msgstr ""
+
+#: publish.options.parent-project-path
+msgid ""
+"Path of the parent of the project to publish the workbook/data source to"
+msgstr ""
+
+#: publish.options.replace
+msgid "Replace extract file to existing data source"
+msgstr ""
+
+#: publish.options.restart
+msgid "Restarts the file upload"
+msgstr ""
+
+#: publish.options.save-db-password
+msgid "Store the database password on server"
+msgstr ""
+
+#: publish.options.save-oauth
+msgid "Embed the OAuth credentials specified with {0}"
+msgstr ""
+
+#: publish.options.tabbed
+msgid "Publish with tabbed views enabled"
+msgstr ""
+
+#: publish.options.thumbnail-groupname
+msgid ""
+"If the workbook contains any user filters, impersonate this group while "
+"computing thumbnails"
+msgstr ""
+
+#: publish.options.thumbnail-username
+msgid ""
+"If the workbook contains any user filters, impersonate this user while "
+"computing thumbnails"
+msgstr ""
+
+#: publish.status
+msgid "Publishing ''{0}'' to the server. This could take several minutes..."
+msgstr ""
+
+#: publish.success
+msgid "File successfully published to the server at the following location:"
+msgstr ""
+
+#: publishsamples.options.parent-project-path
+msgid ""
+"Path of the parent of the project to publish samples to. Must specify the "
+"project name with --project"
+msgstr ""
+
+#: publishsamples.options.projectname
+msgid "Name of the project to publish samples to"
+msgstr ""
+
+#: publishsamples.short_description
+msgid ""
+"Publishes sample workbooks to the specified project. Existing samples will "
+"be overwritten."
+msgstr ""
+
+#: publishsamples.status
+msgid "Publishing samples..."
+msgstr ""
+
+#: reencryptextracts.short_description
+msgid "Reencrypt extracts on a site"
+msgstr ""
+
+#: reencryptextracts.status
+msgid "Scheduling extracts on site {0} to be reencrypted..."
+msgstr ""
+
+#: refreshextracts.errors.required_argument
+msgid ""
+"The refreshextracts command requires either a workbook URL, a workbook name, "
+"or a data source name"
+msgstr ""
+
+#: refreshextracts.errors.add_and_remove_calculations
+msgid ""
+"Cannot run refresh with both --addcalculations and --removecalculations "
+"options"
+msgstr ""
+
+#: refreshextracts.errors.calculations_and_incremental
+msgid ""
+"Cannot add or remove materialized calculations during incremental extract "
+"refresh"
+msgstr ""
+
+#: refreshextracts.errors.error
+msgid "Error refreshing extract"
+msgstr ""
+
+#: refreshextracts.options.datasource
+msgid "The name of the data source to refresh"
+msgstr ""
+
+#: refreshextracts.options.incremental
+msgid "Perform an incremental refresh (if supported)"
+msgstr ""
+
+#: refreshextracts.options.parent-project-path
+msgid ""
+"Path of the parent of the project that contains the extract to refresh. Must "
+"specify the project name with --project."
+msgstr ""
+
+#: refreshextracts.options.project
+msgid ""
+"The name of the project that contains the workbook/data source. Only "
+"necessary if {0} or {1} is specified. If unspecified, the default project "
+"''{2}'' is used"
+msgstr ""
+
+#: refreshextracts.options.synchronous
+msgid "Wait for the refresh to run and finish before exiting"
+msgstr ""
+
+#: refreshextracts.options.url
+msgid "The canonical name for the workbook or view as it appears in the URL"
+msgstr ""
+
+#: refreshextracts.options.workbook
+msgid "The name of the workbook to refresh"
+msgstr ""
+
+#: refreshextracts.options.addcalculations
+msgid "Adds materialized calculations into the extract"
+msgstr ""
+
+#: refreshextracts.options.removecalculations
+msgid "Removes materialized calculations from the extract"
+msgstr ""
+
+#: refreshextracts.short_description
+msgid "Refresh the extracts of a workbook or data source on the server"
+msgstr ""
+
+#: refreshextracts.status_incremented
+msgid "Scheduling extracts for {0} ''{1}'' to be incremented now..."
+msgstr ""
+
+#: refreshextracts.status_refreshed
+msgid "Scheduling extracts for {0} ''{1}'' to be refreshed now..."
+msgstr ""
+
+#: removeusers.options.users
+msgid ""
+"File that contains a list of users, one per line, to remove from the group"
+msgstr ""
+
+#: removeusers.short_description
+msgid "Remove users from a group"
+msgstr ""
+
+#: removeusers.status
+msgid "Removing users listed in {0} from the group {1}..."
+msgstr ""
+
+#: runschedule.errors.requires_schedule_name
+msgid "The ''{0}'' command requires a schedule name"
+msgstr ""
+
+#: runschedule.short_description
+msgid "Run a schedule"
+msgstr ""
+
+#: runschedule.status
+msgid "Running schedule ''{0}'' on the server..."
+msgstr ""
+
+#: materializeviews.short_description
+msgid "Update and check on materialized views settings for sites/workbooks"
+msgstr ""
+
+#: materializeviews.status.site
+msgid "Updating materialized views setting for site ''{0}''..."
+msgstr ""
+
+#: materializeviews.status.workbook
+msgid "Updating materialized views setting for workbook ''{0}''..."
+msgstr ""
+
+#: materializeviews.errors.invalid_workbook_arguments
+msgid "The materializeviews command requires one argument of a workbook name"
+msgstr ""
+
+#: materializeviews.errors.invalid_site_arguments
+msgid "The materializeviews command requires one argument of a site ID"
+msgstr ""
+
+#: materializeviews.errors.invalid_workbook_option
+msgid "Use ''{0}'' or ''{1}'' with ''{2}''"
+msgstr ""
+
+#: materializeviews.errors.invalid_project_path
+msgid "Use ''{1}'' with ''{0}''"
+msgstr ""
+
+#: materializeviews.errors.invalid_site_option
+msgid "Use ''{0}'' with ''{1}''"
+msgstr ""
+
+#: materializeviews.errors.site_mode_conflict
+msgid "Use ''{0}'' or ''{1}'' to change site materialized views mode"
+msgstr ""
+
+#: materializeviews.errors.site_not_updated
+msgid ""
+"Site ''{0}'' not updated, only server administrators can change materialized "
+"views setting"
+msgstr ""
+
+#: materializeviews.errors.invalid_argument_options_combination
+msgid "Use ''{0}'' or ''{1}'' to change materialized views setting"
+msgstr ""
+
+#: materializeviews.options.materialize_now
+msgid "Use ''{0}'' to schedule materialization for given workbook immediately"
+msgstr ""
+
+#: materializeviews.options.project
+msgid "Use ''{0}''  to specify project name"
+msgstr ""
+
+#: materializeviews.options.parent_project_path
+msgid "Use ''{0}'' to specify parent project path to ''{1}''"
+msgstr ""
+
+#: materializeviews.options.allow_workbook
+msgid "Use ''{0}'' to enable/disable materialized views for workbook"
+msgstr ""
+
+#: materializeviews.options.allow_site
+msgid "Use ''{0}'' to enable/disable materialized views for site"
+msgstr ""
+
+#: materializeviews.options.selected_workbooks
+msgid ""
+"Use ''{0}'' to enable selected workbooks in the site, used with the option "
+"''{1}''. This is the default option"
+msgstr ""
+
+#: materializeviews.options.all_workbooks
+msgid ""
+"Use ''{0}'' to enable all workbooks in the site, used with the option ''{1}''"
+msgstr ""
+
+#: session.auto_site_login
+msgid "Auto-sign in to site: {0}"
+msgstr ""
+
+#: session.certificate-alias
+msgid "Certificate alias: {0}"
+msgstr ""
+
+#: session.connecting
+msgid "Connecting to the server..."
+msgstr ""
+
+#: session.continuing_session
+msgid "Continuing previous session"
+msgstr ""
+
+#: session.errors.auth_required
+msgid "Authorization required"
+msgstr ""
+
+#: session.errors.invalid_keystore_password
+msgid "Keystore password is wrong. Please input correct password and retry"
+msgstr ""
+
+#: session.errors.invalid_redirect
+msgid "Cannot redirect to invalid URL: {0}"
+msgstr ""
+
+#: session.errors.keystore_pwdfile_create
+msgid "Cannot create keystore password file, error: {0}"
+msgstr ""
+
+#: session.errors.missing_arguments
+msgid "Cannot sign in because of missing arguments: {0}"
+msgstr ""
+
+#: session.errors.no_redirect_found
+msgid "No redirection address in redirect response"
+msgstr ""
+
+#: session.errors.no_sslcafile_found
+msgid ""
+"Could not find a Certificate Authority (CA) file in these locations: ''{0}"
+"''. The CA file is used to help ensure secure communication with Tableau "
+"Server. For information on creating a CA file, see the Tableau Server help. "
+"To connect to Tableau Server without validating its SSL certificate, use the "
+"--no-certcheck flag."
+msgstr ""
+
+#: session.errors.script_no_password
+msgid ""
+"Tabcmd was run from a script or IDE but no password was provided. A password "
+"must be provided as an argument to tabcmd in order to log in."
+msgstr ""
+
+#: session.errors.session_expired
+msgid "Your session has expired"
+msgstr ""
+
+#: session.errors.unsupported_command
+msgid "Command not supported by this server"
+msgstr ""
+
+#: session.keystore.notice
+msgid ""
+"Do you want to store password in local to avoid typing password next time? ["
+"anwser yes or no]"
+msgstr ""
+
+#: session.keystore.password
+msgid "Keystore Password:"
+msgstr ""
+
+#: session.keystore.pwdfile_create
+msgid "Create keystore password file in path: {0}"
+msgstr ""
+
+#: session.keystore.pwdfile_remove
+msgid "Remove the keystore password file which contains wrong password"
+msgstr ""
+
+#: session.login
+msgid "Signing in..."
+msgstr ""
+
+#: session.logout
+msgid "Signed out"
+msgstr ""
+
+#: session.monitorjob.errors.no_jobid
+msgid "Cannot monitor job. No job_id found: {0}"
+msgstr ""
+
+#: session.monitorjob.percent_complete
+msgid "{0}% complete"
+msgstr ""
+
+#: session.new_session
+msgid "Creating new session"
+msgstr ""
+
+#: session.no-certificate-found
+msgid "No valid client certificate found"
+msgstr ""
+
+#: session.not_default_site_member
+msgid ""
+"You are not a member of the default site. Select a SITEID from the following "
+"sites:"
+msgstr ""
+
+#: session.not_site_member
+msgid ""
+"You are not a member of site ''{0}''. Select a SITEID from the following "
+"sites:"
+msgstr ""
+
+#: session.options.help
+msgid "Display tabcmd Help"
+msgstr ""
+
+#: session.options.no-certcheck
+msgid "Do not validate the SSL certificate"
+msgstr ""
+
+#: session.options.no-cookie
+msgid ""
+"Do not save the session ID when signing in. Subsequent commands will need to "
+"sign in again. If unspecified, default is to save the session ID"
+msgstr ""
+
+#: session.options.no-prompt
+msgid "Do not prompt for a password"
+msgstr ""
+
+#: session.options.no-proxy
+msgid "Do not use a HTTP proxy"
+msgstr ""
+
+#: session.options.password
+msgid "Use the specified Tableau Server password"
+msgstr ""
+
+#: session.options.password-file
+msgid "Read the Tableau Server password from FILE"
+msgstr ""
+
+#: session.options.proxy
+msgid "Use the specified HTTP proxy"
+msgstr ""
+
+#: session.options.server
+msgid ""
+"Use the specified Tableau Server URL. If no protocol is specified, http:// "
+"is assumed"
+msgstr ""
+
+#: session.options.site
+msgid ""
+"Use the specified Tableau Server site. Specify an empty string (\"\") to "
+"force use of the default site"
+msgstr ""
+
+#: session.options.timeout
+msgid ""
+"How long to wait, in seconds, for the server to complete processing the "
+"command. The default is to wait until the server responds"
+msgstr ""
+
+#: session.options.use-certificate
+msgid "Use client certificate to sign in"
+msgstr ""
+
+#: session.options.username
+msgid "Use the specified Tableau Server user name"
+msgstr ""
+
+#: session.password
+msgid "Password:"
+msgstr ""
+
+#: session.retrying_task
+msgid "Signing in again to retry original command with a new session..."
+msgstr ""
+
+#: session.session_expired_login
+msgid "Your session has expired. Signing out to clear session..."
+msgstr ""
+
+#: session.site_list
+msgid "{0}{0}NAME: {1}{0}SITEID: ''{2}''"
+msgstr ""
+
+#: session.using-certificate
+msgid "Using client certificate to sign in"
+msgstr ""
+
+#: session.inferred_username
+msgid "Logging in as user ''{0}'' since no --username flag was given"
+msgstr ""
+
+#: sessiondata.errors.bad_api
+msgid "Malformed server API: {0}"
+msgstr ""
+
+#: sessiondata.errors.no_server_api
+msgid "Cannot find server API version in response"
+msgstr ""
+
+#: sessiondata.errors.version_mismatch
+msgid ""
+"Tabcmd version {0} (API {1}) does not match Tableau Server version {2} (API "
+"{3})"
+msgstr ""
+
+#: sessionoptions.errors.ambiguous_scheme
+msgid "Specify ''{0}'' or ''{1}'' before the server name"
+msgstr ""
+
+#: sessionoptions.errors.bad_password_file
+msgid "Cannot read password from file ''{0}''"
+msgstr ""
+
+#: sessionoptions.errors.bad_protocol
+msgid "Protocol ''{0}'' is not supported"
+msgstr ""
+
+#: sessionoptions.errors.bad_proxy_format
+msgid "Proxy format does not match HOST:PORT: {0}"
+msgstr ""
+
+#: sessionoptions.errors.bad_timeout
+msgid "Non-numeric argument to {0} ''{1}'' ignored"
+msgstr ""
+
+#: set.description
+msgid "Set a setting on the server. Use !setting to turn a setting off"
+msgstr ""
+
+#: set.errors.requires_setting_name
+msgid "The ''{0}'' command requires a setting name"
+msgstr ""
+
+#: set.errors.single_setting_name
+msgid "The ''{0}'' command take a single setting name"
+msgstr ""
+
+#: set.short_description
+msgid "Set a setting on the server"
+msgstr ""
+
+#: setsetting.status
+msgid "Setting ''{0}'' to {1}"
+msgstr ""
+
+#: syncgroup.errors.server_admin
+msgid "Minimum site role of a group cannot be set to ''ServerAdministrator''."
+msgstr ""
+
+#: syncgroup.options.role
+msgid ""
+"Sets the default role for all users in the group. Legal values for {0}: {1}. "
+"If a user already exists, the given role is only applied if it''s less "
+"restrictive than the user''s current role. If unspecified, default is {2} "
+"for new users and unchanged for existing users"
+msgstr ""
+
+#: syncgroup.options.overwritesiterole
+msgid ""
+"Allow''s a user''s site role to be changed to a less privileged one when "
+"using --role, overriding the default behavior."
+msgstr ""
+
+#: syncgroup.options.grantlicensemode
+msgid ""
+"When to grant a user the license specified on the group. Legal values are: "
+"{0}. If no value is passed in ''on-sync'' will be used as the default value."
+msgstr ""
+
+#: syncgroup.short_description
+msgid "Synchronize the server with an Active Directory group"
+msgstr ""
+
+#: syncgroup.status
+msgid "Synchronizing server with Active Directory group {0}..."
+msgstr ""
+
+#: syncgroup.options.sysadmin-type
+msgid ""
+"[Deprecated. Use --role instead.] Assigns [or removes] the admin right for "
+"all users in the group. {0} can be: {1}, {2}, {3}, or {4}."
+msgstr ""
+
+#: syncgroup.options.license
+msgid ""
+"[Deprecated. Use --role instead.] Sets the default license level for all "
+"users in the group. {0} can be {1}, {2}, or {3}."
+msgstr ""
+
+#: syncgroup.options.publisher
+msgid ""
+"[Deprecated. Use --role instead.] Assigns [or removes] the publish right for "
+"all users in the group."
+msgstr ""
+
+#: tabcmd.mutually_exclusive_options
+msgid "Cannot specify ''{0}'' and ''{1}'' in the same command"
+msgstr ""
+
+#: tabcmdparser.errors.ambiguous_option
+msgid "Ambiguous option ''{0}'' among options: {1}"
+msgstr ""
+
+#: tabcmdparser.warning.unexpected_dash
+msgid ""
+"Unexpected dash detected in argument: {0}. Valid dashes are -, --. This "
+"error often occurs when copy/pasting from a text editor with formatting. Try "
+"re-typing the dash for the argument in the command line."
+msgstr ""
+
+#: resetopenidsub.short_description
+msgid "Reset an OpenID Connect SubId for a user"
+msgstr ""
+
+#: resetopenidsub.options.targetusername
+msgid "User to be reset"
+msgstr ""
+
+#: resetopenidsub.options.all
+msgid "Reset all users"
+msgstr ""
+
+#: version.description
+msgid "Print version information"
+msgstr ""
+
+#: vizqlsession.errors.cannot_create_session
+msgid "Failed to create a VizQl session on the server"
+msgstr ""
+
+#: vizqlsession.errors.no_command_result
+msgid "Could not find command result: {0}"
+msgstr ""
+
+#: vizqlsession.errors.session_already_closed
+msgid "VizQl session object already closed"
+msgstr ""
+
+#: vizqlsession.errors.cannot_parse_response
+msgid "Cannot parse JSON response string: {0}"
+msgstr ""
+
+#: upgradethumbnails.short_description
+msgid ""
+"This will run the Upgrade Thumbnails backgrounder job. This will rerender to "
+"high resolution any thumbnails generated prior to Tableau 2018.2. This can "
+"put higher than usual load on Tableau Server and external datasources. If "
+"any problems arise, the job can be stopped by running tabcmd "
+"upgradethumbnails --server <server> --stop"
+msgstr ""
+
+#: upgradethumbnails.options.stop
+msgid "Stop all upgrade thumbnails related jobs"
+msgstr ""
+
+#: upgradethumbnails.status.running
+msgid "Starting thumbnails upgrade"
+msgstr ""
+
+#: upgradethumbnails.status.not_running
+msgid "Not starting thumbnails upgrade"
+msgstr ""
+
+#: upgradethumbnails.status.cancelling
+msgid "Cancelling thumbnails upgrade jobs"
+msgstr ""
+
+#: upgradethumbnails.continue_promt
+msgid "Do you wish to continue? Enter 1 for Yes, 0 for No (1/0)"
+msgstr ""
+
+#: upgradethumbnails.invalid_response
+msgid "Invalid response"
+msgstr ""
+
+#: validateidpmetadata.options.digest_algorithms
+msgid ""
+"A space-separated list of digest algorithms. Legal values for {0}: {1}. If "
+"not specified, server uses values from server configuration setting: {2}"
+msgstr ""
+
+#: validateidpmetadata.options.min_allowed_rsa_key_size
+msgctxt "validateidpmetadata.options.min_allowed_rsa_key_size"
+msgid ""
+"If not specified, server uses values from server configuration setting: {0}"
+msgstr ""
+
+#: validateidpmetadata.options.min_allowed_elliptic_curve_size
+msgctxt "validateidpmetadata.options.min_allowed_elliptic_curve_size"
+msgid ""
+"If not specified, server uses values from server configuration setting: {0}"
+msgstr ""
+
+#: validateidpmetadata.options.site_names
+msgid ""
+"A space-separated list of site names on which to perform certificate "
+"validation. If not specified, then all sites are inspected."
+msgstr ""
+
+#: validateidpmetadata.short_description
+msgid ""
+"Identifies Tableau Server sites that are configured with IdPs using the "
+"insecure digest algorithm, SHA-1. This command also identifies IdPs that are "
+"using certificates with an insufficient RSA key size or elliptic curve size."
+msgstr ""
