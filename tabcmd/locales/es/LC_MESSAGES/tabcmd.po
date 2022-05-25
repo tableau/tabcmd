@@ -396,23 +396,23 @@ msgstr "Debe ser un ''interaccionador'' para publicar una fuente de datos."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite"
-msgstr "Ya existe una fuente de datos "{0}" en el proyecto "{1}". No tiene permisos para sobrescribirla."
+msgstr "Ya existe una fuente de datos ''{0}'' en el proyecto ''{1}''. No tiene permisos para sobrescribirla."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_personal_space"
-msgstr "Ya existe una fuente de datos "{0}" en el Espacio personal. No tiene permisos para sobrescribirla."
+msgstr "Ya existe una fuente de datos ''{0}'' en el Espacio personal. No tiene permisos para sobrescribirla."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short"
-msgstr "Ya existe una fuente de datos "{0}" en el proyecto "{1}"."
+msgstr "Ya existe una fuente de datos ''{0}'' en el proyecto ''{1}''."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "Ya existe una fuente de datos "{0}" en el Espacio personal.""
+msgstr "Ya existe una fuente de datos ''{0}'' en el Espacio personal.""
 
 #:
 msgid "errors.permissions.publish.datasource.non_existent"
-msgstr "La fuente de datos "{0}" no existe."
+msgstr "La fuente de datos ''{0}'' no existe."
 
 #:
 msgid "errors.permissions.publish.datasource.general"
@@ -428,11 +428,11 @@ msgstr "Lo lamentamos, no tiene permiso para publicar en este proyecto."
 
 #:
 msgid "errors.permissions.publish.project.non_existent"
-msgstr "El proyecto "{0}" no existe."
+msgstr "El proyecto ''{0}'' no existe."
 
 #:
 msgid "errors.permissions.publish.project.not_writable"
-msgstr "No tiene permisos para escribir en el proyecto "{0}"."
+msgstr "No tiene permisos para escribir en el proyecto ''{0}''."
 
 #:
 msgid "errors.permissions.publish.project.unspecified"
@@ -440,7 +440,7 @@ msgstr "Debe especificar un proyecto"
 
 #:
 msgid "errors.permissions.publish.workbook.disabled"
-msgstr "El libro de trabajo "{0}" está deshabilitado."
+msgstr "El libro de trabajo ''{0}'' está deshabilitado."
 
 #:
 msgid "errors.permissions.publish.workbook.general"
@@ -452,19 +452,19 @@ msgstr "Ya existe un libro de trabajo con este nombre en el Espacio personal en 
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite"
-msgstr "Ya existe un libro de trabajo "{0}" en el proyecto "{1}". No tiene permisos para sobrescribirlo."
+msgstr "Ya existe un libro de trabajo ''{0}'' en el proyecto ''{1}''. No tiene permisos para sobrescribirlo."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_personal_space"
-msgstr "Ya existe un libro de trabajo "{0}" en el Espacio personal. No tiene permisos para sobrescribirlo."
+msgstr "Ya existe un libro de trabajo ''{0}'' en el Espacio personal. No tiene permisos para sobrescribirlo."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short"
-msgstr "Ya existe un libro de trabajo "{0}" en el proyecto "{1}"."
+msgstr "Ya existe un libro de trabajo ''{0}'' en el proyecto ''{1}''."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
-msgstr "Ya existe un libro de trabajo "{0}" en el Espacio personal."
+msgstr "Ya existe un libro de trabajo ''{0}'' en el Espacio personal."
 
 #:
 msgid "errors.reportable.impersonation.group_and_user"
@@ -1384,7 +1384,7 @@ msgstr "No se ha encontrado ningún eje para el campo {0}"
 
 #:
 msgid "dataalerts.failure.error.paneDescriptorNotFound"
-msgstr "{0}"
+msgstr ''{0}''
 
 #:
 msgid "dataalerts.failure.error.unsupportedComparisonExpression"
@@ -1492,7 +1492,7 @@ msgstr "Su métrica no se puede actualizar, por tanto, no se aplican los cambios
 
 #:
 msgid "metricsservices.failure.status"
-msgstr "La métrica "{0}" no se está actualizando"
+msgstr "La métrica ''{0}'' no se está actualizando"
 
 #:
 msgid "metricsservices.failure.suspend.email.explanation"
@@ -1504,7 +1504,7 @@ msgstr "Se ha enviado este correo electrónico a {0} porque la actualización de
 
 #:
 msgid "metricsservices.failure.suspend.email.status"
-msgstr "Se ha suspendido la actualización de la métrica "{0}""
+msgstr "Se ha suspendido la actualización de la métrica ''{0}''"
 
 #:
 msgid "metricsservices.failure.suspend.email.subject"
@@ -1548,7 +1548,7 @@ msgstr "La actualización de su métrica vuelve a funcionar, ahora se buscarán 
 
 #:
 msgid "metricsservices.success.status"
-msgstr "Se ha reanudado la actualización de la métrica "{0}""
+msgstr "Se ha reanudado la actualización de la métrica ''{0}''"
 
 #:
 msgid "errors.staticimages.generic"

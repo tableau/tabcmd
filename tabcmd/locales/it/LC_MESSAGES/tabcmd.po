@@ -396,23 +396,23 @@ msgstr "Devi essere un ''Interagente'' per pubblicare un''origine dati."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite"
-msgstr "Esiste già un''origine dati con il nome "{0}" nel progetto "{1}". Non hai l''autorizzazione per sovrascriverla."
+msgstr "Esiste già un''origine dati con il nome ''{0}'' nel progetto ''{1}''. Non hai l''autorizzazione per sovrascriverla."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_personal_space"
-msgstr "Esiste già un''origine dati con il nome "{0}" nello spazio personale. Non hai l''autorizzazione per sovrascriverla."
+msgstr "Esiste già un''origine dati con il nome ''{0}'' nello spazio personale. Non hai l''autorizzazione per sovrascriverla."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short"
-msgstr "Esiste già un''origine dati con il nome "{0}" nel progetto "{1}"."
+msgstr "Esiste già un''origine dati con il nome ''{0}'' nel progetto ''{1}''."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "Esiste già un''origine dati con il nome "{0}" nello spazio personale.""
+msgstr "Esiste già un''origine dati con il nome ''{0}'' nello spazio personale.""
 
 #:
 msgid "errors.permissions.publish.datasource.non_existent"
-msgstr "L''origine dati "{0}" non esiste."
+msgstr "L''origine dati ''{0}'' non esiste."
 
 #:
 msgid "errors.permissions.publish.datasource.general"
@@ -428,11 +428,11 @@ msgstr "Non hai l''autorizzazione per pubblicare su questo progetto."
 
 #:
 msgid "errors.permissions.publish.project.non_existent"
-msgstr "Il progetto "{0}" non esiste."
+msgstr "Il progetto ''{0}'' non esiste."
 
 #:
 msgid "errors.permissions.publish.project.not_writable"
-msgstr "Non hai l''autorizzazione per scrivere sul progetto "{0}"."
+msgstr "Non hai l''autorizzazione per scrivere sul progetto ''{0}''."
 
 #:
 msgid "errors.permissions.publish.project.unspecified"
@@ -440,7 +440,7 @@ msgstr "Devi specificare un progetto"
 
 #:
 msgid "errors.permissions.publish.workbook.disabled"
-msgstr "La cartella di lavoro "{0}" è disabilitata."
+msgstr "La cartella di lavoro ''{0}'' è disabilitata."
 
 #:
 msgid "errors.permissions.publish.workbook.general"
@@ -452,19 +452,19 @@ msgstr "Nello spazio personale su cui stai pubblicando esiste una cartella di la
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite"
-msgstr "Esiste già una cartella di lavoro con il nome "{0}" nel progetto "{1}". Non hai l''autorizzazione per sovrascriverla."
+msgstr "Esiste già una cartella di lavoro con il nome ''{0}'' nel progetto ''{1}''. Non hai l''autorizzazione per sovrascriverla."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_personal_space"
-msgstr "Esiste già una cartella di lavoro con il nome "{0}" nello spazio personale. Non hai l''autorizzazione per sovrascriverla."
+msgstr "Esiste già una cartella di lavoro con il nome ''{0}'' nello spazio personale. Non hai l''autorizzazione per sovrascriverla."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short"
-msgstr "Esiste già un''origine dati con il nome "{0}" nel progetto "{1}"."
+msgstr "Esiste già un''origine dati con il nome ''{0}'' nel progetto ''{1}''."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
-msgstr "Esiste già una cartella di lavoro con il nome "{0}" nello spazio personale."
+msgstr "Esiste già una cartella di lavoro con il nome ''{0}'' nello spazio personale."
 
 #:
 msgid "errors.reportable.impersonation.group_and_user"
@@ -564,7 +564,7 @@ msgstr "Incorpora password per l''origine dati"
 
 #:
 msgid "errors.publish.workbook.google_no_embedded_credentials"
-msgstr "Questa cartella di lavoro contiene un''origine dati {0} che richiede credenziali incorporate. Per salvare come altra cartella di lavoro, seleziona "{1}"."
+msgstr "Questa cartella di lavoro contiene un''origine dati {0} che richiede credenziali incorporate. Per salvare come altra cartella di lavoro, seleziona ''{1}''."
 
 #:
 msgid "errors.publish.datasource.google_no_embedded_credentials"
@@ -812,7 +812,7 @@ msgstr "Nuova crittografia delle estrazioni terminata per la bozza di flusso ''{
 
 #:
 msgid "extracts.status.finished.create.datasource"
-msgstr "Creazione delle estrazioni per l''origine dati "{1}" terminata (ID nuova estrazione: {0}) {2}"
+msgstr "Creazione delle estrazioni per l''origine dati ''{1}'' terminata (ID nuova estrazione: {0}) {2}"
 
 #:
 msgid "extracts.status.finished.remove.datasource"
@@ -1384,7 +1384,7 @@ msgstr "Nessun asse trovato per il campo {0}"
 
 #:
 msgid "dataalerts.failure.error.paneDescriptorNotFound"
-msgstr "{0}"
+msgstr ''{0}''
 
 #:
 msgid "dataalerts.failure.error.unsupportedComparisonExpression"
@@ -1492,7 +1492,7 @@ msgstr "La metrica non è in grado di aggiornarsi, per cui i dati della metrica 
 
 #:
 msgid "metricsservices.failure.status"
-msgstr "La metrica "{0}" non si sta aggiornando"
+msgstr "La metrica ''{0}'' non si sta aggiornando"
 
 #:
 msgid "metricsservices.failure.suspend.email.explanation"
@@ -1504,7 +1504,7 @@ msgstr "Ti è stata inviata questa e-mail all''indirizzo {0} perché l''aggiorna
 
 #:
 msgid "metricsservices.failure.suspend.email.status"
-msgstr "L''aggiornamento della metrica "{0}" è stato sospeso"
+msgstr "L''aggiornamento della metrica ''{0}'' è stato sospeso"
 
 #:
 msgid "metricsservices.failure.suspend.email.subject"
@@ -1548,7 +1548,7 @@ msgstr "L''aggiornamento della metrica funziona di nuovo, quindi controllerà gl
 
 #:
 msgid "metricsservices.success.status"
-msgstr "L''aggiornamento della metrica "{0}" ha ripreso"
+msgstr "L''aggiornamento della metrica ''{0}'' ha ripreso"
 
 #:
 msgid "errors.staticimages.generic"

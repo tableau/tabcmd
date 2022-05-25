@@ -328,23 +328,23 @@ msgstr "62054-表:Yoű műst bé äฑ ''İฑtéяäçtoя'' to pűbłısh ä �
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite"
-msgstr "64947-表:Å ďätä soűяçé ฑäméď "{0}" äłяéäďy éxısts ıฑ pяojéçt "{1}". Yoű ďo ฑot hävé péяmıssıoฑs to ovéяὠяıté ıt.|"
+msgstr "64947-表:Å ďätä soűяçé ฑäméď ''{0}'' äłяéäďy éxısts ıฑ pяojéçt ''{1}''. Yoű ďo ฑot hävé péяmıssıoฑs to ovéяὠяıté ıt.|"
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_personal_space"
-msgstr "98835-表:Å ďätä soűяçé ฑäméď "{0}" äłяéäďy éxısts ıฑ Péяsoฑäł Şpäçé. Yoű ďo ฑot hävé péяmıssıoฑs to ovéяὠяıté ıt.|"
+msgstr "98835-表:Å ďätä soűяçé ฑäméď ''{0}'' äłяéäďy éxısts ıฑ Péяsoฑäł Şpäçé. Yoű ďo ฑot hävé péяmıssıoฑs to ovéяὠяıté ıt.|"
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short"
-msgstr "46800-表:Å ďätä soűяçé ฑäméď "{0}" äłяéäďy éxısts ıฑ pяojéçt "{1}".|"
+msgstr "46800-表:Å ďätä soűяçé ฑäméď ''{0}'' äłяéäďy éxısts ıฑ pяojéçt ''{1}''.|"
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "75382-表:Å ďätäsoűяçé ฑäméď "{0}" äłяéäďy éxısts ıฑ Péяsoฑäł Şpäçé."|"
+msgstr "75382-表:Å ďätäsoűяçé ฑäméď ''{0}'' äłяéäďy éxısts ıฑ Péяsoฑäł Şpäçé."|"
 
 #:
 msgid "errors.permissions.publish.datasource.non_existent"
-msgstr "16798-表:Ðätä soűяçé "{0}" ďoés ฑot éxıst.|"
+msgstr "16798-表:Ðätä soűяçé ''{0}'' ďoés ฑot éxıst.|"
 
 #:
 msgid "errors.permissions.publish.datasource.general"
@@ -360,11 +360,11 @@ msgstr "23522-表:Şoяяy, yoű ďo ฑot hävé péяmıssıoฑ to pűbłısh
 
 #:
 msgid "errors.permissions.publish.project.non_existent"
-msgstr "52716-表:Pяojéçt "{0}" ďoés ฑot éxıst.|"
+msgstr "52716-表:Pяojéçt ''{0}'' ďoés ฑot éxıst.|"
 
 #:
 msgid "errors.permissions.publish.project.not_writable"
-msgstr "86386-表:Yoű ďo ฑot hävé péяmıssıoฑ to ὠяıté to thé pяojéçt "{0}".|"
+msgstr "86386-表:Yoű ďo ฑot hävé péяmıssıoฑ to ὠяıté to thé pяojéçt ''{0}''.|"
 
 #:
 msgid "errors.permissions.publish.project.unspecified"
@@ -372,7 +372,7 @@ msgstr "13265-表:Yoű műst spéçıfy ä pяojéçt|"
 
 #:
 msgid "errors.permissions.publish.workbook.disabled"
-msgstr "24223-表:Thé ὠoяkbook "{0}" ıs ďısäbłéď.|"
+msgstr "24223-表:Thé ὠoяkbook ''{0}'' ıs ďısäbłéď.|"
 
 #:
 msgid "errors.permissions.publish.workbook.general"
@@ -384,19 +384,19 @@ msgstr "82209-表:Å ὠoяkbook ὠıth thıs ฑämé éxısts ıฑ thé Pé�
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite"
-msgstr "41928-表:Å ὠoяkbook ฑäméď "{0}" äłяéäďy éxısts ıฑ pяojéçt "{1}". Yoű ďo ฑot hävé péяmıssıoฑs to ovéяὠяıté ıt.|"
+msgstr "41928-表:Å ὠoяkbook ฑäméď ''{0}'' äłяéäďy éxısts ıฑ pяojéçt ''{1}''. Yoű ďo ฑot hävé péяmıssıoฑs to ovéяὠяıté ıt.|"
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_personal_space"
-msgstr "03262-表:Å ὠoяkbook ฑäméď "{0}" äłяéäďy éxısts ıฑ Péяsoฑäł Şpäçé. Yoű ďo ฑot hävé péяmıssıoฑs to ovéяὠяıté ıt.|"
+msgstr "03262-表:Å ὠoяkbook ฑäméď ''{0}'' äłяéäďy éxısts ıฑ Péяsoฑäł Şpäçé. Yoű ďo ฑot hävé péяmıssıoฑs to ovéяὠяıté ıt.|"
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short"
-msgstr "40805-表:Å ὠoяkbook ฑäméď "{0}" äłяéäďy éxısts ıฑ pяojéçt "{1}".|"
+msgstr "40805-表:Å ὠoяkbook ฑäméď ''{0}'' äłяéäďy éxısts ıฑ pяojéçt ''{1}''.|"
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
-msgstr "07937-表:Å ὠoяkbook ฑäméď "{0}" äłяéäďy éxısts ıฑ Péяsoฑäł Şpäçé.|"
+msgstr "07937-表:Å ὠoяkbook ฑäméď ''{0}'' äłяéäďy éxısts ıฑ Péяsoฑäł Şpäçé.|"
 
 #:
 msgid "errors.reportable.impersonation.group_and_user"
@@ -496,7 +496,7 @@ msgstr "87075-表:Émbéď pässὠoяď foя ďätä soűяçé|"
 
 #:
 msgid "errors.publish.workbook.google_no_embedded_credentials"
-msgstr "43948-表:Thıs ὠoяkbook çoฑtäıฑs ä {0} ďätä soűяçé ὠhıçh яéqűıяés émbéďďéď çяéďéฑtıäłs. To sävé äs äฑothéя ὠoяkbook, séłéçt "{1}".|"
+msgstr "43948-表:Thıs ὠoяkbook çoฑtäıฑs ä {0} ďätä soűяçé ὠhıçh яéqűıяés émbéďďéď çяéďéฑtıäłs. To sävé äs äฑothéя ὠoяkbook, séłéçt ''{1}''.|"
 
 #:
 msgid "errors.publish.datasource.google_no_embedded_credentials"
@@ -1424,7 +1424,7 @@ msgstr "30381-表:Yoűя métяıç ısฑ''t äbłé to яéfяésh, so thé m�
 
 #:
 msgid "metricsservices.failure.status"
-msgstr "41822-表:Yoűя métяıç "{0}" ısฑ''t яéfяéshıฑg|"
+msgstr "41822-表:Yoűя métяıç ''{0}'' ısฑ''t яéfяéshıฑg|"
 
 #:
 msgid "metricsservices.failure.suspend.email.explanation"
@@ -1436,7 +1436,7 @@ msgstr "57131-表:Yoű äяé яéçéıvıฑg thıs émäıł ät {0} béçä�
 
 #:
 msgid "metricsservices.failure.suspend.email.status"
-msgstr "37122-表:Яéfяésh foя yoűя métяıç "{0}" häs bééฑ sűspéฑďéď|"
+msgstr "37122-表:Яéfяésh foя yoűя métяıç ''{0}'' häs bééฑ sűspéฑďéď|"
 
 #:
 msgid "metricsservices.failure.suspend.email.subject"
@@ -1480,7 +1480,7 @@ msgstr "78182-表:Thé яéfяésh foя yoűя métяıç ıs ὠoяkıฑg äg�
 
 #:
 msgid "metricsservices.success.status"
-msgstr "88005-表:Яéfяésh foя yoűя métяıç "{0}" häs яésűméď|"
+msgstr "88005-表:Яéfяésh foя yoűя métяıç ''{0}'' häs яésűméď|"
 
 #:
 msgid "errors.staticimages.generic"

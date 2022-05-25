@@ -328,23 +328,23 @@ msgstr "Vous devez disposer des droits ʼInteracteurʼ pour publier une source d
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite"
-msgstr "Il existe déjà une source de données intitulée "{0}" dans le projet "{1}". Vous nʼêtes pas autorisé à la remplacer."
+msgstr "Il existe déjà une source de données intitulée ''{0}'' dans le projet ''{1}''. Vous nʼêtes pas autorisé à la remplacer."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_personal_space"
-msgstr "Il existe déjà une source de données intitulée "{0}" dans lʼespace personnel. Vous nʼêtes pas autorisé à la remplacer."
+msgstr "Il existe déjà une source de données intitulée ''{0}'' dans lʼespace personnel. Vous nʼêtes pas autorisé à la remplacer."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short"
-msgstr "Il existe déjà une source de données intitulée "{0}" dans le projet "{1}"."
+msgstr "Il existe déjà une source de données intitulée ''{0}'' dans le projet ''{1}''."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "Il existe déjà une source de données intitulée "{0}" dans lʼespace personnel.""
+msgstr "Il existe déjà une source de données intitulée ''{0}'' dans lʼespace personnel.""
 
 #:
 msgid "errors.permissions.publish.datasource.non_existent"
-msgstr "La source de données "{0}" nʼexiste pas."
+msgstr "La source de données ''{0}'' nʼexiste pas."
 
 #:
 msgid "errors.permissions.publish.datasource.general"
@@ -360,11 +360,11 @@ msgstr "Désolé, vous ne disposez pas des autorisations nécessaires pour effec
 
 #:
 msgid "errors.permissions.publish.project.non_existent"
-msgstr "Le projet "{0}" nʼexiste pas."
+msgstr "Le projet ''{0}'' nʼexiste pas."
 
 #:
 msgid "errors.permissions.publish.project.not_writable"
-msgstr "Vous nʼêtes pas autorisé à écrire sur le projet "{0}"."
+msgstr "Vous nʼêtes pas autorisé à écrire sur le projet ''{0}''."
 
 #:
 msgid "errors.permissions.publish.project.unspecified"
@@ -372,7 +372,7 @@ msgstr "Vous devez spécifier un projet"
 
 #:
 msgid "errors.permissions.publish.workbook.disabled"
-msgstr "Le classeur "{0}" est désactivé."
+msgstr "Le classeur ''{0}'' est désactivé."
 
 #:
 msgid "errors.permissions.publish.workbook.general"
@@ -384,19 +384,19 @@ msgstr "Il existe déjà un classeur de ce nom dans lʼespace personnel sur lequ
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite"
-msgstr "Il existe déjà un classeur intitulé "{0}" dans le projet "{1}". Vous nʼêtes pas autorisé à le remplacer."
+msgstr "Il existe déjà un classeur intitulé ''{0}'' dans le projet ''{1}''. Vous nʼêtes pas autorisé à le remplacer."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_personal_space"
-msgstr "Il existe déjà un classeur intitulé "{0}" dans lʼespace personnel. Vous nʼêtes pas autorisé à le remplacer."
+msgstr "Il existe déjà un classeur intitulé ''{0}'' dans lʼespace personnel. Vous nʼêtes pas autorisé à le remplacer."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short"
-msgstr "Il existe déjà un classeur intitulé "{0}" dans le projet "{1}"."
+msgstr "Il existe déjà un classeur intitulé ''{0}'' dans le projet ''{1}''."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
-msgstr "Il existe déjà un classeur intitulé "{0}" dans lʼespace personnel."
+msgstr "Il existe déjà un classeur intitulé ''{0}'' dans lʼespace personnel."
 
 #:
 msgid "errors.reportable.impersonation.group_and_user"
@@ -1316,7 +1316,7 @@ msgstr "Aucun axe trouvé pour le champ {0}"
 
 #:
 msgid "dataalerts.failure.error.paneDescriptorNotFound"
-msgstr "{0}"
+msgstr ''{0}''
 
 #:
 msgid "dataalerts.failure.error.unsupportedComparisonExpression"
@@ -1424,7 +1424,7 @@ msgstr "Il nʼest pas possible dʼactualiser votre métrique. Les données de m�
 
 #:
 msgid "metricsservices.failure.status"
-msgstr "Échec dʼactualisation de votre métrique "{0}""
+msgstr "Échec dʼactualisation de votre métrique ''{0}''"
 
 #:
 msgid "metricsservices.failure.suspend.email.explanation"
@@ -1436,7 +1436,7 @@ msgstr "Vous recevez cet e-mail à {0} parce que lʼactualisation de votre métr
 
 #:
 msgid "metricsservices.failure.suspend.email.status"
-msgstr "Lʼactualisation pour votre métrique "{0}" a été suspendue"
+msgstr "Lʼactualisation pour votre métrique ''{0}'' a été suspendue"
 
 #:
 msgid "metricsservices.failure.suspend.email.subject"
@@ -1480,7 +1480,7 @@ msgstr "Lʼactualisation de votre métrique fonctionne à nouveau. Elle recherch
 
 #:
 msgid "metricsservices.success.status"
-msgstr "Lʼactualisation pour votre métrique "{0}" a repris"
+msgstr "Lʼactualisation pour votre métrique ''{0}'' a repris"
 
 #:
 msgid "errors.staticimages.generic"

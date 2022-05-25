@@ -328,23 +328,23 @@ msgstr "You must be an ''Interactor'' to publish a data source."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite"
-msgstr "A data source named "{0}" already exists in project "{1}". You do not have permissions to overwrite it."
+msgstr "A data source named ''{0}'' already exists in project ''{1}''. You do not have permissions to overwrite it."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_personal_space"
-msgstr "A data source named "{0}" already exists in Personal Space. You do not have permissions to overwrite it."
+msgstr "A data source named ''{0}'' already exists in Personal Space. You do not have permissions to overwrite it."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short"
-msgstr "A data source named "{0}" already exists in project "{1}"."
+msgstr "A data source named ''{0}'' already exists in project ''{1}''."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "A datasource named "{0}" already exists in Personal Space.""
+msgstr "A datasource named ''{0}'' already exists in Personal Space.""
 
 #:
 msgid "errors.permissions.publish.datasource.non_existent"
-msgstr "Data source "{0}" does not exist."
+msgstr "Data source ''{0}'' does not exist."
 
 #:
 msgid "errors.permissions.publish.datasource.general"
@@ -360,11 +360,11 @@ msgstr "Sorry, you do not have permission to publish to this project."
 
 #:
 msgid "errors.permissions.publish.project.non_existent"
-msgstr "Project "{0}" does not exist."
+msgstr "Project ''{0}'' does not exist."
 
 #:
 msgid "errors.permissions.publish.project.not_writable"
-msgstr "You do not have permission to write to the project "{0}"."
+msgstr "You do not have permission to write to the project ''{0}''."
 
 #:
 msgid "errors.permissions.publish.project.unspecified"
@@ -372,7 +372,7 @@ msgstr "You must specify a project"
 
 #:
 msgid "errors.permissions.publish.workbook.disabled"
-msgstr "The workbook "{0}" is disabled."
+msgstr "The workbook ''{0}'' is disabled."
 
 #:
 msgid "errors.permissions.publish.workbook.general"
@@ -384,19 +384,19 @@ msgstr "A workbook with this name exists in the Personal Space you are publishin
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite"
-msgstr "A workbook named "{0}" already exists in project "{1}". You do not have permissions to overwrite it."
+msgstr "A workbook named ''{0}'' already exists in project ''{1}''. You do not have permissions to overwrite it."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_personal_space"
-msgstr "A workbook named "{0}" already exists in Personal Space. You do not have permissions to overwrite it."
+msgstr "A workbook named ''{0}'' already exists in Personal Space. You do not have permissions to overwrite it."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short"
-msgstr "A workbook named "{0}" already exists in project "{1}"."
+msgstr "A workbook named ''{0}'' already exists in project ''{1}''."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
-msgstr "A workbook named "{0}" already exists in Personal Space."
+msgstr "A workbook named ''{0}'' already exists in Personal Space."
 
 #:
 msgid "errors.reportable.impersonation.group_and_user"
@@ -496,7 +496,7 @@ msgstr "Embed password for data source"
 
 #:
 msgid "errors.publish.workbook.google_no_embedded_credentials"
-msgstr "This workbook contains a {0} data source which requires embedded credentials. To save as another workbook, select "{1}"."
+msgstr "This workbook contains a {0} data source which requires embedded credentials. To save as another workbook, select ''{1}''."
 
 #:
 msgid "errors.publish.datasource.google_no_embedded_credentials"
@@ -1316,7 +1316,7 @@ msgstr "No axis found for field {0}"
 
 #:
 msgid "dataalerts.failure.error.paneDescriptorNotFound"
-msgstr "{0}"
+msgstr ''{0}''
 
 #:
 msgid "dataalerts.failure.error.unsupportedComparisonExpression"
@@ -1424,7 +1424,7 @@ msgstr "Your metric isn''t able to refresh, so the metric data isn''t updating. 
 
 #:
 msgid "metricsservices.failure.status"
-msgstr "Your metric "{0}" isn''t refreshing"
+msgstr "Your metric ''{0}'' isn''t refreshing"
 
 #:
 msgid "metricsservices.failure.suspend.email.explanation"
@@ -1436,7 +1436,7 @@ msgstr "You are receiving this email at {0} because your metric refresh was susp
 
 #:
 msgid "metricsservices.failure.suspend.email.status"
-msgstr "Refresh for your metric "{0}" has been suspended"
+msgstr "Refresh for your metric ''{0}'' has been suspended"
 
 #:
 msgid "metricsservices.failure.suspend.email.subject"
@@ -1480,7 +1480,7 @@ msgstr "The refresh for your metric is working again, so it will check for updat
 
 #:
 msgid "metricsservices.success.status"
-msgstr "Refresh for your metric "{0}" has resumed"
+msgstr "Refresh for your metric ''{0}'' has resumed"
 
 #:
 msgid "errors.staticimages.generic"

@@ -1156,7 +1156,7 @@ msgstr "Du är inte medlem på standardplatsen. Välj ett WEBBPLATS-ID från fö
 
 #:
 msgid "session.not_site_member"
-msgstr "Du är inte medlem på webbplatsen "{0}". Välj ett WEBBPLATS-ID från följande platser:"
+msgstr "Du är inte medlem på webbplatsen ''{0}''. Välj ett WEBBPLATS-ID från följande platser:"
 
 #:
 msgid "session.options.help"

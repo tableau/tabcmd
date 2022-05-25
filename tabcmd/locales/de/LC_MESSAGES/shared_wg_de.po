@@ -340,11 +340,11 @@ msgstr "Eine Datenquelle mit dem Namen ''{0}'' ist im Projekt ''{1}'' bereits vo
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "Eine Datenquelle mit dem Namen "{0}" ist bereits im persönlichen Bereich vorhanden.""
+msgstr "Eine Datenquelle mit dem Namen ''{(0)}'' ist bereits im persönlichen Bereich vorhanden.""
 
 #:
 msgid "errors.permissions.publish.datasource.non_existent"
-msgstr "Datenquelle "{0}" ist nicht vorhanden."
+msgstr "Datenquelle ''{(0)}'' ist nicht vorhanden."
 
 #:
 msgid "errors.permissions.publish.datasource.general"
@@ -396,7 +396,7 @@ msgstr "Eine Arbeitsmappe mit dem Namen ''{0}'' ist bereits im Projekt ''{1}'' v
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
-msgstr "Eine Arbeitsmappe mit dem Namen "{0}" ist bereits im persönlichen Bereich vorhanden."
+msgstr "Eine Arbeitsmappe mit dem Namen ''{(0)}'' ist bereits im persönlichen Bereich vorhanden."
 
 #:
 msgid "errors.reportable.impersonation.group_and_user"
@@ -1316,7 +1316,7 @@ msgstr "Keine Achse gefunden für Feld {0}"
 
 #:
 msgid "dataalerts.failure.error.paneDescriptorNotFound"
-msgstr "{0}"
+msgstr ''{0}''
 
 #:
 msgid "dataalerts.failure.error.unsupportedComparisonExpression"
@@ -1424,7 +1424,7 @@ msgstr "Ihre Metrik kann nicht aktualisiert werden, deshalb werden Ihre Metrikda
 
 #:
 msgid "metricsservices.failure.status"
-msgstr "Ihre Metrik "{0}" ist nicht aktualisiert"
+msgstr "Ihre Metrik ''{0}'' ist nicht aktualisiert"
 
 #:
 msgid "metricsservices.failure.suspend.email.explanation"
@@ -1436,7 +1436,7 @@ msgstr "Sie erhalten diese E-Mail um {0}, da Ihre Metrikaktualisierung ausgesetz
 
 #:
 msgid "metricsservices.failure.suspend.email.status"
-msgstr "Die Aktualisierung für Ihre Metrik "{0}" wurde abgebrochen"
+msgstr "Die Aktualisierung für Ihre Metrik ''{0}'' wurde abgebrochen"
 
 #:
 msgid "metricsservices.failure.suspend.email.subject"
@@ -1480,7 +1480,7 @@ msgstr "Die Aktualisierung für Ihre Kennzahl funktioniert wieder und sie sucht 
 
 #:
 msgid "metricsservices.success.status"
-msgstr "Die Aktualisierung für Ihre Metrik "{0}" wird fortgefahren"
+msgstr "Die Aktualisierung für Ihre Metrik ''{0}'' wird fortgefahren"
 
 #:
 msgid "errors.staticimages.generic"

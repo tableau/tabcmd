@@ -398,23 +398,23 @@ msgstr "데이터 원본을 게시하려면 ''인터랙터''여야 합니다."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite"
-msgstr "이름이 "{0}"인 데이터 원본이 프로젝트 "{1}"에 이미 있습니다. 덮어쓸 사용 권한이 없습니다."
+msgstr "이름이 ''{0}''인 데이터 원본이 프로젝트 ''{1}''에 이미 있습니다. 덮어쓸 사용 권한이 없습니다."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_personal_space"
-msgstr "이름이 "{0}"인 데이터 원본이 개인 공간에 이미 있습니다. 덮어쓸 사용 권한이 없습니다."
+msgstr "이름이 ''{0}''인 데이터 원본이 개인 공간에 이미 있습니다. 덮어쓸 사용 권한이 없습니다."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short"
-msgstr "이름이 "{0}"인 데이터 원본이 프로젝트 "{1}"에 이미 있습니다."
+msgstr "이름이 ''{0}''인 데이터 원본이 프로젝트 ''{1}''에 이미 있습니다."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "이름이 "{0}"인 데이터 원본이 개인 공간에 이미 있습니다.""
+msgstr "이름이 ''{0}''인 데이터 원본이 개인 공간에 이미 있습니다.""
 
 #:
 msgid "errors.permissions.publish.datasource.non_existent"
-msgstr "데이터 원본 "{0}"이(가) 없습니다."
+msgstr "데이터 원본 ''{0}''이(가) 없습니다."
 
 #:
 msgid "errors.permissions.publish.datasource.general"
@@ -430,11 +430,11 @@ msgstr "죄송합니다. 이 프로젝트에 게시할 수 있는 사용 권한�
 
 #:
 msgid "errors.permissions.publish.project.non_existent"
-msgstr ""{0}" 프로젝트가 없습니다."
+msgstr "''{0}'' 프로젝트가 없습니다."
 
 #:
 msgid "errors.permissions.publish.project.not_writable"
-msgstr ""{0}" 프로젝트에 쓸 수 있는 사용 권한이 없습니다."
+msgstr "''{0}'' 프로젝트에 쓸 수 있는 사용 권한이 없습니다."
 
 #:
 msgid "errors.permissions.publish.project.unspecified"
@@ -442,7 +442,7 @@ msgstr "프로젝트를 지정해야 합니다."
 
 #:
 msgid "errors.permissions.publish.workbook.disabled"
-msgstr ""{0}" 통합 문서를 사용할 수 없습니다."
+msgstr "''{0}'' 통합 문서를 사용할 수 없습니다."
 
 #:
 msgid "errors.permissions.publish.workbook.general"
@@ -454,19 +454,19 @@ msgstr "게시하려는 개인 공간에 이 이름의 통합 문서가 존재�
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite"
-msgstr "이름이 "{0}"인 통합 문서가 프로젝트 "{1}"에 이미 있습니다. 덮어쓸 사용 권한이 없습니다."
+msgstr "이름이 ''{0}''인 통합 문서가 프로젝트 ''{1}''에 이미 있습니다. 덮어쓸 사용 권한이 없습니다."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_personal_space"
-msgstr "이름이 "{0}"인 통합 문서가 개인 공간에 이미 있습니다. 덮어쓸 사용 권한이 없습니다."
+msgstr "이름이 ''{0}''인 통합 문서가 개인 공간에 이미 있습니다. 덮어쓸 사용 권한이 없습니다."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short"
-msgstr "이름이 "{0}"인 통합 문서가 프로젝트 "{1}"에 이미 있습니다."
+msgstr "이름이 ''{0}''인 통합 문서가 프로젝트 ''{1}''에 이미 있습니다."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
-msgstr "이름이 "{0}"인 통합 문서가 개인 공간에 이미 있습니다."
+msgstr "이름이 ''{0}''인 통합 문서가 개인 공간에 이미 있습니다."
 
 #:
 msgid "errors.reportable.impersonation.group_and_user"
@@ -1386,7 +1386,7 @@ msgstr "{0} 필드의 축을 찾을 수 없음"
 
 #:
 msgid "dataalerts.failure.error.paneDescriptorNotFound"
-msgstr "{0}"
+msgstr ''{0}''
 
 #:
 msgid "dataalerts.failure.error.unsupportedComparisonExpression"
@@ -1494,7 +1494,7 @@ msgstr "메트릭을 새로 고칠 수 없기 때문에 메트릭 데이터가 �
 
 #:
 msgid "metricsservices.failure.status"
-msgstr "메트릭 "{0}"이(가) 새로 고쳐지지 않습니다."
+msgstr "메트릭 ''{0}''이(가) 새로 고쳐지지 않습니다."
 
 #:
 msgid "metricsservices.failure.suspend.email.explanation"
@@ -1506,7 +1506,7 @@ msgstr "메트릭 새로 고침이 일시 중단되어서 이 이메일이 {0} �
 
 #:
 msgid "metricsservices.failure.suspend.email.status"
-msgstr "메트릭 "{0}"에 대한 새로 고침이 일시 중단되었습니다."
+msgstr "메트릭 ''{0}''에 대한 새로 고침이 일시 중단되었습니다."
 
 #:
 msgid "metricsservices.failure.suspend.email.subject"
@@ -1550,7 +1550,7 @@ msgstr "메트릭에 대한 새로 고침이 다시 작동하고 있으므로 �
 
 #:
 msgid "metricsservices.success.status"
-msgstr "메트릭 "{0}"에 대한 새로 고침이 다시 시작되었습니다."
+msgstr "메트릭 ''{0}''에 대한 새로 고침이 다시 시작되었습니다."
 
 #:
 msgid "errors.staticimages.generic"

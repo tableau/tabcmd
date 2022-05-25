@@ -628,7 +628,7 @@ msgstr "För många begäranden"
 
 #:
 msgid "errors.xmlapi.throttled.detail"
-msgstr "För många anrop till "{0}". Försök åter efter {1}."
+msgstr "För många anrop till ''{0}''. Försök åter efter {1}."
 
 #:
 msgid "datasource.publish.check.unpublishable"
@@ -1316,7 +1316,7 @@ msgstr "Ingen axel hittades för fältet {0}"
 
 #:
 msgid "dataalerts.failure.error.paneDescriptorNotFound"
-msgstr "{0}"
+msgstr ''{0}''
 
 #:
 msgid "dataalerts.failure.error.unsupportedComparisonExpression"
@@ -1424,7 +1424,7 @@ msgstr "Det går inte att uppdatera mätvärdet, och mätdata uppdateras därfö
 
 #:
 msgid "metricsservices.failure.status"
-msgstr "Mätvärdet "{0}" uppdateras inte"
+msgstr "Mätvärdet ''{0}'' uppdateras inte"
 
 #:
 msgid "metricsservices.failure.suspend.email.explanation"
@@ -1436,7 +1436,7 @@ msgstr "Du får det här mejlet {0} eftersom uppdateringen av dina mätvärden h
 
 #:
 msgid "metricsservices.failure.suspend.email.status"
-msgstr "Uppdatering av mätvärdet "{0}" har inaktiverats"
+msgstr "Uppdatering av mätvärdet ''{0}'' har inaktiverats"
 
 #:
 msgid "metricsservices.failure.suspend.email.subject"
@@ -1480,7 +1480,7 @@ msgstr "Uppdateringen av mätvärdet fungerar igen, och mätdata kontrollas för
 
 #:
 msgid "metricsservices.success.status"
-msgstr "Uppdateringen av mätvärdet "{0}" har återupptagits"
+msgstr "Uppdateringen av mätvärdet ''{0}'' har återupptagits"
 
 #:
 msgid "errors.staticimages.generic"
