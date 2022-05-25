@@ -340,7 +340,7 @@ msgstr "Ya existe una fuente de datos ''{0}'' en el proyecto ''{1}''."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "Ya existe una fuente de datos ''{0}'' en el Espacio personal.""
+msgstr "Ya existe una fuente de datos ''{0}'' en el Espacio personal."
 
 #:
 msgid "errors.permissions.publish.datasource.non_existent"
@@ -756,7 +756,7 @@ msgstr "ID de clave de cifrado: ''{0}''."
 
 #:
 msgid "extracts.status.encryption_keys"
-msgstr "ID de clave de cifrado antigua: ''{0}''; ID de clave de cifrado nueva: ''{1}''."
+msgstr "ID de clave de cifrado antigua: ''{0}'', ID de clave de cifrado nueva: ''{1}''."
 
 #:
 msgid "extracts.errors.upload"
@@ -1314,9 +1314,6 @@ msgstr "No se encontró el libro de trabajo"
 msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
 msgstr "No se ha encontrado ningún eje para el campo {0}"
 
-#:
-msgid "dataalerts.failure.error.paneDescriptorNotFound"
-msgstr ''{0}''
 
 #:
 msgid "dataalerts.failure.error.unsupportedComparisonExpression"
@@ -1608,7 +1605,7 @@ msgstr "ID de clave de cifrado: ''{0}''."
 
 #:
 msgid "materializedviews.status.encryption_keys"
-msgstr "ID de clave de cifrado antigua: ''{0}''; ID de clave de cifrado nueva: ''{1}''."
+msgstr "ID de clave de cifrado antigua: ''{0}'', ID de clave de cifrado nueva: ''{1}''."
 
 #:
 msgid "materializedviews.status.encryption_type"

@@ -410,7 +410,7 @@ msgstr "이름이 ''{0}''인 데이터 원본이 프로젝트 ''{1}''에 이미 
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "이름이 ''{0}''인 데이터 원본이 개인 공간에 이미 있습니다.""
+msgstr "이름이 ''{0}''인 데이터 원본이 개인 공간에 이미 있습니다."
 
 #:
 msgid "errors.permissions.publish.datasource.non_existent"
@@ -1384,9 +1384,6 @@ msgstr "통합 문서를 찾을 수 없음"
 msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
 msgstr "{0} 필드의 축을 찾을 수 없음"
 
-#:
-msgid "dataalerts.failure.error.paneDescriptorNotFound"
-msgstr ''{0}''
 
 #:
 msgid "dataalerts.failure.error.unsupportedComparisonExpression"

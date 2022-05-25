@@ -1314,9 +1314,6 @@ msgstr "找不到工作簿"
 msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
 msgstr "未找到字段 {0} 的轴"
 
-#:
-msgid "dataalerts.failure.error.paneDescriptorNotFound"
-msgstr ''{0}''
 
 #:
 msgid "dataalerts.failure.error.unsupportedComparisonExpression"

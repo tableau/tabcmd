@@ -996,11 +996,11 @@ msgstr "Materialisierte Ansichts-Umgebung für Arbeitsmappe ''{0}'' wird aktuali
 
 #:
 msgid "materializeviews.errors.invalid_workbook_arguments"
-msgstr "Der Befehl "materializeviews" benötigt ein Argument eines Namens einer Arbeitsmappe"
+msgstr "Der Befehl ''materializeviews'' benötigt ein Argument eines Namens einer Arbeitsmappe"
 
 #:
 msgid "materializeviews.errors.invalid_site_arguments"
-msgstr "Der Befehl "materializeviews" benötigt ein Argument einer Site-ID"
+msgstr "Der Befehl ''materializeviews'' benötigt ein Argument einer Site-ID"
 
 #:
 msgid "materializeviews.errors.invalid_workbook_option"
@@ -1388,7 +1388,7 @@ msgstr "Upgrade von Miniaturbildern abbrechen"
 
 #:
 msgid "upgradethumbnails.continue_promt"
-msgstr "Möchten Sie fortfahren? Geben Sie 1 für "Ja" ein und 0 für "Nein" (1/0)."
+msgstr "Möchten Sie fortfahren? Geben Sie 1 für ''Ja'' ein und 0 für ''Nein'' (1/0)."
 
 #:
 msgid "upgradethumbnails.invalid_response"

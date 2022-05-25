@@ -8,43 +8,43 @@ msgstr ""
 "Language: fr"
 #:
 msgid "commandlineutils.errors.bad_value"
-msgstr "L''option ''{0}'' a la valeur ''{1}'' incorrecte. Ce devrait être une valeur parmi : {2}"
+msgstr "L''option ʼ{0}ʼ a la valeur ''{1}'' incorrecte. Ce devrait être une valeur parmi : {2}"
 
 #:
 msgid "commandlineutils.errors.not_integer"
-msgstr "La valeur ''{0}'' pour l''option ''{1}'' n''est pas un entier"
+msgstr "La valeur ʼ{0}ʼ pour l''option ''{1}'' n''est pas un entier"
 
 #:
 msgid "common.errors.empty_file"
-msgstr "Le fichier ''{0}'' est vide"
+msgstr "Le fichier ʼ{0}ʼ est vide"
 
 #:
 msgid "common.errors.file_not_found"
-msgstr "Impossible d''ouvrir le fichier ''{0}''."
+msgstr "Impossible d''ouvrir le fichier ʼ{0}ʼ."
 
 #:
 msgid "common.errors.invalid_file_path"
-msgstr "Chemin d''accès du fichier ''{0}'' non valide"
+msgstr "Chemin d''accès du fichier ʼ{0}ʼ non valide"
 
 #:
 msgid "common.errors.folder_path_not_found"
-msgstr "Répertoire ''{0}'' introuvable"
+msgstr "Répertoire ʼ{0}ʼ introuvable"
 
 #:
 msgid "common.errors.access_denied"
-msgstr "Accès au fichier ''{0}'' refusé. Vérifiez que le chemin est valide et que le nom de fichier ne correspond pas à un répertoire existant"
+msgstr "Accès au fichier ʼ{0}ʼ refusé. Vérifiez que le chemin est valide et que le nom de fichier ne correspond pas à un répertoire existant"
 
 #:
 msgid "common.errors.requires_csv_file"
-msgstr "La commande ''{0}'' nécessite un fichier CSV"
+msgstr "La commande ʼ{0}ʼ nécessite un fichier CSV"
 
 #:
 msgid "common.errors.requires_group_name"
-msgstr "La commande ''{0}'' nécessite un nom de groupe"
+msgstr "La commande ʼ{0}ʼ nécessite un nom de groupe"
 
 #:
 msgid "common.errors.requires_site_name"
-msgstr "La commande ''{0}'' nécessite un nom de site"
+msgstr "La commande ʼ{0}ʼ nécessite un nom de site"
 
 #:
 msgid "common.errors.options_conflict"
@@ -112,7 +112,7 @@ msgstr "Créer un groupe local"
 
 #:
 msgid "creategroup.status"
-msgstr "Création d''un groupe ''{0}'' sur le serveur..."
+msgstr "Création d''un groupe ʼ{0}ʼ sur le serveur..."
 
 #:
 msgid "creategroup.options.role"
@@ -128,15 +128,15 @@ msgstr "Erreur lors de la création d''extrait"
 
 #:
 msgid "createextracts.for.datasource"
-msgstr "Création d''extrait pour la source de données ''{0}''"
+msgstr "Création d''extrait pour la source de données ʼ{0}ʼ"
 
 #:
 msgid "createextracts.for.workbook_name"
-msgstr "Création de l''extrait avec le classeur portant le nom ''{0}''"
+msgstr "Création de l''extrait avec le classeur portant le nom ʼ{0}ʼ"
 
 #:
 msgid "createextracts.for.workbook_url"
-msgstr "Création d''extrait pour le classeur avec l''URL ''{0}''"
+msgstr "Création d''extrait pour le classeur avec l''URL ʼ{0}ʼ"
 
 #:
 msgid "createextracts.options.datasource"
@@ -200,7 +200,7 @@ msgstr "Création d''un projet"
 
 #:
 msgid "createproject.status"
-msgstr "Création du projet ''{0}'' sur le serveur..."
+msgstr "Création du projet ʼ{0}ʼ sur le serveur..."
 
 #:
 msgid "createsite.errors.invalid_url_option"
@@ -208,11 +208,11 @@ msgstr "Lors de la création de plusieurs sites, l''option d''URL n''est pas val
 
 #:
 msgid "createsite.errors.site_name_already_exists"
-msgstr "Il existe déjà un site appelé ''{0}''. Essayez un nom de site différent."
+msgstr "Il existe déjà un site appelé ʼ{0}ʼ. Essayez un nom de site différent."
 
 #:
 msgid "createsite.errors.site_id_already_exists"
-msgstr "Il existe déjà un site portant l''ID ''{0}''. Utilisez -r pour spécifier un ID de site différent. Consultez l''aide sur la commande tabcmd createsite pour plus d''informations."
+msgstr "Il existe déjà un site portant l''ID ʼ{0}ʼ. Utilisez -r pour spécifier un ID de site différent. Consultez l''aide sur la commande tabcmd createsite pour plus d''informations."
 
 #:
 msgid "createsite.options.allow-mobile-snapshots"
@@ -280,7 +280,7 @@ msgstr "Créer un site"
 
 #:
 msgid "createsite.status"
-msgstr "Créer le site ''{0}'' sur le serveur..."
+msgstr "Créer le site ʼ{0}ʼ sur le serveur..."
 
 #:
 msgid "createsiteusers.options.auth-type"
@@ -324,7 +324,7 @@ msgstr "Impossible de spécifier à la fois un classeur et une source de donnée
 
 #:
 msgid "delete.errors.requires_workbook_datasource"
-msgstr "La commande ''{0}'' nécessite un nom de classeur ou un nom de source de données"
+msgstr "La commande ʼ{0}ʼ nécessite un nom de classeur ou un nom de source de données"
 
 #:
 msgid "delete.options.datasource"
@@ -336,7 +336,7 @@ msgstr "Chemin du parent du projet contenant le classeur/la source de données �
 
 #:
 msgid "delete.options.project"
-msgstr "Projet contenant le classeur/la source de données à supprimer. Le projet par défaut est ''{0}''"
+msgstr "Projet contenant le classeur/la source de données à supprimer. Le projet par défaut est ʼ{0}ʼ"
 
 #:
 msgid "delete.options.workbook"
@@ -360,15 +360,15 @@ msgstr "Erreur lors de la suppression de l''extrait"
 
 #:
 msgid "deleteextracts.for.datasource"
-msgstr "Suppression d''extrait pour la source de données ''{0}''"
+msgstr "Suppression d''extrait pour la source de données ʼ{0}ʼ"
 
 #:
 msgid "deleteextracts.for.workbook_name"
-msgstr "Suppression d''un extrait pour le classeur portant le nom ''{0}''"
+msgstr "Suppression d''un extrait pour le classeur portant le nom ʼ{0}ʼ"
 
 #:
 msgid "deleteextracts.for.workbook_url"
-msgstr "Suppression d''extrait pour le classeur avec l''URL ''{0}''"
+msgstr "Suppression d''extrait pour le classeur avec l''URL ʼ{0}ʼ"
 
 #:
 msgid "deleteextracts.options.datasource"
@@ -416,11 +416,11 @@ msgstr "Supprimer un groupe"
 
 #:
 msgid "deletegroup.status"
-msgstr "Suppression du groupe ''{0}'' du serveur..."
+msgstr "Suppression du groupe ʼ{0}ʼ du serveur..."
 
 #:
 msgid "deleteproject.errors.requires_project_name"
-msgstr "La commande ''{0}'' nécessite un nom de projet"
+msgstr "La commande ʼ{0}ʼ nécessite un nom de projet"
 
 #:
 msgid "deleteproject.options.parent-project-path"
@@ -432,7 +432,7 @@ msgstr "Supprimer un projet"
 
 #:
 msgid "deleteproject.status"
-msgstr "Suppression du projet ''{0}'' du serveur..."
+msgstr "Suppression du projet ʼ{0}ʼ du serveur..."
 
 #:
 msgid "deletesite.errors.logged_into_this_site"
@@ -444,7 +444,7 @@ msgstr "Supprimer un site"
 
 #:
 msgid "deletesite.status"
-msgstr "Suppression du site ''{0}'' du serveur..."
+msgstr "Suppression du site ʼ{0}ʼ du serveur..."
 
 #:
 msgid "deletesiteusers.description"
@@ -472,11 +472,11 @@ msgstr "Suppression des utilisateurs répertoriés dans {0} du serveur..."
 
 #:
 msgid "editdomain.description"
-msgstr "Modifier un domaine. Utilisez la commande ''{0}'' pour afficher une liste de domaines à modifier"
+msgstr "Modifier un domaine. Utilisez la commande ʼ{0}ʼ pour afficher une liste de domaines à modifier"
 
 #:
 msgid "editdomain.errors.requires_nickname_name"
-msgstr "Une option ''{0}'' ou ''{1}'' doit être spécifiée"
+msgstr "Une option ʼ{0}ʼ ou ''{1}'' doit être spécifiée"
 
 #:
 msgid "editdomain.options.id"
@@ -500,7 +500,7 @@ msgstr "{0}ID{1}Surnom{1}{1}Nom{0}"
 
 #:
 msgid "editdomain.status"
-msgstr "Modifier le domaine possédant l''ID ''{0}'' sur le serveur..."
+msgstr "Modifier le domaine possédant l''ID ʼ{0}ʼ sur le serveur..."
 
 #:
 msgid "editsite.errors.invalid_site-id"
@@ -536,7 +536,7 @@ msgstr "Afficher le nom du site"
 
 #:
 msgid "editsite.options.status"
-msgstr "Modifier la disponibilité du site. Celle-ci doit être ''{0}'' ou ''{1}''"
+msgstr "Modifier la disponibilité du site. Celle-ci doit être ʼ{0}ʼ ou ''{1}''"
 
 #:
 msgid "editsite.options.allow-materialized-views"
@@ -568,7 +568,7 @@ msgstr "Modifier un site"
 
 #:
 msgid "editsite.status"
-msgstr "Modifier le site ''{0}'' sur le serveur..."
+msgstr "Modifier le site ʼ{0}ʼ sur le serveur..."
 
 #:
 msgid "encryptextracts.short_description"
@@ -588,11 +588,11 @@ msgstr "Le nom du classeur ou de la vue à exporter ne peut pas inclure d''espac
 
 #:
 msgid "export.errors.requires_workbook_view_name"
-msgstr "La commande ''{0}'' nécessite un nom de <classeur>/<vue>"
+msgstr "La commande ʼ{0}ʼ nécessite un nom de <classeur>/<vue>"
 
 #:
 msgid "export.errors.requires_workbook_view_param"
-msgstr "La commande ''{0}'' nécessite un paramètre de <classeur>/<vue> contenant au moins une barre oblique (/)"
+msgstr "La commande ʼ{0}ʼ nécessite un paramètre de <classeur>/<vue> contenant au moins une barre oblique (/)"
 
 #:
 msgid "export.options.country"
@@ -640,7 +640,7 @@ msgstr "Exporter les données ou une image d''une vue depuis le serveur"
 
 #:
 msgid "export.status"
-msgstr "Requête de ''{0}'' en provenance du serveur..."
+msgstr "Requête de ʼ{0}ʼ en provenance du serveur..."
 
 #:
 msgid "export.success"
@@ -660,7 +660,7 @@ msgstr "Obtenir un fichier du serveur. Si aucun argument de nom de fichier n''es
 
 #:
 msgid "get.errors.requires_url"
-msgstr "La commande ''{0}'' nécessite une URL"
+msgstr "La commande ʼ{0}ʼ nécessite une URL"
 
 #:
 msgid "get.options.file"
@@ -764,7 +764,7 @@ msgstr "Publier un classeur, une source de données ou un extrait sur le serveur
 
 #:
 msgid "publish.errors.invalid_datasource_update_file_type"
-msgstr "Type de fichier ''{0}'' incorrect pour la mise à jour d''une source de données. Le remplacement/l''ajout ne s''applique qu''à un fichier d''extrait (.tde)"
+msgstr "Type de fichier ʼ{0}ʼ incorrect pour la mise à jour d''une source de données. Le remplacement/l''ajout ne s''applique qu''à un fichier d''extrait (.tde)"
 
 #:
 msgid "publish.errors.invalid_name_option"
@@ -772,7 +772,7 @@ msgstr "L''option {0} n''est pas valide lorsque vous publiez plusieurs élément
 
 #:
 msgid "publish.errors.invalid_publish_file_type"
-msgstr "Type de fichier ''{0}'' incorrect pour la publication ; un fichier .tde, .tds, .tdsx, .twb ou .twbx était attendu"
+msgstr "Type de fichier ʼ{0}ʼ incorrect pour la publication ; un fichier .tde, .tds, .tdsx, .twb ou .twbx était attendu"
 
 #:
 msgid "publish.errors.mutually_exclusive_option"
@@ -780,7 +780,7 @@ msgstr "N''utiliser qu''une valeur parmi {0} et {1}"
 
 #:
 msgid "publish.errors.requires_resource_file"
-msgstr "La commande ''{0}'' nécessite un classeur, une source de données ou un fichier d''extrait"
+msgstr "La commande ʼ{0}ʼ nécessite un classeur, une source de données ou un fichier d''extrait"
 
 #:
 msgid "publish.errors.unexpected_server_response"
@@ -864,7 +864,7 @@ msgstr "Si le classeur contient des filtres utilisateur, empruntez l''identité 
 
 #:
 msgid "publish.status"
-msgstr "Publication de ''{0}'' sur le serveur. Ceci peut prendre quelques minutes..."
+msgstr "Publication de ʼ{0}ʼ sur le serveur. Ceci peut prendre quelques minutes..."
 
 #:
 msgid "publish.success"
@@ -972,7 +972,7 @@ msgstr "Suppression des utilisateurs répertoriés dans {0} du groupe {1}..."
 
 #:
 msgid "runschedule.errors.requires_schedule_name"
-msgstr "La commande ''{0}'' nécessite un nom de programmation"
+msgstr "La commande ʼ{0}ʼ nécessite un nom de programmation"
 
 #:
 msgid "runschedule.short_description"
@@ -980,7 +980,7 @@ msgstr "Exécuter une programmation"
 
 #:
 msgid "runschedule.status"
-msgstr "Exécution de la programmation ''{0}'' sur le serveur..."
+msgstr "Exécution de la programmation ʼ{0}ʼ sur le serveur..."
 
 #:
 msgid "materializeviews.short_description"
@@ -988,11 +988,11 @@ msgstr "Mettre à jour et vérifier les paramètres Vues matérialisées pour le
 
 #:
 msgid "materializeviews.status.site"
-msgstr "Mise à jour du paramètre Vues matérialisées pour le site ''{0}''..."
+msgstr "Mise à jour du paramètre Vues matérialisées pour le site ʼ{0}ʼ..."
 
 #:
 msgid "materializeviews.status.workbook"
-msgstr "Mise à jour du paramètre Vues matérialisées pour le classeur ''{0}''..."
+msgstr "Mise à jour du paramètre Vues matérialisées pour le classeur ʼ{0}ʼ..."
 
 #:
 msgid "materializeviews.errors.invalid_workbook_arguments"
@@ -1004,55 +1004,55 @@ msgstr "La commande materializeviews requiert un argument d''ID de site"
 
 #:
 msgid "materializeviews.errors.invalid_workbook_option"
-msgstr "Utiliser ''{0}'' ou ''{1}'' avec ''{2}''"
+msgstr "Utiliser ʼ{0}ʼ ou ''{1}'' avec ''{2}''"
 
 #:
 msgid "materializeviews.errors.invalid_project_path"
-msgstr "Utiliser ''{1}'' avec ''{0}''"
+msgstr "Utiliser ''{1}'' avec ʼ{0}ʼ"
 
 #:
 msgid "materializeviews.errors.invalid_site_option"
-msgstr "Utiliser ''{0}'' avec ''{1}''"
+msgstr "Utiliser ʼ{0}ʼ avec ''{1}''"
 
 #:
 msgid "materializeviews.errors.site_mode_conflict"
-msgstr "Utiliser ''{0}'' ou ''{1}'' pour modifier le mode Vues matérialisées du site"
+msgstr "Utiliser ʼ{0}ʼ ou ''{1}'' pour modifier le mode Vues matérialisées du site"
 
 #:
 msgid "materializeviews.errors.site_not_updated"
-msgstr "Le site ''{0}'' n''a pas été mis à jour, seuls les administrateurs de serveur peuvent modifier le paramètre Vues matérialisées"
+msgstr "Le site ʼ{0}ʼ n''a pas été mis à jour, seuls les administrateurs de serveur peuvent modifier le paramètre Vues matérialisées"
 
 #:
 msgid "materializeviews.errors.invalid_argument_options_combination"
-msgstr "Utiliser ''{0}'' ou ''{1}'' pour modifier le paramètre Vues matérialisées"
+msgstr "Utiliser ʼ{0}ʼ ou ''{1}'' pour modifier le paramètre Vues matérialisées"
 
 #:
 msgid "materializeviews.options.materialize_now"
-msgstr "Utiliser ''{0}'' pour programmer la matérialisation d''un classeur donné immédiatement"
+msgstr "Utiliser ʼ{0}ʼ pour programmer la matérialisation d''un classeur donné immédiatement"
 
 #:
 msgid "materializeviews.options.project"
-msgstr "Utiliser ''{0}'' pour spécifier le nom du projet"
+msgstr "Utiliser ʼ{0}ʼ pour spécifier le nom du projet"
 
 #:
 msgid "materializeviews.options.parent_project_path"
-msgstr "Utiliser ''{0}'' pour spécifier le chemin d''accès du projet parent à ''{1}''"
+msgstr "Utiliser ʼ{0}ʼ pour spécifier le chemin d''accès du projet parent à ''{1}''"
 
 #:
 msgid "materializeviews.options.allow_workbook"
-msgstr "Utiliser ''{0}'' pour activer/désactiver les vues matérialisée pour un classeur"
+msgstr "Utiliser ʼ{0}ʼ pour activer/désactiver les vues matérialisée pour un classeur"
 
 #:
 msgid "materializeviews.options.allow_site"
-msgstr "Utiliser ''{0}'' pour activer/désactiver les vues matérialisée pour un site"
+msgstr "Utiliser ʼ{0}ʼ pour activer/désactiver les vues matérialisée pour un site"
 
 #:
 msgid "materializeviews.options.selected_workbooks"
-msgstr "Utiliser ''{0}'' pour activer les classeurs sélectionnés sur le site (utilisé avec l''option ''{1}''). Il s''agit de l''option par défaut"
+msgstr "Utiliser ʼ{0}ʼ pour activer les classeurs sélectionnés sur le site (utilisé avec l''option ''{1}''). Il s''agit de l''option par défaut"
 
 #:
 msgid "materializeviews.options.all_workbooks"
-msgstr "Utiliser ''{0}'' pour activer tous les classeurs du site (utilisé avec l''option ''{1}'')"
+msgstr "Utiliser ʼ{0}ʼ pour activer tous les classeurs du site (utilisé avec l''option ''{1}'')"
 
 #:
 msgid "session.auto_site_login"
@@ -1096,7 +1096,7 @@ msgstr "Aucune adresse de redirection dans la réponse de redirection"
 
 #:
 msgid "session.errors.no_sslcafile_found"
-msgstr "Impossible de trouver un fichier d''autorité de certification (CA) dans ces emplacements : ''{0}''. Le fichier sert à assurer une communication sécurisée avec Tableau Server. Pour des informations sur la création d''un fichier CA, voir l''aide de Tableau Server. Pour vous connecter à Tableau Server sans valider son certificat SSL, utilisez le drapeau --no-certcheck."
+msgstr "Impossible de trouver un fichier d''autorité de certification (CA) dans ces emplacements : ʼ{0}ʼ. Le fichier sert à assurer une communication sécurisée avec Tableau Server. Pour des informations sur la création d''un fichier CA, voir l''aide de Tableau Server. Pour vous connecter à Tableau Server sans valider son certificat SSL, utilisez le drapeau --no-certcheck."
 
 #:
 msgid "session.errors.script_no_password"
@@ -1156,7 +1156,7 @@ msgstr "Vous n''êttes pas membre du site par défaut. Sélectionnez un SITEID p
 
 #:
 msgid "session.not_site_member"
-msgstr "Vous n''êtes pas membre du site ''{0}''. Sélectionnez un SITEID parmi les sites suivants :"
+msgstr "Vous n''êtes pas membre du site ʼ{0}ʼ. Sélectionnez un SITEID parmi les sites suivants :"
 
 #:
 msgid "session.options.help"
@@ -1232,7 +1232,7 @@ msgstr "Utilisation du certificat client pour se connecter"
 
 #:
 msgid "session.inferred_username"
-msgstr "Connexion en tant qu''utilisateur ''{0}'' puisqu''aucun indicateur --username n''a été spécifié"
+msgstr "Connexion en tant qu''utilisateur ʼ{0}ʼ puisqu''aucun indicateur --username n''a été spécifié"
 
 #:
 msgid "sessiondata.errors.bad_api"
@@ -1248,15 +1248,15 @@ msgstr "La version {0} de Tabcmd (API {1}) ne correspond pas à la version {2} d
 
 #:
 msgid "sessionoptions.errors.ambiguous_scheme"
-msgstr "Spécifiez ''{0}'' ou ''{1}'' avant le nom du serveur"
+msgstr "Spécifiez ʼ{0}ʼ ou ''{1}'' avant le nom du serveur"
 
 #:
 msgid "sessionoptions.errors.bad_password_file"
-msgstr "Impossible de lire le mot de passe depuis le fichier ''{0}''"
+msgstr "Impossible de lire le mot de passe depuis le fichier ʼ{0}ʼ"
 
 #:
 msgid "sessionoptions.errors.bad_protocol"
-msgstr "Le protocole ''{0}'' n''est pas pris en charge"
+msgstr "Le protocole ʼ{0}ʼ n''est pas pris en charge"
 
 #:
 msgid "sessionoptions.errors.bad_proxy_format"
@@ -1272,11 +1272,11 @@ msgstr "Définir un paramètre sur le serveur. Utiliser !setting pour désactive
 
 #:
 msgid "set.errors.requires_setting_name"
-msgstr "La commande ''{0}'' nécessite un nom de paramètre"
+msgstr "La commande ʼ{0}ʼ nécessite un nom de paramètre"
 
 #:
 msgid "set.errors.single_setting_name"
-msgstr "La commande ''{0}'' gère un nom de paramètre unique"
+msgstr "La commande ʼ{0}ʼ gère un nom de paramètre unique"
 
 #:
 msgid "set.short_description"
@@ -1284,11 +1284,11 @@ msgstr "Définir un paramètre sur le serveur"
 
 #:
 msgid "setsetting.status"
-msgstr "Définition de ''{0}'' sur {1}"
+msgstr "Définition de ʼ{0}ʼ sur {1}"
 
 #:
 msgid "syncgroup.errors.server_admin"
-msgstr "Le rôle sur le site minimum d''un groupe ne peut pas être défini sur "ServerAdministrator"."
+msgstr "Le rôle sur le site minimum d''un groupe ne peut pas être défini sur ''ServerAdministrator''."
 
 #:
 msgid "syncgroup.options.role"
@@ -1324,11 +1324,11 @@ msgstr "[Rétrogradé. Utilisez --role à la place.] Attribue [ou supprime] le d
 
 #:
 msgid "tabcmd.mutually_exclusive_options"
-msgstr "Impossible de spécifier ''{0}'' et ''{1}'' dans la même commande"
+msgstr "Impossible de spécifier ʼ{0}ʼ et ''{1}'' dans la même commande"
 
 #:
 msgid "tabcmdparser.errors.ambiguous_option"
-msgstr "Option ''{0}'' ambiguë parmi les options : {1}"
+msgstr "Option ʼ{0}ʼ ambiguë parmi les options : {1}"
 
 #:
 msgid "tabcmdparser.warning.unexpected_dash"

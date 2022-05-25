@@ -1288,7 +1288,7 @@ msgstr "Ställer in ''{0}'' på {1}"
 
 #:
 msgid "syncgroup.errors.server_admin"
-msgstr "Den minsta platsrollen för en grupp kan inte vara "ServerAdministrator"."
+msgstr "Den minsta platsrollen för en grupp kan inte vara ''ServerAdministrator''."
 
 #:
 msgid "syncgroup.options.role"

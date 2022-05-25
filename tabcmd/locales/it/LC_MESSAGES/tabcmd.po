@@ -408,7 +408,7 @@ msgstr "Esiste già un''origine dati con il nome ''{0}'' nel progetto ''{1}''."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "Esiste già un''origine dati con il nome ''{0}'' nello spazio personale.""
+msgstr "Esiste già un''origine dati con il nome ''{0}'' nello spazio personale."
 
 #:
 msgid "errors.permissions.publish.datasource.non_existent"
@@ -1382,9 +1382,6 @@ msgstr "Cartella di lavoro non trovata"
 msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
 msgstr "Nessun asse trovato per il campo {0}"
 
-#:
-msgid "dataalerts.failure.error.paneDescriptorNotFound"
-msgstr ''{0}''
 
 #:
 msgid "dataalerts.failure.error.unsupportedComparisonExpression"

@@ -1314,9 +1314,6 @@ msgstr "Det gick inte att hitta arbetsboken"
 msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
 msgstr "Ingen axel hittades för fältet {0}"
 
-#:
-msgid "dataalerts.failure.error.paneDescriptorNotFound"
-msgstr ''{0}''
 
 #:
 msgid "dataalerts.failure.error.unsupportedComparisonExpression"

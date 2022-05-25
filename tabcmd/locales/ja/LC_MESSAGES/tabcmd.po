@@ -408,7 +408,7 @@ msgstr "''{0}'' という名前のデータ ソースはプロジェクト ''{1}
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "''{0}'' という名前のデータ ソースは個人用スペースに既に存在します。""
+msgstr "''{0}'' という名前のデータ ソースは個人用スペースに既に存在します。"
 
 #:
 msgid "errors.permissions.publish.datasource.non_existent"
@@ -1382,9 +1382,6 @@ msgstr "ワークブックが見つかりません"
 msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
 msgstr "フィールド {0} に軸はありません"
 
-#:
-msgid "dataalerts.failure.error.paneDescriptorNotFound"
-msgstr ''{0}''
 
 #:
 msgid "dataalerts.failure.error.unsupportedComparisonExpression"

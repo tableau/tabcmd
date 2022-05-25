@@ -340,7 +340,7 @@ msgstr "Eine Datenquelle mit dem Namen ''{0}'' ist im Projekt ''{1}'' bereits vo
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "Eine Datenquelle mit dem Namen ''{(0)}'' ist bereits im persönlichen Bereich vorhanden.""
+msgstr "Eine Datenquelle mit dem Namen ''{(0)}'' ist bereits im persönlichen Bereich vorhanden."
 
 #:
 msgid "errors.permissions.publish.datasource.non_existent"
@@ -1314,9 +1314,6 @@ msgstr "Arbeitsmappe nicht gefunden"
 msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
 msgstr "Keine Achse gefunden für Feld {0}"
 
-#:
-msgid "dataalerts.failure.error.paneDescriptorNotFound"
-msgstr ''{0}''
 
 #:
 msgid "dataalerts.failure.error.unsupportedComparisonExpression"

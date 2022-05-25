@@ -340,7 +340,7 @@ msgstr "46800-表:Å ďätä soűяçé ฑäméď ''{0}'' äłяéäďy éxıst
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "75382-表:Å ďätäsoűяçé ฑäméď ''{0}'' äłяéäďy éxısts ıฑ Péяsoฑäł Şpäçé."|"
+msgstr "75382-表:Å ďätäsoűяçé ฑäméď ''{0}'' äłяéäďy éxısts ıฑ Péяsoฑäł Şpäçé.|"
 
 #:
 msgid "errors.permissions.publish.datasource.non_existent"

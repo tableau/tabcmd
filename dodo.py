@@ -78,8 +78,9 @@ def task_po():
                                          LOC_PATH + "/"+basename+".properties",
                                          LOC_PATH + "/LC_MESSAGES/"+basename+".po"])
                 print("\n", result)
-                print("stdout:", result.stdout)
-                print("stderr:", result.stderr)
+                # print("stdout:", result.stdout)
+                if not result.returncode == 0:
+                    print("stderr:", result.stderr)
     return {
         'actions': [process_locales],
         'verbosity': 2,
@@ -156,9 +157,10 @@ def task_mo():
             print("writing final tabcmd.mo file")
             # build the single binary file from the .po file
             result = subprocess.run(["python", "bin/i18n/msgfmt.py", LOC_PATH + "/tabcmd"])
-            print(result)
-            print("stdout:", result.stdout)
-            print("stderr:", result.stderr)
+            print("\n", result)
+            # print("stdout:", result.stdout)
+            if not result.returncode == 0:
+                print("stderr:", result.stderr)
 
     return {
         'actions': [process_locales],

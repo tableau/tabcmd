@@ -288,7 +288,7 @@ msgstr "Asigna el tipo de autenticación de todos los usuarios del archivo CSV. 
 
 #:
 msgid "createsiteusers.description"
-msgstr "Crear usuarios en el sitio actual. Los usuarios se leen a partir del archivo CSV especificado. El archivo puede tener las columnas en el orden que se muestra a continuación.{0}1. Nombre de usuario{0}2. Contraseña        (Se omite en caso de usar Active Directory){0}3. Nombre descriptivo   (Se omite en caso de usar Active Directory){0}4. Nivel de licencia ({1}, {2}, {3}, {4} o {5}){0}5. Administrador ({6}/{7}){0}6. Publicador ({8}/{9}/1 o {10}/{11}/0){0}7. Correo electrónico (solo para Tableau Public){0}El archivo puede tener menos columnas. Por ejemplo, puede ser una lista simple con un nombre de usuario por línea. Puede usar comillas si un valor contiene comas. Tabcmd espera hasta que la tarea de {12} se completa.  Puede elegir no esperar a que se complete la tarea en el servidor y volver inmediatamente pasando el selector {13}. Con este comando no se pueden eliminar ni degradar administradores de sistema. Para ello, use "{14}""
+msgstr "Crear usuarios en el sitio actual. Los usuarios se leen a partir del archivo CSV especificado. El archivo puede tener las columnas en el orden que se muestra a continuación.{0}1. Nombre de usuario{0}2. Contraseña        (Se omite en caso de usar Active Directory){0}3. Nombre descriptivo   (Se omite en caso de usar Active Directory){0}4. Nivel de licencia ({1}, {2}, {3}, {4} o {5}){0}5. Administrador ({6}/{7}){0}6. Publicador ({8}/{9}/1 o {10}/{11}/0){0}7. Correo electrónico (solo para Tableau Public){0}El archivo puede tener menos columnas. Por ejemplo, puede ser una lista simple con un nombre de usuario por línea. Puede usar comillas si un valor contiene comas. Tabcmd espera hasta que la tarea de {12} se completa.  Puede elegir no esperar a que se complete la tarea en el servidor y volver inmediatamente pasando el selector {13}. Con este comando no se pueden eliminar ni degradar administradores de sistema. Para ello, use ''{14}''"
 
 #:
 msgid "createsiteusers.short_description"
@@ -1288,7 +1288,7 @@ msgstr "Configurando ''{0}'' a {1}"
 
 #:
 msgid "syncgroup.errors.server_admin"
-msgstr "El rol en el sitio mínimo de un grupo no se puede configurar como "ServerAdministrator"."
+msgstr "El rol en el sitio mínimo de un grupo no se puede configurar como ''ServerAdministrator''."
 
 #:
 msgid "syncgroup.options.role"

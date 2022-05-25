@@ -408,11 +408,11 @@ msgstr "Eine Datenquelle mit dem Namen ''{0}'' ist im Projekt ''{1}'' bereits vo
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "Eine Datenquelle mit dem Namen ''{0}'' ist bereits im persönlichen Bereich vorhanden.""
+msgstr "Eine Datenquelle mit dem Namen ''{(0)}'' ist bereits im persönlichen Bereich vorhanden."
 
 #:
 msgid "errors.permissions.publish.datasource.non_existent"
-msgstr "Datenquelle ''{0}'' ist nicht vorhanden."
+msgstr "Datenquelle ''{(0)}'' ist nicht vorhanden."
 
 #:
 msgid "errors.permissions.publish.datasource.general"
@@ -464,7 +464,7 @@ msgstr "Eine Arbeitsmappe mit dem Namen ''{0}'' ist bereits im Projekt ''{1}'' v
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
-msgstr "Eine Arbeitsmappe mit dem Namen ''{0}'' ist bereits im persönlichen Bereich vorhanden."
+msgstr "Eine Arbeitsmappe mit dem Namen ''{(0)}'' ist bereits im persönlichen Bereich vorhanden."
 
 #:
 msgid "errors.reportable.impersonation.group_and_user"
@@ -1382,9 +1382,6 @@ msgstr "Arbeitsmappe nicht gefunden"
 msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
 msgstr "Keine Achse gefunden für Feld {0}"
 
-#:
-msgid "dataalerts.failure.error.paneDescriptorNotFound"
-msgstr ''{0}''
 
 #:
 msgid "dataalerts.failure.error.unsupportedComparisonExpression"
@@ -2857,11 +2854,11 @@ msgstr "Materialisierte Ansichts-Umgebung für Arbeitsmappe ''{0}'' wird aktuali
 
 #:
 msgid "materializeviews.errors.invalid_workbook_arguments"
-msgstr "Der Befehl "materializeviews" benötigt ein Argument eines Namens einer Arbeitsmappe"
+msgstr "Der Befehl ''materializeviews'' benötigt ein Argument eines Namens einer Arbeitsmappe"
 
 #:
 msgid "materializeviews.errors.invalid_site_arguments"
-msgstr "Der Befehl "materializeviews" benötigt ein Argument einer Site-ID"
+msgstr "Der Befehl ''materializeviews'' benötigt ein Argument einer Site-ID"
 
 #:
 msgid "materializeviews.errors.invalid_workbook_option"
@@ -3249,7 +3246,7 @@ msgstr "Upgrade von Miniaturbildern abbrechen"
 
 #:
 msgid "upgradethumbnails.continue_promt"
-msgstr "Möchten Sie fortfahren? Geben Sie 1 für "Ja" ein und 0 für "Nein" (1/0)."
+msgstr "Möchten Sie fortfahren? Geben Sie 1 für ''Ja'' ein und 0 für ''Nein'' (1/0)."
 
 #:
 msgid "upgradethumbnails.invalid_response"

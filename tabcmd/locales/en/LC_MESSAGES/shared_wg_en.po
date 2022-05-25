@@ -1314,9 +1314,6 @@ msgstr "Workbook not found"
 msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
 msgstr "No axis found for field {0}"
 
-#:
-msgid "dataalerts.failure.error.paneDescriptorNotFound"
-msgstr ''{0}''
 
 #:
 msgid "dataalerts.failure.error.unsupportedComparisonExpression"

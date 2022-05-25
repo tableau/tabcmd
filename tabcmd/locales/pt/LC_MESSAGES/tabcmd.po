@@ -408,7 +408,7 @@ msgstr "Uma fonte de dados denominada ''{0}'' já existe no projeto ''{1}''."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "Uma fonte de dados denominada ''{0}'' já existe no Espaço pessoal.""
+msgstr "Uma fonte de dados denominada ''{0}'' já existe no Espaço pessoal."
 
 #:
 msgid "errors.permissions.publish.datasource.non_existent"
@@ -1382,9 +1382,6 @@ msgstr "Pasta de trabalho não encontrada"
 msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
 msgstr "Nenhum eixo encontrado para o campo {0}"
 
-#:
-msgid "dataalerts.failure.error.paneDescriptorNotFound"
-msgstr ''{0}''
 
 #:
 msgid "dataalerts.failure.error.unsupportedComparisonExpression"
