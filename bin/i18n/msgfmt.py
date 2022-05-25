@@ -195,7 +195,7 @@ def make(filename, outfile):
         try:
             l = ast.literal_eval(l)
         except:
-            print("ERROR (skipped)", lno, msgid, l)
+            print("ERROR (skipped)", lno, msgid)
             pass
         if section == CTXT:
             msgctxt += l.encode(encoding)

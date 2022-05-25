@@ -4,8 +4,8 @@ import subprocess
 import ftfy
 
 LOCALES = [
-    # "en", "de", "es", "fr", "ga", "it", "pt",
-    # "sv", "ja", "ko",
+    "en", "de", "es", "fr", "ga", "it", "pt",
+    "sv", "ja", "ko",
     "zh"]
 
 """
