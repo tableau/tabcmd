@@ -1,6 +1,11 @@
 #! /usr/bin/env python3
 # Written by Martin v. Löwis <loewis@informatik.hu-berlin.de>
 
+""" Updated to handle utf-8 files and give better error messages
+TODO contribute back?
+"""
+
+
 """Generate binary message catalog from textual translation description.
 
 This program converts a textual Uniforum-style message catalog (.po file) into
@@ -187,7 +192,11 @@ def make(filename, outfile):
         l = l.strip()
         if not l:
             continue
-        l = ast.literal_eval(l)
+        try:
+            l = ast.literal_eval(l)
+        except:
+            print("ERROR (skipped)", lno, msgid, l)
+            pass
         if section == CTXT:
             msgctxt += l.encode(encoding)
         elif section == ID:
