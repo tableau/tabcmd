@@ -1,2193 +1,1792 @@
-#. extracted from tabcmd/locales/de\shared_wg_de.properties
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-25 04:01-0700\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 3.6.2\n"
-
-#: permissions.labels.capabilities.read
-msgid "Ansicht:"
-msgstr ""
-
-#: permissions.labels.capabilities.write
-msgid "Überschreiben:"
-msgstr ""
-
-#: permissions.labels.capabilities.write.legacy
-msgid "Speichern:"
-msgstr ""
-
-#: permissions.labels.capabilities.delete
-msgid "Löschen:"
-msgstr ""
-
-#: permissions.labels.capabilities.filter
-msgid "Filter:"
-msgstr ""
-
-#: permissions.labels.capabilities.add_tag
-msgid "Tag hinzufügen:"
-msgstr ""
-
-#: permissions.labels.capabilities.add_favorite
-msgid "Favorit hinzufügen:"
-msgstr ""
-
-#: permissions.labels.capabilities.add_comment
-msgid "Kommentare hinzufügen:"
-msgstr ""
-
-#: permissions.labels.capabilities.add_comment.legacy
-msgid "Kommentar hinzufügen:"
-msgstr ""
-
-#: permissions.labels.capabilities.view_comments
-msgid "Kommentare anzeigen:"
-msgstr ""
-
-#: permissions.labels.capabilities.vud
-msgid "Vollständige Daten herunterladen:"
-msgstr ""
-
-#: permissions.labels.capabilities.export_image
-msgid "Bild/PDF herunterladen:"
-msgstr ""
-
-#: permissions.labels.capabilities.export_data
-msgid "Zusammenfassungsdaten herunterladen:"
-msgstr ""
-
-#: permissions.labels.capabilities.export_xml
-msgid "Kopie herunterladen/speichern:"
-msgstr ""
-
-#: permissions.labels.capabilities.export_xml.legacy
-msgid "Herunterladen/Speichern als:"
-msgstr ""
-
-#: permissions.labels.capabilities.save_customized_view
-msgid "Angepasste Ansicht speichern:"
-msgstr ""
-
-#: permissions.labels.capabilities.share_view
-msgid "Angepasste Ansicht freigeben:"
-msgstr ""
-
-#: permissions.labels.capabilities.stateful_url
-msgid "Permalink:"
-msgstr ""
-
-#: permissions.labels.capabilities.change_hierarchy
-msgid "Verschieben:"
-msgstr ""
-
-#: permissions.labels.capabilities.change_permissions
-msgid "Berechtigungen festlegen:"
-msgstr ""
-
-#: permissions.labels.capabilities.exclude
-msgid "Ausschließen:"
-msgstr ""
-
-#: permissions.labels.capabilities.keep_only
-msgid "Nur beibehalten:"
-msgstr ""
-
-#: permissions.labels.capabilities.select
-msgid "Markierungen auswählen:"
-msgstr ""
-
-#: permissions.labels.capabilities.tooltip
-msgid "QuickInfo anzeigen:"
-msgstr ""
-
-#: permissions.labels.capabilities.highlight
-msgid "Legendenhervorhebung:"
-msgstr ""
-
-#: permissions.labels.capabilities.url_link
-msgid "Link zu externen URLs:"
-msgstr ""
-
-#: permissions.labels.capabilities.administrator
-msgid "Administrator:"
-msgstr ""
-
-#: permissions.labels.capabilities.content_admin
-msgid "Content-Administrator:"
-msgstr ""
-
-#: permissions.labels.capabilities.create_groups
-msgid "Gruppen erstellen:"
-msgstr ""
-
-#: permissions.labels.capabilities.rename
-msgid "Umbenennen:"
-msgstr ""
-
-#: permissions.labels.capabilities.transfer_ownership
-msgid "Besitzrecht übertragen:"
-msgstr ""
-
-#: permissions.labels.capabilities.project_leader
-msgid "Projektleiter:"
-msgstr ""
-
-#: permissions.labels.capabilities.publish
-msgid "Veröffentlichen:"
-msgstr ""
-
-#: permissions.labels.capabilities.connect
-msgid "Verbinden:"
-msgstr ""
-
-#: permissions.labels.capabilities.draw
-msgid "Zeichnen:"
-msgstr ""
-
-#: permissions.labels.capabilities.web_authoring
-msgid "Webbearbeitung:"
-msgstr ""
-
-#: permissions.labels.capabilities.xml_save_as
-msgid "Speichern unter:"
-msgstr ""
-
-#: permissions.labels.capabilities.create_refresh_metrics
-msgid "Metriken erstellen/aktualisieren:"
-msgstr ""
-
-#: permissions.labels.capabilities.explain_data
-msgid "\"Erklär die Daten\" ausführen:"
-msgstr ""
-
-#: permissions.labels.roles.wb_view
-msgctxt "permissions.labels.roles.wb_view"
-"permissions.labels.roles.wb_view"
-"permissions.labels.roles.wb_view"
-"permissions.labels.roles.wb_view"
-msgid "Ansicht"
-msgstr ""
-
-#: permissions.labels.roles.wb_explore
-msgctxt "permissions.labels.roles.wb_explore"
-msgid "Untersuchen"
-msgstr ""
-
-#: permissions.labels.roles.wb_publish
-msgctxt "permissions.labels.roles.wb_publish"
-msgid "Veröffentlichen"
-msgstr ""
-
-#: permissions.labels.roles.wb_administer
-msgctxt "permissions.labels.roles.wb_administer"
-msgid "Verwalten"
-msgstr ""
-
-#: permissions.labels.roles.ds_view
-msgctxt "permissions.labels.roles.ds_view"
-msgid "Ansicht"
-msgstr ""
-
-#: permissions.labels.roles.ds_explore
-msgctxt "permissions.labels.roles.ds_explore"
-msgid "Untersuchen"
-msgstr ""
-
-#: permissions.labels.roles.ds_publish
-msgctxt "permissions.labels.roles.ds_publish"
-msgid "Veröffentlichen"
-msgstr ""
-
-#: permissions.labels.roles.ds_administer
-msgctxt "permissions.labels.roles.ds_administer"
-msgid "Verwalten"
-msgstr ""
-
-#: permissions.labels.roles.viewer
-msgid "Viewer"
-msgstr ""
-
-#: permissions.labels.roles.interactor
-msgid "Interaktor"
-msgstr ""
-
-#: permissions.labels.roles.editor
-msgid "Editor"
-msgstr ""
-
-#: permissions.labels.roles.ds_connector
-msgid "Datenquellen-Connector"
-msgstr ""
-
-#: permissions.labels.roles.ds_editor
-msgid "Datenquellen-Editor"
-msgstr ""
-
-#: permissions.labels.roles.administrator
-msgid "Administrator"
-msgstr ""
-
-#: permissions.labels.roles.project_leader
-msgid "Projektleiter"
-msgstr ""
-
-#: permissions.labels.roles.publisher
-msgid "Veröffentlicher"
-msgstr ""
-
-#: permissions.labels.roles.custom
-msgid "Benutzerdefiniert"
-msgstr ""
-
-#: permissions.labels.roles.none
-msgid "Keiner"
-msgstr ""
-
-#.
-#. # Used in Storage class in tab-core
-#: formats.messages.disk_space.in_mb
-msgid "{0} MB"
-msgstr ""
-
-#: formats.messages.disk_space.in_kb
-msgid "{0} KB"
-msgstr ""
-
-#.
-#. # Publishing-related errors and strings
-#: errors.argument.flow_description.too_long
-msgid ""
-"Schemabeschreibung ist zu lang ({0} Zeichen). Die Beschreibung muss kürzer "
-"als {1} Zeichen sein:"
-msgstr ""
-
-#: %7B2%7D
-msgctxt "{2}"
-msgid ""
-msgstr ""
-
-#: errors.argument.workbook_name.too_long
-msgid ""
-"Arbeitsmappenname ist zu lang ({0} Zeichen). Er muss kürzer als {1} Zeichen "
-"sein:"
-msgstr ""
-
-#: errors.argument.workbook_name.empty
-msgid "Arbeitsmappenname ist leer,"
-msgstr ""
-
-#: errors.argument.workbook_description.too_long
-msgid ""
-"Arbeitsmappenbeschreibung ist zu lang ({0} Zeichen). Die Beschreibung muss "
-"kürzer als {1} Zeichen sein:"
-msgstr ""
-
-#: errors.argument.worksheet_name.too_long
-msgid ""
-"Arbeitsblattname ist zu lang ({0} Zeichen). Er muss kürzer als {1} Zeichen "
-"sein:"
-msgstr ""
-
-#: errors.argument.datasource_name.too_long
-msgid ""
-"Datenquellenname ist zu lang ({0} Zeichen). Er muss kürzer als {1} Zeichen "
-"sein:"
-msgstr ""
-
-#: errors.argument.datasource_name.empty
-msgid "Der Datenquellenname ist leer."
-msgstr ""
-
-#: errors.argument.datasource_description.too_long
-msgid ""
-"Datenquellenbeschreibung ist zu lang ({0} Zeichen). Die Beschreibung muss "
-"kürzer als {1} Zeichen sein:"
-msgstr ""
-
-#: errors.argument.dataconnection_column.too_long
-msgid ""
-"DataConnection column {0} is too long ({1} characters).  It must be shorter "
-"than {2} characters:"
-msgstr ""
-
-#: %7B3%7D
-msgctxt "{3}"
-msgid ""
-msgstr ""
-
-#: errors.argument.tag.too_long
-msgid "Tag ist zu lang ({0} Zeichen). Es muss kürzer sein als {1} Zeichen:"
-msgstr ""
-
-#: errors.argument.workbook_file.missing_or_empty
-msgid "Arbeitsmappendatei fehlt oder ist leer."
-msgstr ""
-
-#: errors.argument.internal
-msgid "Interner Serverfehler. Fehlendes und ungültiges Argument."
-msgstr ""
-
-#: errors.argument.thumbnail.invalid_format
-msgid ""
-"Format der Arbeitsmappen-Miniaturansichten ist ungültig. Muss PNG mit "
-"Auflösung von 300 x 300 oder weniger sein."
-msgstr ""
-
-#: errors.html_403.disabled_resource.workbook
-msgid ""
-"Diese Arbeitsmappe wurde leider deaktiviert. Wenden Sie sich an Ihren "
-"Administrator."
-msgstr ""
-
-#: errors.html_404.missing_or_unauthorized_resource.project
-msgid ""
-"Das gesuchte Projekt ist leider nicht vorhanden, oder Sie verfügen nicht "
-"über die Berechtigung zum Anzeigen dieses Projekts."
-msgstr ""
-
-#: errors.html_404.missing_or_unauthorized_resource.personal_space
-msgid ""
-"Der gesuchte persönliche Bereich ist leider nicht vorhanden, oder Sie "
-"verfügen nicht über die Berechtigung, um diesen anzuzeigen."
-msgstr ""
-
-#: errors.html_404.missing_or_unauthorized_resource.datasource
-msgid ""
-"Die Datenquelle, nach der Sie gesucht haben, ist leider nicht vorhanden."
-msgstr ""
-
-#: errors.labels.formatted_request_id
-msgid "Anforderungs-ID: {0}"
-msgstr ""
-
-#: errors.links.delete_datasources
-msgid "Datenquellen löschen"
-msgstr ""
-
-#: errors.links.delete_workbooks
-msgid "Arbeitsmappen löschen"
-msgstr ""
-
-#: errors.permissions.publish.datasource.licensing
-msgid ""
-"Sie müssen ''Interaktor'' sein, um eine Datenquelle veröffentlichen zu "
-"können."
-msgstr ""
-
-#: errors.permissions.publish.datasource.overwrite
-msgid ""
-"Eine Datenquelle mit dem Namen ''{0}'' ist im Projekt ''{1}'' bereits "
-"vorhanden. Sie verfügen nicht über Berechtigungen zum Überschreiben."
-msgstr ""
-
-#: errors.permissions.publish.datasource.overwrite_personal_space
-msgid ""
-"Eine Datenquelle mit dem Namen ''{0}'' ist bereits im persönlichen Bereich "
-"vorhanden. Sie verfügen nicht über Berechtigungen zum Überschreiben."
-msgstr ""
-
-#: errors.permissions.publish.datasource.overwrite_short
-msgid ""
-"Eine Datenquelle mit dem Namen ''{0}'' ist im Projekt ''{1}'' bereits "
-"vorhanden."
-msgstr ""
-
-#: errors.permissions.publish.datasource.overwrite_short_personal_space
-msgid ""
-"Eine Datenquelle mit dem Namen \"{0}\" ist bereits im persönlichen Bereich "
-"vorhanden.\""
-msgstr ""
-
-#: errors.permissions.publish.datasource.non_existent
-msgid "Datenquelle \"{0}\" ist nicht vorhanden."
-msgstr ""
-
-#: errors.permissions.publish.datasource.general
-msgid ""
-"Sie verfügen leider nicht über die Berechtigung zur Veröffentlichung für "
-"diese Datenquelle."
-msgstr ""
-
-#: errors.permissions.publish.project.explicit_publisher_detail
-msgid "Sie verfügen über keine Veröffentlichungsberechtigungen."
-msgstr ""
-
-#: errors.permissions.publish.project.general
-msgid ""
-"Sie verfügen leider nicht über die Berechtigung zur Veröffentlichung für "
-"dieses Projekt."
-msgstr ""
-
-#: errors.permissions.publish.project.non_existent
-msgid "Projekt ''{0}'' ist nicht vorhanden."
-msgstr ""
-
-#: errors.permissions.publish.project.not_writable
-msgid ""
-"Sie verfügen nicht über die Berechtigung zum Schreiben in das Projekt "
-"''{0}''."
-msgstr ""
-
-#: errors.permissions.publish.project.unspecified
-msgid "Sie müssen ein Projekt angeben."
-msgstr ""
-
-#: errors.permissions.publish.workbook.disabled
-msgid "Die Arbeitsmappe ''{0}'' wurde deaktiviert."
-msgstr ""
-
-#: errors.permissions.publish.workbook.general
-msgid ""
-"Eine Arbeitsmappe mit diesem Namen ist bereits in dem Projekt vorhanden, in "
-"das Sie veröffentlichen. Benennen Sie Ihre Arbeitsmappe zum Veröffentlichen "
-"um."
-msgstr ""
-
-#: errors.permissions.publish.workbook.general_personal_space
-msgid ""
-"Eine Arbeitsmappe mit diesem Namen ist bereits im persönlichen Bereich "
-"vorhanden, in dem Sie veröffentlichen. Benennen Sie Ihre Arbeitsmappe zum "
-"Veröffentlichen um."
-msgstr ""
-
-#: errors.permissions.publish.workbook.overwrite
-msgid ""
-"Eine Arbeitsmappe mit dem Namen ''{0}'' ist bereits im Projekt ''{1}'' "
-"vorhanden. Sie verfügen nicht über Berechtigungen zum Überschreiben."
-msgstr ""
-
-#: errors.permissions.publish.workbook.overwrite_personal_space
-msgid ""
-"Eine Arbeitsmappe mit dem Namen ''{0}'' ist bereits im persönlichen Bereich "
-"vorhanden. Sie verfügen nicht über Berechtigungen zum Überschreiben."
-msgstr ""
-
-#: errors.permissions.publish.workbook.overwrite_short
-msgid ""
-"Eine Arbeitsmappe mit dem Namen ''{0}'' ist bereits im Projekt ''{1}'' "
-"vorhanden."
-msgstr ""
-
-#: errors.permissions.publish.workbook.overwrite_short_personal_space
-msgid ""
-"Eine Arbeitsmappe mit dem Namen \"{0}\" ist bereits im persönlichen Bereich "
-"vorhanden."
-msgstr ""
-
-#: errors.reportable.impersonation.group_and_user
-msgid ""
-"Geben Sie nur ''impersonate_username'' oder ''impersonate_groupname'' an, "
-"nicht jedoch beide Namen."
-msgstr ""
-
-#: errors.reportable.impersonation.user_not_found
-msgid "Der Benutzer ''{0}'' ist nicht vorhanden."
-msgstr ""
-
-#: errors.reportable.impersonation.group_not_found
-msgid "Gruppe ''{0}'' existiert nicht."
-msgstr ""
-
-#. # errors.public.validation.hasextract is copied from the C++ file codegen strings.data IDS_PUBLIC_VALIDATION_ERROR_HASEXTRACT
-#: errors.public.validation.hasextract
-msgid ""
-"Arbeitsmappen, die in Tableau Public gespeichert sind, müssen aktive Tableau-"
-"Extrakte verwenden. Klicken Sie mit der rechten Maustaste auf die "
-"Datenquelle und wählen Sie vor der Veröffentlichung \"Extrakt verwenden\", "
-"Die Datenquelle, ''{0}'', ist kein aktives Extrakt."
-msgstr ""
-
-#: errors.publish.dataserver_datasource_not_found
-msgid "Datenquelle ''{0}'' wurde für Arbeitsmappe ''{1}'' nicht gefunden."
-msgstr ""
-
-#: errors.publish.datasource_update_mode
-msgid "Unbekannter Aktualisierungsmodus: ''{0}''."
-msgstr ""
-
-#: errors.publish.workbook.concurrent_update
-msgid ""
-"Eine Arbeitsmappe mit diesem Namen wird gerade veröffentlicht oder geändert. "
-"Warten Sie, bis die Aufgabe abgeschlossen ist, bevor Sie es erneut versuchen."
-msgstr ""
-
-#: errors.publish.workbook.restricted
-msgid ""
-"Die Arbeitsmappe enthält Verbindungstypen, die auf diesem Server nicht "
-"zulässig sind."
-msgstr ""
-
-#: errors.publish.datasource.concurrent_update
-msgid ""
-"Eine Datenquelle mit diesem Namen wird gerade veröffentlicht oder geändert. "
-"Warten Sie, bis die Aufgabe abgeschlossen ist, bevor Sie es erneut versuchen."
-msgstr ""
-
-#: errors.publish.datasource.restricted
-msgid ""
-"Die Datenquelle enthält einen Verbindungstyp, der auf diesem Server nicht "
-"zulässig ist."
-msgstr ""
-
-#: errors.publish.datasource.connection_check
-msgid "{0} konnte keine Verbindung zu Ihrer Datenquelle herstellen."
-msgstr ""
-
-#: errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption
-msgid ""
-"Die Arbeitsmappe mit verschlüsseltem Extrakt kann nicht veröffentlicht "
-"werden. Der Site-Administrator hat die Extraktverschlüsselung auf dieser "
-"Site deaktiviert. Sie müssen die Arbeitsmappe mit einem unverschlüsselten "
-"Extrakt veröffentlichen."
-msgstr ""
-
-#: errors.publish.datasource.requested_extract_encryption_on_site_with_disabled_encryption
-msgid ""
-"Die Datenquelle kann nicht als verschlüsselter Extrakt veröffentlicht "
-"werden. Der Site-Administrator hat die Extraktverschlüsselung auf dieser "
-"Site deaktiviert. Sie müssen den Extrakt unverschlüsselt veröffentlichen."
-msgstr ""
-
-#: errors.publish.workbook.requested_no_extract_encryption_on_site_with_enforced_encryption
-msgid ""
-"Die Arbeitsmappe kann nicht mit einem verschlüsselten Extrakt veröffentlicht "
-"werden. Der Site-Administrator hat die Extraktverschlüsselung auf dieser "
-"Site festgelegt. Sie müssen die Arbeitsmappe veröffentlichen und eine "
-"Extraktverschlüsselung angeben."
-msgstr ""
-
-#: errors.publish.datasource.requested_no_extract_encryption_on_site_with_enforced_encryption
-msgid ""
-"Der Datenquellenextrakt kann nicht unverschlüsselt veröffentlicht werden. "
-"Der Site-Administrator hat die Extraktverschlüsselung auf dieser Site "
-"festgelegt. Sie müssen den Extrakt verschlüsselt veröffentlichen."
-msgstr ""
-
-#: errors.publish.has_unfinished_extract_creation_job
-msgid ""
-"Diese Ressource kann nicht veröffentlicht werden, da damit verbundene "
-"Aufträge zur Erstellung von Auszügen ausstehen oder unvollendet sind. Bitte "
-"warten Sie oder stornieren Sie diese Aufträge und versuchen Sie es dann "
-"erneut."
-msgstr ""
-
-#: errors.publishing.storage_quota_exceeded.message
-msgid "Sitespeicherkontingent wurde überschritten."
-msgstr ""
-
-#: errors.publishing.request_size_exceeded
-msgid ""
-"Diese Datei kann nicht veröffentlicht werden, da die Größe der Anfrage {0} "
-"Bytes beträgt, wodurch das Bytegrößenlimit um {1} Bytes überschritten wird."
-msgstr ""
-
-#: errors.publishing.request_size_unknown
-msgid "Die Größe der Anfrage konnte nicht ermittelt werden."
-msgstr ""
-
-#: errors.site.quota_exceeded
-msgid ""
-"Das Kontingent, das Sie hochzuladen versuchen, überschreitet die Kapazität "
-"der Site um {0}."
-msgstr ""
-
-#: errors.personal_space.quota_exceeded
-msgid ""
-"Dieser Inhalt überschreitet die Kapazität Ihres persönlichen Bereichs um {0}."
-msgstr ""
-
-#: errors.web_authoring.workbook_deleted
-msgid ""
-"Die Arbeitsmappe ''{0}'' wurde gelöscht. Wählen Sie ''Speichern unter'', und "
-"sie als neue Arbeitsmappe zu speichern."
-msgstr ""
-
-#: errors.web_authoring.workbook_changed
-msgid ""
-"Nachdem Sie begonnen haben, diese Arbeitsmappe zu bearbeiten, hat ein "
-"anderer Benutzer die Arbeitsmappe bearbeitet und gespeichert. Sie können die "
-"ursprüngliche Arbeitsmappe daher nicht mehr aktualisieren. Wählen Sie "
-"''Speichern unter'', um eine neue Arbeitsmappe mit Ihren Änderungen zu "
-"erstellen."
-msgstr ""
-
-#: labels.publish.embed_credentials
-msgid "Kennwort einbetten für Datenquelle"
-msgstr ""
-
-#: errors.publish.workbook.google_no_embedded_credentials
-msgid ""
-"Diese Arbeitsmappe enthält eine {0}-Datenquelle, für die eingebettete "
-"Anmeldeinformationen erforderlich sind. Wählen Sie ''{1}'' aus, um sie als "
-"eine andere Arbeitsmappe zu speichern."
-msgstr ""
-
-#: errors.publish.datasource.google_no_embedded_credentials
-msgid ""
-"Diese Datenquelle enthält eine {0}-Verbindung, für die eingebettete "
-"Anmeldeinformationen erforderlich sind. Veröffentlichen Sie diese "
-"Datenquelle über Tableau Desktop mit eingebetteten Anmeldeinformationen."
-msgstr ""
-
-#: errors.publish.datasource.federated_oauth_datasource_failed
-msgid ""
-"Anmeldeinformationen für eine oder mehrere Verbindungen in Ihrer Datenquelle "
-"sind abgelaufen. Löschen Sie die gespeicherten Anmeldeinformationen für "
-"diese Datenquelle auf Ihrer Kontoeinstellungen-Seite auf Tableau Server oder "
-"Tableau Online, und verbinden Sie sich mit der Datenquelle erneut."
-msgstr ""
-
-#: errors.publish.workbook.missing_oauth_credential
-msgid ""
-"Die Anmeldeinformationen ''{0}'' wurden nicht gefunden oder können nicht für "
-"die Verbindung mit dieser Datenquelle bzw. dieser Arbeitsmappe verwendet "
-"werden."
-msgstr ""
-
-#: errors.publish.version_incompatible.message
-msgid "Die Desktop- und Serverversionen sind nicht kompatibel."
-msgstr ""
-
-#: errors.publish.version_incompatible.details
-msgid "Desktopversion ''{0}'', Serverdokumentversion ''{1}''."
-msgstr ""
-
-#: errors.publish.datasource.managed_keychain.unique_cv_suggestions
-msgid ""
-"Die Veröffentlichung konnte aufgrund eines Konflikts nicht durchgeführt "
-"werden. Bitte senden Sie Ihre Änderung erneut."
-msgstr ""
-
-#: errors.publish.permissions_are_locked
-msgid ""
-"Im Projekt, in das die Veröffentlichung erfolgen soll, sind die "
-"Berechtigungen gesperrt. Zum Veröffentlichen dieser Arbeitsmappe verwenden "
-"Sie die Standardberechtigungen, und wiederholen Sie den Vorgang."
-msgstr ""
-
-#: errors.publish.datasource.not.found
-msgid "Diese Datenquelle konnte auf dem Server nicht gefunden werden."
-msgstr ""
-
-#: errors.publish.extracts.disabled
-msgid ""
-"Bis auf extraktbasierte Datenquellen werden Archivdatenquellen noch nicht "
-"unterstützt."
-msgstr ""
-
-#: errors.publish.datasource.timeout
-msgid ""
-"Bei der Veröffentlichung trat nach {0} Sekunden eine Zeitüberschreitung auf. "
-"Bitte versuchen Sie Tableau Desktop zu verwenden um diese Datenquelle zu "
-"veröffentlichen."
-msgstr ""
-
-#: errors.publish.data_role.permission_not_null
-msgid ""
-"Für Datenquellen des Typs Datenrolle können keine explizite Berechtigungen "
-"eingestellt werden."
-msgstr ""
-
-#: errors.download.extracts.timeout
-msgid ""
-"Bei der Veröffentlichung trat nach {0} Sekunden eine Zeitüberschreitung auf, "
-"da diese Datenquellen eine große Extraktdatei enthält. Bitte versuchen Sie "
-"Tableau Desktop zu verwenden um diese Datenquelle zu veröffentlichen."
-msgstr ""
-
-#: errors.publish.datasource.invalid_extract_update_time
-msgid "Ungültige extractUpdateTime angegeben: {0}"
-msgstr ""
-
-#: errors.publish.async.serialization
-msgid "Fehler beim Serialisieren des Status des Veröffentlichungsauftrags"
-msgstr ""
-
-#: errors.permissions.view.datasources
-msgid ""
-"Sie müssen ''Interaktor'' sein, um die Liste der Datenquellen anzeigen zu "
-"können."
-msgstr ""
-
-#.
-#. # oauth related errors
-#: errors.oauth.invalid_oauth_class
-msgid "''{0}'' ist kein gültiger OAuth-Verbindungstyp."
-msgstr ""
-
-#: errors.xmlapi.bad_request
-msgid "Ungültige Anforderung"
-msgstr ""
-
-#: errors.xmlapi.unauthorized
-msgid "Nicht autorisiert"
-msgstr ""
-
-#: errors.xmlapi.forbidden
-msgid "Berechtigungen unzureichend"
-msgstr ""
-
-#: errors.xmlapi.system_user_not_found
-msgid "Benutzerkonto ist gesperrt oder ungültig."
-msgstr ""
-
-#: errors.xmlapi.site_user_not_found
-msgid ""
-"Dieses Benutzerkonto ist nicht aktiv. Wenden Sie sich an Ihren {0}-"
-"Administrator, wenn Sie Hilfe benötigen."
-msgstr ""
-
-#: errors.xmlapi.not_found
-msgid "Element nicht gefunden"
-msgstr ""
-
-#: errors.xmlapi.concurrent_update
-msgid "Gleichzeitige Aktualisierung"
-msgstr ""
-
-#: errors.xmlapi.internal_server_error
-msgid "Interner Serverfehler"
-msgstr ""
-
-#: errors.xmlapi.illegal_state
-msgid "Unzulässiger Status"
-msgstr ""
-
-#: errors.xmlapi.invalid_parameter
-msgid "Ungültiger Parameter"
-msgstr ""
-
-#: errors.xmlapi.already_exists
-msgid "Ist bereits vorhanden"
-msgstr ""
-
-#: errors.xmlapi.site_suspended
-msgid ""
-"Die Verfügbarkeit dieser Site wurde aufgehoben. Sie müssen "
-"Systemadministrator sein, um sich anzumelden."
-msgstr ""
-
-#: errors.xmlapi.site_locked
-msgid "Diese Site wurde gesperrt. Anmeldungen sind derzeit nicht möglich."
-msgstr ""
-
-#: errors.xmlapi.permission_modification
-msgid "Veröffentlichung mit geänderten Berechtigungen nicht möglich"
-msgstr ""
-
-#: errors.xmlapi.update_desktop
-msgid ""
-"Um von anderen Autoren erstellte Arbeitsmappen zu öffnen, laden Sie die "
-"neueste Version von Tableau Desktop Public Edition unter http://public."
-"tableau.com/ herunter"
-msgstr ""
-
-#: errors.xmlapi.throttled.summary
-msgid "Zu viele Anforderungen"
-msgstr ""
-
-#: errors.xmlapi.throttled.detail
-msgid ""
-"Zu viele Anforderungen für ''{0}''. Versuchen Sie es nach {1} Sekunde(n) "
-"erneut."
-msgstr ""
-
-#: datasource.publish.check.unpublishable
-msgid "Die Datenquelle konnte nicht veröffentlicht werden."
-msgstr ""
-
-#: datasource.publish.check.publishable.extract_required
-msgid "Bei Veröffentlichung muss ein Extrakt erstellt werden."
-msgstr ""
-
-#: datasource.publish.check.publishable.credentials_required
-msgid ""
-"{1} greift vorübergehend auf die für ''{0}'' bereitgestellten "
-"Anmeldeinformationen zu, um zu bestätigen, dass eine Live-Datenverbindung "
-"aufrecht erhalten werden kann."
-msgstr ""
-
-#: datasource.publish.check.publishable.server_unreachable
-msgid ""
-"{1} kann ''{0}'' nicht erreichen. Bei Veröffentlichung wird ein Extrakt "
-"erstellt."
-msgstr ""
-
-#: publish.bundles.workbook.subscription.subject
-msgid "Ihre Arbeitsmappe {0} ist bereit."
-msgstr ""
-
-#: publish.bundles.workbook.subscription.message
-msgid ""
-"Ihre Salesforce-Daten wurden der Arbeitsmappe hinzugefügt. Gehen Sie zu "
-"Ihrem {0}-Projekt, um zu beginnen."
-msgstr ""
-
-#: extracts.status.finished.upload.workbook
-msgid ""
-"Hochladen von Extrakten (neue Extrakt-ID: {0}) für Arbeitsmappe ''{1}'' {2} "
-"ist abgeschlossen"
-msgstr ""
-
-#: extracts.status.finished.refresh.workbook
-msgid ""
-"Aktualisierung von Extrakten (neue Extrakt-ID:{0}) für Arbeitsmappe ''{1}'' "
-"{2} ist abgeschlossen"
-msgstr ""
-
-#: extracts.status.finished.increment.workbook
-msgid ""
-"Inkrementierung von Extrakten (neue Extrakt-ID:{0}) für Arbeitsmappe ''{1}'' "
-"{2} ist abgeschlossen"
-msgstr ""
-
-#: extracts.status.finished.encrypt.workbook
-msgid ""
-"Verschlüsselung von Extrakten (neue Extrakt-ID: {0}) für Arbeitsmappe ''{1}"
-"''  ist abgeschlossen"
-msgstr ""
-
-#: extracts.status.finished.decrypt.workbook
-msgid ""
-"Entschlüsselung von Extrakten (neue Extrakt-ID: {0}) für Arbeitsmappe ''{1}"
-"''  ist abgeschlossen"
-msgstr ""
-
-#: extracts.status.finished.rekey.workbook
-msgid ""
-"Erneute Verschlüsselung von Extrakten (neue Extrakt-ID: {0}) für "
-"Arbeitsmappe ''{1}''  ist abgeschlossen"
-msgstr ""
-
-#: extracts.status.finished.create.workbook
-msgid ""
-"Erstellung von Extrakten (neue Extrakt-ID: {0}) für Arbeitsmappe ''{1}'' ist "
-"abgeschlossen {2}"
-msgstr ""
-
-#: extracts.status.finished.remove.workbook
-msgid ""
-"Extrakt (Datenquellen-ID:{0}) zu Live ändern für Arbeitsmappe ''{1}'' ist "
-"abgeschlossen"
-msgstr ""
-
-#: extracts.status.finished.upload.datasource
-msgid ""
-"Hochladen von Extrakten (neue Extrakt-ID:{0}) für Datenquelle ''{1}'' {2} "
-"ist abgeschlossen"
-msgstr ""
-
-#: extracts.status.finished.refresh.datasource
-msgid ""
-"Aktualisierung von Extrakten (neue Extrakt-ID:{0}) für Datenquelle ''{1}'' "
-"{2} ist abgeschlossen"
-msgstr ""
-
-#: extracts.status.finished.increment.datasource
-msgid ""
-"Inkrementierung von Extrakten (neue Extrakt-ID:{0}) für Datenquelle ''{1}'' "
-"{2} ist abgeschlossen"
-msgstr ""
-
-#: extracts.status.finished.append.datasource
-msgid ""
-"Anhängen von Extrakten (neue Extrakt-ID:{0}) für Datenquelle ''{1}'' {2} ist "
-"abgeschlossen"
-msgstr ""
-
-#: extracts.status.finished.replace.datasource
-msgid ""
-"Aktualisieren von Extrakten (neue Extrakt-ID:{0}) für Datenquelle ''{1}'' {2}"
-" ist abgeschlossen"
-msgstr ""
-
-#: extracts.status.finished.encrypt.datasource
-msgid ""
-"Verschlüsselung von Extrakten (neue Extrakt-ID: {0}) für Datenquelle ''{1}"
-"''  ist abgeschlossen"
-msgstr ""
-
-#: extracts.status.finished.decrypt.datasource
-msgid ""
-"Entschlüsselung von Extrakten (neue Extrakt-ID: {0}) für Datenquelle ''{1}"
-"''  ist abgeschlossen"
-msgstr ""
-
-#: extracts.status.finished.rekey.datasource
-msgid ""
-"Erneute Verschlüsselung von Extrakten (neue Extrakt-ID: {0}) für Datenquelle "
-"''{1}''  ist abgeschlossen"
-msgstr ""
-
-#: extracts.status.finished.encrypt.flow
-msgid "Die Verschlüssung der Extrakte für Schema ''{0}'' wurde abgeschlossen"
-msgstr ""
-
-#: extracts.status.finished.decrypt.flow
-msgid "Die Entschlüsselung der Extrakte für Schema ''{0}'' wurde abgeschlossen"
-msgstr ""
-
-#: extracts.status.finished.rekey.flow
-msgid ""
-"Die erneute Verschlüsselung der Extrakte für Schema ''{0}'' wurde "
-"abgeschlossen"
-msgstr ""
-
-#: extracts.status.finished.encrypt.flowdraft
-msgid ""
-"Die Verschlüssung der Extrakte für Schemaentwurf ''{0}'' wurde abgeschlossen"
-msgstr ""
-
-#: extracts.status.finished.decrypt.flowdraft
-msgid ""
-"Die Entschlüssung der Extrakte für Schemaentwurf ''{0}'' wurde abgeschlossen"
-msgstr ""
-
-#: extracts.status.finished.rekey.flowdraft
-msgid ""
-"Die erneute Verschlüssung der Extrakte für Schemaentwurf ''{0}'' wurde "
-"abgeschlossen"
-msgstr ""
-
-#: extracts.status.finished.create.datasource
-msgid ""
-"Erstellung von Extrakten (neue Extrakt-ID: {0}) für Datenquelle ''{1}'' {2} "
-"ist abgeschlossen"
-msgstr ""
-
-#: extracts.status.finished.remove.datasource
-msgid "Extrakt zu Live ändern für Datenquelle ''{1}'' ist abgeschlossen"
-msgstr ""
-
-#: extracts.status.encryption_key
-msgctxt "extracts.status.encryption_key"
-msgid "Verschlüsselungsschlüssel-ID: ''{0}''."
-msgstr ""
-
-#: extracts.status.encryption_keys
-msgctxt "extracts.status.encryption_keys"
-msgid ""
-"Alte Verschlüsselungsschlüssel-ID: ''{0}'', neue Verschlüsselungsschlüssel-"
-"ID: ''{1}''."
-msgstr ""
-
-#: extracts.errors.upload
-msgid "Fehler beim Hochladen von Extrakten für {0}: ''{1}''"
-msgstr ""
-
-#: extracts.errors.refresh
-msgid ""
-"Ein Fehler ist aufgetreten beim Aktualisieren der Extrakte für {0} ''{1}''"
-msgstr ""
-
-#: extracts.errors.create
-msgid "Fehler beim Erstellen von Extrakten für {0} ''{1}''."
-msgstr ""
-
-#: extracts.errors.increment
-msgid "Fehler beim Inkrementieren von Extrakten für {0}: ''{1}''"
-msgstr ""
-
-#: extracts.errors.append
-msgid "Fehler beim Anhängen von Extrakten für {0}: ''{1}''"
-msgstr ""
-
-#: extracts.errors.replace
-msgid "Fehler beim Ersetzen von Extrakten für {0}: ''{1}''"
-msgstr ""
-
-#: extracts.errors.download
-msgid "Fehler beim Herunterladen von Extrakten für {0}: ''{1}''"
-msgstr ""
-
-#: extracts.errors.remove
-msgid "Fehler beim Löschen von Extrakten für {0}: ''{1}''."
-msgstr ""
-
-#: extracts.errors.title
-msgid "Fehler beim Verarbeiten von Extrakten"
-msgstr ""
-
-#: extracts.errors.nothing_to_upload
-msgid "Keine hochzuladenden Extrakte für {0}: ''{1}''"
-msgstr ""
-
-#: extracts.errors.nothing_to_refresh
-msgid "Keine zu aktualisierenden Extrakte für {0}: ''{1}''"
-msgstr ""
-
-#: extracts.errors.nothing_to_increment
-msgid "Keine zu inkrementierenden Extrakte für {0}: ''{1}''"
-msgstr ""
-
-#: extracts.errors.nothing_to_append
-msgid "Keine anzuhängenden Extrakte für {0}: ''{1}''"
-msgstr ""
-
-#: extracts.errors.nothing_to_replace
-msgid "Keine zu ersetzenden Extrakte für {0}: ''{1}''"
-msgstr ""
-
-#: extracts.errors.refresh_summary
-msgid "Fehler beim Aktualisieren der Extrakte"
-msgstr ""
-
-#: extracts.errors.encrypt_summary
-msgid "Fehler beim Verschlüsseln von Extrakten"
-msgstr ""
-
-#: extracts.errors.rekey_summary
-msgid "Fehler beim erneuten Verschlüsseln von Extrakten"
-msgstr ""
-
-#: extracts.errors.decrypt_summary
-msgid "Fehler beim Entschlüsseln von Extrakten"
-msgstr ""
-
-#: extracts.errors.remove_summary
-msgid "Fehler beim Entfernen der Extrakte"
-msgstr ""
-
-#: extracts.errors.create_summary
-msgid "Fehler beim Erstellen von Extrakten"
-msgstr ""
-
-#: extracts.errors.datasource_overwritten
-msgid ""
-"Die Aktualisierung ist fehlgeschlagen, da die Datenquelle während der "
-"Verarbeitung von einer anderen Aufgabe überschrieben wurde. Aktualisieren "
-"Sie erneut, um dies zu korrigieren."
-msgstr ""
-
-#: extracts.errors.workbook_overwritten
-msgid ""
-"Die Aktualisierung ist fehlgeschlagen, da die Arbeitsmappe während der "
-"Verarbeitung von einer anderen Aufgabe überschrieben wurde. Aktualisieren "
-"Sie erneut, um dies zu korrigieren."
-msgstr ""
-
-#: extracts.errors.encrypt
-msgid ""
-"Beim Verschlüsseln der Extrakte für {0} ''{1}'' ist ein Fehler aufgetreten"
-msgstr ""
-
-#: extracts.errors.decrypt
-msgctxt "extracts.errors.decrypt"
-msgid ""
-"Beim Entschlüsseln der Extrakte für {0} ''{1}'' ist ein Fehler aufgetreten"
-msgstr ""
-
-#: extracts.errors.rekey
-msgctxt "extracts.errors.rekey"
-msgid ""
-"Beim Entschlüsseln der Extrakte für {0} ''{1}'' ist ein Fehler aufgetreten"
-msgstr ""
-
-#: extracts.errors.encrypt_datasource_overwritten
-msgid ""
-"Die Verschlüsselung der Extrakte ist fehlgeschlagen, da die Datenquelle "
-"während der Verarbeitung von einer anderen Aufgabe überschrieben wurde."
-msgstr ""
-
-#: extracts.errors.encrypt_workbook_overwritten
-msgid ""
-"Die Verschlüsselung der Extrakte ist fehlgeschlagen, da die Arbeitsmappe "
-"während der Verarbeitung von einer anderen Aufgabe überschrieben wurde."
-msgstr ""
-
-#: extracts.errors.rekey_datasource_overwritten
-msgid ""
-"Die erneute Verschlüsselung der Extrakte ist fehlgeschlagen, da die "
-"Datenquelle während der Verarbeitung von einer anderen Aufgabe überschrieben "
-"wurde."
-msgstr ""
-
-#: extracts.errors.rekey_workbook_overwritten
-msgid ""
-"Die erneute Verschlüsselung der Extrakte ist fehlgeschlagen, da die "
-"Arbeitsmappe während der Verarbeitung von einer anderen Aufgabe "
-"überschrieben wurde."
-msgstr ""
-
-#: extracts.errors.decrypt_datasource_overwritten
-msgid ""
-"Die Entschlüsselung der Extrakte ist fehlgeschlagen, da die Datenquelle "
-"während der Verarbeitung von einer anderen Aufgabe überschrieben wurde."
-msgstr ""
-
-#: extracts.errors.decrypt_workbook_overwritten
-msgid ""
-"Die Entschlüsselung der Extrakte ist fehlgeschlagen, da die Arbeitsmappe "
-"während der Verarbeitung von einer anderen Aufgabe überschrieben wurde."
-msgstr ""
-
-#: extracts.errors.remove_datasource_overwritten
-msgid ""
-"Die Datenquelle konnte nicht zu Live geändert werden, da es durch eine "
-"andere Aufgabe überschrieben wurde."
-msgstr ""
-
-#: extracts.errors.remove_workbook_overwritten
-msgid ""
-"Die Arbeitsmappe konnte nicht zu Live geändert werden, da es durch eine "
-"andere Aufgabe überschritten wurde."
-msgstr ""
-
-#: extracts.errors.create_datasource_overwritten
-msgid ""
-"Die Datenquelle konnte nicht extrahiert werden, da es durch eine andere "
-"Aufgabe überschritten wurde."
-msgstr ""
-
-#: extracts.errors.create_workbook_overwritten
-msgid ""
-"Die Arbeitsmappe konnte nicht extrahiert werden, da es durch eine andere "
-"Aufgabe überschritten wurde."
-msgstr ""
-
-#: extracts.site_mode_change_details
-msgid ""
-"Verschlüsselungsmodus der Site-Extrakte geändert von ''{0}'' zu ''{1}''."
-msgstr ""
-
-#: extracts.errors.encryption_not_licensed
-msgid ""
-"Dieser Vorgang ist fehlgeschlagen, weil die Extraktverschlüsselung nicht "
-"lizenziert ist. Um diesen Vorgang auszuführen, müssen Sie Ihre Lizenz "
-"erneuern oder Ihren Extrakt entschlüsseln."
-msgstr ""
-
-#: extracts.errors.operation_cancelled_detail
-msgid ""
-"Der Vorgang Extrakt entfernen für {0} (Datenquelle: {2}) wurde abgebrochen."
-msgstr ""
-
-#: workbooks.messages.load_error
-msgid "Arbeitsmappe {0} konnte nicht geladen werden"
-msgstr ""
-
-#: workbooks.messages.locked
-msgid ""
-"Die Arbeitsmappe ''{0}'' wird momentan von einem anderen Benutzer geändert. "
-"Wiederholen Sie den Vorgang später."
-msgstr ""
-
-#: workbooks.new_workbook.default_name
-msgid "Neue Arbeitsmappe"
-msgstr ""
-
-#: workbooks.new_datasource.default_name
-msgid "Neue Datenquelle"
-msgstr ""
-
-#: datasources.messages.load_error
-msgid "Fehler beim Laden der Datenquelle {0}"
-msgstr ""
-
-#: metrics.new_metric.default_name
-msgid "Neue Metrik"
-msgstr ""
-
-#: messages.timeout_error.summary
-msgid "Zeitüberschreitungsfehler"
-msgstr ""
-
-#: messages.timeout_error.task_canceled
-msgid "Länger als {0} Sekunden dauernde Aufgabe wird abgebrochen"
-msgstr ""
-
-#: subscriptions.manage_my_subscriptions
-msgid "Meine Abonnements verwalten"
-msgstr ""
-
-#: subscriptions.message_greeting
-msgid "Hallo,"
-msgstr ""
-
-#: subscriptions.subscribed_footer
-msgid "Hier ist ihr Abonnement zu {0}"
-msgstr ""
-
-#: subscriptions.subscribed_workbook
-msgctxt "subscriptions.subscribed_workbook"
-msgid "Arbeitsmappe"
-msgstr ""
-
-#: subscriptions.subscribed_view
-msgctxt "subscriptions.subscribed_view"
-msgid "Ansicht"
-msgstr ""
-
-#: subscriptions.fullstop
-msgid "."
-msgstr ""
-
-#: subscriptions.extract_refresh_footer
-msgid ""
-"Sie erhalten diese Abonnements-E-Mail, wenn die Daten aktualisiert wurden."
-msgstr ""
-
-#: subscriptions.explore_the_viz
-msgid "Untersuchen der Visualisierung"
-msgstr ""
-
-#: subscriptions.explore_the_workbook
-msgid "Untersuchen der Arbeitsmappe"
-msgstr ""
-
-#: subscriptions.pdf_attached
-msgid "Ihr Tableau PDF befindet sich im Anhang."
-msgstr ""
-
-#: subscriptions.access_live_content
-msgid "Sie können hier auf die Live-Ansicht zugreifen"
-msgstr ""
-
-#: subscriptions.warning_deprecated_type
-msgid "Veraltet"
-msgstr ""
-
-#: subscriptions.warning_extract_refresh_type
-msgid "Extraktaktualisierung fehlgeschlagen"
-msgstr ""
-
-#: subscriptions.warning_flow_run_type
-msgid "Schemaausführung fehlgeschlagen"
-msgstr ""
-
-#: subscriptions.warning_introduction_general
-msgid "Die folgenden Datenqualitätswarnungen wirken sich auf dieses {0} aus."
-msgstr ""
-
-#: subscriptions.warning_introduction_view
-msgid ""
-"Weitere Informationen finden Sie auf der Registerkarte \"Datendetails\" in "
-"der Ansicht"
-msgstr ""
-
-#: subscriptions.warning_introduction_workbook
-msgid "Weitere Informationen finden Sie auf der Arbeitsmappenseite"
-msgstr ""
-
-#: subscriptions.warning_maintenance_type
-msgid "Wird gewartet"
-msgstr ""
-
-#: subscriptions.warning_permission_error
-msgid ""
-"Diese Warnung bezieht sich auf eine Ressource, für die Sie keine "
-"Berechtigungen zum Anzeigen haben."
-msgstr ""
-
-#: subscriptions.warning_redacted
-msgid "Erforderliche Berechtigungen"
-msgstr ""
-
-#: subscriptions.warning_sensitve_type
-msgid "Vertrauliche Daten"
-msgstr ""
-
-#: subscriptions.warning_severe
-msgid "Wichtige Datenqualitätswarnung"
-msgstr ""
-
-#: subscriptions.warning_stale_type
-msgid "Veraltete Daten"
-msgstr ""
-
-#: subscriptions.warning_standard
-msgid "Datenqualitätswarnung"
-msgstr ""
-
-#: subscriptions.warning_error_type
-msgid "Unbekannter Warnungstyp"
-msgstr ""
-
-#: subscriptions.warning_warning_type
-msgid "Warnung"
-msgstr ""
-
-#: errors.subscriptions.image_render_failed
-msgid "Der Snapshot der Ansicht ''{0}'' konnte nicht korrekt gerendert werden."
-msgstr ""
-
-#: errors.subscriptions.see_live_view
-msgid "Öffnen Sie {0}, um die Ansicht online anzuzeigen."
-msgstr ""
-
-#: errors.subscriptions.disabled_on_server
-msgid ""
-"Die serverweite Abonnementeinstellung ist nicht aktiviert. Abonnements "
-"können nicht verarbeitet werden."
-msgstr ""
-
-#: errors.subscriptions.disabled_on_site
-msgid "Abonnements sind für die Site deaktiviert."
-msgstr ""
-
-#: errors.subscriptions.site_is_locked
-msgid "Die Site ist gesperrt. Abonnements können nicht verarbeitet werden."
-msgstr ""
-
-#: errors.subscriptions.orphan
-msgid ""
-"Mit diesem Abonnement verbundene Arbeitsmappe und Ansichten konnten nicht "
-"gefunden werden."
-msgstr ""
-
-#: errors.subscriptions.user_unlicensed
-msgid "Abonnement für nicht lizenzierten Benutzer wird übersprungen."
-msgstr ""
-
-#: errors.subscriptions.smtp_unreacheable
-msgid ""
-"SMTP-Host kann nicht erreicht werden. Prüfen Sie, ob SMTP konfiguriert wurde."
-msgstr ""
-
-#: errors.subscriptions.uncategorized_error
-msgid "Unbekannter Fehler"
-msgstr ""
-
-#: errors.subscriptions.pdf_render_failed
-msgid "Der PDF-Anhang für diese E-Mail konnte nicht richtig gerendert werden."
-msgstr ""
-
-#: errors.subscriptions.pdf_limit_exceeded
-msgid ""
-"Das erzeugte PDF ist größer als es die {0}MB Größenbegrenzung erlaubt und "
-"konnte an diese E-Mail nicht anhängt werden."
-msgstr ""
-
-#: errors.subscriptions.attachments_not_enabled
-msgid ""
-"Dieses Abonnement ist fehlgeschlagen, da die E-Mail-Anhänge deaktiviert "
-"waren. Kontaktieren Sie Ihren Tableau-Administrator für Details."
-msgstr ""
-
-#: errors.subscriptions.pdf_email_failed
-msgid "Das erzeugte PDF konnte nicht an diese E-Mail angehängt werden."
-msgstr ""
-
-#: errors.subscriptions.learn_more_troubleshoot
-msgid ""
-"<a href=\"https://onlinehelp.tableau.com/current/server/de-de/"
-"subscribe_trouble.htm\">Weitere Informationen</a>"
-msgstr ""
-
-#: errors.subscriptions.bad_extract_refresh_subscription_configuration
-msgid ""
-"Das Abonnement wurde abgebrochen, da die Arbeitsmappe mehrere Zeitpläne für "
-"die Extraktaktualisierung enthält. Updaten Sie, um fortzufahren die "
-"Häufigkeit auf Ausgewählter Zeitplan."
-msgstr ""
-
-#: errors.subscriptions.subscription_failed_refresh_failure
-msgid "Die Extraktaktualisierung auf der Datenquelle ist fehlgeschlagen."
-msgstr ""
-
-#: errors.subscriptions.multiple_extracts_for_extract_refresh_subscription
-msgid ""
-"Die Arbeitsmappe enthält mehrere Zeitpläne für die Extraktaktualisierung. "
-"Updaten Sie die Häufigkeit auf Ausgewählter Zeitplan."
-msgstr ""
-
-#: errors.subscriptions.datasource_is_missing_password
-msgid ""
-"Datenquellen-Verbindungsfehler. Überprüfen Sie die Anmeldeinformationen auf "
-"allen Datenquellenverbindungen für die Arbeitsmappe."
-msgstr ""
-
-#: subscriptions.results_summary.sg
-msgid "{0} von {1} Abonnement von Zeitplan ''{2}'' gesendet."
-msgstr ""
-
-#: subscriptions.results_summary.pl
-msgid "{0} von {1} Abonnements gesendet von Zeitplan ''{2}''."
-msgstr ""
-
-#: subscriptions.results_views_per_subscription.sg
-msgid "{0} ({1} von 1 Ansicht erfolgreich)"
-msgstr ""
-
-#: subscriptions.results_views_per_subscription.pl
-msgid "{0} ({1} von {2} Ansichten erfolgreich)"
-msgstr ""
-
-#: subscriptions.results_views_per_subscription.more
-msgid "({0} mehr)"
-msgstr ""
-
-#: subscriptions.results_views_per_subscription.failed
-msgid "{0} ({1} von {2} Ansichten fehlgeschlagen)."
-msgstr ""
-
-#: subscriptions.results_header.all_shown.failures.sg
-msgid "1 Fehler"
-msgstr ""
-
-#: subscriptions.results_header.all_shown.failures.pl
-msgid "{0} Fehler"
-msgstr ""
-
-#: subscriptions.results_header.all_shown.warnings.sg
-msgid "1 Warnung"
-msgstr ""
-
-#: subscriptions.results_header.all_shown.warnings.pl
-msgid "{0} Warnungen"
-msgstr ""
-
-#: subscriptions.results_header.some_hidden.failures.pl.sg
-msgid "{0} Fehler (1 ausgeblendet, siehe Protokolle)"
-msgstr ""
-
-#: subscriptions.results_header.some_hidden.failures.pl.pl
-msgid "{0} Fehler ({1} ausgeblendet, siehe Protokolle)"
-msgstr ""
-
-#: subscriptions.results_header.some_hidden.warnings.pl.sg
-msgid "{0} Warnungen (1 ausgeblendet, siehe Protokolle)"
-msgstr ""
-
-#: subscriptions.results_header.some_hidden.warnings.pl.pl
-msgid "{0} Warnungen ({1} ausgeblendet, siehe Protokolle)"
-msgstr ""
-
-#: dataalerts.manage_my_data_alerts
-msgid "Warnungen verwalten"
-msgstr ""
-
-#: dataalerts.edit_data_alert
-msgid "Warnung bearbeiten"
-msgstr ""
-
-#: dataalerts.remove_user_from_data_alert
-msgid "Mich entfernen"
-msgstr ""
-
-#: dataalerts.add_user_to_data_alert
-msgid "Mich zu dieser Benachrichtigung hinzufügen"
-msgstr ""
-
-#: dataalerts.greater_or_equal
-msgid "{0} war größer oder gleich {1}."
-msgstr ""
-
-#: dataalerts.greater
-msgid "{0} war größer als {1}."
-msgstr ""
-
-#: dataalerts.less_or_equal
-msgid "{0} war kleiner oder gleich {1}."
-msgstr ""
-
-#: dataalerts.less
-msgid "{0} war kleiner als {1}."
-msgstr ""
-
-#: dataalerts.equal
-msgid "{0} war gleich {1}."
-msgstr ""
-
-#: dataalerts.email_alt_text
-msgid "Von datengesteuerter Benachrichtigung verwendete Ansicht: {0}"
-msgstr ""
-
-#: dataalerts.email_alt_text_hidden_view
-msgid ""
-"Von datengesteuerter Benachrichtigung verwendete Ansicht: {0} mit Änderungen "
-"angewendet"
-msgstr ""
-
-#: dataalerts.alert_triggered_for_the_view
-msgid "Warnung für die Ansicht ausgelöst"
-msgstr ""
-
-#: dataalerts.failure.email.subject
-msgid "Datengesteuerte Benachrichtigung funktioniert nicht für: {0}"
-msgstr ""
-
-#: dataalerts.failure.status
-msgid "Ihre Benachrichtigung <i>{0}</i> funktioniert nicht"
-msgstr ""
-
-#: dataalerts.failure.view.details.alert
-msgid "Diese Benachrichtigung anzeigen"
-msgstr ""
-
-#: dataalerts.failure.explanation
-msgid ""
-"Ihre datengesteuerte Benachrichtigung, <i>{0}</i>, funktioniert momentan "
-"nicht. Daher werden die Empfänger nicht benachrichtigt, wenn die "
-"Datenbedingung wahr ist. Wenn die Benachrichtigung wieder funktioniert, "
-"erhalten Sie eine E-Mail."
-msgstr ""
-
-#: dataalerts.failure.affected.alert
-msgid "Betroffene datengesteuerte Benachrichtigung"
-msgstr ""
-
-#: dataalerts.failure.time
-msgid "Zeitpunkt des Benachrichtigungsfehlers"
-msgstr ""
-
-#: dataalerts.failure.cause
-msgid ""
-"Gelegentlich treten Benachrichtigungsfehler infolge vorübergehender "
-"Netzwerkprobleme auf, die sich von alleine beheben. Sie können auch "
-"versuchen, die Benachrichtigung in der ursprünglichen Datenansicht neu zu "
-"erstellen, oder häufige Ursachen von Benachrichtigungsfehlern beseitigen. "
-"Beispiele:"
-msgstr ""
-
-#: dataalerts.failure.changed.view
-msgid ""
-"Ein(e) entfernte(s) oder umbenannte(s) Arbeitsmappe, Ansicht oder Datenfeld."
-msgstr ""
-
-#: dataalerts.failure.expired.credentials
-msgid ""
-"In eine Arbeitsmappe eingebettete, abgelaufene Datenbankanmeldeinformationen."
-msgstr ""
-
-#: dataalerts.failure.datasource.error
-msgid "Eine Datenquelle, auf die nicht zugegriffen werden kann."
-msgstr ""
-
-#: dataalerts.failure.email.footer
-msgid ""
-"Sie erhalten diese E-Mail um {0} aufgrund eines Benachrichtigungsfehlers."
-msgstr ""
-
-#: dataalerts.failure.troubleshooting
-msgid ""
-"Um zu überprüfen, ob eines der oben aufgeführten Probleme den "
-"Benachrichtigungsfehler verursacht, klicken Sie auf die folgende "
-"Schaltfläche."
-msgstr ""
-
-#: dataalerts.success.email.subject
-msgid "Datengesteuerte Benachrichtigung wurde fortgesetzt für: {0}"
-msgstr ""
-
-#: dataalerts.success.status
-msgid "Ihre Benachrichtigung <i>{0}</i> wurde fortgesetzt."
-msgstr ""
-
-#: dataalerts.success.explanation
-msgid ""
-"Ihre datengesteuerte Warnung, <i>{0}</i>, funktioniert wieder, sodass die "
-"Empfänger benachrichtigt werden, wenn die Datenbedingung wahr ist."
-msgstr ""
-
-#: dataalerts.failure.error.internalError
-msgid "Datenbenachrichtigung, interner Fehler"
-msgstr ""
-
-#: dataalerts.failure.error.invalidDataAlertSpecification
-msgid "Ungültige Datenbenachrichtigungsspezifikation"
-msgstr ""
-
-#: dataalerts.failure.error.summaryTableNotFound
-msgid "Zusammenfassungs-Datentabelle nicht gefunden"
-msgstr ""
-
-#: dataalerts.failure.error.unclassifiedError
-msgid "Unklassifizierter Fehler"
-msgstr ""
-
-#: dataalerts.failure.error.viewContentNotFound
-msgid "Datenbenachrichtigungs-Inhalt {0} nicht gefunden"
-msgstr ""
-
-#: dataalerts.failure.error.viewNotFound
-msgid "Datenbenachrichtigungsansicht wurde nicht gefunden."
-msgstr ""
-
-#: dataalerts.failure.error.workbookNotFound
-msgid "Arbeitsmappe nicht gefunden"
-msgstr ""
-
-#: dataalerts.failure.error.paneDescriptorAxisNotFound
-msgid "Keine Achse gefunden für Feld {0}"
-msgstr ""
-
-#: dataalerts.failure.error.paneDescriptorNotFound
-msgid "{0}"
-msgstr ""
-
-#: dataalerts.failure.error.unsupportedComparisonExpression
-msgid "Nicht unterstützter Vergleichsausdruck {0}"
-msgstr ""
-
-#: dataalerts.failure.error.nonConstComparisonOp
-msgid "Variabler Vergleichsoperator ermittelt: {0}"
-msgstr ""
-
-#: dataalerts.failure.error.cannotAddFilter
-msgid "Hinzufügen von Filter zu Datenbenachrichtigung ist fehlgeschlagen"
-msgstr ""
-
-#: dataalerts.failure.error.sheetNotAlertable
-msgid "Blatt {0} verfügt über unterstützte Daten für Benachrichtigungen. {1}"
-msgstr ""
-
-#: dataalerts.failure.error.dataAlertMeasureNotFound
-msgid "Kennzahl kann nicht ausgewählt werden. {0}"
-msgstr ""
-
-#: dataalerts.failure.error.tooManyMeasuresForDataAlert
-msgid "Falsche Anzahl an Kennzahlen entdeckt.{0}"
-msgstr ""
-
-#: dataalerts.failure.error.thresholdParseError
-msgid "Schwellenwerttext {0} konnte nicht analysiert werden. {1}"
-msgstr ""
-
-#: dataalerts.failure.error.dataAlertPresModelCreationError
-msgid "Fehler beim Serialisieren von Benachrichtigung. {0}"
-msgstr ""
-
-#: dataalerts.failure.error.cannotDrawDataAlertDialog
-msgid "Dialogfeld zur Datenbenachrichtigung kann nicht gezeichnet werden."
-msgstr ""
-
-#: dataalerts.failure.error.unsupportedDataAlertType
-msgid "Der Typ der Datenbenachrichtigung {0} wird derzeit nicht unterstützt."
-msgstr ""
-
-#: dataalerts.failure.suspend.email.subject
-msgid "Datengesteuerte Benachrichtigung ausgesetzt für: {0}"
-msgstr ""
-
-#: dataalerts.failure.suspend.email.status
-msgid "Ihre Benachrichtigung {0} wurde ausgesetzt"
-msgstr ""
-
-#: dataalerts.failure.suspend.email.explanation
-msgid ""
-"Während der Aussetzung wird die Ansicht nicht evaluiert und Empfänger werden "
-"nicht benachrichtigt. Nach einer Behebung kann die Benachrichtigung unter <a "
-"href=\"{0}\" style=\"font-size:14px;font-family: Benton Sans Medium;color:#"
-"4996B2\">{1} fortgesetzt werden."
-msgstr ""
-
-#: dataalerts.failure.suspend.view.name.prefix
-msgctxt "dataalerts.failure.suspend.view.name.prefix"
-msgid "Ansicht"
-msgstr ""
-
-#: dataalerts.failure.suspend.time
-msgctxt "dataalerts.failure.suspend.time"
-msgid "Aussetzungszeit"
-msgstr ""
-
-#: dataalerts.failure.suspend.email.footer
-msgid "Sie erhalten diese E-Mail, da Ihre Benachrichtigung ausgesetzt wurde."
-msgstr ""
-
-#: dataalerts.failure.suspend.email.view.name.my.content
-msgid "Eigener Content"
-msgstr ""
-
-#: dataalerts.failure.suspend.view.alerts
-msgid "Warnungen anzeigen"
-msgstr ""
-
-#: metricsservices.failure.affected.metric
-msgid "Betroffene Metrik"
-msgstr ""
-
-#: metricsservices.failure.cause
-msgid ""
-"Manchmal schlagen Metrikaktualisierungen aufgrund von temporären "
-"Verbindungsproblemen fehl, welche automatisch gelöst werden. Andere häufige "
-"Gründe, warum eine Metrikaktualisierung fehlschlagen kann, sind:"
-msgstr ""
-
-#: metricsservices.failure.changed.view
-msgid ""
-"Ein(e) entfernte(s) oder umbenannte(s) Arbeitsmappe, Ansicht oder Datenfeld"
-msgstr ""
-
-#: metricsservices.failure.permissions.error
-msgid "Eine Änderung in den Berechtigungen für die verbundene Ansicht"
-msgstr ""
-
-#: metricsservices.failure.email.footer
-msgid ""
-"Sie erhalten diese E-Mail um {0}, aufgrund eines Fehlers mit Ihrer "
-"Metrikaktualisierung."
-msgstr ""
-
-#: metricsservices.failure.email.subject
-msgid "Metrikaktualisierung funktioniert nicht für: {0}"
-msgstr ""
-
-#: metricsservices.failure.expired.credentials
-msgid ""
-"In eine Arbeitsmappe eingebettete, abgelaufene Datenbankanmeldeinformationen"
-msgstr ""
-
-#: metricsservices.failure.explanation
-msgid ""
-"Ihre Metrik kann nicht aktualisiert werden, deshalb werden Ihre Metrikdaten "
-"nicht upgedated. Sie erhalten eine E-Mail-Benachrichtigung, sobald die "
-"Metrikaktualisierung wieder funktioniert."
-msgstr ""
-
-#: metricsservices.failure.status
-msgid "Ihre Metrik \"{0}\" ist nicht aktualisiert"
-msgstr ""
-
-#: metricsservices.failure.suspend.email.explanation
-msgid ""
-"Während die Metrikaktualisierung ausgesetzt ist, werden Ihre Metrikdaten "
-"nicht upgedated. Nachdem eine Reparatur ausgeführt wurde, können Sie die "
-"Metrikaktualisierung fortführen."
-msgstr ""
-
-#: metricsservices.failure.suspend.email.footer
-msgid ""
-"Sie erhalten diese E-Mail um {0}, da Ihre Metrikaktualisierung ausgesetzt "
-"wurde."
-msgstr ""
-
-#: metricsservices.failure.suspend.email.status
-msgid "Die Aktualisierung für Ihre Metrik \"{0}\" wurde abgebrochen"
-msgstr ""
-
-#: metricsservices.failure.suspend.email.subject
-msgid "Metrikaktualisierung abgebrochen für: {0}"
-msgstr ""
-
-#: metricsservices.failure.suspend.time
-msgctxt "metricsservices.failure.suspend.time"
-msgid "Aussetzungszeit"
-msgstr ""
-
-#: metricsservices.failure.suspend.view.metric
-msgctxt "metricsservices.failure.suspend.view.metric"
-msgid "Zu Metrik gehen"
-msgstr ""
-
-#: metricsservices.failure.suspend.view.name.prefix
-msgctxt "metricsservices.failure.suspend.view.name.prefix"
-msgid "Verbundene Ansicht"
-msgstr ""
-
-#: metricsservices.failure.time
-msgid "Zeitpunkt des Aktualisierungsfehlers"
-msgstr ""
-
-#: metricsservices.failure.troubleshooting
-msgid ""
-"Um zu kontrollieren, ob eine der oben angeführten Probleme dazu führen, dass "
-"Ihre Metrikaktualisierung fehlschlägt, klicken Sie auf die Schaltfläche "
-"unten. Sie können auch versuchen, die Metrik auf der verbundenen Ansicht "
-"nachzustellen."
-msgstr ""
-
-#: metricsservices.failure.view.details.metric
-msgctxt "metricsservices.failure.view.details.metric"
-msgid "Zu Metrik gehen"
-msgstr ""
-
-#: metricsservices.failure.view.name.prefix
-msgctxt "metricsservices.failure.view.name.prefix"
-msgid "Verbundene Ansicht"
-msgstr ""
-
-#: metricsservices.success.email.subject
-msgid "Metrikaktualisierung wird fortgefahren für: {0}"
-msgstr ""
-
-#: metricsservices.success.explanation
-msgid ""
-"Die Aktualisierung für Ihre Kennzahl funktioniert wieder und sie sucht nach "
-"Aktualisierungen für Ihre Kennzahldaten."
-msgstr ""
-
-#: metricsservices.success.status
-msgid "Die Aktualisierung für Ihre Metrik \"{0}\" wird fortgefahren"
-msgstr ""
-
-#: errors.staticimages.generic
-msgid "Fehler beim Generieren statischer Bilder für Arbeitsmappe {0}. {1}."
-msgstr ""
-
-#: errors.internal_error.request.message
-msgid "{0} konnte die Anforderung nicht ausführen."
-msgstr ""
-
-#: errors.permissions.limited_user_visibility
-msgid ""
-"Fehler beim Ausführen der Abfrage. Der Benutzer muss ein Administrator oder "
-"Creator sein, um andere Benutzer abzufragen, wenn die Nutzersichtbarkeit auf "
-"limitiert eingestellt ist."
-msgstr ""
-
-#: local_names.system_user.guest.name
-msgid "Gast"
-msgstr ""
-
-#: local_names.group.all_users.name
-msgid "Alle Benutzer"
-msgstr ""
-
-#: local_names.containers.personal_space.name
-msgid "Persönlicher Bereich"
-msgstr ""
-
-#: password_reset.email.subject
-msgid "Mit diesem Link können Sie Ihr Kennwort zurücksetzen."
-msgstr ""
-
-#: password_reset.email.body
-msgid ""
-"Hallo {0},<br/><br/>Sie haben soeben eine Zurücksetzung Ihres Kennworts "
-"angefordert.<br/><br/> Um Ihr Tableau Server-Kennwort zu ändern, {1} oder "
-"kopieren Sie den folgenden Link in Ihren Browser: {2}<br/><br/>Er läuft in "
-"48 Stunden ab, Sie sollten ihn also gleich verwenden.<br/><br/>Wenn Sie die "
-"Zurücksetzung Ihres Kennworts nicht angefordert haben, sollten Sie das Ihrem "
-"Serveradministrator mitteilen.<br/><br/>Danke, dass Sie Tableau verwenden.<"
-"br/>Das Tableau-Team"
-msgstr ""
-
-#: password_reset.email.link
-msgid "hier klicken"
-msgstr ""
-
-#: hours.pl
-msgid "{0} Stunden"
-msgstr ""
-
-#: hours.sg
-msgid "1 Stunde"
-msgstr ""
-
-#: minutes.pl
-msgid "{0} Minuten"
-msgstr ""
-
-#: minutes.sg
-msgid "1 Minute"
-msgstr ""
-
-#: seconds.pl
-msgid "{0} Sekunden"
-msgstr ""
-
-#: seconds.sg
-msgid "1 Sekunde"
-msgstr ""
-
-#: dataconnections.classes.tableau_server_site
-msgid "Tableau Server-Site"
-msgstr ""
-
-#: materializeviews.errors.workbook_not_in_project
-msgid "Projekt ''{0}'' enthält Arbeitsmappe ''{1}'' nicht"
-msgstr ""
-
-#: materializeviews.errors.workbook_has_no_extract
-msgid ""
-"Das Aktualisieren der materialisierten Ansichts-Umgebung für die "
-"Arbeitsmappe ''{0}'' ist fehlgeschlagen, Momentan werden nur Arbeitsmappen "
-"mit eingebetteten Extrakten unterstützt."
-msgstr ""
-
-#: materializeviews.errors.workbook_updating_errors
-msgid ""
-"Beim Aktualisieren der materialisierten Ansichts-Umgebung für Arbeitsmappen "
-"wurden Fehler gefunden"
-msgstr ""
-
-#: materializeviews.errors.workbook_too_large
-msgid ""
-"Das Aktualisieren der materialisierten Ansichts-Umgebung der Arbeitsmappe "
-"''{0}'' ist fehlgeschlagen, da die Arbeitsmappe das Limit von  {1} GB "
-"überschreitet."
-msgstr ""
-
-#: materializeviews.errors.project_path_not_exists
-msgid "Projektpfad ''{0}'' ist nicht vorhanden."
-msgstr ""
-
-#: materializeviews.errors.feature_disabled
-msgid ""
-"Das Aktualisieren der materialisierten Ansichts-Umgebung für Arbeitsmappe "
-"''{0}'' ist fehlgeschlagen, da diese Funktion zurzeit deaktiviert ist"
-msgstr ""
-
-#: materializeviews.errors.update_materialized_views_setting_failed
-msgid ""
-"Das Aktualisieren der materialisierten Ansichts-Umgebung für Arbeitsmappe "
-"''{0}'' ist fehlgeschlagen,"
-msgstr ""
-
-#: materializeviews.errors.site_not_enabled
-msgid ""
-"Auf dieser Site sind materialisierte Ansichten nicht aktiviert. Wenden Sie "
-"sich an Ihren Administrator."
-msgstr ""
-
-#: materializeviews.errors.encrypted_extracts_not_supported
-msgid ""
-"Die Funktion Materialisierte Ansichten unterstützt Arbeitsmappen mit "
-"verschlüsselten Extrakten derzeit nicht"
-msgstr ""
-
-#: materializedviews.finished.create
-msgid ""
-"Erstellte materialisierte Ansichten mit dem Status ''{0}'' für Arbeitsmappe "
-"''{1}''"
-msgstr ""
-
-#: materializedviews.finished.delete
-msgid "Gelöschte materialisierte Ansichten für die Arbeitsmappen-ID: {0}"
-msgstr ""
-
-#: materializedviews.finished.encrypt
-msgid ""
-"Abgeschlossene Verschlüsselung der materialisierten Ansichten für die "
-"Arbeitsmappe ''{0}''"
-msgstr ""
-
-#: materializedviews.finished.decrypt
-msgid ""
-"Abgeschlossene Entschlüsselung der materialisierten Ansichten für die "
-"Arbeitsmappe ''{0}''"
-msgstr ""
-
-#: materializedviews.finished.rekey
-msgid ""
-"Abgeschlossene erneute Verschlüsselung der materialisierten Ansichten für "
-"die Arbeitsmappe ''{0}''"
-msgstr ""
-
-#: materializedviews.status.encryption_key
-msgctxt "materializedviews.status.encryption_key"
-msgid "Verschlüsselungsschlüssel-ID: ''{0}''."
-msgstr ""
-
-#: materializedviews.status.encryption_keys
-msgctxt "materializedviews.status.encryption_keys"
-msgid ""
-"Alte Verschlüsselungsschlüssel-ID: ''{0}'', neue Verschlüsselungsschlüssel-"
-"ID: ''{1}''."
-msgstr ""
-
-#: materializedviews.status.encryption_type
-msgid "Typ der Datenquellenverschlüsselung: ''{0}''"
-msgstr ""
-
-#: customizedviews.namedSharingPrefix
-msgid "Freigegebene Version"
-msgstr ""
-
-#: flows.drafts.default_name
-msgid "Neues Schema"
-msgstr ""
-
-#: content_type.project
-msgid "Projekt"
-msgstr ""
-
-#: content_type.workbook
-msgctxt "content_type.workbook"
-msgid "Arbeitsmappe"
-msgstr ""
-
-#: content_type.view
-msgctxt "content_type.view"
-msgid "Ansicht"
-msgstr ""
-
-#: content_type.datasource
-msgid "Datenquelle"
-msgstr ""
-
-#: content_type.flow
-msgid "Schema"
-msgstr ""
-
-#: content_type.metric
-msgid "Metrisch"
-msgstr ""
-
-#: content_type.collection
-msgid "Sammlung"
-msgstr ""
-
-#: content_type.visualization
-msgid "Visualisierung"
-msgstr ""
-
-#: content_type.askdata_visualization
-msgid "\"Frag die Daten\"-Visualisierung"
-msgstr ""
-
-#: content_type.explaindata_explanation
-msgid "Erläuterung"
-msgstr ""
-
-#: content_type.publishedconnection
-msgid "Virtuelle Verbindung"
-msgstr ""
-
-#: content_type.publishedconnectiontable
-msgid "Virtuelle Verbindungstabelle"
-msgstr ""
-
-#: upgradethumbnails.status.server_started
-msgid "Serverantwort: Miniatorbildupgrade gestartet!"
-msgstr ""
-
-#: upgradethumbnails.status.server_stopped
-msgid "Serverantwort: %d Aufträge angehalten"
-msgstr ""
-
-#: dataquality.message.refresh_failed
-msgid "Fehler bei Aktualisierung: {0}"
-msgstr ""
-
-#: dataquality.message.last_successful
-msgid "Letzte erfolgreiche Ausführung: {0}"
-msgstr ""
-
-#: dataquality.message.next_scheduled
-msgid "Nächste geplante Ausführung: {0}"
-msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=utf-8"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: None"
+"Language: de"
+#:
+msgid "permissions.labels.capabilities.read"
+msgstr "Ansicht:"
+
+#:
+msgid "permissions.labels.capabilities.write"
+msgstr "Überschreiben:"
+
+#:
+msgid "permissions.labels.capabilities.write.legacy"
+msgstr "Speichern:"
+
+#:
+msgid "permissions.labels.capabilities.delete"
+msgstr "Löschen:"
+
+#:
+msgid "permissions.labels.capabilities.filter"
+msgstr "Filter:"
+
+#:
+msgid "permissions.labels.capabilities.add_tag"
+msgstr "Tag hinzufügen:"
+
+#:
+msgid "permissions.labels.capabilities.add_favorite"
+msgstr "Favorit hinzufügen:"
+
+#:
+msgid "permissions.labels.capabilities.add_comment"
+msgstr "Kommentare hinzufügen:"
+
+#:
+msgid "permissions.labels.capabilities.add_comment.legacy"
+msgstr "Kommentar hinzufügen:"
+
+#:
+msgid "permissions.labels.capabilities.view_comments"
+msgstr "Kommentare anzeigen:"
+
+#:
+msgid "permissions.labels.capabilities.vud"
+msgstr "Vollständige Daten herunterladen:"
+
+#:
+msgid "permissions.labels.capabilities.export_image"
+msgstr "Bild/PDF herunterladen:"
+
+#:
+msgid "permissions.labels.capabilities.export_data"
+msgstr "Zusammenfassungsdaten herunterladen:"
+
+#:
+msgid "permissions.labels.capabilities.export_xml"
+msgstr "Kopie herunterladen/speichern:"
+
+#:
+msgid "permissions.labels.capabilities.export_xml.legacy"
+msgstr "Herunterladen/Speichern als:"
+
+#:
+msgid "permissions.labels.capabilities.save_customized_view"
+msgstr "Angepasste Ansicht speichern:"
+
+#:
+msgid "permissions.labels.capabilities.share_view"
+msgstr "Angepasste Ansicht freigeben:"
+
+#:
+msgid "permissions.labels.capabilities.stateful_url"
+msgstr "Permalink:"
+
+#:
+msgid "permissions.labels.capabilities.change_hierarchy"
+msgstr "Verschieben:"
+
+#:
+msgid "permissions.labels.capabilities.change_permissions"
+msgstr "Berechtigungen festlegen:"
+
+#:
+msgid "permissions.labels.capabilities.exclude"
+msgstr "Ausschließen:"
+
+#:
+msgid "permissions.labels.capabilities.keep_only"
+msgstr "Nur beibehalten:"
+
+#:
+msgid "permissions.labels.capabilities.select"
+msgstr "Markierungen auswählen:"
+
+#:
+msgid "permissions.labels.capabilities.tooltip"
+msgstr "QuickInfo anzeigen:"
+
+#:
+msgid "permissions.labels.capabilities.highlight"
+msgstr "Legendenhervorhebung:"
+
+#:
+msgid "permissions.labels.capabilities.url_link"
+msgstr "Link zu externen URLs:"
+
+#:
+msgid "permissions.labels.capabilities.administrator"
+msgstr "Administrator:"
+
+#:
+msgid "permissions.labels.capabilities.content_admin"
+msgstr "Content-Administrator:"
+
+#:
+msgid "permissions.labels.capabilities.create_groups"
+msgstr "Gruppen erstellen:"
+
+#:
+msgid "permissions.labels.capabilities.rename"
+msgstr "Umbenennen:"
+
+#:
+msgid "permissions.labels.capabilities.transfer_ownership"
+msgstr "Besitzrecht übertragen:"
+
+#:
+msgid "permissions.labels.capabilities.project_leader"
+msgstr "Projektleiter:"
+
+#:
+msgid "permissions.labels.capabilities.publish"
+msgstr "Veröffentlichen:"
+
+#:
+msgid "permissions.labels.capabilities.connect"
+msgstr "Verbinden:"
+
+#:
+msgid "permissions.labels.capabilities.draw"
+msgstr "Zeichnen:"
+
+#:
+msgid "permissions.labels.capabilities.web_authoring"
+msgstr "Webbearbeitung:"
+
+#:
+msgid "permissions.labels.capabilities.xml_save_as"
+msgstr "Speichern unter:"
+
+#:
+msgid "permissions.labels.capabilities.create_refresh_metrics"
+msgstr "Metriken erstellen/aktualisieren:"
+
+#:
+msgid "permissions.labels.capabilities.explain_data"
+msgstr ""Erklär die Daten" ausführen:"
+
+#:
+msgid "permissions.labels.roles.wb_view"
+msgstr "Ansicht"
+
+#:
+msgid "permissions.labels.roles.wb_explore"
+msgstr "Untersuchen"
+
+#:
+msgid "permissions.labels.roles.wb_publish"
+msgstr "Veröffentlichen"
+
+#:
+msgid "permissions.labels.roles.wb_administer"
+msgstr "Verwalten"
+
+#:
+msgid "permissions.labels.roles.ds_view"
+msgstr "Ansicht"
+
+#:
+msgid "permissions.labels.roles.ds_explore"
+msgstr "Untersuchen"
+
+#:
+msgid "permissions.labels.roles.ds_publish"
+msgstr "Veröffentlichen"
+
+#:
+msgid "permissions.labels.roles.ds_administer"
+msgstr "Verwalten"
+
+#:
+msgid "permissions.labels.roles.viewer"
+msgstr "Viewer"
+
+#:
+msgid "permissions.labels.roles.interactor"
+msgstr "Interaktor"
+
+#:
+msgid "permissions.labels.roles.editor"
+msgstr "Editor"
+
+#:
+msgid "permissions.labels.roles.ds_connector"
+msgstr "Datenquellen-Connector"
+
+#:
+msgid "permissions.labels.roles.ds_editor"
+msgstr "Datenquellen-Editor"
+
+#:
+msgid "permissions.labels.roles.administrator"
+msgstr "Administrator"
+
+#:
+msgid "permissions.labels.roles.project_leader"
+msgstr "Projektleiter"
+
+#:
+msgid "permissions.labels.roles.publisher"
+msgstr "Veröffentlicher"
+
+#:
+msgid "permissions.labels.roles.custom"
+msgstr "Benutzerdefiniert"
+
+#:
+msgid "permissions.labels.roles.none"
+msgstr "Keiner"
+
+#:
+msgid "formats.messages.disk_space.in_mb"
+msgstr "{0} MB"
+
+#:
+msgid "formats.messages.disk_space.in_kb"
+msgstr "{0} KB"
+
+#:
+msgid "errors.argument.flow_description.too_long"
+msgstr "Schemabeschreibung ist zu lang ({0} Zeichen). Die Beschreibung muss kürzer als {1} Zeichen sein:{2}"
+
+#:
+msgid "errors.argument.workbook_name.too_long"
+msgstr "Arbeitsmappenname ist zu lang ({0} Zeichen). Er muss kürzer als {1} Zeichen sein:{2}"
+
+#:
+msgid "errors.argument.workbook_name.empty"
+msgstr "Arbeitsmappenname ist leer,"
+
+#:
+msgid "errors.argument.workbook_description.too_long"
+msgstr "Arbeitsmappenbeschreibung ist zu lang ({0} Zeichen). Die Beschreibung muss kürzer als {1} Zeichen sein:{2}"
+
+#:
+msgid "errors.argument.worksheet_name.too_long"
+msgstr "Arbeitsblattname ist zu lang ({0} Zeichen). Er muss kürzer als {1} Zeichen sein:{2}"
+
+#:
+msgid "errors.argument.datasource_name.too_long"
+msgstr "Datenquellenname ist zu lang ({0} Zeichen). Er muss kürzer als {1} Zeichen sein:{2}"
+
+#:
+msgid "errors.argument.datasource_name.empty"
+msgstr "Der Datenquellenname ist leer."
+
+#:
+msgid "errors.argument.datasource_description.too_long"
+msgstr "Datenquellenbeschreibung ist zu lang ({0} Zeichen). Die Beschreibung muss kürzer als {1} Zeichen sein:{2}"
+
+#:
+msgid "errors.argument.dataconnection_column.too_long"
+msgstr "DataConnection column {0} is too long ({1} characters).  It must be shorter than {2} characters:{3}"
+
+#:
+msgid "errors.argument.tag.too_long"
+msgstr "Tag ist zu lang ({0} Zeichen). Es muss kürzer sein als {1} Zeichen:{2}"
+
+#:
+msgid "errors.argument.workbook_file.missing_or_empty"
+msgstr "Arbeitsmappendatei fehlt oder ist leer."
+
+#:
+msgid "errors.argument.internal"
+msgstr "Interner Serverfehler. Fehlendes und ungültiges Argument."
+
+#:
+msgid "errors.argument.thumbnail.invalid_format"
+msgstr "Format der Arbeitsmappen-Miniaturansichten ist ungültig. Muss PNG mit Auflösung von 300 x 300 oder weniger sein."
+
+#:
+msgid "errors.html_403.disabled_resource.workbook"
+msgstr "Diese Arbeitsmappe wurde leider deaktiviert. Wenden Sie sich an Ihren Administrator."
+
+#:
+msgid "errors.html_404.missing_or_unauthorized_resource.project"
+msgstr "Das gesuchte Projekt ist leider nicht vorhanden, oder Sie verfügen nicht über die Berechtigung zum Anzeigen dieses Projekts."
+
+#:
+msgid "errors.html_404.missing_or_unauthorized_resource.personal_space"
+msgstr "Der gesuchte persönliche Bereich ist leider nicht vorhanden, oder Sie verfügen nicht über die Berechtigung, um diesen anzuzeigen."
+
+#:
+msgid "errors.html_404.missing_or_unauthorized_resource.datasource"
+msgstr "Die Datenquelle, nach der Sie gesucht haben, ist leider nicht vorhanden."
+
+#:
+msgid "errors.labels.formatted_request_id"
+msgstr "Anforderungs-ID: {0}"
+
+#:
+msgid "errors.links.delete_datasources"
+msgstr "Datenquellen löschen"
+
+#:
+msgid "errors.links.delete_workbooks"
+msgstr "Arbeitsmappen löschen"
+
+#:
+msgid "errors.permissions.publish.datasource.licensing"
+msgstr "Sie müssen ''Interaktor'' sein, um eine Datenquelle veröffentlichen zu können."
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite"
+msgstr "Eine Datenquelle mit dem Namen ''{0}'' ist im Projekt ''{1}'' bereits vorhanden. Sie verfügen nicht über Berechtigungen zum Überschreiben."
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite_personal_space"
+msgstr "Eine Datenquelle mit dem Namen ''{0}'' ist bereits im persönlichen Bereich vorhanden. Sie verfügen nicht über Berechtigungen zum Überschreiben."
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite_short"
+msgstr "Eine Datenquelle mit dem Namen ''{0}'' ist im Projekt ''{1}'' bereits vorhanden."
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
+msgstr "Eine Datenquelle mit dem Namen "{0}" ist bereits im persönlichen Bereich vorhanden.""
+
+#:
+msgid "errors.permissions.publish.datasource.non_existent"
+msgstr "Datenquelle "{0}" ist nicht vorhanden."
+
+#:
+msgid "errors.permissions.publish.datasource.general"
+msgstr "Sie verfügen leider nicht über die Berechtigung zur Veröffentlichung für diese Datenquelle."
+
+#:
+msgid "errors.permissions.publish.project.explicit_publisher_detail"
+msgstr "Sie verfügen über keine Veröffentlichungsberechtigungen."
+
+#:
+msgid "errors.permissions.publish.project.general"
+msgstr "Sie verfügen leider nicht über die Berechtigung zur Veröffentlichung für dieses Projekt."
+
+#:
+msgid "errors.permissions.publish.project.non_existent"
+msgstr "Projekt ''{0}'' ist nicht vorhanden."
+
+#:
+msgid "errors.permissions.publish.project.not_writable"
+msgstr "Sie verfügen nicht über die Berechtigung zum Schreiben in das Projekt ''{0}''."
+
+#:
+msgid "errors.permissions.publish.project.unspecified"
+msgstr "Sie müssen ein Projekt angeben."
+
+#:
+msgid "errors.permissions.publish.workbook.disabled"
+msgstr "Die Arbeitsmappe ''{0}'' wurde deaktiviert."
+
+#:
+msgid "errors.permissions.publish.workbook.general"
+msgstr "Eine Arbeitsmappe mit diesem Namen ist bereits in dem Projekt vorhanden, in das Sie veröffentlichen. Benennen Sie Ihre Arbeitsmappe zum Veröffentlichen um."
+
+#:
+msgid "errors.permissions.publish.workbook.general_personal_space"
+msgstr "Eine Arbeitsmappe mit diesem Namen ist bereits im persönlichen Bereich vorhanden, in dem Sie veröffentlichen. Benennen Sie Ihre Arbeitsmappe zum Veröffentlichen um."
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite"
+msgstr "Eine Arbeitsmappe mit dem Namen ''{0}'' ist bereits im Projekt ''{1}'' vorhanden. Sie verfügen nicht über Berechtigungen zum Überschreiben."
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite_personal_space"
+msgstr "Eine Arbeitsmappe mit dem Namen ''{0}'' ist bereits im persönlichen Bereich vorhanden. Sie verfügen nicht über Berechtigungen zum Überschreiben."
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite_short"
+msgstr "Eine Arbeitsmappe mit dem Namen ''{0}'' ist bereits im Projekt ''{1}'' vorhanden."
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
+msgstr "Eine Arbeitsmappe mit dem Namen "{0}" ist bereits im persönlichen Bereich vorhanden."
+
+#:
+msgid "errors.reportable.impersonation.group_and_user"
+msgstr "Geben Sie nur ''impersonate_username'' oder ''impersonate_groupname'' an, nicht jedoch beide Namen."
+
+#:
+msgid "errors.reportable.impersonation.user_not_found"
+msgstr "Der Benutzer ''{0}'' ist nicht vorhanden."
+
+#:
+msgid "errors.reportable.impersonation.group_not_found"
+msgstr "Gruppe ''{0}'' existiert nicht. "
+
+#:
+msgid "errors.public.validation.hasextract"
+msgstr "Arbeitsmappen, die in Tableau Public gespeichert sind, müssen aktive Tableau-Extrakte verwenden. Klicken Sie mit der rechten Maustaste auf die Datenquelle und wählen Sie vor der Veröffentlichung "Extrakt verwenden", Die Datenquelle, ''{0}'', ist kein aktives Extrakt."
+
+#:
+msgid "errors.publish.dataserver_datasource_not_found"
+msgstr "Datenquelle ''{0}'' wurde für Arbeitsmappe ''{1}'' nicht gefunden."
+
+#:
+msgid "errors.publish.datasource_update_mode"
+msgstr "Unbekannter Aktualisierungsmodus: ''{0}''."
+
+#:
+msgid "errors.publish.workbook.concurrent_update"
+msgstr "Eine Arbeitsmappe mit diesem Namen wird gerade veröffentlicht oder geändert. Warten Sie, bis die Aufgabe abgeschlossen ist, bevor Sie es erneut versuchen."
+
+#:
+msgid "errors.publish.workbook.restricted"
+msgstr "Die Arbeitsmappe enthält Verbindungstypen, die auf diesem Server nicht zulässig sind."
+
+#:
+msgid "errors.publish.datasource.concurrent_update"
+msgstr "Eine Datenquelle mit diesem Namen wird gerade veröffentlicht oder geändert. Warten Sie, bis die Aufgabe abgeschlossen ist, bevor Sie es erneut versuchen."
+
+#:
+msgid "errors.publish.datasource.restricted"
+msgstr "Die Datenquelle enthält einen Verbindungstyp, der auf diesem Server nicht zulässig ist."
+
+#:
+msgid "errors.publish.datasource.connection_check"
+msgstr "{0} konnte keine Verbindung zu Ihrer Datenquelle herstellen."
+
+#:
+msgid "errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption"
+msgstr "Die Arbeitsmappe mit verschlüsseltem Extrakt kann nicht veröffentlicht werden. Der Site-Administrator hat die Extraktverschlüsselung auf dieser Site deaktiviert. Sie müssen die Arbeitsmappe mit einem unverschlüsselten Extrakt veröffentlichen."
+
+#:
+msgid "errors.publish.datasource.requested_extract_encryption_on_site_with_disabled_encryption"
+msgstr "Die Datenquelle kann nicht als verschlüsselter Extrakt veröffentlicht werden. Der Site-Administrator hat die Extraktverschlüsselung auf dieser Site deaktiviert. Sie müssen den Extrakt unverschlüsselt veröffentlichen."
+
+#:
+msgid "errors.publish.workbook.requested_no_extract_encryption_on_site_with_enforced_encryption"
+msgstr "Die Arbeitsmappe kann nicht mit einem verschlüsselten Extrakt veröffentlicht werden. Der Site-Administrator hat die Extraktverschlüsselung auf dieser Site festgelegt. Sie müssen die Arbeitsmappe veröffentlichen und eine Extraktverschlüsselung angeben."
+
+#:
+msgid "errors.publish.datasource.requested_no_extract_encryption_on_site_with_enforced_encryption"
+msgstr "Der Datenquellenextrakt kann nicht unverschlüsselt veröffentlicht werden. Der Site-Administrator hat die Extraktverschlüsselung auf dieser Site festgelegt. Sie müssen den Extrakt verschlüsselt veröffentlichen."
+
+#:
+msgid "errors.publish.has_unfinished_extract_creation_job"
+msgstr "Diese Ressource kann nicht veröffentlicht werden, da damit verbundene Aufträge zur Erstellung von Auszügen ausstehen oder unvollendet sind. Bitte warten Sie oder stornieren Sie diese Aufträge und versuchen Sie es dann erneut."
+
+#:
+msgid "errors.publishing.storage_quota_exceeded.message"
+msgstr "Sitespeicherkontingent wurde überschritten."
+
+#:
+msgid "errors.publishing.request_size_exceeded"
+msgstr "Diese Datei kann nicht veröffentlicht werden, da die Größe der Anfrage {0} Bytes beträgt, wodurch das Bytegrößenlimit um {1} Bytes überschritten wird."
+
+#:
+msgid "errors.publishing.request_size_unknown"
+msgstr "Die Größe der Anfrage konnte nicht ermittelt werden."
+
+#:
+msgid "errors.site.quota_exceeded"
+msgstr "Das Kontingent, das Sie hochzuladen versuchen, überschreitet die Kapazität der Site um {0}."
+
+#:
+msgid "errors.personal_space.quota_exceeded"
+msgstr "Dieser Inhalt überschreitet die Kapazität Ihres persönlichen Bereichs um {0}."
+
+#:
+msgid "errors.web_authoring.workbook_deleted"
+msgstr "Die Arbeitsmappe ''{0}'' wurde gelöscht. Wählen Sie ''Speichern unter'', und sie als neue Arbeitsmappe zu speichern."
+
+#:
+msgid "errors.web_authoring.workbook_changed"
+msgstr "Nachdem Sie begonnen haben, diese Arbeitsmappe zu bearbeiten, hat ein anderer Benutzer die Arbeitsmappe bearbeitet und gespeichert. Sie können die ursprüngliche Arbeitsmappe daher nicht mehr aktualisieren. Wählen Sie ''Speichern unter'', um eine neue Arbeitsmappe mit Ihren Änderungen zu erstellen."
+
+#:
+msgid "labels.publish.embed_credentials"
+msgstr "Kennwort einbetten für Datenquelle"
+
+#:
+msgid "errors.publish.workbook.google_no_embedded_credentials"
+msgstr "Diese Arbeitsmappe enthält eine {0}-Datenquelle, für die eingebettete Anmeldeinformationen erforderlich sind. Wählen Sie ''{1}'' aus, um sie als eine andere Arbeitsmappe zu speichern."
+
+#:
+msgid "errors.publish.datasource.google_no_embedded_credentials"
+msgstr "Diese Datenquelle enthält eine {0}-Verbindung, für die eingebettete Anmeldeinformationen erforderlich sind. Veröffentlichen Sie diese Datenquelle über Tableau Desktop mit eingebetteten Anmeldeinformationen."
+
+#:
+msgid "errors.publish.datasource.federated_oauth_datasource_failed"
+msgstr "Anmeldeinformationen für eine oder mehrere Verbindungen in Ihrer Datenquelle sind abgelaufen. Löschen Sie die gespeicherten Anmeldeinformationen für diese Datenquelle auf Ihrer Kontoeinstellungen-Seite auf Tableau Server oder Tableau Online, und verbinden Sie sich mit der Datenquelle erneut."
+
+#:
+msgid "errors.publish.workbook.missing_oauth_credential"
+msgstr "Die Anmeldeinformationen ''{0}'' wurden nicht gefunden oder können nicht für die Verbindung mit dieser Datenquelle bzw. dieser Arbeitsmappe verwendet werden."
+
+#:
+msgid "errors.publish.version_incompatible.message"
+msgstr "Die Desktop- und Serverversionen sind nicht kompatibel."
+
+#:
+msgid "errors.publish.version_incompatible.details"
+msgstr "Desktopversion ''{0}'', Serverdokumentversion ''{1}''."
+
+#:
+msgid "errors.publish.datasource.managed_keychain.unique_cv_suggestions"
+msgstr "Die Veröffentlichung konnte aufgrund eines Konflikts nicht durchgeführt werden. Bitte senden Sie Ihre Änderung erneut."
+
+#:
+msgid "errors.publish.permissions_are_locked"
+msgstr "Im Projekt, in das die Veröffentlichung erfolgen soll, sind die Berechtigungen gesperrt. Zum Veröffentlichen dieser Arbeitsmappe verwenden Sie die Standardberechtigungen, und wiederholen Sie den Vorgang."
+
+#:
+msgid "errors.publish.datasource.not.found"
+msgstr "Diese Datenquelle konnte auf dem Server nicht gefunden werden."
+
+#:
+msgid "errors.publish.extracts.disabled"
+msgstr "Bis auf extraktbasierte Datenquellen werden Archivdatenquellen noch nicht unterstützt."
+
+#:
+msgid "errors.publish.datasource.timeout"
+msgstr "Bei der Veröffentlichung trat nach {0} Sekunden eine Zeitüberschreitung auf. Bitte versuchen Sie Tableau Desktop zu verwenden um diese Datenquelle zu veröffentlichen."
+
+#:
+msgid "errors.publish.data_role.permission_not_null"
+msgstr "Für Datenquellen des Typs Datenrolle können keine explizite Berechtigungen eingestellt werden."
+
+#:
+msgid "errors.download.extracts.timeout"
+msgstr "Bei der Veröffentlichung trat nach {0} Sekunden eine Zeitüberschreitung auf, da diese Datenquellen eine große Extraktdatei enthält. Bitte versuchen Sie Tableau Desktop zu verwenden um diese Datenquelle zu veröffentlichen."
+
+#:
+msgid "errors.publish.datasource.invalid_extract_update_time"
+msgstr "Ungültige extractUpdateTime angegeben: {0}"
+
+#:
+msgid "errors.publish.async.serialization"
+msgstr "Fehler beim Serialisieren des Status des Veröffentlichungsauftrags"
+
+#:
+msgid "errors.permissions.view.datasources"
+msgstr "Sie müssen ''Interaktor'' sein, um die Liste der Datenquellen anzeigen zu können."
+
+#:
+msgid "errors.oauth.invalid_oauth_class"
+msgstr "''{0}'' ist kein gültiger OAuth-Verbindungstyp."
+
+#:
+msgid "errors.xmlapi.bad_request"
+msgstr "Ungültige Anforderung"
+
+#:
+msgid "errors.xmlapi.unauthorized"
+msgstr "Nicht autorisiert"
+
+#:
+msgid "errors.xmlapi.forbidden"
+msgstr "Berechtigungen unzureichend"
+
+#:
+msgid "errors.xmlapi.system_user_not_found"
+msgstr "Benutzerkonto ist gesperrt oder ungültig."
+
+#:
+msgid "errors.xmlapi.site_user_not_found"
+msgstr "Dieses Benutzerkonto ist nicht aktiv. Wenden Sie sich an Ihren {0}-Administrator, wenn Sie Hilfe benötigen."
+
+#:
+msgid "errors.xmlapi.not_found"
+msgstr "Element nicht gefunden"
+
+#:
+msgid "errors.xmlapi.concurrent_update"
+msgstr "Gleichzeitige Aktualisierung"
+
+#:
+msgid "errors.xmlapi.internal_server_error"
+msgstr "Interner Serverfehler"
+
+#:
+msgid "errors.xmlapi.illegal_state"
+msgstr "Unzulässiger Status"
+
+#:
+msgid "errors.xmlapi.invalid_parameter"
+msgstr "Ungültiger Parameter"
+
+#:
+msgid "errors.xmlapi.already_exists"
+msgstr "Ist bereits vorhanden"
+
+#:
+msgid "errors.xmlapi.site_suspended"
+msgstr "Die Verfügbarkeit dieser Site wurde aufgehoben. Sie müssen Systemadministrator sein, um sich anzumelden."
+
+#:
+msgid "errors.xmlapi.site_locked"
+msgstr "Diese Site wurde gesperrt. Anmeldungen sind derzeit nicht möglich."
+
+#:
+msgid "errors.xmlapi.permission_modification"
+msgstr "Veröffentlichung mit geänderten Berechtigungen nicht möglich"
+
+#:
+msgid "errors.xmlapi.update_desktop"
+msgstr "Um von anderen Autoren erstellte Arbeitsmappen zu öffnen, laden Sie die neueste Version von Tableau Desktop Public Edition unter http://public.tableau.com/ herunter"
+
+#:
+msgid "errors.xmlapi.throttled.summary"
+msgstr "Zu viele Anforderungen"
+
+#:
+msgid "errors.xmlapi.throttled.detail"
+msgstr "Zu viele Anforderungen für ''{0}''. Versuchen Sie es nach {1} Sekunde(n) erneut."
+
+#:
+msgid "datasource.publish.check.unpublishable"
+msgstr "Die Datenquelle konnte nicht veröffentlicht werden."
+
+#:
+msgid "datasource.publish.check.publishable.extract_required"
+msgstr "Bei Veröffentlichung muss ein Extrakt erstellt werden."
+
+#:
+msgid "datasource.publish.check.publishable.credentials_required"
+msgstr "{1} greift vorübergehend auf die für ''{0}'' bereitgestellten Anmeldeinformationen zu, um zu bestätigen, dass eine Live-Datenverbindung aufrecht erhalten werden kann."
+
+#:
+msgid "datasource.publish.check.publishable.server_unreachable"
+msgstr "{1} kann ''{0}'' nicht erreichen. Bei Veröffentlichung wird ein Extrakt erstellt."
+
+#:
+msgid "publish.bundles.workbook.subscription.subject"
+msgstr "Ihre Arbeitsmappe {0} ist bereit."
+
+#:
+msgid "publish.bundles.workbook.subscription.message"
+msgstr "Ihre Salesforce-Daten wurden der Arbeitsmappe hinzugefügt. Gehen Sie zu Ihrem {0}-Projekt, um zu beginnen."
+
+#:
+msgid "extracts.status.finished.upload.workbook"
+msgstr "Hochladen von Extrakten (neue Extrakt-ID: {0}) für Arbeitsmappe ''{1}'' {2} ist abgeschlossen"
+
+#:
+msgid "extracts.status.finished.refresh.workbook"
+msgstr "Aktualisierung von Extrakten (neue Extrakt-ID:{0}) für Arbeitsmappe ''{1}'' {2} ist abgeschlossen"
+
+#:
+msgid "extracts.status.finished.increment.workbook"
+msgstr "Inkrementierung von Extrakten (neue Extrakt-ID:{0}) für Arbeitsmappe ''{1}'' {2} ist abgeschlossen"
+
+#:
+msgid "extracts.status.finished.encrypt.workbook"
+msgstr "Verschlüsselung von Extrakten (neue Extrakt-ID: {0}) für Arbeitsmappe ''{1}''  ist abgeschlossen"
+
+#:
+msgid "extracts.status.finished.decrypt.workbook"
+msgstr "Entschlüsselung von Extrakten (neue Extrakt-ID: {0}) für Arbeitsmappe ''{1}''  ist abgeschlossen"
+
+#:
+msgid "extracts.status.finished.rekey.workbook"
+msgstr "Erneute Verschlüsselung von Extrakten (neue Extrakt-ID: {0}) für Arbeitsmappe ''{1}''  ist abgeschlossen"
+
+#:
+msgid "extracts.status.finished.create.workbook"
+msgstr "Erstellung von Extrakten (neue Extrakt-ID: {0}) für Arbeitsmappe ''{1}'' ist abgeschlossen {2}"
+
+#:
+msgid "extracts.status.finished.remove.workbook"
+msgstr "Extrakt (Datenquellen-ID:{0}) zu Live ändern für Arbeitsmappe ''{1}'' ist abgeschlossen"
+
+#:
+msgid "extracts.status.finished.upload.datasource"
+msgstr "Hochladen von Extrakten (neue Extrakt-ID:{0}) für Datenquelle ''{1}'' {2} ist abgeschlossen"
+
+#:
+msgid "extracts.status.finished.refresh.datasource"
+msgstr "Aktualisierung von Extrakten (neue Extrakt-ID:{0}) für Datenquelle ''{1}'' {2} ist abgeschlossen"
+
+#:
+msgid "extracts.status.finished.increment.datasource"
+msgstr "Inkrementierung von Extrakten (neue Extrakt-ID:{0}) für Datenquelle ''{1}'' {2} ist abgeschlossen"
+
+#:
+msgid "extracts.status.finished.append.datasource"
+msgstr "Anhängen von Extrakten (neue Extrakt-ID:{0}) für Datenquelle ''{1}'' {2} ist abgeschlossen"
+
+#:
+msgid "extracts.status.finished.replace.datasource"
+msgstr "Aktualisieren von Extrakten (neue Extrakt-ID:{0}) für Datenquelle ''{1}'' {2} ist abgeschlossen"
+
+#:
+msgid "extracts.status.finished.encrypt.datasource"
+msgstr "Verschlüsselung von Extrakten (neue Extrakt-ID: {0}) für Datenquelle ''{1}''  ist abgeschlossen"
+
+#:
+msgid "extracts.status.finished.decrypt.datasource"
+msgstr "Entschlüsselung von Extrakten (neue Extrakt-ID: {0}) für Datenquelle ''{1}''  ist abgeschlossen"
+
+#:
+msgid "extracts.status.finished.rekey.datasource"
+msgstr "Erneute Verschlüsselung von Extrakten (neue Extrakt-ID: {0}) für Datenquelle ''{1}''  ist abgeschlossen"
+
+#:
+msgid "extracts.status.finished.encrypt.flow"
+msgstr "Die Verschlüssung der Extrakte für Schema ''{0}'' wurde abgeschlossen"
+
+#:
+msgid "extracts.status.finished.decrypt.flow"
+msgstr "Die Entschlüsselung der Extrakte für Schema ''{0}'' wurde abgeschlossen"
+
+#:
+msgid "extracts.status.finished.rekey.flow"
+msgstr "Die erneute Verschlüsselung der Extrakte für Schema ''{0}'' wurde abgeschlossen"
+
+#:
+msgid "extracts.status.finished.encrypt.flowdraft"
+msgstr "Die Verschlüssung der Extrakte für Schemaentwurf ''{0}'' wurde abgeschlossen"
+
+#:
+msgid "extracts.status.finished.decrypt.flowdraft"
+msgstr "Die Entschlüssung der Extrakte für Schemaentwurf ''{0}'' wurde abgeschlossen"
+
+#:
+msgid "extracts.status.finished.rekey.flowdraft"
+msgstr "Die erneute Verschlüssung der Extrakte für Schemaentwurf ''{0}'' wurde abgeschlossen"
+
+#:
+msgid "extracts.status.finished.create.datasource"
+msgstr "Erstellung von Extrakten (neue Extrakt-ID: {0}) für Datenquelle ''{1}'' {2} ist abgeschlossen"
+
+#:
+msgid "extracts.status.finished.remove.datasource"
+msgstr "Extrakt zu Live ändern für Datenquelle ''{1}'' ist abgeschlossen"
+
+#:
+msgid "extracts.status.encryption_key"
+msgstr "Verschlüsselungsschlüssel-ID: ''{0}''."
+
+#:
+msgid "extracts.status.encryption_keys"
+msgstr "Alte Verschlüsselungsschlüssel-ID: ''{0}'', neue Verschlüsselungsschlüssel-ID: ''{1}''."
+
+#:
+msgid "extracts.errors.upload"
+msgstr "Fehler beim Hochladen von Extrakten für {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.refresh"
+msgstr "Ein Fehler ist aufgetreten beim Aktualisieren der Extrakte für {0} ''{1}''"
+
+#:
+msgid "extracts.errors.create"
+msgstr "Fehler beim Erstellen von Extrakten für {0} ''{1}''."
+
+#:
+msgid "extracts.errors.increment"
+msgstr "Fehler beim Inkrementieren von Extrakten für {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.append"
+msgstr "Fehler beim Anhängen von Extrakten für {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.replace"
+msgstr "Fehler beim Ersetzen von Extrakten für {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.download"
+msgstr "Fehler beim Herunterladen von Extrakten für {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.remove"
+msgstr "Fehler beim Löschen von Extrakten für {0}: ''{1}''."
+
+#:
+msgid "extracts.errors.title"
+msgstr "Fehler beim Verarbeiten von Extrakten"
+
+#:
+msgid "extracts.errors.nothing_to_upload"
+msgstr "Keine hochzuladenden Extrakte für {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.nothing_to_refresh"
+msgstr "Keine zu aktualisierenden Extrakte für {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.nothing_to_increment"
+msgstr "Keine zu inkrementierenden Extrakte für {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.nothing_to_append"
+msgstr "Keine anzuhängenden Extrakte für {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.nothing_to_replace"
+msgstr "Keine zu ersetzenden Extrakte für {0}: ''{1}''"
+
+#:
+msgid "extracts.errors.refresh_summary"
+msgstr "Fehler beim Aktualisieren der Extrakte"
+
+#:
+msgid "extracts.errors.encrypt_summary"
+msgstr "Fehler beim Verschlüsseln von Extrakten"
+
+#:
+msgid "extracts.errors.rekey_summary"
+msgstr "Fehler beim erneuten Verschlüsseln von Extrakten"
+
+#:
+msgid "extracts.errors.decrypt_summary"
+msgstr "Fehler beim Entschlüsseln von Extrakten"
+
+#:
+msgid "extracts.errors.remove_summary"
+msgstr "Fehler beim Entfernen der Extrakte"
+
+#:
+msgid "extracts.errors.create_summary"
+msgstr "Fehler beim Erstellen von Extrakten"
+
+#:
+msgid "extracts.errors.datasource_overwritten"
+msgstr "Die Aktualisierung ist fehlgeschlagen, da die Datenquelle während der Verarbeitung von einer anderen Aufgabe überschrieben wurde. Aktualisieren Sie erneut, um dies zu korrigieren."
+
+#:
+msgid "extracts.errors.workbook_overwritten"
+msgstr "Die Aktualisierung ist fehlgeschlagen, da die Arbeitsmappe während der Verarbeitung von einer anderen Aufgabe überschrieben wurde. Aktualisieren Sie erneut, um dies zu korrigieren."
+
+#:
+msgid "extracts.errors.encrypt"
+msgstr "Beim Verschlüsseln der Extrakte für {0} ''{1}'' ist ein Fehler aufgetreten"
+
+#:
+msgid "extracts.errors.decrypt"
+msgstr "Beim Entschlüsseln der Extrakte für {0} ''{1}'' ist ein Fehler aufgetreten"
+
+#:
+msgid "extracts.errors.rekey"
+msgstr "Beim Entschlüsseln der Extrakte für {0} ''{1}'' ist ein Fehler aufgetreten"
+
+#:
+msgid "extracts.errors.encrypt_datasource_overwritten"
+msgstr "Die Verschlüsselung der Extrakte ist fehlgeschlagen, da die Datenquelle während der Verarbeitung von einer anderen Aufgabe überschrieben wurde."
+
+#:
+msgid "extracts.errors.encrypt_workbook_overwritten"
+msgstr "Die Verschlüsselung der Extrakte ist fehlgeschlagen, da die Arbeitsmappe während der Verarbeitung von einer anderen Aufgabe überschrieben wurde."
+
+#:
+msgid "extracts.errors.rekey_datasource_overwritten"
+msgstr "Die erneute Verschlüsselung der Extrakte ist fehlgeschlagen, da die Datenquelle während der Verarbeitung von einer anderen Aufgabe überschrieben wurde."
+
+#:
+msgid "extracts.errors.rekey_workbook_overwritten"
+msgstr "Die erneute Verschlüsselung der Extrakte ist fehlgeschlagen, da die Arbeitsmappe während der Verarbeitung von einer anderen Aufgabe überschrieben wurde."
+
+#:
+msgid "extracts.errors.decrypt_datasource_overwritten"
+msgstr "Die Entschlüsselung der Extrakte ist fehlgeschlagen, da die Datenquelle während der Verarbeitung von einer anderen Aufgabe überschrieben wurde."
+
+#:
+msgid "extracts.errors.decrypt_workbook_overwritten"
+msgstr "Die Entschlüsselung der Extrakte ist fehlgeschlagen, da die Arbeitsmappe während der Verarbeitung von einer anderen Aufgabe überschrieben wurde."
+
+#:
+msgid "extracts.errors.remove_datasource_overwritten"
+msgstr "Die Datenquelle konnte nicht zu Live geändert werden, da es durch eine andere Aufgabe überschrieben wurde."
+
+#:
+msgid "extracts.errors.remove_workbook_overwritten"
+msgstr "Die Arbeitsmappe konnte nicht zu Live geändert werden, da es durch eine andere Aufgabe überschritten wurde."
+
+#:
+msgid "extracts.errors.create_datasource_overwritten"
+msgstr "Die Datenquelle konnte nicht extrahiert werden, da es durch eine andere Aufgabe überschritten wurde."
+
+#:
+msgid "extracts.errors.create_workbook_overwritten"
+msgstr "Die Arbeitsmappe konnte nicht extrahiert werden, da es durch eine andere Aufgabe überschritten wurde."
+
+#:
+msgid "extracts.site_mode_change_details"
+msgstr "Verschlüsselungsmodus der Site-Extrakte geändert von ''{0}'' zu ''{1}''."
+
+#:
+msgid "extracts.errors.encryption_not_licensed"
+msgstr "Dieser Vorgang ist fehlgeschlagen, weil die Extraktverschlüsselung nicht lizenziert ist. Um diesen Vorgang auszuführen, müssen Sie Ihre Lizenz erneuern oder Ihren Extrakt entschlüsseln."
+
+#:
+msgid "extracts.errors.operation_cancelled_detail"
+msgstr "Der Vorgang Extrakt entfernen für {0} (Datenquelle: {2}) wurde abgebrochen."
+
+#:
+msgid "workbooks.messages.load_error"
+msgstr "Arbeitsmappe {0} konnte nicht geladen werden"
+
+#:
+msgid "workbooks.messages.locked"
+msgstr "Die Arbeitsmappe ''{0}'' wird momentan von einem anderen Benutzer geändert. Wiederholen Sie den Vorgang später."
+
+#:
+msgid "workbooks.new_workbook.default_name"
+msgstr "Neue Arbeitsmappe"
+
+#:
+msgid "workbooks.new_datasource.default_name"
+msgstr "Neue Datenquelle"
+
+#:
+msgid "datasources.messages.load_error"
+msgstr "Fehler beim Laden der Datenquelle {0}"
+
+#:
+msgid "metrics.new_metric.default_name"
+msgstr "Neue Metrik"
+
+#:
+msgid "messages.timeout_error.summary"
+msgstr "Zeitüberschreitungsfehler"
+
+#:
+msgid "messages.timeout_error.task_canceled"
+msgstr "Länger als {0} Sekunden dauernde Aufgabe wird abgebrochen"
+
+#:
+msgid "subscriptions.manage_my_subscriptions"
+msgstr "Meine Abonnements verwalten"
+
+#:
+msgid "subscriptions.message_greeting"
+msgstr "Hallo,"
+
+#:
+msgid "subscriptions.subscribed_footer"
+msgstr "Hier ist ihr Abonnement zu {0}"
+
+#:
+msgid "subscriptions.subscribed_workbook"
+msgstr "Arbeitsmappe"
+
+#:
+msgid "subscriptions.subscribed_view"
+msgstr "Ansicht"
+
+#:
+msgid "subscriptions.fullstop"
+msgstr "."
+
+#:
+msgid "subscriptions.extract_refresh_footer"
+msgstr "Sie erhalten diese Abonnements-E-Mail, wenn die Daten aktualisiert wurden."
+
+#:
+msgid "subscriptions.explore_the_viz"
+msgstr "Untersuchen der Visualisierung"
+
+#:
+msgid "subscriptions.explore_the_workbook"
+msgstr "Untersuchen der Arbeitsmappe"
+
+#:
+msgid "subscriptions.pdf_attached"
+msgstr "Ihr Tableau PDF befindet sich im Anhang."
+
+#:
+msgid "subscriptions.access_live_content"
+msgstr "Sie können hier auf die Live-Ansicht zugreifen"
+
+#:
+msgid "subscriptions.warning_deprecated_type"
+msgstr "Veraltet"
+
+#:
+msgid "subscriptions.warning_extract_refresh_type"
+msgstr "Extraktaktualisierung fehlgeschlagen"
+
+#:
+msgid "subscriptions.warning_flow_run_type"
+msgstr "Schemaausführung fehlgeschlagen"
+
+#:
+msgid "subscriptions.warning_introduction_general"
+msgstr "Die folgenden Datenqualitätswarnungen wirken sich auf dieses {0} aus."
+
+#:
+msgid "subscriptions.warning_introduction_view"
+msgstr "Weitere Informationen finden Sie auf der Registerkarte "Datendetails" in der Ansicht"
+
+#:
+msgid "subscriptions.warning_introduction_workbook"
+msgstr "Weitere Informationen finden Sie auf der Arbeitsmappenseite"
+
+#:
+msgid "subscriptions.warning_maintenance_type"
+msgstr "Wird gewartet"
+
+#:
+msgid "subscriptions.warning_permission_error"
+msgstr "Diese Warnung bezieht sich auf eine Ressource, für die Sie keine Berechtigungen zum Anzeigen haben."
+
+#:
+msgid "subscriptions.warning_redacted"
+msgstr "Erforderliche Berechtigungen"
+
+#:
+msgid "subscriptions.warning_sensitve_type"
+msgstr "Vertrauliche Daten"
+
+#:
+msgid "subscriptions.warning_severe"
+msgstr "Wichtige Datenqualitätswarnung"
+
+#:
+msgid "subscriptions.warning_stale_type"
+msgstr "Veraltete Daten"
+
+#:
+msgid "subscriptions.warning_standard"
+msgstr "Datenqualitätswarnung"
+
+#:
+msgid "subscriptions.warning_error_type"
+msgstr "Unbekannter Warnungstyp"
+
+#:
+msgid "subscriptions.warning_warning_type"
+msgstr "Warnung"
+
+#:
+msgid "errors.subscriptions.image_render_failed"
+msgstr "Der Snapshot der Ansicht ''{0}'' konnte nicht korrekt gerendert werden."
+
+#:
+msgid "errors.subscriptions.see_live_view"
+msgstr "Öffnen Sie {0}, um die Ansicht online anzuzeigen."
+
+#:
+msgid "errors.subscriptions.disabled_on_server"
+msgstr "Die serverweite Abonnementeinstellung ist nicht aktiviert. Abonnements können nicht verarbeitet werden."
+
+#:
+msgid "errors.subscriptions.disabled_on_site"
+msgstr "Abonnements sind für die Site deaktiviert."
+
+#:
+msgid "errors.subscriptions.site_is_locked"
+msgstr "Die Site ist gesperrt. Abonnements können nicht verarbeitet werden."
+
+#:
+msgid "errors.subscriptions.orphan"
+msgstr "Mit diesem Abonnement verbundene Arbeitsmappe und Ansichten konnten nicht gefunden werden."
+
+#:
+msgid "errors.subscriptions.user_unlicensed"
+msgstr "Abonnement für nicht lizenzierten Benutzer wird übersprungen."
+
+#:
+msgid "errors.subscriptions.smtp_unreacheable"
+msgstr "SMTP-Host kann nicht erreicht werden. Prüfen Sie, ob SMTP konfiguriert wurde."
+
+#:
+msgid "errors.subscriptions.uncategorized_error"
+msgstr "Unbekannter Fehler"
+
+#:
+msgid "errors.subscriptions.pdf_render_failed"
+msgstr "Der PDF-Anhang für diese E-Mail konnte nicht richtig gerendert werden."
+
+#:
+msgid "errors.subscriptions.pdf_limit_exceeded"
+msgstr "Das erzeugte PDF ist größer als es die {0}MB Größenbegrenzung erlaubt und konnte an diese E-Mail nicht anhängt werden."
+
+#:
+msgid "errors.subscriptions.attachments_not_enabled"
+msgstr "Dieses Abonnement ist fehlgeschlagen, da die E-Mail-Anhänge deaktiviert waren. Kontaktieren Sie Ihren Tableau-Administrator für Details."
+
+#:
+msgid "errors.subscriptions.pdf_email_failed"
+msgstr "Das erzeugte PDF konnte nicht an diese E-Mail angehängt werden."
+
+#:
+msgid "errors.subscriptions.learn_more_troubleshoot"
+msgstr "<a hre"
+
+#:
+msgid "errors.subscriptions.bad_extract_refresh_subscription_configuration"
+msgstr "Das Abonnement wurde abgebrochen, da die Arbeitsmappe mehrere Zeitpläne für die Extraktaktualisierung enthält. Updaten Sie, um fortzufahren die Häufigkeit auf Ausgewählter Zeitplan."
+
+#:
+msgid "errors.subscriptions.subscription_failed_refresh_failure"
+msgstr "Die Extraktaktualisierung auf der Datenquelle ist fehlgeschlagen."
+
+#:
+msgid "errors.subscriptions.multiple_extracts_for_extract_refresh_subscription"
+msgstr "Die Arbeitsmappe enthält mehrere Zeitpläne für die Extraktaktualisierung. Updaten Sie die Häufigkeit auf Ausgewählter Zeitplan."
+
+#:
+msgid "errors.subscriptions.datasource_is_missing_password"
+msgstr "Datenquellen-Verbindungsfehler. Überprüfen Sie die Anmeldeinformationen auf allen Datenquellenverbindungen für die Arbeitsmappe."
+
+#:
+msgid "subscriptions.results_summary.sg"
+msgstr "{0} von {1} Abonnement von Zeitplan ''{2}'' gesendet."
+
+#:
+msgid "subscriptions.results_summary.pl"
+msgstr "{0} von {1} Abonnements gesendet von Zeitplan ''{2}''."
+
+#:
+msgid "subscriptions.results_views_per_subscription.sg"
+msgstr "{0} ({1} von 1 Ansicht erfolgreich)"
+
+#:
+msgid "subscriptions.results_views_per_subscription.pl"
+msgstr "{0} ({1} von {2} Ansichten erfolgreich)"
+
+#:
+msgid "subscriptions.results_views_per_subscription.more"
+msgstr "({0} mehr)"
+
+#:
+msgid "subscriptions.results_views_per_subscription.failed"
+msgstr "{0} ({1} von {2} Ansichten fehlgeschlagen)."
+
+#:
+msgid "subscriptions.results_header.all_shown.failures.sg"
+msgstr "1 Fehler"
+
+#:
+msgid "subscriptions.results_header.all_shown.failures.pl"
+msgstr "{0} Fehler"
+
+#:
+msgid "subscriptions.results_header.all_shown.warnings.sg"
+msgstr "1 Warnung"
+
+#:
+msgid "subscriptions.results_header.all_shown.warnings.pl"
+msgstr "{0} Warnungen"
+
+#:
+msgid "subscriptions.results_header.some_hidden.failures.pl.sg"
+msgstr "{0} Fehler (1 ausgeblendet, siehe Protokolle)"
+
+#:
+msgid "subscriptions.results_header.some_hidden.failures.pl.pl"
+msgstr "{0} Fehler ({1} ausgeblendet, siehe Protokolle)"
+
+#:
+msgid "subscriptions.results_header.some_hidden.warnings.pl.sg"
+msgstr "{0} Warnungen (1 ausgeblendet, siehe Protokolle)"
+
+#:
+msgid "subscriptions.results_header.some_hidden.warnings.pl.pl"
+msgstr "{0} Warnungen ({1} ausgeblendet, siehe Protokolle)"
+
+#:
+msgid "dataalerts.manage_my_data_alerts"
+msgstr "Warnungen verwalten"
+
+#:
+msgid "dataalerts.edit_data_alert"
+msgstr "Warnung bearbeiten"
+
+#:
+msgid "dataalerts.remove_user_from_data_alert"
+msgstr "Mich entfernen"
+
+#:
+msgid "dataalerts.add_user_to_data_alert"
+msgstr "Mich zu dieser Benachrichtigung hinzufügen"
+
+#:
+msgid "dataalerts.greater_or_equal"
+msgstr "{0} war größer oder gleich {1}."
+
+#:
+msgid "dataalerts.greater"
+msgstr "{0} war größer als {1}."
+
+#:
+msgid "dataalerts.less_or_equal"
+msgstr "{0} war kleiner oder gleich {1}."
+
+#:
+msgid "dataalerts.less"
+msgstr "{0} war kleiner als {1}."
+
+#:
+msgid "dataalerts.equal"
+msgstr "{0} war gleich {1}."
+
+#:
+msgid "dataalerts.email_alt_text"
+msgstr "Von datengesteuerter Benachrichtigung verwendete Ansicht: {0}"
+
+#:
+msgid "dataalerts.email_alt_text_hidden_view"
+msgstr "Von datengesteuerter Benachrichtigung verwendete Ansicht: {0} mit Änderungen angewendet"
+
+#:
+msgid "dataalerts.alert_triggered_for_the_view"
+msgstr "Warnung für die Ansicht ausgelöst"
+
+#:
+msgid "dataalerts.failure.email.subject"
+msgstr "Datengesteuerte Benachrichtigung funktioniert nicht für: {0}"
+
+#:
+msgid "dataalerts.failure.status"
+msgstr "Ihre Benachrichtigung <i>{0}</i> funktioniert nicht"
+
+#:
+msgid "dataalerts.failure.view.details.alert"
+msgstr "Diese Benachrichtigung anzeigen"
+
+#:
+msgid "dataalerts.failure.explanation"
+msgstr "Ihre datengesteuerte Benachrichtigung, <i>{0}</i>, funktioniert momentan nicht. Daher werden die Empfänger nicht benachrichtigt, wenn die Datenbedingung wahr ist. Wenn die Benachrichtigung wieder funktioniert, erhalten Sie eine E-Mail."
+
+#:
+msgid "dataalerts.failure.affected.alert"
+msgstr "Betroffene datengesteuerte Benachrichtigung"
+
+#:
+msgid "dataalerts.failure.time"
+msgstr "Zeitpunkt des Benachrichtigungsfehlers"
+
+#:
+msgid "dataalerts.failure.cause"
+msgstr "Gelegentlich treten Benachrichtigungsfehler infolge vorübergehender Netzwerkprobleme auf, die sich von alleine beheben. Sie können auch versuchen, die Benachrichtigung in der ursprünglichen Datenansicht neu zu erstellen, oder häufige Ursachen von Benachrichtigungsfehlern beseitigen. Beispiele:"
+
+#:
+msgid "dataalerts.failure.changed.view"
+msgstr "Ein(e) entfernte(s) oder umbenannte(s) Arbeitsmappe, Ansicht oder Datenfeld."
+
+#:
+msgid "dataalerts.failure.expired.credentials"
+msgstr "In eine Arbeitsmappe eingebettete, abgelaufene Datenbankanmeldeinformationen."
+
+#:
+msgid "dataalerts.failure.datasource.error"
+msgstr "Eine Datenquelle, auf die nicht zugegriffen werden kann."
+
+#:
+msgid "dataalerts.failure.email.footer"
+msgstr "Sie erhalten diese E-Mail um {0} aufgrund eines Benachrichtigungsfehlers."
+
+#:
+msgid "dataalerts.failure.troubleshooting"
+msgstr "Um zu überprüfen, ob eines der oben aufgeführten Probleme den Benachrichtigungsfehler verursacht, klicken Sie auf die folgende Schaltfläche."
+
+#:
+msgid "dataalerts.success.email.subject"
+msgstr "Datengesteuerte Benachrichtigung wurde fortgesetzt für: {0}"
+
+#:
+msgid "dataalerts.success.status"
+msgstr "Ihre Benachrichtigung <i>{0}</i> wurde fortgesetzt."
+
+#:
+msgid "dataalerts.success.explanation"
+msgstr "Ihre datengesteuerte Warnung, <i>{0}</i>, funktioniert wieder, sodass die Empfänger benachrichtigt werden, wenn die Datenbedingung wahr ist."
+
+#:
+msgid "dataalerts.failure.error.internalError"
+msgstr "Datenbenachrichtigung, interner Fehler"
+
+#:
+msgid "dataalerts.failure.error.invalidDataAlertSpecification"
+msgstr "Ungültige Datenbenachrichtigungsspezifikation"
+
+#:
+msgid "dataalerts.failure.error.summaryTableNotFound"
+msgstr "Zusammenfassungs-Datentabelle nicht gefunden"
+
+#:
+msgid "dataalerts.failure.error.unclassifiedError"
+msgstr "Unklassifizierter Fehler"
+
+#:
+msgid "dataalerts.failure.error.viewContentNotFound"
+msgstr "Datenbenachrichtigungs-Inhalt {0} nicht gefunden"
+
+#:
+msgid "dataalerts.failure.error.viewNotFound"
+msgstr "Datenbenachrichtigungsansicht wurde nicht gefunden."
+
+#:
+msgid "dataalerts.failure.error.workbookNotFound"
+msgstr "Arbeitsmappe nicht gefunden"
+
+#:
+msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
+msgstr "Keine Achse gefunden für Feld {0}"
+
+#:
+msgid "dataalerts.failure.error.paneDescriptorNotFound"
+msgstr "{0}"
+
+#:
+msgid "dataalerts.failure.error.unsupportedComparisonExpression"
+msgstr "Nicht unterstützter Vergleichsausdruck {0}"
+
+#:
+msgid "dataalerts.failure.error.nonConstComparisonOp"
+msgstr "Variabler Vergleichsoperator ermittelt: {0}"
+
+#:
+msgid "dataalerts.failure.error.cannotAddFilter"
+msgstr "Hinzufügen von Filter zu Datenbenachrichtigung ist fehlgeschlagen"
+
+#:
+msgid "dataalerts.failure.error.sheetNotAlertable"
+msgstr "Blatt {0} verfügt über unterstützte Daten für Benachrichtigungen. {1}"
+
+#:
+msgid "dataalerts.failure.error.dataAlertMeasureNotFound"
+msgstr "Kennzahl kann nicht ausgewählt werden. {0}"
+
+#:
+msgid "dataalerts.failure.error.tooManyMeasuresForDataAlert"
+msgstr "Falsche Anzahl an Kennzahlen entdeckt.{0}"
+
+#:
+msgid "dataalerts.failure.error.thresholdParseError"
+msgstr "Schwellenwerttext {0} konnte nicht analysiert werden. {1}"
+
+#:
+msgid "dataalerts.failure.error.dataAlertPresModelCreationError"
+msgstr "Fehler beim Serialisieren von Benachrichtigung. {0}"
+
+#:
+msgid "dataalerts.failure.error.cannotDrawDataAlertDialog"
+msgstr "Dialogfeld zur Datenbenachrichtigung kann nicht gezeichnet werden."
+
+#:
+msgid "dataalerts.failure.error.unsupportedDataAlertType"
+msgstr "Der Typ der Datenbenachrichtigung {0} wird derzeit nicht unterstützt."
+
+#:
+msgid "dataalerts.failure.suspend.email.subject"
+msgstr "Datengesteuerte Benachrichtigung ausgesetzt für: {0}"
+
+#:
+msgid "dataalerts.failure.suspend.email.status"
+msgstr "Ihre Benachrichtigung {0} wurde ausgesetzt"
+
+#:
+msgid "dataalerts.failure.suspend.email.explanation"
+msgstr "Während der Aussetzung wird die Ansicht nicht evaluiert und Empfänger werden nicht benachrichtigt. Nach einer Behebung kann die Benachrichtigung unter <a hre"
+
+#:
+msgid "dataalerts.failure.suspend.view.name.prefix"
+msgstr "Ansicht"
+
+#:
+msgid "dataalerts.failure.suspend.time"
+msgstr "Aussetzungszeit"
+
+#:
+msgid "dataalerts.failure.suspend.email.footer"
+msgstr "Sie erhalten diese E-Mail, da Ihre Benachrichtigung ausgesetzt wurde."
+
+#:
+msgid "dataalerts.failure.suspend.email.view.name.my.content"
+msgstr "Eigener Content"
+
+#:
+msgid "dataalerts.failure.suspend.view.alerts"
+msgstr "Warnungen anzeigen"
+
+#:
+msgid "metricsservices.failure.affected.metric"
+msgstr "Betroffene Metrik"
+
+#:
+msgid "metricsservices.failure.cause"
+msgstr "Manchmal schlagen Metrikaktualisierungen aufgrund von temporären Verbindungsproblemen fehl, welche automatisch gelöst werden. Andere häufige Gründe, warum eine Metrikaktualisierung fehlschlagen kann, sind:"
+
+#:
+msgid "metricsservices.failure.changed.view"
+msgstr "Ein(e) entfernte(s) oder umbenannte(s) Arbeitsmappe, Ansicht oder Datenfeld"
+
+#:
+msgid "metricsservices.failure.permissions.error"
+msgstr "Eine Änderung in den Berechtigungen für die verbundene Ansicht"
+
+#:
+msgid "metricsservices.failure.email.footer"
+msgstr "Sie erhalten diese E-Mail um {0}, aufgrund eines Fehlers mit Ihrer Metrikaktualisierung."
+
+#:
+msgid "metricsservices.failure.email.subject"
+msgstr "Metrikaktualisierung funktioniert nicht für: {0}"
+
+#:
+msgid "metricsservices.failure.expired.credentials"
+msgstr "In eine Arbeitsmappe eingebettete, abgelaufene Datenbankanmeldeinformationen"
+
+#:
+msgid "metricsservices.failure.explanation"
+msgstr "Ihre Metrik kann nicht aktualisiert werden, deshalb werden Ihre Metrikdaten nicht upgedated. Sie erhalten eine E-Mail-Benachrichtigung, sobald die Metrikaktualisierung wieder funktioniert."
+
+#:
+msgid "metricsservices.failure.status"
+msgstr "Ihre Metrik "{0}" ist nicht aktualisiert"
+
+#:
+msgid "metricsservices.failure.suspend.email.explanation"
+msgstr "Während die Metrikaktualisierung ausgesetzt ist, werden Ihre Metrikdaten nicht upgedated. Nachdem eine Reparatur ausgeführt wurde, können Sie die Metrikaktualisierung fortführen."
+
+#:
+msgid "metricsservices.failure.suspend.email.footer"
+msgstr "Sie erhalten diese E-Mail um {0}, da Ihre Metrikaktualisierung ausgesetzt wurde."
+
+#:
+msgid "metricsservices.failure.suspend.email.status"
+msgstr "Die Aktualisierung für Ihre Metrik "{0}" wurde abgebrochen"
+
+#:
+msgid "metricsservices.failure.suspend.email.subject"
+msgstr "Metrikaktualisierung abgebrochen für: {0}"
+
+#:
+msgid "metricsservices.failure.suspend.time"
+msgstr "Aussetzungszeit"
+
+#:
+msgid "metricsservices.failure.suspend.view.metric"
+msgstr "Zu Metrik gehen"
+
+#:
+msgid "metricsservices.failure.suspend.view.name.prefix"
+msgstr "Verbundene Ansicht"
+
+#:
+msgid "metricsservices.failure.time"
+msgstr "Zeitpunkt des Aktualisierungsfehlers"
+
+#:
+msgid "metricsservices.failure.troubleshooting"
+msgstr "Um zu kontrollieren, ob eine der oben angeführten Probleme dazu führen, dass Ihre Metrikaktualisierung fehlschlägt, klicken Sie auf die Schaltfläche unten. Sie können auch versuchen, die Metrik auf der verbundenen Ansicht nachzustellen."
+
+#:
+msgid "metricsservices.failure.view.details.metric"
+msgstr "Zu Metrik gehen"
+
+#:
+msgid "metricsservices.failure.view.name.prefix"
+msgstr "Verbundene Ansicht"
+
+#:
+msgid "metricsservices.success.email.subject"
+msgstr "Metrikaktualisierung wird fortgefahren für: {0}"
+
+#:
+msgid "metricsservices.success.explanation"
+msgstr "Die Aktualisierung für Ihre Kennzahl funktioniert wieder und sie sucht nach Aktualisierungen für Ihre Kennzahldaten."
+
+#:
+msgid "metricsservices.success.status"
+msgstr "Die Aktualisierung für Ihre Metrik "{0}" wird fortgefahren"
+
+#:
+msgid "errors.staticimages.generic"
+msgstr "Fehler beim Generieren statischer Bilder für Arbeitsmappe {0}. {1}."
+
+#:
+msgid "errors.internal_error.request.message"
+msgstr "{0} konnte die Anforderung nicht ausführen."
+
+#:
+msgid "errors.permissions.limited_user_visibility"
+msgstr "Fehler beim Ausführen der Abfrage. Der Benutzer muss ein Administrator oder Creator sein, um andere Benutzer abzufragen, wenn die Nutzersichtbarkeit auf limitiert eingestellt ist."
+
+#:
+msgid "local_names.system_user.guest.name"
+msgstr "Gast"
+
+#:
+msgid "local_names.group.all_users.name"
+msgstr "Alle Benutzer"
+
+#:
+msgid "local_names.containers.personal_space.name"
+msgstr "Persönlicher Bereich"
+
+#:
+msgid "password_reset.email.subject"
+msgstr "Mit diesem Link können Sie Ihr Kennwort zurücksetzen."
+
+#:
+msgid "password_reset.email.body"
+msgstr "Hallo {0},<br/><br/>Sie haben soeben eine Zurücksetzung Ihres Kennworts angefordert.<br/><br/> Um Ihr Tableau Server-Kennwort zu ändern, {1} oder kopieren Sie den folgenden Link in Ihren Browser: {2}<br/><br/>Er läuft in 48 Stunden ab, Sie sollten ihn also gleich verwenden.<br/><br/>Wenn Sie die Zurücksetzung Ihres Kennworts nicht angefordert haben, sollten Sie das Ihrem Serveradministrator mitteilen.<br/><br/>Danke, dass Sie Tableau verwenden.<br/>Das Tableau-Team"
+
+#:
+msgid "password_reset.email.link"
+msgstr "hier klicken"
+
+#:
+msgid "hours.pl"
+msgstr "{0} Stunden"
+
+#:
+msgid "hours.sg"
+msgstr "1 Stunde"
+
+#:
+msgid "minutes.pl"
+msgstr "{0} Minuten"
+
+#:
+msgid "minutes.sg"
+msgstr "1 Minute"
+
+#:
+msgid "seconds.pl"
+msgstr "{0} Sekunden"
+
+#:
+msgid "seconds.sg"
+msgstr "1 Sekunde"
+
+#:
+msgid "dataconnections.classes.tableau_server_site"
+msgstr "Tableau Server-Site"
+
+#:
+msgid "materializeviews.errors.workbook_not_in_project"
+msgstr "Projekt ''{0}'' enthält Arbeitsmappe ''{1}'' nicht"
+
+#:
+msgid "materializeviews.errors.workbook_has_no_extract"
+msgstr "Das Aktualisieren der materialisierten Ansichts-Umgebung für die Arbeitsmappe ''{0}'' ist fehlgeschlagen, Momentan werden nur Arbeitsmappen mit eingebetteten Extrakten unterstützt."
+
+#:
+msgid "materializeviews.errors.workbook_updating_errors"
+msgstr "Beim Aktualisieren der materialisierten Ansichts-Umgebung für Arbeitsmappen wurden Fehler gefunden"
+
+#:
+msgid "materializeviews.errors.workbook_too_large"
+msgstr "Das Aktualisieren der materialisierten Ansichts-Umgebung der Arbeitsmappe ''{0}'' ist fehlgeschlagen, da die Arbeitsmappe das Limit von  {1} GB überschreitet."
+
+#:
+msgid "materializeviews.errors.project_path_not_exists"
+msgstr "Projektpfad ''{0}'' ist nicht vorhanden."
+
+#:
+msgid "materializeviews.errors.feature_disabled"
+msgstr "Das Aktualisieren der materialisierten Ansichts-Umgebung für Arbeitsmappe ''{0}'' ist fehlgeschlagen, da diese Funktion zurzeit deaktiviert ist"
+
+#:
+msgid "materializeviews.errors.update_materialized_views_setting_failed"
+msgstr "Das Aktualisieren der materialisierten Ansichts-Umgebung für Arbeitsmappe ''{0}'' ist fehlgeschlagen,"
+
+#:
+msgid "materializeviews.errors.site_not_enabled"
+msgstr "Auf dieser Site sind materialisierte Ansichten nicht aktiviert. Wenden Sie sich an Ihren Administrator."
+
+#:
+msgid "materializeviews.errors.encrypted_extracts_not_supported"
+msgstr "Die Funktion Materialisierte Ansichten unterstützt Arbeitsmappen mit verschlüsselten Extrakten derzeit nicht"
+
+#:
+msgid "materializedviews.finished.create"
+msgstr "Erstellte materialisierte Ansichten mit dem Status ''{0}'' für Arbeitsmappe ''{1}''"
+
+#:
+msgid "materializedviews.finished.delete"
+msgstr "Gelöschte materialisierte Ansichten für die Arbeitsmappen-ID: {0}"
+
+#:
+msgid "materializedviews.finished.encrypt"
+msgstr "Abgeschlossene Verschlüsselung der materialisierten Ansichten für die Arbeitsmappe ''{0}''"
+
+#:
+msgid "materializedviews.finished.decrypt"
+msgstr "Abgeschlossene Entschlüsselung der materialisierten Ansichten für die Arbeitsmappe ''{0}''"
+
+#:
+msgid "materializedviews.finished.rekey"
+msgstr "Abgeschlossene erneute Verschlüsselung der materialisierten Ansichten für die Arbeitsmappe ''{0}''"
+
+#:
+msgid "materializedviews.status.encryption_key"
+msgstr "Verschlüsselungsschlüssel-ID: ''{0}''."
+
+#:
+msgid "materializedviews.status.encryption_keys"
+msgstr "Alte Verschlüsselungsschlüssel-ID: ''{0}'', neue Verschlüsselungsschlüssel-ID: ''{1}''."
+
+#:
+msgid "materializedviews.status.encryption_type"
+msgstr "Typ der Datenquellenverschlüsselung: ''{0}''"
+
+#:
+msgid "customizedviews.namedSharingPrefix"
+msgstr "Freigegebene Version"
+
+#:
+msgid "flows.drafts.default_name"
+msgstr "Neues Schema"
+
+#:
+msgid "content_type.project"
+msgstr "Projekt"
+
+#:
+msgid "content_type.workbook"
+msgstr "Arbeitsmappe"
+
+#:
+msgid "content_type.view"
+msgstr "Ansicht"
+
+#:
+msgid "content_type.datasource"
+msgstr "Datenquelle"
+
+#:
+msgid "content_type.flow"
+msgstr "Schema"
+
+#:
+msgid "content_type.metric"
+msgstr "Metrisch"
+
+#:
+msgid "content_type.collection"
+msgstr "Sammlung"
+
+#:
+msgid "content_type.visualization"
+msgstr "Visualisierung"
+
+#:
+msgid "content_type.askdata_visualization"
+msgstr ""Frag die Daten"-Visualisierung"
+
+#:
+msgid "content_type.explaindata_explanation"
+msgstr "Erläuterung"
+
+#:
+msgid "content_type.publishedconnection"
+msgstr "Virtuelle Verbindung"
+
+#:
+msgid "content_type.publishedconnectiontable"
+msgstr "Virtuelle Verbindungstabelle"
+
+#:
+msgid "upgradethumbnails.status.server_started"
+msgstr "Serverantwort: Miniatorbildupgrade gestartet!"
+
+#:
+msgid "upgradethumbnails.status.server_stopped"
+msgstr "Serverantwort: %d Aufträge angehalten"
+
+#:
+msgid "dataquality.message.refresh_failed"
+msgstr "Fehler bei Aktualisierung: {0}"
+
+#:
+msgid "dataquality.message.last_successful"
+msgstr "Letzte erfolgreiche Ausführung: {0}"
+
+#:
+msgid "dataquality.message.next_scheduled"
+msgstr "Nächste geplante Ausführung: {0}"
+
+#:
+msgid "dataquality.message.flow_run_output_steps_failed"
+msgstr "{0}/{1} Ausgabeschritte konnten nicht ausgeführt werden"
 
-#: dataquality.message.flow_run_output_steps_failed
-msgid "{0}/{1} Ausgabeschritte konnten nicht ausgeführt werden"
-msgstr ""
+#:
+msgid "importcsvsummary.error.details"
+msgstr "Fehlerdetails:"
 
-#: importcsvsummary.error.details
-msgid "Fehlerdetails:"
-msgstr ""
+#:
+msgid "importcsvsummary.remainingerrors"
+msgstr "(verbleibende Fehler werden nicht angezeigt)"
 
-#: importcsvsummary.remainingerrors
-msgid "(verbleibende Fehler werden nicht angezeigt)"
-msgstr ""
+#:
+msgid "importcsvsummary.error.line"
+msgstr "Zeile {0} für Benutzer ''{1}'': ''{2}''"
 
-#: importcsvsummary.error.line
-msgid "Zeile {0} für Benutzer ''{1}'': ''{2}''"
-msgstr ""
+#:
+msgid "importcsvsummary.line.processed"
+msgstr "Verarbeitete Zeilen: {0}"
 
-#: importcsvsummary.line.processed
-msgid "Verarbeitete Zeilen: {0}"
-msgstr ""
+#:
+msgid "importcsvsummary.line.skipped"
+msgstr "Übersprungene Zeilen: {0}"
 
-#: importcsvsummary.line.skipped
-msgid "Übersprungene Zeilen: {0}"
-msgstr ""
+#:
+msgid "importcsvsummary.users.added.count"
+msgstr "Anzahl hinzugefügter Benutzer: {0}"
 
-#: importcsvsummary.users.added.count
-msgid "Anzahl hinzugefügter Benutzer: {0}"
-msgstr ""
+#:
+msgid "importcsvsummary.errors.count"
+msgstr "Fehleranzahl: {0}"
 
-#: importcsvsummary.errors.count
-msgid "Fehleranzahl: {0}"
-msgstr ""
+#:
+msgid "importcsvsummary.error.unexpected_extension"
+msgstr "Unerwartete Dateinamenerweiterung für CSV-Datei"
 
-#: importcsvsummary.error.unexpected_extension
-msgid "Unerwartete Dateinamenerweiterung für CSV-Datei"
-msgstr ""
+#:
+msgid "importcsvsummary.error.size_limit"
+msgstr "CSV-Datei überschreitet Größenlimit von {0}"
 
-#: importcsvsummary.error.size_limit
-msgid "CSV-Datei überschreitet Größenlimit von {0}"
-msgstr ""
+#:
+msgid "importcsvsummary.error.local.password_mismatch"
+msgstr "Aktualisierung des lokalen Site-Benutzers erfordert leeres oder übereinstimmendes Kennwort"
 
-#: importcsvsummary.error.local.password_mismatch
-msgid ""
-"Aktualisierung des lokalen Site-Benutzers erfordert leeres oder "
-"übereinstimmendes Kennwort"
-msgstr ""
+#:
+msgid "importcsvsummary.error.local.password_required"
+msgstr "Erstellung eines lokalen Systembenutzers bei lokaler Authentifizierung erfordert Kennwort"
 
-#: importcsvsummary.error.local.password_required
-msgid ""
-"Erstellung eines lokalen Systembenutzers bei lokaler Authentifizierung "
-"erfordert Kennwort"
-msgstr ""
+#:
+msgid "importcsvsummary.error.ad.user_not_found"
+msgstr "AD-Benutzer nicht gefunden ''{0}''"
 
-#: importcsvsummary.error.ad.user_not_found
-msgid "AD-Benutzer nicht gefunden ''{0}''"
-msgstr ""
+#:
+msgid "importcsvsummary.error.too_many_errors"
+msgstr "CSV-Datei enthält zu viele Fehler"
 
-#: importcsvsummary.error.too_many_errors
-msgid "CSV-Datei enthält zu viele Fehler"
-msgstr ""
+#:
+msgid "audit.errors.wdc_not_allowlisted"
+msgstr "Der Webdaten-Connector befindet sich nicht auf der Zulassungsliste. Hilfe finden Sie unter: https://help.tableau.com/current/online/de-de/to_keep_data_fresh.htm"
 
-#: audit.errors.wdc_not_allowlisted
-msgid ""
-"Der Webdaten-Connector befindet sich nicht auf der Zulassungsliste. Hilfe "
-"finden Sie unter: https://help.tableau.com/current/online/de-de/"
-"to_keep_data_fresh.htm"
-msgstr ""
+#:
+msgid "user.input.name.err.too_long"
+msgstr "Name ist länger als die maximale Anzahl von Zeichen {0}"
 
-#: user.input.name.err.too_long
-msgid "Name ist länger als die maximale Anzahl von Zeichen {0}"
-msgstr ""
+#:
+msgid "user.input.name.err.empty"
+msgstr "Name darf nicht leer sein."
 
-#: user.input.name.err.empty
-msgid "Name darf nicht leer sein."
-msgstr ""
+#:
+msgid "askdata.title"
+msgstr "Frag die Daten"
 
-#: askdata.title
-msgid "Frag die Daten"
-msgstr ""
+#:
+msgid "slack.app.upgrade.email.notification.subject"
+msgstr "Update für Tableau-App für Slack"
 
-#: slack.app.upgrade.email.notification.subject
-msgid "Update für Tableau-App für Slack"
-msgstr ""
+#:
+msgid "slack.app.upgrade.email.notification.introduction"
+msgstr "Für die Tableau-App für Slack ist ein Update verfügbar, das jetzt neu installiert werden kann und mit der nächsten Tableau Online-Version kompatibel ist. Tableau empfiehlt die Neuinstallation der App, um die App-Leistung zu erhalten und neue Funktionen zu nutzen. Die neuen Funktionen und Änderungen finden Sie unter <a styl"
 
-#: slack.app.upgrade.email.notification.introduction
-msgid ""
-"Für die Tableau-App für Slack ist ein Update verfügbar, das jetzt neu "
-"installiert werden kann und mit der nächsten Tableau Online-Version "
-"kompatibel ist. Tableau empfiehlt die Neuinstallation der App, um die App-"
-"Leistung zu erhalten und neue Funktionen zu nutzen. Die neuen Funktionen und "
-"Änderungen finden Sie unter <a style=\"text-decoration: none; color: #E8762C;"
-"\" href=\"https://help.tableau.com/current/online/de-de/whatsnew_online.htm"
-"#tableau-slack\">Neuigkeiten in Tableau Online</a>."
-msgstr ""
+#:
+msgid "slack.app.upgrade.email.notification.action"
+msgstr "Die Schritte zur Aktualisierung und Neuinstallation finden Sie unter <a styl"
 
-#: slack.app.upgrade.email.notification.action
-msgid ""
-"Die Schritte zur Aktualisierung und Neuinstallation finden Sie unter <a style"
-"=\"text-decoration: none; color: #E8762C;\" href=\"https://help.tableau.com/"
-"current/online/de-de/slack_admin.htm#update\">Update your Tableau Slack "
-"application</a>. Wenn Sie über mehrere Tableau Online-Sites verfügen, "
-"installieren Sie die App für jede Site neu."
-msgstr ""
+#:
+msgid "slack.app.upgrade.email.notification.steps"
+msgstr "Diese Dienstbenachrichtigung wurde von Tableau Online veröffentlicht."
 
-#: slack.app.upgrade.email.notification.steps
-msgid "Diese Dienstbenachrichtigung wurde von Tableau Online veröffentlicht."
-msgstr ""
+#:
+msgid "slack.app.upgrade.email.notification.reason"
+msgstr "Sie erhalten diese Benachrichtigung, weil Sie ein Administrator einer Tableau Online-Site sind, die mit Slack verbunden ist."
 
-#: slack.app.upgrade.email.notification.reason
-msgid ""
-"Sie erhalten diese Benachrichtigung, weil Sie ein Administrator einer "
-"Tableau Online-Site sind, die mit Slack verbunden ist."
-msgstr ""
+#:
+msgid "slack.app.upgrade.email.notification.footer.privacy"
+msgstr "Lesen Sie unsere <a styl"
 
-#: slack.app.upgrade.email.notification.footer.privacy
-msgid ""
-"Lesen Sie unsere <a style=\"text-decoration: none; color: #E8762C;\" href="
-"\"http://www.tableau.com/de-de/privacy\">Datenschutzerklärung</a>"
-msgstr ""
+#:
+msgid "unifiedconsumption.tcrm.folders.private"
+msgstr "Meine private App"
 
-#: unifiedconsumption.tcrm.folders.private
-msgid "Meine private App"
-msgstr ""

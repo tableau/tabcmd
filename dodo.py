@@ -3,7 +3,9 @@ import os
 import subprocess
 import ftfy
 
-LOCALES = ["en", "de", "es", "fr", "ga", "it", "pt", "sv", "ja", "ko",  "zh"]
+LOCALES = [
+    "en", "de", "es", "fr", "ga", "it", "pt",
+    "sv", "ja", "ko",  "zh"]
 
 """
 https://pydoit.org/
@@ -50,21 +52,31 @@ def task_convert():
 def task_po():
     """
     For all languages: generate a .po file from each .properties file
-    requires: pip install translate-toolkit -- NOT prop2po, it has fewer options (it lacks personality)
-    help: http://docs.translatehouse.org/projects/translate-toolkit/en/latest/commands/prop2po.html
-    Run when we copy in updated properties files AFTER task_convert - so all files are utf-8
+    Run when we copy in updated properties files AFTER task_convert (so all files are utf-8)
+    This is idempotent and can be re-run safely
+    """
+
+    """
+    There are two versions of prop2po:
+    - 1.0, available through pip install prop2po, from https://github.com/mivek/prop2po
+    it doesn't have any way to control which encoding it uses so I'm patching it
+    - 3.x, from pip install translate-toolkit: 
+    it copies key->comment, value-> msgid, ""->msgstr which is not at all what we want
     """
     def process_locales():
         for current_locale in LOCALES:
-            for file in glob.glob("tabcmd/locales/"+current_locale+"/*.properties"):
+
+            LOC_PATH = "tabcmd/locales/" + current_locale
+            for file in glob.glob(LOC_PATH+"/*.properties"):
                 basename = os.path.basename(file).split(".")[0]
                 print("processing", basename)
-                result = subprocess.run(["prop2po",
-                                         "--personality=java-utf8",
-                                         "tabcmd/locales/" + current_locale + "/"+basename+".properties",
-                                         "tabcmd/locales/" + current_locale + "/LC_MESSAGES/"+basename+".po"])
-                print(result)
-                print("stdout:", result.stdout)
+                result = subprocess.run(["python",
+                                         "bin/i18n/prop2po.py",
+                                         "--encoding", "utf-8",  # for the .po header
+                                         "--language", current_locale,  # for the .po header
+                                         LOC_PATH + "/"+basename+".properties",
+                                         LOC_PATH + "/LC_MESSAGES/"+basename+".po"])
+                # print("\n", result)
                 print("stderr:", result.stderr)
     return {
         'actions': [process_locales],
@@ -77,20 +89,21 @@ def task_clean_all():
 
     def process_locales():
         for current_locale in LOCALES:
-            for file in glob.glob("tabcmd/locales/"+current_locale+"/*.properties"):
+            LOC_PATH = "tabcmd/locales/" + current_locale
+            for file in glob.glob(LOC_PATH+"/*.properties"):
                 basename = os.path.basename(file).split(".")[0]
                 print("deleting",basename + ".*")
                 try:
-                    os.remove("tabcmd/locales/" + current_locale + "/LC_MESSAGES/"+basename+".po")
+                    os.remove(LOC_PATH + "/LC_MESSAGES/"+basename+".po")
                 except OSError:
                     pass
                 try:
-                    os.remove("tabcmd/locales/" + current_locale + "/LC_MESSAGES/" + basename + ".mo")
+                    os.remove(LOC_PATH + "/LC_MESSAGES/" + basename + ".mo")
                 except OSError:
                     pass
             try:
                 print("deleting", current_locale + ".mo")
-                os.remove("tabcmd/locales/" + current_locale + "/LC_MESSAGES/" + current_locale + ".mo")
+                os.remove(LOC_PATH + "/LC_MESSAGES/" + current_locale + ".mo")
             except OSError:
                 pass
 
@@ -101,39 +114,46 @@ def task_clean_all():
     }
 
 
-def task_mo():
-    """For all languages: Combines all existing po files for a language into a single domain called 'tabcmd'.
-        Processes these files to produce a final tabcmd.mo file for each language """
+def task_merge():
+    """
+    For all languages: Combines all existing po files for a language into a single domain called 'tabcmd'.
+    """
 
     def process_locales():
         for current_locale in LOCALES:
 
-            try:
-                os.remove("tabcmd/locales/" + current_locale + "/LC_MESSAGES/tabcmd.po")
-            except OSError:
-                pass
-            try:
-                os.remove("tabcmd/locales/" + current_locale + "/LC_MESSAGES/tabcmd.mo")
-            except OSError:
-                pass
+            LOC_PATH = "tabcmd/locales/" + current_locale + "/LC_MESSAGES"
 
-            LOC_PATH = "tabcmd/locales/" + current_locale
-
-            with open(LOC_PATH + "/LC_MESSAGES/tabcmd.po", 'w', encoding="utf-8") as outfile:
-                for file in glob.glob(LOC_PATH + "/LC_MESSAGES/*.po"):
+            with open(LOC_PATH + "/tabcmd.po", 'w+', encoding="utf-8") as outfile:
+                for file in glob.glob(LOC_PATH + "/*.po"):
                     if file.endswith("tabcmd.po"):
                         pass
                     else:
                         print("merging", file)
-                        with open(file) as infile:
-                            for line in infile:
-                                outfile.write(line)
+                        with open(file, encoding="utf-8") as infile:
+                            outfile.write(infile.read())
                             outfile.write("\n")
 
+    return {
+        'actions': [process_locales],
+        'verbosity': 2,
+    }
+
+
+def task_mo():
+    """
+    For all languages: Processes the tabcmd.po file to produce a final tabcmd.mo file for each language
+    Uses msgfmt.py from gettext, which is copied locally into the repo
+    """
+
+    def process_locales():
+        for current_locale in LOCALES:
+
+            LOC_PATH = "tabcmd/locales/" + current_locale + "/LC_MESSAGES"
+
             print("writing final tabcmd.mo file")
-            # build the single binary file from the combined text .po files
-            result = subprocess.run(["bin/i18n/msgfmt.py",
-                                     "tabcmd/locales/" + current_locale + "/LC_MESSAGES/tabcmd"])
+            # build the single binary file from the .po file
+            result = subprocess.run(["python", "bin/i18n/msgfmt.py", LOC_PATH + "/tabcmd"])
             print(result)
             print("stdout:", result.stdout)
             print("stderr:", result.stderr)

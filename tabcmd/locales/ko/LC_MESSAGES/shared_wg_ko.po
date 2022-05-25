@@ -1,1972 +1,1792 @@
-#. extracted from tabcmd/locales/ko\shared_wg_ko.properties
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-25 04:01-0700\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 3.6.2\n"
-
-#: permissions.labels.capabilities.read
-msgid "보기:"
-msgstr ""
-
-#: permissions.labels.capabilities.write
-msgid "덮어쓰기:"
-msgstr ""
-
-#: permissions.labels.capabilities.write.legacy
-msgid "저장:"
-msgstr ""
-
-#: permissions.labels.capabilities.delete
-msgid "삭제:"
-msgstr ""
-
-#: permissions.labels.capabilities.filter
-msgid "필터:"
-msgstr ""
-
-#: permissions.labels.capabilities.add_tag
-msgid "태그 추가:"
-msgstr ""
-
-#: permissions.labels.capabilities.add_favorite
-msgid "즐겨찾기 추가:"
-msgstr ""
-
-#: permissions.labels.capabilities.add_comment
-msgctxt "permissions.labels.capabilities.add_comment"
-msgid "댓글 추가:"
-msgstr ""
-
-#: permissions.labels.capabilities.add_comment.legacy
-msgctxt "permissions.labels.capabilities.add_comment.legacy"
-msgid "댓글 추가:"
-msgstr ""
-
-#: permissions.labels.capabilities.view_comments
-msgid "댓글 보기:"
-msgstr ""
-
-#: permissions.labels.capabilities.vud
-msgid "전체 데이터 다운로드:"
-msgstr ""
-
-#: permissions.labels.capabilities.export_image
-msgid "이미지/PDF 다운로드:"
-msgstr ""
-
-#: permissions.labels.capabilities.export_data
-msgid "요약 데이터 다운로드:"
-msgstr ""
-
-#: permissions.labels.capabilities.export_xml
-msgid "복사본 다운로드/저장:"
-msgstr ""
-
-#: permissions.labels.capabilities.export_xml.legacy
-msgid "다른 이름으로 다운로드/저장:"
-msgstr ""
-
-#: permissions.labels.capabilities.save_customized_view
-msgid "사용자 지정 뷰 저장:"
-msgstr ""
-
-#: permissions.labels.capabilities.share_view
-msgid "사용자 지정 항목 공유:"
-msgstr ""
-
-#: permissions.labels.capabilities.stateful_url
-msgid "고정 링크:"
-msgstr ""
-
-#: permissions.labels.capabilities.change_hierarchy
-msgid "이동:"
-msgstr ""
-
-#: permissions.labels.capabilities.change_permissions
-msgid "사용 권한 설정:"
-msgstr ""
-
-#: permissions.labels.capabilities.exclude
-msgid "제외:"
-msgstr ""
-
-#: permissions.labels.capabilities.keep_only
-msgid "이 항목만 유지:"
-msgstr ""
-
-#: permissions.labels.capabilities.select
-msgid "마크 선택:"
-msgstr ""
-
-#: permissions.labels.capabilities.tooltip
-msgid "도구 설명 보기:"
-msgstr ""
-
-#: permissions.labels.capabilities.highlight
-msgid "범례 하이라이트:"
-msgstr ""
-
-#: permissions.labels.capabilities.url_link
-msgid "외부 URL로 연결되는 링크:"
-msgstr ""
-
-#: permissions.labels.capabilities.administrator
-msgid "관리자:"
-msgstr ""
-
-#: permissions.labels.capabilities.content_admin
-msgid "콘텐츠 관리자:"
-msgstr ""
-
-#: permissions.labels.capabilities.create_groups
-msgid "그룹 만들기:"
-msgstr ""
-
-#: permissions.labels.capabilities.rename
-msgid "이름 바꾸기:"
-msgstr ""
-
-#: permissions.labels.capabilities.transfer_ownership
-msgid "소유권 이전:"
-msgstr ""
-
-#: permissions.labels.capabilities.project_leader
-msgid "프로젝트 리더:"
-msgstr ""
-
-#: permissions.labels.capabilities.publish
-msgid "게시:"
-msgstr ""
-
-#: permissions.labels.capabilities.connect
-msgid "연결:"
-msgstr ""
-
-#: permissions.labels.capabilities.draw
-msgid "그리기:"
-msgstr ""
-
-#: permissions.labels.capabilities.web_authoring
-msgid "웹 편집:"
-msgstr ""
-
-#: permissions.labels.capabilities.xml_save_as
-msgid "다른 이름으로 저장:"
-msgstr ""
-
-#: permissions.labels.capabilities.create_refresh_metrics
-msgid "메트릭 만들기/새로 고침:"
-msgstr ""
-
-#: permissions.labels.capabilities.explain_data
-msgid "데이터 설명 실행:"
-msgstr ""
-
-#: permissions.labels.roles.wb_view
-msgctxt "permissions.labels.roles.wb_view"
-msgid "보기"
-msgstr ""
-
-#: permissions.labels.roles.wb_explore
-msgctxt "permissions.labels.roles.wb_explore"
-msgid "탐색"
-msgstr ""
-
-#: permissions.labels.roles.wb_publish
-msgctxt "permissions.labels.roles.wb_publish"
-msgid "게시"
-msgstr ""
-
-#: permissions.labels.roles.wb_administer
-msgctxt "permissions.labels.roles.wb_administer"
-msgid "관리"
-msgstr ""
-
-#: permissions.labels.roles.ds_view
-msgctxt "permissions.labels.roles.ds_view"
-msgid "보기"
-msgstr ""
-
-#: permissions.labels.roles.ds_explore
-msgctxt "permissions.labels.roles.ds_explore"
-msgid "탐색"
-msgstr ""
-
-#: permissions.labels.roles.ds_publish
-msgctxt "permissions.labels.roles.ds_publish"
-msgid "게시"
-msgstr ""
-
-#: permissions.labels.roles.ds_administer
-msgctxt "permissions.labels.roles.ds_administer"
-msgid "관리"
-msgstr ""
-
-#: permissions.labels.roles.viewer
-msgid "Viewer"
-msgstr ""
-
-#: permissions.labels.roles.interactor
-msgid "인터랙터"
-msgstr ""
-
-#: permissions.labels.roles.editor
-msgid "에디터"
-msgstr ""
-
-#: permissions.labels.roles.ds_connector
-msgid "데이터 원본 커넥터"
-msgstr ""
-
-#: permissions.labels.roles.ds_editor
-msgid "데이터 원본 에디터"
-msgstr ""
-
-#: permissions.labels.roles.administrator
-msgid "관리자"
-msgstr ""
-
-#: permissions.labels.roles.project_leader
-msgid "프로젝트 리더"
-msgstr ""
-
-#: permissions.labels.roles.publisher
-msgid "게시자"
-msgstr ""
-
-#: permissions.labels.roles.custom
-msgid "사용자 지정"
-msgstr ""
-
-#: permissions.labels.roles.none
-msgid "없음"
-msgstr ""
-
-#.
-#. # Used in Storage class in tab-core
-#: formats.messages.disk_space.in_mb
-msgid "{0}MB"
-msgstr ""
-
-#: formats.messages.disk_space.in_kb
-msgid "{0}KB"
-msgstr ""
-
-#.
-#. # Publishing-related errors and strings
-#: errors.argument.flow_description.too_long
-msgid "흐름 설명이 너무 깁니다({0}자). {1}자보다 짧아야 합니다."
-msgstr ""
-
-#: %7B2%7D
-msgctxt "{2}"
-msgid ""
-msgstr ""
-
-#: errors.argument.workbook_name.too_long
-msgid "통합 문서 이름이 너무 깁니다({0}자).  {1}자보다 짧아야 합니다."
-msgstr ""
-
-#: errors.argument.workbook_name.empty
-msgid "통합 문서 이름이 비어 있습니다."
-msgstr ""
-
-#: errors.argument.workbook_description.too_long
-msgid "통합 문서 설명이 너무 깁니다({0}자). {1}자보다 짧아야 합니다."
-msgstr ""
-
-#: errors.argument.worksheet_name.too_long
-msgid "워크시트 이름이 너무 깁니다({0}자). {1}자보다 짧아야 합니다."
-msgstr ""
-
-#: errors.argument.datasource_name.too_long
-msgid "데이터 원본 이름이 너무 깁니다({0}자). {1}자보다 짧아야 합니다."
-msgstr ""
-
-#: errors.argument.datasource_name.empty
-msgid "데이터 원본이 비어 있습니다."
-msgstr ""
-
-#: errors.argument.datasource_description.too_long
-msgid "데이터 원본 설명이 너무 깁니다({0}자). {1}자보다 짧아야 합니다."
-msgstr ""
-
-#: errors.argument.dataconnection_column.too_long
-msgid ""
-"DataConnection column {0} is too long ({1} characters).  It must be shorter "
-"than {2} characters:"
-msgstr ""
-
-#: %7B3%7D
-msgctxt "{3}"
-msgid ""
-msgstr ""
-
-#: errors.argument.tag.too_long
-msgid "태그가 너무 깁니다({0}자). {1}자보다 짧아야 합니다."
-msgstr ""
-
-#: errors.argument.workbook_file.missing_or_empty
-msgid "통합 문서 파일이 없거나 비어 있습니다."
-msgstr ""
-
-#: errors.argument.internal
-msgid "내부 서버 오류입니다.  인수가 없거나 잘못되었습니다."
-msgstr ""
-
-#: errors.argument.thumbnail.invalid_format
-msgid "통합 문서 축소판 형식이 잘못되었습니다. 해상도가 300x300 이하인 PNG여야 "
-"합니다."
-msgstr ""
-
-#: errors.html_403.disabled_resource.workbook
-msgid "죄송합니다. 해당 통합 문서는 사용할 수 없습니다.  관리자에게 문의하십시오."
-msgstr ""
-
-#: errors.html_404.missing_or_unauthorized_resource.project
-msgid "죄송합니다. 찾는 프로젝트가 없거나 해당 프로젝트를 볼 수 있는 사용 권한이 "
-"없습니다."
-msgstr ""
-
-#: errors.html_404.missing_or_unauthorized_resource.personal_space
-msgid "죄송합니다. 찾는 개인 공간이 없거나 해당 공간을 볼 수 있는 사용 권한이 "
-"없습니다."
-msgstr ""
-
-#: errors.html_404.missing_or_unauthorized_resource.datasource
-msgid "죄송합니다. 찾는 데이터 원본이 없습니다."
-msgstr ""
-
-#: errors.labels.formatted_request_id
-msgid "요청 ID: {0}"
-msgstr ""
-
-#: errors.links.delete_datasources
-msgid "데이터 원본 삭제"
-msgstr ""
-
-#: errors.links.delete_workbooks
-msgid "통합 문서 삭제"
-msgstr ""
-
-#: errors.permissions.publish.datasource.licensing
-msgid "데이터 원본을 게시하려면 ''인터랙터''여야 합니다."
-msgstr ""
-
-#: errors.permissions.publish.datasource.overwrite
-msgid "이름이 \"{0}\"인 데이터 원본이 프로젝트 \"{1}\"에 이미 있습니다. 덮어쓸 사용 "
-"권한이 없습니다."
-msgstr ""
-
-#: errors.permissions.publish.datasource.overwrite_personal_space
-msgid "이름이 \"{0}\"인 데이터 원본이 개인 공간에 이미 있습니다. 덮어쓸 사용 권한이 "
-"없습니다."
-msgstr ""
-
-#: errors.permissions.publish.datasource.overwrite_short
-msgid "이름이 \"{0}\"인 데이터 원본이 프로젝트 \"{1}\"에 이미 있습니다."
-msgstr ""
-
-#: errors.permissions.publish.datasource.overwrite_short_personal_space
-msgid "이름이 \"{0}\"인 데이터 원본이 개인 공간에 이미 있습니다.\""
-msgstr ""
-
-#: errors.permissions.publish.datasource.non_existent
-msgid "데이터 원본 \"{0}\"이(가) 없습니다."
-msgstr ""
-
-#: errors.permissions.publish.datasource.general
-msgid "죄송합니다. 이 데이터 원본을 게시할 수 있는 사용 권한이 없습니다."
-msgstr ""
-
-#: errors.permissions.publish.project.explicit_publisher_detail
-msgid "게시 권한이 없습니다."
-msgstr ""
-
-#: errors.permissions.publish.project.general
-msgid "죄송합니다. 이 프로젝트에 게시할 수 있는 사용 권한이 없습니다."
-msgstr ""
-
-#: errors.permissions.publish.project.non_existent
-msgid "\"{0}\" 프로젝트가 없습니다."
-msgstr ""
-
-#: errors.permissions.publish.project.not_writable
-msgid "\"{0}\" 프로젝트에 쓸 수 있는 사용 권한이 없습니다."
-msgstr ""
-
-#: errors.permissions.publish.project.unspecified
-msgid "프로젝트를 지정해야 합니다."
-msgstr ""
-
-#: errors.permissions.publish.workbook.disabled
-msgid "\"{0}\" 통합 문서를 사용할 수 없습니다."
-msgstr ""
-
-#: errors.permissions.publish.workbook.general
-msgid "게시하려는 프로젝트에 이 이름의 통합 문서가 존재합니다. 게시하려면 통합 "
-"문서의 이름을 바꾸십시오."
-msgstr ""
-
-#: errors.permissions.publish.workbook.general_personal_space
-msgid "게시하려는 개인 공간에 이 이름의 통합 문서가 존재합니다. 게시하려면 통합 "
-"문서의 이름을 바꾸십시오."
-msgstr ""
-
-#: errors.permissions.publish.workbook.overwrite
-msgid "이름이 \"{0}\"인 통합 문서가 프로젝트 \"{1}\"에 이미 있습니다. 덮어쓸 사용 "
-"권한이 없습니다."
-msgstr ""
-
-#: errors.permissions.publish.workbook.overwrite_personal_space
-msgid "이름이 \"{0}\"인 통합 문서가 개인 공간에 이미 있습니다. 덮어쓸 사용 권한이 "
-"없습니다."
-msgstr ""
-
-#: errors.permissions.publish.workbook.overwrite_short
-msgid "이름이 \"{0}\"인 통합 문서가 프로젝트 \"{1}\"에 이미 있습니다."
-msgstr ""
-
-#: errors.permissions.publish.workbook.overwrite_short_personal_space
-msgid "이름이 \"{0}\"인 통합 문서가 개인 공간에 이미 있습니다."
-msgstr ""
-
-#: errors.reportable.impersonation.group_and_user
-msgid "''impersonate_username'' 또는 ''impersonate_groupname'' 중 하나만 지정합니다."
-msgstr ""
-
-#: errors.reportable.impersonation.user_not_found
-msgid "''{0}'' 사용자가 없습니다."
-msgstr ""
-
-#: errors.reportable.impersonation.group_not_found
-msgid "''{0}'' 그룹이 없습니다."
-msgstr ""
-
-#. # errors.public.validation.hasextract is copied from the C++ file codegen strings.data IDS_PUBLIC_VALIDATION_ERROR_HASEXTRACT
-#: errors.public.validation.hasextract
-msgid ""
-"Tableau Public에 저장된 통합 문서는 활성 Tableau 추출을 사용해야 합니다. "
-"게시하기 전에 데이터 원본을 마우스 오른쪽 단추로 클릭하여 [추출 사용]을 "
-"선택합니다. 데이터 원본 ''{0}''이(가) 활성 추출이 아닙니다."
-msgstr ""
-
-#: errors.publish.dataserver_datasource_not_found
-msgid "''{0}'' 데이터 원본이 ''{1}'' 통합 문서에 없습니다."
-msgstr ""
-
-#: errors.publish.datasource_update_mode
-msgid "알 수 없는 업데이트 모드: ''{0}''."
-msgstr ""
-
-#: errors.publish.workbook.concurrent_update
-msgid "동일한 이름의 통합 문서가 현재 게시 또는 수정되고 있습니다. 작업이 완료될 "
-"때까지 기다린 후 다시 시도해 주십시오."
-msgstr ""
-
-#: errors.publish.workbook.restricted
-msgid "통합 문서에 이 서버에 허용되지 않는 연결 유형이 있습니다."
-msgstr ""
-
-#: errors.publish.datasource.concurrent_update
-msgid "동일한 이름의 데이터 원본이 현재 게시 또는 수정되고 있습니다. 작업이 완료될 "
-"때까지 기다린 후 다시 시도해 주십시오."
-msgstr ""
-
-#: errors.publish.datasource.restricted
-msgid "데이터 원본에 이 서버에 허용되지 않는 연결 유형이 있습니다."
-msgstr ""
-
-#: errors.publish.datasource.connection_check
-msgid "{0}에서 데이터 원본에 대한 연결을 설정하지 못했습니다."
-msgstr ""
-
-#: errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption
-msgid ""
-"암호화된 추출을 사용하여 통합 문서를 게시할 수 없습니다. 사이트 관리자가 이 "
-"사이트에서 추출 암호화를 사용하지 않도록 설정했습니다. 암호화되지 않은 "
-"추출을 사용하여 통합 문서를 게시해야 합니다."
-msgstr ""
-
-#: errors.publish.datasource.requested_extract_encryption_on_site_with_disabled_encryption
-msgid ""
-"데이터 원본을 암호화된 추출로 게시할 수 없습니다. 사이트 관리자가 이 "
-"사이트에서 추출 암호화를 사용하지 않도록 설정했습니다. 암호화되지 않은 "
-"추출을 게시해야 합니다."
-msgstr ""
-
-#: errors.publish.workbook.requested_no_extract_encryption_on_site_with_enforced_encryption
-msgid ""
-"암호화되지 않은 추출을 사용하여 통합 문서를 게시할 수 없습니다. 사이트 "
-"관리자가 이 사이트에 추출 암호화를 적용했습니다. 통합 문서를 게시하고 추출 "
-"암호화를 지정해야 합니다."
-msgstr ""
-
-#: errors.publish.datasource.requested_no_extract_encryption_on_site_with_enforced_encryption
-msgid ""
-"암호화되지 않은 데이터 원본 추출을 게시할 수 없습니다. 사이트 관리자가 이 "
-"사이트에 추출 암호화를 적용했습니다. 추출을 암호화된 상태로 게시해야 합니다."
-msgstr ""
-
-#: errors.publish.has_unfinished_extract_creation_job
-msgid ""
-"이 리소스는 보류 중이거나 완료되지 않은 추출 만들기 작업이 관련되어 있기 "
-"때문에 게시할 수 없습니다. 해당 작업이 완료될 때까지 기다리거나 작업을 "
-"취소한 후 다시 시도하십시오."
-msgstr ""
-
-#: errors.publishing.storage_quota_exceeded.message
-msgid "사이트 저장소 할당량이 초과되었습니다."
-msgstr ""
-
-#: errors.publishing.request_size_exceeded
-msgid "요청 크기({0}바이트)가 바이트 크기 제한({1}바이트)을 초과하므로 이 파일을 "
-"게시할 수 없습니다."
-msgstr ""
-
-#: errors.publishing.request_size_unknown
-msgid "요청 크기를 확인할 수 없습니다."
-msgstr ""
-
-#: errors.site.quota_exceeded
-msgid "업로드하려는 콘텐츠 크기가 사이트 용량보다 {0}만큼 큽니다."
-msgstr ""
-
-#: errors.personal_space.quota_exceeded
-msgid "이 콘텐츠는 개인 공간 용량을 {0}만큼 초과합니다."
-msgstr ""
-
-#: errors.web_authoring.workbook_deleted
-msgid "''{0}'' 통합 문서가 삭제되었습니다.  새 통합 문서로 저장하려면 ''다른 "
-"이름으로 저장''을 선택하십시오."
-msgstr ""
-
-#: errors.web_authoring.workbook_changed
-msgid ""
-"편집을 시작한 이후 다른 사용자가 이 통합 문서를 편집하고 저장했습니다. "
-"따라서 더 이상 원본 통합 문서를 업데이트할 수 없습니다. [다른 이름으로 저장]"
-"을 사용하여 변경 내용을 포함한 새 통합 문서를 만드십시오."
-msgstr ""
-
-#: labels.publish.embed_credentials
-msgid "데이터 원본에 대한 비밀번호 내장"
-msgstr ""
-
-#: errors.publish.workbook.google_no_embedded_credentials
-msgid ""
-"이 통합 문서에는 내장된 자격 증명이 필요한 {0} 데이터 원본이 포함되어 "
-"있습니다. 다른 통합 문서로 저장하려면 ''{1}''을(를) 선택하십시오."
-msgstr ""
-
-#: errors.publish.datasource.google_no_embedded_credentials
-msgid ""
-"이 데이터 원본에는 내장된 자격 증명이 필요한 {0} 연결이 포함되어 있습니다. "
-"내장된 자격 증명을 사용하여 Tableau Desktop에서 이 데이터 원본을 "
-"게시하십시오."
-msgstr ""
-
-#: errors.publish.datasource.federated_oauth_datasource_failed
-msgid ""
-"데이터 원본에 있는 하나 이상의 연결에 대한 자격 증명이 만료되었습니다. "
-"Tableau Server 또는 Tableau Online의 계정 설정 페이지에서 이 데이터 원본에 "
-"대해 저장된 자격 증명을 삭제한 다음 데이터 원본에 다시 연결하십시오."
-msgstr ""
-
-#: errors.publish.workbook.missing_oauth_credential
-msgid "자격 증명 ''{0}''을(를) 찾을 수 없거나 데이터 원본 또는 통합 문서에 연결하는 "
-"데 사용할 수 없습니다."
-msgstr ""
-
-#: errors.publish.version_incompatible.message
-msgid "데스크톱 버전과 서버 버전이 호환되지 않습니다."
-msgstr ""
-
-#: errors.publish.version_incompatible.details
-msgid "데스크톱 버전은 ''{0}''이고 서버 문서 버전은 ''{1}''입니다."
-msgstr ""
-
-#: errors.publish.datasource.managed_keychain.unique_cv_suggestions
-msgid "충돌로 인해 게시하지 못했습니다. 변경 내용을 다시 실행 의뢰하십시오."
-msgstr ""
-
-#: errors.publish.permissions_are_locked
-msgid ""
-"게시하려는 대상 프로젝트에서 사용 권한이 잠겨 있습니다. 이 통합 문서를 "
-"게시하려면 기본 사용 권한을 사용하여 다시 시도하십시오."
-msgstr ""
-
-#: errors.publish.datasource.not.found
-msgid "서버에서 이 데이터 원본을 찾을 수 없습니다."
-msgstr ""
-
-#: errors.publish.extracts.disabled
-msgid "추출 기반 아카이브 데이터 원본을 저장하는 기능은 아직 지원되지 않습니다."
-msgstr ""
-
-#: errors.publish.datasource.timeout
-msgid "{0}초 후 게시 시간이 초과되었습니다. 이 데이터 원본을 게시하려면 Tableau "
-"Desktop을 사용하십시오."
-msgstr ""
-
-#: errors.publish.data_role.permission_not_null
-msgid "데이터 역할 유형의 데이터 원본에 대한 명시적 사용 권한을 설정할 수 없습니다."
-msgstr ""
-
-#: errors.download.extracts.timeout
-msgid ""
-"이 데이터 원본에 대규모 추출 파일이 있어서 {0}초 후 게시 시간이 "
-"초과되었습니다. 이 데이터 원본을 게시하려면 Tableau Desktop을 사용하십시오."
-msgstr ""
-
-#: errors.publish.datasource.invalid_extract_update_time
-msgid "잘못된 extractUpdateTime이 지정됨: {0}"
-msgstr ""
-
-#: errors.publish.async.serialization
-msgid "게시 작업 상태 오류를 직렬화할 수 없습니다."
-msgstr ""
-
-#: errors.permissions.view.datasources
-msgid "데이터 원본의 목록을 보려면 ''인터랙터''여야 합니다."
-msgstr ""
-
-#.
-#. # oauth related errors
-#: errors.oauth.invalid_oauth_class
-msgid "''{0}''은(는) 유효한 OAuth 연결 유형이 아닙니다."
-msgstr ""
-
-#: errors.xmlapi.bad_request
-msgid "잘못된 요청"
-msgstr ""
-
-#: errors.xmlapi.unauthorized
-msgid "권한 없음"
-msgstr ""
-
-#: errors.xmlapi.forbidden
-msgid "사용 권한 부족"
-msgstr ""
-
-#: errors.xmlapi.system_user_not_found
-msgid "사용자 계정이 잠겨 있거나 유효하지 않습니다."
-msgstr ""
-
-#: errors.xmlapi.site_user_not_found
-msgid "사용자 계정이 활성 상태가 아닙니다. 도움이 필요하면 {0} 관리자에게 "
-"문의하십시오."
-msgstr ""
-
-#: errors.xmlapi.not_found
-msgid "항목 찾을 수 없음"
-msgstr ""
-
-#: errors.xmlapi.concurrent_update
-msgid "동시 업데이트"
-msgstr ""
-
-#: errors.xmlapi.internal_server_error
-msgid "내부 서버 오류"
-msgstr ""
-
-#: errors.xmlapi.illegal_state
-msgid "잘못된 상태"
-msgstr ""
-
-#: errors.xmlapi.invalid_parameter
-msgid "잘못된 매개 변수"
-msgstr ""
-
-#: errors.xmlapi.already_exists
-msgid "이미 존재"
-msgstr ""
-
-#: errors.xmlapi.site_suspended
-msgid "이 사이트는 일시 중단되었습니다. 로그인하려면 시스템 관리자여야 합니다."
-msgstr ""
-
-#: errors.xmlapi.site_locked
-msgid "이 사이트는 잠겼습니다. 지금은 로그인할 수 없습니다."
-msgstr ""
-
-#: errors.xmlapi.permission_modification
-msgid "수정된 사용 권한을 사용하여 게시할 수 없습니다."
-msgstr ""
-
-#: errors.xmlapi.update_desktop
-msgid ""
-"다른 작성자가 만든 통합 문서를 열려면 http://public.tableau.com/에서 Tableau "
-"Desktop Public Edition의 최신 버전을 다운로드하십시오."
-msgstr ""
-
-#: errors.xmlapi.throttled.summary
-msgid "요청이 너무 많습니다."
-msgstr ""
-
-#: errors.xmlapi.throttled.detail
-msgid "''{0}''에 대한 요청이 너무 많습니다. {1} 후에 다시 시도하십시오."
-msgstr ""
-
-#: datasource.publish.check.unpublishable
-msgid "데이터 원본을 게시할 수 없습니다."
-msgstr ""
-
-#: datasource.publish.check.publishable.extract_required
-msgid "게시에 대한 추출을 만들어야 합니다."
-msgstr ""
-
-#: datasource.publish.check.publishable.credentials_required
-msgid ""
-"라이브 데이터 연결을 유지할 수 있는지 확인하기 위해 {1}에서 ''{0}''에 대해 "
-"제공된 자격 증명에 일시적으로 액세스합니다."
-msgstr ""
-
-#: datasource.publish.check.publishable.server_unreachable
-msgid "{1}에서 ''{0}''에 연결할 수 없습니다. 게시하면 추출이 만들어집니다."
-msgstr ""
-
-#: publish.bundles.workbook.subscription.subject
-msgid "{0} 통합 문서가 준비되었습니다."
-msgstr ""
-
-#: publish.bundles.workbook.subscription.message
-msgid "Salesforce 데이터가 통합 문서에 추가되었습니다. 시작하려면 {0} 프로젝트로 "
-"이동하십시오."
-msgstr ""
-
-#: extracts.status.finished.upload.workbook
-msgid "통합 문서 ''{1}'' {2}에 대한 추출 업로드를 완료했습니다(새 추출 ID: {0})."
-msgstr ""
-
-#: extracts.status.finished.refresh.workbook
-msgid "통합 문서 ''{1}'' {2}에 대한 추출 새로 고침을 완료했습니다(새 추출 ID: {0})"
-msgstr ""
-
-#: extracts.status.finished.increment.workbook
-msgid "통합 문서 ''{1}'' {2}에 대한 추출 증분을 완료했습니다(새 추출 ID: {0})"
-msgstr ""
-
-#: extracts.status.finished.encrypt.workbook
-msgid "통합 문서 ''{1}''에 대한 추출 암호화를 완료했습니다(새 추출 ID: {0})."
-msgstr ""
-
-#: extracts.status.finished.decrypt.workbook
-msgid "통합 문서 ''{1}''에 대한 추출 암호 해독을 완료했습니다(새 추출 ID: {0})."
-msgstr ""
-
-#: extracts.status.finished.rekey.workbook
-msgid "통합 문서 ''{1}''에 대한 추출 재암호화를 완료했습니다(새 추출 ID: {0})."
-msgstr ""
-
-#: extracts.status.finished.create.workbook
-msgid "통합 문서 ''{1}'' {2}에 대한 추출 생성을 마쳤습니다(새 추출 ID: {0})."
-msgstr ""
-
-#: extracts.status.finished.remove.workbook
-msgid "통합 문서 ''{1}''에 대한 추출(데이터 원본 ID: {0})을 라이브로 변경하는 "
-"작업을 완료했습니다."
-msgstr ""
-
-#: extracts.status.finished.upload.datasource
-msgid "데이터 원본 ''{1}'' {2}에 대한 추출 업로드를 완료했습니다(새 추출 ID: {0})"
-msgstr ""
-
-#: extracts.status.finished.refresh.datasource
-msgid "데이터 원본 ''{1}'' {2}에 대한 추출 새로 고침을 완료했습니다(새 추출 ID: {0})"
-msgstr ""
-
-#: extracts.status.finished.increment.datasource
-msgid "데이터 원본 ''{1}'' {2}에 대한 추출 증분을 완료했습니다(새 추출 ID: {0})"
-msgstr ""
-
-#: extracts.status.finished.append.datasource
-msgid "데이터 원본 ''{1}'' {2}에 대한 추출 추가를 완료했습니다(새 추출 ID: {0})"
-msgstr ""
-
-#: extracts.status.finished.replace.datasource
-msgid "데이터 원본 ''{1}'' {2}에 대한 추출 바꾸기를 완료했습니다(새 추출 ID: {0})"
-msgstr ""
-
-#: extracts.status.finished.encrypt.datasource
-msgid "데이터 원본 ''{1}''에 대한 추출 암호화를 완료했습니다(새 추출 ID: {0})."
-msgstr ""
-
-#: extracts.status.finished.decrypt.datasource
-msgid "데이터 원본 ''{1}''에 대한 추출 암호 해독을 완료했습니다(새 추출 ID: {0})."
-msgstr ""
-
-#: extracts.status.finished.rekey.datasource
-msgid "데이터 원본 ''{1}''에 대한 추출 재암호화를 완료했습니다(새 추출 ID: {0})."
-msgstr ""
-
-#: extracts.status.finished.encrypt.flow
-msgid "''{0}'' 흐름에 대한 추출 암호화를 완료했습니다."
-msgstr ""
-
-#: extracts.status.finished.decrypt.flow
-msgid "''{0}'' 흐름에 대한 추출 암호 해독을 완료했습니다."
-msgstr ""
-
-#: extracts.status.finished.rekey.flow
-msgid "''{0}'' 흐름에 대한 추출 재암호화를 완료했습니다."
-msgstr ""
-
-#: extracts.status.finished.encrypt.flowdraft
-msgid "흐름 초안 ''{0}''에 대한 추출 암호화를 완료했습니다."
-msgstr ""
-
-#: extracts.status.finished.decrypt.flowdraft
-msgid "흐름 초안 ''{0}''에 대한 추출 암호 해독을 완료했습니다."
-msgstr ""
-
-#: extracts.status.finished.rekey.flowdraft
-msgid "흐름 초안 ''{0}''에 대한 추출 재암호화를 완료했습니다."
-msgstr ""
-
-#: extracts.status.finished.create.datasource
-msgid "데이터 원본 ''{1}'' {2}에 대한 추출 생성을 마쳤습니다(새 추출 ID: {0})."
-msgstr ""
-
-#: extracts.status.finished.remove.datasource
-msgid "데이터 원본 ''{1}''에 대한 추출을 라이브로 변경하는 작업을 완료했습니다."
-msgstr ""
-
-#: extracts.status.encryption_key
-msgctxt "extracts.status.encryption_key"
-msgid "암호화 키 ID: ''{0}''."
-msgstr ""
-
-#: extracts.status.encryption_keys
-msgctxt "extracts.status.encryption_keys"
-msgid "이전 암호화 키 ID: ''{0}'', 새 암호화 키 ID: ''{1}''."
-msgstr ""
-
-#: extracts.errors.upload
-msgid "{0}의 추출을 업로드하는 동안 오류 발생: ''{1}''"
-msgstr ""
-
-#: extracts.errors.refresh
-msgid "다음 추출을 새로 고치는 동안 오류 발생: {0} ''{1}''"
-msgstr ""
-
-#: extracts.errors.create
-msgid "{0} ''{1}''에 대한 추출을 만드는 동안 오류가 발생했습니다."
-msgstr ""
-
-#: extracts.errors.increment
-msgid "{0}의 추출을 증분하는 동안 오류 발생: ''{1}''"
-msgstr ""
-
-#: extracts.errors.append
-msgid "{0}의 추출을 추가하는 동안 오류 발생: ''{1}''"
-msgstr ""
-
-#: extracts.errors.replace
-msgid "{0}의 추출을 바꾸는 동안 오류 발생: ''{1}''"
-msgstr ""
-
-#: extracts.errors.download
-msgid "{0}의 추출을 다운로드하는 동안 오류 발생: ''{1}''"
-msgstr ""
-
-#: extracts.errors.remove
-msgid "{0}의 추출을 제거하는 동안 오류 발생: ''{1}''."
-msgstr ""
-
-#: extracts.errors.title
-msgid "추출 처리 오류"
-msgstr ""
-
-#: extracts.errors.nothing_to_upload
-msgid "{0}에 대해 업로드할 추출 없음: ''{1}''"
-msgstr ""
-
-#: extracts.errors.nothing_to_refresh
-msgid "{0}에 대해 새로 고칠 추출 없음: ''{1}''"
-msgstr ""
-
-#: extracts.errors.nothing_to_increment
-msgid "증분할 {0}의 추출 없음: ''{1}''"
-msgstr ""
-
-#: extracts.errors.nothing_to_append
-msgid "{0}에 대해 추가할 추출 없음: ''{1}''"
-msgstr ""
-
-#: extracts.errors.nothing_to_replace
-msgid "{0}에 대해 바꿀 추출 없음: ''{1}''"
-msgstr ""
-
-#: extracts.errors.refresh_summary
-msgid "추출 새로 고침 오류"
-msgstr ""
-
-#: extracts.errors.encrypt_summary
-msgid "추출 암호화 오류"
-msgstr ""
-
-#: extracts.errors.rekey_summary
-msgid "추출 재암호화 오류"
-msgstr ""
-
-#: extracts.errors.decrypt_summary
-msgid "추출 암호 해독 오류"
-msgstr ""
-
-#: extracts.errors.remove_summary
-msgid "추출 제거 오류"
-msgstr ""
-
-#: extracts.errors.create_summary
-msgid "추출 만들기 오류"
-msgstr ""
-
-#: extracts.errors.datasource_overwritten
-msgid ""
-"처리 중에 다른 작업에서 데이터 원본을 덮어썼기 때문에 새로 고침에 "
-"실패했습니다. 수정하려면 다시 새로 고침을 실행 의뢰하십시오."
-msgstr ""
-
-#: extracts.errors.workbook_overwritten
-msgid "처리 중에 다른 작업에서 통합 문서를 덮어썼기 때문에 새로 고치지 못했습니다. "
-"수정하려면 다시 새로 고침을 실행 의뢰하십시오."
-msgstr ""
-
-#: extracts.errors.encrypt
-msgid "다음 추출을 암호화하는 동안 오류 발생: {0} ''{1}''"
-msgstr ""
-
-#: extracts.errors.decrypt
-msgid "다음 추출을 암호 해독하는 동안 오류 발생: {0} ''{1}''"
-msgstr ""
-
-#: extracts.errors.rekey
-msgid "다음 추출을 재암호화하는 동안 오류 발생: {0} ''{1}''"
-msgstr ""
-
-#: extracts.errors.encrypt_datasource_overwritten
-msgid "처리 중에 다른 작업에서 데이터 원본을 덮어썼기 때문에 추출 암호화가 "
-"실패했습니다."
-msgstr ""
-
-#: extracts.errors.encrypt_workbook_overwritten
-msgid "처리 중에 다른 작업에서 통합 문서를 덮어썼기 때문에 추출 암호화가 "
-"실패했습니다."
-msgstr ""
-
-#: extracts.errors.rekey_datasource_overwritten
-msgid "처리 중에 다른 작업에서 데이터 원본을 덮어썼기 때문에 추출 재암호화가 "
-"실패했습니다."
-msgstr ""
-
-#: extracts.errors.rekey_workbook_overwritten
-msgid "처리 중에 다른 작업에서 통합 문서를 덮어썼기 때문에 추출 재암호화가 "
-"실패했습니다."
-msgstr ""
-
-#: extracts.errors.decrypt_datasource_overwritten
-msgid "처리 중에 다른 작업에서 데이터 원본을 덮어썼기 때문에 추출 암호 해독이 "
-"실패했습니다."
-msgstr ""
-
-#: extracts.errors.decrypt_workbook_overwritten
-msgid "처리 중에 다른 작업에서 통합 문서를 덮어썼기 때문에 추출 암호 해독이 "
-"실패했습니다."
-msgstr ""
-
-#: extracts.errors.remove_datasource_overwritten
-msgid "다른 작업에 의해 덮어써진 데이터 원본은 라이브로 변경할 수 없습니다."
-msgstr ""
-
-#: extracts.errors.remove_workbook_overwritten
-msgid "다른 작업에 의해 덮어써진 통합 문서는 라이브로 변경할 수 없습니다."
-msgstr ""
-
-#: extracts.errors.create_datasource_overwritten
-msgid "다른 작업에 의해 덮어써진 데이터 원본은 추출할 수 없습니다."
-msgstr ""
-
-#: extracts.errors.create_workbook_overwritten
-msgid "다른 작업에 의해 덮어써진 통합 문서는 추출할 수 없습니다."
-msgstr ""
-
-#: extracts.site_mode_change_details
-msgid "사이트 추출 암호화 모드를 ''{0}''에서 ''{1}''(으)로 변경했습니다."
-msgstr ""
-
-#: extracts.errors.encryption_not_licensed
-msgid ""
-"이 작업은 추출 암호화에 대한 라이선스가 없기 때문에 실패했습니다. 이 작업을 "
-"수행하려면 라이선스를 갱신하거나 추출을 암호 해독해야 합니다."
-msgstr ""
-
-#: extracts.errors.operation_cancelled_detail
-msgid "{0}(데이터 원본: {2})에 대한 추출 제거 작업 시간이 초과되었습니다."
-msgstr ""
-
-#: workbooks.messages.load_error
-msgid "{0} 통합 문서를 로드할 수 없습니다."
-msgstr ""
-
-#: workbooks.messages.locked
-msgid "다른 사용자가 현재 ''{0}'' 통합 문서를 수정하고 있습니다.  나중에 다시 "
-"시도하십시오."
-msgstr ""
-
-#: workbooks.new_workbook.default_name
-msgid "새 통합 문서"
-msgstr ""
-
-#: workbooks.new_datasource.default_name
-msgid "새 데이터 원본"
-msgstr ""
-
-#: datasources.messages.load_error
-msgid "{0} 데이터 원본을 로드할 수 없습니다."
-msgstr ""
-
-#: metrics.new_metric.default_name
-msgid "새 메트릭"
-msgstr ""
-
-#: messages.timeout_error.summary
-msgid "시간 초과 오류"
-msgstr ""
-
-#: messages.timeout_error.task_canceled
-msgid "{0}초보다 오래 걸린 작업을 취소하는 중"
-msgstr ""
-
-#: subscriptions.manage_my_subscriptions
-msgid "내 구독 관리"
-msgstr ""
-
-#: subscriptions.message_greeting
-msgid "안녕하세요."
-msgstr ""
-
-#: subscriptions.subscribed_footer
-msgid "현재 구독하는 {0}입니다."
-msgstr ""
-
-#: subscriptions.subscribed_workbook
-msgctxt "subscriptions.subscribed_workbook"
-msgid "통합 문서"
-msgstr ""
-
-#: subscriptions.subscribed_view
-msgctxt "subscriptions.subscribed_view"
-"subscriptions.subscribed_view"
-msgid "뷰"
-msgstr ""
-
-#: subscriptions.fullstop
-msgid "."
-msgstr ""
-
-#: subscriptions.extract_refresh_footer
-msgid "데이터가 새로 고쳐지면 이 구독 이메일이 발송됩니다."
-msgstr ""
-
-#: subscriptions.explore_the_viz
-msgid "비주얼리제이션 탐색"
-msgstr ""
-
-#: subscriptions.explore_the_workbook
-msgid "통합 문서 탐색"
-msgstr ""
-
-#: subscriptions.pdf_attached
-msgid "Tableau PDF가 첨부되었습니다."
-msgstr ""
-
-#: subscriptions.access_live_content
-msgid "콘텐츠의 라이브 뷰를 여기서 액세스할 수 있습니다."
-msgstr ""
-
-#: subscriptions.warning_deprecated_type
-msgid "더 이상 사용되지 않음"
-msgstr ""
-
-#: subscriptions.warning_extract_refresh_type
-msgid "추출 새로 고침 실패"
-msgstr ""
-
-#: subscriptions.warning_flow_run_type
-msgid "흐름 실행 실패"
-msgstr ""
-
-#: subscriptions.warning_introduction_general
-msgid "다음 데이터 품질 경고가 이 {0}에 영향을 미칩니다."
-msgstr ""
-
-#: subscriptions.warning_introduction_view
-msgid "자세한 내용은 뷰의 데이터 세부 정보 탭을 참조하십시오."
-msgstr ""
-
-#: subscriptions.warning_introduction_workbook
-msgid "자세한 내용은 통합 문서 페이지를 참조하십시오."
-msgstr ""
-
-#: subscriptions.warning_maintenance_type
-msgid "유지 관리 중"
-msgstr ""
-
-#: subscriptions.warning_permission_error
-msgid "이는 보기 권한이 없는 자산에 대한 경고입니다."
-msgstr ""
-
-#: subscriptions.warning_redacted
-msgid "사용 권한 필요"
-msgstr ""
-
-#: subscriptions.warning_sensitve_type
-msgid "중요한 데이터"
-msgstr ""
-
-#: subscriptions.warning_severe
-msgid "중요 데이터 품질 경고"
-msgstr ""
-
-#: subscriptions.warning_stale_type
-msgid "오래된 데이터"
-msgstr ""
-
-#: subscriptions.warning_standard
-msgid "데이터 품질 경고"
-msgstr ""
-
-#: subscriptions.warning_error_type
-msgid "알 수 없는 경고 유형"
-msgstr ""
-
-#: subscriptions.warning_warning_type
-msgid "경고"
-msgstr ""
-
-#: errors.subscriptions.image_render_failed
-msgid "뷰 ''{0}''의 스냅샷을 적절하게 렌더링할 수 없습니다."
-msgstr ""
-
-#: errors.subscriptions.see_live_view
-msgid "온라인으로 뷰를 보려면 {0}(으)로 이동하십시오."
-msgstr ""
-
-#: errors.subscriptions.disabled_on_server
-msgid "서버 전체 구독 설정을 사용할 수 없습니다. 구독을 처리할 수 없습니다."
-msgstr ""
-
-#: errors.subscriptions.disabled_on_site
-msgid "사이트에서 구독을 사용할 수 없습니다."
-msgstr ""
-
-#: errors.subscriptions.site_is_locked
-msgid "사이트가 잠겨 있습니다. 구독을 처리할 수 없습니다."
-msgstr ""
-
-#: errors.subscriptions.orphan
-msgid "이 구독과 연관된 통합 문서 및 뷰를 찾을 수 없습니다."
-msgstr ""
-
-#: errors.subscriptions.user_unlicensed
-msgid "라이선스가 없는 사용자의 구독을 건너뜁니다."
-msgstr ""
-
-#: errors.subscriptions.smtp_unreacheable
-msgid "SMTP 호스트에 연결할 수 없습니다. SMTP가 구성되어 있는지 확인하십시오."
-msgstr ""
-
-#: errors.subscriptions.uncategorized_error
-msgid "알 수 없는 오류"
-msgstr ""
-
-#: errors.subscriptions.pdf_render_failed
-msgid "이 이메일의 PDF 첨부 파일을 적절하게 렌더링할 수 없습니다."
-msgstr ""
-
-#: errors.subscriptions.pdf_limit_exceeded
-msgid "생성된 PDF는 크기 제한인 {0}MB보다 커서 이 이메일에 첨부할 수 없습니다."
-msgstr ""
-
-#: errors.subscriptions.attachments_not_enabled
-msgid ""
-"이메일 첨부 파일이 사용되지 않도록 설정되어 있어서 이 구독이 실패했습니다. "
-"자세한 내용은 Tableau 관리자에게 문의하십시오."
-msgstr ""
-
-#: errors.subscriptions.pdf_email_failed
-msgid "생성된 PDF는 이 이메일에 첨부할 수 없습니다."
-msgstr ""
-
-#: errors.subscriptions.learn_more_troubleshoot
-msgid ""
-"<a href=\"https://onlinehelp.tableau.com/current/server/ko-kr/"
-"subscribe_trouble.htm\">자세히 알아보기</a>"
-msgstr ""
-
-#: errors.subscriptions.bad_extract_refresh_subscription_configuration
-msgid ""
-"통합 문서에 여러 추출 새로 고침 일정이 포함되어 있으므로 구독이 일시 "
-"중단되었습니다. 다시 시작하려면 빈도를 [선택된 일정에 따라]로 "
-"업데이트하십시오."
-msgstr ""
-
-#: errors.subscriptions.subscription_failed_refresh_failure
-msgid "데이터 원본의 추출 새로 고침이 실패했습니다."
-msgstr ""
-
-#: errors.subscriptions.multiple_extracts_for_extract_refresh_subscription
-msgid "통합 문서에 여러 추출 새로 고침 일정이 포함되어 있습니다. 빈도를 [선택된 "
-"일정에 따라]로 업데이트하십시오."
-msgstr ""
-
-#: errors.subscriptions.datasource_is_missing_password
-msgid "데이터 원본 연결 오류입니다. 통합 문서의 모든 데이터 원본 연결에서 자격 "
-"증명을 확인하십시오."
-msgstr ""
-
-#: subscriptions.results_summary.sg
-msgctxt "subscriptions.results_summary.sg"
-msgid "{0}/{1}개의 구독이 ''{2}'' 일정에서 전송되었습니다."
-msgstr ""
-
-#: subscriptions.results_summary.pl
-msgctxt "subscriptions.results_summary.pl"
-msgid "{0}/{1}개의 구독이 ''{2}'' 일정에서 전송되었습니다."
-msgstr ""
-
-#: subscriptions.results_views_per_subscription.sg
-msgid "{0}({1}/1회 뷰가 성공함)"
-msgstr ""
-
-#: subscriptions.results_views_per_subscription.pl
-msgid "{0}({1}/{2}회 뷰가 성공함)"
-msgstr ""
-
-#: subscriptions.results_views_per_subscription.more
-msgid "({0} 추가)"
-msgstr ""
-
-#: subscriptions.results_views_per_subscription.failed
-msgid "{0}({1}/{2}개 뷰가 실패함)."
-msgstr ""
-
-#: subscriptions.results_header.all_shown.failures.sg
-msgid "실패 1회"
-msgstr ""
-
-#: subscriptions.results_header.all_shown.failures.pl
-msgid "실패 {0}개"
-msgstr ""
-
-#: subscriptions.results_header.all_shown.warnings.sg
-msgid "경고 1개"
-msgstr ""
-
-#: subscriptions.results_header.all_shown.warnings.pl
-msgid "경고 {0}개"
-msgstr ""
-
-#: subscriptions.results_header.some_hidden.failures.pl.sg
-msgid "실패 {0}회(1회 숨겨짐, 로그 참조)"
-msgstr ""
-
-#: subscriptions.results_header.some_hidden.failures.pl.pl
-msgid "실패 {0}개({1}개 숨겨짐, 로그 참조)"
-msgstr ""
-
-#: subscriptions.results_header.some_hidden.warnings.pl.sg
-msgid "경고 {0}개(1개 숨겨짐, 로그 참조)"
-msgstr ""
-
-#: subscriptions.results_header.some_hidden.warnings.pl.pl
-msgid "경고 {0}개({1}개 숨겨짐, 로그 참조)"
-msgstr ""
-
-#: dataalerts.manage_my_data_alerts
-msgid "알림 관리"
-msgstr ""
-
-#: dataalerts.edit_data_alert
-msgid "알림 편집"
-msgstr ""
-
-#: dataalerts.remove_user_from_data_alert
-msgid "본인 제거"
-msgstr ""
-
-#: dataalerts.add_user_to_data_alert
-msgid "이 알림에 나를 추가"
-msgstr ""
-
-#: dataalerts.greater_or_equal
-msgid "{0}이(가) {1}보다 크거나 같습니다."
-msgstr ""
-
-#: dataalerts.greater
-msgid "{0}이(가) {1}보다 큽니다."
-msgstr ""
-
-#: dataalerts.less_or_equal
-msgid "{0}이(가) {1}보다 작거나 같습니다."
-msgstr ""
-
-#: dataalerts.less
-msgid "{0}이(가) {1}보다 작습니다."
-msgstr ""
-
-#: dataalerts.equal
-msgid "{0}이(가) {1}과(와) 같습니다."
-msgstr ""
-
-#: dataalerts.email_alt_text
-msgid "데이터 기반 알림에 사용된 보기: {0}"
-msgstr ""
-
-#: dataalerts.email_alt_text_hidden_view
-msgid "데이터 기반 알림에 사용된 보기: {0}에 변경 내용이 적용됨"
-msgstr ""
-
-#: dataalerts.alert_triggered_for_the_view
-msgid "뷰에 발생한 알림"
-msgstr ""
-
-#: dataalerts.failure.email.subject
-msgid "다음에 대한 데이터 기반 알림이 작동하지 않음: {0}"
-msgstr ""
-
-#: dataalerts.failure.status
-msgid "알림 <i>{0}</i>이(가) 작동하지 않음"
-msgstr ""
-
-#: dataalerts.failure.view.details.alert
-msgid "이 알림 보기"
-msgstr ""
-
-#: dataalerts.failure.explanation
-msgid ""
-"지금 데이터 기반 알림 <i>{0}</i>이(가) 작동하지 않기 때문에 데이터 조건을 "
-"충족하는 경우 수신자에게 알림이 전달되지 않습니다. 알림이 다시 작동하면 "
-"이메일 알림을 받을 수 있습니다."
-msgstr ""
-
-#: dataalerts.failure.affected.alert
-msgid "영향받는 데이터 기반 알림"
-msgstr ""
-
-#: dataalerts.failure.time
-msgid "일시적 알림 실패"
-msgstr ""
-
-#: dataalerts.failure.cause
-msgid ""
-"경우에 따라 일시적인 네트워크 문제로 인해 알림이 실패할 수 있으며, 이러한 "
-"문제는 자동적으로 해결됩니다. 원래 데이터 뷰에서 알림을 다시 만들거나 다음과 "
-"같은 알림 실패의 일반적인 원인을 찾아 해결할 수도 있습니다."
-msgstr ""
-
-#: dataalerts.failure.changed.view
-msgid "통합 문서, 뷰 또는 데이터 필드가 제거되거나 이름이 바뀌었습니다."
-msgstr ""
-
-#: dataalerts.failure.expired.credentials
-msgctxt "dataalerts.failure.expired.credentials"
-msgid "통합 문서에 내장된 데이터베이스 자격 증명이 만료되었습니다."
-msgstr ""
-
-#: dataalerts.failure.datasource.error
-msgid "데이터 원본에 액세스할 수 없습니다."
-msgstr ""
-
-#: dataalerts.failure.email.footer
-msgid "알림 실패로 인해 이 이메일이 {0} 주소로 발송되었습니다."
-msgstr ""
-
-#: dataalerts.failure.troubleshooting
-msgid "위에 나와 있는 문제 중 하나가 알림 실패의 원인인지 확인하려면 아래 단추를 "
-"클릭하십시오."
-msgstr ""
-
-#: dataalerts.success.email.subject
-msgid "다음에 대한 데이터 기반 알림이 다시 시작됨: {0}"
-msgstr ""
-
-#: dataalerts.success.status
-msgid "알림 <i>{0}</i>이(가) 다시 시작됨"
-msgstr ""
-
-#: dataalerts.success.explanation
-msgid "데이터 기반 알림(<i>{0}</i>)이 다시 작동하므로 데이터 조건이 true인 경우 "
-"수신자에게 알림이 전달됩니다."
-msgstr ""
-
-#: dataalerts.failure.error.internalError
-msgid "데이터 알림 내부 오류"
-msgstr ""
-
-#: dataalerts.failure.error.invalidDataAlertSpecification
-msgid "잘못된 데이터 알림 지정"
-msgstr ""
-
-#: dataalerts.failure.error.summaryTableNotFound
-msgid "요약 데이터 테이블을 찾을 수 없음"
-msgstr ""
-
-#: dataalerts.failure.error.unclassifiedError
-msgid "분류되지 않은 오류"
-msgstr ""
-
-#: dataalerts.failure.error.viewContentNotFound
-msgid "데이터 알림 뷰의 {0} 콘텐츠를 찾을 수 없음"
-msgstr ""
-
-#: dataalerts.failure.error.viewNotFound
-msgid "데이터 알림 뷰를 찾을 수 없음"
-msgstr ""
-
-#: dataalerts.failure.error.workbookNotFound
-msgid "통합 문서를 찾을 수 없음"
-msgstr ""
-
-#: dataalerts.failure.error.paneDescriptorAxisNotFound
-msgid "{0} 필드의 축을 찾을 수 없음"
-msgstr ""
-
-#: dataalerts.failure.error.paneDescriptorNotFound
-msgid "{0}"
-msgstr ""
-
-#: dataalerts.failure.error.unsupportedComparisonExpression
-msgid "지원되지 않는 비교 식 {0}"
-msgstr ""
-
-#: dataalerts.failure.error.nonConstComparisonOp
-msgid "비상수 비교 연산자가 검색됨: {0}"
-msgstr ""
-
-#: dataalerts.failure.error.cannotAddFilter
-msgid "데이터 알림에 필터를 추가하지 못함"
-msgstr ""
-
-#: dataalerts.failure.error.sheetNotAlertable
-msgid "{0} 시트는 알림 데이터를 지원합니다. {1}"
-msgstr ""
-
-#: dataalerts.failure.error.dataAlertMeasureNotFound
-msgid "측정값을 선택할 수 없습니다. {0}"
-msgstr ""
-
-#: dataalerts.failure.error.tooManyMeasuresForDataAlert
-msgid "잘못된 측정값 수가 검색되었습니다.{0}"
-msgstr ""
-
-#: dataalerts.failure.error.thresholdParseError
-msgid "임계값 텍스트 {0}을(를) 구문 분석하지 못했습니다. {1}"
-msgstr ""
-
-#: dataalerts.failure.error.dataAlertPresModelCreationError
-msgid "알림을 직렬화하는 동안 오류가 발생했습니다. {0}"
-msgstr ""
-
-#: dataalerts.failure.error.cannotDrawDataAlertDialog
-msgid "데이터 알림 대화 상자를 그리지 못했습니다."
-msgstr ""
-
-#: dataalerts.failure.error.unsupportedDataAlertType
-msgid "데이터 알림 유형 {0}은(는) 현재 지원되지 않습니다."
-msgstr ""
-
-#: dataalerts.failure.suspend.email.subject
-msgid "{0}에 대한 데이터 기반 알림 일시 중단됨"
-msgstr ""
-
-#: dataalerts.failure.suspend.email.status
-msgid "{0} 알림이 일시 중단되었습니다."
-msgstr ""
-
-#: dataalerts.failure.suspend.email.explanation
-msgid ""
-"일시 중단된 동안에는 뷰 또는 알림 수신자를 평가할 수 없습니다. 수정을 완료한 "
-"후 다음 위치에서 알림을 다시 시작할 수 있습니다. <a href=\"{0}\" style"
-"=\"font-size:14px;font-family: Benton Sans Medium;color:#4996B2\">{1}."
-msgstr ""
-
-#: dataalerts.failure.suspend.view.name.prefix
-msgctxt "dataalerts.failure.suspend.view.name.prefix"
-msgid "뷰"
-msgstr ""
-
-#: dataalerts.failure.suspend.time
-msgctxt "dataalerts.failure.suspend.time"
-msgid "일시 중단 시간"
-msgstr ""
-
-#: dataalerts.failure.suspend.email.footer
-msgid "사용자의 알림이 일시 중단되어서 이 이메일이 발송되었습니다."
-msgstr ""
-
-#: dataalerts.failure.suspend.email.view.name.my.content
-msgid "내 콘텐츠"
-msgstr ""
-
-#: dataalerts.failure.suspend.view.alerts
-msgid "알림 보기"
-msgstr ""
-
-#: metricsservices.failure.affected.metric
-msgid "영향받는 메트릭"
-msgstr ""
-
-#: metricsservices.failure.cause
-msgid ""
-"경우에 따라 일시적인 연결 문제로 인해 메트릭 새로 고침이 실패하며, 이러한 "
-"문제는 자동적으로 해결됩니다. 메트릭 새로 고침이 실패할 수 있는 다른 "
-"일반적인 이유에는 다음이 포함됩니다."
-msgstr ""
-
-#: metricsservices.failure.changed.view
-msgid "통합 문서, 뷰 또는 데이터 필드가 제거되거나 이름이 바뀜"
-msgstr ""
-
-#: metricsservices.failure.permissions.error
-msgid "연결된 뷰의 사용 권한 변경"
-msgstr ""
-
-#: metricsservices.failure.email.footer
-msgid "메트릭 새로 고침이 실패하여 {0} 주소로 이 이메일이 발송된 것입니다."
-msgstr ""
-
-#: metricsservices.failure.email.subject
-msgid "다음에 대한 메트릭 새로 고침이 작동하지 않음: {0}"
-msgstr ""
-
-#: metricsservices.failure.expired.credentials
-msgctxt "metricsservices.failure.expired.credentials"
-msgid "통합 문서에 내장된 데이터베이스 자격 증명이 만료되었습니다."
-msgstr ""
-
-#: metricsservices.failure.explanation
-msgid ""
-"메트릭을 새로 고칠 수 없기 때문에 메트릭 데이터가 업데이트되지 않습니다. "
-"메트릭 새로 고침이 다시 작동하면 이메일 알림이 수신됩니다."
-msgstr ""
-
-#: metricsservices.failure.status
-msgid "메트릭 \"{0}\"이(가) 새로 고쳐지지 않습니다."
-msgstr ""
-
-#: metricsservices.failure.suspend.email.explanation
-msgid ""
-"메트릭 새로 고침이 일시 중단된 동안에는 메트릭 데이터가 업데이트되지 "
-"않습니다. 수정을 적용한 후 메트릭 새로 고침을 다시 시작할 수 있습니다."
-msgstr ""
-
-#: metricsservices.failure.suspend.email.footer
-msgid "메트릭 새로 고침이 일시 중단되어서 이 이메일이 {0} 주소로 발송되었습니다."
-msgstr ""
-
-#: metricsservices.failure.suspend.email.status
-msgid "메트릭 \"{0}\"에 대한 새로 고침이 일시 중단되었습니다."
-msgstr ""
-
-#: metricsservices.failure.suspend.email.subject
-msgid "{0}에 대한 메트릭 새로 고침 일시 중단됨"
-msgstr ""
-
-#: metricsservices.failure.suspend.time
-msgctxt "metricsservices.failure.suspend.time"
-msgid "일시 중단 시간"
-msgstr ""
-
-#: metricsservices.failure.suspend.view.metric
-msgctxt "metricsservices.failure.suspend.view.metric"
-msgid "메트릭으로 이동"
-msgstr ""
-
-#: metricsservices.failure.suspend.view.name.prefix
-msgctxt "metricsservices.failure.suspend.view.name.prefix"
-msgid "연결된 뷰"
-msgstr ""
-
-#: metricsservices.failure.time
-msgid "새로 고침 실패 시간"
-msgstr ""
-
-#: metricsservices.failure.troubleshooting
-msgid ""
-"위에 나와 있는 문제 중 하나가 메트릭 새로 고침 실패의 원인인지 확인하려면 "
-"아래 단추를 클릭하십시오. 연결된 뷰에서 메트릭을 다시 만들 수도 있습니다."
-msgstr ""
-
-#: metricsservices.failure.view.details.metric
-msgctxt "metricsservices.failure.view.details.metric"
-msgid "메트릭으로 이동"
-msgstr ""
-
-#: metricsservices.failure.view.name.prefix
-msgctxt "metricsservices.failure.view.name.prefix"
-msgid "연결된 뷰"
-msgstr ""
-
-#: metricsservices.success.email.subject
-msgid "다음에 대한 메트릭 새로 고침이 다시 시작됨: {0}"
-msgstr ""
-
-#: metricsservices.success.explanation
-msgid "메트릭에 대한 새로 고침이 다시 작동하고 있으므로 메트릭 데이터의 업데이트가 "
-"있는지 확인됩니다."
-msgstr ""
-
-#: metricsservices.success.status
-msgid "메트릭 \"{0}\"에 대한 새로 고침이 다시 시작되었습니다."
-msgstr ""
-
-#: errors.staticimages.generic
-msgid "{0} 통합 문서에 대한 정적 이미지를 생성하는 동안 오류가 발생했습니다. {1}."
-msgstr ""
-
-#: errors.internal_error.request.message
-msgid "{0}이(가) 요청을 처리할 수 없습니다."
-msgstr ""
-
-#: errors.permissions.limited_user_visibility
-msgid ""
-"쿼리를 완료하는 중 오류가 발생했습니다. [사용자 표시 유형]이 [제한]으로 "
-"설정된 경우 다른 사용자를 쿼리하려면 관리자이거나 Creator여야 합니다."
-msgstr ""
-
-#: local_names.system_user.guest.name
-msgid "게스트"
-msgstr ""
-
-#: local_names.group.all_users.name
-msgid "모든 사용자"
-msgstr ""
-
-#: local_names.containers.personal_space.name
-msgid "개인 공간"
-msgstr ""
-
-#: password_reset.email.subject
-msgid "비밀번호를 재설정할 수 있는 링크입니다."
-msgstr ""
-
-#: password_reset.email.body
-msgid ""
-"{0} 님 안녕하세요.<br/><br/>방금, 비밀번호 재설정을 요청하셨습니다.<br/><br/"
-"> Tableau Server 비밀번호를 재설정하려면 {1}하거나 다음 링크를 브라우저에 "
-"붙여 넣으십시오. 링크: {2}<br/><br/>이 링크는 48시간 후 만료되오니 지금 바로 "
-"이용하시기 바랍니다.<br/><br/>비밀번호 재설정을 요청하지 않으신 경우 서버 "
-"관리자에게 해당 사실을 알리실 수도 있습니다.<br/><br/>Tableau를 사용해 "
-"주셔서 감사합니다!<br/>Tableau 팀 일동"
-msgstr ""
-
-#: password_reset.email.link
-msgid "여기를 클릭"
-msgstr ""
-
-#: hours.pl
-msgid "{0}시간"
-msgstr ""
-
-#: hours.sg
-msgid "1시간"
-msgstr ""
-
-#: minutes.pl
-msgid "{0}분"
-msgstr ""
-
-#: minutes.sg
-msgid "1분"
-msgstr ""
-
-#: seconds.pl
-msgid "{0}초"
-msgstr ""
-
-#: seconds.sg
-msgid "1초"
-msgstr ""
-
-#: dataconnections.classes.tableau_server_site
-msgid "Tableau Server 사이트"
-msgstr ""
-
-#: materializeviews.errors.workbook_not_in_project
-msgid "''{0}'' 프로젝트가 ''{1}'' 통합 문서를 포함하지 않습니다."
-msgstr ""
-
-#: materializeviews.errors.workbook_has_no_extract
-msgid "''{0}'' 통합 문서의 구체화된 뷰 설정을 업데이트하지 못했습니다. 현재 내장된 "
-"추출이 있는 통합 문서만 지원됩니다."
-msgstr ""
-
-#: materializeviews.errors.workbook_updating_errors
-msgid "통합 문서의 구체화된 뷰 설정을 업데이트하는 동안 오류가 발견되었습니다."
-msgstr ""
-
-#: materializeviews.errors.workbook_too_large
-msgid "''{0}'' 통합 문서의 구체화된 뷰 설정을 업데이트하지 못했습니다. 통합 문서 "
-"크기가 제한({1}GB)을 초과합니다."
-msgstr ""
-
-#: materializeviews.errors.project_path_not_exists
-msgid "프로젝트 경로 ''{0}''이(가) 없습니다."
-msgstr ""
-
-#: materializeviews.errors.feature_disabled
-msgid "''{0}'' 통합 문서의 구체화된 뷰 설정을 업데이트하지 못했습니다. 해당 기능이 "
-"현재 사용되지 않도록 설정되어 있습니다."
-msgstr ""
-
-#: materializeviews.errors.update_materialized_views_setting_failed
-msgid "''{0}'' 통합 문서의 구체화된 뷰 설정을 업데이트하지 못했습니다."
-msgstr ""
-
-#: materializeviews.errors.site_not_enabled
-msgid "이 사이트가 구체화된 뷰를 사용하도록 설정되지 않았습니다. 관리자에게 "
-"문의하십시오."
-msgstr ""
-
-#: materializeviews.errors.encrypted_extracts_not_supported
-msgid "구체화된 뷰 기능은 현재 암호화된 추출이 있는 통합 문서를 지원하지 않습니다."
-msgstr ""
-
-#: materializedviews.finished.create
-msgid "''{1}'' 통합 문서에 대한 ''{0}'' 상태의 구체화된 뷰를 만들었습니다."
-msgstr ""
-
-#: materializedviews.finished.delete
-msgid "통합 문서 ID: {0}에 대한 구체화된 뷰를 삭제했습니다."
-msgstr ""
-
-#: materializedviews.finished.encrypt
-msgid "통합 문서 ''{0}''에 대한 구체화된 뷰의 암호화를 마쳤습니다."
-msgstr ""
-
-#: materializedviews.finished.decrypt
-msgid "통합 문서 ''{0}''에 대한 구체화된 뷰의 암호 해독을 마쳤습니다."
-msgstr ""
-
-#: materializedviews.finished.rekey
-msgid "통합 문서 ''{0}''에 대한 구체화된 뷰의 재암호화를 마쳤습니다."
-msgstr ""
-
-#: materializedviews.status.encryption_key
-msgctxt "materializedviews.status.encryption_key"
-msgid "암호화 키 ID: ''{0}''."
-msgstr ""
-
-#: materializedviews.status.encryption_keys
-msgctxt "materializedviews.status.encryption_keys"
-msgid "이전 암호화 키 ID: ''{0}'', 새 암호화 키 ID: ''{1}''."
-msgstr ""
-
-#: materializedviews.status.encryption_type
-msgid "암호화 데이터 원본 유형: ''{0}''"
-msgstr ""
-
-#: customizedviews.namedSharingPrefix
-msgid "공유 버전"
-msgstr ""
-
-#: flows.drafts.default_name
-msgid "새 흐름"
-msgstr ""
-
-#: content_type.project
-msgid "프로젝트"
-msgstr ""
-
-#: content_type.workbook
-msgctxt "content_type.workbook"
-msgid "통합 문서"
-msgstr ""
-
-#: content_type.view
-msgctxt "content_type.view"
-msgid "뷰"
-msgstr ""
-
-#: content_type.datasource
-msgid "데이터 원본"
-msgstr ""
-
-#: content_type.flow
-msgid "흐름"
-msgstr ""
-
-#: content_type.metric
-msgid "메트릭"
-msgstr ""
-
-#: content_type.collection
-msgid "모음"
-msgstr ""
-
-#: content_type.visualization
-msgid "비주얼리제이션"
-msgstr ""
-
-#: content_type.askdata_visualization
-msgid "데이터에 질문 비주얼리제이션"
-msgstr ""
-
-#: content_type.explaindata_explanation
-msgid "설명"
-msgstr ""
-
-#: content_type.publishedconnection
-msgid "가상 연결"
-msgstr ""
-
-#: content_type.publishedconnectiontable
-msgid "가상 연결 테이블"
-msgstr ""
-
-#: upgradethumbnails.status.server_started
-msgid "서버 응답: 축소판 업그레이드가 시작되었습니다!"
-msgstr ""
-
-#: upgradethumbnails.status.server_stopped
-msgid "서버 응답: %d개 작업이 중지되었습니다."
-msgstr ""
-
-#: dataquality.message.refresh_failed
-msgid "새로 고침 실패: {0}"
-msgstr ""
-
-#: dataquality.message.last_successful
-msgid "마지막 성공: {0}"
-msgstr ""
-
-#: dataquality.message.next_scheduled
-msgid "다음 예약: {0}"
-msgstr ""
-
-#: dataquality.message.flow_run_output_steps_failed
-msgid "{0}/{1}개의 출력 단계를 실행하지 못함"
-msgstr ""
-
-#: importcsvsummary.error.details
-msgid "오류 세부 정보:"
-msgstr ""
-
-#: importcsvsummary.remainingerrors
-msgid "(나머지 오류는 표시되지 않음)"
-msgstr ""
-
-#: importcsvsummary.error.line
-msgid "''{1}'' 사용자의 라인 {0}: ''{2}''"
-msgstr ""
-
-#: importcsvsummary.line.processed
-msgid "처리한 라인 수: {0}"
-msgstr ""
-
-#: importcsvsummary.line.skipped
-msgid "건너뛴 라인 수: {0}"
-msgstr ""
-
-#: importcsvsummary.users.added.count
-msgid "추가된 사용자 수: {0}"
-msgstr ""
-
-#: importcsvsummary.errors.count
-msgid "오류 수: {0}"
-msgstr ""
-
-#: importcsvsummary.error.unexpected_extension
-msgid "CSV 파일의 예기치 않은 파일 확장명"
-msgstr ""
-
-#: importcsvsummary.error.size_limit
-msgid "CSV 파일이 크기 제한({0})을 초과함"
-msgstr ""
-
-#: importcsvsummary.error.local.password_mismatch
-msgid "로컬 사이트 사용자를 업데이트하려면 비밀번호가 비어 있거나 일치해야 함"
-msgstr ""
-
-#: importcsvsummary.error.local.password_required
-msgid "인증 방식이 로컬인 경우 로컬 시스템 사용자를 만들려면 비밀번호가 필요함"
-msgstr ""
-
-#: importcsvsummary.error.ad.user_not_found
-msgid "AD 사용자 ''{0}''을(를) 찾을 수 없음"
-msgstr ""
-
-#: importcsvsummary.error.too_many_errors
-msgid "CSV 파일에 너무 많은 오류 발생"
-msgstr ""
-
-#: audit.errors.wdc_not_allowlisted
-msgid ""
-"웹 데이터 커넥터가 허용 목록에 없습니다. 도움이 필요하면 다음을 "
-"참조하십시오. https://help.tableau.com/current/online/ko-kr/"
-"to_keep_data_fresh.htm"
-msgstr ""
-
-#: user.input.name.err.too_long
-msgid "이름이 최대 문자 수({0}자)보다 깁니다."
-msgstr ""
-
-#: user.input.name.err.empty
-msgid "이름은 비워 둘 수 없습니다."
-msgstr ""
-
-#: askdata.title
-msgid "데이터에 질문"
-msgstr ""
-
-#: slack.app.upgrade.email.notification.subject
-msgid "Slack용 Tableau 앱 업데이트"
-msgstr ""
-
-#: slack.app.upgrade.email.notification.introduction
-msgid ""
-"Slack용 Tableau 앱에 대한 업데이트를 사용할 수 있으며 다음번 Tableau Online "
-"릴리스와 작동할 수 있도록 지금 다시 설치할 수 있습니다. Tableau는 앱 성능을 "
-"유지하고 새로운 기능을 사용하기 위해 앱을 다시 설치할 것을 권장합니다. "
-"새로운 기능 및 변경된 기능은 <a style=\"text-decoration: none; color: "
-"#E8762C;\" href=\"https://help.tableau.com/current/online/ko-kr/"
-"whatsnew_online.htm#tableau-slack\">Tableau Online의 새로운 기능</a>을 "
-"참조하십시오."
-msgstr ""
-
-#: slack.app.upgrade.email.notification.action
-msgid ""
-"업데이트 단계 및 다시 설치 단계는 <a style=\"text-decoration: none; color: "
-"#E8762C;\" href=\"https://help.tableau.com/current/online/ko-kr/slack_admin."
-"htm#update\">Slack용 Tableau 앱 업데이트</a>를 참조하십시오. 여러 Tableau "
-"Online 사이트가 있는 경우 각 사이트에 앱을 다시 설치하십시오."
-msgstr ""
-
-#: slack.app.upgrade.email.notification.steps
-msgid "이 서비스 알림은 Tableau Online에서 게시했습니다."
-msgstr ""
-
-#: slack.app.upgrade.email.notification.reason
-msgid "Slack에 연결된 Tableau Online 사이트의 관리자이기 때문에 본 알림이 귀하에게 "
-"발송되었습니다."
-msgstr ""
-
-#: slack.app.upgrade.email.notification.footer.privacy
-msgid ""
-"<a style=\"text-decoration: none; color: #E8762C;\" href=\"http://www.tableau"
-".com/ko-kr/privacy\">개인정보 취급방침</a> 읽기"
-msgstr ""
-
-#: unifiedconsumption.tcrm.folders.private
-msgid "내 비공개 앱"
-msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=utf-8"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: None"
+"Language: ko"
+#:
+msgid "permissions.labels.capabilities.read"
+msgstr "보기:"
+
+#:
+msgid "permissions.labels.capabilities.write"
+msgstr "덮어쓰기:"
+
+#:
+msgid "permissions.labels.capabilities.write.legacy"
+msgstr "저장:"
+
+#:
+msgid "permissions.labels.capabilities.delete"
+msgstr "삭제:"
+
+#:
+msgid "permissions.labels.capabilities.filter"
+msgstr "필터:"
+
+#:
+msgid "permissions.labels.capabilities.add_tag"
+msgstr "태그 추가:"
+
+#:
+msgid "permissions.labels.capabilities.add_favorite"
+msgstr "즐겨찾기 추가:"
+
+#:
+msgid "permissions.labels.capabilities.add_comment"
+msgstr "댓글 추가:"
+
+#:
+msgid "permissions.labels.capabilities.add_comment.legacy"
+msgstr "댓글 추가:"
+
+#:
+msgid "permissions.labels.capabilities.view_comments"
+msgstr "댓글 보기:"
+
+#:
+msgid "permissions.labels.capabilities.vud"
+msgstr "전체 데이터 다운로드:"
+
+#:
+msgid "permissions.labels.capabilities.export_image"
+msgstr "이미지/PDF 다운로드:"
+
+#:
+msgid "permissions.labels.capabilities.export_data"
+msgstr "요약 데이터 다운로드:"
+
+#:
+msgid "permissions.labels.capabilities.export_xml"
+msgstr "복사본 다운로드/저장:"
+
+#:
+msgid "permissions.labels.capabilities.export_xml.legacy"
+msgstr "다른 이름으로 다운로드/저장:"
+
+#:
+msgid "permissions.labels.capabilities.save_customized_view"
+msgstr "사용자 지정 뷰 저장:"
+
+#:
+msgid "permissions.labels.capabilities.share_view"
+msgstr "사용자 지정 항목 공유:"
+
+#:
+msgid "permissions.labels.capabilities.stateful_url"
+msgstr "고정 링크:"
+
+#:
+msgid "permissions.labels.capabilities.change_hierarchy"
+msgstr "이동:"
+
+#:
+msgid "permissions.labels.capabilities.change_permissions"
+msgstr "사용 권한 설정:"
+
+#:
+msgid "permissions.labels.capabilities.exclude"
+msgstr "제외:"
+
+#:
+msgid "permissions.labels.capabilities.keep_only"
+msgstr "이 항목만 유지:"
+
+#:
+msgid "permissions.labels.capabilities.select"
+msgstr "마크 선택:"
+
+#:
+msgid "permissions.labels.capabilities.tooltip"
+msgstr "도구 설명 보기:"
+
+#:
+msgid "permissions.labels.capabilities.highlight"
+msgstr "범례 하이라이트:"
+
+#:
+msgid "permissions.labels.capabilities.url_link"
+msgstr "외부 URL로 연결되는 링크:"
+
+#:
+msgid "permissions.labels.capabilities.administrator"
+msgstr "관리자:"
+
+#:
+msgid "permissions.labels.capabilities.content_admin"
+msgstr "콘텐츠 관리자:"
+
+#:
+msgid "permissions.labels.capabilities.create_groups"
+msgstr "그룹 만들기:"
+
+#:
+msgid "permissions.labels.capabilities.rename"
+msgstr "이름 바꾸기:"
+
+#:
+msgid "permissions.labels.capabilities.transfer_ownership"
+msgstr "소유권 이전:"
+
+#:
+msgid "permissions.labels.capabilities.project_leader"
+msgstr "프로젝트 리더:"
+
+#:
+msgid "permissions.labels.capabilities.publish"
+msgstr "게시:"
+
+#:
+msgid "permissions.labels.capabilities.connect"
+msgstr "연결:"
+
+#:
+msgid "permissions.labels.capabilities.draw"
+msgstr "그리기:"
+
+#:
+msgid "permissions.labels.capabilities.web_authoring"
+msgstr "웹 편집:"
+
+#:
+msgid "permissions.labels.capabilities.xml_save_as"
+msgstr "다른 이름으로 저장:"
+
+#:
+msgid "permissions.labels.capabilities.create_refresh_metrics"
+msgstr "메트릭 만들기/새로 고침:"
+
+#:
+msgid "permissions.labels.capabilities.explain_data"
+msgstr "데이터 설명 실행:"
+
+#:
+msgid "permissions.labels.roles.wb_view"
+msgstr "보기"
+
+#:
+msgid "permissions.labels.roles.wb_explore"
+msgstr "탐색"
+
+#:
+msgid "permissions.labels.roles.wb_publish"
+msgstr "게시"
+
+#:
+msgid "permissions.labels.roles.wb_administer"
+msgstr "관리"
+
+#:
+msgid "permissions.labels.roles.ds_view"
+msgstr "보기"
+
+#:
+msgid "permissions.labels.roles.ds_explore"
+msgstr "탐색"
+
+#:
+msgid "permissions.labels.roles.ds_publish"
+msgstr "게시"
+
+#:
+msgid "permissions.labels.roles.ds_administer"
+msgstr "관리"
+
+#:
+msgid "permissions.labels.roles.viewer"
+msgstr "Viewer"
+
+#:
+msgid "permissions.labels.roles.interactor"
+msgstr "인터랙터"
+
+#:
+msgid "permissions.labels.roles.editor"
+msgstr "에디터"
+
+#:
+msgid "permissions.labels.roles.ds_connector"
+msgstr "데이터 원본 커넥터"
+
+#:
+msgid "permissions.labels.roles.ds_editor"
+msgstr "데이터 원본 에디터"
+
+#:
+msgid "permissions.labels.roles.administrator"
+msgstr "관리자"
+
+#:
+msgid "permissions.labels.roles.project_leader"
+msgstr "프로젝트 리더"
+
+#:
+msgid "permissions.labels.roles.publisher"
+msgstr "게시자"
+
+#:
+msgid "permissions.labels.roles.custom"
+msgstr "사용자 지정"
+
+#:
+msgid "permissions.labels.roles.none"
+msgstr "없음"
+
+#:
+msgid "formats.messages.disk_space.in_mb"
+msgstr "{0}MB"
+
+#:
+msgid "formats.messages.disk_space.in_kb"
+msgstr "{0}KB"
+
+#:
+msgid "errors.argument.flow_description.too_long"
+msgstr "흐름 설명이 너무 깁니다({0}자). {1}자보다 짧아야 합니다.{2}"
+
+#:
+msgid "errors.argument.workbook_name.too_long"
+msgstr "통합 문서 이름이 너무 깁니다({0}자).  {1}자보다 짧아야 합니다.{2}"
+
+#:
+msgid "errors.argument.workbook_name.empty"
+msgstr "통합 문서 이름이 비어 있습니다."
+
+#:
+msgid "errors.argument.workbook_description.too_long"
+msgstr "통합 문서 설명이 너무 깁니다({0}자). {1}자보다 짧아야 합니다.{2}"
+
+#:
+msgid "errors.argument.worksheet_name.too_long"
+msgstr "워크시트 이름이 너무 깁니다({0}자). {1}자보다 짧아야 합니다.{2}"
+
+#:
+msgid "errors.argument.datasource_name.too_long"
+msgstr "데이터 원본 이름이 너무 깁니다({0}자). {1}자보다 짧아야 합니다.{2}"
+
+#:
+msgid "errors.argument.datasource_name.empty"
+msgstr "데이터 원본이 비어 있습니다."
+
+#:
+msgid "errors.argument.datasource_description.too_long"
+msgstr "데이터 원본 설명이 너무 깁니다({0}자). {1}자보다 짧아야 합니다.{2}"
+
+#:
+msgid "errors.argument.dataconnection_column.too_long"
+msgstr "DataConnection column {0} is too long ({1} characters).  It must be shorter than {2} characters:{3}"
+
+#:
+msgid "errors.argument.tag.too_long"
+msgstr "태그가 너무 깁니다({0}자). {1}자보다 짧아야 합니다.{2}"
+
+#:
+msgid "errors.argument.workbook_file.missing_or_empty"
+msgstr "통합 문서 파일이 없거나 비어 있습니다."
+
+#:
+msgid "errors.argument.internal"
+msgstr "내부 서버 오류입니다.  인수가 없거나 잘못되었습니다."
+
+#:
+msgid "errors.argument.thumbnail.invalid_format"
+msgstr "통합 문서 축소판 형식이 잘못되었습니다. 해상도가 300x300 이하인 PNG여야 합니다."
+
+#:
+msgid "errors.html_403.disabled_resource.workbook"
+msgstr "죄송합니다. 해당 통합 문서는 사용할 수 없습니다.  관리자에게 문의하십시오."
+
+#:
+msgid "errors.html_404.missing_or_unauthorized_resource.project"
+msgstr "죄송합니다. 찾는 프로젝트가 없거나 해당 프로젝트를 볼 수 있는 사용 권한이 없습니다."
+
+#:
+msgid "errors.html_404.missing_or_unauthorized_resource.personal_space"
+msgstr "죄송합니다. 찾는 개인 공간이 없거나 해당 공간을 볼 수 있는 사용 권한이 없습니다."
+
+#:
+msgid "errors.html_404.missing_or_unauthorized_resource.datasource"
+msgstr "죄송합니다. 찾는 데이터 원본이 없습니다."
+
+#:
+msgid "errors.labels.formatted_request_id"
+msgstr "요청 ID: {0}"
+
+#:
+msgid "errors.links.delete_datasources"
+msgstr "데이터 원본 삭제"
+
+#:
+msgid "errors.links.delete_workbooks"
+msgstr "통합 문서 삭제"
+
+#:
+msgid "errors.permissions.publish.datasource.licensing"
+msgstr "데이터 원본을 게시하려면 ''인터랙터''여야 합니다."
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite"
+msgstr "이름이 "{0}"인 데이터 원본이 프로젝트 "{1}"에 이미 있습니다. 덮어쓸 사용 권한이 없습니다."
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite_personal_space"
+msgstr "이름이 "{0}"인 데이터 원본이 개인 공간에 이미 있습니다. 덮어쓸 사용 권한이 없습니다."
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite_short"
+msgstr "이름이 "{0}"인 데이터 원본이 프로젝트 "{1}"에 이미 있습니다."
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
+msgstr "이름이 "{0}"인 데이터 원본이 개인 공간에 이미 있습니다.""
+
+#:
+msgid "errors.permissions.publish.datasource.non_existent"
+msgstr "데이터 원본 "{0}"이(가) 없습니다."
+
+#:
+msgid "errors.permissions.publish.datasource.general"
+msgstr "죄송합니다. 이 데이터 원본을 게시할 수 있는 사용 권한이 없습니다."
+
+#:
+msgid "errors.permissions.publish.project.explicit_publisher_detail"
+msgstr "게시 권한이 없습니다."
+
+#:
+msgid "errors.permissions.publish.project.general"
+msgstr "죄송합니다. 이 프로젝트에 게시할 수 있는 사용 권한이 없습니다."
+
+#:
+msgid "errors.permissions.publish.project.non_existent"
+msgstr ""{0}" 프로젝트가 없습니다."
+
+#:
+msgid "errors.permissions.publish.project.not_writable"
+msgstr ""{0}" 프로젝트에 쓸 수 있는 사용 권한이 없습니다."
+
+#:
+msgid "errors.permissions.publish.project.unspecified"
+msgstr "프로젝트를 지정해야 합니다."
+
+#:
+msgid "errors.permissions.publish.workbook.disabled"
+msgstr ""{0}" 통합 문서를 사용할 수 없습니다."
+
+#:
+msgid "errors.permissions.publish.workbook.general"
+msgstr "게시하려는 프로젝트에 이 이름의 통합 문서가 존재합니다. 게시하려면 통합 문서의 이름을 바꾸십시오."
+
+#:
+msgid "errors.permissions.publish.workbook.general_personal_space"
+msgstr "게시하려는 개인 공간에 이 이름의 통합 문서가 존재합니다. 게시하려면 통합 문서의 이름을 바꾸십시오."
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite"
+msgstr "이름이 "{0}"인 통합 문서가 프로젝트 "{1}"에 이미 있습니다. 덮어쓸 사용 권한이 없습니다."
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite_personal_space"
+msgstr "이름이 "{0}"인 통합 문서가 개인 공간에 이미 있습니다. 덮어쓸 사용 권한이 없습니다."
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite_short"
+msgstr "이름이 "{0}"인 통합 문서가 프로젝트 "{1}"에 이미 있습니다."
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
+msgstr "이름이 "{0}"인 통합 문서가 개인 공간에 이미 있습니다."
+
+#:
+msgid "errors.reportable.impersonation.group_and_user"
+msgstr "''impersonate_username'' 또는 ''impersonate_groupname'' 중 하나만 지정합니다."
+
+#:
+msgid "errors.reportable.impersonation.user_not_found"
+msgstr "''{0}'' 사용자가 없습니다."
+
+#:
+msgid "errors.reportable.impersonation.group_not_found"
+msgstr "''{0}'' 그룹이 없습니다. "
+
+#:
+msgid "errors.public.validation.hasextract"
+msgstr "Tableau Public에 저장된 통합 문서는 활성 Tableau 추출을 사용해야 합니다. 게시하기 전에 데이터 원본을 마우스 오른쪽 단추로 클릭하여 [추출 사용]을 선택합니다. 데이터 원본 ''{0}''이(가) 활성 추출이 아닙니다."
+
+#:
+msgid "errors.publish.dataserver_datasource_not_found"
+msgstr "''{0}'' 데이터 원본이 ''{1}'' 통합 문서에 없습니다."
+
+#:
+msgid "errors.publish.datasource_update_mode"
+msgstr "알 수 없는 업데이트 모드: ''{0}''."
+
+#:
+msgid "errors.publish.workbook.concurrent_update"
+msgstr "동일한 이름의 통합 문서가 현재 게시 또는 수정되고 있습니다. 작업이 완료될 때까지 기다린 후 다시 시도해 주십시오."
+
+#:
+msgid "errors.publish.workbook.restricted"
+msgstr "통합 문서에 이 서버에 허용되지 않는 연결 유형이 있습니다."
+
+#:
+msgid "errors.publish.datasource.concurrent_update"
+msgstr "동일한 이름의 데이터 원본이 현재 게시 또는 수정되고 있습니다. 작업이 완료될 때까지 기다린 후 다시 시도해 주십시오."
+
+#:
+msgid "errors.publish.datasource.restricted"
+msgstr "데이터 원본에 이 서버에 허용되지 않는 연결 유형이 있습니다."
+
+#:
+msgid "errors.publish.datasource.connection_check"
+msgstr "{0}에서 데이터 원본에 대한 연결을 설정하지 못했습니다."
+
+#:
+msgid "errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption"
+msgstr "암호화된 추출을 사용하여 통합 문서를 게시할 수 없습니다. 사이트 관리자가 이 사이트에서 추출 암호화를 사용하지 않도록 설정했습니다. 암호화되지 않은 추출을 사용하여 통합 문서를 게시해야 합니다."
+
+#:
+msgid "errors.publish.datasource.requested_extract_encryption_on_site_with_disabled_encryption"
+msgstr "데이터 원본을 암호화된 추출로 게시할 수 없습니다. 사이트 관리자가 이 사이트에서 추출 암호화를 사용하지 않도록 설정했습니다. 암호화되지 않은 추출을 게시해야 합니다."
+
+#:
+msgid "errors.publish.workbook.requested_no_extract_encryption_on_site_with_enforced_encryption"
+msgstr "암호화되지 않은 추출을 사용하여 통합 문서를 게시할 수 없습니다. 사이트 관리자가 이 사이트에 추출 암호화를 적용했습니다. 통합 문서를 게시하고 추출 암호화를 지정해야 합니다."
+
+#:
+msgid "errors.publish.datasource.requested_no_extract_encryption_on_site_with_enforced_encryption"
+msgstr "암호화되지 않은 데이터 원본 추출을 게시할 수 없습니다. 사이트 관리자가 이 사이트에 추출 암호화를 적용했습니다. 추출을 암호화된 상태로 게시해야 합니다."
+
+#:
+msgid "errors.publish.has_unfinished_extract_creation_job"
+msgstr "이 리소스는 보류 중이거나 완료되지 않은 추출 만들기 작업이 관련되어 있기 때문에 게시할 수 없습니다. 해당 작업이 완료될 때까지 기다리거나 작업을 취소한 후 다시 시도하십시오."
+
+#:
+msgid "errors.publishing.storage_quota_exceeded.message"
+msgstr "사이트 저장소 할당량이 초과되었습니다."
+
+#:
+msgid "errors.publishing.request_size_exceeded"
+msgstr "요청 크기({0}바이트)가 바이트 크기 제한({1}바이트)을 초과하므로 이 파일을 게시할 수 없습니다."
+
+#:
+msgid "errors.publishing.request_size_unknown"
+msgstr "요청 크기를 확인할 수 없습니다."
+
+#:
+msgid "errors.site.quota_exceeded"
+msgstr "업로드하려는 콘텐츠 크기가 사이트 용량보다 {0}만큼 큽니다."
+
+#:
+msgid "errors.personal_space.quota_exceeded"
+msgstr "이 콘텐츠는 개인 공간 용량을 {0}만큼 초과합니다."
+
+#:
+msgid "errors.web_authoring.workbook_deleted"
+msgstr "''{0}'' 통합 문서가 삭제되었습니다.  새 통합 문서로 저장하려면 ''다른 이름으로 저장''을 선택하십시오."
+
+#:
+msgid "errors.web_authoring.workbook_changed"
+msgstr "편집을 시작한 이후 다른 사용자가 이 통합 문서를 편집하고 저장했습니다. 따라서 더 이상 원본 통합 문서를 업데이트할 수 없습니다. [다른 이름으로 저장]을 사용하여 변경 내용을 포함한 새 통합 문서를 만드십시오."
+
+#:
+msgid "labels.publish.embed_credentials"
+msgstr "데이터 원본에 대한 비밀번호 내장"
+
+#:
+msgid "errors.publish.workbook.google_no_embedded_credentials"
+msgstr "이 통합 문서에는 내장된 자격 증명이 필요한 {0} 데이터 원본이 포함되어 있습니다. 다른 통합 문서로 저장하려면 ''{1}''을(를) 선택하십시오."
+
+#:
+msgid "errors.publish.datasource.google_no_embedded_credentials"
+msgstr "이 데이터 원본에는 내장된 자격 증명이 필요한 {0} 연결이 포함되어 있습니다. 내장된 자격 증명을 사용하여 Tableau Desktop에서 이 데이터 원본을 게시하십시오."
+
+#:
+msgid "errors.publish.datasource.federated_oauth_datasource_failed"
+msgstr "데이터 원본에 있는 하나 이상의 연결에 대한 자격 증명이 만료되었습니다. Tableau Server 또는 Tableau Online의 계정 설정 페이지에서 이 데이터 원본에 대해 저장된 자격 증명을 삭제한 다음 데이터 원본에 다시 연결하십시오."
+
+#:
+msgid "errors.publish.workbook.missing_oauth_credential"
+msgstr "자격 증명 ''{0}''을(를) 찾을 수 없거나 데이터 원본 또는 통합 문서에 연결하는 데 사용할 수 없습니다."
+
+#:
+msgid "errors.publish.version_incompatible.message"
+msgstr "데스크톱 버전과 서버 버전이 호환되지 않습니다."
+
+#:
+msgid "errors.publish.version_incompatible.details"
+msgstr "데스크톱 버전은 ''{0}''이고 서버 문서 버전은 ''{1}''입니다."
+
+#:
+msgid "errors.publish.datasource.managed_keychain.unique_cv_suggestions"
+msgstr "충돌로 인해 게시하지 못했습니다. 변경 내용을 다시 실행 의뢰하십시오."
+
+#:
+msgid "errors.publish.permissions_are_locked"
+msgstr "게시하려는 대상 프로젝트에서 사용 권한이 잠겨 있습니다. 이 통합 문서를 게시하려면 기본 사용 권한을 사용하여 다시 시도하십시오."
+
+#:
+msgid "errors.publish.datasource.not.found"
+msgstr "서버에서 이 데이터 원본을 찾을 수 없습니다."
+
+#:
+msgid "errors.publish.extracts.disabled"
+msgstr "추출 기반 아카이브 데이터 원본을 저장하는 기능은 아직 지원되지 않습니다."
+
+#:
+msgid "errors.publish.datasource.timeout"
+msgstr "{0}초 후 게시 시간이 초과되었습니다. 이 데이터 원본을 게시하려면 Tableau Desktop을 사용하십시오."
+
+#:
+msgid "errors.publish.data_role.permission_not_null"
+msgstr "데이터 역할 유형의 데이터 원본에 대한 명시적 사용 권한을 설정할 수 없습니다."
+
+#:
+msgid "errors.download.extracts.timeout"
+msgstr "이 데이터 원본에 대규모 추출 파일이 있어서 {0}초 후 게시 시간이 초과되었습니다. 이 데이터 원본을 게시하려면 Tableau Desktop을 사용하십시오."
+
+#:
+msgid "errors.publish.datasource.invalid_extract_update_time"
+msgstr "잘못된 extractUpdateTime이 지정됨: {0}"
+
+#:
+msgid "errors.publish.async.serialization"
+msgstr "게시 작업 상태 오류를 직렬화할 수 없습니다."
+
+#:
+msgid "errors.permissions.view.datasources"
+msgstr "데이터 원본의 목록을 보려면 ''인터랙터''여야 합니다."
+
+#:
+msgid "errors.oauth.invalid_oauth_class"
+msgstr "''{0}''은(는) 유효한 OAuth 연결 유형이 아닙니다."
+
+#:
+msgid "errors.xmlapi.bad_request"
+msgstr "잘못된 요청"
+
+#:
+msgid "errors.xmlapi.unauthorized"
+msgstr "권한 없음"
+
+#:
+msgid "errors.xmlapi.forbidden"
+msgstr "사용 권한 부족"
+
+#:
+msgid "errors.xmlapi.system_user_not_found"
+msgstr "사용자 계정이 잠겨 있거나 유효하지 않습니다."
+
+#:
+msgid "errors.xmlapi.site_user_not_found"
+msgstr "사용자 계정이 활성 상태가 아닙니다. 도움이 필요하면 {0} 관리자에게 문의하십시오."
+
+#:
+msgid "errors.xmlapi.not_found"
+msgstr "항목 찾을 수 없음"
+
+#:
+msgid "errors.xmlapi.concurrent_update"
+msgstr "동시 업데이트"
+
+#:
+msgid "errors.xmlapi.internal_server_error"
+msgstr "내부 서버 오류"
+
+#:
+msgid "errors.xmlapi.illegal_state"
+msgstr "잘못된 상태"
+
+#:
+msgid "errors.xmlapi.invalid_parameter"
+msgstr "잘못된 매개 변수"
+
+#:
+msgid "errors.xmlapi.already_exists"
+msgstr "이미 존재"
+
+#:
+msgid "errors.xmlapi.site_suspended"
+msgstr "이 사이트는 일시 중단되었습니다. 로그인하려면 시스템 관리자여야 합니다."
+
+#:
+msgid "errors.xmlapi.site_locked"
+msgstr "이 사이트는 잠겼습니다. 지금은 로그인할 수 없습니다."
+
+#:
+msgid "errors.xmlapi.permission_modification"
+msgstr "수정된 사용 권한을 사용하여 게시할 수 없습니다."
+
+#:
+msgid "errors.xmlapi.update_desktop"
+msgstr "다른 작성자가 만든 통합 문서를 열려면 http://public.tableau.com/에서 Tableau Desktop Public Edition의 최신 버전을 다운로드하십시오."
+
+#:
+msgid "errors.xmlapi.throttled.summary"
+msgstr "요청이 너무 많습니다."
+
+#:
+msgid "errors.xmlapi.throttled.detail"
+msgstr "''{0}''에 대한 요청이 너무 많습니다. {1} 후에 다시 시도하십시오."
+
+#:
+msgid "datasource.publish.check.unpublishable"
+msgstr "데이터 원본을 게시할 수 없습니다."
+
+#:
+msgid "datasource.publish.check.publishable.extract_required"
+msgstr "게시에 대한 추출을 만들어야 합니다."
+
+#:
+msgid "datasource.publish.check.publishable.credentials_required"
+msgstr "라이브 데이터 연결을 유지할 수 있는지 확인하기 위해 {1}에서 ''{0}''에 대해 제공된 자격 증명에 일시적으로 액세스합니다."
+
+#:
+msgid "datasource.publish.check.publishable.server_unreachable"
+msgstr "{1}에서 ''{0}''에 연결할 수 없습니다. 게시하면 추출이 만들어집니다."
+
+#:
+msgid "publish.bundles.workbook.subscription.subject"
+msgstr "{0} 통합 문서가 준비되었습니다."
+
+#:
+msgid "publish.bundles.workbook.subscription.message"
+msgstr "Salesforce 데이터가 통합 문서에 추가되었습니다. 시작하려면 {0} 프로젝트로 이동하십시오."
+
+#:
+msgid "extracts.status.finished.upload.workbook"
+msgstr "통합 문서 ''{1}'' {2}에 대한 추출 업로드를 완료했습니다(새 추출 ID: {0})."
+
+#:
+msgid "extracts.status.finished.refresh.workbook"
+msgstr "통합 문서 ''{1}'' {2}에 대한 추출 새로 고침을 완료했습니다(새 추출 ID: {0})"
+
+#:
+msgid "extracts.status.finished.increment.workbook"
+msgstr "통합 문서 ''{1}'' {2}에 대한 추출 증분을 완료했습니다(새 추출 ID: {0})"
+
+#:
+msgid "extracts.status.finished.encrypt.workbook"
+msgstr "통합 문서 ''{1}''에 대한 추출 암호화를 완료했습니다(새 추출 ID: {0})."
+
+#:
+msgid "extracts.status.finished.decrypt.workbook"
+msgstr "통합 문서 ''{1}''에 대한 추출 암호 해독을 완료했습니다(새 추출 ID: {0})."
+
+#:
+msgid "extracts.status.finished.rekey.workbook"
+msgstr "통합 문서 ''{1}''에 대한 추출 재암호화를 완료했습니다(새 추출 ID: {0})."
+
+#:
+msgid "extracts.status.finished.create.workbook"
+msgstr "통합 문서 ''{1}'' {2}에 대한 추출 생성을 마쳤습니다(새 추출 ID: {0})."
+
+#:
+msgid "extracts.status.finished.remove.workbook"
+msgstr "통합 문서 ''{1}''에 대한 추출(데이터 원본 ID: {0})을 라이브로 변경하는 작업을 완료했습니다."
+
+#:
+msgid "extracts.status.finished.upload.datasource"
+msgstr "데이터 원본 ''{1}'' {2}에 대한 추출 업로드를 완료했습니다(새 추출 ID: {0})"
+
+#:
+msgid "extracts.status.finished.refresh.datasource"
+msgstr "데이터 원본 ''{1}'' {2}에 대한 추출 새로 고침을 완료했습니다(새 추출 ID: {0})"
+
+#:
+msgid "extracts.status.finished.increment.datasource"
+msgstr "데이터 원본 ''{1}'' {2}에 대한 추출 증분을 완료했습니다(새 추출 ID: {0})"
+
+#:
+msgid "extracts.status.finished.append.datasource"
+msgstr "데이터 원본 ''{1}'' {2}에 대한 추출 추가를 완료했습니다(새 추출 ID: {0})"
+
+#:
+msgid "extracts.status.finished.replace.datasource"
+msgstr "데이터 원본 ''{1}'' {2}에 대한 추출 바꾸기를 완료했습니다(새 추출 ID: {0})"
+
+#:
+msgid "extracts.status.finished.encrypt.datasource"
+msgstr "데이터 원본 ''{1}''에 대한 추출 암호화를 완료했습니다(새 추출 ID: {0})."
+
+#:
+msgid "extracts.status.finished.decrypt.datasource"
+msgstr "데이터 원본 ''{1}''에 대한 추출 암호 해독을 완료했습니다(새 추출 ID: {0})."
+
+#:
+msgid "extracts.status.finished.rekey.datasource"
+msgstr "데이터 원본 ''{1}''에 대한 추출 재암호화를 완료했습니다(새 추출 ID: {0})."
+
+#:
+msgid "extracts.status.finished.encrypt.flow"
+msgstr "''{0}'' 흐름에 대한 추출 암호화를 완료했습니다."
+
+#:
+msgid "extracts.status.finished.decrypt.flow"
+msgstr "''{0}'' 흐름에 대한 추출 암호 해독을 완료했습니다."
+
+#:
+msgid "extracts.status.finished.rekey.flow"
+msgstr "''{0}'' 흐름에 대한 추출 재암호화를 완료했습니다."
+
+#:
+msgid "extracts.status.finished.encrypt.flowdraft"
+msgstr "흐름 초안 ''{0}''에 대한 추출 암호화를 완료했습니다."
+
+#:
+msgid "extracts.status.finished.decrypt.flowdraft"
+msgstr "흐름 초안 ''{0}''에 대한 추출 암호 해독을 완료했습니다."
+
+#:
+msgid "extracts.status.finished.rekey.flowdraft"
+msgstr "흐름 초안 ''{0}''에 대한 추출 재암호화를 완료했습니다."
+
+#:
+msgid "extracts.status.finished.create.datasource"
+msgstr "데이터 원본 ''{1}'' {2}에 대한 추출 생성을 마쳤습니다(새 추출 ID: {0})."
+
+#:
+msgid "extracts.status.finished.remove.datasource"
+msgstr "데이터 원본 ''{1}''에 대한 추출을 라이브로 변경하는 작업을 완료했습니다."
+
+#:
+msgid "extracts.status.encryption_key"
+msgstr "암호화 키 ID: ''{0}''."
+
+#:
+msgid "extracts.status.encryption_keys"
+msgstr "이전 암호화 키 ID: ''{0}'', 새 암호화 키 ID: ''{1}''."
+
+#:
+msgid "extracts.errors.upload"
+msgstr "{0}의 추출을 업로드하는 동안 오류 발생: ''{1}''"
+
+#:
+msgid "extracts.errors.refresh"
+msgstr "다음 추출을 새로 고치는 동안 오류 발생: {0} ''{1}''"
+
+#:
+msgid "extracts.errors.create"
+msgstr "{0} ''{1}''에 대한 추출을 만드는 동안 오류가 발생했습니다."
+
+#:
+msgid "extracts.errors.increment"
+msgstr "{0}의 추출을 증분하는 동안 오류 발생: ''{1}''"
+
+#:
+msgid "extracts.errors.append"
+msgstr "{0}의 추출을 추가하는 동안 오류 발생: ''{1}''"
+
+#:
+msgid "extracts.errors.replace"
+msgstr "{0}의 추출을 바꾸는 동안 오류 발생: ''{1}''"
+
+#:
+msgid "extracts.errors.download"
+msgstr "{0}의 추출을 다운로드하는 동안 오류 발생: ''{1}''"
+
+#:
+msgid "extracts.errors.remove"
+msgstr "{0}의 추출을 제거하는 동안 오류 발생: ''{1}''."
+
+#:
+msgid "extracts.errors.title"
+msgstr "추출 처리 오류"
+
+#:
+msgid "extracts.errors.nothing_to_upload"
+msgstr "{0}에 대해 업로드할 추출 없음: ''{1}''"
+
+#:
+msgid "extracts.errors.nothing_to_refresh"
+msgstr "{0}에 대해 새로 고칠 추출 없음: ''{1}''"
+
+#:
+msgid "extracts.errors.nothing_to_increment"
+msgstr "증분할 {0}의 추출 없음: ''{1}''"
+
+#:
+msgid "extracts.errors.nothing_to_append"
+msgstr "{0}에 대해 추가할 추출 없음: ''{1}''"
+
+#:
+msgid "extracts.errors.nothing_to_replace"
+msgstr "{0}에 대해 바꿀 추출 없음: ''{1}''"
+
+#:
+msgid "extracts.errors.refresh_summary"
+msgstr "추출 새로 고침 오류"
+
+#:
+msgid "extracts.errors.encrypt_summary"
+msgstr "추출 암호화 오류"
+
+#:
+msgid "extracts.errors.rekey_summary"
+msgstr "추출 재암호화 오류"
+
+#:
+msgid "extracts.errors.decrypt_summary"
+msgstr "추출 암호 해독 오류"
+
+#:
+msgid "extracts.errors.remove_summary"
+msgstr "추출 제거 오류"
+
+#:
+msgid "extracts.errors.create_summary"
+msgstr "추출 만들기 오류"
+
+#:
+msgid "extracts.errors.datasource_overwritten"
+msgstr "처리 중에 다른 작업에서 데이터 원본을 덮어썼기 때문에 새로 고침에 실패했습니다. 수정하려면 다시 새로 고침을 실행 의뢰하십시오."
+
+#:
+msgid "extracts.errors.workbook_overwritten"
+msgstr "처리 중에 다른 작업에서 통합 문서를 덮어썼기 때문에 새로 고치지 못했습니다. 수정하려면 다시 새로 고침을 실행 의뢰하십시오."
+
+#:
+msgid "extracts.errors.encrypt"
+msgstr "다음 추출을 암호화하는 동안 오류 발생: {0} ''{1}''"
+
+#:
+msgid "extracts.errors.decrypt"
+msgstr "다음 추출을 암호 해독하는 동안 오류 발생: {0} ''{1}''"
+
+#:
+msgid "extracts.errors.rekey"
+msgstr "다음 추출을 재암호화하는 동안 오류 발생: {0} ''{1}''"
+
+#:
+msgid "extracts.errors.encrypt_datasource_overwritten"
+msgstr "처리 중에 다른 작업에서 데이터 원본을 덮어썼기 때문에 추출 암호화가 실패했습니다."
+
+#:
+msgid "extracts.errors.encrypt_workbook_overwritten"
+msgstr "처리 중에 다른 작업에서 통합 문서를 덮어썼기 때문에 추출 암호화가 실패했습니다."
+
+#:
+msgid "extracts.errors.rekey_datasource_overwritten"
+msgstr "처리 중에 다른 작업에서 데이터 원본을 덮어썼기 때문에 추출 재암호화가 실패했습니다."
+
+#:
+msgid "extracts.errors.rekey_workbook_overwritten"
+msgstr "처리 중에 다른 작업에서 통합 문서를 덮어썼기 때문에 추출 재암호화가 실패했습니다."
+
+#:
+msgid "extracts.errors.decrypt_datasource_overwritten"
+msgstr "처리 중에 다른 작업에서 데이터 원본을 덮어썼기 때문에 추출 암호 해독이 실패했습니다."
+
+#:
+msgid "extracts.errors.decrypt_workbook_overwritten"
+msgstr "처리 중에 다른 작업에서 통합 문서를 덮어썼기 때문에 추출 암호 해독이 실패했습니다."
+
+#:
+msgid "extracts.errors.remove_datasource_overwritten"
+msgstr "다른 작업에 의해 덮어써진 데이터 원본은 라이브로 변경할 수 없습니다."
+
+#:
+msgid "extracts.errors.remove_workbook_overwritten"
+msgstr "다른 작업에 의해 덮어써진 통합 문서는 라이브로 변경할 수 없습니다."
+
+#:
+msgid "extracts.errors.create_datasource_overwritten"
+msgstr "다른 작업에 의해 덮어써진 데이터 원본은 추출할 수 없습니다."
+
+#:
+msgid "extracts.errors.create_workbook_overwritten"
+msgstr "다른 작업에 의해 덮어써진 통합 문서는 추출할 수 없습니다."
+
+#:
+msgid "extracts.site_mode_change_details"
+msgstr "사이트 추출 암호화 모드를 ''{0}''에서 ''{1}''(으)로 변경했습니다."
+
+#:
+msgid "extracts.errors.encryption_not_licensed"
+msgstr "이 작업은 추출 암호화에 대한 라이선스가 없기 때문에 실패했습니다. 이 작업을 수행하려면 라이선스를 갱신하거나 추출을 암호 해독해야 합니다."
+
+#:
+msgid "extracts.errors.operation_cancelled_detail"
+msgstr "{0}(데이터 원본: {2})에 대한 추출 제거 작업 시간이 초과되었습니다."
+
+#:
+msgid "workbooks.messages.load_error"
+msgstr "{0} 통합 문서를 로드할 수 없습니다."
+
+#:
+msgid "workbooks.messages.locked"
+msgstr "다른 사용자가 현재 ''{0}'' 통합 문서를 수정하고 있습니다.  나중에 다시 시도하십시오."
+
+#:
+msgid "workbooks.new_workbook.default_name"
+msgstr "새 통합 문서"
+
+#:
+msgid "workbooks.new_datasource.default_name"
+msgstr "새 데이터 원본"
+
+#:
+msgid "datasources.messages.load_error"
+msgstr "{0} 데이터 원본을 로드할 수 없습니다."
+
+#:
+msgid "metrics.new_metric.default_name"
+msgstr "새 메트릭"
+
+#:
+msgid "messages.timeout_error.summary"
+msgstr "시간 초과 오류"
+
+#:
+msgid "messages.timeout_error.task_canceled"
+msgstr "{0}초보다 오래 걸린 작업을 취소하는 중"
+
+#:
+msgid "subscriptions.manage_my_subscriptions"
+msgstr "내 구독 관리"
+
+#:
+msgid "subscriptions.message_greeting"
+msgstr "안녕하세요."
+
+#:
+msgid "subscriptions.subscribed_footer"
+msgstr "현재 구독하는 {0}입니다."
+
+#:
+msgid "subscriptions.subscribed_workbook"
+msgstr "통합 문서"
+
+#:
+msgid "subscriptions.subscribed_view"
+msgstr "뷰"
+
+#:
+msgid "subscriptions.fullstop"
+msgstr "."
+
+#:
+msgid "subscriptions.extract_refresh_footer"
+msgstr "데이터가 새로 고쳐지면 이 구독 이메일이 발송됩니다."
+
+#:
+msgid "subscriptions.explore_the_viz"
+msgstr "비주얼리제이션 탐색"
+
+#:
+msgid "subscriptions.explore_the_workbook"
+msgstr "통합 문서 탐색"
+
+#:
+msgid "subscriptions.pdf_attached"
+msgstr "Tableau PDF가 첨부되었습니다."
+
+#:
+msgid "subscriptions.access_live_content"
+msgstr "콘텐츠의 라이브 뷰를 여기서 액세스할 수 있습니다."
+
+#:
+msgid "subscriptions.warning_deprecated_type"
+msgstr "더 이상 사용되지 않음"
+
+#:
+msgid "subscriptions.warning_extract_refresh_type"
+msgstr "추출 새로 고침 실패"
+
+#:
+msgid "subscriptions.warning_flow_run_type"
+msgstr "흐름 실행 실패"
+
+#:
+msgid "subscriptions.warning_introduction_general"
+msgstr "다음 데이터 품질 경고가 이 {0}에 영향을 미칩니다."
+
+#:
+msgid "subscriptions.warning_introduction_view"
+msgstr "자세한 내용은 뷰의 데이터 세부 정보 탭을 참조하십시오."
+
+#:
+msgid "subscriptions.warning_introduction_workbook"
+msgstr "자세한 내용은 통합 문서 페이지를 참조하십시오."
+
+#:
+msgid "subscriptions.warning_maintenance_type"
+msgstr "유지 관리 중"
+
+#:
+msgid "subscriptions.warning_permission_error"
+msgstr "이는 보기 권한이 없는 자산에 대한 경고입니다."
+
+#:
+msgid "subscriptions.warning_redacted"
+msgstr "사용 권한 필요"
+
+#:
+msgid "subscriptions.warning_sensitve_type"
+msgstr "중요한 데이터"
+
+#:
+msgid "subscriptions.warning_severe"
+msgstr "중요 데이터 품질 경고"
+
+#:
+msgid "subscriptions.warning_stale_type"
+msgstr "오래된 데이터"
+
+#:
+msgid "subscriptions.warning_standard"
+msgstr "데이터 품질 경고"
+
+#:
+msgid "subscriptions.warning_error_type"
+msgstr "알 수 없는 경고 유형"
+
+#:
+msgid "subscriptions.warning_warning_type"
+msgstr "경고"
+
+#:
+msgid "errors.subscriptions.image_render_failed"
+msgstr "뷰 ''{0}''의 스냅샷을 적절하게 렌더링할 수 없습니다."
+
+#:
+msgid "errors.subscriptions.see_live_view"
+msgstr "온라인으로 뷰를 보려면 {0}(으)로 이동하십시오."
+
+#:
+msgid "errors.subscriptions.disabled_on_server"
+msgstr "서버 전체 구독 설정을 사용할 수 없습니다. 구독을 처리할 수 없습니다."
+
+#:
+msgid "errors.subscriptions.disabled_on_site"
+msgstr "사이트에서 구독을 사용할 수 없습니다."
+
+#:
+msgid "errors.subscriptions.site_is_locked"
+msgstr "사이트가 잠겨 있습니다. 구독을 처리할 수 없습니다."
+
+#:
+msgid "errors.subscriptions.orphan"
+msgstr "이 구독과 연관된 통합 문서 및 뷰를 찾을 수 없습니다."
+
+#:
+msgid "errors.subscriptions.user_unlicensed"
+msgstr "라이선스가 없는 사용자의 구독을 건너뜁니다."
+
+#:
+msgid "errors.subscriptions.smtp_unreacheable"
+msgstr "SMTP 호스트에 연결할 수 없습니다. SMTP가 구성되어 있는지 확인하십시오."
+
+#:
+msgid "errors.subscriptions.uncategorized_error"
+msgstr "알 수 없는 오류"
+
+#:
+msgid "errors.subscriptions.pdf_render_failed"
+msgstr "이 이메일의 PDF 첨부 파일을 적절하게 렌더링할 수 없습니다."
+
+#:
+msgid "errors.subscriptions.pdf_limit_exceeded"
+msgstr "생성된 PDF는 크기 제한인 {0}MB보다 커서 이 이메일에 첨부할 수 없습니다."
+
+#:
+msgid "errors.subscriptions.attachments_not_enabled"
+msgstr "이메일 첨부 파일이 사용되지 않도록 설정되어 있어서 이 구독이 실패했습니다. 자세한 내용은 Tableau 관리자에게 문의하십시오."
+
+#:
+msgid "errors.subscriptions.pdf_email_failed"
+msgstr "생성된 PDF는 이 이메일에 첨부할 수 없습니다."
+
+#:
+msgid "errors.subscriptions.learn_more_troubleshoot"
+msgstr "<a hre"
+
+#:
+msgid "errors.subscriptions.bad_extract_refresh_subscription_configuration"
+msgstr "통합 문서에 여러 추출 새로 고침 일정이 포함되어 있으므로 구독이 일시 중단되었습니다. 다시 시작하려면 빈도를 [선택된 일정에 따라]로 업데이트하십시오."
+
+#:
+msgid "errors.subscriptions.subscription_failed_refresh_failure"
+msgstr "데이터 원본의 추출 새로 고침이 실패했습니다."
+
+#:
+msgid "errors.subscriptions.multiple_extracts_for_extract_refresh_subscription"
+msgstr "통합 문서에 여러 추출 새로 고침 일정이 포함되어 있습니다. 빈도를 [선택된 일정에 따라]로 업데이트하십시오."
+
+#:
+msgid "errors.subscriptions.datasource_is_missing_password"
+msgstr "데이터 원본 연결 오류입니다. 통합 문서의 모든 데이터 원본 연결에서 자격 증명을 확인하십시오."
+
+#:
+msgid "subscriptions.results_summary.sg"
+msgstr "{0}/{1}개의 구독이 ''{2}'' 일정에서 전송되었습니다."
+
+#:
+msgid "subscriptions.results_summary.pl"
+msgstr "{0}/{1}개의 구독이 ''{2}'' 일정에서 전송되었습니다."
+
+#:
+msgid "subscriptions.results_views_per_subscription.sg"
+msgstr "{0}({1}/1회 뷰가 성공함)"
+
+#:
+msgid "subscriptions.results_views_per_subscription.pl"
+msgstr "{0}({1}/{2}회 뷰가 성공함)"
+
+#:
+msgid "subscriptions.results_views_per_subscription.more"
+msgstr "({0} 추가)"
+
+#:
+msgid "subscriptions.results_views_per_subscription.failed"
+msgstr "{0}({1}/{2}개 뷰가 실패함)."
+
+#:
+msgid "subscriptions.results_header.all_shown.failures.sg"
+msgstr "실패 1회"
+
+#:
+msgid "subscriptions.results_header.all_shown.failures.pl"
+msgstr "실패 {0}개"
+
+#:
+msgid "subscriptions.results_header.all_shown.warnings.sg"
+msgstr "경고 1개"
+
+#:
+msgid "subscriptions.results_header.all_shown.warnings.pl"
+msgstr "경고 {0}개"
+
+#:
+msgid "subscriptions.results_header.some_hidden.failures.pl.sg"
+msgstr "실패 {0}회(1회 숨겨짐, 로그 참조)"
+
+#:
+msgid "subscriptions.results_header.some_hidden.failures.pl.pl"
+msgstr "실패 {0}개({1}개 숨겨짐, 로그 참조)"
+
+#:
+msgid "subscriptions.results_header.some_hidden.warnings.pl.sg"
+msgstr "경고 {0}개(1개 숨겨짐, 로그 참조)"
+
+#:
+msgid "subscriptions.results_header.some_hidden.warnings.pl.pl"
+msgstr "경고 {0}개({1}개 숨겨짐, 로그 참조)"
+
+#:
+msgid "dataalerts.manage_my_data_alerts"
+msgstr "알림 관리"
+
+#:
+msgid "dataalerts.edit_data_alert"
+msgstr "알림 편집"
+
+#:
+msgid "dataalerts.remove_user_from_data_alert"
+msgstr "본인 제거"
+
+#:
+msgid "dataalerts.add_user_to_data_alert"
+msgstr "이 알림에 나를 추가"
+
+#:
+msgid "dataalerts.greater_or_equal"
+msgstr "{0}이(가) {1}보다 크거나 같습니다."
+
+#:
+msgid "dataalerts.greater"
+msgstr "{0}이(가) {1}보다 큽니다."
+
+#:
+msgid "dataalerts.less_or_equal"
+msgstr "{0}이(가) {1}보다 작거나 같습니다."
+
+#:
+msgid "dataalerts.less"
+msgstr "{0}이(가) {1}보다 작습니다."
+
+#:
+msgid "dataalerts.equal"
+msgstr "{0}이(가) {1}과(와) 같습니다."
+
+#:
+msgid "dataalerts.email_alt_text"
+msgstr "데이터 기반 알림에 사용된 보기: {0}"
+
+#:
+msgid "dataalerts.email_alt_text_hidden_view"
+msgstr "데이터 기반 알림에 사용된 보기: {0}에 변경 내용이 적용됨"
+
+#:
+msgid "dataalerts.alert_triggered_for_the_view"
+msgstr "뷰에 발생한 알림"
+
+#:
+msgid "dataalerts.failure.email.subject"
+msgstr "다음에 대한 데이터 기반 알림이 작동하지 않음: {0}"
+
+#:
+msgid "dataalerts.failure.status"
+msgstr "알림 <i>{0}</i>이(가) 작동하지 않음"
+
+#:
+msgid "dataalerts.failure.view.details.alert"
+msgstr "이 알림 보기"
+
+#:
+msgid "dataalerts.failure.explanation"
+msgstr "지금 데이터 기반 알림 <i>{0}</i>이(가) 작동하지 않기 때문에 데이터 조건을 충족하는 경우 수신자에게 알림이 전달되지 않습니다. 알림이 다시 작동하면 이메일 알림을 받을 수 있습니다."
+
+#:
+msgid "dataalerts.failure.affected.alert"
+msgstr "영향받는 데이터 기반 알림"
+
+#:
+msgid "dataalerts.failure.time"
+msgstr "일시적 알림 실패"
+
+#:
+msgid "dataalerts.failure.cause"
+msgstr "경우에 따라 일시적인 네트워크 문제로 인해 알림이 실패할 수 있으며, 이러한 문제는 자동적으로 해결됩니다. 원래 데이터 뷰에서 알림을 다시 만들거나 다음과 같은 알림 실패의 일반적인 원인을 찾아 해결할 수도 있습니다."
+
+#:
+msgid "dataalerts.failure.changed.view"
+msgstr "통합 문서, 뷰 또는 데이터 필드가 제거되거나 이름이 바뀌었습니다."
+
+#:
+msgid "dataalerts.failure.expired.credentials"
+msgstr "통합 문서에 내장된 데이터베이스 자격 증명이 만료되었습니다."
+
+#:
+msgid "dataalerts.failure.datasource.error"
+msgstr "데이터 원본에 액세스할 수 없습니다."
+
+#:
+msgid "dataalerts.failure.email.footer"
+msgstr "알림 실패로 인해 이 이메일이 {0} 주소로 발송되었습니다."
+
+#:
+msgid "dataalerts.failure.troubleshooting"
+msgstr "위에 나와 있는 문제 중 하나가 알림 실패의 원인인지 확인하려면 아래 단추를 클릭하십시오."
+
+#:
+msgid "dataalerts.success.email.subject"
+msgstr "다음에 대한 데이터 기반 알림이 다시 시작됨: {0}"
+
+#:
+msgid "dataalerts.success.status"
+msgstr "알림 <i>{0}</i>이(가) 다시 시작됨"
+
+#:
+msgid "dataalerts.success.explanation"
+msgstr "데이터 기반 알림(<i>{0}</i>)이 다시 작동하므로 데이터 조건이 true인 경우 수신자에게 알림이 전달됩니다."
+
+#:
+msgid "dataalerts.failure.error.internalError"
+msgstr "데이터 알림 내부 오류"
+
+#:
+msgid "dataalerts.failure.error.invalidDataAlertSpecification"
+msgstr "잘못된 데이터 알림 지정"
+
+#:
+msgid "dataalerts.failure.error.summaryTableNotFound"
+msgstr "요약 데이터 테이블을 찾을 수 없음"
+
+#:
+msgid "dataalerts.failure.error.unclassifiedError"
+msgstr "분류되지 않은 오류"
+
+#:
+msgid "dataalerts.failure.error.viewContentNotFound"
+msgstr "데이터 알림 뷰의 {0} 콘텐츠를 찾을 수 없음"
+
+#:
+msgid "dataalerts.failure.error.viewNotFound"
+msgstr "데이터 알림 뷰를 찾을 수 없음"
+
+#:
+msgid "dataalerts.failure.error.workbookNotFound"
+msgstr "통합 문서를 찾을 수 없음"
+
+#:
+msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
+msgstr "{0} 필드의 축을 찾을 수 없음"
+
+#:
+msgid "dataalerts.failure.error.paneDescriptorNotFound"
+msgstr "{0}"
+
+#:
+msgid "dataalerts.failure.error.unsupportedComparisonExpression"
+msgstr "지원되지 않는 비교 식 {0}"
+
+#:
+msgid "dataalerts.failure.error.nonConstComparisonOp"
+msgstr "비상수 비교 연산자가 검색됨: {0}"
+
+#:
+msgid "dataalerts.failure.error.cannotAddFilter"
+msgstr "데이터 알림에 필터를 추가하지 못함"
+
+#:
+msgid "dataalerts.failure.error.sheetNotAlertable"
+msgstr "{0} 시트는 알림 데이터를 지원합니다. {1}"
+
+#:
+msgid "dataalerts.failure.error.dataAlertMeasureNotFound"
+msgstr "측정값을 선택할 수 없습니다. {0}"
+
+#:
+msgid "dataalerts.failure.error.tooManyMeasuresForDataAlert"
+msgstr "잘못된 측정값 수가 검색되었습니다.{0}"
+
+#:
+msgid "dataalerts.failure.error.thresholdParseError"
+msgstr "임계값 텍스트 {0}을(를) 구문 분석하지 못했습니다. {1}"
+
+#:
+msgid "dataalerts.failure.error.dataAlertPresModelCreationError"
+msgstr "알림을 직렬화하는 동안 오류가 발생했습니다. {0}"
+
+#:
+msgid "dataalerts.failure.error.cannotDrawDataAlertDialog"
+msgstr "데이터 알림 대화 상자를 그리지 못했습니다."
+
+#:
+msgid "dataalerts.failure.error.unsupportedDataAlertType"
+msgstr "데이터 알림 유형 {0}은(는) 현재 지원되지 않습니다."
+
+#:
+msgid "dataalerts.failure.suspend.email.subject"
+msgstr "{0}에 대한 데이터 기반 알림 일시 중단됨"
+
+#:
+msgid "dataalerts.failure.suspend.email.status"
+msgstr "{0} 알림이 일시 중단되었습니다."
+
+#:
+msgid "dataalerts.failure.suspend.email.explanation"
+msgstr "일시 중단된 동안에는 뷰 또는 알림 수신자를 평가할 수 없습니다. 수정을 완료한 후 다음 위치에서 알림을 다시 시작할 수 있습니다. <a hre"
+
+#:
+msgid "dataalerts.failure.suspend.view.name.prefix"
+msgstr "뷰"
+
+#:
+msgid "dataalerts.failure.suspend.time"
+msgstr "일시 중단 시간"
+
+#:
+msgid "dataalerts.failure.suspend.email.footer"
+msgstr "사용자의 알림이 일시 중단되어서 이 이메일이 발송되었습니다."
+
+#:
+msgid "dataalerts.failure.suspend.email.view.name.my.content"
+msgstr "내 콘텐츠"
+
+#:
+msgid "dataalerts.failure.suspend.view.alerts"
+msgstr "알림 보기"
+
+#:
+msgid "metricsservices.failure.affected.metric"
+msgstr "영향받는 메트릭"
+
+#:
+msgid "metricsservices.failure.cause"
+msgstr "경우에 따라 일시적인 연결 문제로 인해 메트릭 새로 고침이 실패하며, 이러한 문제는 자동적으로 해결됩니다. 메트릭 새로 고침이 실패할 수 있는 다른 일반적인 이유에는 다음이 포함됩니다."
+
+#:
+msgid "metricsservices.failure.changed.view"
+msgstr "통합 문서, 뷰 또는 데이터 필드가 제거되거나 이름이 바뀜"
+
+#:
+msgid "metricsservices.failure.permissions.error"
+msgstr "연결된 뷰의 사용 권한 변경"
+
+#:
+msgid "metricsservices.failure.email.footer"
+msgstr "메트릭 새로 고침이 실패하여 {0} 주소로 이 이메일이 발송된 것입니다."
+
+#:
+msgid "metricsservices.failure.email.subject"
+msgstr "다음에 대한 메트릭 새로 고침이 작동하지 않음: {0}"
+
+#:
+msgid "metricsservices.failure.expired.credentials"
+msgstr "통합 문서에 내장된 데이터베이스 자격 증명이 만료되었습니다."
+
+#:
+msgid "metricsservices.failure.explanation"
+msgstr "메트릭을 새로 고칠 수 없기 때문에 메트릭 데이터가 업데이트되지 않습니다. 메트릭 새로 고침이 다시 작동하면 이메일 알림이 수신됩니다."
+
+#:
+msgid "metricsservices.failure.status"
+msgstr "메트릭 "{0}"이(가) 새로 고쳐지지 않습니다."
+
+#:
+msgid "metricsservices.failure.suspend.email.explanation"
+msgstr "메트릭 새로 고침이 일시 중단된 동안에는 메트릭 데이터가 업데이트되지 않습니다. 수정을 적용한 후 메트릭 새로 고침을 다시 시작할 수 있습니다."
+
+#:
+msgid "metricsservices.failure.suspend.email.footer"
+msgstr "메트릭 새로 고침이 일시 중단되어서 이 이메일이 {0} 주소로 발송되었습니다."
+
+#:
+msgid "metricsservices.failure.suspend.email.status"
+msgstr "메트릭 "{0}"에 대한 새로 고침이 일시 중단되었습니다."
+
+#:
+msgid "metricsservices.failure.suspend.email.subject"
+msgstr "{0}에 대한 메트릭 새로 고침 일시 중단됨"
+
+#:
+msgid "metricsservices.failure.suspend.time"
+msgstr "일시 중단 시간"
+
+#:
+msgid "metricsservices.failure.suspend.view.metric"
+msgstr "메트릭으로 이동"
+
+#:
+msgid "metricsservices.failure.suspend.view.name.prefix"
+msgstr "연결된 뷰"
+
+#:
+msgid "metricsservices.failure.time"
+msgstr "새로 고침 실패 시간"
+
+#:
+msgid "metricsservices.failure.troubleshooting"
+msgstr "위에 나와 있는 문제 중 하나가 메트릭 새로 고침 실패의 원인인지 확인하려면 아래 단추를 클릭하십시오. 연결된 뷰에서 메트릭을 다시 만들 수도 있습니다."
+
+#:
+msgid "metricsservices.failure.view.details.metric"
+msgstr "메트릭으로 이동"
+
+#:
+msgid "metricsservices.failure.view.name.prefix"
+msgstr "연결된 뷰"
+
+#:
+msgid "metricsservices.success.email.subject"
+msgstr "다음에 대한 메트릭 새로 고침이 다시 시작됨: {0}"
+
+#:
+msgid "metricsservices.success.explanation"
+msgstr "메트릭에 대한 새로 고침이 다시 작동하고 있으므로 메트릭 데이터의 업데이트가 있는지 확인됩니다."
+
+#:
+msgid "metricsservices.success.status"
+msgstr "메트릭 "{0}"에 대한 새로 고침이 다시 시작되었습니다."
+
+#:
+msgid "errors.staticimages.generic"
+msgstr "{0} 통합 문서에 대한 정적 이미지를 생성하는 동안 오류가 발생했습니다. {1}."
+
+#:
+msgid "errors.internal_error.request.message"
+msgstr "{0}이(가) 요청을 처리할 수 없습니다."
+
+#:
+msgid "errors.permissions.limited_user_visibility"
+msgstr "쿼리를 완료하는 중 오류가 발생했습니다. [사용자 표시 유형]이 [제한]으로 설정된 경우 다른 사용자를 쿼리하려면 관리자이거나 Creator여야 합니다."
+
+#:
+msgid "local_names.system_user.guest.name"
+msgstr "게스트"
+
+#:
+msgid "local_names.group.all_users.name"
+msgstr "모든 사용자"
+
+#:
+msgid "local_names.containers.personal_space.name"
+msgstr "개인 공간"
+
+#:
+msgid "password_reset.email.subject"
+msgstr "비밀번호를 재설정할 수 있는 링크입니다."
+
+#:
+msgid "password_reset.email.body"
+msgstr "{0} 님 안녕하세요.<br/><br/>방금, 비밀번호 재설정을 요청하셨습니다.<br/><br/> Tableau Server 비밀번호를 재설정하려면 {1}하거나 다음 링크를 브라우저에 붙여 넣으십시오. 링크: {2}<br/><br/>이 링크는 48시간 후 만료되오니 지금 바로 이용하시기 바랍니다.<br/><br/>비밀번호 재설정을 요청하지 않으신 경우 서버 관리자에게 해당 사실을 알리실 수도 있습니다.<br/><br/>Tableau를 사용해 주셔서 감사합니다!<br/>Tableau 팀 일동"
+
+#:
+msgid "password_reset.email.link"
+msgstr "여기를 클릭"
+
+#:
+msgid "hours.pl"
+msgstr "{0}시간"
+
+#:
+msgid "hours.sg"
+msgstr "1시간"
+
+#:
+msgid "minutes.pl"
+msgstr "{0}분"
+
+#:
+msgid "minutes.sg"
+msgstr "1분"
+
+#:
+msgid "seconds.pl"
+msgstr "{0}초"
+
+#:
+msgid "seconds.sg"
+msgstr "1초"
+
+#:
+msgid "dataconnections.classes.tableau_server_site"
+msgstr "Tableau Server 사이트"
+
+#:
+msgid "materializeviews.errors.workbook_not_in_project"
+msgstr "''{0}'' 프로젝트가 ''{1}'' 통합 문서를 포함하지 않습니다."
+
+#:
+msgid "materializeviews.errors.workbook_has_no_extract"
+msgstr "''{0}'' 통합 문서의 구체화된 뷰 설정을 업데이트하지 못했습니다. 현재 내장된 추출이 있는 통합 문서만 지원됩니다."
+
+#:
+msgid "materializeviews.errors.workbook_updating_errors"
+msgstr "통합 문서의 구체화된 뷰 설정을 업데이트하는 동안 오류가 발견되었습니다."
+
+#:
+msgid "materializeviews.errors.workbook_too_large"
+msgstr "''{0}'' 통합 문서의 구체화된 뷰 설정을 업데이트하지 못했습니다. 통합 문서 크기가 제한({1}GB)을 초과합니다."
+
+#:
+msgid "materializeviews.errors.project_path_not_exists"
+msgstr "프로젝트 경로 ''{0}''이(가) 없습니다."
+
+#:
+msgid "materializeviews.errors.feature_disabled"
+msgstr "''{0}'' 통합 문서의 구체화된 뷰 설정을 업데이트하지 못했습니다. 해당 기능이 현재 사용되지 않도록 설정되어 있습니다."
+
+#:
+msgid "materializeviews.errors.update_materialized_views_setting_failed"
+msgstr "''{0}'' 통합 문서의 구체화된 뷰 설정을 업데이트하지 못했습니다."
+
+#:
+msgid "materializeviews.errors.site_not_enabled"
+msgstr "이 사이트가 구체화된 뷰를 사용하도록 설정되지 않았습니다. 관리자에게 문의하십시오."
+
+#:
+msgid "materializeviews.errors.encrypted_extracts_not_supported"
+msgstr "구체화된 뷰 기능은 현재 암호화된 추출이 있는 통합 문서를 지원하지 않습니다."
+
+#:
+msgid "materializedviews.finished.create"
+msgstr "''{1}'' 통합 문서에 대한 ''{0}'' 상태의 구체화된 뷰를 만들었습니다."
+
+#:
+msgid "materializedviews.finished.delete"
+msgstr "통합 문서 ID: {0}에 대한 구체화된 뷰를 삭제했습니다."
+
+#:
+msgid "materializedviews.finished.encrypt"
+msgstr "통합 문서 ''{0}''에 대한 구체화된 뷰의 암호화를 마쳤습니다."
+
+#:
+msgid "materializedviews.finished.decrypt"
+msgstr "통합 문서 ''{0}''에 대한 구체화된 뷰의 암호 해독을 마쳤습니다."
+
+#:
+msgid "materializedviews.finished.rekey"
+msgstr "통합 문서 ''{0}''에 대한 구체화된 뷰의 재암호화를 마쳤습니다."
+
+#:
+msgid "materializedviews.status.encryption_key"
+msgstr "암호화 키 ID: ''{0}''."
+
+#:
+msgid "materializedviews.status.encryption_keys"
+msgstr "이전 암호화 키 ID: ''{0}'', 새 암호화 키 ID: ''{1}''."
+
+#:
+msgid "materializedviews.status.encryption_type"
+msgstr "암호화 데이터 원본 유형: ''{0}''"
+
+#:
+msgid "customizedviews.namedSharingPrefix"
+msgstr "공유 버전"
+
+#:
+msgid "flows.drafts.default_name"
+msgstr "새 흐름"
+
+#:
+msgid "content_type.project"
+msgstr "프로젝트"
+
+#:
+msgid "content_type.workbook"
+msgstr "통합 문서"
+
+#:
+msgid "content_type.view"
+msgstr "뷰"
+
+#:
+msgid "content_type.datasource"
+msgstr "데이터 원본"
+
+#:
+msgid "content_type.flow"
+msgstr "흐름"
+
+#:
+msgid "content_type.metric"
+msgstr "메트릭"
+
+#:
+msgid "content_type.collection"
+msgstr "모음"
+
+#:
+msgid "content_type.visualization"
+msgstr "비주얼리제이션"
+
+#:
+msgid "content_type.askdata_visualization"
+msgstr "데이터에 질문 비주얼리제이션"
+
+#:
+msgid "content_type.explaindata_explanation"
+msgstr "설명"
+
+#:
+msgid "content_type.publishedconnection"
+msgstr "가상 연결"
+
+#:
+msgid "content_type.publishedconnectiontable"
+msgstr "가상 연결 테이블"
+
+#:
+msgid "upgradethumbnails.status.server_started"
+msgstr "서버 응답: 축소판 업그레이드가 시작되었습니다!"
+
+#:
+msgid "upgradethumbnails.status.server_stopped"
+msgstr "서버 응답: %d개 작업이 중지되었습니다."
+
+#:
+msgid "dataquality.message.refresh_failed"
+msgstr "새로 고침 실패: {0}"
+
+#:
+msgid "dataquality.message.last_successful"
+msgstr "마지막 성공: {0}"
+
+#:
+msgid "dataquality.message.next_scheduled"
+msgstr "다음 예약: {0}"
+
+#:
+msgid "dataquality.message.flow_run_output_steps_failed"
+msgstr "{0}/{1}개의 출력 단계를 실행하지 못함"
+
+#:
+msgid "importcsvsummary.error.details"
+msgstr "오류 세부 정보:"
+
+#:
+msgid "importcsvsummary.remainingerrors"
+msgstr "(나머지 오류는 표시되지 않음)"
+
+#:
+msgid "importcsvsummary.error.line"
+msgstr "''{1}'' 사용자의 라인 {0}: ''{2}''"
+
+#:
+msgid "importcsvsummary.line.processed"
+msgstr "처리한 라인 수: {0}"
+
+#:
+msgid "importcsvsummary.line.skipped"
+msgstr "건너뛴 라인 수: {0}"
+
+#:
+msgid "importcsvsummary.users.added.count"
+msgstr "추가된 사용자 수: {0}"
+
+#:
+msgid "importcsvsummary.errors.count"
+msgstr "오류 수: {0}"
+
+#:
+msgid "importcsvsummary.error.unexpected_extension"
+msgstr "CSV 파일의 예기치 않은 파일 확장명"
+
+#:
+msgid "importcsvsummary.error.size_limit"
+msgstr "CSV 파일이 크기 제한({0})을 초과함"
+
+#:
+msgid "importcsvsummary.error.local.password_mismatch"
+msgstr "로컬 사이트 사용자를 업데이트하려면 비밀번호가 비어 있거나 일치해야 함"
+
+#:
+msgid "importcsvsummary.error.local.password_required"
+msgstr "인증 방식이 로컬인 경우 로컬 시스템 사용자를 만들려면 비밀번호가 필요함"
+
+#:
+msgid "importcsvsummary.error.ad.user_not_found"
+msgstr "AD 사용자 ''{0}''을(를) 찾을 수 없음"
+
+#:
+msgid "importcsvsummary.error.too_many_errors"
+msgstr "CSV 파일에 너무 많은 오류 발생"
+
+#:
+msgid "audit.errors.wdc_not_allowlisted"
+msgstr "웹 데이터 커넥터가 허용 목록에 없습니다. 도움이 필요하면 다음을 참조하십시오. https://help.tableau.com/current/online/ko-kr/to_keep_data_fresh.htm"
+
+#:
+msgid "user.input.name.err.too_long"
+msgstr "이름이 최대 문자 수({0}자)보다 깁니다."
+
+#:
+msgid "user.input.name.err.empty"
+msgstr "이름은 비워 둘 수 없습니다."
+
+#:
+msgid "askdata.title"
+msgstr "데이터에 질문"
+
+#:
+msgid "slack.app.upgrade.email.notification.subject"
+msgstr "Slack용 Tableau 앱 업데이트"
+
+#:
+msgid "slack.app.upgrade.email.notification.introduction"
+msgstr "Slack용 Tableau 앱에 대한 업데이트를 사용할 수 있으며 다음번 Tableau Online 릴리스와 작동할 수 있도록 지금 다시 설치할 수 있습니다. Tableau는 앱 성능을 유지하고 새로운 기능을 사용하기 위해 앱을 다시 설치할 것을 권장합니다. 새로운 기능 및 변경된 기능은 <a styl"
+
+#:
+msgid "slack.app.upgrade.email.notification.action"
+msgstr "업데이트 단계 및 다시 설치 단계는 <a styl"
+
+#:
+msgid "slack.app.upgrade.email.notification.steps"
+msgstr "이 서비스 알림은 Tableau Online에서 게시했습니다."
+
+#:
+msgid "slack.app.upgrade.email.notification.reason"
+msgstr "Slack에 연결된 Tableau Online 사이트의 관리자이기 때문에 본 알림이 귀하에게 발송되었습니다."
+
+#:
+msgid "slack.app.upgrade.email.notification.footer.privacy"
+msgstr "<a styl"
+
+#:
+msgid "unifiedconsumption.tcrm.folders.private"
+msgstr "내 비공개 앱"
+
