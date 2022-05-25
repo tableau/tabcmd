@@ -400,7 +400,7 @@ msgstr "Det finns redan en arbetsbok med namnet {0} i den personliga ytan."
 
 #:
 msgid "errors.reportable.impersonation.group_and_user"
-msgstr "Ange endast "impersonate_username" eller "impersonate_groupname" inte båda."
+msgstr "Ange endast 'impersonate_username'' eller 'impersonate_groupname'' inte båda."
 
 #:
 msgid "errors.reportable.impersonation.user_not_found"

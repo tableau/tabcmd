@@ -400,7 +400,7 @@ msgstr "Det finns redan en arbetsbok med namnet {0} i den personliga ytan."
 
 #:
 msgid "errors.reportable.impersonation.group_and_user"
-msgstr "Ange endast "impersonate_username" eller "impersonate_groupname" inte båda."
+msgstr "Ange endast 'impersonate_username'' eller 'impersonate_groupname'' inte båda."
 
 #:
 msgid "errors.reportable.impersonation.user_not_found"
@@ -3161,7 +3161,7 @@ msgstr "Låt användarens platsroll ändras till en med mindre åtkomst när --r
 
 #:
 msgid "syncgroup.options.grantlicensemode"
-msgstr "När man ska tilldela en licens som är tilldelad en grupp till en användare. Tillåtna värden är: {0}. Om inget värde anges kommer "on-sync" användas som standardvärde."
+msgstr "När man ska tilldela en licens som är tilldelad en grupp till en användare. Tillåtna värden är: {0}. Om inget värde anges kommer ''on-sync'' användas som standardvärde."
 
 #:
 msgid "syncgroup.short_description"

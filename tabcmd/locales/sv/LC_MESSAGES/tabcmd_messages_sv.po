@@ -1300,7 +1300,7 @@ msgstr "Låt användarens platsroll ändras till en med mindre åtkomst när --r
 
 #:
 msgid "syncgroup.options.grantlicensemode"
-msgstr "När man ska tilldela en licens som är tilldelad en grupp till en användare. Tillåtna värden är: {0}. Om inget värde anges kommer "on-sync" användas som standardvärde."
+msgstr "När man ska tilldela en licens som är tilldelad en grupp till en användare. Tillåtna värden är: {0}. Om inget värde anges kommer ''on-sync'' användas som standardvärde."
 
 #:
 msgid "syncgroup.short_description"
