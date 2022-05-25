@@ -23,6 +23,7 @@ __pycache__/
 pytest.xml
 
 # content
+# todo probably want to add a workbook and ds in /res for getting started easily
 *.pdf
 *.png
 *.twbx
@@ -34,5 +35,8 @@ html
 *.twbr
 
 **/credentials.py
-password.txt
 *.txt
+
+# doit
+.doit.*
+

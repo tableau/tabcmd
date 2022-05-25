@@ -1,43 +1,79 @@
 import glob
 import os
 import subprocess
+import ftfy
 
-LOCALES = ["en","de", "es", "fr", "ga", "it", "ja", "ko", "pt", "sv", "zh"]
+LOCALES = ["en", "de", "es", "fr", "ga", "it", "pt", "sv", "ja", "ko",  "zh"]
 
-def task_mo():
-    """generate a locales .mo file from .po file.   Use task locales_combine to produce final result"""
+"""
+https://pydoit.org/
+Usage:
+pip install doit
+doit list # see available tasks
+
+FYI: to read mo and po files use https://poedit.net/download
+"""
+
+
+def task_convert():
+    """
+    For all languages: Read properties files with unicode like "Schlie\u00dfen", save it back as "Schließen"
+    requires: pip install ftfy
+    help: https://ftfy.readthedocs.io/
+    Run when we copy in updated properties files. NOT IDEMPOTENT: only run on the initial files
+    """
 
     def process_locales():
         for current_locale in LOCALES:
-            for file in glob.glob("tabcmd/locales/"+current_locale+"/LC_MESSAGES/*.po"):
+            if current_locale in ["en", "ga"]:  # greek is our pseudo-loc
+                continue
+            elif current_locale in ["ja", "ko", "zh"]:
+                encoding = "utf-8"
+            else:
+                encoding = "cp1252"
+
+            for file in glob.glob("tabcmd/locales/" + current_locale + "/*.properties"):
                 basename = os.path.basename(file).split(".")[0]
-                print("processing",basename)
-                subprocess.run(["bin/i18n/msgfmt.py", "-o",
-                                "tabcmd/locales/" + current_locale + "/LC_MESSAGES/"+basename+".mo",
-                                "tabcmd/locales/" + current_locale + "/LC_MESSAGES/"+basename])
+                print("transcoding", basename)
+                with open(file, encoding=encoding) as infile:
+                    data = infile.read()
+                # now that we have read in the data properly encoded, fix the \u00fc characters and save as utf-8
+                with open(file, "w", encoding="utf-8") as outfile:
+                    outfile.write(ftfy.fixes.decode_escapes(data))
+
     return {
         'actions': [process_locales],
         'verbosity': 2,
     }
 
-def task_po():
-    """generate a locales .po file from .prooerties file """
 
+def task_po():
+    """
+    For all languages: generate a .po file from each .properties file
+    requires: pip install prop2po
+    help: http://docs.translatehouse.org/projects/translate-toolkit/en/latest/commands/prop2po.html
+    Run when we copy in updated properties files AFTER task_convert - so all files are utf-8
+    """
     def process_locales():
         for current_locale in LOCALES:
             for file in glob.glob("tabcmd/locales/"+current_locale+"/*.properties"):
                 basename = os.path.basename(file).split(".")[0]
-                print("processing",basename)
-                subprocess.run(["prop2po",
+                print("processing", basename)
+                result = subprocess.run(["prop2po",
+                                "--encoding=utf-8",
                                 "tabcmd/locales/" + current_locale + "/"+basename+".properties",
                                 "tabcmd/locales/" + current_locale + "/LC_MESSAGES/"+basename+".po"])
+                print(result)
+                print("stdout:", result.stdout)
+                print("stderr:", result.stderr)
     return {
         'actions': [process_locales],
         'verbosity': 2,
     }
 
-def task_locale_clean():
-    """ removes all locale generate artifacts which source from properties files. """
+
+def task_clean_all():
+    """For all languages: removes all generated artifacts (.po, .mo) which source from properties files. """
 
     def process_locales():
         for current_locale in LOCALES:
@@ -64,8 +100,10 @@ def task_locale_clean():
         'verbosity': 2,
     }
 
-def task_locale_combine():
-    """ compbines all generated po, mo files inta a single domain called 'tabcmd'.   Produces the final tabcmd.mo file """
+
+def task_mo():
+    """For all languages: Combines all existing po files for a language into a single domain called 'tabcmd'.
+        Processes these files to produce a final tabcmd.mo file for each language """
 
     def process_locales():
         for current_locale in LOCALES:
@@ -81,12 +119,12 @@ def task_locale_combine():
 
             LOC_PATH = "tabcmd/locales/" + current_locale
 
-            with open(LOC_PATH + "/LC_MESSAGES/tabcmd.po", 'w') as outfile:
+            with open(LOC_PATH + "/LC_MESSAGES/tabcmd.po", 'w', encoding="utf-8") as outfile:
                 for file in glob.glob(LOC_PATH + "/LC_MESSAGES/*.po"):
-                    if(file.endswith("tabcmd.po")):
+                    if file.endswith("tabcmd.po"):
                         pass
                     else:
-                        print("processing", file)
+                        print("merging", file)
                         with open(file) as infile:
                             for line in infile:
                                 outfile.write(line)
@@ -94,9 +132,9 @@ def task_locale_combine():
 
             print("writing final tabcmd.mo file")
             # build the single binary file from the combined text .po files
-            result = subprocess.run(["bin/i18n/msgfmt.py", "-o",
-                        "tabcmd/locales/" + current_locale + "/LC_MESSAGES/tabcmd.mo",
-                        "tabcmd/locales/" + current_locale + "/LC_MESSAGES/tabcmd"])
+            result = subprocess.run(["bin/i18n/msgfmt.py",
+                                     "tabcmd/locales/" + current_locale + "/LC_MESSAGES/tabcmd"])
+            print(result)
             print("stdout:", result.stdout)
             print("stderr:", result.stderr)
 
