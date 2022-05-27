@@ -130,7 +130,7 @@ class E2EServerTests(unittest.TestCase):
         # test_session.create_session(args)
 
     def test_get_project(self):
-        logger = log(__name__, "info")
+        logger = log(__class__.__name__, "info")
         server = E2EServerTests.test_log_in()
         Server.get_project_by_name_and_parent_path(logger, server, "Default", None)
 

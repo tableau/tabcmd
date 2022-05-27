@@ -19,10 +19,10 @@ class TabcmdController:
     # for testing, we want to be able to pass in different updates
     @staticmethod
     def run(parser, user_input=None):
-
         if user_input is None and len(sys.argv) <= 1:  # no arguments given
             parser.print_help()
             sys.exit(0)
+        user_input = user_input or sys.argv[1:]
         namespace = parser.parse_args(user_input)
         logger = log(__name__, namespace.logging_level or logging.INFO)
         try:

@@ -1,7 +1,7 @@
 import tableauserverclient as TSC
 
 from tabcmd.commands.auth.session import Session
-from tabcmd.commands.constants import Constants
+from tabcmd.commands.constants import Errors
 from tabcmd.execution.logger_config import log
 from tabcmd.execution.global_options import *
 from .user_data import UserCommand
@@ -25,7 +25,7 @@ class CreateUsersCommand(UserCommand):
 
     @staticmethod
     def run_command(args):
-        logger = log(__name__, args.logging_level)
+        logger = log(__class__.__name__, args.logging_level)
         logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
@@ -49,19 +49,12 @@ class CreateUsersCommand(UserCommand):
                 number_of_users_listed += 1
                 # TODO: bring in other attributes in file, actually act on specific site
                 new_user = TSC.UserItem(user_obj.name, args.role)
-                result = server.users.add(new_user)
-                print(result)
+                server.users.add(new_user)
                 logger.info("Successfully created user: {}".format(user_obj.name))
                 number_of_users_added += 1
-            except TSC.ServerResponseError as e:
+            except Exception as e:
                 number_of_errors += 1
-                logger.debug("Failed to add user: {}".format(e))
-                if e.code == Constants.forbidden:
-                    error = "User is not local, and the user's credentials are not maintained on Tableau Server."
-                if e.code == Constants.invalid_credentials:
-                    error = "Unauthorized access, Please log in."
-                if e.code == Constants.user_already_member_of_site:
-                    error = "User: {} already member of site".format(user_obj.name)
+                error = "Failed to add user: {}".format(e)
                 error_list.append(error)
                 logger.debug(error)
         logger.info("======== 100% complete ========")
@@ -69,4 +62,6 @@ class CreateUsersCommand(UserCommand):
         logger.info("Lines skipped: {}".format(number_of_errors))
         logger.info("Number of users added: {}".format(number_of_users_added))
         if number_of_errors > 0:
-            logger.info("Error details: {}".format(error_list))
+            logger.debug("Explaining {} errors".format(number_of_errors))
+        for exception in error_list:
+            Errors.check_common_error_codes_and_explain(logger, exception)

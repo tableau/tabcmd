@@ -37,6 +37,25 @@ class ExportCommand(DatasourcesAndWorkbooks):
             help="View filter to apply to the view",
         )
 
+    # TODO: ARGUMENT --COMPLETE
+
+    @staticmethod
+    def get_content_url_for_workbook(url):
+        # check the size of list
+        separated_list = url.split("/")
+        reversed_list = separated_list[::-1]
+        return reversed_list[1]
+
+    @staticmethod
+    def get_content_url_for_view(url):
+        # check the size of list
+        separated_list = url.split("/")
+        if len(separated_list) > 2:
+            print("error")
+        workbook_name = separated_list[0]
+        view_name = separated_list[1]
+        return "{}/sheets/{}".format(workbook_name, view_name)
+
     """
     Command to Export a view_name or workbook from Tableau Server and save
     it to a file. This command can also export just the data used for a view_name
@@ -44,7 +63,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
 
     @staticmethod
     def run_command(args):
-        logger = log(__name__, args.logging_level)
+        logger = log(__class__.__name__, args.logging_level)
         logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
