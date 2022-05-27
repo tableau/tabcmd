@@ -14,17 +14,18 @@ group_name = "test-ing-group"
 workbook_name = "namebasic"
 
 # to run this suite:
-# pytest -q tests/e2e/online_tests.py
+# pytest -q tests/e2e/language_tests.py
 # you can either run setup with a stored credentials file, or simply log in
 # before running the suite so a session is active
-# This suite should only contain commands that can be run against Tableau Online
+# All tests in this suite are about handling non-English language scenarios
 
 
 def _test_command(test_args: list[str]):
     # this will raise an exception if it gets a non-zero return code
     # that should bubble up and fail the test?
     # dist/exe calling_args = [setup_e2e.exe] + test_args + [debug_log]
-    calling_args = ["python", "-m", "tabcmd"] + test_args + [debug_log] + ["--no-certcheck"]
+    calling_args = ["python", "-m", "tabcmd"] + \
+                   test_args + [debug_log] + ["--language", "fr", "--no-certcheck"]
     print(calling_args)
     return subprocess.check_call(calling_args)
 
@@ -34,12 +35,18 @@ class OnlineCommandTest(unittest.TestCase):
     published = False
     gotten = False
 
-    @classmethod
-    def setup_class(cls):
-        print("running python -m")
-        # call this if we are using the built exe setup_e2e.prechecks()
-
-    ## Individual methods that implement a command
+    @pytest.mark.order(1)
+    def test_login_all_languages(self):
+        languages = ["de", "en", "es", "fr", "it", "ja", "ko", "pt", "sv", "zh"]
+        failed = False
+        for lang in languages:
+            try:
+                setup_e2e.login("--language", lang)
+            except Exception as e:
+                failed = True
+                print("FAILED on {}".format(lang))
+        if failed:
+            raise SystemExit(2)
 
     def _create_project(self, project_name, parent_path=None):
         command = "createproject"
@@ -85,12 +92,6 @@ class OnlineCommandTest(unittest.TestCase):
     def _get_view_with_filters(self):
         command = "get"
 
-    def _get_workbook(self, server_file):
-        command = "get"
-        server_file = "/workbooks/" + server_file
-        arguments = [command, server_file]
-        _test_command(arguments)
-
     def _create_extract(self, wb_name):
         command = "createextracts"
         arguments = [command, "-w", wb_name, "--encrypt"]
@@ -114,12 +115,6 @@ class OnlineCommandTest(unittest.TestCase):
     TWBX_FILE_WITHOUT_EXTRACT = "simple-data.twbx"
     TWBX_WITHOUT_EXTRACT_NAME = "WorkbookWithoutExtract"
 
-    @pytest.mark.order(1)
-    def test_login(self):
-        try:
-            setup_e2e.login()
-        except Exception as e:
-            raise SystemExit(2)
 
     @pytest.mark.order(2)
     def test_create_site_users(self):
@@ -225,7 +220,7 @@ class OnlineCommandTest(unittest.TestCase):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         self._publish_wb(file, name_on_server)
-        # waiting for tsc update self._delete_extract(name_on_server)
+        # self._delete_extract(name_on_server)
         self._delete_wb(name_on_server)
 
     def test_version(self):

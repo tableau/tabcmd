@@ -23,6 +23,7 @@ def log_in():
     setup_e2e.login()
 
 
+# This is where you put tests that require server admin roles/on-prem server
 def _test_command(test_args: list[str]):
     # this will raise an exception if it gets a non-zero return code
     # that should bubble up and fail the test?
