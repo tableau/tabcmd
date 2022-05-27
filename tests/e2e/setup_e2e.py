@@ -12,15 +12,7 @@ launch_path = os.path.join("dist", "tabcmd")
 exe = os.path.join(launch_path, our_program)
 
 
-def make_installer():
-    # TODO: add command to run pyinstaller
-    executable = [exe]
-
-
-def login():
-    if not credentials:
-        pytest.skip("No credentials file found to run tests against a live server")
-
+def login(extra="--language", value="en"):
     # --server, --site, --username, --password
     args = [
         "python",
@@ -36,6 +28,8 @@ def login():
         "--token-name",
         credentials.token_name,
         "--no-certcheck",
+        extra,
+        value
     ]
     print(args)
     return subprocess.check_call(args, stderr=subprocess.STDOUT, shell=True)
