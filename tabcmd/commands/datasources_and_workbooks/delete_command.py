@@ -20,10 +20,8 @@ class DeleteCommand(DatasourcesAndWorkbooks):
 
     @staticmethod
     def define_args(delete_parser):
-        delete_parser_group = delete_parser.add_mutually_exclusive_group(required=True)
-        delete_parser_group.add_argument("name", nargs="?", help="The datasource or workbook to delete")
-        delete_parser_group.add_argument("-w", "--workbook", required=False, help="The workbook to delete")
-        delete_parser_group.add_argument("-d", "--datasource", required=False, help="The datasource to delete")
+        delete_parser.add_argument("name", help="The name of the target datasource or workbook on the server")
+        set_ds_xor_wb_args(delete_parser, required=False)
         set_project_r_arg(delete_parser)
         set_parent_project_arg(delete_parser)
 
@@ -65,4 +63,4 @@ class DeleteCommand(DatasourcesAndWorkbooks):
                 server.datasources.delete(item_to_delete.id)
             logger.info("===== Succeeded")
         except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, "Error deleting from server", e)
+            DeleteCommand.exit_with_error(logger, "Error deleting from server", e)

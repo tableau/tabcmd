@@ -1,5 +1,6 @@
 import tableauserverclient as TSC
 
+from tabcmd.commands.constants import Errors
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.extracts.extracts_command import ExtractsCommand
 from tabcmd.execution.logger_config import log
@@ -28,6 +29,6 @@ class DecryptExtracts(ExtractsCommand):
             logger.info(_("decryptextracts.status").format(args.site_name))
             job = server.sites.decrypt_extracts(site_item.id)
         except TSC.ServerResponseError as e:
-            ExtractsCommand.exit_with_error(logger, "Error decrypting extracts", e)
+            Errors.exit_with_error(logger, "Error decrypting extracts", e)
 
-        ExtractsCommand.print_success_message(logger, "decryption", job)
+        ExtractsCommand.print_success_scheduled_message(logger, "decryption", job)

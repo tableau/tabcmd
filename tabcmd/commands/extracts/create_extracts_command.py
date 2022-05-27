@@ -1,11 +1,10 @@
 import tableauserverclient as TSC
 
+from tabcmd.commands.constants import Errors
 from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.extracts.extracts_command import ExtractsCommand
 from tabcmd.execution.logger_config import log
-from tabcmd.execution.localize import _
-from tabcmd.commands.constants import Errors
 
 
 class CreateExtracts(ExtractsCommand):
@@ -14,11 +13,11 @@ class CreateExtracts(ExtractsCommand):
     """
 
     name: str = "createextracts"
-    description: str = _("createextracts.short_description")
+    description: str = "Create extracts for a published workbook or data source"
 
     @staticmethod
     def define_args(create_extract_parser):
-        set_ds_xor_wb_args(create_extract_parser)
+        set_ds_xor_wb_args(create_extract_parser, required=True)
         set_embedded_datasources_options(create_extract_parser)
         set_encryption_option(create_extract_parser)
         set_project_arg(create_extract_parser)
@@ -28,33 +27,42 @@ class CreateExtracts(ExtractsCommand):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug(_("tabcmd.launching"))
+        logger.debug("======================= Launching command =======================")
         session = Session()
         server = session.create_session(args)
+        creation_call = None
         try:
             if args.datasource:
                 logger.debug("Finding datasource `{}` on the server...".format(args.datasource))
                 ExtractsCommand.print_task_scheduling_message(logger, "datasource", args.workbook, "created")
                 data_source_item = ExtractsCommand.get_data_source_item(logger, server, args.datasource)
-                job = server.datasources.create_extract(data_source_item, encrypt=args.encrypt)
+                creation_call = lambda: server.datasources.create_extract(data_source_item, encrypt=args.encrypt)
 
             elif args.workbook:
                 logger.debug("Finding workbook `{}` on the server...".format(args.workbook))
                 ExtractsCommand.print_task_scheduling_message(logger, "workbook", args.workbook, "created")
                 workbook_item = ExtractsCommand.get_workbook_item(logger, server, args.workbook)
+
                 logger.debug("Workbook: {}".format(workbook_item))
                 logger.debug(
                     "Extract params: encrypt={}, include_all={}, datasources={}".format(
                         args.encrypt, args.include_all, args.embedded_datasources
                     )
                 )
-                job = server.workbooks.create_extract(
+                creation_call = lambda: server.workbooks.create_extract(
                     workbook_item,
                     encrypt=args.encrypt,
                     includeAll=args.include_all,
                     datasources=args.embedded_datasources,
                 )
         except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, _("createextracts.errors.error"), e)
+            Errors.exit_with_error(logger, "Could not get the target content for creating extracts", e)
 
-        ExtractsCommand.print_success_message(logger, "creation", job)
+        try:
+            job = creation_call()
+        except Exception as e:
+            Errors.exit_with_error(logger, "Error creating extract refresh task: {}".format(e))
+
+        ExtractsCommand.print_success_scheduled_message(logger, "creation", job)
+
+        ExtractsCommand.print_success_message(logger, job)

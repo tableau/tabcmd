@@ -31,6 +31,7 @@ from tabcmd.commands.site import (
 from tabcmd.commands.user import (
     add_users_command,
     create_site_users,
+    create_users_command,
     remove_users_command,
     delete_site_users_command,
 )
@@ -183,6 +184,13 @@ class RunCommandsTest(unittest.TestCase):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_args.datasource = "datasource"
         mock_server.datasources = getter
+        mock_args.workbook = None
+        mock_args.addcalculations = None
+        mock_args.removecalculations = None
+        mock_args.incremental = None
+        mock_args.synchronous = None
+        mock_args.project_name = None
+        mock_args.parent_project_path = None
         refresh_extracts_command.RefreshExtracts.run_command(mock_args)
         mock_session.assert_called()
 
@@ -354,4 +362,13 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.site_name = None
         mock_args.require_all_valid = True
         delete_site_users_command.DeleteSiteUsersCommand.run_command(mock_args)
+        mock_session.assert_called()
+
+    def test_create_user(self, mock_session, mock_server):
+        RunCommandsTest._set_up_session(mock_session, mock_server)
+        mock_server.users = getter
+        mock_args.filename = RunCommandsTest._set_up_file()
+        mock_args.site_name = None
+        mock_args.require_all_valid = False
+        create_users_command.CreateUsersCommand.run_command(mock_args)
         mock_session.assert_called()

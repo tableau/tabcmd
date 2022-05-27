@@ -9,26 +9,20 @@ from tabcmd.commands.constants import Errors
 class Server:
     # syntactic sugar for specific content types
     @staticmethod
-    def get_workbook_item(logger, server, workbook_name):
-        try:
-            return Server.get_items_by_name(logger, server.workbooks, workbook_name)[0]
-        except Exception as e:
-            Errors.exit_with_error(logger, "Workbook not found (errorCode)", e)
+    def get_workbook_item(logger, server, workbook_name, container=None):
+        return Server.get_items_by_name(logger, server.workbooks, workbook_name, container=None)[0]
 
     @staticmethod
-    def get_workbook_id(logger, server, workbook_name):
-        return Server.get_workbook_item(logger, server, workbook_name).id
+    def get_workbook_id(logger, server, workbook_name, container=None):
+        return Server.get_workbook_item(logger, server, workbook_name, container=None).id
 
     @staticmethod
-    def get_data_source_item(logger, server, data_source_name):
-        try:
-            return Server.get_items_by_name(logger, server.datasources, data_source_name)[0]
-        except Exception as e:
-            Errors.exit_with_error(logger, "Datasource not found (errorCode)", e)
+    def get_data_source_item(logger, server, data_source_name, container=None):
+        return Server.get_items_by_name(logger, server.datasources, data_source_name, container=None)[0]
 
     @staticmethod
-    def get_data_source_id(logger, server, data_source_name):
-        return Server.get_data_source_item(logger, server, data_source_name).id
+    def get_data_source_id(logger, server, data_source_name, container=None):
+        return Server.get_data_source_item(logger, server, data_source_name, container=None).id
 
     @staticmethod
     def find_group(logger, server, group_name):
@@ -46,15 +40,16 @@ class Server:
         return Server.get_items_by_name(logger, server.users, username)[0].id
 
     @staticmethod
-    def get_items_by_name(logger, item_endpoint, item_name):
+    def get_items_by_name(logger, item_endpoint, item_name, container=None):
         logger.debug("get `{0}`(name) from {1}".format(item_name, item_endpoint))
         req_option = TSC.RequestOptions()
         req_option.filter.add(TSC.Filter(TSC.RequestOptions.Field.Name, TSC.RequestOptions.Operator.Equals, item_name))
-        try:
-            all_items, pagination_item = item_endpoint.get(req_option)
-        except TSC.ServerResponseError as exc:
-            Errors.check_common_error_codes_and_explain(logger, exc)
-            all_items = []
+        if container:
+            logger.debug("Searching in project {}".format(container))
+            req_option.filter.add(
+                TSC.Filter(TSC.RequestOptions.Field.ParentProjectId, TSC.RequestOptions.Operator.Equals, container)
+            )
+        all_items, pagination_item = item_endpoint.get(req_option)
         if all_items is None or all_items == []:
             raise ValueError("*** Unexpected response from the server: Item not found ({})".format(item_name))
         if len(all_items) > 1:

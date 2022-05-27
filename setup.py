@@ -32,6 +32,7 @@ setup(
     },
     install_requires=[
         'types-appdirs',
+        'polling2',
         'requests>=2.11,<3.0',
         'setuptools>=24.3',
         'tableauserverclient>=0.12',

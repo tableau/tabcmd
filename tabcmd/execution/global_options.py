@@ -129,6 +129,7 @@ def set_embedded_datasources_options(parser):
 def set_encryption_option(parser):
     parser.add_argument(
         "--encrypt",
+        dest="encrypt",
         action="store_false",
         help="Encrypt the newly created extract.",
     )
@@ -153,8 +154,8 @@ def set_project_r_arg(parser):
 
 def set_project_n_arg(parser):
     parser.add_argument(
-        "--project",
         "-n",
+        "--project",
         dest="project_name",
         default="",
         help="The name of the project.",
@@ -167,9 +168,8 @@ def set_project_arg(parser):
     return parser
 
 
-# the help message for 'datasource' needs to be slightly different for each command
-def set_datasource_arg(parser):
-    parser.add_argument("--datasource", "-d", help="The name of the target data source.")
+def set_datasource_arg(parser, action="store_true"):
+    parser.add_argument("-d", "--datasource", help="The name of the target data source.", action=action)
     return parser
 
 
@@ -178,21 +178,25 @@ def set_site_url_arg(parser):
     return parser
 
 
-def set_workbook_arg(parser):
-    parser.add_argument("--workbook", "-w", help="The name of the target workbook.")
+def set_workbook_arg(parser, action="store_true"):  # true if the user adds --workbook
+    parser.add_argument("-w", "--workbook", help="The name of the target workbook.", action=action)
     return parser
 
 
-# see also: delete parser has xor(--datasource, --workbook, name)
-def set_ds_xor_wb_args(parser, required=True):
+# deleteextracts (--workbook {name}, --datasource {name}) <-- required=True, nargs=1
+# delete {name} (--workbook, --datasource) <-- required=False, nargs=0
+def set_ds_xor_wb_args(parser, required=False):
     target_type_group = parser.add_mutually_exclusive_group(required=required)
-    target_type_group.add_argument("-d", "--datasource", help="The name of the target datasource.")
-    target_type_group.add_argument("-w", "--workbook", help="The name of the target workbook.")
-    return parser
+    action = "store_true"
+    if required:
+        action = None
+    set_workbook_arg(target_type_group, action)
+    set_datasource_arg(target_type_group, action)
+    return target_type_group
 
 
 def set_description_arg(parser):
-    parser.add_argument("--description", "-d", help="Specifies a description for the item.")
+    parser.add_argument("-d", "--description", help="Specifies a description for the item.")
     return parser
 
 
@@ -213,8 +217,8 @@ def set_site_id_options(parser):
     site_id = parser.add_mutually_exclusive_group()
     site_id.add_argument("--site-id", help="Used in the URL to uniquely identify the site.")
     site_id.add_argument(
-        "--url",
         "-r",
+        "--url",
         help="Used in URLs to specify the site. Different from the site name.",
     )
     return parser
@@ -339,14 +343,14 @@ def set_calculations_options(parser):
     calc_group.add_argument(
         "--addcalculations",
         action="store_true",
-        help="Add precalculated data operations in the extract data source.",
+        help="DEPRECATED [has no effect] Add precalculated data operations in the extract data source.",
     )
     calc_group.add_argument(
         "--removecalculations",
         action="store_true",
-        help="Remove precalculated data in the extract data source.",
+        help="DEPRECATED [has no effect] Remove precalculated data in the extract data source.",
     )
-    return parser
+    return calc_group
 
 
 # TODO below

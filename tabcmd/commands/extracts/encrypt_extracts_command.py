@@ -1,6 +1,7 @@
 import tableauserverclient as TSC
 
 from tabcmd.commands.auth.session import Session
+from tabcmd.commands.constants import Errors
 from tabcmd.commands.extracts.extracts_command import ExtractsCommand
 from tabcmd.execution.logger_config import log
 from tabcmd.execution.localize import _
@@ -30,6 +31,6 @@ class EncryptExtracts(ExtractsCommand):
             ExtractsCommand.print_task_scheduling_message(logger, "site", site_item.name, "encrypted")
             job = server.sites.encrypt_extracts(site_item.id)
         except TSC.ServerResponseError as e:
-            ExtractsCommand.exit_with_error(logger, "Error encrypting extracts", e)
+            Errors.exit_with_error(logger, "Error encrypting extracts", e)
 
-        ExtractsCommand.print_success_message(logger, "encryption", job)
+        ExtractsCommand.print_success_scheduled_message(logger, "encryption", job)

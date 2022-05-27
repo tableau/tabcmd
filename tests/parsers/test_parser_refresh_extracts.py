@@ -12,7 +12,7 @@ class RefreshExtractsParserTest(unittest.TestCase):
         cls.parser_under_test = initialize_test_pieces(commandname, RefreshExtracts)
 
     def test_refresh_extract_parser_conflicting_arguments(self):
-        mock_args = [commandname, "--datasource", "hello", "--workbook", "testworkbook"]
+        mock_args = [commandname, "--datasource", "hello", "--workbook", "testworkbook"]  # --url
         with self.assertRaises(SystemExit):
             args = self.parser_under_test.parse_args(mock_args)
 
@@ -26,8 +26,6 @@ class RefreshExtractsParserTest(unittest.TestCase):
             "--removecalculations",
             "--project",
             "testproject",
-            "--url",
-            "testurl",
         ]
         args = self.parser_under_test.parse_args(mock_args)
         assert args.incremental == "True", args
