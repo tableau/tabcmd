@@ -20,7 +20,8 @@ class DeleteCommand(DatasourcesAndWorkbooks):
 
     @staticmethod
     def define_args(delete_parser):
-        set_ds_xor_wb_args(delete_parser)
+        delete_parser.add_argument("name", help="Name of the object to delete.")
+        set_ds_xor_wb_args(delete_parser, required=False)
         set_project_r_arg(delete_parser)
         set_parent_project_arg(delete_parser)
 
