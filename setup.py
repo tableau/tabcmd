@@ -39,7 +39,7 @@ setup(
         'types-requests',
         'urllib3>=1.24.3,<2.0',
     ],
-    python_requires='>=3.6',
+    python_requires='>=3.7',
     setup_requires=pytest_runner,
     tests_require=test_requirements,
 )
