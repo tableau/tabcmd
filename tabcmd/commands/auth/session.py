@@ -126,7 +126,6 @@ class Session:
         if self.no_certcheck:
             tableau_server.add_http_options({"verify": False})
             requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
-        tableau_server.use_server_version()  # this will attempt to contact the server
         return tableau_server
 
     def _create_new_connection(self):
@@ -134,6 +133,7 @@ class Session:
         self.tableau_server = self._set_connection_options()
         self._print_server_info()
         self.logger.info("===== Connecting to the server...")
+        self.tableau_server.use_server_version()  # this will attempt to contact the server
 
     def _read_existing_state(self):
         if self._check_json():

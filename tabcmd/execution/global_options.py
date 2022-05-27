@@ -129,7 +129,6 @@ def set_embedded_datasources_options(parser):
 def set_encryption_option(parser):
     parser.add_argument(
         "--encrypt",
-        dest="encrypt",
         action="store_false",
         help="Encrypt the newly created extract.",
     )
@@ -185,8 +184,8 @@ def set_workbook_arg(parser):
 
 
 # see also: delete parser has xor(--datasource, --workbook, name)
-def set_ds_xor_wb_args(parser):
-    target_type_group = parser.add_mutually_exclusive_group(required=True)
+def set_ds_xor_wb_args(parser, required=True):
+    target_type_group = parser.add_mutually_exclusive_group(required=required)
     target_type_group.add_argument("-d", "--datasource", help="The name of the target datasource.")
     target_type_group.add_argument("-w", "--workbook", help="The name of the target workbook.")
     return parser

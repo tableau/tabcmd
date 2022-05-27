@@ -4,6 +4,7 @@ from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 from tabcmd.execution.global_options import *
+from tabcmd.commands.constants import Errors
 
 
 class DeleteCommand(DatasourcesAndWorkbooks):
@@ -19,10 +20,8 @@ class DeleteCommand(DatasourcesAndWorkbooks):
 
     @staticmethod
     def define_args(delete_parser):
-        delete_parser_group = delete_parser.add_mutually_exclusive_group(required=True)
-        delete_parser_group.add_argument("name", nargs="?", help="The datasource or workbook to delete")
-        delete_parser_group.add_argument("--workbook", required=False, help="The workbook to delete")
-        delete_parser_group.add_argument("--datasource", required=False, help="The datasource to delete")
+        delete_parser.add_argument("name", help="Name of the object to delete.")
+        set_ds_xor_wb_args(delete_parser, required=False)
         set_project_r_arg(delete_parser)
         set_parent_project_arg(delete_parser)
 
@@ -50,7 +49,7 @@ class DeleteCommand(DatasourcesAndWorkbooks):
                     item_to_delete = DeleteCommand.get_data_source_item(logger, server, args.name)
                     item_type = "datasource"
                 except TSC.ServerResponseError:
-                    DeleteCommand.exit_with_error(logger, "You must specify a workbook or datasource")
+                    Errors.exit_with_error(logger, "You must specify a workbook or datasource")
 
         try:
             if item_type == "workbook":
@@ -59,4 +58,4 @@ class DeleteCommand(DatasourcesAndWorkbooks):
                 server.datasources.delete(item_to_delete.id)
             logger.info("===== Succeeded")
         except TSC.ServerResponseError as e:
-            DeleteCommand.exit_with_error(logger, "Error deleting from server", e)
+            Errors.exit_with_error(logger, "Error deleting from server", e)
