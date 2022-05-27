@@ -23,13 +23,14 @@ def to_po(source, destination, encoding, language, project):
 
     header = """msgid ""
 msgstr ""
-"MIME-Version: 1.0"
-"Content-Type: text/plain; charset={encoding}"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: prop2po"
-"Project-Id-Version: {project}"
-"Language: {language}"\n"""
+"MIME-Version: 1.0\\n"
+"Content-Type: text/plain; charset={encoding}\\n"
+"Content-Transfer-Encoding: 8bit\\n"
+"X-Generator: prop2po\\n"
+"Project-Id-Version: {project}\\n"
+"Language: {language}\\n" """
     lines = source.readlines()
+    print(lines)
     destination.write(header.format(
         language=language,
         project=project,
@@ -40,3 +41,7 @@ msgstr ""
             parts = line.split('=')
             # TODO it fails on comments/lines with less than two parts after splitting
             destination.write('#:\n' + 'msgid "' + parts[0] + '"\n' 'msgstr "' + parts[1][:-1] + '"\n\n')
+
+
+if __name__ == '__main__':
+    to_po()
