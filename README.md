@@ -3,29 +3,43 @@
 [![Tableau Supported](https://img.shields.io/badge/Support%20Level-Tableau%20Supported-53bd92.svg)](https://www.tableau.com/support-levels-it-and-developer-tools)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-An open source Python based app that replicates the functionality of the existing [Tabcmd command line utility](https://help.tableau.com/current/server/en-us/tabcmd.htm).
-
-**Important Note:** tabcmd is a work in progress ("beta") which may be useful for test and development purposes, but is not yet recommended for production environments.
+An open source, cross platform command-line utility which you can use to automate site administration tasks on your Tableau Server site. 
 
 
-## For user documentation see https://tableau.github.io/tabcmd/
+## Download exe (or rpm/deb)
+* To download the latest release as an executable see https://github.com/tableau/tabcmd/releases
+* There is no need to install: open a command line in the same folder as the exe and run
+```shell
+tabcmd [command_name] [--flags]
+```
+e.g 
+* `tabcmd login --username [username] --password [password] --server [server_name] --site [site_name]`
+* `tabcmd createproject --name [project_name]`
+* `tabcmd help`
 
-## For developers
+###or
+## Install on the command line (requires Python 3.7+)
 
-* [Why Python\?](#why-python)
-* [Get started](#get-started)
-* [Contributing](#contributing)
+```shell
+pip install tabcmd
+```
 
-## Why Python?
+Or install the current work-in-progress version from Git\
+*Only do this if you know you want the development version, no guarantee that we won't break APIs during development*
 
-* Cross-platform
-* Build on our existing Python [Tableau Server Client](https://github.com/tableau/server-client-python/)
+```shell
+pip install git+https://github.com/tableau/tabcmd.git@development
+```
 
-## Get started
+If you go this route, but want to switch back to the non-development version, you need to run the following command before installing the stable version:
 
-####To work with tabcmd, you need to have **Python 3.7+** installed.
+```shell
+pip uninstall tabcmd
+```
 
-To install tabcmd, follow these steps:
+### Run tabcmd
+
+To run tabcmd from your local copy, from a console window in the same directory as the file tabcmd.py:
 
 1. Clone the repo
 2. Run `pip install .`
@@ -52,43 +66,47 @@ To install tabcmd, follow these steps:
 produces dist/tabcmd.exe
 To run tabcmd during development, from a console window in the same directory as the file tabcmd.py:
 
-
 > dist/tabcmd/tabcmd.exe --help
 
-or 
 * `python -m tabcmd.py [command_name] [--flags]`
     * Examples:
         * `tabcmd.py login --username [username] --password [password] --server [server_name] --site [site_name]`
         * `tabcmd.py createproject --name [project_name]`
         * `tabcmd.py help`
         
-For more examples and information about the available commands and options, see the user documentation
+For more examples and information about the available commands and options, 
+see the user documentation at https://tableau.github.io/tabcmd/
 
 
-## Contributions
+## Release Notes
+Version 2.0 is the first version of tabcmd built in python. 
+It is specifically targeted to support users of Tableau Online, who are required to have MFA enabled. 
+(MFA support is not available in tabcmd 2022.2). It does not yet fully replace the existing tabcmd client.\
+**Known gaps**
+- handling custom views in get/export commands
+- several commands that can only be run by a Server Admin:
+  - editdomain / listdomains
+  - initialuser 
+  - reset_openid_sub 
+  - runschedule 
+  - set 
+  - syncgroup 
+  - upgradethumbnails 
+  - validateidpmetadata
 
-Code contributions and improvements by the community are welcomed!
 
-See the LICENSE file for current open-source licensing and use information. 
+## About
 
-Before we can accept pull requests from contributors, we require a signed [Contributor License Agreement (CLA)](http://tableau.github.io/contributing.html).
+Tabcmd has been shipped with Tableau Server, and for at least 2022 it will continue being shipped with new installs of Server. 
+This new version of tabcmd can be updated for users at any time, without waiting for a new release of Server. 
+Significant new features will only be added to this new version.
 
+#### Which one do I have?
+Copies of tabcmd that shipped with Tableau Server are referred to by the version number they shipped in: e.g. tabcmd 2020.4, tabcmd 2021.4, etc. The first version built in python is tabcmd 2.0. To see the version of your current tabcmd, run 
 
-## Project structure
-The core design principles for this app are
-- it must provide the functionality  of the instance of tabcmd, with drop-in replacement CLI options
-- it should be able to call [tsc](https://github.com/tableau/server-client-python/) for all server actions
-- architecture is as simple as possible
+`tabcmd -v`
 
-1. tabcmd.py exists only as a module entry point that calls TabCmdController.
-2. the 'parsers' module contains only argument and option definitions, no logic.
-3. the 'commands' module contains the logic required to translate the tabcmd CLI interface into calls to tsc. This is completely dissociated from the parsers, and could theoretically be called from a completely different interface.
-4. The 'execution' module is the core logic. TabcmdController gets an argparse parser, then attaches all the defined parsers to it and associates one command with each parser.
-
-### To add a new command
-0. choose the single word that will be used as your command. Let's call this one `dream`
-1. add parsers/dream_parser.py, and use methods from parent_parser to define the arguments
-2. add commands/dreams/dream_command.py. It must have a method run_command.py(args) and the args object must contain all information needed from the user.
-3. in map_of_parsers.py, add an entry for your new parser, like "dreams": DreamParser.dream_parser
-4. in map_of_commands.py, add an entry for your new command, like "dream": ("dream", DreamCommand, "Think about picnics"),"
-5. add tests! 
+#### Will one of them go away? 
+At some point in the future, tabcmd will no longer be included with Tableau Server. 
+*We have no intention of breaking Server install flows.* 
+If you have specific suggestions or concerns on what that will look like, feel free to open an issue here or a thread on the Community Forums.
