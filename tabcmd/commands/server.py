@@ -46,7 +46,7 @@ class Server:
                 "404", "No items returned for name", "Fetching {0} from {1}".format(item_name, item_endpoint)
             )
         if len(all_items) > 1:
-            logger.debug("multiple items of this name were found. Returning first page.")
+            logger.debug("{}+ items of this name were found. Returning first page.".format(len(all_items)))
         return all_items
 
     @staticmethod

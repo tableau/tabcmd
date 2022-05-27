@@ -1,5 +1,5 @@
 import sys
-
+import logging
 from tabcmd.execution.tabcmd_controller import TabcmdController
 
 
@@ -13,8 +13,11 @@ def main():
     try:
         parser = TabcmdController.initialize()
         TabcmdController.run(parser)
-    except Exception as any_exception:
-        print("Unexpected error: {}".format(any_exception))
+    except Exception as e:
+        print("Unhandled exception: {}".format(type(e).__name__))
+        print(
+            f"{type(e).__name__} at line {e.__traceback__.tb_lineno} of {__file__}: {e}",
+        )
         sys.exit(1)
 
 

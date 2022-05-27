@@ -4,6 +4,7 @@ from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.extracts.extracts_command import ExtractsCommand
 from tabcmd.execution.logger_config import log
+from tabcmd.commands.constants import Errors
 
 
 class CreateExtracts(ExtractsCommand):
@@ -40,6 +41,12 @@ class CreateExtracts(ExtractsCommand):
                 logger.debug("Finding workbook `{}` on the server...".format(args.workbook))
                 ExtractsCommand.print_task_scheduling_message(logger, "workbook", args.workbook, "created")
                 workbook_item = ExtractsCommand.get_workbook_item(logger, server, args.workbook)
+                logger.debug("Workbook: {}".format(workbook_item))
+                logger.debug(
+                    "Extract params: encrypt={}, include_all={}, datasources={}".format(
+                        args.encrypt, args.include_all, args.embedded_datasources
+                    )
+                )
                 job = server.workbooks.create_extract(
                     workbook_item,
                     encrypt=args.encrypt,
@@ -47,6 +54,6 @@ class CreateExtracts(ExtractsCommand):
                     datasources=args.embedded_datasources,
                 )
         except TSC.ServerResponseError as e:
-            ExtractsCommand.exit_with_error(logger, "Error creating extracts", e)
+            Errors.exit_with_error(logger, "Error creating extracts", e)
 
         ExtractsCommand.print_success_message(logger, "creation", job)
