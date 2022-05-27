@@ -28,7 +28,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\\n"
 "X-Generator: prop2po\\n"
 "Project-Id-Version: {project}\\n"
-"Language: {language}\\n" """
+"Language: {language}\\n"
+ # Copyright (C) YEAR Tableau Software 
+ """
     lines = source.readlines()
     print(lines)
     destination.write(header.format(
