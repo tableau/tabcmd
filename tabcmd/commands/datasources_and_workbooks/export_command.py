@@ -151,4 +151,4 @@ class ExportCommand(DatasourcesAndWorkbooks):
         logger.info("===== Found attachment: {}".format(filename))
         with open(filename, "wb") as f:
             f.write(output)
-            logger.info(_("export.success").format(args.url, file_name_with_path))
+            logger.info(_("export.success").format(filename,""))
