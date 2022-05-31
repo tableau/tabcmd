@@ -47,7 +47,7 @@ class Server:
                 "404", "No items returned for name", "Fetching {0} from {1}".format(item_name, item_endpoint)
             )
         if len(all_items) > 1:
-            logger.debug("multiple items of this name were found. Returning first page.")
+            logger.debug("{}+ items of this name were found. Returning first page.".format(len(all_items)))
         return all_items
 
     @staticmethod
@@ -62,10 +62,13 @@ class Server:
             logger.debug("Get site {} by name".format(args.site_name))
             site_item = Server.get_items_by_name(logger, server.sites, args.site_name)[0]
         else:
-            logger.debug("Try get site {} by id".format(args.site_name))
-            site_item = server.sites.get_by_id(args.site_name)
+            logger.debug("Get default site")
+            site_item = server.sites.get_by_name("")
+        # TODO: need to let the user define whether to use default site or currently logged in
+        #   logger.debug("Get site {} by id".format(session.site_id))
+        #   site_item = server.sites.get_by_id(session.site_id)
         if not site_item:
-            return None
+            Errors.exit_with_error(logger, "Could not get site info from server")
         return site_item
 
     @staticmethod

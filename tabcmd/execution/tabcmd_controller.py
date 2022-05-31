@@ -2,7 +2,7 @@ import sys
 
 from .map_of_commands import *
 from .parent_parser import ParentParser
-from .localize import set_client_locale
+import logging
 
 
 class TabcmdController:
@@ -10,7 +10,6 @@ class TabcmdController:
     def initialize():
         manager = ParentParser()
         parent = manager.get_root_parser()
-
         commands = CommandsMap.commands_hash_map
         for command in commands:
             manager.include(command)
@@ -25,10 +24,7 @@ class TabcmdController:
             sys.exit(0)
         user_input = user_input or sys.argv[1:]
         namespace = parser.parse_args(user_input)
-
-        if namespace.language:
-            set_client_locale(namespace.language)
-
+        logger = log(__name__, namespace.logging_level or logging.INFO)
         try:
             command_name = namespace.func
         except AttributeError as aer:
@@ -38,9 +34,12 @@ class TabcmdController:
         if not command_name:
             parser.print_help()
             sys.exit(0)
+        try:
+            # if a subcommand was identified, call the function assigned to it
+            # this is the functional equivalent of the call by reflection in the previous structure
+            # https://stackoverflow.com/questions/49038616/argparse-subparsers-with-functions
+            namespace.func.run_command(namespace)
+        except Exception as e:
+            logger.exception(e)
 
-        # if a subcommand was identified, call the function assigned to it
-        # this is the functional equivalent of the call by reflection in the previous structure
-        # https://stackoverflow.com/questions/49038616/argparse-subparsers-with-functions
-        namespace.func.run_command(namespace)
         return namespace

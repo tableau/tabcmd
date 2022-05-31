@@ -225,7 +225,7 @@ class OnlineCommandTest(unittest.TestCase):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         self._publish_wb(file, name_on_server)
-        # waiting for tsc update self._delete_extract(name_on_server)
+        self._delete_extract(name_on_server)
         self._delete_wb(name_on_server)
 
     def test_version(self):
