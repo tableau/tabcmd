@@ -83,7 +83,7 @@ class GetUrl(DatasourcesAndWorkbooks):
                 type_of_file = GetUrl.get_file_extension(url)
 
         if not type_of_file:
-            Errors.exit_with_error(logger,  _("tabcmd.error.extension.not_found")")
+            Errors.exit_with_error(logger, _("tabcmd.error.extension.not_found"))
 
         logger.debug("extension from command line is {}".format(type_of_file))
         if type_of_file in ["pdf", "csv", "png", "twb", "twbx"]:
@@ -152,7 +152,7 @@ class GetUrl(DatasourcesAndWorkbooks):
                 f.write(view_item.pdf)
             logger.info(_("export_success"), views_from_list.name, formatted_file_name)
         except TSC.ServerResponseError as e:
-             GetUrl.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
+            GetUrl.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
 
     @staticmethod
     def generate_png(logger, server, args):
@@ -166,7 +166,7 @@ class GetUrl(DatasourcesAndWorkbooks):
                 f.write(view_item.png)
             logger.info(_("export_success"), views_from_list.name, formatted_file_name)
         except TSC.ServerResponseError as e:
-             GetUrl.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
+            GetUrl.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
 
     @staticmethod
     def generate_csv(logger, server, args):

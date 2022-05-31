@@ -29,7 +29,7 @@ def login(extra="--language", value="en"):
         credentials.token_name,
         "--no-certcheck",
         extra,
-        value
+        value,
     ]
     print(args)
     return subprocess.check_call(args, stderr=subprocess.STDOUT, shell=True)

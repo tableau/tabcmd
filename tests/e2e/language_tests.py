@@ -24,8 +24,7 @@ def _test_command(test_args: list[str]):
     # this will raise an exception if it gets a non-zero return code
     # that should bubble up and fail the test?
     # dist/exe calling_args = [setup_e2e.exe] + test_args + [debug_log]
-    calling_args = ["python", "-m", "tabcmd"] + \
-                   test_args + [debug_log] + ["--language", "fr", "--no-certcheck"]
+    calling_args = ["python", "-m", "tabcmd"] + test_args + [debug_log] + ["--language", "fr", "--no-certcheck"]
     print(calling_args)
     return subprocess.check_call(calling_args)
 
@@ -114,7 +113,6 @@ class OnlineCommandTest(unittest.TestCase):
     TWBX_WITH_EXTRACT_SHEET = "sheet1"
     TWBX_FILE_WITHOUT_EXTRACT = "simple-data.twbx"
     TWBX_WITHOUT_EXTRACT_NAME = "WorkbookWithoutExtract"
-
 
     @pytest.mark.order(2)
     def test_create_site_users(self):
