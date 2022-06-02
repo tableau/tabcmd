@@ -10,7 +10,7 @@ You can use the following commands with the tabcmd command-line tool in Tableau 
 * TOC
 {:toc}
 
-<div class="alert alert-note"><strong>Note</strong>: Support for Tableau Server is currently limited to the following commands: <code>addusers</code>, <code>createextracts</code>, <code>creategroup</code>, <code>createproject</code>, <code>createsite</code>, <code>createsiteusers</code>, <code>decryptextracts</code>, <code>delete</code>, <code>deleteextracts</code>, <code>deletegroup</code>, <code>deleteproject</code>, <code>deletesite</code>, <code>deletesiteusers</code>, <code>editsite</code>, <code>encryptextracts</code>, <code>export</code>, <code>get</code>, <code>help</code>, <code>listsites</code>, <code>login</code>, <code>logout</code>, <code>publish</code>, <code>publishsamples</code>, <code>reencryptextracts</code>, <code>refreshextracts</code>, <code>removeusers</code></div>
+<div class="alert alert-info"><strong>Note</strong>: Support for Tableau Server is currently limited to the following commands: <code>addusers</code>, <code>createextracts</code>, <code>creategroup</code>, <code>createproject</code>, <code>createsite</code>, <code>createsiteusers</code>, <code>decryptextracts</code>, <code>delete</code>, <code>deleteextracts</code>, <code>deletegroup</code>, <code>deleteproject</code>, <code>deletesite</code>, <code>deletesiteusers</code>, <code>editsite</code>, <code>encryptextracts</code>, <code>export</code>, <code>get</code>, <code>help</code>, <code>listsites</code>, <code>login</code>, <code>logout</code>, <code>publish</code>, <code>publishsamples</code>, <code>reencryptextracts</code>, <code>refreshextracts</code>, <code>removeusers</code></div>
 
 ## addusers *group-name*
 Adds users to the specified group.
@@ -237,8 +237,6 @@ The following options are used by all tabcmd commands. The `--server`, `--user`,
 : Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
 
 ```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
-
-## createsite
 
 ## createsiteusers *filename.csv*
 
