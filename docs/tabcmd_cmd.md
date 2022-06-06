@@ -10,7 +10,6 @@ You can use the following commands with the tabcmd command-line tool in Tableau 
 * TOC
 {:toc}
 
-<div class="alert alert-info"><strong>Note</strong>: Support for Tableau Server is currently limited to the following commands: <code>addusers</code>, <code>createextracts</code>, <code>creategroup</code>, <code>createproject</code>, <code>createsite</code>, <code>createsiteusers</code>, <code>decryptextracts</code>, <code>delete</code>, <code>deleteextracts</code>, <code>deletegroup</code>, <code>deleteproject</code>, <code>deletesite</code>, <code>deletesiteusers</code>, <code>editsite</code>, <code>encryptextracts</code>, <code>export</code>, <code>get</code>, <code>help</code>, <code>listsites</code>, <code>login</code>, <code>logout</code>, <code>publish</code>, <code>publishsamples</code>, <code>reencryptextracts</code>, <code>refreshextracts</code>, <code>removeusers</code></div>
 
 ## addusers *group-name*
 Adds users to the specified group.
@@ -238,6 +237,105 @@ The following options are used by all tabcmd commands. The `--server`, `--user`,
 
 ```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
 
+## createsite *site-name*
+
+<div class="alert alert-info"><strong>Note</strong>: Tableau Server only.</div>
+
+Creates a site.
+
+### Examples
+
+Create a site named West Coast Sales. A site ID of WestCoastSales will be automatically created, the site will have no storage quota limit, and site administrators will be able to add and remove users:
+
+```tabcmd createsite "West Coast Sales"```
+
+Create a site named West Coast Saleswith a site ID of wsales:
+
+```tabcmd createsite "West Coast Sales" -r "wsales"```
+
+Prevent site administrators from adding users to the site:
+
+```tabcmd createsite "West Coast Sales" --no-site-mode```
+
+Set a storage quota, in MB:
+
+```tabcmd createsite "West Coast Sales" --storage-quota 100```
+
+### Options
+
+\-r, \-\-url
+
+: Used in URLs to specify the site. Different from the site name.
+
+\-\-user-quota
+
+: Maximum number of users that can be added to the site.
+
+\-\-[no-]site-mode
+
+: Allows or denies site administrators the ability to add users to or remove users from the site.
+
+\-\-storage-quota
+
+: In MB, the amount of workbooks, extracts, and data sources that can be stored on the site.
+
+\-\-extract-encryption-mode
+
+: The extract encryption mode for the site can be enforced, enabled or disabled. For more information, see [Extract Encryption at Rest](https://help.tableau.com/current/server/en-us/security_ear.htm).
+
+\-\-run-now-enabled
+
+: Allow or deny users from running extract refreshes, flows, or schedules manually. true to allow users to run tasks manually or false to prevent users from running tasks manually. For more information, see [Server Settings (General and Customization)](https://help.tableau.com/current/server/en-us/maintenance_set.htm).
+
+###  Global options
+
+The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+
+-h, \-\-help
+
+: Displays the help for the command.
+
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd with Tableau Online.</div>
+
+-s, \-\-server
+
+: The Tableau Online URL, which is required at least once to begin session.
+
+-u, \-\-user
+
+: The Tableau Online username, which is required at least once to begin session.
+
+-p, \-\-password
+
+: The Tableau Online password, which is required at least once to begin session.
+
+\-\-password-file
+
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
+
+-t, \-\-site
+
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
+
+\-\-no-prompt
+
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
+
+\-\-[no-]cookie
+
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
+
+\-\-timeout
+
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
+
+\-\-
+
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+
+```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
+
+
 ## createsiteusers *filename.csv*
 
 Adds users to a site, based on information supplied in a comma-separated values (CSV) file. If the user is not already created on the server, the command creates the user before adding that user to the site.
@@ -342,6 +440,66 @@ The following options are used by all tabcmd commands. The `--server`, `--user`,
 : Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
 
 ```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
+
+## decryptextracts
+<div class="alert alert-info"><strong>Note</strong>: Tableau Server only.</div>
+
+Decrypts all extracts on a site. If no site is specified, extracts on the default site will be decrypted. For more information, see [Extract Encryption at Rest](https://help.tableau.com/current/server/en-us/security_ear.htm).
+
+Depending on the number and size of extracts, this operation may consume significant server resources. Consider running this command outside of normal business hours.
+
+### Example
+
+```tabcmd decryptextracts "West Coast Sales"```
+
+### Global options
+
+The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+
+-h, \-\-help
+
+: Displays the help for the command.
+
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd with Tableau Online.</div>
+
+-s, \-\-server
+
+: The Tableau Online URL, which is required at least once to begin session.
+
+-u, \-\-user
+
+: The Tableau Online username, which is required at least once to begin session.
+
+-p, \-\-password
+
+: The Tableau Online password, which is required at least once to begin session.
+
+\-\-password-file
+
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
+
+-t, \-\-site
+
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
+
+\-\-no-prompt
+
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
+
+\-\-[no-]cookie
+
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
+
+\-\-timeout
+
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
+
+\-\-
+
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+
+```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
+
 
 
 ## delete workbook-name or datasource-name
@@ -625,6 +783,64 @@ The following options are used by all tabcmd commands. The `--server`, `--user`,
 
 ```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
 
+## deletesite *site-name*
+
+<div class="alert alert-info"><strong>Note</strong>: Tableau Server only.</div>
+
+Deletes the specified site from the server.
+
+### Example
+
+```tabcmd deletesite "Development"```
+
+### Global options
+
+The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+
+-h, \-\-help
+
+: Displays the help for the command.
+
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd with Tableau Online.</div>
+
+-s, \-\-server
+
+: The Tableau Online URL, which is required at least once to begin session.
+
+-u, \-\-user
+
+: The Tableau Online username, which is required at least once to begin session.
+
+-p, \-\-password
+
+: The Tableau Online password, which is required at least once to begin session.
+
+\-\-password-file
+
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
+
+-t, \-\-site
+
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
+
+\-\-no-prompt
+
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
+
+\-\-[no-]cookie
+
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
+
+\-\-timeout
+
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
+
+\-\-
+
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+
+```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
+
 
 ## deletesiteusers *filename.csv*
 Removes users from from the site that you are logged in to. The users to be removed are specified in a file that contains a simple list of one user name per line. (No additional information is required beyond the user name.)
@@ -636,6 +852,164 @@ If the user owns content, the user's role is change to **Unlicensed**, but the u
 ### Example
 
 `tabcmd deletesiteusers "users.csv"`
+
+### Global options
+
+The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+
+-h, \-\-help
+
+: Displays the help for the command.
+
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd with Tableau Online.</div>
+
+-s, \-\-server
+
+: The Tableau Online URL, which is required at least once to begin session.
+
+-u, \-\-user
+
+: The Tableau Online username, which is required at least once to begin session.
+
+-p, \-\-password
+
+: The Tableau Online password, which is required at least once to begin session.
+
+\-\-password-file
+
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
+
+-t, \-\-site
+
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
+
+\-\-no-prompt
+
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
+
+\-\-[no-]cookie
+
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
+
+\-\-timeout
+
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
+
+\-\-
+
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+
+```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
+
+## editsite *site-name*
+
+<div class="alert alert-info"><strong>Note</strong>: Tableau Server only.</div>
+
+Changes the name of a site or its web folder name. You can also use this command to allow or deny site administrators the ability to add and remove users, or prevent users from running certain tasks manually. If site administrators have user management rights, you can specify how many users they can add to a site.
+
+### Examples
+
+```tabcmd editsite wc_sales --site-name "West Coast Sales"```
+
+```tabcmd editsite wc_sales --site-id "wsales"```
+
+```tabcmd editsite wsales --status ACTIVE```
+
+```tabcmd editsite wsales --user-quota 50```
+
+### Options
+
+\-\-site-name
+
+: The name of the site that's displayed.
+
+\-\-site-id
+
+: Used in the URL to uniquely identify the site.
+
+\-\-user-quota
+
+: Maximum number of users who can be members of the site.
+
+\-\-[no-]site-mode
+
+: Allow or prevent site administrators from adding users to the site.
+
+\-\-status
+
+: Set to ACTIVE to activate a site, or to SUSPENDED to suspend a site.
+
+\-\-storage-quota
+
+: In MB, the amount of workbooks, extracts, and data sources that can be stored on the site.
+
+\-\-extract-encryption-mode
+
+: The extract encryption mode for the site can be enforced, enabled or disabled. For more information, see [Extract Encryption at Rest](https://help.tableau.com/current/server-linux/en-us/security_ear.htm). Depending on the number and size of extracts, this operation may consume significant server resources.
+
+\-\-run-now-enabled
+
+: Allow or deny users from running extract refreshes, flows, or schedules manually. true to allow users to run tasks manually or false to prevent users from running tasks manually. For more information, see [Server Settings (General and Customization)](https://help.tableau.com/current/server-linux/en-us/maintenance_set.htm).
+
+### Global options
+
+The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+
+-h, \-\-help
+
+: Displays the help for the command.
+
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd with Tableau Online.</div>
+
+-s, \-\-server
+
+: The Tableau Online URL, which is required at least once to begin session.
+
+-u, \-\-user
+
+: The Tableau Online username, which is required at least once to begin session.
+
+-p, \-\-password
+
+: The Tableau Online password, which is required at least once to begin session.
+
+\-\-password-file
+
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
+
+-t, \-\-site
+
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
+
+\-\-no-prompt
+
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
+
+\-\-[no-]cookie
+
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
+
+\-\-timeout
+
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
+
+\-\-
+
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+
+```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
+
+## encryptextracts
+
+<div class="alert alert-info"><strong>Note</strong>: Tableau Server only.</div>
+
+Encrypt all extracts on a site. If no site is specified, extracts on the default site will be encrypted. For more information, see [Extract Encryption at Rest](https://help.tableau.com/current/server/en-us/security_ear.htm).
+
+Depending on the number and size of extracts, this operation may consume significant server resources. Consider running this command outside of normal business hours.
+
+### Example
+
+```tabcmd encryptextracts "West Coast Sales"```
 
 ### Global options
 
@@ -893,6 +1267,69 @@ You can optionally add the URL parameter ?:refresh=yes to force a fresh data que
 #### Workbooks
 
 ```tabcmd get "/workbooks/Sales_Analysis.twb" -f "C:\Tableau_Workbooks\Weekly-Reports.twb"```
+
+### Global options
+
+The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+
+-h, \-\-help
+
+: Displays the help for the command.
+
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd with Tableau Online.</div>
+
+-s, \-\-server
+
+: The Tableau Online URL, which is required at least once to begin session.
+
+-u, \-\-user
+
+: The Tableau Online username, which is required at least once to begin session.
+
+-p, \-\-password
+
+: The Tableau Online password, which is required at least once to begin session.
+
+\-\-password-file
+
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
+
+-t, \-\-site
+
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
+
+\-\-no-prompt
+
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
+
+\-\-[no-]cookie
+
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
+
+\-\-timeout
+
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
+
+\-\-
+
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+
+```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
+
+## listsites
+
+<div class="alert alert-info"><strong>Note</strong>: Tableau Server only.</div>
+
+Returns a list of sites to which the logged in user belongs.
+
+### Example
+
+```tabcmd listsites --username adam --password mypassword```
+
+### Options
+```--get-extract-encryption-mode```
+
+The extract encryption mode for the site can be enforced, enabled or disabled. For more information, see [Extract Encryption at Rest](https://help.tableau.com/current/server/en-us/security_ear.htm).
 
 ### Global options
 
@@ -1229,6 +1666,140 @@ The following options are used by all tabcmd commands. The `--server`, `--user`,
 
 ```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
 
+## publishsamples
+
+<div class="alert alert-info"><strong>Note</strong>: Tableau Server only.</div>
+
+Publishes Tableau sample workbooks to the specified project. Any existing samples will be overwritten.
+
+<! --- Syntax 
+tabcmd publishsamples -n [project name] [Global options] --->
+
+### Example
+
+Publish samples to the Inside Sales project on the Default site, as user jsmith.
+
+```tabcmd publishsamples -n "Inside Sales" -t "" -s localhost --username "jsmith" --password "secret-password"```
+
+### Options
+-n, \-\-name
+
+Required. Publishes the Tableau samples into the specified project. If the project name includes spaces, enclose the entire name in quotes.
+
+\-\-parent-project-path
+
+Specifies the name of the parent project for the nested project as specified with the -n option. For example, to specify a project called "Nested" that exists in a "Main" project, use the following syntax: ```--parent-project-path "Main" -n "Nested"```.
+
+### Global options
+
+The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+
+-h, \-\-help
+
+: Displays the help for the command.
+
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd with Tableau Online.</div>
+
+-s, \-\-server
+
+: The Tableau Online URL, which is required at least once to begin session.
+
+-u, \-\-user
+
+: The Tableau Online username, which is required at least once to begin session.
+
+-p, \-\-password
+
+: The Tableau Online password, which is required at least once to begin session.
+
+\-\-password-file
+
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
+
+-t, \-\-site
+
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
+
+\-\-no-prompt
+
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
+
+\-\-[no-]cookie
+
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
+
+\-\-timeout
+
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
+
+\-\-
+
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+
+```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
+
+## reencryptextracts
+
+<div class="alert alert-info"><strong>Note</strong>: Tableau Server only.</div>
+
+Reencrypt all extracts on a site with new encryption keys. This command will regenerate the key encryption key and data encryption key. You must specify a site. For more information, see [Extract Encryption at Rest](https://help.tableau.com/current/server/en-us/security_ear.htm).
+
+Depending on the number and size of extracts, this operation may consume significant server resources. Consider running this command outside of normal business hours.
+
+### Examples
+
+```tabcmd reencryptextracts "Default"```
+
+```tabcmd reencryptextracts "West Coast Sales"```
+
+### Global options
+
+The following options are used by all tabcmd commands. The `--server`, `--user`, and `--password` options are required at least once to begin a session. An authentication token is stored so subsequent commands can be run without including these options. This token remains valid for five minutes after the last command that used it.
+
+-h, \-\-help
+
+: Displays the help for the command.
+
+<div class="alert alert-info"><strong>Note</strong>: Some commands listed may not apply when using tabcmd with Tableau Online.</div>
+
+-s, \-\-server
+
+: The Tableau Online URL, which is required at least once to begin session.
+
+-u, \-\-user
+
+: The Tableau Online username, which is required at least once to begin session.
+
+-p, \-\-password
+
+: The Tableau Online password, which is required at least once to begin session.
+
+\-\-password-file
+
+: Allows the password to be stored in the given .txt file rather than the command line for increased security.
+
+-t, \-\-site
+
+: Indicates that the command applies to the site specified by the Tableau Online site ID, surrounded by single quotes or double quotes. Use this option if the user specified is associated with more than one site. Site ID is case-sensitive when using a cached authentication token. If you do not match case you may be prompted for a password even if the token is still valid.
+
+\-\-no-prompt
+
+: When specified, the command will not prompt for a password. If no valid password is provided the command will fail.
+
+\-\-[no-]cookie
+
+: When specified, the session ID is saved on login so subsequent commands will not need to log in. Use the no- prefix to not save the session ID. By default, the session is saved.
+
+\-\-timeout
+
+: Waits the specified number of seconds for the server to complete processing the command. By default, the process will wait until the server responds.
+
+\-\-
+
+: Specifies the end of options on the command line. You can use \-\- to indicate to tabcmd that anything that follows \-\- should not be interpreted as an option setting and can instead be interpreted as a value for the command. This is useful if you need to specify a value in the command that includes a hyphen. The following example shows how you might use \-\- in a tabcmd command, where -430105/Sheet1 is a required value for the export command.
+
+```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
+
 
 ## refreshextracts *workbook-name* or *datasource-name*
 
@@ -1425,13 +1996,13 @@ The following options are used by all tabcmd commands. The `--server`, `--user`,
 
 
 ## runschedule *schedule-name*
+
+<div class="alert alert-info"><strong>Note</strong>: Tableau Server only.</div>
 Runs the specified schedule.
 
 This command takes the name of the schedule as it is on the server.
 
-This command is not available for Tableau Online.
-
-<div class="alert alert-info"><strong>Note</strong>: This method will fail and result in an error if your Server Administrator has disabled the RunNow setting for the site. For more information, see <a href="https://help.tableau.com/current/server/en-us/maintenance_set.htm">Tableau Server Settings</a>.</div>
+<div class="alert alert-info"><strong>Important</strong>: This command will fail and result in an error if your Server Administrator has disabled the RunNow setting for the site. For more information, see <a href="https://help.tableau.com/current/server/en-us/maintenance_set.htm">Tableau Server Settings</a>.</div>
 
 ### Example
 
@@ -1485,4 +2056,9 @@ The following options are used by all tabcmd commands. The `--server`, `--user`,
 
 ```tabcmd export --csv -f "D:\export10.csv" -- -430105/Sheet1```
 
+## version
+Displays the version information for the current installation of the tabcmd utility.
 
+### Example
+
+```tabcmd version```
