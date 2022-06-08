@@ -1,10 +1,8 @@
-import tableauserverclient as TSC
-
 from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
-from tabcmd.commands.constants import Errors
 from tabcmd.execution.logger_config import log
 from .user_data import UserCommand
+from tabcmd.execution.localize import _
 
 
 class AddUserCommand(UserCommand):
@@ -13,7 +11,7 @@ class AddUserCommand(UserCommand):
     """
 
     name: str = "addusers"
-    description: str = "Add users to a group"
+    description: str = _("addusers.short_description")
 
     @staticmethod
     def define_args(add_user_parser):
@@ -24,10 +22,10 @@ class AddUserCommand(UserCommand):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug("======================= Launching command =======================")
+        logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
 
-        logger.info("Adding users listed in {0} to group '{1}'".format(args.users.name, args.name))
+        logger.info(_("tabcmd.add.users.to_site").format(args.users.name, args.name))
 
         UserCommand.act_on_users(logger, server, "added", server.groups.add_user, args)

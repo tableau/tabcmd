@@ -5,6 +5,7 @@ from tabcmd.commands.constants import Constants
 from tabcmd.execution.logger_config import log
 from tabcmd.execution.global_options import *
 from .user_data import UserCommand
+from tabcmd.execution.localize import _
 
 
 class CreateSiteUsersCommand(UserCommand):
@@ -15,7 +16,7 @@ class CreateSiteUsersCommand(UserCommand):
     """
 
     name: str = "createsiteusers"
-    description: str = "Create users on the current site"
+    description: str = _("createsiteusers.short_description")
 
     @staticmethod
     def define_args(create_site_users_parser):
@@ -26,44 +27,34 @@ class CreateSiteUsersCommand(UserCommand):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug("======================= Launching command =======================")
+        logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
         number_of_users_listed = 0
         number_of_users_added = 0
         number_of_errors = 0
 
-        if args.site_name:
-            creation_site = args.site_name
-        else:
-            creation_site = "current site"
+        creation_site = "current site"
 
         UserCommand.validate_file_for_import(args.filename, logger, detailed=True, strict=args.require_all_valid)
 
-        logger.info("===== Adding users listed in {0} to {1}...".format(args.filename.name, creation_site))
+        logger.info(_("tabcmd.add.users.to_x").format(args.filename.name, creation_site))
         user_obj_list = UserCommand.get_users_from_file(args.filename, logger)
-        logger.info("======== 0% complete ========")
+        logger.info(_("session.monitorjob.percent_complete"))
         error_list = []
         for user_obj in user_obj_list:
             try:
                 number_of_users_listed += 1
                 result = server.users.add(user_obj)
-                logger.info("Successfully created user on {} {}".format(user_obj.name, creation_site))
+                logger.info(_("tabcmd.result.success.create_user").format(user_obj.name))
                 number_of_users_added += 1
             except TSC.ServerResponseError as e:
                 number_of_errors += 1
-                logger.debug("Failed to add user: {}".format(e))
-                if e.code == Constants.forbidden:
-                    error = "User is not local, and the user's credentials are not maintained on Tableau Server."
-                if e.code == Constants.invalid_credentials:
-                    error = "Unauthorized access, Please log in."
-                if e.code == Constants.user_already_member_of_site:
-                    error = "User: {} already member of site".format(user_obj.name)
-                error_list.append(error)
-                logger.debug(error)
-        logger.info("======== 100% complete ========")
-        logger.info("======== Lines processed: {} =========".format(number_of_users_listed))
-        logger.info("Lines skipped: {}".format(number_of_errors))
-        logger.info("Number of users added: {}".format(number_of_users_added))
+                error_list.append(e)
+                logger.debug(e)
+        logger.info(_("session.monitorjob.percent_complete").format(100))
+        logger.info(_("importcsvsummary.line.processed").format(number_of_users_listed))
+        logger.info(_("importcsvsummary.line.skipped").format(number_of_errors))
+        logger.info(_("importcsvsummary.users.added.count").format(number_of_users_added))
         if number_of_errors > 0:
-            logger.info("Error details: {}".format(error_list))
+            logger.info(_("importcsvsummary.error.details").format(error_list))

@@ -9,12 +9,16 @@ from urllib3.exceptions import InsecureRequestWarning
 from tabcmd.commands.constants import Errors
 from tabcmd.execution.logger_config import log
 import csv
+from tabcmd.execution.localize import _
 
 
 class Session:
     """
     Session class handles all authentication related work
     """
+
+    TOKEN_CRED_TYPE = "token"
+    PASSWORD_CRED_TYPE = "password"
 
     TOKEN_CRED_TYPE = "token"
     PASSWORD_CRED_TYPE = "password"
@@ -89,9 +93,9 @@ class Session:
             if self.password_file:
                 password = Session._read_password_from_file(self.password_file)
             elif self._allow_prompt():
-                password = getpass.getpass("Password:")
+                password = getpass.getpass(_("session.password"))
             else:
-                Errors.exit_with_error(self.logger, "No password entered")
+                Errors.exit_with_error(self.logger, _("session.errors.script_no_password"))
 
         if credential_type == Session.PASSWORD_CRED_TYPE and self.username and password:
             credentials = TSC.TableauAuth(self.username, password, site_id=self.site_name)
@@ -129,10 +133,10 @@ class Session:
         return tableau_server
 
     def _create_new_connection(self):
-        self.logger.info("===== Creating new session")
+        self.logger.info(_("session.new_session"))
         self.tableau_server = self._set_connection_options()
         self._print_server_info()
-        self.logger.info("===== Connecting to the server...")
+        self.logger.info(_("session.connecting"))
         self.tableau_server.use_server_version()  # this will attempt to contact the server
 
     def _read_existing_state(self):
@@ -148,7 +152,7 @@ class Session:
         self.logger.info("=====   Site: {}".format(self.site_name))
 
     def _validate_existing_signin(self):
-        self.logger.info("===== Continuing previous session")
+        self.logger.info(_("session.continuing_session"))
         self.tableau_server = self._set_connection_options()
         try:
             if self.tableau_server and self.tableau_server.is_signed_in():
@@ -175,7 +179,7 @@ class Session:
             if not self.username:
                 self.username = self.tableau_server.users.get_by_id(self.user_id).name
             self.logger.debug("Signed into {0}{1} as {2}".format(self.server_url, self.site_name, self.username))
-            self.logger.info("=========Succeeded========")
+            self.logger.info(_("common.output.succeeded"))
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(self.logger, "Server response", e)
 
@@ -229,9 +233,8 @@ class Session:
             signed_in_object = self._sign_in(credentials)
 
         if not signed_in_object:
-            Errors.exit_with_error(
-                self.logger, "Unable to find or create a session. Please check credentials and login again."
-            )
+            missing_var = _("editdomain.errors.requires_nickname_name").format("username", "token")
+            Errors.exit_with_error(self.logger, _("session.errors.missing_arguments").format(missing_var))
         if args.no_cookie:
             self._remove_json()
         else:

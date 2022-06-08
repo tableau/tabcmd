@@ -5,6 +5,7 @@ from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 from tabcmd.commands.datasources_and_workbooks.export_command import ExportCommand
 from tabcmd.execution.global_options import *
+from tabcmd.execution.localize import _
 from tabcmd.commands.constants import Errors
 
 
@@ -15,7 +16,7 @@ class GetUrl(DatasourcesAndWorkbooks):
     """
 
     name: str = "get"
-    description: str = "Get a file from the server"
+    description: str = _("get.short_description")
 
     @staticmethod
     def define_args(get_url_parser):
@@ -53,7 +54,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             elif file_type == "csv":
                 GetUrl.generate_csv(logger, server, args)
             else:
-                Errors.exit_with_error(logger, message="No valid file extension found in url or filename")
+                Errors.exit_with_error(logger, message=_("tabcmd.get.extension.not_found"))
 
     @staticmethod
     def evaluate_content_type(logger, url):
@@ -82,7 +83,7 @@ class GetUrl(DatasourcesAndWorkbooks):
                 type_of_file = GetUrl.get_file_extension(url)
 
         if not type_of_file:
-            Errors.exit_with_error(logger, "The url must include a file extension if no filename is specified")
+            Errors.exit_with_error(logger, _("tabcmd.error.extension.not_found"))
 
         logger.debug("extension from command line is {}".format(type_of_file))
         if type_of_file in ["pdf", "csv", "png", "twb", "twbx"]:
@@ -149,9 +150,9 @@ class GetUrl(DatasourcesAndWorkbooks):
             filename = GetUrl.filename_from_args(args.filename, view_item.name, "pdf")
             with open(filename, "wb") as f:
                 f.write(view_item.pdf)
-            logger.info("Saved {} to '{}'".format(args.url, filename))
+            logger.info(_("export_success"), view_item.name, args.filename)
         except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, "Server error:", e)
+            GetUrl.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
 
     @staticmethod
     def generate_png(logger, server, args):
@@ -163,9 +164,9 @@ class GetUrl(DatasourcesAndWorkbooks):
             filename = GetUrl.filename_from_args(args.filename, view_item.name, "png")
             with open(filename, "wb") as f:
                 f.write(view_item.png)
-            logger.info("Saved {} to '{}'".format(args.url, filename))
+            logger.info(_("export_success"), views_from_list.name, formatted_file_name)
         except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, "Server error:", e)
+            GetUrl.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
 
     @staticmethod
     def generate_csv(logger, server, args):
@@ -177,9 +178,9 @@ class GetUrl(DatasourcesAndWorkbooks):
             file_name_with_path = GetUrl.filename_from_args(args.filename, view_item.name, "csv")
             with open(file_name_with_path, "wb") as f:
                 f.write(view_item.csv)
-            logger.info("Saved {} to '{}'".format(args.url, file_name_with_path))
+            logger.info(_("export_success"), views_from_list.name, formatted_file_name)
         except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, "Server error:", e)
+            GetUrl.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
 
     @staticmethod
     def generate_twb(logger, server, args, file_extension):
@@ -188,6 +189,6 @@ class GetUrl(DatasourcesAndWorkbooks):
             target_workbook = GetUrl.get_wb_by_content_url(logger, server, workbook_name)
             file_name_with_path = GetUrl.filename_from_args(args.filename, workbook_name, file_extension)
             server.workbooks.download(target_workbook.id, filepath=file_name_with_path, no_extract=False)
-            logger.info("Saved {} to '{}'".format(args.url, file_name_with_path))
+            logger.info(_("export_success"), target_workbook.name)
         except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, "Server error:", e)
+            GetUrl.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)

@@ -4,6 +4,7 @@ from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
+from tabcmd.execution.localize import _
 
 
 class ListSiteCommand(Server):
@@ -12,7 +13,7 @@ class ListSiteCommand(Server):
     """
 
     name: str = "listsites"
-    description: str = "List sites for user"
+    description: str = _("listsites.short_description")
 
     @staticmethod
     def define_args(list_site_parser):
@@ -21,12 +22,12 @@ class ListSiteCommand(Server):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug("======================= Launching command =======================")
+        logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
         try:
             sites = Server.get_sites(server)
-            logger.info("===== Listing sites for user {}...".format(session.username))
+            logger.info(_("listsites.status").format(session.username))
             for site in sites:
                 print("NAME:", site.name)
                 print("SITEID:", site.content_url)

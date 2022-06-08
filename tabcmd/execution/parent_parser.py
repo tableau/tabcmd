@@ -162,4 +162,11 @@ class ParentParser:
             help="Show version information and exit.",
         )
 
+        # TODO get the list of choices dynamically?
+        parser.add_argument(
+            "--language",
+            choices=["de", "en", "es", "fr", "it", "ja", "ko", "pt", "sv", "zh"],
+            help="Set the language to use. Exported data will be returned in this lang/locale."
+            "If not set, the client will use your computer locale, and the server will use your user account locale",
+        )
         return parser

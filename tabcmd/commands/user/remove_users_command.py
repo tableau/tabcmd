@@ -2,6 +2,7 @@ from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
 from .user_data import UserCommand
+from tabcmd.execution.localize import _
 
 
 class RemoveUserCommand(UserCommand):
@@ -10,7 +11,7 @@ class RemoveUserCommand(UserCommand):
     """
 
     name: str = "removeusers"
-    description: str = "Remove users from a group"
+    description: str = _("removeusers.short_description")
 
     @staticmethod
     def define_args(remove_users_parser):
@@ -21,10 +22,10 @@ class RemoveUserCommand(UserCommand):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug("======================= Launching command =======================")
+        logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
 
-        logger.info("Removing users listed in {0} from group '{1}'".format(args.users.name, args.name))
+        logger.info(_("tabcmd.delete.users.from_server").format(args.users.name, args.name))
 
         UserCommand.act_on_users(logger, server, "removed", server.groups.remove_user, args)

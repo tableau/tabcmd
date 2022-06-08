@@ -1,0 +1,3275 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=utf-8"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: None"
+"Language: ja"
+# Copyright (C) YEAR Tableau Software
+
+
+# These outcome reporting lines were all returned from the server in clientxml
+# https://sourcegraph.prod.tableautools.com/teams/near/-/blob/workgroup/src/shared/libraries/tab-strings/res/localization/shared_wg_en.properties
+# how much of this can be replaced by server responses?
+
+msgid "tabcmd.result.already_exists.group"
+msgstr "Group called ''{}'' already exists"
+
+msgid "tabcmd.result.failed.delete.group"
+msgstr "Error deleting group from server"
+
+msgid "tabcmd.result.success.create_user"
+msgstr "Successfully created user: {}"
+
+msgid "tabcmd.report.users_added"
+msgstr "Number of users added: {}"
+
+msgid "tabcmd.report.errors"
+msgstr "Error details: \n{}"
+
+msgid "tabcmd.report.error.user_csv.too_many_columns"
+msgstr "The file contains {} columns, but there are only {} valid columns in a user import csv file"
+
+msgid "tabcmd.report.error.user_csv.at_char"
+msgstr "If a user name includes an @ character that represents anything other than a domain separator, "
+                    "you need to refer to the symbol using the hexadecimal format: \\0x40"
+
+msgid "tabcmd.report.error.user.no_spaces_in_username"
+msgstr "Username cannot contain spaces"
+
+msgid "tabcmd.report.error.generic_attribute"
+msgstr "Invalid value for {0}: {1}"
+
+msgid "tabcmd.report.error.publish_samples.expected_project"
+msgstr "publishsamples expects the specified project to exist already"
+
+msgid "tabcmd.result.failure.publish_samples"
+msgstr "Failed publishing samples to project"
+
+msgid "tabcmd.launching"
+msgstr "======================= Launching command ======================="
+
+msgid "tabcmd.find.group"
+msgstr "Finding group ''{}'' on server..."
+
+# Each actual command has a status line in translation
+
+msgid "tabcmd.add.users.to_site"
+msgstr "===== Adding users listed in {0} to {1}..."
+
+msgid "tabcmd.delete.users.from_server"
+msgstr "Removing users listed in {0} from the server..."
+
+msgid "tabcmd.get.extension.not_found"
+msgstr "You must specify a file type in the url or filename"
+
+msgid "tabcmd.run_schedule.options.schedule"
+msgstr "Name of the schedule to run"
+msgid ""
+msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=utf-8"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: None"
+"Language: ja"
+#:
+msgid "permissions.labels.capabilities.read"
+msgstr "ビュー:"
+
+#:
+msgid "permissions.labels.capabilities.write"
+msgstr "上書き:"
+
+#:
+msgid "permissions.labels.capabilities.write.legacy"
+msgstr "保存:"
+
+#:
+msgid "permissions.labels.capabilities.delete"
+msgstr "削除:"
+
+#:
+msgid "permissions.labels.capabilities.filter"
+msgstr "フィルター:"
+
+#:
+msgid "permissions.labels.capabilities.add_tag"
+msgstr "タグの追加:"
+
+#:
+msgid "permissions.labels.capabilities.add_favorite"
+msgstr "お気に入りの追加:"
+
+#:
+msgid "permissions.labels.capabilities.add_comment"
+msgstr "コメントの追加:"
+
+#:
+msgid "permissions.labels.capabilities.add_comment.legacy"
+msgstr "コメントの追加:"
+
+#:
+msgid "permissions.labels.capabilities.view_comments"
+msgstr "コメントの表示:"
+
+#:
+msgid "permissions.labels.capabilities.vud"
+msgstr "完全なデータのダウンロード:"
+
+#:
+msgid "permissions.labels.capabilities.export_image"
+msgstr "画像/PDF のダウンロード:"
+
+#:
+msgid "permissions.labels.capabilities.export_data"
+msgstr "サマリー データのダウンロード:"
+
+#:
+msgid "permissions.labels.capabilities.export_xml"
+msgstr "ダウンロード/コピーの保存:"
+
+#:
+msgid "permissions.labels.capabilities.export_xml.legacy"
+msgstr "ダウンロード/名前を付けて保存:"
+
+#:
+msgid "permissions.labels.capabilities.save_customized_view"
+msgstr "カスタマイズされたビューの保存:"
+
+#:
+msgid "permissions.labels.capabilities.share_view"
+msgstr "カスタマイズの共有:"
+
+#:
+msgid "permissions.labels.capabilities.stateful_url"
+msgstr "パーマリンク:"
+
+#:
+msgid "permissions.labels.capabilities.change_hierarchy"
+msgstr "移動:"
+
+#:
+msgid "permissions.labels.capabilities.change_permissions"
+msgstr "パーミッションの設定:"
+
+#:
+msgid "permissions.labels.capabilities.exclude"
+msgstr "除外:"
+
+#:
+msgid "permissions.labels.capabilities.keep_only"
+msgstr "保持:"
+
+#:
+msgid "permissions.labels.capabilities.select"
+msgstr "マークの選択:"
+
+#:
+msgid "permissions.labels.capabilities.tooltip"
+msgstr "ツールヒントの表示:"
+
+#:
+msgid "permissions.labels.capabilities.highlight"
+msgstr "凡例のハイライト:"
+
+#:
+msgid "permissions.labels.capabilities.url_link"
+msgstr "外部 URL にリンク:"
+
+#:
+msgid "permissions.labels.capabilities.administrator"
+msgstr "管理者:"
+
+#:
+msgid "permissions.labels.capabilities.content_admin"
+msgstr "コンテンツ管理者:"
+
+#:
+msgid "permissions.labels.capabilities.create_groups"
+msgstr "グループの作成:"
+
+#:
+msgid "permissions.labels.capabilities.rename"
+msgstr "名前の変更:"
+
+#:
+msgid "permissions.labels.capabilities.transfer_ownership"
+msgstr "所有権の移転:"
+
+#:
+msgid "permissions.labels.capabilities.project_leader"
+msgstr "プロジェクト リーダー:"
+
+#:
+msgid "permissions.labels.capabilities.publish"
+msgstr "パブリッシュ:"
+
+#:
+msgid "permissions.labels.capabilities.connect"
+msgstr "接続:"
+
+#:
+msgid "permissions.labels.capabilities.draw"
+msgstr "描画:"
+
+#:
+msgid "permissions.labels.capabilities.web_authoring"
+msgstr "Web 編集:"
+
+#:
+msgid "permissions.labels.capabilities.xml_save_as"
+msgstr "名前を付けて保存:"
+
+#:
+msgid "permissions.labels.capabilities.create_refresh_metrics"
+msgstr "メトリクスの作成/更新:"
+
+#:
+msgid "permissions.labels.capabilities.explain_data"
+msgstr "「データの説明を見る」の実行:"
+
+#:
+msgid "permissions.labels.roles.wb_view"
+msgstr "ビュー"
+
+#:
+msgid "permissions.labels.roles.wb_explore"
+msgstr "検索"
+
+#:
+msgid "permissions.labels.roles.wb_publish"
+msgstr "パブリッシュ"
+
+#:
+msgid "permissions.labels.roles.wb_administer"
+msgstr "管理"
+
+#:
+msgid "permissions.labels.roles.ds_view"
+msgstr "ビュー"
+
+#:
+msgid "permissions.labels.roles.ds_explore"
+msgstr "検索"
+
+#:
+msgid "permissions.labels.roles.ds_publish"
+msgstr "パブリッシュ"
+
+#:
+msgid "permissions.labels.roles.ds_administer"
+msgstr "管理"
+
+#:
+msgid "permissions.labels.roles.viewer"
+msgstr "Viewer"
+
+#:
+msgid "permissions.labels.roles.interactor"
+msgstr "インタラクター"
+
+#:
+msgid "permissions.labels.roles.editor"
+msgstr "エディター"
+
+#:
+msgid "permissions.labels.roles.ds_connector"
+msgstr "データ ソース コネクタ"
+
+#:
+msgid "permissions.labels.roles.ds_editor"
+msgstr "データ ソース エディター"
+
+#:
+msgid "permissions.labels.roles.administrator"
+msgstr "管理者"
+
+#:
+msgid "permissions.labels.roles.project_leader"
+msgstr "プロジェクト リーダー"
+
+#:
+msgid "permissions.labels.roles.publisher"
+msgstr "パブリッシャー"
+
+#:
+msgid "permissions.labels.roles.custom"
+msgstr "カスタム"
+
+#:
+msgid "permissions.labels.roles.none"
+msgstr "なし"
+
+#:
+msgid "formats.messages.disk_space.in_mb"
+msgstr "{0} MB"
+
+#:
+msgid "formats.messages.disk_space.in_kb"
+msgstr "{0} KB"
+
+#:
+msgid "errors.argument.flow_description.too_long"
+msgstr "フローの説明が長すぎます ({0} 文字)。{1} 文字未満でなければなりません:{2}"
+
+#:
+msgid "errors.argument.workbook_name.too_long"
+msgstr "ワークブック名が長すぎます ({0} 文字)。{1}文字未満でなければなりません:{2}"
+
+#:
+msgid "errors.argument.workbook_name.empty"
+msgstr "ワークブック名が空です。"
+
+#:
+msgid "errors.argument.workbook_description.too_long"
+msgstr "ワークブックの説明が長すぎます ({0} 文字)。{1}文字未満でなければなりません:{2}"
+
+#:
+msgid "errors.argument.worksheet_name.too_long"
+msgstr "ワークシート名が長すぎます ({0} 文字)。文{1}字未満でなければなりません:{2}"
+
+#:
+msgid "errors.argument.datasource_name.too_long"
+msgstr "データ ソース名が長すぎます ({0} 文字)。{1}文字未満でなければなりません:{2}"
+
+#:
+msgid "errors.argument.datasource_name.empty"
+msgstr "データ ソース名が空白です。"
+
+#:
+msgid "errors.argument.datasource_description.too_long"
+msgstr "データ ソースの説明が長すぎます ({0} 文字)。{1}文字未満でなければなりません:{2}"
+
+#:
+msgid "errors.argument.dataconnection_column.too_long"
+msgstr "DataConnection column {0} is too long ({1} characters).  It must be shorter than {2} characters:{3}"
+
+#:
+msgid "errors.argument.tag.too_long"
+msgstr "タグが長すぎます ({0} 文字)。{1}文字未満でなければなりません:{2}"
+
+#:
+msgid "errors.argument.workbook_file.missing_or_empty"
+msgstr "ワークブック ファイルが見つからないか空です。"
+
+#:
+msgid "errors.argument.internal"
+msgstr "内部サーバー エラー。引数が欠落しているか、無効です。"
+
+#:
+msgid "errors.argument.thumbnail.invalid_format"
+msgstr "ワークブックのサムネイル形式が無効です。解像度が 300x300 以下の PNG である必要があります。"
+
+#:
+msgid "errors.html_403.disabled_resource.workbook"
+msgstr "申し訳ありませんが、そのワークブックは無効です。管理者にお問い合わせください。"
+
+#:
+msgid "errors.html_404.missing_or_unauthorized_resource.project"
+msgstr "申し訳ありませんが、探しているプロジェクトが存在しないか、そのプロジェクトを表示できるパーミッションがありません。"
+
+#:
+msgid "errors.html_404.missing_or_unauthorized_resource.personal_space"
+msgstr "申し訳ありませんが、探している個人用スペースが存在しないか、それを表示できるパーミッションがありません。"
+
+#:
+msgid "errors.html_404.missing_or_unauthorized_resource.datasource"
+msgstr "申し訳ありませんが、検索しているデータ ソースは存在しません。"
+
+#:
+msgid "errors.labels.formatted_request_id"
+msgstr "要求 ID: {0}"
+
+#:
+msgid "errors.links.delete_datasources"
+msgstr "データ ソースの削除"
+
+#:
+msgid "errors.links.delete_workbooks"
+msgstr "ワークブックの削除"
+
+#:
+msgid "errors.permissions.publish.datasource.licensing"
+msgstr "データ ソースをパブリッシュするには、「インタラクター」でなければなりません。"
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite"
+msgstr "''{0}'' という名前のデータ ソースはプロジェクト ''{1}''に既に存在します。上書きするためのパーミッションがありません。"
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite_personal_space"
+msgstr "''{0}'' という名前のデータ ソースは個人用スペースに既に存在します。上書きするためのパーミッションがありません。"
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite_short"
+msgstr "''{0}'' という名前のデータ ソースはプロジェクト ''{1}''に既に存在します。"
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
+msgstr "''{0}'' という名前のデータ ソースは個人用スペースに既に存在します。"
+
+#:
+msgid "errors.permissions.publish.datasource.non_existent"
+msgstr "データ ソース ''{0}'' が存在しません。"
+
+#:
+msgid "errors.permissions.publish.datasource.general"
+msgstr "申し訳ありませんが、このデータ ソースをパブリッシュするためのパーミッションがありません。"
+
+#:
+msgid "errors.permissions.publish.project.explicit_publisher_detail"
+msgstr "パブリッシュ権限がありません。"
+
+#:
+msgid "errors.permissions.publish.project.general"
+msgstr "申し訳ありませんが、このプロジェクトをパブリッシュするためのパーミッションがありません。"
+
+#:
+msgid "errors.permissions.publish.project.non_existent"
+msgstr "プロジェクト ''{0}'' が存在しません。"
+
+#:
+msgid "errors.permissions.publish.project.not_writable"
+msgstr "プロジェクト ''{0}''に書き込むためのパーミッションがありません。"
+
+#:
+msgid "errors.permissions.publish.project.unspecified"
+msgstr "プロジェクトを指定してください"
+
+#:
+msgid "errors.permissions.publish.workbook.disabled"
+msgstr "ワークブック ''{0}'' が無効です。"
+
+#:
+msgid "errors.permissions.publish.workbook.general"
+msgstr "この名前のワークブックがパブリッシュ先のプロジェクトに存在します。パブリッシュするには、ワークブックの名前を変更してください。"
+
+#:
+msgid "errors.permissions.publish.workbook.general_personal_space"
+msgstr "この名前のワークブックがパブリッシュ先の個人用スペースに存在します。パブリッシュするには、ワークブックの名前を変更してください。"
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite"
+msgstr "''{0}'' という名前のワークブックはプロジェクト ''{1}''に既に存在します。上書きするためのパーミッションがありません。"
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite_personal_space"
+msgstr "''{0}'' という名前のワークブックが個人用スペースに既に存在します。上書きするためのパーミッションがありません。"
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite_short"
+msgstr "''{0}'' という名前のワークブックがプロジェクト ''{1}''に既に存在します。"
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
+msgstr "''{0}'' という名前のワークブックが個人用スペースに既に存在します。"
+
+#:
+msgid "errors.reportable.impersonation.group_and_user"
+msgstr "''impersonate_username'' または ''impersonate_groupname'' の両方ではなくいずれかのみを指定します。"
+
+#:
+msgid "errors.reportable.impersonation.user_not_found"
+msgstr "ユーザー ''{0}'' が存在しません。"
+
+#:
+msgid "errors.reportable.impersonation.group_not_found"
+msgstr "グループ ''{0}'' は存在しません。 "
+
+#:
+msgid "errors.public.validation.hasextract"
+msgstr "Tableau Public に保存するワークブックではアクティブな Tableau 抽出を使用する必要があります。 パブリッシュする前にデータ ソースを右クリックし、[抽出の使用] を選択します。データ ソース ''{0}'' はアクティブな抽出ではありません。"
+
+#:
+msgid "errors.publish.dataserver_datasource_not_found"
+msgstr "ワークブック ''{1}'' のデータ ソース ''{0}'' が見つかりません。"
+
+#:
+msgid "errors.publish.datasource_update_mode"
+msgstr "不明な更新モード: ''{0}''."
+
+#:
+msgid "errors.publish.workbook.concurrent_update"
+msgstr "現在、同じ名前のワークブックのパブリッシュまたは変更が行われています。もう一度試す前に、タスクが完了するのを待機してください。"
+
+#:
+msgid "errors.publish.workbook.restricted"
+msgstr "ワークブックに、このサーバーで許可されていない接続タイプが含まれています。"
+
+#:
+msgid "errors.publish.datasource.concurrent_update"
+msgstr "現在、同じ名前のデータ ソースのパブリッシュまたは変更が行われています。もう一度試す前に、タスクが完了するのを待機してください。"
+
+#:
+msgid "errors.publish.datasource.restricted"
+msgstr "データ ソースに、このサーバーで許可されていない接続タイプが含まれています。"
+
+#:
+msgid "errors.publish.datasource.connection_check"
+msgstr "{0} がデータベースへの接続を確立できませんでした。"
+
+#:
+msgid "errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption"
+msgstr "ワークブックを暗号化された抽出とともにパブリッシュすることができません。サイト管理者がこのサイトで抽出の暗号化を無効にしました。暗号化されていない抽出とともにパブリッシュする必要があります。"
+
+#:
+msgid "errors.publish.datasource.requested_extract_encryption_on_site_with_disabled_encryption"
+msgstr "データ ソースを暗号化された抽出とともにパブリッシュすることができません。サイト管理者がこのサイトで抽出の暗号化を無効にしました。暗号化されていない抽出をパブリッシュする必要があります。"
+
+#:
+msgid "errors.publish.workbook.requested_no_extract_encryption_on_site_with_enforced_encryption"
+msgstr "ワークブックを暗号化されていない抽出とともにパブリッシュすることができません。サイト管理者がこのサイトで抽出の暗号化を実行しました。抽出の暗号化を指定してワークブックをパブリッシュする必要があります。"
+
+#:
+msgid "errors.publish.datasource.requested_no_extract_encryption_on_site_with_enforced_encryption"
+msgstr "データ ソース抽出を暗号化されていない状態でパブリッシュすることができません。サイト管理者がこのサイトで抽出の暗号化を実行しました。暗号化された抽出をパブリッシュする必要があります。"
+
+#:
+msgid "errors.publish.has_unfinished_extract_creation_job"
+msgstr "関連する保留中または未完了の抽出作成ジョブがあるため、このリソースはパブリッシュできません。待機するかそれらのジョブをキャンセルしてからもう一度やり直してください。"
+
+#:
+msgid "errors.publishing.storage_quota_exceeded.message"
+msgstr "サイトの保存容量が超過しています。"
+
+#:
+msgid "errors.publishing.request_size_exceeded"
+msgstr "リクエスト サイズが {0} バイトであり、バイト サイズの制限を {1} バイト超えているため、このファイルをパブリッシュできません。"
+
+#:
+msgid "errors.publishing.request_size_unknown"
+msgstr "リクエスト サイズを特定できませんでした。"
+
+#:
+msgid "errors.site.quota_exceeded"
+msgstr "アップロードしようとしているコンテンツは、サイトの容量を {0} 超えています。"
+
+#:
+msgid "errors.personal_space.quota_exceeded"
+msgstr "このコンテンツは、個人用スペースの容量を {0} 超えています。"
+
+#:
+msgid "errors.web_authoring.workbook_deleted"
+msgstr "ワークブック ''{0}'' が削除されました。[名前を付けて保存] を選択して、新しいワークブックとして保存してください。"
+
+#:
+msgid "errors.web_authoring.workbook_changed"
+msgstr "編集を開始した後に、別のユーザーがこのワークブックを編集および保存しました。そのため、元のワークブックを更新することはできなくなりました。変更とともに新しいワークブックを作成するには、[名前をつけて保存] を使用します。"
+
+#:
+msgid "labels.publish.embed_credentials"
+msgstr "データ ソースのパスワードの埋め込み"
+
+#:
+msgid "errors.publish.workbook.google_no_embedded_credentials"
+msgstr "このワークブックには、埋め込み認証資格情報を必要とする {0} データ ソースが含まれています。別のワークブックとして保存するには、''{1}'' を選択します。"
+
+#:
+msgid "errors.publish.datasource.google_no_embedded_credentials"
+msgstr "このデータ ソースには、埋め込み認証資格情報を必要とする {0} 接続が含まれています。このデータ ソースは、埋め込み認証資格情報とともに Tableau Desktop からパブリッシュしてください。"
+
+#:
+msgid "errors.publish.datasource.federated_oauth_datasource_failed"
+msgstr "データ ソース内の 1 つ以上の接続に対する認証資格情報の有効期限が切れています。Tableau Server または Tableau Online のアカウント設定ページでこのデータ ソースの保存済み認証資格情報を削除してから再度データ ソースに接続してください。"
+
+#:
+msgid "errors.publish.workbook.missing_oauth_credential"
+msgstr "認証資格情報 ''{0}'' が見つからないか使用できないため、データ ソースおよびワークブックに接続できません。"
+
+#:
+msgid "errors.publish.version_incompatible.message"
+msgstr "Desktop と Server のバージョンには互換性がありません。"
+
+#:
+msgid "errors.publish.version_incompatible.details"
+msgstr "Desktop のバージョンは ''{0}'' で、Server ドキュメントのバージョンは ''{1}'' です。"
+
+#:
+msgid "errors.publish.datasource.managed_keychain.unique_cv_suggestions"
+msgstr "競合が発生したため、パブリッシュに失敗しました。変更内容を再送信してください。"
+
+#:
+msgid "errors.publish.permissions_are_locked"
+msgstr "パブリッシュ先のプロジェクトでパーミッションがロックされています。このワークブックをパブリッシュするには、既定のパーミッションを使用し、再試行してください。"
+
+#:
+msgid "errors.publish.datasource.not.found"
+msgstr "Tableau Server でこのデータソースが見つかりませんでした。"
+
+#:
+msgid "errors.publish.extracts.disabled"
+msgstr "抽出ベースのアーカイブ データソースの保存はまだサポートされていません。"
+
+#:
+msgid "errors.publish.datasource.timeout"
+msgstr "{0} 秒後にパブリッシュがタイム アウトしました。Tableau Desktop を使用してこのデータソースをパブリッシュしてみてください。"
+
+#:
+msgid "errors.publish.data_role.permission_not_null"
+msgstr "データの役割の型のデータソースに明確なパーミッションを設定できません。"
+
+#:
+msgid "errors.download.extracts.timeout"
+msgstr "このデータソースの抽出ファイルが大きいため、{0} 秒後にパブリッシュがタイムアウトしました。Tableau Desktop を使用してこのデータソースをパブリッシュしてみてください。"
+
+#:
+msgid "errors.publish.datasource.invalid_extract_update_time"
+msgstr "無効な extractUpdateTime が指定されました: {0}"
+
+#:
+msgid "errors.publish.async.serialization"
+msgstr "パブリッシュ ジョブのステータス エラーをシリアル化できませんでした"
+
+#:
+msgid "errors.permissions.view.datasources"
+msgstr "データ ソースのリストを表示するには、「インタラクター」権限が必要です。"
+
+#:
+msgid "errors.oauth.invalid_oauth_class"
+msgstr "''{0}'' は有効な OAuth 接続タイプではありません。"
+
+#:
+msgid "errors.xmlapi.bad_request"
+msgstr "要求が無効です"
+
+#:
+msgid "errors.xmlapi.unauthorized"
+msgstr "権限がありません"
+
+#:
+msgid "errors.xmlapi.forbidden"
+msgstr "十分なパーミッションがありません"
+
+#:
+msgid "errors.xmlapi.system_user_not_found"
+msgstr "ユーザー アカウントがロックされているか、無効です。"
+
+#:
+msgid "errors.xmlapi.site_user_not_found"
+msgstr "このユーザー アカウントはアクティブではありません。ヘルプについては、{0} 管理者にお問い合わせください。"
+
+#:
+msgid "errors.xmlapi.not_found"
+msgstr "アイテムが見つかりません"
+
+#:
+msgid "errors.xmlapi.concurrent_update"
+msgstr "並列更新"
+
+#:
+msgid "errors.xmlapi.internal_server_error"
+msgstr "内部サーバー エラー"
+
+#:
+msgid "errors.xmlapi.illegal_state"
+msgstr "無効な状態"
+
+#:
+msgid "errors.xmlapi.invalid_parameter"
+msgstr "無効なパラメーター"
+
+#:
+msgid "errors.xmlapi.already_exists"
+msgstr "既に存在します"
+
+#:
+msgid "errors.xmlapi.site_suspended"
+msgstr "このサイトは一時停止しています。サインインするには、システム管理者でなければなりません。"
+
+#:
+msgid "errors.xmlapi.site_locked"
+msgstr "このサイトはロックされています。現在サインインできません。"
+
+#:
+msgid "errors.xmlapi.permission_modification"
+msgstr "変更したパーミッションでパブリッシュできません"
+
+#:
+msgid "errors.xmlapi.update_desktop"
+msgstr "他の作者が作成したワークブックを開くには、http://public.tableau.com/ から最新バージョンの Tableau Desktop Public Edition をダウンロードしてください。"
+
+#:
+msgid "errors.xmlapi.throttled.summary"
+msgstr "要求が多すぎます"
+
+#:
+msgid "errors.xmlapi.throttled.detail"
+msgstr "''{0}'' に対する要求が多すぎます。{1} 後に再試行してください。"
+
+#:
+msgid "datasource.publish.check.unpublishable"
+msgstr "データ ソースをパブリッシュできません。"
+
+#:
+msgid "datasource.publish.check.publishable.extract_required"
+msgstr "パブリッシュの際には抽出の作成が必要です。"
+
+#:
+msgid "datasource.publish.check.publishable.credentials_required"
+msgstr "{1} はライブデータ接続が維持できることを確認するため、''{0}'' に提供された認証資格情報に一時的にアクセスします。"
+
+#:
+msgid "datasource.publish.check.publishable.server_unreachable"
+msgstr "{1} が ''{0}'' に接続できません。パブリッシュを行うと抽出が作成されます。"
+
+#:
+msgid "publish.bundles.workbook.subscription.subject"
+msgstr "ワークブック {0} の準備が整いました。"
+
+#:
+msgid "publish.bundles.workbook.subscription.message"
+msgstr "Salesforce データがワークブックに追加されました。{0} プロジェクトに移動して開始します。"
+
+#:
+msgid "extracts.status.finished.upload.workbook"
+msgstr "ワークブック ''{1}'' {2} の抽出 (新しい抽出 ID: {0}) のアップロードが完了しました"
+
+#:
+msgid "extracts.status.finished.refresh.workbook"
+msgstr "ワークブック ''{1}'' {2} の抽出 (新しい抽出 ID:{0}) の更新が完了しました"
+
+#:
+msgid "extracts.status.finished.increment.workbook"
+msgstr "ワークブック ''{1}'' {2} の抽出 (新しい抽出 ID:{0}) の増分が完了しました"
+
+#:
+msgid "extracts.status.finished.encrypt.workbook"
+msgstr "ワークブック ''{1}''  の抽出 (新しい抽出 ID:{0}) の暗号化が完了しました"
+
+#:
+msgid "extracts.status.finished.decrypt.workbook"
+msgstr "ワークブック ''{1}''  の抽出 (新しい抽出 ID:{0}) の復号化が完了しました"
+
+#:
+msgid "extracts.status.finished.rekey.workbook"
+msgstr "ワークブック ''{1}''  の抽出 (新しい抽出 ID:{0}) の再暗号化が完了しました"
+
+#:
+msgid "extracts.status.finished.create.workbook"
+msgstr "ワークブック ''{1}'' の抽出 (新しい抽出 ID:{0}) の作成が完了しました {2}"
+
+#:
+msgid "extracts.status.finished.remove.workbook"
+msgstr "ワークブック ''{1}'' に対する抽出 (データ ソース ID: {0}) のライブへの変更が完了しました"
+
+#:
+msgid "extracts.status.finished.upload.datasource"
+msgstr "データ ソース ''{1}'' {2} の抽出 (新しい抽出 ID:{0}) のアップロードが完了しました"
+
+#:
+msgid "extracts.status.finished.refresh.datasource"
+msgstr "データ ソース ''{1}'' {2} の抽出 (新しい抽出 ID:{0}) の更新が完了しました"
+
+#:
+msgid "extracts.status.finished.increment.datasource"
+msgstr "データ ソース ''{1}'' {2} の抽出 (新しい抽出 ID:{0}) の増分が完了しました"
+
+#:
+msgid "extracts.status.finished.append.datasource"
+msgstr "データ ソース ''{1}'' {2} の抽出 (新しい抽出 ID:{0}) の追加が完了しました"
+
+#:
+msgid "extracts.status.finished.replace.datasource"
+msgstr "データ ソース ''{1}'' {2} の抽出 (新しい抽出 ID:{0}) の置換が完了しました"
+
+#:
+msgid "extracts.status.finished.encrypt.datasource"
+msgstr "データ ソース ''{1}''  の抽出 (新しい抽出 ID:{0}) の暗号化が完了しました"
+
+#:
+msgid "extracts.status.finished.decrypt.datasource"
+msgstr "データ ソース ''{1}''  の抽出 (新しい抽出 ID:{0}) の復号化が完了しました"
+
+#:
+msgid "extracts.status.finished.rekey.datasource"
+msgstr "データ ソース ''{1}''  の抽出 (新しい抽出 ID:{0}) の再暗号化が完了しました"
+
+#:
+msgid "extracts.status.finished.encrypt.flow"
+msgstr "フロー ''{0}'' に対する抽出の暗号化が完了しました"
+
+#:
+msgid "extracts.status.finished.decrypt.flow"
+msgstr "フロー ''{0}'' に対する抽出の復号化が完了しました"
+
+#:
+msgid "extracts.status.finished.rekey.flow"
+msgstr "フロー ''{0}'' に対する抽出の再暗号化が完了しました"
+
+#:
+msgid "extracts.status.finished.encrypt.flowdraft"
+msgstr "フローの下書き ''{0}'' に対する抽出の暗号化が完了しました"
+
+#:
+msgid "extracts.status.finished.decrypt.flowdraft"
+msgstr "フローの下書き ''{0}'' に対する抽出の復号化が完了しました"
+
+#:
+msgid "extracts.status.finished.rekey.flowdraft"
+msgstr "フローの下書き ''{0}'' に対する抽出の再暗号化が完了しました"
+
+#:
+msgid "extracts.status.finished.create.datasource"
+msgstr "データ ソース ''{1}''  の抽出 (新しい抽出 ID:{0}) の作成が完了しました {2}"
+
+#:
+msgid "extracts.status.finished.remove.datasource"
+msgstr "データ ソース ''{1}'' に対する抽出のライブへの変更が完了しました"
+
+#:
+msgid "extracts.status.encryption_key"
+msgstr "暗号化キー ID: ''{0}''。"
+
+#:
+msgid "extracts.status.encryption_keys"
+msgstr "古い暗号化キー ID: ''{0}''、新しい暗号化キー ID: ''{1}''。"
+
+#:
+msgid "extracts.errors.upload"
+msgstr "{0} の抽出のアップロード エラー: ''{1}''"
+
+#:
+msgid "extracts.errors.refresh"
+msgstr "{0} の抽出の更新時にエラーが発生しました。''{1}''"
+
+#:
+msgid "extracts.errors.create"
+msgstr "{0} の抽出の作成エラー ''{1}''。"
+
+#:
+msgid "extracts.errors.increment"
+msgstr "{0} の抽出の増分エラー: ''{1}''"
+
+#:
+msgid "extracts.errors.append"
+msgstr "{0} の抽出の追加エラー。''{1}''"
+
+#:
+msgid "extracts.errors.replace"
+msgstr "{0} の抽出の置換エラー: ''{1}''"
+
+#:
+msgid "extracts.errors.download"
+msgstr "{0} の抽出のダウンロード エラー: ''{1}''"
+
+#:
+msgid "extracts.errors.remove"
+msgstr "{0} の抽出の削除エラー: ''{1}''。"
+
+#:
+msgid "extracts.errors.title"
+msgstr "プロセス抽出エラー"
+
+#:
+msgid "extracts.errors.nothing_to_upload"
+msgstr "{0} にアップロードする抽出がありません: ''{1}''"
+
+#:
+msgid "extracts.errors.nothing_to_refresh"
+msgstr "{0} に更新する抽出がありません: ''{1}''"
+
+#:
+msgid "extracts.errors.nothing_to_increment"
+msgstr "{0} に増分する抽出がありません: ''{1}''"
+
+#:
+msgid "extracts.errors.nothing_to_append"
+msgstr "{0} に追加する抽出がありません: ''{1}''"
+
+#:
+msgid "extracts.errors.nothing_to_replace"
+msgstr "{0} に置換する抽出がありません: ''{1}''"
+
+#:
+msgid "extracts.errors.refresh_summary"
+msgstr "抽出の更新エラー"
+
+#:
+msgid "extracts.errors.encrypt_summary"
+msgstr "抽出の暗号化エラー"
+
+#:
+msgid "extracts.errors.rekey_summary"
+msgstr "抽出の最暗号化エラー"
+
+#:
+msgid "extracts.errors.decrypt_summary"
+msgstr "抽出の復号化エラー"
+
+#:
+msgid "extracts.errors.remove_summary"
+msgstr "抽出の削除エラー"
+
+#:
+msgid "extracts.errors.create_summary"
+msgstr "抽出の作成エラー"
+
+#:
+msgid "extracts.errors.datasource_overwritten"
+msgstr "データ ソースは処理中に別のタスクによって上書きされたため、更新に失敗しました。更新をもう一度送信して修正してください。"
+
+#:
+msgid "extracts.errors.workbook_overwritten"
+msgstr "ワークブックは処理中に別のタスクによって上書きされたため、更新に失敗しました。更新をもう一度送信して修正してください。"
+
+#:
+msgid "extracts.errors.encrypt"
+msgstr "{0} の抽出の暗号化時にエラーが発生しました。''{1}''"
+
+#:
+msgid "extracts.errors.decrypt"
+msgstr "{0} の抽出の復号化時にエラーが発生しました。''{1}''"
+
+#:
+msgid "extracts.errors.rekey"
+msgstr "{0} の抽出の再暗号化時にエラーが発生しました。''{1}''"
+
+#:
+msgid "extracts.errors.encrypt_datasource_overwritten"
+msgstr "データ ソースが処理中に別のタスクによって上書きされたため、抽出の暗号化に失敗しました。"
+
+#:
+msgid "extracts.errors.encrypt_workbook_overwritten"
+msgstr "ワークブックが処理中に別のタスクによって上書きされたため、抽出の暗号化に失敗しました。"
+
+#:
+msgid "extracts.errors.rekey_datasource_overwritten"
+msgstr "データ ソースが処理中に別のタスクによって上書きされたため、抽出の再暗号化に失敗しました。"
+
+#:
+msgid "extracts.errors.rekey_workbook_overwritten"
+msgstr "ワークブックが処理中に別のタスクによって上書きされたため、抽出の再暗号化に失敗しました。"
+
+#:
+msgid "extracts.errors.decrypt_datasource_overwritten"
+msgstr "データ ソースが処理中に別のタスクによって上書きされたため、抽出の復号化に失敗しました。"
+
+#:
+msgid "extracts.errors.decrypt_workbook_overwritten"
+msgstr "ワークブックが処理中に別のタスクによって上書きされたため、抽出の復号化に失敗しました。"
+
+#:
+msgid "extracts.errors.remove_datasource_overwritten"
+msgstr "データ ソースは別のタスクによって上書きされたため、ライブに変更できませんでした。"
+
+#:
+msgid "extracts.errors.remove_workbook_overwritten"
+msgstr "ワークブックは別のタスクによって上書きされたため、ライブに変更できませんでした。"
+
+#:
+msgid "extracts.errors.create_datasource_overwritten"
+msgstr "データ ソースは別のタスクによって上書きされたため、抽出できませんでした。"
+
+#:
+msgid "extracts.errors.create_workbook_overwritten"
+msgstr "ワークブックは別のタスクによって上書きされたため、抽出できませんでした。"
+
+#:
+msgid "extracts.site_mode_change_details"
+msgstr "サイト抽出の暗号化モードを ''{0}'' から ''{1}'' に変更しました。"
+
+#:
+msgid "extracts.errors.encryption_not_licensed"
+msgstr "抽出の暗号化を行うライセンスがないため、この操作は失敗しました。この操作を実行するには、ライセンスを更新するか抽出を復号化する必要があります。"
+
+#:
+msgid "extracts.errors.operation_cancelled_detail"
+msgstr "{0} (データ ソース: {2}) に対する抽出の削除操作がタイムアウトしました。"
+
+#:
+msgid "workbooks.messages.load_error"
+msgstr "ワークブック {0} を読み込むことができません"
+
+#:
+msgid "workbooks.messages.locked"
+msgstr "ワークブック ''{0}'' は現在、別のユーザーによって変更されています。後でやり直してください。"
+
+#:
+msgid "workbooks.new_workbook.default_name"
+msgstr "新しいワークブック"
+
+#:
+msgid "workbooks.new_datasource.default_name"
+msgstr "新しいデータ ソース"
+
+#:
+msgid "datasources.messages.load_error"
+msgstr "データ ソース {0} を読み込むことができません。"
+
+#:
+msgid "metrics.new_metric.default_name"
+msgstr "新しいメトリクス"
+
+#:
+msgid "messages.timeout_error.summary"
+msgstr "タイムアウト エラー"
+
+#:
+msgid "messages.timeout_error.task_canceled"
+msgstr "{0} 秒より長く時間がかかるタスクをキャンセルします"
+
+#:
+msgid "subscriptions.manage_my_subscriptions"
+msgstr "サブスクリプションの管理"
+
+#:
+msgid "subscriptions.message_greeting"
+msgstr "こんにちは、"
+
+#:
+msgid "subscriptions.subscribed_footer"
+msgstr "{0} へのサブスクリプションはここにあります。"
+
+#:
+msgid "subscriptions.subscribed_workbook"
+msgstr "ワークブック"
+
+#:
+msgid "subscriptions.subscribed_view"
+msgstr "ビュー"
+
+#:
+msgid "subscriptions.fullstop"
+msgstr "。"
+
+#:
+msgid "subscriptions.extract_refresh_footer"
+msgstr "データが更新されるとこの登録メールが送信されます。"
+
+#:
+msgid "subscriptions.explore_the_viz"
+msgstr "Viz の探索"
+
+#:
+msgid "subscriptions.explore_the_workbook"
+msgstr "ワークブックの探索"
+
+#:
+msgid "subscriptions.pdf_attached"
+msgstr "Tableau PDF は接続されています。"
+
+#:
+msgid "subscriptions.access_live_content"
+msgstr "ここからコンテンツのライブ ビューにアクセスできます"
+
+#:
+msgid "subscriptions.warning_deprecated_type"
+msgstr "廃止されました"
+
+#:
+msgid "subscriptions.warning_extract_refresh_type"
+msgstr "抽出更新に失敗しました"
+
+#:
+msgid "subscriptions.warning_flow_run_type"
+msgstr "フロー実行に失敗しました"
+
+#:
+msgid "subscriptions.warning_introduction_general"
+msgstr "次のデータ品質に関する警告は、この {0} に影響します。"
+
+#:
+msgid "subscriptions.warning_introduction_view"
+msgstr "詳細については、ビューの [データの詳細] タブを参照してください"
+
+#:
+msgid "subscriptions.warning_introduction_workbook"
+msgstr "詳細については、ワークブックのページを参照してください"
+
+#:
+msgid "subscriptions.warning_maintenance_type"
+msgstr "メンテナンス中"
+
+#:
+msgid "subscriptions.warning_permission_error"
+msgstr "この警告は、表示するパーミッションがないアセットに関するものです。"
+
+#:
+msgid "subscriptions.warning_redacted"
+msgstr "パーミッションが必要です"
+
+#:
+msgid "subscriptions.warning_sensitve_type"
+msgstr "機密データ"
+
+#:
+msgid "subscriptions.warning_severe"
+msgstr "データ品質に関する重要な警告"
+
+#:
+msgid "subscriptions.warning_stale_type"
+msgstr "古いデータ"
+
+#:
+msgid "subscriptions.warning_standard"
+msgstr "データ品質に関する警告"
+
+#:
+msgid "subscriptions.warning_error_type"
+msgstr "不明な警告タイプ"
+
+#:
+msgid "subscriptions.warning_warning_type"
+msgstr "警告"
+
+#:
+msgid "errors.subscriptions.image_render_failed"
+msgstr "ビュー ''{0}'' のスナップショットを正しくレンダリングできませんでした。"
+
+#:
+msgid "errors.subscriptions.see_live_view"
+msgstr "ビューをオンライン表示するには、{0}に移動します。"
+
+#:
+msgid "errors.subscriptions.disabled_on_server"
+msgstr "サーバー全体のサブスクリプション設定が有効ではありません。サブスクリプションを処理できません。"
+
+#:
+msgid "errors.subscriptions.disabled_on_site"
+msgstr "サイトのサブスクリプションが無効になっています。"
+
+#:
+msgid "errors.subscriptions.site_is_locked"
+msgstr "サイトがロックされています。サブスクリプションを処理できません。"
+
+#:
+msgid "errors.subscriptions.orphan"
+msgstr "このサブスクリプションに関連付けられたワークブックとビューが見つかりません。"
+
+#:
+msgid "errors.subscriptions.user_unlicensed"
+msgstr "ライセンスのないユーザーのサブスクリプションをスキップしています。"
+
+#:
+msgid "errors.subscriptions.smtp_unreacheable"
+msgstr "SMTP ホストに到達できません。SMTP が構成されているかどうか確認してください。"
+
+#:
+msgid "errors.subscriptions.uncategorized_error"
+msgstr "不明なエラー"
+
+#:
+msgid "errors.subscriptions.pdf_render_failed"
+msgstr "このメールに添付された PDF ファイルを正しくレンダリングできませんでした。"
+
+#:
+msgid "errors.subscriptions.pdf_limit_exceeded"
+msgstr "生成された PDF が {0} MB のサイズ制限を超えているため、このメールに添付できませんでした。"
+
+#:
+msgid "errors.subscriptions.attachments_not_enabled"
+msgstr "メールの添付ファイルが無効化されていたため、このサブスクリプションは失敗しました。詳細については、Tableau 管理者にお問い合わせください。"
+
+#:
+msgid "errors.subscriptions.pdf_email_failed"
+msgstr "生成された PDF をこのメールに添付できませんでした。"
+
+#:
+msgid "errors.subscriptions.learn_more_troubleshoot"
+msgstr "<a hre"
+
+#:
+msgid "errors.subscriptions.bad_extract_refresh_subscription_configuration"
+msgstr "ワークブックに複数の抽出更新スケジュールが含まれているため、サブスクリプションは一時停止されました。再開するには、[頻度] を [選択されたスケジュール] に更新してください。"
+
+#:
+msgid "errors.subscriptions.subscription_failed_refresh_failure"
+msgstr "データ ソースの抽出更新に失敗しました。"
+
+#:
+msgid "errors.subscriptions.multiple_extracts_for_extract_refresh_subscription"
+msgstr "ワークブックに複数の抽出更新スケジュールが含まれています。[頻度] を [選択されたスケジュール] に更新してください。"
+
+#:
+msgid "errors.subscriptions.datasource_is_missing_password"
+msgstr "データ ソースの接続エラー。ワークブックのすべてのデータ ソース接続で認証資格情報を確認してください。"
+
+#:
+msgid "subscriptions.results_summary.sg"
+msgstr "{0} / {1} のサブスクリプションがスケジュール ''{2}'' から送信されました。"
+
+#:
+msgid "subscriptions.results_summary.pl"
+msgstr "{0} / {1} のサブスクリプションがスケジュール ''{2}'' から送信されました。"
+
+#:
+msgid "subscriptions.results_views_per_subscription.sg"
+msgstr "{0} ({1} / 1 ビューを正常に表示しました)"
+
+#:
+msgid "subscriptions.results_views_per_subscription.pl"
+msgstr "{0} ({1} / {2} ビューを正常に表示しました)"
+
+#:
+msgid "subscriptions.results_views_per_subscription.more"
+msgstr "({0} 以上)"
+
+#:
+msgid "subscriptions.results_views_per_subscription.failed"
+msgstr "{0} ({1} / {2} ビューの表示に失敗しました)。"
+
+#:
+msgid "subscriptions.results_header.all_shown.failures.sg"
+msgstr "エラー数: 1"
+
+#:
+msgid "subscriptions.results_header.all_shown.failures.pl"
+msgstr "エラー数: {0}"
+
+#:
+msgid "subscriptions.results_header.all_shown.warnings.sg"
+msgstr "警告数: 1"
+
+#:
+msgid "subscriptions.results_header.all_shown.warnings.pl"
+msgstr "警告数: {0}"
+
+#:
+msgid "subscriptions.results_header.some_hidden.failures.pl.sg"
+msgstr "エラー数: {0} (非表示: 1、ログを参照)"
+
+#:
+msgid "subscriptions.results_header.some_hidden.failures.pl.pl"
+msgstr "エラー数: {0}(非表示: {1}、ログを参照)"
+
+#:
+msgid "subscriptions.results_header.some_hidden.warnings.pl.sg"
+msgstr "警告数: {0}(非表示: 1、ログを参照)"
+
+#:
+msgid "subscriptions.results_header.some_hidden.warnings.pl.pl"
+msgstr "警告数: {0}(非表示: {1}、ログを参照)"
+
+#:
+msgid "dataalerts.manage_my_data_alerts"
+msgstr "アラートの管理"
+
+#:
+msgid "dataalerts.edit_data_alert"
+msgstr "アラートの編集"
+
+#:
+msgid "dataalerts.remove_user_from_data_alert"
+msgstr "自分を削除"
+
+#:
+msgid "dataalerts.add_user_to_data_alert"
+msgstr "このアラートに自分を追加"
+
+#:
+msgid "dataalerts.greater_or_equal"
+msgstr "{0} が {1} 以上でした。"
+
+#:
+msgid "dataalerts.greater"
+msgstr "{0} が {1} を超えていました。"
+
+#:
+msgid "dataalerts.less_or_equal"
+msgstr "{0} が {1} 以下でした。"
+
+#:
+msgid "dataalerts.less"
+msgstr "{0} が {1} 未満でした。"
+
+#:
+msgid "dataalerts.equal"
+msgstr "{0} が {1} と等価でした。"
+
+#:
+msgid "dataalerts.email_alt_text"
+msgstr "データドリブン アラートで使用されるビュー: {0}"
+
+#:
+msgid "dataalerts.email_alt_text_hidden_view"
+msgstr "データドリブン アラートで使用されるビュー {0}、変更を適用済み"
+
+#:
+msgid "dataalerts.alert_triggered_for_the_view"
+msgstr "ビューに対してアラートがトリガーされました"
+
+#:
+msgid "dataalerts.failure.email.subject"
+msgstr "データ主導アラートが動作していません: {0}"
+
+#:
+msgid "dataalerts.failure.status"
+msgstr "アラート <i>{0}</i> が動作していません"
+
+#:
+msgid "dataalerts.failure.view.details.alert"
+msgstr "このアラートを表示"
+
+#:
+msgid "dataalerts.failure.explanation"
+msgstr "現在、データ主導アラート <i>{0}</i> が動作していないため、データの条件が true になっても受信者に通知されません。アラートが再度動作すると、メール通知を受信します。"
+
+#:
+msgid "dataalerts.failure.affected.alert"
+msgstr "影響を受けるデータ主導アラート"
+
+#:
+msgid "dataalerts.failure.time"
+msgstr "時刻アラートを実行できませんでした"
+
+#:
+msgid "dataalerts.failure.cause"
+msgstr "一時的なネットワーク上の問題によりアラートが実行できない場合がありますが、自動的に解決します。元のデータ ビューでアラートを再作成したり、次のような原因で発生したアラートの失敗をトラブルシューティングすることもできます。"
+
+#:
+msgid "dataalerts.failure.changed.view"
+msgstr "ワークブック、ビュー、データ フィールドが削除または名前変更されている。"
+
+#:
+msgid "dataalerts.failure.expired.credentials"
+msgstr "ワークブックに埋め込まれたデータベースの認証資格情報の期限が切れている。"
+
+#:
+msgid "dataalerts.failure.datasource.error"
+msgstr "データ ソースにアクセスできない。"
+
+#:
+msgid "dataalerts.failure.email.footer"
+msgstr "お客様は、アラートの実行に失敗したため、このメールを {0} 宛てにお送りしています。"
+
+#:
+msgid "dataalerts.failure.troubleshooting"
+msgstr "アラートの失敗が上でリストした問題によるものかを確認するには、以下のボタンをクリックしてください。"
+
+#:
+msgid "dataalerts.success.email.subject"
+msgstr "データ主導アラートが再開しました: {0}"
+
+#:
+msgid "dataalerts.success.status"
+msgstr "アラート <i>{0}</i> が再開しました"
+
+#:
+msgid "dataalerts.success.explanation"
+msgstr "データドリブンアラート <i>{0}</i> が再び動作しているため、データの条件が true になった場合、受信者に通知されます。"
+
+#:
+msgid "dataalerts.failure.error.internalError"
+msgstr "データ アラート内部エラー"
+
+#:
+msgid "dataalerts.failure.error.invalidDataAlertSpecification"
+msgstr "無効なデータ アラートの仕様"
+
+#:
+msgid "dataalerts.failure.error.summaryTableNotFound"
+msgstr "サマリー データ表が見つかりません"
+
+#:
+msgid "dataalerts.failure.error.unclassifiedError"
+msgstr "未分類エラー"
+
+#:
+msgid "dataalerts.failure.error.viewContentNotFound"
+msgstr "データ アラート ビューの {0} コンテンツが見つかりません"
+
+#:
+msgid "dataalerts.failure.error.viewNotFound"
+msgstr "データ アラート ビューが見つかりません"
+
+#:
+msgid "dataalerts.failure.error.workbookNotFound"
+msgstr "ワークブックが見つかりません"
+
+#:
+msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
+msgstr "フィールド {0} に軸はありません"
+
+
+#:
+msgid "dataalerts.failure.error.unsupportedComparisonExpression"
+msgstr "サポートされていない比較式 {0}"
+
+#:
+msgid "dataalerts.failure.error.nonConstComparisonOp"
+msgstr "定数比較演算子は検出されませんでした: {0}"
+
+#:
+msgid "dataalerts.failure.error.cannotAddFilter"
+msgstr "データ アラートへのフィルターの追加に失敗しました"
+
+#:
+msgid "dataalerts.failure.error.sheetNotAlertable"
+msgstr "シート {0} にはアラートのサポートされているデータがあります。{1}"
+
+#:
+msgid "dataalerts.failure.error.dataAlertMeasureNotFound"
+msgstr "メジャーを選択できません。{0}"
+
+#:
+msgid "dataalerts.failure.error.tooManyMeasuresForDataAlert"
+msgstr "間違った数のメジャーが検出されました。{0}"
+
+#:
+msgid "dataalerts.failure.error.thresholdParseError"
+msgstr "しきい値テキスト {0} を解析できませんでした。{1}"
+
+#:
+msgid "dataalerts.failure.error.dataAlertPresModelCreationError"
+msgstr "アラートのシリアル化中にエラーが発生しました。{0}"
+
+#:
+msgid "dataalerts.failure.error.cannotDrawDataAlertDialog"
+msgstr "データ アラート ダイアログを描画できませんでした。"
+
+#:
+msgid "dataalerts.failure.error.unsupportedDataAlertType"
+msgstr "データ アラート タイプ {0} は現在サポートされていません。"
+
+#:
+msgid "dataalerts.failure.suspend.email.subject"
+msgstr "データドリブン アラートが一時停止しています: {0}"
+
+#:
+msgid "dataalerts.failure.suspend.email.status"
+msgstr "アラート {0} は一時停止しています"
+
+#:
+msgid "dataalerts.failure.suspend.email.explanation"
+msgstr "一時停止中は、ビューまたはアラートの受信者を評価しません。修正後に <a hre"
+
+#:
+msgid "dataalerts.failure.suspend.view.name.prefix"
+msgstr "ビュー"
+
+#:
+msgid "dataalerts.failure.suspend.time"
+msgstr "一時停止の時刻"
+
+#:
+msgid "dataalerts.failure.suspend.email.footer"
+msgstr "お客様のアラートが一時停止されたため、このメールをお送りしています。"
+
+#:
+msgid "dataalerts.failure.suspend.email.view.name.my.content"
+msgstr "マイ コンテンツ"
+
+#:
+msgid "dataalerts.failure.suspend.view.alerts"
+msgstr "アラートを表示"
+
+#:
+msgid "metricsservices.failure.affected.metric"
+msgstr "影響を受けるメトリクス"
+
+#:
+msgid "metricsservices.failure.cause"
+msgstr "一時的なネットワークの問題によりメトリクスの更新が失敗する場合がありますが、自動的に解決します。それ以外に、次のような理由によりメトリクスの更新が失敗する場合があります。"
+
+#:
+msgid "metricsservices.failure.changed.view"
+msgstr "ワークブック、ビュー、データ フィールドが削除または名前変更されている"
+
+#:
+msgid "metricsservices.failure.permissions.error"
+msgstr "接続済みビューのパーミッションの変更"
+
+#:
+msgid "metricsservices.failure.email.footer"
+msgstr "メトリクスの更新に失敗したため、このメールを {0} 宛てにお送りしています。"
+
+#:
+msgid "metricsservices.failure.email.subject"
+msgstr "メトリクスの更新は動作していません: {0}"
+
+#:
+msgid "metricsservices.failure.expired.credentials"
+msgstr "ワークブックに埋め込まれたデータベースの認証資格情報の期限が切れている"
+
+#:
+msgid "metricsservices.failure.explanation"
+msgstr "メトリクスを更新できないため、メトリクス データは更新されていません。メトリクスの更新が再び動作すると、メール通知が送信されます。"
+
+#:
+msgid "metricsservices.failure.status"
+msgstr "メトリクス ''{0}'' は更新されていません"
+
+#:
+msgid "metricsservices.failure.suspend.email.explanation"
+msgstr "メトリクスの更新が一時停止されている間は、メトリクス データは更新されません。修正後にメトリクスの更新を再開できます。"
+
+#:
+msgid "metricsservices.failure.suspend.email.footer"
+msgstr "メトリクスの更新が一時停止されたため、{0} 宛てにこのメールをお送りしています。"
+
+#:
+msgid "metricsservices.failure.suspend.email.status"
+msgstr "メトリクス ''{0}'' の更新は一時停止されました"
+
+#:
+msgid "metricsservices.failure.suspend.email.subject"
+msgstr "メトリクスの更新は一時停止されました: {0}"
+
+#:
+msgid "metricsservices.failure.suspend.time"
+msgstr "一時停止の時刻"
+
+#:
+msgid "metricsservices.failure.suspend.view.metric"
+msgstr "メトリクスに移動"
+
+#:
+msgid "metricsservices.failure.suspend.view.name.prefix"
+msgstr "接続済みビュー"
+
+#:
+msgid "metricsservices.failure.time"
+msgstr "更新が失敗した時刻"
+
+#:
+msgid "metricsservices.failure.troubleshooting"
+msgstr "メトリクスの更新の失敗が上でリストした問題によるものかを確認するには、以下のボタンをクリックしてください。接続済みビューでメトリクスを再び作成することも可能です。"
+
+#:
+msgid "metricsservices.failure.view.details.metric"
+msgstr "メトリクスに移動"
+
+#:
+msgid "metricsservices.failure.view.name.prefix"
+msgstr "接続済みビュー"
+
+#:
+msgid "metricsservices.success.email.subject"
+msgstr "メトリクスの更新は再開されました: {0}"
+
+#:
+msgid "metricsservices.success.explanation"
+msgstr "メトリクスの更新が動作を再開したため、メトリクス データの更新を確認します。"
+
+#:
+msgid "metricsservices.success.status"
+msgstr "メトリクス ''{0}'' の更新は再開されました"
+
+#:
+msgid "errors.staticimages.generic"
+msgstr "ワークブック {0} の静的イメージの生成エラー: {1}。"
+
+#:
+msgid "errors.internal_error.request.message"
+msgstr "{0} で要求を満たすことができませんでした。"
+
+#:
+msgid "errors.permissions.limited_user_visibility"
+msgstr "クエリの完了エラー。ユーザーの表示状態が [制限] に設定されている場合、他のユーザーにクエリを実行するためには、ユーザーは Creator または管理者である必要があります。"
+
+#:
+msgid "local_names.system_user.guest.name"
+msgstr "ゲスト"
+
+#:
+msgid "local_names.group.all_users.name"
+msgstr "すべてのユーザー"
+
+#:
+msgid "local_names.containers.personal_space.name"
+msgstr "個人用スペース"
+
+#:
+msgid "password_reset.email.subject"
+msgstr "パスワードをリセットするリンクはこちら"
+
+#:
+msgid "password_reset.email.body"
+msgstr "{0} 様<br/><br/>パスワードのリセットが要求されました。<br/><br/>Tableau Server のパスワードを変更するには、次のリンクをブラウザーに {1} または貼り付けます: {2}<br/><br/>このリンクの有効期限は 48 時間です。そのため、直ちに処理してください。<br/><br/>パスワードのリセットを要求していない場合は、サーバー管理者にご連絡ください。<br/><br/>今後とも Tableau をよろしくお願いいたします。<br/>Tableau チーム"
+
+#:
+msgid "password_reset.email.link"
+msgstr "ここをクリック"
+
+#:
+msgid "hours.pl"
+msgstr "{0} 時間"
+
+#:
+msgid "hours.sg"
+msgstr "1 時間"
+
+#:
+msgid "minutes.pl"
+msgstr "{0} 分"
+
+#:
+msgid "minutes.sg"
+msgstr "1 分"
+
+#:
+msgid "seconds.pl"
+msgstr "{0} 秒"
+
+#:
+msgid "seconds.sg"
+msgstr "1 秒"
+
+#:
+msgid "dataconnections.classes.tableau_server_site"
+msgstr "Tableau Server サイト"
+
+#:
+msgid "materializeviews.errors.workbook_not_in_project"
+msgstr "プロジェクト ''{0}'' にワークブック ''{1}'' が含まれていません"
+
+#:
+msgid "materializeviews.errors.workbook_has_no_extract"
+msgstr "ワークブック ''{0}'' の具体化されたビュー設定を更新できませんでした。現時点では、抽出が埋め込まれたワークブックだけがサポートされています"
+
+#:
+msgid "materializeviews.errors.workbook_updating_errors"
+msgstr "ワークブックの具体化されたビュー設定を更新中にエラーが見つかりました"
+
+#:
+msgid "materializeviews.errors.workbook_too_large"
+msgstr "ワークブックのサイズが上限の {1} GB を超過しているので、ワークブック ''{0}'' の具体化されたビュー設定を更新できませんでした"
+
+#:
+msgid "materializeviews.errors.project_path_not_exists"
+msgstr "プロジェクト パス ''{0}'' が存在しません"
+
+#:
+msgid "materializeviews.errors.feature_disabled"
+msgstr "機能が現在無効になっているため、ワークブック ''{0}'' の具体化されたビュー設定を更新できませんでした"
+
+#:
+msgid "materializeviews.errors.update_materialized_views_setting_failed"
+msgstr "ワークブック ''{0}'' の具体化されたビュー設定を更新できませんでした"
+
+#:
+msgid "materializeviews.errors.site_not_enabled"
+msgstr "このサイトでは具体化されたビューが有効にされていません。管理者にお問い合わせください"
+
+#:
+msgid "materializeviews.errors.encrypted_extracts_not_supported"
+msgstr "現在、具体化されたビュー機能は暗号化された抽出を含むワークブックをサポートしていません"
+
+#:
+msgid "materializedviews.finished.create"
+msgstr "ワークブック ''{1}'' のステータスが ''{0}'' の具体化されたビューを作成しました"
+
+#:
+msgid "materializedviews.finished.delete"
+msgstr "ワークブック id: {0} の具体化されたビューを削除しました"
+
+#:
+msgid "materializedviews.finished.encrypt"
+msgstr "ワークブック ''{0}'' のマテリアライズド ビューの暗号化が完了しました"
+
+#:
+msgid "materializedviews.finished.decrypt"
+msgstr "ワークブック ''{0}'' のマテリアライズド ビューの復号化が完了しました"
+
+#:
+msgid "materializedviews.finished.rekey"
+msgstr "ワークブック ''{0}'' のマテリアライズド ビューの再暗号化が完了しました"
+
+#:
+msgid "materializedviews.status.encryption_key"
+msgstr "暗号化キー ID: ''{0}''。"
+
+#:
+msgid "materializedviews.status.encryption_keys"
+msgstr "古い暗号化キー ID: ''{0}''、新しい暗号化キー ID: ''{1}''。"
+
+#:
+msgid "materializedviews.status.encryption_type"
+msgstr "暗号化データソースのタイプ: ''{0}''"
+
+#:
+msgid "customizedviews.namedSharingPrefix"
+msgstr "共有バージョン"
+
+#:
+msgid "flows.drafts.default_name"
+msgstr "新しいフロー"
+
+#:
+msgid "content_type.project"
+msgstr "プロジェクト"
+
+#:
+msgid "content_type.workbook"
+msgstr "ワークブック"
+
+#:
+msgid "content_type.view"
+msgstr "ビュー"
+
+#:
+msgid "content_type.datasource"
+msgstr "データ ソース"
+
+#:
+msgid "content_type.flow"
+msgstr "フロー"
+
+#:
+msgid "content_type.metric"
+msgstr "メトリクス"
+
+#:
+msgid "content_type.collection"
+msgstr "コレクション"
+
+#:
+msgid "content_type.visualization"
+msgstr "ビジュアライゼーション"
+
+#:
+msgid "content_type.askdata_visualization"
+msgstr "「データに聞く」ビジュアライゼーション"
+
+#:
+msgid "content_type.explaindata_explanation"
+msgstr "説明"
+
+#:
+msgid "content_type.publishedconnection"
+msgstr "仮想接続"
+
+#:
+msgid "content_type.publishedconnectiontable"
+msgstr "仮想接続テーブル"
+
+#:
+msgid "upgradethumbnails.status.server_started"
+msgstr "サーバーからの応答: サムネイルのアップグレードを開始しました!"
+
+#:
+msgid "upgradethumbnails.status.server_stopped"
+msgstr "サーバーからの応答:  %d 個のジョブが停止しました"
+
+#:
+msgid "dataquality.message.refresh_failed"
+msgstr "更新失敗: {0}"
+
+#:
+msgid "dataquality.message.last_successful"
+msgstr "前回成功した更新: {0}"
+
+#:
+msgid "dataquality.message.next_scheduled"
+msgstr "次にスケジュールされている更新: {0}"
+
+#:
+msgid "dataquality.message.flow_run_output_steps_failed"
+msgstr "{0}/{1} 出力ステップの実行に失敗しました"
+
+#:
+msgid "importcsvsummary.error.details"
+msgstr "エラーの詳細:"
+
+#:
+msgid "importcsvsummary.remainingerrors"
+msgstr "(残りのエラーは表示されていません)"
+
+#:
+msgid "importcsvsummary.error.line"
+msgstr "ユーザー ''{1}'' の行 {0}: ''{2}''"
+
+#:
+msgid "importcsvsummary.line.processed"
+msgstr "処理された行数: {0}"
+
+#:
+msgid "importcsvsummary.line.skipped"
+msgstr "スキップされた行数: {0}"
+
+#:
+msgid "importcsvsummary.users.added.count"
+msgstr "追加されたユーザー数: {0}"
+
+#:
+msgid "importcsvsummary.errors.count"
+msgstr "エラーの数: {0}"
+
+#:
+msgid "importcsvsummary.error.unexpected_extension"
+msgstr "CSV ファイルの予期しないファイル名拡張子"
+
+#:
+msgid "importcsvsummary.error.size_limit"
+msgstr "CsvFile のサイズが {0} の制限を超えています"
+
+#:
+msgid "importcsvsummary.error.local.password_mismatch"
+msgstr "ローカル サイト ユーザーの更新には、空のパスワードまたは一致するパスワードが必要です"
+
+#:
+msgid "importcsvsummary.error.local.password_required"
+msgstr "ローカル認証の場合、ローカル システム ユーザーの作成にはパスワードが必要です"
+
+#:
+msgid "importcsvsummary.error.ad.user_not_found"
+msgstr "AD ユーザーが見つかりません ''{0}''"
+
+#:
+msgid "importcsvsummary.error.too_many_errors"
+msgstr "CSV ファイルで発生したエラーが多すぎます"
+
+#:
+msgid "audit.errors.wdc_not_allowlisted"
+msgstr "Web データ コネクタが許可リストに含まれていません。ヘルプは次を参照してください。https://help.tableau.com/current/online/ja-jp/to_keep_data_fresh.htm"
+
+#:
+msgid "user.input.name.err.too_long"
+msgstr "名前が最大文字数 {0} を超えています"
+
+#:
+msgid "user.input.name.err.empty"
+msgstr "名前を空にすることはできません。"
+
+#:
+msgid "askdata.title"
+msgstr "データに聞く"
+
+#:
+msgid "slack.app.upgrade.email.notification.subject"
+msgstr "Slack 用 Tableau アプリの更新"
+
+#:
+msgid "slack.app.upgrade.email.notification.introduction"
+msgstr "Slack 用 Tableau アプリの更新が利用可能であり、今すぐ再インストールできます。この更新は、Tableau Online の次のリリースで機能します。アプリのパフォーマンスを維持し、新しい機能を使用できるようにするために、アプリを再インストールすることをお勧めします。新機能と変更点については、<a styl"
+
+#:
+msgid "slack.app.upgrade.email.notification.action"
+msgstr "更新手順と再インストール手順については、<a styl"
+
+#:
+msgid "slack.app.upgrade.email.notification.steps"
+msgstr "このサービス通知は Tableau Online が発行しました。"
+
+#:
+msgid "slack.app.upgrade.email.notification.reason"
+msgstr "あなたは Slack に接続されている Tableau Online サイトの管理者であるため、この通知を受信しています。"
+
+#:
+msgid "slack.app.upgrade.email.notification.footer.privacy"
+msgstr "「<a styl"
+
+#:
+msgid "unifiedconsumption.tcrm.folders.private"
+msgstr "マイ プライベート アプリ"
+
+
+msgid ""
+msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=utf-8"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: None"
+"Language: ja"
+#:
+msgid "commandlineutils.errors.bad_value"
+msgstr "オプション ''{0}'' の値 ''{1}'' が不正です。次のいずれかであることが必要です: {2}"
+
+#:
+msgid "commandlineutils.errors.not_integer"
+msgstr "オプション ''{1}'' の値 ''{0}'' が整数ではありません"
+
+#:
+msgid "common.errors.empty_file"
+msgstr "ファイル ''{0}'' が空です"
+
+#:
+msgid "common.errors.file_not_found"
+msgstr "ファイル ''{0}'' を開くことができません"
+
+#:
+msgid "common.errors.invalid_file_path"
+msgstr "向こうなファイル パス ''{0}''"
+
+#:
+msgid "common.errors.folder_path_not_found"
+msgstr "ディレクトリ ''{0}'' が見つかりませんでした。"
+
+#:
+msgid "common.errors.access_denied"
+msgstr "ファイル ''{0}'' へのアクセスが拒否されました。パスが有効で、ファイル名が既存のディレクトリと一致しないことを確認してください"
+
+#:
+msgid "common.errors.requires_csv_file"
+msgstr "''{0}'' コマンドでは、CSV ファイルが必要です"
+
+#:
+msgid "common.errors.requires_group_name"
+msgstr "''{0}'' コマンドでは、グループ名が必要です"
+
+#:
+msgid "common.errors.requires_site_name"
+msgstr "''{0}'' コマンドでは、サイト名が必要です"
+
+#:
+msgid "common.errors.options_conflict"
+msgstr "ユーザー ロールを指定するための新しいオプションと廃止されたオプションが指定されました。使用できるのは 1 個だけです"
+
+#:
+msgid "common.errors.csv_sizelimit"
+msgstr "参照 CSV ファイルは 100 MB のサイズ制限を超えています。ファイルのコンテンツをサイズの小さな CSV ファイルに分割し、個別にインポートしてください。"
+
+#:
+msgid "common.options.admin-type"
+msgstr "[廃止予定] CSV ファイルのすべてのユーザーに対して、サイト管理権限を割り当て [または削除] します。この設定は、CSV ファイルの個別の行の値でオーバーライドできます。{0} には、{1}、{2}、または {3} を指定できます。値を指定しない場合は、新規ユーザーに対しては {3} が設定され、既存のユーザーに対しては値は変更されません"
+
+#:
+msgid "common.options.complete"
+msgstr "変更が正常に行われるために、すべての行が有効であることを要求します [または要求しません]。既定値: {0}"
+
+#:
+msgid "common.options.license"
+msgstr "[廃止予定] すべてのユーザーに対して、既定のライセンス レベルを設定します。この設定は、CSV ファイルの値でオーバーライドできます。{0} には、{1}、{2}、または {3} を指定できます"
+
+#:
+msgid "common.options.nowait"
+msgstr "ジョブが完了するまで待機しない"
+
+#:
+msgid "common.options.publisher"
+msgstr "[廃止予定] CSV ファイルのすべてのユーザーに対して、パブリッシュ権限を割り当て [または削除] します。この設定は、CSV ファイルの個別の行の値でオーバーライドできます。値を指定しない場合の既定値: 新規ユーザーの場合は false、既存のユーザーの場合は未変更"
+
+#:
+msgid "common.options.silent-progress"
+msgstr "ジョブに対して進行状況メッセージを表示しない"
+
+#:
+msgid "common.options.sysadmin-type"
+msgstr "[廃止予定] CSV ファイルのすべてのユーザーに対して、サイト管理権限を割り当て [または削除] します。この設定は、CSV ファイルの個別の行の値でオーバーライドできます。{0} には、{1}、{2}、{3}、または {4} を指定できます。値を指定しない場合の既定値: 新規ユーザーの場合は {4}、既存のユーザーの場合は未変更"
+
+#:
+msgid "common.output.job_queued_success"
+msgstr "ジョブがキューに登録されました"
+
+#:
+msgid "common.output.succeeded"
+msgstr "正常に終了しました"
+
+#:
+msgid "common.options.role"
+msgstr "影響を受けるすべてのユーザーの既定のロールを設定します。{0} の有効な値は {1} です。指定されていない場合、サーバーは既定値 {2} を使用します。"
+
+#:
+msgid "addusers.options.users"
+msgstr "グループに追加するユーザーのリストを 1 行に 1 人のユーザーずつ含むファイル"
+
+#:
+msgid "addusers.short_description"
+msgstr "ユーザーをグループに追加"
+
+#:
+msgid "addusers.status"
+msgstr "{0} にリストされたユーザーをグループ {1} に追加しています..."
+
+#:
+msgid "creategroup.short_description"
+msgstr "ローカル グループの作成"
+
+#:
+msgid "creategroup.status"
+msgstr "グループ ''{0}'' をサーバー上で作成しています..."
+
+#:
+msgid "creategroup.options.role"
+msgstr "ログイン時にグループ内のユーザーに対して設定されるロールを設定します。{0} の有効な値: {1}。ユーザーのサイト ロールは、ユーザーの現在のロールよりも制限が緩い場合にのみこの値に設定されます。値を指定しない場合、ログイン時にこのグループのユーザーにはロールが設定されません。"
+
+#:
+msgid "createextracts.errors.required_argument"
+msgstr "createextracts コマンドでは、ワークブック URL、ワークブック名、またはデータ ソース名が必要です。"
+
+#:
+msgid "createextracts.errors.error"
+msgstr "抽出の作成エラー"
+
+#:
+msgid "createextracts.for.datasource"
+msgstr "データソース ''{0}'' の抽出を作成しています"
+
+#:
+msgid "createextracts.for.workbook_name"
+msgstr "名前が ''{0}'' であるワークブックの抽出を作成しています"
+
+#:
+msgid "createextracts.for.workbook_url"
+msgstr "URL が ''{0}'' であるワークブックの抽出を作成しています"
+
+#:
+msgid "createextracts.options.datasource"
+msgstr "抽出作成用のターゲット データ ソースの名前"
+
+#:
+msgid "createextracts.options.embedded-datasources"
+msgstr "ターゲット ワークブック内の埋め込みデータ ソース名をスペースで区切ったリスト。スペースが含まれるデータ ソース名は二重引用符で囲んでください。これはワークブックの抽出を作成する場合にのみ使用できます。"
+
+#:
+msgid "createextracts.options.encrypt"
+msgstr "暗号化された抽出を作成します。"
+
+#:
+msgid "createextracts.options.include-all"
+msgstr "ターゲット ワークブック内の埋め込みデータ ソースをすべて含めます。ワークブックの抽出を作成する場合にのみ使用できます。"
+
+#:
+msgid "createextracts.options.parent-project-path"
+msgstr "ターゲット リソースを含むプロジェクトの親であるプロジェクトのパス。プロジェクト名を --project で指定する必要があります。"
+
+#:
+msgid "createextracts.options.project"
+msgstr "ターゲット リソースを含むプロジェクトの名前。{0} または {1} が指定されている場合にのみ必要です。指定されていない場合は、既定のプロジェクト ''{2}'' が使用されます。"
+
+#:
+msgid "createextracts.options.url"
+msgstr "リソースの URL に指定される正規名"
+
+#:
+msgid "createextracts.options.workbook"
+msgstr "抽出作成用のターゲット ワークブックの名前"
+
+#:
+msgid "createextracts.short_description"
+msgstr "パブリッシュされたワークブックまたはデータ ソース用の抽出を作成"
+
+#:
+msgid "createextracts.workbook.include-all"
+msgstr "ターゲット ワークブック内の埋め込みデータ ソースをすべて含める"
+
+#:
+msgid "createextracts.workbook.embedded-datasource-names"
+msgstr "埋め込みデータ ソース名あり"
+
+#:
+msgid "createproject.options.description"
+msgstr "プロジェクトの説明"
+
+#:
+msgid "createproject.options.name"
+msgstr "プロジェクトの名前"
+
+#:
+msgid "createproject.options.parent-project-path"
+msgstr "新しいプロジェクトを含むプロジェクトのパス。指定しない場合、サイト ルート レベルで作成されます"
+
+#:
+msgid "createproject.short_description"
+msgstr "プロジェクトの作成"
+
+#:
+msgid "createproject.status"
+msgstr "プロジェクト ''{0}'' をサーバー上で作成しています..."
+
+#:
+msgid "createsite.errors.invalid_url_option"
+msgstr "複数のサイトを作成する場合は、URL オプションは無効です。URL オプションを削除してからコマンドを再実行するか、各サイトを個別に作成してください"
+
+#:
+msgid "createsite.errors.site_name_already_exists"
+msgstr "''{0}'' という名前のサイトがすでに存在します。別のサイト名をお試しください。"
+
+#:
+msgid "createsite.errors.site_id_already_exists"
+msgstr "''{0}'' という ID のサイトは、すでに存在しています。-r を使用して別のサイト ID を指定してください。詳細については、tabcmd createsite のヘルプを参照してください。"
+
+#:
+msgid "createsite.options.allow-mobile-snapshots"
+msgstr "モバイル スナップショットを許可 [または拒否] します。既定では、モバイル スナップショットを許可します"
+
+#:
+msgid "createsite.options.allow-subscriptions"
+msgstr "このサイトのサブスクリプションを許可 [または拒否] します。既定では、サーバーの既定設定が使用されます。サーバーでサブスクリプションが無効になっている場合は、サブスクリプションを有効にできません"
+
+#:
+msgid "createsite.options.allow-web-authoring"
+msgstr "このサイトの Web 作成を許可 [または拒否] します。既定では、Web 作成を許可します"
+
+#:
+msgid "createsite.options.metrics-level"
+msgstr "コレクションなしの場合は 0、すべてのコレクションの場合は 100"
+
+#:
+msgid "createsite.options.guest-access-enabled"
+msgstr "Tableau Server アカウントにサインインしていないユーザーがビューを表示するためのゲスト アクセス パーミッション"
+
+#:
+msgid "createsite.options.site-mode"
+msgstr "サイト管理者に対して、サイトのユーザー管理を許可 [または拒否] します"
+
+#:
+msgid "createsite.options.storage-quota"
+msgstr "サイト保存容量 (MB)"
+
+#:
+msgid "createsite.options.subscription-email"
+msgstr "サブスクリプションでメールを使用"
+
+#:
+msgid "createsite.options.subscription-footer"
+msgstr "サブスクリプションでフッターを使用"
+
+#:
+msgid "createsite.options.url"
+msgstr "サイトのサイト ID"
+
+#:
+msgid "createsite.options.user-quota"
+msgstr "サイトの最大ユーザー数"
+
+#:
+msgid "createsite.options.extract_encryption_mode"
+msgstr "抽出暗号化モード: 無効、有効、または実行。設定しない場合、既定値が使用されます。"
+
+#:
+msgid "createsite.options.web_extraction_enabled"
+msgstr "このサイトで抽出の作成とライブへの変更を許可 [または拒否] します。既定では許可します。"
+
+#:
+msgid "createsite.options.run_now_enabled"
+msgstr "このサイトに対して [今すぐ実行] オプションを許可 [または拒否] します。既定では [今すぐ実行] を許可するように設定されています。"
+
+#:
+msgid "createsite.options.time_zone"
+msgstr "このサイトの抽出で使用されるタイム ゾーン。既定は設定解除され、サーバーのタイム ゾーンが使用されます。"
+
+#:
+msgid "createsite.short_description"
+msgstr "サイトの作成"
+
+#:
+msgid "createsite.status"
+msgstr "サイト ''{0}'' をサーバー上で作成しています..."
+
+#:
+msgid "createsiteusers.options.auth-type"
+msgstr "CSV ファイルで、全ユーザーの認証タイプを割り当てます。Tableau Online の場合、{0} は {1} (デフォルト) または {2} です。Tableau Server の場合、{0} はローカル (デフォルト) または {2} です。"
+
+#:
+msgid "createsiteusers.description"
+msgstr "現在のサイトでユーザーを作成します。ユーザーは、指定された CSV ファイルから読み込まれます。ファイルには、以下の列をこの順序で含むことができます。{0}1. ユーザー名{0}2. パスワード (Active Directory を使用する場合は無視されます){0}3. フレンドリ名 (Active Directory を使用する場合は無視されます){0}4. ライセンス レベル ({1}、{2}、{3}、{4}、または{5}){0}5. 管理者 ({6}/{7}){0}6. パブリッシャー ({8}/{9}/1 または {10}/{11}/0){0}7. メール (Tableau Public のみ){0}ファイルの列の数は、ここに示した数より少なくてもかまいません。たとえば、1 行 にユーザー名のみを含むシンプルなリストを指定することもできます。値にコンマが含まれている場合は、引用符を使用できます。tabcmd は、{12} タスクが完了するのを待機します。{13} フラグを渡すことにより、タスクがサーバー上で完了するのを待機せずに、すぐに戻るように指定できます。このコマンドを使用してシステム管理者を作成したり、システム管理者からユーザーを外したりすることはできません。代わりに、''{14}'' を使用してください"
+
+#:
+msgid "createsiteusers.short_description"
+msgstr "現在のサイト上でユーザーを作成します"
+
+#:
+msgid "createsiteusers.status"
+msgstr "{0} にリストされたユーザーを現在のサイトに追加しています..."
+
+#:
+msgid "createusers.description"
+msgstr "ユーザーを作成します。ユーザーは、指定された CSV ファイルから読み込まれます。ファイルには、以下の列をこの順序で含むことができます。{0}1. ユーザー名{0}2. パスワード (Active Directory を使用する場合は無視されます){0}3. フレンドリ名 (Active Directory を使用する場合は無視されます){0}4. ライセンス レベル ({1}、{2}、{3}、{4}、または{5}){0}5. 管理者 ({6}/{7}/{8}/{9}){0}6. パブリッシャー ({10}/{11}/1 または {12}/{13}/0){0}7. メール (Tableau Public のみ){0}ファイルの列は、ここに示した数より少なくてもかまいません。たとえば、1 行 にユーザー名のみを含むシンプルなリストを指定することもできます。値にコンマが含まれている場合は、引用符を使用できます。tabcmd は、{14} タスクが完了するのを待機します。{15} フラグを渡すことにより、タスクがサーバー上で完了するのを待機せずに、すぐに戻るように指定できます。"
+
+#:
+msgid "createusers.short_description"
+msgstr "サーバー上でユーザーを作成します"
+
+#:
+msgid "createusers.status"
+msgstr "{0} にリストされたユーザーをサーバーに追加しています"
+
+#:
+msgid "decryptextracts.short_description"
+msgstr "サイトで抽出を複合化する"
+
+#:
+msgid "decryptextracts.status"
+msgstr "サイト {0} で複合化する抽出をスケジュールしています..."
+
+#:
+msgid "delete.errors.mutually_exclusive"
+msgstr "削除するワークブックとデータ ソースの両方を指定することはできません"
+
+#:
+msgid "delete.errors.requires_workbook_datasource"
+msgstr "''{0}'' コマンドでは、ワークブック名またはデータ ソース名が必要です"
+
+#:
+msgid "delete.options.datasource"
+msgstr "削除するデータ ソース"
+
+#:
+msgid "delete.options.parent-project-path"
+msgstr "削除するワークブック/データ ソースを含むプロジェクトの親のパス。プロジェクト名を --project で指定する必要があります。"
+
+#:
+msgid "delete.options.project"
+msgstr "削除するワークブック/データ ソースを含むプロジェクト。既定のプロジェクトは ''{0}'' です"
+
+#:
+msgid "delete.options.workbook"
+msgstr "削除するワークブック"
+
+#:
+msgid "delete.short_description"
+msgstr "サーバーからワークブックまたはデータ ソースを削除します"
+
+#:
+msgid "delete.status"
+msgstr "サーバーから {0} ''{1}'' を削除しています..."
+
+#:
+msgid "deleteextracts.errors.required_argument"
+msgstr "deleteextracts コマンドでは、ワークブック URL、ワークブック名、またはデータ ソース名が必要です"
+
+#:
+msgid "deleteextracts.errors.error"
+msgstr "抽出の削除エラー"
+
+#:
+msgid "deleteextracts.for.datasource"
+msgstr "データソース ''{0}'' の抽出を削除しています"
+
+#:
+msgid "deleteextracts.for.workbook_name"
+msgstr "名前が ''{0}'' であるワークブックの抽出を削除しています"
+
+#:
+msgid "deleteextracts.for.workbook_url"
+msgstr "URL が ''{0}'' であるワークブックの抽出を削除しています"
+
+#:
+msgid "deleteextracts.options.datasource"
+msgstr "抽出削除用のターゲット データ ソースの名前"
+
+#:
+msgid "deleteextracts.options.embedded-datasources"
+msgstr "ターゲット ワークブック内の埋め込みデータ ソース名をスペースで区切ったリスト。スペースが含まれるデータ ソース名は二重引用符で囲んでください。これはワークブックの抽出を削除する場合にのみ使用できます。"
+
+#:
+msgid "deleteextracts.options.include-all"
+msgstr "ターゲット ワークブック内の埋め込みデータ ソースをすべて含める"
+
+#:
+msgid "deleteextracts.options.parent-project-path"
+msgstr "ターゲット リソースを含むプロジェクトの親であるプロジェクトのパス。プロジェクト名を --project で指定する必要があります。"
+
+#:
+msgid "deleteextracts.options.project"
+msgstr "ターゲット リソースを含むプロジェクトの名前。{0} または {1} が指定されている場合にのみ必要です。指定されていない場合は、既定のプロジェクト ''{2}'' が使用されます。"
+
+#:
+msgid "deleteextracts.options.url"
+msgstr "リソースの URL に指定される正規名"
+
+#:
+msgid "deleteextracts.options.workbook"
+msgstr "抽出削除用のターゲット ワークブックの名前"
+
+#:
+msgid "deleteextracts.short_description"
+msgstr "パブリッシュされたワークブックまたはデータ ソース用の抽出を削除"
+
+#:
+msgid "deleteextracts.workbook.include-all"
+msgstr "ターゲット ワークブック内の埋め込みデータ ソースをすべて含める"
+
+#:
+msgid "deleteextracts.workbook.embedded-datasource-names"
+msgstr "埋め込みデータ ソース名あり"
+
+#:
+msgid "deletegroup.short_description"
+msgstr "グループの削除"
+
+#:
+msgid "deletegroup.status"
+msgstr "サーバーからグループ ''{0}'' を削除しています..."
+
+#:
+msgid "deleteproject.errors.requires_project_name"
+msgstr "''{0}'' コマンドでは、プロジェクト名が必要です"
+
+#:
+msgid "deleteproject.options.parent-project-path"
+msgstr "削除するプロジェクトの親のパス。プロジェクト名を --project で指定する必要があります。"
+
+#:
+msgid "deleteproject.short_description"
+msgstr "プロジェクトの削除"
+
+#:
+msgid "deleteproject.status"
+msgstr "サーバーからプロジェクト ''{0}'' を削除しています..."
+
+#:
+msgid "deletesite.errors.logged_into_this_site"
+msgstr "現在ログインしているサイトを削除できません"
+
+#:
+msgid "deletesite.short_description"
+msgstr "サイトの削除"
+
+#:
+msgid "deletesite.status"
+msgstr "サーバーからサイト ''{0}'' を削除しています..."
+
+#:
+msgid "deletesiteusers.description"
+msgstr "サイト ユーザーを削除します。ユーザーは、指定された CSV ファイルから読み込まれます。ファイルは、1 行 に 1 人のユーザー名を含むシンプルなリストです"
+
+#:
+msgid "deletesiteusers.short_description"
+msgstr "サイト ユーザーの削除"
+
+#:
+msgid "deletesiteusers.status"
+msgstr "{0} にリストされたサイト ユーザーをサーバーから削除しています..."
+
+#:
+msgid "deleteusers.description"
+msgstr "ユーザーを削除します。ユーザーは、指定されたコンマ区切り値 (CSV) ファイルから読み込まれます。ファイルは、1 行 に 1 人のユーザー名を含むシンプルなリストです"
+
+#:
+msgid "deleteusers.short_description"
+msgstr "ユーザーの削除"
+
+#:
+msgid "deleteusers.status"
+msgstr "{0} にリストされたユーザーをサーバーから削除しています..."
+
+#:
+msgid "editdomain.description"
+msgstr "ドメインを編集します。編集するドメインのリストを表示するには、''{0}'' コマンドを使用します"
+
+#:
+msgid "editdomain.errors.requires_nickname_name"
+msgstr "''{0}'' オプションまたは ''{1}'' オプションを指定する必要があります"
+
+#:
+msgid "editdomain.options.id"
+msgstr "ドメインの ID"
+
+#:
+msgid "editdomain.options.name"
+msgstr "ドメインの名前"
+
+#:
+msgid "editdomain.options.nickname"
+msgstr "ドメインのニックネーム"
+
+#:
+msgid "editdomain.short_description"
+msgstr "ドメインの編集"
+
+#:
+msgid "editdomain.output"
+msgstr "{0}ID{1}ニックネーム{1}{1}名前{0}"
+
+#:
+msgid "editdomain.status"
+msgstr "サーバー上の ID ''{0}'' のドメインを編集します..."
+
+#:
+msgid "editsite.errors.invalid_site-id"
+msgstr "複数のサイトを編集する場合、{0} オプションは無効です。{0} オプションを削除してからコマンドを再実行するか、各サイトを個別に編集してください"
+
+#:
+msgid "editsite.errors.invalid_site-name"
+msgstr "複数のサイトを編集する場合、{0} オプションは無効です。{0} オプションを削除してからコマンドを再実行するか、各サイトを個別に編集してください"
+
+#:
+msgid "editsite.options.allow-mobile-snapshots"
+msgstr "モバイル スナップショットを許可 [または拒否] する"
+
+#:
+msgid "editsite.options.allow-subscriptions"
+msgstr "このサイトのサブスクリプションを許可 [または拒否] する"
+
+#:
+msgid "editsite.options.allow-web-authoring"
+msgstr "このサイトの Web 作成を許可 [または拒否] する"
+
+#:
+msgid "editsite.options.cache-warmup"
+msgstr "このサイトのキャッシュ ウォームパップを許可 [または拒否]"
+
+#:
+msgid "editsite.options.cache-warmup-threshold"
+msgstr "ウォームアップをトリガーするための、ビューが最近いつ閲覧されたかに対するしきい値 (日単位)"
+
+#:
+msgid "editsite.options.site-name"
+msgstr "サイトの表示名"
+
+#:
+msgid "editsite.options.status"
+msgstr "サイトが利用可能かどうかを変更します。''{0}'' または ''{1}'' を指定します"
+
+#:
+msgid "editsite.options.allow-materialized-views"
+msgstr "このサイトの具体化されたビューが許可/拒否されています"
+
+#:
+msgid "editsite.options.extract_encryption_mode"
+msgstr "抽出暗号化モード: 無効、有効、または実行。設定しない場合、サーバーで変更は行われません。"
+
+#:
+msgid "editsite.options.web_extraction_enabled"
+msgstr "このサイトで抽出の作成およびライブへの変更を許可 [または拒否] します。既定の設定では許可します。"
+
+#:
+msgid "editsite.options.run_now_enabled"
+msgstr "このサイトに対して [今すぐ実行] オプションを許可 [または拒否] します。既定では [今すぐ実行] を許可するように設定されています"
+
+#:
+msgid "editsite.options.time_zone"
+msgstr "このサイトの抽出で使用されるタイム ゾーン"
+
+#:
+msgid "editsite.options.use_default_time_zone"
+msgstr "このサイトの抽出で使用されるタイム ゾーンを設定解除します。その代わり、既定のサーバー タイム ゾーンを使用します"
+
+#:
+msgid "editsite.short_description"
+msgstr "サイトの編集"
+
+#:
+msgid "editsite.status"
+msgstr "サイト ''{0}'' をサーバー上で編集します..."
+
+#:
+msgid "encryptextracts.short_description"
+msgstr "サイトで抽出を暗号化する"
+
+#:
+msgid "encryptextracts.status"
+msgstr "サイト {0} で暗号化する抽出をスケジュールしています..."
+
+#:
+msgid "export.errors.need_country_and_languge"
+msgstr "オプションの「--country」と「--language」はセットで使用する必要があります"
+
+#:
+msgid "export.errors.white_space_workbook_view"
+msgstr "エクスポートするワークブックやビューの名前にスペースを含めることはできません。URL に表示される標準化された名前を使用してください。"
+
+#:
+msgid "export.errors.requires_workbook_view_name"
+msgstr "''{0}'' コマンドには、<workbook>/<view> 名が必要です"
+
+#:
+msgid "export.errors.requires_workbook_view_param"
+msgstr "''{0}'' コマンドには <workbook>/<view> パラメーターが必要です。このパラメーターには、少なくとも 1 個のスラッシュ (/) が必要です"
+
+#:
+msgid "export.options.country"
+msgstr "既定のユーザー ロケールを使用しない場合は、ロケールの国の略名 (IANA Language Subtag Registry から検索) を使用します。「--language」とセットで使用する必要があります"
+
+#:
+msgid "export.options.csv"
+msgstr "データを CSV 形式でエクスポート (既定)"
+
+#:
+msgid "export.options.fullpdf"
+msgstr "ビジュアル ビューを PDF 形式でエクスポート (ワークブックがタブ付きでパブリッシュされた場合)"
+
+#:
+msgid "export.options.height"
+msgstr "高さを設定します。整数値であることが必要です (既定: 600 ピクセル)"
+
+#:
+msgid "export.options.language"
+msgstr "既定のユーザー ロケールを使用しない場合は、ロケールの言語の省略名 (IANA Language Subtag Registry から検索) を使用します。「--country」とセットで使用する必要があります"
+
+#:
+msgid "export.options.pagelayout"
+msgstr "エクスポートされた PDF のページの方向を設定します。有効な値: {0}。指定されていない場合は、Tableau Desktop の設定が使用されます"
+
+#:
+msgid "export.options.pagesize"
+msgstr "エクスポートされた PDF のページ サイズを設定します。有効な値: {0} (既定: ''{1}'')"
+
+#:
+msgid "export.options.pdf"
+msgstr "PDF 形式でデータをエクスポート"
+
+#:
+msgid "export.options.png"
+msgstr "PNG 形式でデータをエクスポート"
+
+#:
+msgid "export.options.width"
+msgstr "幅を設定します。整数値であることが必要です (既定: 800 ピクセル)"
+
+#:
+msgid "export.short_description"
+msgstr "サーバーから、ビューのデータまたはイメージをエクスポート"
+
+#:
+msgid "export.status"
+msgstr "サーバーから ''{0}'' を要求しています..."
+
+#:
+msgid "export.success"
+msgstr "{0} を ''{1}'' に保存しました"
+
+#:
+msgid "extracts.workbook.errors.requires_datasources_or_include_all"
+msgstr "ワークブックのコマンド {0} では埋め込みデータ ソースまたは include-all フラグが必要です"
+
+#:
+msgid "fileuploader.progress"
+msgstr "アップロード進行状況: {0}%"
+
+#:
+msgid "get.description"
+msgstr "サーバーからファイルを取得します。ファイル名引数が指定されていない場合は、パスの最後の構成要素に従ってファイルの名前が付けられます"
+
+#:
+msgid "get.errors.requires_url"
+msgstr "''{0}'' コマンドでは、URL が必要です"
+
+#:
+msgid "get.options.file"
+msgstr "ファイルを保存する名前"
+
+#:
+msgid "get.short_description"
+msgstr "サーバーからファイルを取得"
+
+#:
+msgid "help.available_commands"
+msgstr "利用可能なコマンド:"
+
+#:
+msgid "help.command_options"
+msgstr "コマンド オプション:"
+
+#:
+msgid "help.description0"
+msgstr "特定のコマンドのヘルプを表示"
+
+#:
+msgid "help.description1"
+msgstr "利用可能なすべてのコマンドをリスト"
+
+#:
+msgid "help.errors.unknown_command"
+msgstr "不明なコマンド: {0}"
+
+#:
+msgid "help.global_options"
+msgstr "グローバル オプション:"
+
+#:
+msgid "help.short_description"
+msgstr "tabcmd コマンドのヘルプ"
+
+#:
+msgid "httputils.found_attachment"
+msgstr "添付ファイルが見つかりました: {0}"
+
+#:
+msgid "httputils.mapped_attachment"
+msgstr "添付ファイルが見つかりました: {0} ({1} に再マッピングされました)"
+
+#:
+msgid "initialuser.errors.username_and_password_required"
+msgstr "ユーザー名とパスワードの両方が必要です"
+
+#:
+msgid "initialuser.options.friendly-name"
+msgstr "フレンドリー名"
+
+#:
+msgid "initialuser.short_description"
+msgstr "初期化されていないサーバー上で最初のユーザーを作成します"
+
+#:
+msgid "listdomains.description"
+msgstr "ドメインのリスト"
+
+#:
+msgid "listdomains.status"
+msgstr "サーバーのドメインをリストしています..."
+
+#:
+msgid "listsites.output"
+msgstr "{0}{0}名前: {1} {0}サイト ID: ''{2}''"
+
+#:
+msgid "listsites.output_extended"
+msgstr "{0}{0}名前: {1} {0}サイト ID: ''{2}''{0}抽出の暗号化: {3}"
+
+#:
+msgid "listsites.short_description"
+msgstr "ユーザーのサイトをリスト"
+
+#:
+msgid "listsites.status"
+msgstr "ユーザー {0} のサイトをリストしています..."
+
+#:
+msgid "listsites.options.get_extract_encryption_mode"
+msgstr "サイトの抽出暗号化モードを印刷する"
+
+#:
+msgid "login.description"
+msgstr "サーバーにサインインします。セッションは、サーバー上で期限切れになるか、{0} を使用するまで引き続き有効です"
+
+#:
+msgid "login.short_description"
+msgstr "サーバーにサインイン"
+
+#:
+msgid "logout.short_description"
+msgstr "サーバーからサインアウト"
+
+#:
+msgid "publish.description"
+msgstr "ワークブック、データ ソース、または抽出をサーバーにパブリッシュ"
+
+#:
+msgid "publish.errors.invalid_datasource_update_file_type"
+msgstr "データ ソース更新のためのファイル タイプ ''{0}'' が正しくありません。置換/追加は、抽出 (.tde) ファイルにのみ適用されます"
+
+#:
+msgid "publish.errors.invalid_name_option"
+msgstr "複数のアイテムのパブリッシュ時には、{0} オプションは無効です"
+
+#:
+msgid "publish.errors.invalid_publish_file_type"
+msgstr "パブリッシュのためのファイル タイプ ''{0}'' が正しくありません。.tde、.tds、.tdsx、.twb、または .twbx ファイルが有効です"
+
+#:
+msgid "publish.errors.mutually_exclusive_option"
+msgstr "{0} または {1} のいずれか 1 個のみを使用"
+
+#:
+msgid "publish.errors.requires_resource_file"
+msgstr "''{0}'' コマンドでは、ワークブック、データ ソース、または抽出ファイルが必要です"
+
+#:
+msgid "publish.errors.unexpected_server_response"
+msgstr "サーバーからの予期しない応答: {0}"
+
+#:
+msgid "publish.errors.server_resource_not_found"
+msgstr "指定されたリソースは存在しないか、そのリソースを表示できるパーミッションがありません。プロジェクト名とパーミッションを確認してください。"
+
+#:
+msgid "publish.options.append"
+msgstr "抽出ファイルを既存のデータ ソースに追加"
+
+#:
+msgid "publish.options.async"
+msgstr "非同期でパブリッシュ"
+
+#:
+msgid "publish.options.db-password"
+msgstr "すべてのデータ ソースのデータベース パスワード"
+
+#:
+msgid "publish.options.db-username"
+msgstr "すべてのデータ ソースのデータベース ユーザー名"
+
+#:
+msgid "publish.options.description"
+msgstr "ワークブックまたはデータ ソースの説明"
+
+#:
+msgid "publish.options.encrypt_extracts"
+msgstr "サーバーで抽出を暗号化する"
+
+#:
+msgid "publish.options.name"
+msgstr "サーバー上のワークブック/データ ソース名。省略した場合は、ファイル名から twb(x)、tds(x)、または tde 拡張子を除いた名前に従ってワークブック/データ ソースの名前が付けられます。.tde ファイルをパブリッシュすると、データ ソースが作成されます"
+
+#:
+msgid "publish.options.oauth-username"
+msgstr "パブリッシュを行うユーザー名に関連付けられたサーバー  キーチェーンに保存された認証資格情報を使用する"
+
+#:
+msgid "publish.options.overwrite"
+msgstr "既存のワークブック/データ ソース (存在する場合) を上書き"
+
+#:
+msgid "publish.options.project"
+msgstr "ワークブック/データ ソースをパブリッシュするプロジェクト"
+
+#:
+msgid "publish.options.parent-project-path"
+msgstr "ワークブック/データ ソースのパブリッシュ先であるプロジェクトの親のパス"
+
+#:
+msgid "publish.options.replace"
+msgstr "抽出ファイルを既存のデータ ソースに置換"
+
+#:
+msgid "publish.options.restart"
+msgstr "ファイルのアップロードを再開"
+
+#:
+msgid "publish.options.save-db-password"
+msgstr "サーバーにデータベース パスワードを保管"
+
+#:
+msgid "publish.options.save-oauth"
+msgstr "{0} で指定された OAuth 認証資格情報を埋め込み"
+
+#:
+msgid "publish.options.tabbed"
+msgstr "タブ付きビューを有効にしてパブリッシュ"
+
+#:
+msgid "publish.options.thumbnail-groupname"
+msgstr "ワークブックにユーザー フィルターが含まれている場合は、サムネイルの計算中にこのグループを偽装します"
+
+#:
+msgid "publish.options.thumbnail-username"
+msgstr "ワークブックにユーザー フィルターが含まれている場合は、サムネイルの計算中にこのユーザーを偽装します"
+
+#:
+msgid "publish.status"
+msgstr "サーバーに ''{0}'' をパブリッシュしています。この処理には数分かかることがあります..."
+
+#:
+msgid "publish.success"
+msgstr "ファイルがサーバーの次の場所に正常にパブリッシュされました:"
+
+#:
+msgid "publishsamples.options.parent-project-path"
+msgstr "サンプルのパブリッシュ先であるプロジェクトの親のパス。プロジェクト名を --project で指定する必要があります"
+
+#:
+msgid "publishsamples.options.projectname"
+msgstr "サンプルのパブリッシュ先のプロジェクト名"
+
+#:
+msgid "publishsamples.short_description"
+msgstr "指定されたプロジェクトにサンプル ワークブックをパブリッシュします。既存のサンプルは上書きされます。"
+
+#:
+msgid "publishsamples.status"
+msgstr "パブリッシュのサンプル..."
+
+#:
+msgid "reencryptextracts.short_description"
+msgstr "サイトで抽出を再暗号化する"
+
+#:
+msgid "reencryptextracts.status"
+msgstr "サイト {0} の抽出の再暗号化をスケジュールしています..."
+
+#:
+msgid "refreshextracts.errors.required_argument"
+msgstr "refreshextracts コマンドでは、ワークブック URL、ワークブック名、またはデータ ソース名が必要です"
+
+#:
+msgid "refreshextracts.errors.add_and_remove_calculations"
+msgstr "--addcalculations と --removecalculations オプションの両方を使用する更新を実行できません"
+
+#:
+msgid "refreshextracts.errors.calculations_and_incremental"
+msgstr "増分抽出更新の間は具体化された計算を追加または削除できません"
+
+#:
+msgid "refreshextracts.errors.error"
+msgstr "抽出の更新エラー"
+
+#:
+msgid "refreshextracts.options.datasource"
+msgstr "更新するデータ ソースの名前"
+
+#:
+msgid "refreshextracts.options.incremental"
+msgstr "増分更新を実行 (サポートされている場合)"
+
+#:
+msgid "refreshextracts.options.parent-project-path"
+msgstr "更新する抽出を含むプロジェクトの親のパス。プロジェクト名を --project で指定する必要があります。"
+
+#:
+msgid "refreshextracts.options.project"
+msgstr "ワークブック/データ ソースを含むプロジェクトの名前。{0} または {1} が指定されている場合にのみ必要です。指定されていない場合は、既定のプロジェクト ''{2}'' が使用されます"
+
+#:
+msgid "refreshextracts.options.synchronous"
+msgstr "更新が実行されて、完了するのを待機してから、終了する"
+
+#:
+msgid "refreshextracts.options.url"
+msgstr "ワークブックまたはビューの、URL に指定される正規名"
+
+#:
+msgid "refreshextracts.options.workbook"
+msgstr "更新するワークブックの名前"
+
+#:
+msgid "refreshextracts.options.addcalculations"
+msgstr "具体化された計算を抽出に追加する"
+
+#:
+msgid "refreshextracts.options.removecalculations"
+msgstr "抽出から具体化された計算を削除する"
+
+#:
+msgid "refreshextracts.short_description"
+msgstr "サーバー上のワークブックまたはデータ ソースの抽出を更新"
+
+#:
+msgid "refreshextracts.status_incremented"
+msgstr "{0} ''{1}'' の抽出の増分をスケジュールしています..."
+
+#:
+msgid "refreshextracts.status_refreshed"
+msgstr "{0} ''{1}'' の抽出の更新をスケジュールしています..."
+
+#:
+msgid "removeusers.options.users"
+msgstr "グループから削除するユーザーのリストを 1 行に 1 人のユーザーずつ含むファイル"
+
+#:
+msgid "removeusers.short_description"
+msgstr "ユーザーをグループから削除"
+
+#:
+msgid "removeusers.status"
+msgstr "{0} にリストされたユーザーをグループ {1} から削除しています..."
+
+#:
+msgid "runschedule.errors.requires_schedule_name"
+msgstr "''{0}'' コマンドでは、スケジュール名が必要です"
+
+#:
+msgid "runschedule.short_description"
+msgstr "スケジュールを実行"
+
+#:
+msgid "runschedule.status"
+msgstr "サーバー上で、スケジュール ''{0}'' を実行しています..."
+
+#:
+msgid "materializeviews.short_description"
+msgstr "サイト/ワークブックの具体化されたビュー設定を更新して確認する"
+
+#:
+msgid "materializeviews.status.site"
+msgstr "サイト ''{0}'' の具体化されたビュー設定を更新しています..."
+
+#:
+msgid "materializeviews.status.workbook"
+msgstr "ワークブック ''{0}'' の具体化されたビュー設定を更新しています..."
+
+#:
+msgid "materializeviews.errors.invalid_workbook_arguments"
+msgstr "具体化されたビュー コマンドにはワークブック名の引数が 1 つ必要です"
+
+#:
+msgid "materializeviews.errors.invalid_site_arguments"
+msgstr "具体化されたビュー コマンドにはサイト ID の引数が 1 つ必要です"
+
+#:
+msgid "materializeviews.errors.invalid_workbook_option"
+msgstr "''{2}'' と共に ''{0}'' または ''{1}'' を使用してください"
+
+#:
+msgid "materializeviews.errors.invalid_project_path"
+msgstr "''{0}'' と共に ''{1}'' を使用してください"
+
+#:
+msgid "materializeviews.errors.invalid_site_option"
+msgstr "''{1}'' と共に ''{0}'' を使用してください"
+
+#:
+msgid "materializeviews.errors.site_mode_conflict"
+msgstr "サイトの具体化されたビュー モードを変更するには ''{0}'' または ''{1}'' を使用してください"
+
+#:
+msgid "materializeviews.errors.site_not_updated"
+msgstr "サイト ''{0}'' は更新されませんでした。具体化されたビューの設定はサーバー管理者のみが変更できます"
+
+#:
+msgid "materializeviews.errors.invalid_argument_options_combination"
+msgstr "具体化されたビューの設定を変更するには ''{0}'' または ''{1}'' を使用してください"
+
+#:
+msgid "materializeviews.options.materialize_now"
+msgstr "指定したワークブックのマテリアル化をすぐにスケジュールするには ''{0}'' を使用してください"
+
+#:
+msgid "materializeviews.options.project"
+msgstr "プロジェクト名を指定するには ''{0}'' を使用してください"
+
+#:
+msgid "materializeviews.options.parent_project_path"
+msgstr "親プロジェクト パスを ''{1}'' に指定するには ''{0}'' を使用してください"
+
+#:
+msgid "materializeviews.options.allow_workbook"
+msgstr "ワークブックで具体化されたビューを有効/無効にするには ''{0}'' を使用してください"
+
+#:
+msgid "materializeviews.options.allow_site"
+msgstr "サイトで具体化されたビューを有効/無効にするには ''{0}'' を使用してください"
+
+#:
+msgid "materializeviews.options.selected_workbooks"
+msgstr "サイトで選択されたワークブックを有効にするには ''{0}'' を使用してください。これはオプション ''{1}'' と共に使用されます。これは既定のオプションです"
+
+#:
+msgid "materializeviews.options.all_workbooks"
+msgstr "サイトですべてのワークブックを有効にするには ''{0}'' を使用してください。これはオプション ''{1}'' と共に使用されます"
+
+#:
+msgid "session.auto_site_login"
+msgstr "サイトへの自動サインイン: {0}"
+
+#:
+msgid "session.certificate-alias"
+msgstr "証明書の別名: {0}"
+
+#:
+msgid "session.connecting"
+msgstr "サーバーに接続しています..."
+
+#:
+msgid "session.continuing_session"
+msgstr "前のセッションを続行しています"
+
+#:
+msgid "session.errors.auth_required"
+msgstr "権限が必要です"
+
+#:
+msgid "session.errors.invalid_keystore_password"
+msgstr "キーストア パスワードが正しくありません。正しいパスワードを入力して再試行してください"
+
+#:
+msgid "session.errors.invalid_redirect"
+msgstr "URL が無効なため、リダイレクトできません: {0}"
+
+#:
+msgid "session.errors.keystore_pwdfile_create"
+msgstr "キーストア パスワード ファイルを作成できませんでした。エラー: {0}"
+
+#:
+msgid "session.errors.missing_arguments"
+msgstr "引数が指定されていないため、サインインできません: {0}"
+
+#:
+msgid "session.errors.no_redirect_found"
+msgstr "リダイレクト応答にリダイレクト アドレスがありません"
+
+#:
+msgid "session.errors.no_sslcafile_found"
+msgstr "次の場所で証明機関 (CA) ファイルを見つけることができませんでした: ''{0}''。CA ファイルは Tableau Server との保護された通信を行うことができるように使用されます。CA ファイルの作成の詳細については、Tableau Server ヘルプを参照してください。SSL 証明書を検証せずに Tableau Server に接続するには、--no-certcheck フラグを使用します。"
+
+#:
+msgid "session.errors.script_no_password"
+msgstr "Tabcmd がスクリプトまたは IDE から実行されましたが、パスワードが指定されませんでした。ログインするには、tabcmd への引数としてパスワードを指定する必要があります。"
+
+#:
+msgid "session.errors.session_expired"
+msgstr "セッションの有効期限が切れました"
+
+#:
+msgid "session.errors.unsupported_command"
+msgstr "コマンドは、このサーバーでサポートされていません"
+
+#:
+msgid "session.keystore.notice"
+msgstr "パスワードをローカルに保存して、次回のパスワード入力を省略しますか。 [はい/いいえ]"
+
+#:
+msgid "session.keystore.password"
+msgstr "キーストア パスワード:"
+
+#:
+msgid "session.keystore.pwdfile_create"
+msgstr "次のパスにキーストア パスワードを作成します: {0}"
+
+#:
+msgid "session.keystore.pwdfile_remove"
+msgstr "正しくないパスワードを含むキーストア パスワード ファイルを削除する"
+
+#:
+msgid "session.login"
+msgstr "サインインしています..."
+
+#:
+msgid "session.logout"
+msgstr "サインアウトしました"
+
+#:
+msgid "session.monitorjob.errors.no_jobid"
+msgstr "ジョブを監視できません。job_id が見つかりません: {0}"
+
+#:
+msgid "session.monitorjob.percent_complete"
+msgstr "{0}% 完了"
+
+#:
+msgid "session.new_session"
+msgstr "新しいセッションを作成しています"
+
+#:
+msgid "session.no-certificate-found"
+msgstr "有効なクライアント証明書が見つかりません"
+
+#:
+msgid "session.not_default_site_member"
+msgstr "既定のサイトのメンバーではありません。次のサイトからサイト ID を選択してください:"
+
+#:
+msgid "session.not_site_member"
+msgstr "サイト ''{0}'' のメンバーではありません。次のサイトからサイト ID を選択してください:"
+
+#:
+msgid "session.options.help"
+msgstr "tabcmd のヘルプを表示"
+
+#:
+msgid "session.options.no-certcheck"
+msgstr "SSL 証明書を検証しない"
+
+#:
+msgid "session.options.no-cookie"
+msgstr "サインイン時にセッション ID を保存しません。後続のコマンドを実行する際には、再度サインインが必要になります。指定しない場合、既定ではセッション ID が保存されます"
+
+#:
+msgid "session.options.no-prompt"
+msgstr "パスワードの入力を求めない"
+
+#:
+msgid "session.options.no-proxy"
+msgstr "HTTP プロキシを使用しない"
+
+#:
+msgid "session.options.password"
+msgstr "指定された Tableau Server パスワードを使用"
+
+#:
+msgid "session.options.password-file"
+msgstr "ファイルから Tableau Server パスワードを読み込む"
+
+#:
+msgid "session.options.proxy"
+msgstr "指定された HTTP プロキシを使用"
+
+#:
+msgid "session.options.server"
+msgstr "指定された Tableau Server URL を使用します。プロトコルが指定されていない場合は、http:// であると見なされます"
+
+#:
+msgid "session.options.site"
+msgstr "指定した Tableau Server サイトを使用します。空の文字列 ('''') を指定すると、既定のサイトが強制的に使用されます"
+
+#:
+msgid "session.options.timeout"
+msgstr "サーバーがコマンドの処理が完了するまで待機する時間を秒単位で指定します。既定では、サーバーから応答が返ってくるまで待機します"
+
+#:
+msgid "session.options.use-certificate"
+msgstr "クライアント証明書を使用してサインインしてください"
+
+#:
+msgid "session.options.username"
+msgstr "指定された Tableau Server ユーザー名を使用"
+
+#:
+msgid "session.password"
+msgstr "パスワード:"
+
+#:
+msgid "session.retrying_task"
+msgstr "新しいセッションで元のコマンドを再試行するためにもう一度サインインしています..."
+
+#:
+msgid "session.session_expired_login"
+msgstr "セッションの有効期限が切れました。セッションをクリアするためにサインアウトしています..."
+
+#:
+msgid "session.site_list"
+msgstr "{0}{0}名前: {1}{0}サイト ID: ''{2}''"
+
+#:
+msgid "session.using-certificate"
+msgstr "クライアント証明書を使用したサインイン"
+
+#:
+msgid "session.inferred_username"
+msgstr "--username フラグが指定されていないため、ユーザー ''{0}'' としてログインしています"
+
+#:
+msgid "sessiondata.errors.bad_api"
+msgstr "サーバー API が正しくありません: {0}"
+
+#:
+msgid "sessiondata.errors.no_server_api"
+msgstr "応答にサーバー API バージョンが見つかりません"
+
+#:
+msgid "sessiondata.errors.version_mismatch"
+msgstr "tabcmd のバージョン {0} (API {1}) が、Tableau Server のバージョン {2} (API {3}) と一致しません"
+
+#:
+msgid "sessionoptions.errors.ambiguous_scheme"
+msgstr "サーバー名の前に ''{0}'' または ''{1}'' を指定します"
+
+#:
+msgid "sessionoptions.errors.bad_password_file"
+msgstr "ファイル ''{0}'' からパスワードを読み込めません"
+
+#:
+msgid "sessionoptions.errors.bad_protocol"
+msgstr "プロトコル ''{0}'' はサポートされていません"
+
+#:
+msgid "sessionoptions.errors.bad_proxy_format"
+msgstr "プロキシの形式が、ホスト:ポートに一致していません: {0}"
+
+#:
+msgid "sessionoptions.errors.bad_timeout"
+msgstr "{0} ''{1}'' への非数値の引数は無視されます"
+
+#:
+msgid "set.description"
+msgstr "サーバー上で設定を行います。設定をオフにするには、!setting を使用します"
+
+#:
+msgid "set.errors.requires_setting_name"
+msgstr "''{0}'' コマンドでは、設定名が必要です"
+
+#:
+msgid "set.errors.single_setting_name"
+msgstr "''{0}'' コマンドは、単一の設定名を受け取ります"
+
+#:
+msgid "set.short_description"
+msgstr "サーバー上で設定を行います"
+
+#:
+msgid "setsetting.status"
+msgstr "''{0}'' を {1} に設定しています"
+
+#:
+msgid "syncgroup.errors.server_admin"
+msgstr "グループの最低限のサイト ロールは、[ServerAdministrator] に設定できません。"
+
+#:
+msgid "syncgroup.options.role"
+msgstr "グループ内のすべてのユーザーの既定のロールを設定します。{0} の有効な値は {1} です。ユーザーが既に存在する場合、指定したロールは、ユーザーの現在のロールよりも制限が緩い場合にのみ適用されます。値を指定しない場合の既定値: 新規ユーザーの場合は {2}、既存のユーザーの場合は未変更です"
+
+#:
+msgid "syncgroup.options.overwritesiterole"
+msgstr "「--role」を使用して既定の動作をオーバーライドすることで、ユーザーのサイト ロールの権限をより低いものに変更できるようにします。"
+
+#:
+msgid "syncgroup.options.grantlicensemode"
+msgstr "グループで指定されたライセンスをユーザーに付与する時期。有効な値は {0} です。値が渡されない場合、既定値として ''on-sync'' が使用されます。"
+
+#:
+msgid "syncgroup.short_description"
+msgstr "サーバーを Active Directory グループと同期"
+
+#:
+msgid "syncgroup.status"
+msgstr "サーバーを Active Directory グループ {0} と同期しています..."
+
+#:
+msgid "syncgroup.options.sysadmin-type"
+msgstr "[廃止予定。代わりに「--role」を使用してください。] グループ内のすべてのユーザーに管理者権限を割り当て [または削除] します。{0} には、{1}、{2}、{3}、または {4} を使用できます。"
+
+#:
+msgid "syncgroup.options.license"
+msgstr "[廃止予定。代わりに「--role」を使用してください。グループ内のすべてのユーザーに既定のライセンス レベルを設定してください。{0} には {1}、{2}、または {3} を使用できます。"
+
+#:
+msgid "syncgroup.options.publisher"
+msgstr "[廃止予定。代わりに「--role」を使用してください。グループ内のすべてのユーザーにパブリッシュ権限を割り当て [または削除] してください。"
+
+#:
+msgid "tabcmd.mutually_exclusive_options"
+msgstr "同じコマンド内で ''{0}'' と ''{1}'' を指定できません"
+
+#:
+msgid "tabcmdparser.errors.ambiguous_option"
+msgstr "オプション内でオプション ''{0}'' の指定があいまいです: {1}"
+
+#:
+msgid "tabcmdparser.warning.unexpected_dash"
+msgstr "引数: {0} で予期しないダッシュが検出されました。有効なダッシュは - または -- です。このエラーは、書式設定されたテキスト エディターからコピーや貼り付けを行う場合に多く発生します。コマンド ラインで引数のダッシュを再入力してください。"
+
+#:
+msgid "resetopenidsub.short_description"
+msgstr "ユーザーの OpenID 接続サブ ID をリセット"
+
+#:
+msgid "resetopenidsub.options.targetusername"
+msgstr "リセットされるユーザー"
+
+#:
+msgid "resetopenidsub.options.all"
+msgstr "すべてのユーザーをリセット"
+
+#:
+msgid "version.description"
+msgstr "バージョン情報を出力します"
+
+#:
+msgid "vizqlsession.errors.cannot_create_session"
+msgstr "サーバー上で VizQl セッションを作成できませんでした"
+
+#:
+msgid "vizqlsession.errors.no_command_result"
+msgstr "コマンド結果が見つかりませんでした。{0}"
+
+#:
+msgid "vizqlsession.errors.session_already_closed"
+msgstr "VizQl セッション オブジェクトが既に閉じられています"
+
+#:
+msgid "vizqlsession.errors.cannot_parse_response"
+msgstr "JSON 応答文字列を解析できません: {0}"
+
+#:
+msgid "upgradethumbnails.short_description"
+msgstr "これにより、サムネイルのアップグレードのバックグラウンダー ジョブが実行されます。Tableau 2018.2 よりも前に生成されたサムネイルが高解像度にレンダリングされます。Tableau Server と外部データソースに通常よりも高い負荷がかかる可能性があります。問題が発生した場合、tabcmd upgradethumbnails --server <server> --stop を実行してジョブを停止できます。"
+
+#:
+msgid "upgradethumbnails.options.stop"
+msgstr "サムネイルのアップグレードに関連するすべてのジョブを停止します"
+
+#:
+msgid "upgradethumbnails.status.running"
+msgstr "サムネイルのアップグレードを開始しています"
+
+#:
+msgid "upgradethumbnails.status.not_running"
+msgstr "サムネイルのアップグレードを開始しません"
+
+#:
+msgid "upgradethumbnails.status.cancelling"
+msgstr "サムネイルのアップグレード ジョブをキャンセルしています"
+
+#:
+msgid "upgradethumbnails.continue_promt"
+msgstr "続行しますか? 続行する場合は 1、続行しない場合は 0 を入力します (1/0)"
+
+#:
+msgid "upgradethumbnails.invalid_response"
+msgstr "無効な応答"
+
+#:
+msgid "validateidpmetadata.options.digest_algorithms"
+msgstr "ダイジェスト アルゴリズムをスペースで区切ったリスト。 {0} の有効な値: {1}。指定しない場合、サーバーではサーバー構成設定の値が使用されます: {2}"
+
+#:
+msgid "validateidpmetadata.options.min_allowed_rsa_key_size"
+msgstr "指定しない場合、サーバーはサーバー構成の設定値 {0} を使用します。"
+
+#:
+msgid "validateidpmetadata.options.min_allowed_elliptic_curve_size"
+msgstr "指定しない場合、サーバーはサーバー構成の設定値 {0} を使用します。"
+
+#:
+msgid "validateidpmetadata.options.site_names"
+msgstr "証明書の検証が実行されるサイトをスペースで区切ったリスト。指定しない場合は、すべてのサイトが検査されます。"
+
+#:
+msgid "validateidpmetadata.short_description"
+msgstr "安全でないダイジェスト アルゴリズム SHA-1 を使用した IdP で構成されている Tableau Server サイトを識別します。このコマンドは、サイズが不十分な RSA キーまたはサイズが不十分な楕円曲線の証明書を使用している IdP も識別します。"
+
+

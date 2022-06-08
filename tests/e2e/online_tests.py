@@ -13,10 +13,11 @@ project_name = "not-default-name"
 group_name = "test-ing-group"
 workbook_name = "namebasic"
 
-# to run this suite
+# to run this suite:
 # pytest -q tests/e2e/online_tests.py
 # you can either run setup with a stored credentials file, or simply log in
 # before running the suite so a session is active
+# This suite should only contain commands that can be run against Tableau Online
 
 
 def _test_command(test_args: list[str]):

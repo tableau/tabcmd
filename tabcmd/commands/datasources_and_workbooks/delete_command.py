@@ -4,6 +4,7 @@ from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 from tabcmd.execution.global_options import *
+from tabcmd.execution.localize import _
 from tabcmd.commands.constants import Errors
 
 
@@ -13,7 +14,7 @@ class DeleteCommand(DatasourcesAndWorkbooks):
     """
 
     name: str = "delete"
-    description: str = "Delete a workbook or data source from the server"
+    description: str = _("delete.short_description")
 
     located_workbook = None
     located_datasource = None
@@ -28,11 +29,11 @@ class DeleteCommand(DatasourcesAndWorkbooks):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug("======================= Launching command =======================")
+        logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
 
-        logger.info("===== Removing '{0}' from the server...".format(args.name or args.datasource or args.workbook))
+        logger.info(_("delete.status").format(args.name or args.datasource or args.workbook, ""))
 
         if args.workbook:
             item_type = "workbook"
@@ -56,6 +57,6 @@ class DeleteCommand(DatasourcesAndWorkbooks):
                 server.workbooks.delete(item_to_delete.id)
             else:
                 server.datasources.delete(item_to_delete.id)
-            logger.info("===== Succeeded")
+            logger.info(_("common.output.succeeded"))
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, "Error deleting from server", e)

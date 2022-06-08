@@ -1,0 +1,3278 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=utf-8"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: None"
+"Language: ga"
+# Copyright (C) YEAR Tableau Software
+
+
+# These outcome reporting lines were all returned from the server in clientxml
+# https://sourcegraph.prod.tableautools.com/teams/near/-/blob/workgroup/src/shared/libraries/tab-strings/res/localization/shared_wg_en.properties
+# how much of this can be replaced by server responses?
+
+msgid "tabcmd.result.already_exists.group"
+msgstr "Group called ''{}'' already exists"
+
+msgid "tabcmd.result.failed.delete.group"
+msgstr "Error deleting group from server"
+
+msgid "tabcmd.result.success.create_user"
+msgstr "Successfully created user: {}"
+
+msgid "tabcmd.report.users_added"
+msgstr "Number of users added: {}"
+
+msgid "tabcmd.report.errors"
+msgstr "Error details: \n{}"
+
+msgid "tabcmd.report.error.user_csv.too_many_columns"
+msgstr "The file contains {} columns, but there are only {} valid columns in a user import csv file"
+
+msgid "tabcmd.report.error.user_csv.at_char"
+msgstr "If a user name includes an @ character that represents anything other than a domain separator, "
+                    "you need to refer to the symbol using the hexadecimal format: \\0x40"
+
+msgid "tabcmd.report.error.user.no_spaces_in_username"
+msgstr "Username cannot contain spaces"
+
+msgid "tabcmd.report.error.generic_attribute"
+msgstr "Invalid value for {0}: {1}"
+
+msgid "tabcmd.report.error.publish_samples.expected_project"
+msgstr "publishsamples expects the specified project to exist already"
+
+msgid "tabcmd.result.failure.publish_samples"
+msgstr "Failed publishing samples to project"
+
+msgid "tabcmd.launching"
+msgstr "======================= Launching command ======================="
+
+msgid "tabcmd.find.group"
+msgstr "Finding group ''{}'' on server..."
+
+# Each actual command has a status line in translation
+
+msgid "tabcmd.add.users.to_site"
+msgstr "===== Adding users listed in {0} to {1}..."
+
+msgid "tabcmd.delete.users.from_server"
+msgstr "Removing users listed in {0} from the server..."
+
+msgid "tabcmd.get.extension.not_found"
+msgstr "You must specify a file type in the url or filename"
+
+msgid "tabcmd.run_schedule.options.schedule"
+msgstr "Name of the schedule to run"
+msgid ""
+msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=utf-8"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: None"
+"Language: ga"
+#:
+msgid "permissions.labels.capabilities.read"
+msgstr "61764-表:Ɣıéὠ:|"
+
+#:
+msgid "permissions.labels.capabilities.write"
+msgstr "37297-表:Õvéяὠяıté:|"
+
+#:
+msgid "permissions.labels.capabilities.write.legacy"
+msgstr "36646-表:Şävé:|"
+
+#:
+msgid "permissions.labels.capabilities.delete"
+msgstr "12345-表:Ðéłété:|"
+
+#:
+msgid "permissions.labels.capabilities.filter"
+msgstr "78694-表:Fıłtéя:|"
+
+#:
+msgid "permissions.labels.capabilities.add_tag"
+msgstr "37198-表:Åďď Täg:|"
+
+#:
+msgid "permissions.labels.capabilities.add_favorite"
+msgstr "25384-表:Åďď Fävoяıté:|"
+
+#:
+msgid "permissions.labels.capabilities.add_comment"
+msgstr "77171-表:Åďď Çomméฑts:|"
+
+#:
+msgid "permissions.labels.capabilities.add_comment.legacy"
+msgstr "09348-表:Åďď Çomméฑt:|"
+
+#:
+msgid "permissions.labels.capabilities.view_comments"
+msgstr "08832-表:Ɣıéὠ Çomméฑts:|"
+
+#:
+msgid "permissions.labels.capabilities.vud"
+msgstr "74135-表:Ðoὠฑłoäď Fűłł Ðätä:|"
+
+#:
+msgid "permissions.labels.capabilities.export_image"
+msgstr "91998-表:Ðoὠฑłoäď İmägé/PÐF:|"
+
+#:
+msgid "permissions.labels.capabilities.export_data"
+msgstr "78727-表:Ðoὠฑłoäď Şűmmäяy Ðätä:|"
+
+#:
+msgid "permissions.labels.capabilities.export_xml"
+msgstr "82234-表:Ðoὠฑłoäď/Şävé Å Çopy:|"
+
+#:
+msgid "permissions.labels.capabilities.export_xml.legacy"
+msgstr "81789-表:Ðoὠฑłoäď/Şävé Ås:|"
+
+#:
+msgid "permissions.labels.capabilities.save_customized_view"
+msgstr "58863-表:Şävé Çűstomıžéď Ɣıéὠ:|"
+
+#:
+msgid "permissions.labels.capabilities.share_view"
+msgstr "18227-表:Şhäяé Çűstomıžéď:|"
+
+#:
+msgid "permissions.labels.capabilities.stateful_url"
+msgstr "85322-表:Péяmäłıฑk:|"
+
+#:
+msgid "permissions.labels.capabilities.change_hierarchy"
+msgstr "96436-表:Mové:|"
+
+#:
+msgid "permissions.labels.capabilities.change_permissions"
+msgstr "25379-表:Şét Péяmıssıoฑs:|"
+
+#:
+msgid "permissions.labels.capabilities.exclude"
+msgstr "32460-表:Éxçłűďé:|"
+
+#:
+msgid "permissions.labels.capabilities.keep_only"
+msgstr "60728-表:Kéép Õฑły:|"
+
+#:
+msgid "permissions.labels.capabilities.select"
+msgstr "49098-表:Şéłéçt Mäяks:|"
+
+#:
+msgid "permissions.labels.capabilities.tooltip"
+msgstr "04885-表:Ɣıéὠ Toołtıps:|"
+
+#:
+msgid "permissions.labels.capabilities.highlight"
+msgstr "57894-表:Łégéฑď Hıghłıghtıฑg:|"
+
+#:
+msgid "permissions.labels.capabilities.url_link"
+msgstr "77784-表:Łıฑk to Éxéяฑäł Uяłs:|"
+
+#:
+msgid "permissions.labels.capabilities.administrator"
+msgstr "73663-表:Åďmıฑıstяätoя:|"
+
+#:
+msgid "permissions.labels.capabilities.content_admin"
+msgstr "57115-表:Çoฑtéฑt Åďmıฑıstяätoя:|"
+
+#:
+msgid "permissions.labels.capabilities.create_groups"
+msgstr "78473-表:Çяéäté Gяoűps:|"
+
+#:
+msgid "permissions.labels.capabilities.rename"
+msgstr "75980-表:Яéฑämé:|"
+
+#:
+msgid "permissions.labels.capabilities.transfer_ownership"
+msgstr "03113-表:Tяäฑsféя Õὠฑéяshıp:|"
+
+#:
+msgid "permissions.labels.capabilities.project_leader"
+msgstr "74653-表:Pяojéçt Łéäďéя:|"
+
+#:
+msgid "permissions.labels.capabilities.publish"
+msgstr "16321-表:Pűbłısh:|"
+
+#:
+msgid "permissions.labels.capabilities.connect"
+msgstr "32956-表:Çoฑฑéçt:|"
+
+#:
+msgid "permissions.labels.capabilities.draw"
+msgstr "57202-表:Ðяäὠıฑg:|"
+
+#:
+msgid "permissions.labels.capabilities.web_authoring"
+msgstr "59262-表:Ẉéb Éďıt:|"
+
+#:
+msgid "permissions.labels.capabilities.xml_save_as"
+msgstr "29598-表:Şävé Ås:|"
+
+#:
+msgid "permissions.labels.capabilities.create_refresh_metrics"
+msgstr "22570-表:Çяéäté/Яéfяésh Métяıçs:|"
+
+#:
+msgid "permissions.labels.capabilities.explain_data"
+msgstr "11904-表:Яűฑ Éxpłäıฑ Ðätä:|"
+
+#:
+msgid "permissions.labels.roles.wb_view"
+msgstr "57342-表:Ɣıéὠ|"
+
+#:
+msgid "permissions.labels.roles.wb_explore"
+msgstr "89626-表:Éxpłoяé|"
+
+#:
+msgid "permissions.labels.roles.wb_publish"
+msgstr "73046-表:Pűbłısh|"
+
+#:
+msgid "permissions.labels.roles.wb_administer"
+msgstr "62561-表:Åďmıฑıstéя|"
+
+#:
+msgid "permissions.labels.roles.ds_view"
+msgstr "52154-表:Ɣıéὠ|"
+
+#:
+msgid "permissions.labels.roles.ds_explore"
+msgstr "24126-表:Éxpłoяé|"
+
+#:
+msgid "permissions.labels.roles.ds_publish"
+msgstr "07546-表:Pűbłısh|"
+
+#:
+msgid "permissions.labels.roles.ds_administer"
+msgstr "58621-表:Åďmıฑıstéя|"
+
+#:
+msgid "permissions.labels.roles.viewer"
+msgstr "45037-表:Ɣıéὠéя|"
+
+#:
+msgid "permissions.labels.roles.interactor"
+msgstr "81876-表:İฑtéяäçtoя|"
+
+#:
+msgid "permissions.labels.roles.editor"
+msgstr "48456-表:Éďıtoя|"
+
+#:
+msgid "permissions.labels.roles.ds_connector"
+msgstr "67256-表:Ðätä Şoűяçé Çoฑฑéçtoя|"
+
+#:
+msgid "permissions.labels.roles.ds_editor"
+msgstr "49794-表:Ðätä Şoűяçé Éďıtoя|"
+
+#:
+msgid "permissions.labels.roles.administrator"
+msgstr "74258-表:Åďmıฑıstяätoя|"
+
+#:
+msgid "permissions.labels.roles.project_leader"
+msgstr "81770-表:Pяojéçt Łéäďéя|"
+
+#:
+msgid "permissions.labels.roles.publisher"
+msgstr "04865-表:Pűbłıshéя|"
+
+#:
+msgid "permissions.labels.roles.custom"
+msgstr "87916-表:Çűstom|"
+
+#:
+msgid "permissions.labels.roles.none"
+msgstr "80467-表:Ñoฑé|"
+
+#:
+msgid "formats.messages.disk_space.in_mb"
+msgstr "28794-表:{0} MB|"
+
+#:
+msgid "formats.messages.disk_space.in_kb"
+msgstr "28732-表:{0} KB|"
+
+#:
+msgid "errors.argument.flow_description.too_long"
+msgstr "32897-表:Fłoὠ ďésçяıptıoฑ ıs too łoฑg ({0} çhäяäçtéяs).  İt műst bé shoяtéя thäฑ {1} çhäяäçtéяs:\ฑ{2}|"
+
+#:
+msgid "errors.argument.workbook_name.too_long"
+msgstr "58830-表:Ẉoяkbook ฑämé ıs too łoฑg ({0} çhäяäçtéяs).  İt műst bé shoяtéя thäฑ {1} çhäяäçtéяs:\ฑ{2}|"
+
+#:
+msgid "errors.argument.workbook_name.empty"
+msgstr "72454-表:Ẉoяkbook ฑämé ıs émpty.|"
+
+#:
+msgid "errors.argument.workbook_description.too_long"
+msgstr "17077-表:Ẉoяkbook ďésçяıptıoฑ ıs too łoฑg ({0} çhäяäçtéяs).  İt műst bé shoяtéя thäฑ {1} çhäяäçtéяs:\ฑ{2}|"
+
+#:
+msgid "errors.argument.worksheet_name.too_long"
+msgstr "41392-表:Ẉoяkshéét ฑämé ıs too łoฑg ({0} çhäяäçtéяs). İt műst bé shoяtéя thäฑ {1} çhäяäçtéяs:\ฑ{2}|"
+
+#:
+msgid "errors.argument.datasource_name.too_long"
+msgstr "25145-表:Ðätäsoűяçé ฑämé ıs too łoฑg ({0} çhäяäçtéяs). İt műst bé shoяtéя thäฑ {1} çhäяäçtéяs:\ฑ{2}|"
+
+#:
+msgid "errors.argument.datasource_name.empty"
+msgstr "14907-表:Ðätäsoűяçé ฑämé ıs émpty.|"
+
+#:
+msgid "errors.argument.datasource_description.too_long"
+msgstr "42378-表:Ðätäsoűяçé ďésçяıptıoฑ ıs too łoฑg ({0} çhäяäçtéяs). İt műst bé shoяtéя thäฑ {1} çhäяäçtéяs:\ฑ{2}|"
+
+#:
+msgid "errors.argument.dataconnection_column.too_long"
+msgstr "28529-表:ÐätäÇoฑฑéçtıoฑ çołűmฑ {0} ıs too łoฑg ({1} çhäяäçtéяs).  İt műst bé shoяtéя thäฑ {2} çhäяäçtéяs:\ฑ{3}|"
+
+#:
+msgid "errors.argument.tag.too_long"
+msgstr "63972-表:Täg ıs too łoฑg ({0} çhäяäçtéяs). İt műst bé shoяtéя thäฑ {1} çhäяäçtéяs:\ฑ{2}|"
+
+#:
+msgid "errors.argument.workbook_file.missing_or_empty"
+msgstr "08000-表:Ẉoяkbook fıłé ıs mıssıฑg oя émpty.|"
+
+#:
+msgid "errors.argument.internal"
+msgstr "32518-表:İฑtéяฑäł séяvéя éяяoя.  Mıssıฑg oя ıฑväłıď äяgűméฑt.|"
+
+#:
+msgid "errors.argument.thumbnail.invalid_format"
+msgstr "63306-表:Ẉoяkbook thűmbฑäıł foяmät ıs ıฑväłıď. Műst bé PÑG ὠıth яésołűtıoฑ of 300x300 oя łéss.|"
+
+#:
+msgid "errors.html_403.disabled_resource.workbook"
+msgstr "41722-表:Şoяяy, thät ὠoяkbook ıs ďısäbłéď.  Çoฑtäçt yoűя äďmıฑıstяätoя.|"
+
+#:
+msgid "errors.html_404.missing_or_unauthorized_resource.project"
+msgstr "55779-表:Şoяяy, thé pяojéçt yoű ὠéяé łookıฑg foя ďoés ฑot éxıst, oя yoű ďo ฑot hävé péяmıssıoฑ to séé thät pяojéçt.|"
+
+#:
+msgid "errors.html_404.missing_or_unauthorized_resource.personal_space"
+msgstr "57501-表:Şoяяy, thé péяsoฑäł späçé yoű ὠéяé łookıฑg foя ďoés ฑot éxıst, oя yoű ďo ฑot hävé péяmıssıoฑ to séé ıt.|"
+
+#:
+msgid "errors.html_404.missing_or_unauthorized_resource.datasource"
+msgstr "08219-表:Şoяяy, thé ďätäsoűяçé yoű ὠéяé łookıฑg foя ďoés ฑot éxıst.|"
+
+#:
+msgid "errors.labels.formatted_request_id"
+msgstr "15477-表:Яéqűést İÐ: {0}|"
+
+#:
+msgid "errors.links.delete_datasources"
+msgstr "25719-表:Ðéłété Ðätäsoűяçés|"
+
+#:
+msgid "errors.links.delete_workbooks"
+msgstr "93858-表:Ðéłété Ẉoяkbooks|"
+
+#:
+msgid "errors.permissions.publish.datasource.licensing"
+msgstr "62054-表:Yoű műst bé äฑ ''İฑtéяäçtoя'' to pűbłısh ä ďätä soűяçé.|"
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite"
+msgstr "64947-表:Å ďätä soűяçé ฑäméď ''{0}'' äłяéäďy éxısts ıฑ pяojéçt ''{1}''. Yoű ďo ฑot hävé péяmıssıoฑs to ovéяὠяıté ıt.|"
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite_personal_space"
+msgstr "98835-表:Å ďätä soűяçé ฑäméď ''{0}'' äłяéäďy éxısts ıฑ Péяsoฑäł Şpäçé. Yoű ďo ฑot hävé péяmıssıoฑs to ovéяὠяıté ıt.|"
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite_short"
+msgstr "46800-表:Å ďätä soűяçé ฑäméď ''{0}'' äłяéäďy éxısts ıฑ pяojéçt ''{1}''.|"
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
+msgstr "75382-表:Å ďätäsoűяçé ฑäméď ''{0}'' äłяéäďy éxısts ıฑ Péяsoฑäł Şpäçé.|"
+
+#:
+msgid "errors.permissions.publish.datasource.non_existent"
+msgstr "16798-表:Ðätä soűяçé ''{0}'' ďoés ฑot éxıst.|"
+
+#:
+msgid "errors.permissions.publish.datasource.general"
+msgstr "79504-表:Şoяяy, yoű ďo ฑot hävé péяmıssıoฑ to pűbłısh to thıs ďätäsoűяçé.|"
+
+#:
+msgid "errors.permissions.publish.project.explicit_publisher_detail"
+msgstr "16601-表:Yoű ďo ฑot hävé thé Pűbłıshıฑg яıght.|"
+
+#:
+msgid "errors.permissions.publish.project.general"
+msgstr "23522-表:Şoяяy, yoű ďo ฑot hävé péяmıssıoฑ to pűbłısh to thıs pяojéçt.|"
+
+#:
+msgid "errors.permissions.publish.project.non_existent"
+msgstr "52716-表:Pяojéçt ''{0}'' ďoés ฑot éxıst.|"
+
+#:
+msgid "errors.permissions.publish.project.not_writable"
+msgstr "86386-表:Yoű ďo ฑot hävé péяmıssıoฑ to ὠяıté to thé pяojéçt ''{0}''.|"
+
+#:
+msgid "errors.permissions.publish.project.unspecified"
+msgstr "13265-表:Yoű műst spéçıfy ä pяojéçt|"
+
+#:
+msgid "errors.permissions.publish.workbook.disabled"
+msgstr "24223-表:Thé ὠoяkbook ''{0}'' ıs ďısäbłéď.|"
+
+#:
+msgid "errors.permissions.publish.workbook.general"
+msgstr "43589-表:Å ὠoяkbook ὠıth thıs ฑämé éxısts ıฑ thé pяojéçt yoű äяé pűbłıshıฑg to. To pűbłısh, яéฑämé yoűя ὠoяkbook.|"
+
+#:
+msgid "errors.permissions.publish.workbook.general_personal_space"
+msgstr "82209-表:Å ὠoяkbook ὠıth thıs ฑämé éxısts ıฑ thé Péяsoฑäł Şpäçé yoű äяé pűbłıshıฑg to. To pűbłısh, яéฑämé yoűя ὠoяkbook.|"
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite"
+msgstr "41928-表:Å ὠoяkbook ฑäméď ''{0}'' äłяéäďy éxısts ıฑ pяojéçt ''{1}''. Yoű ďo ฑot hävé péяmıssıoฑs to ovéяὠяıté ıt.|"
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite_personal_space"
+msgstr "03262-表:Å ὠoяkbook ฑäméď ''{0}'' äłяéäďy éxısts ıฑ Péяsoฑäł Şpäçé. Yoű ďo ฑot hävé péяmıssıoฑs to ovéяὠяıté ıt.|"
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite_short"
+msgstr "40805-表:Å ὠoяkbook ฑäméď ''{0}'' äłяéäďy éxısts ıฑ pяojéçt ''{1}''.|"
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
+msgstr "07937-表:Å ὠoяkbook ฑäméď ''{0}'' äłяéäďy éxısts ıฑ Péяsoฑäł Şpäçé.|"
+
+#:
+msgid "errors.reportable.impersonation.group_and_user"
+msgstr "50237-表:Õฑły spéçıfy oฑé of ''ımpéяsoฑäté_űséяฑämé'' oя ''ımpéяsoฑäté_gяoűpฑämé'', ฑot both.|"
+
+#:
+msgid "errors.reportable.impersonation.user_not_found"
+msgstr "75116-表:Uséя ''{0}'' ďoés ฑot éxıst.|"
+
+#:
+msgid "errors.reportable.impersonation.group_not_found"
+msgstr "38668-表:Gяoűp ''{0}'' ďoés ฑot éxıst.| "
+
+#:
+msgid "errors.public.validation.hasextract"
+msgstr "47327-表:Ẉoяkbooks sävéď to Täbłéäű Pűbłıç műst űsé äçtıvé Täbłéäű éxtяäçts. Яıght-çłıçk thé ďätä soűяçé äฑď séłéçt Usé Éxtяäçt béfoяé pűbłıshıฑg. Thé ďätä soűяçé, ''{0}'', ıs ฑot äฑ äçtıvé éxtяäçt.|"
+
+#:
+msgid "errors.publish.dataserver_datasource_not_found"
+msgstr "90471-表:Ðätäsoűяçé ''{0}'' ฑot foűฑď foя ὠoяkbook ''{1}''.|"
+
+#:
+msgid "errors.publish.datasource_update_mode"
+msgstr "05958-表:Uฑkฑoὠฑ űpďäté moďé: ''{0}''.|"
+
+#:
+msgid "errors.publish.workbook.concurrent_update"
+msgstr "09220-表:Å ὠoяkbook ὠıth thé sämé ฑämé ıs çűяяéฑtły béıฑg pűbłıshéď oя moďıfıéď. Ẉäıt űฑtıł thé täsk çompłétés béfoяé yoű tяy ägäıฑ.|"
+
+#:
+msgid "errors.publish.workbook.restricted"
+msgstr "37992-表:Thé ὠoяkbook çoฑtäıฑs çoฑฑéçtıoฑs typés thät äяé ฑot äłłoὠéď oฑ thıs séяvéя.|"
+
+#:
+msgid "errors.publish.datasource.concurrent_update"
+msgstr "16431-表:Å ďätä soűяçé ὠıth thé sämé ฑämé ıs çűяяéฑtły béıฑg pűbłıshéď oя moďıfıéď. Ẉäıt űฑtıł thé täsk çompłétés béfoяé yoű tяy ägäıฑ.|"
+
+#:
+msgid "errors.publish.datasource.restricted"
+msgstr "85245-表:Thé ďätä soűяçé çoฑtäıฑs ä çoฑฑéçtıoฑ typé thät ıs ฑot äłłoὠéď oฑ thıs séяvéя.|"
+
+#:
+msgid "errors.publish.datasource.connection_check"
+msgstr "61257-表:{0} fäıłéď to éstäbłısh ä çoฑฑéçtıoฑ to yoűя ďätäsoűяçé.|"
+
+#:
+msgid "errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption"
+msgstr "02053-表:Thé ὠoяkbook çäฑฑot bé pűbłıshéď ὠıth äฑ éฑçяyptéď éxtяäçt. Thé sıté äďmıฑıstяätoя häs ďısäbłéď éxtяäçt éฑçяyptıoฑ oฑ thıs sıté. Yoű műst pűbłısh thé ὠoяkbook ὠıth äฑ űฑéฑçяyptéď éxtяäçt.|"
+
+#:
+msgid "errors.publish.datasource.requested_extract_encryption_on_site_with_disabled_encryption"
+msgstr "10288-表:Thé ďätä soűяçé çäฑฑot bé pűbłıshéď äs äฑ éฑçяyptéď éxtяäçt. Thé sıté äďmıฑıstяätoя häs ďısäbłéď éxtяäçt éฑçяyptıoฑ oฑ thıs sıté. Yoű műst pűbłısh thé éxtяäçt űฑéฑçяyptéď.|"
+
+#:
+msgid "errors.publish.workbook.requested_no_extract_encryption_on_site_with_enforced_encryption"
+msgstr "12093-表:Thé ὠoяkbook çäฑฑot bé pűbłıshéď ὠıth äฑ űฑéฑçяyptéď éxtяäçt. Thé sıté äďmıฑıstяätoя häs éฑfoяçéď éxtяäçt éฑçяyptıoฑ oฑ thıs sıté. Yoű műst pűbłısh thé ὠoяkbook äฑď spéçıfy éxtяäçt éฑçяyptıoฑ.|"
+
+#:
+msgid "errors.publish.datasource.requested_no_extract_encryption_on_site_with_enforced_encryption"
+msgstr "33394-表:Thé ďätä soűяçé éxtяäçt çäฑฑot bé pűbłıshéď űฑéฑçяyptéď. Thé sıté äďmıฑıstяätoя häs éฑfoяçéď éxtяäçt éฑçяyptıoฑ oฑ thıs sıté. Yoű műst pűbłısh thé éxtяäçt éฑçяyptéď.|"
+
+#:
+msgid "errors.publish.has_unfinished_extract_creation_job"
+msgstr "88867-表:Thıs яésoűяçé çäฑฑot bé pűbłıshéď béçäűsé théяé äяé péฑďıฑg oя űฑfıฑıshéď éxtяäçt çяéätıoฑ jobs яéłätéď to ıt. Płéäsé ὠäıt oя çäฑçéł thosé jobs théฑ tяy ägäıฑ.|"
+
+#:
+msgid "errors.publishing.storage_quota_exceeded.message"
+msgstr "70282-表:Şıté stoяägé qűotä éxçééďéď.|"
+
+#:
+msgid "errors.publishing.request_size_exceeded"
+msgstr "45006-表:Thıs fıłé çäฑฑot bé pűbłıshéď béçäűsé thé яéqűést sıžé ıs {0} bytés ὠhıçh éxçééďs byté sıžé łımıt by {1} bytés.|"
+
+#:
+msgid "errors.publishing.request_size_unknown"
+msgstr "03983-表:Thé яéqűést sıžé çoűłď ฑot bé ďétéяmıฑéď.|"
+
+#:
+msgid "errors.site.quota_exceeded"
+msgstr "37753-表:Thé çoฑtéฑt yoű äяé tяyıฑg to űpłoäď ὠıłł éxçééď thé sıté''s çäpäçıty by {0}.|"
+
+#:
+msgid "errors.personal_space.quota_exceeded"
+msgstr "74105-表:Thıs çoฑtéฑt éxçééďs yoűя Péяsoฑäł Şpäçé çäpäçıty by {0}.|"
+
+#:
+msgid "errors.web_authoring.workbook_deleted"
+msgstr "48222-表:Thé ὠoяkbook ''{0}'' ὠäs ďéłétéď.  Płéäsé çhoosé ''Şävé Ås'' to sävé äs ฑéὠ ὠoяkbook.|"
+
+#:
+msgid "errors.web_authoring.workbook_changed"
+msgstr "28889-表:Åฑothéя űséя häs éďıtéď äฑď sävéď thıs ὠoяkbook sıฑçé yoű bégäฑ éďıtıฑg. Théяéfoяé, yoű çäฑ ฑo łoฑgéя űpďäté thé oяıgıฑäł ὠoяkbook. Usé Şävé Ås to çяéäté ä ฑéὠ ὠoяkbook ὠıth yoűя çhäฑgés.|"
+
+#:
+msgid "labels.publish.embed_credentials"
+msgstr "87075-表:Émbéď pässὠoяď foя ďätä soűяçé|"
+
+#:
+msgid "errors.publish.workbook.google_no_embedded_credentials"
+msgstr "43948-表:Thıs ὠoяkbook çoฑtäıฑs ä {0} ďätä soűяçé ὠhıçh яéqűıяés émbéďďéď çяéďéฑtıäłs. To sävé äs äฑothéя ὠoяkbook, séłéçt ''{1}''.|"
+
+#:
+msgid "errors.publish.datasource.google_no_embedded_credentials"
+msgstr "45217-表:Thıs ďätä soűяçé çoฑtäıฑs ä {0} çoฑฑéçtıoฑ ὠhıçh яéqűıяés émbéďďéď çяéďéฑtıäłs.  Płéäsé pűbłısh thıs ďätä soűяçé fяom Täbłéäű Ðésktop ὠıth émbéďďéď çяéďéฑtıäłs.|"
+
+#:
+msgid "errors.publish.datasource.federated_oauth_datasource_failed"
+msgstr "20434-表:Çяéďéฑtıäłs foя oฑé oя moяé çoฑฑéçtıoฑs ıฑ yoűя ďätä soűяçé hävé éxpıяéď. Ðéłété thé sävéď çяéďéฑtıäłs foя thıs ďätä soűяçé oฑ yoűя Åççoűฑt Şéttıฑgs pägé oฑ Täbłéäű Şéяvéя oя Täbłéäű Õฑłıฑé, äฑď théฑ çoฑฑéçt to thé ďätä soűяçé ägäıฑ.|"
+
+#:
+msgid "errors.publish.workbook.missing_oauth_credential"
+msgstr "11429-表:Thé çяéďéฑtıäł ''{0}'' ὠäs ฑot foűฑď oя çäฑฑot bé űséď to çoฑฑéçt to thé ďätä soűяçé oя ὠoяkbook.|"
+
+#:
+msgid "errors.publish.version_incompatible.message"
+msgstr "20576-表:Ðésktop äฑď séяvéя véяsıoฑs äяé ıฑçompätıbłé.|"
+
+#:
+msgid "errors.publish.version_incompatible.details"
+msgstr "17179-表:Ðésktop véяsıoฑ ''{0}'', Şéяvéя ďoçűméฑt véяsıoฑ ''{1}''.|"
+
+#:
+msgid "errors.publish.datasource.managed_keychain.unique_cv_suggestions"
+msgstr "73415-表:Pűbłısh fäıłéď béçäűsé of ä çoฑfłıçt. Płéäsé яésűbmıt yoűя çhäฑgé.|"
+
+#:
+msgid "errors.publish.permissions_are_locked"
+msgstr "92119-表:Péяmıssıoฑs äяé łoçkéď ıฑ thé pяojéçt yoű äяé pűbłıshıฑg to. To pűbłısh thıs ὠoяkbook, űsé thé ďéfäűłt péяmıssıoฑs äฑď tяy ägäıฑ.|"
+
+#:
+msgid "errors.publish.datasource.not.found"
+msgstr "56069-表:Çoűłď ฑot fıฑď thıs ďätäsoűяçé oฑ Şéяvéя.|"
+
+#:
+msgid "errors.publish.extracts.disabled"
+msgstr "10257-表:Şävé foя éxtяäçt-bäséď, äяçhıvé ďätäsoűяçés ฑot sűppoяtéď yét.|"
+
+#:
+msgid "errors.publish.datasource.timeout"
+msgstr "42239-表:Pűbłısh tıméď oűt äftéя {0} séçoฑďs. Płéäsé tяy to űsé Täbłéäű Ðésktop to pűbłısh thıs ďätäsoűяçé.|"
+
+#:
+msgid "errors.publish.data_role.permission_not_null"
+msgstr "83065-表:Çäฑฑot sét éxpłıçıt péяmıssıoฑs foя ďätäsoűяçés of typé ďätä яołé.|"
+
+#:
+msgid "errors.download.extracts.timeout"
+msgstr "42979-表:Pűbłısh tıméď oűt äftéя {0} séçoฑďs béçäűsé thıs ďätäsoűяçé häs ä łäяgé éxtяäçt fıłé. Płéäsé tяy to űsé Täbłéäű Ðésktop to pűbłısh thıs ďätäsoűяçé.|"
+
+#:
+msgid "errors.publish.datasource.invalid_extract_update_time"
+msgstr "54427-表:İฑväłıď éxtяäçtUpďätéTımé spéçıfıéď: {0}|"
+
+#:
+msgid "errors.publish.async.serialization"
+msgstr "03191-表:Çoűłď ฑot séяıäłıžé pűbłıshıฑg job stätűs éяяoя|"
+
+#:
+msgid "errors.permissions.view.datasources"
+msgstr "57975-表:Yoű műst bé äฑ ''İฑtéяäçtoя'' to vıéὠ thé łıst of ďätä soűяçés.|"
+
+#:
+msgid "errors.oauth.invalid_oauth_class"
+msgstr "31529-表:''{0}'' ıs ฑot ä väłıď ÕÅűth çoฑฑéçtıoฑ typé.|"
+
+#:
+msgid "errors.xmlapi.bad_request"
+msgstr "21810-表:Bäď яéqűést|"
+
+#:
+msgid "errors.xmlapi.unauthorized"
+msgstr "67799-表:Ñot äűthoяıžéď|"
+
+#:
+msgid "errors.xmlapi.forbidden"
+msgstr "95254-表:Ñot éฑoűgh péяmıssıoฑs|"
+
+#:
+msgid "errors.xmlapi.system_user_not_found"
+msgstr "69871-表:Uséя äççoűฑt łoçkéď oя ıฑväłıď.|"
+
+#:
+msgid "errors.xmlapi.site_user_not_found"
+msgstr "26327-表:Thıs űséя äççoűฑt ıs ฑot äçtıvé. Foя héłp, çoฑtäçt yoűя {0} äďmıฑıstяätoя.|"
+
+#:
+msgid "errors.xmlapi.not_found"
+msgstr "55091-表:İtém ฑot foűฑď|"
+
+#:
+msgid "errors.xmlapi.concurrent_update"
+msgstr "54094-表:Çoฑçűяяéฑt űpďäté|"
+
+#:
+msgid "errors.xmlapi.internal_server_error"
+msgstr "71275-表:İฑtéяฑäł séяvéя éяяoя|"
+
+#:
+msgid "errors.xmlapi.illegal_state"
+msgstr "24261-表:İłłégäł stäté|"
+
+#:
+msgid "errors.xmlapi.invalid_parameter"
+msgstr "15710-表:İฑväłıď päяämétéя|"
+
+#:
+msgid "errors.xmlapi.already_exists"
+msgstr "81990-表:Åłяéäďy éxısts|"
+
+#:
+msgid "errors.xmlapi.site_suspended"
+msgstr "55142-表:Thıs sıté häs bééฑ sűspéฑďéď. Yoű műst bé ä Şystém Åďmıฑıstяätoя to sıgฑ ıฑ.|"
+
+#:
+msgid "errors.xmlapi.site_locked"
+msgstr "64159-表:Thıs sıté häs bééฑ łoçkéď. Şıgฑıฑg ıฑ ıs ฑot äłłoὠéď ät thıs tımé.|"
+
+#:
+msgid "errors.xmlapi.permission_modification"
+msgstr "30249-表:Çäฑฑot pűbłısh ὠıth moďıfıéď péяmıssıoฑs|"
+
+#:
+msgid "errors.xmlapi.update_desktop"
+msgstr "33801-表:To opéฑ ὠoяkbooks çяéätéď by othéя äűthoяs, płéäsé ďoὠฑłoäď thé łätést véяsıoฑ of Täbłéäű Ðésktop Pűbłıç Éďıtıoฑ fяom http://public.tableau.com/|"
+
+#:
+msgid "errors.xmlapi.throttled.summary"
+msgstr "38383-表:Too mäฑy яéqűésts|"
+
+#:
+msgid "errors.xmlapi.throttled.detail"
+msgstr "69928-表:Too mäฑy яéqűésts foя ''{0}''. Płéäsé яétяy äftéя {1}.|"
+
+#:
+msgid "datasource.publish.check.unpublishable"
+msgstr "02781-表:Çoűłď ฑot pűbłısh ďätä soűяçé.|"
+
+#:
+msgid "datasource.publish.check.publishable.extract_required"
+msgstr "88437-表:Яéqűıяés çяéätıฑg äฑ éxtяäçt oฑ pűbłısh.|"
+
+#:
+msgid "datasource.publish.check.publishable.credentials_required"
+msgstr "29274-表:{1} ὠıłł témpoяäяıły äççéss thé çяéďéฑtıäłs pяovıďéď foя ''{0}'' to çoฑfıяm ıt çäฑ mäıฑtäıฑ ä łıvé ďätä çoฑฑéçtıoฑ.|"
+
+#:
+msgid "datasource.publish.check.publishable.server_unreachable"
+msgstr "71056-表:{1} çäฑฑot яéäçh ''{0}''. Pűbłıshıฑg ὠıłł çяéäté äฑ éxtяäçt.|"
+
+#:
+msgid "publish.bundles.workbook.subscription.subject"
+msgstr "05112-表:Yoűя ὠoяkbook {0} ıs яéäďy foя yoű.|"
+
+#:
+msgid "publish.bundles.workbook.subscription.message"
+msgstr "15443-表:Yoűя Şäłésfoяçé ďätä ὠäs äďďéď to thé ὠoяkbook. Go to yoűя {0} pяojéçt to gét stäяtéď.|"
+
+#:
+msgid "extracts.status.finished.upload.workbook"
+msgstr "22150-表:Fıฑıshéď űpłoäď of éxtяäçts (ฑéὠ éxtяäçt ıď:{0}) foя Ẉoяkbook ''{1}'' {2}|"
+
+#:
+msgid "extracts.status.finished.refresh.workbook"
+msgstr "38606-表:Fıฑıshéď яéfяésh of éxtяäçts (ฑéὠ éxtяäçt ıď:{0}) foя Ẉoяkbook ''{1}'' {2}|"
+
+#:
+msgid "extracts.status.finished.increment.workbook"
+msgstr "87034-表:Fıฑıshéď ıฑçяéméฑt of éxtяäçts (ฑéὠ éxtяäçt ıď:{0}) foя Ẉoяkbook ''{1}'' {2}|"
+
+#:
+msgid "extracts.status.finished.encrypt.workbook"
+msgstr "67684-表:Fıฑıshéď éฑçяyptıoฑ of éxtяäçts (ฑéὠ éxtяäçt ıď:{0}) foя Ẉoяkbook ''{1}''|"
+
+#:
+msgid "extracts.status.finished.decrypt.workbook"
+msgstr "37468-表:Fıฑıshéď ďéçяyptıoฑ of éxtяäçts (ฑéὠ éxtяäçt ıď:{0}) foя Ẉoяkbook ''{1}''|"
+
+#:
+msgid "extracts.status.finished.rekey.workbook"
+msgstr "81693-表:Fıฑıshéď яééฑçяyptıoฑ of éxtяäçts (ฑéὠ éxtяäçt ıď:{0}) foя Ẉoяkbook ''{1}''|"
+
+#:
+msgid "extracts.status.finished.create.workbook"
+msgstr "55435-表:Fıฑıshéď çяéätıoฑ of éxtяäçts (ฑéὠ éxtяäçt ıď:{0}) foя ὠoяkbook ''{1}'' {2}|"
+
+#:
+msgid "extracts.status.finished.remove.workbook"
+msgstr "22211-表:Fıฑıshéď çhäฑgé éxtяäçt (ďätä soűяçé ıď:{0}) to łıvé foя ὠoяkbook ''{1}''|"
+
+#:
+msgid "extracts.status.finished.upload.datasource"
+msgstr "48209-表:Fıฑıshéď űpłoäď of éxtяäçts (ฑéὠ éxtяäçt ıď:{0}) foя Ðätä Şoűяçé ''{1}'' {2}|"
+
+#:
+msgid "extracts.status.finished.refresh.datasource"
+msgstr "80025-表:Fıฑıshéď яéfяésh of éxtяäçts (ฑéὠ éxtяäçt ıď:{0}) foя Ðätä Şoűяçé ''{1}'' {2}|"
+
+#:
+msgid "extracts.status.finished.increment.datasource"
+msgstr "62693-表:Fıฑıshéď ıฑçяéméฑt of éxtяäçts (ฑéὠ éxtяäçt ıď:{0}) foя Ðätä Şoűяçé ''{1}'' {2}|"
+
+#:
+msgid "extracts.status.finished.append.datasource"
+msgstr "45144-表:Fıฑıshéď äppéฑď of éxtяäçts (ฑéὠ éxtяäçt ıď:{0}) foя Ðätä Şoűяçé ''{1}'' {2}|"
+
+#:
+msgid "extracts.status.finished.replace.datasource"
+msgstr "96448-表:Fıฑıshéď яépłäçé of éxtяäçts (ฑéὠ éxtяäçt ıď:{0}) foя Ðätä Şoűяçé ''{1}'' {2}|"
+
+#:
+msgid "extracts.status.finished.encrypt.datasource"
+msgstr "03087-表:Fıฑıshéď éฑçяyptıoฑ of éxtяäçts (ฑéὠ éxtяäçt ıď:{0}) foя Ðätä Şoűяçé ''{1}''|"
+
+#:
+msgid "extracts.status.finished.decrypt.datasource"
+msgstr "90055-表:Fıฑıshéď ďéçяyptıoฑ of éxtяäçts (ฑéὠ éxtяäçt ıď:{0}) foя Ðätä Şoűяçé ''{1}''|"
+
+#:
+msgid "extracts.status.finished.rekey.datasource"
+msgstr "99176-表:Fıฑıshéď яééฑçяyptıoฑ of éxtяäçts (ฑéὠ éxtяäçt ıď:{0}) foя Ðätä Şoűяçé ''{1}''|"
+
+#:
+msgid "extracts.status.finished.encrypt.flow"
+msgstr "53816-表:Fıฑıshéď éฑçяyptıoฑ of éxtяäçts foя fłoὠ ''{0}''|"
+
+#:
+msgid "extracts.status.finished.decrypt.flow"
+msgstr "64144-表:Fıฑıshéď ďéçяyptıoฑ of éxtяäçts foя fłoὠ ''{0}''|"
+
+#:
+msgid "extracts.status.finished.rekey.flow"
+msgstr "77009-表:Fıฑıshéď яééฑçяyptıoฑ of éxtяäçts foя fłoὠ ''{0}''|"
+
+#:
+msgid "extracts.status.finished.encrypt.flowdraft"
+msgstr "47209-表:Fıฑıshéď éฑçяyptıoฑ of éxtяäçts foя fłoὠ ďяäft ''{0}''|"
+
+#:
+msgid "extracts.status.finished.decrypt.flowdraft"
+msgstr "77809-表:Fıฑıshéď ďéçяyptıoฑ of éxtяäçts foя fłoὠ ďяäft ''{0}''|"
+
+#:
+msgid "extracts.status.finished.rekey.flowdraft"
+msgstr "87152-表:Fıฑıshéď яééฑçяyptıoฑ of éxtяäçts foя fłoὠ ďяäft ''{0}''|"
+
+#:
+msgid "extracts.status.finished.create.datasource"
+msgstr "27350-表:Fıฑıshéď çяéätıoฑ of éxtяäçts (ฑéὠ éxtяäçt ıď:{0}) foя ďätä soűяçé ''{1}'' {2}|"
+
+#:
+msgid "extracts.status.finished.remove.datasource"
+msgstr "33742-表:Fıฑıshéď çhäฑgé éxtяäçt to łıvé foя ďätä soűяçé ''{1}''|"
+
+#:
+msgid "extracts.status.encryption_key"
+msgstr "28030-表:Éฑçяyptıoฑ kéy İÐ: ''{0}''.|"
+
+#:
+msgid "extracts.status.encryption_keys"
+msgstr "67157-表:Õłď éฑçяyptıoฑ kéy İÐ: ''{0}'', ฑéὠ éฑçяyptıoฑ kéy İÐ: ''{1}''.|"
+
+#:
+msgid "extracts.errors.upload"
+msgstr "82179-表:Éяяoя űpłoäďıฑg éxtяäçts foя {0}: ''{1}''|"
+
+#:
+msgid "extracts.errors.refresh"
+msgstr "26361-表:Åฑ éяяoя oççűяяéď ὠhéฑ яéfяéshıฑg éxtяäçts foя thé {0} ''{1}''|"
+
+#:
+msgid "extracts.errors.create"
+msgstr "83102-表:Éяяoя çяéätıฑg éxtяäçts foя thé {0} ''{1}''.|"
+
+#:
+msgid "extracts.errors.increment"
+msgstr "45901-表:Éяяoя ıฑçяéméฑtıฑg éxtяäçts foя {0}: ''{1}''|"
+
+#:
+msgid "extracts.errors.append"
+msgstr "09116-表:Éяяoя äppéฑďıฑg éxtяäçts foя {0}: ''{1}''|"
+
+#:
+msgid "extracts.errors.replace"
+msgstr "78482-表:Éяяoя яépłäçıฑg éxtяäçts foя {0}: ''{1}''|"
+
+#:
+msgid "extracts.errors.download"
+msgstr "88330-表:Éяяoя ďoὠฑłoäďıฑg éxtяäçts foя {0}: ''{1}''|"
+
+#:
+msgid "extracts.errors.remove"
+msgstr "66438-表:Éяяoя яémovıฑg éxtяäçts foя {0}: ''{1}''.|"
+
+#:
+msgid "extracts.errors.title"
+msgstr "60822-表:Pяoçéss éxtяäçts éяяoя|"
+
+#:
+msgid "extracts.errors.nothing_to_upload"
+msgstr "99441-表:Ño éxtяäçts to űpłoäď foя {0}: ''{1}''|"
+
+#:
+msgid "extracts.errors.nothing_to_refresh"
+msgstr "70923-表:Ño éxtяäçts to яéfяésh foя {0}: ''{1}''|"
+
+#:
+msgid "extracts.errors.nothing_to_increment"
+msgstr "20159-表:Ño éxtяäçts to ıฑçяéméฑt foя {0}: ''{1}''|"
+
+#:
+msgid "extracts.errors.nothing_to_append"
+msgstr "26378-表:Ño éxtяäçts to äppéฑď foя {0}: ''{1}''|"
+
+#:
+msgid "extracts.errors.nothing_to_replace"
+msgstr "23044-表:Ño éxtяäçts to яépłäçé foя {0}: ''{1}''|"
+
+#:
+msgid "extracts.errors.refresh_summary"
+msgstr "70048-表:Яéfяésh Éxtяäçts Éяяoя|"
+
+#:
+msgid "extracts.errors.encrypt_summary"
+msgstr "16330-表:Éฑçяypt Éxtяäçts Éяяoя|"
+
+#:
+msgid "extracts.errors.rekey_summary"
+msgstr "55217-表:Яééฑçяypt Éxtяäçts Éяяoя|"
+
+#:
+msgid "extracts.errors.decrypt_summary"
+msgstr "24850-表:Ðéçяypt Éxtяäçts Éяяoя|"
+
+#:
+msgid "extracts.errors.remove_summary"
+msgstr "75885-表:Яémové Éxtяäçts Éяяoя|"
+
+#:
+msgid "extracts.errors.create_summary"
+msgstr "29381-表:Çяéäté Éxtяäçts Éяяoя|"
+
+#:
+msgid "extracts.errors.datasource_overwritten"
+msgstr "27947-表:Яéfяésh fäıłéď béçäűsé thé ďätäsoűяçé ὠäs ovéяὠяıttéฑ by äฑothéя täsk ďűяıฑg pяoçéssıฑg.  Şűbmıt яéfяésh ägäıฑ to çoяяéçt.|"
+
+#:
+msgid "extracts.errors.workbook_overwritten"
+msgstr "27264-表:Яéfяésh fäıłéď béçäűsé thé ὠoяkbook ὠäs ovéяὠяıttéฑ by äฑothéя täsk ďűяıฑg pяoçéssıฑg.  Şűbmıt яéfяésh ägäıฑ to çoяяéçt.|"
+
+#:
+msgid "extracts.errors.encrypt"
+msgstr "91331-表:Åฑ éяяoя oççűяяéď ὠhéฑ éฑçяyptıฑg éxtяäçts foя thé {0} ''{1}''|"
+
+#:
+msgid "extracts.errors.decrypt"
+msgstr "25291-表:Åฑ éяяoя oççűяяéď ὠhéฑ ďéçяyptıฑg éxtяäçts foя thé {0} ''{1}''|"
+
+#:
+msgid "extracts.errors.rekey"
+msgstr "85770-表:Åฑ éяяoя oççűяяéď ὠhéฑ яééฑçяyptıฑg éxtяäçts foя thé {0} ''{1}''|"
+
+#:
+msgid "extracts.errors.encrypt_datasource_overwritten"
+msgstr "47333-表:Éxtяäçt éฑçяyptıoฑ fäıłéď béçäűsé thé ďätäsoűяçé ὠäs ovéяὠяıttéฑ by äฑothéя täsk ďűяıฑg pяoçéssıฑg.|"
+
+#:
+msgid "extracts.errors.encrypt_workbook_overwritten"
+msgstr "32186-表:Éxtяäçt éฑçяyptıoฑ fäıłéď béçäűsé thé ὠoяkbook ὠäs ovéяὠяıttéฑ by äฑothéя täsk ďűяıฑg pяoçéssıฑg.|"
+
+#:
+msgid "extracts.errors.rekey_datasource_overwritten"
+msgstr "49790-表:Éxtяäçt яééฑçяyptıoฑ fäıłéď béçäűsé thé ďätäsoűяçé ὠäs ovéяὠяıttéฑ by äฑothéя täsk ďűяıฑg pяoçéssıฑg.|"
+
+#:
+msgid "extracts.errors.rekey_workbook_overwritten"
+msgstr "56243-表:Éxtяäçt яééฑçяyptıoฑ fäıłéď béçäűsé thé ὠoяkbook ὠäs ovéяὠяıttéฑ by äฑothéя täsk ďűяıฑg pяoçéssıฑg.|"
+
+#:
+msgid "extracts.errors.decrypt_datasource_overwritten"
+msgstr "50525-表:Éxtяäçt ďéçяyptıoฑ fäıłéď béçäűsé thé ďätäsoűяçé ὠäs ovéяὠяıttéฑ by äฑothéя täsk ďűяıฑg pяoçéssıฑg.|"
+
+#:
+msgid "extracts.errors.decrypt_workbook_overwritten"
+msgstr "77170-表:Éxtяäçt ďéçяyptıoฑ fäıłéď béçäűsé thé ὠoяkbook ὠäs ovéяὠяıttéฑ by äฑothéя täsk ďűяıฑg pяoçéssıฑg.|"
+
+#:
+msgid "extracts.errors.remove_datasource_overwritten"
+msgstr "11234-表:Ðätä soűяçé çoűłďฑ''t bé çhäฑgéď to łıvé béçäűsé ıt ὠäs ovéяὠяıttéฑ by äฑothéя täsk.|"
+
+#:
+msgid "extracts.errors.remove_workbook_overwritten"
+msgstr "06647-表:Ẉoяkbook çoűłďฑ''t bé çhäฑgéď to łıvé béçäűsé ıt ὠäs ovéяὠяıttéฑ by äฑothéя täsk.|"
+
+#:
+msgid "extracts.errors.create_datasource_overwritten"
+msgstr "09130-表:Ðätä soűяçé çoűłďฑ''t bé éxtяäçtéď béçäűsé ıt ὠäs ovéяὠяıttéฑ by äฑothéя täsk.|"
+
+#:
+msgid "extracts.errors.create_workbook_overwritten"
+msgstr "26911-表:Ẉoяkbook çoűłďฑ''t bé éxtяäçtéď béçäűsé ıt ὠäs ovéяὠяıttéฑ by äฑothéя täsk.|"
+
+#:
+msgid "extracts.site_mode_change_details"
+msgstr "50296-表:Çhäฑgéď sıté éxtяäçt éฑçяyptıoฑ moďé fяom ''{0}'' to ''{1}''.|"
+
+#:
+msgid "extracts.errors.encryption_not_licensed"
+msgstr "50217-表:Thıs opéяätıoฑ häs fäıłéď béçäűsé éxtяäçt éฑçяyptıoฑ ıs ฑot łıçéฑséď. To péяfoяm thıs opéяätıoฑ, yoű műst яéฑéὠ yoűя łıçéฑsé oя ďéçяypt yoűя éxtяäçt.|"
+
+#:
+msgid "extracts.errors.operation_cancelled_detail"
+msgstr "62265-表:Яémové éxtяäçt opéяätıoฑ foя {0} (ďätä soűяçé: {2}) tıméď oűt.|"
+
+#:
+msgid "workbooks.messages.load_error"
+msgstr "54497-表:Uฑäbłé to łoäď Ẉoяkbook {0}|"
+
+#:
+msgid "workbooks.messages.locked"
+msgstr "41020-表:Thé ὠoяkbook ''{0}'' ıs çűяяéฑtły béıฑg moďıfıéď by äฑothéя űséя.  Płéäsé tяy ägäıฑ łätéя.|"
+
+#:
+msgid "workbooks.new_workbook.default_name"
+msgstr "85774-表:Ñéὠ Ẉoяkbook|"
+
+#:
+msgid "workbooks.new_datasource.default_name"
+msgstr "92131-表:Ñéὠ Ðätä Şoűяçé|"
+
+#:
+msgid "datasources.messages.load_error"
+msgstr "55830-表:Uฑäbłé to łoäď Ðätä Şoűяçé {0}|"
+
+#:
+msgid "metrics.new_metric.default_name"
+msgstr "66882-表:Ñéὠ Métяıç|"
+
+#:
+msgid "messages.timeout_error.summary"
+msgstr "34427-表:Tıméoűt Éяяoя|"
+
+#:
+msgid "messages.timeout_error.task_canceled"
+msgstr "63944-表:Çäฑçéłıฑg täsk thät took łoฑgéя thäฑ {0} séçoฑďs|"
+
+#:
+msgid "subscriptions.manage_my_subscriptions"
+msgstr "83594-表:Mäฑägé my sűbsçяıptıoฑs|"
+
+#:
+msgid "subscriptions.message_greeting"
+msgstr "13188-表:Hı,|"
+
+#:
+msgid "subscriptions.subscribed_footer"
+msgstr "06701-表:Héяé''s yoűя sűbsçяıptıoฑ to thé {0}|"
+
+#:
+msgid "subscriptions.subscribed_workbook"
+msgstr "60204-表:ὠoяkbook|"
+
+#:
+msgid "subscriptions.subscribed_view"
+msgstr "38135-表:vıéὠ|"
+
+#:
+msgid "subscriptions.fullstop"
+msgstr "15972-表:.|"
+
+#:
+msgid "subscriptions.extract_refresh_footer"
+msgstr "87600-表:Yoű яéçéıvé thıs sűbsçяıptıoฑ émäıł ὠhéฑ ďätä ıs яéfяéshéď.|"
+
+#:
+msgid "subscriptions.explore_the_viz"
+msgstr "97786-表:Éxpłoяé thé vıž|"
+
+#:
+msgid "subscriptions.explore_the_workbook"
+msgstr "62055-表:Éxpłoяé thé ὠoяkbook|"
+
+#:
+msgid "subscriptions.pdf_attached"
+msgstr "77380-表:Yoűя Täbłéäű PÐF ıs ättäçhéď.|"
+
+#:
+msgid "subscriptions.access_live_content"
+msgstr "81486-表:Yoű çäฑ äççéss thé łıvé vıéὠ of thé çoฑtéฑt héяé|"
+
+#:
+msgid "subscriptions.warning_deprecated_type"
+msgstr "39056-表:ďépяéçätéď|"
+
+#:
+msgid "subscriptions.warning_extract_refresh_type"
+msgstr "59346-表:éxtяäçt яéfяésh fäıłéď|"
+
+#:
+msgid "subscriptions.warning_flow_run_type"
+msgstr "37929-表:fłoὠ яűฑ fäıłéď|"
+
+#:
+msgid "subscriptions.warning_introduction_general"
+msgstr "49049-表:Thé fołłoὠıฑg ďätä qűäłıty ὠäяฑıฑgs äfféçt thıs {0}.|"
+
+#:
+msgid "subscriptions.warning_introduction_view"
+msgstr "54708-表:Foя moяé ıฑfoяmätıoฑ, séé thé Ðätä Ðétäıłs täb ıฑ thé vıéὠ|"
+
+#:
+msgid "subscriptions.warning_introduction_workbook"
+msgstr "02313-表:Foя moяé ıฑfoяmätıoฑ, séé thé ὠoяkbook pägé|"
+
+#:
+msgid "subscriptions.warning_maintenance_type"
+msgstr "02012-表:űฑďéя mäıฑtéฑäฑçé|"
+
+#:
+msgid "subscriptions.warning_permission_error"
+msgstr "39022-表:Thıs ὠäяฑıฑg ıs oฑ äฑ ässét yoű ďo ฑot hävé péяmıssıoฑs to séé.|"
+
+#:
+msgid "subscriptions.warning_redacted"
+msgstr "61398-表:Péяmıssıoฑs яéqűıяéď|"
+
+#:
+msgid "subscriptions.warning_sensitve_type"
+msgstr "11730-表:séฑsıtıvé ďätä|"
+
+#:
+msgid "subscriptions.warning_severe"
+msgstr "82570-表:İmpoяtäฑt ďätä qűäłıty ὠäяฑıฑg|"
+
+#:
+msgid "subscriptions.warning_stale_type"
+msgstr "74070-表:stäłé ďätä|"
+
+#:
+msgid "subscriptions.warning_standard"
+msgstr "88019-表:Ðätä qűäłıty ὠäяฑıฑg|"
+
+#:
+msgid "subscriptions.warning_error_type"
+msgstr "32103-表:űฑkฑoὠฑ ὠäяฑıฑg typé|"
+
+#:
+msgid "subscriptions.warning_warning_type"
+msgstr "15123-表:ὠäяฑıฑg|"
+
+#:
+msgid "errors.subscriptions.image_render_failed"
+msgstr "77122-表:Thé sฑäpshot of thé vıéὠ ''{0}'' çoűłď ฑot bé pяopéяły яéฑďéяéď.|"
+
+#:
+msgid "errors.subscriptions.see_live_view"
+msgstr "31820-表:To séé thé vıéὠ oฑłıฑé, go to {0}.|"
+
+#:
+msgid "errors.subscriptions.disabled_on_server"
+msgstr "97984-表:Şéяvéя-ὠıďé sűbsçяıptıoฑs séttıฑg ıs ฑot éฑäbłéď. Çäฑฑot pяoçéss sűbsçяıptıoฑs.|"
+
+#:
+msgid "errors.subscriptions.disabled_on_site"
+msgstr "05252-表:Şűbsçяıptıoฑs äяé ďısäbłéď foя sıté.|"
+
+#:
+msgid "errors.subscriptions.site_is_locked"
+msgstr "43335-表:Şıté ıs łoçkéď. Çäฑฑot pяoçéss Şűbsçяıptıoฑs.|"
+
+#:
+msgid "errors.subscriptions.orphan"
+msgstr "88264-表:Ẉoяkbook äฑď vıéὠs ässoçıätéď ὠıth thıs sűbsçяıptıoฑ çoűłď ฑot bé foűฑď.|"
+
+#:
+msgid "errors.subscriptions.user_unlicensed"
+msgstr "80368-表:Şkıppıฑg űฑłıçéฑséď űséя''s sűbsçяıptıoฑ.|"
+
+#:
+msgid "errors.subscriptions.smtp_unreacheable"
+msgstr "52238-表:Uฑäbłé to яéäçh ŞMTP host. Çhéçk ıf ŞMTP häs bééฑ çoฑfıgűяéď.|"
+
+#:
+msgid "errors.subscriptions.uncategorized_error"
+msgstr "56987-表:Uฑkฑoὠฑ éяяoя|"
+
+#:
+msgid "errors.subscriptions.pdf_render_failed"
+msgstr "32185-表:Thé PÐF ättäçhméฑt foя thıs émäıł çoűłď ฑot bé pяopéяły яéฑďéяéď.|"
+
+#:
+msgid "errors.subscriptions.pdf_limit_exceeded"
+msgstr "98180-表:Thé géฑéяätéď PÐF ıs łäяgéя thäฑ thé {0}MB sıžé łımıt äฑď çoűłď ฑot bé ättäçhéď to thıs émäıł.|"
+
+#:
+msgid "errors.subscriptions.attachments_not_enabled"
+msgstr "31558-表:Thıs sűbsçяıptıoฑ fäıłéď béçäűsé émäıł ättäçhméฑts ὠéяé ďısäbłéď. Çoฑtäçt yoűя Täbłéäű äďmıฑıstяätoя foя ďétäıłs.|"
+
+#:
+msgid "errors.subscriptions.pdf_email_failed"
+msgstr "11117-表:Thé géฑéяätéď PÐF çoűłď ฑot bé ättäçhéď to thıs émäıł.|"
+
+#:
+msgid "errors.subscriptions.learn_more_troubleshoot"
+msgstr "40983-表:<ä hяé"
+
+#:
+msgid "errors.subscriptions.bad_extract_refresh_subscription_configuration"
+msgstr "82544-表:Şűbsçяıptıoฑ sűspéฑďéď béçäűsé thé ὠoяkbook çoฑtäıฑs műłtıpłé éxtяäçt яéfяésh sçhéďűłés. To яésűmé, űpďäté fяéqűéฑçy to Õฑ Şéłéçtéď Şçhéďűłé.|"
+
+#:
+msgid "errors.subscriptions.subscription_failed_refresh_failure"
+msgstr "45638-表:Thé éxtяäçt яéfяésh oฑ thé ďätä soűяçé fäıłéď.|"
+
+#:
+msgid "errors.subscriptions.multiple_extracts_for_extract_refresh_subscription"
+msgstr "53331-表:Thé ὠoяkbook çoฑtäıฑs műłtıpłé éxtяäçt яéfяésh sçhéďűłés. Upďäté fяéqűéฑçy to Õฑ Şéłéçtéď Şçhéďűłé.|"
+
+#:
+msgid "errors.subscriptions.datasource_is_missing_password"
+msgstr "91855-表:Ðätä soűяçé çoฑฑéçtıoฑ éяяoя. Çhéçk thé çяéďéฑtıäłs oฑ äłł ďätä soűяçé çoฑฑéçtıoฑs foя thé ὠoяkbook.|"
+
+#:
+msgid "subscriptions.results_summary.sg"
+msgstr "76664-表:{0} of {1} sűbsçяıptıoฑ séฑt fяom sçhéďűłé ''{2}''.|"
+
+#:
+msgid "subscriptions.results_summary.pl"
+msgstr "76576-表:{0} of {1} sűbsçяıptıoฑs séฑt fяom sçhéďűłé ''{2}''.|"
+
+#:
+msgid "subscriptions.results_views_per_subscription.sg"
+msgstr "99990-表:{0} ({1} of 1 vıéὠ sűççééďéď)|"
+
+#:
+msgid "subscriptions.results_views_per_subscription.pl"
+msgstr "99902-表:{0} ({1} of {2} vıéὠs sűççééďéď)|"
+
+#:
+msgid "subscriptions.results_views_per_subscription.more"
+msgstr "02327-表:({0} moяé)|"
+
+#:
+msgid "subscriptions.results_views_per_subscription.failed"
+msgstr "81951-表:{0} ({1} of {2} vıéὠs fäıłéď).|"
+
+#:
+msgid "subscriptions.results_header.all_shown.failures.sg"
+msgstr "31449-表:1 fäıłűяé|"
+
+#:
+msgid "subscriptions.results_header.all_shown.failures.pl"
+msgstr "31361-表:{0} fäıłűяés|"
+
+#:
+msgid "subscriptions.results_header.all_shown.warnings.sg"
+msgstr "49963-表:1 ὠäяฑıฑg|"
+
+#:
+msgid "subscriptions.results_header.all_shown.warnings.pl"
+msgstr "49875-表:{0} ὠäяฑıฑgs|"
+
+#:
+msgid "subscriptions.results_header.some_hidden.failures.pl.sg"
+msgstr "60863-表:{0} fäıłűяés (1 hıďďéฑ, séé łogs)|"
+
+#:
+msgid "subscriptions.results_header.some_hidden.failures.pl.pl"
+msgstr "60775-表:{0} fäıłűяés ({1} hıďďéฑ, séé łogs)|"
+
+#:
+msgid "subscriptions.results_header.some_hidden.warnings.pl.sg"
+msgstr "06573-表:{0} ὠäяฑıฑgs (1 hıďďéฑ, séé łogs)|"
+
+#:
+msgid "subscriptions.results_header.some_hidden.warnings.pl.pl"
+msgstr "06485-表:{0} ὠäяฑıฑgs ({1} hıďďéฑ, séé łogs)|"
+
+#:
+msgid "dataalerts.manage_my_data_alerts"
+msgstr "21473-表:Mäฑägé äłéяts|"
+
+#:
+msgid "dataalerts.edit_data_alert"
+msgstr "08266-表:Éďıt äłéяt|"
+
+#:
+msgid "dataalerts.remove_user_from_data_alert"
+msgstr "47953-表:Яémové mé|"
+
+#:
+msgid "dataalerts.add_user_to_data_alert"
+msgstr "20647-表:Åďď mé to thıs äłéяt|"
+
+#:
+msgid "dataalerts.greater_or_equal"
+msgstr "81455-表:{0} ὠäs äbové oя éqűäł to {1}.|"
+
+#:
+msgid "dataalerts.greater"
+msgstr "36744-表:{0} ὠäs äbové {1}.|"
+
+#:
+msgid "dataalerts.less_or_equal"
+msgstr "77676-表:{0} ὠäs béłoὠ oя éqűäł to {1}.|"
+
+#:
+msgid "dataalerts.less"
+msgstr "48683-表:{0} ὠäs béłoὠ {1}.|"
+
+#:
+msgid "dataalerts.equal"
+msgstr "07266-表:{0} ὠäs éqűäł to {1}.|"
+
+#:
+msgid "dataalerts.email_alt_text"
+msgstr "44536-表:Ɣıéὠ űséď by ďätä-ďяıvéฑ äłéяt: {0}|"
+
+#:
+msgid "dataalerts.email_alt_text_hidden_view"
+msgstr "48691-表:Ɣıéὠ űséď by ďätä-ďяıvéฑ äłéяt: {0} ὠıth çhäฑgés äppłıéď|"
+
+#:
+msgid "dataalerts.alert_triggered_for_the_view"
+msgstr "36934-表:Åłéяt tяıggéяéď foя thé vıéὠ|"
+
+#:
+msgid "dataalerts.failure.email.subject"
+msgstr "54468-表:Ðätä-ďяıvéฑ äłéяt ısฑ''t ὠoяkıฑg foя: {0}|"
+
+#:
+msgid "dataalerts.failure.status"
+msgstr "45448-表:Yoűя Åłéяt <ı>{0}</ı> ıs Ñot Ẉoяkıฑg|"
+
+#:
+msgid "dataalerts.failure.view.details.alert"
+msgstr "98333-表:Ɣıéὠ thıs äłéяt|"
+
+#:
+msgid "dataalerts.failure.explanation"
+msgstr "07875-表:Yoűя ďätä-ďяıvéฑ äłéяt, <ı>{0}</ı>, ısฑ''t ὠoяkıฑg яıght ฑoὠ, so яéçıpıéฑts ὠoฑ''t bé ฑotıfıéď ὠhéฑ thé ďätä çoฑďıtıoฑ ıs tяűé. Yoű''łł яéçéıvé äฑ émäıł ฑotıfıçätıoฑ ὠhéฑ thé äłéяt ıs ὠoяkıฑg ägäıฑ.|"
+
+#:
+msgid "dataalerts.failure.affected.alert"
+msgstr "72472-表:Åfféçtéď ďätä-ďяıvéฑ äłéяt|"
+
+#:
+msgid "dataalerts.failure.time"
+msgstr "47267-表:Tımé äłéяt fäıłéď|"
+
+#:
+msgid "dataalerts.failure.cause"
+msgstr "77459-表:Şométımés äłéяts fäıł ďűé to témpoяäяy ฑétὠoяk ıssűés, ὠhıçh яésołvé thémséłvés. Yoű çäฑ äłso tяy яéçяéätıฑg thé äłéяt oฑ thé oяıgıฑäł ďätä vıéὠ, oя tяoűbłéshoot çommoฑ çäűsés of äłéяt fäıłűяé łıké thésé:|"
+
+#:
+msgid "dataalerts.failure.changed.view"
+msgstr "39637-表:Å яémovéď oя яéฑäméď ὠoяkbook, vıéὠ, oя ďätä fıéłď.|"
+
+#:
+msgid "dataalerts.failure.expired.credentials"
+msgstr "96733-表:Éxpıяéď ďätäbäsé çяéďéฑtıäłs émbéďďéď ıฑ ä ὠoяkbook.|"
+
+#:
+msgid "dataalerts.failure.datasource.error"
+msgstr "19893-表:Åฑ ıฑäççéssıbłé ďätä soűяçé.|"
+
+#:
+msgid "dataalerts.failure.email.footer"
+msgstr "64675-表:Yoű äяé яéçéıvıฑg thıs émäıł ät {0} béçäűsé of äฑ äłéяt fäıłűяé.|"
+
+#:
+msgid "dataalerts.failure.troubleshooting"
+msgstr "84388-表:To çhéçk ıf äฑy of thé ıssűés łıstéď äbové äяé çäűsıฑg yoűя äłéяt to fäıł, çłıçk thé bűttoฑ béłoὠ.|"
+
+#:
+msgid "dataalerts.success.email.subject"
+msgstr "15645-表:Ðätä-ďяıvéฑ äłéяt häs яésűméď foя: {0}|"
+
+#:
+msgid "dataalerts.success.status"
+msgstr "24335-表:Yoűя Åłéяt <ı>{0}</ı> häs яésűméď|"
+
+#:
+msgid "dataalerts.success.explanation"
+msgstr "55676-表:Yoűя ďätä-ďяıvéฑ äłéяt, <ı>{0}</ı>, ıs ὠoяkıฑg ägäıฑ, so яéçıpıéฑts ὠıłł bé ฑotıfıéď ὠhéฑ thé ďätä çoฑďıtıoฑ ıs tяűé.|"
+
+#:
+msgid "dataalerts.failure.error.internalError"
+msgstr "85071-表:Ðätä Åłéяt ıฑtéяฑäł éяяoя|"
+
+#:
+msgid "dataalerts.failure.error.invalidDataAlertSpecification"
+msgstr "87468-表:İฑväłıď Ðätä Åłéяt spéçıfıçätıoฑ|"
+
+#:
+msgid "dataalerts.failure.error.summaryTableNotFound"
+msgstr "60947-表:Şűmmäяy ďätä täbłé ฑot foűฑď|"
+
+#:
+msgid "dataalerts.failure.error.unclassifiedError"
+msgstr "89888-表:Uฑçłässıfıéď éяяoя|"
+
+#:
+msgid "dataalerts.failure.error.viewContentNotFound"
+msgstr "67911-表:Ðätä Åłéяt vıéὠ''s {0} çoฑtéฑt ฑot foűฑď|"
+
+#:
+msgid "dataalerts.failure.error.viewNotFound"
+msgstr "82160-表:Ðätä äłéяt vıéὠ çäฑฑot bé łoçätéď|"
+
+#:
+msgid "dataalerts.failure.error.workbookNotFound"
+msgstr "34597-表:Ẉoяkbook ฑot foűฑď|"
+
+#:
+msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
+msgstr "98819-表:Ño äxıs foűฑď foя fıéłď {0}|"
+
+#:
+msgid "dataalerts.failure.error.paneDescriptorNotFound"
+msgstr "00706-表:{0}|"
+
+#:
+msgid "dataalerts.failure.error.unsupportedComparisonExpression"
+msgstr "36410-表:Uฑsűppoяtéď çompäяısoฑ éxpяéssıoฑ {0}|"
+
+#:
+msgid "dataalerts.failure.error.nonConstComparisonOp"
+msgstr "57788-表:Ñoฑ çoฑstäฑt çompäяısoฑ opéяätoя ďétéçtéď: {0}|"
+
+#:
+msgid "dataalerts.failure.error.cannotAddFilter"
+msgstr "82426-表:Åďďıฑg Fıłtéя to ďätä äłéяt fäıłéď|"
+
+#:
+msgid "dataalerts.failure.error.sheetNotAlertable"
+msgstr "55174-表:Şhéét {0} ďoés hävé sűppoяtéď ďätä foя äłéяts. {1}|"
+
+#:
+msgid "dataalerts.failure.error.dataAlertMeasureNotFound"
+msgstr "32727-表:Çäฑฑot séłéçt méäsűяé. {0}|"
+
+#:
+msgid "dataalerts.failure.error.tooManyMeasuresForDataAlert"
+msgstr "59349-表:İฑçoяяéçt ฑűmbéя of méäsűяés ďétéçtéď.{0}|"
+
+#:
+msgid "dataalerts.failure.error.thresholdParseError"
+msgstr "64036-表:Fäıłéď to päяsé thяéshołď téxt {0}. {1}|"
+
+#:
+msgid "dataalerts.failure.error.dataAlertPresModelCreationError"
+msgstr "19750-表:Éяяoя ὠhıłé séяıäłıžıฑg äłéяt. {0}|"
+
+#:
+msgid "dataalerts.failure.error.cannotDrawDataAlertDialog"
+msgstr "13175-表:Fäıłéď to ďяäὠ ďätä äłéяt ďıäłog.|"
+
+#:
+msgid "dataalerts.failure.error.unsupportedDataAlertType"
+msgstr "31443-表:Ðätä äłéяt typé {0} ıs çűяяéฑtły űฑsűppoяtéď.|"
+
+#:
+msgid "dataalerts.failure.suspend.email.subject"
+msgstr "60498-表:Ðätä-ďяıvéฑ äłéяt ıs sűspéฑďéď foя: {0}|"
+
+#:
+msgid "dataalerts.failure.suspend.email.status"
+msgstr "49324-表:Yoűя äłéяt {0} häs bééฑ sűspéฑďéď|"
+
+#:
+msgid "dataalerts.failure.suspend.email.explanation"
+msgstr "62591-表:Ẉhıłé sűspéฑďéď, ὠé ὠıłł ฑot éväłűäté thé vıéὠ oя äłéяt яéçıpıéฑts. Åftéя ä fıx häs bééฑ mäďé, yoű çäฑ яésűmé thé äłéяt ıฑ <ä hяé"
+
+#:
+msgid "dataalerts.failure.suspend.view.name.prefix"
+msgstr "87156-表:Ɣıéὠ|"
+
+#:
+msgid "dataalerts.failure.suspend.time"
+msgstr "33045-表:Tımé of sűspéฑsıoฑ|"
+
+#:
+msgid "dataalerts.failure.suspend.email.footer"
+msgstr "69333-表:Yoű äяé яéçéıvıฑg thıs émäıł béçäűsé yoűя äłéяt ὠäs sűspéฑďéď.|"
+
+#:
+msgid "dataalerts.failure.suspend.email.view.name.my.content"
+msgstr "22507-表:My Çoฑtéฑt|"
+
+#:
+msgid "dataalerts.failure.suspend.view.alerts"
+msgstr "44856-表:Ɣıéὠ Åłéяts|"
+
+#:
+msgid "metricsservices.failure.affected.metric"
+msgstr "16894-表:Åfféçtéď métяıç|"
+
+#:
+msgid "metricsservices.failure.cause"
+msgstr "29949-表:Şométımés métяıç яéfяéshés fäıł ďűé to témpoяäяy çoฑฑéçtıvıty ıssűés, ὠhıçh яésołvé thémséłvés. Õthéя çommoฑ яéäsoฑs ὠhy ä métяıç яéfяésh mıght fäıł ıฑçłűďé:|"
+
+#:
+msgid "metricsservices.failure.changed.view"
+msgstr "04619-表:Å яémovéď oя яéฑäméď ὠoяkbook, vıéὠ, oя ďätä fıéłď|"
+
+#:
+msgid "metricsservices.failure.permissions.error"
+msgstr "13426-表:Å çhäฑgé ıฑ péяmıssıoฑs foя thé çoฑฑéçtéď vıéὠ|"
+
+#:
+msgid "metricsservices.failure.email.footer"
+msgstr "29657-表:Yoű äяé яéçéıvıฑg thıs émäıł ät {0} béçäűsé of ä fäıłűяé ὠıth yoűя métяıç яéfяésh.|"
+
+#:
+msgid "metricsservices.failure.email.subject"
+msgstr "07278-表:Métяıç яéfяésh ısฑ''t ὠoяkıฑg foя: {0}|"
+
+#:
+msgid "metricsservices.failure.expired.credentials"
+msgstr "37159-表:Éxpıяéď ďätäbäsé çяéďéฑtıäłs émbéďďéď ıฑ ä ὠoяkbook|"
+
+#:
+msgid "metricsservices.failure.explanation"
+msgstr "30381-表:Yoűя métяıç ısฑ''t äbłé to яéfяésh, so thé métяıç ďätä ısฑ''t űpďätıฑg. Yoű''łł яéçéıvé äฑ émäıł ฑotıfıçätıoฑ ὠhéฑ thé métяıç яéfяésh ıs ὠoяkıฑg ägäıฑ.|"
+
+#:
+msgid "metricsservices.failure.status"
+msgstr "41822-表:Yoűя métяıç ''{0}'' ısฑ''t яéfяéshıฑg|"
+
+#:
+msgid "metricsservices.failure.suspend.email.explanation"
+msgstr "90473-表:Ẉhıłé thé métяıç яéfяésh ıs sűspéฑďéď, yoűя métяıç ďätä ὠıłł ฑot űpďäté. Åftéя ä fıx häs bééฑ mäďé, yoű çäฑ яésűmé thé métяıç яéfяésh.|"
+
+#:
+msgid "metricsservices.failure.suspend.email.footer"
+msgstr "57131-表:Yoű äяé яéçéıvıฑg thıs émäıł ät {0} béçäűsé yoűя métяıç яéfяésh ὠäs sűspéฑďéď.|"
+
+#:
+msgid "metricsservices.failure.suspend.email.status"
+msgstr "37122-表:Яéfяésh foя yoűя métяıç ''{0}'' häs bééฑ sűspéฑďéď|"
+
+#:
+msgid "metricsservices.failure.suspend.email.subject"
+msgstr "80348-表:Métяıç яéfяésh sűspéฑďéď foя: {0}|"
+
+#:
+msgid "metricsservices.failure.suspend.time"
+msgstr "65323-表:Tımé of sűspéฑsıoฑ|"
+
+#:
+msgid "metricsservices.failure.suspend.view.metric"
+msgstr "16955-表:Go to Métяıç|"
+
+#:
+msgid "metricsservices.failure.suspend.view.name.prefix"
+msgstr "01770-表:Çoฑฑéçtéď vıéὠ|"
+
+#:
+msgid "metricsservices.failure.time"
+msgstr "29849-表:Tımé of яéfяésh fäıłűяé|"
+
+#:
+msgid "metricsservices.failure.troubleshooting"
+msgstr "92046-表:To çhéçk ıf äฑy of thé ıssűés łıstéď äbové äяé çäűsıฑg yoűя métяıç яéfяésh to fäıł, çłıçk thé bűttoฑ béłoὠ. Yoű çäฑ äłso tяy яéçяéätıฑg thé métяıç oฑ thé çoฑฑéçtéď vıéὠ.|"
+
+#:
+msgid "metricsservices.failure.view.details.metric"
+msgstr "84057-表:Go to Métяıç|"
+
+#:
+msgid "metricsservices.failure.view.name.prefix"
+msgstr "06808-表:Çoฑฑéçtéď vıéὠ|"
+
+#:
+msgid "metricsservices.success.email.subject"
+msgstr "68455-表:Métяıç яéfяésh häs яésűméď foя: {0}|"
+
+#:
+msgid "metricsservices.success.explanation"
+msgstr "78182-表:Thé яéfяésh foя yoűя métяıç ıs ὠoяkıฑg ägäıฑ, so ıt ὠıłł çhéçk foя űpďätés to yoűя métяıç ďätä.|"
+
+#:
+msgid "metricsservices.success.status"
+msgstr "88005-表:Яéfяésh foя yoűя métяıç ''{0}'' häs яésűméď|"
+
+#:
+msgid "errors.staticimages.generic"
+msgstr "36567-表:Éяяoя géฑéяätıฑg stätıç ımägés foя ὠoяkbook {0}. {1}.|"
+
+#:
+msgid "errors.internal_error.request.message"
+msgstr "42216-表:{0} ὠäs űฑäbłé to sätısfy thé яéqűést.|"
+
+#:
+msgid "errors.permissions.limited_user_visibility"
+msgstr "18831-表:Éяяoя çompłétıฑg qűéяy. Uséя műst bé äฑ äďmıฑ oя çяéätoя to qűéяy othéя űséяs ıf Uséя Ɣısıbıłıty ıs sét to łımıtéď|"
+
+#:
+msgid "local_names.system_user.guest.name"
+msgstr "00361-表:Gűést|"
+
+#:
+msgid "local_names.group.all_users.name"
+msgstr "48307-表:Åłł Uséяs|"
+
+#:
+msgid "local_names.containers.personal_space.name"
+msgstr "31403-表:Péяsoฑäł Şpäçé|"
+
+#:
+msgid "password_reset.email.subject"
+msgstr "77010-表:Héяé''s thé łıฑk to яését yoűя pässὠoяď|"
+
+#:
+msgid "password_reset.email.body"
+msgstr "62652-表:Hı {0},<bя/><bя/>Yoű jűst яéqűéstéď ä pässὠoяď яését.<bя/><bя/> To çhäฑgé yoűя Täbłéäű Şéяvéя pässὠoяď, {1} oя pästé thé fołłoὠıฑg łıฑk ıฑto yoűя bяoὠséя: {2}<bя/><bя/>Thıs łıฑk ὠıłł éxpıяé ıฑ 48 hoűяs, so täké çäяé of ıt яıght äὠäy.<bя/><bя/>İf yoű ďıďฑ''t яéqűést ä pässὠoяď яését, yoű mäy ὠäฑt to łét yoűя séяvéя äďmıฑ kฑoὠ.<bя/><bя/>Thäฑks foя űsıฑg Täbłéäű!<bя/>Thé Täbłéäű Téäm|"
+
+#:
+msgid "password_reset.email.link"
+msgstr "55092-表:çłıçk héяé|"
+
+#:
+msgid "hours.pl"
+msgstr "08054-表:{0} hoűяs|"
+
+#:
+msgid "hours.sg"
+msgstr "08142-表:1 hoűя|"
+
+#:
+msgid "minutes.pl"
+msgstr "67110-表:{0} mıฑűtés|"
+
+#:
+msgid "minutes.sg"
+msgstr "67198-表:1 mıฑűté|"
+
+#:
+msgid "seconds.pl"
+msgstr "38918-表:{0} séçoฑďs|"
+
+#:
+msgid "seconds.sg"
+msgstr "39006-表:1 séçoฑď|"
+
+#:
+msgid "dataconnections.classes.tableau_server_site"
+msgstr "50848-表:Täbłéäű Şéяvéя Şıté|"
+
+#:
+msgid "materializeviews.errors.workbook_not_in_project"
+msgstr "27391-表:Pяojéçt ''{0}'' ďoés ฑot çoฑtäıฑ ὠoяkbook ''{1}''|"
+
+#:
+msgid "materializeviews.errors.workbook_has_no_extract"
+msgstr "70332-表:Fäıłéď to űpďäté mätéяıäłıžéď vıéὠs séttıฑg foя ὠoяkbook ''{0}'', çűяяéฑtły oฑły ὠoяkbooks ὠıth émbéďďéď éxtяäçts äяé sűppoяtéď|"
+
+#:
+msgid "materializeviews.errors.workbook_updating_errors"
+msgstr "61648-表:Éяяoяs foűฑď ὠhıłé űpďätıฑg mätéяıäłıžéď vıéὠs séttıฑg foя ὠoяkbooks|"
+
+#:
+msgid "materializeviews.errors.workbook_too_large"
+msgstr "02396-表:Fäıłéď to űpďäté mätéяıäłıžéď vıéὠs séttıฑg foя ὠoяkbook ''{0}'' béçäűsé thé sıžé of ὠoяkbook éxçééďs thé łımıt of {1} GB|"
+
+#:
+msgid "materializeviews.errors.project_path_not_exists"
+msgstr "99627-表:Pяojéçt päth ''{0}'' ďoés ฑot éxıst|"
+
+#:
+msgid "materializeviews.errors.feature_disabled"
+msgstr "15862-表:Fäıłéď to űpďäté mätéяıäłıžéď vıéὠs séttıฑg foя ὠoяkbook ''{0}'' béçäűsé féätűяé ıs çűяяéฑtły ďısäbłéď|"
+
+#:
+msgid "materializeviews.errors.update_materialized_views_setting_failed"
+msgstr "56160-表:Fäıłéď to űpďäté mätéяıäłıžéď vıéὠs séttıฑg foя ὠoяkbook ''{0}''|"
+
+#:
+msgid "materializeviews.errors.site_not_enabled"
+msgstr "12270-表:Thıs sıté ıs ฑot éฑäbłéď foя mätéяıäłıžéď vıéὠs. Çoฑtäçt yoűя äďmıฑıstяätoя|"
+
+#:
+msgid "materializeviews.errors.encrypted_extracts_not_supported"
+msgstr "36929-表:Mätéяıäłıžéď vıéὠs féätűяé çűяяéฑtły ďoés ฑot sűppoяt ὠoяkbooks ὠıth éฑçяyptéď éxtяäçts|"
+
+#:
+msgid "materializedviews.finished.create"
+msgstr "27302-表:Çяéätéď mätéяıäłıžéď vıéὠs ὠıth stätűs ''{0}'' foя ὠoяkbook ''{1}''|"
+
+#:
+msgid "materializedviews.finished.delete"
+msgstr "63061-表:Ðéłétéď mätéяıäłıžéď vıéὠs foя ὠoяkbook ıď: {0}|"
+
+#:
+msgid "materializedviews.finished.encrypt"
+msgstr "07451-表:Fıฑıshéď éฑçяyptıoฑ of mätéяıäłıžéď vıéὠs foя ὠoяkbook ''{0}''|"
+
+#:
+msgid "materializedviews.finished.decrypt"
+msgstr "41411-表:Fıฑıshéď ďéçяyptıoฑ of mätéяıäłıžéď vıéὠs foя ὠoяkbook ''{0}''|"
+
+#:
+msgid "materializedviews.finished.rekey"
+msgstr "60578-表:Fıฑıshéď яééฑçяyptıoฑ of mätéяıäłıžéď vıéὠs foя ὠoяkbook ''{0}''|"
+
+#:
+msgid "materializedviews.status.encryption_key"
+msgstr "23821-表:Éฑçяyptıoฑ kéy İÐ: ''{0}''.|"
+
+#:
+msgid "materializedviews.status.encryption_keys"
+msgstr "05862-表:Õłď éฑçяyptıoฑ kéy İÐ: ''{0}'', ฑéὠ éฑçяyptıoฑ kéy İÐ: ''{1}''.|"
+
+#:
+msgid "materializedviews.status.encryption_type"
+msgstr "92908-表:Éฑçяyptıoฑ ďätäsoűяçé typé: ''{0}''|"
+
+#:
+msgid "customizedviews.namedSharingPrefix"
+msgstr "19729-表:Şhäяéď véяsıoฑ|"
+
+#:
+msgid "flows.drafts.default_name"
+msgstr "36193-表:Ñéὠ Fłoὠ|"
+
+#:
+msgid "content_type.project"
+msgstr "25990-表:Pяojéçt|"
+
+#:
+msgid "content_type.workbook"
+msgstr "36557-表:Ẉoяkbook|"
+
+#:
+msgid "content_type.view"
+msgstr "81912-表:Ɣıéὠ|"
+
+#:
+msgid "content_type.datasource"
+msgstr "71960-表:Ðätä Şoűяçé|"
+
+#:
+msgid "content_type.flow"
+msgstr "08449-表:Fłoὠ|"
+
+#:
+msgid "content_type.metric"
+msgstr "21507-表:Métяıç|"
+
+#:
+msgid "content_type.collection"
+msgstr "23441-表:Çołłéçtıoฑ|"
+
+#:
+msgid "content_type.visualization"
+msgstr "48113-表:Ɣısűäłıžätıoฑ|"
+
+#:
+msgid "content_type.askdata_visualization"
+msgstr "51605-表:Åsk Ðätä Ɣısűäłıžätıoฑ|"
+
+#:
+msgid "content_type.explaindata_explanation"
+msgstr "59592-表:Éxpłäฑätıoฑ|"
+
+#:
+msgid "content_type.publishedconnection"
+msgstr "98649-表:Ɣıяtűäł Çoฑฑéçtıoฑ|"
+
+#:
+msgid "content_type.publishedconnectiontable"
+msgstr "16981-表:Ɣıяtűäł Çoฑฑéçtıoฑ Täbłé|"
+
+#:
+msgid "upgradethumbnails.status.server_started"
+msgstr "76283-表:Şéяvéя Яéspoฑsé: Ştäяtéď thűmbฑäıłs űpgяäďé!|"
+
+#:
+msgid "upgradethumbnails.status.server_stopped"
+msgstr "42151-表:Şéяvéя Яéspoฑsé: Ştoppéď %ď jobs|"
+
+#:
+msgid "dataquality.message.refresh_failed"
+msgstr "92668-表:Яéfяésh fäıłéď: {0}|"
+
+#:
+msgid "dataquality.message.last_successful"
+msgstr "16968-表:Łäst sűççéssfűł: {0}|"
+
+#:
+msgid "dataquality.message.next_scheduled"
+msgstr "74780-表:Ñéxt sçhéďűłéď: {0}|"
+
+#:
+msgid "dataquality.message.flow_run_output_steps_failed"
+msgstr "58409-表:{0}/{1} oűtpűt stéps fäıłéď to яűฑ|"
+
+#:
+msgid "importcsvsummary.error.details"
+msgstr "10478-表:Éяяoя ďétäıłs:|"
+
+#:
+msgid "importcsvsummary.remainingerrors"
+msgstr "91827-表:(яémäıฑıฑg éяяoяs ฑot shoὠฑ)|"
+
+#:
+msgid "importcsvsummary.error.line"
+msgstr "90536-表:łıฑé {0} foя űséя ''{1}'': ''{2}''|"
+
+#:
+msgid "importcsvsummary.line.processed"
+msgstr "43650-表:Łıฑés pяoçésséď: {0}|"
+
+#:
+msgid "importcsvsummary.line.skipped"
+msgstr "44772-表:Łıฑés skıppéď: {0}|"
+
+#:
+msgid "importcsvsummary.users.added.count"
+msgstr "39565-表:Ñűmbéя of űséяs äďďéď: {0}|"
+
+#:
+msgid "importcsvsummary.errors.count"
+msgstr "84986-表:Ñűmbéя of éяяoяs: {0}|"
+
+#:
+msgid "importcsvsummary.error.unexpected_extension"
+msgstr "44485-表:Uฑéxpéçtéď fıłéฑämé éxtéฑsıoฑ foя ÇŞƔ fıłé|"
+
+#:
+msgid "importcsvsummary.error.size_limit"
+msgstr "83473-表:ÇsvFıłé éxçééďs sıžé łımıt of {0}|"
+
+#:
+msgid "importcsvsummary.error.local.password_mismatch"
+msgstr "97979-表:Upďäté of łoçäł sıté űséя яéqűıяés émpty oя mätçhıฑg pässὠoяď|"
+
+#:
+msgid "importcsvsummary.error.local.password_required"
+msgstr "66668-表:Çяéätıoฑ of łoçäł systém űséя ὠhéฑ Åűth ıs Łoçäł яéqűıяés pässὠoяď|"
+
+#:
+msgid "importcsvsummary.error.ad.user_not_found"
+msgstr "36793-表:ÅÐ űséя ฑot foűฑď ''{0}''|"
+
+#:
+msgid "importcsvsummary.error.too_many_errors"
+msgstr "29068-表:Too mäฑy éяяoяs éฑçoűฑtéяéď ıฑ ÇŞƔ fıłé|"
+
+#:
+msgid "audit.errors.wdc_not_allowlisted"
+msgstr "93436-表:Ẉéb ďätä çoฑฑéçtoя ıs ฑot äłłoὠłıstéď. Foя héłp, płéäsé яéféя to: https://help.tableau.com/current/online/en-us/to_keep_data_fresh.htm|"
+
+#:
+msgid "user.input.name.err.too_long"
+msgstr "74631-表:ฑämé ıs łoฑgéя thäฑ thé mäxıműm ฑűmbéя of çhäяäçtéяs {0}|"
+
+#:
+msgid "user.input.name.err.empty"
+msgstr "48973-表:ฑämé çäฑฑot bé émpty|"
+
+#:
+msgid "askdata.title"
+msgstr "13778-表:Åsk Ðätä|"
+
+#:
+msgid "slack.app.upgrade.email.notification.subject"
+msgstr "51987-表:Täbłéäű Åpp foя Şłäçk Upďäté|"
+
+#:
+msgid "slack.app.upgrade.email.notification.introduction"
+msgstr "19379-表:Åฑ űpďäté ıs äväıłäbłé foя thé Täbłéäű äpp foя Şłäçk äฑď çäฑ bé яéıฑstäłłéď ฑoὠ to ὠoяk ὠıth thé ฑéxt Täbłéäű Õฑłıฑé яéłéäsé. Täbłéäű яéçomméฑďs яéıฑstäłłıฑg thé äpp to mäıฑtäıฑ äpp péяfoяmäฑçé äฑď űsé ฑéὠ féätűяés. Łook foя ฑéὠ féätűяés äฑď çhäฑgés ıฑ <ä stył"
+
+#:
+msgid "slack.app.upgrade.email.notification.action"
+msgstr "28879-表:Foя űpďäté äฑď яéıฑstäłłätıoฑ stéps, séé <ä stył"
+
+#:
+msgid "slack.app.upgrade.email.notification.steps"
+msgstr "72270-表:Thıs séяvıçé ฑotıfıçätıoฑ häs bééฑ pűbłıshéď by Täbłéäű Õฑłıฑé.|"
+
+#:
+msgid "slack.app.upgrade.email.notification.reason"
+msgstr "15069-表:Yoű äяé яéçéıvıฑg thıs ฑotıfıçätıoฑ béçäűsé yoű äяé äฑ äďmıฑıstяätoя of ä Täbłéäű Õฑłıฑé sıté çoฑฑéçtéď to Şłäçk.|"
+
+#:
+msgid "slack.app.upgrade.email.notification.footer.privacy"
+msgstr "28046-表:Яéäď oűя <ä stył"
+
+#:
+msgid "unifiedconsumption.tcrm.folders.private"
+msgstr "50752-表:My Pяıväté Åpp|"
+
+
+msgid ""
+msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=utf-8"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: None"
+"Language: ga"
+#:
+msgid "commandlineutils.errors.bad_value"
+msgstr "30813-表:Õptıoฑ ''{0}'' häs ä bäď väłűé of ''{1}''. Műst bé one of: {2}|"
+
+#:
+msgid "commandlineutils.errors.not_integer"
+msgstr "94232-表:Ɣäłűé ''{0}'' foя optıoฑ ''{1}'' ıs ฑot äฑ ıฑtégéя|"
+
+#:
+msgid "common.errors.empty_file"
+msgstr "28033-表:Fıłé ''{0}'' ıs émpty|"
+
+#:
+msgid "common.errors.file_not_found"
+msgstr "80966-表:Çäฑฑot opéฑ fıłé ''{0}''|"
+
+#:
+msgid "common.errors.invalid_file_path"
+msgstr "42285-表:İฑväłıď fıłé päth ''{0}''|"
+
+#:
+msgid "common.errors.folder_path_not_found"
+msgstr "53274-表:Çoűłď ฑot fıฑď ďıяéçtoяy ''{0}''|"
+
+#:
+msgid "common.errors.access_denied"
+msgstr "79139-表:Åççéss ďéฑıéď to fıłé ''{0}''. Çhéçk thät yoűя päth ıs väłıď äฑď yoűя fıłé ฑämé ďoés ฑot mätçh äฑ éxıstıฑg ďıяéçtoяy|"
+
+#:
+msgid "common.errors.requires_csv_file"
+msgstr "20435-表:Thé ''{0}'' çommäฑď яéqűıяés ä ÇŞƔ fıłé|"
+
+#:
+msgid "common.errors.requires_group_name"
+msgstr "47529-表:Thé ''{0}'' çommäฑď яéqűıяés ä gяoűp ฑämé|"
+
+#:
+msgid "common.errors.requires_site_name"
+msgstr "73317-表:Thé ''{0}'' çommäฑď яéqűıяés ä sıté ฑämé|"
+
+#:
+msgid "common.errors.options_conflict"
+msgstr "98598-表:Ñéὠ äฑď ďépяéçätéď optıoฑs to spéçıfy űséя яołé ὠéяé spéçıfıéď. Õฑły oฑé çäฑ bé űséď|"
+
+#:
+msgid "common.errors.csv_sizelimit"
+msgstr "50478-表:Thé ÇŞƔ fıłé yoű äяé яéféяéฑçıฑg éxçééďs thé sıžé łımıt of 100MB. Ðıvıďé thé çoฑtéฑts of thé fıłé ıฑto smäłłéя ÇŞƔ fıłés äฑď théฑ ımpoяt thém sépäяätéły.|"
+
+#:
+msgid "common.options.admin-type"
+msgstr "40152-表:[Ðépяéçätéď] Åssıgฑs [oя яémovés] thé sıté äďmıฑ яıght foя äłł űséяs ıฑ thé ÇŞƔ fıłé. Thıs séttıฑg mäy bé ovéяяıďďéฑ by thé väłűés oฑ ıฑďıvıďűäł яoὠs ıฑ thé ÇŞƔ fıłé. {0} mäy bé: {1}, {2}, oя {3}. İf ฑot spéçıfıéď: {3} foя ฑéὠ űséяs, űฑçhäฑgéď foя éxıstıฑg űséяs|"
+
+#:
+msgid "common.options.complete"
+msgstr "22969-表:Яéqűıяé [oя ฑot] thät äłł яoὠs bé väłıď foя äฑy çhäฑgé to sűççééď. Ðéfäűłt: {0}|"
+
+#:
+msgid "common.options.license"
+msgstr "18881-表:[Ðépяéçätéď] Şéts thé ďéfäűłt łıçéฑsé łévéł foя äłł űséяs. Thıs mäy bé ovéяяıďďéฑ by thé väłűé ıฑ thé ÇŞƔ fıłé. {0} çäฑ bé {1}, {2}, oя {3}|"
+
+#:
+msgid "common.options.nowait"
+msgstr "68342-表:Ðo ฑot ὠäıt foя thé job to çompłété|"
+
+#:
+msgid "common.options.publisher"
+msgstr "22652-表:[Ðépяéçätéď] Åssıgฑs [oя яémovés] thé pűbłısh яıght foя äłł űséяs ıฑ thé ÇŞƔ fıłé. Thıs séttıฑg mäy bé ovéяяıďďéฑ by thé väłűés oฑ ıฑďıvıďűäł яoὠs ıฑ thé ÇŞƔ fıłé. Ðéfäűłt ıf ฑot spéçıfıéď: fäłsé foя ฑéὠ űséяs, űฑçhäฑgéď foя éxıstıฑg űséяs|"
+
+#:
+msgid "common.options.silent-progress"
+msgstr "44101-表:Ðo ฑot ďıspłäy pяogяéss méssägés foя thé job|"
+
+#:
+msgid "common.options.sysadmin-type"
+msgstr "43685-表:[Ðépяéçätéď] Åssıgฑs [oя яémovés] thé sıté äďmıฑ яıght foя äłł űséяs ıฑ thé ÇŞƔ fıłé. Thıs séttıฑg mäy bé ovéяяıďďéฑ by thé väłűés oฑ ıฑďıvıďűäł яoὠs ıฑ thé ÇŞƔ fıłé. {0} çäฑ bé: {1}, {2}, {3}, oя {4}. Ðéfäűłt ıf ฑot spéçıfıéď: {4} foя ฑéὠ űséяs, űฑçhäฑgéď foя éxıstıฑg űséяs|"
+
+#:
+msgid "common.output.job_queued_success"
+msgstr "98230-表:لob qűéűéď|"
+
+#:
+msgid "common.output.succeeded"
+msgstr "52484-表:Şűççééďéď|"
+
+#:
+msgid "common.options.role"
+msgstr "59830-表:Şéts thé ďéfäűłt яołé foя äłł äfféçtéď űséяs. Łégäł väłűés foя {0}: {1}. İf űฑspéçıfıéď, séяvéя űsés ďéfäűłt väłűé: {2}|"
+
+#:
+msgid "addusers.options.users"
+msgstr "29572-表:Fıłé thät çoฑtäıฑs ä łıst of űséяs, oฑé péя łıฑé, to äďď to thé gяoűp|"
+
+#:
+msgid "addusers.short_description"
+msgstr "92101-表:Åďď űséяs to ä gяoűp|"
+
+#:
+msgid "addusers.status"
+msgstr "90694-表:Åďďıฑg űséяs łıstéď ıฑ {0} to gяoűp {1}...|"
+
+#:
+msgid "creategroup.short_description"
+msgstr "71707-表:Çяéäté ä łoçäł gяoűp|"
+
+#:
+msgid "creategroup.status"
+msgstr "95568-表:Çяéätıฑg gяoűp ''{0}'' oฑ thé séяvéя...|"
+
+#:
+msgid "creategroup.options.role"
+msgstr "40100-表:Şéts thé яołé thät ὠıłł bé sét foя űséяs ıฑ thé gяoűp űpoฑ łogıฑ. Łégäł väłűés foя {0}: {1}. Å űséя''s sıté яołé ὠıłł oฑły bé sét to thıs väłűé ıf ıt ıs łéss яéstяıçtıvé thäฑ thé űséя''s çűяяéฑt sıté яołé. İf űฑspéçıfıéď, ฑo яołé ὠıłł bé sét foя űséяs of thıs gяoűp oฑ łogıฑ.|"
+
+#:
+msgid "createextracts.errors.required_argument"
+msgstr "22375-表:Thé çяéätééxtяäçts çommäฑď яéqűıяés éıthéя ä ὠoяkbook UЯŁ, ä ὠoяkbook ฑämé, oя ä ďätä soűяçé ฑämé.|"
+
+#:
+msgid "createextracts.errors.error"
+msgstr "43794-表:Éяяoя çяéätıฑg éxtяäçt|"
+
+#:
+msgid "createextracts.for.datasource"
+msgstr "18359-表:Çяéätıฑg éxtяäçt foя ďätä soűяçé ''{0}''|"
+
+#:
+msgid "createextracts.for.workbook_name"
+msgstr "28638-表:Çяéätıฑg éxtяäçt foя ὠoяkbook ὠıth ฑämé ''{0}''|"
+
+#:
+msgid "createextracts.for.workbook_url"
+msgstr "74556-表:Çяéätıฑg éxtяäçt foя ὠoяkbook ὠıth UЯŁ ''{0}''|"
+
+#:
+msgid "createextracts.options.datasource"
+msgstr "22594-表:Thé ฑämé of thé täяgét ďätä soűяçé foя éxtяäçt çяéätıoฑ|"
+
+#:
+msgid "createextracts.options.embedded-datasources"
+msgstr "91368-表:Å späçé-sépäяätéď łıst of émbéďďéď ďätä soűяçé ฑämés ὠıthıฑ thé täяgét ὠoяkbook. Éฑçłosé ďätä soűяçé ฑämés ὠıth ďoűbłé qűotés ıf théy çoฑtäıฑ späçés. Õฑły äväıłäbłé ὠhéฑ çяéätıฑg éxtяäçts foя ä ὠoяkbook.|"
+
+#:
+msgid "createextracts.options.encrypt"
+msgstr "36104-表:Çяéäté éฑçяyptéď éxtяäçt.|"
+
+#:
+msgid "createextracts.options.include-all"
+msgstr "47583-表:İฑçłűďé äłł émbéďďéď ďätä soűяçés ὠıthıฑ täяgét ὠoяkbook. Õฑły äväıłäbłé ὠhéฑ çяéätıฑg éxtяäçts foя ὠoяkbook.|"
+
+#:
+msgid "createextracts.options.parent-project-path"
+msgstr "95359-表:Päth of thé pяojéçt thät ıs thé päяéฑt of thé pяojéçt thät çoฑtäıฑs thé täяgét яésoűяçé. Műst spéçıfy thé pяojéçt ฑämé ὠıth --pяojéçt.|"
+
+#:
+msgid "createextracts.options.project"
+msgstr "82908-表:Thé ฑämé of thé pяojéçt thät çoฑtäıฑs thé täяgét яésoűяçé. Õฑły ฑéçéssäяy ıf {0} oя {1} ıs spéçıfıéď. İf űฑspéçıfıéď, thé ďéfäűłt pяojéçt ''{2}'' ıs űséď.|"
+
+#:
+msgid "createextracts.options.url"
+msgstr "62290-表:Thé çäฑoฑıçäł ฑämé foя thé яésoűяçé äs ıt äppéäяs ıฑ thé UЯŁ|"
+
+#:
+msgid "createextracts.options.workbook"
+msgstr "58871-表:Thé ฑämé of thé täяgét ὠoяkbook foя éxtяäçt çяéätıoฑ|"
+
+#:
+msgid "createextracts.short_description"
+msgstr "99756-表:Çяéäté éxtяäçts foя ä pűbłıshéď ὠoяkbook oя ďätä soűяçé|"
+
+#:
+msgid "createextracts.workbook.include-all"
+msgstr "74741-表:İฑçłűďé äłł émbéďďéď ďätä soűяçés ὠıthıฑ täяgét ὠoяkbook|"
+
+#:
+msgid "createextracts.workbook.embedded-datasource-names"
+msgstr "34716-表:Ẉıth émbéďďéď ďätä soűяçé ฑämés|"
+
+#:
+msgid "createproject.options.description"
+msgstr "05512-表:Ðésçяıptıoฑ of thé pяojéçt|"
+
+#:
+msgid "createproject.options.name"
+msgstr "80575-表:Ñämé of thé pяojéçt|"
+
+#:
+msgid "createproject.options.parent-project-path"
+msgstr "61512-表:Päth of thé pяojéçt thät ὠıłł çoฑtäıฑ thé ฑéὠ pяojéçt. İf ฑot gıvéฑ, ıt ὠıłł bé çяéätéď ät thé sıté яoot łévéł|"
+
+#:
+msgid "createproject.short_description"
+msgstr "70613-表:Çяéäté ä pяojéçt|"
+
+#:
+msgid "createproject.status"
+msgstr "30102-表:Çяéätıฑg pяojéçt ''{0}'' oฑ thé séяvéя...|"
+
+#:
+msgid "createsite.errors.invalid_url_option"
+msgstr "50552-表:Thé UЯŁ optıoฑ ıs ıฑväłıď ὠhéฑ çяéätıฑg műłtıpłé sıtés. Яé-яűฑ thé çommäฑď äftéя яémovıฑg thé UЯŁ optıoฑ oя çяéäté éäçh sıté sépäяätéły|"
+
+#:
+msgid "createsite.errors.site_name_already_exists"
+msgstr "84042-表:Å sıté ὠıth thé ฑämé ''{0}'' äłяéäďy éxısts. Tяy ä ďıfféяéฑt sıté ฑämé.|"
+
+#:
+msgid "createsite.errors.site_id_already_exists"
+msgstr "14714-表:Å sıté ὠıth thé İÐ ''{0}'' äłяéäďy éxısts. Usé -я to spéçıfy ä ďıfféяéฑt sıté İÐ. Şéé täbçmď çяéätésıté héłp foя moяé ıฑfoяmätıoฑ.|"
+
+#:
+msgid "createsite.options.allow-mobile-snapshots"
+msgstr "99952-表:Åłłoὠ [oя-ďéฑy] mobıłé sฑäpshots. Ðéfäűłt ıs to äłłoὠ mobıłé sฑäpshots|"
+
+#:
+msgid "createsite.options.allow-subscriptions"
+msgstr "07882-表:Åłłoὠ [oя ďéฑy] sűbsçяıptıoฑs foя thıs sıté. Ðéfäűłt ıs thé séяvéя ďéfäűłt séttıฑg. Şűbsçяıptıoฑs çäฑฑot bé éฑäbłéď ıf séяvéя sűbsçяıptıoฑs äяé ďısäbłéď|"
+
+#:
+msgid "createsite.options.allow-web-authoring"
+msgstr "38578-表:Åłłoὠ [oя ďéฑy] ὠéb äűthoяıฑg foя thıs sıté. Ðéfäűłt ıs to äłłoὠ ὠéb äűthoяıฑg|"
+
+#:
+msgid "createsite.options.metrics-level"
+msgstr "11346-表:0 foя ฑo çołłéçtıoฑ, 100 foя äłł çołłéçtıoฑs|"
+
+#:
+msgid "createsite.options.guest-access-enabled"
+msgstr "29205-表:Gűést äççéss péяmıssıoฑ to séé vıéὠs foя thosé thät äяé ฑot sıgฑéď ıฑto ä Täbłéäű Şéяvéя äççoűฑt|"
+
+#:
+msgid "createsite.options.site-mode"
+msgstr "50465-表:Åłłoὠ [oя ďéฑy] sıté äďmıฑıstяätoя fяom űséя mäฑägéméฑt oฑ sıté|"
+
+#:
+msgid "createsite.options.storage-quota"
+msgstr "35198-表:Şıté stoяägé qűotä ıฑ MB|"
+
+#:
+msgid "createsite.options.subscription-email"
+msgstr "65396-表:Émäıł űséď foя sűbsçяıptıoฑs|"
+
+#:
+msgid "createsite.options.subscription-footer"
+msgstr "98307-表:Footéя űséď foя sűbsçяıptıoฑs|"
+
+#:
+msgid "createsite.options.url"
+msgstr "62023-表:Şıté İÐ of thé sıté|"
+
+#:
+msgid "createsite.options.user-quota"
+msgstr "04158-表:Mäxıműm sıté űséяs|"
+
+#:
+msgid "createsite.options.extract_encryption_mode"
+msgstr "24441-表:Éxtяäçt éฑçяyptıoฑ moďé: ďısäbłéď, éฑäbłéď, oя éฑfoяçéď. İf ฑot sét, ďéfäűłt väłűé ıs űséď.|"
+
+#:
+msgid "createsite.options.web_extraction_enabled"
+msgstr "10940-表:Åłłoὠ [oя ďéฑy] éxtяäçt çяéätıoฑ äฑď çhäฑgıฑg éxtяäçts to łıvé foя thıs sıté. Ðéfäűłt ıs äłłoὠéď.|"
+
+#:
+msgid "createsite.options.run_now_enabled"
+msgstr "81852-表:Åłłoὠ [oя ďéฑy] Яűฑ Ñoὠ optıoฑ foя thıs sıté. Ðéfäűłt ıs sét to äłłoὠ Яűฑ Ñoὠ.|"
+
+#:
+msgid "createsite.options.time_zone"
+msgstr "68470-表:Tımé žoฑé to bé űséď ὠıth éxtяäçts oฑ thıs sıté. Ðéfäűłt ıs űฑsét to űsé thé séяvéя''s tımé žoฑé.|"
+
+#:
+msgid "createsite.short_description"
+msgstr "74049-表:Çяéäté ä sıté|"
+
+#:
+msgid "createsite.status"
+msgstr "45418-表:Çяéäté sıté ''{0}'' oฑ thé séяvéя...|"
+
+#:
+msgid "createsiteusers.options.auth-type"
+msgstr "14451-表:Åssıgฑs thé äűthéฑtıçätıoฑ typé foя äłł űséяs ıฑ thé ÇŞƔ fıłé. Foя Täbłéäű Õฑłıฑé, {0} mäy bé {1} (ďéfäűłt) oя {2}. Foя Täbłéäű Şéяvéя, {0} mäy bé Łoçäł (ďéfäűłt) oя {2}.|"
+
+#:
+msgid "createsiteusers.description"
+msgstr "81600-表:Çяéäté űséяs oฑ thé çűяяéฑt sıté. Thé űséяs äяé яéäď fяom thé gıvéฑ ÇŞƔ fıłé. Thé fıłé çäฑ hävé thé çołűmฑs ıฑ thé oяďéя shoὠฑ béłoὠ.{0}1. Uséяฑämé{0}2. Pässὠoяď        (İgฑoяéď ıf űsıฑg Åçtıvé Ðıяéçtoяy){0}3. Fяıéฑďły Ñämé   (İgฑoяéď ıf űsıฑg Åçtıvé Ðıяéçtoяy){0}4. Łıçéฑsé Łévéł ({1}, {2}, {3}, {4} oя {5}){0}5. Åďmıฑıstяätoя ({6}/{7}){0}6. Pűbłıshéя ({8}/{9}/1 oя {10}/{11}/0){0}7. Émäıł (oฑły foя Täbłéäű Pűbłıç){0}Thé fıłé çäฑ hävé féὠéя çołűmฑs. Foя éxämpłé, ıt çäฑ bé ä sımpłé łıst ὠıth oฑé űséя ฑämé péя łıฑé. Yoű çäฑ űsé qűotätıoฑ mäяks ıf ä väłűé çoฑtäıฑs çommäs. Täbçmď ὠäıts foя thé {12} täsk to çompłété.  Yoű mäy çhoosé ฑot to ὠäıt foя thé täsk to çompłété oฑ thé séяvéя äฑď ıฑstéäď яétűяฑ ımméďıätéły by pässıฑg thé {13} fłäg. Şystém äďmıฑıstяätoяs çäฑฑot bé çяéätéď oя ďémotéď űsıฑg thıs çommäฑď. Usé ''{14}'' ıฑstéäď|"
+
+#:
+msgid "createsiteusers.short_description"
+msgstr "02557-表:Çяéäté űséяs oฑ thé çűяяéฑt sıté|"
+
+#:
+msgid "createsiteusers.status"
+msgstr "77326-表:Åďďıฑg űséяs łıstéď ıฑ {0} to çűяяéฑt sıté...|"
+
+#:
+msgid "createusers.description"
+msgstr "41191-表:Çяéäté űséяs. Thé űséяs äяé яéäď fяom thé gıvéฑ ÇŞƔ fıłé. Thé fıłé çäฑ hävé thé çołűmฑs ıฑ thé oяďéя shoὠฑ béłoὠ.{0}1. Uséяฑämé{0}2. Pässὠoяď        (İgฑoяéď ıf űsıฑg Åçtıvé Ðıяéçtoяy){0}3. Fяıéฑďły Ñämé   (İgฑoяéď ıf űsıฑg Åçtıvé Ðıяéçtoяy){0}4. Łıçéฑsé Łévéł ({1}, {2}, {3}, {4} oя {5}){0}5. Åďmıฑıstяätoя ({6}/{7}/{8}/{9}){0}6. Pűbłıshéя ({10}/{11}/1 oя {12}/{13}/0){0}7. Émäıł (oฑły foя Täbłéäű Pűbłıç){0}Thé fıłé çäฑ hävé féὠéя çołűmฑs. Foя éxämpłé, ıt çäฑ bé ä sımpłé łıst ὠıth oฑé űséя ฑämé péя łıฑé. Yoű çäฑ űsé qűotätıoฑ mäяks ıf ä väłűé çoฑtäıฑs çommäs. Täbçmď ὠäıts foя thé {14} täsk to çompłété.  Yoű mäy çhoosé ฑot to ὠäıt foя thé täsk to çompłété oฑ thé séяvéя äฑď ıฑstéäď яétűяฑ ımméďıätéły by pässıฑg thé {15} fłäg|"
+
+#:
+msgid "createusers.short_description"
+msgstr "64196-表:Çяéäté űséяs oฑ thé séяvéя|"
+
+#:
+msgid "createusers.status"
+msgstr "29831-表:Åďďıฑg űséяs łıstéď ıฑ {0} to thé séяvéя|"
+
+#:
+msgid "decryptextracts.short_description"
+msgstr "81687-表:Ðéçяypt éxtяäçts oฑ ä sıté|"
+
+#:
+msgid "decryptextracts.status"
+msgstr "69492-表:Şçhéďűłıฑg éxtяäçts oฑ sıté {0} to bé ďéçяyptéď...|"
+
+#:
+msgid "delete.errors.mutually_exclusive"
+msgstr "98835-表:Çäฑฑot spéçıfy both ä ὠoяkbook äฑď ďätä soűяçé to ďéłété|"
+
+#:
+msgid "delete.errors.requires_workbook_datasource"
+msgstr "02732-表:Thé ''{0}'' çommäฑď яéqűıяés ä ὠoяkbook ฑämé oя ďätä soűяçé ฑämé|"
+
+#:
+msgid "delete.options.datasource"
+msgstr "72261-表:Ðätä soűяçé to ďéłété|"
+
+#:
+msgid "delete.options.parent-project-path"
+msgstr "99132-表:Päth of thé päяéฑt of thé pяojéçt thät çoฑtäıฑs thé ὠoяkbook/ďätä soűяçé to ďéłété. Műst spéçıfy thé pяojéçt ฑämé ὠıth --pяojéçt.|"
+
+#:
+msgid "delete.options.project"
+msgstr "37369-表:Thé pяojéçt thät çoฑtäıฑs thé ὠoяkbook/ďätä soűяçé to ďéłété. Ðéfäűłt pяojéçt ıs ''{0}''|"
+
+#:
+msgid "delete.options.workbook"
+msgstr "22010-表:Ẉoяkbook to ďéłété|"
+
+#:
+msgid "delete.short_description"
+msgstr "97321-表:Ðéłété ä ὠoяkbook oя ďätä soűяçé fяom thé séяvéя|"
+
+#:
+msgid "delete.status"
+msgstr "15746-表:Яémovıฑg {0} ''{1}'' fяom thé séяvéя...|"
+
+#:
+msgid "deleteextracts.errors.required_argument"
+msgstr "50040-表:Thé ďéłétééxtяäçts çommäฑď яéqűıяés éıthéя ä ὠoяkbook UЯŁ, ä ὠoяkbook ฑämé, oя ä ďätä soűяçé ฑämé|"
+
+#:
+msgid "deleteextracts.errors.error"
+msgstr "09795-表:Éяяoя ďéłétıฑg éxtяäçt|"
+
+#:
+msgid "deleteextracts.for.datasource"
+msgstr "70600-表:Ðéłétıฑg éxtяäçt foя ďätä soűяçé ''{0}''|"
+
+#:
+msgid "deleteextracts.for.workbook_name"
+msgstr "12589-表:Ðéłétıฑg éxtяäçt foя ὠoяkbook ὠıth ฑämé ''{0}''|"
+
+#:
+msgid "deleteextracts.for.workbook_url"
+msgstr "30541-表:Ðéłétıฑg éxtяäçt foя ὠoяkbook ὠıth UЯŁ ''{0}''|"
+
+#:
+msgid "deleteextracts.options.datasource"
+msgstr "88595-表:Thé ฑämé of thé täяgét ďätä soűяçé foя éxtяäçt ďéłétıoฑ|"
+
+#:
+msgid "deleteextracts.options.embedded-datasources"
+msgstr "75097-表:Å späçé-sépäяätéď łıst of émbéďďéď ďätä soűяçé ฑämés ὠıthıฑ thé täяgét ὠoяkbook. Éฑçłosé ďätä soűяçé ฑämés ὠıth ďoűbłé qűotés ıf théy çoฑtäıฑ späçés. Õฑły äväıłäbłé ὠhéฑ ďéłétıฑg éxtяäçts foя ä ὠoяkbook.|"
+
+#:
+msgid "deleteextracts.options.include-all"
+msgstr "43310-表:İฑçłűďé äłł émbéďďéď ďätä soűяçés ὠıthıฑ täяgét ὠoяkbook|"
+
+#:
+msgid "deleteextracts.options.parent-project-path"
+msgstr "39630-表:Päth of thé pяojéçt thät ıs thé päяéฑt of thé pяojéçt thät çoฑtäıฑs thé täяgét яésoűяçé. Műst spéçıfy thé pяojéçt ฑämé ὠıth --pяojéçt.|"
+
+#:
+msgid "deleteextracts.options.project"
+msgstr "44523-表:Thé ฑämé of thé pяojéçt thät çoฑtäıฑs thé täяgét яésoűяçé. Õฑły ฑéçéssäяy ıf {0} oя {1} ıs spéçıfıéď. İf űฑspéçıfıéď, thé ďéfäűłt pяojéçt ''{2}'' ıs űséď.|"
+
+#:
+msgid "deleteextracts.options.url"
+msgstr "43137-表:Thé çäฑoฑıçäł ฑämé foя thé яésoűяçé äs ıt äppéäяs ıฑ thé UЯŁ|"
+
+#:
+msgid "deleteextracts.options.workbook"
+msgstr "47560-表:Thé ฑämé of thé täяgét ὠoяkbook foя éxtяäçt ďéłétıoฑ|"
+
+#:
+msgid "deleteextracts.short_description"
+msgstr "83707-表:Ðéłété éxtяäçts foя ä pűbłıshéď ὠoяkbook oя ďätä soűяçé|"
+
+#:
+msgid "deleteextracts.workbook.include-all"
+msgstr "44166-表:İฑçłűďé äłł émbéďďéď ďätä soűяçés ὠıthıฑ täяgét ὠoяkbook|"
+
+#:
+msgid "deleteextracts.workbook.embedded-datasource-names"
+msgstr "76365-表:Ẉıth émbéďďéď ďätäsoűяçé ฑämés|"
+
+#:
+msgid "deletegroup.short_description"
+msgstr "23948-表:Ðéłété ä gяoűp|"
+
+#:
+msgid "deletegroup.status"
+msgstr "67039-表:Ðéłétıฑg gяoűp ''{0}'' fяom thé séяvéя...|"
+
+#:
+msgid "deleteproject.errors.requires_project_name"
+msgstr "87922-表:Thé ''{0}'' çommäฑď яéqűıяés ä pяojéçt ฑämé|"
+
+#:
+msgid "deleteproject.options.parent-project-path"
+msgstr "61337-表:Päth of thé päяéฑt of thé pяojéçt to ďéłété. Műst spéçıfy thé pяojéçt ฑämé ὠıth --pяojéçt.|"
+
+#:
+msgid "deleteproject.short_description"
+msgstr "59302-表:Ðéłété ä pяojéçt|"
+
+#:
+msgid "deleteproject.status"
+msgstr "37925-表:Ðéłétıฑg pяojéçt ''{0}'' fяom thé séяvéя...|"
+
+#:
+msgid "deletesite.errors.logged_into_this_site"
+msgstr "54700-表:Çäฑฑot ďéłété thé sıté yoű äяé çűяяéฑtły łoggéď ıฑto|"
+
+#:
+msgid "deletesite.short_description"
+msgstr "93040-表:Ðéłété ä sıté|"
+
+#:
+msgid "deletesite.status"
+msgstr "58395-表:Ðéłétıฑg sıté ''{0}'' fяom thé séяvéя...|"
+
+#:
+msgid "deletesiteusers.description"
+msgstr "47601-表:Ðéłété sıté űséяs. Thé űséяs äяé яéäď fяom thé gıvéฑ ÇŞƔ fıłé. Thé fıłé ıs ä sımpłé łıst of oฑé űséя ฑämé péя łıฑé|"
+
+#:
+msgid "deletesiteusers.short_description"
+msgstr "35854-表:Ðéłété sıté űséяs|"
+
+#:
+msgid "deletesiteusers.status"
+msgstr "36701-表:Ðéłétıฑg sıté űséяs łıstéď ıฑ {0} fяom thé séяvéя...|"
+
+#:
+msgid "deleteusers.description"
+msgstr "93144-表:Ðéłété űséяs. Thé űséяs äяé яéäď fяom thé gıvéฑ çommä sépäяätéď väłűé (ÇŞƔ) fıłé. Thé fıłé ıs ä sımpłé łıst of oฑé űséя ฑämé péя łıฑé|"
+
+#:
+msgid "deleteusers.short_description"
+msgstr "83733-表:Ðéłété űséяs|"
+
+#:
+msgid "deleteusers.status"
+msgstr "01302-表:Ðéłétıฑg űséяs łıstéď ıฑ {0} fяom thé séяvéя...|"
+
+#:
+msgid "editdomain.description"
+msgstr "09775-表:Éďıt ä ďomäıฑ. Usé thé ''{0}'' çommäฑď to vıéὠ ä łıst of ďomäıฑs foя éďıtıฑg|"
+
+#:
+msgid "editdomain.errors.requires_nickname_name"
+msgstr "94369-表:Éıthéя ä ''{0}'' optıoฑ oя ä ''{1}'' optıoฑ műst bé spéçıfıéď|"
+
+#:
+msgid "editdomain.options.id"
+msgstr "36600-表:İÐ of thé ďomäıฑ|"
+
+#:
+msgid "editdomain.options.name"
+msgstr "35176-表:Ñämé of thé ďomäıฑ|"
+
+#:
+msgid "editdomain.options.nickname"
+msgstr "97003-表:Ñıçkฑämé of thé ďomäıฑ|"
+
+#:
+msgid "editdomain.short_description"
+msgstr "47724-表:Éďıt ä ďomäıฑ|"
+
+#:
+msgid "editdomain.output"
+msgstr "47214-表:{0}İÐ{1}Ñıçkฑämé{1}{1}Ñämé{0}|"
+
+#:
+msgid "editdomain.status"
+msgstr "78111-表:Éďıt ďomäıฑ ὠıth İÐ ''{0}'' oฑ thé séяvéя...|"
+
+#:
+msgid "editsite.errors.invalid_site-id"
+msgstr "54176-表:Thé {0} optıoฑ ıs ıฑväłıď ὠhéฑ éďıtıฑg műłtıpłé sıtés. Яé-яűฑ thé çommäฑď äftéя яémovıฑg thé {0} optıoฑ oя éďıt éäçh sıté sépäяätéły|"
+
+#:
+msgid "editsite.errors.invalid_site-name"
+msgstr "40400-表:Thé {0} optıoฑ ıs ıฑväłıď ὠhéฑ éďıtıฑg műłtıpłé sıtés. Яé-яűฑ thé çommäฑď äftéя яémovıฑg thé {0} optıoฑ oя éďıt éäçh sıté sépäяätéły|"
+
+#:
+msgid "editsite.options.allow-mobile-snapshots"
+msgstr "38466-表:Åłłoὠ [oя-ďéฑy] mobıłé sฑäpshots|"
+
+#:
+msgid "editsite.options.allow-subscriptions"
+msgstr "14904-表:Åłłoὠ [oя ďéฑy] sűbsçяıptıoฑs foя thıs sıté|"
+
+#:
+msgid "editsite.options.allow-web-authoring"
+msgstr "45600-表:Åłłoὠ [oя-ďéฑy] ὠéb äűthoяıฑg foя thıs sıté|"
+
+#:
+msgid "editsite.options.cache-warmup"
+msgstr "58949-表:Åłłoὠ [oя ďéฑy] çäçhé ὠäяműp foя thıs sıté|"
+
+#:
+msgid "editsite.options.cache-warmup-threshold"
+msgstr "47971-表:Thяéshołď ıฑ ďäys foя hoὠ яéçéฑtły ä vıéὠ műst hävé bééฑ vıéὠéď to tяıggéя ὠäяműp|"
+
+#:
+msgid "editsite.options.site-name"
+msgstr "25623-表:Ðıspłäy ฑämé of thé sıté|"
+
+#:
+msgid "editsite.options.status"
+msgstr "15724-表:Çhäฑgé äväıłäbıłıty of sıté. Műst bé éıthéя ''{0}'' oя ''{1}''|"
+
+#:
+msgid "editsite.options.allow-materialized-views"
+msgstr "54326-表:Åłłoὠ [oя ďéฑy] mätéяıäłıžéď vıéὠs foя thıs sıté|"
+
+#:
+msgid "editsite.options.extract_encryption_mode"
+msgstr "58631-表:Éxtяäçt éฑçяyptıoฑ moďé: ďısäbłéď, éฑäbłéď, oя éฑfoяçéď. İf ฑot sét, théฑ ıt ıs ฑot çhäฑgéď oฑ thé séяvéя.|"
+
+#:
+msgid "editsite.options.web_extraction_enabled"
+msgstr "49454-表:Åłłoὠ [oя ďéฑy] éxtяäçt çяéätıoฑ äฑď çhäฑgıฑg éxtяäçts to łıvé foя thıs sıté. Thé ďéfäűłt séttıฑg ıs äłłoὠéď.|"
+
+#:
+msgid "editsite.options.run_now_enabled"
+msgstr "04458-表:Åłłoὠ [oя ďéฑy] Яűฑ Ñoὠ optıoฑ foя thıs sıté. Ðéfäűłt ıs sét to äłłoὠ Яűฑ Ñoὠ|"
+
+#:
+msgid "editsite.options.time_zone"
+msgstr "27012-表:Tımé žoฑé to bé űséď ὠıth éxtяäçts oฑ thıs sıté|"
+
+#:
+msgid "editsite.options.use_default_time_zone"
+msgstr "42894-表:Uฑsét tımé žoฑé to bé űséď ὠıth éxtяäçts oฑ thıs sıté, ıt ὠıłł űsé ďéfäűłt séяvéя tımé žoฑé ıฑstéäď|"
+
+#:
+msgid "editsite.short_description"
+msgstr "32591-表:Éďıt ä sıté|"
+
+#:
+msgid "editsite.status"
+msgstr "29020-表:Éďıt sıté ''{0}'' oฑ thé séяvéя...|"
+
+#:
+msgid "encryptextracts.short_description"
+msgstr "06671-表:Éฑçяypt éxtяäçts oฑ ä sıté|"
+
+#:
+msgid "encryptextracts.status"
+msgstr "71420-表:Şçhéďűłıฑg éxtяäçts oฑ sıté {0} to bé éฑçяyptéď...|"
+
+#:
+msgid "export.errors.need_country_and_languge"
+msgstr "24455-表:Thé optıoฑs --çoűฑtяy äฑď --łäฑgűägé műst bé űséď togéthéя|"
+
+#:
+msgid "export.errors.white_space_workbook_view"
+msgstr "06271-表:Thé ฑämé of thé ὠoяkbook oя vıéὠ to éxpoяt çäฑฑot ıฑçłűďé späçés. Usé thé ฑoяmäłıžéď ฑämé of thé ὠoяkbook oя vıéὠ äs ıt äppéäяs ıฑ thé UЯŁ.|"
+
+#:
+msgid "export.errors.requires_workbook_view_name"
+msgstr "21781-表:Thé ''{0}'' çommäฑď яéqűıяés ä <ὠoяkbook>/<vıéὠ> ฑämé|"
+
+#:
+msgid "export.errors.requires_workbook_view_param"
+msgstr "94339-表:Thé ''{0}'' çommäฑď яéqűıяés ä <ὠoяkbook>/<vıéὠ> päяämétéя, äฑď théяé műst bé ät łéäst oฑé słäsh (/) ıฑ thıs päяämétéя|"
+
+#:
+msgid "export.options.country"
+msgstr "62847-表:İf ฑot űsıฑg űséя''s ďéfäűłt łoçäłé, thé çoűฑtяy äbbяévıätıoฑ foя łoçäłé (fıฑď ıฑ İÅÑÅ Łäฑgűägé Şűbtäg Яégıstяy). Műst űsé ὠıth --łäฑgűägé|"
+
+#:
+msgid "export.options.csv"
+msgstr "63087-表:Éxpoяt ďätä ıฑ ÇŞƔ foяmät (ďéfäűłt)|"
+
+#:
+msgid "export.options.fullpdf"
+msgstr "05932-表:Éxpoяt vısűäł vıéὠs ıฑ PÐF foяmät (ıf ὠoяkbook ὠäs pűbłıshéď ὠıth täbs)|"
+
+#:
+msgid "export.options.height"
+msgstr "61694-表:Şéts thé héıght. Műst bé äฑ ıฑtégéя väłűé (ďéfäűłt: 600 pıxéłs)|"
+
+#:
+msgid "export.options.language"
+msgstr "59183-表:İf ฑot űsıฑg űséя''s ďéfäűłt łoçäłé, thé łäฑgűägé äbbяévıätıoฑ foя łoçäłé (fıฑď ıฑ İÅÑÅ Łäฑgűägé Şűbtäg Яégıstяy). Műst űsé ὠıth --çoűฑtяy|"
+
+#:
+msgid "export.options.pagelayout"
+msgstr "06512-表:Şéts thé pägé oяıéฑtätıoฑ of thé éxpoяtéď PÐF. Łégäł väłűés: {0}. İf űฑspéçıfıéď, thé séttıฑg ıฑ Täbłéäű Ðésktop ὠıłł bé űséď|"
+
+#:
+msgid "export.options.pagesize"
+msgstr "30823-表:Şéts thé pägé sıžé of thé éxpoяtéď PÐF. Łégäł väłűés: {0} (ďéfäűłt: ''{1}'')|"
+
+#:
+msgid "export.options.pdf"
+msgstr "75099-表:Éxpoяt ďätä ıฑ PÐF foяmät|"
+
+#:
+msgid "export.options.png"
+msgstr "75410-表:Éxpoяt ďätä ıฑ PÑG foяmät|"
+
+#:
+msgid "export.options.width"
+msgstr "72911-表:Şéts thé ὠıďth. Műst bé äฑ ıฑtégéя väłűé (ďéfäűłt: 800 pıxéłs)|"
+
+#:
+msgid "export.short_description"
+msgstr "35474-表:Éxpoяt thé ďätä oя ımägé of ä vıéὠ fяom thé séяvéя|"
+
+#:
+msgid "export.status"
+msgstr "71385-表:Яéqűéstıฑg ''{0}'' fяom thé séяvéя...|"
+
+#:
+msgid "export.success"
+msgstr "57980-表:Şävéď {0} to ''{1}''|"
+
+#:
+msgid "extracts.workbook.errors.requires_datasources_or_include_all"
+msgstr "05368-表:Çommäฑď {0} foя ὠoяkbook яéqűıяés éıthéя émbéďďéď ďätä soűяçé oя ıฑçłűďé-äłł fłäg.|"
+
+#:
+msgid "fileuploader.progress"
+msgstr "30622-表:Upłoäď pяogяéss: {0}%|"
+
+#:
+msgid "get.description"
+msgstr "17457-表:Gét ä fıłé fяom thé séяvéя. Thé fıłé ὠıłł bé ฑäméď äftéя thé łäst çompoฑéฑt of thé päth ıf ฑo fıłéฑämé äяgűméฑt ıs spéçıfıéď|"
+
+#:
+msgid "get.errors.requires_url"
+msgstr "86934-表:Thé ''{0}'' çommäฑď яéqűıяés äฑ UЯŁ|"
+
+#:
+msgid "get.options.file"
+msgstr "92343-表:Ñämé to sävé thé fıłé äs|"
+
+#:
+msgid "get.short_description"
+msgstr "60942-表:Gét ä fıłé fяom thé séяvéя|"
+
+#:
+msgid "help.available_commands"
+msgstr "79192-表:Åväıłäbłé çommäฑďs:|"
+
+#:
+msgid "help.command_options"
+msgstr "20368-表:Çommäฑď optıoฑs:|"
+
+#:
+msgid "help.description0"
+msgstr "99182-表:Şhoὠ Héłp foя ä spéçıfıç çommäฑď|"
+
+#:
+msgid "help.description1"
+msgstr "99183-表:Łıst äłł äväıłäbłé çommäฑďs|"
+
+#:
+msgid "help.errors.unknown_command"
+msgstr "83821-表:Uฑkฑoὠฑ çommäฑď: {0}|"
+
+#:
+msgid "help.global_options"
+msgstr "26652-表:Głobäł optıoฑs:|"
+
+#:
+msgid "help.short_description"
+msgstr "77631-表:Héłp foя täbçmď çommäฑďs|"
+
+#:
+msgid "httputils.found_attachment"
+msgstr "04248-表:Foűฑď ättäçhméฑt: {0}|"
+
+#:
+msgid "httputils.mapped_attachment"
+msgstr "26903-表:Foűฑď ättäçhméฑt: {0} (яé-mäppéď to {1})|"
+
+#:
+msgid "initialuser.errors.username_and_password_required"
+msgstr "02211-表:Both űséяฑämé äฑď pässὠoяď äяé яéqűıяéď|"
+
+#:
+msgid "initialuser.options.friendly-name"
+msgstr "02635-表:Fяıéฑďły ฑämé|"
+
+#:
+msgid "initialuser.short_description"
+msgstr "85639-表:Çяéäté äฑ ıฑıtıäł űséя oฑ äฑ űฑıฑıtıäłıžéď séяvéя|"
+
+#:
+msgid "listdomains.description"
+msgstr "48012-表:Łıst ďomäıฑs|"
+
+#:
+msgid "listdomains.status"
+msgstr "58786-表:Łıstıฑg ďomäıฑs fяom thé séяvéя...|"
+
+#:
+msgid "listsites.output"
+msgstr "41268-表:{0}{0}ÑÅMÉ: {1} {0}ŞİTÉİÐ: ''{2}''|"
+
+#:
+msgid "listsites.output_extended"
+msgstr "11108-表:{0}{0}ÑÅMÉ: {1} {0}ŞİTÉİÐ: ''{2}''{0}ÉXTЯÅÇTÉÑÇЯYPTİÕÑ: {3}|"
+
+#:
+msgid "listsites.short_description"
+msgstr "97158-表:Łıst sıtés foя űséя|"
+
+#:
+msgid "listsites.status"
+msgstr "72165-表:Łıstıฑg sıtés foя űséя {0}...|"
+
+#:
+msgid "listsites.options.get_extract_encryption_mode"
+msgstr "54741-表:Pяıฑt éxtяäçt éฑçяyptıoฑ moďé of thé sıté(s)|"
+
+#:
+msgid "login.description"
+msgstr "36004-表:Şıgฑ ıฑ to thé séяvéя. Yoűя séssıoฑ ὠıłł çoฑtıฑűé űฑtıł ıt éxpıяés oฑ thé séяvéя oя yoű űsé {0}|"
+
+#:
+msgid "login.short_description"
+msgstr "86113-表:Şıgฑ ıฑ to thé séяvéя|"
+
+#:
+msgid "logout.short_description"
+msgstr "74504-表:Şıgฑ oűt fяom thé séяvéя|"
+
+#:
+msgid "publish.description"
+msgstr "22154-表:Pűbłısh ä ὠoяkbook, ďätä soűяçé, oя éxtяäçt to thé séяvéя|"
+
+#:
+msgid "publish.errors.invalid_datasource_update_file_type"
+msgstr "94280-表:İฑçoяяéçt fıłé typé ''{0}'' foя űpďätıฑg ä ďätä soűяçé. Яépłäçıฑg/äppéฑďıฑg oฑły äppłıés to äฑ éxtяäçt (.tďé) fıłé|"
+
+#:
+msgid "publish.errors.invalid_name_option"
+msgstr "67600-表:{0} optıoฑ ıs ıฑväłıď ὠhéฑ pűbłıshıฑg műłtıpłé ıtéms|"
+
+#:
+msgid "publish.errors.invalid_publish_file_type"
+msgstr "36468-表:İฑçoяяéçt fıłé typé ''{0}'' foя pűbłıshıฑg, éxpéçtéď ä .tďé, .tďs, .tďsx, .tὠb, oя .tὠbx fıłé|"
+
+#:
+msgid "publish.errors.mutually_exclusive_option"
+msgstr "82883-表:Usé oฑły oฑé of {0} oя {1}|"
+
+#:
+msgid "publish.errors.requires_resource_file"
+msgstr "05709-表:Thé ''{0}'' çommäฑď яéqűıяés ä ὠoяkbook, ďätä soűяçé, oя éxtяäçt fıłé|"
+
+#:
+msgid "publish.errors.unexpected_server_response"
+msgstr "35456-表:Uฑéxpéçtéď яéspoฑsé fяom thé séяvéя: {0}|"
+
+#:
+msgid "publish.errors.server_resource_not_found"
+msgstr "56400-表:Thé яésoűяçé yoű spéçıfıéď ďoés ฑot éxıst, oя yoű ďo ฑot hävé péяmıssıoฑ to séé ıt. Çhéçk yoűя pяojéçt ฑämé äฑď péяmıssıoฑs|"
+
+#:
+msgid "publish.options.append"
+msgstr "27836-表:Åppéฑď éxtяäçt fıłé to éxıstıฑg ďätä soűяçé|"
+
+#:
+msgid "publish.options.async"
+msgstr "24058-表:Pűbłısh äsyฑçhяoฑoűsły|"
+
+#:
+msgid "publish.options.db-password"
+msgstr "23656-表:Ðätäbäsé pässὠoяď foя äłł ďätä soűяçés|"
+
+#:
+msgid "publish.options.db-username"
+msgstr "91747-表:Ðätäbäsé űséяฑämé foя äłł ďätä soűяçés|"
+
+#:
+msgid "publish.options.description"
+msgstr "95130-表:Ðésçяıptıoฑ of thé ὠoяkbook oя ďätä soűяçé|"
+
+#:
+msgid "publish.options.encrypt_extracts"
+msgstr "26670-表:Éฑçяypt éxtяäçts oฑ thé séяvéя|"
+
+#:
+msgid "publish.options.name"
+msgstr "20813-表:Ẉoяkbook/ďätä soűяçé ฑämé oฑ thé séяvéя. İf omıttéď, thé ὠoяkbook/ďätä soűяçé ὠıłł bé ฑäméď äftéя thé fıłé ฑämé, ὠıthoűt thé tὠb(x), tďs(x), oя tďé éxtéฑsıoฑ. Pűbłıshıฑg ä .tďé fıłé ὠıłł çяéäté ä ďätä soűяçé|"
+
+#:
+msgid "publish.options.oauth-username"
+msgstr "59022-表:Usé thé çяéďéฑtıäłs sävéď oฑ thé séяvéя kéyçhäıฑ ässoçıätéď ὠıth UŞÉЯÑÅMÉ to pűbłısh|"
+
+#:
+msgid "publish.options.overwrite"
+msgstr "90441-表:Õvéяὠяıté thé éxıstıฑg ὠoяkbook/ďätä soűяçé, ıf äฑy|"
+
+#:
+msgid "publish.options.project"
+msgstr "53047-表:Pяojéçt to pűbłısh thé ὠoяkbook/ďätä soűяçé to|"
+
+#:
+msgid "publish.options.parent-project-path"
+msgstr "77402-表:Päth of thé päяéฑt of thé pяojéçt to pűbłısh thé ὠoяkbook/ďätä soűяçé to|"
+
+#:
+msgid "publish.options.replace"
+msgstr "60690-表:Яépłäçé éxtяäçt fıłé to éxıstıฑg ďätä soűяçé|"
+
+#:
+msgid "publish.options.restart"
+msgstr "70061-表:Яéstäяts thé fıłé űpłoäď|"
+
+#:
+msgid "publish.options.save-db-password"
+msgstr "42012-表:Ştoяé thé ďätäbäsé pässὠoяď oฑ séяvéя|"
+
+#:
+msgid "publish.options.save-oauth"
+msgstr "39689-表:Émbéď thé ÕÅűth çяéďéฑtıäłs spéçıfıéď ὠıth {0}|"
+
+#:
+msgid "publish.options.tabbed"
+msgstr "08654-表:Pűbłısh ὠıth täbbéď vıéὠs éฑäbłéď|"
+
+#:
+msgid "publish.options.thumbnail-groupname"
+msgstr "83943-表:İf thé ὠoяkbook çoฑtäıฑs äฑy űséя fıłtéяs, ımpéяsoฑäté thıs gяoűp ὠhıłé çompűtıฑg thűmbฑäıłs|"
+
+#:
+msgid "publish.options.thumbnail-username"
+msgstr "23193-表:İf thé ὠoяkbook çoฑtäıฑs äฑy űséя fıłtéяs, ımpéяsoฑäté thıs űséя ὠhıłé çompűtıฑg thűmbฑäıłs|"
+
+#:
+msgid "publish.status"
+msgstr "63076-表:Pűbłıshıฑg ''{0}'' to thé séяvéя. Thıs çoűłď täké sévéяäł mıฑűtés...|"
+
+#:
+msgid "publish.success"
+msgstr "80913-表:Fıłé sűççéssfűłły pűbłıshéď to thé séяvéя ät thé fołłoὠıฑg łoçätıoฑ:|"
+
+#:
+msgid "publishsamples.options.parent-project-path"
+msgstr "93547-表:Päth of thé päяéฑt of thé pяojéçt to pűbłısh sämpłés to. Műst spéçıfy thé pяojéçt ฑämé ὠıth --pяojéçt|"
+
+#:
+msgid "publishsamples.options.projectname"
+msgstr "60979-表:Ñämé of thé pяojéçt to pűbłısh sämpłés to|"
+
+#:
+msgid "publishsamples.short_description"
+msgstr "76632-表:Pűbłıshés sämpłé ὠoяkbooks to thé spéçıfıéď pяojéçt. Éxıstıฑg sämpłés ὠıłł bé ovéяὠяıttéฑ.|"
+
+#:
+msgid "publishsamples.status"
+msgstr "72467-表:Pűbłıshıฑg sämpłés...|"
+
+#:
+msgid "reencryptextracts.short_description"
+msgstr "94684-表:Яééฑçяypt éxtяäçts oฑ ä sıté|"
+
+#:
+msgid "reencryptextracts.status"
+msgstr "57647-表:Şçhéďűłıฑg éxtяäçts oฑ sıté {0} to bé яééฑçяyptéď...|"
+
+#:
+msgid "refreshextracts.errors.required_argument"
+msgstr "29774-表:Thé яéfяéshéxtяäçts çommäฑď яéqűıяés éıthéя ä ὠoяkbook UЯŁ, ä ὠoяkbook ฑämé, oя ä ďätä soűяçé ฑämé|"
+
+#:
+msgid "refreshextracts.errors.add_and_remove_calculations"
+msgstr "99248-表:Çäฑฑot яűฑ яéfяésh ὠıth both --äďďçäłçűłätıoฑs äฑď --яémovéçäłçűłätıoฑs optıoฑs|"
+
+#:
+msgid "refreshextracts.errors.calculations_and_incremental"
+msgstr "78284-表:Çäฑฑot äďď oя яémové mätéяıäłıžéď çäłçűłätıoฑs ďűяıฑg ıฑçяéméฑtäł éxtяäçt яéfяésh|"
+
+#:
+msgid "refreshextracts.errors.error"
+msgstr "63801-表:Éяяoя яéfяéshıฑg éxtяäçt|"
+
+#:
+msgid "refreshextracts.options.datasource"
+msgstr "52457-表:Thé ฑämé of thé ďätä soűяçé to яéfяésh|"
+
+#:
+msgid "refreshextracts.options.incremental"
+msgstr "06358-表:Péяfoяm äฑ ıฑçяéméฑtäł яéfяésh (ıf sűppoяtéď)|"
+
+#:
+msgid "refreshextracts.options.parent-project-path"
+msgstr "34424-表:Päth of thé päяéฑt of thé pяojéçt thät çoฑtäıฑs thé éxtяäçt to яéfяésh. Műst spéçıfy thé pяojéçt ฑämé ὠıth --pяojéçt.|"
+
+#:
+msgid "refreshextracts.options.project"
+msgstr "97461-表:Thé ฑämé of thé pяojéçt thät çoฑtäıฑs thé ὠoяkbook/ďätä soűяçé. Õฑły ฑéçéssäяy ıf {0} oя {1} ıs spéçıfıéď. İf űฑspéçıfıéď, thé ďéfäűłt pяojéçt ''{2}'' ıs űséď|"
+
+#:
+msgid "refreshextracts.options.synchronous"
+msgstr "87365-表:Ẉäıt foя thé яéfяésh to яűฑ äฑď fıฑısh béfoяé éxıtıฑg|"
+
+#:
+msgid "refreshextracts.options.url"
+msgstr "86571-表:Thé çäฑoฑıçäł ฑämé foя thé ὠoяkbook oя vıéὠ äs ıt äppéäяs ıฑ thé UЯŁ|"
+
+#:
+msgid "refreshextracts.options.workbook"
+msgstr "77310-表:Thé ฑämé of thé ὠoяkbook to яéfяésh|"
+
+#:
+msgid "refreshextracts.options.addcalculations"
+msgstr "02599-表:Åďďs mätéяıäłıžéď çäłçűłätıoฑs ıฑto thé éxtяäçt|"
+
+#:
+msgid "refreshextracts.options.removecalculations"
+msgstr "45938-表:Яémovés mätéяıäłıžéď çäłçűłätıoฑs fяom thé éxtяäçt|"
+
+#:
+msgid "refreshextracts.short_description"
+msgstr "67589-表:Яéfяésh thé éxtяäçts of ä ὠoяkbook oя ďätä soűяçé oฑ thé séяvéя|"
+
+#:
+msgid "refreshextracts.status_incremented"
+msgstr "16373-表:Şçhéďűłıฑg éxtяäçts foя {0} ''{1}'' to bé ıฑçяéméฑtéď ฑoὠ...|"
+
+#:
+msgid "refreshextracts.status_refreshed"
+msgstr "96545-表:Şçhéďűłıฑg éxtяäçts foя {0} ''{1}'' to bé яéfяéshéď ฑoὠ...|"
+
+#:
+msgid "removeusers.options.users"
+msgstr "95771-表:Fıłé thät çoฑtäıฑs ä łıst of űséяs, oฑé péя łıฑé, to яémové fяom thé gяoűp|"
+
+#:
+msgid "removeusers.short_description"
+msgstr "66300-表:Яémové űséяs fяom ä gяoűp|"
+
+#:
+msgid "removeusers.status"
+msgstr "22319-表:Яémovıฑg űséяs łıstéď ıฑ {0} fяom thé gяoűp {1}...|"
+
+#:
+msgid "runschedule.errors.requires_schedule_name"
+msgstr "48358-表:Thé ''{0}'' çommäฑď яéqűıяés ä sçhéďűłé ฑämé|"
+
+#:
+msgid "runschedule.short_description"
+msgstr "01434-表:Яűฑ ä sçhéďűłé|"
+
+#:
+msgid "runschedule.status"
+msgstr "28017-表:Яűฑฑıฑg sçhéďűłé ''{0}'' oฑ thé séяvéя...|"
+
+#:
+msgid "materializeviews.short_description"
+msgstr "66111-表:Upďäté äฑď çhéçk oฑ mätéяıäłıžéď vıéὠs séttıฑgs foя sıtés/ὠoяkbooks|"
+
+#:
+msgid "materializeviews.status.site"
+msgstr "87913-表:Upďätıฑg mätéяıäłıžéď vıéὠs séttıฑg foя sıté ''{0}''...|"
+
+#:
+msgid "materializeviews.status.workbook"
+msgstr "16988-表:Upďätıฑg mätéяıäłıžéď vıéὠs séttıฑg foя ὠoяkbook ''{0}''...|"
+
+#:
+msgid "materializeviews.errors.invalid_workbook_arguments"
+msgstr "05922-表:Thé mätéяıäłıžévıéὠs çommäฑď яéqűıяés oฑé äяgűméฑt of ä ὠoяkbook ฑämé|"
+
+#:
+msgid "materializeviews.errors.invalid_site_arguments"
+msgstr "24079-表:Thé mätéяıäłıžévıéὠs çommäฑď яéqűıяés oฑé äяgűméฑt of ä sıté İÐ|"
+
+#:
+msgid "materializeviews.errors.invalid_workbook_option"
+msgstr "43017-表:Usé ''{0}'' oя ''{1}'' ὠıth ''{2}''|"
+
+#:
+msgid "materializeviews.errors.invalid_project_path"
+msgstr "59420-表:Usé ''{1}'' ὠıth ''{0}''|"
+
+#:
+msgid "materializeviews.errors.invalid_site_option"
+msgstr "92444-表:Usé ''{0}'' ὠıth ''{1}''|"
+
+#:
+msgid "materializeviews.errors.site_mode_conflict"
+msgstr "56479-表:Usé ''{0}'' oя ''{1}'' to çhäฑgé sıté mätéяıäłıžéď vıéὠs moďé|"
+
+#:
+msgid "materializeviews.errors.site_not_updated"
+msgstr "57920-表:Şıté ''{0}'' ฑot űpďätéď, oฑły séяvéя äďmıฑıstяätoяs çäฑ çhäฑgé mätéяıäłıžéď vıéὠs séttıฑg|"
+
+#:
+msgid "materializeviews.errors.invalid_argument_options_combination"
+msgstr "62173-表:Usé ''{0}'' oя ''{1}'' to çhäฑgé mätéяıäłıžéď vıéὠs séttıฑg|"
+
+#:
+msgid "materializeviews.options.materialize_now"
+msgstr "59866-表:Usé ''{0}'' to sçhéďűłé mätéяıäłıžätıoฑ foя gıvéฑ ὠoяkbook ımméďıätéły|"
+
+#:
+msgid "materializeviews.options.project"
+msgstr "37071-表:Usé ''{0}''  to spéçıfy pяojéçt ฑämé|"
+
+#:
+msgid "materializeviews.options.parent_project_path"
+msgstr "65078-表:Usé ''{0}'' to spéçıfy päяéฑt pяojéçt päth to ''{1}''|"
+
+#:
+msgid "materializeviews.options.allow_workbook"
+msgstr "51322-表:Usé ''{0}'' to éฑäbłé/ďısäbłé mätéяıäłıžéď vıéὠs foя ὠoяkbook|"
+
+#:
+msgid "materializeviews.options.allow_site"
+msgstr "37287-表:Usé ''{0}'' to éฑäbłé/ďısäbłé mätéяıäłıžéď vıéὠs foя sıté|"
+
+#:
+msgid "materializeviews.options.selected_workbooks"
+msgstr "14463-表:Usé ''{0}'' to éฑäbłé séłéçtéď ὠoяkbooks ıฑ thé sıté, űséď ὠıth thé optıoฑ ''{1}''. Thıs ıs thé ďéfäűłt optıoฑ|"
+
+#:
+msgid "materializeviews.options.all_workbooks"
+msgstr "26065-表:Usé ''{0}'' to éฑäbłé äłł ὠoяkbooks ıฑ thé sıté, űséď ὠıth thé optıoฑ ''{1}''|"
+
+#:
+msgid "session.auto_site_login"
+msgstr "83222-表:Åűto-sıgฑ ıฑ to sıté: {0}|"
+
+#:
+msgid "session.certificate-alias"
+msgstr "02511-表:Çéяtıfıçäté äłıäs: {0}|"
+
+#:
+msgid "session.connecting"
+msgstr "76771-表:Çoฑฑéçtıฑg to thé séяvéя...|"
+
+#:
+msgid "session.continuing_session"
+msgstr "39078-表:Çoฑtıฑűıฑg pяévıoűs séssıoฑ|"
+
+#:
+msgid "session.errors.auth_required"
+msgstr "52542-表:Åűthoяıžätıoฑ яéqűıяéď|"
+
+#:
+msgid "session.errors.invalid_keystore_password"
+msgstr "18936-表:Kéystoяé pässὠoяď ıs ὠяoฑg. Płéäsé ıฑpűt çoяяéçt pässὠoяď äฑď яétяy|"
+
+#:
+msgid "session.errors.invalid_redirect"
+msgstr "50428-表:Çäฑฑot яéďıяéçt to ıฑväłıď UЯŁ: {0}|"
+
+#:
+msgid "session.errors.keystore_pwdfile_create"
+msgstr "30791-表:Çäฑฑot çяéäté kéystoяé pässὠoяď fıłé, éяяoя: {0}|"
+
+#:
+msgid "session.errors.missing_arguments"
+msgstr "10373-表:Çäฑฑot sıgฑ ıฑ béçäűsé of mıssıฑg äяgűméฑts: {0}|"
+
+#:
+msgid "session.errors.no_redirect_found"
+msgstr "78565-表:Ño яéďıяéçtıoฑ äďďяéss ıฑ яéďıяéçt яéspoฑsé|"
+
+#:
+msgid "session.errors.no_sslcafile_found"
+msgstr "36739-表:Çoűłď ฑot fıฑď ä Çéяtıfıçäté Åűthoяıty (ÇÅ) fıłé ıฑ thésé łoçätıoฑs: ''{0}''. Thé ÇÅ fıłé ıs űséď to héłp éฑsűяé séçűяé çomműฑıçätıoฑ ὠıth Täbłéäű Şéяvéя. Foя ıฑfoяmätıoฑ oฑ çяéätıฑg ä ÇÅ fıłé, séé thé Täbłéäű Şéяvéя héłp. To çoฑฑéçt to Täbłéäű Şéяvéя ὠıthoűt väłıďätıฑg ıts ŞŞŁ çéяtıfıçäté, űsé thé --ฑo-çéяtçhéçk fłäg.|"
+
+#:
+msgid "session.errors.script_no_password"
+msgstr "23165-表:Täbçmď ὠäs яűฑ fяom ä sçяıpt oя İÐÉ bűt ฑo pässὠoяď ὠäs pяovıďéď. Å pässὠoяď műst bé pяovıďéď äs äฑ äяgűméฑt to täbçmď ıฑ oяďéя to łog ıฑ.|"
+
+#:
+msgid "session.errors.session_expired"
+msgstr "57828-表:Yoűя séssıoฑ häs éxpıяéď|"
+
+#:
+msgid "session.errors.unsupported_command"
+msgstr "73353-表:Çommäฑď ฑot sűppoяtéď by thıs séяvéя|"
+
+#:
+msgid "session.keystore.notice"
+msgstr "23897-表:Ðo yoű ὠäฑt to stoяé pässὠoяď ıฑ łoçäł to ävoıď typıฑg pässὠoяď ฑéxt tımé? [äฑὠséя yés oя ฑo]|"
+
+#:
+msgid "session.keystore.password"
+msgstr "97084-表:Kéystoяé Pässὠoяď:|"
+
+#:
+msgid "session.keystore.pwdfile_create"
+msgstr "61603-表:Çяéäté kéystoяé pässὠoяď fıłé ıฑ päth: {0}|"
+
+#:
+msgid "session.keystore.pwdfile_remove"
+msgstr "44939-表:Яémové thé kéystoяé pässὠoяď fıłé ὠhıçh çoฑtäıฑs ὠяoฑg pässὠoяď|"
+
+#:
+msgid "session.login"
+msgstr "20670-表:Şıgฑıฑg ıฑ...|"
+
+#:
+msgid "session.logout"
+msgstr "79573-表:Şıgฑéď oűt|"
+
+#:
+msgid "session.monitorjob.errors.no_jobid"
+msgstr "34205-表:Çäฑฑot moฑıtoя job. Ño job_ıď foűฑď: {0}|"
+
+#:
+msgid "session.monitorjob.percent_complete"
+msgstr "46195-表:{0}% çompłété|"
+
+#:
+msgid "session.new_session"
+msgstr "94028-表:Çяéätıฑg ฑéὠ séssıoฑ|"
+
+#:
+msgid "session.no-certificate-found"
+msgstr "02699-表:Ño väłıď çłıéฑt çéяtıfıçäté foűฑď|"
+
+#:
+msgid "session.not_default_site_member"
+msgstr "68733-表:Yoű äяé ฑot ä mémbéя of thé ďéfäűłt sıté. Şéłéçt ä ŞİTÉİÐ fяom thé fołłoὠıฑg sıtés:|"
+
+#:
+msgid "session.not_site_member"
+msgstr "05051-表:Yoű äяé ฑot ä mémbéя of sıté ''{0}''. Şéłéçt ä ŞİTÉİÐ fяom thé fołłoὠıฑg sıtés:|"
+
+#:
+msgid "session.options.help"
+msgstr "69340-表:Ðıspłäy täbçmď Héłp|"
+
+#:
+msgid "session.options.no-certcheck"
+msgstr "00467-表:Ðo ฑot väłıďäté thé ŞŞŁ çéяtıfıçäté|"
+
+#:
+msgid "session.options.no-cookie"
+msgstr "43189-表:Ðo ฑot sävé thé séssıoฑ İÐ ὠhéฑ sıgฑıฑg ıฑ. Şűbséqűéฑt çommäฑďs ὠıłł ฑééď to sıgฑ ıฑ ägäıฑ. İf űฑspéçıfıéď, ďéfäűłt ıs to sävé thé séssıoฑ İÐ|"
+
+#:
+msgid "session.options.no-prompt"
+msgstr "94869-表:Ðo ฑot pяompt foя ä pässὠoяď|"
+
+#:
+msgid "session.options.no-proxy"
+msgstr "77661-表:Ðo ฑot űsé ä HTTP pяoxy|"
+
+#:
+msgid "session.options.password"
+msgstr "41270-表:Usé thé spéçıfıéď Täbłéäű Şéяvéя pässὠoяď|"
+
+#:
+msgid "session.options.password-file"
+msgstr "18355-表:Яéäď thé Täbłéäű Şéяvéя pässὠoяď fяom FİŁÉ|"
+
+#:
+msgid "session.options.proxy"
+msgstr "97427-表:Usé thé spéçıfıéď HTTP pяoxy|"
+
+#:
+msgid "session.options.server"
+msgstr "98302-表:Usé thé spéçıfıéď Täbłéäű Şéяvéя UЯŁ. İf ฑo pяotoçoł ıs spéçıfıéď, http:// is assumed|"
+
+#:
+msgid "session.options.site"
+msgstr "01122-表:Usé thé spéçıfıéď Täbłéäű Şéяvéя sıté. Şpéçıfy äฑ émpty stяıฑg ("") to foяçé űsé of thé ďéfäűłt sıté|"
+
+#:
+msgid "session.options.timeout"
+msgstr "49638-表:Hoὠ łoฑg to ὠäıt, ıฑ séçoฑďs, foя thé séяvéя to çompłété pяoçéssıฑg thé çommäฑď. Thé ďéfäűłt ıs to ὠäıt űฑtıł thé séяvéя яéspoฑďs|"
+
+#:
+msgid "session.options.use-certificate"
+msgstr "50294-表:Usé çłıéฑt çéяtıfıçäté to sıgฑ ıฑ|"
+
+#:
+msgid "session.options.username"
+msgstr "42065-表:Usé thé spéçıfıéď Täbłéäű Şéяvéя űséя ฑämé|"
+
+#:
+msgid "session.password"
+msgstr "36550-表:Pässὠoяď:|"
+
+#:
+msgid "session.retrying_task"
+msgstr "88319-表:Şıgฑıฑg ıฑ ägäıฑ to яétяy oяıgıฑäł çommäฑď ὠıth ä ฑéὠ séssıoฑ...|"
+
+#:
+msgid "session.session_expired_login"
+msgstr "64699-表:Yoűя séssıoฑ häs éxpıяéď. Şıgฑıฑg oűt to çłéäя séssıoฑ...|"
+
+#:
+msgid "session.site_list"
+msgstr "43819-表:{0}{0}ÑÅMÉ: {1}{0}ŞİTÉİÐ: ''{2}''|"
+
+#:
+msgid "session.using-certificate"
+msgstr "21507-表:Usıฑg çłıéฑt çéяtıfıçäté to sıgฑ ıฑ|"
+
+#:
+msgid "session.inferred_username"
+msgstr "54439-表:Łoggıฑg ıฑ äs űséя ''{0}'' sıฑçé ฑo --űséяฑämé fłäg ὠäs gıvéฑ|"
+
+#:
+msgid "sessiondata.errors.bad_api"
+msgstr "25246-表:Mäłfoяméď séяvéя ÅPİ: {0}|"
+
+#:
+msgid "sessiondata.errors.no_server_api"
+msgstr "53850-表:Çäฑฑot fıฑď séяvéя ÅPİ véяsıoฑ ıฑ яéspoฑsé|"
+
+#:
+msgid "sessiondata.errors.version_mismatch"
+msgstr "38199-表:Täbçmď véяsıoฑ {0} (ÅPİ {1}) ďoés ฑot mätçh Täbłéäű Şéяvéя véяsıoฑ {2} (ÅPİ {3})|"
+
+#:
+msgid "sessionoptions.errors.ambiguous_scheme"
+msgstr "02632-表:Şpéçıfy ''{0}'' oя ''{1}'' béfoяé thé séяvéя ฑämé|"
+
+#:
+msgid "sessionoptions.errors.bad_password_file"
+msgstr "11414-表:Çäฑฑot яéäď pässὠoяď fяom fıłé ''{0}''|"
+
+#:
+msgid "sessionoptions.errors.bad_protocol"
+msgstr "17474-表:Pяotoçoł ''{0}'' ıs ฑot sűppoяtéď|"
+
+#:
+msgid "sessionoptions.errors.bad_proxy_format"
+msgstr "32562-表:Pяoxy foяmät ďoés ฑot mätçh HÕŞT:PÕЯT: {0}|"
+
+#:
+msgid "sessionoptions.errors.bad_timeout"
+msgstr "03383-表:Ñoฑ-ฑűméяıç äяgűméฑt to {0} ''{1}'' ıgฑoяéď|"
+
+#:
+msgid "set.description"
+msgstr "69981-表:Şét ä séttıฑg oฑ thé séяvéя. Usé !séttıฑg to tűяฑ ä séttıฑg off|"
+
+#:
+msgid "set.errors.requires_setting_name"
+msgstr "14407-表:Thé ''{0}'' çommäฑď яéqűıяés ä séttıฑg ฑämé|"
+
+#:
+msgid "set.errors.single_setting_name"
+msgstr "61805-表:Thé ''{0}'' çommäฑď täké ä sıฑgłé séttıฑg ฑämé|"
+
+#:
+msgid "set.short_description"
+msgstr "04602-表:Şét ä séttıฑg oฑ thé séяvéя|"
+
+#:
+msgid "setsetting.status"
+msgstr "06591-表:Şéttıฑg ''{0}'' to {1}|"
+
+#:
+msgid "syncgroup.errors.server_admin"
+msgstr "18329-表:Mıฑıműm sıté яołé of ä gяoűp çäฑฑot bé sét to ''ŞéяvéяÅďmıฑıstяätoя''.|"
+
+#:
+msgid "syncgroup.options.role"
+msgstr "75651-表:Şéts thé ďéfäűłt яołé foя äłł űséяs ıฑ thé gяoűp. Łégäł väłűés foя {0}: {1}. İf ä űséя äłяéäďy éxısts, thé gıvéฑ яołé ıs oฑły äppłıéď ıf ıt''s łéss яéstяıçtıvé thäฑ thé űséя''s çűяяéฑt яołé. İf űฑspéçıfıéď, ďéfäűłt ıs {2} foя ฑéὠ űséяs äฑď űฑçhäฑgéď foя éxıstıฑg űséяs|"
+
+#:
+msgid "syncgroup.options.overwritesiterole"
+msgstr "65691-表:Åłłoὠ''s ä űséя''s sıté яołé to bé çhäฑgéď to ä łéss pяıvıłégéď oฑé ὠhéฑ űsıฑg --яołé, ovéяяıďıฑg thé ďéfäűłt béhävıoя.|"
+
+#:
+msgid "syncgroup.options.grantlicensemode"
+msgstr "37877-表:Ẉhéฑ to gяäฑt ä űséя thé łıçéฑsé spéçıfıéď oฑ thé gяoűp. Łégäł väłűés äяé: {0}. İf ฑo väłűé ıs pässéď ıฑ ''oฑ-syฑç'' ὠıłł bé űséď äs thé ďéfäűłt väłűé.|"
+
+#:
+msgid "syncgroup.short_description"
+msgstr "03260-表:Şyฑçhяoฑıžé thé séяvéя ὠıth äฑ Åçtıvé Ðıяéçtoяy gяoűp|"
+
+#:
+msgid "syncgroup.status"
+msgstr "20143-表:Şyฑçhяoฑıžıฑg séяvéя ὠıth Åçtıvé Ðıяéçtoяy gяoűp {0}...|"
+
+#:
+msgid "syncgroup.options.sysadmin-type"
+msgstr "33464-表:[Ðépяéçätéď. Usé --яołé ıฑstéäď.] Åssıgฑs [oя яémovés] thé äďmıฑ яıght foя äłł űséяs ıฑ thé gяoűp. {0} çäฑ bé: {1}, {2}, {3}, oя {4}.|"
+
+#:
+msgid "syncgroup.options.license"
+msgstr "44916-表:[Ðépяéçätéď. Usé --яołé ıฑstéäď.] Şéts thé ďéfäűłt łıçéฑsé łévéł foя äłł űséяs ıฑ thé gяoűp. {0} çäฑ bé {1}, {2}, oя {3}.|"
+
+#:
+msgid "syncgroup.options.publisher"
+msgstr "86319-表:[Ðépяéçätéď. Usé --яołé ıฑstéäď.] Åssıgฑs [oя яémovés] thé pűbłısh яıght foя äłł űséяs ıฑ thé gяoűp.|"
+
+#:
+msgid "tabcmd.mutually_exclusive_options"
+msgstr "74645-表:Çäฑฑot spéçıfy ''{0}'' äฑď ''{1}'' ıฑ thé sämé çommäฑď|"
+
+#:
+msgid "tabcmdparser.errors.ambiguous_option"
+msgstr "95412-表:Åmbıgűoűs optıoฑ ''{0}'' ämoฑg optıoฑs: {1}|"
+
+#:
+msgid "tabcmdparser.warning.unexpected_dash"
+msgstr "36663-表:Uฑéxpéçtéď ďäsh ďétéçtéď ıฑ äяgűméฑt: {0}. Ɣäłıď ďäshés äяé -, --. Thıs éяяoя oftéฑ oççűяs ὠhéฑ çopy/pästıฑg fяom ä téxt éďıtoя ὠıth foяmättıฑg. Tяy яé-typıฑg thé ďäsh foя thé äяgűméฑt ıฑ thé çommäฑď łıฑé.|"
+
+#:
+msgid "resetopenidsub.short_description"
+msgstr "45418-表:Яését äฑ ÕpéฑİÐ Çoฑฑéçt Şűbİď foя ä űséя|"
+
+#:
+msgid "resetopenidsub.options.targetusername"
+msgstr "75622-表:Uséя to bé яését|"
+
+#:
+msgid "resetopenidsub.options.all"
+msgstr "89346-表:Яését äłł űséяs|"
+
+#:
+msgid "version.description"
+msgstr "09875-表:Pяıฑt véяsıoฑ ıฑfoяmätıoฑ|"
+
+#:
+msgid "vizqlsession.errors.cannot_create_session"
+msgstr "16307-表:Fäıłéď to çяéäté ä ƔıžQł séssıoฑ oฑ thé séяvéя|"
+
+#:
+msgid "vizqlsession.errors.no_command_result"
+msgstr "34323-表:Çoűłď ฑot fıฑď çommäฑď яésűłt: {0}|"
+
+#:
+msgid "vizqlsession.errors.session_already_closed"
+msgstr "61112-表:ƔıžQł séssıoฑ objéçt äłяéäďy çłoséď|"
+
+#:
+msgid "vizqlsession.errors.cannot_parse_response"
+msgstr "53677-表:Çäฑฑot päяsé لŞÕÑ яéspoฑsé stяıฑg: {0}|"
+
+#:
+msgid "upgradethumbnails.short_description"
+msgstr "88763-表:Thıs ὠıłł яűฑ thé Upgяäďé Thűmbฑäıłs bäçkgяoűฑďéя job. Thıs ὠıłł яéяéฑďéя to hıgh яésołűtıoฑ äฑy thűmbฑäıłs géฑéяätéď pяıoя to Täbłéäű 2018.2. Thıs çäฑ pűt hıghéя thäฑ űsűäł łoäď oฑ Täbłéäű Şéяvéя äฑď éxtéяฑäł ďätäsoűяçés. İf äฑy pяobłéms äяısé, thé job çäฑ bé stoppéď by яűฑฑıฑg täbçmď űpgяäďéthűmbฑäıłs --séяvéя <séяvéя> --stop|"
+
+#:
+msgid "upgradethumbnails.options.stop"
+msgstr "46352-表:Ştop äłł űpgяäďé thűmbฑäıłs яéłätéď jobs|"
+
+#:
+msgid "upgradethumbnails.status.running"
+msgstr "74273-表:Ştäяtıฑg thűmbฑäıłs űpgяäďé|"
+
+#:
+msgid "upgradethumbnails.status.not_running"
+msgstr "95637-表:Ñot stäяtıฑg thűmbฑäıłs űpgяäďé|"
+
+#:
+msgid "upgradethumbnails.status.cancelling"
+msgstr "95182-表:Çäฑçéłłıฑg thűmbฑäıłs űpgяäďé jobs|"
+
+#:
+msgid "upgradethumbnails.continue_promt"
+msgstr "00122-表:Ðo yoű ὠısh to çoฑtıฑűé? Éฑtéя 1 foя Yés, 0 foя Ño (1/0)|"
+
+#:
+msgid "upgradethumbnails.invalid_response"
+msgstr "23783-表:İฑväłıď яéspoฑsé|"
+
+#:
+msgid "validateidpmetadata.options.digest_algorithms"
+msgstr "74364-表:Å späçé-sépäяätéď łıst of ďıgést äłgoяıthms. Łégäł väłűés foя {0}: {1}. İf ฑot spéçıfıéď, séяvéя űsés väłűés fяom séяvéя çoฑfıgűяätıoฑ séttıฑg: {2}|"
+
+#:
+msgid "validateidpmetadata.options.min_allowed_rsa_key_size"
+msgstr "22663-表:İf ฑot spéçıfıéď, séяvéя űsés väłűés fяom séяvéя çoฑfıgűяätıoฑ séttıฑg: {0}|"
+
+#:
+msgid "validateidpmetadata.options.min_allowed_elliptic_curve_size"
+msgstr "92775-表:İf ฑot spéçıfıéď, séяvéя űsés väłűés fяom séяvéя çoฑfıgűяätıoฑ séttıฑg: {0}|"
+
+#:
+msgid "validateidpmetadata.options.site_names"
+msgstr "32659-表:Å späçé-sépäяätéď łıst of sıté ฑämés oฑ ὠhıçh to péяfoяm çéяtıfıçäté väłıďätıoฑ. İf ฑot spéçıfıéď, théฑ äłł sıtés äяé ıฑspéçtéď.|"
+
+#:
+msgid "validateidpmetadata.short_description"
+msgstr "05350-表:İďéฑtıfıés Täbłéäű Şéяvéя sıtés thät äяé çoฑfıgűяéď ὠıth İďPs űsıฑg thé ıฑséçűяé ďıgést äłgoяıthm, ŞHÅ-1. Thıs çommäฑď äłso ıďéฑtıfıés İďPs thät äяé űsıฑg çéяtıfıçätés ὠıth äฑ ıฑsűffıçıéฑt ЯŞÅ kéy sıžé oя éłłıptıç çűяvé sıžé.|"
+
+

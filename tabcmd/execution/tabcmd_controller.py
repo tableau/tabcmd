@@ -1,5 +1,4 @@
-import sys
-
+from .localize import set_client_locale
 from .map_of_commands import *
 from .parent_parser import ParentParser
 import logging
@@ -25,6 +24,8 @@ class TabcmdController:
         user_input = user_input or sys.argv[1:]
         namespace = parser.parse_args(user_input)
         logger = log(__name__, namespace.logging_level or logging.INFO)
+        if namespace.language:
+            set_client_locale(namespace.language, logger.debug)
         try:
             command_name = namespace.func
         except AttributeError as aer:

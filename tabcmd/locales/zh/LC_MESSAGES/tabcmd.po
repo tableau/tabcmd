@@ -1,0 +1,3275 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=utf-8"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: None"
+"Language: zh"
+#:
+msgid "permissions.labels.capabilities.read"
+msgstr "视图:"
+
+#:
+msgid "permissions.labels.capabilities.write"
+msgstr "覆盖:"
+
+#:
+msgid "permissions.labels.capabilities.write.legacy"
+msgstr "保存:"
+
+#:
+msgid "permissions.labels.capabilities.delete"
+msgstr "删除:"
+
+#:
+msgid "permissions.labels.capabilities.filter"
+msgstr "筛选器:"
+
+#:
+msgid "permissions.labels.capabilities.add_tag"
+msgstr "添加标记:"
+
+#:
+msgid "permissions.labels.capabilities.add_favorite"
+msgstr "添加收藏夹:"
+
+#:
+msgid "permissions.labels.capabilities.add_comment"
+msgstr "添加注释:"
+
+#:
+msgid "permissions.labels.capabilities.add_comment.legacy"
+msgstr "添加注释:"
+
+#:
+msgid "permissions.labels.capabilities.view_comments"
+msgstr "查看注释:"
+
+#:
+msgid "permissions.labels.capabilities.vud"
+msgstr "下载完整数据:"
+
+#:
+msgid "permissions.labels.capabilities.export_image"
+msgstr "下载图像/PDF:"
+
+#:
+msgid "permissions.labels.capabilities.export_data"
+msgstr "下载摘要数据:"
+
+#:
+msgid "permissions.labels.capabilities.export_xml"
+msgstr "下载/另存为副本:"
+
+#:
+msgid "permissions.labels.capabilities.export_xml.legacy"
+msgstr "下载/另存为:"
+
+#:
+msgid "permissions.labels.capabilities.save_customized_view"
+msgstr "保存自定义视图:"
+
+#:
+msgid "permissions.labels.capabilities.share_view"
+msgstr "共享自定义:"
+
+#:
+msgid "permissions.labels.capabilities.stateful_url"
+msgstr "永久链接:"
+
+#:
+msgid "permissions.labels.capabilities.change_hierarchy"
+msgstr "移动:"
+
+#:
+msgid "permissions.labels.capabilities.change_permissions"
+msgstr "设置权限:"
+
+#:
+msgid "permissions.labels.capabilities.exclude"
+msgstr "排除:"
+
+#:
+msgid "permissions.labels.capabilities.keep_only"
+msgstr "只保留:"
+
+#:
+msgid "permissions.labels.capabilities.select"
+msgstr "选择标记:"
+
+#:
+msgid "permissions.labels.capabilities.tooltip"
+msgstr "查看工具提示:"
+
+#:
+msgid "permissions.labels.capabilities.highlight"
+msgstr "图例突出显示:"
+
+#:
+msgid "permissions.labels.capabilities.url_link"
+msgstr "链接到外部 Url:"
+
+#:
+msgid "permissions.labels.capabilities.administrator"
+msgstr "管理员:"
+
+#:
+msgid "permissions.labels.capabilities.content_admin"
+msgstr "内容管理员:"
+
+#:
+msgid "permissions.labels.capabilities.create_groups"
+msgstr "创建群组:"
+
+#:
+msgid "permissions.labels.capabilities.rename"
+msgstr "重命名:"
+
+#:
+msgid "permissions.labels.capabilities.transfer_ownership"
+msgstr "转移所有权:"
+
+#:
+msgid "permissions.labels.capabilities.project_leader"
+msgstr "项目主管:"
+
+#:
+msgid "permissions.labels.capabilities.publish"
+msgstr "发布:"
+
+#:
+msgid "permissions.labels.capabilities.connect"
+msgstr "连接:"
+
+#:
+msgid "permissions.labels.capabilities.draw"
+msgstr "绘制:"
+
+#:
+msgid "permissions.labels.capabilities.web_authoring"
+msgstr "Web 编辑:"
+
+#:
+msgid "permissions.labels.capabilities.xml_save_as"
+msgstr "另存为:"
+
+#:
+msgid "permissions.labels.capabilities.create_refresh_metrics"
+msgstr "创建/刷新指标:"
+
+#:
+msgid "permissions.labels.capabilities.explain_data"
+msgstr "运行“数据解释”功能:"
+
+#:
+msgid "permissions.labels.roles.wb_view"
+msgstr "视图"
+
+#:
+msgid "permissions.labels.roles.wb_explore"
+msgstr "浏览"
+
+#:
+msgid "permissions.labels.roles.wb_publish"
+msgstr "发布"
+
+#:
+msgid "permissions.labels.roles.wb_administer"
+msgstr "管理"
+
+#:
+msgid "permissions.labels.roles.ds_view"
+msgstr "视图"
+
+#:
+msgid "permissions.labels.roles.ds_explore"
+msgstr "浏览"
+
+#:
+msgid "permissions.labels.roles.ds_publish"
+msgstr "发布"
+
+#:
+msgid "permissions.labels.roles.ds_administer"
+msgstr "管理"
+
+#:
+msgid "permissions.labels.roles.viewer"
+msgstr "Viewer(查看者)"
+
+#:
+msgid "permissions.labels.roles.interactor"
+msgstr "交互者"
+
+#:
+msgid "permissions.labels.roles.editor"
+msgstr "编辑者"
+
+#:
+msgid "permissions.labels.roles.ds_connector"
+msgstr "数据源连接者"
+
+#:
+msgid "permissions.labels.roles.ds_editor"
+msgstr "数据源编辑者"
+
+#:
+msgid "permissions.labels.roles.administrator"
+msgstr "管理员"
+
+#:
+msgid "permissions.labels.roles.project_leader"
+msgstr "项目主管"
+
+#:
+msgid "permissions.labels.roles.publisher"
+msgstr "发布者"
+
+#:
+msgid "permissions.labels.roles.custom"
+msgstr "自定义"
+
+#:
+msgid "permissions.labels.roles.none"
+msgstr "无"
+
+#:
+msgid "formats.messages.disk_space.in_mb"
+msgstr "{0} MB"
+
+#:
+msgid "formats.messages.disk_space.in_kb"
+msgstr "{0} KB"
+
+#:
+msgid "errors.argument.flow_description.too_long"
+msgstr "流程描述过长({0} 个字符)。其长度必须小于 {1} 个字符:{2}"
+
+#:
+msgid "errors.argument.workbook_name.too_long"
+msgstr "工作簿名称过长(最多为 {0} 个字符)。其长度必须小于 {1} 个字符:{2}"
+
+#:
+msgid "errors.argument.workbook_name.empty"
+msgstr "工作簿名称为空。"
+
+#:
+msgid "errors.argument.workbook_description.too_long"
+msgstr "工作簿描述过长({0} 个字符)。其长度必须小于 {1} 个字符:{2}"
+
+#:
+msgid "errors.argument.worksheet_name.too_long"
+msgstr "工作表名称过长(最多为 {0} 个字符)。其长度必须小于 {1} 个字符:{2}"
+
+#:
+msgid "errors.argument.datasource_name.too_long"
+msgstr "数据源名称过长({0} 个字符)。其长度必须小于 {1} 个字符:{2}"
+
+#:
+msgid "errors.argument.datasource_name.empty"
+msgstr "数据源名称为空。"
+
+#:
+msgid "errors.argument.datasource_description.too_long"
+msgstr "数据源描述过长({0} 个字符)。其长度必须小于 {1} 个字符:{2}"
+
+#:
+msgid "errors.argument.dataconnection_column.too_long"
+msgstr "DataConnection column {0} is too long ({1} characters).  It must be shorter than {2} characters:{3}"
+
+#:
+msgid "errors.argument.tag.too_long"
+msgstr "标记过长({0} 个字符)。其长度必须小于 {1} 个字符:{2}"
+
+#:
+msgid "errors.argument.workbook_file.missing_or_empty"
+msgstr "工作簿文件缺失或为空。"
+
+#:
+msgid "errors.argument.internal"
+msgstr "内部服务器错误。参数缺失或无效。"
+
+#:
+msgid "errors.argument.thumbnail.invalid_format"
+msgstr "工作簿缩略图格式无效。必须是分辨率为 300x300 或更低的 PNG。"
+
+#:
+msgid "errors.html_403.disabled_resource.workbook"
+msgstr "抱歉，该工作簿已禁用。请与管理员联系。"
+
+#:
+msgid "errors.html_404.missing_or_unauthorized_resource.project"
+msgstr "抱歉，您查找的项目不存在，或者您无权查看该项目。"
+
+#:
+msgid "errors.html_404.missing_or_unauthorized_resource.personal_space"
+msgstr "抱歉，您要查找的个人空间不存在，或者您没有查看权限。"
+
+#:
+msgid "errors.html_404.missing_or_unauthorized_resource.datasource"
+msgstr "抱歉，您查找的数据源不存在。"
+
+#:
+msgid "errors.labels.formatted_request_id"
+msgstr "请求 ID: {0}"
+
+#:
+msgid "errors.links.delete_datasources"
+msgstr "删除数据源"
+
+#:
+msgid "errors.links.delete_workbooks"
+msgstr "删除工作簿"
+
+#:
+msgid "errors.permissions.publish.datasource.licensing"
+msgstr "您必须是“交互者”，才能发布数据源。"
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite"
+msgstr "项目“{1}”中已存在名为“{0}”的数据源。您没有覆盖它的权限。"
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite_personal_space"
+msgstr "个人空间中已存在名为“{0}”的数据源。您没有覆盖它的权限。"
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite_short"
+msgstr "项目“{1}”中已存在名为“{0}”的数据源。"
+
+#:
+msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
+msgstr "个人空间中已存在名为“{0}”的数据源。"
+
+#:
+msgid "errors.permissions.publish.datasource.non_existent"
+msgstr "数据源“{0}”不存在。"
+
+#:
+msgid "errors.permissions.publish.datasource.general"
+msgstr "抱歉，您无权发布到此数据源。"
+
+#:
+msgid "errors.permissions.publish.project.explicit_publisher_detail"
+msgstr "您没有发布权限。"
+
+#:
+msgid "errors.permissions.publish.project.general"
+msgstr "抱歉，您无权发布此项目。"
+
+#:
+msgid "errors.permissions.publish.project.non_existent"
+msgstr "项目“{0}”不存在。"
+
+#:
+msgid "errors.permissions.publish.project.not_writable"
+msgstr "您没有写入项目“{0}”的权限。"
+
+#:
+msgid "errors.permissions.publish.project.unspecified"
+msgstr "必须指定项目"
+
+#:
+msgid "errors.permissions.publish.workbook.disabled"
+msgstr "工作簿“{0}”已禁用。"
+
+#:
+msgid "errors.permissions.publish.workbook.general"
+msgstr "要发布到的项目中存在具有此名称的工作簿。若要发布，请重命名您的工作簿。"
+
+#:
+msgid "errors.permissions.publish.workbook.general_personal_space"
+msgstr "您要发布到的个人空间中已存在同名工作簿。若要发布，请重命名工作簿。"
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite"
+msgstr "项目“{1}”中已存在名为“{0}”的工作簿。您没有覆盖它的权限。"
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite_personal_space"
+msgstr "个人空间中已存在名为“{0}”的工作簿。您没有覆盖它的权限。"
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite_short"
+msgstr "项目“{1}”中已存在名为“{0}”的工作簿。"
+
+#:
+msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
+msgstr "个人空间中已存在名为“{0}”的工作簿。"
+
+#:
+msgid "errors.reportable.impersonation.group_and_user"
+msgstr "仅指定“impersonate_username”或“impersonate_groupname”之一，而不是两个都指定。"
+
+#:
+msgid "errors.reportable.impersonation.user_not_found"
+msgstr "用户“{0}”不存在。"
+
+#:
+msgid "errors.reportable.impersonation.group_not_found"
+msgstr "组“{0}”不存在。 "
+
+#:
+msgid "errors.public.validation.hasextract"
+msgstr "保存到 Tableau Public 的工作簿必须使用活动 Tableau 数据提取。右键单击数据源，然后在发布之前选择“使用数据提取”。数据源“{0}”不是活动数据提取。"
+
+#:
+msgid "errors.publish.dataserver_datasource_not_found"
+msgstr "未找到工作簿“{1}”的数据源“{0}”。"
+
+#:
+msgid "errors.publish.datasource_update_mode"
+msgstr "未知更新模式:''{0}''."
+
+#:
+msgid "errors.publish.workbook.concurrent_update"
+msgstr "目前正在发布或修改具有相同名称的工作簿。请等到任务完成后重试。"
+
+#:
+msgid "errors.publish.workbook.restricted"
+msgstr "工作簿包含此服务器不允许的连接类型。"
+
+#:
+msgid "errors.publish.datasource.concurrent_update"
+msgstr "目前正在发布或修改具有相同名称的数据源。请等到任务完成后重试。"
+
+#:
+msgid "errors.publish.datasource.restricted"
+msgstr "数据源包含此服务器上不允许的连接类型。"
+
+#:
+msgid "errors.publish.datasource.connection_check"
+msgstr "{0} 无法建立数据源连接。"
+
+#:
+msgid "errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption"
+msgstr "无法发布包含加密数据提取的工作簿。站点管理员已在此站点上禁用了数据提取加密。您必须发布包含未加密数据提取的工作簿。"
+
+#:
+msgid "errors.publish.datasource.requested_extract_encryption_on_site_with_disabled_encryption"
+msgstr "无法以加密数据提取的形式发布数据源。站点管理员已在此站点上禁用了数据提取加密。您必须发布未加密的数据提取。"
+
+#:
+msgid "errors.publish.workbook.requested_no_extract_encryption_on_site_with_enforced_encryption"
+msgstr "无法发布包含未加密数据提取的工作簿。站点管理员已在此站点上强制实施了数据提取加密。您必须发布工作簿并指定数据提取加密。"
+
+#:
+msgid "errors.publish.datasource.requested_no_extract_encryption_on_site_with_enforced_encryption"
+msgstr "无法发布未加密的数据源数据提取。站点管理员已在此站点上强制实施了数据提取加密。您必须发布加密的数据提取。"
+
+#:
+msgid "errors.publish.has_unfinished_extract_creation_job"
+msgstr "无法发布此资源，原因是存在与其相关的待定或未完成数据提取创建作业。请等待或取消这些作业，然后重试。"
+
+#:
+msgid "errors.publishing.storage_quota_exceeded.message"
+msgstr "已超过站点存储配额。"
+
+#:
+msgid "errors.publishing.request_size_exceeded"
+msgstr "无法发布此文件，因为请求大小为 {0} 字节，超出字节大小限制 {1} 字节。"
+
+#:
+msgid "errors.publishing.request_size_unknown"
+msgstr "无法确定请求大小。"
+
+#:
+msgid "errors.site.quota_exceeded"
+msgstr "您尝试上载的内容将超出 {0} 的站点容量。"
+
+#:
+msgid "errors.personal_space.quota_exceeded"
+msgstr "此内容超出您的个人空间容量 {0}。"
+
+#:
+msgid "errors.web_authoring.workbook_deleted"
+msgstr "已删除工作簿 {0}。请选择“另存为”以另存新工作簿。"
+
+#:
+msgid "errors.web_authoring.workbook_changed"
+msgstr "自您开始编辑后另一个用户已编辑并保存了此工作簿。因此，您无法再更新原始工作簿。请通过“另存为”使用您所做更改新建一个工作簿。"
+
+#:
+msgid "labels.publish.embed_credentials"
+msgstr "嵌入数据源的密码"
+
+#:
+msgid "errors.publish.workbook.google_no_embedded_credentials"
+msgstr "此工作簿包含需要嵌入式凭据的 {0} 数据源。若要另存为其他工作簿，请选择“{1}”。"
+
+#:
+msgid "errors.publish.datasource.google_no_embedded_credentials"
+msgstr "此数据源包含需要嵌入式凭据的 {0} 连接。请使用嵌入式凭据从 Tableau Desktop 中发布此数据源。"
+
+#:
+msgid "errors.publish.datasource.federated_oauth_datasource_failed"
+msgstr "数据源中一个或多个连接的凭据已过期。请在 Tableau Server 或 Tableau Online 上的“帐户设置”页面中删除为此数据源保存的凭据，然后再次连接到数据源。"
+
+#:
+msgid "errors.publish.workbook.missing_oauth_credential"
+msgstr "找不到凭据“{0}”或者无法使用它连接到数据源或工作簿。"
+
+#:
+msgid "errors.publish.version_incompatible.message"
+msgstr "Desktop 和 Server 版本不兼容。"
+
+#:
+msgid "errors.publish.version_incompatible.details"
+msgstr "Desktop 版本“{0}”，Server 文档版本“{1}”。"
+
+#:
+msgid "errors.publish.datasource.managed_keychain.unique_cv_suggestions"
+msgstr "由于存在冲突，发布失败。请重新提交所做更改。"
+
+#:
+msgid "errors.publish.permissions_are_locked"
+msgstr "权限在您发布到的项目中已锁定。若要发布此工作簿，请使用默认权限并重试。"
+
+#:
+msgid "errors.publish.datasource.not.found"
+msgstr "在服务器上找不到此数据源。"
+
+#:
+msgid "errors.publish.extracts.disabled"
+msgstr "尚不支持为基于数据提取的存档数据源保存。"
+
+#:
+msgid "errors.publish.datasource.timeout"
+msgstr "发布在 {0} 秒后超时。请尝试使用 Tableau Desktop 来发布此数据源。"
+
+#:
+msgid "errors.publish.data_role.permission_not_null"
+msgstr "无法为数据角色类型的数据源设置显式权限。"
+
+#:
+msgid "errors.download.extracts.timeout"
+msgstr "发布在 {0} 秒后超时，原因是此数据源有很大的数据提取文件。请尝试使用 Tableau Desktop 来发布此数据源。"
+
+#:
+msgid "errors.publish.datasource.invalid_extract_update_time"
+msgstr "指定的 extractUpdateTime 无效: {0}"
+
+#:
+msgid "errors.publish.async.serialization"
+msgstr "无法序列化发布作业状态错误"
+
+#:
+msgid "errors.permissions.view.datasources"
+msgstr "您必须是“交互者”才能查看数据源列表。"
+
+#:
+msgid "errors.oauth.invalid_oauth_class"
+msgstr "“{0}”不是有效的 OAuth 连接类型。"
+
+#:
+msgid "errors.xmlapi.bad_request"
+msgstr "错误请求"
+
+#:
+msgid "errors.xmlapi.unauthorized"
+msgstr "未授权"
+
+#:
+msgid "errors.xmlapi.forbidden"
+msgstr "权限不足"
+
+#:
+msgid "errors.xmlapi.system_user_not_found"
+msgstr "用户帐户已锁定或无效。"
+
+#:
+msgid "errors.xmlapi.site_user_not_found"
+msgstr "此用户帐户未激活。请联系您的 {0} 管理员寻求帮助。"
+
+#:
+msgid "errors.xmlapi.not_found"
+msgstr "未找到项"
+
+#:
+msgid "errors.xmlapi.concurrent_update"
+msgstr "并发更新"
+
+#:
+msgid "errors.xmlapi.internal_server_error"
+msgstr "内部服务器错误"
+
+#:
+msgid "errors.xmlapi.illegal_state"
+msgstr "非法状态"
+
+#:
+msgid "errors.xmlapi.invalid_parameter"
+msgstr "无效参数"
+
+#:
+msgid "errors.xmlapi.already_exists"
+msgstr "已存在"
+
+#:
+msgid "errors.xmlapi.site_suspended"
+msgstr "此站点已挂起。您必须是系统管理员才能登录。"
+
+#:
+msgid "errors.xmlapi.site_locked"
+msgstr "此站点已锁定。此时不允许登录。"
+
+#:
+msgid "errors.xmlapi.permission_modification"
+msgstr "无法在修改了权限的情况下发布"
+
+#:
+msgid "errors.xmlapi.update_desktop"
+msgstr "若要打开其他作者创建的工作簿，请从 http://public.tableau.com/ 下载最新版本的 Tableau Desktop Public Edition"
+
+#:
+msgid "errors.xmlapi.throttled.summary"
+msgstr "请求过多"
+
+#:
+msgid "errors.xmlapi.throttled.detail"
+msgstr "对“{0}”的请求太多，请在 {1} 后重试。"
+
+#:
+msgid "datasource.publish.check.unpublishable"
+msgstr "无法发布数据源。"
+
+#:
+msgid "datasource.publish.check.publishable.extract_required"
+msgstr "需要在发布时创建数据提取。"
+
+#:
+msgid "datasource.publish.check.publishable.credentials_required"
+msgstr "{1} 将临时访问为 ''{0}'' 提供的凭据来确认它可保持实时数据连接。"
+
+#:
+msgid "datasource.publish.check.publishable.server_unreachable"
+msgstr "{1} 无法访问 ''{0}''。发布时将创建数据提取。"
+
+#:
+msgid "publish.bundles.workbook.subscription.subject"
+msgstr "您的工作簿 {0} 已准备就绪。"
+
+#:
+msgid "publish.bundles.workbook.subscription.message"
+msgstr "您的 Salesforce 数据已添加到工作簿。转到您的 {0} 项目以开始。"
+
+#:
+msgid "extracts.status.finished.upload.workbook"
+msgstr "已完成工作簿 ''{1}'' {2} 的数据提取上载(新数据提取 ID: {0})"
+
+#:
+msgid "extracts.status.finished.refresh.workbook"
+msgstr "已完成工作簿“{1}”{2} 的数据提取刷新(新数据提取 ID: {0})"
+
+#:
+msgid "extracts.status.finished.increment.workbook"
+msgstr "已完成工作簿“{1}”{2} 的数据提取递增(新数据提取 ID: {0})"
+
+#:
+msgid "extracts.status.finished.encrypt.workbook"
+msgstr "已完成工作簿“{1}”的数据提取加密(新数据提取 ID: {0})"
+
+#:
+msgid "extracts.status.finished.decrypt.workbook"
+msgstr "已完成工作簿“{1}”的数据提取解密(新数据提取 ID: {0})"
+
+#:
+msgid "extracts.status.finished.rekey.workbook"
+msgstr "已完成工作簿“{1}”的数据提取重新加密(新数据提取 ID: {0})"
+
+#:
+msgid "extracts.status.finished.create.workbook"
+msgstr "已完成工作簿“{1}”的数据提取创建(新数据提取 ID: {0}){2}"
+
+#:
+msgid "extracts.status.finished.remove.workbook"
+msgstr "已完成工作簿“{1}”的实时数据提取更改(数据源 ID:{0})"
+
+#:
+msgid "extracts.status.finished.upload.datasource"
+msgstr "已完成数据源“{1}”{2} 的数据提取上载(新数据提取 ID: {0})"
+
+#:
+msgid "extracts.status.finished.refresh.datasource"
+msgstr "已完成数据源“{1}”{2} 的数据提取刷新(新数据提取 ID: {0})"
+
+#:
+msgid "extracts.status.finished.increment.datasource"
+msgstr "已完成数据源“{1}”{2} 的数据提取递增(新数据提取 ID: {0})"
+
+#:
+msgid "extracts.status.finished.append.datasource"
+msgstr "已完成数据源“{1}”{2} 的数据提取追加(新数据提取 ID: {0})"
+
+#:
+msgid "extracts.status.finished.replace.datasource"
+msgstr "已完成数据源“{1}”{2} 的数据提取替换(新数据提取 ID: {0})"
+
+#:
+msgid "extracts.status.finished.encrypt.datasource"
+msgstr "已完成数据源“{1}” 的数据提取加密(新数据提取 ID: {0})"
+
+#:
+msgid "extracts.status.finished.decrypt.datasource"
+msgstr "已完成数据源“{1}” 的数据提取解密(新数据提取 ID: {0})"
+
+#:
+msgid "extracts.status.finished.rekey.datasource"
+msgstr "已完成数据源“{1}” 的数据提取重新加密(新数据提取 ID: {0})"
+
+#:
+msgid "extracts.status.finished.encrypt.flow"
+msgstr "已完成流程“{0}”的数据提取加密"
+
+#:
+msgid "extracts.status.finished.decrypt.flow"
+msgstr "已完成流程“{0}”的数据提取解密"
+
+#:
+msgid "extracts.status.finished.rekey.flow"
+msgstr "已完成流程“{0}”的数据提取重新加密"
+
+#:
+msgid "extracts.status.finished.encrypt.flowdraft"
+msgstr "已完成流程草稿“{0}”的数据提取加密"
+
+#:
+msgid "extracts.status.finished.decrypt.flowdraft"
+msgstr "已完成流程草稿“{0}”的数据提取解密"
+
+#:
+msgid "extracts.status.finished.rekey.flowdraft"
+msgstr "已完成流程草稿“{0}”的数据提取重新加密"
+
+#:
+msgid "extracts.status.finished.create.datasource"
+msgstr "已完成数据源“{1}” 的数据提取创建(新数据提取 ID: {0}){2}"
+
+#:
+msgid "extracts.status.finished.remove.datasource"
+msgstr "已完成数据源“{1}”的实时数据提取更改"
+
+#:
+msgid "extracts.status.encryption_key"
+msgstr "加密密钥 ID:“{0}|”。"
+
+#:
+msgid "extracts.status.encryption_keys"
+msgstr "旧加密密钥 ID:“{0}”，新加密密钥 ID:“{1}”。"
+
+#:
+msgid "extracts.errors.upload"
+msgstr "上载 {0} 的数据提取时出错: ''{1}''"
+
+#:
+msgid "extracts.errors.refresh"
+msgstr "刷新 {0} ''{1}'' 的数据提取时出错"
+
+#:
+msgid "extracts.errors.create"
+msgstr "为 {0} 创建数据提取时出错“{1}”。"
+
+#:
+msgid "extracts.errors.increment"
+msgstr "递增 {0} 的数据提取时出错: ''{1}''"
+
+#:
+msgid "extracts.errors.append"
+msgstr "追加 {0} 的数据提取时出错: ''{1}''"
+
+#:
+msgid "extracts.errors.replace"
+msgstr "替换 {0} 的数据提取时出错: ''{1}''"
+
+#:
+msgid "extracts.errors.download"
+msgstr "下载 {0} 的数据提取时出错: ''{1}''"
+
+#:
+msgid "extracts.errors.remove"
+msgstr "为 {0} 移除数据提取时出错:“{1}”。"
+
+#:
+msgid "extracts.errors.title"
+msgstr "处理数据提取错误"
+
+#:
+msgid "extracts.errors.nothing_to_upload"
+msgstr "没有要为 {0} 上载的数据提取:''{1}''"
+
+#:
+msgid "extracts.errors.nothing_to_refresh"
+msgstr "没有要为 {0} 刷新的数据提取:''{1}''"
+
+#:
+msgid "extracts.errors.nothing_to_increment"
+msgstr "没有要为 {0} 递增的数据提取: ''{1}''"
+
+#:
+msgid "extracts.errors.nothing_to_append"
+msgstr "没有要为 {0} 追加的数据提取:''{1}''"
+
+#:
+msgid "extracts.errors.nothing_to_replace"
+msgstr "没有要为 {0} 替换的数据提取:''{1}''"
+
+#:
+msgid "extracts.errors.refresh_summary"
+msgstr "刷新数据提取错误"
+
+#:
+msgid "extracts.errors.encrypt_summary"
+msgstr "加密数据提取错误"
+
+#:
+msgid "extracts.errors.rekey_summary"
+msgstr "重新加密数据提取错误"
+
+#:
+msgid "extracts.errors.decrypt_summary"
+msgstr "解密数据提取错误"
+
+#:
+msgid "extracts.errors.remove_summary"
+msgstr "移除数据提取错误"
+
+#:
+msgid "extracts.errors.create_summary"
+msgstr "创建数据提取错误"
+
+#:
+msgid "extracts.errors.datasource_overwritten"
+msgstr "刷新失败，因为在处理期间该数据源已由其他任务覆盖。请再次提交刷新以进行更正。"
+
+#:
+msgid "extracts.errors.workbook_overwritten"
+msgstr "刷新失败，因为在处理期间该工作簿已由其他任务覆盖。请再次提交刷新以进行更正。"
+
+#:
+msgid "extracts.errors.encrypt"
+msgstr "对 {0}“{1}”的数据提取进行加密时出错"
+
+#:
+msgid "extracts.errors.decrypt"
+msgstr "对 {0}“{1}”的数据提取进行解密时出错"
+
+#:
+msgid "extracts.errors.rekey"
+msgstr "对 {0}“{1}”的数据提取进行重新加密时出错"
+
+#:
+msgid "extracts.errors.encrypt_datasource_overwritten"
+msgstr "数据提取加密失败，因为在处理期间数据源已被另一个任务覆盖。"
+
+#:
+msgid "extracts.errors.encrypt_workbook_overwritten"
+msgstr "数据提取加密失败，因为在处理期间工作簿已被另一个任务覆盖。"
+
+#:
+msgid "extracts.errors.rekey_datasource_overwritten"
+msgstr "数据提取重新加密失败，因为在处理期间数据源已被另一个任务覆盖。"
+
+#:
+msgid "extracts.errors.rekey_workbook_overwritten"
+msgstr "数据提取重新加密失败，因为在处理期间工作簿已被另一个任务覆盖。"
+
+#:
+msgid "extracts.errors.decrypt_datasource_overwritten"
+msgstr "数据提取解密失败，因为在处理期间数据源已被另一个任务覆盖。"
+
+#:
+msgid "extracts.errors.decrypt_workbook_overwritten"
+msgstr "数据提取解密失败，因为在处理期间工作簿已被另一个任务覆盖。"
+
+#:
+msgid "extracts.errors.remove_datasource_overwritten"
+msgstr "无法将数据源更改为实时，因为另一个任务覆盖了该数据源。"
+
+#:
+msgid "extracts.errors.remove_workbook_overwritten"
+msgstr "无法将工作簿更改为实时，因为另一个任务覆盖了该工作簿。"
+
+#:
+msgid "extracts.errors.create_datasource_overwritten"
+msgstr "无法提取数据源，因为另一个任务覆盖了该数据源。"
+
+#:
+msgid "extracts.errors.create_workbook_overwritten"
+msgstr "无法提取工作簿，因为另一个任务覆盖了该工作簿。"
+
+#:
+msgid "extracts.site_mode_change_details"
+msgstr "将站点数据提取加密模式从“{0}”更改为“{1}”。"
+
+#:
+msgid "extracts.errors.encryption_not_licensed"
+msgstr "此操作由于数据提取加密未获许可已失败。若要执行此操作，您必须续订许可证或将数据提取解密。"
+
+#:
+msgid "extracts.errors.operation_cancelled_detail"
+msgstr "{0} (数据源: {2})的移除数据提取操作超时。"
+
+#:
+msgid "workbooks.messages.load_error"
+msgstr "无法加载工作簿 {0}"
+
+#:
+msgid "workbooks.messages.locked"
+msgstr "另一个用户正在修改工作簿“{0}”。请稍后重试。"
+
+#:
+msgid "workbooks.new_workbook.default_name"
+msgstr "新建工作簿"
+
+#:
+msgid "workbooks.new_datasource.default_name"
+msgstr "新建数据源"
+
+#:
+msgid "datasources.messages.load_error"
+msgstr "无法加载数据源 {0}"
+
+#:
+msgid "metrics.new_metric.default_name"
+msgstr "新指标"
+
+#:
+msgid "messages.timeout_error.summary"
+msgstr "超时错误"
+
+#:
+msgid "messages.timeout_error.task_canceled"
+msgstr "正在取消用时超过 {0} 秒的任务"
+
+#:
+msgid "subscriptions.manage_my_subscriptions"
+msgstr "管理我的订阅"
+
+#:
+msgid "subscriptions.message_greeting"
+msgstr "您好，"
+
+#:
+msgid "subscriptions.subscribed_footer"
+msgstr "这里是您的 {0} 订阅"
+
+#:
+msgid "subscriptions.subscribed_workbook"
+msgstr "工作簿"
+
+#:
+msgid "subscriptions.subscribed_view"
+msgstr "视图"
+
+#:
+msgid "subscriptions.fullstop"
+msgstr "."
+
+#:
+msgid "subscriptions.extract_refresh_footer"
+msgstr "刷新数据时，您将收到此订阅电子邮件。"
+
+#:
+msgid "subscriptions.explore_the_viz"
+msgstr "浏览可视化项"
+
+#:
+msgid "subscriptions.explore_the_workbook"
+msgstr "浏览工作簿"
+
+#:
+msgid "subscriptions.pdf_attached"
+msgstr "已附加您的 Tableau PDF。"
+
+#:
+msgid "subscriptions.access_live_content"
+msgstr "您可以在此处访问内容的实时视图"
+
+#:
+msgid "subscriptions.warning_deprecated_type"
+msgstr "已弃用"
+
+#:
+msgid "subscriptions.warning_extract_refresh_type"
+msgstr "数据提取刷新失败"
+
+#:
+msgid "subscriptions.warning_flow_run_type"
+msgstr "流程运行失败"
+
+#:
+msgid "subscriptions.warning_introduction_general"
+msgstr "以下数据质量警告会影响此 {0}。"
+
+#:
+msgid "subscriptions.warning_introduction_view"
+msgstr "有关详细信息，请参见视图中的“数据详细信息”选项卡"
+
+#:
+msgid "subscriptions.warning_introduction_workbook"
+msgstr "有关详细信息，请参见工作簿页面"
+
+#:
+msgid "subscriptions.warning_maintenance_type"
+msgstr "维护中"
+
+#:
+msgid "subscriptions.warning_permission_error"
+msgstr "此警告针对您无权查看的资产。"
+
+#:
+msgid "subscriptions.warning_redacted"
+msgstr "需要权限"
+
+#:
+msgid "subscriptions.warning_sensitve_type"
+msgstr "敏感数据"
+
+#:
+msgid "subscriptions.warning_severe"
+msgstr "重要数据质量警告"
+
+#:
+msgid "subscriptions.warning_stale_type"
+msgstr "过期数据"
+
+#:
+msgid "subscriptions.warning_standard"
+msgstr "数据质量警告"
+
+#:
+msgid "subscriptions.warning_error_type"
+msgstr "未知警告类型"
+
+#:
+msgid "subscriptions.warning_warning_type"
+msgstr "警告"
+
+#:
+msgid "errors.subscriptions.image_render_failed"
+msgstr "无法正确呈现视图“{0}”的快照。"
+
+#:
+msgid "errors.subscriptions.see_live_view"
+msgstr "若要在线查看视图，请转到 {0}。"
+
+#:
+msgid "errors.subscriptions.disabled_on_server"
+msgstr "未启用服务器范围订阅设置。无法处理订阅。"
+
+#:
+msgid "errors.subscriptions.disabled_on_site"
+msgstr "为站点禁用了订阅。"
+
+#:
+msgid "errors.subscriptions.site_is_locked"
+msgstr "网站被锁定。无法处理订阅。"
+
+#:
+msgid "errors.subscriptions.orphan"
+msgstr "找不到与此订阅关联的工作簿和视图。"
+
+#:
+msgid "errors.subscriptions.user_unlicensed"
+msgstr "正在跳过非授权用户的订阅。"
+
+#:
+msgid "errors.subscriptions.smtp_unreacheable"
+msgstr "无法连接 SMTP 主机。请检查是否已配置了 SMTP。"
+
+#:
+msgid "errors.subscriptions.uncategorized_error"
+msgstr "未知错误"
+
+#:
+msgid "errors.subscriptions.pdf_render_failed"
+msgstr "无法正确呈现此电子邮件的 PDF 附件。"
+
+#:
+msgid "errors.subscriptions.pdf_limit_exceeded"
+msgstr "生成的 PDF 大于 {0}MB 的大小限制，因此无法附加到此电子邮件。"
+
+#:
+msgid "errors.subscriptions.attachments_not_enabled"
+msgstr "此订阅由于电子邮件附加已禁用而失败。有关详细信息，请与 Tableau 管理员联系。"
+
+#:
+msgid "errors.subscriptions.pdf_email_failed"
+msgstr "无法将生成的 PDF 附加到此电子邮件。"
+
+#:
+msgid "errors.subscriptions.learn_more_troubleshoot"
+msgstr "<a hre"
+
+#:
+msgid "errors.subscriptions.bad_extract_refresh_subscription_configuration"
+msgstr "订阅由于工作簿包含多个数据提取刷新计划而已挂起。若要恢复，请将频率更新为“按所选计划”。"
+
+#:
+msgid "errors.subscriptions.subscription_failed_refresh_failure"
+msgstr "数据源上的数据提取刷新失败。"
+
+#:
+msgid "errors.subscriptions.multiple_extracts_for_extract_refresh_subscription"
+msgstr "工作簿包含多个数据提取刷新计划。请将频率更新为“按所选计划”。"
+
+#:
+msgid "errors.subscriptions.datasource_is_missing_password"
+msgstr "数据源连接错误。请检查工作簿的所有数据源连接的凭据。"
+
+#:
+msgid "subscriptions.results_summary.sg"
+msgstr "从计划 ''{2}'' 发来的订阅 {1} 的 {0}。"
+
+#:
+msgid "subscriptions.results_summary.pl"
+msgstr "从计划 ''{2}''. 发来的订阅 {1} 中的 {0}。"
+
+#:
+msgid "subscriptions.results_views_per_subscription.sg"
+msgstr "{0}（1 视图的 {1} 成功）"
+
+#:
+msgid "subscriptions.results_views_per_subscription.pl"
+msgstr "{0}（ {2} 视图的 {1} 成功）"
+
+#:
+msgid "subscriptions.results_views_per_subscription.more"
+msgstr "（{0} 更多）"
+
+#:
+msgid "subscriptions.results_views_per_subscription.failed"
+msgstr "{0} ({1}/{2} 个视图失败)。"
+
+#:
+msgid "subscriptions.results_header.all_shown.failures.sg"
+msgstr "1 个故障"
+
+#:
+msgid "subscriptions.results_header.all_shown.failures.pl"
+msgstr "{0} 故障"
+
+#:
+msgid "subscriptions.results_header.all_shown.warnings.sg"
+msgstr "1 警告"
+
+#:
+msgid "subscriptions.results_header.all_shown.warnings.pl"
+msgstr "{0} 警告"
+
+#:
+msgid "subscriptions.results_header.some_hidden.failures.pl.sg"
+msgstr "{0} 个故障(1 个隐藏，见日志)"
+
+#:
+msgid "subscriptions.results_header.some_hidden.failures.pl.pl"
+msgstr "{0} 故障（{1} 隐藏，见日志）"
+
+#:
+msgid "subscriptions.results_header.some_hidden.warnings.pl.sg"
+msgstr "{0} 警告（1 隐藏，见日志）"
+
+#:
+msgid "subscriptions.results_header.some_hidden.warnings.pl.pl"
+msgstr "{0} 警告（{1} 隐藏，见日志）"
+
+#:
+msgid "dataalerts.manage_my_data_alerts"
+msgstr "管理通知"
+
+#:
+msgid "dataalerts.edit_data_alert"
+msgstr "编辑通知"
+
+#:
+msgid "dataalerts.remove_user_from_data_alert"
+msgstr "移除我"
+
+#:
+msgid "dataalerts.add_user_to_data_alert"
+msgstr "将我添加至此通知"
+
+#:
+msgid "dataalerts.greater_or_equal"
+msgstr "{0} 高于或等于 {1}。"
+
+#:
+msgid "dataalerts.greater"
+msgstr "{0} 高于 {1}。"
+
+#:
+msgid "dataalerts.less_or_equal"
+msgstr "{0} 低于或等于 {1}。"
+
+#:
+msgid "dataalerts.less"
+msgstr "{0} 低于 {1}。"
+
+#:
+msgid "dataalerts.equal"
+msgstr "{0} 等于 {1}。"
+
+#:
+msgid "dataalerts.email_alt_text"
+msgstr "数据驱动型通知使用的视图: {0}"
+
+#:
+msgid "dataalerts.email_alt_text_hidden_view"
+msgstr "数据驱动型通知使用的视图: {0}，已应用更改"
+
+#:
+msgid "dataalerts.alert_triggered_for_the_view"
+msgstr "视图触发的通知"
+
+#:
+msgid "dataalerts.failure.email.subject"
+msgstr "数据驱动型通知对于 {0} 未工作"
+
+#:
+msgid "dataalerts.failure.status"
+msgstr "您的通知 <i>{0}</i> 未工作"
+
+#:
+msgid "dataalerts.failure.view.details.alert"
+msgstr "查看此通知"
+
+#:
+msgid "dataalerts.failure.explanation"
+msgstr "您的数据驱动型通知 <i>{0}</i> 目前未工作，因此，在满足数据条件时，收件人将不会收到通知。您将在通知再次工作时收到电子邮件通知。"
+
+#:
+msgid "dataalerts.failure.affected.alert"
+msgstr "受影响的数据驱动型通知"
+
+#:
+msgid "dataalerts.failure.time"
+msgstr "时间通知失败"
+
+#:
+msgid "dataalerts.failure.cause"
+msgstr "通知有时会因暂时性的网络问题而失败，这些问题可自行解决。您也可以尝试在原始视图上重新创建通知，或者排查如下常见的通知失败原因："
+
+#:
+msgid "dataalerts.failure.changed.view"
+msgstr "移除或重命名了工作簿、视图或数据字段。"
+
+#:
+msgid "dataalerts.failure.expired.credentials"
+msgstr "工作簿中嵌入的数据库凭据已过期。"
+
+#:
+msgid "dataalerts.failure.datasource.error"
+msgstr "数据源无法访问。"
+
+#:
+msgid "dataalerts.failure.email.footer"
+msgstr "由于通知失败，因此您在 {0} 收到此电子邮件。"
+
+#:
+msgid "dataalerts.failure.troubleshooting"
+msgstr "若要检查是否有上面列出的任何导致通知失败的问题，请单击下面的按钮。"
+
+#:
+msgid "dataalerts.success.email.subject"
+msgstr "数据驱动型通知对于 {0} 已恢复"
+
+#:
+msgid "dataalerts.success.status"
+msgstr "您的通知 <i>{0}</i> 已恢复"
+
+#:
+msgid "dataalerts.success.explanation"
+msgstr "您的数据驱动型通知 <i>{0}</i> 已再次工作，因此，在满足数据条件时，收件人将会收到通知。"
+
+#:
+msgid "dataalerts.failure.error.internalError"
+msgstr "数据通知内部错误"
+
+#:
+msgid "dataalerts.failure.error.invalidDataAlertSpecification"
+msgstr "无效的数据通知指定"
+
+#:
+msgid "dataalerts.failure.error.summaryTableNotFound"
+msgstr "找不到摘要数据表"
+
+#:
+msgid "dataalerts.failure.error.unclassifiedError"
+msgstr "未分类的错误"
+
+#:
+msgid "dataalerts.failure.error.viewContentNotFound"
+msgstr "找不到数据通知视图的 {0} 内容"
+
+#:
+msgid "dataalerts.failure.error.viewNotFound"
+msgstr "找不到数据通知视图"
+
+#:
+msgid "dataalerts.failure.error.workbookNotFound"
+msgstr "找不到工作簿"
+
+#:
+msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
+msgstr "未找到字段 {0} 的轴"
+
+
+#:
+msgid "dataalerts.failure.error.unsupportedComparisonExpression"
+msgstr "不支持的比较表达式 {0}"
+
+#:
+msgid "dataalerts.failure.error.nonConstComparisonOp"
+msgstr "检测到非常量比较运算符: {0}"
+
+#:
+msgid "dataalerts.failure.error.cannotAddFilter"
+msgstr "向数据通知中添加筛选器失败"
+
+#:
+msgid "dataalerts.failure.error.sheetNotAlertable"
+msgstr "工作表 {0} 没有支持的通知数据。{1}"
+
+#:
+msgid "dataalerts.failure.error.dataAlertMeasureNotFound"
+msgstr "无法选择度量。{0}"
+
+#:
+msgid "dataalerts.failure.error.tooManyMeasuresForDataAlert"
+msgstr "检测到的度量数不正确。{0}"
+
+#:
+msgid "dataalerts.failure.error.thresholdParseError"
+msgstr "未能解析阈值文本 {0}。{1}"
+
+#:
+msgid "dataalerts.failure.error.dataAlertPresModelCreationError"
+msgstr "序列化通知时出错。{0}"
+
+#:
+msgid "dataalerts.failure.error.cannotDrawDataAlertDialog"
+msgstr "未能绘制数据通知对话框"
+
+#:
+msgid "dataalerts.failure.error.unsupportedDataAlertType"
+msgstr "数据通知类型 {0} 当前不受支持。"
+
+#:
+msgid "dataalerts.failure.suspend.email.subject"
+msgstr "数据驱动型通知对于 {0} 已挂起"
+
+#:
+msgid "dataalerts.failure.suspend.email.status"
+msgstr "您的通知 {0} 已挂起"
+
+#:
+msgid "dataalerts.failure.suspend.email.explanation"
+msgstr "处于挂起状态时，我们将不会对视图或通知接收者进行评估。进行修复之后，您可以恢复 <a hre"
+
+#:
+msgid "dataalerts.failure.suspend.view.name.prefix"
+msgstr "视图"
+
+#:
+msgid "dataalerts.failure.suspend.time"
+msgstr "挂起时间"
+
+#:
+msgid "dataalerts.failure.suspend.email.footer"
+msgstr "您之所以收到此电子邮件，原因是您的通知已挂起。"
+
+#:
+msgid "dataalerts.failure.suspend.email.view.name.my.content"
+msgstr "我的内容"
+
+#:
+msgid "dataalerts.failure.suspend.view.alerts"
+msgstr "查看通知"
+
+#:
+msgid "metricsservices.failure.affected.metric"
+msgstr "受影响的指标"
+
+#:
+msgid "metricsservices.failure.cause"
+msgstr "指标刷新有时会由于暂时性的连接问题而失败，这些问题可自行解决。指标刷新可能失败的其他原因包括:"
+
+#:
+msgid "metricsservices.failure.changed.view"
+msgstr "移除或重命名了工作簿、视图或数据字段"
+
+#:
+msgid "metricsservices.failure.permissions.error"
+msgstr "已连接视图的权限更改"
+
+#:
+msgid "metricsservices.failure.email.footer"
+msgstr "由于指标刷新失败，因此您在 {0} 收到此电子邮件。"
+
+#:
+msgid "metricsservices.failure.email.subject"
+msgstr "指标刷新对于 {0} 不起作用"
+
+#:
+msgid "metricsservices.failure.expired.credentials"
+msgstr "工作簿中嵌入的数据库凭据已过期"
+
+#:
+msgid "metricsservices.failure.explanation"
+msgstr "您的指标无法刷新，因此指标数据未更新。您将在指标刷新再次工作时收到电子邮件通知。"
+
+#:
+msgid "metricsservices.failure.status"
+msgstr "指标“{0}”未刷新"
+
+#:
+msgid "metricsservices.failure.suspend.email.explanation"
+msgstr "在指标刷新挂起时，您的指标数据将不会更新。进行修复之后，您可以恢复指标刷新。"
+
+#:
+msgid "metricsservices.failure.suspend.email.footer"
+msgstr "您之所以在 {0} 收到此电子邮件，原因是您的指标刷新已挂起。"
+
+#:
+msgid "metricsservices.failure.suspend.email.status"
+msgstr "指标“{0}”的刷新已挂起"
+
+#:
+msgid "metricsservices.failure.suspend.email.subject"
+msgstr "{0} 的指标刷新已挂起"
+
+#:
+msgid "metricsservices.failure.suspend.time"
+msgstr "挂起时间"
+
+#:
+msgid "metricsservices.failure.suspend.view.metric"
+msgstr "转到指标"
+
+#:
+msgid "metricsservices.failure.suspend.view.name.prefix"
+msgstr "连接的视图"
+
+#:
+msgid "metricsservices.failure.time"
+msgstr "刷新失败时间"
+
+#:
+msgid "metricsservices.failure.troubleshooting"
+msgstr "若要检查是否有上面列出的任何问题导致您的指标刷新失败，请单击下面的按钮。您也可以尝试在连接的视图上重新创建指标。"
+
+#:
+msgid "metricsservices.failure.view.details.metric"
+msgstr "转到指标"
+
+#:
+msgid "metricsservices.failure.view.name.prefix"
+msgstr "连接的视图"
+
+#:
+msgid "metricsservices.success.email.subject"
+msgstr "{0} 的指标刷新已恢复"
+
+#:
+msgid "metricsservices.success.explanation"
+msgstr "您的指标的刷新已再次工作，因此它将检查您的指标数据是否有更新。"
+
+#:
+msgid "metricsservices.success.status"
+msgstr "指标“{0}”的刷新已恢复"
+
+#:
+msgid "errors.staticimages.generic"
+msgstr "为工作簿 {0} 生成静态图像时出错。{1}。"
+
+#:
+msgid "errors.internal_error.request.message"
+msgstr "{0} 无法满足请求。"
+
+#:
+msgid "errors.permissions.limited_user_visibility"
+msgstr "完成查询时出错。如果“用户可见性”设置为有限，则用户必须是管理员或创建者才能查询其他用户"
+
+#:
+msgid "local_names.system_user.guest.name"
+msgstr "来宾"
+
+#:
+msgid "local_names.group.all_users.name"
+msgstr "所有用户"
+
+#:
+msgid "local_names.containers.personal_space.name"
+msgstr "个人空间"
+
+#:
+msgid "password_reset.email.subject"
+msgstr "此处是用于重置您的密码的链接"
+
+#:
+msgid "password_reset.email.body"
+msgstr "您好 {0}，<br/><br/>您刚才请求了重置密码。<br/><br/>若要更改您的 Tableau Server 密码，{1} 或将下面的链接粘贴到您的浏览器中: {2}<br/><br/>此链接将在 48 小时后失效，所以请立即进行处理。<br/><br/>如果您没有请求重置密码，您可能需要告诉您的服务器管理员。<br/><br/>感谢您使用 Tableau!<br/>Tableau 团队"
+
+#:
+msgid "password_reset.email.link"
+msgstr "单击此处"
+
+#:
+msgid "hours.pl"
+msgstr "{0} 小时"
+
+#:
+msgid "hours.sg"
+msgstr "1 小时"
+
+#:
+msgid "minutes.pl"
+msgstr "{0} 分钟"
+
+#:
+msgid "minutes.sg"
+msgstr "1 分钟"
+
+#:
+msgid "seconds.pl"
+msgstr "{0} 秒"
+
+#:
+msgid "seconds.sg"
+msgstr "1 秒"
+
+#:
+msgid "dataconnections.classes.tableau_server_site"
+msgstr "Tableau Server 站点"
+
+#:
+msgid "materializeviews.errors.workbook_not_in_project"
+msgstr "项目“{0}”未包含工作簿“{1}”"
+
+#:
+msgid "materializeviews.errors.workbook_has_no_extract"
+msgstr "未能为工作簿“{0}”更新实体化视图设置，当前仅支持包含嵌入式数据提取的工作簿"
+
+#:
+msgid "materializeviews.errors.workbook_updating_errors"
+msgstr "为工作簿更新实体化视图时发现错误"
+
+#:
+msgid "materializeviews.errors.workbook_too_large"
+msgstr "未能为工作簿“{0}”更新实体化视图设置，原因是工作簿的大小超过 {1} GB 的限制"
+
+#:
+msgid "materializeviews.errors.project_path_not_exists"
+msgstr "项目路径“{0}”不存在"
+
+#:
+msgid "materializeviews.errors.feature_disabled"
+msgstr "未能为工作簿“{0}”更新实体化视图设置，原因是功能当前已禁用"
+
+#:
+msgid "materializeviews.errors.update_materialized_views_setting_failed"
+msgstr "未能为工作簿“{0}”更新实体化视图设置"
+
+#:
+msgid "materializeviews.errors.site_not_enabled"
+msgstr "没有为实体化视图启用此站点。请与管理员联系"
+
+#:
+msgid "materializeviews.errors.encrypted_extracts_not_supported"
+msgstr "实体化视图功能当前不支持包含已加密数据提取的工作簿"
+
+#:
+msgid "materializedviews.finished.create"
+msgstr "已为工作簿“{1}”创建状态为“{0}”的实体化视图"
+
+#:
+msgid "materializedviews.finished.delete"
+msgstr "已为工作簿 ID {0} 删除实体化视图:"
+
+#:
+msgid "materializedviews.finished.encrypt"
+msgstr "已完成工作簿“{0}”实体化视图的加密"
+
+#:
+msgid "materializedviews.finished.decrypt"
+msgstr "已完成工作簿“{0}”实体化视图的解密"
+
+#:
+msgid "materializedviews.finished.rekey"
+msgstr "已完成工作簿“{0}”实体化视图的重新加密"
+
+#:
+msgid "materializedviews.status.encryption_key"
+msgstr "加密密钥 ID:“{0}|”。"
+
+#:
+msgid "materializedviews.status.encryption_keys"
+msgstr "旧加密密钥 ID:“{0}”，新加密密钥 ID:“{1}”。"
+
+#:
+msgid "materializedviews.status.encryption_type"
+msgstr "加密数据源类型:“{0}”"
+
+#:
+msgid "customizedviews.namedSharingPrefix"
+msgstr "共享版本"
+
+#:
+msgid "flows.drafts.default_name"
+msgstr "新建流程"
+
+#:
+msgid "content_type.project"
+msgstr "项目"
+
+#:
+msgid "content_type.workbook"
+msgstr "工作簿"
+
+#:
+msgid "content_type.view"
+msgstr "视图"
+
+#:
+msgid "content_type.datasource"
+msgstr "数据源"
+
+#:
+msgid "content_type.flow"
+msgstr "流程"
+
+#:
+msgid "content_type.metric"
+msgstr "指标"
+
+#:
+msgid "content_type.collection"
+msgstr "集合"
+
+#:
+msgid "content_type.visualization"
+msgstr "可视化"
+
+#:
+msgid "content_type.askdata_visualization"
+msgstr "“数据问答”功能可视化项"
+
+#:
+msgid "content_type.explaindata_explanation"
+msgstr "解释"
+
+#:
+msgid "content_type.publishedconnection"
+msgstr "虚拟连接"
+
+#:
+msgid "content_type.publishedconnectiontable"
+msgstr "虚拟连接表"
+
+#:
+msgid "upgradethumbnails.status.server_started"
+msgstr "服务器响应: 已启动缩略图升级!"
+
+#:
+msgid "upgradethumbnails.status.server_stopped"
+msgstr "服务器响应: 已停止 %d 个作业"
+
+#:
+msgid "dataquality.message.refresh_failed"
+msgstr "刷新失败: {0}"
+
+#:
+msgid "dataquality.message.last_successful"
+msgstr "上次成功: {0}"
+
+#:
+msgid "dataquality.message.next_scheduled"
+msgstr "下次计划: {0}"
+
+#:
+msgid "dataquality.message.flow_run_output_steps_failed"
+msgstr "{0}/{1} 个输出步骤运行失败"
+
+#:
+msgid "importcsvsummary.error.details"
+msgstr "错误详细信息:"
+
+#:
+msgid "importcsvsummary.remainingerrors"
+msgstr "(其余错误未显示)"
+
+#:
+msgid "importcsvsummary.error.line"
+msgstr "用户“{1}”的行 {0} :“{2}”"
+
+#:
+msgid "importcsvsummary.line.processed"
+msgstr "已处理行数: {0}"
+
+#:
+msgid "importcsvsummary.line.skipped"
+msgstr "已跳过行数: {0}"
+
+#:
+msgid "importcsvsummary.users.added.count"
+msgstr "添加的用户数: {0}"
+
+#:
+msgid "importcsvsummary.errors.count"
+msgstr "错误数: {0}"
+
+#:
+msgid "importcsvsummary.error.unexpected_extension"
+msgstr "CSV 文件的意外文件扩展名"
+
+#:
+msgid "importcsvsummary.error.size_limit"
+msgstr "CsvFile 超出大小限制 {0}"
+
+#:
+msgid "importcsvsummary.error.local.password_mismatch"
+msgstr "更新本地站点用户需要空密码或匹配密码"
+
+#:
+msgid "importcsvsummary.error.local.password_required"
+msgstr "当“Auth”为“Local”时创建本地系统用户需要密码"
+
+#:
+msgid "importcsvsummary.error.ad.user_not_found"
+msgstr "找不到 AD 用户“{0}”"
+
+#:
+msgid "importcsvsummary.error.too_many_errors"
+msgstr "CSV 文件中遇到的错误太多"
+
+#:
+msgid "audit.errors.wdc_not_allowlisted"
+msgstr "不允许列出 Web 数据连接器。如需帮助，请参阅: https://help.tableau.com/current/online/zh-cn/to_keep_data_fresh.htm"
+
+#:
+msgid "user.input.name.err.too_long"
+msgstr "名称长度超过最大字符数 {0}"
+
+#:
+msgid "user.input.name.err.empty"
+msgstr "名称不能为空"
+
+#:
+msgid "askdata.title"
+msgstr "“数据问答”功能"
+
+#:
+msgid "slack.app.upgrade.email.notification.subject"
+msgstr "适用于 Slack 的 Tableau 应用软件更新"
+
+#:
+msgid "slack.app.upgrade.email.notification.introduction"
+msgstr "针对 Slake 的 Tableau 应用软件已经有了更新，现在可以重新安装，以便与下一个 Tableau Online 版本配合使用。Tableau 建议重新安装应用软件，以保持应用软件的性能并使用新功能。在  <a styl"
+
+#:
+msgid "slack.app.upgrade.email.notification.action"
+msgstr "有关更新和重新安装步骤，请参见 <a styl"
+
+#:
+msgid "slack.app.upgrade.email.notification.steps"
+msgstr "此服务通知已通过 Tableau Online 发布。"
+
+#:
+msgid "slack.app.upgrade.email.notification.reason"
+msgstr "您收到此通知是因为您是连接到 Slack 的 Tableau Online 站点的管理员。"
+
+#:
+msgid "slack.app.upgrade.email.notification.footer.privacy"
+msgstr "阅读我们的<a styl"
+
+#:
+msgid "unifiedconsumption.tcrm.folders.private"
+msgstr "我的私有应用"
+
+
+msgid ""
+msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=utf-8"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: None"
+"Language: zh"
+#:
+msgid "commandlineutils.errors.bad_value"
+msgstr "选项 ''{0}'' 的值 ''{1}'' 无效。值必须为以下之一: {2}"
+
+#:
+msgid "commandlineutils.errors.not_integer"
+msgstr "选项 ''{1}'' 的值 ''{0}'' 不是整数"
+
+#:
+msgid "common.errors.empty_file"
+msgstr "文件 ''{0}'' 为空"
+
+#:
+msgid "common.errors.file_not_found"
+msgstr "无法打开文件 ''{0}''"
+
+#:
+msgid "common.errors.invalid_file_path"
+msgstr "文件路径“{0}”无效"
+
+#:
+msgid "common.errors.folder_path_not_found"
+msgstr "找不到目录“{0}”"
+
+#:
+msgid "common.errors.access_denied"
+msgstr "拒绝访问文件“{0}”。请检查您的路径是否有效，并且文件名是否未与现有目录匹配"
+
+#:
+msgid "common.errors.requires_csv_file"
+msgstr "''{0}'' 命令需要 CSV 文件"
+
+#:
+msgid "common.errors.requires_group_name"
+msgstr "''{0}'' 命令需要组名称"
+
+#:
+msgid "common.errors.requires_site_name"
+msgstr "''{0}'' 命令需要站点名称"
+
+#:
+msgid "common.errors.options_conflict"
+msgstr "已指定了用于指定用户角色的新选项和弃用的选项。只能使用其中一个"
+
+#:
+msgid "common.errors.csv_sizelimit"
+msgstr "您引用的 CSV 文件超出了 100MB 的大小限制。请将文件的内容划分为较小的 CSV 文件，然后单独导入这些内容。"
+
+#:
+msgid "common.options.admin-type"
+msgstr "[弃用] 为 CSV 文件中的所有用户分配或移除站点管理权限。CSV 文件中各行上的值可能会覆盖此设置。{0} 可以是: {1}、{2} 或 {3}。如果未指定: 对于新用户为 {3}，对于现有用户则不变"
+
+#:
+msgid "common.options.complete"
+msgstr "要求或不要求所有行有效以使任何更改成功。默认值: {0}"
+
+#:
+msgid "common.options.license"
+msgstr "[弃用] 设置所有用户的默认许可级别。这可能会被 CSV 文件中的值覆盖。{0} 可以是 {1}、{2} 或 {3}"
+
+#:
+msgid "common.options.nowait"
+msgstr "不等待作业完成"
+
+#:
+msgid "common.options.publisher"
+msgstr "[弃用] 为 CSV 文件中的所有用户分配或移除发布权限。CSV 文件中各行上的值可能会覆盖此设置。如果未指定则为默认值: 对于新用户为 false，对于现有用户则不变"
+
+#:
+msgid "common.options.silent-progress"
+msgstr "不显示作业的进度消息"
+
+#:
+msgid "common.options.sysadmin-type"
+msgstr "[弃用] 为 CSV 文件中的所有用户分配或移除站点管理权限。CSV 文件中各行上的值可能会覆盖此设置。{0} 可以是: {1}、{2}、{3} 或 {4}。如果未指定则为默认值: 对于新用户为 {4}，对于现有用户则不变"
+
+#:
+msgid "common.output.job_queued_success"
+msgstr "已排队作业"
+
+#:
+msgid "common.output.succeeded"
+msgstr "已成功"
+
+#:
+msgid "common.options.role"
+msgstr "为所有受影响的用户设置默认角色。{0} 的合法值是 {1}。如果未指定，则服务器使用默认值 {2}"
+
+#:
+msgid "addusers.options.users"
+msgstr "包含要添加到组的用户 (每行一个) 的列表的文件"
+
+#:
+msgid "addusers.short_description"
+msgstr "将用户添加到组"
+
+#:
+msgid "addusers.status"
+msgstr "正将 {0} 中列出的用户添加到组 {1}..."
+
+#:
+msgid "creategroup.short_description"
+msgstr "创建本地组"
+
+#:
+msgid "creategroup.status"
+msgstr "正在服务器上创建组 ''{0}''..."
+
+#:
+msgid "creategroup.options.role"
+msgstr "设置登录时将为组中的用户设置的角色。{0} 的合法值: {1}。只有当用户的站点角色比用户的当前站点角色限制更少时，用户的站点角色才会设置为此值。如果未指定，则登录时不会为此组的用户设置角色。"
+
+#:
+msgid "createextracts.errors.required_argument"
+msgstr "createextracts 命令需要工作簿 URL、工作簿名称或数据源名称。"
+
+#:
+msgid "createextracts.errors.error"
+msgstr "创建数据提取时出错"
+
+#:
+msgid "createextracts.for.datasource"
+msgstr "正在为数据源“{0}”创建数据提取"
+
+#:
+msgid "createextracts.for.workbook_name"
+msgstr "正在为名为“{0}”的工作簿创建数据提取"
+
+#:
+msgid "createextracts.for.workbook_url"
+msgstr "正在为 URL 为“{0}”的工作簿创建数据提取"
+
+#:
+msgid "createextracts.options.datasource"
+msgstr "数据提取创建的目标数据源的名称"
+
+#:
+msgid "createextracts.options.embedded-datasources"
+msgstr "目标工作簿内嵌入式数据源名称的空格分隔列表。如果数据源名称包含空格，请用双引号引起来。仅在为工作簿创建数据提取时可用。"
+
+#:
+msgid "createextracts.options.encrypt"
+msgstr "创建加密的数据提取。"
+
+#:
+msgid "createextracts.options.include-all"
+msgstr "包括目标工作簿内的所有嵌入式数据源。仅在为工作簿创建数据提取时可用。"
+
+#:
+msgid "createextracts.options.parent-project-path"
+msgstr "包含目标资源的项目的父项目路径。必须使用 --project 指定项目名称。"
+
+#:
+msgid "createextracts.options.project"
+msgstr "包含目标资源的项目的名称。仅在指定了 {0} 或 {1} 时才需要。如果未指定，则使用默认项目“{2}”。"
+
+#:
+msgid "createextracts.options.url"
+msgstr "出现在 URL 中的资源的规范名称"
+
+#:
+msgid "createextracts.options.workbook"
+msgstr "数据提取创建的目标工作簿的名称"
+
+#:
+msgid "createextracts.short_description"
+msgstr "为已发布工作簿或数据源创建数据提取"
+
+#:
+msgid "createextracts.workbook.include-all"
+msgstr "包括目标工作簿内的所有嵌入式数据源"
+
+#:
+msgid "createextracts.workbook.embedded-datasource-names"
+msgstr "包含嵌入式数据源名称"
+
+#:
+msgid "createproject.options.description"
+msgstr "项目的描述"
+
+#:
+msgid "createproject.options.name"
+msgstr "项目的名称"
+
+#:
+msgid "createproject.options.parent-project-path"
+msgstr "将包含新项目的项目路径。如果未指定，则会在站点根级别创建该路径"
+
+#:
+msgid "createproject.short_description"
+msgstr "创建项目"
+
+#:
+msgid "createproject.status"
+msgstr "正在服务器上创建项目 ''{0}''..."
+
+#:
+msgid "createsite.errors.invalid_url_option"
+msgstr "在创建多个站点时，URL 选项无效。在移除 URL 选项后重新运行此命令，或单独创建每个站点"
+
+#:
+msgid "createsite.errors.site_name_already_exists"
+msgstr "已存在名称为“{0}”的站点。请尝试其他站点名称。"
+
+#:
+msgid "createsite.errors.site_id_already_exists"
+msgstr "已存在 ID 为“{0}”的站点。请使用 -r 指定其他站点 ID。有关更多信息，请参阅 tabcmd createsite 帮助。"
+
+#:
+msgid "createsite.options.allow-mobile-snapshots"
+msgstr "允许或拒绝移动快照。默认为允许移动快照"
+
+#:
+msgid "createsite.options.allow-subscriptions"
+msgstr "允许或拒绝对此站点的订阅。默认值是服务器默认设置。如果禁用服务器订阅，则无法启用订阅"
+
+#:
+msgid "createsite.options.allow-web-authoring"
+msgstr "允许或拒绝对此站点进行 Web 制作。默认为允许 Web 制作"
+
+#:
+msgid "createsite.options.metrics-level"
+msgstr "对于无集合为 0，对于所有集合为 100"
+
+#:
+msgid "createsite.options.guest-access-enabled"
+msgstr "供未登录 Tableau Server 帐户的用户查看视图的来宾访问权限"
+
+#:
+msgid "createsite.options.site-mode"
+msgstr "允许或拒绝站点管理员在站点上管理用户"
+
+#:
+msgid "createsite.options.storage-quota"
+msgstr "站点存储配额(MB)"
+
+#:
+msgid "createsite.options.subscription-email"
+msgstr "用于订阅的电子邮件"
+
+#:
+msgid "createsite.options.subscription-footer"
+msgstr "用于订阅的脚注"
+
+#:
+msgid "createsite.options.url"
+msgstr "站点的站点 ID"
+
+#:
+msgid "createsite.options.user-quota"
+msgstr "最大站点用户数"
+
+#:
+msgid "createsite.options.extract_encryption_mode"
+msgstr "数据提取加密模式: 已禁用、已启用或强制。如果未设置，则使用默认值。"
+
+#:
+msgid "createsite.options.web_extraction_enabled"
+msgstr "允许[或拒绝]数据提取创建以及为此站点将数据提取更改为实时。默认为允许。"
+
+#:
+msgid "createsite.options.run_now_enabled"
+msgstr "为此站点允许[或拒绝]“立即运行”选项。默认值设置为允许“立即运行”。"
+
+#:
+msgid "createsite.options.time_zone"
+msgstr "要与此站点上的数据提取一起使用的时区。默认情况下未设置以使用服务器的时区。"
+
+#:
+msgid "createsite.short_description"
+msgstr "创建站点"
+
+#:
+msgid "createsite.status"
+msgstr "在服务器上创建站点 ''{0}''..."
+
+#:
+msgid "createsiteusers.options.auth-type"
+msgstr "为 CSV 文件中的所有用户分配身份验证类型。对于 Tableau Online，{0} 可能是 {1}(默认)或 {2}。对于 Tableau Server，{0} 可能是  Local (默认)或 {2}。"
+
+#:
+msgid "createsiteusers.description"
+msgstr "在当前站点上创建用户。从给定的 CSV 文件中读取用户。此文件可以包含多列，顺序如下所示。{0}1. 用户名{0}2. 密码        (如果使用 Active Directory 则忽略){0}3. 友好名称   (如果使用 Active Directory 则忽略){0}4. 许可级别({1}、{2}、{3}、{4} 或 {5}){0}5. 管理员 ({6}/{7}){0}6. 发布者 ({8}/{9}/1 或 {10}/{11}/0){0}7. 电子邮件(仅用于 Tableau Public){0}此文件可能包含更少的列。例如，它可以是简单的列表(每行一个用户名)。如果值包含逗号，则可以使用引号。Tabcmd 会等待 {12} 任务完成。您可以选择不等待此任务在服务器上完成，而是通过传递 {13} 标志立即返回。无法使用此命令创建系统管理员或将其降级。请改用“{14}”"
+
+#:
+msgid "createsiteusers.short_description"
+msgstr "在当前站点上创建用户"
+
+#:
+msgid "createsiteusers.status"
+msgstr "正将 {0} 中列出的用户添加到当前站点..."
+
+#:
+msgid "createusers.description"
+msgstr "创建用户。从给定的 CSV 文件中读取用户。此文件可以包含多列，顺序如下所示。{0}1. 用户名{0}2. 密码        (如果使用 Active Directory 则忽略){0}3. 友好名称   (如果使用 Active Directory 则忽略){0}4. 许可级别({1}、{2}、{3}、{4} 或 {5}){0}5. 管理员 ({6}/{7}/{8}/{9}){0}6. 发布者 ({10}/{11}/1 或 {12}/{13}/0){0}7. 电子邮件(仅用于 Tableau Public){0}此文件可能包含更少的列。例如，它可以是简单的列表(每行一个用户名)。如果值包含逗号，则可以使用引号。Tabcmd 会等待 {14} 任务完成。您可以选择不等待此任务在服务器上完成，而是通过传递 {15} 标志立即返回"
+
+#:
+msgid "createusers.short_description"
+msgstr "在服务器上创建用户"
+
+#:
+msgid "createusers.status"
+msgstr "正在将 {0} 中列出的用户添加到服务器"
+
+#:
+msgid "decryptextracts.short_description"
+msgstr "在站点上对数据提取进行解密"
+
+#:
+msgid "decryptextracts.status"
+msgstr "正在计划站点 {0} 上要解密的数据提取..."
+
+#:
+msgid "delete.errors.mutually_exclusive"
+msgstr "无法指定要删除的工作簿和数据源"
+
+#:
+msgid "delete.errors.requires_workbook_datasource"
+msgstr "''{0}'' 命令需要工作簿名称或数据源名称"
+
+#:
+msgid "delete.options.datasource"
+msgstr "要删除的数据源"
+
+#:
+msgid "delete.options.parent-project-path"
+msgstr "包含要删除的工作簿/数据源的项目的父项目路径。必须使用 --project 指定项目名称。"
+
+#:
+msgid "delete.options.project"
+msgstr "包含要删除的工作簿/数据源的项目。默认项目为“{0}”"
+
+#:
+msgid "delete.options.workbook"
+msgstr "要删除的工作簿"
+
+#:
+msgid "delete.short_description"
+msgstr "从服务器中删除一个工作簿或数据源"
+
+#:
+msgid "delete.status"
+msgstr "正从服务器中移除 {0} ''{1}''..."
+
+#:
+msgid "deleteextracts.errors.required_argument"
+msgstr "deleteextracts 命令需要工作簿 URL、工作簿名称或数据源名称"
+
+#:
+msgid "deleteextracts.errors.error"
+msgstr "删除数据提取时出错"
+
+#:
+msgid "deleteextracts.for.datasource"
+msgstr "正在为数据源“{0}”删除数据提取"
+
+#:
+msgid "deleteextracts.for.workbook_name"
+msgstr "正在为名为“{0}”的工作簿删除数据提取"
+
+#:
+msgid "deleteextracts.for.workbook_url"
+msgstr "正在为 URL 为“{0}”的工作簿删除数据提取"
+
+#:
+msgid "deleteextracts.options.datasource"
+msgstr "数据提取删除的目标数据源的名称"
+
+#:
+msgid "deleteextracts.options.embedded-datasources"
+msgstr "目标工作簿内嵌入式数据源名称的空格分隔列表。如果数据源名称包含空格，请用双引号引起来。仅在为工作簿删除数据提取时可用。"
+
+#:
+msgid "deleteextracts.options.include-all"
+msgstr "包括目标工作簿内的所有嵌入式数据源"
+
+#:
+msgid "deleteextracts.options.parent-project-path"
+msgstr "包含目标资源的项目的父项目路径。必须使用 --project 指定项目名称。"
+
+#:
+msgid "deleteextracts.options.project"
+msgstr "包含目标资源的项目的名称。仅在指定了 {0} 或 {1} 时才需要。如果未指定，则使用默认项目“{2}”。"
+
+#:
+msgid "deleteextracts.options.url"
+msgstr "出现在 URL 中的资源的规范名称"
+
+#:
+msgid "deleteextracts.options.workbook"
+msgstr "数据提取删除的目标工作簿的名称"
+
+#:
+msgid "deleteextracts.short_description"
+msgstr "为已发布工作簿或数据源删除数据提取"
+
+#:
+msgid "deleteextracts.workbook.include-all"
+msgstr "包括目标工作簿内的所有嵌入式数据源"
+
+#:
+msgid "deleteextracts.workbook.embedded-datasource-names"
+msgstr "包含嵌入式数据源名称"
+
+#:
+msgid "deletegroup.short_description"
+msgstr "删除组"
+
+#:
+msgid "deletegroup.status"
+msgstr "正从服务器中删除组 ''{0}''..."
+
+#:
+msgid "deleteproject.errors.requires_project_name"
+msgstr "''{0}'' 命令需要项目名称"
+
+#:
+msgid "deleteproject.options.parent-project-path"
+msgstr "要删除的项目的父项目的路径。必须使用 --project 指定项目名称。"
+
+#:
+msgid "deleteproject.short_description"
+msgstr "删除项目"
+
+#:
+msgid "deleteproject.status"
+msgstr "正从服务器中删除项目 ''{0}''..."
+
+#:
+msgid "deletesite.errors.logged_into_this_site"
+msgstr "无法删除您当前登录到的站点"
+
+#:
+msgid "deletesite.short_description"
+msgstr "删除站点"
+
+#:
+msgid "deletesite.status"
+msgstr "正从服务器中删除站点 ''{0}''..."
+
+#:
+msgid "deletesiteusers.description"
+msgstr "删除站点用户。从给定的 CSV 文件中读取用户。此文件是简单的列表 (每行一个用户名)"
+
+#:
+msgid "deletesiteusers.short_description"
+msgstr "删除站点用户"
+
+#:
+msgid "deletesiteusers.status"
+msgstr "正从服务器中删除 {0} 中列出的站点用户..."
+
+#:
+msgid "deleteusers.description"
+msgstr "删除用户。从给定的逗号分隔值 (CSV) 文件中读取用户。此文件是简单的列表 (每行一个用户名)"
+
+#:
+msgid "deleteusers.short_description"
+msgstr "删除用户"
+
+#:
+msgid "deleteusers.status"
+msgstr "正从服务器中删除 {0} 中列出的用户..."
+
+#:
+msgid "editdomain.description"
+msgstr "编辑域。使用 ''{0}'' 命令查看待编辑的域的列表"
+
+#:
+msgid "editdomain.errors.requires_nickname_name"
+msgstr "必须指定 ''{0}'' 选项或 ''{1}'' 选项"
+
+#:
+msgid "editdomain.options.id"
+msgstr "域的 ID"
+
+#:
+msgid "editdomain.options.name"
+msgstr "域的名称"
+
+#:
+msgid "editdomain.options.nickname"
+msgstr "域的昵称"
+
+#:
+msgid "editdomain.short_description"
+msgstr "编辑域"
+
+#:
+msgid "editdomain.output"
+msgstr "{0}ID{1}昵称{1}{1}名称{0}"
+
+#:
+msgid "editdomain.status"
+msgstr "在服务器上编辑 ID 为 ''{0}'' 的域..."
+
+#:
+msgid "editsite.errors.invalid_site-id"
+msgstr "在编辑多个站点时，{0} 选项无效。在移除 {0} 选项后重新运行此命令，或单独编辑每个站点"
+
+#:
+msgid "editsite.errors.invalid_site-name"
+msgstr "在编辑多个站点时，{0} 选项无效。在移除 {0} 选项后重新运行此命令，或单独编辑每个站点"
+
+#:
+msgid "editsite.options.allow-mobile-snapshots"
+msgstr "允许或拒绝移动快照"
+
+#:
+msgid "editsite.options.allow-subscriptions"
+msgstr "允许或拒绝对此站点的订阅"
+
+#:
+msgid "editsite.options.allow-web-authoring"
+msgstr "允许或拒绝对此站点进行 Web 制作"
+
+#:
+msgid "editsite.options.cache-warmup"
+msgstr "允许 [或拒绝] 预缓存此站点"
+
+#:
+msgid "editsite.options.cache-warmup-threshold"
+msgstr "必须提前查看视图以触发预缓存的最近天数阈值"
+
+#:
+msgid "editsite.options.site-name"
+msgstr "显示站点的名称"
+
+#:
+msgid "editsite.options.status"
+msgstr "更改站点的可用性。必须为 ''{0}'' 或 ''{1}''"
+
+#:
+msgid "editsite.options.allow-materialized-views"
+msgstr "为此站点允许[或拒绝]实体化视图"
+
+#:
+msgid "editsite.options.extract_encryption_mode"
+msgstr "数据提取加密模式: 已禁用、已启用或强制。如果未设置，则它在服务器上不会发生更改。"
+
+#:
+msgid "editsite.options.web_extraction_enabled"
+msgstr "允许[或拒绝]数据提取创建以及为此站点将数据提取更改为实时。默认设置为允许。"
+
+#:
+msgid "editsite.options.run_now_enabled"
+msgstr "为此站点允许[或拒绝]“立即运行”选项。默认值设置为允许“立即运行”"
+
+#:
+msgid "editsite.options.time_zone"
+msgstr "要与此站点上的数据提取一起使用的时区"
+
+#:
+msgid "editsite.options.use_default_time_zone"
+msgstr "取消设置要与此站点上的数据提取一起使用的时区，它将改为使用默认服务器时区"
+
+#:
+msgid "editsite.short_description"
+msgstr "编辑站点"
+
+#:
+msgid "editsite.status"
+msgstr "在服务器上编辑站点 ''{0}''..."
+
+#:
+msgid "encryptextracts.short_description"
+msgstr "在站点上对数据提取进行加密"
+
+#:
+msgid "encryptextracts.status"
+msgstr "正在计划站点 {0} 上要加密的数据提取..."
+
+#:
+msgid "export.errors.need_country_and_languge"
+msgstr "选项 --country 和 --language 必须一起使用"
+
+#:
+msgid "export.errors.white_space_workbook_view"
+msgstr "要导出的工作簿或视图的名称不能包括空格。请使用工作簿或视图出现在 URL 中时的标准化名称。"
+
+#:
+msgid "export.errors.requires_workbook_view_name"
+msgstr "“{0}”命令需要 <工作簿>/<视图> 名称"
+
+#:
+msgid "export.errors.requires_workbook_view_param"
+msgstr "“{0}”命令需要 <工作簿>/<视图> 参数，而且在此参数中至少必须有一个斜杠(/)"
+
+#:
+msgid "export.options.country"
+msgstr "如果未使用用户的默认区域设置，则为区域设置的国家/地区缩写(在 IANA 语言子标记注册表中查找)。必须与 --language 一起使用"
+
+#:
+msgid "export.options.csv"
+msgstr "将数据导出为 CSV 格式(默认)"
+
+#:
+msgid "export.options.fullpdf"
+msgstr "将可视化视图导出为 PDF 格式(如果发布了带选项卡的工作簿)"
+
+#:
+msgid "export.options.height"
+msgstr "设置高度。必须为整数值(默认值: 600 个像素)"
+
+#:
+msgid "export.options.language"
+msgstr "如果未使用用户的默认区域设置，则为区域设置的语言缩写(在 IANA 语言子标记注册表中查找)。必须与 --country 一起使用"
+
+#:
+msgid "export.options.pagelayout"
+msgstr "设置导出的 PDF 的页面方向。合法值: {0}。如果未指定，将使用 Tableau Desktop 中的设置"
+
+#:
+msgid "export.options.pagesize"
+msgstr "设置导出的 PDF 的页面大小。合法值: {0} (默认值: ''{1}'')"
+
+#:
+msgid "export.options.pdf"
+msgstr "将数据导出为 PDF 格式"
+
+#:
+msgid "export.options.png"
+msgstr "将数据导出为 PNG 格式"
+
+#:
+msgid "export.options.width"
+msgstr "设置宽度。必须为整数值(默认值: 800 个像素)"
+
+#:
+msgid "export.short_description"
+msgstr "从服务器中导出数据或视图的图像"
+
+#:
+msgid "export.status"
+msgstr "正向服务器请求 ''{0}''..."
+
+#:
+msgid "export.success"
+msgstr "已将 {0} 保存到 ''{1}''"
+
+#:
+msgid "extracts.workbook.errors.requires_datasources_or_include_all"
+msgstr "工作簿的命令 {0} 需要嵌入式数据源或 include-all 标志。"
+
+#:
+msgid "fileuploader.progress"
+msgstr "上载进度: {0}%"
+
+#:
+msgid "get.description"
+msgstr "从服务器中获取文件。如果未指定文件名参数，则将使用路径的最后一部分作为此文件的名称。"
+
+#:
+msgid "get.errors.requires_url"
+msgstr "''{0}'' 命令需要 URL"
+
+#:
+msgid "get.options.file"
+msgstr "用于保存文件的名称"
+
+#:
+msgid "get.short_description"
+msgstr "从服务器中获取文件"
+
+#:
+msgid "help.available_commands"
+msgstr "可用命令:"
+
+#:
+msgid "help.command_options"
+msgstr "命令选项:"
+
+#:
+msgid "help.description0"
+msgstr "显示特定命令的帮助"
+
+#:
+msgid "help.description1"
+msgstr "列出所有可用命令"
+
+#:
+msgid "help.errors.unknown_command"
+msgstr "未知命令: {0}"
+
+#:
+msgid "help.global_options"
+msgstr "全局选项:"
+
+#:
+msgid "help.short_description"
+msgstr "tabcmd 命令的帮助"
+
+#:
+msgid "httputils.found_attachment"
+msgstr "找到附件: {0}"
+
+#:
+msgid "httputils.mapped_attachment"
+msgstr "找到附件: {0} (重新映射到 {1})"
+
+#:
+msgid "initialuser.errors.username_and_password_required"
+msgstr "需要提供用户名和密码"
+
+#:
+msgid "initialuser.options.friendly-name"
+msgstr "友好名称"
+
+#:
+msgid "initialuser.short_description"
+msgstr "在未初始化的服务器上创建初始用户"
+
+#:
+msgid "listdomains.description"
+msgstr "列出域"
+
+#:
+msgid "listdomains.status"
+msgstr "正列出服务器中的域..."
+
+#:
+msgid "listsites.output"
+msgstr "{0}{0}名称: {1} {0}站点 ID:“{2}”"
+
+#:
+msgid "listsites.output_extended"
+msgstr "{0}{0}名称: {1} {0}站点 ID:“{2}”{0}数据提取加密: {3}"
+
+#:
+msgid "listsites.short_description"
+msgstr "列出用户的站点"
+
+#:
+msgid "listsites.status"
+msgstr "正在列出用户 {0} 的站点..."
+
+#:
+msgid "listsites.options.get_extract_encryption_mode"
+msgstr "打印站点的数据提取加密模式"
+
+#:
+msgid "login.description"
+msgstr "登录到服务器。您的会话将继续，直到它在服务器上过期或您使用 {0} 为止"
+
+#:
+msgid "login.short_description"
+msgstr "登录到服务器"
+
+#:
+msgid "logout.short_description"
+msgstr "从服务器中退出"
+
+#:
+msgid "publish.description"
+msgstr "将工作簿、数据源或数据提取发布到服务器"
+
+#:
+msgid "publish.errors.invalid_datasource_update_file_type"
+msgstr "用于更新数据源的文件类型 ''{0}'' 不正确。替换/追加仅适用于数据提取 (.tde) 文件"
+
+#:
+msgid "publish.errors.invalid_name_option"
+msgstr "在发布多项时，{0} 选项无效"
+
+#:
+msgid "publish.errors.invalid_publish_file_type"
+msgstr "用于发布的文件类型 ''{0}'' 不正确，文件类型应为 .tde、.tds、.tdsx、.twb 或 .twbx"
+
+#:
+msgid "publish.errors.mutually_exclusive_option"
+msgstr "仅使用 {0} 或 {1} 之一"
+
+#:
+msgid "publish.errors.requires_resource_file"
+msgstr "''{0}'' 命令需要工作簿、数据源或数据提取文件"
+
+#:
+msgid "publish.errors.unexpected_server_response"
+msgstr "来自服务器的意外响应: {0}"
+
+#:
+msgid "publish.errors.server_resource_not_found"
+msgstr "指定的资源不存在，或者您没有查看该资源的权限。请检查您的项目名称和权限"
+
+#:
+msgid "publish.options.append"
+msgstr "将数据提取文件追加到现有数据源"
+
+#:
+msgid "publish.options.async"
+msgstr "异步发布"
+
+#:
+msgid "publish.options.db-password"
+msgstr "用于所有数据源的数据库密码"
+
+#:
+msgid "publish.options.db-username"
+msgstr "用于所有数据源的数据库用户名"
+
+#:
+msgid "publish.options.description"
+msgstr "工作簿或数据源的描述"
+
+#:
+msgid "publish.options.encrypt_extracts"
+msgstr "在服务器上对数据提取进行加密"
+
+#:
+msgid "publish.options.name"
+msgstr "服务器上的工作簿/数据源名称。如果省略，将使用文件名作为工作簿/数据源名称(无 twb(x)、tds(x) 或 tde 扩展名)。发布 .tde 文件将会创建数据源"
+
+#:
+msgid "publish.options.oauth-username"
+msgstr "使用在与 USERNAME 关联的服务器密钥链上保存的凭据来发布"
+
+#:
+msgid "publish.options.overwrite"
+msgstr "覆盖现有的工作簿/数据源(如果有)"
+
+#:
+msgid "publish.options.project"
+msgstr "要将工作簿/数据源发布到的项目"
+
+#:
+msgid "publish.options.parent-project-path"
+msgstr "要向其中发布工作簿/数据源的项目的父项目的路径"
+
+#:
+msgid "publish.options.replace"
+msgstr "将数据提取文件替换到现有数据源"
+
+#:
+msgid "publish.options.restart"
+msgstr "重新开始文件上传"
+
+#:
+msgid "publish.options.save-db-password"
+msgstr "在服务器上存储数据库密码"
+
+#:
+msgid "publish.options.save-oauth"
+msgstr "嵌入利用 {0} 指定的 OAuth 凭据"
+
+#:
+msgid "publish.options.tabbed"
+msgstr "发布(启用了选项卡式视图)"
+
+#:
+msgid "publish.options.thumbnail-groupname"
+msgstr "如果工作簿包含任何用户筛选器，则在计算缩略图时模拟此组"
+
+#:
+msgid "publish.options.thumbnail-username"
+msgstr "如果工作簿包含任何用户筛选器，则在计算缩略图时模拟此用户"
+
+#:
+msgid "publish.status"
+msgstr "正在将 ''{0}'' 发布到服务器。这可能需要几分钟时间..."
+
+#:
+msgid "publish.success"
+msgstr "文件成功发布到服务器上的以下位置:"
+
+#:
+msgid "publishsamples.options.parent-project-path"
+msgstr "要向其中发布样本的项目的父项目的路径。必须使用 --project 指定项目名称"
+
+#:
+msgid "publishsamples.options.projectname"
+msgstr "要将示例发布到的项目的名称"
+
+#:
+msgid "publishsamples.short_description"
+msgstr "将示例工作簿发布到指定的项目。现有示例将被覆盖。"
+
+#:
+msgid "publishsamples.status"
+msgstr "正在发布示例..."
+
+#:
+msgid "reencryptextracts.short_description"
+msgstr "在站点上对数据提取重新加密"
+
+#:
+msgid "reencryptextracts.status"
+msgstr "正在计划站点 {0} 上要重新加密的数据提取..."
+
+#:
+msgid "refreshextracts.errors.required_argument"
+msgstr "refreshextracts 命令需要工作簿 URL、工作簿名称或数据源名称"
+
+#:
+msgid "refreshextracts.errors.add_and_remove_calculations"
+msgstr "无法同时使用 --addcalculations 和 --removecalculations 选项运行刷新"
+
+#:
+msgid "refreshextracts.errors.calculations_and_incremental"
+msgstr "无法在增量数据提取刷新期间添加或移除实体化计算"
+
+#:
+msgid "refreshextracts.errors.error"
+msgstr "刷新数据提取时出错"
+
+#:
+msgid "refreshextracts.options.datasource"
+msgstr "要刷新的数据源的名称"
+
+#:
+msgid "refreshextracts.options.incremental"
+msgstr "执行增量刷新(如果支持)"
+
+#:
+msgid "refreshextracts.options.parent-project-path"
+msgstr "包含要刷新的数据提取的项目的父项目路径。必须使用 --project 指定项目名称。"
+
+#:
+msgid "refreshextracts.options.project"
+msgstr "包含工作簿/数据源的项目的名称。仅在指定了 {0} 或 {1} 时才需要。如果未指定，则使用默认项目 ''{2}''"
+
+#:
+msgid "refreshextracts.options.synchronous"
+msgstr "在退出前等待刷新运行并完成"
+
+#:
+msgid "refreshextracts.options.url"
+msgstr "出现在 URL 中的工作簿或视图典型名称"
+
+#:
+msgid "refreshextracts.options.workbook"
+msgstr "要刷新的工作簿的名称"
+
+#:
+msgid "refreshextracts.options.addcalculations"
+msgstr "向数据提取中添加实体化计算"
+
+#:
+msgid "refreshextracts.options.removecalculations"
+msgstr "从数据提取中移除实体化计算"
+
+#:
+msgid "refreshextracts.short_description"
+msgstr "刷新服务器上的工作簿或数据源的数据提取"
+
+#:
+msgid "refreshextracts.status_incremented"
+msgstr "正在安排要立即递增的 {0} ''{1}'' 数据提取..."
+
+#:
+msgid "refreshextracts.status_refreshed"
+msgstr "正在安排要立即刷新的 {0} ''{1}'' 数据提取..."
+
+#:
+msgid "removeusers.options.users"
+msgstr "包含要从组中移除的用户的列表 (每行一个用户) 的文件"
+
+#:
+msgid "removeusers.short_description"
+msgstr "从组中移除用户"
+
+#:
+msgid "removeusers.status"
+msgstr "正从组 {1} 中移除在 {0} 中列出的用户..."
+
+#:
+msgid "runschedule.errors.requires_schedule_name"
+msgstr "''{0}'' 命令需要计划名称"
+
+#:
+msgid "runschedule.short_description"
+msgstr "运行计划"
+
+#:
+msgid "runschedule.status"
+msgstr "正在服务器上运行计划 ''{0}''..."
+
+#:
+msgid "materializeviews.short_description"
+msgstr "更新并检查站点/工作簿的实体化视图设置"
+
+#:
+msgid "materializeviews.status.site"
+msgstr "正在为站点“{0}”更新实体化视图设置..."
+
+#:
+msgid "materializeviews.status.workbook"
+msgstr "正在为工作簿“{0}”更新实体化视图设置..."
+
+#:
+msgid "materializeviews.errors.invalid_workbook_arguments"
+msgstr "materializeviews 命令需要一个工作簿名称参数"
+
+#:
+msgid "materializeviews.errors.invalid_site_arguments"
+msgstr "materializeviews 命令需要一个站点 ID 参数"
+
+#:
+msgid "materializeviews.errors.invalid_workbook_option"
+msgstr "将“{0}”或“{1}”与“{2}”搭配使用"
+
+#:
+msgid "materializeviews.errors.invalid_project_path"
+msgstr "将“{1}”与“{0}”搭配使用"
+
+#:
+msgid "materializeviews.errors.invalid_site_option"
+msgstr "将“{0}”与“{1}”搭配使用"
+
+#:
+msgid "materializeviews.errors.site_mode_conflict"
+msgstr "使用“{0}”或“{1}”更改站点实体化视图模式"
+
+#:
+msgid "materializeviews.errors.site_not_updated"
+msgstr "站点“{0}”未更新，只有服务器管理员才能更改实体化视图设置"
+
+#:
+msgid "materializeviews.errors.invalid_argument_options_combination"
+msgstr "使用“{0}”或“{1}”更改实体化视图设置"
+
+#:
+msgid "materializeviews.options.materialize_now"
+msgstr "使用“{0}”立即为给定工作簿计划实体化"
+
+#:
+msgid "materializeviews.options.project"
+msgstr "使用“{0}”指定项目名称"
+
+#:
+msgid "materializeviews.options.parent_project_path"
+msgstr "使用“{0}”指定“{1}”的父项目路径"
+
+#:
+msgid "materializeviews.options.allow_workbook"
+msgstr "使用“{0}”为工作簿启用/禁用实体化视图"
+
+#:
+msgid "materializeviews.options.allow_site"
+msgstr "使用“{0}”为站点启用/禁用实体化视图"
+
+#:
+msgid "materializeviews.options.selected_workbooks"
+msgstr "使用“{0}”在站点中启用所选工作簿，与选项“{1}”搭配使用。此选项为默认选项"
+
+#:
+msgid "materializeviews.options.all_workbooks"
+msgstr "使用“{0}”在站点中启用所有工作簿，与选项“{1}”搭配使用"
+
+#:
+msgid "session.auto_site_login"
+msgstr "自动登录到站点: {0}"
+
+#:
+msgid "session.certificate-alias"
+msgstr "证书别名: {0}"
+
+#:
+msgid "session.connecting"
+msgstr "正在连接到服务器..."
+
+#:
+msgid "session.continuing_session"
+msgstr "正在继续以前的会话"
+
+#:
+msgid "session.errors.auth_required"
+msgstr "需要授权"
+
+#:
+msgid "session.errors.invalid_keystore_password"
+msgstr "密钥存储密码错误。请输入正确的密码，然后重试"
+
+#:
+msgid "session.errors.invalid_redirect"
+msgstr "无法重定向到无效的 URL: {0}"
+
+#:
+msgid "session.errors.keystore_pwdfile_create"
+msgstr "无法创建密钥存储密码文件，错误: {0}"
+
+#:
+msgid "session.errors.missing_arguments"
+msgstr "由于缺少参数而无法登录: {0}"
+
+#:
+msgid "session.errors.no_redirect_found"
+msgstr "重定向响应中无重定向地址"
+
+#:
+msgid "session.errors.no_sslcafile_found"
+msgstr "在以下位置中找不到证书颁发机构 (CA) 文件:“{0}”。CA 文件用于帮助确保与 Tableau Server 的通信安全。有关创建 CA 文件的信息，请参见 Tableau Server 帮助。若要连接到 Tableau Server 而不验证其 SSL 证书，请使用 --no-certcheck 标志。"
+
+#:
+msgid "session.errors.script_no_password"
+msgstr "从脚本或 IDE 中运行了 Tabcmd，但没有提供密码。必须将密码作为参数提供给 tabcmd 才能登录。"
+
+#:
+msgid "session.errors.session_expired"
+msgstr "您的会话已过期"
+
+#:
+msgid "session.errors.unsupported_command"
+msgstr "此服务器不支持的命令"
+
+#:
+msgid "session.keystore.notice"
+msgstr "是否想要将密码存储在本地，以避免下一次键入密码? [回答是或否]"
+
+#:
+msgid "session.keystore.password"
+msgstr "密钥存储密码:"
+
+#:
+msgid "session.keystore.pwdfile_create"
+msgstr "在以下路径中创建密钥存储密码文件: {0}"
+
+#:
+msgid "session.keystore.pwdfile_remove"
+msgstr "删除包含错误密码的密钥存储密码文件"
+
+#:
+msgid "session.login"
+msgstr "正在登录..."
+
+#:
+msgid "session.logout"
+msgstr "已退出"
+
+#:
+msgid "session.monitorjob.errors.no_jobid"
+msgstr "无法监视作业。未找到 job_id: {0}"
+
+#:
+msgid "session.monitorjob.percent_complete"
+msgstr "已完成 {0}%"
+
+#:
+msgid "session.new_session"
+msgstr "正在创建新会话"
+
+#:
+msgid "session.no-certificate-found"
+msgstr "找不到有效的客户端证书"
+
+#:
+msgid "session.not_default_site_member"
+msgstr "您不是默认站点的成员。请从以下站点中选择一个 SITEID:"
+
+#:
+msgid "session.not_site_member"
+msgstr "您不是站点 ''{0}'' 的成员。请从以下站点中选择一个 SITEID:"
+
+#:
+msgid "session.options.help"
+msgstr "显示 tabcmd 帮助"
+
+#:
+msgid "session.options.no-certcheck"
+msgstr "不验证 SSL 证书"
+
+#:
+msgid "session.options.no-cookie"
+msgstr "在登录时不保存会话 ID。后续命令将需要重新登录。如果未指定，则默认为保存会话 ID"
+
+#:
+msgid "session.options.no-prompt"
+msgstr "不提示输入密码"
+
+#:
+msgid "session.options.no-proxy"
+msgstr "不使用 HTTP 代理"
+
+#:
+msgid "session.options.password"
+msgstr "使用指定的 Tableau Server 密码"
+
+#:
+msgid "session.options.password-file"
+msgstr "从 FILE 中读取 Tableau Server 密码"
+
+#:
+msgid "session.options.proxy"
+msgstr "使用指定的 HTTP 代理"
+
+#:
+msgid "session.options.server"
+msgstr "使用指定的 Tableau Server URL。如果未指定协议，则使用 http://"
+
+#:
+msgid "session.options.site"
+msgstr "使用指定的 Tableau Server 站点。指定空字符串('''')可强制使用默认站点"
+
+#:
+msgid "session.options.timeout"
+msgstr "等待多长时间(以秒为单位)以让服务器完成对命令的处理。默认为等待到服务器响应"
+
+#:
+msgid "session.options.use-certificate"
+msgstr "使用客户端证书登录"
+
+#:
+msgid "session.options.username"
+msgstr "使用指定的 Tableau Server 用户名"
+
+#:
+msgid "session.password"
+msgstr "密码:"
+
+#:
+msgid "session.retrying_task"
+msgstr "正在再次登录以使用新会话重试原始命令..."
+
+#:
+msgid "session.session_expired_login"
+msgstr "您的会话已过期。正在注销以清除会话..."
+
+#:
+msgid "session.site_list"
+msgstr "{0}{0}名称: {1}{0}站点 ID:“{2}”"
+
+#:
+msgid "session.using-certificate"
+msgstr "使用客户端证书登录"
+
+#:
+msgid "session.inferred_username"
+msgstr "正在以“{0}”用户身份登录，因为未提供 --username 标志"
+
+#:
+msgid "sessiondata.errors.bad_api"
+msgstr "格式错误的服务器 API: {0}"
+
+#:
+msgid "sessiondata.errors.no_server_api"
+msgstr "无法在响应中找到服务器 API 版本"
+
+#:
+msgid "sessiondata.errors.version_mismatch"
+msgstr "Tabcmd 版本 {0} (API {1})与 Tableau Server 版本 {2} (API {3})不匹配"
+
+#:
+msgid "sessionoptions.errors.ambiguous_scheme"
+msgstr "指定服务器名称前的 ''{0}'' 或 ''{1}''"
+
+#:
+msgid "sessionoptions.errors.bad_password_file"
+msgstr "无法从文件 ''{0}'' 中读取密码"
+
+#:
+msgid "sessionoptions.errors.bad_protocol"
+msgstr "不支持协议 ''{0}''"
+
+#:
+msgid "sessionoptions.errors.bad_proxy_format"
+msgstr "代理格式不符合 HOST:PORT: {0}"
+
+#:
+msgid "sessionoptions.errors.bad_timeout"
+msgstr "已忽略 {0} ''{1}'' 的非数字参数"
+
+#:
+msgid "set.description"
+msgstr "设置服务器上的某个设置。使用 !setting 关闭设置"
+
+#:
+msgid "set.errors.requires_setting_name"
+msgstr "''{0}'' 命令需要设置名称"
+
+#:
+msgid "set.errors.single_setting_name"
+msgstr "''{0}'' 命令获取单个设置名称"
+
+#:
+msgid "set.short_description"
+msgstr "设置服务器上的某个设置"
+
+#:
+msgid "setsetting.status"
+msgstr "正在将 ''{0}'' 设置为 {1}"
+
+#:
+msgid "syncgroup.errors.server_admin"
+msgstr "组的最低站点角色不能设置为“服务器管理员”。"
+
+#:
+msgid "syncgroup.options.role"
+msgstr "为组中的所有用户设置默认角色。{0} 的合法值: {1}。如果用户已存在，则仅在给定角色的限制性低于用户当前角色时才会应用给定的角色。如果未指定，则默认为 {2} (对于新用户) 和不变 (对于现有用户)"
+
+#:
+msgid "syncgroup.options.overwritesiterole"
+msgstr "使用 --role 时，允许将用户的站点角色更改为权限较低的角色，并覆盖默认行为。"
+
+#:
+msgid "syncgroup.options.grantlicensemode"
+msgstr "何时为用户授予针对组指定的许可证。合法值为: {0}。如果未传入值，将使用“on-sync”作为默认值。"
+
+#:
+msgid "syncgroup.short_description"
+msgstr "使服务器与 Active Directory 组同步"
+
+#:
+msgid "syncgroup.status"
+msgstr "正在使服务器与 Active Directory 组 {0} 同步..."
+
+#:
+msgid "syncgroup.options.sysadmin-type"
+msgstr "[已弃用。请改用 --role。] 为本组中的所有用户分配 [或删除] 管理员权限。{0} 可以是：{1}、{2}、{3} 或 {4}。"
+
+#:
+msgid "syncgroup.options.license"
+msgstr "[已弃用。请改用 --role。] 为本组中的所有用户设置默认许可级别。{0} 可以是：{1}、{2} 或 {3}。"
+
+#:
+msgid "syncgroup.options.publisher"
+msgstr "[已弃用。请改用 --role。] 为本组中的所有用户分配 [或删除] 发布权限。"
+
+#:
+msgid "tabcmd.mutually_exclusive_options"
+msgstr "无法在同一命令中指定 ''{0}'' 和 ''{1}''"
+
+#:
+msgid "tabcmdparser.errors.ambiguous_option"
+msgstr "选项中的不明确选项 ''{0}'': {1}"
+
+#:
+msgid "tabcmdparser.warning.unexpected_dash"
+msgstr "在参数 {0} 中检测到意外的破折号。有效的破折号为 -、--。此错误通常在从带格式设置的文本编辑器中复制/粘贴时发生。请尝试在命令行中重新键入适用于参数的破折号。"
+
+#:
+msgid "resetopenidsub.short_description"
+msgstr "为用户重置 OpenID Connect SubId"
+
+#:
+msgid "resetopenidsub.options.targetusername"
+msgstr "要重置的用户"
+
+#:
+msgid "resetopenidsub.options.all"
+msgstr "重置所有用户"
+
+#:
+msgid "version.description"
+msgstr "打印版本信息"
+
+#:
+msgid "vizqlsession.errors.cannot_create_session"
+msgstr "未能在服务器上创建 VizQl 会话"
+
+#:
+msgid "vizqlsession.errors.no_command_result"
+msgstr "无法找到命令结果: {0}"
+
+#:
+msgid "vizqlsession.errors.session_already_closed"
+msgstr "VizQl 会话对象已关闭"
+
+#:
+msgid "vizqlsession.errors.cannot_parse_response"
+msgstr "无法分析 JSON 响应字符串: {0}"
+
+#:
+msgid "upgradethumbnails.short_description"
+msgstr "这将运行“升级缩略图”后台程序作业。这会将 Tableau 2018.2 之前生成的任何缩略图重新渲染为高分辨率。这可能会增加 Tableau Server 和外部数据源的负载。如果出现任何问题，可通过运行 tabcmd upgradethumbnails --server <server> --stop 来停止作业"
+
+#:
+msgid "upgradethumbnails.options.stop"
+msgstr "停止所有升级缩略图相关作业"
+
+#:
+msgid "upgradethumbnails.status.running"
+msgstr "正在开始缩略图升级"
+
+#:
+msgid "upgradethumbnails.status.not_running"
+msgstr "未开始缩略图升级"
+
+#:
+msgid "upgradethumbnails.status.cancelling"
+msgstr "正在取消缩略图升级作业"
+
+#:
+msgid "upgradethumbnails.continue_promt"
+msgstr "是否要继续? 输入 1 表示是，输入 0 表示否(1/0)"
+
+#:
+msgid "upgradethumbnails.invalid_response"
+msgstr "响应无效"
+
+#:
+msgid "validateidpmetadata.options.digest_algorithms"
+msgstr "以空格分隔的摘要算法列表。{0} 的合法值: {1}。如果未指定，服务器将使用服务器配置设置中的值: {2}"
+
+#:
+msgid "validateidpmetadata.options.min_allowed_rsa_key_size"
+msgstr "如果未指定，服务器将使用服务器配置设置中的值: {0}"
+
+#:
+msgid "validateidpmetadata.options.min_allowed_elliptic_curve_size"
+msgstr "如果未指定，服务器将使用服务器配置设置中的值: {0}"
+
+#:
+msgid "validateidpmetadata.options.site_names"
+msgstr "要对其执行证书验证的站点名称的空格分隔列表。如果未指定，则检查所有站点。"
+
+#:
+msgid "validateidpmetadata.short_description"
+msgstr "标识使用不安全摘要算法 SHA-1 配置了 IdP 的 Tableau Server 站点。此命令还标识使用 RSA 密钥大小或椭圆曲线大小不足的证书的 IdP。"
+
+
+msgid ""
+msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=utf-8"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: None"
+"Language: zh"
+# Copyright (C) YEAR Tableau Software
+
+
+# These outcome reporting lines were all returned from the server in clientxml
+# https://sourcegraph.prod.tableautools.com/teams/near/-/blob/workgroup/src/shared/libraries/tab-strings/res/localization/shared_wg_en.properties
+# how much of this can be replaced by server responses?
+
+msgid "tabcmd.result.already_exists.group"
+msgstr "Group called ''{}'' already exists"
+
+msgid "tabcmd.result.failed.delete.group"
+msgstr "Error deleting group from server"
+
+msgid "tabcmd.result.success.create_user"
+msgstr "Successfully created user: {}"
+
+msgid "tabcmd.report.users_added"
+msgstr "Number of users added: {}"
+
+msgid "tabcmd.report.errors"
+msgstr "Error details: \n{}"
+
+msgid "tabcmd.report.error.user_csv.too_many_columns"
+msgstr "The file contains {} columns, but there are only {} valid columns in a user import csv file"
+
+msgid "tabcmd.report.error.user_csv.at_char"
+msgstr "If a user name includes an @ character that represents anything other than a domain separator, "
+                    "you need to refer to the symbol using the hexadecimal format: \\0x40"
+
+msgid "tabcmd.report.error.user.no_spaces_in_username"
+msgstr "Username cannot contain spaces"
+
+msgid "tabcmd.report.error.generic_attribute"
+msgstr "Invalid value for {0}: {1}"
+
+msgid "tabcmd.report.error.publish_samples.expected_project"
+msgstr "publishsamples expects the specified project to exist already"
+
+msgid "tabcmd.result.failure.publish_samples"
+msgstr "Failed publishing samples to project"
+
+msgid "tabcmd.launching"
+msgstr "======================= Launching command ======================="
+
+msgid "tabcmd.find.group"
+msgstr "Finding group ''{}'' on server..."
+
+# Each actual command has a status line in translation
+
+msgid "tabcmd.add.users.to_site"
+msgstr "===== Adding users listed in {0} to {1}..."
+
+msgid "tabcmd.delete.users.from_server"
+msgstr "Removing users listed in {0} from the server..."
+
+msgid "tabcmd.get.extension.not_found"
+msgstr "You must specify a file type in the url or filename"
+
+msgid "tabcmd.run_schedule.options.schedule"
+msgstr "Name of the schedule to run"

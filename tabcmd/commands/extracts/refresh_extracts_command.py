@@ -5,12 +5,13 @@ from tabcmd.commands.auth.session import Session
 from tabcmd.commands.extracts.extracts_command import ExtractsCommand
 from tabcmd.execution.logger_config import log
 from tabcmd.commands.constants import Errors
+from tabcmd.execution.localize import _
 
 
 class RefreshExtracts(ExtractsCommand):
 
     name: str = "refreshextracts"
-    description: str = "Refresh the extracts of a workbook or datasource on the server"
+    description: str = _("refreshextracts.short_description")
 
     @staticmethod
     def define_args(refresh_extract_parser):
@@ -22,16 +23,12 @@ class RefreshExtracts(ExtractsCommand):
         set_calculations_options(refresh_extract_parser)
         set_project_arg(refresh_extract_parser)
         set_parent_project_arg(refresh_extract_parser)
-        refresh_extract_parser.add_argument(
-            "--url",
-            help="The name of the workbook as it appears in the URL. A workbook published as “Sales Analysis” \
-            has a URL name of “SalesAnalysis”.",
-        )
+        refresh_extract_parser.add_argument("--url", help=_("refreshextracts.options.url"))
 
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug("======================= Launching command =======================")
+        logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
         refresh_action = "refresh"
@@ -49,5 +46,5 @@ class RefreshExtracts(ExtractsCommand):
                 job = server.workbooks.refresh(workbook_id)
 
         except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, "Error refreshing extracts", e)
+            Errors.exit_with_error(logger, _("refreshextracts.errors.error"), e)
         ExtractsCommand.print_success_message(logger, refresh_action, job)

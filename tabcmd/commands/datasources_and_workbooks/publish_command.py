@@ -3,8 +3,10 @@ import tableauserverclient as TSC
 from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
+from tabcmd.commands.constants import Errors
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
+from tabcmd.execution.localize import _
 
 
 class PublishCommand(DatasourcesAndWorkbooks):
@@ -14,7 +16,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
     """
 
     name: str = "publish"
-    description: str = "Publish a workbook, data source, or extract to the server"
+    description: str = _("publish.description")
 
     @staticmethod
     def define_args(publish_parser):
@@ -31,7 +33,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug("======================= Launching command =======================")
+        logger.debug(_("tabcmd.launching"))
         logger.debug(args)
         session = Session()
         server = session.create_session(args)
@@ -44,7 +46,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
                     logger, server, args.project_name, args.parent_project_path
                 )
             except Exception as exc:
-                Errors.exit_with_error(logger, "Error getting project from server", exc)
+                Errors.exit_with_error(logger, _("publish.errors.server_resource_not_found"), exc)
         else:
             project_id = ""
             args.project_name = "default"
@@ -53,7 +55,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
         publish_mode = PublishCommand.get_publish_mode(args)
 
         source = PublishCommand.get_filename_extension_if_tableau_type(logger, args.filename)
-        logger.info("===== Publishing '{}' to the server. This could take several minutes...".format(args.filename))
+        logger.info(_("publish.status").format(args.filename))
         if source in ["twbx", "twb"]:
             new_workbook = TSC.WorkbookItem(project_id, name=args.name, show_tabs=args.tabbed)
             new_workbook = server.workbooks.publish(new_workbook, args.filename, publish_mode)
@@ -67,9 +69,8 @@ class PublishCommand(DatasourcesAndWorkbooks):
     @staticmethod
     def print_success(logger, item):
         logger.info(
-            "===== File successfully published to the server at the following location:\n===== {}".format(
-                item.webpage_url
-            )
+            _("===== File successfully published to the server at the following location:\n=====")
+            + "{}".format(item.webpage_url)
         )
 
     @staticmethod
