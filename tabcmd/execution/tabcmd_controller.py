@@ -1,6 +1,7 @@
 from .localize import set_client_locale
 from .map_of_commands import *
 from .parent_parser import ParentParser
+from .localize import set_client_locale
 import logging
 
 
@@ -23,6 +24,10 @@ class TabcmdController:
             sys.exit(0)
         user_input = user_input or sys.argv[1:]
         namespace = parser.parse_args(user_input)
+
+        if namespace.language:
+            set_client_locale(namespace.language)
+
         logger = log(__name__, namespace.logging_level or logging.INFO)
         if namespace.language:
             set_client_locale(namespace.language, logger.debug)
