@@ -33,7 +33,7 @@ pytest.xml
 html
 *.html
 *.twbr
-
+_version.py
 **/credentials.py
 *.txt
 

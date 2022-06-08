@@ -1,4 +1,5 @@
 import argparse
+from setuptools_scm import get_version
 
 
 class ParentParser:
@@ -122,8 +123,8 @@ class ParentParser:
             "-v",
             "--version",
             action="version",
-            version="tabcmd - Tableau Server Command Line Utility 2.0 (pre-release)\n \n",
-            help=_("version.description"),
+            version="tabcmd.exe - Tableau Server Command Line Utility v" + get_version() + "\n \n",
+            help="Show version information and exit.",
         )
 
         # TODO get the list of choices dynamically?
