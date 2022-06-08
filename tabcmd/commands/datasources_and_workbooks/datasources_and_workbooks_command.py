@@ -19,7 +19,7 @@ class DatasourcesAndWorkbooks(Server):
             req_option.filter.add(TSC.Filter("contentUrl", TSC.RequestOptions.Operator.Equals, view_content_url))
             matching_views, _ = server.views.get(req_option)
             if len(matching_views) == 0:
-                raise ValueError("Could not find view " + view_content_url + ". Please check the name and try again")
+                raise ValueError(_("publish.errors.server_resource_not_found"))
             selected_view = matching_views[0]
             return selected_view
         except Exception as e:
@@ -32,9 +32,7 @@ class DatasourcesAndWorkbooks(Server):
             req_option.filter.add(TSC.Filter("contentUrl", TSC.RequestOptions.Operator.Equals, workbook_content_url))
             matching_workbooks, _ = server.workbooks.get(req_option)
             if len(matching_workbooks) == 0:
-                raise ValueError(
-                    "Could not find workbook " + workbook_content_url + ". Please check the name and try again.",
-                )
+                raise ValueError(_("publish.errors.server_resource_not_found"))
             selected_workbook = matching_workbooks[0]
             return selected_workbook
         except Exception as e:

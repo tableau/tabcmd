@@ -17,7 +17,7 @@ class CreateExtracts(ExtractsCommand):
 
     @staticmethod
     def define_args(create_extract_parser):
-        set_ds_xor_wb_args(create_extract_parser, required=True)
+        set_ds_xor_wb_args(create_extract_parser)
         set_embedded_datasources_options(create_extract_parser)
         set_encryption_option(create_extract_parser)
         set_project_arg(create_extract_parser)

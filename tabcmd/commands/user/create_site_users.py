@@ -40,7 +40,7 @@ class CreateSiteUsersCommand(UserCommand):
 
         logger.info(_("tabcmd.add.users.to_x").format(args.filename.name, creation_site))
         user_obj_list = UserCommand.get_users_from_file(args.filename, logger)
-        logger.info(_("session.monitorjob.percent_complete").format(0)
+        logger.info(_("session.monitorjob.percent_complete").format(0))
         error_list = []
         for user_obj in user_obj_list:
             try:

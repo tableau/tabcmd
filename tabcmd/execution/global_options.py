@@ -183,7 +183,6 @@ def set_workbook_arg(parser, action="store_true"):  # true if the user adds --wo
     return parser
 
 
-# see also: delete parser has xor(--datasource, --workbook, name)
 def set_ds_xor_wb_args(parser):
     target_type_group = parser.add_mutually_exclusive_group(required=True)
     target_type_group.add_argument("-d", "--datasource", help="The name of the target datasource.")

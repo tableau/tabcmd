@@ -17,7 +17,7 @@ class DeleteExtracts(ExtractsCommand):
 
     @staticmethod
     def define_args(delete_extract_parser):
-        set_ds_xor_wb_args(delete_extract_parser, required=True)
+        set_ds_xor_wb_args(delete_extract_parser)
         set_embedded_datasources_options(delete_extract_parser)
         # set_encryption_option(delete_extract_parser)
         set_project_arg(delete_extract_parser)

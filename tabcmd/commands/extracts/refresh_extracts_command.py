@@ -16,7 +16,7 @@ class RefreshExtracts(ExtractsCommand):
 
     @staticmethod
     def define_args(refresh_extract_parser):
-        possible_targets = set_ds_xor_wb_args(refresh_extract_parser, required=True)
+        possible_targets = set_ds_xor_wb_args(refresh_extract_parser)
         possible_targets.add_argument(
             "--url",
             help="The name of the workbook as it appears in the URL. A workbook published as “Sales Analysis” \
