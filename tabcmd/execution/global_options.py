@@ -183,16 +183,12 @@ def set_workbook_arg(parser, action="store_true"):  # true if the user adds --wo
     return parser
 
 
-# deleteextracts (--workbook {name}, --datasource {name}) <-- required=True, nargs=1
-# delete {name} (--workbook, --datasource) <-- required=False, nargs=0
-def set_ds_xor_wb_args(parser, required=False):
-    target_type_group = parser.add_mutually_exclusive_group(required=required)
-    action = "store_true"
-    if required:
-        action = None
-    set_workbook_arg(target_type_group, action)
-    set_datasource_arg(target_type_group, action)
-    return target_type_group
+# see also: delete parser has xor(--datasource, --workbook, name)
+def set_ds_xor_wb_args(parser):
+    target_type_group = parser.add_mutually_exclusive_group(required=True)
+    target_type_group.add_argument("-d", "--datasource", help="The name of the target datasource.")
+    target_type_group.add_argument("-w", "--workbook", help="The name of the target workbook.")
+    return parser
 
 
 def set_description_arg(parser):

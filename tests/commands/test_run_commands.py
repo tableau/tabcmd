@@ -134,7 +134,7 @@ class RunCommandsTest(unittest.TestCase):
     @unittest.skip("target code not implemented yet")
     def test_runschedule(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
-        ock_server.schedules = getter
+        mock_server.schedules = getter
         mock_args.schedule = "myschedule"
         with self.assertRaises(SystemExit):
             runschedule_command.RunSchedule.run_command(mock_args)

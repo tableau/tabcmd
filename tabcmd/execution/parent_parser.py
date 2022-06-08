@@ -139,7 +139,7 @@ class ParentParser:
         parser.add_argument(
             "-t",
             "--site",
-            default=None,  # default is handled in Session class
+            default="",
             dest="site_name",
             metavar="SITEID",
             help='Use the specified Tableau Server site. Leave empty or specify an empty string ("") to \
