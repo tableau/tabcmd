@@ -234,9 +234,7 @@ class Session:
 
         if not signed_in_object:
             missing_var = _("editdomain.errors.requires_nickname_name").format("username", "token")
-            Errors.exit_with_error(
-                self.logger, _("session.errors.missing_arguments").format(missing_var)
-            )
+            Errors.exit_with_error(self.logger, _("session.errors.missing_arguments").format(missing_var))
         if args.no_cookie:
             self._remove_json()
         else:
