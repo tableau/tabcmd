@@ -8,7 +8,7 @@ pytest_runner = ['pytest-runner'] if needs_pytest else []
 test_requirements = ['appdirs',
                      'black',
                      'mock',
-                     'pyinstaller',
+                     'pyinstaller>=5.1',
                      'pytest', 'pytest-cov', 'pytest-order',
                      'requests-mock>=1.0,<2.0']
 
