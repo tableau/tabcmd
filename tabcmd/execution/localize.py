@@ -30,7 +30,7 @@ def set_client_locale(lang: str = None, logger=None) -> Callable:
     except Exception as e:
         locale_options = ["en"]
 
-    logger("Language options: ".format(locale_options))
+    logger("Language options: {}".format(locale_options))
 
     locale_path = os.path.join(os.path.dirname(__file__), "..", "..", "tabcmd", "locales")
     domain = "tabcmd"
