@@ -233,8 +233,9 @@ class Session:
             signed_in_object = self._sign_in(credentials)
 
         if not signed_in_object:
+            missing_var = _("editdomain.errors.requires_nickname_name").format("username", "token")
             Errors.exit_with_error(
-                self.logger, "Unable to find or create a session. Please check credentials and login again."
+                self.logger, _("session.errors.missing_arguments").format(missing_var)
             )
         if args.no_cookie:
             self._remove_json()
