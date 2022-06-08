@@ -4,9 +4,6 @@ name: Release-Executable
 # This action is intended to build on each of the supported OS's: mac, windows, linux.
 # and then upload all three files to a new release
 
-## TODO: automate versioning, changelog, pypi publish
-## (license: MIT) https://github.com/marketplace/actions/github-bump-tag
-
 # reference material:
 # https://data-dive.com/multi-os-deployment-in-cloud-using-pyinstaller-and-github-actions
 # https://anshumanfauzdar.medium.com/using-github-actions-to-bundle-python-application-into-a-single-package-and-automatic-release-834bd42e0670
@@ -38,7 +35,7 @@ jobs:
         release_name: Release ${{ github.event.head_commit.message }}
         draft: true # todo: change to false once action is tested
         prerelease: false
-        
+
     - name: Output Release URL File
       run: echo "${{ steps.create_release.outputs.upload_url }}" > release_url.txt
     - name: Save Release URL File for publish
@@ -56,19 +53,22 @@ jobs:
         include:
           - os: windows-latest
             TARGET: windows
+            # # these commands are run to generate the spec files. In releases, we simply call 'pyinstaller the.spec'
+            # because we've hand edited the specs to include loc data files, and maybe other things
+            # TODO these should call...pyispec, or something like that
+            # and should the spec generation happen in generate_metadata, even?
             CMD_BUILD: >
-                pyinstaller -F -c --clean --noconfirm tabcmd.spec
+              pyinstaller tabcmd\tabcmd.py --clean --noconfirm -i res\tabcmd.ico -F -c --uac-admin
             OUT_FILE_NAME: tabcmd.exe
             ASSET_MIME: application/vnd.microsoft.portable-executable
           - os: macos-latest
             TARGET: macos
             CMD_BUILD: >
-              pyinstaller -F -w -n tabcmd tabcmd/tabcmd.py && 
+              pyinstaller tabcmd\tabcmd.py --clean --noconfirm -n tabcmd -i res\tabcmd.icns -F -c --osx-bundle-identifier com.tableau.tabcmd  --collect-data tabcmd\locales\**\tabcmd.mo && 
               cd dist/ &&
               zip -r9 tabcmd tabcmd.app/
             OUT_FILE_NAME: tabcmd.zip
             ASSET_MIME: application/zip
-            
 
     steps:
     - uses: actions/checkout@v1
