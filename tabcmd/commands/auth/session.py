@@ -123,6 +123,7 @@ class Session:
             return credentials
         else:
             Errors.exit_with_error(self.logger, _("session.errors.missing_arguments").format("token name"))
+
     def _set_connection_options(self):
         # args still to be handled here:
         # proxy, --no-proxy,
