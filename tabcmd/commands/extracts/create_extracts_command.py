@@ -13,7 +13,7 @@ class CreateExtracts(Server):
     """
 
     name: str = "createextracts"
-    description: str = "Create extracts for a published workbook or data source"
+    description: str = _("createextracts.short_description")
 
     @staticmethod
     def define_args(create_extract_parser):
@@ -27,7 +27,7 @@ class CreateExtracts(Server):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug("======================= Launching command =======================")
+        logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
         creation_call = None
@@ -53,7 +53,7 @@ class CreateExtracts(Server):
                     datasources=args.embedded_datasources,
                 )
         except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, message=_("errors.xmlapi.not_found"), exception=e)
+            Errors.exit_with_error(logger, exception=e)
 
         logger.info(_("common.output.job_queued_success"))
         logger.debug("Extract creation queued with JobID: {}".format(job.id))

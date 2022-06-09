@@ -29,7 +29,7 @@ class Errors:
             return error.code == Constants.login_error
 
     @staticmethod
-    def exit_with_error(logger, message, exception=None):
+    def exit_with_error(logger, message=None, exception=None):
         try:
             if message and not exception:
                 logger.error(message)

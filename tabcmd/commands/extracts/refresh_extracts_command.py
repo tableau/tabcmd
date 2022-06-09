@@ -12,17 +12,15 @@ from tabcmd.execution.localize import _
 class RefreshExtracts(Server):
 
     name: str = "refreshextracts"
-    description: str = "Refresh the extracts of a workbook or datasource on the server"
+    description: str = _("refreshextracts.short_description")
 
     @staticmethod
     def define_args(refresh_extract_parser):
         possible_targets = set_ds_xor_wb_args(refresh_extract_parser)
         possible_targets.add_argument(
             "--url",
-            help="The name of the workbook as it appears in the URL. A workbook published as “Sales Analysis” \
-            has a URL name of “SalesAnalysis”.",
+            help=_("createextracts.options.url"),
         )
-
         set_incremental_options(refresh_extract_parser)
         set_calculations_options(refresh_extract_parser)
         set_project_arg(refresh_extract_parser)
@@ -65,13 +63,13 @@ class RefreshExtracts(Server):
         try:
             # TODO: use the container in the search
             if args.datasource:
-                logger.debug("Finding datasource `{}` on the server...".format(args.datasource))
+                logger.debug(_("export.status").format(args.datasource))
                 datasource_id = Server.get_data_source_id(logger, server, args.datasource, container)
                 logger.info(_("refreshextracts.status_refreshed").format(_("content_type.datasource"), args.datasource))
                 job: TSC.JobItem = server.datasources.refresh(datasource_id)
 
             elif args.workbook:
-                logger.debug("Finding workbook `{}` on the server...".format(args.workbook))
+                logger.debug(_("export.status").format(args.workbook))
                 workbook_id = Server.get_workbook_id(logger, server, args.workbook, container)
                 logger.info(_("refreshextracts.status_refreshed").format(_("content_type.workbook"), args.workbook))
                 job: TSC.JobItem = server.workbooks.refresh(workbook_id)
@@ -80,7 +78,7 @@ class RefreshExtracts(Server):
                 logger.error("URL not yet implemented")
 
         except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, "Error scheduling extract refresh", e)
+            Errors.exit_with_error(logger, _("refreshextracts.errors.error"), e)
 
         logger.info(_("common.output.job_queued_success"))
 
@@ -92,10 +90,7 @@ class RefreshExtracts(Server):
             try:
                 polling2.poll(lambda: logger.info(".") and job.started_at is not None, step=1, timeout=args.timeout)
             except polling2.TimeoutException as te:
-                Errors.exit_with_error(
-                    logger,
-                    "Timed out waiting for the refresh task to begin running. To wait longer until the job starts, try removing the --timeout.",
-                )
+                Errors.exit_with_error(logger, _("messages.timeout_error.summary"))
             logger.info("Job started at {}".format(job.started_at))
 
             try:
@@ -106,7 +101,7 @@ class RefreshExtracts(Server):
                 )
                 logger.info("Job completed at {}".format(job.completed_at))
             except polling2.TimeoutException as te:
-                Errors.exit_with_error(logger, "Timed out waiting for the refresh task to complete.")
+                Errors.exit_with_error(logger, _("messages.timeout_error.summary"))
 
         else:
             logger.info(_("common.output.job_queued_success"))
