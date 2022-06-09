@@ -121,6 +121,18 @@ class OnlineCommandTest(unittest.TestCase):
         except Exception as e:
             raise SystemExit(2)
 
+    @pytest.mark.order(1)
+    def test_version(self):
+        command = ""
+        arguments = [command]
+        _test_command(arguments)
+
+    @pytest.mark.order(1)
+    def test_help(self):
+        command = "help"
+        arguments = [command]
+        _test_command(arguments)
+
     @pytest.mark.order(2)
     def test_create_site_users(self):
         command = "createsiteusers"
