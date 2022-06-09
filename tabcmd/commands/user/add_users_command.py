@@ -1,8 +1,8 @@
-from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
+from tabcmd.execution.global_options import *
+from tabcmd.execution.localize import _
 from tabcmd.execution.logger_config import log
 from .user_data import UserCommand
-from tabcmd.execution.localize import _
 
 
 class AddUserCommand(UserCommand):

@@ -1,8 +1,8 @@
+import logging
+
 from .localize import set_client_locale
 from .map_of_commands import *
 from .parent_parser import ParentParser
-from .localize import set_client_locale
-import logging
 
 
 class TabcmdController:

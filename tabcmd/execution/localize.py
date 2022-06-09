@@ -1,10 +1,9 @@
-import locale
 import gettext
+import locale
+import os
+import sys
 from typing import Any
 from typing import Callable
-import sys
-import os
-
 
 translate = None
 

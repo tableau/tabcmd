@@ -7,9 +7,8 @@ import tableauserverclient as TSC
 from urllib3.exceptions import InsecureRequestWarning
 
 from tabcmd.commands.constants import Errors
-from tabcmd.execution.logger_config import log
-import csv
 from tabcmd.execution.localize import _
+from tabcmd.execution.logger_config import log
 
 
 class Session:

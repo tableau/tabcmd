@@ -1,8 +1,3 @@
-import os
-import sys
-import tableauserverclient as TSC
-
-
 class Commands:
     def __init__(self, args):
         self.logger = None

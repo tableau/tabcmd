@@ -2,8 +2,8 @@ import tableauserverclient as TSC
 
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
-from tabcmd.execution.logger_config import log
 from tabcmd.execution.localize import _
+from tabcmd.execution.logger_config import log
 
 
 class DeleteSiteCommand(Server):

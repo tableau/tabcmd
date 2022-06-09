@@ -1,4 +1,5 @@
 import sys
+
 from tabcmd.execution.localize import _
 
 

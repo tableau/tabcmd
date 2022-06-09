@@ -1,12 +1,10 @@
-import tableauserverclient as TSC
-
-from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.constants import Errors
 from tabcmd.commands.server import Server
 from tabcmd.commands.user.user_data import UserCommand
-from tabcmd.execution.logger_config import log
+from tabcmd.execution.global_options import *
 from tabcmd.execution.localize import _
+from tabcmd.execution.logger_config import log
 
 
 class DeleteSiteUsersCommand(Server):

@@ -28,7 +28,7 @@ setup(
     url='https://github.com/tableau/tabcmd',
     extras_require={
         'test': test_requirements,
-        'package': ['pyinstaller>=4.8']
+        'package': ['pyinstaller']
     },
     install_requires=[
         'types-appdirs',
@@ -46,5 +46,5 @@ setup(
     use_scm_version={
         "write_to": "_version.py",
     },
-    setup_requires=['setuptools_scm'],
+    setup_requires=['setuptools_scm', 'pyinstaller-versionfile'],
 )
