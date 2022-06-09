@@ -9,7 +9,7 @@ test_requirements = ['appdirs',
                      'black',
                      'mock',
                      'pyinstaller>=5.1',
-                     'pytest', 'pytest-cov', 'pytest-order','pytest-runner',
+                     'pytest', 'pytest-cov', 'pytest-order', 'pytest-runner',
                      'requests-mock>=1.0,<2.0']
 
 setup(
@@ -35,6 +35,7 @@ setup(
         'polling2',
         'requests>=2.11,<3.0',
         'setuptools>=45',
+        'setuptools_scm',
         'tableauserverclient>=0.19',
         'types-mock',
         'types-requests',
