@@ -2,12 +2,12 @@ import tableauserverclient as TSC
 
 from tabcmd.commands.constants import Errors
 from tabcmd.commands.auth.session import Session
-from tabcmd.commands.extracts.extracts_command import ExtractsCommand
+from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
 from tabcmd.execution.localize import _
 
 
-class ReencryptExtracts(ExtractsCommand):
+class ReencryptExtracts(Server):
     """
     Command to Reencrypt all extracts on a site with new encryption keys.
     This command will regenerate the key encryption key and data encryption key. You must specify a site.
@@ -26,10 +26,12 @@ class ReencryptExtracts(ExtractsCommand):
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
-        site_item = ExtractsCommand.get_site_for_command_or_throw(logger, server, args)
+        site_item = Server.get_site_for_command_or_throw(logger, server, args)
         try:
-            ExtractsCommand.print_task_scheduling_message(logger, "site", site_item.name, "re-encrypted")
+            logger.info(_("reencryptextracts.status").format(site_item.name))
             job = server.sites.encrypt_extracts(site_item.id)
         except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, "Error re-encrypting extract", e)
-        ExtractsCommand.print_success_scheduled_message(logger, "re-encryption", job)
+            Errors.exit_with_error(logger, e)
+
+        logger.info(_("common.output.job_queued_success"))
+        logger.debug("Extract re-encryption queued with JobID: {}".format(job.id))

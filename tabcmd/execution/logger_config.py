@@ -4,12 +4,12 @@ import os
 path = os.path.dirname(os.path.abspath(__file__))
 
 FORMATS = {
-    logging.ERROR: "ERROR: %(message)s",
-    logging.WARN:  "WARN:  %(message)s",
+    logging.ERROR: "ERROR: %(name)-10s: %(lineno)d: %(message)s",
+    logging.WARN: "WARN:  %(message)s",
     logging.DEBUG: "DEBUG: %(name)-10s: %(lineno)d: %(message)-10s",
-    logging.INFO:  "%(message)s",
-    "TRACE":       "TRACE: %(asctime)-12s %(name)-10s: %(lineno)d: %(message)-10s",
-    "DEFAULT":     "%(message)s",
+    logging.INFO: "INFO:  %(message)s",
+    "TRACE": "TRACE: %(asctime)-12s %(name)-10s: %(lineno)d: %(message)-10s",
+    "DEFAULT": "%(message)s",
 }
 
 

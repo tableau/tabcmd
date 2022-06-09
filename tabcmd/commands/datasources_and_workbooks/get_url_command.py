@@ -3,9 +3,11 @@ import tableauserverclient as TSC
 from tabcmd.commands.auth.session import Session
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
+from tabcmd.commands.datasources_and_workbooks.export_command import ExportCommand
 from tabcmd.execution.global_options import *
-from tabcmd.commands.constants import Errors
 from tabcmd.execution.localize import _
+from tabcmd.commands.constants import Errors
+
 
 class GetUrl(DatasourcesAndWorkbooks):
     """
@@ -18,12 +20,8 @@ class GetUrl(DatasourcesAndWorkbooks):
 
     @staticmethod
     def define_args(get_url_parser):
-        get_url_parser.add_argument(
-            "url",
-            help=_("createextracts.options.url"),
-        )
+        get_url_parser.add_argument("url", help=_("refreshextracts.options.url"))
         set_filename_arg(get_url_parser)
-        # to send to the server these are both just set on the url?
         # these don't need arguments, although that would be a good future addition
         # tabcmd get "/views/Finance/InvestmentGrowth.png?:size=640,480" -f growth.png
         # tabcmd get "/views/Finance/InvestmentGrowth.png?:refresh=yes" -f growth.png
@@ -37,124 +35,158 @@ class GetUrl(DatasourcesAndWorkbooks):
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
-        file_type = GetUrl.get_download_type(logger, args.filename, args.url)
-        logger.debug("Getting file type " + file_type)
-        if file_type in ["pdf", "png", "csv"]:
-            GetUrl.download_and_save_view(logger, server, args, file_type)
-        elif file_type == "twbx" or file_type == "twb":
-            GetUrl.download_and_save_wb(logger, server, args, file_type)
-        else:
-            Errors.exit_with_error(logger, _("common.errors.invalid_file_path"))
+        if " " in args.url:
+            Errors.exit_with_error(logger, _("export.errors.white_space_workbook_view"))
+
+        file_type = GetUrl.get_file_type_from_filename(logger, args.filename, args.url)
+        content_type = GetUrl.evaluate_content_type(logger, args.url)
+        if content_type == "workbook":
+            if file_type == "twbx" or file_type == "twb":
+                GetUrl.generate_twb(logger, server, args, file_type)
+            else:
+                Errors.exit_with_error(
+                    logger, message=_("publish.errors.mutually_exclusive_option").format("twb", "twbx")
+                )
+        else:  # content type = view
+            if file_type == "pdf":
+                GetUrl.generate_pdf(logger, server, args)
+            elif file_type == "png":
+                GetUrl.generate_png(logger, server, args)
+            elif file_type == "csv":
+                GetUrl.generate_csv(logger, server, args)
+            else:
+                Errors.exit_with_error(logger, message=_("tabcmd.get.extension.not_found"))
 
     @staticmethod
-    def get_download_type(logger, file_name, url):
+    def evaluate_content_type(logger, url):
+        # specify a view to get using "/views/<workbookname>/<viewname>.<extension>"
+        # specify a workbook to get using "/workbooks/<workbookname>.<extension>".
+        if url.find("/views/") == 0:
+            return "view"
+        elif url.find("/workbooks/") == 0:
+            return "workbook"
+        else:
+            Errors.exit_with_error(logger, message=_("export.errors.requires_workbook_view_param").format(GetUrl.name))
+
+    @staticmethod
+    def get_file_type_from_filename(logger, file_name, url):
         type_of_file = None
-        if file_name is not None:
-            split_file_name = file_name.split(".")
-            type_of_file = split_file_name[1]
-        else:  # file_name is None, grab from url
-            split_url_to_get_extension = url.split(".")
-            if len(split_url_to_get_extension) > 1:
-                type_of_file = split_url_to_get_extension[1]
-            else:
-                GetUrl.exit_with_error(logger, _("importcsvsummary.error.unexpected_extension"))
-        return type_of_file
+        file_name = file_name or url
+        logger.debug(_("get.options.file") + ": {}".format(file_name))
+        type_of_file = GetUrl.get_file_extension(file_name)
+
+        if not type_of_file:
+            Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name))
+        else:
+            logger.debug(_("get.options.file") + ": {}".format(type_of_file))
+            if type_of_file in ["pdf", "csv", "png", "twb", "twbx"]:
+                return type_of_file
+
+        Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name))
+
+    @staticmethod
+    def get_file_extension(filename):
+        parts = filename.split(".")
+        if len(parts) < 2:
+            return None
+        extension = parts[1]
+        extension = GetUrl.strip_query_params(extension)
+        return extension
+
+    @staticmethod
+    def strip_query_params(filename):
+        if filename.find("?") > 0:
+            filename = filename.split("?")[0]
+        return filename
 
     @staticmethod
     def get_name_without_possible_extension(filename):
-        split_parts = filename.split(".")
-        return split_parts[0]
+        if filename.find(".") > 0:
+            filename = filename.split(".")[0]
+        return filename
 
     @staticmethod
-    def get_workbook_name(logger, url):  # something like 'workbooks/Regional.twbx'
-        url = url.lstrip('//')  # lose leading slash
-        separated_list = url.split("/")
-        if len(separated_list) < 2:
-            message = _("export.errors.requires_workbook_view_param").format(url)
-            Errors.exit_with_error(logger, message=message)
-        workbook_name = GetUrl.get_name_without_possible_extension(separated_list[1])
-        logger.debug("Got workbook name '{}' from url '{}'".format(workbook_name, url))
+    def get_workbook_name(logger, url):  # /workbooks/wb-name" -> "wb-name"
+        name_parts = url.split("/")
+        if len(name_parts) != 3:
+            raise ValueError(_("export.errors.requires_workbook_view_param").format(GetUrl.name))
+        workbook_name = name_parts[::-1][0]  # last part
+        workbook_name = GetUrl.strip_query_params(workbook_name)
+        workbook_name = GetUrl.get_name_without_possible_extension(workbook_name)
         return workbook_name
 
     @staticmethod
-    def get_view_url(logger, url):
-        url = url.lstrip('//')  # lose leading slash
-        separated_list = url.split("/")
-        if len(separated_list) < 3:
-            message = _("export.errors.requires_workbook_view_param").format(url)
-            Errors.exit_with_error(logger, message=message)
-        workbook_name = separated_list[1]
-        view_name = GetUrl.get_name_without_possible_extension(separated_list[::-1][0])
-        view_url = "{}/sheets/{}".format(workbook_name, view_name)
-        logger.debug("Got view url '{}' from url '{}'".format(view_url, url))
-        return view_url
+    def get_view_url(url):  # "/views/wb-name/view-name" -> wb-name/sheets/view-name
+        name_parts = url.split("/")  # ['', 'views', 'wb-name', 'view-name']
+        if len(name_parts) != 4:
+            raise ValueError(_("export.errors.requires_workbook_view_param").format(GetUrl.name))
+        view_name = name_parts[::-1][0]
+        view_name = GetUrl.strip_query_params(view_name)
+        view_name = GetUrl.get_name_without_possible_extension(view_name)
+        workbook_name = name_parts[2]
+        return DatasourcesAndWorkbooks.get_view_url_from_names(workbook_name, view_name)
 
     @staticmethod
-    def get_target_view(args, logger, server):
+    def filename_from_args(file_argument, item_name, filetype):
+        if file_argument is None:
+            file_argument = "{}.{}".format(item_name, filetype)
+        return file_argument
+
+    @staticmethod
+    def generate_pdf(logger, server, args):
+        view_url = GetUrl.get_view_url(args.url)
         try:
-            view = GetUrl.get_view_url(logger, args.url)
-        except Exception as e:
-            GetUrl.exit_with_error(logger, _("errors.xmlapi.invalid_parameter"), e)
-        logger.debug("view url: " + view)
-        target_view = GetUrl.get_view_by_content_url(logger, server, view)
-        return target_view
-
-    @staticmethod
-    def set_file_name(item_name, filename, file_format):
-        if filename is None:
-            file_name_with_path = "{}.{}".format(item_name, file_format)
-        else:
-            file_name_with_path = filename
-        return file_name_with_path
-
-    @staticmethod
-    def populate_data(server, target_view, filetype):
-        if filetype == "pdf":
+            view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view_url)
+            logger.debug(_("content_type.view") + ": {}".format(view_item.name))
             req_option_pdf = TSC.PDFRequestOptions(maxage=1)
-            server.views.populate_pdf(target_view, req_option_pdf)
-            return target_view.pdf
-        elif filetype == "csv":
-            req_option_csv = TSC.CSVRequestOptions(maxage=1)
-            server.views.populate_csv(target_view, req_option_csv)
-            return target_view.csv
-        elif filetype == "png":
-            req_option_csv = TSC.CSVRequestOptions(maxage=1)
-            server.views.populate_csv(target_view, req_option_csv)
-            return target_view.png
-        else:
-            Errors.exit_with_error("Unknown filetype")
+            server.views.populate_pdf(view_item, req_option_pdf)
+            filename = GetUrl.filename_from_args(args.filename, view_item.name, "pdf")
+            with open(filename, "wb") as f:
+                f.write(view_item.pdf)
+            logger.info(_("export.success").format(view_item.name, filename))
+        except TSC.ServerResponseError as e:
+            GetUrl.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
 
     @staticmethod
-    def download_and_save_view(logger, server, args, filetype):
-        target_view = GetUrl.get_target_view(args, logger, server)
-        formatted_file_name = GetUrl.set_file_name(target_view.name, args.filename, filetype)
+    def generate_png(logger, server, args):
+        view = GetUrl.get_view_url(args.url)
         try:
-            logger.info(_("export.status").format(target_view))
-            data = GetUrl.populate_data(server, target_view, filetype)
+            view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view)
+            logger.debug(_("content_type.view") + ": {}".format(view_item.name))
+            req_option_csv = TSC.CSVRequestOptions(maxage=1)
+            server.views.populate_csv(view_item, req_option_csv)
+            filename = GetUrl.filename_from_args(args.filename, view_item.name, "png")
+            with open(filename, "wb") as f:
+                f.write(view_item.png)
+            logger.info(_("export.success").format(view_item.name, filename))
         except TSC.ServerResponseError as e:
-            GetUrl.exit_with_error(logger, exception=e)
+            GetUrl.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
+
+    @staticmethod
+    def generate_csv(logger, server, args):
+        view_url = GetUrl.get_view_url(args.url)
         try:
-            with open(formatted_file_name, "wb") as f:
-                logger.info(_("httputils.found_attachment").format(formatted_file_name))
-                f.write(data)
-                logger.info(_("export.success").format(args.url, formatted_file_name))
+            view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view_url)
+            logger.debug(_("content_type.view") + ": {}".format(view_item.name))
+            req_option_csv = TSC.CSVRequestOptions(maxage=1)
+            server.views.populate_csv(view_item, req_option_csv)
+            file_name_with_path = GetUrl.filename_from_args(args.filename, view_item.name, "csv")
+            with open(file_name_with_path, "wb") as f:
+                f.write(view_item.csv)
+            logger.info(_("export.success"), views_from_list.name, formatted_file_name)
+        except TSC.ServerResponseError as e:
+            GetUrl.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
         except Exception as e:
-            GetUrl.exit_with_error(logger, exception=e)
+            Errors.exit_with_error(logger, exception=e)
 
     @staticmethod
-    def download_and_save_wb(logger, server, args, filetype):
-        workbook = GetUrl.get_workbook_name(logger, args.url)
-        logger.debug("Generating " + filetype + " for workbook " + workbook)
-        formatted_file_name = GetUrl.set_file_name(workbook, args.filename, filetype)
+    def generate_twb(logger, server, args, file_extension):
+        workbook_name = GetUrl.get_workbook_name(logger, args.url)
         try:
-            logger.info(_("export.status").format(args.url))
-            target_workbook = GetUrl.get_wb_by_content_url(logger, server, workbook)
+            target_workbook = GetUrl.get_wb_by_content_url(logger, server, workbook_name)
+            logger.debug(_("content_type.workbook") + ": {}".format(workbook_name))
+            file_name_with_path = GetUrl.filename_from_args(args.filename, workbook_name, file_extension)
+            server.workbooks.download(target_workbook.id, filepath=file_name_with_path, no_extract=False)
+            logger.info(_("export.success").format(target_workbook.name, file_name_with_path))
         except TSC.ServerResponseError as e:
-            GetUrl.exit_with_error(logger, exception=e)
-        try:
-            logger.info(_("httputils.found_attachment").format(formatted_file_name))
-            server.workbooks.download(target_workbook.id, filepath=formatted_file_name, no_extract=False)
-            logger.info(_("export.success").format(args.url, formatted_file_name))
-        except TSC.ServerResponseError as e:
-            logger.debug("Error downloading workbook")
-            GetUrl.exit_with_error(logger, exception=e)
+            GetUrl.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)

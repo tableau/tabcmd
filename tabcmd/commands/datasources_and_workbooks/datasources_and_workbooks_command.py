@@ -1,7 +1,7 @@
 import tableauserverclient as TSC
 from tabcmd.commands.server import Server
 from tabcmd.commands.constants import Errors
-from tabcmd.commands.constants import Errors
+from tabcmd.execution.localize import _
 
 
 class DatasourcesAndWorkbooks(Server):
@@ -13,27 +13,31 @@ class DatasourcesAndWorkbooks(Server):
         super().__init__(args)
 
     @staticmethod
-    def get_view_by_content_url(logger, server, view_content_url):
+    def get_view_url_from_names(wb_name, view_name):
+        return "{}/sheets/{}".format(wb_name, view_name)
+
+    @staticmethod
+    def get_view_by_content_url(logger, server, view_content_url) -> TSC.ViewItem:
+        logger.debug(_("export.status").format(view_content_url))
         try:
             req_option = TSC.RequestOptions()
             req_option.filter.add(TSC.Filter("contentUrl", TSC.RequestOptions.Operator.Equals, view_content_url))
-            matching_views, _ = server.views.get(req_option)
-            if len(matching_views) == 0:
-                raise ValueError(_("publish.errors.server_resource_not_found"))
-            selected_view = matching_views[0]
-            return selected_view
-        except Exception as e:
-            Errors.exit_with_error(logger, exception=e)
+            matching_views, paging = server.views.get(req_option)
+        except TSC.ServerResponseError as e:
+            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response").format(""))
+        if len(matching_views) < 1:
+            Errors.exit_with_error(logger, message=_("errors.xmlapi.not_found"))
+        return matching_views[0]
 
     @staticmethod
-    def get_wb_by_content_url(logger, server, workbook_content_url):
+    def get_wb_by_content_url(logger, server, workbook_content_url) -> TSC.WorkbookItem:
+        logger.debug(_("export.status").format(workbook_content_url))
         try:
             req_option = TSC.RequestOptions()
             req_option.filter.add(TSC.Filter("contentUrl", TSC.RequestOptions.Operator.Equals, workbook_content_url))
-            matching_workbooks, _ = server.workbooks.get(req_option)
-            if len(matching_workbooks) == 0:
-                raise ValueError(_("publish.errors.server_resource_not_found"))
-            selected_workbook = matching_workbooks[0]
-            return selected_workbook
-        except Exception as e:
-            Errors.exit_with_error(logger, exception=e)
+            matching_workbooks, paging = server.workbooks.get(req_option)
+        except TSC.ServerResponseError as e:
+            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response").format(""))
+        if len(matching_workbooks) < 1:
+            Errors.exit_with_error(logger, message=_("dataalerts.failure.error.workbookNotFound"))
+        return matching_workbooks[0]

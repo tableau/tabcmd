@@ -3,13 +3,13 @@ import tableauserverclient as TSC
 
 from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
-from tabcmd.commands.extracts.extracts_command import ExtractsCommand
 from tabcmd.commands.constants import Errors
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
+from tabcmd.execution.localize import _
 
 
-class RefreshExtracts(ExtractsCommand):
+class RefreshExtracts(Server):
 
     name: str = "refreshextracts"
     description: str = "Refresh the extracts of a workbook or datasource on the server"
@@ -31,12 +31,11 @@ class RefreshExtracts(ExtractsCommand):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug("======================= Launching command =======================")
+        logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
         refresh_action = "refresh"
 
-        print(args)
         if args.addcalculations or args.removecalculations:
             logger.warning(
                 "Data Acceleration tasks are deprecated and this parameter has no effect."
@@ -67,14 +66,14 @@ class RefreshExtracts(ExtractsCommand):
             # TODO: use the container in the search
             if args.datasource:
                 logger.debug("Finding datasource `{}` on the server...".format(args.datasource))
-                ExtractsCommand.print_task_scheduling_message(logger, "datasource", args.datasource, "refreshed")
-                datasource_id = ExtractsCommand.get_data_source_id(logger, server, args.datasource, container)
+                datasource_id = Server.get_data_source_id(logger, server, args.datasource, container)
+                logger.info(_("refreshextracts.status_refreshed").format(_("content_type.datasource"), args.datasource))
                 job: TSC.JobItem = server.datasources.refresh(datasource_id)
 
             elif args.workbook:
                 logger.debug("Finding workbook `{}` on the server...".format(args.workbook))
-                ExtractsCommand.print_task_scheduling_message(logger, "workbook", args.workbook, "refreshed")
-                workbook_id = ExtractsCommand.get_workbook_id(logger, server, args.workbook, container)
+                workbook_id = Server.get_workbook_id(logger, server, args.workbook, container)
+                logger.info(_("refreshextracts.status_refreshed").format(_("content_type.workbook"), args.workbook))
                 job: TSC.JobItem = server.workbooks.refresh(workbook_id)
 
             elif args.url:
@@ -83,7 +82,8 @@ class RefreshExtracts(ExtractsCommand):
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, "Error scheduling extract refresh", e)
 
-        ExtractsCommand.print_success_scheduled_message(logger, refresh_action, job)
+        logger.info(_("common.output.job_queued_success"))
+
         if args.synchronous:
             # maintains a live connection to the server while the refresh operation is underway, polling every second
             # until the background job is done.   <job id="JOB_ID" mode="MODE" type="RefreshExtract" />
@@ -94,8 +94,7 @@ class RefreshExtracts(ExtractsCommand):
             except polling2.TimeoutException as te:
                 Errors.exit_with_error(
                     logger,
-                    "Timed out waiting for the refresh task to begin running. \
-                To wait until the job starts, try removing the --timeout.",
+                    "Timed out waiting for the refresh task to begin running. To wait longer until the job starts, try removing the --timeout.",
                 )
             logger.info("Job started at {}".format(job.started_at))
 
@@ -109,4 +108,6 @@ class RefreshExtracts(ExtractsCommand):
             except polling2.TimeoutException as te:
                 Errors.exit_with_error(logger, "Timed out waiting for the refresh task to complete.")
 
-            ExtractsCommand.print_success_message(logger, job)
+        else:
+            logger.info(_("common.output.job_queued_success"))
+            logger.debug("Extract refresh started with JobID: {0}".format(job.id))

@@ -69,7 +69,7 @@ class OnlineCommandTest(unittest.TestCase):
 
     def _delete_wb(self, file):
         command = "delete"
-        arguments = [command, file, "-w"]
+        arguments = [command, file]
         _test_command(arguments)
 
     def _get_view(self, wb_name_on_server, sheet_name):
@@ -112,6 +112,7 @@ class OnlineCommandTest(unittest.TestCase):
     TWBX_WITH_EXTRACT_SHEET = "sheet1"
     TWBX_FILE_WITHOUT_EXTRACT = "simple-data.twbx"
     TWBX_WITHOUT_EXTRACT_NAME = "WorkbookWithoutExtract"
+    TWBX_WITHOUT_EXTRACT_SHEET = "Testsheet1"
 
     @pytest.mark.order(1)
     def test_login(self):
@@ -184,6 +185,10 @@ class OnlineCommandTest(unittest.TestCase):
         self._delete_project("project_name_2", project_name)  # project 2
         self._delete_project(project_name)
 
+    @pytest.mark.order(9)
+    def test_publish_samples(self):
+        self._publish_samples("Default")
+
     @pytest.mark.order(10)
     def test_publish(self):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
@@ -192,7 +197,7 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(10)
     def test__get_wb(self):
-        wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
+        wb_name_on_server = OnlineCommandTest.TWBX_WITHOUT_EXTRACT_NAME
         self._get_workbook(wb_name_on_server + ".twbx")
 
     @pytest.mark.order(10)
@@ -202,8 +207,8 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(10)
     def test__get_view(self):
-        wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
-        sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
+        wb_name_on_server = OnlineCommandTest.TWBX_WITHOUT_EXTRACT_NAME
+        sheet_name = OnlineCommandTest.TWBX_WITHOUT_EXTRACT_SHEET
         self._get_view(wb_name_on_server, sheet_name + ".pdf")
 
     @pytest.mark.order(10)

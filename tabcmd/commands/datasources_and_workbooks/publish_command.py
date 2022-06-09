@@ -24,7 +24,6 @@ class PublishCommand(DatasourcesAndWorkbooks):
             "filename",
             metavar="filename.twbx|tdsx|hyper",
             # this is not actually a File type because we just pass the path to tsc
-            help="Existing local file to publish.",
         )
         set_publish_args(publish_parser)
         set_project_r_arg(publish_parser)
@@ -34,11 +33,8 @@ class PublishCommand(DatasourcesAndWorkbooks):
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
-        logger.debug(args)
         session = Session()
         server = session.create_session(args)
-
-        logger.debug("Project details given: {0}, {1}".format(args.parent_project_path, args.project_name))
 
         if args.project_name:
             try:
@@ -58,20 +54,19 @@ class PublishCommand(DatasourcesAndWorkbooks):
         logger.info(_("publish.status").format(args.filename))
         if source in ["twbx", "twb"]:
             new_workbook = TSC.WorkbookItem(project_id, name=args.name, show_tabs=args.tabbed)
-            new_workbook = server.workbooks.publish(new_workbook, args.filename, publish_mode)
-            PublishCommand.print_success(logger, new_workbook)
+            try:
+                new_workbook = server.workbooks.publish(new_workbook, args.filename, publish_mode)
+            except IOError as ioe:
+                Errors.exit_with_error(logger, ioe)
+            logger.info(_("publish.success") + "\n{}".format(new_workbook.webpage_url))
 
         elif source in ["tds", "tdsx", "hyper"]:
             new_datasource = TSC.DatasourceItem(project_id, name=args.name)
-            new_datasource = server.datasources.publish(new_datasource, args.filename, publish_mode)
-            PublishCommand.print_success(logger, new_datasource)
-
-    @staticmethod
-    def print_success(logger, item):
-        logger.info(
-            _("===== File successfully published to the server at the following location:\n=====")
-            + "{}".format(item.webpage_url)
-        )
+            try:
+                new_datasource = server.datasources.publish(new_datasource, args.filename, publish_mode)
+            except IOError as ioe:
+                Errors.exit_with_error(logger, exc)
+            logger.info(_("publish.success") + "\n{}".format(new_datasource.webpage_url))
 
     @staticmethod
     def get_publish_mode(args):

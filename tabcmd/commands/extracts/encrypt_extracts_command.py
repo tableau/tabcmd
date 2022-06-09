@@ -2,12 +2,12 @@ import tableauserverclient as TSC
 
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.constants import Errors
-from tabcmd.commands.extracts.extracts_command import ExtractsCommand
+from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
 from tabcmd.execution.localize import _
 
 
-class EncryptExtracts(ExtractsCommand):
+class EncryptExtracts(Server):
     """
     Command that encrypt all extracts on a site.
     If no site is specified, extracts on the default site will be encrypted.
@@ -26,11 +26,12 @@ class EncryptExtracts(ExtractsCommand):
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
-        site_item = ExtractsCommand.get_site_for_command_or_throw(logger, server, args)
+        site_item = Server.get_site_for_command_or_throw(logger, server, args)
         try:
-            ExtractsCommand.print_task_scheduling_message(logger, "site", site_item.name, "encrypted")
+            logger.info(_("encryptextracts.status").format(site_item.name))
             job = server.sites.encrypt_extracts(site_item.id)
         except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, "Error encrypting extracts", e)
+            Errors.exit_with_error(logger, e)
 
-        ExtractsCommand.print_success_scheduled_message(logger, "encryption", job)
+        logger.info(_("common.output.job_queued_success"))
+        logger.debug("Extract encryption queued with JobID: {}".format(job.id))

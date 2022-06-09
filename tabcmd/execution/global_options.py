@@ -1,17 +1,18 @@
 import argparse
+from .localize import _
 
 """
-Basics of options
-- if not otherwise specified, the value passed in with the option will be saved as args.option-name
-- all arguments in here are optional: must be --argument so users can tell it's optional
-- options that just need to turn on or off a flag should be set with action=store_True/False
+- all arguments in here are optional, must be --argument
+- all methods in here should return a parser for nice fluent chaining
 
 Method naming conventions
 - I have named methods in here aaaa_arg if it returns a value we want, aaa_option if it's a flag
-- all methods in here should return a parser for nice fluent chaining
+- if not otherwise specified, the value passed in with the arg will be saved as args.argname
+- options that just need to turn on or off a flag should be set with action=store_True/False
+- for optional arguments, try to use argname: --site-name gets saved as variablename: site_name
 
-All these optional arguments could be used with any command. Ideally *all* optional args would be in here, so they can
-be kept updated together and simply listed on the relevant parser.
+All these optional arguments could be used with any command. 
+Ideally *all* optional args would be in here, so they can be kept updated together and simply listed on the relevant parser.
 
 Positional arguments will generally be set directly in each parser
 Naming note: cannot have hyphens in positional args 
@@ -19,9 +20,8 @@ SO define them as add_argument([name for args attribute], metavar=[name to show 
 e.g add_argument(site, metavar='site-name')
 FOR site-name, project-name, workbook-name, datasource-name, group-name, schedule-name, token-name
 -> in args: site, project, workbook, ....
-BUT 
-1. filename, username -> filename, username in command/parser
-2. for optional arguments, try to use --site-name -> args.site_name
+BUT filename, username -> filename, username in command/parser
+
 """
 
 
@@ -271,8 +271,8 @@ def set_view_site_encryption(parser):
 
 
 # export --- mmmaaaannnyyyy options
-def set_filename_arg(parser):
-    parser.add_argument("-f", "--filename", help="Saves the file with the given filename and extension.")
+def set_filename_arg(parser, description=_("get.options.file")):
+    parser.add_argument("-f", "--filename", help=description)
 
 
 def set_publish_args(parser):

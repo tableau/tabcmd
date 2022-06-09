@@ -31,16 +31,15 @@ class Errors:
     @staticmethod
     def exit_with_error(logger, message, exception=None):
         try:
-            logger.debug("exit with error")
             if message and not exception:
                 logger.error(message)
             if exception:
                 if Errors.is_expired_session(exception):
-                    logger.info(_("session.session_expired_login"))
+                    logger.error(_("session.errors.session_expired"))
                     # TODO: add session as an argument to this method
                     #  and add the full command line as a field in Session?
+                    # "session.session_expired_login"))
                     # session.renew_session()
-                    return
                 if message:
                     logger.debug(message)
                 Errors.check_common_error_codes_and_explain(logger, exception)

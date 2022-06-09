@@ -34,7 +34,6 @@ class DeleteCommand(DatasourcesAndWorkbooks):
 
         logger.info(_("delete.status").format(args.name, ""))
 
-
         error = None
         try:
             item_to_delete = DeleteCommand.get_workbook_item(logger, server, args.name)

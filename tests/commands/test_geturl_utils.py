@@ -1,6 +1,7 @@
 import unittest
 from unittest import mock
 from tabcmd.commands.datasources_and_workbooks.get_url_command import *
+from tabcmd.commands.datasources_and_workbooks.export_command import *
 from tabcmd.commands.server import Server
 
 mock_logger = mock.MagicMock()
@@ -10,7 +11,7 @@ class GeturlTests(unittest.TestCase):
     def test_evaluate_file_name_pdf(self):
         filename = "filename.pdf"
         url = None
-        filetype = GetUrl.get_download_type(mock_logger, filename, url)
+        filetype = GetUrl.get_file_type_from_filename(mock_logger, filename, url)
         assert filetype == "pdf", filetype
 
     def test_evaluate_file_name_url(self):
@@ -45,4 +46,22 @@ class GeturlTests(unittest.TestCase):
         assert GetUrl.get_workbook_name(mock_logger, "/workbooks/wbname") == "wbname"
 
     def test_view_name(self):
-        assert GetUrl.get_view_url(mock_logger, "/views/wb-name/view-name") == "wb-name/sheets/view-name"
+        assert GetUrl.get_view_url("/views/wb-name/view-name") == "wb-name/sheets/view-name"
+
+    """
+    GetUrl.get_view_without_extension(view_name)
+    GetUrl.get_view(url)
+    GetUrl.get_workbook(url)
+    GetUrl.generate_twb(logger, server, args)
+    GetUrl.generate_pdf(logger, server, args)
+    GetUrl.generate_png(logger, server, args)
+    GetUrl.generate_csv(logger, server, args)
+    """
+
+
+class ExportTests(unittest.TestCase):
+    def test_parse_export_url_to_workbook(self):
+        wb_url = "wb-name/view-name"
+        view, wb = ExportCommand.parse_export_url_to_workbook_and_view(mock_logger, wb_url)
+        assert view == "wb-name/sheets/view-name"
+        assert wb == "wb-name"

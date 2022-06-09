@@ -26,7 +26,7 @@ class ListSiteCommand(Server):
         session = Session()
         server = session.create_session(args)
         try:
-            sites = Server.get_sites(server)
+            sites, pagination = server.sites.get()
             logger.info(_("listsites.status").format(session.username))
             for site in sites:
                 print("NAME:", site.name)

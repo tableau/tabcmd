@@ -55,7 +55,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
             print("error")
         workbook_name = separated_list[0]
         view_name = separated_list[1]
-        return "{}/sheets/{}".format(workbook_name, view_name)
+        return DatasourcesAndWorkbooks.get_view_url_from_names(workbook_name, view_name)
 
     """
     Command to Export a view_name or workbook from Tableau Server and save
@@ -68,32 +68,23 @@ class ExportCommand(DatasourcesAndWorkbooks):
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
-        logger.info(_("export.status").format(args.url))
-        view_content_url, wb_content_url = ExportCommand.parse_export_url_to_workbook_and_view(args.url)
-        logger.debug("Parsed to {}, {}".format(wb_content_url, view_content_url))
-        if args.fullpdf:  # it's a workbook
-            try:
+        view_content_url, wb_content_url = ExportCommand.parse_export_url_to_workbook_and_view(logger, args.url)
+        logger.debug(view_content_url, wb_content_url)
+        if not view_content_url and not wb_content_url:
+            Errors.exit_with_error(logger, _("export.errors.requires_workbook_view_param").format(ExportCommand))
+
+        try:
+
+            if args.fullpdf:  # it's a workbook
                 workbook_item = ExportCommand.get_wb_by_content_url(logger, server, wb_content_url)
-            except Exception as e:
-                Errors.exit_with_error(logger, "Error getting workbook info from server", e)
+                output = ExportCommand.download_wb_pdf(server, workbook_item)
+                default_filename = "{}.pdf".format(workbook_item.name)
 
-            try:
-                req_option_pdf = TSC.PDFRequestOptions(maxage=1)
-                server.workbooks.populate_pdf(workbook_item, req_option_pdf)
-            except Exception as e:
-                Errors.exit_with_error(logger, "Error downloading workbook pdf", e)
-            output = workbook_item.pdf
-            default_filename = "{}.pdf".format(wb_content_url)
-
-        elif args.pdf or args.png or args.csv:  # it's a view
-            try:
+            elif args.pdf or args.png or args.csv:  # it's a view
                 view_item = ExportCommand.get_view_by_content_url(logger, server, view_content_url)
-            except Exception as e:
-                Errors.exit_with_error(logger, "Error getting view info from server", e)
 
-            try:
                 if args.pdf:
-                    output = ExportCommand.download_pdf(server, view_item)
+                    output = ExportCommand.download_view_pdf(server, view_item)
                     default_filename = "{}.pdf".format(view_item.name)
                 elif args.csv:
                     output = ExportCommand.download_csv(server, view_item)
@@ -101,22 +92,25 @@ class ExportCommand(DatasourcesAndWorkbooks):
                 elif args.png:
                     output = ExportCommand.download_png(server, view_item)
                     default_filename = "{}.png".format(view_item.name)
-            except Exception as e:
-                Errors.exit_with_error(logger, "Error downloading view from server", e)
 
-        else:
-            ExportCommand.exit_with_error(logger, "You must specify an export method")
+        except Exception as e:
+            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response").format(""), e)
 
         try:
             save_name = args.filename or default_filename
             ExportCommand.save_to_file(logger, output, save_name)
-            logger.info("===== Saved {0} to '{1}'".format(args.url, save_name))
 
         except Exception as e:
             Errors.exit_with_error(logger, "Error saving to file", e)
 
     @staticmethod
-    def download_pdf(server, view_item):
+    def download_wb_pdf(server, workbook_item):
+        pdf = TSC.PDFRequestOptions(maxage=1)
+        server.workbooks.populate_pdf(workbook_item, pdf)
+        return workbook_item.pdf
+
+    @staticmethod
+    def download_view_pdf(server, view_item):
         pdf = TSC.PDFRequestOptions(maxage=1)
         server.views.populate_pdf(view_item, pdf)
         return view_item.pdf
@@ -129,13 +123,15 @@ class ExportCommand(DatasourcesAndWorkbooks):
 
     @staticmethod
     def download_png(server, view_item):
-        # why does this call csv stuff?
-        req_option_csv = TSC.CSVRequestOptions(maxage=1)
-        server.views.populate_csv(view_item, req_option_csv)
+        req_option_image = TSC.ImageRequestOptions(maxage=1)
+        server.views.populate_image(view_item, req_option_image)
         return view_item.png
 
     @staticmethod
-    def parse_export_url_to_workbook_and_view(url):
+    def parse_export_url_to_workbook_and_view(logger, url):
+        logger.info(_("export.status").format(url))
+        if " " in url:
+            Errors.exit_with_error(logger, _("export.errors.white_space_workbook_view"))
         # input should be workbook_name/view_name
         if not url.find("/"):
             return None, None
@@ -148,7 +144,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
 
     @staticmethod
     def save_to_file(logger, output, filename):
-        logger.info("===== Found attachment: {}".format(filename))
+        logger.info(_("httputils.found_attachment").format(filename))
         with open(filename, "wb") as f:
             f.write(output)
             logger.info(_("export.success").format(filename, ""))

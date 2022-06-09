@@ -99,7 +99,7 @@ class RunCommandsTest(unittest.TestCase):
         mock_server.workbooks = getter
         mock_args.fullpdf = True
         mock_args.filename = "filename.pdf"
-        mock_args.url = "url/split/pieces"
+        mock_args.url = "workbook-name/view-name"
         export_command.ExportCommand.run_command(mock_args)
         mock_session.assert_called()
 
