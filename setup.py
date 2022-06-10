@@ -29,7 +29,11 @@ setup(
             'appdirs',
             'black',
             'mypy',
+            'pyinstaller_versionfile',
             'setuptools_scm',
+            'types-appdirs',
+            'types-mock',
+            'types-requests',
         ],
         'package': [
             'pyinstaller>=5.1',
@@ -39,9 +43,6 @@ setup(
             'mock',
             'pytest', 'pytest-cov', 'pytest-order', 'pytest-runner',
             'requests-mock>=1.0,<2.0',
-            'types-appdirs',
-            'types-mock',
-            'types-requests',
         ]
     },
     use_scm_version={
