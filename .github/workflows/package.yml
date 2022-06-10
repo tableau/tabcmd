@@ -53,18 +53,13 @@ jobs:
         include:
           - os: windows-latest
             TARGET: windows
-            # # these commands are run to generate the spec files. In releases, we simply call 'pyinstaller the.spec'
-            # because we've hand edited the specs to include loc data files, and maybe other things
-            # TODO these should call...pyispec, or something like that
-            # and should the spec generation happen in generate_metadata, even?
-            CMD_BUILD: >
-              pyinstaller tabcmd\tabcmd.py --clean --noconfirm -i res\tabcmd.ico -F -c --uac-admin
+            CMD_BUILD: pyinstaller tabcmd-windows.spec --clean --noconfirm
             OUT_FILE_NAME: tabcmd.exe
             ASSET_MIME: application/vnd.microsoft.portable-executable
           - os: macos-latest
             TARGET: macos
             CMD_BUILD: >
-              pyinstaller tabcmd\tabcmd.py --clean --noconfirm -n tabcmd -i res\tabcmd.icns -F -c --osx-bundle-identifier com.tableau.tabcmd  --collect-data tabcmd\locales\**\tabcmd.mo && 
+              pyinstaller tabcmd-mac.spec --clean --noconfirm &&
               cd dist/ &&
               zip -r9 tabcmd tabcmd.app/
             OUT_FILE_NAME: tabcmd.zip
@@ -79,9 +74,14 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
+        pip install -e .[install]
+        pip install -e .[build]
         pip install -e .[package]
+        python setup.py build
+        python res/versioning.py
+        
 
-    - name: Build with pyinstaller for ${{matrix.TARGET}}
+    - name: Package with pyinstaller for ${{matrix.TARGET}}
       run: ${{matrix.CMD_BUILD}}
 
     - name: Get Release URL
