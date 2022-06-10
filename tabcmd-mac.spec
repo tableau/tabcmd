@@ -32,7 +32,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='tabcmd',
+    name='tabcmd-mac',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -46,4 +46,5 @@ exe = EXE(
     codesign_identity=None,
     entitlements_file=None,
     version='versionfile.txt',
+    icon='res\\tabcmd.icns',
 )
