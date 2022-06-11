@@ -2,16 +2,21 @@ import logging
 import os
 
 path = os.path.dirname(os.path.abspath(__file__))
-PYTHON_INFO_LOGGING_LEVEL = 20
+
+FORMATS = {
+    logging.ERROR: "ERROR: %(name)-10s: %(lineno)d: %(message)s",
+    logging.WARN: "WARN:  %(message)s",
+    logging.DEBUG: "DEBUG: %(name)-10s: %(lineno)d: %(message)-10s",
+    logging.INFO: "INFO:  %(message)s",
+    "TRACE": "TRACE: %(asctime)-12s %(name)-10s: %(lineno)d: %(message)-10s",
+    "DEFAULT": "%(message)s",
+}
 
 
-def configure_log(name, logging_level):
+def configure_log(name: str, logging_level_input: str):
     """function for logging statements to console and logfile"""
-    logging_level = getattr(logging, logging_level.upper())
-    if logging_level == PYTHON_INFO_LOGGING_LEVEL:
-        log_format = "%(message)s"
-    else:
-        log_format = "%(levelname)-5s %(asctime)-12s %(name)-10s  %(message)-10s"
+    logging_level = getattr(logging, logging_level_input.upper())
+    log_format = FORMATS[logging_level]
     logging.basicConfig(
         level=logging_level, format=log_format, filename="tabcmd.log", filemode="a", datefmt="%Y-%m" "-%d " "%H:%M:%S"
     )

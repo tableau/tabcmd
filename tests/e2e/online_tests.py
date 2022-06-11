@@ -13,11 +13,10 @@ project_name = "not-default-name"
 group_name = "test-ing-group"
 workbook_name = "namebasic"
 
-# to run this suite:
+# to run this suite
 # pytest -q tests/e2e/online_tests.py
 # you can either run setup with a stored credentials file, or simply log in
 # before running the suite so a session is active
-# This suite should only contain commands that can be run against Tableau Online
 
 
 def _test_command(test_args: list[str]):
@@ -70,7 +69,7 @@ class OnlineCommandTest(unittest.TestCase):
 
     def _delete_wb(self, file):
         command = "delete"
-        arguments = [command, "-w", file]
+        arguments = [command, file]
         _test_command(arguments)
 
     def _get_view(self, wb_name_on_server, sheet_name):
@@ -113,6 +112,7 @@ class OnlineCommandTest(unittest.TestCase):
     TWBX_WITH_EXTRACT_SHEET = "sheet1"
     TWBX_FILE_WITHOUT_EXTRACT = "simple-data.twbx"
     TWBX_WITHOUT_EXTRACT_NAME = "WorkbookWithoutExtract"
+    TWBX_WITHOUT_EXTRACT_SHEET = "Testsheet1"
 
     @pytest.mark.order(1)
     def test_login(self):
@@ -120,6 +120,18 @@ class OnlineCommandTest(unittest.TestCase):
             setup_e2e.login()
         except Exception as e:
             raise SystemExit(2)
+
+    @pytest.mark.order(1)
+    def test_version(self):
+        command = ""
+        arguments = [command]
+        _test_command(arguments)
+
+    @pytest.mark.order(1)
+    def test_help(self):
+        command = "help"
+        arguments = [command]
+        _test_command(arguments)
 
     @pytest.mark.order(2)
     def test_create_site_users(self):
@@ -185,6 +197,10 @@ class OnlineCommandTest(unittest.TestCase):
         self._delete_project("project_name_2", project_name)  # project 2
         self._delete_project(project_name)
 
+    @pytest.mark.order(9)
+    def test_publish_samples(self):
+        self._publish_samples("Default")
+
     @pytest.mark.order(10)
     def test_publish(self):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
@@ -193,14 +209,31 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(10)
     def test__get_wb(self):
+        wb_name_on_server = OnlineCommandTest.TWBX_WITHOUT_EXTRACT_NAME
+        self._get_workbook(wb_name_on_server + ".twbx")
+
+    @pytest.mark.order(10)
+    def test__get_wb(self):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         self._get_workbook(wb_name_on_server + ".twbx")
 
     @pytest.mark.order(10)
     def test__get_view(self):
+        wb_name_on_server = OnlineCommandTest.TWBX_WITHOUT_EXTRACT_NAME
+        sheet_name = OnlineCommandTest.TWBX_WITHOUT_EXTRACT_SHEET
+        self._get_view(wb_name_on_server, sheet_name + ".pdf")
+
+    @pytest.mark.order(10)
+    def test__get_view_csv(self):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
-        self._get_view(wb_name_on_server, sheet_name + ".pdf")
+        self._get_view(wb_name_on_server, sheet_name + ".csv")
+
+    @pytest.mark.order(10)
+    def test__get_view_png(self):
+        wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
+        sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
+        self._get_view(wb_name_on_server, sheet_name + ".png")
 
     @pytest.mark.order(11)
     def test__delete_wb(self):
@@ -208,24 +241,23 @@ class OnlineCommandTest(unittest.TestCase):
         self._delete_wb(name_on_server)
 
     @pytest.mark.order(12)
-    def test_create_extract(self):
-        # This workbook doesn't work for creating an extract
-        name_on_server = OnlineCommandTest.TWBX_WITHOUT_EXTRACT_NAME
-        file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITHOUT_EXTRACT)
-        self._publish_wb(file, name_on_server)
-        # which damn workbook will work here self._create_extract(name_on_server)
-
-    @pytest.mark.order(13)
-    def test_refresh_extract(self):
-        name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
-        self._refresh_extract(name_on_server)
-
-    @pytest.mark.order(14)
     def test_delete_extract(self):
+        # fails because the extract has a bad data connection :/
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         self._publish_wb(file, name_on_server)
         self._delete_extract(name_on_server)
+
+    @pytest.mark.order(13)
+    def test_create_extract(self):
+        # Fails because it 'already has an extract' :/
+        name_on_server = OnlineCommandTest.TWBX_WITHOUT_EXTRACT_NAME
+        self._create_extract(name_on_server)
+
+    @pytest.mark.order(14)
+    def test_refresh_extract(self):
+        name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
+        self._refresh_extract(name_on_server)
         self._delete_wb(name_on_server)
 
     def test_version(self):
@@ -239,13 +271,23 @@ class OnlineCommandTest(unittest.TestCase):
     #   _test_command(["logout"])
 
     @pytest.mark.order(15)
-    def test_export(self):
+    def test_export_wb(self):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         self._publish_wb(file, name_on_server)
         command = "export"
         friendly_name = name_on_server + "/" + OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
-        arguments = [command, friendly_name, "--fullpdf", "-f", "exported_file.pdf"]
+        arguments = [command, friendly_name, "--fullpdf", "-f", "exported_wb.pdf"]
+        _test_command(arguments)
+
+    @pytest.mark.order(15)
+    def test_export_view(self):
+        name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
+        file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
+        self._publish_wb(file, name_on_server)
+        command = "export"
+        friendly_name = name_on_server + "/" + OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
+        arguments = [command, friendly_name, "--pdf", "-f", "exported_view.pdf"]
         _test_command(arguments)
 
     @pytest.mark.order(16)
@@ -253,3 +295,8 @@ class OnlineCommandTest(unittest.TestCase):
         command = "deletesiteusers"
         users = os.path.join("tests", "assets", "usernames.csv")
         _test_command([command, users])
+
+    @pytest.mark.order(20)
+    def test_list_sites(self):
+        command = "listsites"
+        _test_command([command])

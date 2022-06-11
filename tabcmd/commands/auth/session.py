@@ -7,9 +7,8 @@ import tableauserverclient as TSC
 from urllib3.exceptions import InsecureRequestWarning
 
 from tabcmd.commands.constants import Errors
-from tabcmd.execution.logger_config import log
-import csv
 from tabcmd.execution.localize import _
+from tabcmd.execution.logger_config import log
 
 
 class Session:
@@ -115,21 +114,26 @@ class Session:
         elif self._allow_prompt():
             token = getpass.getpass("Token:")
         else:
-            Errors.exit_with_error(self.logger, "No token value entered")
+            Errors.exit_with_error(self.logger, _("session.errors.missing_arguments").format("token"))
 
         if self.token_name and token:
             credentials = TSC.PersonalAccessTokenAuth(self.token_name, token, site_id=self.site_name)
             self.last_login_using = "token"
             return credentials
         else:
-            Errors.exit_with_error(self.logger, "Couldn't find token name")
+            Errors.exit_with_error(self.logger, _("session.errors.missing_arguments").format("token name"))
 
     def _set_connection_options(self):
-        # args to handle here: proxy, --no-proxy, cert, --no-certcheck, timeout
-        tableau_server = TSC.Server(self.server_url, use_server_version=False)
+        # args still to be handled here:
+        # proxy, --no-proxy,
+        # cert
+        # timeout
+        http_options = {}
         if self.no_certcheck:
-            tableau_server.add_http_options({"verify": False})
+            http_options = {"verify": False}
             requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
+        tableau_server = TSC.Server(self.server_url, use_server_version=True, http_options=http_options)
+
         return tableau_server
 
     def _create_new_connection(self):
@@ -149,7 +153,7 @@ class Session:
             self.logger.info("=====   Username: {}".format(self.username))
         else:
             self.logger.info("=====   Token Name: {}".format(self.token_name))
-        self.logger.info("=====   Site: {}".format(self.site_name))
+        self.logger.info(_("dataconnections.classes.tableau_server_site") + ": {}".format(self.site_name))
 
     def _validate_existing_signin(self):
         self.logger.info(_("session.continuing_session"))
@@ -161,17 +165,18 @@ class Session:
                 if response.status_code.startswith("200"):
                     return self.tableau_server
         except TSC.ServerResponseError as e:
-            self.logger.info("Invalid session token", e)
+            self.logger.info(_("publish.errors.unexpected_server_response"), e)
         except Exception as e:
-            self.logger.info("Error contacting the server", e)
+            self.logger.info(_("errors.internal_error.request.message"), e)
         return None
 
     def _sign_in(self, tableau_auth):
-        self.logger.debug("Signing in to {0}{1} as {2}".format(self.server_url, self.site_name, self.username))
+        self.logger.debug(_("session.login") + self.server_url)
+        self.logger.debug(_("listsites.output").format("", self.username or self.token_name, self.site_name))
         try:
             self.tableau_server.auth.sign_in(tableau_auth)  # it's the same call for token or user-pass
         except TSC.ServerResponseError as e:
-            Errors.exit_with_error(self.logger, "Error signing in", e)
+            Errors.exit_with_error(self.logger, exception=e)
         try:
             self.site_id = self.tableau_server.site_id
             self.user_id = self.tableau_server.user_id
@@ -181,7 +186,7 @@ class Session:
             self.logger.debug("Signed into {0}{1} as {2}".format(self.server_url, self.site_name, self.username))
             self.logger.info(_("common.output.succeeded"))
         except TSC.ServerResponseError as e:
-            Errors.exit_with_error(self.logger, "Server response", e)
+            Errors.exit_with_error(self.logger, _("publish.errors.unexpected_server_response"), e)
 
         return self.tableau_server
 
@@ -193,7 +198,7 @@ class Session:
         else:
             return None
         if credentials:
-            self.logger.info("===== Using saved credentials")
+            self.logger.info(_("session.options.password-file"))
         return credentials
 
     # external entry point:
@@ -243,7 +248,7 @@ class Session:
 
     def end_session_and_clear_data(self):
         self._end_session()
-        self.logger.info("===== Signed out")
+        self.logger.info(_("session.logout"))
         self._clear_data()
 
     def _end_session(self):
@@ -305,10 +310,10 @@ class Session:
                 self.proxy = auth["proxy"]
                 self.timeout = auth["timeout"]
         except KeyError as e:
-            self.logger.debug("Error reading values from stored json file: ", e)
+            self.logger.debug(_("sessionoptions.errors.bad_password_file"), e)
             self._remove_json()
         except Exception as any_error:
-            self.logger.info("Error loading session from file: clearing saved values")
+            self.logger.info(_("session.new_session"))
             self._remove_json()
 
     def _check_json(self):

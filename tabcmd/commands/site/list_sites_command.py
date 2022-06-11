@@ -1,10 +1,10 @@
 import tableauserverclient as TSC
 
-from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
-from tabcmd.execution.logger_config import log
+from tabcmd.execution.global_options import *
 from tabcmd.execution.localize import _
+from tabcmd.execution.logger_config import log
 
 
 class ListSiteCommand(Server):
@@ -26,7 +26,7 @@ class ListSiteCommand(Server):
         session = Session()
         server = session.create_session(args)
         try:
-            sites = Server.get_sites(server)
+            sites, pagination = server.sites.get()
             logger.info(_("listsites.status").format(session.username))
             for site in sites:
                 print("NAME:", site.name)

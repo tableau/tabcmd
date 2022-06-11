@@ -1,4 +1,5 @@
 import argparse
+from . import _version
 
 
 class ParentParser:
@@ -35,14 +36,12 @@ class ParentParser:
             dest="certificate",
             default=None,
             metavar="",
-            help="Use client certificate to sign in. Required when mutual SSL is enabled. "
-            "(The default behavior is to try certificates from the store)",
+            help=_("session.options.use-certificate"),
         )
         certificates.add_argument(
             "--no-certcheck",
             action="store_true",
-            help="When specified, tabcmd (the client) does not validate the server's SSL certificate. "
-            "(The default behavior is to try certificates from the store)",
+            help=_("session.options.no-certcheck"),
         )
 
         parser.add_argument(
@@ -51,18 +50,7 @@ class ParentParser:
             help="Treat resource conflicts as item creation success e.g project already exists",
         )
 
-        cookies = parser.add_mutually_exclusive_group()
-        cookies.add_argument(
-            "--cookie",
-            action="store_true",
-            help="Save the session ID when signing in. Subsequent commands will NOT need to sign in again. This is \
-            the default behavior.",
-        )
-        cookies.add_argument(
-            "--no-cookie",
-            action="store_true",
-            help="Do not save the session ID when signing in. Subsequent commands will need to sign in again.",
-        )
+        parser.add_argument("--no-cookie", action="store_true", help=_("session.options.no-cookie"))
 
         parser.add_argument(
             "-l",
@@ -73,7 +61,7 @@ class ParentParser:
             help="Use the specified logging level. The default level is INFO.",
         )
 
-        parser.add_argument("--no-prompt", action="store_true", help="no prompt for password")
+        parser.add_argument("--no-prompt", action="store_true", help=_("session.options.no-prompt"))
 
         auth_options = parser.add_mutually_exclusive_group()
         auth_options.add_argument(
@@ -85,11 +73,7 @@ class ParentParser:
                   this is required at least once to begin session.",
         )
         auth_options.add_argument(
-            "-u",
-            "--username",
-            default=None,
-            metavar="<USER>",
-            help="Use the specified Tableau Server username. For Tableau Online, this will be an email address.",
+            "-u", "--username", default=None, metavar="<USER>", help=_("session.options.username")
         )
 
         secret_values = parser.add_mutually_exclusive_group()
@@ -101,64 +85,45 @@ class ParentParser:
             help="Use the specified Tableau Server Personal Access Token. Requires --token-name to be set.",
         )
         secret_values.add_argument(
-            "-p",
-            "--password",
-            default=None,
-            metavar="<PASSWORD>",
-            help="Use the specified Tableau Server password. Requires --username to be set.",
+            "-p", "--password", default=None, metavar="<PASSWORD>", help=_("session.options.password")
         )
         secret_values.add_argument(
-            "--password-file",
-            default=None,
-            metavar="<FILE>",
-            help="Read the password from the given .txt file rather than the command line for increased security.",
+            "--password-file", default=None, metavar="<FILE>", help=_("session.options.password-file")
         )
 
         proxy_group = parser.add_mutually_exclusive_group()
         proxy_group.add_argument(
-            "-x",
-            "--proxy",
-            dest="proxy",
-            default=None,
-            metavar="<HOST:PORT>",
-            help="Connect to Tableau Server using the specified HTTP proxy.",
+            "-x", "--proxy", dest="proxy", default=None, metavar="<HOST:PORT>", help=_("session.options.proxy")
         )
         proxy_group.add_argument(
             "--no-proxy",
             action="store_false",
-            help="Do not use a HTTP proxy.",
-        )  # is this the default behavior?
+            help=_("session.options.no-proxy"),
+        )
 
         parser.add_argument(
             "-s",
             "--server",
             default=None,  # default is handled in Session class
             metavar="<URL>",
-            help="Use the specified Tableau Server URL. If no protocol is specified, http:// is assumed.",
+            help=_("session.options.server"),
         )
         parser.add_argument(
-            "-t",
-            "--site",
-            default=None,  # default is handled in Session class
-            dest="site_name",
-            metavar="SITEID",
-            help='Use the specified Tableau Server site. Leave empty or specify an empty string ("") to \
-                    force use of the default site',
+            "-t", "--site", default="", dest="site_name", metavar="SITEID", help=_("session.options.site")
         )
 
         parser.add_argument(
             "--timeout",
             default=None,  # default is handled in Session class
             metavar="<SECONDS>",  # can't use -t, it's already used for --site
-            help="How long to wait, in seconds, for the server to complete processing the command. The default \
-                    behavior is to wait until the server responds.",
+            help=_("session.options.timeout"),
         )
 
         parser.add_argument(
             "-v",
             "--version",
             action="version",
-            version="tabcmd - Tableau Server Command Line Utility 2.0 (pre-release)\n \n",
+            version="tabcmd.exe - Tableau Server Command Line Utility v" + _version.version + "\n \n",
             help="Show version information and exit.",
         )
 
@@ -168,5 +133,11 @@ class ParentParser:
             choices=["de", "en", "es", "fr", "it", "ja", "ko", "pt", "sv", "zh"],
             help="Set the language to use. Exported data will be returned in this lang/locale."
             "If not set, the client will use your computer locale, and the server will use your user account locale",
+        )
+
+        parser.add_argument(
+            "--country",
+            choices=["de", "en", "es", "fr", "it", "ja", "ko", "pt", "sv", "zh"],
+            help=_("export.options.country"),
         )
         return parser

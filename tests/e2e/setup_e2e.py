@@ -13,6 +13,8 @@ exe = os.path.join(launch_path, our_program)
 
 
 def login(extra="--language", value="en"):
+    if not credentials:
+        return
     # --server, --site, --username, --password
     args = [
         "python",

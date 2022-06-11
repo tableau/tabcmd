@@ -1,14 +1,14 @@
 import tableauserverclient as TSC
 
-from tabcmd.execution.global_options import *
 from tabcmd.commands.auth.session import Session
-from tabcmd.commands.extracts.extracts_command import ExtractsCommand
-from tabcmd.execution.logger_config import log
-from tabcmd.execution.localize import _
 from tabcmd.commands.constants import Errors
+from tabcmd.commands.server import Server
+from tabcmd.execution.global_options import *
+from tabcmd.execution.localize import _
+from tabcmd.execution.logger_config import log
 
 
-class CreateExtracts(ExtractsCommand):
+class CreateExtracts(Server):
     """
     Command that creates extracts for a published workbook or data source.
     """
@@ -31,23 +31,22 @@ class CreateExtracts(ExtractsCommand):
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
+        creation_call = None
         try:
+            logger.debug(
+                "Extract params: encrypt={}, include_all={}, datasources={}".format(
+                    args.encrypt, args.include_all, args.embedded_datasources
+                )
+            )
+
             if args.datasource:
-                logger.debug("Finding datasource `{}` on the server...".format(args.datasource))
-                ExtractsCommand.print_task_scheduling_message(logger, "datasource", args.workbook, "created")
-                data_source_item = ExtractsCommand.get_data_source_item(logger, server, args.datasource)
+                data_source_item = Server.get_data_source_item(logger, server, args.datasource)
+                logger.info(_("createextracts.for.datasource").format(args.datasource))
                 job = server.datasources.create_extract(data_source_item, encrypt=args.encrypt)
 
             elif args.workbook:
-                logger.debug("Finding workbook `{}` on the server...".format(args.workbook))
-                ExtractsCommand.print_task_scheduling_message(logger, "workbook", args.workbook, "created")
-                workbook_item = ExtractsCommand.get_workbook_item(logger, server, args.workbook)
-                logger.debug("Workbook: {}".format(workbook_item))
-                logger.debug(
-                    "Extract params: encrypt={}, include_all={}, datasources={}".format(
-                        args.encrypt, args.include_all, args.embedded_datasources
-                    )
-                )
+                workbook_item = Server.get_workbook_item(logger, server, args.workbook)
+                logger.info(_("createextracts.for.workbook_name").format(args.workbook))
                 job = server.workbooks.create_extract(
                     workbook_item,
                     encrypt=args.encrypt,
@@ -55,6 +54,7 @@ class CreateExtracts(ExtractsCommand):
                     datasources=args.embedded_datasources,
                 )
         except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, _("createextracts.errors.error"), e)
+            Errors.exit_with_error(logger, exception=e)
 
-        ExtractsCommand.print_success_message(logger, "creation", job)
+        logger.info(_("common.output.job_queued_success"))
+        logger.debug("Extract creation queued with JobID: {}".format(job.id))

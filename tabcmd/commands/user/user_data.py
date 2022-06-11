@@ -1,12 +1,14 @@
 import argparse
+import io
 import logging
 from enum import IntEnum
 from typing import List, Callable, Optional
-from tabcmd.commands.server import Server
-from tabcmd.commands.constants import Errors
-from tabcmd.execution.localize import _
-import io
+
 import tableauserverclient as TSC
+
+from tabcmd.commands.constants import Errors
+from tabcmd.commands.server import Server
+from tabcmd.execution.localize import _
 
 
 class Userdata:

@@ -93,3 +93,10 @@ class E2ETests(unittest.TestCase):
         command = "createextracts"
         arguments = [command, "-d", "Regional", "--project", "Samples", "--encrypt"]
         _test_command(arguments)
+
+    def test_publish_export(self):
+        command = "publish"
+        local_file = "tests/assets/SampleWB.twbx"
+        arguments = [command, local_file]
+        _test_command(arguments)
+        # TODO: export and get the file we just published

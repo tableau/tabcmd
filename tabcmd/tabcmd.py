@@ -1,5 +1,5 @@
 import sys
-import logging
+
 from tabcmd.execution.tabcmd_controller import TabcmdController
 
 

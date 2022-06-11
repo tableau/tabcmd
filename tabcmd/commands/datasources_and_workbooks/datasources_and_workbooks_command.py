@@ -1,6 +1,8 @@
 import tableauserverclient as TSC
-from tabcmd.commands.server import Server
+
 from tabcmd.commands.constants import Errors
+from tabcmd.commands.server import Server
+from tabcmd.execution.localize import _
 
 
 class DatasourcesAndWorkbooks(Server):
@@ -12,33 +14,31 @@ class DatasourcesAndWorkbooks(Server):
         super().__init__(args)
 
     @staticmethod
+    def get_view_url_from_names(wb_name, view_name):
+        return "{}/sheets/{}".format(wb_name, view_name)
+
+    @staticmethod
     def get_view_by_content_url(logger, server, view_content_url) -> TSC.ViewItem:
-        logger.debug("Fetching view with id {}".format(view_content_url))
+        logger.debug(_("export.status").format(view_content_url))
         try:
             req_option = TSC.RequestOptions()
             req_option.filter.add(TSC.Filter("contentUrl", TSC.RequestOptions.Operator.Equals, view_content_url))
-            matching_views, _ = server.views.get(req_option)
-            selected_view = matching_views[0]
-        except Exception as e:
-            Errors.exit_with_error(logger, "Could not find view. Please check the name and try again.", e)
-
-        return selected_view
+            matching_views, paging = server.views.get(req_option)
+        except TSC.ServerResponseError as e:
+            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response").format(""))
+        if len(matching_views) < 1:
+            Errors.exit_with_error(logger, message=_("errors.xmlapi.not_found"))
+        return matching_views[0]
 
     @staticmethod
     def get_wb_by_content_url(logger, server, workbook_content_url) -> TSC.WorkbookItem:
-        logger.debug("fetch workbook with id {}".format(workbook_content_url))
+        logger.debug(_("export.status").format(workbook_content_url))
         try:
             req_option = TSC.RequestOptions()
-            req_option.filter.add(
-                TSC.Filter(
-                    "contentUrl",
-                    TSC.RequestOptions.Operator.Equals,
-                    workbook_content_url,
-                )
-            )
-            matching_workbooks, _ = server.workbooks.get(req_option)
-            selected_workbook = matching_workbooks[0]
-        except Exception:
-            Errors.exit_with_error(logger, "Could not find workbook. Please check the name and try again.")
-
-        return selected_workbook
+            req_option.filter.add(TSC.Filter("contentUrl", TSC.RequestOptions.Operator.Equals, workbook_content_url))
+            matching_workbooks, paging = server.workbooks.get(req_option)
+        except TSC.ServerResponseError as e:
+            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response").format(""))
+        if len(matching_workbooks) < 1:
+            Errors.exit_with_error(logger, message=_("dataalerts.failure.error.workbookNotFound"))
+        return matching_workbooks[0]

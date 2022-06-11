@@ -1,12 +1,13 @@
 import tableauserverclient as TSC
 
 from tabcmd.commands.auth.session import Session
-from tabcmd.commands.extracts.extracts_command import ExtractsCommand
-from tabcmd.execution.logger_config import log
+from tabcmd.commands.constants import Errors
+from tabcmd.commands.server import Server
 from tabcmd.execution.localize import _
+from tabcmd.execution.logger_config import log
 
 
-class DecryptExtracts(ExtractsCommand):
+class DecryptExtracts(Server):
     """Command that decrypts all extracts on a site. If no site is
     specified, extracts on the default site will be decrypted."""
 
@@ -23,11 +24,12 @@ class DecryptExtracts(ExtractsCommand):
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
-        site_item = ExtractsCommand.get_site_for_command_or_throw(logger, server, args)
+        site_item = Server.get_site_for_command_or_throw(logger, server, args)
         try:
             logger.info(_("decryptextracts.status").format(args.site_name))
             job = server.sites.decrypt_extracts(site_item.id)
         except TSC.ServerResponseError as e:
-            ExtractsCommand.exit_with_error(logger, "Error decrypting extracts", e)
+            Errors.exit_with_error(logger, "Error decrypting extracts", e)
 
-        ExtractsCommand.print_success_message(logger, "decryption", job)
+        logger.info(_("common.output.job_queued_success"))
+        logger.debug("Extract decryption queued with JobID: {}".format(job.id))

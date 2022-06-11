@@ -1,11 +1,10 @@
 import tableauserverclient as TSC
 
 from tabcmd.commands.auth.session import Session
-from tabcmd.commands.constants import Constants
-from tabcmd.execution.logger_config import log
 from tabcmd.execution.global_options import *
-from .user_data import UserCommand
 from tabcmd.execution.localize import _
+from tabcmd.execution.logger_config import log
+from .user_data import UserCommand
 
 
 class CreateSiteUsersCommand(UserCommand):
@@ -40,7 +39,7 @@ class CreateSiteUsersCommand(UserCommand):
 
         logger.info(_("tabcmd.add.users.to_x").format(args.filename.name, creation_site))
         user_obj_list = UserCommand.get_users_from_file(args.filename, logger)
-        logger.info(_("session.monitorjob.percent_complete"))
+        logger.info(_("session.monitorjob.percent_complete").format(0))
         error_list = []
         for user_obj in user_obj_list:
             try:
