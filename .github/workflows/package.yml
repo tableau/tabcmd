@@ -25,7 +25,7 @@ jobs:
 
   createrelease:
     name: Create Release
-    runs-on: [windows-latest, mac-latest] # ubuntu-latest,
+    runs-on: windows-latest
     # TODO linux
     # https://stackoverflow.com/questions/31259856/how-to-create-an-executable-file-for-linux-machine-using-pyinstaller
 
