@@ -15,7 +15,12 @@ on:
   push:
     tags: release
     branches: jac/pyinstaller
-
+  workflow_dispatch:
+    inputs:
+      is_draft: 
+        description: 'toggle publishing type'
+        required: true
+        type: boolean
 jobs:
 
   createrelease:
@@ -31,10 +36,10 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.event.head_commit.message }}
+        tag_name: ${{inputs.is_draft && 'draft' || github.event.head_commit.message}}
         release_name: Release ${{ github.event.head_commit.message }}
-        draft: true # todo: change to false once action is tested
-        prerelease: false
+        draft: inputs.is_draft
+        prerelease: inputs.is_draft
 
     - name: Output Release URL File
       run: echo "${{ steps.create_release.outputs.upload_url }}" > release_url.txt
