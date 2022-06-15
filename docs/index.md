@@ -6,24 +6,19 @@ permalink: /docs/index.html
 
 Tableau provides the tabcmd command-line interface that you can use to automate site administration tasks on your Tableau Online or Tableau Server site. For example, you can use tabcmd to create or delete users, projects, and groups.
 
-<div class="alert alert-info">
-<strong>Important</strong>: To ensure availability and avoid disruption with Tableau Online, make sure to upgrade your tabcmd client to a version greater than version 2020.2 before January 2022. The tabcmd versions are API backward compatible and should not require code changes. For more information, see <a href="#install_tabcmd">Install tabcmd</a>.
-</div>
-
 * TOC
 {:toc}
 
-## Why a new tabcmd? 
-The updated tabcmd command-line interface (CLI) allows you to do the following:
-* Run tabcmd commands on MacOS (the existing tabcmd does not officially support MacOS)
-* Authenticate using personal access tokens (the existing tabcmd does not support personal access token logins)
-* Use public endpoints available in the Python-based Tableau Server Client (TSC)
-* Add more functionality and extend the tabcmd script for other automation tasks
 
 ## Install tabcmd {#install_tabcmd}
+You can download and run tabcmd 2.0 as an executable file, or install it on the command line with pip.
 
-You can install tabcmd 2.0 with pip or from the source code
-### Install with pip (recommended)
+### Download and run (recommended)
+* for Windows: https://github.com/tableau/tabcmd/releases/download/v1.99.99/tabcmd.exe
+* for Mac: <coming soon>
+* for Linux: <coming soon>
+
+### Install with pip 
 Run the following command to install the latest stable version of tabcmd:
 
 ```pip install tabcmd```
@@ -35,6 +30,9 @@ You can install from the development branch for a preview of upcoming features. 
 
 <div class="alert alert-info">
 <strong>Important</strong>: Do not use the version from the development branch for production code. The methods in the development version are subject to change at any time.</div>
+
+### Install the older tabcmd client
+If you would like to install an older version of tabcmd, you can continue to follow the instructions at https://help.tableau.com/current/server/en-us/tabcmd.htm#tabcmd-install
 
 ## Examples
 The following command demonstrates starting a session:
