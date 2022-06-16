@@ -5,16 +5,17 @@ name: Publish to PyPi
 # maybe move it into the package job so all release-based actions are together
 #  - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 on:
+  workflow_dispatch:
+    inputs:
+      is_draft:
+        description: 'Test PyPi'
+        required: true
+        type: boolean
   push:
-    workflow_dispatch:
-      inputs:
-        is_draft:
-          description: 'Test PyPi'
-          required: true
-          type: boolean
     branches: development, main
 
 jobs:
+  build-n-publish:
     name: Build dist files for PyPi
     runs-on: ubuntu-latest
     steps:
