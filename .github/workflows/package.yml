@@ -8,21 +8,18 @@ name: Release-Executable
 # https://data-dive.com/multi-os-deployment-in-cloud-using-pyinstaller-and-github-actions
 # https://anshumanfauzdar.medium.com/using-github-actions-to-bundle-python-application-into-a-single-package-and-automatic-release-834bd42e0670
 
-
-# TODO: actually plan when we want to trigger this job
-#  - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 on:
   push:
     tags: release
     branches: jac/pyinstaller
   workflow_dispatch:
     inputs:
-      is_draft: 
-        description: 'Draft only'
+      is_draft:
+        description: 'Test PyPi'
         required: true
         type: boolean
+  
 jobs:
-
   createrelease:
     name: Create Release
     runs-on: windows-latest
@@ -36,7 +33,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{inputs.is_draft && 'draft' || github.event.head_commit.message}}
+        tag_name: ${{github.ref_name || "manual"}}
         release_name: Release ${{ github.event.head_commit.message }}
         draft: inputs.is_draft
         prerelease: inputs.is_draft
@@ -97,6 +94,7 @@ jobs:
         pip install -e .[package]
         python setup.py build
         python res/versioning.py
+        python setup.py build
         
 
     - name: Package with pyinstaller for ${{matrix.TARGET}}

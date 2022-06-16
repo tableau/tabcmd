@@ -2,6 +2,7 @@
 
 [![Tableau Supported](https://img.shields.io/badge/Support%20Level-Tableau%20Supported-53bd92.svg)](https://www.tableau.com/support-levels-it-and-developer-tools)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Python tests](https://github.com/tableau/tabcmd/actions/workflows/run-tests.yml/badge.svg)](https://github.com/tableau/tabcmd/actions/workflows/run-tests.yml)
 
 An open source, cross platform command-line utility which you can use to automate site administration tasks on your Tableau Server site. 
 
