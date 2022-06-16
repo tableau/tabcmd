@@ -1,6 +1,6 @@
 import unittest
 
-from tabcmd.commands.site.edit_site_command import EditSiteCommand
+from src.commands.site.edit_site_command import EditSiteCommand
 from .common_setup import *
 
 commandname = "editsites"

@@ -1,7 +1,7 @@
 import unittest
 from unittest import mock
 
-from tabcmd.commands.user.delete_site_users_command import DeleteSiteUsersCommand
+from src.commands.user.delete_site_users_command import DeleteSiteUsersCommand
 from .common_setup import *
 
 commandname = "deletesiteusers"

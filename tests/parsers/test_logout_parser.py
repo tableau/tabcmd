@@ -2,7 +2,7 @@ import argparse
 import unittest
 from unittest import mock
 
-from tabcmd.commands.auth.logout_command import LogoutCommand
+from src.commands.auth.logout_command import LogoutCommand
 from .common_setup import *
 
 commandname = "logout"

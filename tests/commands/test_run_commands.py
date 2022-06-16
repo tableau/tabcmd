@@ -3,15 +3,15 @@ import unittest
 from unittest.mock import *
 import tableauserverclient as TSC
 
-from tabcmd.commands.auth import login_command, logout_command
-from tabcmd.commands.datasources_and_workbooks import (
+from src.commands.auth import login_command, logout_command
+from src.commands.datasources_and_workbooks import (
     delete_command,
     export_command,
     get_url_command,
     publish_command,
     runschedule_command,
 )
-from tabcmd.commands.extracts import (
+from src.commands.extracts import (
     create_extracts_command,
     delete_extracts_command,
     decrypt_extracts_command,
@@ -19,16 +19,16 @@ from tabcmd.commands.extracts import (
     reencrypt_extracts_command,
     refresh_extracts_command,
 )
-from tabcmd.commands.group import create_group_command, delete_group_command
-from tabcmd.commands.help import help_command
-from tabcmd.commands.project import create_project_command, delete_project_command, publish_samples_command
-from tabcmd.commands.site import (
+from src.commands.group import create_group_command, delete_group_command
+from src.commands.help import help_command
+from src.commands.project import create_project_command, delete_project_command, publish_samples_command
+from src.commands.site import (
     create_site_command,
     delete_site_command,
     edit_site_command,
     list_sites_command,
 )
-from tabcmd.commands.user import (
+from src.commands.user import (
     add_users_command,
     create_site_users,
     create_users_command,
@@ -63,7 +63,7 @@ getter.refresh = MagicMock("refresh", return_value=fake_job)
 
 
 @patch("tableauserverclient.Server")
-@patch("tabcmd.commands.auth.session.Session.create_session")
+@patch("src.commands.auth.session.Session.create_session")
 class RunCommandsTest(unittest.TestCase):
     @staticmethod
     def _set_up_session(mock_session, mock_server):
@@ -79,7 +79,7 @@ class RunCommandsTest(unittest.TestCase):
         login_command.LoginCommand.run_command(mock_args)
         mock_session.assert_called_with(mock_args)
 
-    @patch("tabcmd.commands.auth.session.Session.end_session_and_clear_data")
+    @patch("src.commands.auth.session.Session.end_session_and_clear_data")
     def test_logout(self, mock_end_session, mock_create_session, mock_server):
         logout_command.LogoutCommand.run_command(mock_args)
         mock_create_session.assert_not_called()

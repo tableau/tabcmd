@@ -1,8 +1,8 @@
 import unittest
 from unittest import mock
 
-from tabcmd.commands.server import Server
-from tabcmd.execution.logger_config import log
+from src.commands.server import Server
+from src.execution.logger_config import log
 
 fake_item = mock.MagicMock()
 fake_item.name = "fake-name"

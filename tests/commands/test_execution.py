@@ -2,8 +2,8 @@ import argparse
 import sys
 import unittest
 import mock
-from tabcmd.execution.logger_config import *
-from tabcmd.execution.tabcmd_controller import TabcmdController
+from src.execution.logger_config import *
+from src.execution.tabcmd_controller import TabcmdController
 
 
 class ExecutionTests(unittest.TestCase):
@@ -21,6 +21,18 @@ class ExecutionTests(unittest.TestCase):
         fake_parser = mock.MagicMock(argparse.ArgumentParser)
         with self.assertRaises(SystemExit):
             TabcmdController.run(fake_parser, None)
+
+    def test_invalid_command(self):
+        parser = TabcmdController.initialize()
+        # crashes out during parse_args
+        with self.assertRaises(SystemExit):
+            TabcmdController.run(parser, ["boo", "--language", "fr"])
+
+    def test_launch_languages(self):
+        parser = TabcmdController.initialize()
+        # crashes out from list_sites.cmd
+        with self.assertRaises(SystemExit):
+            TabcmdController.run(parser, ["listsites", "--language", "fr"])
 
     def test_config_logger(self):
         configure_log("log_name", "DEBUG")

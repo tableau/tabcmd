@@ -35,7 +35,7 @@ def task_convert():
             else:
                 encoding = "cp1252"
 
-            for file in glob.glob("tabcmd/locales/" + current_locale + "/*.properties"):
+            for file in glob.glob("src/locales/" + current_locale + "/*.properties"):
                 basename = os.path.basename(file).split(".")[0]
                 print("transcoding", basename)
                 with open(file, encoding=encoding) as infile:
@@ -67,7 +67,7 @@ def task_po():
     def process_locales():
         for current_locale in LOCALES:
 
-            LOC_PATH = "tabcmd/locales/" + current_locale
+            LOC_PATH = "src/locales/" + current_locale
             for file in glob.glob(LOC_PATH+"/*.properties"):
                 basename = os.path.basename(file).split(".")[0]
                 print("processing", basename)
@@ -92,7 +92,7 @@ def task_clean_all():
 
     def process_locales():
         for current_locale in LOCALES:
-            LOC_PATH = "tabcmd/locales/" + current_locale
+            LOC_PATH = "src/locales/" + current_locale
             for file in glob.glob(LOC_PATH+"/*.properties"):
                 basename = os.path.basename(file).split(".")[0]
                 print("deleting",basename + ".*")
@@ -125,7 +125,7 @@ def task_merge():
     def process_locales():
         for current_locale in LOCALES:
 
-            LOC_PATH = "tabcmd/locales/" + current_locale + "/LC_MESSAGES"
+            LOC_PATH = "src/locales/" + current_locale + "/LC_MESSAGES"
 
             with open(LOC_PATH + "/tabcmd.po", 'w+', encoding="utf-8") as outfile:
                 for file in glob.glob(LOC_PATH + "/*.po"):
@@ -152,11 +152,11 @@ def task_mo():
     def process_locales():
         for current_locale in LOCALES:
 
-            LOC_PATH = "tabcmd/locales/" + current_locale + "/LC_MESSAGES"
+            LOC_PATH = "src/locales/" + current_locale + "/LC_MESSAGES"
 
             print("writing final tabcmd.mo file")
             # build the single binary file from the .po file
-            result = subprocess.run(["python", "bin/i18n/msgfmt.py", LOC_PATH + "/tabcmd"])
+            result = subprocess.run(["python", "bin/i18n/msgfmt.py", LOC_PATH + "/src"])
             print("\n", result)
             # print("stdout:", result.stdout)
             if not result.returncode == 0:

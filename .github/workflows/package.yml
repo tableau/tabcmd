@@ -18,7 +18,7 @@ on:
   workflow_dispatch:
     inputs:
       is_draft: 
-        description: 'toggle publishing type'
+        description: 'Draft only'
         required: true
         type: boolean
 jobs:
@@ -54,21 +54,34 @@ jobs:
     needs: createrelease
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         include:
           - os: windows-latest
             TARGET: windows
-            CMD_BUILD: pyinstaller tabcmd-windows.spec --clean --noconfirm
+            CMD_BUILD: python setup.py build &&
+              python res/versioning.py && python setup.py build &&
+              pip install . &&
+              dir dist && dir dist/windows
+              pyinstaller tabcmd-windows.spec --clean --noconfirm --distpath ./dist/windows
             OUT_FILE_NAME: tabcmd.exe
             ASSET_MIME: application/vnd.microsoft.portable-executable
           - os: macos-latest
             TARGET: macos
-            CMD_BUILD: >
-              pyinstaller tabcmd-mac.spec --clean --noconfirm &&
-              cd dist/ &&
-              zip -r9 tabcmd tabcmd.app/
+            CMD_BUILD:  python setup.py build &&
+              python res/versioning.py && python setup.py build &&
+              pip install . &&
+              pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos &&
+              cd dist/ && ls &&
+              zip -r9 mac tabcmd-mac.app/
             OUT_FILE_NAME: tabcmd.zip
             ASSET_MIME: application/zip
+          - os: ubuntu-latest
+            TARGET: ubuntu
+            CMD_BUILD: ls && 
+              pyinstaller --clean -y --distpath ./dist/linux tabcmd-linux.spec &&
+              chown -R --reference=. ./dist/linux
+            OUT_FILE_NAME: tab-for-linux
 
     steps:
     - uses: actions/checkout@v1
@@ -101,13 +114,13 @@ jobs:
         value=`cat release_url/release_url.txt`
         echo ::set-output name=upload_url::$value && ls && pwd
 
-    - name: Upload Release Asset
+    - name: Upload Release Asset for ${{matrix.TARGET}}
       id: upload-release-asset
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.get_release_info.outputs.upload_url }}
-        asset_path: ./dist/tabcmd/${{ matrix.OUT_FILE_NAME}}
+        asset_path: ./dist/${{ matrix.TARGET }}/tabcmd/${{ matrix.OUT_FILE_NAME}}
         asset_name: ${{ matrix.OUT_FILE_NAME}}
         asset_content_type: ${{ matrix.ASSET_MIME}}

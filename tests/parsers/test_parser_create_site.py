@@ -1,6 +1,6 @@
 import unittest
 
-from tabcmd.commands.site.create_site_command import CreateSiteCommand
+from src.commands.site.create_site_command import CreateSiteCommand
 from .common_setup import *
 
 commandname = "createsite"

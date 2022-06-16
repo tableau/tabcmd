@@ -25,10 +25,10 @@ jobs:
         python setup.py build
 
     - name: Type-check
-      run: mypy tabcmd tests
+      run: mypy src tests
 
     - name: Check formatting with black
-      run: black --line-length 120 tabcmd tests --check
+      run: black --line-length 120 src tests --check
 
 
     - name: Generate version file

@@ -1,6 +1,6 @@
 import gettext
 import unittest
-from tabcmd.execution.localize import set_client_locale
+from src.execution.localize import set_client_locale
 
 
 class LocaleTests(unittest.TestCase):

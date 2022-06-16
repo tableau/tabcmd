@@ -1,6 +1,6 @@
 import unittest
 
-from tabcmd.commands.project.publish_samples_command import PublishSamplesCommand
+from src.commands.project.publish_samples_command import PublishSamplesCommand
 from .common_setup import *
 
 commandname = "publishsamples"
