@@ -12,7 +12,7 @@ sys.path.append(mymodule_dir)
 from src.execution._version import version
 
 print(version)
-numeric_version = re.sub(r'[a-z+]', '', version.lower())
+numeric_version = (re.sub(r'[a-z+]', '', version.lower())).__str__()[:5]
 print(numeric_version)
 
 output_file = os.path.join(mymodule_dir, "versionfile.txt")
