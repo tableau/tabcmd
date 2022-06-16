@@ -1,6 +1,6 @@
 import unittest
 
-from tabcmd.commands.datasources_and_workbooks.export_command import ExportCommand
+from src.commands.datasources_and_workbooks.export_command import ExportCommand
 from .common_setup import *
 
 commandname = "export"

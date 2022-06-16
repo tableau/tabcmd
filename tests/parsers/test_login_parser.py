@@ -1,7 +1,7 @@
 import unittest
 from unittest import mock
 
-from tabcmd.commands.auth.login_command import LoginCommand
+from src.commands.auth.login_command import LoginCommand
 from .common_setup import *
 
 commandname = "login"

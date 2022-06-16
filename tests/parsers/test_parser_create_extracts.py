@@ -1,6 +1,6 @@
 import unittest
 
-from tabcmd.commands.extracts.create_extracts_command import CreateExtracts
+from src.commands.extracts.create_extracts_command import CreateExtracts
 from .common_setup import *
 
 commandname = "createextracts"

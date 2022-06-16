@@ -1,8 +1,8 @@
 import unittest
 from unittest import mock
-from tabcmd.commands.datasources_and_workbooks.get_url_command import *
-from tabcmd.commands.datasources_and_workbooks.export_command import *
-from tabcmd.commands.server import Server
+from src.commands.datasources_and_workbooks.get_url_command import *
+from src.commands.datasources_and_workbooks.export_command import *
+from src.commands.server import Server
 
 mock_logger = mock.MagicMock()
 

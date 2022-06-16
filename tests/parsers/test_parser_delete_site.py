@@ -1,6 +1,6 @@
 import unittest
 
-from tabcmd.commands.site.delete_site_command import DeleteSiteCommand
+from src.commands.site.delete_site_command import DeleteSiteCommand
 from .common_setup import *
 
 commandname = "deletesite"

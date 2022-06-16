@@ -33,7 +33,7 @@ _(note that running mypy and black is required for code being submitted to the r
 - autoformat your code with black (https://pypi.org/project/black/)
 > bin/black.sh
 - check types 
-> mypy tabcmd tests
+> mypy src tests
 - do test coverage calculation (https://coverage.readthedocs.io/en/6.3.2)
 > bin/coverage.sh
 

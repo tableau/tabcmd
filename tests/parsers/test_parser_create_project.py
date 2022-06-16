@@ -1,6 +1,6 @@
 import unittest
 
-from tabcmd.commands.project.create_project_command import CreateProjectCommand
+from src.commands.project.create_project_command import CreateProjectCommand
 from .common_setup import *
 
 commandname = "createproject"

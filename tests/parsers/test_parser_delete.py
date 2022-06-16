@@ -1,6 +1,6 @@
 import unittest
 
-from tabcmd.commands.datasources_and_workbooks.delete_command import DeleteCommand
+from src.commands.datasources_and_workbooks.delete_command import DeleteCommand
 from .common_setup import *
 
 commandname = "delete"

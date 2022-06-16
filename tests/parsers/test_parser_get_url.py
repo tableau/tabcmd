@@ -1,6 +1,6 @@
 import unittest
 import argparse
-from tabcmd.commands.datasources_and_workbooks.get_url_command import GetUrl
+from src.commands.datasources_and_workbooks.get_url_command import GetUrl
 from .common_setup import *
 
 commandname = "listsites"

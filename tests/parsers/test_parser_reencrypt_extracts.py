@@ -1,6 +1,6 @@
 import unittest
 
-from tabcmd.commands.extracts.reencrypt_extracts_command import ReencryptExtracts
+from src.commands.extracts.reencrypt_extracts_command import ReencryptExtracts
 from .common_setup import *
 
 commandname = "reencryptextracts"

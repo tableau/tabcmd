@@ -1,7 +1,7 @@
 import unittest
 from unittest import mock
 
-from tabcmd.commands.user.create_users_command import CreateUsersCommand
+from src.commands.user.create_users_command import CreateUsersCommand
 from .common_setup import *
 
 commandname = "createusers"

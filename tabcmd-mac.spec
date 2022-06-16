@@ -2,14 +2,14 @@
 from PyInstaller.utils.hooks import collect_data_files
 
 datas = []
-datas += collect_data_files('tabcmd.locales')
+datas += collect_data_files('src.locales')
 
 
 block_cipher = None
 
 
 a = Analysis(
-    ['tabcmd\\tabcmd.py'],
+    ['src/tabcmd.py'],
     pathex=[],
     binaries=[],
     datas=datas,
@@ -46,5 +46,5 @@ exe = EXE(
     codesign_identity=None,
     entitlements_file=None,
     version='versionfile.txt',
-    icon='res\\tabcmd.icns',
+    icon='res/tabcmd.icns',
 )

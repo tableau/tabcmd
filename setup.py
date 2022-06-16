@@ -11,9 +11,11 @@ setup(
 
     python_requires='>=3.7',
     packages=find_packages(),
+    package_data={'': ['res', 'src/locales']},
+    include_package_data=True,
     entry_points={
         'console_scripts': [
-            'tabcmd = tabcmd.tabcmd:main'
+            'tabcmd = src.tabcmd:main'
         ]
     },
     install_requires=[
@@ -46,7 +48,7 @@ setup(
         ]
     },
     use_scm_version={
-        "write_to": "tabcmd/execution/_version.py",
+        "write_to": "src/execution/_version.py",
     },
     zip_safe=False,
 )

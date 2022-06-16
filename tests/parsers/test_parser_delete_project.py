@@ -1,6 +1,6 @@
 import unittest
 
-from tabcmd.commands.project.delete_project_command import DeleteProjectCommand
+from src.commands.project.delete_project_command import DeleteProjectCommand
 from .common_setup import *
 
 commandname = "deleteproject"

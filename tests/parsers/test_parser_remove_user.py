@@ -1,7 +1,7 @@
 import unittest
 from unittest import mock
 
-from tabcmd.commands.user.remove_users_command import RemoveUserCommand
+from src.commands.user.remove_users_command import RemoveUserCommand
 from .common_setup import *
 
 commandname = "removeusers"

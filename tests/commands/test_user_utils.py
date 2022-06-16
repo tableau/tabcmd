@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import *
-from tabcmd.commands.user.user_data import UserCommand, Userdata
-from tabcmd.execution.logger_config import log
+from src.commands.user.user_data import UserCommand, Userdata
+from src.execution.logger_config import log
 
 from typing import List
 import io

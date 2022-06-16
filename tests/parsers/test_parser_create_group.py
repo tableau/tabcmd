@@ -1,6 +1,6 @@
 import unittest
 
-from tabcmd.commands.group.create_group_command import CreateGroupCommand
+from src.commands.group.create_group_command import CreateGroupCommand
 from .common_setup import *
 
 commandname = "creategroup"
