@@ -97,7 +97,7 @@ jobs:
       run: ${{matrix.CMD_BUILD}}
 
     - name: Get Release URL
-      uses: actions/download-artifact@v1
+      uses: actions/download-artifact@v3
       with:
         name: release_url
 
