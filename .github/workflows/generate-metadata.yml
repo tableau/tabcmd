@@ -32,7 +32,7 @@ jobs:
 
 
     - name: Generate version file
-      run: python ./res/versioning.py
+      run: python setup.py build && python ./res/versioning.py
 
     - name: Generate pyinstaller specs
       run: echo Using locally generated specs

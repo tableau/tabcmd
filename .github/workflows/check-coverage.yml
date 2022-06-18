@@ -30,6 +30,9 @@ jobs:
         pip install -e .[install]
         pip install -e .[build]
         pip install -e .[test]
+        python setup.py build
+        python res/versioning.py
+        python setup.py build
 
     #  https://github.com/marketplace/actions/pytest-coverage-comment
     - name: Generate coverage report
