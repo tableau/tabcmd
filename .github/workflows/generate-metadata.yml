@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -29,10 +29,6 @@ jobs:
 
     - name: Check formatting with black
       run: black --line-length 120 src tests --check
-
-
-    - name: Generate version file
-      run: python setup.py build && python ./res/versioning.py
 
     - name: Generate pyinstaller specs
       run: echo Using locally generated specs
