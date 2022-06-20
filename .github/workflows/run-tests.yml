@@ -1,12 +1,14 @@
 name: Python tests
 
 on:
+  workflow_dispatch:
   push:
     branches:
-      - [development, main]
+      - development
   pull_request:
     branches:
-      - [development, main]
+      - development
+      - main
 
 jobs:
   build:
