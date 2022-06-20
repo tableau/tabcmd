@@ -32,7 +32,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{github.ref_name || "manual"}}
         release_name: Release ${{ github.event.head_commit.message }}
         draft: inputs.is_draft
         prerelease: inputs.is_draft
