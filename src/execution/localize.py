@@ -28,11 +28,11 @@ def set_client_locale(lang: str = None, logger=None) -> Callable:
     if not logger:
         logger = logging.getLogger()
 
-    logger.debug("setting!")
     global translate
     try:
         locale_options = [_validate_lang(lang), _get_default_locale(), "en"]
     except Exception as e:
+        print(e)
         locale_options = ["en"]
 
     logger.debug("Language options: {}".format(locale_options))
@@ -54,15 +54,18 @@ def set_client_locale(lang: str = None, logger=None) -> Callable:
 def resource_path(relative_path):
     """Get absolute path to resource, works for dev and for PyInstaller"""
     base_path = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
+    print("2:", base_path, relative_path)
     return os.path.join(base_path, relative_path)
 
 
 def _load_language(current_locale, domain):
     locale_path = os.path.join("..", "locales")
+    print("1:", locale_path)
 
     # fallback=True means if loading the translated files fails, strings will be returned
     # we use the identity function above instead
     locale_dir = resource_path(locale_path)
+    print("3:", locale_dir)
     language: gettext.NullTranslations = gettext.translation(
         domain, locale_dir, languages=[current_locale], fallback=False
     )

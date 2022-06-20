@@ -1,6 +1,6 @@
 import argparse
-from . import _version
-from .localize import _
+import _version
+from localize import _
 
 
 class ParentParser:
