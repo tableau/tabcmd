@@ -11,7 +11,7 @@ setup(
 
     python_requires='>=3.7',
     packages=find_packages(),
-    package_data={'': ['res', 'src/locales']},
+    package_data={'src.locales': '*.mo'},
     include_package_data=True,
     entry_points={
         'console_scripts': [
