@@ -33,6 +33,8 @@ jobs:
         pip install -e .[build]
         pip install -e .[test]
         python setup.py build
+        python res/versioning
+        python setup.py build
 
     - name: Test with pytest
       run: pytest
