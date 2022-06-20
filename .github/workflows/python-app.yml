@@ -1,33 +1,36 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# This workflow will install tabcmd from pypi and validate that it runs
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
-name: Python application
+name: Pypi smoke tests
 
+# maybe we want this triggered after the publish-pypi workflow?
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch:
+  # Every Monday at 11AM UTC (7AM EST)
+  schedule: 0 11 * * 1
 
 permissions:
   contents: read
 
 jobs:
   build:
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: ['3.7', '3']
 
-    runs-on: [mac-latest, ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
 
     steps:
-    - name: Set up Python 3.10
+    - name: Set up Python ${{ matrix.python-version }} on ${{ matrix.os }}
       uses: actions/setup-python@v3
       with:
-        python-version: "3.10"
-    - name: Install
+        python-version: ${{ matrix.python-version }}
+    - name: pip install Tabcmd
       run: |
-        python -m pip install --upgrade pip
-        pip install pytest
         pip install tabcmd
-    - name: Test with pytest
+    - name: Launch app
       run: |
         tabcmd -v --language fr
-        pytest
+        tabcmd help
