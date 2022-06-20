@@ -49,6 +49,7 @@ setup(
     },
     use_scm_version={
         "write_to": "src/execution/_version.py",
+        "local_scheme": "no-local-version"  # require pypi supported versions always
     },
     zip_safe=False,
 )

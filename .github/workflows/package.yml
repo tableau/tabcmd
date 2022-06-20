@@ -10,8 +10,7 @@ name: Release-Executable
 
 on:
   push:
-    tags: release
-    branches: jac/pyinstaller
+    tags: release*
   workflow_dispatch:
     inputs:
       is_draft:
