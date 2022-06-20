@@ -37,4 +37,4 @@ jobs:
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
       - uses: langroodi/tagize@v1 # Execute 'tagize' action
-    
+
