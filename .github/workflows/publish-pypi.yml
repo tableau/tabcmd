@@ -24,7 +24,6 @@ jobs:
       - name: Build dist files
         run: >
           pip install -e .[build] &&
-          python setup.py build && python res/versioning.py && python setup.py build &&
           python setup.py sdist --formats=gztar
       - name: Publish distribution 📦 to Test PyPI
         if: ${{ inputs.is_draft }}
@@ -39,4 +38,4 @@ jobs:
           password: ${{ secrets.PYPI_API_TOKEN }}
       - name: commit version
         run: >
-          git tag "pypi" && git add . && git commit -m "commit pypi version" git push && git push --tags
+          git tag -a ${{ python setup.py --version }} -m "published by github actions" && git push --tags
