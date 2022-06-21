@@ -37,8 +37,11 @@ _(note that running mypy and black is required for code being submitted to the r
 - do test coverage calculation (https://coverage.readthedocs.io/en/6.3.2)
 > bin/coverage.sh
 
-- packaging is done with pyinstaller. You can only build an executable for the platform you build on.
+- packaging to an exe is done with pyinstaller. You can only build an executable for the platform you build on.
 > bin/pyinstaller.sh
+
+- packaging to sdist for pypi is done with setup.py. Note that _version.py is in the git index specifically
+so that it gets packaged with sdist, but the contents/changes are ignored by git.
 
  Packaging produces dist/tabcmd.exe (or equivalent)
 - Run the package
