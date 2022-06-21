@@ -29,6 +29,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: pip install Tabcmd
       run: |
+        pip uninstall tabcmd
         pip install tabcmd
     - name: Launch app
       run: |

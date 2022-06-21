@@ -24,7 +24,8 @@ To work on the tabcmd code, use these scripts. On Windows,
 _(note that running mypy and black is required for code being submitted to the repo)_
 
 - build
-> python setup.py build
+> pip install build
+> python -m build
 - run tests
 > pytest
 - run tests against a live server
@@ -41,11 +42,14 @@ _(note that running mypy and black is required for code being submitted to the r
 - setuptools_scm so it will be a x.y.dev0 pre-release version unless you first tag the 
 - commit with a new version tag. e.g
 > git tag -d pypi && git push --delete origin pypi
-> git tag v2.x.y && git tag pypi && git push --tags
+> git tag v2.0.4 && git tag pypi && git push --tags
+
+# Missing step: a job that is triggered by pypi tag and creates a release
+# Missing trigger: when pypi-release is done, begin the app smoke test
 
 - packaging to an exe is done with pyinstaller. You can only build an executable for 
 - the platform you build on.
-- On github this job is triggered by creating a release.
+- On github this job is triggered by creating a release (or manually)
 > doit version <-- produce a current version and metadata file to package
 > pyinstaller tabcmd-windows.spec ....  # see package.yml for OS-specific arguments
 

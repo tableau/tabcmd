@@ -1,6 +1,5 @@
 from setuptools import setup, find_packages
 
-
 setup(
     name='tabcmd',
     author='Tableau',
@@ -19,13 +18,16 @@ setup(
             'tabcmd = src.tabcmd:main'
         ]
     },
+    setup_requires=[
+        # copy of pyproject.toml for back compat
+        "setuptools>=62", "wheel", "setuptools_scm>=6.2"
+    ],
     install_requires=[
         'polling2',
         'requests>=2.11,<3.0',
         'tableauserverclient>=0.19',
         'urllib3>=1.24.3,<2.0',
     ],
-    test_suite='tests',
     extras_require={
         'localize': [
             'doit',
@@ -36,8 +38,6 @@ setup(
             'black',
             'mypy',
             'pyinstaller_versionfile',
-            'setuptools>=62',
-            'setuptools_scm',
             'types-appdirs',
             'types-mock',
             'types-requests',
@@ -53,8 +53,6 @@ setup(
             'requests-mock>=1.0,<2.0',
         ],
     },
-    use_scm_version={
-        "local_scheme": "no-local-version"  # require pypi supported versions always
-    },
+    test_suite='tests',
     zip_safe=False,
 )

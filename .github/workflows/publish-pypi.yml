@@ -15,7 +15,6 @@ jobs:
   build-n-publish:
     name: Build dist files for PyPi
     runs-on: ubuntu-latest
-    permissions: write-all
     steps:
       - uses: actions/checkout@v3
         with:
@@ -25,9 +24,7 @@ jobs:
           python-version: 3.8
       - name: Build dist files
         run: >
-          pip install -e .[build] &&
-          python -m setuptools_scm &&
-          python setup.py sdist --formats=gztar
+          pip install build && python -m build
       - name: Publish distribution 📦 to Test PyPI
         if: ${{ inputs.is_draft }}
         uses: pypa/gh-action-pypi-publish@release/v1  # license BSD-2

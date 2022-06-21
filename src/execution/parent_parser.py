@@ -1,6 +1,13 @@
 import argparse
 from .localize import _
-from setuptools_scm import get_version
+# when we drop python 3.8, this could be replaced with this lighter weight option
+# from importlib.metadata import version, PackageNotFoundError
+from pkg_resources import get_distribution, DistributionNotFound
+try:
+    version = get_distribution("tabcmd").version
+except DistributionNotFound:
+    version = "2.x.unknown"
+    pass
 
 
 class ParentParser:
@@ -124,7 +131,7 @@ class ParentParser:
             "-v",
             "--version",
             action="version",
-            version="tabcmd.exe - Tableau Server Command Line Utility v" + get_version() + "\n \n",
+            version="tabcmd.exe - Tableau Server Command Line Utility v" + version + "\n \n",
             help="Show version information and exit.",
         )
 
