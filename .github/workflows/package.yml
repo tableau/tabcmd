@@ -59,7 +59,6 @@ jobs:
               python setup.py build &&
               python res/versioning.py && python setup.py build &&
               pip install . &&
-              dir dist && dir dist/windows
               pyinstaller tabcmd-windows.spec --clean --noconfirm --distpath ./dist/windows
             OUT_FILE_NAME: tabcmd.exe
             ASSET_MIME: application/vnd.microsoft.portable-executable
@@ -71,7 +70,7 @@ jobs:
               pip install . &&
               pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos &&
               cd dist/ && ls &&
-              zip -r9 mac tabcmd-mac.app/
+              zip -r9 mac tabcmd-mac*
             OUT_FILE_NAME: tabcmd.zip
             ASSET_MIME: application/zip
           - os: ubuntu-latest
