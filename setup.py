@@ -6,12 +6,13 @@ setup(
     author='Tableau',
     author_email='github@tableau.com',
     description='A command line client for working with Tableau Server.',
+    long_description='A command line client for working with Tableau Server.',
     license='MIT',
     url='https://github.com/tableau/tabcmd',
 
     python_requires='>=3.7',
     packages=find_packages(),
-    package_data={'': ['res', 'src/locales']},
+    package_data={'tabcmd': ['src.locales/**/*.mo']},
     include_package_data=True,
     entry_points={
         'console_scripts': [
@@ -49,6 +50,7 @@ setup(
     },
     use_scm_version={
         "write_to": "src/execution/_version.py",
+        "local_scheme": "no-local-version"  # require pypi supported versions always
     },
     zip_safe=False,
 )

@@ -28,11 +28,11 @@ def set_client_locale(lang: str = None, logger=None) -> Callable:
     if not logger:
         logger = logging.getLogger()
 
-    logger.debug("setting!")
     global translate
     try:
         locale_options = [_validate_lang(lang), _get_default_locale(), "en"]
     except Exception as e:
+        print(e)
         locale_options = ["en"]
 
     logger.debug("Language options: {}".format(locale_options))

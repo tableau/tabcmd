@@ -14,6 +14,7 @@ jobs:
   build-n-publish:
     name: Build dist files for PyPi
     runs-on: ubuntu-latest
+    permissions: write-all
     steps:
       - uses: actions/checkout@v3
         with:
@@ -24,7 +25,7 @@ jobs:
       - name: Build dist files
         run: >
           pip install -e .[build] &&
-          python setup.py build && python res/versioning.py && python setup.py build &&
+          python setup.py --version &&
           python setup.py sdist --formats=gztar
       - name: Publish distribution 📦 to Test PyPI
         if: ${{ inputs.is_draft }}

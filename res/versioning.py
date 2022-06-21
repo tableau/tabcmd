@@ -11,8 +11,11 @@ mymodule_dir = os.path.join(os.path.dirname( __file__ ), '..')
 sys.path.append(mymodule_dir)
 from src.execution._version import version
 
+# setuptools produces a version like '0.1.dev185+345'
+# pyinstaller requires the version be numeric only
 print(version)
-numeric_version = (re.sub(r'[a-z+]', '', version.lower())).__str__()
+intermediate = (re.sub(r'[\+]', '.', version.lower())).__str__()
+numeric_version = (re.sub(r'[a-z+]', '', intermediate.lower())).__str__()
 print(numeric_version)
 
 output_file = os.path.join(mymodule_dir, "versionfile.txt")

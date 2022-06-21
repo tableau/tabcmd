@@ -10,8 +10,7 @@ name: Release-Executable
 
 on:
   push:
-    tags: release
-    branches: jac/pyinstaller
+    tags: release*
   workflow_dispatch:
     inputs:
       is_draft:
@@ -33,7 +32,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{github.ref_name || "manual"}}
+        tag_name: ${{ github.ref_name || 'manual'}}
         release_name: Release ${{ github.event.head_commit.message }}
         draft: inputs.is_draft
         prerelease: inputs.is_draft
