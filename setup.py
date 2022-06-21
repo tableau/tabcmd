@@ -22,7 +22,6 @@ setup(
     install_requires=[
         'polling2',
         'requests>=2.11,<3.0',
-        'setuptools>=45',
         'tableauserverclient>=0.19',
         'urllib3>=1.24.3,<2.0',
     ],
@@ -33,6 +32,7 @@ setup(
             'black',
             'mypy',
             'pyinstaller_versionfile',
+            'setuptools>=62',
             'setuptools_scm',
             'types-appdirs',
             'types-mock',
