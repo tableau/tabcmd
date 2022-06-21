@@ -26,8 +26,7 @@ jobs:
       - name: Build dist files
         run: >
           pip install -e .[build] &&
-          python -m setuptools_scm --strip-dev > pypi_version &&
-          set /p SETUPTOOLS_SCM_PRETEND_VERSION =< pypi_version &&
+          python -m setuptools_scm &&
           python setup.py sdist --formats=gztar
       - name: Publish distribution 📦 to Test PyPI
         if: ${{ inputs.is_draft }}

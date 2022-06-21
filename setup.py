@@ -46,11 +46,12 @@ setup(
             'mock',
             'pytest', 'pytest-cov', 'pytest-order', 'pytest-runner',
             'requests-mock>=1.0,<2.0',
-        ]
+        ],
     },
     use_scm_version={
         "write_to": "src/execution/_version.py",
-        "local_scheme": "no-local-version"  # require pypi supported versions always
+        "local_scheme": "no-local-version",  # require pypi supported versions always
+        "git_describe_command": "git describe --tags --exclude pypi --long"
     },
     zip_safe=False,
 )
