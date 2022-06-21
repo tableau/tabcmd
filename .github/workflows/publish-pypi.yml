@@ -38,6 +38,4 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1  # license BSD-2
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
-      - name: commit version
-        run: >
-          git tag "pypi" && git add . && git commit -m "commit pypi version" git push && git push --tags
+
