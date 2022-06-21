@@ -37,13 +37,19 @@ _(note that running mypy and black is required for code being submitted to the r
 - do test coverage calculation (https://coverage.readthedocs.io/en/6.3.2)
 > bin/coverage.sh
 
-- packaging to an exe is done with pyinstaller. You can only build an executable for the platform you build on.
-> bin/pyinstaller.sh
+- To trigger publishing to pypi tag a commit on main with 'pypi'. Versioning is done with 
+- setuptools_scm so it will be a x.y.dev0 pre-release version unless you first tag the 
+- commit with a new version tag. e.g
+> git tag -d pypi && git push --delete origin pypi
+> git tag v2.x.y && git tag pypi && git push --tags
 
-- packaging to sdist for pypi is done with setup.py. Note that _version.py is in the git index specifically
-so that it gets packaged with sdist, but the contents/changes are ignored by git.
+- packaging to an exe is done with pyinstaller. You can only build an executable for 
+- the platform you build on.
+- On github this job is triggered by creating a release.
+> doit version <-- produce a current version and metadata file to package
+> pyinstaller tabcmd-windows.spec ....  # see package.yml for OS-specific arguments
 
- Packaging produces dist/tabcmd.exe (or equivalent)
+ Packaging produces dist/tabcmd.exe (or equivalent). 
 - Run the package
 > dist/tabcmd/tabcmd.exe --help
 
