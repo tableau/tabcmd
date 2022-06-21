@@ -25,27 +25,22 @@ jobs:
           - os: windows-latest
             TARGET: windows
             CMD_BUILD: >
-              python setup.py build &&
-              python res/versioning.py && python setup.py build &&
-              pip install . &&
               pyinstaller tabcmd-windows.spec --clean --noconfirm --distpath ./dist/windows
             OUT_FILE_NAME: tabcmd.exe
             ASSET_MIME: application/vnd.microsoft.portable-executable
           - os: macos-latest
             TARGET: macos
             CMD_BUILD:  >
-              python setup.py build &&
-              python res/versioning.py && python setup.py build &&
-              pip install . &&
               pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos &&
-              cd dist/ && ls &&
-              zip -r9 mac tabcmd-mac*
-            OUT_FILE_NAME: tabcmd.zip
+              cwd && ls && ls dist
+            # zip -r9 mac tabcmd-mac*
+            OUT_FILE_NAME: tabcmd-mac.app  # tabcmd.zip
             ASSET_MIME: application/zip
           - os: ubuntu-latest
             TARGET: ubuntu
+          # https://stackoverflow.com/questions/31259856
+          # /how-to-create-an-executable-file-for-linux-machine-using-pyinstaller
             CMD_BUILD: >
-              ls &&
               pyinstaller --clean -y --distpath ./dist/linux tabcmd-linux.spec &&
               chown -R --reference=. ./dist/linux
             OUT_FILE_NAME: tab-for-linux
@@ -56,10 +51,11 @@ jobs:
     - uses: actions/setup-python@v4
       with:
         python-version: 3.8
-    - name: Install dependencies
+
+    - name: Install dependencies and build
       run: >
         pip install -e .[build] && pip install -e .[package] &&
-        python setup.py build && python res/versioning.py && python setup.py build
+        doit version && python setup.py build
 
     - name: Package with pyinstaller for ${{matrix.TARGET}}
       run: ${{matrix.CMD_BUILD}}

@@ -45,6 +45,6 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    version='versionfile.txt',
+    version='program_metadata.txt',
     icon='res/tabcmd.icns',
 )

@@ -2,6 +2,7 @@ import glob
 import os
 import subprocess
 import ftfy
+import setuptools_scm
 
 LOCALES = [
     "en", "de", "es", "fr", "ga", "it", "pt",
@@ -11,7 +12,7 @@ LOCALES = [
 """
 https://pydoit.org/
 Usage:
-pip install doit
+pip install -e .[prep_work]
 doit list # see available tasks
 
 FYI: to read mo and po files use https://poedit.net/download
@@ -168,6 +169,26 @@ def task_mo():
     }
 
 
+def task_version():
 
+    """ Generates a metadata info file with current version to be bundled by pyinstaller"""
+    def write_for_pyinstaller():
+        import pyinstaller_versionfile
+        import os
 
+        version = setuptools_scm.get_version(local_scheme="no-local-version")
+        numeric_version = version.replace("dev", "")
+        print("----\n", numeric_version)
 
+        output_file = os.path.join(".", "program_metadata.txt")
+        input_file = os.path.join("res", "metadata.yml")
+        pyinstaller_versionfile.create_versionfile_from_input_file(
+            output_file, input_file,
+            # optional, can be set to overwrite version information (equivalent to --version when using the CLI)
+            version=numeric_version
+        )
+
+    return {
+        'actions': [write_for_pyinstaller],
+        'verbosity': 2,
+    }

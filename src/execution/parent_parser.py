@@ -1,6 +1,6 @@
 import argparse
-from . import _version
 from .localize import _
+from setuptools_scm import get_version
 
 
 class ParentParser:
@@ -124,7 +124,7 @@ class ParentParser:
             "-v",
             "--version",
             action="version",
-            version="tabcmd.exe - Tableau Server Command Line Utility v" + _version.version + "\n \n",
+            version="tabcmd.exe - Tableau Server Command Line Utility v" + get_version() + "\n \n",
             help="Show version information and exit.",
         )
 
