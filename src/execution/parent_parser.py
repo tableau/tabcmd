@@ -66,8 +66,8 @@ class ParentParser:
             "-l",
             "--logging-level",
             choices=["DEBUG", "INFO", "ERROR"],
+            type=str.upper,  # coerce input to uppercase to act case insensitive
             default="info",
-            metavar="",
             help="Use the specified logging level. The default level is INFO.",
         )
 
@@ -75,7 +75,6 @@ class ParentParser:
 
         auth_options = parser.add_mutually_exclusive_group()
         auth_options.add_argument(
-            "-tn",
             "--token-name",
             default=None,
             metavar="<TOKEN NAME>",
@@ -88,8 +87,7 @@ class ParentParser:
 
         secret_values = parser.add_mutually_exclusive_group()
         secret_values.add_argument(
-            "-to",
-            "--token",
+            "--token-value",
             default=None,
             metavar="<TOKEN VALUE>",
             help="Use the specified Tableau Server Personal Access Token. Requires --token-name to be set.",
@@ -133,7 +131,7 @@ class ParentParser:
             "-v",
             "--version",
             action="version",
-            version="tabcmd.exe - Tableau Server Command Line Utility v" + version + "\n \n",
+            version="Tableau Server Command Line Utility v" + version + "\n \n",
             help="Show version information and exit.",
         )
 

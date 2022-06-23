@@ -93,10 +93,10 @@ class LoginParserTest(unittest.TestCase):
         assert args.password == "pw", args
 
     def test_login_parser_test_token(self):
-        mock_args = [commandname, "--token", "token", "--token-name", "tn"]
+        mock_args = [commandname, "--token-value", "token", "--token-name", "tn"]
         args = self.parser_under_test.parse_args(mock_args)
         assert args.token_name == "tn", args
-        assert args.token == "token", args
+        assert args.token_value == "token", args
 
     def test_login_token_and_username(self):
         mock_args = [commandname, "--token-name", "to", "--username", "u"]
