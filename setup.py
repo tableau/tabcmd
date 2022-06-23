@@ -36,6 +36,7 @@ setup(
         'build': [
             'appdirs',
             'black',
+            'doit',
             'mypy',
             'pyinstaller_versionfile',
             'setuptools>=62',
