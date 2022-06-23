@@ -38,6 +38,8 @@ setup(
             'black',
             'mypy',
             'pyinstaller_versionfile',
+            'setuptools>=62',
+            'setuptools_scm',
             'types-appdirs',
             'types-mock',
             'types-requests',
