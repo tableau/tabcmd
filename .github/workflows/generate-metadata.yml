@@ -21,14 +21,15 @@ jobs:
     - name: Install App and Extras
       run: |
         python -m pip install --upgrade pip
-        pip install -e .[build]
-        python setup.py build
+        python -m pip install -e .[build]
+        python -m pip install build
+        python -m build
 
     - name: Type-check
       run: mypy src tests
 
     - name: Check formatting with black
-      run: black --line-length 120 src tests --check
+      run: black . --check
 
     - name: Generate pyinstaller specs
       run: echo Using locally generated specs
