@@ -1,6 +1,7 @@
 import tableauserverclient as TSC
 
 from src.commands.auth.session import Session
+from src.commands.constants import Errors
 from src.commands.server import Server
 from src.execution.localize import _
 from src.execution.logger_config import log
