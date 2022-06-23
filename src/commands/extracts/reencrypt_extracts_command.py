@@ -14,7 +14,7 @@ class ReencryptExtracts(Server):
     """
 
     name: str = "reencryptextracts"
-    description: str = _("reencryptextracts.short_description=")
+    description: str = _("reencryptextracts.short_description")
 
     @staticmethod
     def define_args(reencrypt_extract_parser):
