@@ -37,6 +37,7 @@ setup(
             'appdirs',
             'black',
             'doit',
+            'ftfy',
             'mypy',
             'pyinstaller_versionfile',
             'setuptools>=62',
@@ -46,7 +47,6 @@ setup(
             'types-requests',
         ],
         'package': [
-            'doit',
             'pyinstaller>=5.1',
             'pyinstaller-versionfile',
         ],
