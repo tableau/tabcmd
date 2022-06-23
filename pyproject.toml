@@ -2,3 +2,6 @@
 requires = ["build", "setuptools>=62", "wheel", "setuptools_scm>=6.2"]
 [tool.setuptools_scm]
 "local_scheme"= "no-local-version"  # require pypi supported versions always
+[tool.black]
+line-length = 120
+extend-exclude = '^/bin/*'
