@@ -348,6 +348,25 @@ class CreateSessionTests(unittest.TestCase):
         mock_tsc.site_id = "1"
         mock_tsc.user_id = "0"
 
+    def test_timeout_as_integer_stored_int(self):
+        result = Session.timeout_as_integer(1, None)
+        assert result == 1
+
+    def test_timeout_as_integer_new_int(self):
+        result = Session.timeout_as_integer(None, 3)
+        assert result == 3
+
+    def test_timeout_as_integer_no_value(self):
+        result = Session.timeout_as_integer(None, None)
+        assert result == 0
+
+    def test_timeout_as_integer_stored_char(self):
+        result = Session.timeout_as_integer("ab", None)
+        assert result == 0
+
+
+
+
 
 @mock.patch("tableauserverclient.Server")
 class ConnectionOptionsTest(unittest.TestCase):

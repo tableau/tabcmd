@@ -13,6 +13,9 @@ def main():
     try:
         parser = TabcmdController.initialize()
         TabcmdController.run(parser)
+    except KeyboardInterrupt as ke:
+        print("Keyboard Interrupt: exiting")
+        sys.exit(1)
     except Exception as e:
         print(sys.stderr, "Unhandled exception: {}".format(type(e).__name__))
         print(

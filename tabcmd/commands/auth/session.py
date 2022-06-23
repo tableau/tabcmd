@@ -4,6 +4,7 @@ import os
 
 import requests
 import tableauserverclient as TSC
+import urllib3
 from urllib3.exceptions import InsecureRequestWarning
 
 from tabcmd.commands.constants import Errors
@@ -74,7 +75,26 @@ class Session:
         self.no_certcheck = args.no_certcheck or self.no_certcheck
         self.no_proxy = args.no_proxy or self.no_proxy
         self.proxy = args.proxy or self.proxy
-        self.timeout = args.timeout or self.timeout
+        self.timeout = self.timeout_as_integer(self.logger, args.timeout, self.timeout)
+
+    @staticmethod
+    def timeout_as_integer(logger, option_1, option_2):
+        result = None
+        if option_1:
+            try:
+                result = int(option_1)
+            except Exception as anyE:
+                result = 0
+        if option_2 and not result or result == 0:
+            try:
+                result = int(option_2)
+            except Exception as anyE:
+                result = 0
+        if not option_1 and not option_2:
+            logger.debug("No timeout value. Setting no timeout.")
+        elif not result or result == 0:
+            logger.warn("Unable to read timeout value. Setting no timeout.")
+        return result
 
     @staticmethod
     def _read_password_from_file(filename):
@@ -128,24 +148,45 @@ class Session:
             Errors.exit_with_error(self.logger, _("session.errors.missing_arguments").format("token name"))
 
     def _set_connection_options(self):
+        self.logger.debug("Setting up request options")
         # args still to be handled here:
         # proxy, --no-proxy,
         # cert
-        # timeout
         http_options = {}
         if self.no_certcheck:
-            http_options = {"verify": False}
+            http_options["verify"] = False
             requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
+        if self.proxy:
+            self.logger.warn("proxy", self.proxy)
         try:
-            tableau_server = TSC.Server(self.server_url, use_server_version=True, http_options=http_options)
+            tableau_server = TSC.Server(self.server_url, use_server_version=True, http_options=http_options,
+                                        timeout=self.timeout)
         except Exception as e:
             Errors.exit_with_error(self.logger, "Failed to connect to server", e)
 
+        self.logger.debug("Finished setting up connection")
         return tableau_server
 
-    def _create_new_connection(self):
+    def _contact_server_no_auth(self):
+        print("ok lets do it")
+        try:
+            self.tableau_server.use_server_version()
+        except requests.exceptions.ReadTimeout as timeout_error:
+            Errors.exit_with_error(
+                self.logger,
+                message="Timed out after {} seconds attempting to connect to server".format(self.timeout),
+                exception=timeout_error)
+        except requests.exceptions.RequestException as requests_error:
+            Errors.exit_with_error(
+                self.logger,
+                message="Error attempting to connect to the server",
+                exception=requests_error)
+        except Exception as e:
+            print("I DONT KNOW", e)
+            Errors.exit_with_error(self.logger, exception=e)
+
+    def _create_new_connection(self, credentials):
         self.logger.info(_("session.new_session"))
-        self.tableau_server = self._set_connection_options()
         self._print_server_info()
         self.logger.info(_("session.connecting"))
         try:
@@ -169,6 +210,7 @@ class Session:
     def _validate_existing_signin(self):
         self.logger.info(_("session.continuing_session"))
         self.tableau_server = self._set_connection_options()
+        self._contact_server_no_auth()
         try:
             if self.tableau_server and self.tableau_server.is_signed_in():
                 response = self.tableau_server.users.get_by_id(self.user_id)
@@ -245,8 +287,7 @@ class Session:
 
         if credentials and not signed_in_object:
             # logging in, not using an existing session
-            self._create_new_connection()
-            signed_in_object = self._sign_in(credentials)
+            signed_in_object = self._create_new_connection(credentials)
 
         if not signed_in_object:
             message = "Run 'tabcmd login -h' for details on required arguments"
