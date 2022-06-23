@@ -629,6 +629,8 @@ Note the following when you use this command:
 
 ## listsites
 
+<div class="alert alert-info"><strong>Note</strong>: Tableau Server only.</div>
+
 Returns a list of sites to which the logged in user belongs.
 
 ### Example
@@ -756,7 +758,9 @@ Publish samples to the Inside Sales project on the Default site, as user jsmith.
 
 ```tabcmd publishsamples -n "Inside Sales" -t "" -s localhost --username "jsmith" --password "secret-password"```
     
-## reencryptextracts <div class="alert alert-info"><strong>Note</strong>: Tableau Server only.</div>
+## reencryptextracts 
+
+<div class="alert alert-info"><strong>Note</strong>: Tableau Server only.</div>
 
 <! --- Syntax 
 tabcmd reencryptextracts [site name] [Global options] --->
