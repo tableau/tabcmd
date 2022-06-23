@@ -5,6 +5,8 @@ from .localize import _
 # from importlib.metadata import version, PackageNotFoundError
 from pkg_resources import get_distribution, DistributionNotFound
 
+from ..commands.help.help_command import HelpCommand
+
 try:
     version = get_distribution("tabcmd").version
 except DistributionNotFound:
@@ -127,14 +129,6 @@ class ParentParser:
             help=_("session.options.timeout"),
         )
 
-        parser.add_argument(
-            "-v",
-            "--version",
-            action="version",
-            version="Tableau Server Command Line Utility v" + version + "\n \n",
-            help="Show version information and exit.",
-        )
-
         # TODO get the list of choices dynamically?
         parser.add_argument(
             "--language",
@@ -148,4 +142,15 @@ class ParentParser:
             choices=["de", "en", "es", "fr", "it", "ja", "ko", "pt", "sv", "zh"],
             help=_("export.options.country"),
         )
+
+        # -h goes to argparse default help
+
+        parser.add_argument(
+            "-v",
+            "--version",
+            action="version",
+            version="Tableau Server Command Line Utility v" + version + "\n \n",
+            help="Show version information and exit.",
+        )
+
         return parser
