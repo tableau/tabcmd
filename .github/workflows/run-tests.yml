@@ -2,9 +2,8 @@ name: Python tests
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - development
+  schedule:
+    - cron: 0 11 * * * # Every day at 11AM UTC (7AM EST)
   pull_request:
     branches:
       - development
