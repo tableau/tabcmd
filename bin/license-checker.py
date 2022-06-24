@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# https://git.soma.salesforce.com/python-at-sfdc/license_checker
 # Modified version of https://stackoverflow.com/a/44090218
 from __future__ import print_function
 from collections import defaultdict
@@ -35,6 +36,7 @@ def print_table(table):
         print(line)
         if row_index == 0:
             print("-" * len(line))
+
 
 def get_directory(package_name):
     return pkg_resources.working_set.find(pkg_resources.Requirement.parse(package_name)).location
