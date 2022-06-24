@@ -314,7 +314,8 @@ tabcmd createsiteusers "users.csv" --role "Explorer"
 ```
 
 
-## decryptextracts <div class="alert alert-info">
+## decryptextracts 
+<div class="alert alert-info">
 <strong>Note</strong>: Tableau Server only.</div>
 
 Decrypts all extracts on a site. If no site is specified, extracts on the default site will be decrypted. For more information, see [Extract Encryption at Rest](https://help.tableau.com/current/server/en-us/security_ear.htm).
@@ -518,10 +519,8 @@ tabcmd encryptextracts "West Coast Sales"
 ## export
 Exports a view or workbook from Tableau Online and saves it to a file. This command can also export just the data used for a view. View data is exported at the summary level. To export detail-level data, you must use the Tableau Server UI. For details, see [Download Views and Workbooks](https://help.tableau.com/current/pro/desktop/en-us/export.htm).
 
-<! --- Syntax 
+<!--- Syntax 
 tabcmd get url[?data-parameters] [format-option] [options] [Global options] --->
-
-
 
 ### Options
 -f, \-\-filename
@@ -532,7 +531,7 @@ If you don't provide a name, it will be derived from the view or workbook name. 
 
 \-\-csv | \-\-pdf | \-\-png | \-\-fullpdf [required]
 
-: **format-option** Your format options depend on what's being exported. A workbook can only be exported as a PDF using the `--fullpdf` argument. A view can be exported as a PDF (\-\-pdf) or a PNG (\-\-png) or a csv showing summary data only (\-\-csv).
+: Format option. Your format options depend on what's being exported. A workbook can only be exported as a PDF using the `--fullpdf` argument. A view can be exported as a PDF (\-\-pdf) or a PNG (\-\-png) or a csv showing summary data only (\-\-csv).
 
 \-\-pagelayout
 
@@ -557,10 +556,9 @@ If you don't provide a name, it will be derived from the view or workbook name. 
 
 ?refresh=yes
 
-: * To force a fresh data query instead of pulling the results from the cache, add this parameter to the view or workbook url: `?:refresh=yes` 
+: To force a fresh data query instead of pulling the results from the cache, add this parameter to the view or workbook url: `?:refresh=yes` 
         
-: <div class="alert alert-info"><strong>Notes:</strong> If you are using tabcmd with your own scripting and the refresh URL parameter is being used a great deal, this can have a negative impact on performance. It's recommended that you use refresh only when real-time data is required—for example, on a single dashboard instead of on an entire workbook.
-</div>
+: <div class="alert alert-info"><strong>Note</strong>: If you are using tabcmd with your own scripting and the refresh URL parameter is being used a great deal, this can have a negative impact on performance. It's recommended that you use refresh only when real-time data is required—for example, on a single dashboard instead of on an entire workbook.</div>
 
 
 Note the following when you use this command:
