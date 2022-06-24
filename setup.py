@@ -42,6 +42,7 @@ setup(
             'types-appdirs',
             'types-mock',
             'types-requests',
+            'types-setuptools'
         ],
         'package': [
             'pyinstaller>=5.1',
