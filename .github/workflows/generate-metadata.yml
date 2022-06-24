@@ -25,6 +25,9 @@ jobs:
         doit version
         python setup.py build
 
+    - name: Generate dependencies list
+      run: python bin/license-checker.py
+
     - name: Type-check
       run: mypy src tests
 

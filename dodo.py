@@ -4,10 +4,7 @@ import subprocess
 import ftfy
 import setuptools_scm
 
-LOCALES = [
-    "en", "de", "es", "fr", "ga", "it", "pt",
-    "sv", "ja", "ko",
-    "zh"]
+LOCALES = ["en", "de", "es", "fr", "ga", "it", "pt", "sv", "ja", "ko", "zh"]
 
 """
 https://pydoit.org/
@@ -46,8 +43,8 @@ def task_convert():
                     outfile.write(ftfy.fixes.decode_escapes(data))
 
     return {
-        'actions': [process_locales],
-        'verbosity': 2,
+        "actions": [process_locales],
+        "verbosity": 2,
     }
 
 
@@ -65,40 +62,48 @@ def task_po():
     - 3.x, from pip install translate-toolkit: 
     it copies key->comment, value-> msgid, ""->msgstr which is not at all what we want
     """
+
     def process_locales():
         for current_locale in LOCALES:
 
             LOC_PATH = "src/locales/" + current_locale
-            for file in glob.glob(LOC_PATH+"/*.properties"):
+            for file in glob.glob(LOC_PATH + "/*.properties"):
                 basename = os.path.basename(file).split(".")[0]
                 print("processing", basename)
-                result = subprocess.run(["python",
-                                         "bin/i18n/prop2po.py",
-                                         "--encoding", "utf-8",  # for the .po header
-                                         "--language", current_locale,  # for the .po header
-                                         LOC_PATH + "/"+basename+".properties",
-                                         LOC_PATH + "/LC_MESSAGES/"+basename+".po"])
+                result = subprocess.run(
+                    [
+                        "python",
+                        "bin/i18n/prop2po.py",
+                        "--encoding",
+                        "utf-8",  # for the .po header
+                        "--language",
+                        current_locale,  # for the .po header
+                        LOC_PATH + "/" + basename + ".properties",
+                        LOC_PATH + "/LC_MESSAGES/" + basename + ".po",
+                    ]
+                )
                 print("\n", result)
                 # print("stdout:", result.stdout)
                 if not result.returncode == 0:
                     print("stderr:", result.stderr)
+
     return {
-        'actions': [process_locales],
-        'verbosity': 2,
+        "actions": [process_locales],
+        "verbosity": 2,
     }
 
 
 def task_clean_all():
-    """For all languages: removes all generated artifacts (.po, .mo) which source from properties files. """
+    """For all languages: removes all generated artifacts (.po, .mo) which source from properties files."""
 
     def process_locales():
         for current_locale in LOCALES:
             LOC_PATH = "src/locales/" + current_locale
-            for file in glob.glob(LOC_PATH+"/*.properties"):
+            for file in glob.glob(LOC_PATH + "/*.properties"):
                 basename = os.path.basename(file).split(".")[0]
-                print("deleting",basename + ".*")
+                print("deleting", basename + ".*")
                 try:
-                    os.remove(LOC_PATH + "/LC_MESSAGES/"+basename+".po")
+                    os.remove(LOC_PATH + "/LC_MESSAGES/" + basename + ".po")
                 except OSError:
                     pass
                 try:
@@ -111,10 +116,9 @@ def task_clean_all():
             except OSError:
                 pass
 
-
     return {
-        'actions': [process_locales],
-        'verbosity': 2,
+        "actions": [process_locales],
+        "verbosity": 2,
     }
 
 
@@ -128,7 +132,7 @@ def task_merge():
 
             LOC_PATH = "src/locales/" + current_locale + "/LC_MESSAGES"
 
-            with open(LOC_PATH + "/tabcmd.po", 'w+', encoding="utf-8") as outfile:
+            with open(LOC_PATH + "/tabcmd.po", "w+", encoding="utf-8") as outfile:
                 for file in glob.glob(LOC_PATH + "/*.po"):
                     if file.endswith("tabcmd.po"):
                         pass
@@ -139,8 +143,8 @@ def task_merge():
                             outfile.write("\n")
 
     return {
-        'actions': [process_locales],
-        'verbosity': 2,
+        "actions": [process_locales],
+        "verbosity": 2,
     }
 
 
@@ -164,14 +168,15 @@ def task_mo():
                 print("stderr:", result.stderr)
 
     return {
-        'actions': [process_locales],
-        'verbosity': 2,
+        "actions": [process_locales],
+        "verbosity": 2,
     }
 
 
 def task_version():
 
-    """ Generates a metadata info file with current version to be bundled by pyinstaller"""
+    """Generates a metadata info file with current version to be bundled by pyinstaller"""
+
     def write_for_pyinstaller():
         import pyinstaller_versionfile
         import os
@@ -183,12 +188,13 @@ def task_version():
         output_file = os.path.join(".", "program_metadata.txt")
         input_file = os.path.join("res", "metadata.yml")
         pyinstaller_versionfile.create_versionfile_from_input_file(
-            output_file, input_file,
+            output_file,
+            input_file,
             # optional, can be set to overwrite version information (equivalent to --version when using the CLI)
-            version=numeric_version
+            version=numeric_version,
         )
 
     return {
-        'actions': [write_for_pyinstaller],
-        'verbosity': 2,
+        "actions": [write_for_pyinstaller],
+        "verbosity": 2,
     }
