@@ -81,11 +81,11 @@ The site ID is used in the URL to uniquely identify the site. For example, a sit
 
 : The number of seconds the server should wait before processing the login command. Default: 30 seconds.
 
--tn, \-\-token-name
+\-\-token-name
 
 : The token name for user.
 
--to, \-\-token
+\-\-token-value
 
 : The token specified for --token-name. If you do not provide a token, you will be prompted for one.
 
@@ -103,8 +103,8 @@ For example:
 ```tabcmd login --server “http://exampleserver.com" --site "examplesite" --token-name "tokenname" --token "exampletoken"```
 
 where:
-* `-tn, --token-name` is the token name for user.
-* `-to, --token` is the token specified for `--token-name`
+* `--token-name` is the token name for user.
+* `--token-value` is the token specified for `--token-name`
 
 
 ## logout
