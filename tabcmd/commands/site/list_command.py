@@ -1,9 +1,10 @@
 import tableauserverclient as TSC
 
-from tabcmd.commands.auth.session import Session
-from tabcmd.commands.server import Server
-from tabcmd.commands.constants import Errors
-from tabcmd.execution.logger_config import log
+from src.commands.auth.session import Session
+from src.commands.server import Server
+from src.commands.constants import Errors
+from src.execution.logger_config import log
+from src.execution.localize import _
 
 
 class ListCommand(Server):
@@ -25,7 +26,7 @@ class ListCommand(Server):
     @staticmethod
     def run_command(args):
         logger = log(__name__, args.logging_level)
-        logger.debug("======================= Launching command =======================")
+        logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
         content_type = args.content
@@ -42,8 +43,8 @@ class ListCommand(Server):
 
             logger.info("===== Listing {0} content for user {1}...".format(content_type, session.username))
             for item in items:
-                print("NAME:", item.name)
-                print("      ID:", item.id)
+                print("NAME:".rjust(10), item.name)
+                print("ID:".rjust(10), item.id)
 
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, e)
