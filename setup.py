@@ -15,9 +15,10 @@ setup(
     entry_points={"console_scripts": ["tabcmd = src.tabcmd:main"]},
     setup_requires=[
         # copy of pyproject.toml for back compat
+        "build",
         "setuptools>=62",
-        "wheel",
         "setuptools_scm>=6.2",
+        "wheel",
     ],
     install_requires=[
         "polling2",
