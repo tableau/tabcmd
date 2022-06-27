@@ -15,9 +15,10 @@ setup(
     entry_points={"console_scripts": ["tabcmd = src.tabcmd:main"]},
     setup_requires=[
         # copy of pyproject.toml for back compat
+        "build",
         "setuptools>=62",
-        "wheel",
         "setuptools_scm>=6.2",
+        "wheel",
     ],
     install_requires=[
         "polling2",
@@ -30,22 +31,23 @@ setup(
             "doit",
             "ftfy",
         ],
-        'build': [
-            'appdirs',
-            'black',
-            'doit',
-            'ftfy',
-            'mypy',
-            'pyinstaller_versionfile',
-            'setuptools>=62',
-            'setuptools_scm',
-            'types-appdirs',
-            'types-mock',
-            'types-requests',
+        "build": [
+            "appdirs",
+            "black",
+            "doit",
+            "ftfy",
+            "mypy",
+            "pyinstaller_versionfile",
+            "setuptools>=62",
+            "setuptools_scm",
+            "types-appdirs",
+            "types-mock",
+            "types-requests",
+            "types-setuptools",
         ],
-        'package': [
-            'pyinstaller>=5.1',
-            'pyinstaller-versionfile',
+        "package": [
+            "pyinstaller>=5.1",
+            "pyinstaller-versionfile",
         ],
         "test": [
             "mock",

@@ -5,8 +5,6 @@ from .localize import _
 # from importlib.metadata import version, PackageNotFoundError
 from pkg_resources import get_distribution, DistributionNotFound
 
-from ..commands.help.help_command import HelpCommand
-
 try:
     version = get_distribution("tabcmd").version
 except DistributionNotFound:
