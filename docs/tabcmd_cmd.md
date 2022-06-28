@@ -89,11 +89,11 @@ tabcmd listsites --server x --site y --username u --password p
 
 : The number of seconds the server should wait before processing the login command. Default: 30 seconds.
 
--tn, \-\-token-name
+\-\-token-name
 
 : The token name for user.
 
--to, \-\-token
+\-\-token-value
 
 : The token specified for --token-name. If you do not provide a token, you will be prompted for one.
 
@@ -115,8 +115,8 @@ tabcmd login --server “http://exampleserver.com" --site "examplesite" --token-
 ```
 
 where:
-* `-tn, --token-name` is the token name for user.
-* `-to, --token` is the token specified for `--token-name`
+* `--token-name` is the token name for user.
+* `--token-value` is the token specified for `--token-name`
 
 
 ## logout
