@@ -14,7 +14,7 @@ Tableau provides the tabcmd command-line interface that you can use to automate 
 You can download and run tabcmd 2.0 as an executable file, or install it on the command line with pip.
 
 ### Download and run (recommended)
-* For Windows: https://github.com/tableau/tabcmd/releases/download/v1.99.99/tabcmd.exe
+* For [Windows](https://github.com/tableau/tabcmd/releases/download/v1.99.99/tabcmd.exe)
 <!--- * For Mac: --->
 <!--- * For Linux:  --->
 
