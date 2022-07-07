@@ -41,3 +41,9 @@ html
 # doit
 .doit.*
 
+# venv
+site-packages
+
+# local
+tabcmd-dev
+workon
