@@ -243,6 +243,7 @@ class RunCommandsTest(unittest.TestCase):
     # help
     def test_help(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
+        mock_args.help_option = "boo"
         help_command.HelpCommand.run_command(mock_args)
         mock_session.assert_not_called()
 

@@ -22,13 +22,12 @@ class RefreshExtractsParserTest(unittest.TestCase):
             "--datasource",
             "hello",
             "--incremental",
-            "True",
             "--removecalculations",
             "--project",
             "testproject",
         ]
         args = self.parser_under_test.parse_args(mock_args)
-        assert args.incremental == "True", args
+        assert args.incremental, args
 
     def test_refresh_extract_parser_missing_all_args(self):
         mock_args = [commandname]

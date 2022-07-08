@@ -28,7 +28,7 @@ class Session:
         self.user_id = None
         self.auth_token = None
         self.token_name = None
-        self.token = None
+        self.token_value = None
         self.password_file = None
         self.site_name = None  # The site name, e.g 'alpodev'
         self.site_id = None  # The site id, e.g 'abcd-1234-1234-1244-1234'
@@ -63,7 +63,7 @@ class Session:
         self.logging_level = args.logging_level or self.logging_level
         self.password_file = args.password_file
         self.token_name = args.token_name or self.token_name
-        self.token = args.token or self.token
+        self.token_value = args.token_value or self.token_value
 
         self.no_prompt = args.no_prompt or self.no_prompt
         self.certificate = args.certificate or self.certificate
@@ -107,8 +107,8 @@ class Session:
             Errors.exit_with_error(self.logger, "Couldn't find credentials")
 
     def _create_new_token_credential(self):
-        if self.token:
-            token = self.token
+        if self.token_value:
+            token = self.token_value
         elif self.password_file:
             token = Session._read_password_from_file(self.password_file)
         elif self._allow_prompt():
@@ -220,7 +220,7 @@ class Session:
                 credentials = self._create_new_credential(args.password, Session.PASSWORD_CRED_TYPE)
             else:
                 credentials = self._create_new_credential(args.password, Session.TOKEN_CRED_TYPE)
-        elif args.token:
+        elif args.token_value:
             self._end_session()
             credentials = self._create_new_token_credential()
         else:  # no login arguments given - look for saved info
@@ -262,7 +262,7 @@ class Session:
         self.user_id = None
         self.auth_token = None
         self.token_name = None
-        self.token = None
+        self.token_value = None
         self.site_name = None
         self.site_id = None
         self.server = None
@@ -300,7 +300,7 @@ class Session:
                 self.username = auth["username"]
                 self.user_id = auth["user_id"]
                 self.token_name = auth["personal_access_token_name"]
-                self.token = auth["personal_access_token"]
+                self.token_value = auth["personal_access_token"]
                 self.last_login_using = auth["last_login_using"]
                 self.password_file = auth["password_file"]
                 self.no_prompt = auth["no_prompt"]
@@ -341,7 +341,7 @@ class Session:
                 "site_name": self.site_name,
                 "site_id": self.site_id,
                 "personal_access_token_name": self.token_name,
-                "personal_access_token": self.token,
+                "personal_access_token": self.token_value,
                 "last_login_using": self.last_login_using,
                 "password_file": self.password_file,
                 "no_prompt": self.no_prompt,

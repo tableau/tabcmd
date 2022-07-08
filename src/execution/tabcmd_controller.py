@@ -1,4 +1,5 @@
 import logging
+import sys
 
 from .localize import set_client_locale
 from .map_of_commands import *
@@ -26,7 +27,7 @@ class TabcmdController:
         namespace = parser.parse_args(user_input)
 
         logger = log(__name__, namespace.logging_level or logging.INFO)
-        logger.debug(namespace)
+        # logger.debug(namespace)
         if namespace.language:
             set_client_locale(namespace.language, logger)
 

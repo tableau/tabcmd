@@ -65,6 +65,7 @@ def set_no_wait_option(parser):
     return parser
 
 
+# TODO make this lower case?
 def set_role_arg(parser):
     parser.add_argument(
         "-r",
@@ -88,7 +89,9 @@ def set_role_arg(parser):
 
 
 def set_silent_option(parser):
-    parser.add_argument("--silent-progress", help="Do not display progress messages for the command.")
+    parser.add_argument(
+        "--silent-progress", action="store_true", help="Do not display progress messages for the command."
+    )
     return parser
 
 
@@ -301,6 +304,7 @@ def set_publish_args(parser):
     )
     parser.add_argument(
         "--save-db-password",
+        action="store_true",
         help="Stores the provided database password on the server.",
     )
     parser.add_argument(
@@ -309,25 +313,29 @@ def set_publish_args(parser):
         help="When a workbook with tabbed views is published, each sheet becomes a tab that viewers can use to \
         navigate through the workbook",
     )
-    parser.add_argument("--replace", help="Use the extract file to replace the existing data source.")
-    parser.add_argument("--disable-uploader", help="Disable the incremental file uploader.")
+    parser.add_argument(
+        "--replace", action="store_true", help="Use the extract file to replace the existing data source."
+    )
+    parser.add_argument("--disable-uploader", action="store_true", help="Disable the incremental file uploader.")
     parser.add_argument("--restart", help="Restart the file upload.")
     parser.add_argument(
         "--encrypt-extracts",
+        action="store_true",
         help="Encrypt extracts in the workbook, datasource, or extract being published to the server",
     )
     parser.add_argument("--oauth-username", help="The email address of a preconfigured OAuth connection")
-    parser.add_argument("--save-oauth")
-    parser.add_argument("--thumbnail-username")
-    parser.add_argument("--thumbnail-group")  # not implemented in the REST API
+    parser.add_argument("--save-oauth", action="store_true", help="Save embedded OAuth credentials in the datasource")
+    parser.add_argument("--thumbnail-username", help="Not yet implemented")
+    parser.add_argument("--thumbnail-group", help="Not yet implemented")  # not implemented in the REST API
 
 
 # refresh-extracts
 def set_incremental_options(parser):
     sync_group = parser.add_mutually_exclusive_group()
-    sync_group.add_argument("--incremental", help="Runs the incremental refresh operation.")
+    sync_group.add_argument("--incremental", action="store_true", help="Runs the incremental refresh operation.")
     sync_group.add_argument(
         "--synchronous",
+        action="store_true",
         help="Adds the full refresh operation to the queue used by the Backgrounder process, to be run as soon as a \
         Backgrounder process is available.",
     )
@@ -368,7 +376,7 @@ def set_domain_arguments(parser):
 def set_target_users_arg(parser):
     target_users_group = parser.add_mutually_exclusive_group()
     target_users_group.add_argument("--target-username", help="Clears sub value for the specified individual user.")
-    target_users_group.add_argument("--all", help="Clears sub values for all users.")
+    target_users_group.add_argument("--all", action="store_true", help="Clears sub values for all users.")
     return parser
 
 
@@ -383,6 +391,7 @@ def set_update_group_args(parser):
     parser.add_argument(
         "--grant-license-mode",
         choices=["on-login", "on-sync"],
+        type=str.lower,
         help="Specifies whether a role should be granted on sign in. ",
     )
     parser.add_argument(
