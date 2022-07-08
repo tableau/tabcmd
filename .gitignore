@@ -16,7 +16,9 @@ __pycache__/
 *.pytest_cache
 *.pyc
 *.pkl
-.coverage
+venv/
+tabcmd-dev/
+workon/
 
 # code coverage outputs
 .coverage
