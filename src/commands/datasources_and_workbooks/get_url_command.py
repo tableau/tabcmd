@@ -144,7 +144,7 @@ class GetUrl(DatasourcesAndWorkbooks):
                 f.write(view_item.pdf)
             logger.info(_("export.success").format(view_item.name, filename))
         except TSC.ServerResponseError as e:
-            GetUrl.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
+            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
 
     @staticmethod
     def generate_png(logger, server, args):
@@ -159,7 +159,7 @@ class GetUrl(DatasourcesAndWorkbooks):
                 f.write(view_item.png)
             logger.info(_("export.success").format(view_item.name, filename))
         except TSC.ServerResponseError as e:
-            GetUrl.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
+            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
 
     @staticmethod
     def generate_csv(logger, server, args):
@@ -174,7 +174,7 @@ class GetUrl(DatasourcesAndWorkbooks):
                 f.write(view_item.csv)
             logger.info(_("export.success"), views_from_list.name, formatted_file_name)
         except TSC.ServerResponseError as e:
-            GetUrl.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
+            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
 
@@ -188,4 +188,4 @@ class GetUrl(DatasourcesAndWorkbooks):
             server.workbooks.download(target_workbook.id, filepath=file_name_with_path, no_extract=False)
             logger.info(_("export.success").format(target_workbook.name, file_name_with_path))
         except TSC.ServerResponseError as e:
-            GetUrl.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
+            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
