@@ -38,24 +38,34 @@ class PublishCommand(DatasourcesAndWorkbooks):
 
         if args.project_name:
             try:
-                project_id = Server.get_project_by_name_and_parent_path(
+                dest_project = Server.get_project_by_name_and_parent_path(
                     logger, server, args.project_name, args.parent_project_path
                 )
+                project_id = dest_project.id
             except Exception as exc:
-                Errors.exit_with_error(logger, _("publish.errors.server_resource_not_found"), exc)
+                Errors.exit_with_error(
+                    logger, _("publish.errors.server_resource_not_found"), exc
+                )
         else:
             project_id = ""
             args.project_name = "default"
             args.parent_project_path = ""
 
         publish_mode = PublishCommand.get_publish_mode(args)
+        logger.info("Publishing as " + publish_mode)
 
-        source = PublishCommand.get_filename_extension_if_tableau_type(logger, args.filename)
+        source = PublishCommand.get_filename_extension_if_tableau_type(
+            logger, args.filename
+        )
         logger.info(_("publish.status").format(args.filename))
         if source in ["twbx", "twb"]:
-            new_workbook = TSC.WorkbookItem(project_id, name=args.name, show_tabs=args.tabbed)
+            new_workbook = TSC.WorkbookItem(
+                project_id, name=args.name, show_tabs=args.tabbed
+            )
             try:
-                new_workbook = server.workbooks.publish(new_workbook, args.filename, publish_mode)
+                new_workbook = server.workbooks.publish(
+                    new_workbook, args.filename, publish_mode
+                )
             except IOError as ioe:
                 Errors.exit_with_error(logger, ioe)
             logger.info(_("publish.success") + "\n{}".format(new_workbook.webpage_url))
@@ -63,10 +73,14 @@ class PublishCommand(DatasourcesAndWorkbooks):
         elif source in ["tds", "tdsx", "hyper"]:
             new_datasource = TSC.DatasourceItem(project_id, name=args.name)
             try:
-                new_datasource = server.datasources.publish(new_datasource, args.filename, publish_mode)
+                new_datasource = server.datasources.publish(
+                    new_datasource, args.filename, publish_mode
+                )
             except IOError as ioe:
                 Errors.exit_with_error(logger, exc)
-            logger.info(_("publish.success") + "\n{}".format(new_datasource.webpage_url))
+            logger.info(
+                _("publish.success") + "\n{}".format(new_datasource.webpage_url)
+            )
 
     @staticmethod
     def get_publish_mode(args):
