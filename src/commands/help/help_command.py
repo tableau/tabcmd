@@ -1,7 +1,7 @@
 import argparse
-import sys
-from src.execution.localize import _
+from typing import Any, List
 
+from src.execution.localize import _
 from src.execution.logger_config import log
 
 
@@ -20,14 +20,16 @@ class HelpCommand:
     @staticmethod
     def run_command(args: argparse.Namespace):
 
+        # whaddya mean, '__class__' is not defined ??!?!!?
+        logger = log(__class__.__name__, args.logging_level)  # type: ignore[name-defined]
+        logger.debug(_("tabcmd.launching"))
+
+        # delayed import, TODO fix cyclic imports
         from src.execution.map_of_commands import CommandsMap
 
-        logger = log(__class__.__name__, args.logging_level)
-        logger.debug("\n")
-        logger.debug(_("tabcmd.launching"))
-        all_commands = CommandsMap.commands_hash_map
+        all_commands: List[Any] = CommandsMap.commands_hash_map
 
-        description = (
+        description: str = (
             "tabcmd - Tableau Server Command Line Utility 2.0 \n \n"
             "tabcmd help             -- List all available commands and global options \n"
             "tabcmd help <a command> -- Show Help for a specific command\n\n"
@@ -37,30 +39,30 @@ class HelpCommand:
 
             if args.help_option in map(lambda command: command.name, all_commands):
                 command_objects = filter(lambda command: command.name == args.help_option, all_commands)
-                command_arg = list(command_objects)[0]
-                logger.info(command_arg.name.ljust(25) + command_arg.description + "\n")
+                cli_cmd = list(command_objects)[0]
+                logger.info(cli_cmd.name.ljust(25) + cli_cmd.description + "\n")
                 command_parser = argparse.ArgumentParser(parents=[])
-                command_arg.define_args(command_parser)
+                cli_cmd.define_args(command_parser)
 
                 positionals = []
                 optionals = []
                 for option in command_parser._actions:
-                    if option.option_strings == []:
-                        positionals.append(option)
-                    else:
+                    if option.option_strings:
                         optionals.append(option)
+                    else:
+                        positionals.append(option)
 
                 if positionals:
                     logger.info("Required arguments")
                 for option in positionals:
-                    logger.info(option.dest.ljust(25) + " {" + option.help + "}")
+                    logger.info("{0} {1}{2}{3}".format(option.dest.ljust(25), "{", option.help, "}"))
                 if optionals:
                     logger.info("\nOptional arguments")
                 for option in optionals:
-                    logger.info(" ".join(option.option_strings).ljust(25) + option.help)
+                    logger.info("{0} {1} ".format(option.option_strings, option.help))
 
                 logger.info("\nUsage")
-                usage = command_arg.name + " "
+                usage = cli_cmd.name + " "
                 for opt in positionals:
                     usage = usage + opt.dest
                 if len(positionals) < len(command_parser._actions):
@@ -70,6 +72,3 @@ class HelpCommand:
         else:
             for cmd in all_commands:
                 logger.info(cmd.name + ": " + cmd.description)
-            from src.execution.parent_parser import ParentParser
-
-            logger.info(ParentParser.parent_parser_with_global_options())

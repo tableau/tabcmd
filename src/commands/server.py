@@ -1,8 +1,8 @@
 import os
-
 import tableauserverclient as TSC
 
 from src.commands.constants import Errors
+from src.execution.localize import _
 
 
 class Server:
@@ -74,7 +74,7 @@ class Server:
                 Errors.exit_with_error(logger, exception=e)
         else:
             logger.debug("Use logged in site")
-            # site_item = server.sites.get_by_id(server.site_id)
+            site_item = server.sites.get_by_id(server.site_id)
             if not site_item:
                 raise ResourceWarning("Could not get site from server")
         return site_item

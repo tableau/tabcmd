@@ -1,4 +1,5 @@
 import logging
+import sys
 
 from .localize import set_client_locale
 from .map_of_commands import *
