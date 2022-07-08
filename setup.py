@@ -31,7 +31,7 @@ setup(
             "doit",
             "ftfy",
         ],
-        'build': [
+        "build": [
             "appdirs",
             "black",
             "doit",
