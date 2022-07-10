@@ -38,9 +38,10 @@ class PublishCommand(DatasourcesAndWorkbooks):
 
         if args.project_name:
             try:
-                project_id = Server.get_project_by_name_and_parent_path(
+                dest_project = Server.get_project_by_name_and_parent_path(
                     logger, server, args.project_name, args.parent_project_path
                 )
+                project_id = dest_project.id
             except Exception as exc:
                 Errors.exit_with_error(logger, _("publish.errors.server_resource_not_found"), exc)
         else:
@@ -49,6 +50,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
             args.parent_project_path = ""
 
         publish_mode = PublishCommand.get_publish_mode(args)
+        logger.info("Publishing as " + publish_mode)
 
         source = PublishCommand.get_filename_extension_if_tableau_type(logger, args.filename)
         logger.info(_("publish.status").format(args.filename))
