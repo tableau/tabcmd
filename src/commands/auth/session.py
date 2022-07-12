@@ -4,6 +4,7 @@ import os
 
 import requests
 import tableauserverclient as TSC
+import tableauserverclient.server.endpoint.exceptions
 from urllib3.exceptions import InsecureRequestWarning
 
 from src.commands.constants import Errors
@@ -132,7 +133,10 @@ class Session:
         if self.no_certcheck:
             http_options = {"verify": False}
             requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
-        tableau_server = TSC.Server(self.server_url, use_server_version=True, http_options=http_options)
+        try:
+            tableau_server = TSC.Server(self.server_url, use_server_version=True, http_options=http_options)
+        except Exception as e:
+            Errors.exit_with_error(self.logger, "Failed to connect to server", e)
 
         return tableau_server
 
@@ -141,7 +145,10 @@ class Session:
         self.tableau_server = self._set_connection_options()
         self._print_server_info()
         self.logger.info(_("session.connecting"))
-        self.tableau_server.use_server_version()  # this will attempt to contact the server
+        try:
+            self.tableau_server.use_server_version()  # this will attempt to contact the server
+        except Exception as e:
+            Errors.exit_with_error(self.logger, "Failed to connect to server", e)
 
     def _read_existing_state(self):
         if self._check_json():
@@ -175,7 +182,7 @@ class Session:
         self.logger.debug(_("listsites.output").format("", self.username or self.token_name, self.site_name))
         try:
             self.tableau_server.auth.sign_in(tableau_auth)  # it's the same call for token or user-pass
-        except TSC.ServerResponseError as e:
+        except Exception as e:
             Errors.exit_with_error(self.logger, exception=e)
         try:
             self.site_id = self.tableau_server.site_id
