@@ -29,7 +29,7 @@ class CreateGroupCommand(Server):
             logger.info(_("creategroup.status").format(args.name))
             new_group = TSC.GroupItem(args.name)
             server.groups.create(new_group)
-            logger.info(_("tabcmd.result.succeeded"))
+            logger.info(_("common.output.succeeded"))
         except TSC.ServerResponseError as e:
             # quite likely a 403 because you must be server/site admin to call this
             if args.continue_if_exists and Errors.is_resource_conflict(e):

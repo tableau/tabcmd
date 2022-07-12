@@ -38,7 +38,7 @@ class Server:
 
     @staticmethod
     def find_group_id(logger, server, group_name):
-        return Server.find_group(logger, server, group_name)[0].id
+        return Server.find_group(logger, server, group_name).id
 
     @staticmethod
     def find_user_id(logger, server, username):
