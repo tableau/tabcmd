@@ -32,4 +32,5 @@ class DeleteGroupCommand(Server):
             server.groups.delete(group_id)
             logger.info(_("tabcmd.result.succeeded"))
         except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, "tabcmd.result.failed.delete.group", e)
+            # quite likely a 403 because you must be server/site admin to call this
+            Errors.exit_with_error(logger, _("tabcmd.result.failed.delete.group"), e)

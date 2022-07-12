@@ -23,10 +23,7 @@ class RunSchedule(DatasourcesAndWorkbooks):
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
-        logger.info(_("export.status").format(args.schedule))
         schedule = DatasourcesAndWorkbooks.get_items_by_name(logger, server.schedules, args.schedule)[0]
-        if not schedule:
-            Errors.exit_with_error(logger, _("publish.errors.server_resource_not_found"))
         logger.info(_("runschedule.status"))
         Errors.exit_with_error(logger, "Not yet implemented")
 
