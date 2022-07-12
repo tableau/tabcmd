@@ -162,7 +162,7 @@ class RunCommandsTest(unittest.TestCase):
     def test_delete_extract(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.datasources = getter
-        mock_args.datasource = True
+        mock_args.datasource = "datasource-name"
         delete_extracts_command.DeleteExtracts.run_command(mock_args)
         mock_session.assert_called()
 

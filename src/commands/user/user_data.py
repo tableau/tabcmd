@@ -214,10 +214,6 @@ class UserCommand(Server):
     def act_on_users(
         logger: logging.Logger, server: object, action_name: str, server_method: Callable, args: argparse.Namespace
     ) -> None:
-        n_users_handled: int = 0
-        number_of_errors: int = 0
-        n_users_listed: int = UserCommand.validate_file_for_import(args.users, logger, strict=args.require_all_valid)
-        logger.debug(_("importcsvsummary.line.processed").format(n_users_listed))
 
         group = None
         try:
@@ -226,6 +222,11 @@ class UserCommand(Server):
             Errors.exit_with_error(
                 logger, _("errors.reportable.impersonation.group_not_found").format(args.name), exception=e
             )
+
+        n_users_handled: int = 0
+        number_of_errors: int = 0
+        n_users_listed: int = UserCommand.validate_file_for_import(args.users, logger, strict=args.require_all_valid)
+        logger.debug(_("importcsvsummary.line.processed").format(n_users_listed))
 
         error_list = []
         user_obj_list: List[TSC.UserItem] = UserCommand.get_users_from_file(args.users)
