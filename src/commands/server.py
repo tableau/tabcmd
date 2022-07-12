@@ -38,7 +38,7 @@ class Server:
 
     @staticmethod
     def find_group_id(logger, server, group_name):
-        return Server.find_group(logger, server, group_name)[0].id
+        return Server.find_group(logger, server, group_name).id
 
     @staticmethod
     def find_user_id(logger, server, username):
@@ -49,7 +49,12 @@ class Server:
 
     @staticmethod
     def get_items_by_name(logger, item_endpoint, item_name, container=None):
-        logger.debug(_("export.status").format(item_name))
+        item_type = type(item_endpoint).__name__
+        item_log_name = item_name
+        if container:
+            item_log_name = container + "/" + item_log_name
+        item_log_name = "[" + item_type + "] " + item_log_name
+        logger.debug(_("export.status").format(item_log_name))
         req_option = TSC.RequestOptions()
         req_option.filter.add(TSC.Filter(TSC.RequestOptions.Field.Name, TSC.RequestOptions.Operator.Equals, item_name))
         if container:
@@ -59,9 +64,11 @@ class Server:
             )
         all_items, pagination_item = item_endpoint.get(req_option)
         if all_items is None or all_items == []:
-            raise ValueError(_("publish.errors.server_resource_not_found"))
+            raise ValueError("[" + item_type + "] " + _("errors.xmlapi.not_found"))
         if len(all_items) > 1:
             logger.debug("{}+ items of this name were found. Returning first page.".format(len(all_items)))
+            logger.debug(all_items[0].name + ", " + all_items[1].name + ", " + all_items[2].name)
+
         return all_items
 
     # Get site by name or get currently logged in site
