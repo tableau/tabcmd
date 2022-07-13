@@ -65,7 +65,9 @@ class GetUrl(DatasourcesAndWorkbooks):
         elif url.find("/workbooks/") == 0:
             return "workbook"
         else:
-            Errors.exit_with_error(logger, message=_("export.errors.requires_workbook_view_param").format(GetUrl.name))
+            Errors.exit_with_error(
+                logger, message=_("export.errors.requires_workbook_view_param").format(__class__.__name__)
+            )
 
     @staticmethod
     def get_file_type_from_filename(logger, file_name, url):
@@ -152,7 +154,7 @@ class GetUrl(DatasourcesAndWorkbooks):
         try:
             view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view)
             logger.debug(_("content_type.view") + ": {}".format(view_item.name))
-            req_option_csv = TSC.CSVRequestOptions(maxage=1) # same as png
+            req_option_csv = TSC.CSVRequestOptions(maxage=1)  # same as png
             server.views.populate_image(view_item, req_option_csv)
             filename = GetUrl.filename_from_args(args.filename, view_item.name, "png")
             with open(filename, "wb") as f:
