@@ -17,7 +17,7 @@ class DeleteSiteCommand(Server):
 
     @staticmethod
     def define_args(delete_site_parser):
-        delete_site_parser.add_argument("site_name", help="name of site to delete")
+        delete_site_parser.add_argument("site_name_to_delete", metavar="site-name", help="name of site to delete")
 
     @staticmethod
     def run_command(args):
@@ -25,9 +25,7 @@ class DeleteSiteCommand(Server):
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
-        site_id = server.sites.get_by_name(args.site_name)
-        if site_id == session.site_id:
-            Errors.exit_with_error(logger, "Cannot delete the site you are logged in to")
+        site_id = Server.get_site_by_name(logger, server, args.site_name_to_delete)
         try:
             server.sites.delete(site_id)
             logger.info("Successfully deleted the site")

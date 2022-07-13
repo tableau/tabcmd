@@ -44,7 +44,7 @@ class CreateSiteCommand(Server):
         except TSC.ServerResponseError as e:
             if Errors.is_resource_conflict(e):
                 if args.continue_if_exists:
-                    logger.info(_("createsite.errors.site_name_already_exists").format(args.site_name))
+                    logger.info(_("createsite.errors.site_name_already_exists").format(args.new_site_name))
                     return
                 else:
                     Errors.exit_with_error(
