@@ -160,7 +160,8 @@ class Session:
             self.logger.info("=====   Username: {}".format(self.username))
         else:
             self.logger.info("=====   Token Name: {}".format(self.token_name))
-        self.logger.info(_("dataconnections.classes.tableau_server_site") + ": {}".format(self.site_name))
+        site_display_name = self.site_name or "Default Site"
+        self.logger.info(_("dataconnections.classes.tableau_server_site") + ": {}".format(site_display_name))
 
     def _validate_existing_signin(self):
         self.logger.info(_("session.continuing_session"))
