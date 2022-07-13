@@ -101,11 +101,13 @@ class Server:
 
     @staticmethod
     def get_project_by_name_and_parent_path(logger, server, project_name, parent_path):
-        logger.debug(_("content_type.project") + ":{0}, {1}".format(parent_path, project_name))
-        project_tree = Server._parse_project_path_to_list(parent_path)
         if not project_name:
-            project = Server._get_parent_project_from_tree(logger, server, project_tree)
+            project_name = "Default"
+        if not parent_path:
+            project = Server._get_project_by_name_and_parent(logger, server, project_name, None)
         else:
+            logger.debug("Finding project within the given parent")
+            project_tree = Server._parse_project_path_to_list(parent_path)
             parent = Server._get_parent_project_from_tree(logger, server, project_tree)
             project = Server._get_project_by_name_and_parent(logger, server, project_name, parent)
         if not project:
@@ -132,7 +134,7 @@ class Server:
 
     @staticmethod
     def _get_parent_project_from_tree(logger, server, hierarchy):
-        # logger.debug("get parent project from tree: {0}".format(hierarchy))
+        logger.debug("get parent project from tree: {0}".format(hierarchy))
         tree_height = len(hierarchy)
         if tree_height == 0:
             return None
