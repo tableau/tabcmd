@@ -172,7 +172,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             file_name_with_path = GetUrl.filename_from_args(args.filename, view_item.name, "csv")
             with open(file_name_with_path, "wb") as f:
                 f.write(view_item.csv)
-            logger.info(_("export.success"), views_from_list.name, formatted_file_name)
+            logger.info(_("export.success").format(view_item.name, file_name_with_path))
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
         except Exception as e:
