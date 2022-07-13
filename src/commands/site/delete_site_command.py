@@ -25,9 +25,9 @@ class DeleteSiteCommand(Server):
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
-        site_id = Server.get_site_by_name(logger, server, args.site_name_to_delete)
+        site_url = Server.get_site_by_name(logger, server, args.site_name_to_delete).content_url
         try:
-            server.sites.delete(site_id)
+            server.sites.delete(site_url)
             logger.info("Successfully deleted the site")
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, "Error deleting site", e)
