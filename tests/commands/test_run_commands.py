@@ -224,11 +224,12 @@ class RunCommandsTest(unittest.TestCase):
     def test_create_site_already_exists(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_args.continue_if_exists = True
-        mock_args.site_name = "duplicate"
+        mock_args.new_site_name = "duplicate"
         mock_args.url = "dplct"
         mock_args.admin_mode = None
         mock_args.user_quota = None
         mock_args.storage_quota = None
+        mock_args.site_admin_user_management = None
         mock_server.sites.create.return_value = TSC.ServerResponseError(409, "already exists", "detail")
         create_site_command.CreateSiteCommand.run_command(mock_args)
         mock_session.assert_called()
@@ -278,11 +279,12 @@ class RunCommandsTest(unittest.TestCase):
     # site
     def test_create_site(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
-        mock_args.site_name = "site-name"
+        mock_args.new_site_name = "site-name"
         mock_args.url = "site-content-url"
         mock_args.admin_mode = None
         mock_args.user_quota = (None,)
         mock_args.storage_quota = None
+        mock_args.site_admin_user_management = None
         create_site_command.CreateSiteCommand.run_command(mock_args)
         mock_session.assert_called()
 
