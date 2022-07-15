@@ -191,10 +191,10 @@ class Session:
             self.auth_token = self.tableau_server._auth_token
             if not self.username:
                 self.username = self.tableau_server.users.get_by_id(self.user_id).name
-            self.logger.debug("Signed into {0}{1} as {2}".format(self.server_url, self.site_name, self.username))
             self.logger.info(_("common.output.succeeded"))
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(self.logger, _("publish.errors.unexpected_server_response"), e)
+        self.logger.debug("Signed into {0}{1} as {2}".format(self.server_url, self.site_name, self.username))
 
         return self.tableau_server
 

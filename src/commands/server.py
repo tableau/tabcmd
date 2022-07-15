@@ -73,17 +73,22 @@ class Server:
 
     # Get site by name or get currently logged in site
     @staticmethod
-    def get_site_for_command_or_throw(logger, server, args):
-        if args.site_name:
-            try:
-                site_item = Server.get_items_by_name(logger, server.sites, args.site_name)[0]
-            except Exception as e:
-                Errors.exit_with_error(logger, exception=e)
+    def get_site_for_command_or_throw(logger, server, site_name):
+        if site_name:
+            site_item = Server.get_site_by_name(logger, server, site_name)
         else:
             logger.debug("Use logged in site")
             site_item = server.sites.get_by_id(server.site_id)
             if not site_item:
                 raise ResourceWarning("Could not get site from server")
+        return site_item
+
+    @staticmethod
+    def get_site_by_name(logger, server, site_name):
+        try:
+            site_item = Server.get_items_by_name(logger, server.sites, site_name)[0]
+        except Exception as e:
+            Errors.exit_with_error(logger, exception=e)
         return site_item
 
     @staticmethod
