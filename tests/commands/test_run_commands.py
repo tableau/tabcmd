@@ -229,7 +229,6 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.site_admin_user_management = None
         mock_args.user_quota = None
         mock_args.storage_quota = None
-        mock_args.site_admin_user_management = None
         mock_server.sites.create.return_value = TSC.ServerResponseError(409, "already exists", "detail")
         create_site_command.CreateSiteCommand.run_command(mock_args)
         mock_session.assert_called()
@@ -284,7 +283,6 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.site_admin_user_management = None
         mock_args.user_quota = (None,)
         mock_args.storage_quota = None
-        mock_args.site_admin_user_management = None
         create_site_command.CreateSiteCommand.run_command(mock_args)
         mock_session.assert_called()
 
