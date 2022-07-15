@@ -18,7 +18,7 @@ class CreateSiteCommand(Server):
 
     @staticmethod
     def define_args(create_site_parser):
-        create_site_parser.add_argument("site_name", metavar="site-name", help=_("editsite.options.site-name"))
+        create_site_parser.add_argument("new_site_name", metavar="site-name", help=_("editsite.options.site-name"))
         set_common_site_args(create_site_parser)
 
     @staticmethod
@@ -27,21 +27,24 @@ class CreateSiteCommand(Server):
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
+        admin_mode = "ContentAndUsers"  # default: allow site admins to manage users
+        if not args.site_admin_user_management:
+            admin_mode = "ContentOnly"
         new_site = TSC.SiteItem(
-            name=args.site_name,
-            content_url=args.url,
-            admin_mode=args.admin_mode,
+            name=args.new_site_name,
+            content_url=args.url or args.new_site_name,
+            admin_mode=admin_mode,
             user_quota=args.user_quota,
             storage_quota=args.storage_quota,
         )
         try:
-            logger.info(_("createsite.status").format(args.site_name))
+            logger.info(_("createsite.status").format(args.new_site_name))
             server.sites.create(new_site)
             logger.info(_("common.output.succeeded"))
         except TSC.ServerResponseError as e:
             if Errors.is_resource_conflict(e):
                 if args.continue_if_exists:
-                    logger.info(_("createsite.errors.site_name_already_exists").format(args.site_name))
+                    logger.info(_("createsite.errors.site_name_already_exists").format(args.new_site_name))
                     return
                 else:
                     Errors.exit_with_error(
