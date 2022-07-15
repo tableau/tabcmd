@@ -226,7 +226,7 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.continue_if_exists = True
         mock_args.new_site_name = "duplicate"
         mock_args.url = "dplct"
-        mock_args.admin_mode = None
+        mock_args.site_admin_user_management = None
         mock_args.user_quota = None
         mock_args.storage_quota = None
         mock_args.site_admin_user_management = None
@@ -281,7 +281,7 @@ class RunCommandsTest(unittest.TestCase):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_args.new_site_name = "site-name"
         mock_args.url = "site-content-url"
-        mock_args.admin_mode = None
+        mock_args.site_admin_user_management = None
         mock_args.user_quota = (None,)
         mock_args.storage_quota = None
         mock_args.site_admin_user_management = None
@@ -291,7 +291,7 @@ class RunCommandsTest(unittest.TestCase):
     def test_delete_site(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.sites = getter
-        mock_args.site_name = "site-name"
+        mock_args.site_name_to_delete = "site-name"
         delete_site_command.DeleteSiteCommand.run_command(mock_args)
         mock_session.assert_called()
 

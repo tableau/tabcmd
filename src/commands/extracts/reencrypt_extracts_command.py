@@ -26,7 +26,7 @@ class ReencryptExtracts(Server):
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
-        site_item = Server.get_site_for_command_or_throw(logger, server, args)
+        site_item = Server.get_site_for_command_or_throw(logger, server, args.site_name)
         try:
             logger.info(_("reencryptextracts.status").format(site_item.name))
             job = server.sites.encrypt_extracts(site_item.id)
