@@ -65,7 +65,9 @@ class GetUrl(DatasourcesAndWorkbooks):
         elif url.find("/workbooks/") == 0:
             return "workbook"
         else:
-            Errors.exit_with_error(logger, message=_("export.errors.requires_workbook_view_param").format(GetUrl.name))
+            Errors.exit_with_error(
+                logger, message=_("export.errors.requires_workbook_view_param").format(__class__.__name__)
+            )
 
     @staticmethod
     def get_file_type_from_filename(logger, file_name, url):
@@ -77,7 +79,7 @@ class GetUrl(DatasourcesAndWorkbooks):
         if not type_of_file:
             Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name))
         else:
-            logger.debug(_("get.options.file") + ": {}".format(type_of_file))
+            logger.debug("filetype: {}".format(type_of_file))
             if type_of_file in ["pdf", "csv", "png", "twb", "twbx"]:
                 return type_of_file
 
@@ -152,11 +154,11 @@ class GetUrl(DatasourcesAndWorkbooks):
         try:
             view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view)
             logger.debug(_("content_type.view") + ": {}".format(view_item.name))
-            req_option_csv = TSC.CSVRequestOptions(maxage=1)
-            server.views.populate_csv(view_item, req_option_csv)
+            req_option_csv = TSC.CSVRequestOptions(maxage=1)  # same as png
+            server.views.populate_image(view_item, req_option_csv)
             filename = GetUrl.filename_from_args(args.filename, view_item.name, "png")
             with open(filename, "wb") as f:
-                f.write(view_item.png)
+                f.write(view_item.image)
             logger.info(_("export.success").format(view_item.name, filename))
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
@@ -171,7 +173,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             server.views.populate_csv(view_item, req_option_csv)
             file_name_with_path = GetUrl.filename_from_args(args.filename, view_item.name, "csv")
             with open(file_name_with_path, "wb") as f:
-                f.write(view_item.csv)
+                f.writelines(view_item.csv)
             logger.info(_("export.success").format(view_item.name, file_name_with_path))
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
@@ -181,10 +183,12 @@ class GetUrl(DatasourcesAndWorkbooks):
     @staticmethod
     def generate_twb(logger, server, args, file_extension):
         workbook_name = GetUrl.get_workbook_name(logger, args.url)
+
         try:
             target_workbook = GetUrl.get_wb_by_content_url(logger, server, workbook_name)
             logger.debug(_("content_type.workbook") + ": {}".format(workbook_name))
             file_name_with_path = GetUrl.filename_from_args(args.filename, workbook_name, file_extension)
+            logger.debug("Saving as {}".format(file_name_with_path))
             server.workbooks.download(target_workbook.id, filepath=None, no_extract=False)
             logger.info(_("export.success").format(target_workbook.name, file_name_with_path))
         except TSC.ServerResponseError as e:
