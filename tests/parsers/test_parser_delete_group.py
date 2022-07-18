@@ -1,6 +1,6 @@
 import unittest
 
-from src.commands.group.delete_group_command import DeleteGroupCommand
+from tabcmd.commands.group.delete_group_command import DeleteGroupCommand
 from .common_setup import *
 
 commandname = "deletegroup"

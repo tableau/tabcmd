@@ -1,8 +1,8 @@
 import argparse
 from typing import Any, List
 
-from src.execution.localize import _
-from src.execution.logger_config import log
+from tabcmd.execution.localize import _
+from tabcmd.execution.logger_config import log
 
 
 class HelpCommand:
@@ -25,7 +25,7 @@ class HelpCommand:
         logger.debug(_("tabcmd.launching"))
 
         # delayed import, TODO fix cyclic imports
-        from src.execution.map_of_commands import CommandsMap
+        from tabcmd.execution.map_of_commands import CommandsMap
 
         all_commands: List[Any] = CommandsMap.commands_hash_map
 

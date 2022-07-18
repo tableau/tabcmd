@@ -1,7 +1,7 @@
-from src.commands.auth.session import Session
-from src.commands.server import Server
-from src.execution.localize import _
-from src.execution.logger_config import log
+from tabcmd.commands.auth.session import Session
+from tabcmd.commands.server import Server
+from tabcmd.execution.localize import _
+from tabcmd.execution.logger_config import log
 
 
 class LogoutCommand(Server):

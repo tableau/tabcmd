@@ -1,6 +1,6 @@
 import unittest
 
-from src.commands.extracts.delete_extracts_command import DeleteExtracts
+from tabcmd.commands.extracts.delete_extracts_command import DeleteExtracts
 from .common_setup import *
 
 commandname = "deleteextracts"

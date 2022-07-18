@@ -1,7 +1,7 @@
 import sys
 
 try:
-    from src.tabcmd import main
+    from tabcmd.tabcmd import main
 except ImportError:
     print("Tabcmd needs to be run as a module, it cannot be run as a script")
     print("Try running python -m tabcmd")

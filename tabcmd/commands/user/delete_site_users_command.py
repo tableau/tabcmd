@@ -1,10 +1,10 @@
-from src.commands.auth.session import Session
-from src.commands.constants import Errors
-from src.commands.server import Server
-from src.commands.user.user_data import UserCommand
-from src.execution.global_options import *
-from src.execution.localize import _
-from src.execution.logger_config import log
+from tabcmd.commands.auth.session import Session
+from tabcmd.commands.constants import Errors
+from tabcmd.commands.server import Server
+from tabcmd.commands.user.user_data import UserCommand
+from tabcmd.execution.global_options import *
+from tabcmd.execution.localize import _
+from tabcmd.execution.logger_config import log
 
 
 class DeleteSiteUsersCommand(Server):

@@ -1,6 +1,6 @@
 import sys
 
-from src.execution.tabcmd_controller import TabcmdController
+from tabcmd.execution.tabcmd_controller import TabcmdController
 
 
 def main():

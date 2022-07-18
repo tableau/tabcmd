@@ -1,6 +1,6 @@
 import sys
 
-from src.execution.localize import _
+from tabcmd.execution.localize import _
 
 
 class Constants:

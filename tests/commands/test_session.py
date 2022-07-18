@@ -3,7 +3,7 @@ import unittest
 from unittest import mock
 from unittest.mock import patch, mock_open
 
-from src.commands.auth.session import Session
+from tabcmd.commands.auth.session import Session
 import os
 
 args_to_mock = Namespace(

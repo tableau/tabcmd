@@ -1,8 +1,8 @@
 import os
 import tableauserverclient as TSC
 
-from src.commands.constants import Errors
-from src.execution.localize import _
+from tabcmd.commands.constants import Errors
+from tabcmd.execution.localize import _
 
 
 class Server:

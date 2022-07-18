@@ -1,6 +1,6 @@
 import unittest
 
-from src.commands.extracts.encrypt_extracts_command import EncryptExtracts
+from tabcmd.commands.extracts.encrypt_extracts_command import EncryptExtracts
 from .common_setup import *
 
 commandname = "encryptextracts"

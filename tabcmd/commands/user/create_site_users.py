@@ -1,9 +1,9 @@
 import tableauserverclient as TSC
 
-from src.commands.auth.session import Session
-from src.execution.global_options import *
-from src.execution.localize import _
-from src.execution.logger_config import log
+from tabcmd.commands.auth.session import Session
+from tabcmd.execution.global_options import *
+from tabcmd.execution.localize import _
+from tabcmd.execution.logger_config import log
 from .user_data import UserCommand
 
 

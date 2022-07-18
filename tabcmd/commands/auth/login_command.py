@@ -1,6 +1,6 @@
-from src.commands.server import Server
-from src.execution.localize import _
-from src.execution.logger_config import log
+from tabcmd.commands.server import Server
+from tabcmd.execution.localize import _
+from tabcmd.execution.logger_config import log
 from .session import Session
 
 

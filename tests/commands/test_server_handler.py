@@ -1,6 +1,6 @@
 import unittest
 import logging
-from src.commands.constants import Errors
+from tabcmd.commands.constants import Errors
 
 
 # TODO add checks that the logger was called?
