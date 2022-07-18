@@ -185,7 +185,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             target_workbook = GetUrl.get_wb_by_content_url(logger, server, workbook_name)
             logger.debug(_("content_type.workbook") + ": {}".format(workbook_name))
             file_name_with_path = GetUrl.filename_from_args(args.filename, workbook_name, file_extension)
-            server.workbooks.download(target_workbook.id, filepath=file_name_with_path, no_extract=False)
+            server.workbooks.download(target_workbook.id, filepath=None, no_extract=False)
             logger.info(_("export.success").format(target_workbook.name, file_name_with_path))
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
