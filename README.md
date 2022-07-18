@@ -58,13 +58,13 @@ To run tabcmd from your local copy, from a console window in the same directory 
 > coverage run -m pytest && coverage report -m
 
 - autoformat your code with black (https://pypi.org/project/black/)
-> black --line-length 120 src tests [--check]
+> black --line-length 120 tabcmd tests [--check]
 
 - type check with mypy
-> mypy src tests
+> mypy tabcmd tests
 
 - packaging is done with pyinstaller. You can only build an executable for the platform you build on.
-> pyinstaller src\tabcmd.py --clean --noconfirm
+> pyinstaller tabcmd\tabcmd.py --clean --noconfirm
 
 produces dist/tabcmd.exe
 To run tabcmd during development, from a console window in the same directory as the file tabcmd.py:

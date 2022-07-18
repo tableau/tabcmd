@@ -10,9 +10,9 @@ setup(
     url="https://github.com/tableau/tabcmd",
     python_requires=">=3.7",
     packages=find_packages(),
-    package_data={"tabcmd": ["src.locales/**/*.mo"]},
+    package_data={"tabcmd": ["tabcmd.locales/**/*.mo"]},
     include_package_data=True,
-    entry_points={"console_scripts": ["tabcmd = src.tabcmd:main"]},
+    entry_points={"console_scripts": ["tabcmd = tabcmd.tabcmd:main"]},
     setup_requires=[
         # copy of pyproject.toml for back compat
         "build",
