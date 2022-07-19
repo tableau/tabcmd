@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(
-    ['src\\tabcmd.py'],
+    ['tabcmd\\tabcmd.py'],
     pathex=[],
     binaries=[],
     datas=[],

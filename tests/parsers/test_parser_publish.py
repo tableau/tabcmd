@@ -1,6 +1,6 @@
 import unittest
 
-from src.commands.datasources_and_workbooks.publish_command import PublishCommand
+from tabcmd.commands.datasources_and_workbooks.publish_command import PublishCommand
 from .common_setup import *
 
 commandname = "Publish"

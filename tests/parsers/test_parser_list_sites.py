@@ -1,6 +1,6 @@
 import unittest
 
-from src.commands.site.list_sites_command import ListSiteCommand
+from tabcmd.commands.site.list_sites_command import ListSiteCommand
 from .common_setup import *
 
 commandname = "listsites"

@@ -29,7 +29,7 @@ jobs:
       run: python bin/license-checker.py
 
     - name: Type-check
-      run: mypy src tests
+      run: mypy tabcmd tests
 
     - name: Check formatting with black
       run: black . --check

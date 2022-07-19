@@ -1,4 +1,4 @@
-from src.execution import parent_parser
+from tabcmd.execution import parent_parser
 from collections import namedtuple
 
 

@@ -1,6 +1,6 @@
 import unittest
 
-from src.commands.datasources_and_workbooks.runschedule_command import RunSchedule
+from tabcmd.commands.datasources_and_workbooks.runschedule_command import RunSchedule
 from .common_setup import *
 
 commandname = "runschedule"
