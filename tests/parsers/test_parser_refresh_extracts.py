@@ -1,6 +1,6 @@
 import unittest
 
-from src.commands.extracts.refresh_extracts_command import RefreshExtracts
+from tabcmd.commands.extracts.refresh_extracts_command import RefreshExtracts
 from .common_setup import *
 
 commandname = "refreshextracts"
