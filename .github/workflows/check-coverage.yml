@@ -26,12 +26,11 @@ jobs:
 
     - name: Install dependencies
       run: |
+        python --version
         python -m pip install --upgrade pip
-        pip install -e .[install]
         pip install -e .[build]
         pip install -e .[test]
-        python setup.py build
-        python res/versioning.py
+        doit version
         python setup.py build
 
     #  https://github.com/marketplace/actions/pytest-coverage-comment
@@ -42,8 +41,9 @@ jobs:
       uses: MishaKav/pytest-coverage-comment@main
       with:
         pytest-coverage-path: ./pytest-coverage.txt
-        # broken? Error: The head commit for this pull_request event is not ahead of the base commit.
-        #  Please submit an issue on this action's GitHub repo
+        # TODO: check if this has been fixed
+        # Error: The head commit for this pull_request event is not ahead of the base commit.
+        # Please submit an issue on this action's GitHub repo
         # report-only-changed-files: true
 
     # TODO update badge on readme:

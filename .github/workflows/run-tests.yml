@@ -1,11 +1,13 @@
 name: Python tests
 
 on:
-  push:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 11 * * * # Every day at 11AM UTC (7AM EST)
+  pull_request:
     branches:
-      !gh*  # exclude docs branches from test passes
-      # maybe we should do a link-check or something instead
-      # https://github.com/marketplace/actions/my-broken-link-checker
+      - development
+      - main
 
 jobs:
   build:

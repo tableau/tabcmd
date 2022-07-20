@@ -8,7 +8,6 @@ on:
         required: true
         type: boolean
   push:
-    branches: main
     tags: 'pypi'
 
 jobs:
