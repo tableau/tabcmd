@@ -43,6 +43,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
                 )
                 project_id = dest_project.id
             except Exception as exc:
+                logger.error(exc.__str__())
                 Errors.exit_with_error(logger, _("publish.errors.server_resource_not_found"), exc)
         else:
             project_id = ""
