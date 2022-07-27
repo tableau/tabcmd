@@ -10,24 +10,24 @@ class Server:
     @staticmethod
     def get_workbook_item(logger, server, workbook_name, container=None):
         try:
-            return Server.get_items_by_name(logger, server.workbooks, workbook_name, container=None)[0]
+            return Server.get_items_by_name(logger, server.workbooks, workbook_name, container)[0]
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
 
     @staticmethod
     def get_workbook_id(logger, server, workbook_name, container=None):
-        return Server.get_workbook_item(logger, server, workbook_name, container=None).id
+        return Server.get_workbook_item(logger, server, workbook_name, container).id
 
     @staticmethod
     def get_data_source_item(logger, server, data_source_name, container=None):
         try:
-            return Server.get_items_by_name(logger, server.datasources, data_source_name, container=None)[0]
+            return Server.get_items_by_name(logger, server.datasources, data_source_name, container)[0]
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
 
     @staticmethod
     def get_data_source_id(logger, server, data_source_name, container=None):
-        return Server.get_data_source_item(logger, server, data_source_name, container=None).id
+        return Server.get_data_source_item(logger, server, data_source_name, container).id
 
     @staticmethod
     def find_group(logger, server, group_name):
@@ -52,21 +52,27 @@ class Server:
         item_type = type(item_endpoint).__name__
         item_log_name = item_name
         if container:
-            item_log_name = container + "/" + item_log_name
+            item_log_name = container.name + "/" + item_log_name
         item_log_name = "[" + item_type + "] " + item_log_name
         logger.debug(_("export.status").format(item_log_name))
         req_option = TSC.RequestOptions()
         req_option.filter.add(TSC.Filter(TSC.RequestOptions.Field.Name, TSC.RequestOptions.Operator.Equals, item_name))
         if container:
             logger.debug("Searching in project {}".format(container))
-            req_option.filter.add(
-                TSC.Filter(TSC.RequestOptions.Field.ParentProjectId, TSC.RequestOptions.Operator.Equals, container)
-            )
-        all_items, pagination_item = item_endpoint.get(req_option)
+            if item_type == "Projects":
+                req_option.filter.add(
+                    TSC.Filter(TSC.RequestOptions.Field.ParentProjectId, TSC.RequestOptions.Operator.Equals, container)
+                )
+                all_items, pagination_item = item_endpoint.get(req_option)
+            else:
+                # filtering field not available: have to do local filter
+                item_endpoint.filter("parent_project={}".format(container.name))
+                to do here
         if all_items is None or all_items == []:
             raise ValueError("[" + item_type + "] " + _("errors.xmlapi.not_found"))
         if len(all_items) > 1:
-            logger.debug("{}+ items of this name were found. Returning first page.".format(len(all_items)))
+            logger.debug("{}+ items of this name were found.".format(len(all_items)))
+
             logger.debug(all_items[0].name + ", " + all_items[1].name + ", " + all_items[2].name)
 
         return all_items
