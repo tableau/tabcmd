@@ -48,34 +48,36 @@ class Server:
             Errors.exit_with_error(logger, exception=e)
 
     @staticmethod
-    def get_items_by_name(logger, item_endpoint, item_name, container=None):
+    def get_items_by_name(logger, item_endpoint, item_name: str, container: TSC.ProjectItem = None):
         item_type = type(item_endpoint).__name__
-        item_log_name = item_name
+        item_log_name: str = "[" + item_type + "] " + item_name
         if container:
-            item_log_name = container.name + "/" + item_log_name
-        item_log_name = "[" + item_type + "] " + item_log_name
+            item_log_name = str(container) + "/" + item_log_name
         logger.debug(_("export.status").format(item_log_name))
         req_option = TSC.RequestOptions()
         req_option.filter.add(TSC.Filter(TSC.RequestOptions.Field.Name, TSC.RequestOptions.Operator.Equals, item_name))
-        if container:
-            logger.debug("Searching in project {}".format(container))
-            if item_type == "Projects":
-                req_option.filter.add(
-                    TSC.Filter(TSC.RequestOptions.Field.ParentProjectId, TSC.RequestOptions.Operator.Equals, container)
-                )
-                all_items, pagination_item = item_endpoint.get(req_option)
-            else:
-                # filtering field not available: have to do local filter
-                item_endpoint.filter("parent_project={}".format(container.name))
-                to do here
+
+        all_items, pagination_item = item_endpoint.get(req_option)
         if all_items is None or all_items == []:
             raise ValueError("[" + item_type + "] " + _("errors.xmlapi.not_found"))
+        if len(all_items) == 1:
+            logger.debug("Exactly one result found")
+            result = all_items
         if len(all_items) > 1:
-            logger.debug("{}+ items of this name were found.".format(len(all_items)))
+            logger.debug(
+                "{}+ items of this name were found: {}".format(
+                    len(all_items), all_items[0].name + ", " + all_items[1].name + ", ..."
+                )
+            )
 
-            logger.debug(all_items[0].name + ", " + all_items[1].name + ", " + all_items[2].name)
+            if container:
+                container_id = container.id
+                logger.debug("Filtering to items in project {}".format(container.id))
+                result = list(filter(lambda item: item.project_id == container_id, all_items))
+            else:
+                result = all_items
 
-        return all_items
+        return result
 
     # Get site by name or get currently logged in site
     @staticmethod
@@ -112,15 +114,20 @@ class Server:
 
     @staticmethod
     def get_project_by_name_and_parent_path(logger, server, project_name, parent_path):
-        if not project_name:
-            project_name = "Default"
+        logger.debug(_("content_type.project") + ":{0}, {1}".format(parent_path, project_name))
         if not parent_path:
-            project = Server._get_project_by_name_and_parent(logger, server, project_name, None)
-        else:
-            logger.debug("Finding project within the given parent")
-            project_tree = Server._parse_project_path_to_list(parent_path)
-            parent = Server._get_parent_project_from_tree(logger, server, project_tree)
-            project = Server._get_project_by_name_and_parent(logger, server, project_name, parent)
+            if not project_name:
+                project_name = "Default"
+            project = Server.get_items_by_name(logger, server.projects, project_name, None)
+            return project
+
+        project_tree = Server._parse_project_path_to_list(parent_path)
+        if not project_name:
+            project = Server._get_parent_project_from_tree(logger, server, project_tree)
+            return project
+
+        parent = Server._get_parent_project_from_tree(logger, server, project_tree)
+        project = Server._get_project_by_name_and_parent(logger, server, project_name, parent)
         if not project:
             Errors.exit_with_error(logger, message=_("publish.errors.server_resource_not_found"))
         return project

@@ -38,10 +38,13 @@ class DeleteCommand(DatasourcesAndWorkbooks):
         elif args.datasource:
             content_type = "datasource"
 
-        container = DeleteCommand.get_project_by_name_and_parent_path(
-            logger, server, args.project_name, args.parent_project_path)
+        container: TSC.ProjectItem = DeleteCommand.get_project_by_name_and_parent_path(
+            logger, server, args.project_name, args.parent_project_path
+        )
         if container:
-            item_name = container.name + "/" + args.name
+            item_name = container + "/" + args.name
+        else:
+            Errors.exit_with_error(logger, "Containing project could not be found")
         logger.info(_("delete.status").format(content_type, item_name or args.name))
 
         error = None

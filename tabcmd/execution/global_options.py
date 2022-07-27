@@ -189,10 +189,8 @@ def set_workbook_arg(parser, action="store_true"):  # true if the user adds --wo
 
 def set_ds_xor_wb_args(parser, is_required=True):
     target_type_group = parser.add_mutually_exclusive_group(required=is_required)
-    target_type_group.add_argument("-d", "--datasource", action="store_true",
-                                   help="The name of the target datasource.")
-    target_type_group.add_argument("-w", "--workbook", action="store_true",
-                                   help="The name of the target workbook.")
+    target_type_group.add_argument("-d", "--datasource", action="store_true", help="The name of the target datasource.")
+    target_type_group.add_argument("-w", "--workbook", action="store_true", help="The name of the target workbook.")
     return parser
 
 
