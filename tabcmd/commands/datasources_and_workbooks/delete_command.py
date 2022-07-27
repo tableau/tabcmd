@@ -22,7 +22,7 @@ class DeleteCommand(DatasourcesAndWorkbooks):
     @staticmethod
     def define_args(delete_parser):
         delete_parser.add_argument("name", help=_("content_type.workbook") + "/" + _("content_type.datasource"))
-        set_ds_xor_wb_args(delete_parser, False)
+        set_ds_xor_wb_options(delete_parser)
         set_project_r_arg(delete_parser)
         set_parent_project_arg(delete_parser)
 
@@ -42,7 +42,7 @@ class DeleteCommand(DatasourcesAndWorkbooks):
             logger, server, args.project_name, args.parent_project_path
         )
         if container:
-            item_name = container + "/" + args.name
+            item_name = (args.parent_project_path or "") + "/" + (args.project_name or "default") + "/" + args.name
         else:
             Errors.exit_with_error(logger, "Containing project could not be found")
         logger.info(_("delete.status").format(content_type, item_name or args.name))

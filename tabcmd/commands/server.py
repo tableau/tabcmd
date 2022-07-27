@@ -1,4 +1,6 @@
 import os
+from typing import List, Optional
+
 import tableauserverclient as TSC
 
 from tabcmd.commands.constants import Errors
@@ -113,15 +115,15 @@ class Server:
             )
 
     @staticmethod
-    def get_project_by_name_and_parent_path(logger, server, project_name, parent_path):
+    def get_project_by_name_and_parent_path(logger, server, project_name: str, parent_path: str) -> TSC.ProjectItem:
         logger.debug(_("content_type.project") + ":{0}, {1}".format(parent_path, project_name))
         if not parent_path:
             if not project_name:
                 project_name = "Default"
-            project = Server.get_items_by_name(logger, server.projects, project_name, None)
+            project: TSC.ProjectItem = Server.get_items_by_name(logger, server.projects, project_name, None)
             return project
 
-        project_tree = Server._parse_project_path_to_list(parent_path)
+        project_tree: List[str] = Server._parse_project_path_to_list(parent_path)
         if not project_name:
             project = Server._get_parent_project_from_tree(logger, server, project_tree)
             return project
@@ -133,13 +135,15 @@ class Server:
         return project
 
     @staticmethod
-    def _parse_project_path_to_list(project_path):
-        if project_path is None:
+    def _parse_project_path_to_list(project_path: str):
+        if project_path is None or project_path == "":
             return []
+        if project_path.find("/") == -1:
+            return [project_path]
         return project_path.split("/")
 
     @staticmethod
-    def _get_project_by_name_and_parent(logger, server, project_name, parent):
+    def _get_project_by_name_and_parent(logger, server, project_name: str, parent: Optional[TSC.ProjectItem]):
         # logger.debug("get by name and parent: {0}, {1}".format(project_name, parent))
         # get by name to narrow down the list
         projects = Server.get_items_by_name(logger, server.projects, project_name)
@@ -151,7 +155,7 @@ class Server:
         return projects[0]
 
     @staticmethod
-    def _get_parent_project_from_tree(logger, server, hierarchy):
+    def _get_parent_project_from_tree(logger, server, hierarchy: List[str]):
         logger.debug("get parent project from tree: {0}".format(hierarchy))
         tree_height = len(hierarchy)
         if tree_height == 0:

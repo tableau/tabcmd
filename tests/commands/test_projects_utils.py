@@ -16,7 +16,7 @@ class ProjectsTest(unittest.TestCase):
     @staticmethod
     def test_parent_path_to_list():
         assert Server._parse_project_path_to_list(None) == []
-        assert Server._parse_project_path_to_list("") == [""]
+        assert Server._parse_project_path_to_list("") == []
         assert Server._parse_project_path_to_list("parent") == ["parent"]
         assert Server._parse_project_path_to_list("parent/child") == ["parent", "child"]
 
