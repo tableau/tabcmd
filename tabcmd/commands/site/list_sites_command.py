@@ -18,7 +18,7 @@ class ListSiteCommand(Server):
 
     @staticmethod
     def define_args(list_site_parser):
-        set_view_site_encryption(list_site_parser)
+        set_site_detail_option(list_site_parser)
 
     @staticmethod
     def run_command(args):

@@ -31,13 +31,9 @@ class PublishSamplesCommand(Server):
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
-        if args.parent_project_path is not None:
-            project_path = Server.get_project_by_name_and_parent_path(logger, server, None, args.parent_project_path)
-        else:
-            project_path = None
         try:
             project = PublishSamplesCommand.get_project_by_name_and_parent_path(
-                logger, server, args.project_name, project_path
+                logger, server, args.project_name, args.parent_project_path
             )
         except Exception as e:
             Errors.exit_with_error(logger, _("tabcmd.report.error.publish_samples.expected_project"), exception=e)

@@ -172,21 +172,19 @@ def set_project_arg(parser):
     return parser
 
 
-def set_datasource_arg(parser, action="store_true"):
-    parser.add_argument("-d", "--datasource", help="The name of the target data source.", action=action)
-    return parser
-
-
 def set_site_url_arg(parser):
     parser.add_argument("--url", help="The canonical name for the resource as it appears in the URL")
     return parser
 
 
-def set_workbook_arg(parser, action="store_true"):  # true if the user adds --workbook
-    parser.add_argument("-w", "--workbook", help="The name of the target workbook.", action=action)
+def set_ds_xor_wb_options(parser):
+    target_type_group = parser.add_mutually_exclusive_group(required=False)
+    target_type_group.add_argument("-d", "--datasource", action="store_true", help="The name of the target datasource.")
+    target_type_group.add_argument("-w", "--workbook", action="store_true", help="The name of the target workbook.")
     return parser
 
 
+# pass arguments for either --datasource or --workbook
 def set_ds_xor_wb_args(parser):
     target_type_group = parser.add_mutually_exclusive_group(required=True)
     target_type_group.add_argument("-d", "--datasource", help="The name of the target datasource.")
@@ -212,7 +210,7 @@ def set_site_status_arg(parser):
 # create-site/update-site - lots of these options are never used elsewhere
 # mismatched arguments: createsite says --url, editsite says --site-id
 # just let both commands use either of them
-def set_site_id_options(parser):
+def set_site_id_args(parser):
     site_id = parser.add_mutually_exclusive_group()
     site_id.add_argument("--site-id", help="Used in the URL to uniquely identify the site.")
     site_id.add_argument(
@@ -226,24 +224,11 @@ def set_site_id_options(parser):
 # these options are all shared in create-site and edit-site
 def set_common_site_args(parser):
 
-    parser = set_site_id_options(parser)
+    parser = set_site_id_args(parser)
 
     parser.add_argument("--user-quota", type=int, help="Maximum number of users that can be added to the site.")
 
-    site_help = "Allows or denies site administrators the ability to add users to or remove users from the site."
-    site_group = parser.add_mutually_exclusive_group()
-    site_group.add_argument(
-        "--site-mode",
-        dest="site_admin_user_management",
-        action="store_true",
-        help=site_help,
-    )
-    site_group.add_argument(
-        "--no-site-mode",
-        dest="site_admin_user_management",
-        action="store_false",
-        help=site_help,
-    )
+    set_site_mode_option(parser)
 
     parser.add_argument(
         "--storage-quota",
@@ -265,8 +250,25 @@ def set_common_site_args(parser):
     return parser
 
 
+def set_site_mode_option(parser):
+    site_help = "Allows or denies site administrators the ability to add users to or remove users from the site."
+    site_group = parser.add_mutually_exclusive_group()
+    site_group.add_argument(
+        "--site-mode",
+        dest="site_admin_user_management",
+        action="store_true",
+        help=site_help,
+    )
+    site_group.add_argument(
+        "--no-site-mode",
+        dest="site_admin_user_management",
+        action="store_false",
+        help=site_help,
+    )
+
+
 # this option is only used by listsites
-def set_view_site_encryption(parser):
+def set_site_detail_option(parser):
     parser.add_argument(
         "--get-extract-encryption-mode",
         action="store_true",
@@ -282,18 +284,7 @@ def set_filename_arg(parser, description=_("get.options.file")):
 def set_publish_args(parser):
     parser.add_argument("-n", "--name", help="Name to publish the new datasource or workbook by.")
 
-    append_group = parser.add_mutually_exclusive_group()
-    append_group.add_argument(
-        "-o",
-        "--overwrite",
-        action="store_true",
-        help="Overwrites the workbook, data source, or data extract if it already exists on the server.",
-    )
-    append_group.add_argument(
-        "--append",
-        action="store_true",
-        help="Append the extract file to the existing data source.",
-    )
+    set_overwrite_option(parser)
     parser.add_argument(
         "--db-username",
         help="Use this option to publish a database user name with the workbook, data source, or data extract.",
@@ -327,6 +318,21 @@ def set_publish_args(parser):
     parser.add_argument("--save-oauth", action="store_true", help="Save embedded OAuth credentials in the datasource")
     parser.add_argument("--thumbnail-username", help="Not yet implemented")
     parser.add_argument("--thumbnail-group", help="Not yet implemented")  # not implemented in the REST API
+
+
+def set_overwrite_option(parser):
+    append_group = parser.add_mutually_exclusive_group()
+    append_group.add_argument(
+        "-o",
+        "--overwrite",
+        action="store_true",
+        help="Overwrites the workbook, data source, or data extract if it already exists on the server.",
+    )
+    append_group.add_argument(
+        "--append",
+        action="store_true",
+        help="Append the extract file to the existing data source.",
+    )
 
 
 # refresh-extracts

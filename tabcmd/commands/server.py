@@ -1,4 +1,6 @@
 import os
+from typing import List, Optional
+
 import tableauserverclient as TSC
 
 from tabcmd.commands.constants import Errors
@@ -10,24 +12,24 @@ class Server:
     @staticmethod
     def get_workbook_item(logger, server, workbook_name, container=None):
         try:
-            return Server.get_items_by_name(logger, server.workbooks, workbook_name, container=None)[0]
+            return Server.get_items_by_name(logger, server.workbooks, workbook_name, container)[0]
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
 
     @staticmethod
     def get_workbook_id(logger, server, workbook_name, container=None):
-        return Server.get_workbook_item(logger, server, workbook_name, container=None).id
+        return Server.get_workbook_item(logger, server, workbook_name, container).id
 
     @staticmethod
     def get_data_source_item(logger, server, data_source_name, container=None):
         try:
-            return Server.get_items_by_name(logger, server.datasources, data_source_name, container=None)[0]
+            return Server.get_items_by_name(logger, server.datasources, data_source_name, container)[0]
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
 
     @staticmethod
     def get_data_source_id(logger, server, data_source_name, container=None):
-        return Server.get_data_source_item(logger, server, data_source_name, container=None).id
+        return Server.get_data_source_item(logger, server, data_source_name, container).id
 
     @staticmethod
     def find_group(logger, server, group_name):
@@ -48,28 +50,36 @@ class Server:
             Errors.exit_with_error(logger, exception=e)
 
     @staticmethod
-    def get_items_by_name(logger, item_endpoint, item_name, container=None):
+    def get_items_by_name(logger, item_endpoint, item_name: str, container: TSC.ProjectItem = None):
         item_type = type(item_endpoint).__name__
-        item_log_name = item_name
+        item_log_name: str = "[" + item_type + "] " + item_name
         if container:
-            item_log_name = container + "/" + item_log_name
-        item_log_name = "[" + item_type + "] " + item_log_name
+            item_log_name = str(container) + "/" + item_log_name
         logger.debug(_("export.status").format(item_log_name))
         req_option = TSC.RequestOptions()
         req_option.filter.add(TSC.Filter(TSC.RequestOptions.Field.Name, TSC.RequestOptions.Operator.Equals, item_name))
-        if container:
-            logger.debug("Searching in project {}".format(container))
-            req_option.filter.add(
-                TSC.Filter(TSC.RequestOptions.Field.ParentProjectId, TSC.RequestOptions.Operator.Equals, container)
-            )
+
         all_items, pagination_item = item_endpoint.get(req_option)
         if all_items is None or all_items == []:
             raise ValueError("[" + item_type + "] " + _("errors.xmlapi.not_found"))
+        if len(all_items) == 1:
+            logger.debug("Exactly one result found")
+            result = all_items
         if len(all_items) > 1:
-            logger.debug("{}+ items of this name were found. Returning first page.".format(len(all_items)))
-            logger.debug(all_items[0].name + ", " + all_items[1].name + ", " + all_items[2].name)
+            logger.debug(
+                "{}+ items of this name were found: {}".format(
+                    len(all_items), all_items[0].name + ", " + all_items[1].name + ", ..."
+                )
+            )
 
-        return all_items
+            if container:
+                container_id = container.id
+                logger.debug("Filtering to items in project {}".format(container.id))
+                result = list(filter(lambda item: item.project_id == container_id, all_items))
+            else:
+                result = all_items
+
+        return result
 
     # Get site by name or get currently logged in site
     @staticmethod
@@ -105,28 +115,35 @@ class Server:
             )
 
     @staticmethod
-    def get_project_by_name_and_parent_path(logger, server, project_name, parent_path):
-        if not project_name:
-            project_name = "Default"
+    def get_project_by_name_and_parent_path(logger, server, project_name: str, parent_path: str) -> TSC.ProjectItem:
+        logger.debug(_("content_type.project") + ":{0}, {1}".format(parent_path, project_name))
         if not parent_path:
-            project = Server._get_project_by_name_and_parent(logger, server, project_name, None)
-        else:
-            logger.debug("Finding project within the given parent")
-            project_tree = Server._parse_project_path_to_list(parent_path)
-            parent = Server._get_parent_project_from_tree(logger, server, project_tree)
-            project = Server._get_project_by_name_and_parent(logger, server, project_name, parent)
+            if not project_name:
+                project_name = "Default"
+            project: TSC.ProjectItem = Server.get_items_by_name(logger, server.projects, project_name, None)
+            return project
+
+        project_tree: List[str] = Server._parse_project_path_to_list(parent_path)
+        if not project_name:
+            project = Server._get_parent_project_from_tree(logger, server, project_tree)
+            return project
+
+        parent = Server._get_parent_project_from_tree(logger, server, project_tree)
+        project = Server._get_project_by_name_and_parent(logger, server, project_name, parent)
         if not project:
             Errors.exit_with_error(logger, message=_("publish.errors.server_resource_not_found"))
         return project
 
     @staticmethod
-    def _parse_project_path_to_list(project_path):
-        if project_path is None:
+    def _parse_project_path_to_list(project_path: str):
+        if project_path is None or project_path == "":
             return []
+        if project_path.find("/") == -1:
+            return [project_path]
         return project_path.split("/")
 
     @staticmethod
-    def _get_project_by_name_and_parent(logger, server, project_name, parent):
+    def _get_project_by_name_and_parent(logger, server, project_name: str, parent: Optional[TSC.ProjectItem]):
         # logger.debug("get by name and parent: {0}, {1}".format(project_name, parent))
         # get by name to narrow down the list
         projects = Server.get_items_by_name(logger, server.projects, project_name)
@@ -138,7 +155,7 @@ class Server:
         return projects[0]
 
     @staticmethod
-    def _get_parent_project_from_tree(logger, server, hierarchy):
+    def _get_parent_project_from_tree(logger, server, hierarchy: List[str]):
         logger.debug("get parent project from tree: {0}".format(hierarchy))
         tree_height = len(hierarchy)
         if tree_height == 0:

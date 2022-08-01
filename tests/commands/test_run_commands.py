@@ -89,8 +89,11 @@ class RunCommandsTest(unittest.TestCase):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.workbooks = getter
         mock_server.datasources = getter
+        mock_server.projects = getter
         mock_args.workbook = True
         mock_args.datasource = False
+        mock_args.project_name = None
+        mock_args.parent_project_path = None
         mock_args.name = "name for on server"
         delete_command.DeleteCommand.run_command(mock_args)
 
