@@ -1,16 +1,16 @@
 name: Python tests
 
 on:
-  workflow_dispatch
-  inputs:
-    server:
-      required: true
-    site:
-      required: true
-    patname:
-      required: true
-    pat:
-      required: true
+  workflow_dispatch:
+    inputs:
+      server:
+        required: true
+      site:
+        required: true
+      patname:
+        required: true
+      pat:
+        required: true
 
 jobs:
   build:
