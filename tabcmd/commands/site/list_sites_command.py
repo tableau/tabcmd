@@ -30,10 +30,9 @@ class ListSiteCommand(Server):
             sites, pagination = server.sites.get()
             logger.info(_("listsites.status").format(session.username))
             for site in sites:
-                print("NAME:", site.name)
-                print("SITEID:", site.content_url)
+                print("NAME:".rjust(10), site.name)
+                print("SITEID:".rjust(10), site.content_url)
                 if args.get_extract_encryption_mode:
                     print("EXTRACTENCRYPTION:", site.extract_encryption_mode)
-                print("")
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, e)

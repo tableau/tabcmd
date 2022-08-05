@@ -114,6 +114,11 @@ class OnlineCommandTest(unittest.TestCase):
         arguments = [command, "-w", wb_name]
         _test_command(arguments)
 
+    def _list(self, item_type: str):
+        command = "list"
+        arguments = [command, item_type]
+        _test_command(arguments)
+
     # actual tests
     TWBX_FILE_WITH_EXTRACT = "extract-data-access.twbx"
     TWBX_WITH_EXTRACT_NAME = "WorkbookWithExtract"
@@ -206,6 +211,10 @@ class OnlineCommandTest(unittest.TestCase):
         parent_path = "{0}/{1}".format(project_name, project_name)
         self._create_project(project_name, parent_path)
         time.sleep(indexing_sleep_time)
+
+    @pytest.mark.order(8)
+    def test_list_projects(self):
+        self._list("projects")
 
     @pytest.mark.order(9)
     def test_delete_projects(self):
