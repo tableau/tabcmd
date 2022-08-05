@@ -18,11 +18,7 @@ class ListCommand(Server):
 
     @staticmethod
     def define_args(list_parser):
-        list_parser.add_argument(
-             "content",
-             choices=["projects", "workbooks", "datasources"],
-             help="View content"
-        )
+        list_parser.add_argument("content", choices=["projects", "workbooks", "datasources"], help="View content")
 
     @staticmethod
     def run_command(args):
@@ -39,8 +35,6 @@ class ListCommand(Server):
                 items = server.workbooks.all()
             elif content_type == "datasources":
                 items = server.datasources.all()
-            else:
-                items = Server.get_sites(server)
 
             logger.info("===== Listing {0} content for user {1}...".format(content_type, session.username))
             for item in items:
