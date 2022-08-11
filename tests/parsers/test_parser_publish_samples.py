@@ -1,12 +1,12 @@
 import unittest
 
-from src.commands.project.publish_samples_command import PublishSamplesCommand
+from tabcmd.commands.project.publish_samples_command import PublishSamplesCommand
 from .common_setup import *
 
 commandname = "publishsamples"
 
 
-class PublishParserParserTest(unittest.TestCase):
+class PublishSamplesParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.parser_under_test = initialize_test_pieces(commandname, PublishSamplesCommand)

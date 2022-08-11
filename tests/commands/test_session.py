@@ -3,7 +3,7 @@ import unittest
 from unittest import mock
 from unittest.mock import patch, mock_open
 
-from src.commands.auth.session import Session
+from tabcmd.commands.auth.session import Session
 import os
 
 args_to_mock = Namespace(
@@ -13,7 +13,7 @@ args_to_mock = Namespace(
     password_file=None,
     server=None,
     token_name=None,
-    token=None,
+    token_value=None,
     logging_level=None,
     no_certcheck=None,
     no_prompt=False,
@@ -117,9 +117,9 @@ class BuildCredentialsTests(unittest.TestCase):
     # These two already have a username saved and pass in a password as argument
     def test__create_new_token_credential_succeeds_new_token(self, mock_pass):
         test_args = Namespace(**vars(args_to_mock))
-        test_args.token = "gibberish"
+        test_args.token_value = "gibberish"
         active_session = Session()
-        assert active_session.token is None, active_session.token
+        assert active_session.token_value is None, active_session.token_value
         active_session.token_name = "readable"
         auth = active_session._create_new_token_credential()
         assert auth is not None
@@ -136,7 +136,7 @@ class BuildCredentialsTests(unittest.TestCase):
     # this one has a token saved
     def test__create_new_token_credential_succeeds_from_self(self, mock_pass):
         active_session = Session()
-        active_session.token = "gibberish2"
+        active_session.token_value = "gibberish2"
         active_session.token_name = "readable2"
         auth = active_session._create_new_token_credential()
         assert mock_pass.is_not_called()
@@ -157,7 +157,7 @@ class BuildCredentialsTests(unittest.TestCase):
 
     def test__create_new_token_credential_succeeds_from_args(self, mock_pass):
         test_args = Namespace(**vars(args_to_mock))
-        test_args.token = "gibberish"
+        test_args.token_value = "gibberish"
         test_args.token_name = "readable"
         active_session = Session()
         active_session._update_session_data(test_args)
@@ -220,13 +220,13 @@ class CreateSessionTests(unittest.TestCase):
         assert mock_path.exists("anything") is False
         test_args = Namespace(**vars(args_to_mock))
         test_args.token_name = "tn"
-        test_args.token = "foo"
+        test_args.token_value = "foo"
         new_session = Session()
         auth = new_session.create_session(test_args)
         assert auth is not None, auth
         assert auth.auth_token is not None, auth.auth_token
         assert auth.auth_token.name is not None, auth.auth_token
-        assert new_session.token == "foo", new_session.token
+        assert new_session.token_value == "foo", new_session.token_value
         assert new_session.token_name == "tn", new_session
 
     @mock.patch("tableauserverclient.Server")
@@ -302,7 +302,7 @@ class CreateSessionTests(unittest.TestCase):
         _set_mocks_for_json_file_exists(mock_path, True)
         _set_mocks_for_json_file_saved_username(mock_json_load, "auth_token", None)
         test_args = Namespace(**vars(args_to_mock))
-        test_args.token = "tn"
+        test_args.token_value = "tn"
         test_args.token_name = "tnnnn"
         test_args.no_prompt = False
         new_session = Session()

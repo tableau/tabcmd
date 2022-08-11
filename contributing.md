@@ -30,11 +30,11 @@ _(note that running mypy and black is required for code being submitted to the r
 > pytest
 - run tests against a live server
 > python -m tabcmd login {your server info here}
-> bin/e2e.sh
+> pytest -q tests\e2e\online_tests.py -r pfE
 - autoformat your code with black (https://pypi.org/project/black/)
-> bin/black.sh
+> black .
 - check types 
-> mypy src tests
+> mypy tabcmd tests
 - do test coverage calculation (https://coverage.readthedocs.io/en/6.3.2)
 > bin/coverage.sh
 

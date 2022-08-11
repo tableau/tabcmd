@@ -1,6 +1,6 @@
 import unittest
 
-from src.commands.site.create_site_command import CreateSiteCommand
+from tabcmd.commands.site.create_site_command import CreateSiteCommand
 from .common_setup import *
 
 commandname = "createsite"
@@ -14,7 +14,7 @@ class CreateSiteParserTest(unittest.TestCase):
     def test_create_site_parser_just_a_name(self):
         mock_args = [commandname, "site-name"]
         args = self.parser_under_test.parse_args(mock_args)
-        assert args.site_name == "site-name", args
+        assert args.new_site_name == "site-name", args
 
     def test_create_site_parser_missing_required_name(self):
         mock_args = [commandname]
@@ -37,6 +37,6 @@ class CreateSiteParserTest(unittest.TestCase):
         ]  # what else?
         args = self.parser_under_test.parse_args(mock_args)
         print(args)
-        assert args.site_name == "site-name", args
+        assert args.new_site_name == "site-name", args
         assert args.user_quota == 12, args
         assert args.storage_quota == 12, args

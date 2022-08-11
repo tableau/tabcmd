@@ -3,15 +3,15 @@ import unittest
 from unittest.mock import *
 import tableauserverclient as TSC
 
-from src.commands.auth import login_command, logout_command
-from src.commands.datasources_and_workbooks import (
+from tabcmd.commands.auth import login_command, logout_command
+from tabcmd.commands.datasources_and_workbooks import (
     delete_command,
     export_command,
     get_url_command,
     publish_command,
     runschedule_command,
 )
-from src.commands.extracts import (
+from tabcmd.commands.extracts import (
     create_extracts_command,
     delete_extracts_command,
     decrypt_extracts_command,
@@ -19,16 +19,16 @@ from src.commands.extracts import (
     reencrypt_extracts_command,
     refresh_extracts_command,
 )
-from src.commands.group import create_group_command, delete_group_command
-from src.commands.help import help_command
-from src.commands.project import create_project_command, delete_project_command, publish_samples_command
-from src.commands.site import (
+from tabcmd.commands.group import create_group_command, delete_group_command
+from tabcmd.commands.help import help_command
+from tabcmd.commands.project import create_project_command, delete_project_command, publish_samples_command
+from tabcmd.commands.site import (
     create_site_command,
     delete_site_command,
     edit_site_command,
     list_sites_command,
 )
-from src.commands.user import (
+from tabcmd.commands.user import (
     add_users_command,
     create_site_users,
     create_users_command,
@@ -63,7 +63,7 @@ getter.refresh = MagicMock("refresh", return_value=fake_job)
 
 
 @patch("tableauserverclient.Server")
-@patch("src.commands.auth.session.Session.create_session")
+@patch("tabcmd.commands.auth.session.Session.create_session")
 class RunCommandsTest(unittest.TestCase):
     @staticmethod
     def _set_up_session(mock_session, mock_server):
@@ -79,7 +79,7 @@ class RunCommandsTest(unittest.TestCase):
         login_command.LoginCommand.run_command(mock_args)
         mock_session.assert_called_with(mock_args)
 
-    @patch("src.commands.auth.session.Session.end_session_and_clear_data")
+    @patch("tabcmd.commands.auth.session.Session.end_session_and_clear_data")
     def test_logout(self, mock_end_session, mock_create_session, mock_server):
         logout_command.LogoutCommand.run_command(mock_args)
         mock_create_session.assert_not_called()
@@ -89,8 +89,11 @@ class RunCommandsTest(unittest.TestCase):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.workbooks = getter
         mock_server.datasources = getter
+        mock_server.projects = getter
         mock_args.workbook = True
         mock_args.datasource = False
+        mock_args.project_name = None
+        mock_args.parent_project_path = None
         mock_args.name = "name for on server"
         delete_command.DeleteCommand.run_command(mock_args)
 
@@ -162,7 +165,7 @@ class RunCommandsTest(unittest.TestCase):
     def test_delete_extract(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.datasources = getter
-        mock_args.datasource = True
+        mock_args.datasource = "datasource-name"
         delete_extracts_command.DeleteExtracts.run_command(mock_args)
         mock_session.assert_called()
 
@@ -224,9 +227,9 @@ class RunCommandsTest(unittest.TestCase):
     def test_create_site_already_exists(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_args.continue_if_exists = True
-        mock_args.site_name = "duplicate"
+        mock_args.new_site_name = "duplicate"
         mock_args.url = "dplct"
-        mock_args.admin_mode = None
+        mock_args.site_admin_user_management = None
         mock_args.user_quota = None
         mock_args.storage_quota = None
         mock_server.sites.create.return_value = TSC.ServerResponseError(409, "already exists", "detail")
@@ -243,6 +246,7 @@ class RunCommandsTest(unittest.TestCase):
     # help
     def test_help(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
+        mock_args.help_option = "boo"
         help_command.HelpCommand.run_command(mock_args)
         mock_session.assert_not_called()
 
@@ -277,9 +281,9 @@ class RunCommandsTest(unittest.TestCase):
     # site
     def test_create_site(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
-        mock_args.site_name = "site-name"
+        mock_args.new_site_name = "site-name"
         mock_args.url = "site-content-url"
-        mock_args.admin_mode = None
+        mock_args.site_admin_user_management = None
         mock_args.user_quota = (None,)
         mock_args.storage_quota = None
         create_site_command.CreateSiteCommand.run_command(mock_args)
@@ -288,7 +292,7 @@ class RunCommandsTest(unittest.TestCase):
     def test_delete_site(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.sites = getter
-        mock_args.site_name = "site-name"
+        mock_args.site_name_to_delete = "site-name"
         delete_site_command.DeleteSiteCommand.run_command(mock_args)
         mock_session.assert_called()
 

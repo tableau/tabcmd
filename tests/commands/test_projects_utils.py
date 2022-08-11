@@ -1,8 +1,8 @@
 import unittest
 from unittest import mock
 
-from src.commands.server import Server
-from src.execution.logger_config import log
+from tabcmd.commands.server import Server
+from tabcmd.execution.logger_config import log
 
 fake_item = mock.MagicMock()
 fake_item.name = "fake-name"
@@ -16,7 +16,7 @@ class ProjectsTest(unittest.TestCase):
     @staticmethod
     def test_parent_path_to_list():
         assert Server._parse_project_path_to_list(None) == []
-        assert Server._parse_project_path_to_list("") == [""]
+        assert Server._parse_project_path_to_list("") == []
         assert Server._parse_project_path_to_list("parent") == ["parent"]
         assert Server._parse_project_path_to_list("parent/child") == ["parent", "child"]
 

@@ -16,7 +16,9 @@ __pycache__/
 *.pytest_cache
 *.pyc
 *.pkl
-.coverage
+venv/
+tabcmd-dev/
+workon/
 
 # code coverage outputs
 .coverage
@@ -39,3 +41,9 @@ html
 # doit
 .doit.*
 
+# venv
+site-packages
+
+# local
+tabcmd-dev
+workon

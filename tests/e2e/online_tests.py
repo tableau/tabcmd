@@ -18,6 +18,14 @@ workbook_name = "namebasic"
 # you can either run setup with a stored credentials file, or simply log in
 # before running the suite so a session is active
 
+# alpodev
+parent_location = "WAM"
+project_name = "Developer Platform"
+
+server_admin = False
+site_admin = True
+project_admin = True
+
 
 def _test_command(test_args: list[str]):
     # this will raise an exception if it gets a non-zero return code
@@ -43,18 +51,18 @@ class OnlineCommandTest(unittest.TestCase):
     def _create_project(self, project_name, parent_path=None):
         command = "createproject"
         arguments = [command, "--name", project_name]
-        if parent_path:
+        if parent_path or parent_location:
             arguments.append("--parent-project-path")
-            arguments.append(parent_path)
+            arguments.append(parent_path or parent_location)
         print(arguments)
         _test_command(arguments)
 
     def _delete_project(self, project_name, parent_path=None):
         command = "deleteproject"
         arguments = [command, project_name]
-        if parent_path:
+        if parent_path or parent_location:
             arguments.append("--parent-project-path")
-            arguments.append(parent_path)
+            arguments.append(parent_path or parent_location)
         _test_command(arguments)
 
     def _publish_samples(self, project_name):
@@ -106,6 +114,11 @@ class OnlineCommandTest(unittest.TestCase):
         arguments = [command, "-w", wb_name]
         _test_command(arguments)
 
+    def _list(self, item_type: str):
+        command = "list"
+        arguments = [command, item_type]
+        _test_command(arguments)
+
     # actual tests
     TWBX_FILE_WITH_EXTRACT = "extract-data-access.twbx"
     TWBX_WITH_EXTRACT_NAME = "WorkbookWithExtract"
@@ -135,6 +148,8 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(2)
     def test_create_site_users(self):
+        if not server_admin and not site_admin:
+            pytest.skip("Must be server or site administrator to create site users")
         command = "createsiteusers"
         users = os.path.join("tests", "assets", "detailed_users.csv")
         arguments = [command, users, "--role", "Publisher"]
@@ -142,6 +157,8 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(3)
     def test_creategroup(self):
+        if not server_admin and not site_admin:
+            pytest.skip("Must be server or site administrator to create groups")
         groupname = group_name
         command = "creategroup"
         arguments = [command, groupname]
@@ -149,6 +166,9 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(4)
     def test_add_users_to_group(self):
+        if not server_admin and not site_admin:
+            pytest.skip("Must be server or site administrator to add to groups")
+
         groupname = group_name
         command = "addusers"
         filename = os.path.join("tests", "assets", "usernames.csv")
@@ -157,6 +177,9 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(5)
     def test_remove_users_to_group(self):
+        if not server_admin and not site_admin:
+            pytest.skip("Must be server or site administrator to remove from groups")
+
         groupname = group_name
         command = "removeusers"
         filename = os.path.join("tests", "assets", "usernames.csv")
@@ -165,22 +188,19 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(6)
     def test_deletegroup(self):
+        if not server_admin and not site_admin:
+            pytest.skip("Must be server or site administrator to delete groups")
+
         groupname = group_name
         command = "deletegroup"
         arguments = [command, groupname]
         _test_command(arguments)
 
-    @pytest.mark.order(7)
-    def test_publish_samples(self):
-        project_name = "sample-proj"
-        self._create_project(project_name)
-        time.sleep(indexing_sleep_time)
-
-        self._publish_samples(project_name)
-        self._delete_project(project_name)
-
     @pytest.mark.order(8)
     def test_create_projects(self):
+
+        if not project_admin:
+            pytest.skip("Must be project administrator to create projects")
         # project 1
         self._create_project(project_name)
         time.sleep(indexing_sleep_time)
@@ -192,14 +212,20 @@ class OnlineCommandTest(unittest.TestCase):
         self._create_project(project_name, parent_path)
         time.sleep(indexing_sleep_time)
 
+    @pytest.mark.order(8)
+    def test_list_projects(self):
+        self._list("projects")
+
     @pytest.mark.order(9)
     def test_delete_projects(self):
+        if not project_admin:
+            pytest.skip("Must be project administrator to create projects")
         self._delete_project("project_name_2", project_name)  # project 2
         self._delete_project(project_name)
 
     @pytest.mark.order(9)
     def test_publish_samples(self):
-        self._publish_samples("Default")
+        self._publish_samples(project_name)
 
     @pytest.mark.order(10)
     def test_publish(self):
@@ -256,6 +282,7 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(14)
     def test_refresh_extract(self):
+        # must be a datasource owned by the test user
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         self._refresh_extract(name_on_server)
         self._delete_wb(name_on_server)
@@ -292,11 +319,22 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(16)
     def test_delete_site_users(self):
+        if not server_admin and not site_admin:
+            pytest.skip("Must be server or site administrator to delete site users")
+
         command = "deletesiteusers"
         users = os.path.join("tests", "assets", "usernames.csv")
         _test_command([command, users])
 
     @pytest.mark.order(20)
     def test_list_sites(self):
+        if not server_admin:
+            pytest.skip("Must be server administrator to list sites")
+
         command = "listsites"
-        _test_command([command])
+        try:
+            _test_command([command])
+        except Exception as E:
+            print("yay")
+            result = True
+        assert result
