@@ -49,14 +49,14 @@ class GetUrl(DatasourcesAndWorkbooks):
                 GetUrl.generate_twb(logger, server, args, file_type, url)
             else:
                 Errors.exit_with_error(
-                    logger, message=_("publish.errors.mutually_exclusive_option").format("twb", "twbx") #TODO
+                    logger, message=_("publish.errors.mutually_exclusive_option").format("twb", "twbx")
                 )
         if content_type == "datasource":
             if file_type == "tdsx" or file_type == "tds":
                 GetUrl.generate_tds(logger, server, args, file_type)
             else:
                 Errors.exit_with_error(
-                    logger, message=_("publish.errors.mutually_exclusive_option").format("tds", "tdsx") #TODO
+                    logger, message=_("publish.errors.mutually_exclusive_option").format("tds", "tdsx")
                 )
         else:  # content type = view
             view_url = GetUrl.get_view_url(url, logger)
@@ -67,7 +67,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             elif file_type == "csv":
                 GetUrl.generate_csv(logger, server, args, view_url)
             else:
-                Errors.exit_with_error(logger, message=_("tabcmd.get.extension.not_found")) #TODO
+                Errors.exit_with_error(logger, message=_("tabcmd.get.extension.not_found"))
 
     @staticmethod
     def evaluate_content_type(logger, url):
@@ -98,13 +98,13 @@ class GetUrl(DatasourcesAndWorkbooks):
         type_of_file = GetUrl.get_file_extension(file_name)
 
         if not type_of_file:
-            Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name)) #TODO
+            Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name))
         else:
             logger.debug("filetype: {}".format(type_of_file))
             if type_of_file in ["pdf", "csv", "png", "twb", "twbx", "tdsx"]:
                 return type_of_file
 
-        Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name)) #TODO
+        Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name))
 
     @staticmethod
     def get_file_extension(filename):
