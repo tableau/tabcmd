@@ -122,3 +122,16 @@ class DatasourcesAndWorkbooks(Server):
         with open(filename, "wb") as f:
             f.write(output)
             logger.info(_("export.success").format("", filename))
+        
+    @staticmethod
+    def get_ds_by_content_url(logger, server, datasource_content_url) -> TSC.DatasourceItem:
+        logger.debug(_("export.status").format(datasource_content_url))
+        try:
+            req_option = TSC.RequestOptions()
+            req_option.filter.add(TSC.Filter("contentUrl", TSC.RequestOptions.Operator.Equals, datasource_content_url))
+            matching_datasources, paging = server.datasources.get(req_option)
+        except TSC.ServerResponseError as e:
+            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response").format(""))
+        if len(matching_datasources) < 1:
+            Errors.exit_with_error(logger, message=_("dataalerts.failure.error.datasourceNotFound"))
+        return matching_datasources[0]
