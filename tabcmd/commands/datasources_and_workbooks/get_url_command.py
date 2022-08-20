@@ -92,13 +92,13 @@ class GetUrl(DatasourcesAndWorkbooks):
         type_of_file = GetUrl.get_file_extension(file_name)
 
         if not type_of_file:
-            Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name)) #TODO
+            Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name))
         else:
             logger.debug("filetype: {}".format(type_of_file))
             if type_of_file in ["pdf", "csv", "png", "twb", "twbx", "tdsx"]:
                 return type_of_file
 
-        Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name)) #TODO
+        Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name))
 
     @staticmethod
     def get_file_extension(filename):
