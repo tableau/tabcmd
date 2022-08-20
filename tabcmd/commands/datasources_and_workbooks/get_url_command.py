@@ -92,13 +92,13 @@ class GetUrl(DatasourcesAndWorkbooks):
         type_of_file = GetUrl.get_file_extension(file_name)
 
         if not type_of_file:
-            Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name))
+            Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name)) #TODO
         else:
             logger.debug("filetype: {}".format(type_of_file))
             if type_of_file in ["pdf", "csv", "png", "twb", "twbx", "tdsx"]:
                 return type_of_file
 
-        Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name))
+        Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name)) #TODO
 
     @staticmethod
     def get_file_extension(filename):
@@ -121,6 +121,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             filename = filename.split(".")[0]
         return filename
 
+    # TODO rename to get_resource_name because it works for ds as well
     @staticmethod
     def get_resource_name(url, logger):  # workbooks/wb-name" -> "wb-name", datasource/ds-name -> ds-name
         name_parts = url.split("/")
