@@ -65,7 +65,7 @@ class ParentParser:
         parser.add_argument(
             "-l",
             "--logging-level",
-            choices=["DEBUG", "INFO", "ERROR"],
+            choices=["TRACE", "DEBUG", "INFO", "ERROR"],
             type=str.upper,  # coerce input to uppercase to act case insensitive
             default="info",
             help="Use the specified logging level. The default level is INFO.",

@@ -1,3 +1,4 @@
+import inspect
 import sys
 
 from tabcmd.execution.localize import _
@@ -29,9 +30,31 @@ class Errors:
         if hasattr(error, "code"):
             return error.code == Constants.login_error
 
+    # https://gist.github.com/FredLoney/5454553
+    @staticmethod
+    def log_stack(logger):
+        try:
+            """The log header message formatter."""
+            HEADER_FMT = "Printing Call Stack at %s::%s"
+            """The log stack message formatter."""
+            STACK_FMT = "%s, line %d in function %s."
+            stack = inspect.stack()
+            here = stack[0]
+            file, line, func = here[1:4]
+            start = 0
+            n_lines = 5
+            logger.trace(HEADER_FMT % (file, func))
+            for frame in stack[start+1:n_lines]:
+                file, line, func = frame[1:4]
+                logger.trace(STACK_FMT % (file, line, func))
+        except BaseException as e:
+            logger.info("Error printing stack trace:", e)
+
+
     @staticmethod
     def exit_with_error(logger, message=None, exception=None):
         try:
+            Errors.log_stack(logger)
             if message and not exception:
                 logger.error(message)
             if exception:

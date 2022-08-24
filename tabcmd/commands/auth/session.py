@@ -4,7 +4,6 @@ import os
 
 import requests
 import tableauserverclient as TSC
-import tableauserverclient.server.endpoint.exceptions
 from urllib3.exceptions import InsecureRequestWarning
 
 from tabcmd.commands.constants import Errors
@@ -45,7 +44,7 @@ class Session:
         self.timeout = None
 
         self.logging_level = "info"
-        self.logger = log(__class__.__name__, self.logging_level)
+        self.logger = None
         self._read_from_json()
         self.tableau_server = None  # this one is an object that doesn't get persisted in the file
 
@@ -62,6 +61,7 @@ class Session:
             self.site_name = ""
         self.server_url = args.server or self.server_url or "http://localhost"
         self.logging_level = args.logging_level or self.logging_level
+        self.logger = log(__class__.__name__, self.logging_level)
         self.password_file = args.password_file
         self.token_name = args.token_name or self.token_name
         self.token_value = args.token_value or self.token_value
