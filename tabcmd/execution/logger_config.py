@@ -29,4 +29,6 @@ def configure_log(name: str, logging_level_input: str):
 
 def log(file_name, logging_level):
     logger = configure_log(file_name, logging_level)
+    if not hasattr(logger, "trace"):
+        logger.trace = logger.debug
     return logger

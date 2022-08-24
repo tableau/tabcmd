@@ -40,23 +40,6 @@ class ExportCommand(DatasourcesAndWorkbooks):
 
     # TODO: ARGUMENT --COMPLETE
 
-    @staticmethod
-    def get_content_url_for_workbook(url):
-        # check the size of list
-        separated_list = url.split("/")
-        reversed_list = separated_list[::-1]
-        return reversed_list[1]
-
-    @staticmethod
-    def get_content_url_for_view(url):
-        # check the size of list
-        separated_list = url.split("/")
-        if len(separated_list) > 2:
-            print("error")
-        workbook_name = separated_list[0]
-        view_name = separated_list[1]
-        return DatasourcesAndWorkbooks.get_view_url_from_names(workbook_name, view_name)
-
     """
     Command to Export a view_name or workbook from Tableau Server and save
     it to a file. This command can also export just the data used for a view_name
@@ -73,24 +56,25 @@ class ExportCommand(DatasourcesAndWorkbooks):
         if not view_content_url and not wb_content_url:
             Errors.exit_with_error(logger, _("export.errors.requires_workbook_view_param").format(ExportCommand))
 
-        try:
+        print(args.pagelayout, args.pagesize, args.filename, args.width, args.height, args.filter)
 
+        try:
             if args.fullpdf:  # it's a workbook
                 workbook_item = ExportCommand.get_wb_by_content_url(logger, server, wb_content_url)
-                output = ExportCommand.download_wb_pdf(server, workbook_item)
+                output = ExportCommand.download_wb_pdf(server, workbook_item, args.url, logger)
                 default_filename = "{}.pdf".format(workbook_item.name)
 
             elif args.pdf or args.png or args.csv:  # it's a view
                 view_item = ExportCommand.get_view_by_content_url(logger, server, view_content_url)
 
                 if args.pdf:
-                    output = ExportCommand.download_view_pdf(server, view_item)
+                    output = ExportCommand.download_view_pdf(server, view_item, args.url, logger)
                     default_filename = "{}.pdf".format(view_item.name)
                 elif args.csv:
-                    output = ExportCommand.download_csv(server, view_item)
+                    output = ExportCommand.download_csv(server, view_item, args.url, logger)
                     default_filename = "{}.csv".format(view_item.name)
                 elif args.png:
-                    output = ExportCommand.download_png(server, view_item)
+                    output = ExportCommand.download_png(server, view_item, args.url, logger)
                     default_filename = "{}.png".format(view_item.name)
 
         except Exception as e:
@@ -98,40 +82,77 @@ class ExportCommand(DatasourcesAndWorkbooks):
 
         try:
             save_name = args.filename or default_filename
-            ExportCommand.save_to_file(logger, output, save_name)
+            if args.csv:
+                ExportCommand.save_to_data_file(logger, output, save_name)
+            else:
+                ExportCommand.save_to_file(logger, output, save_name)
 
         except Exception as e:
             Errors.exit_with_error(logger, "Error saving to file", e)
 
     @staticmethod
-    def download_wb_pdf(server, workbook_item):
+    def extract_query_params(request_options: TSC.PDFRequestOptions, url, logger=None):
+        try:
+            # todo make logging better
+            logger = logger or log(ExportCommand.__class__.__name__, "DEBUG")
+            logger.debug(url)
+
+            if "?" in url:
+                query = url.split("?")[1]
+            else:
+                logger.trace("No params?")
+                return None
+            params = query.split("&")
+            logger.trace(params)
+            for value in params:
+                filter = value.split("=")
+                request_options.vf(filter[0], filter[1])
+        except BaseException as e:
+            logger.error("Error building filter params", e)
+            ExportCommand.log_stack(logger)  # type: ignore
+        return request_options
+
+    @staticmethod
+    def download_wb_pdf(server, workbook_item, url, logger):
+        logger.trace(url)
         pdf = TSC.PDFRequestOptions(maxage=1)
+        pdf = ExportCommand.extract_query_params(pdf, url)
         server.workbooks.populate_pdf(workbook_item, pdf)
         return workbook_item.pdf
 
     @staticmethod
-    def download_view_pdf(server, view_item):
+    def download_view_pdf(server, view_item, url, logger):
+        logger.trace(url)
         pdf = TSC.PDFRequestOptions(maxage=1)
+        pdf = ExportCommand.extract_query_params(pdf, url)
+        logger.trace(pdf.view_filters)
         server.views.populate_pdf(view_item, pdf)
         return view_item.pdf
 
     @staticmethod
-    def download_csv(server, view_item):
+    def download_csv(server, view_item, url, logger):
+        logger.trace(url)
         csv = TSC.CSVRequestOptions(maxage=1)
+        csv = ExportCommand.extract_query_params(csv, url)
         server.views.populate_csv(view_item, csv)
         return view_item.csv
 
     @staticmethod
-    def download_png(server, view_item):
+    def download_png(server, view_item, url, logger):
+        logger.trace(url)
         req_option_image = TSC.ImageRequestOptions(maxage=1)
+        req_option_image = ExportCommand.extract_query_params(req_option_image, url)
         server.views.populate_image(view_item, req_option_image)
         return view_item.png
 
     @staticmethod
     def parse_export_url_to_workbook_and_view(logger, url):
+        filters = ""
         logger.info(_("export.status").format(url))
         if " " in url:
             Errors.exit_with_error(logger, _("export.errors.white_space_workbook_view"))
+        if "?" in url:
+            url = url.split("?")[0]
         # input should be workbook_name/view_name
         if not url.find("/"):
             return None, None
@@ -143,8 +164,15 @@ class ExportCommand(DatasourcesAndWorkbooks):
         return view, workbook
 
     @staticmethod
+    def save_to_data_file(logger, output, filename):
+        logger.info(_("httputils.found_attachment").format(filename))
+        with open(filename, "wb") as f:
+            f.writelines(output)
+            logger.info(_("export.success").format("", filename))
+
+    @staticmethod
     def save_to_file(logger, output, filename):
         logger.info(_("httputils.found_attachment").format(filename))
         with open(filename, "wb") as f:
             f.write(output)
-            logger.info(_("export.success").format(filename, ""))
+            logger.info(_("export.success").format("", filename))
