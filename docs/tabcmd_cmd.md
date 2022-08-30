@@ -118,7 +118,7 @@ where:
 * `--token-name` is the token name for user.
 * `--token-value` is the token specified for `--token-name`
 
-<div class="alert alert-info"><strong>Note</strong>: If you log in to Tableau Online with a PAT, the URL you specify must include the pod that your site is deployed to (for example:  <code>https://prod-useast-b.online.tableau.com</code>). You can't log in to Tableau Online using a PAT with specifying the pod.</div>
+<div class="alert alert-info"><strong>Note</strong>: If you log in to Tableau Online with a PAT, the URL you specify must include the pod that your site is deployed to (for example:  <code>https://prod-useast-b.online.tableau.com</code>). You can't log in to Tableau Online using a PAT unless you  specify the pod.</div>
 
 
 ## logout
