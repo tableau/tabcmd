@@ -258,6 +258,7 @@ class OnlineCommandTest(unittest.TestCase):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         self._get_view(wb_name_on_server, sheet_name + ".png")
+
     @pytest.mark.order(11)
     def test_wb_delete(self):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
