@@ -313,7 +313,7 @@ class OnlineCommandTest(unittest.TestCase):
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         self._publish_wb(file, name_on_server)
         command = "export"
-        friendly_name = name_on_server + "/" + OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
+        friendly_name = name_on_server + "/" + OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET + "?param1=3"
         arguments = [command, friendly_name, "--pdf", "-f", "exported_view.pdf"]
         _test_command(arguments)
 
