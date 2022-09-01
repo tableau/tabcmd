@@ -56,7 +56,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
         if not view_content_url and not wb_content_url:
             Errors.exit_with_error(logger, _("export.errors.requires_workbook_view_param").format(ExportCommand))
 
-        print(args.pagelayout, args.pagesize, args.filename, args.width, args.height, args.filter)
+        logger.debug(args.pagelayout, args.pagesize, args.filename, args.width, args.height, args.filter)
 
         try:
             if args.fullpdf:  # it's a workbook
@@ -91,7 +91,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
             Errors.exit_with_error(logger, "Error saving to file", e)
 
     @staticmethod
-    def extract_query_params(request_options: TSC.PDFRequestOptions, url, logger=None):
+    def extract_filter_values_from_url_params(request_options: TSC.PDFRequestOptions, url, logger=None):
         try:
             # todo make logging better
             logger = logger or log(ExportCommand.__class__.__name__, "DEBUG")
@@ -116,7 +116,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
     def download_wb_pdf(server, workbook_item, url, logger):
         logger.trace(url)
         pdf = TSC.PDFRequestOptions(maxage=1)
-        pdf = ExportCommand.extract_query_params(pdf, url)
+        pdf = ExportCommand.extract_filter_values_from_url_params(pdf, url)
         server.workbooks.populate_pdf(workbook_item, pdf)
         return workbook_item.pdf
 
@@ -124,7 +124,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
     def download_view_pdf(server, view_item, url, logger):
         logger.trace(url)
         pdf = TSC.PDFRequestOptions(maxage=1)
-        pdf = ExportCommand.extract_query_params(pdf, url)
+        ExportCommand.extract_filter_values_from_url_params(pdf, url)
         logger.trace(pdf.view_filters)
         server.views.populate_pdf(view_item, pdf)
         return view_item.pdf
@@ -133,7 +133,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
     def download_csv(server, view_item, url, logger):
         logger.trace(url)
         csv = TSC.CSVRequestOptions(maxage=1)
-        csv = ExportCommand.extract_query_params(csv, url)
+        ExportCommand.extract_filter_values_from_url_params(csv, url)
         server.views.populate_csv(view_item, csv)
         return view_item.csv
 
@@ -141,19 +141,19 @@ class ExportCommand(DatasourcesAndWorkbooks):
     def download_png(server, view_item, url, logger):
         logger.trace(url)
         req_option_image = TSC.ImageRequestOptions(maxage=1)
-        req_option_image = ExportCommand.extract_query_params(req_option_image, url)
+        ExportCommand.extract_filter_values_from_url_params(req_option_image, url)
         server.views.populate_image(view_item, req_option_image)
         return view_item.png
 
     @staticmethod
     def parse_export_url_to_workbook_and_view(logger, url):
-        filters = ""
         logger.info(_("export.status").format(url))
         if " " in url:
             Errors.exit_with_error(logger, _("export.errors.white_space_workbook_view"))
         if "?" in url:
             url = url.split("?")[0]
-        # input should be workbook_name/view_name
+        # input should be workbook_name/view_name or /workbook_name/view_name
+        url = url.lstrip("/")  # strip opening / if present
         if not url.find("/"):
             return None, None
         name_parts = url.split("/")

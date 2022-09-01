@@ -81,6 +81,12 @@ class ExportTests(unittest.TestCase):
         assert view == "wb-name/sheets/view-name"
         assert wb == "wb-name"
 
+    def test_parse_export_url_to_workbook_and_view(self):
+        wb_url = "/wb-name/view-name"
+        view, wb = ExportCommand.parse_export_url_to_workbook_and_view(mock_logger, wb_url)
+        assert view == "wb-name/sheets/view-name"
+        assert wb == "wb-name"
+
     def test_parse_export_url_to_workbook_and_view_bad_url(self):
         wb_url = "wb-name/view-name/kitty"
         view, wb = ExportCommand.parse_export_url_to_workbook_and_view(mock_logger, wb_url)
@@ -90,8 +96,11 @@ class ExportTests(unittest.TestCase):
     def test_extract_query_params(self):
         url = "wb-name/view-name?param1=value1"
         options = TSC.PDFRequestOptions()
-        updated_options = ExportCommand.extract_query_params(options, url)
-        assert updated_options is not None
+        assert options.view_filters is not None
+        assert len(options.view_filters) is 0
+        ExportCommand.extract_filter_values_from_url_params(options, url)
+        assert len(options.view_filters) == 1
+        assert options.view_filters[0] == ('param1', 'value1')
 
     @mock.patch("tableauserverclient.Server")
     def test_download_csv(self, mock_server):
