@@ -81,7 +81,7 @@ class ExportTests(unittest.TestCase):
         assert view == "wb-name/sheets/view-name"
         assert wb == "wb-name"
 
-    def test_parse_export_url_to_workbook_and_view(self):
+    def test_parse_export_url_to_workbook_and_view_with_start_slash(self):
         wb_url = "/wb-name/view-name"
         view, wb = ExportCommand.parse_export_url_to_workbook_and_view(mock_logger, wb_url)
         assert view == "wb-name/sheets/view-name"
@@ -100,7 +100,7 @@ class ExportTests(unittest.TestCase):
         assert len(options.view_filters) is 0
         ExportCommand.extract_filter_values_from_url_params(options, url)
         assert len(options.view_filters) == 1
-        assert options.view_filters[0] == ('param1', 'value1')
+        assert options.view_filters[0] == ("param1", "value1")
 
     @mock.patch("tableauserverclient.Server")
     def test_download_csv(self, mock_server):
