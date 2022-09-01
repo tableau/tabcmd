@@ -38,8 +38,6 @@ class ExportCommand(DatasourcesAndWorkbooks):
             help="View filter to apply to the view",
         )
 
-    # TODO: ARGUMENT --COMPLETE
-
     """
     Command to Export a view_name or workbook from Tableau Server and save
     it to a file. This command can also export just the data used for a view_name
@@ -91,7 +89,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
             Errors.exit_with_error(logger, "Error saving to file", e)
 
     @staticmethod
-    def extract_filter_values_from_url_params(request_options: TSC.PDFRequestOptions, url, logger=None):
+    def extract_filter_values_from_url_params(request_options: TSC.PDFRequestOptions, url, logger=None) -> None:
         try:
             # todo make logging better
             logger = logger or log(ExportCommand.__class__.__name__, "DEBUG")
@@ -100,23 +98,22 @@ class ExportCommand(DatasourcesAndWorkbooks):
             if "?" in url:
                 query = url.split("?")[1]
             else:
-                logger.trace("No params?")
-                return None
+                return
+
             params = query.split("&")
             logger.trace(params)
             for value in params:
-                filter = value.split("=")
-                request_options.vf(filter[0], filter[1])
+                data_filter = value.split("=")
+                request_options.vf(data_filter[0], data_filter[1])
         except BaseException as e:
             logger.error("Error building filter params", e)
             ExportCommand.log_stack(logger)  # type: ignore
-        return request_options
 
     @staticmethod
     def download_wb_pdf(server, workbook_item, url, logger):
         logger.trace(url)
         pdf = TSC.PDFRequestOptions(maxage=1)
-        pdf = ExportCommand.extract_filter_values_from_url_params(pdf, url)
+        ExportCommand.extract_filter_values_from_url_params(pdf, url)
         server.workbooks.populate_pdf(workbook_item, pdf)
         return workbook_item.pdf
 
