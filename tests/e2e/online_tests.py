@@ -51,10 +51,9 @@ class OnlineCommandTest(unittest.TestCase):
     def _create_project(self, project_name, parent_path=None):
         command = "createproject"
         arguments = [command, "--name", project_name]
-        if parent_path or parent_location:
+        if parent_path:
             arguments.append("--parent-project-path")
-            arguments.append(parent_path or parent_location)
-        print(arguments)
+            arguments.append(parent_path)
         _test_command(arguments)
 
     def _delete_project(self, project_name, parent_path=None):
@@ -136,7 +135,7 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(1)
     def test_version(self):
-        command = ""
+        command = "-v"
         arguments = [command]
         _test_command(arguments)
 
@@ -147,7 +146,7 @@ class OnlineCommandTest(unittest.TestCase):
         _test_command(arguments)
 
     @pytest.mark.order(2)
-    def test_create_site_users(self):
+    def test_users_create_site_users(self):
         if not server_admin and not site_admin:
             pytest.skip("Must be server or site administrator to create site users")
         command = "createsiteusers"
@@ -156,7 +155,7 @@ class OnlineCommandTest(unittest.TestCase):
         _test_command(arguments)
 
     @pytest.mark.order(3)
-    def test_creategroup(self):
+    def test_group_creategroup(self):
         if not server_admin and not site_admin:
             pytest.skip("Must be server or site administrator to create groups")
         groupname = group_name
@@ -165,7 +164,7 @@ class OnlineCommandTest(unittest.TestCase):
         _test_command(arguments)
 
     @pytest.mark.order(4)
-    def test_add_users_to_group(self):
+    def test_users_add_to_group(self):
         if not server_admin and not site_admin:
             pytest.skip("Must be server or site administrator to add to groups")
 
@@ -176,7 +175,7 @@ class OnlineCommandTest(unittest.TestCase):
         _test_command(arguments)
 
     @pytest.mark.order(5)
-    def test_remove_users_to_group(self):
+    def test_users_remove_from_group(self):
         if not server_admin and not site_admin:
             pytest.skip("Must be server or site administrator to remove from groups")
 
@@ -187,7 +186,7 @@ class OnlineCommandTest(unittest.TestCase):
         _test_command(arguments)
 
     @pytest.mark.order(6)
-    def test_deletegroup(self):
+    def test_group_deletegroup(self):
         if not server_admin and not site_admin:
             pytest.skip("Must be server or site administrator to delete groups")
 
@@ -198,9 +197,12 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(8)
     def test_create_projects(self):
-
         if not project_admin:
             pytest.skip("Must be project administrator to create projects")
+
+        # project 1
+        self._create_project(parent_location)
+        time.sleep(indexing_sleep_time)
         # project 1
         self._create_project(project_name)
         time.sleep(indexing_sleep_time)
@@ -216,58 +218,53 @@ class OnlineCommandTest(unittest.TestCase):
     def test_list_projects(self):
         self._list("projects")
 
-    @pytest.mark.order(9)
+    """
+        @pytest.mark.order(9)
+        def test_publish_samples(self):
+            self._publish_samples(project_name)
+    """
+
+    @pytest.mark.order(10)
     def test_delete_projects(self):
         if not project_admin:
             pytest.skip("Must be project administrator to create projects")
         self._delete_project("project_name_2", project_name)  # project 2
         self._delete_project(project_name)
 
-    @pytest.mark.order(9)
-    def test_publish_samples(self):
-        self._publish_samples(project_name)
-
     @pytest.mark.order(10)
-    def test_publish(self):
+    def test_wb_publish(self):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         self._publish_wb(file, name_on_server)
 
     @pytest.mark.order(10)
-    def test__get_wb(self):
-        wb_name_on_server = OnlineCommandTest.TWBX_WITHOUT_EXTRACT_NAME
-        self._get_workbook(wb_name_on_server + ".twbx")
+    def test_wb_get(self):
+        self._get_workbook(OnlineCommandTest.TWBX_WITH_EXTRACT_NAME + ".twbx")
 
     @pytest.mark.order(10)
-    def test__get_wb(self):
+    def test_view_get_pdf(self):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
-        self._get_workbook(wb_name_on_server + ".twbx")
-
-    @pytest.mark.order(10)
-    def test__get_view(self):
-        wb_name_on_server = OnlineCommandTest.TWBX_WITHOUT_EXTRACT_NAME
-        sheet_name = OnlineCommandTest.TWBX_WITHOUT_EXTRACT_SHEET
+        sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         self._get_view(wb_name_on_server, sheet_name + ".pdf")
 
     @pytest.mark.order(10)
-    def test__get_view_csv(self):
+    def test_view_get_csv(self):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         self._get_view(wb_name_on_server, sheet_name + ".csv")
 
     @pytest.mark.order(10)
-    def test__get_view_png(self):
+    def test_view_get_png(self):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         self._get_view(wb_name_on_server, sheet_name + ".png")
-
     @pytest.mark.order(11)
-    def test__delete_wb(self):
+    def test_wb_delete(self):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         self._delete_wb(name_on_server)
 
     @pytest.mark.order(12)
-    def test_delete_extract(self):
+    def test_extract_delete(self):
         # fails because the extract has a bad data connection :/
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
@@ -275,30 +272,24 @@ class OnlineCommandTest(unittest.TestCase):
         self._delete_extract(name_on_server)
 
     @pytest.mark.order(13)
-    def test_create_extract(self):
+    def test_extract_create(self):
         # Fails because it 'already has an extract' :/
         name_on_server = OnlineCommandTest.TWBX_WITHOUT_EXTRACT_NAME
         self._create_extract(name_on_server)
 
     @pytest.mark.order(14)
-    def test_refresh_extract(self):
+    def test_extract_refresh(self):
         # must be a datasource owned by the test user
+        name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
+        file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
+        self._publish_wb(file, name_on_server)
+
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         self._refresh_extract(name_on_server)
         self._delete_wb(name_on_server)
 
-    def test_version(self):
-        _test_command(["-v"])
-
-    def test_help(self):
-        _test_command(["help"])
-
-    # this just gets in the way :(
-    # def test_logout(self):
-    #   _test_command(["logout"])
-
     @pytest.mark.order(15)
-    def test_export_wb(self):
+    def test_export_wb_pdf(self):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         self._publish_wb(file, name_on_server)
@@ -308,7 +299,7 @@ class OnlineCommandTest(unittest.TestCase):
         _test_command(arguments)
 
     @pytest.mark.order(15)
-    def test_export_view(self):
+    def test_export_view_pdf(self):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         self._publish_wb(file, name_on_server)
@@ -318,7 +309,7 @@ class OnlineCommandTest(unittest.TestCase):
         _test_command(arguments)
 
     @pytest.mark.order(16)
-    def test_delete_site_users(self):
+    def test_users_delete_site_users(self):
         if not server_admin and not site_admin:
             pytest.skip("Must be server or site administrator to delete site users")
 

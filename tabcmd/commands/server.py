@@ -39,18 +39,12 @@ class Server:
             Errors.exit_with_error(logger, exception=e)
 
     @staticmethod
-    def find_group_id(logger, server, group_name):
-        return Server.find_group(logger, server, group_name).id
+    def find_user(logger, server, username):
+        return Server.get_items_by_name(logger, server.users, username)[0]
 
     @staticmethod
-    def find_user_id(logger, server, username):
-        try:
-            return Server.get_items_by_name(logger, server.users, username)[0].id
-        except Exception as e:
-            Errors.exit_with_error(logger, exception=e)
-
-    @staticmethod
-    def get_items_by_name(logger, item_endpoint, item_name: str, container: TSC.ProjectItem = None):
+    def get_items_by_name(logger, item_endpoint, item_name: str, container: TSC.ProjectItem = None) -> List:
+        # TODO: typing should reflect that this returns TSC.TableauItem and item_endpoint is of type TSC.QuerysetEndpoint[same]
         item_type = type(item_endpoint).__name__
         item_log_name: str = "[" + item_type + "] " + item_name
         if container:
@@ -58,10 +52,13 @@ class Server:
         logger.debug(_("export.status").format(item_log_name))
         req_option = TSC.RequestOptions()
         req_option.filter.add(TSC.Filter(TSC.RequestOptions.Field.Name, TSC.RequestOptions.Operator.Equals, item_name))
-
         all_items, pagination_item = item_endpoint.get(req_option)
         if all_items is None or all_items == []:
-            raise ValueError("[" + item_type + "] " + _("errors.xmlapi.not_found"))
+            raise TSC.ServerResponseError(
+                code=404,
+                summary=_("errors.xmlapi.not_found"),
+                detail=_("errors.xmlapi.not_found") + ": " + item_log_name,
+            )
         if len(all_items) == 1:
             logger.debug("Exactly one result found")
             result = all_items
@@ -120,7 +117,7 @@ class Server:
         if not parent_path:
             if not project_name:
                 project_name = "Default"
-            project: TSC.ProjectItem = Server.get_items_by_name(logger, server.projects, project_name, None)
+            project: TSC.ProjectItem = Server.get_items_by_name(logger, server.projects, project_name, None)[0]
             return project
 
         project_tree: List[str] = Server._parse_project_path_to_list(parent_path)
@@ -129,7 +126,9 @@ class Server:
             return project
 
         parent = Server._get_parent_project_from_tree(logger, server, project_tree)
+        logger.debug(parent)
         project = Server._get_project_by_name_and_parent(logger, server, project_name, parent)
+        logger.debug(project)
         if not project:
             Errors.exit_with_error(logger, message=_("publish.errors.server_resource_not_found"))
         return project

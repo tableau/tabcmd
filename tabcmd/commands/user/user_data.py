@@ -229,17 +229,25 @@ class UserCommand(Server):
         logger.debug(_("importcsvsummary.line.processed").format(n_users_listed))
 
         error_list = []
+        line_no = 0
         user_obj_list: List[TSC.UserItem] = UserCommand.get_users_from_file(args.users)
         logger.debug(_("tabcmd.result.success.parsed_users").format(len(user_obj_list)))
         for user_obj in user_obj_list:
-            username: str = user_obj.name or "unknown user"
+            line_no += 1
+            if not user_obj.name:
+                number_of_errors += 1
+                error_list.append(_("importcsvsummary.error.line").format(line_no, "No username", ""))
+                continue
+
             try:
-                user_id: str = UserCommand.find_user_id(logger, server, username)
+                username: str = user_obj.name
+                user_id: str = UserCommand.find_user(logger, server, username).id
                 logger.debug("{} user {} ({})".format(action_name, username, user_id))
             except TSC.ServerResponseError as e:
-                Errors.check_common_error_codes_and_explain(logger, e)
                 number_of_errors += 1
-                error_list.append(e)
+                error_list.append(
+                    _("importcsvsummary.error.line").format(line_no, username, "{}: {}".format(e.code, e.detail))
+                )
                 logger.debug(_("tabcmd.result.failure.user").format(username))
                 continue
 
@@ -248,11 +256,20 @@ class UserCommand(Server):
                 n_users_handled += 1
                 logger.info(_("tabcmd.result.success.user_actions").format(action_name, username, group))
             except TSC.ServerResponseError as e:
-                Errors.check_common_error_codes_and_explain(logger, e)
                 number_of_errors += 1
-                error_list.append(e)
+                error_list.append(
+                    _("importcsvsummary.error.line").format(line_no, username, "{}: {}".format(e.code, e.detail))
+                )
 
         logger.info(_("session.monitorjob.percent_complete").format(100))
         logger.info(_("importcsvsummary.errors.count").format(number_of_errors))
         if number_of_errors > 0:
-            logger.info(_("importcsvsummary.error.details").format(error_list))
+            i = 0
+            max_printing = 5
+            logger.info(_("importcsvsummary.error.details"))
+            while i < number_of_errors and i < max_printing:
+                logger.info(error_list[i])
+                i += 1
+            if number_of_errors > max_printing:
+                logger.info(_("importcsvsummary.error.too_many_errors"))
+                logger.info(_("importcsvsummary.remainingerrors"))
