@@ -31,7 +31,7 @@ Instead of calling the login command, all of the options for this command can be
 For example:
 ```shell
 tabcmd login --server x --site y --username u --password p
-tabmcd listsites
+tabcmd listsites
 ```
 is the same as
 ```shell
@@ -254,7 +254,7 @@ Create a site named West Coast Sales. A site ID of WestCoastSales will be automa
 tabcmd createsite "West Coast Sales"
 ```
 
-Create a site named West Coast Saleswith a site ID of wsales:
+Create a site named West Coast Sales with a site ID of wsales:
 
 ```shell
 tabcmd createsite "West Coast Sales" -r "wsales"
