@@ -16,11 +16,11 @@ def add_log_level(level_name, level_num, method_name=None):
         method_name = level_name.lower()
 
     if hasattr(logging, level_name):
-       raise AttributeError('{} already defined in logging module'.format(level_name))
+        raise AttributeError("{} already defined in logging module".format(level_name))
     if hasattr(logging, method_name):
-       raise AttributeError('{} already defined in logging module'.format(method_name))
+        raise AttributeError("{} already defined in logging module".format(method_name))
     if hasattr(logging.getLoggerClass(), method_name):
-       raise AttributeError('{} already defined in logger class'.format(method_name))
+        raise AttributeError("{} already defined in logger class".format(method_name))
 
     def logForLevel(self, message, *args, **kwargs):
         if self.isEnabledFor(level_num):
@@ -34,10 +34,12 @@ def add_log_level(level_name, level_num, method_name=None):
     setattr(logging.getLoggerClass(), method_name, logForLevel)
     setattr(logging, method_name, logToRoot)
 
+
 def add_trace_level():
     trace_level: int = logging.DEBUG - 5
     add_log_level("TRACE", trace_level)
     FORMATS[trace_level] = FORMATS[logging.ERROR]
+
 
 def configure_log(name: str, logging_level_input: str):
     """function for logging statements to console and logfile"""

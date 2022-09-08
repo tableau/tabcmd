@@ -44,12 +44,11 @@ class Errors:
             start = 0
             n_lines = 5
             logger.trace(HEADER_FMT % (file, func))
-            for frame in stack[start+1:n_lines]:
+            for frame in stack[start + 1 : n_lines]:
                 file, line, func = frame[1:4]
                 logger.trace(STACK_FMT % (file, line, func))
         except BaseException as e:
             logger.info("Error printing stack trace:", e)
-
 
     @staticmethod
     def exit_with_error(logger, message=None, exception=None):

@@ -70,8 +70,9 @@ class GetUrl(DatasourcesAndWorkbooks):
             return "workbook"
         else:
             view_example = "/views/<workbookname>/<viewname>.<extension>"
-            message = "{} [{}]".format(_("export.errors.requires_workbook_view_param").format(__class__.__name__),
-                                       view_example)
+            message = "{} [{}]".format(
+                _("export.errors.requires_workbook_view_param").format(__class__.__name__), view_example
+            )
             Errors.exit_with_error(logger, message)
 
     @staticmethod
