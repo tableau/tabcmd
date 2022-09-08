@@ -27,7 +27,7 @@ At some point in the future, tabcmd will no longer be included with Tableau Serv
 ## About this help
 
 ### Feedback 
-The best way to give feedback or ask a question is at the [Tableau Community Forums](https://community.tableau.com/s/topic/0TO4T000000QT6xWAG/tabcmd) or [here on github](https://github.com/tableau/tabcmd/issues)
+The best way to give feedback or ask a question is at the [Tableau Community Forums](https://community.tableau.com/s/topic/0TO4T000000QT6xWAG/tabcmd) or [here on GitHub](https://github.com/tableau/tabcmd/issues)
 
 ### Developers
 [Looking for code?](https://github.com/tableau/tabcmd)
