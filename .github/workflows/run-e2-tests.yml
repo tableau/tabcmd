@@ -1,4 +1,4 @@
-name: Python tests
+name: e2e tests
 
 on:
   workflow_dispatch:
@@ -42,4 +42,4 @@ jobs:
     - name: Run e2e tests
       run: | 
         python -m tabcmd login --server "${{ github.event.inputs.server }}" --site "${{ github.event.inputs.site }}" --token-name "${{ github.event.inputs.patname }}" --token-value "${{ github.event.inputs.pat }}"
-        pytest -q tests\e2e\online_tests.py -r pfE
+        pytest -q tests/e2e/online_tests.py -r pfE
