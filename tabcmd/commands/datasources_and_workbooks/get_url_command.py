@@ -75,6 +75,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             )
             Errors.exit_with_error(logger, message)
 
+
     @staticmethod
     def get_file_type_from_filename(logger, file_name, url):
         type_of_file = None

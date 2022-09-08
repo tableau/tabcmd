@@ -51,7 +51,7 @@ class OnlineCommandTest(unittest.TestCase):
     def _create_project(self, project_name, parent_path=None):
         command = "createproject"
         arguments = [command, "--name", project_name]
-        if parent_path:
+        if parent_path or parent_location:
             arguments.append("--parent-project-path")
             arguments.append(parent_path)
         _test_command(arguments)

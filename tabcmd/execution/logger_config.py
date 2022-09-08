@@ -41,6 +41,7 @@ def add_trace_level():
     FORMATS[trace_level] = FORMATS[logging.ERROR]
 
 
+
 def configure_log(name: str, logging_level_input: str):
     """function for logging statements to console and logfile"""
     logging_level = getattr(logging, logging_level_input.upper())
