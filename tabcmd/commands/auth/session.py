@@ -4,7 +4,6 @@ import os
 
 import requests
 import tableauserverclient as TSC
-import tableauserverclient.server.endpoint.exceptions
 from urllib3.exceptions import InsecureRequestWarning
 
 from tabcmd.commands.constants import Errors
@@ -45,8 +44,8 @@ class Session:
         self.timeout = None
 
         self.logging_level = "info"
-        self.logger = log(__class__.__name__, self.logging_level)
         self._read_from_json()
+        self.logger = log(__name__, self.logging_level)  # instantiate here mostly for tests
         self.tableau_server = None  # this one is an object that doesn't get persisted in the file
 
     # called before we connect to the server
@@ -55,7 +54,6 @@ class Session:
         # user id and site id are never passed in as args
         # last_login_using and tableau_server are internal data
         # self.command = args.???
-        # TODO: if server/username/token are changed, clear others
         self.username = args.username or self.username
         self.site_name = args.site_name or self.site_name or ""
         if self.site_name == "default":
@@ -216,6 +214,7 @@ class Session:
         self._read_existing_state()
         self._update_session_data(args)
         self.logging_level = args.logging_level or self.logging_level
+        self.logger = log(__name__, self.logging_level)
 
         credentials = None
         if args.password:

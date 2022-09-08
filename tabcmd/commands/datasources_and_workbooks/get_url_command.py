@@ -37,6 +37,10 @@ class GetUrl(DatasourcesAndWorkbooks):
         if " " in args.url:
             Errors.exit_with_error(logger, _("export.errors.white_space_workbook_view"))
 
+        if not args.url.startswith("/"):
+            args.url = "/" + args.url
+            logger.trace("helpfully fix format of url: " + args.url)
+
         file_type = GetUrl.get_file_type_from_filename(logger, args.filename, args.url)
         content_type = GetUrl.evaluate_content_type(logger, args.url)
         if content_type == "workbook":
@@ -65,9 +69,11 @@ class GetUrl(DatasourcesAndWorkbooks):
         elif url.find("/workbooks/") == 0:
             return "workbook"
         else:
-            Errors.exit_with_error(
-                logger, message=_("export.errors.requires_workbook_view_param").format(__class__.__name__)
+            view_example = "/views/<workbookname>/<viewname>.<extension>"
+            message = "{} [{}]".format(
+                _("export.errors.requires_workbook_view_param").format(__class__.__name__), view_example
             )
+            Errors.exit_with_error(logger, message)
 
     @staticmethod
     def get_file_type_from_filename(logger, file_name, url):
