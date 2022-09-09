@@ -81,7 +81,8 @@ class DatasourcesAndWorkbooks(Server):
         if ":iid" == setting[0]:
             logger.debug(":iid value ignored in url")
         elif ":refresh" == setting[0] and setting[1] in ["yes", "y", "YES", "Y", "1"]:
-            request_options.max_age = 0
+            # mypy is worried that this is readonly
+            request_options.max_age = 0  # type:ignore
             logger.debug("Set max age to {} from {}".format(request_options.max_age, value))
         elif ":size" == setting[0]:
             height, width = setting[1].split(",")
