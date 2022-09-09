@@ -37,48 +37,49 @@ class GetUrl(DatasourcesAndWorkbooks):
         if " " in args.url:
             Errors.exit_with_error(logger, _("export.errors.white_space_workbook_view"))
 
-        if not args.url.startswith("/"):
-            args.url = "/" + args.url
-            logger.trace("helpfully fix format of url: " + args.url)
+        url = args.url.lstrip("/")  # strip opening / if present
 
-        file_type = GetUrl.get_file_type_from_filename(logger, args.filename, args.url)
-        content_type = GetUrl.evaluate_content_type(logger, args.url)
+        file_type = GetUrl.get_file_type_from_filename(logger, args.filename, url)
+        content_type = GetUrl.evaluate_content_type(logger, url)
         if content_type == "workbook":
-            if file_type == "twbx" or file_type == "twb":
-                GetUrl.generate_twb(logger, server, args, file_type)
+            if file_type in ["twbx", "twb"]:
+                GetUrl.generate_twb(logger, server, args, file_type, url)
             else:
                 Errors.exit_with_error(
                     logger, message=_("publish.errors.mutually_exclusive_option").format("twb", "twbx")
                 )
         else:  # content type = view
+            view_url = GetUrl.get_view_url(url, logger)
             if file_type == "pdf":
-                GetUrl.generate_pdf(logger, server, args)
+                GetUrl.generate_pdf(logger, server, args, view_url)
             elif file_type == "png":
-                GetUrl.generate_png(logger, server, args)
+                GetUrl.generate_png(logger, server, args, view_url)
             elif file_type == "csv":
-                GetUrl.generate_csv(logger, server, args)
+                GetUrl.generate_csv(logger, server, args, view_url)
             else:
                 Errors.exit_with_error(logger, message=_("tabcmd.get.extension.not_found"))
 
     @staticmethod
     def evaluate_content_type(logger, url):
-        # specify a view to get using "/views/<workbookname>/<viewname>.<extension>"
-        # specify a workbook to get using "/workbooks/<workbookname>.<extension>".
-        if url.find("/views/") == 0:
+        # specify a view to get using "views/<workbookname>/<viewname>.<extension>"
+        # specify a workbook to get using "workbooks/<workbookname>.<extension>".
+        if url.startswith("views/"):
             return "view"
-        elif url.find("/workbooks/") == 0:
+        elif url.startswith("workbooks/"):
             return "workbook"
         else:
-            view_example = "/views/<workbookname>/<viewname>.<extension>"
-            message = "{} [{}]".format(
-                _("export.errors.requires_workbook_view_param").format(__class__.__name__), view_example
-            )
-            Errors.exit_with_error(logger, message)
+            GetUrl.explain_expected_url(logger)
 
+    @staticmethod
+    def explain_expected_url(logger):
+        view_example = "/views/<workbookname>/<viewname>.<extension>"
+        message = "{} [{}]".format(
+            _("export.errors.requires_workbook_view_param").format(__class__.__name__), view_example
+        )
+        Errors.exit_with_error(logger, message)
 
     @staticmethod
     def get_file_type_from_filename(logger, file_name, url):
-        type_of_file = None
         file_name = file_name or url
         logger.debug(_("get.options.file") + ": {}".format(file_name))
         type_of_file = GetUrl.get_file_extension(file_name)
@@ -114,24 +115,24 @@ class GetUrl(DatasourcesAndWorkbooks):
         return filename
 
     @staticmethod
-    def get_workbook_name(logger, url):  # /workbooks/wb-name" -> "wb-name"
+    def get_workbook_name(url, logger):  # workbooks/wb-name" -> "wb-name"
         name_parts = url.split("/")
-        if len(name_parts) != 3:
-            raise ValueError(_("export.errors.requires_workbook_view_param").format(GetUrl.name))
+        if len(name_parts) != 2:
+            GetUrl.explain_expected_url(logger)
         workbook_name = name_parts[::-1][0]  # last part
         workbook_name = GetUrl.strip_query_params(workbook_name)
         workbook_name = GetUrl.get_name_without_possible_extension(workbook_name)
         return workbook_name
 
     @staticmethod
-    def get_view_url(url):  # "/views/wb-name/view-name" -> wb-name/sheets/view-name
-        name_parts = url.split("/")  # ['', 'views', 'wb-name', 'view-name']
-        if len(name_parts) != 4:
-            raise ValueError(_("export.errors.requires_workbook_view_param").format(GetUrl.name))
+    def get_view_url(url, logger):  # "views/wb-name/view-name" -> wb-name/sheets/view-name
+        name_parts = url.split("/")  # ['views', 'wb-name', 'view-name']
+        if len(name_parts) != 3:
+            GetUrl.explain_expected_url(logger)
+        workbook_name = name_parts[1]
         view_name = name_parts[::-1][0]
         view_name = GetUrl.strip_query_params(view_name)
         view_name = GetUrl.get_name_without_possible_extension(view_name)
-        workbook_name = name_parts[2]
         return DatasourcesAndWorkbooks.get_view_url_from_names(workbook_name, view_name)
 
     @staticmethod
@@ -141,12 +142,12 @@ class GetUrl(DatasourcesAndWorkbooks):
         return file_argument
 
     @staticmethod
-    def generate_pdf(logger, server, args):
-        view_url = GetUrl.get_view_url(args.url)
+    def generate_pdf(logger, server, args, view_url):
         try:
             view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view_url)
             logger.debug(_("content_type.view") + ": {}".format(view_item.name))
             req_option_pdf = TSC.PDFRequestOptions(maxage=1)
+            DatasourcesAndWorkbooks.apply_values_from_url_params(req_option_pdf, args.url, logger)
             server.views.populate_pdf(view_item, req_option_pdf)
             filename = GetUrl.filename_from_args(args.filename, view_item.name, "pdf")
             with open(filename, "wb") as f:
@@ -156,12 +157,13 @@ class GetUrl(DatasourcesAndWorkbooks):
             Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
 
     @staticmethod
-    def generate_png(logger, server, args):
-        view = GetUrl.get_view_url(args.url)
+    def generate_png(logger, server, args, view_url):
         try:
-            view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view)
+            view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view_url)
             logger.debug(_("content_type.view") + ": {}".format(view_item.name))
-            req_option_csv = TSC.CSVRequestOptions(maxage=1)  # same as png
+            req_option_csv = TSC.ImageRequestOptions(maxage=1)
+            DatasourcesAndWorkbooks.apply_values_from_url_params(req_option_csv, args.url, logger)
+            DatasourcesAndWorkbooks.apply_png_options(req_option_csv, args.url, logger)
             server.views.populate_image(view_item, req_option_csv)
             filename = GetUrl.filename_from_args(args.filename, view_item.name, "png")
             with open(filename, "wb") as f:
@@ -171,13 +173,13 @@ class GetUrl(DatasourcesAndWorkbooks):
             Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
 
     @staticmethod
-    def generate_csv(logger, server, args):
-        view_url = GetUrl.get_view_url(args.url)
+    def generate_csv(logger, server, args, view_url):
         try:
             view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view_url)
             logger.debug(_("content_type.view") + ": {}".format(view_item.name))
             req_option_csv = TSC.CSVRequestOptions(maxage=1)
             server.views.populate_csv(view_item, req_option_csv)
+            DatasourcesAndWorkbooks.apply_values_from_url_params(req_option_csv, args.url, logger)
             file_name_with_path = GetUrl.filename_from_args(args.filename, view_item.name, "csv")
             with open(file_name_with_path, "wb") as f:
                 f.writelines(view_item.csv)
@@ -188,8 +190,8 @@ class GetUrl(DatasourcesAndWorkbooks):
             Errors.exit_with_error(logger, exception=e)
 
     @staticmethod
-    def generate_twb(logger, server, args, file_extension):
-        workbook_name = GetUrl.get_workbook_name(logger, args.url)
+    def generate_twb(logger, server, args, file_extension, url):
+        workbook_name = GetUrl.get_workbook_name(url, logger)
 
         try:
             target_workbook = GetUrl.get_wb_by_content_url(logger, server, workbook_name)

@@ -28,12 +28,17 @@ class ExportCommand(DatasourcesAndWorkbooks):
             help="page orientation (landscape or portrait) of the exported PDF",
         )
         export_parser.add_argument("--pagesize", default="letter", help="Set the page size of the exported PDF")
-        export_parser.add_argument("--width", default=800, help="Set the width in pixels. Default is 800 px")
+        export_parser.add_argument(
+            "--image-resolution", default="High", help="Set the image resolution of the exported image"
+        )
+
+        export_parser.add_argument(
+            "--width", default=800, help="Set the width of the image in pixels. Default is 800 px"
+        )
         export_parser.add_argument("--filename", "-f", help="filename to store the exported data")
         export_parser.add_argument("--height", default=600, help=_("export.options.height"))
         export_parser.add_argument(
             "--filter",
-            "-vf",
             metavar="COLUMN:VALUE",
             help="View filter to apply to the view",
         )
@@ -52,29 +57,29 @@ class ExportCommand(DatasourcesAndWorkbooks):
         view_content_url, wb_content_url = ExportCommand.parse_export_url_to_workbook_and_view(logger, args.url)
         logger.debug([view_content_url, wb_content_url])
         if not view_content_url and not wb_content_url:
-            Errors.exit_with_error(logger, _("export.errors.requires_workbook_view_param").format(ExportCommand))
-
-        logger.debug(args.pagelayout, args.pagesize, args.filename, args.width, args.height, args.filter)
+            view_example = "/workbook_name/view_name"
+            message = "{} [{}]".format(
+                _("export.errors.requires_workbook_view_param").format(__class__.__name__), view_example
+            )
+            Errors.exit_with_error(logger, message)
 
         try:
             if args.fullpdf:  # it's a workbook
                 workbook_item = ExportCommand.get_wb_by_content_url(logger, server, wb_content_url)
-                output = ExportCommand.download_wb_pdf(server, workbook_item, args.url, logger)
-
+                output = ExportCommand.download_wb_pdf(server, workbook_item, args, logger)
                 default_filename = "{}.pdf".format(workbook_item.name)
 
             elif args.pdf or args.png or args.csv:  # it's a view
                 view_item = ExportCommand.get_view_by_content_url(logger, server, view_content_url)
 
                 if args.pdf:
-                    output = ExportCommand.download_view_pdf(server, view_item, args.url, logger)
+                    output = ExportCommand.download_view_pdf(server, view_item, args, logger)
                     default_filename = "{}.pdf".format(view_item.name)
                 elif args.csv:
-                    output = ExportCommand.download_csv(server, view_item, args.url, logger)
+                    output = ExportCommand.download_csv(server, view_item, args, logger)
                     default_filename = "{}.csv".format(view_item.name)
                 elif args.png:
-                    output = ExportCommand.download_png(server, view_item, args.url, logger)
-
+                    output = ExportCommand.download_png(server, view_item, args, logger)
                     default_filename = "{}.png".format(view_item.name)
 
         except Exception as e:
@@ -87,63 +92,62 @@ class ExportCommand(DatasourcesAndWorkbooks):
             else:
                 ExportCommand.save_to_file(logger, output, save_name)
 
-
         except Exception as e:
             Errors.exit_with_error(logger, "Error saving to file", e)
 
     @staticmethod
-    def extract_filter_values_from_url_params(request_options: TSC.PDFRequestOptions, url, logger=None) -> None:
-        try:
-            # todo make logging better
-            logger = logger or log(ExportCommand.__class__.__name__, "DEBUG")
-            logger.debug(url)
-
-            if "?" in url:
-                query = url.split("?")[1]
-            else:
-                return
-
-            params = query.split("&")
-            logger.trace(params)
+    def apply_values_from_args(request_options: TSC.PDFRequestOptions, args, logger=None) -> None:
+        logger.debug(
+            "Args: {}, {}, {}, {}, {}".format(args.pagelayout, args.pagesize, args.width, args.height, args.filter)
+        )
+        if args.pagelayout:
+            request_options.orientation = args.pagelayout
+        if args.pagesize:
+            request_options.page_type = args.pagesize
+        if args.filter:
+            params = args.filter.split("&")
             for value in params:
-                data_filter = value.split("=")
-                request_options.vf(data_filter[0], data_filter[1])
-        except BaseException as e:
-            logger.error("Error building filter params", e)
-            ExportCommand.log_stack(logger)  # type: ignore
+                ExportCommand.apply_filter_value(request_options, value, logger)
 
     @staticmethod
-    def download_wb_pdf(server, workbook_item, url, logger):
-        logger.trace(url)
-        pdf = TSC.PDFRequestOptions(maxage=1)
-        ExportCommand.extract_filter_values_from_url_params(pdf, url)
-
-        server.workbooks.populate_pdf(workbook_item, pdf)
+    def download_wb_pdf(server, workbook_item, args, logger):
+        logger.trace(args.url)
+        pdf_options = TSC.PDFRequestOptions(maxage=1)
+        ExportCommand.apply_values_from_url_params(pdf_options, args.url, logger)
+        ExportCommand.apply_values_from_args(pdf_options, args, logger)
+        logger.trace(pdf_options)
+        server.workbooks.populate_pdf(workbook_item, pdf_options)
         return workbook_item.pdf
 
     @staticmethod
-    def download_view_pdf(server, view_item, url, logger):
-        logger.trace(url)
-        pdf = TSC.PDFRequestOptions(maxage=1)
-        ExportCommand.extract_filter_values_from_url_params(pdf, url)
-        logger.trace(pdf.view_filters)
-        server.views.populate_pdf(view_item, pdf)
+    def download_view_pdf(server, view_item, args, logger):
+        logger.trace(args.url)
+        pdf_options = TSC.PDFRequestOptions(maxage=1)
+        ExportCommand.apply_values_from_url_params(pdf_options, args.url, logger)
+        ExportCommand.apply_values_from_args(pdf_options, args, logger)
+        logger.trace(pdf_options)
+        server.views.populate_pdf(view_item, pdf_options)
         return view_item.pdf
 
     @staticmethod
-    def download_csv(server, view_item, url, logger):
-        logger.trace(url)
-        csv = TSC.CSVRequestOptions(maxage=1)
-        ExportCommand.extract_filter_values_from_url_params(csv, url)
-        server.views.populate_csv(view_item, csv)
+    def download_csv(server, view_item, args, logger):
+        logger.trace(args.url)
+        csv_options = TSC.CSVRequestOptions(maxage=1)
+        ExportCommand.apply_values_from_url_params(csv_options, args.url, logger)
+        ExportCommand.apply_values_from_args(csv_options, args, logger)
+        logger.trace(csv_options)
+        server.views.populate_csv(view_item, csv_options)
         return view_item.csv
 
     @staticmethod
-    def download_png(server, view_item, url, logger):
-        logger.trace(url)
-        req_option_image = TSC.ImageRequestOptions(maxage=1)
-        ExportCommand.extract_filter_values_from_url_params(req_option_image, url)
-        server.views.populate_image(view_item, req_option_image)
+    def download_png(server, view_item, args, logger):
+        logger.trace(args.url)
+        image_options = TSC.ImageRequestOptions(maxage=1)
+        ExportCommand.apply_values_from_url_params(image_options, args.url, logger)
+        ExportCommand.apply_values_from_args(image_options, args, logger)
+        DatasourcesAndWorkbooks.apply_png_options(image_options, args, logger)
+        logger.trace(image_options)
+        server.views.populate_image(view_item, image_options)
         return view_item.png
 
     @staticmethod
