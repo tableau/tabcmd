@@ -45,7 +45,7 @@ class Session:
 
         self.logging_level = "info"
         self._read_from_json()
-        self.logger = log(__name__, self.logging_level)  # instantiate here mostly for tests
+        self.logger = log(__class__.__name__, self.logging_level)  # instantiate here mostly for tests
         self.tableau_server = None  # this one is an object that doesn't get persisted in the file
 
     # called before we connect to the server
@@ -214,7 +214,7 @@ class Session:
         self._read_existing_state()
         self._update_session_data(args)
         self.logging_level = args.logging_level or self.logging_level
-        self.logger = log(__name__, self.logging_level)
+        self.logger = log(__class__.__name__, self.logging_level)
 
         credentials = None
         if args.password:
