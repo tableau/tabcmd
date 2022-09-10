@@ -150,9 +150,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             DatasourcesAndWorkbooks.apply_values_from_url_params(req_option_pdf, args.url, logger)
             server.views.populate_pdf(view_item, req_option_pdf)
             filename = GetUrl.filename_from_args(args.filename, view_item.name, "pdf")
-            with open(filename, "wb") as f:
-                f.write(view_item.pdf)
-            logger.info(_("export.success").format(view_item.name, filename))
+            DatasourcesAndWorkbooks.save_to_file(logger, view_item.pdf, filename)
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
 
@@ -163,12 +161,9 @@ class GetUrl(DatasourcesAndWorkbooks):
             logger.debug(_("content_type.view") + ": {}".format(view_item.name))
             req_option_csv = TSC.ImageRequestOptions(maxage=1)
             DatasourcesAndWorkbooks.apply_values_from_url_params(req_option_csv, args.url, logger)
-            DatasourcesAndWorkbooks.apply_png_options(req_option_csv, args.url, logger)
             server.views.populate_image(view_item, req_option_csv)
             filename = GetUrl.filename_from_args(args.filename, view_item.name, "png")
-            with open(filename, "wb") as f:
-                f.write(view_item.image)
-            logger.info(_("export.success").format(view_item.name, filename))
+            DatasourcesAndWorkbooks.save_to_file(logger, view_item.image, filename)
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
 
@@ -178,12 +173,10 @@ class GetUrl(DatasourcesAndWorkbooks):
             view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view_url)
             logger.debug(_("content_type.view") + ": {}".format(view_item.name))
             req_option_csv = TSC.CSVRequestOptions(maxage=1)
-            server.views.populate_csv(view_item, req_option_csv)
             DatasourcesAndWorkbooks.apply_values_from_url_params(req_option_csv, args.url, logger)
+            server.views.populate_csv(view_item, req_option_csv)
             file_name_with_path = GetUrl.filename_from_args(args.filename, view_item.name, "csv")
-            with open(file_name_with_path, "wb") as f:
-                f.writelines(view_item.csv)
-            logger.info(_("export.success").format(view_item.name, file_name_with_path))
+            DatasourcesAndWorkbooks.save_to_data_file(logger, view_item.csv, file_name_with_path)
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
         except Exception as e:

@@ -101,3 +101,17 @@ class DatasourcesAndWorkbooks(Server):
             logger.warn("Height/width arguments not yet implemented in export")
         if args.image_resolution:
             request_options.image_resolution = args.image_resolution
+
+    @staticmethod
+    def save_to_data_file(logger, output, filename):
+        logger.info(_("httputils.found_attachment").format(filename))
+        with open(filename, "wb") as f:
+            f.writelines(output)
+            logger.info(_("export.success").format("", filename))
+
+    @staticmethod
+    def save_to_file(logger, output, filename):
+        logger.info(_("httputils.found_attachment").format(filename))
+        with open(filename, "wb") as f:
+            f.write(output)
+            logger.info(_("export.success").format("", filename))

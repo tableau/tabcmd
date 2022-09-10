@@ -167,17 +167,3 @@ class ExportCommand(DatasourcesAndWorkbooks):
         workbook = name_parts[0]
         view = "{}/sheets/{}".format(workbook, name_parts[1])
         return view, workbook
-
-    @staticmethod
-    def save_to_data_file(logger, output, filename):
-        logger.info(_("httputils.found_attachment").format(filename))
-        with open(filename, "wb") as f:
-            f.writelines(output)
-            logger.info(_("export.success").format("", filename))
-
-    @staticmethod
-    def save_to_file(logger, output, filename):
-        logger.info(_("httputils.found_attachment").format(filename))
-        with open(filename, "wb") as f:
-            f.write(output)
-            logger.info(_("export.success").format("", filename))
