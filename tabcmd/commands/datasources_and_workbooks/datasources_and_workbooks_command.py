@@ -80,7 +80,7 @@ class DatasourcesAndWorkbooks(Server):
         setting = value.split("=")
         if ":iid" == setting[0]:
             logger.debug(":iid value ignored in url")
-        elif ":refresh" == setting[0] and setting[1] in ["yes", "y", "YES", "Y", "1"]:
+        elif ":refresh" == setting[0] and request_options.is_truthy(setting):
             # mypy is worried that this is readonly
             request_options.max_age = 0  # type:ignore
             logger.debug("Set max age to {} from {}".format(request_options.max_age, value))
@@ -89,6 +89,10 @@ class DatasourcesAndWorkbooks(Server):
             logger.warn("Height/weight parameters not yet implemented ({})".format(value))
         else:
             logger.debug("Parameter[s] not recognized: {}".format(value))
+
+    @staticmethod
+    def is_truthy(value: str):
+        return value.lower() in ["yes", "y", "1", "true"]
 
     @staticmethod
     def apply_png_options(request_options: TSC.ImageRequestOptions, args, logger):
