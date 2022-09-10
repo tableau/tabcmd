@@ -105,24 +105,6 @@ class ExportTests(unittest.TestCase):
         assert view is None
         assert wb is None
 
-    def test_apply_filter(self):
-        url = "wb-name/view-name?param1=value1"
-        options = TSC.PDFRequestOptions()
-        assert options.view_filters is not None
-        assert len(options.view_filters) is 0
-        ExportCommand.apply_filter_value(options, "param1=value1", mock_logger)
-        assert len(options.view_filters) == 1
-        assert options.view_filters[0] == ("param1", "value1")
-
-    def test_extract_query_params(self):
-        url = "wb-name/view-name?param1=value1"
-        options = TSC.PDFRequestOptions()
-        assert options.view_filters is not None
-        assert len(options.view_filters) is 0
-        ExportCommand.apply_values_from_url_params(options, url, mock_logger)
-        assert len(options.view_filters) == 1
-        assert options.view_filters[0] == ("param1", "value1")
-
     @mock.patch("tableauserverclient.Server")
     def test_download_csv(self, mock_server):
         mock_server.views = mock.MagicMock()
@@ -158,6 +140,48 @@ class ExportTests(unittest.TestCase):
         url = "wb-name/view-name?param1=value1"
         mock_args.url = url
         ExportCommand.download_wb_pdf(mock_server, mock_view, mock_args, mock_logger)
+
+
+@mock.patch("tableauserverclient.ViewItem", fake_item)
+class DS_WB_Tests(unittest.TestCase):
+    def test_apply_filter(self):
+        url = "wb-name/view-name?param1=value1"
+        options = TSC.PDFRequestOptions()
+        assert options.view_filters is not None
+        assert len(options.view_filters) is 0
+        ExportCommand.apply_filter_value(options, "param1=value1", mock_logger)
+        assert len(options.view_filters) == 1
+        assert options.view_filters[0] == ("param1", "value1")
+
+    def test_extract_query_params(self):
+        url = "wb-name/view-name?param1=value1"
+        options = TSC.PDFRequestOptions()
+        assert options.view_filters is not None
+        assert len(options.view_filters) is 0
+        ExportCommand.apply_values_from_url_params(options, url, mock_logger)
+        assert len(options.view_filters) == 1
+        assert options.view_filters[0] == ("param1", "value1")
+
+    def test_refresh_true(self):
+        url = "wb-name/view-name?:refresh=TRUE"
+        options = TSC.PDFRequestOptions()
+        assert options.max_age == -1
+        ExportCommand.apply_values_from_url_params(options, url, mock_logger)
+        assert options.max_age == 0
+
+    def test_refresh_yes(self):
+        url = "wb-name/view-name?:refresh=yes"
+        options = TSC.PDFRequestOptions()
+        assert options.max_age == -1
+        ExportCommand.apply_values_from_url_params(options, url, mock_logger)
+        assert options.max_age == 0
+
+    def test_refresh_y(self):
+        url = "wb-name/view-name?:refresh=y"
+        options = TSC.PDFRequestOptions()
+        assert options.max_age == -1
+        ExportCommand.apply_values_from_url_params(options, url, mock_logger)
+        assert options.max_age == 0
 
     def test_save_to_binary_file(self):
         mock_content = bytes()
