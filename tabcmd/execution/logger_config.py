@@ -5,9 +5,9 @@ path = os.path.dirname(os.path.abspath(__file__))
 
 FORMATS = {
     logging.ERROR: "%(asctime)s %(levelname)-5s:(%(name)-10s %(filename)-10s: %(lineno)d): %(message)-30s",
-    logging.WARN: "%(asctime)s %(levelname)s : (%(name)-10s %(filename)-10s: %(lineno)d): %(message)-30s",
+    logging.WARN: "%(asctime)s %(levelname)-5s: (%(name)-10s %(filename)-10s: %(lineno)d): %(message)-30s",
     logging.INFO: "%(message)-30s",
-    logging.DEBUG: "%(asctime)s %(levelname)s : (%(name)-10s %(filename)-10s: %(lineno)d): %(message)-30s",
+    logging.DEBUG: "%(asctime)s %(levelname)-5s: (%(name)-10s %(filename)-10s: %(lineno)d): %(message)-30s",
 }
 
 # https://stackoverflow.com/questions/2183233/how-to-add-a-custom-loglevel-to-pythons-logging-facility
@@ -39,7 +39,6 @@ def add_trace_level():
     trace_level: int = logging.DEBUG - 5
     add_log_level("TRACE", trace_level)
     FORMATS[trace_level] = FORMATS[logging.ERROR]
-
 
 
 def configure_log(name: str, logging_level_input: str):
