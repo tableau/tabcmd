@@ -103,6 +103,15 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.fullpdf = True
         mock_args.filename = "filename.pdf"
         mock_args.url = "workbook-name/view-name"
+        mock_args.csv = None
+        mock_args.image = None
+        mock_args.pdf = None
+        mock_args.pagelayout = None
+        mock_args.pagesize = None
+        mock_args.size = None
+        mock_args.height = None
+        mock_args.width = None
+        mock_args.filter = None
         export_command.ExportCommand.run_command(mock_args)
         mock_session.assert_called()
 

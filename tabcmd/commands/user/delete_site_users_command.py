@@ -42,7 +42,7 @@ class DeleteSiteUsersCommand(Server):
         for user_obj in user_obj_list:
             logger.info(_("importcsvsummary.line.processed").format(number_of_users_deleted))
             try:
-                user_id = UserCommand.find_user_id(logger, server, user_obj.name)
+                user_id = UserCommand.find_user(logger, server, user_obj.name).id
                 server.users.remove(user_id)
                 logger.debug(_("tabcmd.result.success.delete_user").format(user_obj.name, user_id))
                 number_of_users_deleted += 1

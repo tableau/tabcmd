@@ -1,10 +1,18 @@
 import unittest
+from typing import Iterator
 from unittest import mock
+
+import tableauserverclient
+
 from tabcmd.commands.datasources_and_workbooks.get_url_command import *
 from tabcmd.commands.datasources_and_workbooks.export_command import *
 from tabcmd.commands.server import Server
 
 mock_logger = mock.MagicMock()
+
+fake_item = mock.MagicMock(TSC.ViewItem)
+fake_item.name = "fake-name"
+fake_item.id = "fake-id"
 
 
 class GeturlTests(unittest.TestCase):
@@ -59,9 +67,79 @@ class GeturlTests(unittest.TestCase):
     """
 
 
+@mock.patch("tableauserverclient.ViewItem", fake_item)
 class ExportTests(unittest.TestCase):
-    def test_parse_export_url_to_workbook(self):
+
+    mock_logger = mock.MagicMock("logger")
+    fake_item.csv = mock.MagicMock("bytes[]")
+    fake_item.pdf = mock.MagicMock("bytes")
+    fake_item.png = mock.MagicMock("bytes")
+
+    def test_parse_export_url_to_workbook_and_view(self):
         wb_url = "wb-name/view-name"
         view, wb = ExportCommand.parse_export_url_to_workbook_and_view(mock_logger, wb_url)
         assert view == "wb-name/sheets/view-name"
         assert wb == "wb-name"
+
+    def test_parse_export_url_to_workbook_and_view_with_start_slash(self):
+        wb_url = "/wb-name/view-name"
+        view, wb = ExportCommand.parse_export_url_to_workbook_and_view(mock_logger, wb_url)
+        assert view == "wb-name/sheets/view-name"
+        assert wb == "wb-name"
+
+    def test_parse_export_url_to_workbook_and_view_bad_url(self):
+        wb_url = "wb-name/view-name/kitty"
+        view, wb = ExportCommand.parse_export_url_to_workbook_and_view(mock_logger, wb_url)
+        assert view is None
+        assert wb is None
+
+    def test_extract_query_params(self):
+        url = "wb-name/view-name?param1=value1"
+        options = TSC.PDFRequestOptions()
+        assert options.view_filters is not None
+        assert len(options.view_filters) is 0
+        ExportCommand.extract_filter_values_from_url_params(options, url)
+        assert len(options.view_filters) == 1
+        assert options.view_filters[0] == ("param1", "value1")
+
+    @mock.patch("tableauserverclient.Server")
+    def test_download_csv(self, mock_server):
+        mock_server.views = mock.MagicMock()
+        mock_server.views.csv = mock.MagicMock()
+        mock_view = tableauserverclient.ViewItem()
+        url = "wb-name/view-name?param1=value1"
+        ExportCommand.download_csv(mock_server, mock_view, url, mock_logger)
+
+    @mock.patch("tableauserverclient.Server")
+    def test_download_image(self, mock_server):
+        mock_server.views = mock.MagicMock()
+        mock_server.views.png = mock.MagicMock()
+        mock_view = tableauserverclient.ViewItem()
+        url = "wb-name/view-name?param1=value1"
+        ExportCommand.download_png(mock_server, mock_view, url, mock_logger)
+
+    @mock.patch("tableauserverclient.Server")
+    def test_download_view_pdf(self, mock_server):
+        mock_server.views = mock.MagicMock()
+        mock_server.views.pdf = mock.MagicMock()
+        mock_view = tableauserverclient.ViewItem()
+        url = "wb-name/view-name?param1=value1"
+        ExportCommand.download_view_pdf(mock_server, mock_view, url, mock_logger)
+
+    @mock.patch("tableauserverclient.Server")
+    def test_download_wb_pdf(self, mock_server):
+        mock_server.workbooks = mock.MagicMock()
+        mock_server.workbooks.pdf = mock.MagicMock()
+        mock_view = tableauserverclient.ViewItem()
+        url = "wb-name/view-name?param1=value1"
+        ExportCommand.download_wb_pdf(mock_server, mock_view, url, mock_logger)
+
+    def test_save_to_binary_file(self):
+        mock_content = bytes()
+        filename = "test_out.pdf"
+        ExportCommand.save_to_file(mock_logger, mock_content, filename)
+
+    def test_save_to_data_file(self):
+        mock_content = mock.MagicMock()
+        filename = "test_out.csv"
+        ExportCommand.save_to_data_file(mock_logger, mock_content, filename)

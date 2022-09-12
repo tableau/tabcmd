@@ -25,9 +25,14 @@ class TabcmdController:
             sys.exit(0)
         user_input = user_input or sys.argv[1:]
         namespace = parser.parse_args(user_input)
+        if namespace.logging_level:
+            print("logging:", namespace.logging_level)
 
         logger = log(__name__, namespace.logging_level or logging.INFO)
-        # logger.debug(namespace)
+        if namespace.password:
+            logger.trace(namespace.func)
+        else:
+            logger.trace(namespace)
         if namespace.language:
             set_client_locale(namespace.language, logger)
 

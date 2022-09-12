@@ -27,7 +27,7 @@ class DeleteGroupCommand(Server):
         server = session.create_session(args)
         try:
             logger.info(_("tabcmd.find.group").format(args.name))
-            group_id = Server.find_group_id(logger, server, args.name)
+            group_id = Server.find_group(logger, server, args.name).id
             logger.info(_("deletegroup.status").format(group_id))
             server.groups.delete(group_id)
             logger.info(_("common.output.succeeded"))
