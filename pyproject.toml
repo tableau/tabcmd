@@ -1,7 +1,70 @@
 [build-system]
 requires = ["build", "setuptools>=62", "wheel", "setuptools_scm>=6.2"]
+build-backend = "setuptools.build_meta"
 [tool.setuptools_scm]
 "local_scheme"= "no-local-version"  # require pypi supported versions always
+[tool.setuptools.package-data]
+"tabcmd" = ["tabcmd.locales/**/*.mo"]
 [tool.black]
 line-length = 120
+target-version = ['py37', 'py38', 'py39', 'py310']
 extend-exclude = '^/bin/*'
+[tool.mypy]
+disable_error_code = [
+    'misc',
+    'import'
+]
+files = ["tabcmd", "tests"]
+show_error_codes = true
+ignore_missing_imports = true
+[tool.pytest.ini_options]
+testpaths = ["test"]
+addopts = "--junitxml=./test.junit.xml"
+
+[project]
+name="tabcmd"
+dynamic = ["version"]
+description="A command line client for working with Tableau Server."
+authors = [{name="Tableau", email="github@tableau.com"}]
+license = {file = "LICENSE"}
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10"
+]
+dependencies = [
+    'argparse',
+    "appdirs",
+    "doit",
+    "ftfy",
+    "polling2",
+    "pyinstaller_versionfile",
+    "requests>=2.11,<3.0",
+    "types-appdirs",
+    "types-mock",
+    "types-requests",
+    "types-setuptools",
+    "tableauserverclient>=0.19",
+    "urllib3>=1.24.3,<2.0",
+]
+[project.optional-dependencies]
+test = [
+    "black",
+    "mock",
+    "mypy",
+    "pytest>=7.0",
+    "pytest-cov",
+    "pytest-order",
+    "pytest-runner",
+    "requests-mock>=1.0,<2.0"]
+localize = ["doit", "ftfy"]
+package = ["pyinstaller>=5.1", "pyinstaller-versionfile"]
+[project.urls]
+repository = "https://github.com/tableau/tabcmd"
+[project.scripts]
+tabcmd = "tabcmd.tabcmd:main"
