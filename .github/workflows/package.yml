@@ -57,7 +57,7 @@ jobs:
         pip install -e .[build]
         pip install -e .[package]
         doit version
-        python setup.py build
+        python -m build
 
     - name: Package with pyinstaller for ${{matrix.TARGET}}
       run: ${{matrix.CMD_BUILD}}

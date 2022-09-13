@@ -31,7 +31,7 @@ jobs:
         pip install -e .[build]
         pip install -e .[test]
         doit version
-        python setup.py build
+        python -m build
 
     #  https://github.com/marketplace/actions/pytest-coverage-comment
     - name: Generate coverage report

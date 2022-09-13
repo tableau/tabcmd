@@ -23,7 +23,7 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install -e .[build]
         doit version
-        python setup.py build
+        python -m build
 
     - name: Generate dependencies list
       run: python bin/license-checker.py

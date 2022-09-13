@@ -25,7 +25,7 @@ jobs:
         run: |
           pip install -e .[build]
           doit version
-          python setup.py sdist --formats=gztar
+          python -m build
       - name: Publish distribution 📦 to Test PyPI
         if: ${{ inputs.is_draft }}
         uses: pypa/gh-action-pypi-publish@release/v1  # license BSD-2

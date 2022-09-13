@@ -34,7 +34,7 @@ jobs:
         pip install -e .[build]
         pip install -e .[test]
         doit version
-        python setup.py build
+        python -m build
 
     - name: Test with pytest
       run: pytest
