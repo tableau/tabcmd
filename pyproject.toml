@@ -63,7 +63,7 @@ test = [
     "pytest-runner",
     "requests-mock>=1.0,<2.0"]
 localize = ["doit", "ftfy"]
-package = ["pyinstaller>=5.1", "pyinstaller-versionfile"]
+package = ["pyinstaller>=5.1"]
 [project.urls]
 repository = "https://github.com/tableau/tabcmd"
 [project.scripts]

@@ -26,13 +26,12 @@ jobs:
             TARGET: windows
             CMD_BUILD: >
               pyinstaller tabcmd-windows.spec --clean --noconfirm --distpath ./dist/windows
-            OUT_FILE_NAME: tabcmd.exe
+            OUT_FILE_NAME: tabcmd-windows.exe
             ASSET_MIME: application/vnd.microsoft.portable-executable
           - os: macos-latest
             TARGET: macos
             CMD_BUILD:  >
-              pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos &&
-              cwd && ls && ls dist
+              pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos && ls && ls dist
             # zip -r9 mac tabcmd-mac*
             OUT_FILE_NAME: tabcmd-mac.app  # tabcmd.zip
             ASSET_MIME: application/zip
@@ -66,7 +65,7 @@ jobs:
       uses: WebFreak001/upload-asset@v1.0.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # automatically provided by github actions
-        OS: windows # just a variable we use in the name pattern
+        OS: windows # a variable we use in the name pattern?
       with:
         file: ./dist/${{ matrix.TARGET }}/tabcmd/${{ matrix.OUT_FILE_NAME}}
         mime: ${{ matrix.ASSET_MIME}} # required by GitHub API
