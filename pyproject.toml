@@ -3,6 +3,8 @@ requires = ["build", "setuptools>=62", "wheel", "setuptools_scm>=6.2"]
 build-backend = "setuptools.build_meta"
 [tool.setuptools_scm]
 local_scheme = "no-local-version"  # require pypi supported versions always
+[tool.setuptools]
+packages = ["tabcmd"]
 [tool.setuptools.package-data]
 tabcmd = ["tabcmd.locales/**/*.mo"]
 [tool.black]
