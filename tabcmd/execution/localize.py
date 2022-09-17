@@ -3,6 +3,7 @@ import locale
 import logging
 import os
 import sys
+from os import listdir
 from typing import Any
 from typing import Callable
 
@@ -20,7 +21,7 @@ def _(string_key: str) -> str:
 
 
 def _identity_func(x: Any) -> Any:
-    return x
+    return "++" + x + "++"
 
 
 # The client should present text in the OS language, or english if not present.
@@ -41,7 +42,7 @@ def set_client_locale(lang: str = None, logger=None) -> Callable:
     for lang in locale_options:
         try:
             if lang:
-                translate = _load_language(lang, domain)
+                translate = _load_language(lang, domain, logger)
                 break
         except Exception as e:
             print("Failed to load language '", lang, "':", e)
@@ -49,23 +50,25 @@ def set_client_locale(lang: str = None, logger=None) -> Callable:
     return translate or _identity_func
 
 
-# Handling file locations in unbundled (e.g dev) layout and when bundled by pyinstaller
+"""Get absolute path to resource, works for unbundled (e.g dev) and when bundled by PyInstaller"""
 # https://stackoverflow.com/questions/7674790/bundling-data-files-with-pyinstaller-onefile/13790741#13790741
 def resource_path(relative_path):
-    """Get absolute path to resource, works for dev and for PyInstaller"""
-    base_path = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
+    """ for unbundled module, return the tabcmd src dir (parent of this file)"""
+    src_location = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
+    """sys._MEIPASS will only exist in bundled pyinstaller exe, else fall back to unbundled location"""
+    base_path = getattr(sys, "_MEIPASS", src_location)
     return os.path.join(base_path, relative_path)
 
 
-def _load_language(current_locale, domain):
-    locale_path = os.path.join("..", "locales")
-
-    # fallback=True means if loading the translated files fails, strings will be returned
-    # we use the identity function above instead
+def _load_language(current_locale, domain, logger):
+    locale_path = os.path.join(".", "tabcmd", "locales")
     locale_dir = resource_path(locale_path)
-    language: gettext.NullTranslations = gettext.translation(
-        domain, locale_dir, languages=[current_locale], fallback=False
-    )
+    logger.debug("Checking for language resources at " + locale_dir)
+    # to debug pyinstaller file bundling, try something like this example debug line
+    # logger.debug(listdir(sys._MEIPASS))
+    # logger.debug(listdir(locale_dir))
+
+    language: gettext.NullTranslations = gettext.translation(domain, locale_dir, languages=[current_locale])
     language.install()  # I believe this is the expensive call
     _ = language.gettext
     return _
