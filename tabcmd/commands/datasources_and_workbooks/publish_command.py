@@ -65,6 +65,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
 
         elif source in ["tds", "tdsx", "hyper"]:
             new_datasource = TSC.DatasourceItem(project_id, name=args.name)
+            new_datasource.use_remote_query_agent = args.use_tableau_bridge
             try:
                 new_datasource = server.datasources.publish(new_datasource, args.filename, publish_mode)
             except IOError as ioe:
