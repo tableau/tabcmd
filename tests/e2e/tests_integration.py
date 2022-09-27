@@ -8,7 +8,7 @@ from tabcmd.execution.logger_config import log
 
 
 try:
-    from tests.e2e import credentials
+    from tests.e2e import credentials  # type: ignore
 except ImportError:
     credentials = None  # type: ignore
 
