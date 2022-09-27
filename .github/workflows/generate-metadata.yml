@@ -39,7 +39,9 @@ jobs:
 
     - name: Generate pyinstaller specs
       run: |
-          echo "Using locally generated specs"
-          pyi-makespec tabcmd\tabcmd.py -n tabcmd-windows -i res\tabcmd.ico -F -c --version-file versionfile.txt --onefile  --collect-data tabcmd.locales &&
-      # pyi-makespec tabcmd\tabcmd.py -n tabcmd-mac -i res\tabcmd.icns -F -c --version-file versionfile.txt --onefile --collect-data tabcmd.locales --osx-bundle-identifier com.tableau.tabcmd
-      # 3. Unix
+          echo "Using manually generated specs"
+
+  # todo: add hidden dependencies to these command lines
+  # pyi-makespec tabcmd\tabcmd.py -n tabcmd-windows -i res\tabcmd.ico -F -c --version-file versionfile.txt --onefile  --collect-data tabcmd.locales
+  # pyi-makespec tabcmd\tabcmd.py -n tabcmd-mac -i res\tabcmd.icns -F -c --version-file versionfile.txt --onefile --collect-data tabcmd.locales --osx-bundle-identifier com.tableau.tabcmd
+  # 3. Unix
