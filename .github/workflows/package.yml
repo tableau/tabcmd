@@ -53,8 +53,11 @@ jobs:
 
     - name: Install dependencies and build
       run: |
-        pip install -e .[build]
-        pip install -e .[package]
+        python --version
+        python -m pip install --upgrade pip
+        python -m pip install --upgrade build
+        pip install .
+        pip install .[test]
         doit version
         python -m build
 
