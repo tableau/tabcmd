@@ -52,22 +52,29 @@ def set_client_locale(lang: str = None, logger=None) -> Callable:
 
 """Get absolute path to resource, works for unbundled (e.g dev) and when bundled by PyInstaller"""
 # https://stackoverflow.com/questions/7674790/bundling-data-files-with-pyinstaller-onefile/13790741#13790741
-def resource_path(relative_path):
-    """ for unbundled module, return the tabcmd src dir (parent of this file)"""
-    src_location = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
-    """sys._MEIPASS will only exist in bundled pyinstaller exe, else fall back to unbundled location"""
-    base_path = getattr(sys, "_MEIPASS", src_location)
-    return os.path.join(base_path, relative_path)
+def define_locale_dir(logger):
+    try:
+        base_path = getattr(sys, "_MEIPASS")
+    except AttributeError:  # sys._MEIPASS will only exist in bundled pyinstaller exe,
+        # in unbundled src code we take the location of the current file
+        # and go 2 dirs up so that the relative path /tabcmd/locales is still correct
+        base_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")
+    relative_path = os.path.join(".", "tabcmd", "locales")
+    locale_dir = os.path.join(base_path, relative_path)
+    logger.debug("Checking for language resources at " + locale_dir)
+    """ to debug pyinstaller file bundling, try something like this example debug line
+    try:
+        logger.debug(listdir(sys._MEIPASS))
+    except AttributeError as e:
+        logger.debug(e)
+    """
+    print(locale_dir)
+    print(listdir(locale_dir))
+    return locale_dir
 
 
 def _load_language(current_locale, domain, logger):
-    locale_path = os.path.join(".", "tabcmd", "locales")
-    locale_dir = resource_path(locale_path)
-    logger.debug("Checking for language resources at " + locale_dir)
-    # to debug pyinstaller file bundling, try something like this example debug line
-    # logger.debug(listdir(sys._MEIPASS))
-    # logger.debug(listdir(locale_dir))
-
+    locale_dir = define_locale_dir(logger)
     language: gettext.NullTranslations = gettext.translation(domain, locale_dir, languages=[current_locale])
     language.install()  # I believe this is the expensive call
     _ = language.gettext

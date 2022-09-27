@@ -20,7 +20,7 @@ files = ["tabcmd", "tests"]
 show_error_codes = true
 ignore_missing_imports = true
 [tool.pytest.ini_options]
-testpaths = ["test"]
+testpaths = ["tests"]
 addopts = "--junitxml=./test.junit.xml"
 
 [project]
@@ -47,6 +47,7 @@ dependencies = [
     "polling2",
     "pyinstaller_versionfile",
     "requests>=2.11,<3.0",
+    "setuptools_scm",
     "types-appdirs",
     "types-mock",
     "types-requests",
