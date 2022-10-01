@@ -35,17 +35,14 @@ class TabcmdController:
             set_client_locale(namespace.language, logger)
 
         try:
-            command_name = namespace.func
-        except AttributeError as aer:
-            # if no command was given, argparse will just not create the attribute
-            parser.print_help()
-            sys.exit(2)
-        try:
             # if a subcommand was identified, call the function assigned to it
             # this is the functional equivalent of the call by reflection in the previous structure
             # https://stackoverflow.com/questions/49038616/argparse-subparsers-with-functions
             namespace.func.run_command(namespace)
         except Exception as e:
+            # todo: use log_stack here for better presentation
             logger.exception(e)
+            # if no command was given, argparse will just not create the attribute
+            sys.exit(2)
 
         return namespace

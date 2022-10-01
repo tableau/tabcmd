@@ -30,12 +30,16 @@ class ListCommand(Server):
         content_type = args.content
 
         try:
-            if content_type == "projects":
-                items = server.projects.all()
-            elif content_type == "workbooks":
-                items = server.workbooks.all()
-            elif content_type == "datasources":
-                items = server.datasources.all()
+            logger.info("===== Listing {0} content for user {1}...".format(content_type, session.username))
+            try:
+                if content_type == "projects":
+                    items = server.projects.all()
+                elif content_type == "workbooks":
+                    items = server.workbooks.all()
+                elif content_type == "datasources":
+                    items = server.datasources.all()
+            except TSC.ServerResponseError as e:
+                Errors.exit_with_error(logger, exception=e)
 
             logger.info("===== Listing {0} content for user {1}...".format(content_type, session.username))
             for item in items:
