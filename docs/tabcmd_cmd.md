@@ -968,28 +968,5 @@ Removes users from the specified group.
 tabcmd removeusers "Development" --users "users.csv"
 ```
 
-
-## runschedule *schedule-name* 
-<div class="alert alert-info"><strong>Note</strong>: Tableau Server only. Not Yet Implemented</div>
-
-<!--- Syntax 
-tabcmd runschedule [schedule name] [Global options] --->
-    
-Runs the specified schedule.
-
-<div class="alert alert-info"><strong>Important</strong>: This command will fail and result in an error if your Server Administrator has disabled the RunNow setting for the site. For more information, see <a href="https://help.tableau.com/current/server/en-us/maintenance_set.htm">Tableau Server Settings</a>.</div>
-
-### Example
-
-```shell
-tabcmd runschedule "5AM Sales Refresh"
-```
-
-## version
-Displays the version information for the current installation of the tabcmd utility.
-
-### Example
-
-```shell
-tabcmd version
-```
+<div class="alert alert-info"><strong>Tip</strong>: For Tabcmd 1.0 commands available for Tableau Server, see <a href="https://help.tableau.com/current/server/en-us/tabcmd_cmd.htm" target="_blank" rel="noreferrer">tabcmd commands</a>.
+</div>
