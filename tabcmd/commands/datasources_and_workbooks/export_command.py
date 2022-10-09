@@ -31,12 +31,25 @@ class ExportCommand(DatasourcesAndWorkbooks):
         )
         export_parser.add_argument(
             "--pagesize",
-            choices=[pagesize.A3, pagesize.A4, pagesize.A5, pagesize.B4, pagesize.B5, pagesize.Executive, pagesize.Folio,
-                     pagesize.Ledger, pagesize.Legal, pagesize.Letter, pagesize.Note, pagesize.Quarto, pagesize.Tabloid,
-                     pagesize.Unspecified
+            choices=[
+                pagesize.A3,
+                pagesize.A4,
+                pagesize.A5,
+                pagesize.B4,
+                pagesize.B5,
+                pagesize.Executive,
+                pagesize.Folio,
+                pagesize.Ledger,
+                pagesize.Legal,
+                pagesize.Letter,
+                pagesize.Note,
+                pagesize.Quarto,
+                pagesize.Tabloid,
+                pagesize.Unspecified,
             ],
             default="letter",
-            help="Set the page size of the exported PDF")
+            help="Set the page size of the exported PDF",
+        )
 
         export_parser.add_argument(
             "--width", default=800, help="Set the width of the image in pixels. Default is 800 px"
