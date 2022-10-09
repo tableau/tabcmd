@@ -103,6 +103,13 @@ class DatasourcesAndWorkbooks(Server):
         request_options.image_resolution = "high"
 
     @staticmethod
+    def apply_pdf_options(request_options: TSC.PDFRequestOptions, args, logger):
+        request_options.page_type = args.pagesize
+        if args.pagelayout:
+            logger.debug("Setting page layout to: {}".format(args.pagelayout))
+            request_options.orientation = args.pagelayout
+
+    @staticmethod
     def save_to_data_file(logger, output, filename):
         logger.info(_("httputils.found_attachment").format(filename))
         with open(filename, "wb") as f:
