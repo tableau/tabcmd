@@ -148,7 +148,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
         DatasourcesAndWorkbooks.apply_png_options(image_options, args, logger)
         logger.trace(image_options)
         server.views.populate_image(view_item, image_options)
-        return view_item.png
+        return view_item.image
 
     @staticmethod
     def parse_export_url_to_workbook_and_view(logger, url):
