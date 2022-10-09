@@ -6,7 +6,7 @@ path = os.path.dirname(os.path.abspath(__file__))
 FORMATS = {
     logging.ERROR: "%(asctime)s %(levelname)-5s:(%(name)-10s %(filename)-10s: %(lineno)d): %(message)-30s",
     logging.WARN: "%(asctime)s %(levelname)-5s: (%(name)-10s %(filename)-10s: %(lineno)d): %(message)-30s",
-    logging.INFO: "%(message)-30s",
+    logging.INFO: "%(filename)-10s: %(message)-30s",
     logging.DEBUG: "%(asctime)s %(levelname)-5s: (%(name)-10s %(filename)-10s: %(lineno)d): %(message)-30s",
 }
 
