@@ -68,8 +68,8 @@ def define_locale_dir(logger):
     except AttributeError as e:
         logger.debug(e)
     """
-    print(locale_dir)
-    print(listdir(locale_dir))
+    logger.debug(locale_dir)
+    logger.debug(listdir(locale_dir))
     return locale_dir
 
 
