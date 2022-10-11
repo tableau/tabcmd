@@ -6,6 +6,8 @@ from tabcmd.execution.localize import _
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 
+pagesize = TSC.PDFRequestOptions.PageType  # type alias for brevity
+
 
 class ExportCommand(DatasourcesAndWorkbooks):
 
@@ -24,12 +26,29 @@ class ExportCommand(DatasourcesAndWorkbooks):
         export_parser.add_argument(
             "--pagelayout",
             choices=["landscape", "portrait"],
-            default="landscape",
+            default=None,
             help="page orientation (landscape or portrait) of the exported PDF",
         )
-        export_parser.add_argument("--pagesize", default="letter", help="Set the page size of the exported PDF")
         export_parser.add_argument(
-            "--image-resolution", default="High", help="Set the image resolution of the exported image"
+            "--pagesize",
+            choices=[
+                pagesize.A3,
+                pagesize.A4,
+                pagesize.A5,
+                pagesize.B4,
+                pagesize.B5,
+                pagesize.Executive,
+                pagesize.Folio,
+                pagesize.Ledger,
+                pagesize.Legal,
+                pagesize.Letter,
+                pagesize.Note,
+                pagesize.Quarto,
+                pagesize.Tabloid,
+                pagesize.Unspecified,
+            ],
+            default="letter",
+            help="Set the page size of the exported PDF",
         )
 
         export_parser.add_argument(
@@ -111,44 +130,44 @@ class ExportCommand(DatasourcesAndWorkbooks):
 
     @staticmethod
     def download_wb_pdf(server, workbook_item, args, logger):
-        logger.trace(args.url)
+        logger.debug(args.url)
         pdf_options = TSC.PDFRequestOptions(maxage=1)
         ExportCommand.apply_values_from_url_params(pdf_options, args.url, logger)
         ExportCommand.apply_values_from_args(pdf_options, args, logger)
-        logger.trace(pdf_options)
+        logger.debug(pdf_options.get_query_params())
         server.workbooks.populate_pdf(workbook_item, pdf_options)
         return workbook_item.pdf
 
     @staticmethod
     def download_view_pdf(server, view_item, args, logger):
-        logger.trace(args.url)
+        logger.debug(args.url)
         pdf_options = TSC.PDFRequestOptions(maxage=1)
         ExportCommand.apply_values_from_url_params(pdf_options, args.url, logger)
         ExportCommand.apply_values_from_args(pdf_options, args, logger)
-        logger.trace(pdf_options)
+        logger.debug(pdf_options.get_query_params())
         server.views.populate_pdf(view_item, pdf_options)
         return view_item.pdf
 
     @staticmethod
     def download_csv(server, view_item, args, logger):
-        logger.trace(args.url)
+        logger.debug(args.url)
         csv_options = TSC.CSVRequestOptions(maxage=1)
         ExportCommand.apply_values_from_url_params(csv_options, args.url, logger)
         ExportCommand.apply_values_from_args(csv_options, args, logger)
-        logger.trace(csv_options)
+        logger.debug(csv_options.get_query_params())
         server.views.populate_csv(view_item, csv_options)
         return view_item.csv
 
     @staticmethod
     def download_png(server, view_item, args, logger):
-        logger.trace(args.url)
+        logger.debug(args.url)
         image_options = TSC.ImageRequestOptions(maxage=1)
         ExportCommand.apply_values_from_url_params(image_options, args.url, logger)
         ExportCommand.apply_values_from_args(image_options, args, logger)
         DatasourcesAndWorkbooks.apply_png_options(image_options, args, logger)
-        logger.trace(image_options)
+        logger.debug(image_options.get_query_params())
         server.views.populate_image(view_item, image_options)
-        return view_item.png
+        return view_item.image
 
     @staticmethod
     def parse_export_url_to_workbook_and_view(logger, url):

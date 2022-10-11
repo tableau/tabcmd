@@ -99,8 +99,15 @@ class DatasourcesAndWorkbooks(Server):
         if args.height or args.width:
             # only applicable for png
             logger.warn("Height/width arguments not yet implemented in export")
-        if args.image_resolution:
-            request_options.image_resolution = args.image_resolution
+        # Always request high-res images
+        request_options.image_resolution = "high"
+
+    @staticmethod
+    def apply_pdf_options(request_options: TSC.PDFRequestOptions, args, logger):
+        request_options.page_type = args.pagesize
+        if args.pagelayout:
+            logger.debug("Setting page layout to: {}".format(args.pagelayout))
+            request_options.orientation = args.pagelayout
 
     @staticmethod
     def save_to_data_file(logger, output, filename):
