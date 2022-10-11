@@ -45,7 +45,7 @@ The following command demonstrates starting a session:
 tabcmd login -s <https://online.tableau.com> -t mysite -u authority@email.com -p password
 ```
 
-Here’s how to start a session and delete a workbook with one command—note that you do not need login here:
+Here’s how to start a session and delete a workbook with one command. Note that you do not need login here:
 
 ```shell
 tabcmd delete "Sales_Workbook" -s <https://online.tableau.com> -t campaign -u admin@email.com -p password
