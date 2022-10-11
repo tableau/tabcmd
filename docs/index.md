@@ -15,11 +15,11 @@ You can download and run tabcmd 2.0 as an executable file, or install it on the 
 
 ### Download and run (recommended)
 * For [Windows](https://github.com/tableau/tabcmd/releases/download/v1.99.99/tabcmd.exe)
-<!--- * For Mac: --->
+<!--- * For macOS: --->
 <!--- * For Linux:  --->
 
 ### Install with pip 
-Run the following command to install the latest stable version of tabcmd:
+For macOS and Linux, run the following command to install the latest stable version of tabcmd:
 
 ```shell
 pip install tabcmd
