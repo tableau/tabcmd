@@ -38,6 +38,20 @@ pip install git+https://github.com/tableau/tabcmd.git@development
 ### Install the older tabcmd client
 If you would like to install an older version of tabcmd, you can continue to follow the instructions at https://help.tableau.com/current/server/en-us/tabcmd.htm#tabcmd-install
 
+## Logging in
+
+You can log in to the tabcmd CLI in one of four ways:
+
+  * Log in with `--username` but not `--password`, and tabcmd will prompt for the password to be entered 
+
+
+  * Log in using `--passwordfile` instead of `--password`
+
+  * Log in with a personal access token (PAT) (only available in tabcmd 2.0)
+
+  * Log in with `--password` and the password value listed in the command line. This is the simplest way to log in but it was the least secure.
+
+
 ## Examples
 The following command demonstrates starting a session:
 

@@ -23,12 +23,11 @@ Logs in a Tableau Online user.
 
 Once you log in, the session will continue until it expires on the server or the logout command is run.
 
-If your session has expired and you want to log in using the same information you've already used, just specify the \-\-password option or the \-\-token option. The server and user name stored in the cookie will be used. (This will not work if \-\-no-cookie was specified)
+If your session has expired and you want to log in using the same information you've already used, just specify the `--password` option or the `--token` option. The server and user name stored in the cookie will be used. (This will not work if `--no-cookie` was specified)
 
 If you do not provide a password or token or passwordfile you will be prompted for one. The command will fail if username/password is specified AND token name/token is specified.
 
-Instead of calling the login command, all of the options for this command can be used while calling any other command, to create a session and run the command immediately. 
-For example:
+Instead of calling the login command, all of the options for this command can be used while calling any other command, to create a session and run the command immediately. For example:
 ```shell
 tabcmd login --server x --site y --username u --password p
 tabcmd listsites
@@ -37,7 +36,7 @@ is the same as
 ```shell
 tabcmd listsites --server x --site y --username u --password p
 ```
-
+For more information about loggin in, see [Logging in](index.html#logging-in).
 
 ### Options
 
@@ -145,7 +144,6 @@ Adds users to the specified group.
 ```shell
 tabcmd addusers "Development" --users "users.csv"
 ```
-
 
 ## createextracts
 Creates extracts for a published workbook or data source.
