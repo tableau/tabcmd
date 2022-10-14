@@ -4,7 +4,7 @@ layout: docs
 permalink: /docs/index.html
 ---
 
-Tableau provides the tabcmd command-line interface that you can use to automate site administration tasks on your Tableau Online or Tableau Server site. For example, you can use tabcmd to create or delete users, projects, and groups.
+Tableau provides the tabcmd command-line interface that you can use to automate site administration tasks on your Tableau Cloud or Tableau Server site. For example, you can use tabcmd to create or delete users, projects, and groups.
 
 * TOC
 {:toc}

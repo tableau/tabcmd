@@ -7,7 +7,7 @@ You can use the following commands with the tabcmd command-line tool:
 
 <div class="alert alert-info"><strong>Notes</strong>: 
   <ul>
-  <li>Some commands listed may not apply when using tabcmd with Tableau Online.</li>
+  <li>Some commands listed may not apply when using tabcmd with Tableau Cloud.</li>
   <li>Some commands or options listed may not yet be implemented in this version of tabcmd.</li>
   </ul>
 </div>
@@ -17,7 +17,7 @@ You can use the following commands with the tabcmd command-line tool:
 
 
 ## login
-Logs in a Tableau Online user. 
+Logs in a Tableau Cloud user. 
 
 <div class="alert alert-info"><strong>Note</strong>: When you use tabcmd you cannot use SAML single sign-on (SSO), even if your site is configured to use SAML. To log in, you must pass the user name and password or token name and token of a user who has been created in your site. You will have the permissions of the Tableau Server user that you're signed in as.</div>
 
@@ -48,7 +48,7 @@ For more information about loggin in, see [Logging in](index.html#logging-in).
 
 : If the server is using a port other than 80 (the default), you will need to specify the port, for example http://servername.com:8000
 
-: For Tableau Online, specify the URL https://online.tableau.com.
+: For Tableau Cloud, specify the URL https://online.tableau.com.
 
 -t, \-\-site
 
@@ -58,7 +58,7 @@ For more information about loggin in, see [Logging in](index.html#logging-in).
 
 -u, \-\-username
 
-: The user name of the user logging in. For Tableau Online, the user name is the user's email address.
+: The user name of the user logging in. For Tableau Cloud, the user name is the user's email address.
 
 -p, \-\-password
 
@@ -99,7 +99,7 @@ For more information about loggin in, see [Logging in](index.html#logging-in).
 
 ### Example
 
-Log in to the Tableau Online site with the specified site ID:
+Log in to the Tableau Cloud site with the specified site ID:
 
 ```shell
 tabcmd login -s https://online.tableau.com -t siteID -u user@email.com -p password
@@ -117,7 +117,7 @@ where:
 * `--token-name` is the token name for user.
 * `--token-value` is the token specified for `--token-name`
 
-<div class="alert alert-info"><strong>Note</strong>: If you log in to Tableau Online with a PAT, the URL you specify must include the pod that your site is deployed to (for example:  <code>https://prod-useast-b.online.tableau.com</code>). You can't log in to Tableau Online using a PAT unless you  specify the pod.</div>
+<div class="alert alert-info"><strong>Note</strong>: If you log in to Tableau Cloud with a PAT, the URL you specify must include the pod that your site is deployed to (for example:  <code>https://prod-useast-b.online.tableau.com</code>). You can't log in to Tableau Cloud using a PAT unless you  specify the pod.</div>
 
 
 ## logout
@@ -135,7 +135,7 @@ Adds users to the specified group.
 
 ### Options
 \-\-users
-: Add the users in the given .csv file to the specified group. The file should be a simple list with one user name per line. User names are not case-sensitive. The users should already be created on Tableau Online.
+: Add the users in the given .csv file to the specified group. The file should be a simple list with one user name per line. User names are not case-sensitive. The users should already be created on Tableau Cloud.
 
 : For more information, see [CSV Import File Guidelines](https://help.tableau.com/current/online/en-us/csvguidelines.htm).
 
@@ -517,7 +517,7 @@ tabcmd encryptextracts "West Coast Sales"
 ```
 
 ## export
-Exports a view or workbook from Tableau Online and saves it to a file. This command can also export just the data used for a view. View data is exported at the summary level. To export detail-level data, you must use the Tableau Server UI. For details, see [Download Views and Workbooks](https://help.tableau.com/current/pro/desktop/en-us/export.htm).
+Exports a view or workbook from Tableau Cloud and saves it to a file. This command can also export just the data used for a view. View data is exported at the summary level. To export detail-level data, you must use the Tableau Server UI. For details, see [Download Views and Workbooks](https://help.tableau.com/current/pro/desktop/en-us/export.htm).
 
 <!--- Syntax 
 tabcmd get url[?data-parameters] [format-option] [options] [Global options] --->
@@ -626,7 +626,7 @@ tabcmd export "Sales/Sales_Analysis" --fullpdf --pagesize tabloid -f "C:\Tableau
 ```
 
 ## get *url*
-Gets the resource from Tableau Online that's represented by the specified (partial) URL. The result is returned as a file.
+Gets the resource from Tableau Cloud that's represented by the specified (partial) URL. The result is returned as a file.
 
 <div class="alert alert-info"><strong>Notes:</strong>
     This command is very similar to export, but not identical. Be careful you are using the options and url formatted for the correct command.
@@ -721,7 +721,7 @@ tabcmd listsites --username adam --password mypassword
 
 
 ## publish *filename.twb(x)*, *filename.tds(x)*, or *filename.hyper*
-Publishes the specified workbook (.twb(x)), data source (.tds(x)), or extract (.hyper) to Tableau Online.
+Publishes the specified workbook (.twb(x)), data source (.tds(x)), or extract (.hyper) to Tableau Cloud.
 
     
 <!--- Syntax 
