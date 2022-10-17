@@ -36,6 +36,9 @@ is the same as
 ```shell
 tabcmd listsites --server x --site y --username u --password p
 ```
+
+<div class="alert alert-info"><strong>Note</strong>: If you log in to Tableau Cloud, the URL you specify must include the pod that your site is deployed to (for example:  <code>https://prod-useast-b.online.tableau.com</code>). You can't log in to Tableau Cloud unless you specify the pod.</div>
+
 For more information about loggin in, see [Logging in](index.html#logging-in).
 
 ### Options
@@ -48,7 +51,7 @@ For more information about loggin in, see [Logging in](index.html#logging-in).
 
 : If the server is using a port other than 80 (the default), you will need to specify the port, for example http://servername.com:8000
 
-: For Tableau Cloud, specify the URL https://online.tableau.com.
+: For Tableau Cloud, specify the full URL including the pod that your site is deployed to. For example: `https://prod-useast-b.online.tableau.com/`.
 
 -t, \-\-site
 
@@ -102,7 +105,7 @@ For more information about loggin in, see [Logging in](index.html#logging-in).
 Log in to the Tableau Cloud site with the specified site ID:
 
 ```shell
-tabcmd login -s https://online.tableau.com -t siteID -u user@email.com -p password
+tabcmd login -s https://prod-useast-b.online.tableau.com/ -t siteID -u user@email.com -p password
 ```
 
 ### Log in using personal access tokens
@@ -116,8 +119,6 @@ tabcmd login --server “http://exampleserver.com" --site "examplesite" --token-
 where:
 * `--token-name` is the token name for user.
 * `--token-value` is the token specified for `--token-name`
-
-<div class="alert alert-info"><strong>Note</strong>: If you log in to Tableau Cloud with a PAT, the URL you specify must include the pod that your site is deployed to (for example:  <code>https://prod-useast-b.online.tableau.com</code>). You can't log in to Tableau Cloud using a PAT unless you  specify the pod.</div>
 
 
 ## logout
