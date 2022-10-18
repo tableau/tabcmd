@@ -214,7 +214,7 @@ class Session:
         self._read_existing_state()
         self._update_session_data(args)
         self.logging_level = args.logging_level or self.logging_level
-        self.logger = log(__class__.__name__, self.logging_level)
+        self.logger = self.logger or log(__class__.__name__, self.logging_level)
 
         credentials = None
         if args.password:
