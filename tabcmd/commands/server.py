@@ -93,7 +93,8 @@ class Server:
     @staticmethod
     def get_site_by_name(logger, server, site_name):
         try:
-            site_item = Server.get_items_by_name(logger, server.sites, site_name)[0]
+            # sites don't use the normal filter
+            site_item = server.sites.get_by_name(site_name)
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
         return site_item
