@@ -134,7 +134,7 @@ def set_encryption_option(parser):
     parser.add_argument(
         "--encrypt",
         dest="encrypt",
-        action="store_false",
+        action="store_true",  # set to true IF user passes in option --encrypt
         help="Encrypt the newly created extract.",
     )
     return parser

@@ -11,26 +11,25 @@ class ExecutionTests(unittest.TestCase):
     def test_launch(self):
         parser = TabcmdController.initialize()
         TabcmdController.run(parser, ["help"])
-        # check exit code = 0?
 
     def test_initialize(self):
         TabcmdController.initialize()
 
     @mock.patch("sys.argv", "")
-    def test_inputs(self):
+    def test_no_inputs_exits(self):
         fake_parser = mock.MagicMock(argparse.ArgumentParser)
         with self.assertRaises(SystemExit):
             TabcmdController.run(fake_parser, None)
 
-    def test_invalid_command(self):
+    def test_invalid_command_exits(self):
         parser = TabcmdController.initialize()
-        # crashes out during parse_args
+        # alerts and exits during parse_args
         with self.assertRaises(SystemExit):
             TabcmdController.run(parser, ["boo", "--language", "fr"])
 
-    def test_launch_languages(self):
+    def test_launch_languages_succeeds(self):
         parser = TabcmdController.initialize()
-        # crashes out from list_sites.cmd
+        # fails to connect to server...
         with self.assertRaises(SystemExit):
             TabcmdController.run(parser, ["listsites", "--language", "fr"])
 
