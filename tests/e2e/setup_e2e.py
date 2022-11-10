@@ -1,9 +1,8 @@
 import subprocess
 import os
-import pytest
 
 try:
-    from tests.e2e import credentials
+    from tests.e2e import credentials  # type: ignore
 except ImportError:
     credentials = None  # type: ignore
 

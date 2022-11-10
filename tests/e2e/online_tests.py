@@ -51,7 +51,7 @@ class OnlineCommandTest(unittest.TestCase):
     def _create_project(self, project_name, parent_path=None):
         command = "createproject"
         arguments = [command, "--name", project_name]
-        if parent_path or parent_location:
+        if parent_path:
             arguments.append("--parent-project-path")
             arguments.append(parent_path)
         _test_command(arguments)
@@ -59,9 +59,9 @@ class OnlineCommandTest(unittest.TestCase):
     def _delete_project(self, project_name, parent_path=None):
         command = "deleteproject"
         arguments = [command, project_name]
-        if parent_path or parent_location:
+        if parent_path:
             arguments.append("--parent-project-path")
-            arguments.append(parent_path or parent_location)
+            arguments.append(parent_path)
         _test_command(arguments)
 
     def _publish_samples(self, project_name):

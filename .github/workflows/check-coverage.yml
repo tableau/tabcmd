@@ -28,10 +28,11 @@ jobs:
       run: |
         python --version
         python -m pip install --upgrade pip
-        pip install -e .[build]
-        pip install -e .[test]
+        python -m pip install --upgrade build
+        pip install .
+        pip install .[test]
         doit version
-        python setup.py build
+        python -m build
 
     #  https://github.com/marketplace/actions/pytest-coverage-comment
     - name: Generate coverage report

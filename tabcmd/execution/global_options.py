@@ -134,7 +134,7 @@ def set_encryption_option(parser):
     parser.add_argument(
         "--encrypt",
         dest="encrypt",
-        action="store_false",
+        action="store_true",  # set to true IF user passes in option --encrypt
         help="Encrypt the newly created extract.",
     )
     return parser
@@ -316,8 +316,12 @@ def set_publish_args(parser):
     )
     parser.add_argument("--oauth-username", help="The email address of a preconfigured OAuth connection")
     parser.add_argument("--save-oauth", action="store_true", help="Save embedded OAuth credentials in the datasource")
-    parser.add_argument("--thumbnail-username", help="Not yet implemented")
-    parser.add_argument("--thumbnail-group", help="Not yet implemented")  # not implemented in the REST API
+
+    thumbnails = parser.add_mutually_exclusive_group()
+    thumbnails.add_argument("--thumbnail-username", help="Not yet implemented")
+    thumbnails.add_argument("--thumbnail-group", help="Not yet implemented")  # not implemented in the REST API
+
+    parser.add_argument("--use-tableau-bridge", help="Refresh datasource through Tableau Bridge")
 
 
 def set_overwrite_option(parser):

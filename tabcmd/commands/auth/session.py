@@ -214,7 +214,7 @@ class Session:
         self._read_existing_state()
         self._update_session_data(args)
         self.logging_level = args.logging_level or self.logging_level
-        self.logger = log(__name__, self.logging_level)
+        self.logger = self.logger or log(__class__.__name__, self.logging_level)
 
         credentials = None
         if args.password:
@@ -245,8 +245,8 @@ class Session:
             signed_in_object = self._sign_in(credentials)
 
         if not signed_in_object:
-            missing_var = _("editdomain.errors.requires_nickname_name").format("username", "token")
-            Errors.exit_with_error(self.logger, _("session.errors.missing_arguments").format(missing_var))
+            message = "Run 'tabcmd login -h' for details on required arguments"
+            Errors.exit_with_error(self.logger, _("session.errors.missing_arguments").format(message))
         if args.no_cookie:
             self._remove_json()
         else:
