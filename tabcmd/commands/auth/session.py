@@ -44,8 +44,8 @@ class Session:
         self.timeout = None
 
         self.logging_level = "info"
-        self.logger = log(__class__.__name__, self.logging_level)  # instantiate here mostly for tests
         self._read_from_json()
+        self.logger = log(__name__, self.logging_level)  # instantiate here mostly for tests
         self.tableau_server = None  # this one is an object that doesn't get persisted in the file
 
     # called before we connect to the server

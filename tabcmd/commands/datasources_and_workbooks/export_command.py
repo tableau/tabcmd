@@ -86,6 +86,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
             if args.fullpdf:  # it's a workbook
                 workbook_item = ExportCommand.get_wb_by_content_url(logger, server, wb_content_url)
                 output = ExportCommand.download_wb_pdf(server, workbook_item, args, logger)
+
                 default_filename = "{}.pdf".format(workbook_item.name)
 
             elif args.pdf or args.png or args.csv:  # it's a view
@@ -99,6 +100,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
                     default_filename = "{}.csv".format(view_item.name)
                 elif args.png:
                     output = ExportCommand.download_png(server, view_item, args, logger)
+
                     default_filename = "{}.png".format(view_item.name)
 
         except Exception as e:
@@ -110,6 +112,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
                 ExportCommand.save_to_data_file(logger, output, save_name)
             else:
                 ExportCommand.save_to_file(logger, output, save_name)
+
 
         except Exception as e:
             Errors.exit_with_error(logger, "Error saving to file", e)

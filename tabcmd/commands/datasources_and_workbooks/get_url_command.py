@@ -41,6 +41,7 @@ class GetUrl(DatasourcesAndWorkbooks):
 
         file_type = GetUrl.get_file_type_from_filename(logger, args.filename, url)
         content_type = GetUrl.evaluate_content_type(logger, url)
+
         if content_type == "workbook":
             if file_type in ["twbx", "twb"]:
                 GetUrl.generate_twb(logger, server, args, file_type, url)
@@ -77,6 +78,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             _("export.errors.requires_workbook_view_param").format(__class__.__name__), view_example
         )
         Errors.exit_with_error(logger, message)
+
 
     @staticmethod
     def get_file_type_from_filename(logger, file_name, url):
