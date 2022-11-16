@@ -115,9 +115,3 @@ At some point in the future, tabcmd will no longer be included with Tableau Serv
 *We have no intention of breaking Server install flows.* 
 If you have specific suggestions or concerns on what that will look like, feel free to open an issue here or a thread on the Community Forums.
 
-
-------
-Release process
-- create a new release on github, tagged with the version number
-  - [not currently working] github action will build and upload executables
-- tag the release commit with 'pypi': this will trigger an upload to pypi
