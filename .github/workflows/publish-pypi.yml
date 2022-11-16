@@ -27,8 +27,6 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install --upgrade build
           pip install .
-          pip install .[package]
-          doit version
           python -m build
       - name: Publish distribution 📦 to Test PyPI
         if: ${{ inputs.is_draft }}

@@ -64,6 +64,7 @@ To run tabcmd from your local copy, from a console window in the same directory 
 > mypy tabcmd tests
 
 - packaging is done with pyinstaller. You can only build an executable for the platform you build on.
+- To package a release, we first bump the version with `doit version` and build as 2.x.0 before packaging
 > pyinstaller tabcmd\tabcmd.py --clean --noconfirm
 
 produces dist/tabcmd.exe

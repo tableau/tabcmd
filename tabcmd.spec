@@ -1,8 +1,20 @@
 # -*- mode: python ; coding: utf-8 -*-
 
-
 block_cipher = None
 
+localized_strings = [
+    ('tabcmd/locales/en/LC_MESSAGES/tabcmd.mo', 'tabcmd/locales/en/LC_MESSAGES'),
+    ('tabcmd/locales/de/LC_MESSAGES/tabcmd.mo', 'tabcmd/locales/de/LC_MESSAGES'),
+    ('tabcmd/locales/es/LC_MESSAGES/tabcmd.mo', 'tabcmd/locales/es/LC_MESSAGES'),
+    ('tabcmd/locales/fr/LC_MESSAGES/tabcmd.mo', 'tabcmd/locales/fr/LC_MESSAGES'),
+    ('tabcmd/locales/ga/LC_MESSAGES/tabcmd.mo', 'tabcmd/locales/ga/LC_MESSAGES'),
+    ('tabcmd/locales/it/LC_MESSAGES/tabcmd.mo', 'tabcmd/locales/it/LC_MESSAGES'),
+    ('tabcmd/locales/ja/LC_MESSAGES/tabcmd.mo', 'tabcmd/locales/ja/LC_MESSAGES'),
+    ('tabcmd/locales/ko/LC_MESSAGES/tabcmd.mo', 'tabcmd/locales/ko/LC_MESSAGES'),
+    ('tabcmd/locales/pt/LC_MESSAGES/tabcmd.mo', 'tabcmd/locales/pt/LC_MESSAGES'),
+    ('tabcmd/locales/sv/LC_MESSAGES/tabcmd.mo', 'tabcmd/locales/sv/LC_MESSAGES'),
+    ('tabcmd/locales/zh/LC_MESSAGES/tabcmd.mo', 'tabcmd/locales/zh/LC_MESSAGES'),
+    ]
 
 a = Analysis(
     ['tabcmd\\tabcmd.py'],
