@@ -6,7 +6,6 @@ from .common_setup import *
 
 commandname = "addusers"
 
-
 class AddUsersParserTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
