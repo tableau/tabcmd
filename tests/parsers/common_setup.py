@@ -2,6 +2,8 @@ from tabcmd.execution import parent_parser
 from collections import namedtuple
 
 
+encoding = "utf-8-sig"
+
 def mock_command_action():
     print("a mockery!")
 

@@ -47,3 +47,4 @@ site-packages
 # local
 tabcmd-dev
 workon
+test.junit.xml
