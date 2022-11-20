@@ -17,7 +17,7 @@ class DeleteSiteCommand(Server):
 
     @staticmethod
     def define_args(delete_site_parser):
-        delete_site_parser.add_argument("site_name_to_delete", metavar="site-name", help="name of site to delete")
+        delete_site_parser.add_argument("site_name_to_delete", metavar="site-name", help=strings[2])
 
     @staticmethod
     def run_command(args):
@@ -26,8 +26,19 @@ class DeleteSiteCommand(Server):
         session = Session()
         server = session.create_session(args)
         site_url = Server.get_site_by_name(logger, server, args.site_name_to_delete).content_url
+        logger.debug(strings[3].format(site_url))
         try:
             server.sites.delete(site_url)
-            logger.info("Successfully deleted the site")
+            logger.info(strings[0])
         except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, "Error deleting site", e)
+            Errors.exit_with_error(logger, strings[1], e)
+        except BaseException as e:
+            Errors.exit_with_error(logger, strings[4], e)
+
+strings = [
+"Successfully deleted the site",
+"Server responded with an error while deleting site",
+"name of site to delete",
+"Deleting site  {}",
+"Error while deleting site"
+]
