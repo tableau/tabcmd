@@ -35,10 +35,11 @@ class DeleteSiteCommand(Server):
         except BaseException as e:
             Errors.exit_with_error(logger, strings[4], e)
 
+
 strings = [
-"Successfully deleted the site",
-"Server responded with an error while deleting site",
-"name of site to delete",
-"Deleting site  {}",
-"Error while deleting site"
+    "Successfully deleted the site",
+    "Server responded with an error while deleting site",
+    "name of site to delete",
+    "Deleting site  {}",
+    "Error while deleting site",
 ]
