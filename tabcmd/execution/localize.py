@@ -25,7 +25,7 @@ def _identity_func(x: Any) -> Any:
 
 
 # The client should present text in the OS language, or english if not present.
-def set_client_locale(lang: str = "", logger=None) -> Callable:
+def set_client_locale(lang: str = "", logger=None) -> Callable | None:
     if not logger:
         logger = logging.getLogger()
 
