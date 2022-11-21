@@ -1,6 +1,4 @@
 import argparse
-from typing import Any, List
-
 from tabcmd.execution.localize import _
 from tabcmd.execution.logger_config import log
 
@@ -11,7 +9,14 @@ class HelpCommand:
     """
 
     name: str = "help"
-    description: str = "Show Help and exit"
+    description = "Show message listing commands and global options, then exit"
+    usage = (
+        "tabcmd help             -- Show message listing commands and global options, then exit\n"
+        "tabcmd <command>        -- Run a specific command {0}\n"
+        "tabcmd <command> -h     -- Show Help for a specific command\n\n"
+        "More help: https://tableau.github.io/tabcmd/\n\n"
+    )
+
 
     @staticmethod
     def define_args(parser):
@@ -19,56 +24,37 @@ class HelpCommand:
 
     @staticmethod
     def run_command(args: argparse.Namespace):
-
-        # whaddya mean, '__class__' is not defined ??!?!!?
-        logger = log(__class__.__name__, args.logging_level)  # type: ignore[name-defined]
-        logger.debug(_("tabcmd.launching"))
-
-        # delayed import, TODO fix cyclic imports
+        # delayed import because cyclical - commands shouldn't generally reference the command structure
         from tabcmd.execution.map_of_commands import CommandsMap
+        from tabcmd.execution.parent_parser import version
+        logger = log(__name__, args.logging_level)
+        logger.debug(_("tabcmd.launching"))
+        all_commands = CommandsMap.commands_hash_map
 
-        all_commands: List[Any] = CommandsMap.commands_hash_map
-
-        description: str = (
-            "tabcmd - Tableau Server Command Line Utility 2.0 \n \n"
-            "tabcmd help             -- List all available commands and global options \n"
-            "tabcmd help <a command> -- Show Help for a specific command\n\n"
-        )
+        logger.info("tabcmd - Tableau Server Command Line Utility {0} \n".format(version))
+        logger.info("Usage:\n")
+        logger.info(HelpCommand.usage.format("(see list below)"))
 
         if args.help_option:
+            # identify if the command was 'tabcmd help -h' - they just want instructions for running help
+            if args.help_option == "-h":
+                exit(0)
 
-            if args.help_option in map(lambda command: command.name, all_commands):
-                command_objects = filter(lambda command: command.name == args.help_option, all_commands)
-                cli_cmd = list(command_objects)[0]
-                logger.info(cli_cmd.name.ljust(25) + cli_cmd.description + "\n")
-                command_parser = argparse.ArgumentParser(parents=[])
-                cli_cmd.define_args(command_parser)
+            logger.info(all_commands.a)
+            cmd = list(all_commands).filter(lambda command: command.name == args.help_option, all_commands)
+            if cmd is not None:
+                from tabcmd.execution.parent_parser import ParentParser
+                parser = ParentParser.get_command_args(cmd)
+                logger.info(parser.print_help())
 
-                positionals = []
-                optionals = []
-                for option in command_parser._actions:
-                    if option.option_strings:
-                        optionals.append(option)
-                    else:
-                        positionals.append(option)
-
-                if positionals:
-                    logger.info("Required arguments")
-                for option in positionals:
-                    logger.info("{0} {1}{2}{3}".format(option.dest.ljust(25), "{", option.help, "}"))
-                if optionals:
-                    logger.info("\nOptional arguments")
-                for option in optionals:
-                    logger.info("{0} {1} ".format(option.option_strings, option.help))
-
-                logger.info("\nUsage")
-                usage = cli_cmd.name + " "
-                for opt in positionals:
-                    usage = usage + opt.dest
-                if len(positionals) < len(command_parser._actions):
-                    usage = usage + "  [--optional arguments]"
-                logger.info(usage)
 
         else:
+            logger.info("Tabcmd commands:\n")
             for cmd in all_commands:
-                logger.info(cmd.name + ": " + cmd.description)
+                logger.info("\t" + cmd.name + ": " + cmd.description)
+            logger.info("\nGlobal settings")
+
+            from tabcmd.execution.parent_parser import parent_parser_with_global_options
+            parser = parent_parser_with_global_options()
+            logger.info(parser.print_help())
+            logger.info(HelpCommand.usage.format(""))
