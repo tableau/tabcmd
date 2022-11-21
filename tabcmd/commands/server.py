@@ -43,7 +43,7 @@ class Server:
         return Server.get_items_by_name(logger, server.users, username)[0]
 
     @staticmethod
-    def get_items_by_name(logger, item_endpoint, item_name: str, container: TSC.ProjectItem = None) -> List:
+    def get_items_by_name(logger, item_endpoint, item_name: str, container: Optional[TSC.ProjectItem] = None) -> List:
         # TODO: typing should reflect that this returns TSC.TableauItem and item_endpoint is of type TSC.QuerysetEndpoint[same]
         item_type = type(item_endpoint).__name__
         item_log_name: str = "[" + item_type + "] " + item_name

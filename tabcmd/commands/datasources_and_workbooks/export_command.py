@@ -113,7 +113,6 @@ class ExportCommand(DatasourcesAndWorkbooks):
             else:
                 ExportCommand.save_to_file(logger, output, save_name)
 
-
         except Exception as e:
             Errors.exit_with_error(logger, "Error saving to file", e)
 

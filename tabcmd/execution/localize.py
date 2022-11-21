@@ -4,7 +4,7 @@ import logging
 import os
 import sys
 from os import listdir
-from typing import Any
+from typing import Any, Optional
 from typing import Callable
 
 translate = None
@@ -14,7 +14,7 @@ translate = None
 def _(string_key: str) -> str:
     global translate
     if not translate:
-        translate = set_client_locale(None, None)
+        translate = set_client_locale()
     if not translate:
         translate = _identity_func
     return translate(string_key)
@@ -25,7 +25,7 @@ def _identity_func(x: Any) -> Any:
 
 
 # The client should present text in the OS language, or english if not present.
-def set_client_locale(lang: str = None, logger=None) -> Callable:
+def set_client_locale(lang: str = "", logger=None) -> Optional[Callable]:
     if not logger:
         logger = logging.getLogger()
 

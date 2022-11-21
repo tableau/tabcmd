@@ -40,7 +40,7 @@ def set_users_file_arg(parser):
     parser.add_argument(
         "--users",
         required=True,
-        type=argparse.FileType("r", encoding="UTF-8"),
+        type=argparse.FileType("r", encoding="utf-8-sig"),
         help="CSV file containing a list of users.",
     )
     return parser
@@ -50,7 +50,7 @@ def set_users_file_positional(parser):
     parser.add_argument(
         "filename",
         metavar="filename.csv",
-        type=argparse.FileType("r", encoding="UTF-8"),
+        type=argparse.FileType("r", encoding="utf-8-sig"),
         help="CSV file containing a list of users.",
     )
     return parser
