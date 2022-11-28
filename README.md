@@ -64,6 +64,7 @@ To run tabcmd from your local copy, from a console window in the same directory 
 > mypy tabcmd tests
 
 - packaging is done with pyinstaller. You can only build an executable for the platform you build on.
+- To package a release, we first bump the version with `doit version` and build as 2.x.0 before packaging
 > pyinstaller tabcmd\tabcmd.py --clean --noconfirm
 
 produces dist/tabcmd.exe
@@ -113,3 +114,4 @@ Copies of tabcmd that shipped with Tableau Server are referred to by the version
 At some point in the future, tabcmd will no longer be included with Tableau Server. 
 *We have no intention of breaking Server install flows.* 
 If you have specific suggestions or concerns on what that will look like, feel free to open an issue here or a thread on the Community Forums.
+
