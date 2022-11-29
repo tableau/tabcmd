@@ -91,7 +91,7 @@ class Server:
         return site_item
 
     @staticmethod
-    def get_site_by_name(logger, server, site_name):
+    def get_site_by_name(logger, server, site_name) -> TSC.SiteItem:
         try:
             # sites don't use the normal filter
             site_item = server.sites.get_by_name(site_name)

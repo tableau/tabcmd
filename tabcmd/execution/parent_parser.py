@@ -56,7 +56,7 @@ class ParentParser:
 
         parser.add_argument(
             "--continue-if-exists",
-            action="store_false",
+            action="store_true",
             help="Treat resource conflicts as item creation success e.g project already exists",
         )
 

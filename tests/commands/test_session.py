@@ -45,7 +45,7 @@ mock_data_from_json = Namespace(
     no_prompt=False,
 )
 
-fakeserver = "http://SRVR"
+fakeserver = "http://SRVR".lower()
 
 
 def _set_mocks_for_json_file_saved_username(mock_json_load, auth_token, username):

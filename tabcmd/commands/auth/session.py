@@ -54,11 +54,16 @@ class Session:
         # user id and site id are never passed in as args
         # last_login_using and tableau_server are internal data
         # self.command = args.???
-        self.username = args.username or self.username
+        self.username = args.username or self.username or ""
+        self.username = self.username.lower()
+        self.server_url = args.server or self.server_url or "http://localhost"
+        self.server_url = self.server_url.lower()
+        if args.server is not None:
+            self.site_name = None
         self.site_name = args.site_name or self.site_name or ""
+        self.site_name = self.site_name.lower()
         if self.site_name == "default":
             self.site_name = ""
-        self.server_url = args.server or self.server_url or "http://localhost"
         self.logging_level = args.logging_level or self.logging_level
         self.password_file = args.password_file
         self.token_name = args.token_name or self.token_name
