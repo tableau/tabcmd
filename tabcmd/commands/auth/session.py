@@ -55,7 +55,7 @@ class Session:
         # last_login_using and tableau_server are internal data
         # self.command = args.???
         self.username = args.username or self.username or ""
-        self.username.lower()
+        self.username = self.username.lower()
         self.server_url = args.server or self.server_url or "http://localhost"
         self.server_url = self.server_url.lower()
         if args.server is not None:
