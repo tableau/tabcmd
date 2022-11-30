@@ -46,8 +46,7 @@ def configure_log(name: str, logging_level_input: str):
     logging_level = getattr(logging, logging_level_input.upper())
     log_format = FORMATS[logging_level]
     if logging_level is not logging.INFO:
-        print("error in the next line: str cannot be assigned or something?")
-        log_format[logging.INFO] = "%(filename)-10s: %(message)-30s"
+        FORMATS[logging.INFO] = "%(filename)-10s: %(message)-30s"
 
     logging.basicConfig(
         level=logging_level, format=log_format, filename="tabcmd.log", filemode="a", datefmt="%Y-%m" "-%d " "%H:%M:%S"
