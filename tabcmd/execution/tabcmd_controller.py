@@ -29,7 +29,7 @@ class TabcmdController:
             print("logging:", namespace.logging_level)
 
         logger = log(__name__, namespace.logging_level or logging.INFO)
-        if namespace.password:
+        if namespace.password or namespace.token_value:
             logger.trace(namespace.func)
         else:
             logger.trace(namespace)
