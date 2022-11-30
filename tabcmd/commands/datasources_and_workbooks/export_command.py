@@ -54,9 +54,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
             help="Set the page size of the exported PDF",
         )
 
-        group.add_argument(
-            "--width", default=800, help="Set the width of the image in pixels. Default is 800 px"
-        )
+        group.add_argument("--width", default=800, help="Set the width of the image in pixels. Default is 800 px")
         group.add_argument("--filename", "-f", help="filename to store the exported data")
         group.add_argument("--height", default=600, help=_("export.options.height"))
         group.add_argument(

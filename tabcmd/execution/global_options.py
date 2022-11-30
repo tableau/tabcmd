@@ -66,18 +66,18 @@ def set_no_wait_option(parser):
 
 
 site_roles = [
-              "ServerAdministrator",
-              "SiteAdministratorCreator",
-              "SiteAdministratorExplorer",
-              "SiteAdministrator",
-              "Creator",
-              "ExplorerCanPublish",
-              "Publisher",
-              "Explorer",
-              "Interactor",
-              "Viewer",
-              "Unlicensed",
-          ]
+    "ServerAdministrator",
+    "SiteAdministratorCreator",
+    "SiteAdministratorExplorer",
+    "SiteAdministrator",
+    "Creator",
+    "ExplorerCanPublish",
+    "Publisher",
+    "Explorer",
+    "Interactor",
+    "Viewer",
+    "Unlicensed",
+]
 
 
 def set_role_arg(parser):
@@ -87,7 +87,7 @@ def set_role_arg(parser):
         choices=list(map(lambda x: x.lower(), site_roles)),
         type=str.lower,
         help="Specifies a site role for all users in the .csv file. Possible roles: " + ", ".join(site_roles),
-        metavar="SITE_ROLE"
+        metavar="SITE_ROLE",
     )
     return parser
 

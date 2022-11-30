@@ -31,6 +31,8 @@ many arguments are added to a mutually-exclusive-group of one argument. They are
 'formatting_group1' to make it clear this is a formatting choice, not functional.
 The arguments for each command must be added to a group for that command.
 """
+
+
 def parent_parser_with_global_options():
     parser = argparse.ArgumentParser(usage=argparse.SUPPRESS, add_help=False)
     parser._optionals.title = strings[0]
@@ -50,15 +52,8 @@ def parent_parser_with_global_options():
     )
 
     auth_options = parser.add_mutually_exclusive_group()
-    auth_options.add_argument(
-        "--token-name",
-        default=None,
-        metavar="<TOKEN NAME>",
-        help=strings[13]
-    )
-    auth_options.add_argument(
-        "-u", "--username", default=None, metavar="<USER>", help=_("session.options.username")
-    )
+    auth_options.add_argument("--token-name", default=None, metavar="<TOKEN NAME>", help=strings[13])
+    auth_options.add_argument("-u", "--username", default=None, metavar="<USER>", help=_("session.options.username"))
 
     secret_values = parser.add_mutually_exclusive_group()
     secret_values.add_argument(
@@ -73,13 +68,10 @@ def parent_parser_with_global_options():
     secret_values.add_argument(
         "--password-file", default=None, metavar="<FILE>", help=_("session.options.password-file")
     )
-    secret_values.add_argument(
-        "--token-file", default=None, metavar="<FILE>", help=strings[11]
-    )
+    secret_values.add_argument("--token-file", default=None, metavar="<FILE>", help=strings[11])
 
     formatting_group3 = parser.add_mutually_exclusive_group()
     formatting_group3.add_argument("--no-prompt", action="store_true", help=_("session.options.no-prompt"))
-
 
     certificates = parser.add_mutually_exclusive_group()
     certificates.add_argument(
@@ -135,7 +127,7 @@ def parent_parser_with_global_options():
         "--language",
         choices=["de", "en", "es", "fr", "it", "ja", "ko", "pt", "sv", "zh"],
         type=str.lower,  # coerce input to lowercase to act case insensitive
-        help= strings[10],
+        help=strings[10],
     )
 
     parser.add_argument(
@@ -165,11 +157,8 @@ class ParentParser:
     def __init__(self):
         self.global_options = parent_parser_with_global_options()
         self.root = argparse.ArgumentParser(
-            prog="tabcmd",
-            description=strings[15],
-            parents=[self.global_options],
-            epilog=strings[2]
-       )
+            prog="tabcmd", description=strings[15], parents=[self.global_options], epilog=strings[2]
+        )
         self.root._optionals.title = strings[1]
         # https://stackoverflow.com/questions/7498595/python-argparse-add-argument-to-multiple-subparsers
         self.subparsers = self.root.add_subparsers(
@@ -195,9 +184,7 @@ class ParentParser:
         return additional_parser
 
     def include_help(self):
-        additional_parser = self.subparsers.add_parser(
-            "help", help=strings[14], parents=[self.global_options]
-        )
+        additional_parser = self.subparsers.add_parser("help", help=strings[14], parents=[self.global_options])
         additional_parser._optionals.title = strings[1]
         additional_parser.set_defaults(func=Help(self))
 
@@ -213,7 +200,7 @@ class Help:
         logger = log(__name__, "info")
         logger.info(strings[6] + " " + version + "\n")
         logger.info(self.parser.root.format_help())
-        
+
 
 strings = [
     "global behavioral arguments",  # 0 - global_behavior_args
@@ -228,11 +215,11 @@ strings = [
     "Treat resource conflicts as item creation success e.g project already exists",  # 9
     "Set the language to use. Exported data will be returned in this lang/locale.\n \
         If not set, the client will use your computer locale, and the server will use \
-        your user account locale", # 10
+        your user account locale",  # 10
     "Read the Personal Access Token from a file.",  # 11
     "Use the specified Tableau Server Personal Access Token. Requires --token-name to be set.",  # 12
     "The name of the Tableau Server Personal Access Token. If using a token to sign in,\
         this is required at least once to begin session.",  # 13
-     "Show message listing commands and global options, then exit",  # 14
+    "Show message listing commands and global options, then exit",  # 14
     "tabcmd <command>      -- Run a specific command",  # 15
 ]
