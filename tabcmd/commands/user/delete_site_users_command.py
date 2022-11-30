@@ -19,8 +19,9 @@ class DeleteSiteUsersCommand(Server):
 
     @staticmethod
     def define_args(delete_site_users_parser):
-        set_users_file_positional(delete_site_users_parser)
-        set_completeness_options(delete_site_users_parser)
+        args_group = delete_site_users_parser.add_argument_group(title=DeleteSiteUsersCommand.name)
+        set_users_file_positional(args_group)
+        set_completeness_options(args_group)
 
     @staticmethod
     def run_command(args):

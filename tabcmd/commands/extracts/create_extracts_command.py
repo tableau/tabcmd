@@ -18,12 +18,13 @@ class CreateExtracts(Server):
 
     @staticmethod
     def define_args(create_extract_parser):
-        set_ds_xor_wb_args(create_extract_parser)
-        set_embedded_datasources_options(create_extract_parser)
-        set_encryption_option(create_extract_parser)
-        set_project_arg(create_extract_parser)
-        set_parent_project_arg(create_extract_parser)
-        set_site_url_arg(create_extract_parser)
+        group = create_extract_parser.add_argument_group(title=CreateExtracts.name)
+        set_ds_xor_wb_args(group)
+        set_embedded_datasources_options(group)
+        set_encryption_option(group)
+        set_project_arg(group)
+        set_parent_project_arg(group)
+        set_site_url_arg(group)
 
     @staticmethod
     def run_command(args):

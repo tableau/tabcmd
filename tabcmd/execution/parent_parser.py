@@ -199,13 +199,21 @@ class ParentParser:
             "help", help=strings[14], parents=[self.global_options]
         )
         additional_parser._optionals.title = strings[1]
-        additional_parser.set_defaults(func=show_help(self))
+        additional_parser.set_defaults(func=Help(self))
 
-def show_help(parser: ParentParser):
-    logger = log(__name__, "info")
-    logger.info(strings[6] + version + "\n")
-    logger.info(parser.root.format_help())
-    exit(0)
+
+class Help:
+
+    parser = None
+    # This needs to have access to the parser when it gets called
+    def __init__(self, _parser: ParentParser):
+        self.parser = _parser
+
+    def run_command(self, args):
+        logger = log(__name__, "info")
+        logger.info(strings[6] + " " + version + "\n")
+        logger.info(self.parser.root.format_help())
+        exit(0)
 
 
 strings = [
@@ -213,7 +221,7 @@ strings = [
     "global connection arguments",  # 1 - global_conn_args
     "For more help see https://tableau.github.io/tabcmd/",  # 2 - for_more_help
     "list of tabcmd commands",  # 3
-    "For help on a specific command use 'tabcmd <command> help'.",  # 4
+    "For help on a specific command use 'tabcmd <command> -h'.",  # 4
     "{<command> [command args]}",  # 5
     "Tableau Server Command Line Utility",  # 6
     "Show version information and exit.",  # 7

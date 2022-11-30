@@ -65,7 +65,6 @@ def set_no_wait_option(parser):
     return parser
 
 
-# TODO make this lower case?
 def set_role_arg(parser):
     parser.add_argument(
         "-r",
@@ -83,6 +82,7 @@ def set_role_arg(parser):
             "Viewer",
             "Unlicensed",
         ],
+        type=str.lower,
         help="Specifies a site role for all users in the .csv file.",
     )
     return parser
@@ -244,8 +244,9 @@ def set_common_site_args(parser):
 
     parser.add_argument(
         "--run-now-enabled",
-        help="Allow or deny users from running extract refreshes, flows, or schedules manually. \
-            true to allow users to run tasks manually or false to prevent users from running tasks manually.",
+        choices=["True", "False"],
+        type=str.lower,
+        help="Allow or deny users from running extract refreshes, flows, or schedules manually.",
     )
     return parser
 

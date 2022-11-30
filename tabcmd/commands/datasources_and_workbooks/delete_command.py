@@ -21,10 +21,11 @@ class DeleteCommand(DatasourcesAndWorkbooks):
 
     @staticmethod
     def define_args(delete_parser):
-        delete_parser.add_argument("name", help=_("content_type.workbook") + "/" + _("content_type.datasource"))
-        set_ds_xor_wb_options(delete_parser)
-        set_project_r_arg(delete_parser)
-        set_parent_project_arg(delete_parser)
+        group = delete_parser.add_argument_group(title=DeleteCommand.name)
+        group.add_argument("name", help=_("content_type.workbook") + "/" + _("content_type.datasource"))
+        set_ds_xor_wb_options(group)
+        set_project_r_arg(group)
+        set_parent_project_arg(group)
 
     @staticmethod
     def run_command(args):

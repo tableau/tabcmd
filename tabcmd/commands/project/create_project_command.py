@@ -18,7 +18,8 @@ class CreateProjectCommand(Server):
 
     @staticmethod
     def define_args(create_project_parser):
-        create_project_parser.add_argument(
+        args_group = create_project_parser.add_argument_group(title=CreateProjectCommand.name)
+        args_group.add_argument(
             "--name", "-n", dest="project_name", required=True, help=_("createproject.options.name")
         )
         set_parent_project_arg(create_project_parser)

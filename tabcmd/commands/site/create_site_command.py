@@ -18,8 +18,9 @@ class CreateSiteCommand(Server):
 
     @staticmethod
     def define_args(create_site_parser):
-        create_site_parser.add_argument("new_site_name", metavar="site-name", help=_("editsite.options.site-name"))
-        set_common_site_args(create_site_parser)
+        args_group = create_site_parser.add_argument_group(title=CreateSiteCommand.name)
+        args_group.add_argument("new_site_name", metavar="site-name", help=_("editsite.options.site-name"))
+        set_common_site_args(args_group)
 
     @staticmethod
     def run_command(args):
