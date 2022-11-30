@@ -2,7 +2,7 @@ import logging
 import sys
 
 from .localize import set_client_locale
-from .map_of_commands import *
+from .logger_config import log
 from .parent_parser import ParentParser
 
 
@@ -11,9 +11,7 @@ class TabcmdController:
     def initialize():
         manager = ParentParser()
         parent = manager.get_root_parser()
-        commands = CommandsMap.commands_hash_map
-        for command in commands:
-            manager.include(command)
+        manager.include_help()
         return parent
 
     # during normal execution, leaving input as none will default to sys.argv
