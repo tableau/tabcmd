@@ -213,8 +213,7 @@ class Help:
         logger = log(__name__, "info")
         logger.info(strings[6] + " " + version + "\n")
         logger.info(self.parser.root.format_help())
-        exit(0)
-
+        
 
 strings = [
     "global behavioral arguments",  # 0 - global_behavior_args
