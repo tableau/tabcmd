@@ -10,7 +10,7 @@ class TabcmdController:
     @staticmethod
     def initialize():
         manager = ParentParser()
-        parent = manager.get_root_parser()
+        parent = manager.connect_commands()
         manager.include_help()
         return parent
 

@@ -168,6 +168,9 @@ class ParentParser:
         )
 
     def get_root_parser(self):
+        return self.root
+
+    def connect_commands(self):
         commands = CommandsMap.commands_hash_map
         for command in commands:
             self.include(command)
