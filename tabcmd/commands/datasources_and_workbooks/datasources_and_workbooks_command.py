@@ -122,7 +122,7 @@ class DatasourcesAndWorkbooks(Server):
         with open(filename, "wb") as f:
             f.write(output)
             logger.info(_("export.success").format("", filename))
-        
+
     @staticmethod
     def get_ds_by_content_url(logger, server, datasource_content_url) -> TSC.DatasourceItem:
         logger.debug(_("export.status").format(datasource_content_url))

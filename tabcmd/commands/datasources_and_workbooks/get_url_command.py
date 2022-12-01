@@ -43,7 +43,6 @@ class GetUrl(DatasourcesAndWorkbooks):
 
         file_type = GetUrl.get_file_type_from_filename(logger, args.filename, url)
         content_type = GetUrl.evaluate_content_type(logger, url)
-
         if content_type == "workbook":
             if file_type in ["twbx", "twb"]:
                 GetUrl.generate_twb(logger, server, args, file_type, url)
@@ -51,7 +50,7 @@ class GetUrl(DatasourcesAndWorkbooks):
                 Errors.exit_with_error(
                     logger, message=_("publish.errors.mutually_exclusive_option").format("twb", "twbx")
                 )
-        if content_type == "datasource":
+        elif content_type == "datasource":
             if file_type == "tdsx" or file_type == "tds":
                 GetUrl.generate_tds(logger, server, args, file_type)
             else:
@@ -74,20 +73,25 @@ class GetUrl(DatasourcesAndWorkbooks):
         # specify a view to get using "/views/<workbookname>/<viewname>.<extension>"
         # specify a workbook to get using "/workbooks/<workbookname>.<extension>".
         # specify a datasource to get using "/datasources/<datasourcename>.<extension>"
-        if url.find("/views/") == 0:
+        if url.find("views/") == 0:
             return "view"
-        elif url.startswith("workbooks/"):
+        elif url.find("workbooks/") == 0:
             return "workbook"
-        elif url.find("/datasources/") == 0:
+        elif url.find("datasources/") == 0:
             return "datasource"
         else:
-            GetUrl.explain_expected_url(logger)
+            Errors.exit_with_error(
+                logger,
+                message="Could not find an expected type of workbooks, views or datasources in '{0}'".format(url),
+            )
 
     @staticmethod
-    def explain_expected_url(logger):
-        view_example = "/views/<workbookname>/<viewname>.<extension>"
-        message = "{} [{}]".format(
-            _("export.errors.requires_workbook_view_param").format(__class__.__name__), view_example
+    def explain_expected_url(logger, url):
+        view_example = "/views/<workbookname>/<viewname>[.ext]"
+        wb_example = "/workbooks/<workbookname>[.ext]"
+        ds_example = "/datasources/<datasourcename[.ext]"
+        message = _("export.errors.requires_resource_param").format(
+            __class__.__name__, url, view_example, wb_example, ds_example
         )
         Errors.exit_with_error(logger, message)
 
@@ -127,22 +131,21 @@ class GetUrl(DatasourcesAndWorkbooks):
             filename = filename.split(".")[0]
         return filename
 
-    # TODO rename to get_resource_name because it works for ds as well
     @staticmethod
-    def get_workbook_name(url, logger):  # workbooks/wb-name" -> "wb-name"
+    def get_resource_name(url, logger):  # workbooks/wb-name" -> "wb-name", datasource/ds-name -> ds-name
         name_parts = url.split("/")
         if len(name_parts) != 2:
-            GetUrl.explain_expected_url(logger)
-        workbook_name = name_parts[::-1][0]  # last part
-        workbook_name = GetUrl.strip_query_params(workbook_name)
-        workbook_name = GetUrl.get_name_without_possible_extension(workbook_name)
-        return workbook_name
+            GetUrl.explain_expected_url(logger, url)
+        resource_name = name_parts[::-1][0]  # last part
+        resource_name = GetUrl.strip_query_params(resource_name)
+        resource_name = GetUrl.get_name_without_possible_extension(resource_name)
+        return resource_name
 
     @staticmethod
     def get_view_url(url, logger):  # "views/wb-name/view-name" -> wb-name/sheets/view-name
         name_parts = url.split("/")  # ['views', 'wb-name', 'view-name']
         if len(name_parts) != 3:
-            GetUrl.explain_expected_url(logger)
+            GetUrl.explain_expected_url(logger, url)
         workbook_name = name_parts[1]
         view_name = name_parts[::-1][0]
         view_name = GetUrl.strip_query_params(view_name)
@@ -198,7 +201,7 @@ class GetUrl(DatasourcesAndWorkbooks):
 
     @staticmethod
     def generate_twb(logger, server, args, file_extension, url):
-        workbook_name = GetUrl.get_workbook_name(url, logger)
+        workbook_name = GetUrl.get_resource_name(url, logger)
         try:
             target_workbook = GetUrl.get_wb_by_content_url(logger, server, workbook_name)
             logger.debug(_("content_type.workbook") + ": {}".format(workbook_name))
@@ -211,7 +214,7 @@ class GetUrl(DatasourcesAndWorkbooks):
 
     @staticmethod
     def generate_tds(logger, server, args, file_extension):
-        datasource_name = GetUrl.get_workbook_name(logger, args.url)
+        datasource_name = GetUrl.get_resource_name(logger, args.url)
         try:
             target_datasource = GetUrl.get_ds_by_content_url(logger, server, datasource_name)
             logger.debug(_("content_type.datasource") + ": {}".format(datasource_name))

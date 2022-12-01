@@ -60,7 +60,7 @@ class GeturlTests(unittest.TestCase):
         assert GetUrl.get_name_without_possible_extension(filename) == filename
 
     def test_get_workbook_name(self):
-        assert GetUrl.get_workbook_name("workbooks/wbname", mock_logger) == "wbname"
+        assert GetUrl.get_resource_name("workbooks/wbname", mock_logger) == "wbname"
 
     def test_view_name(self):
         assert GetUrl.get_view_url("views/wb-name/view-name", None) == "wb-name/sheets/view-name"
