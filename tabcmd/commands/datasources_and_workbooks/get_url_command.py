@@ -121,7 +121,6 @@ class GetUrl(DatasourcesAndWorkbooks):
             filename = filename.split(".")[0]
         return filename
 
-    # TODO rename to get_resource_name because it works for ds as well
     @staticmethod
     def get_resource_name(url, logger):  # workbooks/wb-name" -> "wb-name", datasource/ds-name -> ds-name
         name_parts = url.split("/")
