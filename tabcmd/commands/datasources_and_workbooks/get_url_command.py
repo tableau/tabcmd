@@ -1,4 +1,5 @@
 import tableauserverclient as TSC
+from tableauserverclient import ServerResponseError
 
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.constants import Errors
@@ -16,6 +17,8 @@ class GetUrl(DatasourcesAndWorkbooks):
 
     name: str = "get"
     description: str = _("get.short_description")
+    valid_file_types = {"workbook": ["twbx", "twb"], "datasource": ["tdsx", "tds"], "view": ["pdf", "png", "csv"]}
+    valid_content_types = ["workbook", "view", "datasource"]
 
     @staticmethod
     def define_args(get_url_parser):
@@ -40,50 +43,37 @@ class GetUrl(DatasourcesAndWorkbooks):
             Errors.exit_with_error(logger, _("export.errors.white_space_workbook_view"))
 
         url = args.url.lstrip("/")  # strip opening / if present
-
         file_type = GetUrl.get_file_type_from_filename(logger, args.filename, url)
         content_type = GetUrl.evaluate_content_type(logger, url)
-        if content_type == "workbook":
-            if file_type in ["twbx", "twb"]:
-                GetUrl.generate_twb(logger, server, args, file_type, url)
-            else:
-                Errors.exit_with_error(
-                    logger, message=_("publish.errors.mutually_exclusive_option").format("twb", "twbx")
-                )
-        elif content_type == "datasource":
-            if file_type == "tdsx" or file_type == "tds":
-                GetUrl.generate_tds(logger, server, args, file_type)
-            else:
-                Errors.exit_with_error(
-                    logger, message=_("publish.errors.mutually_exclusive_option").format("tds", "tdsx")
-                )
-        else:  # content type = view
-            view_url = GetUrl.get_view_url(url, logger)
-            if file_type == "pdf":
-                GetUrl.generate_pdf(logger, server, args, view_url)
-            elif file_type == "png":
-                GetUrl.generate_png(logger, server, args, view_url)
-            elif file_type == "csv":
-                GetUrl.generate_csv(logger, server, args, view_url)
-            else:
-                Errors.exit_with_error(logger, message=_("tabcmd.get.extension.not_found"))
+        if file_type not in GetUrl.valid_file_types[content_type]:
+            Errors.exit_with_error(
+                logger,
+                message=_("get.errors.invalid_file_type").format(
+                    _(
+                        "content_type." + content_type
+                    ),  # --> _("content_type.workbook") -> "workbook", "Arbeitsmappe", etc
+                    GetUrl.valid_file_types[content_type],
+                ),
+            )
+        try:
+            GetUrl.get_content_as_file(file_type, content_type, logger, args, server, url)
+        except ServerResponseError as e:
+            Errors.exit_with_error(logger, e)
+        except BaseException as be:
+            Errors.exit_with_error(logger, be, "Error during file download")
+
+    ## this first set of methods is all parsing the url and file input from the user
 
     @staticmethod
     def evaluate_content_type(logger, url):
         # specify a view to get using "/views/<workbookname>/<viewname>.<extension>"
         # specify a workbook to get using "/workbooks/<workbookname>.<extension>".
         # specify a datasource to get using "/datasources/<datasourcename>.<extension>"
-        if url.find("views/") == 0:
-            return "view"
-        elif url.find("workbooks/") == 0:
-            return "workbook"
-        elif url.find("datasources/") == 0:
-            return "datasource"
-        else:
-            Errors.exit_with_error(
-                logger,
-                message="Could not find an expected type of workbooks, views or datasources in '{0}'".format(url),
-            )
+        content_type = ""
+        for content_type in GetUrl.valid_content_types:
+            if url.find(content_type) == 0:
+                return content_type
+        Errors.exit_with_error(logger, message=_("get.errors.invalid_content_type").format(url))
 
     @staticmethod
     def explain_expected_url(logger, url):
@@ -136,9 +126,9 @@ class GetUrl(DatasourcesAndWorkbooks):
         name_parts = url.split("/")
         if len(name_parts) != 2:
             GetUrl.explain_expected_url(logger, url)
-        resource_name = name_parts[::-1][0]  # last part
-        resource_name = GetUrl.strip_query_params(resource_name)
-        resource_name = GetUrl.get_name_without_possible_extension(resource_name)
+        resource_name_with_params = name_parts[::-1][0]  # last part
+        resource_name_with_ext = GetUrl.strip_query_params(resource_name_with_params)
+        resource_name = GetUrl.get_name_without_possible_extension(resource_name_with_ext)
         return resource_name
 
     @staticmethod
@@ -157,6 +147,26 @@ class GetUrl(DatasourcesAndWorkbooks):
         if file_argument is None:
             file_argument = "{}.{}".format(item_name, filetype)
         return file_argument
+
+    ## methods below here have done all the parsing and just have to do the download and saving
+    ## these should be able to be shared with export
+
+    @staticmethod
+    def get_content_as_file(file_type, content_type, logger, args, server, url):
+        if content_type == "workbook":
+            return GetUrl.generate_twb(logger, server, args, file_type, url)
+        elif content_type == "datasource":
+            return GetUrl.generate_tds(logger, server, args, file_type)
+        elif content_type == "view":
+            view_url = GetUrl.get_view_url(url, logger)
+            if file_type == "pdf":
+                return GetUrl.generate_pdf(logger, server, args, view_url)
+            elif file_type == "png":
+                return GetUrl.generate_png(logger, server, args, view_url)
+            elif file_type == "csv":
+                return GetUrl.generate_csv(logger, server, args, view_url)
+        # all the known options above will return early. If we get here we are confused.
+        Errors.exit_with_error(logger, message=_("tabcmd.get.extension.not_found"))
 
     @staticmethod
     def generate_pdf(logger, server, args, view_url):

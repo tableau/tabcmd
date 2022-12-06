@@ -31,7 +31,7 @@ class DeleteProjectCommand(Server):
             logger.debug("parent path: {}".format(args.parent_project_path))
 
         try:
-            logger.debug(_("deleteproject.status").format(args.parent_project_path, args.project_name))
+            logger.debug(_("deleteproject.status").format(args.parent_project_path + "/" + args.project_name))
             project = Server.get_project_by_name_and_parent_path(
                 logger, server, args.project_name, args.parent_project_path
             )
