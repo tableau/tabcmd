@@ -74,14 +74,30 @@ class OnlineCommandTest(unittest.TestCase):
         arguments = [command, file, "--name", name, "--overwrite"]
         return _test_command(arguments)
 
+    def _publish_ds(self, file, name):
+        command = "publish"
+        arguments = [command, file, "--name", name, "--overwrite"]
+        return _test_command(arguments)
+
     def _delete_wb(self, file):
         command = "delete"
         arguments = [command, "-w", file]
         _test_command(arguments)
 
+    def _delete_ds(self, file):
+        command = "delete"
+        arguments = [command, file, "--datasource"]
+        _test_command(arguments)
+
     def _get_view(self, wb_name_on_server, sheet_name):
         server_file = "/views/" + wb_name_on_server + "/" + sheet_name
         command = "get"
+        arguments = [command, server_file]
+        _test_command(arguments)
+
+    def _get_datasource(self, server_file):
+        command = "get"
+        server_file = "/datasources/" + server_file
         arguments = [command, server_file]
         _test_command(arguments)
 
@@ -113,6 +129,8 @@ class OnlineCommandTest(unittest.TestCase):
     TWBX_WITH_EXTRACT_SHEET = "sheet1"
     TWBX_FILE_WITHOUT_EXTRACT = "simple-data.twbx"
     TWBX_WITHOUT_EXTRACT_NAME = "WorkbookWithoutExtract"
+    TDSX_WITH_EXTRACT_NAME = "WorldIndicators"
+    TDSX_FILE_WITH_EXTRACT = "World Indicators.tdsx"
 
     @pytest.mark.order(2)
     def test_create_site_users(self):
@@ -200,7 +218,23 @@ class OnlineCommandTest(unittest.TestCase):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         self._delete_wb(name_on_server)
 
-    @pytest.mark.order(12)
+    @pytest.mark.order(13)
+    def test_publish_ds(self):
+        name_on_server = OnlineCommandTest.TDSX_WITH_EXTRACT_NAME
+        file = os.path.join("tests", "assets", OnlineCommandTest.TDSX_FILE_WITH_EXTRACT)
+        self._publish_ds(file, name_on_server)
+
+    @pytest.mark.order(14)
+    def test__get_ds(self):
+        ds_name_on_server = OnlineCommandTest.TDSX_WITH_EXTRACT_NAME
+        self._get_datasource(ds_name_on_server + ".tdsx")
+
+    @pytest.mark.order(15)
+    def test__delete_ds(self):
+        name_on_server = OnlineCommandTest.TDSX_WITH_EXTRACT_NAME
+        self._delete_ds(name_on_server)
+
+    @pytest.mark.order(16)
     def test_create_extract(self):
         # This workbook doesn't work for creating an extract
         name_on_server = OnlineCommandTest.TWBX_WITHOUT_EXTRACT_NAME
@@ -208,12 +242,12 @@ class OnlineCommandTest(unittest.TestCase):
         self._publish_wb(file, name_on_server)
         # which damn workbook will work here self._create_extract(name_on_server)
 
-    @pytest.mark.order(13)
+    @pytest.mark.order(17)
     def test_refresh_extract(self):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         self._refresh_extract(name_on_server)
 
-    @pytest.mark.order(14)
+    @pytest.mark.order(18)
     def test_delete_extract(self):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
@@ -231,7 +265,7 @@ class OnlineCommandTest(unittest.TestCase):
     # def test_logout(self):
     #   _test_command(["logout"])
 
-    @pytest.mark.order(15)
+    @pytest.mark.order(19)
     def test_export(self):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
@@ -241,7 +275,7 @@ class OnlineCommandTest(unittest.TestCase):
         arguments = [command, friendly_name, "--fullpdf", "-f", "exported_file.pdf"]
         _test_command(arguments)
 
-    @pytest.mark.order(16)
+    @pytest.mark.order(20)
     def test_delete_site_users(self):
         command = "deletesiteusers"
         users = os.path.join("tests", "assets", "usernames.csv")

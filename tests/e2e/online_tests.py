@@ -54,6 +54,7 @@ class OnlineCommandTest(unittest.TestCase):
         if parent_path:
             arguments.append("--parent-project-path")
             arguments.append(parent_path)
+        arguments.append("--continue-if-exists")
         _test_command(arguments)
 
     def _delete_project(self, project_name, parent_path=None):
@@ -74,9 +75,19 @@ class OnlineCommandTest(unittest.TestCase):
         arguments = [command, file, "--name", name, "--overwrite"]
         return _test_command(arguments)
 
+    def _publish_ds(self, file, name):
+        command = "publish"
+        arguments = [command, file, "--name", name, "--overwrite"]
+        return _test_command(arguments)
+
     def _delete_wb(self, file):
         command = "delete"
         arguments = [command, file]
+        _test_command(arguments)
+
+    def _delete_ds(self, file):
+        command = "delete"
+        arguments = [command, file, "--datasource"]
         _test_command(arguments)
 
     def _get_view(self, wb_name_on_server, sheet_name):
@@ -94,6 +105,12 @@ class OnlineCommandTest(unittest.TestCase):
     def _get_workbook(self, server_file):
         command = "get"
         server_file = "/workbooks/" + server_file
+        arguments = [command, server_file]
+        _test_command(arguments)
+
+    def _get_datasource(self, server_file):
+        command = "get"
+        server_file = "/datasources/" + server_file
         arguments = [command, server_file]
         _test_command(arguments)
 
@@ -125,6 +142,8 @@ class OnlineCommandTest(unittest.TestCase):
     TWBX_FILE_WITHOUT_EXTRACT = "simple-data.twbx"
     TWBX_WITHOUT_EXTRACT_NAME = "WorkbookWithoutExtract"
     TWBX_WITHOUT_EXTRACT_SHEET = "Testsheet1"
+    TDSX_WITH_EXTRACT_NAME = "WorldIndicators"
+    TDSX_FILE_WITH_EXTRACT = "World Indicators.tdsx"
 
     @pytest.mark.order(1)
     def test_login(self):
@@ -161,6 +180,7 @@ class OnlineCommandTest(unittest.TestCase):
         groupname = group_name
         command = "creategroup"
         arguments = [command, groupname]
+        arguments.append("--continue-if-exists")
         _test_command(arguments)
 
     @pytest.mark.order(4)
@@ -172,6 +192,7 @@ class OnlineCommandTest(unittest.TestCase):
         command = "addusers"
         filename = os.path.join("tests", "assets", "usernames.csv")
         arguments = [command, groupname, "--users", filename]
+        arguments.append("--continue-if-exists")
         _test_command(arguments)
 
     @pytest.mark.order(5)
@@ -218,12 +239,6 @@ class OnlineCommandTest(unittest.TestCase):
     def test_list_projects(self):
         self._list("projects")
 
-    """
-        @pytest.mark.order(9)
-        def test_publish_samples(self):
-            self._publish_samples(project_name)
-    """
-
     @pytest.mark.order(10)
     def test_delete_projects(self):
         if not project_admin:
@@ -265,21 +280,37 @@ class OnlineCommandTest(unittest.TestCase):
         self._delete_wb(name_on_server)
 
     @pytest.mark.order(12)
-    def test_extract_delete(self):
+    def test_publish_ds(self):
+        name_on_server = OnlineCommandTest.TDSX_WITH_EXTRACT_NAME
+        file = os.path.join("tests", "assets", OnlineCommandTest.TDSX_FILE_WITH_EXTRACT)
+        self._publish_ds(file, name_on_server)
+
+    @pytest.mark.order(13)
+    def test__get_ds(self):
+        ds_name_on_server = OnlineCommandTest.TDSX_WITH_EXTRACT_NAME
+        self._get_datasource(ds_name_on_server + ".tdsx")
+
+    @pytest.mark.order(14)
+    def test__delete_ds(self):
+        name_on_server = OnlineCommandTest.TDSX_WITH_EXTRACT_NAME
+        self._delete_ds(name_on_server)
+
+    @pytest.mark.order(15)
+    def test_delete_extract(self):
         # fails because the extract has a bad data connection :/
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         self._publish_wb(file, name_on_server)
         self._delete_extract(name_on_server)
 
-    @pytest.mark.order(13)
-    def test_extract_create(self):
+    @pytest.mark.order(16)
+    def test_create_extract(self):
         # Fails because it 'already has an extract' :/
         name_on_server = OnlineCommandTest.TWBX_WITHOUT_EXTRACT_NAME
         self._create_extract(name_on_server)
 
-    @pytest.mark.order(14)
-    def test_extract_refresh(self):
+    @pytest.mark.order(17)
+    def test_refresh_extract(self):
         # must be a datasource owned by the test user
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
@@ -289,7 +320,7 @@ class OnlineCommandTest(unittest.TestCase):
         self._refresh_extract(name_on_server)
         self._delete_wb(name_on_server)
 
-    @pytest.mark.order(15)
+    @pytest.mark.order(19)
     def test_export_wb_pdf(self):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
@@ -299,7 +330,7 @@ class OnlineCommandTest(unittest.TestCase):
         arguments = [command, friendly_name, "--fullpdf", "-f", "exported_wb.pdf"]
         _test_command(arguments)
 
-    @pytest.mark.order(15)
+    @pytest.mark.order(19)
     def test_export_view_pdf(self):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
@@ -309,8 +340,8 @@ class OnlineCommandTest(unittest.TestCase):
         arguments = [command, friendly_name, "--pdf", "-f", "exported_view.pdf"]
         _test_command(arguments)
 
-    @pytest.mark.order(16)
-    def test_users_delete_site_users(self):
+    @pytest.mark.order(20)
+    def test_delete_site_users(self):
         if not server_admin and not site_admin:
             pytest.skip("Must be server or site administrator to delete site users")
 
@@ -318,7 +349,7 @@ class OnlineCommandTest(unittest.TestCase):
         users = os.path.join("tests", "assets", "usernames.csv")
         _test_command([command, users])
 
-    @pytest.mark.order(20)
+    @pytest.mark.order(21)
     def test_list_sites(self):
         if not server_admin:
             pytest.skip("Must be server administrator to list sites")
