@@ -54,6 +54,7 @@ class OnlineCommandTest(unittest.TestCase):
         if parent_path:
             arguments.append("--parent-project-path")
             arguments.append(parent_path)
+        arguments.append("--continue-if-exists")
         _test_command(arguments)
 
     def _delete_project(self, project_name, parent_path=None):
@@ -179,6 +180,7 @@ class OnlineCommandTest(unittest.TestCase):
         groupname = group_name
         command = "creategroup"
         arguments = [command, groupname]
+        arguments.append("--continue-if-exists")
         _test_command(arguments)
 
     @pytest.mark.order(4)
@@ -190,6 +192,7 @@ class OnlineCommandTest(unittest.TestCase):
         command = "addusers"
         filename = os.path.join("tests", "assets", "usernames.csv")
         arguments = [command, groupname, "--users", filename]
+        arguments.append("--continue-if-exists")
         _test_command(arguments)
 
     @pytest.mark.order(5)
@@ -235,12 +238,6 @@ class OnlineCommandTest(unittest.TestCase):
     @pytest.mark.order(8)
     def test_list_projects(self):
         self._list("projects")
-
-    """
-        @pytest.mark.order(9)
-        def test_publish_samples(self):
-            self._publish_samples(project_name)
-    """
 
     @pytest.mark.order(10)
     def test_delete_projects(self):
