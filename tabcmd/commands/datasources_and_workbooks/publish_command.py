@@ -55,14 +55,9 @@ class PublishCommand(DatasourcesAndWorkbooks):
         logger.info("Publishing as " + publish_mode)
 
         if args.db_username:
-            creds = TSC.models.ConnectionCredentials(args.db_username,
-                                                   args.db_password,
-                                                   embed=args.save_db_password)
+            creds = TSC.models.ConnectionCredentials(args.db_username, args.db_password, embed=args.save_db_password)
         elif args.oauth_username:
-            creds = TSC.models.ConnectionCredentials(args.oauth_username,
-                                                   None,
-                                                   embed=False,
-                                                   oauth=args.save_oauth)
+            creds = TSC.models.ConnectionCredentials(args.oauth_username, None, embed=False, oauth=args.save_oauth)
         else:
             logger.debug("No db-username or oauth-username found in command")
             creds = None
@@ -72,8 +67,14 @@ class PublishCommand(DatasourcesAndWorkbooks):
         if source in ["twbx", "twb"]:
             new_workbook = TSC.WorkbookItem(project_id, name=args.name, show_tabs=args.tabbed)
             try:
-                new_workbook = server.workbooks.publish(new_workbook, args.filename, publish_mode,
-                    connection_credentials=creds, as_job=False, skip_connection_check=False)
+                new_workbook = server.workbooks.publish(
+                    new_workbook,
+                    args.filename,
+                    publish_mode,
+                    connection_credentials=creds,
+                    as_job=False,
+                    skip_connection_check=False,
+                )
 
             except IOError as ioe:
                 Errors.exit_with_error(logger, ioe)
@@ -83,8 +84,9 @@ class PublishCommand(DatasourcesAndWorkbooks):
             new_datasource = TSC.DatasourceItem(project_id, name=args.name)
             new_datasource.use_remote_query_agent = args.use_tableau_bridge
             try:
-                new_datasource = server.datasources.publish(new_datasource, args.filename, publish_mode,
-                    connection_credentials=creds)
+                new_datasource = server.datasources.publish(
+                    new_datasource, args.filename, publish_mode, connection_credentials=creds
+                )
             except IOError as ioe:
                 Errors.exit_with_error(logger, exc)
             logger.info(_("publish.success") + "\n{}".format(new_datasource.webpage_url))
