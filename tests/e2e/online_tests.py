@@ -76,7 +76,9 @@ class OnlineCommandTest(unittest.TestCase):
         arguments = [command, file, "--name", name, "--overwrite"]
         return arguments
 
-    def _publish_creds_args(self, arguments, db_user=None, db_pass=None, db_save=None, oauth_user=None, oauth_save=None):
+    def _publish_creds_args(
+        self, arguments, db_user=None, db_pass=None, db_save=None, oauth_user=None, oauth_save=None
+    ):
         if db_user:
             arguments.append("--db-username")
             arguments.append(db_user)

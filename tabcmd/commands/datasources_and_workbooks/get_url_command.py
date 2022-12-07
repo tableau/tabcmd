@@ -83,9 +83,9 @@ class GetUrl(DatasourcesAndWorkbooks):
         wb_example = "/workbooks/<workbookname>[.ext]"
         ds_example = "/datasources/<datasourcename[.ext]"
         # todo when strings are updated # message:str = _("export.errors.requires_resource_param").format(
-        message = "The ''{0}'' command requires a resource path in a specific format." \
-                  "Given: {1}. Accepted values: {2}, {3}, {4}".format(
-            command, url, view_example, wb_example, ds_example
+        message = (
+            "The ''{0}'' command requires a resource path in a specific format."
+            "Given: {1}. Accepted values: {2}, {3}, {4}".format(command, url, view_example, wb_example, ds_example)
         )
         Errors.exit_with_error(logger, message)
 

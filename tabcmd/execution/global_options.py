@@ -324,9 +324,7 @@ def set_publish_args(parser):
     thumbnails.add_argument("--thumbnail-username", help="Not yet implemented")
     thumbnails.add_argument("--thumbnail-group", help="Not yet implemented")  # not implemented in the REST API
 
-    parser.add_argument("--use-tableau-bridge",
-                        action="store_true",
-                        help="Refresh datasource through Tableau Bridge")
+    parser.add_argument("--use-tableau-bridge", action="store_true", help="Refresh datasource through Tableau Bridge")
 
 
 def set_overwrite_option(parser):

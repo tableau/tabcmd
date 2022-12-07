@@ -59,7 +59,6 @@ class DatasourcesAndWorkbooks(Server):
             Errors.exit_with_error(logger, message=_("dataalerts.failure.error.datasourceNotFound"))
         return matching_datasources[0]
 
-
     @staticmethod
     def apply_values_from_url_params(request_options: TSC.PDFRequestOptions, url, logger) -> None:
         # should be able to replace this with request_options._append_view_filters(params)
@@ -139,4 +138,3 @@ class DatasourcesAndWorkbooks(Server):
         with open(filename, "wb") as f:
             f.write(output)
             logger.info(_("export.success").format("", filename))
-
