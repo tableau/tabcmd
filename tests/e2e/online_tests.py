@@ -4,6 +4,7 @@ import subprocess
 import time
 import unittest
 
+from credentials import waremart_password, waremart_user
 from tests.e2e import setup_e2e
 
 debug_log = "--logging-level=DEBUG"
@@ -70,15 +71,28 @@ class OnlineCommandTest(unittest.TestCase):
         arguments = [command, "--name", project_name]
         _test_command(arguments)
 
-    def _publish_wb(self, file, name):
+    def _publish_args(self, file, name, tabbed=None):
         command = "publish"
         arguments = [command, file, "--name", name, "--overwrite"]
-        return _test_command(arguments)
+        return arguments
 
-    def _publish_ds(self, file, name):
-        command = "publish"
-        arguments = [command, file, "--name", name, "--overwrite"]
-        return _test_command(arguments)
+    def _publish_creds_args(
+        self, arguments, db_user=None, db_pass=None, db_save=None, oauth_user=None, oauth_save=None
+    ):
+        if db_user:
+            arguments.append("--db-username")
+            arguments.append(db_user)
+        if db_pass:
+            arguments.append("--db-password")
+            arguments.append(db_pass)
+        if db_save:
+            arguments.append("--save-db-password")
+        if oauth_user:
+            arguments.append("--oauth-username")
+            arguments.append(oauth_user)
+        if oauth_save:
+            arguments.append("--save-oauth")
+        return arguments
 
     def _delete_wb(self, file):
         command = "delete"
@@ -144,6 +158,7 @@ class OnlineCommandTest(unittest.TestCase):
     TWBX_WITHOUT_EXTRACT_SHEET = "Testsheet1"
     TDSX_WITH_EXTRACT_NAME = "WorldIndicators"
     TDSX_FILE_WITH_EXTRACT = "World Indicators.tdsx"
+    TWB_WITH_EMBEDDED_CONNECTION = "embedded_connection_waremart.twb"
 
     @pytest.mark.order(1)
     def test_login(self):
@@ -250,7 +265,8 @@ class OnlineCommandTest(unittest.TestCase):
     def test_wb_publish(self):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
-        self._publish_wb(file, name_on_server)
+        arguments = self._publish_args(file, name_on_server)
+        _test_command(arguments)
 
     @pytest.mark.order(10)
     def test_wb_get(self):
@@ -279,11 +295,20 @@ class OnlineCommandTest(unittest.TestCase):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         self._delete_wb(name_on_server)
 
+    @pytest.mark.order(11)
+    def test_wb_publish_embedded(self):
+        name_on_server = OnlineCommandTest.TWB_WITH_EMBEDDED_CONNECTION
+        file = os.path.join("tests", "assets", OnlineCommandTest.TWB_WITH_EMBEDDED_CONNECTION)
+        arguments = self._publish_args(file, name_on_server)
+        arguments = self._publish_creds_args(arguments, waremart_user, waremart_password, True)
+        _test_command(arguments)
+
     @pytest.mark.order(12)
     def test_publish_ds(self):
         name_on_server = OnlineCommandTest.TDSX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TDSX_FILE_WITH_EXTRACT)
-        self._publish_ds(file, name_on_server)
+        arguments = self._publish_args(file, name_on_server)
+        _test_command(arguments)
 
     @pytest.mark.order(13)
     def test__get_ds(self):
@@ -300,7 +325,7 @@ class OnlineCommandTest(unittest.TestCase):
         # fails because the extract has a bad data connection :/
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
-        self._publish_wb(file, name_on_server)
+        self._publish_args(file, name_on_server)
         self._delete_extract(name_on_server)
 
     @pytest.mark.order(16)
@@ -314,7 +339,8 @@ class OnlineCommandTest(unittest.TestCase):
         # must be a datasource owned by the test user
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
-        self._publish_wb(file, name_on_server)
+        arguments = self._publish_args(file, name_on_server)
+        _test_command(arguments)
 
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         self._refresh_extract(name_on_server)
@@ -324,7 +350,9 @@ class OnlineCommandTest(unittest.TestCase):
     def test_export_wb_pdf(self):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
-        self._publish_wb(file, name_on_server)
+        arguments = self._publish_args(file, name_on_server)
+        _test_command(arguments)
+
         command = "export"
         friendly_name = name_on_server + "/" + OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         arguments = [command, friendly_name, "--fullpdf", "-f", "exported_wb.pdf"]
@@ -334,7 +362,8 @@ class OnlineCommandTest(unittest.TestCase):
     def test_export_view_pdf(self):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
-        self._publish_wb(file, name_on_server)
+        arguments = self._publish_args(file, name_on_server)
+        _test_command(arguments)
         command = "export"
         friendly_name = name_on_server + "/" + OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET + "?param1=3"
         arguments = [command, friendly_name, "--pdf", "-f", "exported_view.pdf"]

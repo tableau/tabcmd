@@ -51,15 +51,31 @@ class PublishCommand(DatasourcesAndWorkbooks):
             args.project_name = "default"
             args.parent_project_path = ""
 
-        publish_mode = PublishCommand.get_publish_mode(args)
+        publish_mode = PublishCommand.get_publish_mode(args)  # --overwrite, --replace
         logger.info("Publishing as " + publish_mode)
+
+        if args.db_username:
+            creds = TSC.models.ConnectionCredentials(args.db_username, args.db_password, embed=args.save_db_password)
+        elif args.oauth_username:
+            creds = TSC.models.ConnectionCredentials(args.oauth_username, None, embed=False, oauth=args.save_oauth)
+        else:
+            logger.debug("No db-username or oauth-username found in command")
+            creds = None
 
         source = PublishCommand.get_filename_extension_if_tableau_type(logger, args.filename)
         logger.info(_("publish.status").format(args.filename))
         if source in ["twbx", "twb"]:
             new_workbook = TSC.WorkbookItem(project_id, name=args.name, show_tabs=args.tabbed)
             try:
-                new_workbook = server.workbooks.publish(new_workbook, args.filename, publish_mode)
+                new_workbook = server.workbooks.publish(
+                    new_workbook,
+                    args.filename,
+                    publish_mode,
+                    connection_credentials=creds,
+                    as_job=False,
+                    skip_connection_check=False,
+                )
+
             except IOError as ioe:
                 Errors.exit_with_error(logger, ioe)
             logger.info(_("publish.success") + "\n{}".format(new_workbook.webpage_url))
@@ -68,7 +84,9 @@ class PublishCommand(DatasourcesAndWorkbooks):
             new_datasource = TSC.DatasourceItem(project_id, name=args.name)
             new_datasource.use_remote_query_agent = args.use_tableau_bridge
             try:
-                new_datasource = server.datasources.publish(new_datasource, args.filename, publish_mode)
+                new_datasource = server.datasources.publish(
+                    new_datasource, args.filename, publish_mode, connection_credentials=creds
+                )
             except IOError as ioe:
                 Errors.exit_with_error(logger, exc)
             logger.info(_("publish.success") + "\n{}".format(new_datasource.webpage_url))

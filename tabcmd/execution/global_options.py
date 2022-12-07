@@ -291,10 +291,15 @@ def set_publish_args(parser):
     parser.add_argument("-n", "--name", help="Name to publish the new datasource or workbook by.")
 
     set_overwrite_option(parser)
-    parser.add_argument(
+
+    creds = parser.add_mutually_exclusive_group()
+    creds.add_argument("--oauth-username", help="The email address of a preconfigured OAuth connection")
+    creds.add_argument(
         "--db-username",
         help="Use this option to publish a database user name with the workbook, data source, or data extract.",
     )
+    parser.add_argument("--save-oauth", action="store_true", help="Save embedded OAuth credentials in the datasource")
+
     parser.add_argument(
         "--db-password",
         help="publish a database password with the workbook, data source, or extract",
@@ -304,6 +309,7 @@ def set_publish_args(parser):
         action="store_true",
         help="Stores the provided database password on the server.",
     )
+
     parser.add_argument(
         "--tabbed",
         action="store_true",
@@ -320,14 +326,11 @@ def set_publish_args(parser):
         action="store_true",
         help="Encrypt extracts in the workbook, datasource, or extract being published to the server",
     )
-    parser.add_argument("--oauth-username", help="The email address of a preconfigured OAuth connection")
-    parser.add_argument("--save-oauth", action="store_true", help="Save embedded OAuth credentials in the datasource")
-
     thumbnails = parser.add_mutually_exclusive_group()
     thumbnails.add_argument("--thumbnail-username", help="Not yet implemented")
     thumbnails.add_argument("--thumbnail-group", help="Not yet implemented")  # not implemented in the REST API
 
-    parser.add_argument("--use-tableau-bridge", help="Refresh datasource through Tableau Bridge")
+    parser.add_argument("--use-tableau-bridge", action="store_true", help="Refresh datasource through Tableau Bridge")
 
 
 def set_overwrite_option(parser):

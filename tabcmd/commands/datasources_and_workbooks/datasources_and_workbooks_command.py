@@ -23,6 +23,7 @@ class DatasourcesAndWorkbooks(Server):
         try:
             req_option = TSC.RequestOptions()
             req_option.filter.add(TSC.Filter("contentUrl", TSC.RequestOptions.Operator.Equals, view_content_url))
+            logger.trace(req_option.get_query_params())
             matching_views, paging = server.views.get(req_option)
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response").format(e))
@@ -36,12 +37,27 @@ class DatasourcesAndWorkbooks(Server):
         try:
             req_option = TSC.RequestOptions()
             req_option.filter.add(TSC.Filter("contentUrl", TSC.RequestOptions.Operator.Equals, workbook_content_url))
+            logger.trace(req_option.get_query_params())
             matching_workbooks, paging = server.workbooks.get(req_option)
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response").format(""))
         if len(matching_workbooks) < 1:
             Errors.exit_with_error(logger, message=_("dataalerts.failure.error.workbookNotFound"))
         return matching_workbooks[0]
+
+    @staticmethod
+    def get_ds_by_content_url(logger, server, datasource_content_url) -> TSC.DatasourceItem:
+        logger.debug(_("export.status").format(datasource_content_url))
+        try:
+            req_option = TSC.RequestOptions()
+            req_option.filter.add(TSC.Filter("contentUrl", TSC.RequestOptions.Operator.Equals, datasource_content_url))
+            logger.trace(req_option.get_query_params())
+            matching_datasources, paging = server.datasources.get(req_option)
+        except TSC.ServerResponseError as e:
+            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response").format(""))
+        if len(matching_datasources) < 1:
+            Errors.exit_with_error(logger, message=_("dataalerts.failure.error.datasourceNotFound"))
+        return matching_datasources[0]
 
     @staticmethod
     def apply_values_from_url_params(request_options: TSC.PDFRequestOptions, url, logger) -> None:
@@ -63,7 +79,7 @@ class DatasourcesAndWorkbooks(Server):
                 else:  # it must be a filter
                     DatasourcesAndWorkbooks.apply_filter_value(request_options, value, logger)
 
-        except BaseException as e:
+        except Exception as e:
             logger.warn("Error building filter params", e)
             # ExportCommand.log_stack(logger)  # type: ignore
 
@@ -86,7 +102,7 @@ class DatasourcesAndWorkbooks(Server):
             logger.debug("Set max age to {} from {}".format(request_options.max_age, value))
         elif ":size" == setting[0]:
             height, width = setting[1].split(",")
-            logger.warn("Height/weight parameters not yet implemented ({})".format(value))
+            logger.warn("Height/width parameters not yet implemented ({})".format(value))
         else:
             logger.debug("Parameter[s] not recognized: {}".format(value))
 
@@ -122,16 +138,3 @@ class DatasourcesAndWorkbooks(Server):
         with open(filename, "wb") as f:
             f.write(output)
             logger.info(_("export.success").format("", filename))
-
-    @staticmethod
-    def get_ds_by_content_url(logger, server, datasource_content_url) -> TSC.DatasourceItem:
-        logger.debug(_("export.status").format(datasource_content_url))
-        try:
-            req_option = TSC.RequestOptions()
-            req_option.filter.add(TSC.Filter("contentUrl", TSC.RequestOptions.Operator.Equals, datasource_content_url))
-            matching_datasources, paging = server.datasources.get(req_option)
-        except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response").format(""))
-        if len(matching_datasources) < 1:
-            Errors.exit_with_error(logger, message=_("dataalerts.failure.error.datasourceNotFound"))
-        return matching_datasources[0]

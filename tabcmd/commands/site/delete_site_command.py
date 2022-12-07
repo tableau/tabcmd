@@ -33,7 +33,7 @@ class DeleteSiteCommand(Server):
             server.sites.delete(target_site_id)
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, strings[1], e)
-        except BaseException as e:
+        except Exception as e:
             Errors.exit_with_error(logger, strings[4], e)
         logger.info(strings[0].format(args.site_name_to_delete))
 
