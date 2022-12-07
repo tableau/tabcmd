@@ -1,4 +1,5 @@
 import tableauserverclient as TSC
+from tableauserverclient import ServerResponseError
 
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.constants import Errors
@@ -75,9 +76,8 @@ class PublishCommand(DatasourcesAndWorkbooks):
                     as_job=False,
                     skip_connection_check=False,
                 )
-
-            except IOError as ioe:
-                Errors.exit_with_error(logger, ioe)
+            except Exception as e:
+                Errors.exit_with_error(logger, e)
             logger.info(_("publish.success") + "\n{}".format(new_workbook.webpage_url))
 
         elif source in ["tds", "tdsx", "hyper"]:
@@ -87,7 +87,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
                 new_datasource = server.datasources.publish(
                     new_datasource, args.filename, publish_mode, connection_credentials=creds
                 )
-            except IOError as ioe:
+            except Exception as exc:
                 Errors.exit_with_error(logger, exc)
             logger.info(_("publish.success") + "\n{}".format(new_datasource.webpage_url))
 

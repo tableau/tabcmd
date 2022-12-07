@@ -25,8 +25,8 @@ class DatasourcesAndWorkbooks(Server):
             req_option.filter.add(TSC.Filter("contentUrl", TSC.RequestOptions.Operator.Equals, view_content_url))
             logger.trace(req_option.get_query_params())
             matching_views, paging = server.views.get(req_option)
-        except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response").format(e))
+        except Exception as e:
+            Errors.exit_with_error(logger, e)
         if len(matching_views) < 1:
             Errors.exit_with_error(logger, message=_("errors.xmlapi.not_found"))
         return matching_views[0]
@@ -39,8 +39,8 @@ class DatasourcesAndWorkbooks(Server):
             req_option.filter.add(TSC.Filter("contentUrl", TSC.RequestOptions.Operator.Equals, workbook_content_url))
             logger.trace(req_option.get_query_params())
             matching_workbooks, paging = server.workbooks.get(req_option)
-        except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response").format(""))
+        except Exception as e:
+            Errors.exit_with_error(logger, e)
         if len(matching_workbooks) < 1:
             Errors.exit_with_error(logger, message=_("dataalerts.failure.error.workbookNotFound"))
         return matching_workbooks[0]
@@ -53,8 +53,8 @@ class DatasourcesAndWorkbooks(Server):
             req_option.filter.add(TSC.Filter("contentUrl", TSC.RequestOptions.Operator.Equals, datasource_content_url))
             logger.trace(req_option.get_query_params())
             matching_datasources, paging = server.datasources.get(req_option)
-        except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response").format(""))
+        except Exception as e:
+            Errors.exit_with_error(logger, e)
         if len(matching_datasources) < 1:
             Errors.exit_with_error(logger, message=_("dataalerts.failure.error.datasourceNotFound"))
         return matching_datasources[0]

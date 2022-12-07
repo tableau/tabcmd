@@ -13,8 +13,8 @@ msgstr ""
 # https://sourcegraph.prod.tableautools.com/teams/near/-/blob/workgroup/src/shared/libraries/tab-strings/res/localization/shared_wg_en.properties
 # how much of this can be replaced by server responses?
 
-msgid "tabcmd.result.already_exists.group"
-msgstr "Group called ''{}'' already exists"
+msgid "tabcmd.result.already_exists"
+msgstr "{} called ''{}'' already exists"
 
 msgid "tabcmd.result.failed.delete.group"
 msgstr "Error deleting group from server"
@@ -1703,6 +1703,14 @@ msgid "flows.drafts.default_name"
 msgstr "New Flow"
 
 #:
+msgid "content_type.group"
+msgstr "Group"
+
+#:
+msgid "content_type.user"
+msgstr "User"
+
+#:
 msgid "content_type.project"
 msgstr "Project"
 
@@ -1733,6 +1741,10 @@ msgstr "Collection"
 #:
 msgid "content_type.visualization"
 msgstr "Visualization"
+
+#:
+msgid "content_type.extract"
+msgstr "Extract"
 
 #:
 msgid "content_type.askdata_visualization"

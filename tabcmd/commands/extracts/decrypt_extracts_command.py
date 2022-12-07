@@ -29,8 +29,8 @@ class DecryptExtracts(Server):
         try:
             logger.info(_("decryptextracts.status").format(args.site_name))
             job = server.sites.decrypt_extracts(site_item.id)
-        except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, "Error decrypting extracts", e)
+        except Exception as e:
+            Errors.exit_with_error(logger, e)
 
         logger.info(_("common.output.job_queued_success"))
         logger.debug("Extract decryption queued with JobID: {}".format(job.id))

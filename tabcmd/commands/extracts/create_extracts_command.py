@@ -54,8 +54,12 @@ class CreateExtracts(Server):
                     includeAll=args.include_all,
                     datasources=args.embedded_datasources,
                 )
-        except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, exception=e)
+        except Exception as e:
+
+            if args.continue_if_exists and Errors.is_resource_conflict(e):
+                logger.info(_("tabcmd.result.already_exists").format(_("content_type.extract"), args.name))
+                return
+            Errors.exit_with_error(logger, e)
 
         logger.info(_("common.output.job_queued_success"))
         logger.debug("Extract creation queued with JobID: {}".format(job.id))

@@ -32,17 +32,17 @@ class DeleteProjectCommand(Server):
             logger.debug("parent path: {}".format(args.parent_project_path))
 
         try:
-            logger.debug(_("deleteproject.status").format(args.parent_project_path + "/" + args.project_name))
+            logger.debug(_("deleteproject.status").format((args.parent_project_path or "") + "/" + args.project_name))
             project = Server.get_project_by_name_and_parent_path(
                 logger, server, args.project_name, args.parent_project_path
             )
-        except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
+        except Exception as e:
+            Errors.exit_with_error(logger, e)
         project_id = project.id
 
         try:
             logger.info(_("deleteproject.status").format(args.project_name))
             server.projects.delete(project_id)
             logger.info(_("common.output.succeeded"))
-        except TSC.ServerResponseError as e:
+        except Exception as e:
             Errors.exit_with_error(logger, "tabcmd.result.failure.delete.project", e)

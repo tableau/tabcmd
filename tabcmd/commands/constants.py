@@ -1,6 +1,8 @@
 import inspect
 import sys
 
+from tableauserverclient import ServerResponseError
+
 from tabcmd.execution.localize import _
 
 
@@ -30,6 +32,10 @@ class Errors:
         if hasattr(error, "code"):
             return error.code == Constants.login_error
 
+    @staticmethod
+    def is_server_response_error(error):
+        return isinstance(error, ServerResponseError)
+
     # https://gist.github.com/FredLoney/5454553
     @staticmethod
     def log_stack(logger):
@@ -58,20 +64,29 @@ class Errors:
             if message and not exception:
                 logger.error(message)
             if exception:
-                if Errors.is_expired_session(exception):
-                    logger.error(_("session.errors.session_expired"))
-                    # TODO: add session as an argument to this method
-                    #  and add the full command line as a field in Session?
-                    # "session.session_expired_login"))
-                    # session.renew_session()
                 if message:
                     logger.debug("Error message: " + message)
                 Errors.check_common_error_codes_and_explain(logger, exception)
         except Exception as exc:
-            print("Error during log call from exception - {} {}".format(exc.__class__, message))
-        print("Exiting...")
+            print(sys.stderr, "Error during log call from exception - {} {}".format(exc))
+        try:
+            logger.info("Exiting...")
+        except Exception:
+            print(sys.stderr, "Exiting...")
         sys.exit(1)
 
     @staticmethod
-    def check_common_error_codes_and_explain(logger, error):
-        logger.error(error)
+    def check_common_error_codes_and_explain(logger, exception):
+        if Errors.is_server_response_error(exception):
+            logger.error(_("publish.errors.unexpected_server_response").format(exception))
+            if Errors.is_expired_session(exception):
+                logger.error(_("session.errors.session_expired"))
+                # TODO: add session as an argument to this method
+                #  and add the full command line as a field in Session?
+                # "session.session_expired_login"))
+                # session.renew_session
+                return
+            if exception.code.startswith(Constants.source_not_found):
+                logger.error(_("publish.errors.server_resource_not_found"), exception)
+        else:
+            logger.error(exception)
