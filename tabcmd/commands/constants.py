@@ -44,10 +44,11 @@ class Errors:
             start = 0
             n_lines = 5
             logger.trace(HEADER_FMT % (file, func))
-            for frame in stack[start + 1 : n_lines]:
+
+            for frame in stack[start + 2 : n_lines]:
                 file, line, func = frame[1:4]
                 logger.trace(STACK_FMT % (file, line, func))
-        except BaseException as e:
+        except Exception as e:
             logger.info("Error printing stack trace:", e)
 
     @staticmethod
@@ -64,10 +65,11 @@ class Errors:
                     # "session.session_expired_login"))
                     # session.renew_session()
                 if message:
-                    logger.debug(message)
+                    logger.debug("Error message: " + message)
                 Errors.check_common_error_codes_and_explain(logger, exception)
         except Exception as exc:
             print("Error during log call from exception - {} {}".format(exc.__class__, message))
+        print("Exiting...")
         sys.exit(1)
 
     @staticmethod
