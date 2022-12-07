@@ -20,15 +20,15 @@ class PublishCommand(DatasourcesAndWorkbooks):
 
     @staticmethod
     def define_args(publish_parser):
-        publish_parser.add_argument(
+        group = publish_parser.add_argument_group(title=PublishCommand.name)
+        group.add_argument(
             "filename",
             metavar="filename.twbx|tdsx|hyper",
             # this is not actually a File type because we just pass the path to tsc
         )
-        set_publish_args(publish_parser)
-        set_project_r_arg(publish_parser)
-        set_parent_project_arg(publish_parser)
-        # --disable-uploader and --restart don't do anything
+        set_publish_args(group)
+        set_project_r_arg(group)
+        set_parent_project_arg(group)
 
     @staticmethod
     def run_command(args):

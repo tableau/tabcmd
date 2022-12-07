@@ -16,15 +16,17 @@ class RefreshExtracts(Server):
 
     @staticmethod
     def define_args(refresh_extract_parser):
-        possible_targets = set_ds_xor_wb_args(refresh_extract_parser)
+        group = refresh_extract_parser.add_argument_group(title=RefreshExtracts.name)
+        possible_targets = set_ds_xor_wb_args(group)
+        # hm, why did I do this instead of group.add_arg?
         possible_targets.add_argument(
             "--url",
             help=_("createextracts.options.url"),
         )
-        set_incremental_options(refresh_extract_parser)
-        set_calculations_options(refresh_extract_parser)
-        set_project_arg(refresh_extract_parser)
-        set_parent_project_arg(refresh_extract_parser)
+        set_incremental_options(group)
+        set_calculations_options(group)
+        set_project_arg(group)
+        set_parent_project_arg(group)
 
     @staticmethod
     def run_command(args):

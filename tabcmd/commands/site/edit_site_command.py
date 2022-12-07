@@ -19,13 +19,11 @@ class EditSiteCommand(Server):
 
     @staticmethod
     def define_args(edit_site_parser):
-        edit_site_parser.add_argument("site_name", metavar="site-name", help="editsite.options.site-name")
-        edit_site_parser.add_argument(
-            "--site-name", default=None, dest="new_site_name", help=_("editsite.options.site-name")
-        )
-
-        set_common_site_args(edit_site_parser)
-        set_site_status_arg(edit_site_parser)
+        args_group = edit_site_parser.add_argument_group(title=EditSiteCommand.name)
+        args_group.add_argument("site_name", metavar="site-name", help="editsite.options.site-name")
+        args_group.add_argument("--site-name", default=None, dest="new_site_name", help=_("editsite.options.site-name"))
+        set_common_site_args(args_group)
+        set_site_status_arg(args_group)
 
     @staticmethod
     def run_command(args):

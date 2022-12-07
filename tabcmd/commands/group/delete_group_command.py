@@ -17,7 +17,8 @@ class DeleteGroupCommand(Server):
 
     @staticmethod
     def define_args(delete_group_parser):
-        delete_group_parser.add_argument("name")
+        args_group = delete_group_parser.add_argument_group(title=DeleteGroupCommand.name)
+        args_group.add_argument("name")
 
     @staticmethod
     def run_command(args):
