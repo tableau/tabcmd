@@ -78,14 +78,14 @@ class GetUrl(DatasourcesAndWorkbooks):
         Errors.exit_with_error(logger, message=_("get.errors.invalid_content_type").format(url))
 
     @staticmethod
-    def explain_expected_url(logger, url: str):
+    def explain_expected_url(logger, url: str, command: str):
         view_example = "/views/<workbookname>/<viewname>[.ext]"
         wb_example = "/workbooks/<workbookname>[.ext]"
         ds_example = "/datasources/<datasourcename[.ext]"
         # todo when strings are updated # message:str = _("export.errors.requires_resource_param").format(
         message = "The ''{0}'' command requires a resource path in a specific format." \
                   "Given: {1}. Accepted values: {2}, {3}, {4}".format(
-            __class__.__name__, url, view_example, wb_example, ds_example
+            command, url, view_example, wb_example, ds_example
         )
         Errors.exit_with_error(logger, message)
 
@@ -130,7 +130,7 @@ class GetUrl(DatasourcesAndWorkbooks):
         url = url.lstrip("/")  # strip opening / if present
         name_parts = url.split("/")
         if len(name_parts) != 2:
-            GetUrl.explain_expected_url(logger, url)
+            GetUrl.explain_expected_url(logger, url, "GetURl")
         resource_name_with_params = name_parts[::-1][0]  # last part
         resource_name_with_ext = GetUrl.strip_query_params(resource_name_with_params)
         resource_name = GetUrl.get_name_without_possible_extension(resource_name_with_ext)
@@ -140,7 +140,7 @@ class GetUrl(DatasourcesAndWorkbooks):
     def get_view_url(url, logger):  # "views/wb-name/view-name" -> wb-name/sheets/view-name
         name_parts = url.split("/")  # ['views', 'wb-name', 'view-name']
         if len(name_parts) != 3:
-            GetUrl.explain_expected_url(logger, url)
+            GetUrl.explain_expected_url(logger, url, "GetURl")
         workbook_name = name_parts[1]
         view_name = name_parts[::-1][0]
         view_name = GetUrl.strip_query_params(view_name)
