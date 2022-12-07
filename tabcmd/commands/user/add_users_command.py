@@ -15,9 +15,10 @@ class AddUserCommand(UserCommand):
 
     @staticmethod
     def define_args(add_user_parser):
-        add_user_parser.add_argument("name", help="name of group to add users to")
-        set_users_file_arg(add_user_parser)
-        set_completeness_options(add_user_parser)
+        args_group = add_user_parser.add_argument_group(title=AddUserCommand.name)
+        args_group.add_argument("name", help="name of group to add users to")
+        set_users_file_arg(args_group)
+        set_completeness_options(args_group)
 
     @staticmethod
     def run_command(args):

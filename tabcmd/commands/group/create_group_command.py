@@ -17,7 +17,8 @@ class CreateGroupCommand(Server):
 
     @staticmethod
     def define_args(create_group_parser):
-        create_group_parser.add_argument("name")
+        args_group = create_group_parser.add_argument_group(title=CreateGroupCommand.name)
+        args_group.add_argument("name")
 
     @staticmethod
     def run_command(args):

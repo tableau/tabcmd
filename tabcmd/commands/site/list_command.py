@@ -18,7 +18,8 @@ class ListCommand(Server):
 
     @staticmethod
     def define_args(list_parser):
-        list_parser.add_argument("content", choices=["projects", "workbooks", "datasources"], help="View content")
+        args_group = list_parser.add_argument_group(title=ListCommand.name)
+        args_group.add_argument("content", choices=["projects", "workbooks", "datasources"], help="View content")
 
     @staticmethod
     def run_command(args):

@@ -18,12 +18,13 @@ class DeleteExtracts(Server):
 
     @staticmethod
     def define_args(delete_extract_parser):
-        set_ds_xor_wb_args(delete_extract_parser)
-        set_embedded_datasources_options(delete_extract_parser)
-        # set_encryption_option(delete_extract_parser)
-        set_project_arg(delete_extract_parser)
-        set_parent_project_arg(delete_extract_parser)
-        delete_extract_parser.add_argument("--url", help=_("createextracts.options.url"))
+        group = delete_extract_parser.add_argument_group(title=DeleteExtracts.name)
+        set_ds_xor_wb_args(group)
+        set_embedded_datasources_options(group)
+        # set_encryption_option(group)
+        set_project_arg(group)
+        set_parent_project_arg(group)
+        group.add_argument("--url", help=_("createextracts.options.url"))
 
     @staticmethod
     def run_command(args):

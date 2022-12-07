@@ -18,7 +18,8 @@ class EncryptExtracts(Server):
 
     @staticmethod
     def define_args(encrypt_extract_parser):
-        encrypt_extract_parser.add_argument("site_name", metavar="site-name", help=_("editsite.options.site-name"))
+        group = encrypt_extract_parser.add_argument_group(title=EncryptExtracts.name)
+        group.add_argument("site_name", metavar="site-name", help=_("editsite.options.site-name"))
 
     @staticmethod
     def run_command(args):

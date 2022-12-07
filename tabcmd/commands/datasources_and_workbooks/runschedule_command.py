@@ -15,7 +15,8 @@ class RunSchedule(DatasourcesAndWorkbooks):
 
     @staticmethod
     def define_args(runschedule_parser):
-        runschedule_parser.add_argument("schedule", help=_("tabcmd.run_schedule.options.schedule"))
+        group = runschedule_parser.add_argument_group(title=RunSchedule.name)
+        group.add_argument("schedule", help=_("tabcmd.run_schedule.options.schedule"))
 
     @staticmethod
     def run_command(args):

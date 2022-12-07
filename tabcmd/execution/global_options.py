@@ -65,25 +65,29 @@ def set_no_wait_option(parser):
     return parser
 
 
-# TODO make this lower case?
+site_roles = [
+    "ServerAdministrator",
+    "SiteAdministratorCreator",
+    "SiteAdministratorExplorer",
+    "SiteAdministrator",
+    "Creator",
+    "ExplorerCanPublish",
+    "Publisher",
+    "Explorer",
+    "Interactor",
+    "Viewer",
+    "Unlicensed",
+]
+
+
 def set_role_arg(parser):
     parser.add_argument(
         "-r",
         "--role",
-        choices=[
-            "ServerAdministrator",
-            "SiteAdministratorCreator",
-            "SiteAdministratorExplorer",
-            "SiteAdministrator",
-            "Creator",
-            "ExplorerCanPublish",
-            "Publisher",
-            "Explorer",
-            "Interactor",
-            "Viewer",
-            "Unlicensed",
-        ],
-        help="Specifies a site role for all users in the .csv file.",
+        choices=list(map(lambda x: x.lower(), site_roles)),
+        type=str.lower,
+        help="Specifies a site role for all users in the .csv file. Possible roles: " + ", ".join(site_roles),
+        metavar="SITE_ROLE",
     )
     return parser
 
@@ -202,6 +206,7 @@ def set_site_status_arg(parser):
     parser.add_argument(
         "--status",
         choices=["ACTIVE", "SUSPENDED"],
+        type=str.upper,
         help="Set to ACTIVE to activate a site, or to SUSPENDED to suspend a site.",
     )
     return parser
@@ -244,8 +249,9 @@ def set_common_site_args(parser):
 
     parser.add_argument(
         "--run-now-enabled",
-        help="Allow or deny users from running extract refreshes, flows, or schedules manually. \
-            true to allow users to run tasks manually or false to prevent users from running tasks manually.",
+        choices=["true", "false"],
+        type=str.lower,
+        help="Allow or deny users from running extract refreshes, flows, or schedules manually.",
     )
     return parser
 

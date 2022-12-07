@@ -17,13 +17,14 @@ class PublishSamplesCommand(Server):
 
     @staticmethod
     def define_args(publish_samples_parser):
-        publish_samples_parser.add_argument(
+        args_group = publish_samples_parser.add_argument_group(title=PublishSamplesCommand.name)
+        args_group.add_argument(
             "--name",
             "-n",
             dest="project_name",
             required=True,
         )
-        set_parent_project_arg(publish_samples_parser)  # args.parent_project_name
+        set_parent_project_arg(args_group)  # args.parent_project_name
 
     @staticmethod
     def run_command(args):

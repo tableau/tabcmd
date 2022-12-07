@@ -17,7 +17,8 @@ class DeleteSiteCommand(Server):
 
     @staticmethod
     def define_args(delete_site_parser):
-        delete_site_parser.add_argument("site_name_to_delete", metavar="site-name", help=strings[2])
+        args_group = delete_site_parser.add_argument_group(title=DeleteSiteCommand.name)
+        args_group.add_argument("site_name_to_delete", metavar="site-name", help=strings[2])
 
     @staticmethod
     def run_command(args):

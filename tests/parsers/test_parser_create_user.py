@@ -27,4 +27,4 @@ class CreateUsersTest(unittest.TestCase):
         with mock.patch("builtins.open", mock.mock_open(read_data="test")):
             mock_args = [commandname, "users.csv", "-r", "SiteAdministrator"]
             args = self.parser_under_test.parse_args(mock_args)
-            assert args.role == "SiteAdministrator", args
+            assert args.role.lower() == "SiteAdministrator".lower(), args

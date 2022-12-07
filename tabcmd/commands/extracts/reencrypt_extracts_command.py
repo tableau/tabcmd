@@ -18,7 +18,8 @@ class ReencryptExtracts(Server):
 
     @staticmethod
     def define_args(reencrypt_extract_parser):
-        reencrypt_extract_parser.add_argument("site_name", metavar="site-name", help=_("editsite.options.site-name"))
+        group = reencrypt_extract_parser.add_argument_group(title=ReencryptExtracts.name)
+        group.add_argument("site_name", metavar="site-name", help=_("editsite.options.site-name"))
 
     @staticmethod
     def run_command(args):
