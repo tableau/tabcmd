@@ -46,22 +46,6 @@ class GetUrl(DatasourcesAndWorkbooks):
             Errors.exit_with_error(logger, _("export.errors.white_space_workbook_view"))
 
         url = args.url.lstrip("/")  # strip opening / if present
-        file_type = GetUrl.get_file_type_from_filename(logger, args.filename, url)
-        content_type = GetUrl.evaluate_content_type(logger, url)
-        if file_type not in GetUrl.valid_file_types[content_type]:
-            Errors.exit_with_error(
-                logger,
-                message=_("get.errors.invalid_file_type").format(
-                    _(
-                        "content_type." + content_type
-                    ),  # --> _("content_type.workbook") -> "workbook", "Arbeitsmappe", etc
-                    GetUrl.valid_file_types[content_type],
-                ),
-            )
-        try:
-            GetUrl.get_content_as_file(file_type, content_type, logger, args, server, url)
-        except Exception as e:
-            Errors.exit_with_error(logger, e)
 
     ## this first set of methods is all parsing the url and file input from the user
 
@@ -75,6 +59,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             if url.find(content_type) == 0:
                 return content_type
         Errors.exit_with_error(logger, message=_("get.errors.invalid_content_type").format(url))
+
 
     @staticmethod
     def explain_expected_url(logger, url: str, command: str):
