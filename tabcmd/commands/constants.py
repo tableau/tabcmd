@@ -68,7 +68,7 @@ class Errors:
                     logger.debug("Error message: " + message)
                 Errors.check_common_error_codes_and_explain(logger, exception)
         except Exception as exc:
-            print(sys.stderr, "Error during log call from exception - {} {}".format(exc))
+            print(sys.stderr, "Error during log call from exception - {}".format(exc))
         try:
             logger.info("Exiting...")
         except Exception:
