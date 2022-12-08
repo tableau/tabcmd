@@ -41,8 +41,8 @@ class DeleteExtracts(Server):
                 logger.info(_("deleteextracts.for.workbook_name").format(args.workbook))
                 workbook_item = Server.get_workbook_item(logger, server, args.workbook)
                 job = server.workbooks.delete_extract(workbook_item)
-        except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, _("deleteextracts.errors.error"), e)
+        except Exception as e:
+            Errors.exit_with_error(logger, e)
 
         logger.info(_("common.output.job_queued_success"))
         logger.debug("Extract deletion queued with JobID: {}".format(job.id))

@@ -23,7 +23,7 @@ class TabcmdController:
             sys.exit(0)
         user_input = user_input or sys.argv[1:]
         namespace = parser.parse_args(user_input)
-        if namespace.logging_level:
+        if namespace.logging_level and namespace.logging_level != logging.INFO:
             print("logging:", namespace.logging_level)
 
         logger = log(__name__, namespace.logging_level or logging.INFO)

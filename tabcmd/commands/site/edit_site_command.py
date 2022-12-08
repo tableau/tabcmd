@@ -46,5 +46,5 @@ class EditSiteCommand(Server):
             server.sites.update(site_item)
             logger.info(_("common.output.succeeded"))
 
-        except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
+        except Exception as e:
+            Errors.exit_with_error(logger, e)

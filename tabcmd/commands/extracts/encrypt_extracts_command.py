@@ -31,7 +31,7 @@ class EncryptExtracts(Server):
         try:
             logger.info(_("encryptextracts.status").format(site_item.name))
             job = server.sites.encrypt_extracts(site_item.id)
-        except TSC.ServerResponseError as e:
+        except Exception as e:
             Errors.exit_with_error(logger, e)
 
         logger.info(_("common.output.job_queued_success"))

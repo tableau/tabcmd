@@ -79,7 +79,7 @@ class RefreshExtracts(Server):
             elif args.url:
                 logger.error("URL not yet implemented")
 
-        except TSC.ServerResponseError as e:
+        except Exception as e:
             Errors.exit_with_error(logger, _("refreshextracts.errors.error"), e)
 
         logger.info(_("common.output.job_queued_success"))

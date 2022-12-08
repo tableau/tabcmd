@@ -60,10 +60,8 @@ class GetUrl(DatasourcesAndWorkbooks):
             )
         try:
             GetUrl.get_content_as_file(file_type, content_type, logger, args, server, url)
-        except ServerResponseError as e:
+        except Exception as e:
             Errors.exit_with_error(logger, e)
-        except Exception as be:
-            Errors.exit_with_error(logger, be, "Error during file download")
 
     ## this first set of methods is all parsing the url and file input from the user
 
@@ -131,7 +129,7 @@ class GetUrl(DatasourcesAndWorkbooks):
         url = url.lstrip("/")  # strip opening / if present
         name_parts = url.split("/")
         if len(name_parts) != 2:
-            GetUrl.explain_expected_url(logger, url, "GetURl")
+            GetUrl.explain_expected_url(logger, url, "GetUrl")
         resource_name_with_params = name_parts[::-1][0]  # last part
         resource_name_with_ext = GetUrl.strip_query_params(resource_name_with_params)
         resource_name = GetUrl.get_name_without_possible_extension(resource_name_with_ext)
@@ -141,7 +139,7 @@ class GetUrl(DatasourcesAndWorkbooks):
     def get_view_url(url, logger):  # "views/wb-name/view-name" -> wb-name/sheets/view-name
         name_parts = url.split("/")  # ['views', 'wb-name', 'view-name']
         if len(name_parts) != 3:
-            GetUrl.explain_expected_url(logger, url, "GetURl")
+            GetUrl.explain_expected_url(logger, url, "GetUrl")
         workbook_name = name_parts[1]
         view_name = name_parts[::-1][0]
         view_name = GetUrl.strip_query_params(view_name)
@@ -185,8 +183,8 @@ class GetUrl(DatasourcesAndWorkbooks):
             server.views.populate_pdf(view_item, req_option_pdf)
             filename = GetUrl.filename_from_args(args.filename, view_item.name, "pdf")
             DatasourcesAndWorkbooks.save_to_file(logger, view_item.pdf, filename)
-        except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
+        except Exception as e:
+            Errors.exit_with_error(logger, e)
 
     @staticmethod
     def generate_png(logger, server, args, view_url):
@@ -199,8 +197,8 @@ class GetUrl(DatasourcesAndWorkbooks):
             server.views.populate_image(view_item, req_option_csv)
             filename = GetUrl.filename_from_args(args.filename, view_item.name, "png")
             DatasourcesAndWorkbooks.save_to_file(logger, view_item.image, filename)
-        except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
+        except Exception as e:
+            Errors.exit_with_error(logger, e)
 
     @staticmethod
     def generate_csv(logger, server, args, view_url):
@@ -213,8 +211,6 @@ class GetUrl(DatasourcesAndWorkbooks):
             server.views.populate_csv(view_item, req_option_csv)
             file_name_with_path = GetUrl.filename_from_args(args.filename, view_item.name, "csv")
             DatasourcesAndWorkbooks.save_to_data_file(logger, view_item.csv, file_name_with_path)
-        except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
 
@@ -229,8 +225,8 @@ class GetUrl(DatasourcesAndWorkbooks):
             logger.debug("Saving as {}".format(file_name_with_path))
             server.workbooks.download(target_workbook.id, filepath=None, no_extract=False)
             logger.info(_("export.success").format(target_workbook.name, file_name_with_path))
-        except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
+        except Exception as e:
+            Errors.exit_with_error(logger, e)
 
     @staticmethod
     def generate_tds(logger, server, args, file_extension):
@@ -243,5 +239,5 @@ class GetUrl(DatasourcesAndWorkbooks):
             logger.debug("Saving as {}".format(file_name_with_path))
             server.datasources.download(target_datasource.id, filepath=None, no_extract=False)
             logger.info(_("export.success").format(target_datasource.name, file_name_with_path))
-        except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
+        except Exception as e:
+            Errors.exit_with_error(logger, e)

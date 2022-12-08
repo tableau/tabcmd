@@ -33,7 +33,7 @@ def set_client_locale(lang: str = "", logger=None) -> Optional[Callable]:
     try:
         locale_options = [_validate_lang(lang), _get_default_locale(), "en"]
     except Exception as e:
-        print(e)
+        print(sys.stderr, e)
         locale_options = ["en"]
 
     logger.debug("Language options: {}".format(locale_options))
@@ -45,7 +45,7 @@ def set_client_locale(lang: str = "", logger=None) -> Optional[Callable]:
                 translate = _load_language(lang, domain, logger)
                 break
         except Exception as e:
-            print("Failed to load language '", lang, "':", e)
+            print(sys.stderr, "Failed to load language '", lang, "':", e)
 
     return translate or _identity_func
 
