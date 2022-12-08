@@ -19,9 +19,10 @@ class CreateSiteUsersCommand(UserCommand):
 
     @staticmethod
     def define_args(create_site_users_parser):
-        set_role_arg(create_site_users_parser)
-        set_users_file_positional(create_site_users_parser)
-        set_completeness_options(create_site_users_parser)
+        args_group = create_site_users_parser.add_argument_group(title=CreateSiteUsersCommand.name)
+        set_role_arg(args_group)
+        set_users_file_positional(args_group)
+        set_completeness_options(args_group)
 
     @staticmethod
     def run_command(args):

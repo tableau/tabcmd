@@ -60,7 +60,7 @@ class GeturlTests(unittest.TestCase):
         assert GetUrl.get_name_without_possible_extension(filename) == filename
 
     def test_get_workbook_name(self):
-        assert GetUrl.get_workbook_name("workbooks/wbname", mock_logger) == "wbname"
+        assert GetUrl.get_resource_name("workbooks/wbname", mock_logger) == "wbname"
 
     def test_view_name(self):
         assert GetUrl.get_view_url("views/wb-name/view-name", None) == "wb-name/sheets/view-name"
@@ -113,7 +113,6 @@ class ExportTests(unittest.TestCase):
         url = "wb-name/view-name?param1=value1"
         mock_args.url = url
         ExportCommand.download_csv(mock_server, mock_view, mock_args, mock_logger)
-
 
     @mock.patch("tableauserverclient.Server")
     def test_download_image(self, mock_server):
@@ -183,7 +182,6 @@ class DS_WB_Tests(unittest.TestCase):
         assert options.max_age == -1
         ExportCommand.apply_values_from_url_params(options, url, mock_logger)
         assert options.max_age == 0
-
 
     def test_save_to_binary_file(self):
         mock_content = bytes()

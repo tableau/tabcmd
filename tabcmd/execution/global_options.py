@@ -40,7 +40,7 @@ def set_users_file_arg(parser):
     parser.add_argument(
         "--users",
         required=True,
-        type=argparse.FileType("r", encoding="UTF-8"),
+        type=argparse.FileType("r", encoding="utf-8-sig"),
         help="CSV file containing a list of users.",
     )
     return parser
@@ -50,7 +50,7 @@ def set_users_file_positional(parser):
     parser.add_argument(
         "filename",
         metavar="filename.csv",
-        type=argparse.FileType("r", encoding="UTF-8"),
+        type=argparse.FileType("r", encoding="utf-8-sig"),
         help="CSV file containing a list of users.",
     )
     return parser
@@ -65,25 +65,29 @@ def set_no_wait_option(parser):
     return parser
 
 
-# TODO make this lower case?
+site_roles = [
+    "ServerAdministrator",
+    "SiteAdministratorCreator",
+    "SiteAdministratorExplorer",
+    "SiteAdministrator",
+    "Creator",
+    "ExplorerCanPublish",
+    "Publisher",
+    "Explorer",
+    "Interactor",
+    "Viewer",
+    "Unlicensed",
+]
+
+
 def set_role_arg(parser):
     parser.add_argument(
         "-r",
         "--role",
-        choices=[
-            "ServerAdministrator",
-            "SiteAdministratorCreator",
-            "SiteAdministratorExplorer",
-            "SiteAdministrator",
-            "Creator",
-            "ExplorerCanPublish",
-            "Publisher",
-            "Explorer",
-            "Interactor",
-            "Viewer",
-            "Unlicensed",
-        ],
-        help="Specifies a site role for all users in the .csv file.",
+        choices=list(map(lambda x: x.lower(), site_roles)),
+        type=str.lower,
+        help="Specifies a site role for all users in the .csv file. Possible roles: " + ", ".join(site_roles),
+        metavar="SITE_ROLE",
     )
     return parser
 
@@ -202,6 +206,7 @@ def set_site_status_arg(parser):
     parser.add_argument(
         "--status",
         choices=["ACTIVE", "SUSPENDED"],
+        type=str.upper,
         help="Set to ACTIVE to activate a site, or to SUSPENDED to suspend a site.",
     )
     return parser
@@ -244,8 +249,9 @@ def set_common_site_args(parser):
 
     parser.add_argument(
         "--run-now-enabled",
-        help="Allow or deny users from running extract refreshes, flows, or schedules manually. \
-            true to allow users to run tasks manually or false to prevent users from running tasks manually.",
+        choices=["true", "false"],
+        type=str.lower,
+        help="Allow or deny users from running extract refreshes, flows, or schedules manually.",
     )
     return parser
 
@@ -285,10 +291,15 @@ def set_publish_args(parser):
     parser.add_argument("-n", "--name", help="Name to publish the new datasource or workbook by.")
 
     set_overwrite_option(parser)
-    parser.add_argument(
+
+    creds = parser.add_mutually_exclusive_group()
+    creds.add_argument("--oauth-username", help="The email address of a preconfigured OAuth connection")
+    creds.add_argument(
         "--db-username",
         help="Use this option to publish a database user name with the workbook, data source, or data extract.",
     )
+    parser.add_argument("--save-oauth", action="store_true", help="Save embedded OAuth credentials in the datasource")
+
     parser.add_argument(
         "--db-password",
         help="publish a database password with the workbook, data source, or extract",
@@ -298,6 +309,7 @@ def set_publish_args(parser):
         action="store_true",
         help="Stores the provided database password on the server.",
     )
+
     parser.add_argument(
         "--tabbed",
         action="store_true",
@@ -314,15 +326,11 @@ def set_publish_args(parser):
         action="store_true",
         help="Encrypt extracts in the workbook, datasource, or extract being published to the server",
     )
-    parser.add_argument("--oauth-username", help="The email address of a preconfigured OAuth connection")
-    parser.add_argument("--save-oauth", action="store_true", help="Save embedded OAuth credentials in the datasource")
-
     thumbnails = parser.add_mutually_exclusive_group()
     thumbnails.add_argument("--thumbnail-username", help="Not yet implemented")
     thumbnails.add_argument("--thumbnail-group", help="Not yet implemented")  # not implemented in the REST API
 
-    parser.add_argument("--use-tableau-bridge", help="Refresh datasource through Tableau Bridge")
-
+    parser.add_argument("--use-tableau-bridge", action="store_true", help="Refresh datasource through Tableau Bridge")
 
 def set_overwrite_option(parser):
     append_group = parser.add_mutually_exclusive_group()

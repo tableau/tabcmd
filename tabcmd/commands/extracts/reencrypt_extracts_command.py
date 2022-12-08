@@ -18,7 +18,8 @@ class ReencryptExtracts(Server):
 
     @staticmethod
     def define_args(reencrypt_extract_parser):
-        reencrypt_extract_parser.add_argument("site_name", metavar="site-name", help=_("editsite.options.site-name"))
+        group = reencrypt_extract_parser.add_argument_group(title=ReencryptExtracts.name)
+        group.add_argument("site_name", metavar="site-name", help=_("editsite.options.site-name"))
 
     @staticmethod
     def run_command(args):
@@ -30,7 +31,7 @@ class ReencryptExtracts(Server):
         try:
             logger.info(_("reencryptextracts.status").format(site_item.name))
             job = server.sites.encrypt_extracts(site_item.id)
-        except TSC.ServerResponseError as e:
+        except Exception as e:
             Errors.exit_with_error(logger, e)
 
         logger.info(_("common.output.job_queued_success"))

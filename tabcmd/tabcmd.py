@@ -14,8 +14,9 @@ def main():
         parser = TabcmdController.initialize()
         TabcmdController.run(parser)
     except Exception as e:
-        print("Unhandled exception: {}".format(type(e).__name__))
+        print(sys.stderr, "Unhandled exception: {}".format(type(e).__name__))
         print(
+            sys.stderr,
             f"{type(e).__name__} at line {e.__traceback__.tb_lineno} of {__file__}: {e}",
         )
         sys.exit(1)

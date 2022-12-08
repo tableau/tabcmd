@@ -4,7 +4,7 @@ import logging
 import os
 import sys
 from os import listdir
-from typing import Any
+from typing import Any, Optional
 from typing import Callable
 
 translate = None
@@ -14,7 +14,7 @@ translate = None
 def _(string_key: str) -> str:
     global translate
     if not translate:
-        translate = set_client_locale(None, None)
+        translate = set_client_locale()
     if not translate:
         translate = _identity_func
     return translate(string_key)
@@ -25,7 +25,7 @@ def _identity_func(x: Any) -> Any:
 
 
 # The client should present text in the OS language, or english if not present.
-def set_client_locale(lang: str = None, logger=None) -> Callable:
+def set_client_locale(lang: str = "", logger=None) -> Optional[Callable]:
     if not logger:
         logger = logging.getLogger()
 
@@ -33,7 +33,7 @@ def set_client_locale(lang: str = None, logger=None) -> Callable:
     try:
         locale_options = [_validate_lang(lang), _get_default_locale(), "en"]
     except Exception as e:
-        print(e)
+        print(sys.stderr, e)
         locale_options = ["en"]
 
     logger.debug("Language options: {}".format(locale_options))
@@ -45,7 +45,7 @@ def set_client_locale(lang: str = None, logger=None) -> Callable:
                 translate = _load_language(lang, domain, logger)
                 break
         except Exception as e:
-            print("Failed to load language '", lang, "':", e)
+            print(sys.stderr, "Failed to load language '", lang, "':", e)
 
     return translate or _identity_func
 

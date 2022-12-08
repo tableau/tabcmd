@@ -18,8 +18,9 @@ class CreateSiteCommand(Server):
 
     @staticmethod
     def define_args(create_site_parser):
-        create_site_parser.add_argument("new_site_name", metavar="site-name", help=_("editsite.options.site-name"))
-        set_common_site_args(create_site_parser)
+        args_group = create_site_parser.add_argument_group(title=CreateSiteCommand.name)
+        args_group.add_argument("new_site_name", metavar="site-name", help=_("editsite.options.site-name"))
+        set_common_site_args(args_group)
 
     @staticmethod
     def run_command(args):
@@ -41,14 +42,8 @@ class CreateSiteCommand(Server):
             logger.info(_("createsite.status").format(args.new_site_name))
             server.sites.create(new_site)
             logger.info(_("common.output.succeeded"))
-        except TSC.ServerResponseError as e:
-            if Errors.is_resource_conflict(e):
-                if args.continue_if_exists:
-                    logger.info(_("createsite.errors.site_name_already_exists").format(args.new_site_name))
-                    return
-                else:
-                    Errors.exit_with_error(
-                        logger, _("createsite.errors.site_name_already_exists").format(args.site_name)
-                    )
-
-            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response"), e)
+        except Exception as e:
+            if Errors.is_resource_conflict(e) and args.continue_if_exists:
+                logger.info(_("createsite.errors.site_name_already_exists").format(args.new_site_name))
+                return
+            Errors.exit_with_error(logger, e)

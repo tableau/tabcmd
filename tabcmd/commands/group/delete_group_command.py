@@ -17,7 +17,8 @@ class DeleteGroupCommand(Server):
 
     @staticmethod
     def define_args(delete_group_parser):
-        delete_group_parser.add_argument("name")
+        args_group = delete_group_parser.add_argument_group(title=DeleteGroupCommand.name)
+        args_group.add_argument("name")
 
     @staticmethod
     def run_command(args):
@@ -31,6 +32,5 @@ class DeleteGroupCommand(Server):
             logger.info(_("deletegroup.status").format(group_id))
             server.groups.delete(group_id)
             logger.info(_("common.output.succeeded"))
-        except TSC.ServerResponseError as e:
-            # quite likely a 403 because you must be server/site admin to call this
+        except Exception as e:
             Errors.exit_with_error(logger, _("tabcmd.result.failed.delete.group"), e)

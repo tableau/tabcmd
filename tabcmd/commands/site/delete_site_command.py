@@ -17,7 +17,8 @@ class DeleteSiteCommand(Server):
 
     @staticmethod
     def define_args(delete_site_parser):
-        delete_site_parser.add_argument("site_name_to_delete", metavar="site-name", help="name of site to delete")
+        args_group = delete_site_parser.add_argument_group(title=DeleteSiteCommand.name)
+        args_group.add_argument("site_name_to_delete", metavar="site-name", help=strings[2])
 
     @staticmethod
     def run_command(args):
@@ -25,9 +26,20 @@ class DeleteSiteCommand(Server):
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args)
-        site_url = Server.get_site_by_name(logger, server, args.site_name_to_delete).content_url
+        target_site: TSC.SiteItem = Server.get_site_by_name(logger, server, args.site_name_to_delete)
+        target_site_id = target_site.id
+        logger.debug(strings[3].format(target_site_id, server.site_id))
         try:
-            server.sites.delete(site_url)
-            logger.info("Successfully deleted the site")
-        except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, "Error deleting site", e)
+            server.sites.delete(target_site_id)
+        except Exception as e:
+            Errors.exit_with_error(logger, strings[4], e)
+        logger.info(strings[0].format(args.site_name_to_delete))
+
+
+strings = [
+    "Successfully deleted site {}",
+    "Server responded with an error while deleting site",
+    "name of site to delete",
+    "Deleting site {0}, logged in to site {1}",
+    "Error while deleting site",
+]

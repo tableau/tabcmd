@@ -17,7 +17,8 @@ class CreateGroupCommand(Server):
 
     @staticmethod
     def define_args(create_group_parser):
-        create_group_parser.add_argument("name")
+        args_group = create_group_parser.add_argument_group(title=CreateGroupCommand.name)
+        args_group.add_argument("name")
 
     @staticmethod
     def run_command(args):
@@ -30,9 +31,8 @@ class CreateGroupCommand(Server):
             new_group = TSC.GroupItem(args.name)
             server.groups.create(new_group)
             logger.info(_("common.output.succeeded"))
-        except TSC.ServerResponseError as e:
-            # quite likely a 403 because you must be server/site admin to call this
+        except Exception as e:
             if args.continue_if_exists and Errors.is_resource_conflict(e):
-                logger.info(_("tabcmd.result.already_exists.group").format(args.name))
+                logger.info(_("tabcmd.result.already_exists").format(_("content_type.group"), args.name))
                 return
             Errors.exit_with_error(logger, _("tabcmd.result.failed.create_group"))

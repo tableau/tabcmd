@@ -16,7 +16,8 @@ class DecryptExtracts(Server):
 
     @staticmethod
     def define_args(decrypt_extract_parser):
-        decrypt_extract_parser.add_argument("site_name", metavar="site-name", help=_("editsite.options.site-name"))
+        group = decrypt_extract_parser.add_argument_group(title=DecryptExtracts.name)
+        group.add_argument("site_name", metavar="site-name", help=_("editsite.options.site-name"))
 
     @staticmethod
     def run_command(args):
@@ -28,8 +29,8 @@ class DecryptExtracts(Server):
         try:
             logger.info(_("decryptextracts.status").format(args.site_name))
             job = server.sites.decrypt_extracts(site_item.id)
-        except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, "Error decrypting extracts", e)
+        except Exception as e:
+            Errors.exit_with_error(logger, e)
 
         logger.info(_("common.output.job_queued_success"))
         logger.debug("Extract decryption queued with JobID: {}".format(job.id))

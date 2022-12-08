@@ -2,7 +2,7 @@ import logging
 import sys
 
 from .localize import set_client_locale
-from .map_of_commands import *
+from .logger_config import log
 from .parent_parser import ParentParser
 
 
@@ -10,10 +10,8 @@ class TabcmdController:
     @staticmethod
     def initialize():
         manager = ParentParser()
-        parent = manager.get_root_parser()
-        commands = CommandsMap.commands_hash_map
-        for command in commands:
-            manager.include(command)
+        parent = manager.connect_commands()
+        manager.include_help()
         return parent
 
     # during normal execution, leaving input as none will default to sys.argv
@@ -25,11 +23,11 @@ class TabcmdController:
             sys.exit(0)
         user_input = user_input or sys.argv[1:]
         namespace = parser.parse_args(user_input)
-        if namespace.logging_level:
+        if namespace.logging_level and namespace.logging_level != logging.INFO:
             print("logging:", namespace.logging_level)
 
         logger = log(__name__, namespace.logging_level or logging.INFO)
-        if namespace.password:
+        if namespace.password or namespace.token_value:
             logger.trace(namespace.func)
         else:
             logger.trace(namespace)

@@ -18,7 +18,8 @@ class EncryptExtracts(Server):
 
     @staticmethod
     def define_args(encrypt_extract_parser):
-        encrypt_extract_parser.add_argument("site_name", metavar="site-name", help=_("editsite.options.site-name"))
+        group = encrypt_extract_parser.add_argument_group(title=EncryptExtracts.name)
+        group.add_argument("site_name", metavar="site-name", help=_("editsite.options.site-name"))
 
     @staticmethod
     def run_command(args):
@@ -30,7 +31,7 @@ class EncryptExtracts(Server):
         try:
             logger.info(_("encryptextracts.status").format(site_item.name))
             job = server.sites.encrypt_extracts(site_item.id)
-        except TSC.ServerResponseError as e:
+        except Exception as e:
             Errors.exit_with_error(logger, e)
 
         logger.info(_("common.output.job_queued_success"))

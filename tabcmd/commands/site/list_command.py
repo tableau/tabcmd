@@ -18,7 +18,8 @@ class ListCommand(Server):
 
     @staticmethod
     def define_args(list_parser):
-        list_parser.add_argument("content", choices=["projects", "workbooks", "datasources"], help="View content")
+        args_group = list_parser.add_argument_group(title=ListCommand.name)
+        args_group.add_argument("content", choices=["projects", "workbooks", "datasources"], help="View content")
 
     @staticmethod
     def run_command(args):
@@ -38,8 +39,8 @@ class ListCommand(Server):
 
             logger.info("===== Listing {0} content for user {1}...".format(content_type, session.username))
             for item in items:
-                print("NAME:".rjust(10), item.name)
-                print("ID:".rjust(10), item.id)
+                logger.info("NAME:".rjust(10), item.name)
+                logger.info("ID:".rjust(10), item.id)
 
-        except TSC.ServerResponseError as e:
+        except Exception as e:
             Errors.exit_with_error(logger, e)

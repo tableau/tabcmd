@@ -43,12 +43,12 @@ class Server:
         return Server.get_items_by_name(logger, server.users, username)[0]
 
     @staticmethod
-    def get_items_by_name(logger, item_endpoint, item_name: str, container: TSC.ProjectItem = None) -> List:
+    def get_items_by_name(logger, item_endpoint, item_name: str, container: Optional[TSC.ProjectItem] = None) -> List:
         # TODO: typing should reflect that this returns TSC.TableauItem and item_endpoint is of type TSC.QuerysetEndpoint[same]
-        item_type = type(item_endpoint).__name__
-        item_log_name: str = "[" + item_type + "] " + item_name
+        item_log_name: str = "[{0}] {1}".format(type(item_endpoint).__name__, item_name)
         if container:
-            item_log_name = str(container) + "/" + item_log_name
+            container_name: str = "({0}) {1}".format(container.__class__, container.name)
+            item_log_name = "{0}/{1}".format(container_name, item_log_name)
         logger.debug(_("export.status").format(item_log_name))
         req_option = TSC.RequestOptions()
         req_option.filter.add(TSC.Filter(TSC.RequestOptions.Field.Name, TSC.RequestOptions.Operator.Equals, item_name))
@@ -91,7 +91,7 @@ class Server:
         return site_item
 
     @staticmethod
-    def get_site_by_name(logger, server, site_name):
+    def get_site_by_name(logger, server, site_name) -> TSC.SiteItem:
         try:
             # sites don't use the normal filter
             site_item = server.sites.get_by_name(site_name)

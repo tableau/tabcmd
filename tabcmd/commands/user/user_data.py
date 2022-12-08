@@ -218,10 +218,8 @@ class UserCommand(Server):
         group = None
         try:
             group = UserCommand.find_group(logger, server, args.name)
-        except TSC.ServerResponseError as e:
-            Errors.exit_with_error(
-                logger, _("errors.reportable.impersonation.group_not_found").format(args.name), exception=e
-            )
+        except Exception as e:
+            Errors.exit_with_error(logger, e)
 
         n_users_handled: int = 0
         number_of_errors: int = 0

@@ -20,7 +20,6 @@ from tabcmd.commands.extracts import (
     refresh_extracts_command,
 )
 from tabcmd.commands.group import create_group_command, delete_group_command
-from tabcmd.commands.help import help_command
 from tabcmd.commands.project import create_project_command, delete_project_command, publish_samples_command
 from tabcmd.commands.site import (
     create_site_command,
@@ -139,6 +138,8 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.parent_project_path = "projects"
         mock_args.name = ""
         mock_args.tabbed = True
+        mock_args.db_username = None
+        mock_args.oauth_username = None
         mock_server.projects = getter
         publish_command.PublishCommand.run_command(mock_args)
         mock_session.assert_called()
@@ -251,13 +252,6 @@ class RunCommandsTest(unittest.TestCase):
         mock_server.groups = getter
         delete_group_command.DeleteGroupCommand.run_command(mock_args)
         mock_session.assert_called()
-
-    # help
-    def test_help(self, mock_session, mock_server):
-        RunCommandsTest._set_up_session(mock_session, mock_server)
-        mock_args.help_option = "boo"
-        help_command.HelpCommand.run_command(mock_args)
-        mock_session.assert_not_called()
 
     # project
     def test_create_project(self, mock_session, mock_server):
