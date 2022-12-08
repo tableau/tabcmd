@@ -44,6 +44,5 @@ class DeleteExtracts(Server):
         except Exception as e:
             Errors.exit_with_error(logger, e)
 
-
         logger.info(_("common.output.job_queued_success"))
         logger.debug("Extract deletion queued with JobID: {}".format(job.id))
