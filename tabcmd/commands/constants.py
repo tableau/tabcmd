@@ -25,7 +25,7 @@ class Errors:
     @staticmethod
     def is_resource_conflict(error):
         if hasattr(error, "code"):
-            return error.code.startswith(Constants.resource_conflict_general)
+            return error.code == Constants.source_already_exists
 
     @staticmethod
     def is_login_error(error):
