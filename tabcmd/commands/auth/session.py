@@ -91,10 +91,10 @@ class Session:
             except Exception as anyE:
                 result = 0
         if not option_1 and not option_2:
-            logger.debug("No timeout value. Setting no timeout.")
+            logger.debug(_("setsetting.status").format("timeout", "None"))
         elif not result or result == 0:
-            logger.warn("Unable to read timeout value. Setting no timeout.")
-        return result
+            logger.warning(_("sessionoptions.errors.bad_timeout").format("--timeout", result))
+        return result or 0
 
     @staticmethod
     def _read_password_from_file(filename):
@@ -128,7 +128,7 @@ class Session:
             credentials = self._create_new_token_credential()
             return credentials
         else:
-            Errors.exit_with_error(self.logger, "Couldn't find credentials")
+            Errors.exit_with_error(self.logger, _("session.errors.missing_arguments").format(""))
 
     def _create_new_token_credential(self):
         if self.token_value:
@@ -147,7 +147,7 @@ class Session:
         else:
             Errors.exit_with_error(self.logger, _("session.errors.missing_arguments").format("token name"))
 
-    def _set_connection_options(self):
+    def _set_connection_options(self) -> TSC.Server:
         self.logger.debug("Setting up request options")
         # args still to be handled here:
         # proxy, --no-proxy,
@@ -155,44 +155,45 @@ class Session:
         http_options = {}
         if self.no_certcheck:
             http_options["verify"] = False
-            requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
+            urllib3.disable_warnings(category=InsecureRequestWarning)
         if self.proxy:
-            self.logger.warn("proxy", self.proxy)
+            # do we catch this error? "sessionoptions.errors.bad_proxy_format"
+            self.logger.debug("Setting proxy: ", self.proxy)
+        if self.timeout:
+            http_options["timeout"] = self.timeout
         try:
-            tableau_server = TSC.Server(self.server_url, use_server_version=True, http_options=http_options,
-                                        timeout=self.timeout)
+            tableau_server = TSC.Server(self.server_url, use_server_version=True, http_options=http_options)
         except Exception as e:
             Errors.exit_with_error(self.logger, "Failed to connect to server", e)
 
         self.logger.debug("Finished setting up connection")
         return tableau_server
 
-    def _contact_server_no_auth(self):
-        print("ok lets do it")
+    def _verify_server_connection_unauthed(self):
         try:
             self.tableau_server.use_server_version()
         except requests.exceptions.ReadTimeout as timeout_error:
             Errors.exit_with_error(
                 self.logger,
                 message="Timed out after {} seconds attempting to connect to server".format(self.timeout),
-                exception=timeout_error)
+                exception=timeout_error,
+            )
         except requests.exceptions.RequestException as requests_error:
             Errors.exit_with_error(
-                self.logger,
-                message="Error attempting to connect to the server",
-                exception=requests_error)
+                self.logger, message="Error attempting to connect to the server", exception=requests_error
+            )
         except Exception as e:
-            print("I DONT KNOW", e)
             Errors.exit_with_error(self.logger, exception=e)
 
-    def _create_new_connection(self, credentials):
+    def _create_new_connection(self) -> TSC.Server:
         self.logger.info(_("session.new_session"))
         self._print_server_info()
         self.logger.info(_("session.connecting"))
         try:
-            self.tableau_server.use_server_version()  # this will attempt to contact the server
+            self.tableau_server = self._set_connection_options()
         except Exception as e:
             Errors.exit_with_error(self.logger, "Failed to connect to server", e)
+        return self.tableau_server
 
     def _read_existing_state(self):
         if self._check_json():
@@ -209,8 +210,7 @@ class Session:
 
     def _validate_existing_signin(self):
         self.logger.info(_("session.continuing_session"))
-        self.tableau_server = self._set_connection_options()
-        self._contact_server_no_auth()
+        # when do these two messages show up? self.logger.info(_("session.auto_site_login"))
         try:
             if self.tableau_server and self.tableau_server.is_signed_in():
                 response = self.tableau_server.users.get_by_id(self.user_id)
@@ -223,7 +223,8 @@ class Session:
             self.logger.info(_("errors.internal_error.request.message"), e)
         return None
 
-    def _sign_in(self, tableau_auth):
+    # server connection created, not yet logged in
+    def _sign_in(self, tableau_auth) -> TSC.Server:
         self.logger.debug(_("session.login") + self.server_url)
         self.logger.debug(_("listsites.output").format("", self.username or self.token_name, self.site_name))
         try:
@@ -287,7 +288,9 @@ class Session:
 
         if credentials and not signed_in_object:
             # logging in, not using an existing session
-            signed_in_object = self._create_new_connection(credentials)
+            self.tableau_server = self._create_new_connection()
+            self._verify_server_connection_unauthed()
+            signed_in_object = self._sign_in(credentials)
 
         if not signed_in_object:
             message = "Run 'tabcmd login -h' for details on required arguments"

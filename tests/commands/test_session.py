@@ -1,3 +1,4 @@
+import logging
 from argparse import Namespace
 import unittest
 from unittest import mock
@@ -46,6 +47,7 @@ mock_data_from_json = Namespace(
 )
 
 fakeserver = "http://SRVR".lower()
+logger = logging.getLogger("tests")
 
 
 def _set_mocks_for_json_file_saved_username(mock_json_load, auth_token, username):
@@ -348,24 +350,23 @@ class CreateSessionTests(unittest.TestCase):
         mock_tsc.site_id = "1"
         mock_tsc.user_id = "0"
 
+
+class TimeoutArgTests(unittest.TestCase):
     def test_timeout_as_integer_stored_int(self):
-        result = Session.timeout_as_integer(1, None)
+        result = Session.timeout_as_integer(logger, 1, None)
         assert result == 1
 
     def test_timeout_as_integer_new_int(self):
-        result = Session.timeout_as_integer(None, 3)
+        result = Session.timeout_as_integer(logger, None, 3)
         assert result == 3
 
     def test_timeout_as_integer_no_value(self):
-        result = Session.timeout_as_integer(None, None)
+        result = Session.timeout_as_integer(logger, None, None)
         assert result == 0
 
     def test_timeout_as_integer_stored_char(self):
-        result = Session.timeout_as_integer("ab", None)
+        result = Session.timeout_as_integer(logger, "ab", None)
         assert result == 0
-
-
-
 
 
 @mock.patch("tableauserverclient.Server")

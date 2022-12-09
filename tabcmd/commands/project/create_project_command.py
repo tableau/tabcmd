@@ -53,7 +53,7 @@ class CreateProjectCommand(Server):
             if Errors.is_resource_conflict(e) and args.continue_if_exists:
                 logger.info(_("tabcmd.result.already_exists").format(_("content_type.project"), args.project_name))
                 logger.info(_("common.output.succeeded"))
-            else: Errors.exit_with_error(logger, e)
+            else:
+                Errors.exit_with_error(logger, e)
 
         return project_item
-
