@@ -112,7 +112,7 @@ def parent_parser_with_global_options():
     # general behavioral options
     parser.add_argument(
         "--continue-if-exists",
-        action="store_false",
+        action="store_true",  # default behavior matches old tabcmd
         help=strings[9],
     )
 
