@@ -7,7 +7,6 @@ import unittest
 from credentials import waremart_password, waremart_user
 from tests.e2e import setup_e2e
 
-debug_log = "--logging-level=DEBUG"
 indexing_sleep_time = 1  # wait 1 second to confirm server has indexed updates
 
 project_name = "not-default-name"
@@ -32,7 +31,7 @@ def _test_command(test_args: list[str]):
     # this will raise an exception if it gets a non-zero return code
     # that should bubble up and fail the test?
     # dist/exe calling_args = [setup_e2e.exe] + test_args + [debug_log]
-    calling_args = ["python", "-m", "tabcmd"] + test_args + [debug_log] + ["--no-certcheck"]
+    calling_args = ["python", "-m", "tabcmd"] + test_args + ["--logging-level", "DEBUG", "--no-certcheck"]
     print(calling_args)
     return subprocess.check_call(calling_args)
 
@@ -130,7 +129,7 @@ class OnlineCommandTest(unittest.TestCase):
 
     def _create_extract(self, wb_name):
         command = "createextracts"
-        arguments = [command, "-w", wb_name, "--encrypt"]
+        arguments = [command, "-w", wb_name, "--include-all"]
         _test_command(arguments)
 
     # variation: url
@@ -141,7 +140,7 @@ class OnlineCommandTest(unittest.TestCase):
 
     def _delete_extract(self, wb_name):
         command = "deleteextracts"
-        arguments = [command, "-w", wb_name]
+        arguments = [command, "-w", wb_name, "--include-all"]
         _test_command(arguments)
 
     def _list(self, item_type: str):
@@ -261,7 +260,7 @@ class OnlineCommandTest(unittest.TestCase):
         self._delete_project("project_name_2", project_name)  # project 2
         self._delete_project(project_name)
 
-    @pytest.mark.order(10)
+    @pytest.mark.order(9)
     def test_wb_publish(self):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
@@ -291,16 +290,12 @@ class OnlineCommandTest(unittest.TestCase):
         self._get_view(wb_name_on_server, sheet_name + ".png")
 
     @pytest.mark.order(11)
-    def test_wb_delete(self):
-        name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
-        self._delete_wb(name_on_server)
-
-    @pytest.mark.order(11)
     def test_wb_publish_embedded(self):
         name_on_server = OnlineCommandTest.TWB_WITH_EMBEDDED_CONNECTION
         file = os.path.join("tests", "assets", OnlineCommandTest.TWB_WITH_EMBEDDED_CONNECTION)
         arguments = self._publish_args(file, name_on_server)
         arguments = self._publish_creds_args(arguments, waremart_user, waremart_password, True)
+        arguments.append("--")
         _test_command(arguments)
 
     @pytest.mark.order(12)
@@ -321,29 +316,25 @@ class OnlineCommandTest(unittest.TestCase):
         self._delete_ds(name_on_server)
 
     @pytest.mark.order(15)
-    def test_delete_extract(self):
-        # fails because the extract has a bad data connection :/
-        name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
-        file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
-        self._publish_args(file, name_on_server)
-        self._delete_extract(name_on_server)
-
-    @pytest.mark.order(16)
     def test_create_extract(self):
-        # Fails because it 'already has an extract' :/
-        name_on_server = OnlineCommandTest.TWBX_WITHOUT_EXTRACT_NAME
+        name_on_server = OnlineCommandTest.TWB_WITH_EMBEDDED_CONNECTION
         self._create_extract(name_on_server)
 
     @pytest.mark.order(17)
     def test_refresh_extract(self):
-        # must be a datasource owned by the test user
-        name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
-        file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
-        arguments = self._publish_args(file, name_on_server)
-        _test_command(arguments)
-
+        # should add a test on datasource extracts
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         self._refresh_extract(name_on_server)
+
+    @pytest.mark.order(18)
+    def test_delete_extract(self):
+        #  GENERIC_DELETE_EXTRACTS_FOR_WORKBOOK_ERROR(409080)
+        name_on_server = OnlineCommandTest.TWB_WITH_EMBEDDED_CONNECTION
+        self._delete_extract(name_on_server)
+
+    @pytest.mark.order(19)
+    def test_wb_delete(self):
+        name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         self._delete_wb(name_on_server)
 
     @pytest.mark.order(19)

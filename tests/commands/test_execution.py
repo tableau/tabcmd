@@ -29,7 +29,7 @@ class ExecutionTests(unittest.TestCase):
 
     def test_launch_languages_succeeds(self):
         parser = TabcmdController.initialize()
-        # fails to connect to server...
+        # fails to connect to server...is this dependent on order I run them??
         with self.assertRaises(SystemExit):
             TabcmdController.run(parser, ["listsites", "--language", "fr"])
 
