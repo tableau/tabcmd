@@ -70,6 +70,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # automatically provided by github actions
         OS: windows # a variable we use in the name pattern?
       with:
-        file: ./dist/${{ matrix.TARGET }}/tabcmd/${{ matrix.OUT_FILE_NAME}}
+        file: ./dist/${{ matrix.TARGET }}/${{ matrix.OUT_FILE_NAME}}
         mime: ${{ matrix.ASSET_MIME}} # required by GitHub API
         name: ${{ matrix.OUT_FILE_NAME}} # name pattern to upload the file as
