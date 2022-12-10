@@ -9,6 +9,7 @@ import tableauserverclient as TSC
 from tabcmd.commands.constants import Errors
 from tabcmd.commands.server import Server
 from tabcmd.execution.localize import _
+from tabcmd.execution.global_options import case_insensitive_string_type
 
 
 class Userdata:
@@ -58,8 +59,25 @@ CHOICES: List[List[str]] = [
     ["system", "site", "none", "no"],  # admin
     ["yes", "true", "1", "no", "false", "0"],  # publisher
     [],
-    [TSC.UserItem.Auth.SAML, TSC.UserItem.Auth.OpenID, TSC.UserItem.Auth.ServerDefault],  # auth
 ]
+
+site_roles = [
+    "ServerAdministrator",
+    "SiteAdministratorCreator",
+    "SiteAdministratorExplorer",
+    "SiteAdministrator",
+    "Creator",
+    "ExplorerCanPublish",
+    "Publisher",
+    "Explorer",
+    "Interactor",
+    "Viewer",
+    "Unlicensed",
+]
+
+AuthTypes = (
+    [TSC.UserItem.Auth.SAML, TSC.UserItem.Auth.OpenID, TSC.UserItem.Auth.ServerDefault, "TableauID", "Local"],
+)  # auth types
 
 
 # username, password, display_name, license, admin_level, publishing, email, auth type
@@ -71,15 +89,40 @@ class Column(IntEnum):
     ADMIN = 4
     PUBLISHER = 5
     EMAIL = 6
-    AUTH = 7
 
-    MAX = 7
+    MAX = 7  # number of columns
 
 
 class UserCommand(Server):
     """
     This class acts as a base class for user related group of commands
     """
+
+    @staticmethod
+    def set_role_arg(parser):
+        parser.add_argument(
+            "-r",
+            "--role",
+            choices=site_roles,
+            type=case_insensitive_string_type(site_roles),
+            help="Specifies a site role for all users in the .csv file. Possible roles: " + ", ".join(site_roles),
+            metavar="SITE_ROLE",
+        )
+        return parser
+
+    @staticmethod
+    def set_auth_arg(parser):
+        parser.add_argument(
+            "--auth-type",
+            metavar="TYPE",
+            choices=AuthTypes,
+            type=case_insensitive_string_type(AuthTypes),
+            # default="TableauID",  # default is Local for on-prem, TableauID for Online. Does the server apply the default?
+            help="Assigns the authentication type for all users in the CSV file. \
+    For Tableau Online, TYPE may be TableauID (default) or SAML. \
+    For Tableau Server, TYPE may be Local (default) or SAML.",
+        )
+        return parser
 
     # read the file containing usernames or user details and validate each line
     # log out any errors encountered

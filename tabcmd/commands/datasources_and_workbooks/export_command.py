@@ -32,7 +32,6 @@ class ExportCommand(DatasourcesAndWorkbooks):
             help="page orientation (landscape or portrait) of the exported PDF",
         )
         group.add_argument(
-
             "--pagesize",
             choices=[
                 pagesize.A3,
