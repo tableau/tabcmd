@@ -119,8 +119,9 @@ class OnlineCommandTest(unittest.TestCase):
     def _get_workbook(self, server_file):
         command = "get"
         server_file = "/workbooks/" + server_file
-        arguments = [command, server_file]
+        arguments = [command, server_file, "-f", "get_workbook.twbx"]
         _test_command(arguments)
+        os.path.exists("get_workbook.twbx")
 
     def _get_datasource(self, server_file):
         command = "get"
