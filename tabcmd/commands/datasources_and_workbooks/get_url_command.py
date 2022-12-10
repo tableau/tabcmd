@@ -60,7 +60,6 @@ class GetUrl(DatasourcesAndWorkbooks):
                 return content_type
         Errors.exit_with_error(logger, message=_("get.errors.invalid_content_type").format(url))
 
-
     @staticmethod
     def explain_expected_url(logger, url: str, command: str):
         view_example = "/views/<workbookname>/<viewname>[.ext]"
