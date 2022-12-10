@@ -39,8 +39,8 @@ class ListCommand(Server):
 
             logger.info("===== Listing {0} content for user {1}...".format(content_type, session.username))
             for item in items:
-                logger.info("NAME:".rjust(10), item.name)
-                logger.info("ID:".rjust(10), item.id)
+                logger.info("NAME: {}".format(item.name))
+                logger.info("ID:   {}".format(item.id))
 
         except Exception as e:
             Errors.exit_with_error(logger, e)
