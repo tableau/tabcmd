@@ -40,7 +40,7 @@ class CreateSiteUsersCommand(UserCommand):
 
         UserCommand.validate_file_for_import(args.filename, logger, detailed=True, strict=args.require_all_valid)
 
-        logger.info(_("tabcmd.add.users.to_x").format(args.filename.name, creation_site))
+        logger.info(_("tabcmd.add.users.to_site").format(args.filename.name, creation_site))
         user_obj_list = UserCommand.get_users_from_file(args.filename, logger)
         logger.info(_("session.monitorjob.percent_complete").format(0))
         error_list = []
@@ -57,7 +57,7 @@ class CreateSiteUsersCommand(UserCommand):
             except TSC.ServerResponseError as e:
                 logger.debug(e)
                 if Errors.is_resource_conflict(e) and args.continue_if_exists:
-                    logger.debug(_("createsite.errors.site_name_already_exists").format(args.new_site_name))
+                    logger.debug(_("createsite.errors.site_name_already_exists").format(user_obj.name))
                 else:
                     number_of_errors += 1
                     logger.debug(number_of_errors)
