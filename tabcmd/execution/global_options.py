@@ -25,6 +25,20 @@ BUT filename, username -> filename, username in command/parser
 
 """
 
+# argparse does case-sensitive comparisons of string inputs by default
+# I want the user to be able to enter e.g. "viewer" and have it accepted as "Viewer"
+# https://stackoverflow.com/questions/56838004/
+# case-insensitive-argparse-choices-without-losing-case-information-in-choices-lis
+def case_insensitive_string_type(choices):
+    def find_choice(choice):
+        for key, item in enumerate([choice.lower() for choice in choices]):
+            if choice.lower() == item:
+                return choices[key]
+        else:
+            return choice
+
+    return find_choice
+
 
 def set_parent_project_arg(parser):
     parser.add_argument("--parent-project-path", default=None, help="path of parent project")
@@ -65,33 +79,6 @@ def set_no_wait_option(parser):
     return parser
 
 
-site_roles = [
-    "ServerAdministrator",
-    "SiteAdministratorCreator",
-    "SiteAdministratorExplorer",
-    "SiteAdministrator",
-    "Creator",
-    "ExplorerCanPublish",
-    "Publisher",
-    "Explorer",
-    "Interactor",
-    "Viewer",
-    "Unlicensed",
-]
-
-
-def set_role_arg(parser):
-    parser.add_argument(
-        "-r",
-        "--role",
-        choices=list(map(lambda x: x.lower(), site_roles)),
-        type=str.lower,
-        help="Specifies a site role for all users in the .csv file. Possible roles: " + ", ".join(site_roles),
-        metavar="SITE_ROLE",
-    )
-    return parser
-
-
 def set_silent_option(parser):
     parser.add_argument(
         "--silent-progress", action="store_true", help="Do not display progress messages for the command."
@@ -118,10 +105,10 @@ def set_completeness_options(parser):
 
 
 # used in create/delete extract
-# docs don't say it, but --embedded-datasources and --include-all could be mutually exclusive
 def set_embedded_datasources_options(parser):
+    # one of these is required IFF we are using a workbook instead of datasource
     embedded_group = parser.add_mutually_exclusive_group()
-    embedded_group.add_argument(
+    embedded_group.add_argument(  # nargs?
         "--embedded-datasources",
         help="A space-separated list of embedded data source names within the target workbook.",
     )
@@ -189,10 +176,12 @@ def set_ds_xor_wb_options(parser):
 
 
 # pass arguments for either --datasource or --workbook
-def set_ds_xor_wb_args(parser):
+def set_ds_xor_wb_args(parser, url=False):
     target_type_group = parser.add_mutually_exclusive_group(required=True)
     target_type_group.add_argument("-d", "--datasource", help="The name of the target datasource.")
     target_type_group.add_argument("-w", "--workbook", help="The name of the target workbook.")
+    if url:
+        target_type_group.add_argument("--url", "-U", help=_("deleteextracts.options.url"))
     return parser
 
 
@@ -241,16 +230,17 @@ def set_common_site_args(parser):
         help="In MB, the amount of data that can be stored on the site.",
     )
 
+    encryption_modes = ["enforced", "enabled", "disabled"]
     parser.add_argument(
         "--extract-encryption-mode",
-        choices=["enforced", "enabled", "disabled"],
+        choices=encryption_modes,
+        type=case_insensitive_string_type(encryption_modes),
         help="The extract encryption mode for the site can be enforced, enabled or disabled. ",
     )
 
     parser.add_argument(
         "--run-now-enabled",
         choices=["true", "false"],
-        type=str.lower,
         help="Allow or deny users from running extract refreshes, flows, or schedules manually.",
     )
     return parser
@@ -406,11 +396,14 @@ def set_target_users_arg(parser):
 
 
 # sync-group
+license_modes = ["on-login", "on-sync"]
+
+
 def set_update_group_args(parser):
     parser.add_argument(
         "--grant-license-mode",
-        choices=["on-login", "on-sync"],
-        type=str.lower,
+        choices=license_modes,
+        type=case_insensitive_string_type(license_modes),
         help="Specifies whether a role should be granted on sign in. ",
     )
     parser.add_argument(
