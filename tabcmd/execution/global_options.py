@@ -332,6 +332,7 @@ def set_publish_args(parser):
 
     parser.add_argument("--use-tableau-bridge", action="store_true", help="Refresh datasource through Tableau Bridge")
 
+
 def set_overwrite_option(parser):
     append_group = parser.add_mutually_exclusive_group()
     append_group.add_argument(
