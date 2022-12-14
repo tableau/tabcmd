@@ -8,11 +8,11 @@ print(datas)
 block_cipher = None
 
 a = Analysis(
-    ['tabcmd\\tabcmd.py'],
+    ['tabcmd.py'],
     pathex=[],
     binaries=[],
     datas=datas,
-    hiddenimports=['tableauserverclient', 'requests.packages.urllib3', 'pkg_resources'],
+    hiddenimports=['tableauserverclient', 'requests', 'urllib3', 'pkg_resources'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -31,7 +31,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='tabcmd-windows',
+    name='tabcmd',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,

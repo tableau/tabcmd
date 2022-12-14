@@ -26,23 +26,22 @@ jobs:
             TARGET: windows
             CMD_BUILD: >
               pyinstaller tabcmd-windows.spec --clean --noconfirm --distpath ./dist/windows
-            OUT_FILE_NAME: tabcmd-windows.exe
+            OUT_FILE_NAME: tabcmd.exe
             ASSET_MIME: application/vnd.microsoft.portable-executable
           - os: macos-latest
             TARGET: macos
             CMD_BUILD:  >
-              pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos && ls && ls dist
-            # zip -r9 mac tabcmd-mac*
-            OUT_FILE_NAME: tabcmd-mac.app  # tabcmd.zip
+              pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos
+            OUT_FILE_NAME: tabcmd.app
             ASSET_MIME: application/zip
           - os: ubuntu-latest
             TARGET: ubuntu
           # https://stackoverflow.com/questions/31259856
           # /how-to-create-an-executable-file-for-linux-machine-using-pyinstaller
             CMD_BUILD: >
-              pyinstaller --clean -y --distpath ./dist/linux tabcmd-linux.spec &&
-              chown -R --reference=. ./dist/linux
-            OUT_FILE_NAME: tab-for-linux
+              pyinstaller --clean -y --distpath ./dist/ubuntu tabcmd-linux.spec &&
+              chown -R --reference=. ./dist/ubuntu
+            OUT_FILE_NAME: tabcmd
 
     steps:
     - uses: actions/checkout@v3
@@ -64,12 +63,9 @@ jobs:
     - name: Package with pyinstaller for ${{matrix.TARGET}}
       run: ${{matrix.CMD_BUILD}}
 
-    - name: Upload assets to release
-      uses: WebFreak001/upload-asset@v1.0.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # automatically provided by github actions
-        OS: windows # a variable we use in the name pattern?
+    - name: Validate package for ${{matrix.TARGET}}
+      run: ./dist/${{ matrix.TARGET }}/${{matrix.OUT_FILE_NAME}}
+
+    - uses: actions/upload-artifact@v3
       with:
-        file: ./dist/${{ matrix.TARGET }}/tabcmd/${{ matrix.OUT_FILE_NAME}}
-        mime: ${{ matrix.ASSET_MIME}} # required by GitHub API
-        name: ${{ matrix.OUT_FILE_NAME}} # name pattern to upload the file as
+        path: ./dist/${{ matrix.TARGET }}/${{ matrix.OUT_FILE_NAME }}/
