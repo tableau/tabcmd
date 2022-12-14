@@ -189,10 +189,12 @@ def set_ds_xor_wb_options(parser):
 
 
 # pass arguments for either --datasource or --workbook
-def set_ds_xor_wb_args(parser):
+def set_ds_xor_wb_args(parser, allow_url_arg=False):
     target_type_group = parser.add_mutually_exclusive_group(required=True)
     target_type_group.add_argument("-d", "--datasource", help="The name of the target datasource.")
     target_type_group.add_argument("-w", "--workbook", help="The name of the target workbook.")
+    if allow_url_arg:
+        target_type_group.add_argument("--url", help=_("createextracts.options.url"))
     return parser
 
 
@@ -331,6 +333,7 @@ def set_publish_args(parser):
     thumbnails.add_argument("--thumbnail-group", help="Not yet implemented")  # not implemented in the REST API
 
     parser.add_argument("--use-tableau-bridge", action="store_true", help="Refresh datasource through Tableau Bridge")
+
 
 def set_overwrite_option(parser):
     append_group = parser.add_mutually_exclusive_group()
