@@ -31,7 +31,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='tabcmd-windows',
+    name='tabcmd',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,

@@ -21,9 +21,10 @@ class CreateUsersCommand(UserCommand):
     @staticmethod
     def define_args(create_users_parser):
         args_group = create_users_parser.add_argument_group(title=CreateUsersCommand.name)
-        set_role_arg(args_group)
+        UserCommand.set_role_arg(args_group)
         set_users_file_positional(args_group)
         set_completeness_options(args_group)
+        UserCommand.set_auth_arg(args_group)
 
     @staticmethod
     def run_command(args):
@@ -35,6 +36,10 @@ class CreateUsersCommand(UserCommand):
         number_of_users_added = 0
         number_of_errors = 0
 
+        ## TODO
+        # If the server has only one site (the default site), the user is created and added to the site.
+        # If the server has multiple sites, the user is created but is not added to any site.
+        # To add users to a site, use createsiteusers.
         if args.site_name:
             creation_site = args.site_name
         else:
@@ -49,12 +54,19 @@ class CreateUsersCommand(UserCommand):
         for user_obj in user_obj_list:
             try:
                 number_of_users_listed += 1
-                # TODO: bring in other attributes in file, actually act on specific site
-                new_user = TSC.UserItem(user_obj.name, args.role)
+                if args.role:
+                    user_obj.site_role = args.role
+                if args.auth_type:
+                    user_obj.auth_setting = args.auth_type
+                new_user = TSC.UserItem(user_obj.name)
                 server.users.add(new_user)
                 logger.info(_("tabcmd.result.success.create_user").format(user_obj.name))
                 number_of_users_added += 1
             except Exception as e:
+                if Errors.is_resource_conflict(e) and args.continue_if_exists:
+                    logger.info(_("createsite.errors.site_name_already_exists").format(args.new_site_name))
+                    continue
+
                 number_of_errors += 1
                 error_list.append(e)
                 logger.debug(e)
