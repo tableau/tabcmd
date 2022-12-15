@@ -1855,30 +1855,6 @@ msgid "askdata.title"
 msgstr "Ask Data"
 
 #:
-msgid "slack.app.upgrade.email.notification.subject"
-msgstr "Tableau App for Slack Update"
-
-#:
-msgid "slack.app.upgrade.email.notification.introduction"
-msgstr "An update is available for the Tableau app for Slack and can be reinstalled now to work with the next Tableau Online release. Tableau recommends reinstalling the app to maintain app performance and use new features. Look for new features and changes in <a styl"
-
-#:
-msgid "slack.app.upgrade.email.notification.action"
-msgstr "For update and reinstallation steps, see <a styl"
-
-#:
-msgid "slack.app.upgrade.email.notification.steps"
-msgstr "This service notification has been published by Tableau Online."
-
-#:
-msgid "slack.app.upgrade.email.notification.reason"
-msgstr "You are receiving this notification because you are an administrator of a Tableau Online site connected to Slack."
-
-#:
-msgid "slack.app.upgrade.email.notification.footer.privacy"
-msgstr "Read our <a styl"
-
-#:
 msgid "unifiedconsumption.tcrm.folders.private"
 msgstr "My Private App"
 

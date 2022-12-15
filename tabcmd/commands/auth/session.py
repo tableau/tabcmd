@@ -4,6 +4,7 @@ import os
 
 import requests
 import tableauserverclient as TSC
+import urllib3
 from urllib3.exceptions import InsecureRequestWarning
 
 from tabcmd.commands.constants import Errors
@@ -74,7 +75,26 @@ class Session:
         self.no_certcheck = args.no_certcheck or self.no_certcheck
         self.no_proxy = args.no_proxy or self.no_proxy
         self.proxy = args.proxy or self.proxy
-        self.timeout = args.timeout or self.timeout
+        self.timeout = self.timeout_as_integer(self.logger, args.timeout, self.timeout)
+
+    @staticmethod
+    def timeout_as_integer(logger, option_1, option_2):
+        result = None
+        if option_1:
+            try:
+                result = int(option_1)
+            except Exception as anyE:
+                result = 0
+        if option_2 and (not result or result <= 0):
+            try:
+                result = int(option_2)
+            except Exception as anyE:
+                result = 0
+        if not option_1 and not option_2:
+            logger.debug(_("setsetting.status").format("timeout", "None"))
+        elif not result or result <= 0:
+            logger.warning(_("sessionoptions.errors.bad_timeout").format("--timeout", result))
+        return result or 0
 
     @staticmethod
     def _read_password_from_file(filename):
@@ -108,7 +128,7 @@ class Session:
             credentials = self._create_new_token_credential()
             return credentials
         else:
-            Errors.exit_with_error(self.logger, "Couldn't find credentials")
+            Errors.exit_with_error(self.logger, _("session.errors.missing_arguments").format(""))
 
     def _create_new_token_credential(self):
         if self.token_value:
@@ -127,31 +147,60 @@ class Session:
         else:
             Errors.exit_with_error(self.logger, _("session.errors.missing_arguments").format("token name"))
 
-    def _set_connection_options(self):
+    def _set_connection_options(self) -> TSC.Server:
+        self.logger.debug("Setting up request options")
         # args still to be handled here:
         # proxy, --no-proxy,
         # cert
-        # timeout
         http_options = {}
         if self.no_certcheck:
-            http_options = {"verify": False}
-            requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
+            http_options["verify"] = False
+            urllib3.disable_warnings(category=InsecureRequestWarning)
+        if self.proxy:
+            # do we catch this error? "sessionoptions.errors.bad_proxy_format"
+            self.logger.debug("Setting proxy: ", self.proxy)
+        if self.timeout:
+            http_options["timeout"] = self.timeout
         try:
-            tableau_server = TSC.Server(self.server_url, use_server_version=True, http_options=http_options)
+            self.logger.debug(http_options)
+            tableau_server = TSC.Server(self.server_url, http_options=http_options)
+
         except Exception as e:
+            self.logger.debug(
+                "Connection args: server {}, site {}, proxy {}, cert {}".format(
+                    self.server_url, self.site_name, self.proxy, self.certificate
+                )
+            )
             Errors.exit_with_error(self.logger, "Failed to connect to server", e)
 
+        self.logger.debug("Finished setting up connection")
         return tableau_server
 
-    def _create_new_connection(self):
+    def _verify_server_connection_unauthed(self):
+        try:
+            self.tableau_server.use_server_version()
+        except requests.exceptions.ReadTimeout as timeout_error:
+            Errors.exit_with_error(
+                self.logger,
+                message="Timed out after {} seconds attempting to connect to server".format(self.timeout),
+                exception=timeout_error,
+            )
+        except requests.exceptions.RequestException as requests_error:
+            Errors.exit_with_error(
+                self.logger, message="Error attempting to connect to the server", exception=requests_error
+            )
+        except Exception as e:
+            Errors.exit_with_error(self.logger, exception=e)
+
+    def _create_new_connection(self) -> TSC.Server:
         self.logger.info(_("session.new_session"))
-        self.tableau_server = self._set_connection_options()
         self._print_server_info()
         self.logger.info(_("session.connecting"))
         try:
-            self.tableau_server.use_server_version()  # this will attempt to contact the server
+            self.tableau_server = self._set_connection_options()
         except Exception as e:
             Errors.exit_with_error(self.logger, "Failed to connect to server", e)
+        return self.tableau_server
 
     def _read_existing_state(self):
         if self._check_json():
@@ -168,7 +217,7 @@ class Session:
 
     def _validate_existing_signin(self):
         self.logger.info(_("session.continuing_session"))
-        self.tableau_server = self._set_connection_options()
+        # when do these two messages show up? self.logger.info(_("session.auto_site_login"))
         try:
             if self.tableau_server and self.tableau_server.is_signed_in():
                 response = self.tableau_server.users.get_by_id(self.user_id)
@@ -181,7 +230,8 @@ class Session:
             self.logger.info(_("errors.internal_error.request.message"), e)
         return None
 
-    def _sign_in(self, tableau_auth):
+    # server connection created, not yet logged in
+    def _sign_in(self, tableau_auth) -> TSC.Server:
         self.logger.debug(_("session.login") + self.server_url)
         self.logger.debug(_("listsites.output").format("", self.username or self.token_name, self.site_name))
         try:
@@ -245,7 +295,8 @@ class Session:
 
         if credentials and not signed_in_object:
             # logging in, not using an existing session
-            self._create_new_connection()
+            self.tableau_server = self._create_new_connection()
+            self._verify_server_connection_unauthed()
             signed_in_object = self._sign_in(credentials)
 
         if not signed_in_object:
