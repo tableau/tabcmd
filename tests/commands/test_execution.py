@@ -33,7 +33,6 @@ class ExecutionTests(unittest.TestCase):
         with self.assertRaises(SystemExit):
             TabcmdController.run(parser, ["listsites", "--language", "fr"])
 
-
     def test_config_logger(self):
         configure_log("log_name", "DEBUG")
         configure_log("log_name", "INFO")

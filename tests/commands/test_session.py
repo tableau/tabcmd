@@ -368,8 +368,8 @@ class TimeoutArgTests(unittest.TestCase):
         result = Session.timeout_as_integer(logger, "ab", None)
         assert result == 0
 
-class TimeoutIntegrationTest(unittest.TestCase):
 
+class TimeoutIntegrationTest(unittest.TestCase):
     def test_connection_times_out(self):
         test_args = Namespace(**vars(args_to_mock))
         new_session = Session()
@@ -382,6 +382,7 @@ class TimeoutIntegrationTest(unittest.TestCase):
             new_session.create_session(test_args)
 
     # should test connection doesn't time out?
+
 
 @mock.patch("tableauserverclient.Server")
 class ConnectionOptionsTest(unittest.TestCase):

@@ -166,8 +166,11 @@ class Session:
             tableau_server = TSC.Server(self.server_url, http_options=http_options)
 
         except Exception as e:
-            self.logger.debug("Connection args: server {}, site {}, proxy {}, cert {}".format(
-                self.server_url, self.site_name, self.proxy, self.certificate))
+            self.logger.debug(
+                "Connection args: server {}, site {}, proxy {}, cert {}".format(
+                    self.server_url, self.site_name, self.proxy, self.certificate
+                )
+            )
             Errors.exit_with_error(self.logger, "Failed to connect to server", e)
 
         self.logger.debug("Finished setting up connection")
