@@ -86,7 +86,7 @@ class Errors:
                 # "session.session_expired_login"))
                 # session.renew_session
                 return
-            if exception.code.startswith(Constants.source_not_found):
+            if exception.code == Constants.source_not_found:
                 logger.error(_("publish.errors.server_resource_not_found"), exception)
         else:
             logger.error(exception)

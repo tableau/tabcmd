@@ -85,14 +85,14 @@ class Session:
                 result = int(option_1)
             except Exception as anyE:
                 result = 0
-        if option_2 and not result or result == 0:
+        if option_2 and not result or result <= 0:
             try:
                 result = int(option_2)
             except Exception as anyE:
                 result = 0
         if not option_1 and not option_2:
             logger.debug(_("setsetting.status").format("timeout", "None"))
-        elif not result or result == 0:
+        elif not result or result <= 0:
             logger.warning(_("sessionoptions.errors.bad_timeout").format("--timeout", result))
         return result or 0
 
@@ -162,8 +162,12 @@ class Session:
         if self.timeout:
             http_options["timeout"] = self.timeout
         try:
-            tableau_server = TSC.Server(self.server_url, use_server_version=True, http_options=http_options)
+            self.logger.debug(http_options)
+            tableau_server = TSC.Server(self.server_url, http_options=http_options)
+
         except Exception as e:
+            self.logger.debug("Connection args: server {}, site {}, proxy {}, cert {}".format(
+                self.server_url, self.site_name, self.proxy, self.certificate))
             Errors.exit_with_error(self.logger, "Failed to connect to server", e)
 
         self.logger.debug("Finished setting up connection")
