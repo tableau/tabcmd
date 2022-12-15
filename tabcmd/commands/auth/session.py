@@ -85,7 +85,7 @@ class Session:
                 result = int(option_1)
             except Exception as anyE:
                 result = 0
-        if option_2 and not result or result <= 0:
+        if option_2 and (not result or result <= 0):
             try:
                 result = int(option_2)
             except Exception as anyE:
