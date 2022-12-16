@@ -46,6 +46,10 @@ class GetUrl(DatasourcesAndWorkbooks):
             Errors.exit_with_error(logger, _("export.errors.white_space_workbook_view"))
 
         url = args.url.lstrip("/")  # strip opening / if present
+        content_type = GetUrl.evaluate_content_type(logger, url)
+        file_type = GetUrl.get_file_type_from_filename(logger, url, args.filename)
+
+        GetUrl.get_content_as_file(file_type, content_type, logger, args, server, url)
 
     ## this first set of methods is all parsing the url and file input from the user
 
@@ -60,7 +64,6 @@ class GetUrl(DatasourcesAndWorkbooks):
                 return content_type
         Errors.exit_with_error(logger, message=_("get.errors.invalid_content_type").format(url))
 
-
     @staticmethod
     def explain_expected_url(logger, url: str, command: str):
         view_example = "/views/<workbookname>/<viewname>[.ext]"
@@ -74,13 +77,19 @@ class GetUrl(DatasourcesAndWorkbooks):
         Errors.exit_with_error(logger, message)
 
     @staticmethod
-    def get_file_type_from_filename(logger, file_name, url):
+    def get_file_type_from_filename(logger, url, file_name):
+        logger.debug("Choosing between {}, {}".format(file_name, url))
         file_name = file_name or url
         logger.debug(_("get.options.file") + ": {}".format(file_name))
         type_of_file = GetUrl.get_file_extension(file_name)
 
-        if not type_of_file:
-            Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name))
+        if not type_of_file and file_name is not None:
+            # check the url
+            backup = GetUrl.get_file_extension(url)
+            if backup is not None:
+                type_of_file = backup
+            else:
+                Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name))
 
         logger.debug("filetype: {}".format(type_of_file))
         if type_of_file in ["pdf", "csv", "png", "twb", "twbx", "tdsx"]:
@@ -134,7 +143,9 @@ class GetUrl(DatasourcesAndWorkbooks):
     @staticmethod
     def filename_from_args(file_argument, item_name, filetype):
         if file_argument is None:
-            file_argument = "{}.{}".format(item_name, filetype)
+            file_argument = item_name
+        if not file_argument.endswith(filetype):
+            file_argument = "{}.{}".format(file_argument, filetype)
         return file_argument
 
     ## methods below here have done all the parsing and just have to do the download and saving
@@ -142,6 +153,7 @@ class GetUrl(DatasourcesAndWorkbooks):
 
     @staticmethod
     def get_content_as_file(file_type, content_type, logger, args, server, url):
+        logger.debug("fetching {} as {}".format(content_type, file_type))
         if content_type == "workbook":
             return GetUrl.generate_twb(logger, server, args, file_type, url)
         elif content_type == "datasource":
@@ -207,9 +219,12 @@ class GetUrl(DatasourcesAndWorkbooks):
             target_workbook = GetUrl.get_wb_by_content_url(logger, server, workbook_name)
             logger.debug(_("content_type.workbook") + ": {}".format(workbook_name))
             file_name_with_path = GetUrl.filename_from_args(args.filename, workbook_name, file_extension)
-            logger.debug("Saving as {}".format(file_name_with_path))
-            server.workbooks.download(target_workbook.id, filepath=None, no_extract=False)
-            logger.info(_("export.success").format(target_workbook.name, file_name_with_path))
+            # the download method will add an extension. How do I tell which one?
+            file_name_with_path = GetUrl.get_name_without_possible_extension(file_name_with_path)
+            file_name_with_ext = "{}.{}".format(file_name_with_path, file_extension)
+            logger.debug("Saving as {}".format(file_name_with_ext))
+            server.workbooks.download(target_workbook.id, filepath=file_name_with_path, no_extract=False)
+            logger.info(_("export.success").format(target_workbook.name, file_name_with_ext))
         except Exception as e:
             Errors.exit_with_error(logger, e)
 
@@ -221,8 +236,11 @@ class GetUrl(DatasourcesAndWorkbooks):
             target_datasource = GetUrl.get_ds_by_content_url(logger, server, datasource_name)
             logger.debug(_("content_type.datasource") + ": {}".format(datasource_name))
             file_name_with_path = GetUrl.filename_from_args(args.filename, datasource_name, file_extension)
-            logger.debug("Saving as {}".format(file_name_with_path))
-            server.datasources.download(target_datasource.id, filepath=None, no_extract=False)
-            logger.info(_("export.success").format(target_datasource.name, file_name_with_path))
+            # the download method will add an extension
+            file_name_with_path = GetUrl.get_name_without_possible_extension(file_name_with_path)
+            file_name_with_ext = "{}.{}".format(file_name_with_path, file_extension)
+            logger.debug("Saving as {}".format(file_name_with_ext))
+            server.datasources.download(target_datasource.id, filepath=file_name_with_path, no_extract=False)
+            logger.info(_("export.success").format(target_datasource.name, file_name_with_ext))
         except Exception as e:
             Errors.exit_with_error(logger, e)

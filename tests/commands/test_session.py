@@ -1,3 +1,4 @@
+import logging
 from argparse import Namespace
 import unittest
 from unittest import mock
@@ -46,6 +47,7 @@ mock_data_from_json = Namespace(
 )
 
 fakeserver = "http://SRVR".lower()
+logger = logging.getLogger("tests")
 
 
 def _set_mocks_for_json_file_saved_username(mock_json_load, auth_token, username):
@@ -347,6 +349,39 @@ class CreateSessionTests(unittest.TestCase):
         mock_tsc.auth_token = "cookiieeeee"
         mock_tsc.site_id = "1"
         mock_tsc.user_id = "0"
+
+
+class TimeoutArgTests(unittest.TestCase):
+    def test_timeout_as_integer_stored_int(self):
+        result = Session.timeout_as_integer(logger, 1, None)
+        assert result == 1
+
+    def test_timeout_as_integer_new_int(self):
+        result = Session.timeout_as_integer(logger, None, 3)
+        assert result == 3
+
+    def test_timeout_as_integer_no_value(self):
+        result = Session.timeout_as_integer(logger, None, None)
+        assert result == 0
+
+    def test_timeout_as_integer_stored_char(self):
+        result = Session.timeout_as_integer(logger, "ab", None)
+        assert result == 0
+
+
+class TimeoutIntegrationTest(unittest.TestCase):
+    def test_connection_times_out(self):
+        test_args = Namespace(**vars(args_to_mock))
+        new_session = Session()
+        test_args.timeout = 10
+        test_args.username = "u"
+        test_args.password = "p"
+
+        test_args.server = "https://nothere.com"
+        with self.assertRaises(SystemExit):
+            new_session.create_session(test_args)
+
+    # should test connection doesn't time out?
 
 
 @mock.patch("tableauserverclient.Server")

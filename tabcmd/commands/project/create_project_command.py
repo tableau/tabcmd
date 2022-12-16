@@ -44,6 +44,7 @@ class CreateProjectCommand(Server):
             logger.debug("parent project = `{0}`, id = {1}".format(args.parent_project_path, parent_id))
         logger.info(_("createproject.status").format(readable_name))
         new_project = TSC.ProjectItem(args.project_name, args.description, None, parent_id)
+        project_item = None
         try:
             project_item = server.projects.create(new_project)
             logger.info(_("common.output.succeeded"))
@@ -51,5 +52,8 @@ class CreateProjectCommand(Server):
         except Exception as e:
             if Errors.is_resource_conflict(e) and args.continue_if_exists:
                 logger.info(_("tabcmd.result.already_exists").format(_("content_type.project"), args.project_name))
-                return
-            Errors.exit_with_error(logger, e)
+                logger.info(_("common.output.succeeded"))
+            else:
+                Errors.exit_with_error(logger, e)
+
+        return project_item
