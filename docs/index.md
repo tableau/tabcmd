@@ -5,6 +5,7 @@ permalink: /docs/index.html
 ---
 
 Tableau provides the tabcmd command-line interface that you can use to automate site administration tasks on your Tableau Cloud or Tableau Server site. For example, you can use tabcmd to create or delete users, projects, and groups.
+This new version of tabcmd supports signing in with Personal Access Tokens as well as passwords.
 
 * TOC
 {:toc}
@@ -14,12 +15,13 @@ Tableau provides the tabcmd command-line interface that you can use to automate 
 You can download and run tabcmd 2.0 as an executable file, or install it on the command line with pip.
 
 ### Download and run (recommended)
-* For [Windows](https://github.com/tableau/tabcmd/releases)
-<!--- * For macOS: --->
-<!--- * For Linux:  --->
+Packagedd apps are available for the latest release at (https://github.com/tableau/tabcmd/releases)
+* For Windows, download tabcmd.exe
+* For macOS, download tabcmd-mac.zip
+* For Linux, download tabcmd
 
 ### Install with pip 
-For macOS and Linux, run the following command to install the latest stable version of tabcmd:
+To run tabcmd manually as a python module, you can install the latest stable version from pypi:
 
 ```shell
 pip install tabcmd
