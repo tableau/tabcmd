@@ -154,6 +154,10 @@ class ParentParser:
     """Parser that will be inherited by all commands. Contains
     authentication and logging level setting"""
 
+    @staticmethod
+    def get_version(self):
+        return version
+
     def __init__(self):
         self.global_options = parent_parser_with_global_options()
         self.root = argparse.ArgumentParser(

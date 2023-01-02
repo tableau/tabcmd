@@ -5,6 +5,7 @@ import os
 import requests
 import tableauserverclient as TSC
 import urllib3
+from tabcmd.execution.parent_parser import ParentParser
 from urllib3.exceptions import InsecureRequestWarning
 
 from tabcmd.commands.constants import Errors
@@ -152,7 +153,7 @@ class Session:
         # args still to be handled here:
         # proxy, --no-proxy,
         # cert
-        http_options = {}
+        http_options = {"User-Agent": ParentParser.get_version()}
         if self.no_certcheck:
             http_options["verify"] = False
             urllib3.disable_warnings(category=InsecureRequestWarning)
