@@ -1,21 +1,9 @@
 import argparse
-import logging
 
 from .localize import _
 from .logger_config import log
 from .map_of_commands import CommandsMap
-
-
-# when we drop python 3.8, this could be replaced with this lighter weight option
-# from importlib.metadata import version, PackageNotFoundError
-from pkg_resources import get_distribution, DistributionNotFound
-
-try:
-    version = get_distribution("tabcmd").version
-except DistributionNotFound:
-    version = "2.x.unknown"
-    pass
-
+from tabcmd.version import version
 
 """
 Note: output order is influenced first by grouping, then by order they are added in here
@@ -153,10 +141,6 @@ class ParentParser:
     # Ref https://docs.python.org/3/library/argparse.html
     """Parser that will be inherited by all commands. Contains
     authentication and logging level setting"""
-
-    @staticmethod
-    def get_version(self):
-        return version
 
     def __init__(self):
         self.global_options = parent_parser_with_global_options()
