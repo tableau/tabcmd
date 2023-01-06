@@ -155,7 +155,7 @@ class Session:
         # args still to be handled here:
         # proxy, --no-proxy,
         # cert
-        http_options: Dict[str, Any] = {"headers": {"User-Agent": "Tabcmd" + version}}
+        http_options: Dict[str, Any] = {"headers": {"User-Agent": "Tabcmd/{}".format(version)}}
         if self.no_certcheck:
             http_options["verify"] = False
             urllib3.disable_warnings(category=InsecureRequestWarning)
