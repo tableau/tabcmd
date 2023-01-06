@@ -129,12 +129,6 @@ class OnlineCommandTest(unittest.TestCase):
         arguments = [command, server_file]
         _test_command(arguments)
 
-    def _get_datasource(self, server_file):
-        command = "get"
-        server_file = "/datasources/" + server_file
-        arguments = [command, server_file]
-        _test_command(arguments)
-
     def _create_extract(self, wb_name):
         command = "createextracts"
         arguments = [command, "-w", wb_name, "--encrypt"]
