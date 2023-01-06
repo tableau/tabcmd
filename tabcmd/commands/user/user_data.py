@@ -206,7 +206,7 @@ class UserCommand(Server):
     def _parse_line(line: str) -> Optional[TSC.UserItem]:
         if line is None or line is False or line == "\n" or line == "":
             return None
-        line = line.strip().lower()
+        line = line.strip()
         line_parts: List[str] = line.split(",")
         data = Userdata()
         values: List[str] = list(map(str.strip, line_parts))
