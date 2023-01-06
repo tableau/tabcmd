@@ -7,9 +7,12 @@ import tableauserverclient as TSC
 import urllib3
 from urllib3.exceptions import InsecureRequestWarning
 
+from tabcmd.version import version
 from tabcmd.commands.constants import Errors
 from tabcmd.execution.localize import _
 from tabcmd.execution.logger_config import log
+
+from typing import Dict, Any
 
 
 class Session:
@@ -152,7 +155,7 @@ class Session:
         # args still to be handled here:
         # proxy, --no-proxy,
         # cert
-        http_options = {}
+        http_options: Dict[str, Any] = {"headers": {"User-Agent": "Tabcmd/{}".format(version)}}
         if self.no_certcheck:
             http_options["verify"] = False
             urllib3.disable_warnings(category=InsecureRequestWarning)
