@@ -113,7 +113,7 @@ Create a personal access token (PAT) as described in [create tokens](https://hel
 For example:
 
 ```shell
-tabcmd login --server “http://exampleserver.com" --site "examplesite" --token-name "tokenname" --token "exampletoken"
+tabcmd login --server “http://exampleserver.com" --site "examplesite" --token-name "tokenname" --token-value "exampletoken"
 ```
 
 where:
