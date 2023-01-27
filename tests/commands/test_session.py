@@ -212,7 +212,7 @@ class CreateSessionTests(unittest.TestCase):
         mock_tsc().users.get_by_id.return_value = None
         new_session = Session()
         with self.assertRaises(SystemExit):
-            auth = new_session.create_session(test_args)
+            auth = new_session.create_session(test_args, None)
 
     @mock.patch("tableauserverclient.Server")
     def test_create_session_first_time_with_token_arg(
@@ -224,7 +224,7 @@ class CreateSessionTests(unittest.TestCase):
         test_args.token_name = "tn"
         test_args.token_value = "foo"
         new_session = Session()
-        auth = new_session.create_session(test_args)
+        auth = new_session.create_session(test_args, None)
         assert auth is not None, auth
         assert auth.auth_token is not None, auth.auth_token
         assert auth.auth_token.name is not None, auth.auth_token
@@ -241,7 +241,7 @@ class CreateSessionTests(unittest.TestCase):
         test_args.password = "pppp"
         new_session = Session()
 
-        auth = new_session.create_session(test_args)
+        auth = new_session.create_session(test_args, None)
         assert auth is not None, auth
         assert auth.auth_token is not None, auth.auth_token
         assert new_session.username == "uuuu", new_session
@@ -259,7 +259,7 @@ class CreateSessionTests(unittest.TestCase):
         test_args.password_file = "filename"
         with mock.patch("builtins.open", mock.mock_open(read_data="my_password")):
             new_session = Session()
-            auth = new_session.create_session(test_args)
+            auth = new_session.create_session(test_args, None)
 
         assert auth is not None, auth
         assert auth.auth_token is not None, auth.auth_token
@@ -277,7 +277,7 @@ class CreateSessionTests(unittest.TestCase):
         test_args.password_file = "filename"
         with mock.patch("builtins.open", mock.mock_open(read_data="my_token")):
             new_session = Session()
-            auth = new_session.create_session(test_args)
+            auth = new_session.create_session(test_args, None)
 
         assert auth is not None, auth
         assert auth.auth_token is not None, auth.auth_token
@@ -309,7 +309,7 @@ class CreateSessionTests(unittest.TestCase):
         test_args.no_prompt = False
         new_session = Session()
 
-        auth = new_session.create_session(test_args)
+        auth = new_session.create_session(test_args, None)
         assert auth is not None, auth
         assert auth.auth_token is not None, auth.auth_token
         assert mock_tsc.has_been_called()
@@ -326,7 +326,7 @@ class CreateSessionTests(unittest.TestCase):
         mock_pass.getpass.return_value = "success"
         test_args.password = "eqweqwe"
         new_session = Session()
-        auth = new_session.create_session(test_args)
+        auth = new_session.create_session(test_args, None)
         assert mock_pass.has_been_called()
         assert auth is not None, auth
         assert auth.auth_token is not None, auth.auth_token
@@ -379,7 +379,7 @@ class TimeoutIntegrationTest(unittest.TestCase):
 
         test_args.server = "https://nothere.com"
         with self.assertRaises(SystemExit):
-            new_session.create_session(test_args)
+            new_session.create_session(test_args, None)
 
     # should test connection doesn't time out?
 

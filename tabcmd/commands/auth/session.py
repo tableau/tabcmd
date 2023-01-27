@@ -265,13 +265,13 @@ class Session:
         return credentials
 
     # external entry point:
-    def create_session(self, args):
+    def create_session(self, args, logger):
         signed_in_object = None
         # pull out cached info from json, then overwrite with new args if available
         self._read_existing_state()
         self._update_session_data(args)
         self.logging_level = args.logging_level or self.logging_level
-        self.logger = self.logger or log(__class__.__name__, self.logging_level)
+        self.logger = logger or log(__class__.__name__, self.logging_level)
 
         credentials = None
         if args.password:

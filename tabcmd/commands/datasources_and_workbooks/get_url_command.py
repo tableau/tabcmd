@@ -41,7 +41,7 @@ class GetUrl(DatasourcesAndWorkbooks):
         logger = log(__class__.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
-        server = session.create_session(args)
+        server = session.create_session(args, logger)
         if " " in args.url:
             Errors.exit_with_error(logger, _("export.errors.white_space_workbook_view"))
 

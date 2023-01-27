@@ -65,7 +65,7 @@ class E2EServerTests(unittest.TestCase):
             no_cookie=False,
         )
         test_session = Session()
-        server = test_session.create_session(args)
+        server = test_session.create_session(args, logger)
         assert test_session.auth_token is not None
         assert test_session.site_id is not None
         assert test_session.user_id is not None
@@ -96,7 +96,7 @@ class E2EServerTests(unittest.TestCase):
             no_cookie=False,
         )
         test_session = Session()
-        test_session.create_session(args)
+        test_session.create_session(args, logger)
         assert test_session.auth_token is not None
         assert test_session.site_id is not None
         assert test_session.user_id is not None

@@ -73,7 +73,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
         logger = log(__class__.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
-        server = session.create_session(args)
+        server = session.create_session(args, logger)
         view_content_url, wb_content_url = ExportCommand.parse_export_url_to_workbook_and_view(logger, args.url)
         logger.debug([view_content_url, wb_content_url])
         if not view_content_url and not wb_content_url:

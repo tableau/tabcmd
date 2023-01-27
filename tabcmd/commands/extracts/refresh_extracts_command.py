@@ -33,7 +33,7 @@ class RefreshExtracts(Server):
         logger = log(__class__.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
-        server = session.create_session(args)
+        server = session.create_session(args, logger)
         refresh_action = "refresh"
 
         if args.addcalculations or args.removecalculations:
