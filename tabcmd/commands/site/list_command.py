@@ -3,7 +3,6 @@ import tableauserverclient as TSC
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.constants import Errors
 from tabcmd.commands.server import Server
-from tabcmd.execution.global_options import *
 from tabcmd.execution.localize import _
 from tabcmd.execution.logger_config import log
 
@@ -12,6 +11,13 @@ class ListCommand(Server):
     """
     Command to return a list of content the user can access
     """
+
+    # strings to move to string files
+    local_strings = {
+        "tabcmd_content_listing": "===== Listing {0} content for user {1}...",
+        "tabcmd_listing_label_name": "NAME:",
+        "tabcmd_listing_label_id": "ID:",
+    }
 
     name: str = "list"
     description: str = "List content items of a specified type"
@@ -30,7 +36,8 @@ class ListCommand(Server):
         content_type = args.content
 
         try:
-            logger.info("===== Listing {0} content for user {1}...".format(content_type, session.username))
+            logger.info(ListCommand.local_strings.tabcmd_content_listing.format(content_type, session.username))
+
             try:
                 if content_type == "projects":
                     items = server.projects.all()
@@ -41,10 +48,9 @@ class ListCommand(Server):
             except TSC.ServerResponseError as e:
                 Errors.exit_with_error(logger, exception=e)
 
-            logger.info("===== Listing {0} content for user {1}...".format(content_type, session.username))
             for item in items:
-                logger.info("NAME:".rjust(10), item.name)
-                logger.info("ID:".rjust(10), item.id)
+                logger.info(ListCommand.local_strings.tabcmd_listing_label_name.rjust(10), item.name)
+                logger.info(ListCommand.local_strings.tabcmd_listing_label_id.rjust(10), item.id)
 
         except Exception as e:
             Errors.exit_with_error(logger, e)
