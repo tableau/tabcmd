@@ -142,7 +142,7 @@ class OnlineCommandTest(unittest.TestCase):
 
     def _delete_extract(self, wb_name):
         command = "deleteextracts"
-        arguments = [command, "-w", wb_name]
+        arguments = [command, "-w", wb_name, "--include-all"]
         _test_command(arguments)
 
     def _list(self, item_type: str):

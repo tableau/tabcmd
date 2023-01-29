@@ -163,11 +163,6 @@ def set_project_arg(parser):
     return parser
 
 
-def set_site_url_arg(parser):
-    parser.add_argument("--url", help="The canonical name for the resource as it appears in the URL")
-    return parser
-
-
 def set_ds_xor_wb_options(parser):
     target_type_group = parser.add_mutually_exclusive_group(required=False)
     target_type_group.add_argument("-d", "--datasource", action="store_true", help="The name of the target datasource.")
@@ -181,7 +176,8 @@ def set_ds_xor_wb_args(parser, url=False):
     target_type_group.add_argument("-d", "--datasource", help="The name of the target datasource.")
     target_type_group.add_argument("-w", "--workbook", help="The name of the target workbook.")
     if url:
-        target_type_group.add_argument("--url", "-U", help=_("deleteextracts.options.url"))
+        # -U conflicts with --username, they are not case sensitive
+        target_type_group.add_argument("--url", help=_("deleteextracts.options.url"))
     return parser
 
 
@@ -201,7 +197,6 @@ def set_site_status_arg(parser):
     return parser
 
 
-# create-site/update-site - lots of these options are never used elsewhere
 # mismatched arguments: createsite says --url, editsite says --site-id
 # just let both commands use either of them
 def set_site_id_args(parser):
@@ -215,7 +210,7 @@ def set_site_id_args(parser):
     return parser
 
 
-# these options are all shared in create-site and edit-site
+# create-site/update-site - lots of these options are never used elsewhere
 def set_common_site_args(parser):
 
     parser = set_site_id_args(parser)
