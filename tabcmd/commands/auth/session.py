@@ -48,8 +48,8 @@ class Session:
         self.timeout = None
 
         self.logging_level = "info"
-        self._read_from_json()
         self.logger = log(__name__, self.logging_level)  # instantiate here mostly for tests
+        self._read_from_json()
         self.tableau_server = None  # this one is an object that doesn't get persisted in the file
 
     # called before we connect to the server
@@ -353,11 +353,17 @@ class Session:
         if not self._check_json():
             return
         file_path = self._get_file_path()
-        data = {}
+        data = None
         with open(str(file_path), "r") as file_contents:
             data = json.load(file_contents)
+        if not data or data == "" or data == {}:
+            self._wipe_bad_json("File contains no data")
         try:
-            for auth in data["tableau_auth"]:
+            auth = data["tableau_auth"]
+        except Exception as e:
+            self._wipe_bad_json(e)
+        for auth in data["tableau_auth"]:
+            try:
                 self.auth_token = auth["auth_token"]
                 self.server_url = auth["server"]
                 self.site_name = auth["site_name"]
@@ -374,12 +380,13 @@ class Session:
                 self.no_proxy = auth["no_proxy"]
                 self.proxy = auth["proxy"]
                 self.timeout = auth["timeout"]
-        except KeyError as e:
-            self.logger.debug(_("sessionoptions.errors.bad_password_file"), e)
-            self._remove_json()
-        except Exception as any_error:
-            self.logger.info(_("session.new_session"))
-            self._remove_json()
+            except Exception as e:
+                self._wipe_bad_json(e)
+
+    def _wipe_bad_json(self, e):
+        self.logger.debug("Deleting malformed or empty session file. " + e)
+        self.logger.info(_("session.new_session"))
+        self._remove_json()
 
     def _check_json(self):
         home_path = os.path.expanduser("~")
