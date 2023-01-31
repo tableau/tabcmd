@@ -68,9 +68,9 @@ def _set_mocks_for_json_file_exists(mock_path, does_it_exist=True):
     return mock_path
 
 
-def _set_mocks_for_creds_file(mock_file):
-    mock_file.readlines.return_value = "dummypassword"
-    return mock_file
+def _set_mock_file_content(mock_load, expected_content):
+    mock_load.return_value = expected_content
+    return mock_load
 
 
 @mock.patch("json.dump")
@@ -95,6 +95,25 @@ class JsonTests(unittest.TestCase):
         test_session.server = "SRVR"
         test_session._save_session_to_json()
         assert mock_dump.was_called()
+
+    def clear_session(self, mock_open, mock_path, mock_load, mock_dump):
+        _set_mocks_for_json_file_exists(mock_path)
+        test_session = Session()
+        test_session.username = "USN"
+        test_session.server = "SRVR"
+        test_session._clear_data()
+        assert test_session.username is None
+        assert test_session.server is None
+
+    def test_json_not_present(self, mock_open, mock_path, mock_load, mock_dump):
+        _set_mocks_for_json_file_exists(mock_path, False)
+        assert mock_open.was_not_called()
+
+    def test_json_invalid(self, mock_open, mock_path, mock_load, mock_dump):
+        _set_mocks_for_json_file_exists(mock_path)
+        _set_mock_file_content(mock_load, "just a string")
+        test_session = Session()
+        assert test_session.username is None
 
 
 @mock.patch("getpass.getpass")
