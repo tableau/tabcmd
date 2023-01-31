@@ -23,14 +23,15 @@ class TabcmdController:
             sys.exit(0)
         user_input = user_input or sys.argv[1:]
         namespace = parser.parse_args(user_input)
-        if namespace.logging_level and namespace.logging_level != logging.INFO:
+        if hasattr("namespace", "logging_level") and namespace.logging_level != logging.INFO:
             print("logging:", namespace.logging_level)
 
         logger = log(__name__, namespace.logging_level or logging.INFO)
-        if namespace.password or namespace.token_value:
-            logger.trace(namespace.func)
+        if (hasattr("namespace", "password") or hasattr("namespace", "token_value")) and hasattr("namespace", "func"):
+            # don't print whole namespace because it has secrets
+            logger.debug(namespace.func)
         else:
-            logger.trace(namespace)
+            logger.debug(namespace)
         if namespace.language:
             set_client_locale(namespace.language, logger)
 

@@ -25,7 +25,10 @@ class ListCommand(Server):
     @staticmethod
     def define_args(list_parser):
         args_group = list_parser.add_argument_group(title=ListCommand.name)
-        args_group.add_argument("content", choices=["projects", "workbooks", "datasources"], help="View content")
+        args_group.add_argument(
+            "content", choices=["projects", "workbooks", "datasources", "flows"], help="View content"
+        )
+        args_group.add_argument("-d", "--details", action="store_true", help="Show object details")
 
     @staticmethod
     def run_command(args):
@@ -38,19 +41,19 @@ class ListCommand(Server):
         try:
             logger.info(ListCommand.local_strings.tabcmd_content_listing.format(content_type, session.username))
 
-            try:
-                if content_type == "projects":
-                    items = server.projects.all()
-                elif content_type == "workbooks":
-                    items = server.workbooks.all()
-                elif content_type == "datasources":
-                    items = server.datasources.all()
-            except TSC.ServerResponseError as e:
-                Errors.exit_with_error(logger, exception=e)
+            if content_type == "projects":
+                items = server.projects.all()
+            elif content_type == "workbooks":
+                items = server.workbooks.all()
+            elif content_type == "datasources":
+                items = server.datasources.all()
+            elif content_type == "flows":
+                items = server.flows.all()
 
             for item in items:
                 logger.info(ListCommand.local_strings.tabcmd_listing_label_name.rjust(10), item.name)
-                logger.info(ListCommand.local_strings.tabcmd_listing_label_id.rjust(10), item.id)
+                if args.details:
+                    logger.info(item)
 
         except Exception as e:
             Errors.exit_with_error(logger, e)
