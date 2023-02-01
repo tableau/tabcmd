@@ -25,7 +25,7 @@ class AddUserCommand(UserCommand):
         logger = log(__class__.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
-        server = session.create_session(args)
+        server = session.create_session(args, logger)
 
         logger.info(_("tabcmd.add.users.to_site").format(args.users.name, args.name))
 

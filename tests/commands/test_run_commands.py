@@ -76,7 +76,8 @@ class RunCommandsTest(unittest.TestCase):
     def test_login(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         login_command.LoginCommand.run_command(mock_args)
-        mock_session.assert_called_with(mock_args)
+
+        mock_session.assert_called_with(mock_args, ANY)
 
     @patch("tabcmd.commands.auth.session.Session.end_session_and_clear_data")
     def test_logout(self, mock_end_session, mock_create_session, mock_server):

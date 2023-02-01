@@ -22,4 +22,4 @@ class LoginCommand(Server):
         logger = log(__class__.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
-        session.create_session(args)
+        session.create_session(args, logger)

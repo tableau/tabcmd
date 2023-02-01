@@ -31,7 +31,7 @@ class DeleteExtracts(Server):
         logger = log(__class__.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
-        server = session.create_session(args)
+        server = session.create_session(args, logger)
         try:
             if args.datasource:
                 logger.info(_("deleteextracts.for.datasource").format(args.datasource))

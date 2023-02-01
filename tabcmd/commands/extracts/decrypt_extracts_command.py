@@ -24,7 +24,7 @@ class DecryptExtracts(Server):
         logger = log(__class__.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
-        server = session.create_session(args)
+        server = session.create_session(args, logger)
         site_item = Server.get_site_for_command_or_throw(logger, server, args.site_name)
         try:
             logger.info(_("decryptextracts.status").format(args.site_name))

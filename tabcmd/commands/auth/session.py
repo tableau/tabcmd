@@ -48,8 +48,8 @@ class Session:
         self.timeout = None
 
         self.logging_level = "info"
-        self._read_from_json()
         self.logger = log(__name__, self.logging_level)  # instantiate here mostly for tests
+        self._read_from_json()
         self.tableau_server = None  # this one is an object that doesn't get persisted in the file
 
     # called before we connect to the server
@@ -206,7 +206,7 @@ class Session:
         return self.tableau_server
 
     def _read_existing_state(self):
-        if self._check_json():
+        if self._json_exists():
             self._read_from_json()
 
     def _print_server_info(self):
@@ -265,13 +265,13 @@ class Session:
         return credentials
 
     # external entry point:
-    def create_session(self, args):
+    def create_session(self, args, logger):
         signed_in_object = None
         # pull out cached info from json, then overwrite with new args if available
         self._read_existing_state()
         self._update_session_data(args)
         self.logging_level = args.logging_level or self.logging_level
-        self.logger = self.logger or log(__class__.__name__, self.logging_level)
+        self.logger = logger or log(__class__.__name__, self.logging_level)
 
         credentials = None
         if args.password:
@@ -344,51 +344,70 @@ class Session:
         self.timeout = None
 
     # json file functions ----------------------------------------------------
+    # These should be moved into a separate class
     def _get_file_path(self):
         home_path = os.path.expanduser("~")
         file_path = os.path.join(home_path, "tableau_auth.json")
         return file_path
 
     def _read_from_json(self):
-        if not self._check_json():
+        if not self._json_exists():
             return
         file_path = self._get_file_path()
-        data = {}
-        with open(str(file_path), "r") as file_contents:
-            data = json.load(file_contents)
+        content = None
         try:
-            for auth in data["tableau_auth"]:
-                self.auth_token = auth["auth_token"]
-                self.server_url = auth["server"]
-                self.site_name = auth["site_name"]
-                self.site_id = auth["site_id"]
-                self.username = auth["username"]
-                self.user_id = auth["user_id"]
-                self.token_name = auth["personal_access_token_name"]
-                self.token_value = auth["personal_access_token"]
-                self.last_login_using = auth["last_login_using"]
-                self.password_file = auth["password_file"]
-                self.no_prompt = auth["no_prompt"]
-                self.no_certcheck = auth["no_certcheck"]
-                self.certificate = auth["certificate"]
-                self.no_proxy = auth["no_proxy"]
-                self.proxy = auth["proxy"]
-                self.timeout = auth["timeout"]
-        except KeyError as e:
-            self.logger.debug(_("sessionoptions.errors.bad_password_file"), e)
-            self._remove_json()
-        except Exception as any_error:
-            self.logger.info(_("session.new_session"))
-            self._remove_json()
+            with open(str(file_path), "r") as file_contents:
+                data = json.load(file_contents)
+                content = data["tableau_auth"]
+        except json.JSONDecodeError as e:
+            self._wipe_bad_json(e, "Error reading data from session file")
+        except IOError as e:
+            self._wipe_bad_json(e, "Error reading session file")
+        except AttributeError as e:
+            self._wipe_bad_json(e, "Error parsing session details from file")
+        except Exception as e:
+            self._wipe_bad_json(e, "Unexpected error reading session details from file")
 
-    def _check_json(self):
+        try:
+            auth = content[0]
+            self.auth_token = auth["auth_token"]
+            self.server_url = auth["server"]
+            self.site_name = auth["site_name"]
+            self.site_id = auth["site_id"]
+            self.username = auth["username"]
+            self.user_id = auth["user_id"]
+            self.token_name = auth["personal_access_token_name"]
+            self.token_value = auth["personal_access_token"]
+            self.last_login_using = auth["last_login_using"]
+            self.password_file = auth["password_file"]
+            self.no_prompt = auth["no_prompt"]
+            self.no_certcheck = auth["no_certcheck"]
+            self.certificate = auth["certificate"]
+            self.no_proxy = auth["no_proxy"]
+            self.proxy = auth["proxy"]
+            self.timeout = auth["timeout"]
+        except AttributeError as e:
+            self._wipe_bad_json(e, "Unrecognized attribute in session file")
+        except Exception as e:
+            self._wipe_bad_json(e, "Failed to load session file")
+
+    def _wipe_bad_json(self, e, message):
+        self.logger.debug(message + ": " + e.__str__())
+        self.logger.info(_("session.new_session"))
+        self._remove_json()
+
+    def _json_exists(self):
+        # todo: make this location configurable
         home_path = os.path.expanduser("~")
         file_path = os.path.join(home_path, "tableau_auth.json")
         return os.path.exists(file_path)
 
     def _save_session_to_json(self):
-        data = self._serialize_for_save()
-        self._save_file(data)
+        try:
+            data = self._serialize_for_save()
+            self._save_file(data)
+        except Exception as e:
+            self._wipe_bad_json(e, "Failed to save session file")
 
     def _save_file(self, data):
         file_path = self._get_file_path()
@@ -420,7 +439,15 @@ class Session:
         return data
 
     def _remove_json(self):
-        file_path = self._get_file_path()
-        self._save_file({})
-        if os.path.exists(file_path):
-            os.remove(file_path)
+        file_path = ""
+        try:
+            if not self._json_exists():
+                return
+            file_path = self._get_file_path()
+            self._save_file({})
+            if os.path.exists(file_path):
+                os.remove(file_path)
+        except Exception as e:
+            message = "Error clearing session data from {}: check and remove manually".format(file_path)
+            self.logger.error(message)
+            self.logger.error(e)
