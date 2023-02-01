@@ -29,28 +29,28 @@ class ParameterTests(unittest.TestCase):
         query_params = "?Product=widget"
         expected = [("Product", "widget")]
         request_options = tsc.PDFRequestOptions()
-        DatasourcesAndWorkbooks.apply_values_from_url_params(request_options, query_params, mock_logger)
+        DatasourcesAndWorkbooks.apply_values_from_url_params(mock_logger, request_options, query_params)
         assert request_options.view_filters == expected
 
     def test_apply_encoded_filters_from_url_params(self):
         query_params = "?Product%20type=Z%C3%BCrich"
         expected = [("Product type", "Zürich")]
         request_options = tsc.PDFRequestOptions()
-        DatasourcesAndWorkbooks.apply_values_from_url_params(request_options, query_params, mock_logger)
+        DatasourcesAndWorkbooks.apply_values_from_url_params(mock_logger, request_options, query_params)
         assert request_options.view_filters == expected
 
     def test_apply_options_from_url_params(self):
         query_params = "?:iid=5&:refresh=yes&:size=600,700"
         request_options = tsc.PDFRequestOptions()
-        DatasourcesAndWorkbooks.apply_values_from_url_params(request_options, query_params, mock_logger)
+        DatasourcesAndWorkbooks.apply_values_from_url_params(mock_logger, request_options, query_params)
         assert request_options.max_age == 0
 
     def test_apply_png_options(self):
         # these aren't implemented yet. the layout and orientation ones don't apply.
         mock_args.width = 800
-        mock_args.height= 76
+        mock_args.height = 76
         request_options = tsc.ImageRequestOptions()
-        DatasourcesAndWorkbooks.apply_png_options(request_options, mock_args, mock_logger)
+        DatasourcesAndWorkbooks.apply_png_options(mock_logger, request_options, mock_args)
         assert request_options.image_resolution == "high"
 
     def test_apply_pdf_options(self):

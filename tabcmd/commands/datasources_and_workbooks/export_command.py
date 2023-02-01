@@ -104,9 +104,10 @@ class ExportCommand(DatasourcesAndWorkbooks):
 
                     default_filename = "{}.png".format(view_item.name)
 
-        except Exception as e:
+        except TSC.ServerResponseException as e:
             Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response").format(""), e)
-
+        except Exception as e:
+            Errors.exit_with_error(logger, exception=e)
         try:
             save_name = args.filename or default_filename
             if args.csv:
@@ -129,13 +130,14 @@ class ExportCommand(DatasourcesAndWorkbooks):
         if args.filter:
             params = args.filter.split("&")
             for value in params:
-                ExportCommand.apply_filter_value(request_options, value, logger)
+                ExportCommand.apply_filter_value(logger, request_options, value)
 
+    # filtering isn't actually implemented for workbooks in REST
     @staticmethod
     def download_wb_pdf(server, workbook_item, args, logger):
         logger.debug(args.url)
         pdf_options = TSC.PDFRequestOptions(maxage=1)
-        ExportCommand.apply_values_from_url_params(pdf_options, args.url, logger)
+        ExportCommand.apply_values_from_url_params(logger, pdf_options, args.url)
         ExportCommand.apply_values_from_args(pdf_options, args, logger)
         logger.debug(pdf_options.get_query_params())
         server.workbooks.populate_pdf(workbook_item, pdf_options)
@@ -145,7 +147,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
     def download_view_pdf(server, view_item, args, logger):
         logger.debug(args.url)
         pdf_options = TSC.PDFRequestOptions(maxage=1)
-        ExportCommand.apply_values_from_url_params(pdf_options, args.url, logger)
+        ExportCommand.apply_values_from_url_params(logger, pdf_options, args.url)
         ExportCommand.apply_values_from_args(pdf_options, args, logger)
         logger.debug(pdf_options.get_query_params())
         server.views.populate_pdf(view_item, pdf_options)
@@ -155,7 +157,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
     def download_csv(server, view_item, args, logger):
         logger.debug(args.url)
         csv_options = TSC.CSVRequestOptions(maxage=1)
-        ExportCommand.apply_values_from_url_params(csv_options, args.url, logger)
+        ExportCommand.apply_values_from_url_params(logger, csv_options, args.url)
         ExportCommand.apply_values_from_args(csv_options, args, logger)
         logger.debug(csv_options.get_query_params())
         server.views.populate_csv(view_item, csv_options)
@@ -165,9 +167,9 @@ class ExportCommand(DatasourcesAndWorkbooks):
     def download_png(server, view_item, args, logger):
         logger.debug(args.url)
         image_options = TSC.ImageRequestOptions(maxage=1)
-        ExportCommand.apply_values_from_url_params(image_options, args.url, logger)
+        ExportCommand.apply_values_from_url_params(logger, image_options, args.url)
         ExportCommand.apply_values_from_args(image_options, args, logger)
-        DatasourcesAndWorkbooks.apply_png_options(image_options, args, logger)
+        DatasourcesAndWorkbooks.apply_png_options(logger, image_options, args)
         logger.debug(image_options.get_query_params())
         server.views.populate_image(view_item, image_options)
         return view_item.image
