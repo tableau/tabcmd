@@ -59,8 +59,7 @@ class ParameterTests(unittest.TestCase):
         mock_args.pagelayout = expected_layout
         mock_args.pagesize = expected_page
         request_options = tsc.PDFRequestOptions()
-        DatasourcesAndWorkbooks.apply_pdf_options(request_options, mock_args, mock_logger)
-        params = request_options.get_query_params()
+        DatasourcesAndWorkbooks.apply_pdf_options(mock_logger, request_options, mock_args)
         assert request_options.page_type == expected_page
         assert request_options.orientation == expected_layout
 

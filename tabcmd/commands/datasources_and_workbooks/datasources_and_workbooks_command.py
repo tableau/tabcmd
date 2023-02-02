@@ -63,7 +63,6 @@ class DatasourcesAndWorkbooks(Server):
 
     @staticmethod
     def apply_values_from_url_params(logger, request_options: TSC.PDFRequestOptions, url) -> None:
-        # should be able to replace this with request_options._append_view_filters(params)
         logger.debug(url)
         try:
             if "?" in url:
@@ -77,21 +76,28 @@ class DatasourcesAndWorkbooks(Server):
             logger.debug(params)
             for value in params:
                 if value.startswith(":"):
-                    DatasourcesAndWorkbooks.apply_option_value(logger, request_options, value)
+                    DatasourcesAndWorkbooks.apply_options_in_url(logger, request_options, value)
                 else:  # it must be a filter
-                    # the REST API doesn't appear to have the option to disambiguate with "Parameter.<fieldname>"
-                    value = value.replace("Parameters.", "")
-                    # the filter values received from the url are already url encoded. tsc will encode them again.
-                    # so we run url.decode, which will be a no-op if they are not encoded.
-                    decoded_value = urllib.parse.unquote(value)
-                    logger.debug("url had `{0}`, saved as `{1}`".format(value, decoded_value))
-                    DatasourcesAndWorkbooks.apply_filter_value(logger, request_options, decoded_value)
+                    DatasourcesAndWorkbooks.apply_encoded_filter_value(logger, request_options, value)
 
         except Exception as e:
             logger.warn("Error building filter params", e)
             # ExportCommand.log_stack(logger)  # type: ignore
 
     # this is called from within from_url_params, for each view_filter value
+    @staticmethod
+    def apply_encoded_filter_value(logger, request_options, value):
+        # the REST API doesn't appear to have the option to disambiguate with "Parameters.<fieldname>"
+        value = value.replace("Parameters.", "")
+        # the filter values received from the url are already url encoded. tsc will encode them again.
+        # so we run url.decode, which will be a no-op if they are not encoded.
+        decoded_value = urllib.parse.unquote(value)
+        logger.debug("url had `{0}`, saved as `{1}`".format(value, decoded_value))
+        DatasourcesAndWorkbooks.apply_filter_value(logger, request_options, decoded_value)
+
+    # this is called for each filter value,
+    # from apply_options, which expects an un-encoded input,
+    # or from apply_url_params via apply_encoded_filter_value which decodes the input
     @staticmethod
     def apply_filter_value(logger, request_options: TSC.PDFRequestOptions, value: str) -> None:
         logger.debug("handling filter param {}".format(value))
@@ -100,7 +106,7 @@ class DatasourcesAndWorkbooks(Server):
 
     # this is called from within from_url_params, for each param value
     @staticmethod
-    def apply_option_value(logger, request_options: TSC.PDFRequestOptions, value: str) -> None:
+    def apply_options_in_url(logger, request_options: TSC.PDFRequestOptions, value: str) -> None:
         logger.debug("handling url option {}".format(value))
         setting = value.split("=")
         if ":iid" == setting[0]:
@@ -121,22 +127,17 @@ class DatasourcesAndWorkbooks(Server):
 
     @staticmethod
     def apply_png_options(logger, request_options: TSC.ImageRequestOptions, args):
-        try:
-            if args.height or args.width:
-                # only applicable for png
-                logger.warn("Height/width arguments not yet implemented in export")
-        except AttributeError as ae:
-            logger.debug("Unexpected: no user or default value is present: {}".format(ae.__str__()))
+        if args.height or args.width:
+            logger.warn("Height/width arguments not yet implemented in export")
         # Always request high-res images
         request_options.image_resolution = "high"
 
     @staticmethod
-    def apply_pdf_options(request_options: TSC.PDFRequestOptions, args, logger):
-        try:
-            request_options.page_type = args.pagesize
+    def apply_pdf_options(logger, request_options: TSC.PDFRequestOptions, args):
+        if args.pagelayout:
             request_options.orientation = args.pagelayout
-        except AttributeError as ae:
-            logger.debug("Unexpected: no user or default value is present: {}".format(ae.__str__()))
+        if args.pagesize:
+            request_options.page_type = args.pagesize
 
     @staticmethod
     def save_to_data_file(logger, output, filename):
