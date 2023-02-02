@@ -44,7 +44,8 @@ class DeleteExtracts(Server):
                     )
                 logger.info(_("deleteextracts.for.workbook_name").format(args.workbook))
                 job: TSC.JobItem = server.workbooks.delete_extract(
-                    item, includeAll=args.include_all, datasources=args.embedded_datasources)
+                    item, includeAll=args.include_all, datasources=args.embedded_datasources
+                )
 
         except Exception as e:
             Errors.exit_with_error(logger, e)

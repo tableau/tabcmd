@@ -83,5 +83,3 @@ class RefreshExtracts(Server):
         else:
             logger.info(_("common.output.job_queued_success"))
             logger.debug("Extract refresh started with JobID: {0}".format(job.id))
-
-

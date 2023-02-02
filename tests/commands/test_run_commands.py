@@ -38,7 +38,6 @@ from typing import List, NamedTuple, TextIO, Union
 import io
 
 mock_args = argparse.Namespace()
-mock_args.logging_level = "info"
 
 fake_item = MagicMock()
 fake_item.name = "fake-name"
@@ -71,6 +70,14 @@ class RunCommandsTest(unittest.TestCase):
         mock_session.assert_not_called()
         global mock_args
         mock_args = argparse.Namespace(logging_level="DEBUG")
+        # set values for things that should always have a default
+        # should refactor so this can be automated
+        mock_args.continue_if_exists = False
+        mock_args.project = None
+        mock_args.parent_project_path = None
+        mock_args.parent_path = None
+        mock_args.timeout = None
+        mock_args.username = None
 
     # auth
     def test_login(self, mock_session, mock_server):
@@ -158,11 +165,13 @@ class RunCommandsTest(unittest.TestCase):
     def test_create_extract(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.workbooks = getter
+        mock_server.projects = getter
         mock_args.encrypt = False
         mock_args.include_all = True
         mock_args.datasource = None
         mock_args.embedded_datasources = None
         mock_args.workbook = "workbook"
+        print(mock_args)
         create_extracts_command.CreateExtracts.run_command(mock_args)
         mock_session.assert_called()
 
@@ -177,6 +186,7 @@ class RunCommandsTest(unittest.TestCase):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_server.datasources = getter
         mock_args.datasource = "datasource-name"
+        mock_server.projects = getter
         delete_extracts_command.DeleteExtracts.run_command(mock_args)
         mock_session.assert_called()
 
@@ -198,13 +208,14 @@ class RunCommandsTest(unittest.TestCase):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_args.datasource = "datasource"
         mock_server.datasources = getter
+        mock_server.projects = getter
         mock_args.workbook = None
         mock_args.addcalculations = None
         mock_args.removecalculations = None
         mock_args.incremental = None
         mock_args.synchronous = None
-        mock_args.project_name = None
-        mock_args.parent_project_path = None
+        print(mock_args)
+
         refresh_extracts_command.RefreshExtracts.run_command(mock_args)
         mock_session.assert_called()
 
