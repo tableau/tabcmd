@@ -29,7 +29,7 @@ class CreateExtracts(Server):
         logger = log(__class__.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
-        server = session.create_session(args)
+        server = session.create_session(args, logger)
         logger.debug(
             "Extract params: encrypt={}, include_all={}, datasources={}".format(
                 args.encrypt, args.include_all, args.embedded_datasources

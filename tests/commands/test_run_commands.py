@@ -170,7 +170,7 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.include_all = True
         mock_args.datasource = None
         mock_args.embedded_datasources = None
-        mock_args.workbook = "workbook"
+        mock_args.workbook = ""
         print(mock_args)
         create_extracts_command.CreateExtracts.run_command(mock_args)
         mock_session.assert_called()

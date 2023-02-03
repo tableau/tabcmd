@@ -92,7 +92,7 @@ class GetUrl(DatasourcesAndWorkbooks):
                 Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name))
 
         logger.debug("filetype: {}".format(type_of_file))
-        if type_of_file in ["pdf", "csv", "png", "twb", "twbx", "tdsx"]:
+        if type_of_file in ["pdf", "csv", "png", "twb", "twbx", "tdsx", "tds"]:
             return type_of_file
 
         Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name))
