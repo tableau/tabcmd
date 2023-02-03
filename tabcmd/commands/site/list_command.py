@@ -13,9 +13,8 @@ class ListCommand(Server):
     """
 
     # strings to move to string files
-    tabcmd_content_listing= "===== Listing {0} content for user {1}..."
-    tabcmd_listing_label_name= "NAME: {}"
-
+    tabcmd_content_listing = "===== Listing {0} content for user {1}..."
+    tabcmd_listing_label_name = "NAME: {}"
 
     name: str = "list"
     description: str = "List content items of a specified type"

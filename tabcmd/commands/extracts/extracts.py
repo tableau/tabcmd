@@ -9,7 +9,9 @@ import tableauserverclient as TSC
 class Extracts(Server):
     @staticmethod
     def get_wb_or_ds_for_extracts(args, logger, server):
-        container = Server.get_project_by_name_and_parent_path(logger, server, args.project_name, args.parent_project_path)
+        container = Server.get_project_by_name_and_parent_path(
+            logger, server, args.project_name, args.parent_project_path
+        )
         if args.datasource:
             logger.debug(_("export.status").format(args.datasource))
             datasource = Server.get_data_source_item(logger, server, args.datasource, container)

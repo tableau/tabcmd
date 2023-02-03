@@ -73,7 +73,7 @@ class RunCommandsTest(unittest.TestCase):
         # set values for things that should always have a default
         # should refactor so this can be automated
         mock_args.continue_if_exists = False
-        mock_args.project = None
+        mock_args.project_name = None
         mock_args.parent_project_path = None
         mock_args.parent_path = None
         mock_args.timeout = None
@@ -170,7 +170,7 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.include_all = True
         mock_args.datasource = None
         mock_args.embedded_datasources = None
-        mock_args.workbook = ""
+        mock_args.workbook = "workbook-name"
         print(mock_args)
         create_extracts_command.CreateExtracts.run_command(mock_args)
         mock_session.assert_called()

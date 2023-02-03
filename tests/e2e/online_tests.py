@@ -182,7 +182,6 @@ class OnlineCommandTest(unittest.TestCase):
         arguments = [command]
         _test_command(arguments)
 
-
     """
     @pytest.mark.order(2)
     def test_users_create_site_users(self):
@@ -325,13 +324,14 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(16)
     def test_create_extract(self):
-        pytest.skip("Can't create extract for data source '3f3c204c-3c28-4fa6-9fb6-80c848a20338' because it is already extracted.")
+        pytest.skip(
+            "Can't create extract for data source '3f3c204c-3c28-4fa6-9fb6-80c848a20338' because it is already extracted."
+        )
         self._create_extract("-d", OnlineCommandTest.TDSX_WITH_EXTRACT_NAME)
 
     @pytest.mark.order(17)
     def test_refresh_wb_extract(self):
         self._refresh_extract("-w", OnlineCommandTest.TWBX_WITH_EXTRACT_NAME)
-
 
     @pytest.mark.order(19)
     def test_wb_delete(self):
@@ -346,14 +346,18 @@ class OnlineCommandTest(unittest.TestCase):
     @pytest.mark.order(19)
     def test_export_wb_pdf(self):
         command = "export"
-        friendly_name = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME + "/" + OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET + "?param1=3"
+        friendly_name = (
+            OnlineCommandTest.TWBX_WITH_EXTRACT_NAME + "/" + OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET + "?param1=3"
+        )
         arguments = [command, friendly_name, "--fullpdf", "-f", "exported_wb.pdf"]
         _test_command(arguments)
 
     @pytest.mark.order(19)
     def test_export_view_pdf(self):
         command = "export"
-        friendly_name = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME + "/" + OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET + "?param1=3"
+        friendly_name = (
+            OnlineCommandTest.TWBX_WITH_EXTRACT_NAME + "/" + OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET + "?param1=3"
+        )
         arguments = [command, friendly_name, "--pdf", "-f", "exported_view.pdf"]
         _test_command(arguments)
 

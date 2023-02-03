@@ -1,4 +1,3 @@
-import polling2  # type: ignore
 import tableauserverclient as TSC
 
 from tabcmd.commands.auth.session import Session
@@ -63,23 +62,9 @@ class RefreshExtracts(Server):
             # maintains a live connection to the server while the refresh operation is underway, polling every second
             # until the background job is done.   <job id="JOB_ID" mode="MODE" type="RefreshExtract" />
             logger.info("Waiting for refresh job to begin ....")
-
             try:
-                polling2.poll(lambda: logger.info(".") and job.started_at is not None, step=1, timeout=args.timeout)
-            except polling2.TimeoutException as te:
-                Errors.exit_with_error(logger, _("messages.timeout_error.summary"))
-            logger.info("Job started at {}".format(job.started_at))
-
-            try:
-                polling2.poll(
-                    lambda: logger.info("{}".format(job.progress)) and job.finish_code != -1,
-                    step=1,
-                    timeout=args.timeout,
-                )
-                logger.info("Job completed at {}".format(job.completed_at))
-            except polling2.TimeoutException as te:
-                Errors.exit_with_error(logger, _("messages.timeout_error.summary"))
-
-        else:
-            logger.info(_("common.output.job_queued_success"))
-            logger.debug("Extract refresh started with JobID: {0}".format(job.id))
+                job_done = server.jobs.wait_for_job(job_id=job, timeout=args.timeout)
+                logger.info("Job completed: ")
+                logger.info(job_done)
+            except Exception as je:
+                Errors.exit_with_error(logger, je)
