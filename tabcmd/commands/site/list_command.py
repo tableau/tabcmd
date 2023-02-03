@@ -51,6 +51,10 @@ class ListCommand(Server):
                 logger.info(ListCommand.tabcmd_listing_label_name.format(item.name))
                 if args.details:
                     logger.info(item)
+                    if content_type == "workbooks":
+                        server.workbooks.populate_views(item)
+                        for v in item.views:
+                            logger.info(v)
 
         except Exception as e:
             Errors.exit_with_error(logger, e)

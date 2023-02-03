@@ -75,7 +75,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
         session = Session()
         server = session.create_session(args, logger)
         view_content_url, wb_content_url = ExportCommand.parse_export_url_to_workbook_and_view(logger, args.url)
-        logger.debug([view_content_url, wb_content_url])
+        logger.debug(["view_url:", view_content_url, "workbook:", wb_content_url])
         if not view_content_url and not wb_content_url:
             view_example = "/workbook_name/view_name"
             message = "{} [{}]".format(
@@ -104,7 +104,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
 
                     default_filename = "{}.png".format(view_item.name)
 
-        except TSC.ServerResponseException as e:
+        except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response").format(""), e)
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
