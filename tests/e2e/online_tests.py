@@ -151,8 +151,8 @@ class OnlineCommandTest(unittest.TestCase):
         _test_command(arguments)
 
     # actual tests
-    TWBX_FILE_WITH_EXTRACT = "extract-data-access.twbx"
-    TWBX_WITH_EXTRACT_NAME = "extract-data-access"
+    TWBX_FILE_WITH_EXTRACT = "WorkbookWithExtract.twbx"
+    TWBX_WITH_EXTRACT_NAME = "WorkbookWithExtract"
     TWBX_WITH_EXTRACT_SHEET = "sheet1"
     TWBX_FILE_WITHOUT_EXTRACT = "simple-data.twbx"
     TWBX_WITHOUT_EXTRACT_NAME = "WorkbookWithoutExtract"
@@ -182,7 +182,6 @@ class OnlineCommandTest(unittest.TestCase):
         arguments = [command]
         _test_command(arguments)
 
-    """
     @pytest.mark.order(2)
     def test_users_create_site_users(self):
         if not server_admin and not site_admin:
@@ -264,7 +263,6 @@ class OnlineCommandTest(unittest.TestCase):
             pytest.skip("Must be project administrator to create projects")
         self._delete_project("project_name_2", project_name)  # project 2
         self._delete_project(project_name)
-    """
 
     @pytest.mark.order(10)
     def test_wb_publish(self):
@@ -319,7 +317,6 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(14)
     def test_delete_extract(self):
-        #  Item not found: [ProjectItem] default/[Workbooks] WorldIndicators
         self._delete_extract("-d", OnlineCommandTest.TDSX_WITH_EXTRACT_NAME)
 
     @pytest.mark.order(16)
