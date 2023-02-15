@@ -70,3 +70,6 @@ tabcmd delete "Sales_Workbook" -s <https://online.tableau.com> -t campaign -u ad
 The options -s, -t, -u, and -p are among the tabcmd global variables, which can be used with any command.
 
 For more information, see [tabcmd Commands](tabcmd_cmd).
+
+## Log file
+Full log information is written to the `tabcmd.log` file. This file is included in the directory where the tabcmd program is running.
