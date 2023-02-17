@@ -1,3 +1,5 @@
+import tableauserverclient as TSC
+
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.constants import Errors
 from tabcmd.commands.extracts.extracts import Extracts
@@ -39,7 +41,7 @@ class CreateExtracts(Server):
             item = Extracts.get_wb_or_ds_for_extracts(args, logger, server)
             if args.datasource:
                 logger.info(_("createextracts.for.datasource").format(args.datasource))
-                job = server.datasources.create_extract(item, encrypt=args.encrypt)
+                job: TSC.JobItem = server.datasources.create_extract(item, encrypt=args.encrypt)
 
             else:
                 if not args.include_all and not args.embedded_datasources:
@@ -49,7 +51,7 @@ class CreateExtracts(Server):
                     )
 
                 logger.info(_("createextracts.for.workbook_name").format(args.workbook))
-                job = server.workbooks.create_extract(
+                job: TSC.JobItem = server.workbooks.create_extract(
                     item,
                     encrypt=args.encrypt,
                     includeAll=args.include_all,

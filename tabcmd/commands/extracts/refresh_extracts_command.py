@@ -31,10 +31,7 @@ class RefreshExtracts(Server):
         server = session.create_session(args, logger)
 
         if args.addcalculations or args.removecalculations:
-            logger.warning(
-                "Add Calculations tasks are deprecated and this parameter has no effect."
-                "It will be replaced with Workbook Acceleration in a future update."
-            )
+            logger.warning("Add/Remove Calculations tasks are not yet implemented.")
 
         # are these two mandatory? mutually exclusive?
         # docs: the REST method always runs a full refresh even if the refresh type is set to incremental.

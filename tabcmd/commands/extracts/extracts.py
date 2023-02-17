@@ -18,13 +18,13 @@ class Extracts(Server):
             return datasource
 
         elif args.workbook or args.url:
-            logger.info(_("export.status").format(args.workbook))
             if args.workbook:
-                workbook_item = Server.get_workbook_item(logger, server, args.workbook, container)
+                workbook_item: TSC.WorkbookItem = Server.get_workbook_item(logger, server, args.workbook, container)
             else:
                 workbook_item: TSC.WorkbookItem = DatasourcesAndWorkbooks.get_wb_by_content_url(
                     logger, server, args.url
                 )
+            logger.info(_("export.status").format(workbook_item.name))
             return workbook_item
 
         Errors.exit_with_error(logger, "Datasource or workbook required")
