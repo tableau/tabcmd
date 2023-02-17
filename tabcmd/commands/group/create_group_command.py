@@ -35,4 +35,4 @@ class CreateGroupCommand(Server):
             if args.continue_if_exists and Errors.is_resource_conflict(e):
                 logger.info(_("tabcmd.result.already_exists").format(_("content_type.group"), args.name))
                 return
-            Errors.exit_with_error(logger, _("tabcmd.result.failed.create_group"))
+            Errors.exit_with_error(logger, exception=e)

@@ -2,6 +2,7 @@ import tableauserverclient as TSC
 
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.constants import Errors
+from tabcmd.commands.extracts.extracts import Extracts
 from tabcmd.commands.server import Server
 from tabcmd.execution.global_options import *
 from tabcmd.execution.localize import _
@@ -19,12 +20,10 @@ class DeleteExtracts(Server):
     @staticmethod
     def define_args(delete_extract_parser):
         group = delete_extract_parser.add_argument_group(title=DeleteExtracts.name)
-        set_ds_xor_wb_args(group)
+        set_ds_xor_wb_args(group, True)
         set_embedded_datasources_options(group)
-        # set_encryption_option(group)
         set_project_arg(group)
         set_parent_project_arg(group)
-        group.add_argument("--url", help=_("createextracts.options.url"))
 
     @staticmethod
     def run_command(args):
@@ -33,14 +32,21 @@ class DeleteExtracts(Server):
         session = Session()
         server = session.create_session(args, logger)
         try:
+            item = Extracts.get_wb_or_ds_for_extracts(args, logger, server)
             if args.datasource:
                 logger.info(_("deleteextracts.for.datasource").format(args.datasource))
-                data_source_item = Server.get_data_source_item(logger, server, args.datasource)
-                job = server.datasources.delete_extract(data_source_item)
-            elif args.workbook:
+                job: TSC.JobItem = server.datasources.delete_extract(item)
+            else:
+                if not args.include_all and not args.embedded_datasources:
+                    Errors.exit_with_error(
+                        logger,
+                        _("extracts.workbook.errors.requires_datasources_or_include_all").format("deleteextracts"),
+                    )
                 logger.info(_("deleteextracts.for.workbook_name").format(args.workbook))
-                workbook_item = Server.get_workbook_item(logger, server, args.workbook)
-                job = server.workbooks.delete_extract(workbook_item)
+                job: TSC.JobItem = server.workbooks.delete_extract(
+                    item, includeAll=args.include_all, datasources=args.embedded_datasources
+                )
+
         except Exception as e:
             Errors.exit_with_error(logger, e)
 

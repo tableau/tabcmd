@@ -13,11 +13,8 @@ class ListCommand(Server):
     """
 
     # strings to move to string files
-    local_strings = {
-        "tabcmd_content_listing": "===== Listing {0} content for user {1}...",
-        "tabcmd_listing_label_name": "NAME:",
-        "tabcmd_listing_label_id": "ID:",
-    }
+    tabcmd_content_listing = "===== Listing {0} content for user {1}..."
+    tabcmd_listing_label_name = "NAME: {}"
 
     name: str = "list"
     description: str = "List content items of a specified type"
@@ -39,7 +36,7 @@ class ListCommand(Server):
         content_type = args.content
 
         try:
-            logger.info(ListCommand.local_strings.tabcmd_content_listing.format(content_type, session.username))
+            logger.info(ListCommand.tabcmd_content_listing.format(content_type, session.username))
 
             if content_type == "projects":
                 items = server.projects.all()
@@ -51,9 +48,13 @@ class ListCommand(Server):
                 items = server.flows.all()
 
             for item in items:
-                logger.info(ListCommand.local_strings.tabcmd_listing_label_name.rjust(10), item.name)
+                logger.info(ListCommand.tabcmd_listing_label_name.format(item.name))
                 if args.details:
                     logger.info(item)
+                    if content_type == "workbooks":
+                        server.workbooks.populate_views(item)
+                        for v in item.views:
+                            logger.info(v)
 
         except Exception as e:
             Errors.exit_with_error(logger, e)
