@@ -26,7 +26,7 @@ from tabcmd.commands.site import (
     delete_site_command,
     edit_site_command,
     list_sites_command,
-    list_command
+    list_command,
 )
 from tabcmd.commands.user import (
     add_users_command,
