@@ -1,3 +1,5 @@
+import urllib
+
 import tableauserverclient as TSC
 
 from tabcmd.commands.constants import Errors
@@ -23,7 +25,7 @@ class DatasourcesAndWorkbooks(Server):
         try:
             req_option = TSC.RequestOptions()
             req_option.filter.add(TSC.Filter("contentUrl", TSC.RequestOptions.Operator.Equals, view_content_url))
-            logger.trace(req_option.get_query_params())
+            logger.debug(req_option.get_query_params())
             matching_views, paging = server.views.get(req_option)
         except Exception as e:
             Errors.exit_with_error(logger, e)
@@ -37,7 +39,7 @@ class DatasourcesAndWorkbooks(Server):
         try:
             req_option = TSC.RequestOptions()
             req_option.filter.add(TSC.Filter("contentUrl", TSC.RequestOptions.Operator.Equals, workbook_content_url))
-            logger.trace(req_option.get_query_params())
+            logger.debug(req_option.get_query_params())
             matching_workbooks, paging = server.workbooks.get(req_option)
         except Exception as e:
             Errors.exit_with_error(logger, e)
@@ -51,7 +53,7 @@ class DatasourcesAndWorkbooks(Server):
         try:
             req_option = TSC.RequestOptions()
             req_option.filter.add(TSC.Filter("contentUrl", TSC.RequestOptions.Operator.Equals, datasource_content_url))
-            logger.trace(req_option.get_query_params())
+            logger.debug(req_option.get_query_params())
             matching_datasources, paging = server.datasources.get(req_option)
         except Exception as e:
             Errors.exit_with_error(logger, e)
@@ -60,39 +62,52 @@ class DatasourcesAndWorkbooks(Server):
         return matching_datasources[0]
 
     @staticmethod
-    def apply_values_from_url_params(request_options: TSC.PDFRequestOptions, url, logger) -> None:
-        # should be able to replace this with request_options._append_view_filters(params)
+    def apply_values_from_url_params(logger, request_options: TSC.PDFRequestOptions, url) -> None:
         logger.debug(url)
         try:
             if "?" in url:
                 query = url.split("?")[1]
-                logger.trace("Query parameters: {}".format(query))
+                logger.debug("Query parameters: {}".format(query))
             else:
                 logger.debug("No query parameters present in url")
                 return
 
             params = query.split("&")
-            logger.trace(params)
+            logger.debug(params)
             for value in params:
                 if value.startswith(":"):
-                    DatasourcesAndWorkbooks.apply_option_value(request_options, value, logger)
+                    DatasourcesAndWorkbooks.apply_options_in_url(logger, request_options, value)
                 else:  # it must be a filter
-                    DatasourcesAndWorkbooks.apply_filter_value(request_options, value, logger)
+                    DatasourcesAndWorkbooks.apply_encoded_filter_value(logger, request_options, value)
 
         except Exception as e:
             logger.warn("Error building filter params", e)
             # ExportCommand.log_stack(logger)  # type: ignore
 
+    # this is called from within from_url_params, for each view_filter value
     @staticmethod
-    def apply_filter_value(request_options: TSC.PDFRequestOptions, value: str, logger) -> None:
-        # todo: do we need to strip Parameters.x -> x?
-        logger.trace("handling filter param {}".format(value))
+    def apply_encoded_filter_value(logger, request_options, value):
+        # the REST API doesn't appear to have the option to disambiguate with "Parameters.<fieldname>"
+        value = value.replace("Parameters.", "")
+        # the filter values received from the url are already url encoded. tsc will encode them again.
+        # so we run url.decode, which will be a no-op if they are not encoded.
+        decoded_value = urllib.parse.unquote(value)
+        logger.debug("url had `{0}`, saved as `{1}`".format(value, decoded_value))
+        DatasourcesAndWorkbooks.apply_filter_value(logger, request_options, decoded_value)
+
+    # this is called for each filter value,
+    # from apply_options, which expects an un-encoded input,
+    # or from apply_url_params via apply_encoded_filter_value which decodes the input
+    @staticmethod
+    def apply_filter_value(logger, request_options: TSC.PDFRequestOptions, value: str) -> None:
+        logger.debug("handling filter param {}".format(value))
         data_filter = value.split("=")
         request_options.vf(data_filter[0], data_filter[1])
 
+    # this is called from within from_url_params, for each param value
     @staticmethod
-    def apply_option_value(request_options: TSC.PDFRequestOptions, value: str, logger) -> None:
-        logger.trace("handling url option {}".format(value))
+    def apply_options_in_url(logger, request_options: TSC.PDFRequestOptions, value: str) -> None:
+        logger.debug("handling url option {}".format(value))
         setting = value.split("=")
         if ":iid" == setting[0]:
             logger.debug(":iid value ignored in url")
@@ -111,19 +126,18 @@ class DatasourcesAndWorkbooks(Server):
         return value.lower() in ["yes", "y", "1", "true"]
 
     @staticmethod
-    def apply_png_options(request_options: TSC.ImageRequestOptions, args, logger):
+    def apply_png_options(logger, request_options: TSC.ImageRequestOptions, args):
         if args.height or args.width:
-            # only applicable for png
             logger.warn("Height/width arguments not yet implemented in export")
         # Always request high-res images
         request_options.image_resolution = "high"
 
     @staticmethod
-    def apply_pdf_options(request_options: TSC.PDFRequestOptions, args, logger):
-        request_options.page_type = args.pagesize
+    def apply_pdf_options(logger, request_options: TSC.PDFRequestOptions, args):
         if args.pagelayout:
-            logger.debug("Setting page layout to: {}".format(args.pagelayout))
             request_options.orientation = args.pagelayout
+        if args.pagesize:
+            request_options.page_type = args.pagesize
 
     @staticmethod
     def save_to_data_file(logger, output, filename):

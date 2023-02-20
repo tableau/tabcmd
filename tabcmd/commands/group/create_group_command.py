@@ -25,7 +25,7 @@ class CreateGroupCommand(Server):
         logger = log(__class__.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
-        server = session.create_session(args)
+        server = session.create_session(args, logger)
         try:
             logger.info(_("creategroup.status").format(args.name))
             new_group = TSC.GroupItem(args.name)
@@ -35,4 +35,4 @@ class CreateGroupCommand(Server):
             if args.continue_if_exists and Errors.is_resource_conflict(e):
                 logger.info(_("tabcmd.result.already_exists").format(_("content_type.group"), args.name))
                 return
-            Errors.exit_with_error(logger, _("tabcmd.result.failed.create_group"))
+            Errors.exit_with_error(logger, exception=e)

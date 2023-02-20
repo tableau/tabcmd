@@ -31,7 +31,7 @@ class CreateSiteUsersCommand(UserCommand):
         logger = log(__class__.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
-        server = session.create_session(args)
+        server = session.create_session(args, logger)
         number_of_users_listed = 0
         number_of_users_added = 0
         number_of_errors = 0

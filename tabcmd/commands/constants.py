@@ -1,8 +1,6 @@
 import inspect
 import sys
 
-from tableauserverclient import ServerResponseError
-
 from tabcmd.execution.localize import _
 
 
@@ -25,20 +23,19 @@ class Errors:
     @staticmethod
     def is_resource_conflict(error):
         if hasattr(error, "code"):
-            return error.code == Constants.source_already_exists
+            return error.code.startswith(Constants.resource_conflict_general)
 
     @staticmethod
     def is_login_error(error):
         if hasattr(error, "code"):
             return error.code == Constants.login_error
 
-    @staticmethod
-    def is_server_response_error(error):
-        return isinstance(error, ServerResponseError)
-
     # https://gist.github.com/FredLoney/5454553
     @staticmethod
     def log_stack(logger):
+        if not logger:
+            print("logger not available: cannot show stack")
+            return
         try:
             """The log header message formatter."""
             HEADER_FMT = "Printing Call Stack at %s::%s"
@@ -49,11 +46,10 @@ class Errors:
             file, line, func = here[1:4]
             start = 0
             n_lines = 5
-            logger.trace(HEADER_FMT % (file, func))
-
-            for frame in stack[start + 2 : n_lines]:
+            logger.debug(HEADER_FMT % (file, func))
+            for frame in stack[start + 1 : n_lines]:
                 file, line, func = frame[1:4]
-                logger.trace(STACK_FMT % (file, line, func))
+                logger.debug(STACK_FMT % (file, line, func))
         except Exception as e:
             logger.info("Error printing stack trace:", e)
 
@@ -66,9 +62,9 @@ class Errors:
             if exception:
                 if message:
                     logger.debug("Error message: " + message)
-                Errors.check_common_error_codes_and_explain(logger, exception)
+            Errors.check_common_error_codes_and_explain(logger, exception)
         except Exception as exc:
-            print(sys.stderr, "Error during log call from exception - {}".format(exc))
+            print(sys.stderr, "Error during log call from exception - {} {}".format(exc.__class__, message))
         try:
             logger.info("Exiting...")
         except Exception:
@@ -77,16 +73,15 @@ class Errors:
 
     @staticmethod
     def check_common_error_codes_and_explain(logger, exception):
-        if Errors.is_server_response_error(exception):
-            logger.error(_("publish.errors.unexpected_server_response").format(exception))
-            if Errors.is_expired_session(exception):
-                logger.error(_("session.errors.session_expired"))
-                # TODO: add session as an argument to this method
-                #  and add the full command line as a field in Session?
-                # "session.session_expired_login"))
-                # session.renew_session
-                return
-            if exception.code == Constants.source_not_found:
-                logger.error(_("publish.errors.server_resource_not_found"), exception)
+        # most errors contain as much info in the message as we can get from the code
+        # identify any that we can add useful detail for and include them here
+        if Errors.is_expired_session(exception):
+            # catch this one so we can attempt to refresh the session before telling them it failed
+            logger.error(_("session.errors.session_expired"))
+            # TODO: add session as an argument to this method
+            #  and add the full command line as a field in Session?
+            # "session.session_expired_login"))
+            # session.renew_session()
+            return
         else:
             logger.error(exception)

@@ -31,7 +31,7 @@ class PublishSamplesCommand(Server):
         logger = log(__class__.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
-        server = session.create_session(args)
+        server = session.create_session(args, logger)
         try:
             project = PublishSamplesCommand.get_project_by_name_and_parent_path(
                 logger, server, args.project_name, args.parent_project_path

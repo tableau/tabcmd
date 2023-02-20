@@ -41,7 +41,7 @@ class GetUrl(DatasourcesAndWorkbooks):
         logger = log(__class__.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
-        server = session.create_session(args)
+        server = session.create_session(args, logger)
         if " " in args.url:
             Errors.exit_with_error(logger, _("export.errors.white_space_workbook_view"))
 
@@ -92,7 +92,7 @@ class GetUrl(DatasourcesAndWorkbooks):
                 Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name))
 
         logger.debug("filetype: {}".format(type_of_file))
-        if type_of_file in ["pdf", "csv", "png", "twb", "twbx", "tdsx"]:
+        if type_of_file in ["pdf", "csv", "png", "twb", "twbx", "tdsx", "tds"]:
             return type_of_file
 
         Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name))
@@ -176,7 +176,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view_url)
             logger.debug(_("content_type.view") + ": {}".format(view_item.name))
             req_option_pdf = TSC.PDFRequestOptions(maxage=1)
-            DatasourcesAndWorkbooks.apply_values_from_url_params(req_option_pdf, args.url, logger)
+            DatasourcesAndWorkbooks.apply_values_from_url_params(logger, req_option_pdf, args.url)
             server.views.populate_pdf(view_item, req_option_pdf)
             filename = GetUrl.filename_from_args(args.filename, view_item.name, "pdf")
             DatasourcesAndWorkbooks.save_to_file(logger, view_item.pdf, filename)
@@ -190,7 +190,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view_url)
             logger.debug(_("content_type.view") + ": {}".format(view_item.name))
             req_option_csv = TSC.ImageRequestOptions(maxage=1)
-            DatasourcesAndWorkbooks.apply_values_from_url_params(req_option_csv, args.url, logger)
+            DatasourcesAndWorkbooks.apply_values_from_url_params(logger, req_option_csv, args.url)
             server.views.populate_image(view_item, req_option_csv)
             filename = GetUrl.filename_from_args(args.filename, view_item.name, "png")
             DatasourcesAndWorkbooks.save_to_file(logger, view_item.image, filename)
@@ -204,7 +204,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view_url)
             logger.debug(_("content_type.view") + ": {}".format(view_item.name))
             req_option_csv = TSC.CSVRequestOptions(maxage=1)
-            DatasourcesAndWorkbooks.apply_values_from_url_params(req_option_csv, args.url, logger)
+            DatasourcesAndWorkbooks.apply_values_from_url_params(logger, req_option_csv, args.url)
             server.views.populate_csv(view_item, req_option_csv)
             file_name_with_path = GetUrl.filename_from_args(args.filename, view_item.name, "csv")
             DatasourcesAndWorkbooks.save_to_data_file(logger, view_item.csv, file_name_with_path)

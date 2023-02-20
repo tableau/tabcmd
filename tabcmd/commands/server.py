@@ -47,7 +47,7 @@ class Server:
         # TODO: typing should reflect that this returns TSC.TableauItem and item_endpoint is of type TSC.QuerysetEndpoint[same]
         item_log_name: str = "[{0}] {1}".format(type(item_endpoint).__name__, item_name)
         if container:
-            container_name: str = "({0}) {1}".format(container.__class__, container.name)
+            container_name: str = "[{0}] {1}".format(container.__class__.__name__, container.name)
             item_log_name = "{0}/{1}".format(container_name, item_log_name)
         logger.debug(_("export.status").format(item_log_name))
         req_option = TSC.RequestOptions()

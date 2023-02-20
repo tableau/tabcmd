@@ -149,7 +149,7 @@ class DS_WB_Tests(unittest.TestCase):
         options = TSC.PDFRequestOptions()
         assert options.view_filters is not None
         assert len(options.view_filters) is 0
-        ExportCommand.apply_filter_value(options, "param1=value1", mock_logger)
+        ExportCommand.apply_filter_value(mock_logger, options, "param1=value1")
         assert len(options.view_filters) == 1
         assert options.view_filters[0] == ("param1", "value1")
 
@@ -158,7 +158,7 @@ class DS_WB_Tests(unittest.TestCase):
         options = TSC.PDFRequestOptions()
         assert options.view_filters is not None
         assert len(options.view_filters) is 0
-        ExportCommand.apply_values_from_url_params(options, url, mock_logger)
+        ExportCommand.apply_values_from_url_params(mock_logger, options, url)
         assert len(options.view_filters) == 1
         assert options.view_filters[0] == ("param1", "value1")
 
@@ -166,21 +166,21 @@ class DS_WB_Tests(unittest.TestCase):
         url = "wb-name/view-name?:refresh=TRUE"
         options = TSC.PDFRequestOptions()
         assert options.max_age == -1
-        ExportCommand.apply_values_from_url_params(options, url, mock_logger)
+        ExportCommand.apply_values_from_url_params(mock_logger, options, url)
         assert options.max_age == 0
 
     def test_refresh_yes(self):
         url = "wb-name/view-name?:refresh=yes"
         options = TSC.PDFRequestOptions()
         assert options.max_age == -1
-        ExportCommand.apply_values_from_url_params(options, url, mock_logger)
+        ExportCommand.apply_values_from_url_params(mock_logger, options, url)
         assert options.max_age == 0
 
     def test_refresh_y(self):
         url = "wb-name/view-name?:refresh=y"
         options = TSC.PDFRequestOptions()
         assert options.max_age == -1
-        ExportCommand.apply_values_from_url_params(options, url, mock_logger)
+        ExportCommand.apply_values_from_url_params(mock_logger, options, url)
         assert options.max_age == 0
 
     def test_save_to_binary_file(self):

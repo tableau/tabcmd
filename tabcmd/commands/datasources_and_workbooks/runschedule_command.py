@@ -23,7 +23,7 @@ class RunSchedule(DatasourcesAndWorkbooks):
         logger = log(__class__.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
-        server = session.create_session(args)
+        server = session.create_session(args, logger)
         schedule = DatasourcesAndWorkbooks.get_items_by_name(logger, server.schedules, args.schedule)[0]
         logger.info(_("runschedule.status"))
         Errors.exit_with_error(logger, "Not yet implemented")
