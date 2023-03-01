@@ -152,18 +152,23 @@ class Session:
 
     def _set_connection_options(self) -> TSC.Server:
         self.logger.debug("Setting up request options")
-        # args still to be handled here:
-        # proxy, --no-proxy,
-        # cert
         http_options: Dict[str, Any] = {"headers": {"User-Agent": "Tabcmd/{}".format(version)}}
+
         if self.no_certcheck:
             http_options["verify"] = False
             urllib3.disable_warnings(category=InsecureRequestWarning)
-        if self.proxy:
+
+        if self.proxy and not self.no_proxy:
             # do we catch this error? "sessionoptions.errors.bad_proxy_format"
             self.logger.debug("Setting proxy: ", self.proxy)
+            http_options['proxy'] = self.proxy
+
         if self.timeout:
             http_options["timeout"] = self.timeout
+
+        if self.certificate:
+            print("# do something")
+
         try:
             self.logger.debug(http_options)
             tableau_server = TSC.Server(self.server_url, http_options=http_options)
@@ -245,12 +250,17 @@ class Session:
             self.site_id = self.tableau_server.site_id
             self.user_id = self.tableau_server.user_id
             self.auth_token = self.tableau_server._auth_token
+
             if not self.username:
                 self.username = self.tableau_server.users.get_by_id(self.user_id).name
-            self.logger.info(_("common.output.succeeded"))
+            success = self._validate_existing_signin()
         except Exception as e:
             Errors.exit_with_error(self.logger, exception=e)
-        self.logger.debug("Signed into {0}{1} as {2}".format(self.server_url, self.site_name, self.username))
+        if success:
+            self.logger.info(_("common.output.succeeded"))
+        else:
+            Errors.exit_with_error(self.logger, message="Sign in failed")
+
         return self.tableau_server
 
     def _get_saved_credentials(self):
