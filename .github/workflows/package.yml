@@ -68,4 +68,5 @@ jobs:
 
     - uses: actions/upload-artifact@v3
       with:
+        name: ${{ matrix.OUT_FILE_NAME }}
         path: ./dist/${{ matrix.TARGET }}/${{ matrix.OUT_FILE_NAME }}
