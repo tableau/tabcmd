@@ -86,18 +86,7 @@ see the user documentation at https://tableau.github.io/tabcmd/
 Version 2.0 is the first version of tabcmd built in python. 
 It is specifically targeted to support users of Tableau Online, who are required to have MFA enabled. 
 (MFA support is not available in tabcmd 2022.2). It does not yet fully replace the existing tabcmd client.\
-**Known gaps**
-- handling custom views in get/export commands
-- several commands that can only be run by a Server Admin:
-  - editdomain / listdomains
-  - initialuser 
-  - reset_openid_sub 
-  - runschedule 
-  - set 
-  - syncgroup 
-  - upgradethumbnails 
-  - validateidpmetadata
-
+For known gaps in supported functionality, see the latest [release notes](https://github.com/tableau/tabcmd/releases)
 
 ## About
 
