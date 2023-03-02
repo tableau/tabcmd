@@ -17,7 +17,7 @@ You can use the following commands with the tabcmd command-line tool:
 
 
 ## login
-Logs in a Tableau Cloud user. 
+Logs in a Tableau user. 
 
 <div class="alert alert-info"><strong>Note</strong>: When you use tabcmd you cannot use SAML single sign-on (SSO), even if your site is configured to use SAML. To log in, you must pass the user name and password or token name and token of a user who has been created in your site. You will have the permissions of the Tableau Server user that you're signed in as.</div>
 
@@ -215,7 +215,9 @@ Creates a project.
 tabcmd createproject -n "Quarterly_Reports" -d "Workbooks showing quarterly sales reports."
 ```
 
-## createsite *site-name* <div class="alert alert-info"><strong>Note</strong>: Tableau Server only.</div>
+## createsite *site-name* 
+
+<div class="alert alert-info"><strong>Note</strong>: Tableau Server only. Not applicable for Tableau Cloud</div>
 
 Creates a site.
 
@@ -317,7 +319,7 @@ tabcmd createsiteusers "users.csv" --role "Explorer"
 
 ## decryptextracts 
 <div class="alert alert-info">
-<strong>Note</strong>: Tableau Server only.</div>
+<strong>Note</strong>: Tableau Server only. Not applicable for Tableau Cloud</div>
 
 Decrypts all extracts on a site. If no site is specified, extracts on the default site will be decrypted. For more information, see [Extract Encryption at Rest](https://help.tableau.com/current/server/en-us/security_ear.htm).
 
@@ -424,7 +426,8 @@ tabcmd deleteproject "Designs"` --parent-path "Main"
 ```
 
 ## deletesite *site-name* 
-<div class="alert alert-info"><strong>Note</strong>: Tableau Server only.</div>
+<div class="alert alert-info">
+<strong>Note</strong>: Tableau Server only. Not applicable for Tableau Cloud</div>
 
 Deletes the specified site from the server.
 
@@ -448,7 +451,8 @@ tabcmd deletesiteusers "users.csv"
 ```
 
 ## editsite *site-name* 
-<div class="alert alert-info"><strong>Note</strong>: Tableau Server only.</div>
+<div class="alert alert-info">
+<strong>Note</strong>: Tableau Server only. Not applicable for Tableau Cloud</div>
 
 Changes the name of a site or its web folder name. You can also use this command to allow or deny site administrators the ability to add and remove users, or prevent users from running certain tasks manually. If site administrators have user management rights, you can specify how many users they can add to a site.
 
@@ -505,7 +509,8 @@ tabcmd editsite wsales --user-quota 50
 ```
 
 ## encryptextracts *site-name* 
-<div class="alert alert-info"><strong>Note</strong>: Tableau Server only.</div>
+<div class="alert alert-info">
+<strong>Note</strong>: Tableau Server only. Not applicable for Tableau Cloud</div>
 
 Encrypt all extracts on a site. For more information, see [Extract Encryption at Rest](https://help.tableau.com/current/server/en-us/security_ear.htm).
 
@@ -705,7 +710,8 @@ tabcmd get "/workbooks/Sales_Analysis.twb" -f "C:\Tableau_Workbooks\Weekly-Repor
 
 ## listsites
 
-<div class="alert alert-info"><strong>Note</strong>: Tableau Server only.</div>
+<div class="alert alert-info">
+<strong>Note</strong>: Tableau Server only. Not applicable for Tableau Cloud</div>
 
 Returns a list of sites to which the logged in user belongs.
 
@@ -846,7 +852,7 @@ tabcmd publishsamples -n "Inside Sales" -t "" -s localhost --username "jsmith" -
     
 ## reencryptextracts 
 
-<div class="alert alert-info"><strong>Note</strong>: Tableau Server only.</div>
+<div class="alert alert-info"><strong>Note</strong>: Tableau Server only. Not applicable for Tableau Cloud</div>
 
 <!--- Syntax 
 tabcmd reencryptextracts [site name] [Global options] --->
