@@ -101,7 +101,7 @@ def parent_parser_with_global_options():
     parser.add_argument(
         "--continue-if-exists",
         action="store_true",  # default behavior matches old tabcmd
-        help=strings[9],
+        help=strings[9],  # kind of equivalent to 'overwrite' in the publish command
     )
 
     parser.add_argument(

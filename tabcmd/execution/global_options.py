@@ -126,7 +126,7 @@ def set_encryption_option(parser):
         "--encrypt",
         dest="encrypt",
         action="store_true",  # set to true IF user passes in option --encrypt
-        help="Encrypt the newly created extract.",
+        help="Encrypt the newly created extract. [N/a on Tableau Cloud: extracts are always encrypted]",
     )
     return parser
 
@@ -230,7 +230,8 @@ def set_common_site_args(parser):
         "--extract-encryption-mode",
         choices=encryption_modes,
         type=case_insensitive_string_type(encryption_modes),
-        help="The extract encryption mode for the site can be enforced, enabled or disabled. ",
+        help="The extract encryption mode for the site can be enforced, enabled or disabled. "
+             "[N/a on Tableau Cloud: encryption mode is always enforced] ",
     )
 
     parser.add_argument(
@@ -275,8 +276,6 @@ def set_filename_arg(parser, description=_("get.options.file")):
 def set_publish_args(parser):
     parser.add_argument("-n", "--name", help="Name to publish the new datasource or workbook by.")
 
-    set_overwrite_option(parser)
-
     creds = parser.add_mutually_exclusive_group()
     creds.add_argument("--oauth-username", help="The email address of a preconfigured OAuth connection")
     creds.add_argument(
@@ -301,19 +300,14 @@ def set_publish_args(parser):
         help="When a workbook with tabbed views is published, each sheet becomes a tab that viewers can use to \
         navigate through the workbook",
     )
-    parser.add_argument(
-        "--replace", action="store_true", help="Use the extract file to replace the existing data source."
-    )
-    parser.add_argument("--disable-uploader", action="store_true", help="Disable the incremental file uploader.")
-    parser.add_argument("--restart", help="Restart the file upload.")
+    parser.add_argument("--disable-uploader", action="store_true", help="[DEPRECATED - has no effect] Disable the incremental file uploader.")
+    parser.add_argument("--restart", help="[DEPRECATED - has no effect] Restart the file upload.")
     parser.add_argument(
         "--encrypt-extracts",
         action="store_true",
-        help="Encrypt extracts in the workbook, datasource, or extract being published to the server",
+        help="Encrypt extracts in the workbook, datasource, or extract being published to the server. "
+             "[N/a on Tableau Cloud: extracts are always encrypted]",
     )
-
-    parser.add_argument("--oauth-username", help="The email address of a preconfigured OAuth connection")
-    parser.add_argument("--save-oauth", action="store_true", help="Save embedded OAuth credentials in the datasource")
 
     # These two only apply for a workbook, not a datasource
     thumbnails = parser.add_mutually_exclusive_group()
@@ -323,24 +317,40 @@ def set_publish_args(parser):
              "specified user can see. Cannot be specified when --thumbnail-group option is set.")
     thumbnails.add_argument(
         "--thumbnail-group",
-        help="If the workbook contains user filters, the thumbnails will be generated based on what the "
-             "specified group can see. Cannot be specified when --thumbnail-usernameoption is set.")
+        help="[Not yet implemented] If the workbook contains user filters, the thumbnails will be generated based on what the "
+             "specified group can see. Cannot be specified when --thumbnail-username option is set.")
 
     parser.add_argument("--use-tableau-bridge", action="store_true", help="Refresh datasource through Tableau Bridge")
 
 
-def set_overwrite_option(parser):
+# these two are used to publish an extract to an existing data source
+def set_append_replace_option(parser):
     append_group = parser.add_mutually_exclusive_group()
-    append_group.add_argument(
-        "-o",
-        "--overwrite",
-        action="store_true",
-        help="Overwrites the workbook, data source, or data extract if it already exists on the server.",
-    )
     append_group.add_argument(
         "--append",
         action="store_true",
-        help="Append the extract file to the existing data source.",
+        help="Set to true to append the data being published to an existing data source that has the same name. "
+             "The default behavior is to fail if the data source already exists. "
+             "If append is set to true but the data source doesn't already exist, the operation fails."
+    )
+
+    # what's the difference between this and 'overwrite'?
+    # This is meant for when a) the local file is an extract b) the server item is an existing data source
+    append_group.add_argument(
+        "--replace",
+        action="store_true",
+        help="Use the extract file being published to replace data in the existing data source. The default "
+             "behavior is to fail if the item already exists."
+    )
+
+# this is meant to be like replacing like
+def set_overwrite_option(parser):
+    parser.add_argument(
+        "-o",
+        "--overwrite",
+        action="store_true",
+        help="Overwrites the workbook, data source, or data extract if it already exists on the server. The default "
+             "behavior is to fail if the item already exists."
     )
 
 

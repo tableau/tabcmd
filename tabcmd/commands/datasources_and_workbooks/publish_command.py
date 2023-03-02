@@ -29,6 +29,8 @@ class PublishCommand(DatasourcesAndWorkbooks):
         )
         set_publish_args(group)
         set_project_r_arg(group)
+        set_overwrite_option(group)
+        set_append_replace_option(group)
         set_parent_project_arg(group)
 
     @staticmethod
@@ -52,7 +54,9 @@ class PublishCommand(DatasourcesAndWorkbooks):
             args.project_name = "default"
             args.parent_project_path = ""
 
-        publish_mode = PublishCommand.get_publish_mode(args)  # --overwrite, --replace
+        publish_mode = PublishCommand.get_publish_mode(args)  # --overwrite, --replace, --append
+        if not publish_mode:
+            Errors.exit_with_error(logger, "Invalid combination of publishing options (Append, Overwrite, Replace)")
         logger.info("Publishing as " + publish_mode)
 
         if args.db_username:
@@ -78,11 +82,12 @@ class PublishCommand(DatasourcesAndWorkbooks):
                     new_workbook,
                     args.filename,
                     publish_mode,
-                    args.thumbnail_user,
+                    args.thumbnail_username,
                     args.thumbnail_group,
                     connection_credentials=creds,
                     as_job=False,
                     skip_connection_check=False,
+
                 )
             except IOError as ioe:
                 Errors.exit_with_error(logger, ioe)
@@ -104,8 +109,15 @@ class PublishCommand(DatasourcesAndWorkbooks):
 
     @staticmethod
     def get_publish_mode(args):
-        if args.overwrite:
+        if args.append:
+            # only relevant for datasources: Append the extract file to the existing data source.
+            publish_mode = TSC.Server.PublishMode.Append
+        if args.replace or args.overwrite:
+            if args.append:
+                return None  # invalid combination
+            # Overwrites the workbook, data source, or data extract if it already exists on the server.
             publish_mode = TSC.Server.PublishMode.Overwrite
         else:
+            # default: fail if it already exists on the server
             publish_mode = TSC.Server.PublishMode.CreateNew
         return publish_mode
