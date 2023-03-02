@@ -851,6 +851,7 @@ tabcmd publishsamples -n "Inside Sales" -t "" -s localhost --username "jsmith" -
 ```
     
 ## reencryptextracts 
+
 <div class="alert alert-info"><strong>Note</strong>: Tableau Server only. Not applicable for Tableau Cloud</div>
 
 <!--- Syntax 
