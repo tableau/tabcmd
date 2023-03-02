@@ -311,9 +311,20 @@ def set_publish_args(parser):
         action="store_true",
         help="Encrypt extracts in the workbook, datasource, or extract being published to the server",
     )
+
+    parser.add_argument("--oauth-username", help="The email address of a preconfigured OAuth connection")
+    parser.add_argument("--save-oauth", action="store_true", help="Save embedded OAuth credentials in the datasource")
+
+    # These two only apply for a workbook, not a datasource
     thumbnails = parser.add_mutually_exclusive_group()
-    thumbnails.add_argument("--thumbnail-username", help="Not yet implemented")
-    thumbnails.add_argument("--thumbnail-group", help="Not yet implemented")  # not implemented in the REST API
+    thumbnails.add_argument(
+        "--thumbnail-username",
+        help="If the workbook contains user filters, the thumbnails will be generated based on what the "
+             "specified user can see. Cannot be specified when --thumbnail-group option is set.")
+    thumbnails.add_argument(
+        "--thumbnail-group",
+        help="If the workbook contains user filters, the thumbnails will be generated based on what the "
+             "specified group can see. Cannot be specified when --thumbnail-usernameoption is set.")
 
     parser.add_argument("--use-tableau-bridge", action="store_true", help="Refresh datasource through Tableau Bridge")
 

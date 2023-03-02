@@ -66,18 +66,29 @@ class PublishCommand(DatasourcesAndWorkbooks):
         source = PublishCommand.get_filename_extension_if_tableau_type(logger, args.filename)
         logger.info(_("publish.status").format(args.filename))
         if source in ["twbx", "twb"]:
-            new_workbook = TSC.WorkbookItem(project_id, name=args.name, show_tabs=args.tabbed)
+            if args.thumbnail_group:
+                raise AttributeError("Generating thumbnails for a group is not yet implemented.")
+            if args.thumbnail_username and args.thumbnail_group:
+                raise AttributeError("Cannot specify both a user and group for thumbnails.")
+
+            new_workbook = TSC.WorkbookItem(
+                project_id, name=args.name, show_tabs=args.tabbed)
             try:
                 new_workbook = server.workbooks.publish(
                     new_workbook,
                     args.filename,
                     publish_mode,
+                    args.thumbnail_user,
+                    args.thumbnail_group,
                     connection_credentials=creds,
                     as_job=False,
                     skip_connection_check=False,
                 )
+            except IOError as ioe:
+                Errors.exit_with_error(logger, ioe)
             except Exception as e:
                 Errors.exit_with_error(logger, e)
+
             logger.info(_("publish.success") + "\n{}".format(new_workbook.webpage_url))
 
         elif source in ["tds", "tdsx", "hyper"]:
