@@ -126,7 +126,7 @@ def set_encryption_option(parser):
         "--encrypt",
         dest="encrypt",
         action="store_true",  # set to true IF user passes in option --encrypt
-        help="Encrypt the newly created extract. [N/a on Tableau Cloud: extracts are always encrypted]",
+        help="Encrypt the newly created extract. [N/a on Tableau Cloud: extract encryption is controlled by Site Admin]",
     )
     return parser
 
@@ -306,7 +306,7 @@ def set_publish_args(parser):
         "--encrypt-extracts",
         action="store_true",
         help="Encrypt extracts in the workbook, datasource, or extract being published to the server. "
-             "[N/a on Tableau Cloud: extracts are always encrypted]",
+             "[N/a on Tableau Cloud: extract encryption is controlled by Site Admin]",
     )
 
     # These two only apply for a workbook, not a datasource
@@ -372,12 +372,12 @@ def set_calculations_options(parser):
     calc_group.add_argument(
         "--addcalculations",
         action="store_true",
-        help="DEPRECATED [has no effect] Add precalculated data operations in the extract data source.",
+        help="[Not implemented] Add precalculated data operations in the extract data source.",
     )
     calc_group.add_argument(
         "--removecalculations",
         action="store_true",
-        help="DEPRECATED [has no effect] Remove precalculated data in the extract data source.",
+        help="[Not implemented] Remove precalculated data in the extract data source.",
     )
     return calc_group
 
