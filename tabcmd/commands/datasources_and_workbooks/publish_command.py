@@ -75,8 +75,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
             if args.thumbnail_username and args.thumbnail_group:
                 raise AttributeError("Cannot specify both a user and group for thumbnails.")
 
-            new_workbook = TSC.WorkbookItem(
-                project_id, name=args.name, show_tabs=args.tabbed)
+            new_workbook = TSC.WorkbookItem(project_id, name=args.name, show_tabs=args.tabbed)
             try:
                 new_workbook = server.workbooks.publish(
                     new_workbook,
@@ -87,7 +86,6 @@ class PublishCommand(DatasourcesAndWorkbooks):
                     connection_credentials=creds,
                     as_job=False,
                     skip_connection_check=False,
-
                 )
             except IOError as ioe:
                 Errors.exit_with_error(logger, ioe)

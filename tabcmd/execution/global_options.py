@@ -231,7 +231,7 @@ def set_common_site_args(parser):
         choices=encryption_modes,
         type=case_insensitive_string_type(encryption_modes),
         help="The extract encryption mode for the site can be enforced, enabled or disabled. "
-             "[N/a on Tableau Cloud: encryption mode is always enforced] ",
+        "[N/a on Tableau Cloud: encryption mode is always enforced] ",
     )
 
     parser.add_argument(
@@ -300,13 +300,17 @@ def set_publish_args(parser):
         help="When a workbook with tabbed views is published, each sheet becomes a tab that viewers can use to \
         navigate through the workbook",
     )
-    parser.add_argument("--disable-uploader", action="store_true", help="[DEPRECATED - has no effect] Disable the incremental file uploader.")
+    parser.add_argument(
+        "--disable-uploader",
+        action="store_true",
+        help="[DEPRECATED - has no effect] Disable the incremental file uploader.",
+    )
     parser.add_argument("--restart", help="[DEPRECATED - has no effect] Restart the file upload.")
     parser.add_argument(
         "--encrypt-extracts",
         action="store_true",
         help="Encrypt extracts in the workbook, datasource, or extract being published to the server. "
-             "[N/a on Tableau Cloud: extract encryption is controlled by Site Admin]",
+        "[N/a on Tableau Cloud: extract encryption is controlled by Site Admin]",
     )
 
     # These two only apply for a workbook, not a datasource
@@ -314,11 +318,13 @@ def set_publish_args(parser):
     thumbnails.add_argument(
         "--thumbnail-username",
         help="If the workbook contains user filters, the thumbnails will be generated based on what the "
-             "specified user can see. Cannot be specified when --thumbnail-group option is set.")
+        "specified user can see. Cannot be specified when --thumbnail-group option is set.",
+    )
     thumbnails.add_argument(
         "--thumbnail-group",
         help="[Not yet implemented] If the workbook contains user filters, the thumbnails will be generated based on what the "
-             "specified group can see. Cannot be specified when --thumbnail-username option is set.")
+        "specified group can see. Cannot be specified when --thumbnail-username option is set.",
+    )
 
     parser.add_argument("--use-tableau-bridge", action="store_true", help="Refresh datasource through Tableau Bridge")
 
@@ -330,8 +336,8 @@ def set_append_replace_option(parser):
         "--append",
         action="store_true",
         help="Set to true to append the data being published to an existing data source that has the same name. "
-             "The default behavior is to fail if the data source already exists. "
-             "If append is set to true but the data source doesn't already exist, the operation fails."
+        "The default behavior is to fail if the data source already exists. "
+        "If append is set to true but the data source doesn't already exist, the operation fails.",
     )
 
     # what's the difference between this and 'overwrite'?
@@ -340,8 +346,9 @@ def set_append_replace_option(parser):
         "--replace",
         action="store_true",
         help="Use the extract file being published to replace data in the existing data source. The default "
-             "behavior is to fail if the item already exists."
+        "behavior is to fail if the item already exists.",
     )
+
 
 # this is meant to be like replacing like
 def set_overwrite_option(parser):
@@ -350,7 +357,7 @@ def set_overwrite_option(parser):
         "--overwrite",
         action="store_true",
         help="Overwrites the workbook, data source, or data extract if it already exists on the server. The default "
-             "behavior is to fail if the item already exists."
+        "behavior is to fail if the item already exists.",
     )
 
 

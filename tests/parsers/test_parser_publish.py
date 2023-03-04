@@ -52,9 +52,8 @@ class PublishParserTest(unittest.TestCase):
         assert args.save_oauth is True, args
         assert args.oauth_username == "user", args
 
-
     def test_publish_parser_thumbnails(self):
-        mock_args = [commandname, "filename.twbx", "--thumbnail-username"] # no value for thumbnail-user
+        mock_args = [commandname, "filename.twbx", "--thumbnail-username"]  # no value for thumbnail-user
         with self.assertRaises(SystemExit):
             args = self.parser_under_test.parse_args(mock_args)
 
@@ -76,6 +75,7 @@ class PublishParserTest(unittest.TestCase):
     true   | true    | F/empty   -> ERROR
     .... basically, replace == overwrite, append != r/o
     """
+
     def test_publish_parser_append_options(self):
         mock_args = [commandname, "filename.twbx", "--append"]
         args = self.parser_under_test.parse_args(mock_args)
@@ -103,5 +103,5 @@ class PublishParserTest(unittest.TestCase):
         args = self.parser_under_test.parse_args(mock_args)
 
     def test_publish_parser_use_bridge_option(self):
-        mock_args = [commandname, "filename.twbx","--use-tableau-bridge"]
+        mock_args = [commandname, "filename.twbx", "--use-tableau-bridge"]
         args = self.parser_under_test.parse_args(mock_args)
