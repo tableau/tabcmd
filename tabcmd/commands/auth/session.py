@@ -43,7 +43,7 @@ class Session:
         self.no_prompt = False
         self.certificate = None
         self.no_certcheck = False
-        self.no_proxy = True
+        self.no_proxy = False
         self.proxy = None
         self.timeout = None
 
@@ -73,10 +73,10 @@ class Session:
         self.token_name = args.token_name or self.token_name
         self.token_value = args.token_value or self.token_value
 
-        self.no_prompt = args.no_prompt or self.no_prompt
-        self.certificate = args.certificate or self.certificate
-        self.no_certcheck = args.no_certcheck or self.no_certcheck
-        self.no_proxy = args.no_proxy or self.no_proxy
+        self.no_prompt = args.no_prompt  # have to set this on every call?
+        self.certificate = args.use_certificate or self.certificate
+        self.no_certcheck = args.no_certcheck  # have to set this on every call?
+        self.no_proxy = args.no_proxy  # have to set this on every call?
         self.proxy = args.proxy or self.proxy
         self.timeout = self.timeout_as_integer(self.logger, args.timeout, self.timeout)
 
@@ -158,25 +158,39 @@ class Session:
             http_options["verify"] = False
             urllib3.disable_warnings(category=InsecureRequestWarning)
 
-        if self.proxy and not self.no_proxy:
-            # do we catch this error? "sessionoptions.errors.bad_proxy_format"
-            self.logger.debug("Setting proxy: ", self.proxy)
-            http_options['proxy'] = self.proxy
+        """
+           Do we want to do the same format check as old tabcmd?
+           For now I think we can trust requests to handle a bad proxy
+           Pattern pattern = Pattern.compile("([^:]*):([0-9]*)");           
+           if not matches:
+               throw new ReportableException(m_i18n.getString("sessionoptions.errors.bad_proxy_format", proxyArg));
+        """
+        if self.proxy:
+            self.logger.debug("Setting http proxy: {}".format(self.proxy))
+            proxies = {
+                'http': self.proxy
+            }
+            http_options['proxies'] = proxies
+        if self.no_proxy:
+            # override any proxy that was set
+            http_options['proxies'] = None
 
         if self.timeout:
             http_options["timeout"] = self.timeout
 
         if self.certificate:
-            print("# do something")
+            http_options["cert"] = self.certificate
 
         try:
             self.logger.debug(http_options)
+            # this is the only place we open a connection to the server
+            # so the request options are all set for the session now
             tableau_server = TSC.Server(self.server_url, http_options=http_options)
 
         except Exception as e:
             self.logger.debug(
-                "Connection args: server {}, site {}, proxy {}, cert {}".format(
-                    self.server_url, self.site_name, self.proxy, self.certificate
+                "Connection args: server {}, site {}, proxy {}/no-proxy {}, cert {}".format(
+                    self.server_url, self.site_name, self.proxy, self.certificate, self.no_proxy
                 )
             )
             Errors.exit_with_error(self.logger, "Failed to connect to server", e)
@@ -201,7 +215,7 @@ class Session:
             Errors.exit_with_error(self.logger, exception=e)
 
     def _create_new_connection(self) -> TSC.Server:
-        self.logger.info(_("session.new_session"))
+        # self.logger.info(_("session.new_session"))
         self._print_server_info()
         self.logger.info(_("session.connecting"))
         try:
@@ -216,6 +230,10 @@ class Session:
 
     def _print_server_info(self):
         self.logger.info("=====   Server: {}".format(self.server_url))
+        if self.proxy:
+            self.logger.info("=====   Proxy: {}".format(self.proxy))
+        if self.no_proxy:
+            self.logger.info("=====   Proxy Override: set proxy to None")
         if self.username:
             self.logger.info("=====   Username: {}".format(self.username))
         else:
@@ -228,10 +246,8 @@ class Session:
         # when do these two messages show up? self.logger.info(_("session.auto_site_login"))
         try:
             if self.tableau_server and self.tableau_server.is_signed_in():
-                response = self.tableau_server.users.get_by_id(self.user_id)
-                self.logger.debug(response)
-                if response.status_code.startswith("200"):
-                    return self.tableau_server
+                self.username = self.tableau_server.users.get_by_id(self.user_id).name
+                return self.tableau_server
         except TSC.ServerResponseError as e:
             self.logger.info(_("publish.errors.unexpected_server_response"), e)
         except Exception as e:
@@ -251,8 +267,6 @@ class Session:
             self.user_id = self.tableau_server.user_id
             self.auth_token = self.tableau_server._auth_token
 
-            if not self.username:
-                self.username = self.tableau_server.users.get_by_id(self.user_id).name
             success = self._validate_existing_signin()
         except Exception as e:
             Errors.exit_with_error(self.logger, exception=e)
