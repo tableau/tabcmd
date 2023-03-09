@@ -17,7 +17,7 @@ class ListCommand(Server):
         "tabcmd_content_listing": "===== Listing {0} content for user {1}...",
         "tabcmd_listing_label_name": "\tNAME: {}",
         "tabcmd_listing_label_id": "ID: {}",
-        "tabcmd_content_none": "No content found."
+        "tabcmd_content_none": "No content found.",
     }
 
     name: str = "list"

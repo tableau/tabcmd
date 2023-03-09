@@ -24,7 +24,6 @@ mock_args.logging_level = "INFO"
 @mock.patch("tabcmd.commands.auth.session.Session.create_session")
 @mock.patch("tableauserverclient.Server")
 class ListingTests(unittest.TestCase):
-
     def test_list_sites(self, mock_server, mock_session):
         mock_server.sites = getter
         mock_args.get_extract_encryption_mode = False
