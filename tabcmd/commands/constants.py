@@ -1,6 +1,8 @@
 import inspect
 import sys
 
+import tableauserverclient
+
 from tabcmd.execution.localize import _
 
 
@@ -44,7 +46,7 @@ class Errors:
             stack = inspect.stack()
             here = stack[0]
             file, line, func = here[1:4]
-            start = 0
+            start = 1
             n_lines = 5
             logger.debug(HEADER_FMT % (file, func))
             for frame in stack[start + 1 : n_lines]:
@@ -54,15 +56,17 @@ class Errors:
             logger.info("Error printing stack trace:", e)
 
     @staticmethod
-    def exit_with_error(logger, message=None, exception=None):
+    def exit_with_error(logger, message=None, exception:Exception=None):
         try:
-            Errors.log_stack(logger)
             if message and not exception:
                 logger.error(message)
-            if exception:
+                Errors.log_stack(logger)
+            elif exception:
                 if message:
-                    logger.debug("Error message: " + message)
-            Errors.check_common_error_codes_and_explain(logger, exception)
+                    logger.info("Error message: " + message)
+                Errors.check_common_error_codes_and_explain(logger, exception)
+            else:
+                logger.info("No exception or message provided")
         except Exception as exc:
             print(sys.stderr, "Error during log call from exception - {} {}".format(exc.__class__, message))
         try:
@@ -72,7 +76,7 @@ class Errors:
         sys.exit(1)
 
     @staticmethod
-    def check_common_error_codes_and_explain(logger, exception):
+    def check_common_error_codes_and_explain(logger, exception: Exception):
         # most errors contain as much info in the message as we can get from the code
         # identify any that we can add useful detail for and include them here
         if Errors.is_expired_session(exception):
@@ -83,5 +87,7 @@ class Errors:
             # "session.session_expired_login"))
             # session.renew_session()
             return
-        else:
+        if exception.__class__ == tableauserverclient.ServerResponseError:
             logger.error(exception)
+        else:
+            logger.exception(exception)
