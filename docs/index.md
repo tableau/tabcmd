@@ -95,3 +95,5 @@ For more information, see [tabcmd Commands](tabcmd_cmd).
 
 ## Log file
 Full log information is written to the `tabcmd.log` file. This file is included in the directory where the tabcmd program is running.
+
+<div class="alert alert-info"><strong>Note</strong>: tabcmd doesn't support vizzes connected to datasources that don't have embedded credentials. If a datasource has “prompt user for credentials” set, we make no guarantees that Tableau can successfully generate an export. This applies to images, PDF files, CSV files, and Microsoft Excel and PowerPoint files, where applicable. </div>
