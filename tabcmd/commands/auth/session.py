@@ -249,7 +249,7 @@ class Session:
                 self.username = self.tableau_server.users.get_by_id(self.user_id).name
             self.logger.info(_("common.output.succeeded"))
         except Exception as e:
-            Errors.exit_with_error(self.logger, e)
+            Errors.exit_with_error(self.logger, exception=e)
         self.logger.debug("Signed into {0}{1} as {2}".format(self.server_url, self.site_name, self.username))
         return self.tableau_server
 

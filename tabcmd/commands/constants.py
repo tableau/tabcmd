@@ -1,5 +1,6 @@
 import inspect
 import sys
+from typing import Optional
 
 import tableauserverclient
 
@@ -56,7 +57,7 @@ class Errors:
             logger.info("Error printing stack trace:", e)
 
     @staticmethod
-    def exit_with_error(logger, message=None, exception: Exception = None):
+    def exit_with_error(logger, message: Optional[str] = None, exception: Optional[Exception] = None):
         try:
             if message and not exception:
                 logger.error(message)
