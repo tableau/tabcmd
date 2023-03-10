@@ -412,36 +412,53 @@ class TimeoutIntegrationTest(unittest.TestCase):
     # should test connection doesn't time out?
 
 
-@mock.patch("tableauserverclient.Server")
 class ConnectionOptionsTest(unittest.TestCase):
-    def test_certcheck_on(self, mock_tsc):
-        mock_tsc.add_http_options = mock.MagicMock()
-        mock_session = mock.MagicMock()
+
+    def test_user_agent(self):
+        mock_session = Session()
+        mock_session.server_url = "fakehost"
+        connection = mock_session._open_connection_with_opts()
+        assert connection._http_options["headers"]["User-Agent"].startswith("Tabcmd/")
+
+
+    def test_no_certcheck(self):
+        mock_session = Session()
+        mock_session.server_url = "fakehost"
         mock_session.no_certcheck = True
         mock_session.site_id = "s"
         mock_session.user_id = "u"
-        server = "anything"
-        mock_session._set_connection_options()
-        assert mock_tsc.add_http_options.has_been_called()
+        connection = mock_session._open_connection_with_opts()
+        assert connection._http_options["verify"] == False
 
-    def test_certcheck_off(self, mock_tsc):
-        mock_session = mock.MagicMock()
-        server = "anything"
+    def test_cert(self):
+        mock_session = Session()
+        mock_session.server_url = "fakehost"
         mock_session.site_id = "s"
         mock_session.user_id = "u"
-        mock_session._set_connection_options()
-        mock_tsc.add_http_options.assert_not_called()
+        mock_session.certificate = "my-cert-info"
+        connection = mock_session._open_connection_with_opts()
+        assert connection._http_options["cert"] == mock_session.certificate
 
-    """
-    def test_cert(self, mock_tsc):
-        assert False, 'feature not implemented'
+    def test_proxy_stuff(self):
+        mock_session = Session()
+        mock_session.server_url = "fakehost"
+        mock_session.site_id = "s"
+        mock_session.user_id = "u"
+        mock_session.proxy = "proxy:port"
+        connection = mock_session._open_connection_with_opts()
+        assert connection._http_options["proxies"] == { "http": mock_session.proxy}
 
-    def test_proxy_stuff(self, mock_tsc):
-        assert False, 'feature not implemented'
+    def test_timeout(self):
+        mock_session = Session()
+        mock_session.server_url = "fakehost"
+        mock_session.site_id = "s"
+        mock_session.user_id = "u"
+        mock_session.timeout = 10
+        connection = mock_session._open_connection_with_opts()
+        assert connection._http_options["timeout"] == 10
 
-    def test_timeout(self, mock_tsc):
-        assert False, 'feature not implemented'
 
+"""
 class CookieTests(unittest.TestCase):
 
     def test_no_file_if_no_cookie(self):
