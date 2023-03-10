@@ -150,7 +150,7 @@ class Session:
         else:
             Errors.exit_with_error(self.logger, _("session.errors.missing_arguments").format("token name"))
 
-    def _set_connection_options(self) -> TSC.Server:
+    def _open_connection_with_opts(self) -> TSC.Server:
         self.logger.debug("Setting up request options")
         http_options: Dict[str, Any] = {"headers": {"User-Agent": "Tabcmd/{}".format(version)}}
 
@@ -167,13 +167,11 @@ class Session:
         """
         if self.proxy:
             self.logger.debug("Setting http proxy: {}".format(self.proxy))
-            proxies = {
-                'http': self.proxy
-            }
-            http_options['proxies'] = proxies
+            proxies = {"http": self.proxy}
+            http_options["proxies"] = proxies
         if self.no_proxy:
             # override any proxy that was set
-            http_options['proxies'] = None
+            http_options["proxies"] = None
 
         if self.timeout:
             http_options["timeout"] = self.timeout
@@ -219,7 +217,7 @@ class Session:
         self._print_server_info()
         self.logger.info(_("session.connecting"))
         try:
-            self.tableau_server = self._set_connection_options()
+            self.tableau_server = self._open_connection_with_opts()
         except Exception as e:
             Errors.exit_with_error(self.logger, "Failed to connect to server", e)
         return self.tableau_server
@@ -241,12 +239,21 @@ class Session:
         site_display_name = self.site_name or "Default Site"
         self.logger.info(_("dataconnections.classes.tableau_server_site") + ": {}".format(site_display_name))
 
+    # side-effect: sets self.username
     def _validate_existing_signin(self):
-        self.logger.info(_("session.continuing_session"))
         # when do these two messages show up? self.logger.info(_("session.auto_site_login"))
         try:
             if self.tableau_server and self.tableau_server.is_signed_in():
-                self.username = self.tableau_server.users.get_by_id(self.user_id).name
+                server_user = self.tableau_server.users.get_by_id(self.user_id).name
+                if not self.username:
+                    self.username = server_user
+                if not self.username == server_user:
+                    Errors.exit_with_error(
+                        self.logger,
+                        message="Local username `{}` does not match server username `{}`".format(
+                            self.username, server_user
+                        ),
+                    )
                 return self.tableau_server
         except TSC.ServerResponseError as e:
             self.logger.info(_("publish.errors.unexpected_server_response"), e)
@@ -266,7 +273,6 @@ class Session:
             self.site_id = self.tableau_server.site_id
             self.user_id = self.tableau_server.user_id
             self.auth_token = self.tableau_server._auth_token
-
             success = self._validate_existing_signin()
         except Exception as e:
             Errors.exit_with_error(self.logger, exception=e)
@@ -314,6 +320,7 @@ class Session:
         else:  # no login arguments given - look for saved info
             # maybe we're already signed in!
             if self.tableau_server:
+                self.logger.info(_("session.continuing_session"))
                 signed_in_object = self._validate_existing_signin()
             self.logger.debug(signed_in_object)
             # or maybe we at least have the credentials saved
@@ -321,9 +328,9 @@ class Session:
                 credentials = self._get_saved_credentials()
 
         if credentials and not signed_in_object:
-            # logging in, not using an existing session
+            self.logger.debug("We are not logged in yet but we have info to log in with")
             self.tableau_server = self._create_new_connection()
-            self._verify_server_connection_unauthed()
+            self._verify_server_connection_unauthed()  # not sure if this line is necessary
             signed_in_object = self._sign_in(credentials)
 
         if not signed_in_object:
@@ -382,7 +389,12 @@ class Session:
         try:
             with open(str(file_path), "r") as file_contents:
                 data = json.load(file_contents)
+                if data is None or data == {}:
+                    return
                 content = data["tableau_auth"]
+                if content is None:
+                    return
+                self._save_data_from_json(content)
         except json.JSONDecodeError as e:
             self._wipe_bad_json(e, "Error reading data from session file")
         except IOError as e:
@@ -392,8 +404,11 @@ class Session:
         except Exception as e:
             self._wipe_bad_json(e, "Unexpected error reading session details from file")
 
+    def _save_data_from_json(self, content):
         try:
             auth = content[0]
+            if auth is None:
+                self._wipe_bad_json(ValueError(), "Empty session file")
             self.auth_token = auth["auth_token"]
             self.server_url = auth["server"]
             self.site_name = auth["site_name"]
