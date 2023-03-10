@@ -56,7 +56,7 @@ class Errors:
             logger.info("Error printing stack trace:", e)
 
     @staticmethod
-    def exit_with_error(logger, message=None, exception:Exception=None):
+    def exit_with_error(logger, message=None, exception: Exception = None):
         try:
             if message and not exception:
                 logger.error(message)

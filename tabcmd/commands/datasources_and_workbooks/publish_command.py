@@ -101,7 +101,6 @@ class PublishCommand(DatasourcesAndWorkbooks):
                 Errors.exit_with_error(logger, exception=exc)
             logger.info(_("publish.success") + "\n{}".format(new_datasource.webpage_url))
 
-
     # todo write tests for this method
     @staticmethod
     def get_publish_mode(args, logger):
