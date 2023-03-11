@@ -74,7 +74,7 @@ class Session:
         self.token_value = args.token_value or self.token_value
 
         self.no_prompt = args.no_prompt  # have to set this on every call?
-        self.certificate = args.use_certificate or self.certificate
+        self.certificate = args.certificate or self.certificate
         self.no_certcheck = args.no_certcheck  # have to set this on every call?
         self.no_proxy = args.no_proxy  # have to set this on every call?
         self.proxy = args.proxy or self.proxy
