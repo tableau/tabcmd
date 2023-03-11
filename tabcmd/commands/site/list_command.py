@@ -11,8 +11,6 @@ class ListCommand(Server):
     """
 
     # strings to move to string files
-    tabcmd_content_listing = "===== Listing {0} content for user {1}..."
-    tabcmd_listing_label_name = "NAME: {}"
     local_strings = {
         "tabcmd_content_listing": "===== Listing {0} content for user {1}...",
         "tabcmd_listing_label_name": "\tNAME: {}",
