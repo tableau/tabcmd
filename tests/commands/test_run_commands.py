@@ -149,6 +149,10 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.tabbed = True
         mock_args.db_username = None
         mock_args.oauth_username = None
+        mock_args.append = False
+        mock_args.replace = False
+        mock_args.thumbnail_username = None
+        mock_args.thumbnail_group = None
         mock_server.projects = getter
         publish_command.PublishCommand.run_command(mock_args)
         mock_session.assert_called()

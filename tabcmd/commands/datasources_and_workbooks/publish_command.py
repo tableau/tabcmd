@@ -29,6 +29,8 @@ class PublishCommand(DatasourcesAndWorkbooks):
         )
         set_publish_args(group)
         set_project_r_arg(group)
+        set_overwrite_option(group)
+        set_append_replace_option(group)
         set_parent_project_arg(group)
 
     @staticmethod
@@ -52,8 +54,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
             args.project_name = "default"
             args.parent_project_path = ""
 
-        publish_mode = PublishCommand.get_publish_mode(args)  # --overwrite, --replace
-        logger.info("Publishing as " + publish_mode)
+        publish_mode = PublishCommand.get_publish_mode(args, logger)
 
         if args.db_username:
             creds = TSC.models.ConnectionCredentials(args.db_username, args.db_password, embed=args.save_db_password)
@@ -66,18 +67,27 @@ class PublishCommand(DatasourcesAndWorkbooks):
         source = PublishCommand.get_filename_extension_if_tableau_type(logger, args.filename)
         logger.info(_("publish.status").format(args.filename))
         if source in ["twbx", "twb"]:
+            if args.thumbnail_group:
+                raise AttributeError("Generating thumbnails for a group is not yet implemented.")
+            if args.thumbnail_username and args.thumbnail_group:
+                raise AttributeError("Cannot specify both a user and group for thumbnails.")
+
             new_workbook = TSC.WorkbookItem(project_id, name=args.name, show_tabs=args.tabbed)
             try:
+                print(creds)
                 new_workbook = server.workbooks.publish(
                     new_workbook,
                     args.filename,
                     publish_mode,
+                    # args.thumbnail_username, not yet implemented in tsc
+                    # args.thumbnail_group,
                     connection_credentials=creds,
                     as_job=False,
                     skip_connection_check=False,
                 )
             except Exception as e:
-                Errors.exit_with_error(logger, e)
+                Errors.exit_with_error(logger, exception=e)
+
             logger.info(_("publish.success") + "\n{}".format(new_workbook.webpage_url))
 
         elif source in ["tds", "tdsx", "hyper"]:
@@ -88,13 +98,34 @@ class PublishCommand(DatasourcesAndWorkbooks):
                     new_datasource, args.filename, publish_mode, connection_credentials=creds
                 )
             except Exception as exc:
-                Errors.exit_with_error(logger, exc)
+                Errors.exit_with_error(logger, exception=exc)
             logger.info(_("publish.success") + "\n{}".format(new_datasource.webpage_url))
 
+    # todo write tests for this method
     @staticmethod
-    def get_publish_mode(args):
+    def get_publish_mode(args, logger):
+        # default: fail if it already exists on the server
+        default_mode = TSC.Server.PublishMode.CreateNew
+        publish_mode = default_mode
+
+        if args.replace:
+            raise AttributeError("Replacing an extract is not yet implemented")
+
+        if args.append:
+            if publish_mode != default_mode:
+                publish_mode = None
+            else:
+                # only relevant for datasources, but tsc will throw an error for us if necessary
+                publish_mode = TSC.Server.PublishMode.Append
+
         if args.overwrite:
-            publish_mode = TSC.Server.PublishMode.Overwrite
-        else:
-            publish_mode = TSC.Server.PublishMode.CreateNew
+            if publish_mode != default_mode:
+                publish_mode = None
+            else:
+                # Overwrites the workbook, data source, or data extract if it already exists on the server.
+                publish_mode = TSC.Server.PublishMode.Overwrite
+
+        if not publish_mode:
+            Errors.exit_with_error(logger, "Invalid combination of publishing options (Append, Overwrite, Replace)")
+        logger.debug("Publish mode selected: " + publish_mode)
         return publish_mode
