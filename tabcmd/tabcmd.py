@@ -17,10 +17,12 @@ def main():
         print("Keyboard Interrupt: exiting")
         sys.exit(1)
     except Exception as e:
-        print(sys.stderr, "Unhandled exception: {}".format(type(e).__name__))
-        print(
-            sys.stderr,
-            f"{type(e).__name__} at line {e.__traceback__.tb_lineno} of {__file__}: {e}",
+        sys.stderr.writelines(
+            [
+                "ERROR\n",
+                "Unhandled exception: {}\n".format(type(e).__name__),
+                f"at line {e.__traceback__.tb_lineno} of {__file__}: {e}\n",
+            ]
         )
         sys.exit(1)
 
