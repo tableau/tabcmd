@@ -18,7 +18,7 @@ args_to_mock = Namespace(
     no_certcheck=None,
     no_prompt=False,
     no_cookie=False,
-    use_certificate=None,
+    certificate=None,
     proxy=None,
     no_proxy=True,
     timeout=None,
@@ -413,13 +413,11 @@ class TimeoutIntegrationTest(unittest.TestCase):
 
 
 class ConnectionOptionsTest(unittest.TestCase):
-
     def test_user_agent(self):
         mock_session = Session()
         mock_session.server_url = "fakehost"
         connection = mock_session._open_connection_with_opts()
         assert connection._http_options["headers"]["User-Agent"].startswith("Tabcmd/")
-
 
     def test_no_certcheck(self):
         mock_session = Session()
@@ -446,7 +444,7 @@ class ConnectionOptionsTest(unittest.TestCase):
         mock_session.user_id = "u"
         mock_session.proxy = "proxy:port"
         connection = mock_session._open_connection_with_opts()
-        assert connection._http_options["proxies"] == { "http": mock_session.proxy}
+        assert connection._http_options["proxies"] == {"http": mock_session.proxy}
 
     def test_timeout(self):
         mock_session = Session()

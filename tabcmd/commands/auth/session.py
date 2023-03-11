@@ -213,7 +213,6 @@ class Session:
             Errors.exit_with_error(self.logger, exception=e)
 
     def _create_new_connection(self) -> TSC.Server:
-        # self.logger.info(_("session.new_session"))
         self._print_server_info()
         self.logger.info(_("session.connecting"))
         try:
@@ -230,10 +229,10 @@ class Session:
         self.logger.info("=====   Server: {}".format(self.server_url))
         if self.proxy:
             self.logger.info("=====   Proxy: {}".format(self.proxy))
-        if self.no_proxy:
-            self.logger.info("=====   Proxy Override: set proxy to None")
         if self.username:
             self.logger.info("=====   Username: {}".format(self.username))
+        if self.certificate:
+            self.logger.info("=====   Certificate: {}".format(self.proxy))
         else:
             self.logger.info("=====   Token Name: {}".format(self.token_name))
         site_display_name = self.site_name or "Default Site"
@@ -328,9 +327,9 @@ class Session:
                 credentials = self._get_saved_credentials()
 
         if credentials and not signed_in_object:
-            self.logger.debug("We are not logged in yet but we have info to log in with")
+            self.logger.debug("We are not logged in yet but we have credentials to log in with")
             self.tableau_server = self._create_new_connection()
-            self._verify_server_connection_unauthed()  # not sure if this line is necessary
+            self._verify_server_connection_unauthed()
             signed_in_object = self._sign_in(credentials)
 
         if not signed_in_object:
