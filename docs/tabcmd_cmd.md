@@ -525,6 +525,8 @@ tabcmd encryptextracts "West Coast Sales"
 ## export
 Exports a view or workbook from Tableau Cloud and saves it to a file. This command can also export just the data used for a view. View data is exported at the summary level. To export detail-level data, you must use the Tableau Server UI. For details, see [Download Views and Workbooks](https://help.tableau.com/current/pro/desktop/en-us/export.htm).
 
+<div class="alert alert-info"><strong>Note</strong>: Like tabcmd 1.0, tabcmd 2.0 doesn't support vizzes connected to datasources that don't have embedded credentials. If a datasource has “prompt user for credentials” set, we make no guarantees that Tableau can successfully generate an export. This applies to images, PDF files, CSV files, and Microsoft Excel and PowerPoint files, where applicable. </div>
+
 <!--- Syntax 
 tabcmd get url[?data-parameters] [format-option] [options] [Global options] --->
 
@@ -635,8 +637,12 @@ tabcmd export "Sales/Sales_Analysis" --fullpdf --pagesize tabloid -f "C:\Tableau
 Gets the resource from Tableau Cloud that's represented by the specified (partial) URL. The result is returned as a file.
 
 <div class="alert alert-info"><strong>Notes:</strong>
-    This command is very similar to export, but not identical. Be careful you are using the options and url formatted for the correct command.
+<ul>
+    <li>This command is very similar to export, but not identical. Be careful you are using the options and url formatted for the correct command.</li>
+    <li>Like tabcmd 1.0, tabcmd 2.0 doesn't support vizzes connected to datasources that don't have embedded credentials. If a datasource has “prompt user for credentials” set, we make no guarantees that Tableau can successfully generate a get. This applies to images, PDF files, CSV files, and Microsoft Excel and PowerPoint files, where applicable. </li>
+    </ul>
     </div>
+
 <!--- Syntax 
 tabcmd get url[?data-parameters] [format-type] [Global options]--->
 
