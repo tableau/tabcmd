@@ -188,7 +188,7 @@ class Session:
         except Exception as e:
             self.logger.debug(
                 "Connection args: server {}, site {}, proxy {}/no-proxy {}, cert {}".format(
-                    self.server_url, self.site_name, self.proxy, self.certificate, self.no_proxy
+                    self.server_url, self.site_name, self.proxy, self.no_proxy, self.certificate
                 )
             )
             Errors.exit_with_error(self.logger, "Failed to connect to server", e)
@@ -232,7 +232,7 @@ class Session:
         if self.username:
             self.logger.info("=====   Username: {}".format(self.username))
         if self.certificate:
-            self.logger.info("=====   Certificate: {}".format(self.proxy))
+            self.logger.info("=====   Certificate: {}".format(self.certificate))
         else:
             self.logger.info("=====   Token Name: {}".format(self.token_name))
         site_display_name = self.site_name or "Default Site"
