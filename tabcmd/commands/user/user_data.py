@@ -275,13 +275,11 @@ class UserCommand(Server):
             line_no += 1
             if not user_obj.name:
                 number_of_errors += 1
-                error_list.append(
-                    (line_no,
-                     _("importcsvsummary.error.line").format(line_no, "No username", "")))
+                error_list.append((line_no, _("importcsvsummary.error.line").format(line_no, "No username", "")))
 
                 if number_of_errors >= 3:
-                    (line_third_last, error_third_last) = error_list.index(number_of_errors - 2)
-                    if line_no - line_third_last > 10:
+                    (error_line_no, line) = error_list.pop(number_of_errors - 2)
+                    if line_no - error_line_no > 10:
                         # that is three errors in the last ten rows: quit
                         break
 
@@ -294,8 +292,11 @@ class UserCommand(Server):
             except TSC.ServerResponseError as e:
                 number_of_errors += 1
                 error_list.append(
-                    (line_no,
-                     _("importcsvsummary.error.line").format(line_no, username, "{}: {}".format(e.code, e.detail))))
+                    (
+                        line_no,
+                        _("importcsvsummary.error.line").format(line_no, username, "{}: {}".format(e.code, e.detail)),
+                    )
+                )
                 logger.debug(_("tabcmd.result.failure.user").format(username))
                 continue
 
@@ -306,7 +307,10 @@ class UserCommand(Server):
             except TSC.ServerResponseError as e:
                 number_of_errors += 1
                 error_list.append(
-                    _("importcsvsummary.error.line").format(line_no, username, "{}: {}".format(e.code, e.detail))
+                    (
+                        line_no,
+                        _("importcsvsummary.error.line").format(line_no, username, "{}: {}".format(e.code, e.detail)),
+                    )
                 )
 
         logger.info(_("session.monitorjob.percent_complete").format(100))

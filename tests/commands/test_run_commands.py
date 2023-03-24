@@ -374,6 +374,7 @@ class RunCommandsTest(unittest.TestCase):
     def test_create_site_users(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
         mock_args.filename = RunCommandsTest._set_up_file()
+        mock_args.show_progress = False
         mock_args.require_all_valid = False
         mock_args.site_name = None
         mock_args.role = "Viewer"

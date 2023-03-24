@@ -93,15 +93,14 @@ def set_completeness_options(parser):
         dest="require_all_valid",
         action="store_true",
         help="DEPRECATED (NO OP): Fails the command if any actions fail."
-             "Actual behavior: Command will fail there are more than 3 errors within the last ten actions."
+        "Actual behavior: Command will fail there are more than 3 errors within the last ten actions.",
     )
     completeness_group.add_argument(
         "--no-complete",
         dest="require_all_valid",
         action="store_false",
         help="DEPRECATED (NO OP): Allows a change to succeed when not all actions are valid."
-             "Actual behavior: Command will fail there are more than 3 errors within the last ten actions."
-
+        "Actual behavior: Command will fail there are more than 3 errors within the last ten actions.",
     )
     completeness_group.set_defaults(require_all_valid=True)
     return parser
