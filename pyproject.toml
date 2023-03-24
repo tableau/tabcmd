@@ -58,7 +58,7 @@ dependencies = [
 ]
 [project.optional-dependencies]
 test = [
-    "black",
+    "black>=22,<23",
     "mock",
     "mypy",
     "pytest>=7.0",
