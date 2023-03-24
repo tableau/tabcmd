@@ -25,6 +25,8 @@ class CreateSiteUsersCommand(UserCommand):
         set_users_file_positional(args_group)
         set_completeness_options(args_group)
         UserCommand.set_auth_arg(args_group)
+        set_no_wait_option(args_group)
+        set_silent_option(args_group)
 
     @staticmethod
     def run_command(args):
@@ -41,8 +43,11 @@ class CreateSiteUsersCommand(UserCommand):
         UserCommand.validate_file_for_import(args.filename, logger, detailed=True, strict=args.require_all_valid)
 
         logger.info(_("tabcmd.add.users.to_site").format(args.filename.name, creation_site))
+        # TODO: implement --nowait option
+
         user_obj_list = UserCommand.get_users_from_file(args.filename, logger)
-        logger.info(_("session.monitorjob.percent_complete").format(0))
+        if args.show_progress:
+            logger.info(_("session.monitorjob.percent_complete").format(0))
         error_list = []
         for user_obj in user_obj_list:
             try:
@@ -52,7 +57,8 @@ class CreateSiteUsersCommand(UserCommand):
                     user_obj.auth_setting = args.auth_type
                 number_of_users_listed += 1
                 result = server.users.add(user_obj)
-                logger.info(_("tabcmd.result.success.create_user").format(user_obj.name))
+                if args.show_progress:
+                    logger.info(_("tabcmd.result.success.create_user").format(user_obj.name))
                 number_of_users_added += 1
             except TSC.ServerResponseError as e:
                 logger.debug(e)
@@ -63,10 +69,11 @@ class CreateSiteUsersCommand(UserCommand):
                     logger.debug(number_of_errors)
                     error_list.append(e.summary + ": " + e.detail)
                 logger.debug(error_list)
-        logger.info(_("session.monitorjob.percent_complete").format(100))
-        logger.info(_("importcsvsummary.line.processed").format(number_of_users_listed))
-        logger.info(_("importcsvsummary.line.skipped").format(number_of_errors))
-        logger.info(_("importcsvsummary.users.added.count").format(number_of_users_added))
+        if args.show_progress:
+            logger.info(_("session.monitorjob.percent_complete").format(100))
+            logger.info(_("importcsvsummary.line.processed").format(number_of_users_listed))
+            logger.info(_("importcsvsummary.line.skipped").format(number_of_errors))
+            logger.info(_("importcsvsummary.users.added.count").format(number_of_users_added))
         if number_of_errors > 0:
             logger.info(_("importcsvsummary.error.details"))
             logger.info(error_list)
