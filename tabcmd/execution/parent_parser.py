@@ -85,7 +85,7 @@ def parent_parser_with_global_options():
     )
     proxy_group.add_argument(
         "--no-proxy",
-        action="store_false",
+        action="store_true",  # default to false
         help=_("session.options.no-proxy"),
     )
 
