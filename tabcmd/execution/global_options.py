@@ -92,13 +92,16 @@ def set_completeness_options(parser):
         "--complete",
         dest="require_all_valid",
         action="store_true",
-        help="Requires that all rows be valid for any change to succeed.",
+        help="DEPRECATED (NO OP): Fails the command if any actions fail."
+             "Actual behavior: Command will fail there are more than 3 errors within the last ten actions."
     )
     completeness_group.add_argument(
         "--no-complete",
         dest="require_all_valid",
         action="store_false",
-        help="Allows a change to succeed when not all rows are valid. If not specified --complete is used.",
+        help="DEPRECATED (NO OP): Allows a change to succeed when not all actions are valid."
+             "Actual behavior: Command will fail there are more than 3 errors within the last ten actions."
+
     )
     completeness_group.set_defaults(require_all_valid=True)
     return parser
