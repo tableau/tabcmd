@@ -51,7 +51,7 @@ dependencies = [
     "types-mock",
     "types-requests",
     "types-setuptools",
-    "tableauserverclient>=0.23",
+    "tableauserverclient==0.23",
     "urllib3>=1.24.3,<2.0",
 ]
 [project.optional-dependencies]
