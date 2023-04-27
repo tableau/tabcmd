@@ -23,9 +23,6 @@ class Session:
     TOKEN_CRED_TYPE = "token"
     PASSWORD_CRED_TYPE = "password"
 
-    TOKEN_CRED_TYPE = "token"
-    PASSWORD_CRED_TYPE = "password"
-
     def __init__(self):
         self.username = None
         # we don't store the password
@@ -116,7 +113,7 @@ class Session:
         except Exception:
             return True
 
-    def _create_new_credential(self, password, credential_type):
+    def _create_new_password_credential(self, password):
         if password is None:
             if self.password_file:
                 password = Session._read_password_from_file(self.password_file)
@@ -125,15 +122,9 @@ class Session:
             else:
                 Errors.exit_with_error(self.logger, _("session.errors.script_no_password"))
 
-        if credential_type == Session.PASSWORD_CRED_TYPE and self.username and password:
-            credentials = TSC.TableauAuth(self.username, password, site_id=self.site_name)
-            self.last_login_using = "username"
-            return credentials
-        elif credential_type == Session.TOKEN_CRED_TYPE and self.token_name:
-            credentials = self._create_new_token_credential()
-            return credentials
-        else:
-            Errors.exit_with_error(self.logger, _("session.errors.missing_arguments").format(""))
+        credentials = TSC.TableauAuth(self.username, password, site_id=self.site_name)
+        self.last_login_using = "username"
+        return credentials
 
     def _create_new_token_credential(self):
         if self.token_value:
@@ -257,7 +248,7 @@ class Session:
 
     def _get_saved_credentials(self):
         if self.last_login_using == "username":
-            credentials = self._create_new_credential(None, Session.PASSWORD_CRED_TYPE)
+            credentials = self._create_new_password_credential(None)
         elif self.last_login_using == "token":
             credentials = self._create_new_token_credential()
         else:
@@ -279,7 +270,7 @@ class Session:
         if args.password or args.password_file:
             self._end_session()
             # we don't save the password anywhere, so we pass it along directly
-            credentials = self._create_new_credential(args.password, Session.PASSWORD_CRED_TYPE)
+            credentials = self._create_new_password_credential(args.password)
         elif args.token_value or args.token_file:
             self._end_session()
             credentials = self._create_new_token_credential()

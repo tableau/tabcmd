@@ -27,7 +27,7 @@ class TabcmdController:
             print("logging:", namespace.logging_level)
 
         logger = log(__name__, namespace.logging_level or logging.INFO)
-        if (hasattr("namespace", "password") or hasattr("namespace", "token_value")) and hasattr("namespace", "func"):
+        if hasattr(namespace, "password") or hasattr(namespace, "token_value"):
             # don't print whole namespace because it has secrets
             logger.debug(namespace.func)
         else:
@@ -37,7 +37,6 @@ class TabcmdController:
 
         try:
             # if a subcommand was identified, call the function assigned to it
-            # this is the functional equivalent of the call by reflection in the previous structure
             # https://stackoverflow.com/questions/49038616/argparse-subparsers-with-functions
             namespace.func.run_command(namespace)
         except Exception as e:

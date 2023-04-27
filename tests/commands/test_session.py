@@ -134,7 +134,7 @@ class BuildCredentialsTests(unittest.TestCase):
     def test__create_new_username_credential_fails_no_args(self, mock_pass):
         active_session = Session()
         with self.assertRaises(SystemExit):
-            active_session._create_new_credential(None, None)
+            credentials = active_session._create_new_password_credential(None)
 
     # These two already have a username saved and pass in a password as argument
     def test__create_new_token_credential_succeeds_new_token(self, mock_pass):
@@ -152,7 +152,8 @@ class BuildCredentialsTests(unittest.TestCase):
         active_session = Session()
         active_session.username = "user"
         active_session.site = ""
-        auth = active_session._create_new_credential(test_password, Session.PASSWORD_CRED_TYPE)
+        credentials = active_session._create_new_password_credential(test_password)
+        auth = None
         assert auth is not None
 
     # this one has a token saved
@@ -171,7 +172,8 @@ class BuildCredentialsTests(unittest.TestCase):
         active_session = Session()
         active_session.username = "user3"
         active_session.site = ""
-        auth = active_session._create_new_credential(None, Session.PASSWORD_CRED_TYPE)
+        credentials = active_session._create_new_password_credential(None)
+        auth = None
         assert mock_pass.has_been_called()
         assert auth is not None
         assert auth.username == "user3", auth
@@ -191,7 +193,8 @@ class BuildCredentialsTests(unittest.TestCase):
         test_args.password = "pwordddddd"
         active_session = Session()
         active_session._update_session_data(test_args)
-        auth = active_session._create_new_credential(test_args.password, Session.PASSWORD_CRED_TYPE)
+        credentials = active_session._create_new_password_credential(test_args.password)
+        auth = None
 
 
 class PromptingTests(unittest.TestCase):
