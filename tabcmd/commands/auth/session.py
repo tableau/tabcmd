@@ -34,6 +34,7 @@ class Session:
         self.token_name = None
         self.token_value = None
         self.password_file = None
+        self.token_file = None
         self.site_name = None  # The site name, e.g 'alpodev'
         self.site_id = None  # The site id, e.g 'abcd-1234-1234-1244-1234'
         self.server_url = None
@@ -69,7 +70,8 @@ class Session:
         if self.site_name == "default":
             self.site_name = ""
         self.logging_level = args.logging_level or self.logging_level
-        self.password_file = args.password_file
+        self.password_file = args.password_file or self.password_file
+        self.token_file = args.token_file or self.token_file
         self.token_name = args.token_name or self.token_name
         self.token_value = args.token_value or self.token_value
 
@@ -136,8 +138,8 @@ class Session:
     def _create_new_token_credential(self):
         if self.token_value:
             token = self.token_value
-        elif self.password_file:
-            token = Session._read_password_from_file(self.password_file)
+        elif self.token_file:
+            token = Session._read_password_from_file(self.token_file)
         elif self._allow_prompt():
             token = getpass.getpass("Token:")
         else:
@@ -303,17 +305,11 @@ class Session:
         self.logger = logger or log(__class__.__name__, self.logging_level)
 
         credentials = None
-        if args.password:
+        if args.password or args.password_file:
             self._end_session()
             # we don't save the password anywhere, so we pass it along directly
             credentials = self._create_new_credential(args.password, Session.PASSWORD_CRED_TYPE)
-        elif args.password_file:
-            self._end_session()
-            if args.username:
-                credentials = self._create_new_credential(args.password, Session.PASSWORD_CRED_TYPE)
-            else:
-                credentials = self._create_new_credential(args.password, Session.TOKEN_CRED_TYPE)
-        elif args.token_value:
+        elif args.token_value or args.token_file:
             self._end_session()
             credentials = self._create_new_token_credential()
         else:  # no login arguments given - look for saved info
@@ -363,6 +359,7 @@ class Session:
         self.server = None
         self.last_login_using = None
         self.password_file = None
+        self.token_file = None
 
         self.last_command = None
         self.tableau_server = None
@@ -418,6 +415,7 @@ class Session:
             self.token_value = auth["personal_access_token"]
             self.last_login_using = auth["last_login_using"]
             self.password_file = auth["password_file"]
+            self.token_file = auth["token_file"]
             self.no_prompt = auth["no_prompt"]
             self.no_certcheck = auth["no_certcheck"]
             self.certificate = auth["certificate"]
@@ -466,6 +464,7 @@ class Session:
                 "personal_access_token": self.token_value,
                 "last_login_using": self.last_login_using,
                 "password_file": self.password_file,
+                "token_file": self.token_file,
                 "no_prompt": self.no_prompt,
                 "no_certcheck": self.no_certcheck,
                 "certificate": self.certificate,

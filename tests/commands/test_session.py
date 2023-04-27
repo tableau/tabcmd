@@ -14,6 +14,7 @@ args_to_mock = Namespace(
     server=None,
     token_name=None,
     token_value=None,
+    token_file=None,
     logging_level=None,
     no_certcheck=None,
     no_prompt=False,
@@ -295,14 +296,14 @@ class CreateSessionTests(unittest.TestCase):
         _set_mock_signin_validation_succeeds(server, "testing")
         test_args = Namespace(**vars(args_to_mock))
         test_args.token_name = "mytoken"
-        test_args.password_file = "filename"
+        test_args.token_file = "filename"
         with mock.patch("builtins.open", mock.mock_open(read_data="my_token")):
             new_session = Session()
             auth = new_session.create_session(test_args, None)
 
         assert auth is not None, auth
         assert auth.auth_token is not None, auth.auth_token
-        assert new_session.password_file == "filename", new_session
+        assert new_session.token_file == "filename", new_session
         assert mock_tsc.has_been_called()
 
     @mock.patch("tableauserverclient.Server")
