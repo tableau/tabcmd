@@ -121,10 +121,13 @@ class Session:
                 password = getpass.getpass(_("session.password"))
             else:
                 Errors.exit_with_error(self.logger, _("session.errors.script_no_password"))
+        if self.username and password:
+            credentials = TSC.TableauAuth(self.username, password, site_id=self.site_name)
+            self.last_login_using = "username"
+            return credentials
+        else:
+            Errors.exit_with_error(self.logger, _("session.errors.missing_arguments").format("username"))
 
-        credentials = TSC.TableauAuth(self.username, password, site_id=self.site_name)
-        self.last_login_using = "username"
-        return credentials
 
     def _create_new_token_credential(self):
         if self.token_value:

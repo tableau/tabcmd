@@ -133,8 +133,10 @@ class BuildCredentialsTests(unittest.TestCase):
 
     def test__create_new_username_credential_fails_no_args(self, mock_pass):
         active_session = Session()
+        assert active_session.password_file is None
         with self.assertRaises(SystemExit):
-            credentials = active_session._create_new_password_credential(None)
+            auth = active_session._create_new_password_credential(None)
+            assert mock_pass.is_not_called()
 
     # These two already have a username saved and pass in a password as argument
     def test__create_new_token_credential_succeeds_new_token(self, mock_pass):
@@ -148,12 +150,12 @@ class BuildCredentialsTests(unittest.TestCase):
         assert mock_pass.is_not_called()
 
     def test__create_new_username_credential_succeeds_new_password(self, mock_pass):
+        auth = None
         test_password = "pword1"
         active_session = Session()
         active_session.username = "user"
         active_session.site = ""
-        credentials = active_session._create_new_password_credential(test_password)
-        auth = None
+        auth = active_session._create_new_password_credential(test_password)
         assert auth is not None
 
     # this one has a token saved
@@ -169,11 +171,11 @@ class BuildCredentialsTests(unittest.TestCase):
 
     # this one calls getpass because we don't store the password
     def test__create_new_username_credential_succeeds_from_self(self, mock_pass):
+        auth = None
         active_session = Session()
         active_session.username = "user3"
         active_session.site = ""
-        credentials = active_session._create_new_password_credential(None)
-        auth = None
+        auth = active_session._create_new_password_credential(None)
         assert mock_pass.has_been_called()
         assert auth is not None
         assert auth.username == "user3", auth
@@ -188,13 +190,14 @@ class BuildCredentialsTests(unittest.TestCase):
         auth = active_session._create_new_token_credential()
 
     def test__create_new_username_credential_succeeds_from_args(self, mock_pass):
+        auth = None
         test_args = Namespace(**vars(args_to_mock))
         test_args.username = "user"
         test_args.password = "pwordddddd"
         active_session = Session()
         active_session._update_session_data(test_args)
-        credentials = active_session._create_new_password_credential(test_args.password)
-        auth = None
+        auth = active_session._create_new_password_credential(test_args.password)
+        assert auth is not None
 
 
 class PromptingTests(unittest.TestCase):
