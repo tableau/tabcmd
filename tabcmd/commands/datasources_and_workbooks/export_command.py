@@ -1,3 +1,4 @@
+import re
 import tableauserverclient as TSC
 
 from tabcmd.commands.auth.session import Session
@@ -87,26 +88,26 @@ class ExportCommand(DatasourcesAndWorkbooks):
             if args.fullpdf:  # it's a workbook
                 workbook_item = ExportCommand.get_wb_by_content_url(logger, server, wb_content_url)
                 output = ExportCommand.download_wb_pdf(server, workbook_item, args, logger)
-
-                default_filename = "{}.pdf".format(workbook_item.name)
+                item_filesafe_name = "".join([c for c in workbook_item.name if re.match(r'\w', c)])
+                default_filename = "{}.pdf".format(item_filesafe_name)
 
             elif args.pdf or args.png or args.csv:  # it's a view
                 view_item = ExportCommand.get_view_by_content_url(logger, server, view_content_url)
-
+                item_filesafe_name = "".join([c for c in view_item.name if re.match(r'\w', c)])
                 if args.pdf:
                     output = ExportCommand.download_view_pdf(server, view_item, args, logger)
-                    default_filename = "{}.pdf".format(view_item.name)
+                    default_filename = "{}.pdf".format(item_filesafe_name)
                 elif args.csv:
                     output = ExportCommand.download_csv(server, view_item, args, logger)
-                    default_filename = "{}.csv".format(view_item.name)
+                    default_filename = "{}.csv".format(item_filesafe_name)
                 elif args.png:
                     output = ExportCommand.download_png(server, view_item, args, logger)
-
-                    default_filename = "{}.png".format(view_item.name)
+                    default_filename = "{}.png".format(item_filesafe_name)
 
         except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response").format(""), e)
+            Errors.exit_with_error(logger, message=_("publish.errors.unexpected_server_response").format(""), exception=e)
         except Exception as e:
+            logger.error(e)
             Errors.exit_with_error(logger, exception=e)
         try:
             save_name = args.filename or default_filename
@@ -118,19 +119,27 @@ class ExportCommand(DatasourcesAndWorkbooks):
         except Exception as e:
             Errors.exit_with_error(logger, "Error saving to file", e)
 
+    """
+    The --filter option contains an ampersand-separated list of strings, each of the format 'parameter_name=value'
+    The characters '&' and '=' cannot be used in parameter_names or values. These 2 chars ONLY should be url-encoded.
+    """
     @staticmethod
     def apply_filters_from_args(request_options: TSC.PDFRequestOptions, args, logger=None) -> None:
         if args.filter:
             params = args.filter.split("&")
             for value in params:
-                ExportCommand.apply_filter_value(logger, request_options, value)
+                decoded_value = value.replace("%26", "&")
+                decoded_value = decoded_value.replace("%3D", "=")
+                if not value == decoded_value:
+                    logger.debug("filter option " + value + " replaced with " + decoded_value)
+                ExportCommand.apply_filter_value(logger, request_options, decoded_value)
 
-    # filtering isn't actually implemented for workbooks in REST
     @staticmethod
     def download_wb_pdf(server, workbook_item, args, logger):
         logger.debug(args.url)
         pdf_options = TSC.PDFRequestOptions(maxage=1)
         ExportCommand.apply_values_from_url_params(logger, pdf_options, args.url)
+        ExportCommand.apply_filters_from_args(pdf_options, args, logger)
         ExportCommand.apply_pdf_options(logger, pdf_options, args)
         logger.debug(pdf_options.get_query_params())
         server.workbooks.populate_pdf(workbook_item, pdf_options)

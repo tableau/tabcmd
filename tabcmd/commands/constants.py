@@ -46,8 +46,9 @@ class Errors:
             file, line, func = here[1:4]
             start = 0
             n_lines = 5
+            # skip the first two lines because they are the call to this function
             logger.debug(HEADER_FMT % (file, func))
-            for frame in stack[start + 1 : n_lines]:
+            for frame in stack[start + 2 : n_lines]:
                 file, line, func = frame[1:4]
                 logger.debug(STACK_FMT % (file, line, func))
         except Exception as e:
@@ -59,10 +60,10 @@ class Errors:
             Errors.log_stack(logger)
             if message and not exception:
                 logger.error(message)
-            if exception:
+            elif exception:
                 if message:
                     logger.debug("Error message: " + message)
-            Errors.check_common_error_codes_and_explain(logger, exception)
+                Errors.check_common_error_codes_and_explain(logger, exception)
         except Exception as exc:
             print(sys.stderr, "Error during log call from exception - {} {}".format(exc.__class__, message))
         try:

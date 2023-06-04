@@ -101,7 +101,14 @@ class DatasourcesAndWorkbooks(Server):
     @staticmethod
     def apply_filter_value(logger, request_options: TSC.PDFRequestOptions, value: str) -> None:
         logger.debug("handling filter param {}".format(value))
+        if "=" not in value:
+            Errors.exit_with_error(logger, message="Filter parameters must all be of the format parameter=value. "
+                                   "Names and values cannot contain '=' or '&': encode these characters.")
         data_filter = value.split("=")
+        if len(data_filter) != 2:
+            Errors.exit_with_error(logger, message="Filter parameters must all be of the format parameter=value. "
+                                   "Names and values cannot contain '=' or '&': encode these characters.")
+
         request_options.vf(data_filter[0], data_filter[1])
 
     # this is called from within from_url_params, for each param value
@@ -109,6 +116,9 @@ class DatasourcesAndWorkbooks(Server):
     def apply_options_in_url(logger, request_options: TSC.PDFRequestOptions, value: str) -> None:
         logger.debug("handling url option {}".format(value))
         setting = value.split("=")
+        if len(setting) < 2:
+            Errors.exit_with_error(logger, message="Filter parameters must all be of the format parameter=value. "
+                                   "Names and values cannot contain '=' or '&': encode these characters.")
         if ":iid" == setting[0]:
             logger.debug(":iid value ignored in url")
         elif ":refresh" == setting[0] and DatasourcesAndWorkbooks.is_truthy(setting[1]):
@@ -148,7 +158,7 @@ class DatasourcesAndWorkbooks(Server):
 
     @staticmethod
     def save_to_file(logger, output, filename):
-        logger.info(_("httputils.found_attachment").format(filename))
+        logger.info(_("Saving as {}").format(filename))
         with open(filename, "wb") as f:
             f.write(output)
             logger.info(_("export.success").format("", filename))
