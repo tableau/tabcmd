@@ -54,7 +54,9 @@ class ExportCommand(DatasourcesAndWorkbooks):
             help="Set the page size of the exported PDF",
         )
 
-        group.add_argument("--width", default=800, help="Set the width of the image in pixels. Default is 800 px")
+        group.add_argument(
+            "--width", default=800, help="[Not Yet Implemented] Set the width of the image in pixels. Default is 800 px"
+        )
         group.add_argument("--filename", "-f", help="filename to store the exported data")
         group.add_argument("--height", default=600, help=_("export.options.height"))
         group.add_argument(
@@ -121,6 +123,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
     @staticmethod
     def apply_filters_from_args(request_options: TSC.PDFRequestOptions, args, logger=None) -> None:
         if args.filter:
+            logger.debug("filter = {}".format(args.filter))
             params = args.filter.split("&")
             for value in params:
                 ExportCommand.apply_filter_value(logger, request_options, value)
@@ -130,6 +133,8 @@ class ExportCommand(DatasourcesAndWorkbooks):
     def download_wb_pdf(server, workbook_item, args, logger):
         logger.debug(args.url)
         pdf_options = TSC.PDFRequestOptions(maxage=1)
+        if args.filter or args.url.find("?") > 0:
+            logger.info("warning: Filter values will not be applied when exporting a complete workbook")
         ExportCommand.apply_values_from_url_params(logger, pdf_options, args.url)
         ExportCommand.apply_pdf_options(logger, pdf_options, args)
         logger.debug(pdf_options.get_query_params())

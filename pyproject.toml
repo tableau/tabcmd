@@ -9,7 +9,7 @@ packages = ["tabcmd"]
 tabcmd = ["tabcmd.locales/**/*.mo"]
 [tool.black]
 line-length = 120
-target-version = ['py37', 'py38', 'py39', 'py310']
+target-version = ['py37', 'py38', 'py39', 'py310', 'py311']
 extend-exclude = '^/bin/*'
 [tool.mypy]
 disable_error_code = [
@@ -30,14 +30,16 @@ description="A command line client for working with Tableau Server."
 authors = [{name="Tableau", email="github@tableau.com"}]
 license = {file = "LICENSE"}
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.7"  # https://devguide.python.org/versions/
 classifiers = [
   "Programming Language :: Python",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.7",
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
-  "Programming Language :: Python :: 3.10"
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12"
 ]
 dependencies = [
     'argparse',
@@ -56,7 +58,7 @@ dependencies = [
 ]
 [project.optional-dependencies]
 test = [
-    "black",
+    "black>=22,<23",
     "mock",
     "mypy",
     "pytest>=7.0",

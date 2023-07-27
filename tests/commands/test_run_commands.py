@@ -26,6 +26,7 @@ from tabcmd.commands.site import (
     delete_site_command,
     edit_site_command,
     list_sites_command,
+    list_command,
 )
 from tabcmd.commands.user import (
     add_users_command,
@@ -148,6 +149,10 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.tabbed = True
         mock_args.db_username = None
         mock_args.oauth_username = None
+        mock_args.append = False
+        mock_args.replace = False
+        mock_args.thumbnail_username = None
+        mock_args.thumbnail_group = None
         mock_server.projects = getter
         publish_command.PublishCommand.run_command(mock_args)
         mock_session.assert_called()
@@ -393,3 +398,13 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.require_all_valid = False
         create_users_command.CreateUsersCommand.run_command(mock_args)
         mock_session.assert_called()
+
+    def test_list_content(self, mock_session, mock_server):
+        RunCommandsTest._set_up_session(mock_session, mock_server)
+        mock_args.content = "workbooks"
+        list_command.ListCommand.run_command(mock_args)
+        mock_args.content = "projects"
+        list_command.ListCommand.run_command(mock_args)
+        mock_args.content = "flows"
+        list_command.ListCommand.run_command(mock_args)
+        # todo: details, filters

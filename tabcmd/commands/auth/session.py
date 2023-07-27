@@ -34,6 +34,7 @@ class Session:
         self.token_name = None
         self.token_value = None
         self.password_file = None
+        self.token_file = None
         self.site_name = None  # The site name, e.g 'alpodev'
         self.site_id = None  # The site id, e.g 'abcd-1234-1234-1244-1234'
         self.server_url = None
@@ -43,7 +44,7 @@ class Session:
         self.no_prompt = False
         self.certificate = None
         self.no_certcheck = False
-        self.no_proxy = True
+        self.no_proxy = False
         self.proxy = None
         self.timeout = None
 
@@ -69,14 +70,15 @@ class Session:
         if self.site_name == "default":
             self.site_name = ""
         self.logging_level = args.logging_level or self.logging_level
-        self.password_file = args.password_file
+        self.password_file = args.password_file or self.password_file
+        self.token_file = args.token_file or self.token_file
         self.token_name = args.token_name or self.token_name
         self.token_value = args.token_value or self.token_value
 
-        self.no_prompt = args.no_prompt or self.no_prompt
+        self.no_prompt = args.no_prompt  # have to set this on every call?
         self.certificate = args.certificate or self.certificate
-        self.no_certcheck = args.no_certcheck or self.no_certcheck
-        self.no_proxy = args.no_proxy or self.no_proxy
+        self.no_certcheck = args.no_certcheck  # have to set this on every call?
+        self.no_proxy = args.no_proxy  # have to set this on every call?
         self.proxy = args.proxy or self.proxy
         self.timeout = self.timeout_as_integer(self.logger, args.timeout, self.timeout)
 
@@ -136,8 +138,8 @@ class Session:
     def _create_new_token_credential(self):
         if self.token_value:
             token = self.token_value
-        elif self.password_file:
-            token = Session._read_password_from_file(self.password_file)
+        elif self.token_file:
+            token = Session._read_password_from_file(self.token_file)
         elif self._allow_prompt():
             token = getpass.getpass("Token:")
         else:
@@ -150,28 +152,45 @@ class Session:
         else:
             Errors.exit_with_error(self.logger, _("session.errors.missing_arguments").format("token name"))
 
-    def _set_connection_options(self) -> TSC.Server:
+    def _open_connection_with_opts(self) -> TSC.Server:
         self.logger.debug("Setting up request options")
-        # args still to be handled here:
-        # proxy, --no-proxy,
-        # cert
         http_options: Dict[str, Any] = {"headers": {"User-Agent": "Tabcmd/{}".format(version)}}
+
         if self.no_certcheck:
             http_options["verify"] = False
             urllib3.disable_warnings(category=InsecureRequestWarning)
+
+        """
+           Do we want to do the same format check as old tabcmd?
+           For now I think we can trust requests to handle a bad proxy
+           Pattern pattern = Pattern.compile("([^:]*):([0-9]*)");           
+           if not matches:
+               throw new ReportableException(m_i18n.getString("sessionoptions.errors.bad_proxy_format", proxyArg));
+        """
         if self.proxy:
-            # do we catch this error? "sessionoptions.errors.bad_proxy_format"
-            self.logger.debug("Setting proxy: ", self.proxy)
+            self.logger.debug("Setting http proxy: {}".format(self.proxy))
+            proxies = {"http": self.proxy}
+            http_options["proxies"] = proxies
+        if self.no_proxy:
+            # override any proxy that was set
+            http_options["proxies"] = None
+
         if self.timeout:
             http_options["timeout"] = self.timeout
+
+        if self.certificate:
+            http_options["cert"] = self.certificate
+
         try:
             self.logger.debug(http_options)
+            # this is the only place we open a connection to the server
+            # so the request options are all set for the session now
             tableau_server = TSC.Server(self.server_url, http_options=http_options)
 
         except Exception as e:
             self.logger.debug(
-                "Connection args: server {}, site {}, proxy {}, cert {}".format(
-                    self.server_url, self.site_name, self.proxy, self.certificate
+                "Connection args: server {}, site {}, proxy {}/no-proxy {}, cert {}".format(
+                    self.server_url, self.site_name, self.proxy, self.no_proxy, self.certificate
                 )
             )
             Errors.exit_with_error(self.logger, "Failed to connect to server", e)
@@ -196,11 +215,10 @@ class Session:
             Errors.exit_with_error(self.logger, exception=e)
 
     def _create_new_connection(self) -> TSC.Server:
-        self.logger.info(_("session.new_session"))
         self._print_server_info()
         self.logger.info(_("session.connecting"))
         try:
-            self.tableau_server = self._set_connection_options()
+            self.tableau_server = self._open_connection_with_opts()
         except Exception as e:
             Errors.exit_with_error(self.logger, "Failed to connect to server", e)
         return self.tableau_server
@@ -211,22 +229,33 @@ class Session:
 
     def _print_server_info(self):
         self.logger.info("=====   Server: {}".format(self.server_url))
+        if self.proxy:
+            self.logger.info("=====   Proxy: {}".format(self.proxy))
         if self.username:
             self.logger.info("=====   Username: {}".format(self.username))
+        if self.certificate:
+            self.logger.info("=====   Certificate: {}".format(self.certificate))
         else:
             self.logger.info("=====   Token Name: {}".format(self.token_name))
         site_display_name = self.site_name or "Default Site"
         self.logger.info(_("dataconnections.classes.tableau_server_site") + ": {}".format(site_display_name))
 
+    # side-effect: sets self.username
     def _validate_existing_signin(self):
-        self.logger.info(_("session.continuing_session"))
         # when do these two messages show up? self.logger.info(_("session.auto_site_login"))
         try:
             if self.tableau_server and self.tableau_server.is_signed_in():
-                response = self.tableau_server.users.get_by_id(self.user_id)
-                self.logger.debug(response)
-                if response.status_code.startswith("200"):
-                    return self.tableau_server
+                server_user = self.tableau_server.users.get_by_id(self.user_id).name
+                if not self.username:
+                    self.username = server_user
+                if not self.username == server_user:
+                    Errors.exit_with_error(
+                        self.logger,
+                        message="Local username `{}` does not match server username `{}`".format(
+                            self.username, server_user
+                        ),
+                    )
+                return self.tableau_server
         except TSC.ServerResponseError as e:
             self.logger.info(_("publish.errors.unexpected_server_response"), e)
         except Exception as e:
@@ -245,12 +274,14 @@ class Session:
             self.site_id = self.tableau_server.site_id
             self.user_id = self.tableau_server.user_id
             self.auth_token = self.tableau_server._auth_token
-            if not self.username:
-                self.username = self.tableau_server.users.get_by_id(self.user_id).name
-            self.logger.info(_("common.output.succeeded"))
+            success = self._validate_existing_signin()
         except Exception as e:
-            Errors.exit_with_error(self.logger, e)
-        self.logger.debug("Signed into {0}{1} as {2}".format(self.server_url, self.site_name, self.username))
+            Errors.exit_with_error(self.logger, exception=e)
+        if success:
+            self.logger.info(_("common.output.succeeded"))
+        else:
+            Errors.exit_with_error(self.logger, message="Sign in failed")
+
         return self.tableau_server
 
     def _get_saved_credentials(self):
@@ -274,22 +305,17 @@ class Session:
         self.logger = logger or log(__class__.__name__, self.logging_level)
 
         credentials = None
-        if args.password:
+        if args.password or args.password_file:
             self._end_session()
             # we don't save the password anywhere, so we pass it along directly
             credentials = self._create_new_credential(args.password, Session.PASSWORD_CRED_TYPE)
-        elif args.password_file:
-            self._end_session()
-            if args.username:
-                credentials = self._create_new_credential(args.password, Session.PASSWORD_CRED_TYPE)
-            else:
-                credentials = self._create_new_credential(args.password, Session.TOKEN_CRED_TYPE)
-        elif args.token_value:
+        elif args.token_value or args.token_file:
             self._end_session()
             credentials = self._create_new_token_credential()
         else:  # no login arguments given - look for saved info
             # maybe we're already signed in!
             if self.tableau_server:
+                self.logger.info(_("session.continuing_session"))
                 signed_in_object = self._validate_existing_signin()
             self.logger.debug(signed_in_object)
             # or maybe we at least have the credentials saved
@@ -297,7 +323,7 @@ class Session:
                 credentials = self._get_saved_credentials()
 
         if credentials and not signed_in_object:
-            # logging in, not using an existing session
+            self.logger.debug("We are not logged in yet but we have credentials to log in with")
             self.tableau_server = self._create_new_connection()
             self._verify_server_connection_unauthed()
             signed_in_object = self._sign_in(credentials)
@@ -333,6 +359,7 @@ class Session:
         self.server = None
         self.last_login_using = None
         self.password_file = None
+        self.token_file = None
 
         self.last_command = None
         self.tableau_server = None
@@ -358,7 +385,12 @@ class Session:
         try:
             with open(str(file_path), "r") as file_contents:
                 data = json.load(file_contents)
+                if data is None or data == {}:
+                    return
                 content = data["tableau_auth"]
+                if content is None:
+                    return
+                self._save_data_from_json(content)
         except json.JSONDecodeError as e:
             self._wipe_bad_json(e, "Error reading data from session file")
         except IOError as e:
@@ -367,29 +399,34 @@ class Session:
             self._wipe_bad_json(e, "Error parsing session details from file")
         except Exception as e:
             self._wipe_bad_json(e, "Unexpected error reading session details from file")
+            
 
-        try:
-            auth = content[0]
-            self.auth_token = auth["auth_token"]
-            self.server_url = auth["server"]
-            self.site_name = auth["site_name"]
-            self.site_id = auth["site_id"]
-            self.username = auth["username"]
-            self.user_id = auth["user_id"]
-            self.token_name = auth["personal_access_token_name"]
-            self.token_value = auth["personal_access_token"]
-            self.last_login_using = auth["last_login_using"]
-            self.password_file = auth["password_file"]
-            self.no_prompt = auth["no_prompt"]
-            self.no_certcheck = auth["no_certcheck"]
-            self.certificate = auth["certificate"]
-            self.no_proxy = auth["no_proxy"]
-            self.proxy = auth["proxy"]
-            self.timeout = auth["timeout"]
-        except AttributeError as e:
-            self._wipe_bad_json(e, "Unrecognized attribute in session file")
-        except Exception as e:
-            self._wipe_bad_json(e, "Failed to load session file")
+  def _save_data_from_json(self, content):
+      try:
+          auth = content[0]
+          if auth is None:
+              self._wipe_bad_json(ValueError(), "Empty session file")
+          self.auth_token = auth["auth_token"]
+          self.server_url = auth["server"]
+          self.site_name = auth["site_name"]
+          self.site_id = auth["site_id"]
+          self.username = auth["username"]
+          self.user_id = auth["user_id"]
+          self.token_name = auth["personal_access_token_name"]
+          self.token_value = auth["personal_access_token"]
+          self.last_login_using = auth["last_login_using"]
+          self.password_file = auth["password_file"]
+          self.token_file = auth["token_file"]
+          self.no_prompt = auth["no_prompt"]
+          self.no_certcheck = auth["no_certcheck"]
+          self.certificate = auth["certificate"]
+          self.no_proxy = auth["no_proxy"]
+          self.proxy = auth["proxy"]
+          self.timeout = auth["timeout"]
+      except AttributeError as e:
+          self._wipe_bad_json(e, "Unrecognized attribute in session file")
+      except Exception as e:
+          self._wipe_bad_json(e, "Failed to load session file")
 
     def _wipe_bad_json(self, e, message):
         self.logger.debug(message + ": " + e.__str__())
@@ -428,6 +465,7 @@ class Session:
                 "personal_access_token": self.token_value,
                 "last_login_using": self.last_login_using,
                 "password_file": self.password_file,
+                "token_file": self.token_file,
                 "no_prompt": self.no_prompt,
                 "no_certcheck": self.no_certcheck,
                 "certificate": self.certificate,

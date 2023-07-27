@@ -257,6 +257,14 @@ class OnlineCommandTest(unittest.TestCase):
     def test_list_projects(self):
         self._list("projects")
 
+    @pytest.mark.order(8)
+    def test_list_flows(self):
+        self._list("flows")
+
+    @pytest.mark.order(8)
+    def test_list_workbooks(self):
+        self._list("workbooks")
+
     @pytest.mark.order(10)
     def test_delete_projects(self):
         if not project_admin:

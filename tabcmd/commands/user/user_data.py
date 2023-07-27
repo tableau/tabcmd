@@ -260,7 +260,7 @@ class UserCommand(Server):
         try:
             group = UserCommand.find_group(logger, server, args.name)
         except Exception as e:
-            Errors.exit_with_error(logger, e)
+            Errors.exit_with_error(logger, exception=e)
 
         n_users_handled: int = 0
         number_of_errors: int = 0
