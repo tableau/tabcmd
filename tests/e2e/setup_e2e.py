@@ -24,7 +24,7 @@ def login(extra="--language", value="en"):
         credentials.server,
         "--site",
         credentials.site,
-        "--token",
+        "--token-value",
         credentials.token,
         "--token-name",
         credentials.token_name,

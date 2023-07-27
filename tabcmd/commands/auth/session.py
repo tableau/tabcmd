@@ -247,14 +247,9 @@ class Session:
             if self.tableau_server and self.tableau_server.is_signed_in():
                 server_user = self.tableau_server.users.get_by_id(self.user_id).name
                 if not self.username:
+                    self.logger.info("Fetched user details from server")
                     self.username = server_user
-                if not self.username == server_user:
-                    Errors.exit_with_error(
-                        self.logger,
-                        message="Local username `{}` does not match server username `{}`".format(
-                            self.username, server_user
-                        ),
-                    )
+
                 return self.tableau_server
         except TSC.ServerResponseError as e:
             self.logger.info(_("publish.errors.unexpected_server_response"), e)
@@ -291,8 +286,7 @@ class Session:
             credentials = self._create_new_token_credential()
         else:
             return None
-        if credentials:
-            self.logger.info(_("session.options.password-file"))
+
         return credentials
 
     # external entry point:
@@ -317,13 +311,12 @@ class Session:
             if self.tableau_server:
                 self.logger.info(_("session.continuing_session"))
                 signed_in_object = self._validate_existing_signin()
-            self.logger.debug(signed_in_object)
-            # or maybe we at least have the credentials saved
+
             if not signed_in_object:
                 credentials = self._get_saved_credentials()
 
         if credentials and not signed_in_object:
-            self.logger.debug("We are not logged in yet but we have credentials to log in with")
+            self.logger.debug("Signin details found:")
             self.tableau_server = self._create_new_connection()
             self._verify_server_connection_unauthed()
             signed_in_object = self._sign_in(credentials)
