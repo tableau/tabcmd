@@ -68,6 +68,7 @@ class Errors:
                 Errors.check_common_error_codes_and_explain(logger, exception)
             else:
                 logger.info("No exception or message provided")
+
         except Exception as exc:
             print(sys.stderr, "Error during log call from exception - {} {}".format(exc.__class__, message))
         try:
@@ -89,6 +90,7 @@ class Errors:
             # session.renew_session()
             return
         if exception.__class__ == tableauserverclient.ServerResponseError:
+
             logger.error(exception)
         else:
             logger.exception(exception)

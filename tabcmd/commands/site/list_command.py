@@ -18,6 +18,7 @@ class ListCommand(Server):
         "tabcmd_content_none": "No content found.",
     }
 
+
     name: str = "list"
     description: str = "List content items of a specified type"
 

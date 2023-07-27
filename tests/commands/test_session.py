@@ -74,6 +74,10 @@ def _set_mocks_for_json_file_exists(mock_path, mock_json_lib, does_it_exist=True
         mock_json_lib.load.return_value = None
     return path
 
+def _set_mock_file_content(mock_load, expected_content):
+    mock_load.return_value = expected_content
+    return mock_load
+
 
 @mock.patch("tabcmd.commands.auth.session.json")
 @mock.patch("os.path")
@@ -113,6 +117,25 @@ class JsonTests(unittest.TestCase):
     def test_json_invalid(self, mock_open, mock_path, mock_json):
         _set_mocks_for_json_file_exists(mock_path, mock_json)
         mock_json.load = "just a string"
+        test_session = Session()
+        assert test_session.username is None
+
+    def clear_session(self, mock_open, mock_path, mock_load, mock_dump):
+        _set_mocks_for_json_file_exists(mock_path)
+        test_session = Session()
+        test_session.username = "USN"
+        test_session.server = "SRVR"
+        test_session._clear_data()
+        assert test_session.username is None
+        assert test_session.server is None
+
+    def test_json_not_present(self, mock_open, mock_path, mock_load, mock_dump):
+        _set_mocks_for_json_file_exists(mock_path, False)
+        assert mock_open.was_not_called()
+
+    def test_json_invalid(self, mock_open, mock_path, mock_load, mock_dump):
+        _set_mocks_for_json_file_exists(mock_path)
+        _set_mock_file_content(mock_load, "just a string")
         test_session = Session()
         assert test_session.username is None
 
