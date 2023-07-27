@@ -399,34 +399,33 @@ class Session:
             self._wipe_bad_json(e, "Error parsing session details from file")
         except Exception as e:
             self._wipe_bad_json(e, "Unexpected error reading session details from file")
-            
 
-  def _save_data_from_json(self, content):
-      try:
-          auth = content[0]
-          if auth is None:
-              self._wipe_bad_json(ValueError(), "Empty session file")
-          self.auth_token = auth["auth_token"]
-          self.server_url = auth["server"]
-          self.site_name = auth["site_name"]
-          self.site_id = auth["site_id"]
-          self.username = auth["username"]
-          self.user_id = auth["user_id"]
-          self.token_name = auth["personal_access_token_name"]
-          self.token_value = auth["personal_access_token"]
-          self.last_login_using = auth["last_login_using"]
-          self.password_file = auth["password_file"]
-          self.token_file = auth["token_file"]
-          self.no_prompt = auth["no_prompt"]
-          self.no_certcheck = auth["no_certcheck"]
-          self.certificate = auth["certificate"]
-          self.no_proxy = auth["no_proxy"]
-          self.proxy = auth["proxy"]
-          self.timeout = auth["timeout"]
-      except AttributeError as e:
-          self._wipe_bad_json(e, "Unrecognized attribute in session file")
-      except Exception as e:
-          self._wipe_bad_json(e, "Failed to load session file")
+    def _save_data_from_json(self, content):
+        try:
+            auth = content[0]
+            if auth is None:
+                self._wipe_bad_json(ValueError(), "Empty session file")
+            self.auth_token = auth["auth_token"]
+            self.server_url = auth["server"]
+            self.site_name = auth["site_name"]
+            self.site_id = auth["site_id"]
+            self.username = auth["username"]
+            self.user_id = auth["user_id"]
+            self.token_name = auth["personal_access_token_name"]
+            self.token_value = auth["personal_access_token"]
+            self.last_login_using = auth["last_login_using"]
+            self.password_file = auth["password_file"]
+            self.token_file = auth["token_file"]
+            self.no_prompt = auth["no_prompt"]
+            self.no_certcheck = auth["no_certcheck"]
+            self.certificate = auth["certificate"]
+            self.no_proxy = auth["no_proxy"]
+            self.proxy = auth["proxy"]
+            self.timeout = auth["timeout"]
+        except AttributeError as e:
+            self._wipe_bad_json(e, "Unrecognized attribute in session file")
+        except Exception as e:
+            self._wipe_bad_json(e, "Failed to load session file")
 
     def _wipe_bad_json(self, e, message):
         self.logger.debug(message + ": " + e.__str__())
