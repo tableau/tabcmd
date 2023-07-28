@@ -74,6 +74,7 @@ def _set_mocks_for_json_file_exists(mock_path, mock_json_lib, does_it_exist=True
         mock_json_lib.load.return_value = None
     return path
 
+
 def _set_mock_file_content(mock_load, expected_content):
     mock_load.return_value = expected_content
     return mock_load
@@ -119,6 +120,7 @@ class JsonTests(unittest.TestCase):
         mock_json.load = "just a string"
         test_session = Session()
         assert test_session.username is None
+
 
 @mock.patch("getpass.getpass")
 class BuildCredentialsTests(unittest.TestCase):

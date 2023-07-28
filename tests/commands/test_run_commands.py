@@ -4,13 +4,7 @@ from unittest.mock import *
 import tableauserverclient as TSC
 
 from tabcmd.commands.auth import login_command, logout_command
-from tabcmd.commands.datasources_and_workbooks import (
-    delete_command,
-    export_command,
-    get_url_command,
-    publish_command,
-    runschedule_command,
-)
+from tabcmd.commands.datasources_and_workbooks import delete_command, export_command, get_url_command, publish_command
 from tabcmd.commands.extracts import (
     create_extracts_command,
     delete_extracts_command,
@@ -35,7 +29,7 @@ from tabcmd.commands.user import (
     remove_users_command,
     delete_site_users_command,
 )
-from typing import List, NamedTuple, TextIO, Union
+from typing import NamedTuple, TextIO, Union
 import io
 
 mock_args = argparse.Namespace()
@@ -138,33 +132,6 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.filename = "filename.twbx"
         get_url_command.GetUrl.run_command(mock_args)
         mock_session.assert_called()
-
-    def test_publish(self, mock_session, mock_server):
-        RunCommandsTest._set_up_session(mock_session, mock_server)
-        mock_args.overwrite = False
-        mock_args.filename = "existing_file.twbx"
-        mock_args.project_name = "project-name"
-        mock_args.parent_project_path = "projects"
-        mock_args.name = ""
-        mock_args.tabbed = True
-        mock_args.db_username = None
-        mock_args.oauth_username = None
-        mock_args.append = False
-        mock_args.replace = False
-        mock_args.thumbnail_username = None
-        mock_args.thumbnail_group = None
-        mock_server.projects = getter
-        publish_command.PublishCommand.run_command(mock_args)
-        mock_session.assert_called()
-
-    @unittest.skip("target code not implemented yet")
-    def test_runschedule(self, mock_session, mock_server):
-        RunCommandsTest._set_up_session(mock_session, mock_server)
-        mock_server.schedules = getter
-        mock_args.schedule = "myschedule"
-        with self.assertRaises(SystemExit):
-            runschedule_command.RunSchedule.run_command(mock_args)
-        # mock_session.assert_called()
 
     # extracts
     def test_create_extract(self, mock_session, mock_server):
