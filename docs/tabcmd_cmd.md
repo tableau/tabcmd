@@ -25,7 +25,7 @@ Once you log in, the session will continue until it expires on the server or the
 
 If your session has expired and you want to log in using the same information you've already used, just specify the `--password` option or the `--token` option. The server and user name stored in the cookie will be used. (This will not work if `--no-cookie` was specified)
 
-If you do not provide a password or token or passwordfile you will be prompted for one. The command will fail if username/password is specified AND token name/token is specified.
+If you do not provide a password, token, passwordfile or tokenfile you will be prompted for one. The command will fail if username/password is specified AND token name/token is specified.
 
 Instead of calling the login command, all of the options for this command can be used while calling any other command, to create a session and run the command immediately. For example:
 ```shell
@@ -731,6 +731,21 @@ tabcmd listsites --username adam --password mypassword
 \-\-get-extract-encryption-mode
 
 : The extract encryption mode for the site can be enforced, enabled or disabled. For more information, see [Extract Encryption at Rest](https://help.tableau.com/current/server/en-us/security_ear.htm).
+
+
+## list
+
+Returns a list of items of the specified content type on the current site..
+
+### Example
+
+```shell
+tabcmd list {projects,workbooks,datasources,flows} 
+```
+
+### Options
+
+\-d, \-\-details         Show more detailed info about each object
 
 
 ## publish *filename.twb(x)*, *filename.tds(x)*, or *filename.hyper*
