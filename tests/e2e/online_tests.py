@@ -4,7 +4,13 @@ import subprocess
 import time
 import unittest
 
-from credentials import waremart_password, waremart_user
+try:
+    from credentials import waremart_password, waremart_user
+except ModuleNotFoundError:
+    waremart_user = None
+    waremart_password = None
+    print("Could not import datasource creds from credentials file")
+
 from tests.e2e import setup_e2e
 
 debug_log = "--logging-level=DEBUG"
@@ -166,6 +172,7 @@ class OnlineCommandTest(unittest.TestCase):
     @pytest.mark.order(1)
     def test_login(self):
         try:
+            # this will silently do nothing when run in github
             setup_e2e.login()
         except Exception as e:
             raise SystemExit(2)
