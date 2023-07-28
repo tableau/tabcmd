@@ -4,7 +4,7 @@ import os
 try:
     from tests.e2e import credentials  # type: ignore
 except ImportError:
-    credentials = None  # type: ignore
+    credentials = {}  # type: ignore
 
 our_program = "tabcmd.exe"
 launch_path = os.path.join("dist", "tabcmd")
@@ -13,7 +13,7 @@ exe = os.path.join(launch_path, our_program)
 
 def login(extra="--language", value="en"):
     if not credentials:
-        return
+        return  # when run on github
     # --server, --site, --username, --password
     args = [
         "python",
