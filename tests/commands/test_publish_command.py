@@ -4,12 +4,7 @@ from unittest.mock import *
 import tableauserverclient as TSC
 
 from tabcmd.commands.auth import login_command
-from tabcmd.commands.datasources_and_workbooks import (
-    delete_command,
-    export_command,
-    get_url_command,
-    publish_command
-)
+from tabcmd.commands.datasources_and_workbooks import delete_command, export_command, get_url_command, publish_command
 
 
 from typing import List, NamedTuple, TextIO, Union
@@ -68,7 +63,6 @@ class RunCommandsTest(unittest.TestCase):
         mock_server.projects = getter
         publish_command.PublishCommand.run_command(mock_args)
         mock_session.assert_called()
-
 
     def test_publish_with_creds(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)

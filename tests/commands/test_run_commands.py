@@ -4,12 +4,7 @@ from unittest.mock import *
 import tableauserverclient as TSC
 
 from tabcmd.commands.auth import login_command, logout_command
-from tabcmd.commands.datasources_and_workbooks import (
-    delete_command,
-    export_command,
-    get_url_command,
-    publish_command
-)
+from tabcmd.commands.datasources_and_workbooks import delete_command, export_command, get_url_command, publish_command
 from tabcmd.commands.extracts import (
     create_extracts_command,
     delete_extracts_command,
