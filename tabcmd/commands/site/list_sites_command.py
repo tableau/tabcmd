@@ -31,8 +31,8 @@ class ListSiteCommand(Server):
             sites, pagination = server.sites.get()
             logger.info(_("listsites.status").format(session.username))
             for site in sites:
-                logger.info("NAME:".rjust(10), site.name)
-                logger.info("SITEID:".rjust(10), site.content_url)
+                logger.info("NAME: {}".format(site.name))
+                logger.info("SITEID: {}".format(site.id))
                 if args.get_extract_encryption_mode:
                     logger.info("EXTRACTENCRYPTION:", site.extract_encryption_mode)
         except Exception as e:

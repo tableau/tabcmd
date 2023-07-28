@@ -2,10 +2,9 @@ import logging
 from argparse import Namespace
 import unittest
 from unittest import mock
-from unittest.mock import patch, mock_open
+from unittest.mock import MagicMock
 
 from tabcmd.commands.auth.session import Session
-import os
 
 args_to_mock = Namespace(
     username=None,
@@ -15,6 +14,7 @@ args_to_mock = Namespace(
     server=None,
     token_name=None,
     token_value=None,
+    token_file=None,
     logging_level=None,
     no_certcheck=None,
     no_prompt=False,
@@ -50,9 +50,9 @@ fakeserver = "http://SRVR".lower()
 logger = logging.getLogger("tests")
 
 
-def _set_mocks_for_json_file_saved_username(mock_json_load, auth_token, username):
+def _set_mocks_for_json_file_saved_username(mock_json_lib, auth_token, username):
     mock_auth = vars(mock_data_from_json)
-    mock_json_load.return_value = {"tableau_auth": [mock_auth]}
+    mock_json_lib.load.return_value = {"tableau_auth": [mock_auth]}
     mock_auth["auth_token"] = auth_token
     mock_auth["username"] = username
     mock_auth["server"] = fakeserver
@@ -60,27 +60,32 @@ def _set_mocks_for_json_file_saved_username(mock_json_load, auth_token, username
     mock_auth["no_certcheck"] = True
 
 
-def _set_mocks_for_json_file_exists(mock_path, does_it_exist=True):
-    os.path = mock_path
-    mock_path.expanduser.return_value = ""
-    mock_path.join.return_value = ""
-    mock_path.exists.return_value = does_it_exist
-    return mock_path
+def _set_mocks_for_json_file_exists(mock_path, mock_json_lib, does_it_exist=True):
+    mock_json_lib.JSONDecodeError = ValueError
+    path = mock_path()
+    path.expanduser.return_value = ""
+    path.join.return_value = ""
+    path.exists.return_value = does_it_exist
 
+    mock_auth = vars(mock_data_from_json)
+    if does_it_exist:
+        mock_json_lib.load.return_value = [mock_auth]
+    else:
+        mock_json_lib.load.return_value = None
+    return path
 
 def _set_mock_file_content(mock_load, expected_content):
     mock_load.return_value = expected_content
     return mock_load
 
 
-@mock.patch("json.dump")
-@mock.patch("json.load")
+@mock.patch("tabcmd.commands.auth.session.json")
 @mock.patch("os.path")
 @mock.patch("builtins.open")
 class JsonTests(unittest.TestCase):
-    def test_read_session_from_json(self, mock_open, mock_path, mock_load, mock_dump):
-        _set_mocks_for_json_file_exists(mock_path)
-        _set_mocks_for_json_file_saved_username(mock_load, "AUTHTOKEN", "USERNAME")
+    def test_read_session_from_json(self, mock_open, mock_path, mock_json):
+        _set_mocks_for_json_file_exists(mock_path, mock_json)
+        _set_mocks_for_json_file_saved_username(mock_json, "AUTHTOKEN", "USERNAME")
         test_session = Session()
         test_session._read_from_json()
         assert hasattr(test_session.auth_token, "AUTHTOKEN") is False, test_session
@@ -88,16 +93,16 @@ class JsonTests(unittest.TestCase):
         assert test_session.username == "USERNAME"
         assert test_session.server_url == fakeserver, test_session.server_url
 
-    def test_save_session_to_json(self, mock_open, mock_path, mock_load, mock_dump):
-        _set_mocks_for_json_file_exists(mock_path)
+    def test_save_session_to_json(self, mock_open, mock_path, mock_json):
+        _set_mocks_for_json_file_exists(mock_path, mock_json)
         test_session = Session()
         test_session.username = "USN"
         test_session.server = "SRVR"
         test_session._save_session_to_json()
-        assert mock_dump.was_called()
+        assert mock_json.dump.was_called()
 
-    def clear_session(self, mock_open, mock_path, mock_load, mock_dump):
-        _set_mocks_for_json_file_exists(mock_path)
+    def clear_session(self, mock_open, mock_path, mock_json):
+        _set_mocks_for_json_file_exists(mock_path, mock_json)
         test_session = Session()
         test_session.username = "USN"
         test_session.server = "SRVR"
@@ -105,16 +110,15 @@ class JsonTests(unittest.TestCase):
         assert test_session.username is None
         assert test_session.server is None
 
-    def test_json_not_present(self, mock_open, mock_path, mock_load, mock_dump):
-        _set_mocks_for_json_file_exists(mock_path, False)
+    def test_json_not_present(self, mock_open, mock_path, mock_json):
+        _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
         assert mock_open.was_not_called()
 
-    def test_json_invalid(self, mock_open, mock_path, mock_load, mock_dump):
-        _set_mocks_for_json_file_exists(mock_path)
-        _set_mock_file_content(mock_load, "just a string")
+    def test_json_invalid(self, mock_open, mock_path, mock_json):
+        _set_mocks_for_json_file_exists(mock_path, mock_json)
+        mock_json.load = "just a string"
         test_session = Session()
         assert test_session.username is None
-
 
 @mock.patch("getpass.getpass")
 class BuildCredentialsTests(unittest.TestCase):
@@ -215,34 +219,30 @@ the json file, and the TSC.Server calls
 """
 
 
-@mock.patch("json.dump")
-@mock.patch("json.load")
+@mock.patch("tabcmd.commands.auth.session.json")
 @mock.patch("os.path")
 @mock.patch("builtins.open")
 @mock.patch("getpass.getpass")
 class CreateSessionTests(unittest.TestCase):
     @mock.patch("tableauserverclient.Server")
-    def test_create_session_first_time_no_args(
-        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json_load, mock_json_dump
-    ):
-        mock_path = _set_mocks_for_json_file_exists(mock_path, False)
-        assert mock_path.exists("anything") is False
+    def test_create_session_first_time_no_args(self, mock_tsc, mock_pass, mock_file, mock_path, mock_json):
+        _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
+
         test_args = Namespace(**vars(args_to_mock))
-        mock_tsc().users.get_by_id.return_value = None
         new_session = Session()
         with self.assertRaises(SystemExit):
             auth = new_session.create_session(test_args, None)
 
     @mock.patch("tableauserverclient.Server")
-    def test_create_session_first_time_with_token_arg(
-        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json_load, mock_json_dump
-    ):
-        mock_path = _set_mocks_for_json_file_exists(mock_path, False)
-        assert mock_path.exists("anything") is False
+    def test_create_session_first_time_with_token_arg(self, mock_tsc, mock_pass, mock_file, mock_path, mock_json):
+        _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
+        new_session = Session()
+        new_session.tableau_server = mock_tsc()
+        _set_mock_signin_validation_succeeds(new_session.tableau_server, "u")
+
         test_args = Namespace(**vars(args_to_mock))
         test_args.token_name = "tn"
         test_args.token_value = "foo"
-        new_session = Session()
         auth = new_session.create_session(test_args, None)
         assert auth is not None, auth
         assert auth.auth_token is not None, auth.auth_token
@@ -251,62 +251,68 @@ class CreateSessionTests(unittest.TestCase):
         assert new_session.token_name == "tn", new_session
 
     @mock.patch("tableauserverclient.Server")
-    def test_create_session_first_time_with_password_arg(
-        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json_load, mock_json_dump
-    ):
-        mock_path = _set_mocks_for_json_file_exists(mock_path, False)
-        test_args = Namespace(**vars(args_to_mock))
-        test_args.username = "uuuu"
-        test_args.password = "pppp"
+    def test_create_session_first_time_with_password_arg(self, mock_tsc, mock_pass, mock_file, mock_path, mock_json):
+        name = "uuuu"
         new_session = Session()
+        new_session.tableau_server = mock_tsc()
+        _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
+        _set_mock_signin_validation_succeeds(new_session.tableau_server, name)
+
+        test_args = Namespace(**vars(args_to_mock))
+        test_args.username = name
+        test_args.password = "pppp"
 
         auth = new_session.create_session(test_args, None)
         assert auth is not None, auth
         assert auth.auth_token is not None, auth.auth_token
-        assert new_session.username == "uuuu", new_session
+        assert new_session.username == name, new_session
         assert mock_tsc.has_been_called()
 
     @mock.patch("tableauserverclient.Server")
     def test_create_session_first_time_with_password_file_as_password(
-        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json_load, mock_json_dump
+        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json
     ):
-        mock_path = _set_mocks_for_json_file_exists(mock_path, False)
+        username = "uuuu"
+        _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
+        new_session = Session()
+        _set_mock_signin_validation_succeeds(mock_tsc(), username)
         test_args = Namespace(**vars(args_to_mock))
-        test_args.username = "uuuu"
+        test_args.username = username
         # filename = os.path.join(os.path.dirname(__file__),"test_credential_file.txt")
         # test_args.password_file = os.getcwd()+"/test_credential_file.txt"
         test_args.password_file = "filename"
         with mock.patch("builtins.open", mock.mock_open(read_data="my_password")):
-            new_session = Session()
             auth = new_session.create_session(test_args, None)
 
         assert auth is not None, auth
         assert auth.auth_token is not None, auth.auth_token
-        assert new_session.username == "uuuu", new_session
+        assert new_session.username == username, new_session
         assert new_session.password_file == "filename", new_session
         assert mock_tsc.has_been_called()
 
     @mock.patch("tableauserverclient.Server")
     def test_create_session_first_time_with_password_file_as_token(
-        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json_load, mock_json_dump
+        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json
     ):
-        mock_path = _set_mocks_for_json_file_exists(mock_path, False)
+        _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
+        server = mock_tsc()
+        _set_mock_signin_validation_succeeds(server, "testing")
         test_args = Namespace(**vars(args_to_mock))
         test_args.token_name = "mytoken"
-        test_args.password_file = "filename"
+        test_args.token_file = "filename"
         with mock.patch("builtins.open", mock.mock_open(read_data="my_token")):
             new_session = Session()
             auth = new_session.create_session(test_args, None)
 
         assert auth is not None, auth
         assert auth.auth_token is not None, auth.auth_token
-        assert new_session.password_file == "filename", new_session
+        assert new_session.token_file == "filename", new_session
         assert mock_tsc.has_been_called()
 
     @mock.patch("tableauserverclient.Server")
-    def test_load_saved_session_data(self, mock_tsc, mock_pass, mock_file, mock_path, mock_json_load, mock_json_dump):
-        _set_mocks_for_json_file_exists(mock_path, True)
-        _set_mocks_for_json_file_saved_username(mock_json_load, "auth_token", "username")
+    def test_load_saved_session_data(self, mock_tsc, mock_pass, mock_file, mock_path, mock_json):
+        _set_mocks_for_json_file_exists(mock_path, mock_json)
+        _set_mocks_for_json_file_saved_username(mock_json, "auth_token", "username")
         test_args = Namespace(**vars(args_to_mock))
         new_session = Session()
         new_session._read_existing_state()
@@ -317,11 +323,9 @@ class CreateSessionTests(unittest.TestCase):
         assert mock_tsc.has_been_called()
 
     @mock.patch("tableauserverclient.Server")
-    def test_create_session_with_active_session_saved(
-        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json_load, mock_json_dump
-    ):
-        _set_mocks_for_json_file_exists(mock_path, True)
-        _set_mocks_for_json_file_saved_username(mock_json_load, "auth_token", None)
+    def test_create_session_with_active_session_saved(self, mock_tsc, mock_pass, mock_file, mock_path, mock_json):
+        _set_mocks_for_json_file_exists(mock_path, mock_json)
+        _set_mocks_for_json_file_saved_username(mock_json, "auth_token", None)
         test_args = Namespace(**vars(args_to_mock))
         test_args.token_value = "tn"
         test_args.token_name = "tnnnn"
@@ -335,12 +339,14 @@ class CreateSessionTests(unittest.TestCase):
 
     @mock.patch("tableauserverclient.Server")
     def test_create_session_with_saved_expired_username_session(
-        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json_load, mock_json_dump
+        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json
     ):
-        _set_mocks_for_json_file_saved_username(mock_json_load, "auth_token", "username")
-        _set_mocks_for_json_file_exists(mock_path, True)
-        tsc_under_test = CreateSessionTests._set_mock_tsc_not_signed_in(mock_tsc)
-        CreateSessionTests._set_mock_tsc_sign_in_succeeds(tsc_under_test)
+        test_username = "monster"
+        server = mock_tsc()
+        _set_mocks_for_json_file_exists(mock_path, mock_json)
+        _set_mocks_for_json_file_saved_username(mock_json, "auth_token", test_username)
+        _set_mock_tsc_sign_in_succeeds(server)
+        _set_mock_signin_validation_succeeds(server, test_username)
         test_args = Namespace(**vars(args_to_mock))
         mock_pass.getpass.return_value = "success"
         test_args.password = "eqweqwe"
@@ -350,24 +356,31 @@ class CreateSessionTests(unittest.TestCase):
         assert auth is not None, auth
         assert auth.auth_token is not None, auth.auth_token
         assert auth.auth_token == "cookiieeeee"
-        assert new_session.username == "username", new_session
+        assert new_session.username == test_username, new_session
         assert mock_tsc.use_server_version.has_been_called()
 
-    @staticmethod
-    def _set_mock_tsc_not_signed_in(mock_tsc):
-        tsc_in_test = mock.MagicMock(name="manually mocking tsc")
-        mock_tsc.return_value = tsc_in_test
-        tsc_in_test.is_signed_in.return_value = False  # CreateSessionTests.return_False
-        tsc_in_test.server_info.get.return_value = Exception
-        return tsc_in_test
 
-    @staticmethod
-    def _set_mock_tsc_sign_in_succeeds(mock_tsc):
-        tscauth_mock = mock.MagicMock(name="tsc.auth")
-        mock_tsc.auth = tscauth_mock
-        mock_tsc.auth_token = "cookiieeeee"
-        mock_tsc.site_id = "1"
-        mock_tsc.user_id = "0"
+def _set_mock_tsc_not_signed_in(mock_tsc):
+    tsc_in_test = mock.MagicMock(name="manually mocking tsc")
+    tsc_in_test.is_signed_in.return_value = False  # CreateSessionTests.return_False
+    tsc_in_test.server_info.get.return_value = Exception
+    return tsc_in_test
+
+
+def _set_mock_tsc_sign_in_succeeds(mock_tsc):
+    tscauth_mock = mock.MagicMock(name="tsc.auth")
+    mock_tsc.auth = tscauth_mock
+    mock_tsc.auth_token = "cookiieeeee"
+    mock_tsc.site_id = "1"
+    mock_tsc.user_id = "0"
+
+
+def _set_mock_signin_validation_succeeds(mock_tsc, username):
+    mock_u_factory = MagicMock("user")
+    mock_u = mock_u_factory()
+    mock_tsc.users.get_by_id.return_value = mock_u
+    mock_u.name = username
+    mock_tsc.is_signed_in.return_value = True
 
 
 class TimeoutArgTests(unittest.TestCase):
@@ -392,7 +405,7 @@ class TimeoutIntegrationTest(unittest.TestCase):
     def test_connection_times_out(self):
         test_args = Namespace(**vars(args_to_mock))
         new_session = Session()
-        test_args.timeout = 10
+        test_args.timeout = 2
         test_args.username = "u"
         test_args.password = "p"
 
@@ -403,36 +416,51 @@ class TimeoutIntegrationTest(unittest.TestCase):
     # should test connection doesn't time out?
 
 
-@mock.patch("tableauserverclient.Server")
 class ConnectionOptionsTest(unittest.TestCase):
-    def test_certcheck_on(self, mock_tsc):
-        mock_tsc.add_http_options = mock.MagicMock()
-        mock_session = mock.MagicMock()
+    def test_user_agent(self):
+        mock_session = Session()
+        mock_session.server_url = "fakehost"
+        connection = mock_session._open_connection_with_opts()
+        assert connection._http_options["headers"]["User-Agent"].startswith("Tabcmd/")
+
+    def test_no_certcheck(self):
+        mock_session = Session()
+        mock_session.server_url = "fakehost"
         mock_session.no_certcheck = True
         mock_session.site_id = "s"
         mock_session.user_id = "u"
-        server = "anything"
-        mock_session._set_connection_options()
-        assert mock_tsc.add_http_options.has_been_called()
+        connection = mock_session._open_connection_with_opts()
+        assert connection._http_options["verify"] == False
 
-    def test_certcheck_off(self, mock_tsc):
-        mock_session = mock.MagicMock()
-        server = "anything"
+    def test_cert(self):
+        mock_session = Session()
+        mock_session.server_url = "fakehost"
         mock_session.site_id = "s"
         mock_session.user_id = "u"
-        mock_session._set_connection_options()
-        mock_tsc.add_http_options.assert_not_called()
+        mock_session.certificate = "my-cert-info"
+        connection = mock_session._open_connection_with_opts()
+        assert connection._http_options["cert"] == mock_session.certificate
 
-    """
-    def test_cert(self, mock_tsc):
-        assert False, 'feature not implemented'
+    def test_proxy_stuff(self):
+        mock_session = Session()
+        mock_session.server_url = "fakehost"
+        mock_session.site_id = "s"
+        mock_session.user_id = "u"
+        mock_session.proxy = "proxy:port"
+        connection = mock_session._open_connection_with_opts()
+        assert connection._http_options["proxies"] == {"http": mock_session.proxy}
 
-    def test_proxy_stuff(self, mock_tsc):
-        assert False, 'feature not implemented'
+    def test_timeout(self):
+        mock_session = Session()
+        mock_session.server_url = "fakehost"
+        mock_session.site_id = "s"
+        mock_session.user_id = "u"
+        mock_session.timeout = 10
+        connection = mock_session._open_connection_with_opts()
+        assert connection._http_options["timeout"] == 10
 
-    def test_timeout(self, mock_tsc):
-        assert False, 'feature not implemented'
 
+"""
 class CookieTests(unittest.TestCase):
 
     def test_no_file_if_no_cookie(self):

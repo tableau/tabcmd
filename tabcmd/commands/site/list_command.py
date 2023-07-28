@@ -1,5 +1,3 @@
-import tableauserverclient as TSC
-
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.constants import Errors
 from tabcmd.commands.server import Server
@@ -13,8 +11,13 @@ class ListCommand(Server):
     """
 
     # strings to move to string files
-    tabcmd_content_listing = "===== Listing {0} content for user {1}..."
-    tabcmd_listing_label_name = "NAME: {}"
+    local_strings = {
+        "tabcmd_content_listing": "===== Listing {0} content for user {1}...",
+        "tabcmd_listing_label_name": "\tNAME: {}",
+        "tabcmd_listing_label_id": "ID: {}",
+        "tabcmd_content_none": "No content found.",
+    }
+
 
     name: str = "list"
     description: str = "List content items of a specified type"
@@ -36,7 +39,7 @@ class ListCommand(Server):
         content_type = args.content
 
         try:
-            logger.info(ListCommand.tabcmd_content_listing.format(content_type, session.username))
+            logger.info(ListCommand.local_strings["tabcmd_content_listing"].format(content_type, session.username))
 
             if content_type == "projects":
                 items = server.projects.all()
@@ -47,14 +50,18 @@ class ListCommand(Server):
             elif content_type == "flows":
                 items = server.flows.all()
 
+            if not items or len(items) == 0:
+                logger.info(ListCommand.local_strings["tabcmd_content_none"])
             for item in items:
-                logger.info(ListCommand.tabcmd_listing_label_name.format(item.name))
                 if args.details:
-                    logger.info(item)
+                    logger.info("\t{}".format(item))
                     if content_type == "workbooks":
                         server.workbooks.populate_views(item)
                         for v in item.views:
                             logger.info(v)
+                else:
+                    logger.info(ListCommand.local_strings["tabcmd_listing_label_id"].format(item.id))
+                    logger.info(ListCommand.local_strings["tabcmd_listing_label_name"].format(item.name))
 
         except Exception as e:
             Errors.exit_with_error(logger, e)
