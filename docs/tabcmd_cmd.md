@@ -557,10 +557,24 @@ If you don't provide a name, it will be derived from the view or workbook name. 
 
 : Sets the height in pixels. Default is 600 px.
 
-?filter-name
+?FILTER_STRING, --filter FILTER_STRING
 
 : * To filter the data you download, add a parameter to the view or workbook url using the format `?<filter_name>=value`
- : * If filtering on a parameter and that parameter has a display name that matches the name of a measure or dimension, use `?Parameters.<filter_name>=value`
+: * If filtering on a parameter and that parameter has a display name that matches the name of a measure or dimension, use `?Parameters.<filter_name>=value`
+
+: As of tabcmd 2.0.11, an alternate method of setting filters is available. Instead of adding the filter to the end of the URL, 
+add it as another option on the command line. When you use this method, you do not need to encode any characters.
+
+Existing syntax: (can be used in classic tabcmd and Tabcmd 2)
+`tabcmd export \/WorldIndicators\/Population?Birth%20Rate%20Bin=1.5-3%25 --pdf`
+
+New syntax, with no need to encode the parameter values:
+`tabcmd export \/WorldIndicators\/Population --pdf -f b1.pdf --filter "Birth Rate Bin=1.5-3%"`
+
+
+: <div class="alert alert-info"><strong>Note</strong>:In both formats, the filter clause cannot contain a colon (:), a comma (,) or an ampersand (&). 
+You must replace each of these characters with an asterisk (*)</div>
+
 
 ?refresh=yes
 
