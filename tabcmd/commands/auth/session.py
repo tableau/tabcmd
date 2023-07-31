@@ -221,46 +221,54 @@ class Session:
             self.tableau_server = self._open_connection_with_opts()
         except Exception as e:
             Errors.exit_with_error(self.logger, "Failed to connect to server", e)
+        self._verify_server_connection_unauthed()
         return self.tableau_server
 
     def _read_existing_state(self):
         if self._json_exists():
             self._read_from_json()
 
+    def _site_display_name(self):
+        return self.site_name or "Default Site"
+
     def _print_server_info(self):
         self.logger.info("=====   Server: {}".format(self.server_url))
         if self.proxy:
             self.logger.info("=====   Proxy: {}".format(self.proxy))
-        if self.username:
+        if self.auth_token:
+            self.logger.info(_("session.auto_site_login").format(self._site_display_name()))
+        elif self.username:
             self.logger.info("=====   Username: {}".format(self.username))
-        if self.certificate:
-            self.logger.info("=====   Certificate: {}".format(self.certificate))
-        else:
+        elif self.token_name:
             self.logger.info("=====   Token Name: {}".format(self.token_name))
-        site_display_name = self.site_name or "Default Site"
-        self.logger.info(_("dataconnections.classes.tableau_server_site") + ": {}".format(site_display_name))
+
 
     # side-effect: sets self.username
     def _validate_existing_signin(self):
-        # when do these two messages show up? self.logger.info(_("session.auto_site_login"))
         try:
+            if not self.tableau_server:
+                self.tableau_server = self._create_new_connection()
+                self.tableau_server._set_auth(self.site_id, self.user_id, self.auth_token)
             if self.tableau_server and self.tableau_server.is_signed_in():
                 server_user = self.tableau_server.users.get_by_id(self.user_id).name
                 if not self.username:
                     self.logger.info("Fetched user details from server")
                     self.username = server_user
-
+                self.logger.info(_("session.continuing_session"))
                 return self.tableau_server
         except TSC.ServerResponseError as e:
             self.logger.info(_("publish.errors.unexpected_server_response"), e)
         except Exception as e:
             self.logger.info(_("errors.internal_error.request.message"), e)
+
         return None
 
     # server connection created, not yet logged in
     def _sign_in(self, tableau_auth) -> TSC.Server:
         self.logger.debug(_("session.login") + self.server_url)
-        self.logger.debug(_("listsites.output").format("", self.username or self.token_name, self.site_name))
+
+        self.logger.info(_("dataconnections.classes.tableau_server_site") + ": {}".format(self._site_display_name()))
+        # self.logger.debug(_("listsites.output").format("", self.username or self.token_name, self.site_name))
         try:
             self.tableau_server.auth.sign_in(tableau_auth)  # it's the same call for token or user-pass
         except Exception as e:
@@ -279,6 +287,7 @@ class Session:
 
         return self.tableau_server
 
+    # side effect: prompts for password if we have username but no password
     def _get_saved_credentials(self):
         if self.last_login_using == "username":
             credentials = self._create_new_credential(None, Session.PASSWORD_CRED_TYPE)
@@ -308,8 +317,7 @@ class Session:
             credentials = self._create_new_token_credential()
         else:  # no login arguments given - look for saved info
             # maybe we're already signed in!
-            if self.tableau_server:
-                self.logger.info(_("session.continuing_session"))
+            if self.auth_token:  # tableau_server:
                 signed_in_object = self._validate_existing_signin()
 
             if not signed_in_object:
@@ -318,7 +326,6 @@ class Session:
         if credentials and not signed_in_object:
             self.logger.debug("Signin details found:")
             self.tableau_server = self._create_new_connection()
-            self._verify_server_connection_unauthed()
             signed_in_object = self._sign_in(credentials)
 
         if not signed_in_object:

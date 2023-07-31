@@ -13,21 +13,24 @@ except ModuleNotFoundError:
 
 from tests.e2e import setup_e2e
 
-debug_log = "--logging-level=DEBUG"
-indexing_sleep_time = 1  # wait 1 second to confirm server has indexed updates
-
-project_name = "not-default-name"
-group_name = "test-ing-group"
-workbook_name = "namebasic"
 
 # to run this suite
 # pytest -q tests/e2e/online_tests.py
 # you can either run setup with a stored credentials file, or simply log in
 # before running the suite so a session is active
 
-# alpodev
-parent_location = "WAM"
-project_name = "Developer Platform"
+debug_log = "--logging-level=DEBUG"
+indexing_sleep_time = 1  # wait 1 second to confirm server has indexed updates
+
+# object names
+unique = str(time.gmtime().tm_sec)
+
+default_project_name = "default-proj" + unique
+group_name = "test-ing-group" + unique
+workbook_name = "wb_1_" + unique
+
+parent_location = "parent" + unique
+project_name = "test-proj-" + unique
 
 server_admin = False
 site_admin = True
@@ -37,23 +40,25 @@ project_admin = True
 def _test_command(test_args: list[str]):
     # this will raise an exception if it gets a non-zero return code
     # that should bubble up and fail the test?
-    # dist/exe calling_args = [setup_e2e.exe] + test_args + [debug_log]
-    calling_args = ["python", "-m", "tabcmd"] + test_args + [debug_log] + ["--no-certcheck"]
+    # call the executable directly: lets us drop in classic tabcmd
+    calling_args = [
+       "c:\\Program Files\\Tableau\\Tableau Server\\2023.1\\extras\\Command Line Utility\\tabcmd.exe"] + test_args
+    # uncomment this line instead to use the current build of tabcmd 2
+    # calling_args = ["python", "-m", "tabcmd"] + test_args + [debug_log] + ["--no-certcheck"]
     print(calling_args)
     return subprocess.check_call(calling_args)
 
 
-# This calls dist/tabcmd/tabcmd.exe
 class OnlineCommandTest(unittest.TestCase):
     published = False
     gotten = False
 
     @classmethod
     def setup_class(cls):
-        print("running python -m")
-        # call this if we are using the built exe setup_e2e.prechecks()
+        arguments = ["version"]
+        _test_command(arguments)
 
-    ## Individual methods that implement a command
+    # Individual methods that implement a command
 
     def _create_project(self, project_name, parent_path=None):
         command = "createproject"
@@ -61,7 +66,7 @@ class OnlineCommandTest(unittest.TestCase):
         if parent_path:
             arguments.append("--parent-project-path")
             arguments.append(parent_path)
-        arguments.append("--continue-if-exists")
+        # classic doesn't have this arg arguments.append("--continue-if-exists")
         _test_command(arguments)
 
     def _delete_project(self, project_name, parent_path=None):
@@ -107,19 +112,23 @@ class OnlineCommandTest(unittest.TestCase):
 
     def _delete_ds(self, file):
         command = "delete"
-        arguments = [command, file, "--datasource"]
+        arguments = [command, "--datasource", file]
         _test_command(arguments)
 
-    def _get_view(self, wb_name_on_server, sheet_name):
+    def _get_view(self, wb_name_on_server, sheet_name, filename=None):
         server_file = "/views/" + wb_name_on_server + "/" + sheet_name
         command = "get"
         arguments = [command, server_file]
+        if filename:
+            arguments = arguments + ["--filename", filename]
         _test_command(arguments)
 
     def _get_custom_view(self):
+        # TODO
         command = "get"
 
     def _get_view_with_filters(self):
+        # TODO
         command = "get"
 
     def _get_workbook(self, server_file):
@@ -143,13 +152,26 @@ class OnlineCommandTest(unittest.TestCase):
     # variation: url
     def _refresh_extract(self, type, wb_name):
         command = "refreshextracts"
-        arguments = [command, type, wb_name]
-        _test_command(arguments)
+        arguments = [command, wb_name]  # should not need -w
+        try:
+            _test_command(arguments)
+        except Exception as e:
+            print(e)
+            print("expected (tabcmd classic)")
+            print("  *** Unexpected response from the server: Bad request")
+            print("This refresh extracts operation is not allowed for workbook World Indicators (errorCode=80030)")
 
     def _delete_extract(self, type, item_name):
         command = "deleteextracts"
         arguments = [command, type, item_name, "--include-all"]
-        _test_command(arguments)
+        try:
+            _test_command(arguments)
+        except Exception as e:
+            print(e)
+            print("Expected (tabcmd classic:")
+            print("*** Unexpected response from the server: Unable to load Data Source")
+            print("Remove extract operation failed. (errorCode=310028)")
+            print("8530479: Remove Extract is not supported for this Datasources (errorCode=310030)")
 
     def _list(self, item_type: str):
         command = "list"
@@ -171,17 +193,13 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(1)
     def test_login(self):
+        pytest.skip("not for tabcmd classic")
         try:
             # this will silently do nothing when run in github
             setup_e2e.login()
         except Exception as e:
+            print(e)
             raise SystemExit(2)
-
-    @pytest.mark.order(1)
-    def test_version(self):
-        command = "-v"
-        arguments = [command]
-        _test_command(arguments)
 
     @pytest.mark.order(1)
     def test_help(self):
@@ -205,7 +223,7 @@ class OnlineCommandTest(unittest.TestCase):
         groupname = group_name
         command = "creategroup"
         arguments = [command, groupname]
-        arguments.append("--continue-if-exists")
+        # classic doesn't have this arg arguments.append("--continue-if-exists")
         _test_command(arguments)
 
     @pytest.mark.order(4)
@@ -217,7 +235,7 @@ class OnlineCommandTest(unittest.TestCase):
         command = "addusers"
         filename = os.path.join("tests", "assets", "usernames.csv")
         arguments = [command, groupname, "--users", filename]
-        arguments.append("--continue-if-exists")
+        # classic doesn't have this arg arguments.append("--continue-if-exists")
         _test_command(arguments)
 
     @pytest.mark.order(5)
@@ -250,34 +268,37 @@ class OnlineCommandTest(unittest.TestCase):
         self._create_project(parent_location)
         time.sleep(indexing_sleep_time)
         # project 1
-        self._create_project(project_name)
+        self._create_project(default_project_name)
         time.sleep(indexing_sleep_time)
         # project 2
-        self._create_project("project_name_2", project_name)
+        self._create_project("project_name_2", default_project_name)
         time.sleep(indexing_sleep_time)
         # project 3
-        parent_path = "{0}/{1}".format(project_name, project_name)
-        self._create_project(project_name, parent_path)
+        parent_path = "{0}/{1}".format(default_project_name, "project_name_2")
+        self._create_project(default_project_name, parent_path)
         time.sleep(indexing_sleep_time)
 
     @pytest.mark.order(8)
     def test_list_projects(self):
+        pytest.skip("not for tabcmd classic")
         self._list("projects")
 
     @pytest.mark.order(8)
     def test_list_flows(self):
+        pytest.skip("not for tabcmd classic")
         self._list("flows")
 
     @pytest.mark.order(8)
     def test_list_workbooks(self):
+        pytest.skip("not for tabcmd classic")
         self._list("workbooks")
 
     @pytest.mark.order(10)
     def test_delete_projects(self):
         if not project_admin:
             pytest.skip("Must be project administrator to create projects")
-        self._delete_project("project_name_2", project_name)  # project 2
-        self._delete_project(project_name)
+        self._delete_project("project_name_2", default_project_name)  # project 2
+        self._delete_project(default_project_name)
 
     @pytest.mark.order(10)
     def test_wb_publish(self):
@@ -294,7 +315,8 @@ class OnlineCommandTest(unittest.TestCase):
     def test_view_get_pdf(self):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
-        self._get_view(wb_name_on_server, sheet_name + ".pdf")
+        # bug in tabcmd classic: doesn't work without download name
+        self._get_view(wb_name_on_server, sheet_name, "downloaded_file.pdf")
 
     @pytest.mark.order(11)
     def test_view_get_csv(self):
