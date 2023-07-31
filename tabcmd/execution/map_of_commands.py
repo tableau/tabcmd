@@ -22,10 +22,10 @@ from tabcmd.commands.site.list_sites_command import *
 from tabcmd.commands.user.add_users_command import *
 from tabcmd.commands.user.create_site_users import *
 from tabcmd.commands.user.delete_site_users_command import *
-from tabcmd.commands.site.list_command import *
-
-# from tabcmd.commands.user.create_users import *
 from tabcmd.commands.user.remove_users_command import *
+from tabcmd.commands.site.list_command import *
+from tabcmd.commands.auth.version_command import *
+
 
 
 class CommandsMap:
@@ -58,4 +58,5 @@ class CommandsMap:
         ReencryptExtracts,
         RefreshExtracts,
         RemoveUserCommand,
+        VersionCommand
     ]
