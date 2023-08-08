@@ -25,7 +25,7 @@ Once you log in, the session will continue until it expires on the server or the
 
 If your session has expired and you want to log in using the same information you've already used, just specify the `--password` option or the `--token` option. The server and user name stored in the cookie will be used. (This will not work if `--no-cookie` was specified)
 
-If you do not provide a password or token or passwordfile you will be prompted for one. The command will fail if username/password is specified AND token name/token is specified.
+If you do not provide a password, token, passwordfile or tokenfile you will be prompted for one. The command will fail if username/password is specified AND token name/token is specified.
 
 Instead of calling the login command, all of the options for this command can be used while calling any other command, to create a session and run the command immediately. For example:
 ```shell
@@ -557,10 +557,24 @@ If you don't provide a name, it will be derived from the view or workbook name. 
 
 : Sets the height in pixels. Default is 600 px.
 
-?filter-name
+?FILTER_STRING, --filter FILTER_STRING
 
 : * To filter the data you download, add a parameter to the view or workbook url using the format `?<filter_name>=value`
- : * If filtering on a parameter and that parameter has a display name that matches the name of a measure or dimension, use `?Parameters.<filter_name>=value`
+: * If filtering on a parameter and that parameter has a display name that matches the name of a measure or dimension, use `?Parameters.<filter_name>=value`
+
+: As of tabcmd 2.0.11, an alternate method of setting filters is available. Instead of adding the filter to the end of the URL, 
+add it as another option on the command line. When you use this method, you do not need to encode any characters.
+
+Existing syntax: (can be used in classic tabcmd and Tabcmd 2)
+`tabcmd export \/WorldIndicators\/Population?Birth%20Rate%20Bin=1.5-3%25 --pdf`
+
+New syntax, with no need to encode the parameter values:
+`tabcmd export \/WorldIndicators\/Population --pdf -f b1.pdf --filter "Birth Rate Bin=1.5-3%"`
+
+
+: <div class="alert alert-info"><strong>Note</strong>:In both formats, the filter clause cannot contain a colon (:), a comma (,) or an ampersand (&). 
+You must replace each of these characters with an asterisk (*)</div>
+
 
 ?refresh=yes
 
@@ -731,6 +745,21 @@ tabcmd listsites --username adam --password mypassword
 \-\-get-extract-encryption-mode
 
 : The extract encryption mode for the site can be enforced, enabled or disabled. For more information, see [Extract Encryption at Rest](https://help.tableau.com/current/server/en-us/security_ear.htm).
+
+
+## list
+
+Returns a list of items of the specified content type on the current site..
+
+### Example
+
+```shell
+tabcmd list {projects,workbooks,datasources,flows} 
+```
+
+### Options
+
+\-d, \-\-details         Show more detailed info about each object
 
 
 ## publish *filename.twb(x)*, *filename.tds(x)*, or *filename.hyper*
