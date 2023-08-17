@@ -8,7 +8,7 @@ commandname = "login"
 
 
 @mock.patch("sys.argv", None)
-class LoginParserTest(unittest.TestCase):
+class LoginParserTest(ParserTestCase):
     @classmethod
     def setUpClass(cls):
         cls.parser_under_test = initialize_test_pieces(commandname, LoginCommand)

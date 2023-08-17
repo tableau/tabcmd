@@ -22,7 +22,7 @@ class VersionCommand(Server):
         # has no options
         pass
 
-    @staticmethod
-    def run_command(args):
-        logger = log(__class__.__name__, args.logging_level)
+    @classmethod
+    def run_command(cls, args):
+        logger = log(cls.__name__, args.logging_level)
         logger.info(VersionCommand.strings[0] + " v" + version + "\n")

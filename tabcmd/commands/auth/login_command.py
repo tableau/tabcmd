@@ -17,9 +17,9 @@ class LoginCommand(Server):
         # just uses global options
         pass
 
-    @staticmethod
-    def run_command(args):
-        logger = log(__class__.__name__, args.logging_level)
+    @classmethod
+    def run_command(cls, args):
+        logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
         session.create_session(args, logger)

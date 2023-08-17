@@ -31,14 +31,14 @@ class GetUrl(DatasourcesAndWorkbooks):
         # tabcmd get "/views/Finance/InvestmentGrowth.png?:size=640,480" -f growth.png
         # tabcmd get "/views/Finance/InvestmentGrowth.png?:refresh=yes" -f growth.png
 
-    @staticmethod
-    def run_command(args):
+    @classmethod
+    def run_command(cls, args):
         # A view can be returned in PDF, PNG, or CSV (summary data only) format.
         # A Tableau workbook is returned as a TWB if it connects to a datasource/live connection,
         # or a TWBX if it uses an extract.
         # A Tableau datasource is returned as a TDS if it connects to a live connection,
         # or a TDSX if it uses an extract.
-        logger = log(__class__.__name__, args.logging_level)
+        logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
@@ -181,7 +181,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             filename = GetUrl.filename_from_args(args.filename, view_item.name, "pdf")
             DatasourcesAndWorkbooks.save_to_file(logger, view_item.pdf, filename)
         except Exception as e:
-            Errors.exit_with_error(logger, e)
+            Errors.exit_with_error(logger, exception=e)
 
     @staticmethod
     def generate_png(logger, server, args, view_url):
@@ -195,7 +195,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             filename = GetUrl.filename_from_args(args.filename, view_item.name, "png")
             DatasourcesAndWorkbooks.save_to_file(logger, view_item.image, filename)
         except Exception as e:
-            Errors.exit_with_error(logger, e)
+            Errors.exit_with_error(logger, exception=e)
 
     @staticmethod
     def generate_csv(logger, server, args, view_url):
@@ -226,7 +226,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             server.workbooks.download(target_workbook.id, filepath=file_name_with_path, no_extract=False)
             logger.info(_("export.success").format(target_workbook.name, file_name_with_ext))
         except Exception as e:
-            Errors.exit_with_error(logger, e)
+            Errors.exit_with_error(logger, exception=e)
 
     @staticmethod
     def generate_tds(logger, server, args, file_extension):
@@ -243,4 +243,4 @@ class GetUrl(DatasourcesAndWorkbooks):
             server.datasources.download(target_datasource.id, filepath=file_name_with_path, no_extract=False)
             logger.info(_("export.success").format(target_datasource.name, file_name_with_ext))
         except Exception as e:
-            Errors.exit_with_error(logger, e)
+            Errors.exit_with_error(logger, exception=e)

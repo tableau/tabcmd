@@ -25,17 +25,18 @@ class DeleteExtracts(Server):
         set_project_arg(group)
         set_parent_project_arg(group)
 
-    @staticmethod
-    def run_command(args):
-        logger = log(__class__.__name__, args.logging_level)
+    @classmethod
+    def run_command(cls, args):
+        logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
         try:
             item = Extracts.get_wb_or_ds_for_extracts(args, logger, server)
+            job: TSC.JobItem
             if args.datasource:
                 logger.info(_("deleteextracts.for.datasource").format(args.datasource))
-                job: TSC.JobItem = server.datasources.delete_extract(item)
+                job = server.datasources.delete_extract(item)
             else:
                 if not args.include_all and not args.embedded_datasources:
                     Errors.exit_with_error(
@@ -43,12 +44,12 @@ class DeleteExtracts(Server):
                         _("extracts.workbook.errors.requires_datasources_or_include_all").format("deleteextracts"),
                     )
                 logger.info(_("deleteextracts.for.workbook_name").format(args.workbook))
-                job: TSC.JobItem = server.workbooks.delete_extract(
+                job = server.workbooks.delete_extract(
                     item, includeAll=args.include_all, datasources=args.embedded_datasources
                 )
 
         except Exception as e:
-            Errors.exit_with_error(logger, e)
+            Errors.exit_with_error(logger, exception=e)
 
         logger.info(_("common.output.job_queued_success"))
         logger.debug("Extract deletion queued with JobID: {}".format(job.id))

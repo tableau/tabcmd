@@ -12,9 +12,8 @@ line-length = 120
 target-version = ['py38', 'py39', 'py310', 'py311']
 extend-exclude = '^/bin/*'
 [tool.mypy]
-# check_untyped_defs = true
+check_untyped_defs = true
 disable_error_code = [
-    'annotation-unchecked'  # until we enable check_untyped_defs
 ]
 files = ["tabcmd", "tests"]
 show_error_codes = true

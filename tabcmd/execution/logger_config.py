@@ -42,7 +42,7 @@ def add_trace_level():
     FORMATS[trace_level] = FORMATS[logging.ERROR]
 
 
-def configure_log(name: str, logging_level_input: str):
+def configure_log(name: str, logging_level_input: str) -> logging.Logger:
     """function for logging statements to console and logfile"""
     logging_level = getattr(logging, logging_level_input.upper())
     log_format = FORMATS[logging_level]
@@ -62,5 +62,5 @@ def configure_log(name: str, logging_level_input: str):
 def log(file_name, logging_level):
     logger = configure_log(file_name, logging_level)
     if not hasattr(logger, "trace"):
-        logger.trace = logger.debug
+        logger.trace = logger.debug  # type: ignore
     return logger

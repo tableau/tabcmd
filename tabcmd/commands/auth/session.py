@@ -199,6 +199,9 @@ class Session:
         return tableau_server
 
     def _verify_server_connection_unauthed(self):
+        if not self.tableau_server:
+            Errors.exit_with_error(self.logger, "Attempted to verify non-existent server connection")
+            return  # make typing recognize self.tableau_server is not None after this line
         try:
             self.tableau_server.use_server_version()
         except requests.exceptions.ReadTimeout as timeout_error:
@@ -264,12 +267,15 @@ class Session:
 
     # server connection created, not yet logged in
     def _sign_in(self, tableau_auth) -> TSC.Server:
-        self.logger.debug(_("session.login") + self.server_url)
-
+        self.logger.debug(_("session.login"))
         self.logger.info(_("dataconnections.classes.tableau_server_site") + ": {}".format(self._site_display_name()))
         # self.logger.debug(_("listsites.output").format("", self.username or self.token_name, self.site_name))
+        if not self.tableau_server:
+            Errors.exit_with_error(self.logger, "Attempted to sign in with no server connection created")
+            return  # make typing recognize self.tableau_server is not None after this line
         try:
-            self.tableau_server.auth.sign_in(tableau_auth)  # it's the same call for token or user-pass
+            # it's the same call for token or user-pass
+            self.tableau_server.auth.sign_in(tableau_auth)
         except Exception as e:
             Errors.exit_with_error(self.logger, exception=e)
         try:
@@ -304,7 +310,7 @@ class Session:
         self._read_existing_state()
         self._update_session_data(args)
         self.logging_level = args.logging_level or self.logging_level
-        self.logger = logger or log(__class__.__name__, self.logging_level)
+        self.logger = logger or log(self.__class__.__name__, self.logging_level)
 
         credentials = None
         if args.password or args.password_file:
@@ -364,8 +370,8 @@ class Session:
         self.tableau_server = None
 
         self.certificate = None
-        self.no_certcheck = None
-        self.no_proxy = None
+        self.no_certcheck = False
+        self.no_proxy = True
         self.proxy = None
         self.timeout = None
 
@@ -450,7 +456,7 @@ class Session:
             json.dump(data, f)
 
     def _serialize_for_save(self):
-        data = {"tableau_auth": []}
+        data: Any = {"tableau_auth": []}
         data["tableau_auth"].append(
             {
                 "auth_token": self.auth_token,

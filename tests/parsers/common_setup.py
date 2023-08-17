@@ -1,6 +1,8 @@
+import argparse
+import unittest
+
 from tabcmd.execution import parent_parser
 from collections import namedtuple
-
 
 encoding = "utf-8-sig"
 
@@ -13,7 +15,7 @@ def mock_command_action():
 def initialize_test_pieces(commandname, command_object):
     manager = parent_parser.ParentParser()
     parser = manager.get_root_parser()
-    mock_command = namedtuple("TestObject", "name, run_command, description, define_args")
+    mock_command = namedtuple("mock_command", "name, run_command, description, define_args")
     mock_command.name = commandname
     mock_command.run_command = mock_command_action
     mock_command.description = "mock help text"
@@ -31,3 +33,7 @@ def initialize_test_pieces(commandname, command_object):
  bad mix of optional arguments
  has unknown arguments
  """
+
+
+class ParserTestCase(unittest.TestCase):
+    parser_under_test: argparse.ArgumentParser

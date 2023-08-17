@@ -12,9 +12,6 @@ class DatasourcesAndWorkbooks(Server):
     Base Class for Operations related to Datasources and Workbooks
     """
 
-    def __init__(self, args):
-        super().__init__(args)
-
     @staticmethod
     def get_view_url_from_names(wb_name, view_name):
         return "{}/sheets/{}".format(wb_name, view_name)

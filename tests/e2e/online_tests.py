@@ -4,6 +4,8 @@ import subprocess
 import time
 import unittest
 
+from typing import Optional
+
 try:
     from credentials import waremart_password, waremart_user
 except ModuleNotFoundError:
