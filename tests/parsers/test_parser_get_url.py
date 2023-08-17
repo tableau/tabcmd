@@ -6,13 +6,13 @@ from .common_setup import *
 commandname = "listsites"
 
 
-class GetUrlParserTest(unittest.TestCase):
+class GetUrlParserTest(ParserTestCase):
     @classmethod
     def setUpClass(cls):
         cls.parser_under_test = initialize_test_pieces(commandname, GetUrl)
 
     def test_get_url_parser_file(self):
-        mock_args = vars(argparse.Namespace(filename="helloworld"))
+        mock_args = list(vars(argparse.Namespace(filename="helloworld")))
         with self.assertRaises(SystemExit):
             args = self.parser_under_test.parse_args(mock_args)
 

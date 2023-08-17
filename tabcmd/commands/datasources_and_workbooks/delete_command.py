@@ -27,9 +27,9 @@ class DeleteCommand(DatasourcesAndWorkbooks):
         set_project_r_arg(group)
         set_parent_project_arg(group)
 
-    @staticmethod
-    def run_command(args):
-        logger = log(__class__.__name__, args.logging_level)
+    @classmethod
+    def run_command(cls, args):
+        logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
@@ -74,4 +74,4 @@ class DeleteCommand(DatasourcesAndWorkbooks):
                 server.datasources.delete(item_to_delete.id)
             logger.info(_("common.output.succeeded"))
         except Exception as e:
-            Errors.exit_with_error(logger, e)
+            Errors.exit_with_error(logger, exception=e)

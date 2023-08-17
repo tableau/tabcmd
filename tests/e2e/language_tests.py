@@ -101,6 +101,12 @@ class OnlineCommandTest(unittest.TestCase):
         arguments = [command, server_file]
         _test_command(arguments)
 
+    def _get_workbook(self, server_file):
+        command = "get"
+        server_file = "/workbooks/" + server_file
+        arguments = [command, server_file]
+        _test_command(arguments)
+
     def _get_custom_view(self):
         command = "get"
 
