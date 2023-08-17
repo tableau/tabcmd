@@ -6,7 +6,7 @@ from .common_setup import *
 commandname = "delete"
 
 
-class DeleteParserTest(unittest.TestCase):
+class DeleteParserTest(ParserTestCase):
     @classmethod
     def setUpClass(cls):
         cls.parser_under_test = initialize_test_pieces(commandname, DeleteCommand)

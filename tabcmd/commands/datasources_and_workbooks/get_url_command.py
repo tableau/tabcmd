@@ -31,14 +31,14 @@ class GetUrl(DatasourcesAndWorkbooks):
         # tabcmd get "/views/Finance/InvestmentGrowth.png?:size=640,480" -f growth.png
         # tabcmd get "/views/Finance/InvestmentGrowth.png?:refresh=yes" -f growth.png
 
-    @staticmethod
-    def run_command(args):
+    @classmethod
+    def run_command(cls, args):
         # A view can be returned in PDF, PNG, or CSV (summary data only) format.
         # A Tableau workbook is returned as a TWB if it connects to a datasource/live connection,
         # or a TWBX if it uses an extract.
         # A Tableau datasource is returned as a TDS if it connects to a live connection,
         # or a TDSX if it uses an extract.
-        logger = log(__class__.__name__, args.logging_level)
+        logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)

@@ -26,9 +26,9 @@ class CreateUsersCommand(UserCommand):
         set_completeness_options(args_group)
         UserCommand.set_auth_arg(args_group)
 
-    @staticmethod
-    def run_command(args):
-        logger = log(__class__.__name__, args.logging_level)
+    @classmethod
+    def run_command(cls, args):
+        logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)

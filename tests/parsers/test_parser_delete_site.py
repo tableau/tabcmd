@@ -6,7 +6,7 @@ from .common_setup import *
 commandname = "deletesite"
 
 
-class DeleteSiteParserTest(unittest.TestCase):
+class DeleteSiteParserTest(ParserTestCase):
     @classmethod
     def setUpClass(cls):
         cls.parser_under_test = initialize_test_pieces(commandname, DeleteSiteCommand)

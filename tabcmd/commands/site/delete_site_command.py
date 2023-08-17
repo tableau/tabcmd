@@ -20,9 +20,9 @@ class DeleteSiteCommand(Server):
         args_group = delete_site_parser.add_argument_group(title=DeleteSiteCommand.name)
         args_group.add_argument("site_name_to_delete", metavar="site-name", help=strings[2])
 
-    @staticmethod
-    def run_command(args):
-        logger = log(__class__.__name__, args.logging_level)
+    @classmethod
+    def run_command(cls, args):
+        logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
