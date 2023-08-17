@@ -10,7 +10,6 @@ pagesize = TSC.PDFRequestOptions.PageType  # type alias for brevity
 
 
 class ExportCommand(DatasourcesAndWorkbooks):
-
     name: str = "export"
     description: str = _("export.short_description")
 

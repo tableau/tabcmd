@@ -181,8 +181,8 @@ class ParentParser:
 
 
 class Help:
-
     parser = None
+
     # This needs to have access to the parser when it gets called
     def __init__(self, _parser: ParentParser):
         self.parser = _parser

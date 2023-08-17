@@ -255,7 +255,6 @@ class UserCommand(Server):
     def act_on_users(
         logger: logging.Logger, server: object, action_name: str, server_method: Callable, args: argparse.Namespace
     ) -> None:
-
         group = None
         try:
             group = UserCommand.find_group(logger, server, args.name)

@@ -65,7 +65,6 @@ def task_po():
 
     def process_locales():
         for current_locale in LOCALES:
-
             LOC_PATH = "tabcmd/locales/" + current_locale
             for file in glob.glob(LOC_PATH + "/*.properties"):
                 basename = os.path.basename(file).split(".")[0]
@@ -129,7 +128,6 @@ def task_merge():
 
     def process_locales():
         for current_locale in LOCALES:
-
             LOC_PATH = "tabcmd/locales/" + current_locale + "/LC_MESSAGES"
 
             with open(LOC_PATH + "/tabcmd.po", "w+", encoding="utf-8") as outfile:
@@ -156,7 +154,6 @@ def task_mo():
 
     def process_locales():
         for current_locale in LOCALES:
-
             LOC_PATH = "tabcmd/locales/" + current_locale + "/LC_MESSAGES"
 
             print("writing final tabcmd.mo file")
@@ -174,7 +171,6 @@ def task_mo():
 
 
 def task_version():
-
     """Generates a metadata info file with current version to be bundled by pyinstaller"""
 
     def write_for_pyinstaller():

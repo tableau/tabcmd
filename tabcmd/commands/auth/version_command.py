@@ -24,6 +24,5 @@ class VersionCommand(Server):
 
     @staticmethod
     def run_command(args):
-
         logger = log(__class__.__name__, args.logging_level)
         logger.info(VersionCommand.strings[0] + " v" + version + "\n")

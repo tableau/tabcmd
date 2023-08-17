@@ -10,7 +10,6 @@ from tabcmd.execution.logger_config import log
 
 
 class RefreshExtracts(Server):
-
     name: str = "refreshextracts"
     description: str = _("refreshextracts.short_description")
 

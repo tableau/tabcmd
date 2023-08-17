@@ -25,6 +25,7 @@ BUT filename, username -> filename, username in command/parser
 
 """
 
+
 # argparse does case-sensitive comparisons of string inputs by default
 # I want the user to be able to enter e.g. "viewer" and have it accepted as "Viewer"
 # https://stackoverflow.com/questions/56838004/
@@ -133,6 +134,7 @@ def set_encryption_option(parser):
 
 # item arguments: datasource, workbook, project, url ...
 
+
 # for some reason in parser.project, publish-samples it uses -n for destination project name
 # for publish it uses -r for destination project name
 # but parser.site uses -r for site-content-url
@@ -212,7 +214,6 @@ def set_site_id_args(parser):
 
 # create-site/update-site - lots of these options are never used elsewhere
 def set_common_site_args(parser):
-
     parser = set_site_id_args(parser)
 
     parser.add_argument("--user-quota", type=int, help="Maximum number of users that can be added to the site.")

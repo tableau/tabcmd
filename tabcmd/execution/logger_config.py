@@ -10,6 +10,7 @@ FORMATS = {
     logging.DEBUG: "%(asctime)s %(levelname)-5s: (%(name)-10s %(filename)-10s: %(lineno)d): %(message)-30s",
 }
 
+
 # https://stackoverflow.com/questions/2183233/how-to-add-a-custom-loglevel-to-pythons-logging-facility
 def add_log_level(level_name, level_num, method_name=None):
     if not method_name:

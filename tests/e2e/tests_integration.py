@@ -15,6 +15,7 @@ except ImportError:
 fakeserver = "http://SRVR"
 logging.disable(logging.ERROR)
 
+
 # these are integration tests because they don't just run a command, they call interior methods
 # pytest -v tests/e2e/integration_tests.py
 class E2EJsonTests(unittest.TestCase):
@@ -37,7 +38,6 @@ class E2EJsonTests(unittest.TestCase):
     reason="'No credentials file found to run tests against a live server",
 )
 class E2EServerTests(unittest.TestCase):
-
     saved_site_id = ""
 
     @staticmethod

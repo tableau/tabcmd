@@ -90,7 +90,6 @@ class Errors:
             # session.renew_session()
             return
         if exception.__class__ == tableauserverclient.ServerResponseError:
-
             logger.error(exception)
         else:
             logger.exception(exception)

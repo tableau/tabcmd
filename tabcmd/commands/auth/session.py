@@ -242,7 +242,6 @@ class Session:
         elif self.token_name:
             self.logger.info("=====   Token Name: {}".format(self.token_name))
 
-
     # side-effect: sets self.username
     def _validate_existing_signin(self):
         try:

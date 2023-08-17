@@ -51,6 +51,8 @@ def set_client_locale(lang: str = "", logger=None) -> Optional[Callable]:
 
 
 """Get absolute path to resource, works for unbundled (e.g dev) and when bundled by PyInstaller"""
+
+
 # https://stackoverflow.com/questions/7674790/bundling-data-files-with-pyinstaller-onefile/13790741#13790741
 def define_locale_dir(logger):
     try:

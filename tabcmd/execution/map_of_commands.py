@@ -27,7 +27,6 @@ from tabcmd.commands.site.list_command import *
 from tabcmd.commands.auth.version_command import *
 
 
-
 class CommandsMap:
     commands_hash_map = [
         # not yet implemented "createusers": ("createusers", CreateUserCommand, "Create users on the server"),
@@ -58,5 +57,5 @@ class CommandsMap:
         ReencryptExtracts,
         RefreshExtracts,
         RemoveUserCommand,
-        VersionCommand
+        VersionCommand,
     ]

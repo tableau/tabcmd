@@ -81,7 +81,6 @@ class GeturlTests(unittest.TestCase):
 
 @mock.patch("tableauserverclient.ViewItem", fake_item)
 class ExportTests(unittest.TestCase):
-
     mock_logger = mock.MagicMock("logger")
     fake_item.csv = mock.MagicMock("bytes[]")
     fake_item.pdf = mock.MagicMock("bytes")
