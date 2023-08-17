@@ -26,9 +26,9 @@ class CreateExtracts(Server):
         set_project_arg(group)
         set_parent_project_arg(group)
 
-    @staticmethod
-    def run_command(args):
-        logger = log(__class__.__name__, args.logging_level)
+    @classmethod
+    def run_command(cls, args):
+        logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
@@ -39,9 +39,10 @@ class CreateExtracts(Server):
         )
         try:
             item = Extracts.get_wb_or_ds_for_extracts(args, logger, server)
+            job: TSC.JobItem
             if args.datasource:
                 logger.info(_("createextracts.for.datasource").format(args.datasource))
-                job: TSC.JobItem = server.datasources.create_extract(item, encrypt=args.encrypt)
+                job = server.datasources.create_extract(item, encrypt=args.encrypt)
 
             else:
                 if not args.include_all and not args.embedded_datasources:
@@ -51,7 +52,7 @@ class CreateExtracts(Server):
                     )
 
                 logger.info(_("createextracts.for.workbook_name").format(args.workbook))
-                job: TSC.JobItem = server.workbooks.create_extract(
+                job = server.workbooks.create_extract(
                     item,
                     encrypt=args.encrypt,
                     includeAll=args.include_all,
@@ -62,7 +63,7 @@ class CreateExtracts(Server):
             if args.continue_if_exists and Errors.is_resource_conflict(e):
                 logger.info(_("errors.xmlapi.already_exists").format(_("content_type.extract"), args.name))
                 return
-            Errors.exit_with_error(logger, e)
+            Errors.exit_with_error(logger, exception=e)
 
         logger.info(_("common.output.job_queued_success"))
         logger.debug("Extract creation queued with JobID: {}".format(job.id))

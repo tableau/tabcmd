@@ -7,7 +7,7 @@ from .common_setup import *
 commandname = "addusers"
 
 
-class AddUsersParserTest(unittest.TestCase):
+class AddUsersParserTest(ParserTestCase):
     @classmethod
     def setUpClass(cls):
         cls.parser_under_test = initialize_test_pieces(commandname, AddUserCommand)
@@ -26,7 +26,7 @@ class AddUsersParserTest(unittest.TestCase):
         with mock.patch("builtins.open", mock.mock_open(read_data="test")) as open_file:
             mock_args = [commandname, "group-name", "--users", "users.csv"]
             args = self.parser_under_test.parse_args(mock_args)
-            self.assertEqual(args.name, "group-name"), args
+            self.assertEqual(args.name, "group-name", args)
             open_file.assert_called_with("users.csv", "r", -1, encoding, None), args
 
     @mock.patch("builtins.open")
