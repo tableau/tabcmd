@@ -6,7 +6,7 @@ from .common_setup import *
 commandname = "creategroup"
 
 
-class CreateGroupParserTest(unittest.TestCase):
+class CreateGroupParserTest(ParserTestCase):
     @classmethod
     def setUpClass(cls):
         cls.parser_under_test = initialize_test_pieces(commandname, CreateGroupCommand)

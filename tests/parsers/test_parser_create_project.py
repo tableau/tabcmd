@@ -6,7 +6,7 @@ from .common_setup import *
 commandname = "createproject"
 
 
-class CreateProjectParserTest(unittest.TestCase):
+class CreateProjectParserTest(ParserTestCase):
     @classmethod
     def setUpClass(cls):
         cls.parser_under_test = initialize_test_pieces(commandname, CreateProjectCommand)
