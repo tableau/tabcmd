@@ -32,6 +32,10 @@ Before we can accept pull requests from contributors, we require a signed [Contr
 To work on the tabcmd code, use these scripts.
 _(note that running mypy and black is required for code being submitted to the repo)_
 
+
+Recommended: create and activate a venv for development
+> python -m venv my-dev
+> my-dev/Scripts/activate  # or OS-specific call https://docs.python.org/3/library/venv.html
 - build
 > pip install build
 > python -m build
@@ -94,12 +98,13 @@ It will be a x.y.dev0 pre-release version except for commits with a new version 
 A new tag is created with the name of each release on github. 
 
 ### Packaging
+First build the module
+> python -m build
 Before packaging, we produce a current metadata file to include in the bundle
 > doit version 
 
 Packaging is done with pyinstaller, which will build an executable for the platform it runs on. 
-A github action runs on Mac, Windows and Linux to generate each executable.
-
+A github action runs on Mac, Windows and Linux to generate each executable: check package.yml for the OS-specific command line
 > pyinstaller tabcmd-windows.spec .... 
  
 Packaging produces executables in the dist folder. To run:

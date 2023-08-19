@@ -9,7 +9,7 @@ packages = ["tabcmd"]
 tabcmd = ["tabcmd.locales/**/*.mo"]
 [tool.black]
 line-length = 120
-target-version = ['py38', 'py39', 'py310', 'py311']
+target-version = ['py38', 'py39', 'py310', 'py311']  # must also update tabcmd.py when this changes
 extend-exclude = '^/bin/*'
 [tool.mypy]
 check_untyped_defs = true
