@@ -37,7 +37,7 @@ project_name = "test-proj-" + unique
 server_admin = False
 site_admin = True
 project_admin = True
-extracts_enabled = False
+extract_encryption_enabled = False
 use_tabcmd_classic = False # toggle between testing using tabcmd 2 or tabcmd classic
 
 
@@ -50,7 +50,8 @@ def _test_command(test_args: list[str]):
     # call the executable directly: lets us drop in classic tabcmd
     if use_tabcmd_classic:
         calling_args = ["C:\\Program Files\\Tableau\\Tableau Server\\2023.3\\extras\\Command Line Utility\\tabcmd.exe"] + test_args + ["--no-certcheck"]
-    print(calling_args)
+    if "--db-password" not in calling_args:
+        print(calling_args)
     return subprocess.check_call(calling_args)
 
 
@@ -71,7 +72,8 @@ class OnlineCommandTest(unittest.TestCase):
         if parent_path:
             arguments.append("--parent-project-path")
             arguments.append(parent_path)
-        # classic doesn't have this arg arguments.append("--continue-if-exists")
+        if not use_tabcmd_classic:
+            arguments.append("--continue-if-exists")
         _test_command(arguments)
 
     def _delete_project(self, project_name, parent_path=None):
@@ -152,7 +154,7 @@ class OnlineCommandTest(unittest.TestCase):
     def _create_extract(self, type, wb_name):
         command = "createextracts"
         arguments = [command, type, wb_name]
-        if extracts_enabled:
+        if extract_encryption_enabled:
             arguments.append("--encrypt")
         _test_command(arguments)
 
@@ -234,7 +236,8 @@ class OnlineCommandTest(unittest.TestCase):
         groupname = group_name
         command = "creategroup"
         arguments = [command, groupname]
-        # classic doesn't have this arg arguments.append("--continue-if-exists")
+        if not use_tabcmd_classic:
+            arguments.append("--continue-if-exists")
         _test_command(arguments)
 
     @pytest.mark.order(4)
@@ -246,7 +249,8 @@ class OnlineCommandTest(unittest.TestCase):
         command = "addusers"
         filename = os.path.join("tests", "assets", "usernames.csv")
         arguments = [command, groupname, "--users", filename]
-        # classic doesn't have this arg arguments.append("--continue-if-exists")
+        if not use_tabcmd_classic:
+            arguments.append("--continue-if-exists")
         _test_command(arguments)
 
     @pytest.mark.order(5)
