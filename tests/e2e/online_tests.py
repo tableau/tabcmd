@@ -50,7 +50,7 @@ def _test_command(test_args: list[str]):
     # call the executable directly: lets us drop in classic tabcmd
     if use_tabcmd_classic:
         calling_args = ["C:\\Program Files\\Tableau\\Tableau Server\\2023.3\\extras\\Command Line Utility\\tabcmd.exe"] + test_args + ["--no-certcheck"]
-    if "--db-password" not in calling_args:
+    if database_password not in calling_args:
         print(calling_args)
     return subprocess.check_call(calling_args)
 
