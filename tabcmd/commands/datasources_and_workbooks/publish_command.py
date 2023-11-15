@@ -74,8 +74,6 @@ class PublishCommand(DatasourcesAndWorkbooks):
 
             new_workbook = TSC.WorkbookItem(project_id, name=args.name, show_tabs=args.tabbed)
             try:
-                if creds:
-                    logger.debug("Workbook credentials object: " + creds)
                 new_workbook = server.workbooks.publish(
                     new_workbook,
                     args.filename,

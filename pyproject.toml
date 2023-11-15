@@ -47,6 +47,7 @@ dependencies = [
     "doit",
     "ftfy",
     "pyinstaller_versionfile",
+    "pytest-order",
     "requests>=2.25,<3.0",
     "setuptools_scm",
     "types-appdirs",
