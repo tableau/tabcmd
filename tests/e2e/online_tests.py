@@ -154,7 +154,7 @@ class OnlineCommandTest(unittest.TestCase):
     def _create_extract(self, type, wb_name):
         command = "createextracts"
         arguments = [command, type, wb_name]
-        if extract_encryption_enabled:
+        if extract_encryption_enabled and not use_tabcmd_classic:
             arguments.append("--encrypt")
         _test_command(arguments)
 
