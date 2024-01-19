@@ -40,11 +40,16 @@ project_admin = True
 
 
 def _test_command(test_args: list[str]):
+    if test_args == []:
+        test_args = ["version"]
+    else: 
+        test_args.append("--no-certcheck")
     # this will raise an exception if it gets a non-zero return code
     # that should bubble up and fail the test?
     # call the executable directly: lets us drop in classic tabcmd
     calling_args = [
-        "c:\\Program Files\\Tableau\\Tableau Server\\2023.1\\extras\\Command Line Utility\\tabcmd.exe"
+        "python", "-m", "tabcmd"
+        # "c:\\Program Files\\Tableau\\Tableau Server\\2023.1\\extras\\Command Line Utility\\tabcmd.exe"
     ] + test_args
     # uncomment this line instead to use the current build of tabcmd 2
     # calling_args = ["python", "-m", "tabcmd"] + test_args + [debug_log] + ["--no-certcheck"]
@@ -58,8 +63,7 @@ class OnlineCommandTest(unittest.TestCase):
 
     @classmethod
     def setup_class(cls):
-        arguments = ["version"]
-        _test_command(arguments)
+        _test_command([])
 
     # Individual methods that implement a command
 

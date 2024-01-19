@@ -1,0 +1,2994 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20191.20.1008.2115                               -->
+<workbook source-build='2019.1.21+ (20191.20.1008.2115)' source-platform='win' version='18.1' xml:base='http://localhost:7000' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <repository-location derived-from='http://qa-server/workbooks/waremartcubewithfilters?rev=1.2' id='waremartcubewithfilters' path='/workbooks' revision='1.0' />
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <style-theme name='modern' />
+  <datasources>
+    <datasource caption='Waremart (TestV1)' inline='true' name='msolap.40639.426306921298' version='18.1'>
+      <connection authentication='msolap' class='msolap' dbname='TestV1' server='msas.test.tsi.lan' tablename='Waremart' use-nonemptycrossjoin='yes' username='svc_jsapi_query_msas' workgroup-auth-mode='as-is'>
+        <metadata-records>
+          <metadata-record class='dimension'>
+            <remote-name>[Customer]</remote-name>
+            <remote-type>0</remote-type>
+            <local-name>[Customer]</local-name>
+            <remote-alias>[Customer]</remote-alias>
+            <caption>Customer</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>16498</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DEFAULT_HIERARCHY'>&quot;[Customer].[Customer]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='dimension'>
+            <remote-name>[Measures]</remote-name>
+            <remote-type>1</remote-type>
+            <local-name>[Measures]</local-name>
+            <remote-alias>[Measures]</remote-alias>
+            <caption>Measures</caption>
+            <local-type>real</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>12</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DEFAULT_HIERARCHY'>&quot;[Measures]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='dimension'>
+            <remote-name>[Product]</remote-name>
+            <remote-type>0</remote-type>
+            <local-name>[Product]</local-name>
+            <remote-alias>[Product]</remote-alias>
+            <caption>Product</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>7251</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DEFAULT_HIERARCHY'>&quot;[Product].[ByCategory]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='dimension'>
+            <remote-name>[Promotion]</remote-name>
+            <remote-type>0</remote-type>
+            <local-name>[Promotion]</local-name>
+            <remote-alias>[Promotion]</remote-alias>
+            <caption>Promotion</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>41</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DEFAULT_HIERARCHY'>&quot;[Promotion].[Hierarchy]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='dimension'>
+            <remote-name>[Return Reason]</remote-name>
+            <remote-type>0</remote-type>
+            <local-name>[Return Reason]</local-name>
+            <remote-alias>[Return Reason]</remote-alias>
+            <caption>Return Reason</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>7</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DEFAULT_HIERARCHY'>&quot;[Return Reason].[Hierarchy]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='dimension'>
+            <remote-name>[Terms]</remote-name>
+            <remote-type>0</remote-type>
+            <local-name>[Terms]</local-name>
+            <remote-alias>[Terms]</remote-alias>
+            <caption>Terms</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>8</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DEFAULT_HIERARCHY'>&quot;[Terms].[Term ID]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='dimension'>
+            <remote-name>[Time]</remote-name>
+            <remote-type>2</remote-type>
+            <local-name>[Time]</local-name>
+            <remote-alias>[Time]</remote-alias>
+            <caption>Time</caption>
+            <local-type>datetime</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>732</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DEFAULT_HIERARCHY'>&quot;[Time].[YQMD]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='dimension'>
+            <remote-name>[Time Series]</remote-name>
+            <remote-type>0</remote-type>
+            <local-name>[Time Series]</local-name>
+            <remote-alias>[Time Series]</remote-alias>
+            <caption>Time Series</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>2</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DEFAULT_HIERARCHY'>&quot;[Time Series].[Hierarchy]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Customer].[City]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Customer].[City]</local-name>
+            <parent-name>[Customer]</parent-name>
+            <remote-alias>[Customer].[City]</remote-alias>
+            <caption>City</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>269</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Customer].[City].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Customer].[Club Level]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Customer].[Club Level]</local-name>
+            <parent-name>[Customer]</parent-name>
+            <remote-alias>[Customer].[Club Level]</remote-alias>
+            <caption>Club Level</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>5</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Customer].[Club Level].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Customer].[Cust Education]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Customer].[Cust Education]</local-name>
+            <parent-name>[Customer]</parent-name>
+            <remote-alias>[Customer].[Cust Education]</remote-alias>
+            <caption>Cust Education</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>8</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Customer].[Cust Education].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>true</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Customer].[Cust Full Name]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Customer].[Cust Full Name]</local-name>
+            <parent-name>[Customer]</parent-name>
+            <remote-alias>[Customer].[Cust Full Name]</remote-alias>
+            <caption>Cust Full Name</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>16037</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Customer].[Cust Full Name].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Customer].[Cust MVHH]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Customer].[Cust MVHH]</local-name>
+            <parent-name>[Customer]</parent-name>
+            <remote-alias>[Customer].[Cust MVHH]</remote-alias>
+            <caption>Cust MVHH</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>52</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Customer].[Cust MVHH].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>true</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Customer].[Cust Num Children]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Customer].[Cust Num Children]</local-name>
+            <parent-name>[Customer]</parent-name>
+            <remote-alias>[Customer].[Cust Num Children]</remote-alias>
+            <caption>Cust Num Children</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>5</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Customer].[Cust Num Children].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>true</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Customer].[Cust Region]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Customer].[Cust Region]</local-name>
+            <parent-name>[Customer]</parent-name>
+            <remote-alias>[Customer].[Cust Region]</remote-alias>
+            <caption>Cust Region</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>9</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Customer].[Cust Region].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>true</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Customer].[Cust Sex]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Customer].[Cust Sex]</local-name>
+            <parent-name>[Customer]</parent-name>
+            <remote-alias>[Customer].[Cust Sex]</remote-alias>
+            <caption>Cust Sex</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>4</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Customer].[Cust Sex].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>true</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Customer].[Cust State]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Customer].[Cust State]</local-name>
+            <parent-name>[Customer]</parent-name>
+            <remote-alias>[Customer].[Cust State]</remote-alias>
+            <caption>Cust State</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>49</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Customer].[Cust State].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>true</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Customer].[Customer]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Customer].[Customer]</local-name>
+            <parent-name>[Customer]</parent-name>
+            <remote-alias>[Customer].[Customer]</remote-alias>
+            <caption>Customer</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>16825</approx-count>
+            <contains-null>true</contains-null>
+            <default>true</default>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Customer].[Customer].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>true</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Customer].[Customer ID]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Customer].[Customer ID]</local-name>
+            <parent-name>[Customer]</parent-name>
+            <remote-alias>[Customer].[Customer ID]</remote-alias>
+            <caption>Customer ID</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>16498</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Customer].[Customer ID].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Customer].[Education]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Customer].[Education]</local-name>
+            <parent-name>[Customer]</parent-name>
+            <remote-alias>[Customer].[Education]</remote-alias>
+            <caption>Education</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>8</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Customer].[Education].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Customer].[Married]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Customer].[Married]</local-name>
+            <parent-name>[Customer]</parent-name>
+            <remote-alias>[Customer].[Married]</remote-alias>
+            <caption>Married</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>4</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Customer].[Married].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Customer].[MVHH Code]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Customer].[MVHH Code]</local-name>
+            <parent-name>[Customer]</parent-name>
+            <remote-alias>[Customer].[MVHH Code]</remote-alias>
+            <caption>MVHH Code</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>52</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Customer].[MVHH Code].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Customer].[Num Children]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Customer].[Num Children]</local-name>
+            <parent-name>[Customer]</parent-name>
+            <remote-alias>[Customer].[Num Children]</remote-alias>
+            <caption>Num Children</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>5</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Customer].[Num Children].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Customer].[Region]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Customer].[Region]</local-name>
+            <parent-name>[Customer]</parent-name>
+            <remote-alias>[Customer].[Region]</remote-alias>
+            <caption>Region</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>9</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Customer].[Region].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Customer].[Sex]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Customer].[Sex]</local-name>
+            <parent-name>[Customer]</parent-name>
+            <remote-alias>[Customer].[Sex]</remote-alias>
+            <caption>Sex</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>4</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Customer].[Sex].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Customer].[State]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Customer].[State]</local-name>
+            <parent-name>[Customer]</parent-name>
+            <remote-alias>[Customer].[State]</remote-alias>
+            <caption>State</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>49</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Customer].[State].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[City].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Customer].[City].[(All)]</local-name>
+            <parent-name>[Customer].[City]</parent-name>
+            <remote-alias>[Customer].[City].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[City].[City]</remote-name>
+            <local-name>[Customer].[City].[City]</local-name>
+            <parent-name>[Customer].[City]</parent-name>
+            <remote-alias>[Customer].[City].[City].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>City</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>269</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Customer].[City] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Club Level].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Customer].[Club Level].[(All)]</local-name>
+            <parent-name>[Customer].[Club Level]</parent-name>
+            <remote-alias>[Customer].[Club Level].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Club Level].[Club Level]</remote-name>
+            <local-name>[Customer].[Club Level].[Club Level]</local-name>
+            <parent-name>[Customer].[Club Level]</parent-name>
+            <remote-alias>[Customer].[Club Level].[Club Level].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Club Level</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>5</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Customer].[Club Level] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Cust Education].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Customer].[Cust Education].[(All)]</local-name>
+            <parent-name>[Customer].[Cust Education]</parent-name>
+            <remote-alias>[Customer].[Cust Education].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Cust Education].[Education]</remote-name>
+            <local-name>[Customer].[Cust Education].[Education]</local-name>
+            <parent-name>[Customer].[Cust Education]</parent-name>
+            <remote-alias>[Customer].[Cust Education].[Education].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Education</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>8</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Customer].[Education] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Cust Full Name].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Customer].[Cust Full Name].[(All)]</local-name>
+            <parent-name>[Customer].[Cust Full Name]</parent-name>
+            <remote-alias>[Customer].[Cust Full Name].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Cust Full Name].[Cust Full Name]</remote-name>
+            <local-name>[Customer].[Cust Full Name].[Cust Full Name]</local-name>
+            <parent-name>[Customer].[Cust Full Name]</parent-name>
+            <remote-alias>[Customer].[Cust Full Name].[Cust Full Name].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Cust Full Name</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>16037</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Customer].[Cust Full Name] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Cust MVHH].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Customer].[Cust MVHH].[(All)]</local-name>
+            <parent-name>[Customer].[Cust MVHH]</parent-name>
+            <remote-alias>[Customer].[Cust MVHH].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Cust MVHH].[MVHH Code]</remote-name>
+            <local-name>[Customer].[Cust MVHH].[MVHH Code]</local-name>
+            <parent-name>[Customer].[Cust MVHH]</parent-name>
+            <remote-alias>[Customer].[Cust MVHH].[MVHH Code].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>MVHH Code</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>52</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Customer].[MVHH Code] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Cust Num Children].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Customer].[Cust Num Children].[(All)]</local-name>
+            <parent-name>[Customer].[Cust Num Children]</parent-name>
+            <remote-alias>[Customer].[Cust Num Children].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Cust Num Children].[Num Children]</remote-name>
+            <local-name>[Customer].[Cust Num Children].[Num Children]</local-name>
+            <parent-name>[Customer].[Cust Num Children]</parent-name>
+            <remote-alias>[Customer].[Cust Num Children].[Num Children].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Num Children</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>5</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Customer].[Num Children] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Cust Region].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Customer].[Cust Region].[(All)]</local-name>
+            <parent-name>[Customer].[Cust Region]</parent-name>
+            <remote-alias>[Customer].[Cust Region].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Cust Region].[Region]</remote-name>
+            <local-name>[Customer].[Cust Region].[Region]</local-name>
+            <parent-name>[Customer].[Cust Region]</parent-name>
+            <remote-alias>[Customer].[Cust Region].[Region].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Region</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>9</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Customer].[Region] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Cust Sex].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Customer].[Cust Sex].[(All)]</local-name>
+            <parent-name>[Customer].[Cust Sex]</parent-name>
+            <remote-alias>[Customer].[Cust Sex].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Cust Sex].[Sex]</remote-name>
+            <local-name>[Customer].[Cust Sex].[Sex]</local-name>
+            <parent-name>[Customer].[Cust Sex]</parent-name>
+            <remote-alias>[Customer].[Cust Sex].[Sex].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Sex</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>4</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Customer].[Sex] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Cust State].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Customer].[Cust State].[(All)]</local-name>
+            <parent-name>[Customer].[Cust State]</parent-name>
+            <remote-alias>[Customer].[Cust State].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Cust State].[State]</remote-name>
+            <local-name>[Customer].[Cust State].[State]</local-name>
+            <parent-name>[Customer].[Cust State]</parent-name>
+            <remote-alias>[Customer].[Cust State].[State].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>State</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>49</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Customer].[State] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Customer].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Customer].[Customer].[(All)]</local-name>
+            <parent-name>[Customer].[Customer]</parent-name>
+            <remote-alias>[Customer].[Customer].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Customer].[Region]</remote-name>
+            <local-name>[Customer].[Customer].[Region]</local-name>
+            <parent-name>[Customer].[Customer]</parent-name>
+            <remote-alias>[Customer].[Customer].[Region].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Region</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>9</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Customer].[Region] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Customer].[State]</remote-name>
+            <local-name>[Customer].[Customer].[State]</local-name>
+            <parent-name>[Customer].[Customer]</parent-name>
+            <remote-alias>[Customer].[Customer].[State].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>State</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>49</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Customer].[State] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Customer].[City]</remote-name>
+            <local-name>[Customer].[Customer].[City]</local-name>
+            <parent-name>[Customer].[Customer]</parent-name>
+            <remote-alias>[Customer].[Customer].[City].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>City</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>269</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Customer].[City] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Customer].[Customer ID]</remote-name>
+            <local-name>[Customer].[Customer].[Customer ID]</local-name>
+            <parent-name>[Customer].[Customer]</parent-name>
+            <remote-alias>[Customer].[Customer].[Customer ID].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Customer ID</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>16498</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Customer].[Customer ID] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Customer ID].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Customer].[Customer ID].[(All)]</local-name>
+            <parent-name>[Customer].[Customer ID]</parent-name>
+            <remote-alias>[Customer].[Customer ID].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Customer ID].[Customer ID]</remote-name>
+            <local-name>[Customer].[Customer ID].[Customer ID]</local-name>
+            <parent-name>[Customer].[Customer ID]</parent-name>
+            <remote-alias>[Customer].[Customer ID].[Customer ID].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Customer ID</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>16498</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Customer].[Customer ID] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Education].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Customer].[Education].[(All)]</local-name>
+            <parent-name>[Customer].[Education]</parent-name>
+            <remote-alias>[Customer].[Education].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Education].[Education]</remote-name>
+            <local-name>[Customer].[Education].[Education]</local-name>
+            <parent-name>[Customer].[Education]</parent-name>
+            <remote-alias>[Customer].[Education].[Education].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Education</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>8</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Customer].[Education] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Married].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Customer].[Married].[(All)]</local-name>
+            <parent-name>[Customer].[Married]</parent-name>
+            <remote-alias>[Customer].[Married].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Married].[Married]</remote-name>
+            <local-name>[Customer].[Married].[Married]</local-name>
+            <parent-name>[Customer].[Married]</parent-name>
+            <remote-alias>[Customer].[Married].[Married].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Married</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>4</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Customer].[Married] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[MVHH Code].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Customer].[MVHH Code].[(All)]</local-name>
+            <parent-name>[Customer].[MVHH Code]</parent-name>
+            <remote-alias>[Customer].[MVHH Code].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[MVHH Code].[MVHH Code]</remote-name>
+            <local-name>[Customer].[MVHH Code].[MVHH Code]</local-name>
+            <parent-name>[Customer].[MVHH Code]</parent-name>
+            <remote-alias>[Customer].[MVHH Code].[MVHH Code].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>MVHH Code</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>52</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Customer].[MVHH Code] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Num Children].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Customer].[Num Children].[(All)]</local-name>
+            <parent-name>[Customer].[Num Children]</parent-name>
+            <remote-alias>[Customer].[Num Children].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Num Children].[Num Children]</remote-name>
+            <local-name>[Customer].[Num Children].[Num Children]</local-name>
+            <parent-name>[Customer].[Num Children]</parent-name>
+            <remote-alias>[Customer].[Num Children].[Num Children].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Num Children</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>5</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Customer].[Num Children] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Region].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Customer].[Region].[(All)]</local-name>
+            <parent-name>[Customer].[Region]</parent-name>
+            <remote-alias>[Customer].[Region].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Region].[Region]</remote-name>
+            <local-name>[Customer].[Region].[Region]</local-name>
+            <parent-name>[Customer].[Region]</parent-name>
+            <remote-alias>[Customer].[Region].[Region].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Region</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>9</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Customer].[Region] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Sex].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Customer].[Sex].[(All)]</local-name>
+            <parent-name>[Customer].[Sex]</parent-name>
+            <remote-alias>[Customer].[Sex].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[Sex].[Sex]</remote-name>
+            <local-name>[Customer].[Sex].[Sex]</local-name>
+            <parent-name>[Customer].[Sex]</parent-name>
+            <remote-alias>[Customer].[Sex].[Sex].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Sex</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>4</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Customer].[Sex] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[State].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Customer].[State].[(All)]</local-name>
+            <parent-name>[Customer].[State]</parent-name>
+            <remote-alias>[Customer].[State].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Customer].[State].[State]</remote-name>
+            <local-name>[Customer].[State].[State]</local-name>
+            <parent-name>[Customer].[State]</parent-name>
+            <remote-alias>[Customer].[State].[State].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>State</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>49</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Customer].[State] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>[Measures].[Unit Sales]</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Unit Sales]</local-name>
+            <remote-alias>[Measures].[Unit Sales]</remote-alias>
+            <caption>Unit Sales</caption>
+            <family>Sales</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='FORMAT_STRING'>&quot;\#,\#&quot;</attribute>
+              <attribute datatype='string' name='MEASURE_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;[Sales].[Unit Sales]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>[Measures].[Dollar Sales]</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Dollar Sales]</local-name>
+            <remote-alias>[Measures].[Dollar Sales]</remote-alias>
+            <caption>Dollar Sales</caption>
+            <family>Sales</family>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='FORMAT_STRING'>&quot;0,0.00&quot;</attribute>
+              <attribute datatype='string' name='MEASURE_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;[Sales].[Dollar Sales]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>[Measures].[Price]</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Price]</local-name>
+            <remote-alias>[Measures].[Price]</remote-alias>
+            <caption>Price</caption>
+            <family>Sales</family>
+            <local-type>real</local-type>
+            <aggregation>Avg</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='MEASURE_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;[Sales].[Price]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>[Measures].[Shp Complete Dte]</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Shp Complete Dte]</local-name>
+            <remote-alias>[Measures].[Shp Complete Dte]</remote-alias>
+            <caption>Shp Complete Dte</caption>
+            <family>Sales</family>
+            <local-type>integer</local-type>
+            <aggregation>Max</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='MEASURE_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;[Sales].[Shp Complete Dte]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>[Measures].[First Ship Dte]</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[First Ship Dte]</local-name>
+            <remote-alias>[Measures].[First Ship Dte]</remote-alias>
+            <caption>First Ship Dte</caption>
+            <family>Sales</family>
+            <local-type>integer</local-type>
+            <aggregation>Min</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='MEASURE_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;[Sales].[First Ship Dte]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>[Measures].[Sales Count]</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Sales Count]</local-name>
+            <remote-alias>[Measures].[Sales Count]</remote-alias>
+            <caption>Sales Count</caption>
+            <family>Sales</family>
+            <local-type>integer</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='MEASURE_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;[Sales].[Sales Count]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>[Measures].[Unit Returns]</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Unit Returns]</local-name>
+            <remote-alias>[Measures].[Unit Returns]</remote-alias>
+            <caption>Unit Returns</caption>
+            <family>Returns</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='MEASURE_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;[Returns].[Unit Returns]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>[Measures].[Dollar Returns]</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Dollar Returns]</local-name>
+            <remote-alias>[Measures].[Dollar Returns]</remote-alias>
+            <caption>Dollar Returns</caption>
+            <family>Returns</family>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='MEASURE_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;[Returns].[Dollar Returns]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>[Measures].[Original Unit Price]</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Original Unit Price]</local-name>
+            <remote-alias>[Measures].[Original Unit Price]</remote-alias>
+            <caption>Original Unit Price</caption>
+            <family>Returns</family>
+            <local-type>real</local-type>
+            <aggregation>Avg</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='MEASURE_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;[Returns].[Original Unit Price]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>[Measures].[Return Line Count]</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Return Line Count]</local-name>
+            <remote-alias>[Measures].[Return Line Count]</remote-alias>
+            <caption>Return Line Count</caption>
+            <family>Returns</family>
+            <local-type>integer</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='MEASURE_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;[Returns].[Return Line Count]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>[Measures].[Distinct SKU Count]</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Distinct SKU Count]</local-name>
+            <remote-alias>[Measures].[Distinct SKU Count]</remote-alias>
+            <caption>Distinct SKU Count</caption>
+            <family>Distinct SKUs</family>
+            <local-type>integer</local-type>
+            <aggregation>Avg</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='FORMAT_STRING'>&quot;\#,\#&quot;</attribute>
+              <attribute datatype='string' name='MEASURE_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;[Distinct SKUs].[Distinct SKU Count]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>[Measures].[Distinct Cust Count]</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Distinct Cust Count]</local-name>
+            <remote-alias>[Measures].[Distinct Cust Count]</remote-alias>
+            <caption>Distinct Cust Count</caption>
+            <family>Distinct Customers</family>
+            <local-type>integer</local-type>
+            <aggregation>Avg</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='FORMAT_STRING'>&quot;\#,\#&quot;</attribute>
+              <attribute datatype='string' name='MEASURE_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;[Distinct Customers].[Distinct Cust Count]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Product].[Brand]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Product].[Brand]</local-name>
+            <parent-name>[Product]</parent-name>
+            <remote-alias>[Product].[Brand]</remote-alias>
+            <caption>Brand</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>1201</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Product].[Brand].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>true</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Product].[ByCategory]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Product].[ByCategory]</local-name>
+            <parent-name>[Product]</parent-name>
+            <remote-alias>[Product].[ByCategory]</remote-alias>
+            <caption>ByCategory</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>8634</approx-count>
+            <contains-null>true</contains-null>
+            <default>true</default>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Product].[ByCategory].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>true</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Product].[Category]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Product].[Category]</local-name>
+            <parent-name>[Product]</parent-name>
+            <remote-alias>[Product].[Category]</remote-alias>
+            <caption>Category</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>26</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Product].[Category].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>true</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Product].[Rt Prod Brand]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Product].[Rt Prod Brand]</local-name>
+            <parent-name>[Product]</parent-name>
+            <remote-alias>[Product].[Rt Prod Brand]</remote-alias>
+            <caption>Rt Prod Brand</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>1201</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Product].[Rt Prod Brand].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Product].[Rt Prod Category]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Product].[Rt Prod Category]</local-name>
+            <parent-name>[Product]</parent-name>
+            <remote-alias>[Product].[Rt Prod Category]</remote-alias>
+            <caption>Rt Prod Category</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>26</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Product].[Rt Prod Category].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Product].[Rt Prod Family]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Product].[Rt Prod Family]</local-name>
+            <parent-name>[Product]</parent-name>
+            <remote-alias>[Product].[Rt Prod Family]</remote-alias>
+            <caption>Rt Prod Family</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>5</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Product].[Rt Prod Family].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Product].[Rt Prod Sku]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Product].[Rt Prod Sku]</local-name>
+            <parent-name>[Product]</parent-name>
+            <remote-alias>[Product].[Rt Prod Sku]</remote-alias>
+            <caption>Rt Prod Sku</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>7251</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Product].[Rt Prod Sku].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Product].[Rt Prod Subcategory]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Product].[Rt Prod Subcategory]</local-name>
+            <parent-name>[Product]</parent-name>
+            <remote-alias>[Product].[Rt Prod Subcategory]</remote-alias>
+            <caption>Rt Prod Subcategory</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>151</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Product].[Rt Prod Subcategory].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Product].[Ship Weight]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Product].[Ship Weight]</local-name>
+            <parent-name>[Product]</parent-name>
+            <remote-alias>[Product].[Ship Weight]</remote-alias>
+            <caption>Ship Weight</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>9</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Product].[Ship Weight].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Product].[ShipWeight]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Product].[ShipWeight]</local-name>
+            <parent-name>[Product]</parent-name>
+            <remote-alias>[Product].[ShipWeight]</remote-alias>
+            <caption>ShipWeight</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>9</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Product].[ShipWeight].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>true</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Product].[Brand].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Product].[Brand].[(All)]</local-name>
+            <parent-name>[Product].[Brand]</parent-name>
+            <remote-alias>[Product].[Brand].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Product].[Brand].[Rt Prod Brand]</remote-name>
+            <local-name>[Product].[Brand].[Rt Prod Brand]</local-name>
+            <parent-name>[Product].[Brand]</parent-name>
+            <remote-alias>[Product].[Brand].[Rt Prod Brand].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Rt Prod Brand</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1201</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Product].[Rt Prod Brand] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Product].[ByCategory].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Product].[ByCategory].[(All)]</local-name>
+            <parent-name>[Product].[ByCategory]</parent-name>
+            <remote-alias>[Product].[ByCategory].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Product].[ByCategory].[Family]</remote-name>
+            <local-name>[Product].[ByCategory].[Family]</local-name>
+            <parent-name>[Product].[ByCategory]</parent-name>
+            <remote-alias>[Product].[ByCategory].[Family].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Family</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>5</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Product].[Rt Prod Family] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Product].[ByCategory].[Category]</remote-name>
+            <local-name>[Product].[ByCategory].[Category]</local-name>
+            <parent-name>[Product].[ByCategory]</parent-name>
+            <remote-alias>[Product].[ByCategory].[Category].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Category</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>26</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Product].[Rt Prod Category] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Product].[ByCategory].[Subcategory]</remote-name>
+            <local-name>[Product].[ByCategory].[Subcategory]</local-name>
+            <parent-name>[Product].[ByCategory]</parent-name>
+            <remote-alias>[Product].[ByCategory].[Subcategory].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Subcategory</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>151</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Product].[Rt Prod Subcategory] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Product].[ByCategory].[Brand]</remote-name>
+            <local-name>[Product].[ByCategory].[Brand]</local-name>
+            <parent-name>[Product].[ByCategory]</parent-name>
+            <remote-alias>[Product].[ByCategory].[Brand].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Brand</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1201</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Product].[Rt Prod Brand] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Product].[ByCategory].[Sku]</remote-name>
+            <local-name>[Product].[ByCategory].[Sku]</local-name>
+            <parent-name>[Product].[ByCategory]</parent-name>
+            <remote-alias>[Product].[ByCategory].[Sku].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Sku</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>7251</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Product].[Rt Prod Sku] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Product].[Category].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Product].[Category].[(All)]</local-name>
+            <parent-name>[Product].[Category]</parent-name>
+            <remote-alias>[Product].[Category].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Product].[Category].[Rt Prod Category]</remote-name>
+            <local-name>[Product].[Category].[Rt Prod Category]</local-name>
+            <parent-name>[Product].[Category]</parent-name>
+            <remote-alias>[Product].[Category].[Rt Prod Category].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Rt Prod Category</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>26</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Product].[Rt Prod Category] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Product].[Rt Prod Brand].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Product].[Rt Prod Brand].[(All)]</local-name>
+            <parent-name>[Product].[Rt Prod Brand]</parent-name>
+            <remote-alias>[Product].[Rt Prod Brand].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Product].[Rt Prod Brand].[Rt Prod Brand]</remote-name>
+            <local-name>[Product].[Rt Prod Brand].[Rt Prod Brand]</local-name>
+            <parent-name>[Product].[Rt Prod Brand]</parent-name>
+            <remote-alias>[Product].[Rt Prod Brand].[Rt Prod Brand].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Rt Prod Brand</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1201</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Product].[Rt Prod Brand] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Product].[Rt Prod Category].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Product].[Rt Prod Category].[(All)]</local-name>
+            <parent-name>[Product].[Rt Prod Category]</parent-name>
+            <remote-alias>[Product].[Rt Prod Category].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Product].[Rt Prod Category].[Rt Prod Category]</remote-name>
+            <local-name>[Product].[Rt Prod Category].[Rt Prod Category]</local-name>
+            <parent-name>[Product].[Rt Prod Category]</parent-name>
+            <remote-alias>[Product].[Rt Prod Category].[Rt Prod Category].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Rt Prod Category</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>26</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Product].[Rt Prod Category] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Product].[Rt Prod Family].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Product].[Rt Prod Family].[(All)]</local-name>
+            <parent-name>[Product].[Rt Prod Family]</parent-name>
+            <remote-alias>[Product].[Rt Prod Family].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Product].[Rt Prod Family].[Rt Prod Family]</remote-name>
+            <local-name>[Product].[Rt Prod Family].[Rt Prod Family]</local-name>
+            <parent-name>[Product].[Rt Prod Family]</parent-name>
+            <remote-alias>[Product].[Rt Prod Family].[Rt Prod Family].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Rt Prod Family</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>5</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Product].[Rt Prod Family] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Product].[Rt Prod Sku].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Product].[Rt Prod Sku].[(All)]</local-name>
+            <parent-name>[Product].[Rt Prod Sku]</parent-name>
+            <remote-alias>[Product].[Rt Prod Sku].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Product].[Rt Prod Sku].[Rt Prod Sku]</remote-name>
+            <local-name>[Product].[Rt Prod Sku].[Rt Prod Sku]</local-name>
+            <parent-name>[Product].[Rt Prod Sku]</parent-name>
+            <remote-alias>[Product].[Rt Prod Sku].[Rt Prod Sku].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Rt Prod Sku</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>7251</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Product].[Rt Prod Sku] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Product].[Rt Prod Subcategory].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Product].[Rt Prod Subcategory].[(All)]</local-name>
+            <parent-name>[Product].[Rt Prod Subcategory]</parent-name>
+            <remote-alias>[Product].[Rt Prod Subcategory].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Product].[Rt Prod Subcategory].[Rt Prod Subcategory]</remote-name>
+            <local-name>[Product].[Rt Prod Subcategory].[Rt Prod Subcategory]</local-name>
+            <parent-name>[Product].[Rt Prod Subcategory]</parent-name>
+            <remote-alias>[Product].[Rt Prod Subcategory].[Rt Prod Subcategory].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Rt Prod Subcategory</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>151</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Product].[Rt Prod Subcategory] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Product].[Ship Weight].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Product].[Ship Weight].[(All)]</local-name>
+            <parent-name>[Product].[Ship Weight]</parent-name>
+            <remote-alias>[Product].[Ship Weight].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Product].[Ship Weight].[Ship Weight]</remote-name>
+            <local-name>[Product].[Ship Weight].[Ship Weight]</local-name>
+            <parent-name>[Product].[Ship Weight]</parent-name>
+            <remote-alias>[Product].[Ship Weight].[Ship Weight].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Ship Weight</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>9</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Product].[Ship Weight] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Product].[ShipWeight].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Product].[ShipWeight].[(All)]</local-name>
+            <parent-name>[Product].[ShipWeight]</parent-name>
+            <remote-alias>[Product].[ShipWeight].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Product].[ShipWeight].[ShipWeight]</remote-name>
+            <local-name>[Product].[ShipWeight].[ShipWeight]</local-name>
+            <parent-name>[Product].[ShipWeight]</parent-name>
+            <remote-alias>[Product].[ShipWeight].[ShipWeight].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>ShipWeight</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>9</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Product].[Ship Weight] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Promotion].[Hierarchy]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Promotion].[Hierarchy]</local-name>
+            <parent-name>[Promotion]</parent-name>
+            <remote-alias>[Promotion].[Hierarchy]</remote-alias>
+            <caption>Hierarchy</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>54</approx-count>
+            <contains-null>true</contains-null>
+            <default>true</default>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Promotion].[Hierarchy].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>true</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Promotion].[Media]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Promotion].[Media]</local-name>
+            <parent-name>[Promotion]</parent-name>
+            <remote-alias>[Promotion].[Media]</remote-alias>
+            <caption>Media</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>13</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Promotion].[Media].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Promotion].[Promotion]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Promotion].[Promotion]</local-name>
+            <parent-name>[Promotion]</parent-name>
+            <remote-alias>[Promotion].[Promotion]</remote-alias>
+            <caption>Promotion</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>41</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Promotion].[Promotion].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Promotion].[Hierarchy].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Promotion].[Hierarchy].[(All)]</local-name>
+            <parent-name>[Promotion].[Hierarchy]</parent-name>
+            <remote-alias>[Promotion].[Hierarchy].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Promotion].[Hierarchy].[Media]</remote-name>
+            <local-name>[Promotion].[Hierarchy].[Media]</local-name>
+            <parent-name>[Promotion].[Hierarchy]</parent-name>
+            <remote-alias>[Promotion].[Hierarchy].[Media].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Media</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>13</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Promotion].[Media] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Promotion].[Hierarchy].[Promotion]</remote-name>
+            <local-name>[Promotion].[Hierarchy].[Promotion]</local-name>
+            <parent-name>[Promotion].[Hierarchy]</parent-name>
+            <remote-alias>[Promotion].[Hierarchy].[Promotion].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Promotion</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>41</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Promotion].[Promotion] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Promotion].[Media].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Promotion].[Media].[(All)]</local-name>
+            <parent-name>[Promotion].[Media]</parent-name>
+            <remote-alias>[Promotion].[Media].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Promotion].[Media].[Media]</remote-name>
+            <local-name>[Promotion].[Media].[Media]</local-name>
+            <parent-name>[Promotion].[Media]</parent-name>
+            <remote-alias>[Promotion].[Media].[Media].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Media</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>13</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Promotion].[Media] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Promotion].[Promotion].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Promotion].[Promotion].[(All)]</local-name>
+            <parent-name>[Promotion].[Promotion]</parent-name>
+            <remote-alias>[Promotion].[Promotion].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Promotion].[Promotion].[Promotion]</remote-name>
+            <local-name>[Promotion].[Promotion].[Promotion]</local-name>
+            <parent-name>[Promotion].[Promotion]</parent-name>
+            <remote-alias>[Promotion].[Promotion].[Promotion].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Promotion</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>41</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Promotion].[Promotion] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Return Reason].[Hierarchy]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Return Reason].[Hierarchy]</local-name>
+            <parent-name>[Return Reason]</parent-name>
+            <remote-alias>[Return Reason].[Hierarchy]</remote-alias>
+            <caption>Hierarchy</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>10</approx-count>
+            <contains-null>true</contains-null>
+            <default>true</default>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Return Reason].[Hierarchy].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>true</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Return Reason].[Return Condition]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Return Reason].[Return Condition]</local-name>
+            <parent-name>[Return Reason]</parent-name>
+            <remote-alias>[Return Reason].[Return Condition]</remote-alias>
+            <caption>Return Condition</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>3</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Return Reason].[Return Condition].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Return Reason].[Return Reason]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Return Reason].[Return Reason]</local-name>
+            <parent-name>[Return Reason]</parent-name>
+            <remote-alias>[Return Reason].[Return Reason]</remote-alias>
+            <caption>Return Reason</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>7</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Return Reason].[Return Reason].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Return Reason].[Hierarchy].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Return Reason].[Hierarchy].[(All)]</local-name>
+            <parent-name>[Return Reason].[Hierarchy]</parent-name>
+            <remote-alias>[Return Reason].[Hierarchy].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Return Reason].[Hierarchy].[Return Condition]</remote-name>
+            <local-name>[Return Reason].[Hierarchy].[Return Condition]</local-name>
+            <parent-name>[Return Reason].[Hierarchy]</parent-name>
+            <remote-alias>[Return Reason].[Hierarchy].[Return Condition].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Return Condition</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>3</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Return Reason].[Return Condition] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Return Reason].[Hierarchy].[Rt RETURN REASON]</remote-name>
+            <local-name>[Return Reason].[Hierarchy].[Rt RETURN REASON]</local-name>
+            <parent-name>[Return Reason].[Hierarchy]</parent-name>
+            <remote-alias>[Return Reason].[Hierarchy].[Rt RETURN REASON].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Rt RETURN REASON</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>7</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Return Reason].[Return Reason] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Return Reason].[Return Condition].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Return Reason].[Return Condition].[(All)]</local-name>
+            <parent-name>[Return Reason].[Return Condition]</parent-name>
+            <remote-alias>[Return Reason].[Return Condition].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Return Reason].[Return Condition].[Return Condition]</remote-name>
+            <local-name>[Return Reason].[Return Condition].[Return Condition]</local-name>
+            <parent-name>[Return Reason].[Return Condition]</parent-name>
+            <remote-alias>[Return Reason].[Return Condition].[Return Condition].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Return Condition</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>3</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Return Reason].[Return Condition] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Return Reason].[Return Reason].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Return Reason].[Return Reason].[(All)]</local-name>
+            <parent-name>[Return Reason].[Return Reason]</parent-name>
+            <remote-alias>[Return Reason].[Return Reason].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Return Reason].[Return Reason].[Return Reason]</remote-name>
+            <local-name>[Return Reason].[Return Reason].[Return Reason]</local-name>
+            <parent-name>[Return Reason].[Return Reason]</parent-name>
+            <remote-alias>[Return Reason].[Return Reason].[Return Reason].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Return Reason</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>7</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Return Reason].[Return Reason] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Terms].[Term ID]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Terms].[Term ID]</local-name>
+            <parent-name>[Terms]</parent-name>
+            <remote-alias>[Terms].[Term ID]</remote-alias>
+            <caption>Term ID</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>8</approx-count>
+            <contains-null>true</contains-null>
+            <default>true</default>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Terms].[Term ID].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Terms].[Term ID].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Terms].[Term ID].[(All)]</local-name>
+            <parent-name>[Terms].[Term ID]</parent-name>
+            <remote-alias>[Terms].[Term ID].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Terms].[Term ID].[Term ID]</remote-name>
+            <local-name>[Terms].[Term ID].[Term ID]</local-name>
+            <parent-name>[Terms].[Term ID]</parent-name>
+            <remote-alias>[Terms].[Term ID].[Term ID].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Term ID</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>8</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Terms].[Term ID] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Time].[Day]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Time].[Day]</local-name>
+            <parent-name>[Time]</parent-name>
+            <remote-alias>[Time].[Day]</remote-alias>
+            <caption>Day</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>732</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Time].[Day].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Time].[Day of Week]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Time].[Day of Week]</local-name>
+            <parent-name>[Time]</parent-name>
+            <remote-alias>[Time].[Day of Week]</remote-alias>
+            <caption>Day of Week</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>8</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Time].[Day of Week].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Time].[Day Serial Id]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Time].[Day Serial Id]</local-name>
+            <parent-name>[Time]</parent-name>
+            <remote-alias>[Time].[Day Serial Id]</remote-alias>
+            <caption>Day Serial Id</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>732</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Time].[Day Serial Id].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Time].[DoW]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Time].[DoW]</local-name>
+            <parent-name>[Time]</parent-name>
+            <remote-alias>[Time].[DoW]</remote-alias>
+            <caption>DoW</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>8</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Time].[DoW].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>true</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Time].[Month]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Time].[Month]</local-name>
+            <parent-name>[Time]</parent-name>
+            <remote-alias>[Time].[Month]</remote-alias>
+            <caption>Month</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>25</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Time].[Month].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Time].[Month of Year]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Time].[Month of Year]</local-name>
+            <parent-name>[Time]</parent-name>
+            <remote-alias>[Time].[Month of Year]</remote-alias>
+            <caption>Month of Year</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>13</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Time].[Month of Year].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Time].[MoY]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Time].[MoY]</local-name>
+            <parent-name>[Time]</parent-name>
+            <remote-alias>[Time].[MoY]</remote-alias>
+            <caption>MoY</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>13</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Time].[MoY].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>true</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Time].[Qtr]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Time].[Qtr]</local-name>
+            <parent-name>[Time]</parent-name>
+            <remote-alias>[Time].[Qtr]</remote-alias>
+            <caption>Qtr</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>9</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Time].[Qtr].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>true</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Time].[Quarter]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Time].[Quarter]</local-name>
+            <parent-name>[Time]</parent-name>
+            <remote-alias>[Time].[Quarter]</remote-alias>
+            <caption>Quarter</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>9</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Time].[Quarter].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Time].[Year]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Time].[Year]</local-name>
+            <parent-name>[Time]</parent-name>
+            <remote-alias>[Time].[Year]</remote-alias>
+            <caption>Year</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>3</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Time].[Year].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Time].[YQMD]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Time].[YQMD]</local-name>
+            <parent-name>[Time]</parent-name>
+            <remote-alias>[Time].[YQMD]</remote-alias>
+            <caption>YQMD</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>769</approx-count>
+            <contains-null>true</contains-null>
+            <default>true</default>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Time].[YQMD].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>true</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Time].[Yr]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Time].[Yr]</local-name>
+            <parent-name>[Time]</parent-name>
+            <remote-alias>[Time].[Yr]</remote-alias>
+            <caption>Yr</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>3</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;[Time].[Yr].[All]&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>true</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[Day].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Time].[Day].[(All)]</local-name>
+            <parent-name>[Time].[Day]</parent-name>
+            <remote-alias>[Time].[Day].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[Day].[Day]</remote-name>
+            <remote-type>time-day</remote-type>
+            <local-name>[Time].[Day].[Day]</local-name>
+            <parent-name>[Time].[Day]</parent-name>
+            <remote-alias>[Time].[Day].[Day].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Day</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>732</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Time].[Day] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[Day of Week].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Time].[Day of Week].[(All)]</local-name>
+            <parent-name>[Time].[Day of Week]</parent-name>
+            <remote-alias>[Time].[Day of Week].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[Day of Week].[Day of Week]</remote-name>
+            <local-name>[Time].[Day of Week].[Day of Week]</local-name>
+            <parent-name>[Time].[Day of Week]</parent-name>
+            <remote-alias>[Time].[Day of Week].[Day of Week].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Day of Week</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>8</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Time].[Day of Week] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[Day Serial Id].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Time].[Day Serial Id].[(All)]</local-name>
+            <parent-name>[Time].[Day Serial Id]</parent-name>
+            <remote-alias>[Time].[Day Serial Id].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[Day Serial Id].[Day Serial Id]</remote-name>
+            <local-name>[Time].[Day Serial Id].[Day Serial Id]</local-name>
+            <parent-name>[Time].[Day Serial Id]</parent-name>
+            <remote-alias>[Time].[Day Serial Id].[Day Serial Id].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Day Serial Id</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>732</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Time].[Day Serial Id] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[DoW].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Time].[DoW].[(All)]</local-name>
+            <parent-name>[Time].[DoW]</parent-name>
+            <remote-alias>[Time].[DoW].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[DoW].[Day Name]</remote-name>
+            <local-name>[Time].[DoW].[Day Name]</local-name>
+            <parent-name>[Time].[DoW]</parent-name>
+            <remote-alias>[Time].[DoW].[Day Name].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Day Name</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>8</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Time].[Day of Week] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[Month].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Time].[Month].[(All)]</local-name>
+            <parent-name>[Time].[Month]</parent-name>
+            <remote-alias>[Time].[Month].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[Month].[Month]</remote-name>
+            <remote-type>time-month</remote-type>
+            <local-name>[Time].[Month].[Month]</local-name>
+            <parent-name>[Time].[Month]</parent-name>
+            <remote-alias>[Time].[Month].[Month].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Month</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>25</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Time].[Month] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[Month of Year].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Time].[Month of Year].[(All)]</local-name>
+            <parent-name>[Time].[Month of Year]</parent-name>
+            <remote-alias>[Time].[Month of Year].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[Month of Year].[Month of Year]</remote-name>
+            <local-name>[Time].[Month of Year].[Month of Year]</local-name>
+            <parent-name>[Time].[Month of Year]</parent-name>
+            <remote-alias>[Time].[Month of Year].[Month of Year].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Month of Year</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>13</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Time].[Month of Year] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[MoY].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Time].[MoY].[(All)]</local-name>
+            <parent-name>[Time].[MoY]</parent-name>
+            <remote-alias>[Time].[MoY].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[MoY].[Month of Year]</remote-name>
+            <local-name>[Time].[MoY].[Month of Year]</local-name>
+            <parent-name>[Time].[MoY]</parent-name>
+            <remote-alias>[Time].[MoY].[Month of Year].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Month of Year</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>13</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Time].[Month of Year] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[Qtr].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Time].[Qtr].[(All)]</local-name>
+            <parent-name>[Time].[Qtr]</parent-name>
+            <remote-alias>[Time].[Qtr].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[Qtr].[Quarter]</remote-name>
+            <remote-type>time-quarter</remote-type>
+            <local-name>[Time].[Qtr].[Quarter]</local-name>
+            <parent-name>[Time].[Qtr]</parent-name>
+            <remote-alias>[Time].[Qtr].[Quarter].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Quarter</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>9</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Time].[Quarter] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[Quarter].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Time].[Quarter].[(All)]</local-name>
+            <parent-name>[Time].[Quarter]</parent-name>
+            <remote-alias>[Time].[Quarter].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[Quarter].[Quarter]</remote-name>
+            <remote-type>time-quarter</remote-type>
+            <local-name>[Time].[Quarter].[Quarter]</local-name>
+            <parent-name>[Time].[Quarter]</parent-name>
+            <remote-alias>[Time].[Quarter].[Quarter].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Quarter</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>9</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Time].[Quarter] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[Year].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Time].[Year].[(All)]</local-name>
+            <parent-name>[Time].[Year]</parent-name>
+            <remote-alias>[Time].[Year].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[Year].[Year]</remote-name>
+            <remote-type>time-year</remote-type>
+            <local-name>[Time].[Year].[Year]</local-name>
+            <parent-name>[Time].[Year]</parent-name>
+            <remote-alias>[Time].[Year].[Year].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Year</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>3</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Time].[Year] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[YQMD].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Time].[YQMD].[(All)]</local-name>
+            <parent-name>[Time].[YQMD]</parent-name>
+            <remote-alias>[Time].[YQMD].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[YQMD].[Year]</remote-name>
+            <remote-type>time-year</remote-type>
+            <local-name>[Time].[YQMD].[Year]</local-name>
+            <parent-name>[Time].[YQMD]</parent-name>
+            <remote-alias>[Time].[YQMD].[Year].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Year</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>3</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Time].[Year] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[YQMD].[Quarter]</remote-name>
+            <remote-type>time-quarter</remote-type>
+            <local-name>[Time].[YQMD].[Quarter]</local-name>
+            <parent-name>[Time].[YQMD]</parent-name>
+            <remote-alias>[Time].[YQMD].[Quarter].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Quarter</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>9</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Time].[Quarter] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[YQMD].[Month]</remote-name>
+            <remote-type>time-month</remote-type>
+            <local-name>[Time].[YQMD].[Month]</local-name>
+            <parent-name>[Time].[YQMD]</parent-name>
+            <remote-alias>[Time].[YQMD].[Month].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Month</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>25</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Time].[Month] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[YQMD].[Day]</remote-name>
+            <remote-type>time-day</remote-type>
+            <local-name>[Time].[YQMD].[Day]</local-name>
+            <parent-name>[Time].[YQMD]</parent-name>
+            <remote-alias>[Time].[YQMD].[Day].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Day</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>732</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Time].[Day] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[Yr].[(All)]</remote-name>
+            <remote-type>all</remote-type>
+            <local-name>[Time].[Yr].[(All)]</local-name>
+            <parent-name>[Time].[Yr]</parent-name>
+            <remote-alias>[Time].[Yr].[(All)].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>(All)</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time].[Yr].[Year]</remote-name>
+            <remote-type>time-year</remote-type>
+            <local-name>[Time].[Yr].[Year]</local-name>
+            <parent-name>[Time].[Yr]</parent-name>
+            <remote-alias>[Time].[Yr].[Year].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Year</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>3</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Time].[Year] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Time Series].[Hierarchy]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Time Series].[Hierarchy]</local-name>
+            <parent-name>[Time Series]</parent-name>
+            <remote-alias>[Time Series].[Hierarchy]</remote-alias>
+            <caption>Hierarchy</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+            <default>true</default>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>true</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='hierarchy'>
+            <remote-name>[Time Series].[Series]</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Time Series].[Series]</local-name>
+            <parent-name>[Time Series]</parent-name>
+            <remote-alias>[Time Series].[Series]</remote-alias>
+            <caption>Series</caption>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='ALL_MEMBER'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='HIERARCHY_DISPLAY_FOLDER'>&quot;&quot;</attribute>
+              <attribute datatype='boolean' name='HIERARCHY_USER'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time Series].[Hierarchy].[Series]</remote-name>
+            <local-name>[Time Series].[Hierarchy].[Series]</local-name>
+            <parent-name>[Time Series].[Hierarchy]</parent-name>
+            <remote-alias>[Time Series].[Hierarchy].[Series].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Series</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>2</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Time Series].[Series] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='level'>
+            <remote-name>[Time Series].[Series].[Series]</remote-name>
+            <local-name>[Time Series].[Series].[Series]</local-name>
+            <parent-name>[Time Series].[Series]</parent-name>
+            <remote-alias>[Time Series].[Series].[Series].[MEMBER_UNIQUE_NAME]</remote-alias>
+            <caption>Series</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>2</approx-count>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='SQL_COLUMN_NAME'>&quot;NAME( [$Time Series].[Series] )&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Distinct Customers</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Distinct Customers</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Customer].[Customer ID]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Customer]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Distinct Customers</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Distinct Customers</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Product].[Rt Prod Sku]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Product]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Distinct Customers</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Distinct Customers</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Promotion].[Promotion]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Promotion]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Distinct Customers</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Distinct Customers</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Terms].[Term ID]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Terms]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Distinct Customers</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Distinct Customers</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Time].[Day]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Time]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Distinct Customers</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Distinct Customers</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Time Series].[Series]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Time Series]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Distinct SKUs</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Distinct SKUs</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Customer].[Customer ID]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Customer]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Distinct SKUs</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Distinct SKUs</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Product].[Rt Prod Sku]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Product]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Distinct SKUs</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Distinct SKUs</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Promotion].[Promotion]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Promotion]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Distinct SKUs</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Distinct SKUs</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Terms].[Term ID]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Terms]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Distinct SKUs</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Distinct SKUs</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Time].[Day]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Time]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Distinct SKUs</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Distinct SKUs</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Time Series].[Series]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Time Series]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Returns</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Returns</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Customer].[Customer ID]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Customer]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Returns</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Returns</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Product].[Rt Prod Sku]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Product]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Returns</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Returns</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Promotion].[Promotion]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Promotion]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Returns</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Returns</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Return Reason].[Return Reason]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Return Reason]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Returns</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Returns</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Terms].[Term ID]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Terms]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Returns</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Returns</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Time].[Day]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Time]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Returns</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Returns</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Time Series].[Series]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Time Series]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Sales</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Sales</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Customer].[Customer ID]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Customer]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Sales</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Sales</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Product].[Rt Prod Sku]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Product]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Sales</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Sales</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Promotion].[Promotion]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Promotion]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Sales</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Sales</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Terms].[Term ID]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Terms]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Sales</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Sales</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Time].[Day]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Time]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='granularity'>
+            <remote-name>Sales</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>Sales</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DIMENSION_GRANULARITY'>&quot;[Time Series].[Series]&quot;</attribute>
+              <attribute datatype='string' name='DIMENSION_UNIQUE_NAME'>&quot;[Time Series]&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column approximate-count='269' datatype='string' name='[Customer].[City].[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+      <column approximate-count='49' datatype='string' name='[Customer].[Cust State].[State]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+      <column approximate-count='269' datatype='string' name='[Customer].[Customer].[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+      <column approximate-count='49' datatype='string' name='[Customer].[Customer].[State]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+      <column approximate-count='49' datatype='string' name='[Customer].[State].[State]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+      <layout dim-ordering='ordinal' dim-percentage='0.724891' measure-ordering='ordinal' measure-percentage='0.275109' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;UNITED STATES&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <repository-location derived-from='http://qa-server/workbooks/waremartcubewithfilters/Sheet1?rev=' id='Sheet1' path='/workbooks/waremartcubewithfilters' revision='' />
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Waremart (TestV1)' name='msolap.40639.426306921298' />
+          </datasources>
+          <datasource-dependencies datasource='msolap.40639.426306921298'>
+            <column-instance column='[Customer].[Customer].[City]' derivation='None' name='[Customer].[Customer].[none:City:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Customer].[Customer].[Region]' derivation='None' name='[Customer].[Customer].[none:Region:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Customer].[Customer].[State]' derivation='None' name='[Customer].[Customer].[none:State:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Product].[ByCategory].[Family]' derivation='None' name='[Product].[ByCategory].[none:Family:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Sales Count]' derivation='None' name='[none:Sales Count:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[msolap.40639.426306921298].[Customer].[Customer]'>
+            <groupfilter function='union' keep-duplicates='true' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-level='2' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Customer].[Customer].[Region]' />
+              <groupfilter flag='SELF' function='descendants' level='[Customer].[Customer].[City]'>
+                <groupfilter function='member' level='[Customer].[Customer].[State]' member='&quot;[Customer].[Customer].[State].[NE]&quot;' />
+              </groupfilter>
+              <groupfilter flag='SELF' function='descendants' level='[Customer].[Customer].[City]'>
+                <groupfilter function='member' level='[Customer].[Customer].[State]' member='&quot;[Customer].[Customer].[State].[AZ]&quot;' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[msolap.40639.426306921298].[Product].[ByCategory]'>
+            <groupfilter function='level-members' level='[Product].[ByCategory].[Family]' user:ui-level='0' />
+          </filter>
+          <slices>
+            <column>[msolap.40639.426306921298].[Product].[ByCategory]</column>
+            <column>[msolap.40639.426306921298].[Customer].[Customer]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='table'>
+            <format attr='omit-on-special' value='false' />
+            <format attr='break-on-special' value='false' />
+            <format attr='show-null-value-warning' value='false' />
+          </style-rule>
+          <style-rule element='legend'>
+            <format attr='background-color' value='#ffffff' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-disallow'>
+            <view>
+              <breakdown value='off' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[msolap.40639.426306921298].[none:Sales Count:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='has-stroke' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[msolap.40639.426306921298].[Product].[ByCategory].[none:Family:nk]</rows>
+        <cols>[msolap.40639.426306921298].[Customer].[Customer].[none:Region:nk].[none:State:nk].[none:City:nk]</cols>
+      </table>
+      <simple-id uuid='{E8ACE3E1-5484-4095-8178-0A1CA0FB245C}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Dashboard 1'>
+      <repository-location derived-from='http://qa-server/workbooks/waremartcubewithfilters/Dashboard1?rev=' id='Dashboard1' path='/workbooks/waremartcubewithfilters' revision='' />
+      <style />
+      <datasources>
+        <datasource caption='Waremart (TestV1)' name='msolap.40639.426306921298' />
+      </datasources>
+      <datasource-dependencies datasource='msolap.40639.426306921298' />
+      <zones>
+        <zone h='100000' id='7' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='100000' id='4' param='horz' type='layout-flow' w='100000' x='0' y='0'>
+            <zone h='100000' id='2' type='layout-basic' w='81756' x='0' y='0'>
+              <zone h='100000' id='1' name='Sheet 1' w='81756' x='0' y='0'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                  <format attr='margin-top' value='0' />
+                  <format attr='margin-bottom' value='0' />
+                  <format attr='margin-left' value='0' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone fixed-size='160' h='100000' id='3' is-fixed='true' param='vert' type='layout-flow' w='18244' x='81756' y='0'>
+              <zone h='50000' id='5' name='Sheet 1' param='[msolap.40639.426306921298].[Product].[ByCategory]' type='filter' w='18244' x='81756' y='0'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                  <format attr='margin-top' value='0' />
+                  <format attr='margin-right' value='0' />
+                  <format attr='background-color' value='#ffffff' />
+                </zone-style>
+              </zone>
+              <zone h='50000' id='6' name='Sheet 1' param='[msolap.40639.426306921298].[Customer].[Customer]' type='filter' w='18244' x='81756' y='50000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                  <format attr='margin-right' value='0' />
+                  <format attr='margin-bottom' value='0' />
+                  <format attr='background-color' value='#ffffff' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='4' />
+            <format attr='margin-top' value='8' />
+            <format attr='margin-right' value='8' />
+            <format attr='margin-bottom' value='8' />
+            <format attr='margin-left' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <simple-id uuid='{78CE1A61-D6AC-46A4-B7E7-84A8185A70E0}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='30'>
+    <window class='worksheet' maximized='true' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='278'>
+            <card param='[msolap.40639.426306921298].[Product].[ByCategory]' type='filter' />
+            <card param='[msolap.40639.426306921298].[Customer].[Customer]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[msolap.40639.426306921298].[Customer].[Customer].[none:Region:nk]</field>
+          </color-one-way>
+        </highlight>
+        <geo-search-visibility value='1' />
+      </viewpoint>
+      <simple-id uuid='{227F9DF9-DBDC-4628-A281-53F9D5502657}' />
+    </window>
+    <window class='dashboard' name='Dashboard 1'>
+      <viewpoints>
+        <viewpoint name='Sheet 1'>
+          <geo-search-visibility value='1' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{1AE11A94-8497-4F9D-81FA-490034831877}' />
+    </window>
+  </windows>
+</workbook>

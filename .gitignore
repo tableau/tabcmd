@@ -19,32 +19,30 @@ __pycache__/
 venv/
 tabcmd-dev/
 workon/
+est
+site-packages
 
-# code coverage outputs
+# test/code coverage outputs
 .coverage
 pytest.xml
+test.junit.xml
 
 # content
-# todo probably want to add a workbook and ds in /res for getting started easily
 *.pdf
 *.png
-*.twbx
+*.twb*
+*.tds*
 *.hyper
-*.twb
-*.twbr
-html
 *.html
-*.twbr
-**/credentials.py
 *.txt
+# keep content specifically added to the assets folder
+!tests/assets/*
 
 # doit
 .doit.*
 
-# venv
-site-packages
-
 # local
-tabcmd-dev
-workon
-test.junit.xml
+**/credentials.py
+
+# built executable
+tabcmd*.exe
