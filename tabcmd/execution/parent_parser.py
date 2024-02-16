@@ -202,7 +202,7 @@ strings = [
     "{<command> [command args]}",  # 5
     "Tableau Server Command Line Utility",  # 6
     "Show version information and exit.",  # 7
-    "Use the specified logging level. The default level is INFO.",  # 8
+    "Use the specified logging level. The default level is INFO. Logs are stored at {user}/AppData/Local/Tableau/Tabcmd/ or ~/.tableau/tabcmd/",  # 8
     "Treat resource conflicts as item creation success e.g project already exists",  # 9
     "Set the language to use. Exported data will be returned in this lang/locale.\n \
         If not set, the client will use your computer locale, and the server will use \

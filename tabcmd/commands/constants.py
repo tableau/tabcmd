@@ -58,23 +58,23 @@ class Errors:
 
     @staticmethod
     def exit_with_error(logger, message: Optional[str] = None, exception: Optional[Exception] = None):
+        suggest_logs_message = "Exiting with error...\nSee logs for more information."
         try:
             if message and not exception:
                 logger.error(message)
                 Errors.log_stack(logger)
             elif exception:
                 if message:
-                    logger.info("Error message: " + message)
+                    logger.info("\nError message: " + message)
                 Errors.check_common_error_codes_and_explain(logger, exception)
             else:
                 logger.info("No exception or message provided")
 
         except Exception as exc:
-            print(sys.stderr, "Error during log call from exception - {} {}".format(exc.__class__, message))
-        try:
-            logger.info("Exiting...")
-        except Exception:
-            print(sys.stderr, "Exiting...")
+            print("Error during log call from exception - {} {}".format(exc.__class__, message))
+
+        print("")
+        print(suggest_logs_message)
         sys.exit(1)
 
     @staticmethod
@@ -90,7 +90,10 @@ class Errors:
             # session.renew_session()
             return
         if exception.__class__ == tableauserverclient.ServerResponseError:
+            logger.debug("Server response error")
 
             logger.error(exception)
         else:
-            logger.exception(exception)
+            # logger.exception prints a really long ugly stack, generally not useful to users. 
+            # Should print that to the log, but not console.
+            logger.error(exception)
