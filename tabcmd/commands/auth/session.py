@@ -63,8 +63,13 @@ class Session:
         self.username = self.username.lower()
         self.server_url = args.server or self.server_url or "http://localhost"
         self.server_url = self.server_url.lower()
+        if not self.server_url.find('http') == 0:
+            # This was being secretly done by TSC already - just making it obvious to the user.
+            self.logger.info("No protocol given for the server URL. Assuming https.")
+            self.server_url = "https://" + self.server_url
         if args.server is not None:
             self.site_name = None
+        
         self.site_name = args.site_name or self.site_name or ""
         self.site_name = self.site_name.lower()
         if self.site_name == "default":
