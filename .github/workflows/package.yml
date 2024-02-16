@@ -44,9 +44,9 @@ jobs:
             OUT_FILE_NAME: tabcmd
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
-    - uses: actions/setup-python@v4
+    - uses: actions/setup-python@v5
       with:
         python-version: 3.8
 
@@ -66,7 +66,7 @@ jobs:
     - name: Validate package for ${{matrix.TARGET}}
       run: ./dist/${{ matrix.TARGET }}/${{matrix.OUT_FILE_NAME}}
 
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.OUT_FILE_NAME }}
         path: ./dist/${{ matrix.TARGET }}/${{ matrix.OUT_FILE_NAME }}

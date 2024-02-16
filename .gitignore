@@ -48,3 +48,6 @@ site-packages
 tabcmd-dev
 workon
 test.junit.xml
+
+# exceptions
+!tests/assets/detailed_users.csv
