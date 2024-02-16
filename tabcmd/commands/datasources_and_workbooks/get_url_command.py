@@ -1,4 +1,5 @@
 import inspect
+import os
 
 import tableauserverclient as TSC
 from tableauserverclient import ServerResponseError
@@ -80,7 +81,7 @@ class GetUrl(DatasourcesAndWorkbooks):
     def get_file_type_from_filename(logger, url, file_name):
         logger.debug("Choosing between {}, {}".format(file_name, url))
         file_name = file_name or url
-        logger.debug(_("get.options.file") + ": {}".format(file_name))
+        logger.debug(_("get.options.file") + ": {}".format(file_name)) # Name to save the file as
         type_of_file = GetUrl.get_file_extension(file_name)
 
         if not type_of_file and file_name is not None:
@@ -97,26 +98,26 @@ class GetUrl(DatasourcesAndWorkbooks):
 
         Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name))
 
+
     @staticmethod
-    def get_file_extension(filename):
-        parts = filename.split(".")
-        if len(parts) < 2:
-            return None
-        extension = parts[1]
+    def get_file_extension(path):
+        path_segments = os.path.split(path)
+        filename = path_segments[-1]
+        filename_segments = filename.split('.')
+        extension = filename_segments[-1]
         extension = GetUrl.strip_query_params(extension)
         return extension
 
     @staticmethod
     def strip_query_params(filename):
-        if filename.find("?") > 0:
-            filename = filename.split("?")[0]
-        return filename
+        if '?' in filename:
+            return filename.split("?")[0]
+        else:
+            return filename
 
     @staticmethod
     def get_name_without_possible_extension(filename):
-        if filename.find(".") > 0:
-            filename = filename.split(".")[0]
-        return filename
+        return filename.split(".")[0]
 
     @staticmethod
     def get_resource_name(url: str, logger):  # workbooks/wb-name" -> "wb-name", datasource/ds-name -> ds-name
@@ -181,7 +182,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             filename = GetUrl.filename_from_args(args.filename, view_item.name, "pdf")
             DatasourcesAndWorkbooks.save_to_file(logger, view_item.pdf, filename)
         except Exception as e:
-            Errors.exit_with_error(logger, e)
+            Errors.exit_with_error(logger, exception=e)
 
     @staticmethod
     def generate_png(logger, server, args, view_url):
@@ -195,7 +196,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             filename = GetUrl.filename_from_args(args.filename, view_item.name, "png")
             DatasourcesAndWorkbooks.save_to_file(logger, view_item.image, filename)
         except Exception as e:
-            Errors.exit_with_error(logger, e)
+            Errors.exit_with_error(logger, exception=e)
 
     @staticmethod
     def generate_csv(logger, server, args, view_url):
@@ -226,7 +227,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             server.workbooks.download(target_workbook.id, filepath=file_name_with_path, no_extract=False)
             logger.info(_("export.success").format(target_workbook.name, file_name_with_ext))
         except Exception as e:
-            Errors.exit_with_error(logger, e)
+            Errors.exit_with_error(logger, exception=e)
 
     @staticmethod
     def generate_tds(logger, server, args, file_extension):
@@ -243,4 +244,4 @@ class GetUrl(DatasourcesAndWorkbooks):
             server.datasources.download(target_datasource.id, filepath=file_name_with_path, no_extract=False)
             logger.info(_("export.success").format(target_datasource.name, file_name_with_ext))
         except Exception as e:
-            Errors.exit_with_error(logger, e)
+            Errors.exit_with_error(logger, exception=e)
