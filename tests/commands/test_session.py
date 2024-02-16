@@ -420,8 +420,8 @@ class ConnectionOptionsTest(unittest.TestCase):
     def test_user_agent(self):
         mock_session = Session()
         mock_session.server_url = "fakehost"
-        connection = mock_session._open_connection_with_opts()
-        assert connection._http_options["headers"]["User-Agent"].startswith("Tabcmd/")
+        connection = mock_session._set_connection_options()
+        assert connection["headers"]["User-Agent"].startswith("Tabcmd/")
 
     def test_no_certcheck(self):
         mock_session = Session()
@@ -429,8 +429,8 @@ class ConnectionOptionsTest(unittest.TestCase):
         mock_session.no_certcheck = True
         mock_session.site_id = "s"
         mock_session.user_id = "u"
-        connection = mock_session._open_connection_with_opts()
-        assert connection._http_options["verify"] == False
+        connection = mock_session._set_connection_options()
+        assert connection["verify"] == False
 
     def test_cert(self):
         mock_session = Session()
@@ -438,17 +438,38 @@ class ConnectionOptionsTest(unittest.TestCase):
         mock_session.site_id = "s"
         mock_session.user_id = "u"
         mock_session.certificate = "my-cert-info"
-        connection = mock_session._open_connection_with_opts()
-        assert connection._http_options["cert"] == mock_session.certificate
+        connection = mock_session._set_connection_options()
+        assert connection["cert"] == mock_session.certificate
 
-    def test_proxy_stuff(self):
+    def test_proxy_http(self):
         mock_session = Session()
         mock_session.server_url = "fakehost"
         mock_session.site_id = "s"
         mock_session.user_id = "u"
         mock_session.proxy = "proxy:port"
-        connection = mock_session._open_connection_with_opts()
-        assert connection._http_options["proxies"] == {"http": mock_session.proxy}
+        connection = mock_session._set_connection_options()
+        fixed_proxy = "http://proxy:port"
+        assert connection["proxies"] == {"http": mock_session.proxy}
+        assert fixed_proxy == mock_session.proxy
+
+    def test_proxy_https(self):
+        mock_session = Session()
+        mock_session.server_url = "fakehost"
+        mock_session.site_id = "s"
+        mock_session.user_id = "u"
+        mock_session.proxy = "https://proxy:port"
+        connection = mock_session._set_connection_options()
+        assert connection["proxies"] == {"https": mock_session.proxy}
+
+    def test_no_proxy(self):        
+        mock_session = Session()
+        mock_session.server_url = "fakehost"
+        mock_session.site_id = "s"
+        mock_session.user_id = "u"
+        mock_session.no_proxy = True
+        connection = mock_session._set_connection_options()
+        assert connection["proxies"] == None
+
 
     def test_timeout(self):
         mock_session = Session()
@@ -456,9 +477,18 @@ class ConnectionOptionsTest(unittest.TestCase):
         mock_session.site_id = "s"
         mock_session.user_id = "u"
         mock_session.timeout = 10
-        connection = mock_session._open_connection_with_opts()
-        assert connection._http_options["timeout"] == 10
+        connection = mock_session._set_connection_options()
+        assert connection["timeout"] == 10
 
+
+    def test_setting_options_on_connection(self):
+        mock_session = Session()
+        mock_session.server_url = "fakehost"
+        mock_session.site_id = "s"
+        mock_session.user_id = "u"
+        mock_session.timeout = 10
+        connection = mock_session._open_connection_with_opts()
+        assert connection.http_options["timeout"] == 10
 
 """
 class CookieTests(unittest.TestCase):

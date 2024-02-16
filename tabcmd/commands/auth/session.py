@@ -152,7 +152,7 @@ class Session:
         else:
             Errors.exit_with_error(self.logger, _("session.errors.missing_arguments").format("token name"))
 
-    def _open_connection_with_opts(self) -> TSC.Server:
+    def _set_connection_options(self) -> Dict[str, Any]: 
         self.logger.debug("Setting up request options")
         http_options: Dict[str, Any] = {"headers": {"User-Agent": "Tabcmd/{}".format(version)}}
 
@@ -160,19 +160,25 @@ class Session:
             http_options["verify"] = False
             urllib3.disable_warnings(category=InsecureRequestWarning)
 
-        """
-           Do we want to do the same format check as old tabcmd?
-           For now I think we can trust requests to handle a bad proxy
-           Pattern pattern = Pattern.compile("([^:]*):([0-9]*)");           
-           if not matches:
-               throw new ReportableException(m_i18n.getString("sessionoptions.errors.bad_proxy_format", proxyArg));
-        """
+        # proxy debugging: 
+        # 1. verify that the proxy url is right: 'curl --proxy="<the same proxy>" "https://google.com/" '
+        # 2. in urllib3: https://urllib3.readthedocs.io/en/stable/advanced-usage.html#your-proxy-appears-to-only-use-http-and-not-https
         if self.proxy:
-            self.logger.debug("Setting http proxy: {}".format(self.proxy))
-            proxies = {"http": self.proxy}
+            proxies = None
+            if self.proxy.find("https") == 0:
+                self.logger.debug("Setting https proxy: {}".format(self.proxy))
+                proxies = {"https": self.proxy}
+            else:
+                if not self.proxy.find("http") == 0:
+                    self.logger.debug("Proxy URL must include a protocol. Since there was none given, assuming http only.")
+                    self.proxy = "http://" + self.proxy
+                # proxy is now a http url
+                self.logger.debug("Setting http proxy: {}".format(self.proxy))
+                proxies = {"http": self.proxy}
+                print(self.proxy)
             http_options["proxies"] = proxies
         if self.no_proxy:
-            # override any proxy that was set
+            # override any proxy that was set. This will ignore a proxy in environment variables.
             http_options["proxies"] = None
 
         if self.timeout:
@@ -181,12 +187,15 @@ class Session:
         if self.certificate:
             http_options["cert"] = self.certificate
 
+        self.logger.debug(http_options)
+        return http_options
+
+    def _open_connection_with_opts(self) -> TSC.Server:
+        http_options: Dict[str, Any] = self._set_connection_options()
         try:
-            self.logger.debug(http_options)
             # this is the only place we open a connection to the server
             # so the request options are all set for the session now
             tableau_server = TSC.Server(self.server_url, http_options=http_options)
-
         except Exception as e:
             self.logger.debug(
                 "Connection args: server {}, site {}, proxy {}/no-proxy {}, cert {}".format(
@@ -263,6 +272,12 @@ class Session:
         self.logger.debug(_("listsites.output").format("", self.username or self.token_name, self.site_name))
         try:
             self.tableau_server.auth.sign_in(tableau_auth)  # it's the same call for token or user-pass
+        except requests.exceptions.SSLError as ssl_error:
+            error_message = "There was a problem creating a secure connection to the server. \n \
+It is likely caused by an issue configuring your network proxy or server certificate, either \
+on the server or on this machine."
+            
+            Errors.exit_with_error(self.logger, message=error_message, exception=ssl_error)
         except Exception as e:
             Errors.exit_with_error(self.logger, exception=e)
         try:
