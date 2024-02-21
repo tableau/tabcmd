@@ -81,7 +81,7 @@ class GetUrl(DatasourcesAndWorkbooks):
     def get_file_type_from_filename(logger, url, file_name):
         logger.debug("Choosing between {}, {}".format(file_name, url))
         file_name = file_name or url
-        logger.debug(_("get.options.file") + ": {}".format(file_name)) # Name to save the file as
+        logger.debug(_("get.options.file") + ": {}".format(file_name))  # Name to save the file as
         type_of_file = GetUrl.get_file_extension(file_name)
 
         if not type_of_file and file_name is not None:
@@ -98,19 +98,18 @@ class GetUrl(DatasourcesAndWorkbooks):
 
         Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name))
 
-
     @staticmethod
     def get_file_extension(path):
         path_segments = os.path.split(path)
         filename = path_segments[-1]
-        filename_segments = filename.split('.')
+        filename_segments = filename.split(".")
         extension = filename_segments[-1]
         extension = GetUrl.strip_query_params(extension)
         return extension
 
     @staticmethod
     def strip_query_params(filename):
-        if '?' in filename:
+        if "?" in filename:
             return filename.split("?")[0]
         else:
             return filename
