@@ -1,7 +1,6 @@
 import argparse
-import sys
 import unittest
-import mock
+import unittest.mock as mock
 from tabcmd.execution.logger_config import *
 from tabcmd.execution.tabcmd_controller import TabcmdController
 
