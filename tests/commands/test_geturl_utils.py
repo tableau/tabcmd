@@ -24,7 +24,23 @@ fake_item.name = "fake-name"
 fake_item.id = "fake-id"
 
 
-class GeturlTests(unittest.TestCase):
+class FileHandling(unittest.TestCase):
+
+    # get_file_type_from_filename(logger, url, filename)
+    # get_file_extension(filepath)
+    # evaluate_content_type(logger, url)
+    # strip_query_params(filename)
+    # get_name_without_possible_extension(fileanme)
+    # get_resource_name(url, logger)
+    # get_view_url(url, logger)
+    # filename_from_args(file_arg, item_name, filetype)
+
+    def test_get_view_with_chars_in_save_name(self):
+        filename = "C:\\chase.culver\\docs\\downloaded.twbx"  # W-13757625 fails if file path contains .
+        url = None
+        filetype = GetUrl.get_file_type_from_filename(mock_logger, filename, url)
+        assert filetype == "twbx", filetype
+
     def test_evaluate_file_name_pdf(self):
         filename = "filename.pdf"
         url = None
@@ -59,6 +75,9 @@ class GeturlTests(unittest.TestCase):
         filename = "viewname"
         assert GetUrl.get_name_without_possible_extension(filename) == filename
 
+
+# handling our specific url-ish identifiers: /workbook/wb-name, etc
+class GeturlTests(unittest.TestCase):
     def test_get_workbook_name(self):
         assert GetUrl.get_resource_name("workbooks/wbname", mock_logger) == "wbname"
 
@@ -69,9 +88,12 @@ class GeturlTests(unittest.TestCase):
         assert GetUrl.get_view_url("views/wb-name/view-name?:refresh=y", None) == "wb-name/sheets/view-name"
 
     """
-    GetUrl.get_view_without_extension(view_name)
     GetUrl.get_view(url)
+    GetUrl.get_view_without_extension(view_name)
     GetUrl.get_workbook(url)
+    """
+
+    """
     GetUrl.generate_twb(logger, server, args)
     GetUrl.generate_pdf(logger, server, args)
     GetUrl.generate_png(logger, server, args)

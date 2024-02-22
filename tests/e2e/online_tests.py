@@ -38,7 +38,7 @@ server_admin = False
 site_admin = True
 project_admin = True
 extract_encryption_enabled = False
-use_tabcmd_classic = False # toggle between testing using tabcmd 2 or tabcmd classic
+use_tabcmd_classic = False  # toggle between testing using tabcmd 2 or tabcmd classic
 
 
 def _test_command(test_args: list[str]):
@@ -49,7 +49,11 @@ def _test_command(test_args: list[str]):
 
     # call the executable directly: lets us drop in classic tabcmd
     if use_tabcmd_classic:
-        calling_args = ["C:\\Program Files\\Tableau\\Tableau Server\\2023.3\\extras\\Command Line Utility\\tabcmd.exe"] + test_args + ["--no-certcheck"]
+        calling_args = (
+            ["C:\\Program Files\\Tableau\\Tableau Server\\2023.3\\extras\\Command Line Utility\\tabcmd.exe"]
+            + test_args
+            + ["--no-certcheck"]
+        )
     if database_password not in calling_args:
         print(calling_args)
     return subprocess.check_call(calling_args)
@@ -312,7 +316,7 @@ class OnlineCommandTest(unittest.TestCase):
         self._list("workbooks")
 
     @pytest.mark.order(8)
-    def test_list_workbooks(self):
+    def test_list_datasources(self):
         if use_tabcmd_classic:
             pytest.skip("not for tabcmd classic")
         self._list("datasources")
