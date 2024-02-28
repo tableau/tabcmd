@@ -5,12 +5,24 @@
 [![Python tests](https://github.com/tableau/tabcmd/actions/workflows/run-tests.yml/badge.svg)](https://github.com/tableau/tabcmd/actions/workflows/run-tests.yml)
 [![Pypi smoke tests](https://github.com/tableau/tabcmd/actions/workflows/python-app.yml/badge.svg)](https://github.com/tableau/tabcmd/actions/workflows/python-app.yml)
 
-An open source, cross platform command-line utility which you can use to automate site administration tasks on your Tableau Server site. 
+An open source, cross platform command-line utility which you can use to automate activity on Tableau Cloud or Tableau Server.
 
 
-## Download exe (or rpm/deb)
-* To download the latest release as an executable see https://github.com/tableau/tabcmd/releases
+## Download the app
+* To download the latest release ready to use see https://github.com/tableau/tabcmd/releases
 * There is no need to install: open a command line in the same folder as the exe and run
+
+
+> [!TIP]
+> You can also download the current latest release directly on the command line: 
+> ```shell
+> pip install tabcmd
+> ```
+
+
+### Run tabcmd
+
+These commands can be run from the folder that you downloaded tabcmd. If you add this folder to your PATH, they can be run from any folder.
 ```shell
 tabcmd [command_name] [--flags]
 ```
@@ -19,62 +31,7 @@ e.g
 * `tabcmd createproject --name [project_name]`
 * `tabcmd help`
 
-###or
-## Install on the command line 
 
-(Note: this requires Python 3.7+. Generally we will actively support versions of Python that are still in security support).
-
-```shell
-pip install tabcmd
-```
-
-Or install the current work-in-progress version from Git\
-*Only do this if you know you want the development version, no guarantee that we won't break APIs during development*
-
-```shell
-pip install git+https://github.com/tableau/tabcmd.git@development
-```
-
-If you go this route, but want to switch back to the non-development version, you need to run the following command before installing the stable version:
-
-```shell
-pip uninstall tabcmd
-```
-
-### Run tabcmd
-
-To run tabcmd from your local copy, from a console window in the same directory as the file tabcmd.py:
-
-1. Clone the repo
-2. Run `pip install .`
-
-- build
-> python setup.py build
-
-- run tests
-> pytest
-- run tests against a live server
-> python -m tabcmd login {your server info here}
-> pytest -q tests\e2e\online_tests.py -r pfE
-- with coverage calculation (https://coverage.readthedocs.io/en/6.3.2)
-> coverage run -m pytest && coverage report -m
-
-- autoformat your code with black (https://pypi.org/project/black/)
-> black --line-length 120 tabcmd tests [--check]
-
-- type check with mypy
-> mypy tabcmd tests
-
-- packaging is done with pyinstaller. You can only build an executable for the platform you build on.
-- To package a release, we first bump the version with `doit version` and build as 2.x.0 before packaging
-> pyinstaller tabcmd\tabcmd.py --clean --noconfirm
-
-produces dist/tabcmd.exe
-To run tabcmd during development, from a console window in the same directory as the file tabcmd.py:
-
-> dist/tabcmd/tabcmd.exe --help
-
-* `python -m tabcmd.py [command_name] [--flags]`
     * Examples:
         * `tabcmd.py login --username [username] --password [password] --server [server_name] --site [site_name]`
         * `tabcmd.py createproject --name [project_name]`

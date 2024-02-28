@@ -2,7 +2,11 @@
 from PyInstaller.utils.hooks import collect_data_files
 
 datas = []
-datas += collect_data_files('tabcmd.locales')
+datas += collect_data_files(
+    'tabcmd.locales',
+    include_py_files=False,
+    includes=["./**/tabcmd.mo"])
+
 print(datas)
 
 block_cipher = None
@@ -22,6 +26,7 @@ a = Analysis(
     cipher=block_cipher,
     noarchive=False,
 )
+
 pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 
 exe = EXE(

@@ -51,3 +51,4 @@ test.junit.xml
 
 # exceptions
 !tests/assets/detailed_users.csv
+est
