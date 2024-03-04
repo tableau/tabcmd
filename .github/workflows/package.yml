@@ -9,8 +9,9 @@ name: Release-Executable
 # https://anshumanfauzdar.medium.com/using-github-actions-to-bundle-python-application-into-a-single-package-and-automatic-release-834bd42e0670
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - '*'
   workflow_dispatch:
 
 jobs:
@@ -70,3 +71,12 @@ jobs:
       with:
         name: ${{ matrix.OUT_FILE_NAME }}
         path: ./dist/${{ matrix.TARGET }}/${{ matrix.OUT_FILE_NAME }}
+    
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: ./dist/${{ matrix.TARGET }}/${{ matrix.OUT_FILE_NAME }}/
+        tag: ${{ github.ref_name }}
+        overwrite: true
+        promote: true
