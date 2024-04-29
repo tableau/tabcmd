@@ -32,7 +32,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='tabcmd.app',
+    name='tabcmd',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -41,11 +41,12 @@ exe = EXE(
     console=True,
     codesign_identity=None,
     version='program_metadata.txt',
+    windowed=True
 )
 
 app = BUNDLE(
     exe,
-    name = 'tabcmd-app',
+    name = 'tabcmd.app',
     icon='res/tabcmd.icns',
     bundle_identifier = None,
 )
