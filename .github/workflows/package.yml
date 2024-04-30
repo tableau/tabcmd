@@ -31,7 +31,8 @@ jobs:
           - os: macos-13
             TARGET: macos
             CMD_BUILD:  >
-              pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/tabcmd.app
+              pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/tabcmd.app &&
+              chown -R --reference=. ./dist/macos/tabcmd.app
             OUT_FILE_NAME: tabcmd.app
             ASSET_MIME: application/zip
           - os: ubuntu-latest
