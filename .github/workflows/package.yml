@@ -70,7 +70,8 @@ jobs:
     - name: Validate package for ${{matrix.TARGET}}
       if: matrix.TARGET == 'macos'
       run: |
-        rm -f dist/${{ matrix.TARGET }}/tabcmd
+        rm -f dist/${{ matrix.TARGET }}/tabcmd.app/tabcmd
+        ls -ltr dist/${{ matrix.TARGET }}/tabcmd.app/
         ./dist/${{ matrix.TARGET }}/${{matrix.OUT_FILE_NAME}}/${{matrix.OUT_FILE_NAME}}/Contents/MacOS/tabcmd
 
     - uses: actions/upload-artifact@v4

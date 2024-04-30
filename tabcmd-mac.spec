@@ -40,8 +40,7 @@ exe = EXE(
     runtime_tmpdir=None,
     console=True,
     codesign_identity=None,
-    version='program_metadata.txt',
-    windowed=True
+    version='program_metadata.txt'
 )
 
 app = BUNDLE(
