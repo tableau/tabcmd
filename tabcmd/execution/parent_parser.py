@@ -35,9 +35,7 @@ def parent_parser_with_global_options():
     )
 
     formatting_group2 = parser.add_mutually_exclusive_group()
-    formatting_group2.add_argument(
-        "-t", "--site", default="", dest="site_name", metavar="SITEID", help=_("session.options.site")
-    )
+    formatting_group2.add_argument("-t", "--site", default="", dest="site_name", metavar="SITEID", help=_("session.options.site"))
 
     auth_options = parser.add_mutually_exclusive_group()
     auth_options.add_argument("--token-name", default=None, metavar="<TOKEN NAME>", help=_("tabcmd.options.token_name"))
