@@ -17,7 +17,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
     """
 
     name: str = "publish"
-    description: str = _("publish.description")
+    description: str = _("publish.short_description")
 
     @staticmethod
     def define_args(publish_parser):

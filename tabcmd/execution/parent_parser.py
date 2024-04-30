@@ -23,7 +23,7 @@ The arguments for each command must be added to a group for that command.
 
 def parent_parser_with_global_options():
     parser = argparse.ArgumentParser(usage=argparse.SUPPRESS, add_help=False)
-    parser._optionals.title = strings[0]
+    parser._optionals.title = _("tabcmdparser.global.behaviors")
 
     formatting_group1 = parser.add_mutually_exclusive_group()
     formatting_group1.add_argument(
@@ -35,28 +35,17 @@ def parent_parser_with_global_options():
     )
 
     formatting_group2 = parser.add_mutually_exclusive_group()
-    formatting_group2.add_argument(
-        "-t", "--site", default="", dest="site_name", metavar="SITEID", help=_("session.options.site")
-    )
+    formatting_group2.add_argument("-t", "--site", default="", dest="site_name", metavar="SITEID", help=_("session.options.site"))
 
     auth_options = parser.add_mutually_exclusive_group()
-    auth_options.add_argument("--token-name", default=None, metavar="<TOKEN NAME>", help=strings[13])
+    auth_options.add_argument("--token-name", default=None, metavar="<TOKEN NAME>", help=_("tabcmd.options.token_name"))
     auth_options.add_argument("-u", "--username", default=None, metavar="<USER>", help=_("session.options.username"))
 
     secret_values = parser.add_mutually_exclusive_group()
-    secret_values.add_argument(
-        "--token-value",
-        default=None,
-        metavar="<TOKEN VALUE>",
-        help=strings[12],
-    )
-    secret_values.add_argument(
-        "-p", "--password", default=None, metavar="<PASSWORD>", help=_("session.options.password")
-    )
-    secret_values.add_argument(
-        "--password-file", default=None, metavar="<FILE>", help=_("session.options.password-file")
-    )
-    secret_values.add_argument("--token-file", default=None, metavar="<FILE>", help=strings[11])
+    secret_values.add_argument("--token-value", default=None, metavar="<TOKEN VALUE>", help=_("tabcmd.options.token_value"))
+    secret_values.add_argument("-p", "--password", default=None, metavar="<PASSWORD>", help=_("session.options.password"))
+    secret_values.add_argument("--password-file", default=None, metavar="<FILE>", help=_("session.options.password-file"))
+    secret_values.add_argument("--token-file", default=None, metavar="<FILE>", help=_("tabcmd.options.token_file"))
 
     formatting_group3 = parser.add_mutually_exclusive_group()
     formatting_group3.add_argument("--no-prompt", action="store_true", help=_("session.options.no-prompt"))
@@ -101,7 +90,7 @@ def parent_parser_with_global_options():
     parser.add_argument(
         "--continue-if-exists",
         action="store_true",  # default behavior matches old tabcmd
-        help=strings[9],  # kind of equivalent to 'overwrite' in the publish command
+        help=_("tabcmd.options.conflicts"),  # kind of equivalent to 'overwrite' in the publish command
     )
 
     parser.add_argument(
@@ -115,7 +104,7 @@ def parent_parser_with_global_options():
         "--language",
         choices=["de", "en", "es", "fr", "it", "ja", "ko", "pt", "sv", "zh"],
         type=str.lower,  # coerce input to lowercase to act case insensitive
-        help=strings[10],
+        help=_("tabcmd.options.language.detailed"),
     )
 
     parser.add_argument(
@@ -124,35 +113,37 @@ def parent_parser_with_global_options():
         choices=["TRACE", "DEBUG", "INFO", "ERROR"],
         type=str.upper,  # coerce input to uppercase to act case insensitive
         default="info",
-        help=strings[8],
+        help=_("tabcmd.options.log"),
     )
 
     parser.add_argument(
         "-v",
         "--version",
         action="version",
-        version=strings[6] + "v" + version + "\n \n",
-        help=strings[7],
+        version=_("tabcmd.name") + "v" + version + "\n \n",
+        help=_("version.description"),
     )
     return parser
 
 
 class ParentParser:
     # Ref https://docs.python.org/3/library/argparse.html
-    """Parser that will be inherited by all commands. Contains
-    authentication and logging level setting"""
+    """Parser that will be inherited by all commands. Contains authentication and logging level setting"""
 
     def __init__(self):
         self.global_options = parent_parser_with_global_options()
         self.root = argparse.ArgumentParser(
-            prog="tabcmd", description=strings[15], parents=[self.global_options], epilog=strings[2]
+            prog="tabcmd", 
+            description="tabcmd <command>      -- " + _("tabcmd.howto"),
+            parents=[self.global_options], 
+            epilog=_("tabcmdparser.link.help")
         )
-        self.root._optionals.title = strings[1]
+        self.root._optionals.title =  _("tabcmdparser.global.connections")
         # https://stackoverflow.com/questions/7498595/python-argparse-add-argument-to-multiple-subparsers
         self.subparsers = self.root.add_subparsers(
-            title=strings[3],
-            description=strings[4],
-            metavar=strings[5],  # instead of printing the list of choices
+            title=_("tabcmdparser.help.commands"),
+            description=_("tabcmdparser.help.specific"),
+            metavar="{<command> [command args]}",  # instead of printing the list of choices
         )
 
     def get_root_parser(self):
@@ -168,15 +159,15 @@ class ParentParser:
         additional_parser = self.subparsers.add_parser(
             command.name, help=command.description, parents=[self.global_options]
         )
-        additional_parser._optionals.title = strings[1]
+        additional_parser._optionals.title =  _("tabcmdparser.global.connections")
         # This line is where we actually set each parser to call the correct command
         additional_parser.set_defaults(func=command)
         command.define_args(additional_parser)
         return additional_parser
 
     def include_help(self):
-        additional_parser = self.subparsers.add_parser("help", help=strings[14], parents=[self.global_options])
-        additional_parser._optionals.title = strings[1]
+        additional_parser = self.subparsers.add_parser("help", help=_("tabcmdparser.help.description") , parents=[self.global_options])
+        additional_parser._optionals.title =  _("tabcmdparser.global.connections")
         additional_parser.set_defaults(func=Help(self))
 
 
@@ -189,28 +180,6 @@ class Help:
 
     def run_command(self, args):
         logger = log(__name__, "info")
-        logger.info(strings[6] + " " + version + "\n")
+        logger.info(_("tabcmd.name") + " " + version + "\n")
         logger.info(self.parser.root.format_help())
 
-
-strings = [
-    "global behavioral arguments",  # 0 - global_behavior_args
-    "global connection arguments",  # 1 - global_conn_args
-    "For more help see https://tableau.github.io/tabcmd/",  # 2 - for_more_help
-    "list of tabcmd commands",  # 3
-    "For help on a specific command use 'tabcmd <command> -h'.",  # 4
-    "{<command> [command args]}",  # 5
-    "Tableau Server Command Line Utility",  # 6
-    "Show version information and exit.",  # 7
-    "Use the specified logging level. The default level is INFO.",  # 8
-    "Treat resource conflicts as item creation success e.g project already exists",  # 9
-    "Set the language to use. Exported data will be returned in this lang/locale.\n \
-        If not set, the client will use your computer locale, and the server will use \
-        your user account locale",  # 10
-    "Read the Personal Access Token from a file.",  # 11
-    "Use the specified Tableau Server Personal Access Token. Requires --token-name to be set.",  # 12
-    "The name of the Tableau Server Personal Access Token. If using a token to sign in,\
-        this is required at least once to begin session.",  # 13
-    "Show message listing commands and global options, then exit",  # 14
-    "tabcmd <command>      -- Run a specific command",  # 15
-]
