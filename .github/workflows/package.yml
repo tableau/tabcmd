@@ -95,7 +95,7 @@ jobs:
         name: ${{ matrix.OUT_FILE_NAME }}
         path: ./dist/${{ matrix.TARGET }}/${{ matrix.OUT_FILE_NAME }}
 
-    - name: Upload artifact for Mac
+    - name: Upload artifact for Mac 
       if: matrix.TARGET == 'macos'
       uses: actions/upload-artifact@v4
       with:
