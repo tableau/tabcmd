@@ -87,7 +87,8 @@ jobs:
       if: matrix.TARGET == 'macos'
       run: |
         rm -f dist/${{ matrix.TARGET }}/${{ matrix.BUNDLE_NAME }}/tabcmd
-        tar -cvf dist/${{ matrix.TARGET }}/${{ matrix.BUNDLE_NAME }}.tar dist/${{ matrix.TARGET }}/${{ matrix.BUNDLE_NAME }}
+        cd dist/${{ matrix.TARGET }}
+        tar -cvf ${{ matrix.BUNDLE_NAME }}.tar ${{ matrix.BUNDLE_NAME }}
 
     - name: Upload artifact
       if: matrix.TARGET != 'macos'
@@ -101,4 +102,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.BUNDLE_NAME }}
-        path: ./dist/${{ matrix.TARGET }}/${{ matrix.BUNDLE_NAME }}.tar
+        path: ./${{ matrix.BUNDLE_NAME }}.tar
