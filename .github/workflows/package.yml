@@ -31,7 +31,7 @@ jobs:
           - os: macos-13
             TARGET: macos
             CMD_BUILD:  >
-              pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/tabcmd.app
+              pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/
             BUNDLE_NAME: tabcmd.app
             OUT_FILE_NAME: tabcmd.app
             OUT_BINARY_FILE_NAME: tabcmd
@@ -39,7 +39,7 @@ jobs:
           - os: macos-latest
             TARGET: macos
             CMD_BUILD:  >
-              pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/tabcmd_arm64.app
+              pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/
             BUNDLE_NAME: tabcmd_arm64.app
             OUT_FILE_NAME: tabcmd.app
             OUT_BINARY_FILE_NAME: tabcmd
@@ -80,14 +80,14 @@ jobs:
     - name: Validate package for Mac
       if: matrix.TARGET == 'macos'
       run: |
-        ./dist/${{ matrix.TARGET }}/${{ matrix.BUNDLE_NAME }}/${{ matrix.OUT_FILE_NAME }}/Contents/MacOS/tabcmd
+        ./dist/${{ matrix.TARGET }}/${{ matrix.OUT_FILE_NAME }}/Contents/MacOS/tabcmd
 
     - name: Tar app bundle for Mac
       if: matrix.TARGET == 'macos'
       run: |
-        rm -f dist/${{ matrix.TARGET }}/${{ matrix.BUNDLE_NAME }}/tabcmd
+        rm -f dist/${{ matrix.TARGET }}/tabcmd
         cd dist/${{ matrix.TARGET }}
-        tar -cvf ${{ matrix.BUNDLE_NAME }}.tar ${{ matrix.BUNDLE_NAME }}
+        tar -cvf ${{ matrix.BUNDLE_NAME }}.tar ${{ matrix.OUT_FILE_NAME }}
 
     - name: Upload artifact
       if: matrix.TARGET != 'macos'
