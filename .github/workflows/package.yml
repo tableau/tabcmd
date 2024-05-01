@@ -102,4 +102,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.BUNDLE_NAME }}
-        path: ./${{ matrix.BUNDLE_NAME }}.tar
+        path: ./dist/${{ matrix.TARGET }}/${{ matrix.BUNDLE_NAME }}.tar
