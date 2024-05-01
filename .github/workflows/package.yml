@@ -80,7 +80,6 @@ jobs:
     - name: Validate package for Mac
       if: matrix.TARGET == 'macos'
       run: |
-        rm -f dist/${{ matrix.TARGET }}/${{ matrix.BUNDLE_NAME }}/tabcmd
         ./dist/${{ matrix.TARGET }}/${{ matrix.BUNDLE_NAME }}/${{ matrix.OUT_FILE_NAME }}/Contents/MacOS/tabcmd
 
     - name: Tar app bundle for Mac
@@ -101,5 +100,5 @@ jobs:
       if: matrix.TARGET == 'macos'
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ matrix.BUNDLE_NAME }}
+        name: ${{ matrix.BUNDLE_NAME }}.tar
         path: ./dist/${{ matrix.TARGET }}/${{ matrix.BUNDLE_NAME }}.tar
