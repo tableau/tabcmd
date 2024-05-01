@@ -100,5 +100,5 @@ jobs:
       if: matrix.TARGET == 'macos'
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ matrix.BUNDLE_NAME }}.tar
+        name: ${{ matrix.BUNDLE_NAME }}
         path: ./dist/${{ matrix.TARGET }}/${{ matrix.BUNDLE_NAME }}.tar
