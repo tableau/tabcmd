@@ -28,11 +28,21 @@ jobs:
               pyinstaller tabcmd-windows.spec --clean --noconfirm --distpath ./dist/windows
             OUT_FILE_NAME: tabcmd.exe
             ASSET_MIME: application/vnd.microsoft.portable-executable
+          - os: macos-13
+            TARGET: macos
+            CMD_BUILD:  >
+              pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/
+            BUNDLE_NAME: tabcmd.app
+            OUT_FILE_NAME: tabcmd.app
+            APP_BINARY_FILE_NAME: tabcmd
+            ASSET_MIME: application/zip
           - os: macos-latest
             TARGET: macos
             CMD_BUILD:  >
-              pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos
+              pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/
+            BUNDLE_NAME: tabcmd_arm64.app
             OUT_FILE_NAME: tabcmd.app
+            APP_BINARY_FILE_NAME: tabcmd
             ASSET_MIME: application/zip
           - os: ubuntu-latest
             TARGET: ubuntu
@@ -64,9 +74,30 @@ jobs:
       run: ${{matrix.CMD_BUILD}}
 
     - name: Validate package for ${{matrix.TARGET}}
+      if: matrix.TARGET != 'macos'
       run: ./dist/${{ matrix.TARGET }}/${{matrix.OUT_FILE_NAME}}
 
-    - uses: actions/upload-artifact@v4
+    - name: Validate package for Mac
+      if: matrix.TARGET == 'macos'
+      run: ./dist/${{ matrix.TARGET }}/${{ matrix.OUT_FILE_NAME }}/Contents/MacOS/${{ matrix.APP_BINARY_FILE_NAME }}
+
+    - name: Tar app bundle for Mac
+      if: matrix.TARGET == 'macos'
+      run: |
+        rm -f dist/${{ matrix.TARGET }}/${{ matrix.APP_BINARY_FILE_NAME }}
+        cd dist/${{ matrix.TARGET }}
+        tar -cvf ${{ matrix.BUNDLE_NAME }}.tar ${{ matrix.OUT_FILE_NAME }}
+
+    - name: Upload artifact
+      if: matrix.TARGET != 'macos'
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.OUT_FILE_NAME }}
         path: ./dist/${{ matrix.TARGET }}/${{ matrix.OUT_FILE_NAME }}
+
+    - name: Upload artifact for Mac 
+      if: matrix.TARGET == 'macos'
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ matrix.BUNDLE_NAME }}
+        path: ./dist/${{ matrix.TARGET }}/${{ matrix.BUNDLE_NAME }}.tar
