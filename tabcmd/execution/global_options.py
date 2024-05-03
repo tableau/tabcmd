@@ -269,15 +269,15 @@ def set_publish_args(parser):
     parser.add_argument("--save-oauth", action="store_true", help=_("publish.options.save-oauth"))
     parser.add_argument("--db-password", help=_("publish.options.db-password"))
     parser.add_argument("--save-db-password", action="store_true", help=_("publish.options.save-db-password"))
-    parser.add_argument("--tabbed", action="store_true", help=_("tabcmd.publish.options.tabbed"))
+    parser.add_argument("--tabbed", action="store_true", help=_("tabcmd.publish.options.tabbed.detailed"))
     parser.add_argument("--disable-uploader", action="store_true", help=_("tabcmd.publish.options.disable-uploader"))
     parser.add_argument("--restart", help=_("tabcmd.publish.options.restart"))
-    parser.add_argument("--encrypt-extracts", action="store_true", help=_("tabcmd.publish.options.encrypt-extracts"))
+    parser.add_argument("--encrypt-extracts", action="store_true", help=_("publish.options.encrypt-extracts"))
 
     # These two only apply for a workbook, not a datasource
     thumbnails = parser.add_mutually_exclusive_group()
-    thumbnails.add_argument("--thumbnail-username", help=_("tabcmd.publish.options.thumbnail-username"))
-    thumbnails.add_argument("--thumbnail-group", help=_("tabcmd.publish.options.thumbnail-groupname"))
+    thumbnails.add_argument("--thumbnail-username", help=_("publish.options.thumbnail-username"))
+    thumbnails.add_argument("--thumbnail-group", help=_("publish.options.thumbnail-groupname"))
 
     parser.add_argument("--use-tableau-bridge", action="store_true", help=_("tabcmd.refresh.options.bridge"))
 
@@ -315,12 +315,12 @@ def set_calculations_options(parser):
     calc_group.add_argument(
         "--addcalculations",
         action="store_true",
-        help=_("tabcmd.materializeviews.options.addcalculations"),
+        help=_("tabcmd.options.addcalculations"),
     )
     calc_group.add_argument(
         "--removecalculations",
         action="store_true",
-        help=_("tabcmd.materializeviews.options.removecalculations"),
+        help=_("tabcmd.options.removecalculations"),
     )
     return calc_group
 
