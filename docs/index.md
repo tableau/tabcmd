@@ -21,7 +21,7 @@ Packaged apps are available for the latest release at (https://github.com/tablea
 * For Linux, download tabcmd
 
 ### Install with pip 
-To run tabcmd manually as a python module, you can install the latest stable version from pypi:
+To run tabcmd manually as a python module, you can install the latest stable version from PyPI:
 
 ```shell
 pip install tabcmd
@@ -42,35 +42,34 @@ If you would like to install an older version of tabcmd, you can continue to fol
 
 ## Logging in
 
-You can log in to the tabcmd CLI in one of four ways:
+You can log in to the tabcmd CLI in one of four ways. Users on Tableau Cloud or Tableau Server with multi-factor authentication (MFA) must use the personal access token (PAT) method.
 
   * Log in with `--username` but not `--password`, and tabcmd prompts for the password to be entered 
 
-
   * Log in using `--passwordfile` instead of `--password`
 
-  * Log in with a personal access token (PAT) (only available in tabcmd 2.0)
+  * Log in with a personal access token (PAT)
 
-  * Log in with `--password` and the password value listed in the command line. This is the simplest way to log in but it was the least secure.
+  * Log in with `--password` and the password value listed in the command line. This is the simplest way to log in but it is the least secure and not recommended.
 
 <div class="alert alert-info">
 <strong>Tip</strong>: If your password or PAT has <a href="https://en.wikipedia.org/wiki/Delimiter">delimiters</a> or certain special characters, the command line might not correctly send your password or PAT to the server. These characters must be escaped. 
 
 Special characters can be:
 
- * comma (,)
- * semicolon (;)
- * equals (=)
- * space ( )
- * tab (    )
- * plus (+)
- * semi-colon (;)
- * ellipsis (...)
+* comma (,)
+* semicolon (;)
+* equals (=)
+* space ( )
+* tab (    )
+* plus (+)
+* semi-colon (;)
+* ellipsis (...)
 
 The escape character to use depends on your operating system (OS). For example, the caret (^) is an escape character on Windows. To use the caret, you must escape it with itself (^) or by enclosing in double quotes. For example: 
 
---username "tom^harry"
---username tom^^harry
+    --username "tom^harry"
+    --username tom^^harry
 
 For more information about escaping characters for your OS, see <a href="https://ss64.com/nt/syntax-esc.html">How-to: Escape Characters, delimiters and Quotes (Windows)</a>, <a href="https://ss64.com/osx/syntax-quoting.html">How-to: Escape Characters, delimiters and Quotes (Mac)</a>, or <a href="https://ss64.com/bash/syntax-quoting.html">How-to: Escape Characters, delimiters and Quotes (Linux)</a>.
 </div>
