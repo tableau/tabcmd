@@ -8,6 +8,8 @@ from typing import Optional
 
 try:
     from credentials import waremart_password, waremart_user
+    database_password = waremart_password
+    database_user = waremart_user
 except ModuleNotFoundError:
     waremart_user = None
     waremart_password = None
@@ -188,25 +190,22 @@ class OnlineCommandTest(unittest.TestCase):
     # actual tests
     TWBX_FILE_WITH_EXTRACT = "WorkbookWithExtract.twbx"
     TWBX_WITH_EXTRACT_NAME = "WorkbookWithExtract"
-    TWBX_WITH_EXTRACT_SHEET = "sheet1"
+    TWBX_WITH_EXTRACT_SHEET = "Sheet1"
+
     TWBX_FILE_WITHOUT_EXTRACT = "simple-data.twbx"
     TWBX_WITHOUT_EXTRACT_NAME = "WorkbookWithoutExtract"
     TWBX_WITHOUT_EXTRACT_SHEET = "Testsheet1"
+
     TDSX_WITH_EXTRACT_NAME = "WorldIndicators"
     TDSX_FILE_WITH_EXTRACT = "World Indicators.tdsx"
-    # only works on linux servers or something
+    # fill in
+    TDS_FILE_LIVE_NAME = ""
+    TDS_FILE_LIVE = ""
+    # only works on linux servers, need to also publish the datasource
     TWB_WITH_EMBEDDED_CONNECTION = "embedded_connection_waremart.twb"
     EMBEDDED_TWB_NAME = "waremart"
 
-    @pytest.mark.order(1)
-    def test_login(self):
-        pytest.skip("not for tabcmd classic")
-        try:
-            # this will silently do nothing when run in github
-            setup_e2e.login()
-        except Exception as e:
-            print(e)
-            raise SystemExit(2)
+
 
     @pytest.mark.order(1)
     def test_help(self):
@@ -323,7 +322,9 @@ class OnlineCommandTest(unittest.TestCase):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         # bug in tabcmd classic: doesn't work without download name
-        self._get_view(wb_name_on_server, sheet_name, "downloaded_file.pdf")
+        # verify that the download works with a . in the file path
+        self._get_view(wb_name_on_server, sheet_name, "c://users//jac.fitzgerald//Documents//downloaded_file.pdf")
+        # self._get_view(wb_name_on_server, sheet_name, "downloaded_file.pdf")
 
     @pytest.mark.order(11)
     def test_view_get_csv(self):
@@ -339,7 +340,7 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(11)
     def test_wb_publish_embedded(self):
-        pytest.skip("waremart failed to establish a connection to your datasource.")
+        pytest.skip("Waremart datasource is not available")
         file = os.path.join("tests", "assets", OnlineCommandTest.TWB_WITH_EMBEDDED_CONNECTION)
         arguments = self._publish_args(file, OnlineCommandTest.EMBEDDED_TWB_NAME)
         arguments = self._publish_creds_args(arguments, waremart_user, waremart_password, True)
@@ -349,6 +350,26 @@ class OnlineCommandTest(unittest.TestCase):
     def test_publish_ds(self):
         file = os.path.join("tests", "assets", OnlineCommandTest.TDSX_FILE_WITH_EXTRACT)
         arguments = self._publish_args(file, OnlineCommandTest.TDSX_WITH_EXTRACT_NAME)
+        _test_command(arguments)
+
+    @pytest.mark.order(12)
+    def test_publish_ds_replace(self):
+        file = os.path.join("tests", "assets", OnlineCommandTest.TDSX_FILE_WITH_EXTRACT)
+        arguments = self._publish_args(file, OnlineCommandTest.TDSX_WITH_EXTRACT_NAME, "--replace")
+        _test_command(arguments)
+
+    @pytest.mark.order(12)
+    def test_publish_ds_append(self):
+        file = os.path.join("tests", "assets", OnlineCommandTest.TDSX_FILE_WITH_EXTRACT)
+        arguments = self._publish_args(file, OnlineCommandTest.TDSX_WITH_EXTRACT_NAME, "--append")
+        _test_command(arguments)
+
+    @pytest.mark.order(12)
+    def test_publish_live_ds(self):
+        if not OnlineCommandTest.TDS_FILE_LIVE:
+            pytest.skip("No live datasource to publish")
+        file = os.path.join("tests", "assets", OnlineCommandTest.TDS_FILE_LIVE)
+        arguments = self._publish_args(file, OnlineCommandTest.TDS_FILE_LIVE_NAME)
         _test_command(arguments)
 
     @pytest.mark.order(13)
@@ -365,10 +386,9 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(16)
     def test_create_extract(self):
-        pytest.skip(
-            "Can't create extract for data source '3f3c204c-3c28-4fa6-9fb6-80c848a20338' because it is already extracted."
-        )
-        self._create_extract("-d", OnlineCommandTest.TDSX_WITH_EXTRACT_NAME)
+        if not OnlineCommandTest.TDS_FILE_LIVE:
+            pytest.skip("No live datasource to publish")
+        self._create_extract("-d", OnlineCommandTest.TDS_FILE_LIVE_NAME)
 
     @pytest.mark.order(17)
     def test_refresh_wb_extract(self):
@@ -382,6 +402,13 @@ class OnlineCommandTest(unittest.TestCase):
     @pytest.mark.order(19)
     def test__delete_ds(self):
         name_on_server = OnlineCommandTest.TDSX_WITH_EXTRACT_NAME
+        self._delete_ds(name_on_server)
+
+    @pytest.mark.order(19)
+    def test__delete_ds_live(self):
+        if not OnlineCommandTest.TDS_FILE_LIVE:
+            pytest.skip("No live datasource to publish")
+        name_on_server = OnlineCommandTest.TDS_FILE_LIVE_NAME
         self._delete_ds(name_on_server)
 
     @pytest.mark.order(19)
