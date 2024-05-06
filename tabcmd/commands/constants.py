@@ -16,10 +16,9 @@ class Constants:
     source_already_exists = "409006"
     user_already_member_of_site = "409017"
 
-
 class Errors:
     @staticmethod
-    def is_expired_session(error):
+    def is_expired_session(error: Exception):
         if hasattr(error, "code"):
             return error.code == Constants.invalid_credentials
 
