@@ -155,6 +155,9 @@ def set_project_arg(parser):
     parser.add_argument("--project", dest="project_name", default="", help=_("tabcmd.options.project"))
     return parser
 
+def set_resource_url_arg(parser):
+    parser.add_argument("--url", help=_("tabcmd.options.resource_url")
+    return parser
 
 def set_ds_xor_wb_options(parser):
     target_type_group = parser.add_mutually_exclusive_group(required=False)
@@ -254,6 +257,9 @@ def set_site_detail_option(parser):
         help=_("listsites.options.get_extract_encryption_mode"),
     )
 
+    
+def set_destination_filename_arg(parser):
+    parser.add_argument("-f", "--filename", help=_("get.options.file"))
 
 # export --- mmmaaaannnyyyy options
 def set_filename_arg(parser, description=_("get.options.file")):

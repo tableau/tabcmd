@@ -22,7 +22,7 @@ class DeleteCommand(DatasourcesAndWorkbooks):
     @staticmethod
     def define_args(delete_parser):
         group = delete_parser.add_argument_group(title=DeleteCommand.name)
-        group.add_argument("name", help=_("content_type.workbook") + "/" + _("content_type.datasource"))
+        group.add_argument("name", help=_("tabcmd.delete.target.name")) 
         set_ds_xor_wb_options(group)
         set_project_r_arg(group)
         set_parent_project_arg(group)
@@ -45,19 +45,20 @@ class DeleteCommand(DatasourcesAndWorkbooks):
         if container:
             item_name = (args.parent_project_path or "") + "/" + (args.project_name or "default") + "/" + args.name
         else:
-            Errors.exit_with_error(logger, "Containing project could not be found")
+            
+            Errors.exit_with_error(logger, _("tabcmd.delete.target.name"))
         logger.info(_("delete.status").format(content_type, item_name or args.name))
 
         error = None
         if args.workbook or not content_type:
-            logger.debug("Attempt as workbook")
+            logger.debug(_("tabcmd.delete.status.workbook")) 
             try:
                 item_to_delete = DeleteCommand.get_workbook_item(logger, server, args.name, container)
                 content_type = "workbook"
             except TSC.ServerResponseError as error:
                 logger.debug(error)
         if args.datasource or not content_type:
-            logger.debug("Attempt as datasource")
+            logger.debug(_("tabcmd.delete.status.datasource")) 
             try:
                 item_to_delete = DeleteCommand.get_data_source_item(logger, server, args.name, container)
                 content_type = "datasource"
