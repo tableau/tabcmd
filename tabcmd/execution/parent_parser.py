@@ -35,16 +35,24 @@ def parent_parser_with_global_options():
     )
 
     formatting_group2 = parser.add_mutually_exclusive_group()
-    formatting_group2.add_argument("-t", "--site", default="", dest="site_name", metavar="SITEID", help=_("session.options.site"))
+    formatting_group2.add_argument(
+        "-t", "--site", default="", dest="site_name", metavar="SITEID", help=_("session.options.site")
+    )
 
     auth_options = parser.add_mutually_exclusive_group()
     auth_options.add_argument("--token-name", default=None, metavar="<TOKEN NAME>", help=_("tabcmd.options.token_name"))
     auth_options.add_argument("-u", "--username", default=None, metavar="<USER>", help=_("session.options.username"))
 
     secret_values = parser.add_mutually_exclusive_group()
-    secret_values.add_argument("--token-value", default=None, metavar="<TOKEN VALUE>", help=_("tabcmd.options.token_value"))
-    secret_values.add_argument("-p", "--password", default=None, metavar="<PASSWORD>", help=_("session.options.password"))
-    secret_values.add_argument("--password-file", default=None, metavar="<FILE>", help=_("session.options.password-file"))
+    secret_values.add_argument(
+        "--token-value", default=None, metavar="<TOKEN VALUE>", help=_("tabcmd.options.token_value")
+    )
+    secret_values.add_argument(
+        "-p", "--password", default=None, metavar="<PASSWORD>", help=_("session.options.password")
+    )
+    secret_values.add_argument(
+        "--password-file", default=None, metavar="<FILE>", help=_("session.options.password-file")
+    )
     secret_values.add_argument("--token-file", default=None, metavar="<FILE>", help=_("tabcmd.options.token_file"))
 
     formatting_group3 = parser.add_mutually_exclusive_group()
@@ -133,12 +141,12 @@ class ParentParser:
     def __init__(self):
         self.global_options = parent_parser_with_global_options()
         self.root = argparse.ArgumentParser(
-            prog="tabcmd", 
+            prog="tabcmd",
             description="tabcmd <command>      -- " + _("tabcmd.howto"),
-            parents=[self.global_options], 
-            epilog=_("tabcmdparser.link.help")
+            parents=[self.global_options],
+            epilog=_("tabcmdparser.link.help"),
         )
-        self.root._optionals.title =  _("tabcmdparser.global.connections")
+        self.root._optionals.title = _("tabcmdparser.global.connections")
         # https://stackoverflow.com/questions/7498595/python-argparse-add-argument-to-multiple-subparsers
         self.subparsers = self.root.add_subparsers(
             title=_("tabcmdparser.help.commands"),
@@ -159,15 +167,17 @@ class ParentParser:
         additional_parser = self.subparsers.add_parser(
             command.name, help=command.description, parents=[self.global_options]
         )
-        additional_parser._optionals.title =  _("tabcmdparser.global.connections")
+        additional_parser._optionals.title = _("tabcmdparser.global.connections")
         # This line is where we actually set each parser to call the correct command
         additional_parser.set_defaults(func=command)
         command.define_args(additional_parser)
         return additional_parser
 
     def include_help(self):
-        additional_parser = self.subparsers.add_parser("help", help=_("tabcmdparser.help.description") , parents=[self.global_options])
-        additional_parser._optionals.title =  _("tabcmdparser.global.connections")
+        additional_parser = self.subparsers.add_parser(
+            "help", help=_("tabcmdparser.help.description"), parents=[self.global_options]
+        )
+        additional_parser._optionals.title = _("tabcmdparser.global.connections")
         additional_parser.set_defaults(func=Help(self))
 
 
@@ -182,4 +192,3 @@ class Help:
         logger = log(__name__, "info")
         logger.info(_("tabcmd.name") + " " + version + "\n")
         logger.info(self.parser.root.format_help())
-

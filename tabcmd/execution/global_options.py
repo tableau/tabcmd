@@ -106,11 +106,7 @@ def set_embedded_datasources_options(parser):
         "--embedded-datasources",
         help=_("createextracts.options.embedded-datasources"),
     )
-    embedded_group.add_argument(
-        "--include-all",
-        action="store_true",
-        help=_("createextracts.options.include-all")
-    )
+    embedded_group.add_argument("--include-all", action="store_true", help=_("createextracts.options.include-all"))
     return parser
 
 
@@ -132,22 +128,12 @@ def set_encryption_option(parser):
 # for publish it uses -r for destination project name
 # but parser.site uses -r for site-content-url
 def set_project_r_arg(parser):
-    parser.add_argument(
-        "--project",
-        "-r",
-        dest="project_name",
-        default="",
-        help=("tabcmd.options.project"))
+    parser.add_argument("--project", "-r", dest="project_name", default="", help=("tabcmd.options.project"))
     return parser
 
 
 def set_project_n_arg(parser):
-    parser.add_argument(
-        "-n",
-        "--project",
-        dest="project_name",
-        default="",
-        help=("tabcmd.options.project"))
+    parser.add_argument("-n", "--project", dest="project_name", default="", help=("tabcmd.options.project"))
     return parser
 
 
@@ -155,13 +141,15 @@ def set_project_arg(parser):
     parser.add_argument("--project", dest="project_name", default="", help=_("tabcmd.options.project"))
     return parser
 
+
 def set_resource_url_arg(parser):
-    parser.add_argument("--url", help=_("tabcmd.options.resource_url")
+    parser.add_argument("--url", help=_("tabcmd.options.resource_url"))
     return parser
+
 
 def set_ds_xor_wb_options(parser):
     target_type_group = parser.add_mutually_exclusive_group(required=False)
-    target_type_group.add_argument("-d", "--datasource", action="store_true",  help=_("tabcmd.options.datasource"))
+    target_type_group.add_argument("-d", "--datasource", action="store_true", help=_("tabcmd.options.datasource"))
     target_type_group.add_argument("-w", "--workbook", action="store_true", help=_("tabcmd.options.workbook"))
     return parser
 
@@ -222,7 +210,7 @@ def set_common_site_args(parser):
         "--extract-encryption-mode",
         choices=encryption_modes,
         type=case_insensitive_string_type(encryption_modes),
-        help=_("tabcmd.editsite.options.extract_encryption_mode")
+        help=_("tabcmd.editsite.options.extract_encryption_mode"),
     )
 
     parser.add_argument(
@@ -257,9 +245,10 @@ def set_site_detail_option(parser):
         help=_("listsites.options.get_extract_encryption_mode"),
     )
 
-    
+
 def set_destination_filename_arg(parser):
     parser.add_argument("-f", "--filename", help=_("get.options.file"))
+
 
 # export --- mmmaaaannnyyyy options
 def set_filename_arg(parser, description=_("get.options.file")):
@@ -300,7 +289,11 @@ def set_append_replace_option(parser):
 
 # This will overwrite the metadata and data of the existing content
 def set_overwrite_option(parser):
-    parser.add_argument("-o", "--overwrite", action="store_true", help=_("tabcmd.publish.options.overwrite"),
+    parser.add_argument(
+        "-o",
+        "--overwrite",
+        action="store_true",
+        help=_("tabcmd.publish.options.overwrite"),
     )
 
 
@@ -345,7 +338,6 @@ def set_calculations_options(parser):
 #     return parser
 
 
-
 # set setting
 # choices: allow_scheduling, embedded_credentials, remember_passwords_forever
 # use !setting-name to disable them
@@ -369,5 +361,3 @@ def set_calculations_options(parser):
 #         help="Allows a user’s site role to be overwritten with a less privileged one when using --role.",
 #     )
 #     return parser
-
-
