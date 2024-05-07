@@ -27,7 +27,7 @@ class GetUrl(DatasourcesAndWorkbooks):
     def define_args(get_url_parser):
         group = get_url_parser.add_argument_group(title=GetUrl.name)
         group.add_argument("url", help=_("refreshextracts.options.url"))
-        set_filename_arg(group)
+        set_destination_filename_arg(group)
         # these don't need arguments, although that would be a good future addition
         # tabcmd get "/views/Finance/InvestmentGrowth.png?:size=640,480" -f growth.png
         # tabcmd get "/views/Finance/InvestmentGrowth.png?:refresh=yes" -f growth.png
@@ -70,11 +70,7 @@ class GetUrl(DatasourcesAndWorkbooks):
         view_example = "/views/<workbookname>/<viewname>[.ext]"
         wb_example = "/workbooks/<workbookname>[.ext]"
         ds_example = "/datasources/<datasourcename[.ext]"
-        # todo when strings are updated # message:str = _("export.errors.requires_resource_param").format(
-        message = (
-            "The ''{0}'' command requires a resource path in a specific format."
-            "Given: {1}. Accepted values: {2}, {3}, {4}".format(command, url, view_example, wb_example, ds_example)
-        )
+        message = _("export.errors.requires_resource_param").format(command, url, view_example, wb_example, ds_example)
         Errors.exit_with_error(logger, message)
 
     @staticmethod

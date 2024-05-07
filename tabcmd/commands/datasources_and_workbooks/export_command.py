@@ -2,6 +2,7 @@ import tableauserverclient as TSC
 
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.constants import Errors
+from tabcmd.execution.global_options import set_destination_filename_arg
 from tabcmd.execution.localize import _
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
@@ -57,7 +58,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
         group.add_argument(
             "--width", default=800, help="[Not Yet Implemented] Set the width of the image in pixels. Default is 800 px"
         )
-        group.add_argument("--filename", "-f", help="filename to store the exported data")
+        set_destination_filename_arg(group)
         group.add_argument("--height", default=600, help=_("export.options.height"))
         group.add_argument(
             "--filter",
