@@ -250,11 +250,6 @@ def set_destination_filename_arg(parser):
     parser.add_argument("-f", "--filename", help=_("get.options.file"))
 
 
-# export --- mmmaaaannnyyyy options
-def set_filename_arg(parser, description=_("get.options.file")):
-    parser.add_argument("-f", "--filename", help=description)
-
-
 def set_publish_args(parser):
     parser.add_argument("-n", "--name", help=_("publish.options.name"))
 
