@@ -25,7 +25,6 @@ class CreateExtracts(Server):
         set_encryption_option(group)
         set_project_arg(group)
         set_parent_project_arg(group)
-        set_resource_url_arg(group)
 
     @classmethod
     def run_command(cls, args):
