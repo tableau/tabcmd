@@ -15,7 +15,7 @@
 
 ## Install Tabcmd
 > [!NOTE]
-> These instructions are for people who want to write code in or using tabcmd. If > you are interested in tabcmd but not the code, see [here](Readme.md).
+> These instructions are for people who want to work with the python code behind tabcmd. If you are interested in tabcmd but not the code, see [here](Readme.md).
 
 ####To work with tabcmd, you need to have **Python 3.8+** installed. To propose changes, you must have a Github account.
 
