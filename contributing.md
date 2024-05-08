@@ -149,7 +149,7 @@ The version reflected in the executable (tabcmd -v) is stored in a metadata file
     - run pyinstaller to create executables
     - save the executable as an artifact on that job.
 
-1. Find the artifacts created by this job and manually copy them to the new release. (Beware! of what the file type is, github does somethign weird with zipping it if you download with curl etc. TODO: automate workflow with a github action)
+1. Find the artifacts created by this job and manually copy them to the new release. (Beware! of what the file type is, github does something weird with zipping it if you download with curl etc. TODO: automate workflow with a github action)
 
 1. To trigger publishing to pypi run the manual workflow on main with 'pypi'. (TODO: automate trigger)
 
