@@ -935,6 +935,8 @@ This command takes the name of the workbook or data source as it appears on the 
 
 : During a synchronous refresh, tabcmd maintains a live connection to the server while the refresh operation is underway, polling every second until the background job is done.
 
+  <div class="alert alert-info"><strong>Note:</strong> The option is not supported for data sources that refresh through Tableau Bridge.</div>
+
 \-\-workbook
 
 : The name of the workbook containing extracts to refresh. If the workbook has spaces in its name, enclose it in quotes.
