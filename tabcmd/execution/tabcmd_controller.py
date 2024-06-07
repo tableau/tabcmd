@@ -1,6 +1,5 @@
 import logging
 import sys
-import argparse 
 
 from .localize import set_client_locale
 from .logger_config import log
