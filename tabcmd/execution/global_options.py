@@ -315,7 +315,7 @@ def set_publish_args(parser):
     parser.add_argument(
         "--skip-connection-check",
         action="store_true",
-        help="Skip connection check: do not validate the workbook/datasource connection during publishing"
+        help="Skip connection check: do not validate the workbook/datasource connection during publishing",
     )
 
     # These two only apply for a workbook, not a datasource

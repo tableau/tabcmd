@@ -52,7 +52,6 @@ class PublishCommand(DatasourcesAndWorkbooks):
             logger.error(exc.__str__())
             Errors.exit_with_error(logger, _("publish.errors.server_resource_not_found"), exc)
 
-
         publish_mode = PublishCommand.get_publish_mode(args, logger)
 
         if args.db_username:

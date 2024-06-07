@@ -203,7 +203,7 @@ class OnlineCommandTest(unittest.TestCase):
     # fill in
     TDS_FILE_LIVE_NAME = "SampleDS"
     TDS_FILE_LIVE = "SampleDS.tds"
-    
+
     TWB_WITH_EMBEDDED_CONNECTION = "EmbeddedCredentials.twb"
     EMBEDDED_TWB_NAME = "EmbeddedCredentials"
 
@@ -334,8 +334,8 @@ class OnlineCommandTest(unittest.TestCase):
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         arguments = self._publish_args(file, OnlineCommandTest.TWBX_WITH_EXTRACT_NAME)
         val = _test_command(arguments)
-        if (val != 0):
-            print('publishing failed: cancel test run')
+        if val != 0:
+            print("publishing failed: cancel test run")
             exit(val)
 
     @pytest.mark.order(11)
