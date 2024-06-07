@@ -40,19 +40,17 @@ class PublishCommand(DatasourcesAndWorkbooks):
         session = Session()
         server = session.create_session(args, logger)
 
-        if args.project_name:
-            try:
-                dest_project = Server.get_project_by_name_and_parent_path(
-                    logger, server, args.project_name, args.parent_project_path
-                )
-                project_id = dest_project.id
-            except Exception as exc:
-                logger.error(exc.__str__())
-                Errors.exit_with_error(logger, _("publish.errors.server_resource_not_found"), exc)
-        else:
-            project_id = ""
-            args.project_name = "default"
+        if not args.project_name:
+            args.project_name = "Default"
             args.parent_project_path = ""
+        try:
+            dest_project = Server.get_project_by_name_and_parent_path(
+                logger, server, args.project_name, args.parent_project_path
+            )
+            project_id = dest_project.id
+        except Exception as exc:
+            logger.error(exc.__str__())
+            Errors.exit_with_error(logger, _("publish.errors.server_resource_not_found"), exc)
 
         publish_mode = PublishCommand.get_publish_mode(args, logger)
 
@@ -82,7 +80,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
                     # args.thumbnail_group,
                     connection_credentials=creds,
                     as_job=False,
-                    skip_connection_check=False,
+                    skip_connection_check=args.skip_connection_check,
                 )
             except Exception as e:
                 Errors.exit_with_error(logger, exception=e)

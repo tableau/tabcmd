@@ -1,7 +1,6 @@
 # general dev/ide files
 *.log
 *.vscode
-*.csv
 .idea
 *.DS_Store
 
@@ -24,19 +23,20 @@ workon/
 .coverage
 pytest.xml
 
+*.txt
 # content
 # todo probably want to add a workbook and ds in /res for getting started easily
 *.pdf
 *.png
-*.twbx
-*.hyper
-*.twb
-*.twbr
-html
 *.html
-*.twbr
+# *.twbx
+# *.hyper
+# *.twb
+# *.twbr
+# *.tdsx
 **/credentials.py
-*.txt
+# exceptions
+!tests/assets/
 
 # doit
 .doit.*
@@ -48,6 +48,3 @@ site-packages
 tabcmd-dev
 workon
 test.junit.xml
-
-# exceptions
-!tests/assets/detailed_users.csv

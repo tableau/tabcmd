@@ -93,7 +93,7 @@ class OnlineCommandTest(unittest.TestCase):
         arguments = [command, "--name", project_name]
         _test_command(arguments)
 
-    def _publish_args(self, file, name, tabbed=None):
+    def _publish_args(self, file, name):
         command = "publish"
         arguments = [command, file, "--name", name, "--overwrite"]
         return arguments
@@ -201,11 +201,11 @@ class OnlineCommandTest(unittest.TestCase):
     TDSX_WITH_EXTRACT_NAME = "WorldIndicators"
     TDSX_FILE_WITH_EXTRACT = "World Indicators.tdsx"
     # fill in
-    TDS_FILE_LIVE_NAME = ""
-    TDS_FILE_LIVE = ""
-    # only works on linux servers or something
-    TWB_WITH_EMBEDDED_CONNECTION = "embedded_connection_waremart.twb"
-    EMBEDDED_TWB_NAME = "waremart"
+    TDS_FILE_LIVE_NAME = "SampleDS"
+    TDS_FILE_LIVE = "SampleDS.tds"
+
+    TWB_WITH_EMBEDDED_CONNECTION = "EmbeddedCredentials.twb"
+    EMBEDDED_TWB_NAME = "EmbeddedCredentials"
 
     @pytest.mark.order(1)
     def test_login(self):
@@ -333,7 +333,10 @@ class OnlineCommandTest(unittest.TestCase):
     def test_wb_publish(self):
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         arguments = self._publish_args(file, OnlineCommandTest.TWBX_WITH_EXTRACT_NAME)
-        _test_command(arguments)
+        val = _test_command(arguments)
+        if val != 0:
+            print("publishing failed: cancel test run")
+            exit(val)
 
     @pytest.mark.order(11)
     def test_wb_get(self):
@@ -364,6 +367,8 @@ class OnlineCommandTest(unittest.TestCase):
         file = os.path.join("tests", "assets", OnlineCommandTest.TWB_WITH_EMBEDDED_CONNECTION)
         arguments = self._publish_args(file, OnlineCommandTest.EMBEDDED_TWB_NAME)
         arguments = self._publish_creds_args(arguments, database_user, database_password, True)
+        arguments.append("--tabbed")
+        arguments.append("--skip-connection-check")
         _test_command(arguments)
 
     @pytest.mark.order(12)
