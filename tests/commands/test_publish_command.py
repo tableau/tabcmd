@@ -60,6 +60,7 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.replace = False
         mock_args.thumbnail_username = None
         mock_args.thumbnail_group = None
+        mock_args.skip_connection_check = False
         mock_server.projects = getter
         publish_command.PublishCommand.run_command(mock_args)
         mock_session.assert_called()
@@ -84,6 +85,7 @@ class RunCommandsTest(unittest.TestCase):
 
         mock_args.thumbnail_username = None
         mock_args.thumbnail_group = None
+        mock_args.skip_connection_check = False
 
         mock_server.projects = getter
         publish_command.PublishCommand.run_command(mock_args)

@@ -1,5 +1,6 @@
 import logging
 import sys
+import argparse 
 
 from .localize import set_client_locale
 from .logger_config import log
@@ -37,14 +38,16 @@ class TabcmdController:
             logger.debug(namespace)
         if namespace.language:
             set_client_locale(namespace.language, logger)
-
         try:
+            func = namespace.func
             # if a subcommand was identified, call the function assigned to it
             # this is the functional equivalent of the call by reflection in the previous structure
             # https://stackoverflow.com/questions/49038616/argparse-subparsers-with-functions
             namespace.func.run_command(namespace)
+        except AttributeError:
+            parser.error("No command identified or too few arguments")
         except Exception as e:
-            # todo: use log_stack here for better presentation
+            # todo: use log_stack here for better presentation?
             logger.exception(e)
             # if no command was given, argparse will just not create the attribute
             sys.exit(2)
