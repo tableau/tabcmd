@@ -468,10 +468,11 @@ class OnlineCommandTest(unittest.TestCase):
         if not server_admin:
             pytest.skip("Must be server administrator to list sites")
 
+        result = True
         command = "listsites"
         try:
             _test_command([command])
         except Exception as E:
             print("yay")
-            result = True
+            result = False
         assert result
