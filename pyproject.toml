@@ -54,8 +54,8 @@ dependencies = [
     "types-mock",
     "types-requests",
     "types-setuptools",
-    "tableauserverclient==0.25",
-    "urllib3>=1.24.3,<2.0",
+    "tableauserverclient==0.31",
+    "urllib3",
 ]
 [project.optional-dependencies]
 test = [
