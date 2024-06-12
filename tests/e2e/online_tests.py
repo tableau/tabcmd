@@ -473,6 +473,5 @@ class OnlineCommandTest(unittest.TestCase):
         try:
             _test_command([command])
         except Exception as E:
-            print("yay")
             result = False
         assert result
