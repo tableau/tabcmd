@@ -4,13 +4,7 @@ from unittest.mock import *
 import tableauserverclient as TSC
 
 from tabcmd.commands.auth import login_command, logout_command
-from tabcmd.commands.datasources_and_workbooks import (
-    delete_command,
-    export_command,
-    get_url_command,
-    publish_command,
-    runschedule_command,
-)
+from tabcmd.commands.datasources_and_workbooks import delete_command, export_command, get_url_command, publish_command
 from tabcmd.commands.extracts import (
     create_extracts_command,
     delete_extracts_command,
@@ -35,7 +29,7 @@ from tabcmd.commands.user import (
     remove_users_command,
     delete_site_users_command,
 )
-from typing import List, NamedTuple, TextIO, Union
+from typing import NamedTuple, TextIO, Union
 import io
 
 mock_args = argparse.Namespace()
@@ -153,6 +147,7 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.replace = False
         mock_args.thumbnail_username = None
         mock_args.thumbnail_group = None
+        mock_args.skip_connection_check = False
         mock_server.projects = getter
         publish_command.PublishCommand.run_command(mock_args)
         mock_session.assert_called()

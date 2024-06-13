@@ -312,6 +312,11 @@ def set_publish_args(parser):
         help="Encrypt extracts in the workbook, datasource, or extract being published to the server. "
         "[N/a on Tableau Cloud: extract encryption is controlled by Site Admin]",
     )
+    parser.add_argument(
+        "--skip-connection-check",
+        action="store_true",
+        help="Skip connection check: do not validate the workbook/datasource connection during publishing",
+    )
 
     # These two only apply for a workbook, not a datasource
     thumbnails = parser.add_mutually_exclusive_group()

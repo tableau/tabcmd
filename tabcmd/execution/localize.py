@@ -82,7 +82,13 @@ def _load_language(current_locale, domain, logger):
 
 
 def _get_default_locale():
+    # c:\dev\tabcmd\tabcmd\execution\localize.py:85: DeprecationWarning 'locale.getdefaultlocale' is deprecated
+    # see test_localize for details
+    import logging
+
+    logging.captureWarnings(True)
     current_locale, encoding = locale.getdefaultlocale()
+    logging.captureWarnings(False)
     current_locale = _validate_lang(current_locale)
     return current_locale
 

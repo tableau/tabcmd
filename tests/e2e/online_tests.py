@@ -38,7 +38,7 @@ server_admin = False
 site_admin = True
 project_admin = True
 extract_encryption_enabled = False
-use_tabcmd_classic = False # toggle between testing using tabcmd 2 or tabcmd classic
+use_tabcmd_classic = False  # toggle between testing using tabcmd 2 or tabcmd classic
 
 
 def _test_command(test_args: list[str]):
@@ -49,7 +49,11 @@ def _test_command(test_args: list[str]):
 
     # call the executable directly: lets us drop in classic tabcmd
     if use_tabcmd_classic:
-        calling_args = ["C:\\Program Files\\Tableau\\Tableau Server\\2023.3\\extras\\Command Line Utility\\tabcmd.exe"] + test_args + ["--no-certcheck"]
+        calling_args = (
+            ["C:\\Program Files\\Tableau\\Tableau Server\\2023.3\\extras\\Command Line Utility\\tabcmd.exe"]
+            + test_args
+            + ["--no-certcheck"]
+        )
     if database_password not in calling_args:
         print(calling_args)
     return subprocess.check_call(calling_args)
@@ -89,7 +93,7 @@ class OnlineCommandTest(unittest.TestCase):
         arguments = [command, "--name", project_name]
         _test_command(arguments)
 
-    def _publish_args(self, file, name, tabbed=None):
+    def _publish_args(self, file, name):
         command = "publish"
         arguments = [command, file, "--name", name, "--overwrite"]
         return arguments
@@ -197,11 +201,11 @@ class OnlineCommandTest(unittest.TestCase):
     TDSX_WITH_EXTRACT_NAME = "WorldIndicators"
     TDSX_FILE_WITH_EXTRACT = "World Indicators.tdsx"
     # fill in
-    TDS_FILE_LIVE_NAME = ""
-    TDS_FILE_LIVE = ""
-    # only works on linux servers or something
-    TWB_WITH_EMBEDDED_CONNECTION = "embedded_connection_waremart.twb"
-    EMBEDDED_TWB_NAME = "waremart"
+    TDS_FILE_LIVE_NAME = "SampleDS"
+    TDS_FILE_LIVE = "SampleDS.tds"
+
+    TWB_WITH_EMBEDDED_CONNECTION = "EmbeddedCredentials.twb"
+    EMBEDDED_TWB_NAME = "EmbeddedCredentials"
 
     @pytest.mark.order(1)
     def test_login(self):
@@ -312,7 +316,7 @@ class OnlineCommandTest(unittest.TestCase):
         self._list("workbooks")
 
     @pytest.mark.order(8)
-    def test_list_workbooks(self):
+    def test_list_datasources(self):
         if use_tabcmd_classic:
             pytest.skip("not for tabcmd classic")
         self._list("datasources")
@@ -329,7 +333,10 @@ class OnlineCommandTest(unittest.TestCase):
     def test_wb_publish(self):
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         arguments = self._publish_args(file, OnlineCommandTest.TWBX_WITH_EXTRACT_NAME)
-        _test_command(arguments)
+        val = _test_command(arguments)
+        if val != 0:
+            print("publishing failed: cancel test run")
+            exit(val)
 
     @pytest.mark.order(11)
     def test_wb_get(self):
@@ -360,6 +367,8 @@ class OnlineCommandTest(unittest.TestCase):
         file = os.path.join("tests", "assets", OnlineCommandTest.TWB_WITH_EMBEDDED_CONNECTION)
         arguments = self._publish_args(file, OnlineCommandTest.EMBEDDED_TWB_NAME)
         arguments = self._publish_creds_args(arguments, database_user, database_password, True)
+        arguments.append("--tabbed")
+        arguments.append("--skip-connection-check")
         _test_command(arguments)
 
     @pytest.mark.order(12)
@@ -459,10 +468,10 @@ class OnlineCommandTest(unittest.TestCase):
         if not server_admin:
             pytest.skip("Must be server administrator to list sites")
 
+        result = True
         command = "listsites"
         try:
             _test_command([command])
         except Exception as E:
-            print("yay")
-            result = True
+            result = False
         assert result
