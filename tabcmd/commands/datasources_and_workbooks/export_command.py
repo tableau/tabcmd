@@ -4,7 +4,8 @@ from tabcmd.commands.auth.session import Session
 from tabcmd.commands.constants import Errors
 from tabcmd.execution.localize import _
 from tabcmd.execution.logger_config import log
-from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
+from .datasources_and_workbooks_command import DatasourcesAndWorkbooks, RequestOptions
+
 
 pagesize = TSC.PDFRequestOptions.PageType  # type alias for brevity
 
@@ -70,9 +71,9 @@ class ExportCommand(DatasourcesAndWorkbooks):
     it to a file. This command can also export just the data used for a view_name
     """
 
-    @staticmethod
-    def run_command(args):
-        logger = log(__class__.__name__, args.logging_level)
+    @classmethod
+    def run_command(cls, args):
+        logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
@@ -81,7 +82,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
         if not view_content_url and not wb_content_url:
             view_example = "/workbook_name/view_name"
             message = "{} [{}]".format(
-                _("export.errors.requires_workbook_view_param").format(__class__.__name__), view_example
+                _("export.errors.requires_workbook_view_param").format(cls.__name__), view_example
             )
             Errors.exit_with_error(logger, message)
 
@@ -120,8 +121,9 @@ class ExportCommand(DatasourcesAndWorkbooks):
         except Exception as e:
             Errors.exit_with_error(logger, "Error saving to file", e)
 
+    # TODO should make the ability to pass in filters as args available in GET command too?
     @staticmethod
-    def apply_filters_from_args(request_options: TSC.PDFRequestOptions, args, logger=None) -> None:
+    def apply_filters_from_args(request_options: RequestOptions, args, logger) -> None:
         if args.filter:
             logger.debug("filter = {}".format(args.filter))
             params = args.filter.split("&")
