@@ -4,7 +4,8 @@ from tabcmd.commands.auth.session import Session
 from tabcmd.commands.constants import Errors
 from tabcmd.execution.localize import _
 from tabcmd.execution.logger_config import log
-from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
+from .datasources_and_workbooks_command import DatasourcesAndWorkbooks, RequestOptions
+
 
 pagesize = TSC.PDFRequestOptions.PageType  # type alias for brevity
 
@@ -120,8 +121,9 @@ class ExportCommand(DatasourcesAndWorkbooks):
         except Exception as e:
             Errors.exit_with_error(logger, "Error saving to file", e)
 
+    # TODO should make the ability to pass in filters as args available in GET command too?
     @staticmethod
-    def apply_filters_from_args(request_options: TSC.PDFRequestOptions, args, logger=None) -> None:
+    def apply_filters_from_args(request_options: RequestOptions, args, logger) -> None:
         if args.filter:
             logger.debug("filter = {}".format(args.filter))
             params = args.filter.split("&")
