@@ -73,7 +73,8 @@ class UserDataTest(unittest.TestCase):
 
     def test_get_user_detail_standard(self):
         test_line = "username, pword, fname, license, admin, pub, email"
-        test_user: TSC.UserItem = UserCommand._parse_line(test_line)
+        test_user: TSC.UserItem | None = UserCommand._parse_line(test_line)
+        assert test_user is not None
         assert test_user.name == "username", test_user.name
         assert test_user.fullname == "fname", test_user.fullname
         assert test_user.site_role == "Unlicensed", test_user.site_role
@@ -81,7 +82,8 @@ class UserDataTest(unittest.TestCase):
 
     def test_get_user_details_only_username(self):
         test_line = "username"
-        test_user: TSC.UserItem = UserCommand._parse_line(test_line)
+        test_user: TSC.UserItem | None = UserCommand._parse_line(test_line)
+        assert test_user is not None
 
     def test_populate_user_details_only_some(self):
         values = ["username", "", "", "creator", "admin"]
