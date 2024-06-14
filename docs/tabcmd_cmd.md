@@ -747,19 +747,52 @@ tabcmd listsites --username adam --password mypassword
 : The extract encryption mode for the site can be enforced, enabled or disabled. For more information, see [Extract Encryption at Rest](https://help.tableau.com/current/server/en-us/security_ear.htm).
 
 
-## list
+## list *content-type*
 
-Returns a list of items of the specified content type on the current site..
+Returns a list of items of the specified content type on the current site. Possible content types: datasources, flows, projects, workbooks
 
 ### Example
 
 ```shell
-tabcmd list {projects,workbooks,datasources,flows} 
+c:\dev\scratch>tabcmd list projects
+Tabcmd 2.0.14
+=====   Server: https://example.online.tableau.com/
+=====   Username: jac.fitzgerald@salesforce.com
+=====   Token Name: example
+Tableau Server Site: example
+Connecting to the server...
+Succeeded
+===== Listing projects content for user jac.fitzgerald@salesforce.com...
+ID: 1444bd7d-14a6-4d9b-9fc8-140a56288514
+        NAME: default
+```
+
+```shell
+c:\dev\scratch>tabcmd list workbooks --details
+Tabcmd 2.0.14
+=====   Server: https://example.online.tableau.com/
+=====   Username: jac.fitzgerald@salesforce.com
+=====   Token Name: example
+Tableau Server Site: example
+Connecting to the server...
+Succeeded
+===== Listing workbooks content for user jac.fitzgerald@salesforce.com...
+        <WorkbookItem 94f5f5f7-aab5-4c21-a8cc-0aeb3fc0276b 'Regional' contentUrl='Regional' project=3b99ff06-9f7e-40da-b3cb-9c5162c4a34a>
+<ViewItem 36cb75c3-09fb-433e-9767-f75fabb63569 'Obesity' contentUrl='Regional/sheets/Obesity' project=None>
+<ViewItem e830fa6f-3332-4bd9-b05d-5ef6e0c71958 'College' contentUrl='Regional/sheets/College' project=None>
+<ViewItem 551cd613-2a02-41f6-8d59-86692b2df103 'Global Temperatures' contentUrl='Regional/sheets/GlobalTemperatures' project=None>
+<ViewItem 5f9778a8-2218-4a35-9f8b-7ced72f6e423 'Flight Delays' contentUrl='Regional/sheets/FlightDelays' project=None>
+<ViewItem 7019c549-aad6-4dd9-bfca-57c8dfcacb85 'Economy' contentUrl='Regional/sheets/Economy' project=None>
+<ViewItem 45a75705-c71c-49e6-888e-550e33e580d4 'Stocks' contentUrl='Regional/sheets/Stocks' project=None>
+        <WorkbookItem cee24c29-b5e1-486b-9003-7df16fbb9f96 'Superstore' contentUrl='Superstore' project=3b99ff06-9f7e-40da-b3cb-9c5162c4a34a>
+<ViewItem 95cced5a-a521-476d-aa9f-edf2e1a589ca 'Overview' contentUrl='Superstore/sheets/Overview' project=None>
+<ViewItem f85ef1ac-fd9c-4a79-b549-4cf2b6be94c5 'Product' contentUrl='Superstore/sheets/Product' project=None>
+<ViewItem eb99055b-a59e-4665-a047-e477afbc6d3a 'Customers' contentUrl='Superstore/sheets/Customers' project=None>
 ```
 
 ### Options
 
-\-d, \-\-details         Show more detailed info about each object
+\-d, \-\-details         Show more detailed info about each object. For workbooks, this will also list each view in the workbook.
 
 
 ## publish *filename.twb(x)*, *filename.tds(x)*, or *filename.hyper*
