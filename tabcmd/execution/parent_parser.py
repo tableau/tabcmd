@@ -131,7 +131,7 @@ def parent_parser_with_global_options():
         "-v",
         "--version",
         action="version",
-        version=strings[6] + "v" + version + "\n \n",
+        version=strings[6] + " v" + version + "\n \n",
         help=strings[7],
     )
 
