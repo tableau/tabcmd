@@ -46,6 +46,7 @@ class TabcmdController:
             set_client_locale(namespace.language, logger)
         if namespace.query_page_size:
             os.environ["TSC_PAGE_SIZE"] = str(namespace.query_page_size)
+
         try:
             # https://stackoverflow.com/questions/49038616/argparse-subparsers-with-functions
             namespace.func.run_command(namespace)
