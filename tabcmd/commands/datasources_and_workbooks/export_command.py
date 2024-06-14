@@ -132,6 +132,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
         except Exception as e:
             Errors.exit_with_error(logger, "Error saving to file", e)
 
+    # TODO should make the ability to pass in filters as args available in GET command too?
     @staticmethod
     def apply_filters_from_args(request_options: TSC.RequestOptions, args, logger=None) -> None:
         if args.filter:

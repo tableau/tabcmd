@@ -1,3 +1,4 @@
+from typing import Union
 import urllib
 
 import tableauserverclient as TSC
@@ -5,6 +6,9 @@ import tableauserverclient as TSC
 from tabcmd.commands.constants import Errors
 from tabcmd.commands.server import Server
 from tabcmd.execution.localize import _
+
+# TODO: expose a base type for these
+RequestOptions = Union[TSC.PDFRequestOptions, TSC.CSVRequestOptions, TSC.ImageRequestOptions]
 
 
 class DatasourcesAndWorkbooks(Server):
@@ -62,7 +66,7 @@ class DatasourcesAndWorkbooks(Server):
         return matching_datasources[0]
 
     @staticmethod
-    def apply_values_from_url_params(logger, request_options: TSC.RequestOptions, url) -> None:
+    def apply_values_from_url_params(logger, request_options: TSC.RequestOptions, url: str) -> None:
         logger.debug(url)
         try:
             if "?" in url:
@@ -86,7 +90,7 @@ class DatasourcesAndWorkbooks(Server):
 
     # this is called from within from_url_params, for each view_filter value
     @staticmethod
-    def apply_encoded_filter_value(logger, request_options, value):
+    def apply_encoded_filter_value(logger, request_options: RequestOptions, value: str) -> None:
         # the REST API doesn't appear to have the option to disambiguate with "Parameters.<fieldname>"
         value = value.replace("Parameters.", "")
         # the filter values received from the url are already url encoded. tsc will encode them again.
