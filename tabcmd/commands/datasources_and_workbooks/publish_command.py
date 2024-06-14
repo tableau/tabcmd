@@ -1,3 +1,4 @@
+from typing import Optional
 import tableauserverclient as TSC
 from tableauserverclient import ServerResponseError
 
@@ -112,7 +113,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
     def get_publish_mode(args, logger):
         # default: fail if it already exists on the server
         default_mode = TSC.Server.PublishMode.CreateNew
-        publish_mode = default_mode
+        publish_mode : Optional[str] = default_mode
 
         if args.replace:
             raise AttributeError("Replacing an extract is not yet implemented")
@@ -131,7 +132,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
                 # Overwrites the workbook, data source, or data extract if it already exists on the server.
                 publish_mode = TSC.Server.PublishMode.Overwrite
 
-        if not publish_mode:
+        if publish_mode is None:
             Errors.exit_with_error(logger, "Invalid combination of publishing options (Append, Overwrite, Replace)")
-        logger.debug("Publish mode selected: " + publish_mode)
+        logger.debug("Publish mode selected: " + str(publish_mode))
         return publish_mode

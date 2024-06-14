@@ -12,7 +12,8 @@ from tabcmd.commands.constants import Errors
 from tabcmd.execution.localize import _
 from tabcmd.execution.logger_config import log
 
-from typing import Dict, Any
+# 3.10 introduced X | None to replace Optional. We are still using Optional.
+from typing import Dict, Any, Optional
 
 
 class Session:
@@ -51,7 +52,7 @@ class Session:
         self.logging_level = "info"
         self.logger = log(__name__, self.logging_level)  # instantiate here mostly for tests
         self._read_from_json()
-        self.tableau_server = None  # this one is an object that doesn't get persisted in the file
+        self.tableau_server: Optional[TSC.Server] = None  # this one is an object that doesn't get persisted in the file
 
     # called before we connect to the server
     # generally, we don't want to overwrite stored data with nulls
@@ -214,7 +215,7 @@ class Session:
         except Exception as e:
             Errors.exit_with_error(self.logger, exception=e)
 
-    def _create_new_connection(self) -> TSC.Server:
+    def _create_new_connection(self) -> Optional[TSC.Server]:
         self._print_server_info()
         self.logger.info(_("session.connecting"))
         try:
@@ -223,11 +224,11 @@ class Session:
             Errors.exit_with_error(self.logger, "Failed to connect to server", e)
         return self.tableau_server
 
-    def _read_existing_state(self):
+    def _read_existing_state(self) -> None:
         if self._json_exists():
             self._read_from_json()
 
-    def _print_server_info(self):
+    def _print_server_info(self) -> None:
         self.logger.info("=====   Server: {}".format(self.server_url))
         if self.proxy:
             self.logger.info("=====   Proxy: {}".format(self.proxy))
@@ -241,7 +242,7 @@ class Session:
         self.logger.info(_("dataconnections.classes.tableau_server_site") + ": {}".format(site_display_name))
 
     # side-effect: sets self.username
-    def _validate_existing_signin(self):
+    def _validate_existing_signin(self) -> Optional[TSC.Server]:
         # when do these two messages show up? self.logger.info(_("session.auto_site_login"))
         try:
             if self.tableau_server and self.tableau_server.is_signed_in():
@@ -257,27 +258,35 @@ class Session:
             self.logger.info(_("errors.internal_error.request.message"), e)
         return None
 
-    # server connection created, not yet logged in
+    # server connection must be created, not yet logged in
+    # TODO: pass in the server instance to auth?
     def _sign_in(self, tableau_auth) -> TSC.Server:
-        self.logger.debug(_("session.login") + self.server_url)
-        self.logger.debug(_("listsites.output").format("", self.username or self.token_name, self.site_name))
+        self.logger.debug(_("session.login"))
+        self.logger.info(_("dataconnections.classes.tableau_server_site") + ": {}".format(self.site_name))
+        # self.logger.debug(_("listsites.output").format("", self.username or self.token_name, self.site_name))
+        # must explicitly check 'is None' to treat the Optional as Not None
+        if self.tableau_server is not None:
+            connected_server: TSC.Server = self.tableau_server
+        else:
+            Errors.exit_with_error(self.logger, "Attempted to sign in with no server connection created")
+        
         try:
-            self.tableau_server.auth.sign_in(tableau_auth)  # it's the same call for token or user-pass
+            connected_server.auth.sign_in(tableau_auth)
         except Exception as e:
             Errors.exit_with_error(self.logger, exception=e)
         try:
-            self.site_id = self.tableau_server.site_id
-            self.user_id = self.tableau_server.user_id
-            self.auth_token = self.tableau_server._auth_token
-            success = self._validate_existing_signin()
+            self.site_id = connected_server.site_id
+            self.user_id = connected_server.user_id
+            self.auth_token = connected_server._auth_token
+            signed_in_object = self._validate_existing_signin()
         except Exception as e:
             Errors.exit_with_error(self.logger, exception=e)
-        if success:
+        if signed_in_object:
             self.logger.info(_("common.output.succeeded"))
         else:
             Errors.exit_with_error(self.logger, message="Sign in failed")
+        return connected_server
 
-        return self.tableau_server
 
     def _get_saved_credentials(self):
         if self.last_login_using == "username":
