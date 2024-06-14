@@ -265,11 +265,14 @@ class Session:
     # TODO: pass in the server instance to auth?
     def _sign_in(self, tableau_auth) -> TSC.Server:
         self.logger.debug(_("session.login"))
-        self.logger.info(_("dataconnections.classes.tableau_server_site") + ": {}".format(self._site_display_name()))
+        self.logger.info(_("dataconnections.classes.tableau_server_site") + ": {}".format(self.site_name))
         # self.logger.debug(_("listsites.output").format("", self.username or self.token_name, self.site_name))
-        if not self.tableau_server:
+        # must explicitly check 'is None' to treat the Optional as Not None
+        if self.tableau_server is not None:
+            connected_server: TSC.Server = self.tableau_server
+        else:
             Errors.exit_with_error(self.logger, "Attempted to sign in with no server connection created")
-            return  # make typing recognize self.tableau_server is not None after this line
+        
         try:
             # it's the same call for token or user-pass
             connected_server = self.tableau_server.auth.sign_in(tableau_auth)
