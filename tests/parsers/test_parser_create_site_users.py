@@ -28,3 +28,23 @@ class CreateSiteUsersParserTest(unittest.TestCase):
             mock_args = [commandname, "users.csv", "--site", "site-name"]
             args = self.parser_under_test.parse_args(mock_args)
             assert args.site_name == "site-name", args
+
+    def test_create_site_user_parser_auth_Default(self):
+        with mock.patch("builtins.open", mock.mock_open(read_data="test")):
+            mock_args = [commandname, "users.csv", "--site", "site-name", "--auth-type", "ServerDefault"]
+            args = self.parser_under_test.parse_args(mock_args)
+            assert args.site_name == "site-name", args
+            assert args.auth_type == "ServerDefault", args
+
+    def test_create_site_user_parser_auth_MFA(self):
+        with mock.patch("builtins.open", mock.mock_open(read_data="test")):
+            mock_args = [commandname, "users.csv", "--site", "site-name", "--auth-type", "TableauIDWithMFA"]
+            args = self.parser_under_test.parse_args(mock_args)
+            assert args.site_name == "site-name", args
+            assert args.auth_type == "TableauIDWithMFA", args
+
+    def test_create_site_user_parser_auth_TAbId_NotAvailable(self):
+        with mock.patch("builtins.open", mock.mock_open(read_data="test")):
+            mock_args = [commandname, "users.csv", "--site", "site-name", "--auth-type", "TableauId"]
+            with self.assertRaises(SystemExit):
+                args = self.parser_under_test.parse_args(mock_args)

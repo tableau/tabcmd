@@ -75,7 +75,13 @@ site_roles = [
     "Unlicensed",
 ]
 
-auth_types = ["Local", TSC.UserItem.Auth.SAML, TSC.UserItem.Auth.OpenID, TSC.UserItem.Auth.ServerDefault, "TableauId"]
+auth_types = [
+    "Local",
+    TSC.UserItem.Auth.SAML,
+    TSC.UserItem.Auth.OpenID,
+    TSC.UserItem.Auth.ServerDefault,
+    TSC.UserItem.Auth.TableauIDWithMFA,
+]
 
 
 # username, password, display_name, license, admin_level, publishing, email, auth type
@@ -116,9 +122,8 @@ class UserCommand(Server):
             choices=auth_types,
             type=case_insensitive_string_type(auth_types),
             # default="TableauID",  # default is Local for on-prem, TableauID for Online. Does the server apply the default?
-            help="Assigns the authentication type for all users in the CSV file. \
-    For Tableau Online, TYPE may be TableauID (default) or SAML. \
-    For Tableau Server, TYPE may be Local (default) or SAML.",
+            help="Assigns the authentication type for all users in the CSV file.  Possible roles: "
+            + ", ".join(auth_types),
         )
         return parser
 
