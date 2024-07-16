@@ -113,13 +113,13 @@ class PublishCommand(DatasourcesAndWorkbooks):
     @staticmethod
     def get_files_to_publish(args, logger):
         logger.debug("Checking file argument: {}".format(args.filename))
-        files = []
+        files = set()
         if not os.path.exists(args.filename):
             logger.debug("Invalid file")
             Errors.exit_with_error(logger, message="Filename given does not exist: {}".format(args.filename))
         elif os.path.isfile(args.filename):
             logger.debug("Valid single file found")
-            files.append(args.filename)
+            files.add(args.filename)
         elif os.path.isdir(args.filename):            
             logger.debug("Valid folder found")
             if args.filetype:
@@ -131,12 +131,12 @@ class PublishCommand(DatasourcesAndWorkbooks):
                 logger.debug("Looking for files {} in {}".format(file_pattern, args.filename))
                 try:
                     in_place_files = (glob.glob(file_pattern, root_dir=args.filename, recursive=args.recursive, include_hidden=False))
-                    relative_files = map(lambda file: os.path.join(args.filename, file), in_place_files)
+                    relative_files = list(map(lambda file: os.path.join(args.filename, file), in_place_files))
                 except Exception as e:            
-                    Errors.exit_with_error(logger, e)
-                files.extend(relative_files)
+                    Errors.exit_with_error(logger, message=in_place_files)
+                files.update(relative_files)
                 logger.debug(len(files))
-        return files
+        return sorted(files)
 
     # todo write tests for this method
     @staticmethod

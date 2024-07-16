@@ -106,6 +106,15 @@ _(note that running mypy and black with no errors is required before code will b
 - do test coverage calculation (https://coverage.readthedocs.io/en/6.3.2)
 > bin/coverage.sh
 
+### Testing
+
+We have three levels of testing.
+1. Testing for all the little helper methods. These should be straightforward unit tests.
+
+2. "e2e" offline testing: Every command needs to have test coverage calling "MyCommand.run_command()" that will run through the basic happy path of the command. Since they are offline, they need to use the mocked server object set up in mock_data. These tests are in files named test_e2e_x_command.py, and they are run with the unit tests against every checkin.
+
+3. real, live, e2e tests that you can run against a known server when given credentials. These tests should not have any mocking code. You can launch these tests manually (see above)
+
 
 ### Packaging 
 - build an executable package with [pyinstaller](https://github.com/pyinstaller/pyinstaller). 
