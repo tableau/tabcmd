@@ -6,74 +6,7 @@ msgstr ""
 "X-Generator: prop2po"
 "Project-Id-Version: None"
 "Language: es"
-# Copyright (C) YEAR Tableau Software
-
-
-# These outcome reporting lines were all returned from the server in clientxml
-# https://sourcegraph.prod.tableautools.com/teams/near/-/blob/workgroup/src/shared/libraries/tab-strings/res/localization/shared_wg_en.properties
-# how much of this can be replaced by server responses?
-
-msgid "tabcmd.result.already_exists.group"
-msgstr "Group called ''{}'' already exists"
-
-msgid "tabcmd.result.failed.delete.group"
-msgstr "Error deleting group from server"
-
-msgid "tabcmd.result.success.create_user"
-msgstr "Successfully created user: {}"
-
-msgid "tabcmd.report.users_added"
-msgstr "Number of users added: {}"
-
-msgid "tabcmd.report.errors"
-msgstr "Error details: \n{}"
-
-msgid "tabcmd.report.error.user_csv.too_many_columns"
-msgstr "The file contains {} columns, but there are only {} valid columns in a user import csv file"
-
-msgid "tabcmd.report.error.user_csv.at_char"
-msgstr "If a user name includes an @ character that represents anything other than a domain separator, "
-                    "you need to refer to the symbol using the hexadecimal format: \\0x40"
-
-msgid "tabcmd.report.error.user.no_spaces_in_username"
-msgstr "Username cannot contain spaces"
-
-msgid "tabcmd.report.error.generic_attribute"
-msgstr "Invalid value for {0}: {1}"
-
-msgid "tabcmd.report.error.publish_samples.expected_project"
-msgstr "publishsamples expects the specified project to exist already"
-
-msgid "tabcmd.result.failure.publish_samples"
-msgstr "Failed publishing samples to project"
-
-msgid "tabcmd.launching"
-msgstr "======================= Launching command ======================="
-
-msgid "tabcmd.find.group"
-msgstr "Finding group ''{}'' on server..."
-
-# Each actual command has a status line in translation
-
-msgid "tabcmd.add.users.to_site"
-msgstr "===== Adding users listed in {0} to {1}..."
-
-msgid "tabcmd.delete.users.from_server"
-msgstr "Removing users listed in {0} from the server..."
-
-msgid "tabcmd.get.extension.not_found"
-msgstr "You must specify a file type in the url or filename"
-
-msgid "tabcmd.run_schedule.options.schedule"
-msgstr "Name of the schedule to run"
-msgid ""
-msgstr ""
-"MIME-Version: 1.0"
-"Content-Type: text/plain; charset=utf-8"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: prop2po"
-"Project-Id-Version: None"
-"Language: es"
+# Copyright (C) YEAR Tableau Software 
 #:
 msgid "permissions.labels.capabilities.read"
 msgstr "Vista:"
@@ -92,11 +25,11 @@ msgstr "Eliminar:"
 
 #:
 msgid "permissions.labels.capabilities.filter"
-msgstr "Filtrar:"
+msgstr "Filtro:"
 
 #:
 msgid "permissions.labels.capabilities.add_tag"
-msgstr "Añadir etiqueta:"
+msgstr "Añadir categoría:"
 
 #:
 msgid "permissions.labels.capabilities.add_favorite"
@@ -160,7 +93,7 @@ msgstr "Excluir:"
 
 #:
 msgid "permissions.labels.capabilities.keep_only"
-msgstr "Mantener solo:"
+msgstr "Mantener solamente:"
 
 #:
 msgid "permissions.labels.capabilities.select"
@@ -312,11 +245,11 @@ msgstr "{0} KB"
 
 #:
 msgid "errors.argument.flow_description.too_long"
-msgstr "La descripción del flujo es demasiado larga ({0} caracteres).  Debe ser inferior a {1} caracteres:{2}"
+msgstr "La descripción del flujo es demasiado larga ({0} caracteres).  Debe tener menos de {1} caracteres:  {2}"
 
 #:
 msgid "errors.argument.workbook_name.too_long"
-msgstr "El nombre del libro de trabajo es demasiado largo ({0} caracteres)  Debe ser menor que {1} caracteres:{2}"
+msgstr "El nombre del libro de trabajo es demasiado largo ({0} caracteres).  Debe tener menos de {1} caracteres:  {2}"
 
 #:
 msgid "errors.argument.workbook_name.empty"
@@ -324,15 +257,15 @@ msgstr "El nombre del libro de trabajo está vacío."
 
 #:
 msgid "errors.argument.workbook_description.too_long"
-msgstr "La descripción del libro de trabajo es demasiado larga ({0} caracteres). Debe tener menos de {1} caracteres:{2}"
+msgstr "La descripción del libro de trabajo es demasiado larga ({0} caracteres).  Debe tener menos de {1} caracteres:  {2}"
 
 #:
 msgid "errors.argument.worksheet_name.too_long"
-msgstr "El nombre de la hoja de trabajo es demasiado largo ({0} caracteres). Debe ser menor que {1} caracteres:{2}"
+msgstr "El nombre de la hoja de trabajo es demasiado largo ({0} caracteres). Debe tener menos de {1} caracteres:  {2}"
 
 #:
 msgid "errors.argument.datasource_name.too_long"
-msgstr "El nombre de la fuente de datos es demasiado largo ({0} caracteres). Debe tener menos de {1} caracteres:{2}"
+msgstr "El nombre de la fuente de datos es demasiado largo ({0} caracteres). Debe tener menos de {1} caracteres:  {2}"
 
 #:
 msgid "errors.argument.datasource_name.empty"
@@ -340,19 +273,27 @@ msgstr "El nombre de la fuente de datos está vacío."
 
 #:
 msgid "errors.argument.datasource_description.too_long"
-msgstr "La descripción de la fuente de datos es demasiado larga ({0} caracteres). Debe tener menos de {1} caracteres:{2}"
+msgstr "La descripción de la fuente de datos es demasiado larga ({0} caracteres). Debe tener menos de {1} caracteres:  {2}"
 
 #:
 msgid "errors.argument.dataconnection_column.too_long"
-msgstr "DataConnection column {0} is too long ({1} characters).  It must be shorter than {2} characters:{3}"
+msgstr "La columna de la conexión de datos {0} es demasiado larga ({1} caracteres).  Debe tener menos de {2} caracteres:  {3}"
 
 #:
 msgid "errors.argument.tag.too_long"
-msgstr "La etiqueta es demasiado larga ({0} caracteres). Debe ser menor que {1} caracteres:{2}"
+msgstr "La categoría es demasiado larga ({0} caracteres). Debe tener menos de {1} caracteres:  {2}"
 
 #:
 msgid "errors.argument.workbook_file.missing_or_empty"
 msgstr "El libro de trabajo no existe o está vacío."
+
+#:
+msgid "errors.argument.file.size.too_large"
+msgstr "El archivo {0} es demasiado grande. No se permiten archivos de más de {1} MB de tamaño descomprimidos. Cree una extracción para proceder a la publicación."
+
+#:
+msgid "errors.argument.twb_or_tds_file.missing"
+msgstr "Falta un archivo twb o tds en el archivo."
 
 #:
 msgid "errors.argument.internal"
@@ -364,7 +305,7 @@ msgstr "El formato de la miniatura del libro de trabajo no es válido. Debe tene
 
 #:
 msgid "errors.html_403.disabled_resource.workbook"
-msgstr "Lo lamentamos, el libro de trabajo está deshabilitado.  Comuníquese con el administrador."
+msgstr "Lo lamentamos, el libro de trabajo está deshabilitado.  Póngase en contacto con su administrador."
 
 #:
 msgid "errors.html_404.missing_or_unauthorized_resource.project"
@@ -392,27 +333,27 @@ msgstr "Eliminar libros de trabajo"
 
 #:
 msgid "errors.permissions.publish.datasource.licensing"
-msgstr "Debe ser un ''interaccionador'' para publicar una fuente de datos."
+msgstr "Debe ser un “interaccionador” para publicar una fuente de datos."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite"
-msgstr "Ya existe una fuente de datos ''{0}'' en el proyecto ''{1}''. No tiene permisos para sobrescribirla."
+msgstr "Ya existe una fuente de datos “{0}” en el proyecto “{1}”. No tiene permisos para sobrescribirla."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_personal_space"
-msgstr "Ya existe una fuente de datos ''{0}'' en el Espacio personal. No tiene permisos para sobrescribirla."
+msgstr "Ya existe una fuente de datos “{0}” en el Espacio personal. No tiene permisos para sobrescribirla."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short"
-msgstr "Ya existe una fuente de datos ''{0}'' en el proyecto ''{1}''."
+msgstr "Ya existe una fuente de datos “{0}” en el proyecto “{1}”."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "Ya existe una fuente de datos ''{0}'' en el Espacio personal."
+msgstr "Ya existe una fuente de datos “{0}” en el Espacio personal."
 
 #:
 msgid "errors.permissions.publish.datasource.non_existent"
-msgstr "La fuente de datos ''{0}'' no existe."
+msgstr "La fuente de datos “{0}” no existe."
 
 #:
 msgid "errors.permissions.publish.datasource.general"
@@ -428,11 +369,11 @@ msgstr "Lo lamentamos, no tiene permiso para publicar en este proyecto."
 
 #:
 msgid "errors.permissions.publish.project.non_existent"
-msgstr "El proyecto ''{0}'' no existe."
+msgstr "El proyecto “{0}” no existe."
 
 #:
 msgid "errors.permissions.publish.project.not_writable"
-msgstr "No tiene permisos para escribir en el proyecto ''{0}''."
+msgstr "No tiene permisos para escribir en el proyecto “{0}”."
 
 #:
 msgid "errors.permissions.publish.project.unspecified"
@@ -440,11 +381,11 @@ msgstr "Debe especificar un proyecto"
 
 #:
 msgid "errors.permissions.publish.workbook.disabled"
-msgstr "El libro de trabajo ''{0}'' está deshabilitado."
+msgstr "El libro de trabajo “{0}” está deshabilitado."
 
 #:
 msgid "errors.permissions.publish.workbook.general"
-msgstr "Ya existe un libro de trabajo con este nombre en el proyecto en el que está publicando. Para publicarlo, cambie el nombre del libro de trabajo."
+msgstr "Ya existe un libro de trabajo con este nombre en el proyecto en el que está publicando. Para publicar, cambie el nombre del libro de trabajo."
 
 #:
 msgid "errors.permissions.publish.workbook.general_personal_space"
@@ -452,47 +393,79 @@ msgstr "Ya existe un libro de trabajo con este nombre en el Espacio personal en 
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite"
-msgstr "Ya existe un libro de trabajo ''{0}'' en el proyecto ''{1}''. No tiene permisos para sobrescribirlo."
+msgstr "Ya existe un libro de trabajo “{0}” en el proyecto “{1}”. No tiene permisos para sobrescribirla."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_personal_space"
-msgstr "Ya existe un libro de trabajo ''{0}'' en el Espacio personal. No tiene permisos para sobrescribirlo."
+msgstr "Ya existe un libro de trabajo “{0}” en el Espacio personal. No tiene permisos para sobrescribirla."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short"
-msgstr "Ya existe un libro de trabajo ''{0}'' en el proyecto ''{1}''."
+msgstr "Ya existe un libro de trabajo “{0}” en el proyecto “{1}”."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
-msgstr "Ya existe un libro de trabajo ''{0}'' en el Espacio personal."
+msgstr "Ya existe un libro de trabajo “{0}” en el Espacio personal."
 
 #:
 msgid "errors.reportable.impersonation.group_and_user"
-msgstr "Especifique solo un ''impersonate_username'' o ''impersonate_groupname'', no ambos."
+msgstr "Especifique solo un “impersonate_username” o “impersonate_groupname”, no ambos."
 
 #:
 msgid "errors.reportable.impersonation.user_not_found"
-msgstr "El usuario ''{0}'' no existe."
+msgstr "El usuario “{0}” no existe."
 
 #:
 msgid "errors.reportable.impersonation.group_not_found"
-msgstr "El grupo ''{0}'' no existe. "
+msgstr "El grupo “{0}” no existe."
 
 #:
 msgid "errors.public.validation.hasextract"
-msgstr "Los libros de trabajo guardados en Tableau Public deben usar extracciones activas de Tableau. Haga clic con el botón derecho sobre la fuente de datos y seleccione Usar extracción antes de publicar. La fuente de datos ''{0}'' no es una extracción activa."
+msgstr "Los libros de trabajo guardados en Tableau Public deben usar extracciones activas de Tableau. Haga clic con el botón derecho sobre la fuente de datos y seleccione Usar extracción antes de publicar. La fuente de datos “{0}” no es una extracción activa."
+
+#:
+msgid "errors.public.validation.storage_quota_exceeded"
+msgstr "El contenido que intenta publicar supera la capacidad máxima de su cuenta. Elimine algunos contenidos para liberar espacio y vuelva a intentarlo."
+
+#:
+msgid "errors.public.validation.invalid_archive_file"
+msgstr "El libro de trabajo que intenta publicar no es válido."
 
 #:
 msgid "errors.publish.dataserver_datasource_not_found"
-msgstr "No se encontró la fuente de datos ''{0}'' para el libro de trabajo ''{1}''."
+msgstr "No se encontró la fuente de datos “{0}” para el libro de trabajo “{1}”."
 
 #:
 msgid "errors.publish.datasource_update_mode"
-msgstr "Modo de actualización desconocido: ''{0}''."
+msgstr "Modo de actualización desconocido: “{0}”."
 
 #:
-msgid "errors.publish.workbook.concurrent_update"
-msgstr "Ya se está publicando o modificando un libro de trabajo con el mismo nombre. Espere a que se complete la tarea antes de volverlo a intentar."
+msgid "errors.publish.fileupload.invalid_checksum"
+msgstr "Se ha proporcionado un valor de suma de comprobación no válido."
+
+#:
+msgid "errors.publish.fileupload.invalid_hash_algorithm"
+msgstr "El algoritmo de hash no es compatible o está desactivado."
+
+#:
+msgid "errors.publish.fileupload.invalid_offset"
+msgstr "Anexar a la carga de archivos con una compensación que no coincide con el tamaño de archivo registrado."
+
+#:
+msgid "errors.publish.fileupload.concurrent_write"
+msgstr "No se ha podido adquirir el bloqueo exclusivo del archivo, ya que está bloqueado por otra carga."
+
+#:
+msgid "errors.publish.fileupload.flushing_file_buffer"
+msgstr "Error al vaciar los búferes de archivos durante la carga."
+
+#:
+msgid "errors.publish.fileupload.read_or_write"
+msgstr "No se ha podido leer desde el cliente o escribir en el archivo cargado."
+
+#:
+msgid "errors.publish.fileupload.concurrent_update"
+msgstr "Ya se está cargando o modificando un contenido con el mismo nombre. Espere a que se complete la tarea antes de volver a intentarlo."
 
 #:
 msgid "errors.publish.workbook.restricted"
@@ -500,7 +473,7 @@ msgstr "El libro de trabajo contiene tipos de conexiones que no se permiten en e
 
 #:
 msgid "errors.publish.datasource.concurrent_update"
-msgstr "Ya se está publicando o modificando una fuente de datos con el mismo nombre. Espere a que se complete la tarea antes de volverlo a intentar."
+msgstr "Ya se está publicando o modificando una fuente de datos con el mismo nombre. Espere a que se complete la tarea antes de volver a intentarlo."
 
 #:
 msgid "errors.publish.datasource.restricted"
@@ -509,6 +482,22 @@ msgstr "La fuente de datos contiene un tipo de conexión que no se permite en es
 #:
 msgid "errors.publish.datasource.connection_check"
 msgstr "{0} no ha podido establecer una conexión con la fuente de datos."
+
+#:
+msgid "errors.publish.file.connection.unauthorized"
+msgstr "Este flujo incluye conexiones de entrada de archivo que el administrador del sitio ha bloqueado. Para publicar flujos, todas las conexiones de entrada tienen que ser extracciones de Tableau que ya se hayan publicado en Tableau Cloud."
+
+#:
+msgid "errors.publish.flow.connection_check"
+msgstr "Error al publicar el flujo “{0}”. El servidor no se puede conectar al tipo de fuente de datos “{1}”. Verifique que la fuente de datos sea compatible y que el controlador o el complemento del conector de la fuente de datos esté instalado."
+
+#:
+msgid "errors.publish.workbook.requested_extract_encryption_on_server_with_disabled_encryption"
+msgstr "El libro de trabajo no se puede publicar con una extracción cifrada. El cifrado de extracciones está deshabilitado para este servidor. Debe publicar el libro de trabajo con una extracción sin cifrar."
+
+#:
+msgid "errors.publish.datasource.requested_extract_encryption_on_server_with_disabled_encryption"
+msgstr "La fuente de datos no se puede publicar como extracción cifrada. El cifrado de extracciones está deshabilitado para este servidor. Debe publicar la extracción sin cifrar."
 
 #:
 msgid "errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption"
@@ -552,7 +541,7 @@ msgstr "El contenido supera la capacidad de su Espacio personal por {0}."
 
 #:
 msgid "errors.web_authoring.workbook_deleted"
-msgstr "El libro de trabajo ''{0}'' fue eliminado.  Elija ''Guardar como'' para guardar como nuevo libro de trabajo."
+msgstr "El libro de trabajo “{0}” fue eliminado.  Elija “Guardar como” para guardar como nuevo libro de trabajo."
 
 #:
 msgid "errors.web_authoring.workbook_changed"
@@ -564,19 +553,19 @@ msgstr "Insertar contraseña insertada para la fuente de datos"
 
 #:
 msgid "errors.publish.workbook.google_no_embedded_credentials"
-msgstr "Este libro de trabajo contiene una fuente de datos {0} que requiere credenciales insertadas. Para guardar como otro libro de trabajo, seleccione ''{1}''."
+msgstr "Este libro de trabajo contiene una fuente de datos {0} que requiere credenciales insertadas. Para guardar como otro libro de trabajo, seleccione “{1}”."
 
 #:
 msgid "errors.publish.datasource.google_no_embedded_credentials"
-msgstr "Esta fuente de datos contiene una conexión {0} que requiere credenciales insertadas. Publique esta fuente de datos desde Tableau Desktop con credenciales incrustadas."
+msgstr "Esta fuente de datos contiene una conexión {0} que requiere credenciales insertadas.  Publique esta fuente de datos desde Tableau Desktop con credenciales insertadas."
 
 #:
 msgid "errors.publish.datasource.federated_oauth_datasource_failed"
-msgstr "Las credenciales de una o más de las conexiones de su fuente de datos han caducado. Elimine las credenciales guardadas de esta fuente de datos en la página de configuración de su cuenta en Tableau Server o Tableau Online y vuelva a conectarse a la fuente de datos."
+msgstr "Las credenciales de una o varias conexiones de su fuente de datos han expirado. Elimine las credenciales guardadas para esta fuente de datos en la página Configuración de la cuenta en Tableau Server o Tableau Cloud y vuelva a conectarse a la fuente de datos."
 
 #:
 msgid "errors.publish.workbook.missing_oauth_credential"
-msgstr "No se encontró la credencial ''{0}'' o no se puede usar para conectar a la fuente de datos o  libro de trabajo."
+msgstr "No se encontró la credencial “{0}” o no se puede usar para conectar a la fuente de datos o libro de trabajo."
 
 #:
 msgid "errors.publish.version_incompatible.message"
@@ -584,15 +573,11 @@ msgstr "Las versiones de escritorio y de servidor no son compatibles."
 
 #:
 msgid "errors.publish.version_incompatible.details"
-msgstr "Versión de escritorio ''{0}'', Documento de servidor versión ''{1}''."
+msgstr "Versión de escritorio “{0}”, Documento de servidor versión “{1}”."
 
 #:
 msgid "errors.publish.datasource.managed_keychain.unique_cv_suggestions"
 msgstr "Error en la publicación debido a un conflicto. Reenvíe el cambio."
-
-#:
-msgid "errors.publish.permissions_are_locked"
-msgstr "El proyecto en el que está publicando tiene los permisos bloqueados. Para publicar en este libro de trabajo, utilice los permisos predeterminados e inténtelo de nuevo."
 
 #:
 msgid "errors.publish.datasource.not.found"
@@ -623,16 +608,32 @@ msgid "errors.publish.async.serialization"
 msgstr "Error de estado que impide serializar la publicación del trabajo"
 
 #:
+msgid "errors.publish.only_extract_files_are_allowed.message"
+msgstr "No puede publicar en Tableau Server"
+
+#:
+msgid "errors.publish.only_extract_files_are_allowed.details"
+msgstr "El archivo {0} no se puede cargar porque su administrador ha bloqueado los archivos de este tipo. Conviértalo en una extracción y vuelva a intentarlo."
+
+#:
+msgid "errors.publish.validation.invalid_zip_file"
+msgstr "El libro de trabajo o archivo de fuente de datos que intenta publicar no es válido."
+
+#:
 msgid "errors.permissions.view.datasources"
-msgstr "Debe ser ''Interaccionador'' para ver la lista de fuentes de datos."
+msgstr "Debe ser “Interaccionador” para ver la lista de fuentes de datos."
 
 #:
 msgid "errors.oauth.invalid_oauth_class"
-msgstr "''{0}'' no es un tipo de conexión OAuth válido."
+msgstr "“{0}” no es un tipo de conexión OAuth válido."
 
 #:
 msgid "errors.xmlapi.bad_request"
 msgstr "Solicitud incorrecta"
+
+#:
+msgid "errors.xmlapi.payload_too_large"
+msgstr "Carga demasiado grande"
 
 #:
 msgid "errors.xmlapi.unauthorized"
@@ -680,11 +681,7 @@ msgstr "Este sitio se ha suspendido. Debe ser un administrador de sistema para i
 
 #:
 msgid "errors.xmlapi.site_locked"
-msgstr "Este sitio se ha bloqueado. No se permite iniciar sesión en este momento."
-
-#:
-msgid "errors.xmlapi.permission_modification"
-msgstr "No se puede publicar con permisos modificados"
+msgstr "Este sitio ha sido bloqueado. No se permite iniciar sesión en este momento."
 
 #:
 msgid "errors.xmlapi.update_desktop"
@@ -696,11 +693,23 @@ msgstr "Demasiadas solicitudes"
 
 #:
 msgid "errors.xmlapi.throttled.detail"
-msgstr "Hay demasiadas solicitudes para ''{0}''. Vuelva a intentarlo después de {1}."
+msgstr "Hay demasiadas solicitudes para “{0}”. Vuelva a intentarlo después de {1}."
+
+#:
+msgid "errors.xmlapi.personal_space_quota_exceeded.summary"
+msgstr "No se puede publicar en el espacio personal"
+
+#:
+msgid "errors.xmlapi.personal_space_quota_exceeded.detail"
+msgstr "Elimine o mueva contenido de su Espacio personal y vuelva a intentar la publicación."
 
 #:
 msgid "datasource.publish.check.unpublishable"
 msgstr "No se ha podido publicar la fuente de datos."
+
+#:
+msgid "datasource.publish.check.unpublishable.table_extension_extract_required"
+msgstr "Las extensiones de tablas no se pueden publicar con conexiones que requieren una extracción."
 
 #:
 msgid "datasource.publish.check.publishable.extract_required"
@@ -708,11 +717,11 @@ msgstr "Se debe crear una extracción al publicar."
 
 #:
 msgid "datasource.publish.check.publishable.credentials_required"
-msgstr "{1} accederá de manera temporal a las credenciales proporcionadas en relación con ''{0}'' para confirmar que puede conservar una conexión de datos en tiempo real."
+msgstr "{1} accederá de manera temporal a las credenciales proporcionadas en relación con “{0}” para confirmar que puede conservar una conexión de datos en tiempo real."
 
 #:
 msgid "datasource.publish.check.publishable.server_unreachable"
-msgstr "{1} no puede acceder a ''{0}''. Al publicar se creará una extracción."
+msgstr "{1} no puede acceder a “{0}”. Al publicar se creará una extracción."
 
 #:
 msgid "publish.bundles.workbook.subscription.subject"
@@ -724,139 +733,147 @@ msgstr "Se han añadido los datos de Salesforce al libro de trabajo. Vaya a su p
 
 #:
 msgid "extracts.status.finished.upload.workbook"
-msgstr "Carga de extracciones finalizada (ID de extracción nuevo: {0}) para el libro de trabajo ''{1}'' {2}"
+msgstr "Carga de extracciones finalizada (ID de extracción nuevo: {0}) para el libro de trabajo “{1}” {2}"
 
 #:
 msgid "extracts.status.finished.refresh.workbook"
-msgstr "Actualización finalizada de extracciones (id de extracción nuevo:{0}) para libro de trabajo ''{1}'' {2}"
+msgstr "Actualización finalizada de extracciones (id de extracción nuevo:{0}) para libro de trabajo “{1}” {2}"
 
 #:
 msgid "extracts.status.finished.increment.workbook"
-msgstr "Incrementos finalizados de extracciones (id de extracción nuevo:{0}) para libro de trabajo ''{1}'' {2}"
+msgstr "Incrementos finalizados de extracciones (id de extracción nuevo:{0}) para libro de trabajo “{1}” {2}"
 
 #:
 msgid "extracts.status.finished.encrypt.workbook"
-msgstr "Cifrado de extracciones finalizado (ID de extracción nueva: {0}) para el libro de trabajo ''{1}''"
+msgstr "Cifrado de extracciones finalizado (ID de extracción nueva: {0}) para el libro de trabajo “{1}”"
 
 #:
 msgid "extracts.status.finished.decrypt.workbook"
-msgstr "Descifrado de extracciones finalizado (ID de extracción nueva: {0}) para el libro de trabajo ''{1}''"
+msgstr "Descifrado de extracciones finalizado (ID de extracción nueva: {0}) para el libro de trabajo “{1}”"
 
 #:
 msgid "extracts.status.finished.rekey.workbook"
-msgstr "Recifrado de extracciones finalizado (ID de extracción nueva: {0}) para el libro de trabajo ''{1}''"
+msgstr "Recifrado de extracciones finalizado (ID de extracción nueva: {0}) para el libro de trabajo “{1}”"
 
 #:
 msgid "extracts.status.finished.create.workbook"
-msgstr "Creación de extracción finalizada (nueva ID de extracción:{0}) para el libro de trabajo ''{1}'' {2}"
+msgstr "Creación de extracción finalizada (nueva ID de extracción:{0}) para el libro de trabajo “{1}” {2}"
 
 #:
 msgid "extracts.status.finished.remove.workbook"
-msgstr "Cambio de extracción (nueva ID de fuente de datos:{0}) a tiempo real para el libro de trabajo ''{1}''"
+msgstr "Cambio de extracción (nueva ID de fuente de datos:{0}) a tiempo real para el libro de trabajo “{1}”"
 
 #:
 msgid "extracts.status.finished.upload.datasource"
-msgstr "Carga finalizada de extracciones (id de extracción nuevo:{0}) para fuente de datos ''{1}'' {2}"
+msgstr "Carga finalizada de extracciones (id de extracción nuevo:{0}) para fuente de datos “{1}” {2}"
 
 #:
 msgid "extracts.status.finished.refresh.datasource"
-msgstr "Actualización finalizada de extracciones (id de extracción nuevo:{0}) para fuente de datos ''{1}'' {2}"
+msgstr "Actualización finalizada de extracciones (id de extracción nuevo:{0}) para fuente de datos “{1}” {2}"
 
 #:
 msgid "extracts.status.finished.increment.datasource"
-msgstr "Incrementos finalizados de extracciones (id de extracción nuevo:{0}) para fuente de datos ''{1}'' {2}"
+msgstr "Incrementos finalizados de extracciones (id de extracción nuevo:{0}) para fuente de datos “{1}” {2}"
 
 #:
 msgid "extracts.status.finished.append.datasource"
-msgstr "Operación de adjuntar finalizada de extracciones (id de extracción nuevo:{0}) para fuente de datos ''{1}'' {2}"
+msgstr "Operación de adjuntar finalizada de extracciones (id de extracción nuevo:{0}) para fuente de datos “{1}” {2}"
 
 #:
 msgid "extracts.status.finished.replace.datasource"
-msgstr "Reemplazo finalizado de extracciones (id de extracción nuevo:{0}) para fuente de datos ''{1}'' {2}"
+msgstr "Reemplazo finalizado de extracciones (id de extracción nuevo:{0}) para fuente de datos “{1}” {2}"
 
 #:
 msgid "extracts.status.finished.encrypt.datasource"
-msgstr "Cifrado de extracciones finalizado (ID de extracción nueva: {0}) para la fuente de datos ''{1}''"
+msgstr "Cifrado de extracciones finalizado (ID de extracción nueva: {0}) para la fuente de datos “{1}”"
 
 #:
 msgid "extracts.status.finished.decrypt.datasource"
-msgstr "{0}) para la fuente de datos ''{1}''"
+msgstr "Descifrado de extracciones finalizado (ID de extracción nueva: {0}) para la fuente de datos “{1}”"
 
 #:
 msgid "extracts.status.finished.rekey.datasource"
-msgstr "Recifrado de extracciones finalizado (ID de extracción nueva: {0}) para la fuente de datos ''{1}''"
+msgstr "Recifrado de extracciones finalizado (ID de extracción nueva: {0}) para la fuente de datos “{1}”"
 
 #:
 msgid "extracts.status.finished.encrypt.flow"
-msgstr "Se ha finalizado el cifrado de extracciones para el flujo ''{0}''"
+msgstr "Se ha finalizado el cifrado de extracciones para el flujo “{0}”"
 
 #:
 msgid "extracts.status.finished.decrypt.flow"
-msgstr "Se ha finalizado el descifrado de extracciones para el flujo ''{0}''"
+msgstr "Se ha finalizado el descifrado de extracciones para el flujo “{0}”"
 
 #:
 msgid "extracts.status.finished.rekey.flow"
-msgstr "Se ha finalizado el recifrado de extracciones para el flujo ''{0}''"
+msgstr "Se ha finalizado el recifrado de extracciones para el flujo “{0}”"
 
 #:
 msgid "extracts.status.finished.encrypt.flowdraft"
-msgstr "Se ha finalizado el cifrado de las extracciones para el borrador de flujo ''{0}''"
+msgstr "Se ha finalizado el cifrado de las extracciones para el borrador de flujo “{0}”"
 
 #:
 msgid "extracts.status.finished.decrypt.flowdraft"
-msgstr "Se ha finalizado el cifrado de las extracciones para el borrador de flujo ''{0}''"
+msgstr "Se ha finalizado el cifrado de las extracciones para el borrador de flujo “{0}”"
 
 #:
 msgid "extracts.status.finished.rekey.flowdraft"
-msgstr "Se ha finalizado el recifrado de las extracciones para el borrador de flujo ''{0}''"
+msgstr "Se ha finalizado el recifrado de las extracciones para el borrador de flujo “{0}”"
 
 #:
 msgid "extracts.status.finished.create.datasource"
-msgstr "Creación de extracciones finalizada (nueva ID de extracción:{0}) para la fuente de datos ''{1}'' {2}"
+msgstr "Creación de extracciones finalizada (nueva ID de extracción:{0}) para la fuente de datos “{1}” {2}"
 
 #:
 msgid "extracts.status.finished.remove.datasource"
-msgstr "Cambio de extracción a tiempo real para la fuente de datos ''{1}''"
+msgstr "Cambio de extracción a tiempo real para la fuente de datos “{1}”"
+
+#:
+msgid "extracts.status.finished.create.vconn"
+msgstr "Creación de extracción finalizada (nueva ID de extracción:{0}) para la conexión virtual “{1}”"
+
+#:
+msgid "extracts.status.finished.refresh.vconn"
+msgstr "Actualización de extracción finalizada (nueva ID de extracción:{0}) para la conexión virtual “{1}”"
 
 #:
 msgid "extracts.status.encryption_key"
-msgstr "ID de clave de cifrado: ''{0}''."
+msgstr "ID de clave de cifrado: “{0}”."
 
 #:
 msgid "extracts.status.encryption_keys"
-msgstr "ID de clave de cifrado antigua: ''{0}'', ID de clave de cifrado nueva: ''{1}''."
+msgstr "ID de clave de cifrado antigua: “{0}”; ID de clave de cifrado nueva: “{1}”."
 
 #:
 msgid "extracts.errors.upload"
-msgstr "Error al cargar extracciones para {0}: ''{1}''"
+msgstr "Error al cargar extracciones para {0}: “{1}”"
 
 #:
 msgid "extracts.errors.refresh"
-msgstr "Se ha producido un error al actualizar extracciones para {0} ''{1}''"
+msgstr "Se ha producido un error al actualizar extracciones para {0} “{1}”"
 
 #:
 msgid "extracts.errors.create"
-msgstr "Error al crear las extracciones de {0} ''{1}''."
+msgstr "Error al crear las extracciones de {0} “{1}”."
 
 #:
 msgid "extracts.errors.increment"
-msgstr "Error al incrementar extracciones para {0}: ''{1}''"
+msgstr "Error al incrementar extracciones para {0}: “{1}”"
 
 #:
 msgid "extracts.errors.append"
-msgstr "Error al adjuntar extracciones para {0}: ''{1}''"
+msgstr "Error al adjuntar extracciones para {0}: “{1}”"
 
 #:
 msgid "extracts.errors.replace"
-msgstr "Error al reemplazar extracciones para {0}: ''{1}''"
+msgstr "Error al reemplazar extracciones para {0}: “{1}”"
 
 #:
 msgid "extracts.errors.download"
-msgstr "Error al descargar extracciones para {0}: ''{1}''"
+msgstr "Error al descargar extracciones para {0}: “{1}”"
 
 #:
 msgid "extracts.errors.remove"
-msgstr "Error al eliminar extracciones para {0}: ''{1}''."
+msgstr "Error al eliminar extracciones para {0}: “{1}”."
 
 #:
 msgid "extracts.errors.title"
@@ -864,23 +881,23 @@ msgstr "Error de extracciones de proceso"
 
 #:
 msgid "extracts.errors.nothing_to_upload"
-msgstr "No hay extracciones para cargar para {0}: ''{1}''"
+msgstr "No hay extracciones para cargar para {0}: “{1}”"
 
 #:
 msgid "extracts.errors.nothing_to_refresh"
-msgstr "No hay extracciones para actualizar para {0}: ''{1}''"
+msgstr "No hay extracciones para actualizar para {0}: “{1}”"
 
 #:
 msgid "extracts.errors.nothing_to_increment"
-msgstr "No hay extracciones para incrementar para {0}: ''{1}''"
+msgstr "No hay extracciones para incrementar para {0}: “{1}”"
 
 #:
 msgid "extracts.errors.nothing_to_append"
-msgstr "No hay extracciones para adjuntar para {0}: ''{1}''"
+msgstr "No hay extracciones para adjuntar para {0}: “{1}”"
 
 #:
 msgid "extracts.errors.nothing_to_replace"
-msgstr "No hay extracciones para reemplazar para {0}: ''{1}''"
+msgstr "No hay extracciones para reemplazar para {0}: “{1}”"
 
 #:
 msgid "extracts.errors.refresh_summary"
@@ -916,15 +933,15 @@ msgstr "Falló la actualización debido a que el libro de trabajo fue sobrescrit
 
 #:
 msgid "extracts.errors.encrypt"
-msgstr "Se ha producido un error al cifrar las extracciones para {0} ''{1}''"
+msgstr "Se ha producido un error al cifrar las extracciones para {0} “{1}”"
 
 #:
 msgid "extracts.errors.decrypt"
-msgstr "Se ha producido un error al descifrar las extracciones para {0} ''{1}''"
+msgstr "Se ha producido un error al descifrar las extracciones para {0} “{1}”"
 
 #:
 msgid "extracts.errors.rekey"
-msgstr "Se ha producido un error al volver a cifrar las extracciones para {0} ''{1}''"
+msgstr "Se ha producido un error al volver a cifrar las extracciones para {0} “{1}”"
 
 #:
 msgid "extracts.errors.encrypt_datasource_overwritten"
@@ -968,7 +985,7 @@ msgstr "El libro de trabajo no se puede extraer porque otra tarea lo ha sustitui
 
 #:
 msgid "extracts.site_mode_change_details"
-msgstr "Se ha cambiado el modo de cifrado de la extracción del sitio de ''{0}'' a ''{1}''."
+msgstr "Se ha cambiado el modo de cifrado de la extracción del sitio de “{0}” a “{1}”."
 
 #:
 msgid "extracts.errors.encryption_not_licensed"
@@ -984,7 +1001,7 @@ msgstr "No se puede cargar el libro de trabajo {0}"
 
 #:
 msgid "workbooks.messages.locked"
-msgstr "El libro de trabajo ''{0}'' actualmente está siendo modificado por otro usuario.  Intente nuevamente."
+msgstr "El libro de trabajo “{0}” actualmente está siendo modificado por otro usuario.  Vuelva a intentarlo más tarde."
 
 #:
 msgid "workbooks.new_workbook.default_name"
@@ -1036,7 +1053,7 @@ msgstr "."
 
 #:
 msgid "subscriptions.extract_refresh_footer"
-msgstr "Recibirá este correo electrónico de la suscripción cuando se actualicen los datos."
+msgstr "Recibirá este correo electrónico de suscripción cuando se actualicen los datos."
 
 #:
 msgid "subscriptions.explore_the_viz"
@@ -1052,11 +1069,19 @@ msgstr "Se adjunta el PDF de Tableau."
 
 #:
 msgid "subscriptions.access_live_content"
-msgstr "Puede acceder a la vista en directo de su contenido aquí"
+msgstr "Puede acceder a la vista en tiempo real de su contenido aquí"
 
 #:
 msgid "subscriptions.warning_deprecated_type"
 msgstr "obsoleto"
+
+#:
+msgid "subscriptions.warning_error_content_type"
+msgstr "Tipo de contenido desconocido"
+
+#:
+msgid "subscriptions.warning_error_type"
+msgstr "tipo de advertencia desconocido"
 
 #:
 msgid "subscriptions.warning_extract_refresh_type"
@@ -1064,7 +1089,7 @@ msgstr "error en la actualización de extracción"
 
 #:
 msgid "subscriptions.warning_flow_run_type"
-msgstr "error en la ejecución del flujo"
+msgstr "error al ejecutar el flujo"
 
 #:
 msgid "subscriptions.warning_introduction_general"
@@ -1072,11 +1097,43 @@ msgstr "Las siguientes advertencias de calidad de los datos afectan a {0}."
 
 #:
 msgid "subscriptions.warning_introduction_view"
-msgstr "Para obtener más información, consulte la pestaña Detalles de los datos en la vista"
+msgstr "Para obtener más información, consulte el panel Detalles de los datos en la vista"
 
 #:
 msgid "subscriptions.warning_introduction_workbook"
 msgstr "Para obtener más información, consulte la página del libro de trabajo"
+
+#:
+msgid "subscriptions.warning_localized_column"
+msgstr "Columna"
+
+#:
+msgid "subscriptions.warning_localized_datasource"
+msgstr "Fuente de datos"
+
+#:
+msgid "subscriptions.warning_localized_database"
+msgstr "Base de datos"
+
+#:
+msgid "subscriptions.warning_localized_flow"
+msgstr "Flujo"
+
+#:
+msgid "subscriptions.warning_localized_table"
+msgstr "Tabla"
+
+#:
+msgid "subscriptions.warning_localized_vconn"
+msgstr "Conexión"
+
+#:
+msgid "subscriptions.warning_lowercase_column"
+msgstr "columna"
+
+#:
+msgid "subscriptions.warning_lowercase_column_plural"
+msgstr "columnas"
 
 #:
 msgid "subscriptions.warning_maintenance_type"
@@ -1084,15 +1141,27 @@ msgstr "en mantenimiento"
 
 #:
 msgid "subscriptions.warning_permission_error"
-msgstr "Esta advertencia está relacionada con un activo que no puede ver por falta de permisos."
+msgstr "Esta advertencia está relacionada con un recurso que no puede ver por falta de permisos."
 
 #:
 msgid "subscriptions.warning_redacted"
-msgstr "Permisos necesarios"
+msgstr "Se necesitan permisos"
 
 #:
 msgid "subscriptions.warning_sensitve_type"
 msgstr "datos confidenciales"
+
+#:
+msgid "subscriptions.warning_sensitive_intro_count"
+msgstr "Confidencial ({0})"
+
+#:
+msgid "subscriptions.warning_sensitive_intro_view"
+msgstr "Esta vista usa datos confidenciales."
+
+#:
+msgid "subscriptions.warning_sensitive_intro_workbook"
+msgstr "Este libro de trabajo usa datos confidenciales."
 
 #:
 msgid "subscriptions.warning_severe"
@@ -1107,8 +1176,8 @@ msgid "subscriptions.warning_standard"
 msgstr "Advertencia de calidad de los datos"
 
 #:
-msgid "subscriptions.warning_error_type"
-msgstr "tipo de advertencia desconocido"
+msgid "subscriptions.warning_standard_plural"
+msgstr "Advertencias de calidad de los datos"
 
 #:
 msgid "subscriptions.warning_warning_type"
@@ -1116,7 +1185,7 @@ msgstr "advertencia"
 
 #:
 msgid "errors.subscriptions.image_render_failed"
-msgstr "No se pudo procesar la instantánea de la vista ''{0}'' correctamente."
+msgstr "No se pudo procesar la instantánea de la vista “{0}” correctamente."
 
 #:
 msgid "errors.subscriptions.see_live_view"
@@ -1155,8 +1224,8 @@ msgid "errors.subscriptions.pdf_render_failed"
 msgstr "El PDF adjunto a este correo electrónico no se pudo representar correctamente."
 
 #:
-msgid "errors.subscriptions.pdf_limit_exceeded"
-msgstr "El PDF generado no se puede adjuntar a este correo electrónico porque supera el límite de {0} MB de tamaño."
+msgid "errors.subscriptions.content_limit_exceeded"
+msgstr "El contenido generado no se puede adjuntar a este correo electrónico porque supera el límite de {0} MB de tamaño."
 
 #:
 msgid "errors.subscriptions.attachments_not_enabled"
@@ -1188,11 +1257,11 @@ msgstr "Error de conexión a la fuente de datos. Compruebe las credenciales de l
 
 #:
 msgid "subscriptions.results_summary.sg"
-msgstr "{0} de {1} suscripción enviada del programa ''{2}''."
+msgstr "{0} de {1} suscripción enviada del programa “{2}”."
 
 #:
 msgid "subscriptions.results_summary.pl"
-msgstr "{0} de {1} suscripciones enviadas del programa ''{2}''."
+msgstr "{0} de {1} suscripciones enviadas del programa “{2}”."
 
 #:
 msgid "subscriptions.results_views_per_subscription.sg"
@@ -1304,7 +1373,7 @@ msgstr "Ver esta alerta"
 
 #:
 msgid "dataalerts.failure.explanation"
-msgstr "La alerta <i>{0}</i> no funciona en este momento, de modo que no se notificará a los destinatarios cuando la condición de los datos sea verdadera. Recibirá una notificación por correo electrónico cuando la alerta vuelva a funcionar."
+msgstr "La alerta basada en los datos <i>{0}</i> no funciona en este momento, de modo que no se notificará a los destinatarios cuando la condición de los datos sea verdadera. Recibirá una notificación por correo electrónico cuando la alerta vuelva a funcionar."
 
 #:
 msgid "dataalerts.failure.affected.alert"
@@ -1348,7 +1417,7 @@ msgstr "Se ha reanudado su alerta <i>{0}</i>"
 
 #:
 msgid "dataalerts.success.explanation"
-msgstr "Su alerta <i>{0}</i> ya vuelve a funcionar, de modo que se notificará a los destinatarios cuando la condición de los datos sea verdadera."
+msgstr "Su alerta basada en los datos <i>{0}</i> ya vuelve a funcionar, de modo que se notificará a los destinatarios cuando la condición de los datos sea verdadera."
 
 #:
 msgid "dataalerts.failure.error.internalError"
@@ -1382,6 +1451,9 @@ msgstr "No se encontró el libro de trabajo"
 msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
 msgstr "No se ha encontrado ningún eje para el campo {0}"
 
+#:
+msgid "dataalerts.failure.error.paneDescriptorNotFound"
+msgstr "{0}"
 
 #:
 msgid "dataalerts.failure.error.unsupportedComparisonExpression"
@@ -1417,11 +1489,11 @@ msgstr "Se ha producido un error al serializar la alerta. {0}"
 
 #:
 msgid "dataalerts.failure.error.cannotDrawDataAlertDialog"
-msgstr "Se ha producido un error al crear el diálogo de alerta."
+msgstr "Se ha producido un error al crear el diálogo de alerta de datos."
 
 #:
 msgid "dataalerts.failure.error.unsupportedDataAlertType"
-msgstr "Actualmente no se admite el tipo de alerta {0}."
+msgstr "Actualmente no se admite el tipo de alerta de datos {0}."
 
 #:
 msgid "dataalerts.failure.suspend.email.subject"
@@ -1433,7 +1505,7 @@ msgstr "Se ha suspendido su alerta {0}"
 
 #:
 msgid "dataalerts.failure.suspend.email.explanation"
-msgstr "En estado suspendido, no evaluaremos los destinatarios de la alerta o la vista. Una vez que se haya solucionado, puede reanudar la alerta en <a hre"
+msgstr "En estado suspendido, no evaluaremos los destinatarios de la alerta o la vista. Una vez solucionado el problema, podrá reanudar la alerta en <a hre"
 
 #:
 msgid "dataalerts.failure.suspend.view.name.prefix"
@@ -1489,7 +1561,7 @@ msgstr "Su métrica no se puede actualizar, por tanto, no se aplican los cambios
 
 #:
 msgid "metricsservices.failure.status"
-msgstr "La métrica ''{0}'' no se está actualizando"
+msgstr "La métrica “{0}” no se está actualizando"
 
 #:
 msgid "metricsservices.failure.suspend.email.explanation"
@@ -1501,7 +1573,7 @@ msgstr "Se ha enviado este correo electrónico a {0} porque la actualización de
 
 #:
 msgid "metricsservices.failure.suspend.email.status"
-msgstr "Se ha suspendido la actualización de la métrica ''{0}''"
+msgstr "Se ha suspendido la actualización de la métrica “{0}”"
 
 #:
 msgid "metricsservices.failure.suspend.email.subject"
@@ -1545,7 +1617,7 @@ msgstr "La actualización de su métrica vuelve a funcionar, ahora se buscarán 
 
 #:
 msgid "metricsservices.success.status"
-msgstr "Se ha reanudado la actualización de la métrica ''{0}''"
+msgstr "Se ha reanudado la actualización de la métrica “{0}”"
 
 #:
 msgid "errors.staticimages.generic"
@@ -1613,11 +1685,11 @@ msgstr "Sitio de Tableau Server"
 
 #:
 msgid "materializeviews.errors.workbook_not_in_project"
-msgstr "El proyecto ''{0}'' no contiene el libro de trabajo ''{1}''"
+msgstr "El proyecto “{0}” no contiene el libro de trabajo “{1}”"
 
 #:
 msgid "materializeviews.errors.workbook_has_no_extract"
-msgstr "No se pudo actualizar la configuración de las vistas materializadas del libro de trabajo ''{0}''. Actualmente, solo se admiten los libros de trabajo con extracciones incrustadas"
+msgstr "No se pudo actualizar la configuración de las vistas materializadas del libro de trabajo “{0}”. Actualmente, solo se admiten los libros de trabajo con extracciones incrustadas"
 
 #:
 msgid "materializeviews.errors.workbook_updating_errors"
@@ -1625,19 +1697,19 @@ msgstr "Se han encontrado errores al actualizar la configuración de las vistas 
 
 #:
 msgid "materializeviews.errors.workbook_too_large"
-msgstr "Error al actualizar la configuración de las vistas materializadas para el libro de trabajo ''{0}'' porque el tamaño del libro de trabajo supera el limite de {1} GB"
+msgstr "Error al actualizar la configuración de las vistas materializadas para el libro de trabajo “{0}” porque el tamaño del libro de trabajo supera el limite de {1} GB"
 
 #:
 msgid "materializeviews.errors.project_path_not_exists"
-msgstr "La ruta del proyecto ''{0}'' no existe."
+msgstr "La ruta del proyecto “{0}” no existe."
 
 #:
 msgid "materializeviews.errors.feature_disabled"
-msgstr "Error al actualizar la configuración de las vistas materializadas para el libro de trabajo ''{0}'' porque la función está actualmente deshabilitada"
+msgstr "Error al actualizar la configuración de las vistas materializadas para el libro de trabajo “{0}” porque la función está actualmente deshabilitada"
 
 #:
 msgid "materializeviews.errors.update_materialized_views_setting_failed"
-msgstr "Error al actualizar la configuración de las vistas materializadas para el libro de trabajo ''{0}''"
+msgstr "Error al actualizar la configuración de las vistas materializadas para el libro de trabajo “{0}”"
 
 #:
 msgid "materializeviews.errors.site_not_enabled"
@@ -1649,7 +1721,7 @@ msgstr "Por el momento, la función Vistas materializadas no admite libros de tr
 
 #:
 msgid "materializedviews.finished.create"
-msgstr "Se han creado las vistas materializadas con el estado ''{0}'' del libro de trabajo ''{1}''"
+msgstr "Se han creado las vistas materializadas con el estado “{0}” del libro de trabajo “{1}”"
 
 #:
 msgid "materializedviews.finished.delete"
@@ -1657,27 +1729,27 @@ msgstr "Se han eliminado las vistas materializadas del libro de trabajo con id: 
 
 #:
 msgid "materializedviews.finished.encrypt"
-msgstr "Se ha completado el cifrado de vistas materializadas para el libro de trabajo ''{0}''"
+msgstr "Se ha completado el cifrado de vistas materializadas para el libro de trabajo “{0}”"
 
 #:
 msgid "materializedviews.finished.decrypt"
-msgstr "Se ha completado el descifrado de vistas materializadas para el libro de trabajo ''{0}''"
+msgstr "Se ha completado el descifrado de vistas materializadas para el libro de trabajo “{0}”"
 
 #:
 msgid "materializedviews.finished.rekey"
-msgstr "Se ha completado el recifrado de vistas materializadas para el libro de trabajo ''{0}''"
+msgstr "Se ha completado el recifrado de vistas materializadas para el libro de trabajo “{0}”"
 
 #:
 msgid "materializedviews.status.encryption_key"
-msgstr "ID de clave de cifrado: ''{0}''."
+msgstr "ID de clave de cifrado: “{0}”."
 
 #:
 msgid "materializedviews.status.encryption_keys"
-msgstr "ID de clave de cifrado antigua: ''{0}'', ID de clave de cifrado nueva: ''{1}''."
+msgstr "ID de clave de cifrado antigua: “{0}”; ID de clave de cifrado nueva: “{1}”."
 
 #:
 msgid "materializedviews.status.encryption_type"
-msgstr "Tipo de cifrado de la fuente de datos: ''{0}''"
+msgstr "Tipo de cifrado de la fuente de datos: “{0}”"
 
 #:
 msgid "customizedviews.namedSharingPrefix"
@@ -1728,12 +1800,12 @@ msgid "content_type.explaindata_explanation"
 msgstr "Explicación"
 
 #:
-msgid "content_type.publishedconnection"
+msgid "content_type.virtualconnection"
 msgstr "Conexión virtual"
 
 #:
-msgid "content_type.publishedconnectiontable"
-msgstr "Tabla de la conexión virtual"
+msgid "content_type.virtualconnectiontable"
+msgstr "Tabla de conexión virtual"
 
 #:
 msgid "upgradethumbnails.status.server_started"
@@ -1742,6 +1814,14 @@ msgstr "Respuesta del servidor: la actualización de miniaturas ha comenzado."
 #:
 msgid "upgradethumbnails.status.server_stopped"
 msgstr "Respuesta del servidor: se han detenido %d trabajos"
+
+#:
+msgid "dataquality.author.extract_refresh_monitoring"
+msgstr "Supervisión de actualización de extracción"
+
+#:
+msgid "dataquality.author.flow_run_monitoring"
+msgstr "Supervisión de ejecución de flujo"
 
 #:
 msgid "dataquality.message.refresh_failed"
@@ -1760,6 +1840,38 @@ msgid "dataquality.message.flow_run_output_steps_failed"
 msgstr "No fue posible ejecutar {0}/{1} pasos de salida"
 
 #:
+msgid "label_value.description.certified"
+msgstr "El recurso es de confianza y se recomienda."
+
+#:
+msgid "label_value.description.deprecated"
+msgstr "Este activo ya no se mantiene y no se debe usar."
+
+#:
+msgid "label_value.description.extract_refresh_failure"
+msgstr "La actualización de extracción más reciente de este recurso generó un error."
+
+#:
+msgid "label_value.description.flow_run_failure"
+msgstr "La ejecución más reciente de este flujo falló."
+
+#:
+msgid "label_value.description.maintenance"
+msgstr "Este recurso se encuentra en mantenimiento."
+
+#:
+msgid "label_value.description.sensitive_data"
+msgstr "Este recurso contiene información confidencial."
+
+#:
+msgid "label_value.description.stale"
+msgstr "Este recurso está obsoleto."
+
+#:
+msgid "label_value.description.warning"
+msgstr "Este recurso tiene un problema de calidad general."
+
+#:
 msgid "importcsvsummary.error.details"
 msgstr "Detalles del error:"
 
@@ -1769,7 +1881,7 @@ msgstr "(errores restantes no mostrados)"
 
 #:
 msgid "importcsvsummary.error.line"
-msgstr "línea {0} para usuario ''{1}'': ''{2}''"
+msgstr "línea {0} para usuario “{1}”: “{2}”"
 
 #:
 msgid "importcsvsummary.line.processed"
@@ -1805,7 +1917,19 @@ msgstr "La creación del usuario del sistema local cuando Auth es Local requiere
 
 #:
 msgid "importcsvsummary.error.ad.user_not_found"
-msgstr "No se ha encontrado al usuario AD ''{0}''"
+msgstr "No se ha encontrado al usuario AD “{0}”"
+
+#:
+msgid "importcsvsummary.error.domain_not_found"
+msgstr "Dominio no válido “{0}”"
+
+#:
+msgid "importcsvsummary.error.cannot_create_user_identity"
+msgstr "No se pudo crear la identidad de usuario para el usuario “{0}”"
+
+#:
+msgid "importcsvsummary.error.invalid_identity_pool_name"
+msgstr "Nombre de la agrupación de identidad no válido “{0}”"
 
 #:
 msgid "importcsvsummary.error.too_many_errors"
@@ -1813,7 +1937,7 @@ msgstr "Se han encontrado demasiados errores en el archivo .csv"
 
 #:
 msgid "audit.errors.wdc_not_allowlisted"
-msgstr "El conector de datos web no se encuentra en la lista de admisión. Para obtener ayuda, consulte: https://help.tableau.com/current/online/es-es/to_keep_data_fresh.htm"
+msgstr "El conector de datos web no se encuentra en la lista de admisión. Para obtener asistencia, consulte: https://help.tableau.com/current/online/es-es/to_keep_data_fresh.htm"
 
 #:
 msgid "user.input.name.err.too_long"
@@ -1833,19 +1957,19 @@ msgstr "Actualización en la aplicación de Tableau para Slack"
 
 #:
 msgid "slack.app.upgrade.email.notification.introduction"
-msgstr "Hay una actualización disponible para la aplicación de Tableau para Slack que se puede volver a instalar ahora para que funcione con la siguiente versión de Tableau Online. Tableau recomienda volver a instalar la aplicación para conseguir el mejor rendimiento y nuevas funcionalidades para los usuarios. Puede echar un vistazo a los cambios y funciones nuevas en <a styl"
+msgstr "Hay una actualización disponible para la aplicación de Tableau para Slack. Tableau recomienda actualizar la aplicación para mantener el rendimiento de la aplicación y para usar las nuevas funcionalidades de Tableau Cloud. Descubra nuevas funcionalidades y cambios en <a styl"
 
 #:
 msgid "slack.app.upgrade.email.notification.action"
-msgstr "Para actualizar y consultar los pasos para volver a instalar la aplicación, consulte <a styl"
+msgstr "Para actualizar la conexión del sitio a la aplicación de Tableau para Slack, consulte <a styl"
 
 #:
 msgid "slack.app.upgrade.email.notification.steps"
-msgstr "Esta notificación de servicio ha sido publicada por Tableau Online."
+msgstr "Esta notificación de servicio ha sido publicada por Tableau Cloud."
 
 #:
 msgid "slack.app.upgrade.email.notification.reason"
-msgstr "Recibe esta notificación porque desempeña la función de administrador en un sitio de Tableau Online conectado a Slack."
+msgstr "Recibe esta notificación porque es un usuario administrador de un sitio de Tableau Cloud conectado con Slack."
 
 #:
 msgid "slack.app.upgrade.email.notification.footer.privacy"
@@ -1855,54 +1979,45 @@ msgstr "Lea nuestra <a styl"
 msgid "unifiedconsumption.tcrm.folders.private"
 msgstr "Mi aplicación privada"
 
-
-msgid ""
-msgstr ""
-"MIME-Version: 1.0"
-"Content-Type: text/plain; charset=utf-8"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: prop2po"
-"Project-Id-Version: None"
-"Language: es"
 #:
 msgid "commandlineutils.errors.bad_value"
-msgstr "La opción ''{0}'' tiene un valor incorrecto de ''{1}''. Debe ser uno de: {2}"
+msgstr "La opción “{0}” tiene un valor incorrecto de “{1}”. Debe ser uno de: {2}"
 
 #:
 msgid "commandlineutils.errors.not_integer"
-msgstr "El valor ''{0}'' para la opción ''{1}'' no es un entero"
+msgstr "El valor “{0}” para la opción “{1}” no es un entero"
 
 #:
 msgid "common.errors.empty_file"
-msgstr "El archivo ''{0}'' está vacío"
+msgstr "El archivo “{0}” está vacío"
 
 #:
 msgid "common.errors.file_not_found"
-msgstr "No se puede abrir el archivo ''{0}''"
+msgstr "No se puede abrir el archivo “{0}”"
 
 #:
 msgid "common.errors.invalid_file_path"
-msgstr "Ruta de archivo no válida ''{0}''"
+msgstr "Ruta de archivo no válida “{0}”"
 
 #:
 msgid "common.errors.folder_path_not_found"
-msgstr "No se encontró el directorio ''{0}''"
+msgstr "No se encontró el directorio “{0}”"
 
 #:
 msgid "common.errors.access_denied"
-msgstr "Acceso denegado al archivo ''{0}''. Compruebe que la ruta sea válida y que el nombre de archivo no coincida con un directorio existente."
+msgstr "Acceso denegado al archivo “{0}”. Compruebe que la ruta sea válida y que el nombre de archivo no coincida con un directorio existente."
 
 #:
 msgid "common.errors.requires_csv_file"
-msgstr "El comando ''{0}'' requiere un archivo CSV"
+msgstr "El comando “{0}” requiere un archivo CSV"
 
 #:
 msgid "common.errors.requires_group_name"
-msgstr "El comando ''{0}'' requiere un nombre de grupo"
+msgstr "El comando “{0}” requiere un nombre de grupo"
 
 #:
 msgid "common.errors.requires_site_name"
-msgstr "El comando ''{0}'' requiere un nombre de sitio"
+msgstr "El comando “{0}” requiere un nombre de sitio"
 
 #:
 msgid "common.errors.options_conflict"
@@ -1914,7 +2029,7 @@ msgstr "El archivo CSV al que hace referencia supera el límite de tamaño de 10
 
 #:
 msgid "common.options.admin-type"
-msgstr "[Ya no se usa] Asigna [o elimina] el derecho de administración del sitio para todos los usuarios en el archivo CSV. Esta configuración se puede sustituir por los valores de las distintas filas del archivo CSV. {0} puede ser: {1}, {2} o {3}. Si no se especifica: {3} para los nuevos usuarios, sin cambios para los usuarios existentes"
+msgstr "[Obsoleto] Asigna [o elimina] el derecho de administración del sitio para todos los usuarios en el archivo CSV. Esta configuración se puede sustituir por los valores de las distintas filas del archivo CSV. {0} puede ser: {1}, {2} o {3}. Si no se especifica: {3} para los nuevos usuarios, sin cambios para los usuarios existentes"
 
 #:
 msgid "common.options.complete"
@@ -1922,7 +2037,7 @@ msgstr "Requiere [o no] que todas las filas sean válidas para que los cambios s
 
 #:
 msgid "common.options.license"
-msgstr "[Ya no se usa] Configura el nivel de licencia predeterminado para todos los usuarios. Se puede sustituir con el valor del archivo CSV. {0} puede ser {1}, {2} o {3}"
+msgstr "[Obsoleto] Configura el nivel de licencia predeterminado para todos los usuarios. Se puede sustituir con el valor del archivo CSV. {0} puede ser {1}, {2} o {3}"
 
 #:
 msgid "common.options.nowait"
@@ -1930,7 +2045,7 @@ msgstr "No esperar a que termine el trabajo"
 
 #:
 msgid "common.options.publisher"
-msgstr "[Ya no se usa] Asigna [o elimina] el derecho de publicación para todos los usuarios en el archivo CSV. Esta configuración se puede sustituir por los valores de las distintas filas del archivo CSV. Valor predeterminado si no se especifica: falso para los nuevos usuarios, sin cambios para los usuarios existentes"
+msgstr "[Obsoleto] Asigna [o elimina] el derecho de publicación para todos los usuarios en el archivo CSV. Esta configuración se puede sustituir por los valores de las distintas filas del archivo CSV. Valor predeterminado si no se especifica: falso para los nuevos usuarios, sin cambios para los usuarios existentes"
 
 #:
 msgid "common.options.silent-progress"
@@ -1938,7 +2053,7 @@ msgstr "No mostrar mensajes de progreso para el trabajo"
 
 #:
 msgid "common.options.sysadmin-type"
-msgstr "[Ya no se usa] Asigna [o elimina] el derecho de administración del sitio para todos los usuarios en el archivo CSV. Esta configuración se puede sustituir por los valores de las distintas filas del archivo CSV. {0} puede ser: {1}, {2}, {3} o {4}. Valor predeterminado si no se especifica: {4} para los nuevos usuarios, sin cambios para los usuarios existentes"
+msgstr "[Obsoleto] Asigna [o elimina] el derecho de administración del sitio para todos los usuarios en el archivo CSV. Esta configuración se puede sustituir por los valores de las distintas filas del archivo CSV. {0} puede ser: {1}, {2}, {3} o {4}. Valor predeterminado si no se especifica: {4} para los nuevos usuarios, sin cambios para los usuarios existentes"
 
 #:
 msgid "common.output.job_queued_success"
@@ -1950,7 +2065,7 @@ msgstr "Correcto"
 
 #:
 msgid "common.options.role"
-msgstr "Establece la función predeterminada de todos los usuarios a los que afecta. Valores válidos de {0}: {1}. Si no se especifica, el servidor usa el valor predeterminado: {2}"
+msgstr "Establece la función predeterminada de todos los usuarios a los que afecta. Valores legales para {0}: {1}. Si no se especifica, el servidor usa el valor predeterminado: {2}"
 
 #:
 msgid "addusers.options.users"
@@ -1970,11 +2085,11 @@ msgstr "Crear un grupo local"
 
 #:
 msgid "creategroup.status"
-msgstr "Creando el grupo ''{0}'' en el servidor..."
+msgstr "Creando el grupo “{0}” en el servidor..."
 
 #:
 msgid "creategroup.options.role"
-msgstr "Establece el rol que se asignará a los usuarios del grupo una vez que inicien sesión. Valores legales de {0}: {1}. El rol en el sitio de un usuario solo se establecerá con este valor si es menos restrictivo que el rol en el sitio actual del usuario. Si no se especifica ninguno, no se asignará ningún rol para los usuarios de este grupo cuando inicien sesión."
+msgstr "Establece el rol que se asignará a los usuarios del grupo una vez que inicien sesión. Valores legales para {0}: {1}. El rol en el sitio de un usuario solo se establecerá con este valor si es menos restrictivo que el rol en el sitio actual del usuario. Si no se especifica ninguno, no se asignará ningún rol para los usuarios de este grupo cuando inicien sesión."
 
 #:
 msgid "createextracts.errors.required_argument"
@@ -1986,15 +2101,15 @@ msgstr "Error al crear la extracción"
 
 #:
 msgid "createextracts.for.datasource"
-msgstr "Crear extracción para la fuente de datos ''{0}''"
+msgstr "Crear extracción para la fuente de datos “{0}”"
 
 #:
 msgid "createextracts.for.workbook_name"
-msgstr "Creando extracción del libro de trabajo ''{0}''"
+msgstr "Creando extracción del libro de trabajo “{0}”"
 
 #:
 msgid "createextracts.for.workbook_url"
-msgstr "Crear extracción para el libro de trabajo con URL ''{0}''"
+msgstr "Crear extracción para el libro de trabajo con URL “{0}”"
 
 #:
 msgid "createextracts.options.datasource"
@@ -2014,11 +2129,11 @@ msgstr "Incluya todas las fuentes de datos de un libro de trabajo de destino. So
 
 #:
 msgid "createextracts.options.parent-project-path"
-msgstr "Ruta del proyecto que es el principal dentro del proyecto que contiene el recurso de destino. Debe especificar el nombre del proyecto con --project."
+msgstr "Ruta del proyecto que es el principal dentro del proyecto que contiene el recurso de destino. Se debe especificar el nombre del proyecto con --project.."
 
 #:
 msgid "createextracts.options.project"
-msgstr "El nombre del proyecto que contiene el recurso de destino. Solo es necesario si {0} o {1} están especificados. Si no lo están, se utilizará el proyecto predeterminado ''{2}''."
+msgstr "El nombre del proyecto que contiene el recurso de destino. Solo es necesario si se especifica {0} o {1}. Si no se especifica, se usa el proyecto predeterminado “{2}”."
 
 #:
 msgid "createextracts.options.url"
@@ -2038,7 +2153,7 @@ msgstr "Incluir todas las fuentes de datos insertadas dentro del libro de trabaj
 
 #:
 msgid "createextracts.workbook.embedded-datasource-names"
-msgstr "Con nombres de fuente de datos incrustada"
+msgstr "Con nombres de fuente de datos insertada"
 
 #:
 msgid "createproject.options.description"
@@ -2058,7 +2173,7 @@ msgstr "Crear un proyecto"
 
 #:
 msgid "createproject.status"
-msgstr "Creando el proyecto ''{0}''en el servidor..."
+msgstr "Creando el proyecto “{0}”en el servidor..."
 
 #:
 msgid "createsite.errors.invalid_url_option"
@@ -2066,11 +2181,11 @@ msgstr "La opción de URL no es válida al crear varios sitios. Vuelva a ejecuta
 
 #:
 msgid "createsite.errors.site_name_already_exists"
-msgstr "Ya existe un sitio con el nombre ''{0}''. Escriba otro nombre de sitio."
+msgstr "Ya existe un sitio con el nombre “{0}”. Escriba otro nombre de sitio."
 
 #:
 msgid "createsite.errors.site_id_already_exists"
-msgstr "Ya existe un sitio con el ID ''{0}''. Utilice -r para especificar otro ID de sitio. Consulte la ayuda de tabcmd createsite para obtener más información."
+msgstr "Ya existe un sitio con el ID “{0}”. Utilice -r para especificar otro ID de sitio. Consulte la ayuda de tabcmd createsite para obtener más información."
 
 #:
 msgid "createsite.options.allow-mobile-snapshots"
@@ -2122,7 +2237,7 @@ msgstr "Modo de cifrado de extracciones: deshabilitado, habilitado o requerido. 
 
 #:
 msgid "createsite.options.web_extraction_enabled"
-msgstr "Permitir [o denegar] la creación de extracción y el cambio de extracciones a tiempo real para este sitio. La configuración predeterminada está permitida."
+msgstr "Permitir [o denegar] la creación de extracciones y el cambio de extracciones a tiempo real para este sitio. La configuración predeterminada está permitida."
 
 #:
 msgid "createsite.options.run_now_enabled"
@@ -2138,16 +2253,15 @@ msgstr "Crear un sitio"
 
 #:
 msgid "createsite.status"
-msgstr "Creando el sitio ''{0}'' en el servidor..."
+msgstr "Creando el sitio “{0}” en el servidor..."
 
 #:
 msgid "createsiteusers.options.auth-type"
-msgstr "Asigna el tipo de autenticación de todos los usuarios del archivo CSV. Para Tableau Online, {0} puede ser {1} (predeterminado) or {2}. Para Tableau Server, {0} puede ser Local (predeterminado) o {2}."
+msgstr "Asigna el tipo de autenticación de todos los usuarios en el archivo CSV. Para Tableau Cloud, {0} puede ser {1} (predeterminado) o {2}. Para Tableau Server, {0} puede ser Local (predeterminado) o {2}."
 
 #:
 msgid "createsiteusers.description"
-msgstr "Crear usuarios en el sitio actual. Los usuarios se leen a partir del archivo CSV especificado. El archivo puede tener las columnas en el orden que se muestra a continuación.{0}1. Nombre de usuario{0}2. Contraseña        (Se omite en caso de usar Active Directory){0}3. Nombre descriptivo   (Se omite en caso de usar Active Directory){0}4. Nivel de licencia ({1}, {2}, {3}, {4} o {5}){0}5. Administrador ({6}/{7}){0}6. Publicador ({8}/{9}/1 o {10}/{11}/0){0}7. Correo electrónico (solo para Tableau Public){0}El archivo puede tener menos columnas. Por ejemplo, puede ser una lista simple con un nombre de usuario por línea. Puede usar comillas si un valor contiene comas. Tabcmd espera hasta que la tarea de {12} se completa.  Puede elegir no esperar a que se complete la tarea en el servidor y volver inmediatamente pasando el selector {13}. Con este comando no se pueden eliminar ni degradar administradores de sistema. Para ello, use ''{14}''"
-
+msgstr "Crear usuarios en el sitio actual. Los usuarios se leen a partir del archivo CSV especificado. El archivo puede tener las columnas en el orden que se muestra a continuación.{0}1. Nombre de usuario{0}2. Contraseña        (Se omite en caso de usar Active Directory){0}3. Nombre descriptivo   (Se omite en caso de usar Active Directory){0}4. Nivel de licencia ({1}, {2}, {3}, {4} o {5}){0}5. Administrador ({6}/{7}){0}6. Publicador ({8}/{9}/1 o {10}/{11}/0){0}7. Correo electrónico (solo para Tableau Public){0}El archivo puede tener menos columnas. Por ejemplo, puede ser una lista simple con un nombre de usuario por línea. Puede usar comillas si un valor contiene comas. Tabcmd espera hasta que la tarea de {12} se completa.  Puede elegir no esperar a que se complete la tarea en el servidor y volver inmediatamente pasando el selector {13}. Con este comando no se pueden eliminar ni degradar administradores de sistema. Para ello, use “{14}”"
 
 #:
 msgid "createsiteusers.short_description"
@@ -2183,7 +2297,7 @@ msgstr "No se puede especificar un libro de trabajo y una fuente de datos para s
 
 #:
 msgid "delete.errors.requires_workbook_datasource"
-msgstr "El comando ''{0}'' requiere un nombre de libro de trabajo o de fuente de datos"
+msgstr "El comando “{0}” requiere un nombre de libro de trabajo o de fuente de datos"
 
 #:
 msgid "delete.options.datasource"
@@ -2191,11 +2305,11 @@ msgstr "Fuente de datos que se va a eliminar"
 
 #:
 msgid "delete.options.parent-project-path"
-msgstr "Ruta del elemento superior del proyecto que contiene los libros de trabajo o las fuentes de datos que se van a eliminar. Se debe especificar el nombre del proyecto con --project."
+msgstr "Ruta del elemento superior del proyecto que contiene los libros de trabajo o las fuentes de datos que se van a eliminar. Se debe especificar el nombre del proyecto con --project.."
 
 #:
 msgid "delete.options.project"
-msgstr "El proyecto que contiene el libro de trabajo o la fuente de datos que se va a eliminar. El proyecto predeterminado es ''{0}''"
+msgstr "El proyecto que contiene el libro de trabajo o la fuente de datos que se va a eliminar. El proyecto predeterminado es “{0}”"
 
 #:
 msgid "delete.options.workbook"
@@ -2207,7 +2321,7 @@ msgstr "Eliminar un libro de trabajo o una fuente de datos del servidor"
 
 #:
 msgid "delete.status"
-msgstr "Eliminando {0} ''{1}'' del servidor..."
+msgstr "Eliminando {0} “{1}” del servidor..."
 
 #:
 msgid "deleteextracts.errors.required_argument"
@@ -2219,15 +2333,15 @@ msgstr "Error al eliminar la extracción"
 
 #:
 msgid "deleteextracts.for.datasource"
-msgstr "Eliminar extracción de la fuente de datos ''{0}''"
+msgstr "Eliminar extracción de la fuente de datos “{0}”"
 
 #:
 msgid "deleteextracts.for.workbook_name"
-msgstr "Eliminando la extracción del libro de trabajo ''{0}''"
+msgstr "Eliminando la extracción del libro de trabajo “{0}”"
 
 #:
 msgid "deleteextracts.for.workbook_url"
-msgstr "Eliminar extracción para el libro de trabajo con la URL ''{0}''"
+msgstr "Eliminar extracción para el libro de trabajo con la URL “{0}”"
 
 #:
 msgid "deleteextracts.options.datasource"
@@ -2243,11 +2357,11 @@ msgstr "Incluir todas las fuentes de datos insertadas dentro del libro de trabaj
 
 #:
 msgid "deleteextracts.options.parent-project-path"
-msgstr "Ruta del proyecto que es el principal dentro del proyecto que contiene el recurso de destino. Debe especificar el nombre del proyecto con --project."
+msgstr "Ruta del proyecto que es el principal dentro del proyecto que contiene el recurso de destino. Se debe especificar el nombre del proyecto con --project.."
 
 #:
 msgid "deleteextracts.options.project"
-msgstr "El nombre del proyecto que contiene el recurso de destino. Solo es necesario si {0} o {1} están especificados. Si no lo están, se utilizará el proyecto predeterminado ''{2}''."
+msgstr "El nombre del proyecto que contiene el recurso de destino. Solo es necesario si se especifica {0} o {1}. Si no se especifica, se usa el proyecto predeterminado “{2}”."
 
 #:
 msgid "deleteextracts.options.url"
@@ -2275,11 +2389,11 @@ msgstr "Eliminar un grupo"
 
 #:
 msgid "deletegroup.status"
-msgstr "Eliminando el grupo ''{0}'' del servidor..."
+msgstr "Eliminando el grupo “{0}” del servidor..."
 
 #:
 msgid "deleteproject.errors.requires_project_name"
-msgstr "El comando ''{0}'' requiere un nombre de proyecto"
+msgstr "El comando “{0}” requiere un nombre de proyecto"
 
 #:
 msgid "deleteproject.options.parent-project-path"
@@ -2291,7 +2405,7 @@ msgstr "Eliminar un proyecto"
 
 #:
 msgid "deleteproject.status"
-msgstr "Eliminando el proyecto ''{0}'' del servidor..."
+msgstr "Eliminando el proyecto “{0}” del servidor..."
 
 #:
 msgid "deletesite.errors.logged_into_this_site"
@@ -2303,7 +2417,7 @@ msgstr "Eliminar un sitio"
 
 #:
 msgid "deletesite.status"
-msgstr "Eliminando el sitio ''{0}'' del servidor..."
+msgstr "Eliminando el sitio “{0}” del servidor..."
 
 #:
 msgid "deletesiteusers.description"
@@ -2331,11 +2445,11 @@ msgstr "Eliminando los usuarios mostrados en {0} del servidor..."
 
 #:
 msgid "editdomain.description"
-msgstr "Edite un dominio. Use el comando ''{0}'' para ver una lista de dominios para la edición"
+msgstr "Edite un dominio. Use el comando “{0}” para ver una lista de dominios para la edición"
 
 #:
 msgid "editdomain.errors.requires_nickname_name"
-msgstr "Se debe especificar una opción ''{0}'' o ''{1}''"
+msgstr "Se debe especificar una opción “{0}” o “{1}”"
 
 #:
 msgid "editdomain.options.id"
@@ -2359,7 +2473,7 @@ msgstr "{0}ID{1}Apodo{1}{1}Nombre{0}"
 
 #:
 msgid "editdomain.status"
-msgstr "Editando el dominio con el ID ''{0}'' en el servidor..."
+msgstr "Editando el dominio con el ID “{0}” en el servidor..."
 
 #:
 msgid "editsite.errors.invalid_site-id"
@@ -2395,7 +2509,7 @@ msgstr "Mostrar nombre del sitio"
 
 #:
 msgid "editsite.options.status"
-msgstr "Cambie la disponibilidad del sitio. Debe ser ''{0}'' o ''{1}''"
+msgstr "Cambie la disponibilidad del sitio. Debe ser “{0}” o “{1}”"
 
 #:
 msgid "editsite.options.allow-materialized-views"
@@ -2427,7 +2541,7 @@ msgstr "Editar un sitio"
 
 #:
 msgid "editsite.status"
-msgstr "Editando el sitio ''{0}'' en el servidor..."
+msgstr "Editando el sitio “{0}” en el servidor..."
 
 #:
 msgid "encryptextracts.short_description"
@@ -2447,15 +2561,15 @@ msgstr "El nombre del libro de trabajo o la vista de la exportación no puede in
 
 #:
 msgid "export.errors.requires_workbook_view_name"
-msgstr "El comando ''{0}'' requiere un nombre de <workbook>/<view>"
+msgstr "El comando “{0}” requiere un nombre de <workbook>/<view>"
 
 #:
 msgid "export.errors.requires_workbook_view_param"
-msgstr "El comando ''{0}'' requiere un parámetro de <workbook>/<view>, que debe contener al menos una barra (/)"
+msgstr "El comando “{0}” requiere un parámetro de <workbook>/<view>, que debe contener al menos una barra (/)"
 
 #:
 msgid "export.options.country"
-msgstr "Si no se utiliza la configuración regional predeterminada del usuario, se debe usar la abreviatura de la configuración regional del país (que se puede encontrar en el registro de subetiquetas de idioma de la IANA) con el comando --language"
+msgstr "Si no se utiliza la configuración regional predeterminada del usuario, se debe usar la abreviatura de la configuración regional del país (que se puede encontrar en el registro de subcategorías de idioma de la IANA). con el comando --language"
 
 #:
 msgid "export.options.csv"
@@ -2471,7 +2585,7 @@ msgstr "Configura el alto. Debe ser un valor entero (valor predeterminado: 600 p
 
 #:
 msgid "export.options.language"
-msgstr "Si no se utiliza la configuración regional predeterminada del usuario, se debe usar la abreviatura de la configuración regional del idioma (que se puede encontrar en el registro de subetiquetas de idioma de la IANA) con el comando --country"
+msgstr "Si no se utiliza la configuración regional predeterminada del usuario, se debe usar la abreviatura de la configuración regional del idioma (que se puede encontrar en el registro de subcategorías de idioma de la IANA). con el comando --country"
 
 #:
 msgid "export.options.pagelayout"
@@ -2479,7 +2593,7 @@ msgstr "Configura la orientación de páginas del PDF exportado. Valores legales
 
 #:
 msgid "export.options.pagesize"
-msgstr "Configura el tamaño de página del PDF exportado. Valores legales: {0} (valor predeterminado: ''{1}'')"
+msgstr "Configura el tamaño de página del PDF exportado. Valores legales: {0} (valor predeterminado: “{1}”)"
 
 #:
 msgid "export.options.pdf"
@@ -2499,15 +2613,23 @@ msgstr "Exportar los datos o la imagen de una vista del servidor"
 
 #:
 msgid "export.status"
-msgstr "Solicitando ''{0}'' al servidor..."
+msgstr "Solicitando “{0}” al servidor..."
+
+#:
+msgid "export.status.writing"
+msgstr "Escribiendo la respuesta en “{0}”"
+
+#:
+msgid "export.status.error"
+msgstr "Se ha producido un error al escribir en un archivo:"
 
 #:
 msgid "export.success"
-msgstr "Se ha guardado {0} en ''{1}''"
+msgstr "Se ha guardado {0} en “{1}”"
 
 #:
 msgid "extracts.workbook.errors.requires_datasources_or_include_all"
-msgstr "El comando {0} para un libro de trabajo requiere una fuente de datos insertada o incluir un selector total ."
+msgstr "El comando {0} para un libro de trabajo requiere una fuente de datos insertada o incluir un selector total."
 
 #:
 msgid "fileuploader.progress"
@@ -2519,7 +2641,7 @@ msgstr "Obtenga un archivo del servidor. El archivo recibirá el nombre tras el 
 
 #:
 msgid "get.errors.requires_url"
-msgstr "El comando ''{0}'' requiere una URL"
+msgstr "El comando “{0}” requiere una URL"
 
 #:
 msgid "get.options.file"
@@ -2587,11 +2709,11 @@ msgstr "Mostrando dominios del servidor..."
 
 #:
 msgid "listsites.output"
-msgstr "{0}{0}NAME: {1} {0}SITEID: ''{2}''"
+msgstr "{0}{0}NAME: {1}{0}SITEID: “{2}”"
 
 #:
 msgid "listsites.output_extended"
-msgstr "{0}{0}NAME: {1} {0}SITEID: ''{2}''{0}EXTRACTENCRYPTION: {3}"
+msgstr "{0}{0}NAME: {1} {0}SITEID: “{2}”{0}EXTRACTENCRYPTION: {3}"
 
 #:
 msgid "listsites.short_description"
@@ -2623,7 +2745,7 @@ msgstr "Publicar un libro de trabajo, una fuente de datos o una extracción en e
 
 #:
 msgid "publish.errors.invalid_datasource_update_file_type"
-msgstr "Tipo de archivo ''{0}'' incorrecto para actualizar una fuente de datos. La operación de reemplazar/adjuntar solo se aplica a un archivo de extracción (.tde)"
+msgstr "Tipo de archivo “{0}” incorrecto para actualizar una fuente de datos. La operación de reemplazar/adjuntar solo se aplica a un archivo de extracción (.tde)"
 
 #:
 msgid "publish.errors.invalid_name_option"
@@ -2631,7 +2753,7 @@ msgstr "La opción {0} no es válida para publicar varios elementos"
 
 #:
 msgid "publish.errors.invalid_publish_file_type"
-msgstr "Tipo de archivo ''{0}'' incorrecto para la publicación, se esperaba un archivo .tde, .tds, .tdsx, .twb o .twbx"
+msgstr "Tipo de archivo “{0}” incorrecto para la publicación, se esperaba un archivo .tde, .tds, .tdsx, .twb o .twbx"
 
 #:
 msgid "publish.errors.mutually_exclusive_option"
@@ -2639,7 +2761,7 @@ msgstr "Usar solo uno de {0} o {1}"
 
 #:
 msgid "publish.errors.requires_resource_file"
-msgstr "El comando ''{0}'' requiere un libro de trabajo, una fuente de datos o un archivo de extracción"
+msgstr "El comando “{0}” requiere un libro de trabajo, una fuente de datos o un archivo de extracción"
 
 #:
 msgid "publish.errors.unexpected_server_response"
@@ -2723,7 +2845,7 @@ msgstr "Si el libro de trabajo contiene filtros de usuario, suplante al usuario 
 
 #:
 msgid "publish.status"
-msgstr "Publicando ''{0}'' en el servidor. Esta operación podría tardar varios minutos..."
+msgstr "Publicando “{0}” en el servidor. Esta operación podría tardar varios minutos..."
 
 #:
 msgid "publish.success"
@@ -2779,11 +2901,11 @@ msgstr "Realizar una actualización incremental (si es compatible)"
 
 #:
 msgid "refreshextracts.options.parent-project-path"
-msgstr "Ruta del elemento superior del proyecto que contiene las extracciones que se van a actualizar. Se debe especificar el nombre del proyecto con --project."
+msgstr "Ruta del elemento superior del proyecto que contiene las extracciones que se van a actualizar. Se debe especificar el nombre del proyecto con --project.."
 
 #:
 msgid "refreshextracts.options.project"
-msgstr "Nombre del proyecto que contiene el libro de trabajo o la fuente de datos. Solo es necesario si se especifica {0} o {1}. Si no se especifica, se usa el proyecto predeterminado ''{2}''"
+msgstr "Nombre del proyecto que contiene el libro de trabajo o la fuente de datos. Solo es necesario si se especifica {0} o {1}. Si no se especifica, se usa el proyecto predeterminado “{2}”"
 
 #:
 msgid "refreshextracts.options.synchronous"
@@ -2811,11 +2933,11 @@ msgstr "Actualizar las extracciones de un libro de trabajo o una fuente de datos
 
 #:
 msgid "refreshextracts.status_incremented"
-msgstr "Programando extracciones para {0} ''{1}'' para su incrementación..."
+msgstr "Programando extracciones para {0} “{1}” para su incrementación..."
 
 #:
 msgid "refreshextracts.status_refreshed"
-msgstr "Programando extracciones para {0} ''{1}'' para su actualización..."
+msgstr "Programando extracciones para {0} “{1}” para su actualización..."
 
 #:
 msgid "removeusers.options.users"
@@ -2831,7 +2953,7 @@ msgstr "Eliminando los usuarios mostrados en {0} del grupo {1}..."
 
 #:
 msgid "runschedule.errors.requires_schedule_name"
-msgstr "El comando ''{0}'' requiere un nombre de programa"
+msgstr "El comando “{0}” requiere un nombre de programa"
 
 #:
 msgid "runschedule.short_description"
@@ -2839,7 +2961,7 @@ msgstr "Ejecutar un programa"
 
 #:
 msgid "runschedule.status"
-msgstr "Ejecutando el programa ''{0}'' en el servidor..."
+msgstr "Ejecutando el programa “{0}” en el servidor..."
 
 #:
 msgid "materializeviews.short_description"
@@ -2847,11 +2969,11 @@ msgstr "Actualice y busque los sitios o libros de trabajo en la configuración d
 
 #:
 msgid "materializeviews.status.site"
-msgstr "Actualizando la configuración de las vistas materializadas para el sitio ''{0}''..."
+msgstr "Actualizando la configuración de las vistas materializadas para el sitio “{0}”..."
 
 #:
 msgid "materializeviews.status.workbook"
-msgstr "Actualizando la configuración de las vistas materializadas para el libro de trabajo ''{0}''..."
+msgstr "Actualizando la configuración de las vistas materializadas para el libro de trabajo “{0}”..."
 
 #:
 msgid "materializeviews.errors.invalid_workbook_arguments"
@@ -2863,55 +2985,55 @@ msgstr "El comando de vistas materializadas necesita un argumento de un ID de si
 
 #:
 msgid "materializeviews.errors.invalid_workbook_option"
-msgstr "Use ''{0}'' o ''{1}'' con  ''{2}''"
+msgstr "Use “{0}” o “{1}” con “{2}”"
 
 #:
 msgid "materializeviews.errors.invalid_project_path"
-msgstr "Use ''{1}'' con  ''{0}''"
+msgstr "Use “{1}” con “{0}”"
 
 #:
 msgid "materializeviews.errors.invalid_site_option"
-msgstr "Use ''{0}'' con  ''{1}''"
+msgstr "Use “{0}” con “{1}”"
 
 #:
 msgid "materializeviews.errors.site_mode_conflict"
-msgstr "Use ''{0}'' o ''{1}'' para cambiar el modo de las vistas materializadas en el sitio"
+msgstr "Use “{0}” o “{1}” para cambiar el modo de las vistas materializadas en el sitio"
 
 #:
 msgid "materializeviews.errors.site_not_updated"
-msgstr "El sitio ''{0}'' no está actualizado, solo los administradores del servidor pueden cambiar la configuración de las vistas materializadas"
+msgstr "El sitio “{0}” no está actualizado, solo los administradores del servidor pueden cambiar la configuración de las vistas materializadas"
 
 #:
 msgid "materializeviews.errors.invalid_argument_options_combination"
-msgstr "Use ''{0}'' o ''{1}'' para cambiar la configuración de las vistas materializadas"
+msgstr "Use “{0}” o “{1}” para cambiar la configuración de las vistas materializadas"
 
 #:
 msgid "materializeviews.options.materialize_now"
-msgstr "Use ''{0}'' para programar la materialización de un libro de trabajo determinado de manera inmediata"
+msgstr "Use “{0}” para programar la materialización de un libro de trabajo determinado de manera inmediata"
 
 #:
 msgid "materializeviews.options.project"
-msgstr "Use ''{0}'' para especificar un nombre de proyecto"
+msgstr "Use “{0}” para especificar un nombre de proyecto"
 
 #:
 msgid "materializeviews.options.parent_project_path"
-msgstr "Use ''{0}'' para especificar la ruta del proyecto primario a  ''{1}''"
+msgstr "Use “{0}” para especificar la ruta del proyecto principal a “{1}”"
 
 #:
 msgid "materializeviews.options.allow_workbook"
-msgstr "Use ''{0}'' para habilitar o deshabilitar las vistas materializadas del libro de trabajo"
+msgstr "Use “{0}” para habilitar o deshabilitar las vistas materializadas del libro de trabajo"
 
 #:
 msgid "materializeviews.options.allow_site"
-msgstr "Use ''{0}'' para habilitar o deshabilitar las vistas materializadas del sitio"
+msgstr "Use “{0}” para habilitar o deshabilitar las vistas materializadas del sitio"
 
 #:
 msgid "materializeviews.options.selected_workbooks"
-msgstr "Use ''{0}'' para habilitar determinados libros de trabajo del sitio, junto con la opción ''{1}''. Esta es la opción predeterminada"
+msgstr "Use “{0}” para habilitar determinados libros de trabajo del sitio, junto con la opción “{1}”. Esta es la opción predeterminada"
 
 #:
 msgid "materializeviews.options.all_workbooks"
-msgstr "Use ''{0}'' para habilitar todos los libros de trabajo del sitio, junto con la opción ''{1}''"
+msgstr "Use “{0}” para habilitar todos los libros de trabajo del sitio, junto con la opción “{1}”"
 
 #:
 msgid "session.auto_site_login"
@@ -2924,6 +3046,10 @@ msgstr "Alias de certificado: {0}"
 #:
 msgid "session.connecting"
 msgstr "Conectando al servidor..."
+
+#:
+msgid "session.connecting_to"
+msgstr "Conectando a la URL ({0}): {1}"
 
 #:
 msgid "session.continuing_session"
@@ -2955,7 +3081,7 @@ msgstr "No hay ninguna dirección de redireccionamiento en la respuesta de redir
 
 #:
 msgid "session.errors.no_sslcafile_found"
-msgstr "No se encontró ningún archivo de autoridad de certificación (CA) en estas ubicaciones: ''{0}''. El archivo de CA se utiliza para garantizar una comunicación segura con Tableau Server. Para obtener información sobre cómo crear un archivo de CA, consulte la Ayuda de Tableau Server. Para conectarse a Tableau Server sin validar su certificado SSL, use la marca --no-certcheck."
+msgstr "No se encontró ningún archivo de autoridad de certificación (CA) en estas ubicaciones: “{0}”. El archivo de CA se utiliza para garantizar una comunicación segura con Tableau Server. Para obtener información sobre cómo crear un archivo de CA, consulte la Ayuda de Tableau Server. Para conectarse a Tableau Server sin validar su certificado SSL, use la marca --no-certcheck."
 
 #:
 msgid "session.errors.script_no_password"
@@ -3015,7 +3141,7 @@ msgstr "No es miembro del sitio predeterminado. Seleccione un SITEID de los sigu
 
 #:
 msgid "session.not_site_member"
-msgstr "No es miembro del sitio ''{0}''. Seleccione un SITEID de los siguientes sitios:"
+msgstr "No es miembro del sitio “{0}”. Seleccione un SITEID de los siguientes sitios:"
 
 #:
 msgid "session.options.help"
@@ -3055,7 +3181,7 @@ msgstr "Usar la URL de Tableau Server especificada. Si no se especifica el proto
 
 #:
 msgid "session.options.site"
-msgstr "Utilice el sitio de Tableau Server. Especifique una cadena vacía ('''') para forzar el uso del sitio predeterminado"
+msgstr "Utilice el sitio de Tableau Server. Especifique una cadena vacía ("") para forzar el uso del sitio predeterminado"
 
 #:
 msgid "session.options.timeout"
@@ -3074,6 +3200,10 @@ msgid "session.password"
 msgstr "Contraseña:"
 
 #:
+msgid "session.redirecting"
+msgstr "redirigiendo a {0}"
+
+#:
 msgid "session.retrying_task"
 msgstr "Iniciando sesión de nuevo para volver a probar el comando original con una sesión nueva..."
 
@@ -3083,7 +3213,7 @@ msgstr "La sesión ha expirado. Se está cerrando la sesión..."
 
 #:
 msgid "session.site_list"
-msgstr "{0}{0}NAME: {1}{0}SITEID: ''{2}''"
+msgstr "{0}{0}NAME: {1}{0}SITEID: “{2}”"
 
 #:
 msgid "session.using-certificate"
@@ -3091,7 +3221,7 @@ msgstr "Usar el certificado de cliente para iniciar sesión"
 
 #:
 msgid "session.inferred_username"
-msgstr "Iniciando sesión con el usuario ''{0}'', ya que no se ha indicado ningún selector de nombre de usuario"
+msgstr "Iniciando sesión con el usuario “{0}”, ya que no se ha indicado ningún selector --username."
 
 #:
 msgid "sessiondata.errors.bad_api"
@@ -3107,15 +3237,15 @@ msgstr "La versión de tabcmd {0} (API {1}) no coincide con la versión de Table
 
 #:
 msgid "sessionoptions.errors.ambiguous_scheme"
-msgstr "Especifique ''{0}'' o ''{1}'' antes del nombre del servidor"
+msgstr "Especifique “{0}” o “{1}” antes del nombre del servidor"
 
 #:
 msgid "sessionoptions.errors.bad_password_file"
-msgstr "No se puede leer la contraseña del archivo ''{0}''"
+msgstr "No se puede leer la contraseña del archivo “{0}”"
 
 #:
 msgid "sessionoptions.errors.bad_protocol"
-msgstr "El protocolo ''{0}'' no es compatible"
+msgstr "El protocolo “{0}” no es compatible"
 
 #:
 msgid "sessionoptions.errors.bad_proxy_format"
@@ -3123,7 +3253,7 @@ msgstr "El formato de proxy no coincide con HOST:PUERTO: {0}"
 
 #:
 msgid "sessionoptions.errors.bad_timeout"
-msgstr "El argumento no numérico de {0} ''{1}'' se ha ignorado"
+msgstr "El argumento no numérico de {0} “{1}” se ha ignorado"
 
 #:
 msgid "set.description"
@@ -3131,11 +3261,11 @@ msgstr "Defina una configuración en el servidor. Use !setting para desactivar u
 
 #:
 msgid "set.errors.requires_setting_name"
-msgstr "El comando ''{0}'' requiere un nombre de configuración"
+msgstr "El comando “{0}” requiere un nombre de configuración"
 
 #:
 msgid "set.errors.single_setting_name"
-msgstr "El comando ''{0}'' toma un único nombre de configuración"
+msgstr "El comando “{0}” toma un único nombre de configuración"
 
 #:
 msgid "set.short_description"
@@ -3143,11 +3273,11 @@ msgstr "Defina una configuración en el servidor"
 
 #:
 msgid "setsetting.status"
-msgstr "Configurando ''{0}'' a {1}"
+msgstr "Configurando “{0}” a {1}"
 
 #:
 msgid "syncgroup.errors.server_admin"
-msgstr "El rol en el sitio mínimo de un grupo no se puede configurar como ''ServerAdministrator''."
+msgstr "El rol en el sitio mínimo de un grupo no se puede configurar como “ServerAdministrator”."
 
 #:
 msgid "syncgroup.options.role"
@@ -3155,11 +3285,11 @@ msgstr "Configura el rol predeterminado de todos los usuarios del grupo. Valores
 
 #:
 msgid "syncgroup.options.overwritesiterole"
-msgstr "Permite cambiar el Rol de sitio de un usuario a uno con menos privilegios si se usa --role. Esta operación anula el comportamiento predeterminado."
+msgstr "Permite cambiar el rol en el sitio de un usuario a uno con menos privilegios si se usa --role. Esta operación anula el comportamiento predeterminado."
 
 #:
 msgid "syncgroup.options.grantlicensemode"
-msgstr "Cuándo conceder a un usuario la licencia especificada en el grupo. Los valores legales son: {0}. Si no se aprueba ningún valor, se utilizará ''sincronizado'' como valor predeterminado."
+msgstr "Cuándo conceder a un usuario la licencia especificada en el grupo. Los valores legales son: {0}. Si no se aprueba ningún valor, se utilizará “on-sync” como valor predeterminado."
 
 #:
 msgid "syncgroup.short_description"
@@ -3171,11 +3301,11 @@ msgstr "Sincronizando el servidor con el grupo de Active Directory {0}..."
 
 #:
 msgid "syncgroup.options.sysadmin-type"
-msgstr "[Obsoleto. Usar --rol en su lugar.] Asigna [o elimina] el derecho de administrador a todos los usuarios del grupo. {0} puede ser: {1}, {2}, {3}, o {4}."
+msgstr "[Obsoleto. Usar --rol en su lugar.] Asigna [o elimina] el derecho de administrador a todos los usuarios del grupo. {0} puede ser: {1}, {2}, {3} o {4}."
 
 #:
 msgid "syncgroup.options.license"
-msgstr "[Obsoleto. Usar --rol en su lugar.] Configura el nivel de licencia predeterminado para todos los usuarios del grupo. {0} puede ser {1}, {2}, o {3}."
+msgstr "[Obsoleto. Usar --rol en su lugar.] Configura el nivel de licencia predeterminado para todos los usuarios del grupo. {0} puede ser {1}, {2} o {3}."
 
 #:
 msgid "syncgroup.options.publisher"
@@ -3183,11 +3313,11 @@ msgstr "[Obsoleto. Usar --rol en su lugar.] Asigna [o elimina] el derecho public
 
 #:
 msgid "tabcmd.mutually_exclusive_options"
-msgstr "No se puede especificar ''{0}'' y ''{1}'' en el mismo comando"
+msgstr "No se puede especificar “{0}” y “{1}” en el mismo comando"
 
 #:
 msgid "tabcmdparser.errors.ambiguous_option"
-msgstr "Opción ambigua ''{0}'' entre las opciones: {1}"
+msgstr "Opción ambigua “{0}” entre las opciones: {1}"
 
 #:
 msgid "tabcmdparser.warning.unexpected_dash"
@@ -3247,7 +3377,7 @@ msgstr "Cancelando los trabajos de actualización de miniaturas"
 
 #:
 msgid "upgradethumbnails.continue_promt"
-msgstr "¿Quiere continuar? Escriba 1 en caso afirmativo, 0 en caso negativo (1/0)"
+msgstr "¿Desea continuar? Escriba 1 en caso afirmativo, 0 en caso negativo (1/0)"
 
 #:
 msgid "upgradethumbnails.invalid_response"
@@ -3255,7 +3385,7 @@ msgstr "Respuesta no válida"
 
 #:
 msgid "validateidpmetadata.options.digest_algorithms"
-msgstr "Una lista de algoritmos de proceso separada por espacios. Valores legales de {0}: {1}. Si no se especifican, el servidor usa los valores de la configuración del servidor: {2}"
+msgstr "Una lista de algoritmos de proceso separada por espacios. Valores legales para {0}: {1}. Si no se especifican, el servidor usa los valores de la configuración del servidor: {2}"
 
 #:
 msgid "validateidpmetadata.options.min_allowed_rsa_key_size"
@@ -3271,6 +3401,101 @@ msgstr "Una lista separada mediante espacios de los nombres de los sitios en los
 
 #:
 msgid "validateidpmetadata.short_description"
-msgstr "Identifica sitios de Tableau Server que están configurados con IdP a través del algoritmo de proceso no seguro, SHA-a. Este comando también identifica IdP que utilizan certificados con un tamaño de clave RSA insuficiente o un tamaño de curva elíptico."
+msgstr "Identifica sitios de Tableau Server que están configurados con IdP a través del algoritmo de proceso no seguro, SHA-1. Este comando también identifica IdP que utilizan certificados con un tamaño de clave RSA insuficiente o un tamaño de curva elíptico."
 
+#:
+msgid "tabcmd.content.description"
+msgstr "Una descripción para el elemento."
+
+#:
+msgid "tabcmd.content.site_id"
+msgstr "Usado en la URL para identificar el sitio de forma única. Diferente del nombre de sitio."
+
+#:
+msgid "tabcmd.howto"
+msgstr "Ejecutar un comando específico"
+
+#:
+msgid "tabcmd.name"
+msgstr "Utilidad de línea de comandos de Tableau Server"
+
+#:
+msgid "tabcmd.options.project"
+msgstr "El nombre del proyecto"
+
+#:
+msgid "tabcmd.options.parent_project"
+msgstr "La ruta al proyecto que contiene el elemento de destino."
+
+#:
+msgid "tabcmd.options.workbook"
+msgstr "El nombre de la libro de trabajo de destino"
+
+#:
+msgid "tabcmd.options.datasource"
+msgstr "El nombre de la fuente de datos de destino"
+
+#:
+msgid "tabcmd.options.materializeviews"
+msgstr "Ajustar el rendimiento de este libro de trabajo al materializar los cálculos para todas las vistas, si está habilitado."
+
+#:
+msgid "tabcmd.options.dematerialize"
+msgstr "Ajustar el rendimiento de este libro de trabajo al deshabilitar los cálculos materializados para todas las vistas, si está habilitado."
+
+#:
+msgid "tabcmd.options.complete"
+msgstr "Requiere que todas las filas sean válidas para que los cambios sean correctos. (verdadero de forma predeterminada)"
+
+#:
+msgid "tabcmd.options.no_complete"
+msgstr "No requerir que todas las filas sean válidas para que los cambios sean correctos."
+
+#:
+msgid "tabcmd.options.users_file"
+msgstr "Archivo .csv que contiene una lista de usuarios, uno por línea"
+
+#:
+msgid "tabcmd.options.token_file"
+msgstr "Leer el token de acceso personal desde un archivo."
+
+#:
+msgid "tabcmd.options.token_name"
+msgstr "El nombre de tu token de acceso personal. Si se usa un token para iniciar sesión, este se requerirá al menos una vez para empezar la sesión."
+
+#:
+msgid "tabcmd.options.token_value"
+msgstr "El valor secreto de tu token de acceso personal para usarlo como autenticación. Necesita --la configuración del nombre del token."
+
+#:
+msgid "tabcmd.options.language.detailed"
+msgstr "Configurar el idioma que se va a usar. Los datos exportados se devolverán en este idioma/configuración regional.   Si no está configurado, el cliente usará la configuración regional de su sistema y el servidor usará la configuración regional de la cuenta de usuario"
+
+#:
+msgid "tabcmd.options.conflicts"
+msgstr "Tratar los conflictos entre los recursos como elementos creados correctamente, p.ej., el proyecto ya existe"
+
+#:
+msgid "tabcmd.options.log"
+msgstr "Usar el nivel de registro especificado. El nivel predeterminado es INFO."
+
+#:
+msgid "tabcmd.publish.options.restart"
+msgstr "[Obsoleto - no tiene efecto]"
+
+#:
+msgid "tabcmd.publish.options.tabbed.detailed"
+msgstr "Publicar con vistas tabuladas habilitadas. Cada hoja se convierte en una pestaña que los viewers pueden usar para navegar por el libro de trabajo."
+
+#:
+msgid "tabcmd.publish.options.append.detailed"
+msgstr "Anexar los datos que se van a publicar a una fuente de datos existente que tenga el mismo nombre. Si el anexo se configura como verdadero pero si la fuente de datos no existe ya, se producirá un error en la operación."
+
+#:
+msgid "tabcmd.publish.options.disable-uploader"
+msgstr "[Obsoleto - no tiene efecto]"
+
+#:
+msgid "tabcmd.refresh.options.bridge"
+msgstr "Actualizar fuente de datos a través de Tableau Bridge"
 

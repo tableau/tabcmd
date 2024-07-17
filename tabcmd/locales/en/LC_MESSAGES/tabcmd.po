@@ -6,89 +6,7 @@ msgstr ""
 "X-Generator: prop2po"
 "Project-Id-Version: None"
 "Language: en"
-# Copyright (C) YEAR Tableau Software
-
-
-# These outcome reporting lines were all returned from the server in clientxml
-# https://sourcegraph.prod.tableautools.com/teams/near/-/blob/workgroup/src/shared/libraries/tab-strings/res/localization/shared_wg_en.properties
-# how much of this can be replaced by server responses?
-
-msgid "tabcmd.result.already_exists"
-msgstr "{} called ''{}'' already exists"
-
-msgid "tabcmd.result.failed.delete.group"
-msgstr "Error deleting group from server"
-
-msgid "tabcmd.result.success.create_user"
-msgstr "Successfully created user: {}"
-
-msgid "tabcmd.report.users_added"
-msgstr "Number of users added: {}"
-
-msgid "tabcmd.report.errors"
-msgstr "Error details: \n{}"
-
-msgid "tabcmd.result.success.parsed_users"
-msgstr "Successfully parsed {} users"
-
-msgid "tabcmd.result.success.delete_user"
-msgstr "Successfully deleted user from site: {}"
-
-msgid "tabcmd.result.success.user_actions"
-msgstr "Successfully {0} {1} for group {2}"
-
-msgid "tabcmd.result.failure.user"
-msgstr "Error, skipping user {}"
-
-msgid "tabcmd.report.error.user_csv.too_many_columns"
-msgstr "The file contains {} columns, but there are only {} valid columns in a user import csv file"
-
-msgid "tabcmd.report.error.user_csv.at_char"
-msgstr "If a user name includes an @ character that represents anything other than a domain separator, "
-                    "you need to refer to the symbol using the hexadecimal format: \\0x40"
-
-msgid "tabcmd.report.error.user.no_spaces_in_username"
-msgstr "Username cannot contain spaces"
-
-msgid "tabcmd.report.error.generic_attribute"
-msgstr "Invalid value for {0}: {1}"
-
-msgid "tabcmd.report.error.publish_samples.expected_project"
-msgstr "publishsamples expects the specified project to exist already"
-
-msgid "tabcmd.result.failure.publish_samples"
-msgstr "Failed publishing samples to project"
-
-msgid "tabcmd.launching"
-msgstr "======================= Launching command ======================="
-
-msgid "tabcmd.find.group"
-msgstr "Finding group ''{}'' on server..."
-
-# Each actual command has a status line in translation
-
-msgid "tabcmd.add.users.to_site"
-msgstr "===== Adding users listed in {0} to {1}..."
-
-msgid "tabcmd.delete.users.from_server"
-msgstr "Removing users listed in {0} from the server..."
-
-msgid "tabcmd.find.parent_project"
-msgstr "===== Identifying parent project '{}' on the server..."
-
-msgid "tabcmd.get.extension.not_found"
-msgstr "You must specify a file type in the url or filename"
-
-msgid "tabcmd.run_schedule.options.schedule"
-msgstr "Name of the schedule to run"
-msgid ""
-msgstr ""
-"MIME-Version: 1.0"
-"Content-Type: text/plain; charset=utf-8"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: prop2po"
-"Project-Id-Version: None"
-"Language: en"
+# Copyright (C) YEAR Tableau Software 
 #:
 msgid "permissions.labels.capabilities.read"
 msgstr "View:"
@@ -246,6 +164,10 @@ msgid "permissions.labels.capabilities.explain_data"
 msgstr "Run Explain Data:"
 
 #:
+msgid "permissions.labels.capabilities.vizql_data_api_access"
+msgstr "API Access:"
+
+#:
 msgid "permissions.labels.roles.wb_view"
 msgstr "View"
 
@@ -327,11 +249,11 @@ msgstr "{0} KB"
 
 #:
 msgid "errors.argument.flow_description.too_long"
-msgstr "Flow description is too long ({0} characters).  It must be shorter than {1} characters:\n{2}"
+msgstr "Flow description is too long ({0} characters).  It must be shorter than {1} characters:  {2}"
 
 #:
 msgid "errors.argument.workbook_name.too_long"
-msgstr "Workbook name is too long ({0} characters).  It must be shorter than {1} characters:\n{2}"
+msgstr "Workbook name is too long ({0} characters).  It must be shorter than {1} characters:  {2}"
 
 #:
 msgid "errors.argument.workbook_name.empty"
@@ -339,15 +261,15 @@ msgstr "Workbook name is empty."
 
 #:
 msgid "errors.argument.workbook_description.too_long"
-msgstr "Workbook description is too long ({0} characters).  It must be shorter than {1} characters:\n{2}"
+msgstr "Workbook description is too long ({0} characters).  It must be shorter than {1} characters:  {2}"
 
 #:
 msgid "errors.argument.worksheet_name.too_long"
-msgstr "Worksheet name is too long ({0} characters). It must be shorter than {1} characters:\n{2}"
+msgstr "Worksheet name is too long ({0} characters). It must be shorter than {1} characters:  {2}"
 
 #:
 msgid "errors.argument.datasource_name.too_long"
-msgstr "Datasource name is too long ({0} characters). It must be shorter than {1} characters:\n{2}"
+msgstr "Datasource name is too long ({0} characters). It must be shorter than {1} characters:  {2}"
 
 #:
 msgid "errors.argument.datasource_name.empty"
@@ -355,19 +277,27 @@ msgstr "Datasource name is empty."
 
 #:
 msgid "errors.argument.datasource_description.too_long"
-msgstr "Datasource description is too long ({0} characters). It must be shorter than {1} characters:\n{2}"
+msgstr "Datasource description is too long ({0} characters). It must be shorter than {1} characters:  {2}"
 
 #:
 msgid "errors.argument.dataconnection_column.too_long"
-msgstr "DataConnection column {0} is too long ({1} characters).  It must be shorter than {2} characters:\n{3}"
+msgstr "DataConnection column {0} is too long ({1} characters).  It must be shorter than {2} characters:  {3}"
 
 #:
 msgid "errors.argument.tag.too_long"
-msgstr "Tag is too long ({0} characters). It must be shorter than {1} characters:\n{2}"
+msgstr "Tag is too long ({0} characters). It must be shorter than {1} characters:  {2}"
 
 #:
 msgid "errors.argument.workbook_file.missing_or_empty"
 msgstr "Workbook file is missing or empty."
+
+#:
+msgid "errors.argument.file.size.too_large"
+msgstr "File {0} is too large. Files larger than {1} MB decompressed size are not permitted. Please create an extract to proceed with publishing."
+
+#:
+msgid "errors.argument.twb_or_tds_file.missing"
+msgstr "twb or tds file is missing from the archive."
 
 #:
 msgid "errors.argument.internal"
@@ -411,23 +341,23 @@ msgstr "You must be an ''Interactor'' to publish a data source."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite"
-msgstr "A data source named ''{0}'' already exists in project ''{1}''. You do not have permissions to overwrite it."
+msgstr "A data source named "{0}" already exists in project "{1}". You do not have permissions to overwrite it."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_personal_space"
-msgstr "A data source named ''{0}'' already exists in Personal Space. You do not have permissions to overwrite it."
+msgstr "A data source named "{0}" already exists in Personal Space. You do not have permissions to overwrite it."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short"
-msgstr "A data source named ''{0}'' already exists in project ''{1}''."
+msgstr "A data source named "{0}" already exists in project "{1}"."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "A datasource named ''{0}'' already exists in Personal Space."
+msgstr "A datasource named "{0}" already exists in Personal Space."
 
 #:
 msgid "errors.permissions.publish.datasource.non_existent"
-msgstr "Data source ''{0}'' does not exist."
+msgstr "Data source "{0}" does not exist."
 
 #:
 msgid "errors.permissions.publish.datasource.general"
@@ -443,11 +373,11 @@ msgstr "Sorry, you do not have permission to publish to this project."
 
 #:
 msgid "errors.permissions.publish.project.non_existent"
-msgstr "Project ''{0}'' does not exist."
+msgstr "Project "{0}" does not exist."
 
 #:
 msgid "errors.permissions.publish.project.not_writable"
-msgstr "You do not have permission to write to the project ''{0}''."
+msgstr "You do not have permission to write to the project "{0}"."
 
 #:
 msgid "errors.permissions.publish.project.unspecified"
@@ -455,7 +385,7 @@ msgstr "You must specify a project"
 
 #:
 msgid "errors.permissions.publish.workbook.disabled"
-msgstr "The workbook ''{0}'' is disabled."
+msgstr "The workbook "{0}" is disabled."
 
 #:
 msgid "errors.permissions.publish.workbook.general"
@@ -467,19 +397,19 @@ msgstr "A workbook with this name exists in the Personal Space you are publishin
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite"
-msgstr "A workbook named ''{0}'' already exists in project ''{1}''. You do not have permissions to overwrite it."
+msgstr "A workbook named "{0}" already exists in project "{1}". You do not have permissions to overwrite it."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_personal_space"
-msgstr "A workbook named ''{0}'' already exists in Personal Space. You do not have permissions to overwrite it."
+msgstr "A workbook named "{0}" already exists in Personal Space. You do not have permissions to overwrite it."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short"
-msgstr "A workbook named ''{0}'' already exists in project ''{1}''."
+msgstr "A workbook named "{0}" already exists in project "{1}"."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
-msgstr "A workbook named ''{0}'' already exists in Personal Space."
+msgstr "A workbook named "{0}" already exists in Personal Space."
 
 #:
 msgid "errors.reportable.impersonation.group_and_user"
@@ -491,11 +421,19 @@ msgstr "User ''{0}'' does not exist."
 
 #:
 msgid "errors.reportable.impersonation.group_not_found"
-msgstr "Group ''{0}'' does not exist. "
+msgstr "Group ''{0}'' does not exist."
 
 #:
 msgid "errors.public.validation.hasextract"
 msgstr "Workbooks saved to Tableau Public must use active Tableau extracts. Right-click the data source and select Use Extract before publishing. The data source, ''{0}'', is not an active extract."
+
+#:
+msgid "errors.public.validation.storage_quota_exceeded"
+msgstr "The content you are trying to publish will exceed the maximum capacity of your account. Please delete some contents to free up space and try again."
+
+#:
+msgid "errors.public.validation.invalid_archive_file"
+msgstr "The workbook you are attempting to publish is not a valid workbook."
 
 #:
 msgid "errors.publish.dataserver_datasource_not_found"
@@ -506,8 +444,32 @@ msgid "errors.publish.datasource_update_mode"
 msgstr "Unknown update mode: ''{0}''."
 
 #:
-msgid "errors.publish.workbook.concurrent_update"
-msgstr "A workbook with the same name is currently being published or modified. Wait until the task completes before you try again."
+msgid "errors.publish.fileupload.invalid_checksum"
+msgstr "Invalid checksum value provided."
+
+#:
+msgid "errors.publish.fileupload.invalid_hash_algorithm"
+msgstr "Hash algorithm is not supported or disabled."
+
+#:
+msgid "errors.publish.fileupload.invalid_offset"
+msgstr "Append to file upload with an offset that does not match recorded file size."
+
+#:
+msgid "errors.publish.fileupload.concurrent_write"
+msgstr "Could not acquire exclusive lock on the file as it is locked by another upload."
+
+#:
+msgid "errors.publish.fileupload.flushing_file_buffer"
+msgstr "Failed to flush file buffers during upload."
+
+#:
+msgid "errors.publish.fileupload.read_or_write"
+msgstr "Failed to read from client or write to the uploaded file."
+
+#:
+msgid "errors.publish.fileupload.concurrent_update"
+msgstr "A content with the same name is currently being uploaded or modified. Wait until the task completes before you try again."
 
 #:
 msgid "errors.publish.workbook.restricted"
@@ -524,6 +486,22 @@ msgstr "The data source contains a connection type that is not allowed on this s
 #:
 msgid "errors.publish.datasource.connection_check"
 msgstr "{0} failed to establish a connection to your datasource."
+
+#:
+msgid "errors.publish.file.connection.unauthorized"
+msgstr "This flow includes file input connections that are blocked by your Site Administrator. To publish flows, all input connections must be Tableau extracts already published on Tableau Cloud."
+
+#:
+msgid "errors.publish.flow.connection_check"
+msgstr "Failed to publish the flow "{0}". The server can''t connect to the data source type: "{1}". Verify that the data source is supported and that the driver or connector plugin for the data source is installed."
+
+#:
+msgid "errors.publish.workbook.requested_extract_encryption_on_server_with_disabled_encryption"
+msgstr "The workbook cannot be published with an encrypted extract. Extract encryption is disabled on this server. You must publish the workbook with an unencrypted extract."
+
+#:
+msgid "errors.publish.datasource.requested_extract_encryption_on_server_with_disabled_encryption"
+msgstr "The data source cannot be published as an encrypted extract. Extract encryption is disabled on this server. You must publish the extract unencrypted."
 
 #:
 msgid "errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption"
@@ -579,7 +557,7 @@ msgstr "Embed password for data source"
 
 #:
 msgid "errors.publish.workbook.google_no_embedded_credentials"
-msgstr "This workbook contains a {0} data source which requires embedded credentials. To save as another workbook, select ''{1}''."
+msgstr "This workbook contains a {0} data source which requires embedded credentials. To save as another workbook, select "{1}"."
 
 #:
 msgid "errors.publish.datasource.google_no_embedded_credentials"
@@ -587,7 +565,7 @@ msgstr "This data source contains a {0} connection which requires embedded crede
 
 #:
 msgid "errors.publish.datasource.federated_oauth_datasource_failed"
-msgstr "Credentials for one or more connections in your data source have expired. Delete the saved credentials for this data source on your Account Settings page on Tableau Server or Tableau Online, and then connect to the data source again."
+msgstr "Credentials for one or more connections in your data source have expired. Delete the saved credentials for this data source on your Account Settings page on Tableau Server or Tableau Cloud, and then connect to the data source again."
 
 #:
 msgid "errors.publish.workbook.missing_oauth_credential"
@@ -604,10 +582,6 @@ msgstr "Desktop version ''{0}'', Server document version ''{1}''."
 #:
 msgid "errors.publish.datasource.managed_keychain.unique_cv_suggestions"
 msgstr "Publish failed because of a conflict. Please resubmit your change."
-
-#:
-msgid "errors.publish.permissions_are_locked"
-msgstr "Permissions are locked in the project you are publishing to. To publish this workbook, use the default permissions and try again."
 
 #:
 msgid "errors.publish.datasource.not.found"
@@ -638,6 +612,18 @@ msgid "errors.publish.async.serialization"
 msgstr "Could not serialize publishing job status error"
 
 #:
+msgid "errors.publish.only_extract_files_are_allowed.message"
+msgstr "Can''t Publish to Tableau Server"
+
+#:
+msgid "errors.publish.only_extract_files_are_allowed.details"
+msgstr "The file {0} cannot be uploaded because site administrator has blocked files of this type. Convert it to an extract and try again."
+
+#:
+msgid "errors.publish.validation.invalid_zip_file"
+msgstr "The workbook or datasource archive you are attempting to publish is not valid"
+
+#:
 msgid "errors.permissions.view.datasources"
 msgstr "You must be an ''Interactor'' to view the list of data sources."
 
@@ -648,6 +634,10 @@ msgstr "''{0}'' is not a valid OAuth connection type."
 #:
 msgid "errors.xmlapi.bad_request"
 msgstr "Bad request"
+
+#:
+msgid "errors.xmlapi.payload_too_large"
+msgstr "Payload too large"
 
 #:
 msgid "errors.xmlapi.unauthorized"
@@ -698,10 +688,6 @@ msgid "errors.xmlapi.site_locked"
 msgstr "This site has been locked. Signing in is not allowed at this time."
 
 #:
-msgid "errors.xmlapi.permission_modification"
-msgstr "Cannot publish with modified permissions"
-
-#:
 msgid "errors.xmlapi.update_desktop"
 msgstr "To open workbooks created by other authors, please download the latest version of Tableau Desktop Public Edition from http://public.tableau.com/"
 
@@ -714,8 +700,20 @@ msgid "errors.xmlapi.throttled.detail"
 msgstr "Too many requests for ''{0}''. Please retry after {1}."
 
 #:
+msgid "errors.xmlapi.personal_space_quota_exceeded.summary"
+msgstr "Can''t Publish to Personal Space"
+
+#:
+msgid "errors.xmlapi.personal_space_quota_exceeded.detail"
+msgstr "Delete or move existing Personal Space content then try publishing again."
+
+#:
 msgid "datasource.publish.check.unpublishable"
 msgstr "Could not publish data source."
+
+#:
+msgid "datasource.publish.check.unpublishable.table_extension_extract_required"
+msgstr "Table extensions cannot be published with connections that require an extract."
 
 #:
 msgid "datasource.publish.check.publishable.extract_required"
@@ -832,6 +830,14 @@ msgstr "Finished creation of extracts (new extract id:{0}) for data source ''{1}
 #:
 msgid "extracts.status.finished.remove.datasource"
 msgstr "Finished change extract to live for data source ''{1}''"
+
+#:
+msgid "extracts.status.finished.create.vconn"
+msgstr "Finished creation of extracts (new extract id:{0}) for Virtual Connection ''{1}''"
+
+#:
+msgid "extracts.status.finished.refresh.vconn"
+msgstr "Finished refresh of extracts (new extract id:{0}) for Virtual Connection ''{1}''"
 
 #:
 msgid "extracts.status.encryption_key"
@@ -1014,6 +1020,14 @@ msgid "datasources.messages.load_error"
 msgstr "Unable to load Data Source {0}"
 
 #:
+msgid "workbooks.new_workbook.default_sheet_name"
+msgstr "Sheet {0}"
+
+#:
+msgid "workbooks.edit_datasource.default_sheet_name"
+msgstr "Scratchpad"
+
+#:
 msgid "metrics.new_metric.default_name"
 msgstr "New Metric"
 
@@ -1074,6 +1088,14 @@ msgid "subscriptions.warning_deprecated_type"
 msgstr "deprecated"
 
 #:
+msgid "subscriptions.warning_error_content_type"
+msgstr "Unknown content type"
+
+#:
+msgid "subscriptions.warning_error_type"
+msgstr "unknown warning type"
+
+#:
 msgid "subscriptions.warning_extract_refresh_type"
 msgstr "extract refresh failed"
 
@@ -1087,11 +1109,43 @@ msgstr "The following data quality warnings affect this {0}."
 
 #:
 msgid "subscriptions.warning_introduction_view"
-msgstr "For more information, see the Data Details tab in the view"
+msgstr "For more information, see the Data Details pane in the view"
 
 #:
 msgid "subscriptions.warning_introduction_workbook"
 msgstr "For more information, see the workbook page"
+
+#:
+msgid "subscriptions.warning_localized_column"
+msgstr "Column"
+
+#:
+msgid "subscriptions.warning_localized_datasource"
+msgstr "Data source"
+
+#:
+msgid "subscriptions.warning_localized_database"
+msgstr "Database"
+
+#:
+msgid "subscriptions.warning_localized_flow"
+msgstr "Flow"
+
+#:
+msgid "subscriptions.warning_localized_table"
+msgstr "Table"
+
+#:
+msgid "subscriptions.warning_localized_vconn"
+msgstr "Connection"
+
+#:
+msgid "subscriptions.warning_lowercase_column"
+msgstr "column"
+
+#:
+msgid "subscriptions.warning_lowercase_column_plural"
+msgstr "columns"
 
 #:
 msgid "subscriptions.warning_maintenance_type"
@@ -1110,6 +1164,18 @@ msgid "subscriptions.warning_sensitve_type"
 msgstr "sensitive data"
 
 #:
+msgid "subscriptions.warning_sensitive_intro_count"
+msgstr "Sensitive({0})"
+
+#:
+msgid "subscriptions.warning_sensitive_intro_view"
+msgstr "This view uses sensitive data."
+
+#:
+msgid "subscriptions.warning_sensitive_intro_workbook"
+msgstr "This workbook uses sensitive data."
+
+#:
 msgid "subscriptions.warning_severe"
 msgstr "Important data quality warning"
 
@@ -1122,8 +1188,8 @@ msgid "subscriptions.warning_standard"
 msgstr "Data quality warning"
 
 #:
-msgid "subscriptions.warning_error_type"
-msgstr "unknown warning type"
+msgid "subscriptions.warning_standard_plural"
+msgstr "Data quality warnings"
 
 #:
 msgid "subscriptions.warning_warning_type"
@@ -1170,8 +1236,8 @@ msgid "errors.subscriptions.pdf_render_failed"
 msgstr "The PDF attachment for this email could not be properly rendered."
 
 #:
-msgid "errors.subscriptions.pdf_limit_exceeded"
-msgstr "The generated PDF is larger than the {0}MB size limit and could not be attached to this email."
+msgid "errors.subscriptions.content_limit_exceeded"
+msgstr "The generated content is larger than the {0}MB size limit and could not be attached to this email."
 
 #:
 msgid "errors.subscriptions.attachments_not_enabled"
@@ -1397,6 +1463,9 @@ msgstr "Workbook not found"
 msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
 msgstr "No axis found for field {0}"
 
+#:
+msgid "dataalerts.failure.error.paneDescriptorNotFound"
+msgstr "{0}"
 
 #:
 msgid "dataalerts.failure.error.unsupportedComparisonExpression"
@@ -1504,7 +1573,7 @@ msgstr "Your metric isn''t able to refresh, so the metric data isn''t updating. 
 
 #:
 msgid "metricsservices.failure.status"
-msgstr "Your metric ''{0}'' isn''t refreshing"
+msgstr "Your metric "{0}" isn''t refreshing"
 
 #:
 msgid "metricsservices.failure.suspend.email.explanation"
@@ -1516,7 +1585,7 @@ msgstr "You are receiving this email at {0} because your metric refresh was susp
 
 #:
 msgid "metricsservices.failure.suspend.email.status"
-msgstr "Refresh for your metric ''{0}'' has been suspended"
+msgstr "Refresh for your metric "{0}" has been suspended"
 
 #:
 msgid "metricsservices.failure.suspend.email.subject"
@@ -1560,7 +1629,7 @@ msgstr "The refresh for your metric is working again, so it will check for updat
 
 #:
 msgid "metricsservices.success.status"
-msgstr "Refresh for your metric ''{0}'' has resumed"
+msgstr "Refresh for your metric "{0}" has resumed"
 
 #:
 msgid "errors.staticimages.generic"
@@ -1703,14 +1772,6 @@ msgid "flows.drafts.default_name"
 msgstr "New Flow"
 
 #:
-msgid "content_type.group"
-msgstr "Group"
-
-#:
-msgid "content_type.user"
-msgstr "User"
-
-#:
 msgid "content_type.project"
 msgstr "Project"
 
@@ -1743,10 +1804,6 @@ msgid "content_type.visualization"
 msgstr "Visualization"
 
 #:
-msgid "content_type.extract"
-msgstr "Extract"
-
-#:
 msgid "content_type.askdata_visualization"
 msgstr "Ask Data Visualization"
 
@@ -1771,6 +1828,14 @@ msgid "upgradethumbnails.status.server_stopped"
 msgstr "Server Response: Stopped %d jobs"
 
 #:
+msgid "dataquality.author.extract_refresh_monitoring"
+msgstr "extract refresh monitoring"
+
+#:
+msgid "dataquality.author.flow_run_monitoring"
+msgstr "flow run monitoring"
+
+#:
 msgid "dataquality.message.refresh_failed"
 msgstr "Refresh failed: {0}"
 
@@ -1785,6 +1850,38 @@ msgstr "Next scheduled: {0}"
 #:
 msgid "dataquality.message.flow_run_output_steps_failed"
 msgstr "{0}/{1} output steps failed to run"
+
+#:
+msgid "label_value.description.certified"
+msgstr "This asset is trusted and recommended."
+
+#:
+msgid "label_value.description.deprecated"
+msgstr "This asset is no longer maintained and shouldn''t be used."
+
+#:
+msgid "label_value.description.extract_refresh_failure"
+msgstr "This asset''s most recent extract refresh failed."
+
+#:
+msgid "label_value.description.flow_run_failure"
+msgstr "This flow''s most recent run failed."
+
+#:
+msgid "label_value.description.maintenance"
+msgstr "This asset is undergoing maintenance."
+
+#:
+msgid "label_value.description.sensitive_data"
+msgstr "This asset contains sensitive information."
+
+#:
+msgid "label_value.description.stale"
+msgstr "This asset is outdated."
+
+#:
+msgid "label_value.description.warning"
+msgstr "This asset has a general quality issue."
 
 #:
 msgid "importcsvsummary.error.details"
@@ -1835,6 +1932,18 @@ msgid "importcsvsummary.error.ad.user_not_found"
 msgstr "AD user not found ''{0}''"
 
 #:
+msgid "importcsvsummary.error.domain_not_found"
+msgstr "Invalid domain ''{0}''"
+
+#:
+msgid "importcsvsummary.error.cannot_create_user_identity"
+msgstr "Cannot create user identity for user ''{0}''"
+
+#:
+msgid "importcsvsummary.error.invalid_identity_pool_name"
+msgstr "Invalid Identity Pool name ''{0}''"
+
+#:
 msgid "importcsvsummary.error.too_many_errors"
 msgstr "Too many errors encountered in CSV file"
 
@@ -1855,18 +1964,33 @@ msgid "askdata.title"
 msgstr "Ask Data"
 
 #:
+msgid "slack.app.upgrade.email.notification.subject"
+msgstr "Tableau App for Slack Update"
+
+#:
+msgid "slack.app.upgrade.email.notification.introduction"
+msgstr "An update is available for the Tableau app for Slack. Tableau recommends updating the app to maintain app performance and to use new Tableau Cloud features. Look for new features and changes in <a styl"
+
+#:
+msgid "slack.app.upgrade.email.notification.action"
+msgstr "To update the site''s connection to the Tableau for Slack app, see <a styl"
+
+#:
+msgid "slack.app.upgrade.email.notification.steps"
+msgstr "This service notification has been published by Tableau Cloud."
+
+#:
+msgid "slack.app.upgrade.email.notification.reason"
+msgstr "You are receiving this notification because you are an administrator of a Tableau Cloud site that is connected to Slack."
+
+#:
+msgid "slack.app.upgrade.email.notification.footer.privacy"
+msgstr "Read our <a styl"
+
+#:
 msgid "unifiedconsumption.tcrm.folders.private"
 msgstr "My Private App"
 
-
-msgid ""
-msgstr ""
-"MIME-Version: 1.0"
-"Content-Type: text/plain; charset=utf-8"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: prop2po"
-"Project-Id-Version: None"
-"Language: en"
 #:
 msgid "commandlineutils.errors.bad_value"
 msgstr "Option ''{0}'' has a bad value of ''{1}''. Must be one of: {2}"
@@ -2145,7 +2269,7 @@ msgstr "Create site ''{0}'' on the server..."
 
 #:
 msgid "createsiteusers.options.auth-type"
-msgstr "Assigns the authentication type for all users in the CSV file. For Tableau Online, {0} may be {1} (default) or {2}. For Tableau Server, {0} may be Local (default) or {2}."
+msgstr "Assigns the authentication type for all users in the CSV file. For Tableau Cloud, {0} may be {1} (default) or {2}. For Tableau Server, {0} may be Local (default) or {2}."
 
 #:
 msgid "createsiteusers.description"
@@ -2502,6 +2626,14 @@ msgstr "Export the data or image of a view from the server"
 #:
 msgid "export.status"
 msgstr "Requesting ''{0}'' from the server..."
+
+#:
+msgid "export.status.writing"
+msgstr "Writing response to ''{0}''"
+
+#:
+msgid "export.status.error"
+msgstr "Error occurred while writing to a file :"
 
 #:
 msgid "export.success"
@@ -2928,6 +3060,10 @@ msgid "session.connecting"
 msgstr "Connecting to the server..."
 
 #:
+msgid "session.connecting_to"
+msgstr "Connecting to url ({0}): {1}"
+
+#:
 msgid "session.continuing_session"
 msgstr "Continuing previous session"
 
@@ -3074,6 +3210,10 @@ msgstr "Use the specified Tableau Server user name"
 #:
 msgid "session.password"
 msgstr "Password:"
+
+#:
+msgid "session.redirecting"
+msgstr "redirecting to {0}"
 
 #:
 msgid "session.retrying_task"
@@ -3275,4 +3415,99 @@ msgstr "A space-separated list of site names on which to perform certificate val
 msgid "validateidpmetadata.short_description"
 msgstr "Identifies Tableau Server sites that are configured with IdPs using the insecure digest algorithm, SHA-1. This command also identifies IdPs that are using certificates with an insufficient RSA key size or elliptic curve size."
 
+#:
+msgid "tabcmd.content.description"
+msgstr "A description for the item."
+
+#:
+msgid "tabcmd.content.site_id"
+msgstr "Used in the URL to uniquely identify the site. Different from the site name."
+
+#:
+msgid "tabcmd.howto"
+msgstr "Run a specific command"
+
+#:
+msgid "tabcmd.name"
+msgstr "Tableau Server Command Line Utility"
+
+#:
+msgid "tabcmd.options.project"
+msgstr "The name of the project"
+
+#:
+msgid "tabcmd.options.parent_project"
+msgstr "The path to the project that contains the target item."
+
+#:
+msgid "tabcmd.options.workbook"
+msgstr "The name of the target workbook"
+
+#:
+msgid "tabcmd.options.datasource"
+msgstr "The name of the target data source"
+
+#:
+msgid "tabcmd.options.materializeviews"
+msgstr "Adjust performance of this workbook by materializing calculations for all views, if enabled."
+
+#:
+msgid "tabcmd.options.dematerialize"
+msgstr "Adjust performance of this workbook by disable materialized calculations for all views, if enabled."
+
+#:
+msgid "tabcmd.options.complete"
+msgstr "Require that all rows be valid for any change to succeed. (Defaults to true)"
+
+#:
+msgid "tabcmd.options.no_complete"
+msgstr "Do not require that all rows be valid for any change to succeed."
+
+#:
+msgid "tabcmd.options.users_file"
+msgstr "CSV file that contains a list of users, one per line"
+
+#:
+msgid "tabcmd.options.token_file"
+msgstr "Read the Personal Access Token from a file."
+
+#:
+msgid "tabcmd.options.token_name"
+msgstr "The name of your Personal Access Token. If using a token to sign in, this is required at least once to begin session."
+
+#:
+msgid "tabcmd.options.token_value"
+msgstr "The secret value of your Personal Access Token to use for authentication. Requires --token-name to be set."
+
+#:
+msgid "tabcmd.options.language.detailed"
+msgstr "Set the language to use. Exported data will be returned in this lang/locale.   If not set, the client will use your computer locale, and the server will use your user account locale"
+
+#:
+msgid "tabcmd.options.conflicts"
+msgstr "Treat resource conflicts as item creation success e.g. project already exists"
+
+#:
+msgid "tabcmd.options.log"
+msgstr "Use the specified logging level. The default level is INFO."
+
+#:
+msgid "tabcmd.publish.options.restart"
+msgstr "[Deprecated - has no effect]"
+
+#:
+msgid "tabcmd.publish.options.tabbed.detailed"
+msgstr "Publish with tabbed views enabled. Each sheet becomes a tab that viewers can use to navigate through the workbook."
+
+#:
+msgid "tabcmd.publish.options.append.detailed"
+msgstr "Append the data being published to an existing data source that has the same name. If append is set to true but a data source does not already exist, the operation fails."
+
+#:
+msgid "tabcmd.publish.options.disable-uploader"
+msgstr "[Deprecated - has no effect]"
+
+#:
+msgid "tabcmd.refresh.options.bridge"
+msgstr "Refresh datasource through Tableau Bridge"
 

@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: prop2po"
 "Project-Id-Version: None"
 "Language: zh"
+# Copyright (C) YEAR Tableau Software 
 #:
 msgid "permissions.labels.capabilities.read"
 msgstr "视图:"
@@ -244,11 +245,11 @@ msgstr "{0} KB"
 
 #:
 msgid "errors.argument.flow_description.too_long"
-msgstr "流程描述过长({0} 个字符)。其长度必须小于 {1} 个字符:{2}"
+msgstr "流程描述过长({0} 个字符)。 其长度必须小于 {1} 个字符:  {2}"
 
 #:
 msgid "errors.argument.workbook_name.too_long"
-msgstr "工作簿名称过长(最多为 {0} 个字符)。其长度必须小于 {1} 个字符:{2}"
+msgstr "工作簿名称过长(最多为 {0} 个字符)。 其长度必须小于 {1} 个字符:  {2}"
 
 #:
 msgid "errors.argument.workbook_name.empty"
@@ -256,15 +257,15 @@ msgstr "工作簿名称为空。"
 
 #:
 msgid "errors.argument.workbook_description.too_long"
-msgstr "工作簿描述过长({0} 个字符)。其长度必须小于 {1} 个字符:{2}"
+msgstr "工作簿描述过长({0} 个字符)。 其长度必须小于 {1} 个字符:  {2}"
 
 #:
 msgid "errors.argument.worksheet_name.too_long"
-msgstr "工作表名称过长(最多为 {0} 个字符)。其长度必须小于 {1} 个字符:{2}"
+msgstr "工作表名称过长(最多为 {0} 个字符)。其长度必须小于 {1} 个字符:  {2}"
 
 #:
 msgid "errors.argument.datasource_name.too_long"
-msgstr "数据源名称过长({0} 个字符)。其长度必须小于 {1} 个字符:{2}"
+msgstr "数据源名称过长({0} 个字符)。其长度必须小于 {1} 个字符:  {2}"
 
 #:
 msgid "errors.argument.datasource_name.empty"
@@ -272,23 +273,31 @@ msgstr "数据源名称为空。"
 
 #:
 msgid "errors.argument.datasource_description.too_long"
-msgstr "数据源描述过长({0} 个字符)。其长度必须小于 {1} 个字符:{2}"
+msgstr "数据源描述过长({0} 个字符)。其长度必须小于 {1} 个字符:  {2}"
 
 #:
 msgid "errors.argument.dataconnection_column.too_long"
-msgstr "DataConnection column {0} is too long ({1} characters).  It must be shorter than {2} characters:{3}"
+msgstr "DataConnection 列 {0} 过长({1} 个字符)。 其长度必须小于 {2} 个字符:  {3}"
 
 #:
 msgid "errors.argument.tag.too_long"
-msgstr "标记过长({0} 个字符)。其长度必须小于 {1} 个字符:{2}"
+msgstr "标记过长({0} 个字符)。其长度必须小于 {1} 个字符:  {2}"
 
 #:
 msgid "errors.argument.workbook_file.missing_or_empty"
 msgstr "工作簿文件缺失或为空。"
 
 #:
+msgid "errors.argument.file.size.too_large"
+msgstr "文件 {0} 太大。不允许解压缩后的文件大于 {1} MB。请创建一个数据提取以继续发布。"
+
+#:
+msgid "errors.argument.twb_or_tds_file.missing"
+msgstr "存档中缺少 twb 或 tds 文件。"
+
+#:
 msgid "errors.argument.internal"
-msgstr "内部服务器错误。参数缺失或无效。"
+msgstr "内部服务器错误。 参数缺失或无效。"
 
 #:
 msgid "errors.argument.thumbnail.invalid_format"
@@ -296,7 +305,7 @@ msgstr "工作簿缩略图格式无效。必须是分辨率为 300x300 或更低
 
 #:
 msgid "errors.html_403.disabled_resource.workbook"
-msgstr "抱歉，该工作簿已禁用。请与管理员联系。"
+msgstr "抱歉，该工作簿已禁用。 请与您的管理员联系。"
 
 #:
 msgid "errors.html_404.missing_or_unauthorized_resource.project"
@@ -380,7 +389,7 @@ msgstr "要发布到的项目中存在具有此名称的工作簿。若要发布
 
 #:
 msgid "errors.permissions.publish.workbook.general_personal_space"
-msgstr "您要发布到的个人空间中已存在同名工作簿。若要发布，请重命名工作簿。"
+msgstr "您要发布到的个人空间中已存在同名工作簿。若要发布，请重命名您的工作簿。"
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite"
@@ -408,11 +417,19 @@ msgstr "用户“{0}”不存在。"
 
 #:
 msgid "errors.reportable.impersonation.group_not_found"
-msgstr "组“{0}”不存在。 "
+msgstr "组“{0}”不存在。"
 
 #:
 msgid "errors.public.validation.hasextract"
 msgstr "保存到 Tableau Public 的工作簿必须使用活动 Tableau 数据提取。右键单击数据源，然后在发布之前选择“使用数据提取”。数据源“{0}”不是活动数据提取。"
+
+#:
+msgid "errors.public.validation.storage_quota_exceeded"
+msgstr "您尝试发布的内容将超过您帐户的最大容量。请删除一些内容以释放空间，然后重试。"
+
+#:
+msgid "errors.public.validation.invalid_archive_file"
+msgstr "您试图发布的工作簿不是有效的工作簿。"
 
 #:
 msgid "errors.publish.dataserver_datasource_not_found"
@@ -420,11 +437,35 @@ msgstr "未找到工作簿“{1}”的数据源“{0}”。"
 
 #:
 msgid "errors.publish.datasource_update_mode"
-msgstr "未知更新模式:''{0}''."
+msgstr "未知更新模式:“{0}”."
 
 #:
-msgid "errors.publish.workbook.concurrent_update"
-msgstr "目前正在发布或修改具有相同名称的工作簿。请等到任务完成后重试。"
+msgid "errors.publish.fileupload.invalid_checksum"
+msgstr "提供的校验和值无效。"
+
+#:
+msgid "errors.publish.fileupload.invalid_hash_algorithm"
+msgstr "不支持或禁用哈希算法。"
+
+#:
+msgid "errors.publish.fileupload.invalid_offset"
+msgstr "使用与记录的文件大小不匹配的偏移量附加到文件上载。"
+
+#:
+msgid "errors.publish.fileupload.concurrent_write"
+msgstr "无法获取文件的排他锁，因为它已被另一个上载锁定。"
+
+#:
+msgid "errors.publish.fileupload.flushing_file_buffer"
+msgstr "上载期间未能刷新文件缓冲区。"
+
+#:
+msgid "errors.publish.fileupload.read_or_write"
+msgstr "无法从客户端读取或写入上载的文件。"
+
+#:
+msgid "errors.publish.fileupload.concurrent_update"
+msgstr "当前正在上载或修改同名内容。请等到任务完成后重试。"
 
 #:
 msgid "errors.publish.workbook.restricted"
@@ -441,6 +482,22 @@ msgstr "数据源包含此服务器上不允许的连接类型。"
 #:
 msgid "errors.publish.datasource.connection_check"
 msgstr "{0} 无法建立数据源连接。"
+
+#:
+msgid "errors.publish.file.connection.unauthorized"
+msgstr "此流程包括被您的站点管理员阻止的文件输入连接。若要发布流程，所有输入连接必须是已在 Tableau Cloud 上发布的 Tableau 数据提取。"
+
+#:
+msgid "errors.publish.flow.connection_check"
+msgstr "未能发布流程“{0}”。服务器无法连接到数据源类型:“{1}”。请验证数据源是否受支持，以及是否安装了数据源的驱动程序或连接器插件。"
+
+#:
+msgid "errors.publish.workbook.requested_extract_encryption_on_server_with_disabled_encryption"
+msgstr "无法发布包含加密数据提取的工作簿。此服务器上已禁用数据提取加密。您必须发布包含未加密数据提取的工作簿。"
+
+#:
+msgid "errors.publish.datasource.requested_extract_encryption_on_server_with_disabled_encryption"
+msgstr "无法以加密数据提取的形式发布数据源。此服务器上已禁用数据提取加密。您必须发布未加密的数据提取。"
 
 #:
 msgid "errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption"
@@ -484,7 +541,7 @@ msgstr "此内容超出您的个人空间容量 {0}。"
 
 #:
 msgid "errors.web_authoring.workbook_deleted"
-msgstr "已删除工作簿 {0}。请选择“另存为”以另存新工作簿。"
+msgstr "已删除工作簿 {0}。 请选择“另存为”以另存新工作簿。"
 
 #:
 msgid "errors.web_authoring.workbook_changed"
@@ -500,11 +557,11 @@ msgstr "此工作簿包含需要嵌入式凭据的 {0} 数据源。若要另存�
 
 #:
 msgid "errors.publish.datasource.google_no_embedded_credentials"
-msgstr "此数据源包含需要嵌入式凭据的 {0} 连接。请使用嵌入式凭据从 Tableau Desktop 中发布此数据源。"
+msgstr "此数据源包含需要嵌入式凭据的 {0} 连接。 请使用嵌入式凭据从 Tableau Desktop 中发布此数据源。"
 
 #:
 msgid "errors.publish.datasource.federated_oauth_datasource_failed"
-msgstr "数据源中一个或多个连接的凭据已过期。请在 Tableau Server 或 Tableau Online 上的“帐户设置”页面中删除为此数据源保存的凭据，然后再次连接到数据源。"
+msgstr "数据源中一个或多个连接的凭据已过期。请在 Tableau Server 或 Tableau Cloud 的“帐户设置”页面上删除为此数据源保存的凭据，然后再次连接到该数据源。"
 
 #:
 msgid "errors.publish.workbook.missing_oauth_credential"
@@ -521,10 +578,6 @@ msgstr "Desktop 版本“{0}”，Server 文档版本“{1}”。"
 #:
 msgid "errors.publish.datasource.managed_keychain.unique_cv_suggestions"
 msgstr "由于存在冲突，发布失败。请重新提交所做更改。"
-
-#:
-msgid "errors.publish.permissions_are_locked"
-msgstr "权限在您发布到的项目中已锁定。若要发布此工作簿，请使用默认权限并重试。"
 
 #:
 msgid "errors.publish.datasource.not.found"
@@ -555,6 +608,18 @@ msgid "errors.publish.async.serialization"
 msgstr "无法序列化发布作业状态错误"
 
 #:
+msgid "errors.publish.only_extract_files_are_allowed.message"
+msgstr "无法发布到 Tableau Server"
+
+#:
+msgid "errors.publish.only_extract_files_are_allowed.details"
+msgstr "无法上载文件 {0}，因为您的管理员已阻止此类型的文件。将其转换为数据提取，然后重试。"
+
+#:
+msgid "errors.publish.validation.invalid_zip_file"
+msgstr "您尝试发布的工作簿或数据源存档无效"
+
+#:
 msgid "errors.permissions.view.datasources"
 msgstr "您必须是“交互者”才能查看数据源列表。"
 
@@ -565,6 +630,10 @@ msgstr "“{0}”不是有效的 OAuth 连接类型。"
 #:
 msgid "errors.xmlapi.bad_request"
 msgstr "错误请求"
+
+#:
+msgid "errors.xmlapi.payload_too_large"
+msgstr "有效负载太大"
 
 #:
 msgid "errors.xmlapi.unauthorized"
@@ -615,10 +684,6 @@ msgid "errors.xmlapi.site_locked"
 msgstr "此站点已锁定。此时不允许登录。"
 
 #:
-msgid "errors.xmlapi.permission_modification"
-msgstr "无法在修改了权限的情况下发布"
-
-#:
 msgid "errors.xmlapi.update_desktop"
 msgstr "若要打开其他作者创建的工作簿，请从 http://public.tableau.com/ 下载最新版本的 Tableau Desktop Public Edition"
 
@@ -631,8 +696,20 @@ msgid "errors.xmlapi.throttled.detail"
 msgstr "对“{0}”的请求太多，请在 {1} 后重试。"
 
 #:
+msgid "errors.xmlapi.personal_space_quota_exceeded.summary"
+msgstr "无法发布到个人空间"
+
+#:
+msgid "errors.xmlapi.personal_space_quota_exceeded.detail"
+msgstr "请删除或移动现有的个人空间内容，然后再次尝试发布。"
+
+#:
 msgid "datasource.publish.check.unpublishable"
 msgstr "无法发布数据源。"
+
+#:
+msgid "datasource.publish.check.unpublishable.table_extension_extract_required"
+msgstr "不能使用需要数据提取的连接来发布表扩展程序。"
 
 #:
 msgid "datasource.publish.check.publishable.extract_required"
@@ -640,11 +717,11 @@ msgstr "需要在发布时创建数据提取。"
 
 #:
 msgid "datasource.publish.check.publishable.credentials_required"
-msgstr "{1} 将临时访问为 ''{0}'' 提供的凭据来确认它可保持实时数据连接。"
+msgstr "{1} 将临时访问为 “{0}” 提供的凭据来确认它可保持实时数据连接。"
 
 #:
 msgid "datasource.publish.check.publishable.server_unreachable"
-msgstr "{1} 无法访问 ''{0}''。发布时将创建数据提取。"
+msgstr "{1} 无法访问 “{0}”。发布时将创建数据提取。"
 
 #:
 msgid "publish.bundles.workbook.subscription.subject"
@@ -656,7 +733,7 @@ msgstr "您的 Salesforce 数据已添加到工作簿。转到您的 {0} 项目�
 
 #:
 msgid "extracts.status.finished.upload.workbook"
-msgstr "已完成工作簿 ''{1}'' {2} 的数据提取上载(新数据提取 ID: {0})"
+msgstr "已完成工作簿 “{1}” {2} 的数据提取上载(新数据提取 ID: {0})"
 
 #:
 msgid "extracts.status.finished.refresh.workbook"
@@ -751,8 +828,16 @@ msgid "extracts.status.finished.remove.datasource"
 msgstr "已完成数据源“{1}”的实时数据提取更改"
 
 #:
+msgid "extracts.status.finished.create.vconn"
+msgstr "已完成虚拟连接“{1}”的数据提取创建(新数据提取 ID:{0})"
+
+#:
+msgid "extracts.status.finished.refresh.vconn"
+msgstr "已完成虚拟连接“{1}”的数据提取刷新(新数据提取 ID: {0})"
+
+#:
 msgid "extracts.status.encryption_key"
-msgstr "加密密钥 ID:“{0}|”。"
+msgstr "加密密钥 ID:“{0}”。"
 
 #:
 msgid "extracts.status.encryption_keys"
@@ -760,11 +845,11 @@ msgstr "旧加密密钥 ID:“{0}”，新加密密钥 ID:“{1}”。"
 
 #:
 msgid "extracts.errors.upload"
-msgstr "上载 {0} 的数据提取时出错: ''{1}''"
+msgstr "上载 {0} 的数据提取时出错: “{1}”"
 
 #:
 msgid "extracts.errors.refresh"
-msgstr "刷新 {0} ''{1}'' 的数据提取时出错"
+msgstr "刷新 {0} “{1}” 的数据提取时出错"
 
 #:
 msgid "extracts.errors.create"
@@ -772,19 +857,19 @@ msgstr "为 {0} 创建数据提取时出错“{1}”。"
 
 #:
 msgid "extracts.errors.increment"
-msgstr "递增 {0} 的数据提取时出错: ''{1}''"
+msgstr "递增 {0} 的数据提取时出错: “{1}”"
 
 #:
 msgid "extracts.errors.append"
-msgstr "追加 {0} 的数据提取时出错: ''{1}''"
+msgstr "追加 {0} 的数据提取时出错: “{1}”"
 
 #:
 msgid "extracts.errors.replace"
-msgstr "替换 {0} 的数据提取时出错: ''{1}''"
+msgstr "替换 {0} 的数据提取时出错: “{1}”"
 
 #:
 msgid "extracts.errors.download"
-msgstr "下载 {0} 的数据提取时出错: ''{1}''"
+msgstr "下载 {0} 的数据提取时出错: “{1}”"
 
 #:
 msgid "extracts.errors.remove"
@@ -796,23 +881,23 @@ msgstr "处理数据提取错误"
 
 #:
 msgid "extracts.errors.nothing_to_upload"
-msgstr "没有要为 {0} 上载的数据提取:''{1}''"
+msgstr "没有要为 {0} 上载的数据提取:“{1}”"
 
 #:
 msgid "extracts.errors.nothing_to_refresh"
-msgstr "没有要为 {0} 刷新的数据提取:''{1}''"
+msgstr "没有要为 {0} 刷新的数据提取:“{1}”"
 
 #:
 msgid "extracts.errors.nothing_to_increment"
-msgstr "没有要为 {0} 递增的数据提取: ''{1}''"
+msgstr "没有要为 {0} 递增的数据提取: “{1}”"
 
 #:
 msgid "extracts.errors.nothing_to_append"
-msgstr "没有要为 {0} 追加的数据提取:''{1}''"
+msgstr "没有要为 {0} 追加的数据提取:“{1}”"
 
 #:
 msgid "extracts.errors.nothing_to_replace"
-msgstr "没有要为 {0} 替换的数据提取:''{1}''"
+msgstr "没有要为 {0} 替换的数据提取:“{1}”"
 
 #:
 msgid "extracts.errors.refresh_summary"
@@ -840,11 +925,11 @@ msgstr "创建数据提取错误"
 
 #:
 msgid "extracts.errors.datasource_overwritten"
-msgstr "刷新失败，因为在处理期间该数据源已由其他任务覆盖。请再次提交刷新以进行更正。"
+msgstr "刷新失败，因为在处理期间该数据源已由其他任务覆盖。 请再次提交刷新以进行更正。"
 
 #:
 msgid "extracts.errors.workbook_overwritten"
-msgstr "刷新失败，因为在处理期间该工作簿已由其他任务覆盖。请再次提交刷新以进行更正。"
+msgstr "刷新失败，因为在处理期间该工作簿已由其他任务覆盖。 请再次提交刷新以进行更正。"
 
 #:
 msgid "extracts.errors.encrypt"
@@ -916,7 +1001,7 @@ msgstr "无法加载工作簿 {0}"
 
 #:
 msgid "workbooks.messages.locked"
-msgstr "另一个用户正在修改工作簿“{0}”。请稍后重试。"
+msgstr "另一个用户正在修改工作簿“{0}”。 请稍后重试。"
 
 #:
 msgid "workbooks.new_workbook.default_name"
@@ -964,7 +1049,7 @@ msgstr "视图"
 
 #:
 msgid "subscriptions.fullstop"
-msgstr "."
+msgstr "。"
 
 #:
 msgid "subscriptions.extract_refresh_footer"
@@ -991,6 +1076,14 @@ msgid "subscriptions.warning_deprecated_type"
 msgstr "已弃用"
 
 #:
+msgid "subscriptions.warning_error_content_type"
+msgstr "未知内容类型"
+
+#:
+msgid "subscriptions.warning_error_type"
+msgstr "未知警告类型"
+
+#:
 msgid "subscriptions.warning_extract_refresh_type"
 msgstr "数据提取刷新失败"
 
@@ -1004,11 +1097,43 @@ msgstr "以下数据质量警告会影响此 {0}。"
 
 #:
 msgid "subscriptions.warning_introduction_view"
-msgstr "有关详细信息，请参见视图中的“数据详细信息”选项卡"
+msgstr "有关详细信息，请参见视图中的“数据详细信息”窗格"
 
 #:
 msgid "subscriptions.warning_introduction_workbook"
 msgstr "有关详细信息，请参见工作簿页面"
+
+#:
+msgid "subscriptions.warning_localized_column"
+msgstr "列"
+
+#:
+msgid "subscriptions.warning_localized_datasource"
+msgstr "数据源"
+
+#:
+msgid "subscriptions.warning_localized_database"
+msgstr "数据库"
+
+#:
+msgid "subscriptions.warning_localized_flow"
+msgstr "流程"
+
+#:
+msgid "subscriptions.warning_localized_table"
+msgstr "表"
+
+#:
+msgid "subscriptions.warning_localized_vconn"
+msgstr "连接"
+
+#:
+msgid "subscriptions.warning_lowercase_column"
+msgstr "列"
+
+#:
+msgid "subscriptions.warning_lowercase_column_plural"
+msgstr "列"
 
 #:
 msgid "subscriptions.warning_maintenance_type"
@@ -1027,6 +1152,18 @@ msgid "subscriptions.warning_sensitve_type"
 msgstr "敏感数据"
 
 #:
+msgid "subscriptions.warning_sensitive_intro_count"
+msgstr "敏感({0})"
+
+#:
+msgid "subscriptions.warning_sensitive_intro_view"
+msgstr "此视图使用敏感数据。"
+
+#:
+msgid "subscriptions.warning_sensitive_intro_workbook"
+msgstr "此工作簿使用敏感数据。"
+
+#:
 msgid "subscriptions.warning_severe"
 msgstr "重要数据质量警告"
 
@@ -1039,8 +1176,8 @@ msgid "subscriptions.warning_standard"
 msgstr "数据质量警告"
 
 #:
-msgid "subscriptions.warning_error_type"
-msgstr "未知警告类型"
+msgid "subscriptions.warning_standard_plural"
+msgstr "数据质量警告"
 
 #:
 msgid "subscriptions.warning_warning_type"
@@ -1087,12 +1224,12 @@ msgid "errors.subscriptions.pdf_render_failed"
 msgstr "无法正确呈现此电子邮件的 PDF 附件。"
 
 #:
-msgid "errors.subscriptions.pdf_limit_exceeded"
-msgstr "生成的 PDF 大于 {0}MB 的大小限制，因此无法附加到此电子邮件。"
+msgid "errors.subscriptions.content_limit_exceeded"
+msgstr "生成的内容超过了 {0}MB 的大小限制，无法附加到此电子邮件中。"
 
 #:
 msgid "errors.subscriptions.attachments_not_enabled"
-msgstr "此订阅由于电子邮件附加已禁用而失败。有关详细信息，请与 Tableau 管理员联系。"
+msgstr "此订阅由于电子邮件附加已禁用而失败。有关详细信息，请与您的 Tableau 管理员联系。"
 
 #:
 msgid "errors.subscriptions.pdf_email_failed"
@@ -1120,11 +1257,11 @@ msgstr "数据源连接错误。请检查工作簿的所有数据源连接的凭
 
 #:
 msgid "subscriptions.results_summary.sg"
-msgstr "从计划 ''{2}'' 发来的订阅 {1} 的 {0}。"
+msgstr "从计划 “{2}” 发来的订阅 {1} 的 {0}。"
 
 #:
 msgid "subscriptions.results_summary.pl"
-msgstr "从计划 ''{2}''. 发来的订阅 {1} 中的 {0}。"
+msgstr "从计划 “{2}”. 发来的订阅 {1} 中的 {0}。"
 
 #:
 msgid "subscriptions.results_views_per_subscription.sg"
@@ -1248,7 +1385,7 @@ msgstr "时间通知失败"
 
 #:
 msgid "dataalerts.failure.cause"
-msgstr "通知有时会因暂时性的网络问题而失败，这些问题可自行解决。您也可以尝试在原始视图上重新创建通知，或者排查如下常见的通知失败原因："
+msgstr "通知有时会因暂时性的网络问题而失败，这些问题可自行解决。您也可以尝试在原始数据视图上重新创建通知，或者排查如下常见的通知失败原因："
 
 #:
 msgid "dataalerts.failure.changed.view"
@@ -1314,6 +1451,9 @@ msgstr "找不到工作簿"
 msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
 msgstr "未找到字段 {0} 的轴"
 
+#:
+msgid "dataalerts.failure.error.paneDescriptorNotFound"
+msgstr "{0}"
 
 #:
 msgid "dataalerts.failure.error.unsupportedComparisonExpression"
@@ -1509,7 +1649,7 @@ msgstr "此处是用于重置您的密码的链接"
 
 #:
 msgid "password_reset.email.body"
-msgstr "您好 {0}，<br/><br/>您刚才请求了重置密码。<br/><br/>若要更改您的 Tableau Server 密码，{1} 或将下面的链接粘贴到您的浏览器中: {2}<br/><br/>此链接将在 48 小时后失效，所以请立即进行处理。<br/><br/>如果您没有请求重置密码，您可能需要告诉您的服务器管理员。<br/><br/>感谢您使用 Tableau!<br/>Tableau 团队"
+msgstr "您好，{0}，<br/><br/>您刚才请求了重置密码。<br/><br/>若要更改您的 Tableau Server 密码，{1} 或将下面的链接粘贴到您的浏览器中: {2}<br/><br/>此链接将在 48 小时后失效，所以请立即进行处理。<br/><br/>如果您没有请求重置密码，您可能需要告诉您的服务器管理员。<br/><br/>感谢您使用 Tableau!<br/>Tableau 团队"
 
 #:
 msgid "password_reset.email.link"
@@ -1573,7 +1713,7 @@ msgstr "未能为工作簿“{0}”更新实体化视图设置"
 
 #:
 msgid "materializeviews.errors.site_not_enabled"
-msgstr "没有为实体化视图启用此站点。请与管理员联系"
+msgstr "没有为实体化视图启用此站点。请与您的管理员联系"
 
 #:
 msgid "materializeviews.errors.encrypted_extracts_not_supported"
@@ -1601,7 +1741,7 @@ msgstr "已完成工作簿“{0}”实体化视图的重新加密"
 
 #:
 msgid "materializedviews.status.encryption_key"
-msgstr "加密密钥 ID:“{0}|”。"
+msgstr "加密密钥 ID:“{0}”。"
 
 #:
 msgid "materializedviews.status.encryption_keys"
@@ -1660,11 +1800,11 @@ msgid "content_type.explaindata_explanation"
 msgstr "解释"
 
 #:
-msgid "content_type.publishedconnection"
+msgid "content_type.virtualconnection"
 msgstr "虚拟连接"
 
 #:
-msgid "content_type.publishedconnectiontable"
+msgid "content_type.virtualconnectiontable"
 msgstr "虚拟连接表"
 
 #:
@@ -1674,6 +1814,14 @@ msgstr "服务器响应: 已启动缩略图升级!"
 #:
 msgid "upgradethumbnails.status.server_stopped"
 msgstr "服务器响应: 已停止 %d 个作业"
+
+#:
+msgid "dataquality.author.extract_refresh_monitoring"
+msgstr "数据提取刷新监视"
+
+#:
+msgid "dataquality.author.flow_run_monitoring"
+msgstr "流程运行监视"
 
 #:
 msgid "dataquality.message.refresh_failed"
@@ -1692,6 +1840,38 @@ msgid "dataquality.message.flow_run_output_steps_failed"
 msgstr "{0}/{1} 个输出步骤运行失败"
 
 #:
+msgid "label_value.description.certified"
+msgstr "此资产是受信任和推荐的。"
+
+#:
+msgid "label_value.description.deprecated"
+msgstr "此资产不再维护，也不应使用。"
+
+#:
+msgid "label_value.description.extract_refresh_failure"
+msgstr "此资产的最近一次数据提取刷新失败。"
+
+#:
+msgid "label_value.description.flow_run_failure"
+msgstr "此流程的最近一次运行失败。"
+
+#:
+msgid "label_value.description.maintenance"
+msgstr "此资产正在进行维护。"
+
+#:
+msgid "label_value.description.sensitive_data"
+msgstr "此资产包含敏感信息。"
+
+#:
+msgid "label_value.description.stale"
+msgstr "此资产已经过时。"
+
+#:
+msgid "label_value.description.warning"
+msgstr "此资产存在一般质量问题。"
+
+#:
 msgid "importcsvsummary.error.details"
 msgstr "错误详细信息:"
 
@@ -1701,7 +1881,7 @@ msgstr "(其余错误未显示)"
 
 #:
 msgid "importcsvsummary.error.line"
-msgstr "用户“{1}”的行 {0} :“{2}”"
+msgstr "用户“{1}”的行 {0}:“{2}”"
 
 #:
 msgid "importcsvsummary.line.processed"
@@ -1740,12 +1920,24 @@ msgid "importcsvsummary.error.ad.user_not_found"
 msgstr "找不到 AD 用户“{0}”"
 
 #:
+msgid "importcsvsummary.error.domain_not_found"
+msgstr "无效的域“{0}”"
+
+#:
+msgid "importcsvsummary.error.cannot_create_user_identity"
+msgstr "无法为用户“{0}”创建用户身份"
+
+#:
+msgid "importcsvsummary.error.invalid_identity_pool_name"
+msgstr "无效的身份池名称“{0}”"
+
+#:
 msgid "importcsvsummary.error.too_many_errors"
 msgstr "CSV 文件中遇到的错误太多"
 
 #:
 msgid "audit.errors.wdc_not_allowlisted"
-msgstr "不允许列出 Web 数据连接器。如需帮助，请参阅: https://help.tableau.com/current/online/zh-cn/to_keep_data_fresh.htm"
+msgstr "不允许列出 Web 数据连接器。有关帮助，请参考: https://help.tableau.com/current/online/zh-cn/to_keep_data_fresh.htm"
 
 #:
 msgid "user.input.name.err.too_long"
@@ -1761,23 +1953,23 @@ msgstr "“数据问答”功能"
 
 #:
 msgid "slack.app.upgrade.email.notification.subject"
-msgstr "适用于 Slack 的 Tableau 应用软件更新"
+msgstr "适用于 Slack 的 Tableau 应用程序更新"
 
 #:
 msgid "slack.app.upgrade.email.notification.introduction"
-msgstr "针对 Slake 的 Tableau 应用软件已经有了更新，现在可以重新安装，以便与下一个 Tableau Online 版本配合使用。Tableau 建议重新安装应用软件，以保持应用软件的性能并使用新功能。在  <a styl"
+msgstr "适用于 Slack 的 Tableau 应用程序有更新可用。Tableau 建议更新应用程序以保持应用程序性能，并使用新的 Tableau Cloud 功能。查找 <a styl"
 
 #:
 msgid "slack.app.upgrade.email.notification.action"
-msgstr "有关更新和重新安装步骤，请参见 <a styl"
+msgstr "若要更新站点与 Tableau for Slack 应用程序的连接，请参见<a styl"
 
 #:
 msgid "slack.app.upgrade.email.notification.steps"
-msgstr "此服务通知已通过 Tableau Online 发布。"
+msgstr "此服务通知已通过 Tableau Cloud 发布。"
 
 #:
 msgid "slack.app.upgrade.email.notification.reason"
-msgstr "您收到此通知是因为您是连接到 Slack 的 Tableau Online 站点的管理员。"
+msgstr "您收到此通知是因为您是连接到 Slack 的 Tableau Cloud 站点的管理员。"
 
 #:
 msgid "slack.app.upgrade.email.notification.footer.privacy"
@@ -1785,32 +1977,23 @@ msgstr "阅读我们的<a styl"
 
 #:
 msgid "unifiedconsumption.tcrm.folders.private"
-msgstr "我的私有应用"
+msgstr "我的私有应用程序"
 
-
-msgid ""
-msgstr ""
-"MIME-Version: 1.0"
-"Content-Type: text/plain; charset=utf-8"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: prop2po"
-"Project-Id-Version: None"
-"Language: zh"
 #:
 msgid "commandlineutils.errors.bad_value"
-msgstr "选项 ''{0}'' 的值 ''{1}'' 无效。值必须为以下之一: {2}"
+msgstr "选项 “{0}” 的值 “{1}” 无效。值必须为以下之一: {2}"
 
 #:
 msgid "commandlineutils.errors.not_integer"
-msgstr "选项 ''{1}'' 的值 ''{0}'' 不是整数"
+msgstr "选项 “{1}” 的值 “{0}” 不是整数"
 
 #:
 msgid "common.errors.empty_file"
-msgstr "文件 ''{0}'' 为空"
+msgstr "文件 “{0}” 为空"
 
 #:
 msgid "common.errors.file_not_found"
-msgstr "无法打开文件 ''{0}''"
+msgstr "无法打开文件 “{0}”"
 
 #:
 msgid "common.errors.invalid_file_path"
@@ -1826,19 +2009,19 @@ msgstr "拒绝访问文件“{0}”。请检查您的路径是否有效，并且
 
 #:
 msgid "common.errors.requires_csv_file"
-msgstr "''{0}'' 命令需要 CSV 文件"
+msgstr "“{0}” 命令需要 CSV 文件"
 
 #:
 msgid "common.errors.requires_group_name"
-msgstr "''{0}'' 命令需要组名称"
+msgstr "“{0}” 命令需要组名称"
 
 #:
 msgid "common.errors.requires_site_name"
-msgstr "''{0}'' 命令需要站点名称"
+msgstr "“{0}” 命令需要站点名称"
 
 #:
 msgid "common.errors.options_conflict"
-msgstr "已指定了用于指定用户角色的新选项和弃用的选项。只能使用其中一个"
+msgstr "已指定了用于指定用户角色的新选项和已弃用的选项。只能使用其中一个"
 
 #:
 msgid "common.errors.csv_sizelimit"
@@ -1846,7 +2029,7 @@ msgstr "您引用的 CSV 文件超出了 100MB 的大小限制。请将文件的
 
 #:
 msgid "common.options.admin-type"
-msgstr "[弃用] 为 CSV 文件中的所有用户分配或移除站点管理权限。CSV 文件中各行上的值可能会覆盖此设置。{0} 可以是: {1}、{2} 或 {3}。如果未指定: 对于新用户为 {3}，对于现有用户则不变"
+msgstr "[已弃用] 为 CSV 文件中的所有用户分配或移除站点管理权限。CSV 文件中各行上的值可能会覆盖此设置。{0}可以是: {1}、{2} 或 {3}。如果未指定: 对于新用户为 {3}，对于现有用户则不变"
 
 #:
 msgid "common.options.complete"
@@ -1854,7 +2037,7 @@ msgstr "要求或不要求所有行有效以使任何更改成功。默认值: {
 
 #:
 msgid "common.options.license"
-msgstr "[弃用] 设置所有用户的默认许可级别。这可能会被 CSV 文件中的值覆盖。{0} 可以是 {1}、{2} 或 {3}"
+msgstr "[已弃用] 设置所有用户的默认许可级别。这可能会被 CSV 文件中的值覆盖。{0}可以是 {1}、{2} 或 {3}"
 
 #:
 msgid "common.options.nowait"
@@ -1862,7 +2045,7 @@ msgstr "不等待作业完成"
 
 #:
 msgid "common.options.publisher"
-msgstr "[弃用] 为 CSV 文件中的所有用户分配或移除发布权限。CSV 文件中各行上的值可能会覆盖此设置。如果未指定则为默认值: 对于新用户为 false，对于现有用户则不变"
+msgstr "[已弃用] 为 CSV 文件中的所有用户分配或移除发布权限。CSV 文件中各行上的值可能会覆盖此设置。如果未指定则为默认值: 对于新用户为 false，对于现有用户则不变"
 
 #:
 msgid "common.options.silent-progress"
@@ -1870,7 +2053,7 @@ msgstr "不显示作业的进度消息"
 
 #:
 msgid "common.options.sysadmin-type"
-msgstr "[弃用] 为 CSV 文件中的所有用户分配或移除站点管理权限。CSV 文件中各行上的值可能会覆盖此设置。{0} 可以是: {1}、{2}、{3} 或 {4}。如果未指定则为默认值: 对于新用户为 {4}，对于现有用户则不变"
+msgstr "[已弃用] 为 CSV 文件中的所有用户分配或移除站点管理权限。此设置可能会被 CSV 文件中各个行上的值覆盖。{0}可以是: {1}、{2}、\{3\ }或 {4}。如果未指定则为默认值: 对于新用户为 {4}，对于现有用户则不变"
 
 #:
 msgid "common.output.job_queued_success"
@@ -1902,7 +2085,7 @@ msgstr "创建本地组"
 
 #:
 msgid "creategroup.status"
-msgstr "正在服务器上创建组 ''{0}''..."
+msgstr "正在服务器上创建组 “{0}”..."
 
 #:
 msgid "creategroup.options.role"
@@ -1990,7 +2173,7 @@ msgstr "创建项目"
 
 #:
 msgid "createproject.status"
-msgstr "正在服务器上创建项目 ''{0}''..."
+msgstr "正在服务器上创建项目 “{0}”..."
 
 #:
 msgid "createsite.errors.invalid_url_option"
@@ -2070,15 +2253,15 @@ msgstr "创建站点"
 
 #:
 msgid "createsite.status"
-msgstr "在服务器上创建站点 ''{0}''..."
+msgstr "在服务器上创建站点 “{0}”..."
 
 #:
 msgid "createsiteusers.options.auth-type"
-msgstr "为 CSV 文件中的所有用户分配身份验证类型。对于 Tableau Online，{0} 可能是 {1}(默认)或 {2}。对于 Tableau Server，{0} 可能是  Local (默认)或 {2}。"
+msgstr "为 CSV 文件中的所有用户分配身份验证类型。对于 Tableau Cloud，{0} 可以是 {1}(默认值)或 {2}。对于 Tableau Server，{0} 可以是本地(默认值)或 {2}。"
 
 #:
 msgid "createsiteusers.description"
-msgstr "在当前站点上创建用户。从给定的 CSV 文件中读取用户。此文件可以包含多列，顺序如下所示。{0}1. 用户名{0}2. 密码        (如果使用 Active Directory 则忽略){0}3. 友好名称   (如果使用 Active Directory 则忽略){0}4. 许可级别({1}、{2}、{3}、{4} 或 {5}){0}5. 管理员 ({6}/{7}){0}6. 发布者 ({8}/{9}/1 或 {10}/{11}/0){0}7. 电子邮件(仅用于 Tableau Public){0}此文件可能包含更少的列。例如，它可以是简单的列表(每行一个用户名)。如果值包含逗号，则可以使用引号。Tabcmd 会等待 {12} 任务完成。您可以选择不等待此任务在服务器上完成，而是通过传递 {13} 标志立即返回。无法使用此命令创建系统管理员或将其降级。请改用“{14}”"
+msgstr "在当前站点上创建用户。从给定的 CSV 文件中读取用户。此文件可以包含多列，顺序如下所示。{0}1. 用户名{0}2.密码(如果使用 Active Directory，则忽略){0}3.友好名称(如果使用 Active Directory，则忽略){0}4.许可级别({1}、{2}、{3}、{4} 或 {5}){0}5.管理员({6}/{7}){0}6.发布者({8}/{9}/1 或 {10}/{11}/0){0}7.电子邮件(仅用于 Tableau Public){0}此文件可能包含更少的列。例如，它可以是简单的列表(每行一个用户名)。如果值包含逗号，则可以使用引号。Tabcmd 会等待 {12} 任务完成。 您可以选择不等待此任务在服务器上完成，而是通过传递 {13} 标志立即返回。无法使用此命令创建系统管理员或将其降级。请改用“{14}”"
 
 #:
 msgid "createsiteusers.short_description"
@@ -2090,7 +2273,7 @@ msgstr "正将 {0} 中列出的用户添加到当前站点..."
 
 #:
 msgid "createusers.description"
-msgstr "创建用户。从给定的 CSV 文件中读取用户。此文件可以包含多列，顺序如下所示。{0}1. 用户名{0}2. 密码        (如果使用 Active Directory 则忽略){0}3. 友好名称   (如果使用 Active Directory 则忽略){0}4. 许可级别({1}、{2}、{3}、{4} 或 {5}){0}5. 管理员 ({6}/{7}/{8}/{9}){0}6. 发布者 ({10}/{11}/1 或 {12}/{13}/0){0}7. 电子邮件(仅用于 Tableau Public){0}此文件可能包含更少的列。例如，它可以是简单的列表(每行一个用户名)。如果值包含逗号，则可以使用引号。Tabcmd 会等待 {14} 任务完成。您可以选择不等待此任务在服务器上完成，而是通过传递 {15} 标志立即返回"
+msgstr "创建用户从给定的 CSV 文件中读取用户。此文件可以包含多列，顺序如下所示。{0}1. 用户名{0}2.密码(如果使用 Active Directory，则忽略){0}3.友好名称(如果使用 Active Directory，则忽略){0}4.许可级别({1}、{2}、{3}、{4} 或 {5}){0}5.管理员({6}/{7}/{8}/{9}){0}6.发布者({10}/{11}/1 或 {12}/{13}/0){0}7.电子邮件(仅适用于 Tableau Public){0}此文件可能包含更少的列。例如，它可以是简单的列表(每行一个用户名)。如果值包含逗号，则可以使用引号。Tabcmd 会等待 {14} 任务完成。 您可以选择不等待此任务在服务器上完成，而是通过传递 {15} 标志立即返回"
 
 #:
 msgid "createusers.short_description"
@@ -2114,7 +2297,7 @@ msgstr "无法指定要删除的工作簿和数据源"
 
 #:
 msgid "delete.errors.requires_workbook_datasource"
-msgstr "''{0}'' 命令需要工作簿名称或数据源名称"
+msgstr "“{0}” 命令需要工作簿名称或数据源名称"
 
 #:
 msgid "delete.options.datasource"
@@ -2138,7 +2321,7 @@ msgstr "从服务器中删除一个工作簿或数据源"
 
 #:
 msgid "delete.status"
-msgstr "正从服务器中移除 {0} ''{1}''..."
+msgstr "正从服务器中移除 {0} “{1}”..."
 
 #:
 msgid "deleteextracts.errors.required_argument"
@@ -2206,11 +2389,11 @@ msgstr "删除组"
 
 #:
 msgid "deletegroup.status"
-msgstr "正从服务器中删除组 ''{0}''..."
+msgstr "正从服务器中删除组 “{0}”..."
 
 #:
 msgid "deleteproject.errors.requires_project_name"
-msgstr "''{0}'' 命令需要项目名称"
+msgstr "“{0}” 命令需要项目名称"
 
 #:
 msgid "deleteproject.options.parent-project-path"
@@ -2222,7 +2405,7 @@ msgstr "删除项目"
 
 #:
 msgid "deleteproject.status"
-msgstr "正从服务器中删除项目 ''{0}''..."
+msgstr "正从服务器中删除项目 “{0}”..."
 
 #:
 msgid "deletesite.errors.logged_into_this_site"
@@ -2234,7 +2417,7 @@ msgstr "删除站点"
 
 #:
 msgid "deletesite.status"
-msgstr "正从服务器中删除站点 ''{0}''..."
+msgstr "正从服务器中删除站点 “{0}”..."
 
 #:
 msgid "deletesiteusers.description"
@@ -2262,11 +2445,11 @@ msgstr "正从服务器中删除 {0} 中列出的用户..."
 
 #:
 msgid "editdomain.description"
-msgstr "编辑域。使用 ''{0}'' 命令查看待编辑的域的列表"
+msgstr "编辑域。使用 “{0}” 命令查看待编辑的域的列表"
 
 #:
 msgid "editdomain.errors.requires_nickname_name"
-msgstr "必须指定 ''{0}'' 选项或 ''{1}'' 选项"
+msgstr "必须指定 “{0}” 选项或 “{1}” 选项"
 
 #:
 msgid "editdomain.options.id"
@@ -2290,7 +2473,7 @@ msgstr "{0}ID{1}昵称{1}{1}名称{0}"
 
 #:
 msgid "editdomain.status"
-msgstr "在服务器上编辑 ID 为 ''{0}'' 的域..."
+msgstr "在服务器上编辑 ID 为 “{0}” 的域..."
 
 #:
 msgid "editsite.errors.invalid_site-id"
@@ -2326,7 +2509,7 @@ msgstr "显示站点的名称"
 
 #:
 msgid "editsite.options.status"
-msgstr "更改站点的可用性。必须为 ''{0}'' 或 ''{1}''"
+msgstr "更改站点的可用性。必须为 “{0}” 或 “{1}”"
 
 #:
 msgid "editsite.options.allow-materialized-views"
@@ -2358,7 +2541,7 @@ msgstr "编辑站点"
 
 #:
 msgid "editsite.status"
-msgstr "在服务器上编辑站点 ''{0}''..."
+msgstr "在服务器上编辑站点 “{0}”..."
 
 #:
 msgid "encryptextracts.short_description"
@@ -2378,11 +2561,11 @@ msgstr "要导出的工作簿或视图的名称不能包括空格。请使用工
 
 #:
 msgid "export.errors.requires_workbook_view_name"
-msgstr "“{0}”命令需要 <工作簿>/<视图> 名称"
+msgstr "“{0}”命令需要一个 <workbook>/<view> 名称"
 
 #:
 msgid "export.errors.requires_workbook_view_param"
-msgstr "“{0}”命令需要 <工作簿>/<视图> 参数，而且在此参数中至少必须有一个斜杠(/)"
+msgstr "“{0}”命令需要一个 <workbook>/<view> 参数，而且在此参数中至少必须有一个斜杠(/)"
 
 #:
 msgid "export.options.country"
@@ -2410,7 +2593,7 @@ msgstr "设置导出的 PDF 的页面方向。合法值: {0}。如果未指定�
 
 #:
 msgid "export.options.pagesize"
-msgstr "设置导出的 PDF 的页面大小。合法值: {0} (默认值: ''{1}'')"
+msgstr "设置导出的 PDF 的页面大小。合法值: {0} (默认值: “{1}”)"
 
 #:
 msgid "export.options.pdf"
@@ -2430,11 +2613,19 @@ msgstr "从服务器中导出数据或视图的图像"
 
 #:
 msgid "export.status"
-msgstr "正向服务器请求 ''{0}''..."
+msgstr "正向服务器请求 “{0}”..."
+
+#:
+msgid "export.status.writing"
+msgstr "正在向“{0}”写入响应"
+
+#:
+msgid "export.status.error"
+msgstr "写入文件时出错:"
 
 #:
 msgid "export.success"
-msgstr "已将 {0} 保存到 ''{1}''"
+msgstr "已将 {0} 保存到 “{1}”"
 
 #:
 msgid "extracts.workbook.errors.requires_datasources_or_include_all"
@@ -2450,7 +2641,7 @@ msgstr "从服务器中获取文件。如果未指定文件名参数，则将使
 
 #:
 msgid "get.errors.requires_url"
-msgstr "''{0}'' 命令需要 URL"
+msgstr "“{0}” 命令需要 URL"
 
 #:
 msgid "get.options.file"
@@ -2518,7 +2709,7 @@ msgstr "正列出服务器中的域..."
 
 #:
 msgid "listsites.output"
-msgstr "{0}{0}名称: {1} {0}站点 ID:“{2}”"
+msgstr "{0}{0}名称: {1}{0}站点 ID:“{2}”"
 
 #:
 msgid "listsites.output_extended"
@@ -2554,7 +2745,7 @@ msgstr "将工作簿、数据源或数据提取发布到服务器"
 
 #:
 msgid "publish.errors.invalid_datasource_update_file_type"
-msgstr "用于更新数据源的文件类型 ''{0}'' 不正确。替换/追加仅适用于数据提取 (.tde) 文件"
+msgstr "用于更新数据源的文件类型 “{0}” 不正确。替换/追加仅适用于数据提取 (.tde) 文件"
 
 #:
 msgid "publish.errors.invalid_name_option"
@@ -2562,7 +2753,7 @@ msgstr "在发布多项时，{0} 选项无效"
 
 #:
 msgid "publish.errors.invalid_publish_file_type"
-msgstr "用于发布的文件类型 ''{0}'' 不正确，文件类型应为 .tde、.tds、.tdsx、.twb 或 .twbx"
+msgstr "用于发布的文件类型 “{0}” 不正确，文件类型应为 .tde、.tds、.tdsx、.twb 或 .twbx"
 
 #:
 msgid "publish.errors.mutually_exclusive_option"
@@ -2570,7 +2761,7 @@ msgstr "仅使用 {0} 或 {1} 之一"
 
 #:
 msgid "publish.errors.requires_resource_file"
-msgstr "''{0}'' 命令需要工作簿、数据源或数据提取文件"
+msgstr "“{0}” 命令需要工作簿、数据源或数据提取文件"
 
 #:
 msgid "publish.errors.unexpected_server_response"
@@ -2654,7 +2845,7 @@ msgstr "如果工作簿包含任何用户筛选器，则在计算缩略图时模
 
 #:
 msgid "publish.status"
-msgstr "正在将 ''{0}'' 发布到服务器。这可能需要几分钟时间..."
+msgstr "正在将 “{0}” 发布到服务器。这可能需要几分钟时间..."
 
 #:
 msgid "publish.success"
@@ -2714,7 +2905,7 @@ msgstr "包含要刷新的数据提取的项目的父项目路径。必须使用
 
 #:
 msgid "refreshextracts.options.project"
-msgstr "包含工作簿/数据源的项目的名称。仅在指定了 {0} 或 {1} 时才需要。如果未指定，则使用默认项目 ''{2}''"
+msgstr "包含工作簿/数据源的项目的名称。仅在指定了 {0} 或 {1} 时才需要。如果未指定，则使用默认项目 “{2}”"
 
 #:
 msgid "refreshextracts.options.synchronous"
@@ -2742,11 +2933,11 @@ msgstr "刷新服务器上的工作簿或数据源的数据提取"
 
 #:
 msgid "refreshextracts.status_incremented"
-msgstr "正在安排要立即递增的 {0} ''{1}'' 数据提取..."
+msgstr "正在安排要立即递增的 {0} “{1}” 数据提取..."
 
 #:
 msgid "refreshextracts.status_refreshed"
-msgstr "正在安排要立即刷新的 {0} ''{1}'' 数据提取..."
+msgstr "正在安排要立即刷新的 {0} “{1}” 数据提取..."
 
 #:
 msgid "removeusers.options.users"
@@ -2762,7 +2953,7 @@ msgstr "正从组 {1} 中移除在 {0} 中列出的用户..."
 
 #:
 msgid "runschedule.errors.requires_schedule_name"
-msgstr "''{0}'' 命令需要计划名称"
+msgstr "“{0}” 命令需要计划名称"
 
 #:
 msgid "runschedule.short_description"
@@ -2770,7 +2961,7 @@ msgstr "运行计划"
 
 #:
 msgid "runschedule.status"
-msgstr "正在服务器上运行计划 ''{0}''..."
+msgstr "正在服务器上运行计划 “{0}”..."
 
 #:
 msgid "materializeviews.short_description"
@@ -2855,6 +3046,10 @@ msgstr "证书别名: {0}"
 #:
 msgid "session.connecting"
 msgstr "正在连接到服务器..."
+
+#:
+msgid "session.connecting_to"
+msgstr "正在连接到 url ({0}): {1}"
 
 #:
 msgid "session.continuing_session"
@@ -2946,7 +3141,7 @@ msgstr "您不是默认站点的成员。请从以下站点中选择一个 SITEI
 
 #:
 msgid "session.not_site_member"
-msgstr "您不是站点 ''{0}'' 的成员。请从以下站点中选择一个 SITEID:"
+msgstr "您不是站点 “{0}” 的成员。请从以下站点中选择一个 SITEID:"
 
 #:
 msgid "session.options.help"
@@ -2986,7 +3181,7 @@ msgstr "使用指定的 Tableau Server URL。如果未指定协议，则使用 h
 
 #:
 msgid "session.options.site"
-msgstr "使用指定的 Tableau Server 站点。指定空字符串('''')可强制使用默认站点"
+msgstr "使用指定的 Tableau Server 站点。指定空字符串("")可强制使用默认站点"
 
 #:
 msgid "session.options.timeout"
@@ -3003,6 +3198,10 @@ msgstr "使用指定的 Tableau Server 用户名"
 #:
 msgid "session.password"
 msgstr "密码:"
+
+#:
+msgid "session.redirecting"
+msgstr "正在重定向到 {0}"
 
 #:
 msgid "session.retrying_task"
@@ -3022,7 +3221,7 @@ msgstr "使用客户端证书登录"
 
 #:
 msgid "session.inferred_username"
-msgstr "正在以“{0}”用户身份登录，因为未提供 --username 标志"
+msgstr "正在以“{0}”用户身份登录，因为未提供 --username 标志。"
 
 #:
 msgid "sessiondata.errors.bad_api"
@@ -3038,15 +3237,15 @@ msgstr "Tabcmd 版本 {0} (API {1})与 Tableau Server 版本 {2} (API {3})不匹
 
 #:
 msgid "sessionoptions.errors.ambiguous_scheme"
-msgstr "指定服务器名称前的 ''{0}'' 或 ''{1}''"
+msgstr "指定服务器名称前的 “{0}” 或 “{1}”"
 
 #:
 msgid "sessionoptions.errors.bad_password_file"
-msgstr "无法从文件 ''{0}'' 中读取密码"
+msgstr "无法从文件 “{0}” 中读取密码"
 
 #:
 msgid "sessionoptions.errors.bad_protocol"
-msgstr "不支持协议 ''{0}''"
+msgstr "不支持协议 “{0}”"
 
 #:
 msgid "sessionoptions.errors.bad_proxy_format"
@@ -3054,7 +3253,7 @@ msgstr "代理格式不符合 HOST:PORT: {0}"
 
 #:
 msgid "sessionoptions.errors.bad_timeout"
-msgstr "已忽略 {0} ''{1}'' 的非数字参数"
+msgstr "已忽略 {0} “{1}” 的非数字参数"
 
 #:
 msgid "set.description"
@@ -3062,11 +3261,11 @@ msgstr "设置服务器上的某个设置。使用 !setting 关闭设置"
 
 #:
 msgid "set.errors.requires_setting_name"
-msgstr "''{0}'' 命令需要设置名称"
+msgstr "“{0}” 命令需要设置名称"
 
 #:
 msgid "set.errors.single_setting_name"
-msgstr "''{0}'' 命令获取单个设置名称"
+msgstr "“{0}” 命令获取单个设置名称"
 
 #:
 msgid "set.short_description"
@@ -3074,7 +3273,7 @@ msgstr "设置服务器上的某个设置"
 
 #:
 msgid "setsetting.status"
-msgstr "正在将 ''{0}'' 设置为 {1}"
+msgstr "正在将 “{0}” 设置为 {1}"
 
 #:
 msgid "syncgroup.errors.server_admin"
@@ -3102,11 +3301,11 @@ msgstr "正在使服务器与 Active Directory 组 {0} 同步..."
 
 #:
 msgid "syncgroup.options.sysadmin-type"
-msgstr "[已弃用。请改用 --role。] 为本组中的所有用户分配 [或删除] 管理员权限。{0} 可以是：{1}、{2}、{3} 或 {4}。"
+msgstr "[已弃用。请改用 --role。] 为本组中的所有用户分配 [或删除] 管理员权限。{0} 可以是: {1}、{2}、{3} 或 {4}。"
 
 #:
 msgid "syncgroup.options.license"
-msgstr "[已弃用。请改用 --role。] 为本组中的所有用户设置默认许可级别。{0} 可以是：{1}、{2} 或 {3}。"
+msgstr "[已弃用。请改用 --role。] 为本组中的所有用户设置默认许可级别。{0} 可以是: {1}、{2} 或 {3}。"
 
 #:
 msgid "syncgroup.options.publisher"
@@ -3114,11 +3313,11 @@ msgstr "[已弃用。请改用 --role。] 为本组中的所有用户分配 [或
 
 #:
 msgid "tabcmd.mutually_exclusive_options"
-msgstr "无法在同一命令中指定 ''{0}'' 和 ''{1}''"
+msgstr "无法在同一命令中指定 “{0}” 和 “{1}”"
 
 #:
 msgid "tabcmdparser.errors.ambiguous_option"
-msgstr "选项中的不明确选项 ''{0}'': {1}"
+msgstr "选项中的不明确选项 “{0}”: {1}"
 
 #:
 msgid "tabcmdparser.warning.unexpected_dash"
@@ -3154,11 +3353,11 @@ msgstr "VizQl 会话对象已关闭"
 
 #:
 msgid "vizqlsession.errors.cannot_parse_response"
-msgstr "无法分析 JSON 响应字符串: {0}"
+msgstr "无法解析 JSON 响应字符串: {0}"
 
 #:
 msgid "upgradethumbnails.short_description"
-msgstr "这将运行“升级缩略图”后台程序作业。这会将 Tableau 2018.2 之前生成的任何缩略图重新渲染为高分辨率。这可能会增加 Tableau Server 和外部数据源的负载。如果出现任何问题，可通过运行 tabcmd upgradethumbnails --server <server> --stop 来停止作业"
+msgstr "这将运行“升级缩略图”后台程序作业。这会将 Tableau 2018.2 之前生成的任何缩略图重新渲染为高分辨率。这可能会增加 Tableau Server 和外部数据源的负载。如果出现任何问题，可通过运行tabcmd upgradethumbnails --server <server> --stop 来停止作业"
 
 #:
 msgid "upgradethumbnails.options.stop"
@@ -3178,7 +3377,7 @@ msgstr "正在取消缩略图升级作业"
 
 #:
 msgid "upgradethumbnails.continue_promt"
-msgstr "是否要继续? 输入 1 表示是，输入 0 表示否(1/0)"
+msgstr "是否要继续?输入 1 表示是，输入 0 表示否(1/0)"
 
 #:
 msgid "upgradethumbnails.invalid_response"
@@ -3204,72 +3403,99 @@ msgstr "要对其执行证书验证的站点名称的空格分隔列表。如果
 msgid "validateidpmetadata.short_description"
 msgstr "标识使用不安全摘要算法 SHA-1 配置了 IdP 的 Tableau Server 站点。此命令还标识使用 RSA 密钥大小或椭圆曲线大小不足的证书的 IdP。"
 
+#:
+msgid "tabcmd.content.description"
+msgstr "项的描述。"
 
-msgid ""
-msgstr ""
-"MIME-Version: 1.0"
-"Content-Type: text/plain; charset=utf-8"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: prop2po"
-"Project-Id-Version: None"
-"Language: zh"
-# Copyright (C) YEAR Tableau Software
+#:
+msgid "tabcmd.content.site_id"
+msgstr "在 URL 中用于唯一标识站点。与站点名称不同。"
 
+#:
+msgid "tabcmd.howto"
+msgstr "运行特定命令"
 
-# These outcome reporting lines were all returned from the server in clientxml
-# https://sourcegraph.prod.tableautools.com/teams/near/-/blob/workgroup/src/shared/libraries/tab-strings/res/localization/shared_wg_en.properties
-# how much of this can be replaced by server responses?
+#:
+msgid "tabcmd.name"
+msgstr "Tableau Server 命令行实用程序"
 
-msgid "tabcmd.result.already_exists.group"
-msgstr "Group called ''{}'' already exists"
+#:
+msgid "tabcmd.options.project"
+msgstr "项目的名称"
 
-msgid "tabcmd.result.failed.delete.group"
-msgstr "Error deleting group from server"
+#:
+msgid "tabcmd.options.parent_project"
+msgstr "包含目标项的项目的路径。"
 
-msgid "tabcmd.result.success.create_user"
-msgstr "Successfully created user: {}"
+#:
+msgid "tabcmd.options.workbook"
+msgstr "目标工作簿的名称"
 
-msgid "tabcmd.report.users_added"
-msgstr "Number of users added: {}"
+#:
+msgid "tabcmd.options.datasource"
+msgstr "目标数据源的名称"
 
-msgid "tabcmd.report.errors"
-msgstr "Error details: \n{}"
+#:
+msgid "tabcmd.options.materializeviews"
+msgstr "通过实体化所有视图的计算(如果已启用)来调整此工作簿的性能。"
 
-msgid "tabcmd.report.error.user_csv.too_many_columns"
-msgstr "The file contains {} columns, but there are only {} valid columns in a user import csv file"
+#:
+msgid "tabcmd.options.dematerialize"
+msgstr "通过禁用所有视图的实体化计算(如果已启用)来调整此工作簿的性能。"
 
-msgid "tabcmd.report.error.user_csv.at_char"
-msgstr "If a user name includes an @ character that represents anything other than a domain separator, "
-                    "you need to refer to the symbol using the hexadecimal format: \\0x40"
+#:
+msgid "tabcmd.options.complete"
+msgstr "要求所有行都有效才能成功进行任何更改。(默认值为 true)"
 
-msgid "tabcmd.report.error.user.no_spaces_in_username"
-msgstr "Username cannot contain spaces"
+#:
+msgid "tabcmd.options.no_complete"
+msgstr "不要求所有行都有效才能使任何更改成功。"
 
-msgid "tabcmd.report.error.generic_attribute"
-msgstr "Invalid value for {0}: {1}"
+#:
+msgid "tabcmd.options.users_file"
+msgstr "包含用户列表的 CSV 文件，每行一个用户"
 
-msgid "tabcmd.report.error.publish_samples.expected_project"
-msgstr "publishsamples expects the specified project to exist already"
+#:
+msgid "tabcmd.options.token_file"
+msgstr "从文件中读取个人访问令牌。"
 
-msgid "tabcmd.result.failure.publish_samples"
-msgstr "Failed publishing samples to project"
+#:
+msgid "tabcmd.options.token_name"
+msgstr "您的个人访问令牌的名称。如果使用令牌登录，则至少需要登录一次才能开始会话。"
 
-msgid "tabcmd.launching"
-msgstr "======================= Launching command ======================="
+#:
+msgid "tabcmd.options.token_value"
+msgstr "用于身份验证的个人访问令牌的密文值。需要设置 --token-name。"
 
-msgid "tabcmd.find.group"
-msgstr "Finding group ''{}'' on server..."
+#:
+msgid "tabcmd.options.language.detailed"
+msgstr "设置要使用的语言。导出的数据将以该语言/区域设置返回。   如果未设置，客户端将使用您的计算机区域设置，服务器将使用您的用户帐户区域设置"
 
-# Each actual command has a status line in translation
+#:
+msgid "tabcmd.options.conflicts"
+msgstr "将资源冲突视为项创建成功，例如项目已存在"
 
-msgid "tabcmd.add.users.to_site"
-msgstr "===== Adding users listed in {0} to {1}..."
+#:
+msgid "tabcmd.options.log"
+msgstr "使用指定的日志记录级别。默认级别为 INFO。"
 
-msgid "tabcmd.delete.users.from_server"
-msgstr "Removing users listed in {0} from the server..."
+#:
+msgid "tabcmd.publish.options.restart"
+msgstr "[已弃用 - 没有效果]"
 
-msgid "tabcmd.get.extension.not_found"
-msgstr "You must specify a file type in the url or filename"
+#:
+msgid "tabcmd.publish.options.tabbed.detailed"
+msgstr "启用选项卡式视图发布。每个工作表都成为一个选项卡，查看者可以使用它在工作簿中导航。"
 
-msgid "tabcmd.run_schedule.options.schedule"
-msgstr "Name of the schedule to run"
+#:
+msgid "tabcmd.publish.options.append.detailed"
+msgstr "将正在发布的数据追加到同名的现有数据源。如果 append 设置为 true，但数据源尚不存在，操作将失败。"
+
+#:
+msgid "tabcmd.publish.options.disable-uploader"
+msgstr "[已弃用 - 没有效果]"
+
+#:
+msgid "tabcmd.refresh.options.bridge"
+msgstr "通过 Tableau Bridge 刷新数据源"
+

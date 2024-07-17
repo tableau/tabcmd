@@ -1,5 +1,3 @@
-
-
 msgid ""
 msgstr ""
 "MIME-Version: 1.0"
@@ -8,74 +6,7 @@ msgstr ""
 "X-Generator: prop2po"
 "Project-Id-Version: None"
 "Language: ko"
-# Copyright (C) YEAR Tableau Software
-
-
-# These outcome reporting lines were all returned from the server in clientxml
-# https://sourcegraph.prod.tableautools.com/teams/near/-/blob/workgroup/src/shared/libraries/tab-strings/res/localization/shared_wg_en.properties
-# how much of this can be replaced by server responses?
-
-msgid "tabcmd.result.already_exists.group"
-msgstr "Group called ''{}'' already exists"
-
-msgid "tabcmd.result.failed.delete.group"
-msgstr "Error deleting group from server"
-
-msgid "tabcmd.result.success.create_user"
-msgstr "Successfully created user: {}"
-
-msgid "tabcmd.report.users_added"
-msgstr "Number of users added: {}"
-
-msgid "tabcmd.report.errors"
-msgstr "Error details: \n{}"
-
-msgid "tabcmd.report.error.user_csv.too_many_columns"
-msgstr "The file contains {} columns, but there are only {} valid columns in a user import csv file"
-
-msgid "tabcmd.report.error.user_csv.at_char"
-msgstr "If a user name includes an @ character that represents anything other than a domain separator, "
-                    "you need to refer to the symbol using the hexadecimal format: \\0x40"
-
-msgid "tabcmd.report.error.user.no_spaces_in_username"
-msgstr "Username cannot contain spaces"
-
-msgid "tabcmd.report.error.generic_attribute"
-msgstr "Invalid value for {0}: {1}"
-
-msgid "tabcmd.report.error.publish_samples.expected_project"
-msgstr "publishsamples expects the specified project to exist already"
-
-msgid "tabcmd.result.failure.publish_samples"
-msgstr "Failed publishing samples to project"
-
-msgid "tabcmd.launching"
-msgstr "======================= Launching command ======================="
-
-msgid "tabcmd.find.group"
-msgstr "Finding group ''{}'' on server..."
-
-# Each actual command has a status line in translation
-
-msgid "tabcmd.add.users.to_site"
-msgstr "===== Adding users listed in {0} to {1}..."
-
-msgid "tabcmd.delete.users.from_server"
-msgstr "Removing users listed in {0} from the server..."
-
-msgid "tabcmd.get.extension.not_found"
-msgstr "You must specify a file type in the url or filename"
-
-msgid "tabcmd.run_schedule.options.schedule"
-msgstr "Name of the schedule to run"
-msgid ""
-msgstr ""
-"MIME-Version: 1.0"
-"Content-Type: text/plain; charset=utf-8"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: prop2po"
-"Project-Id-Version: None"
-"Language: ko"
+# Copyright (C) YEAR Tableau Software 
 #:
 msgid "permissions.labels.capabilities.read"
 msgstr "보기:"
@@ -314,11 +245,11 @@ msgstr "{0}KB"
 
 #:
 msgid "errors.argument.flow_description.too_long"
-msgstr "흐름 설명이 너무 깁니다({0}자). {1}자보다 짧아야 합니다.{2}"
+msgstr "흐름 설명이 너무 깁니다({0}자).  {1}자보다 짧아야 합니다.  {2}"
 
 #:
 msgid "errors.argument.workbook_name.too_long"
-msgstr "통합 문서 이름이 너무 깁니다({0}자).  {1}자보다 짧아야 합니다.{2}"
+msgstr "통합 문서 이름이 너무 깁니다({0}자).  {1}자보다 짧아야 합니다.  {2}"
 
 #:
 msgid "errors.argument.workbook_name.empty"
@@ -326,15 +257,15 @@ msgstr "통합 문서 이름이 비어 있습니다."
 
 #:
 msgid "errors.argument.workbook_description.too_long"
-msgstr "통합 문서 설명이 너무 깁니다({0}자). {1}자보다 짧아야 합니다.{2}"
+msgstr "통합 문서 설명이 너무 깁니다({0}자).  {1}자보다 짧아야 합니다.  {2}"
 
 #:
 msgid "errors.argument.worksheet_name.too_long"
-msgstr "워크시트 이름이 너무 깁니다({0}자). {1}자보다 짧아야 합니다.{2}"
+msgstr "워크시트 이름이 너무 깁니다({0}자). {1}자보다 짧아야 합니다.  {2}"
 
 #:
 msgid "errors.argument.datasource_name.too_long"
-msgstr "데이터 원본 이름이 너무 깁니다({0}자). {1}자보다 짧아야 합니다.{2}"
+msgstr "데이터 원본 이름이 너무 깁니다({0}자). {1}자보다 짧아야 합니다.  {2}"
 
 #:
 msgid "errors.argument.datasource_name.empty"
@@ -342,19 +273,27 @@ msgstr "데이터 원본이 비어 있습니다."
 
 #:
 msgid "errors.argument.datasource_description.too_long"
-msgstr "데이터 원본 설명이 너무 깁니다({0}자). {1}자보다 짧아야 합니다.{2}"
+msgstr "데이터 원본 설명이 너무 깁니다({0}자). {1}자보다 짧아야 합니다.  {2}"
 
 #:
 msgid "errors.argument.dataconnection_column.too_long"
-msgstr "DataConnection column {0} is too long ({1} characters).  It must be shorter than {2} characters:{3}"
+msgstr "DataConnection 열 {0}이(가) 너무 깁니다({1}자).  {2}자보다 짧아야 합니다.  {3}"
 
 #:
 msgid "errors.argument.tag.too_long"
-msgstr "태그가 너무 깁니다({0}자). {1}자보다 짧아야 합니다.{2}"
+msgstr "태그가 너무 깁니다({0}자). {1}자보다 짧아야 합니다.  {2}"
 
 #:
 msgid "errors.argument.workbook_file.missing_or_empty"
 msgstr "통합 문서 파일이 없거나 비어 있습니다."
+
+#:
+msgid "errors.argument.file.size.too_large"
+msgstr "{0} 파일이 너무 큽니다. 압축 해제 크기가 {1}MB보다 큰 파일은 허용되지 않습니다. 게시를 진행하려면 추출을 만드십시오."
+
+#:
+msgid "errors.argument.twb_or_tds_file.missing"
+msgstr "아카이브에 twb 또는 tds 파일이 없습니다."
 
 #:
 msgid "errors.argument.internal"
@@ -394,27 +333,27 @@ msgstr "통합 문서 삭제"
 
 #:
 msgid "errors.permissions.publish.datasource.licensing"
-msgstr "데이터 원본을 게시하려면 ''인터랙터''여야 합니다."
+msgstr "데이터 원본을 게시하려면 ’인터랙터’여야 합니다."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite"
-msgstr "이름이 ''{0}''인 데이터 원본이 프로젝트 ''{1}''에 이미 있습니다. 덮어쓸 사용 권한이 없습니다."
+msgstr "이름이 ’{0}’인 데이터 원본이 프로젝트’{1}’에 이미 있습니다. 덮어쓸 사용 권한이 없습니다."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_personal_space"
-msgstr "이름이 ''{0}''인 데이터 원본이 개인 공간에 이미 있습니다. 덮어쓸 사용 권한이 없습니다."
+msgstr "이름이 ’{0}’인 데이터 원본이 개인 공간에 이미 있습니다. 덮어쓸 사용 권한이 없습니다."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short"
-msgstr "이름이 ''{0}''인 데이터 원본이 프로젝트 ''{1}''에 이미 있습니다."
+msgstr "이름이 ’{0}’인 데이터 원본이 프로젝트’{1}’에 이미 있습니다."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "이름이 ''{0}''인 데이터 원본이 개인 공간에 이미 있습니다."
+msgstr "이름이 ’{0}’인 데이터 원본이 개인 공간에 이미 있습니다."
 
 #:
 msgid "errors.permissions.publish.datasource.non_existent"
-msgstr "데이터 원본 ''{0}''이(가) 없습니다."
+msgstr "데이터 원본 ’{0}’이(가) 없습니다."
 
 #:
 msgid "errors.permissions.publish.datasource.general"
@@ -430,11 +369,11 @@ msgstr "죄송합니다. 이 프로젝트에 게시할 수 있는 사용 권한�
 
 #:
 msgid "errors.permissions.publish.project.non_existent"
-msgstr "''{0}'' 프로젝트가 없습니다."
+msgstr "’{0}’ 프로젝트가 없습니다."
 
 #:
 msgid "errors.permissions.publish.project.not_writable"
-msgstr "''{0}'' 프로젝트에 쓸 수 있는 사용 권한이 없습니다."
+msgstr "’{0}’ 프로젝트에 쓸 수 있는 사용 권한이 없습니다."
 
 #:
 msgid "errors.permissions.publish.project.unspecified"
@@ -442,7 +381,7 @@ msgstr "프로젝트를 지정해야 합니다."
 
 #:
 msgid "errors.permissions.publish.workbook.disabled"
-msgstr "''{0}'' 통합 문서를 사용할 수 없습니다."
+msgstr "’{0}’ 통합 문서를 사용할 수 없습니다."
 
 #:
 msgid "errors.permissions.publish.workbook.general"
@@ -454,47 +393,79 @@ msgstr "게시하려는 개인 공간에 이 이름의 통합 문서가 존재�
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite"
-msgstr "이름이 ''{0}''인 통합 문서가 프로젝트 ''{1}''에 이미 있습니다. 덮어쓸 사용 권한이 없습니다."
+msgstr "이름이 ’{0}’인 통합 문서가 프로젝트’{1}’에 이미 있습니다. 덮어쓸 사용 권한이 없습니다."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_personal_space"
-msgstr "이름이 ''{0}''인 통합 문서가 개인 공간에 이미 있습니다. 덮어쓸 사용 권한이 없습니다."
+msgstr "이름이 ’{0}’인 통합 문서가 개인 공간에 이미 있습니다. 덮어쓸 사용 권한이 없습니다."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short"
-msgstr "이름이 ''{0}''인 통합 문서가 프로젝트 ''{1}''에 이미 있습니다."
+msgstr "이름이 ’{0}’인 통합 문서가 프로젝트’{1}’에 이미 있습니다."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
-msgstr "이름이 ''{0}''인 통합 문서가 개인 공간에 이미 있습니다."
+msgstr "이름이 ’{0}’인 통합 문서가 개인 공간에 이미 있습니다."
 
 #:
 msgid "errors.reportable.impersonation.group_and_user"
-msgstr "''impersonate_username'' 또는 ''impersonate_groupname'' 중 하나만 지정합니다."
+msgstr "’impersonate_username’ 또는 ’impersonate_groupname’ 중 하나만 지정합니다."
 
 #:
 msgid "errors.reportable.impersonation.user_not_found"
-msgstr "''{0}'' 사용자가 없습니다."
+msgstr "’{0}’ 사용자가 없습니다."
 
 #:
 msgid "errors.reportable.impersonation.group_not_found"
-msgstr "''{0}'' 그룹이 없습니다. "
+msgstr "’{0}’ 그룹이 없습니다."
 
 #:
 msgid "errors.public.validation.hasextract"
-msgstr "Tableau Public에 저장된 통합 문서는 활성 Tableau 추출을 사용해야 합니다. 게시하기 전에 데이터 원본을 마우스 오른쪽 단추로 클릭하여 [추출 사용]을 선택합니다. 데이터 원본 ''{0}''이(가) 활성 추출이 아닙니다."
+msgstr "Tableau Public에 저장된 통합 문서는 활성 Tableau 추출을 사용해야 합니다. 게시하기 전에 데이터 원본을 마우스 오른쪽 단추로 클릭하여 [추출 사용]을 선택합니다. 데이터 원본 ’{0}’이(가) 활성 추출이 아닙니다."
+
+#:
+msgid "errors.public.validation.storage_quota_exceeded"
+msgstr "게시하려는 콘텐츠가 계정의 최대 용량을 초과합니다. 일부 콘텐츠를 삭제하여 공간을 확보한 후 다시 시도하십시오."
+
+#:
+msgid "errors.public.validation.invalid_archive_file"
+msgstr "게시하려는 통합 문서가 유효한 통합 문서가 아닙니다."
 
 #:
 msgid "errors.publish.dataserver_datasource_not_found"
-msgstr "''{0}'' 데이터 원본이 ''{1}'' 통합 문서에 없습니다."
+msgstr "’{0}’ 데이터 원본이 ’{1}’ 통합 문서에 없습니다."
 
 #:
 msgid "errors.publish.datasource_update_mode"
-msgstr "알 수 없는 업데이트 모드: ''{0}''."
+msgstr "알 수 없는 업데이트 모드: ’{0}’."
 
 #:
-msgid "errors.publish.workbook.concurrent_update"
-msgstr "동일한 이름의 통합 문서가 현재 게시 또는 수정되고 있습니다. 작업이 완료될 때까지 기다린 후 다시 시도해 주십시오."
+msgid "errors.publish.fileupload.invalid_checksum"
+msgstr "잘못된 체크섬 값을 입력했습니다."
+
+#:
+msgid "errors.publish.fileupload.invalid_hash_algorithm"
+msgstr "해시 알고리즘은 지원되지 않거나 사용되지 않도록 설정되어 있습니다."
+
+#:
+msgid "errors.publish.fileupload.invalid_offset"
+msgstr "기록된 파일 크기와 일치하지 않는 오프셋으로 파일 업로드에 추가하십시오."
+
+#:
+msgid "errors.publish.fileupload.concurrent_write"
+msgstr "파일이 다른 업로드 작업에 의해 잠겨 있으므로 파일을 단독으로 잠글 수 없습니다."
+
+#:
+msgid "errors.publish.fileupload.flushing_file_buffer"
+msgstr "업로드 중 파일 버퍼를 플러시하지 못했습니다."
+
+#:
+msgid "errors.publish.fileupload.read_or_write"
+msgstr "클라이언트에서 읽지 못했거나 업로드된 파일에 쓰지 못했습니다."
+
+#:
+msgid "errors.publish.fileupload.concurrent_update"
+msgstr "동일한 이름의 콘텐츠가 현재 업로드 또는 수정되고 있습니다. 작업이 완료될 때까지 기다린 후 다시 시도해 주십시오."
 
 #:
 msgid "errors.publish.workbook.restricted"
@@ -511,6 +482,22 @@ msgstr "데이터 원본에 이 서버에 허용되지 않는 연결 유형이 �
 #:
 msgid "errors.publish.datasource.connection_check"
 msgstr "{0}에서 데이터 원본에 대한 연결을 설정하지 못했습니다."
+
+#:
+msgid "errors.publish.file.connection.unauthorized"
+msgstr "이 흐름에 사이트 관리자가 차단한 파일 입력 연결이 있습니다. 흐름을 게시하려면 모든 입력 연결이 Tableau Cloud에 이미 게시된 Tableau 추출이어야 합니다."
+
+#:
+msgid "errors.publish.flow.connection_check"
+msgstr "’{0}’ 흐름을 게시하지 못했습니다. 서버를 데이터 원본 유형 ’{1}’에 연결할 수 없습니다. 데이터 원본이 지원되는지, 데이터 원본용 드라이버 또는 커넥터 플러그인이 설치되어 있는지 확인하십시오."
+
+#:
+msgid "errors.publish.workbook.requested_extract_encryption_on_server_with_disabled_encryption"
+msgstr "암호화된 추출을 사용하여 통합 문서를 게시할 수 없습니다. 이 서버에서 추출 암호화가 사용되지 않도록 설정되었습니다. 암호화되지 않은 추출을 사용하여 통합 문서를 게시해야 합니다."
+
+#:
+msgid "errors.publish.datasource.requested_extract_encryption_on_server_with_disabled_encryption"
+msgstr "데이터 원본을 암호화된 추출로 게시할 수 없습니다. 이 서버에서 추출 암호화가 사용되지 않도록 설정되었습니다. 암호화되지 않은 추출을 게시해야 합니다."
 
 #:
 msgid "errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption"
@@ -554,7 +541,7 @@ msgstr "이 콘텐츠는 개인 공간 용량을 {0}만큼 초과합니다."
 
 #:
 msgid "errors.web_authoring.workbook_deleted"
-msgstr "''{0}'' 통합 문서가 삭제되었습니다.  새 통합 문서로 저장하려면 ''다른 이름으로 저장''을 선택하십시오."
+msgstr "’{0}’ 통합 문서가 삭제되었습니다.  새 통합 문서로 저장하려면 ’다른 이름으로 저장’을 선택하십시오."
 
 #:
 msgid "errors.web_authoring.workbook_changed"
@@ -566,19 +553,19 @@ msgstr "데이터 원본에 대한 비밀번호 내장"
 
 #:
 msgid "errors.publish.workbook.google_no_embedded_credentials"
-msgstr "이 통합 문서에는 내장된 자격 증명이 필요한 {0} 데이터 원본이 포함되어 있습니다. 다른 통합 문서로 저장하려면 ''{1}''을(를) 선택하십시오."
+msgstr "이 통합 문서에는 내장된 자격 증명이 필요한 {0} 데이터 원본이 포함되어 있습니다. 다른 통합 문서로 저장하려면 ’{1}’을(를) 선택하십시오."
 
 #:
 msgid "errors.publish.datasource.google_no_embedded_credentials"
-msgstr "이 데이터 원본에는 내장된 자격 증명이 필요한 {0} 연결이 포함되어 있습니다. 내장된 자격 증명을 사용하여 Tableau Desktop에서 이 데이터 원본을 게시하십시오."
+msgstr "이 데이터 원본에는 내장된 자격 증명이 필요한 {0} 연결이 포함되어 있습니다.  내장된 자격 증명을 사용하여 Tableau Desktop에서 이 데이터 원본을 게시하십시오."
 
 #:
 msgid "errors.publish.datasource.federated_oauth_datasource_failed"
-msgstr "데이터 원본에 있는 하나 이상의 연결에 대한 자격 증명이 만료되었습니다. Tableau Server 또는 Tableau Online의 계정 설정 페이지에서 이 데이터 원본에 대해 저장된 자격 증명을 삭제한 다음 데이터 원본에 다시 연결하십시오."
+msgstr "데이터 원본에 있는 하나 이상의 연결에 대한 자격 증명이 만료되었습니다. Tableau Server 또는 Tableau Cloud의 계정 설정 페이지에서 이 데이터 원본에 대해 저장된 자격 증명을 삭제한 다음 데이터 원본에 다시 연결하십시오."
 
 #:
 msgid "errors.publish.workbook.missing_oauth_credential"
-msgstr "자격 증명 ''{0}''을(를) 찾을 수 없거나 데이터 원본 또는 통합 문서에 연결하는 데 사용할 수 없습니다."
+msgstr "자격 증명 ’{0}’을(를) 찾을 수 없거나 데이터 원본 또는 통합 문서에 연결하는 데 사용할 수 없습니다."
 
 #:
 msgid "errors.publish.version_incompatible.message"
@@ -586,15 +573,11 @@ msgstr "데스크톱 버전과 서버 버전이 호환되지 않습니다."
 
 #:
 msgid "errors.publish.version_incompatible.details"
-msgstr "데스크톱 버전은 ''{0}''이고 서버 문서 버전은 ''{1}''입니다."
+msgstr "데스크톱 버전은 ’{0}’이고 서버 문서 버전은 ’{1}’입니다."
 
 #:
 msgid "errors.publish.datasource.managed_keychain.unique_cv_suggestions"
 msgstr "충돌로 인해 게시하지 못했습니다. 변경 내용을 다시 실행 의뢰하십시오."
-
-#:
-msgid "errors.publish.permissions_are_locked"
-msgstr "게시하려는 대상 프로젝트에서 사용 권한이 잠겨 있습니다. 이 통합 문서를 게시하려면 기본 사용 권한을 사용하여 다시 시도하십시오."
 
 #:
 msgid "errors.publish.datasource.not.found"
@@ -625,16 +608,32 @@ msgid "errors.publish.async.serialization"
 msgstr "게시 작업 상태 오류를 직렬화할 수 없습니다."
 
 #:
+msgid "errors.publish.only_extract_files_are_allowed.message"
+msgstr "Tableau Server에 게시할 수 없음"
+
+#:
+msgid "errors.publish.only_extract_files_are_allowed.details"
+msgstr "관리자가 이 유형의 파일을 차단했기 때문에 {0} 파일을 업로드할 수 없습니다. 추출로 변환한 후 다시 시도하십시오."
+
+#:
+msgid "errors.publish.validation.invalid_zip_file"
+msgstr "게시하려는 통합 문서 또는 데이터 원본 아카이브가 잘못되었습니다."
+
+#:
 msgid "errors.permissions.view.datasources"
-msgstr "데이터 원본의 목록을 보려면 ''인터랙터''여야 합니다."
+msgstr "데이터 원본의 목록을 보려면 ’인터랙터’여야 합니다."
 
 #:
 msgid "errors.oauth.invalid_oauth_class"
-msgstr "''{0}''은(는) 유효한 OAuth 연결 유형이 아닙니다."
+msgstr "’{0}’은(는) 유효한 OAuth 연결 유형이 아닙니다."
 
 #:
 msgid "errors.xmlapi.bad_request"
 msgstr "잘못된 요청"
+
+#:
+msgid "errors.xmlapi.payload_too_large"
+msgstr "페이로드가 너무 큼"
 
 #:
 msgid "errors.xmlapi.unauthorized"
@@ -650,7 +649,7 @@ msgstr "사용자 계정이 잠겨 있거나 유효하지 않습니다."
 
 #:
 msgid "errors.xmlapi.site_user_not_found"
-msgstr "사용자 계정이 활성 상태가 아닙니다. 도움이 필요하면 {0} 관리자에게 문의하십시오."
+msgstr "이 사용자 계정은 활성 상태가 아닙니다. 도움이 필요하면 {0} 관리자에게 문의하십시오."
 
 #:
 msgid "errors.xmlapi.not_found"
@@ -685,10 +684,6 @@ msgid "errors.xmlapi.site_locked"
 msgstr "이 사이트는 잠겼습니다. 지금은 로그인할 수 없습니다."
 
 #:
-msgid "errors.xmlapi.permission_modification"
-msgstr "수정된 사용 권한을 사용하여 게시할 수 없습니다."
-
-#:
 msgid "errors.xmlapi.update_desktop"
 msgstr "다른 작성자가 만든 통합 문서를 열려면 http://public.tableau.com/에서 Tableau Desktop Public Edition의 최신 버전을 다운로드하십시오."
 
@@ -698,11 +693,23 @@ msgstr "요청이 너무 많습니다."
 
 #:
 msgid "errors.xmlapi.throttled.detail"
-msgstr "''{0}''에 대한 요청이 너무 많습니다. {1} 후에 다시 시도하십시오."
+msgstr "’{0}’에 대한 요청이 너무 많습니다. {1} 후에 다시 시도하십시오."
+
+#:
+msgid "errors.xmlapi.personal_space_quota_exceeded.summary"
+msgstr "개인 공간에 게시할 수 없음"
+
+#:
+msgid "errors.xmlapi.personal_space_quota_exceeded.detail"
+msgstr "기존 개인 공간 콘텐츠를 삭제하거나 이동한 다음 다시 게시해보십시오."
 
 #:
 msgid "datasource.publish.check.unpublishable"
 msgstr "데이터 원본을 게시할 수 없습니다."
+
+#:
+msgid "datasource.publish.check.unpublishable.table_extension_extract_required"
+msgstr "추출이 필요한 연결이 있는 테이블 확장 프로그램을 게시할 수 없습니다."
 
 #:
 msgid "datasource.publish.check.publishable.extract_required"
@@ -710,11 +717,11 @@ msgstr "게시에 대한 추출을 만들어야 합니다."
 
 #:
 msgid "datasource.publish.check.publishable.credentials_required"
-msgstr "라이브 데이터 연결을 유지할 수 있는지 확인하기 위해 {1}에서 ''{0}''에 대해 제공된 자격 증명에 일시적으로 액세스합니다."
+msgstr "라이브 데이터 연결을 유지할 수 있는지 확인하기 위해 {1}에서 ’{0}’에 대해 제공된 자격 증명에 일시적으로 액세스합니다."
 
 #:
 msgid "datasource.publish.check.publishable.server_unreachable"
-msgstr "{1}에서 ''{0}''에 연결할 수 없습니다. 게시하면 추출이 만들어집니다."
+msgstr "{1}에서 ’{0}’에 연결할 수 없습니다. 게시하면 추출이 만들어집니다."
 
 #:
 msgid "publish.bundles.workbook.subscription.subject"
@@ -726,139 +733,147 @@ msgstr "Salesforce 데이터가 통합 문서에 추가되었습니다. 시작�
 
 #:
 msgid "extracts.status.finished.upload.workbook"
-msgstr "통합 문서 ''{1}'' {2}에 대한 추출 업로드를 완료했습니다(새 추출 ID: {0})."
+msgstr "통합 문서 ’{1}’ {2}에 대한 추출 업로드를 완료했습니다(새 추출 ID: {0})."
 
 #:
 msgid "extracts.status.finished.refresh.workbook"
-msgstr "통합 문서 ''{1}'' {2}에 대한 추출 새로 고침을 완료했습니다(새 추출 ID: {0})"
+msgstr "통합 문서 ’{1}’ {2}에 대한 추출 새로 고침을 완료했습니다(새 추출 ID: {0})"
 
 #:
 msgid "extracts.status.finished.increment.workbook"
-msgstr "통합 문서 ''{1}'' {2}에 대한 추출 증분을 완료했습니다(새 추출 ID: {0})"
+msgstr "통합 문서 ’{1}’ {2}에 대한 추출 증분을 완료했습니다(새 추출 ID: {0})"
 
 #:
 msgid "extracts.status.finished.encrypt.workbook"
-msgstr "통합 문서 ''{1}''에 대한 추출 암호화를 완료했습니다(새 추출 ID: {0})."
+msgstr "통합 문서 ’{1}’에 대한 추출 암호화를 완료했습니다(새 추출 ID: {0})."
 
 #:
 msgid "extracts.status.finished.decrypt.workbook"
-msgstr "통합 문서 ''{1}''에 대한 추출 암호 해독을 완료했습니다(새 추출 ID: {0})."
+msgstr "통합 문서 ’{1}’에 대한 추출 암호 해독을 완료했습니다(새 추출 ID: {0})."
 
 #:
 msgid "extracts.status.finished.rekey.workbook"
-msgstr "통합 문서 ''{1}''에 대한 추출 재암호화를 완료했습니다(새 추출 ID: {0})."
+msgstr "통합 문서 ’{1}’에 대한 추출 재암호화를 완료했습니다(새 추출 ID: {0})."
 
 #:
 msgid "extracts.status.finished.create.workbook"
-msgstr "통합 문서 ''{1}'' {2}에 대한 추출 생성을 마쳤습니다(새 추출 ID: {0})."
+msgstr "통합 문서 ’{1}’ {2}에 대한 추출 생성을 마쳤습니다(새 추출 ID: {0})."
 
 #:
 msgid "extracts.status.finished.remove.workbook"
-msgstr "통합 문서 ''{1}''에 대한 추출(데이터 원본 ID: {0})을 라이브로 변경하는 작업을 완료했습니다."
+msgstr "통합 문서 ’{1}’에 대한 추출(데이터 원본 ID: {0})을 라이브로 변경하는 작업을 완료했습니다."
 
 #:
 msgid "extracts.status.finished.upload.datasource"
-msgstr "데이터 원본 ''{1}'' {2}에 대한 추출 업로드를 완료했습니다(새 추출 ID: {0})"
+msgstr "데이터 원본 ’{1}’ {2}에 대한 추출 업로드를 완료했습니다(새 추출 ID: {0})"
 
 #:
 msgid "extracts.status.finished.refresh.datasource"
-msgstr "데이터 원본 ''{1}'' {2}에 대한 추출 새로 고침을 완료했습니다(새 추출 ID: {0})"
+msgstr "데이터 원본 ’{1}’ {2}에 대한 추출 새로 고침을 완료했습니다(새 추출 ID: {0})"
 
 #:
 msgid "extracts.status.finished.increment.datasource"
-msgstr "데이터 원본 ''{1}'' {2}에 대한 추출 증분을 완료했습니다(새 추출 ID: {0})"
+msgstr "데이터 원본 ’{1}’ {2}에 대한 추출 증분을 완료했습니다(새 추출 ID: {0})"
 
 #:
 msgid "extracts.status.finished.append.datasource"
-msgstr "데이터 원본 ''{1}'' {2}에 대한 추출 추가를 완료했습니다(새 추출 ID: {0})"
+msgstr "데이터 원본 ’{1}’ {2}에 대한 추출 추가를 완료했습니다(새 추출 ID: {0})"
 
 #:
 msgid "extracts.status.finished.replace.datasource"
-msgstr "데이터 원본 ''{1}'' {2}에 대한 추출 바꾸기를 완료했습니다(새 추출 ID: {0})"
+msgstr "데이터 원본 ’{1}’ {2}에 대한 추출 바꾸기를 완료했습니다(새 추출 ID: {0})"
 
 #:
 msgid "extracts.status.finished.encrypt.datasource"
-msgstr "데이터 원본 ''{1}''에 대한 추출 암호화를 완료했습니다(새 추출 ID: {0})."
+msgstr "데이터 원본 ’{1}’에 대한 추출 암호화를 완료했습니다(새 추출 ID: {0})."
 
 #:
 msgid "extracts.status.finished.decrypt.datasource"
-msgstr "데이터 원본 ''{1}''에 대한 추출 암호 해독을 완료했습니다(새 추출 ID: {0})."
+msgstr "데이터 원본 ’{1}’에 대한 추출 암호 해독을 완료했습니다(새 추출 ID: {0})."
 
 #:
 msgid "extracts.status.finished.rekey.datasource"
-msgstr "데이터 원본 ''{1}''에 대한 추출 재암호화를 완료했습니다(새 추출 ID: {0})."
+msgstr "데이터 원본 ’{1}’에 대한 추출 재암호화를 완료했습니다(새 추출 ID: {0})."
 
 #:
 msgid "extracts.status.finished.encrypt.flow"
-msgstr "''{0}'' 흐름에 대한 추출 암호화를 완료했습니다."
+msgstr "’{0}’ 흐름에 대한 추출 암호화를 완료했습니다."
 
 #:
 msgid "extracts.status.finished.decrypt.flow"
-msgstr "''{0}'' 흐름에 대한 추출 암호 해독을 완료했습니다."
+msgstr "’{0}’ 흐름에 대한 추출 암호 해독을 완료했습니다."
 
 #:
 msgid "extracts.status.finished.rekey.flow"
-msgstr "''{0}'' 흐름에 대한 추출 재암호화를 완료했습니다."
+msgstr "’{0}’ 흐름에 대한 추출 재암호화를 완료했습니다."
 
 #:
 msgid "extracts.status.finished.encrypt.flowdraft"
-msgstr "흐름 초안 ''{0}''에 대한 추출 암호화를 완료했습니다."
+msgstr "흐름 초안 ’{0}’에 대한 추출 암호화를 완료했습니다."
 
 #:
 msgid "extracts.status.finished.decrypt.flowdraft"
-msgstr "흐름 초안 ''{0}''에 대한 추출 암호 해독을 완료했습니다."
+msgstr "흐름 초안 ’{0}’에 대한 추출 암호 해독을 완료했습니다."
 
 #:
 msgid "extracts.status.finished.rekey.flowdraft"
-msgstr "흐름 초안 ''{0}''에 대한 추출 재암호화를 완료했습니다."
+msgstr "흐름 초안 ’{0}’에 대한 추출 재암호화를 완료했습니다."
 
 #:
 msgid "extracts.status.finished.create.datasource"
-msgstr "데이터 원본 ''{1}'' {2}에 대한 추출 생성을 마쳤습니다(새 추출 ID: {0})."
+msgstr "데이터 원본 ’{1}’ {2}에 대한 추출 생성을 마쳤습니다(새 추출 ID: {0})."
 
 #:
 msgid "extracts.status.finished.remove.datasource"
-msgstr "데이터 원본 ''{1}''에 대한 추출을 라이브로 변경하는 작업을 완료했습니다."
+msgstr "데이터 원본 ’{1}’에 대한 추출을 라이브로 변경하는 작업을 완료했습니다."
+
+#:
+msgid "extracts.status.finished.create.vconn"
+msgstr "가상 연결 ’{1}’에 대한 추출 생성을 마쳤습니다(새 추출 ID: {0})."
+
+#:
+msgid "extracts.status.finished.refresh.vconn"
+msgstr "가상 연결 ’{1}’에 대한 추출 새로 고침을 마쳤습니다(새 추출 ID: {0})."
 
 #:
 msgid "extracts.status.encryption_key"
-msgstr "암호화 키 ID: ''{0}''."
+msgstr "암호화 키 ID: ’{0}’."
 
 #:
 msgid "extracts.status.encryption_keys"
-msgstr "이전 암호화 키 ID: ''{0}'', 새 암호화 키 ID: ''{1}''."
+msgstr "이전 암호화 키 ID: ’{0}’, 새 암호화 키 ID: ’{1}’."
 
 #:
 msgid "extracts.errors.upload"
-msgstr "{0}의 추출을 업로드하는 동안 오류 발생: ''{1}''"
+msgstr "{0}의 추출을 업로드하는 동안 오류 발생: ’{1}’"
 
 #:
 msgid "extracts.errors.refresh"
-msgstr "다음 추출을 새로 고치는 동안 오류 발생: {0} ''{1}''"
+msgstr "다음 추출을 새로 고치는 동안 오류 발생: {0} ’{1}’"
 
 #:
 msgid "extracts.errors.create"
-msgstr "{0} ''{1}''에 대한 추출을 만드는 동안 오류가 발생했습니다."
+msgstr "{0} ’{1}’에 대한 추출을 만드는 동안 오류가 발생했습니다."
 
 #:
 msgid "extracts.errors.increment"
-msgstr "{0}의 추출을 증분하는 동안 오류 발생: ''{1}''"
+msgstr "{0}의 추출을 증분하는 동안 오류 발생: ’{1}’"
 
 #:
 msgid "extracts.errors.append"
-msgstr "{0}의 추출을 추가하는 동안 오류 발생: ''{1}''"
+msgstr "{0}의 추출을 추가하는 동안 오류 발생: ’{1}’"
 
 #:
 msgid "extracts.errors.replace"
-msgstr "{0}의 추출을 바꾸는 동안 오류 발생: ''{1}''"
+msgstr "{0}의 추출을 바꾸는 동안 오류 발생: ’{1}’"
 
 #:
 msgid "extracts.errors.download"
-msgstr "{0}의 추출을 다운로드하는 동안 오류 발생: ''{1}''"
+msgstr "{0}의 추출을 다운로드하는 동안 오류 발생: ’{1}’"
 
 #:
 msgid "extracts.errors.remove"
-msgstr "{0}의 추출을 제거하는 동안 오류 발생: ''{1}''."
+msgstr "{0}의 추출을 제거하는 동안 오류 발생: ’{1}’."
 
 #:
 msgid "extracts.errors.title"
@@ -866,23 +881,23 @@ msgstr "추출 처리 오류"
 
 #:
 msgid "extracts.errors.nothing_to_upload"
-msgstr "{0}에 대해 업로드할 추출 없음: ''{1}''"
+msgstr "{0}에 대해 업로드할 추출 없음: ’{1}’"
 
 #:
 msgid "extracts.errors.nothing_to_refresh"
-msgstr "{0}에 대해 새로 고칠 추출 없음: ''{1}''"
+msgstr "{0}에 대해 새로 고칠 추출 없음: ’{1}’"
 
 #:
 msgid "extracts.errors.nothing_to_increment"
-msgstr "증분할 {0}의 추출 없음: ''{1}''"
+msgstr "증분할 {0}의 추출 없음: ’{1}’"
 
 #:
 msgid "extracts.errors.nothing_to_append"
-msgstr "{0}에 대해 추가할 추출 없음: ''{1}''"
+msgstr "{0}에 대해 추가할 추출 없음: ’{1}’"
 
 #:
 msgid "extracts.errors.nothing_to_replace"
-msgstr "{0}에 대해 바꿀 추출 없음: ''{1}''"
+msgstr "{0}에 대해 바꿀 추출 없음: ’{1}’"
 
 #:
 msgid "extracts.errors.refresh_summary"
@@ -910,23 +925,23 @@ msgstr "추출 만들기 오류"
 
 #:
 msgid "extracts.errors.datasource_overwritten"
-msgstr "처리 중에 다른 작업에서 데이터 원본을 덮어썼기 때문에 새로 고침에 실패했습니다. 수정하려면 다시 새로 고침을 실행 의뢰하십시오."
+msgstr "처리 중에 다른 작업에서 데이터 원본을 덮어썼기 때문에 새로 고침에 실패했습니다.  수정하려면 다시 새로 고침을 실행 의뢰하십시오."
 
 #:
 msgid "extracts.errors.workbook_overwritten"
-msgstr "처리 중에 다른 작업에서 통합 문서를 덮어썼기 때문에 새로 고치지 못했습니다. 수정하려면 다시 새로 고침을 실행 의뢰하십시오."
+msgstr "처리 중에 다른 작업에서 통합 문서를 덮어썼기 때문에 새로 고치지 못했습니다.  수정하려면 다시 새로 고침을 실행 의뢰하십시오."
 
 #:
 msgid "extracts.errors.encrypt"
-msgstr "다음 추출을 암호화하는 동안 오류 발생: {0} ''{1}''"
+msgstr "다음 추출을 암호화하는 동안 오류 발생: {0} ’{1}’"
 
 #:
 msgid "extracts.errors.decrypt"
-msgstr "다음 추출을 암호 해독하는 동안 오류 발생: {0} ''{1}''"
+msgstr "다음 추출을 암호 해독하는 동안 오류 발생: {0} ’{1}’"
 
 #:
 msgid "extracts.errors.rekey"
-msgstr "다음 추출을 재암호화하는 동안 오류 발생: {0} ''{1}''"
+msgstr "다음 추출을 재암호화하는 동안 오류 발생: {0} ’{1}’"
 
 #:
 msgid "extracts.errors.encrypt_datasource_overwritten"
@@ -970,7 +985,7 @@ msgstr "다른 작업에 의해 덮어써진 통합 문서는 추출할 수 없�
 
 #:
 msgid "extracts.site_mode_change_details"
-msgstr "사이트 추출 암호화 모드를 ''{0}''에서 ''{1}''(으)로 변경했습니다."
+msgstr "사이트 추출 암호화 모드를 ’{0}’에서 ’{1}’(으)로 변경했습니다."
 
 #:
 msgid "extracts.errors.encryption_not_licensed"
@@ -986,7 +1001,7 @@ msgstr "{0} 통합 문서를 로드할 수 없습니다."
 
 #:
 msgid "workbooks.messages.locked"
-msgstr "다른 사용자가 현재 ''{0}'' 통합 문서를 수정하고 있습니다.  나중에 다시 시도하십시오."
+msgstr "다른 사용자가 현재 ’{0}’ 통합 문서를 수정하고 있습니다.  나중에 다시 시도하십시오."
 
 #:
 msgid "workbooks.new_workbook.default_name"
@@ -1022,7 +1037,7 @@ msgstr "안녕하세요."
 
 #:
 msgid "subscriptions.subscribed_footer"
-msgstr "현재 구독하는 {0}입니다."
+msgstr "현재 구독하는 {0}입니다"
 
 #:
 msgid "subscriptions.subscribed_workbook"
@@ -1058,7 +1073,15 @@ msgstr "콘텐츠의 라이브 뷰를 여기서 액세스할 수 있습니다."
 
 #:
 msgid "subscriptions.warning_deprecated_type"
-msgstr "더 이상 사용되지 않음"
+msgstr "사용 중단"
+
+#:
+msgid "subscriptions.warning_error_content_type"
+msgstr "알 수 없는 콘텐츠 유형"
+
+#:
+msgid "subscriptions.warning_error_type"
+msgstr "알 수 없는 경고 유형"
 
 #:
 msgid "subscriptions.warning_extract_refresh_type"
@@ -1074,11 +1097,43 @@ msgstr "다음 데이터 품질 경고가 이 {0}에 영향을 미칩니다."
 
 #:
 msgid "subscriptions.warning_introduction_view"
-msgstr "자세한 내용은 뷰의 데이터 세부 정보 탭을 참조하십시오."
+msgstr "자세한 내용은 뷰의 데이터 세부 정보 패널을 참조하십시오."
 
 #:
 msgid "subscriptions.warning_introduction_workbook"
 msgstr "자세한 내용은 통합 문서 페이지를 참조하십시오."
+
+#:
+msgid "subscriptions.warning_localized_column"
+msgstr "열"
+
+#:
+msgid "subscriptions.warning_localized_datasource"
+msgstr "데이터 원본"
+
+#:
+msgid "subscriptions.warning_localized_database"
+msgstr "데이터베이스"
+
+#:
+msgid "subscriptions.warning_localized_flow"
+msgstr "흐름"
+
+#:
+msgid "subscriptions.warning_localized_table"
+msgstr "테이블"
+
+#:
+msgid "subscriptions.warning_localized_vconn"
+msgstr "연결"
+
+#:
+msgid "subscriptions.warning_lowercase_column"
+msgstr "열"
+
+#:
+msgid "subscriptions.warning_lowercase_column_plural"
+msgstr "열"
 
 #:
 msgid "subscriptions.warning_maintenance_type"
@@ -1086,7 +1141,7 @@ msgstr "유지 관리 중"
 
 #:
 msgid "subscriptions.warning_permission_error"
-msgstr "이는 보기 권한이 없는 자산에 대한 경고입니다."
+msgstr "보기 권한이 없는 자산에 대한 경고입니다."
 
 #:
 msgid "subscriptions.warning_redacted"
@@ -1094,7 +1149,19 @@ msgstr "사용 권한 필요"
 
 #:
 msgid "subscriptions.warning_sensitve_type"
-msgstr "중요한 데이터"
+msgstr "민감한 데이터"
+
+#:
+msgid "subscriptions.warning_sensitive_intro_count"
+msgstr "민감한 데이터({0})"
+
+#:
+msgid "subscriptions.warning_sensitive_intro_view"
+msgstr "이 뷰에는 민감한 데이터가 사용됩니다."
+
+#:
+msgid "subscriptions.warning_sensitive_intro_workbook"
+msgstr "이 통합 문서에는 민감한 데이터가 사용됩니다."
 
 #:
 msgid "subscriptions.warning_severe"
@@ -1109,8 +1176,8 @@ msgid "subscriptions.warning_standard"
 msgstr "데이터 품질 경고"
 
 #:
-msgid "subscriptions.warning_error_type"
-msgstr "알 수 없는 경고 유형"
+msgid "subscriptions.warning_standard_plural"
+msgstr "데이터 품질 경고"
 
 #:
 msgid "subscriptions.warning_warning_type"
@@ -1118,7 +1185,7 @@ msgstr "경고"
 
 #:
 msgid "errors.subscriptions.image_render_failed"
-msgstr "뷰 ''{0}''의 스냅샷을 적절하게 렌더링할 수 없습니다."
+msgstr "뷰 ’{0}’의 스냅샷을 적절하게 렌더링할 수 없습니다."
 
 #:
 msgid "errors.subscriptions.see_live_view"
@@ -1157,8 +1224,8 @@ msgid "errors.subscriptions.pdf_render_failed"
 msgstr "이 이메일의 PDF 첨부 파일을 적절하게 렌더링할 수 없습니다."
 
 #:
-msgid "errors.subscriptions.pdf_limit_exceeded"
-msgstr "생성된 PDF는 크기 제한인 {0}MB보다 커서 이 이메일에 첨부할 수 없습니다."
+msgid "errors.subscriptions.content_limit_exceeded"
+msgstr "생성된 콘텐츠는 크기 제한인 {0}MB보다 커서 이 이메일에 첨부할 수 없습니다."
 
 #:
 msgid "errors.subscriptions.attachments_not_enabled"
@@ -1174,7 +1241,7 @@ msgstr "<a hre"
 
 #:
 msgid "errors.subscriptions.bad_extract_refresh_subscription_configuration"
-msgstr "통합 문서에 여러 추출 새로 고침 일정이 포함되어 있으므로 구독이 일시 중단되었습니다. 다시 시작하려면 빈도를 [선택된 일정에 따라]로 업데이트하십시오."
+msgstr "통합 문서에 여러 추출 새로 고침 일정이 포함되어 있으므로 구독이 일시 중단되었습니다. 다시 시작하려면 빈도를 [선택된 일정에 따름]으로 업데이트하십시오."
 
 #:
 msgid "errors.subscriptions.subscription_failed_refresh_failure"
@@ -1182,7 +1249,7 @@ msgstr "데이터 원본의 추출 새로 고침이 실패했습니다."
 
 #:
 msgid "errors.subscriptions.multiple_extracts_for_extract_refresh_subscription"
-msgstr "통합 문서에 여러 추출 새로 고침 일정이 포함되어 있습니다. 빈도를 [선택된 일정에 따라]로 업데이트하십시오."
+msgstr "통합 문서에 여러 추출 새로 고침 일정이 포함되어 있습니다. 빈도를 [선택된 일정에 따름]으로 업데이트하십시오."
 
 #:
 msgid "errors.subscriptions.datasource_is_missing_password"
@@ -1190,11 +1257,11 @@ msgstr "데이터 원본 연결 오류입니다. 통합 문서의 모든 데이�
 
 #:
 msgid "subscriptions.results_summary.sg"
-msgstr "{0}/{1}개의 구독이 ''{2}'' 일정에서 전송되었습니다."
+msgstr "{0}/{1}개의 구독이 ’{2}’ 일정에서 전송되었습니다."
 
 #:
 msgid "subscriptions.results_summary.pl"
-msgstr "{0}/{1}개의 구독이 ''{2}'' 일정에서 전송되었습니다."
+msgstr "{0}/{1}개의 구독이 ’{2}’ 일정에서 전송되었습니다."
 
 #:
 msgid "subscriptions.results_views_per_subscription.sg"
@@ -1206,7 +1273,7 @@ msgstr "{0}({1}/{2}회 뷰가 성공함)"
 
 #:
 msgid "subscriptions.results_views_per_subscription.more"
-msgstr "({0} 추가)"
+msgstr "({0}개 이상)"
 
 #:
 msgid "subscriptions.results_views_per_subscription.failed"
@@ -1384,6 +1451,9 @@ msgstr "통합 문서를 찾을 수 없음"
 msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
 msgstr "{0} 필드의 축을 찾을 수 없음"
 
+#:
+msgid "dataalerts.failure.error.paneDescriptorNotFound"
+msgstr "{0}"
 
 #:
 msgid "dataalerts.failure.error.unsupportedComparisonExpression"
@@ -1491,7 +1561,7 @@ msgstr "메트릭을 새로 고칠 수 없기 때문에 메트릭 데이터가 �
 
 #:
 msgid "metricsservices.failure.status"
-msgstr "메트릭 ''{0}''이(가) 새로 고쳐지지 않습니다."
+msgstr "메트릭 ’{0}’이(가) 새로 고쳐지지 않습니다."
 
 #:
 msgid "metricsservices.failure.suspend.email.explanation"
@@ -1503,7 +1573,7 @@ msgstr "메트릭 새로 고침이 일시 중단되어서 이 이메일이 {0} �
 
 #:
 msgid "metricsservices.failure.suspend.email.status"
-msgstr "메트릭 ''{0}''에 대한 새로 고침이 일시 중단되었습니다."
+msgstr "메트릭 ’{0}’에 대한 새로 고침이 일시 중단되었습니다."
 
 #:
 msgid "metricsservices.failure.suspend.email.subject"
@@ -1547,7 +1617,7 @@ msgstr "메트릭에 대한 새로 고침이 다시 작동하고 있으므로 �
 
 #:
 msgid "metricsservices.success.status"
-msgstr "메트릭 ''{0}''에 대한 새로 고침이 다시 시작되었습니다."
+msgstr "메트릭 ’{0}’에 대한 새로 고침이 다시 시작되었습니다."
 
 #:
 msgid "errors.staticimages.generic"
@@ -1615,11 +1685,11 @@ msgstr "Tableau Server 사이트"
 
 #:
 msgid "materializeviews.errors.workbook_not_in_project"
-msgstr "''{0}'' 프로젝트가 ''{1}'' 통합 문서를 포함하지 않습니다."
+msgstr "’{0}’ 프로젝트가 ’{1}’ 통합 문서를 포함하지 않습니다."
 
 #:
 msgid "materializeviews.errors.workbook_has_no_extract"
-msgstr "''{0}'' 통합 문서의 구체화된 뷰 설정을 업데이트하지 못했습니다. 현재 내장된 추출이 있는 통합 문서만 지원됩니다."
+msgstr "’{0}’ 통합 문서의 구체화된 뷰 설정을 업데이트하지 못했습니다. 현재 내장된 추출이 있는 통합 문서만 지원됩니다."
 
 #:
 msgid "materializeviews.errors.workbook_updating_errors"
@@ -1627,23 +1697,23 @@ msgstr "통합 문서의 구체화된 뷰 설정을 업데이트하는 동안 �
 
 #:
 msgid "materializeviews.errors.workbook_too_large"
-msgstr "''{0}'' 통합 문서의 구체화된 뷰 설정을 업데이트하지 못했습니다. 통합 문서 크기가 제한({1}GB)을 초과합니다."
+msgstr "’{0}’ 통합 문서의 구체화된 뷰 설정을 업데이트하지 못했습니다. 통합 문서 크기가 제한({1}GB)을 초과합니다."
 
 #:
 msgid "materializeviews.errors.project_path_not_exists"
-msgstr "프로젝트 경로 ''{0}''이(가) 없습니다."
+msgstr "프로젝트 경로 ’{0}’이(가) 없습니다."
 
 #:
 msgid "materializeviews.errors.feature_disabled"
-msgstr "''{0}'' 통합 문서의 구체화된 뷰 설정을 업데이트하지 못했습니다. 해당 기능이 현재 사용되지 않도록 설정되어 있습니다."
+msgstr "’{0}’ 통합 문서의 구체화된 뷰 설정을 업데이트하지 못했습니다. 해당 기능이 현재 사용되지 않도록 설정되어 있습니다."
 
 #:
 msgid "materializeviews.errors.update_materialized_views_setting_failed"
-msgstr "''{0}'' 통합 문서의 구체화된 뷰 설정을 업데이트하지 못했습니다."
+msgstr "’{0}’ 통합 문서의 구체화된 뷰 설정을 업데이트하지 못했습니다."
 
 #:
 msgid "materializeviews.errors.site_not_enabled"
-msgstr "이 사이트가 구체화된 뷰를 사용하도록 설정되지 않았습니다. 관리자에게 문의하십시오."
+msgstr "이 사이트가 구체화된 뷰를 사용하도록 설정되지 않았습니다. 관리자에게 문의하십시오"
 
 #:
 msgid "materializeviews.errors.encrypted_extracts_not_supported"
@@ -1651,7 +1721,7 @@ msgstr "구체화된 뷰 기능은 현재 암호화된 추출이 있는 통합 �
 
 #:
 msgid "materializedviews.finished.create"
-msgstr "''{1}'' 통합 문서에 대한 ''{0}'' 상태의 구체화된 뷰를 만들었습니다."
+msgstr "’{1}’ 통합 문서에 대한 ’{0}’ 상태의 구체화된 뷰를 만들었습니다."
 
 #:
 msgid "materializedviews.finished.delete"
@@ -1659,27 +1729,27 @@ msgstr "통합 문서 ID: {0}에 대한 구체화된 뷰를 삭제했습니다."
 
 #:
 msgid "materializedviews.finished.encrypt"
-msgstr "통합 문서 ''{0}''에 대한 구체화된 뷰의 암호화를 마쳤습니다."
+msgstr "통합 문서 ’{0}’에 대한 구체화된 뷰의 암호화를 마쳤습니다."
 
 #:
 msgid "materializedviews.finished.decrypt"
-msgstr "통합 문서 ''{0}''에 대한 구체화된 뷰의 암호 해독을 마쳤습니다."
+msgstr "통합 문서 ’{0}’에 대한 구체화된 뷰의 암호 해독을 마쳤습니다."
 
 #:
 msgid "materializedviews.finished.rekey"
-msgstr "통합 문서 ''{0}''에 대한 구체화된 뷰의 재암호화를 마쳤습니다."
+msgstr "통합 문서 ’{0}’에 대한 구체화된 뷰의 재암호화를 마쳤습니다."
 
 #:
 msgid "materializedviews.status.encryption_key"
-msgstr "암호화 키 ID: ''{0}''."
+msgstr "암호화 키 ID: ’{0}’."
 
 #:
 msgid "materializedviews.status.encryption_keys"
-msgstr "이전 암호화 키 ID: ''{0}'', 새 암호화 키 ID: ''{1}''."
+msgstr "이전 암호화 키 ID: ’{0}’, 새 암호화 키 ID: ’{1}’."
 
 #:
 msgid "materializedviews.status.encryption_type"
-msgstr "암호화 데이터 원본 유형: ''{0}''"
+msgstr "암호화 데이터 원본 유형: ’{0}’"
 
 #:
 msgid "customizedviews.namedSharingPrefix"
@@ -1730,11 +1800,11 @@ msgid "content_type.explaindata_explanation"
 msgstr "설명"
 
 #:
-msgid "content_type.publishedconnection"
+msgid "content_type.virtualconnection"
 msgstr "가상 연결"
 
 #:
-msgid "content_type.publishedconnectiontable"
+msgid "content_type.virtualconnectiontable"
 msgstr "가상 연결 테이블"
 
 #:
@@ -1744,6 +1814,14 @@ msgstr "서버 응답: 축소판 업그레이드가 시작되었습니다!"
 #:
 msgid "upgradethumbnails.status.server_stopped"
 msgstr "서버 응답: %d개 작업이 중지되었습니다."
+
+#:
+msgid "dataquality.author.extract_refresh_monitoring"
+msgstr "추출 새로 고침 모니터링"
+
+#:
+msgid "dataquality.author.flow_run_monitoring"
+msgstr "흐름 실행 모니터링"
 
 #:
 msgid "dataquality.message.refresh_failed"
@@ -1762,6 +1840,38 @@ msgid "dataquality.message.flow_run_output_steps_failed"
 msgstr "{0}/{1}개의 출력 단계를 실행하지 못함"
 
 #:
+msgid "label_value.description.certified"
+msgstr "이 자산은 신뢰할 수 있으며 추천됩니다."
+
+#:
+msgid "label_value.description.deprecated"
+msgstr "이 자산은 더 이상 유지 관리되지 않으며 사용해서는 안 됩니다."
+
+#:
+msgid "label_value.description.extract_refresh_failure"
+msgstr "이 자산의 가장 최근 추출 새로 고침에 실패했습니다."
+
+#:
+msgid "label_value.description.flow_run_failure"
+msgstr "이 흐름의 가장 최근 실행에 실패했습니다."
+
+#:
+msgid "label_value.description.maintenance"
+msgstr "이 자산은 유지 관리 중입니다."
+
+#:
+msgid "label_value.description.sensitive_data"
+msgstr "이 자산에는 민감한 정보가 포함되어 있습니다."
+
+#:
+msgid "label_value.description.stale"
+msgstr "이 자산은 오래되었습니다."
+
+#:
+msgid "label_value.description.warning"
+msgstr "이 자산에는 일반 품질 문제가 있습니다."
+
+#:
 msgid "importcsvsummary.error.details"
 msgstr "오류 세부 정보:"
 
@@ -1771,7 +1881,7 @@ msgstr "(나머지 오류는 표시되지 않음)"
 
 #:
 msgid "importcsvsummary.error.line"
-msgstr "''{1}'' 사용자의 라인 {0}: ''{2}''"
+msgstr "’{1}’ 사용자의 라인 {0}: ’{2}’"
 
 #:
 msgid "importcsvsummary.line.processed"
@@ -1807,7 +1917,19 @@ msgstr "인증 방식이 로컬인 경우 로컬 시스템 사용자를 만들�
 
 #:
 msgid "importcsvsummary.error.ad.user_not_found"
-msgstr "AD 사용자 ''{0}''을(를) 찾을 수 없음"
+msgstr "AD 사용자 ’{0}’을(를) 찾을 수 없음"
+
+#:
+msgid "importcsvsummary.error.domain_not_found"
+msgstr "잘못된 도메인 ’{0}’"
+
+#:
+msgid "importcsvsummary.error.cannot_create_user_identity"
+msgstr "’{0}’ 사용자에 대한 사용자 ID를 만들 수 없음"
+
+#:
+msgid "importcsvsummary.error.invalid_identity_pool_name"
+msgstr "잘못된 ID 풀 이름 ’{0}’"
 
 #:
 msgid "importcsvsummary.error.too_many_errors"
@@ -1815,7 +1937,7 @@ msgstr "CSV 파일에 너무 많은 오류 발생"
 
 #:
 msgid "audit.errors.wdc_not_allowlisted"
-msgstr "웹 데이터 커넥터가 허용 목록에 없습니다. 도움이 필요하면 다음을 참조하십시오. https://help.tableau.com/current/online/ko-kr/to_keep_data_fresh.htm"
+msgstr "웹 데이터 커넥터가 허용 목록에 없습니다. 도움이 필요한 경우 다음을 참조하십시오. https://help.tableau.com/current/online/ko-kr/to_keep_data_fresh.htm"
 
 #:
 msgid "user.input.name.err.too_long"
@@ -1835,19 +1957,19 @@ msgstr "Slack용 Tableau 앱 업데이트"
 
 #:
 msgid "slack.app.upgrade.email.notification.introduction"
-msgstr "Slack용 Tableau 앱에 대한 업데이트를 사용할 수 있으며 다음번 Tableau Online 릴리스와 작동할 수 있도록 지금 다시 설치할 수 있습니다. Tableau는 앱 성능을 유지하고 새로운 기능을 사용하기 위해 앱을 다시 설치할 것을 권장합니다. 새로운 기능 및 변경된 기능은 <a styl"
+msgstr "Slack용 Tableau 앱에 대한 업데이트를 사용할 수 있습니다. Tableau는 앱 성능을 유지하고 새로운 Tableau Cloud 기능을 사용하기 위해 앱을 업데이트할 것을 권장합니다. 새로운 기능 및 변경된 기능은 <a styl"
 
 #:
 msgid "slack.app.upgrade.email.notification.action"
-msgstr "업데이트 단계 및 다시 설치 단계는 <a styl"
+msgstr "사이트와 Slack용 Tableau 앱 간의 연결을 업데이트하려면 <a styl"
 
 #:
 msgid "slack.app.upgrade.email.notification.steps"
-msgstr "이 서비스 알림은 Tableau Online에서 게시했습니다."
+msgstr "이 서비스 알림은 Tableau Cloud에서 게시했습니다."
 
 #:
 msgid "slack.app.upgrade.email.notification.reason"
-msgstr "Slack에 연결된 Tableau Online 사이트의 관리자이기 때문에 본 알림이 귀하에게 발송되었습니다."
+msgstr "귀하가 Slack에 연결된 Tableau Cloud 사이트의 관리자이기에 본 알림이 귀하에게 발송되었습니다."
 
 #:
 msgid "slack.app.upgrade.email.notification.footer.privacy"
@@ -1857,58 +1979,49 @@ msgstr "<a styl"
 msgid "unifiedconsumption.tcrm.folders.private"
 msgstr "내 비공개 앱"
 
-
-msgid ""
-msgstr ""
-"MIME-Version: 1.0"
-"Content-Type: text/plain; charset=utf-8"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: prop2po"
-"Project-Id-Version: None"
-"Language: ko"
 #:
 msgid "commandlineutils.errors.bad_value"
-msgstr "''{0}'' 옵션의 값(''{1}'')이 잘못되었습니다. 다음 중 하나여야 합니다. {2}"
+msgstr "’{0}’ 옵션의 값(’{1}’)이 잘못되었습니다. 다음 중 하나여야 합니다. {2}"
 
 #:
 msgid "commandlineutils.errors.not_integer"
-msgstr "''{1}'' 옵션의 값 ''{0}''이(가) 정수가 아닙니다."
+msgstr "’{1}’ 옵션의 값 ’{0}’이(가) 정수가 아닙니다."
 
 #:
 msgid "common.errors.empty_file"
-msgstr "''{0}'' 파일이 비어 있습니다."
+msgstr "’{0}’ 파일이 비어 있습니다."
 
 #:
 msgid "common.errors.file_not_found"
-msgstr "''{0}'' 파일을 열 수 없습니다."
+msgstr "’{0}’ 파일을 열 수 없습니다."
 
 #:
 msgid "common.errors.invalid_file_path"
-msgstr "''{0}'' 파일 경로가 잘못되었습니다."
+msgstr "’{0}’ 파일 경로가 잘못되었습니다."
 
 #:
 msgid "common.errors.folder_path_not_found"
-msgstr "''{0}'' 디렉터리를 찾을 수 없습니다."
+msgstr "’{0}’ 디렉터리를 찾을 수 없습니다."
 
 #:
 msgid "common.errors.access_denied"
-msgstr "''{0}'' 파일에 대한 액세스가 거부되었습니다. 경로가 올바른지, 파일 이름이 기존 디렉터리와 일치하지 않는지 확인하십시오."
+msgstr "’{0}’ 파일에 대한 액세스가 거부되었습니다. 경로가 올바른지, 파일 이름이 기존 디렉터리와 일치하지 않는지 확인하십시오."
 
 #:
 msgid "common.errors.requires_csv_file"
-msgstr "''{0}'' 명령에는 CSV 파일이 필요합니다."
+msgstr "’{0}’ 명령에는 CSV 파일이 필요합니다."
 
 #:
 msgid "common.errors.requires_group_name"
-msgstr "''{0}'' 명령에는 그룹 이름이 필요합니다."
+msgstr "’{0}’ 명령에는 그룹 이름이 필요합니다."
 
 #:
 msgid "common.errors.requires_site_name"
-msgstr "''{0}'' 명령에는 사이트 이름이 필요합니다."
+msgstr "’{0}’ 명령에는 사이트 이름이 필요합니다."
 
 #:
 msgid "common.errors.options_conflict"
-msgstr "새 옵션 및 사용되지 않는 옵션을 사용하여 사용자 역할을 지정했습니다. 오직 한 가지 옵션만 사용할 수 있습니다."
+msgstr "새 옵션 및 사용 중단된 옵션을 사용하여 사용자 역할을 지정했습니다. 오직 한 가지 옵션만 사용할 수 있습니다."
 
 #:
 msgid "common.errors.csv_sizelimit"
@@ -1916,7 +2029,7 @@ msgstr "참조하는 CSV 파일이 100MB의 크기 제한을 초과합니다. �
 
 #:
 msgid "common.options.admin-type"
-msgstr "[사용되지 않음] CSV 파일의 모든 사용자에 대한 사이트 관리자 권한을 할당[또는 제거]합니다. CSV 파일의 개별 행에 있는 값이 이 설정을 재정의할 수 있습니다. {0}은(는) {1}, {2} 또는 {3}일 수 있습니다. 지정되지 않은 경우 새 사용자이면 {3}이고, 기존 사용자이면 unchanged입니다."
+msgstr "[사용 중단] CSV 파일의 모든 사용자에 대한 사이트 관리자 권한을 할당[또는 제거]합니다. CSV 파일의 개별 행에 있는 값이 이 설정을 재정의할 수 있습니다. {0}은(는) {1}, {2} 또는 {3}일 수 있습니다. 지정되지 않은 경우 새 사용자이면 {3}이고, 기존 사용자이면 unchanged입니다."
 
 #:
 msgid "common.options.complete"
@@ -1924,7 +2037,7 @@ msgstr "변경이 성공하려면 모든[또는 일부] 행이 유효해야 합�
 
 #:
 msgid "common.options.license"
-msgstr "[사용되지 않음] 모든 사용자에 대한 기본 라이선스 수준을 설정합니다. CSV 파일의 값으로 이 설정을 재정의할 수 있습니다. {0}은(는) {1}, {2} 또는 {3}일 수 있습니다."
+msgstr "[사용 중단] 모든 사용자에 대한 기본 라이선스 수준을 설정합니다. CSV 파일의 값으로 이 설정을 재정의할 수 있습니다. {0}은(는) {1}, {2} 또는 {3}일 수 있습니다."
 
 #:
 msgid "common.options.nowait"
@@ -1932,7 +2045,7 @@ msgstr "작업이 완료될 때까지 대기 안 함"
 
 #:
 msgid "common.options.publisher"
-msgstr "[사용되지 않음] CSV 파일의 모든 사용자에 대한 게시 권한을 할당[또는 제거]합니다. CSV 파일의 개별 행에 있는 값이 이 설정을 재정의할 수 있습니다. 지정되지 않은 경우 새 사용자이면 false이고, 기존 사용자이면 unchanged입니다."
+msgstr "[사용 중단] CSV 파일의 모든 사용자에 대한 게시 권한을 할당[또는 제거]합니다. CSV 파일의 개별 행에 있는 값이 이 설정을 재정의할 수 있습니다. 지정되지 않은 경우 기본적으로 새 사용자이면 false이고, 기존 사용자이면 unchanged입니다."
 
 #:
 msgid "common.options.silent-progress"
@@ -1940,7 +2053,7 @@ msgstr "작업의 진행률 메시지를 표시 안 함"
 
 #:
 msgid "common.options.sysadmin-type"
-msgstr "[사용되지 않음] CSV 파일의 모든 사용자에 대한 사이트 관리자 권한을 할당[또는 제거]합니다. CSV 파일의 개별 행에 있는 값이 이 설정을 재정의할 수 있습니다. {0}은(는) {1}, {2}, {3} 또는 {4}일 수 있습니다. 지정되지 않은 경우 새 사용자이면 {4}이고, 기존 사용자이면 unchanged입니다."
+msgstr "[사용 중단] CSV 파일의 모든 사용자에 대한 사이트 관리자 권한을 할당[또는 제거]합니다. CSV 파일의 개별 행에 있는 값이 이 설정을 재정의할 수 있습니다. {0}은(는) {1}, {2}, {3} 또는 {4}일 수 있습니다. 지정되지 않은 경우 기본적으로 새 사용자이면 {4}이고, 기존 사용자이면 unchanged입니다."
 
 #:
 msgid "common.output.job_queued_success"
@@ -1952,7 +2065,7 @@ msgstr "성공"
 
 #:
 msgid "common.options.role"
-msgstr "영향받는 모든 사용자에 대해 기본 역할을 설정합니다. {0}에 대해 올바른 값은 {1}입니다. 지정하지 않는 경우 기본값 {2}이(가) 사용됩니다."
+msgstr "영향받는 모든 사용자에 대해 기본 역할을 설정합니다. {0}에 사용할 수 있는 값은 {1}입니다. 지정하지 않는 경우 기본값 {2}이(가) 사용됩니다."
 
 #:
 msgid "addusers.options.users"
@@ -1972,7 +2085,7 @@ msgstr "로컬 그룹 만들기"
 
 #:
 msgid "creategroup.status"
-msgstr "서버에서 ''{0}'' 그룹을 만드는 중..."
+msgstr "서버에서 ’{0}’ 그룹을 만드는 중..."
 
 #:
 msgid "creategroup.options.role"
@@ -1988,15 +2101,15 @@ msgstr "추출을 만드는 동안 오류가 발생했습니다."
 
 #:
 msgid "createextracts.for.datasource"
-msgstr "데이터 원본 ''{0}''에 대한 추출을 만드는 중"
+msgstr "데이터 원본 ’{0}’에 대한 추출을 만드는 중"
 
 #:
 msgid "createextracts.for.workbook_name"
-msgstr "이름이 ''{0}''인 통합 문서에 대한 추출을 만드는 중"
+msgstr "이름이 ’{0}’인 통합 문서에 대한 추출을 만드는 중"
 
 #:
 msgid "createextracts.for.workbook_url"
-msgstr "URL이 ''{0}''인 통합 문서에 대한 추출을 만드는 중"
+msgstr "URL이 ’{0}’인 통합 문서에 대한 추출을 만드는 중"
 
 #:
 msgid "createextracts.options.datasource"
@@ -2020,7 +2133,7 @@ msgstr "대상 리소스를 포함하는 프로젝트의 상위 프로젝트에 
 
 #:
 msgid "createextracts.options.project"
-msgstr "대상 리소스를 포함하는 프로젝트 이름입니다. {0} 또는 {1}이(가) 지정된 경우에만 필요합니다. 지정되지 않은 경우 기본 프로젝트 ''{2}''이(가) 사용됩니다."
+msgstr "대상 리소스를 포함하는 프로젝트 이름입니다. {0} 또는 {1}이(가) 지정된 경우에만 필요합니다. 지정되지 않은 경우 기본 프로젝트 ’{2}’이(가) 사용됩니다."
 
 #:
 msgid "createextracts.options.url"
@@ -2060,7 +2173,7 @@ msgstr "프로젝트 만들기"
 
 #:
 msgid "createproject.status"
-msgstr "서버에서 ''{0}'' 프로젝트를 만드는 중..."
+msgstr "서버에서 ’{0}’ 프로젝트를 만드는 중..."
 
 #:
 msgid "createsite.errors.invalid_url_option"
@@ -2068,11 +2181,11 @@ msgstr "여러 사이트를 만드는 경우 URL 옵션을 사용할 수 없습�
 
 #:
 msgid "createsite.errors.site_name_already_exists"
-msgstr "이름이 ''{0}''인 사이트가 이미 있습니다. 다른 사이트 이름을 사용하십시오."
+msgstr "이름이 ’{0}’인 사이트가 이미 있습니다. 다른 사이트 이름을 사용하십시오."
 
 #:
 msgid "createsite.errors.site_id_already_exists"
-msgstr "ID가 ''{0}''인 사이트가 이미 있습니다. -r을 사용하여 다른 사이트 ID를 지정하십시오. 자세한 내용은 tabcmd createsite 도움말을 참조하십시오."
+msgstr "ID가 ’{0}’인 사이트가 이미 있습니다. -r을 사용하여 다른 사이트 ID를 지정하십시오. 자세한 내용은 tabcmd createsite 도움말을 참조하십시오."
 
 #:
 msgid "createsite.options.allow-mobile-snapshots"
@@ -2140,15 +2253,15 @@ msgstr "사이트 만들기"
 
 #:
 msgid "createsite.status"
-msgstr "서버에서 ''{0}'' 사이트를 만드는 중..."
+msgstr "서버에서 ’{0}’ 사이트를 만드는 중..."
 
 #:
 msgid "createsiteusers.options.auth-type"
-msgstr "CSV 파일에서 모든 사용자에 대한 인증 유형을 할당합니다. Tableau Online의 경우 {0}이(가) {1}(기본값) 또는 {2}일 수 있습니다. Tableau Server의 경우 {0}이(가) 로컬(기본값) 또는 {2}일 수 있습니."
+msgstr "CSV 파일에서 모든 사용자에 대한 인증 유형을 할당합니다. Tableau Cloud의 경우 {0}이(가) {1}(기본값) 또는 {2}일 수 있습니다. Tableau Server의 경우 {0}이(가) 로컬(기본값) 또는 {2}일 수 있습니다."
 
 #:
 msgid "createsiteusers.description"
-msgstr "현재 사이트에서 사용자를 만듭니다. 지정된 CSV 파일에서 사용자를 읽습니다. 파일에는 아래에 표시된 순서대로 열이 포함될 수 있습니다.{0}1. 사용자 이름{0}2. 비밀번호        (Active Directory 사용 시 무시됨){0}3. 식별 이름   (Active Directory 사용 시 무시됨){0}4. 라이선스 수준({1}, {2}, {3}, {4} 또는 {5}){0}5. 관리자({6}/{7}){0}6. 게시자({8}/{9}/1 또는 {10}/{11}/0){0}7. 이메일(Tableau Public에만 해당){0}파일의 열 개수가 더 적을 수도 있습니다. 예를 들어 한 줄에 사용자 이름 하나가 있는 단순한 목록일 수 있습니다. 값에 쉼표가 포함된 경우 따옴표를 사용할 수 있습니다. Tabcmd가 {12} 작업이 완료되기를 기다리고 있습니다. 서버의 작업이 완료되기를 기다리지 않고 즉시 반환되게 하려면 {13} 플래그를 전달하면 됩니다. 이 명령을 사용하여 시스템 관리자를 만들거나 권한을 내릴 수 없습니다. ''{14}'' 명령을 대신 사용하십시오."
+msgstr "현재 사이트에서 사용자를 만듭니다. 사용자는 지정된 CSV 파일에서 읽어옵니다. 파일에는 아래에 표시된 순서대로 열이 포함될 수 있습니다.{0}1. 사용자 이름{0}2. 비밀번호        (Active Directory 사용 시 무시됨){0}3. 식별 이름   (Active Directory 사용 시 무시됨){0}4. 라이선스 수준({1}, {2}, {3}, {4} 또는 {5}){0}5. 관리자({6}/{7}){0}6. 게시자({8}/{9}/1 또는 {10}/{11}/0){0}7. 이메일(Tableau Public에만 해당){0}파일의 열 개수가 더 적을 수도 있습니다. 예를 들어 한 줄에 사용자 이름 하나가 있는 단순한 목록일 수 있습니다. 값에 쉼표가 포함된 경우 따옴표를 사용할 수 있습니다. Tabcmd가 {12} 작업이 완료되기를 기다리고 있습니다.  서버의 작업이 완료되기를 기다리지 않고 즉시 반환되게 하려면 {13} 플래그를 전달하면 됩니다. 이 명령을 사용하여 시스템 관리자를 만들거나 권한을 내릴 수 없습니다. ’{14}’을(를) 대신 사용하십시오."
 
 #:
 msgid "createsiteusers.short_description"
@@ -2160,7 +2273,7 @@ msgstr "{0}에 나열된 사용자를 현재 사이트에 추가하는 중..."
 
 #:
 msgid "createusers.description"
-msgstr "사용자를 만듭니다. 지정된 CSV 파일에서 사용자를 읽습니다. 파일에는 아래에 표시된 순서대로 열이 포함될 수 있습니다.{0}1. 사용자 이름{0}2. 비밀번호        (Active Directory 사용 시 무시됨){0}3. 식별 이름   (Active Directory 사용 시 무시됨){0}4. 라이선스 수준({1}, {2}, {3}, {4} 또는 {5}){0}5. 관리자({6}/{7}/{8}/{9}){0}6. 게시자({10}/{11}/1 또는 {12}/{13}/0){0}7. 이메일(Tableau Public에만 해당){0}파일의 열 개수가 더 적을 수도 있습니다. 예를 들어 한 줄에 사용자 이름 하나가 있는 단순한 목록일 수 있습니다. 값에 쉼표가 포함된 경우 따옴표를 사용할 수 있습니다. Tabcmd가 {14} 작업이 완료되기를 기다리고 있습니다. 서버의 작업이 완료되기를 기다리지 않고 즉시 반환되게 하려면 {15} 플래그를 전달할 수 있습니다."
+msgstr "사용자를 만듭니다. 사용자는 지정된 CSV 파일에서 읽어옵니다. 파일에는 아래에 표시된 순서대로 열이 포함될 수 있습니다.{0}1. 사용자 이름{0}2. 비밀번호        (Active Directory 사용 시 무시됨){0}3. 식별 이름   (Active Directory 사용 시 무시됨){0}4. 라이선스 수준({1}, {2}, {3}, {4} 또는 {5}){0}5. 관리자({6}/{7}/{8}/{9}){0}6. 게시자({10}/{11}/1 또는 {12}/{13}/0){0}7. 이메일(Tableau Public에만 해당){0}파일의 열 개수가 더 적을 수도 있습니다. 예를 들어 한 줄에 사용자 이름 하나가 있는 단순한 목록일 수 있습니다. 값에 쉼표가 포함된 경우 따옴표를 사용할 수 있습니다. Tabcmd가 {14} 작업이 완료되기를 기다리고 있습니다.  서버의 작업이 완료되기를 기다리지 않고 즉시 반환되게 하려면 {15} 플래그를 전달할 수 있습니다."
 
 #:
 msgid "createusers.short_description"
@@ -2184,7 +2297,7 @@ msgstr "통합 문서와 데이터 원본을 둘 다 삭제하도록 지정할 �
 
 #:
 msgid "delete.errors.requires_workbook_datasource"
-msgstr "''{0}'' 명령에는 통합 문서 이름이나 데이터 원본 이름이 필요합니다."
+msgstr "’{0}’ 명령에는 통합 문서 이름이나 데이터 원본 이름이 필요합니다."
 
 #:
 msgid "delete.options.datasource"
@@ -2196,7 +2309,7 @@ msgstr "삭제할 통합 문서/데이터 원본을 포함하는 프로젝트의
 
 #:
 msgid "delete.options.project"
-msgstr "삭제할 통합 문서/데이터 원본을 포함하는 프로젝트입니다. 기본 프로젝트는 ''{0}''입니다."
+msgstr "삭제할 통합 문서/데이터 원본을 포함하는 프로젝트입니다. 기본 프로젝트는 ’{0}’입니다."
 
 #:
 msgid "delete.options.workbook"
@@ -2208,7 +2321,7 @@ msgstr "서버에서 통합 문서 또는 데이터 원본 삭제"
 
 #:
 msgid "delete.status"
-msgstr "서버에서 {0} ''{1}''을(를) 제거하는 중..."
+msgstr "서버에서 {0} ’{1}’을(를) 제거하는 중..."
 
 #:
 msgid "deleteextracts.errors.required_argument"
@@ -2220,15 +2333,15 @@ msgstr "추출을 삭제하는 동안 오류가 발생했습니다."
 
 #:
 msgid "deleteextracts.for.datasource"
-msgstr "데이터 원본 ''{0}''에 대한 추출을 삭제하는 중"
+msgstr "데이터 원본 ’{0}’에 대한 추출을 삭제하는 중"
 
 #:
 msgid "deleteextracts.for.workbook_name"
-msgstr "이름이 ''{0}''인 통합 문서에 대한 추출을 삭제하는 중"
+msgstr "이름이 ’{0}’인 통합 문서에 대한 추출을 삭제하는 중"
 
 #:
 msgid "deleteextracts.for.workbook_url"
-msgstr "URL이 ''{0}''인 통합 문서에 대한 추출을 삭제하는 중"
+msgstr "URL이 ’{0}’인 통합 문서에 대한 추출을 삭제하는 중"
 
 #:
 msgid "deleteextracts.options.datasource"
@@ -2248,7 +2361,7 @@ msgstr "대상 리소스를 포함하는 프로젝트의 상위 프로젝트에 
 
 #:
 msgid "deleteextracts.options.project"
-msgstr "대상 리소스를 포함하는 프로젝트 이름입니다. {0} 또는 {1}이(가) 지정된 경우에만 필요합니다. 지정되지 않은 경우 기본 프로젝트 ''{2}''이(가) 사용됩니다."
+msgstr "대상 리소스를 포함하는 프로젝트 이름입니다. {0} 또는 {1}이(가) 지정된 경우에만 필요합니다. 지정되지 않은 경우 기본 프로젝트 ’{2}’이(가) 사용됩니다."
 
 #:
 msgid "deleteextracts.options.url"
@@ -2276,11 +2389,11 @@ msgstr "그룹 삭제"
 
 #:
 msgid "deletegroup.status"
-msgstr "서버에서 ''{0}'' 그룹을 삭제하는 중..."
+msgstr "서버에서 ’{0}’ 그룹을 삭제하는 중..."
 
 #:
 msgid "deleteproject.errors.requires_project_name"
-msgstr "''{0}'' 명령에는 프로젝트 이름이 필요합니다."
+msgstr "’{0}’ 명령에는 프로젝트 이름이 필요합니다."
 
 #:
 msgid "deleteproject.options.parent-project-path"
@@ -2292,7 +2405,7 @@ msgstr "프로젝트 삭제"
 
 #:
 msgid "deleteproject.status"
-msgstr "서버에서 ''{0}'' 프로젝트를 삭제하는 중..."
+msgstr "서버에서 ’{0}’ 프로젝트를 삭제하는 중..."
 
 #:
 msgid "deletesite.errors.logged_into_this_site"
@@ -2304,7 +2417,7 @@ msgstr "사이트 삭제"
 
 #:
 msgid "deletesite.status"
-msgstr "서버에서 ''{0}'' 사이트를 삭제하는 중..."
+msgstr "서버에서 ’{0}’ 사이트를 삭제하는 중..."
 
 #:
 msgid "deletesiteusers.description"
@@ -2332,11 +2445,11 @@ msgstr "서버에서 {0}에 나열된 사용자를 삭제하는 중..."
 
 #:
 msgid "editdomain.description"
-msgstr "도메인을 편집합니다. 편집할 도메인 목록을 보려면 ''{0}'' 명령을 사용합니다."
+msgstr "도메인을 편집합니다. 편집할 도메인 목록을 보려면 ’{0}’ 명령을 사용합니다."
 
 #:
 msgid "editdomain.errors.requires_nickname_name"
-msgstr "''{0}'' 옵션 또는 ''{1}'' 옵션을 지정해야 합니다."
+msgstr "’{0}’ 옵션 또는 ’{1}’ 옵션을 지정해야 합니다."
 
 #:
 msgid "editdomain.options.id"
@@ -2360,7 +2473,7 @@ msgstr "{0}ID{1}애칭{1}{1}이름{0}"
 
 #:
 msgid "editdomain.status"
-msgstr "서버에서 ID가 ''{0}''인 도메인 편집..."
+msgstr "서버에서 ID가 ’{0}’인 도메인 편집..."
 
 #:
 msgid "editsite.errors.invalid_site-id"
@@ -2396,7 +2509,7 @@ msgstr "사이트의 표시 이름"
 
 #:
 msgid "editsite.options.status"
-msgstr "사이트의 가용성을 변경합니다. ''{0}'' 또는 ''{1}''여야 합니다."
+msgstr "사이트의 가용성을 변경합니다. ’{0}’ 또는 ’{1}’여야 합니다."
 
 #:
 msgid "editsite.options.allow-materialized-views"
@@ -2404,7 +2517,7 @@ msgstr "이 사이트에 대해 구체화된 뷰 허용 [또는 거부]"
 
 #:
 msgid "editsite.options.extract_encryption_mode"
-msgstr "추출 암호화 모드: 사용 안 함, 사용 또는 시행입니다. 설정되지 않은 경우 서버에서 변경되지 않습니다."
+msgstr "추출 암호화 모드로는 disabled(사용 안 함), enabled(사용) 또는 enforced(강제 적용)가 있습니다. 설정되지 않은 경우 서버에서 변경되지 않습니다."
 
 #:
 msgid "editsite.options.web_extraction_enabled"
@@ -2428,7 +2541,7 @@ msgstr "사이트 편집"
 
 #:
 msgid "editsite.status"
-msgstr "서버에서 ''{0}'' 사이트를 편집합니다..."
+msgstr "서버에서 ’{0}’ 사이트를 편집합니다..."
 
 #:
 msgid "encryptextracts.short_description"
@@ -2448,11 +2561,11 @@ msgstr "내보낼 통합 문서 또는 뷰의 이름에 공백을 포함할 수 
 
 #:
 msgid "export.errors.requires_workbook_view_name"
-msgstr "''{0}'' 명령에는 <workbook>/<view> 이름이 필요합니다."
+msgstr "’{0}’ 명령에는 <workbook>/<view> 이름이 필요합니다."
 
 #:
 msgid "export.errors.requires_workbook_view_param"
-msgstr "''{0}'' 명령에는 <workbook>/<view> 매개 변수가 필요하고, 이 매개 변수에는 하나 이상의 슬래시(/)가 있어야 합니다."
+msgstr "’{0}’ 명령에는 <workbook>/<view> 매개 변수가 필요하고, 이 매개 변수에는 하나 이상의 슬래시(/)가 있어야 합니다."
 
 #:
 msgid "export.options.country"
@@ -2480,7 +2593,7 @@ msgstr "내보낸 PDF의 페이지 방향을 설정합니다. 사용할 수 있�
 
 #:
 msgid "export.options.pagesize"
-msgstr "내보낸 PDF의 페이지 크기를 설정합니다. 사용할 수 있는 값: {0}(기본값: ''{1}'')"
+msgstr "내보낸 PDF의 페이지 크기를 설정합니다. 사용할 수 있는 값: {0}(기본값: ’{1}’)"
 
 #:
 msgid "export.options.pdf"
@@ -2500,11 +2613,19 @@ msgstr "서버에서 뷰의 이미지 또는 데이터 내보내기"
 
 #:
 msgid "export.status"
-msgstr "서버에서 ''{0}''을(를) 요청하는 중..."
+msgstr "서버에서 ’{0}’을(를) 요청하는 중..."
+
+#:
+msgid "export.status.writing"
+msgstr "’{0}’에 응답을 쓰는 중"
+
+#:
+msgid "export.status.error"
+msgstr "다음 파일에 쓰는 동안 오류 발생:"
 
 #:
 msgid "export.success"
-msgstr "''{1}''에 {0} 저장함"
+msgstr "’{1}’에 {0} 저장함"
 
 #:
 msgid "extracts.workbook.errors.requires_datasources_or_include_all"
@@ -2520,7 +2641,7 @@ msgstr "서버에서 파일을 가져옵니다. filename 인수가 지정되지 
 
 #:
 msgid "get.errors.requires_url"
-msgstr "''{0}'' 명령에는 URL이 필요합니다."
+msgstr "’{0}’ 명령에는 URL이 필요합니다."
 
 #:
 msgid "get.options.file"
@@ -2588,11 +2709,11 @@ msgstr "서버에서 도메인을 나열하는 중..."
 
 #:
 msgid "listsites.output"
-msgstr "{0}{0}NAME: {1} {0}SITEID: ''{2}''"
+msgstr "{0}{0}이름: {1}{0}SITEID: ’{2}’"
 
 #:
 msgid "listsites.output_extended"
-msgstr "{0}{0}NAME: {1} {0}SITEID: ''{2}''{0}EXTRACTENCRYPTION: {3}"
+msgstr "{0}{0}NAME: {1} {0}SITEID: ’{2}’{0}EXTRACTENCRYPTION: {3}"
 
 #:
 msgid "listsites.short_description"
@@ -2624,7 +2745,7 @@ msgstr "서버에 통합 문서, 데이터 원본 또는 추출 게시"
 
 #:
 msgid "publish.errors.invalid_datasource_update_file_type"
-msgstr "데이터 원본 업데이트에 대한 파일 유형 ''{0}''이(가) 잘못되었습니다. 바꾸기/추가는 추출(.tde) 파일에만 적용됩니다."
+msgstr "데이터 원본 업데이트에 대한 파일 유형 ’{0}’이(가) 잘못되었습니다. 바꾸기/추가는 추출(.tde) 파일에만 적용됩니다."
 
 #:
 msgid "publish.errors.invalid_name_option"
@@ -2632,7 +2753,7 @@ msgstr "여러 항목을 게시하는 경우 {0} 옵션을 사용할 수 없습�
 
 #:
 msgid "publish.errors.invalid_publish_file_type"
-msgstr "게시에 대한 파일 유형 ''{0}''이(가) 잘못되었습니다. .tde, .tds, .tdsx, .twb 또는 .twbx 파일이 필요합니다."
+msgstr "게시에 대한 파일 유형 ’{0}’이(가) 잘못되었습니다. .tde, .tds, .tdsx, .twb 또는 .twbx 파일이 필요합니다."
 
 #:
 msgid "publish.errors.mutually_exclusive_option"
@@ -2640,7 +2761,7 @@ msgstr "{0} 또는 {1} 중 하나를 사용하십시오."
 
 #:
 msgid "publish.errors.requires_resource_file"
-msgstr "''{0}'' 명령에는 통합 문서, 데이터 원본 또는 추출 파일이 필요합니다."
+msgstr "’{0}’ 명령에는 통합 문서, 데이터 원본 또는 추출 파일이 필요합니다."
 
 #:
 msgid "publish.errors.unexpected_server_response"
@@ -2724,7 +2845,7 @@ msgstr "통합 문서에 사용자 필터가 포함된 경우 축소판을 계�
 
 #:
 msgid "publish.status"
-msgstr "서버에 ''{0}''을(를) 게시하는 중입니다. 몇 분 정도 걸릴 수 있습니다..."
+msgstr "서버에 ’{0}’을(를) 게시하는 중입니다. 몇 분 정도 걸릴 수 있습니다..."
 
 #:
 msgid "publish.success"
@@ -2784,7 +2905,7 @@ msgstr "새로 고칠 추출을 포함하는 프로젝트의 상위 경로입니
 
 #:
 msgid "refreshextracts.options.project"
-msgstr "통합 문서/데이터 원본이 포함된 프로젝트 이름입니다. {0} 또는 {1}이(가) 지정된 경우에만 필요합니다. 지정되지 않은 경우 기본 프로젝트 ''{2}''이(가) 사용됩니다."
+msgstr "통합 문서/데이터 원본이 포함된 프로젝트 이름입니다. {0} 또는 {1}이(가) 지정된 경우에만 필요합니다. 지정되지 않은 경우 기본 프로젝트 ’{2}’이(가) 사용됩니다."
 
 #:
 msgid "refreshextracts.options.synchronous"
@@ -2812,11 +2933,11 @@ msgstr "서버에서 통합 문서 또는 데이터 원본의 추출 새로 고�
 
 #:
 msgid "refreshextracts.status_incremented"
-msgstr "{0} ''{1}''에 대한 추출이 지금 증분되도록 예약하는 중..."
+msgstr "{0} ’{1}’에 대한 추출이 지금 증분되도록 예약하는 중..."
 
 #:
 msgid "refreshextracts.status_refreshed"
-msgstr "{0} ''{1}''에 대한 추출이 지금 새로 고쳐지도록 예약하는 중..."
+msgstr "{0} ’{1}’에 대한 추출이 지금 새로 고쳐지도록 예약하는 중..."
 
 #:
 msgid "removeusers.options.users"
@@ -2832,7 +2953,7 @@ msgstr "{0}에 나열된 사용자를 {1} 그룹에서 제거하는 중..."
 
 #:
 msgid "runschedule.errors.requires_schedule_name"
-msgstr "''{0}'' 명령에는 일정 이름이 필요합니다."
+msgstr "’{0}’ 명령에는 일정 이름이 필요합니다."
 
 #:
 msgid "runschedule.short_description"
@@ -2840,7 +2961,7 @@ msgstr "일정 실행"
 
 #:
 msgid "runschedule.status"
-msgstr "서버에서 ''{0}'' 일정을 실행하는 중..."
+msgstr "서버에서 ’{0}’ 일정을 실행하는 중..."
 
 #:
 msgid "materializeviews.short_description"
@@ -2848,11 +2969,11 @@ msgstr "사이트/통합 문서의 구체화된 뷰 설정을 업데이트하고
 
 #:
 msgid "materializeviews.status.site"
-msgstr "''{0}'' 사이트의 구체화된 뷰 설정 업데이트 중..."
+msgstr "’{0}’ 사이트의 구체화된 뷰 설정 업데이트 중..."
 
 #:
 msgid "materializeviews.status.workbook"
-msgstr "''{0}'' 통합 문서의 구체화된 뷰 설정 업데이트 중..."
+msgstr "’{0}’ 통합 문서의 구체화된 뷰 설정 업데이트 중..."
 
 #:
 msgid "materializeviews.errors.invalid_workbook_arguments"
@@ -2864,55 +2985,55 @@ msgstr "materializeviews 명령에는 사이트 ID의 인수 하나가 필요합
 
 #:
 msgid "materializeviews.errors.invalid_workbook_option"
-msgstr "''{0}'' 또는 ''{1}''을(를) ''{2}''과(와) 함께 사용하십시오."
+msgstr "’{0}’ 또는 ’{1}’을(를) ’{2}’과(와) 함께 사용하십시오."
 
 #:
 msgid "materializeviews.errors.invalid_project_path"
-msgstr "''{1}''을(를) ''{0}''과(와) 함께 사용하십시오."
+msgstr "’{1}’을(를) ’{0}’과(와) 함께 사용하십시오."
 
 #:
 msgid "materializeviews.errors.invalid_site_option"
-msgstr "''{0}''을(를) ''{1}''과(와) 함께 사용하십시오."
+msgstr "’{0}’을(를) ’{1}’과(와) 함께 사용하십시오."
 
 #:
 msgid "materializeviews.errors.site_mode_conflict"
-msgstr "사이트의 구체화된 뷰 모드를 변경하려면 ''{0}'' 또는 ''{1}''을(를) 사용하십시오."
+msgstr "사이트의 구체화된 뷰 모드를 변경하려면 ’{0}’ 또는 ’{1}’을(를) 사용하십시오."
 
 #:
 msgid "materializeviews.errors.site_not_updated"
-msgstr "''{0}'' 사이트가 업데이트되지 않았습니다. 서버 관리자만 구체화된 뷰 설정을 변경할 수 있습니다."
+msgstr "’{0}’ 사이트가 업데이트되지 않았습니다. 서버 관리자만 구체화된 뷰 설정을 변경할 수 있습니다."
 
 #:
 msgid "materializeviews.errors.invalid_argument_options_combination"
-msgstr "구체화된 뷰 설정을 변경하려면 ''{0}'' 또는 ''{1}''을(를) 사용하십시오."
+msgstr "구체화된 뷰 설정을 변경하려면 ’{0}’ 또는 ’{1}’을(를) 사용하십시오."
 
 #:
 msgid "materializeviews.options.materialize_now"
-msgstr "지정된 통합 문서의 구체화를 즉시 예약하려면 ''{0}''을(를) 사용하십시오."
+msgstr "지정된 통합 문서의 구체화를 즉시 예약하려면 ’{0}’을(를) 사용하십시오."
 
 #:
 msgid "materializeviews.options.project"
-msgstr "프로젝트 이름을 지정하려면 ''{0}''을(를) 사용하십시오."
+msgstr "프로젝트 이름을 지정하려면 ’{0}’을(를) 사용하십시오."
 
 #:
 msgid "materializeviews.options.parent_project_path"
-msgstr "상위 프로젝트 경로를 ''{1}''(으)로 지정하려면 ''{0}''을(를) 사용하십시오."
+msgstr "상위 프로젝트 경로를 ’{1}’(으)로 지정하려면 ’{0}’을(를) 사용하십시오."
 
 #:
 msgid "materializeviews.options.allow_workbook"
-msgstr "통합 문서의 구체화된 뷰 사용 여부를 지정하려면 ''{0}''을(를) 사용하십시오."
+msgstr "통합 문서의 구체화된 뷰 사용 여부를 지정하려면 ’{0}’을(를) 사용하십시오."
 
 #:
 msgid "materializeviews.options.allow_site"
-msgstr "사이트의 구체화된 뷰 사용 여부를 지정하려면 ''{0}''을(를) 사용하십시오."
+msgstr "사이트의 구체화된 뷰 사용 여부를 지정하려면 ’{0}’을(를) 사용하십시오."
 
 #:
 msgid "materializeviews.options.selected_workbooks"
-msgstr "''{1}'' 옵션에 사용된 사이트에서 선택한 통합 문서를 사용하도록 설정하려면 ''{0}''을(를) 사용하십시오. 이것이 기본 옵션입니다."
+msgstr "’{1}’ 옵션에 사용된 사이트에서 선택한 통합 문서를 사용하도록 설정하려면 ’{0}’을(를) 사용하십시오. 이것이 기본 옵션입니다."
 
 #:
 msgid "materializeviews.options.all_workbooks"
-msgstr "''{1}'' 옵션에 사용된 사이트에서 모든 통합 문서를 사용하도록 설정하려면 ''{0}''을(를) 사용하십시오."
+msgstr "’{1}’ 옵션에 사용된 사이트에서 모든 통합 문서를 사용하도록 설정하려면 ’{0}’을(를) 사용하십시오."
 
 #:
 msgid "session.auto_site_login"
@@ -2927,12 +3048,16 @@ msgid "session.connecting"
 msgstr "서버에 연결하는 중..."
 
 #:
+msgid "session.connecting_to"
+msgstr "URL({0})에 연결하는 중: {1}"
+
+#:
 msgid "session.continuing_session"
 msgstr "이전 세션 계속 유지"
 
 #:
 msgid "session.errors.auth_required"
-msgstr "권한이 필요함"
+msgstr "권한 부여가 필요함"
 
 #:
 msgid "session.errors.invalid_keystore_password"
@@ -2956,7 +3081,7 @@ msgstr "리디렉션 응답에 리디렉션 주소가 없음"
 
 #:
 msgid "session.errors.no_sslcafile_found"
-msgstr "''{0}'' 위치에서 CA(인증 기관) 파일을 찾을 수 없습니다. CA 파일은 Tableau Server와의 보안 통신을 보장하기 위해 사용됩니다. CA 파일 만드는 방법에 대한 자세한 내용은 Tableau Server 도움말을 참조하십시오. SSL 인증서의 유효성을 검사하지 않은 상태로 Tableau Server에 연결하려면 --no-certcheck 플래그를 사용하십시오."
+msgstr "’{0}’ 위치에서 CA(인증 기관) 파일을 찾을 수 없습니다. CA 파일은 Tableau Server와의 보안 통신을 보장하기 위해 사용됩니다. CA 파일 만드는 방법에 대한 자세한 내용은 Tableau Server 도움말을 참조하십시오. SSL 인증서의 유효성을 검사하지 않은 상태로 Tableau Server에 연결하려면 --no-certcheck 플래그를 사용하십시오."
 
 #:
 msgid "session.errors.script_no_password"
@@ -3016,7 +3141,7 @@ msgstr "기본 사이트의 멤버가 아닙니다. 다음 사이트에서 SITEI
 
 #:
 msgid "session.not_site_member"
-msgstr "''{0}'' 사이트의 멤버가 아닙니다. 다음 사이트에서 SITEID를 선택하십시오."
+msgstr "’{0}’ 사이트의 멤버가 아닙니다. 다음 사이트에서 SITEID를 선택하십시오."
 
 #:
 msgid "session.options.help"
@@ -3056,7 +3181,7 @@ msgstr "지정된 Tableau Server URL을 사용합니다. 프로토콜이 지정�
 
 #:
 msgid "session.options.site"
-msgstr "지정된 Tableau Server 사이트를 사용합니다. 기본 사이트를 사용하게 하려면 빈 문자열('''')을 지정하십시오."
+msgstr "지정된 Tableau Server 사이트를 사용합니다. 기본 사이트를 사용하게 하려면 빈 문자열("")을 지정하십시오."
 
 #:
 msgid "session.options.timeout"
@@ -3075,6 +3200,10 @@ msgid "session.password"
 msgstr "비밀번호:"
 
 #:
+msgid "session.redirecting"
+msgstr "{0}에 리디렉션 중"
+
+#:
 msgid "session.retrying_task"
 msgstr "새 세션에서 원래 명령을 다시 시도하기 위해 다시 로그인하는 중..."
 
@@ -3084,7 +3213,7 @@ msgstr "세션이 만료되었습니다. 세션을 지우기 위해 로그아웃
 
 #:
 msgid "session.site_list"
-msgstr "{0}{0}NAME: {1}{0}SITEID: ''{2}''"
+msgstr "{0}{0}이름: {1}{0}SITEID: ’{2}’"
 
 #:
 msgid "session.using-certificate"
@@ -3092,7 +3221,7 @@ msgstr "클라이언트 인증서를 사용하여 로그인합니다."
 
 #:
 msgid "session.inferred_username"
-msgstr "--username 플래그가 지정되지 않아 사용자 ''{0}''(으)로 로그인하는 중"
+msgstr "--username 플래그가 지정되지 않아 사용자 ’{0}’(으)로 로그인하는 중입니다."
 
 #:
 msgid "sessiondata.errors.bad_api"
@@ -3108,15 +3237,15 @@ msgstr "tabcmd 버전 {0}(API {1})이(가) Tableau Server 버전 {2}(API {3})과
 
 #:
 msgid "sessionoptions.errors.ambiguous_scheme"
-msgstr "서버 이름 앞에 ''{0}'' 또는 ''{1}''을(를) 지정하십시오."
+msgstr "서버 이름 앞에 ’{0}’ 또는 ’{1}’을(를) 지정하십시오."
 
 #:
 msgid "sessionoptions.errors.bad_password_file"
-msgstr "''{0}'' 파일에서 비밀번호를 읽을 수 없습니다."
+msgstr "’{0}’ 파일에서 비밀번호를 읽을 수 없습니다."
 
 #:
 msgid "sessionoptions.errors.bad_protocol"
-msgstr "''{0}'' 프로토콜이 지원되지 않습니다."
+msgstr "’{0}’ 프로토콜이 지원되지 않습니다."
 
 #:
 msgid "sessionoptions.errors.bad_proxy_format"
@@ -3124,7 +3253,7 @@ msgstr "프록시 형식이 HOST:PORT 형식이 아닙니다. {0}"
 
 #:
 msgid "sessionoptions.errors.bad_timeout"
-msgstr "{0} ''{1}''에 대한 숫자가 아닌 인수는 무시되었습니다."
+msgstr "{0} ’{1}’에 대한 숫자가 아닌 인수는 무시되었습니다."
 
 #:
 msgid "set.description"
@@ -3132,11 +3261,11 @@ msgstr "서버에서 setting을 설정합니다. 설정을 해제하려면 !sett
 
 #:
 msgid "set.errors.requires_setting_name"
-msgstr "''{0}'' 명령에는 설정 이름이 필요합니다."
+msgstr "’{0}’ 명령에는 설정 이름이 필요합니다."
 
 #:
 msgid "set.errors.single_setting_name"
-msgstr "''{0}'' 명령은 단일 설정 이름을 사용합니다."
+msgstr "’{0}’ 명령은 단일 설정 이름을 사용합니다."
 
 #:
 msgid "set.short_description"
@@ -3144,11 +3273,11 @@ msgstr "서버에 setting 설정"
 
 #:
 msgid "setsetting.status"
-msgstr "{1}에 ''{0}'' 설정 중"
+msgstr "{1}에 ’{0}’ 설정 중"
 
 #:
 msgid "syncgroup.errors.server_admin"
-msgstr "그룹의 최소 사이트 역할을 ''ServerAdministrator''로 설정할 수 없습니다."
+msgstr "그룹의 최소 사이트 역할을 ’ServerAdministrator’로 설정할 수 없습니다."
 
 #:
 msgid "syncgroup.options.role"
@@ -3160,7 +3289,7 @@ msgstr "--role를 사용하여 기본 동작을 재정의함으로써, 사용자
 
 #:
 msgid "syncgroup.options.grantlicensemode"
-msgstr "그룹에 지정된 라이선스를 사용자에게 부여하는 경우 사용할 수 있는 값은 {0}입니다. 값이 전달되지 않은 경우 ''on-sync''가 기본값으로 사용됩니다."
+msgstr "그룹에 지정된 라이선스를 사용자에게 부여하는 경우 사용할 수 있는 값은 {0}입니다. 값이 전달되지 않은 경우 ’on-sync’가 기본값으로 사용됩니다."
 
 #:
 msgid "syncgroup.short_description"
@@ -3172,23 +3301,23 @@ msgstr "서버와 Active Directory 그룹 {0} 동기화 중..."
 
 #:
 msgid "syncgroup.options.sysadmin-type"
-msgstr "[더 이상 사용되지 않습니다. 대신 --role을 사용하십시오.] 그룹의 모든 사용자에 대해 관리 권한을 할당[또는 제거]합니다. {0}은(는) {1}, {2}, {3} 또는 {4}일 수 있습니다."
+msgstr "[사용 중단. 대신 --role을 사용하십시오.] 그룹의 모든 사용자에 대해 관리 권한을 할당[또는 제거]합니다. {0}은(는) {1}, {2}, {3} 또는 {4}일 수 있습니다."
 
 #:
 msgid "syncgroup.options.license"
-msgstr "[더 이상 사용되지 않습니다. 대신 --role를 사용하십시오.] 그룹에 있는 모든 사용자에 대해 기본 라이선스 수준을 설정합니다. {0}은(는) {1}, {2} 또는 {3}일 수 있습니다."
+msgstr "[사용 중단. 대신 --role를 사용하십시오.] 그룹에 있는 모든 사용자에 대해 기본 라이선스 수준을 설정합니다. {0}은(는) {1}, {2} 또는 {3}일 수 있습니다."
 
 #:
 msgid "syncgroup.options.publisher"
-msgstr "[더 이상 사용되지 않습니다. 대신 --role을 사용하십시오.] 그룹의 모든 사용자에 대해 게시 권한을 할당[또는 제거]합니다."
+msgstr "[사용 중단. 대신 --role을 사용하십시오.] 그룹의 모든 사용자에 대해 게시 권한을 할당[또는 제거]합니다."
 
 #:
 msgid "tabcmd.mutually_exclusive_options"
-msgstr "한 명령에 ''{0}'' 및 ''{1}''을(를) 동시에 지정할 수 없습니다."
+msgstr "한 명령에 ’{0}’ 및 ’{1}’을(를) 동시에 지정할 수 없습니다."
 
 #:
 msgid "tabcmdparser.errors.ambiguous_option"
-msgstr "모호한 옵션 ''{0}'', 가능한 옵션: {1}"
+msgstr "모호한 옵션 ’{0}’, 가능한 옵션: {1}"
 
 #:
 msgid "tabcmdparser.warning.unexpected_dash"
@@ -3256,7 +3385,7 @@ msgstr "잘못된 응답"
 
 #:
 msgid "validateidpmetadata.options.digest_algorithms"
-msgstr "공백으로 구분된 다이제스트 알고리즘의 목록입니다. {0}에 대한 올바른 값은 {1}입니다. 지정하지 않은 경우 서버 구성 설정 {2}의 값이 사용됩니다."
+msgstr "공백으로 구분된 다이제스트 알고리즘의 목록입니다. {0}에 사용할 수 있는 값은 {1}입니다. 지정하지 않은 경우 서버 구성 설정 {2}의 값이 사용됩니다."
 
 #:
 msgid "validateidpmetadata.options.min_allowed_rsa_key_size"
@@ -3274,4 +3403,99 @@ msgstr "인증서 유효성 검사를 수행할 사이트 이름의 공백으로
 msgid "validateidpmetadata.short_description"
 msgstr "안전하지 않은 다이제스트 알고리즘인 SHA-1을 사용한 IdP로 구성된 Tableau Server 사이트를 식별합니다. 이 명령은 RSA 키 크기 또는 타원 곡선 크기가 미달인 인증서를 사용하는 IdP도 식별합니다."
 
+#:
+msgid "tabcmd.content.description"
+msgstr "항목에 대한 설명입니다."
+
+#:
+msgid "tabcmd.content.site_id"
+msgstr "사이트를 고유하게 식별하기 위해 URL에 사용됩니다. 사이트 이름과는 다릅니다."
+
+#:
+msgid "tabcmd.howto"
+msgstr "특정 명령 실행"
+
+#:
+msgid "tabcmd.name"
+msgstr "Tableau Server 명령줄 유틸리티"
+
+#:
+msgid "tabcmd.options.project"
+msgstr "프로젝트의 이름"
+
+#:
+msgid "tabcmd.options.parent_project"
+msgstr "대상 항목을 포함하는 프로젝트의 경로입니다."
+
+#:
+msgid "tabcmd.options.workbook"
+msgstr "대상 통합 문서의 이름"
+
+#:
+msgid "tabcmd.options.datasource"
+msgstr "대상 데이터 원본의 이름"
+
+#:
+msgid "tabcmd.options.materializeviews"
+msgstr "사용하도록 설정된 경우 모든 뷰에 대해 계산을 구체화하여 이 통합 문서의 성능을 조정합니다."
+
+#:
+msgid "tabcmd.options.dematerialize"
+msgstr "사용하도록 설정된 경우 모든 뷰에 대해 구체화된 계산을 사용하지 않도록 설정하여 이 통합 문서의 성능을 조정합니다."
+
+#:
+msgid "tabcmd.options.complete"
+msgstr "변경이 성공하려면 모든 행이 유효해야 합니다. (기본값: true)"
+
+#:
+msgid "tabcmd.options.no_complete"
+msgstr "변경이 성공하기 위해 모든 행이 유효할 필요는 없습니다."
+
+#:
+msgid "tabcmd.options.users_file"
+msgstr "한 줄에 한 명씩 사용자 목록이 포함된 CSV 파일"
+
+#:
+msgid "tabcmd.options.token_file"
+msgstr "파일에서 개인용 액세스 토큰을 읽습니다."
+
+#:
+msgid "tabcmd.options.token_name"
+msgstr "개인용 액세스 토큰의 이름입니다. 토큰을 사용하여 로그인하는 경우 세션을 시작하려면 적어도 한 번은 토큰을 입력해야 합니다."
+
+#:
+msgid "tabcmd.options.token_value"
+msgstr "인증에 사용할 개인용 액세스 토큰의 암호 값입니다. --token-name을 설정해야 합니다."
+
+#:
+msgid "tabcmd.options.language.detailed"
+msgstr "사용할 언어를 설정합니다. 내보낸 데이터는 이 언어/로캘로 반환됩니다.   설정하지 않으면 클라이언트는 컴퓨터 로캘을 사용하고 서버는 사용자 계정 로캘을 사용합니다."
+
+#:
+msgid "tabcmd.options.conflicts"
+msgstr "리소스 충돌이 발생해도 항목을 성공적으로 만든 것으로 처리(예: 프로젝트가 이미 존재하는 경우)"
+
+#:
+msgid "tabcmd.options.log"
+msgstr "지정된 로그 수준을 사용합니다. 기본 수준은 [정보]입니다."
+
+#:
+msgid "tabcmd.publish.options.restart"
+msgstr "[사용 중단 - 영향 없음]"
+
+#:
+msgid "tabcmd.publish.options.tabbed.detailed"
+msgstr "탭 보기를 사용하도록 설정한 상태로 게시합니다. 사용자가 통합 문서를 탐색하는 데 사용할 수 있도록 각 시트가 탭으로 표시됩니다."
+
+#:
+msgid "tabcmd.publish.options.append.detailed"
+msgstr "게시할 데이터를 같은 이름의 기존 데이터 원본에 추가합니다. append가 true로 설정되어 있는데 데이터 원본이 아직 존재하지 않으면 작업이 실패합니다."
+
+#:
+msgid "tabcmd.publish.options.disable-uploader"
+msgstr "[사용 중단 - 영향 없음]"
+
+#:
+msgid "tabcmd.refresh.options.bridge"
+msgstr "Tableau Bridge를 통해 데이터 원본 새로 고침"
 

@@ -6,9 +6,10 @@ msgstr ""
 "X-Generator: prop2po"
 "Project-Id-Version: None"
 "Language: sv"
+# Copyright (C) YEAR Tableau Software 
 #:
 msgid "permissions.labels.capabilities.read"
-msgstr "Vy:"
+msgstr "Visning:"
 
 #:
 msgid "permissions.labels.capabilities.write"
@@ -164,7 +165,7 @@ msgstr "Kör Förklara data:"
 
 #:
 msgid "permissions.labels.roles.wb_view"
-msgstr "Visa"
+msgstr "Vy"
 
 #:
 msgid "permissions.labels.roles.wb_explore"
@@ -180,7 +181,7 @@ msgstr "Administrera"
 
 #:
 msgid "permissions.labels.roles.ds_view"
-msgstr "Visa"
+msgstr "Vy"
 
 #:
 msgid "permissions.labels.roles.ds_explore"
@@ -244,11 +245,11 @@ msgstr "{0} kB"
 
 #:
 msgid "errors.argument.flow_description.too_long"
-msgstr "Flödesbeskrivningen är för lång ({0} tecken).  Den måste vara kortare än {1} tecken:\{2}"
+msgstr "Flödesbeskrivningen är för lång ({0} tecken).  Den måste vara kortare än {1} tecken:  {2}"
 
 #:
 msgid "errors.argument.workbook_name.too_long"
-msgstr "Arbetsbokens namn är för långt ({0} tecken).  Det måste vara kortare än {1} tecken:{2}"
+msgstr "Arbetsbokens namn är för långt ({0} tecken).  Det måste vara kortare än {1} tecken:  {2}"
 
 #:
 msgid "errors.argument.workbook_name.empty"
@@ -256,15 +257,15 @@ msgstr "Arbetsbokens namn är tomt."
 
 #:
 msgid "errors.argument.workbook_description.too_long"
-msgstr "Arbetsbokens beskrivning är för lång ({0} tecken).  Den måste vara kortare än {1} tecken:{2}"
+msgstr "Arbetsbokens beskrivning är för lång ({0} tecken).  Den måste vara kortare än {1} tecken:  {2}"
 
 #:
 msgid "errors.argument.worksheet_name.too_long"
-msgstr "Arbetsbladets namn är för långt ({0} tecken).  Det måste vara kortare än {1} tecken:{2}"
+msgstr "Arbetsbladets namn är för långt ({0} tecken). Det måste vara kortare än {1} tecken:  {2}"
 
 #:
 msgid "errors.argument.datasource_name.too_long"
-msgstr "Datakällans namn är för långt ({0} tecken).  Det måste vara kortare än {1} tecken:{2}"
+msgstr "Datakällans namn är för långt ({0} tecken). Det måste vara kortare än {1} tecken:  {2}"
 
 #:
 msgid "errors.argument.datasource_name.empty"
@@ -272,23 +273,31 @@ msgstr "Datakällans namn är tomt."
 
 #:
 msgid "errors.argument.datasource_description.too_long"
-msgstr "Datakällans beskrivning är för lång ({0} tecken).  Den måste vara kortare än {1} tecken:{2}"
+msgstr "Datakällans beskrivning är för lång ({0} tecken). Den måste vara kortare än {1} tecken:  {2}"
 
 #:
 msgid "errors.argument.dataconnection_column.too_long"
-msgstr "DataConnection column {0} is too long ({1} characters).  It must be shorter than {2} characters:{3}"
+msgstr "Kolumnen dataanslutning {0} är för lång ({1} tecken).  Den måste vara kortare än {2} tecken:  {3}"
 
 #:
 msgid "errors.argument.tag.too_long"
-msgstr "Taggen är för lång ({0} tecken).  Den måste vara kortare än {1} tecken:{2}"
+msgstr "Taggen är för lång ({0} tecken). Den måste vara kortare än {1} tecken:  {2}"
 
 #:
 msgid "errors.argument.workbook_file.missing_or_empty"
 msgstr "Arbetsboksfilen saknas eller är tom."
 
 #:
+msgid "errors.argument.file.size.too_large"
+msgstr "Filen {0} är för stor. Filer som är större än {1} MB i okomprimerad storlek tillåts inte. Skapa ett extrakt för att gå vidare med publiceringen."
+
+#:
+msgid "errors.argument.twb_or_tds_file.missing"
+msgstr "twb- eller tds-filen saknas i arkivet."
+
+#:
 msgid "errors.argument.internal"
-msgstr "Internt serverfel. Saknat eller ogiltigt argument."
+msgstr "Internt serverfel.  Saknat eller ogiltigt argument."
 
 #:
 msgid "errors.argument.thumbnail.invalid_format"
@@ -296,7 +305,7 @@ msgstr "Arbetsbokens miniatyrbildsformat är ogiltigt. Måste vara en PNG med up
 
 #:
 msgid "errors.html_403.disabled_resource.workbook"
-msgstr "Den arbetsboken är inaktiverad. Kontakta administratören."
+msgstr "Den arbetsboken är inaktiverad.  Kontakta administratören."
 
 #:
 msgid "errors.html_404.missing_or_unauthorized_resource.project"
@@ -304,7 +313,7 @@ msgstr "Projektet du letade efter finns inte eller så har du inte behörighet a
 
 #:
 msgid "errors.html_404.missing_or_unauthorized_resource.personal_space"
-msgstr "Den personliga ytan du letade efter finns inte eller så har du inte behörighet att se det den."
+msgstr "Det personliga utrymme du letade efter finns inte eller så har du inte behörighet att visa det."
 
 #:
 msgid "errors.html_404.missing_or_unauthorized_resource.datasource"
@@ -324,7 +333,7 @@ msgstr "Ta bort arbetsböcker"
 
 #:
 msgid "errors.permissions.publish.datasource.licensing"
-msgstr "Du måste vara ''Interactor'' för att publicera en datakälla."
+msgstr "Du måste vara ”Interactor” för att publicera en datakälla."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite"
@@ -332,7 +341,7 @@ msgstr "Det finns redan en datakälla med namnet {0} i projektet {1}. Du har int
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_personal_space"
-msgstr "Det finns redan en datakälla med namnet {0} i den personliga ytan. Du har inte behörighet att skriva över den."
+msgstr "Det finns redan en datakälla med namnet {0} i det personliga utrymmet. Du har inte behörighet att skriva över den."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short"
@@ -340,7 +349,7 @@ msgstr "Det finns redan en datakälla med namnet {0} i projektet {1}."
 
 #:
 msgid "errors.permissions.publish.datasource.overwrite_short_personal_space"
-msgstr "Det finns redan en datakälla med namnet {0} i den personliga ytan."
+msgstr "Det finns redan en datakälla med namnet {0} i det personliga utrymmet."
 
 #:
 msgid "errors.permissions.publish.datasource.non_existent"
@@ -380,7 +389,7 @@ msgstr "Det finns redan en arbetsbok med det här namnet i det projekt du public
 
 #:
 msgid "errors.permissions.publish.workbook.general_personal_space"
-msgstr "Det finns redan en arbetsbok med det här namnet i den personliga yta du publicerar till. Byt namn på arbetsboken för att publicera."
+msgstr "Det finns redan en arbetsbok med det här namnet i det personliga utrymme du publicerar till. Byt namn på arbetsboken för att publicera."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite"
@@ -388,7 +397,7 @@ msgstr "Det finns redan en arbetsbok med namnet {0} i projektet {1}. Du har inte
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_personal_space"
-msgstr "Det finns redan en arbetsbok med namnet {0} i den personliga ytan. Du har inte behörighet att skriva över den."
+msgstr "Det finns redan en arbetsbok med namnet {0} i det personliga utrymmet. Du har inte behörighet att skriva över den."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short"
@@ -396,35 +405,67 @@ msgstr "Det finns redan en arbetsbok med namnet {0} i projektet {1}."
 
 #:
 msgid "errors.permissions.publish.workbook.overwrite_short_personal_space"
-msgstr "Det finns redan en arbetsbok med namnet {0} i den personliga ytan."
+msgstr "Det finns redan en arbetsbok med namnet {0} i det personliga utrymmet."
 
 #:
 msgid "errors.reportable.impersonation.group_and_user"
-msgstr "Ange endast 'impersonate_username'' eller 'impersonate_groupname'' inte båda."
+msgstr "Ange endast ”impersonate_username” eller ”impersonate_groupname”, inte båda."
 
 #:
 msgid "errors.reportable.impersonation.user_not_found"
-msgstr "Användaren {0} finns inte."
+msgstr "Användaren ”{0}” finns inte."
 
 #:
 msgid "errors.reportable.impersonation.group_not_found"
-msgstr "Gruppen {0} finns inte. "
+msgstr "Gruppen ”{0}” finns inte."
 
 #:
 msgid "errors.public.validation.hasextract"
-msgstr "Arbetsböcker som sparats till Tableau Public måste använda aktiva Tableau-extrakt. Högerklicka på datakällan och välj Använd extrakt innan publicering. Datakällan {0} är inte ett aktivt extrakt."
+msgstr "Arbetsböcker som sparats till Tableau Public måste använda aktiva Tableau-extrakt. Högerklicka på datakällan och välj Använd extrakt innan du publicerar. Datakällan ”{0}” är inte ett aktivt extrakt."
+
+#:
+msgid "errors.public.validation.storage_quota_exceeded"
+msgstr "Innehållet du försöker publicera överstiger kontots maximala kapacitet. Ta bort lite innehåll för att frigöra utrymme och försök igen."
+
+#:
+msgid "errors.public.validation.invalid_archive_file"
+msgstr "Arbetsboken du försöker publicera är inte ett en giltig arbetsbok."
 
 #:
 msgid "errors.publish.dataserver_datasource_not_found"
-msgstr "Datakällan {0} hittades inte för arbetsboken {1}."
+msgstr "Datakällan ”{0}” hittades inte för arbetsboken ”{1}”."
 
 #:
 msgid "errors.publish.datasource_update_mode"
-msgstr "Okänt uppdateringsläge: {0}."
+msgstr "Okänt uppdateringsläge: ”{0}”."
 
 #:
-msgid "errors.publish.workbook.concurrent_update"
-msgstr "En arbetsbok med samma namn publiceras eller ändras just nu. Vänta tills uppgiften slutförs innan du försöker på nytt."
+msgid "errors.publish.fileupload.invalid_checksum"
+msgstr "Ogiltig kontrollsumma."
+
+#:
+msgid "errors.publish.fileupload.invalid_hash_algorithm"
+msgstr "Hashalgoritm stöds inte eller är inaktiverad."
+
+#:
+msgid "errors.publish.fileupload.invalid_offset"
+msgstr "Lägg till i filuppladdning med en förskjutning som inte stämmer överens med registrerad filstorlek."
+
+#:
+msgid "errors.publish.fileupload.concurrent_write"
+msgstr "Det gick inte att få ett exklusivt lås på filen då den är låst av en annan uppladdning."
+
+#:
+msgid "errors.publish.fileupload.flushing_file_buffer"
+msgstr "Det gick inte att tömma filbuffertar under uppladdningen."
+
+#:
+msgid "errors.publish.fileupload.read_or_write"
+msgstr "Det gick inte att läsa från klient eller skriva till uppladdningsfilen."
+
+#:
+msgid "errors.publish.fileupload.concurrent_update"
+msgstr "Innehåll med samma namn laddas upp eller ändras just nu. Vänta tills uppgiften har slutförts och försök igen."
 
 #:
 msgid "errors.publish.workbook.restricted"
@@ -432,7 +473,7 @@ msgstr "Arbetsboken innehåller anslutningstyper som inte tillåts på den här 
 
 #:
 msgid "errors.publish.datasource.concurrent_update"
-msgstr "En datakälla med samma namn håller på att publiceras eller ändras. Vänta tills aktiviteten är slutförd innan du försöker igen."
+msgstr "En datakälla med samma namn håller på att publiceras eller ändras. Vänta tills uppgiften har slutförts och försök igen."
 
 #:
 msgid "errors.publish.datasource.restricted"
@@ -443,20 +484,36 @@ msgid "errors.publish.datasource.connection_check"
 msgstr "{0} kunde inte upprätta en anslutning till din datakälla."
 
 #:
+msgid "errors.publish.file.connection.unauthorized"
+msgstr "Det här flödet inkluderar filingångsanslutningar som blockeras av platsadministratören. Om du vill publicera flöden måste alla ingångsanslutningar vara Tableau-extrakt som redan publicerats i Tableau Cloud."
+
+#:
+msgid "errors.publish.flow.connection_check"
+msgstr "Det gick inte att publicera flödet ”{0}”. Servern kan inte ansluta till datakällstypen: "{1}". Bekräfta att datakällan stöds och att drivrutinen eller plugin-programet för koplingen för datakällan har installerats."
+
+#:
+msgid "errors.publish.workbook.requested_extract_encryption_on_server_with_disabled_encryption"
+msgstr "Arbetsboken kan inte publiceras med ett krypterat extrakt. Extraktkryptering har inaktiverats på den här servern. Du måste publicera arbetsboken med ett okrypterat extrakt."
+
+#:
+msgid "errors.publish.datasource.requested_extract_encryption_on_server_with_disabled_encryption"
+msgstr "Datakällan kan inte publiceras som ett krypterat extrakt. Extraktkryptering har inaktiverats på den här servern. Du måste publicera extraktet okrypterat."
+
+#:
 msgid "errors.publish.workbook.requested_extract_encryption_on_site_with_disabled_encryption"
-msgstr "Arbetsboken kan inte publiceras med ett krypterat extrakt. Webbplatsadministratören har inaktiverat extraktkryptering på den här webbplatsen. Du måste publicera arbetsboken med ett okrypterat extrakt."
+msgstr "Arbetsboken kan inte publiceras med ett krypterat extrakt. Platsadministratören har inaktiverat extraktkryptering på den här platsen. Du måste publicera arbetsboken med ett okrypterat extrakt."
 
 #:
 msgid "errors.publish.datasource.requested_extract_encryption_on_site_with_disabled_encryption"
-msgstr "Datakällan kan inte publiceras som ett krypterat extrakt. Webbplatsadministratören har inaktiverat extraktkryptering på den här webbplatsen. Du måste publicera extraktet okrypterat."
+msgstr "Datakällan kan inte publiceras som ett krypterat extrakt. Platsadministratören har inaktiverat extraktkryptering på den här platsen. Du måste publicera extraktet okrypterat."
 
 #:
 msgid "errors.publish.workbook.requested_no_extract_encryption_on_site_with_enforced_encryption"
-msgstr "Arbetsboken kan inte publiceras med ett okrypterat extrakt. Webbplatsadministratören har framtvingat extraktkryptering på den här webbplatsen. Du måste publicera arbetsboken och ange extraktkryptering."
+msgstr "Arbetsboken kan inte publiceras med ett okrypterat extrakt. Platsadministratören har framtvingat extraktkryptering på den här platsen. Du måste publicera arbetsboken och ange extraktkryptering."
 
 #:
 msgid "errors.publish.datasource.requested_no_extract_encryption_on_site_with_enforced_encryption"
-msgstr "Datakällextraktet kan inte publiceras okrypterat. Webbplatsadministratören har framtvingat extraktkryptering på den här webbplatsen. Du måste publicera extraktet krypterat."
+msgstr "Datakällsextraktet kan inte publiceras okrypterat. Platsadministratören har framtvingat extraktkryptering på den här platsen. Du måste publicera extraktet krypterat."
 
 #:
 msgid "errors.publish.has_unfinished_extract_creation_job"
@@ -464,7 +521,7 @@ msgstr "Den här resursen kan inte publiceras eftersom det finns väntande eller
 
 #:
 msgid "errors.publishing.storage_quota_exceeded.message"
-msgstr "Webbplatslagringskvoten överskreds."
+msgstr "platslagringskvoten överskreds."
 
 #:
 msgid "errors.publishing.request_size_exceeded"
@@ -476,15 +533,15 @@ msgstr "Begärandestorleken kunde inte fastställas."
 
 #:
 msgid "errors.site.quota_exceeded"
-msgstr "Innehållet du försöker ladda upp kommer att överskrida webbplatsens kapacitet med {0}."
+msgstr "Innehållet du försöker ladda upp kommer att överskrida platsens kapacitet med {0}."
 
 #:
 msgid "errors.personal_space.quota_exceeded"
-msgstr "Det här innehållet överskrider kapaciteten på din personliga yta med {0}."
+msgstr "Det här innehållet överskrider kapaciteten för ditt personliga utrymme med {0}."
 
 #:
 msgid "errors.web_authoring.workbook_deleted"
-msgstr "Arbetsboken {0} togs bort. Välj Spara som för att spara som ny arbetsbok."
+msgstr "Arbetsboken ”{0}” togs bort.  Välj Spara som för att spara som ny arbetsbok."
 
 #:
 msgid "errors.web_authoring.workbook_changed"
@@ -492,7 +549,7 @@ msgstr "En annan användare har redigerat och sparat den här arbetsboken sedan 
 
 #:
 msgid "labels.publish.embed_credentials"
-msgstr "Inbäddat lösenord för datakälla"
+msgstr "Bädda in lösenord för datakällan"
 
 #:
 msgid "errors.publish.workbook.google_no_embedded_credentials"
@@ -500,15 +557,15 @@ msgstr "Den här arbetsboken innehåller en {0}-datakälla som kräver inbäddad
 
 #:
 msgid "errors.publish.datasource.google_no_embedded_credentials"
-msgstr "Den här datakällan innehåller en {0}-anslutning som kräver inbäddade inloggningsuppgifter. Publicera den här datakällan från Tableau Desktop med inbäddade inloggningsuppgifter."
+msgstr "Den här datakällan innehåller en {0}-anslutning som kräver inbäddade inloggningsuppgifter.  Publicera den här datakällan från Tableau Desktop med inbäddade inloggningsuppgifter."
 
 #:
 msgid "errors.publish.datasource.federated_oauth_datasource_failed"
-msgstr "Inloggningsuppgifter för en eller flera anslutningar i din datakälla har gått ut. Ta bort de sparade inloggningsuppgifterna för den här datakällan på din sida för Kontoinställningar på  Tableau Server eller Tableau Online och anslut därefter till datakällan igen."
+msgstr "Inloggningsuppgifterna för en eller flera anslutningar i din datakälla har gått ut. Ta bort de sparade inloggningsuppgifterna för den här datakällan på sidan Kontoinställningar i Tableau Server eller Tableau Cloud och anslut sedan till datakällan igen."
 
 #:
 msgid "errors.publish.workbook.missing_oauth_credential"
-msgstr "Inloggningsuppgiften {0} hittades inte eller kan inte användas för att ansluta till datakällan eller arbetsboken."
+msgstr "Inloggningsuppgiften ”{0}” hittades inte eller kan inte användas för att ansluta till datakällan eller arbetsboken."
 
 #:
 msgid "errors.publish.version_incompatible.message"
@@ -516,15 +573,11 @@ msgstr "Skrivbords- och serverversionerna är inkompatibla."
 
 #:
 msgid "errors.publish.version_incompatible.details"
-msgstr "Skrivbordsversion {0}, Serverdokumentversion {1}."
+msgstr "Skrivbordsversion ”{0}”, Serverdokumentversion ”{1}”."
 
 #:
 msgid "errors.publish.datasource.managed_keychain.unique_cv_suggestions"
 msgstr "Publiceringen misslyckades på grund av en konflikt. Skicka in ändringen igen."
-
-#:
-msgid "errors.publish.permissions_are_locked"
-msgstr "Behörigheterna är låsta i projektet du publicerar till. Publicera den här arbetsboken genom att använda standardbehörigheterna och försöka igen."
 
 #:
 msgid "errors.publish.datasource.not.found"
@@ -555,8 +608,20 @@ msgid "errors.publish.async.serialization"
 msgstr "Det gick inte att serialisera publiceringsjobbstatusfel"
 
 #:
+msgid "errors.publish.only_extract_files_are_allowed.message"
+msgstr "Det går inte att publicera till Tableau Server"
+
+#:
+msgid "errors.publish.only_extract_files_are_allowed.details"
+msgstr "Det går inte att ladda upp filen {0} eftersom administratören har blockerat filer av den här typen. Konvertera den till ett extrakt och försök igen."
+
+#:
+msgid "errors.publish.validation.invalid_zip_file"
+msgstr "Det arbetsboks- eller datakällsarkiv du försöker publicera är inte giltigt"
+
+#:
 msgid "errors.permissions.view.datasources"
-msgstr "Du måste vara ''Interactor'' för att visa listan med datakällor."
+msgstr "Du måste vara ”Interactor” för att visa listan med datakällor."
 
 #:
 msgid "errors.oauth.invalid_oauth_class"
@@ -565,6 +630,10 @@ msgstr "{0} är inte en giltig OAuth-anslutningstyp."
 #:
 msgid "errors.xmlapi.bad_request"
 msgstr "Felaktig begäran"
+
+#:
+msgid "errors.xmlapi.payload_too_large"
+msgstr "För stor nyttolast"
 
 #:
 msgid "errors.xmlapi.unauthorized"
@@ -608,15 +677,11 @@ msgstr "Finns redan"
 
 #:
 msgid "errors.xmlapi.site_suspended"
-msgstr "Den här webbplatsen har suspenderats. Du måste vara systemadministratör för att logga in."
+msgstr "Platsen har inaktiverats. Du måste vara systemadministratör för att logga in."
 
 #:
 msgid "errors.xmlapi.site_locked"
-msgstr "Webbplatsen har låsts. Inloggning är inte tillåten just nu."
-
-#:
-msgid "errors.xmlapi.permission_modification"
-msgstr "Det går inte att publicera med ändrade behörigheter"
+msgstr "Platsen har låsts. Inloggning är inte tillåten just nu."
 
 #:
 msgid "errors.xmlapi.update_desktop"
@@ -628,11 +693,23 @@ msgstr "För många begäranden"
 
 #:
 msgid "errors.xmlapi.throttled.detail"
-msgstr "För många anrop till ''{0}''. Försök åter efter {1}."
+msgstr "För många anrop till ”{0}”. Försök åter efter {1}."
+
+#:
+msgid "errors.xmlapi.personal_space_quota_exceeded.summary"
+msgstr "Det går inte att publicera till Personligt utrymme"
+
+#:
+msgid "errors.xmlapi.personal_space_quota_exceeded.detail"
+msgstr "Ta bort eller flytta befintligt innehåll i Personligt utrymme och försök sedan att publicera på nytt."
 
 #:
 msgid "datasource.publish.check.unpublishable"
 msgstr "Det gick inte att publicera datakällan."
+
+#:
+msgid "datasource.publish.check.unpublishable.table_extension_extract_required"
+msgstr "Tabelltillägg kan inte publiceras med anslutningar som kräver ett extrakt."
 
 #:
 msgid "datasource.publish.check.publishable.extract_required"
@@ -640,11 +717,11 @@ msgstr "Kräver att du skapar ett extrakt vid publicering."
 
 #:
 msgid "datasource.publish.check.publishable.credentials_required"
-msgstr "{1} kommer tillfälligt att använda de inloggningsuppgifter som angetts för {0} för att bekräfta att den kan upprätthålla en livedataanslutning."
+msgstr "{1} kommer tillfälligt att använda de inloggningsuppgifter som angetts för ”{0}” för att bekräfta att den kan upprätthålla en livedataanslutning."
 
 #:
 msgid "datasource.publish.check.publishable.server_unreachable"
-msgstr "{1} kan inte nå {0}. Publicering skapar ett extrakt."
+msgstr "{1} kan inte nå ”{0}”. Publicering skapar ett extrakt."
 
 #:
 msgid "publish.bundles.workbook.subscription.subject"
@@ -656,139 +733,147 @@ msgstr "Dina Salesforce-data lades till i arbetsboken. Gå till dina {0}-projekt
 
 #:
 msgid "extracts.status.finished.upload.workbook"
-msgstr "Slutförde uppladdningen av extrakt (nytt extrakt-ID: {0}) för arbetsboken {1} {2}"
+msgstr "Slutförde uppladdningen av extrakt (nytt extrakt-ID: {0}) för arbetsboken ”{1}” {2}"
 
 #:
 msgid "extracts.status.finished.refresh.workbook"
-msgstr "Slutförde uppdateringen av extrakt (nytt extrakt-ID: {0}) för arbetsboken {1} {2}"
+msgstr "Slutförde uppdateringen av extrakt (nytt extrakt-ID: {0}) för arbetsboken ”{1}” {2}"
 
 #:
 msgid "extracts.status.finished.increment.workbook"
-msgstr "Slutförde inkrement av extrakt (nytt extrakt-ID: {0}) för arbetsboken {1} {2}"
+msgstr "Slutförde inkrement av extrakt (nytt extrakt-ID: {0}) för arbetsboken ”{1}” {2}"
 
 #:
 msgid "extracts.status.finished.encrypt.workbook"
-msgstr "Slutförde kryptering av extrakt (nytt extrakt-ID:{0}) för arbetsboken {1}"
+msgstr "Slutförde kryptering av extrakt (nytt extrakt-ID:{0}) för arbetsboken ”{1}”"
 
 #:
 msgid "extracts.status.finished.decrypt.workbook"
-msgstr "Slutförde dekryptering av extrakt (nytt extrakt-ID:{0}) för arbetsboken {1}"
+msgstr "Slutförde dekryptering av extrakt (nytt extrakt-ID:{0}) för arbetsboken ”{1}”"
 
 #:
 msgid "extracts.status.finished.rekey.workbook"
-msgstr "Slutförde återkryptering av extrakt (nytt extrakt-ID:{0}) för arbetsboken {1}"
+msgstr "Slutförde återkryptering av extrakt (nytt extrakt-ID:{0}) för arbetsboken ”{1}”"
 
 #:
 msgid "extracts.status.finished.create.workbook"
-msgstr "Slutförde skapande av extrakt (nytt extrakt-ID:{0}) för arbetsboken {1} {2}"
+msgstr "Slutförde skapande av extrakt (nytt extrakt-ID:{0}) för arbetsboken ”{1}” {2}"
 
 #:
 msgid "extracts.status.finished.remove.workbook"
-msgstr "Slutförde ändra extrakt (datakälla-ID:{0}) till live för arbetsboken {1}"
+msgstr "Slutförde ändra extrakt (datakälla-ID:{0}) till live för arbetsboken ”{1}”"
 
 #:
 msgid "extracts.status.finished.upload.datasource"
-msgstr "Slutförde uppladdningen av extrakt (nytt extrakt-ID: {0}) för datakällan {1} {2}"
+msgstr "Slutförde uppladdningen av extrakt (nytt extrakt-ID: {0}) för datakällan ”{1}” {2}"
 
 #:
 msgid "extracts.status.finished.refresh.datasource"
-msgstr "Uppdatering av extrakt har slutförts (nytt extrakt-ID: {0}) för datakällan ''{1}'' {2}"
+msgstr "Uppdatering av extrakt har slutförts (nytt extrakt-ID: {0}) för datakällan ”{1}” {2}"
 
 #:
 msgid "extracts.status.finished.increment.datasource"
-msgstr "Utökning av extrakt har slutförts (nytt extrakt-ID: {0}) för datakällan ''{1}'' {2}"
+msgstr "Utökning av extrakt har slutförts (nytt extrakt-ID: {0}) för datakällan ”{1}” {2}"
 
 #:
 msgid "extracts.status.finished.append.datasource"
-msgstr "Tillägg av extrakt har slutförts (nytt extrakt-ID: {0}) för datakällan ''{1}'' {2}"
+msgstr "Tillägg av extrakt har slutförts (nytt extrakt-ID: {0}) för datakällan ”{1}” {2}"
 
 #:
 msgid "extracts.status.finished.replace.datasource"
-msgstr "Ersättning av extrakt har slutförts (nytt extrakt-ID: {0}) för datakällan ''{1}'' {2}"
+msgstr "Ersättning av extrakt har slutförts (nytt extrakt-ID: {0}) för datakällan ”{1}” {2}"
 
 #:
 msgid "extracts.status.finished.encrypt.datasource"
-msgstr "Kryptering av extrakt har slutförts (nytt extrakt-ID:{0}) för datakällan ''{1}''"
+msgstr "Kryptering av extrakt har slutförts (nytt extrakt-ID:{0}) för datakällan ”{1}”"
 
 #:
 msgid "extracts.status.finished.decrypt.datasource"
-msgstr "Dekryptering av extrakt har slutförts (nytt extrakt-ID:{0}) för datakällan ''{1}''"
+msgstr "Dekryptering av extrakt har slutförts (nytt extrakt-ID:{0}) för datakällan ”{1}”"
 
 #:
 msgid "extracts.status.finished.rekey.datasource"
-msgstr "Omkryptering av extrakt har slutförts (nytt extrakt-ID:{0}) för datakällan ''{1}''"
+msgstr "Omkryptering av extrakt har slutförts (nytt extrakt-ID:{0}) för datakällan ”{1}”"
 
 #:
 msgid "extracts.status.finished.encrypt.flow"
-msgstr "Kryptering av extrakt för flödet ''{0}'' har slutförts"
+msgstr "Kryptering av extrakt för flödet ”{0}” har slutförts"
 
 #:
 msgid "extracts.status.finished.decrypt.flow"
-msgstr "Dekryptering av extrakt för flödet ''{0}'' har slutförts"
+msgstr "Dekryptering av extrakt för flödet ”{0}” har slutförts"
 
 #:
 msgid "extracts.status.finished.rekey.flow"
-msgstr "Omkryptering av extrakt för flödet ''{0}'' har slutförts"
+msgstr "Omkryptering av extrakt för flödet ”{0}” har slutförts"
 
 #:
 msgid "extracts.status.finished.encrypt.flowdraft"
-msgstr "Kryptering av extrakt för flödesutkastet ''{0}'' har slutförts"
+msgstr "Kryptering av extrakt för flödesutkastet ”{0}” har slutförts"
 
 #:
 msgid "extracts.status.finished.decrypt.flowdraft"
-msgstr "Dekryptering av extrakt för flödesutkastet ''{0}'' har slutförts"
+msgstr "Dekryptering av extrakt för flödesutkastet ”{0}” har slutförts"
 
 #:
 msgid "extracts.status.finished.rekey.flowdraft"
-msgstr "Omkryptering av extrakt för flödesutkastet ''{0}'' har slutförts"
+msgstr "Omkryptering av extrakt för flödesutkastet ”{0}” har slutförts"
 
 #:
 msgid "extracts.status.finished.create.datasource"
-msgstr "Extrakten har skapats (nytt extrakt-ID: {0}) för datakällan ''{1}'' {2}"
+msgstr "Extrakten har skapats (nytt extrakt-ID: {0}) för datakällan ”{1}” {2}"
 
 #:
 msgid "extracts.status.finished.remove.datasource"
-msgstr "Extrakten har ändrats till live för datakällan ''{1}''"
+msgstr "Extrakten har ändrats till live för datakällan ”{1}”"
+
+#:
+msgid "extracts.status.finished.create.vconn"
+msgstr "Slutförde skapande av extrakt (nytt extrakt-ID: {0}) för den virtuella anslutningen ”{1}”"
+
+#:
+msgid "extracts.status.finished.refresh.vconn"
+msgstr "Slutförde uppdatering av extrakt (nytt extrakt-ID: {0}) för den virtuella anslutningen ”{1}”"
 
 #:
 msgid "extracts.status.encryption_key"
-msgstr "ID för krypteringsnyckel: ''{0}''."
+msgstr "Krypteringsnyckel-ID: ”{0}”."
 
 #:
 msgid "extracts.status.encryption_keys"
-msgstr "Gammalt ID för krypteringsnyckel: ''{0}'', nytt ID för krypteringsnyckel: ''{1}''."
+msgstr "Gammalt ID för krypteringsnyckel: ”{0}”, nytt ID för krypteringsnyckel: ”{1}”."
 
 #:
 msgid "extracts.errors.upload"
-msgstr "Fel vid uppladdning av extrakt för {0}: ''{1}''"
+msgstr "Fel vid uppladdning av extrakt för {0}: ”{1}”"
 
 #:
 msgid "extracts.errors.refresh"
-msgstr "Det inträffade ett fel när extrakten för {0} ''{1}'' skulle uppdateras"
+msgstr "Det inträffade ett fel när extrakten för {0} ”{1}” skulle uppdateras"
 
 #:
 msgid "extracts.errors.create"
-msgstr "Det inträffade ett fel när extrakten för {0} ''{1}'' skulle skapas."
+msgstr "Det inträffade ett fel när extrakten för {0} ”{1}” skulle skapas."
 
 #:
 msgid "extracts.errors.increment"
-msgstr "Fel vid utökning av extrakt för {0}: ''{1}''"
+msgstr "Fel vid utökning av extrakt för {0}: ”{1}”"
 
 #:
 msgid "extracts.errors.append"
-msgstr "Fel vid tillägg av extrakt för {0}: ''{1}''"
+msgstr "Fel vid tillägg av extrakt för {0}: ”{1}”"
 
 #:
 msgid "extracts.errors.replace"
-msgstr "Fel vid ersättning av extrakt för {0}: ''{1}''"
+msgstr "Fel vid ersättning av extrakt för {0}: ”{1}”"
 
 #:
 msgid "extracts.errors.download"
-msgstr "Fel vid nerladdning av extrakt för {0}: ''{1}''"
+msgstr "Fel vid nerladdning av extrakt för {0}: ”{1}”"
 
 #:
 msgid "extracts.errors.remove"
-msgstr "Fel vid borttagning av extrakt för {0}: ''{1}''."
+msgstr "Fel vid borttagning av extrakt för {0}: ”{1}”."
 
 #:
 msgid "extracts.errors.title"
@@ -796,23 +881,23 @@ msgstr "Fel vid extraktbearbetning"
 
 #:
 msgid "extracts.errors.nothing_to_upload"
-msgstr "Det finns inga extrakt att ladda upp för {0}: ''{1}''"
+msgstr "Det finns inga extrakt att ladda upp för {0}: ”{1}”"
 
 #:
 msgid "extracts.errors.nothing_to_refresh"
-msgstr "Det finns inga extrakt att uppdatera för {0}: ''{1}''"
+msgstr "Det finns inga extrakt att uppdatera för {0}: ”{1}”"
 
 #:
 msgid "extracts.errors.nothing_to_increment"
-msgstr "Det finns inga extrakt att utöka för {0}: ''{1}''"
+msgstr "Det finns inga extrakt att utöka för {0}: ”{1}”"
 
 #:
 msgid "extracts.errors.nothing_to_append"
-msgstr "Det finns inga extrakt att lägga till för {0}: ''{1}''"
+msgstr "Det finns inga extrakt att lägga till för {0}: ”{1}”"
 
 #:
 msgid "extracts.errors.nothing_to_replace"
-msgstr "Det finns inga extrakt att ersätta för {0}: ''{1}''"
+msgstr "Det finns inga extrakt att ersätta för {0}: ”{1}”"
 
 #:
 msgid "extracts.errors.refresh_summary"
@@ -840,23 +925,23 @@ msgstr "Det inträffade ett fel när extraktet skulle skapas"
 
 #:
 msgid "extracts.errors.datasource_overwritten"
-msgstr "Uppdateringen misslyckades eftersom datakällan skrevs över av en annan uppgift under bearbetningen. Uppdatera igen för att korrigera det."
+msgstr "Uppdateringen misslyckades eftersom datakällan skrevs över av en annan uppgift under bearbetningen.  Uppdatera igen för att korrigera det."
 
 #:
 msgid "extracts.errors.workbook_overwritten"
-msgstr "Uppdateringen misslyckades eftersom arbetsboken skrevs över av en annan uppgift under bearbetningen. Uppdatera igen för att korrigera det."
+msgstr "Uppdateringen misslyckades eftersom arbetsboken skrevs över av en annan uppgift under bearbetningen.  Uppdatera igen för att korrigera det."
 
 #:
 msgid "extracts.errors.encrypt"
-msgstr "Det inträffade ett fel när extrakten för {0} ''{1}'' skulle krypteras"
+msgstr "Det inträffade ett fel när extrakten för {0} ”{1}” skulle krypteras"
 
 #:
 msgid "extracts.errors.decrypt"
-msgstr "Det inträffade ett fel när extrakten för {0} ''{1}'' skulle dekrypteras"
+msgstr "Det inträffade ett fel när extrakten för {0} ”{1}” skulle dekrypteras"
 
 #:
 msgid "extracts.errors.rekey"
-msgstr "Det inträffade ett fel när extrakten för {0} ''{1}'' skulle krypteras om"
+msgstr "Det inträffade ett fel när extrakten för {0} ”{1}” skulle krypteras om"
 
 #:
 msgid "extracts.errors.encrypt_datasource_overwritten"
@@ -900,7 +985,7 @@ msgstr "Det gick inte att extrahera arbetsboken eftersom den har skrivits över 
 
 #:
 msgid "extracts.site_mode_change_details"
-msgstr "Webbplatsens extraktkrypteringsläge har ändrats från ''{0}'' till ''{1}''."
+msgstr "platsens extraktkrypteringsläge har ändrats från ”{0}” till ”{1}”."
 
 #:
 msgid "extracts.errors.encryption_not_licensed"
@@ -916,7 +1001,7 @@ msgstr "Det gick inte att läsa in arbetsboken {0}"
 
 #:
 msgid "workbooks.messages.locked"
-msgstr "Arbetsboken ''{0}'' ändras av en annan användare just nu. Försök igen senare."
+msgstr "Arbetsboken ”{0}” ändras av en annan användare just nu.  Försök igen senare."
 
 #:
 msgid "workbooks.new_workbook.default_name"
@@ -952,7 +1037,7 @@ msgstr "Hej!"
 
 #:
 msgid "subscriptions.subscribed_footer"
-msgstr "Här kommer din prenumeration på"
+msgstr "Här kommer din prenumeration på {0}"
 
 #:
 msgid "subscriptions.subscribed_workbook"
@@ -991,6 +1076,14 @@ msgid "subscriptions.warning_deprecated_type"
 msgstr "inaktuell"
 
 #:
+msgid "subscriptions.warning_error_content_type"
+msgstr "Okänd innehållstyp"
+
+#:
+msgid "subscriptions.warning_error_type"
+msgstr "okänd varningstyp"
+
+#:
 msgid "subscriptions.warning_extract_refresh_type"
 msgstr "extraktuppdateringen misslyckades"
 
@@ -1004,11 +1097,43 @@ msgstr "Följande datakvalitetsvarningar påverkar {0}."
 
 #:
 msgid "subscriptions.warning_introduction_view"
-msgstr "Du hittar mer information på fliken Datainformation i vyn"
+msgstr "Mer information finns i rutan Datainformation i vyn."
 
 #:
 msgid "subscriptions.warning_introduction_workbook"
 msgstr "Du hittar mer information på sidan med arbetsboken"
+
+#:
+msgid "subscriptions.warning_localized_column"
+msgstr "Kolumn"
+
+#:
+msgid "subscriptions.warning_localized_datasource"
+msgstr "Datakälla"
+
+#:
+msgid "subscriptions.warning_localized_database"
+msgstr "Databas"
+
+#:
+msgid "subscriptions.warning_localized_flow"
+msgstr "Flöde"
+
+#:
+msgid "subscriptions.warning_localized_table"
+msgstr "Tabell"
+
+#:
+msgid "subscriptions.warning_localized_vconn"
+msgstr "Anslutning"
+
+#:
+msgid "subscriptions.warning_lowercase_column"
+msgstr "kolumn"
+
+#:
+msgid "subscriptions.warning_lowercase_column_plural"
+msgstr "kolumner"
 
 #:
 msgid "subscriptions.warning_maintenance_type"
@@ -1016,7 +1141,7 @@ msgstr "underhåll utförs"
 
 #:
 msgid "subscriptions.warning_permission_error"
-msgstr "Den här varningen gäller en resurs du saknar behörighet att se."
+msgstr "Den här varningen gäller en resurs som du saknar behörighet att visa."
 
 #:
 msgid "subscriptions.warning_redacted"
@@ -1025,6 +1150,18 @@ msgstr "Behörighet krävs"
 #:
 msgid "subscriptions.warning_sensitve_type"
 msgstr "känsliga data"
+
+#:
+msgid "subscriptions.warning_sensitive_intro_count"
+msgstr "Känsliga ({0})"
+
+#:
+msgid "subscriptions.warning_sensitive_intro_view"
+msgstr "Den här vyn använder känsliga data."
+
+#:
+msgid "subscriptions.warning_sensitive_intro_workbook"
+msgstr "Den här arbetsboken använder känsliga data."
 
 #:
 msgid "subscriptions.warning_severe"
@@ -1039,8 +1176,8 @@ msgid "subscriptions.warning_standard"
 msgstr "Datakvalitetsvarning"
 
 #:
-msgid "subscriptions.warning_error_type"
-msgstr "okänd varningstyp"
+msgid "subscriptions.warning_standard_plural"
+msgstr "Datakvalitetsvarningar"
 
 #:
 msgid "subscriptions.warning_warning_type"
@@ -1048,7 +1185,7 @@ msgstr "varning"
 
 #:
 msgid "errors.subscriptions.image_render_failed"
-msgstr "Det gick inte att återge ögonblicksbilden av vyn ''{0}'' korrekt."
+msgstr "Det gick inte att återge ögonblicksbilden av vyn ”{0}” korrekt."
 
 #:
 msgid "errors.subscriptions.see_live_view"
@@ -1060,11 +1197,11 @@ msgstr "Serveromfattande prenumerationsinställningar har inte aktiverats. Det g
 
 #:
 msgid "errors.subscriptions.disabled_on_site"
-msgstr "Prenumerationer har inaktiverats för webbplatsen."
+msgstr "Prenumerationer har inaktiverats för platsen."
 
 #:
 msgid "errors.subscriptions.site_is_locked"
-msgstr "Webbplatsen är låst. Det går inte att bearbeta prenumerationer."
+msgstr "platsen är låst. Det går inte att bearbeta prenumerationer."
 
 #:
 msgid "errors.subscriptions.orphan"
@@ -1087,8 +1224,8 @@ msgid "errors.subscriptions.pdf_render_failed"
 msgstr "Det gick inte att återge PDF-bilagan för det här mejlet korrekt."
 
 #:
-msgid "errors.subscriptions.pdf_limit_exceeded"
-msgstr "Den genererade PDF-filen överskrider storleksgränsen på {0} MB och kan inte bifogas det här mejlet."
+msgid "errors.subscriptions.content_limit_exceeded"
+msgstr "Det genererade innehållet överskrider storleksgränsen på {0} MB och kan inte bifogas det här e-postmeddelandet."
 
 #:
 msgid "errors.subscriptions.attachments_not_enabled"
@@ -1116,15 +1253,15 @@ msgstr "Arbetsboken innehåller flera scheman för extraktuppdatering. Uppdatera
 
 #:
 msgid "errors.subscriptions.datasource_is_missing_password"
-msgstr "Anslutningsfel hos datakällan. Kontrollera inloggningsuppgifterna för alla anslutningar till datakällor för arbetsboken."
+msgstr "Fel vid anslutning till datakälla. Kontrollera inloggningsuppgifterna för alla anslutningar till datakällor för arbetsboken."
 
 #:
 msgid "subscriptions.results_summary.sg"
-msgstr "{0} av {1} prenumeration har skickats från schemat ''{2}''."
+msgstr "{0} av {1} prenumeration har skickats från schemat ”{2}”."
 
 #:
 msgid "subscriptions.results_summary.pl"
-msgstr "{0} av {1} prenumerationer har skickats från schemat ''{2}''."
+msgstr "{0} av {1} prenumerationer har skickats från schemat ”{2}”."
 
 #:
 msgid "subscriptions.results_views_per_subscription.sg"
@@ -1264,7 +1401,7 @@ msgstr "En otillgänglig datakälla."
 
 #:
 msgid "dataalerts.failure.email.footer"
-msgstr "Du får det här mejlet  {0} på grund av ett aviseringsfel."
+msgstr "Du får det här mejlet {0} på grund av ett aviseringsfel."
 
 #:
 msgid "dataalerts.failure.troubleshooting"
@@ -1284,11 +1421,11 @@ msgstr "Den datadrivna aviseringen <i>{0}</i> fungerar igen, så mottagarna avis
 
 #:
 msgid "dataalerts.failure.error.internalError"
-msgstr "Internt fel för dataavisering"
+msgstr "Internt fel för datadriven avisering"
 
 #:
 msgid "dataalerts.failure.error.invalidDataAlertSpecification"
-msgstr "Ogiltig specifikation för dataavisering"
+msgstr "Ogiltig specifikation för datadriven avisering"
 
 #:
 msgid "dataalerts.failure.error.summaryTableNotFound"
@@ -1300,11 +1437,11 @@ msgstr "Oklassificerat fel"
 
 #:
 msgid "dataalerts.failure.error.viewContentNotFound"
-msgstr "Det gick inte att hitta innehållet {0} i dataaviseringsyvn"
+msgstr "Det gick inte att hitta innehållet {0} i yvn för den datadrivna aviseringen"
 
 #:
 msgid "dataalerts.failure.error.viewNotFound"
-msgstr "Det gick inte att hitta dataaviseringsyvn"
+msgstr "Det gick inte att hitta yvn för datadriven avisering"
 
 #:
 msgid "dataalerts.failure.error.workbookNotFound"
@@ -1314,6 +1451,9 @@ msgstr "Det gick inte att hitta arbetsboken"
 msgid "dataalerts.failure.error.paneDescriptorAxisNotFound"
 msgstr "Ingen axel hittades för fältet {0}"
 
+#:
+msgid "dataalerts.failure.error.paneDescriptorNotFound"
+msgstr "{0}"
 
 #:
 msgid "dataalerts.failure.error.unsupportedComparisonExpression"
@@ -1325,7 +1465,7 @@ msgstr "Ingen konstant jämförelseoperator kunde identifieras: {0}"
 
 #:
 msgid "dataalerts.failure.error.cannotAddFilter"
-msgstr "Det gick inte att lägga till filtret i dataaviseringen"
+msgstr "Det gick inte att lägga till filtret i den datadrivna aviseringen"
 
 #:
 msgid "dataalerts.failure.error.sheetNotAlertable"
@@ -1333,11 +1473,11 @@ msgstr "Bladet {0} har data som stöds för aviseringar. {1}"
 
 #:
 msgid "dataalerts.failure.error.dataAlertMeasureNotFound"
-msgstr "Det gick inte att välja måttet. {0}"
+msgstr "Det gick inte att välja mätvärdet. {0}"
 
 #:
 msgid "dataalerts.failure.error.tooManyMeasuresForDataAlert"
-msgstr "Felaktigt antal mått har identifierats.{0}"
+msgstr "Felaktigt antal mätvärden har identifierats.{0}"
 
 #:
 msgid "dataalerts.failure.error.thresholdParseError"
@@ -1349,11 +1489,11 @@ msgstr "Fel vid serialisering av avisering. {0}"
 
 #:
 msgid "dataalerts.failure.error.cannotDrawDataAlertDialog"
-msgstr "Det gick inte att rita upp dialogrutan för dataavisering."
+msgstr "Det gick inte att rita upp dialogrutan för den datadrivna aviseringen."
 
 #:
 msgid "dataalerts.failure.error.unsupportedDataAlertType"
-msgstr "Dataaviseringstypen {0} stöds inte just nu."
+msgstr "Typen {0} för datadriven avisering stöds inte just nu."
 
 #:
 msgid "dataalerts.failure.suspend.email.subject"
@@ -1405,7 +1545,7 @@ msgstr "Ändrade behörigheter för den anslutna vyn"
 
 #:
 msgid "metricsservices.failure.email.footer"
-msgstr "Du får det här mejlet  {0} på grund av ett fel med uppdateringen av dina mätvärden."
+msgstr "Du får det här mejlet {0} på grund av ett fel med uppdateringen av dina mätvärden."
 
 #:
 msgid "metricsservices.failure.email.subject"
@@ -1421,7 +1561,7 @@ msgstr "Det går inte att uppdatera mätvärdet, och mätdata uppdateras därfö
 
 #:
 msgid "metricsservices.failure.status"
-msgstr "Mätvärdet ''{0}'' uppdateras inte"
+msgstr "Mätvärdet ”{0}” uppdateras inte"
 
 #:
 msgid "metricsservices.failure.suspend.email.explanation"
@@ -1433,7 +1573,7 @@ msgstr "Du får det här mejlet {0} eftersom uppdateringen av dina mätvärden h
 
 #:
 msgid "metricsservices.failure.suspend.email.status"
-msgstr "Uppdatering av mätvärdet ''{0}'' har inaktiverats"
+msgstr "Uppdatering av mätvärdet ”{0}” har inaktiverats"
 
 #:
 msgid "metricsservices.failure.suspend.email.subject"
@@ -1477,7 +1617,7 @@ msgstr "Uppdateringen av mätvärdet fungerar igen, och mätdata kontrollas för
 
 #:
 msgid "metricsservices.success.status"
-msgstr "Uppdateringen av mätvärdet ''{0}'' har återupptagits"
+msgstr "Uppdateringen av mätvärdet ”{0}” har återupptagits"
 
 #:
 msgid "errors.staticimages.generic"
@@ -1501,7 +1641,7 @@ msgstr "Alla användare"
 
 #:
 msgid "local_names.containers.personal_space.name"
-msgstr "Personlig yta"
+msgstr "Personligt utrymme"
 
 #:
 msgid "password_reset.email.subject"
@@ -1541,15 +1681,15 @@ msgstr "1 sekund"
 
 #:
 msgid "dataconnections.classes.tableau_server_site"
-msgstr "Tableau Server-webbplats"
+msgstr "Tableau Server-plats"
 
 #:
 msgid "materializeviews.errors.workbook_not_in_project"
-msgstr "Projektet ''{0}'' innehåller inte arbetsboken ''{1}''"
+msgstr "Projektet ”{0}” innehåller inte arbetsboken ”{1}”"
 
 #:
 msgid "materializeviews.errors.workbook_has_no_extract"
-msgstr "Det gick inte att uppdatera inställningen för materialiserade vyer för arbetsboken ''{0}''. För tillfället stöds bara arbetsböcker med inbäddade extrakt."
+msgstr "Det gick inte att uppdatera inställningen för materialiserade vyer för arbetsboken ”{0}”. För tillfället stöds bara arbetsböcker med inbäddade extrakt."
 
 #:
 msgid "materializeviews.errors.workbook_updating_errors"
@@ -1557,23 +1697,23 @@ msgstr "Fel hittades när inställningen för materialiserade vyer för arbetsb�
 
 #:
 msgid "materializeviews.errors.workbook_too_large"
-msgstr "Det gick inte att uppdatera inställningen för materialiserade vyer för arbetsboken ''{0}'' eftersom arbetsbokens storlek överskrider gränsen på {1} GB."
+msgstr "Det gick inte att uppdatera inställningen för materialiserade vyer för arbetsboken ”{0}” eftersom arbetsbokens storlek överskrider gränsen på {1} GB."
 
 #:
 msgid "materializeviews.errors.project_path_not_exists"
-msgstr "Projektsökvägen ''{0}'' finns inte"
+msgstr "Projektsökvägen ”{0}” finns inte"
 
 #:
 msgid "materializeviews.errors.feature_disabled"
-msgstr "Det gick inte att uppdatera inställningen för materialiserade vyer för arbetsboken ''{0}'' eftersom funktionen är inaktiverad just nu."
+msgstr "Det gick inte att uppdatera inställningen för materialiserade vyer för arbetsboken ”{0}” eftersom funktionen är inaktiverad just nu."
 
 #:
 msgid "materializeviews.errors.update_materialized_views_setting_failed"
-msgstr "Det gick inte att uppdatera inställningen för materialiserade vyer för arbetsboken ''{0}''."
+msgstr "Det gick inte att uppdatera inställningen för materialiserade vyer för arbetsboken ”{0}”."
 
 #:
 msgid "materializeviews.errors.site_not_enabled"
-msgstr "Den här webbplatsen har inte aktiverats för materialiserade vyer. Kontakta administratören."
+msgstr "Den här platsen har inte aktiverats för materialiserade vyer. Kontakta administratören."
 
 #:
 msgid "materializeviews.errors.encrypted_extracts_not_supported"
@@ -1581,7 +1721,7 @@ msgstr "Funktionen för materialiserade vyer har inte stöd för arbetsböcker m
 
 #:
 msgid "materializedviews.finished.create"
-msgstr "Materialiserade vyer med statusen ''{0}'' har skapats för arbetsboken ''{1}''"
+msgstr "Materialiserade vyer med statusen ”{0}” har skapats för arbetsboken ”{1}”"
 
 #:
 msgid "materializedviews.finished.delete"
@@ -1589,27 +1729,27 @@ msgstr "Materialiserade vyer för arbetsbok-ID:t {0} har tagits bort"
 
 #:
 msgid "materializedviews.finished.encrypt"
-msgstr "Kryptering av materialiserade vyer för arbetsboken ''{0}'' har slutförts"
+msgstr "Kryptering av materialiserade vyer för arbetsboken ”{0}” har slutförts"
 
 #:
 msgid "materializedviews.finished.decrypt"
-msgstr "Dekryptering av materialiserade vyer för arbetsboken ''{0}'' har slutförts"
+msgstr "Dekryptering av materialiserade vyer för arbetsboken ”{0}” har slutförts"
 
 #:
 msgid "materializedviews.finished.rekey"
-msgstr "Omkryptering av materialiserade vyer för arbetsboken ''{0}'' har slutförts"
+msgstr "Omkryptering av materialiserade vyer för arbetsboken ”{0}” har slutförts"
 
 #:
 msgid "materializedviews.status.encryption_key"
-msgstr "ID för krypteringsnyckel: ''{0}''."
+msgstr "Krypteringsnyckel-ID: ”{0}”."
 
 #:
 msgid "materializedviews.status.encryption_keys"
-msgstr "Gammalt ID för krypteringsnyckel: ''{0}'', nytt ID för krypteringsnyckel: ''{1}''."
+msgstr "Gammalt ID för krypteringsnyckel: ”{0}”, nytt ID för krypteringsnyckel: ”{1}”."
 
 #:
 msgid "materializedviews.status.encryption_type"
-msgstr "Typ av krypteringsdatakälla: ''{0}''"
+msgstr "Typ av krypteringsdatakälla: ”{0}”"
 
 #:
 msgid "customizedviews.namedSharingPrefix"
@@ -1641,7 +1781,7 @@ msgstr "Flöde"
 
 #:
 msgid "content_type.metric"
-msgstr "Metriska"
+msgstr "Mätvärde"
 
 #:
 msgid "content_type.collection"
@@ -1660,11 +1800,11 @@ msgid "content_type.explaindata_explanation"
 msgstr "Förklaring"
 
 #:
-msgid "content_type.publishedconnection"
+msgid "content_type.virtualconnection"
 msgstr "Virtuell anslutning"
 
 #:
-msgid "content_type.publishedconnectiontable"
+msgid "content_type.virtualconnectiontable"
 msgstr "Tabell i virtuell anslutning"
 
 #:
@@ -1674,6 +1814,14 @@ msgstr "Serversvar: Uppgradering av miniatyrer har påbörjats."
 #:
 msgid "upgradethumbnails.status.server_stopped"
 msgstr "Serversvar: %d jobb har stoppats"
+
+#:
+msgid "dataquality.author.extract_refresh_monitoring"
+msgstr "övervakning av extraktuppdatering"
+
+#:
+msgid "dataquality.author.flow_run_monitoring"
+msgstr "övervakning av flödeskörning"
 
 #:
 msgid "dataquality.message.refresh_failed"
@@ -1692,6 +1840,38 @@ msgid "dataquality.message.flow_run_output_steps_failed"
 msgstr "{0}/{1} utgångssteg kunde inte köras"
 
 #:
+msgid "label_value.description.certified"
+msgstr "Den här resursen är betrodd och rekommenderad."
+
+#:
+msgid "label_value.description.deprecated"
+msgstr "Den här resursen underhålls inte längre och bör inte användas."
+
+#:
+msgid "label_value.description.extract_refresh_failure"
+msgstr "Den här resursens senaste extraktuppdatering misslyckades."
+
+#:
+msgid "label_value.description.flow_run_failure"
+msgstr "Det här flödets senaste körning misslyckades."
+
+#:
+msgid "label_value.description.maintenance"
+msgstr "Den här resursen underhålls just nu."
+
+#:
+msgid "label_value.description.sensitive_data"
+msgstr "Den här resursen innehåller känslig information."
+
+#:
+msgid "label_value.description.stale"
+msgstr "Den här resursen är föråldrad."
+
+#:
+msgid "label_value.description.warning"
+msgstr "Den här resursen har ett allmänt kvalitetsproblem."
+
+#:
 msgid "importcsvsummary.error.details"
 msgstr "Felinformation:"
 
@@ -1701,7 +1881,7 @@ msgstr "(återstående fel visas inte)"
 
 #:
 msgid "importcsvsummary.error.line"
-msgstr "rad {0} för användare ''{1}'': ''{2}''"
+msgstr "rad {0} för användare ”{1}”: ”{2}”"
 
 #:
 msgid "importcsvsummary.line.processed"
@@ -1729,7 +1909,7 @@ msgstr "CSV-filen överskrider storleksgränsen på {0}"
 
 #:
 msgid "importcsvsummary.error.local.password_mismatch"
-msgstr "Uppdatering av lokal webbplatsanvändare kräver tomt eller matchande lösenord"
+msgstr "Uppdatering av lokal platsanvändare kräver tomt eller matchande lösenord"
 
 #:
 msgid "importcsvsummary.error.local.password_required"
@@ -1737,7 +1917,19 @@ msgstr "Det krävs lösenord för att skapa en lokal systemanvändare när auten
 
 #:
 msgid "importcsvsummary.error.ad.user_not_found"
-msgstr "Det gick inte att hitta AD-användaren ''{0}''"
+msgstr "Det gick inte att hitta AD-användaren ”{0}”"
+
+#:
+msgid "importcsvsummary.error.domain_not_found"
+msgstr "Ogiltig domän ”{0}”"
+
+#:
+msgid "importcsvsummary.error.cannot_create_user_identity"
+msgstr "Det går inte att skapa en användaridentitet för användaren ”{0}”"
+
+#:
+msgid "importcsvsummary.error.invalid_identity_pool_name"
+msgstr "Ogiltigt namn på identitetspool ”{0}”"
 
 #:
 msgid "importcsvsummary.error.too_many_errors"
@@ -1745,7 +1937,7 @@ msgstr "För många fel i CSV-filen"
 
 #:
 msgid "audit.errors.wdc_not_allowlisted"
-msgstr "Webbdatakopplingen finns inte i godkännandelistan. Läs mer på: https://help.tableau.com/current/online/sv-se/to_keep_data_fresh.htm"
+msgstr "Webbdatakopplingen finns inte i godkännandelistan. Läs mer här: https://help.tableau.com/current/online/sv-se/to_keep_data_fresh.htm"
 
 #:
 msgid "user.input.name.err.too_long"
@@ -1765,19 +1957,19 @@ msgstr "Uppdatering för Tableau-programmet för Slack"
 
 #:
 msgid "slack.app.upgrade.email.notification.introduction"
-msgstr "Det finns en uppdatering för Tableau-programmet för Slack, som kan installeras om nu för att fungera med nästa version av Tableau Online. Tableau rekommenderar att du installerar om programmet så att det fortsätter att fungera som det ska och så att du kan använda nya funktioner. Du kan läsa om nya funktioner och förändringar i <a styl"
+msgstr "En uppdatering är tillgänglig för Tableau-programmet för Slack. Tableau rekommenderar att du uppdaterar programmet så att det fortsätter att fungera som det ska och så att du kan använda nya Tableau Cloud-funktioner. Du kan läsa om nya funktioner och förändringar i <a styl"
 
 #:
 msgid "slack.app.upgrade.email.notification.action"
-msgstr "Du hittar uppdaterings- och ominstallationssteg i <a styl"
+msgstr "Om du vill uppdatera platsens anslutning till Tableau-programmet för Slack, läs <a styl"
 
 #:
 msgid "slack.app.upgrade.email.notification.steps"
-msgstr "Det här tjänstmeddelandet har publicerats av Tableau Online."
+msgstr "Det här tjänstmeddelandet har publicerats av Tableau Cloud."
 
 #:
 msgid "slack.app.upgrade.email.notification.reason"
-msgstr "Du får det här meddelandet eftersom du är administratör för en Tableau Online-webbplats som är ansluten till Slack."
+msgstr "Du får det här meddelandet eftersom du är administratör för en Tableau Cloud-plats som är ansluten till Slack."
 
 #:
 msgid "slack.app.upgrade.email.notification.footer.privacy"
@@ -1787,122 +1979,45 @@ msgstr "Läs vår <a styl"
 msgid "unifiedconsumption.tcrm.folders.private"
 msgstr "Min privata app"
 
-
-msgid ""
-msgstr ""
-"MIME-Version: 1.0"
-"Content-Type: text/plain; charset=utf-8"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: prop2po"
-"Project-Id-Version: None"
-"Language: sv"
-# Copyright (C) YEAR Tableau Software
-
-
-# These outcome reporting lines were all returned from the server in clientxml
-# https://sourcegraph.prod.tableautools.com/teams/near/-/blob/workgroup/src/shared/libraries/tab-strings/res/localization/shared_wg_en.properties
-# how much of this can be replaced by server responses?
-
-msgid "tabcmd.result.already_exists.group"
-msgstr "Group called ''{}'' already exists"
-
-msgid "tabcmd.result.failed.delete.group"
-msgstr "Error deleting group from server"
-
-msgid "tabcmd.result.success.create_user"
-msgstr "Successfully created user: {}"
-
-msgid "tabcmd.report.users_added"
-msgstr "Number of users added: {}"
-
-msgid "tabcmd.report.errors"
-msgstr "Error details: \n{}"
-
-msgid "tabcmd.report.error.user_csv.too_many_columns"
-msgstr "The file contains {} columns, but there are only {} valid columns in a user import csv file"
-
-msgid "tabcmd.report.error.user_csv.at_char"
-msgstr "If a user name includes an @ character that represents anything other than a domain separator, "
-                    "you need to refer to the symbol using the hexadecimal format: \\0x40"
-
-msgid "tabcmd.report.error.user.no_spaces_in_username"
-msgstr "Username cannot contain spaces"
-
-msgid "tabcmd.report.error.generic_attribute"
-msgstr "Invalid value for {0}: {1}"
-
-msgid "tabcmd.report.error.publish_samples.expected_project"
-msgstr "publishsamples expects the specified project to exist already"
-
-msgid "tabcmd.result.failure.publish_samples"
-msgstr "Failed publishing samples to project"
-
-msgid "tabcmd.launching"
-msgstr "======================= Launching command ======================="
-
-msgid "tabcmd.find.group"
-msgstr "Finding group ''{}'' on server..."
-
-# Each actual command has a status line in translation
-
-msgid "tabcmd.add.users.to_site"
-msgstr "===== Adding users listed in {0} to {1}..."
-
-msgid "tabcmd.delete.users.from_server"
-msgstr "Removing users listed in {0} from the server..."
-
-msgid "tabcmd.get.extension.not_found"
-msgstr "You must specify a file type in the url or filename"
-
-msgid "tabcmd.run_schedule.options.schedule"
-msgstr "Name of the schedule to run"
-msgid ""
-msgstr ""
-"MIME-Version: 1.0"
-"Content-Type: text/plain; charset=utf-8"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: prop2po"
-"Project-Id-Version: None"
-"Language: sv"
 #:
 msgid "commandlineutils.errors.bad_value"
-msgstr "Alternativet ''{0}'' har det felaktiga värdet ''{1}''. Det måste vara något av: {2}"
+msgstr "Alternativet ”{0}” har det felaktiga värdet ”{1}”. Det måste vara något av: {2}"
 
 #:
 msgid "commandlineutils.errors.not_integer"
-msgstr "Värdet ''{0}'' för alternativet ''{1}'' är inte ett heltal"
+msgstr "Värdet ”{0}” för alternativet ”{1}” är inte ett heltal"
 
 #:
 msgid "common.errors.empty_file"
-msgstr "Filen ''{0}'' är tom"
+msgstr "Filen ”{0}” är tom"
 
 #:
 msgid "common.errors.file_not_found"
-msgstr "Det går inte att öppna filen ''{0}''"
+msgstr "Det går inte att öppna filen ”{0}”"
 
 #:
 msgid "common.errors.invalid_file_path"
-msgstr "Ogiltig filsökväg: ''{0}''"
+msgstr "Ogiltig filsökväg: ”{0}”"
 
 #:
 msgid "common.errors.folder_path_not_found"
-msgstr "Det går inte att hitta katalogen ''{0}''"
+msgstr "Det går inte att hitta katalogen ”{0}”"
 
 #:
 msgid "common.errors.access_denied"
-msgstr "Åtkomst nekad till filen ''{0}''. Kontrollera att sökvägen är giltig och att filnamnet inte matchar en befintlig katalog"
+msgstr "Åtkomst nekad till filen ”{0}”. Kontrollera att sökvägen är giltig och att filnamnet inte matchar en befintlig katalog"
 
 #:
 msgid "common.errors.requires_csv_file"
-msgstr "Kommandot ''{0}'' kräver CSV-fil"
+msgstr "Kommandot ”{0}” kräver CSV-fil"
 
 #:
 msgid "common.errors.requires_group_name"
-msgstr "Kommandot ''{0}'' kräver ett gruppnamn"
+msgstr "Kommandot ”{0}” kräver ett gruppnamn"
 
 #:
 msgid "common.errors.requires_site_name"
-msgstr "Kommandot ''{0}'' kräver ett webbplatsnamn"
+msgstr "Kommandot ”{0}” kräver ett platsnamn"
 
 #:
 msgid "common.errors.options_conflict"
@@ -1914,7 +2029,7 @@ msgstr "Den CSV-fil som du refererar till överskrider storleksgränsen på 100 
 
 #:
 msgid "common.options.admin-type"
-msgstr "[Inaktuellt] Tilldelar [eller tar bort] webbplatsadministratörsrättigheten för alla användare i CSV-filen. Den här inställningen kan åsidosättas med värdena på de enskilda raderna i CSV-filen. {0} kan vara: {1}, {2} eller {3}. Om inget anges: {3} för nya användare, oförändrat för befintliga användare"
+msgstr "[Inaktuellt] Tilldelar [eller tar bort] platsadministratörsrättigheten för alla användare i CSV-filen. Den här inställningen kan åsidosättas med värdena på de enskilda raderna i CSV-filen. {0} kan vara: {1}, {2} eller {3}. Om inget anges: {3} för nya användare, oförändrat för befintliga användare"
 
 #:
 msgid "common.options.complete"
@@ -1938,7 +2053,7 @@ msgstr "Visa inte förloppsmeddelanden för jobbet"
 
 #:
 msgid "common.options.sysadmin-type"
-msgstr "[Inaktuellt] Tilldelar [eller tar bort] webbplatsadministratörsrättigheten för alla användare i CSV-filen. Den här inställningen kan åsidosättas med värdena på de enskilda raderna i CSV-filen. {0} kan vara: {1}, {2}, {3} eller {4}. Om inget anges: {4} för nya användare, oförändrat för befintliga användare"
+msgstr "[Inaktuellt] Tilldelar [eller tar bort] platsadministratörsrättigheten för alla användare i CSV-filen. Den här inställningen kan åsidosättas med värdena på de enskilda raderna i CSV-filen. {0} kan vara: {1}, {2}, {3} eller {4}. Om inget anges: {4} för nya användare, oförändrat för befintliga användare"
 
 #:
 msgid "common.output.job_queued_success"
@@ -1962,7 +2077,7 @@ msgstr "Lägg till användare till en grupp"
 
 #:
 msgid "addusers.status"
-msgstr "Lägger till användare listade i {0} till gruppen {1} ..."
+msgstr "Lägger till användare listade i {0} i gruppen {1} ..."
 
 #:
 msgid "creategroup.short_description"
@@ -1970,11 +2085,11 @@ msgstr "Skapa en lokal grupp"
 
 #:
 msgid "creategroup.status"
-msgstr "Skapar gruppen ''{0}'' på servern ..."
+msgstr "Skapar gruppen ”{0}” på servern ..."
 
 #:
 msgid "creategroup.options.role"
-msgstr "Ställer in den roll som ska anges för användare i gruppen vid inloggning. Giltiga värden för {0}: {1}. En användares webbplatsroll ställs bara in på det här värdet om det är mindre restriktivt än användarens aktuella webbplatsroll. Om inget anges ställs ingen roll in för användare i den här gruppen vid inloggning."
+msgstr "Ställer in den roll som ska anges för användare i gruppen vid inloggning. Giltiga värden för {0}: {1}. En användares platsroll ställs bara in på det här värdet om det är mindre restriktivt än användarens aktuella platsroll. Om inget anges ställs ingen roll in för användare i den här gruppen vid inloggning."
 
 #:
 msgid "createextracts.errors.required_argument"
@@ -1986,15 +2101,15 @@ msgstr "Fel vid skapande av extrakt"
 
 #:
 msgid "createextracts.for.datasource"
-msgstr "Skapar extrakt för datakällan ''{0}''"
+msgstr "Skapar extrakt för datakällan ”{0}”"
 
 #:
 msgid "createextracts.for.workbook_name"
-msgstr "Skapar extrakt för arbetsboken med namnet ''{0}''"
+msgstr "Skapar extrakt för arbetsboken med namnet ”{0}”"
 
 #:
 msgid "createextracts.for.workbook_url"
-msgstr "Skapar extrakt för arbetsboken med URL:en ''{0}''"
+msgstr "Skapar extrakt för arbetsboken med URL:en ”{0}”"
 
 #:
 msgid "createextracts.options.datasource"
@@ -2002,7 +2117,7 @@ msgstr "Namnet på måldatakällan för generering av extrakt"
 
 #:
 msgid "createextracts.options.embedded-datasources"
-msgstr "En blankstegsavgränsad lista med namn på inbäddade datakällsnamn i målarbetsboken. Omslut datakällsnamn med dubbla citattecken om de innehåller blanksteg. Endast tillgängligt när du skapar extrakt för en arbetsbok."
+msgstr "En blankstegsavgränsad lista med inbäddade namn på datakällor i målarbetsboken. Omslut datakällsnamn med dubbla citattecken om de innehåller blanksteg. Endast tillgängligt när du skapar extrakt för en arbetsbok."
 
 #:
 msgid "createextracts.options.encrypt"
@@ -2018,7 +2133,7 @@ msgstr "Sökvägen för projektet är överordnad projektet som innehåller mål
 
 #:
 msgid "createextracts.options.project"
-msgstr "Namnet på det projekt som innehåller målresursen. Behövs bara om {0} eller {1} har angetts. Om det inte anges används standardprojektet ''{2}''."
+msgstr "Namnet på det projekt som innehåller målresursen. Behövs bara om {0} eller {1} anges. Om inget anges används standardprojektet ”{2}”."
 
 #:
 msgid "createextracts.options.url"
@@ -2050,7 +2165,7 @@ msgstr "Projektets namn"
 
 #:
 msgid "createproject.options.parent-project-path"
-msgstr "Projektsökväg som kommer att innehålla det nya projektet. Om inget anges skapas den på webbplatsens rotnivå"
+msgstr "Projektsökväg som kommer att innehålla det nya projektet. Om inget anges skapas den på platsens rotnivå"
 
 #:
 msgid "createproject.short_description"
@@ -2058,19 +2173,19 @@ msgstr "Skapa ett projekt"
 
 #:
 msgid "createproject.status"
-msgstr "Skapar projektet ''{0}'' på servern ..."
+msgstr "Skapar projektet ”{0}” på servern ..."
 
 #:
 msgid "createsite.errors.invalid_url_option"
-msgstr "URL-alternativet är ogiltigt om du skapar flera webbplatser. Kör kommandot på nytt efter det att du har tagit bort URL-alternativet, eller skapa varje webbplats separat"
+msgstr "URL-alternativet är ogiltigt om du skapar flera platser. Kör kommandot på nytt efter det att du har tagit bort URL-alternativet, eller skapa varje plats separat"
 
 #:
 msgid "createsite.errors.site_name_already_exists"
-msgstr "Det finns redan en webbplats med namnet ''{0}''. Försök med ett annat webbplatsnamn."
+msgstr "Det finns redan en plats med namnet ”{0}”. Försök med ett annat platsnamn."
 
 #:
 msgid "createsite.errors.site_id_already_exists"
-msgstr "Det finns redan en webbplats med ID:t ''{0}''. Specificera ett annat webbplats-ID genom att använda -r. Mer information finns i hjälpen till tabcmd createsite."
+msgstr "Det finns redan en plats med ID:t ”{0}”. Specificera ett annat plats-ID genom att använda -r. Mer information finns i hjälpen till tabcmd createsite."
 
 #:
 msgid "createsite.options.allow-mobile-snapshots"
@@ -2078,11 +2193,11 @@ msgstr "Tillåt [eller neka] mobila ögonblicksbilder. Standardinställningen ä
 
 #:
 msgid "createsite.options.allow-subscriptions"
-msgstr "Tillåt [eller neka] prenumerationer för den här webbplatsen. Standarinställningen är serverns standardinställning. Prenumerationer kan inte aktiveras om serverprenumerationer har inaktiverats"
+msgstr "Tillåt [eller neka] prenumerationer för den här platsen. Standarinställningen är serverns standardinställning. Prenumerationer kan inte aktiveras om serverprenumerationer har inaktiverats"
 
 #:
 msgid "createsite.options.allow-web-authoring"
-msgstr "Tillåt [eller neka] webbförfattande för den här webbplatsen. Standardinställningen är att tillåta webbförfattande"
+msgstr "Tillåt [eller neka] webbredigering för den här platsen. Standardinställningen är att tillåta webbredigering."
 
 #:
 msgid "createsite.options.metrics-level"
@@ -2094,11 +2209,11 @@ msgstr "Gäståtkomstbehörighet att se vyer för dem som inte har loggat in på
 
 #:
 msgid "createsite.options.site-mode"
-msgstr "Tillåt [eller neka] webbplatsadministratören användarhantering på webbplatsen"
+msgstr "Tillåt [eller neka] platsadministratören användarhantering på platsen"
 
 #:
 msgid "createsite.options.storage-quota"
-msgstr "Webbplatslagringskvot i MB"
+msgstr "platslagringskvot i MB"
 
 #:
 msgid "createsite.options.subscription-email"
@@ -2110,11 +2225,11 @@ msgstr "Sidfot som används för prenumerationer"
 
 #:
 msgid "createsite.options.url"
-msgstr "Webbplatsens webbplats-ID"
+msgstr "platsens plats-ID"
 
 #:
 msgid "createsite.options.user-quota"
-msgstr "Maximalt antal webbplatsanvändare"
+msgstr "Maximalt antal platsanvändare"
 
 #:
 msgid "createsite.options.extract_encryption_mode"
@@ -2122,43 +2237,43 @@ msgstr "Extraktkrypteringsläge: inaktiverat, aktiverat eller framtvingat. Om in
 
 #:
 msgid "createsite.options.web_extraction_enabled"
-msgstr "Tillåt [eller neka] skapande och ändrande av extrakt till live för den här webbplatsen. Standardinställningen är att tillåta."
+msgstr "Tillåt [eller neka] skapande och ändrande av extrakt till live för den här platsen. Standardinställningen är att tillåta."
 
 #:
 msgid "createsite.options.run_now_enabled"
-msgstr "Tillåt [eller neka] alternativet Kör nu för den här webbplatsen. Standardinställningen är Kör nu."
+msgstr "Tillåt [eller neka] alternativet Kör nu för den här platsen. Standardinställningen är Kör nu."
 
 #:
 msgid "createsite.options.time_zone"
-msgstr "Den tidszon som ska användas för extrakt på den här webbplatsen. Standardinställningen är upphävd så att serverns tidszon ska kunna användas."
+msgstr "Den tidszon som ska användas för extrakt på den här platsen. Standardinställningen är upphävd så att serverns tidszon ska kunna användas."
 
 #:
 msgid "createsite.short_description"
-msgstr "Skapa en webbplats"
+msgstr "Skapa en plats"
 
 #:
 msgid "createsite.status"
-msgstr "Skapa webbplatse ''{0}'' på servern ..."
+msgstr "Skapa platse ”{0}” på servern ..."
 
 #:
 msgid "createsiteusers.options.auth-type"
-msgstr "Tilldelar autentiseringstypen för alla användare i CSV-filen. För Tableau Online kan {0} vara {1} (standard) eller {2}. För Tableau Server kan {0} vara lokal (standard) eller {2}."
+msgstr "Tilldelar autentiseringstypen för alla användare i CSV-filen. För Tableau Cloud kan {0} vara {1} (standard) eller {2}. För Tableau Server kan {0} vara lokal (standard) eller {2}."
 
 #:
 msgid "createsiteusers.description"
-msgstr "Skapa användare på den aktuella webbplatsen. Användarna läses in från den angivna CSV-filen. Filen kan ha kolumnerna i den ordning som visas nedan.{0}1. Användarnamn{0}2. Lösenord        (Ignoreras om Active Directory används){0}3. Eget namn   (Ignoreras om Active Directory används){0}4. Licensnivå ({1}, {2}, {3}, {4} eller {5}){0}5. Administratör ({6}/{7}){0}6. Utgivare ({8}/{9}/1 eller {10}/{11}/0){0}7. E-post (endast för Tableau Public){0}Filen kan ha färre kolumner. Den kan t.ex. vara en enkel lista med ett användarnamn per rad. Du kan använda citattecken om ett värde innehåller kommatecken. Tabcmd väntar på att uppgiften {12} ska slutföras. Du kan välja att inte vänta på att uppgiften ska slutföras på servern och istället återvända direkt genom att passera flaggan {13}. Systemadministratörer kan inte skapas eller degraderas med det här kommandot. Använd ''{14}'' istället"
+msgstr "Skapa användare på den aktuella platsen. Användarna läses in från den angivna CSV-filen. Filen kan ha kolumnerna i den ordning som visas nedan.{0}1. Användarnamn{0}2. Lösenord        (Ignoreras om Active Directory används){0}3. Eget namn   (Ignoreras om Active Directory används){0}4. Licensnivå ({1}, {2}, {3}, {4} eller {5}){0}5. Administratör ({6}/{7}){0}6. Utgivare ({8}/{9}/1 eller {10}/{11}/0){0}7. E-post (endast för Tableau Public){0}Filen kan ha färre kolumner. Den kan t.ex. vara en enkel lista med ett användarnamn per rad. Du kan använda citattecken om ett värde innehåller kommatecken. Tabcmd väntar på att uppgiften {12} ska slutföras.  Du kan välja att inte vänta på att uppgiften ska slutföras på servern och istället återvända direkt genom att passera flaggan {13}. Systemadministratörer kan inte skapas eller degraderas med det här kommandot. Använd ”{14}” istället"
 
 #:
 msgid "createsiteusers.short_description"
-msgstr "Skapa användare på den aktuella webbplatsen"
+msgstr "Skapa användare på den aktuella platsen"
 
 #:
 msgid "createsiteusers.status"
-msgstr "Lägger till användare listade i {0} till den aktuella webbplatsen ..."
+msgstr "Lägger till användare listade i {0} till den aktuella platsen ..."
 
 #:
 msgid "createusers.description"
-msgstr "Skapa användare. Användarna läses in från den angivna CSV-filen. Filen kan ha kolumnerna i den ordning som visas nedan.{0}1. Användarnamn{0}2. Lösenord        (Ignoreras om Active Directory används){0}3. Eget namn   (Ignoreras om Active Directory används){0}4. Licensnivå ({1}, {2}, {3}, {4} eller {5}){0}5. Administratör ({6}/{7}/{8}/{9}){0}6. Utgivare ({10}/{11}/1 eller {12}/{13}/0){0}7. E-post (endast för Tableau Public){0}Filen kan ha färre kolumner. Den kan t.ex. vara en enkel lista med ett användarnamn per rad. Du kan använda citattecken om ett värde innehåller kommatecken. Tabcmd väntar på att uppgiften {14} ska slutföras. Du kan välja att inte vänta på att uppgiften ska slutföras på servern och istället återvända direkt genom att passera flaggan {15}"
+msgstr "Skapa användare. Användarna läses in från den angivna CSV-filen. Filen kan ha kolumnerna i den ordning som visas nedan.{0}1. Användarnamn{0}2. Lösenord        (Ignoreras om Active Directory används){0}3. Eget namn   (Ignoreras om Active Directory används){0}4. Licensnivå ({1}, {2}, {3}, {4} eller {5}){0}5. Administratör ({6}/{7}/{8}/{9}){0}6. Utgivare ({10}/{11}/1 eller {12}/{13}/0){0}7. E-post (endast för Tableau Public){0}Filen kan ha färre kolumner. Den kan t.ex. vara en enkel lista med ett användarnamn per rad. Du kan använda citattecken om ett värde innehåller kommatecken. Tabcmd väntar på att uppgiften {14} ska slutföras.  Du kan välja att inte vänta på att uppgiften ska slutföras på servern och istället återvända direkt genom att passera flaggan {15}"
 
 #:
 msgid "createusers.short_description"
@@ -2170,11 +2285,11 @@ msgstr "Lägger till användare listade i {0} på servern"
 
 #:
 msgid "decryptextracts.short_description"
-msgstr "Dekryptera extrakt på en webbplats"
+msgstr "Dekryptera extrakt på en plats"
 
 #:
 msgid "decryptextracts.status"
-msgstr "Schemalägger dekryptering av extrakt på webbplatsen {0} ..."
+msgstr "Schemalägger dekryptering av extrakt på platsen {0} ..."
 
 #:
 msgid "delete.errors.mutually_exclusive"
@@ -2182,7 +2297,7 @@ msgstr "Det går inte att ange både en arbetsbok och en datakälla som ska tas 
 
 #:
 msgid "delete.errors.requires_workbook_datasource"
-msgstr "Kommandot ''{0}'' kräver ett namn på en arbetsbok eller en datakälla"
+msgstr "Kommandot ”{0}” kräver ett namn på en arbetsbok eller en datakälla"
 
 #:
 msgid "delete.options.datasource"
@@ -2190,11 +2305,11 @@ msgstr "Datakälla som ska tas bort"
 
 #:
 msgid "delete.options.parent-project-path"
-msgstr "Sökväg till det överordnade projekt som innehåller den arbetsbok/datakälla som ska tas bort. Du måste specificera projektnamnet med --project."
+msgstr "Sökväg till det överordnade projekt som innehåller den arbetsbok/datakälla som ska tas bort. Du måste ange projektnamnet med --projekt."
 
 #:
 msgid "delete.options.project"
-msgstr "Projektet som innehller den arbetsbok/datakälla som ska tas bort. Standardprojektet är ''{0}''"
+msgstr "Projektet som innehller den arbetsbok/datakälla som ska tas bort. Standardprojektet är ”{0}”"
 
 #:
 msgid "delete.options.workbook"
@@ -2206,7 +2321,7 @@ msgstr "Ta bort en arbetsbok eller en datakälla från servern"
 
 #:
 msgid "delete.status"
-msgstr "Tar bort {0} ''{1}'' från servern ..."
+msgstr "Tar bort {0} ”{1}” från servern ..."
 
 #:
 msgid "deleteextracts.errors.required_argument"
@@ -2218,15 +2333,15 @@ msgstr "Fel vid borttagande av extrakt"
 
 #:
 msgid "deleteextracts.for.datasource"
-msgstr "Tar bort extrakt för datakällan ''{0}''"
+msgstr "Tar bort extrakt för datakällan ”{0}”"
 
 #:
 msgid "deleteextracts.for.workbook_name"
-msgstr "Tar bort extrakt för arbetsboken med namnet ''{0}''"
+msgstr "Tar bort extrakt för arbetsboken med namnet ”{0}”"
 
 #:
 msgid "deleteextracts.for.workbook_url"
-msgstr "Tar bort extrakt för arbetsboken med URL:en ''{0}''"
+msgstr "Tar bort extrakt för arbetsboken med URL:en ”{0}”"
 
 #:
 msgid "deleteextracts.options.datasource"
@@ -2234,7 +2349,7 @@ msgstr "Namnet på måldatakällan för borttagande av extrakt"
 
 #:
 msgid "deleteextracts.options.embedded-datasources"
-msgstr "En blankstegsavgränsad lista med namn på inbäddade datakällsnamn i målarbetsboken. Omslut datakällsnamn med dubbla citattecken om de innehåller blanksteg. Endast tillgängligt när du tar bort extrakt från en arbetsbok."
+msgstr "En blankstegsavgränsad lista med inbäddade namn på datakällor i målarbetsboken. Omslut datakällsnamn med dubbla citattecken om de innehåller blanksteg. Endast tillgängligt när du tar bort extrakt från en arbetsbok."
 
 #:
 msgid "deleteextracts.options.include-all"
@@ -2246,7 +2361,7 @@ msgstr "Sökvägen för projektet är överordnad projektet som innehåller mål
 
 #:
 msgid "deleteextracts.options.project"
-msgstr "Namnet på det projekt som innehåller målresursen. Behövs bara om {0} eller {1} har angetts. Om det inte anges används standardprojektet ''{2}''."
+msgstr "Namnet på det projekt som innehåller målresursen. Behövs bara om {0} eller {1} anges. Om inget anges används standardprojektet ”{2}”."
 
 #:
 msgid "deleteextracts.options.url"
@@ -2274,15 +2389,15 @@ msgstr "Ta bort en grupp"
 
 #:
 msgid "deletegroup.status"
-msgstr "Tar bort gruppen ''{0}'' från servern ..."
+msgstr "Tar bort gruppen ”{0}” från servern ..."
 
 #:
 msgid "deleteproject.errors.requires_project_name"
-msgstr "Kommandot ''{0}'' kräver ett projektnamn"
+msgstr "Kommandot ”{0}” kräver ett projektnamn"
 
 #:
 msgid "deleteproject.options.parent-project-path"
-msgstr "Sökväg till det överordnade projekt till det projekt som ska tas bort. Du måste specificera projektnamnet med --project."
+msgstr "Sökväg till det överordnade projekt till det projekt som ska tas bort. Du måste ange projektnamnet med --projekt."
 
 #:
 msgid "deleteproject.short_description"
@@ -2290,31 +2405,31 @@ msgstr "Ta bort ett projekt"
 
 #:
 msgid "deleteproject.status"
-msgstr "Tar bort projektet ''{0}'' från servern ..."
+msgstr "Tar bort projektet ”{0}” från servern ..."
 
 #:
 msgid "deletesite.errors.logged_into_this_site"
-msgstr "Du kan inte ta bort den webbplats som du för tillfället är inloggad på"
+msgstr "Du kan inte ta bort den plats som du för tillfället är inloggad på"
 
 #:
 msgid "deletesite.short_description"
-msgstr "Ta bort en webbplats"
+msgstr "Ta bort en plats"
 
 #:
 msgid "deletesite.status"
-msgstr "Tar bort webbplatsen ''{0}'' från servern ..."
+msgstr "Tar bort platsen ”{0}” från servern ..."
 
 #:
 msgid "deletesiteusers.description"
-msgstr "Ta bort webbplatsanvändare. Användarna läses in från den angivna CSV-filen. Filen är en enkel lista med ett användarnamn per rad"
+msgstr "Ta bort platsanvändare. Användarna läses in från den angivna CSV-filen. Filen är en enkel lista med ett användarnamn per rad"
 
 #:
 msgid "deletesiteusers.short_description"
-msgstr "Ta bort webbplatsanvändare"
+msgstr "Ta bort platsanvändare"
 
 #:
 msgid "deletesiteusers.status"
-msgstr "Tar bort webbplatsanvändare listade i {0} från servern ..."
+msgstr "Tar bort platsanvändare listade i {0} från servern ..."
 
 #:
 msgid "deleteusers.description"
@@ -2330,11 +2445,11 @@ msgstr "Tar bort användare listade i {0} från servern ..."
 
 #:
 msgid "editdomain.description"
-msgstr "Redigera en domän. Visa en lista med domäner för redigering med kommandot ''{0}''"
+msgstr "Redigera en domän. Visa en lista med domäner för redigering med kommandot ”{0}”"
 
 #:
 msgid "editdomain.errors.requires_nickname_name"
-msgstr "Du måste ange ett ''{0}''-alternativ eller ett ''{1}''-alternativ"
+msgstr "Du måste ange ett ”{0}”-alternativ eller ett ”{1}”-alternativ"
 
 #:
 msgid "editdomain.options.id"
@@ -2358,7 +2473,7 @@ msgstr "{0}ID{1}Smeknamn{1}{1}Namn{0}"
 
 #:
 msgid "editdomain.status"
-msgstr "Redigera domänen med ID:t ''{0}'' på servern ..."
+msgstr "Redigera domänen med ID:t ”{0}” på servern ..."
 
 #:
 msgid "editsite.errors.invalid_site-id"
@@ -2374,15 +2489,15 @@ msgstr "Tillåt [eller neka] mobila ögonblicksbilder"
 
 #:
 msgid "editsite.options.allow-subscriptions"
-msgstr "Tillåt [eller neka] prenumerationer på den här webbplatsen"
+msgstr "Tillåt [eller neka] prenumerationer på den här platsen"
 
 #:
 msgid "editsite.options.allow-web-authoring"
-msgstr "Tillåt [eller neka] webbförfattande för den här webbplatsen"
+msgstr "Tillåt [eller neka] webbredigering för den här platsen"
 
 #:
 msgid "editsite.options.cache-warmup"
-msgstr "Tillåt [eller neka] cacheuppvärmning för den här webbplatsen"
+msgstr "Tillåt [eller neka] cacheuppvärmning för den här platsen"
 
 #:
 msgid "editsite.options.cache-warmup-threshold"
@@ -2390,15 +2505,15 @@ msgstr "Tröskelvärde i dagar för hur nyligen en vy måste ha visats för att 
 
 #:
 msgid "editsite.options.site-name"
-msgstr "Webbplatsens visningsnamn"
+msgstr "platsens visningsnamn"
 
 #:
 msgid "editsite.options.status"
-msgstr "Ändra webbplatsens tillgänglighet. Måste vara ''{0}'' eller ''{1}''"
+msgstr "Ändra platsens tillgänglighet. Måste vara ”{0}” eller ”{1}”"
 
 #:
 msgid "editsite.options.allow-materialized-views"
-msgstr "Tillåt [eller neka] materialiserade vyer för den här webbplatsen"
+msgstr "Tillåt [eller neka] materialiserade vyer för den här platsen"
 
 #:
 msgid "editsite.options.extract_encryption_mode"
@@ -2406,35 +2521,35 @@ msgstr "Extraktkrypteringsläge: inaktiverat, aktiverat eller framtvingat. Om in
 
 #:
 msgid "editsite.options.web_extraction_enabled"
-msgstr "Tillåt [eller neka] skapande och ändrande av extrakt till live för den här webbplatsen. Standardinställningen är att tillåta."
+msgstr "Tillåt [eller neka] skapande och ändrande av extrakt till live för den här platsen. Standardinställningen är att tillåta."
 
 #:
 msgid "editsite.options.run_now_enabled"
-msgstr "Tillåt [eller neka] alternativet Kör nu för den här webbplatsen. Standardinställningen är Kör nu"
+msgstr "Tillåt [eller neka] alternativet Kör nu för den här platsen. Standardinställningen är Kör nu"
 
 #:
 msgid "editsite.options.time_zone"
-msgstr "Tidszon som ska användas med extrakt på den här webbplatsen"
+msgstr "Tidszon som ska användas med extrakt på den här platsen"
 
 #:
 msgid "editsite.options.use_default_time_zone"
-msgstr "Upphäv tidszon som ska användas med extrakt på den här webbplatsen. Den kommer att använda serverns standardtidszon istället"
+msgstr "Upphäv tidszon som ska användas med extrakt på den här platsen. Den kommer att använda serverns standardtidszon istället"
 
 #:
 msgid "editsite.short_description"
-msgstr "Redigera en webbplats"
+msgstr "Redigera en plats"
 
 #:
 msgid "editsite.status"
-msgstr "Redigera webbplatsen ''{0}'' på servern ..."
+msgstr "Redigera platsen ”{0}” på servern ..."
 
 #:
 msgid "encryptextracts.short_description"
-msgstr "Kryptera extrakt på en webbplats"
+msgstr "Kryptera extrakt på en plats"
 
 #:
 msgid "encryptextracts.status"
-msgstr "Schemalägger kryptering av extrakt på webbplatsen {0} ..."
+msgstr "Schemalägger kryptering av extrakt på platsen {0} ..."
 
 #:
 msgid "export.errors.need_country_and_languge"
@@ -2446,11 +2561,11 @@ msgstr "Namnet på den arbetsbok eller vy som ska exporteras får inte innehåll
 
 #:
 msgid "export.errors.requires_workbook_view_name"
-msgstr "Kommandot ''{0}'' kräver ett namn på <workbook>/<view>"
+msgstr "Kommandot ”{0}” kräver ett namn på <workbook>/<view>"
 
 #:
 msgid "export.errors.requires_workbook_view_param"
-msgstr "Kommandot ''{0}'' kräver en <workbook>/<view>-parameter, och parametern måste innehålla minst ett snedstreck (/)"
+msgstr "Kommandot ”{0}” kräver en <workbook>/<view>-parameter, och parametern måste innehålla minst ett snedstreck (/)"
 
 #:
 msgid "export.options.country"
@@ -2478,7 +2593,7 @@ msgstr "Ställer in sidorienteringen för den exporterade PDF-filen. Giltiga vä
 
 #:
 msgid "export.options.pagesize"
-msgstr "Ställer in sidstorleken för den exporterade PDF-filen. Giltiga värden: {0} (standard: ''{1}'')"
+msgstr "Ställer in sidstorleken för den exporterade PDF-filen. Giltiga värden: {0} (standard: ”{1}”)"
 
 #:
 msgid "export.options.pdf"
@@ -2498,11 +2613,19 @@ msgstr "Exportera en vys data eller avbildning från servern"
 
 #:
 msgid "export.status"
-msgstr "Begär ''{0}'' från servern ..."
+msgstr "Begär ”{0}” från servern ..."
+
+#:
+msgid "export.status.writing"
+msgstr "Skriver svar till ”{0}”"
+
+#:
+msgid "export.status.error"
+msgstr "Ett fel uppstod vid skrivning till en fil:"
 
 #:
 msgid "export.success"
-msgstr "Sparade {0} till ''{1}''"
+msgstr "Sparade {0} till ”{1}”"
 
 #:
 msgid "extracts.workbook.errors.requires_datasources_or_include_all"
@@ -2518,7 +2641,7 @@ msgstr "Hämta en fil från servern. Filen namnges efter den sista komponenten i
 
 #:
 msgid "get.errors.requires_url"
-msgstr "Kommandot ''{0}'' kräver en URL"
+msgstr "Kommandot ”{0}” kräver en URL"
 
 #:
 msgid "get.options.file"
@@ -2586,23 +2709,23 @@ msgstr "Listar domäner från servern ..."
 
 #:
 msgid "listsites.output"
-msgstr "{0}{0}NAMN: {1} {0}WEBBPLATS-ID: ''{2}''"
+msgstr "{0}{0}NAMN: {1}{0}PLATS-ID: ”{2}”"
 
 #:
 msgid "listsites.output_extended"
-msgstr "{0}{0}NAMN: {1} {0}WEBBPLATS-ID: ''{2}''{0}EXTRAKTKRYPTERING: {3}"
+msgstr "{0}{0}NAMN: {1} {0}PLATS-ID: ”{2}”{0}EXTRAKTKRYPTERING: {3}"
 
 #:
 msgid "listsites.short_description"
-msgstr "Lista webbplatser för användare"
+msgstr "Lista platser för användare"
 
 #:
 msgid "listsites.status"
-msgstr "Listar webbplatser för användaren {0} ..."
+msgstr "Listar platser för användaren {0} ..."
 
 #:
 msgid "listsites.options.get_extract_encryption_mode"
-msgstr "Skriv ut extraktkrypteringsläge för webbplatsen/webbplatserna"
+msgstr "Skriv ut extraktkrypteringsläge för platsen/platserna"
 
 #:
 msgid "login.description"
@@ -2622,7 +2745,7 @@ msgstr "Publicera en arbetsbok, en datakälla eller ett extrakt på servern"
 
 #:
 msgid "publish.errors.invalid_datasource_update_file_type"
-msgstr "Felaktig filtyp, ''{0}'', för uppdatering av en datakälla. Ersättning/tillägg gäller enbart för extraktfiler (.tde)"
+msgstr "Felaktig filtyp, ”{0}”, för uppdatering av en datakälla. Ersättning/tillägg gäller enbart för extraktfiler (.tde)"
 
 #:
 msgid "publish.errors.invalid_name_option"
@@ -2630,7 +2753,7 @@ msgstr "{0}-alternativet är ogiltigt vid publicering av flera objekt"
 
 #:
 msgid "publish.errors.invalid_publish_file_type"
-msgstr "Felaktig filtyp, ''{0}'', för publicering. En .tde-, .tds-, .tdsx-, .twb- eller .twbx-fil förväntades"
+msgstr "Felaktig filtyp, ”{0}”, för publicering. En .tde-, .tds-, .tdsx-, .twb- eller .twbx-fil förväntades"
 
 #:
 msgid "publish.errors.mutually_exclusive_option"
@@ -2638,7 +2761,7 @@ msgstr "Använd endast endera av {0} eller {1}"
 
 #:
 msgid "publish.errors.requires_resource_file"
-msgstr "Kommandot ''{0}'' kräver en arbetsbok, den datakälla eller en extraktfil"
+msgstr "Kommandot ”{0}” kräver en arbetsbok, den datakälla eller en extraktfil"
 
 #:
 msgid "publish.errors.unexpected_server_response"
@@ -2714,15 +2837,15 @@ msgstr "Publicera med tabbvyer aktiverat"
 
 #:
 msgid "publish.options.thumbnail-groupname"
-msgstr "Om arbetsboken innehåller några användarfilter så imitera den här gruppen vid beräkning av miniatyrer"
+msgstr "Om arbetsboken innehåller några användarfilter så impersonera den här gruppen vid beräkning av miniatyrer"
 
 #:
 msgid "publish.options.thumbnail-username"
-msgstr "Om arbetsboken innehåller några användarfilter så imitera den här användaren vid beräkning av miniatyrer"
+msgstr "Om arbetsboken innehåller några användarfilter så impersonera den här användaren vid beräkning av miniatyrer"
 
 #:
 msgid "publish.status"
-msgstr "Publicerar ''{0}'' till servern. Detta kan ta flera minuter ..."
+msgstr "Publicerar ”{0}” till servern. Detta kan ta flera minuter ..."
 
 #:
 msgid "publish.success"
@@ -2746,11 +2869,11 @@ msgstr "Publicerar exempel ..."
 
 #:
 msgid "reencryptextracts.short_description"
-msgstr "Kryptera om extrakt på en webbplats"
+msgstr "Kryptera om extrakt på en plats"
 
 #:
 msgid "reencryptextracts.status"
-msgstr "Schemalägger omkryptering av extrakt på webbplatsen {0} ..."
+msgstr "Schemalägger omkryptering av extrakt på platsen {0} ..."
 
 #:
 msgid "refreshextracts.errors.required_argument"
@@ -2778,11 +2901,11 @@ msgstr "Genomför en inkrementell uppdatering (om detta stöds)"
 
 #:
 msgid "refreshextracts.options.parent-project-path"
-msgstr "Sökväg till det överordnade projekt som innehåller det extrakt som ska uppdateras. Du måste specificera projektnamnet med --project."
+msgstr "Sökväg till det överordnade projekt som innehåller det extrakt som ska uppdateras. Du måste ange projektnamnet med --projekt."
 
 #:
 msgid "refreshextracts.options.project"
-msgstr "Namnet på det projekt som innehåller arbetsboken/datakällan. Är enbart nödvändigt om {0} eller {1} anges. Om inget anges används standardprojektet ''{2}''"
+msgstr "Namnet på det projekt som innehåller arbetsboken/datakällan. Behövs bara om {0} eller {1} anges. Om inget anges används standardprojektet ”{2}”"
 
 #:
 msgid "refreshextracts.options.synchronous"
@@ -2810,11 +2933,11 @@ msgstr "Uppdatera en arbetsboks eller datakällas extrakt på servern"
 
 #:
 msgid "refreshextracts.status_incremented"
-msgstr "Schemalägger extrakten för {0} ''{1}'' till att ökas stegvis nu ..."
+msgstr "Schemalägger extrakten för {0} ”{1}” till att ökas stegvis nu ..."
 
 #:
 msgid "refreshextracts.status_refreshed"
-msgstr "Schemalägger extrakten för {0} ''{1}'' till att uppdateras nu ..."
+msgstr "Schemalägger extrakten för {0} ”{1}” till att uppdateras nu ..."
 
 #:
 msgid "removeusers.options.users"
@@ -2830,7 +2953,7 @@ msgstr "Tar bort användare listade i {0} från gruppen {1} ..."
 
 #:
 msgid "runschedule.errors.requires_schedule_name"
-msgstr "Kommandot ''{0}'' kräver ett schemanamn"
+msgstr "Kommandot ”{0}” kräver ett schemanamn"
 
 #:
 msgid "runschedule.short_description"
@@ -2838,19 +2961,19 @@ msgstr "Kör ett schema"
 
 #:
 msgid "runschedule.status"
-msgstr "Kör schemat ''{0}'' på servern ..."
+msgstr "Kör schemat ”{0}” på servern ..."
 
 #:
 msgid "materializeviews.short_description"
-msgstr "Uppdatera och kontrollera inställningarna för materialiserade vyer för webbplatser/arbetsböcker"
+msgstr "Uppdatera och kontrollera inställningarna för materialiserade vyer för platser/arbetsböcker"
 
 #:
 msgid "materializeviews.status.site"
-msgstr "Uppdaterar inställningen för materialiserade vyer för webbplatsen ''{0}'' ..."
+msgstr "Uppdaterar inställningen för materialiserade vyer för platsen ”{0}” ..."
 
 #:
 msgid "materializeviews.status.workbook"
-msgstr "Uppdaterar inställningen för materialiserade vyer för arbetsboken ''{0}'' ..."
+msgstr "Uppdaterar inställningen för materialiserade vyer för arbetsboken ”{0}” ..."
 
 #:
 msgid "materializeviews.errors.invalid_workbook_arguments"
@@ -2858,63 +2981,63 @@ msgstr "Kommandot materializeviews kräver ett argument för ett arbetsboksnamn"
 
 #:
 msgid "materializeviews.errors.invalid_site_arguments"
-msgstr "Kommandot materializeviews kräver ett argument för ett webbplats-ID"
+msgstr "Kommandot materializeviews kräver ett argument för ett plats-ID"
 
 #:
 msgid "materializeviews.errors.invalid_workbook_option"
-msgstr "Använd ''{0}'' eller ''{1}'' med ''{2}''"
+msgstr "Använd ”{0}” eller ”{1}” med ”{2}”"
 
 #:
 msgid "materializeviews.errors.invalid_project_path"
-msgstr "Använd ''{1}'' med ''{0}''"
+msgstr "Använd ”{1}” med ”{0}”"
 
 #:
 msgid "materializeviews.errors.invalid_site_option"
-msgstr "Använd ''{0}'' med ''{1}''"
+msgstr "Använd ”{0}” med ”{1}”"
 
 #:
 msgid "materializeviews.errors.site_mode_conflict"
-msgstr "Ändra webbplatsens läge för materialiserade vyer genom att använda ''{0}'' eller ''{1}''"
+msgstr "Ändra platsens läge för materialiserade vyer genom att använda ”{0}” eller ”{1}”"
 
 #:
 msgid "materializeviews.errors.site_not_updated"
-msgstr "Webbplatsen ''{0}'' har inte uppdaterats. Endast serveradministratörer kan ändra inställningen för materialiserade vyer"
+msgstr "platsen ”{0}” har inte uppdaterats. Endast serveradministratörer kan ändra inställningen för materialiserade vyer"
 
 #:
 msgid "materializeviews.errors.invalid_argument_options_combination"
-msgstr "Ändra inställningen för materialiserade vyer genom att använda ''{0}'' eller ''{1}''"
+msgstr "Ändra inställningen för materialiserade vyer genom att använda ”{0}” eller ”{1}”"
 
 #:
 msgid "materializeviews.options.materialize_now"
-msgstr "Schemalägg materialiseringen för en given arbetsbok direkt med ''{0}''"
+msgstr "Schemalägg materialiseringen för en given arbetsbok direkt med ”{0}”"
 
 #:
 msgid "materializeviews.options.project"
-msgstr "Specificera ett projekt namn med hjälp av ''{0}''"
+msgstr "Specificera ett projekt namn med hjälp av ”{0}”"
 
 #:
 msgid "materializeviews.options.parent_project_path"
-msgstr "Använd ''{0}'' för att specificera sökvägen för ett överordnat projekt till ''{1}''"
+msgstr "Använd ”{0}” för att specificera sökvägen för ett överordnat projekt till ”{1}”"
 
 #:
 msgid "materializeviews.options.allow_workbook"
-msgstr "Använd ''{0}'' för att aktivera/inaktivera materialiserade vyer för en arbetsbok"
+msgstr "Använd ”{0}” för att aktivera/inaktivera materialiserade vyer för en arbetsbok"
 
 #:
 msgid "materializeviews.options.allow_site"
-msgstr "Använd ''{0}'' för att aktivera/inaktivera materialiserade vyer för en webbplats"
+msgstr "Använd ”{0}” för att aktivera/inaktivera materialiserade vyer för en plats"
 
 #:
 msgid "materializeviews.options.selected_workbooks"
-msgstr "Använd ''{0}'' för att aktivera utvalda arbetsböcker på webbplatsen. Används med alternativet ''{1}''. Detta är standardalternativet"
+msgstr "Använd ”{0}” för att aktivera utvalda arbetsböcker på platsen. Används med alternativet ”{1}”. Detta är standardalternativet"
 
 #:
 msgid "materializeviews.options.all_workbooks"
-msgstr "Använd ''{0}'' för att aktivera alla arbetsböcker på webbplatsen. Används med alternativet ''{1}''"
+msgstr "Använd ”{0}” för att aktivera alla arbetsböcker på platsen. Används med alternativet ”{1}”"
 
 #:
 msgid "session.auto_site_login"
-msgstr "Logga in automatiskt på webbplatsen: {0}"
+msgstr "Logga in automatiskt på platsen: {0}"
 
 #:
 msgid "session.certificate-alias"
@@ -2925,12 +3048,16 @@ msgid "session.connecting"
 msgstr "Ansluter till servern ..."
 
 #:
+msgid "session.connecting_to"
+msgstr "Ansluter till url ({0}): {1}"
+
+#:
 msgid "session.continuing_session"
 msgstr "Fortsätter föregående session"
 
 #:
 msgid "session.errors.auth_required"
-msgstr "Behörighet krävs"
+msgstr "Auktorisering krävs"
 
 #:
 msgid "session.errors.invalid_keystore_password"
@@ -2954,7 +3081,7 @@ msgstr "Omdirigeringsadress saknas i omdirigeringssvar"
 
 #:
 msgid "session.errors.no_sslcafile_found"
-msgstr "Det gick inte att hitta någon CA-fil (Certificate Authority) på dessa platser: ''{0}''. CA-filen används för att säkerställa säker kommunikation med Tableau Server. Mer information om att skapa en CA-fil finns i hjälpen till Tableau Server. För att ansluta till Tableau Server utan att validera dess SSL-certifikat, använd flaggan --no-certcheck."
+msgstr "Det gick inte att hitta någon CA-fil (Certificate Authority) på dessa platser: ”{0}”. CA-filen används för att säkerställa säker kommunikation med Tableau Server. Mer information om att skapa en CA-fil finns i hjälpen till Tableau Server. För att ansluta till Tableau Server utan att validera dess SSL-certifikat, använd flaggan --no-certcheck."
 
 #:
 msgid "session.errors.script_no_password"
@@ -3010,11 +3137,11 @@ msgstr "Det gick inte att hitta något giltigt klientcertifikat"
 
 #:
 msgid "session.not_default_site_member"
-msgstr "Du är inte medlem på standardplatsen. Välj ett WEBBPLATS-ID från följande platser:"
+msgstr "Du är inte medlem på standardplatsen. Välj ett platS-ID från följande platser:"
 
 #:
 msgid "session.not_site_member"
-msgstr "Du är inte medlem på webbplatsen ''{0}''. Välj ett WEBBPLATS-ID från följande platser:"
+msgstr "Du är inte medlem på platsen ”{0}”. Välj ett platS-ID från följande platser:"
 
 #:
 msgid "session.options.help"
@@ -3054,7 +3181,7 @@ msgstr "Använd den angivna webbadressen för Tableau Server. Om inget protokoll
 
 #:
 msgid "session.options.site"
-msgstr "Använd den angivna platsen för Tableau Server. Ange en tom sträng ("") för att tvinga användning av standardplatsen"
+msgstr "Använd den angivna platsen för Tableau Server. Ange en tom sträng (””) för att tvinga användning av standardplatsen"
 
 #:
 msgid "session.options.timeout"
@@ -3073,6 +3200,10 @@ msgid "session.password"
 msgstr "Lösenord:"
 
 #:
+msgid "session.redirecting"
+msgstr "omdirigerar till {0}"
+
+#:
 msgid "session.retrying_task"
 msgstr "Loggar in igen för att försöka ursprungskommandot på nytt med en ny session..."
 
@@ -3082,7 +3213,7 @@ msgstr "Din session har upphört. Loggar ut för att rensa sessionen ..."
 
 #:
 msgid "session.site_list"
-msgstr "{0}{0}NAMN: {1}{0}WEBBPLATS-ID: ''{2}''"
+msgstr "{0}{0}NAMN: {1}{0}PLATS-ID: ”{2}”"
 
 #:
 msgid "session.using-certificate"
@@ -3090,7 +3221,7 @@ msgstr "Använd klientcertifikat för att logga in"
 
 #:
 msgid "session.inferred_username"
-msgstr "Loggar in som {0}'' eftersom ingen --användarnamnsflagga angavs"
+msgstr "Logga in som användaren ”{0}” eftersom ingen --username-flagga angavs."
 
 #:
 msgid "sessiondata.errors.bad_api"
@@ -3102,19 +3233,19 @@ msgstr "Det gick inte att hitta serverns API-version i svaret"
 
 #:
 msgid "sessiondata.errors.version_mismatch"
-msgstr "Tabcmd-versionen({0}API {1}) matchar inte Tableau Server-versionen({2}API {3})"
+msgstr "Tabcmd-versionen ({0}API {1}) matchar inte Tableau Server-versionen ({2}API {3})"
 
 #:
 msgid "sessionoptions.errors.ambiguous_scheme"
-msgstr "Ange ''{0}'' eller ''{1}'' före servernamnet"
+msgstr "Ange ”{0}” eller ”{1}” före servernamnet"
 
 #:
 msgid "sessionoptions.errors.bad_password_file"
-msgstr "Det går inte att läsa lösenordet från filen ''{0}''"
+msgstr "Det går inte att läsa lösenordet från filen ”{0}”"
 
 #:
 msgid "sessionoptions.errors.bad_protocol"
-msgstr "Protokoll ''{0}'' stöds inte"
+msgstr "Protokoll ”{0}” stöds inte"
 
 #:
 msgid "sessionoptions.errors.bad_proxy_format"
@@ -3122,19 +3253,19 @@ msgstr "Proxyformatet matchar inte HOST:PORT: {0}"
 
 #:
 msgid "sessionoptions.errors.bad_timeout"
-msgstr "Icke-numeriskt argument till {0} ''{1}'' ignorerades"
+msgstr "Icke-numeriskt argument till {0} ”{1}” ignorerades"
 
 #:
 msgid "set.description"
-msgstr "Välj en inställning på servern. Använd !setting för att stänga av en inställning"
+msgstr "Ställ in en inställning på servern. Använd !setting för att stänga av en inställning"
 
 #:
 msgid "set.errors.requires_setting_name"
-msgstr "Kommandot ''{0}'' behöver ett inställningsnamn"
+msgstr "Kommandot ”{0}” behöver ett inställningsnamn"
 
 #:
 msgid "set.errors.single_setting_name"
-msgstr "Kommandot ''{0}'' använder ett enskilt inställningsnamn"
+msgstr "Kommandot ”{0}” använder ett enskilt inställningsnamn"
 
 #:
 msgid "set.short_description"
@@ -3142,15 +3273,15 @@ msgstr "Ställa in en inställning på servern"
 
 #:
 msgid "setsetting.status"
-msgstr "Ställer in ''{0}'' på {1}"
+msgstr "Ställer in ”{0}” på {1}"
 
 #:
 msgid "syncgroup.errors.server_admin"
-msgstr "Den minsta platsrollen för en grupp kan inte vara ''ServerAdministrator''."
+msgstr "Den minsta platsrollen för en grupp kan inte vara ”ServerAdministrator”."
 
 #:
 msgid "syncgroup.options.role"
-msgstr "Ställer in standardroller för alla användare i gruppen. Giltiga värden för {0}: {1}. In en användare redan finns tillämpas den givna rollenom den är mindre begränsande än användarens aktuella roll. Om den inte anges är standard {2} för nya användare och oförändrat för befintliga användare"
+msgstr "Ställer in standardroller för alla användare i gruppen. Giltiga värden för {0}: {1}. In en användare redan finns tillämpas den givna rollen om den är mindre begränsande än användarens aktuella roll. Om den inte anges är standard {2} för nya användare och oförändrat för befintliga användare"
 
 #:
 msgid "syncgroup.options.overwritesiterole"
@@ -3158,7 +3289,7 @@ msgstr "Låt användarens platsroll ändras till en med mindre åtkomst när --r
 
 #:
 msgid "syncgroup.options.grantlicensemode"
-msgstr "När man ska tilldela en licens som är tilldelad en grupp till en användare. Tillåtna värden är: {0}. Om inget värde anges kommer ''on-sync'' användas som standardvärde."
+msgstr "När man ska tilldela en licens som är tilldelad en grupp till en användare. Tillåtna värden är: {0}. Om inget värde anges kommer ”on-sync” användas som standardvärde."
 
 #:
 msgid "syncgroup.short_description"
@@ -3170,23 +3301,23 @@ msgstr "Synkroniserar servern med en Active Directory-grupp {0}..."
 
 #:
 msgid "syncgroup.options.sysadmin-type"
-msgstr "[Används inte längre. Använd --role istället.] Tilldelar [eller tar bort] adminbehörigheter till alla användare i gruppen.  {0} kan vara: {1}, {2}, {3}, eller {4}."
+msgstr "[Inaktuell. Använd --role istället.] Tilldelar [eller tar bort] adminbehörigheter till alla användare i gruppen. {0} kan vara: {1}, {2}, {3}, eller {4}."
 
 #:
 msgid "syncgroup.options.license"
-msgstr "[Används inte längre. Använd --role i stället.] Ställer in standardlicensnivån för alla användare i gruppen. {0} kan vara {1}, {2} eller {3}."
+msgstr "[Inaktuell. Använd --role i stället.] Ställer in standardlicensnivån för alla användare i gruppen. {0} kan vara {1}, {2} eller {3}."
 
 #:
 msgid "syncgroup.options.publisher"
-msgstr "[Används inte längre. Använd --role istället.] Tilldelar [eller tar bort] publiceringsbehörigheter till alla användare i gruppen."
+msgstr "[Inaktuell. Använd --role istället.] Tilldelar [eller tar bort] publiceringsbehörigheter till alla användare i gruppen."
 
 #:
 msgid "tabcmd.mutually_exclusive_options"
-msgstr "Det går inte att ange ''{0}'' och ''{1}'' i samma kommando"
+msgstr "Det går inte att ange ”{0}” och ”{1}” i samma kommando"
 
 #:
 msgid "tabcmdparser.errors.ambiguous_option"
-msgstr "Tvetydigt alternativ ''{0}'' bland alternativen: {1}"
+msgstr "Tvetydigt alternativ ”{0}” bland alternativen: {1}"
 
 #:
 msgid "tabcmdparser.warning.unexpected_dash"
@@ -3222,11 +3353,11 @@ msgstr "VizQl-sessionens objekt är redan stängt"
 
 #:
 msgid "vizqlsession.errors.cannot_parse_response"
-msgstr "Det går inte att analysera JSON-svarssträngen: {0}"
+msgstr "Det går inte att tolka JSON-svarssträngen: {0}"
 
 #:
 msgid "upgradethumbnails.short_description"
-msgstr "Detta kommer att köra bakgrundsjobbet Upgrade Thumbnails. Tableau 2018.2. Detta kan medföra en högre arbetsbelastning än normalt på Tableau Server och externa datakällor. and external datasources. Om problem uppstår kan jobbet avbrytas genom att köra tabcmd upgradethumbnails --server <server> --stopp"
+msgstr "Detta kommer att köra bakgrundsjobbet Upgrade Thumbnails. Detta renderar om alla miniatyrbilder som genererats före Tableau version 2018.2 till högupplöst. Detta kan komma att belasta Tableau Server och externa datakällor mer än normalt. Om problem uppstår kan jobbet avbrytas genom att köra tabcmd upgradethumbnails --server <server> --stopp"
 
 #:
 msgid "upgradethumbnails.options.stop"
@@ -3266,10 +3397,105 @@ msgstr "Om detta inte anges använder servern värden från serverns konfigurati
 
 #:
 msgid "validateidpmetadata.options.site_names"
-msgstr "En blankstegsavgränsad förteckning över webbplatsnamn där certifikatvalidering ska köras. Om detta inte anges kommer alla webbplatser att inspekteras."
+msgstr "En blankstegsavgränsad förteckning över platsnamn där certifikatvalidering ska köras. Om detta inte anges kommer alla platser att inspekteras."
 
 #:
 msgid "validateidpmetadata.short_description"
-msgstr "Identifierar Tableau Server-webbplatser som har konfigurerats med IdP:er med den osäkra sammanfattningsalgoritmen SHA-1. Detta kommando identifierar också IdP:er som använder certifikat med en otillräcklig RSA-nyckelstorlek eller eliptisk kurvstorlek."
+msgstr "Identifierar Tableau Server-platser som har konfigurerats med IdP:er med den osäkra sammanfattningsalgoritmen SHA-1. Detta kommando identifierar också IdP:er som använder certifikat med en otillräcklig RSA-nyckelstorlek eller eliptisk kurvstorlek."
 
+#:
+msgid "tabcmd.content.description"
+msgstr "En beskrivning av objektet."
+
+#:
+msgid "tabcmd.content.site_id"
+msgstr "Används i URL:en för att identifiera platsen. Det här är inte detsamma som platsnamnet."
+
+#:
+msgid "tabcmd.howto"
+msgstr "Kör ett specifikt kommando"
+
+#:
+msgid "tabcmd.name"
+msgstr "Tableau Server-kommandoradsverktyg"
+
+#:
+msgid "tabcmd.options.project"
+msgstr "Projektets namn"
+
+#:
+msgid "tabcmd.options.parent_project"
+msgstr "Sökvägen till projektet som innehåller målobjektet."
+
+#:
+msgid "tabcmd.options.workbook"
+msgstr "Namnet på målarbetsboken"
+
+#:
+msgid "tabcmd.options.datasource"
+msgstr "Namnet på måldatakällan"
+
+#:
+msgid "tabcmd.options.materializeviews"
+msgstr "Justera prestandan hos den här arbetsboken genom att materialisera beräkningar för alla vyer, om aktiverat."
+
+#:
+msgid "tabcmd.options.dematerialize"
+msgstr "Justera prestandan hos den här arbetsboken genom att inaktivera materialiserade beräkningar för alla vyer, om aktiverat."
+
+#:
+msgid "tabcmd.options.complete"
+msgstr "Kräver att alla rader är giltiga om någon ändring ska kunna göras. (Sant som standard)"
+
+#:
+msgid "tabcmd.options.no_complete"
+msgstr "Kräver inte att alla rader är giltiga om någon ändring ska kunna göras."
+
+#:
+msgid "tabcmd.options.users_file"
+msgstr "CSV-fil som innehåller en lista med användare, en per rad"
+
+#:
+msgid "tabcmd.options.token_file"
+msgstr "Läs personlig åtkomsttoken från en fil."
+
+#:
+msgid "tabcmd.options.token_name"
+msgstr "Namnet på personlig åtkomsttoken. Om du använder en token för att logga in krävs detta minst en gång för att påbörja sessionen."
+
+#:
+msgid "tabcmd.options.token_value"
+msgstr "Det hemliga värdet för personlig åtkomsttoken som ska användas för autentisering. Kräver att --token-namn anges."
+
+#:
+msgid "tabcmd.options.language.detailed"
+msgstr "Ange vilket språk som ska användas. Exporterade data returneras på detta språk.   Om inget anges använder klienten datorns språkzon, och servern använder språkzonen för ditt användarkonto"
+
+#:
+msgid "tabcmd.options.conflicts"
+msgstr "Behandla resurskonflikter som lyckat objektskapande, t.ex. projektet finns redan"
+
+#:
+msgid "tabcmd.options.log"
+msgstr "Använd den angivna loggnivån. Standardnivån är INFO."
+
+#:
+msgid "tabcmd.publish.options.restart"
+msgstr "[Inaktuell – ingen effekt]"
+
+#:
+msgid "tabcmd.publish.options.tabbed.detailed"
+msgstr "Publicera med tabbvyer aktiverat. Varje blad blir en flik som Viewer-användare kan använda för aatt navigera genom arbetsboken."
+
+#:
+msgid "tabcmd.publish.options.append.detailed"
+msgstr "Lägg till data som publiceras på en befintlig datakälla med samma namn. Om tillägget är inställt på Sant men det inte redan finns en datakälla misslyckas åtgärden."
+
+#:
+msgid "tabcmd.publish.options.disable-uploader"
+msgstr "[Inaktuell – ingen effekt]"
+
+#:
+msgid "tabcmd.refresh.options.bridge"
+msgstr "Uppdatera datakällan genom Tableau Bridge"
 

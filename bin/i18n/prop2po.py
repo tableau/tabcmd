@@ -23,16 +23,15 @@ def to_po(source, destination, encoding, language, project):
 
     header = """msgid ""
 msgstr ""
-"MIME-Version: 1.0\\n"
-"Content-Type: text/plain; charset={encoding}\\n"
-"Content-Transfer-Encoding: 8bit\\n"
-"X-Generator: prop2po\\n"
-"Project-Id-Version: {project}\\n"
-"Language: {language}\\n"
- # Copyright (C) YEAR Tableau Software 
- """
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset={encoding}"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: {project}"
+"Language: {language}"
+# Copyright (C) YEAR Tableau Software 
+"""
     lines = source.readlines()
-    print(lines)
     destination.write(header.format(
         language=language,
         project=project,
@@ -42,7 +41,10 @@ msgstr ""
         if not line.isspace():
             parts = line.split('=')
             # TODO it fails on comments/lines with less than two parts after splitting
-            destination.write('#:\n' + 'msgid "' + parts[0] + '"\n' 'msgstr "' + parts[1][:-1] + '"\n\n')
+            try:
+                destination.write('#:\n' + 'msgid "' + parts[0] + '"\n' 'msgstr "' + parts[1][:-1] + '"\n\n')
+            except IndexError as e:
+                print("FAILED on line{}".format(line))
 
 
 if __name__ == '__main__':

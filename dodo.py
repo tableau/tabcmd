@@ -15,43 +15,47 @@ doit list # see available tasks
 FYI: to read mo and po files use https://poedit.net/download
 """
 
+    
 
-def task_convert():
+def task_encode_properties():
     """
     For all languages: Read properties files with unicode like "Schlie\u00dfen", save it back as "Schließen"
     requires: pip install ftfy
     help: https://ftfy.readthedocs.io/
-    Run when we copy in updated properties files. NOT IDEMPOTENT: only run on the initial files
+    
+    Inputs: locales/*_[locale]/LC_MESSAGES/combined.properties files - all in the top level folder for ease of importing them
+    Output: (generated clean each run) locales/[locale]/LC_MESSAGES/transcoded.properties file
+    This should NOT edit the input files, therefore it should be idempotent.
     """
 
     def process_locales():
         for current_locale in LOCALES:
-            if current_locale in ["en", "ga"]:  # greek is our pseudo-loc
-                continue
-            elif current_locale in ["ja", "ko", "zh"]:
-                encoding = "utf-8"
-            else:
-                encoding = "cp1252"
+            # I'm not sure why we were varying the locale before, but this seems to work fine
+            encoding = "utf-8"
 
-            for file in glob.glob("tabcmd/locales/" + current_locale + "/*.properties"):
-                basename = os.path.basename(file).split(".")[0]
-                print("transcoding", basename)
-                with open(file, encoding=encoding) as infile:
+            LOCALE_PATH = os.path.join("tabcmd", "locales", current_locale, "LC_MESSAGES")
+            INPUT_FILE = os.path.join(LOCALE_PATH, "combined.properties.sorted")
+            OUTPUT_FILE = os.path.join(LOCALE_PATH, "transcoded.properties")
+            print("Collecting strings for " + current_locale)
+            try:
+                with open(INPUT_FILE, "r", encoding=encoding, errors='backslashreplace') as infile:
                     data = infile.read()
                 # now that we have read in the data properly encoded, fix the \u00fc characters and save as utf-8
-                with open(file, "w", encoding="utf-8") as outfile:
+                with open(OUTPUT_FILE, "w", encoding="utf-8", errors='backslashreplace') as outfile:
                     outfile.write(ftfy.fixes.decode_escapes(data))
+                print("Done!")
+            except Exception as e:
+                print("!!!!failed to collect strings for {}".format(current_locale))
+                print(e)
 
     return {
         "actions": [process_locales],
         "verbosity": 2,
     }
 
-
 def task_po():
     """
-    For all languages: generate a .po file from each .properties file
-    Run when we copy in updated properties files AFTER task_convert (so all files are utf-8)
+    For all languages: generate a .po file from each LC_MESSAGES/combined.properties file (these are utf-8)
     This is idempotent and can be re-run safely
     """
 
@@ -66,26 +70,34 @@ def task_po():
     def process_locales():
         for current_locale in LOCALES:
 
-            LOC_PATH = "tabcmd/locales/" + current_locale
-            for file in glob.glob(LOC_PATH + "/*.properties"):
-                basename = os.path.basename(file).split(".")[0]
-                print("processing", basename)
-                result = subprocess.run(
-                    [
-                        "python",
-                        "bin/i18n/prop2po.py",
-                        "--encoding",
-                        "utf-8",  # for the .po header
-                        "--language",
-                        current_locale,  # for the .po header
-                        LOC_PATH + "/" + basename + ".properties",
-                        LOC_PATH + "/LC_MESSAGES/" + basename + ".po",
-                    ]
-                )
-                print("\n", result)
-                # print("stdout:", result.stdout)
+            LOC_PATH = os.path.join("tabcmd", "locales", current_locale, "LC_MESSAGES")
+            PROPS_FILE = os.path.join(LOC_PATH, "transcoded.properties")
+            PO_FILE = os.path.join(LOC_PATH, "tabcmd.po")
+            LOG_FILE = os.path.join(LOC_PATH, "prop2po.out")
+            with open(LOG_FILE, "w+", encoding="utf-8") as logfile:
+                try:
+                    result = subprocess.run(
+                        [
+                            "python",
+                            "bin/i18n/prop2po.py",
+                            "--encoding",
+                            "utf-8",  # for the .po header
+                            "--language",
+                            current_locale,  # for the .po header
+                            PROPS_FILE,
+                            PO_FILE
+                        ], 
+                        stdout=logfile,
+                        stderr=logfile
+                    )
+                    print("Written from {} to {}".format(PROPS_FILE, PO_FILE))
+                except Exception as e:
+                    print("run for {} failed with exception".format(current_locale))
+                    print("see log file {}".format(LOG_FILE))
+        
                 if not result.returncode == 0:
-                    print("stderr:", result.stderr)
+                    print("FAILED")
+                    print("see log file {}".format(LOG_FILE))
 
     return {
         "actions": [process_locales],
@@ -98,49 +110,38 @@ def task_clean_all():
 
     def process_locales():
         for current_locale in LOCALES:
-            LOC_PATH = "tabcmd/locales/" + current_locale
-            for file in glob.glob(LOC_PATH + "/*.properties"):
-                basename = os.path.basename(file).split(".")[0]
-                print("deleting", basename + ".*")
+            LOC_PATH = os.path.join("tabcmd", "locales", current_locale, "LC_MESSAGES", "*")
+            for file in glob.glob(LOC_PATH):
+                print("deleting {}".format(os.path.basename(file)))
                 try:
-                    os.remove(LOC_PATH + "/LC_MESSAGES/" + basename + ".po")
+                    os.remove(file)
                 except OSError:
                     pass
-                try:
-                    os.remove(LOC_PATH + "/LC_MESSAGES/" + basename + ".mo")
-                except OSError:
-                    pass
-            try:
-                print("deleting", current_locale + ".mo")
-                os.remove(LOC_PATH + "/LC_MESSAGES/" + current_locale + ".mo")
-            except OSError:
-                pass
-
     return {
         "actions": [process_locales],
         "verbosity": 2,
     }
 
 
-def task_merge():
+def task_merge_properties():
     """
-    For all languages: Combines all existing po files for a language into a single domain called 'tabcmd'.
+    For all languages: Combines all existing properties files for a language into a single file called 'combined.properties'.
     """
 
     def process_locales():
         for current_locale in LOCALES:
 
-            LOC_PATH = "tabcmd/locales/" + current_locale + "/LC_MESSAGES"
+            LOCALE_PATH = os.path.join("tabcmd", "locales", current_locale)
+            INPUT_FILES = os.path.join(LOCALE_PATH, "*.properties")
+            OUTPUT_FILE = os.path.join(LOCALE_PATH, "LC_MESSAGES", "combined.properties")
 
-            with open(LOC_PATH + "/tabcmd.po", "w+", encoding="utf-8") as outfile:
-                for file in glob.glob(LOC_PATH + "/*.po"):
-                    if file.endswith("tabcmd.po"):
-                        pass
-                    else:
-                        print("merging", file)
-                        with open(file, encoding="utf-8") as infile:
-                            outfile.write(infile.read())
-                            outfile.write("\n")
+            with open(OUTPUT_FILE, "w+", encoding="utf-8") as outfile:
+                for file in glob.glob(INPUT_FILES):
+                    with open(file, encoding="utf-8") as infile:
+                        outfile.write(infile.read())
+                        outfile.write("\n")
+            print("Combined strings for {}".format(current_locale))
+            sort_and_filter_file(OUTPUT_FILE)
 
     return {
         "actions": [process_locales],
@@ -163,9 +164,9 @@ def task_mo():
             # build the single binary file from the .po file
             result = subprocess.run(["python", "bin/i18n/msgfmt.py", LOC_PATH + "/tabcmd"])
             print("\n", result)
-            # print("stdout:", result.stdout)
-            if not result.returncode == 0:
-                print("stderr:", result.stderr)
+            
+            
+        print("it sure would be nice if there was some automated way to validate that I got a good .mo filedoit ")
 
     return {
         "actions": [process_locales],
@@ -198,3 +199,29 @@ def task_version():
         "actions": [write_for_pyinstaller],
         "verbosity": 2,
     }
+
+
+# local method, not exposed as a task
+def sort_and_filter_file(filename):
+    uniques = []
+    
+    with open(filename, "r+", encoding="utf-8") as my_file:
+        lines = my_file.readlines()
+        # add this back later, for now it's interfering with file diffs lines.sort()
+        for line in lines:
+            line = line.strip()
+            # lines cannot extend over two lines. 
+            line = line.replace("\\n", "  ")
+            if line == "":
+                continue
+            elif "=" not in line and "codestrings" not in filename :
+                print("prop2po will not like this line. Discarding [{}]".format(line))
+            elif not line in uniques:
+                uniques.append(line + "\n")
+                
+    new_file_name = filename + ".sorted"
+    with open(new_file_name, "w+", encoding="utf-8") as new_file:
+        for line in uniques:
+            new_file.write(line)
+            
+    print("Saved {} sorted unique lines to {}".format(len(uniques), new_file_name))

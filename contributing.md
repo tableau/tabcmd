@@ -115,10 +115,10 @@ _(note that running mypy and black with no errors is required before code will b
 e.g for Windows
 > pyinstaller tabcmd-windows.spec --clean --noconfirm --distpath ./dist/windows
 
-produces dist/tabcmd.exe
+produces dist/windows/tabcmd.exe
 To run the newly created executable, from a console window in the same directory as the file tabcmd.py:
 
-> dist/tabcmd/tabcmd.exe --help
+> dist/windows/tabcmd/tabcmd.exe --help
 
 
 
