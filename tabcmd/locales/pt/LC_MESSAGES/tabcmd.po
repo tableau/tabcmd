@@ -4,9 +4,9 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8"
 "Content-Transfer-Encoding: 8bit"
 "X-Generator: prop2po"
-"Project-Id-Version: None"
+"Project-Id-Version: Tabcmd 2"
 "Language: pt"
-# Copyright (C) YEAR Tableau Software 
+# Copyright (C) 2024 TABLEAU SOFTWARE, LLC, A SALESFORCE COMPANY. ALL RIGHTS RESERVED 
 #:
 msgid "permissions.labels.capabilities.read"
 msgstr "Exibição:"
@@ -1237,7 +1237,7 @@ msgstr "Não foi possível anexar o PDF gerado a este e-mail."
 
 #:
 msgid "errors.subscriptions.learn_more_troubleshoot"
-msgstr "<a hre"
+msgstr "<a href="https://onlinehelp.tableau.com/current/server/pt-br/subscribe_trouble.htm">Saiba mais</a>"
 
 #:
 msgid "errors.subscriptions.bad_extract_refresh_subscription_configuration"
@@ -1505,7 +1505,7 @@ msgstr "Seu alerta {0} foi suspenso"
 
 #:
 msgid "dataalerts.failure.suspend.email.explanation"
-msgstr "Enquanto suspenso, não avaliaremos os destinatários da exibição ou do alerta. Depois que uma correção tiver sido feita, você poderá retomar o alerta em <a hre"
+msgstr "Enquanto suspenso, não avaliaremos os destinatários da exibição ou do alerta. Depois que uma correção tiver sido feita, você poderá retomar o alerta em <a href="{0}" style="font-size:14px;font-family: Benton Sans Medium;color:#4996B2">{1}."
 
 #:
 msgid "dataalerts.failure.suspend.view.name.prefix"
@@ -1957,11 +1957,11 @@ msgstr "Atualização do aplicativo Tableau para Slack"
 
 #:
 msgid "slack.app.upgrade.email.notification.introduction"
-msgstr "Uma atualização está disponível para o aplicativo Tableau para Slack. A Tableau recomenda atualizar o aplicativo para manter o desempenho dele e usar novos recursos do Tableau Cloud. Procure por novos recursos e mudanças em <a styl"
+msgstr "Uma atualização está disponível para o aplicativo Tableau para Slack. A Tableau recomenda atualizar o aplicativo para manter o desempenho dele e usar novos recursos do Tableau Cloud. Procure por novos recursos e mudanças em <a style="text-decoration: none; color: #E8762C;" href="https://help.tableau.com/current/online/pt-br/whatsnew_online.htm">O que há de novo no Tableau Cloud.</a>"
 
 #:
 msgid "slack.app.upgrade.email.notification.action"
-msgstr "Para atualizar a conexão do site com o aplicativo Tableau for Slack, consulte <a styl"
+msgstr "Para atualizar a conexão do site com o aplicativo Tableau for Slack, consulte <a style="text-decoration: none; color: #E8762C;" href="https://help.tableau.com/current/online/pt-br/slack_admin.htm#update">Atualizar seu aplicativo Tableau for Slack</a>.  Se você tiver vários sites do Tableau Cloud, atualize o aplicativo em cada site."
 
 #:
 msgid "slack.app.upgrade.email.notification.steps"
@@ -1973,7 +1973,7 @@ msgstr "Você está recebendo esta notificação porque é administrador de um s
 
 #:
 msgid "slack.app.upgrade.email.notification.footer.privacy"
-msgstr "Leia nossa <a styl"
+msgstr "Leia nossa <a style="text-decoration: none; color: #E8762C;" href="http://www.tableau.com/pt-br/privacy">Política de privacidade</a>"
 
 #:
 msgid "unifiedconsumption.tcrm.folders.private"

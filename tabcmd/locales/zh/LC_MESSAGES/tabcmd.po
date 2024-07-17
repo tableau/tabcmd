@@ -4,9 +4,9 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8"
 "Content-Transfer-Encoding: 8bit"
 "X-Generator: prop2po"
-"Project-Id-Version: None"
+"Project-Id-Version: Tabcmd 2"
 "Language: zh"
-# Copyright (C) YEAR Tableau Software 
+# Copyright (C) 2024 TABLEAU SOFTWARE, LLC, A SALESFORCE COMPANY. ALL RIGHTS RESERVED 
 #:
 msgid "permissions.labels.capabilities.read"
 msgstr "视图:"
@@ -1237,7 +1237,7 @@ msgstr "无法将生成的 PDF 附加到此电子邮件。"
 
 #:
 msgid "errors.subscriptions.learn_more_troubleshoot"
-msgstr "<a hre"
+msgstr "<a href="https://onlinehelp.tableau.com/current/server/zh-cn/subscribe_trouble.htm">了解更多信息</a>"
 
 #:
 msgid "errors.subscriptions.bad_extract_refresh_subscription_configuration"
@@ -1505,7 +1505,7 @@ msgstr "您的通知 {0} 已挂起"
 
 #:
 msgid "dataalerts.failure.suspend.email.explanation"
-msgstr "处于挂起状态时，我们将不会对视图或通知接收者进行评估。进行修复之后，您可以恢复 <a hre"
+msgstr "处于挂起状态时，我们将不会对视图或通知接收者进行评估。进行修复之后，您可以恢复 <a href="{0}" style="font-size:14px;font-family: Benton Sans Medium;color:#4996B2">{1} 中的通知。"
 
 #:
 msgid "dataalerts.failure.suspend.view.name.prefix"
@@ -1957,11 +1957,11 @@ msgstr "适用于 Slack 的 Tableau 应用程序更新"
 
 #:
 msgid "slack.app.upgrade.email.notification.introduction"
-msgstr "适用于 Slack 的 Tableau 应用程序有更新可用。Tableau 建议更新应用程序以保持应用程序性能，并使用新的 Tableau Cloud 功能。查找 <a styl"
+msgstr "适用于 Slack 的 Tableau 应用程序有更新可用。Tableau 建议更新应用程序以保持应用程序性能，并使用新的 Tableau Cloud 功能。查找 <a style="text-decoration: none; color: #E8762C;" href="https://help.tableau.com/current/online/zh-cn/whatsnew_online.htm">Tableau Cloud 新增功能</a>中的功能和更改。"
 
 #:
 msgid "slack.app.upgrade.email.notification.action"
-msgstr "若要更新站点与 Tableau for Slack 应用程序的连接，请参见<a styl"
+msgstr "若要更新站点与 Tableau for Slack 应用程序的连接，请参见<a style="text-decoration: none; color: #E8762C;" href="https://help.tableau.com/current/online/zh-cn/slack_admin.htm#update">更新您的 Tableau for Slack 应用程序</a>。 如果您有多个 Tableau Cloud 站点，请更新每个站点中的应用程序。"
 
 #:
 msgid "slack.app.upgrade.email.notification.steps"
@@ -1973,7 +1973,7 @@ msgstr "您收到此通知是因为您是连接到 Slack 的 Tableau Cloud 站�
 
 #:
 msgid "slack.app.upgrade.email.notification.footer.privacy"
-msgstr "阅读我们的<a styl"
+msgstr "阅读我们的<a style="text-decoration: none; color: #E8762C;" href="http://www.tableau.com/zh-cn/privacy">隐私政策</a>"
 
 #:
 msgid "unifiedconsumption.tcrm.folders.private"

@@ -4,9 +4,9 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8"
 "Content-Transfer-Encoding: 8bit"
 "X-Generator: prop2po"
-"Project-Id-Version: None"
+"Project-Id-Version: Tabcmd 2"
 "Language: fr"
-# Copyright (C) YEAR Tableau Software 
+# Copyright (C) 2024 TABLEAU SOFTWARE, LLC, A SALESFORCE COMPANY. ALL RIGHTS RESERVED 
 #:
 msgid "permissions.labels.capabilities.read"
 msgstr "Afficher :"
@@ -1237,7 +1237,7 @@ msgstr "Impossible de joindre le PDF généré à cet e-mail."
 
 #:
 msgid "errors.subscriptions.learn_more_troubleshoot"
-msgstr "<a hre"
+msgstr "<a href="https://onlinehelp.tableau.com/current/server/fr-fr/subscribe_trouble.htm">En savoir plus</a>"
 
 #:
 msgid "errors.subscriptions.bad_extract_refresh_subscription_configuration"
@@ -1505,7 +1505,7 @@ msgstr "Votre alerte {0} a été suspendue"
 
 #:
 msgid "dataalerts.failure.suspend.email.explanation"
-msgstr "Pendant qu’elle est suspendue, nous n’évaluons pas la vue et nous n’alertons pas les destinataires. Une fois le correctif appliqué, vous pouvez reprendre l’alerte dans <a hre"
+msgstr "Pendant qu’elle est suspendue, nous n’évaluons pas la vue et nous n’alertons pas les destinataires. Une fois le correctif appliqué, vous pouvez reprendre l’alerte dans <a href="{0}" style="font-size:14px;font-family: Benton Sans Medium;color:#4996B2">{1}."
 
 #:
 msgid "dataalerts.failure.suspend.view.name.prefix"
@@ -1957,11 +1957,11 @@ msgstr "Mise à jour de l’application Tableau pour Slack"
 
 #:
 msgid "slack.app.upgrade.email.notification.introduction"
-msgstr "Une mise à jour est disponible pour l’application Tableau pour Slack. Tableau recommande de mettre à jour l’application pour conserver les performances de l’application et utiliser les nouvelles fonctionnalités de Tableau Cloud. Recherchez les nouvelles fonctionnalités et modifications dans <a styl"
+msgstr "Une mise à jour est disponible pour l’application Tableau pour Slack. Tableau recommande de mettre à jour l’application pour conserver les performances de l’application et utiliser les nouvelles fonctionnalités de Tableau Cloud. Recherchez les nouvelles fonctionnalités et modifications dans <a style="text-decoration: none; color: #E8762C;" href="https://help.tableau.com/current/online/fr-fr/whatsnew_online.htm">Nouveautés de Tableau Cloud</a>."
 
 #:
 msgid "slack.app.upgrade.email.notification.action"
-msgstr "Pour mettre à jour la connexion du site à l’application Tableau pour Slack, consultez <a styl"
+msgstr "Pour mettre à jour la connexion du site à l’application Tableau pour Slack, consultez <a style="text-decoration: none; color: #E8762C;" href="https://help.tableau.com/current/online/fr-fr/slack_admin.htm#update">Mettre à jour votre application Tableau pour Slack</a>.  Si vous avez plusieurs sites Tableau Cloud, mettez à jour l’application dans chaque site."
 
 #:
 msgid "slack.app.upgrade.email.notification.steps"
@@ -1973,7 +1973,7 @@ msgstr "Vous recevez cette notification parce que vous êtes l’administrateur 
 
 #:
 msgid "slack.app.upgrade.email.notification.footer.privacy"
-msgstr "Consultez notre <a styl"
+msgstr "Consultez notre <a style="text-decoration: none; color: #E8762C;" href="http://www.tableau.com/fr-fr/privacy">Politique de confidentialité</a>"
 
 #:
 msgid "unifiedconsumption.tcrm.folders.private"

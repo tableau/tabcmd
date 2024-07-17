@@ -4,9 +4,9 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8"
 "Content-Transfer-Encoding: 8bit"
 "X-Generator: prop2po"
-"Project-Id-Version: None"
+"Project-Id-Version: Tabcmd 2"
 "Language: ga"
-# Copyright (C) YEAR Tableau Software 
+# Copyright (C) 2024 TABLEAU SOFTWARE, LLC, A SALESFORCE COMPANY. ALL RIGHTS RESERVED 
 #:
 msgid "permissions.labels.capabilities.read"
 msgstr "323e-表:View:|桜"
@@ -1237,7 +1237,7 @@ msgstr "e4d3-表:The generated PDF could not be attached to this email.|桜"
 
 #:
 msgid "errors.subscriptions.learn_more_troubleshoot"
-msgstr "8045-表:<a hre"
+msgstr "8045-表:<a href="https://onlinehelp.tableau.com/current/server/en-us/subscribe_trouble.htm">Learn More</a>|桜"
 
 #:
 msgid "errors.subscriptions.bad_extract_refresh_subscription_configuration"
@@ -1505,7 +1505,7 @@ msgstr "c5c2-表:Your alert {0} has been suspended|桜"
 
 #:
 msgid "dataalerts.failure.suspend.email.explanation"
-msgstr "e869-表:While suspended, we will not evaluate the view or alert recipients. After a fix has been made, you can resume the alert in <a hre"
+msgstr "e869-表:While suspended, we will not evaluate the view or alert recipients. After a fix has been made, you can resume the alert in <a href="{0}" style="font-size:14px;font-family: Benton Sans Medium;color:#4996B2">{1}.|桜"
 
 #:
 msgid "dataalerts.failure.suspend.view.name.prefix"
@@ -1957,11 +1957,11 @@ msgstr "f9d0-表:Tableau App for Slack Update|桜"
 
 #:
 msgid "slack.app.upgrade.email.notification.introduction"
-msgstr "defc-表:An update is available for the Tableau app for Slack. Tableau recommends updating the app to maintain app performance and to use new Tableau Cloud features. Look for new features and changes in <a styl"
+msgstr "defc-表:An update is available for the Tableau app for Slack. Tableau recommends updating the app to maintain app performance and to use new Tableau Cloud features. Look for new features and changes in <a style="text-decoration: none; color: #E8762C;" href="https://help.tableau.com/current/online/en-us/whatsnew_online.htm">What’s New in Tableau Cloud.</a>|桜"
 
 #:
 msgid "slack.app.upgrade.email.notification.action"
-msgstr "f1b4-表:To update the site’s connection to the Tableau for Slack app, see <a styl"
+msgstr "f1b4-表:To update the site’s connection to the Tableau for Slack app, see <a style="text-decoration: none; color: #E8762C;" href="https://help.tableau.com/current/online/en-us/slack_admin.htm#update">Update your Tableau for Slack app</a>.  If you have multiple Tableau Cloud sites, update the app in each site.|桜"
 
 #:
 msgid "slack.app.upgrade.email.notification.steps"
@@ -1973,7 +1973,7 @@ msgstr "ba5b-表:You are receiving this notification because you are an administ
 
 #:
 msgid "slack.app.upgrade.email.notification.footer.privacy"
-msgstr "227f-表:Read our <a styl"
+msgstr "227f-表:Read our <a style="text-decoration: none; color: #E8762C;" href="http://www.tableau.com/privacy">Privacy Policy</a>|桜"
 
 #:
 msgid "unifiedconsumption.tcrm.folders.private"

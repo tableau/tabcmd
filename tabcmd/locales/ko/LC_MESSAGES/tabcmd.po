@@ -4,9 +4,9 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8"
 "Content-Transfer-Encoding: 8bit"
 "X-Generator: prop2po"
-"Project-Id-Version: None"
+"Project-Id-Version: Tabcmd 2"
 "Language: ko"
-# Copyright (C) YEAR Tableau Software 
+# Copyright (C) 2024 TABLEAU SOFTWARE, LLC, A SALESFORCE COMPANY. ALL RIGHTS RESERVED 
 #:
 msgid "permissions.labels.capabilities.read"
 msgstr "보기:"
@@ -1237,7 +1237,7 @@ msgstr "생성된 PDF는 이 이메일에 첨부할 수 없습니다."
 
 #:
 msgid "errors.subscriptions.learn_more_troubleshoot"
-msgstr "<a hre"
+msgstr "<a href="https://onlinehelp.tableau.com/current/server/ko-kr/subscribe_trouble.htm">자세히 알아보기</a>"
 
 #:
 msgid "errors.subscriptions.bad_extract_refresh_subscription_configuration"
@@ -1505,7 +1505,7 @@ msgstr "{0} 알림이 일시 중단되었습니다."
 
 #:
 msgid "dataalerts.failure.suspend.email.explanation"
-msgstr "일시 중단된 동안에는 뷰 또는 알림 수신자를 평가할 수 없습니다. 수정을 완료한 후 다음 위치에서 알림을 다시 시작할 수 있습니다. <a hre"
+msgstr "일시 중단된 동안에는 뷰 또는 알림 수신자를 평가할 수 없습니다. 수정을 완료한 후 다음 위치에서 알림을 다시 시작할 수 있습니다. <a href="{0}" style="font-size:14px;font-family: Benton Sans Medium;color:#4996B2">{1}."
 
 #:
 msgid "dataalerts.failure.suspend.view.name.prefix"
@@ -1957,11 +1957,11 @@ msgstr "Slack용 Tableau 앱 업데이트"
 
 #:
 msgid "slack.app.upgrade.email.notification.introduction"
-msgstr "Slack용 Tableau 앱에 대한 업데이트를 사용할 수 있습니다. Tableau는 앱 성능을 유지하고 새로운 Tableau Cloud 기능을 사용하기 위해 앱을 업데이트할 것을 권장합니다. 새로운 기능 및 변경된 기능은 <a styl"
+msgstr "Slack용 Tableau 앱에 대한 업데이트를 사용할 수 있습니다. Tableau는 앱 성능을 유지하고 새로운 Tableau Cloud 기능을 사용하기 위해 앱을 업데이트할 것을 권장합니다. 새로운 기능 및 변경된 기능은 <a style="text-decoration: none; color: #E8762C;" href="https://help.tableau.com/current/online/ko-kr/whatsnew_online.htm">Tableau Cloud의 새로운 기능</a>을 참조하십시오."
 
 #:
 msgid "slack.app.upgrade.email.notification.action"
-msgstr "사이트와 Slack용 Tableau 앱 간의 연결을 업데이트하려면 <a styl"
+msgstr "사이트와 Slack용 Tableau 앱 간의 연결을 업데이트하려면 <a style="text-decoration: none; color: #E8762C;" href="https://help.tableau.com/current/online/ko-kr/slack_admin.htm#update">Slack용 Tableau 앱 업데이트</a>를 참조하십시오.  여러 Tableau Cloud 사이트가 있는 경우 각 사이트에서 앱을 업데이트하십시오."
 
 #:
 msgid "slack.app.upgrade.email.notification.steps"
@@ -1973,7 +1973,7 @@ msgstr "귀하가 Slack에 연결된 Tableau Cloud 사이트의 관리자이기�
 
 #:
 msgid "slack.app.upgrade.email.notification.footer.privacy"
-msgstr "<a styl"
+msgstr "<a style="text-decoration: none; color: #E8762C;" href="http://www.tableau.com/ko-kr/privacy">개인정보 취급방침</a> 읽기"
 
 #:
 msgid "unifiedconsumption.tcrm.folders.private"

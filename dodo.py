@@ -68,6 +68,13 @@ def task_po():
     """
 
     def process_locales():
+        subprocess.run(
+            [
+                "python",
+                "bin/i18n/prop2po.py",
+                "--help"
+            ]
+        )
         for current_locale in LOCALES:
 
             LOC_PATH = os.path.join("tabcmd", "locales", current_locale, "LC_MESSAGES")
@@ -84,6 +91,10 @@ def task_po():
                             "utf-8",  # for the .po header
                             "--language",
                             current_locale,  # for the .po header
+                            "--project",
+                            "Tabcmd 2",
+                            "--copyright",
+                            "TABLEAU SOFTWARE, LLC, A SALESFORCE COMPANY. ALL RIGHTS RESERVED",
                             PROPS_FILE,
                             PO_FILE
                         ], 

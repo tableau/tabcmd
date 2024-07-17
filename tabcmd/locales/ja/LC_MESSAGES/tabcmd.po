@@ -4,9 +4,9 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8"
 "Content-Transfer-Encoding: 8bit"
 "X-Generator: prop2po"
-"Project-Id-Version: None"
+"Project-Id-Version: Tabcmd 2"
 "Language: ja"
-# Copyright (C) YEAR Tableau Software 
+# Copyright (C) 2024 TABLEAU SOFTWARE, LLC, A SALESFORCE COMPANY. ALL RIGHTS RESERVED 
 #:
 msgid "permissions.labels.capabilities.read"
 msgstr "ビュー:"
@@ -1237,7 +1237,7 @@ msgstr "生成された PDF をこのメールに添付できませんでした�
 
 #:
 msgid "errors.subscriptions.learn_more_troubleshoot"
-msgstr "<a hre"
+msgstr "<a href="https://onlinehelp.tableau.com/current/server/ja-jp/subscribe_trouble.htm">詳細情報</a>"
 
 #:
 msgid "errors.subscriptions.bad_extract_refresh_subscription_configuration"
@@ -1505,7 +1505,7 @@ msgstr "アラート {0} は一時停止しています"
 
 #:
 msgid "dataalerts.failure.suspend.email.explanation"
-msgstr "一時停止中は、ビューまたはアラートの受信者を評価しません。修正後に <a hre"
+msgstr "一時停止中は、ビューまたはアラートの受信者を評価しません。修正後に <a href="{0}" style="font-size:14px;font-family: Benton Sans Medium;color:#4996B2">{1} でアラートを再開できます。"
 
 #:
 msgid "dataalerts.failure.suspend.view.name.prefix"
@@ -1957,11 +1957,11 @@ msgstr "Slack 用 Tableau アプリの更新"
 
 #:
 msgid "slack.app.upgrade.email.notification.introduction"
-msgstr "Slack 用 Tableau アプリのアップデートが公開されています。アプリのパフォーマンスを維持し、Tableau Cloud の新機能を使用するために、アプリを更新することをお勧めします。新機能と変更点については、「<a styl"
+msgstr "Slack 用 Tableau アプリのアップデートが公開されています。アプリのパフォーマンスを維持し、Tableau Cloud の新機能を使用するために、アプリを更新することをお勧めします。新機能と変更点については、「<a style="text-decoration: none; color: #E8762C;" href="https://help.tableau.com/current/online/ja-jp/whatsnew_online.htm">Tableau Cloud の新機能</a>」を参照してください。"
 
 #:
 msgid "slack.app.upgrade.email.notification.action"
-msgstr "Tableau for Slack アプリへのサイトの接続を更新するには、「<a styl"
+msgstr "Tableau for Slack アプリへのサイトの接続を更新するには、「<a style="text-decoration: none; color: #E8762C;" href="https://help.tableau.com/current/online/ja-jp/slack_admin.htm#update">Tableau for Slack アプリの更新</a>」を参照してください。 複数の Tableau Cloud サイトがある場合は、各サイトでアプリを更新してください。"
 
 #:
 msgid "slack.app.upgrade.email.notification.steps"
@@ -1973,7 +1973,7 @@ msgstr "この通知は、Slack に接続されている Tableau Cloud サイト
 
 #:
 msgid "slack.app.upgrade.email.notification.footer.privacy"
-msgstr "<a styl"
+msgstr "<a style="text-decoration: none; color: #E8762C;" href="http://www.tableau.com/ja-jp/privacy">プライバシー ポリシー</a>をご覧ください"
 
 #:
 msgid "unifiedconsumption.tcrm.folders.private"

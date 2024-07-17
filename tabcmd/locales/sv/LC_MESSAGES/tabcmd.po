@@ -4,9 +4,9 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8"
 "Content-Transfer-Encoding: 8bit"
 "X-Generator: prop2po"
-"Project-Id-Version: None"
+"Project-Id-Version: Tabcmd 2"
 "Language: sv"
-# Copyright (C) YEAR Tableau Software 
+# Copyright (C) 2024 TABLEAU SOFTWARE, LLC, A SALESFORCE COMPANY. ALL RIGHTS RESERVED 
 #:
 msgid "permissions.labels.capabilities.read"
 msgstr "Visning:"
@@ -1237,7 +1237,7 @@ msgstr "Det gick inte att bifoga den genererade PDF-filen i det här mejlet."
 
 #:
 msgid "errors.subscriptions.learn_more_troubleshoot"
-msgstr "<a hre"
+msgstr "<a href="https://onlinehelp.tableau.com/current/server/sv-se/subscribe_trouble.htm">Läs mer</a>"
 
 #:
 msgid "errors.subscriptions.bad_extract_refresh_subscription_configuration"
@@ -1505,7 +1505,7 @@ msgstr "Aviseringen {0} har inaktiverats"
 
 #:
 msgid "dataalerts.failure.suspend.email.explanation"
-msgstr "Så länge inaktiveringen gäller utvärderas inte vyn och mottagarna aviseras inte heller. Så snart en korrigering har gjorts kan du återuppta aviseringen i <a hre"
+msgstr "Så länge inaktiveringen gäller utvärderas inte vyn och mottagarna aviseras inte heller. Så snart en korrigering har gjorts kan du återuppta aviseringen i <a href="{0}" style="font-size:14px;font-family: Benton Sans Medium;color:#4996B2">{1}."
 
 #:
 msgid "dataalerts.failure.suspend.view.name.prefix"
@@ -1957,11 +1957,11 @@ msgstr "Uppdatering för Tableau-programmet för Slack"
 
 #:
 msgid "slack.app.upgrade.email.notification.introduction"
-msgstr "En uppdatering är tillgänglig för Tableau-programmet för Slack. Tableau rekommenderar att du uppdaterar programmet så att det fortsätter att fungera som det ska och så att du kan använda nya Tableau Cloud-funktioner. Du kan läsa om nya funktioner och förändringar i <a styl"
+msgstr "En uppdatering är tillgänglig för Tableau-programmet för Slack. Tableau rekommenderar att du uppdaterar programmet så att det fortsätter att fungera som det ska och så att du kan använda nya Tableau Cloud-funktioner. Du kan läsa om nya funktioner och förändringar i <a style="text-decoration: none; color: #E8762C;" href="https://help.tableau.com/current/online/sv-se/whatsnew_online.htm">Nyheter i Tableau Cloud.</a>"
 
 #:
 msgid "slack.app.upgrade.email.notification.action"
-msgstr "Om du vill uppdatera platsens anslutning till Tableau-programmet för Slack, läs <a styl"
+msgstr "Om du vill uppdatera platsens anslutning till Tableau-programmet för Slack, läs <a style="text-decoration: none; color: #E8762C;" href="https://help.tableau.com/current/online/sv-se/slack_admin.htm#update">Uppdatera Tableau-programmet för Slack</a>.  Om du har flera Tableau Cloud-platser uppdaterar du programmet för var och en av dem."
 
 #:
 msgid "slack.app.upgrade.email.notification.steps"
@@ -1973,7 +1973,7 @@ msgstr "Du får det här meddelandet eftersom du är administratör för en Tabl
 
 #:
 msgid "slack.app.upgrade.email.notification.footer.privacy"
-msgstr "Läs vår <a styl"
+msgstr "Läs vår <a style="text-decoration: none; color: #E8762C;" href="http://www.tableau.com/sv-se/privacy">integritetspolicy</a>"
 
 #:
 msgid "unifiedconsumption.tcrm.folders.private"
