@@ -201,6 +201,73 @@ def task_version():
     }
 
 
+
+def task_collect_strings():
+    
+    """Searches product code for all localization string keys"""
+    def process_code():
+
+        CODE_PATH = "tabcmd/[ec]*/**/*.py"
+        STRINGS_FILE = "tabcmd/locales/codestrings.properties"
+        STRING_FLAG = "_(\""
+        STRING_END = "\")"
+
+        lines = []
+        uniques = []
+        with open(STRINGS_FILE, "w+", encoding="utf-8") as stringfile:
+            for codefile in glob.glob(CODE_PATH):
+                print(codefile)
+                with open(codefile, encoding="utf-8") as infile:
+                    # find lines that contain a loc string in the form _("string goes here")
+                    for line in infile:
+                        i = line.find(STRING_FLAG)
+                        # include only the string itself and the quote symbols around it
+                        if (i >=0):
+                            j = line.find(STRING_END)
+                            lines.append(line[i+2:j+1])
+                            lines.append("\n")
+                           
+            stringfile.writelines(lines)
+        sort_and_filter_file(STRINGS_FILE)
+        print("strings collected in code and saved to {}".format(STRINGS_FILE))
+
+    return {
+        "actions": [process_code],
+        "verbosity": 2,
+    }
+    
+def task_enforce_strings():
+    
+    """Search loc files for each string used in code - print an error if not found
+    
+    Input: codestrings.properties.sorted file created by task_collect_strings
+    Output: console listing missing keys
+    
+    """
+    def process_code():
+        
+        locale = "de"
+          
+        STRINGS_FILE = "tabcmd/locales/codestrings.properties.sorted"
+        LOC_FILE = os.path.join("tabcmd", "locales", locale, "LC_MESSAGES", "combined.properties")
+        with open(STRINGS_FILE, "r+", encoding="utf-8") as stringfile, open(LOC_FILE, "r+", encoding="utf-8") as propsfile:
+            codestrings = stringfile.readlines()
+            translated_strings = propsfile.read()
+            for message_key in codestrings:
+                message_key = message_key.strip("\n")
+                message_key = message_key.strip("\"")
+                if message_key not in translated_strings:
+                    print("ERROR: product string not in strings files [{}]".format(message_key))
+            # print(translated_strings)
+            
+    return {
+        "actions": [process_code],
+        "verbosity": 2,
+    }
+
+    
+
+
 # local method, not exposed as a task
 def sort_and_filter_file(filename):
     uniques = []

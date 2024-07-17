@@ -48,3 +48,4 @@ site-packages
 tabcmd-dev
 workon
 test.junit.xml
+*.out
