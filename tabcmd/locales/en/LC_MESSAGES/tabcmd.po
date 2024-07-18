@@ -8,28 +8,48 @@ msgstr ""
 "Language: en"
 # Copyright (C) 2024 TABLEAU SOFTWARE, LLC, A SALESFORCE COMPANY. ALL RIGHTS RESERVED 
 #:
-msgid "tabcmd.result.already_exists.group"
-msgstr "Group called "{}" already exists"
+msgid "bad_request.detail.invalid_content_type"
+msgstr "“{0}” is not a valid content type."
 
 #:
-msgid "tabcmd.result.failed.delete.group"
-msgstr "Error deleting group from server"
+msgid "errors.bad_request.detail.generic_delete_groups_error"
+msgstr "Tableau Server could not delete group ''{0}'' on site ''{1}''."
 
 #:
-msgid "tabcmd.result.success.create_user"
-msgstr "Successfully created user: {}"
+msgid "backgrounder.notification.flowrun.failure.status"
+msgstr "Failed"
 
 #:
-msgid "tabcmd.report.users_added"
-msgstr "Number of users added: {}"
+msgid "backgrounder.notification.flowrun.writeToTdeIsDeprecating.message"
+msgstr "The output type "Tableau Data Extract (.tde)" is no longer supported."
 
 #:
-msgid "tabcmd.report.errors"
-msgstr "Error details: {}"
+msgid "get.extension.not_found"
+msgstr "You must specify a file type in the url or filename"
+
+#:
+msgid "tabcmd.find.group"
+msgstr "Finding group ''{}'' on server..."
+
+#:
+msgid "tabcmd.find.parent_project"
+msgstr "Finding parent project {0}"
+
+#:
+msgid "tabcmd.mutually_exclusive_options"
+msgstr "Cannot specify ''{0}'' and ''{1}'' in the same command"
+
+#:
+msgid "tabcmd.removeusers.server"
+msgstr "Removing users listed in {0} from the server..."
+
+#:
+msgid "tabcmd.removeusers.site"
+msgstr "Removing users listed in {0} from the site {1}..."
 
 #:
 msgid "tabcmd.report.error.user_csv.too_many_columns"
-msgstr "The file contains {} columns, but there are only {} valid columns in a user import csv file"
+msgstr "The file contains {0} columns, but there are only {1} valid columns in a user import csv file"
 
 #:
 msgid "tabcmd.report.error.user_csv.at_char"
@@ -38,78 +58,6 @@ msgstr "If a user name includes an @ character that represents anything other th
 #:
 msgid "tabcmd.report.error.user.no_spaces_in_username"
 msgstr "Username cannot contain spaces"
-
-#:
-msgid "tabcmd.report.error.generic_attribute"
-msgstr "Invalid value for {0}: {1}"
-
-#:
-msgid "tabcmd.report.error.publish_samples.expected_project"
-msgstr "publishsamples expects the specified project to exist already"
-
-#:
-msgid "tabcmd.result.failure.publish_samples"
-msgstr "Failed publishing samples to project"
-
-#:
-msgid "# hmmm prop2po doesn't do these lines with "
-msgstr "==="
-
-#:
-msgid "tabcmd.launching"
-msgstr "======================= Launching command ======================="
-
-#:
-msgid "tabcmd.find.group"
-msgstr "Finding group ''{}'' on server..."
-
-#:
-msgid "tabcmd.add.users.to_site"
-msgstr "===== Adding users listed in {0} to {1}..."
-
-#:
-msgid "tabcmd.delete.users.from_server"
-msgstr "Removing users listed in {0} from the server..."
-
-#:
-msgid "tabcmd.get.extension.not_found"
-msgstr "You must specify a file type in the url or filename"
-
-#:
-msgid "tabcmd.run_schedule.options.schedule"
-msgstr "Name of the schedule to run"
-
-#:
-msgid "dataalerts.failure.error.datasourceNotFound"
-msgstr "To Do: find this string"
-
-#:
-msgid "get.errors.invalid_content_type"
-msgstr "To Do: find this string"
-
-#:
-msgid "export.errors.requires_resource_param"
-msgstr "To Do: find this string"
-
-#:
-msgid "tabcmd.find.parent_project"
-msgstr "To Do: find this string"
-
-#:
-msgid "tabcmd.result.success.delete_user"
-msgstr "To Do: find this string"
-
-#:
-msgid "tabcmd.result.success.parsed_users"
-msgstr "To Do: find this string"
-
-#:
-msgid "tabcmd.result.failure.user"
-msgstr "To Do: find this string"
-
-#:
-msgid "tabcmd.result.success.user_actions"
-msgstr "To Do: find this string"
 
 #:
 msgid "permissions.labels.capabilities.read"

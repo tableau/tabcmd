@@ -148,6 +148,7 @@ def task_merge_properties():
 
             with open(OUTPUT_FILE, "w+", encoding="utf-8") as outfile:
                 for file in glob.glob(INPUT_FILES):
+                    print(file)
                     with open(file, encoding="utf-8") as infile:
                         outfile.write(infile.read())
                         outfile.write("\n")
@@ -173,6 +174,7 @@ def task_mo():
 
             print("writing final tabcmd.mo file")
             # build the single binary file from the .po file
+            # a number of keys are failing at the write-to-mo step. We don't use any of them so that's fine for now.
             result = subprocess.run(["python", "bin/i18n/msgfmt.py", LOC_PATH + "/tabcmd"])
             print("\n", result)
             
@@ -285,7 +287,8 @@ def sort_and_filter_file(filename):
     
     with open(filename, "r+", encoding="utf-8") as my_file:
         lines = my_file.readlines()
-        # add this back later, for now it's interfering with file diffs lines.sort()
+        # add this back later, for now it's interfering with file diffs 
+        # lines.sort()
         for line in lines:
             line = line.strip()
             # lines cannot extend over two lines. 
