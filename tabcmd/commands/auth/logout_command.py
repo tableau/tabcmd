@@ -20,6 +20,6 @@ class LogoutCommand(Server):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug(_("tabcmd.launching"))
+        logger.debug("======================== {} {} =======================".format("tabcmd", __class__.name))
         session = Session()
         session.end_session_and_clear_data()

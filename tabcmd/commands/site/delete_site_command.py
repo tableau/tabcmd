@@ -23,7 +23,7 @@ class DeleteSiteCommand(Server):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug(_("tabcmd.launching"))
+        logger.debug("======================== {} {} =======================".format("tabcmd", __class__.name))
         session = Session()
         server = session.create_session(args, logger)
         target_site: TSC.SiteItem = Server.get_site_by_name(logger, server, args.site_name_to_delete)

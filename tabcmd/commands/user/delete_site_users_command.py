@@ -26,7 +26,7 @@ class DeleteSiteUsersCommand(Server):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug(_("tabcmd.launching"))
+        logger.debug("======================== {} {} =======================".format("tabcmd", __class__.name))
         session = Session()
         server = session.create_session(args, logger)
 
@@ -45,7 +45,7 @@ class DeleteSiteUsersCommand(Server):
             try:
                 user_id = UserCommand.find_user(logger, server, user_obj.name).id
                 server.users.remove(user_id)
-                logger.debug(_("tabcmd.result.success.delete_user").format(user_obj.name, user_id))
+                logger.debug(_("").format(user_obj.name, user_id))
                 number_of_users_deleted += 1
             except Exception as e:
                 Errors.check_common_error_codes_and_explain(logger, e)

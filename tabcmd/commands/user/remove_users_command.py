@@ -23,10 +23,10 @@ class RemoveUserCommand(UserCommand):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug(_("tabcmd.launching"))
+        logger.debug("======================== {} {} =======================".format("tabcmd", __class__.name))
         session = Session()
         server = session.create_session(args, logger)
 
-        logger.info(_("tabcmd.delete.users.from_server").format(args.users.name, args.name))
+        logger.info(_("tabcmd.removeusers.server").format(args.users.name, args.name))
 
         UserCommand.act_on_users(logger, server, "removed", server.groups.remove_user, args)

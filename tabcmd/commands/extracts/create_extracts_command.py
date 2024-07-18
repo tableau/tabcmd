@@ -29,7 +29,7 @@ class CreateExtracts(Server):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug(_("tabcmd.launching"))
+        logger.debug("======================== {} {} =======================".format("tabcmd", __class__.name))
         session = Session()
         server = session.create_session(args, logger)
         logger.debug(
@@ -60,7 +60,7 @@ class CreateExtracts(Server):
         except Exception as e:
 
             if args.continue_if_exists and Errors.is_resource_conflict(e):
-                logger.info(_("tabcmd.result.already_exists").format(_("content_type.extract"), args.name))
+                logger.info(_("errors.xmlapi.already_exists").format(_("content_type.extract"), args.name))
                 return
             Errors.exit_with_error(logger, e)
 

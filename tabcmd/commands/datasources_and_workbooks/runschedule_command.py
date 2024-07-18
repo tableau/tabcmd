@@ -16,12 +16,12 @@ class RunSchedule(DatasourcesAndWorkbooks):
     @staticmethod
     def define_args(runschedule_parser):
         group = runschedule_parser.add_argument_group(title=RunSchedule.name)
-        group.add_argument("schedule", help=_("tabcmd.run_schedule.options.schedule"))
+        group.add_argument("schedule", help="Name of the schedule to run")
 
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug(_("tabcmd.launching"))
+        logger.debug("======================== {} {} =======================".format("tabcmd", __class__.name))
         session = Session()
         server = session.create_session(args, logger)
         schedule = DatasourcesAndWorkbooks.get_items_by_name(logger, server.schedules, args.schedule)[0]

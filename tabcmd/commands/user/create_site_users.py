@@ -29,7 +29,7 @@ class CreateSiteUsersCommand(UserCommand):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug(_("tabcmd.launching"))
+        logger.debug("======================== {} {} =======================".format("tabcmd", __class__.name))
         session = Session()
         server = session.create_session(args, logger)
         number_of_users_listed = 0
@@ -40,7 +40,7 @@ class CreateSiteUsersCommand(UserCommand):
 
         UserCommand.validate_file_for_import(args.filename, logger, detailed=True, strict=args.require_all_valid)
 
-        logger.info(_("tabcmd.add.users.to_site").format(args.filename.name, creation_site))
+        logger.info(_("addusers.status").format(args.filename.name, creation_site))
         user_obj_list = UserCommand.get_users_from_file(args.filename, logger)
         logger.info(_("session.monitorjob.percent_complete").format(0))
         error_list = []
@@ -52,7 +52,7 @@ class CreateSiteUsersCommand(UserCommand):
                     user_obj.auth_setting = args.auth_type
                 number_of_users_listed += 1
                 result = server.users.add(user_obj)
-                logger.info(_("tabcmd.result.success.create_user").format(user_obj.name))
+                logger.info(_("common.output.succeeded").format(user_obj.name))
                 number_of_users_added += 1
             except TSC.ServerResponseError as e:
                 logger.debug(e)

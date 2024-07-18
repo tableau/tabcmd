@@ -25,7 +25,7 @@ class CreateSiteCommand(Server):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug(_("tabcmd.launching"))
+        logger.debug("======================== {} {} =======================".format("tabcmd", __class__.name))
         session = Session()
         server = session.create_session(args, logger)
         admin_mode = "ContentAndUsers"  # default: allow site admins to manage users

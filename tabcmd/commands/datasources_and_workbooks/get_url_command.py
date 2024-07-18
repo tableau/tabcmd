@@ -40,7 +40,7 @@ class GetUrl(DatasourcesAndWorkbooks):
         # A Tableau datasource is returned as a TDS if it connects to a live connection,
         # or a TDSX if it uses an extract.
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug(_("tabcmd.launching"))
+        logger.debug("======================== {} {} =======================".format("tabcmd", __class__.name))
         session = Session()
         server = session.create_session(args, logger)
         if " " in args.url:
@@ -63,17 +63,16 @@ class GetUrl(DatasourcesAndWorkbooks):
         for content_type in GetUrl.valid_content_types:
             if url.find(content_type) == 0:
                 return content_type
-        Errors.exit_with_error(logger, message=_("get.errors.invalid_content_type").format(url))
+        Errors.exit_with_error(logger, message=_("bad_request.detail.invalid_content_type").format(url))
 
     @staticmethod
     def explain_expected_url(logger, url: str, command: str):
         view_example = "/views/<workbookname>/<viewname>[.ext]"
         wb_example = "/workbooks/<workbookname>[.ext]"
         ds_example = "/datasources/<datasourcename[.ext]"
-        # todo when strings are updated # message:str = _("export.errors.requires_resource_param").format(
         message = (
-            "The ''{0}'' command requires a resource path in a specific format."
-            "Given: {1}. Accepted values: {2}, {3}, {4}".format(command, url, view_example, wb_example, ds_example)
+            _("export.errors.requires_workbook_view_param").format(command) +
+            "Given: {1}. Accepted values: {2}, {3}, {4}".format(url, view_example, wb_example, ds_example)
         )
         Errors.exit_with_error(logger, message)
 
@@ -90,13 +89,13 @@ class GetUrl(DatasourcesAndWorkbooks):
             if backup is not None:
                 type_of_file = backup
             else:
-                Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name))
+                Errors.exit_with_error(logger, _("get.extension.not_found").format(file_name))
 
         logger.debug("filetype: {}".format(type_of_file))
         if type_of_file in ["pdf", "csv", "png", "twb", "twbx", "tdsx", "tds"]:
             return type_of_file
 
-        Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name))
+        Errors.exit_with_error(logger, _("get.extension.not_found").format(file_name))
 
     @staticmethod
     def get_file_extension(path):
@@ -167,7 +166,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             elif file_type == "csv":
                 return GetUrl.generate_csv(logger, server, args, view_url)
         # all the known options above will return early. If we get here we are confused.
-        Errors.exit_with_error(logger, message=_("tabcmd.get.extension.not_found"))
+        Errors.exit_with_error(logger, message=_("get.extension.not_found"))
 
     @staticmethod
     def generate_pdf(logger, server, args, view_url):
