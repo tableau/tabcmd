@@ -29,7 +29,7 @@ class CreateUsersCommand(UserCommand):
     @staticmethod
     def run_command(args):
         logger = log(__class__.__name__, args.logging_level)
-        logger.debug("======================== {} {} =======================".format("tabcmd", __class__.name))
+        logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
         number_of_users_listed = 0
