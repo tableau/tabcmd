@@ -15,47 +15,93 @@ doit list # see available tasks
 FYI: to read mo and po files use https://poedit.net/download
 """
 
-    
 
-def task_encode_properties():
+def task_properties():
+    
+    
     """
-    For all languages: Read properties files with unicode like "Schlie\u00dfen", save it back as "Schließen"
+    For all languages: a) Combines all existing properties files for a language into a single file called 'combined.properties'
+    and b) sorts that into an alphabetical list of unique properties in combined.properties.sorted
+    """
+
+    def merge():
+        for current_locale in LOCALES:
+
+            LOCALE_PATH = os.path.join("tabcmd", "locales", current_locale)
+            INPUT_FILES = os.path.join(LOCALE_PATH, "*.properties")
+            OUTPUT_FILE = os.path.join(LOCALE_PATH, "LC_MESSAGES", "combined.properties")
+
+            with open(OUTPUT_FILE, "w+", encoding="utf-8") as outfile:
+                for file in glob.glob(INPUT_FILES):
+                    print(file)
+                    with open(file, encoding="utf-8") as infile:
+                        outfile.write(infile.read())
+                        outfile.write("\n")
+            print("Combined strings for {}".format(current_locale))
+            sort_and_uniquify_file(OUTPUT_FILE)
+
+
+    
+    """
+    Delete strings that aren't used in the code, to keep size down and not waste time fixing unused strings
+    Input: combined.properties.sorted
+    Output: filtered.properties
+    """
+    def filter():
+        REF_FILE = os.path.join("tabcmd", "locales", "codestrings.properties")
+        for current_locale in LOCALES:
+            LOCALE_PATH = os.path.join("tabcmd", "locales", current_locale)
+            IN_FILE = os.path.join(LOCALE_PATH, "LC_MESSAGES", "combined.properties")
+            OUT_FILE = os.path.join(LOCALE_PATH, "LC_MESSAGES", "filtered.properties")
+            
+            with open(REF_FILE, "r", encoding="utf-8") as ref:
+                required = ref.read()
+                with open(IN_FILE, "r", encoding="utf-8") as infile, open(OUT_FILE, "w+", encoding="utf-8") as outfile:
+                    for line in infile.readlines():
+                        key=line.split("=")[0]
+                        if key in required:
+                            outfile.writelines(line)
+                            
+                            
+            print("Filtered strings for {}".format(current_locale))
+    
+    """
+    For all languages: Read filtered.properties files with unicode like "Schlie\u00dfen", save it back as "Schließen"
     requires: pip install ftfy
     help: https://ftfy.readthedocs.io/
     
-    Inputs: locales/*_[locale]/LC_MESSAGES/combined.properties files - all in the top level folder for ease of importing them
+    Inputs: locales/*_[locale]/LC_MESSAGES/filtered.properties files
     Output: (generated clean each run) locales/[locale]/LC_MESSAGES/transcoded.properties file
-    This should NOT edit the input files, therefore it should be idempotent.
     """
 
-    def process_locales():
+    def encode():
         for current_locale in LOCALES:
             # I'm not sure why we were varying the locale before, but this seems to work fine
             encoding = "utf-8"
 
             LOCALE_PATH = os.path.join("tabcmd", "locales", current_locale, "LC_MESSAGES")
-            INPUT_FILE = os.path.join(LOCALE_PATH, "combined.properties.sorted")
+            INPUT_FILE = os.path.join(LOCALE_PATH, "filtered.properties")
             OUTPUT_FILE = os.path.join(LOCALE_PATH, "transcoded.properties")
-            print("Collecting strings for " + current_locale)
+            print("Encoding strings for " + current_locale)
             try:
                 with open(INPUT_FILE, "r", encoding=encoding, errors='backslashreplace') as infile:
                     data = infile.read()
                 # now that we have read in the data properly encoded, fix the \u00fc characters and save as utf-8
                 with open(OUTPUT_FILE, "w", encoding="utf-8", errors='backslashreplace') as outfile:
                     outfile.write(ftfy.fixes.decode_escapes(data))
-                print("Done!")
             except Exception as e:
                 print("!!!!failed to collect strings for {}".format(current_locale))
                 print(e)
 
+
     return {
-        "actions": [process_locales],
+        "actions": [merge, filter, encode],
         "verbosity": 2,
     }
 
 def task_po():
     """
-    For all languages: generate a .po file from each LC_MESSAGES/combined.properties file (these are utf-8)
+    For all languages: generate a .po file from each LC_MESSAGES/transcoded.properties file (these are utf-8)
     This is idempotent and can be re-run safely
     """
 
@@ -105,10 +151,13 @@ def task_po():
                 except Exception as e:
                     print("run for {} failed with exception".format(current_locale))
                     print("see log file {}".format(LOG_FILE))
+                    exit(1)
         
                 if not result.returncode == 0:
                     print("FAILED")
                     print("see log file {}".format(LOG_FILE))
+                    exit(1)
+        print("Done")            
 
     return {
         "actions": [process_locales],
@@ -116,12 +165,15 @@ def task_po():
     }
 
 
+# clean: all we need to keep are the provided translation.properties files from the monolith, at locales/[current_locale]
+# and the final tabcmd.mo files in LC_MESSAGES generated by 
+# >doit properties po mo
 def task_clean_all():
-    """For all languages: removes all generated artifacts (.po, .mo) which source from properties files."""
+    """For all languages: removes all generated intermediate files (properties, po) from the loc build."""
 
     def process_locales():
         for current_locale in LOCALES:
-            LOC_PATH = os.path.join("tabcmd", "locales", current_locale, "LC_MESSAGES", "*")
+            LOC_PATH = os.path.join("tabcmd", "locales", current_locale, "LC_MESSAGES", "*.p*")
             for file in glob.glob(LOC_PATH):
                 print("deleting {}".format(os.path.basename(file)))
                 try:
@@ -133,60 +185,57 @@ def task_clean_all():
         "verbosity": 2,
     }
 
-
-def task_merge_properties():
-    """
-    For all languages: Combines all existing properties files for a language into a single file called 'combined.properties'.
-    """
-
-    def process_locales():
-        for current_locale in LOCALES:
-
-            LOCALE_PATH = os.path.join("tabcmd", "locales", current_locale)
-            INPUT_FILES = os.path.join(LOCALE_PATH, "*.properties")
-            OUTPUT_FILE = os.path.join(LOCALE_PATH, "LC_MESSAGES", "combined.properties")
-
-            with open(OUTPUT_FILE, "w+", encoding="utf-8") as outfile:
-                for file in glob.glob(INPUT_FILES):
-                    print(file)
-                    with open(file, encoding="utf-8") as infile:
-                        outfile.write(infile.read())
-                        outfile.write("\n")
-            print("Combined strings for {}".format(current_locale))
-            sort_and_filter_file(OUTPUT_FILE)
-
-    return {
-        "actions": [process_locales],
-        "verbosity": 2,
-    }
-
-
 def task_mo():
     """
     For all languages: Processes the tabcmd.po file to produce a final tabcmd.mo file for each language
     Uses msgfmt.py from gettext, which is copied locally into the repo
     """
 
-    def process_locales():
+    def generate_mo():
+        print("\n** Generate all .mo files from tabcmd.po")
         for current_locale in LOCALES:
 
             LOC_PATH = "tabcmd/locales/" + current_locale + "/LC_MESSAGES"
 
-            print("writing final tabcmd.mo file")
+            print("\twriting final {}/tabcmd.mo file".format(current_locale))
             # build the single binary file from the .po file
             # a number of keys are failing at the write-to-mo step. We don't use any of them so that's fine for now.
             result = subprocess.run(["python", "bin/i18n/msgfmt.py", LOC_PATH + "/tabcmd"])
-            print("\n", result)
+            print(result)
+        print("\n")
             
-            
-        print("it sure would be nice if there was some automated way to validate that I got a good .mo filedoit ")
+    
+    import gettext
+    """
+    This calls gettext directly to imitate what we do when the program actually starts up
+    It's the most reliable way to actually verify that the .mo file works
+    e.g typical error: charset value is not set in .mo header
+    BUT it still doesn't guarantee that the packaging is right, so you still have to 
+    actually package and then run the app
+    """
+    def check_mo():
+        print("\n** Validate all generated .mo files")
+        for current_locale in LOCALES:
+            LANG_DIR = os.path.join("tabcmd", "locales")
+            LOC_DIR = os.path.join(LANG_DIR, current_locale, "LC_MESSAGES")
+            MO_FILE = os.path.join(LOC_DIR, "tabcmd.mo")
+            domain = "tabcmd"
+            print("\tloading {} file to validate".format(MO_FILE))
+            try:
+                with open(MO_FILE, 'rb') as fp:
+                    print("\topened file - now calling translate {}".format(current_locale))
+                    language: gettext.NullTranslations = gettext.translation(domain, LANG_DIR, languages=[current_locale])
+                    language.install()
+                    _ = language.gettext
+                    print(_("common.output.succeeded"))
+            except Exception as e:
+                print(e)
 
     return {
-        "actions": [process_locales],
+        "actions": [generate_mo, check_mo],
         "verbosity": 2,
     }
-
-
+     
 def task_version():
 
     """Generates a metadata info file with current version to be bundled by pyinstaller"""
@@ -213,9 +262,7 @@ def task_version():
         "verbosity": 2,
     }
 
-
-
-def task_collect_strings():
+def task_strings():
     
     """Searches product code for all localization string keys"""
     def process_code():
@@ -226,7 +273,6 @@ def task_collect_strings():
         STRING_END = "\")"
 
         lines = []
-        uniques = []
         with open(STRINGS_FILE, "w+", encoding="utf-8") as stringfile:
             for codefile in glob.glob(CODE_PATH):
                 print(codefile)
@@ -241,27 +287,21 @@ def task_collect_strings():
                             lines.append("\n")
                            
             stringfile.writelines(lines)
-        sort_and_filter_file(STRINGS_FILE)
-        print("strings collected in code and saved to {}".format(STRINGS_FILE))
+        print("{} strings collected from code and saved to {}".format(len(lines), STRINGS_FILE))
+        sort_and_uniquify_file(STRINGS_FILE)
 
-    return {
-        "actions": [process_code],
-        "verbosity": 2,
-    }
-    
-def task_enforce_strings():
-    
+
     """Search loc files for each string used in code - print an error if not found
     
-    Input: codestrings.properties.sorted file created by task_collect_strings
+    Input: codestrings.properties file created by task_collect_strings
     Output: console listing missing keys
     
     """
-    def process_code():
+    def enforce_strings_present():
         
         locale = "de"
-          
-        STRINGS_FILE = "tabcmd/locales/codestrings.properties.sorted"
+        print("checking code strings against [de] as an arbitrary choice")
+        STRINGS_FILE = "tabcmd/locales/codestrings.properties"
         LOC_FILE = os.path.join("tabcmd", "locales", locale, "LC_MESSAGES", "combined.properties")
         with open(STRINGS_FILE, "r+", encoding="utf-8") as stringfile, open(LOC_FILE, "r+", encoding="utf-8") as propsfile:
             codestrings = stringfile.readlines()
@@ -271,24 +311,21 @@ def task_enforce_strings():
                 message_key = message_key.strip("\"")
                 if message_key not in translated_strings:
                     print("ERROR: product string not in strings files [{}]".format(message_key))
-            # print(translated_strings)
-            
+        print("Done")
+
     return {
-        "actions": [process_code],
+        "actions": [process_code, enforce_strings_present],
         "verbosity": 2,
     }
 
-    
-
 
 # local method, not exposed as a task
-def sort_and_filter_file(filename):
+def sort_and_uniquify_file(filename):
     uniques = []
     
     with open(filename, "r+", encoding="utf-8") as my_file:
         lines = my_file.readlines()
-        # add this back later, for now it's interfering with file diffs 
-        # lines.sort()
+        lines.sort()
         for line in lines:
             line = line.strip()
             # lines cannot extend over two lines. 
@@ -299,10 +336,8 @@ def sort_and_filter_file(filename):
                 print("prop2po will not like this line. Discarding [{}]".format(line))
             elif not line in uniques:
                 uniques.append(line + "\n")
-                
-    new_file_name = filename + ".sorted"
-    with open(new_file_name, "w+", encoding="utf-8") as new_file:
+        
         for line in uniques:
-            new_file.write(line)
+            my_file.write(line)
             
-    print("Saved {} sorted unique lines to {}".format(len(uniques), new_file_name))
+    print("Saved {} sorted unique lines to {}".format(len(uniques), filename))
