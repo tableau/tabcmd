@@ -24,14 +24,15 @@ def to_po(source, destination, encoding, language, project, copyright):
     year = datetime.now().strftime('%Y')
     header = """msgid ""
 msgstr ""
-"MIME-Version: 1.0"
-"Content-Type: text/plain; charset={encoding}"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: prop2po"
-"Project-Id-Version: {project}"
-"Language: {language}"
+"MIME-Version: 1.0\\n\\n"
+"Content-Type: text/plain; charset={encoding}\\n\\n"
+"Content-Transfer-Encoding: 8bit\\n"
+"X-Generator: prop2po\\n"
+"Project-Id-Version: {project}\\n"
+"Language: {language}\\n"
 # Copyright (C) {year} {copyright} 
 """
+ 
     lines = source.readlines()
     destination.write(header.format(
         language=language,
