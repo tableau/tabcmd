@@ -70,10 +70,9 @@ class GetUrl(DatasourcesAndWorkbooks):
         view_example = "/views/<workbookname>/<viewname>[.ext]"
         wb_example = "/workbooks/<workbookname>[.ext]"
         ds_example = "/datasources/<datasourcename[.ext]"
-        message = (
-            _("export.errors.requires_workbook_view_param").format(command) +
-            "Given: {1}. Accepted values: {2}, {3}, {4}".format(url, view_example, wb_example, ds_example)
-        )
+        message = _("export.errors.requires_workbook_view_param").format(
+            command
+        ) + "Given: {0}. Accepted values: {1}, {2}, {3}".format(url, view_example, wb_example, ds_example)
         Errors.exit_with_error(logger, message)
 
     @staticmethod

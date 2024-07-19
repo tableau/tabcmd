@@ -53,10 +53,10 @@ def set_client_locale(lang: str = "", logger=None) -> Optional[Callable]:
 """Get absolute path to resource, works for unbundled (e.g dev) and when bundled by PyInstaller"""
 # https://stackoverflow.com/questions/7674790/bundling-data-files-with-pyinstaller-onefile/13790741#13790741
 def define_locale_dir(logger):
-    
+
     # sys._MEIPASS will only exist in bundled pyinstaller exe,
-    if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
-        logger.debug('Application is running in an executable bundle')
+    if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
+        logger.debug("Application is running in an executable bundle")
         """ to debug pyinstaller file bundling, try something like this example debug line"""
         # logger.debug(listdir(sys._MEIPASS + "/tabcmd"))
         # logger.debug( 'sys.argv[0] is ' + sys.argv[0] )
@@ -66,7 +66,7 @@ def define_locale_dir(logger):
         # in unbundled src code we take the location of the current file
         # and go 2 dirs up so that the relative path /tabcmd/locales is still correct
         base_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")
-        
+
     relative_path = os.path.join(".", "tabcmd", "locales")
     locale_dir = os.path.join(base_path, relative_path)
     logger.debug("Checking for language resources at " + locale_dir)

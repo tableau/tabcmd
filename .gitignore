@@ -41,6 +41,9 @@ pytest.xml
 # doit
 .doit.*
 
+# localization intermediate files
+*.po
+
 # venv
 site-packages
 

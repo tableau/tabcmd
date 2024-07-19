@@ -284,10 +284,9 @@ class UserCommand(Server):
                 logger.debug("{} user {} ({})".format(action_name, username, user_id))
             except TSC.ServerResponseError as e:
                 number_of_errors += 1
-                error_list.append(
-                    _("importcsvsummary.error.line").format(line_no, username, "{}: {}".format(e.code, e.detail))
-                )
-                logger.debug(error_list.index(len(error_list)))
+                new_error =  _("importcsvsummary.error.line").format(line_no, username, "{}: {}".format(e.code, e.detail))
+                error_list.append(new_error)
+                logger.debug(new_error)
                 continue
 
             try:

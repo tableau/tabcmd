@@ -85,7 +85,7 @@ class Errors:
         if type(exception) == requests.exceptions.ConnectionError:
             print(exception)
             exit(1)
-            
+
         if Errors.is_expired_session(exception):
             # catch this one so we can attempt to refresh the session before telling them it failed
             print(_("session.errors.session_expired"))
