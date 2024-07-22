@@ -21,9 +21,38 @@ def task_properties():
     """
     For all languages: a) Combines all existing properties files for a language into a single file called 'combined.properties'
     and b) sorts that into an alphabetical list of unique properties in combined.properties.sorted
+    I've also included tasks that find all strings in code so we can skip bundling messages that aren't ever used
     """
 
+    """Searches product code for all localization string keys"""
+
+    def process_code():
+        print("\n***** Collect all string keys used in code")
+
+        CODE_PATH = "tabcmd/[ec]*/**/*.py"
+        STRINGS_FILE = "tabcmd/locales/codestrings.properties"
+        STRING_FLAG = '_("'
+        STRING_END = '")'
+
+        lines = set([])
+        with open(STRINGS_FILE, "w+", encoding="utf-8") as stringfile:
+            for codefile in glob.glob(CODE_PATH):
+                with open(codefile, encoding="utf-8") as infile:
+                    # find lines that contain a loc string in the form _("string goes here")
+                    for line in infile:
+                        i = line.find(STRING_FLAG)
+                        # include only the string itself and the quote symbols around it
+                        if i >= 0:
+                            j = line.find(STRING_END)
+                            lines.add(line[i + 3 : j] + "\n")
+
+            sorted_lines = sorted(lines)
+            stringfile.writelines(sorted_lines)
+
+        print("{} strings collected from code and saved to {}".format(len(lines), STRINGS_FILE))
+
     def merge():
+        print("\n***** Combine our multiple input properties files into one .properties file per locale")
         for current_locale in LOCALES:
 
             LOCALE_PATH = os.path.join("tabcmd", "locales", current_locale)
@@ -32,12 +61,16 @@ def task_properties():
 
             with open(OUTPUT_FILE, "w+", encoding="utf-8") as outfile:
                 for file in glob.glob(INPUT_FILES):
-                    print(file)
                     with open(file, encoding="utf-8") as infile:
-                        outfile.write(infile.read())
+                        input = infile.read()
+                        # remove curly quotes, not expected in command line text
+                        import re
+
+                        changed_input = re.sub("[“„“]", "'", input)
+                        outfile.write(changed_input)
                         outfile.write("\n")
-            print("Combined strings for {}".format(current_locale))
-            sort_and_uniquify_file(OUTPUT_FILE)
+            print("Combined strings for {} to {}".format(current_locale, OUTPUT_FILE))
+            uniquify_file(OUTPUT_FILE)
 
     """
     Delete strings that aren't used in the code, to keep size down and not waste time fixing unused strings
@@ -46,15 +79,17 @@ def task_properties():
     """
 
     def filter():
+        print("\n***** Remove strings in properties that are never used in code")
         REF_FILE = os.path.join("tabcmd", "locales", "codestrings.properties")
         for current_locale in LOCALES:
             LOCALE_PATH = os.path.join("tabcmd", "locales", current_locale)
             IN_FILE = os.path.join(LOCALE_PATH, "LC_MESSAGES", "combined.properties")
             OUT_FILE = os.path.join(LOCALE_PATH, "LC_MESSAGES", "filtered.properties")
 
-            with open(REF_FILE, "r", encoding="utf-8") as ref:
+            with open(REF_FILE, "r+", encoding="utf-8") as ref:
                 required = ref.read()
-                with open(IN_FILE, "r", encoding="utf-8") as infile, open(OUT_FILE, "w+", encoding="utf-8") as outfile:
+
+                with open(IN_FILE, "r+", encoding="utf-8") as infile, open(OUT_FILE, "w+", encoding="utf-8") as outfile:
                     for line in infile.readlines():
                         key = line.split("=")[0]
                         if key in required:
@@ -62,43 +97,41 @@ def task_properties():
 
             print("Filtered strings for {}".format(current_locale))
 
-    """
-    For all languages: Read filtered.properties files with unicode like "Schlie\u00dfen", save it back as "Schließen"
-    requires: pip install ftfy
-    help: https://ftfy.readthedocs.io/
-    
-    Inputs: locales/*_[locale]/LC_MESSAGES/filtered.properties files
-    Output: (generated clean each run) locales/[locale]/LC_MESSAGES/transcoded.properties file
+    """Remove """
+
+    """Search loc files for each string used in code - print an error if not found.
+    Input: codestrings.properties file created by task_collect_strings
+    Output: console listing missing keys    
     """
 
-    def encode():
-        for current_locale in LOCALES:
-            # I'm not sure why we were varying the locale before, but this seems to work fine
-            encoding = "utf-8"
+    def enforce_strings_present():
 
-            LOCALE_PATH = os.path.join("tabcmd", "locales", current_locale, "LC_MESSAGES")
-            INPUT_FILE = os.path.join(LOCALE_PATH, "filtered.properties")
-            OUTPUT_FILE = os.path.join(LOCALE_PATH, "transcoded.properties")
-            print("Encoding strings for " + current_locale)
-            try:
-                with open(INPUT_FILE, "r", encoding=encoding, errors="backslashreplace") as infile:
-                    data = infile.read()
-                # now that we have read in the data properly encoded, fix the \u00fc characters and save as utf-8
-                with open(OUTPUT_FILE, "w", encoding="utf-8", errors="backslashreplace") as outfile:
-                    outfile.write(ftfy.fixes.decode_escapes(data))
-            except Exception as e:
-                print("!!!!failed to collect strings for {}".format(current_locale))
-                print(e)
+        print("\n***** Verify that all string keys used in code are present in string properties")
+        STRINGS_FILE = "tabcmd/locales/codestrings.properties"
+        uniquify_file(STRINGS_FILE)
+        with open(STRINGS_FILE, "r+", encoding="utf-8") as stringfile:
+            codestrings = stringfile.readlines()
+            for locale in LOCALES:
+                LOC_FILE = os.path.join("tabcmd", "locales", locale, "LC_MESSAGES", "filtered.properties")
+                print("checking language {}".format(locale))
+                with open(LOC_FILE, "r+", encoding="utf-8") as propsfile:
+                    translated_strings = propsfile.read()
+                    for message_key in codestrings:
+                        message_key = message_key.strip("\n")
+                        message_key = message_key.strip('"')
+                        if message_key not in translated_strings:
+                            print("ERROR: product string not in strings files [{}]".format(message_key))
+        print("Done")
 
     return {
-        "actions": [merge, filter, encode],
+        "actions": [process_code, merge, filter, enforce_strings_present],
         "verbosity": 2,
     }
 
 
 def task_po():
     """
-    For all languages: generate a .po file from each LC_MESSAGES/transcoded.properties file (these are utf-8)
+    For all languages: generate a .po file from each LC_MESSAGES/filtered.properties file (these are utf-8)
     This is idempotent and can be re-run safely
     """
 
@@ -111,11 +144,12 @@ def task_po():
     """
 
     def process_locales():
+        print("\n***** Validate all .po files from filtered.properties")
         subprocess.run(["python", "bin/i18n/prop2po.py", "--help"])
         for current_locale in LOCALES:
 
             LOC_PATH = os.path.join("tabcmd", "locales", current_locale, "LC_MESSAGES")
-            PROPS_FILE = os.path.join(LOC_PATH, "transcoded.properties")
+            PROPS_FILE = os.path.join(LOC_PATH, "filtered.properties")
             PO_FILE = os.path.join(LOC_PATH, "tabcmd.po")
             LOG_FILE = os.path.join(LOC_PATH, "prop2po.out")
             with open(LOG_FILE, "w+", encoding="utf-8") as logfile:
@@ -131,7 +165,7 @@ def task_po():
                             "--project",
                             "Tabcmd 2",
                             "--copyright",
-                            "TABLEAU SOFTWARE, LLC, A SALESFORCE COMPANY. ALL RIGHTS RESERVED",
+                            "©2024 Salesforce, Inc.",
                             PROPS_FILE,
                             PO_FILE,
                         ],
@@ -156,24 +190,44 @@ def task_po():
     }
 
 
-# clean: all we need to keep are the provided translation.properties files from the monolith, at locales/[current_locale]
-# and the final tabcmd.mo files in LC_MESSAGES generated by
-# >doit properties po mo
 def task_clean_all():
-    """For all languages: removes all generated intermediate files (properties, po) from the loc build."""
 
-    def process_locales():
+    """remove all generated files such as .po, .out, and pdf, csv etc that are not in the assets folder"""
+
+    def clean_output_files():
+        print("todo - delete pdf, csv, .twbx, .hyper etc that have been produced in tests")
+
+    """For all languages: removes all generated intermediate files (properties, po) from the loc build.
+    all we need to keep are the provided translation.properties files from the monolith, at locales/[current_locale]
+    and the final tabcmd.mo files in LC_MESSAGES generated by
+    >doit properties po mo
+    """
+
+    def clean_string_files():
         for current_locale in LOCALES:
-            LOC_PATH = os.path.join("tabcmd", "locales", current_locale, "LC_MESSAGES", "*.p*")
-            for file in glob.glob(LOC_PATH):
-                print("deleting {}".format(os.path.basename(file)))
-                try:
-                    os.remove(file)
-                except OSError:
-                    pass
+            FILESETS = [
+                os.path.join("tabcmd", "locales", current_locale, "LC_MESSAGES", "*.properties*"),
+                os.path.join("tabcmd", "locales", current_locale, "LC_MESSAGES", "*.po*"),
+                os.path.join("tabcmd", "locales", current_locale, "LC_MESSAGES", "*.out*"),
+            ]
+            for PATH in FILESETS:
+                for file in glob.glob(PATH):
+                    print("deleting {}".format(os.path.abspath(file)))
+                    try:
+                        os.remove(file)
+                    except OSError:
+                        pass
+
+        STRING_FILES = os.path.join("tabcmd", "locales", "codestrings.*")
+        for file in glob.glob(STRING_FILES):
+            print("deleting {}".format(os.path.abspath(file)))
+            try:
+                os.remove(file)
+            except OSError:
+                pass
 
     return {
-        "actions": [process_locales],
+        "actions": [clean_string_files, clean_output_files],
         "verbosity": 2,
     }
 
@@ -185,7 +239,7 @@ def task_mo():
     """
 
     def generate_mo():
-        print("\n** Generate all .mo files from tabcmd.po")
+        print("\n***** Generate all .mo files from tabcmd.po")
         for current_locale in LOCALES:
 
             LOC_PATH = "tabcmd/locales/" + current_locale + "/LC_MESSAGES"
@@ -208,7 +262,7 @@ def task_mo():
     """
 
     def check_mo():
-        print("\n** Validate all generated .mo files")
+        print("\n****** Validate all generated .mo files")
         for current_locale in LOCALES:
             LANG_DIR = os.path.join("tabcmd", "locales")
             LOC_DIR = os.path.join(LANG_DIR, current_locale, "LC_MESSAGES")
@@ -260,84 +314,28 @@ def task_version():
     }
 
 
-def task_strings():
-
-    """Searches product code for all localization string keys"""
-
-    def process_code():
-
-        CODE_PATH = "tabcmd/[ec]*/**/*.py"
-        STRINGS_FILE = "tabcmd/locales/codestrings.properties"
-        STRING_FLAG = '_("'
-        STRING_END = '")'
-
-        lines = []
-        with open(STRINGS_FILE, "w+", encoding="utf-8") as stringfile:
-            for codefile in glob.glob(CODE_PATH):
-                print(codefile)
-                with open(codefile, encoding="utf-8") as infile:
-                    # find lines that contain a loc string in the form _("string goes here")
-                    for line in infile:
-                        i = line.find(STRING_FLAG)
-                        # include only the string itself and the quote symbols around it
-                        if i >= 0:
-                            j = line.find(STRING_END)
-                            lines.append(line[i + 2 : j + 1])
-                            lines.append("\n")
-
-            stringfile.writelines(lines)
-        print("{} strings collected from code and saved to {}".format(len(lines), STRINGS_FILE))
-        sort_and_uniquify_file(STRINGS_FILE)
-
-    """Search loc files for each string used in code - print an error if not found
-    
-    Input: codestrings.properties file created by task_collect_strings
-    Output: console listing missing keys
-    
-    """
-
-    def enforce_strings_present():
-
-        locale = "de"
-        print("checking code strings against [de] as an arbitrary choice")
-        STRINGS_FILE = "tabcmd/locales/codestrings.properties"
-        LOC_FILE = os.path.join("tabcmd", "locales", locale, "LC_MESSAGES", "combined.properties")
-        with open(STRINGS_FILE, "r+", encoding="utf-8") as stringfile, open(
-            LOC_FILE, "r+", encoding="utf-8"
-        ) as propsfile:
-            codestrings = stringfile.readlines()
-            translated_strings = propsfile.read()
-            for message_key in codestrings:
-                message_key = message_key.strip("\n")
-                message_key = message_key.strip('"')
-                if message_key not in translated_strings:
-                    print("ERROR: product string not in strings files [{}]".format(message_key))
-        print("Done")
-
-    return {
-        "actions": [process_code, enforce_strings_present],
-        "verbosity": 2,
-    }
-
-
 # local method, not exposed as a task
-def sort_and_uniquify_file(filename):
-    uniques = []
+def uniquify_file(filename):
+    uniques = set([])
 
-    with open(filename, "r+", encoding="utf-8") as my_file:
+    with open(filename, "r", encoding="utf-8") as my_file:
+        my_file.seek(0)
         lines = my_file.readlines()
-        lines.sort()
         for line in lines:
             line = line.strip()
+            line = line.strip('"')
             # lines cannot extend over two lines.
             line = line.replace("\\n", "  ")
             if line == "":
                 continue
             elif "=" not in line and "codestrings" not in filename:
                 print("prop2po will not like this line. Discarding [{}]".format(line))
-            elif not line in uniques:
-                uniques.append(line + "\n")
+                continue
+            else:
+                uniques.add(line + "\n")
 
+    with open(filename, "w", encoding="utf-8") as my_file:
+        my_file.truncate()
         for line in uniques:
             my_file.write(line)
 
