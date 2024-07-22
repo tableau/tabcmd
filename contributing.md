@@ -118,8 +118,8 @@ e.g for Windows
 produces dist/windows/tabcmd.exe
 To run the newly created executable, from a console window in the same directory as the file tabcmd.py:
 
-> dist/windows/tabcmd/tabcmd.exe --help
-> dist\windows\tabcmd.exe publish --country FR --language FR cookie.twbx
+> dist/windows/tabcmd.exe --help
+> dist/windows/tabcmd.exe publish --country FR --language FR cookie.twbx
 
 To investigate what's packaged in the executable, use https://pyinstxtractor-web.netlify.app/
 
