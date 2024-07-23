@@ -66,7 +66,7 @@ def task_properties():
                         # U201C, U201D and U201E - opening quotes, German opening quotes, and closing quotes
                         import re
 
-                        changed_input = re.sub(u'[\u201c\u201d\u201e]', input)
+                        changed_input = re.sub("[\u201c\u201d\u201e]", input)
                         # some strings for some reason use two single quotes as a double quote. Reduce to one single quote.
                         re_changed_input = re.sub("''", "'", changed_input)
                         outfile.write(re_changed_input)
