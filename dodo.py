@@ -65,6 +65,7 @@ def task_properties():
                         # remove curly quotes that are not expected in command line text/may not work for some users
                         # these may look the same but represent U201C, U201D and U201E - opening quotes, German opening quotes, and closing quotes
                         import re
+
                         changed_input = re.sub("[“„“]", "'", input)
                         # some strings for some reason use two single quotes as a double quote. Reduce to one single quote.
                         re_changed_input = re.sub("''", "'", changed_input)
