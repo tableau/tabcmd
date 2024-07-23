@@ -1,7 +1,6 @@
 import glob
 import os
 import subprocess
-import ftfy
 import setuptools_scm
 
 LOCALES = ["en", "de", "es", "fr", "ga", "it", "pt", "sv", "ja", "ko", "zh"]
@@ -63,11 +62,13 @@ def task_properties():
                 for file in glob.glob(INPUT_FILES):
                     with open(file, encoding="utf-8") as infile:
                         input = infile.read()
-                        # remove curly quotes, not expected in command line text
+                        # remove curly quotes that are not expected in command line text/may not work for some users
+                        # these may look the same but represent U201C, U201D and U201E - opening quotes, German opening quotes, and closing quotes
                         import re
-
                         changed_input = re.sub("[“„“]", "'", input)
-                        outfile.write(changed_input)
+                        # some strings for some reason use two single quotes as a double quote. Reduce to one single quote.
+                        re_changed_input = re.sub("''", "'", changed_input)
+                        outfile.write(re_changed_input)
                         outfile.write("\n")
             print("Combined strings for {} to {}".format(current_locale, OUTPUT_FILE))
             uniquify_file(OUTPUT_FILE)
