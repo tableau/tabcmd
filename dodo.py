@@ -208,9 +208,9 @@ def task_clean_all():
     def clean_string_files():
         for current_locale in LOCALES:
             FILESETS = [
-                os.path.join("tabcmd", "locales", current_locale, "LC_MESSAGES", "*.properties*"),
-                os.path.join("tabcmd", "locales", current_locale, "LC_MESSAGES", "*.po*"),
-                os.path.join("tabcmd", "locales", current_locale, "LC_MESSAGES", "*.out*"),
+                os.path.join("tabcmd", "locales", current_locale, "LC_MESSAGES", "*.properties"),
+                os.path.join("tabcmd", "locales", current_locale, "LC_MESSAGES", "*.po"),
+                os.path.join("tabcmd", "locales", current_locale, "LC_MESSAGES", "*.out"),
             ]
             for PATH in FILESETS:
                 for file in glob.glob(PATH):
