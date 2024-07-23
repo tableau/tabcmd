@@ -113,13 +113,13 @@ _(note that running mypy and black with no errors is required before code will b
 > You can only build an executable for the platform you are running pyinstaller on. The spec for each platform is stored in tabcmd-*platform*.spec and the exact build commands for each platform can be checked in [our packaging script](.github/workflows//package.yml).
 
 e.g for Windows
-> pyinstaller tabcmd-windows.spec --clean --distpath ./dist/windows
+> pyinstaller tabcmd-windows.spec --clean --distpath .\dist\windows
 
-produces dist/windows/tabcmd.exe
+produces dist\windows\tabcmd.exe
 To run the newly created executable, from a console window in the same directory as the file tabcmd.py:
 
-> dist/windows/tabcmd.exe --help
-> dist/windows/tabcmd.exe publish --country FR --language FR cookie.twbx
+> dist\windows\tabcmd.exe --help
+> dist\windows\tabcmd.exe publish --country FR --language FR cookie.twbx
 
 To investigate what's packaged in the executable, use https://pyinstxtractor-web.netlify.app/
 
