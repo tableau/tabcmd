@@ -27,6 +27,6 @@ class RemoveUserCommand(UserCommand):
         session = Session()
         server = session.create_session(args, logger)
 
-        logger.info(_("tabcmd.delete.users.from_server").format(args.users.name, args.name))
+        logger.info(_("tabcmd.removeusers.server").format(args.users.name, args.name))
 
         UserCommand.act_on_users(logger, server, "removed", server.groups.remove_user, args)

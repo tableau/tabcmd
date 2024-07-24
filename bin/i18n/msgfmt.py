@@ -1,7 +1,8 @@
 #! /usr/bin/env python3
 # Written by Martin v. Löwis <loewis@informatik.hu-berlin.de>
-
-""" Updated to handle utf-8 files and give better error messages
+""" 
+Fetched from https://github.com/python/cpython/blob/main/Tools/i18n/msgfmt.py
+Updated to handle utf-8 files and give better error messages
 TODO contribute back?
 """
 

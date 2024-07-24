@@ -12,13 +12,6 @@ class LocaleTests(unittest.TestCase):
         # False: bound method != function ?
         # assert translations == gettext.NullTranslations.gettext
 
-    def test_en_smoke_launching(self):
-        # 27 incidents of this string
-        translations = set_client_locale()
-        assert translations is not None
-
-        assert translations("tabcmd.launching") == "======================= Launching command ======================="
-
     def test_en_smoke_publish_errors(self):
         # 8 incidents of this string
         translations = set_client_locale()

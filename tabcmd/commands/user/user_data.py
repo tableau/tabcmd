@@ -189,7 +189,7 @@ class UserCommand(Server):
             return
         if item in possible_values or possible_values == []:
             return
-        raise AttributeError(_("tabcmd.report.error.generic_attribute").format(column_type, item))
+        raise AttributeError(_("commandlineutils.errors.bad_value").format(column_type, item, possible_values))
 
     @staticmethod
     def get_users_from_file(csv_file: io.TextIOWrapper, logger=None) -> List[TSC.UserItem]:
@@ -275,7 +275,7 @@ class UserCommand(Server):
         error_list = []
         line_no = 0
         user_obj_list: List[TSC.UserItem] = UserCommand.get_users_from_file(args.users)
-        logger.debug(_("tabcmd.result.success.parsed_users").format(len(user_obj_list)))
+        logger.debug(_("common.output.succeeded").format(len(user_obj_list)))
         for user_obj in user_obj_list:
             line_no += 1
             if not user_obj.name:
@@ -289,16 +289,17 @@ class UserCommand(Server):
                 logger.debug("{} user {} ({})".format(action_name, username, user_id))
             except TSC.ServerResponseError as e:
                 number_of_errors += 1
-                error_list.append(
-                    _("importcsvsummary.error.line").format(line_no, username, "{}: {}".format(e.code, e.detail))
+                new_error = _("importcsvsummary.error.line").format(
+                    line_no, username, "{}: {}".format(e.code, e.detail)
                 )
-                logger.debug(_("tabcmd.result.failure.user").format(username))
+                error_list.append(new_error)
+                logger.debug(new_error)
                 continue
 
             try:
                 server_method(group, user_id)
                 n_users_handled += 1
-                logger.info(_("tabcmd.result.success.user_actions").format(action_name, username, group))
+                logger.info(_("common.output.succeeded").format(action_name, username, group))
             except TSC.ServerResponseError as e:
                 number_of_errors += 1
                 error_list.append(

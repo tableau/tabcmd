@@ -37,9 +37,11 @@ class PublishSamplesCommand(Server):
                 logger, server, args.project_name, args.parent_project_path
             )
         except Exception as e:
-            Errors.exit_with_error(logger, _("tabcmd.report.error.publish_samples.expected_project"), exception=e)
+            Errors.exit_with_error(logger, _("materializeviews.errors.project_path_not_exists"), exception=e)
 
         try:
+            logger.info(_("publish.status").format(args.project_name))
             server.projects.update(project, samples=True)
+            logger.info(_("publish.success") + args.project_name)
         except Exception as e:
-            Errors.exit_with_error(logger, _("tabcmd.result.failure.publish_samples"), exception=e)
+            Errors.exit_with_error(logger, _("backgrounder.notification.flowrun.failure.status"), exception=e)
