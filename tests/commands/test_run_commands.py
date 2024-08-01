@@ -152,7 +152,6 @@ class RunCommandsTest(unittest.TestCase):
         publish_command.PublishCommand.run_command(mock_args)
         mock_session.assert_called()
 
-
     # extracts
     def test_create_extract(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
