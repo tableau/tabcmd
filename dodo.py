@@ -28,20 +28,22 @@ def task_properties():
     def process_code():
         print("\n***** Collect all string keys used in code")
 
-        CODE_PATH = "tabcmd/[ec]*/**/*.py"
+        CODE_PATH = "tabcmd/**/*.py"
         STRINGS_FILE = "tabcmd/locales/codestrings.properties"
         STRING_FLAG = '_("'
         STRING_END = '")'
 
         lines = set([])
         with open(STRINGS_FILE, "w+", encoding="utf-8") as stringfile:
-            for codefile in glob.glob(CODE_PATH):
+            for codefile in glob.glob(CODE_PATH, recursive=True):
+                print("\t" + codefile)
                 with open(codefile, encoding="utf-8") as infile:
                     # find lines that contain a loc string in the form _("string goes here")
                     for line in infile:
                         i = line.find(STRING_FLAG)
                         # include only the string itself and the quote symbols around it
                         if i >= 0:
+                            # print(line)
                             j = line.find(STRING_END)
                             lines.add(line[i + 3 : j] + "\n")
 
@@ -66,7 +68,7 @@ def task_properties():
                         # U201C, U201D and U201E - opening quotes, German opening quotes, and closing quotes
                         import re
 
-                        changed_input = re.sub("[\u201c\u201d\u201e]", input)
+                        changed_input = re.sub("[\u201c\u201d\u201e]", "'", input)
                         # some strings for some reason use two single quotes as a double quote. Reduce to one single quote.
                         re_changed_input = re.sub("''", "'", changed_input)
                         outfile.write(re_changed_input)
@@ -96,6 +98,8 @@ def task_properties():
                         key = line.split("=")[0]
                         if key in required:
                             outfile.writelines(line)
+                        else:
+                            print("\tExcluding {}".format(key))
 
             print("Filtered strings for {}".format(current_locale))
 
@@ -246,7 +250,7 @@ def task_mo():
 
             LOC_PATH = "tabcmd/locales/" + current_locale + "/LC_MESSAGES"
 
-            print("\twriting final {}/tabcmd.mo file".format(current_locale))
+            print("\nBegin writing final {}/tabcmd.mo file".format(current_locale))
             # build the single binary file from the .po file
             # a number of keys are failing at the write-to-mo step. We don't use any of them so that's fine for now.
             result = subprocess.run(["python", "bin/i18n/msgfmt.py", LOC_PATH + "/tabcmd"])
@@ -270,16 +274,17 @@ def task_mo():
             LOC_DIR = os.path.join(LANG_DIR, current_locale, "LC_MESSAGES")
             MO_FILE = os.path.join(LOC_DIR, "tabcmd.mo")
             domain = "tabcmd"
-            print("\tloading {} file to validate".format(MO_FILE))
+            print("Loading {} file to validate".format(MO_FILE))
             try:
                 with open(MO_FILE, "rb") as fp:
-                    print("\topened file - now calling translate {}".format(current_locale))
+                    print("File open - now calling translate ({})".format(current_locale))
                     language: gettext.NullTranslations = gettext.translation(
                         domain, LANG_DIR, languages=[current_locale]
                     )
                     language.install()
                     _ = language.gettext
-                    print(_("common.output.succeeded"))
+                    print("\t" + _("common.output.succeeded"))
+                    print("\t" + _("session.options.server"))
             except Exception as e:
                 print(e)
 
@@ -325,13 +330,12 @@ def uniquify_file(filename):
         lines = my_file.readlines()
         for line in lines:
             line = line.strip()
-            line = line.strip('"')
             # lines cannot extend over two lines.
             line = line.replace("\\n", "  ")
             if line == "":
                 continue
             elif "=" not in line and "codestrings" not in filename:
-                print("prop2po will not like this line. Discarding [{}]".format(line))
+                print("\tprop2po will not like this line. Discarding [{}]".format(line))
                 continue
             else:
                 uniques.add(line + "\n")
