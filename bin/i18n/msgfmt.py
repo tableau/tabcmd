@@ -108,7 +108,7 @@ def make(filename, outfile):
     CTXT = 3
 
     encoding = 'utf-8'
-    print("Assumed encoding", encoding)
+    print("msgfmt::Assumed encoding", encoding)
 
     # Compute .mo name from .po name and arguments
     if filename.endswith('.po'):
@@ -196,7 +196,7 @@ def make(filename, outfile):
         try:
             l = ast.literal_eval(l)
         except:
-            print("ERROR (skipped)", lno, msgid)
+            print("\tERROR (skipped)", lno, msgid)
             pass
         if section == CTXT:
             msgctxt += l.encode(encoding)
