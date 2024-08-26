@@ -41,6 +41,9 @@ pytest.xml
 # doit
 .doit.*
 
+# localization intermediate files
+*.po
+
 # venv
 site-packages
 
@@ -48,3 +51,4 @@ site-packages
 tabcmd-dev
 workon
 test.junit.xml
+*.out

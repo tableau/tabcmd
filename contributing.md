@@ -113,12 +113,15 @@ _(note that running mypy and black with no errors is required before code will b
 > You can only build an executable for the platform you are running pyinstaller on. The spec for each platform is stored in tabcmd-*platform*.spec and the exact build commands for each platform can be checked in [our packaging script](.github/workflows//package.yml).
 
 e.g for Windows
-> pyinstaller tabcmd-windows.spec --clean --noconfirm --distpath ./dist/windows
+> pyinstaller tabcmd-windows.spec --clean --distpath .\dist\windows
 
-produces dist/tabcmd.exe
+produces dist\windows\tabcmd.exe
 To run the newly created executable, from a console window in the same directory as the file tabcmd.py:
 
-> dist/tabcmd/tabcmd.exe --help
+> dist\windows\tabcmd.exe --help
+> dist\windows\tabcmd.exe publish --country FR --language FR cookie.twbx
+
+To investigate what's packaged in the executable, use https://pyinstxtractor-web.netlify.app/
 
 
 
@@ -128,7 +131,9 @@ Strings are stored in /tabcmd/locales/[language]/*.properties by id and referred
 > string = _("string.id")
 
 For runtime execution these files must be converted from .properties -> .po -> .mo files. These .mo files will be bundled in the the package by pyinstaller. The entire conversion action is done by a .doit script:
-> doit mo
+> doit properties po mo
+You can also check that there are no malformed/forgotten message keys in the code with 
+> doit strings
 
 ### Versioning
 
@@ -149,7 +154,11 @@ The version reflected in the executable (tabcmd -v) is stored in a metadata file
     - run pyinstaller to create executables
     - save the executable as an artifact on that job.
 
-1. Find the artifacts created by this job and manually copy them to the new release. (Beware! of what the file type is, github does something weird with zipping it if you download with curl etc. TODO: automate workflow with a github action)
+1. Find the artifacts created by this job and manually copy them to the new release. 
+- manually download. They will all be returned as zips
+- unzip the windows.exe and mac[64].app.tar files and upload those
+- do not unzip the linux app, github doesn't like it. upload as tabcmd.zip
+(Pay attention to what the file type is, github also sends it as a zip if you download with curl etc. TODO: automate workflow with a github action)
 
 1. To trigger publishing to pypi run the manual workflow on main with 'pypi'. (TODO: automate trigger)
 

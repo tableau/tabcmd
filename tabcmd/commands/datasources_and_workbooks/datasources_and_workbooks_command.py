@@ -58,7 +58,7 @@ class DatasourcesAndWorkbooks(Server):
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
         if len(matching_datasources) < 1:
-            Errors.exit_with_error(logger, message=_("dataalerts.failure.error.datasourceNotFound"))
+            Errors.exit_with_error(logger, message=_("errors.publish.datasource.not.found"))
         return matching_datasources[0]
 
     @staticmethod
