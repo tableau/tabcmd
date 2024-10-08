@@ -6,7 +6,7 @@ from .common_setup import *
 commandname = "deleteextracts"
 
 
-class DeleteExtractsParserTest(unittest.TestCase):
+class DeleteExtractsParserTest(ParserTestCase):
     @classmethod
     def setUpClass(cls):
         cls.parser_under_test = initialize_test_pieces(commandname, DeleteExtracts)

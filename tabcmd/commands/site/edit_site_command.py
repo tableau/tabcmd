@@ -25,9 +25,9 @@ class EditSiteCommand(Server):
         set_common_site_args(args_group)
         set_site_status_arg(args_group)
 
-    @staticmethod
-    def run_command(args):
-        logger = log(__class__.__name__, args.logging_level)
+    @classmethod
+    def run_command(cls, args):
+        logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
@@ -47,4 +47,4 @@ class EditSiteCommand(Server):
             logger.info(_("common.output.succeeded"))
 
         except Exception as e:
-            Errors.exit_with_error(logger, e)
+            Errors.exit_with_error(logger, exception=e)

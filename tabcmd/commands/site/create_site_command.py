@@ -22,9 +22,9 @@ class CreateSiteCommand(Server):
         args_group.add_argument("new_site_name", metavar="site-name", help=_("editsite.options.site-name"))
         set_common_site_args(args_group)
 
-    @staticmethod
-    def run_command(args):
-        logger = log(__class__.__name__, args.logging_level)
+    @classmethod
+    def run_command(cls, args):
+        logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
@@ -46,4 +46,4 @@ class CreateSiteCommand(Server):
             if Errors.is_resource_conflict(e) and args.continue_if_exists:
                 logger.info(_("createsite.errors.site_name_already_exists").format(args.new_site_name))
                 return
-            Errors.exit_with_error(logger, e)
+            Errors.exit_with_error(logger, exception=e)

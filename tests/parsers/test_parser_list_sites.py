@@ -6,7 +6,7 @@ from .common_setup import *
 commandname = "listsites"
 
 
-class ListSitesParserTest(unittest.TestCase):
+class ListSitesParserTest(ParserTestCase):
     @classmethod
     def setUpClass(cls):
         cls.parser_under_test = initialize_test_pieces(commandname, ListSiteCommand)
