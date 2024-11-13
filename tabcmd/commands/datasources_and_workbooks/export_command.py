@@ -78,8 +78,12 @@ class ExportCommand(DatasourcesAndWorkbooks):
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
-        view_content_url, wb_content_url, custom_view_id, custom_view_name = (
-            ExportCommand.parse_export_url_to_workbook_view_and_custom_view(logger, args.url))
+        (
+            view_content_url,
+            wb_content_url,
+            custom_view_id,
+            custom_view_name,
+        ) = ExportCommand.parse_export_url_to_workbook_view_and_custom_view(logger, args.url)
         logger.debug(["view_url:", view_content_url, "workbook:", wb_content_url])
         if not view_content_url and not wb_content_url:
             view_example = "/workbook_name/view_name"
@@ -97,7 +101,8 @@ class ExportCommand(DatasourcesAndWorkbooks):
 
             elif args.pdf or args.png or args.csv:  # it's a view or custom_view
                 export_item, server_content_type = ExportCommand.get_export_item_and_server_content_type(
-                    view_content_url, logger, server, custom_view_id)
+                    view_content_url, logger, server, custom_view_id
+                )
 
                 if args.pdf:
                     output = ExportCommand.download_view_pdf(server_content_type, export_item, args, logger)

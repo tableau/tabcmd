@@ -97,8 +97,7 @@ class GeturlTests(unittest.TestCase):
     def test_get_url_parts_from_custom_view_url(self):
         cv_uuid = str(uuid.uuid4())
         custom_view_url = "views/wb-name/view-name/" + cv_uuid + "/custom-view-name"
-        view_url, custom_view_id, custom_view_name = GetUrl.get_url_parts_from_custom_view_url(custom_view_url,
-                                                                                            None)
+        view_url, custom_view_id, custom_view_name = GetUrl.get_url_parts_from_custom_view_url(custom_view_url, None)
         assert view_url == "wb-name/sheets/view-name"
         assert custom_view_id == cv_uuid
         assert custom_view_name == "custom-view-name"
@@ -116,8 +115,7 @@ class GeturlTests(unittest.TestCase):
     def test_get_url_parts_from_custom_view_url_with_url_params(self):
         cv_uuid = str(uuid.uuid4())
         custom_view_url = "views/wb-name/view-name/" + cv_uuid + "/custom-view-name?:refresh=yes"
-        view_url, custom_view_id, custom_view_name = GetUrl.get_url_parts_from_custom_view_url(custom_view_url,
-                                                                                            None)
+        view_url, custom_view_id, custom_view_name = GetUrl.get_url_parts_from_custom_view_url(custom_view_url, None)
         assert view_url == "wb-name/sheets/view-name"
         assert custom_view_id == cv_uuid
         assert custom_view_name == "custom-view-name"
@@ -125,8 +123,7 @@ class GeturlTests(unittest.TestCase):
     def test_get_url_parts_from_custom_view_url_with_file_extension(self):
         cv_uuid = str(uuid.uuid4())
         custom_view_url = "views/wb-name/view-name/" + cv_uuid + "/custom-view-name.png"
-        view_url, custom_view_id, custom_view_name = GetUrl.get_url_parts_from_custom_view_url(custom_view_url,
-                                                                                            None)
+        view_url, custom_view_id, custom_view_name = GetUrl.get_url_parts_from_custom_view_url(custom_view_url, None)
         assert view_url == "wb-name/sheets/view-name"
         assert custom_view_id == cv_uuid
         assert custom_view_name == "custom-view-name"
@@ -159,7 +156,8 @@ class GeturlTests(unittest.TestCase):
         cv_uuid = str(uuid.uuid4())
         custom_view_url = "views/wb-name/view-name/" + cv_uuid + "/custom-view-name"
         view_url, custom_view_id, custom_view_name = GetUrl.parse_get_view_url_to_view_and_custom_view_parts(
-            mock_logger, custom_view_url)
+            mock_logger, custom_view_url
+        )
         assert view_url == "wb-name/sheets/view-name"
         assert custom_view_id == cv_uuid
         assert custom_view_name == "custom-view-name"
@@ -168,7 +166,8 @@ class GeturlTests(unittest.TestCase):
         cv_uuid = str(uuid.uuid4())
         custom_view_url = "views/wb-name/view-name/" + cv_uuid + "/custom-view-name.png"
         view_url, custom_view_id, custom_view_name = GetUrl.parse_get_view_url_to_view_and_custom_view_parts(
-            mock_logger, custom_view_url)
+            mock_logger, custom_view_url
+        )
         assert view_url == "wb-name/sheets/view-name"
         assert custom_view_id == cv_uuid
         assert custom_view_name == "custom-view-name"
@@ -179,7 +178,8 @@ class GeturlTests(unittest.TestCase):
         mock_server.views = mock.MagicMock()
         mock_server.views.get = mock.MagicMock("get", return_value=([fake_item], 1))
         view_item, server_content_type = GetUrl.get_url_item_and_item_type_from_view_url(
-            mock_logger, view_url, mock_server)
+            mock_logger, view_url, mock_server
+        )
         assert view_item == fake_item
         assert server_content_type == mock_server.views
 
@@ -191,7 +191,8 @@ class GeturlTests(unittest.TestCase):
         mock_server.custom_views = mock.MagicMock()
         mock_server.custom_views.get_by_id = mock.MagicMock("get_by_id", return_value=fake_cv_item)
         cv_item, server_content_type = GetUrl.get_url_item_and_item_type_from_view_url(
-            mock_logger, view_url, mock_server)
+            mock_logger, view_url, mock_server
+        )
         assert cv_item == fake_cv_item
         assert server_content_type == mock_server.custom_views
 
@@ -272,7 +273,8 @@ class ExportTests(unittest.TestCase):
         mock_server.views = mock.MagicMock()
         mock_server.views.get = mock.MagicMock("get", return_value=([fake_item], 1))
         view_item, server_content_type = ExportCommand.get_export_item_and_server_content_type(
-            view_url, mock_logger, mock_server, None)
+            view_url, mock_logger, mock_server, None
+        )
         assert view_item == fake_item
         assert server_content_type == mock_server.views
 
@@ -284,7 +286,8 @@ class ExportTests(unittest.TestCase):
         mock_server.custom_views = mock.MagicMock()
         mock_server.custom_views.get_by_id = mock.MagicMock("get_by_id", return_value=fake_cv_item)
         cv_item, server_content_type = ExportCommand.get_export_item_and_server_content_type(
-            view_url, mock_logger, mock_server, fake_cv_id)
+            view_url, mock_logger, mock_server, fake_cv_id
+        )
         assert cv_item == fake_cv_item
         assert server_content_type == mock_server.custom_views
 

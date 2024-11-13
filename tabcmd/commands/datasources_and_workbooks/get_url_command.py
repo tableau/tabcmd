@@ -73,8 +73,9 @@ class GetUrl(DatasourcesAndWorkbooks):
         ds_example = "/datasources/<datasourcename[.ext]"
         message = _("export.errors.requires_workbook_view_param").format(
             command
-        ) + "Given: {0}. Accepted values: {1}, {2}, {3}, {4}".format(url, view_example, custom_view_example,
-                                                                     wb_example, ds_example)
+        ) + "Given: {0}. Accepted values: {1}, {2}, {3}, {4}".format(
+            url, view_example, custom_view_example, wb_example, ds_example
+        )
         Errors.exit_with_error(logger, message)
 
     @staticmethod
@@ -152,8 +153,11 @@ class GetUrl(DatasourcesAndWorkbooks):
         custom_view_name = name_parts[::-1][0]
         custom_view_name = GetUrl.strip_query_params(custom_view_name)
         custom_view_name = GetUrl.get_name_without_possible_extension(custom_view_name)
-        return (DatasourcesAndWorkbooks.get_view_url_from_names(workbook_name, view_name), custom_view_id,
-                custom_view_name)
+        return (
+            DatasourcesAndWorkbooks.get_view_url_from_names(workbook_name, view_name),
+            custom_view_id,
+            custom_view_name,
+        )
 
     @staticmethod
     def filename_from_args(file_argument, item_name, filetype):
@@ -281,7 +285,8 @@ class GetUrl(DatasourcesAndWorkbooks):
     @staticmethod
     def get_url_item_and_item_type_from_view_url(logger, url, server):
         view_url, custom_view_id, custom_view_name = GetUrl.parse_get_view_url_to_view_and_custom_view_parts(
-            logger, url)
+            logger, url
+        )
 
         get_url_item = GetUrl.get_view_by_content_url(logger, server, view_url)
         get_url_item_type = server.views
