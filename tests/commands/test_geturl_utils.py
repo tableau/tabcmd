@@ -1,4 +1,5 @@
 import unittest
+import uuid
 from typing import Iterator
 from unittest import mock
 
@@ -22,6 +23,12 @@ mock_logger = mock.MagicMock()
 fake_item = mock.MagicMock(TSC.ViewItem)
 fake_item.name = "fake-name"
 fake_item.id = "fake-id"
+
+fake_cv_id = str(uuid.uuid4())
+fake_cv_item = mock.MagicMock(TSC.CustomViewItem)
+fake_cv_item.name = "custom-view-name"
+fake_cv_item.id = fake_cv_id
+fake_cv_item.view.id = fake_item.id
 
 
 class FileHandling(unittest.TestCase):
@@ -87,6 +94,107 @@ class GeturlTests(unittest.TestCase):
     def test_view_name_with_url_params(self):
         assert GetUrl.get_view_url("views/wb-name/view-name?:refresh=y", None) == "wb-name/sheets/view-name"
 
+    def test_get_url_parts_from_custom_view_url(self):
+        cv_uuid = str(uuid.uuid4())
+        custom_view_url = "views/wb-name/view-name/" + cv_uuid + "/custom-view-name"
+        view_url, custom_view_id, custom_view_name = GetUrl.get_url_parts_from_custom_view_url(custom_view_url,
+                                                                                            None)
+        assert view_url == "wb-name/sheets/view-name"
+        assert custom_view_id == cv_uuid
+        assert custom_view_name == "custom-view-name"
+
+    def test_get_url_parts_from_custom_view_url_invalid_cv_id(self):
+        custom_view_url = "views/wb-name/view-name/cv_uuid/custom-view-name"
+        with self.assertRaises(SystemExit):
+            GetUrl.get_url_parts_from_custom_view_url(custom_view_url, mock_logger)
+
+    def test_get_url_parts_from_custom_view_url_bad_url(self):
+        custom_view_url = "views/wb-name/view-name/cv_uuid/custom-view-name/kitty"
+        with self.assertRaises(SystemExit):
+            GetUrl.get_url_parts_from_custom_view_url(custom_view_url, mock_logger)
+
+    def test_get_url_parts_from_custom_view_url_with_url_params(self):
+        cv_uuid = str(uuid.uuid4())
+        custom_view_url = "views/wb-name/view-name/" + cv_uuid + "/custom-view-name?:refresh=yes"
+        view_url, custom_view_id, custom_view_name = GetUrl.get_url_parts_from_custom_view_url(custom_view_url,
+                                                                                            None)
+        assert view_url == "wb-name/sheets/view-name"
+        assert custom_view_id == cv_uuid
+        assert custom_view_name == "custom-view-name"
+
+    def test_get_url_parts_from_custom_view_url_with_file_extension(self):
+        cv_uuid = str(uuid.uuid4())
+        custom_view_url = "views/wb-name/view-name/" + cv_uuid + "/custom-view-name.png"
+        view_url, custom_view_id, custom_view_name = GetUrl.get_url_parts_from_custom_view_url(custom_view_url,
+                                                                                            None)
+        assert view_url == "wb-name/sheets/view-name"
+        assert custom_view_id == cv_uuid
+        assert custom_view_name == "custom-view-name"
+
+    def test_parse_get_url_to_view_parts(self):
+        url = "views/wb-name/view-name"
+        view_url, cv_id, cv_name = GetUrl.parse_get_view_url_to_view_and_custom_view_parts(mock_logger, url)
+        assert view_url == "wb-name/sheets/view-name"
+        assert cv_id is None
+        assert cv_name is None
+
+    def test_parse_get_url_to_view_parts_with_params(self):
+        url = "views/wb-name/view-name?params=1"
+        view_url, cv_id, cv_name = GetUrl.parse_get_view_url_to_view_and_custom_view_parts(mock_logger, url)
+        assert view_url == "wb-name/sheets/view-name"
+        assert cv_id is None
+        assert cv_name is None
+
+    def test_parse_get_url_to_view_parts_with_spaces(self):
+        url = "views/wb name/view-name"
+        with self.assertRaises(SystemExit):
+            GetUrl.parse_get_view_url_to_view_and_custom_view_parts(mock_logger, url)
+
+    def test_parse_get_url_to_view_parts_without_slashes(self):
+        url = "views\wb name\\view-name"
+        with self.assertRaises(SystemExit):
+            GetUrl.parse_get_view_url_to_view_and_custom_view_parts(mock_logger, url)
+
+    def test_parse_get_url_to_custom_view_parts(self):
+        cv_uuid = str(uuid.uuid4())
+        custom_view_url = "views/wb-name/view-name/" + cv_uuid + "/custom-view-name"
+        view_url, custom_view_id, custom_view_name = GetUrl.parse_get_view_url_to_view_and_custom_view_parts(
+            mock_logger, custom_view_url)
+        assert view_url == "wb-name/sheets/view-name"
+        assert custom_view_id == cv_uuid
+        assert custom_view_name == "custom-view-name"
+
+    def test_parse_get_url_to_custom_view_parts_with_file_extension(self):
+        cv_uuid = str(uuid.uuid4())
+        custom_view_url = "views/wb-name/view-name/" + cv_uuid + "/custom-view-name.png"
+        view_url, custom_view_id, custom_view_name = GetUrl.parse_get_view_url_to_view_and_custom_view_parts(
+            mock_logger, custom_view_url)
+        assert view_url == "wb-name/sheets/view-name"
+        assert custom_view_id == cv_uuid
+        assert custom_view_name == "custom-view-name"
+
+    @mock.patch("tableauserverclient.Server")
+    def test_get_url_item_and_item_type_from_view_url(self, mock_server):
+        view_url = "views/wb-name/view-name"
+        mock_server.views = mock.MagicMock()
+        mock_server.views.get = mock.MagicMock("get", return_value=([fake_item], 1))
+        view_item, server_content_type = GetUrl.get_url_item_and_item_type_from_view_url(
+            mock_logger, view_url, mock_server)
+        assert view_item == fake_item
+        assert server_content_type == mock_server.views
+
+    @mock.patch("tableauserverclient.Server")
+    def test_get_url_item_and_item_type_from_custom_view_url(self, mock_server):
+        view_url = "views/wb-name/view-name/" + fake_cv_id + "/custom-view-name"
+        mock_server.views = mock.MagicMock()
+        mock_server.views.get = mock.MagicMock("get", return_value=([fake_item], 1))
+        mock_server.custom_views = mock.MagicMock()
+        mock_server.custom_views.get_by_id = mock.MagicMock("get_by_id", return_value=fake_cv_item)
+        cv_item, server_content_type = GetUrl.get_url_item_and_item_type_from_view_url(
+            mock_logger, view_url, mock_server)
+        assert cv_item == fake_cv_item
+        assert server_content_type == mock_server.custom_views
+
     """
     GetUrl.get_view(url)
     GetUrl.get_view_without_extension(view_name)
@@ -109,23 +217,76 @@ class ExportTests(unittest.TestCase):
     fake_item.pdf = mock.MagicMock("bytes")
     fake_item.png = mock.MagicMock("bytes")
 
-    def test_parse_export_url_to_workbook_and_view(self):
+    def test_parse_export_url_to_workbook_view_and_custom_view(self):
         wb_url = "wb-name/view-name"
-        view, wb = ExportCommand.parse_export_url_to_workbook_and_view(mock_logger, wb_url)
+        view, wb, cv_id, cv_name = ExportCommand.parse_export_url_to_workbook_view_and_custom_view(mock_logger, wb_url)
         assert view == "wb-name/sheets/view-name"
         assert wb == "wb-name"
+        assert cv_id is None
+        assert cv_name is None
 
-    def test_parse_export_url_to_workbook_and_view_with_start_slash(self):
+    def test_parse_export_url_to_workbook_view_and_custom_view_with_start_slash(self):
         wb_url = "/wb-name/view-name"
-        view, wb = ExportCommand.parse_export_url_to_workbook_and_view(mock_logger, wb_url)
+        view, wb, cv_id, cv_name = ExportCommand.parse_export_url_to_workbook_view_and_custom_view(mock_logger, wb_url)
         assert view == "wb-name/sheets/view-name"
         assert wb == "wb-name"
+        assert cv_id is None
+        assert cv_name is None
 
-    def test_parse_export_url_to_workbook_and_view_bad_url(self):
+    def test_parse_export_url_to_workbook_view_and_custom_view_bad_url(self):
         wb_url = "wb-name/view-name/kitty"
-        view, wb = ExportCommand.parse_export_url_to_workbook_and_view(mock_logger, wb_url)
+        view, wb, cv_id, cv_name = ExportCommand.parse_export_url_to_workbook_view_and_custom_view(mock_logger, wb_url)
         assert view is None
         assert wb is None
+        assert cv_id is None
+        assert cv_name is None
+
+    def test_parse_export_url_to_workbook_view_and_custom_view_with_cv_parts(self):
+        cv_uuid = str(uuid.uuid4())
+        custom_view_name = "custom-view-name"
+        wb_url = "/wb-name/view-name/" + cv_uuid + "/" + custom_view_name
+        view, wb, cv_id, cv_name = ExportCommand.parse_export_url_to_workbook_view_and_custom_view(mock_logger, wb_url)
+        assert view == "wb-name/sheets/view-name"
+        assert wb == "wb-name"
+        assert cv_id == cv_uuid
+        assert cv_name == custom_view_name
+
+    def test_parse_export_url_to_workbook_view_and_custom_view_with_bad_cv_parts(self):
+        cv_uuid = str(uuid.uuid4())
+        custom_view_name = "custom-view-name"
+        wb_url = "/wb-name/view-name/" + cv_uuid + "/" + custom_view_name + "/kitty"
+        view, wb, cv_id, cv_name = ExportCommand.parse_export_url_to_workbook_view_and_custom_view(mock_logger, wb_url)
+        assert view is None
+        assert wb is None
+        assert cv_id is None
+        assert cv_name is None
+
+    def test_parse_export_url_to_workbook_view_and_custom_view_with_invalid_cv_id(self):
+        wb_url = "/wb-name/view-name/cv-id/cv-name"
+        with self.assertRaises(SystemExit):
+            ExportCommand.parse_export_url_to_workbook_view_and_custom_view(mock_logger, wb_url)
+
+    @mock.patch("tableauserverclient.Server")
+    def test_get_export_item_and_item_type_for_view(self, mock_server):
+        view_url = "wb-name/sheets/view-name"
+        mock_server.views = mock.MagicMock()
+        mock_server.views.get = mock.MagicMock("get", return_value=([fake_item], 1))
+        view_item, server_content_type = ExportCommand.get_export_item_and_server_content_type(
+            view_url, mock_logger, mock_server, None)
+        assert view_item == fake_item
+        assert server_content_type == mock_server.views
+
+    @mock.patch("tableauserverclient.Server")
+    def test_get_export_item_and_item_type_for_custom_view(self, mock_server):
+        view_url = "wb-name/sheets/view-name"
+        mock_server.views = mock.MagicMock()
+        mock_server.views.get = mock.MagicMock("get", return_value=([fake_item], 1))
+        mock_server.custom_views = mock.MagicMock()
+        mock_server.custom_views.get_by_id = mock.MagicMock("get_by_id", return_value=fake_cv_item)
+        cv_item, server_content_type = ExportCommand.get_export_item_and_server_content_type(
+            view_url, mock_logger, mock_server, fake_cv_id)
+        assert cv_item == fake_cv_item
+        assert server_content_type == mock_server.custom_views
 
     @mock.patch("tableauserverclient.Server")
     def test_download_csv(self, mock_server):

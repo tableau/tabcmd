@@ -2,7 +2,6 @@ import inspect
 import os
 
 import tableauserverclient as TSC
-from tableauserverclient import ServerResponseError
 
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.constants import Errors
@@ -10,6 +9,7 @@ from tabcmd.execution.global_options import *
 from tabcmd.execution.localize import _
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
+from .export_command import ExportCommand
 
 
 class GetUrl(DatasourcesAndWorkbooks):
@@ -68,11 +68,13 @@ class GetUrl(DatasourcesAndWorkbooks):
     @staticmethod
     def explain_expected_url(logger, url: str, command: str):
         view_example = "/views/<workbookname>/<viewname>[.ext]"
+        custom_view_example = "/views/<workbookname>/<viewname>/<customviewid>/<customviewname>[.ext]"
         wb_example = "/workbooks/<workbookname>[.ext]"
         ds_example = "/datasources/<datasourcename[.ext]"
         message = _("export.errors.requires_workbook_view_param").format(
             command
-        ) + "Given: {0}. Accepted values: {1}, {2}, {3}".format(url, view_example, wb_example, ds_example)
+        ) + "Given: {0}. Accepted values: {1}, {2}, {3}, {4}".format(url, view_example, custom_view_example,
+                                                                     wb_example, ds_example)
         Errors.exit_with_error(logger, message)
 
     @staticmethod
@@ -139,6 +141,21 @@ class GetUrl(DatasourcesAndWorkbooks):
         return DatasourcesAndWorkbooks.get_view_url_from_names(workbook_name, view_name)
 
     @staticmethod
+    def get_url_parts_from_custom_view_url(url, logger):
+        name_parts = url.split("/")  # ['views', 'wb-name', 'view-name', 'custom-view-id', 'custom-view-name']
+        if len(name_parts) != 5:
+            GetUrl.explain_expected_url(logger, url, "GetUrl")
+        workbook_name = name_parts[1]
+        view_name = name_parts[2]
+        custom_view_id = name_parts[3]
+        ExportCommand.verify_valid_custom_view_id(logger, custom_view_id)
+        custom_view_name = name_parts[::-1][0]
+        custom_view_name = GetUrl.strip_query_params(custom_view_name)
+        custom_view_name = GetUrl.get_name_without_possible_extension(custom_view_name)
+        return (DatasourcesAndWorkbooks.get_view_url_from_names(workbook_name, view_name), custom_view_id,
+                custom_view_name)
+
+    @staticmethod
     def filename_from_args(file_argument, item_name, filetype):
         if file_argument is None:
             file_argument = item_name
@@ -157,55 +174,53 @@ class GetUrl(DatasourcesAndWorkbooks):
         elif content_type == "datasource":
             return GetUrl.generate_tds(logger, server, args, file_type)
         elif content_type == "view":
-            view_url = GetUrl.get_view_url(url, logger)
+            get_url_item, server_content_type = GetUrl.get_url_item_and_item_type_from_view_url(logger, url, server)
+
             if file_type == "pdf":
-                return GetUrl.generate_pdf(logger, server, args, view_url)
+                return GetUrl.generate_pdf(logger, server_content_type, args, get_url_item)
             elif file_type == "png":
-                return GetUrl.generate_png(logger, server, args, view_url)
+                return GetUrl.generate_png(logger, server_content_type, args, get_url_item)
             elif file_type == "csv":
-                return GetUrl.generate_csv(logger, server, args, view_url)
+                return GetUrl.generate_csv(logger, server_content_type, args, get_url_item)
         # all the known options above will return early. If we get here we are confused.
         Errors.exit_with_error(logger, message=_("get.extension.not_found"))
 
     @staticmethod
-    def generate_pdf(logger, server, args, view_url):
+    def generate_pdf(logger, server_content_type, args, get_url_item):
         logger.trace("Entered method " + inspect.stack()[0].function)
         try:
-            view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view_url)
-            logger.debug(_("content_type.view") + ": {}".format(view_item.name))
+            logger.debug(_("content_type.view") + ": {}".format(get_url_item.name))
             req_option_pdf = TSC.PDFRequestOptions(maxage=1)
             DatasourcesAndWorkbooks.apply_values_from_url_params(logger, req_option_pdf, args.url)
-            server.views.populate_pdf(view_item, req_option_pdf)
-            filename = GetUrl.filename_from_args(args.filename, view_item.name, "pdf")
-            DatasourcesAndWorkbooks.save_to_file(logger, view_item.pdf, filename)
+            server_content_type.populate_pdf(get_url_item, req_option_pdf)
+            filename = GetUrl.filename_from_args(args.filename, get_url_item.name, "pdf")
+            DatasourcesAndWorkbooks.save_to_file(logger, get_url_item.pdf, filename)
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
 
     @staticmethod
-    def generate_png(logger, server, args, view_url):
+    def generate_png(logger, server_content_type, args, get_url_item):
         logger.trace("Entered method " + inspect.stack()[0].function)
         try:
-            view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view_url)
-            logger.debug(_("content_type.view") + ": {}".format(view_item.name))
+            logger.debug(_("content_type.view") + ": {}".format(get_url_item.name))
             req_option_csv = TSC.ImageRequestOptions(maxage=1)
             DatasourcesAndWorkbooks.apply_values_from_url_params(logger, req_option_csv, args.url)
-            server.views.populate_image(view_item, req_option_csv)
-            filename = GetUrl.filename_from_args(args.filename, view_item.name, "png")
-            DatasourcesAndWorkbooks.save_to_file(logger, view_item.image, filename)
+            server_content_type.populate_image(get_url_item, req_option_csv)
+            filename = GetUrl.filename_from_args(args.filename, get_url_item.name, "png")
+            DatasourcesAndWorkbooks.save_to_file(logger, get_url_item.image, filename)
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
 
     @staticmethod
-    def generate_csv(logger, server, args, view_url):
+    def generate_csv(logger, server_content_type, args, get_url_item):
         logger.trace("Entered method " + inspect.stack()[0].function)
         try:
-            view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view_url)
-            logger.debug(_("content_type.view") + ": {}".format(view_item.name))
+            logger.debug(_("content_type.view") + ": {}".format(get_url_item.name))
             req_option_csv = TSC.CSVRequestOptions(maxage=1)
             DatasourcesAndWorkbooks.apply_values_from_url_params(logger, req_option_csv, args.url)
-            server.views.populate_csv(view_item, req_option_csv)
-            file_name_with_path = GetUrl.filename_from_args(args.filename, view_item.name, "csv")
-            DatasourcesAndWorkbooks.save_to_data_file(logger, view_item.csv, file_name_with_path)
+            server_content_type.populate_csv(get_url_item, req_option_csv)
+            file_name_with_path = GetUrl.filename_from_args(args.filename, get_url_item.name, "csv")
+            DatasourcesAndWorkbooks.save_to_data_file(logger, get_url_item.csv, file_name_with_path)
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
 
@@ -221,7 +236,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             file_name_with_path = GetUrl.get_name_without_possible_extension(file_name_with_path)
             file_name_with_ext = "{}.{}".format(file_name_with_path, file_extension)
             logger.debug("Saving as {}".format(file_name_with_ext))
-            server.workbooks.download(target_workbook.id, filepath=file_name_with_path, no_extract=False)
+            server.workbooks.download(target_workbook.id, filepath=file_name_with_path, include_extract=False)
             logger.info(_("export.success").format(target_workbook.name, file_name_with_ext))
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
@@ -238,7 +253,44 @@ class GetUrl(DatasourcesAndWorkbooks):
             file_name_with_path = GetUrl.get_name_without_possible_extension(file_name_with_path)
             file_name_with_ext = "{}.{}".format(file_name_with_path, file_extension)
             logger.debug("Saving as {}".format(file_name_with_ext))
-            server.datasources.download(target_datasource.id, filepath=file_name_with_path, no_extract=False)
+            server.datasources.download(target_datasource.id, filepath=file_name_with_path, include_extract=False)
             logger.info(_("export.success").format(target_datasource.name, file_name_with_ext))
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
+
+    @staticmethod
+    def parse_get_view_url_to_view_and_custom_view_parts(logger, url):
+        logger.info(_("export.status").format(url))
+        if " " in url:
+            Errors.exit_with_error(logger, _("export.errors.white_space_workbook_view"))
+        if "?" in url:
+            url = url.split("?")[0]
+        # input should be views/workbook_name/view_name
+        # or views/workbook_name/view_name/custom_view_id/custom_view_name
+        url = url.lstrip("/")  # strip opening / if present
+        if not url.find("/"):
+            GetUrl.explain_expected_url(logger, url, "GetUrl")
+        name_parts = url.split("/")
+        if len(name_parts) == 3:
+            return GetUrl.get_view_url(url, logger), None, None
+        elif len(name_parts) == 5:
+            return GetUrl.get_url_parts_from_custom_view_url(url, logger)
+        else:
+            GetUrl.explain_expected_url(logger, url, "GetUrl")
+
+    @staticmethod
+    def get_url_item_and_item_type_from_view_url(logger, url, server):
+        view_url, custom_view_id, custom_view_name = GetUrl.parse_get_view_url_to_view_and_custom_view_parts(
+            logger, url)
+
+        get_url_item = GetUrl.get_view_by_content_url(logger, server, view_url)
+        get_url_item_type = server.views
+
+        if custom_view_id:
+            custom_view_item = GetUrl.get_custom_view_by_id(logger, server, custom_view_id)
+            if custom_view_item.view.id != get_url_item.id:
+                Errors.exit_with_error(logger, "invalid custom view id provided")
+            get_url_item = custom_view_item
+            get_url_item_type = server.custom_views
+
+        return get_url_item, get_url_item_type

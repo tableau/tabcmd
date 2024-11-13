@@ -14,6 +14,7 @@ fake_item.id = "fake-id"
 
 getter = MagicMock()
 getter.get = MagicMock("get", return_value=([fake_item], 1))
+getter.get_by_id = MagicMock("get_by_id", return_value=([fake_item], 1))
 
 mock_args = argparse.Namespace()
 
@@ -91,3 +92,9 @@ class MockedServerTests(unittest.TestCase):
         DatasourcesAndWorkbooks.get_view_by_content_url(mock_logger, mock_server, content_url)
         getter.get.assert_called()
         # should also assert the filter on content url
+
+    def test_get_custom_view_by_id(self, mock_server):
+        mock_server.custom_views = getter
+        custom_view_id = "cv-id"
+        DatasourcesAndWorkbooks.get_custom_view_by_id(mock_logger, mock_server, custom_view_id)
+        getter.get_by_id.assert_called()
