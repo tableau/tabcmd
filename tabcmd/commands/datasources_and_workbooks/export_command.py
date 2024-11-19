@@ -7,6 +7,7 @@ from tabcmd.commands.constants import Errors
 from tabcmd.execution.localize import _
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
+from .datasources_workbooks_views_url_parser import DatasourcesWorkbooksAndViewsUrlParser
 
 pagesize = TSC.PDFRequestOptions.PageType  # type alias for brevity
 
@@ -83,7 +84,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
             wb_content_url,
             custom_view_id,
             custom_view_name,
-        ) = ExportCommand.parse_export_url_to_workbook_view_and_custom_view(logger, args.url)
+        ) = DatasourcesWorkbooksAndViewsUrlParser.parse_export_url_to_workbook_view_and_custom_view(logger, args.url)
         logger.debug(["view_url:", view_content_url, "workbook:", wb_content_url])
         if not view_content_url and not wb_content_url:
             view_example = "/workbook_name/view_name"
@@ -100,9 +101,10 @@ class ExportCommand(DatasourcesAndWorkbooks):
                 default_filename = "{}.pdf".format(workbook_item.name)
 
             elif args.pdf or args.png or args.csv:  # it's a view or custom_view
-                export_item, server_content_type = ExportCommand.get_export_item_and_server_content_type(
+                export_item, server_content_type = (
+                    DatasourcesWorkbooksAndViewsUrlParser.get_export_item_and_server_content_type_from_export_url(
                     view_content_url, logger, server, custom_view_id
-                )
+                ))
 
                 if args.pdf:
                     output = ExportCommand.download_view_pdf(server_content_type, export_item, args, logger)
@@ -127,20 +129,6 @@ class ExportCommand(DatasourcesAndWorkbooks):
 
         except Exception as e:
             Errors.exit_with_error(logger, "Error saving to file", e)
-
-    @staticmethod
-    def get_export_item_and_server_content_type(view_content_url, logger, server, custom_view_id):
-        export_item = ExportCommand.get_view_by_content_url(logger, server, view_content_url)
-        server_content_type = server.views
-
-        if custom_view_id:
-            custom_view_item = ExportCommand.get_custom_view_by_id(logger, server, custom_view_id)
-            if custom_view_item.view.id != export_item.id:
-                Errors.exit_with_error(logger, "Invalid custom view URL provided")
-            server_content_type = server.custom_views
-            export_item = custom_view_item
-
-        return export_item, server_content_type
 
     @staticmethod
     def apply_filters_from_args(request_options: TSC.PDFRequestOptions, args, logger=None) -> None:
@@ -194,37 +182,3 @@ class ExportCommand(DatasourcesAndWorkbooks):
         logger.debug(image_options.get_query_params())
         server_content_type.populate_image(export_item, image_options)
         return export_item.image
-
-    @staticmethod
-    def parse_export_url_to_workbook_view_and_custom_view(logger, url):
-        logger.info(_("export.status").format(url))
-        if " " in url:
-            Errors.exit_with_error(logger, _("export.errors.white_space_workbook_view"))
-        if "?" in url:
-            url = url.split("?")[0]
-        # input should be workbook_name/view_name or /workbook_name/view_name
-        # or workbook_name/view_name/custom_view_id/custom_view_name
-        url = url.lstrip("/")  # strip opening / if present
-        if not url.find("/"):
-            return None, None, None, None
-        name_parts = url.split("/")
-        if len(name_parts) == 2:
-            workbook = name_parts[0]
-            view = "{}/sheets/{}".format(workbook, name_parts[1])
-            return view, workbook, None, None
-        elif len(name_parts) == 4:
-            workbook = name_parts[0]
-            view = "{}/sheets/{}".format(workbook, name_parts[1])
-            custom_view_id = name_parts[2]
-            ExportCommand.verify_valid_custom_view_id(logger, custom_view_id)
-            custom_view_name = name_parts[3]
-            return view, workbook, custom_view_id, custom_view_name
-        else:
-            return None, None, None, None
-
-    @staticmethod
-    def verify_valid_custom_view_id(logger, custom_view_id):
-        try:
-            UUID(custom_view_id)
-        except ValueError:
-            Errors.exit_with_error(logger, _("export.errors.requires_valid_custom_view_uuid"))

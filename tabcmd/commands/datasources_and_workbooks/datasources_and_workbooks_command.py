@@ -1,7 +1,6 @@
 import urllib
 
 import tableauserverclient as TSC
-from tableauserverclient import CustomViewItem
 
 from tabcmd.commands.constants import Errors
 from tabcmd.commands.server import Server
