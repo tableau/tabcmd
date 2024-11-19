@@ -10,6 +10,7 @@ from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 from .datasources_workbooks_views_url_parser import DatasourcesWorkbooksAndViewsUrlParser
 
+
 class GetUrl(DatasourcesAndWorkbooks):
     """
     This command gets the resource from Tableau Server that's represented
@@ -82,8 +83,10 @@ class GetUrl(DatasourcesAndWorkbooks):
         elif content_type == "datasource":
             return GetUrl.generate_tds(logger, server, args, file_type)
         elif content_type == "view":
-            get_url_item, server_content_type = (
-                DatasourcesWorkbooksAndViewsUrlParser.get_url_item_and_item_type_from_view_url(logger, url, server))
+            (
+                get_url_item,
+                server_content_type,
+            ) = DatasourcesWorkbooksAndViewsUrlParser.get_url_item_and_item_type_from_view_url(logger, url, server)
 
             if file_type == "pdf":
                 return GetUrl.generate_pdf(logger, server_content_type, args, get_url_item)
@@ -143,7 +146,8 @@ class GetUrl(DatasourcesAndWorkbooks):
             file_name_with_path = GetUrl.filename_from_args(args.filename, workbook_name, file_extension)
             # the download method will add an extension. How do I tell which one?
             file_name_with_path = DatasourcesWorkbooksAndViewsUrlParser.get_name_without_possible_extension(
-                file_name_with_path)
+                file_name_with_path
+            )
             file_name_with_ext = "{}.{}".format(file_name_with_path, file_extension)
             logger.debug("Saving as {}".format(file_name_with_ext))
             server.workbooks.download(target_workbook.id, filepath=file_name_with_path, include_extract=True)
@@ -161,7 +165,8 @@ class GetUrl(DatasourcesAndWorkbooks):
             file_name_with_path = GetUrl.filename_from_args(args.filename, datasource_name, file_extension)
             # the download method will add an extension
             file_name_with_path = DatasourcesWorkbooksAndViewsUrlParser.get_name_without_possible_extension(
-                file_name_with_path)
+                file_name_with_path
+            )
             file_name_with_ext = "{}.{}".format(file_name_with_path, file_extension)
             logger.debug("Saving as {}".format(file_name_with_ext))
             server.datasources.download(target_datasource.id, filepath=file_name_with_path, include_extract=True)

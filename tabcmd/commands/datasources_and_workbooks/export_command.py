@@ -101,10 +101,12 @@ class ExportCommand(DatasourcesAndWorkbooks):
                 default_filename = "{}.pdf".format(workbook_item.name)
 
             elif args.pdf or args.png or args.csv:  # it's a view or custom_view
-                export_item, server_content_type = (
-                    DatasourcesWorkbooksAndViewsUrlParser.get_export_item_and_server_content_type_from_export_url(
+                (
+                    export_item,
+                    server_content_type,
+                ) = DatasourcesWorkbooksAndViewsUrlParser.get_export_item_and_server_content_type_from_export_url(
                     view_content_url, logger, server, custom_view_id
-                ))
+                )
 
                 if args.pdf:
                     output = ExportCommand.download_view_pdf(server_content_type, export_item, args, logger)

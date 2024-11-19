@@ -7,6 +7,7 @@ from tabcmd.commands.datasources_and_workbooks.datasources_and_workbooks_command
 from tabcmd.commands.server import Server
 from tabcmd.execution.localize import _
 
+
 class DatasourcesWorkbooksAndViewsUrlParser(Server):
     """
     Base Class for parsing & fetching Datasources, Workbooks, Views & Custom Views information from get/export URLs
@@ -51,7 +52,8 @@ class DatasourcesWorkbooksAndViewsUrlParser(Server):
     @staticmethod
     def get_export_item_and_server_content_type_from_export_url(view_content_url, logger, server, custom_view_id):
         return DatasourcesWorkbooksAndViewsUrlParser.get_content_and_server_content_type_from_url(
-            logger, server, view_content_url, custom_view_id)
+            logger, server, view_content_url, custom_view_id
+        )
 
     ################### GetURL Methods ##############################
 
@@ -118,7 +120,8 @@ class DatasourcesWorkbooksAndViewsUrlParser(Server):
         resource_name_with_params = name_parts[::-1][0]  # last part
         resource_name_with_ext = DatasourcesWorkbooksAndViewsUrlParser.strip_query_params(resource_name_with_params)
         resource_name = DatasourcesWorkbooksAndViewsUrlParser.get_name_without_possible_extension(
-            resource_name_with_ext)
+            resource_name_with_ext
+        )
         return resource_name
 
     @staticmethod
@@ -164,11 +167,15 @@ class DatasourcesWorkbooksAndViewsUrlParser(Server):
 
     @staticmethod
     def get_url_item_and_item_type_from_view_url(logger, url, server):
-        view_url, custom_view_id, custom_view_name = (
-            DatasourcesWorkbooksAndViewsUrlParser.parse_get_view_url_to_view_and_custom_view_parts(logger, url))
+        (
+            view_url,
+            custom_view_id,
+            custom_view_name,
+        ) = DatasourcesWorkbooksAndViewsUrlParser.parse_get_view_url_to_view_and_custom_view_parts(logger, url)
 
         return DatasourcesWorkbooksAndViewsUrlParser.get_content_and_server_content_type_from_url(
-            logger, server, view_url, custom_view_id)
+            logger, server, view_url, custom_view_id
+        )
 
     @staticmethod
     def get_content_and_server_content_type_from_url(logger, server, view_content_url, custom_view_id):

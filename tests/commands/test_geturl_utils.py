@@ -89,18 +89,27 @@ class GeturlTests(unittest.TestCase):
         assert DatasourcesWorkbooksAndViewsUrlParser.get_resource_name("workbooks/wbname", mock_logger) == "wbname"
 
     def test_view_name(self):
-        assert DatasourcesWorkbooksAndViewsUrlParser.get_view_url_from_get_url(mock_logger,
-            "views/wb-name/view-name") == "wb-name/sheets/view-name"
+        assert (
+            DatasourcesWorkbooksAndViewsUrlParser.get_view_url_from_get_url(mock_logger, "views/wb-name/view-name")
+            == "wb-name/sheets/view-name"
+        )
 
     def test_view_name_with_url_params(self):
-        assert DatasourcesWorkbooksAndViewsUrlParser.get_view_url_from_get_url(mock_logger,
-            "views/wb-name/view-name?:refresh=y") == "wb-name/sheets/view-name"
+        assert (
+            DatasourcesWorkbooksAndViewsUrlParser.get_view_url_from_get_url(
+                mock_logger, "views/wb-name/view-name?:refresh=y"
+            )
+            == "wb-name/sheets/view-name"
+        )
 
     def test_get_url_parts_from_custom_view_url(self):
         cv_uuid = str(uuid.uuid4())
         custom_view_url = "views/wb-name/view-name/" + cv_uuid + "/custom-view-name"
-        view_url, custom_view_id, custom_view_name = (DatasourcesWorkbooksAndViewsUrlParser.
-                                                      get_custom_view_parts_from_get_url(mock_logger, custom_view_url))
+        (
+            view_url,
+            custom_view_id,
+            custom_view_name,
+        ) = DatasourcesWorkbooksAndViewsUrlParser.get_custom_view_parts_from_get_url(mock_logger, custom_view_url)
         assert view_url == "wb-name/sheets/view-name"
         assert custom_view_id == cv_uuid
         assert custom_view_name == "custom-view-name"
@@ -118,8 +127,11 @@ class GeturlTests(unittest.TestCase):
     def test_get_url_parts_from_custom_view_url_with_url_params(self):
         cv_uuid = str(uuid.uuid4())
         custom_view_url = "views/wb-name/view-name/" + cv_uuid + "/custom-view-name?:refresh=yes"
-        view_url, custom_view_id, custom_view_name = (DatasourcesWorkbooksAndViewsUrlParser.
-                                                      get_custom_view_parts_from_get_url(mock_logger, custom_view_url))
+        (
+            view_url,
+            custom_view_id,
+            custom_view_name,
+        ) = DatasourcesWorkbooksAndViewsUrlParser.get_custom_view_parts_from_get_url(mock_logger, custom_view_url)
         assert view_url == "wb-name/sheets/view-name"
         assert custom_view_id == cv_uuid
         assert custom_view_name == "custom-view-name"
@@ -127,24 +139,33 @@ class GeturlTests(unittest.TestCase):
     def test_get_url_parts_from_custom_view_url_with_file_extension(self):
         cv_uuid = str(uuid.uuid4())
         custom_view_url = "views/wb-name/view-name/" + cv_uuid + "/custom-view-name.png"
-        view_url, custom_view_id, custom_view_name = (DatasourcesWorkbooksAndViewsUrlParser.
-                                                      get_custom_view_parts_from_get_url(mock_logger, custom_view_url))
+        (
+            view_url,
+            custom_view_id,
+            custom_view_name,
+        ) = DatasourcesWorkbooksAndViewsUrlParser.get_custom_view_parts_from_get_url(mock_logger, custom_view_url)
         assert view_url == "wb-name/sheets/view-name"
         assert custom_view_id == cv_uuid
         assert custom_view_name == "custom-view-name"
 
     def test_parse_get_url_to_view_parts(self):
         url = "views/wb-name/view-name"
-        view_url, cv_id, cv_name = (DatasourcesWorkbooksAndViewsUrlParser.
-                                    parse_get_view_url_to_view_and_custom_view_parts(mock_logger, url))
+        (
+            view_url,
+            cv_id,
+            cv_name,
+        ) = DatasourcesWorkbooksAndViewsUrlParser.parse_get_view_url_to_view_and_custom_view_parts(mock_logger, url)
         assert view_url == "wb-name/sheets/view-name"
         assert cv_id is None
         assert cv_name is None
 
     def test_parse_get_url_to_view_parts_with_params(self):
         url = "views/wb-name/view-name?params=1"
-        view_url, cv_id, cv_name = (DatasourcesWorkbooksAndViewsUrlParser.
-                                    parse_get_view_url_to_view_and_custom_view_parts(mock_logger, url))
+        (
+            view_url,
+            cv_id,
+            cv_name,
+        ) = DatasourcesWorkbooksAndViewsUrlParser.parse_get_view_url_to_view_and_custom_view_parts(mock_logger, url)
         assert view_url == "wb-name/sheets/view-name"
         assert cv_id is None
         assert cv_name is None
@@ -162,8 +183,13 @@ class GeturlTests(unittest.TestCase):
     def test_parse_get_url_to_custom_view_parts(self):
         cv_uuid = str(uuid.uuid4())
         custom_view_url = "views/wb-name/view-name/" + cv_uuid + "/custom-view-name"
-        view_url, custom_view_id, custom_view_name = (DatasourcesWorkbooksAndViewsUrlParser.
-        parse_get_view_url_to_view_and_custom_view_parts(mock_logger, custom_view_url))
+        (
+            view_url,
+            custom_view_id,
+            custom_view_name,
+        ) = DatasourcesWorkbooksAndViewsUrlParser.parse_get_view_url_to_view_and_custom_view_parts(
+            mock_logger, custom_view_url
+        )
         assert view_url == "wb-name/sheets/view-name"
         assert custom_view_id == cv_uuid
         assert custom_view_name == "custom-view-name"
@@ -171,9 +197,13 @@ class GeturlTests(unittest.TestCase):
     def test_parse_get_url_to_custom_view_parts_with_file_extension(self):
         cv_uuid = str(uuid.uuid4())
         custom_view_url = "views/wb-name/view-name/" + cv_uuid + "/custom-view-name.png"
-        view_url, custom_view_id, custom_view_name = (
-            DatasourcesWorkbooksAndViewsUrlParser.parse_get_view_url_to_view_and_custom_view_parts(mock_logger,
-                                                                                                   custom_view_url))
+        (
+            view_url,
+            custom_view_id,
+            custom_view_name,
+        ) = DatasourcesWorkbooksAndViewsUrlParser.parse_get_view_url_to_view_and_custom_view_parts(
+            mock_logger, custom_view_url
+        )
         assert view_url == "wb-name/sheets/view-name"
         assert custom_view_id == cv_uuid
         assert custom_view_name == "custom-view-name"
@@ -226,8 +256,12 @@ class ExportTests(unittest.TestCase):
 
     def test_parse_export_url_to_workbook_view_and_custom_view(self):
         wb_url = "wb-name/view-name"
-        view, wb, cv_id, cv_name = (DatasourcesWorkbooksAndViewsUrlParser.
-                                    parse_export_url_to_workbook_view_and_custom_view(mock_logger, wb_url))
+        (
+            view,
+            wb,
+            cv_id,
+            cv_name,
+        ) = DatasourcesWorkbooksAndViewsUrlParser.parse_export_url_to_workbook_view_and_custom_view(mock_logger, wb_url)
         assert view == "wb-name/sheets/view-name"
         assert wb == "wb-name"
         assert cv_id is None
@@ -235,8 +269,12 @@ class ExportTests(unittest.TestCase):
 
     def test_parse_export_url_to_workbook_view_and_custom_view_with_start_slash(self):
         wb_url = "/wb-name/view-name"
-        view, wb, cv_id, cv_name = (DatasourcesWorkbooksAndViewsUrlParser.
-                                    parse_export_url_to_workbook_view_and_custom_view(mock_logger, wb_url))
+        (
+            view,
+            wb,
+            cv_id,
+            cv_name,
+        ) = DatasourcesWorkbooksAndViewsUrlParser.parse_export_url_to_workbook_view_and_custom_view(mock_logger, wb_url)
         assert view == "wb-name/sheets/view-name"
         assert wb == "wb-name"
         assert cv_id is None
@@ -244,8 +282,12 @@ class ExportTests(unittest.TestCase):
 
     def test_parse_export_url_to_workbook_view_and_custom_view_bad_url(self):
         wb_url = "wb-name/view-name/kitty"
-        view, wb, cv_id, cv_name = (DatasourcesWorkbooksAndViewsUrlParser.
-                                    parse_export_url_to_workbook_view_and_custom_view(mock_logger, wb_url))
+        (
+            view,
+            wb,
+            cv_id,
+            cv_name,
+        ) = DatasourcesWorkbooksAndViewsUrlParser.parse_export_url_to_workbook_view_and_custom_view(mock_logger, wb_url)
         assert view is None
         assert wb is None
         assert cv_id is None
@@ -255,8 +297,12 @@ class ExportTests(unittest.TestCase):
         cv_uuid = str(uuid.uuid4())
         custom_view_name = "custom-view-name"
         wb_url = "/wb-name/view-name/" + cv_uuid + "/" + custom_view_name
-        view, wb, cv_id, cv_name = (DatasourcesWorkbooksAndViewsUrlParser.
-                                    parse_export_url_to_workbook_view_and_custom_view(mock_logger, wb_url))
+        (
+            view,
+            wb,
+            cv_id,
+            cv_name,
+        ) = DatasourcesWorkbooksAndViewsUrlParser.parse_export_url_to_workbook_view_and_custom_view(mock_logger, wb_url)
         assert view == "wb-name/sheets/view-name"
         assert wb == "wb-name"
         assert cv_id == cv_uuid
@@ -266,8 +312,12 @@ class ExportTests(unittest.TestCase):
         cv_uuid = str(uuid.uuid4())
         custom_view_name = "custom-view-name"
         wb_url = "/wb-name/view-name/" + cv_uuid + "/" + custom_view_name + "/kitty"
-        view, wb, cv_id, cv_name = (DatasourcesWorkbooksAndViewsUrlParser.
-                                    parse_export_url_to_workbook_view_and_custom_view(mock_logger, wb_url))
+        (
+            view,
+            wb,
+            cv_id,
+            cv_name,
+        ) = DatasourcesWorkbooksAndViewsUrlParser.parse_export_url_to_workbook_view_and_custom_view(mock_logger, wb_url)
         assert view is None
         assert wb is None
         assert cv_id is None
@@ -283,9 +333,12 @@ class ExportTests(unittest.TestCase):
         view_url = "wb-name/sheets/view-name"
         mock_server.views = mock.MagicMock()
         mock_server.views.get = mock.MagicMock("get", return_value=([fake_item], 1))
-        view_item, server_content_type = (DatasourcesWorkbooksAndViewsUrlParser.
-                                          get_export_item_and_server_content_type_from_export_url(
-            view_url, mock_logger, mock_server, None))
+        (
+            view_item,
+            server_content_type,
+        ) = DatasourcesWorkbooksAndViewsUrlParser.get_export_item_and_server_content_type_from_export_url(
+            view_url, mock_logger, mock_server, None
+        )
         assert view_item == fake_item
         assert server_content_type == mock_server.views
 
@@ -296,9 +349,12 @@ class ExportTests(unittest.TestCase):
         mock_server.views.get = mock.MagicMock("get", return_value=([fake_item], 1))
         mock_server.custom_views = mock.MagicMock()
         mock_server.custom_views.get_by_id = mock.MagicMock("get_by_id", return_value=fake_cv_item)
-        cv_item, server_content_type = (DatasourcesWorkbooksAndViewsUrlParser.
-                                        get_export_item_and_server_content_type_from_export_url(
-            view_url, mock_logger, mock_server, fake_cv_id))
+        (
+            cv_item,
+            server_content_type,
+        ) = DatasourcesWorkbooksAndViewsUrlParser.get_export_item_and_server_content_type_from_export_url(
+            view_url, mock_logger, mock_server, fake_cv_id
+        )
         assert cv_item == fake_cv_item
         assert server_content_type == mock_server.custom_views
 
