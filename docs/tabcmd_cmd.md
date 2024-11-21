@@ -89,7 +89,7 @@ For more information about loggin in, see [Logging in](index.html#logging-in).
 
 \-\-timeout SECONDS
 
-: The number of seconds the server should wait before processing the login command. Default: 30 seconds.
+: The number of seconds the server should wait before timing out the login command. If this  option is not set, the login command will run indefinitely, waiting the server to respond. Default: 30 seconds.
 
 \-\-token-name
 
@@ -572,7 +572,7 @@ New syntax, with no need to encode the parameter values:
 `tabcmd export \/WorldIndicators\/Population --pdf -f b1.pdf --filter "Birth Rate Bin=1.5-3%"`
 
 
-: <div class="alert alert-info"><strong>Note</strong>:In both formats, the filter clause cannot contain a colon (:), a comma (,) or an ampersand (&). 
+: <div class="alert alert-info"><strong>Note</strong>: In both formats, the filter clause cannot contain a colon (:), a comma (,) or an ampersand (&). 
 You must replace each of these characters with an asterisk (*)</div>
 
 
