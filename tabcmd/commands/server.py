@@ -58,9 +58,9 @@ class Server:
 
         while True:
             req_option = TSC.RequestOptions(pagenumber=page_number)
-            req_option.filter.add(TSC.Filter(TSC.RequestOptions.Field.Name,
-                                             TSC.RequestOptions.Operator.Equals,
-                                             item_name))
+            req_option.filter.add(
+                TSC.Filter(TSC.RequestOptions.Field.Name, TSC.RequestOptions.Operator.Equals, item_name)
+            )
             all_items, pagination_item = item_endpoint.get(req_option)
 
             if all_items is None or all_items == []:
@@ -76,12 +76,13 @@ class Server:
             total_retrieved_items += len(all_items)
 
             logger.debug(
-                "{} items of name: {} were found for query page number: {}, page size: {} & total available: {}"
-                .format(len(all_items),
-                        item_name,
-                        pagination_item.page_number,
-                        pagination_item.page_size,
-                        pagination_item.total_available)
+                "{} items of name: {} were found for query page number: {}, page size: {} & total available: {}".format(
+                    len(all_items),
+                    item_name,
+                    pagination_item.page_number,
+                    pagination_item.page_size,
+                    pagination_item.total_available,
+                )
             )
 
             if container:

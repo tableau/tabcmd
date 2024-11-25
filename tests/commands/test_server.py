@@ -3,10 +3,10 @@ from unittest.mock import MagicMock, patch
 import tableauserverclient as TSC
 from tabcmd.commands.server import Server
 
-class TestServer(unittest.TestCase):
 
-    @patch('tabcmd.commands.server.TSC.RequestOptions')
-    @patch('tabcmd.commands.server.TSC.Filter')
+class TestServer(unittest.TestCase):
+    @patch("tabcmd.commands.server.TSC.RequestOptions")
+    @patch("tabcmd.commands.server.TSC.Filter")
     def test_get_items_by_name_returns_items(self, MockFilter, MockRequestOptions):
         logger = MagicMock()
         item_endpoint = MagicMock()
@@ -27,8 +27,8 @@ class TestServer(unittest.TestCase):
         logger.debug.assert_called()
         item_endpoint.get.assert_called()
 
-    @patch('tabcmd.commands.server.TSC.RequestOptions')
-    @patch('tabcmd.commands.server.TSC.Filter')
+    @patch("tabcmd.commands.server.TSC.RequestOptions")
+    @patch("tabcmd.commands.server.TSC.Filter")
     def test_get_items_by_name_no_items_found(self, MockFilter, MockRequestOptions):
         logger = MagicMock()
         item_endpoint = MagicMock()
@@ -48,8 +48,8 @@ class TestServer(unittest.TestCase):
         logger.debug.assert_called()
         item_endpoint.get.assert_called()
 
-    @patch('tabcmd.commands.server.TSC.RequestOptions')
-    @patch('tabcmd.commands.server.TSC.Filter')
+    @patch("tabcmd.commands.server.TSC.RequestOptions")
+    @patch("tabcmd.commands.server.TSC.Filter")
     def test_get_items_by_name_with_container(self, MockFilter, MockRequestOptions):
         logger = MagicMock()
         item_endpoint = MagicMock()
@@ -72,8 +72,8 @@ class TestServer(unittest.TestCase):
         logger.debug.assert_called()
         item_endpoint.get.assert_called()
 
-    @patch('tabcmd.commands.server.TSC.RequestOptions')
-    @patch('tabcmd.commands.server.TSC.Filter')
+    @patch("tabcmd.commands.server.TSC.RequestOptions")
+    @patch("tabcmd.commands.server.TSC.Filter")
     def test_get_items_by_name_with_container_no_match(self, MockFilter, MockRequestOptions):
         logger = MagicMock()
         item_endpoint = MagicMock()
@@ -96,8 +96,8 @@ class TestServer(unittest.TestCase):
         logger.debug.assert_called()
         item_endpoint.get.assert_called()
 
-    @patch('tabcmd.commands.server.TSC.RequestOptions')
-    @patch('tabcmd.commands.server.TSC.Filter')
+    @patch("tabcmd.commands.server.TSC.RequestOptions")
+    @patch("tabcmd.commands.server.TSC.Filter")
     def test_get_items_by_name_multiple_pages(self, MockFilter, MockRequestOptions):
         logger = MagicMock()
         item_endpoint = MagicMock()
@@ -126,7 +126,7 @@ class TestServer(unittest.TestCase):
         item_endpoint.get.side_effect = [
             ([item_1], pagination_item_1),
             ([item_2], pagination_item_2),
-            ([item_3], pagination_item_3)
+            ([item_3], pagination_item_3),
         ]
 
         result = Server.get_items_by_name(logger, item_endpoint, item_name, container)
@@ -135,8 +135,8 @@ class TestServer(unittest.TestCase):
         self.assertEqual(item_endpoint.get.call_count, 3)
         logger.debug.assert_called()
 
-    @patch('tabcmd.commands.server.TSC.RequestOptions')
-    @patch('tabcmd.commands.server.TSC.Filter')
+    @patch("tabcmd.commands.server.TSC.RequestOptions")
+    @patch("tabcmd.commands.server.TSC.Filter")
     def test_get_items_by_name_multiple_pages_with_container(self, MockFilter, MockRequestOptions):
         logger = MagicMock()
         item_endpoint = MagicMock()
@@ -169,7 +169,7 @@ class TestServer(unittest.TestCase):
         item_endpoint.get.side_effect = [
             ([item_1], pagination_item_1),
             ([item_2], pagination_item_2),
-            ([item_3], pagination_item_3)
+            ([item_3], pagination_item_3),
         ]
 
         result = Server.get_items_by_name(logger, item_endpoint, item_name, container)
@@ -178,8 +178,8 @@ class TestServer(unittest.TestCase):
         self.assertEqual(item_endpoint.get.call_count, 3)
         logger.debug.assert_called()
 
-    @patch('tabcmd.commands.server.TSC.RequestOptions')
-    @patch('tabcmd.commands.server.TSC.Filter')
+    @patch("tabcmd.commands.server.TSC.RequestOptions")
+    @patch("tabcmd.commands.server.TSC.Filter")
     def test_get_items_by_name_multiple_pages_no_container_match(self, MockFilter, MockRequestOptions):
         logger = MagicMock()
         item_endpoint = MagicMock()
@@ -212,7 +212,7 @@ class TestServer(unittest.TestCase):
         item_endpoint.get.side_effect = [
             ([item_1], pagination_item_1),
             ([item_2], pagination_item_2),
-            ([item_3], pagination_item_3)
+            ([item_3], pagination_item_3),
         ]
 
         result = Server.get_items_by_name(logger, item_endpoint, item_name, container)
