@@ -37,15 +37,21 @@ mock_args = argparse.Namespace()
 fake_item = MagicMock()
 fake_item.name = "fake-name"
 fake_item.id = "fake-id"
+fake_item.project_id = "fake-id"
 fake_item.pdf = b"/pdf-representation-of-view"
 fake_item.extract_encryption_mode = "Disabled"
+
+fake_item_pagination = MagicMock()
+fake_item_pagination.page_number = 1
+fake_item_pagination.total_available = 1
+fake_item_pagination.page_size = 100
 
 fake_job = MagicMock()
 fake_job.id = "fake-job-id"
 
 creator = MagicMock()
 getter = MagicMock()
-getter.get = MagicMock("get", return_value=([fake_item], 1))
+getter.get = MagicMock("get", return_value=([fake_item], fake_item_pagination))
 getter.publish = MagicMock("publish", return_value=fake_item)
 getter.create_extract = MagicMock("create_extract", return_value=fake_job)
 getter.decrypt_extract = MagicMock("decrypt_extract", return_value=fake_job)
@@ -214,7 +220,6 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.removecalculations = None
         mock_args.incremental = None
         mock_args.synchronous = None
-        print(mock_args)
 
         refresh_extracts_command.RefreshExtracts.run_command(mock_args)
         mock_session.assert_called()
