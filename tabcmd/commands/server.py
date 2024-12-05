@@ -55,7 +55,7 @@ class Server:
         all_items, pagination_item = item_endpoint.get(req_option)
         if all_items is None or all_items == []:
             raise TSC.ServerResponseError(
-                code=404,
+                code="404",
                 summary=_("errors.xmlapi.not_found"),
                 detail=_("errors.xmlapi.not_found") + ": " + item_log_name,
             )

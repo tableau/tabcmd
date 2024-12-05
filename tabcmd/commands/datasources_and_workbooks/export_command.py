@@ -1,10 +1,13 @@
 import tableauserverclient as TSC
 
+from uuid import UUID
+
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.constants import Errors
 from tabcmd.execution.localize import _
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
+from .datasources_workbooks_views_url_parser import DatasourcesWorkbooksAndViewsUrlParser
 
 pagesize = TSC.PDFRequestOptions.PageType  # type alias for brevity
 
@@ -76,7 +79,12 @@ class ExportCommand(DatasourcesAndWorkbooks):
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
-        view_content_url, wb_content_url = ExportCommand.parse_export_url_to_workbook_and_view(logger, args.url)
+        (
+            view_content_url,
+            wb_content_url,
+            custom_view_id,
+            custom_view_name,
+        ) = DatasourcesWorkbooksAndViewsUrlParser.parse_export_url_to_workbook_view_and_custom_view(logger, args.url)
         logger.debug(["view_url:", view_content_url, "workbook:", wb_content_url])
         if not view_content_url and not wb_content_url:
             view_example = "/workbook_name/view_name"
@@ -92,19 +100,23 @@ class ExportCommand(DatasourcesAndWorkbooks):
 
                 default_filename = "{}.pdf".format(workbook_item.name)
 
-            elif args.pdf or args.png or args.csv:  # it's a view
-                view_item = ExportCommand.get_view_by_content_url(logger, server, view_content_url)
+            elif args.pdf or args.png or args.csv:  # it's a view or custom_view
+                (
+                    export_item,
+                    server_content_type,
+                ) = DatasourcesWorkbooksAndViewsUrlParser.get_export_item_and_server_content_type_from_export_url(
+                    view_content_url, logger, server, custom_view_id
+                )
 
                 if args.pdf:
-                    output = ExportCommand.download_view_pdf(server, view_item, args, logger)
-                    default_filename = "{}.pdf".format(view_item.name)
+                    output = ExportCommand.download_view_pdf(server_content_type, export_item, args, logger)
+                    default_filename = "{}.pdf".format(export_item.name)
                 elif args.csv:
-                    output = ExportCommand.download_csv(server, view_item, args, logger)
-                    default_filename = "{}.csv".format(view_item.name)
+                    output = ExportCommand.download_csv(server_content_type, export_item, args, logger)
+                    default_filename = "{}.csv".format(export_item.name)
                 elif args.png:
-                    output = ExportCommand.download_png(server, view_item, args, logger)
-
-                    default_filename = "{}.png".format(view_item.name)
+                    output = ExportCommand.download_png(server_content_type, export_item, args, logger)
+                    default_filename = "{}.png".format(export_item.name)
 
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response").format(""), e)
@@ -142,51 +154,33 @@ class ExportCommand(DatasourcesAndWorkbooks):
         return workbook_item.pdf
 
     @staticmethod
-    def download_view_pdf(server, view_item, args, logger):
+    def download_view_pdf(server_content_type, export_item, args, logger):
         logger.debug(args.url)
         pdf_options = TSC.PDFRequestOptions(maxage=1)
         ExportCommand.apply_values_from_url_params(logger, pdf_options, args.url)
         ExportCommand.apply_filters_from_args(pdf_options, args, logger)
         ExportCommand.apply_pdf_options(logger, pdf_options, args)
         logger.debug(pdf_options.get_query_params())
-        server.views.populate_pdf(view_item, pdf_options)
-        return view_item.pdf
+        server_content_type.populate_pdf(export_item, pdf_options)
+        return export_item.pdf
 
     @staticmethod
-    def download_csv(server, view_item, args, logger):
+    def download_csv(server_content_type, export_item, args, logger):
         logger.debug(args.url)
         csv_options = TSC.CSVRequestOptions(maxage=1)
         ExportCommand.apply_values_from_url_params(logger, csv_options, args.url)
         ExportCommand.apply_filters_from_args(csv_options, args, logger)
         logger.debug(csv_options.get_query_params())
-        server.views.populate_csv(view_item, csv_options)
-        return view_item.csv
+        server_content_type.populate_csv(export_item, csv_options)
+        return export_item.csv
 
     @staticmethod
-    def download_png(server, view_item, args, logger):
+    def download_png(server_content_type, export_item, args, logger):
         logger.debug(args.url)
         image_options = TSC.ImageRequestOptions(maxage=1)
         ExportCommand.apply_values_from_url_params(logger, image_options, args.url)
         ExportCommand.apply_filters_from_args(image_options, args, logger)
         DatasourcesAndWorkbooks.apply_png_options(logger, image_options, args)
         logger.debug(image_options.get_query_params())
-        server.views.populate_image(view_item, image_options)
-        return view_item.image
-
-    @staticmethod
-    def parse_export_url_to_workbook_and_view(logger, url):
-        logger.info(_("export.status").format(url))
-        if " " in url:
-            Errors.exit_with_error(logger, _("export.errors.white_space_workbook_view"))
-        if "?" in url:
-            url = url.split("?")[0]
-        # input should be workbook_name/view_name or /workbook_name/view_name
-        url = url.lstrip("/")  # strip opening / if present
-        if not url.find("/"):
-            return None, None
-        name_parts = url.split("/")
-        if len(name_parts) != 2:
-            return None, None
-        workbook = name_parts[0]
-        view = "{}/sheets/{}".format(workbook, name_parts[1])
-        return view, workbook
+        server_content_type.populate_image(export_item, image_options)
+        return export_item.image
