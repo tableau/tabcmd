@@ -1,7 +1,8 @@
 #! /usr/bin/env python3
 # Written by Martin v. Löwis <loewis@informatik.hu-berlin.de>
-
-""" Updated to handle utf-8 files and give better error messages
+""" 
+Fetched from https://github.com/python/cpython/blob/main/Tools/i18n/msgfmt.py
+Updated to handle utf-8 files and give better error messages
 TODO contribute back?
 """
 
@@ -107,7 +108,7 @@ def make(filename, outfile):
     CTXT = 3
 
     encoding = 'utf-8'
-    print("Assumed encoding", encoding)
+    print("msgfmt::Assumed encoding", encoding)
 
     # Compute .mo name from .po name and arguments
     if filename.endswith('.po'):
@@ -195,7 +196,7 @@ def make(filename, outfile):
         try:
             l = ast.literal_eval(l)
         except:
-            print("ERROR (skipped)", lno, msgid)
+            print("\tERROR (skipped)", lno, msgid)
             pass
         if section == CTXT:
             msgctxt += l.encode(encoding)

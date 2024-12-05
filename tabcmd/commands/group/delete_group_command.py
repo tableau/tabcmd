@@ -33,4 +33,4 @@ class DeleteGroupCommand(Server):
             server.groups.delete(group_id)
             logger.info(_("common.output.succeeded"))
         except Exception as e:
-            Errors.exit_with_error(logger, _("tabcmd.result.failed.delete.group"), e)
+            Errors.exit_with_error(logger, _("errors.bad_request.detail.generic_delete_groups_error"), e)
