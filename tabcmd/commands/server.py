@@ -50,31 +50,52 @@ class Server:
             container_name: str = "[{0}] {1}".format(container.__class__.__name__, container.name)
             item_log_name = "{0}/{1}".format(container_name, item_log_name)
         logger.debug(_("export.status").format(item_log_name))
-        req_option = TSC.RequestOptions()
-        req_option.filter.add(TSC.Filter(TSC.RequestOptions.Field.Name, TSC.RequestOptions.Operator.Equals, item_name))
-        all_items, pagination_item = item_endpoint.get(req_option)
-        if all_items is None or all_items == []:
-            raise TSC.ServerResponseError(
-                code="404",
-                summary=_("errors.xmlapi.not_found"),
-                detail=_("errors.xmlapi.not_found") + ": " + item_log_name,
+
+        result = []
+        total_available_items = None
+        page_number = 1
+        total_retrieved_items = 0
+
+        while True:
+            req_option = TSC.RequestOptions(pagenumber=page_number)
+            req_option.filter.add(
+                TSC.Filter(TSC.RequestOptions.Field.Name, TSC.RequestOptions.Operator.Equals, item_name)
             )
-        if len(all_items) == 1:
-            logger.debug("Exactly one result found")
-            result = all_items
-        if len(all_items) > 1:
+            all_items, pagination_item = item_endpoint.get(req_option)
+
+            if all_items is None or all_items == []:
+                raise TSC.ServerResponseError(
+                    code="404",
+                    summary=_("errors.xmlapi.not_found"),
+                    detail=_("errors.xmlapi.not_found") + ": " + item_log_name,
+                )
+
+            if total_available_items is None:
+                total_available_items = pagination_item.total_available
+
+            total_retrieved_items += len(all_items)
+
             logger.debug(
-                "{}+ items of this name were found: {}".format(
-                    len(all_items), all_items[0].name + ", " + all_items[1].name + ", ..."
+                "{} items of name: {} were found for query page number: {}, page size: {} & total available: {}".format(
+                    len(all_items),
+                    item_name,
+                    pagination_item.page_number,
+                    pagination_item.page_size,
+                    pagination_item.total_available,
                 )
             )
 
             if container:
                 container_id = container.id
                 logger.debug("Filtering to items in project {}".format(container.id))
-                result = list(filter(lambda item: item.project_id == container_id, all_items))
+                result.extend(list(filter(lambda item: item.project_id == container_id, all_items)))
             else:
-                result = all_items
+                result.extend(all_items)
+
+            if total_retrieved_items >= total_available_items:
+                break
+
+            page_number = pagination_item.page_number + 1
 
         return result
 

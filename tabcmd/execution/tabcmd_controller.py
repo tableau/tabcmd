@@ -1,4 +1,5 @@
 import logging
+import os
 import sys
 
 from .localize import set_client_locale
@@ -37,6 +38,8 @@ class TabcmdController:
             logger.debug(namespace)
         if namespace.language:
             set_client_locale(namespace.language, logger)
+        if namespace.query_page_size:
+            os.environ["TSC_PAGE_SIZE"] = str(namespace.query_page_size)
         try:
             func = namespace.func
             # if a subcommand was identified, call the function assigned to it
