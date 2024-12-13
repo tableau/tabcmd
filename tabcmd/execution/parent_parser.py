@@ -134,6 +134,14 @@ def parent_parser_with_global_options():
         version=strings[6] + "v" + version + "\n \n",
         help=strings[7],
     )
+
+    parser.add_argument(
+        "--query-page-size",
+        type=int,
+        default=None,
+        metavar="<PAGE_SIZE>",
+        help="Specify the page size for query results.",
+    )
     return parser
 
 
