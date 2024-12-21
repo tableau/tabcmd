@@ -61,17 +61,21 @@ class Server:
             req_option.filter.add(
                 TSC.Filter(TSC.RequestOptions.Field.Name, TSC.RequestOptions.Operator.Equals, item_name)
             )
+            if container:
+                req_option.filter.add(
+                    TSC.Filter(
+                        TSC.RequestOptions.Field.ParentProjectId, TSC.RequestOptions.Operator.Equals, container.id
+                    )
+                )
+
             all_items, pagination_item = item_endpoint.get(req_option)
 
-            if all_items is None or all_items == []:
+            if pagination_item.total_available == 0:
                 raise TSC.ServerResponseError(
                     code="404",
                     summary=_("errors.xmlapi.not_found"),
                     detail=_("errors.xmlapi.not_found") + ": " + item_log_name,
                 )
-
-            if total_available_items is None:
-                total_available_items = pagination_item.total_available
 
             total_retrieved_items += len(all_items)
 
@@ -85,14 +89,8 @@ class Server:
                 )
             )
 
-            if container:
-                container_id = container.id
-                logger.debug("Filtering to items in project {}".format(container.id))
-                result.extend(list(filter(lambda item: item.project_id == container_id, all_items)))
-            else:
-                result.extend(all_items)
-
-            if total_retrieved_items >= total_available_items:
+            result.extend(all_items)
+            if total_retrieved_items >= pagination_item.total_available:
                 break
 
             page_number = pagination_item.page_number + 1
