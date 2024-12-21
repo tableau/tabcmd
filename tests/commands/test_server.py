@@ -73,7 +73,6 @@ class TestServer(unittest.TestCase):
         logger.debug.assert_called()
         item_endpoint.get.assert_called()
 
-
     @patch("tabcmd.commands.server.TSC.RequestOptions")
     @patch("tabcmd.commands.server.TSC.Filter")
     def test_get_items_by_name_multiple_pages(self, MockFilter, MockRequestOptions):

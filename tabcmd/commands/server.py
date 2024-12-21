@@ -61,12 +61,21 @@ class Server:
             req_option.filter.add(
                 TSC.Filter(TSC.RequestOptions.Field.Name, TSC.RequestOptions.Operator.Equals, item_name)
             )
+
+            # todo - this doesn't filter if the project is in the top level.
+            # todo: there is no guarantee that these fields are the same for different content types.
+            # probably better if we move that type specific logic out to a wrapper
             if container:
-                req_option.filter.add(
-                    TSC.Filter(
-                        TSC.RequestOptions.Field.ParentProjectId, TSC.RequestOptions.Operator.Equals, container.id
-                    )
-                )
+                # the name of the filter field is different if you are finding a project or any other item
+                if type(item_endpoint).__name__.find("Projects") < 0:
+                    parentField = TSC.RequestOptions.Field.ProjectName
+                    parentValue = container.name
+                else:
+                    parentField = TSC.RequestOptions.Field.ParentProjectId
+                    parentValue = container.id
+                logger.debug("filtering for parent with {}".format(parentField))
+
+                req_option.filter.add(TSC.Filter(parentField, TSC.RequestOptions.Operator.Equals, parentValue))
 
             all_items, pagination_item = item_endpoint.get(req_option)
 
@@ -165,12 +174,7 @@ class Server:
     def _get_project_by_name_and_parent(logger, server, project_name: str, parent: Optional[TSC.ProjectItem]):
         # logger.debug("get by name and parent: {0}, {1}".format(project_name, parent))
         # get by name to narrow down the list
-        projects = Server.get_items_by_name(logger, server.projects, project_name)
-        if parent is not None:
-            parent_id = parent.id
-            for project in projects:
-                if project.parent_id == parent_id:
-                    return project
+        projects = Server.get_items_by_name(logger, server.projects, project_name, parent)
         return projects[0]
 
     @staticmethod
