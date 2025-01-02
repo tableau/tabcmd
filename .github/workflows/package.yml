@@ -1,4 +1,4 @@
-name: Release-Executable
+name: Package-and-release
 
 # Pyinstaller requires that executables for each OS are built on that OS
 # This action is intended to build on each of the supported OS's: mac, windows, linux.
@@ -29,6 +29,7 @@ jobs:
               pyinstaller tabcmd-windows.spec --clean --noconfirm --distpath ./dist/windows
             OUT_FILE_NAME: tabcmd.exe
             ASSET_MIME: application/vnd.microsoft.portable-executable
+            CMD_INVOKE: ./dist/${{ matrix.TARGET }}/${{matrix.OUT_FILE_NAME}}
           - os: macos-13
             TARGET: macos
             CMD_BUILD:  >
@@ -37,6 +38,7 @@ jobs:
             OUT_FILE_NAME: tabcmd.app
             APP_BINARY_FILE_NAME: tabcmd
             ASSET_MIME: application/zip
+            CMD_INVOKE: ./dist/${{ matrix.TARGET }}/${{ matrix.OUT_FILE_NAME }}/Contents/MacOS/${{ matrix.APP_BINARY_FILE_NAME }}
           - os: macos-latest
             TARGET: macos
             CMD_BUILD:  >
@@ -45,6 +47,7 @@ jobs:
             OUT_FILE_NAME: tabcmd.app
             APP_BINARY_FILE_NAME: tabcmd
             ASSET_MIME: application/zip
+            CMD_INVOKE: ./dist/${{ matrix.TARGET }}/${{ matrix.OUT_FILE_NAME }}/Contents/MacOS/${{ matrix.APP_BINARY_FILE_NAME }}
           - os: ubuntu-latest
             TARGET: ubuntu
           # https://stackoverflow.com/questions/31259856
@@ -53,6 +56,7 @@ jobs:
               pyinstaller --clean -y --distpath ./dist/ubuntu tabcmd-linux.spec &&
               chown -R --reference=. ./dist/ubuntu
             OUT_FILE_NAME: tabcmd
+            CMD_INVOKE: ./dist/${{ matrix.TARGET }}/${{matrix.OUT_FILE_NAME}}
 
     steps:
     - uses: actions/checkout@v4
@@ -75,13 +79,8 @@ jobs:
       run: ${{matrix.CMD_BUILD}}
 
     - name: Validate package for ${{matrix.TARGET}}
-      if: matrix.TARGET != 'macos'
-      run: ./dist/${{ matrix.TARGET }}/${{matrix.OUT_FILE_NAME}}
-
-    - name: Validate package for Mac
-      if: matrix.TARGET == 'macos'
-      run: ./dist/${{ matrix.TARGET }}/${{ matrix.OUT_FILE_NAME }}/Contents/MacOS/${{ matrix.APP_BINARY_FILE_NAME }}
-
+      run: ${{matrix.CMD_INVOKE}}
+      
     - name: Tar app bundle for Mac
       if: matrix.TARGET == 'macos'
       run: |
@@ -89,25 +88,17 @@ jobs:
         cd dist/${{ matrix.TARGET }}
         tar -cvf ${{ matrix.BUNDLE_NAME }}.tar ${{ matrix.OUT_FILE_NAME }}
 
-    - name: Upload artifact
-      if: matrix.TARGET != 'macos'
+    - name: Upload binary
       uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.OUT_FILE_NAME }}
         path: ./dist/${{ matrix.TARGET }}/${{ matrix.OUT_FILE_NAME }}
-        
-    - name: Upload artifact for Mac 
-      if: matrix.TARGET == 'macos'
-      uses: actions/upload-artifact@v4
-      with:
-        name: ${{ matrix.BUNDLE_NAME }}
-        path: ./dist/${{ matrix.TARGET }}/${{ matrix.BUNDLE_NAME }}.tar
     
-    - name: Upload binaries to release
+    - name: Copy binary to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ./dist/${{ matrix.TARGET }}/${{ matrix.OUT_FILE_NAME }}/
+        file: ./dist/${{ matrix.TARGET }}/${{ matrix.OUT_FILE_NAME }}
         tag: ${{ github.ref_name }}
         overwrite: true
         promote: true
