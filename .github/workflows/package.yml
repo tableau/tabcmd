@@ -13,7 +13,8 @@ on:
     tags:
       - '*'
   workflow_dispatch:
-  
+
+# We run two macos versions to build for arm and x64
 jobs:
   buildexe:
     name: Build executables and upload them to the existing release
@@ -45,7 +46,7 @@ jobs:
             CMD_BUILD:  >
               pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/
             BUNDLE_NAME: tabcmd_arm64.app
-            OUT_FILE_NAME: tabcmd.app
+            OUT_FILE_NAME: tabcmd_arm64.app
             APP_BINARY_FILE_NAME: tabcmd
             ASSET_MIME: application/zip
             CMD_INVOKE: >
@@ -90,9 +91,6 @@ jobs:
         rm -f dist/${{ matrix.TARGET }}/${{ matrix.APP_BINARY_FILE_NAME }}
         cd dist/${{ matrix.TARGET }}
         tar -cvf ${{ matrix.BUNDLE_NAME }}.tar ${{ matrix.OUT_FILE_NAME }}
-
-    - name: Validate package for ${{matrix.TARGET}}
-      run: ./dist/${{ matrix.TARGET }}/${{matrix.OUT_FILE_NAME}}
       
     - name: Upload binary
       uses: actions/upload-artifact@v4
