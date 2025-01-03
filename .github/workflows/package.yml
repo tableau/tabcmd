@@ -46,12 +46,12 @@ jobs:
             TARGET: macos
             CMD_BUILD:  >
               pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/
-            BUNDLE_NAME: tabcmd_arm64.app
+            BUNDLE_NAME: tabcmd.app
             OUT_FILE_NAME: tabcmd_arm64.app
             APP_BINARY_FILE_NAME: tabcmd_arm64
             ASSET_MIME: application/zip
             CMD_INVOKE: >
-              ./dist/macos/tabcmd_arm64.app/Contents/MacOS/tabcmd_arm64
+              ./dist/macos/tabcmd.app/Contents/MacOS/tabcmd_arm64
           - os: ubuntu-latest
             TARGET: ubuntu
           # https://stackoverflow.com/questions/31259856
