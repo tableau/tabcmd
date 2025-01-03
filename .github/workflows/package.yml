@@ -35,6 +35,7 @@ jobs:
             TARGET: macos
             CMD_BUILD:  >
               pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/
+              mac_bundle_step.sh
             BUNDLE_NAME: tabcmd.app
             OUT_FILE_NAME: tabcmd.app
             APP_BINARY_FILE_NAME: tabcmd
@@ -45,8 +46,9 @@ jobs:
             TARGET: macos
             CMD_BUILD:  >
               pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/
+              mac_bundle_step.sh
             BUNDLE_NAME: tabcmd.app
-            OUT_FILE_NAME: tabcmd_arm64.app
+            OUT_FILE_NAME: tabcmd.app
             APP_BINARY_FILE_NAME: tabcmd
             ASSET_MIME: application/zip
             CMD_INVOKE: >
@@ -96,7 +98,7 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: ./dist/${{ matrix.TARGET }}/${{ matrix.OUT_FILE_NAME }}
-        asset_name: ${{ matrix.TARGET }}-${{ matrix.OUT_FILE_NAME }}
+        asset_name: ${{ matrix.os }}-${{ matrix.OUT_FILE_NAME }}
         tag: ${{ github.ref_name }}
         overwrite: true
         promote: true
