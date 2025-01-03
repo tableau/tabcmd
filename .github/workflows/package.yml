@@ -2,7 +2,8 @@ name: Package-and-release
 
 # Pyinstaller requires that executables for each OS are built on that OS
 # This action is intended to build on each of the supported OS's: mac, windows, linux.
-# and then upload all three files to a new release
+# (We run two macos versions to build for arm and x64)
+# and then upload all four files to a new release
 
 # reference material:
 # https://data-dive.com/multi-os-deployment-in-cloud-using-pyinstaller-and-github-actions
@@ -14,7 +15,6 @@ on:
       - '*'
   workflow_dispatch:
 
-# We run two macos versions to build for arm and x64
 jobs:
   buildexe:
     name: Build executables and upload them to the existing release
@@ -41,16 +41,17 @@ jobs:
             ASSET_MIME: application/zip
             CMD_INVOKE:  >
               ./dist/macos/tabcmd.app/Contents/MacOS/tabcmd
+          # We need a different name for each of the two macos executables
           - os: macos-latest
             TARGET: macos
             CMD_BUILD:  >
               pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/
             BUNDLE_NAME: tabcmd_arm64.app
-            OUT_FILE_NAME: tabcmd.app
+            OUT_FILE_NAME: tabcmd_arm64.app
             APP_BINARY_FILE_NAME: tabcmd
             ASSET_MIME: application/zip
             CMD_INVOKE: >
-              ./dist/macos/tabcmd.app/Contents/MacOS/tabcmd
+              ./dist/macos/tabcmd.app/Contents/MacOS/tabcmd_arm64
           - os: ubuntu-latest
             TARGET: ubuntu
           # https://stackoverflow.com/questions/31259856
