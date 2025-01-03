@@ -13,9 +13,6 @@ on:
     tags:
       - '*'
   workflow_dispatch:
-
-env:
-  CMD_INVOKE: ./dist/${{ matrix.TARGET }}/${{matrix.OUT_FILE_NAME}}
   
 jobs:
   buildexe:
@@ -31,7 +28,7 @@ jobs:
               pyinstaller tabcmd-windows.spec --clean --noconfirm --distpath ./dist/windows
             OUT_FILE_NAME: tabcmd.exe
             ASSET_MIME: application/vnd.microsoft.portable-executable
-            CMD_INVOKE: $ {{ env.CMD_INVOKE }}
+            CMD_INVOKE: ./dist/${{ matrix.TARGET }}/${{matrix.OUT_FILE_NAME}}
           - os: macos-13
             TARGET: macos
             CMD_BUILD:  >
@@ -40,7 +37,7 @@ jobs:
             OUT_FILE_NAME: tabcmd.app
             APP_BINARY_FILE_NAME: tabcmd
             ASSET_MIME: application/zip
-            CMD_INVOKE: $ {{ env.CMD_INVOKE }}/Contents/MacOS/${{ matrix.APP_BINARY_FILE_NAME }}
+            CMD_INVOKE: ./dist/${{ matrix.TARGET }}/${{matrix.OUT_FILE_NAME}}/Contents/MacOS/${{ matrix.APP_BINARY_FILE_NAME }}
           - os: macos-latest
             TARGET: macos
             CMD_BUILD:  >
@@ -49,7 +46,7 @@ jobs:
             OUT_FILE_NAME: tabcmd.app
             APP_BINARY_FILE_NAME: tabcmd
             ASSET_MIME: application/zip
-            CMD_INVOKE: $ {{ env.CMD_INVOKE }}/Contents/MacOS/${{ matrix.APP_BINARY_FILE_NAME }}
+            CMD_INVOKE: ./dist/${{ matrix.TARGET }}/${{matrix.OUT_FILE_NAME}}/Contents/MacOS/${{ matrix.APP_BINARY_FILE_NAME }}
           - os: ubuntu-latest
             TARGET: ubuntu
           # https://stackoverflow.com/questions/31259856
@@ -58,7 +55,7 @@ jobs:
               pyinstaller --clean -y --distpath ./dist/ubuntu tabcmd-linux.spec &&
               chown -R --reference=. ./dist/ubuntu
             OUT_FILE_NAME: tabcmd
-            CMD_INVOKE: $ {{ env.CMD_INVOKE }}
+            CMD_INVOKE: ./dist/${{ matrix.TARGET }}/${{matrix.OUT_FILE_NAME}}
 
     steps:
     - uses: actions/checkout@v4
