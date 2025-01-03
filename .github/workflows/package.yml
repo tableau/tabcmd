@@ -46,7 +46,7 @@ jobs:
             CMD_BUILD:  >
               pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/
             BUNDLE_NAME: tabcmd_arm64.app
-            OUT_FILE_NAME: tabcmd_arm64.app
+            OUT_FILE_NAME: tabcmd.app
             APP_BINARY_FILE_NAME: tabcmd
             ASSET_MIME: application/zip
             CMD_INVOKE: >
