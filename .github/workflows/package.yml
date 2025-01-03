@@ -79,18 +79,11 @@ jobs:
         doit version
         python -m build
 
-    - name: Package with pyinstaller for ${{matrix.TARGET}}
+    - name: Build executable with pyinstaller for ${{matrix.TARGET}}
       run: ${{matrix.CMD_BUILD}}
       
-    - name: Validate package before tar for ${{matrix.TARGET}}
+    - name: Validate executable for ${{matrix.TARGET}}
       run: ${{matrix.CMD_INVOKE}}
-      
-    - name: Tar app bundle for Mac
-      if: matrix.TARGET == 'macos'
-      run: |
-        rm -f dist/${{ matrix.TARGET }}/${{ matrix.APP_BINARY_FILE_NAME }}
-        cd dist/${{ matrix.TARGET }}
-        tar -cvf ${{ matrix.BUNDLE_NAME }}.tar ${{ matrix.OUT_FILE_NAME }}
       
     - name: Upload binary
       uses: actions/upload-artifact@v4
