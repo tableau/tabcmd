@@ -1,4 +1,4 @@
-name: Release-Executable
+name: Package-and-Upload
 
 # Pyinstaller requires that executables for each OS are built on that OS
 # This action is intended to build on each of the supported OS's: mac, windows, linux.
@@ -107,7 +107,7 @@ jobs:
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ./dist/${{ matrix.TARGET }}/${{ matrix.OUT_FILE_NAME }}/
+        file: ./dist/${{ matrix.TARGET }}/${{ matrix.OUT_FILE_NAME }}
         tag: ${{ github.ref_name }}
         overwrite: true
         promote: true
