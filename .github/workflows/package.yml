@@ -35,7 +35,6 @@ jobs:
             TARGET: macos-x86
             CMD_BUILD:  |
               pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/
-              cd ../..
               ls
               pwd
               ./mac_bundle_step.sh
@@ -49,7 +48,6 @@ jobs:
             TARGET: macos-arm
             CMD_BUILD:  |
               pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/
-              cd ../..
               ls
               pwd
               ./mac_bundle_step.sh
