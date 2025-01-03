@@ -51,7 +51,7 @@ jobs:
             APP_BINARY_FILE_NAME: tabcmd
             ASSET_MIME: application/zip
             CMD_INVOKE: >
-              ./dist/macos/tabcmd.app/Contents/MacOS/tabcmd_arm64
+              ./dist/macos/tabcmd_arm64.app/Contents/MacOS/tabcmd
           - os: ubuntu-latest
             TARGET: ubuntu
           # https://stackoverflow.com/questions/31259856
