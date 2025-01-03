@@ -33,7 +33,7 @@ jobs:
               ./dist/windows/tabcmd.exe
           - os: macos-13
             TARGET: macos
-            CMD_BUILD:  >
+            CMD_BUILD:  |
               pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/
               mac_bundle_step.sh
             BUNDLE_NAME: tabcmd.app
@@ -44,7 +44,7 @@ jobs:
               ./dist/macos/tabcmd.app/Contents/MacOS/tabcmd
           - os: macos-latest
             TARGET: macos
-            CMD_BUILD:  >
+            CMD_BUILD:  |
               pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/
               mac_bundle_step.sh
             BUNDLE_NAME: tabcmd.app
