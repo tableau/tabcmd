@@ -312,6 +312,11 @@ def set_publish_args(parser):
         help="Encrypt extracts in the workbook, datasource, or extract being published to the server. "
         "[N/a on Tableau Cloud: extract encryption is controlled by Site Admin]",
     )
+    parser.add_argument(
+        "--skip-connection-check",
+        action="store_true",
+        help="Skip connection check: do not validate the workbook/datasource connection during publishing",
+    )
 
     # These two only apply for a workbook, not a datasource
     thumbnails = parser.add_mutually_exclusive_group()
@@ -341,7 +346,7 @@ def set_append_replace_option(parser):
     )
 
     # what's the difference between this and 'overwrite'?
-    # This is meant for when a) the local file is an extract b) the server item is an existing data source
+    # This one replaces the data but not the metadata
     append_group.add_argument(
         "--replace",
         action="store_true",
@@ -350,7 +355,7 @@ def set_append_replace_option(parser):
     )
 
 
-# this is meant to be like replacing like
+# this is meant to be publish the whole thing on top of what's there
 def set_overwrite_option(parser):
     parser.add_argument(
         "-o",
@@ -363,13 +368,16 @@ def set_overwrite_option(parser):
 
 # refresh-extracts
 def set_incremental_options(parser):
-    sync_group = parser.add_mutually_exclusive_group()
-    sync_group.add_argument("--incremental", action="store_true", help="Runs the incremental refresh operation.")
-    sync_group.add_argument(
+    parser.add_argument("--incremental", action="store_true", help="Runs the incremental refresh operation.")
+    return parser
+
+
+def set_sync_wait_options(parser):
+    parser.add_argument(
         "--synchronous",
         action="store_true",
         help="Adds the full refresh operation to the queue used by the Backgrounder process, to be run as soon as a \
-        Backgrounder process is available.",
+        Backgrounder process is available. The program will wait until the job has finished or the timeout has been reached.",
     )
     return parser
 

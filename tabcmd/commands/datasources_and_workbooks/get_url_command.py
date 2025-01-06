@@ -1,8 +1,6 @@
 import inspect
-import os
 
 import tableauserverclient as TSC
-from tableauserverclient import ServerResponseError
 
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.constants import Errors
@@ -10,6 +8,7 @@ from tabcmd.execution.global_options import *
 from tabcmd.execution.localize import _
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
+from .datasources_workbooks_views_url_parser import DatasourcesWorkbooksAndViewsUrlParser
 
 
 class GetUrl(DatasourcesAndWorkbooks):
@@ -48,7 +47,7 @@ class GetUrl(DatasourcesAndWorkbooks):
 
         url = args.url.lstrip("/")  # strip opening / if present
         content_type = GetUrl.evaluate_content_type(logger, url)
-        file_type = GetUrl.get_file_type_from_filename(logger, url, args.filename)
+        file_type = DatasourcesWorkbooksAndViewsUrlParser.get_file_type_from_filename(logger, url, args.filename)
 
         GetUrl.get_content_as_file(file_type, content_type, logger, args, server, url)
 
@@ -63,82 +62,7 @@ class GetUrl(DatasourcesAndWorkbooks):
         for content_type in GetUrl.valid_content_types:
             if url.find(content_type) == 0:
                 return content_type
-        Errors.exit_with_error(logger, message=_("get.errors.invalid_content_type").format(url))
-
-    @staticmethod
-    def explain_expected_url(logger, url: str, command: str):
-        view_example = "/views/<workbookname>/<viewname>[.ext]"
-        wb_example = "/workbooks/<workbookname>[.ext]"
-        ds_example = "/datasources/<datasourcename[.ext]"
-        # todo when strings are updated # message:str = _("export.errors.requires_resource_param").format(
-        message = (
-            "The ''{0}'' command requires a resource path in a specific format."
-            "Given: {1}. Accepted values: {2}, {3}, {4}".format(command, url, view_example, wb_example, ds_example)
-        )
-        Errors.exit_with_error(logger, message)
-
-    @staticmethod
-    def get_file_type_from_filename(logger, url, file_name):
-        logger.debug("Choosing between {}, {}".format(file_name, url))
-        file_name = file_name or url
-        logger.debug(_("get.options.file") + ": {}".format(file_name))  # Name to save the file as
-        type_of_file = GetUrl.get_file_extension(file_name)
-
-        if not type_of_file and file_name is not None:
-            # check the url
-            backup = GetUrl.get_file_extension(url)
-            if backup is not None:
-                type_of_file = backup
-            else:
-                Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name))
-
-        logger.debug("filetype: {}".format(type_of_file))
-        if type_of_file in ["pdf", "csv", "png", "twb", "twbx", "tdsx", "tds"]:
-            return type_of_file
-
-        Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name))
-
-    @staticmethod
-    def get_file_extension(path):
-        path_segments = os.path.split(path)
-        filename = path_segments[-1]
-        filename_segments = filename.split(".")
-        extension = filename_segments[-1]
-        extension = GetUrl.strip_query_params(extension)
-        return extension
-
-    @staticmethod
-    def strip_query_params(filename):
-        if "?" in filename:
-            return filename.split("?")[0]
-        else:
-            return filename
-
-    @staticmethod
-    def get_name_without_possible_extension(filename):
-        return filename.split(".")[0]
-
-    @staticmethod
-    def get_resource_name(url: str, logger):  # workbooks/wb-name" -> "wb-name", datasource/ds-name -> ds-name
-        url = url.lstrip("/")  # strip opening / if present
-        name_parts = url.split("/")
-        if len(name_parts) != 2:
-            GetUrl.explain_expected_url(logger, url, "GetUrl")
-        resource_name_with_params = name_parts[::-1][0]  # last part
-        resource_name_with_ext = GetUrl.strip_query_params(resource_name_with_params)
-        resource_name = GetUrl.get_name_without_possible_extension(resource_name_with_ext)
-        return resource_name
-
-    @staticmethod
-    def get_view_url(url, logger):  # "views/wb-name/view-name" -> wb-name/sheets/view-name
-        name_parts = url.split("/")  # ['views', 'wb-name', 'view-name']
-        if len(name_parts) != 3:
-            GetUrl.explain_expected_url(logger, url, "GetUrl")
-        workbook_name = name_parts[1]
-        view_name = name_parts[::-1][0]
-        view_name = GetUrl.strip_query_params(view_name)
-        view_name = GetUrl.get_name_without_possible_extension(view_name)
-        return DatasourcesAndWorkbooks.get_view_url_from_names(workbook_name, view_name)
+        Errors.exit_with_error(logger, message=_("bad_request.detail.invalid_content_type").format(url))
 
     @staticmethod
     def filename_from_args(file_argument, item_name, filetype):
@@ -159,71 +83,74 @@ class GetUrl(DatasourcesAndWorkbooks):
         elif content_type == "datasource":
             return GetUrl.generate_tds(logger, server, args, file_type)
         elif content_type == "view":
-            view_url = GetUrl.get_view_url(url, logger)
+            (
+                get_url_item,
+                server_content_type,
+            ) = DatasourcesWorkbooksAndViewsUrlParser.get_url_item_and_item_type_from_view_url(logger, url, server)
+
             if file_type == "pdf":
-                return GetUrl.generate_pdf(logger, server, args, view_url)
+                return GetUrl.generate_pdf(logger, server_content_type, args, get_url_item)
             elif file_type == "png":
-                return GetUrl.generate_png(logger, server, args, view_url)
+                return GetUrl.generate_png(logger, server_content_type, args, get_url_item)
             elif file_type == "csv":
-                return GetUrl.generate_csv(logger, server, args, view_url)
+                return GetUrl.generate_csv(logger, server_content_type, args, get_url_item)
         # all the known options above will return early. If we get here we are confused.
-        Errors.exit_with_error(logger, message=_("tabcmd.get.extension.not_found"))
+        Errors.exit_with_error(logger, message=_("get.extension.not_found"))
 
     @staticmethod
-    def generate_pdf(logger, server, args, view_url):
+    def generate_pdf(logger, server_content_type, args, get_url_item):
         logger.trace("Entered method " + inspect.stack()[0].function)
         try:
-            view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view_url)
-            logger.debug(_("content_type.view") + ": {}".format(view_item.name))
+            logger.debug(_("content_type.view") + ": {}".format(get_url_item.name))
             req_option_pdf = TSC.PDFRequestOptions(maxage=1)
             DatasourcesAndWorkbooks.apply_values_from_url_params(logger, req_option_pdf, args.url)
-            server.views.populate_pdf(view_item, req_option_pdf)
-            filename = GetUrl.filename_from_args(args.filename, view_item.name, "pdf")
-            DatasourcesAndWorkbooks.save_to_file(logger, view_item.pdf, filename)
+            server_content_type.populate_pdf(get_url_item, req_option_pdf)
+            filename = GetUrl.filename_from_args(args.filename, get_url_item.name, "pdf")
+            DatasourcesAndWorkbooks.save_to_file(logger, get_url_item.pdf, filename)
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
 
     @staticmethod
-    def generate_png(logger, server, args, view_url):
+    def generate_png(logger, server_content_type, args, get_url_item):
         logger.trace("Entered method " + inspect.stack()[0].function)
         try:
-            view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view_url)
-            logger.debug(_("content_type.view") + ": {}".format(view_item.name))
+            logger.debug(_("content_type.view") + ": {}".format(get_url_item.name))
             req_option_csv = TSC.ImageRequestOptions(maxage=1)
             DatasourcesAndWorkbooks.apply_values_from_url_params(logger, req_option_csv, args.url)
-            server.views.populate_image(view_item, req_option_csv)
-            filename = GetUrl.filename_from_args(args.filename, view_item.name, "png")
-            DatasourcesAndWorkbooks.save_to_file(logger, view_item.image, filename)
+            server_content_type.populate_image(get_url_item, req_option_csv)
+            filename = GetUrl.filename_from_args(args.filename, get_url_item.name, "png")
+            DatasourcesAndWorkbooks.save_to_file(logger, get_url_item.image, filename)
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
 
     @staticmethod
-    def generate_csv(logger, server, args, view_url):
+    def generate_csv(logger, server_content_type, args, get_url_item):
         logger.trace("Entered method " + inspect.stack()[0].function)
         try:
-            view_item: TSC.ViewItem = GetUrl.get_view_by_content_url(logger, server, view_url)
-            logger.debug(_("content_type.view") + ": {}".format(view_item.name))
+            logger.debug(_("content_type.view") + ": {}".format(get_url_item.name))
             req_option_csv = TSC.CSVRequestOptions(maxage=1)
             DatasourcesAndWorkbooks.apply_values_from_url_params(logger, req_option_csv, args.url)
-            server.views.populate_csv(view_item, req_option_csv)
-            file_name_with_path = GetUrl.filename_from_args(args.filename, view_item.name, "csv")
-            DatasourcesAndWorkbooks.save_to_data_file(logger, view_item.csv, file_name_with_path)
+            server_content_type.populate_csv(get_url_item, req_option_csv)
+            file_name_with_path = GetUrl.filename_from_args(args.filename, get_url_item.name, "csv")
+            DatasourcesAndWorkbooks.save_to_data_file(logger, get_url_item.csv, file_name_with_path)
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
 
     @staticmethod
     def generate_twb(logger, server, args, file_extension, url):
         logger.trace("Entered method " + inspect.stack()[0].function)
-        workbook_name = GetUrl.get_resource_name(url, logger)
+        workbook_name = DatasourcesWorkbooksAndViewsUrlParser.get_resource_name(url, logger)
         try:
             target_workbook = GetUrl.get_wb_by_content_url(logger, server, workbook_name)
             logger.debug(_("content_type.workbook") + ": {}".format(workbook_name))
             file_name_with_path = GetUrl.filename_from_args(args.filename, workbook_name, file_extension)
             # the download method will add an extension. How do I tell which one?
-            file_name_with_path = GetUrl.get_name_without_possible_extension(file_name_with_path)
+            file_name_with_path = DatasourcesWorkbooksAndViewsUrlParser.get_name_without_possible_extension(
+                file_name_with_path
+            )
             file_name_with_ext = "{}.{}".format(file_name_with_path, file_extension)
             logger.debug("Saving as {}".format(file_name_with_ext))
-            server.workbooks.download(target_workbook.id, filepath=file_name_with_path, no_extract=False)
+            server.workbooks.download(target_workbook.id, filepath=file_name_with_path, include_extract=True)
             logger.info(_("export.success").format(target_workbook.name, file_name_with_ext))
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
@@ -231,16 +158,18 @@ class GetUrl(DatasourcesAndWorkbooks):
     @staticmethod
     def generate_tds(logger, server, args, file_extension):
         logger.trace("Entered method " + inspect.stack()[0].function)
-        datasource_name = GetUrl.get_resource_name(args.url, logger)
+        datasource_name = DatasourcesWorkbooksAndViewsUrlParser.get_resource_name(args.url, logger)
         try:
             target_datasource = GetUrl.get_ds_by_content_url(logger, server, datasource_name)
             logger.debug(_("content_type.datasource") + ": {}".format(datasource_name))
             file_name_with_path = GetUrl.filename_from_args(args.filename, datasource_name, file_extension)
             # the download method will add an extension
-            file_name_with_path = GetUrl.get_name_without_possible_extension(file_name_with_path)
+            file_name_with_path = DatasourcesWorkbooksAndViewsUrlParser.get_name_without_possible_extension(
+                file_name_with_path
+            )
             file_name_with_ext = "{}.{}".format(file_name_with_path, file_extension)
             logger.debug("Saving as {}".format(file_name_with_ext))
-            server.datasources.download(target_datasource.id, filepath=file_name_with_path, no_extract=False)
+            server.datasources.download(target_datasource.id, filepath=file_name_with_path, include_extract=True)
             logger.info(_("export.success").format(target_datasource.name, file_name_with_ext))
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)

@@ -1,4 +1,4 @@
-name: Package and upload executables
+name: Package-and-Upload
 
 # Pyinstaller requires that executables for each OS are built on that OS
 # This action is intended to build on each of the supported OS's: mac (x86 and arm), windows, linux.

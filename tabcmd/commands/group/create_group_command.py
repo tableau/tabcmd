@@ -33,6 +33,6 @@ class CreateGroupCommand(Server):
             logger.info(_("common.output.succeeded"))
         except Exception as e:
             if args.continue_if_exists and Errors.is_resource_conflict(e):
-                logger.info(_("tabcmd.result.already_exists").format(_("content_type.group"), args.name))
+                logger.info(_("errors.xmlapi.already_exists").format(_("content_type.group"), args.name))
                 return
             Errors.exit_with_error(logger, exception=e)

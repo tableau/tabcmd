@@ -9,7 +9,8 @@ packages = ["tabcmd"]
 tabcmd = ["tabcmd.locales/**/*.mo"]
 [tool.black]
 line-length = 120
-target-version = ['py37', 'py38', 'py39', 'py310', 'py311']
+required-version = 22
+target-version = ['py38', 'py39', 'py310', 'py311']
 extend-exclude = '^/bin/*'
 [tool.mypy]
 disable_error_code = [
@@ -29,20 +30,17 @@ dynamic = ["version"]
 description="A command line client for working with Tableau Server."
 authors = [{name="Tableau", email="github@tableau.com"}]
 license = {file = "LICENSE"}
-readme = "README.md"
+readme = "res/README.md"
 requires-python = ">=3.7"  # https://devguide.python.org/versions/
 classifiers = [
   "Programming Language :: Python",
   "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.7",
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.12"
+  "Programming Language :: Python :: 3.11"
 ]
 dependencies = [
-    'argparse',
     "appdirs",
     "doit",
     "ftfy",
@@ -54,8 +52,8 @@ dependencies = [
     "types-mock",
     "types-requests",
     "types-setuptools",
-    "tableauserverclient==0.25",
-    "urllib3>=1.24.3,<2.0",
+    "tableauserverclient==0.34",
+    "urllib3",
 ]
 [project.optional-dependencies]
 test = [
@@ -68,7 +66,7 @@ test = [
     "pytest-runner",
     "requests-mock>=1.0,<2.0"]
 localize = ["doit", "ftfy"]
-package = ["pyinstaller>=5.1", "doit"]
+package = ["pyinstaller==5.13", "doit"]
 [project.urls]
 repository = "https://github.com/tableau/tabcmd"
 [project.scripts]

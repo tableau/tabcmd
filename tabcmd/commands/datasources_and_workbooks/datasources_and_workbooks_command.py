@@ -58,7 +58,7 @@ class DatasourcesAndWorkbooks(Server):
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
         if len(matching_datasources) < 1:
-            Errors.exit_with_error(logger, message=_("dataalerts.failure.error.datasourceNotFound"))
+            Errors.exit_with_error(logger, message=_("errors.publish.datasource.not.found"))
         return matching_datasources[0]
 
     @staticmethod
@@ -152,3 +152,14 @@ class DatasourcesAndWorkbooks(Server):
         with open(filename, "wb") as f:
             f.write(output)
             logger.info(_("export.success").format("", filename))
+
+    @staticmethod
+    def get_custom_view_by_id(logger, server, custom_view_id) -> TSC.CustomViewItem:
+        logger.debug(_("export.status").format(custom_view_id))
+        try:
+            matching_custom_view = server.custom_views.get_by_id(custom_view_id)
+        except Exception as e:
+            Errors.exit_with_error(logger, exception=e)
+        if matching_custom_view is None:
+            Errors.exit_with_error(logger, message=_("errors.xmlapi.not_found"))
+        return matching_custom_view

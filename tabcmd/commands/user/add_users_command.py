@@ -27,6 +27,6 @@ class AddUserCommand(UserCommand):
         session = Session()
         server = session.create_session(args, logger)
 
-        logger.info(_("tabcmd.add.users.to_site").format(args.users.name, args.name))
+        logger.info(_("addusers.status").format(args.users.name, args.name))
 
         UserCommand.act_on_users(logger, server, "added", server.groups.add_user, args)

@@ -18,12 +18,17 @@ fake_item.id = "fake-id"
 fake_item.pdf = b"/pdf-representation-of-view"
 fake_item.extract_encryption_mode = "Disabled"
 
+fake_item_pagination = MagicMock()
+fake_item_pagination.page_number = 1
+fake_item_pagination.total_available = 1
+fake_item_pagination.page_size = 100
+
 fake_job = MagicMock()
 fake_job.id = "fake-job-id"
 
 creator = MagicMock()
 getter = MagicMock()
-getter.get = MagicMock("get", return_value=([fake_item], 1))
+getter.get = MagicMock("get", return_value=([fake_item], fake_item_pagination))
 getter.publish = MagicMock("publish", return_value=fake_item)
 
 
@@ -60,6 +65,7 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.replace = False
         mock_args.thumbnail_username = None
         mock_args.thumbnail_group = None
+        mock_args.skip_connection_check = False
         mock_server.projects = getter
         publish_command.PublishCommand.run_command(mock_args)
         mock_session.assert_called()
@@ -84,6 +90,7 @@ class RunCommandsTest(unittest.TestCase):
 
         mock_args.thumbnail_username = None
         mock_args.thumbnail_group = None
+        mock_args.skip_connection_check = False
 
         mock_server.projects = getter
         publish_command.PublishCommand.run_command(mock_args)
