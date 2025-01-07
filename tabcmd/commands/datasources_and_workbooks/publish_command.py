@@ -56,9 +56,13 @@ class PublishCommand(DatasourcesAndWorkbooks):
 
         connection = TSC.models.ConnectionItem()
         if args.db_username:
-            connection.connection_credentials = TSC.models.ConnectionCredentials(args.db_username, args.db_password, embed=args.save_db_password)
+            connection.connection_credentials = TSC.models.ConnectionCredentials(
+                args.db_username, args.db_password, embed=args.save_db_password
+            )
         elif args.oauth_username:
-            connection.connection_credentials = TSC.models.ConnectionCredentials(args.oauth_username, None, embed=False, oauth=args.save_oauth)
+            connection.connection_credentials = TSC.models.ConnectionCredentials(
+                args.oauth_username, None, embed=False, oauth=args.save_oauth
+            )
         else:
             logger.debug("No db-username or oauth-username found in command")
             connection = None
@@ -68,7 +72,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
             connections.append(connection)
         else:
             connections = None
-            
+
         source = PublishCommand.get_filename_extension_if_tableau_type(logger, args.filename)
         logger.info(_("publish.status").format(args.filename))
         if source in ["twbx", "twb"]:
