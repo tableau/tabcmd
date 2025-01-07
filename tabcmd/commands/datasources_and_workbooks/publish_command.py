@@ -57,10 +57,8 @@ class PublishCommand(DatasourcesAndWorkbooks):
         connection = TSC.models.ConnectionItem()
         if args.db_username:
             connection.connection_credentials = TSC.models.ConnectionCredentials(args.db_username, args.db_password, embed=args.save_db_password)
-            connections.append(connection)
         elif args.oauth_username:
             connection.connection_credentials = TSC.models.ConnectionCredentials(args.oauth_username, None, embed=False, oauth=args.save_oauth)
-            connections.append(connection)
         else:
             logger.debug("No db-username or oauth-username found in command")
             connection = None
