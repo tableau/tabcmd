@@ -54,14 +54,23 @@ class PublishCommand(DatasourcesAndWorkbooks):
 
         publish_mode = PublishCommand.get_publish_mode(args, logger)
 
+        connection = TSC.models.ConnectionItem()
         if args.db_username:
-            creds = TSC.models.ConnectionCredentials(args.db_username, args.db_password, embed=args.save_db_password)
+            connection.connection_credentials = TSC.models.ConnectionCredentials(args.db_username, args.db_password, embed=args.save_db_password)
+            connections.append(connection)
         elif args.oauth_username:
-            creds = TSC.models.ConnectionCredentials(args.oauth_username, None, embed=False, oauth=args.save_oauth)
+            connection.connection_credentials = TSC.models.ConnectionCredentials(args.oauth_username, None, embed=False, oauth=args.save_oauth)
+            connections.append(connection)
         else:
             logger.debug("No db-username or oauth-username found in command")
-            creds = None
+            connection = None
 
+        if connection:
+            connections = list()
+            connections.append(connection)
+        else:
+            connections = None
+            
         source = PublishCommand.get_filename_extension_if_tableau_type(logger, args.filename)
         logger.info(_("publish.status").format(args.filename))
         if source in ["twbx", "twb"]:
@@ -76,9 +85,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
                     new_workbook,
                     args.filename,
                     publish_mode,
-                    # args.thumbnail_username, not yet implemented in tsc
-                    # args.thumbnail_group,
-                    connection_credentials=creds,
+                    connections=connections,
                     as_job=False,
                     skip_connection_check=args.skip_connection_check,
                 )
@@ -92,7 +99,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
             new_datasource.use_remote_query_agent = args.use_tableau_bridge
             try:
                 new_datasource = server.datasources.publish(
-                    new_datasource, args.filename, publish_mode, connection_credentials=creds
+                    new_datasource, args.filename, publish_mode, connections=connections
                 )
             except Exception as exc:
                 Errors.exit_with_error(logger, exception=exc)
