@@ -26,32 +26,33 @@ class TabcmdController:
             sys.exit(0)
         user_input = user_input or sys.argv[1:]
         namespace = parser.parse_args(user_input)
+        # if no subcommand was given, call help
+        if not hasattr(namespace, "func"):
+            print("No command found.")
+            parser.print_help()
+            sys.exit(0)
+
         if hasattr("namespace", "logging_level") and namespace.logging_level != logging.INFO:
             print("logging:", namespace.logging_level)
 
         logger = log(__name__, namespace.logging_level or logging.INFO)
         logger.info("Tabcmd {}".format(version))
-        if (hasattr("namespace", "password") or hasattr("namespace", "token_value")) and hasattr("namespace", "func"):
+        if hasattr(namespace, "password") or hasattr(namespace, "token_value"):
             # don't print whole namespace because it has secrets
             logger.debug(namespace.func)
         else:
             logger.debug(namespace)
-        if namespace.language:
+        if hasattr(namespace, "language"):
             set_client_locale(namespace.language, logger)
         if namespace.query_page_size:
             os.environ["TSC_PAGE_SIZE"] = str(namespace.query_page_size)
+
         try:
-            func = namespace.func
-            # if a subcommand was identified, call the function assigned to it
-            # this is the functional equivalent of the call by reflection in the previous structure
             # https://stackoverflow.com/questions/49038616/argparse-subparsers-with-functions
             namespace.func.run_command(namespace)
-        except AttributeError:
-            parser.error("No command identified or too few arguments")
         except Exception as e:
             # todo: use log_stack here for better presentation?
             logger.exception(e)
-            # if no command was given, argparse will just not create the attribute
             sys.exit(2)
 
         return namespace
