@@ -32,7 +32,7 @@ class TabcmdController:
             parser.print_help()
             sys.exit(0)
 
-        if hasattr("namespace", "logging_level") and namespace.logging_level != logging.INFO:
+        if hasattr(namespace, "logging_level") and namespace.logging_level != logging.INFO:
             print("logging:", namespace.logging_level)
 
         logger = log(__name__, namespace.logging_level or logging.INFO)
