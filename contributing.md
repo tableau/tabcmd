@@ -156,7 +156,7 @@ The version reflected in the executable (tabcmd -v) is stored in a metadata file
 
 1. Find the artifacts created by this job and manually copy them to the new release. 
 - manually download. They will all be returned as zips
-- unzip the windows.exe and mac[64].app.tar files and upload those
+- unzip the windows.exe and mac.app.tar files and upload those
 - do not unzip the linux app, github doesn't like it. upload as tabcmd.zip
 (Pay attention to what the file type is, github also sends it as a zip if you download with curl etc. TODO: automate workflow with a github action)
 
