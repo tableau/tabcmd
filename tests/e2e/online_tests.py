@@ -24,27 +24,27 @@ from tests.e2e import setup_e2e
 debug_log = "--logging-level=DEBUG"
 indexing_sleep_time = 1  # wait 1 second to confirm server has indexed updates
 
-# object names
+# object names: helpful if they are always unique
 unique = str(time.gmtime().tm_sec)
-
-default_project_name = "default-proj" + unique
 group_name = "test-ing-group" + unique
 workbook_name = "wb_1_" + unique
-
+default_project_name = "Personal Work" # "default-proj" + unique
 parent_location = "parent" + unique
 project_name = "test-proj-" + unique
 
+# Flags to let us skip tests if we know we don't have the required access
 server_admin = False
-site_admin = True
-project_admin = True
+site_admin = False
+project_admin = False
 extract_encryption_enabled = False
 use_tabcmd_classic = False  # toggle between testing using tabcmd 2 or tabcmd classic
 
 
 def _test_command(test_args: list[str]):
     # this will raise an exception if it gets a non-zero return code
-    # that should bubble up and fail the test?
-    # using tabcmd 2
+    # that will bubble up and fail the test
+    
+    # default: run tests using tabcmd 2
     calling_args = ["python", "-m", "tabcmd"] + test_args + [debug_log] + ["--no-certcheck"]
 
     # call the executable directly: lets us drop in classic tabcmd
@@ -93,9 +93,11 @@ class OnlineCommandTest(unittest.TestCase):
         arguments = [command, "--name", project_name]
         _test_command(arguments)
 
-    def _publish_args(self, file, name):
+    def _publish_args(self, file, name, optional_args=None):
         command = "publish"
-        arguments = [command, file, "--name", name, "--overwrite"]
+        arguments = [command, file, "--name", name, "--project", default_project_name, "--overwrite"]
+        if optional_args:
+            arguments.append(optional_args)
         return arguments
 
     def _publish_creds_args(
@@ -116,31 +118,52 @@ class OnlineCommandTest(unittest.TestCase):
             arguments.append("--save-oauth")
         return arguments
 
-    def _delete_wb(self, file):
+    def _delete_wb(self, name):
         command = "delete"
-        arguments = [command, file]
+        arguments = [command,  "--project", default_project_name, name] 
         _test_command(arguments)
 
-    def _delete_ds(self, file):
+    def _delete_ds(self, name):
         command = "delete"
-        arguments = [command, "--datasource", file]
+        arguments = [command, "--project", default_project_name, "--datasource", name]
         _test_command(arguments)
 
-    def _get_view(self, wb_name_on_server, sheet_name, filename=None):
+    def _get_view(self, wb_name_on_server, sheet_name, filename=None, additional_args=None):
         server_file = "/views/" + wb_name_on_server + "/" + sheet_name
         command = "get"
         arguments = [command, server_file]
         if filename:
             arguments = arguments + ["--filename", filename]
+        if additional_args:
+            arguments = arguments + additional_args
         _test_command(arguments)
 
     def _get_custom_view(self):
         # TODO
         command = "get"
 
-    def _get_view_with_filters(self):
-        # TODO
-        command = "get"
+
+
+    def _export_wb(self, friendly_name, filename=None, additional_args=None):
+        command = "export"
+        arguments = [command, friendly_name, "--fullpdf"]
+        
+        if filename:
+            arguments = arguments + ["--filename", filename]
+        if additional_args:
+            arguments = arguments + additional_args
+        _test_command(arguments)
+
+        
+    def _export_view(self, wb_name_on_server, sheet_name, export_type, filename=None, additional_args=None):        
+        server_file = "/" + wb_name_on_server + "/" + sheet_name
+        command = "export"
+        arguments = [command, server_file, export_type]
+        if filename:
+            arguments = arguments + ["--filename", filename]
+        if additional_args:
+            arguments = arguments + additional_args
+        _test_command(arguments)
 
     def _get_workbook(self, server_file):
         command = "get"
@@ -157,7 +180,7 @@ class OnlineCommandTest(unittest.TestCase):
 
     def _create_extract(self, type, wb_name):
         command = "createextracts"
-        arguments = [command, type, wb_name]
+        arguments = [command, type, wb_name, "--project", default_project_name] 
         if extract_encryption_enabled and not use_tabcmd_classic:
             arguments.append("--encrypt")
         _test_command(arguments)
@@ -165,26 +188,32 @@ class OnlineCommandTest(unittest.TestCase):
     # variation: url
     def _refresh_extract(self, type, wb_name):
         command = "refreshextracts"
-        arguments = [command, wb_name]  # should not need -w
+        arguments = [command, wb_name, "--project", default_project_name, "-w",]   # bug: should not need -w
         try:
             _test_command(arguments)
         except Exception as e:
             print(e)
-            print("expected (tabcmd classic)")
-            print("  *** Unexpected response from the server: Bad request")
-            print("This refresh extracts operation is not allowed for workbook World Indicators (errorCode=80030)")
+            if use_tabcmd_classic:
+                print("expected (tabcmd classic)")
+                print("  *** Unexpected response from the server: Bad request")
+                print("This refresh extracts operation is not allowed for workbook World Indicators (errorCode=80030)")
+            else:
+                raise e
 
     def _delete_extract(self, type, item_name):
         command = "deleteextracts"
-        arguments = [command, type, item_name, "--include-all"]
+        arguments = [command, type, item_name, "--include-all", "--project", default_project_name] 
         try:
             _test_command(arguments)
         except Exception as e:
             print(e)
-            print("Expected (tabcmd classic:")
-            print("*** Unexpected response from the server: Unable to load Data Source")
-            print("Remove extract operation failed. (errorCode=310028)")
-            print("8530479: Remove Extract is not supported for this Datasources (errorCode=310030)")
+            if use_tabcmd_classic:
+                print("Expected (tabcmd classic):")
+                print("*** Unexpected response from the server: Unable to load Data Source")
+                print("Remove extract operation failed. (errorCode=310028)")
+                print("8530479: Remove Extract is not supported for this Datasources (errorCode=310030)")
+            else:
+                raise e
 
     def _list(self, item_type: str):
         command = "list"
@@ -357,12 +386,6 @@ class OnlineCommandTest(unittest.TestCase):
         self._get_view(wb_name_on_server, sheet_name + ".csv")
 
     @pytest.mark.order(11)
-    def test_view_get_png(self):
-        wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
-        sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
-        self._get_view(wb_name_on_server, sheet_name + ".png")
-
-    @pytest.mark.order(11)
     def test_wb_publish_embedded(self):
         file = os.path.join("tests", "assets", OnlineCommandTest.TWB_WITH_EMBEDDED_CONNECTION)
         arguments = self._publish_args(file, OnlineCommandTest.EMBEDDED_TWB_NAME)
@@ -421,38 +444,39 @@ class OnlineCommandTest(unittest.TestCase):
     @pytest.mark.order(19)
     def test_export_wb_pdf(self):
         command = "export"
+        wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         friendly_name = (
-            OnlineCommandTest.TWBX_WITH_EXTRACT_NAME + "/" + OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET + "?param1=3"
+            wb_name_on_server + "/" + OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET 
         )
-        arguments = [command, friendly_name, "--fullpdf", "-f", "exported_wb.pdf"]
-        _test_command(arguments)
-
+        filename = "exported_wb.pdf"
+        self._export_wb(friendly_name, filename)
+        
     @pytest.mark.order(19)
     def test_export_data_csv(self):
-        command = "export"
-        friendly_name = (
-            OnlineCommandTest.TWBX_WITH_EXTRACT_NAME + "/" + OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET + "?param1=3"
-        )
-        arguments = [command, friendly_name, "--csv", "-f", "exported_data.csv"]
-        _test_command(arguments)
+        wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
+        sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
+        self._export_view(wb_name_on_server, sheet_name, "--csv", "exported_data.csv")
 
     @pytest.mark.order(19)
     def test_export_view_png(self):
-        command = "export"
-        friendly_name = (
-            OnlineCommandTest.TWBX_WITH_EXTRACT_NAME + "/" + OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET + "?param1=3"
-        )
-        arguments = [command, friendly_name, "--png", "-f", "exported_view.png"]
-        _test_command(arguments)
+        wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
+        sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
+        self._export_view(wb_name_on_server, sheet_name, "--png", "export_view.png")
 
     @pytest.mark.order(19)
     def test_export_view_pdf(self):
-        command = "export"
-        friendly_name = (
-            OnlineCommandTest.TWBX_WITH_EXTRACT_NAME + "/" + OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET + "?param1=3"
-        )
-        arguments = [command, friendly_name, "--pdf", "-f", "exported_view.pdf"]
-        _test_command(arguments)
+        wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
+        sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
+        self._export_view(wb_name_on_server, sheet_name, "--pdf", "export_view_pdf.pdf")
+        
+    @pytest.mark.order(19)
+    def test_export_view_filtered(self):
+        wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
+        sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
+        filename = "view_with_filters.pdf"
+        
+        filters = ["--filter", "Product Type=Tea"]
+        self._export_view(wb_name_on_server, sheet_name, "--pdf", filename, filters)
 
     @pytest.mark.order(20)
     def test_delete_site_users(self):
