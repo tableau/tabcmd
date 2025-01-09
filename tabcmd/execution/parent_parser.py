@@ -131,8 +131,16 @@ def parent_parser_with_global_options():
         "-v",
         "--version",
         action="version",
-        version=strings[6] + "v" + version + "\n \n",
+        version=strings[6] + " v" + version + "\n \n",
         help=strings[7],
+    )
+
+    parser.add_argument(
+        "--query-page-size",
+        type=int,
+        default=None,
+        metavar="<PAGE_SIZE>",
+        help="Specify the page size for query results.",
     )
     return parser
 
@@ -174,6 +182,7 @@ class ParentParser:
         command.define_args(additional_parser)
         return additional_parser
 
+    # Help isn't added like the others because it has to have access to the rest, to get their args
     def include_help(self):
         additional_parser = self.subparsers.add_parser("help", help=strings[14], parents=[self.global_options])
         additional_parser._optionals.title = strings[1]

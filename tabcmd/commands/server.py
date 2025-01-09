@@ -50,31 +50,59 @@ class Server:
             container_name: str = "[{0}] {1}".format(container.__class__.__name__, container.name)
             item_log_name = "{0}/{1}".format(container_name, item_log_name)
         logger.debug(_("export.status").format(item_log_name))
-        req_option = TSC.RequestOptions()
-        req_option.filter.add(TSC.Filter(TSC.RequestOptions.Field.Name, TSC.RequestOptions.Operator.Equals, item_name))
-        all_items, pagination_item = item_endpoint.get(req_option)
-        if all_items is None or all_items == []:
-            raise TSC.ServerResponseError(
-                code="404",
-                summary=_("errors.xmlapi.not_found"),
-                detail=_("errors.xmlapi.not_found") + ": " + item_log_name,
+
+        result = []
+        total_available_items = None
+        page_number = 1
+        total_retrieved_items = 0
+
+        while True:
+            req_option = TSC.RequestOptions(pagenumber=page_number)
+            req_option.filter.add(
+                TSC.Filter(TSC.RequestOptions.Field.Name, TSC.RequestOptions.Operator.Equals, item_name)
             )
-        if len(all_items) == 1:
-            logger.debug("Exactly one result found")
-            result = all_items
-        if len(all_items) > 1:
+
+            # todo - this doesn't filter if the project is in the top level.
+            # todo: there is no guarantee that these fields are the same for different content types.
+            # probably better if we move that type specific logic out to a wrapper
+            if container:
+                # the name of the filter field is different if you are finding a project or any other item
+                if type(item_endpoint).__name__.find("Projects") < 0:
+                    parentField = TSC.RequestOptions.Field.ProjectName
+                    parentValue = container.name
+                else:
+                    parentField = TSC.RequestOptions.Field.ParentProjectId
+                    parentValue = container.id
+                logger.debug("filtering for parent with {}".format(parentField))
+
+                req_option.filter.add(TSC.Filter(parentField, TSC.RequestOptions.Operator.Equals, parentValue))
+
+            all_items, pagination_item = item_endpoint.get(req_option)
+
+            if pagination_item.total_available == 0:
+                raise TSC.ServerResponseError(
+                    code="404",
+                    summary=_("errors.xmlapi.not_found"),
+                    detail=_("errors.xmlapi.not_found") + ": " + item_log_name,
+                )
+
+            total_retrieved_items += len(all_items)
+
             logger.debug(
-                "{}+ items of this name were found: {}".format(
-                    len(all_items), all_items[0].name + ", " + all_items[1].name + ", ..."
+                "{} items of name: {} were found for query page number: {}, page size: {} & total available: {}".format(
+                    len(all_items),
+                    item_name,
+                    pagination_item.page_number,
+                    pagination_item.page_size,
+                    pagination_item.total_available,
                 )
             )
 
-            if container:
-                container_id = container.id
-                logger.debug("Filtering to items in project {}".format(container.id))
-                result = list(filter(lambda item: item.project_id == container_id, all_items))
-            else:
-                result = all_items
+            result.extend(all_items)
+            if total_retrieved_items >= pagination_item.total_available:
+                break
+
+            page_number = pagination_item.page_number + 1
 
         return result
 
@@ -146,12 +174,7 @@ class Server:
     def _get_project_by_name_and_parent(logger, server, project_name: str, parent: Optional[TSC.ProjectItem]):
         # logger.debug("get by name and parent: {0}, {1}".format(project_name, parent))
         # get by name to narrow down the list
-        projects = Server.get_items_by_name(logger, server.projects, project_name)
-        if parent is not None:
-            parent_id = parent.id
-            for project in projects:
-                if project.parent_id == parent_id:
-                    return project
+        projects = Server.get_items_by_name(logger, server.projects, project_name, parent)
         return projects[0]
 
     @staticmethod

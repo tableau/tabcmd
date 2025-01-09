@@ -1,8 +1,8 @@
-name: Release-Executable
+name: Package-and-Upload
 
 # Pyinstaller requires that executables for each OS are built on that OS
-# This action is intended to build on each of the supported OS's: mac, windows, linux.
-# and then upload all three files to a new release
+# This action is intended to build on each of the supported OS's: mac (x86 and arm), windows, linux.
+# and then upload all four files to a new release
 
 # reference material:
 # https://data-dive.com/multi-os-deployment-in-cloud-using-pyinstaller-and-github-actions
@@ -27,21 +27,25 @@ jobs:
             TARGET: windows
             CMD_BUILD: >
               pyinstaller tabcmd-windows.spec --clean --noconfirm --distpath ./dist/windows
+            UPLOAD_FILE_NAME: tabcmd.exe
             OUT_FILE_NAME: tabcmd.exe
             ASSET_MIME: application/vnd.microsoft.portable-executable
           - os: macos-13
             TARGET: macos
             CMD_BUILD:  >
               pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/
-            BUNDLE_NAME: tabcmd.app
+            # the extension .app is not allowed as an upload by github
+            UPLOAD_FILE_NAME: tabcmd-x86.app.tar
+            # these two names must match the output defined in tabcmd-mac.spec
             OUT_FILE_NAME: tabcmd.app
             APP_BINARY_FILE_NAME: tabcmd
             ASSET_MIME: application/zip
           - os: macos-latest
+            # This must match the value set in tabcmd-mac.spec for the output folder
             TARGET: macos
             CMD_BUILD:  >
               pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/
-            BUNDLE_NAME: tabcmd_arm64.app
+            UPLOAD_FILE_NAME: tabcmd_arm64.app.tar
             OUT_FILE_NAME: tabcmd.app
             APP_BINARY_FILE_NAME: tabcmd
             ASSET_MIME: application/zip
@@ -53,6 +57,7 @@ jobs:
               pyinstaller --clean -y --distpath ./dist/ubuntu tabcmd-linux.spec &&
               chown -R --reference=. ./dist/ubuntu
             OUT_FILE_NAME: tabcmd
+            UPLOAD_FILE_NAME: tabcmd
 
     steps:
     - uses: actions/checkout@v4
@@ -87,27 +92,15 @@ jobs:
       run: |
         rm -f dist/${{ matrix.TARGET }}/${{ matrix.APP_BINARY_FILE_NAME }}
         cd dist/${{ matrix.TARGET }}
-        tar -cvf ${{ matrix.BUNDLE_NAME }}.tar ${{ matrix.OUT_FILE_NAME }}
+        tar -cvf ${{ matrix.UPLOAD_FILE_NAME }} ${{ matrix.OUT_FILE_NAME }}
 
-    - name: Upload artifact
-      if: matrix.TARGET != 'macos'
-      uses: actions/upload-artifact@v4
-      with:
-        name: ${{ matrix.OUT_FILE_NAME }}
-        path: ./dist/${{ matrix.TARGET }}/${{ matrix.OUT_FILE_NAME }}
-        
-    - name: Upload artifact for Mac 
-      if: matrix.TARGET == 'macos'
-      uses: actions/upload-artifact@v4
-      with:
-        name: ${{ matrix.BUNDLE_NAME }}
-        path: ./dist/${{ matrix.TARGET }}/${{ matrix.BUNDLE_NAME }}.tar
     
-    - name: Upload binaries to release
+    - name: Upload binaries to release for ${{ matrix.TARGET }}
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ./dist/${{ matrix.TARGET }}/${{ matrix.OUT_FILE_NAME }}/
+        asset_name: ${{ matrix.UPLOAD_FILE_NAME }}
+        file: ./dist/${{ matrix.TARGET }}/${{ matrix.UPLOAD_FILE_NAME }}
         tag: ${{ github.ref_name }}
         overwrite: true
         promote: true
