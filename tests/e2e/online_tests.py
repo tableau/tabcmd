@@ -386,6 +386,12 @@ class OnlineCommandTest(unittest.TestCase):
         self._get_view(wb_name_on_server, sheet_name + ".csv")
 
     @pytest.mark.order(11)
+    def test_view_get_png(self):
+        wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
+        sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
+        self._get_view(wb_name_on_server, sheet_name + ".png")
+
+    @pytest.mark.order(11)
     def test_wb_publish_embedded(self):
         file = os.path.join("tests", "assets", OnlineCommandTest.TWB_WITH_EMBEDDED_CONNECTION)
         arguments = self._publish_args(file, OnlineCommandTest.EMBEDDED_TWB_NAME)
