@@ -62,7 +62,7 @@ class DatasourcesAndWorkbooks(Server):
         return matching_datasources[0]
 
     @staticmethod
-    def apply_values_from_url_params(logger, request_options: TSC.PDFRequestOptions, url) -> None:
+    def apply_values_from_url_params(logger, request_options: TSC.RequestOptions, url) -> None:
         logger.debug(url)
         try:
             if "?" in url:
