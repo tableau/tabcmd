@@ -47,12 +47,20 @@ class ParameterTests(unittest.TestCase):
         assert request_options.max_age == 0
 
     def test_apply_png_options(self):
-        # these aren't implemented yet. the layout and orientation ones don't apply.
-        mock_args.width = 800
-        mock_args.height = 76
+        mock_args.width = "800"
+        mock_args.height = "76"
         request_options = tsc.ImageRequestOptions()
         DatasourcesAndWorkbooks.apply_png_options(mock_logger, request_options, mock_args)
         assert request_options.image_resolution == "high"
+        assert request_options.viz_width == 800
+        assert request_options.viz_height == 76
+
+    def test_apply_png_options_bad_values(self):
+        mock_args.height = "seven"
+        mock_args.width = "800b"
+        request_options = tsc.ImageRequestOptions()
+        with self.assertRaises(ValueError):
+            DatasourcesAndWorkbooks.apply_png_options(mock_logger, request_options, mock_args)
 
     def test_apply_pdf_options(self):
         expected_page = tsc.PDFRequestOptions.PageType.Folio.__str__()

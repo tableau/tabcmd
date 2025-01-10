@@ -133,21 +133,19 @@ class ExportCommand(DatasourcesAndWorkbooks):
             Errors.exit_with_error(logger, "Error saving to file", e)
 
     @staticmethod
-    def apply_filters_from_args(request_options: TSC.PDFRequestOptions, args, logger=None) -> None:
+    def apply_filters_from_args(request_options: TSC.RequestOptions, args, logger=None) -> None:
         if args.filter:
             logger.debug("filter = {}".format(args.filter))
             params = args.filter.split("&")
             for value in params:
                 ExportCommand.apply_filter_value(logger, request_options, value)
 
-    # filtering isn't actually implemented for workbooks in REST
     @staticmethod
     def download_wb_pdf(server, workbook_item, args, logger):
         logger.debug(args.url)
         pdf_options = TSC.PDFRequestOptions(maxage=1)
-        if args.filter or args.url.find("?") > 0:
-            logger.info("warning: Filter values will not be applied when exporting a complete workbook")
         ExportCommand.apply_values_from_url_params(logger, pdf_options, args.url)
+        ExportCommand.apply_filters_from_args(pdf_options, args, logger)
         ExportCommand.apply_pdf_options(logger, pdf_options, args)
         logger.debug(pdf_options.get_query_params())
         server.workbooks.populate_pdf(workbook_item, pdf_options)
