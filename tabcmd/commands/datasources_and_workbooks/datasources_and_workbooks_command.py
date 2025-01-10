@@ -99,14 +99,16 @@ class DatasourcesAndWorkbooks(Server):
     # from apply_options, which expects an un-encoded input,
     # or from apply_url_params via apply_encoded_filter_value which decodes the input
     @staticmethod
-    def apply_filter_value(logger, request_options: TSC.PDFRequestOptions, value: str) -> None:
+    def apply_filter_value(logger, request_options: TSC.RequestOptions, value: str) -> None:
         logger.debug("handling filter param {}".format(value))
         data_filter = value.split("=")
-        request_options.vf(data_filter[0], data_filter[1])
+        # we should export the _DataExportOptions class from tsc
+        request_options.vf(data_filter[0], data_filter[1])  # type: ignore
 
     # this is called from within from_url_params, for each param value
+    # expects either ImageRequestOptions or PDFRequestOptions
     @staticmethod
-    def apply_options_in_url(logger, request_options: TSC.ImageRequestOptions, value: str) -> None:
+    def apply_options_in_url(logger, request_options: TSC.RequestOptions, value: str) -> None:
         logger.debug("handling url option {}".format(value))
         setting = value.split("=")
         if len(setting) != 2:
@@ -115,19 +117,18 @@ class DatasourcesAndWorkbooks(Server):
         setting_val = setting[1]
         logger.debug("setting named {}, has value {}".format(setting_name, setting_val))
 
-        # TODO: if the setting value ends with a filetype, read that and strip it
         if ":iid" == setting_name:
             logger.debug(":iid value ignored in url")
         elif ":refresh" == setting_name and DatasourcesAndWorkbooks.is_truthy(setting_val):
             # mypy is worried that this is readonly
-            request_options.max_age = 0  # type:ignore
-            logger.debug("Set max age to {} from {}".format(request_options.max_age, value))
+            request_options.max_age = 0  # type: ignore
+            logger.debug("Set max age to {} from {}".format((TSC.ImageRequestOptions(request_options)).max_age, value))
         elif ":size" == setting_name:
             # this is only used by get as png
             try:
                 height, width = setting_val.split(",")
-                request_options.viz_height = int(height)
-                request_options.viz_width = int(width)
+                (TSC.ImageRequestOptions(request_options)).viz_height = int(height)
+                (TSC.ImageRequestOptions(request_options)).viz_width = int(width)
             except Exception as oops:
                 logger.warn("Unable to read image size options '{}', skipping".format(setting_val))
                 logger.warn(oops)
