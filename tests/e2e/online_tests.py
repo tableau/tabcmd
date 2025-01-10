@@ -188,7 +188,7 @@ class OnlineCommandTest(unittest.TestCase):
     # variation: url
     def _refresh_extract(self, type, wb_name):
         command = "refreshextracts"
-        arguments = [command, wb_name, "--project", default_project_name, "-w",]   # bug: should not need -w
+        arguments = [command, "-w", wb_name, "--project", default_project_name]   # bug: should not need -w
         try:
             _test_command(arguments)
         except Exception as e:
@@ -446,6 +446,15 @@ class OnlineCommandTest(unittest.TestCase):
     def test__delete_ds_live(self):
         name_on_server = OnlineCommandTest.TDS_FILE_LIVE_NAME
         self._delete_ds(name_on_server)
+
+    @pytest.mark.order(19)
+    def test_export_wb_filters(self):
+        wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
+        sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
+        friendly_name = wb_name_on_server +"/" + sheet_name
+        filters = ["--filter", "Product Type=Tea",  "--fullpdf", "--pagelayout", "landscape"]
+        self._export_wb(friendly_name, "filter_a_wb_to_tea_and_two_pages.pdf", filters)
+        # NOTE: this test needs a visual check on the returned pdf to confirm the expected appearance
 
     @pytest.mark.order(19)
     def test_export_wb_pdf(self):
