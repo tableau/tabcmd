@@ -113,6 +113,7 @@ class DatasourcesAndWorkbooks(Server):
         setting = value.split("=")
         if len(setting) != 2:
             logger.warn("Unable to read url parameter '{}', skipping".format(value))
+            return
         setting_name = setting[0]
         setting_val = setting[1]
         logger.debug("setting named {}, has value {}".format(setting_name, setting_val))
