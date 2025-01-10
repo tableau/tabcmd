@@ -133,7 +133,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
             Errors.exit_with_error(logger, "Error saving to file", e)
 
     @staticmethod
-    def apply_filters_from_args(request_options: TSC.PDFRequestOptions, args, logger=None) -> None:
+    def apply_filters_from_args(request_options: TSC.RequestOptions, args, logger=None) -> None:
         if args.filter:
             logger.debug("filter = {}".format(args.filter))
             params = args.filter.split("&")

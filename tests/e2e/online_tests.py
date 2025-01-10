@@ -28,7 +28,7 @@ indexing_sleep_time = 1  # wait 1 second to confirm server has indexed updates
 unique = str(time.gmtime().tm_sec)
 group_name = "test-ing-group" + unique
 workbook_name = "wb_1_" + unique
-default_project_name = "Personal Work" # "default-proj" + unique
+default_project_name = "Personal Work"  # "default-proj" + unique
 parent_location = "parent" + unique
 project_name = "test-proj-" + unique
 
@@ -43,7 +43,7 @@ use_tabcmd_classic = False  # toggle between testing using tabcmd 2 or tabcmd cl
 def _test_command(test_args: list[str]):
     # this will raise an exception if it gets a non-zero return code
     # that will bubble up and fail the test
-    
+
     # default: run tests using tabcmd 2
     calling_args = ["python", "-m", "tabcmd"] + test_args + [debug_log] + ["--no-certcheck"]
 
@@ -120,7 +120,7 @@ class OnlineCommandTest(unittest.TestCase):
 
     def _delete_wb(self, name):
         command = "delete"
-        arguments = [command,  "--project", default_project_name, name] 
+        arguments = [command, "--project", default_project_name, name]
         _test_command(arguments)
 
     def _delete_ds(self, name):
@@ -142,20 +142,17 @@ class OnlineCommandTest(unittest.TestCase):
         # TODO
         command = "get"
 
-
-
     def _export_wb(self, friendly_name, filename=None, additional_args=None):
         command = "export"
         arguments = [command, friendly_name, "--fullpdf"]
-        
+
         if filename:
             arguments = arguments + ["--filename", filename]
         if additional_args:
             arguments = arguments + additional_args
         _test_command(arguments)
 
-        
-    def _export_view(self, wb_name_on_server, sheet_name, export_type, filename=None, additional_args=None):        
+    def _export_view(self, wb_name_on_server, sheet_name, export_type, filename=None, additional_args=None):
         server_file = "/" + wb_name_on_server + "/" + sheet_name
         command = "export"
         arguments = [command, server_file, export_type]
@@ -180,7 +177,7 @@ class OnlineCommandTest(unittest.TestCase):
 
     def _create_extract(self, type, wb_name):
         command = "createextracts"
-        arguments = [command, type, wb_name, "--project", default_project_name] 
+        arguments = [command, type, wb_name, "--project", default_project_name]
         if extract_encryption_enabled and not use_tabcmd_classic:
             arguments.append("--encrypt")
         _test_command(arguments)
@@ -188,7 +185,7 @@ class OnlineCommandTest(unittest.TestCase):
     # variation: url
     def _refresh_extract(self, type, wb_name):
         command = "refreshextracts"
-        arguments = [command, "-w", wb_name, "--project", default_project_name]   # bug: should not need -w
+        arguments = [command, "-w", wb_name, "--project", default_project_name]  # bug: should not need -w
         try:
             _test_command(arguments)
         except Exception as e:
@@ -202,7 +199,7 @@ class OnlineCommandTest(unittest.TestCase):
 
     def _delete_extract(self, type, item_name):
         command = "deleteextracts"
-        arguments = [command, type, item_name, "--include-all", "--project", default_project_name] 
+        arguments = [command, type, item_name, "--include-all", "--project", default_project_name]
         try:
             _test_command(arguments)
         except Exception as e:
@@ -380,6 +377,17 @@ class OnlineCommandTest(unittest.TestCase):
         self._get_view(wb_name_on_server, sheet_name, "downloaded_file.pdf")
 
     @pytest.mark.order(11)
+    def test_view_get_png_sizes(self):
+        wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
+        sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
+
+        self._get_view(wb_name_on_server, sheet_name, "get_view_default_size.png")
+        url_params = "?:size=100,200"
+        self._get_view(wb_name_on_server, sheet_name + url_params, "get_view_sized_sm.png")
+        url_params = "?:size=500,700"
+        self._get_view(wb_name_on_server, sheet_name + url_params, "get_view_sized_LARGE.png")
+
+    @pytest.mark.order(11)
     def test_view_get_csv(self):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
@@ -451,21 +459,18 @@ class OnlineCommandTest(unittest.TestCase):
     def test_export_wb_filters(self):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
-        friendly_name = wb_name_on_server +"/" + sheet_name
-        filters = ["--filter", "Product Type=Tea",  "--fullpdf", "--pagelayout", "landscape"]
+        friendly_name = wb_name_on_server + "/" + sheet_name
+        filters = ["--filter", "Product Type=Tea", "--fullpdf", "--pagelayout", "landscape"]
         self._export_wb(friendly_name, "filter_a_wb_to_tea_and_two_pages.pdf", filters)
         # NOTE: this test needs a visual check on the returned pdf to confirm the expected appearance
 
     @pytest.mark.order(19)
     def test_export_wb_pdf(self):
-        command = "export"
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
-        friendly_name = (
-            wb_name_on_server + "/" + OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET 
-        )
+        friendly_name = wb_name_on_server + "/" + OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         filename = "exported_wb.pdf"
         self._export_wb(friendly_name, filename)
-        
+
     @pytest.mark.order(19)
     def test_export_data_csv(self):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
@@ -483,13 +488,13 @@ class OnlineCommandTest(unittest.TestCase):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         self._export_view(wb_name_on_server, sheet_name, "--pdf", "export_view_pdf.pdf")
-        
+
     @pytest.mark.order(19)
     def test_export_view_filtered(self):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         filename = "view_with_filters.pdf"
-        
+
         filters = ["--filter", "Product Type=Tea"]
         self._export_view(wb_name_on_server, sheet_name, "--pdf", filename, filters)
 

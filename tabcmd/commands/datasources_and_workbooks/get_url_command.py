@@ -115,9 +115,9 @@ class GetUrl(DatasourcesAndWorkbooks):
         logger.trace("Entered method " + inspect.stack()[0].function)
         try:
             logger.debug(_("content_type.view") + ": {}".format(get_url_item.name))
-            req_option_csv = TSC.ImageRequestOptions(maxage=1)
-            DatasourcesAndWorkbooks.apply_values_from_url_params(logger, req_option_csv, args.url)
-            server_content_type.populate_image(get_url_item, req_option_csv)
+            req_option_png = TSC.ImageRequestOptions(maxage=1)
+            DatasourcesAndWorkbooks.apply_values_from_url_params(logger, req_option_png, args.url)
+            server_content_type.populate_image(get_url_item, req_option_png)
             filename = GetUrl.filename_from_args(args.filename, get_url_item.name, "png")
             DatasourcesAndWorkbooks.save_to_file(logger, get_url_item.image, filename)
         except Exception as e:
