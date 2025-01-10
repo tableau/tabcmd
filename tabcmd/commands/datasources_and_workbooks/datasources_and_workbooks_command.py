@@ -144,7 +144,7 @@ class DatasourcesAndWorkbooks(Server):
         if args.height:
             request_options.viz_height = int(args.height)
         if args.width:
-            request_options.viz_width = args.width
+            request_options.viz_width = int(args.width)
         # Always request high-res images
         request_options.image_resolution = "high"
 
