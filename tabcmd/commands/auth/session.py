@@ -272,7 +272,7 @@ class Session:
             connected_server: TSC.Server = self.tableau_server
         else:
             Errors.exit_with_error(self.logger, "Attempted to sign in with no server connection created")
-        
+
         try:
             # it's the same call for token or user-pass
             connected_server = self.tableau_server.auth.sign_in(tableau_auth)
@@ -290,7 +290,6 @@ class Session:
         else:
             Errors.exit_with_error(self.logger, message="Sign in failed")
         return connected_server
-
 
     def _get_saved_credentials(self):
         if self.last_login_using == "username":

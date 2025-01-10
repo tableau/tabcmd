@@ -115,7 +115,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
     def get_publish_mode(args, logger):
         # default: fail if it already exists on the server
         default_mode = TSC.Server.PublishMode.CreateNew
-        publish_mode : Optional[str] = default_mode
+        publish_mode: Optional[str] = default_mode
 
         if args.replace:
             raise AttributeError("Replacing an extract is not yet implemented")
