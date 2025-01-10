@@ -106,18 +106,31 @@ class DatasourcesAndWorkbooks(Server):
 
     # this is called from within from_url_params, for each param value
     @staticmethod
-    def apply_options_in_url(logger, request_options: TSC.PDFRequestOptions, value: str) -> None:
+    def apply_options_in_url(logger, request_options: TSC.ImageRequestOptions, value: str) -> None:
         logger.debug("handling url option {}".format(value))
         setting = value.split("=")
-        if ":iid" == setting[0]:
+        if len(setting) != 2:
+            logger.warn("Unable to read url parameter '{}', skipping".format(value))
+        setting_name = setting[0]
+        setting_val = setting[1]
+        logger.debug("setting named {}, has value {}".format(setting_name, setting_val))
+
+        # TODO: if the setting value ends with a filetype, read that and strip it
+        if ":iid" == setting_name:
             logger.debug(":iid value ignored in url")
-        elif ":refresh" == setting[0] and DatasourcesAndWorkbooks.is_truthy(setting[1]):
+        elif ":refresh" == setting_name and DatasourcesAndWorkbooks.is_truthy(setting_val):
             # mypy is worried that this is readonly
             request_options.max_age = 0  # type:ignore
             logger.debug("Set max age to {} from {}".format(request_options.max_age, value))
-        elif ":size" == setting[0]:
-            height, width = setting[1].split(",")
-            logger.warn("Height/width parameters not yet implemented ({})".format(value))
+        elif ":size" == setting_name:
+            # this is only used by get as png
+            try:
+                height, width = setting_val.split(",")
+                request_options.viz_height = int(height)
+                request_options.viz_width = int(width)
+            except Exception as oops:
+                logger.warn("Unable to read image size options '{}', skipping".format(setting_val))
+                logger.warn(oops)
         else:
             logger.debug("Parameter[s] not recognized: {}".format(value))
 
@@ -127,8 +140,11 @@ class DatasourcesAndWorkbooks(Server):
 
     @staticmethod
     def apply_png_options(logger, request_options: TSC.ImageRequestOptions, args):
-        if args.height or args.width:
-            logger.warn("Height/width arguments not yet implemented in export")
+        # these are only used in export, not get
+        if args.height:
+            request_options.viz_height = int(args.height)
+        if args.width:
+            request_options.viz_width = args.width
         # Always request high-res images
         request_options.image_resolution = "high"
 
