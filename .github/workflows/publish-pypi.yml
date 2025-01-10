@@ -19,7 +19,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: actions/setup-python@v5
-        with:          
+        with:
           python-version: 3.12
       - name: Build dist files
         run: |
@@ -41,4 +41,3 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1  # license BSD-2
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
-

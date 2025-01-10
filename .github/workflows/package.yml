@@ -94,7 +94,7 @@ jobs:
         cd dist/${{ matrix.TARGET }}
         tar -cvf ${{ matrix.UPLOAD_FILE_NAME }} ${{ matrix.OUT_FILE_NAME }}
 
-    
+
     - name: Upload binaries to release for ${{ matrix.TARGET }}
       uses: svenstaro/upload-release-action@v2
       with:
@@ -104,4 +104,3 @@ jobs:
         tag: ${{ github.ref_name }}
         overwrite: true
         promote: true
-
