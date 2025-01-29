@@ -3,12 +3,7 @@ import unittest
 from unittest.mock import *
 import tableauserverclient as TSC
 
-from tabcmd.commands.auth import login_command
-from tabcmd.commands.datasources_and_workbooks import delete_command, export_command, get_url_command, publish_command
-
-
-from typing import List, NamedTuple, TextIO, Union
-import io
+from tabcmd.commands.datasources_and_workbooks import publish_command
 
 mock_args = argparse.Namespace()
 
