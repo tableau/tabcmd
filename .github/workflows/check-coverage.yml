@@ -52,9 +52,12 @@ jobs:
         # Please submit an issue on this action's GitHub repo
         # report-only-changed-files: true
 
-    # TODO update badge on readme:
-    # generate badge with https://pypi.org/project/coverage-badge/
-    # display it with https://github.com/Schneegans/dynamic-badges-action
-
+    # https://github.com/marketplace/actions/coverage-badge
+    - name: Update Coverage Badge
+      # GitHub actions: default branch variable
+      # https://stackoverflow.com/questions/64781462/github-actions-default-branch-variable
+      if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+      uses: we-cli/coverage-badge-action@main
+        
     # TODO track docstring coverage
     # https://github.com/marketplace/actions/python-interrogate-check
