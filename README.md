@@ -2,7 +2,7 @@
 
 [![Tableau Supported](https://img.shields.io/badge/Support%20Level-Tableau%20Supported-53bd92.svg)](https://www.tableau.com/support-levels-it-and-developer-tools)
 
-![Code Coverage](https://img.shields.io/endpoint?url=https://gist.github.com/jacalata/4f1a5e49fb58c3932bfdfdf22ed0a4b2/raw/coverage-badge.json)
+[![Code coverage](https://tableau.github.io/tabcmd/badges/coverage.svg)](https://github.com/tableau/tabcmd/actions)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Python tests](https://github.com/tableau/tabcmd/actions/workflows/run-tests.yml/badge.svg)](https://github.com/tableau/tabcmd/actions/workflows/run-tests.yml)
 [![Pypi smoke tests](https://github.com/tableau/tabcmd/actions/workflows/python-app.yml/badge.svg)](https://github.com/tableau/tabcmd/actions/workflows/python-app.yml)
