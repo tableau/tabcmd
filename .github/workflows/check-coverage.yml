@@ -38,6 +38,10 @@ jobs:
     - name: Generate coverage report
       run: pytest --junitxml=pytest.xml --cov=tabcmd tests/ | tee pytest-coverage.txt
 
+    # trying another coverage reporter for PRs/badges
+    - name: Coveralls
+      uses: coverallsapp/github-action@v2
+
     - name: Comment on pull request with coverage
       uses: MishaKav/pytest-coverage-comment@main
       with:
@@ -47,14 +51,9 @@ jobs:
         # Please submit an issue on this action's GitHub repo
         # report-only-changed-files: true
 
-    # badge on readme: https://github.com/Schneegans/dynamic-badges-action
-    - name: Create Awesome Badge
-      uses: schneegans/dynamic-badges-action@v1.7.0
-      with:
-        auth: ${{ secrets.GIST_SECRET }}
-        gistID: 4f1a5e49fb58c3932bfdfdf22ed0a4b2
-        filename: coverage-badge.json # Use test.svg if you want to use the SVG mode.
-        label: Code Coverage
+    # TODO update badge on readme:
+    # generate badge with https://pypi.org/project/coverage-badge/
+    # display it with https://github.com/Schneegans/dynamic-badges-action
 
     # TODO track docstring coverage
     # https://github.com/marketplace/actions/python-interrogate-check
