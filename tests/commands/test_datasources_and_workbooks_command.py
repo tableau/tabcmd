@@ -65,12 +65,18 @@ class ParameterTests(unittest.TestCase):
     def test_apply_pdf_options(self):
         expected_page = tsc.PDFRequestOptions.PageType.Folio.__str__()
         expected_layout = tsc.PDFRequestOptions.Orientation.Portrait.__str__()
+        expected_height = 800
+        expected_width = 600
         mock_args.pagelayout = expected_layout
         mock_args.pagesize = expected_page
+        mock_args.height = expected_height
+        mock_args.width = expected_width
         request_options = tsc.PDFRequestOptions()
         DatasourcesAndWorkbooks.apply_pdf_options(mock_logger, request_options, mock_args)
         assert request_options.page_type == expected_page
         assert request_options.orientation == expected_layout
+        assert request_options.viz_width == expected_width
+        assert request_options.viz_height == expected_height
 
 
 @mock.patch("tableauserverclient.Server")

@@ -156,6 +156,10 @@ class DatasourcesAndWorkbooks(Server):
             request_options.orientation = args.pagelayout
         if args.pagesize:
             request_options.page_type = args.pagesize
+        if args.height:
+            request_options.viz_height = int(args.height)
+        if args.width:
+            request_options.viz_width = int(args.width)
 
     @staticmethod
     def save_to_data_file(logger, output, filename):
