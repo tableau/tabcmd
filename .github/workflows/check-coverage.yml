@@ -5,6 +5,7 @@ on:
   pull_request:
     branches:
       - development
+  workflow_dispatch:
 
 jobs:
   build:
@@ -12,7 +13,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        python-version: ['3']
+        python-version: ['3.12']
 
     runs-on: ${{ matrix.os }}
 
