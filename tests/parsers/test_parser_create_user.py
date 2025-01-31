@@ -7,7 +7,7 @@ from .common_setup import *
 commandname = "createusers"
 
 
-class CreateUsersTest(unittest.TestCase):
+class CreateUsersTest(ParserTestCase):
     @classmethod
     def setUpClass(cls):
         cls.parser_under_test = initialize_test_pieces(commandname, CreateUsersCommand)

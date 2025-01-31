@@ -6,7 +6,7 @@ from .common_setup import *
 commandname = "reencryptextracts"
 
 
-class ReencryptExtractsParserTest(unittest.TestCase):
+class ReencryptExtractsParserTest(ParserTestCase):
     @classmethod
     def setUpClass(cls):
         cls.parser_under_test = initialize_test_pieces(commandname, ReencryptExtracts)

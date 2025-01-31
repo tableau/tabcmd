@@ -7,7 +7,7 @@ from .common_setup import *
 commandname = "Publish"
 
 
-class PublishParserTest(unittest.TestCase):
+class PublishParserTest(ParserTestCase):
     @classmethod
     def setUpClass(cls):
         cls.parser_under_test = initialize_test_pieces(commandname, PublishCommand)

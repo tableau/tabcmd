@@ -141,7 +141,9 @@ class Server:
             )
 
     @staticmethod
-    def get_project_by_name_and_parent_path(logger, server, project_name: str, parent_path: str) -> TSC.ProjectItem:
+    def get_project_by_name_and_parent_path(
+        logger, server, project_name: Optional[str], parent_path: Optional[str]
+    ) -> TSC.ProjectItem:
         logger.debug(_("content_type.project") + ":{0}, {1}".format(parent_path, project_name))
         if not parent_path:
             if not project_name:
@@ -163,7 +165,7 @@ class Server:
         return project
 
     @staticmethod
-    def _parse_project_path_to_list(project_path: str):
+    def _parse_project_path_to_list(project_path: Optional[str]):
         if project_path is None or project_path == "":
             return []
         if project_path.find("/") == -1:

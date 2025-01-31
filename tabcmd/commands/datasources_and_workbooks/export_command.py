@@ -73,9 +73,9 @@ class ExportCommand(DatasourcesAndWorkbooks):
     it to a file. This command can also export just the data used for a view_name
     """
 
-    @staticmethod
-    def run_command(args):
-        logger = log(__class__.__name__, args.logging_level)
+    @classmethod
+    def run_command(cls, args):
+        logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
@@ -89,7 +89,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
         if not view_content_url and not wb_content_url:
             view_example = "/workbook_name/view_name"
             message = "{} [{}]".format(
-                _("export.errors.requires_workbook_view_param").format(__class__.__name__), view_example
+                _("export.errors.requires_workbook_view_param").format(cls.__name__), view_example
             )
             Errors.exit_with_error(logger, message)
 
@@ -132,6 +132,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
         except Exception as e:
             Errors.exit_with_error(logger, "Error saving to file", e)
 
+    # TODO should make the ability to pass in filters as args available in GET command too?
     @staticmethod
     def apply_filters_from_args(request_options: TSC.RequestOptions, args, logger=None) -> None:
         if args.filter:

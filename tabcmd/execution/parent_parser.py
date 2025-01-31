@@ -199,7 +199,7 @@ class Help:
     def run_command(self, args):
         logger = log(__name__, "info")
         logger.info(strings[6] + " " + version + "\n")
-        logger.info(self.parser.root.format_help())
+        logger.info(self.parser.root.format_help())  # type: ignore
 
 
 strings = [

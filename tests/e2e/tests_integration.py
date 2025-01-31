@@ -1,7 +1,9 @@
 import argparse
 import logging
 import pytest
+import tableauserverclient as TSC
 import unittest
+
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
@@ -13,6 +15,7 @@ except ImportError:
     credentials = None  # type: ignore
 
 fakeserver = "http://SRVR"
+logger: logging.Logger
 logging.disable(logging.ERROR)
 
 # these are integration tests because they don't just run a command, they call interior methods
@@ -130,9 +133,8 @@ class E2EServerTests(unittest.TestCase):
         # test_session.create_session(args)
 
     def test_get_project(self):
-        logger = log(__class__.__name__, "info")
         server = E2EServerTests.test_log_in()
-        Server.get_project_by_name_and_parent_path(logger, server, "Default", None)
+        project: TSC.ProjectItem = Server.get_project_by_name_and_parent_path(logger, server, "Default", None)
 
 
 logging.disable(logging.NOTSET)

@@ -8,7 +8,7 @@ from .common_setup import *
 commandname = "logout"
 
 
-class LogoutParserTest(unittest.TestCase):
+class LogoutParserTest(ParserTestCase):
     @classmethod
     def setUpClass(cls):
         cls.parser_under_test = initialize_test_pieces(commandname, LogoutCommand)

@@ -22,9 +22,9 @@ class DeleteProjectCommand(Server):
         args_group.add_argument("project_name", metavar="project-name", help=_("createproject.options.name"))
         set_parent_project_arg(args_group)
 
-    @staticmethod
-    def run_command(args):
-        logger = log(__class__.__name__, args.logging_level)
+    @classmethod
+    def run_command(cls, args):
+        logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
@@ -37,7 +37,7 @@ class DeleteProjectCommand(Server):
                 logger, server, args.project_name, args.parent_project_path
             )
         except Exception as e:
-            Errors.exit_with_error(logger, e)
+            Errors.exit_with_error(logger, exception=e)
         project_id = project.id
 
         try:
