@@ -400,11 +400,16 @@ class RunCommandsTest(unittest.TestCase):
         mock_session.assert_called()
 
     def test_list_content(self, mock_session, mock_server):
+
         RunCommandsTest._set_up_session(mock_session, mock_server)
+        mock_args.name = False
+        mock_args.owner = None
+        mock_args.address = None
+        mock_args.get_extract_encryption_mode = False
+        mock_args.details = False
         mock_args.content = "workbooks"
         list_command.ListCommand.run_command(mock_args)
         mock_args.content = "projects"
         list_command.ListCommand.run_command(mock_args)
         mock_args.content = "flows"
         list_command.ListCommand.run_command(mock_args)
-        # todo: details, filters
