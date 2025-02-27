@@ -484,7 +484,7 @@ class Session:
             self.logger.error(message)
             self.logger.error(e)
 
-    def _get_server_base_url(self, url : str) -> str:
+    def _get_server_base_url(self, url : str):
         try:
             parsed = urlparse(url)
             scheme = parsed.scheme or "http"
