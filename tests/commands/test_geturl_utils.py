@@ -17,6 +17,7 @@ mock_args.width = None
 mock_args.height = None
 mock_args.filename = None
 mock_args.filter = None
+mock_args.resolution = None
 
 mock_logger = mock.MagicMock()
 

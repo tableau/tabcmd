@@ -147,8 +147,8 @@ class DatasourcesAndWorkbooks(Server):
             request_options.viz_height = int(args.height)
         if args.width:
             request_options.viz_width = int(args.width)
-        # Always request high-res images
-        request_options.image_resolution = "high"
+        if args.resolution and args.resolution == TSC.ImageRequestOptions.Resolution.High.lower():
+            request_options.image_resolution = TSC.ImageRequestOptions.Resolution.High.lower()
 
     @staticmethod
     def apply_pdf_options(logger, request_options: TSC.PDFRequestOptions, args):

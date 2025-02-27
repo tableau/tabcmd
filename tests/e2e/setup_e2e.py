@@ -43,3 +43,16 @@ def get_executable():
     subprocess.check_call(["dir", launch_path], shell=True)
     print("running", our_program)
     return exe
+
+
+def get_login_args():
+    return [
+        "--server",
+        credentials.server,
+        "--site",
+        credentials.site,
+        "--token-value",
+        credentials.token,
+        "--token-name",
+        credentials.token_name
+    ]

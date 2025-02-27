@@ -34,7 +34,7 @@ project_name = "test-proj-" + unique
 
 # Flags to let us skip tests if we know we don't have the required access
 server_admin = False
-site_admin = False
+site_admin = True
 project_admin = False
 extract_encryption_enabled = False
 use_tabcmd_classic = False  # toggle between testing using tabcmd 2 or tabcmd classic
@@ -45,7 +45,7 @@ def _test_command(test_args: list[str]):
     # that will bubble up and fail the test
 
     # default: run tests using tabcmd 2
-    calling_args = ["python", "-m", "tabcmd"] + test_args + [debug_log] + ["--no-certcheck"]
+    calling_args = ["python", "-m", "tabcmd"] + test_args + setup_e2e.get_login_args() + [debug_log] + ["--no-certcheck"]
 
     # call the executable directly: lets us drop in classic tabcmd
     if use_tabcmd_classic:
@@ -306,7 +306,7 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(8)
     def test_create_projects(self):
-        if not project_admin:
+        if not project_admin and not server_admin and not site_admin:
             pytest.skip("Must be project administrator to create projects")
 
         # project 1
