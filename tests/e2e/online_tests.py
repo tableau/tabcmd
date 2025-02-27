@@ -45,7 +45,9 @@ def _test_command(test_args: list[str]):
     # that will bubble up and fail the test
 
     # default: run tests using tabcmd 2
-    calling_args = ["python", "-m", "tabcmd"] + test_args + setup_e2e.get_login_args() + [debug_log] + ["--no-certcheck"]
+    calling_args = (
+        ["python", "-m", "tabcmd"] + test_args + setup_e2e.get_login_args() + [debug_log] + ["--no-certcheck"]
+    )
 
     # call the executable directly: lets us drop in classic tabcmd
     if use_tabcmd_classic:

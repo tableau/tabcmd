@@ -31,10 +31,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
 
         group.add_argument(
             "--pagelayout",
-            choices=[
-                pageorientation.Landscape,
-                pageorientation.Portrait
-            ],
+            choices=[pageorientation.Landscape, pageorientation.Portrait],
             type=str.lower,
             default=None,
             help="page orientation (landscape or portrait) of the exported PDF",
@@ -70,12 +67,9 @@ class ExportCommand(DatasourcesAndWorkbooks):
             metavar="COLUMN=VALUE",
             help="Data filter to apply to the view",
         )
-        group.add_argument("--resolution",
-                           choices=[
-                               imageresolution.High
-                           ],
-                           type=str.lower,
-                           help=_("export.options.resolution"))
+        group.add_argument(
+            "--resolution", choices=[imageresolution.High], type=str.lower, help=_("export.options.resolution")
+        )
 
     """
     Command to Export a view_name or workbook from Tableau Server and save

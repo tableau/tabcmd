@@ -382,8 +382,9 @@ class CreateSessionTests(unittest.TestCase):
         assert new_session.server_url == expected_session_server_url
 
     @mock.patch("tableauserverclient.Server")
-    def test_create_session_server_url_with_no_protocol_in_server_arg(self, mock_tsc, mock_pass, mock_file, mock_path,
-                                                                      mock_json):
+    def test_create_session_server_url_with_no_protocol_in_server_arg(
+        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json
+    ):
         name = "uuuu"
         new_session = Session()
         new_session.tableau_server = mock_tsc()
@@ -403,8 +404,9 @@ class CreateSessionTests(unittest.TestCase):
         assert new_session.server_url == expected_session_server_url
 
     @mock.patch("tableauserverclient.Server")
-    def test_create_session_server_url_with_no_protocol_and_extra_path_in_server_arg(self, mock_tsc, mock_pass,
-                                                                                     mock_file, mock_path, mock_json):
+    def test_create_session_server_url_with_no_protocol_and_extra_path_in_server_arg(
+        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json
+    ):
         name = "uuuu"
         new_session = Session()
         new_session.tableau_server = mock_tsc()
@@ -424,8 +426,9 @@ class CreateSessionTests(unittest.TestCase):
         assert new_session.server_url == expected_session_server_url
 
     @mock.patch("tableauserverclient.Server")
-    def test_create_session_server_url_with_extra_path_in_server_arg(self, mock_tsc, mock_pass, mock_file, mock_path,
-                                                                     mock_json):
+    def test_create_session_server_url_with_extra_path_in_server_arg(
+        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json
+    ):
         name = "uuuu"
         new_session = Session()
         new_session.tableau_server = mock_tsc()

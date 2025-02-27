@@ -54,5 +54,5 @@ def get_login_args():
         "--token-value",
         credentials.token,
         "--token-name",
-        credentials.token_name
+        credentials.token_name,
     ]
