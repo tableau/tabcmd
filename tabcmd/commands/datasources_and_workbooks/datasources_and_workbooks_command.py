@@ -128,8 +128,8 @@ class DatasourcesAndWorkbooks(Server):
             # this is only used by get as png
             try:
                 height, width = setting_val.split(",")
-                (TSC.ImageRequestOptions(request_options)).viz_height = int(height)
-                (TSC.ImageRequestOptions(request_options)).viz_width = int(width)
+                request_options.viz_height = int(height)
+                request_options.viz_width = int(width)
             except Exception as oops:
                 logger.warn("Unable to read image size options '{}', skipping".format(setting_val))
                 logger.warn(oops)
