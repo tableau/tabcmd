@@ -12,6 +12,7 @@ from .datasources_workbooks_views_url_parser import DatasourcesWorkbooksAndViews
 pagesize = TSC.PDFRequestOptions.PageType  # type alias for brevity
 pageorientation = TSC.PDFRequestOptions.Orientation
 imageresolution = TSC.ImageRequestOptions.Resolution
+ImageResolutionStandard = "standard"
 
 
 class ExportCommand(DatasourcesAndWorkbooks):
@@ -68,7 +69,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
             help="Data filter to apply to the view",
         )
         group.add_argument(
-            "--resolution", choices=[imageresolution.High], type=str.lower, help=_("export.options.resolution")
+            "--resolution", choices=[imageresolution.High, ImageResolutionStandard], type=str.lower, help=_("export.options.resolution")
         )
 
     """

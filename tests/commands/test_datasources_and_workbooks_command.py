@@ -52,7 +52,7 @@ class ParameterTests(unittest.TestCase):
         mock_args.resolution = None
         request_options = tsc.ImageRequestOptions()
         DatasourcesAndWorkbooks.apply_png_options(mock_logger, request_options, mock_args)
-        assert request_options.image_resolution is None
+        assert request_options.image_resolution == "high"
         assert request_options.viz_width == 800
         assert request_options.viz_height == 76
 
@@ -66,10 +66,10 @@ class ParameterTests(unittest.TestCase):
         assert request_options.viz_width == 800
         assert request_options.viz_height == 76
 
-    def test_apply_png_options_with_resolution_bad_value(self):
+    def test_apply_png_options_with_resolution_standard(self):
         mock_args.width = "800"
         mock_args.height = "76"
-        mock_args.resolution = "normal"
+        mock_args.resolution = "standard"
         request_options = tsc.ImageRequestOptions()
         DatasourcesAndWorkbooks.apply_png_options(mock_logger, request_options, mock_args)
         assert request_options.image_resolution is None
