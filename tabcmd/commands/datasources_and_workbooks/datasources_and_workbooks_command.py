@@ -152,7 +152,7 @@ class DatasourcesAndWorkbooks(Server):
         if args.width:
             request_options.viz_width = int(args.width)
         if args.resolution and args.resolution != TSC.ImageRequestOptions.Resolution.High.lower():
-                request_options.image_resolution = None
+            request_options.image_resolution = None
         else:
             request_options.image_resolution = TSC.ImageRequestOptions.Resolution.High.lower()
 

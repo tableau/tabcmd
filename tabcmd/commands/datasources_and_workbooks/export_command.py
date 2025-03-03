@@ -69,7 +69,10 @@ class ExportCommand(DatasourcesAndWorkbooks):
             help="Data filter to apply to the view",
         )
         group.add_argument(
-            "--resolution", choices=[imageresolution.High, ImageResolutionStandard], type=str.lower, help=_("export.options.resolution")
+            "--resolution",
+            choices=[imageresolution.High, ImageResolutionStandard],
+            type=str.lower,
+            help=_("export.options.resolution"),
         )
 
     """
