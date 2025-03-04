@@ -49,9 +49,30 @@ class ParameterTests(unittest.TestCase):
     def test_apply_png_options(self):
         mock_args.width = "800"
         mock_args.height = "76"
+        mock_args.resolution = None
         request_options = tsc.ImageRequestOptions()
         DatasourcesAndWorkbooks.apply_png_options(mock_logger, request_options, mock_args)
         assert request_options.image_resolution == "high"
+        assert request_options.viz_width == 800
+        assert request_options.viz_height == 76
+
+    def test_apply_png_options_with_resolution_high(self):
+        mock_args.width = "800"
+        mock_args.height = "76"
+        mock_args.resolution = "high"
+        request_options = tsc.ImageRequestOptions()
+        DatasourcesAndWorkbooks.apply_png_options(mock_logger, request_options, mock_args)
+        assert request_options.image_resolution == "high"
+        assert request_options.viz_width == 800
+        assert request_options.viz_height == 76
+
+    def test_apply_png_options_with_resolution_standard(self):
+        mock_args.width = "800"
+        mock_args.height = "76"
+        mock_args.resolution = "standard"
+        request_options = tsc.ImageRequestOptions()
+        DatasourcesAndWorkbooks.apply_png_options(mock_logger, request_options, mock_args)
+        assert request_options.image_resolution is None
         assert request_options.viz_width == 800
         assert request_options.viz_height == 76
 
@@ -71,6 +92,39 @@ class ParameterTests(unittest.TestCase):
         DatasourcesAndWorkbooks.apply_pdf_options(mock_logger, request_options, mock_args)
         assert request_options.page_type == expected_page
         assert request_options.orientation == expected_layout
+
+    def test_apply_options_in_url_with_size(self):
+        request_options = tsc.ImageRequestOptions()
+        value = ":size=800,600"
+
+        DatasourcesAndWorkbooks.apply_options_in_url(mock_logger, request_options, value)
+        self.assertEqual(request_options.viz_height, 800)
+        self.assertEqual(request_options.viz_width, 600)
+
+    def test_apply_options_in_url_with_refresh(self):
+        request_options = tsc.ImageRequestOptions()
+        value = ":refresh=yes"
+
+        DatasourcesAndWorkbooks.apply_options_in_url(mock_logger, request_options, value)
+        self.assertEqual(request_options.max_age, 0)
+
+    def test_apply_options_in_url_with_invalid_size(self):
+        request_options = tsc.ImageRequestOptions()
+        value = ":size=invalid"
+
+        DatasourcesAndWorkbooks.apply_options_in_url(mock_logger, request_options, value)
+        self.assertEqual(request_options.viz_height, None)
+        self.assertEqual(request_options.viz_width, None)
+
+    def test_apply_options_in_url_with_unrecognized_parameter(self):
+        request_options = tsc.ImageRequestOptions()
+        default_max_age = request_options.max_age
+        value = ":unknown=param"
+
+        DatasourcesAndWorkbooks.apply_options_in_url(mock_logger, request_options, value)
+        self.assertEqual(request_options.viz_height, None)
+        self.assertEqual(request_options.viz_width, None)
+        self.assertEqual(request_options.max_age, default_max_age)
 
 
 @mock.patch("tableauserverclient.Server")
