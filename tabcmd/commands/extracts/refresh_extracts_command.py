@@ -34,17 +34,17 @@ class RefreshExtracts(Server):
         if args.addcalculations or args.removecalculations:
             logger.warning("Add/Remove Calculations tasks are not supported.")
 
-        # docs: the REST method always runs a full refresh even if the refresh type is set to incremental.
+        incremental_refresh = False
         if args.incremental:  # docs: run the incremental refresh
-            logger.warn("Incremental refresh is not yet available through the new tabcmd")
+            incremental_refresh = True
 
         try:
             item = Extracts.get_wb_or_ds_for_extracts(args, logger, server)
             if args.datasource:
                 logger.info(_("refreshextracts.status_refreshed").format(_("content_type.datasource"), args.datasource))
-                job: TSC.JobItem = server.datasources.refresh(item.id)
+                job: TSC.JobItem = server.datasources.refresh(item.id, incremental_refresh)
             else:
-                job: TSC.JobItem = server.workbooks.refresh(item.id)
+                job: TSC.JobItem = server.workbooks.refresh(item.id, incremental_refresh)
                 logger.info(_("refreshextracts.status_refreshed").format(_("content_type.workbook"), args.workbook))
 
         except Exception as e:
