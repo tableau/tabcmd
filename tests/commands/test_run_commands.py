@@ -223,6 +223,35 @@ class RunCommandsTest(unittest.TestCase):
 
         refresh_extracts_command.RefreshExtracts.run_command(mock_args)
         mock_session.assert_called()
+        mock_server.datasources.refresh.assert_called_with(fake_item.id, False)
+
+    def test_run_command_incremental_refresh_datasource(self, mock_session, mock_server):
+        RunCommandsTest._set_up_session(mock_session, mock_server)
+        mock_args.incremental = True
+        mock_args.datasource = fake_item.name
+        mock_server.datasources = getter
+        mock_server.projects = getter
+        mock_args.workbook = None
+        mock_args.addcalculations = False
+        mock_args.removecalculations = False
+        mock_args.synchronous = False
+
+        refresh_extracts_command.RefreshExtracts.run_command(mock_args)
+        mock_server.datasources.refresh.assert_called_with(fake_item.id, True)
+
+    def test_run_command_incremental_refresh_workbook(self, mock_session, mock_server):
+        RunCommandsTest._set_up_session(mock_session, mock_server)
+        mock_args.incremental = True
+        mock_args.workbook = fake_item.name
+        mock_server.workbooks = getter
+        mock_server.projects = getter
+        mock_args.datasource = None
+        mock_args.addcalculations = False
+        mock_args.removecalculations = False
+        mock_args.synchronous = False
+
+        refresh_extracts_command.RefreshExtracts.run_command(mock_args)
+        mock_server.workbooks.refresh.assert_called_with(fake_item.id, True)
 
     # groups
     def test_create_group(self, mock_session, mock_server):
