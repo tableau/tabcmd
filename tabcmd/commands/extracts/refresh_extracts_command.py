@@ -34,9 +34,7 @@ class RefreshExtracts(Server):
         if args.addcalculations or args.removecalculations:
             logger.warning("Add/Remove Calculations tasks are not supported.")
 
-        incremental_refresh = False
-        if args.incremental:  # docs: run the incremental refresh
-            incremental_refresh = True
+        incremental_refresh = True if args.incremental else False
 
         try:
             item = Extracts.get_wb_or_ds_for_extracts(args, logger, server)
