@@ -10,6 +10,9 @@ from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 from .datasources_workbooks_views_url_parser import DatasourcesWorkbooksAndViewsUrlParser
 
 pagesize = TSC.PDFRequestOptions.PageType  # type alias for brevity
+pageorientation = TSC.PDFRequestOptions.Orientation
+imageresolution = TSC.ImageRequestOptions.Resolution
+ImageResolutionStandard = "standard"
 
 
 class ExportCommand(DatasourcesAndWorkbooks):
@@ -29,7 +32,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
 
         group.add_argument(
             "--pagelayout",
-            choices=["landscape", "portrait"],
+            choices=[pageorientation.Landscape, pageorientation.Portrait],
             type=str.lower,
             default=None,
             help="page orientation (landscape or portrait) of the exported PDF",
@@ -57,15 +60,19 @@ class ExportCommand(DatasourcesAndWorkbooks):
             help="Set the page size of the exported PDF",
         )
 
-        group.add_argument(
-            "--width", default=800, help="[Not Yet Implemented] Set the width of the image in pixels. Default is 800 px"
-        )
+        group.add_argument("--width", default=800, help=_("export.options.width"))
         group.add_argument("--filename", "-f", help="filename to store the exported data")
         group.add_argument("--height", default=600, help=_("export.options.height"))
         group.add_argument(
             "--filter",
             metavar="COLUMN=VALUE",
             help="Data filter to apply to the view",
+        )
+        group.add_argument(
+            "--resolution",
+            choices=[imageresolution.High, ImageResolutionStandard],
+            type=str.lower,
+            help=_("export.options.resolution"),
         )
 
     """

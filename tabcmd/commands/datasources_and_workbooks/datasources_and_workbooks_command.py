@@ -125,14 +125,18 @@ class DatasourcesAndWorkbooks(Server):
             request_options.max_age = 0  # type: ignore
             logger.debug("Set max age to {} from {}".format((TSC.ImageRequestOptions(request_options)).max_age, value))
         elif ":size" == setting_name:
-            # this is only used by get as png
-            try:
-                height, width = setting_val.split(",")
-                (TSC.ImageRequestOptions(request_options)).viz_height = int(height)
-                (TSC.ImageRequestOptions(request_options)).viz_width = int(width)
-            except Exception as oops:
-                logger.warn("Unable to read image size options '{}', skipping".format(setting_val))
-                logger.warn(oops)
+            if isinstance(request_options, (TSC.ImageRequestOptions, TSC.PDFRequestOptions)):
+                try:
+                    height, width = setting_val.split(",")
+                    request_options.viz_height = int(height)
+                    request_options.viz_width = int(width)
+                except Exception as oops:
+                    logger.warn("Unable to read image size options '{}', skipping".format(setting_val))
+                    logger.warn(oops)
+            else:
+                logger.debug(
+                    "Request options are not of type ImageRequestOptions or PDFRequestOptions, skipping size setting"
+                )
         else:
             logger.debug("Parameter[s] not recognized: {}".format(value))
 
@@ -147,8 +151,10 @@ class DatasourcesAndWorkbooks(Server):
             request_options.viz_height = int(args.height)
         if args.width:
             request_options.viz_width = int(args.width)
-        # Always request high-res images
-        request_options.image_resolution = "high"
+        if args.resolution and args.resolution != TSC.ImageRequestOptions.Resolution.High.lower():
+            request_options.image_resolution = None
+        else:
+            request_options.image_resolution = TSC.ImageRequestOptions.Resolution.High.lower()
 
     @staticmethod
     def apply_pdf_options(logger, request_options: TSC.PDFRequestOptions, args):
