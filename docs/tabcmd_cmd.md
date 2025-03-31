@@ -89,7 +89,7 @@ For more information about loggin in, see [Logging in](index.html#logging-in).
 
 \-\-timeout SECONDS
 
-: The number of seconds the server should wait before processing the login command. Default: 30 seconds.
+: The number of seconds the server should wait before timing out the login command. If this  option is not set, the login command will run indefinitely, waiting the server to respond. Default: 30 seconds.
 
 \-\-token-name
 
