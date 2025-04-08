@@ -155,6 +155,8 @@ class DatasourcesAndWorkbooks(Server):
             request_options.image_resolution = None
         else:
             request_options.image_resolution = TSC.ImageRequestOptions.Resolution.High.lower()
+        if args.language:
+            request_options.language = args.language
 
     @staticmethod
     def apply_pdf_options(logger, request_options: TSC.PDFRequestOptions, args):
@@ -162,6 +164,13 @@ class DatasourcesAndWorkbooks(Server):
             request_options.orientation = args.pagelayout
         if args.pagesize:
             request_options.page_type = args.pagesize
+        if args.language:
+            request_options.language = args.language
+
+    @staticmethod
+    def apply_csv_options(logger, request_options: TSC.CSVRequestOptions, args):
+        if args.language:
+            request_options.language = args.language
 
     @staticmethod
     def save_to_data_file(logger, output, filename):

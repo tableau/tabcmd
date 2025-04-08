@@ -327,7 +327,7 @@ def set_publish_args(parser):
     )
     thumbnails.add_argument(
         "--thumbnail-group",
-        help="[Not yet implemented] If the workbook contains user filters, the thumbnails will be generated based on what the "
+        help="If the workbook contains user filters, the thumbnails will be generated based on what the "
         "specified group can see. Cannot be specified when --thumbnail-username option is set.",
     )
 

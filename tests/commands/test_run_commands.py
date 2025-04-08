@@ -120,6 +120,7 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.height = None
         mock_args.width = None
         mock_args.filter = None
+        mock_args.language = None
         export_command.ExportCommand.run_command(mock_args)
         mock_session.assert_called()
 
