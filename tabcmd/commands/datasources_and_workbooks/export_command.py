@@ -151,6 +151,8 @@ class ExportCommand(DatasourcesAndWorkbooks):
     def download_wb_pdf(server, workbook_item, args, logger):
         logger.debug(args.url)
         pdf_options = TSC.PDFRequestOptions(maxage=1)
+        if args.language:
+            pdf_options.language = args.language
         ExportCommand.apply_values_from_url_params(logger, pdf_options, args.url)
         ExportCommand.apply_filters_from_args(pdf_options, args, logger)
         ExportCommand.apply_pdf_options(logger, pdf_options, args)
@@ -162,6 +164,8 @@ class ExportCommand(DatasourcesAndWorkbooks):
     def download_view_pdf(server_content_type, export_item, args, logger):
         logger.debug(args.url)
         pdf_options = TSC.PDFRequestOptions(maxage=1)
+        if args.language:
+            pdf_options.language = args.language
         ExportCommand.apply_values_from_url_params(logger, pdf_options, args.url)
         ExportCommand.apply_filters_from_args(pdf_options, args, logger)
         ExportCommand.apply_pdf_options(logger, pdf_options, args)
@@ -173,6 +177,8 @@ class ExportCommand(DatasourcesAndWorkbooks):
     def download_csv(server_content_type, export_item, args, logger):
         logger.debug(args.url)
         csv_options = TSC.CSVRequestOptions(maxage=1)
+        if args.language:
+            csv_options.language = args.language
         ExportCommand.apply_values_from_url_params(logger, csv_options, args.url)
         ExportCommand.apply_filters_from_args(csv_options, args, logger)
         logger.debug(csv_options.get_query_params())
@@ -183,6 +189,8 @@ class ExportCommand(DatasourcesAndWorkbooks):
     def download_png(server_content_type, export_item, args, logger):
         logger.debug(args.url)
         image_options = TSC.ImageRequestOptions(maxage=1)
+        if args.language:
+            image_options.language = args.language
         ExportCommand.apply_values_from_url_params(logger, image_options, args.url)
         ExportCommand.apply_filters_from_args(image_options, args, logger)
         DatasourcesAndWorkbooks.apply_png_options(logger, image_options, args)
