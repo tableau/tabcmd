@@ -541,6 +541,10 @@ If you don't provide a name, it will be derived from the view or workbook name. 
 
 : Format option. Your format options depend on what's being exported. A workbook can only be exported as a PDF using the `--fullpdf` argument. A view can be exported as a PDF (\-\-pdf) or a PNG (\-\-png) or a csv showing summary data only (\-\-csv).
 
+\-\-country 
+
+: Country abbreviation. If not using the user's default locale, use the country abbreviation for the locale. For help, see the [IANA Language Subtag Registry](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry). Must use with **--language**.
+
 \-\-pagelayout
 
 : Sets the page orientation (landscape or portrait) of the exported PDF. If not specified, its Tableau Desktop setting will be used.
@@ -556,6 +560,10 @@ If you don't provide a name, it will be derived from the view or workbook name. 
 \-\-height
 
 : Sets the height in pixels. Default is 600 px.
+
+\-\-language
+
+The language of the country. If not using the user's default locale, use the language abbreviation for locale (see [IANA Language Subtag Registry](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry)). Must use with **--country**.
 
 ?FILTER_STRING, --filter FILTER_STRING
 
