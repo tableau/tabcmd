@@ -870,7 +870,7 @@ If you want to schedule extract refreshes after publishing, you must include thi
 
 <dt>--thumbnail-group</dt>
 
-<dd>If the workbook contains user filters, the thumbnails will be generated based on what the specified group can see. Cannot be specified when \-\-thumbnail-usernameoption is set.</dd>
+<dd>If the workbook contains user filters, the thumbnails will be generated as a default image that does not show the underlying viz. Cannot be specified when \-\-thumbnail-usernameoption is set.</dd>
 
 <dt>--tabbed</dt>
 
