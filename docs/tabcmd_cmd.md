@@ -618,7 +618,7 @@ Note the following when you use this command:
     For example if your command includes the city Zürich, you need to URL encode it as Z%C3%BCrich:
 
     ```shell
-    tabcmd export "/Cities/Sheet1?locationCity=Z%C3%BCrich" -fullpdf
+    tabcmd export "/Cities/Sheet1?locationCity=Z%C3%BCrich" --fullpdf
     ```
 
 * To export a workbook, get the URL string by opening a view in the workbook, and include the view in the string you use.
