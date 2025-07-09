@@ -3,14 +3,7 @@ title: tabcmd Commands
 layout: docs
 ---
 
-You can use the following commands with the tabcmd command-line tool:
-
-<div class="alert alert-info"><strong>Notes</strong>: 
-  <ul>
-  <li>Some commands listed may not apply when using tabcmd with Tableau Cloud.</li>
-  <li>Some commands or options listed may not yet be implemented in this version of tabcmd.</li>
-  </ul>
-</div>
+You can use the following commands with the tabcmd command-line tool.
 
 * TOC
 {:toc}
@@ -832,59 +825,57 @@ If the workbook contains user filters, one of the thumbnail options must be spec
 
 \-\-parent-project-path
 
-: Specifies the name of the parent project for the nested project as specified with the -r option. For example, to specify a project called "Nested" that exists in a "Main" project, use the following syntax: \-\-parent-project-path "Main" -r "Nested".
+: Specifies the name of the parent project for the nested project as specified with the -r option. For example, to specify a project called "Nested" that exists in a "Main" project, use the following syntax: 
 
-<div class="alert alert-info"><strong>Additional arguments not yet implemented:</strong>
-<dl>
-<dt>--db-username</dt>
+`\-\-parent-project-path "Main" -r "Nested"`
 
-<dd>Use this option to publish a database user name with the workbook, data source, or data extract.
+\-\-db-username
 
-If you connect to the data through a protected OAuth connection and access token, us the \-\-oauth-username option instead.</dd>
+: Use this option to publish a database user name with the workbook, data source, or data extract.
 
-<dt>--db-password</dt>
+: If you connect to the data through a protected OAuth connection and access token, us the \-\-oauth-username option instead.
 
-<dd>Use this option to publish a database password with the workbook, data source, or extract.</dd>
+\-\-db-password
 
-<dt>--save-db-password</dt>
+: Use this option to publish a database password with the workbook, data source, or extract.
 
-<dd>Stores the provided database password on the server.</dd>
+\-\-save-db-password
 
-<dt>--oauth-username</dt>
+: Stores the provided database password on the server.
 
-<dd>The email address of the user account. Connects the user through a preconfigured OAuth connection, if the user already has a saved access token for the cloud data source specified in \-\-name. Access tokens are managed in user preferences.
+\-\-oauth-username
 
-For existing OAuth connections to the data source, use this option instead of \-\-db-username and \-\-db-password.</dd>
+: The email address of the user account. Connects the user through a pre-configured OAuth connection, if the user already has a saved access token for the cloud data source specified in \-\-name. Access tokens are managed in user preferences.
 
-<dt>--save-oauth</dt>
+: For existing OAuth connections to the data source, use this option instead of \-\-db-username and \-\-db-password.
 
-<dd>Saves the credential specified by \-\-oauth-username as an embedded credential with the published workbook or data source.
+\-\-save-oauth
 
-Subsequently, when the publisher or server administrator signs in to the server and edits the connection for that workbook or data source, the connection settings will show this OAuth credential as embedded in the content.
+: Saves the credential specified by \-\-oauth-username as an embedded credential with the published workbook or data source.
 
-If you want to schedule extract refreshes after publishing, you must include this option with \-\-oauth-username. This is analogous to using \-\-save-db-password with a traditional database connection.</dd>
+: Subsequently, when the publisher or server administrator signs in to the server and edits the connection for that workbook or data source, the connection settings will show this OAuth credential as embedded in the content.
 
-<dt>--thumbnail-username</dt>
+: If you want to schedule extract refreshes after publishing, you must include this option with \-\-oauth-username. This is analogous to using \-\-save-db-password with a traditional database connection.
 
-<dd>If the workbook contains user filters, the thumbnails will be generated based on what the specified user can see. Cannot be specified when \-\-thumbnail-group option is set.</dd>
+\-\-thumbnail-username
 
-<dt>--thumbnail-group</dt>
+: If the workbook contains user filters, the thumbnails will be generated based on what the specified user can see. Cannot be specified when \-\-thumbnail-group option is set.
 
-<dd>If the workbook contains user filters, the thumbnails will be generated as a default image that does not show the underlying viz. Cannot be specified when \-\-thumbnail-usernameoption is set.</dd>
+\-\-thumbnail-group
 
-<dt>--tabbed</dt>
+: If the workbook contains user filters, the thumbnails will be generated as a default image that does not show the underlying viz. Cannot be specified when `\-\-thumbnail-usernameoption` is set.
 
-<dd>When a workbook with tabbed views is published, each sheet becomes a tab that viewers can use to navigate through the workbook. Note that this setting will override any sheet-level security.</dd>
+\-\-tabbed
 
-<dt>--append</dt>
+: When a workbook with tabbed views is published, each sheet becomes a tab that viewers can use to navigate through the workbook. Note that this setting will override any sheet-level security.
 
-<dd>Append the extract file to the existing data source.</dd>
+\-\-append
 
-<dt>--replace</dt>
+: Append the extract file to the existing data source.
 
-<dd>Use the extract file to replace the existing data source.</dd>
-</dl>
-</div>
+\-\-replace
+
+: Use the extract file to replace the existing data source.
 
 ### Examples
 
@@ -966,11 +957,11 @@ This command takes the name of the workbook or data source as it appears on the 
     
 ### Options
 
-\-\-incremental       <div class="alert alert-info">Not yet implemented.</div>
+\-\-incremental
 
 : Run an incremental refresh instead of a full refresh
 
-\-\-synchronous      <div class="alert alert-info">Not yet implemented.</div>
+\-\-synchronous 
 
 : Adds the full refresh operation to the queue used by the Backgrounder process, to be run as soon as a Backgrounder process is available. If a Backgrounder process is available, the operation is run immediately. The refresh operation appears on the Background Tasks report.
 
