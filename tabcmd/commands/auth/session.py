@@ -6,6 +6,7 @@ import requests
 import tableauserverclient as TSC
 import urllib3
 from urllib3.exceptions import InsecureRequestWarning
+from urllib.parse import urlparse, urlunparse
 
 from tabcmd.version import version
 from tabcmd.commands.constants import Errors
@@ -61,7 +62,8 @@ class Session:
         # self.command = args.???
         self.username = args.username or self.username or ""
         self.username = self.username.lower()
-        self.server_url = args.server or self.server_url or "http://localhost"
+        server_base_url = self._get_server_base_url(args.server) if args.server else None
+        self.server_url = server_base_url or self.server_url or "http://localhost"
         self.server_url = self.server_url.lower()
         if args.server is not None:
             self.site_name = None
@@ -481,3 +483,14 @@ class Session:
             message = "Error clearing session data from {}: check and remove manually".format(file_path)
             self.logger.error(message)
             self.logger.error(e)
+
+    def _get_server_base_url(self, url: str):
+        try:
+            parsed = urlparse(url)
+            scheme = parsed.scheme or "http"
+
+            # If netloc is empty, treat path as netloc and discard any extra path
+            netloc = parsed.netloc or parsed.path.split("/")[0]  # Keep only the domain
+            return urlunparse((scheme, netloc, "", "", "", ""))
+        except Exception as e:
+            Errors.exit_with_error(self.logger, exception=e)
