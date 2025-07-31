@@ -108,7 +108,7 @@ class ListCommand(Server):
         id = "ID"
         name = ", NAME" if args.name else ""
         owner = ", OWNER" if args.owner else ""
-        url = ", URL" if args.address and content_type in ["workbooks, datasources"] else ""
+        url = ", URL" if args.address and content_type in ["workbooks", "datasources"] else ""
         children = ", CHILDREN" if args.details and content_type == "workbooks" else ""
         return "{0}{1}{2}{3}".format(id, name, owner, children)
         
