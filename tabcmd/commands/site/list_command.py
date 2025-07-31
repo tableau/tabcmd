@@ -86,7 +86,7 @@ class ListCommand(Server):
                         url = item.content_url 
                     children = ListCommand.format_children_listing(args, server, content_type, item) if args.details else ""
                 
-                logger.info("{0}{1}{2}{3}".format(id, name, owner, url, children))
+                logger.info("{0}{1}{2}{3}{4}".format(id, name, owner, url, children))
 
             # TODO: do we want this line if it is csv output?                
             logger.info("{} total {}".format(len(items), content_type))
