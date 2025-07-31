@@ -72,7 +72,7 @@ class ListCommand(Server):
                     name = ", " + item.name if args.name else ""
                     owner =", " + item.owner_id if args.owner else ""
                     url = ""
-                    if args.address and content_type in ["workbooks, datasources"]:
+                    if args.address and content_type in ["workbooks", "datasources"]:
                         url = item.content_url 
                     children = ListCommand.format_children_listing(args, server, content_type, item) if args.details else ""
                         
