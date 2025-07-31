@@ -296,6 +296,7 @@ def set_append_replace_option(parser):
     append_group.add_argument("--replace", action="store_true", help=_("publish.options.replace"))
 
 
+
 # This will overwrite the metadata and data of the existing content
 def set_overwrite_option(parser):
     parser.add_argument(
