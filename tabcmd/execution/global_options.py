@@ -300,11 +300,11 @@ def set_overwrite_option(parser):
 
 # refresh-extracts
 def set_incremental_options(parser):
-    parser.add_argument("--incremental", action="store_true", help=_("tabcmd.refresh.options.incremental"))
+    parser.add_argument("--incremental", action="store_true", help=_("refreshextracts.options.incremental"))
     return parser
 
 def set_sync_wait_options(parser):
-    parser.add_argument("--synchronous", action="store_true", help=_("tabcmd.refresh.options.synchronous"))
+    parser.add_argument("--synchronous", action="store_true", help=_("refreshextracts.options.synchronous"))
     return parser
 
 def set_calculations_options(parser):
