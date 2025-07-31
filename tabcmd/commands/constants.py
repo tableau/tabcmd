@@ -1,4 +1,5 @@
 import inspect
+import requests
 import sys
 from typing import Optional
 
@@ -81,9 +82,13 @@ class Errors:
     def check_common_error_codes_and_explain(logger, exception: Exception):
         # most errors contain as much info in the message as we can get from the code
         # identify any that we can add useful detail for and include them here
+        if type(exception) == requests.exceptions.ConnectionError:
+            print(exception)
+            exit(1)
+
         if Errors.is_expired_session(exception):
             # catch this one so we can attempt to refresh the session before telling them it failed
-            logger.error(_("session.errors.session_expired"))
+            print(_("session.errors.session_expired"))
             # TODO: add session as an argument to this method
             #  and add the full command line as a field in Session?
             # "session.session_expired_login"))

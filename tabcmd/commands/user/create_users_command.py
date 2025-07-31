@@ -60,7 +60,7 @@ class CreateUsersCommand(UserCommand):
                     user_obj.auth_setting = args.auth_type
                 new_user = TSC.UserItem(user_obj.name)
                 server.users.add(new_user)
-                logger.info(_("tabcmd.result.success.create_user").format(user_obj.name))
+                logger.info(_("common.output.succeeded").format(user_obj.name))
                 number_of_users_added += 1
             except Exception as e:
                 if Errors.is_resource_conflict(e) and args.continue_if_exists:
@@ -73,8 +73,8 @@ class CreateUsersCommand(UserCommand):
         logger.info(_("session.monitorjob.percent_complete").format(100))
         logger.info(_("importcsvsummary.line.processed").format(number_of_users_listed))
         logger.info(_("importcsvsummary.line.skipped").format(number_of_errors))
-        logger.info(_("tabcmd.report.users_added").format(number_of_users_added))
+        logger.info(_("importcsvsummary.users.added.count").format(number_of_users_added))
         if number_of_errors > 0:
-            logger.debug(_("tabcmd.report.errors").format(number_of_errors))
+            logger.info(_("importcsvsummary.error.details"))
         for exception in error_list:
             Errors.check_common_error_codes_and_explain(logger, exception)

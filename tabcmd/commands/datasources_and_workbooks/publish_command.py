@@ -40,49 +40,59 @@ class PublishCommand(DatasourcesAndWorkbooks):
         session = Session()
         server = session.create_session(args, logger)
 
-        if args.project_name:
-            try:
-                dest_project = Server.get_project_by_name_and_parent_path(
-                    logger, server, args.project_name, args.parent_project_path
-                )
-                project_id = dest_project.id
-            except Exception as exc:
-                logger.error(exc.__str__())
-                Errors.exit_with_error(logger, _("publish.errors.server_resource_not_found"), exc)
-        else:
-            project_id = ""
-            args.project_name = "default"
+        if not args.project_name:
+            args.project_name = "Default"
             args.parent_project_path = ""
+        try:
+            dest_project = Server.get_project_by_name_and_parent_path(
+                logger, server, args.project_name, args.parent_project_path
+            )
+            project_id = dest_project.id
+        except Exception as exc:
+            logger.error(exc.__str__())
+            Errors.exit_with_error(logger, _("publish.errors.server_resource_not_found"), exc)
 
         publish_mode = PublishCommand.get_publish_mode(args, logger)
 
+        connection = TSC.models.ConnectionItem()
         if args.db_username:
-            creds = TSC.models.ConnectionCredentials(args.db_username, args.db_password, embed=args.save_db_password)
+            connection.connection_credentials = TSC.models.ConnectionCredentials(
+                args.db_username, args.db_password, embed=args.save_db_password
+            )
         elif args.oauth_username:
-            creds = TSC.models.ConnectionCredentials(args.oauth_username, None, embed=False, oauth=args.save_oauth)
+            connection.connection_credentials = TSC.models.ConnectionCredentials(
+                args.oauth_username, None, embed=False, oauth=args.save_oauth
+            )
         else:
             logger.debug("No db-username or oauth-username found in command")
-            creds = None
+            connection = None
+
+        if connection:
+            connections = list()
+            connections.append(connection)
+        else:
+            connections = None
 
         source = PublishCommand.get_filename_extension_if_tableau_type(logger, args.filename)
         logger.info(_("publish.status").format(args.filename))
         if source in ["twbx", "twb"]:
-            if args.thumbnail_group:
-                raise AttributeError("Generating thumbnails for a group is not yet implemented.")
             if args.thumbnail_username and args.thumbnail_group:
                 raise AttributeError("Cannot specify both a user and group for thumbnails.")
 
             new_workbook = TSC.WorkbookItem(project_id, name=args.name, show_tabs=args.tabbed)
+            if args.thumbnail_username:
+                new_workbook.thumbnails_user_id = args.thumbnail_username
+            elif args.thumbnail_group:
+                new_workbook.thumbnails_group_id = args.thumbnail_group
+
             try:
                 new_workbook = server.workbooks.publish(
                     new_workbook,
                     args.filename,
                     publish_mode,
-                    # args.thumbnail_username, not yet implemented in tsc
-                    # args.thumbnail_group,
-                    connection_credentials=creds,
+                    connections=connections,
                     as_job=False,
-                    skip_connection_check=False,
+                    skip_connection_check=args.skip_connection_check,
                 )
             except Exception as e:
                 Errors.exit_with_error(logger, exception=e)
@@ -94,7 +104,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
             new_datasource.use_remote_query_agent = args.use_tableau_bridge
             try:
                 new_datasource = server.datasources.publish(
-                    new_datasource, args.filename, publish_mode, connection_credentials=creds
+                    new_datasource, args.filename, publish_mode, connections=connections
                 )
             except Exception as exc:
                 Errors.exit_with_error(logger, exception=exc)
@@ -107,24 +117,19 @@ class PublishCommand(DatasourcesAndWorkbooks):
         default_mode = TSC.Server.PublishMode.CreateNew
         publish_mode = default_mode
 
-        if args.replace:
-            raise AttributeError("Replacing an extract is not yet implemented")
+        mode_mapping = {
+            "replace": TSC.Server.PublishMode.Replace,
+            "append": TSC.Server.PublishMode.Append,
+            "overwrite": TSC.Server.PublishMode.Overwrite,
+        }
 
-        if args.append:
-            if publish_mode != default_mode:
-                publish_mode = None
-            else:
-                # only relevant for datasources, but tsc will throw an error for us if necessary
-                publish_mode = TSC.Server.PublishMode.Append
+        selected_modes = [mode for mode, mode_value in mode_mapping.items() if getattr(args, mode, False)]
 
-        if args.overwrite:
-            if publish_mode != default_mode:
-                publish_mode = None
-            else:
-                # Overwrites the workbook, data source, or data extract if it already exists on the server.
-                publish_mode = TSC.Server.PublishMode.Overwrite
-
-        if not publish_mode:
+        if len(selected_modes) > 1:
             Errors.exit_with_error(logger, "Invalid combination of publishing options (Append, Overwrite, Replace)")
+
+        if selected_modes:
+            publish_mode = mode_mapping[selected_modes[0]]
+
         logger.debug("Publish mode selected: " + publish_mode)
         return publish_mode

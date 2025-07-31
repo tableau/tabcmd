@@ -3,8 +3,7 @@ import unittest
 from unittest.mock import *
 import tableauserverclient as TSC
 
-from tabcmd.commands.auth import login_command
-from tabcmd.commands.datasources_and_workbooks import delete_command, export_command, get_url_command, publish_command
+from tabcmd.commands.datasources_and_workbooks import publish_command
 
 
 from typing import List, NamedTuple, TextIO, Union
@@ -18,13 +17,20 @@ fake_item.id = "fake-id"
 fake_item.pdf = b"/pdf-representation-of-view"
 fake_item.extract_encryption_mode = "Disabled"
 
+fake_item_pagination = MagicMock()
+fake_item_pagination.page_number = 1
+fake_item_pagination.total_available = 1
+fake_item_pagination.page_size = 100
+
 fake_job = MagicMock()
 fake_job.id = "fake-job-id"
 
 creator = MagicMock()
 getter = MagicMock()
-getter.get = MagicMock("get", return_value=([fake_item], 1))
+getter.get = MagicMock("get", return_value=([fake_item], fake_item_pagination))
 getter.publish = MagicMock("publish", return_value=fake_item)
+
+mock_logger = MagicMock()
 
 
 @patch("tableauserverclient.Server")
@@ -60,6 +66,7 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.replace = False
         mock_args.thumbnail_username = None
         mock_args.thumbnail_group = None
+        mock_args.skip_connection_check = False
         mock_server.projects = getter
         publish_command.PublishCommand.run_command(mock_args)
         mock_session.assert_called()
@@ -84,7 +91,48 @@ class RunCommandsTest(unittest.TestCase):
 
         mock_args.thumbnail_username = None
         mock_args.thumbnail_group = None
+        mock_args.skip_connection_check = False
 
         mock_server.projects = getter
         publish_command.PublishCommand.run_command(mock_args)
         mock_session.assert_called()
+
+    def test_default_publish_mode(self, mock_session, mock_server):
+        mock_args.replace = False
+        mock_args.append = False
+        mock_args.overwrite = False
+
+        publish_mode = publish_command.PublishCommand.get_publish_mode(mock_args, mock_logger)
+        self.assertEqual(publish_mode, TSC.Server.PublishMode.CreateNew)
+
+    def test_replace_publish_mode(self, mock_session, mock_server):
+        mock_args.replace = True
+        mock_args.append = False
+        mock_args.overwrite = False
+
+        publish_mode = publish_command.PublishCommand.get_publish_mode(mock_args, mock_logger)
+        self.assertEqual(publish_mode, TSC.Server.PublishMode.Replace)
+
+    def test_append_publish_mode(self, mock_session, mock_server):
+        mock_args.replace = False
+        mock_args.append = True
+        mock_args.overwrite = False
+
+        publish_mode = publish_command.PublishCommand.get_publish_mode(mock_args, mock_logger)
+        self.assertEqual(publish_mode, TSC.Server.PublishMode.Append)
+
+    def test_overwrite_publish_mode(self, mock_session, mock_server):
+        mock_args.replace = False
+        mock_args.append = False
+        mock_args.overwrite = True
+
+        publish_mode = publish_command.PublishCommand.get_publish_mode(mock_args, mock_logger)
+        self.assertEqual(publish_mode, TSC.Server.PublishMode.Overwrite)
+
+    def test_invalid_combination_of_modes(self, mock_session, mock_server):
+        mock_args.replace = True
+        mock_args.append = True
+        mock_args.overwrite = False
+
+        with self.assertRaises(SystemExit):
+            publish_command.PublishCommand.get_publish_mode(mock_args, mock_logger)

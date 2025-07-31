@@ -35,7 +35,7 @@ class CreateProjectCommand(Server):
         readable_name = args.project_name
         if args.parent_project_path:
             try:
-                logger.info(_("tabcmd.find.parent_project").format(args.parent_project_path))
+                logger.debug(_("tabcmd.find.parent_project").format(args.parent_project_path))
                 parent = Server.get_project_by_name_and_parent_path(logger, server, None, args.parent_project_path)
             except Exception as exc:
                 Errors.exit_with_error(logger, exc)
@@ -51,7 +51,7 @@ class CreateProjectCommand(Server):
             return project_item
         except Exception as e:
             if Errors.is_resource_conflict(e) and args.continue_if_exists:
-                logger.info(_("tabcmd.result.already_exists").format(_("content_type.project"), args.project_name))
+                logger.info(_("errors.xmlapi.already_exists").format(_("content_type.project"), args.project_name))
                 logger.info(_("common.output.succeeded"))
             else:
                 Errors.exit_with_error(logger, e)

@@ -22,6 +22,7 @@ class RefreshExtracts(Server):
         set_calculations_options(group)
         set_project_arg(group)
         set_parent_project_arg(group)
+        set_sync_wait_options(group)
 
     @staticmethod
     def run_command(args):
@@ -31,22 +32,17 @@ class RefreshExtracts(Server):
         server = session.create_session(args, logger)
 
         if args.addcalculations or args.removecalculations:
-            logger.warning("Add/Remove Calculations tasks are not yet implemented.")
+            logger.warning("Add/Remove Calculations tasks are not supported.")
 
-        # are these two mandatory? mutually exclusive?
-        # docs: the REST method always runs a full refresh even if the refresh type is set to incremental.
-        if args.incremental:  # docs: run the incremental refresh
-            logger.warn("Incremental refresh is not yet available through the new tabcmd")
-        # if args.synchronous:  # docs: run a full refresh and poll until it completes
-        # else:  run a full refresh but don't poll for completion
+        incremental_refresh = True if args.incremental else False
 
         try:
             item = Extracts.get_wb_or_ds_for_extracts(args, logger, server)
             if args.datasource:
                 logger.info(_("refreshextracts.status_refreshed").format(_("content_type.datasource"), args.datasource))
-                job: TSC.JobItem = server.datasources.refresh(item.id)
+                job: TSC.JobItem = server.datasources.refresh(item.id, incremental_refresh)
             else:
-                job: TSC.JobItem = server.workbooks.refresh(item.id)
+                job: TSC.JobItem = server.workbooks.refresh(item.id, incremental_refresh)
                 logger.info(_("refreshextracts.status_refreshed").format(_("content_type.workbook"), args.workbook))
 
         except Exception as e:
@@ -54,7 +50,6 @@ class RefreshExtracts(Server):
 
         logger.info(_("common.output.job_queued_success"))
         logger.debug("Extract refresh queued with JobID: {}".format(job.id))
-
         if args.synchronous:
             # maintains a live connection to the server while the refresh operation is underway, polling every second
             # until the background job is done.   <job id="JOB_ID" mode="MODE" type="RefreshExtract" />

@@ -1,18 +1,28 @@
 # -*- mode: python ; coding: utf-8 -*-
-from PyInstaller.utils.hooks import collect_data_files
-
-datas = []
-datas += collect_data_files('tabcmd.locales')
-print(datas)
 
 block_cipher = None
+
+# (file at build, folder it will be in at runtime)
+localized_strings = [
+    ('tabcmd/locales/en/LC_MESSAGES/tabcmd.mo', 'tabcmd/locales/en/LC_MESSAGES'),
+    ('tabcmd/locales/de/LC_MESSAGES/tabcmd.mo', 'tabcmd/locales/de/LC_MESSAGES'),
+    ('tabcmd/locales/es/LC_MESSAGES/tabcmd.mo', 'tabcmd/locales/es/LC_MESSAGES'),
+    ('tabcmd/locales/fr/LC_MESSAGES/tabcmd.mo', 'tabcmd/locales/fr/LC_MESSAGES'),
+    ('tabcmd/locales/ga/LC_MESSAGES/tabcmd.mo', 'tabcmd/locales/ga/LC_MESSAGES'),
+    ('tabcmd/locales/it/LC_MESSAGES/tabcmd.mo', 'tabcmd/locales/it/LC_MESSAGES'),
+    ('tabcmd/locales/ja/LC_MESSAGES/tabcmd.mo', 'tabcmd/locales/ja/LC_MESSAGES'),
+    ('tabcmd/locales/ko/LC_MESSAGES/tabcmd.mo', 'tabcmd/locales/ko/LC_MESSAGES'),
+    ('tabcmd/locales/pt/LC_MESSAGES/tabcmd.mo', 'tabcmd/locales/pt/LC_MESSAGES'),
+    ('tabcmd/locales/sv/LC_MESSAGES/tabcmd.mo', 'tabcmd/locales/sv/LC_MESSAGES'),
+    ('tabcmd/locales/zh/LC_MESSAGES/tabcmd.mo', 'tabcmd/locales/zh/LC_MESSAGES'),
+    ]
 
 a = Analysis(
     ['tabcmd\\tabcmd.py'],
     pathex=[],
     binaries=[],
-    datas=datas,
-    hiddenimports=['tableauserverclient', 'requests', 'pkg_resources'],
+    datas=localized_strings,
+    hiddenimports=['tableauserverclient', 'requests.packages.urllib3', 'pkg_resources'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -22,6 +32,7 @@ a = Analysis(
     cipher=block_cipher,
     noarchive=False,
 )
+
 pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 
 exe = EXE(

@@ -7,7 +7,11 @@ from tabcmd.execution.logger_config import log
 fake_item = mock.MagicMock()
 fake_item.name = "fake-name"
 fake_item.id = "fake-id"
-getter = mock.MagicMock("get", return_value=([fake_item], 1))
+fake_item_pagination = mock.MagicMock()
+fake_item_pagination.page_number = 1
+fake_item_pagination.total_available = 1
+fake_item_pagination.page_size = 100
+getter = mock.MagicMock("get", return_value=([fake_item], fake_item_pagination))
 
 
 class ProjectsTest(unittest.TestCase):

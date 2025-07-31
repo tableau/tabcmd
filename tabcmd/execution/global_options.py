@@ -257,14 +257,21 @@ def set_publish_args(parser):
     creds.add_argument("--oauth-username", help=_("publish.options.oauth-username"))
     creds.add_argument("--db-username", help=_("publish.options.db-username"))
     parser.add_argument("--save-oauth", action="store_true", help=_("publish.options.save-oauth"))
+
     parser.add_argument("--db-password", help=_("publish.options.db-password"))
     parser.add_argument("--save-db-password", action="store_true", help=_("publish.options.save-db-password"))
+
     parser.add_argument("--tabbed", action="store_true", help=_("tabcmd.publish.options.tabbed.detailed"))
     parser.add_argument("--disable-uploader", action="store_true", help=_("tabcmd.publish.options.disable-uploader"))
+
     parser.add_argument("--restart", help=_("tabcmd.publish.options.restart"))
     parser.add_argument("--encrypt-extracts", action="store_true", help=_("publish.options.encrypt-extracts"))
+    parser.add_argument(
+        "--skip-connection-check",
+        action="store_true",
+        help="Skip connection check: do not validate the workbook/datasource connection during publishing",
+    )
 
-    # These two only apply for a workbook, not a datasource
     thumbnails = parser.add_mutually_exclusive_group()
     thumbnails.add_argument("--thumbnail-username", help=_("publish.options.thumbnail-username"))
     thumbnails.add_argument("--thumbnail-group", help=_("publish.options.thumbnail-groupname"))
@@ -281,7 +288,6 @@ def set_append_replace_option(parser):
     # This is meant for when a) the local file is an extract b) the server item is an existing data source
     append_group.add_argument("--replace", action="store_true", help=_("tabcmd.publish.options.replace"))
 
-
 # This will overwrite the metadata and data of the existing content
 def set_overwrite_option(parser):
     parser.add_argument(
@@ -294,15 +300,12 @@ def set_overwrite_option(parser):
 
 # refresh-extracts
 def set_incremental_options(parser):
-    sync_group = parser.add_mutually_exclusive_group()
-    sync_group.add_argument("--incremental", action="store_true", help=_("tabcmd.refresh.options.incremental"))
-    sync_group.add_argument(
-        "--synchronous",
-        action="store_true",
-        help=_("tabcmd.refresh.options.synchronous"),
-    )
+    parser.add_argument("--incremental", action="store_true", help=_("tabcmd.refresh.options.incremental"))
     return parser
 
+def set_sync_wait_options(parser):
+    parser.add_argument("--synchronous", action="store_true", help=_("tabcmd.refresh.options.synchronous"))
+    return parser
 
 def set_calculations_options(parser):
     calc_group = parser.add_mutually_exclusive_group()
