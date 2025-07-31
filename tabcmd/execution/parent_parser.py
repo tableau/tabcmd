@@ -128,7 +128,7 @@ def parent_parser_with_global_options():
         "-v",
         "--version",
         action="version",
-        version=_("tabcmd.name") + " v" + version + "\n \n",
+        version=f"{_('tabcmd.name')} v{version}\n \n",
         help=_("version.description"),
     )
 
