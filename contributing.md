@@ -91,6 +91,7 @@ _(note that running mypy and black with no errors is required before code will b
 > python -m tabcmd.py [command_name] [--flags]
 
 - run tests
+> pip install .[test]
 > pytest
 
 - run tests against a live server

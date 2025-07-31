@@ -288,6 +288,7 @@ def set_append_replace_option(parser):
     # This is meant for when a) the local file is an extract b) the server item is an existing data source
     append_group.add_argument("--replace", action="store_true", help=_("tabcmd.publish.options.replace"))
 
+
 # This will overwrite the metadata and data of the existing content
 def set_overwrite_option(parser):
     parser.add_argument(
@@ -303,9 +304,11 @@ def set_incremental_options(parser):
     parser.add_argument("--incremental", action="store_true", help=_("refreshextracts.options.incremental"))
     return parser
 
+
 def set_sync_wait_options(parser):
     parser.add_argument("--synchronous", action="store_true", help=_("refreshextracts.options.synchronous"))
     return parser
+
 
 def set_calculations_options(parser):
     calc_group = parser.add_mutually_exclusive_group()
