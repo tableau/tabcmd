@@ -128,7 +128,7 @@ def set_encryption_option(parser):
 # for publish it uses -r for destination project name
 # but parser.site uses -r for site-content-url
 def set_project_r_arg(parser):
-    parser.add_argument("--project", "-r", dest="project_name", default="", help=("tabcmd.options.project"))
+    parser.add_argument("--project", "-r", dest="project_name", default="", help=_("tabcmd.options.project"))
     return parser
 
 
