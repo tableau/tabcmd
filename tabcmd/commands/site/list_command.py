@@ -70,7 +70,7 @@ class ListCommand(Server):
                 if args.machine:
                     id = item.id
                     name = ", " + item.name if args.name else ""
-                    owner =", " + item.owner_id if args.owner else ""
+                    owner = ", " + item.owner_id if args.owner else ""
                     url = ""
                     if args.address and content_type in ["workbooks", "datasources"]:
                         url = item.content_url 
