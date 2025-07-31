@@ -199,5 +199,5 @@ class Help:
 
     def run_command(self, args):
         logger = log(__name__, "info")
-        logger.info(_("tabcmd.name") + " " + version + "\n")
+        logger.info(f"{_('tabcmd.name')} {version}\n")
         logger.info(self.parser.root.format_help())
