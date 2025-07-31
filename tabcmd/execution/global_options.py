@@ -133,7 +133,7 @@ def set_project_r_arg(parser):
 
 
 def set_project_n_arg(parser):
-    parser.add_argument("-n", "--project", dest="project_name", default="", help=("tabcmd.options.project"))
+    parser.add_argument("-n", "--project", dest="project_name", default="", help=_("tabcmd.options.project"))
     return parser
 
 
