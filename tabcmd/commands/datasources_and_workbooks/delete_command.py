@@ -46,7 +46,7 @@ class DeleteCommand(DatasourcesAndWorkbooks):
             item_name = (args.parent_project_path or "") + "/" + (args.project_name or "default") + "/" + args.name
         else:
 
-            Errors.exit_with_error(logger, _("tabcmd.delete.target.name"))
+            Errors.exit_with_error(logger, _("tabcmd.errors.parent.not.found"))
         logger.info(_("delete.status").format(content_type, item_name or args.name))
 
         error = None
