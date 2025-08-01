@@ -17,11 +17,10 @@ fake_item.extract_encryption_mode = "ENFORCED"
 getter = MagicMock()
 getter.get = MagicMock("get", return_value=([fake_item], 1))
 
+
 @mock.patch("tabcmd.commands.auth.session.Session.create_session")
 @mock.patch("tableauserverclient.Server")
 class ListingTests(unittest.TestCase):
-    
-    
     @staticmethod
     def _set_up_session(mock_session, mock_server):
         mock_session.return_value = mock_server
@@ -42,8 +41,7 @@ class ListingTests(unittest.TestCase):
         mock_args.address = None
         mock_args.get_extract_encryption_mode = False
         mock_args.details = False
-    
-    
+
     def test_list_sites(self, mock_server, mock_session):
         ListingTests._set_up_session(mock_session, mock_server)
         mock_server.sites = getter
