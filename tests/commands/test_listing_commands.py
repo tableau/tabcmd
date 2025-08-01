@@ -16,6 +16,7 @@ fake_item.extract_encryption_mode = "ENFORCED"
 
 getter = MagicMock()
 getter.get = MagicMock("get", return_value=([fake_item], 1))
+getter.all = MagicMock("all", return_value=[fake_item])
 
 
 @mock.patch("tabcmd.commands.auth.session.Session.create_session")
@@ -39,6 +40,7 @@ class ListingTests(unittest.TestCase):
         mock_args.name = True
         mock_args.owner = None
         mock_args.address = None
+        mock_args.machine = False
         mock_args.get_extract_encryption_mode = False
         mock_args.details = False
 
