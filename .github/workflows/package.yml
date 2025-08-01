@@ -15,7 +15,6 @@ on:
   workflow_dispatch:
 
 jobs:
-
   buildexe:
     name: Build executables and upload them to the existing release
     runs-on: ${{ matrix.os }}
@@ -34,14 +33,11 @@ jobs:
             TARGET: macos
             CMD_BUILD:  >
               pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/
-            # the extension .app is not allowed as an upload by github
             UPLOAD_FILE_NAME: tabcmd-x86.app.tar
-            # these two names must match the output defined in tabcmd-mac.spec
             OUT_FILE_NAME: tabcmd.app
             APP_BINARY_FILE_NAME: tabcmd
             ASSET_MIME: application/zip
           - os: macos-latest
-            # This must match the value set in tabcmd-mac.spec for the output folder
             TARGET: macos
             CMD_BUILD:  >
               pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/
@@ -51,56 +47,66 @@ jobs:
             ASSET_MIME: application/zip
           - os: ubuntu-latest
             TARGET: ubuntu
-          # https://stackoverflow.com/questions/31259856
-          # /how-to-create-an-executable-file-for-linux-machine-using-pyinstaller
+            CONTAINER: quay.io/centos/centos:stream8
             CMD_BUILD: >
               pyinstaller --clean -y --distpath ./dist/ubuntu tabcmd-linux.spec &&
               chown -R --reference=. ./dist/ubuntu
             OUT_FILE_NAME: tabcmd
             UPLOAD_FILE_NAME: tabcmd
 
+    container:
+      image: ${{ matrix.CONTAINER }}
+      options: --privileged
+      if: matrix.TARGET == 'ubuntu'
+
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - uses: actions/setup-python@v5
-      with:
-        python-version: 3.12
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
 
-    - name: Install dependencies and build
-      run: |
-        python --version
-        python -m pip install --upgrade pip
-        python -m pip install --upgrade build
-        pip install .
-        pip install .[package]
-        doit version
-        python -m build
+      - name: Install dependencies and build
+        run: |
+          python --version
+          python -m pip install --upgrade pip
+          python -m pip install --upgrade build
+          pip install .
+          pip install .[package]
+          doit version
+          python -m build
 
-    - name: Package with pyinstaller for ${{matrix.TARGET}}
-      run: ${{matrix.CMD_BUILD}}
+      - name: Package with pyinstaller for ${{matrix.TARGET}}
+        run: ${{matrix.CMD_BUILD}}
 
-    - name: Validate package for ${{matrix.TARGET}}
-      if: matrix.TARGET != 'macos'
-      run: ./dist/${{ matrix.TARGET }}/${{matrix.OUT_FILE_NAME}}
+      - name: Verify GLIBC compatibility
+        if: matrix.TARGET == 'ubuntu'
+        run: |
+          cat /etc/os-release
+          ldd ./dist/ubuntu/tabcmd | grep libc
+          # Should show GLIBC version 2.28 or lower
 
-    - name: Validate package for Mac
-      if: matrix.TARGET == 'macos'
-      run: ./dist/${{ matrix.TARGET }}/${{ matrix.OUT_FILE_NAME }}/Contents/MacOS/${{ matrix.APP_BINARY_FILE_NAME }}
+      - name: Validate package for ${{matrix.TARGET}}
+        if: matrix.TARGET != 'macos'
+        run: ./dist/${{ matrix.TARGET }}/${{matrix.OUT_FILE_NAME}}
 
-    - name: Tar app bundle for Mac
-      if: matrix.TARGET == 'macos'
-      run: |
-        rm -f dist/${{ matrix.TARGET }}/${{ matrix.APP_BINARY_FILE_NAME }}
-        cd dist/${{ matrix.TARGET }}
-        tar -cvf ${{ matrix.UPLOAD_FILE_NAME }} ${{ matrix.OUT_FILE_NAME }}
+      - name: Validate package for Mac
+        if: matrix.TARGET == 'macos'
+        run: ./dist/${{ matrix.TARGET }}/${{ matrix.OUT_FILE_NAME }}/Contents/MacOS/${{ matrix.APP_BINARY_FILE_NAME }}
 
+      - name: Tar app bundle for Mac
+        if: matrix.TARGET == 'macos'
+        run: |
+          rm -f dist/${{ matrix.TARGET }}/${{ matrix.APP_BINARY_FILE_NAME }}
+          cd dist/${{ matrix.TARGET }}
+          tar -cvf ${{ matrix.UPLOAD_FILE_NAME }} ${{ matrix.OUT_FILE_NAME }}
 
-    - name: Upload binaries to release for ${{ matrix.TARGET }}
-      uses: svenstaro/upload-release-action@v2
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        asset_name: ${{ matrix.UPLOAD_FILE_NAME }}
-        file: ./dist/${{ matrix.TARGET }}/${{ matrix.UPLOAD_FILE_NAME }}
-        tag: ${{ github.ref_name }}
-        overwrite: true
-        promote: true
+      - name: Upload binaries to release for ${{ matrix.TARGET }}
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          asset_name: ${{ matrix.UPLOAD_FILE_NAME }}
+          file: ./dist/${{ matrix.TARGET }}/${{ matrix.UPLOAD_FILE_NAME }}
+          tag: ${{ github.ref_name }}
+          overwrite: true
+          promote: true
