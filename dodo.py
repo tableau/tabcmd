@@ -392,6 +392,129 @@ def task_mo():
     }
 
 
+def task_move_tabcmd_strings():
+    """
+    Move all strings from extra.properties files to the bottom of the corresponding 
+    tabcmd_messages_xx.properties files in the same locale directories.
+    """
+
+    def move_strings():
+        print("\n***** Moving strings from extra.properties to tabcmd_messages files")
+        
+        moved_count = 0
+        total_strings_moved = 0
+        
+        for locale in LOCALES:
+            locale_dir = os.path.join("tabcmd", "locales", locale)
+            message_file = os.path.join(locale_dir, f"tabcmd_messages_{locale}.properties")
+            extra_file = os.path.join(locale_dir, "extra.properties")
+            
+            print(f"\nProcessing locale: {locale}")
+            
+            if not os.path.exists(message_file):
+                print(f"  Warning: {message_file} not found")
+                continue
+            
+            if not os.path.exists(extra_file):
+                print(f"  No extra.properties file found")
+                continue
+                
+            # Read all content from extra.properties
+            extra_content = []
+            extra_keys = set()
+            
+            try:
+                with open(extra_file, 'r', encoding='utf-8') as f:
+                    for line in f:
+                        extra_content.append(line.rstrip() + '\n')
+                        line_stripped = line.strip()
+                        if line_stripped and not line_stripped.startswith('#') and '=' in line_stripped:
+                            key = line_stripped.split('=')[0].strip()
+                            extra_keys.add(key)
+                            print(f"  Found in extra.properties: {key}")
+            except Exception as e:
+                print(f"  Error reading {extra_file}: {e}")
+                continue
+            
+            if not extra_content:
+                print(f"  No content found in extra.properties")
+                continue
+            
+            # Read existing message file to avoid duplicates
+            message_lines = []
+            existing_keys = set()
+            
+            try:
+                with open(message_file, 'r', encoding='utf-8') as f:
+                    message_lines = f.readlines()
+                    for line in message_lines:
+                        line_stripped = line.strip()
+                        if line_stripped and not line_stripped.startswith('#') and '=' in line_stripped:
+                            key = line_stripped.split('=')[0].strip()
+                            existing_keys.add(key)
+            except Exception as e:
+                print(f"  Error reading {message_file}: {e}")
+                continue
+            
+            # Filter out strings that already exist in message file
+            new_content = []
+            duplicates_count = 0
+            
+            for line in extra_content:
+                line_stripped = line.strip()
+                if line_stripped and not line_stripped.startswith('#') and '=' in line_stripped:
+                    key = line_stripped.split('=')[0].strip()
+                    if key not in existing_keys:
+                        new_content.append(line)
+                    else:
+                        print(f"  Skipping duplicate: {key}")
+                        duplicates_count += 1
+                else:
+                    # Include comments and empty lines
+                    new_content.append(line)
+            
+            if not new_content or len(new_content) <= duplicates_count:
+                print(f"  All strings from extra.properties already exist in message file")
+                continue
+            
+            # Append extra.properties content to message file
+            try:
+                with open(message_file, 'a', encoding='utf-8') as f:
+                    f.write(f'\n# Strings moved from extra.properties\n')
+                    for line in new_content:
+                        f.write(line)
+                    f.write('\n')
+                
+                strings_added = len(extra_keys) - duplicates_count
+                print(f"  Added {strings_added} strings to tabcmd_messages_{locale}.properties")
+            except Exception as e:
+                print(f"  Error writing to {message_file}: {e}")
+                continue
+            
+            # Clear the extra.properties file
+            try:
+                with open(extra_file, 'w', encoding='utf-8') as f:
+                    f.write("# Content moved to tabcmd_messages_{}.properties\n".format(locale))
+                print(f"  Cleared extra.properties (content moved)")
+            except Exception as e:
+                print(f"  Error clearing {extra_file}: {e}")
+                continue
+            
+            moved_count += 1
+            total_strings_moved += len(extra_keys) - duplicates_count
+        
+        print(f"\n=== Summary ===")
+        print(f"Processed {len(LOCALES)} locales")
+        print(f"Modified {moved_count} locale directories")
+        print(f"Moved {total_strings_moved} unique strings")
+        print(f"\nDone! All strings from extra.properties have been moved to tabcmd_messages files.")
+
+    return {
+        "actions": [move_strings],
+        "verbosity": 2,
+    }
+
+
 def task_version():
 
     """Generates a metadata info file with current version to be bundled by pyinstaller"""

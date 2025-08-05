@@ -236,11 +236,20 @@ def check_build_mode(project_root: Path, locales: List[str]) -> int:
                     # English has missing keys - this affects exit code
                     english_success = False
                     english_missing_keys = missing_keys
+                    
+                    # Console output (limited for readability)
                     english_output = f"\nERROR: Found {len(missing_keys)} missing string keys for locale '{locale}':\n"
                     english_output += "=" * 60 + "\n"
                     for line in format_limited_list(list(missing_keys)):
                         english_output += line + "\n"
-                    print_and_write(english_output.rstrip(), f)  # Print now for baseline
+                    print(english_output.rstrip())  # Print to console with limits
+                    
+                    # File output (complete list)
+                    f.write(english_output.rstrip() + "\n")
+                    if len(missing_keys) > 10:  # If we limited console output, write complete list to file
+                        f.write("  Complete list for file:\n")
+                        for key in sorted(missing_keys):
+                            f.write(f"  Missing: {key}\n")
                 else:
                     # For other languages, only show if different from English
                     if missing_keys == english_missing_keys:
@@ -253,15 +262,37 @@ def check_build_mode(project_root: Path, locales: List[str]) -> int:
                         unique_to_locale = missing_keys - english_missing_keys
                         if unique_to_locale:
                             print_and_write(f"  Additional missing keys in {locale}:", f)
+                            # Console output (limited)
                             for line in format_limited_list(list(unique_to_locale), "    Missing: "):
-                                print_and_write(line, f)
+                                print(line)
+                            # File output (complete if truncated)
+                            if len(unique_to_locale) <= 10:
+                                for line in format_limited_list(list(unique_to_locale), "    Missing: "):
+                                    f.write(line + "\n")
+                            else:
+                                for line in format_limited_list(list(unique_to_locale), "    Missing: "):
+                                    f.write(line + "\n")
+                                f.write("    Complete list for file:\n")
+                                for key in sorted(unique_to_locale):
+                                    f.write(f"    Missing: {key}\n")
                         
                         # Show keys missing in English but present in this locale
                         present_in_locale = english_missing_keys - missing_keys
                         if present_in_locale:
                             print_and_write(f"  Keys present in {locale} but missing in English:", f)
+                            # Console output (limited)
                             for line in format_limited_list(list(present_in_locale), "    Present: "):
-                                print_and_write(line, f)
+                                print(line)
+                            # File output (complete if truncated)
+                            if len(present_in_locale) <= 10:
+                                for line in format_limited_list(list(present_in_locale), "    Present: "):
+                                    f.write(line + "\n")
+                            else:
+                                for line in format_limited_list(list(present_in_locale), "    Present: "):
+                                    f.write(line + "\n")
+                                f.write("    Complete list for file:\n")
+                                for key in sorted(present_in_locale):
+                                    f.write(f"    Present: {key}\n")
                         
                         # Show common missing keys if both have missing keys
                         common_missing = missing_keys & english_missing_keys
@@ -283,7 +314,12 @@ def check_build_mode(project_root: Path, locales: List[str]) -> int:
         # Print English results again at the end for visibility
         if english_output and "en" in locales:
             print_and_write(f"\n--- English Results (repeated for visibility) ---", f)
-            print_and_write(english_output.rstrip(), f)
+            print(english_output.rstrip())  # Console gets limited version
+            f.write(english_output.rstrip() + "\n")  # File gets limited version first
+            if len(english_missing_keys) > 10:  # Add complete list to file if truncated
+                f.write("  Complete list for file:\n")
+                for key in sorted(english_missing_keys):
+                    f.write(f"  Missing: {key}\n")
         
         # Summary message about file output
         print_and_write(f"\nResults saved to: {output_file}", f)
@@ -333,8 +369,9 @@ def check_dev_mode(project_root: Path) -> int:
             rel_path = os.path.relpath(file_path, project_root)
             print(f"\nFile: {rel_path}")
             print("-" * 40)
-            for line in format_limited_list(missing_by_file[file_path]):
-                print(line)
+            # In dev mode, show complete list since there's no file output
+            for key in sorted(missing_by_file[file_path]):
+                print(f"  Missing: {key}")
         
         print("\n" + "=" * 80)
         print("Please add the missing string keys to the appropriate .properties files.")
