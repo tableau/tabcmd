@@ -83,13 +83,13 @@ class DatasourcesWorkbooksAndViewsUrlParser(Server):
             if backup is not None:
                 type_of_file = backup
             else:
-                Errors.exit_with_error(logger, _("get.extension.not_found").format(file_name))
+                Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name))
 
         logger.debug("filetype: {}".format(type_of_file))
         if type_of_file in ["pdf", "csv", "png", "twb", "twbx", "tdsx", "tds"]:
             return type_of_file
 
-        Errors.exit_with_error(logger, _("get.extension.not_found").format(file_name))
+        Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name))
 
     @staticmethod
     def get_file_extension(path):

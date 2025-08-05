@@ -11,7 +11,7 @@ These steps are separated for easier troubleshooting: each step is idempotent an
 
 1. convert strings from .properties files to .mo for bundling
 This step combines the .properties files into a single file, discarding any strings that are not present in code and normalizing curly quotes and unrecognized characters in the strings it keeps. (These files are separate because they are pulled from separate translation sources internally.)
-> python -m doit properties
+> python -m doit combine_property_files
 
 2. Convert the combined .properties file into a .po file (these are human readable)
 > python -m doit po

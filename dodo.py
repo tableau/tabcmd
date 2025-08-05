@@ -15,12 +15,12 @@ doit list # see available tasks
 """
 
 
-def task_properties():
+def task_combine_property_files():
 
     """
-    For all languages: a) Combines all existing properties files for a language into a single file called 'combined.properties'
-    and b) sorts that into an alphabetical list of unique properties in combined.properties.sorted
-    I've also included tasks that find all strings in code so we can skip bundling messages that aren't ever used
+    For all languages: a) Combines all existing properties files for a language into a single file called 'combined.tmp'
+    and b) removes duplicates while preserving the original order of properties
+    Also extracts string keys from code and validates all locales have required strings
     """
 
     """Searches product code for all localization string keys"""
@@ -40,7 +40,7 @@ def task_properties():
         from i18n.check_strings import find_python_files, extract_string_keys_from_file
 
         tabcmd_dir = "tabcmd"
-        STRINGS_FILE = "tabcmd/locales/codestrings.properties"
+        STRINGS_FILE = "tabcmd/locales/codestrings.tmp"
 
         # Use enhanced string extraction logic
         python_files = find_python_files(tabcmd_dir)
@@ -57,10 +57,10 @@ def task_properties():
             file_keys = extract_string_keys_from_file(codefile)
             all_string_keys.update(file_keys)
 
-        # Write to codestrings.properties (same format as before)
+        # Write to codestrings.properties (preserve original order)
         with open(STRINGS_FILE, "w+", encoding="utf-8") as stringfile:
-            sorted_keys = sorted(all_string_keys)
-            for key in sorted_keys:
+            # Don't sort - preserve order strings were found in code
+            for key in all_string_keys:
                 stringfile.write(key + "\n")
 
         print("{} strings collected from code and saved to {}".format(len(all_string_keys), STRINGS_FILE))
@@ -73,7 +73,7 @@ def task_properties():
 
             LOCALE_PATH = os.path.join("tabcmd", "locales", current_locale)
             INPUT_FILES = os.path.join(LOCALE_PATH, "*.properties")
-            OUTPUT_FILE = os.path.join(LOCALE_PATH, "LC_MESSAGES", "combined.properties")
+            OUTPUT_FILE = os.path.join(LOCALE_PATH, "LC_MESSAGES", "combined.tmp")
 
             with open(OUTPUT_FILE, "w+", encoding="utf-8") as outfile:
                 for file in glob.glob(INPUT_FILES):
@@ -91,63 +91,7 @@ def task_properties():
             print("Combined strings for {} to {}".format(current_locale, OUTPUT_FILE))
             uniquify_file(OUTPUT_FILE)
 
-    """
-    Delete strings that aren't used in the code, to keep size down and not waste time fixing unused strings
-    Input: combined.properties.sorted
-    Output: filtered.properties
-    """
-
-    def filter():
-        print("\n***** Remove strings in properties that are never used in code")
-        REF_FILE = os.path.join("tabcmd", "locales", "codestrings.properties")
-        UNUSED_ENGLISH_FILE = "unused_english_strings.txt"
-
-        # Track unused English strings for separate output file
-        unused_english_strings = []
-
-        # Process English last for cleaner output
-        locales_ordered = [loc for loc in LOCALES if loc != "en"] + ["en"]
-        for current_locale in locales_ordered:
-            LOCALE_PATH = os.path.join("tabcmd", "locales", current_locale)
-            IN_FILE = os.path.join(LOCALE_PATH, "LC_MESSAGES", "combined.properties")
-            OUT_FILE = os.path.join(LOCALE_PATH, "LC_MESSAGES", "filtered.properties")
-
-            excluded_count = 0
-            with open(REF_FILE, "r+", encoding="utf-8") as ref:
-                required = ref.read()
-
-                with open(IN_FILE, "r+", encoding="utf-8") as infile, open(OUT_FILE, "w+", encoding="utf-8") as outfile:
-                    for line in infile.readlines():
-                        key = line.split("=")[0]
-                        if key in required:
-                            outfile.writelines(line)
-                        else:
-                            excluded_count += 1
-                            # Track unused English strings for output file
-                            if current_locale == "en":
-                                unused_english_strings.append(line.strip())
-
-            # Show summary for all languages
-            if excluded_count > 0:
-                print("Filtered strings for {} (excluded {} unused strings)".format(current_locale, excluded_count))
-            else:
-                print("Filtered strings for {} (no unused strings)".format(current_locale))
-
-        # Write unused English strings to separate file (silently)
-        if unused_english_strings:
-            with open(UNUSED_ENGLISH_FILE, "w+", encoding="utf-8") as unused_file:
-                unused_file.write("# Unused English strings (present in properties but not referenced in code)\n")
-                unused_file.write("# Generated by doit properties filter step\n")
-                unused_file.write(f"# Found {len(unused_english_strings)} unused strings\n\n")
-
-                for unused_string in sorted(unused_english_strings):
-                    unused_file.write(unused_string + "\n")
-
-            # Store count for final summary (will be printed at end of validation step)
-            with open("unused_count.tmp", "w") as count_file:
-                count_file.write(str(len(unused_english_strings)))
-
-    """Remove """
+    
 
     """Search loc files for each string used in code - print an error if not found.
     Uses enhanced check_strings.py script for validation.
@@ -176,24 +120,17 @@ def task_properties():
         else:
             print("All string validations passed")
 
-        # Print unused English strings summary at the end
-        if os.path.exists("unused_count.tmp"):
-            with open("unused_count.tmp", "r") as count_file:
-                unused_count = int(count_file.read().strip())
-            print(f"\n{unused_count} unused English strings saved to unused_english_strings.txt")
-            os.remove("unused_count.tmp")  # Clean up temp file
-        else:
-            print("\nNo unused English strings found")
+
 
     return {
-        "actions": [process_code, merge, filter, enforce_strings_present],
+        "actions": [process_code, merge, enforce_strings_present],
         "verbosity": 2,
     }
 
 
 def task_po():
     """
-    For all languages: generate a .po file from each LC_MESSAGES/filtered.properties file (these are utf-8)
+    For all languages: generate a .po file from each LC_MESSAGES/combined.tmp file (these are utf-8)
     This is idempotent and can be re-run safely
     """
 
@@ -206,12 +143,12 @@ def task_po():
     """
 
     def process_locales():
-        print("\n***** Validate all .po files from filtered.properties")
+        print("\n***** Generate all .po files from combined.tmp")
         subprocess.run(["python", "bin/i18n/prop2po.py", "--help"])
         for current_locale in LOCALES:
 
             LOC_PATH = os.path.join("tabcmd", "locales", current_locale, "LC_MESSAGES")
-            PROPS_FILE = os.path.join(LOC_PATH, "filtered.properties")
+            PROPS_FILE = os.path.join(LOC_PATH, "combined.tmp")
             PO_FILE = os.path.join(LOC_PATH, "tabcmd.po")
             LOG_FILE = os.path.join(LOC_PATH, "prop2po.out")
             with open(LOG_FILE, "w+", encoding="utf-8") as logfile:
@@ -252,7 +189,113 @@ def task_po():
     }
 
 
-def task_clean_all():
+def task_remove_unused_strings():
+    """
+    Edit original properties files to remove unused strings that are not referenced in code.
+    This permanently modifies the source .properties files, removing bloat.
+    """
+
+    def cleanup_properties():
+        print("\n***** Clean up properties files by removing unused strings")
+        REF_FILE = os.path.join("tabcmd", "locales", "codestrings.tmp")
+        CLEANUP_LOG = "cleanup_removed_strings.log"
+        
+        # Check if codestrings.tmp exists
+        if not os.path.exists(REF_FILE):
+            print(f"ERROR: {REF_FILE} not found")
+            print("Please run 'python -m doit combine_property_files' first to generate the code strings reference file")
+            print("This file is needed to identify which strings are actually used in the code")
+            exit(1)
+        
+        # Load required strings from code
+        with open(REF_FILE, "r+", encoding="utf-8") as ref:
+            required = ref.read()
+        
+        total_removed = 0
+        with open(CLEANUP_LOG, "w", encoding="utf-8") as cleanup_log:
+            cleanup_log.write("# Strings removed from properties files during cleanup\n")
+            cleanup_log.write("# These strings were present in properties but not used in code\n\n")
+            
+            # Process English last for cleaner output
+            locales_ordered = [loc for loc in LOCALES if loc != "en"] + ["en"]
+            for current_locale in locales_ordered:
+                LOCALE_PATH = os.path.join("tabcmd", "locales", current_locale)
+                
+                # Find all .properties files in this locale directory
+                properties_files = glob.glob(os.path.join(LOCALE_PATH, "*.properties"))
+                
+                locale_removed = 0
+                for props_file in properties_files:
+                    removed_from_file = []
+                    kept_lines = []
+                    
+                    # Read and process the file
+                    header_lines = []  # Comments and empty lines at the top
+                    string_lines = []  # Key=value entries to keep
+                    found_first_entry = False
+                    
+                    with open(props_file, "r", encoding="utf-8") as infile:
+                        for line in infile.readlines():
+                            line_stripped = line.strip()
+                            if line_stripped == "" or line_stripped.startswith("#"):
+                                if not found_first_entry:
+                                    # Keep header comments and empty lines at top
+                                    header_lines.append(line)
+                                # Skip comments/empty lines mixed with entries (will be cleaned up)
+                            else:
+                                found_first_entry = True
+                                key = line_stripped.split("=")[0]
+                                if key in required:
+                                    # Keep used strings
+                                    string_lines.append(line)
+                                else:
+                                    # Mark unused strings for removal
+                                    removed_from_file.append(line.strip())
+                                    locale_removed += 1
+                    
+                    # Write back the cleaned file
+                    if removed_from_file or string_lines:  # Write if we removed anything or have content
+                        with open(props_file, "w", encoding="utf-8") as outfile:
+                            # Write header comments first
+                            outfile.writelines(header_lines)
+                            
+                            # Add separator if we have both header and content
+                            if header_lines and string_lines and not header_lines[-1].endswith('\n\n'):
+                                if not header_lines[-1].endswith('\n'):
+                                    outfile.write('\n')
+                                outfile.write('\n')
+                            
+                            # Write string entries (alphabetizing commented out)
+                            # for line in sorted(string_lines, key=lambda x: x.split('=')[0].lower()):
+                            for line in string_lines:
+                                outfile.write(line)
+                        
+                        # Log what was removed (only if something was actually removed)
+                        if removed_from_file:
+                            cleanup_log.write(f"# Removed from {props_file}:\n")
+                            for removed_line in removed_from_file:
+                                cleanup_log.write(f"{removed_line}\n")
+                            cleanup_log.write("\n")
+                
+                total_removed += locale_removed
+                if locale_removed > 0:
+                    print(f"Cleaned {current_locale}: removed {locale_removed} unused strings")
+                else:
+                    print(f"Cleaned {current_locale}: no unused strings found")
+        
+        if total_removed > 0:
+            print(f"\nTotal: {total_removed} unused strings removed from properties files")
+            print(f"Removed strings logged to {CLEANUP_LOG}")
+        else:
+            print("\nNo unused strings found to remove")
+
+    return {
+        "actions": [cleanup_properties],
+        "verbosity": 2,
+    }
+
+
+def task_clean_temp():
 
     """remove all generated files such as .po, .out, and pdf, csv etc that are not in the assets folder"""
 
@@ -262,15 +305,14 @@ def task_clean_all():
     """For all languages: removes all generated intermediate files (properties, po) from the loc build.
     all we need to keep are the provided translation.properties files from the monolith, at locales/[current_locale]
     and the final tabcmd.mo files in LC_MESSAGES generated by
-    >doit properties po mo
+    >doit combine_property_files po mo
     """
 
     def clean_string_files():
         for current_locale in LOCALES:
             FILESETS = [
-                os.path.join("tabcmd", "locales", current_locale, "LC_MESSAGES", "*.properties"),
-                os.path.join("tabcmd", "locales", current_locale, "LC_MESSAGES", "*.po"),
                 os.path.join("tabcmd", "locales", current_locale, "LC_MESSAGES", "*.out"),
+                os.path.join("tabcmd", "locales", current_locale, "LC_MESSAGES", "*.tmp"),
             ]
             for PATH in FILESETS:
                 for file in glob.glob(PATH):
@@ -379,7 +421,8 @@ def task_version():
 
 # local method, not exposed as a task
 def uniquify_file(filename):
-    uniques = set([])
+    seen = set()  # Track what we've seen
+    unique_lines = []  # Preserve order
     discarded_lines = []
 
     with open(filename, "r", encoding="utf-8") as my_file:
@@ -395,11 +438,14 @@ def uniquify_file(filename):
                 discarded_lines.append(line)
                 continue
             else:
-                uniques.add(line + "\n")
+                line_with_newline = line + "\n"
+                if line not in seen:  # Only add if we haven't seen it before
+                    seen.add(line)
+                    unique_lines.append(line_with_newline)
 
     with open(filename, "w", encoding="utf-8") as my_file:
         my_file.truncate()
-        for line in uniques:
+        for line in unique_lines:  # Write in original order
             my_file.write(line)
 
     # Write discarded lines to log file
@@ -412,9 +458,9 @@ def uniquify_file(filename):
                 log_file.write(line + "\n")
             log_file.write("\n")  # Add separator between different files
         print(
-            "Saved {} sorted unique lines to {} ({} discarded lines logged to {})".format(
-                len(uniques), filename, len(discarded_lines), log_filename
+            "Saved {} unique lines to {} ({} discarded lines logged to {})".format(
+                len(unique_lines), filename, len(discarded_lines), log_filename
             )
         )
     else:
-        print("Saved {} sorted unique lines to {}".format(len(uniques), filename))
+        print("Saved {} unique lines to {}".format(len(unique_lines), filename))

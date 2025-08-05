@@ -115,7 +115,7 @@ Strings should be added/edited in /tabcmd/locales/en/{name}.properties by id and
 > string = _("string.id")
 
 - regenerate updated strings for packaging as exe
-> python -m doit properties po mo
+> python -m doit combine_property_files po mo
 
 
 ### Versioning

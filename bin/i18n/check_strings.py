@@ -7,7 +7,7 @@ localization pattern and checks if they're present in the locale files.
 
 Usage:
     python bin/i18n/check_strings.py                    # Dev mode: check against en/*.properties
-    python bin/i18n/check_strings.py --mode build       # Build mode: check against filtered.properties for all locales
+    python bin/i18n/check_strings.py --mode build       # Build mode: check against combined.tmp for all locales
 
 Returns:
     0 if no missing strings found
@@ -188,7 +188,7 @@ def format_limited_list(items: List[str], prefix: str = "  Missing: ", limit: in
 
 
 def check_build_mode(project_root: Path, locales: List[str]) -> int:
-    """Check all locales against filtered.properties files (build pipeline mode)."""
+    """Check all locales against combined.tmp files (build pipeline mode)."""
     tabcmd_dir = project_root / "tabcmd"
     
     # Setup output file
@@ -222,10 +222,10 @@ def check_build_mode(project_root: Path, locales: List[str]) -> int:
         locales_with_same_missing = []
         
         for locale in locales:
-            filtered_file = project_root / "tabcmd" / "locales" / locale / "LC_MESSAGES" / "filtered.properties"
+            filtered_file = project_root / "tabcmd" / "locales" / locale / "LC_MESSAGES" / "combined.tmp"
             
             if not filtered_file.exists():
-                print_and_write(f"WARNING: No filtered.properties for locale '{locale}' at {filtered_file}", f)
+                print_and_write(f"WARNING: No combined.tmp for locale '{locale}' at {filtered_file}", f)
                 continue
                 
             defined_keys = load_properties_file(str(filtered_file))
@@ -353,7 +353,7 @@ def main():
         "--mode", 
         choices=["dev", "build"], 
         default="dev",
-        help="dev: check against en/*.properties (default), build: check against filtered.properties for all locales"
+        help="dev: check against en/*.properties (default), build: check against combined.tmp for all locales"
     )
     parser.add_argument(
         "--locales", 

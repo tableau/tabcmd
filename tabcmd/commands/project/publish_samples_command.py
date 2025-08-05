@@ -44,4 +44,4 @@ class PublishSamplesCommand(Server):
             server.projects.update(project, samples=True)
             logger.info(_("publish.success") + args.project_name)
         except Exception as e:
-            Errors.exit_with_error(logger, _("backgrounder.notification.flowrun.failure.status"), exception=e)
+            Errors.exit_with_error(logger, _("tabcmd.error.failure.status"), exception=e)
