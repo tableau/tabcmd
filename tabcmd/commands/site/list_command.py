@@ -70,16 +70,8 @@ class ListCommand(Server):
 
                 else:
                     id = _("tabcmd.listing.label.id").format(item.id)
-                    name = (
-                        ", " + _("tabcmd.listing.label.name").format(item.name)
-                        if args.name
-                        else ""
-                    )
-                    owner = (
-                        ", " + _("tabcmd.listing.label.owner").format(item.owner_id)
-                        if args.owner
-                        else ""
-                    )
+                    name = ", " + _("tabcmd.listing.label.name").format(item.name) if args.name else ""
+                    owner = ", " + _("tabcmd.listing.label.owner").format(item.owner_id) if args.owner else ""
 
                     url = ""
                     if args.address and content_type == "workbooks":
