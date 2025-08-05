@@ -62,7 +62,7 @@ class GetUrl(DatasourcesAndWorkbooks):
         for content_type in GetUrl.valid_content_types:
             if url.find(content_type) == 0:
                 return content_type
-        Errors.exit_with_error(logger, message=_("bad_request.detail.invalid_content_type").format(url))
+        Errors.exit_with_error(logger, message=_("tabcmd.error.bad_request.invalid_content_type").format(url))
 
     @staticmethod
     def filename_from_args(file_argument, item_name, filetype):
@@ -95,7 +95,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             elif file_type == "csv":
                 return GetUrl.generate_csv(logger, server_content_type, args, get_url_item)
         # all the known options above will return early. If we get here we are confused.
-        Errors.exit_with_error(logger, message=_("get.extension.not_found"))
+        Errors.exit_with_error(logger, message=_("tabcmd.get.extension.not_found"))
 
     @staticmethod
     def generate_pdf(logger, server_content_type, args, get_url_item):
