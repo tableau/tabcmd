@@ -185,7 +185,7 @@ class DatasourcesWorkbooksAndViewsUrlParser(Server):
         if custom_view_id:
             custom_view_item = DatasourcesAndWorkbooks.get_custom_view_by_id(logger, server, custom_view_id)
             if custom_view_item.view.id != item.id:
-                Errors.exit_with_error(logger, "Invalid custom view URL provided")
+                Errors.exit_with_error(logger, _("tabcmd.error.invalid_custom_view_url"))
             server_content_type = server.custom_views
             item = custom_view_item
         return item, server_content_type

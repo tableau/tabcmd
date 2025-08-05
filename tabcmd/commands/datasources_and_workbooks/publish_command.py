@@ -123,7 +123,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
         selected_modes = [mode for mode, mode_value in mode_mapping.items() if getattr(args, mode, False)]
 
         if len(selected_modes) > 1:
-            Errors.exit_with_error(logger, "Invalid combination of publishing options (Append, Overwrite, Replace)")
+            Errors.exit_with_error(logger, _("tabcmd.error.invalid_publish_options"))
 
         if selected_modes:
             publish_mode = mode_mapping[selected_modes[0]]

@@ -27,4 +27,4 @@ class Extracts(Server):
             logger.info(_("export.status").format(workbook_item.name))
             return workbook_item
 
-        Errors.exit_with_error(logger, "Datasource or workbook required")
+        Errors.exit_with_error(logger, _("tabcmd.error.datasource_or_workbook_required"))

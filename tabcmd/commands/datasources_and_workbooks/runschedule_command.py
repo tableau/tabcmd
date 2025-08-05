@@ -26,6 +26,6 @@ class RunSchedule(DatasourcesAndWorkbooks):
         server = session.create_session(args, logger)
         schedule = DatasourcesAndWorkbooks.get_items_by_name(logger, server.schedules, args.schedule)[0]
         logger.info(_("runschedule.status"))
-        Errors.exit_with_error(logger, "Not yet implemented")
+        Errors.exit_with_error(logger, _("tabcmd.error.not_implemented"))
 
         # TODO implement in REST/tsc

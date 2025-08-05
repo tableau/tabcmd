@@ -195,7 +195,7 @@ class Session:
                     self.server_url, self.site_name, self.proxy, self.no_proxy, self.certificate
                 )
             )
-            Errors.exit_with_error(self.logger, "Failed to connect to server", e)
+            Errors.exit_with_error(self.logger, _("tabcmd.error.server_connection_failed"), e)
 
         self.logger.debug("Finished setting up connection")
         return tableau_server
@@ -222,7 +222,7 @@ class Session:
         try:
             self.tableau_server = self._open_connection_with_opts()
         except Exception as e:
-            Errors.exit_with_error(self.logger, "Failed to connect to server", e)
+            Errors.exit_with_error(self.logger, _("tabcmd.error.server_connection_failed"), e)
         return self.tableau_server
 
     def _read_existing_state(self):
@@ -249,7 +249,7 @@ class Session:
             if self.tableau_server and self.tableau_server.is_signed_in():
                 server_user = self.tableau_server.users.get_by_id(self.user_id).name
                 if not self.username:
-                    self.logger.info("Fetched user details from server")
+                    self.logger.info(_("tabcmd.status.fetched_user_details"))
                     self.username = server_user
 
                 return self.tableau_server

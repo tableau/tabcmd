@@ -138,7 +138,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
                 ExportCommand.save_to_file(logger, output, save_name)
 
         except Exception as e:
-            Errors.exit_with_error(logger, "Error saving to file", e)
+            Errors.exit_with_error(logger, _("tabcmd.error.file_save_failed"), e)
 
     @staticmethod
     def apply_filters_from_args(request_options: TSC.RequestOptions, args, logger=None) -> None:

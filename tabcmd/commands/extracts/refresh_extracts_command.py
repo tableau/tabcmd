@@ -32,7 +32,7 @@ class RefreshExtracts(Server):
         server = session.create_session(args, logger)
 
         if args.addcalculations or args.removecalculations:
-            logger.warning("Add/Remove Calculations tasks are not supported.")
+            logger.warning(_("tabcmd.warning.calculations_not_supported"))
 
         incremental_refresh = True if args.incremental else False
 
@@ -53,10 +53,10 @@ class RefreshExtracts(Server):
         if args.synchronous:
             # maintains a live connection to the server while the refresh operation is underway, polling every second
             # until the background job is done.   <job id="JOB_ID" mode="MODE" type="RefreshExtract" />
-            logger.info("Waiting for refresh job to begin ....")
+            logger.info(_("tabcmd.status.waiting_for_refresh_job"))
             try:
                 job_done = server.jobs.wait_for_job(job_id=job, timeout=args.timeout)
-                logger.info("Job completed: ")
+                logger.info(_("tabcmd.status.job_completed"))
                 logger.info(job_done)
             except Exception as je:
                 Errors.exit_with_error(logger, je)
