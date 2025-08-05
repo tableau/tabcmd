@@ -1,6 +1,8 @@
 import logging
 import os
 
+from tabcmd.execution.localize import _
+
 path = os.path.dirname(os.path.abspath(__file__))
 
 FORMATS = {
@@ -16,11 +18,11 @@ def add_log_level(level_name, level_num, method_name=None):
         method_name = level_name.lower()
 
     if hasattr(logging, level_name):
-        raise AttributeError("{} already defined in logging module".format(level_name))
+        raise AttributeError(_("tabcmd.logger.error.already_defined").format(level_name, "logging module"))
     if hasattr(logging, method_name):
-        raise AttributeError("{} already defined in logging module".format(method_name))
+        raise AttributeError(_("tabcmd.logger.error.already_defined").format(method_name, "logging module"))
     if hasattr(logging.getLoggerClass(), method_name):
-        raise AttributeError("{} already defined in logger class".format(method_name))
+        raise AttributeError(_("tabcmd.logger.error.already_defined").format(method_name, "logger class"))
 
     def logForLevel(self, message, *args, **kwargs):
         if self.isEnabledFor(level_num):

@@ -24,7 +24,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
     @staticmethod
     def define_args(export_parser):
         group = export_parser.add_argument_group(title=ExportCommand.name)
-        group.add_argument("url", help="url of the workbook or view to export")
+        group.add_argument("url", help=_("tabcmd.export.help.url"))
         export_parser_group = group.add_mutually_exclusive_group(required=True)
         export_parser_group.add_argument("--pdf", action="store_true", help=_("export.options.pdf"))
         export_parser_group.add_argument("--fullpdf", action="store_true", help=_("export.options.fullpdf"))
@@ -36,7 +36,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
             choices=[pageorientation.Landscape, pageorientation.Portrait],
             type=str.lower,
             default=None,
-            help="page orientation (landscape or portrait) of the exported PDF",
+            help=_("tabcmd.export.help.orientation"),
         )
         group.add_argument(
             "--pagesize",
@@ -58,16 +58,16 @@ class ExportCommand(DatasourcesAndWorkbooks):
             ],
             type=str.lower,
             default="letter",
-            help="Set the page size of the exported PDF",
+            help=_("tabcmd.export.help.page_size"),
         )
 
         group.add_argument("--width", default=800, help=_("export.options.width"))
-        group.add_argument("--filename", "-f", help="filename to store the exported data")
+        group.add_argument("--filename", "-f", help=_("tabcmd.export.help.filename"))
         group.add_argument("--height", default=600, help=_("export.options.height"))
         group.add_argument(
             "--filter",
             metavar="COLUMN=VALUE",
-            help="Data filter to apply to the view",
+            help=_("tabcmd.export.help.filter"),
         )
         group.add_argument(
             "--resolution",

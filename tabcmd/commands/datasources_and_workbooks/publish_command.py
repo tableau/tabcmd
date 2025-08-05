@@ -76,9 +76,6 @@ class PublishCommand(DatasourcesAndWorkbooks):
         source = PublishCommand.get_filename_extension_if_tableau_type(logger, args.filename)
         logger.info(_("publish.status").format(args.filename))
         if source in ["twbx", "twb"]:
-            if args.thumbnail_username and args.thumbnail_group:
-                raise AttributeError("Cannot specify both a user and group for thumbnails.")
-
             new_workbook = TSC.WorkbookItem(project_id, name=args.name, show_tabs=args.tabbed)
             if args.thumbnail_username:
                 new_workbook.thumbnails_user_id = args.thumbnail_username

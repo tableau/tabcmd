@@ -19,7 +19,7 @@ class DeleteProjectCommand(Server):
     @staticmethod
     def define_args(delete_project_parser):
         args_group = delete_project_parser.add_argument_group(title=DeleteProjectCommand.name)
-        args_group.add_argument("project_name", metavar="project-name", help=_("createproject.options.name"))
+        args_group.add_argument("project_name", metavar="project-name", help=_("tabcmd.options.project"))
         set_parent_project_arg(args_group)
 
     @staticmethod

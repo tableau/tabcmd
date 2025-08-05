@@ -20,7 +20,7 @@ class CreateProjectCommand(Server):
     def define_args(create_project_parser):
         args_group = create_project_parser.add_argument_group(title=CreateProjectCommand.name)
         args_group.add_argument(
-            "--name", "-n", dest="project_name", required=True, help=_("createproject.options.name")
+            "--name", "-n", dest="project_name", required=True, help=_("tabcmd.options.project")
         )
         set_parent_project_arg(create_project_parser)
         set_description_arg(create_project_parser)

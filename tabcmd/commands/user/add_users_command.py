@@ -16,7 +16,7 @@ class AddUserCommand(UserCommand):
     @staticmethod
     def define_args(add_user_parser):
         args_group = add_user_parser.add_argument_group(title=AddUserCommand.name)
-        args_group.add_argument("name", help="name of group to add users to")
+        args_group.add_argument("name", help=_("tabcmd.addusers.help.group_name"))
         set_users_file_arg(args_group)
         set_completeness_options(args_group)
 

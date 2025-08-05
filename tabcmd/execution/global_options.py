@@ -161,7 +161,7 @@ def set_ds_xor_wb_args(parser, url=False):
     target_type_group.add_argument("-w", "--workbook", help=_("tabcmd.options.workbook"))
     if url:
         # -U conflicts with --username, they are not case sensitive
-        target_type_group.add_argument("--url", help=_("deleteextracts.options.url"))
+        target_type_group.add_argument("--url", help=_("tabcmd.options.resource_url"))
     return parser
 
 
@@ -269,7 +269,7 @@ def set_publish_args(parser):
     parser.add_argument(
         "--skip-connection-check",
         action="store_true",
-        help="Skip connection check: do not validate the workbook/datasource connection during publishing",
+        help=_("tabcmd.global.help.skip_connection_check"),
     )
 
     thumbnails = parser.add_mutually_exclusive_group()

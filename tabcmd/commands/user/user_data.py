@@ -44,7 +44,7 @@ class Userdata:
     def to_tsc_user(self) -> TSC.UserItem:
         site_role = UserCommand.evaluate_site_role(self.license_level, self.admin_level, self.publisher)
         if not site_role:
-            raise AttributeError("Site role is required")
+            raise AttributeError(_("tabcmd.user.error.site_role_required"))
         user = TSC.UserItem(self.name, site_role, self.auth)
         user.email = self.email
         user.fullname = self.fullname
@@ -109,7 +109,7 @@ class UserCommand(Server):
             "--role",
             choices=site_roles,
             type=case_insensitive_string_type(site_roles),
-            help="Specifies a site role for all users in the .csv file. Possible roles: " + ", ".join(site_roles),
+            help=_("tabcmd.user.help.site_role") + " " + ", ".join(site_roles),
             metavar="SITE_ROLE",
         )
         return parser
@@ -122,8 +122,7 @@ class UserCommand(Server):
             choices=auth_types,
             type=case_insensitive_string_type(auth_types),
             # default="TableauID",  # default is Local for on-prem, TableauID for Online. Does the server apply the default?
-            help="Assigns the authentication type for all users in the CSV file.  Possible roles: "
-            + ", ".join(auth_types),
+            help=_("tabcmd.user.help.auth_type") + " " + ", ".join(auth_types),
         )
         return parser
 
