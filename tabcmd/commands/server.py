@@ -114,8 +114,8 @@ class Server:
         else:
             logger.debug("Use logged in site")
             site_item = server.sites.get_by_id(server.site_id)
-                    if not site_item:
-            raise ResourceWarning(_("tabcmd.server.error.site_not_found"))
+            if not site_item:
+                raise ResourceWarning(_("tabcmd.server.error.site_not_found"))
         return site_item
 
     @staticmethod
