@@ -489,7 +489,6 @@ class TimeoutArgTests(unittest.TestCase):
         assert result == 0
 
 
-
 class ConnectionOptionsTest(unittest.TestCase):
     def test_user_agent(self):
         mock_session = Session()
@@ -532,6 +531,7 @@ class ConnectionOptionsTest(unittest.TestCase):
         mock_session.timeout = 10
         connection = mock_session._open_connection_with_opts()
         assert connection._http_options["timeout"] == 10
+
 
 """
 

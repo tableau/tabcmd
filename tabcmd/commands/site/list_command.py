@@ -102,6 +102,10 @@ class ListCommand(Server):
         id = _("tabcmd.listing.header.id")
         name = ", " + _("tabcmd.listing.header.name") if args.name else ""
         owner = ", " + _("tabcmd.listing.header.owner") if args.owner else ""
-        url = ", " + _("tabcmd.listing.header.url") if args.address and content_type in ["workbooks", "datasources"] else ""
+        url = (
+            ", " + _("tabcmd.listing.header.url")
+            if args.address and content_type in ["workbooks", "datasources"]
+            else ""
+        )
         children = ", " + _("tabcmd.listing.header.children") if args.details and content_type == "workbooks" else ""
         return "{0}{1}{2}{3}{4}".format(id, name, owner, url, children)
