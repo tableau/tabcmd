@@ -254,9 +254,9 @@ class Session:
 
                 return self.tableau_server
         except TSC.ServerResponseError as e:
-            self.logger.info(_("publish.errors.unexpected_server_response"), e)
+            self.logger.info(_("publish.errors.unexpected_server_response").format(e))
         except Exception as e:
-            self.logger.info(_("errors.internal_error.request.message"), e)
+            self.logger.info(_("errors.internal_error.request.message").format(e))
         return None
 
     # server connection created, not yet logged in
