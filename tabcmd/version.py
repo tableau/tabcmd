@@ -1,9 +1,8 @@
-# when we drop python 3.8, this could be replaced with this lighter weight option
-# from importlib.metadata import version, PackageNotFoundError
-from pkg_resources import get_distribution, DistributionNotFound
+# Updated to use importlib.metadata (available in Python 3.8+, required >= 3.9)
+from importlib.metadata import version, PackageNotFoundError
 
 try:
-    version = get_distribution("tabcmd").version
-except DistributionNotFound:
+    version = version("tabcmd")
+except PackageNotFoundError:
     version = "2.0.0"
     pass
