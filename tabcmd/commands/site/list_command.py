@@ -22,14 +22,14 @@ class ListCommand(Server):
 
         format_group = list_parser.add_mutually_exclusive_group()
         # TODO: should this be saved directly to csv?
-        format_group.add_argument("--machine", action="store_true", help="Format output as csv for machine reading")
+        format_group.add_argument("--machine", action="store_true", help=_("tabcmd.listing.help.machine"))
 
-        data_group = list_parser.add_argument_group(title="Attributes to include")
+        data_group = list_parser.add_argument_group(title=_("tabcmd.listing.group.attributes"))
         # data_group.add_argument("-i", "--id", action="store_true", help="Show item id") # default true
-        data_group.add_argument("-n", "--name", action="store_true", help="Show item name")  # default true
-        data_group.add_argument("-o", "--owner", action="store_true", help="Show item owner")
-        data_group.add_argument("-d", "--details", action="store_true", help="Show children of the item")
-        data_group.add_argument("-a", "--address", action="store_true", help="Show web address of the item")
+        data_group.add_argument("-n", "--name", action="store_true", help=_("tabcmd.listing.help.name"))  # default true
+        data_group.add_argument("-o", "--owner", action="store_true", help=_("tabcmd.listing.help.owner"))
+        data_group.add_argument("-d", "--details", action="store_true", help=_("tabcmd.listing.help.details"))
+        data_group.add_argument("-a", "--address", action="store_true", help=_("tabcmd.listing.help.address"))
 
     @staticmethod
     def run_command(args):
@@ -83,7 +83,7 @@ class ListCommand(Server):
                 logger.info("{0}{1}{2}{3}{4}".format(id, name, owner, url, children))
 
             # TODO: do we want this line if it is csv output?
-            logger.info("{} total {}".format(len(items), content_type))
+            logger.info(_("tabcmd.listing.summary").format(len(items), content_type))
         except Exception as e:
             Errors.exit_with_error(logger, e)
 
@@ -93,15 +93,15 @@ class ListCommand(Server):
             if content_type == "workbooks":
                 server.workbooks.populate_views(item)
                 child_items = item.views[:10]
-                children = ", VIEWS: [" + ", ".join(map(lambda x: x.name, child_items)) + "]"
+                children = ", " + _("tabcmd.listing.label.views") + ", ".join(map(lambda x: x.name, child_items))
                 return children
         return ""
 
     @staticmethod
     def show_header(args, content_type):
-        id = "ID"
-        name = ", NAME" if args.name else ""
-        owner = ", OWNER" if args.owner else ""
-        url = ", URL" if args.address and content_type in ["workbooks", "datasources"] else ""
-        children = ", CHILDREN" if args.details and content_type == "workbooks" else ""
-        return "{0}{1}{2}{3}".format(id, name, owner, children)
+        id = _("tabcmd.listing.header.id")
+        name = ", " + _("tabcmd.listing.header.name") if args.name else ""
+        owner = ", " + _("tabcmd.listing.header.owner") if args.owner else ""
+        url = ", " + _("tabcmd.listing.header.url") if args.address and content_type in ["workbooks", "datasources"] else ""
+        children = ", " + _("tabcmd.listing.header.children") if args.details and content_type == "workbooks" else ""
+        return "{0}{1}{2}{3}{4}".format(id, name, owner, url, children)

@@ -489,20 +489,6 @@ class TimeoutArgTests(unittest.TestCase):
         assert result == 0
 
 
-class TimeoutIntegrationTest(unittest.TestCase):
-    def test_connection_times_out(self):
-        test_args = Namespace(**vars(args_to_mock))
-        new_session = Session()
-        test_args.timeout = 2
-        test_args.username = "u"
-        test_args.password = "p"
-
-        test_args.server = "https://nothere.com"
-        with self.assertRaises(SystemExit):
-            new_session.create_session(test_args, None)
-
-    # should test connection doesn't time out?
-
 
 class ConnectionOptionsTest(unittest.TestCase):
     def test_user_agent(self):
@@ -547,8 +533,22 @@ class ConnectionOptionsTest(unittest.TestCase):
         connection = mock_session._open_connection_with_opts()
         assert connection._http_options["timeout"] == 10
 
-
 """
+
+This is too slow for unit tests.
+class TimeoutIntegrationTest(unittest.TestCase):
+    def test_connection_times_out(self):
+        test_args = Namespace(**vars(args_to_mock))
+        new_session = Session()
+        test_args.timeout = 2
+        test_args.username = "u"
+        test_args.password = "p"
+
+        test_args.server = "https://nothere.com"
+        with self.assertRaises(SystemExit):
+            new_session.create_session(test_args, None)
+
+
 class CookieTests(unittest.TestCase):
 
     def test_no_file_if_no_cookie(self):
