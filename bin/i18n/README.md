@@ -19,3 +19,10 @@ This step combines the .properties files into a single file, discarding any stri
 3. Convert the .po files into .mo files (these are not human readable)
 This also checks the .mo files for validity by loading them with gettext
 > python -m doit mo
+
+## Optional reorganization task
+
+Move all strings from extra.properties to the bottom of tabcmd_messages_xx.properties:
+> python -m doit move_tabcmd_strings
+
+This consolidates all strings into the main tabcmd_messages files and clears the extra.properties files.
