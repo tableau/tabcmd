@@ -10,24 +10,16 @@ class ListCommand(Server):
     Command to return a list of content the user can access
     """
 
-    # strings to move to string files
-    local_strings = {
-        "tabcmd_content_listing": "===== Listing {0} content for user {1}...",
-        "tabcmd_listing_label_name": "\tNAME: {}",
-        "tabcmd_listing_label_id": "ID: {}",
-        "tabcmd_content_none": "No content found.",
-    }
-
     name: str = "list"
-    description: str = "List content items of a specified type"
+    description: str = _("tabcmd.listing.short_description")
 
     @staticmethod
     def define_args(list_parser):
         args_group = list_parser.add_argument_group(title=ListCommand.name)
         args_group.add_argument(
-            "content", choices=["projects", "workbooks", "datasources", "flows"], help="View content"
+            "content", choices=["projects", "workbooks", "datasources", "flows"], help=_("tabcmd.options.select_type")
         )
-        args_group.add_argument("-d", "--details", action="store_true", help="Show object details")
+        args_group.add_argument("-d", "--details", action="store_true", help=_("tabcmd.options.include_details"))
 
     @staticmethod
     def run_command(args):
@@ -38,7 +30,7 @@ class ListCommand(Server):
         content_type = args.content
 
         try:
-            logger.info(ListCommand.local_strings["tabcmd_content_listing"].format(content_type, session.username))
+            logger.info(_("tabcmd.listing.header").format(content_type, session.username))
 
             if content_type == "projects":
                 items = server.projects.all()
@@ -50,7 +42,7 @@ class ListCommand(Server):
                 items = server.flows.all()
 
             if not items or len(items) == 0:
-                logger.info(ListCommand.local_strings["tabcmd_content_none"])
+                logger.info(_("tabcmd.listing.none"))
             for item in items:
                 if args.details:
                     logger.info("\t{}".format(item))
@@ -59,8 +51,8 @@ class ListCommand(Server):
                         for v in item.views:
                             logger.info(v)
                 else:
-                    logger.info(ListCommand.local_strings["tabcmd_listing_label_id"].format(item.id))
-                    logger.info(ListCommand.local_strings["tabcmd_listing_label_name"].format(item.name))
+                    logger.info(_("tabcmd.listing.label.id").format(item.id))
+                    logger.info(_("tabcmd.listing.label.name").format(item.name))
 
         except Exception as e:
             Errors.exit_with_error(logger, e)
