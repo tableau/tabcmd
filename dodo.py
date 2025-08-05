@@ -1,6 +1,7 @@
 import glob
 import os
 import subprocess
+import sys
 import setuptools_scm
 
 LOCALES = ["en", "de", "es", "fr", "ga", "it", "pt", "sv", "ja", "ko", "zh"]
@@ -8,10 +9,9 @@ LOCALES = ["en", "de", "es", "fr", "ga", "it", "pt", "sv", "ja", "ko", "zh"]
 """
 https://pydoit.org/
 Usage:
-pip install -e .[prep_work]
+pip install -e .[localize]
 doit list # see available tasks
 
-FYI: to read mo and po files use https://poedit.net/download
 """
 
 
@@ -28,33 +28,48 @@ def task_properties():
     def process_code():
         print("\n***** Collect all string keys used in code")
 
-        CODE_PATH = "tabcmd/**/*.py"
+        # Import string extraction logic from check_strings module
+        import sys
+        from pathlib import Path
+        
+        # Add bin directory to Python path for imports
+        bin_path = str(Path(__file__).parent / "bin")
+        if bin_path not in sys.path:
+            sys.path.insert(0, bin_path)
+            
+        from i18n.check_strings import find_python_files, extract_string_keys_from_file
+
+        tabcmd_dir = "tabcmd"
         STRINGS_FILE = "tabcmd/locales/codestrings.properties"
-        STRING_FLAG = '_("'
-        STRING_END = '")'
 
-        lines = set([])
+        # Use enhanced string extraction logic
+        python_files = find_python_files(tabcmd_dir)
+        all_string_keys = set()
+        
+        # Log files being processed to localize.log
+        with open("localize.log", "a", encoding="utf-8") as log_file:
+            log_file.write("# Code files processed for string extraction:\n")
+            for codefile in python_files:
+                log_file.write("\t{}\n".format(codefile))
+            log_file.write("\n")
+        
+        for codefile in python_files:
+            file_keys = extract_string_keys_from_file(codefile)
+            all_string_keys.update(file_keys)
+
+        # Write to codestrings.properties (same format as before)
         with open(STRINGS_FILE, "w+", encoding="utf-8") as stringfile:
-            for codefile in glob.glob(CODE_PATH, recursive=True):
-                print("\t" + codefile)
-                with open(codefile, encoding="utf-8") as infile:
-                    # find lines that contain a loc string in the form _("string goes here")
-                    for line in infile:
-                        i = line.find(STRING_FLAG)
-                        # include only the string itself and the quote symbols around it
-                        if i >= 0:
-                            # print(line)
-                            j = line.find(STRING_END)
-                            lines.add(line[i + 3 : j] + "\n")
+            sorted_keys = sorted(all_string_keys)
+            for key in sorted_keys:
+                stringfile.write(key + "\n")
 
-            sorted_lines = sorted(lines)
-            stringfile.writelines(sorted_lines)
-
-        print("{} strings collected from code and saved to {}".format(len(lines), STRINGS_FILE))
+        print("{} strings collected from code and saved to {}".format(len(all_string_keys), STRINGS_FILE))
 
     def merge():
         print("\n***** Combine our multiple input properties files into one .properties file per locale")
-        for current_locale in LOCALES:
+        # Process English last for cleaner output
+        locales_ordered = [loc for loc in LOCALES if loc != "en"] + ["en"]
+        for current_locale in locales_ordered:
 
             LOCALE_PATH = os.path.join("tabcmd", "locales", current_locale)
             INPUT_FILES = os.path.join(LOCALE_PATH, "*.properties")
@@ -85,11 +100,19 @@ def task_properties():
     def filter():
         print("\n***** Remove strings in properties that are never used in code")
         REF_FILE = os.path.join("tabcmd", "locales", "codestrings.properties")
-        for current_locale in LOCALES:
+        UNUSED_ENGLISH_FILE = "unused_english_strings.txt"
+        
+        # Track unused English strings for separate output file
+        unused_english_strings = []
+        
+        # Process English last for cleaner output
+        locales_ordered = [loc for loc in LOCALES if loc != "en"] + ["en"]
+        for current_locale in locales_ordered:
             LOCALE_PATH = os.path.join("tabcmd", "locales", current_locale)
             IN_FILE = os.path.join(LOCALE_PATH, "LC_MESSAGES", "combined.properties")
             OUT_FILE = os.path.join(LOCALE_PATH, "LC_MESSAGES", "filtered.properties")
 
+            excluded_count = 0
             with open(REF_FILE, "r+", encoding="utf-8") as ref:
                 required = ref.read()
 
@@ -99,35 +122,69 @@ def task_properties():
                         if key in required:
                             outfile.writelines(line)
                         else:
-                            print("\tExcluding {}".format(key))
+                            excluded_count += 1
+                            # Track unused English strings for output file
+                            if current_locale == "en":
+                                unused_english_strings.append(line.strip())
 
-            print("Filtered strings for {}".format(current_locale))
+            # Show summary for all languages 
+            if excluded_count > 0:
+                print("Filtered strings for {} (excluded {} unused strings)".format(current_locale, excluded_count))
+            else:
+                print("Filtered strings for {} (no unused strings)".format(current_locale))
+        
+        # Write unused English strings to separate file (silently)
+        if unused_english_strings:
+            with open(UNUSED_ENGLISH_FILE, "w+", encoding="utf-8") as unused_file:
+                unused_file.write("# Unused English strings (present in properties but not referenced in code)\n")
+                unused_file.write("# Generated by doit properties filter step\n")
+                unused_file.write(f"# Found {len(unused_english_strings)} unused strings\n\n")
+                
+                for unused_string in sorted(unused_english_strings):
+                    unused_file.write(unused_string + "\n")
+            
+            # Store count for final summary (will be printed at end of validation step)
+            with open("unused_count.tmp", "w") as count_file:
+                count_file.write(str(len(unused_english_strings)))
 
     """Remove """
 
     """Search loc files for each string used in code - print an error if not found.
-    Input: codestrings.properties file created by task_collect_strings
-    Output: console listing missing keys    
+    Uses enhanced check_strings.py script for validation.
     """
 
     def enforce_strings_present():
-
-        print("\n***** Verify that all string keys used in code are present in string properties")
-        STRINGS_FILE = "tabcmd/locales/codestrings.properties"
-        uniquify_file(STRINGS_FILE)
-        with open(STRINGS_FILE, "r+", encoding="utf-8") as stringfile:
-            codestrings = stringfile.readlines()
-            for locale in LOCALES:
-                LOC_FILE = os.path.join("tabcmd", "locales", locale, "LC_MESSAGES", "filtered.properties")
-                print("checking language {}".format(locale))
-                with open(LOC_FILE, "r+", encoding="utf-8") as propsfile:
-                    translated_strings = propsfile.read()
-                    for message_key in codestrings:
-                        message_key = message_key.strip("\n")
-                        message_key = message_key.strip('"')
-                        if message_key not in translated_strings:
-                            print("ERROR: product string not in strings files [{}]".format(message_key))
-        print("Done")
+        print("\n***** Verify that all string keys are present using check_strings validator")
+        
+        # English must be processed FIRST for validation baseline, others can be in any order
+        locales_ordered = ["en"] + [loc for loc in LOCALES if loc != "en"]
+        result = subprocess.run([
+            "python", "bin/i18n/check_strings.py", 
+            "--mode", "build",
+            "--locales"] + locales_ordered,
+            capture_output=True, text=True
+        )
+        
+        # Print the output from the validation script
+        if result.stdout:
+            print(result.stdout)
+        if result.stderr:
+            print(result.stderr, file=sys.stderr)
+        
+        if result.returncode != 0:
+            print("VALIDATION FAILED: Missing localization strings found")
+            exit(1)
+        else:
+            print("All string validations passed")
+        
+        # Print unused English strings summary at the end
+        if os.path.exists("unused_count.tmp"):
+            with open("unused_count.tmp", "r") as count_file:
+                unused_count = int(count_file.read().strip())
+            print(f"\n{unused_count} unused English strings saved to unused_english_strings.txt")
+            os.remove("unused_count.tmp")  # Clean up temp file
+        else:
+            print("\nNo unused English strings found")
 
     return {
         "actions": [process_code, merge, filter, enforce_strings_present],
@@ -144,7 +201,7 @@ def task_po():
     """
     There are two versions of prop2po:
     - 1.0, available through pip install prop2po, from https://github.com/mivek/prop2po
-    it doesn't have any way to control which encoding it uses so I'm patching it
+    it doesn't have any way to control which encoding it uses so I'm patching it at bin/i18n/prop2po.py
     - 3.x, from pip install translate-toolkit: 
     it copies key->comment, value-> msgid, ""->msgstr which is not at all what we want
     """
@@ -241,7 +298,7 @@ def task_clean_all():
 def task_mo():
     """
     For all languages: Processes the tabcmd.po file to produce a final tabcmd.mo file for each language
-    Uses msgfmt.py from gettext, which is copied locally into the repo
+    Uses msgfmt.py from gettext, which is copied locally into the repo at bin/i18n/msgfmt.py
     """
 
     def generate_mo():
@@ -324,6 +381,7 @@ def task_version():
 # local method, not exposed as a task
 def uniquify_file(filename):
     uniques = set([])
+    discarded_lines = []
 
     with open(filename, "r", encoding="utf-8") as my_file:
         my_file.seek(0)
@@ -335,7 +393,7 @@ def uniquify_file(filename):
             if line == "":
                 continue
             elif "=" not in line and "codestrings" not in filename:
-                print("\tprop2po will not like this line. Discarding [{}]".format(line))
+                discarded_lines.append(line)
                 continue
             else:
                 uniques.add(line + "\n")
@@ -345,4 +403,15 @@ def uniquify_file(filename):
         for line in uniques:
             my_file.write(line)
 
-    print("Saved {} sorted unique lines to {}".format(len(uniques), filename))
+    # Write discarded lines to log file
+    if discarded_lines:
+        log_filename = "localize.log"
+        with open(log_filename, "a", encoding="utf-8") as log_file:
+            log_file.write("# Lines discarded from {} because prop2po will not like them\n".format(filename))
+            log_file.write("# These lines don't contain '=' and are not codestrings\n\n")
+            for line in discarded_lines:
+                log_file.write(line + "\n")
+            log_file.write("\n")  # Add separator between different files
+        print("Saved {} sorted unique lines to {} ({} discarded lines logged to {})".format(len(uniques), filename, len(discarded_lines), log_filename))
+    else:
+        print("Saved {} sorted unique lines to {}".format(len(uniques), filename))

@@ -108,10 +108,32 @@ _(note that running mypy and black with no errors is required before code will b
 > bin/coverage.sh
 
 
+
+### Localization
+
+Strings should be added/edited in /tabcmd/locales/en/{name}.properties by id and referred to in code as 
+> string = _("string.id")
+
+- regenerate updated strings for packaging as exe
+> python -m doit properties po mo
+
+
+### Versioning
+
+Versioning is done with setuptools_scm and based on git tags. The version number will be x.y.dev0.dirty except for commits with a new version tag.
+ This is pulled from the git state, and to get a clean version like "v2.1.0", you must be on a commit with the tag "v2.1.0" (Creating a Github release also creates a tag on the selected branch.) 
+
+The version reflected in the executable (tabcmd -v) is stored in a metadata file created by a .doit script:
+> python -m doit version
+
+
+
 ### Packaging 
+Packaging for release is done in a github action and should not need to be done locally.
+
 - build an executable package with [pyinstaller](https://github.com/pyinstaller/pyinstaller). 
 > [!NOTE]
-> You can only build an executable for the platform you are running pyinstaller on. The spec for each platform is stored in tabcmd-*platform*.spec and the exact build commands for each platform can be checked in [our packaging script](.github/workflows//package.yml).
+> You can only build an executable for the platform you are running pyinstaller on. The spec for each platform is stored in tabcmd-{platform}.spec and the exact build commands for each platform can be checked in [our packaging script](.github/workflows//package.yml).
 
 e.g for Windows
 > pyinstaller tabcmd-windows.spec --clean --distpath .\dist\windows
@@ -124,24 +146,6 @@ To run the newly created executable, from a console window in the same directory
 
 To investigate what's packaged in the executable, use https://pyinstxtractor-web.netlify.app/
 
-
-
-### Localization
-
-Strings are stored in /tabcmd/locales/[language]/*.properties by id and referred to in code as 
-> string = _("string.id")
-
-For runtime execution these files must be converted from .properties -> .po -> .mo files. These .mo files will be bundled in the the package by pyinstaller. The entire conversion action is done by a .doit script:
-> doit properties po mo
-You can also check that there are no malformed/forgotten message keys in the code with 
-> doit strings
-
-### Versioning
-
-Versioning is done with setuptools_scm and based on git tags. The version number will be x.y.dev0.dirty except for commits with a new version tag.
- This is pulled from the git state, and to get a clean version like "v2.1.0", you must be on a commit with the tag "v2.1.0" (Creating a Github release also creates a tag on the selected branch.) 
-The version reflected in the executable (tabcmd -v) is stored in a metadata file created by a .doit script:
-> doit version
 
 ## Release process
 
@@ -161,7 +165,7 @@ The version reflected in the executable (tabcmd -v) is stored in a metadata file
 - do not unzip the linux app, github doesn't like it. upload as tabcmd.zip
 (Pay attention to what the file type is, github also sends it as a zip if you download with curl etc. TODO: automate workflow with a github action)
 
-1. To trigger publishing to pypi run the manual workflow on main with 'pypi'. (TODO: automate trigger)
+1. To trigger publishing to pypi run the manual workflow on main with 'pypi'. 
 
 1. When the packages are available on pypi, you can run the 'Pypi smoke test action'. This action will also be run every 24 hours to validate doing pip install. (TODO: automate the after-release trigger)
 

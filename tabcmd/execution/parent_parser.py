@@ -152,7 +152,7 @@ class ParentParser:
             prog="tabcmd",
             description="tabcmd <command>      -- " + _("tabcmd.howto"),
             parents=[self.global_options],
-            epilog=_("tabcmdparser.link.help"),
+            epilog=_("tabcmdparser.help.link"),
         )
         self.root._optionals.title = _("tabcmdparser.global.connections")
         # https://stackoverflow.com/questions/7498595/python-argparse-add-argument-to-multiple-subparsers

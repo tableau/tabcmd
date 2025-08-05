@@ -116,7 +116,7 @@ def set_encryption_option(parser):
         "--encrypt",
         dest="encrypt",
         action="store_true",  # set to true IF user passes in option --encrypt
-        help=_("tabcmd.createextracts.options.encrypt"),
+        help=_("createextracts.options.encrypt"),
     )
     return parser
 
@@ -176,7 +176,7 @@ def set_site_status_arg(parser):
         "--status",
         choices=["ACTIVE", "SUSPENDED"],
         type=str.upper,
-        help=_("tabcmd.editsite.options.status"),
+        help=_("editsite.options.status"),
     )
     return parser
 
@@ -195,14 +195,14 @@ def set_common_site_args(parser):
 
     parser = set_site_id_args(parser)
 
-    parser.add_argument("--user-quota", type=int, help=_("tabcmd.editsite.options.user_limit"))
+    parser.add_argument("--user-quota", type=int, help=_("createsite.options.user-quota"))
 
     set_site_mode_option(parser)
 
     parser.add_argument(
         "--storage-quota",
         type=int,
-        help=_("tabcmd.editsite.options.storage_quota"),
+        help=_("createsite.options.storage-quota"),
     )
 
     encryption_modes = ["enforced", "enabled", "disabled"]
@@ -210,7 +210,7 @@ def set_common_site_args(parser):
         "--extract-encryption-mode",
         choices=encryption_modes,
         type=case_insensitive_string_type(encryption_modes),
-        help=_("tabcmd.editsite.options.extract_encryption_mode"),
+        help=_("editsite.options.extract_encryption_mode"),
     )
 
     parser.add_argument(
@@ -227,13 +227,13 @@ def set_site_mode_option(parser):
         "--site-mode",
         dest="site_admin_user_management",
         action="store_true",
-        help=_("tabcmd.editsite.options.user-management"),
+        help=_("createsite.options.site-mode"),
     )
     site_group.add_argument(
         "--no-site-mode",
         dest="site_admin_user_management",
         action="store_false",
-        help=_("tabcmd.editsite.options.user-management"),
+        help=_("createsite.options.site-mode"),
     )
 
 
@@ -262,10 +262,10 @@ def set_publish_args(parser):
     parser.add_argument("--save-db-password", action="store_true", help=_("publish.options.save-db-password"))
 
     parser.add_argument("--tabbed", action="store_true", help=_("tabcmd.publish.options.tabbed.detailed"))
-    parser.add_argument("--disable-uploader", action="store_true", help=_("tabcmd.publish.options.disable-uploader"))
+    parser.add_argument("--disable-uploader", action="store_true", help=_("tabcmd.options.deprecated"))
 
-    parser.add_argument("--restart", help=_("tabcmd.publish.options.restart"))
-    parser.add_argument("--encrypt-extracts", action="store_true", help=_("publish.options.encrypt-extracts"))
+    parser.add_argument("--restart", help=_("publish.options.restart"))
+    parser.add_argument("--encrypt-extracts", action="store_true", help=_("publish.options.encrypt_extracts"))
     parser.add_argument(
         "--skip-connection-check",
         action="store_true",
@@ -286,7 +286,7 @@ def set_append_replace_option(parser):
 
     # This will keep the metadata of the existing data source and replace the data in the extract file
     # This is meant for when a) the local file is an extract b) the server item is an existing data source
-    append_group.add_argument("--replace", action="store_true", help=_("tabcmd.publish.options.replace"))
+    append_group.add_argument("--replace", action="store_true", help=_("publish.options.replace"))
 
 
 # This will overwrite the metadata and data of the existing content
@@ -295,7 +295,7 @@ def set_overwrite_option(parser):
         "-o",
         "--overwrite",
         action="store_true",
-        help=_("tabcmd.publish.options.overwrite"),
+        help=_("publish.options.overwrite"),
     )
 
 
@@ -315,12 +315,12 @@ def set_calculations_options(parser):
     calc_group.add_argument(
         "--addcalculations",
         action="store_true",
-        help=_("tabcmd.options.addcalculations"),
+        help=_("tabcmd.options.deprecated"),
     )
     calc_group.add_argument(
         "--removecalculations",
         action="store_true",
-        help=_("tabcmd.options.removecalculations"),
+        help=_("tabcmd.options.deprecated"),
     )
     return calc_group
 

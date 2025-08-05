@@ -51,14 +51,14 @@ class DeleteCommand(DatasourcesAndWorkbooks):
 
         error = None
         if args.workbook or not content_type:
-            logger.debug(_("tabcmd.delete.status.workbook"))
+            logger.debug(_("delete.status").format("Workbook", args.workbook))
             try:
                 item_to_delete = DeleteCommand.get_workbook_item(logger, server, args.name, container)
                 content_type = "workbook"
             except TSC.ServerResponseError as error:
                 logger.debug(error)
         if args.datasource or not content_type:
-            logger.debug(_("tabcmd.delete.status.datasource"))
+            logger.debug(_("delete.status").format("Datasource", args.datasource))
             try:
                 item_to_delete = DeleteCommand.get_data_source_item(logger, server, args.name, container)
                 content_type = "datasource"
