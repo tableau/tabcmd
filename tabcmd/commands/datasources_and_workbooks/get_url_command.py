@@ -26,7 +26,7 @@ class GetUrl(DatasourcesAndWorkbooks):
     def define_args(get_url_parser):
         group = get_url_parser.add_argument_group(title=GetUrl.name)
         group.add_argument("url", help=_("refreshextracts.options.url"))
-        set_filename_arg(group)
+        set_destination_filename_arg(group)
         # these don't need arguments, although that would be a good future addition
         # tabcmd get "/views/Finance/InvestmentGrowth.png?:size=640,480" -f growth.png
         # tabcmd get "/views/Finance/InvestmentGrowth.png?:refresh=yes" -f growth.png
