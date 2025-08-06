@@ -19,12 +19,14 @@ jobs:
   buildexe:
     name: Build executables and upload them to the existing release
     runs-on: ${{ matrix.os }}
+    container: ${{ matrix.CONTAINER }}
     strategy:
       fail-fast: false
       matrix:
         include:
           - os: windows-latest
             TARGET: windows
+            CONTAINER: ''
             CMD_BUILD: >
               pyinstaller tabcmd-windows.spec --clean --noconfirm --distpath ./dist/windows
             UPLOAD_FILE_NAME: tabcmd.exe
@@ -32,6 +34,7 @@ jobs:
             ASSET_MIME: application/vnd.microsoft.portable-executable
           - os: macos-13
             TARGET: macos
+            CONTAINER: ''
             CMD_BUILD:  >
               pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/
             # the extension .app is not allowed as an upload by github
@@ -43,6 +46,7 @@ jobs:
           - os: macos-latest
             # This must match the value set in tabcmd-mac.spec for the output folder
             TARGET: macos
+            CONTAINER: ''
             CMD_BUILD:  >
               pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/
             UPLOAD_FILE_NAME: tabcmd_arm64.app.tar
@@ -51,6 +55,7 @@ jobs:
             ASSET_MIME: application/zip
           - os: ubuntu-latest
             TARGET: ubuntu
+            CONTAINER: ubi8/python-312
           # https://stackoverflow.com/questions/31259856
           # /how-to-create-an-executable-file-for-linux-machine-using-pyinstaller
             CMD_BUILD: >
