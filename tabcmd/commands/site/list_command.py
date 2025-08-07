@@ -65,7 +65,9 @@ class ListCommand(Server):
                     if args.address and content_type in ["workbooks", "datasources"]:
                         url = ", " + item.content_url
                     children = (
-                        ", " + ListCommand.format_children_listing(args, server, content_type, item) if args.details else ""
+                        ", " + ListCommand.format_children_listing(args, server, content_type, item)
+                        if args.details
+                        else ""
                     )
 
                 else:
