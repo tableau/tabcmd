@@ -74,7 +74,7 @@ class ListCommand(Server):
                     owner = ", " + _("tabcmd.listing.label.owner").format(item.owner_id) if args.owner else ""
 
                     url = ""
-                    if args.address and content_type == "workbooks":
+                    if args.address and content_type in ["workbooks", "datasources"]:
                         url = ", " + item.content_url
                     children = (
                         ListCommand.format_children_listing(args, server, content_type, item) if args.details else ""
