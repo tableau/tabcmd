@@ -75,7 +75,7 @@ class ListCommand(Server):
 
                     url = ""
                     if args.address and content_type == "workbooks":
-                        url = item.content_url
+                        url = ", " + item.content_url
                     children = (
                         ListCommand.format_children_listing(args, server, content_type, item) if args.details else ""
                     )
