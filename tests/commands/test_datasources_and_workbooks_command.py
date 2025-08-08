@@ -128,6 +128,19 @@ class ParameterTests(unittest.TestCase):
         assert request_options.orientation == expected_layout
         assert request_options.language == language
 
+    def test_apply_pdf_options_with_language(self):
+        language = "de"
+        expected_page = tsc.PDFRequestOptions.PageType.Folio.__str__()
+        expected_layout = tsc.PDFRequestOptions.Orientation.Portrait.__str__()
+        mock_args.pagelayout = expected_layout
+        mock_args.pagesize = expected_page
+        mock_args.language = language
+        request_options = tsc.PDFRequestOptions()
+        DatasourcesAndWorkbooks.apply_pdf_options(mock_logger, request_options, mock_args)
+        assert request_options.page_type == expected_page
+        assert request_options.orientation == expected_layout
+        assert request_options.language == language
+
     def test_apply_options_in_url_with_size(self):
         request_options = tsc.ImageRequestOptions()
         value = ":size=800,600"
