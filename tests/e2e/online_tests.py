@@ -28,7 +28,7 @@ indexing_sleep_time = 1  # wait 1 second to confirm server has indexed updates
 unique = str(time.gmtime().tm_sec)
 group_name = "test-ing-group" + unique
 workbook_name = "wb_1_" + unique
-default_project_name = "Personal Work"  # "default-proj" + unique
+default_project_name = "Personal Work" # has to exist already when you run random test cases "default-proj" + 
 parent_location = "parent" + unique
 project_name = "test-proj-" + unique
 
@@ -177,17 +177,17 @@ class OnlineCommandTest(unittest.TestCase):
         arguments = [command, server_file]
         _test_command(arguments)
 
-    def _create_extract(self, type, wb_name):
+    def _create_extract(self, item_name, type="-w"):
         command = "createextracts"
-        arguments = [command, type, wb_name, "--project", default_project_name]
+        arguments = [command, type, item_name, "--project", default_project_name]
         if extract_encryption_enabled and not use_tabcmd_classic:
             arguments.append("--encrypt")
         _test_command(arguments)
 
     # variation: url
-    def _refresh_extract(self, type, wb_name):
+    def _refresh_extract(self, item_name, type="-w"):
         command = "refreshextracts"
-        arguments = [command, "-w", wb_name, "--project", default_project_name]  # bug: should not need -w
+        arguments = [command, type, item_name, "--project", default_project_name]  # bug: should not need -w
         try:
             _test_command(arguments)
         except Exception as e:
@@ -199,7 +199,7 @@ class OnlineCommandTest(unittest.TestCase):
             else:
                 raise e
 
-    def _delete_extract(self, type, item_name):
+    def _delete_extract(self, item_name, type="-w"):
         command = "deleteextracts"
         arguments = [command, type, item_name, "--include-all", "--project", default_project_name]
         try:
@@ -219,21 +219,44 @@ class OnlineCommandTest(unittest.TestCase):
         arguments = [command, item_type]
         _test_command(arguments)
 
-    # actual tests
-    TWBX_FILE_WITH_EXTRACT = "WorkbookWithExtract.twbx"
-    TWBX_WITH_EXTRACT_NAME = "WorkbookWithExtract"
-    TWBX_WITH_EXTRACT_SHEET = "Sheet1"
-    TWBX_FILE_WITHOUT_EXTRACT = "simple-data.twbx"
-    TWBX_WITHOUT_EXTRACT_NAME = "WorkbookWithoutExtract"
-    TWBX_WITHOUT_EXTRACT_SHEET = "Testsheet1"
-    TDSX_WITH_EXTRACT_NAME = "WorldIndicators"
-    TDSX_FILE_WITH_EXTRACT = "World Indicators.tdsx"
-    # fill in
-    TDS_FILE_LIVE_NAME = "SampleDS"
-    TDS_FILE_LIVE = "SampleDS.tds"
+    def get_publishable_name(self, file_value: str) -> str:
+        return os.path.splitext(os.path.basename(file_value))[0]+unique
 
-    TWB_WITH_EMBEDDED_CONNECTION = "EmbeddedCredentials.twb"
-    EMBEDDED_TWB_NAME = "EmbeddedCredentials"
+    # assets for tests
+    # if we publish something with a name that already exists, it will get a random int appended to the name
+    # to avoid this, we add our own random int to each name so we actually know what it is 
+    # this is why we have workbook_name+unique everywhere
+    TWBX_FILE_WITH_EXTRACT = "WorkbookWithExtract.twbx"
+    TWBX_WITH_EXTRACT_SHEET = "Sheet1"
+
+    TWBX_FILE_WITHOUT_EXTRACT = "simple-data.twbx"
+    TWBX_WITHOUT_EXTRACT_SHEET = "Testsheet1"
+
+    # problem:  803311: Remove Extract is not supported for this Datasources (errorCode=310030))
+    TDSX_FILE_WITH_EXTRACT = "WorldIndicators.tdsx"
+    # WorldIndicators.tds
+
+    TDS_FILE_LIVE = "live_mysql.tds"
+
+    TWB_FILE_WITH_EMBEDDED_CONNECTION = "EmbeddedCredentials.twb"
+
+    # check for the required files in the test assets
+    @pytest.mark.order(0)
+    def test_asset_files_exist(self):
+        assets_dir = os.path.join("tests", "assets")
+        checks = [
+            ("TWBX_FILE_WITH_EXTRACT", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT),
+            ("TWBX_FILE_WITHOUT_EXTRACT", OnlineCommandTest.TWBX_FILE_WITHOUT_EXTRACT),
+            ("TDSX_FILE_WITH_EXTRACT", OnlineCommandTest.TDSX_FILE_WITH_EXTRACT),
+            ("TDS_FILE_LIVE", OnlineCommandTest.TDS_FILE_LIVE),
+            ("TWB_FILE_WITH_EMBEDDED_CONNECTION", OnlineCommandTest.TWB_FILE_WITH_EMBEDDED_CONNECTION),
+        ]
+        missing = []
+        for var_name, filename in checks:
+            path = os.path.join(assets_dir, filename)
+            if not os.path.exists(path):
+                missing.append(f"{var_name} -> {path}")
+        assert not missing, "Missing asset files: " + ", ".join(missing)
 
     @pytest.mark.order(1)
     def test_login(self):
@@ -250,6 +273,13 @@ class OnlineCommandTest(unittest.TestCase):
     def test_help(self):
         command = "help"
         arguments = [command]
+        _test_command(arguments)
+
+    @pytest.mark.order(1)
+    def test_publish_simple(self):
+        file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITHOUT_EXTRACT)
+        name_on_server = self.get_publishable_name(OnlineCommandTest.TWBX_FILE_WITHOUT_EXTRACT)
+        arguments = self._publish_args(file, name_on_server)
         _test_command(arguments)
 
     @pytest.mark.order(2)
@@ -359,28 +389,31 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(10)
     def test_wb_publish(self):
-        file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
-        arguments = self._publish_args(file, OnlineCommandTest.TWBX_WITH_EXTRACT_NAME)
-        val = _test_command(arguments)
-        if val != 0:
-            print("publishing failed: cancel test run")
-            exit(val)
+        for file in [OnlineCommandTest.TWBX_FILE_WITH_EXTRACT, OnlineCommandTest.TWBX_FILE_WITHOUT_EXTRACT]:
+            file = os.path.join("tests", "assets", file)
+            name_on_server = self.get_publishable_name(file)
+            arguments = self._publish_args(file, name_on_server)
+            val = _test_command(arguments)
+            if val != 0:
+                print(f"publishing {file} failed: cancel test run")
+                exit(val)
 
     @pytest.mark.order(11)
     def test_wb_get(self):
         # add .twbx to the end to tell the server what we are getting
-        self._get_workbook(OnlineCommandTest.TWBX_WITH_EXTRACT_NAME + ".twbx")
+        name_on_server = self.get_publishable_name(OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)+".twbx"
+        self._get_workbook(name_on_server)
 
     @pytest.mark.order(11)
     def test_view_get_pdf(self):
-        wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
+        wb_name_on_server = self.get_publishable_name(OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         # bug in tabcmd classic: doesn't work without download name
         self._get_view(wb_name_on_server, sheet_name, "downloaded_file.pdf")
 
     @pytest.mark.order(11)
     def test_view_get_png_sizes(self):
-        wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
+        wb_name_on_server = self.get_publishable_name(OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
 
         self._get_view(wb_name_on_server, sheet_name, "get_view_default_size.png")
@@ -391,20 +424,21 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(11)
     def test_view_get_csv(self):
-        wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
+        wb_name_on_server = self.get_publishable_name(OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         self._get_view(wb_name_on_server, sheet_name + ".csv")
 
     @pytest.mark.order(11)
     def test_view_get_png(self):
-        wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
+        wb_name_on_server = self.get_publishable_name(OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         self._get_view(wb_name_on_server, sheet_name + ".png")
 
     @pytest.mark.order(11)
     def test_wb_publish_embedded(self):
-        file = os.path.join("tests", "assets", OnlineCommandTest.TWB_WITH_EMBEDDED_CONNECTION)
-        arguments = self._publish_args(file, OnlineCommandTest.EMBEDDED_TWB_NAME)
+        file = os.path.join("tests", "assets", OnlineCommandTest.TWB_FILE_WITH_EMBEDDED_CONNECTION)
+        name_on_server = self.get_publishable_name(OnlineCommandTest.TWB_FILE_WITH_EMBEDDED_CONNECTION)
+        arguments = self._publish_args(file, name_on_server)
         arguments = self._publish_creds_args(arguments, database_user, database_password, True)
         arguments.append("--tabbed")
         arguments.append("--skip-connection-check")
@@ -413,53 +447,45 @@ class OnlineCommandTest(unittest.TestCase):
     @pytest.mark.order(12)
     def test_publish_ds(self):
         file = os.path.join("tests", "assets", OnlineCommandTest.TDSX_FILE_WITH_EXTRACT)
-        arguments = self._publish_args(file, OnlineCommandTest.TDSX_WITH_EXTRACT_NAME)
+        name_on_server = self.get_publishable_name(OnlineCommandTest.TDSX_FILE_WITH_EXTRACT)
+        arguments = self._publish_args(file, name_on_server)
         _test_command(arguments)
 
     @pytest.mark.order(12)
     def test_publish_live_ds(self):
         file = os.path.join("tests", "assets", OnlineCommandTest.TDS_FILE_LIVE)
-        arguments = self._publish_args(file, OnlineCommandTest.TDS_FILE_LIVE_NAME)
+        name_on_server = self.get_publishable_name(OnlineCommandTest.TDS_FILE_LIVE)
+        arguments = self._publish_args(file, name_on_server)
         _test_command(arguments)
 
     @pytest.mark.order(13)
     def test__get_ds(self):
-        self._get_datasource(OnlineCommandTest.TDSX_WITH_EXTRACT_NAME + ".tdsx")
+        name_on_server = self.get_publishable_name(OnlineCommandTest.TDSX_FILE_WITH_EXTRACT)
+        self._get_datasource(name_on_server + ".tdsx")
 
     @pytest.mark.order(13)
     def test_refresh_ds_extract(self):
-        self._refresh_extract("-d", OnlineCommandTest.TDSX_WITH_EXTRACT_NAME)
+        name_on_server = self.get_publishable_name(OnlineCommandTest.TDSX_FILE_WITH_EXTRACT)
+        self._refresh_extract(name_on_server, "-d")
 
     @pytest.mark.order(14)
     def test_delete_extract(self):
-        self._delete_extract("-d", OnlineCommandTest.TDSX_WITH_EXTRACT_NAME)
+        name_on_server = self.get_publishable_name(OnlineCommandTest.TDSX_FILE_WITH_EXTRACT)
+        self._delete_extract(name_on_server, "-d")
 
     @pytest.mark.order(16)
     def test_create_extract(self):
-        self._create_extract("-d", OnlineCommandTest.TDS_FILE_LIVE_NAME)
+        name_on_server = self.get_publishable_name(OnlineCommandTest.TDS_FILE_LIVE)
+        self._create_extract(name_on_server, "-d")
 
     @pytest.mark.order(17)
     def test_refresh_wb_extract(self):
-        self._refresh_extract("-w", OnlineCommandTest.TWBX_WITH_EXTRACT_NAME)
-
-    @pytest.mark.order(19)
-    def test_wb_delete(self):
-        name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
-        self._delete_wb(name_on_server)
-
-    @pytest.mark.order(19)
-    def test__delete_ds(self):
-        name_on_server = OnlineCommandTest.TDSX_WITH_EXTRACT_NAME
-        self._delete_ds(name_on_server)
-
-    @pytest.mark.order(19)
-    def test__delete_ds_live(self):
-        name_on_server = OnlineCommandTest.TDS_FILE_LIVE_NAME
-        self._delete_ds(name_on_server)
+        name_on_server = self.get_publishable_name(OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
+        self._refresh_extract(name_on_server)
 
     @pytest.mark.order(19)
     def test_export_wb_filters(self):
-        wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
+        wb_name_on_server = self.get_publishable_name(OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         friendly_name = wb_name_on_server + "/" + sheet_name
         filters = ["--filter", "Product Type=Tea", "--fullpdf", "--pagelayout", "landscape"]
@@ -468,32 +494,32 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(19)
     def test_export_wb_pdf(self):
-        wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
+        wb_name_on_server = self.get_publishable_name(OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         friendly_name = wb_name_on_server + "/" + OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         filename = "exported_wb.pdf"
         self._export_wb(friendly_name, filename)
 
     @pytest.mark.order(19)
     def test_export_data_csv(self):
-        wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
+        wb_name_on_server = self.get_publishable_name(OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         self._export_view(wb_name_on_server, sheet_name, "--csv", "exported_data.csv")
 
     @pytest.mark.order(19)
     def test_export_view_png(self):
-        wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
+        wb_name_on_server = self.get_publishable_name(OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         self._export_view(wb_name_on_server, sheet_name, "--png", "export_view.png")
 
     @pytest.mark.order(19)
     def test_export_view_pdf(self):
-        wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
+        wb_name_on_server = self.get_publishable_name(OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         self._export_view(wb_name_on_server, sheet_name, "--pdf", "export_view_pdf.pdf")
 
     @pytest.mark.order(19)
     def test_export_view_filtered(self):
-        wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
+        wb_name_on_server = self.get_publishable_name(OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         filename = "view_with_filters.pdf"
 
@@ -521,3 +547,18 @@ class OnlineCommandTest(unittest.TestCase):
         except Exception as E:
             result = False
         assert result
+
+    @pytest.mark.order(30)
+    def test_wb_delete(self):
+        name_on_server = self.get_publishable_name(OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
+        self._delete_wb(name_on_server)
+
+    @pytest.mark.order(30)
+    def test__delete_ds(self):
+        name_on_server = self.get_publishable_name(OnlineCommandTest.TDSX_FILE_WITH_EXTRACT)
+        self._delete_ds(name_on_server)
+
+    @pytest.mark.order(30)
+    def test__delete_ds_live(self):
+        name_on_server = self.get_publishable_name(OnlineCommandTest.TDS_FILE_LIVE)
+        self._delete_ds(name_on_server)
