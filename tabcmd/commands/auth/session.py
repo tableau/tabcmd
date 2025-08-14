@@ -13,7 +13,7 @@ from tabcmd.commands.constants import Errors
 from tabcmd.execution.localize import _
 from tabcmd.execution.logger_config import log
 
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 
 
 class Session:
@@ -28,31 +28,31 @@ class Session:
     PASSWORD_CRED_TYPE = "password"
 
     def __init__(self):
-        self.username = None
+        self.username: Optional[str] = None
         # we don't store the password
-        self.user_id = None
-        self.auth_token = None
-        self.token_name = None
-        self.token_value = None
-        self.password_file = None
-        self.token_file = None
-        self.site_name = None  # The site name, e.g 'alpodev'
-        self.site_id = None  # The site id, e.g 'abcd-1234-1234-1244-1234'
-        self.server_url = None
-        self.last_command = None  # for when we have to renew the session then re-try
-        self.last_login_using = None
+        self.user_id: Optional[str] = None
+        self.auth_token: Optional[str] = None
+        self.token_name: Optional[str] = None
+        self.token_value: Optional[str] = None
+        self.password_file: Optional[str] = None
+        self.token_file: Optional[str] = None
+        self.site_name: Optional[str] = None  # The site name, e.g 'alpodev'
+        self.site_id: Optional[str] = None  # The site id, e.g 'abcd-1234-1234-1244-1234'
+        self.server_url: Optional[str] = None
+        self.last_command: Optional[str] = None  # for when we have to renew the session then re-try
+        self.last_login_using: Optional[str] = None
 
-        self.no_prompt = False
-        self.certificate = None
-        self.no_certcheck = False
-        self.no_proxy = False
-        self.proxy = None
-        self.timeout = None
+        self.no_prompt: bool = False
+        self.certificate: Optional[str] = None
+        self.no_certcheck: bool = False
+        self.no_proxy: bool = False
+        self.proxy: Optional[str] = None
+        self.timeout: Optional[int] = None
 
-        self.logging_level = "info"
+        self.logging_level: str = "info"
         self.logger = log(__name__, self.logging_level)  # instantiate here mostly for tests
         self._read_from_json()
-        self.tableau_server = None  # this one is an object that doesn't get persisted in the file
+        self.tableau_server: Optional[TSC.Server] = None  # this one is an object that doesn't get persisted in the file
 
     # called before we connect to the server
     # generally, we don't want to overwrite stored data with nulls
@@ -201,6 +201,10 @@ class Session:
         return tableau_server
 
     def _verify_server_connection_unauthed(self):
+        if not self.tableau_server:
+            Errors.exit_with_error(self.logger, "No server connection available")
+        
+        assert self.tableau_server is not None  # Type hint for mypy
         try:
             self.tableau_server.use_server_version()
         except requests.exceptions.ReadTimeout as timeout_error:
@@ -222,7 +226,12 @@ class Session:
         try:
             self.tableau_server = self._open_connection_with_opts()
         except Exception as e:
-            Errors.exit_with_error(self.logger, "Failed to connect to server", e)
+            Errors.exit_with_error(self.logger, "Failed to connect to server", exception=e)
+        
+        if not self.tableau_server:
+            Errors.exit_with_error(self.logger, "Failed to create server connection")
+        
+        assert self.tableau_server is not None  # Type hint for mypy
         return self.tableau_server
 
     def _read_existing_state(self):
@@ -246,7 +255,7 @@ class Session:
     def _validate_existing_signin(self):
         # when do these two messages show up? self.logger.info(_("session.auto_site_login"))
         try:
-            if self.tableau_server and self.tableau_server.is_signed_in():
+            if self.tableau_server and self.tableau_server.is_signed_in() and self.user_id:
                 server_user = self.tableau_server.users.get_by_id(self.user_id).name
                 if not self.username:
                     self.logger.info("Fetched user details from server")
@@ -261,8 +270,12 @@ class Session:
 
     # server connection created, not yet logged in
     def _sign_in(self, tableau_auth) -> TSC.Server:
-        self.logger.debug(_("session.login") + self.server_url)
+        if not self.tableau_server:
+            Errors.exit_with_error(self.logger, "No server connection available for sign in")
+            
+        self.logger.debug(_("session.login") + (self.server_url or ""))
         self.logger.debug(_("listsites.output").format("", self.username or self.token_name, self.site_name))
+        assert self.tableau_server is not None  # Type hint for mypy
         try:
             self.tableau_server.auth.sign_in(tableau_auth)  # it's the same call for token or user-pass
         except Exception as e:
@@ -298,7 +311,7 @@ class Session:
         self._read_existing_state()
         self._update_session_data(args)
         self.logging_level = args.logging_level or self.logging_level
-        self.logger = logger or log(__class__.__name__, self.logging_level)
+        self.logger = logger or log(self.__class__.__name__, self.logging_level)
 
         credentials = None
         if args.password or args.password_file:
@@ -360,8 +373,8 @@ class Session:
         self.tableau_server = None
 
         self.certificate = None
-        self.no_certcheck = None
-        self.no_proxy = None
+        self.no_certcheck = False
+        self.no_proxy = False
         self.proxy = None
         self.timeout = None
 
@@ -440,13 +453,13 @@ class Session:
         except Exception as e:
             self._wipe_bad_json(e, "Failed to save session file")
 
-    def _save_file(self, data):
+    def _save_file(self, data: Dict[str, Any]) -> None:
         file_path = self._get_file_path()
         with open(str(file_path), "w") as f:
             json.dump(data, f)
 
-    def _serialize_for_save(self):
-        data = {"tableau_auth": []}
+    def _serialize_for_save(self) -> Dict[str, Any]:
+        data: Dict[str, Any] = {"tableau_auth": []}
         data["tableau_auth"].append(
             {
                 "auth_token": self.auth_token,
