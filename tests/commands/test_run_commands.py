@@ -4,7 +4,7 @@ from unittest.mock import *
 import tableauserverclient as TSC
 
 from tabcmd.commands.auth import login_command, logout_command
-from tabcmd.commands.datasources_and_workbooks import delete_command, export_command, get_url_command, publish_command
+from tabcmd.commands.datasources_and_workbooks import delete_command, export_command, get_url_command, publish_command, runschedule_command
 from tabcmd.commands.extracts import (
     create_extracts_command,
     delete_extracts_command,
@@ -267,7 +267,7 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.continue_if_exists = True
 
         mock_args.name = "name"
-        mock_server.groups.create.return_value = TSC.ServerResponseError(409, "already exists", "detail")
+        mock_server.groups.create.return_value = TSC.ServerResponseError("409", "already exists", "detail")
         create_group_command.CreateGroupCommand.run_command(mock_args)
         mock_session.assert_called()
 
@@ -277,7 +277,7 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.project_name = "repeat"
         mock_args.parent_project_path = ""
         mock_args.description = "none"
-        mock_server.projects.create.return_value = TSC.ServerResponseError(409, "already exists", "detail")
+        mock_server.projects.create.return_value = TSC.ServerResponseError("409", "already exists", "detail")
         create_project_command.CreateProjectCommand.run_command(mock_args)
         mock_session.assert_called()
 
@@ -289,7 +289,7 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.site_admin_user_management = None
         mock_args.user_quota = None
         mock_args.storage_quota = None
-        mock_server.sites.create.return_value = TSC.ServerResponseError(409, "already exists", "detail")
+        mock_server.sites.create.return_value = TSC.ServerResponseError("409", "already exists", "detail")
         create_site_command.CreateSiteCommand.run_command(mock_args)
         mock_session.assert_called()
 

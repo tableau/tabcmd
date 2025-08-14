@@ -175,7 +175,7 @@ class BuildCredentialsTests(unittest.TestCase):
     def test__create_new_username_credential_succeeds_from_self(self, mock_pass):
         active_session = Session()
         active_session.username = "user3"
-        active_session.site = ""
+        active_session.site_id = ""
         auth = active_session._create_new_credential(None, Session.PASSWORD_CRED_TYPE)
         assert mock_pass.has_been_called()
         assert auth is not None
@@ -202,6 +202,7 @@ class BuildCredentialsTests(unittest.TestCase):
 class PromptingTests(unittest.TestCase):
     def test_show_prompt_if_user_didnt_say(self):
         test_args = Namespace(**vars(args_to_mock))
+        mock_session = Session()
         assert Session._allow_prompt(test_args) is True, test_args
 
     def test_show_prompt_if_user_said_yes(self):
