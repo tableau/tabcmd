@@ -7,7 +7,7 @@ from .common_setup import *
 commandname = "removeusers"
 
 
-class RemoveUsersParserTest(unittest.TestCase):
+class RemoveUsersParserTest(ParserTest):
     @classmethod
     def setUpClass(cls):
         cls.parser_under_test = initialize_test_pieces(commandname, RemoveUserCommand)
