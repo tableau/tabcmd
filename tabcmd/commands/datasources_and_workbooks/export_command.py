@@ -13,6 +13,7 @@ from .datasources_workbooks_views_url_parser import DatasourcesWorkbooksAndViews
 pagesize = TSC.PDFRequestOptions.PageType  # type alias for brevity
 pageorientation = TSC.PDFRequestOptions.Orientation
 imageresolution = TSC.ImageRequestOptions.Resolution
+RequestOptionsType  = TSC.ExcelRequestOptions | TSC.CSVRequestOptions | TSC.PDFRequestOptions | TSC.ImageRequestOptions
 ImageResolutionStandard = "standard"
 
 
@@ -81,9 +82,9 @@ class ExportCommand(DatasourcesAndWorkbooks):
     it to a file. This command can also export just the data used for a view_name
     """
 
-    @staticmethod
-    def run_command(args):
-        logger = log(__class__.__name__, args.logging_level)
+    @classmethod
+    def run_command(cls, args):
+        logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
@@ -97,7 +98,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
         if not view_content_url and not wb_content_url:
             view_example = "/workbook_name/view_name"
             message = "{} [{}]".format(
-                _("export.errors.requires_workbook_view_param").format(__class__.__name__), view_example
+                _("export.errors.requires_workbook_view_param").format("ExportCommand"), view_example
             )
             Errors.exit_with_error(logger, message)
 
@@ -127,7 +128,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
                     default_filename = "{}.png".format(export_item.name)
 
         except TSC.ServerResponseError as e:
-            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response").format(""), e)
+            Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response").format(""), exception=e)
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
         try:
@@ -138,10 +139,10 @@ class ExportCommand(DatasourcesAndWorkbooks):
                 ExportCommand.save_to_file(logger, output, save_name)
 
         except Exception as e:
-            Errors.exit_with_error(logger, "Error saving to file", e)
+            Errors.exit_with_error(logger, "Error saving to file", exception=e)
 
     @staticmethod
-    def apply_filters_from_args(request_options: TSC.RequestOptions, args, logger=None) -> None:
+    def apply_filters_from_args(request_options: RequestOptionsType, args, logger=None) -> None:
         if args.filter:
             logger.debug("filter = {}".format(args.filter))
             params = args.filter.split("&")

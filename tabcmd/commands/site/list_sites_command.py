@@ -21,9 +21,9 @@ class ListSiteCommand(Server):
         group = list_site_parser.add_argument_group(title=ListSiteCommand.name)
         set_site_detail_option(group)
 
-    @staticmethod
-    def run_command(args):
-        logger = log(__class__.__name__, args.logging_level)
+    @classmethod
+    def run_command(cls, args):
+        logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
@@ -35,4 +35,4 @@ class ListSiteCommand(Server):
                 if args.get_extract_encryption_mode:
                     logger.info("EXTRACTENCRYPTION: {}".format(site.extract_encryption_mode))
         except Exception as e:
-            Errors.exit_with_error(logger, e)
+            Errors.exit_with_error(logger, exception=e)

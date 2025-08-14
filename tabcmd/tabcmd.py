@@ -17,11 +17,12 @@ def main():
         print("Keyboard Interrupt: exiting")
         sys.exit(1)
     except Exception as e:
+        traceback_info = f"at line {e.__traceback__.tb_lineno} of {__file__}" if e.__traceback__ else "traceback unavailable"
         sys.stderr.writelines(
             [
                 "ERROR\n",
                 "Unhandled exception: {}\n".format(type(e).__name__),
-                f"at line {e.__traceback__.tb_lineno} of {__file__}: {e}\n",
+                f"{traceback_info}: {e}\n",
             ]
         )
         sys.exit(1)

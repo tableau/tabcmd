@@ -26,9 +26,9 @@ class CreateSiteUsersCommand(UserCommand):
         set_completeness_options(args_group)
         UserCommand.set_auth_arg(args_group)
 
-    @staticmethod
-    def run_command(args):
-        logger = log(__class__.__name__, args.logging_level)
+    @classmethod
+    def run_command(cls, args):
+        logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
@@ -59,9 +59,10 @@ class CreateSiteUsersCommand(UserCommand):
                 if Errors.is_resource_conflict(e) and args.continue_if_exists:
                     logger.debug(_("createsite.errors.site_name_already_exists").format(user_obj.name))
                 else:
+                    logger.debug(type(e))
                     number_of_errors += 1
                     logger.debug(number_of_errors)
-                    error_list.append(e.summary + ": " + e.detail)
+                    error_list.append(e.__class__.__name__) # + ": " + e.__cause__ or "Unknown")
                 logger.debug(error_list)
         logger.info(_("session.monitorjob.percent_complete").format(100))
         logger.info(_("importcsvsummary.line.processed").format(number_of_users_listed))
