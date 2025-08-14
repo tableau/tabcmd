@@ -154,9 +154,9 @@ class BuildCredentialsTests(unittest.TestCase):
 
     def test__create_new_username_credential_succeeds_new_password(self, mock_pass):
         test_password = "pword1"
-        active_session = Session()
+        active_session: Session = Session()
         active_session.username = "user"
-        active_session.site = ""
+        active_session.site_id = ""
         auth = active_session._create_new_credential(test_password, Session.PASSWORD_CRED_TYPE)
         assert auth is not None
 
@@ -547,6 +547,7 @@ class TimeoutIntegrationTest(unittest.TestCase):
         test_args.server = "https://nothere.com"
         with self.assertRaises(SystemExit):
             new_session.create_session(test_args, None)
+
 
 
 class CookieTests(unittest.TestCase):
