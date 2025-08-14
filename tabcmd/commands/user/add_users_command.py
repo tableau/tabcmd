@@ -3,7 +3,7 @@ from tabcmd.execution.global_options import *
 from tabcmd.execution.localize import _
 from tabcmd.execution.logger_config import log
 from .user_data import UserCommand
-
+import sys
 
 class AddUserCommand(UserCommand):
     """
@@ -20,13 +20,17 @@ class AddUserCommand(UserCommand):
         set_users_file_arg(args_group)
         set_completeness_options(args_group)
 
-    @staticmethod
-    def run_command(args):
-        logger = log(__class__.__name__, args.logging_level)
+    @classmethod
+    def run_command(cls, args):
+        logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
 
         logger.info(_("addusers.status").format(args.users.name, args.name))
 
-        UserCommand.act_on_users(logger, server, "added", server.groups.add_user, args)
+        try:
+            UserCommand.act_on_users(logger, server, "added", server.groups.add_user, args)
+        except Exception as e:
+            logger.error(e.__cause__)
+            sys.exit(1)

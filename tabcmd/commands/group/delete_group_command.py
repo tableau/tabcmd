@@ -20,9 +20,9 @@ class DeleteGroupCommand(Server):
         args_group = delete_group_parser.add_argument_group(title=DeleteGroupCommand.name)
         args_group.add_argument("name")
 
-    @staticmethod
-    def run_command(args):
-        logger = log(__class__.__name__, args.logging_level)
+    @classmethod
+    def run_command(cls, args):
+        logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
@@ -33,4 +33,4 @@ class DeleteGroupCommand(Server):
             server.groups.delete(group_id)
             logger.info(_("common.output.succeeded"))
         except Exception as e:
-            Errors.exit_with_error(logger, _("errors.bad_request.detail.generic_delete_groups_error"), e)
+            Errors.exit_with_error(logger, _("errors.bad_request.detail.generic_delete_groups_error"), exception=e)

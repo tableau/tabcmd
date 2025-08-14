@@ -21,8 +21,8 @@ class ListCommand(Server):
         )
         args_group.add_argument("-d", "--details", action="store_true", help=_("tabcmd.options.include_details"))
 
-    @staticmethod
-    def run_command(args):
+    @classmethod
+    def run_command(cls, args):
         logger = log(__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
@@ -55,4 +55,4 @@ class ListCommand(Server):
                     logger.info(_("tabcmd.listing.label.name").format(item.name))
 
         except Exception as e:
-            Errors.exit_with_error(logger, e)
+            Errors.exit_with_error(logger, exception=e)

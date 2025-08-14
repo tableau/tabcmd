@@ -192,10 +192,9 @@ class ParentParser:
 
 class Help:
 
-    parser = None
     # This needs to have access to the parser when it gets called
     def __init__(self, _parser: ParentParser):
-        self.parser = _parser
+        self.parser: ParentParser = _parser
 
     def run_command(self, args):
         logger = log(__name__, "info")

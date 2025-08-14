@@ -5,6 +5,7 @@ import tableauserverclient as TSC
 from tabcmd.commands.constants import Errors
 from tabcmd.commands.server import Server
 from tabcmd.execution.localize import _
+RequestOptionsType  = TSC.ExcelRequestOptions | TSC.CSVRequestOptions | TSC.PDFRequestOptions | TSC.ImageRequestOptions
 
 
 class DatasourcesAndWorkbooks(Server):
@@ -13,7 +14,7 @@ class DatasourcesAndWorkbooks(Server):
     """
 
     def __init__(self, args):
-        super().__init__(args)
+        pass
 
     @staticmethod
     def get_view_url_from_names(wb_name, view_name):
@@ -62,7 +63,7 @@ class DatasourcesAndWorkbooks(Server):
         return matching_datasources[0]
 
     @staticmethod
-    def apply_values_from_url_params(logger, request_options: TSC.RequestOptions, url) -> None:
+    def apply_values_from_url_params(logger, request_options: RequestOptionsType, url) -> None:
         logger.debug(url)
         try:
             if "?" in url:
@@ -86,7 +87,7 @@ class DatasourcesAndWorkbooks(Server):
 
     # this is called from within from_url_params, for each view_filter value
     @staticmethod
-    def apply_encoded_filter_value(logger, request_options, value):
+    def apply_encoded_filter_value(logger, request_options: RequestOptionsType, value):
         # the REST API doesn't appear to have the option to disambiguate with "Parameters.<fieldname>"
         value = value.replace("Parameters.", "")
         # the filter values received from the url are already url encoded. tsc will encode them again.
@@ -99,7 +100,7 @@ class DatasourcesAndWorkbooks(Server):
     # from apply_options, which expects an un-encoded input,
     # or from apply_url_params via apply_encoded_filter_value which decodes the input
     @staticmethod
-    def apply_filter_value(logger, request_options: TSC.RequestOptions, value: str) -> None:
+    def apply_filter_value(logger, request_options: RequestOptionsType, value: str) -> None:
         logger.debug("handling filter param {}".format(value))
         data_filter = value.split("=")
         # we should export the _DataExportOptions class from tsc
@@ -108,7 +109,7 @@ class DatasourcesAndWorkbooks(Server):
     # this is called from within from_url_params, for each param value
     # expects either ImageRequestOptions or PDFRequestOptions
     @staticmethod
-    def apply_options_in_url(logger, request_options: TSC.RequestOptions, value: str) -> None:
+    def apply_options_in_url(logger, request_options: RequestOptionsType, value: str) -> None:
         logger.debug("handling url option {}".format(value))
         setting = value.split("=")
         if len(setting) != 2:
