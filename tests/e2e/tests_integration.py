@@ -14,6 +14,7 @@ except ImportError:
 
 fakeserver = "http://SRVR"
 logging.disable(logging.ERROR)
+logger = log("tests_integration", "info")
 
 # these are integration tests because they don't just run a command, they call interior methods
 # pytest -v tests/e2e/integration_tests.py
@@ -130,7 +131,6 @@ class E2EServerTests(unittest.TestCase):
         # test_session.create_session(args)
 
     def test_get_project(self):
-        logger = log(__class__.__name__, "info")
         server = E2EServerTests.test_log_in()
         Server.get_project_by_name_and_parent_path(logger, server, "Default", None)
 

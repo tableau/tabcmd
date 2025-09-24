@@ -178,7 +178,7 @@ class GeturlTests(unittest.TestCase):
             DatasourcesWorkbooksAndViewsUrlParser.parse_get_view_url_to_view_and_custom_view_parts(mock_logger, url)
 
     def test_parse_get_url_to_view_parts_without_slashes(self):
-        url = "views\wb name\\view-name"
+        url = "views\\wb name\\view-name"
         with self.assertRaises(SystemExit):
             DatasourcesWorkbooksAndViewsUrlParser.parse_get_view_url_to_view_and_custom_view_parts(mock_logger, url)
 
