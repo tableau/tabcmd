@@ -203,17 +203,22 @@ class PromptingTests(unittest.TestCase):
     def test_show_prompt_if_user_didnt_say(self):
         test_args = Namespace(**vars(args_to_mock))
         mock_session = Session()
-        assert Session._allow_prompt(test_args) is True, test_args
+        mock_session._update_session_data(test_args)
+        assert mock_session._allow_prompt() is True, test_args
 
     def test_show_prompt_if_user_said_yes(self):
         test_args = Namespace(**vars(args_to_mock))
         test_args.prompt = True
-        assert Session._allow_prompt(test_args) is True, test_args
+        mock_session = Session()
+        mock_session._update_session_data(test_args)
+        assert mock_session._allow_prompt() is True, test_args
 
     def test_dont_show_prompt_if_user_said_no(self):
         test_args = Namespace(**vars(args_to_mock))
         test_args.no_prompt = True
-        assert Session._allow_prompt(test_args) is False, test_args
+        mock_session = Session()
+        mock_session._update_session_data(test_args)
+        assert mock_session._allow_prompt() is False, test_args
 
 
 """

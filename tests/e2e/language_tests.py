@@ -95,6 +95,12 @@ class OnlineCommandTest(unittest.TestCase):
         arguments = [command, server_file]
         _test_command(arguments)
 
+    def _get_workbook(self, wb_name_on_server):
+        server_file = "/workbooks/" + wb_name_on_server
+        command = "get"
+        arguments = [command, server_file]
+        _test_command(arguments)
+
     def _get_datasource(self, server_file):
         command = "get"
         server_file = "/datasources/" + server_file
