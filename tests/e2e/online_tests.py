@@ -21,6 +21,9 @@ from tests.e2e import setup_e2e
 # you can either run setup with a stored credentials file, or simply log in
 # before running the suite so a session is active
 
+# TEST BUG: these fail if the uploaded content gets a different name (like wb_1) because it already exists on that site
+# AGH which it does even if the wb with that name is deleted from the site
+
 debug_log = "--logging-level=DEBUG"
 indexing_sleep_time = 1  # wait 1 second to confirm server has indexed updates
 
@@ -219,13 +222,14 @@ class OnlineCommandTest(unittest.TestCase):
         arguments = [command, item_type]
         _test_command(arguments)
 
-    def get_publishable_name(self, file_value: str) -> str:
-        return os.path.splitext(os.path.basename(file_value))[0]+unique
 
-    # assets for tests
     # if we publish something with a name that already exists, it will get a random int appended to the name
     # to avoid this, we add our own random int to each name so we actually know what it is 
     # this is why we have workbook_name+unique everywhere
+    def get_publishable_name(self, file_value: str) -> str:
+        return os.path.splitext(os.path.basename(file_value))[0]+unique
+
+    # assets for tests - these files are kept in the repo in tests/assets
     TWBX_FILE_WITH_EXTRACT = "WorkbookWithExtract.twbx"
     TWBX_WITH_EXTRACT_SHEET = "Sheet1"
 
@@ -258,6 +262,9 @@ class OnlineCommandTest(unittest.TestCase):
                 missing.append(f"{var_name} -> {path}")
         assert not missing, "Missing asset files: " + ", ".join(missing)
 
+    USERS_DETAILS_FILE = "detailed_users.csv"
+    USERNAMES_FILE = "usernames.csv"
+
     @pytest.mark.order(1)
     def test_login(self):
         if use_tabcmd_classic:
@@ -287,7 +294,7 @@ class OnlineCommandTest(unittest.TestCase):
         if not server_admin and not site_admin:
             pytest.skip("Must be server or site administrator to create site users")
         command = "createsiteusers"
-        users = os.path.join("tests", "assets", "detailed_users.csv")
+        users = os.path.join("tests", "assets", OnlineCommandTest.USERS_DETAILS_FILE)
         arguments = [command, users, "--role", "Publisher"]
         _test_command(arguments)
 
@@ -309,7 +316,7 @@ class OnlineCommandTest(unittest.TestCase):
 
         groupname = group_name
         command = "addusers"
-        filename = os.path.join("tests", "assets", "usernames.csv")
+        filename = os.path.join("tests", "assets", OnlineCommandTest.USERNAMES_FILE)
         arguments = [command, groupname, "--users", filename]
         if not use_tabcmd_classic:
             arguments.append("--continue-if-exists")
@@ -322,7 +329,7 @@ class OnlineCommandTest(unittest.TestCase):
 
         groupname = group_name
         command = "removeusers"
-        filename = os.path.join("tests", "assets", "usernames.csv")
+        filename = os.path.join("tests", "assets", OnlineCommandTest.USERNAMES_FILE)
         arguments = [command, groupname, "--users", filename]
         _test_command(arguments)
 
@@ -480,8 +487,7 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(17)
     def test_refresh_wb_extract(self):
-        name_on_server = self.get_publishable_name(OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
-        self._refresh_extract(name_on_server)
+        self._refresh_extract("-w", OnlineCommandTest.TWBX_WITH_EXTRACT_NAME)
 
     @pytest.mark.order(19)
     def test_export_wb_filters(self):
@@ -532,7 +538,7 @@ class OnlineCommandTest(unittest.TestCase):
             pytest.skip("Must be server or site administrator to delete site users")
 
         command = "deletesiteusers"
-        users = os.path.join("tests", "assets", "usernames.csv")
+        users = os.path.join("tests", "assets", OnlineCommandTest.USERNAMES_FILE)
         _test_command([command, users])
 
     @pytest.mark.order(21)
