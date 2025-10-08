@@ -32,7 +32,8 @@ extract_encryption_enabled = False
 use_tabcmd_classic = False  # toggle between testing using tabcmd 2 or tabcmd classic
 
 
-default_project_name = "Personal Work" # not unique, has to exist already when you run random test cases
+default_project_name = "Personal Work"  # not unique, has to exist already when you run random test cases
+
 
 class TestAssets:
 
@@ -41,13 +42,13 @@ class TestAssets:
     # names unique for each test run
     group_name = "test-ing-group" + unique
     parent_location = "parent" + unique
-    
+
     # if we publish something with a name that already exists, it will get a random int appended to the name
-    # to avoid this, we add our own random int to each name so we actually know what it is 
+    # to avoid this, we add our own random int to each name so we actually know what it is
     # this is why we have workbook_name+unique everywhere
     # BUG: this means you pretty much can't run a random individual test case without giving the already-unique name
     def get_publishable_name(file_value: str) -> str:
-        return os.path.splitext(os.path.basename(file_value))[0]+TestAssets.unique
+        return os.path.splitext(os.path.basename(file_value))[0] + TestAssets.unique
 
     # assets for tests - these files are kept in the repo in tests/assets
     TWBX_FILE_WITH_EXTRACT = "WorkbookWithExtract.twbx"
@@ -66,6 +67,7 @@ class TestAssets:
 
     USERS_DETAILS_FILE = "detailed_users.csv"
     USERNAMES_FILE = "usernames.csv"
+
 
 def _test_command(test_args: list[str]):
     # this will raise an exception if it gets a non-zero return code
@@ -86,6 +88,7 @@ def _test_command(test_args: list[str]):
     if database_password not in calling_args:
         print(calling_args)
     return subprocess.check_call(calling_args)
+
 
 class TabcmdCall:
 
@@ -121,9 +124,7 @@ class TabcmdCall:
             arguments.append(optional_args)
         return arguments
 
-    def _publish_creds_args(
-            arguments, db_user=None, db_pass=None, db_save=None, oauth_user=None, oauth_save=None
-    ):
+    def _publish_creds_args(arguments, db_user=None, db_pass=None, db_save=None, oauth_user=None, oauth_save=None):
         if db_user:
             arguments.append("--db-username")
             arguments.append(db_user)
@@ -229,9 +230,9 @@ class TabcmdCall:
         arguments = [command, item_type]
         _test_command(arguments)
 
+
 # test cases that use the API calls
 class OnlineCommandTest(unittest.TestCase):
-
     @classmethod
     def setup_class(cls):
         print("running python -m")
@@ -398,7 +399,7 @@ class OnlineCommandTest(unittest.TestCase):
     @pytest.mark.order(11)
     def test_wb_get(self):
         # add .twbx to the end to tell the server what we are getting
-        name_on_server = TestAssets.get_publishable_name(TestAssets.TWBX_FILE_WITH_EXTRACT)+".twbx"
+        name_on_server = TestAssets.get_publishable_name(TestAssets.TWBX_FILE_WITH_EXTRACT) + ".twbx"
         TabcmdCall._get_workbook(name_on_server)
 
     @pytest.mark.order(11)
