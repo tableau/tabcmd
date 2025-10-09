@@ -115,6 +115,7 @@ class TabcmdCall:
             arguments.append(parent_path)
         _test_command(arguments)
 
+    @staticmethod 
     def _publish_samples(project_name):
         command = "publishsamples"
         arguments = [command, "--name", project_name]
@@ -168,6 +169,7 @@ class TabcmdCall:
             arguments = arguments + additional_args
         _test_command(arguments)
 
+    @staticmethod 
     def _get_custom_view(self):
         # TODO
         command = "get"
@@ -195,6 +197,7 @@ class TabcmdCall:
             arguments = arguments + additional_args
         _test_command(arguments)
 
+    @staticmethod 
     def _get_workbook(server_file):
         command = "get"
         server_file = "/workbooks/" + server_file
