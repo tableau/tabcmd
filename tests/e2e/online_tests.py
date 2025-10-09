@@ -384,7 +384,7 @@ class OnlineCommandTest(unittest.TestCase):
             pytest.skip("Must be project administrator to create projects")
         TabcmdCall._delete_project(TestAssets.parent_location)
         TabcmdCall._delete_project("project_name_2", default_project_name)  # project 2
-        self._delete_project(default_project_name)
+        TabcmdCall._delete_project(default_project_name)
 
     @pytest.mark.order(10)
     def test_wb_publish(self):
