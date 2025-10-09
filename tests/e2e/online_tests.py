@@ -47,6 +47,7 @@ class TestAssets:
     # to avoid this, we add our own random int to each name so we actually know what it is
     # this is why we have workbook_name+unique everywhere
     # BUG: this means you pretty much can't run a random individual test case without giving the already-unique name
+    @staticmethod
     def get_publishable_name(file_value: str) -> str:
         return os.path.splitext(os.path.basename(file_value))[0] + TestAssets.unique
 
