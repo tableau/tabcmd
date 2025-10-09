@@ -46,7 +46,6 @@ dependencies = [
     "doit",
     "ftfy",
     "pyinstaller_versionfile",
-    "pytest-order",
     "requests>=2.25,<3.0",
     "setuptools_scm",
     "types-appdirs",
@@ -63,7 +62,6 @@ test = [
     "mypy",
     "pytest>=7.0",
     "pytest-cov",
-    "pytest-order",
     "pytest-runner",
     "requests-mock>=1.0,<2.0"]
 localize = ["doit", "ftfy"]
