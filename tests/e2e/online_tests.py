@@ -61,6 +61,111 @@ def _test_command(test_args: list[str]):
     return subprocess.check_call(calling_args)
 
 
+@pytest.fixture(scope="module", autouse=True)
+def login_session():
+    """Login fixture that runs before all tests and logs out after."""
+    if use_tabcmd_classic:
+        pytest.skip("not for tabcmd classic")
+    try:
+        # this will silently do nothing when run in github
+        setup_e2e.login()
+    except Exception as e:
+        print(e)
+        raise SystemExit(2)
+
+
+@pytest.fixture(scope="module")
+def site_users(login_session):
+    """Create site users for tests and clean up after."""
+    if not server_admin and not site_admin:
+        pytest.skip("Must be server or site administrator to create site users")
+    
+    command = "createsiteusers"
+    users = os.path.join("tests", "assets", "detailed_users.csv")
+    arguments = [command, users, "--role", "Publisher"]
+    _test_command(arguments)
+    
+    yield
+    
+    # Cleanup
+    command = "deletesiteusers"
+    users = os.path.join("tests", "assets", "usernames.csv")
+    try:
+        _test_command([command, users])
+    except Exception as e:
+        print(f"Failed to delete site users during cleanup: {e}")
+
+
+@pytest.fixture(scope="module")
+def test_group(site_users):
+    """Create a test group and clean up after."""
+    if not server_admin and not site_admin:
+        pytest.skip("Must be server or site administrator to create groups")
+    
+    groupname = group_name
+    command = "creategroup"
+    arguments = [command, groupname]
+    if not use_tabcmd_classic:
+        arguments.append("--continue-if-exists")
+    _test_command(arguments)
+    
+    yield groupname
+    
+    # Cleanup
+    command = "deletegroup"
+    arguments = [command, groupname]
+    try:
+        _test_command(arguments)
+    except Exception as e:
+        print(f"Failed to delete group during cleanup: {e}")
+
+
+@pytest.fixture(scope="module")
+def test_projects(login_session):
+    """Create test projects and clean up after."""
+    if not project_admin and not server_admin and not site_admin:
+        pytest.skip("Must be project administrator to create projects")
+    
+    def create_project(project_name, parent_path=None):
+        command = "createproject"
+        arguments = [command, "--name", project_name]
+        if parent_path:
+            arguments.append("--parent-project-path")
+            arguments.append(parent_path)
+        if not use_tabcmd_classic:
+            arguments.append("--continue-if-exists")
+        _test_command(arguments)
+    
+    def delete_project(project_name, parent_path=None):
+        command = "deleteproject"
+        arguments = [command, project_name]
+        if parent_path:
+            arguments.append("--parent-project-path")
+            arguments.append(parent_path)
+        _test_command(arguments)
+    
+    # Create projects
+    create_project(parent_location)
+    time.sleep(indexing_sleep_time)
+    create_project(default_project_name)
+    time.sleep(indexing_sleep_time)
+    create_project("project_name_2", default_project_name)
+    time.sleep(indexing_sleep_time)
+    parent_path = "{0}/{1}".format(default_project_name, "project_name_2")
+    create_project(default_project_name, parent_path)
+    time.sleep(indexing_sleep_time)
+    
+    yield
+    
+    # Cleanup
+    try:
+        delete_project(parent_location)
+        delete_project("project_name_2", default_project_name)
+        delete_project(default_project_name)
+    except Exception as e:
+        print(f"Failed to delete projects during cleanup: {e}")
+
+
 class OnlineCommandTest(unittest.TestCase):
     published = False
     gotten = False
@@ -235,49 +340,16 @@ class OnlineCommandTest(unittest.TestCase):
     TWB_WITH_EMBEDDED_CONNECTION = "EmbeddedCredentials.twb"
     EMBEDDED_TWB_NAME = "EmbeddedCredentials"
 
-    @pytest.mark.order(1)
-    def test_login(self):
-        if use_tabcmd_classic:
-            pytest.skip("not for tabcmd classic")
-        try:
-            # this will silently do nothing when run in github
-            setup_e2e.login()
-        except Exception as e:
-            print(e)
-            raise SystemExit(2)
-
-    @pytest.mark.order(1)
     def test_help(self):
         command = "help"
         arguments = [command]
         _test_command(arguments)
 
-    @pytest.mark.order(2)
-    def test_users_create_site_users(self):
-        if not server_admin and not site_admin:
-            pytest.skip("Must be server or site administrator to create site users")
-        command = "createsiteusers"
-        users = os.path.join("tests", "assets", "detailed_users.csv")
-        arguments = [command, users, "--role", "Publisher"]
-        _test_command(arguments)
-
-    @pytest.mark.order(3)
-    def test_group_creategroup(self):
-        if not server_admin and not site_admin:
-            pytest.skip("Must be server or site administrator to create groups")
-        groupname = group_name
-        command = "creategroup"
-        arguments = [command, groupname]
-        if not use_tabcmd_classic:
-            arguments.append("--continue-if-exists")
-        _test_command(arguments)
-
-    @pytest.mark.order(4)
-    def test_users_add_to_group(self):
+    def test_users_add_to_group(self, test_group):
         if not server_admin and not site_admin:
             pytest.skip("Must be server or site administrator to add to groups")
 
-        groupname = group_name
+        groupname = test_group
         command = "addusers"
         filename = os.path.join("tests", "assets", "usernames.csv")
         arguments = [command, groupname, "--users", filename]
@@ -285,80 +357,37 @@ class OnlineCommandTest(unittest.TestCase):
             arguments.append("--continue-if-exists")
         _test_command(arguments)
 
-    @pytest.mark.order(5)
-    def test_users_remove_from_group(self):
+    def test_users_remove_from_group(self, test_group):
         if not server_admin and not site_admin:
             pytest.skip("Must be server or site administrator to remove from groups")
 
-        groupname = group_name
+        groupname = test_group
         command = "removeusers"
         filename = os.path.join("tests", "assets", "usernames.csv")
         arguments = [command, groupname, "--users", filename]
         _test_command(arguments)
 
-    @pytest.mark.order(6)
-    def test_group_deletegroup(self):
-        if not server_admin and not site_admin:
-            pytest.skip("Must be server or site administrator to delete groups")
-
-        groupname = group_name
-        command = "deletegroup"
-        arguments = [command, groupname]
-        _test_command(arguments)
-
-    @pytest.mark.order(8)
-    def test_create_projects(self):
-        if not project_admin and not server_admin and not site_admin:
-            pytest.skip("Must be project administrator to create projects")
-
-        # project 1
-        self._create_project(parent_location)
-        time.sleep(indexing_sleep_time)
-        # project 1
-        self._create_project(default_project_name)
-        time.sleep(indexing_sleep_time)
-        # project 2
-        self._create_project("project_name_2", default_project_name)
-        time.sleep(indexing_sleep_time)
-        # project 3
-        parent_path = "{0}/{1}".format(default_project_name, "project_name_2")
-        self._create_project(default_project_name, parent_path)
-        time.sleep(indexing_sleep_time)
-
-    @pytest.mark.order(8)
-    def test_list_projects(self):
+    def test_list_projects(self, test_projects):
         if use_tabcmd_classic:
             pytest.skip("not for tabcmd classic")
         self._list("projects")
 
-    @pytest.mark.order(8)
-    def test_list_flows(self):
+    def test_list_flows(self, test_projects):
         if use_tabcmd_classic:
             pytest.skip("not for tabcmd classic")
         self._list("flows")
 
-    @pytest.mark.order(8)
-    def test_list_workbooks(self):
+    def test_list_workbooks(self, test_projects):
         if use_tabcmd_classic:
             pytest.skip("not for tabcmd classic")
         self._list("workbooks")
 
-    @pytest.mark.order(8)
-    def test_list_datasources(self):
+    def test_list_datasources(self, test_projects):
         if use_tabcmd_classic:
             pytest.skip("not for tabcmd classic")
         self._list("datasources")
 
-    @pytest.mark.order(10)
-    def test_delete_projects(self):
-        if not project_admin:
-            pytest.skip("Must be project administrator to create projects")
-        self._delete_project(parent_location)
-        self._delete_project("project_name_2", default_project_name)  # project 2
-        self._delete_project(default_project_name)
-
-    @pytest.mark.order(10)
-    def test_wb_publish(self):
+    def test_wb_publish(self, test_projects):
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         arguments = self._publish_args(file, OnlineCommandTest.TWBX_WITH_EXTRACT_NAME)
         val = _test_command(arguments)
@@ -366,20 +395,17 @@ class OnlineCommandTest(unittest.TestCase):
             print("publishing failed: cancel test run")
             exit(val)
 
-    @pytest.mark.order(11)
-    def test_wb_get(self):
+    def test_wb_get(self, test_projects):
         # add .twbx to the end to tell the server what we are getting
         self._get_workbook(OnlineCommandTest.TWBX_WITH_EXTRACT_NAME + ".twbx")
 
-    @pytest.mark.order(11)
-    def test_view_get_pdf(self):
+    def test_view_get_pdf(self, test_projects):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         # bug in tabcmd classic: doesn't work without download name
         self._get_view(wb_name_on_server, sheet_name, "downloaded_file.pdf")
 
-    @pytest.mark.order(11)
-    def test_view_get_png_sizes(self):
+    def test_view_get_png_sizes(self, test_projects):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
 
@@ -389,20 +415,17 @@ class OnlineCommandTest(unittest.TestCase):
         url_params = "?:size=500,700"
         self._get_view(wb_name_on_server, sheet_name + url_params, "get_view_sized_LARGE.png")
 
-    @pytest.mark.order(11)
-    def test_view_get_csv(self):
+    def test_view_get_csv(self, test_projects):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         self._get_view(wb_name_on_server, sheet_name + ".csv")
 
-    @pytest.mark.order(11)
-    def test_view_get_png(self):
+    def test_view_get_png(self, test_projects):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         self._get_view(wb_name_on_server, sheet_name + ".png")
 
-    @pytest.mark.order(11)
-    def test_wb_publish_embedded(self):
+    def test_wb_publish_embedded(self, test_projects):
         file = os.path.join("tests", "assets", OnlineCommandTest.TWB_WITH_EMBEDDED_CONNECTION)
         arguments = self._publish_args(file, OnlineCommandTest.EMBEDDED_TWB_NAME)
         arguments = self._publish_creds_args(arguments, database_user, database_password, True)
@@ -410,55 +433,44 @@ class OnlineCommandTest(unittest.TestCase):
         arguments.append("--skip-connection-check")
         _test_command(arguments)
 
-    @pytest.mark.order(12)
-    def test_publish_ds(self):
+    def test_publish_ds(self, test_projects):
         file = os.path.join("tests", "assets", OnlineCommandTest.TDSX_FILE_WITH_EXTRACT)
         arguments = self._publish_args(file, OnlineCommandTest.TDSX_WITH_EXTRACT_NAME)
         _test_command(arguments)
 
-    @pytest.mark.order(12)
-    def test_publish_live_ds(self):
+    def test_publish_live_ds(self, test_projects):
         file = os.path.join("tests", "assets", OnlineCommandTest.TDS_FILE_LIVE)
         arguments = self._publish_args(file, OnlineCommandTest.TDS_FILE_LIVE_NAME)
         _test_command(arguments)
 
-    @pytest.mark.order(13)
-    def test__get_ds(self):
+    def test__get_ds(self, test_projects):
         self._get_datasource(OnlineCommandTest.TDSX_WITH_EXTRACT_NAME + ".tdsx")
 
-    @pytest.mark.order(13)
-    def test_refresh_ds_extract(self):
+    def test_refresh_ds_extract(self, test_projects):
         self._refresh_extract("-d", OnlineCommandTest.TDSX_WITH_EXTRACT_NAME)
 
-    @pytest.mark.order(14)
-    def test_delete_extract(self):
+    def test_delete_extract(self, test_projects):
         self._delete_extract("-d", OnlineCommandTest.TDSX_WITH_EXTRACT_NAME)
 
-    @pytest.mark.order(16)
-    def test_create_extract(self):
+    def test_create_extract(self, test_projects):
         self._create_extract("-d", OnlineCommandTest.TDS_FILE_LIVE_NAME)
 
-    @pytest.mark.order(17)
-    def test_refresh_wb_extract(self):
+    def test_refresh_wb_extract(self, test_projects):
         self._refresh_extract("-w", OnlineCommandTest.TWBX_WITH_EXTRACT_NAME)
 
-    @pytest.mark.order(19)
-    def test_wb_delete(self):
+    def test_wb_delete(self, test_projects):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         self._delete_wb(name_on_server)
 
-    @pytest.mark.order(19)
-    def test__delete_ds(self):
+    def test__delete_ds(self, test_projects):
         name_on_server = OnlineCommandTest.TDSX_WITH_EXTRACT_NAME
         self._delete_ds(name_on_server)
 
-    @pytest.mark.order(19)
-    def test__delete_ds_live(self):
+    def test__delete_ds_live(self, test_projects):
         name_on_server = OnlineCommandTest.TDS_FILE_LIVE_NAME
         self._delete_ds(name_on_server)
 
-    @pytest.mark.order(19)
-    def test_export_wb_filters(self):
+    def test_export_wb_filters(self, test_projects):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         friendly_name = wb_name_on_server + "/" + sheet_name
@@ -466,33 +478,28 @@ class OnlineCommandTest(unittest.TestCase):
         self._export_wb(friendly_name, "filter_a_wb_to_tea_and_two_pages.pdf", filters)
         # NOTE: this test needs a visual check on the returned pdf to confirm the expected appearance
 
-    @pytest.mark.order(19)
-    def test_export_wb_pdf(self):
+    def test_export_wb_pdf(self, test_projects):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         friendly_name = wb_name_on_server + "/" + OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         filename = "exported_wb.pdf"
         self._export_wb(friendly_name, filename)
 
-    @pytest.mark.order(19)
-    def test_export_data_csv(self):
+    def test_export_data_csv(self, test_projects):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         self._export_view(wb_name_on_server, sheet_name, "--csv", "exported_data.csv")
 
-    @pytest.mark.order(19)
-    def test_export_view_png(self):
+    def test_export_view_png(self, test_projects):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         self._export_view(wb_name_on_server, sheet_name, "--png", "export_view.png")
 
-    @pytest.mark.order(19)
-    def test_export_view_pdf(self):
+    def test_export_view_pdf(self, test_projects):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         self._export_view(wb_name_on_server, sheet_name, "--pdf", "export_view_pdf.pdf")
 
-    @pytest.mark.order(19)
-    def test_export_view_filtered(self):
+    def test_export_view_filtered(self, test_projects):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         filename = "view_with_filters.pdf"
@@ -500,16 +507,6 @@ class OnlineCommandTest(unittest.TestCase):
         filters = ["--filter", "Product Type=Tea"]
         self._export_view(wb_name_on_server, sheet_name, "--pdf", filename, filters)
 
-    @pytest.mark.order(20)
-    def test_delete_site_users(self):
-        if not server_admin and not site_admin:
-            pytest.skip("Must be server or site administrator to delete site users")
-
-        command = "deletesiteusers"
-        users = os.path.join("tests", "assets", "usernames.csv")
-        _test_command([command, users])
-
-    @pytest.mark.order(21)
     def test_list_sites(self):
         if not server_admin:
             pytest.skip("Must be server administrator to list sites")

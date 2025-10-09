@@ -29,23 +29,103 @@ def _test_command(test_args: list[str]):
     return subprocess.check_call(calling_args)
 
 
+@pytest.fixture(scope="module", autouse=True)
+def login_all_languages():
+    """Login fixture that tests login with all supported languages."""
+    languages = ["de", "en", "es", "fr", "it", "ja", "ko", "pt", "sv", "zh"]
+    failed = False
+    for lang in languages:
+        try:
+            setup_e2e.login("--language", lang)
+        except Exception as e:
+            failed = True
+            print("FAILED on {}".format(lang))
+    if failed:
+        raise SystemExit(2)
+
+
+@pytest.fixture(scope="module")
+def site_users(login_all_languages):
+    """Create site users for tests and clean up after."""
+    command = "createsiteusers"
+    users = os.path.join("tests", "assets", "detailed_users.csv")
+    arguments = [command, users, "--role", "Publisher"]
+    _test_command(arguments)
+    
+    yield
+    
+    # Cleanup
+    command = "deletesiteusers"
+    users = os.path.join("tests", "assets", "usernames.csv")
+    try:
+        _test_command([command, users])
+    except Exception as e:
+        print(f"Failed to delete site users during cleanup: {e}")
+
+
+@pytest.fixture(scope="module")
+def test_group(site_users):
+    """Create a test group and clean up after."""
+    groupname = group_name
+    command = "creategroup"
+    arguments = [command, groupname]
+    _test_command(arguments)
+    
+    yield groupname
+    
+    # Cleanup
+    command = "deletegroup"
+    arguments = [command, groupname]
+    try:
+        _test_command(arguments)
+    except Exception as e:
+        print(f"Failed to delete group during cleanup: {e}")
+
+
+@pytest.fixture(scope="module")
+def test_projects(login_all_languages):
+    """Create test projects and clean up after."""
+    def create_project(project_name, parent_path=None):
+        command = "createproject"
+        arguments = [command, "--name", project_name]
+        if parent_path:
+            arguments.append("--parent-project-path")
+            arguments.append(parent_path)
+        _test_command(arguments)
+    
+    def delete_project(project_name, parent_path=None):
+        command = "deleteproject"
+        arguments = [command, project_name]
+        if parent_path:
+            arguments.append("--parent-project-path")
+            arguments.append(parent_path)
+        _test_command(arguments)
+    
+    # Create projects
+    create_project("project_name")
+    time.sleep(indexing_sleep_time)
+    create_project("project_name_2", "project_name")
+    time.sleep(indexing_sleep_time)
+    
+    # Publish samples to a project
+    command = "publishsamples"
+    arguments = [command, "--name", project_name]
+    _test_command(arguments)
+    
+    yield
+    
+    # Cleanup
+    try:
+        delete_project("project_name_2", "project_name")
+        delete_project("project_name")
+    except Exception as e:
+        print(f"Failed to delete projects during cleanup: {e}")
+
+
 # This calls dist/tabcmd/tabcmd.exe
 class OnlineCommandTest(unittest.TestCase):
     published = False
     gotten = False
-
-    @pytest.mark.order(1)
-    def test_login_all_languages(self):
-        languages = ["de", "en", "es", "fr", "it", "ja", "ko", "pt", "sv", "zh"]
-        failed = False
-        for lang in languages:
-            try:
-                setup_e2e.login("--language", lang)
-            except Exception as e:
-                failed = True
-                print("FAILED on {}".format(lang))
-        if failed:
-            raise SystemExit(2)
 
     def _create_project(self, project_name, parent_path=None):
         command = "createproject"
@@ -132,123 +212,63 @@ class OnlineCommandTest(unittest.TestCase):
     TDSX_WITH_EXTRACT_NAME = "WorldIndicators"
     TDSX_FILE_WITH_EXTRACT = "World Indicators.tdsx"
 
-    @pytest.mark.order(2)
-    def test_create_site_users(self):
-        command = "createsiteusers"
-        users = os.path.join("tests", "assets", "detailed_users.csv")
-        arguments = [command, users, "--role", "Publisher"]
-        _test_command(arguments)
-
-    @pytest.mark.order(3)
-    def test_creategroup(self):
-        groupname = group_name
-        command = "creategroup"
-        arguments = [command, groupname]
-        _test_command(arguments)
-
-    @pytest.mark.order(4)
-    def test_add_users_to_group(self):
-        groupname = group_name
+    def test_add_users_to_group(self, test_group):
+        groupname = test_group
         command = "addusers"
         filename = os.path.join("tests", "assets", "usernames.csv")
         arguments = [command, groupname, "--users", filename]
         _test_command(arguments)
 
-    @pytest.mark.order(5)
-    def test_remove_users_to_group(self):
-        groupname = group_name
+    def test_remove_users_to_group(self, test_group):
+        groupname = test_group
         command = "removeusers"
         filename = os.path.join("tests", "assets", "usernames.csv")
         arguments = [command, groupname, "--users", filename]
         _test_command(arguments)
 
-    @pytest.mark.order(6)
-    def test_deletegroup(self):
-        groupname = group_name
-        command = "deletegroup"
-        arguments = [command, groupname]
-        _test_command(arguments)
-
-    @pytest.mark.order(7)
-    def test_publish_samples(self):
-        project_name = "sample-proj"
-        self._create_project(project_name)
-        time.sleep(indexing_sleep_time)
-
-        self._publish_samples(project_name)
-        self._delete_project(project_name)
-
-    @pytest.mark.order(8)
-    def test_create_projects(self):
-        # project 1
-        self._create_project(project_name)
-        time.sleep(indexing_sleep_time)
-        # project 2
-        self._create_project("project_name_2", project_name)
-        time.sleep(indexing_sleep_time)
-        # project 3
-        parent_path = "{0}/{1}".format(project_name, project_name)
-        self._create_project(project_name, parent_path)
-        time.sleep(indexing_sleep_time)
-
-    @pytest.mark.order(9)
-    def test_delete_projects(self):
-        self._delete_project("project_name_2", project_name)  # project 2
-        self._delete_project(project_name)
-
-    @pytest.mark.order(10)
-    def test_publish(self):
+    def test_publish(self, test_projects):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         self._publish_wb(file, name_on_server)
 
-    @pytest.mark.order(10)
-    def test__get_wb(self):
+    def test__get_wb(self, test_projects):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         self._get_workbook(wb_name_on_server + ".twbx")
 
-    @pytest.mark.order(10)
-    def test__get_view(self):
+    def test__get_view(self, test_projects):
         wb_name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         sheet_name = OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         self._get_view(wb_name_on_server, sheet_name + ".pdf")
 
-    @pytest.mark.order(11)
-    def test__delete_wb(self):
+    def test__delete_wb(self, test_projects):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         self._delete_wb(name_on_server)
 
-    @pytest.mark.order(13)
-    def test_publish_ds(self):
+    def test_publish_ds(self, test_projects):
         name_on_server = OnlineCommandTest.TDSX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TDSX_FILE_WITH_EXTRACT)
         self._publish_ds(file, name_on_server)
 
-    @pytest.mark.order(14)
-    def test__get_ds(self):
+    def test__get_ds(self, test_projects):
         ds_name_on_server = OnlineCommandTest.TDSX_WITH_EXTRACT_NAME
         self._get_datasource(ds_name_on_server + ".tdsx")
 
-    @pytest.mark.order(15)
-    def test__delete_ds(self):
+    def test__delete_ds(self, test_projects):
         name_on_server = OnlineCommandTest.TDSX_WITH_EXTRACT_NAME
         self._delete_ds(name_on_server)
 
-    @pytest.mark.order(16)
-    def test_create_extract(self):
+    def test_create_extract(self, test_projects):
         # This workbook doesn't work for creating an extract
         name_on_server = OnlineCommandTest.TWBX_WITHOUT_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITHOUT_EXTRACT)
         self._publish_wb(file, name_on_server)
         # which damn workbook will work here self._create_extract(name_on_server)
 
-    @pytest.mark.order(17)
-    def test_refresh_extract(self):
+    def test_refresh_extract(self, test_projects):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         self._refresh_extract(name_on_server)
 
-    @pytest.mark.order(18)
-    def test_delete_extract(self):
+    def test_delete_extract(self, test_projects):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         self._publish_wb(file, name_on_server)
@@ -265,8 +285,7 @@ class OnlineCommandTest(unittest.TestCase):
     # def test_logout(self):
     #   _test_command(["logout"])
 
-    @pytest.mark.order(19)
-    def test_export(self):
+    def test_export(self, test_projects):
         name_on_server = OnlineCommandTest.TWBX_WITH_EXTRACT_NAME
         file = os.path.join("tests", "assets", OnlineCommandTest.TWBX_FILE_WITH_EXTRACT)
         self._publish_wb(file, name_on_server)
@@ -274,9 +293,3 @@ class OnlineCommandTest(unittest.TestCase):
         friendly_name = name_on_server + "/" + OnlineCommandTest.TWBX_WITH_EXTRACT_SHEET
         arguments = [command, friendly_name, "--fullpdf", "-f", "exported_file.pdf"]
         _test_command(arguments)
-
-    @pytest.mark.order(20)
-    def test_delete_site_users(self):
-        command = "deletesiteusers"
-        users = os.path.join("tests", "assets", "usernames.csv")
-        _test_command([command, users])
