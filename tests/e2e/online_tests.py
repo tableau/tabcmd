@@ -95,7 +95,7 @@ class TabcmdCall:
 
     # Individual methods that implement a command
 
-    @staticmethod 
+    @staticmethod
     def _create_project(project_name, parent_path=None):
         command = "createproject"
         arguments = [command, "--name", project_name]
@@ -106,7 +106,7 @@ class TabcmdCall:
             arguments.append("--continue-if-exists")
         _test_command(arguments)
 
-    @staticmethod 
+    @staticmethod
     def _delete_project(project_name, parent_path=None):
         command = "deleteproject"
         arguments = [command, project_name]
@@ -115,13 +115,13 @@ class TabcmdCall:
             arguments.append(parent_path)
         _test_command(arguments)
 
-    @staticmethod 
+    @staticmethod
     def _publish_samples(project_name):
         command = "publishsamples"
         arguments = [command, "--name", project_name]
         _test_command(arguments)
 
-    @staticmethod 
+    @staticmethod
     def _publish_args(file, name, optional_args=None):
         command = "publish"
         arguments = [command, file, "--name", name, "--project", default_project_name, "--overwrite"]
@@ -129,7 +129,7 @@ class TabcmdCall:
             arguments.append(optional_args)
         return arguments
 
-    @staticmethod 
+    @staticmethod
     def _publish_creds_args(arguments, db_user=None, db_pass=None, db_save=None, oauth_user=None, oauth_save=None):
         if db_user:
             arguments.append("--db-username")
@@ -146,19 +146,19 @@ class TabcmdCall:
             arguments.append("--save-oauth")
         return arguments
 
-    @staticmethod 
+    @staticmethod
     def _delete_wb(name):
         command = "delete"
         arguments = [command, "--project", default_project_name, name]
         _test_command(arguments)
 
-    @staticmethod 
+    @staticmethod
     def _delete_ds(name):
         command = "delete"
         arguments = [command, "--project", default_project_name, "--datasource", name]
         _test_command(arguments)
 
-    @staticmethod 
+    @staticmethod
     def _get_view(wb_name_on_server, sheet_name, filename=None, additional_args=None):
         server_file = "/views/" + wb_name_on_server + "/" + sheet_name
         command = "get"
@@ -169,13 +169,13 @@ class TabcmdCall:
             arguments = arguments + additional_args
         _test_command(arguments)
 
-    @staticmethod 
+    @staticmethod
     def _get_custom_view(self):
         # TODO
         command = "get"
         raise NotImplementedError("get_custom_view is not implemented")
 
-    @staticmethod 
+    @staticmethod
     def _export_wb(friendly_name, filename=None, additional_args=None):
         command = "export"
         arguments = [command, friendly_name, "--fullpdf"]
@@ -186,7 +186,7 @@ class TabcmdCall:
             arguments = arguments + additional_args
         _test_command(arguments)
 
-    @staticmethod 
+    @staticmethod
     def _export_view(wb_name_on_server, sheet_name, export_type, filename=None, additional_args=None):
         server_file = "/" + wb_name_on_server + "/" + sheet_name
         command = "export"
@@ -197,7 +197,7 @@ class TabcmdCall:
             arguments = arguments + additional_args
         _test_command(arguments)
 
-    @staticmethod 
+    @staticmethod
     def _get_workbook(server_file):
         command = "get"
         server_file = "/workbooks/" + server_file
@@ -205,14 +205,14 @@ class TabcmdCall:
         _test_command(arguments)
         os.path.exists("get_workbook.twbx")
 
-    @staticmethod 
+    @staticmethod
     def _get_datasource(server_file):
         command = "get"
         server_file = "/datasources/" + server_file
         arguments = [command, server_file]
         _test_command(arguments)
 
-    @staticmethod 
+    @staticmethod
     def _create_extract(item_name, type="-w"):
         command = "createextracts"
         arguments = [command, type, item_name, "--project", default_project_name]
@@ -221,7 +221,7 @@ class TabcmdCall:
         _test_command(arguments)
 
     # variation: url
-    @staticmethod 
+    @staticmethod
     def _refresh_extract(item_name, type="-w"):
         command = "refreshextracts"
         arguments = [command, type, item_name, "--project", default_project_name]  # bug: should not need -w
@@ -236,13 +236,13 @@ class TabcmdCall:
             else:
                 raise e
 
-    @staticmethod 
+    @staticmethod
     def _delete_extract(item_name, type="-w"):
         command = "deleteextracts"
         arguments = [command, type, item_name, "--include-all", "--project", default_project_name]
         _test_command(arguments)
 
-    @staticmethod 
+    @staticmethod
     def _list(item_type: str):
         command = "list"
         arguments = [command, item_type]
