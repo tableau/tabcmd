@@ -1,5 +1,5 @@
 [build-system]
-requires = ["build", "setuptools>=62", "wheel", "setuptools_scm>=6.2"]
+requires = ["build", "setuptools", "setuptools_scm"]
 build-backend = "setuptools.build_meta"
 [tool.setuptools_scm]
 local_scheme = "no-local-version"  # require pypi supported versions always
@@ -45,7 +45,7 @@ classifiers = [
 dependencies = [
     "appdirs",
     "requests>=2.25,<3.0",
-    "setuptools>=62; python_version >= '3.12'",
+    "setuptools; python_version >= '3.12'",
     "tableauserverclient==0.40",
     "urllib3",
 ]
