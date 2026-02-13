@@ -541,6 +541,7 @@ class ConnectionOptionsTest(unittest.TestCase):
 
 """
 
+This is too slow for unit tests.
 class TimeoutIntegrationTest(unittest.TestCase):
     def test_connection_times_out(self):
         test_args = Namespace(**vars(args_to_mock))
