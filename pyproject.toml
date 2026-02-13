@@ -50,21 +50,20 @@ dependencies = [
     "urllib3",
 ]
 [project.optional-dependencies]
-dev = [
-    "black>=22,<23",
-    "mypy",
-    "types-appdirs",
-    "types-requests",
-    "types-setuptools"
-]
 test = [
+    "black>=22,<23",
+    "doit",
     "mock",
+    "mypy",
     "pytest>=7.0",
     "pytest-cov",
     "pytest-order",
     "pytest-runner",
     "requests-mock>=1.0,<2.0",
+    "types-appdirs",
     "types-mock",
+    "types-requests",
+    "types-setuptools"
 ]
 localize = ["doit", "ftfy"]
 package = ["doit", "pyinstaller==5.13", "pyinstaller_versionfile"]
