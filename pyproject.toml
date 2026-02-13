@@ -52,7 +52,6 @@ dependencies = [
 [project.optional-dependencies]
 test = [
     "black>=22,<23",
-    "doit",
     "mock",
     "mypy",
     "pytest>=7.0",
@@ -60,14 +59,17 @@ test = [
     "pytest-order",
     "pytest-runner",
     "requests-mock>=1.0,<2.0",
-    "setuptools_scm", 
     "types-appdirs",
     "types-mock",
     "types-requests",
-    "types-setuptools"
+    "types-setuptools",
+    # these last three are required for the versioning step
+    "doit",
+    "pyinstaller_versionfile",
+    "setuptools_scm"
 ]
 localize = ["doit", "ftfy"]
-package = ["doit", "pyinstaller==5.13", "pyinstaller_versionfile"]
+package = ["doit", "pyinstaller==5.13"]
 [project.urls]
 repository = "https://github.com/tableau/tabcmd"
 [project.scripts]
