@@ -52,6 +52,7 @@ fake_job.id = "fake-job-id"
 creator = MagicMock()
 getter = MagicMock()
 getter.get = MagicMock("get", return_value=([fake_item], fake_item_pagination))
+getter.all = MagicMock("all", return_value=[fake_item])
 getter.publish = MagicMock("publish", return_value=fake_item)
 getter.create_extract = MagicMock("create_extract", return_value=fake_job)
 getter.decrypt_extract = MagicMock("decrypt_extract", return_value=fake_job)
@@ -120,6 +121,7 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.height = None
         mock_args.width = None
         mock_args.filter = None
+        mock_args.language = None
         export_command.ExportCommand.run_command(mock_args)
         mock_session.assert_called()
 
@@ -429,11 +431,21 @@ class RunCommandsTest(unittest.TestCase):
         mock_session.assert_called()
 
     def test_list_content(self, mock_session, mock_server):
+
         RunCommandsTest._set_up_session(mock_session, mock_server)
+        mock_server.workbooks = getter
+        mock_server.projects = getter
+        mock_server.datasources = getter
+        mock_server.flows = getter
+        mock_args.name = False
+        mock_args.owner = None
+        mock_args.address = None
+        mock_args.machine = False
+        mock_args.get_extract_encryption_mode = False
+        mock_args.details = False
         mock_args.content = "workbooks"
         list_command.ListCommand.run_command(mock_args)
         mock_args.content = "projects"
         list_command.ListCommand.run_command(mock_args)
         mock_args.content = "flows"
         list_command.ListCommand.run_command(mock_args)
-        # todo: details, filters
