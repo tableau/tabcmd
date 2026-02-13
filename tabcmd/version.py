@@ -4,4 +4,3 @@ try:
     version = get_version("tabcmd")
 except PackageNotFoundError:
     version = "2.0.0"
-    pass
