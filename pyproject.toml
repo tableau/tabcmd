@@ -29,7 +29,8 @@ name="tabcmd"
 dynamic = ["version"]
 description="A command line client for working with Tableau Server."
 authors = [{name="Tableau", email="github@tableau.com"}]
-license = {file = "LICENSE"}
+license = "MIT"
+license-files = ["LICENSE"]
 readme = "res/README.md"
 requires-python = ">=3.9"  # https://devguide.python.org/versions/
 classifiers = [
