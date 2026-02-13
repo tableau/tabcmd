@@ -62,9 +62,9 @@ class Server:
                 TSC.Filter(TSC.RequestOptions.Field.Name, TSC.RequestOptions.Operator.Equals, item_name)
             )
 
-            # todo - this doesn't filter if the project is in the top level.
-            # todo: there is no guarantee that these fields are the same for different content types.
-            # probably better if we move that type specific logic out to a wrapper
+            # When a container (project) is provided, add a parent filter to narrow results coming back
+            # from the server, then additionally post-filter client-side by project_id to disambiguate
+            # cases where multiple projects share the same name under different parent paths.
             if container:
                 # the name of the filter field is different if you are finding a project or any other item
                 if type(item_endpoint).__name__.find("Projects") < 0:
@@ -86,6 +86,11 @@ class Server:
                     detail=_("errors.xmlapi.not_found") + ": " + item_log_name,
                 )
 
+            # Post-filter by exact project_id when looking up non-project items within a specific container.
+            # This prevents selecting a similarly named item from a sibling project that shares the same name.
+            if container and type(item_endpoint).__name__.find("Projects") < 0:
+                all_items = [i for i in all_items if getattr(i, "project_id", None) == container.id]
+
             total_retrieved_items += len(all_items)
 
             logger.debug(
@@ -99,10 +104,26 @@ class Server:
             )
 
             result.extend(all_items)
+
+            # Once we have disambiguated items for a specific container/project, there is no need to
+            # continue paginating further since additional pages would return the same name-matched
+            # items from other projects which are filtered out, leading to duplicates.
+            if container and type(item_endpoint).__name__.find("Projects") < 0 and len(all_items) > 0:
+                break
+
             if total_retrieved_items >= pagination_item.total_available:
                 break
 
             page_number = pagination_item.page_number + 1
+
+        # If a container was provided and no items remained after disambiguation by project_id,
+        # surface a not-found to align with server-side not-found semantics.
+        if container and type(item_endpoint).__name__.find("Projects") < 0 and len(result) == 0:
+            raise TSC.ServerResponseError(
+                code="404",
+                summary=_("errors.xmlapi.not_found"),
+                detail=_("errors.xmlapi.not_found") + ": " + item_log_name,
+            )
 
         return result
 
