@@ -23,7 +23,6 @@ class _DummyPagination:
 
 
 class _DatasourcesEndpoint:
-    # Deliberately named so type(item_endpoint).__name__ == "Datasources"
     def __init__(self, items):
         self._items = items
 

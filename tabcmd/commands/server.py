@@ -52,7 +52,6 @@ class Server:
         logger.debug(_("export.status").format(item_log_name))
 
         result = []
-        total_available_items = None
         page_number = 1
         total_retrieved_items = 0
 
@@ -86,12 +85,11 @@ class Server:
                     detail=_("errors.xmlapi.not_found") + ": " + item_log_name,
                 )
 
+            total_retrieved_items += len(all_items)
             # Post-filter by exact project_id when looking up non-project items within a specific container.
             # This prevents selecting a similarly named item from a sibling project that shares the same name.
             if container and type(item_endpoint).__name__.find("Projects") < 0:
                 all_items = [i for i in all_items if getattr(i, "project_id", None) == container.id]
-
-            total_retrieved_items += len(all_items)
 
             logger.debug(
                 "{} items of name: {} were found for query page number: {}, page size: {} & total available: {}".format(
