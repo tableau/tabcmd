@@ -44,31 +44,30 @@ classifiers = [
 ]
 dependencies = [
     "appdirs",
-    "doit",
-    "ftfy",
-    "pyinstaller_versionfile",
-    "pytest-order",
     "requests>=2.25,<3.0",
-    "setuptools_scm",
-    "types-appdirs",
-    "types-mock",
-    "types-requests",
-    "types-setuptools",
+    "setuptools>=62; python_version >= '3.12'",
     "tableauserverclient==0.40",
     "urllib3",
 ]
 [project.optional-dependencies]
-test = [
+dev = [
     "black>=22,<23",
-    "mock",
     "mypy",
+    "types-appdirs",
+    "types-requests",
+    "types-setuptools"
+]
+test = [
+    "mock",
     "pytest>=7.0",
     "pytest-cov",
     "pytest-order",
     "pytest-runner",
-    "requests-mock>=1.0,<2.0"]
+    "requests-mock>=1.0,<2.0",
+    "types-mock",
+]
 localize = ["doit", "ftfy"]
-package = ["pyinstaller==5.13", "doit"]
+package = ["doit", "pyinstaller==5.13", "pyinstaller_versionfile"]
 [project.urls]
 repository = "https://github.com/tableau/tabcmd"
 [project.scripts]
