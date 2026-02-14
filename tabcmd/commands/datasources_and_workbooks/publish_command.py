@@ -33,9 +33,9 @@ class PublishCommand(DatasourcesAndWorkbooks):
         set_append_replace_option(group)
         set_parent_project_arg(group)
 
-    @staticmethod
-    def run_command(args):
-        logger = log(__class__.__name__, args.logging_level)
+    @classmethod
+    def run_command(cls, args):
+        logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
@@ -50,22 +50,24 @@ class PublishCommand(DatasourcesAndWorkbooks):
             project_id = dest_project.id
         except Exception as exc:
             logger.error(exc.__str__())
-            Errors.exit_with_error(logger, _("publish.errors.server_resource_not_found"), exc)
+            Errors.exit_with_error(logger, _("publish.errors.server_resource_not_found"), exception=exc)
 
         publish_mode = PublishCommand.get_publish_mode(args, logger)
 
-        connection = TSC.models.ConnectionItem()
+        connection: TSC.models.ConnectionItem | None = None
         if args.db_username:
+            connection = TSC.models.ConnectionItem()
             connection.connection_credentials = TSC.models.ConnectionCredentials(
                 args.db_username, args.db_password, embed=args.save_db_password
             )
         elif args.oauth_username:
+            connection = TSC.models.ConnectionItem()
             connection.connection_credentials = TSC.models.ConnectionCredentials(
                 args.oauth_username, None, embed=False, oauth=args.save_oauth
             )
         else:
-            logger.debug("No db-username or oauth-username found in command")
             connection = None
+            logger.debug("No db-username or oauth-username found in command")
 
         if connection:
             connections = list()

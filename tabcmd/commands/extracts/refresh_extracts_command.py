@@ -24,9 +24,9 @@ class RefreshExtracts(Server):
         set_parent_project_arg(group)
         set_sync_wait_options(group)
 
-    @staticmethod
-    def run_command(args):
-        logger = log(__class__.__name__, args.logging_level)
+    @classmethod
+    def run_command(cls, args):
+        logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
@@ -38,15 +38,16 @@ class RefreshExtracts(Server):
 
         try:
             item = Extracts.get_wb_or_ds_for_extracts(args, logger, server)
+            job: TSC.JobItem
             if args.datasource:
                 logger.info(_("refreshextracts.status_refreshed").format(_("content_type.datasource"), args.datasource))
-                job: TSC.JobItem = server.datasources.refresh(item.id, incremental_refresh)
+                job = server.datasources.refresh(item.id, incremental_refresh)
             else:
-                job: TSC.JobItem = server.workbooks.refresh(item.id, incremental_refresh)
+                job = server.workbooks.refresh(item.id, incremental_refresh)
                 logger.info(_("refreshextracts.status_refreshed").format(_("content_type.workbook"), args.workbook))
 
         except Exception as e:
-            Errors.exit_with_error(logger, _("refreshextracts.errors.error"), e)
+            Errors.exit_with_error(logger, _("refreshextracts.errors.error"), exception=e)
 
         logger.info(_("common.output.job_queued_success"))
         logger.debug("Extract refresh queued with JobID: {}".format(job.id))
@@ -59,4 +60,4 @@ class RefreshExtracts(Server):
                 logger.info("Job completed: ")
                 logger.info(job_done)
             except Exception as je:
-                Errors.exit_with_error(logger, je)
+                Errors.exit_with_error(logger, exception=je)

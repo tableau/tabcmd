@@ -154,9 +154,9 @@ class BuildCredentialsTests(unittest.TestCase):
 
     def test__create_new_username_credential_succeeds_new_password(self, mock_pass):
         test_password = "pword1"
-        active_session = Session()
+        active_session: Session = Session()
         active_session.username = "user"
-        active_session.site = ""
+        active_session.site_id = ""
         auth = active_session._create_new_credential(test_password, Session.PASSWORD_CRED_TYPE)
         assert auth is not None
 
@@ -175,7 +175,7 @@ class BuildCredentialsTests(unittest.TestCase):
     def test__create_new_username_credential_succeeds_from_self(self, mock_pass):
         active_session = Session()
         active_session.username = "user3"
-        active_session.site = ""
+        active_session.site_id = ""
         auth = active_session._create_new_credential(None, Session.PASSWORD_CRED_TYPE)
         assert mock_pass.has_been_called()
         assert auth is not None
@@ -202,17 +202,23 @@ class BuildCredentialsTests(unittest.TestCase):
 class PromptingTests(unittest.TestCase):
     def test_show_prompt_if_user_didnt_say(self):
         test_args = Namespace(**vars(args_to_mock))
-        assert Session._allow_prompt(test_args) is True, test_args
+        mock_session = Session()
+        mock_session._update_session_data(test_args)
+        assert mock_session._allow_prompt() is True, test_args
 
     def test_show_prompt_if_user_said_yes(self):
         test_args = Namespace(**vars(args_to_mock))
         test_args.prompt = True
-        assert Session._allow_prompt(test_args) is True, test_args
+        mock_session = Session()
+        mock_session._update_session_data(test_args)
+        assert mock_session._allow_prompt() is True, test_args
 
     def test_dont_show_prompt_if_user_said_no(self):
         test_args = Namespace(**vars(args_to_mock))
         test_args.no_prompt = True
-        assert Session._allow_prompt(test_args) is False, test_args
+        mock_session = Session()
+        mock_session._update_session_data(test_args)
+        assert mock_session._allow_prompt() is False, test_args
 
 
 """
@@ -548,7 +554,7 @@ class TimeoutIntegrationTest(unittest.TestCase):
         with self.assertRaises(SystemExit):
             new_session.create_session(test_args, None)
 
-
+    
 class CookieTests(unittest.TestCase):
 
     def test_no_file_if_no_cookie(self):

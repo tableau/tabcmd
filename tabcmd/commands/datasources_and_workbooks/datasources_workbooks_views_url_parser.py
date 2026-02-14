@@ -1,5 +1,6 @@
 import os
 
+import tableauserverclient as TSC
 from uuid import UUID
 
 from tabcmd.commands.constants import Errors
@@ -14,7 +15,7 @@ class DatasourcesWorkbooksAndViewsUrlParser(Server):
     """
 
     def __init__(self, args):
-        super().__init__(args)
+        pass
 
     @staticmethod
     def get_view_url_from_names(wb_name, view_name):
@@ -179,12 +180,12 @@ class DatasourcesWorkbooksAndViewsUrlParser(Server):
 
     @staticmethod
     def get_content_and_server_content_type_from_url(logger, server, view_content_url, custom_view_id):
-        item = DatasourcesAndWorkbooks.get_view_by_content_url(logger, server, view_content_url)
+        item: TSC.ViewItem | TSC.CustomViewItem = DatasourcesAndWorkbooks.get_view_by_content_url(logger, server, view_content_url)
         server_content_type = server.views
 
         if custom_view_id:
-            custom_view_item = DatasourcesAndWorkbooks.get_custom_view_by_id(logger, server, custom_view_id)
-            if custom_view_item.view.id != item.id:
+            custom_view_item: TSC.CustomViewItem = DatasourcesAndWorkbooks.get_custom_view_by_id(logger, server, custom_view_id)
+            if not custom_view_item.view or custom_view_item.view.id != item.id:
                 Errors.exit_with_error(logger, "Invalid custom view URL provided")
             server_content_type = server.custom_views
             item = custom_view_item
