@@ -1,12 +1,47 @@
 import logging
 import os
 import sys
+import atexit
 
 from .localize import set_client_locale
 from .logger_config import log
 from .parent_parser import ParentParser
+from .instrumentation import get_instrumenter
 
 from tabcmd.version import version
+
+
+def _install_request_instrumentation():
+    """
+    Monkey-patch the requests library to capture timing information.
+    """
+    import requests
+    import time
+
+    instrumenter = get_instrumenter()
+
+    # Store the original request method
+    original_request = requests.Session.request
+
+    def instrumented_request(self, method, url, **kwargs):
+        """Wrapper around requests.Session.request that captures timing."""
+        start_time = time.time()
+        success = True
+        try:
+            response = original_request(self, method, url, **kwargs)
+            # Consider 2xx and 3xx as success
+            if response.status_code >= 400:
+                success = False
+            return response
+        except Exception as e:
+            success = False
+            raise
+        finally:
+            duration = time.time() - start_time
+            instrumenter.record_call(method.upper(), url, duration, success)
+
+    # Replace the request method
+    requests.Session.request = instrumented_request
 
 
 class TabcmdController:
@@ -46,6 +81,15 @@ class TabcmdController:
             set_client_locale(namespace.language, logger)
         if namespace.query_page_size:
             os.environ["TSC_PAGE_SIZE"] = str(namespace.query_page_size)
+
+        # Enable instrumentation if requested
+        if hasattr(namespace, "instrument") and namespace.instrument:
+            instrumenter = get_instrumenter()
+            instrumenter.enable()
+            # Register cleanup to print stats at exit
+            atexit.register(instrumenter.print_statistics)
+            # Install the request wrapper
+            _install_request_instrumentation()
 
         try:
             # https://stackoverflow.com/questions/49038616/argparse-subparsers-with-functions

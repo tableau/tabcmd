@@ -139,6 +139,12 @@ def parent_parser_with_global_options():
         metavar="<PAGE_SIZE>",
         help="Specify the page size for query results.",
     )
+
+    parser.add_argument(
+        "--instrument",
+        action="store_true",
+        help="Capture and display REST API call timing statistics at exit.",
+    )
     return parser
 
 
