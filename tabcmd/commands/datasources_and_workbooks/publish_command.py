@@ -81,38 +81,34 @@ class PublishCommand(DatasourcesAndWorkbooks):
             source = PublishCommand.get_filename_extension_if_tableau_type(logger, str_filename)
             logger.info(_("publish.status").format(str_filename))
             if source in ["twbx", "twb"]:
-                if args.thumbnail_group:
-                    raise AttributeError("Generating thumbnails for a group is not yet implemented.")
-                if args.thumbnail_username and args.thumbnail_group:
-                    raise AttributeError("Cannot specify both a user and group for thumbnails.")
-
-                new_workbook = TSC.WorkbookItem(project_id, name=args.name, show_tabs=args.tabbed)
                 try:
-                    new_workbook = server.workbooks.publish(
-                        new_workbook,
-                        str_filename,
-                        publish_mode,
-                        # args.thumbnail_username, not yet implemented in tsc
-                        # args.thumbnail_group,
-                        connections=credentials,
-                        as_job=False,
-                        skip_connection_check=args.skip_connection_check,
+                    published_item = PublishCommand.publish_workbook_file(
+                        args=args,
+                        logger=logger,
+                        server=server,
+                        project_id=project_id,
+                        str_filename=str_filename,
+                        publish_mode=publish_mode,
+                        credentials=credentials,
                     )
                 except Exception as e:
                     Errors.exit_with_error(logger, exception=e)
-
-                logger.info(_("publish.success") + "\n{}".format(new_workbook.webpage_url))
+                logger.info(_("publish.success") + "\n{}".format(published_item.webpage_url))
 
             elif source in ["tds", "tdsx", "hyper"]:
-                new_datasource = TSC.DatasourceItem(project_id, name=args.name)
-                new_datasource.use_remote_query_agent = args.use_tableau_bridge
                 try:
-                    new_datasource = server.datasources.publish(
-                        new_datasource, str_filename, publish_mode, connection_credentials=creds
+                    published_item = PublishCommand.publish_datasource_file(
+                        args=args,
+                        logger=logger,
+                        server=server,
+                        project_id=project_id,
+                        str_filename=str_filename,
+                        publish_mode=publish_mode,
+                        credentials=creds,
                     )
                 except Exception as exc:
                     Errors.exit_with_error(logger, exception=exc)
-                logger.info(_("publish.success") + "\n{}".format(new_datasource.webpage_url))
+                logger.info(_("publish.success") + "\n{}".format(published_item.webpage_url))
 
     @staticmethod
     def get_files_to_publish(args, logger):
@@ -172,3 +168,32 @@ class PublishCommand(DatasourcesAndWorkbooks):
             Errors.exit_with_error(logger, "Invalid combination of publishing options (Append, Overwrite, Replace)")
         logger.debug("Publish mode selected: " + publish_mode)
         return publish_mode
+
+    @staticmethod
+    def publish_workbook_file(args, logger, server, project_id, str_filename, publish_mode, credentials):
+        if args.thumbnail_group:
+            raise AttributeError("Generating thumbnails for a group is not yet implemented.")
+        if args.thumbnail_username and args.thumbnail_group:
+            raise AttributeError("Cannot specify both a user and group for thumbnails.")
+
+        new_workbook = TSC.WorkbookItem(project_id, name=args.name, show_tabs=args.tabbed)
+        new_workbook = server.workbooks.publish(
+            new_workbook,
+            str_filename,
+            publish_mode,
+            # args.thumbnail_username, not yet implemented in tsc
+            # args.thumbnail_group,
+            connections=credentials,
+            as_job=False,
+            skip_connection_check=args.skip_connection_check,
+        )
+        return new_workbook
+
+    @staticmethod
+    def publish_datasource_file(args, logger, server, project_id, str_filename, publish_mode, credentials):
+        new_datasource = TSC.DatasourceItem(project_id, name=args.name)
+        new_datasource.use_remote_query_agent = args.use_tableau_bridge
+        new_datasource = server.datasources.publish(
+            new_datasource, str_filename, publish_mode, connection_credentials=credentials
+        )
+        return new_datasource

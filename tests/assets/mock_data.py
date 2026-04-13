@@ -82,7 +82,12 @@ def set_up_mock_server(mock_session):
     mock_server = MagicMock(TSC.Server, autospec=True)
     getter = MagicMock()
     # basically we want to mock out everything in TSC
-    getter.get = MagicMock("get anything", return_value=([create_fake_item()], 1))
+    # Return a pagination-like object with required attributes
+    fake_pagination = MagicMock()
+    fake_pagination.total_available = 1
+    fake_pagination.page_number = 1
+    fake_pagination.page_size = 100
+    getter.get = MagicMock("get anything", return_value=([create_fake_item()], fake_pagination))
     getter.publish = MagicMock("publish", return_value=create_fake_item())
 
     mock_server.any_item_type = getter
