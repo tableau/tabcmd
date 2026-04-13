@@ -98,7 +98,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
         if not view_content_url and not wb_content_url:
             view_example = "/workbook_name/view_name"
             message = "{} [{}]".format(
-                _("export.errors.requires_workbook_view_param").format("ExportCommand"), view_example
+                _("export.errors.requires_workbook_view_param").format(cls.__name__), view_example
             )
             Errors.exit_with_error(logger, message)
 
