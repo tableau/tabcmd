@@ -31,6 +31,7 @@ from tabcmd.commands.user import (
 )
 from typing import NamedTuple, TextIO, Union
 import io
+import os
 
 mock_args = argparse.Namespace()
 
@@ -143,6 +144,18 @@ class RunCommandsTest(unittest.TestCase):
 
     def test_publish(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
+        # Ensure filesystem checks pass for a single file named 'existing_file.twbx'
+        orig_exists = os.path.exists
+        orig_isfile = os.path.isfile
+
+        def fake_exists(path):
+            return True if path == "existing_file.twbx" else orig_exists(path)
+
+        def fake_isfile(path):
+            return True if path == "existing_file.twbx" else orig_isfile(path)
+
+        publish_command.os.path.exists = fake_exists
+        publish_command.os.path.isfile = fake_isfile
         mock_args.overwrite = False
         mock_args.filename = "existing_file.twbx"
         mock_args.project_name = "project-name"
