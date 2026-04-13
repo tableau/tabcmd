@@ -9,18 +9,17 @@ from ..assets.mock_data import set_up_mock_args, set_up_mock_file, set_up_mock_p
 
 mock_args = set_up_mock_args()
 
-    
+
 # mock the module as it is imported *when used*
 @patch("tabcmd.commands.datasources_and_workbooks.publish_command.Session", autospec=True)
 @patch("tabcmd.commands.datasources_and_workbooks.publish_command.glob.glob", return_value=["one.twbx", "two.hyper"])
 @patch("tabcmd.commands.datasources_and_workbooks.publish_command.os.path", autospec=True)
 class PublishCommandTests(unittest.TestCase):
-    
     def test_publish(self, mock_path, mock_glob, mock_session):
         # TODO move to init method
         set_up_mock_server(mock_session)
         mock_path = set_up_mock_path(mock_path)
-        
+
         mock_args.overwrite = False
         mock_args.filename = "existing_file.twbx"
         mock_args.project_name = "project-name"
@@ -37,11 +36,10 @@ class PublishCommandTests(unittest.TestCase):
         PublishCommand.run_command(mock_args)
         mock_session.internal_server.workbooks.publish.assert_called()
 
-
     def test_publish_with_creds(self, mock_path, mock_glob, mock_session):
         set_up_mock_server(mock_session)
         mock_path = set_up_mock_path(mock_path)
-        
+
         mock_args.overwrite = False
         mock_args.append = True
         mock_args.replace = False
@@ -64,7 +62,6 @@ class PublishCommandTests(unittest.TestCase):
 
         PublishCommand.run_command(mock_args)
         mock_session.internal_server.workbooks.publish.assert_called()
-        
 
     def test_get_files_to_publish_twbx(self, mock_path, mock_glob, mock_session):
         set_up_mock_server(mock_session)
@@ -73,16 +70,15 @@ class PublishCommandTests(unittest.TestCase):
         expected = ["existing.twbx"]
         actual = PublishCommand.get_files_to_publish(mock_args, logging)
         assert actual == expected
-       
+
     # if the filename given is a directory, publish all relevant files in the directory to the server
     def test_get_files_to_publish_folder(self, mock_path, mock_glob, mock_session):
         set_up_mock_server(mock_session)
         mock_path = set_up_mock_path(mock_path)
-        mock_path.isfile = lambda x: False # this time it is a directory
-        
-        mock_args.filename = "directory"        
+        mock_path.isfile = lambda x: False  # this time it is a directory
+
+        mock_args.filename = "directory"
         mock_args.filetype = None
         expected = ["directory/one.twbx", "directory/two.hyper"]
         actual = PublishCommand.get_files_to_publish(mock_args, logging)
         assert actual == expected
-        

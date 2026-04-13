@@ -28,9 +28,13 @@ class PublishCommand(DatasourcesAndWorkbooks):
             # this is a string and not actually a File type because we just pass the path to tsc
             metavar="filename.twbx|tdsx|hyper",
             help="The specified file to publish. If a folder is given, it will publish all files in this folder \
-                that have the extensions twb, twbx, tdsx or hyper. Any other options set will be applied for all files."
+                that have the extensions twb, twbx, tdsx or hyper. Any other options set will be applied for all files.",
         )
-        group.add_argument("--filetype", metavar="twb|twbx|tdxs|hyper", help="If publishing an entire folder, limit files to this filetype.")
+        group.add_argument(
+            "--filetype",
+            metavar="twb|twbx|tdxs|hyper",
+            help="If publishing an entire folder, limit files to this filetype.",
+        )
         group.add_argument("--recursive", help="If publishing an entire folder, look into subdirectories to find files")
         set_publish_args(group)
         set_project_r_arg(group)
@@ -120,19 +124,21 @@ class PublishCommand(DatasourcesAndWorkbooks):
         elif os.path.isfile(args.filename):
             logger.debug("Valid single file found")
             files.add(args.filename)
-        elif os.path.isdir(args.filename):            
+        elif os.path.isdir(args.filename):
             logger.debug("Valid folder found")
             if args.filetype:
                 file_patterns = [args.filetype]
             else:
-                file_patterns = ['*.twb?', '*.tdsx', '*.hyper']
+                file_patterns = ["*.twb?", "*.tdsx", "*.hyper"]
             logger.debug("file patterns: {}".format(file_patterns))
             for file_pattern in file_patterns:
                 logger.debug("Looking for files {} in {}".format(file_pattern, args.filename))
                 try:
-                    in_place_files = (glob.glob(file_pattern, root_dir=args.filename, recursive=args.recursive, include_hidden=False))
+                    in_place_files = glob.glob(
+                        file_pattern, root_dir=args.filename, recursive=args.recursive, include_hidden=False
+                    )
                     relative_files = list(map(lambda file: os.path.join(args.filename, file), in_place_files))
-                except Exception as e:            
+                except Exception as e:
                     Errors.exit_with_error(logger, message=in_place_files)
                 files.update(relative_files)
                 logger.debug(len(files))

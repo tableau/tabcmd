@@ -14,10 +14,12 @@ def create_fake_item():
     fake_item.extract_encryption_mode = "Disabled"
     return fake_item
 
+
 def create_fake_job():
     fake_job = MagicMock()
     fake_job.id = "fake-job-id"
     return fake_job
+
 
 def set_up_mock_args():
     mock_args = argparse.Namespace()
@@ -41,16 +43,19 @@ def set_up_mock_args():
     mock_args.project_name = None
     mock_args.parent_project_path = None
     mock_args.parent_path = None
-    mock_args.continue_if_exists = False    
+    mock_args.continue_if_exists = False
     mock_args.recursive = False
-    mock_args.logging_level="DEBUG"
+    mock_args.logging_level = "DEBUG"
     return mock_args
 
 
 # TODO: get typings for argparse
 class NamedObject(NamedTuple):
     name: str
+
+
 ArgparseFile = Union[TextIO, NamedObject]
+
 
 def set_up_mock_file(content=["Test", "", "Test", ""]) -> ArgparseFile:
     # the empty string represents EOF
@@ -60,22 +65,23 @@ def set_up_mock_file(content=["Test", "", "Test", ""]) -> ArgparseFile:
     mock.name = "file-mock"
     return mock
 
+
 def set_up_mock_path(mock_path):
     mock_path.exists = lambda x: True
     mock_path.isfile = lambda x: True
-    mock_path.isdir = lambda x: True 
-    mock_path.splitext = lambda x: ['file', 'twbx']
+    mock_path.isdir = lambda x: True
+    mock_path.splitext = lambda x: ["file", "twbx"]
     mock_path.join = lambda x, y: x + "/" + y
     mock_path.basename = lambda x: str(x)
     return mock_path
 
 
 def set_up_mock_server(mock_session):
-    
+
     mock_session.return_value = mock_session
     mock_server = MagicMock(TSC.Server, autospec=True)
     getter = MagicMock()
-    # basically we want to mock out everything in TSC 
+    # basically we want to mock out everything in TSC
     getter.get = MagicMock("get anything", return_value=([create_fake_item()], 1))
     getter.publish = MagicMock("publish", return_value=create_fake_item())
 
@@ -87,7 +93,7 @@ def set_up_mock_server(mock_session):
     mock_server.users = getter
     mock_server.views = getter
     mock_server.workbooks = getter
-    
+
     fake_job = create_fake_job()
     # ideally I would only set these on the specific objects that have each action, but this is a start
     getter.create_extract = MagicMock("create_extract", return_value=fake_job)
@@ -96,7 +102,7 @@ def set_up_mock_server(mock_session):
     getter.encrypt_extracts = MagicMock("encrypt_extracts", return_value=fake_job)
     getter.reencrypt_extract = MagicMock("reencrypt_extract", return_value=fake_job)
     getter.refresh = MagicMock("refresh", return_value=fake_job)
-    
+
     # for test access
     mock_session.internal_server = mock_server
     mock_session.create_session.return_value = mock_server
