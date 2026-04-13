@@ -32,5 +32,7 @@ class AddUserCommand(UserCommand):
         try:
             UserCommand.act_on_users(logger, server, "added", server.groups.add_user, args)
         except Exception as e:
-            logger.error(e.__cause__)
+            logger.error("Error while adding users: %s", e)
+            if e.__cause__ is not None:
+                logger.error("Caused by: %s", e.__cause__)
             sys.exit(1)
