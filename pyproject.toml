@@ -1,5 +1,5 @@
 [build-system]
-requires = ["build", "setuptools>=62", "wheel", "setuptools_scm>=6.2"]
+requires = ["build", "setuptools", "setuptools_scm"]
 build-backend = "setuptools.build_meta"
 [tool.setuptools_scm]
 local_scheme = "no-local-version"  # require pypi supported versions always
@@ -10,7 +10,7 @@ tabcmd = ["tabcmd.locales/**/*.mo"]
 [tool.black]
 line-length = 120
 required-version = 22
-target-version = ['py38', 'py39', 'py310', 'py311']
+target-version = ['py39', 'py310', 'py311']
 extend-exclude = '^/bin/*'
 [tool.mypy]
 disable_error_code = [
@@ -29,30 +29,25 @@ name="tabcmd"
 dynamic = ["version"]
 description="A command line client for working with Tableau Server."
 authors = [{name="Tableau", email="github@tableau.com"}]
-license = {file = "LICENSE"}
+license = "MIT"
+license-files = ["LICENSE"]
 readme = "res/README.md"
-requires-python = ">=3.7"  # https://devguide.python.org/versions/
+requires-python = ">=3.9"  # https://devguide.python.org/versions/
 classifiers = [
   "Programming Language :: Python",
   "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11"
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13"
 ]
 dependencies = [
     "appdirs",
-    "doit",
-    "ftfy",
-    "pyinstaller_versionfile",
-    "pytest-order",
     "requests>=2.25,<3.0",
-    "setuptools_scm",
-    "types-appdirs",
-    "types-mock",
-    "types-requests",
-    "types-setuptools",
-    "tableauserverclient==0.34",
+    # pinned to 81 so the license_checker can use pkg_resources
+    "setuptools<81; python_version >= '3.12'",
+    "tableauserverclient==0.40",
     "urllib3",
 ]
 [project.optional-dependencies]
@@ -64,9 +59,18 @@ test = [
     "pytest-cov",
     "pytest-order",
     "pytest-runner",
-    "requests-mock>=1.0,<2.0"]
+    "requests-mock>=1.0,<2.0",
+    "types-appdirs",
+    "types-mock",
+    "types-requests",
+    "types-setuptools",
+    # these last three are required for the versioning step
+    "doit",
+    "pyinstaller_versionfile",
+    "setuptools_scm"
+]
 localize = ["doit", "ftfy"]
-package = ["pyinstaller==5.13", "doit"]
+package = ["doit", "pyinstaller==5.13"]
 [project.urls]
 repository = "https://github.com/tableau/tabcmd"
 [project.scripts]

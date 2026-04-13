@@ -63,10 +63,15 @@ class PublishCommand(DatasourcesAndWorkbooks):
 
         publish_mode = PublishCommand.get_publish_mode(args, logger)
 
+        connection = TSC.models.ConnectionItem()
         if args.db_username:
-            creds = TSC.models.ConnectionCredentials(args.db_username, args.db_password, embed=args.save_db_password)
+            connection.connection_credentials = TSC.models.ConnectionCredentials(
+                args.db_username, args.db_password, embed=args.save_db_password
+            )
         elif args.oauth_username:
-            creds = TSC.models.ConnectionCredentials(args.oauth_username, None, embed=False, oauth=args.save_oauth)
+            connection.connection_credentials = TSC.models.ConnectionCredentials(
+                args.oauth_username, None, embed=False, oauth=args.save_oauth
+            )
         else:
             logger.debug("No db-username or oauth-username found in command")
             creds = None
@@ -147,25 +152,20 @@ class PublishCommand(DatasourcesAndWorkbooks):
         default_mode = TSC.Server.PublishMode.CreateNew
         publish_mode = default_mode
 
-        if args.replace:
-            raise AttributeError("Replacing an extract is not yet implemented")
+        mode_mapping = {
+            "replace": TSC.Server.PublishMode.Replace,
+            "append": TSC.Server.PublishMode.Append,
+            "overwrite": TSC.Server.PublishMode.Overwrite,
+        }
 
-        if args.append:
-            if publish_mode != default_mode:
-                publish_mode = None
-            else:
-                # only relevant for datasources, but tsc will throw an error for us if necessary
-                publish_mode = TSC.Server.PublishMode.Append
+        selected_modes = [mode for mode, mode_value in mode_mapping.items() if getattr(args, mode, False)]
 
-        if args.overwrite:
-            if publish_mode != default_mode:
-                publish_mode = None
-            else:
-                # Overwrites the workbook, data source, or data extract if it already exists on the server.
-                publish_mode = TSC.Server.PublishMode.Overwrite
-
-        if not publish_mode:
+        if len(selected_modes) > 1:
             Errors.exit_with_error(logger, "Invalid combination of publishing options (Append, Overwrite, Replace)")
+
+        if selected_modes:
+            publish_mode = mode_mapping[selected_modes[0]]
+
         logger.debug("Publish mode selected: " + publish_mode)
         return publish_mode
 

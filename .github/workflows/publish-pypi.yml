@@ -15,12 +15,12 @@ jobs:
     name: Build dist files for PyPi
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
-          python-version: 3.9
+          python-version: 3.12
       - name: Build dist files
         run: |
           python --version
@@ -41,4 +41,3 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1  # license BSD-2
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
-
