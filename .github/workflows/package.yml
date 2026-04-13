@@ -60,11 +60,11 @@ jobs:
             UPLOAD_FILE_NAME: tabcmd
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
 
-    - uses: actions/setup-python@v5
+    - uses: actions/setup-python@v6
       with:
-        python-version: 3.9
+        python-version: 3.12
 
     - name: Install dependencies and build
       run: |
@@ -94,7 +94,7 @@ jobs:
         cd dist/${{ matrix.TARGET }}
         tar -cvf ${{ matrix.UPLOAD_FILE_NAME }} ${{ matrix.OUT_FILE_NAME }}
 
-    
+
     - name: Upload binaries to release for ${{ matrix.TARGET }}
       uses: svenstaro/upload-release-action@v2
       with:
@@ -104,4 +104,3 @@ jobs:
         tag: ${{ github.ref_name }}
         overwrite: true
         promote: true
-

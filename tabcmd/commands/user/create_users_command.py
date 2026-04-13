@@ -64,7 +64,7 @@ class CreateUsersCommand(UserCommand):
                 number_of_users_added += 1
             except Exception as e:
                 if Errors.is_resource_conflict(e) and args.continue_if_exists:
-                    logger.info(_("createsite.errors.site_name_already_exists").format(args.new_site_name))
+                    logger.info(_("tabcmd.errors.user_already_exists").format(user_obj.name))
                     continue
 
                 number_of_errors += 1

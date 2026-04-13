@@ -86,3 +86,43 @@ class PublishCommandTests(unittest.TestCase):
         actual = PublishCommand.get_files_to_publish(mock_args, logging)
         assert actual == expected
         
+
+    def test_default_publish_mode(self, mock_session, mock_server):
+        mock_args.replace = False
+        mock_args.append = False
+        mock_args.overwrite = False
+
+        publish_mode = publish_command.PublishCommand.get_publish_mode(mock_args, mock_logger)
+        self.assertEqual(publish_mode, TSC.Server.PublishMode.CreateNew)
+
+    def test_replace_publish_mode(self, mock_session, mock_server):
+        mock_args.replace = True
+        mock_args.append = False
+        mock_args.overwrite = False
+
+        publish_mode = publish_command.PublishCommand.get_publish_mode(mock_args, mock_logger)
+        self.assertEqual(publish_mode, TSC.Server.PublishMode.Replace)
+
+    def test_append_publish_mode(self, mock_session, mock_server):
+        mock_args.replace = False
+        mock_args.append = True
+        mock_args.overwrite = False
+
+        publish_mode = publish_command.PublishCommand.get_publish_mode(mock_args, mock_logger)
+        self.assertEqual(publish_mode, TSC.Server.PublishMode.Append)
+
+    def test_overwrite_publish_mode(self, mock_session, mock_server):
+        mock_args.replace = False
+        mock_args.append = False
+        mock_args.overwrite = True
+
+        publish_mode = publish_command.PublishCommand.get_publish_mode(mock_args, mock_logger)
+        self.assertEqual(publish_mode, TSC.Server.PublishMode.Overwrite)
+
+    def test_invalid_combination_of_modes(self, mock_session, mock_server):
+        mock_args.replace = True
+        mock_args.append = True
+        mock_args.overwrite = False
+
+        with self.assertRaises(SystemExit):
+            publish_command.PublishCommand.get_publish_mode(mock_args, mock_logger)

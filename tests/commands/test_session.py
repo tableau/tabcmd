@@ -361,6 +361,92 @@ class CreateSessionTests(unittest.TestCase):
         assert new_session.username == test_username, new_session
         assert mock_tsc.use_server_version.has_been_called()
 
+    @mock.patch("tableauserverclient.Server")
+    def test_create_session_server_url_with_server_arg(self, mock_tsc, mock_pass, mock_file, mock_path, mock_json):
+        name = "uuuu"
+        new_session = Session()
+        new_session.tableau_server = mock_tsc()
+        _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
+        _set_mock_signin_validation_succeeds(new_session.tableau_server, name)
+
+        test_args = Namespace(**vars(args_to_mock))
+        test_args.username = name
+        test_args.password = "pppp"
+        args_server = "https://10ay.online.tableau.com/"
+        test_args.server = args_server
+
+        expected_session_server_url = args_server.rstrip("/")
+
+        auth = new_session.create_session(test_args, None)
+        assert auth is not None, auth
+        assert new_session.server_url == expected_session_server_url
+
+    @mock.patch("tableauserverclient.Server")
+    def test_create_session_server_url_with_no_protocol_in_server_arg(
+        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json
+    ):
+        name = "uuuu"
+        new_session = Session()
+        new_session.tableau_server = mock_tsc()
+        _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
+        _set_mock_signin_validation_succeeds(new_session.tableau_server, name)
+
+        test_args = Namespace(**vars(args_to_mock))
+        test_args.username = name
+        test_args.password = "pppp"
+        args_server = "10ay.online.tableau.com/"
+        test_args.server = args_server
+
+        expected_session_server_url = "http://" + args_server.rstrip("/")
+
+        auth = new_session.create_session(test_args, None)
+        assert auth is not None, auth
+        assert new_session.server_url == expected_session_server_url
+
+    @mock.patch("tableauserverclient.Server")
+    def test_create_session_server_url_with_no_protocol_and_extra_path_in_server_arg(
+        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json
+    ):
+        name = "uuuu"
+        new_session = Session()
+        new_session.tableau_server = mock_tsc()
+        _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
+        _set_mock_signin_validation_succeeds(new_session.tableau_server, name)
+
+        test_args = Namespace(**vars(args_to_mock))
+        test_args.username = name
+        test_args.password = "pppp"
+        args_server = "10ay.online.tableau.com/#/sitename/views/viewname"
+        test_args.server = args_server
+
+        expected_session_server_url = "http://" + args_server.split("/")[0]
+
+        auth = new_session.create_session(test_args, None)
+        assert auth is not None, auth
+        assert new_session.server_url == expected_session_server_url
+
+    @mock.patch("tableauserverclient.Server")
+    def test_create_session_server_url_with_extra_path_in_server_arg(
+        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json
+    ):
+        name = "uuuu"
+        new_session = Session()
+        new_session.tableau_server = mock_tsc()
+        _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
+        _set_mock_signin_validation_succeeds(new_session.tableau_server, name)
+
+        test_args = Namespace(**vars(args_to_mock))
+        test_args.username = name
+        test_args.password = "pppp"
+        args_server = "https://10ay.online.tableau.com/#/sitename/views/viewname"
+        test_args.server = args_server
+
+        expected_session_server_url = args_server.split("#")[0].rstrip("/")
+
+        auth = new_session.create_session(test_args, None)
+        assert auth is not None, auth
+        assert new_session.server_url == expected_session_server_url
+
 
 def _set_mock_tsc_not_signed_in(mock_tsc):
     tsc_in_test = mock.MagicMock(name="manually mocking tsc")
@@ -401,21 +487,6 @@ class TimeoutArgTests(unittest.TestCase):
     def test_timeout_as_integer_stored_char(self):
         result = Session.timeout_as_integer(logger, "ab", None)
         assert result == 0
-
-
-class TimeoutIntegrationTest(unittest.TestCase):
-    def test_connection_times_out(self):
-        test_args = Namespace(**vars(args_to_mock))
-        new_session = Session()
-        test_args.timeout = 2
-        test_args.username = "u"
-        test_args.password = "p"
-
-        test_args.server = "https://nothere.com"
-        with self.assertRaises(SystemExit):
-            new_session.create_session(test_args, None)
-
-    # should test connection doesn't time out?
 
 
 class ConnectionOptionsTest(unittest.TestCase):
@@ -463,6 +534,21 @@ class ConnectionOptionsTest(unittest.TestCase):
 
 
 """
+
+This is too slow for unit tests.
+class TimeoutIntegrationTest(unittest.TestCase):
+    def test_connection_times_out(self):
+        test_args = Namespace(**vars(args_to_mock))
+        new_session = Session()
+        test_args.timeout = 2
+        test_args.username = "u"
+        test_args.password = "p"
+
+        test_args.server = "https://nothere.com"
+        with self.assertRaises(SystemExit):
+            new_session.create_session(test_args, None)
+
+
 class CookieTests(unittest.TestCase):
 
     def test_no_file_if_no_cookie(self):

@@ -4,12 +4,16 @@ from uuid import UUID
 
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.constants import Errors
+from tabcmd.execution.global_options import set_destination_filename_arg
 from tabcmd.execution.localize import _
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 from .datasources_workbooks_views_url_parser import DatasourcesWorkbooksAndViewsUrlParser
 
 pagesize = TSC.PDFRequestOptions.PageType  # type alias for brevity
+pageorientation = TSC.PDFRequestOptions.Orientation
+imageresolution = TSC.ImageRequestOptions.Resolution
+ImageResolutionStandard = "standard"
 
 
 class ExportCommand(DatasourcesAndWorkbooks):
@@ -29,7 +33,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
 
         group.add_argument(
             "--pagelayout",
-            choices=["landscape", "portrait"],
+            choices=[pageorientation.Landscape, pageorientation.Portrait],
             type=str.lower,
             default=None,
             help="page orientation (landscape or portrait) of the exported PDF",
@@ -57,15 +61,19 @@ class ExportCommand(DatasourcesAndWorkbooks):
             help="Set the page size of the exported PDF",
         )
 
-        group.add_argument(
-            "--width", default=800, help="[Not Yet Implemented] Set the width of the image in pixels. Default is 800 px"
-        )
+        group.add_argument("--width", default=800, help=_("export.options.width"))
         group.add_argument("--filename", "-f", help="filename to store the exported data")
         group.add_argument("--height", default=600, help=_("export.options.height"))
         group.add_argument(
             "--filter",
             metavar="COLUMN=VALUE",
             help="Data filter to apply to the view",
+        )
+        group.add_argument(
+            "--resolution",
+            choices=[imageresolution.High, ImageResolutionStandard],
+            type=str.lower,
+            help=_("export.options.resolution"),
         )
 
     """
@@ -133,21 +141,19 @@ class ExportCommand(DatasourcesAndWorkbooks):
             Errors.exit_with_error(logger, "Error saving to file", e)
 
     @staticmethod
-    def apply_filters_from_args(request_options: TSC.PDFRequestOptions, args, logger=None) -> None:
+    def apply_filters_from_args(request_options: TSC.RequestOptions, args, logger=None) -> None:
         if args.filter:
             logger.debug("filter = {}".format(args.filter))
             params = args.filter.split("&")
             for value in params:
                 ExportCommand.apply_filter_value(logger, request_options, value)
 
-    # filtering isn't actually implemented for workbooks in REST
     @staticmethod
     def download_wb_pdf(server, workbook_item, args, logger):
         logger.debug(args.url)
         pdf_options = TSC.PDFRequestOptions(maxage=1)
-        if args.filter or args.url.find("?") > 0:
-            logger.info("warning: Filter values will not be applied when exporting a complete workbook")
         ExportCommand.apply_values_from_url_params(logger, pdf_options, args.url)
+        ExportCommand.apply_filters_from_args(pdf_options, args, logger)
         ExportCommand.apply_pdf_options(logger, pdf_options, args)
         logger.debug(pdf_options.get_query_params())
         server.workbooks.populate_pdf(workbook_item, pdf_options)
@@ -170,6 +176,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
         csv_options = TSC.CSVRequestOptions(maxage=1)
         ExportCommand.apply_values_from_url_params(logger, csv_options, args.url)
         ExportCommand.apply_filters_from_args(csv_options, args, logger)
+        DatasourcesAndWorkbooks.apply_csv_options(logger, csv_options, args)
         logger.debug(csv_options.get_query_params())
         server_content_type.populate_csv(export_item, csv_options)
         return export_item.csv

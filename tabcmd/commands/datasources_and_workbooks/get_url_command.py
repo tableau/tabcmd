@@ -26,7 +26,7 @@ class GetUrl(DatasourcesAndWorkbooks):
     def define_args(get_url_parser):
         group = get_url_parser.add_argument_group(title=GetUrl.name)
         group.add_argument("url", help=_("refreshextracts.options.url"))
-        set_filename_arg(group)
+        set_destination_filename_arg(group)
         # these don't need arguments, although that would be a good future addition
         # tabcmd get "/views/Finance/InvestmentGrowth.png?:size=640,480" -f growth.png
         # tabcmd get "/views/Finance/InvestmentGrowth.png?:refresh=yes" -f growth.png
@@ -115,9 +115,9 @@ class GetUrl(DatasourcesAndWorkbooks):
         logger.trace("Entered method " + inspect.stack()[0].function)
         try:
             logger.debug(_("content_type.view") + ": {}".format(get_url_item.name))
-            req_option_csv = TSC.ImageRequestOptions(maxage=1)
-            DatasourcesAndWorkbooks.apply_values_from_url_params(logger, req_option_csv, args.url)
-            server_content_type.populate_image(get_url_item, req_option_csv)
+            req_option_png = TSC.ImageRequestOptions(maxage=1)
+            DatasourcesAndWorkbooks.apply_values_from_url_params(logger, req_option_png, args.url)
+            server_content_type.populate_image(get_url_item, req_option_png)
             filename = GetUrl.filename_from_args(args.filename, get_url_item.name, "png")
             DatasourcesAndWorkbooks.save_to_file(logger, get_url_item.image, filename)
         except Exception as e:
