@@ -45,8 +45,7 @@ classifiers = [
 dependencies = [
     "appdirs",
     "requests>=2.25,<3.0",
-    # pinned to 81 so the license_checker can use pkg_resources
-    "setuptools<81; python_version >= '3.12'",
+    "setuptools",
     "tableauserverclient==0.40",
     "urllib3",
 ]
