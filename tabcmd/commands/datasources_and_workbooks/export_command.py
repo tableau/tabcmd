@@ -4,6 +4,7 @@ from uuid import UUID
 
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.constants import Errors
+from tabcmd.execution.global_options import set_destination_filename_arg
 from tabcmd.execution.localize import _
 from tabcmd.execution.logger_config import log
 from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
@@ -175,6 +176,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
         csv_options = TSC.CSVRequestOptions(maxage=1)
         ExportCommand.apply_values_from_url_params(logger, csv_options, args.url)
         ExportCommand.apply_filters_from_args(csv_options, args, logger)
+        DatasourcesAndWorkbooks.apply_csv_options(logger, csv_options, args)
         logger.debug(csv_options.get_query_params())
         server_content_type.populate_csv(export_item, csv_options)
         return export_item.csv
