@@ -3,11 +3,14 @@ import unittest
 import tableauserverclient as TSC
 from ..assets import mock_data
 from unittest.mock import *
+from unittest import mock
 from tabcmd.commands.datasources_and_workbooks.publish_command import PublishCommand
+from tabcmd.commands.datasources_and_workbooks import publish_command
 
 from ..assets.mock_data import set_up_mock_args, set_up_mock_file, set_up_mock_path, set_up_mock_server
 
 mock_args = set_up_mock_args()
+mock_logger = mock.MagicMock()
 
 
 # mock the module as it is imported *when used*
@@ -83,7 +86,7 @@ class PublishCommandTests(unittest.TestCase):
         actual = PublishCommand.get_files_to_publish(mock_args, logging)
         assert actual == expected
 
-    def test_default_publish_mode(self, mock_session, mock_server):
+    def test_default_publish_mode(self, mock_path, mock_glob, mock_session):
         mock_args.replace = False
         mock_args.append = False
         mock_args.overwrite = False
@@ -91,7 +94,7 @@ class PublishCommandTests(unittest.TestCase):
         publish_mode = publish_command.PublishCommand.get_publish_mode(mock_args, mock_logger)
         self.assertEqual(publish_mode, TSC.Server.PublishMode.CreateNew)
 
-    def test_replace_publish_mode(self, mock_session, mock_server):
+    def test_replace_publish_mode(self, mock_path, mock_glob, mock_session):
         mock_args.replace = True
         mock_args.append = False
         mock_args.overwrite = False
@@ -99,7 +102,7 @@ class PublishCommandTests(unittest.TestCase):
         publish_mode = publish_command.PublishCommand.get_publish_mode(mock_args, mock_logger)
         self.assertEqual(publish_mode, TSC.Server.PublishMode.Replace)
 
-    def test_append_publish_mode(self, mock_session, mock_server):
+    def test_append_publish_mode(self, mock_path, mock_glob, mock_session):
         mock_args.replace = False
         mock_args.append = True
         mock_args.overwrite = False
@@ -107,7 +110,7 @@ class PublishCommandTests(unittest.TestCase):
         publish_mode = publish_command.PublishCommand.get_publish_mode(mock_args, mock_logger)
         self.assertEqual(publish_mode, TSC.Server.PublishMode.Append)
 
-    def test_overwrite_publish_mode(self, mock_session, mock_server):
+    def test_overwrite_publish_mode(self, mock_path, mock_glob, mock_session):
         mock_args.replace = False
         mock_args.append = False
         mock_args.overwrite = True
@@ -115,7 +118,7 @@ class PublishCommandTests(unittest.TestCase):
         publish_mode = publish_command.PublishCommand.get_publish_mode(mock_args, mock_logger)
         self.assertEqual(publish_mode, TSC.Server.PublishMode.Overwrite)
 
-    def test_invalid_combination_of_modes(self, mock_session, mock_server):
+    def test_invalid_combination_of_modes(self, mock_path, mock_glob, mock_session):
         mock_args.replace = True
         mock_args.append = True
         mock_args.overwrite = False
