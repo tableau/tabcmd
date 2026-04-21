@@ -32,15 +32,15 @@ authors = [{name="Tableau", email="github@tableau.com"}]
 license = "MIT"
 license-files = ["LICENSE"]
 readme = "res/README.md"
-requires-python = ">=3.9"  # https://devguide.python.org/versions/
+requires-python = ">=3.10"  # https://devguide.python.org/versions/
 classifiers = [
   "Programming Language :: Python",
   "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
-  "Programming Language :: Python :: 3.13"
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14"
 ]
 dependencies = [
     "appdirs",
