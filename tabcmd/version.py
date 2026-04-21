@@ -1,6 +1,7 @@
-from importlib.metadata import version, PackageNotFoundError
+from importlib.metadata import PackageNotFoundError, version as get_version
 
+version: str = "unknown"
 try:
-    version = version("tabcmd")
+    version = get_version("tabcmd")
 except PackageNotFoundError:
     version = "2.0.0"

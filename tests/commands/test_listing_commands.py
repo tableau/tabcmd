@@ -1,15 +1,13 @@
 import argparse
 from unittest.mock import MagicMock, patch
-import io
-import sys
 
 from tabcmd.commands.site.list_command import ListCommand
 from tabcmd.commands.site.list_sites_command import ListSiteCommand
-from tabcmd.execution.localize import set_client_locale
 
 import unittest
 from unittest import mock
 
+mock_args = argparse.Namespace()
 mock_logger = mock.MagicMock()
 
 fake_item = mock.MagicMock()
