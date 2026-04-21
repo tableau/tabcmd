@@ -93,7 +93,15 @@ def set_up_mock_server(mock_session):
     mock_server.any_item_type = getter
     mock_server.flows = getter
     mock_server.groups = getter
-    mock_server.projects = getter
+    # Ensure type name contains 'Projects' for filtering heuristics
+    class ProjectsEndpoint:
+        def __init__(self, ret):
+            self._ret = ret
+
+        def get(self, req_option):
+            return self._ret
+
+    mock_server.projects = ProjectsEndpoint(([create_fake_item()], fake_pagination))
     mock_server.sites = getter
     mock_server.users = getter
     mock_server.views = getter

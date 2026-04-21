@@ -63,21 +63,21 @@ class PublishCommand(DatasourcesAndWorkbooks):
 
         publish_mode = PublishCommand.get_publish_mode(args, logger)
 
-        connection = TSC.models.ConnectionItem()
+        # Build both forms: workbook "connections" (ConnectionItem) and datasource "connection_credentials"
+        workbook_connections = None
+        datasource_credentials = None
         if args.db_username:
-            connection.connection_credentials = TSC.models.ConnectionCredentials(
-                args.db_username, args.db_password, embed=args.save_db_password
-            )
+            creds = TSC.models.ConnectionCredentials(args.db_username, args.db_password, embed=args.save_db_password)
+            workbook_connections = TSC.ConnectionItem()
+            workbook_connections.connection_credentials = creds
+            datasource_credentials = creds
         elif args.oauth_username:
-            connection.connection_credentials = TSC.models.ConnectionCredentials(
-                args.oauth_username, None, embed=False, oauth=args.save_oauth
-            )
+            creds = TSC.models.ConnectionCredentials(args.oauth_username, None, embed=False, oauth=args.save_oauth)
+            workbook_connections = TSC.ConnectionItem()
+            workbook_connections.connection_credentials = creds
+            datasource_credentials = creds
         else:
             logger.debug("No db-username or oauth-username found in command")
-            creds = None
-        credentials = TSC.ConnectionItem() if creds else None
-        if credentials:
-            credentials.connection_credentials = creds
 
         files = PublishCommand.get_files_to_publish(args, logger)
 
@@ -94,7 +94,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
                         project_id=project_id,
                         str_filename=str_filename,
                         publish_mode=publish_mode,
-                        credentials=credentials,
+                        credentials=workbook_connections,
                     )
                 except Exception as e:
                     Errors.exit_with_error(logger, exception=e)
@@ -109,7 +109,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
                         project_id=project_id,
                         str_filename=str_filename,
                         publish_mode=publish_mode,
-                        credentials=creds,
+                        credentials=datasource_credentials,
                     )
                 except Exception as exc:
                     Errors.exit_with_error(logger, exception=exc)
