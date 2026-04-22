@@ -75,6 +75,7 @@ jobs:
         doit version
         pip install .
         python -m build
+        pip install .[package]
 
     - name: Package with pyinstaller for ${{matrix.TARGET}}
       run: ${{matrix.CMD_BUILD}}
