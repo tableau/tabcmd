@@ -27,6 +27,7 @@ jobs:
         doit version
         pip install .
         python -m build
+        pip install .[test]
 
     - name: Run license check
       run: python bin/license-checker.py
