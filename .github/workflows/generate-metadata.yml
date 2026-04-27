@@ -23,10 +23,11 @@ jobs:
         python --version
         python -m pip install --upgrade pip
         python -m pip install --upgrade build
-        pip install .
-        pip install .[test]
+        pip install .[versioning]
         doit version
+        pip install .
         python -m build
+        pip install .[test]
 
     - name: Run license check
       run: python bin/license-checker.py

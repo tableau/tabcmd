@@ -62,14 +62,15 @@ test = [
     "types-appdirs",
     "types-mock",
     "types-requests",
-    "types-setuptools",
-    # these last three are required for the versioning step
+    "types-setuptools"
+]
+localize = ["doit", "ftfy"]
+package = ["doit", "pyinstaller==5.13"]
+versioning = [
     "doit",
     "pyinstaller_versionfile",
     "setuptools_scm"
 ]
-localize = ["doit", "ftfy"]
-package = ["doit", "pyinstaller==5.13"]
 [project.urls]
 repository = "https://github.com/tableau/tabcmd"
 [project.scripts]
