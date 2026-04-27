@@ -65,7 +65,7 @@ test = [
     "types-setuptools"
 ]
 localize = ["doit", "ftfy"]
-package = ["doit", "pyinstaller==5.13"]
+package = ["doit", "pyinstaller==6.0.0"]
 versioning = [
     "doit",
     "pyinstaller_versionfile",
