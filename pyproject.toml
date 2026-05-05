@@ -10,7 +10,7 @@ tabcmd = ["tabcmd.locales/**/*.mo"]
 [tool.black]
 line-length = 120
 required-version = 22
-target-version = ['py39', 'py310', 'py311']
+target-version = ['py310', 'py311']
 extend-exclude = '^/bin/*'
 [tool.mypy]
 disable_error_code = [
@@ -65,7 +65,7 @@ test = [
     "types-setuptools"
 ]
 localize = ["doit", "ftfy"]
-package = ["doit", "pyinstaller==5.13"]
+package = ["doit", "pyinstaller==5.13.1", "setuptools==81"]
 versioning = [
     "doit",
     "pyinstaller_versionfile",
