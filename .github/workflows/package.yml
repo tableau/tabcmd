@@ -30,7 +30,7 @@ jobs:
             UPLOAD_FILE_NAME: tabcmd.exe
             OUT_FILE_NAME: tabcmd.exe
             ASSET_MIME: application/vnd.microsoft.portable-executable
-          - os: macos-13
+          - os: macos-latest
             TARGET: macos
             CMD_BUILD:  >
               pyinstaller tabcmd-mac.spec --clean --noconfirm --distpath ./dist/macos/
