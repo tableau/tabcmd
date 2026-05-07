@@ -27,7 +27,6 @@ def task_localize():
     }
 
 
-
 def task_properties():
 
     """
@@ -321,7 +320,6 @@ def task_mo():
     }
 
 
-
 def task_version():
 
     """Generates a metadata info file with current version to be bundled by pyinstaller"""
@@ -390,6 +388,7 @@ def uniquify_file(filename):
         )
     else:
         print("Saved {} sorted unique lines to {}".format(len(uniques), filename))
+
 
 def task_clean_all():
 
