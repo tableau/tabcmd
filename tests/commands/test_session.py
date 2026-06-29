@@ -447,6 +447,68 @@ class CreateSessionTests(unittest.TestCase):
         assert auth is not None, auth
         assert new_session.server_url == expected_session_server_url
 
+    @mock.patch("tableauserverclient.Server")
+    def test_create_session_username_only_prompts_for_password(
+        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json
+    ):
+        """When username is given but no password, should call getpass to prompt."""
+        name = "myuser"
+        _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
+        new_session = Session()
+        new_session.no_prompt = False  # ensure clean state regardless of json mock
+        new_session.tableau_server = mock_tsc()
+        _set_mock_signin_validation_succeeds(new_session.tableau_server, name)
+        mock_pass.return_value = "prompted_password"
+
+        test_args = Namespace(**vars(args_to_mock))
+        test_args.username = name
+        test_args.no_prompt = False
+        # no password, no token
+
+        auth = new_session.create_session(test_args, None)
+        assert auth is not None, auth
+        mock_pass.assert_called()
+
+    @mock.patch("tableauserverclient.Server")
+    def test_create_session_username_only_no_prompt_exits(
+        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json
+    ):
+        """When username is given but no password and --no-prompt is set, should exit with error."""
+        name = "myuser"
+        _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
+        new_session = Session()
+        new_session.no_prompt = True  # ensure no_prompt is set before args override
+        new_session.tableau_server = mock_tsc()
+
+        test_args = Namespace(**vars(args_to_mock))
+        test_args.username = name
+        test_args.no_prompt = True
+        # no password, no token
+
+        with self.assertRaises(SystemExit):
+            new_session.create_session(test_args, None)
+        mock_pass.assert_not_called()
+
+    @mock.patch("tableauserverclient.Server")
+    def test_create_session_username_and_password_no_prompt(
+        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json
+    ):
+        """When both username and password are given, getpass should not be called."""
+        name = "myuser"
+        _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
+        new_session = Session()
+        new_session.tableau_server = mock_tsc()
+        _set_mock_signin_validation_succeeds(new_session.tableau_server, name)
+
+        test_args = Namespace(**vars(args_to_mock))
+        test_args.username = name
+        test_args.password = "mypassword"
+        test_args.no_prompt = False
+
+        auth = new_session.create_session(test_args, None)
+        assert auth is not None, auth
+        mock_pass.assert_not_called()
+
 
 def _set_mock_tsc_not_signed_in(mock_tsc):
     tsc_in_test = mock.MagicMock(name="manually mocking tsc")
