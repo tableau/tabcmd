@@ -10,6 +10,27 @@ You can use the following commands with the tabcmd command-line tool in Tableau 
 * TOC
 {:toc}
 
+## Special characters in passwords and tokens
+
+If your password or personal access token contains special characters, the shell may interpret them before passing the value to tabcmd. Enclose the value in double quotes, or use a `--password-file` to avoid shell escaping entirely.
+
+Common characters that require quoting or escaping:
+
+| Shell | Characters to watch for | Example |
+|-------|------------------------|---------|
+| Windows cmd | `^` `&` `\|` `<` `>` `(` `)` | Use double quotes: `--password "p^ssword"`, or double the character: `p^^ssword` |
+| PowerShell | `$` `` ` `` `"` `'` `@` | Wrap in single quotes: `--password 'p$ssword'` |
+| Unix/bash | `$` `!` `"` `` ` `` `\` spaces | Wrap in single quotes: `--password 'p$ssword'` |
+
+## Running tabcmd as root or with sudo
+
+When tabcmd is run as `root` or with `sudo` on Linux or macOS, the home directory used for the session cookie and log file will be `/root/` rather than your normal home directory. This means:
+
+- A session started as your normal user will not be visible when running as root, and vice versa.
+- Log files will be written to `/root/tabcmd.log` instead of your home directory.
+
+Avoid running tabcmd with `sudo` unless required. If you must, be aware that each user context maintains a separate session.
+
 # addusers *group-name*
 Adds users to the specified group.
 
