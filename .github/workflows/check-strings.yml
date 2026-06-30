@@ -15,12 +15,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6
       with:
         python-version: '3.12'
 
+    # Note: check_strings.py uses regex matching and will not catch dynamic keys
+    # (f-strings, variables, concatenation). This is a best-effort check.
     - name: Check for missing i18n string keys
       run: python bin/i18n/check_strings.py
