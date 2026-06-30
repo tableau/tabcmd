@@ -223,7 +223,6 @@ def check_build_mode(project_root: Path, locales: List[str]) -> int:
         # Check each locale, starting with English as baseline
         english_success = True  # Only track English success for exit code
         english_missing_keys = set()
-        english_output = ""  # Store English output to repeat at end
         locales_with_same_missing = []
 
         for locale in locales:
@@ -241,11 +240,11 @@ def check_build_mode(project_root: Path, locales: List[str]) -> int:
                     english_success = False
                     english_missing_keys = missing_keys
 
-                    english_output = f"\nERROR: Found {len(missing_keys)} missing string keys for locale '{locale}':\n"
-                    english_output += "=" * 60 + "\n"
+                    msg = f"\nERROR: Found {len(missing_keys)} missing string keys for locale 'en':\n"
+                    msg += "=" * 60 + "\n"
                     for line in format_limited_list(list(missing_keys)):
-                        english_output += line + "\n"
-                    print_and_write(english_output.rstrip(), f, full_list=list(missing_keys))
+                        msg += line + "\n"
+                    print_and_write(msg.rstrip(), f, full_list=list(missing_keys))
                 else:
                     # For other languages, only show if different from English
                     if missing_keys == english_missing_keys:
@@ -270,8 +269,7 @@ def check_build_mode(project_root: Path, locales: List[str]) -> int:
                         if common_missing and (unique_to_locale or present_in_locale):
                             print_and_write(f"  Keys missing in both English and {locale}: {len(common_missing)}", f)
             else:
-                english_output = f"[OK] Locale '{locale}': All {len(code_strings)} string keys found"
-                print_and_write(english_output, f)
+                print_and_write(f"[OK] Locale '{locale}': All {len(code_strings)} string keys found", f)
 
         # Show summary for locales with same missing keys as English
         if locales_with_same_missing:
@@ -280,9 +278,16 @@ def check_build_mode(project_root: Path, locales: List[str]) -> int:
             print_and_write(f"      Missing keys: {len(english_missing_keys)}", f)
 
         # Print English results again at the end for visibility
-        if english_output and "en" in locales:
+        if "en" in locales:
             print_and_write(f"\n--- English Results (repeated for visibility) ---", f)
-            print_and_write(english_output.rstrip(), f, full_list=list(english_missing_keys))
+            if english_missing_keys:
+                msg = f"ERROR: Found {len(english_missing_keys)} missing string keys for locale 'en':\n"
+                msg += "=" * 60 + "\n"
+                for line in format_limited_list(list(english_missing_keys)):
+                    msg += line + "\n"
+                print_and_write(msg.rstrip(), f, full_list=list(english_missing_keys))
+            else:
+                print_and_write(f"[OK] Locale 'en': All {len(code_strings)} string keys found", f)
 
         print_and_write(f"\nResults saved to: {output_file}", f)
 
