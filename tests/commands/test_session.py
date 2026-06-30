@@ -488,9 +488,7 @@ class CreateSessionTests(unittest.TestCase):
         mock_pass.assert_not_called()
 
     @mock.patch("tableauserverclient.Server")
-    def test_create_session_username_only_no_prompt_exits(
-        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json
-    ):
+    def test_create_session_username_only_no_prompt_exits(self, mock_tsc, mock_pass, mock_file, mock_path, mock_json):
         """When username given, no password, --no-prompt set, no active session: exit with error."""
         name = "myuser"
         _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
@@ -507,9 +505,7 @@ class CreateSessionTests(unittest.TestCase):
         mock_pass.assert_not_called()
 
     @mock.patch("tableauserverclient.Server")
-    def test_create_session_username_and_password_no_prompt(
-        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json
-    ):
+    def test_create_session_username_and_password_no_prompt(self, mock_tsc, mock_pass, mock_file, mock_path, mock_json):
         """When both username and password are given, getpass should not be called."""
         name = "myuser"
         _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
