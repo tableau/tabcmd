@@ -54,16 +54,15 @@ def configure_log(name: str, logging_level_input: str):
 
     # Only add handlers once to avoid duplicates on repeated configure_log calls
     if not any(isinstance(h, logging.handlers.RotatingFileHandler) for h in root_logger.handlers):
-        file_handler = logging.handlers.RotatingFileHandler(
-            "tabcmd.log", maxBytes=1_000_000, backupCount=5
-        )
+        file_handler = logging.handlers.RotatingFileHandler("tabcmd.log", maxBytes=1_000_000, backupCount=5)
         file_handler.setLevel(logging_level)
         file_handler.setFormatter(logging.Formatter(log_format, datefmt="%Y-%m-%d %H:%M:%S"))
         root_logger.addHandler(file_handler)
 
     named_logger = logging.getLogger(name)
-    if not any(isinstance(h, logging.StreamHandler) and not isinstance(h, logging.FileHandler)
-               for h in named_logger.handlers):
+    if not any(
+        isinstance(h, logging.StreamHandler) and not isinstance(h, logging.FileHandler) for h in named_logger.handlers
+    ):
         console = logging.StreamHandler()
         console.setLevel(logging_level)
         console.setFormatter(logging.Formatter(log_format))
