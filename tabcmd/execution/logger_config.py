@@ -1,4 +1,5 @@
 import logging
+import logging.handlers
 import os
 
 path = os.path.dirname(os.path.abspath(__file__))
@@ -49,8 +50,14 @@ def configure_log(name: str, logging_level_input: str):
         FORMATS[logging.INFO] = "%(filename)-10s: %(message)-30s"
 
     logging.basicConfig(
-        level=logging_level, format=log_format, filename="tabcmd.log", filemode="a", datefmt="%Y-%m" "-%d " "%H:%M:%S"
+        level=logging_level, format=log_format, datefmt="%Y-%m" "-%d " "%H:%M:%S"
     )
+    file_handler = logging.handlers.RotatingFileHandler(
+        "tabcmd.log", maxBytes=1_000_000, backupCount=5
+    )
+    file_handler.setLevel(logging_level)
+    file_handler.setFormatter(logging.Formatter(log_format))
+    logging.getLogger().addHandler(file_handler)
     console = logging.StreamHandler()
     console.setLevel(logging_level)
     console.setFormatter(logging.Formatter(log_format))
