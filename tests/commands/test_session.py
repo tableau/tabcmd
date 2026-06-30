@@ -451,39 +451,56 @@ class CreateSessionTests(unittest.TestCase):
     def test_create_session_username_only_prompts_for_password(
         self, mock_tsc, mock_pass, mock_file, mock_path, mock_json
     ):
-        """When username is given but no password, should call getpass to prompt."""
+        """When username given, no password, no active session: should prompt via getpass."""
         name = "myuser"
         _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
         new_session = Session()
-        new_session.no_prompt = False  # ensure clean state regardless of json mock
-        new_session.tableau_server = mock_tsc()
-        _set_mock_signin_validation_succeeds(new_session.tableau_server, name)
+        new_session.no_prompt = False
+        new_session.tableau_server = None  # no active session
         mock_pass.return_value = "prompted_password"
+        mock_tsc.return_value.auth.sign_in.return_value = mock.MagicMock()
 
         test_args = Namespace(**vars(args_to_mock))
         test_args.username = name
         test_args.no_prompt = False
-        # no password, no token
 
         auth = new_session.create_session(test_args, None)
         assert auth is not None, auth
         mock_pass.assert_called()
 
     @mock.patch("tableauserverclient.Server")
-    def test_create_session_username_only_no_prompt_exits(
+    def test_create_session_username_only_reuses_existing_session(
         self, mock_tsc, mock_pass, mock_file, mock_path, mock_json
     ):
-        """When username is given but no password and --no-prompt is set, should exit with error."""
+        """When username given with no password but an active session exists: reuse it, no prompt."""
         name = "myuser"
         _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
         new_session = Session()
-        new_session.no_prompt = True  # ensure no_prompt is set before args override
         new_session.tableau_server = mock_tsc()
+        _set_mock_signin_validation_succeeds(new_session.tableau_server, name)
+
+        test_args = Namespace(**vars(args_to_mock))
+        test_args.username = name
+        test_args.no_prompt = False
+
+        auth = new_session.create_session(test_args, None)
+        assert auth is not None, auth
+        mock_pass.assert_not_called()
+
+    @mock.patch("tableauserverclient.Server")
+    def test_create_session_username_only_no_prompt_exits(
+        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json
+    ):
+        """When username given, no password, --no-prompt set, no active session: exit with error."""
+        name = "myuser"
+        _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
+        new_session = Session()
+        new_session.no_prompt = True
+        new_session.tableau_server = None  # no active session
 
         test_args = Namespace(**vars(args_to_mock))
         test_args.username = name
         test_args.no_prompt = True
-        # no password, no token
 
         with self.assertRaises(SystemExit):
             new_session.create_session(test_args, None)

@@ -308,9 +308,8 @@ class Session:
         elif args.token_value or args.token_file:
             self._end_session()
             credentials = self._create_new_token_credential()
-        elif args.username:
-            # username given but no password/token: prompt for password (or exit if --no-prompt)
-            self._end_session()
+        elif args.username and not self.tableau_server:
+            # username given but no password/token and no active session: prompt for password
             credentials = self._create_new_credential(None, Session.PASSWORD_CRED_TYPE)
         else:  # no login arguments given - look for saved info
             # maybe we're already signed in!
