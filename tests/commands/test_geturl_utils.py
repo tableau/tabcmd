@@ -447,3 +447,26 @@ class DS_WB_Tests(unittest.TestCase):
         mock_content = mock.MagicMock()
         filename = "test_out.csv"
         ExportCommand.save_to_data_file(mock_logger, mock_content, filename)
+
+
+class FilenameExtensionTests(unittest.TestCase):
+    def test_filename_extension_overrides_url_extension(self):
+        mock_logger = mock.MagicMock()
+        result = DatasourcesWorkbooksAndViewsUrlParser.get_file_type_from_filename(
+            mock_logger, "view.png", "output.csv"
+        )
+        assert result == "csv"
+
+    def test_filename_without_extension_falls_back_to_url_extension(self):
+        mock_logger = mock.MagicMock()
+        result = DatasourcesWorkbooksAndViewsUrlParser.get_file_type_from_filename(
+            mock_logger, "view.png", "output"
+        )
+        assert result == "png"
+
+    def test_no_filename_falls_back_to_url_extension(self):
+        mock_logger = mock.MagicMock()
+        result = DatasourcesWorkbooksAndViewsUrlParser.get_file_type_from_filename(
+            mock_logger, "report.pdf", None
+        )
+        assert result == "pdf"
