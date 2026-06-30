@@ -242,10 +242,7 @@ def check_build_mode(project_root: Path, locales: List[str]) -> int:
                     english_output += "=" * 60 + "\n"
                     for line in format_limited_list(list(missing_keys)):
                         english_output += line + "\n"
-                    print(english_output.rstrip())  # Print to console with limits
-                    
-                    # File output (complete list)
-                    f.write(english_output.rstrip() + "\n")
+                    print_and_write(english_output.rstrip(), f)
                     if len(missing_keys) > 10:  # If we limited console output, write complete list to file
                         f.write("  Complete list for file:\n")
                         for key in sorted(missing_keys):
