@@ -1,0 +1,26 @@
+name: Check i18n strings
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - development
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  check-strings:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Check for missing i18n string keys
+      run: python bin/i18n/check_strings.py
