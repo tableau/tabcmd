@@ -487,7 +487,7 @@ class Session:
     def _get_server_base_url(self, url: str):
         try:
             parsed = urlparse(url)
-            scheme = parsed.scheme or "http"
+            scheme = parsed.scheme or "https"
 
             # If netloc is empty, treat path as netloc and discard any extra path
             netloc = parsed.netloc or parsed.path.split("/")[0]  # Keep only the domain

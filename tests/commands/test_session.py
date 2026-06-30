@@ -397,7 +397,7 @@ class CreateSessionTests(unittest.TestCase):
         args_server = "10ay.online.tableau.com/"
         test_args.server = args_server
 
-        expected_session_server_url = "http://" + args_server.rstrip("/")
+        expected_session_server_url = "https://" + args_server.rstrip("/")
 
         auth = new_session.create_session(test_args, None)
         assert auth is not None, auth
@@ -419,7 +419,7 @@ class CreateSessionTests(unittest.TestCase):
         args_server = "10ay.online.tableau.com/#/sitename/views/viewname"
         test_args.server = args_server
 
-        expected_session_server_url = "http://" + args_server.split("/")[0]
+        expected_session_server_url = "https://" + args_server.split("/")[0]
 
         auth = new_session.create_session(test_args, None)
         assert auth is not None, auth
@@ -531,6 +531,37 @@ class ConnectionOptionsTest(unittest.TestCase):
         mock_session.timeout = 10
         connection = mock_session._open_connection_with_opts()
         assert connection._http_options["timeout"] == 10
+
+
+class GetServerBaseUrlTests(unittest.TestCase):
+    """Unit tests for Session._get_server_base_url."""
+
+    def setUp(self):
+        self.session = Session()
+
+    def test_no_scheme_defaults_to_https(self):
+        result = self.session._get_server_base_url("my-tableau-server.com")
+        assert result == "https://my-tableau-server.com", result
+
+    def test_explicit_http_stays_http(self):
+        result = self.session._get_server_base_url("http://my-tableau-server.com")
+        assert result == "http://my-tableau-server.com", result
+
+    def test_explicit_https_stays_https(self):
+        result = self.session._get_server_base_url("https://my-tableau-server.com")
+        assert result == "https://my-tableau-server.com", result
+
+    def test_no_scheme_with_path_component(self):
+        result = self.session._get_server_base_url("my-tableau-server.com/some/path")
+        assert result == "https://my-tableau-server.com", result
+
+    def test_no_scheme_with_trailing_slash(self):
+        result = self.session._get_server_base_url("my-tableau-server.com/")
+        assert result == "https://my-tableau-server.com", result
+
+    def test_https_with_path_strips_path(self):
+        result = self.session._get_server_base_url("https://my-tableau-server.com/some/path")
+        assert result == "https://my-tableau-server.com", result
 
 
 """
