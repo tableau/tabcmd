@@ -450,6 +450,9 @@ class DS_WB_Tests(unittest.TestCase):
 
 
 class FilenameExtensionTests(unittest.TestCase):
+    # get_file_type_from_filename(logger, url, file_name)
+    # file_name extension takes precedence; falls back to url extension; exits if neither recognized
+
     def test_filename_extension_overrides_url_extension(self):
         mock_logger = mock.MagicMock()
         result = DatasourcesWorkbooksAndViewsUrlParser.get_file_type_from_filename(
@@ -470,3 +473,10 @@ class FilenameExtensionTests(unittest.TestCase):
             mock_logger, "report.pdf", None
         )
         assert result == "pdf"
+
+    def test_no_valid_extension_anywhere_exits(self):
+        mock_logger = mock.MagicMock()
+        with self.assertRaises(SystemExit):
+            DatasourcesWorkbooksAndViewsUrlParser.get_file_type_from_filename(
+                mock_logger, "view.xyz", "output.abc"
+            )
