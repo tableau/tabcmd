@@ -462,21 +462,15 @@ class FilenameExtensionTests(unittest.TestCase):
 
     def test_filename_without_extension_falls_back_to_url_extension(self):
         mock_logger = mock.MagicMock()
-        result = DatasourcesWorkbooksAndViewsUrlParser.get_file_type_from_filename(
-            mock_logger, "view.png", "output"
-        )
+        result = DatasourcesWorkbooksAndViewsUrlParser.get_file_type_from_filename(mock_logger, "view.png", "output")
         assert result == "png"
 
     def test_no_filename_falls_back_to_url_extension(self):
         mock_logger = mock.MagicMock()
-        result = DatasourcesWorkbooksAndViewsUrlParser.get_file_type_from_filename(
-            mock_logger, "report.pdf", None
-        )
+        result = DatasourcesWorkbooksAndViewsUrlParser.get_file_type_from_filename(mock_logger, "report.pdf", None)
         assert result == "pdf"
 
     def test_no_valid_extension_anywhere_exits(self):
         mock_logger = mock.MagicMock()
         with self.assertRaises(SystemExit):
-            DatasourcesWorkbooksAndViewsUrlParser.get_file_type_from_filename(
-                mock_logger, "view.xyz", "output.abc"
-            )
+            DatasourcesWorkbooksAndViewsUrlParser.get_file_type_from_filename(mock_logger, "view.xyz", "output.abc")
