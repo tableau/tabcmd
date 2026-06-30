@@ -3,6 +3,7 @@ requires = ["build", "setuptools", "setuptools_scm"]
 build-backend = "setuptools.build_meta"
 [tool.setuptools_scm]
 local_scheme = "no-local-version"  # require pypi supported versions always
+write_to = "tabcmd/_version.py"
 [tool.setuptools]
 packages = ["tabcmd"]
 [tool.setuptools.package-data]

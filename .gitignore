@@ -4,6 +4,9 @@
 .idea
 *.DS_Store
 
+# setuptools_scm generated version file
+tabcmd/_version.py
+
 # python build files
 build/
 dist/
