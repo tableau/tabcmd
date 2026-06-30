@@ -9,4 +9,4 @@ except PackageNotFoundError:
     try:
         from tabcmd._version import version
     except ImportError:
-        version = "unknown"
+        version = "0.0"
