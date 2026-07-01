@@ -31,8 +31,8 @@ class ListCommand(Server):
         data_group.add_argument("-d", "--details", action="store_true", help=_("tabcmd.listing.help.details"))
         data_group.add_argument("-a", "--address", action="store_true", help=_("tabcmd.listing.help.address"))
 
-    @staticmethod
-    def run_command(args):
+    @classmethod
+    def run_command(cls, args):
         logger = log(__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
@@ -87,7 +87,7 @@ class ListCommand(Server):
             # TODO: do we want this line if it is csv output?
             logger.info(_("tabcmd.listing.summary").format(len(items), content_type))
         except Exception as e:
-            Errors.exit_with_error(logger, e)
+            Errors.exit_with_error(logger, exception=e)
 
     @staticmethod
     def format_children_listing(args, server, content_type, item):

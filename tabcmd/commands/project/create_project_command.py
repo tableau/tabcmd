@@ -25,9 +25,9 @@ class CreateProjectCommand(Server):
         set_parent_project_arg(create_project_parser)
         set_description_arg(create_project_parser)
 
-    @staticmethod
-    def run_command(args):
-        logger = log(__class__.__name__, args.logging_level)
+    @classmethod
+    def run_command(cls, args):
+        logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
@@ -36,9 +36,10 @@ class CreateProjectCommand(Server):
         if args.parent_project_path:
             try:
                 logger.debug(_("tabcmd.find.parent_project").format(args.parent_project_path))
+                # use none for the readable name because we are just looking for the parent path
                 parent = Server.get_project_by_name_and_parent_path(logger, server, None, args.parent_project_path)
             except Exception as exc:
-                Errors.exit_with_error(logger, exc)
+                Errors.exit_with_error(logger, exception=exc)
             readable_name = "{0}/{1}".format(args.parent_project_path, args.project_name)
             parent_id = parent.id
             logger.debug("parent project = `{0}`, id = {1}".format(args.parent_project_path, parent_id))
@@ -54,6 +55,6 @@ class CreateProjectCommand(Server):
                 logger.info(_("errors.xmlapi.already_exists").format(_("content_type.project"), args.project_name))
                 logger.info(_("common.output.succeeded"))
             else:
-                Errors.exit_with_error(logger, e)
+                Errors.exit_with_error(logger, exception=e)
 
         return project_item

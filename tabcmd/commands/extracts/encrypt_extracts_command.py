@@ -21,9 +21,9 @@ class EncryptExtracts(Server):
         group = encrypt_extract_parser.add_argument_group(title=EncryptExtracts.name)
         group.add_argument("site_name", metavar="site-name", help=_("editsite.options.site-name"))
 
-    @staticmethod
-    def run_command(args):
-        logger = log(__class__.__name__, args.logging_level)
+    @classmethod
+    def run_command(cls, args):
+        logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
@@ -32,7 +32,7 @@ class EncryptExtracts(Server):
             logger.info(_("encryptextracts.status").format(site_item.name))
             job = server.sites.encrypt_extracts(site_item.id)
         except Exception as e:
-            Errors.exit_with_error(logger, e)
+            Errors.exit_with_error(logger, exception=e)
 
         logger.info(_("common.output.job_queued_success"))
         logger.debug("Extract encryption queued with JobID: {}".format(job.id))

@@ -7,7 +7,7 @@ from .common_setup import *
 commandname = "deletesiteusers"
 
 
-class DeleteSiteUsersParserTest(unittest.TestCase):
+class DeleteSiteUsersParserTest(ParserTest):
     csv = ("testname", "testpassword", "test", "test", "test", "test")
 
     @classmethod
