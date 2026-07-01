@@ -483,6 +483,7 @@ class CreateSessionTests(unittest.TestCase):
         _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
         new_session = Session()
         new_session.tableau_server = mock_tsc()
+        new_session.user_id = "some-user-id"
         _set_mock_signin_validation_succeeds(new_session.tableau_server, name)
 
         test_args = Namespace(**vars(args_to_mock))

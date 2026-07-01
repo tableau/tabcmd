@@ -474,3 +474,21 @@ class FilenameExtensionTests(unittest.TestCase):
         mock_logger = mock.MagicMock()
         with self.assertRaises(SystemExit):
             DatasourcesWorkbooksAndViewsUrlParser.get_file_type_from_filename(mock_logger, "view.xyz", "output.abc")
+
+
+class ImageFormatTests(unittest.TestCase):
+    """Tests for TSC 0.41 ImageRequestOptions.Format constants and format parameter."""
+
+    def test_image_format_png(self):
+        assert TSC.ImageRequestOptions.Format.PNG == "PNG"
+
+    def test_image_format_svg(self):
+        assert TSC.ImageRequestOptions.Format.SVG == "SVG"
+
+    def test_image_request_options_format_parameter(self):
+        opts = TSC.ImageRequestOptions(format=TSC.ImageRequestOptions.Format.SVG)
+        assert opts.format == TSC.ImageRequestOptions.Format.SVG
+
+    def test_image_request_options_default_format(self):
+        opts = TSC.ImageRequestOptions()
+        assert opts.format is None
