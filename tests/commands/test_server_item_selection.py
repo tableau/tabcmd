@@ -1,3 +1,5 @@
+from typing import cast
+
 import pytest
 import tableauserverclient as TSC
 
@@ -48,7 +50,7 @@ def test_filters_datasources_by_exact_project_id_when_container_provided():
     ]
     endpoint = _DatasourcesEndpoint(items)
 
-    results = Server.get_items_by_name(logger, endpoint, "Sales", container)
+    results = Server.get_items_by_name(logger, endpoint, "Sales", cast(TSC.ProjectItem, container))
 
     assert len(results) == 1
     assert results[0].project_id == "proj-A"
@@ -64,7 +66,7 @@ def test_raises_not_found_when_no_items_match_container_after_disambiguation():
     endpoint = _DatasourcesEndpoint(items)
 
     with pytest.raises(TSC.ServerResponseError):
-        Server.get_items_by_name(logger, endpoint, "Sales", container)
+        Server.get_items_by_name(logger, endpoint, "Sales", cast(TSC.ProjectItem, container))
 
 
 def test_nested_projects_same_leaf_name_returns_correct_datasource_per_container():
@@ -84,11 +86,11 @@ def test_nested_projects_same_leaf_name_returns_correct_datasource_per_container
     endpoint = _DatasourcesEndpoint(items)
 
     # Each lookup should return exactly one item from the target project id
-    res_a = Server.get_items_by_name(logger, endpoint, "my-datasource", cats_under_project_a)
+    res_a = Server.get_items_by_name(logger, endpoint, "my-datasource", cast(TSC.ProjectItem, cats_under_project_a))
     assert len(res_a) == 1 and res_a[0].project_id == "cats-A"
 
-    res_b = Server.get_items_by_name(logger, endpoint, "my-datasource", cats_under_project_b)
+    res_b = Server.get_items_by_name(logger, endpoint, "my-datasource", cast(TSC.ProjectItem, cats_under_project_b))
     assert len(res_b) == 1 and res_b[0].project_id == "cats-B"
 
-    res_root = Server.get_items_by_name(logger, endpoint, "my-datasource", cats_under_root)
+    res_root = Server.get_items_by_name(logger, endpoint, "my-datasource", cast(TSC.ProjectItem, cats_under_root))
     assert len(res_root) == 1 and res_root[0].project_id == "cats-root"
