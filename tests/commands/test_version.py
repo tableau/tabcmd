@@ -12,6 +12,7 @@ class VersionConsistencyTests(unittest.TestCase):
         pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
         match = re.search(r'write_to\s*=\s*"([^"]+)"', pyproject)
         self.assertIsNotNone(match, "write_to not found in [tool.setuptools_scm] in pyproject.toml")
+        assert match is not None
 
         write_to_path = match.group(1)  # e.g. "tabcmd/_version.py"
         expected_module = write_to_path.replace("/", ".").removesuffix(".py")  # e.g. "tabcmd._version"
