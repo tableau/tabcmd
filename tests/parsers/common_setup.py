@@ -5,7 +5,7 @@ from collections import namedtuple
 import argparse
 from typing import Optional, Type, Any
 
-__all__ = ['ParserTest', 'initialize_test_pieces', 'mock_command_action', 'encoding']
+__all__ = ["ParserTest", "initialize_test_pieces", "mock_command_action", "encoding"]
 
 encoding = "utf-8-sig"
 
@@ -23,7 +23,7 @@ def initialize_test_pieces(commandname: str, command_object: Type[Any]) -> argpa
         name=commandname,
         run_command=mock_command_action,
         description="mock help text",
-        define_args=command_object.define_args
+        define_args=command_object.define_args,
     )
 
     manager.include(mock_command)

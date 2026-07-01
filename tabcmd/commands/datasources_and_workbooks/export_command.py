@@ -13,7 +13,7 @@ from .datasources_workbooks_views_url_parser import DatasourcesWorkbooksAndViews
 pagesize = TSC.PDFRequestOptions.PageType  # type alias for brevity
 pageorientation = TSC.PDFRequestOptions.Orientation
 imageresolution = TSC.ImageRequestOptions.Resolution
-RequestOptionsType  = TSC.ExcelRequestOptions | TSC.CSVRequestOptions | TSC.PDFRequestOptions | TSC.ImageRequestOptions
+RequestOptionsType = TSC.ExcelRequestOptions | TSC.CSVRequestOptions | TSC.PDFRequestOptions | TSC.ImageRequestOptions
 ImageResolutionStandard = "standard"
 
 

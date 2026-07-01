@@ -203,7 +203,7 @@ class Session:
     def _verify_server_connection_unauthed(self):
         if not self.tableau_server:
             Errors.exit_with_error(self.logger, "No server connection available")
-        
+
         assert self.tableau_server is not None  # Type hint for mypy
         try:
             self.tableau_server.use_server_version()
@@ -227,10 +227,10 @@ class Session:
             self.tableau_server = self._open_connection_with_opts()
         except Exception as e:
             Errors.exit_with_error(self.logger, "Failed to connect to server", exception=e)
-        
+
         if not self.tableau_server:
             Errors.exit_with_error(self.logger, "Failed to create server connection")
-        
+
         assert self.tableau_server is not None  # Type hint for mypy
         return self.tableau_server
 
@@ -272,7 +272,7 @@ class Session:
     def _sign_in(self, tableau_auth) -> TSC.Server:
         if not self.tableau_server:
             Errors.exit_with_error(self.logger, "No server connection available for sign in")
-            
+
         self.logger.debug(_("session.login") + (self.server_url or ""))
         self.logger.debug(_("listsites.output").format("", self.username or self.token_name, self.site_name))
         assert self.tableau_server is not None  # Type hint for mypy

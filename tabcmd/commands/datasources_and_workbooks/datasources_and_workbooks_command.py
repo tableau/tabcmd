@@ -5,7 +5,8 @@ import tableauserverclient as TSC
 from tabcmd.commands.constants import Errors
 from tabcmd.commands.server import Server
 from tabcmd.execution.localize import _
-RequestOptionsType  = TSC.ExcelRequestOptions | TSC.CSVRequestOptions | TSC.PDFRequestOptions | TSC.ImageRequestOptions
+
+RequestOptionsType = TSC.ExcelRequestOptions | TSC.CSVRequestOptions | TSC.PDFRequestOptions | TSC.ImageRequestOptions
 
 
 class DatasourcesAndWorkbooks(Server):

@@ -5,6 +5,7 @@ from tabcmd.execution.logger_config import log
 from .user_data import UserCommand
 import sys
 
+
 class AddUserCommand(UserCommand):
     """
     Command to Adds users to a specified group
