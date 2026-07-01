@@ -93,6 +93,15 @@ For more information about loggin in, see [Logging in](index.html#logging-in).
 : The token specified for --token-name. If you do not provide a token, you will be prompted for one.
 
 
+### Default values
+
+| Option | Default |
+|--------|---------|
+| `--server` | `http://localhost` (port 80) — you must specify a server URL or the command will attempt to connect to localhost |
+| `--site` | Default site (empty string `""`) |
+| `--cookie` | Session ID is saved (use `--no-cookie` to disable) |
+| `--timeout` | 30 seconds |
+
 ### Example
 
 Log in to the Tableau Cloud site with the specified site ID:
