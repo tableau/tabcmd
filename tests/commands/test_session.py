@@ -318,6 +318,24 @@ class CreateSessionTests(unittest.TestCase):
         assert mock_tsc.has_been_called()
 
     @mock.patch("tableauserverclient.Server")
+    def test_create_session_password_file_not_found(self, mock_tsc, mock_pass, mock_file, mock_path, mock_json):
+        _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
+        new_session = Session()
+        new_session.username = "uuuu"
+        new_session.password_file = "/nonexistent/cred.txt"
+        with self.assertRaises(SystemExit):
+            new_session._create_new_credential(None, Session.PASSWORD_CRED_TYPE)
+
+    @mock.patch("tableauserverclient.Server")
+    def test_create_session_token_file_not_found(self, mock_tsc, mock_pass, mock_file, mock_path, mock_json):
+        _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
+        new_session = Session()
+        new_session.token_name = "mytoken"
+        new_session.token_file = "/nonexistent/token.txt"
+        with self.assertRaises(SystemExit):
+            new_session._create_new_token_credential()
+
+    @mock.patch("tableauserverclient.Server")
     def test_load_saved_session_data(self, mock_tsc, mock_pass, mock_file, mock_path, mock_json):
         _set_mocks_for_json_file_exists(mock_path, mock_json)
         _set_mocks_for_json_file_saved_username(mock_json, "auth_token", "username")

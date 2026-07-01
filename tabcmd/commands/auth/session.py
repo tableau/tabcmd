@@ -121,6 +121,13 @@ class Session:
     def _create_new_credential(self, password, credential_type):
         if password is None:
             if self.password_file:
+                if not os.path.exists(self.password_file):
+                    Errors.exit_with_error(
+                        self.logger,
+                        message="Password file not found: '{}'. Check the path passed to --password-file.".format(
+                            self.password_file
+                        ),
+                    )
                 password = Session._read_password_from_file(self.password_file)
             elif self._allow_prompt():
                 password = getpass.getpass(_("session.password"))
@@ -141,6 +148,13 @@ class Session:
         if self.token_value:
             token = self.token_value
         elif self.token_file:
+            if not os.path.exists(self.token_file):
+                Errors.exit_with_error(
+                    self.logger,
+                    message="Token file not found: '{}'. Check the path passed to --token-file.".format(
+                        self.token_file
+                    ),
+                )
             token = Session._read_password_from_file(self.token_file)
         elif self._allow_prompt():
             token = getpass.getpass("Token:")
