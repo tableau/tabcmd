@@ -73,23 +73,24 @@ class DatasourcesWorkbooksAndViewsUrlParser(Server):
     @staticmethod
     def get_file_type_from_filename(logger, url, file_name):
         logger.debug("Choosing between {}, {}".format(file_name, url))
-        file_name = file_name or url
         logger.debug(_("get.options.file") + ": {}".format(file_name))  # Name to save the file as
-        type_of_file = DatasourcesWorkbooksAndViewsUrlParser.get_file_extension(file_name)
+        valid_extensions = ["pdf", "csv", "png", "twb", "twbx", "tdsx", "tds"]
 
-        if not type_of_file and file_name is not None:
-            # check the url
-            backup = DatasourcesWorkbooksAndViewsUrlParser.get_file_extension(url)
-            if backup is not None:
-                type_of_file = backup
-            else:
-                Errors.exit_with_error(logger, _("get.extension.not_found").format(file_name))
+        # If the user supplied a filename with a recognized extension, that takes precedence.
+        if file_name:
+            type_of_file = DatasourcesWorkbooksAndViewsUrlParser.get_file_extension(file_name)
+            if type_of_file in valid_extensions:
+                logger.debug("filetype from filename: {}".format(type_of_file))
+                return type_of_file
 
-        logger.debug("filetype: {}".format(type_of_file))
-        if type_of_file in ["pdf", "csv", "png", "twb", "twbx", "tdsx", "tds"]:
-            return type_of_file
+        # Fall back to the URL extension (either no filename was given, or filename had no recognized extension).
+        if url:
+            type_of_file = DatasourcesWorkbooksAndViewsUrlParser.get_file_extension(url)
+            if type_of_file in valid_extensions:
+                logger.debug("filetype from url: {}".format(type_of_file))
+                return type_of_file
 
-        Errors.exit_with_error(logger, _("get.extension.not_found").format(file_name))
+        Errors.exit_with_error(logger, _("get.extension.not_found").format(file_name or url))
 
     @staticmethod
     def get_file_extension(path):
