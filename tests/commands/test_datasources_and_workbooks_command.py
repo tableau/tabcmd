@@ -133,8 +133,17 @@ class ParameterTests(unittest.TestCase):
         value = ":size=800,600"
 
         DatasourcesAndWorkbooks.apply_options_in_url(mock_logger, request_options, value)
-        self.assertEqual(request_options.viz_height, 800)
-        self.assertEqual(request_options.viz_width, 600)
+        self.assertEqual(request_options.viz_width, 800)
+        self.assertEqual(request_options.viz_height, 600)
+
+    def test_get_size_width_then_height_order(self):
+        """Verify :size=WxH format treats first value as width and second as height."""
+        request_options = tsc.ImageRequestOptions()
+        value = ":size=800,600"
+
+        DatasourcesAndWorkbooks.apply_options_in_url(mock_logger, request_options, value)
+        self.assertEqual(request_options.viz_width, 800)  # 800 is width (first value)
+        self.assertEqual(request_options.viz_height, 600)  # 600 is height (second value)
 
     def test_apply_options_in_url_with_refresh(self):
         request_options = tsc.ImageRequestOptions()

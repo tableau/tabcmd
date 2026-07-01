@@ -129,7 +129,7 @@ class DatasourcesAndWorkbooks(Server):
         elif ":size" == setting_name:
             if isinstance(request_options, (TSC.ImageRequestOptions, TSC.PDFRequestOptions)):
                 try:
-                    height, width = setting_val.split(",")
+                    width, height = setting_val.split(",")
                     request_options.viz_height = int(height)
                     request_options.viz_width = int(width)
                 except Exception as oops:
