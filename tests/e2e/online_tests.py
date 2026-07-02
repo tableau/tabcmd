@@ -24,11 +24,18 @@ from tests.e2e import setup_e2e
 # config variables for test run
 debug_log = "--logging-level=DEBUG"
 indexing_sleep_time = 1  # wait 1 second to confirm server has indexed updates
-# Flags to let us skip tests if we know we don't have the required access
-server_admin = False
-site_admin = False
-project_admin = False
-extract_encryption_enabled = False
+
+
+def _env_bool(name: str, default: bool = False) -> bool:
+    return os.environ.get(name, str(default)).lower() == "true"
+
+
+# Flags to let us skip tests if we know we don't have the required access.
+# Override by setting env vars (e.g. E2E_SITE_ADMIN=true) or via workflow inputs.
+server_admin = _env_bool("E2E_SERVER_ADMIN")
+site_admin = _env_bool("E2E_SITE_ADMIN")
+project_admin = _env_bool("E2E_PROJECT_ADMIN")
+extract_encryption_enabled = _env_bool("E2E_EXTRACT_ENCRYPTION")
 use_tabcmd_classic = False  # toggle between testing using tabcmd 2 or tabcmd classic
 
 

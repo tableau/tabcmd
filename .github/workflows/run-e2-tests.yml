@@ -11,6 +11,30 @@ on:
         required: true
       pat:
         required: true
+      server_admin:
+        description: 'Account has server admin role'
+        required: false
+        default: 'false'
+        type: choice
+        options: ['false', 'true']
+      site_admin:
+        description: 'Account has site admin role'
+        required: false
+        default: 'false'
+        type: choice
+        options: ['false', 'true']
+      project_admin:
+        description: 'Account has project admin role'
+        required: false
+        default: 'false'
+        type: choice
+        options: ['false', 'true']
+      extract_encryption_enabled:
+        description: 'Site has extract encryption enabled'
+        required: false
+        default: 'false'
+        type: choice
+        options: ['false', 'true']
   workflow_call:
     inputs:
       server:
@@ -22,6 +46,22 @@ on:
       patname:
         required: true
         type: string
+      server_admin:
+        required: false
+        type: boolean
+        default: false
+      site_admin:
+        required: false
+        type: boolean
+        default: false
+      project_admin:
+        required: false
+        type: boolean
+        default: false
+      extract_encryption_enabled:
+        required: false
+        type: boolean
+        default: false
     secrets:
       pat:
         required: true
@@ -61,6 +101,10 @@ jobs:
         E2E_SITE: ${{ inputs.site }}
         E2E_PATNAME: ${{ inputs.patname }}
         E2E_PAT: ${{ secrets.pat || inputs.pat }}
+        E2E_SERVER_ADMIN: ${{ inputs.server_admin || 'false' }}
+        E2E_SITE_ADMIN: ${{ inputs.site_admin || 'false' }}
+        E2E_PROJECT_ADMIN: ${{ inputs.project_admin || 'false' }}
+        E2E_EXTRACT_ENCRYPTION: ${{ inputs.extract_encryption_enabled || 'false' }}
       run: |
         python -m tabcmd login --server "$E2E_SERVER" --site "$E2E_SITE" --token-name "$E2E_PATNAME" --token-value "$E2E_PAT"
         pytest -q tests/e2e/online_tests.py -r pfE
