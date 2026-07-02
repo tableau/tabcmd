@@ -318,24 +318,6 @@ class CreateSessionTests(unittest.TestCase):
         assert mock_tsc.has_been_called()
 
     @mock.patch("tableauserverclient.Server")
-    def test_create_session_password_file_not_found(self, mock_tsc, mock_pass, mock_file, mock_path, mock_json):
-        _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
-        new_session = Session()
-        new_session.username = "uuuu"
-        new_session.password_file = "/nonexistent/cred.txt"
-        with self.assertRaises(SystemExit):
-            new_session._create_new_credential(None, Session.PASSWORD_CRED_TYPE)
-
-    @mock.patch("tableauserverclient.Server")
-    def test_create_session_token_file_not_found(self, mock_tsc, mock_pass, mock_file, mock_path, mock_json):
-        _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
-        new_session = Session()
-        new_session.token_name = "mytoken"
-        new_session.token_file = "/nonexistent/token.txt"
-        with self.assertRaises(SystemExit):
-            new_session._create_new_token_credential()
-
-    @mock.patch("tableauserverclient.Server")
     def test_load_saved_session_data(self, mock_tsc, mock_pass, mock_file, mock_path, mock_json):
         _set_mocks_for_json_file_exists(mock_path, mock_json)
         _set_mocks_for_json_file_saved_username(mock_json, "auth_token", "username")
@@ -546,6 +528,38 @@ class CreateSessionTests(unittest.TestCase):
         auth = new_session.create_session(test_args, None)
         assert auth is not None, auth
         mock_pass.assert_not_called()
+
+
+@mock.patch("tabcmd.commands.auth.session.json")
+@mock.patch("os.path")
+@mock.patch("builtins.open")
+class MissingCredentialFileTests(unittest.TestCase):
+    """Tests that missing --password-file / --token-file paths exit with an error.
+
+    The class-level @mock.patch("os.path") replaces the global os.path object.
+    We configure path.isfile to return False so the "file not found" guard is
+    exercised, while path.exists returns False to suppress json-session loading.
+    """
+
+    def test_password_file_not_found_exits(self, mock_file, mock_path, mock_json):
+        _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
+        # os.path is replaced by mock_path; set isfile to False so the guard fires
+        mock_path.isfile.return_value = False
+        new_session = Session()
+        new_session.username = "uuuu"
+        new_session.password_file = "/nonexistent/cred.txt"
+        with self.assertRaises(SystemExit):
+            new_session._create_new_credential(None, Session.PASSWORD_CRED_TYPE)
+
+    def test_token_file_not_found_exits(self, mock_file, mock_path, mock_json):
+        _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
+        # os.path is replaced by mock_path; set isfile to False so the guard fires
+        mock_path.isfile.return_value = False
+        new_session = Session()
+        new_session.token_name = "mytoken"
+        new_session.token_file = "/nonexistent/token.txt"
+        with self.assertRaises(SystemExit):
+            new_session._create_new_token_credential()
 
 
 def _set_mock_tsc_not_signed_in(mock_tsc):
