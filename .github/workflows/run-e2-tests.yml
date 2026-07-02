@@ -11,6 +11,20 @@ on:
         required: true
       pat:
         required: true
+  workflow_call:
+    inputs:
+      server:
+        required: true
+        type: string
+      site:
+        required: true
+        type: string
+      patname:
+        required: true
+        type: string
+    secrets:
+      pat:
+        required: true
 
 jobs:
   build:
@@ -42,6 +56,11 @@ jobs:
         pip install .[test]
 
     - name: Run e2e tests
-      run: | 
-        python -m tabcmd login --server "${{ github.event.inputs.server }}" --site "${{ github.event.inputs.site }}" --token-name "${{ github.event.inputs.patname }}" --token-value "${{ github.event.inputs.pat }}"
+      env:
+        E2E_SERVER: ${{ inputs.server }}
+        E2E_SITE: ${{ inputs.site }}
+        E2E_PATNAME: ${{ inputs.patname }}
+        E2E_PAT: ${{ secrets.pat || inputs.pat }}
+      run: |
+        python -m tabcmd login --server "$E2E_SERVER" --site "$E2E_SITE" --token-name "$E2E_PATNAME" --token-value "$E2E_PAT"
         pytest -q tests/e2e/online_tests.py -r pfE
