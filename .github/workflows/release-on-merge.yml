@@ -18,23 +18,23 @@ jobs:
     name: Create draft release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
       - name: Compute next patch version
         id: version
         run: |
-          LAST_TAG=$(git tag --list 'v*.*.*' --sort=-version:refname | head -1)
+          LAST_TAG=$(git tag --list | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -1)
           if [ -z "$LAST_TAG" ]; then
-            NEXT="v2.0.1"
-          else
-            BASE="${LAST_TAG#v}"
-            MAJOR=$(echo "$BASE" | cut -d. -f1)
-            MINOR=$(echo "$BASE" | cut -d. -f2)
-            PATCH=$(echo "$BASE" | cut -d. -f3)
-            NEXT="v${MAJOR}.${MINOR}.$((PATCH + 1))"
+            echo "No prior semver tag found; cannot auto-increment version." >&2
+            exit 1
           fi
+          BASE="${LAST_TAG#v}"
+          MAJOR=$(echo "$BASE" | cut -d. -f1)
+          MINOR=$(echo "$BASE" | cut -d. -f2)
+          PATCH=$(echo "$BASE" | cut -d. -f3)
+          NEXT="v${MAJOR}.${MINOR}.$((PATCH + 1))"
           echo "tag=$NEXT" >> "$GITHUB_OUTPUT"
           echo "last_tag=$LAST_TAG" >> "$GITHUB_OUTPUT"
 

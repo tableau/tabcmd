@@ -86,7 +86,9 @@ def _test_command(test_args: list[str]):
             + test_args
             + ["--no-certcheck"]
         )
-    if database_password not in calling_args:
+    login_args = setup_e2e.get_login_args()
+    safe_to_print = not any(v in calling_args for v in login_args if v not in ("--server", "--site", "--token-name"))
+    if safe_to_print:
         print(calling_args)
     return subprocess.check_call(calling_args)
 
