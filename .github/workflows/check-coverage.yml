@@ -46,6 +46,7 @@ jobs:
 
     - name: Comment on pull request with coverage
       uses: MishaKav/pytest-coverage-comment@main
+      continue-on-error: true
       with:
         pytest-coverage-path: ./pytest-coverage.txt
         # TODO: check if this has been fixed
