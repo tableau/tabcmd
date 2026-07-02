@@ -37,6 +37,10 @@ def add_log_level(level_name, level_num, method_name=None):
     setattr(logging, method_name, logToRoot)
 
 
+def _below_warning(record: logging.LogRecord) -> bool:
+    return record.levelno < logging.WARNING
+
+
 def add_trace_level():
     trace_level: int = logging.DEBUG - 5
     add_log_level("TRACE", trace_level)
@@ -68,7 +72,7 @@ def configure_log(name: str, logging_level_input: str):
         # WARNING and above → stderr so real errors are still distinguishable.
         stdout_handler = logging.StreamHandler(sys.stdout)
         stdout_handler.setLevel(logging_level)
-        stdout_handler.addFilter(lambda r: r.levelno < logging.WARNING)
+        stdout_handler.addFilter(_below_warning)
         stdout_handler.setFormatter(logging.Formatter(log_format))
         named_logger.addHandler(stdout_handler)
 
