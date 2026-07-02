@@ -4,6 +4,10 @@
 .idea
 *.DS_Store
 
+# setuptools_scm generated version file (may appear in any subpackage)
+tabcmd/**/_version.py
+tabcmd/_version.py
+
 # python build files
 build/
 dist/
