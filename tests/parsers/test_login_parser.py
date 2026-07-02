@@ -4,11 +4,11 @@ from unittest import mock
 from tabcmd.commands.auth.login_command import LoginCommand
 from .common_setup import *
 
-commandname = "login"
+commandname: str = "login"
 
 
 @mock.patch("sys.argv", None)
-class LoginParserTest(unittest.TestCase):
+class LoginParserTest(ParserTest):
     @classmethod
     def setUpClass(cls):
         cls.parser_under_test = initialize_test_pieces(commandname, LoginCommand)

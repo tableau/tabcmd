@@ -1,4 +1,5 @@
 import logging
+import logging.handlers
 import os
 
 path = os.path.dirname(os.path.abspath(__file__))
@@ -48,14 +49,26 @@ def configure_log(name: str, logging_level_input: str):
     if logging_level is not logging.INFO:
         FORMATS[logging.INFO] = "%(filename)-10s: %(message)-30s"
 
-    logging.basicConfig(
-        level=logging_level, format=log_format, filename="tabcmd.log", filemode="a", datefmt="%Y-%m" "-%d " "%H:%M:%S"
-    )
-    console = logging.StreamHandler()
-    console.setLevel(logging_level)
-    console.setFormatter(logging.Formatter(log_format))
-    logging.getLogger(name).addHandler(console)
-    return logging.getLogger(name)
+    root_logger = logging.getLogger()
+    root_logger.setLevel(logging_level)
+
+    # Only add handlers once to avoid duplicates on repeated configure_log calls
+    if not any(isinstance(h, logging.handlers.RotatingFileHandler) for h in root_logger.handlers):
+        file_handler = logging.handlers.RotatingFileHandler("tabcmd.log", maxBytes=1_000_000, backupCount=5)
+        file_handler.setLevel(logging_level)
+        file_handler.setFormatter(logging.Formatter(log_format, datefmt="%Y-%m-%d %H:%M:%S"))
+        root_logger.addHandler(file_handler)
+
+    named_logger = logging.getLogger(name)
+    if not any(
+        isinstance(h, logging.StreamHandler) and not isinstance(h, logging.FileHandler) for h in named_logger.handlers
+    ):
+        console = logging.StreamHandler()
+        console.setLevel(logging_level)
+        console.setFormatter(logging.Formatter(log_format))
+        named_logger.addHandler(console)
+
+    return named_logger
 
 
 def log(file_name, logging_level):

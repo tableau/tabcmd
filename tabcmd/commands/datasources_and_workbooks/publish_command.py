@@ -42,9 +42,9 @@ class PublishCommand(DatasourcesAndWorkbooks):
         set_append_replace_option(group)
         set_parent_project_arg(group)
 
-    @staticmethod
-    def run_command(args):
-        logger = log(__class__.__name__, args.logging_level)
+    @classmethod
+    def run_command(cls, args):
+        logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
@@ -140,7 +140,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
                     )
                     relative_files = list(map(lambda file: os.path.join(args.filename, file), in_place_files))
                 except Exception as e:
-                    Errors.exit_with_error(logger, message=in_place_files)
+                    Errors.exit_with_error(logger, message=str(in_place_files))
                 files.update(relative_files)
                 logger.debug(len(files))
         return sorted(files)

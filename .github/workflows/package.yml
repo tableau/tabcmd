@@ -112,4 +112,3 @@ jobs:
         file: ./dist/${{ matrix.TARGET }}/${{ matrix.UPLOAD_FILE_NAME }}
         tag: ${{ github.ref_name }}
         overwrite: true
-        promote: true

@@ -26,7 +26,7 @@ debug_log = "--logging-level=DEBUG"
 indexing_sleep_time = 1  # wait 1 second to confirm server has indexed updates
 # Flags to let us skip tests if we know we don't have the required access
 server_admin = False
-site_admin = True
+site_admin = False
 project_admin = False
 extract_encryption_enabled = False
 use_tabcmd_classic = False  # toggle between testing using tabcmd 2 or tabcmd classic
@@ -486,6 +486,8 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(14)
     def test_delete_extract(self):
+        if not extract_encryption_enabled:
+            pytest.skip("delete-extract requires extract encryption to be enabled on the site")
         name_on_server = TestAssets.get_publishable_name(TestAssets.TDSX_FILE_WITH_EXTRACT)
         TabcmdCall._delete_extract(name_on_server, "-d")
 
