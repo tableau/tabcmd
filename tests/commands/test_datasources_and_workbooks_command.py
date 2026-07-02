@@ -133,8 +133,8 @@ class ParameterTests(unittest.TestCase):
         value = ":size=800,600"
 
         DatasourcesAndWorkbooks.apply_options_in_url(mock_logger, request_options, value)
-        self.assertEqual(request_options.viz_height, 800)
-        self.assertEqual(request_options.viz_width, 600)
+        self.assertEqual(request_options.viz_width, 800)  # first value is width
+        self.assertEqual(request_options.viz_height, 600)  # second value is height
 
     def test_apply_options_in_url_with_refresh(self):
         request_options = tsc.ImageRequestOptions()
@@ -150,6 +150,13 @@ class ParameterTests(unittest.TestCase):
         DatasourcesAndWorkbooks.apply_options_in_url(mock_logger, request_options, value)
         self.assertEqual(request_options.viz_height, None)
         self.assertEqual(request_options.viz_width, None)
+
+    def test_apply_options_in_url_with_partial_size_no_partial_state(self):
+        # if the first dimension is invalid, neither width nor height should be set
+        request_options = tsc.ImageRequestOptions()
+        DatasourcesAndWorkbooks.apply_options_in_url(mock_logger, request_options, ":size=notanumber,600")
+        self.assertIsNone(request_options.viz_width)
+        self.assertIsNone(request_options.viz_height)
 
     def test_apply_options_in_url_with_unrecognized_parameter(self):
         request_options = tsc.ImageRequestOptions()
