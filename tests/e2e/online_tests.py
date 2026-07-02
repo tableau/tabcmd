@@ -80,10 +80,13 @@ class TestAssets:
 def _test_command(test_args: list[str]):
     # this will raise an exception if it gets a non-zero return code
     # that will bubble up and fail the test
+    login_args = setup_e2e.get_login_args()
+    if login_args is None:
+        pytest.skip("No credentials available (credentials.py not found)")
 
     # default: run tests using tabcmd 2
     calling_args = (
-        ["python", "-m", "tabcmd"] + test_args + setup_e2e.get_login_args() + [debug_log] + ["--no-certcheck"]
+        ["python", "-m", "tabcmd"] + test_args + login_args + [debug_log] + ["--no-certcheck"]
     )
 
     # call the executable directly: lets us drop in classic tabcmd
@@ -93,7 +96,6 @@ def _test_command(test_args: list[str]):
             + test_args
             + ["--no-certcheck"]
         )
-    login_args = setup_e2e.get_login_args()
     safe_to_print = not any(v in calling_args for v in login_args if v not in ("--server", "--site", "--token-name"))
     if safe_to_print:
         print(calling_args)

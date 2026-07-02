@@ -3,8 +3,10 @@ import os
 
 try:
     from tests.e2e import credentials  # type: ignore
+    _has_credentials = True
 except ImportError:
     credentials = {}  # type: ignore
+    _has_credentials = False
 
 our_program = "tabcmd.exe"
 launch_path = os.path.join("dist", "tabcmd")
@@ -46,6 +48,8 @@ def get_executable():
 
 
 def get_login_args():
+    if not _has_credentials:
+        return None
     return [
         "--server",
         credentials.server,
