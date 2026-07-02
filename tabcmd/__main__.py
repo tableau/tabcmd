@@ -8,9 +8,9 @@ except ImportError as e:
         file=sys.stderr,
     )
     if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
-        print("Application is running in an executable bundle")
-        print("sys.argv[0] is", sys.argv[0])
-        print("sys.executable is", sys.executable)
+        print("Application is running in an executable bundle", file=sys.stderr)
+        print("sys.argv[0] is", sys.argv[0], file=sys.stderr)
+        print("sys.executable is", sys.executable, file=sys.stderr)
     else:
         print(
             "[Possible cause: Tabcmd needs to be installed, try `pip install tabcmd`]",
@@ -18,4 +18,6 @@ except ImportError as e:
         )
     sys.exit(1)
 
-main()
+
+if __name__ == "__main__":
+    main()
