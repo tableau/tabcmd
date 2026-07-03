@@ -3,6 +3,7 @@ import os
 
 try:
     from tests.e2e import credentials  # type: ignore
+
     _has_credentials = True
 except ImportError:
     credentials = {}  # type: ignore
