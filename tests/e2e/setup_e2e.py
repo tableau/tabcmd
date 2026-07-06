@@ -49,15 +49,21 @@ def get_executable():
 
 
 def get_login_args():
-    if not _has_credentials:
-        return None
-    return [
-        "--server",
-        credentials.server,
-        "--site",
-        credentials.site,
-        "--token-value",
-        credentials.token,
-        "--token-name",
-        credentials.token_name,
-    ]
+    if _has_credentials:
+        return [
+            "--server",
+            credentials.server,
+            "--site",
+            credentials.site,
+            "--token-value",
+            credentials.token,
+            "--token-name",
+            credentials.token_name,
+        ]
+    server = os.environ.get("E2E_SERVER")
+    site = os.environ.get("E2E_SITE")
+    token_name = os.environ.get("E2E_PATNAME")
+    token = os.environ.get("E2E_PAT")
+    if server and site and token_name and token:
+        return ["--server", server, "--site", site, "--token-value", token, "--token-name", token_name]
+    return None
