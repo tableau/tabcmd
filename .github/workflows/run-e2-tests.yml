@@ -11,6 +11,60 @@ on:
         required: true
       pat:
         required: true
+      server_admin:
+        description: 'Account has server admin role'
+        required: false
+        default: 'false'
+        type: choice
+        options: ['false', 'true']
+      site_admin:
+        description: 'Account has site admin role'
+        required: false
+        default: 'false'
+        type: choice
+        options: ['false', 'true']
+      project_admin:
+        description: 'Account has project admin role'
+        required: false
+        default: 'false'
+        type: choice
+        options: ['false', 'true']
+      extract_encryption_enabled:
+        description: 'Site has extract encryption enabled'
+        required: false
+        default: 'false'
+        type: choice
+        options: ['false', 'true']
+  workflow_call:
+    inputs:
+      server:
+        required: true
+        type: string
+      site:
+        required: true
+        type: string
+      patname:
+        required: true
+        type: string
+      server_admin:
+        required: false
+        type: boolean
+        default: false
+      site_admin:
+        required: false
+        type: boolean
+        default: false
+      project_admin:
+        required: false
+        type: boolean
+        default: false
+      extract_encryption_enabled:
+        required: false
+        type: boolean
+        default: false
+    secrets:
+      pat:
+        required: true
 
 jobs:
   build:
@@ -23,7 +77,7 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
 
     - name: Set up Python ${{ matrix.python-version }} on ${{ matrix.os }}
       uses: actions/setup-python@v6
@@ -42,6 +96,15 @@ jobs:
         pip install .[test]
 
     - name: Run e2e tests
-      run: | 
-        python -m tabcmd login --server "${{ github.event.inputs.server }}" --site "${{ github.event.inputs.site }}" --token-name "${{ github.event.inputs.patname }}" --token-value "${{ github.event.inputs.pat }}"
+      env:
+        E2E_SERVER: ${{ inputs.server }}
+        E2E_SITE: ${{ inputs.site }}
+        E2E_PATNAME: ${{ inputs.patname }}
+        E2E_PAT: ${{ secrets.pat || inputs.pat }}
+        E2E_SERVER_ADMIN: ${{ inputs.server_admin || 'false' }}
+        E2E_SITE_ADMIN: ${{ inputs.site_admin || 'false' }}
+        E2E_PROJECT_ADMIN: ${{ inputs.project_admin || 'false' }}
+        E2E_EXTRACT_ENCRYPTION: ${{ inputs.extract_encryption_enabled || 'false' }}
+      run: |
+        python -m tabcmd login --server "$E2E_SERVER" --site "$E2E_SITE" --token-name "$E2E_PATNAME" --token-value "$E2E_PAT"
         pytest -q tests/e2e/online_tests.py -r pfE
