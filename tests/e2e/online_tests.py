@@ -446,9 +446,13 @@ class OnlineCommandTest(unittest.TestCase):
 
         TabcmdCall._get_view(wb_name_on_server, sheet_name, "get_view_default_size.png")
         url_params = "?:size=100,200"
-        TabcmdCall._get_view(wb_name_on_server, sheet_name + url_params, os.path.join(OUTPUT_DIR, "get_view_sized_sm.png"))
+        TabcmdCall._get_view(
+            wb_name_on_server, sheet_name + url_params, os.path.join(OUTPUT_DIR, "get_view_sized_sm.png")
+        )
         url_params = "?:size=500,700"
-        TabcmdCall._get_view(wb_name_on_server, sheet_name + url_params, os.path.join(OUTPUT_DIR, "get_view_sized_LARGE.png"))
+        TabcmdCall._get_view(
+            wb_name_on_server, sheet_name + url_params, os.path.join(OUTPUT_DIR, "get_view_sized_LARGE.png")
+        )
 
     @pytest.mark.order(11)
     def test_view_get_csv(self):
