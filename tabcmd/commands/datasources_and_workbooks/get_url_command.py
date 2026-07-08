@@ -25,7 +25,7 @@ class GetUrl(DatasourcesAndWorkbooks):
     @staticmethod
     def define_args(get_url_parser):
         group = get_url_parser.add_argument_group(title=GetUrl.name)
-        group.add_argument("url", help=_("refreshextracts.options.url"))
+        group.add_argument("url", help=_("tabcmd.options.resource_url"))
         set_destination_filename_arg(group)
         # these don't need arguments, although that would be a good future addition
         # tabcmd get "/views/Finance/InvestmentGrowth.png?:size=640,480" -f growth.png
@@ -62,7 +62,7 @@ class GetUrl(DatasourcesAndWorkbooks):
         for content_type in GetUrl.valid_content_types:
             if url.find(content_type) == 0:
                 return content_type
-        Errors.exit_with_error(logger, message=_("bad_request.detail.invalid_content_type").format(url))
+        Errors.exit_with_error(logger, message=_("tabcmd.error.bad_request.invalid_content_type").format(url))
 
     @staticmethod
     def filename_from_args(file_argument, item_name, filetype):
@@ -95,7 +95,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             elif file_type == "csv":
                 return GetUrl.generate_csv(logger, server_content_type, args, get_url_item)
         # all the known options above will return early. If we get here we are confused.
-        Errors.exit_with_error(logger, message=_("get.extension.not_found"))
+        Errors.exit_with_error(logger, message=_("tabcmd.get.extension.not_found"))
 
     @staticmethod
     def generate_pdf(logger, server_content_type, args, get_url_item):

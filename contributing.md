@@ -137,6 +137,26 @@ The version reflected in the executable (tabcmd -v) is stored in a metadata file
 
 
 
+
+### Localization
+
+Strings should be added/edited in /tabcmd/locales/en/{name}.properties by id and referred to in code as 
+> string = _("string.id")
+
+- regenerate updated strings for packaging as exe
+> python -m doit combine_property_files po mo
+
+
+### Versioning
+
+Versioning is done with setuptools_scm and based on git tags. The version number will be x.y.dev0.dirty except for commits with a new version tag.
+ This is pulled from the git state, and to get a clean version like "v2.1.0", you must be on a commit with the tag "v2.1.0" (Creating a Github release also creates a tag on the selected branch.) 
+
+The version reflected in the executable (tabcmd -v) is stored in a metadata file created by a .doit script:
+> python -m doit version
+
+
+
 ### Packaging 
 Packaging for release is done in a github action and should not need to be done locally.
 

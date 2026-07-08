@@ -65,10 +65,10 @@ class Errors:
                 Errors.log_stack(logger)
             elif exception:
                 if message:
-                    logger.info("Error message: " + message)
+                    logger.info(_("tabcmd.debug.error_message") + message)
                 Errors.check_common_error_codes_and_explain(logger, exception)
             else:
-                logger.info("No exception or message provided")
+                logger.info(_("tabcmd.debug.no_exception_or_message"))
 
         except Exception as exc:
             print(sys.stderr, "Error during log call from exception - {} {}".format(exc.__class__, message))

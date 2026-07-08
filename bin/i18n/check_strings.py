@@ -7,7 +7,7 @@ localization pattern and checks if they're present in the locale files.
 
 Usage:
     python bin/i18n/check_strings.py                    # Dev mode: check against en/*.properties
-    python bin/i18n/check_strings.py --mode build       # Build mode: check against filtered.properties for all locales
+    python bin/i18n/check_strings.py --mode build       # Build mode: check against combined.tmp for all locales
 
 Returns:
     0 if no missing strings found
@@ -188,59 +188,63 @@ def format_limited_list(items: List[str], prefix: str = "  Missing: ", limit: in
 
 
 def check_build_mode(project_root: Path, locales: List[str]) -> int:
-    """Check all locales against filtered.properties files (build pipeline mode)."""
+    """Check all locales against combined.tmp files (build pipeline mode)."""
     tabcmd_dir = project_root / "tabcmd"
     
     # Setup output file
     output_file = project_root / "localization_check_results.txt"
     
-    def print_and_write(message, file_handle=None):
-        """Print to console and write to file"""
+    def print_and_write(message, file_handle=None, full_list=None, full_prefix="  "):
+        """Print message to console and file; if full_list is provided and longer than 10
+        items, the console gets the truncated message and the file also gets the complete list."""
         print(message)
         if file_handle:
             file_handle.write(message + "\n")
-    
+            if full_list and len(full_list) > 10:
+                file_handle.write(f"{full_prefix}Complete list:\n")
+                for key in sorted(full_list):
+                    file_handle.write(f"{full_prefix}  {key}\n")
+
     with open(output_file, "w", encoding="utf-8") as f:
         print_and_write(f"Build mode: Scanning Python files in: {tabcmd_dir}", f)
         print_and_write(f"Checking locales: {', '.join(locales)}", f)
         print_and_write("", f)
-        
+
         # Find all Python files and extract string keys
         python_files = find_python_files(str(tabcmd_dir))
         print_and_write(f"Found {len(python_files)} Python files to scan", f)
-        
+
         code_strings = set()
         for file_path in python_files:
             code_strings.update(extract_string_keys_from_file(file_path))
-        
+
         print_and_write(f"Found {len(code_strings)} unique string keys in code", f)
-    
+
         # Check each locale, starting with English as baseline
         english_success = True  # Only track English success for exit code
         english_missing_keys = set()
-        english_output = ""  # Store English output to repeat at end
         locales_with_same_missing = []
-        
+
         for locale in locales:
-            filtered_file = project_root / "tabcmd" / "locales" / locale / "LC_MESSAGES" / "filtered.properties"
-            
+            filtered_file = project_root / "tabcmd" / "locales" / locale / "LC_MESSAGES" / "combined.tmp"
+
             if not filtered_file.exists():
-                print_and_write(f"WARNING: No filtered.properties for locale '{locale}' at {filtered_file}", f)
+                print_and_write(f"WARNING: No combined.tmp for locale '{locale}' at {filtered_file}", f)
                 continue
-                
+
             defined_keys = load_properties_file(str(filtered_file))
             missing_keys = code_strings - defined_keys
-            
+
             if missing_keys:
                 if locale == "en":
-                    # English has missing keys - this affects exit code
                     english_success = False
                     english_missing_keys = missing_keys
-                    english_output = f"\nERROR: Found {len(missing_keys)} missing string keys for locale '{locale}':\n"
-                    english_output += "=" * 60 + "\n"
+
+                    msg = f"\nERROR: Found {len(missing_keys)} missing string keys for locale 'en':\n"
+                    msg += "=" * 60 + "\n"
                     for line in format_limited_list(list(missing_keys)):
-                        english_output += line + "\n"
-                    print_and_write(english_output.rstrip(), f)  # Print now for baseline
+                        msg += line + "\n"
+                    print_and_write(msg.rstrip(), f, full_list=list(missing_keys))
                 else:
                     # For other languages, only show if different from English
                     if missing_keys == english_missing_keys:
@@ -248,47 +252,45 @@ def check_build_mode(project_root: Path, locales: List[str]) -> int:
                     else:
                         print_and_write(f"\nERROR: Found {len(missing_keys)} missing string keys for locale '{locale}' (different from English):", f)
                         print_and_write("=" * 60, f)
-                        
-                        # Show keys unique to this locale
+
                         unique_to_locale = missing_keys - english_missing_keys
                         if unique_to_locale:
-                            print_and_write(f"  Additional missing keys in {locale}:", f)
-                            for line in format_limited_list(list(unique_to_locale), "    Missing: "):
-                                print_and_write(line, f)
-                        
-                        # Show keys missing in English but present in this locale
+                            summary = "\n".join(format_limited_list(list(unique_to_locale), "    Missing: "))
+                            print_and_write(f"  Additional missing keys in {locale}:\n{summary}", f,
+                                            full_list=list(unique_to_locale), full_prefix="    ")
+
                         present_in_locale = english_missing_keys - missing_keys
                         if present_in_locale:
-                            print_and_write(f"  Keys present in {locale} but missing in English:", f)
-                            for line in format_limited_list(list(present_in_locale), "    Present: "):
-                                print_and_write(line, f)
-                        
-                        # Show common missing keys if both have missing keys
+                            summary = "\n".join(format_limited_list(list(present_in_locale), "    Present: "))
+                            print_and_write(f"  Keys present in {locale} but missing in English:\n{summary}", f,
+                                            full_list=list(present_in_locale), full_prefix="    ")
+
                         common_missing = missing_keys & english_missing_keys
                         if common_missing and (unique_to_locale or present_in_locale):
                             print_and_write(f"  Keys missing in both English and {locale}: {len(common_missing)}", f)
             else:
-                if locale == "en":
-                    english_output = f"[OK] Locale '{locale}': All {len(code_strings)} string keys found"
-                    print_and_write(english_output, f)  # Print now for baseline
-                else:
-                    print_and_write(f"[OK] Locale '{locale}': All {len(code_strings)} string keys found", f)
-        
+                print_and_write(f"[OK] Locale '{locale}': All {len(code_strings)} string keys found", f)
+
         # Show summary for locales with same missing keys as English
         if locales_with_same_missing:
             print_and_write(f"\nNOTE: The following locales have the same missing keys as English:", f)
             print_and_write(f"      {', '.join(locales_with_same_missing)}", f)
             print_and_write(f"      Missing keys: {len(english_missing_keys)}", f)
-        
+
         # Print English results again at the end for visibility
-        if english_output and "en" in locales:
+        if "en" in locales:
             print_and_write(f"\n--- English Results (repeated for visibility) ---", f)
-            print_and_write(english_output.rstrip(), f)
-        
-        # Summary message about file output
+            if english_missing_keys:
+                msg = f"ERROR: Found {len(english_missing_keys)} missing string keys for locale 'en':\n"
+                msg += "=" * 60 + "\n"
+                for line in format_limited_list(list(english_missing_keys)):
+                    msg += line + "\n"
+                print_and_write(msg.rstrip(), f, full_list=list(english_missing_keys))
+            else:
+                print_and_write(f"[OK] Locale 'en': All {len(code_strings)} string keys found", f)
+
         print_and_write(f"\nResults saved to: {output_file}", f)
-        
-        # Only fail if English has missing strings
+
         if english_success:
             print_and_write("\nSUCCESS: All required English strings are present", f)
         else:
@@ -333,8 +335,9 @@ def check_dev_mode(project_root: Path) -> int:
             rel_path = os.path.relpath(file_path, project_root)
             print(f"\nFile: {rel_path}")
             print("-" * 40)
-            for line in format_limited_list(missing_by_file[file_path]):
-                print(line)
+            # In dev mode, show complete list since there's no file output
+            for key in sorted(missing_by_file[file_path]):
+                print(f"  Missing: {key}")
         
         print("\n" + "=" * 80)
         print("Please add the missing string keys to the appropriate .properties files.")
@@ -353,7 +356,7 @@ def main():
         "--mode", 
         choices=["dev", "build"], 
         default="dev",
-        help="dev: check against en/*.properties (default), build: check against filtered.properties for all locales"
+        help="dev: check against en/*.properties (default), build: check against combined.tmp for all locales"
     )
     parser.add_argument(
         "--locales", 
