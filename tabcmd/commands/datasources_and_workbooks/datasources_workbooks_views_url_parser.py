@@ -1,5 +1,6 @@
 import os
 
+import tableauserverclient as TSC
 from uuid import UUID
 
 from tabcmd.commands.constants import Errors
@@ -14,7 +15,7 @@ class DatasourcesWorkbooksAndViewsUrlParser(Server):
     """
 
     def __init__(self, args):
-        super().__init__(args)
+        pass
 
     @staticmethod
     def get_view_url_from_names(wb_name, view_name):
@@ -73,23 +74,24 @@ class DatasourcesWorkbooksAndViewsUrlParser(Server):
     @staticmethod
     def get_file_type_from_filename(logger, url, file_name):
         logger.debug("Choosing between {}, {}".format(file_name, url))
-        file_name = file_name or url
         logger.debug(_("get.options.file") + ": {}".format(file_name))  # Name to save the file as
-        type_of_file = DatasourcesWorkbooksAndViewsUrlParser.get_file_extension(file_name)
+        valid_extensions = ["pdf", "csv", "png", "twb", "twbx", "tdsx", "tds"]
 
-        if not type_of_file and file_name is not None:
-            # check the url
-            backup = DatasourcesWorkbooksAndViewsUrlParser.get_file_extension(url)
-            if backup is not None:
-                type_of_file = backup
-            else:
-                Errors.exit_with_error(logger, _("get.extension.not_found").format(file_name))
+        # If the user supplied a filename with a recognized extension, that takes precedence.
+        if file_name:
+            type_of_file = DatasourcesWorkbooksAndViewsUrlParser.get_file_extension(file_name)
+            if type_of_file in valid_extensions:
+                logger.debug("filetype from filename: {}".format(type_of_file))
+                return type_of_file
 
-        logger.debug("filetype: {}".format(type_of_file))
-        if type_of_file in ["pdf", "csv", "png", "twb", "twbx", "tdsx", "tds"]:
-            return type_of_file
+        # Fall back to the URL extension (either no filename was given, or filename had no recognized extension).
+        if url:
+            type_of_file = DatasourcesWorkbooksAndViewsUrlParser.get_file_extension(url)
+            if type_of_file in valid_extensions:
+                logger.debug("filetype from url: {}".format(type_of_file))
+                return type_of_file
 
-        Errors.exit_with_error(logger, _("get.extension.not_found").format(file_name))
+        Errors.exit_with_error(logger, _("get.extension.not_found").format(file_name or url))
 
     @staticmethod
     def get_file_extension(path):
@@ -179,12 +181,16 @@ class DatasourcesWorkbooksAndViewsUrlParser(Server):
 
     @staticmethod
     def get_content_and_server_content_type_from_url(logger, server, view_content_url, custom_view_id):
-        item = DatasourcesAndWorkbooks.get_view_by_content_url(logger, server, view_content_url)
+        item: TSC.ViewItem | TSC.CustomViewItem = DatasourcesAndWorkbooks.get_view_by_content_url(
+            logger, server, view_content_url
+        )
         server_content_type = server.views
 
         if custom_view_id:
-            custom_view_item = DatasourcesAndWorkbooks.get_custom_view_by_id(logger, server, custom_view_id)
-            if custom_view_item.view.id != item.id:
+            custom_view_item: TSC.CustomViewItem = DatasourcesAndWorkbooks.get_custom_view_by_id(
+                logger, server, custom_view_id
+            )
+            if not custom_view_item.view or custom_view_item.view.id != item.id:
                 Errors.exit_with_error(logger, "Invalid custom view URL provided")
             server_content_type = server.custom_views
             item = custom_view_item

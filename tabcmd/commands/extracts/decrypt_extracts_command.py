@@ -19,9 +19,9 @@ class DecryptExtracts(Server):
         group = decrypt_extract_parser.add_argument_group(title=DecryptExtracts.name)
         group.add_argument("site_name", metavar="site-name", help=_("editsite.options.site-name"))
 
-    @staticmethod
-    def run_command(args):
-        logger = log(__class__.__name__, args.logging_level)
+    @classmethod
+    def run_command(cls, args):
+        logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
@@ -30,7 +30,7 @@ class DecryptExtracts(Server):
             logger.info(_("decryptextracts.status").format(args.site_name))
             job = server.sites.decrypt_extracts(site_item.id)
         except Exception as e:
-            Errors.exit_with_error(logger, e)
+            Errors.exit_with_error(logger, exception=e)
 
         logger.info(_("common.output.job_queued_success"))
         logger.debug("Extract decryption queued with JobID: {}".format(job.id))

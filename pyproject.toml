@@ -3,6 +3,7 @@ requires = ["build", "setuptools", "setuptools_scm"]
 build-backend = "setuptools.build_meta"
 [tool.setuptools_scm]
 local_scheme = "no-local-version"  # require pypi supported versions always
+write_to = "tabcmd/_version.py"
 [tool.setuptools]
 packages = ["tabcmd"]
 [tool.setuptools.package-data]
@@ -13,6 +14,7 @@ required-version = 22
 target-version = ['py310', 'py311']
 extend-exclude = '^/bin/*'
 [tool.mypy]
+check_untyped_defs = true
 disable_error_code = [
     'misc',
     'import'
@@ -46,7 +48,7 @@ dependencies = [
     "appdirs",
     "requests>=2.25,<3.0",
     "setuptools",
-    "tableauserverclient==0.40",
+    "tableauserverclient==0.41",
     "urllib3",
 ]
 [project.optional-dependencies]

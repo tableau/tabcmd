@@ -24,11 +24,18 @@ from tests.e2e import setup_e2e
 # config variables for test run
 debug_log = "--logging-level=DEBUG"
 indexing_sleep_time = 1  # wait 1 second to confirm server has indexed updates
-# Flags to let us skip tests if we know we don't have the required access
-server_admin = False
-site_admin = True
-project_admin = False
-extract_encryption_enabled = False
+
+
+def _env_bool(name: str, default: bool = False) -> bool:
+    return os.environ.get(name, str(default)).lower() == "true"
+
+
+# Flags to let us skip tests if we know we don't have the required access.
+# Override by setting env vars (e.g. E2E_SITE_ADMIN=true) or via workflow inputs.
+server_admin = _env_bool("E2E_SERVER_ADMIN")
+site_admin = _env_bool("E2E_SITE_ADMIN")
+project_admin = _env_bool("E2E_PROJECT_ADMIN")
+extract_encryption_enabled = _env_bool("E2E_EXTRACT_ENCRYPTION")
 use_tabcmd_classic = False  # toggle between testing using tabcmd 2 or tabcmd classic
 
 
@@ -73,11 +80,12 @@ class TestAssets:
 def _test_command(test_args: list[str]):
     # this will raise an exception if it gets a non-zero return code
     # that will bubble up and fail the test
+    login_args = setup_e2e.get_login_args()
+    if login_args is None:
+        pytest.skip("No credentials available (credentials.py not found)")
 
     # default: run tests using tabcmd 2
-    calling_args = (
-        ["python", "-m", "tabcmd"] + test_args + setup_e2e.get_login_args() + [debug_log] + ["--no-certcheck"]
-    )
+    calling_args = ["python", "-m", "tabcmd"] + test_args + login_args + [debug_log] + ["--no-certcheck"]
 
     # call the executable directly: lets us drop in classic tabcmd
     if use_tabcmd_classic:
@@ -86,7 +94,8 @@ def _test_command(test_args: list[str]):
             + test_args
             + ["--no-certcheck"]
         )
-    if database_password not in calling_args:
+    safe_to_print = not any(v in calling_args for v in login_args if v not in ("--server", "--site", "--token-name"))
+    if safe_to_print:
         print(calling_args)
     return subprocess.check_call(calling_args)
 
@@ -486,6 +495,8 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(14)
     def test_delete_extract(self):
+        if not extract_encryption_enabled:
+            pytest.skip("delete-extract requires extract encryption to be enabled on the site")
         name_on_server = TestAssets.get_publishable_name(TestAssets.TDSX_FILE_WITH_EXTRACT)
         TabcmdCall._delete_extract(name_on_server, "-d")
 

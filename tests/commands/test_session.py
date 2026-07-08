@@ -154,9 +154,9 @@ class BuildCredentialsTests(unittest.TestCase):
 
     def test__create_new_username_credential_succeeds_new_password(self, mock_pass):
         test_password = "pword1"
-        active_session = Session()
+        active_session: Session = Session()
         active_session.username = "user"
-        active_session.site = ""
+        active_session.site_id = ""
         auth = active_session._create_new_credential(test_password, Session.PASSWORD_CRED_TYPE)
         assert auth is not None
 
@@ -175,7 +175,7 @@ class BuildCredentialsTests(unittest.TestCase):
     def test__create_new_username_credential_succeeds_from_self(self, mock_pass):
         active_session = Session()
         active_session.username = "user3"
-        active_session.site = ""
+        active_session.site_id = ""
         auth = active_session._create_new_credential(None, Session.PASSWORD_CRED_TYPE)
         assert mock_pass.has_been_called()
         assert auth is not None
@@ -202,17 +202,23 @@ class BuildCredentialsTests(unittest.TestCase):
 class PromptingTests(unittest.TestCase):
     def test_show_prompt_if_user_didnt_say(self):
         test_args = Namespace(**vars(args_to_mock))
-        assert Session._allow_prompt(test_args) is True, test_args
+        mock_session = Session()
+        mock_session._update_session_data(test_args)
+        assert mock_session._allow_prompt() is True, test_args
 
     def test_show_prompt_if_user_said_yes(self):
         test_args = Namespace(**vars(args_to_mock))
         test_args.prompt = True
-        assert Session._allow_prompt(test_args) is True, test_args
+        mock_session = Session()
+        mock_session._update_session_data(test_args)
+        assert mock_session._allow_prompt() is True, test_args
 
     def test_dont_show_prompt_if_user_said_no(self):
         test_args = Namespace(**vars(args_to_mock))
         test_args.no_prompt = True
-        assert Session._allow_prompt(test_args) is False, test_args
+        mock_session = Session()
+        mock_session._update_session_data(test_args)
+        assert mock_session._allow_prompt() is False, test_args
 
 
 """
@@ -397,7 +403,7 @@ class CreateSessionTests(unittest.TestCase):
         args_server = "10ay.online.tableau.com/"
         test_args.server = args_server
 
-        expected_session_server_url = "http://" + args_server.rstrip("/")
+        expected_session_server_url = "https://" + args_server.rstrip("/")
 
         auth = new_session.create_session(test_args, None)
         assert auth is not None, auth
@@ -419,7 +425,7 @@ class CreateSessionTests(unittest.TestCase):
         args_server = "10ay.online.tableau.com/#/sitename/views/viewname"
         test_args.server = args_server
 
-        expected_session_server_url = "http://" + args_server.split("/")[0]
+        expected_session_server_url = "https://" + args_server.split("/")[0]
 
         auth = new_session.create_session(test_args, None)
         assert auth is not None, auth
@@ -446,6 +452,82 @@ class CreateSessionTests(unittest.TestCase):
         auth = new_session.create_session(test_args, None)
         assert auth is not None, auth
         assert new_session.server_url == expected_session_server_url
+
+    @mock.patch("tableauserverclient.Server")
+    def test_create_session_username_only_prompts_for_password(
+        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json
+    ):
+        """When username given, no password, no active session: should prompt via getpass."""
+        name = "myuser"
+        _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
+        new_session = Session()
+        new_session.no_prompt = False
+        new_session.tableau_server = None  # no active session
+        mock_pass.return_value = "prompted_password"
+        mock_tsc.return_value.auth.sign_in.return_value = mock.MagicMock()
+
+        test_args = Namespace(**vars(args_to_mock))
+        test_args.username = name
+        test_args.no_prompt = False
+
+        auth = new_session.create_session(test_args, None)
+        assert auth is not None, auth
+        mock_pass.assert_called()
+
+    @mock.patch("tableauserverclient.Server")
+    def test_create_session_username_only_reuses_existing_session(
+        self, mock_tsc, mock_pass, mock_file, mock_path, mock_json
+    ):
+        """When username given with no password but an active session exists: reuse it, no prompt."""
+        name = "myuser"
+        _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
+        new_session = Session()
+        new_session.tableau_server = mock_tsc()
+        new_session.user_id = "some-user-id"
+        _set_mock_signin_validation_succeeds(new_session.tableau_server, name)
+
+        test_args = Namespace(**vars(args_to_mock))
+        test_args.username = name
+        test_args.no_prompt = False
+
+        auth = new_session.create_session(test_args, None)
+        assert auth is not None, auth
+        mock_pass.assert_not_called()
+
+    @mock.patch("tableauserverclient.Server")
+    def test_create_session_username_only_no_prompt_exits(self, mock_tsc, mock_pass, mock_file, mock_path, mock_json):
+        """When username given, no password, --no-prompt set, no active session: exit with error."""
+        name = "myuser"
+        _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
+        new_session = Session()
+        new_session.no_prompt = True
+        new_session.tableau_server = None  # no active session
+
+        test_args = Namespace(**vars(args_to_mock))
+        test_args.username = name
+        test_args.no_prompt = True
+
+        with self.assertRaises(SystemExit):
+            new_session.create_session(test_args, None)
+        mock_pass.assert_not_called()
+
+    @mock.patch("tableauserverclient.Server")
+    def test_create_session_username_and_password_no_prompt(self, mock_tsc, mock_pass, mock_file, mock_path, mock_json):
+        """When both username and password are given, getpass should not be called."""
+        name = "myuser"
+        _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
+        new_session = Session()
+        new_session.tableau_server = mock_tsc()
+        _set_mock_signin_validation_succeeds(new_session.tableau_server, name)
+
+        test_args = Namespace(**vars(args_to_mock))
+        test_args.username = name
+        test_args.password = "mypassword"
+        test_args.no_prompt = False
+
+        auth = new_session.create_session(test_args, None)
+        assert auth is not None, auth
+        mock_pass.assert_not_called()
 
 
 def _set_mock_tsc_not_signed_in(mock_tsc):
@@ -533,6 +615,37 @@ class ConnectionOptionsTest(unittest.TestCase):
         assert connection._http_options["timeout"] == 10
 
 
+class GetServerBaseUrlTests(unittest.TestCase):
+    """Unit tests for Session._get_server_base_url."""
+
+    def setUp(self):
+        self.session = Session()
+
+    def test_no_scheme_defaults_to_https(self):
+        result = self.session._get_server_base_url("my-tableau-server.com")
+        assert result == "https://my-tableau-server.com", result
+
+    def test_explicit_http_stays_http(self):
+        result = self.session._get_server_base_url("http://my-tableau-server.com")
+        assert result == "http://my-tableau-server.com", result
+
+    def test_explicit_https_stays_https(self):
+        result = self.session._get_server_base_url("https://my-tableau-server.com")
+        assert result == "https://my-tableau-server.com", result
+
+    def test_no_scheme_with_path_component(self):
+        result = self.session._get_server_base_url("my-tableau-server.com/some/path")
+        assert result == "https://my-tableau-server.com", result
+
+    def test_no_scheme_with_trailing_slash(self):
+        result = self.session._get_server_base_url("my-tableau-server.com/")
+        assert result == "https://my-tableau-server.com", result
+
+    def test_https_with_path_strips_path(self):
+        result = self.session._get_server_base_url("https://my-tableau-server.com/some/path")
+        assert result == "https://my-tableau-server.com", result
+
+
 """
 
 This is too slow for unit tests.
@@ -547,6 +660,7 @@ class TimeoutIntegrationTest(unittest.TestCase):
         test_args.server = "https://nothere.com"
         with self.assertRaises(SystemExit):
             new_session.create_session(test_args, None)
+
 
 
 class CookieTests(unittest.TestCase):

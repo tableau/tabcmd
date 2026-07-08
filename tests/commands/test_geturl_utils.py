@@ -178,7 +178,7 @@ class GeturlTests(unittest.TestCase):
             DatasourcesWorkbooksAndViewsUrlParser.parse_get_view_url_to_view_and_custom_view_parts(mock_logger, url)
 
     def test_parse_get_url_to_view_parts_without_slashes(self):
-        url = "views\wb name\\view-name"
+        url = "views\\wb name\\view-name"
         with self.assertRaises(SystemExit):
             DatasourcesWorkbooksAndViewsUrlParser.parse_get_view_url_to_view_and_custom_view_parts(mock_logger, url)
 
@@ -447,3 +447,48 @@ class DS_WB_Tests(unittest.TestCase):
         mock_content = mock.MagicMock()
         filename = "test_out.csv"
         ExportCommand.save_to_data_file(mock_logger, mock_content, filename)
+
+
+class FilenameExtensionTests(unittest.TestCase):
+    # get_file_type_from_filename(logger, url, file_name)
+    # file_name extension takes precedence; falls back to url extension; exits if neither recognized
+
+    def test_filename_extension_overrides_url_extension(self):
+        mock_logger = mock.MagicMock()
+        result = DatasourcesWorkbooksAndViewsUrlParser.get_file_type_from_filename(
+            mock_logger, "view.png", "output.csv"
+        )
+        assert result == "csv"
+
+    def test_filename_without_extension_falls_back_to_url_extension(self):
+        mock_logger = mock.MagicMock()
+        result = DatasourcesWorkbooksAndViewsUrlParser.get_file_type_from_filename(mock_logger, "view.png", "output")
+        assert result == "png"
+
+    def test_no_filename_falls_back_to_url_extension(self):
+        mock_logger = mock.MagicMock()
+        result = DatasourcesWorkbooksAndViewsUrlParser.get_file_type_from_filename(mock_logger, "report.pdf", None)
+        assert result == "pdf"
+
+    def test_no_valid_extension_anywhere_exits(self):
+        mock_logger = mock.MagicMock()
+        with self.assertRaises(SystemExit):
+            DatasourcesWorkbooksAndViewsUrlParser.get_file_type_from_filename(mock_logger, "view.xyz", "output.abc")
+
+
+class ImageFormatTests(unittest.TestCase):
+    """Tests for TSC 0.41 ImageRequestOptions.Format constants and format parameter."""
+
+    def test_image_format_png(self):
+        assert TSC.ImageRequestOptions.Format.PNG == "PNG"
+
+    def test_image_format_svg(self):
+        assert TSC.ImageRequestOptions.Format.SVG == "SVG"
+
+    def test_image_request_options_format_parameter(self):
+        opts = TSC.ImageRequestOptions(format=TSC.ImageRequestOptions.Format.SVG)
+        assert opts.format == TSC.ImageRequestOptions.Format.SVG
+
+    def test_image_request_options_default_format(self):
+        opts = TSC.ImageRequestOptions()
+        assert opts.format is None

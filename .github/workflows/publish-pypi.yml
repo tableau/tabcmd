@@ -7,8 +7,8 @@ on:
         description: 'Test PyPi'
         required: true
         type: boolean
-  push:
-    tags: 'pypi'
+  release:
+    types: [published]
 
 jobs:
   build-n-publish:
@@ -32,13 +32,13 @@ jobs:
           python -m build
           
       - name: Publish distribution 📦 to Test PyPI
-        if: ${{ inputs.is_draft }}
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.is_draft == true }}
         uses: pypa/gh-action-pypi-publish@release/v1  # license BSD-2
         with:
           password: ${{ secrets.TEST_PYPI_API_TOKEN }}
           repository_url: https://test.pypi.org/legacy/
       - name: Publish distribution 📦 to PyPI
-        if: ${{ !inputs.is_draft }}
+        if: ${{ github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.is_draft != true) }}
         uses: pypa/gh-action-pypi-publish@release/v1  # license BSD-2
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
