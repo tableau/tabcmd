@@ -3,11 +3,13 @@
 
 name: Pypi smoke tests
 
-# maybe we want this triggered after the publish-pypi workflow?
 on:
   workflow_dispatch:
   schedule:
     - cron: 0 11 * * * # Every day at 11AM UTC (7AM EST)
+  workflow_run:
+    workflows: ["Publish to PyPi"]
+    types: [completed]
 
 permissions:
   contents: read
