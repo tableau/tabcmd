@@ -530,6 +530,78 @@ class CreateSessionTests(unittest.TestCase):
         mock_pass.assert_not_called()
 
 
+@mock.patch("tabcmd.commands.auth.session.json")
+@mock.patch("tabcmd.commands.auth.session.os.path")
+@mock.patch("builtins.open")
+class MissingCredentialFileTests(unittest.TestCase):
+    """Tests that missing --password-file / --token-file paths exit with an actionable error."""
+
+    def _assert_missing_file_error(self, mock_exit, expected_key_fragment, expected_path):
+        """Assert exit_with_error was called with a message referencing the missing file."""
+        call_kwargs = mock_exit.call_args
+        message = call_kwargs[1].get("message", "") or str(call_kwargs)
+        # Depending on whether locale .mo files are loaded, _() returns either the
+        # translated string (containing the path) or the raw i18n key.
+        self.assertTrue(
+            expected_path in message or expected_key_fragment in message,
+            "Expected path '{}' or key '{}' in error message, got: {}".format(
+                expected_path, expected_key_fragment, message
+            ),
+        )
+
+    def test_password_file_not_found_exits_with_actionable_error(self, mock_file, mock_path, mock_json):
+        mock_path.isfile.return_value = False
+        mock_path.exists.return_value = False
+        new_session = Session()
+        new_session.username = "uuuu"
+        new_session.password_file = "/nonexistent/cred.txt"
+        with mock.patch("tabcmd.commands.auth.session.Errors.exit_with_error", side_effect=SystemExit) as mock_exit:
+            with self.assertRaises(SystemExit):
+                new_session._create_new_credential(None, Session.PASSWORD_CRED_TYPE)
+        self._assert_missing_file_error(mock_exit, "password_file_not_found", "/nonexistent/cred.txt")
+
+    def test_token_file_not_found_exits_with_actionable_error(self, mock_file, mock_path, mock_json):
+        mock_path.isfile.return_value = False
+        mock_path.exists.return_value = False
+        new_session = Session()
+        new_session.token_name = "mytoken"
+        new_session.token_file = "/nonexistent/token.txt"
+        with mock.patch("tabcmd.commands.auth.session.Errors.exit_with_error", side_effect=SystemExit) as mock_exit:
+            with self.assertRaises(SystemExit):
+                new_session._create_new_token_credential()
+        self._assert_missing_file_error(mock_exit, "token_file_not_found", "/nonexistent/token.txt")
+
+    @mock.patch("tableauserverclient.Server")
+    def test_create_session_with_missing_password_file_exits(self, mock_tsc, mock_file, mock_path, mock_json):
+        mock_path.isfile.return_value = False
+        mock_path.exists.return_value = False
+        new_session = Session()
+        new_session.tableau_server = mock_tsc()
+        test_args = Namespace(**vars(args_to_mock))
+        test_args.username = "uuuu"
+        test_args.server = "https://fake.server.com"
+        test_args.password_file = "/nonexistent/cred.txt"
+        with mock.patch("tabcmd.commands.auth.session.Errors.exit_with_error", side_effect=SystemExit) as mock_exit:
+            with self.assertRaises(SystemExit):
+                new_session.create_session(test_args, None)
+        self._assert_missing_file_error(mock_exit, "password_file_not_found", "/nonexistent/cred.txt")
+
+    @mock.patch("tableauserverclient.Server")
+    def test_create_session_with_missing_token_file_exits(self, mock_tsc, mock_file, mock_path, mock_json):
+        mock_path.isfile.return_value = False
+        mock_path.exists.return_value = False
+        new_session = Session()
+        new_session.tableau_server = mock_tsc()
+        test_args = Namespace(**vars(args_to_mock))
+        test_args.token_name = "mytoken"
+        test_args.server = "https://fake.server.com"
+        test_args.token_file = "/nonexistent/token.txt"
+        with mock.patch("tabcmd.commands.auth.session.Errors.exit_with_error", side_effect=SystemExit) as mock_exit:
+            with self.assertRaises(SystemExit):
+                new_session.create_session(test_args, None)
+        self._assert_missing_file_error(mock_exit, "token_file_not_found", "/nonexistent/token.txt")
+
+
 def _set_mock_tsc_not_signed_in(mock_tsc):
     tsc_in_test = mock.MagicMock(name="manually mocking tsc")
     tsc_in_test.is_signed_in.return_value = False  # CreateSessionTests.return_False

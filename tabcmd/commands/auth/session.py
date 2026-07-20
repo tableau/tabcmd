@@ -1,5 +1,6 @@
 import getpass
 import json
+import logging
 import os
 
 import requests
@@ -104,13 +105,21 @@ class Session:
         return result or 0
 
     @staticmethod
-    def _read_password_from_file(filename):
+    def _read_password_from_file(filename, logger=None):
+        _logger = logger or logging.getLogger(__name__)
         credential = None
-        with open(str(filename), "r") as file_contents:
-            reader = file_contents.readlines()
-            for row in reader:
-                credential = row
-            return credential
+        try:
+            with open(str(filename), "r") as file_contents:
+                reader = file_contents.readlines()
+                for row in reader:
+                    credential = row
+        except IOError as e:
+            Errors.exit_with_error(
+                _logger,
+                message=_("session.errors.password_file_not_found").format(filename),
+                exception=e,
+            )
+        return credential
 
     def _allow_prompt(self):
         try:
@@ -121,7 +130,14 @@ class Session:
     def _create_new_credential(self, password, credential_type):
         if password is None:
             if self.password_file:
-                password = Session._read_password_from_file(self.password_file)
+                if not os.path.isfile(self.password_file):
+                    Errors.exit_with_error(
+                        self.logger,
+                        message=_("session.errors.password_file_not_found").format(self.password_file),
+                    )
+                password = Session._read_password_from_file(self.password_file, self.logger)
+                if not password:
+                    Errors.exit_with_error(self.logger, _("session.errors.missing_arguments").format(""))
             elif self._allow_prompt():
                 password = getpass.getpass(_("session.password"))
             else:
@@ -141,7 +157,14 @@ class Session:
         if self.token_value:
             token = self.token_value
         elif self.token_file:
-            token = Session._read_password_from_file(self.token_file)
+            if not os.path.isfile(self.token_file):
+                Errors.exit_with_error(
+                    self.logger,
+                    message=_("session.errors.token_file_not_found").format(self.token_file),
+                )
+            token = Session._read_password_from_file(self.token_file, self.logger)
+            if not token:
+                Errors.exit_with_error(self.logger, _("session.errors.missing_arguments").format("token"))
         elif self._allow_prompt():
             token = getpass.getpass("Token:")
         else:
