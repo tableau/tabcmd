@@ -83,7 +83,7 @@ class DatasourcesAndWorkbooks(Server):
                     DatasourcesAndWorkbooks.apply_encoded_filter_value(logger, request_options, value)
 
         except Exception as e:
-            logger.warn("Error building filter params", e)
+            logger.warning("Error building filter params: %s", e)
             # ExportCommand.log_stack(logger)  # type: ignore
 
     # this is called from within from_url_params, for each view_filter value
@@ -114,7 +114,7 @@ class DatasourcesAndWorkbooks(Server):
         logger.debug("handling url option {}".format(value))
         setting = value.split("=")
         if len(setting) != 2:
-            logger.warn("Unable to read url parameter '{}', skipping".format(value))
+            logger.warning("Unable to read url parameter '{}', skipping".format(value))
             return
         setting_name = setting[0]
         setting_val = setting[1]
@@ -129,12 +129,12 @@ class DatasourcesAndWorkbooks(Server):
         elif ":size" == setting_name:
             if isinstance(request_options, (TSC.ImageRequestOptions, TSC.PDFRequestOptions)):
                 try:
-                    height, width = setting_val.split(",")
-                    request_options.viz_height = int(height)
-                    request_options.viz_width = int(width)
+                    width, height = setting_val.split(",")
+                    w_int, h_int = int(width), int(height)
+                    request_options.viz_width = w_int
+                    request_options.viz_height = h_int
                 except Exception as oops:
-                    logger.warn("Unable to read image size options '{}', skipping".format(setting_val))
-                    logger.warn(oops)
+                    logger.warning("Unable to read image size options: %s", oops)
             else:
                 logger.debug(
                     "Request options are not of type ImageRequestOptions or PDFRequestOptions, skipping size setting"

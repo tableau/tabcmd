@@ -24,15 +24,25 @@ from tests.e2e import setup_e2e
 # config variables for test run
 debug_log = "--logging-level=DEBUG"
 indexing_sleep_time = 1  # wait 1 second to confirm server has indexed updates
-# Flags to let us skip tests if we know we don't have the required access
-server_admin = False
-site_admin = True
-project_admin = False
-extract_encryption_enabled = False
+
+
+def _env_bool(name: str, default: bool = False) -> bool:
+    return os.environ.get(name, str(default)).lower() == "true"
+
+
+# Flags to let us skip tests if we know we don't have the required access.
+# Override by setting env vars (e.g. E2E_SITE_ADMIN=true) or via workflow inputs.
+server_admin = _env_bool("E2E_SERVER_ADMIN")
+site_admin = _env_bool("E2E_SITE_ADMIN")
+project_admin = _env_bool("E2E_PROJECT_ADMIN")
+extract_encryption_enabled = _env_bool("E2E_EXTRACT_ENCRYPTION")
 use_tabcmd_classic = False  # toggle between testing using tabcmd 2 or tabcmd classic
 
 
 default_project_name = "Personal Work"  # not unique, has to exist already when you run random test cases
+
+OUTPUT_DIR = "test-output"
+os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 
 class TestAssets:
@@ -73,11 +83,12 @@ class TestAssets:
 def _test_command(test_args: list[str]):
     # this will raise an exception if it gets a non-zero return code
     # that will bubble up and fail the test
+    login_args = setup_e2e.get_login_args()
+    if login_args is None:
+        pytest.skip("No credentials available (credentials.py not found)")
 
     # default: run tests using tabcmd 2
-    calling_args = (
-        ["python", "-m", "tabcmd"] + test_args + setup_e2e.get_login_args() + [debug_log] + ["--no-certcheck"]
-    )
+    calling_args = ["python", "-m", "tabcmd"] + test_args + login_args + [debug_log] + ["--no-certcheck"]
 
     # call the executable directly: lets us drop in classic tabcmd
     if use_tabcmd_classic:
@@ -86,7 +97,8 @@ def _test_command(test_args: list[str]):
             + test_args
             + ["--no-certcheck"]
         )
-    if database_password not in calling_args:
+    safe_to_print = not any(v in calling_args for v in login_args if v not in ("--server", "--site", "--token-name"))
+    if safe_to_print:
         print(calling_args)
     return subprocess.check_call(calling_args)
 
@@ -201,15 +213,15 @@ class TabcmdCall:
     def _get_workbook(server_file):
         command = "get"
         server_file = "/workbooks/" + server_file
-        arguments = [command, server_file, "-f", "get_workbook.twbx"]
+        arguments = [command, server_file, "-f", os.path.join(OUTPUT_DIR, "get_workbook.twbx")]
         _test_command(arguments)
-        os.path.exists("get_workbook.twbx")
 
     @staticmethod
     def _get_datasource(server_file):
         command = "get"
         server_file = "/datasources/" + server_file
-        arguments = [command, server_file]
+        out_file = os.path.join(OUTPUT_DIR, os.path.basename(server_file))
+        arguments = [command, server_file, "-f", out_file]
         _test_command(arguments)
 
     @staticmethod
@@ -434,9 +446,13 @@ class OnlineCommandTest(unittest.TestCase):
 
         TabcmdCall._get_view(wb_name_on_server, sheet_name, "get_view_default_size.png")
         url_params = "?:size=100,200"
-        TabcmdCall._get_view(wb_name_on_server, sheet_name + url_params, "get_view_sized_sm.png")
+        TabcmdCall._get_view(
+            wb_name_on_server, sheet_name + url_params, os.path.join(OUTPUT_DIR, "get_view_sized_sm.png")
+        )
         url_params = "?:size=500,700"
-        TabcmdCall._get_view(wb_name_on_server, sheet_name + url_params, "get_view_sized_LARGE.png")
+        TabcmdCall._get_view(
+            wb_name_on_server, sheet_name + url_params, os.path.join(OUTPUT_DIR, "get_view_sized_LARGE.png")
+        )
 
     @pytest.mark.order(11)
     def test_view_get_csv(self):
@@ -486,6 +502,8 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(14)
     def test_delete_extract(self):
+        if not extract_encryption_enabled:
+            pytest.skip("delete-extract requires extract encryption to be enabled on the site")
         name_on_server = TestAssets.get_publishable_name(TestAssets.TDSX_FILE_WITH_EXTRACT)
         TabcmdCall._delete_extract(name_on_server, "-d")
 
@@ -505,39 +523,39 @@ class OnlineCommandTest(unittest.TestCase):
         sheet_name = TestAssets.TWBX_WITH_EXTRACT_SHEET
         friendly_name = wb_name_on_server + "/" + sheet_name
         filters = ["--filter", "Product Type=Tea", "--fullpdf", "--pagelayout", "landscape"]
-        TabcmdCall._export_wb(friendly_name, "filter_a_wb_to_tea_and_two_pages.pdf", filters)
+        TabcmdCall._export_wb(friendly_name, os.path.join(OUTPUT_DIR, "filter_a_wb_to_tea_and_two_pages.pdf"), filters)
         # NOTE: this test needs a visual check on the returned pdf to confirm the expected appearance
 
     @pytest.mark.order(19)
     def test_export_wb_pdf(self):
         wb_name_on_server = TestAssets.get_publishable_name(TestAssets.TWBX_FILE_WITH_EXTRACT)
         friendly_name = wb_name_on_server + "/" + TestAssets.TWBX_WITH_EXTRACT_SHEET
-        filename = "exported_wb.pdf"
+        filename = os.path.join(OUTPUT_DIR, "exported_wb.pdf")
         TabcmdCall._export_wb(friendly_name, filename)
 
     @pytest.mark.order(19)
     def test_export_data_csv(self):
         wb_name_on_server = TestAssets.get_publishable_name(TestAssets.TWBX_FILE_WITH_EXTRACT)
         sheet_name = TestAssets.TWBX_WITH_EXTRACT_SHEET
-        TabcmdCall._export_view(wb_name_on_server, sheet_name, "--csv", "exported_data.csv")
+        TabcmdCall._export_view(wb_name_on_server, sheet_name, "--csv", os.path.join(OUTPUT_DIR, "exported_data.csv"))
 
     @pytest.mark.order(19)
     def test_export_view_png(self):
         wb_name_on_server = TestAssets.get_publishable_name(TestAssets.TWBX_FILE_WITH_EXTRACT)
         sheet_name = TestAssets.TWBX_WITH_EXTRACT_SHEET
-        TabcmdCall._export_view(wb_name_on_server, sheet_name, "--png", "export_view.png")
+        TabcmdCall._export_view(wb_name_on_server, sheet_name, "--png", os.path.join(OUTPUT_DIR, "export_view.png"))
 
     @pytest.mark.order(19)
     def test_export_view_pdf(self):
         wb_name_on_server = TestAssets.get_publishable_name(TestAssets.TWBX_FILE_WITH_EXTRACT)
         sheet_name = TestAssets.TWBX_WITH_EXTRACT_SHEET
-        TabcmdCall._export_view(wb_name_on_server, sheet_name, "--pdf", "export_view_pdf.pdf")
+        TabcmdCall._export_view(wb_name_on_server, sheet_name, "--pdf", os.path.join(OUTPUT_DIR, "export_view_pdf.pdf"))
 
     @pytest.mark.order(19)
     def test_export_view_filtered(self):
         wb_name_on_server = TestAssets.get_publishable_name(TestAssets.TWBX_FILE_WITH_EXTRACT)
         sheet_name = TestAssets.TWBX_WITH_EXTRACT_SHEET
-        filename = "view_with_filters.pdf"
+        filename = os.path.join(OUTPUT_DIR, "view_with_filters.pdf")
 
         filters = ["--filter", "Product Type=Tea"]
         TabcmdCall._export_view(wb_name_on_server, sheet_name, "--pdf", filename, filters)

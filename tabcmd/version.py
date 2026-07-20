@@ -4,4 +4,9 @@ version: str = "unknown"
 try:
     version = get_version("tabcmd")
 except PackageNotFoundError:
-    version = "2.0.0"
+    # importlib.metadata is unavailable in PyInstaller bundles; fall back to the
+    # _version.py file that setuptools_scm writes at build time.
+    try:
+        from tabcmd._version import version
+    except ImportError:
+        version = "0.0"

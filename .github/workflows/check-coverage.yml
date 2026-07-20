@@ -18,7 +18,7 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
 
     - name: Set up Python ${{ matrix.python-version }} on ${{ matrix.os }}
       uses: actions/setup-python@v6
@@ -46,6 +46,7 @@ jobs:
 
     - name: Comment on pull request with coverage
       uses: MishaKav/pytest-coverage-comment@main
+      continue-on-error: true
       with:
         pytest-coverage-path: ./pytest-coverage.txt
         # TODO: check if this has been fixed

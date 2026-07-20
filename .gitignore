@@ -1,8 +1,13 @@
 # general dev/ide files
 *.log
+*.log.*
 *.vscode
 .idea
 *.DS_Store
+
+# setuptools_scm generated version file (may appear in any subpackage)
+tabcmd/**/_version.py
+tabcmd/_version.py
 
 # python build files
 build/
@@ -24,16 +29,21 @@ workon/
 pytest.xml
 
 *.txt
+
+# e2e test output
+test-output/
+
 # content
 # todo probably want to add a workbook and ds in /res for getting started easily
 *.pdf
 *.png
 *.html
-# *.twbx
+*.csv
+*.twbx
+*.tdsx
 # *.hyper
 # *.twb
 # *.twbr
-# *.tdsx
 **/credentials.py
 # exceptions
 !tests/assets/

@@ -61,7 +61,7 @@ jobs:
             UPLOAD_FILE_NAME: tabcmd
 
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
 
     - uses: actions/setup-python@v6
       with:
@@ -98,7 +98,7 @@ jobs:
 
 
     - name: Upload build artifact for ${{ matrix.TARGET }}
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: tabcmd-${{ matrix.TARGET }}
         path: ./dist/${{ matrix.TARGET }}/${{ matrix.UPLOAD_FILE_NAME }}
@@ -112,4 +112,3 @@ jobs:
         file: ./dist/${{ matrix.TARGET }}/${{ matrix.UPLOAD_FILE_NAME }}
         tag: ${{ github.ref_name }}
         overwrite: true
-        promote: true

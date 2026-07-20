@@ -11,7 +11,7 @@ These steps are separated for easier troubleshooting: each step is idempotent an
 
 1. convert strings from .properties files to .mo for bundling
 This step combines the .properties files into a single file, discarding any strings that are not present in code and normalizing curly quotes and unrecognized characters in the strings it keeps. (These files are separate because they are pulled from separate translation sources internally.)
-> python -m doit properties
+> python -m doit combine_property_files
 
 2. Convert the combined .properties file into a .po file (these are human readable)
 > python -m doit po
@@ -19,3 +19,10 @@ This step combines the .properties files into a single file, discarding any stri
 3. Convert the .po files into .mo files (these are not human readable)
 This also checks the .mo files for validity by loading them with gettext
 > python -m doit mo
+
+## Optional reorganization task
+
+Move all strings from extra.properties to the bottom of tabcmd_messages_xx.properties:
+> python -m doit move_tabcmd_strings
+
+This consolidates all strings into the main tabcmd_messages files and clears the extra.properties files.
