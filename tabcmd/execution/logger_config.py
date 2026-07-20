@@ -1,6 +1,7 @@
 import logging
 import logging.handlers
 import os
+import sys
 
 from tabcmd.execution.localize import _
 
@@ -38,6 +39,10 @@ def add_log_level(level_name, level_num, method_name=None):
     setattr(logging, method_name, logToRoot)
 
 
+def _below_warning(record: logging.LogRecord) -> bool:
+    return record.levelno < logging.WARNING
+
+
 def add_trace_level():
     trace_level: int = logging.DEBUG - 5
     add_log_level("TRACE", trace_level)
@@ -65,10 +70,18 @@ def configure_log(name: str, logging_level_input: str):
     if not any(
         isinstance(h, logging.StreamHandler) and not isinstance(h, logging.FileHandler) for h in named_logger.handlers
     ):
-        console = logging.StreamHandler()
-        console.setLevel(logging_level)
-        console.setFormatter(logging.Formatter(log_format))
-        named_logger.addHandler(console)
+        # INFO and below → stdout so PowerShell doesn't treat normal output as errors.
+        # WARNING and above → stderr so real errors are still distinguishable.
+        stdout_handler = logging.StreamHandler(sys.stdout)
+        stdout_handler.setLevel(logging_level)
+        stdout_handler.addFilter(_below_warning)
+        stdout_handler.setFormatter(logging.Formatter(log_format))
+        named_logger.addHandler(stdout_handler)
+
+        stderr_handler = logging.StreamHandler(sys.stderr)
+        stderr_handler.setLevel(logging.WARNING)
+        stderr_handler.setFormatter(logging.Formatter(FORMATS[logging.ERROR]))
+        named_logger.addHandler(stderr_handler)
 
     return named_logger
 
