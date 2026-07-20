@@ -130,11 +130,15 @@ class ParameterTests(unittest.TestCase):
 
     def test_apply_options_in_url_with_size(self):
         request_options = tsc.ImageRequestOptions()
-        value = ":size=800,600"
+        DatasourcesAndWorkbooks.apply_options_in_url(mock_logger, request_options, ":size=1920,1080")
+        self.assertEqual(request_options.viz_width, 1920)
+        self.assertEqual(request_options.viz_height, 1080)
 
-        DatasourcesAndWorkbooks.apply_options_in_url(mock_logger, request_options, value)
-        self.assertEqual(request_options.viz_height, 800)
-        self.assertEqual(request_options.viz_width, 600)
+    def test_apply_options_in_url_with_size_via_url_params(self):
+        request_options = tsc.ImageRequestOptions()
+        DatasourcesAndWorkbooks.apply_values_from_url_params(mock_logger, request_options, "?:size=1920,1080")
+        self.assertEqual(request_options.viz_width, 1920)
+        self.assertEqual(request_options.viz_height, 1080)
 
     def test_apply_options_in_url_with_refresh(self):
         request_options = tsc.ImageRequestOptions()
@@ -150,6 +154,18 @@ class ParameterTests(unittest.TestCase):
         DatasourcesAndWorkbooks.apply_options_in_url(mock_logger, request_options, value)
         self.assertEqual(request_options.viz_height, None)
         self.assertEqual(request_options.viz_width, None)
+
+    def test_apply_options_in_url_invalid_first_dimension_leaves_both_unset(self):
+        request_options = tsc.ImageRequestOptions()
+        DatasourcesAndWorkbooks.apply_options_in_url(mock_logger, request_options, ":size=notanumber,600")
+        self.assertIsNone(request_options.viz_width)
+        self.assertIsNone(request_options.viz_height)
+
+    def test_apply_options_in_url_invalid_second_dimension_leaves_both_unset(self):
+        request_options = tsc.ImageRequestOptions()
+        DatasourcesAndWorkbooks.apply_options_in_url(mock_logger, request_options, ":size=1920,notanumber")
+        self.assertIsNone(request_options.viz_width)
+        self.assertIsNone(request_options.viz_height)
 
     def test_apply_options_in_url_with_unrecognized_parameter(self):
         request_options = tsc.ImageRequestOptions()
