@@ -296,6 +296,7 @@ class Session:
         if not self.tableau_server:
             Errors.exit_with_error(self.logger, "No server connection available for sign in")
 
+        self.logger.info(_("session.login"))
         self.logger.debug(_("session.login") + (self.server_url or ""))
         self.logger.debug(_("listsites.output").format("", self.username or self.token_name, self.site_name))
         assert self.tableau_server is not None  # Type hint for mypy
