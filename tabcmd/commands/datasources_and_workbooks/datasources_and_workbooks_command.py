@@ -183,14 +183,14 @@ class DatasourcesAndWorkbooks(Server):
         logger.info(_("httputils.found_attachment").format(filename))
         with open(filename, "wb") as f:
             f.writelines(output)
-            logger.info(_("export.success").format("", filename))
+            logger.info(_("export.success").format(filename, filename))
 
     @staticmethod
     def save_to_file(logger, output, filename):
         logger.info(_("httputils.found_attachment").format(filename))
         with open(filename, "wb") as f:
             f.write(output)
-            logger.info(_("export.success").format("", filename))
+            logger.info(_("export.success").format(filename, filename))
 
     @staticmethod
     def get_custom_view_by_id(logger, server, custom_view_id) -> TSC.CustomViewItem:
