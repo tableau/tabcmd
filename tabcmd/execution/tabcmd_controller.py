@@ -36,7 +36,7 @@ class TabcmdController:
             print("logging:", namespace.logging_level)
 
         logger = log(__name__, namespace.logging_level or logging.INFO)
-        logger.info("Tabcmd {}".format(version))
+        print("Tabcmd {}".format(version))
         if hasattr(namespace, "password") or hasattr(namespace, "token_value"):
             # don't print whole namespace because it has secrets
             logger.debug(namespace.func)
