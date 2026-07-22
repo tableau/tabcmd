@@ -7,10 +7,13 @@ from tabcmd.execution.localize import _
 
 path = os.path.dirname(os.path.abspath(__file__))
 
+_CLASSIC_OUTPUT = os.environ.get("TABCMD_CLASSIC_OUTPUT", "").lower() in ("1", "true", "yes")
+_INFO_FORMAT = "===== %(message)-30s" if _CLASSIC_OUTPUT else "%(message)-30s"
+
 FORMATS = {
     logging.ERROR: "%(asctime)s %(levelname)-5s:(%(name)-10s %(filename)-10s: %(lineno)d): %(message)-30s",
     logging.WARN: "%(asctime)s %(levelname)-5s: (%(name)-10s %(filename)-10s: %(lineno)d): %(message)-30s",
-    logging.INFO: "%(message)-30s",
+    logging.INFO: _INFO_FORMAT,
     logging.DEBUG: "%(asctime)s %(levelname)-5s: (%(name)-10s %(filename)-10s: %(lineno)d): %(message)-30s",
 }
 
