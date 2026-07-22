@@ -262,15 +262,15 @@ class Session:
             self._read_from_json()
 
     def _print_server_info(self):
-        self.logger.info("=====   Server: {}".format(self.server_url))
+        self.logger.info("  Server: {}".format(self.server_url))
         if self.proxy:
-            self.logger.info("=====   Proxy: {}".format(self.proxy))
+            self.logger.info("  Proxy: {}".format(self.proxy))
         if self.username:
-            self.logger.info("=====   Username: {}".format(self.username))
+            self.logger.info("  Username: {}".format(self.username))
         if self.certificate:
-            self.logger.info("=====   Certificate: {}".format(self.certificate))
+            self.logger.info("  Certificate: {}".format(self.certificate))
         else:
-            self.logger.info("=====   Token Name: {}".format(self.token_name))
+            self.logger.info("  Token Name: {}".format(self.token_name))
         site_display_name = self.site_name or "Default Site"
         self.logger.info(_("dataconnections.classes.tableau_server_site") + ": {}".format(site_display_name))
 
@@ -281,7 +281,7 @@ class Session:
             if self.tableau_server and self.tableau_server.is_signed_in() and self.user_id:
                 server_user = self.tableau_server.users.get_by_id(self.user_id).name
                 if not self.username:
-                    self.logger.info("Fetched user details from server")
+                    self.logger.debug("Fetched user details from server")
                     self.username = server_user
 
                 return self.tableau_server
