@@ -76,7 +76,11 @@ def define_locale_dir(logger):
 
 def _load_language(current_locale, domain, logger):
     locale_dir = define_locale_dir(logger)
-    language: gettext.NullTranslations = gettext.translation(domain, locale_dir, languages=[current_locale])
+    # Chain "en" behind the preferred locale so a msgid missing from the
+    # preferred catalog falls back to the English msgstr per-key, instead of
+    # surfacing the raw msgid to the user.
+    languages = [current_locale] if current_locale == "en" else [current_locale, "en"]
+    language: gettext.NullTranslations = gettext.translation(domain, locale_dir, languages=languages)
     language.install()  # I believe this is the expensive call
     _ = language.gettext
     return _
