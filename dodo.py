@@ -2,7 +2,6 @@ import glob
 import os
 import subprocess
 import sys
-import setuptools_scm
 
 LOCALES = ["en", "de", "es", "fr", "ga", "it", "pt", "sv", "ja", "ko", "zh"]
 
@@ -382,7 +381,7 @@ def task_version():
 
     def write_for_pyinstaller():
         import pyinstaller_versionfile
-        import os
+        import setuptools_scm
 
         version = setuptools_scm.get_version(local_scheme="no-local-version")
         numeric_version = version.replace("dev", "")
