@@ -103,9 +103,17 @@ class DatasourcesAndWorkbooks(Server):
     @staticmethod
     def apply_filter_value(logger, request_options: RequestOptionsType, value: str) -> None:
         logger.debug("handling filter param {}".format(value))
-        data_filter = value.split("=")
+        # Split on the first '=' only so that filter values containing '=' are
+        # preserved intact (e.g. Notes=x=y should filter Notes to the value "x=y").
+        parts = value.split("=", maxsplit=1)
+        if len(parts) != 2:
+            Errors.exit_with_error(
+                logger,
+                message="Filter clause '{}' must be in name=value form".format(value),
+            )
+        name, filter_value = parts
         # we should export the _DataExportOptions class from tsc
-        request_options.vf(data_filter[0], data_filter[1])  # type: ignore
+        request_options.vf(name, filter_value)  # type: ignore
 
     # this is called from within from_url_params, for each param value
     # expects either ImageRequestOptions or PDFRequestOptions

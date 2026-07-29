@@ -40,6 +40,25 @@ class ParameterTests(unittest.TestCase):
         DatasourcesAndWorkbooks.apply_values_from_url_params(mock_logger, request_options, query_params)
         assert request_options.view_filters == expected
 
+    def test_apply_filter_value_with_equals_in_value(self):
+        # A filter value containing '=' should survive parsing intact.
+        # Old behavior: value.split("=") truncated at the second '=',
+        # so "Notes=x=y" incorrectly became name="Notes", value="x".
+        request_options = tsc.PDFRequestOptions()
+        DatasourcesAndWorkbooks.apply_filter_value(mock_logger, request_options, "Notes=x=y")
+        assert request_options.view_filters == [("Notes", "x=y")]
+
+    def test_apply_filter_value_with_multiple_equals_in_value(self):
+        request_options = tsc.PDFRequestOptions()
+        DatasourcesAndWorkbooks.apply_filter_value(mock_logger, request_options, "Config=k1=v1=extra")
+        assert request_options.view_filters == [("Config", "k1=v1=extra")]
+
+    def test_apply_filter_value_with_trailing_equals(self):
+        # Empty string after the '=' should produce an empty-string value.
+        request_options = tsc.PDFRequestOptions()
+        DatasourcesAndWorkbooks.apply_filter_value(mock_logger, request_options, "Name=")
+        assert request_options.view_filters == [("Name", "")]
+
     def test_apply_options_from_url_params(self):
         query_params = "?:iid=5&:refresh=yes&:size=600,700"
         request_options = tsc.PDFRequestOptions()
