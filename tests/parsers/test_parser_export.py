@@ -21,3 +21,17 @@ class ExportParserTest(ParserTest):
         mock_args = [commandname]
         with self.assertRaises(SystemExit):
             args = self.parser_under_test.parse_args(mock_args)
+
+    def test_export_parser_single_filter(self):
+        args = self.parser_under_test.parse_args([commandname, "helloworld", "--pdf", "--filter", "Region=West"])
+        assert args.filter == ["Region=West"]
+
+    def test_export_parser_repeated_filter(self):
+        args = self.parser_under_test.parse_args(
+            [commandname, "helloworld", "--pdf", "--filter", "Region=West", "--filter", "Product=AT&T"]
+        )
+        assert args.filter == ["Region=West", "Product=AT&T"]
+
+    def test_export_parser_no_filter_defaults_to_none(self):
+        args = self.parser_under_test.parse_args([commandname, "helloworld", "--pdf"])
+        assert args.filter is None
