@@ -2,7 +2,6 @@ import glob
 import os
 import subprocess
 import sys
-import setuptools_scm
 
 LOCALES = ["en", "de", "es", "fr", "ga", "it", "pt", "sv", "ja", "ko", "zh"]
 
@@ -103,35 +102,13 @@ def task_properties():
             print("Combined strings for {} to {}".format(current_locale, OUTPUT_FILE))
             uniquify_file(OUTPUT_FILE)
 
-    """Search loc files for each string used in code - print an error if not found.
-    Uses enhanced check_strings.py script for validation.
-    """
-
-    def enforce_strings_present():
-        print("\n***** Verify that all string keys are present using check_strings validator")
-
-        # English must be processed FIRST for validation baseline, others can be in any order
-        locales_ordered = ["en"] + [loc for loc in LOCALES if loc != "en"]
-        result = subprocess.run(
-            ["python", "bin/i18n/check_strings.py", "--mode", "build", "--locales"] + locales_ordered,
-            capture_output=True,
-            text=True,
-        )
-
-        # Print the output from the validation script
-        if result.stdout:
-            print(result.stdout)
-        if result.stderr:
-            print(result.stderr, file=sys.stderr)
-
-        if result.returncode != 0:
-            print("VALIDATION FAILED: Missing localization strings found")
-            exit(1)
-        else:
-            print("All string validations passed")
+    # String-key coverage is validated by .github/workflows/check-strings.yml
+    # (running bin/i18n/check_strings.py directly) on every PR. Missing non-en
+    # keys are handled at runtime by the English fallback in localize.py, so
+    # they should not fail this build step.
 
     return {
-        "actions": [process_code, merge, enforce_strings_present],
+        "actions": [process_code, merge],
         "verbosity": 2,
     }
 
@@ -382,7 +359,7 @@ def task_version():
 
     def write_for_pyinstaller():
         import pyinstaller_versionfile
-        import os
+        import setuptools_scm
 
         version = setuptools_scm.get_version(local_scheme="no-local-version")
         numeric_version = version.replace("dev", "")
@@ -455,7 +432,7 @@ def uniquify_file(filename):
             )
         )
     else:
-        print("Saved {} sorted unique lines to {}".format(len(uniques), filename))
+        print("Saved {} sorted unique lines to {}".format(len(unique_lines), filename))
 
 
 def task_clean_all():

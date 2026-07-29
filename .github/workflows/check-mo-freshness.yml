@@ -1,0 +1,58 @@
+name: Check .mo bundles are up to date
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - development
+      - main
+    paths:
+      - 'tabcmd/locales/**/*.properties'
+      - 'tabcmd/locales/**/*.mo'
+      - 'bin/i18n/**'
+      - 'dodo.py'
+      - '.github/workflows/check-mo-freshness.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  check-mo-freshness:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v7
+
+    - name: Set up Python
+      uses: actions/setup-python@v7
+      with:
+        python-version: '3.12'
+
+    - name: Install localization deps
+      run: |
+        python -m pip install --upgrade pip
+        pip install .[localize]
+
+    - name: Regenerate .po and .mo bundles
+      run: python -m doit localize
+
+    - name: Verify regenerated files match what is committed
+      id: verify
+      run: |
+        # .po files are globally gitignored, so only check .mo drift.
+        if ! git diff --exit-code -- 'tabcmd/locales/**/*.mo'; then
+          echo ""
+          echo "The committed .mo files are out of date with the .properties sources."
+          echo "Run 'python -m doit localize' locally and commit the regenerated files."
+          echo "The freshly-generated files are attached as a workflow artifact."
+          exit 1
+        fi
+
+    # If the verify step failed the regenerated files are still on disk. Uploading
+    # them makes it easy to download from the failed CI run and commit them.
+    - name: Upload regenerated .mo files on failure
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: regenerated-mo-files
+        path: tabcmd/locales/**/*.mo

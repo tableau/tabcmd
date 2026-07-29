@@ -66,7 +66,7 @@ test = [
     "types-requests",
     "types-setuptools"
 ]
-localize = ["doit", "ftfy"]
+localize = ["doit", "ftfy", "click"]
 package = ["doit", "pyinstaller==5.13.1", "setuptools==81"]
 versioning = [
     "doit",
