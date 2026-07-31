@@ -117,16 +117,39 @@ class UserCommand(Server):
         return parser
 
     @staticmethod
-    def set_auth_arg(parser):
-        parser.add_argument(
+    def set_auth_and_idp_args(parser):
+        # --auth-type and --idp-configuration-id both drive the user's authentication;
+        # the REST API rejects requests that set both, so argparse enforces exclusion here.
+        auth_group = parser.add_mutually_exclusive_group()
+        auth_group.add_argument(
             "--auth-type",
             metavar="TYPE",
             choices=auth_types,
             type=case_insensitive_string_type(auth_types),
-            # default="TableauID",  # default is Local for on-prem, TableauID for Online. Does the server apply the default?
             help=_("tabcmd.user.help.auth_type") + " " + ", ".join(auth_types),
         )
+        auth_group.add_argument(
+            "--idp-configuration-id",
+            metavar="UUID",
+            help=_("tabcmd.user.help.idp_configuration_id"),
+        )
         return parser
+
+    @staticmethod
+    def apply_cli_overrides(user_obj, args) -> None:
+        """Apply --role / --auth-type / --idp-configuration-id CLI overrides onto a UserItem.
+
+        --idp-configuration-id and --auth-type are mutually exclusive per the REST API.
+        When an IDP is provided (via the CLI flag), any auth_setting on the user is
+        cleared so the outgoing request has only one of the two attributes set.
+        """
+        if args.role:
+            user_obj.site_role = args.role  # TSC is case sensitive
+        if args.idp_configuration_id:
+            user_obj.idp_configuration_id = args.idp_configuration_id
+            user_obj.auth_setting = None
+        elif args.auth_type:
+            user_obj.auth_setting = args.auth_type
 
     # read the file containing usernames or user details and validate each line
     # log out any errors encountered
