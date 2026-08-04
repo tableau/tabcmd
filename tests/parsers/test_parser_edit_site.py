@@ -63,33 +63,23 @@ class EditSiteParserTest(ParserTest):
     # -------- New flags added for issue #437 --------
 
     def test_edit_site_parser_guest_access_enabled_true(self):
-        args = self.parser_under_test.parse_args(
-            [commandname, "site-to-edit", "--guest-access-enabled", "true"]
-        )
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit", "--guest-access-enabled", "true"])
         assert args.guest_access_enabled == "true", args
 
     def test_edit_site_parser_guest_access_enabled_short_flag(self):
-        args = self.parser_under_test.parse_args(
-            [commandname, "site-to-edit", "-g", "false"]
-        )
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit", "-g", "false"])
         assert args.guest_access_enabled == "false", args
 
     def test_edit_site_parser_guest_access_enabled_rejects_invalid(self):
         with self.assertRaises(SystemExit):
-            self.parser_under_test.parse_args(
-                [commandname, "site-to-edit", "--guest-access-enabled", "yes"]
-            )
+            self.parser_under_test.parse_args([commandname, "site-to-edit", "--guest-access-enabled", "yes"])
 
     def test_edit_site_parser_cache_warmup_enabled(self):
-        args = self.parser_under_test.parse_args(
-            [commandname, "site-to-edit", "--cache-warmup"]
-        )
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit", "--cache-warmup"])
         assert args.cache_warmup_enabled is True, args
 
     def test_edit_site_parser_cache_warmup_disabled(self):
-        args = self.parser_under_test.parse_args(
-            [commandname, "site-to-edit", "--no-cache-warmup"]
-        )
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit", "--no-cache-warmup"])
         assert args.cache_warmup_enabled is False, args
 
     def test_edit_site_parser_cache_warmup_default_is_none(self):
@@ -98,9 +88,7 @@ class EditSiteParserTest(ParserTest):
 
     def test_edit_site_parser_cache_warmup_mutually_exclusive(self):
         with self.assertRaises(SystemExit):
-            self.parser_under_test.parse_args(
-                [commandname, "site-to-edit", "--cache-warmup", "--no-cache-warmup"]
-            )
+            self.parser_under_test.parse_args([commandname, "site-to-edit", "--cache-warmup", "--no-cache-warmup"])
 
     def test_edit_site_parser_subscription_email(self):
         args = self.parser_under_test.parse_args(
@@ -109,9 +97,7 @@ class EditSiteParserTest(ParserTest):
         assert args.subscription_email == "alerts@example.com", args
 
     def test_edit_site_parser_subscription_email_short_flag(self):
-        args = self.parser_under_test.parse_args(
-            [commandname, "site-to-edit", "-e", "hi@example.com"]
-        )
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit", "-e", "hi@example.com"])
         assert args.subscription_email == "hi@example.com", args
 
     def test_edit_site_parser_subscription_footer(self):
@@ -121,33 +107,23 @@ class EditSiteParserTest(ParserTest):
         assert args.subscription_footer == "Contact IT for help", args
 
     def test_edit_site_parser_subscription_footer_short_flag(self):
-        args = self.parser_under_test.parse_args(
-            [commandname, "site-to-edit", "-f", "Contact IT"]
-        )
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit", "-f", "Contact IT"])
         assert args.subscription_footer == "Contact IT", args
 
     def test_edit_site_parser_web_extraction_enabled(self):
-        args = self.parser_under_test.parse_args(
-            [commandname, "site-to-edit", "--web-extraction-enabled", "true"]
-        )
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit", "--web-extraction-enabled", "true"])
         assert args.web_extraction_enabled == "true", args
 
     def test_edit_site_parser_web_extraction_enabled_rejects_invalid(self):
         with self.assertRaises(SystemExit):
-            self.parser_under_test.parse_args(
-                [commandname, "site-to-edit", "--web-extraction-enabled", "yes"]
-            )
+            self.parser_under_test.parse_args([commandname, "site-to-edit", "--web-extraction-enabled", "yes"])
 
     def test_edit_site_parser_allow_subscriptions(self):
-        args = self.parser_under_test.parse_args(
-            [commandname, "site-to-edit", "--allow-subscriptions"]
-        )
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit", "--allow-subscriptions"])
         assert args.allow_subscriptions is True, args
 
     def test_edit_site_parser_no_allow_subscriptions(self):
-        args = self.parser_under_test.parse_args(
-            [commandname, "site-to-edit", "--no-allow-subscriptions"]
-        )
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit", "--no-allow-subscriptions"])
         assert args.allow_subscriptions is False, args
 
     def test_edit_site_parser_allow_subscriptions_default_is_none(self):
@@ -166,15 +142,11 @@ class EditSiteParserTest(ParserTest):
             )
 
     def test_edit_site_parser_allow_web_authoring(self):
-        args = self.parser_under_test.parse_args(
-            [commandname, "site-to-edit", "--allow-web-authoring"]
-        )
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit", "--allow-web-authoring"])
         assert args.allow_web_authoring is True, args
 
     def test_edit_site_parser_no_allow_web_authoring(self):
-        args = self.parser_under_test.parse_args(
-            [commandname, "site-to-edit", "--no-allow-web-authoring"]
-        )
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit", "--no-allow-web-authoring"])
         assert args.allow_web_authoring is False, args
 
     def test_edit_site_parser_allow_web_authoring_mutually_exclusive(self):
@@ -189,15 +161,11 @@ class EditSiteParserTest(ParserTest):
             )
 
     def test_edit_site_parser_allow_mobile_snapshots(self):
-        args = self.parser_under_test.parse_args(
-            [commandname, "site-to-edit", "--allow-mobile-snapshots"]
-        )
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit", "--allow-mobile-snapshots"])
         assert args.allow_mobile_snapshots is True, args
 
     def test_edit_site_parser_no_allow_mobile_snapshots(self):
-        args = self.parser_under_test.parse_args(
-            [commandname, "site-to-edit", "--no-allow-mobile-snapshots"]
-        )
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit", "--no-allow-mobile-snapshots"])
         assert args.allow_mobile_snapshots is False, args
 
     def test_edit_site_parser_allow_mobile_snapshots_mutually_exclusive(self):
@@ -212,15 +180,11 @@ class EditSiteParserTest(ParserTest):
             )
 
     def test_edit_site_parser_time_zone(self):
-        args = self.parser_under_test.parse_args(
-            [commandname, "site-to-edit", "--time-zone", "America/Los_Angeles"]
-        )
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit", "--time-zone", "America/Los_Angeles"])
         assert args.time_zone == "America/Los_Angeles", args
 
     def test_edit_site_parser_use_default_time_zone(self):
-        args = self.parser_under_test.parse_args(
-            [commandname, "site-to-edit", "--use-default-time-zone"]
-        )
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit", "--use-default-time-zone"])
         assert args.use_default_time_zone is True, args
 
     def test_edit_site_parser_time_zone_mutually_exclusive(self):
