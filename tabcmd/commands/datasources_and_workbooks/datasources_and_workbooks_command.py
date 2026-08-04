@@ -95,22 +95,35 @@ class DatasourcesAndWorkbooks(Server):
         # so we run url.decode, which will be a no-op if they are not encoded.
         decoded_value = urllib.parse.unquote(value)
         logger.debug("url had `{0}`, saved as `{1}`".format(value, decoded_value))
-        DatasourcesAndWorkbooks.apply_filter_value(logger, request_options, decoded_value)
+        # URL-embedded filters can legitimately contain '&' when a user drops in a
+        # tabcmd Classic script that put `Field=x&y` in the URL. Classic silently
+        # skipped fragments that didn't parse; keep that behavior here so scripts
+        # migrate cleanly. The --filter flag path stays strict (see apply_filter_value).
+        DatasourcesAndWorkbooks.apply_filter_value(logger, request_options, decoded_value, strict=False)
 
     # this is called for each filter value,
     # from apply_options, which expects an un-encoded input,
     # or from apply_url_params via apply_encoded_filter_value which decodes the input
     @staticmethod
-    def apply_filter_value(logger, request_options: RequestOptionsType, value: str) -> None:
+    def apply_filter_value(
+        logger, request_options: RequestOptionsType, value: str, strict: bool = True
+    ) -> None:
         logger.debug("handling filter param {}".format(value))
         # Split on the first '=' only so that filter values containing '=' are
         # preserved intact (e.g. Notes=x=y should filter Notes to the value "x=y").
         parts = value.split("=", maxsplit=1)
         if len(parts) != 2:
-            Errors.exit_with_error(
-                logger,
-                message="Filter clause '{}' must be in name=value form".format(value),
-            )
+            if strict:
+                Errors.exit_with_error(
+                    logger,
+                    message="Filter clause '{}' must be in name=value form".format(value),
+                )
+            # Non-strict: called from apply_encoded_filter_value on a URL-embedded
+            # fragment. Match tabcmd Classic's silent-skip behavior so drop-in
+            # migration of scripts that contain literal '&' in filter values
+            # (which the parser splits on) doesn't hard-fail.
+            logger.warning("Skipping unparseable filter clause from URL: %r", value)
+            return
         name, filter_value = parts
         # we should export the _DataExportOptions class from tsc
         request_options.vf(name, filter_value)  # type: ignore

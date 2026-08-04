@@ -59,6 +59,34 @@ class ParameterTests(unittest.TestCase):
         DatasourcesAndWorkbooks.apply_filter_value(mock_logger, request_options, "Name=")
         assert request_options.view_filters == [("Name", "")]
 
+    def test_apply_filter_value_unparseable_strict_exits(self):
+        # Default strict=True: a clause missing '=' exits with an error, matching
+        # the --filter flag contract.
+        request_options = tsc.PDFRequestOptions()
+        with self.assertRaises(SystemExit):
+            DatasourcesAndWorkbooks.apply_filter_value(mock_logger, request_options, "no_equals_here")
+
+    def test_apply_filter_value_unparseable_non_strict_skips(self):
+        # strict=False: unparseable clause is logged and skipped (tabcmd Classic
+        # parity for URL-embedded filter fragments like `Field=x&y` where '&' is
+        # part of the value and got split into a bogus second fragment).
+        request_options = tsc.PDFRequestOptions()
+        DatasourcesAndWorkbooks.apply_filter_value(
+            mock_logger, request_options, "no_equals_here", strict=False
+        )
+        assert request_options.view_filters == []
+
+    def test_apply_values_from_url_params_tolerates_ampersand_in_value(self):
+        # Regression: `?Product Name=AT&T 841000 Phone` (Classic drop-in) previously
+        # errored on the "T 841000 Phone" fragment produced by the '&' split.
+        # Classic silently skipped such fragments; we now match that behavior on
+        # the URL-syntax path (the --filter flag path stays strict).
+        query = "?Product%20Name=AT&T%20841000%20Phone"
+        request_options = tsc.PDFRequestOptions()
+        DatasourcesAndWorkbooks.apply_values_from_url_params(mock_logger, request_options, query)
+        # The first fragment is applied; the bogus second fragment is dropped.
+        assert request_options.view_filters == [("Product Name", "AT")]
+
     def test_apply_options_from_url_params(self):
         query_params = "?:iid=5&:refresh=yes&:size=600,700"
         request_options = tsc.PDFRequestOptions()
