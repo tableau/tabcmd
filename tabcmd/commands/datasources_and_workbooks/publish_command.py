@@ -177,6 +177,8 @@ class PublishCommand(DatasourcesAndWorkbooks):
             raise AttributeError("Cannot specify both a user and group for thumbnails.")
 
         new_workbook = TSC.WorkbookItem(project_id, name=args.name, show_tabs=args.tabbed)
+        if getattr(args, "description", None):
+            new_workbook.description = args.description
         new_workbook = server.workbooks.publish(
             new_workbook,
             str_filename,
@@ -193,6 +195,8 @@ class PublishCommand(DatasourcesAndWorkbooks):
     def publish_datasource_file(args, logger, server, project_id, str_filename, publish_mode, credentials):
         new_datasource = TSC.DatasourceItem(project_id, name=args.name)
         new_datasource.use_remote_query_agent = args.use_tableau_bridge
+        if getattr(args, "description", None):
+            new_datasource.description = args.description
         new_datasource = server.datasources.publish(
             new_datasource, str_filename, publish_mode, connection_credentials=credentials
         )
