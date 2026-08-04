@@ -45,7 +45,13 @@ class Userdata:
         site_role = UserCommand.evaluate_site_role(self.license_level, self.admin_level, self.publisher)
         if not site_role:
             raise AttributeError(_("tabcmd.user.error.site_role_required"))
-        user = TSC.UserItem(self.name, site_role, self.auth)
+        # tabcmd Classic accepts "Local" as an auth type; TSC's UserItem.Auth enum
+        # has no Local value and rejects it. Map Classic's "Local" to ServerDefault
+        # so CSVs authored for Classic import without crashing.
+        auth = self.auth
+        if isinstance(auth, str) and auth.lower() == "local":
+            auth = TSC.UserItem.Auth.ServerDefault
+        user = TSC.UserItem(self.name, site_role, auth)
         user.email = self.email
         user.fullname = self.fullname
         return user
