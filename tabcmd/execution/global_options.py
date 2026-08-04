@@ -111,11 +111,32 @@ def set_embedded_datasources_options(parser):
 
 
 # used in create extract. listed in delete-extract but makes no sense there
+def _parse_yes_no(value: str) -> bool:
+    # tabcmd Classic accepted "yes"/"no"/"true"/"false" on --encrypt; tabcmd 2
+    # kept the flag but silently ignored a following value. Accept the Classic
+    # forms so scripts port cleanly.
+    lowered = value.strip().lower()
+    if lowered in ("yes", "true", "1"):
+        return True
+    if lowered in ("no", "false", "0"):
+        return False
+    import argparse
+    raise argparse.ArgumentTypeError(
+        "Expected yes/no/true/false for --encrypt, got {!r}".format(value)
+    )
+
+
 def set_encryption_option(parser):
     parser.add_argument(
         "--encrypt",
         dest="encrypt",
-        action="store_true",  # set to true IF user passes in option --encrypt
+        # Classic parity: --encrypt yes / --encrypt no. Bare --encrypt still
+        # means True (default tabcmd 2 behavior). Omitted -> False.
+        nargs="?",
+        const=True,
+        default=False,
+        type=_parse_yes_no,
+        metavar="yes|no",
         help=_("createextracts.options.encrypt"),
     )
     return parser

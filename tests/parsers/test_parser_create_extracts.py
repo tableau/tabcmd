@@ -106,3 +106,39 @@ class CreateExtractsParserTest(ParserTest):
         ]
         with self.assertRaises(SystemExit):
             args = self.parser_under_test.parse_args(mock_args)
+
+    # --encrypt Classic-parity: accepts yes|no|true|false, bare flag still True, omitted False
+    def _base_args(self):
+        return [commandname, "--datasource", "ds", "--project", "p", "--parent-project-path", "pp"]
+
+    def test_encrypt_omitted_is_false(self):
+        args = self.parser_under_test.parse_args(self._base_args())
+        assert args.encrypt is False, args
+
+    def test_encrypt_bare_flag_is_true(self):
+        args = self.parser_under_test.parse_args(self._base_args() + ["--encrypt"])
+        assert args.encrypt is True, args
+
+    def test_encrypt_yes_is_true(self):
+        args = self.parser_under_test.parse_args(self._base_args() + ["--encrypt", "yes"])
+        assert args.encrypt is True, args
+
+    def test_encrypt_no_is_false(self):
+        args = self.parser_under_test.parse_args(self._base_args() + ["--encrypt", "no"])
+        assert args.encrypt is False, args
+
+    def test_encrypt_true_is_true(self):
+        args = self.parser_under_test.parse_args(self._base_args() + ["--encrypt", "true"])
+        assert args.encrypt is True, args
+
+    def test_encrypt_false_is_false(self):
+        args = self.parser_under_test.parse_args(self._base_args() + ["--encrypt", "false"])
+        assert args.encrypt is False, args
+
+    def test_encrypt_case_insensitive(self):
+        args = self.parser_under_test.parse_args(self._base_args() + ["--encrypt", "YES"])
+        assert args.encrypt is True, args
+
+    def test_encrypt_bad_value_rejected(self):
+        with self.assertRaises(SystemExit):
+            self.parser_under_test.parse_args(self._base_args() + ["--encrypt", "maybe"])
