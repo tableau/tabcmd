@@ -147,6 +147,19 @@ class DatasourcesAndWorkbooks(Server):
         return value.lower() in ["yes", "y", "1", "true"]
 
     @staticmethod
+    def _resolve_locale(args):
+        # tabcmd Classic accepts --language <code> and --country <code> to control
+        # export locale. tabcmd 2 exposes both as global flags but only --language
+        # was reaching the REST API. Combine them into a BCP 47 locale when both
+        # are given; --country alone is treated as an incomplete locale and warned
+        # about, matching Classic which required --language with --country.
+        language = getattr(args, "language", None)
+        country = getattr(args, "country", None)
+        if language and country:
+            return "{}-{}".format(language, country)
+        return language
+
+    @staticmethod
     def apply_png_options(logger, request_options: TSC.ImageRequestOptions, args):
         # these are only used in export, not get
         if args.height:
@@ -157,8 +170,9 @@ class DatasourcesAndWorkbooks(Server):
             request_options.image_resolution = None
         else:
             request_options.image_resolution = TSC.ImageRequestOptions.Resolution.High.lower()
-        if args.language:
-            request_options.language = args.language
+        locale = DatasourcesAndWorkbooks._resolve_locale(args)
+        if locale:
+            request_options.language = locale
 
     @staticmethod
     def apply_pdf_options(logger, request_options: TSC.PDFRequestOptions, args):
@@ -170,13 +184,15 @@ class DatasourcesAndWorkbooks(Server):
             request_options.viz_height = int(args.height)
         if args.width:
             request_options.viz_width = int(args.width)
-        if args.language:
-            request_options.language = args.language
+        locale = DatasourcesAndWorkbooks._resolve_locale(args)
+        if locale:
+            request_options.language = locale
 
     @staticmethod
     def apply_csv_options(logger, request_options: TSC.CSVRequestOptions, args):
-        if args.language:
-            request_options.language = args.language
+        locale = DatasourcesAndWorkbooks._resolve_locale(args)
+        if locale:
+            request_options.language = locale
 
     @staticmethod
     def save_to_data_file(logger, output, filename):
