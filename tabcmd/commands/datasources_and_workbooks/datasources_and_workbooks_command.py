@@ -105,9 +105,7 @@ class DatasourcesAndWorkbooks(Server):
     # from apply_options, which expects an un-encoded input,
     # or from apply_url_params via apply_encoded_filter_value which decodes the input
     @staticmethod
-    def apply_filter_value(
-        logger, request_options: RequestOptionsType, value: str, strict: bool = True
-    ) -> None:
+    def apply_filter_value(logger, request_options: RequestOptionsType, value: str, strict: bool = True) -> None:
         logger.debug("handling filter param {}".format(value))
         # Split on the first '=' only so that filter values containing '=' are
         # preserved intact (e.g. Notes=x=y should filter Notes to the value "x=y").

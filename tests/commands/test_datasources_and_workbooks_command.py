@@ -71,9 +71,7 @@ class ParameterTests(unittest.TestCase):
         # parity for URL-embedded filter fragments like `Field=x&y` where '&' is
         # part of the value and got split into a bogus second fragment).
         request_options = tsc.PDFRequestOptions()
-        DatasourcesAndWorkbooks.apply_filter_value(
-            mock_logger, request_options, "no_equals_here", strict=False
-        )
+        DatasourcesAndWorkbooks.apply_filter_value(mock_logger, request_options, "no_equals_here", strict=False)
         assert request_options.view_filters == []
 
     def test_apply_values_from_url_params_tolerates_ampersand_in_value(self):
