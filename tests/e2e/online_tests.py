@@ -15,7 +15,6 @@ except ModuleNotFoundError:
 
 from tests.e2e import setup_e2e
 
-
 # to run this suite
 # pytest -q tests/e2e/online_tests.py
 # you can either run setup with a stored credentials file, or simply log in

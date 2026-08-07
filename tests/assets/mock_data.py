@@ -93,6 +93,7 @@ def set_up_mock_server(mock_session):
     mock_server.any_item_type = getter
     mock_server.flows = getter
     mock_server.groups = getter
+
     # Ensure type name contains 'Projects' for filtering heuristics
     class ProjectsEndpoint:
         def __init__(self, ret):
