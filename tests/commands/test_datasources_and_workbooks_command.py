@@ -198,16 +198,17 @@ class ParameterTests(unittest.TestCase):
         assert request_options.language == "en-GB"
 
     def test_apply_png_options_with_language_and_country(self):
-        local_args = argparse.Namespace(
-            language="fr", country="CA", height="600", width="800", resolution=None
-        )
+        local_args = argparse.Namespace(language="fr", country="CA", height="600", width="800", resolution=None)
         request_options = tsc.ImageRequestOptions()
         DatasourcesAndWorkbooks.apply_png_options(mock_logger, request_options, local_args)
         assert request_options.language == "fr-CA"
 
     def test_apply_pdf_options_with_language_and_country(self):
         local_args = argparse.Namespace(
-            language="pt", country="BR", height=800, width=600,
+            language="pt",
+            country="BR",
+            height=800,
+            width=600,
             pagelayout=tsc.PDFRequestOptions.Orientation.Portrait.__str__(),
             pagesize=tsc.PDFRequestOptions.PageType.Folio.__str__(),
         )
