@@ -6,7 +6,6 @@ from tabcmd.commands.auth.session import Session
 from tabcmd.commands.server import Server
 from tabcmd.execution.logger_config import log
 
-
 try:
     from tests.e2e import credentials  # type: ignore
 except ImportError:
@@ -15,6 +14,7 @@ except ImportError:
 fakeserver = "http://SRVR"
 logging.disable(logging.ERROR)
 logger = log("tests_integration", "info")
+
 
 # these are integration tests because they don't just run a command, they call interior methods
 # pytest -v tests/e2e/integration_tests.py

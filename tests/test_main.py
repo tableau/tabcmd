@@ -49,8 +49,7 @@ class TestPythonMTabcmd(unittest.TestCase):
     def test_import_error_exits_one(self):
         # Inject a broken tabcmd.tabcmd into sys.modules before running __main__,
         # so the ImportError handler is exercised without relying on sys.path ordering.
-        script = textwrap.dedent(
-            """\
+        script = textwrap.dedent("""\
             import sys
             class _BrokenTabcmd:
                 def __getattr__(self, _):
@@ -58,8 +57,7 @@ class TestPythonMTabcmd(unittest.TestCase):
             sys.modules["tabcmd.tabcmd"] = _BrokenTabcmd()
             import runpy
             runpy.run_module("tabcmd", run_name="__main__")
-            """
-        )
+            """)
         with tempfile.TemporaryDirectory() as tmpdir:
             script_path = os.path.join(tmpdir, "run.py")
             with open(script_path, "w") as f:
