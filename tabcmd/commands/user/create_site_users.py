@@ -1,4 +1,5 @@
 import tableauserverclient as TSC
+from tableauserverclient.server.endpoint.exceptions import JobFailedException
 
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.constants import Errors
@@ -80,7 +81,7 @@ class CreateSiteUsersCommand(UserCommand):
         # per-completion summary.
         try:
             job_done = server.jobs.wait_for_job(job_id=job.id, timeout=args.timeout)
-        except TSC.JobFailedException as je:
+        except JobFailedException as je:
             Errors.exit_with_error(logger, exception=je)
             return
         except Exception as e:
