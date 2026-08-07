@@ -121,9 +121,8 @@ def _parse_yes_no(value: str) -> bool:
     if lowered in ("no", "false", "0"):
         return False
     import argparse
-    raise argparse.ArgumentTypeError(
-        "Expected yes/no/true/false for --encrypt, got {!r}".format(value)
-    )
+
+    raise argparse.ArgumentTypeError("Expected yes/no/true/false for --encrypt, got {!r}".format(value))
 
 
 def set_encryption_option(parser):
