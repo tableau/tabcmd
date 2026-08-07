@@ -48,3 +48,28 @@ class CreateSiteUsersParserTest(ParserTest):
             mock_args = [commandname, "users.csv", "--site", "site-name", "--auth-type", "TableauId"]
             with self.assertRaises(SystemExit):
                 args = self.parser_under_test.parse_args(mock_args)
+
+    def test_create_site_user_parser_nowait(self):
+        # Matches Classic spelling (one word). Defaults to False -> wait.
+        with mock.patch("builtins.open", mock.mock_open(read_data="test")):
+            args = self.parser_under_test.parse_args([commandname, "users.csv"])
+            assert args.nowait is False, args
+
+            args = self.parser_under_test.parse_args([commandname, "users.csv", "--nowait"])
+            assert args.nowait is True, args
+
+    def test_create_site_user_parser_silent_progress(self):
+        with mock.patch("builtins.open", mock.mock_open(read_data="test")):
+            args = self.parser_under_test.parse_args([commandname, "users.csv"])
+            assert args.silent_progress is False, args
+
+            args = self.parser_under_test.parse_args([commandname, "users.csv", "--silent-progress"])
+            assert args.silent_progress is True, args
+
+    def test_create_site_user_parser_nowait_and_silent_coexist(self):
+        with mock.patch("builtins.open", mock.mock_open(read_data="test")):
+            args = self.parser_under_test.parse_args(
+                [commandname, "users.csv", "--nowait", "--silent-progress"]
+            )
+            assert args.nowait is True, args
+            assert args.silent_progress is True, args

@@ -71,7 +71,10 @@ def set_users_file_positional(parser):
 
 
 def set_no_wait_option(parser):
-    parser.add_argument("--no-wait", action="store_true", help=_("common.options.nowait"))
+    # Matches tabcmd Classic's flag spelling (one word); no legacy callers to
+    # keep --no-wait working since this helper was never wired to a command
+    # before now.
+    parser.add_argument("--nowait", action="store_true", help=_("common.options.nowait"))
     return parser
 
 
