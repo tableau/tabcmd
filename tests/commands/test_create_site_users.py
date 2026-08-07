@@ -62,13 +62,9 @@ class CreateSiteUsersTest(unittest.TestCase):
     def _run(self, args):
         from tabcmd.commands.user.create_site_users import CreateSiteUsersCommand
 
-        with mock.patch(
-            "tabcmd.commands.user.create_site_users.Session"
-        ) as session_cls, mock.patch(
+        with mock.patch("tabcmd.commands.user.create_site_users.Session") as session_cls, mock.patch(
             "tabcmd.commands.user.user_data.UserCommand.validate_file_for_import"
-        ), mock.patch(
-            "tabcmd.commands.user.user_data.UserCommand.get_users_from_file"
-        ) as get_users:
+        ), mock.patch("tabcmd.commands.user.user_data.UserCommand.get_users_from_file") as get_users:
             fake_server = mock.MagicMock()
             session_cls.return_value.create_session.return_value = fake_server
             get_users.return_value = [

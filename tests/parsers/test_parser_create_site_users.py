@@ -68,8 +68,6 @@ class CreateSiteUsersParserTest(ParserTest):
 
     def test_create_site_user_parser_nowait_and_silent_coexist(self):
         with mock.patch("builtins.open", mock.mock_open(read_data="test")):
-            args = self.parser_under_test.parse_args(
-                [commandname, "users.csv", "--nowait", "--silent-progress"]
-            )
+            args = self.parser_under_test.parse_args([commandname, "users.csv", "--nowait", "--silent-progress"])
             assert args.nowait is True, args
             assert args.silent_progress is True, args
