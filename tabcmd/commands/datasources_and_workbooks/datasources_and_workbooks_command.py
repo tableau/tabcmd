@@ -74,7 +74,26 @@ class DatasourcesAndWorkbooks(Server):
                 logger.debug("No query parameters present in url")
                 return
 
-            params = query.split("&")
+            # A filter value that contains a literal '&' (e.g. `Product=AT&T`)
+            # gets split by query.split("&") into ["Product=AT", "T"]. Applying
+            # the first fragment as a filter silently returns rows that match
+            # "AT", which is wrong data with no error signal. Detect the pattern:
+            # if a fragment has no '=' AND isn't an options key (":..."), assume
+            # it's a continuation of the previous fragment's value and rejoin.
+            raw_params = query.split("&")
+            params: list[str] = []
+            for fragment in raw_params:
+                if params and not fragment.startswith(":") and "=" not in fragment:
+                    logger.warning(
+                        "URL contains an unencoded '&' inside a filter value; "
+                        "rejoining '%s&%s' as a single filter. Please URL-encode "
+                        "'&' as '%%26' to avoid ambiguity.",
+                        params[-1],
+                        fragment,
+                    )
+                    params[-1] = params[-1] + "&" + fragment
+                else:
+                    params.append(fragment)
             logger.debug(params)
             for value in params:
                 if value.startswith(":"):
@@ -95,17 +114,36 @@ class DatasourcesAndWorkbooks(Server):
         # so we run url.decode, which will be a no-op if they are not encoded.
         decoded_value = urllib.parse.unquote(value)
         logger.debug("url had `{0}`, saved as `{1}`".format(value, decoded_value))
-        DatasourcesAndWorkbooks.apply_filter_value(logger, request_options, decoded_value)
+        # URL-embedded filters can legitimately contain '&' when a user drops in a
+        # tabcmd Classic script that put `Field=x&y` in the URL. Classic silently
+        # skipped fragments that didn't parse; keep that behavior here so scripts
+        # migrate cleanly. The --filter flag path stays strict (see apply_filter_value).
+        DatasourcesAndWorkbooks.apply_filter_value(logger, request_options, decoded_value, strict=False)
 
     # this is called for each filter value,
     # from apply_options, which expects an un-encoded input,
     # or from apply_url_params via apply_encoded_filter_value which decodes the input
     @staticmethod
-    def apply_filter_value(logger, request_options: RequestOptionsType, value: str) -> None:
+    def apply_filter_value(logger, request_options: RequestOptionsType, value: str, strict: bool = True) -> None:
         logger.debug("handling filter param {}".format(value))
-        data_filter = value.split("=")
+        # Split on the first '=' only so that filter values containing '=' are
+        # preserved intact (e.g. Notes=x=y should filter Notes to the value "x=y").
+        parts = value.split("=", maxsplit=1)
+        if len(parts) != 2:
+            if strict:
+                Errors.exit_with_error(
+                    logger,
+                    message="Filter clause '{}' must be in name=value form".format(value),
+                )
+            # Non-strict: called from apply_encoded_filter_value on a URL-embedded
+            # fragment. Match tabcmd Classic's silent-skip behavior so drop-in
+            # migration of scripts that contain literal '&' in filter values
+            # (which the parser splits on) doesn't hard-fail.
+            logger.warning("Skipping unparseable filter clause from URL: %r", value)
+            return
+        name, filter_value = parts
         # we should export the _DataExportOptions class from tsc
-        request_options.vf(data_filter[0], data_filter[1])  # type: ignore
+        request_options.vf(name, filter_value)  # type: ignore
 
     # this is called from within from_url_params, for each param value
     # expects either ImageRequestOptions or PDFRequestOptions
