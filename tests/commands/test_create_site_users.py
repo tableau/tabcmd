@@ -59,7 +59,7 @@ def _base_args(**overrides):
 
 
 class CreateSiteUsersTest(unittest.TestCase):
-    def _run(self, args):
+    def _run(self, args, completed_override=None):
         from tabcmd.commands.user.create_site_users import CreateSiteUsersCommand
 
         with mock.patch("tabcmd.commands.user.create_site_users.Session") as session_cls, mock.patch(
@@ -76,15 +76,18 @@ class CreateSiteUsersTest(unittest.TestCase):
             fake_job.id = "abc-123"
             fake_server.users.bulk_add.return_value = fake_job
 
-            completed = mock.MagicMock(spec=TSC.JobItem)
-            completed.id = "abc-123"
-            completed.finish_code = 0
-            completed.notes = []
-            completed.status_notes = [
-                {"type": "CountOfUsersAddedToSite", "value": "2", "text": None},
-                {"type": "CountOfUsersSkipped", "value": "0", "text": None},
-                {"type": "CountOfUsersProcessed", "value": "2", "text": None},
-            ]
+            if completed_override is not None:
+                completed = completed_override
+            else:
+                completed = mock.MagicMock(spec=TSC.JobItem)
+                completed.id = "abc-123"
+                completed.finish_code = 0
+                completed.notes = []
+                completed.status_notes = [
+                    {"type": "CountOfUsersAddedToSite", "value": "2", "text": None},
+                    {"type": "CountOfUsersSkipped", "value": "0", "text": None},
+                    {"type": "CountOfUsersProcessed", "value": "2", "text": None},
+                ]
             fake_server.jobs.wait_for_job.return_value = completed
 
             CreateSiteUsersCommand.run_command(args)
@@ -114,6 +117,34 @@ class CreateSiteUsersTest(unittest.TestCase):
         server, job, completed = self._run(args)
         server.users.bulk_add.assert_called_once()
         server.jobs.wait_for_job.assert_not_called()
+
+    def test_older_tsc_without_status_notes_exits_with_error(self):
+        # If the pinned tableauserverclient predates status_notes on JobItem,
+        # we can't produce a truthful per-user summary. Fail loudly rather than
+        # silently print zeros that look like success.
+        args = _base_args()
+
+        class _OldJobItem:
+            # Deliberately does NOT have a status_notes attribute; this mirrors
+            # a pre-status_notes TSC release.
+            def __init__(self):
+                self.id = "abc-123"
+                self.finish_code = 0
+                self.notes = []
+
+        with self.assertRaises(SystemExit):
+            self._run(args, completed_override=_OldJobItem())
+
+    def test_continue_if_exists_is_a_noop_documented_in_debug(self):
+        # bulk_add is inherently tolerant of duplicate users at the server level
+        # (they get counted under CountOfUsersSkipped); --continue-if-exists is
+        # kept as a global flag for parity with the other create commands but
+        # doesn't need to do anything here. Just make sure the flag doesn't
+        # break the run and produces no unexpected side effects.
+        args = _base_args(continue_if_exists=True)
+        server, job, completed = self._run(args)
+        server.users.bulk_add.assert_called_once()
+        server.jobs.wait_for_job.assert_called_once()
 
 
 if __name__ == "__main__":
