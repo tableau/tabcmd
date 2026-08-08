@@ -74,7 +74,26 @@ class DatasourcesAndWorkbooks(Server):
                 logger.debug("No query parameters present in url")
                 return
 
-            params = query.split("&")
+            # A filter value that contains a literal '&' (e.g. `Product=AT&T`)
+            # gets split by query.split("&") into ["Product=AT", "T"]. Applying
+            # the first fragment as a filter silently returns rows that match
+            # "AT", which is wrong data with no error signal. Detect the pattern:
+            # if a fragment has no '=' AND isn't an options key (":..."), assume
+            # it's a continuation of the previous fragment's value and rejoin.
+            raw_params = query.split("&")
+            params: list[str] = []
+            for fragment in raw_params:
+                if params and not fragment.startswith(":") and "=" not in fragment:
+                    logger.warning(
+                        "URL contains an unencoded '&' inside a filter value; "
+                        "rejoining '%s&%s' as a single filter. Please URL-encode "
+                        "'&' as '%%26' to avoid ambiguity.",
+                        params[-1],
+                        fragment,
+                    )
+                    params[-1] = params[-1] + "&" + fragment
+                else:
+                    params.append(fragment)
             logger.debug(params)
             for value in params:
                 if value.startswith(":"):
