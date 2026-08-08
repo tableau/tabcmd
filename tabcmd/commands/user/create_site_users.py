@@ -62,7 +62,7 @@ class CreateSiteUsersCommand(UserCommand):
                     logger.debug(type(e))
                     number_of_errors += 1
                     logger.debug(number_of_errors)
-                    error_list.append(e.__class__.__name__)  # + ": " + e.__cause__ or "Unknown")
+                    error_list.append(str(e))
                 logger.debug(error_list)
         logger.info(_("session.monitorjob.percent_complete").format(100))
         logger.info(_("importcsvsummary.line.processed").format(number_of_users_listed))
