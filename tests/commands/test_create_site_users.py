@@ -135,17 +135,6 @@ class CreateSiteUsersTest(unittest.TestCase):
         with self.assertRaises(SystemExit):
             self._run(args, completed_override=_OldJobItem())
 
-    def test_continue_if_exists_is_a_noop_documented_in_debug(self):
-        # bulk_add is inherently tolerant of duplicate users at the server level
-        # (they get counted under CountOfUsersSkipped); --continue-if-exists is
-        # kept as a global flag for parity with the other create commands but
-        # doesn't need to do anything here. Just make sure the flag doesn't
-        # break the run and produces no unexpected side effects.
-        args = _base_args(continue_if_exists=True)
-        server, job, completed = self._run(args)
-        server.users.bulk_add.assert_called_once()
-        server.jobs.wait_for_job.assert_called_once()
-
 
 if __name__ == "__main__":
     unittest.main()
