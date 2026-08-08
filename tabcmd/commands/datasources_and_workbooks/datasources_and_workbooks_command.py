@@ -147,7 +147,7 @@ class DatasourcesAndWorkbooks(Server):
         return value.lower() in ["yes", "y", "1", "true"]
 
     @staticmethod
-    def _resolve_locale(args):
+    def _resolve_locale(args, logger=None):
         # tabcmd Classic accepts --language <code> and --country <code> to control
         # export locale. tabcmd 2 exposes both as global flags but only --language
         # was reaching the REST API. Combine them into a BCP 47 locale when both
@@ -157,6 +157,8 @@ class DatasourcesAndWorkbooks(Server):
         country = getattr(args, "country", None)
         if language and country:
             return "{}-{}".format(language, country)
+        if country and not language and logger is not None:
+            logger.warning(_("export.locale.country_without_language").format(country))
         return language
 
     @staticmethod
@@ -170,7 +172,7 @@ class DatasourcesAndWorkbooks(Server):
             request_options.image_resolution = None
         else:
             request_options.image_resolution = TSC.ImageRequestOptions.Resolution.High.lower()
-        locale = DatasourcesAndWorkbooks._resolve_locale(args)
+        locale = DatasourcesAndWorkbooks._resolve_locale(args, logger)
         if locale:
             request_options.language = locale
 
@@ -184,13 +186,13 @@ class DatasourcesAndWorkbooks(Server):
             request_options.viz_height = int(args.height)
         if args.width:
             request_options.viz_width = int(args.width)
-        locale = DatasourcesAndWorkbooks._resolve_locale(args)
+        locale = DatasourcesAndWorkbooks._resolve_locale(args, logger)
         if locale:
             request_options.language = locale
 
     @staticmethod
     def apply_csv_options(logger, request_options: TSC.CSVRequestOptions, args):
-        locale = DatasourcesAndWorkbooks._resolve_locale(args)
+        locale = DatasourcesAndWorkbooks._resolve_locale(args, logger)
         if locale:
             request_options.language = locale
 
