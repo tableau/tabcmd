@@ -7,7 +7,10 @@ from tabcmd.execution.localize import _
 
 path = os.path.dirname(os.path.abspath(__file__))
 
-_CLASSIC_OUTPUT = os.environ.get("TABCMD_CLASSIC_OUTPUT", "").lower() in ("1", "true", "yes")
+# tabcmd Classic prefixes every INFO line with "=====". This PR's goal is parity
+# with Classic output, so the prefix is on by default. Users who prefer the
+# plainer tabcmd 2 style can opt out with TABCMD_CLASSIC_OUTPUT=false (or 0/no).
+_CLASSIC_OUTPUT = os.environ.get("TABCMD_CLASSIC_OUTPUT", "true").lower() not in ("0", "false", "no")
 _INFO_FORMAT = "===== %(message)-30s" if _CLASSIC_OUTPUT else "%(message)-30s"
 
 FORMATS = {
