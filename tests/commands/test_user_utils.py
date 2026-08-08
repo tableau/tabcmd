@@ -154,16 +154,22 @@ class UserDataTest(unittest.TestCase):
     def test_local_auth_maps_to_server_default(self):
         # tabcmd Classic accepts "Local" as an auth type; TSC's Auth enum has no
         # Local value, so passing it through raises ValueError on server.users.add.
-        # to_tsc_user should map Classic's "Local" -> ServerDefault for parity.
+        # to_tsc_user should map Classic's "Local" -> ServerDefault for parity
+        # and log a warning so the operator sees the remap happened.
         data = Userdata()
         data.populate(["username", "pword", "fname", "creator", "none", "yes", "email", "Local"])
-        user = data.to_tsc_user()
+        with self.assertLogs("tabcmd.commands.user.user_data", level="WARNING") as logs:
+            user = data.to_tsc_user()
         assert user.auth_setting == TSC.UserItem.Auth.ServerDefault, user.auth_setting
+        # In tests the gettext catalog isn't loaded, so `_()` returns the raw key;
+        # we just assert the localize key made it to the log record.
+        assert any("local_auth_remapped" in msg for msg in logs.output), logs.output
 
     def test_local_auth_case_insensitive(self):
         data = Userdata()
         data.populate(["username", "pword", "fname", "creator", "none", "yes", "email", "local"])
-        user = data.to_tsc_user()
+        with self.assertLogs("tabcmd.commands.user.user_data", level="WARNING"):
+            user = data.to_tsc_user()
         assert user.auth_setting == TSC.UserItem.Auth.ServerDefault, user.auth_setting
 
     def test_non_local_auth_passes_through(self):

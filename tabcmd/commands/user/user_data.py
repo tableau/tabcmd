@@ -50,6 +50,9 @@ class Userdata:
         # so CSVs authored for Classic import without crashing.
         auth = self.auth
         if isinstance(auth, str) and auth.lower() == "local":
+            logging.getLogger(__name__).warning(
+                _("tabcmd.user.warning.local_auth_remapped").format(self.name)
+            )
             auth = TSC.UserItem.Auth.ServerDefault
         user = TSC.UserItem(self.name, site_role, auth)
         user.email = self.email
