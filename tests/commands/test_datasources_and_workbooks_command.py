@@ -185,9 +185,61 @@ class ParameterTests(unittest.TestCase):
 
     def test_apply_csv_options_with_language(self):
         mock_args.language = "de"
+        mock_args.country = None
         request_options = tsc.CSVRequestOptions()
         DatasourcesAndWorkbooks.apply_csv_options(mock_logger, request_options, mock_args)
         assert request_options.language == "de"
+
+    def test_apply_csv_options_with_language_and_country(self):
+        # tabcmd Classic combined --language + --country into a locale (issue #109).
+        local_args = argparse.Namespace(language="en", country="GB")
+        request_options = tsc.CSVRequestOptions()
+        DatasourcesAndWorkbooks.apply_csv_options(mock_logger, request_options, local_args)
+        assert request_options.language == "en-GB"
+
+    def test_apply_png_options_with_language_and_country(self):
+        local_args = argparse.Namespace(language="fr", country="CA", height="600", width="800", resolution=None)
+        request_options = tsc.ImageRequestOptions()
+        DatasourcesAndWorkbooks.apply_png_options(mock_logger, request_options, local_args)
+        assert request_options.language == "fr-CA"
+
+    def test_apply_pdf_options_with_language_and_country(self):
+        local_args = argparse.Namespace(
+            language="pt",
+            country="BR",
+            height=800,
+            width=600,
+            pagelayout=tsc.PDFRequestOptions.Orientation.Portrait.__str__(),
+            pagesize=tsc.PDFRequestOptions.PageType.Folio.__str__(),
+        )
+        request_options = tsc.PDFRequestOptions()
+        DatasourcesAndWorkbooks.apply_pdf_options(mock_logger, request_options, local_args)
+        assert request_options.language == "pt-BR"
+
+    def test_resolve_locale_country_without_language_is_dropped(self):
+        # --country alone is not a valid locale; drop it and don't send to server.
+        local_args = argparse.Namespace(language=None, country="US")
+        assert DatasourcesAndWorkbooks._resolve_locale(local_args) is None
+
+    def test_resolve_locale_country_without_language_warns(self):
+        # The user's --country was silently dropped in prior revisions; make sure
+        # they get a warning. In tests the gettext catalog isn't loaded so `_()`
+        # returns the raw key -- assert on the key rather than the English text.
+        local_args = argparse.Namespace(language=None, country="US")
+        warn_logger = mock.MagicMock()
+        assert DatasourcesAndWorkbooks._resolve_locale(local_args, warn_logger) is None
+        warn_logger.warning.assert_called_once()
+        assert "country_without_language" in warn_logger.warning.call_args[0][0]
+
+    def test_resolve_locale_language_only(self):
+        local_args = argparse.Namespace(language="ja", country=None)
+        assert DatasourcesAndWorkbooks._resolve_locale(local_args) == "ja"
+
+    def test_resolve_locale_language_only_does_not_warn(self):
+        local_args = argparse.Namespace(language="ja", country=None)
+        warn_logger = mock.MagicMock()
+        DatasourcesAndWorkbooks._resolve_locale(local_args, warn_logger)
+        warn_logger.warning.assert_not_called()
 
 
 @mock.patch("tableauserverclient.Server")
