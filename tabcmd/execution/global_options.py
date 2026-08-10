@@ -148,9 +148,19 @@ def set_resource_url_arg(parser):
 
 
 def set_ds_xor_wb_options(parser):
+    # Classic parity for `delete`: `tabcmd delete --workbook "Name"` treats
+    # --workbook's value as the target name. tabcmd 2 originally shipped as
+    # `tabcmd delete "Name" --workbook` (bare flag). Accept both forms by
+    # letting the flag take an optional value: bare -> True, with value ->
+    # value string. The command's run_command resolves which arg carries the
+    # name. See DeleteCommand.
     target_type_group = parser.add_mutually_exclusive_group(required=False)
-    target_type_group.add_argument("-d", "--datasource", action="store_true", help=_("tabcmd.options.datasource"))
-    target_type_group.add_argument("-w", "--workbook", action="store_true", help=_("tabcmd.options.workbook"))
+    target_type_group.add_argument(
+        "-d", "--datasource", nargs="?", const=True, default=False, help=_("tabcmd.options.datasource")
+    )
+    target_type_group.add_argument(
+        "-w", "--workbook", nargs="?", const=True, default=False, help=_("tabcmd.options.workbook")
+    )
     return parser
 
 
