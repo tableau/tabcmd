@@ -50,3 +50,42 @@ class DeleteParserTest(ParserTest):
         mock_args = [commandname, "--workbook", "A", "--datasource", "B"]
         with self.assertRaises(SystemExit):
             self.parser_under_test.parse_args(mock_args)
+
+    def test_delete_parser_classic_short_workbook_flag(self):
+        # Classic accepts `-w Name` as a shortcut for `--workbook Name`.
+        mock_args = [commandname, "-w", "MyWorkbook"]
+        args = self.parser_under_test.parse_args(mock_args)
+        assert args.workbook == "MyWorkbook", args
+
+    def test_delete_parser_classic_short_datasource_flag(self):
+        # Classic accepts `-d Name` as a shortcut for `--datasource Name`.
+        mock_args = [commandname, "-d", "MyDatasource"]
+        args = self.parser_under_test.parse_args(mock_args)
+        assert args.datasource == "MyDatasource", args
+
+    def test_delete_parser_positional_plus_flag_value_positional_wins(self):
+        # Ambiguous case: `delete Positional --workbook FlagValue`. Parser accepts
+        # both; run_command's normalization discards the flag value and keeps the
+        # positional. Locking the parsing side in here; run_command semantics are
+        # covered by the follow-up run_command coverage issue.
+        mock_args = [commandname, "Positional", "--workbook", "FlagValue"]
+        args = self.parser_under_test.parse_args(mock_args)
+        assert args.name == "Positional", args
+        assert args.workbook == "FlagValue", args
+
+    def test_delete_parser_bare_workbook_flag_no_value(self):
+        # `delete --workbook` (no name from either form) parses because `nargs="?"`
+        # with `const=True` on the flag. args.workbook is True, args.name is None.
+        # Run-command then errors out on "requires workbook or datasource" -- the
+        # parser must not itself reject this.
+        mock_args = [commandname, "--workbook"]
+        args = self.parser_under_test.parse_args(mock_args)
+        assert args.name is None, args
+        assert args.workbook is True, args
+
+    def test_delete_parser_classic_form_with_project(self):
+        # `delete --workbook Name -r proj` should accept both together.
+        mock_args = [commandname, "--workbook", "MyWorkbook", "-r", "proj"]
+        args = self.parser_under_test.parse_args(mock_args)
+        assert args.workbook == "MyWorkbook", args
+        assert args.project_name == "proj", args
