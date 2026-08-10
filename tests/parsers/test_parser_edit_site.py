@@ -198,3 +198,60 @@ class EditSiteParserTest(ParserTest):
                     "--use-default-time-zone",
                 ]
             )
+
+    # -------- default=None coverage for the remaining new flags --------
+    # An unpassed flag must leave the SiteItem attribute untouched. If any of
+    # these defaulted to False, every editsite call would flip the setting off.
+
+    def test_edit_site_parser_guest_access_enabled_default_is_none(self):
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit"])
+        assert args.guest_access_enabled is None, args
+
+    def test_edit_site_parser_web_extraction_enabled_default_is_none(self):
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit"])
+        assert args.web_extraction_enabled is None, args
+
+    def test_edit_site_parser_allow_web_authoring_default_is_none(self):
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit"])
+        assert args.allow_web_authoring is None, args
+
+    def test_edit_site_parser_allow_mobile_snapshots_default_is_none(self):
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit"])
+        assert args.allow_mobile_snapshots is None, args
+
+    def test_edit_site_parser_subscription_email_default_is_none(self):
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit"])
+        assert args.subscription_email is None, args
+
+    def test_edit_site_parser_subscription_footer_default_is_none(self):
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit"])
+        assert args.subscription_footer is None, args
+
+    def test_edit_site_parser_time_zone_default_is_none(self):
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit"])
+        assert args.time_zone is None, args
+
+    # -------- Explicit "false" acceptance on string-value flags --------
+    # The short-flag test for --guest-access-enabled uses "false" but
+    # --web-extraction-enabled only had a "true" test. Cover both.
+
+    def test_edit_site_parser_guest_access_enabled_long_flag_false(self):
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit", "--guest-access-enabled", "false"])
+        assert args.guest_access_enabled == "false", args
+
+    def test_edit_site_parser_web_extraction_enabled_false(self):
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit", "--web-extraction-enabled", "false"])
+        assert args.web_extraction_enabled == "false", args
+
+    # -------- Empty-string-as-disable on email/footer --------
+    # `bool('')` is False, so passing an empty string is the convention for
+    # clearing the value and disabling the feature. Lock the parsing side in
+    # here; the paired _enabled flip happens in run_command.
+
+    def test_edit_site_parser_subscription_email_accepts_empty_string(self):
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit", "--subscription-email", ""])
+        assert args.subscription_email == "", args
+
+    def test_edit_site_parser_subscription_footer_accepts_empty_string(self):
+        args = self.parser_under_test.parse_args([commandname, "site-to-edit", "--subscription-footer", ""])
+        assert args.subscription_footer == "", args
