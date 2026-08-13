@@ -66,14 +66,19 @@ class PublishCommand(DatasourcesAndWorkbooks):
         # Build both forms: workbook "connections" (ConnectionItem) and datasource "connection_credentials"
         workbook_connections = None
         datasource_credentials = None
-        if args.db_username:
-            creds = TSC.models.ConnectionCredentials(args.db_username, args.db_password, embed=args.save_db_password)
+        if args.db_username or args.oauth_username:
+            if not args.db_server:
+                Errors.exit_with_error(
+                    logger, "--db-server is required when using --db-username or --oauth-username"
+                )
+            if args.db_username:
+                creds = TSC.models.ConnectionCredentials(
+                    args.db_username, args.db_password, embed=args.save_db_password
+                )
+            else:
+                creds = TSC.models.ConnectionCredentials(args.oauth_username, None, embed=False, oauth=args.save_oauth)
             workbook_connections = TSC.ConnectionItem()
-            workbook_connections.connection_credentials = creds
-            datasource_credentials = creds
-        elif args.oauth_username:
-            creds = TSC.models.ConnectionCredentials(args.oauth_username, None, embed=False, oauth=args.save_oauth)
-            workbook_connections = TSC.ConnectionItem()
+            workbook_connections.server_address = args.db_server
             workbook_connections.connection_credentials = creds
             datasource_credentials = creds
         else:
@@ -183,7 +188,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
             publish_mode,
             # args.thumbnail_username, not yet implemented in tsc
             # args.thumbnail_group,
-            connections=credentials,
+            connections=[credentials] if credentials else None,
             as_job=False,
             skip_connection_check=args.skip_connection_check,
         )
