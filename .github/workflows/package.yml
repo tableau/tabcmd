@@ -13,11 +13,21 @@ on:
     tags:
       - '*'
   workflow_dispatch:
+    inputs:
+      release_tag:
+        description: >
+          Tag of an existing release to attach build artifacts to. Leave blank
+          when dispatching on a tag ref (github.ref_name is used). Set this
+          when dispatching from a branch to attach binaries to a release
+          created via the GitHub UI (which does not fire the push:tags: event
+          that would trigger this workflow automatically).
+        required: false
+        default: ''
 
 jobs:
 
   buildexe:
-    name: Build executables and upload them to the existing release
+    name: Build executables
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -97,18 +107,76 @@ jobs:
         tar -cvf ${{ matrix.UPLOAD_FILE_NAME }} ${{ matrix.OUT_FILE_NAME }}
 
 
+    # UPLOAD_FILE_NAME distinguishes the two macOS artifacts (x86 vs arm64);
+    # the shared artifact name `tabcmd-macos` would otherwise collide and each
+    # upload would clobber the other in the artifact store.
     - name: Upload build artifact for ${{ matrix.TARGET }}
       uses: actions/upload-artifact@v7
       with:
-        name: tabcmd-${{ matrix.TARGET }}
+        name: ${{ matrix.UPLOAD_FILE_NAME }}
         path: ./dist/${{ matrix.TARGET }}/${{ matrix.UPLOAD_FILE_NAME }}
 
-    - name: Upload binaries to release for ${{ matrix.TARGET }}
-      if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+  # Attach the built binaries to the target GitHub release. Split into its own
+  # job so we can gate it behind the `release` environment: a required-reviewer
+  # protection on that environment means anyone with dispatch access can
+  # trigger a build, but only an approved reviewer can actually attach binaries
+  # to a public release. On push:tags this still runs but the approval step
+  # will pause the workflow until a reviewer clicks Approve.
+  #
+  # `needs: buildexe` waits for ALL matrix legs to succeed. If any leg fails
+  # this job is skipped (default behavior with no `if: always()`), so a partial
+  # release upload where e.g. macOS is missing is never possible.
+  upload_to_release:
+    name: Attach build artifacts to release
+    needs: buildexe
+    if: startsWith(github.ref, 'refs/tags/') || inputs.release_tag != ''
+    runs-on: ubuntu-latest
+    environment: release
+    steps:
+    # upload-artifact@v7 pairs with download-artifact@v8: the two action majors
+    # don't move in lockstep. v8 of download-artifact adds hash-mismatch-errors
+    # and direct-download support; there is no v8 of upload-artifact yet.
+    - name: Download all build artifacts
+      uses: actions/download-artifact@v8
+      with:
+        path: artifacts/
+
+    # Upload runs on both push:tags and workflow_dispatch. For push:tags,
+    # github.ref_name is the tag. For workflow_dispatch, use the release_tag
+    # input if set (release created via GitHub UI), else fall back to
+    # github.ref_name (workflow dispatched on a tag ref).
+    - name: Upload tabcmd.exe (Windows) to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        asset_name: ${{ matrix.UPLOAD_FILE_NAME }}
-        file: ./dist/${{ matrix.TARGET }}/${{ matrix.UPLOAD_FILE_NAME }}
-        tag: ${{ github.ref_name }}
+        asset_name: tabcmd.exe
+        file: artifacts/tabcmd.exe/tabcmd.exe
+        tag: ${{ inputs.release_tag || github.ref_name }}
+        overwrite: true
+
+    - name: Upload tabcmd (Ubuntu) to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        asset_name: tabcmd
+        file: artifacts/tabcmd/tabcmd
+        tag: ${{ inputs.release_tag || github.ref_name }}
+        overwrite: true
+
+    - name: Upload tabcmd-x86.app.tar (macOS x86) to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        asset_name: tabcmd-x86.app.tar
+        file: artifacts/tabcmd-x86.app.tar/tabcmd-x86.app.tar
+        tag: ${{ inputs.release_tag || github.ref_name }}
+        overwrite: true
+
+    - name: Upload tabcmd_arm64.app.tar (macOS ARM64) to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        asset_name: tabcmd_arm64.app.tar
+        file: artifacts/tabcmd_arm64.app.tar/tabcmd_arm64.app.tar
+        tag: ${{ inputs.release_tag || github.ref_name }}
         overwrite: true
