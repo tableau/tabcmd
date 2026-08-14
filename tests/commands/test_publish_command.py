@@ -72,7 +72,7 @@ class PublishCommandTests(unittest.TestCase):
         self.assertEqual(len(connections), 1)
         self.assertEqual(connections[0].server_address, "db.example.com")
 
-    def test_publish_with_creds_missing_db_server(self, mock_path, mock_glob, mock_session):
+    def test_publish_with_creds_no_db_server(self, mock_path, mock_glob, mock_session):
         set_up_mock_server(mock_session)
         mock_path = set_up_mock_path(mock_path)
 
@@ -97,8 +97,13 @@ class PublishCommandTests(unittest.TestCase):
         mock_args.thumbnail_group = None
         mock_args.skip_connection_check = False
 
-        with self.assertRaises(SystemExit):
-            PublishCommand.run_command(mock_args)
+        PublishCommand.run_command(mock_args)
+        mock_session.internal_server.workbooks.publish.assert_called()
+
+        call_kwargs = mock_session.internal_server.workbooks.publish.call_args.kwargs
+        connections = call_kwargs["connections"]
+        self.assertEqual(len(connections), 1)
+        self.assertIsNone(connections[0].server_address)
 
     def test_get_files_to_publish_twbx(self, mock_path, mock_glob, mock_session):
         set_up_mock_server(mock_session)
