@@ -529,6 +529,122 @@ class CreateSessionTests(unittest.TestCase):
         assert auth is not None, auth
         mock_pass.assert_not_called()
 
+    @mock.patch("tabcmd.commands.auth.session.Session._open_connection_with_opts")
+    def test_create_session_reuses_saved_auth_token(self, mock_open_conn, mock_pass, mock_file, mock_path, mock_json):
+        """After a prior `tabcmd login`, a subsequent no-args command should
+        reattach to the saved auth_token instead of prompting for a password
+        (regression test for #463)."""
+        _set_mocks_for_json_file_exists(mock_path, mock_json)
+        _set_mocks_for_json_file_saved_username(mock_json, "cookieee", "monster")
+        mock_auth = vars(mock_data_from_json)
+        mock_auth["site_id"] = "site-1"
+        mock_auth["user_id"] = "user-1"
+
+        restored_server = mock.MagicMock(name="restored_tsc_server")
+        _set_mock_signin_validation_succeeds(restored_server, "monster")
+        mock_open_conn.return_value = restored_server
+
+        test_args = Namespace(**vars(args_to_mock))
+        new_session = Session()
+        auth = new_session.create_session(test_args, None)
+
+        restored_server._set_auth.assert_called_once_with("site-1", "user-1", "cookieee")
+        restored_server.users.get_by_id.assert_called_once_with("user-1")
+        assert auth is restored_server
+        mock_pass.assert_not_called()
+
+    @mock.patch("tabcmd.commands.auth.session.Session._open_connection_with_opts")
+    def test_create_session_falls_back_when_saved_token_expired(
+        self, mock_open_conn, mock_pass, mock_file, mock_path, mock_json
+    ):
+        """If the saved token is present but no longer accepted by the server,
+        we should fall through to the existing credential-recovery path rather
+        than pretending the reuse succeeded."""
+        _set_mocks_for_json_file_exists(mock_path, mock_json)
+        _set_mocks_for_json_file_saved_username(mock_json, "stale-token", "monster")
+        mock_auth = vars(mock_data_from_json)
+        mock_auth["site_id"] = "site-1"
+        mock_auth["user_id"] = "user-1"
+
+        restored_server = mock.MagicMock(name="restored_tsc_server")
+        restored_server.users.get_by_id.side_effect = Exception("401 Unauthorized")
+        mock_open_conn.return_value = restored_server
+        mock_pass.return_value = "prompted_password"
+
+        test_args = Namespace(**vars(args_to_mock))
+        new_session = Session()
+        # Expect fallback to _get_saved_credentials -> getpass -> fresh sign-in
+        with self.assertRaises(SystemExit):
+            # sign_in would try to talk to a real server through the mocked _open_connection_with_opts;
+            # we just care that we reached the credential path, which raises via TSC-less setup here.
+            new_session.create_session(test_args, None)
+        # The restore was actually attempted (proves _restore_saved_session ran; fails if the
+        # method is deleted in a future refactor, unlike a getpass-only assertion).
+        restored_server._set_auth.assert_called_once_with("site-1", "user-1", "stale-token")
+        mock_pass.assert_called()
+
+
+class RestoreSavedSessionTests(unittest.TestCase):
+    """Direct unit tests for Session._restore_saved_session (issue #463).
+
+    These exist as a hard regression guard: they fail if the method is deleted
+    or if TSC removes the private _set_auth API tabcmd depends on to reattach
+    a saved token."""
+
+    def test_method_exists_on_session(self):
+        # Guards the fix against accidental removal. If someone deletes the
+        # method during a refactor, the create_session flow falls back to
+        # getpass and hangs silently in non-TTY contexts (#463).
+        assert callable(getattr(Session, "_restore_saved_session", None)), (
+            "Session._restore_saved_session was removed; login-then-publish "
+            "will silently hang on getpass again. See #463."
+        )
+
+    def test_tsc_server_still_exposes_set_auth(self):
+        # Guards the fix against a TSC upstream rename/removal of the private
+        # _set_auth attachment API. If TSC drops it, _restore_saved_session's
+        # broad `except Exception` would swallow the AttributeError at DEBUG
+        # level and reintroduce the silent-hang behavior.
+        import tableauserverclient as TSC
+
+        assert callable(getattr(TSC.Server, "_set_auth", None)), (
+            "tableauserverclient.Server._set_auth is gone; tabcmd's saved-"
+            "session reuse will silently fall back to a getpass prompt. See "
+            "the note in Session._restore_saved_session."
+        )
+
+    def test_returns_none_when_no_saved_token(self):
+        session = Session()
+        session.auth_token = None
+        session.site_id = "s"
+        session.user_id = "u"
+        session.server_url = "https://x"
+        assert session._restore_saved_session() is None
+
+    def test_returns_none_when_no_site_id(self):
+        session = Session()
+        session.auth_token = "t"
+        session.site_id = None
+        session.user_id = "u"
+        session.server_url = "https://x"
+        assert session._restore_saved_session() is None
+
+    def test_returns_none_when_no_user_id(self):
+        session = Session()
+        session.auth_token = "t"
+        session.site_id = "s"
+        session.user_id = None
+        session.server_url = "https://x"
+        assert session._restore_saved_session() is None
+
+    def test_returns_none_when_no_server_url(self):
+        session = Session()
+        session.auth_token = "t"
+        session.site_id = "s"
+        session.user_id = "u"
+        session.server_url = None
+        assert session._restore_saved_session() is None
+
 
 def _set_mock_tsc_not_signed_in(mock_tsc):
     tsc_in_test = mock.MagicMock(name="manually mocking tsc")
