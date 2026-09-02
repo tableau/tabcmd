@@ -304,6 +304,39 @@ class Session:
 
         return credentials
 
+    def _restore_saved_session(self) -> Optional[TSC.Server]:
+        # Fixes #463: without this, tabcmd <cmd> after a successful `tabcmd login`
+        # falls into _get_saved_credentials() -> getpass.getpass() and hangs silently
+        # in any non-TTY context. Reattach to the token saved in tableau_auth.json instead.
+        if not (self.auth_token and self.site_id and self.user_id and self.server_url):
+            return None
+        try:
+            server = self._open_connection_with_opts()
+        except Exception as e:
+            # Log the exception class only; the message can include the request URL and
+            # in some code paths downstream would echo request bodies. Class name is
+            # enough for a fallback-diagnostic breadcrumb.
+            self.logger.debug("Could not open connection to reuse saved session ({})".format(type(e).__name__))
+            return None
+        server._set_auth(self.site_id, self.user_id, self.auth_token)
+        try:
+            # use_server_version negotiates the REST API version TSC hard-codes into
+            # subsequent endpoint URLs; required, not merely informational.
+            server.use_server_version()
+            # Probe a user-scoped endpoint so an expired token surfaces here rather
+            # than later inside a publish() body.
+            server.users.get_by_id(self.user_id)
+        except Exception as e:
+            # See note above: exception class only, no str(e).
+            self.logger.debug("Saved auth token no longer valid ({}); will re-authenticate".format(type(e).__name__))
+            return None
+        # Match tabcmd classic's on-reuse banner (Continuing previous session + server info)
+        # so users retain visual confirmation of which server/site each subcommand hits.
+        self.logger.info(_("session.continuing_session"))
+        self._print_server_info()
+        self.tableau_server = server
+        return server
+
     # external entry point:
     def create_session(self, args, logger):
         signed_in_object = None
@@ -329,6 +362,12 @@ class Session:
             if self.tableau_server:
                 self.logger.info(_("session.continuing_session"))
                 signed_in_object = self._validate_existing_signin()
+
+            # Reattach to the token saved on disk by an earlier `tabcmd login`
+            # before falling back to _get_saved_credentials, which would prompt
+            # for a password we don't have. Fixes #463.
+            if not signed_in_object:
+                signed_in_object = self._restore_saved_session()
 
             if not signed_in_object:
                 credentials = self._get_saved_credentials()
