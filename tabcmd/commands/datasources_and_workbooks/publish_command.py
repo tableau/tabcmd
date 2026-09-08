@@ -46,6 +46,10 @@ class PublishCommand(DatasourcesAndWorkbooks):
     def run_command(cls, args):
         logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
+
+        if (args.db_username or args.oauth_username) and not args.db_server:
+            Errors.exit_with_error(logger, _("publish.errors.db_server_required"))
+
         session = Session()
         server = session.create_session(args, logger)
 
