@@ -75,6 +75,9 @@ class TestAssets:
     TDS_FILE_LIVE = "live_mysql.tds"
 
     TWB_FILE_WITH_EMBEDDED_CONNECTION = "EmbeddedCredentials.twb"
+    # server_address baked into the workbook's <connection> element; the server-side
+    # embed only sticks when --db-server matches this value.
+    TWB_FILE_EMBEDDED_CONNECTION_SERVER = "see-internal-slack"
 
     USERS_DETAILS_FILE = "detailed_users.csv"
     USERNAMES_FILE = "usernames.csv"
@@ -142,7 +145,9 @@ class TabcmdCall:
         return arguments
 
     @staticmethod
-    def _publish_creds_args(arguments, db_user=None, db_pass=None, db_save=None, oauth_user=None, oauth_save=None):
+    def _publish_creds_args(
+        arguments, db_user=None, db_pass=None, db_save=None, oauth_user=None, oauth_save=None, db_server=None
+    ):
         if db_user:
             arguments.append("--db-username")
             arguments.append(db_user)
@@ -156,6 +161,9 @@ class TabcmdCall:
             arguments.append(oauth_user)
         if oauth_save:
             arguments.append("--save-oauth")
+        if db_server:
+            arguments.append("--db-server")
+            arguments.append(db_server)
         return arguments
 
     @staticmethod
@@ -471,10 +479,31 @@ class OnlineCommandTest(unittest.TestCase):
         file = os.path.join("tests", "assets", TestAssets.TWB_FILE_WITH_EMBEDDED_CONNECTION)
         name_on_server = TestAssets.get_publishable_name(TestAssets.TWB_FILE_WITH_EMBEDDED_CONNECTION)
         arguments = TabcmdCall._publish_args(file, name_on_server)
-        arguments = TabcmdCall._publish_creds_args(arguments, database_user, database_password, True)
+        arguments = TabcmdCall._publish_creds_args(
+            arguments,
+            database_user,
+            database_password,
+            True,
+            db_server=TestAssets.TWB_FILE_EMBEDDED_CONNECTION_SERVER,
+        )
         arguments.append("--tabbed")
         arguments.append("--skip-connection-check")
         _test_command(arguments)
+
+    @pytest.mark.order(11)
+    def test_wb_publish_embedded_missing_db_server_fails(self):
+        # publish with --db-username but no --db-server must exit non-zero with
+        # a friendly message rather than a raw tableauserverclient traceback.
+        # Hardcoded placeholder creds are fine here: the check fires in
+        # run_command before we touch the database.
+        file = os.path.join("tests", "assets", TestAssets.TWB_FILE_WITH_EMBEDDED_CONNECTION)
+        name_on_server = TestAssets.get_publishable_name(TestAssets.TWB_FILE_WITH_EMBEDDED_CONNECTION) + "-no-server"
+        arguments = TabcmdCall._publish_args(file, name_on_server)
+        arguments = TabcmdCall._publish_creds_args(arguments, "placeholder_user", "placeholder_pass", True)
+        arguments.append("--tabbed")
+        arguments.append("--skip-connection-check")
+        with pytest.raises(subprocess.CalledProcessError):
+            _test_command(arguments)
 
     @pytest.mark.order(12)
     def test_publish_ds(self):
