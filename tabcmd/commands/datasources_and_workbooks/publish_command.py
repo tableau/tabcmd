@@ -47,8 +47,14 @@ class PublishCommand(DatasourcesAndWorkbooks):
         logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
 
+        # Fail fast before auth when the direct target is clearly a workbook file:
+        # TSC's workbook publish path requires ConnectionItem.server_address whenever
+        # embedded credentials are supplied. Datasource publishes never need it, so
+        # this check is deliberately scoped to workbook extensions.
         if (args.db_username or args.oauth_username) and not args.db_server:
-            Errors.exit_with_error(logger, _("publish.errors.db_server_required"))
+            filename = (args.filename or "").lower()
+            if filename.endswith(".twb") or filename.endswith(".twbx"):
+                Errors.exit_with_error(logger, _("publish.errors.db_server_required"))
 
         session = Session()
         server = session.create_session(args, logger)
@@ -92,6 +98,10 @@ class PublishCommand(DatasourcesAndWorkbooks):
             source = PublishCommand.get_filename_extension_if_tableau_type(logger, str_filename)
             logger.info(_("publish.status").format(str_filename))
             if source in ["twbx", "twb"]:
+                # TSC's workbook publish path requires ConnectionItem.server_address whenever
+                # embedded connection credentials are supplied; datasource publish does not.
+                if (args.db_username or args.oauth_username) and not args.db_server:
+                    Errors.exit_with_error(logger, _("publish.errors.db_server_required"))
                 try:
                     published_item = PublishCommand.publish_workbook_file(
                         args=args,
@@ -100,7 +110,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
                         project_id=project_id,
                         str_filename=str_filename,
                         publish_mode=publish_mode,
-                        credentials=workbook_connections,
+                        connection=workbook_connections,
                     )
                 except Exception as e:
                     Errors.exit_with_error(logger, exception=e)
@@ -176,7 +186,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
         return publish_mode
 
     @staticmethod
-    def publish_workbook_file(args, logger, server, project_id, str_filename, publish_mode, credentials):
+    def publish_workbook_file(args, logger, server, project_id, str_filename, publish_mode, connection):
         if args.thumbnail_group:
             raise AttributeError("Generating thumbnails for a group is not yet implemented.")
         if args.thumbnail_username and args.thumbnail_group:
@@ -189,7 +199,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
             publish_mode,
             # args.thumbnail_username, not yet implemented in tsc
             # args.thumbnail_group,
-            connections=[credentials] if credentials else None,
+            connections=[connection] if connection else None,
             as_job=False,
             skip_connection_check=args.skip_connection_check,
         )
