@@ -9,15 +9,17 @@ name: Package-and-Upload
 # https://anshumanfauzdar.medium.com/using-github-actions-to-bundle-python-application-into-a-single-package-and-automatic-release-834bd42e0670
 
 on:
-  push:
-    tags:
-      - '*'
-  workflow_dispatch:
+  release:
+    types: [published]
+
+concurrency:
+  group: package-${{ github.event.release.tag_name }}
+  cancel-in-progress: false
 
 jobs:
 
   buildexe:
-    name: Build executables and upload them to the existing release
+    name: Build executables
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -97,18 +99,72 @@ jobs:
         tar -cvf ${{ matrix.UPLOAD_FILE_NAME }} ${{ matrix.OUT_FILE_NAME }}
 
 
+    # UPLOAD_FILE_NAME distinguishes the two macOS artifacts (x86 vs arm64);
+    # the shared artifact name `tabcmd-macos` would otherwise collide and each
+    # upload would clobber the other in the artifact store.
     - name: Upload build artifact for ${{ matrix.TARGET }}
       uses: actions/upload-artifact@v7
       with:
-        name: tabcmd-${{ matrix.TARGET }}
+        name: ${{ matrix.UPLOAD_FILE_NAME }}
         path: ./dist/${{ matrix.TARGET }}/${{ matrix.UPLOAD_FILE_NAME }}
 
-    - name: Upload binaries to release for ${{ matrix.TARGET }}
-      if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+  # Attach the built binaries to the target GitHub release. Split into its own
+  # job so we can gate it behind the `release` environment: a required-reviewer
+  # protection on that environment means publishing a release triggers a build,
+  # but only an approved reviewer can actually attach binaries to that release.
+  # The workflow pauses at this job until a reviewer clicks Approve.
+  #
+  # `needs: buildexe` waits for ALL matrix legs to succeed. If any leg fails
+  # this job is skipped (default behavior with no `if: always()`), so a partial
+  # release upload where e.g. macOS is missing is never possible.
+  upload_to_release:
+    name: Attach build artifacts to release
+    needs: buildexe
+    runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      contents: write
+    steps:
+    # v7 to match upload-artifact@v7; bump both together
+    - name: Download all build artifacts
+      uses: actions/download-artifact@v7
+      with:
+        path: artifacts/
+
+    # The `release: published` trigger provides the tag directly via
+    # github.event.release.tag_name - no fallback needed.
+    - name: Upload tabcmd.exe (Windows) to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        asset_name: ${{ matrix.UPLOAD_FILE_NAME }}
-        file: ./dist/${{ matrix.TARGET }}/${{ matrix.UPLOAD_FILE_NAME }}
-        tag: ${{ github.ref_name }}
+        asset_name: tabcmd.exe
+        file: artifacts/tabcmd.exe/tabcmd.exe
+        tag: ${{ github.event.release.tag_name }}
+        overwrite: true
+
+    - name: Upload tabcmd (Ubuntu) to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        asset_name: tabcmd
+        file: artifacts/tabcmd/tabcmd
+        tag: ${{ github.event.release.tag_name }}
+        overwrite: true
+
+    - name: Upload tabcmd-x86.app.tar (macOS x86) to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        asset_name: tabcmd-x86.app.tar
+        file: artifacts/tabcmd-x86.app.tar/tabcmd-x86.app.tar
+        tag: ${{ github.event.release.tag_name }}
+        overwrite: true
+
+    - name: Upload tabcmd_arm64.app.tar (macOS ARM64) to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        asset_name: tabcmd_arm64.app.tar
+        file: artifacts/tabcmd_arm64.app.tar/tabcmd_arm64.app.tar
+        tag: ${{ github.event.release.tag_name }}
         overwrite: true
