@@ -72,7 +72,7 @@ class PublishCommandTests(unittest.TestCase):
         self.assertEqual(len(connections), 1)
         self.assertEqual(connections[0].server_address, "db.example.com")
 
-    def test_publish_with_db_username_missing_db_server_exits(self, mock_path, mock_glob, mock_session):
+    def test_publish_with_creds_no_db_server(self, mock_path, mock_glob, mock_session):
         set_up_mock_server(mock_session)
         mock_path = set_up_mock_path(mock_path)
 
@@ -87,7 +87,7 @@ class PublishCommandTests(unittest.TestCase):
         mock_args.tabbed = True
 
         mock_args.db_username = "username"
-        mock_args.db_password = "password"
+        mock_args.db_password = "oauth_u"
         mock_args.db_server = None
         mock_args.save_db_password = True
         mock_args.oauth_username = None
@@ -97,39 +97,13 @@ class PublishCommandTests(unittest.TestCase):
         mock_args.thumbnail_group = None
         mock_args.skip_connection_check = False
 
-        with self.assertRaises(SystemExit):
-            PublishCommand.run_command(mock_args)
-        mock_session.internal_server.workbooks.publish.assert_not_called()
+        PublishCommand.run_command(mock_args)
+        mock_session.internal_server.workbooks.publish.assert_called()
 
-    def test_publish_with_oauth_username_missing_db_server_exits(self, mock_path, mock_glob, mock_session):
-        set_up_mock_server(mock_session)
-        mock_path = set_up_mock_path(mock_path)
-
-        mock_args.overwrite = False
-        mock_args.append = True
-        mock_args.replace = False
-
-        mock_args.filename = "existing_file.twbx"
-        mock_args.project_name = "project-name"
-        mock_args.parent_project_path = "projects"
-        mock_args.name = ""
-        mock_args.tabbed = True
-
-        mock_args.db_username = None
-        mock_args.db_password = None
-        mock_args.db_server = None
-        mock_args.save_db_password = False
-        mock_args.oauth_username = "oauth_user"
-        mock_args.save_oauth = True
-        mock_args.embed = False
-
-        mock_args.thumbnail_username = None
-        mock_args.thumbnail_group = None
-        mock_args.skip_connection_check = False
-
-        with self.assertRaises(SystemExit):
-            PublishCommand.run_command(mock_args)
-        mock_session.internal_server.workbooks.publish.assert_not_called()
+        call_kwargs = mock_session.internal_server.workbooks.publish.call_args.kwargs
+        connections = call_kwargs["connections"]
+        self.assertEqual(len(connections), 1)
+        self.assertIsNone(connections[0].server_address)
 
     def test_get_files_to_publish_twbx(self, mock_path, mock_glob, mock_session):
         set_up_mock_server(mock_session)
