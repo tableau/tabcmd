@@ -143,7 +143,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
             Errors.exit_with_error(logger, "Error saving to file", exception=e)
 
     @staticmethod
-    def apply_filters_from_args(request_options: RequestOptionsType, args, logger=None) -> None:
+    def apply_filters_from_args(request_options: RequestOptionsType, args, logger) -> None:
         if not args.filter:
             return
         logger.debug("filter = {}".format(args.filter))
