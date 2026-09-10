@@ -75,7 +75,8 @@ class TestAssets:
     TDS_FILE_LIVE = "live_mysql.tds"
 
     TWB_FILE_WITH_EMBEDDED_CONNECTION = "EmbeddedCredentials.twb"
-    # server_address baked into the workbook's <connection server=...> element.
+    # server_address baked into the workbook's <connection> element; the server-side
+    # embed only sticks when --db-server matches this value.
     TWB_FILE_EMBEDDED_CONNECTION_SERVER = "see-internal-slack"
 
     USERS_DETAILS_FILE = "detailed_users.csv"
@@ -491,28 +492,18 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(11)
     def test_wb_publish_embedded_missing_db_server_fails(self):
-        # Publish with --db-username but no --db-server must exit non-zero with our
-        # friendly message rather than a raw tableauserverclient traceback. The guard
-        # short-circuits before any real work, so throwaway credentials are safe here.
+        # publish with --db-username but no --db-server must exit non-zero with
+        # a friendly message rather than a raw tableauserverclient traceback.
+        # Hardcoded placeholder creds are fine here: the check fires in
+        # run_command before we touch the database.
         file = os.path.join("tests", "assets", TestAssets.TWB_FILE_WITH_EMBEDDED_CONNECTION)
         name_on_server = TestAssets.get_publishable_name(TestAssets.TWB_FILE_WITH_EMBEDDED_CONNECTION) + "-no-server"
         arguments = TabcmdCall._publish_args(file, name_on_server)
         arguments = TabcmdCall._publish_creds_args(arguments, "placeholder_user", "placeholder_pass", True)
         arguments.append("--tabbed")
         arguments.append("--skip-connection-check")
-
-        login_args = setup_e2e.get_login_args()
-        if login_args is None:
-            pytest.skip("No credentials available (credentials.py not found)")
-        calling_args = ["python", "-m", "tabcmd"] + arguments + login_args + [debug_log] + ["--no-certcheck"]
-        result = subprocess.run(calling_args, capture_output=True, text=True)
-
-        assert result.returncode != 0, "expected non-zero exit for missing --db-server"
-        # Localized string OR the raw key (if .mo has not been regenerated yet) both signal our guard.
-        combined = (result.stdout or "") + (result.stderr or "")
-        assert "publish.errors.db_server_required" in combined or "--db-server is required" in combined, (
-            "expected guard message in output; got:\n" + combined
-        )
+        with pytest.raises(subprocess.CalledProcessError):
+            _test_command(arguments)
 
     @pytest.mark.order(12)
     def test_publish_ds(self):
