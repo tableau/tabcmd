@@ -43,6 +43,16 @@ class PublishCommand(DatasourcesAndWorkbooks):
         set_parent_project_arg(group)
 
     @classmethod
+    def _require_db_server_for_workbook(cls, args, filename, logger):
+        """Fail fast if the caller is publishing a workbook with embedded
+        credentials but did not supply --db-server. Called both up front
+        (direct-file case) and inside the per-file publish loop (folder case)."""
+        if (args.db_username or args.oauth_username) and not args.db_server:
+            filename_lower = (filename or "").lower()
+            if filename_lower.endswith(".twb") or filename_lower.endswith(".twbx"):
+                Errors.exit_with_error(logger, _("publish.errors.db_server_required"))
+
+    @classmethod
     def run_command(cls, args):
         logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
@@ -51,10 +61,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
         # TSC's workbook publish path requires ConnectionItem.server_address whenever
         # embedded credentials are supplied. Datasource publishes never need it, so
         # this check is deliberately scoped to workbook extensions.
-        if (args.db_username or args.oauth_username) and not args.db_server:
-            filename = (args.filename or "").lower()
-            if filename.endswith(".twb") or filename.endswith(".twbx"):
-                Errors.exit_with_error(logger, _("publish.errors.db_server_required"))
+        PublishCommand._require_db_server_for_workbook(args, args.filename, logger)
 
         session = Session()
         server = session.create_session(args, logger)
@@ -100,8 +107,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
             if source in ["twbx", "twb"]:
                 # TSC's workbook publish path requires ConnectionItem.server_address whenever
                 # embedded connection credentials are supplied; datasource publish does not.
-                if (args.db_username or args.oauth_username) and not args.db_server:
-                    Errors.exit_with_error(logger, _("publish.errors.db_server_required"))
+                PublishCommand._require_db_server_for_workbook(args, str_filename, logger)
                 try:
                     published_item = PublishCommand.publish_workbook_file(
                         args=args,
