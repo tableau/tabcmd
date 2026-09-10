@@ -1,5 +1,3 @@
-import tableauserverclient as TSC
-
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.constants import Errors
 from tabcmd.execution.global_options import *
@@ -24,7 +22,7 @@ class CreateUsersCommand(UserCommand):
         UserCommand.set_role_arg(args_group)
         set_users_file_positional(args_group)
         set_completeness_options(args_group)
-        UserCommand.set_auth_arg(args_group)
+        UserCommand.set_auth_and_idp_args(args_group)
 
     @classmethod
     def run_command(cls, args):
@@ -54,10 +52,7 @@ class CreateUsersCommand(UserCommand):
         for user_obj in user_obj_list:
             try:
                 number_of_users_listed += 1
-                if args.role:
-                    user_obj.site_role = args.role
-                if args.auth_type:
-                    user_obj.auth_setting = args.auth_type
+                UserCommand.apply_cli_overrides(user_obj, args)
                 server.users.add(user_obj)
                 logger.info(_("common.output.succeeded").format(user_obj.name))
                 number_of_users_added += 1
