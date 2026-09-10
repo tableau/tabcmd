@@ -9,20 +9,12 @@ name: Package-and-Upload
 # https://anshumanfauzdar.medium.com/using-github-actions-to-bundle-python-application-into-a-single-package-and-automatic-release-834bd42e0670
 
 on:
-  push:
-    tags:
-      - '*'
-  workflow_dispatch:
-    inputs:
-      release_tag:
-        description: >
-          Tag of an existing release to attach build artifacts to. Leave blank
-          when dispatching on a tag ref (github.ref_name is used). Set this
-          when dispatching from a branch to attach binaries to a release
-          created via the GitHub UI (which does not fire the push:tags: event
-          that would trigger this workflow automatically).
-        required: false
-        default: ''
+  release:
+    types: [published]
+
+concurrency:
+  group: package-${{ github.event.release.tag_name }}
+  cancel-in-progress: false
 
 jobs:
 
@@ -118,10 +110,9 @@ jobs:
 
   # Attach the built binaries to the target GitHub release. Split into its own
   # job so we can gate it behind the `release` environment: a required-reviewer
-  # protection on that environment means anyone with dispatch access can
-  # trigger a build, but only an approved reviewer can actually attach binaries
-  # to a public release. On push:tags this still runs but the approval step
-  # will pause the workflow until a reviewer clicks Approve.
+  # protection on that environment means publishing a release triggers a build,
+  # but only an approved reviewer can actually attach binaries to that release.
+  # The workflow pauses at this job until a reviewer clicks Approve.
   #
   # `needs: buildexe` waits for ALL matrix legs to succeed. If any leg fails
   # this job is skipped (default behavior with no `if: always()`), so a partial
@@ -129,29 +120,26 @@ jobs:
   upload_to_release:
     name: Attach build artifacts to release
     needs: buildexe
-    if: startsWith(github.ref, 'refs/tags/') || inputs.release_tag != ''
     runs-on: ubuntu-latest
     environment: release
+    permissions:
+      contents: write
     steps:
-    # upload-artifact@v7 pairs with download-artifact@v8: the two action majors
-    # don't move in lockstep. v8 of download-artifact adds hash-mismatch-errors
-    # and direct-download support; there is no v8 of upload-artifact yet.
+    # v7 to match upload-artifact@v7; bump both together
     - name: Download all build artifacts
-      uses: actions/download-artifact@v8
+      uses: actions/download-artifact@v7
       with:
         path: artifacts/
 
-    # Upload runs on both push:tags and workflow_dispatch. For push:tags,
-    # github.ref_name is the tag. For workflow_dispatch, use the release_tag
-    # input if set (release created via GitHub UI), else fall back to
-    # github.ref_name (workflow dispatched on a tag ref).
+    # The `release: published` trigger provides the tag directly via
+    # github.event.release.tag_name - no fallback needed.
     - name: Upload tabcmd.exe (Windows) to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         asset_name: tabcmd.exe
         file: artifacts/tabcmd.exe/tabcmd.exe
-        tag: ${{ inputs.release_tag || github.ref_name }}
+        tag: ${{ github.event.release.tag_name }}
         overwrite: true
 
     - name: Upload tabcmd (Ubuntu) to release
@@ -160,7 +148,7 @@ jobs:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         asset_name: tabcmd
         file: artifacts/tabcmd/tabcmd
-        tag: ${{ inputs.release_tag || github.ref_name }}
+        tag: ${{ github.event.release.tag_name }}
         overwrite: true
 
     - name: Upload tabcmd-x86.app.tar (macOS x86) to release
@@ -169,7 +157,7 @@ jobs:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         asset_name: tabcmd-x86.app.tar
         file: artifacts/tabcmd-x86.app.tar/tabcmd-x86.app.tar
-        tag: ${{ inputs.release_tag || github.ref_name }}
+        tag: ${{ github.event.release.tag_name }}
         overwrite: true
 
     - name: Upload tabcmd_arm64.app.tar (macOS ARM64) to release
@@ -178,5 +166,5 @@ jobs:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         asset_name: tabcmd_arm64.app.tar
         file: artifacts/tabcmd_arm64.app.tar/tabcmd_arm64.app.tar
-        tag: ${{ inputs.release_tag || github.ref_name }}
+        tag: ${{ github.event.release.tag_name }}
         overwrite: true
