@@ -1,6 +1,7 @@
 import argparse
 import io
 import logging
+import uuid
 from enum import IntEnum
 from typing import List, Callable, Optional
 
@@ -10,6 +11,20 @@ from tabcmd.commands.constants import Errors
 from tabcmd.commands.server import Server
 from tabcmd.execution.localize import _
 from tabcmd.execution.global_options import case_insensitive_string_type
+
+
+def _idp_configuration_id_type(value: str) -> str:
+    """argparse ``type=`` callable that requires ``--idp-configuration-id`` to be a UUID.
+
+    The REST API expects a UUID for this field; validating at argument-parse time
+    gives an immediate, actionable error rather than deferring to a server-side
+    400 later in the run.
+    """
+    try:
+        uuid.UUID(value)
+    except (ValueError, AttributeError, TypeError):
+        raise argparse.ArgumentTypeError(_("tabcmd.user.error.idp_configuration_id_invalid_uuid").format(value))
+    return value
 
 
 class Userdata:
@@ -131,6 +146,7 @@ class UserCommand(Server):
         auth_group.add_argument(
             "--idp-configuration-id",
             metavar="UUID",
+            type=_idp_configuration_id_type,
             help=_("tabcmd.user.help.idp_configuration_id"),
         )
         return parser
