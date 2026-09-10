@@ -478,8 +478,8 @@ class OnlineCommandTest(unittest.TestCase):
         # NOTE: This asserts only that publish did not crash. It does NOT verify
         # that credentials actually embedded on the server side - a mismatched
         # --db-server would still exit 0 while silently dropping the creds at
-        # TSC's request-factory boundary (W-23855612). A stronger assertion would
-        # populate connections post-publish and check embed_password=True.
+        # TSC's request-factory boundary. A stronger assertion would populate
+        # connections post-publish and check embed_password=True.
         file = os.path.join("tests", "assets", TestAssets.TWB_FILE_WITH_EMBEDDED_CONNECTION)
         name_on_server = TestAssets.get_publishable_name(TestAssets.TWB_FILE_WITH_EMBEDDED_CONNECTION)
         arguments = TabcmdCall._publish_args(file, name_on_server)
