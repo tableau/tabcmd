@@ -103,8 +103,10 @@ def parent_parser_with_global_options():
 
     parser.add_argument(
         "--country",
-        choices=["de", "en", "es", "fr", "it", "ja", "ko", "pt", "sv", "zh"],
-        type=str.lower,  # coerce input to lowercase to act case insensitive
+        # ISO 3166-1 alpha-2 country code (case-insensitive). Combined with --language
+        # to form a locale (e.g. --language en --country GB -> "en-GB"). Left
+        # unconstrained on choices since Classic accepts any 2-letter country code.
+        type=str.upper,
         help=_("export.options.country"),
     )
 
