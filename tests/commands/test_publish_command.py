@@ -55,6 +55,7 @@ class PublishCommandTests(unittest.TestCase):
 
         mock_args.db_username = "username"
         mock_args.db_password = "oauth_u"
+        mock_args.db_server = "db.example.com"
         mock_args.save_db_password = True
         mock_args.oauth_username = None
         mock_args.embed = False
@@ -65,6 +66,44 @@ class PublishCommandTests(unittest.TestCase):
 
         PublishCommand.run_command(mock_args)
         mock_session.internal_server.workbooks.publish.assert_called()
+
+        call_kwargs = mock_session.internal_server.workbooks.publish.call_args.kwargs
+        connections = call_kwargs["connections"]
+        self.assertEqual(len(connections), 1)
+        self.assertEqual(connections[0].server_address, "db.example.com")
+
+    def test_publish_with_creds_no_db_server(self, mock_path, mock_glob, mock_session):
+        set_up_mock_server(mock_session)
+        mock_path = set_up_mock_path(mock_path)
+
+        mock_args.overwrite = False
+        mock_args.append = True
+        mock_args.replace = False
+
+        mock_args.filename = "existing_file.twbx"
+        mock_args.project_name = "project-name"
+        mock_args.parent_project_path = "projects"
+        mock_args.name = ""
+        mock_args.tabbed = True
+
+        mock_args.db_username = "username"
+        mock_args.db_password = "oauth_u"
+        mock_args.db_server = None
+        mock_args.save_db_password = True
+        mock_args.oauth_username = None
+        mock_args.embed = False
+
+        mock_args.thumbnail_username = None
+        mock_args.thumbnail_group = None
+        mock_args.skip_connection_check = False
+
+        PublishCommand.run_command(mock_args)
+        mock_session.internal_server.workbooks.publish.assert_called()
+
+        call_kwargs = mock_session.internal_server.workbooks.publish.call_args.kwargs
+        connections = call_kwargs["connections"]
+        self.assertEqual(len(connections), 1)
+        self.assertIsNone(connections[0].server_address)
 
     def test_get_files_to_publish_twbx(self, mock_path, mock_glob, mock_session):
         set_up_mock_server(mock_session)
