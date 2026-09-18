@@ -1,3 +1,4 @@
+import argparse
 import unittest
 from unittest.mock import *
 from tabcmd.commands.user.user_data import UserCommand, Userdata
@@ -150,3 +151,57 @@ class UserDataTest(unittest.TestCase):
         user = UserCommand._parse_line("username, pword, fname, creator, none, yes, email")
         assert user is not None
         assert user.site_role == "Creator", f"Expected Creator, got {user.site_role}"
+
+
+class ApplyCliOverridesTest(unittest.TestCase):
+    """
+    Covers UserCommand.apply_cli_overrides, which both createsiteusers and
+    createUsers invoke before calling server.users.add.
+    """
+
+    def _mk_args(self, role=None, auth_type=None, idp_configuration_id=None):
+        return argparse.Namespace(role=role, auth_type=auth_type, idp_configuration_id=idp_configuration_id)
+
+    def test_idp_flag_applied_when_present(self):
+        user = TSC.UserItem("alice", "Viewer")
+        UserCommand.apply_cli_overrides(user, self._mk_args(idp_configuration_id="idp-uuid-1"))
+        assert user.idp_configuration_id == "idp-uuid-1"
+        assert user.auth_setting is None
+
+    def test_idp_flag_overrides_auth_type_flag(self):
+        # Argparse's mutually_exclusive_group prevents both flags from being passed
+        # via the CLI in practice, but the runtime clear is still the last-line-of-defense
+        # so the wire request never has both attributes.
+        user = TSC.UserItem("alice", "Viewer")
+        UserCommand.apply_cli_overrides(user, self._mk_args(auth_type="SAML", idp_configuration_id="idp-uuid-2"))
+        assert user.idp_configuration_id == "idp-uuid-2"
+        assert user.auth_setting is None
+
+    def test_idp_flag_clears_existing_auth_setting(self):
+        # A user_obj may already have an auth_setting picked up from the CSV row's
+        # 8th column before apply_cli_overrides runs. If the operator passes
+        # --idp-configuration-id, that IDP wins and the pre-existing auth is cleared.
+        user = TSC.UserItem("alice", "Viewer")
+        user.auth_setting = "OpenID"  # e.g. set from CSV col 8
+        UserCommand.apply_cli_overrides(user, self._mk_args(idp_configuration_id="idp-uuid-3"))
+        assert user.idp_configuration_id == "idp-uuid-3"
+        assert user.auth_setting is None
+
+    def test_auth_type_still_works_when_no_idp(self):
+        user = TSC.UserItem("alice", "Viewer")
+        UserCommand.apply_cli_overrides(user, self._mk_args(auth_type="SAML"))
+        assert user.auth_setting == "SAML"
+        assert user.idp_configuration_id is None
+
+    def test_neither_flag_leaves_user_unchanged(self):
+        # Backward-compat: users invoking without either flag see no change.
+        user = TSC.UserItem("alice", "Viewer")
+        user.auth_setting = "OpenID"
+        UserCommand.apply_cli_overrides(user, self._mk_args())
+        assert user.auth_setting == "OpenID"
+        assert user.idp_configuration_id is None
+
+    def test_role_flag_applied(self):
+        user = TSC.UserItem("alice", "Viewer")
+        UserCommand.apply_cli_overrides(user, self._mk_args(role="Creator"))
+        assert user.site_role == "Creator"

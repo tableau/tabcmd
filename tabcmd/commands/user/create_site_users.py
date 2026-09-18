@@ -24,7 +24,7 @@ class CreateSiteUsersCommand(UserCommand):
         UserCommand.set_role_arg(args_group)
         set_users_file_positional(args_group)
         set_completeness_options(args_group)
-        UserCommand.set_auth_arg(args_group)
+        UserCommand.set_auth_and_idp_args(args_group)
 
     @classmethod
     def run_command(cls, args):
@@ -46,10 +46,7 @@ class CreateSiteUsersCommand(UserCommand):
         error_list = []
         for user_obj in user_obj_list:
             try:
-                if args.role:
-                    user_obj.site_role = args.role  # tsc is case sensitive
-                if args.auth_type:
-                    user_obj.auth_setting = args.auth_type
+                UserCommand.apply_cli_overrides(user_obj, args)
                 number_of_users_listed += 1
                 result = server.users.add(user_obj)
                 logger.info(_("common.output.succeeded").format(user_obj.name))
