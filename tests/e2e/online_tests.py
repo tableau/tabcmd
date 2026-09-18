@@ -75,6 +75,8 @@ class TestAssets:
     TDS_FILE_LIVE = "live_mysql.tds"
 
     TWB_FILE_WITH_EMBEDDED_CONNECTION = "EmbeddedCredentials.twb"
+    # server_address baked into the workbook's <connection server=...> element.
+    TWB_FILE_EMBEDDED_CONNECTION_SERVER = "see-internal-slack"
 
     USERS_DETAILS_FILE = "detailed_users.csv"
     USERNAMES_FILE = "usernames.csv"
@@ -142,7 +144,9 @@ class TabcmdCall:
         return arguments
 
     @staticmethod
-    def _publish_creds_args(arguments, db_user=None, db_pass=None, db_save=None, oauth_user=None, oauth_save=None):
+    def _publish_creds_args(
+        arguments, db_user=None, db_pass=None, db_save=None, oauth_user=None, oauth_save=None, db_server=None
+    ):
         if db_user:
             arguments.append("--db-username")
             arguments.append(db_user)
@@ -156,6 +160,9 @@ class TabcmdCall:
             arguments.append(oauth_user)
         if oauth_save:
             arguments.append("--save-oauth")
+        if db_server:
+            arguments.append("--db-server")
+            arguments.append(db_server)
         return arguments
 
     @staticmethod
@@ -468,13 +475,49 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(11)
     def test_wb_publish_embedded(self):
+        # NOTE: This asserts only that publish did not crash. It does NOT verify
+        # that credentials actually embedded on the server side - a mismatched
+        # --db-server would still exit 0 while silently dropping the creds at
+        # TSC's request-factory boundary. A stronger assertion would populate
+        # connections post-publish and check embed_password=True.
         file = os.path.join("tests", "assets", TestAssets.TWB_FILE_WITH_EMBEDDED_CONNECTION)
         name_on_server = TestAssets.get_publishable_name(TestAssets.TWB_FILE_WITH_EMBEDDED_CONNECTION)
         arguments = TabcmdCall._publish_args(file, name_on_server)
-        arguments = TabcmdCall._publish_creds_args(arguments, database_user, database_password, True)
+        arguments = TabcmdCall._publish_creds_args(
+            arguments,
+            database_user,
+            database_password,
+            True,
+            db_server=TestAssets.TWB_FILE_EMBEDDED_CONNECTION_SERVER,
+        )
         arguments.append("--tabbed")
         arguments.append("--skip-connection-check")
         _test_command(arguments)
+
+    @pytest.mark.order(11)
+    def test_wb_publish_embedded_missing_db_server_fails(self):
+        # Publish with --db-username but no --db-server must exit non-zero with our
+        # friendly message rather than a raw tableauserverclient traceback. The guard
+        # short-circuits before any real work, so throwaway credentials are safe here.
+        file = os.path.join("tests", "assets", TestAssets.TWB_FILE_WITH_EMBEDDED_CONNECTION)
+        name_on_server = TestAssets.get_publishable_name(TestAssets.TWB_FILE_WITH_EMBEDDED_CONNECTION) + "-no-server"
+        arguments = TabcmdCall._publish_args(file, name_on_server)
+        arguments = TabcmdCall._publish_creds_args(arguments, "placeholder_user", "placeholder_pass", True)
+        arguments.append("--tabbed")
+        arguments.append("--skip-connection-check")
+
+        login_args = setup_e2e.get_login_args()
+        if login_args is None:
+            pytest.skip("No credentials available (credentials.py not found)")
+        calling_args = ["python", "-m", "tabcmd"] + arguments + login_args + [debug_log] + ["--no-certcheck"]
+        result = subprocess.run(calling_args, capture_output=True, text=True)
+
+        assert result.returncode != 0, "expected non-zero exit for missing --db-server"
+        # Localized string OR the raw key (if .mo has not been regenerated yet) both signal our guard.
+        combined = (result.stdout or "") + (result.stderr or "")
+        assert "publish.errors.db_server_required" in combined or "--db-server is required" in combined, (
+            "expected guard message in output; got:\n" + combined
+        )
 
     @pytest.mark.order(12)
     def test_publish_ds(self):
