@@ -47,7 +47,7 @@ class DeleteCommand(DatasourcesAndWorkbooks):
         else:
 
             Errors.exit_with_error(logger, _("tabcmd.errors.parent.not.found"))
-        logger.info(_("delete.status").format(content_type, item_name or args.name))
+        logger.info(_("delete.status").format(content_type or "workbook", item_name or args.name))
 
         error = None
         if args.workbook or not content_type:

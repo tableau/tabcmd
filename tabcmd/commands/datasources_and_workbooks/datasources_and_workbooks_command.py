@@ -179,18 +179,22 @@ class DatasourcesAndWorkbooks(Server):
             request_options.language = args.language
 
     @staticmethod
-    def save_to_data_file(logger, output, filename):
+    def save_to_data_file(logger, output, filename, content_name=None):
         logger.info(_("httputils.found_attachment").format(filename))
         with open(filename, "wb") as f:
             f.writelines(output)
-            logger.info(_("export.success").format("", filename))
+            # export.success renders as 'Saved <content> to "<filename>"' -- content
+            # name is the workbook/view/datasource being exported, filename is the
+            # destination path. Fall back to filename twice if no content name was
+            # threaded through (better than an empty {0}).
+            logger.info(_("export.success").format(content_name or filename, filename))
 
     @staticmethod
-    def save_to_file(logger, output, filename):
+    def save_to_file(logger, output, filename, content_name=None):
         logger.info(_("httputils.found_attachment").format(filename))
         with open(filename, "wb") as f:
             f.write(output)
-            logger.info(_("export.success").format("", filename))
+            logger.info(_("export.success").format(content_name or filename, filename))
 
     @staticmethod
     def get_custom_view_by_id(logger, server, custom_view_id) -> TSC.CustomViewItem:

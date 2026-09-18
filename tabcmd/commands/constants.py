@@ -65,7 +65,7 @@ class Errors:
                 Errors.log_stack(logger)
             elif exception:
                 if message:
-                    logger.info(_("tabcmd.debug.error_message") + message)
+                    logger.debug(_("tabcmd.debug.error_message") + message)
                 Errors.check_common_error_codes_and_explain(logger, exception)
             else:
                 logger.info(_("tabcmd.debug.no_exception_or_message"))

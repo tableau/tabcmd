@@ -106,7 +106,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             DatasourcesAndWorkbooks.apply_values_from_url_params(logger, req_option_pdf, args.url)
             server_content_type.populate_pdf(get_url_item, req_option_pdf)
             filename = GetUrl.filename_from_args(args.filename, get_url_item.name, "pdf")
-            DatasourcesAndWorkbooks.save_to_file(logger, get_url_item.pdf, filename)
+            DatasourcesAndWorkbooks.save_to_file(logger, get_url_item.pdf, filename, content_name=get_url_item.name)
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
 
@@ -119,7 +119,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             DatasourcesAndWorkbooks.apply_values_from_url_params(logger, req_option_png, args.url)
             server_content_type.populate_image(get_url_item, req_option_png)
             filename = GetUrl.filename_from_args(args.filename, get_url_item.name, "png")
-            DatasourcesAndWorkbooks.save_to_file(logger, get_url_item.image, filename)
+            DatasourcesAndWorkbooks.save_to_file(logger, get_url_item.image, filename, content_name=get_url_item.name)
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
 
@@ -132,7 +132,9 @@ class GetUrl(DatasourcesAndWorkbooks):
             DatasourcesAndWorkbooks.apply_values_from_url_params(logger, req_option_csv, args.url)
             server_content_type.populate_csv(get_url_item, req_option_csv)
             file_name_with_path = GetUrl.filename_from_args(args.filename, get_url_item.name, "csv")
-            DatasourcesAndWorkbooks.save_to_data_file(logger, get_url_item.csv, file_name_with_path)
+            DatasourcesAndWorkbooks.save_to_data_file(
+                logger, get_url_item.csv, file_name_with_path, content_name=get_url_item.name
+            )
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
 
