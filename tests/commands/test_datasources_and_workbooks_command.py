@@ -40,6 +40,76 @@ class ParameterTests(unittest.TestCase):
         DatasourcesAndWorkbooks.apply_values_from_url_params(mock_logger, request_options, query_params)
         assert request_options.view_filters == expected
 
+    def test_apply_filter_value_with_equals_in_value(self):
+        # A filter value containing '=' should survive parsing intact.
+        # Old behavior: value.split("=") truncated at the second '=',
+        # so "Notes=x=y" incorrectly became name="Notes", value="x".
+        request_options = tsc.PDFRequestOptions()
+        DatasourcesAndWorkbooks.apply_filter_value(mock_logger, request_options, "Notes=x=y")
+        assert request_options.view_filters == [("Notes", "x=y")]
+
+    def test_apply_filter_value_with_multiple_equals_in_value(self):
+        request_options = tsc.PDFRequestOptions()
+        DatasourcesAndWorkbooks.apply_filter_value(mock_logger, request_options, "Config=k1=v1=extra")
+        assert request_options.view_filters == [("Config", "k1=v1=extra")]
+
+    def test_apply_filter_value_with_trailing_equals(self):
+        # Empty string after the '=' should produce an empty-string value.
+        request_options = tsc.PDFRequestOptions()
+        DatasourcesAndWorkbooks.apply_filter_value(mock_logger, request_options, "Name=")
+        assert request_options.view_filters == [("Name", "")]
+
+    def test_apply_filter_value_unparseable_strict_exits(self):
+        # Default strict=True: a clause missing '=' exits with an error, matching
+        # the --filter flag contract.
+        request_options = tsc.PDFRequestOptions()
+        with self.assertRaises(SystemExit):
+            DatasourcesAndWorkbooks.apply_filter_value(mock_logger, request_options, "no_equals_here")
+
+    def test_apply_filter_value_unparseable_non_strict_skips(self):
+        # strict=False: unparseable clause is logged and skipped (tabcmd Classic
+        # parity for URL-embedded filter fragments like `Field=x&y` where '&' is
+        # part of the value and got split into a bogus second fragment).
+        request_options = tsc.PDFRequestOptions()
+        DatasourcesAndWorkbooks.apply_filter_value(mock_logger, request_options, "no_equals_here", strict=False)
+        assert request_options.view_filters == []
+
+    def test_apply_values_from_url_params_tolerates_ampersand_in_value(self):
+        # Regression: `?Product Name=AT&T 841000 Phone` (Classic drop-in) previously
+        # errored on the "T 841000 Phone" fragment produced by the '&' split, and
+        # a prior iteration applied "Product Name=AT" as a partial filter (silent
+        # wrong-data bug when a dataset had matching "AT" rows). The correct fix
+        # is to rejoin fragments so the user's intended value is preserved.
+        query = "?Product%20Name=AT&T%20841000%20Phone"
+        request_options = tsc.PDFRequestOptions()
+        DatasourcesAndWorkbooks.apply_values_from_url_params(mock_logger, request_options, query)
+        assert request_options.view_filters == [("Product Name", "AT&T 841000 Phone")]
+
+    def test_apply_values_from_url_params_rejoins_multiple_ampersands(self):
+        # Multiple '&'s inside a single value should all be rejoined.
+        query = "?Company=A%20&%20B%20&%20C"
+        request_options = tsc.PDFRequestOptions()
+        DatasourcesAndWorkbooks.apply_values_from_url_params(mock_logger, request_options, query)
+        assert request_options.view_filters == [("Company", "A & B & C")]
+
+    def test_apply_values_from_url_params_options_after_ampersand_not_rejoined(self):
+        # An options key (starts with ':') after '&' should NOT be rejoined --
+        # that's a legitimate multi-parameter URL.
+        query = "?Region=West&:refresh=yes"
+        request_options = tsc.PDFRequestOptions()
+        DatasourcesAndWorkbooks.apply_values_from_url_params(mock_logger, request_options, query)
+        assert request_options.view_filters == [("Region", "West")]
+        assert request_options.max_age == 0
+
+    def test_apply_values_from_url_params_multiple_filters_not_rejoined(self):
+        # Two legitimate filters separated by '&' should stay separate (each
+        # fragment has its own '=', so the rejoin heuristic doesn't fire).
+        query = "?Region=West&Product=Widget"
+        request_options = tsc.PDFRequestOptions()
+        DatasourcesAndWorkbooks.apply_values_from_url_params(mock_logger, request_options, query)
+        assert ("Region", "West") in request_options.view_filters
+        assert ("Product", "Widget") in request_options.view_filters
+
     def test_apply_options_from_url_params(self):
         query_params = "?:iid=5&:refresh=yes&:size=600,700"
         request_options = tsc.PDFRequestOptions()

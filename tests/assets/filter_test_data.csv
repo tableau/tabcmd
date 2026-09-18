@@ -1,0 +1,33 @@
+Product Name,Category,Region,Sales,Sales & Cost,Order#,Path\File
+Widget Plain,Standard,West,100,10,W001,C:\a
+AT&T 841000 Phone,Electronics,East,200,20,W002,C:\b
+Salt & Pepper Shaker,Kitchenware,West,150,15,W003,C:\c
+K&N Air Filter,Automotive,South,175,17,W004,C:\d
+x=y Config Kit,Software,North,250,25,W005,C:\e
+Config=default Bundle,Software,East,300,30,W006,C:\f
+Formula=E=mc2 Poster,Books,West,50,5,W007,C:\g
+"Rock, Paper, Scissors Game",Toys,South,80,8,W008,C:\h
+"Comma, Separated, Product",Standard,North,90,9,W009,C:\i
+AT&T x=y Combo,Electronics,East,400,40,W010,C:\j
+Region=West Reference Book,Books,West,60,6,W011,C:\k
+Zurich Special,Standard,East,120,12,W012,C:\l
+Zürich Special,Standard,East,130,13,W013,C:\m
+Empty Value Test,Standard,West,0,0,W014,C:\n
+"Path C:\temp\file",Software,North,500,50,W015,"C:\temp\file"
+"Escape\, comma",Software,East,510,51,W016,C:\o
+"Trail\",Software,West,520,52,W017,C:\p
+META /slash/,Test,North,100,10,W018,C:\q
+META /percent%/,Test,North,101,10,W019,C:\r
+META /plus+/,Test,North,102,10,W020,C:\s
+META /colon:/,Test,North,103,10,W021,C:\t
+META /semi;/,Test,North,104,10,W022,C:\u
+META /brace{}/,Test,North,105,10,W023,C:\v
+META /bracket[]/,Test,North,106,10,W024,C:\w
+META /paren()/,Test,North,107,10,W025,C:\x
+META /question?/,Test,North,108,10,W026,C:\y
+META /hash#/,Test,North,109,10,W027,C:\z
+META /star*/,Test,North,110,10,W028,C:\aa
+META /at@/,Test,North,111,10,W029,C:\bb
+"META /quote""/",Test,North,112,10,W030,C:\cc
+META /apos'/,Test,North,113,10,W031,C:\dd
+"META /less<>greater/",Test,North,114,10,W032,C:\ee
