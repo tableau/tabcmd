@@ -107,7 +107,10 @@ class CreateExtractsParserTest(ParserTest):
         with self.assertRaises(SystemExit):
             args = self.parser_under_test.parse_args(mock_args)
 
-    # --encrypt Classic-parity: accepts yes|no|true|false, bare flag still True, omitted False
+    # --encrypt Classic set is yes|y|no|n (case-insensitive) per
+    # app-tabcmd/.../CreateExtracts.java:79-101; tabcmd 2 adds
+    # true|false|1|0 on top as a forgiving superset. Bare flag still True,
+    # omitted False.
     def _base_args(self):
         return [commandname, "--datasource", "ds", "--project", "p", "--parent-project-path", "pp"]
 
@@ -125,6 +128,16 @@ class CreateExtractsParserTest(ParserTest):
 
     def test_encrypt_no_is_false(self):
         args = self.parser_under_test.parse_args(self._base_args() + ["--encrypt", "no"])
+        assert args.encrypt is False, args
+
+    def test_encrypt_y_is_true(self):
+        # Classic shortcut; ported scripts must keep working.
+        args = self.parser_under_test.parse_args(self._base_args() + ["--encrypt", "y"])
+        assert args.encrypt is True, args
+
+    def test_encrypt_n_is_false(self):
+        # Classic shortcut; ported scripts must keep working.
+        args = self.parser_under_test.parse_args(self._base_args() + ["--encrypt", "n"])
         assert args.encrypt is False, args
 
     def test_encrypt_true_is_true(self):

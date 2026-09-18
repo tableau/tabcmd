@@ -112,17 +112,22 @@ def set_embedded_datasources_options(parser):
 
 # used in create extract. listed in delete-extract but makes no sense there
 def _parse_yes_no(value: str) -> bool:
-    # tabcmd Classic accepted "yes"/"no"/"true"/"false" on --encrypt; tabcmd 2
-    # kept the flag but silently ignored a following value. Accept the Classic
-    # forms so scripts port cleanly.
+    # tabcmd Classic accepts exactly `yes`/`y`/`no`/`n` (case-insensitive) on
+    # --encrypt — see workgroup/src/silos/tableau-server/applications/
+    # app-tabcmd/src/com/tableausoftware/tabcmd/commands/CreateExtracts.java
+    # lines 79-101 in the monolith. tabcmd 2 keeps Classic's set intact (so
+    # ported scripts run) and adds `true`/`false`/`1`/`0` as a forgiving
+    # superset for users who type boolean-shaped values.
     lowered = value.strip().lower()
-    if lowered in ("yes", "true", "1"):
+    if lowered in ("yes", "y", "true", "1"):
         return True
-    if lowered in ("no", "false", "0"):
+    if lowered in ("no", "n", "false", "0"):
         return False
     import argparse
 
-    raise argparse.ArgumentTypeError("Expected yes/no/true/false for --encrypt, got {!r}".format(value))
+    raise argparse.ArgumentTypeError(
+        "Expected yes/y/no/n/true/false/1/0 for --encrypt, got {!r}".format(value)
+    )
 
 
 def set_encryption_option(parser):
