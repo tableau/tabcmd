@@ -22,7 +22,9 @@ class DeleteCommand(DatasourcesAndWorkbooks):
     @staticmethod
     def define_args(delete_parser):
         group = delete_parser.add_argument_group(title=DeleteCommand.name)
-        group.add_argument("name", help=_("tabcmd.delete.target.name"))
+        # nargs="?" so `tabcmd delete --workbook "Name"` (Classic) also works,
+        # where the name is carried by the --workbook/--datasource value.
+        group.add_argument("name", nargs="?", default=None, help=_("tabcmd.delete.target.name"))
         set_ds_xor_wb_options(group)
         set_project_r_arg(group)
         set_parent_project_arg(group)
@@ -33,7 +35,20 @@ class DeleteCommand(DatasourcesAndWorkbooks):
         logger.debug(_("tabcmd.launching"))
         session = Session()
         server = session.create_session(args, logger)
+        # Resolve target from either form:
+        #   tabcmd 2:   delete "Name" --workbook          -> args.name="Name", args.workbook=True
+        #   Classic:    delete --workbook "Name"          -> args.name=None,   args.workbook="Name"
         content_type: str = ""
+        if isinstance(args.workbook, str):
+            if args.name is None:
+                args.name = args.workbook
+            args.workbook = True
+        if isinstance(args.datasource, str):
+            if args.name is None:
+                args.name = args.datasource
+            args.datasource = True
+        if args.name is None:
+            Errors.exit_with_error(logger, _("delete.errors.requires_workbook_datasource"))
         if args.workbook:
             content_type = "workbook"
         elif args.datasource:
