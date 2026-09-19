@@ -74,6 +74,7 @@ class TestAssets:
     TWB_FILE_WITH_EMBEDDED_CONNECTION = "EmbeddedCredentials.twb"
 
     USERS_DETAILS_FILE = "detailed_users.csv"
+    USERS_CSVIMPORT_1811_FILE = "users_csvimport_bugs_1811.csv"
     USERNAMES_FILE = "usernames.csv"
 
 
@@ -314,6 +315,41 @@ class OnlineCommandTest(unittest.TestCase):
         command = "createsiteusers"
         users = os.path.join("tests", "assets", TestAssets.USERS_DETAILS_FILE)
         arguments = [command, users, "--role", "Publisher"]
+        _test_command(arguments)
+
+    @pytest.mark.order(2)
+    def test_users_create_site_users_csvimport_bugs_1811(self):
+        """Round-trip coverage for five of the six ``UserItem.CSVImport`` bugs
+        fixed in tableau/server-client-python#1811 (issue #1809). Once tabcmd
+        delegates its CSV stack to TSC's ``CSVImport``, this fixture is the
+        regression guarantee that the delegation preserved each fix.
+
+        Exercises, in one two-row CSV:
+
+        * the 8-column AUTH bound (row length now readable),
+        * mixed-case usernames preserved verbatim (case-sensitive auth systems),
+        * ``TableauIDWithMFA`` accepted in the auth allowlist,
+        * capitalised role/admin/publisher tokens accepted case-insensitively,
+        * the ``@property_is_enum(Auth)`` guard active on the parsed
+          ``UserItem.auth_setting``.
+
+        The sixth bug (unknown-AUTH rejection) is a negative-path check that
+        doesn't fit a single happy-path fixture; TSC's own unit tests cover it.
+
+        ``--no-complete`` skips tabcmd's duplicate strict validator so the CSV
+        actually reaches TSC's ``UserItem.CSVImport`` — which is what this test
+        is meant to exercise. No ``--role`` override, so the role field in each
+        row is what gets validated (that's the point of the case-insensitivity
+        check).
+
+        Related: tabcmd #297 (license-name case sensitivity), #434 (``Local``
+        auth accepted by the CLI but rejected server-side).
+        """
+        if not server_admin and not site_admin:
+            pytest.skip("Must be server or site administrator to create site users")
+        command = "createsiteusers"
+        users = os.path.join("tests", "assets", TestAssets.USERS_CSVIMPORT_1811_FILE)
+        arguments = [command, users, "--no-complete"]
         _test_command(arguments)
 
     @pytest.mark.order(3)
