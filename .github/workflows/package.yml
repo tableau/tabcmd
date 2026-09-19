@@ -11,9 +11,13 @@ name: Package-and-Upload
 on:
   release:
     types: [published]
+  # Manual repair path + release-on-merge.yml's `gh workflow run package.yml
+  # --ref <tag>` invocation. The tag is resolved from github.ref_name when the
+  # release event isn't the trigger.
+  workflow_dispatch:
 
 concurrency:
-  group: package-${{ github.event.release.tag_name }}
+  group: package-${{ github.event.release.tag_name || github.ref_name }}
   cancel-in-progress: false
 
 jobs:
@@ -131,15 +135,36 @@ jobs:
       with:
         path: artifacts/
 
-    # The `release: published` trigger provides the tag directly via
-    # github.event.release.tag_name - no fallback needed.
+    # Resolve the release tag from whichever event triggered us: `release:
+    # published` populates github.event.release.tag_name; workflow_dispatch
+    # (invoked with `--ref <tag>`) leaves that empty and github.ref_name
+    # carries the tag instead. Fail fast if neither is set so we never
+    # attempt an upload against an empty tag.
+    - name: Resolve release tag
+      id: tag
+      env:
+        RELEASE_TAG: ${{ github.event.release.tag_name }}
+        REF_NAME: ${{ github.ref_name }}
+        EVENT_NAME: ${{ github.event_name }}
+      run: |
+        TAG="$RELEASE_TAG"
+        if [ -z "$TAG" ]; then
+          TAG="$REF_NAME"
+        fi
+        if [ -z "$TAG" ]; then
+          echo "::error::No release tag resolvable (event=$EVENT_NAME, release.tag_name empty, ref_name empty)"
+          exit 1
+        fi
+        echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+        echo "Resolved release tag: $TAG"
+
     - name: Upload tabcmd.exe (Windows) to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         asset_name: tabcmd.exe
         file: artifacts/tabcmd.exe/tabcmd.exe
-        tag: ${{ github.event.release.tag_name }}
+        tag: ${{ steps.tag.outputs.tag }}
         overwrite: true
 
     - name: Upload tabcmd (Ubuntu) to release
@@ -148,7 +173,7 @@ jobs:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         asset_name: tabcmd
         file: artifacts/tabcmd/tabcmd
-        tag: ${{ github.event.release.tag_name }}
+        tag: ${{ steps.tag.outputs.tag }}
         overwrite: true
 
     - name: Upload tabcmd-x86.app.tar (macOS x86) to release
@@ -157,7 +182,7 @@ jobs:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         asset_name: tabcmd-x86.app.tar
         file: artifacts/tabcmd-x86.app.tar/tabcmd-x86.app.tar
-        tag: ${{ github.event.release.tag_name }}
+        tag: ${{ steps.tag.outputs.tag }}
         overwrite: true
 
     - name: Upload tabcmd_arm64.app.tar (macOS ARM64) to release
@@ -166,5 +191,5 @@ jobs:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         asset_name: tabcmd_arm64.app.tar
         file: artifacts/tabcmd_arm64.app.tar/tabcmd_arm64.app.tar
-        tag: ${{ github.event.release.tag_name }}
+        tag: ${{ steps.tag.outputs.tag }}
         overwrite: true
