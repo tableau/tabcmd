@@ -513,10 +513,12 @@ class OnlineCommandTest(unittest.TestCase):
         result = subprocess.run(calling_args, capture_output=True, text=True)
 
         assert result.returncode != 0, "expected non-zero exit for missing --db-server"
-        # Localized string OR the raw key (if .mo has not been regenerated yet) both signal our guard.
+        # Require the rendered English guidance -- accepting the raw msgid would let a
+        # localization regression pass silently. Every locale ships an English placeholder
+        # for this key until real translations arrive.
         combined = (result.stdout or "") + (result.stderr or "")
-        assert "publish.errors.db_server_required" in combined or "--db-server is required" in combined, (
-            "expected guard message in output; got:\n" + combined
+        assert "--db-server is required" in combined, (
+            "expected rendered guard message in output; got:\n" + combined
         )
 
     @pytest.mark.order(12)
