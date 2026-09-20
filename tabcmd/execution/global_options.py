@@ -181,6 +181,128 @@ def set_site_status_arg(parser):
     return parser
 
 
+# only in edit-site: flags that map onto TSC SiteItem attributes but are not
+# currently wired in create_site_command. Kept out of set_common_site_args so
+# createsite --help does not list options its run_command ignores. See #437.
+def set_edit_site_only_args(parser):
+    # guest access: Classic passes true/false as a string value
+    parser.add_argument(
+        "-g",
+        "--guest-access-enabled",
+        choices=["true", "false"],
+        help=_("editsite.options.guest_access_enabled"),
+    )
+
+    # cache warmup: paired positive/negative boolean, default None so an
+    # unpassed flag is a no-op (leaves the server setting unchanged)
+    cache_warmup_group = parser.add_mutually_exclusive_group()
+    cache_warmup_group.add_argument(
+        "--cache-warmup",
+        dest="cache_warmup_enabled",
+        action="store_true",
+        default=None,
+        help=_("editsite.options.cache_warmup"),
+    )
+    cache_warmup_group.add_argument(
+        "--no-cache-warmup",
+        dest="cache_warmup_enabled",
+        action="store_false",
+        default=None,
+        help=_("editsite.options.no_cache_warmup"),
+    )
+
+    # subscription email: also flips custom_subscription_email_enabled
+    parser.add_argument(
+        "-e",
+        "--subscription-email",
+        default=None,
+        help=_("editsite.options.subscription_email"),
+    )
+
+    # subscription footer: also flips custom_subscription_footer_enabled.
+    # -f matches Classic tabcmd editsite parity; editsite does not use -f for --filename.
+    parser.add_argument(
+        "-f",
+        "--subscription-footer",
+        default=None,
+        help=_("editsite.options.subscription_footer"),
+    )
+
+    # web extraction: string value, coerced to bool at wire time
+    parser.add_argument(
+        "--web-extraction-enabled",
+        choices=["true", "false"],
+        help=_("editsite.options.web_extraction_enabled"),
+    )
+
+    # allow subscriptions: inverted onto disable_subscriptions in run_command
+    allow_subs_group = parser.add_mutually_exclusive_group()
+    allow_subs_group.add_argument(
+        "--allow-subscriptions",
+        dest="allow_subscriptions",
+        action="store_true",
+        default=None,
+        help=_("editsite.options.allow_subscriptions"),
+    )
+    allow_subs_group.add_argument(
+        "--no-allow-subscriptions",
+        dest="allow_subscriptions",
+        action="store_false",
+        default=None,
+        help=_("editsite.options.no_allow_subscriptions"),
+    )
+
+    # allow web authoring: direct mapping onto authoring_enabled
+    authoring_group = parser.add_mutually_exclusive_group()
+    authoring_group.add_argument(
+        "--allow-web-authoring",
+        dest="allow_web_authoring",
+        action="store_true",
+        default=None,
+        help=_("editsite.options.allow_web_authoring"),
+    )
+    authoring_group.add_argument(
+        "--no-allow-web-authoring",
+        dest="allow_web_authoring",
+        action="store_false",
+        default=None,
+        help=_("editsite.options.no_allow_web_authoring"),
+    )
+
+    # allow mobile snapshots: maps onto sheet_image_enabled (NOT
+    # mobile_biometrics_enabled, which is a separate biometric-auth feature)
+    mobile_group = parser.add_mutually_exclusive_group()
+    mobile_group.add_argument(
+        "--allow-mobile-snapshots",
+        dest="allow_mobile_snapshots",
+        action="store_true",
+        default=None,
+        help=_("editsite.options.allow_mobile_snapshots"),
+    )
+    mobile_group.add_argument(
+        "--no-allow-mobile-snapshots",
+        dest="allow_mobile_snapshots",
+        action="store_false",
+        default=None,
+        help=_("editsite.options.no_allow_mobile_snapshots"),
+    )
+
+    # time zone: string value, mutually exclusive with --use-default-time-zone
+    tz_group = parser.add_mutually_exclusive_group()
+    tz_group.add_argument(
+        "--time-zone",
+        default=None,
+        help=_("editsite.options.time_zone"),
+    )
+    tz_group.add_argument(
+        "--use-default-time-zone",
+        action="store_true",
+        default=None,
+        help=_("editsite.options.use_default_time_zone"),
+    )
+    return parser
+
+
 # mismatched arguments: createsite says --url, editsite says --site-id
 # just let both commands use either of them
 def set_site_id_args(parser):
