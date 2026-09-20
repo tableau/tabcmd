@@ -47,8 +47,8 @@ class DeleteCommand(DatasourcesAndWorkbooks):
         else:
 
             Errors.exit_with_error(logger, _("tabcmd.errors.parent.not.found"))
-        logger.info(_("delete.status").format(content_type or "workbook", item_name or args.name))
 
+        item_to_delete = None
         error = None
         if args.workbook or not content_type:
             logger.debug(_("delete.status").format("Workbook", args.workbook))
@@ -67,6 +67,8 @@ class DeleteCommand(DatasourcesAndWorkbooks):
         if not content_type or not item_to_delete:
             logger.debug(error)
             Errors.exit_with_error(logger, _("delete.errors.requires_workbook_datasource"))
+
+        logger.info(_("delete.status").format(content_type, args.name))
 
         try:
             if content_type == "workbook":
