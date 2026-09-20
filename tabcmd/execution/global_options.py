@@ -140,7 +140,7 @@ def set_encryption_option(parser):
         const=True,
         default=False,
         type=_parse_yes_no,
-        metavar="yes|no",
+        metavar="yes|y|no|n|true|false|1|0",
         help=_("createextracts.options.encrypt"),
     )
     return parser

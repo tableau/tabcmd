@@ -148,6 +148,16 @@ class CreateExtractsParserTest(ParserTest):
         args = self.parser_under_test.parse_args(self._base_args() + ["--encrypt", "false"])
         assert args.encrypt is False, args
 
+    def test_encrypt_1_is_true(self):
+        # Numeric alias in tabcmd 2's forgiving superset.
+        args = self.parser_under_test.parse_args(self._base_args() + ["--encrypt", "1"])
+        assert args.encrypt is True, args
+
+    def test_encrypt_0_is_false(self):
+        # Numeric alias in tabcmd 2's forgiving superset.
+        args = self.parser_under_test.parse_args(self._base_args() + ["--encrypt", "0"])
+        assert args.encrypt is False, args
+
     def test_encrypt_case_insensitive(self):
         args = self.parser_under_test.parse_args(self._base_args() + ["--encrypt", "YES"])
         assert args.encrypt is True, args
