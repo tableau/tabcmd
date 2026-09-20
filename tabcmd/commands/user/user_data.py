@@ -45,15 +45,7 @@ class Userdata:
         site_role = UserCommand.evaluate_site_role(self.license_level, self.admin_level, self.publisher)
         if not site_role:
             raise AttributeError(_("tabcmd.user.error.site_role_required"))
-        # tabcmd Classic accepts "Local" as an auth type; TSC's UserItem.Auth enum
-        # has no Local value and rejects it. Map Classic's "Local" to ServerDefault
-        # so CSVs authored for Classic import without crashing.
-        auth = self.auth
-        if isinstance(auth, str) and auth.lower() == "local":
-            logging.getLogger(__name__).warning(
-                _("tabcmd.user.warning.local_auth_remapped").format(self.name)
-            )
-            auth = TSC.UserItem.Auth.ServerDefault
+        auth = UserCommand.normalize_auth_setting(self.auth, self.name)
         user = TSC.UserItem(self.name, site_role, auth)
         user.email = self.email
         user.fullname = self.fullname
@@ -112,6 +104,20 @@ class UserCommand(Server):
     """
     This class acts as a base class for user related group of commands
     """
+
+    # tabcmd Classic accepts "Local" as an auth type; TSC's UserItem.Auth enum
+    # has no Local value and rejects it. Map Classic's "Local" to ServerDefault
+    # (both for CSV values and for the CLI --auth-type override) so inputs
+    # authored for Classic import without crashing, and log a warning so the
+    # operator sees the remap happened.
+    @staticmethod
+    def normalize_auth_setting(auth, username: Optional[str] = None):
+        if isinstance(auth, str) and auth.lower() == "local":
+            logging.getLogger(__name__).warning(
+                _("tabcmd.user.warning.local_auth_remapped").format(username)
+            )
+            return TSC.UserItem.Auth.ServerDefault
+        return auth
 
     @staticmethod
     def set_role_arg(parser):

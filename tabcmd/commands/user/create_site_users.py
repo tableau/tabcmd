@@ -49,7 +49,7 @@ class CreateSiteUsersCommand(UserCommand):
                 if args.role:
                     user_obj.site_role = args.role  # tsc is case sensitive
                 if args.auth_type:
-                    user_obj.auth_setting = args.auth_type
+                    user_obj.auth_setting = UserCommand.normalize_auth_setting(args.auth_type, user_obj.name)
                 number_of_users_listed += 1
                 result = server.users.add(user_obj)
                 logger.info(_("common.output.succeeded").format(user_obj.name))

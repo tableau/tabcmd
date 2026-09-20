@@ -57,7 +57,7 @@ class CreateUsersCommand(UserCommand):
                 if args.role:
                     user_obj.site_role = args.role
                 if args.auth_type:
-                    user_obj.auth_setting = args.auth_type
+                    user_obj.auth_setting = UserCommand.normalize_auth_setting(args.auth_type, user_obj.name)
                 server.users.add(user_obj)
                 logger.info(_("common.output.succeeded").format(user_obj.name))
                 number_of_users_added += 1

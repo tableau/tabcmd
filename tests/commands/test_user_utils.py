@@ -161,9 +161,10 @@ class UserDataTest(unittest.TestCase):
         with self.assertLogs("tabcmd.commands.user.user_data", level="WARNING") as logs:
             user = data.to_tsc_user()
         assert user.auth_setting == TSC.UserItem.Auth.ServerDefault, user.auth_setting
-        # In tests the gettext catalog isn't loaded, so `_()` returns the raw key;
-        # we just assert the localize key made it to the log record.
-        assert any("local_auth_remapped" in msg for msg in logs.output), logs.output
+        # Assert the warning names the affected user so the operator can act on
+        # it. Avoid coupling to the localize key -- once the .mo catalog carries
+        # this msgid, `_()` returns the translated text instead of the key.
+        assert any("username" in msg for msg in logs.output), logs.output
 
     def test_local_auth_case_insensitive(self):
         data = Userdata()
