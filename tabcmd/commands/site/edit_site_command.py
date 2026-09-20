@@ -96,6 +96,12 @@ class EditSiteCommand(Server):
             site_item.use_default_time_zone = True
         elif getattr(args, "time_zone", None) is not None:
             site_item.time_zone = args.time_zone
+            # A site currently using the server default will come back from GET
+            # with use_default_time_zone=True. TSC serializes both attributes
+            # on update, and the server-default flag wins server-side, so the
+            # explicit zone would be ignored. Clear the default-mode flag when
+            # the user requests an explicit zone.
+            site_item.use_default_time_zone = False
 
         try:
             logger.info(_("editsite.status").format(site_item.name))
