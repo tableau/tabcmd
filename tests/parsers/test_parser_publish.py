@@ -105,3 +105,18 @@ class PublishParserTest(ParserTest):
     def test_publish_parser_use_bridge_option(self):
         mock_args = [commandname, "filename.twbx", "--use-tableau-bridge"]
         args = self.parser_under_test.parse_args(mock_args)
+
+    def test_publish_parser_description_long_flag(self):
+        mock_args = [commandname, "filename.twbx", "--description", "My workbook description"]
+        args = self.parser_under_test.parse_args(mock_args)
+        assert args.description == "My workbook description", args
+
+    def test_publish_parser_description_short_flag(self):
+        mock_args = [commandname, "filename.twbx", "-d", "Short desc"]
+        args = self.parser_under_test.parse_args(mock_args)
+        assert args.description == "Short desc", args
+
+    def test_publish_parser_description_optional(self):
+        mock_args = [commandname, "filename.twbx"]
+        args = self.parser_under_test.parse_args(mock_args)
+        assert args.description is None, args

@@ -252,6 +252,7 @@ def set_destination_filename_arg(parser):
 
 def set_publish_args(parser):
     parser.add_argument("-n", "--name", help=_("publish.options.name"))
+    parser.add_argument("-d", "--description", help=_("publish.options.description"))
 
     creds = parser.add_mutually_exclusive_group()
     creds.add_argument("--oauth-username", help=_("publish.options.oauth-username"))
