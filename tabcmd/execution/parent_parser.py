@@ -5,6 +5,17 @@ from .logger_config import log
 from .map_of_commands import CommandsMap
 from tabcmd.version import version
 
+
+def _country_code(value: str) -> str:
+    # ISO 3166-1 alpha-2: exactly two ASCII letters. Anything else (e.g. "USA",
+    # "1", "gb-eng") is rejected at CLI parsing rather than sent to the REST
+    # API as part of a malformed locale like "en-USA".
+    if not isinstance(value, str) or len(value) != 2 or not value.isascii() or not value.isalpha():
+        raise argparse.ArgumentTypeError(
+            "invalid country code '{}': expected a two-letter ISO 3166-1 alpha-2 code (e.g. GB, US, JP)".format(value)
+        )
+    return value.upper()
+
 """
 Note: output order is influenced first by grouping, then by order they are added in here
 Most of this function is about making the help output look nice.
@@ -105,8 +116,10 @@ def parent_parser_with_global_options():
         "--country",
         # ISO 3166-1 alpha-2 country code (case-insensitive). Combined with --language
         # to form a locale (e.g. --language en --country GB -> "en-GB"). Left
-        # unconstrained on choices since Classic accepts any 2-letter country code.
-        type=str.upper,
+        # unconstrained on choices since Classic accepts any 2-letter country code,
+        # but the shape (two ASCII letters) is enforced so we don't send malformed
+        # locales like "en-USA" or "en-1" to the REST API.
+        type=_country_code,
         help=_("export.options.country"),
     )
 
