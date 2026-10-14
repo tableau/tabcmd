@@ -517,9 +517,7 @@ class OnlineCommandTest(unittest.TestCase):
         # localization regression pass silently. Every locale ships an English placeholder
         # for this key until real translations arrive.
         combined = (result.stdout or "") + (result.stderr or "")
-        assert "--db-server is required" in combined, (
-            "expected rendered guard message in output; got:\n" + combined
-        )
+        assert "--db-server is required" in combined, "expected rendered guard message in output; got:\n" + combined
 
     @pytest.mark.order(12)
     def test_publish_ds(self):
