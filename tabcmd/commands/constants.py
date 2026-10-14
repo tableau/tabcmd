@@ -1,7 +1,7 @@
 import inspect
 import requests
 import sys
-from typing import Optional
+from typing import NoReturn, Optional
 
 import tableauserverclient
 
@@ -58,7 +58,7 @@ class Errors:
             logger.info("Error printing stack trace:", e)
 
     @staticmethod
-    def exit_with_error(logger, message: Optional[str] = None, exception: Optional[Exception] = None):
+    def exit_with_error(logger, message: Optional[str] = None, exception: Optional[Exception] = None) -> NoReturn:
         try:
             if message and not exception:
                 logger.error(message)
