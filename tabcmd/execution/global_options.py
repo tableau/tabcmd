@@ -258,6 +258,7 @@ def set_publish_args(parser):
     creds.add_argument("--db-username", help=_("publish.options.db-username"))
     parser.add_argument("--save-oauth", action="store_true", help=_("publish.options.save-oauth"))
 
+    parser.add_argument("--db-server", help=_("publish.options.db-server"))
     parser.add_argument("--db-password", help=_("publish.options.db-password"))
     parser.add_argument("--save-db-password", action="store_true", help=_("publish.options.save-db-password"))
 
