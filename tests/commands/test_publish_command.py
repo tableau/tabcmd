@@ -131,6 +131,24 @@ class PublishCommandTests(unittest.TestCase):
             PublishCommand.run_command(mock_args)
         mock_session.internal_server.workbooks.publish.assert_not_called()
 
+    def test_publish_folder_with_missing_db_server_exits_before_any_publish(self, mock_path, mock_glob, mock_session):
+        set_up_mock_server(mock_session)
+        mock_path = set_up_mock_path(mock_path)
+        mock_path.isfile = lambda x: False
+        mock_glob.return_value = ["one.tdsx", "two.twbx"]
+
+        mock_args.filename = "directory"
+        mock_args.filetype = None
+        mock_args.db_username = "username"
+        mock_args.oauth_username = None
+        mock_args.db_server = None
+
+        with self.assertRaises(SystemExit):
+            PublishCommand.run_command(mock_args)
+
+        mock_session.create_session.assert_not_called()
+        mock_session.internal_server.workbooks.publish.assert_not_called()
+
     def test_publish_with_oauth_creds(self, mock_path, mock_glob, mock_session):
         set_up_mock_server(mock_session)
         mock_path = set_up_mock_path(mock_path)

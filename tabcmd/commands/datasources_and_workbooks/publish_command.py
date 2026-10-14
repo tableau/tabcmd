@@ -57,11 +57,9 @@ class PublishCommand(DatasourcesAndWorkbooks):
         logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
 
-        # Fail fast before auth when the direct target is clearly a workbook file:
-        # TSC's workbook publish path requires ConnectionItem.server_address whenever
-        # embedded credentials are supplied. Datasource publishes never need it, so
-        # this check is deliberately scoped to workbook extensions.
-        PublishCommand._require_db_server_for_workbook(args, args.filename, logger)
+        files = PublishCommand.get_files_to_publish(args, logger)
+        for str_filename in files:
+            PublishCommand._require_db_server_for_workbook(args, str_filename, logger)
 
         session = Session()
         server = session.create_session(args, logger)
@@ -97,8 +95,6 @@ class PublishCommand(DatasourcesAndWorkbooks):
             datasource_credentials = creds
         else:
             logger.debug("No db-username or oauth-username found in command")
-
-        files = PublishCommand.get_files_to_publish(args, logger)
 
         logger.debug("Publishing {} files".format(len(files)))
         for str_filename in files:
