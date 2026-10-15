@@ -96,15 +96,6 @@ class CreateSiteUsersCommand(UserCommand):
         # The specific types the server emits are documented at
         # https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref_jobs_tasks_and_schedules.htm#query_job
         # (CountOfUsersAddedToSite, CountOfUsersSkipped, etc.).
-        # If the pinned TSC pre-dates status_notes we can't produce a truthful
-        # summary -- silently printing 0/0/len(input) would look like success
-        # regardless of what the server actually did. Fail loudly instead.
-        if not hasattr(job_done, "status_notes"):
-            Errors.exit_with_error(
-                logger,
-                message=_("createsiteusers.error.needs_newer_tsc").format(job.id),
-            )
-            return
         status_notes = job_done.status_notes or []
         summary_counts = {}
         for note in status_notes:
@@ -116,17 +107,6 @@ class CreateSiteUsersCommand(UserCommand):
         added = int(summary_counts.get("CountOfUsersAddedToSite", 0) or 0)
         skipped = int(summary_counts.get("CountOfUsersSkipped", 0) or 0)
         processed = int(summary_counts.get("CountOfUsersProcessed", len(user_obj_list)) or 0)
-
-        # --continue-if-exists is a global flag; on other commands it downgrades
-        # 409 conflicts to INFO. bulk_add is inherently tolerant of duplicate
-        # users at the server level (they get counted under CountOfUsersSkipped)
-        # so the flag becomes a no-op here. Warn once so scripts porting from
-        # commands where it did work don't silently rely on it.
-        if getattr(args, "continue_if_exists", False):
-            logger.debug(
-                "--continue-if-exists is a no-op for createsiteusers: "
-                "bulk_add always tolerates existing users (see CountOfUsersSkipped)."
-            )
 
         logger.info(_("importcsvsummary.line.processed").format(processed))
         logger.info(_("importcsvsummary.line.skipped").format(skipped))

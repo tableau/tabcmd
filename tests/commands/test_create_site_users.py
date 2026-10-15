@@ -118,23 +118,6 @@ class CreateSiteUsersTest(unittest.TestCase):
         server.users.bulk_add.assert_called_once()
         server.jobs.wait_for_job.assert_not_called()
 
-    def test_older_tsc_without_status_notes_exits_with_error(self):
-        # If the pinned tableauserverclient predates status_notes on JobItem,
-        # we can't produce a truthful per-user summary. Fail loudly rather than
-        # silently print zeros that look like success.
-        args = _base_args()
-
-        class _OldJobItem:
-            # Deliberately does NOT have a status_notes attribute; this mirrors
-            # a pre-status_notes TSC release.
-            def __init__(self):
-                self.id = "abc-123"
-                self.finish_code = 0
-                self.notes = []
-
-        with self.assertRaises(SystemExit):
-            self._run(args, completed_override=_OldJobItem())
-
 
 if __name__ == "__main__":
     unittest.main()
