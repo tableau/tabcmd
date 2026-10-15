@@ -139,7 +139,7 @@ class DatasourcesAndWorkbooks(Server):
             # fragment. Match tabcmd Classic's silent-skip behavior so drop-in
             # migration of scripts that contain literal '&' in filter values
             # (which the parser splits on) doesn't hard-fail.
-            logger.warning("Skipping unparseable filter clause from URL: %r", value)
+            logger.debug("Skipping unparseable filter clause from URL: %r", value)
             return
         name, filter_value = parts
         # we should export the _DataExportOptions class from tsc
