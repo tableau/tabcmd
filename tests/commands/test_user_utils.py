@@ -1,3 +1,4 @@
+import logging
 import unittest
 from unittest.mock import *
 from tabcmd.commands.user.user_data import UserCommand, Userdata
@@ -179,3 +180,16 @@ class UserDataTest(unittest.TestCase):
         data.populate(["username", "pword", "fname", "creator", "none", "yes", "email", TSC.UserItem.Auth.SAML])
         user = data.to_tsc_user()
         assert user.auth_setting == TSC.UserItem.Auth.SAML, user.auth_setting
+
+    def test_local_auth_warning_uses_supplied_logger(self):
+        # The command logger carries the console handlers; the warning must go there.
+        data = Userdata()
+        data.populate(["username", "pword", "fname", "creator", "none", "yes", "email", "Local"])
+        with self.assertLogs("tabcmd.test.command_logger", level="WARNING") as logs:
+            data.to_tsc_user(logging.getLogger("tabcmd.test.command_logger"))
+        assert any("username" in msg for msg in logs.output), logs.output
+
+    def test_normalize_auth_setting_cli_value(self):
+        with self.assertLogs("tabcmd.test.command_logger", level="WARNING"):
+            result = UserCommand.normalize_auth_setting("Local", "bob", logging.getLogger("tabcmd.test.command_logger"))
+        assert result == TSC.UserItem.Auth.ServerDefault

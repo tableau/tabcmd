@@ -41,11 +41,11 @@ class Userdata:
         if n_values >= 8:
             self.auth = values[7]
 
-    def to_tsc_user(self) -> TSC.UserItem:
+    def to_tsc_user(self, logger: Optional[logging.Logger] = None) -> TSC.UserItem:
         site_role = UserCommand.evaluate_site_role(self.license_level, self.admin_level, self.publisher)
         if not site_role:
             raise AttributeError(_("tabcmd.user.error.site_role_required"))
-        auth = UserCommand.normalize_auth_setting(self.auth, self.name)
+        auth = UserCommand.normalize_auth_setting(self.auth, self.name, logger)
         user = TSC.UserItem(self.name, site_role, auth)
         user.email = self.email
         user.fullname = self.fullname
@@ -111,9 +111,11 @@ class UserCommand(Server):
     # authored for Classic import without crashing, and log a warning so the
     # operator sees the remap happened.
     @staticmethod
-    def normalize_auth_setting(auth, username: Optional[str] = None):
+    def normalize_auth_setting(auth, username: Optional[str] = None, logger: Optional[logging.Logger] = None):
         if isinstance(auth, str) and auth.lower() == "local":
-            logging.getLogger(__name__).warning(
+            # Use the command's logger when given: it carries the console handlers,
+            # so the operator sees the warning on stderr, not only in tabcmd.log.
+            (logger or logging.getLogger(__name__)).warning(
                 _("tabcmd.user.warning.local_auth_remapped").format(username)
             )
             return TSC.UserItem.Auth.ServerDefault
@@ -217,14 +219,14 @@ class UserCommand(Server):
         if logger:
             logger.debug("> {}".format(line))
         while line:
-            user: Optional[TSC.UserItem] = UserCommand._parse_line(line)
+            user: Optional[TSC.UserItem] = UserCommand._parse_line(line, logger)
             if user:
                 user_list.append(user)
             line = csv_file.readline()
         return user_list
 
     @staticmethod
-    def _parse_line(line: str) -> Optional[TSC.UserItem]:
+    def _parse_line(line: str, logger: Optional[logging.Logger] = None) -> Optional[TSC.UserItem]:
         if line is None or line is False or line == "\n" or line == "":
             return None
         line = line.strip()
@@ -232,7 +234,7 @@ class UserCommand(Server):
         data = Userdata()
         values: List[str] = list(map(str.strip, line_parts))
         data.populate(values)
-        return data.to_tsc_user()
+        return data.to_tsc_user(logger)
 
     # https://help.tableau.com/current/server/en-us/csvguidelines.htm#settings_and_site_roles
     @staticmethod
