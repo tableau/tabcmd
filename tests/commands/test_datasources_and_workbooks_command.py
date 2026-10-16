@@ -223,15 +223,12 @@ class ParameterTests(unittest.TestCase):
 
     def test_resolve_locale_country_without_language_warns(self):
         # The user's --country was silently dropped in prior revisions; make sure
-        # they get a warning naming the country. Stub the translator so the test
-        # does not depend on whether the compiled .mo catalog has this msgid yet.
+        # they get a warning. Depending on whether the gettext catalog is loaded
+        # `_()` returns either the raw key or the English message; the user-supplied
+        # country value is formatted into either, so assert on that.
         local_args = argparse.Namespace(language=None, country="US")
         warn_logger = mock.MagicMock()
-        with mock.patch(
-            "tabcmd.commands.datasources_and_workbooks.datasources_and_workbooks_command._",
-            side_effect=lambda key: key + " {0}",
-        ):
-            assert DatasourcesAndWorkbooks._resolve_locale(local_args, warn_logger) is None
+        assert DatasourcesAndWorkbooks._resolve_locale(local_args, warn_logger) is None
         warn_logger.warning.assert_called_once()
         assert "US" in warn_logger.warning.call_args[0][0]
 
