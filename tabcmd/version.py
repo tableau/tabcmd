@@ -7,6 +7,8 @@ except PackageNotFoundError:
     # importlib.metadata is unavailable in PyInstaller bundles; fall back to the
     # _version.py file that setuptools_scm writes at build time.
     try:
-        from tabcmd._version import version
+        from tabcmd._version import version as _pyinstaller_version
+
+        version = _pyinstaller_version
     except ImportError:
         version = "0.0"
