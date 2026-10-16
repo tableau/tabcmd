@@ -79,6 +79,12 @@ def define_locale_dir(logger):
 def _load_language(current_locale, domain, logger):
     locale_dir = define_locale_dir(logger)
     language: gettext.NullTranslations = gettext.translation(domain, locale_dir, languages=[current_locale])
+    if current_locale != "en":
+        # Messages not yet translated fall back to English instead of showing the raw key.
+        try:
+            language.add_fallback(gettext.translation(domain, locale_dir, languages=["en"]))
+        except Exception as e:
+            logger.debug("Could not load English fallback catalog: {}".format(e))
     language.install()  # I believe this is the expensive call
     _ = language.gettext
     return _

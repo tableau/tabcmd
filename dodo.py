@@ -226,6 +226,13 @@ def task_mo():
     """
 
     def check_mo():
+        # The sample translations below include ja/ko/zh text, which a Windows console
+        # (cp1252) cannot print. Force UTF-8 so validation output is readable everywhere.
+        # doit replaces sys.stdout with its own writer while a task runs, so reconfigure
+        # the underlying console stream as well.
+        for stream in (sys.stdout, sys.__stdout__):
+            if hasattr(stream, "reconfigure"):
+                stream.reconfigure(encoding="utf-8", errors="replace")
         print("\n****** Validate all generated .mo files")
         for current_locale in LOCALES:
             LANG_DIR = os.path.join("tabcmd", "locales")
