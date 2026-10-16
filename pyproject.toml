@@ -47,7 +47,7 @@ dependencies = [
     "appdirs",
     "requests>=2.25,<3.0",
     "setuptools",
-    "tableauserverclient==0.41",
+    "tableauserverclient==0.42",
     "urllib3>=2.6.0,<3",
 ]
 [project.optional-dependencies]
