@@ -16,6 +16,7 @@ def _country_code(value: str) -> str:
         )
     return value.upper()
 
+
 """
 Note: output order is influenced first by grouping, then by order they are added in here
 Most of this function is about making the help output look nice.
