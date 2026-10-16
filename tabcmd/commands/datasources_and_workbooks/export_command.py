@@ -68,6 +68,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
         group.add_argument(
             "--filter",
             metavar="COLUMN=VALUE",
+            action="append",
             help=_("tabcmd.export.help.filter"),
         )
         group.add_argument(
@@ -142,12 +143,20 @@ class ExportCommand(DatasourcesAndWorkbooks):
             Errors.exit_with_error(logger, "Error saving to file", exception=e)
 
     @staticmethod
-    def apply_filters_from_args(request_options: RequestOptionsType, args, logger=None) -> None:
-        if args.filter:
-            logger.debug("filter = {}".format(args.filter))
-            params = args.filter.split("&")
-            for value in params:
-                ExportCommand.apply_filter_value(logger, request_options, value)
+    def apply_filters_from_args(request_options: RequestOptionsType, args, logger) -> None:
+        if not args.filter:
+            return
+        logger.debug("filter = {}".format(args.filter))
+        # Back-compat: a single --filter flag historically joined multiple pairs
+        # with '&' (e.g. `--filter "a=1&b=2"`), so that one case still splits on '&'.
+        # Repeated --filter flags each carry exactly one pair — no split — so a
+        # literal '&' or '=' in a value is passed through untouched.
+        if len(args.filter) == 1:
+            values = args.filter[0].split("&")
+        else:
+            values = args.filter
+        for value in values:
+            ExportCommand.apply_filter_value(logger, request_options, value)
 
     @staticmethod
     def download_wb_pdf(server, workbook_item, args, logger):
