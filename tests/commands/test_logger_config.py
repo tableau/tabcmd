@@ -144,6 +144,17 @@ class InfoFormatTests(unittest.TestCase):
         logger.info("classic line")
         self.assertIn("===== classic line", fake_out.getvalue())
 
+    def test_info_line_keeps_classic_prefix_at_debug_level(self):
+        fake_out, fake_err = io.StringIO(), io.StringIO()
+        with mock.patch("sys.stdout", fake_out), mock.patch("sys.stderr", fake_err):
+            logger = configure_log("test_info_fmt_debug_level", "DEBUG")
+            logger.propagate = False
+            logger.info("classic line")
+            logger.debug("debug line")
+        lines = fake_out.getvalue().splitlines()
+        self.assertTrue(lines[0].startswith("===== classic line"), lines[0])
+        self.assertIn("DEBUG", lines[1])
+
     def test_classic_output_opt_out(self):
         import importlib
 

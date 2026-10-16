@@ -56,6 +56,15 @@ def add_trace_level():
     FORMATS[trace_level] = FORMATS[logging.ERROR]
 
 
+class _PerLevelFormatter(logging.Formatter):
+    """Formats each record with FORMATS for its own level, so INFO lines keep the
+    classic prefix even when the configured level is DEBUG."""
+
+    def format(self, record):
+        self._style._fmt = FORMATS.get(record.levelno, FORMATS[logging.DEBUG])
+        return super().format(record)
+
+
 def configure_log(name: str, logging_level_input: str):
     """function for logging statements to console and logfile"""
     logging_level = getattr(logging, logging_level_input.upper())
@@ -80,7 +89,7 @@ def configure_log(name: str, logging_level_input: str):
         stdout_handler = logging.StreamHandler(sys.stdout)
         stdout_handler.setLevel(logging_level)
         stdout_handler.addFilter(_below_warning)
-        stdout_handler.setFormatter(logging.Formatter(log_format))
+        stdout_handler.setFormatter(_PerLevelFormatter())
         named_logger.addHandler(stdout_handler)
 
         stderr_handler = logging.StreamHandler(sys.stderr)
