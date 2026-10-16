@@ -11,6 +11,7 @@
 * [Releases](#releases)
   * [Versioning](#versioning)
   * [Packaging](#packaging)
+  * [Publishing a release](#publishing-a-release)
 
 
 ## Install Tabcmd
@@ -174,6 +175,25 @@ To run the newly created executable, from a console window in the same directory
 > dist\windows\tabcmd.exe publish --country FR --language FR cookie.twbx
 
 To investigate what's packaged in the executable, use https://pyinstxtractor-web.netlify.app/
+
+
+### Publishing a release
+
+Merging into `main` triggers `release-on-merge.yml`, which creates a **draft** release, pushes the version tag, and dispatches `package.yml` to build the platform binaries.
+
+When you then **publish** that draft release in the GitHub UI:
+
+1. `package.yml` fires again on the `release: published` event and rebuilds the binaries against the exact tagged commit.
+2. Before binaries are attached, the workflow **pauses at the `upload_to_release` job** waiting for a reviewer to approve the `release` environment. Go to **Actions → the latest `Package-and-Upload` run → Review deployments → Approve**. The four binaries (Windows `.exe`, Ubuntu `tabcmd`, macOS x86 and arm64 `.app.tar`) get attached after approval.
+3. Separately, `publish-pypi.yml` uploads the wheel to PyPI, also gated on the `release` environment.
+
+If binaries need to be re-attached to an existing release (e.g. one build leg originally failed), dispatch the workflow at the target tag:
+
+```shell
+gh workflow run package.yml --ref v2.1.0
+```
+
+Same reviewer gate applies.
 
 
 ## Release process
