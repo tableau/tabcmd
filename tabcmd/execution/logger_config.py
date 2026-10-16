@@ -59,8 +59,6 @@ def configure_log(name: str, logging_level_input: str):
     """function for logging statements to console and logfile"""
     logging_level = getattr(logging, logging_level_input.upper())
     log_format = FORMATS[logging_level]
-    if logging_level is not logging.INFO:
-        FORMATS[logging.INFO] = "%(filename)-10s: %(message)-30s"
 
     root_logger = logging.getLogger()
     root_logger.setLevel(logging_level)
