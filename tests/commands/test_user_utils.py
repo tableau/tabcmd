@@ -1,4 +1,5 @@
 import logging
+from unittest import mock
 import unittest
 from unittest.mock import *
 from tabcmd.commands.user.user_data import UserCommand, Userdata
@@ -159,12 +160,13 @@ class UserDataTest(unittest.TestCase):
         # and log a warning so the operator sees the remap happened.
         data = Userdata()
         data.populate(["username", "pword", "fname", "creator", "none", "yes", "email", "Local"])
-        with self.assertLogs("tabcmd.commands.user.user_data", level="WARNING") as logs:
-            user = data.to_tsc_user()
+        # Stub the translator so the assertion does not depend on whether the
+        # compiled .mo catalog carries this msgid yet.
+        with mock.patch("tabcmd.commands.user.user_data._", side_effect=lambda key: key + " {0}"):
+            with self.assertLogs("tabcmd.commands.user.user_data", level="WARNING") as logs:
+                user = data.to_tsc_user()
         assert user.auth_setting == TSC.UserItem.Auth.ServerDefault, user.auth_setting
-        # Assert the warning names the affected user so the operator can act on
-        # it. Avoid coupling to the localize key -- once the .mo catalog carries
-        # this msgid, `_()` returns the translated text instead of the key.
+        # The warning must name the affected user so the operator can act on it.
         assert any("username" in msg for msg in logs.output), logs.output
 
     def test_local_auth_case_insensitive(self):
@@ -185,8 +187,9 @@ class UserDataTest(unittest.TestCase):
         # The command logger carries the console handlers; the warning must go there.
         data = Userdata()
         data.populate(["username", "pword", "fname", "creator", "none", "yes", "email", "Local"])
-        with self.assertLogs("tabcmd.test.command_logger", level="WARNING") as logs:
-            data.to_tsc_user(logging.getLogger("tabcmd.test.command_logger"))
+        with mock.patch("tabcmd.commands.user.user_data._", side_effect=lambda key: key + " {0}"):
+            with self.assertLogs("tabcmd.test.command_logger", level="WARNING") as logs:
+                data.to_tsc_user(logging.getLogger("tabcmd.test.command_logger"))
         assert any("username" in msg for msg in logs.output), logs.output
 
     def test_normalize_auth_setting_cli_value(self):
