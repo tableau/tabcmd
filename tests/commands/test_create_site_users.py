@@ -151,6 +151,31 @@ class CreateSiteUsersTest(unittest.TestCase):
         logged = " ".join(str(c) for c in log_fn.return_value.error.call_args_list)
         self.assertIn("UserError: invalid role", logged)
 
+    def test_timeout_reports_job_id_and_exits(self):
+        from tabcmd.commands.user.create_site_users import CreateSiteUsersCommand
+
+        with (
+            mock.patch("tabcmd.commands.user.create_site_users.Session") as session_cls,
+            mock.patch("tabcmd.commands.user.user_data.UserCommand.validate_file_for_import"),
+            mock.patch(
+                "tabcmd.commands.user.user_data.UserCommand.get_users_from_file",
+                return_value=[TSC.UserItem("bob", "Viewer")],
+            ),
+            mock.patch("tabcmd.commands.user.create_site_users.log") as log_fn,
+        ):
+            server = session_cls.return_value.create_session.return_value
+            server.users.bulk_add.return_value.id = "job-77"
+            server.jobs.wait_for_job.side_effect = TimeoutError()
+            with self.assertRaises(SystemExit):
+                CreateSiteUsersCommand.run_command(_base_args(timeout="5"))
+        logged = " ".join(str(c) for c in log_fn.return_value.error.call_args_list)
+        self.assertIn("job-77", logged)
+
+    def test_nowait_with_silent_progress_still_prints_job_id(self):
+        with self.assertLogs("CreateSiteUsersCommand", level="INFO") as logs:
+            self._run(_base_args(nowait=True, silent_progress=True))
+        self.assertIn("abc-123", " ".join(logs.output))
+
 
 if __name__ == "__main__":
     unittest.main()

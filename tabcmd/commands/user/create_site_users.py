@@ -64,11 +64,13 @@ class CreateSiteUsersCommand(UserCommand):
         # the async processing on its side.
         try:
             job = server.users.bulk_add(user_obj_list)
-        except TSC.ServerResponseError as e:
+        except Exception as e:
+            # includes ServerResponseError and version-gate errors on servers without bulk_add
             Errors.exit_with_error(logger, exception=e)
             return
 
-        if not args.silent_progress:
+        # Under --nowait the job id is the only way to track the import, so show it even when silent.
+        if args.nowait or not args.silent_progress:
             logger.info(_("importcsvsummary.job.queued").format(job.id))
 
         if args.nowait:
@@ -86,6 +88,11 @@ class CreateSiteUsersCommand(UserCommand):
             # even when status_notes names the rejected row and reason.
             cls._log_job_details(logger, je.job, logger.error)
             Errors.exit_with_error(logger, exception=je)
+            return
+        except TimeoutError as te:
+            # the import keeps running server-side; say so and give the id so it isn't blindly retried
+            logger.error(_("importcsvsummary.job.timeout").format(job.id))
+            Errors.exit_with_error(logger, exception=te)
             return
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
