@@ -118,6 +118,35 @@ class CreateSiteUsersTest(unittest.TestCase):
         server.users.bulk_add.assert_called_once()
         server.jobs.wait_for_job.assert_not_called()
 
+    def test_timeout_is_passed_as_number(self):
+        args = _base_args(timeout="60")
+        server, job, completed = self._run(args)
+        server.jobs.wait_for_job.assert_called_once_with(job_id=job.id, timeout=60)
+
+    def test_failed_job_logs_status_notes_and_exits(self):
+        from tableauserverclient.server.endpoint.exceptions import JobFailedException
+
+        from tabcmd.commands.user.create_site_users import CreateSiteUsersCommand
+
+        failed = mock.MagicMock(spec=TSC.JobItem)
+        failed.id = "abc-123"
+        failed.notes = []
+        failed.status_notes = [{"type": "UserError", "value": "bob", "text": "invalid role"}]
+        with mock.patch("tabcmd.commands.user.create_site_users.Session") as session_cls, mock.patch(
+            "tabcmd.commands.user.user_data.UserCommand.validate_file_for_import"
+        ), mock.patch(
+            "tabcmd.commands.user.user_data.UserCommand.get_users_from_file",
+            return_value=[TSC.UserItem("bob", "Viewer")],
+        ), mock.patch(
+            "tabcmd.commands.user.create_site_users.log"
+        ) as log_fn:
+            server = session_cls.return_value.create_session.return_value
+            server.jobs.wait_for_job.side_effect = JobFailedException(failed)
+            with self.assertRaises(SystemExit):
+                CreateSiteUsersCommand.run_command(_base_args())
+        logged = " ".join(str(c) for c in log_fn.return_value.error.call_args_list)
+        self.assertIn("UserError: invalid role", logged)
+
 
 if __name__ == "__main__":
     unittest.main()

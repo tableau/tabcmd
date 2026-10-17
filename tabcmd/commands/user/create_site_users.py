@@ -80,8 +80,11 @@ class CreateSiteUsersCommand(UserCommand):
         # framework's own debug logging is still emitted but we skip our own
         # per-completion summary.
         try:
-            job_done = server.jobs.wait_for_job(job_id=job.id, timeout=args.timeout)
+            job_done = server.jobs.wait_for_job(job_id=job.id, timeout=cls._timeout_seconds(args.timeout))
         except JobFailedException as je:
+            # JobFailedException only carries the legacy job.notes, which can be empty
+            # even when status_notes names the rejected row and reason.
+            cls._log_job_details(logger, je.job, logger.error)
             Errors.exit_with_error(logger, exception=je)
             return
         except Exception as e:
@@ -112,13 +115,28 @@ class CreateSiteUsersCommand(UserCommand):
         logger.info(_("importcsvsummary.line.skipped").format(skipped))
         logger.info(_("importcsvsummary.users.added.count").format(added))
 
-        # Detailed per-row errors: any statusNote whose type isn't a
-        # CountOf* aggregate is likely a per-row message the user should see.
+        cls._log_job_details(logger, job_done, logger.info)
+
+    @staticmethod
+    def _timeout_seconds(timeout):
+        """--timeout arrives as a string; wait_for_job compares it with elapsed seconds."""
+        try:
+            seconds = int(timeout)
+        except (TypeError, ValueError):
+            return None
+        return seconds if seconds > 0 else None
+
+    @staticmethod
+    def _log_job_details(logger, job, log_line):
+        # Any statusNote whose type isn't a CountOf* aggregate is likely a
+        # per-row message the user should see.
+        status_notes = getattr(job, "status_notes", None) or []
         detail_notes = [n for n in status_notes if not (n.get("type") or "").startswith("CountOf")]
-        if detail_notes or job_done.notes:
-            logger.info(_("importcsvsummary.error.details"))
+        notes = getattr(job, "notes", None) or []
+        if detail_notes or notes:
+            log_line(_("importcsvsummary.error.details"))
             for note in detail_notes:
                 text = note.get("text") or note.get("value") or ""
-                logger.info(f"  {note.get('type', '?')}: {text}")
-            for text in job_done.notes or []:
-                logger.info(f"  {text}")
+                log_line(f"  {note.get('type', '?')}: {text}")
+            for text in notes:
+                log_line(f"  {text}")
