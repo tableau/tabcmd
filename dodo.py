@@ -28,7 +28,6 @@ def task_localize():
 
 
 def task_properties():
-
     """
     For all languages: a) Combines all existing properties files for a language into a single file called 'combined.tmp'
     and b) removes duplicates while preserving the original order of properties
@@ -377,7 +376,6 @@ def task_move_tabcmd_strings():
 
 
 def task_version():
-
     """Generates a metadata info file with current version to be bundled by pyinstaller"""
 
     def write_for_pyinstaller():
@@ -455,11 +453,10 @@ def uniquify_file(filename):
             )
         )
     else:
-        print("Saved {} sorted unique lines to {}".format(len(uniques), filename))
+        print("Saved {} sorted unique lines to {}".format(len(unique_lines), filename))
 
 
 def task_clean_all():
-
     """remove all generated files such as .po, .out, and pdf, csv etc that are not in the assets folder"""
 
     def clean_output_files():

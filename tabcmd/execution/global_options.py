@@ -25,6 +25,7 @@ BUT filename, username -> filename, username in command/parser
 
 """
 
+
 # argparse does case-sensitive comparisons of string inputs by default
 # I want the user to be able to enter e.g. "viewer" and have it accepted as "Viewer"
 # https://stackoverflow.com/questions/56838004/
@@ -126,6 +127,7 @@ def set_encryption_option(parser):
 
 # item arguments: datasource, workbook, project, url ...
 
+
 # Matching classic tabcmd:
 # for some reason in parser.project, publish-samples it uses -n for destination project name
 # for publish it uses -r for destination project name
@@ -151,9 +153,19 @@ def set_resource_url_arg(parser):
 
 
 def set_ds_xor_wb_options(parser):
+    # Classic parity for `delete`: `tabcmd delete --workbook "Name"` treats
+    # --workbook's value as the target name. tabcmd 2 originally shipped as
+    # `tabcmd delete "Name" --workbook` (bare flag). Accept both forms by
+    # letting the flag take an optional value: bare -> True, with value ->
+    # value string. The command's run_command resolves which arg carries the
+    # name. See DeleteCommand.
     target_type_group = parser.add_mutually_exclusive_group(required=False)
-    target_type_group.add_argument("-d", "--datasource", action="store_true", help=_("tabcmd.options.datasource"))
-    target_type_group.add_argument("-w", "--workbook", action="store_true", help=_("tabcmd.options.workbook"))
+    target_type_group.add_argument(
+        "-d", "--datasource", nargs="?", const=True, default=False, help=_("tabcmd.options.datasource")
+    )
+    target_type_group.add_argument(
+        "-w", "--workbook", nargs="?", const=True, default=False, help=_("tabcmd.options.workbook")
+    )
     return parser
 
 
@@ -180,6 +192,128 @@ def set_site_status_arg(parser):
         choices=["ACTIVE", "SUSPENDED"],
         type=str.upper,
         help=_("editsite.options.status"),
+    )
+    return parser
+
+
+# only in edit-site: flags that map onto TSC SiteItem attributes but are not
+# currently wired in create_site_command. Kept out of set_common_site_args so
+# createsite --help does not list options its run_command ignores. See #437.
+def set_edit_site_only_args(parser):
+    # guest access: Classic passes true/false as a string value
+    parser.add_argument(
+        "-g",
+        "--guest-access-enabled",
+        choices=["true", "false"],
+        help=_("editsite.options.guest_access_enabled"),
+    )
+
+    # cache warmup: paired positive/negative boolean, default None so an
+    # unpassed flag is a no-op (leaves the server setting unchanged)
+    cache_warmup_group = parser.add_mutually_exclusive_group()
+    cache_warmup_group.add_argument(
+        "--cache-warmup",
+        dest="cache_warmup_enabled",
+        action="store_true",
+        default=None,
+        help=_("editsite.options.cache_warmup"),
+    )
+    cache_warmup_group.add_argument(
+        "--no-cache-warmup",
+        dest="cache_warmup_enabled",
+        action="store_false",
+        default=None,
+        help=_("editsite.options.no_cache_warmup"),
+    )
+
+    # subscription email: also flips custom_subscription_email_enabled
+    parser.add_argument(
+        "-e",
+        "--subscription-email",
+        default=None,
+        help=_("editsite.options.subscription_email"),
+    )
+
+    # subscription footer: also flips custom_subscription_footer_enabled.
+    # -f matches Classic tabcmd editsite parity; editsite does not use -f for --filename.
+    parser.add_argument(
+        "-f",
+        "--subscription-footer",
+        default=None,
+        help=_("editsite.options.subscription_footer"),
+    )
+
+    # web extraction: string value, coerced to bool at wire time
+    parser.add_argument(
+        "--web-extraction-enabled",
+        choices=["true", "false"],
+        help=_("editsite.options.web_extraction_enabled"),
+    )
+
+    # allow subscriptions: inverted onto disable_subscriptions in run_command
+    allow_subs_group = parser.add_mutually_exclusive_group()
+    allow_subs_group.add_argument(
+        "--allow-subscriptions",
+        dest="allow_subscriptions",
+        action="store_true",
+        default=None,
+        help=_("editsite.options.allow_subscriptions"),
+    )
+    allow_subs_group.add_argument(
+        "--no-allow-subscriptions",
+        dest="allow_subscriptions",
+        action="store_false",
+        default=None,
+        help=_("editsite.options.no_allow_subscriptions"),
+    )
+
+    # allow web authoring: direct mapping onto authoring_enabled
+    authoring_group = parser.add_mutually_exclusive_group()
+    authoring_group.add_argument(
+        "--allow-web-authoring",
+        dest="allow_web_authoring",
+        action="store_true",
+        default=None,
+        help=_("editsite.options.allow_web_authoring"),
+    )
+    authoring_group.add_argument(
+        "--no-allow-web-authoring",
+        dest="allow_web_authoring",
+        action="store_false",
+        default=None,
+        help=_("editsite.options.no_allow_web_authoring"),
+    )
+
+    # allow mobile snapshots: maps onto sheet_image_enabled (NOT
+    # mobile_biometrics_enabled, which is a separate biometric-auth feature)
+    mobile_group = parser.add_mutually_exclusive_group()
+    mobile_group.add_argument(
+        "--allow-mobile-snapshots",
+        dest="allow_mobile_snapshots",
+        action="store_true",
+        default=None,
+        help=_("editsite.options.allow_mobile_snapshots"),
+    )
+    mobile_group.add_argument(
+        "--no-allow-mobile-snapshots",
+        dest="allow_mobile_snapshots",
+        action="store_false",
+        default=None,
+        help=_("editsite.options.no_allow_mobile_snapshots"),
+    )
+
+    # time zone: string value, mutually exclusive with --use-default-time-zone
+    tz_group = parser.add_mutually_exclusive_group()
+    tz_group.add_argument(
+        "--time-zone",
+        default=None,
+        help=_("editsite.options.time_zone"),
+    )
+    tz_group.add_argument(
+        "--use-default-time-zone",
+        action="store_true",
+        default=None,
+        help=_("editsite.options.use_default_time_zone"),
     )
     return parser
 
@@ -261,6 +395,7 @@ def set_publish_args(parser):
     creds.add_argument("--db-username", help=_("publish.options.db-username"))
     parser.add_argument("--save-oauth", action="store_true", help=_("publish.options.save-oauth"))
 
+    parser.add_argument("--db-server", help=_("publish.options.db-server"))
     parser.add_argument("--db-password", help=_("publish.options.db-password"))
     parser.add_argument("--save-db-password", action="store_true", help=_("publish.options.save-db-password"))
 
