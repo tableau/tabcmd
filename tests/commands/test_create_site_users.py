@@ -10,6 +10,7 @@ server. They verify:
   --complete (default)
 - per-row output derived from job.status_notes on the completed job
 """
+
 import argparse
 import io
 import unittest
@@ -62,9 +63,11 @@ class CreateSiteUsersTest(unittest.TestCase):
     def _run(self, args, completed_override=None):
         from tabcmd.commands.user.create_site_users import CreateSiteUsersCommand
 
-        with mock.patch("tabcmd.commands.user.create_site_users.Session") as session_cls, mock.patch(
-            "tabcmd.commands.user.user_data.UserCommand.validate_file_for_import"
-        ), mock.patch("tabcmd.commands.user.user_data.UserCommand.get_users_from_file") as get_users:
+        with (
+            mock.patch("tabcmd.commands.user.create_site_users.Session") as session_cls,
+            mock.patch("tabcmd.commands.user.user_data.UserCommand.validate_file_for_import"),
+            mock.patch("tabcmd.commands.user.user_data.UserCommand.get_users_from_file") as get_users,
+        ):
             fake_server = mock.MagicMock()
             session_cls.return_value.create_session.return_value = fake_server
             get_users.return_value = [
@@ -132,14 +135,15 @@ class CreateSiteUsersTest(unittest.TestCase):
         failed.id = "abc-123"
         failed.notes = []
         failed.status_notes = [{"type": "UserError", "value": "bob", "text": "invalid role"}]
-        with mock.patch("tabcmd.commands.user.create_site_users.Session") as session_cls, mock.patch(
-            "tabcmd.commands.user.user_data.UserCommand.validate_file_for_import"
-        ), mock.patch(
-            "tabcmd.commands.user.user_data.UserCommand.get_users_from_file",
-            return_value=[TSC.UserItem("bob", "Viewer")],
-        ), mock.patch(
-            "tabcmd.commands.user.create_site_users.log"
-        ) as log_fn:
+        with (
+            mock.patch("tabcmd.commands.user.create_site_users.Session") as session_cls,
+            mock.patch("tabcmd.commands.user.user_data.UserCommand.validate_file_for_import"),
+            mock.patch(
+                "tabcmd.commands.user.user_data.UserCommand.get_users_from_file",
+                return_value=[TSC.UserItem("bob", "Viewer")],
+            ),
+            mock.patch("tabcmd.commands.user.create_site_users.log") as log_fn,
+        ):
             server = session_cls.return_value.create_session.return_value
             server.jobs.wait_for_job.side_effect = JobFailedException(failed)
             with self.assertRaises(SystemExit):
