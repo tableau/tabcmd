@@ -28,6 +28,7 @@ class CreateSiteUsersCommand(UserCommand):
         UserCommand.set_auth_arg(args_group)
         set_no_wait_option(args_group)
         set_silent_option(args_group)
+        args_group.add_argument("--errors-file", default=None, help=_("createsiteusers.options.errors-file"))
 
     @classmethod
     def run_command(cls, args):
@@ -86,7 +87,7 @@ class CreateSiteUsersCommand(UserCommand):
         except JobFailedException as je:
             # JobFailedException only carries the legacy job.notes, which can be empty
             # even when status_notes names the rejected row and reason.
-            cls._log_job_details(logger, je.job, logger.error)
+            cls._report_job_details(logger, je.job, logger.error, args.silent_progress, args.errors_file)
             Errors.exit_with_error(logger, exception=je)
             return
         except TimeoutError as te:
@@ -99,6 +100,8 @@ class CreateSiteUsersCommand(UserCommand):
             return
 
         if args.silent_progress:
+            # No console summary, but rejected rows must not vanish: save them to a file.
+            cls._report_job_details(logger, job_done, logger.info, True, args.errors_file)
             return
 
         # Summarize per-row outcomes. `status_notes` is populated for
@@ -122,7 +125,7 @@ class CreateSiteUsersCommand(UserCommand):
         logger.info(_("importcsvsummary.line.skipped").format(skipped))
         logger.info(_("importcsvsummary.users.added.count").format(added))
 
-        cls._log_job_details(logger, job_done, logger.info)
+        cls._report_job_details(logger, job_done, logger.info, False, args.errors_file)
 
     @staticmethod
     def _timeout_seconds(timeout):
@@ -134,16 +137,31 @@ class CreateSiteUsersCommand(UserCommand):
         return seconds if seconds > 0 else None
 
     @staticmethod
-    def _log_job_details(logger, job, log_line):
-        # Any statusNote whose type isn't a CountOf* aggregate is likely a
-        # per-row message the user should see.
+    def _job_detail_lines(job):
+        """Per-row messages for a finished job: any statusNote whose type isn't a CountOf* aggregate, plus legacy notes."""
         status_notes = getattr(job, "status_notes", None) or []
         detail_notes = [n for n in status_notes if not (n.get("type") or "").startswith("CountOf")]
-        notes = getattr(job, "notes", None) or []
-        if detail_notes or notes:
-            log_line(_("importcsvsummary.error.details"))
-            for note in detail_notes:
-                text = note.get("text") or note.get("value") or ""
-                log_line(f"  {note.get('type', '?')}: {text}")
-            for text in notes:
-                log_line(f"  {text}")
+        lines = []
+        for note in detail_notes:
+            text = note.get("text") or note.get("value") or ""
+            lines.append(f"{note.get('type', '?')}: {text}")
+        lines.extend(str(text) for text in getattr(job, "notes", None) or [])
+        return lines
+
+    @classmethod
+    def _report_job_details(cls, logger, job, log_line, silent, errors_file=None):
+        lines = cls._job_detail_lines(job)
+        if not lines:
+            return
+        if silent or errors_file:
+            path = errors_file or f"createsiteusers-errors-{job.id}.txt"
+            try:
+                with open(path, "w", encoding="utf-8") as f:
+                    f.write("\n".join(lines) + "\n")
+                logger.error(_("importcsvsummary.error.file").format(path))
+                return
+            except OSError:
+                pass  # can't write the file: fall through and show the details instead
+        log_line(_("importcsvsummary.error.details"))
+        for line in lines:
+            log_line(f"  {line}")

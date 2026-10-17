@@ -35,6 +35,7 @@ def _base_args(**overrides):
         continue_if_exists=False,
         nowait=False,
         silent_progress=False,
+        errors_file=None,
         logging_level="INFO",
         timeout=None,
         username=None,
@@ -175,6 +176,82 @@ class CreateSiteUsersTest(unittest.TestCase):
         with self.assertLogs("CreateSiteUsersCommand", level="INFO") as logs:
             self._run(_base_args(nowait=True, silent_progress=True))
         self.assertIn("abc-123", " ".join(logs.output))
+
+    def _rejected_job(self):
+        job = mock.MagicMock(spec=TSC.JobItem)
+        job.id = "abc-123"
+        job.finish_code = 0
+        job.notes = []
+        job.status_notes = [
+            {"type": "CountOfUsersSkipped", "value": "1", "text": None},
+            {"type": "UserError", "value": "bob", "text": "invalid role"},
+        ]
+        return job
+
+    def test_silent_progress_saves_rejected_rows_to_file(self):
+        import os
+        import tempfile
+
+        cwd = os.getcwd()
+        with tempfile.TemporaryDirectory() as tmp:
+            os.chdir(tmp)
+            try:
+                self._run(_base_args(silent_progress=True), completed_override=self._rejected_job())
+                with open("createsiteusers-errors-abc-123.txt", encoding="utf-8") as f:
+                    content = f.read()
+            finally:
+                os.chdir(cwd)
+        self.assertIn("UserError: invalid role", content)
+
+    def test_errors_file_flag_sets_custom_path(self):
+        import os
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "custom.txt")
+            self._run(_base_args(silent_progress=True, errors_file=path), completed_override=self._rejected_job())
+            with open(path, encoding="utf-8") as f:
+                content = f.read()
+        self.assertIn("UserError: invalid role", content)
+
+    def test_errors_file_flag_without_silent_writes_file(self):
+        import os
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "custom.txt")
+            self._run(_base_args(errors_file=path), completed_override=self._rejected_job())
+            self.assertTrue(os.path.exists(path))
+
+    def test_silent_progress_writes_no_file_when_nothing_rejected(self):
+        import os
+        import tempfile
+
+        cwd = os.getcwd()
+        with tempfile.TemporaryDirectory() as tmp:
+            os.chdir(tmp)
+            try:
+                self._run(_base_args(silent_progress=True))
+                created = os.listdir(tmp)
+            finally:
+                os.chdir(cwd)
+        self.assertEqual(created, [])
+
+    def test_not_silent_prints_rejected_rows_and_writes_no_file(self):
+        import os
+        import tempfile
+
+        cwd = os.getcwd()
+        with tempfile.TemporaryDirectory() as tmp:
+            os.chdir(tmp)
+            try:
+                with self.assertLogs("CreateSiteUsersCommand", level="INFO") as logs:
+                    self._run(_base_args(), completed_override=self._rejected_job())
+                created = os.listdir(tmp)
+            finally:
+                os.chdir(cwd)
+        self.assertIn("UserError: invalid role", " ".join(logs.output))
+        self.assertEqual(created, [])
 
 
 if __name__ == "__main__":
