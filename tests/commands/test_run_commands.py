@@ -428,6 +428,7 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.site_name = None
         mock_args.role = "Viewer"
         mock_args.auth_type = "SAML"
+        mock_args.idp_configuration_id = None
         create_site_users.CreateSiteUsersCommand.run_command(mock_args)
         mock_session.assert_called()
 
@@ -446,6 +447,9 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.filename = RunCommandsTest._set_up_file()
         mock_args.site_name = None
         mock_args.require_all_valid = False
+        mock_args.role = None
+        mock_args.auth_type = None
+        mock_args.idp_configuration_id = None
         create_users_command.CreateUsersCommand.run_command(mock_args)
         mock_session.assert_called()
 
