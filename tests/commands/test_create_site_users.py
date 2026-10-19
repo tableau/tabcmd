@@ -8,11 +8,14 @@ server. They verify:
   are suppressed
 - pre-flight validation aborts before bulk_add on malformed input under
   --complete (default)
-- per-row output derived from job.status_notes on the completed job
+- per-row output derived from job.notes (the legacy per-row summary text) on the
+  completed job, not job.status_notes -- see _rejected_job and
+  tests/assets/createsiteusers_job_with_errors.xml for why
 """
 
 import argparse
 import io
+import os
 import unittest
 from unittest import mock
 
@@ -134,8 +137,8 @@ class CreateSiteUsersTest(unittest.TestCase):
 
         failed = mock.MagicMock(spec=TSC.JobItem)
         failed.id = "abc-123"
-        failed.notes = []
-        failed.status_notes = [{"type": "UserError", "value": "bob", "text": "invalid role"}]
+        failed.notes = ["line 3: user bob: invalid role"]
+        failed.status_notes = []
         with (
             mock.patch("tabcmd.commands.user.create_site_users.Session") as session_cls,
             mock.patch("tabcmd.commands.user.user_data.UserCommand.validate_file_for_import"),
@@ -150,7 +153,7 @@ class CreateSiteUsersTest(unittest.TestCase):
             with self.assertRaises(SystemExit):
                 CreateSiteUsersCommand.run_command(_base_args())
         logged = " ".join(str(c) for c in log_fn.return_value.error.call_args_list)
-        self.assertIn("UserError: invalid role", logged)
+        self.assertIn("line 3: user bob: invalid role", logged)
 
     def test_timeout_reports_job_id_and_exits(self):
         from tabcmd.commands.user.create_site_users import CreateSiteUsersCommand
@@ -178,15 +181,16 @@ class CreateSiteUsersTest(unittest.TestCase):
         self.assertIn("abc-123", " ".join(logs.output))
 
     def _rejected_job(self):
-        job = mock.MagicMock(spec=TSC.JobItem)
-        job.id = "abc-123"
-        job.finish_code = 0
-        job.notes = []
-        job.status_notes = [
-            {"type": "CountOfUsersSkipped", "value": "1", "text": None},
-            {"type": "UserError", "value": "bob", "text": "invalid role"},
-        ]
-        return job
+        """A job with rejected rows, parsed from a server response shaped like the real one.
+
+        The server doesn't emit one statusNote per rejected row -- see
+        tests/assets/createsiteusers_job_with_errors.xml for why. The real per-row detail
+        is the legacy <notes> text, which is what this job's `.notes` carries.
+        """
+        xml_path = os.path.join(os.path.dirname(__file__), "..", "assets", "createsiteusers_job_with_errors.xml")
+        with open(xml_path, encoding="utf-8") as f:
+            xml = f.read()
+        return TSC.JobItem.from_response(xml, {"t": "http://tableau.com/api"})[0]
 
     def test_silent_progress_saves_rejected_rows_to_file(self):
         import os
@@ -201,7 +205,7 @@ class CreateSiteUsersTest(unittest.TestCase):
                     content = f.read()
             finally:
                 os.chdir(cwd)
-        self.assertIn("UserError: invalid role", content)
+        self.assertIn("line 3: user bob: invalid role", content)
 
     def test_errors_file_flag_sets_custom_path(self):
         import os
@@ -212,7 +216,7 @@ class CreateSiteUsersTest(unittest.TestCase):
             self._run(_base_args(silent_progress=True, errors_file=path), completed_override=self._rejected_job())
             with open(path, encoding="utf-8") as f:
                 content = f.read()
-        self.assertIn("UserError: invalid role", content)
+        self.assertIn("line 3: user bob: invalid role", content)
 
     def test_errors_file_flag_without_silent_writes_file(self):
         import os
@@ -250,7 +254,7 @@ class CreateSiteUsersTest(unittest.TestCase):
                 created = os.listdir(tmp)
             finally:
                 os.chdir(cwd)
-        self.assertIn("UserError: invalid role", " ".join(logs.output))
+        self.assertIn("line 3: user bob: invalid role", " ".join(logs.output))
         self.assertEqual(created, [])
 
 

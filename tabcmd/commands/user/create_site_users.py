@@ -138,14 +138,26 @@ class CreateSiteUsersCommand(UserCommand):
 
     @staticmethod
     def _job_detail_lines(job):
-        """Per-row messages for a finished job: any statusNote whose type isn't a CountOf* aggregate, plus legacy notes."""
+        """Per-row messages for a finished job.
+
+        The server's statusNotes are not one entry per rejected row: when a UserImport job
+        has errors, it merges each error field (line/username/message/...) across every
+        failed row into a single statusNote per field, with values joined by ";"
+        (RestApiHelper.getStatusNotesErrors). That's unreadable per-row detail, so it's not
+        used here. The real one-line-per-row text lives in the job's legacy notes
+        (UserManagementService.getHumanReadableCSVImportSummary), which is what we show.
+        Only fall back to non-CountOf* statusNotes if notes is empty, in case some other
+        job type without a notes summary ever lands here.
+        """
+        notes = [str(text) for text in getattr(job, "notes", None) or [] if text]
+        if notes:
+            return notes
         status_notes = getattr(job, "status_notes", None) or []
         detail_notes = [n for n in status_notes if not (n.get("type") or "").startswith("CountOf")]
         lines = []
         for note in detail_notes:
             text = note.get("text") or note.get("value") or ""
             lines.append(f"{note.get('type', '?')}: {text}")
-        lines.extend(str(text) for text in getattr(job, "notes", None) or [])
         return lines
 
     @classmethod
