@@ -428,6 +428,9 @@ class RunCommandsTest(unittest.TestCase):
         mock_args.site_name = None
         mock_args.role = "Viewer"
         mock_args.auth_type = "SAML"
+        mock_args.nowait = True  # keep the smoke test fast; skip server-job polling
+        mock_args.silent_progress = False
+        mock_args.timeout = None
         create_site_users.CreateSiteUsersCommand.run_command(mock_args)
         mock_session.assert_called()
 
