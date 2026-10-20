@@ -66,6 +66,61 @@ class PublishCommandTests(unittest.TestCase):
         PublishCommand.run_command(mock_args)
         mock_session.internal_server.workbooks.publish.assert_called()
 
+    # regression test: the --description value must actually end up on the WorkbookItem
+    # that gets published, not just be parsed into args (see PR #448 review feedback)
+    def test_publish_with_description_sets_workbook_description(self, mock_path, mock_glob, mock_session):
+        set_up_mock_server(mock_session)
+        mock_path = set_up_mock_path(mock_path)
+
+        mock_args.overwrite = False
+        mock_args.filename = "existing_file.twbx"
+        mock_args.project_name = "project-name"
+        mock_args.parent_project_path = "projects"
+        mock_args.name = ""
+        mock_args.tabbed = True
+        mock_args.db_username = None
+        mock_args.oauth_username = None
+        mock_args.append = False
+        mock_args.replace = False
+        mock_args.thumbnail_username = None
+        mock_args.thumbnail_group = None
+        mock_args.skip_connection_check = False
+        mock_args.description = "My workbook description"
+
+        PublishCommand.run_command(mock_args)
+
+        published_workbook = mock_session.internal_server.workbooks.publish.call_args[0][0]
+        self.assertEqual(published_workbook.description, "My workbook description")
+
+    # same regression, but for the datasource publish path (publish_command.py line ~198).
+    # calls publish_datasource_file directly: run_command dispatches by file extension via
+    # the class-patched os.path, which these tests also stub out, so it can't be relied on
+    # to route a .tdsx through the datasource branch here.
+    def test_publish_with_description_sets_datasource_description(self, mock_path, mock_glob, mock_session):
+        set_up_mock_server(mock_session)
+        mock_path = set_up_mock_path(mock_path)
+
+        mock_server = mock_session.internal_server
+        mock_server.datasources = MagicMock()
+        mock_server.datasources.publish = MagicMock(return_value=mock_data.create_fake_item())
+
+        mock_args.name = ""
+        mock_args.use_tableau_bridge = False
+        mock_args.description = "My datasource description"
+
+        PublishCommand.publish_datasource_file(
+            args=mock_args,
+            logger=mock_logger,
+            server=mock_server,
+            project_id="fake-project-id",
+            str_filename="existing_file.tdsx",
+            publish_mode=TSC.Server.PublishMode.CreateNew,
+            credentials=None,
+        )
+
+        published_datasource = mock_server.datasources.publish.call_args[0][0]
+        self.assertEqual(published_datasource.description, "My datasource description")
+
     def test_get_files_to_publish_twbx(self, mock_path, mock_glob, mock_session):
         set_up_mock_server(mock_session)
         mock_path = set_up_mock_path(mock_path)
