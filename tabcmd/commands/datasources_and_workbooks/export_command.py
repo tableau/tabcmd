@@ -68,6 +68,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
         group.add_argument(
             "--filter",
             metavar="COLUMN=VALUE",
+            action="append",
             help=_("tabcmd.export.help.filter"),
         )
         group.add_argument(
@@ -142,12 +143,27 @@ class ExportCommand(DatasourcesAndWorkbooks):
             Errors.exit_with_error(logger, "Error saving to file", exception=e)
 
     @staticmethod
-    def apply_filters_from_args(request_options: RequestOptionsType, args, logger=None) -> None:
-        if args.filter:
-            logger.debug("filter = {}".format(args.filter))
-            params = args.filter.split("&")
-            for value in params:
-                ExportCommand.apply_filter_value(logger, request_options, value)
+    def apply_filters_from_args(request_options: RequestOptionsType, args, logger) -> None:
+        if not args.filter:
+            return
+        logger.debug("filter = {}".format(args.filter))
+        # Back-compat: a single --filter flag historically joined multiple pairs
+        # with '&' (e.g. `--filter "a=1&b=2"`), so that one case still splits on '&'.
+        # Repeated --filter flags each carry exactly one pair — no split — so a
+        # literal '&' or '=' in a value is passed through untouched.
+        # Only treat '&' as a pair delimiter when every resulting segment looks like
+        # COLUMN=VALUE; otherwise the '&' is probably literal (e.g. inside a value like
+        # "Company=AT&T"), so leave it alone and pass the single filter through as-is.
+        if len(args.filter) == 1:
+            candidates = args.filter[0].split("&")
+            if len(candidates) > 1 and all("=" in c for c in candidates):
+                values = candidates
+            else:
+                values = args.filter
+        else:
+            values = args.filter
+        for value in values:
+            ExportCommand.apply_filter_value(logger, request_options, value)
 
     @staticmethod
     def download_wb_pdf(server, workbook_item, args, logger):

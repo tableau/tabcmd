@@ -103,7 +103,12 @@ class DatasourcesAndWorkbooks(Server):
     @staticmethod
     def apply_filter_value(logger, request_options: RequestOptionsType, value: str) -> None:
         logger.debug("handling filter param {}".format(value))
-        data_filter = value.split("=")
+        # split on the first '=' only, so values that themselves contain '=' (e.g. "Notes=x=y")
+        # are preserved instead of being truncated.
+        data_filter = value.split("=", 1)
+        if len(data_filter) != 2:
+            logger.warning("Unable to read filter param '{}', expected COLUMN=VALUE. Skipping".format(value))
+            return
         # we should export the _DataExportOptions class from tsc
         request_options.vf(data_filter[0], data_filter[1])  # type: ignore
 
