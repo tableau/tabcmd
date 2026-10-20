@@ -193,3 +193,24 @@ class UserDataTest(unittest.TestCase):
         with self.assertLogs("tabcmd.test.command_logger", level="WARNING"):
             result = UserCommand.normalize_auth_setting("Local", "bob", logging.getLogger("tabcmd.test.command_logger"))
         assert result == TSC.UserItem.Auth.ServerDefault
+
+    def test_local_auth_csv_warning_suppressed_when_cli_overrides(self):
+        # Regression: a CSV row of "Local" logged the remap warning during parsing
+        # even when a --auth-type CLI override was about to replace that value,
+        # describing a remap that never took effect. When a CLI override is
+        # coming, the CSV-time warning must be suppressed.
+        data = Userdata()
+        data.populate(["username", "pword", "fname", "creator", "none", "yes", "email", "Local"])
+        with self.assertNoLogs("tabcmd.commands.user.user_data", level="WARNING"):
+            user = data.to_tsc_user(warn_on_local_remap=False)
+        assert user.auth_setting == TSC.UserItem.Auth.ServerDefault, user.auth_setting
+
+    def test_local_auth_csv_warning_still_fires_without_override(self):
+        # Without a CLI override, the CSV's own "Local" value is effective, so the
+        # warning should still fire.
+        data = Userdata()
+        data.populate(["username", "pword", "fname", "creator", "none", "yes", "email", "Local"])
+        with self.assertLogs("tabcmd.commands.user.user_data", level="WARNING") as logs:
+            user = data.to_tsc_user(warn_on_local_remap=True)
+        assert user.auth_setting == TSC.UserItem.Auth.ServerDefault, user.auth_setting
+        assert any("username" in msg for msg in logs.output), logs.output
