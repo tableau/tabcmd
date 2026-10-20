@@ -41,7 +41,12 @@ class CreateSiteUsersCommand(UserCommand):
         UserCommand.validate_file_for_import(args.filename, logger, detailed=True, strict=args.require_all_valid)
 
         logger.info(_("addusers.status").format(args.filename.name, creation_site))
-        user_obj_list = UserCommand.get_users_from_file(args.filename, logger)
+        # A --auth-type override replaces any CSV-supplied auth value, so suppress
+        # the CSV-time "Local" remap warning when one is given -- it would describe
+        # a value that's about to be discarded.
+        user_obj_list = UserCommand.get_users_from_file(
+            args.filename, logger, warn_on_local_remap=not getattr(args, "auth_type", None)
+        )
         logger.info(_("session.monitorjob.percent_complete").format(0))
         error_list = []
         for user_obj in user_obj_list:
@@ -49,7 +54,7 @@ class CreateSiteUsersCommand(UserCommand):
                 if args.role:
                     user_obj.site_role = args.role  # tsc is case sensitive
                 if args.auth_type:
-                    user_obj.auth_setting = args.auth_type
+                    user_obj.auth_setting = UserCommand.normalize_auth_setting(args.auth_type, user_obj.name, logger)
                 number_of_users_listed += 1
                 result = server.users.add(user_obj)
                 logger.info(_("common.output.succeeded").format(user_obj.name))

@@ -1,3 +1,4 @@
+import logging
 import unittest
 from unittest.mock import *
 from tabcmd.commands.user.user_data import UserCommand, Userdata
@@ -150,3 +151,66 @@ class UserDataTest(unittest.TestCase):
         user = UserCommand._parse_line("username, pword, fname, creator, none, yes, email")
         assert user is not None
         assert user.site_role == "Creator", f"Expected Creator, got {user.site_role}"
+
+    def test_local_auth_maps_to_server_default(self):
+        # tabcmd Classic accepts "Local" as an auth type; TSC's Auth enum has no
+        # Local value, so passing it through raises ValueError on server.users.add.
+        # to_tsc_user should map Classic's "Local" -> ServerDefault for parity
+        # and log a warning so the operator sees the remap happened.
+        data = Userdata()
+        data.populate(["username", "pword", "fname", "creator", "none", "yes", "email", "Local"])
+        with self.assertLogs("tabcmd.commands.user.user_data", level="WARNING") as logs:
+            user = data.to_tsc_user()
+        assert user.auth_setting == TSC.UserItem.Auth.ServerDefault, user.auth_setting
+        # Assert the warning names the affected user so the operator can act on
+        # it. Avoid coupling to the localize key -- once the .mo catalog carries
+        # this msgid, `_()` returns the translated text instead of the key.
+        assert any("username" in msg for msg in logs.output), logs.output
+
+    def test_local_auth_case_insensitive(self):
+        data = Userdata()
+        data.populate(["username", "pword", "fname", "creator", "none", "yes", "email", "local"])
+        with self.assertLogs("tabcmd.commands.user.user_data", level="WARNING"):
+            user = data.to_tsc_user()
+        assert user.auth_setting == TSC.UserItem.Auth.ServerDefault, user.auth_setting
+
+    def test_non_local_auth_passes_through(self):
+        # SAML/OpenID/etc. are not remapped.
+        data = Userdata()
+        data.populate(["username", "pword", "fname", "creator", "none", "yes", "email", TSC.UserItem.Auth.SAML])
+        user = data.to_tsc_user()
+        assert user.auth_setting == TSC.UserItem.Auth.SAML, user.auth_setting
+
+    def test_local_auth_warning_uses_supplied_logger(self):
+        # The command logger carries the console handlers; the warning must go there.
+        data = Userdata()
+        data.populate(["username", "pword", "fname", "creator", "none", "yes", "email", "Local"])
+        with self.assertLogs("tabcmd.test.command_logger", level="WARNING") as logs:
+            data.to_tsc_user(logging.getLogger("tabcmd.test.command_logger"))
+        assert any("username" in msg for msg in logs.output), logs.output
+
+    def test_normalize_auth_setting_cli_value(self):
+        with self.assertLogs("tabcmd.test.command_logger", level="WARNING"):
+            result = UserCommand.normalize_auth_setting("Local", "bob", logging.getLogger("tabcmd.test.command_logger"))
+        assert result == TSC.UserItem.Auth.ServerDefault
+
+    def test_local_auth_csv_warning_suppressed_when_cli_overrides(self):
+        # Regression: a CSV row of "Local" logged the remap warning during parsing
+        # even when a --auth-type CLI override was about to replace that value,
+        # describing a remap that never took effect. When a CLI override is
+        # coming, the CSV-time warning must be suppressed.
+        data = Userdata()
+        data.populate(["username", "pword", "fname", "creator", "none", "yes", "email", "Local"])
+        with self.assertNoLogs("tabcmd.commands.user.user_data", level="WARNING"):
+            user = data.to_tsc_user(warn_on_local_remap=False)
+        assert user.auth_setting == TSC.UserItem.Auth.ServerDefault, user.auth_setting
+
+    def test_local_auth_csv_warning_still_fires_without_override(self):
+        # Without a CLI override, the CSV's own "Local" value is effective, so the
+        # warning should still fire.
+        data = Userdata()
+        data.populate(["username", "pword", "fname", "creator", "none", "yes", "email", "Local"])
+        with self.assertLogs("tabcmd.commands.user.user_data", level="WARNING") as logs:
+            user = data.to_tsc_user(warn_on_local_remap=True)
+        assert user.auth_setting == TSC.UserItem.Auth.ServerDefault, user.auth_setting
+        assert any("username" in msg for msg in logs.output), logs.output

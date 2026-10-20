@@ -41,11 +41,12 @@ class Userdata:
         if n_values >= 8:
             self.auth = values[7]
 
-    def to_tsc_user(self) -> TSC.UserItem:
+    def to_tsc_user(self, logger: Optional[logging.Logger] = None, warn_on_local_remap: bool = True) -> TSC.UserItem:
         site_role = UserCommand.evaluate_site_role(self.license_level, self.admin_level, self.publisher)
         if not site_role:
             raise AttributeError(_("tabcmd.user.error.site_role_required"))
-        user = TSC.UserItem(self.name, site_role, self.auth)
+        auth = UserCommand.normalize_auth_setting(self.auth, self.name, logger, warn=warn_on_local_remap)
+        user = TSC.UserItem(self.name, site_role, auth)
         user.email = self.email
         user.fullname = self.fullname
         return user
@@ -103,6 +104,28 @@ class UserCommand(Server):
     """
     This class acts as a base class for user related group of commands
     """
+
+    # tabcmd Classic accepts "Local" as an auth type; TSC's UserItem.Auth enum
+    # has no Local value and rejects it. Map Classic's "Local" to ServerDefault
+    # (both for CSV values and for the CLI --auth-type override) so inputs
+    # authored for Classic import without crashing, and log a warning so the
+    # operator sees the remap happened.
+    # warn=False suppresses the warning for a remap whose result won't be the
+    # effective value -- e.g. a CSV row's "Local" that a CLI --auth-type
+    # override is about to replace.
+    @staticmethod
+    def normalize_auth_setting(
+        auth, username: Optional[str] = None, logger: Optional[logging.Logger] = None, warn: bool = True
+    ):
+        if isinstance(auth, str) and auth.lower() == "local":
+            if warn:
+                # Use the command's logger when given: it carries the console handlers,
+                # so the operator sees the warning on stderr, not only in tabcmd.log.
+                (logger or logging.getLogger(__name__)).warning(
+                    _("tabcmd.user.warning.local_auth_remapped").format(username)
+                )
+            return TSC.UserItem.Auth.ServerDefault
+        return auth
 
     @staticmethod
     def set_role_arg(parser):
@@ -193,7 +216,9 @@ class UserCommand(Server):
         raise AttributeError(_("commandlineutils.errors.bad_value").format(column_type, item, possible_values))
 
     @staticmethod
-    def get_users_from_file(csv_file: io.TextIOWrapper, logger=None) -> List[TSC.UserItem]:
+    def get_users_from_file(
+        csv_file: io.TextIOWrapper, logger=None, warn_on_local_remap: bool = True
+    ) -> List[TSC.UserItem]:
         csv_file.seek(0)  # set to start of file in case it has been read earlier
         if logger:
             logger.debug("Reading from file {}".format(csv_file.name))
@@ -202,14 +227,16 @@ class UserCommand(Server):
         if logger:
             logger.debug("> {}".format(line))
         while line:
-            user: Optional[TSC.UserItem] = UserCommand._parse_line(line)
+            user: Optional[TSC.UserItem] = UserCommand._parse_line(line, logger, warn_on_local_remap)
             if user:
                 user_list.append(user)
             line = csv_file.readline()
         return user_list
 
     @staticmethod
-    def _parse_line(line: str) -> Optional[TSC.UserItem]:
+    def _parse_line(
+        line: str, logger: Optional[logging.Logger] = None, warn_on_local_remap: bool = True
+    ) -> Optional[TSC.UserItem]:
         if line is None or line is False or line == "\n" or line == "":
             return None
         line = line.strip()
@@ -217,7 +244,7 @@ class UserCommand(Server):
         data = Userdata()
         values: List[str] = list(map(str.strip, line_parts))
         data.populate(values)
-        return data.to_tsc_user()
+        return data.to_tsc_user(logger, warn_on_local_remap)
 
     # https://help.tableau.com/current/server/en-us/csvguidelines.htm#settings_and_site_roles
     @staticmethod
