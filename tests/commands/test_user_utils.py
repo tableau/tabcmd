@@ -164,7 +164,9 @@ class ApplyCliOverridesTest(unittest.TestCase):
 
     def test_idp_flag_applied_when_present(self):
         user = TSC.UserItem("alice", "Viewer")
-        UserCommand.apply_cli_overrides(user, self._mk_args(idp_configuration_id="c8a1af41-8e75-4b35-932f-ab968d8b0f5f"))
+        UserCommand.apply_cli_overrides(
+            user, self._mk_args(idp_configuration_id="c8a1af41-8e75-4b35-932f-ab968d8b0f5f")
+        )
         assert user.idp_configuration_id == "c8a1af41-8e75-4b35-932f-ab968d8b0f5f"
         assert user.auth_setting is None
 
@@ -173,7 +175,9 @@ class ApplyCliOverridesTest(unittest.TestCase):
         # via the CLI in practice, but the runtime clear is still the last-line-of-defense
         # so the wire request never has both attributes.
         user = TSC.UserItem("alice", "Viewer")
-        UserCommand.apply_cli_overrides(user, self._mk_args(auth_type="SAML", idp_configuration_id="bf687b7a-e5ce-4f14-817f-fec82c8de2ac"))
+        UserCommand.apply_cli_overrides(
+            user, self._mk_args(auth_type="SAML", idp_configuration_id="bf687b7a-e5ce-4f14-817f-fec82c8de2ac")
+        )
         assert user.idp_configuration_id == "bf687b7a-e5ce-4f14-817f-fec82c8de2ac"
         assert user.auth_setting is None
 
@@ -183,7 +187,9 @@ class ApplyCliOverridesTest(unittest.TestCase):
         # --idp-configuration-id, that IDP wins and the pre-existing auth is cleared.
         user = TSC.UserItem("alice", "Viewer")
         user.auth_setting = "OpenID"  # e.g. set from CSV col 8
-        UserCommand.apply_cli_overrides(user, self._mk_args(idp_configuration_id="7cb8e00f-af5f-467d-9a88-566aa4085eed"))
+        UserCommand.apply_cli_overrides(
+            user, self._mk_args(idp_configuration_id="7cb8e00f-af5f-467d-9a88-566aa4085eed")
+        )
         assert user.idp_configuration_id == "7cb8e00f-af5f-467d-9a88-566aa4085eed"
         assert user.auth_setting is None
 
