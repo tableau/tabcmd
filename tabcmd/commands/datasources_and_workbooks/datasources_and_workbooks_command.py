@@ -83,7 +83,13 @@ class DatasourcesAndWorkbooks(Server):
             raw_params = query.split("&")
             params: list[str] = []
             for fragment in raw_params:
-                if params and not fragment.startswith(":") and "=" not in fragment:
+                if (
+                    params
+                    and not params[-1].startswith(":")
+                    and not fragment.startswith(":")
+                    and fragment
+                    and "=" not in fragment
+                ):
                     logger.warning(
                         "URL contains an unencoded '&' inside a filter value; "
                         "rejoining '%s&%s' as a single filter. Please URL-encode "
@@ -92,7 +98,7 @@ class DatasourcesAndWorkbooks(Server):
                         fragment,
                     )
                     params[-1] = params[-1] + "&" + fragment
-                else:
+                elif fragment:
                     params.append(fragment)
             logger.debug(params)
             for value in params:

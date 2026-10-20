@@ -110,6 +110,25 @@ class ParameterTests(unittest.TestCase):
         assert ("Region", "West") in request_options.view_filters
         assert ("Product", "Widget") in request_options.view_filters
 
+    def test_apply_values_from_url_params_option_after_trailing_ampersand_not_corrupted(self):
+        # Regression (Copilot #442): `?:refresh=yes&` splits into [":refresh=yes", ""].
+        # The empty trailing fragment must not be rejoined onto the option, and a
+        # bare fragment immediately after an option must not be absorbed into it either.
+        query = "?:refresh=yes&"
+        request_options = tsc.PDFRequestOptions()
+        DatasourcesAndWorkbooks.apply_values_from_url_params(mock_logger, request_options, query)
+        assert request_options.max_age == 0
+
+    def test_apply_values_from_url_params_bare_fragment_after_option_not_absorbed(self):
+        # A bare (no '=') fragment immediately following an option key should not
+        # be rejoined into the option -- only a preceding *filter* fragment can
+        # absorb a stray '&'-split continuation.
+        query = "?:refresh=yes&stray"
+        request_options = tsc.PDFRequestOptions()
+        DatasourcesAndWorkbooks.apply_values_from_url_params(mock_logger, request_options, query)
+        assert request_options.max_age == 0
+        assert request_options.view_filters == []
+
     def test_apply_options_from_url_params(self):
         query_params = "?:iid=5&:refresh=yes&:size=600,700"
         request_options = tsc.PDFRequestOptions()
