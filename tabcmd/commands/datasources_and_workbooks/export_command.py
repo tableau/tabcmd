@@ -151,8 +151,15 @@ class ExportCommand(DatasourcesAndWorkbooks):
         # with '&' (e.g. `--filter "a=1&b=2"`), so that one case still splits on '&'.
         # Repeated --filter flags each carry exactly one pair — no split — so a
         # literal '&' or '=' in a value is passed through untouched.
+        # Only treat '&' as a pair delimiter when every resulting segment looks like
+        # COLUMN=VALUE; otherwise the '&' is probably literal (e.g. inside a value like
+        # "Company=AT&T"), so leave it alone and pass the single filter through as-is.
         if len(args.filter) == 1:
-            values = args.filter[0].split("&")
+            candidates = args.filter[0].split("&")
+            if len(candidates) > 1 and all("=" in c for c in candidates):
+                values = candidates
+            else:
+                values = args.filter
         else:
             values = args.filter
         for value in values:

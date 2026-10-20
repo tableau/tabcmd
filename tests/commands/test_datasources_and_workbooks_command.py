@@ -216,6 +216,22 @@ class ParameterTests(unittest.TestCase):
         ExportCommand.apply_filters_from_args(request_options, args, mock_logger)
         assert request_options.view_filters == [("Region", "West"), ("Product", "Widget")]
 
+    def test_apply_filters_from_args_single_with_literal_ampersand(self):
+        # Regression: a single --filter whose value contains a literal '&' but is not
+        # a '&'-joined COLUMN=VALUE pair list must not be split into bogus segments
+        # (which previously could raise IndexError downstream in apply_filter_value).
+        args = argparse.Namespace(filter=["Company=AT&T"])
+        request_options = tsc.PDFRequestOptions()
+        ExportCommand.apply_filters_from_args(request_options, args, mock_logger)
+        assert request_options.view_filters == [("Company", "AT&T")]
+
+    def test_apply_filters_from_args_preserves_equals_in_value(self):
+        # Regression: values containing '=' (e.g. "Notes=x=y") must not be truncated.
+        args = argparse.Namespace(filter=["Notes=x=y"])
+        request_options = tsc.PDFRequestOptions()
+        ExportCommand.apply_filters_from_args(request_options, args, mock_logger)
+        assert request_options.view_filters == [("Notes", "x=y")]
+
 
 @mock.patch("tableauserverclient.Server")
 class MockedServerTests(unittest.TestCase):
