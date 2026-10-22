@@ -45,6 +45,7 @@ classifiers = [
 ]
 dependencies = [
     "appdirs",
+    "certifi>=2026.10.19",
     "requests>=2.25,<3.0",
     "setuptools",
     "tableauserverclient==0.41",
