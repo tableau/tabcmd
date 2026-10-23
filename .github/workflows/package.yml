@@ -12,12 +12,17 @@ on:
   release:
     types: [published]
   # Manual repair path + release-on-merge.yml's `gh workflow run package.yml
-  # --ref <tag>` invocation. The tag is resolved from github.ref_name when the
-  # release event isn't the trigger.
+  # --ref <tag>` invocation. The release tag is resolved from the release event,
+  # then inputs.release_tag, then github.ref_name when the ref is a tag.
   workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Release tag to attach binaries to. Required when dispatching from a branch rather than a tag ref.'
+        required: false
+        type: string
 
 concurrency:
-  group: package-${{ github.event.release.tag_name || github.ref_name }}
+  group: package-${{ github.event.release.tag_name || inputs.release_tag || github.ref_name }}
   cancel-in-progress: false
 
 jobs:
@@ -135,24 +140,33 @@ jobs:
       with:
         path: artifacts/
 
-    # Resolve the release tag from whichever event triggered us: `release:
-    # published` populates github.event.release.tag_name; workflow_dispatch
-    # (invoked with `--ref <tag>`) leaves that empty and github.ref_name
-    # carries the tag instead. Fail fast if neither is set so we never
-    # attempt an upload against an empty tag.
+    # Resolve the release tag, in order of preference: the release event's
+    # tag_name, the workflow_dispatch release_tag input, then github.ref_name
+    # when the run was dispatched from a tag ref. A dispatch from a branch
+    # with no release_tag fails fast rather than treating the branch name as
+    # a tag, and an empty result never reaches the upload steps.
     - name: Resolve release tag
       id: tag
       env:
         RELEASE_TAG: ${{ github.event.release.tag_name }}
+        INPUT_TAG: ${{ inputs.release_tag }}
         REF_NAME: ${{ github.ref_name }}
+        REF_TYPE: ${{ github.ref_type }}
         EVENT_NAME: ${{ github.event_name }}
       run: |
         TAG="$RELEASE_TAG"
         if [ -z "$TAG" ]; then
+          TAG="$INPUT_TAG"
+        fi
+        if [ -z "$TAG" ] && [ "$REF_TYPE" = "tag" ]; then
           TAG="$REF_NAME"
         fi
+        if [ -z "$TAG" ] && [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+          echo "::error::workflow_dispatch from $REF_TYPE '$REF_NAME' has no release_tag input; pass -f release_tag=<tag> or dispatch with --ref <tag>"
+          exit 1
+        fi
         if [ -z "$TAG" ]; then
-          echo "::error::No release tag resolvable (event=$EVENT_NAME, release.tag_name empty, ref_name empty)"
+          echo "::error::No release tag resolvable (event=$EVENT_NAME, release.tag_name empty, release_tag input empty, ref_type=$REF_TYPE)"
           exit 1
         fi
         echo "tag=$TAG" >> "$GITHUB_OUTPUT"

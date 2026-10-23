@@ -185,13 +185,15 @@ When you then **publish** that draft release in the GitHub UI:
 
 1. `package.yml` fires again on the `release: published` event and rebuilds the binaries against the exact tagged commit.
 2. Before binaries are attached, the workflow **pauses at the `upload_to_release` job** waiting for a reviewer to approve the `release` environment. Go to **Actions → the latest `Package-and-Upload` run → Review deployments → Approve**. The four binaries (Windows `.exe`, Ubuntu `tabcmd`, macOS x86 and arm64 `.app.tar`) get attached after approval.
-3. Separately, `publish-pypi.yml` uploads the wheel to PyPI, also gated on the `release` environment.
+3. Separately, `publish-pypi.yml` uploads the wheel to PyPI, gated on the `pypi` environment.
 
 If binaries need to be re-attached to an existing release (e.g. one build leg originally failed), dispatch the workflow at the target tag:
 
 ```shell
 gh workflow run package.yml --ref v2.1.0
 ```
+
+To dispatch from a branch (e.g. to test workflow changes), pass the release to attach to: `gh workflow run package.yml --ref <branch> -f release_tag=v2.1.0`. A branch dispatch without `release_tag` fails at the tag-resolution step.
 
 Same reviewer gate applies.
 
