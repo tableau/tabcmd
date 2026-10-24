@@ -455,7 +455,7 @@ def uniquify_file(filename):
             )
         )
     else:
-        print("Saved {} sorted unique lines to {}".format(len(uniques), filename))
+        print("Saved {} sorted unique lines to {}".format(len(unique_lines), filename))
 
 
 def task_clean_all():
