@@ -1,0 +1,2 @@
+UserMixedCase_1811_A@example.com, ,"Mixed Case LDAP User 1811A",Viewer,none,no,mixedcase_1811_a@example.com,TableauID
+UserMixedCase_1811_B@example.com, ,"MFA User 1811B",Creator,none,no,mfa_1811_b@example.com,TableauIDWithMFA
