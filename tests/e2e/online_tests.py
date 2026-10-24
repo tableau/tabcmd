@@ -337,10 +337,13 @@ class OnlineCommandTest(unittest.TestCase):
         doesn't fit a single happy-path fixture; TSC's own unit tests cover it.
 
         ``--no-complete`` skips tabcmd's duplicate strict validator so the CSV
-        actually reaches TSC's ``UserItem.CSVImport`` — which is what this test
-        is meant to exercise. No ``--role`` override, so the role field in each
-        row is what gets validated (that's the point of the case-insensitivity
-        check).
+        reaches tabcmd's own row parser (``UserCommand.get_users_from_file`` /
+        ``_parse_line``), which builds the ``TSC.UserItem`` directly -- tabcmd
+        doesn't delegate to TSC's ``UserItem.CSVImport`` yet, so this exercises
+        the same validation rules #1811 fixed, via tabcmd's current parsing
+        path rather than through ``CSVImport`` itself. No ``--role`` override,
+        so the role field in each row is what gets validated (that's the point
+        of the case-insensitivity check).
 
         Related: tabcmd #297 (license-name case sensitivity), #434 (``Local``
         auth accepted by the CLI but rejected server-side).
