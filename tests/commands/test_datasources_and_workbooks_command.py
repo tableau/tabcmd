@@ -2,6 +2,7 @@ import argparse
 from unittest.mock import MagicMock
 
 from tabcmd.commands.datasources_and_workbooks.datasources_and_workbooks_command import DatasourcesAndWorkbooks
+from tabcmd.commands.datasources_and_workbooks.export_command import ExportCommand
 import tableauserverclient as tsc
 import unittest
 from unittest import mock
@@ -188,6 +189,48 @@ class ParameterTests(unittest.TestCase):
         request_options = tsc.CSVRequestOptions()
         DatasourcesAndWorkbooks.apply_csv_options(mock_logger, request_options, mock_args)
         assert request_options.language == "de"
+
+    def test_apply_filters_from_args_none(self):
+        args = argparse.Namespace(filter=None)
+        request_options = tsc.PDFRequestOptions()
+        ExportCommand.apply_filters_from_args(request_options, args, mock_logger)
+        assert request_options.view_filters == []
+
+    def test_apply_filters_from_args_single(self):
+        args = argparse.Namespace(filter=["Region=West"])
+        request_options = tsc.PDFRequestOptions()
+        ExportCommand.apply_filters_from_args(request_options, args, mock_logger)
+        assert request_options.view_filters == [("Region", "West")]
+
+    def test_apply_filters_from_args_repeated(self):
+        # repeated --filter flags each carry one pair, so '&' in a value is safe.
+        args = argparse.Namespace(filter=["Region=West", "Product=AT&T"])
+        request_options = tsc.PDFRequestOptions()
+        ExportCommand.apply_filters_from_args(request_options, args, mock_logger)
+        assert request_options.view_filters == [("Region", "West"), ("Product", "AT&T")]
+
+    def test_apply_filters_from_args_backcompat_ampersand_join(self):
+        # Old-style single flag joining pairs with '&' still parses.
+        args = argparse.Namespace(filter=["Region=West&Product=Widget"])
+        request_options = tsc.PDFRequestOptions()
+        ExportCommand.apply_filters_from_args(request_options, args, mock_logger)
+        assert request_options.view_filters == [("Region", "West"), ("Product", "Widget")]
+
+    def test_apply_filters_from_args_single_with_literal_ampersand(self):
+        # Regression: a single --filter whose value contains a literal '&' but is not
+        # a '&'-joined COLUMN=VALUE pair list must not be split into bogus segments
+        # (which previously could raise IndexError downstream in apply_filter_value).
+        args = argparse.Namespace(filter=["Company=AT&T"])
+        request_options = tsc.PDFRequestOptions()
+        ExportCommand.apply_filters_from_args(request_options, args, mock_logger)
+        assert request_options.view_filters == [("Company", "AT&T")]
+
+    def test_apply_filters_from_args_preserves_equals_in_value(self):
+        # Regression: values containing '=' (e.g. "Notes=x=y") must not be truncated.
+        args = argparse.Namespace(filter=["Notes=x=y"])
+        request_options = tsc.PDFRequestOptions()
+        ExportCommand.apply_filters_from_args(request_options, args, mock_logger)
+        assert request_options.view_filters == [("Notes", "x=y")]
 
 
 @mock.patch("tableauserverclient.Server")
