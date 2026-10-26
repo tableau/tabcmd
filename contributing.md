@@ -179,15 +179,15 @@ To investigate what's packaged in the executable, use https://pyinstxtractor-web
 
 ### Publishing a release
 
-Merging into `main` triggers `release-on-merge.yml`, which creates a **draft** release, pushes the version tag, and dispatches `package.yml` to build the platform binaries.
+Merging into `main` triggers `release-on-merge.yml`, which pushes the next patch version tag and creates a **draft** release for it. Nothing is built at this point.
 
 When you then **publish** that draft release in the GitHub UI:
 
-1. `package.yml` fires again on the `release: published` event and rebuilds the binaries against the exact tagged commit.
+1. `package.yml` fires on the `release: published` event and builds the binaries against the tagged commit.
 2. Before binaries are attached, the workflow **pauses at the `upload_to_release` job** waiting for a reviewer to approve the `release` environment. Go to **Actions → the latest `Package-and-Upload` run → Review deployments → Approve**. The four binaries (Windows `.exe`, Ubuntu `tabcmd`, macOS x86 and arm64 `.app.tar`) get attached after approval.
 3. Separately, `publish-pypi.yml` uploads the wheel to PyPI, gated on the `pypi` environment.
 
-If binaries need to be re-attached to an existing release (e.g. one build leg originally failed), dispatch the workflow at the target tag:
+If binaries need to be re-attached to a published release (e.g. one build leg originally failed), dispatch the workflow at the target tag. This doesn't work for a draft release: the upload step looks the release up by tag, and GitHub doesn't return drafts by tag.
 
 ```shell
 gh workflow run package.yml --ref v2.1.0
@@ -200,24 +200,20 @@ Same reviewer gate applies.
 
 ## Release process
 
-1. Create a new Github project release manually: https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases
+Releases are created and published as described in [Publishing a release](#publishing-a-release). The manual steps are:
+
+1. Edit the draft release created by `release-on-merge.yml` before publishing it:
     - include a useful list of changes since the last release
     - include a clear list of remaining non-server-admin functional gaps
 
-1. This will trigger our github packaging action to run on 3 different OSs.
+1. Publish the release. This triggers `package.yml` and `publish-pypi.yml`:
     - write an updated metadata file with the correct version number.
     - build the python wheel
-    - run pyinstaller to create executables
-    - save the executable as an artifact on that job.
+    - run pyinstaller to create executables on each OS
+    - after a reviewer approves the `release` environment, attach the executables to the release.
+    - upload the wheel to PyPI (after approval of the `pypi` environment).
 
-1. Find the artifacts created by this job and manually copy them to the new release. 
-- manually download. They will all be returned as zips
-- unzip the windows.exe and mac.app.tar files and upload those
-- do not unzip the linux app, github doesn't like it. upload as tabcmd.zip
-(Pay attention to what the file type is, github also sends it as a zip if you download with curl etc. TODO: automate workflow with a github action)
-
-1. To trigger publishing to pypi run the manual workflow on main with 'pypi'. 
+1. To publish to PyPI without a release (or to test on Test PyPI), run the manual `Publish to PyPi` workflow on main.
 
 1. When the packages are available on pypi, you can run the 'Pypi smoke test action'. This action will also be run every 24 hours to validate doing pip install. (TODO: automate the after-release trigger)
-
 
