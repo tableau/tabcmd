@@ -89,6 +89,32 @@ jobs:
       if: matrix.TARGET == 'macos'
       run: ./dist/${{ matrix.TARGET }}/${{ matrix.OUT_FILE_NAME }}/Contents/MacOS/${{ matrix.APP_BINARY_FILE_NAME }}
 
+    # -v checks the bundled version file. The login probe checks that requests/urllib3/certifi are bundled:
+    # a closed port must fail with a connection error, not an import error.
+    - name: Smoke test package for ${{matrix.TARGET}}
+      shell: bash
+      env:
+        TARGET: ${{ matrix.TARGET }}
+        OUT_FILE_NAME: ${{ matrix.OUT_FILE_NAME }}
+        APP_BINARY_FILE_NAME: ${{ matrix.APP_BINARY_FILE_NAME }}
+      run: |
+        case "$TARGET" in
+          macos) BIN="./dist/macos/$OUT_FILE_NAME/Contents/MacOS/$APP_BINARY_FILE_NAME" ;;
+          *) BIN="./dist/$TARGET/$OUT_FILE_NAME" ;;
+        esac
+        "$BIN" -v
+        if out=$("$BIN" login -s https://localhost:1 -u a -p b --no-certcheck 2>&1); then
+          echo "$out"
+          echo "login to a closed port unexpectedly succeeded"
+          exit 1
+        fi
+        echo "$out"
+        if echo "$out" | grep -Eq "ImportError|ModuleNotFoundError|Unhandled exception"; then
+          echo "packaged binary failed with an import error"
+          exit 1
+        fi
+        echo "$out" | grep -q "Max retries exceeded" || { echo "expected a connection error from requests"; exit 1; }
+
     - name: Tar app bundle for Mac
       if: matrix.TARGET == 'macos'
       run: |
