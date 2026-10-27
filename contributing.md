@@ -123,7 +123,7 @@ We have three levels of testing.
 Strings should be added/edited in /tabcmd/locales/en/{name}.properties by id and referred to in code as 
 > string = _("string.id")
 
-- regenerate updated strings for packaging as exe
+- regenerate the (uncommitted) .mo bundles to see new strings locally; CI and packaging do this themselves
 > python -m doit properties po mo
 
 

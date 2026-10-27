@@ -10,6 +10,8 @@ Missing string keys are validated on every PR by `.github/workflows/check-string
 
 ## Regenerating .mo bundles
 
+The .mo files are generated and are not committed. CI and packaging run `doit localize` before building. Run it locally after changing a .properties file or before running tabcmd from a checkout.
+
 Run these when properties files change. Each step is idempotent and will overwrite the existing output. More details about implementation are in the script code at `dodo.py`.
 
 Or run the full pipeline in one command:
