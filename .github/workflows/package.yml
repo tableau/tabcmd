@@ -9,15 +9,30 @@ name: Package-and-Upload
 # https://anshumanfauzdar.medium.com/using-github-actions-to-bundle-python-application-into-a-single-package-and-automatic-release-834bd42e0670
 
 on:
-  push:
-    tags:
-      - '*'
+  release:
+    types: [published]
+  # Manual repair path for a published release. The release tag is resolved from
+  # the release event, then inputs.release_tag, then github.ref_name when
+  # dispatched at a tag ref. Don't dispatch for a draft release: the upload step
+  # finds the release by tag, drafts can't be found that way, and the action then
+  # creates a second release for the same tag.
+  # There is deliberately no `push: tags` trigger: release-on-merge.yml pushes a
+  # tag on every merge to main, and a build should only run once a release is published.
   workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Release tag to attach binaries to. Required when dispatching from a branch rather than a tag ref.'
+        required: false
+        type: string
+
+concurrency:
+  group: package-${{ github.event.release.tag_name || inputs.release_tag || github.ref_name }}
+  cancel-in-progress: false
 
 jobs:
 
   buildexe:
-    name: Build executables and upload them to the existing release
+    name: Build executables
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -125,18 +140,103 @@ jobs:
         tar -cvf ${{ matrix.UPLOAD_FILE_NAME }} ${{ matrix.OUT_FILE_NAME }}
 
 
+    # UPLOAD_FILE_NAME distinguishes the two macOS artifacts (x86 vs arm64);
+    # the shared artifact name `tabcmd-macos` would otherwise collide and each
+    # upload would clobber the other in the artifact store.
     - name: Upload build artifact for ${{ matrix.TARGET }}
       uses: actions/upload-artifact@v7
       with:
-        name: tabcmd-${{ matrix.TARGET }}
+        name: ${{ matrix.UPLOAD_FILE_NAME }}
         path: ./dist/${{ matrix.TARGET }}/${{ matrix.UPLOAD_FILE_NAME }}
 
-    - name: Upload binaries to release for ${{ matrix.TARGET }}
-      if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+  # Attach the built binaries to the target GitHub release. Split into its own
+  # job so we can gate it behind the `release` environment: a required-reviewer
+  # protection on that environment means publishing a release triggers a build,
+  # but only an approved reviewer can actually attach binaries to that release.
+  # The workflow pauses at this job until a reviewer clicks Approve.
+  #
+  # `needs: buildexe` waits for ALL matrix legs to succeed. If any leg fails
+  # this job is skipped (default behavior with no `if: always()`), so a partial
+  # release upload where e.g. macOS is missing is never possible.
+  upload_to_release:
+    name: Attach build artifacts to release
+    needs: buildexe
+    runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      contents: write
+    steps:
+    # download-artifact versions independently of upload-artifact; v7 reads the
+    # zipped artifacts that upload-artifact@v7 produces by default
+    - name: Download all build artifacts
+      uses: actions/download-artifact@v7
+      with:
+        path: artifacts/
+
+    # Resolve the release tag, in order of preference: the release event's
+    # tag_name, the workflow_dispatch release_tag input, then github.ref_name
+    # when the run was dispatched from a tag ref. A dispatch from a branch
+    # with no release_tag fails fast rather than treating the branch name as
+    # a tag, and an empty result never reaches the upload steps.
+    - name: Resolve release tag
+      id: tag
+      env:
+        RELEASE_TAG: ${{ github.event.release.tag_name }}
+        INPUT_TAG: ${{ inputs.release_tag }}
+        REF_NAME: ${{ github.ref_name }}
+        REF_TYPE: ${{ github.ref_type }}
+        EVENT_NAME: ${{ github.event_name }}
+      run: |
+        TAG="$RELEASE_TAG"
+        if [ -z "$TAG" ]; then
+          TAG="$INPUT_TAG"
+        fi
+        if [ -z "$TAG" ] && [ "$REF_TYPE" = "tag" ]; then
+          TAG="$REF_NAME"
+        fi
+        if [ -z "$TAG" ] && [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+          echo "::error::workflow_dispatch from $REF_TYPE '$REF_NAME' has no release_tag input; pass -f release_tag=<tag> or dispatch with --ref <tag>"
+          exit 1
+        fi
+        if [ -z "$TAG" ]; then
+          echo "::error::No release tag resolvable (event=$EVENT_NAME, release.tag_name empty, release_tag input empty, ref_type=$REF_TYPE)"
+          exit 1
+        fi
+        echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+        echo "Resolved release tag: $TAG"
+
+    - name: Upload tabcmd.exe (Windows) to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        asset_name: ${{ matrix.UPLOAD_FILE_NAME }}
-        file: ./dist/${{ matrix.TARGET }}/${{ matrix.UPLOAD_FILE_NAME }}
-        tag: ${{ github.ref_name }}
+        asset_name: tabcmd.exe
+        file: artifacts/tabcmd.exe/tabcmd.exe
+        tag: ${{ steps.tag.outputs.tag }}
+        overwrite: true
+
+    - name: Upload tabcmd (Ubuntu) to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        asset_name: tabcmd
+        file: artifacts/tabcmd/tabcmd
+        tag: ${{ steps.tag.outputs.tag }}
+        overwrite: true
+
+    - name: Upload tabcmd-x86.app.tar (macOS x86) to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        asset_name: tabcmd-x86.app.tar
+        file: artifacts/tabcmd-x86.app.tar/tabcmd-x86.app.tar
+        tag: ${{ steps.tag.outputs.tag }}
+        overwrite: true
+
+    - name: Upload tabcmd_arm64.app.tar (macOS ARM64) to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        asset_name: tabcmd_arm64.app.tar
+        file: artifacts/tabcmd_arm64.app.tar/tabcmd_arm64.app.tar
+        tag: ${{ steps.tag.outputs.tag }}
         overwrite: true
