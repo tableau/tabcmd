@@ -20,3 +20,19 @@ class CreateGroupParserTest(ParserTest):
         mock_args = [commandname]
         with self.assertRaises(SystemExit):
             self.parser_under_test.parse_args(mock_args)
+
+    def test_creategroup_parser_role_flag(self):
+        args = self.parser_under_test.parse_args([commandname, "name", "--role", "Viewer"])
+        assert args.role == "Viewer"
+
+    def test_creategroup_parser_role_short_flag(self):
+        args = self.parser_under_test.parse_args([commandname, "name", "-r", "Explorer"])
+        assert args.role == "Explorer"
+
+    def test_creategroup_parser_role_case_insensitive(self):
+        args = self.parser_under_test.parse_args([commandname, "name", "--role", "creator"])
+        assert args.role == "Creator"
+
+    def test_creategroup_parser_role_optional(self):
+        args = self.parser_under_test.parse_args([commandname, "name"])
+        assert args.role is None
