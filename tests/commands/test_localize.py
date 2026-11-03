@@ -2,6 +2,7 @@ import gettext
 import locale
 import sys
 import unittest
+import tabcmd.execution.localize as localize_module
 from tabcmd.execution.localize import set_client_locale, _get_default_locale
 
 
@@ -39,6 +40,26 @@ class LocaleTests(unittest.TestCase):
         assert translations is not None
 
         assert translations("importcsvsummary.line.processed") == "Lines processed: {0}"
+
+    def test_fallback_to_english_when_key_missing_in_locale(self):
+        # session.errors.password_file_not_found exists in en but not fr.
+        # Loading fr should chain en behind it so the key resolves to the en msgstr.
+        localize_module.translate = None
+        translations = set_client_locale("fr")
+        assert translations is not None
+        result = translations("session.errors.password_file_not_found")
+        assert result == "Password file not found: '{0}'. Check the path passed to --password-file."
+
+    def test_key_present_in_locale_uses_locale_translation(self):
+        # createsite.errors.site_name_already_exists is translated in fr; the fallback
+        # should NOT clobber the fr msgstr.
+        localize_module.translate = None
+        translations = set_client_locale("fr")
+        assert translations is not None
+        result = translations("createsite.errors.site_name_already_exists")
+        assert result != "createsite.errors.site_name_already_exists"
+        assert "'{0}'" in result  # placeholder preserved
+        assert result != "There is already a site named '{0}'. Try a different site name."
 
     #  https://docs.python.org/3/library/locale.html
     #  c:\dev\tabcmd\tabcmd\execution\localize.py:85: DeprecationWarning:
