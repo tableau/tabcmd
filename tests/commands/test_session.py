@@ -10,7 +10,7 @@ from unittest.mock import MagicMock
 
 import tableauserverclient as TSC
 
-from tabcmd.commands.auth.session import Session
+from tabcmd.commands.auth.session import DEFAULT_SESSION_REQUEST_TIMEOUT, Session
 
 _isolated_path_patcher = None
 
@@ -1393,6 +1393,170 @@ class GetServerBaseUrlTests(unittest.TestCase):
     def test_https_with_path_strips_path(self):
         result = self.session._get_server_base_url("https://my-tableau-server.com/some/path")
         assert result == "https://my-tableau-server.com", result
+
+    def test_scheme_relative_url_gets_https(self):
+        result = self.session._get_server_base_url("//my-tableau-server.com:8080/some/path")
+        assert result == "https://my-tableau-server.com:8080", result
+
+    def test_host_and_port_without_scheme(self):
+        result = self.session._get_server_base_url("my-tableau-server.com:8080")
+        assert result == "https://my-tableau-server.com:8080", result
+
+    def test_scheme_marker_in_query_does_not_count_as_scheme(self):
+        result = self.session._get_server_base_url("my-tableau-server.com/path?next=http://other")
+        assert result == "https://my-tableau-server.com", result
+
+    def test_url_without_host_exits(self):
+        for url in ("https://", "https:///path", "//"):
+            with self.subTest(url=url), self.assertRaises(SystemExit):
+                self.session._get_server_base_url(url)
+
+    def test_unparseable_server_does_not_fall_back_to_saved_server(self):
+        self.session.server_url = "https://saved-server.com"
+        args = Namespace(**vars(args_to_mock))
+        args.server = "https://"
+        with self.assertRaises(SystemExit):
+            self.session._update_session_data(args)
+        assert self.session.server_url == "https://saved-server.com"
+
+
+def _write_saved_session(**overrides):
+    """Write a logged-in session file at the (isolated) session path."""
+    session = Session()
+    session.auth_token = "tok"
+    session.site_id = "site-1"
+    session.user_id = "user-1"
+    session.server_url = "http://srvr"
+    session.site_name = ""
+    for key, value in overrides.items():
+        setattr(session, key, value)
+    session._save_session_to_json()
+
+
+def _logout_args(**overrides):
+    args = Namespace(
+        logging_level="info", proxy=None, no_proxy=False, timeout=None, certificate=None, no_certcheck=False
+    )
+    for key, value in overrides.items():
+        setattr(args, key, value)
+    return args
+
+
+class LogoutCommandOptionTests(unittest.TestCase):
+    """logout accepts the shared connection options, so it has to honour them."""
+
+    def tearDown(self):
+        Session()._remove_json()
+
+    def _run_logout(self, saved=None, **arg_overrides):
+        from tabcmd.commands.auth.logout_command import LogoutCommand
+
+        _write_saved_session(**(saved or {}))
+        with mock.patch("tabcmd.commands.auth.session.TSC.Server") as mock_server_class:
+            LogoutCommand.run_command(_logout_args(**arg_overrides))
+        mock_server_class.assert_called_once()
+        return mock_server_class.call_args, mock_server_class.return_value
+
+    def test_no_proxy_overrides_saved_proxy(self):
+        call, server = self._run_logout(saved={"proxy": "http://dead:3128"}, no_proxy=True)
+        assert call.kwargs["http_options"]["proxies"] is None
+        server.auth.sign_out.assert_called_once()
+
+    def test_proxy_option_overrides_saved_proxy(self):
+        call, _ = self._run_logout(saved={"proxy": "http://dead:3128"}, proxy="http://good:3128")
+        assert call.kwargs["http_options"]["proxies"] == {"http": "http://good:3128", "https": "http://good:3128"}
+
+    def test_timeout_option_is_used(self):
+        call, _ = self._run_logout(timeout="5")
+        assert call.kwargs["http_options"]["timeout"] == 5
+
+    def test_no_certcheck_option_is_used(self):
+        call, _ = self._run_logout(no_certcheck=True)
+        assert call.kwargs["http_options"]["verify"] is False
+
+    def test_server_option_does_not_redirect_the_sign_out(self):
+        # the token on disk belongs to the saved server; --server must not send it elsewhere
+        call, _ = self._run_logout(server="http://elsewhere")
+        assert call.args[0] == "http://srvr"
+
+
+class SessionRequestTimeoutTests(unittest.TestCase):
+    """The restore probe and the logout sign-out must not wait forever on an unresponsive server."""
+
+    def _saved_session(self):
+        session = Session()
+        session.auth_token = "tok"
+        session.site_id = "site-1"
+        session.user_id = "user-1"
+        session.server_url = "http://srvr"
+        session.site_name = ""
+        session._saved_server_url = "http://srvr"
+        session._saved_site_name = ""
+        return session
+
+    def test_default_timeout_is_thirty_seconds(self):
+        assert DEFAULT_SESSION_REQUEST_TIMEOUT == 30
+
+    def test_restore_probe_has_default_timeout(self):
+        with mock.patch("tabcmd.commands.auth.session.TSC.Server") as mock_server_class:
+            self._saved_session()._restore_saved_session()
+        assert mock_server_class.call_args.kwargs["http_options"]["timeout"] == DEFAULT_SESSION_REQUEST_TIMEOUT
+
+    def test_logout_sign_out_has_default_timeout(self):
+        with (
+            mock.patch("tabcmd.commands.auth.session.TSC.Server") as mock_server_class,
+            mock.patch.object(Session, "_remove_json"),
+        ):
+            self._saved_session().end_session_and_clear_data()
+        assert mock_server_class.call_args.kwargs["http_options"]["timeout"] == DEFAULT_SESSION_REQUEST_TIMEOUT
+
+    def test_explicit_timeout_wins_over_default(self):
+        session = self._saved_session()
+        session.timeout = 120
+        with mock.patch("tabcmd.commands.auth.session.TSC.Server") as mock_server_class:
+            session._restore_saved_session()
+        assert mock_server_class.call_args.kwargs["http_options"]["timeout"] == 120
+
+    def test_ordinary_commands_keep_waiting_for_the_server(self):
+        # --timeout is documented as "the default is to wait until the server responds"
+        session = self._saved_session()
+        with mock.patch("tabcmd.commands.auth.session.TSC.Server") as mock_server_class:
+            session._open_connection_with_opts()
+        assert "timeout" not in mock_server_class.call_args.kwargs["http_options"]
+
+
+class QuietFallbackOutputTests(unittest.TestCase):
+    """When restore or logout cannot open a connection it falls back silently, without 'Exiting...' output."""
+
+    def _session_with_bad_url(self):
+        session = Session()
+        session.auth_token = "t"
+        session.site_id = "s"
+        session.user_id = "u"
+        session.server_url = "http://[bad"
+        session._saved_server_url = "http://[bad"
+        session._saved_site_name = session.site_name
+        return session
+
+    def test_restore_fallback_does_not_report_an_error(self):
+        with mock.patch("tabcmd.commands.auth.session.Errors.exit_with_error") as mock_exit:
+            assert self._session_with_bad_url()._restore_saved_session() is None
+        mock_exit.assert_not_called()
+
+    def test_logout_with_unusable_saved_server_does_not_report_an_error(self):
+        session = self._session_with_bad_url()
+        with (
+            mock.patch("tabcmd.commands.auth.session.Errors.exit_with_error") as mock_exit,
+            mock.patch.object(Session, "_remove_json"),
+        ):
+            session.end_session_and_clear_data()
+        mock_exit.assert_not_called()
+        assert session.auth_token is None
+
+    def test_ordinary_commands_still_exit_on_connection_failure(self):
+        session = self._session_with_bad_url()
+        with self.assertRaises(SystemExit):
+            session._open_connection_with_opts()
 
 
 """

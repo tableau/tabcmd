@@ -2,6 +2,7 @@ import getpass
 import json
 import logging
 import os
+import re
 
 import requests
 import tableauserverclient as TSC
@@ -15,6 +16,10 @@ from tabcmd.execution.localize import _
 from tabcmd.execution.logger_config import log
 
 from typing import Dict, Any, Optional
+
+# Seconds to wait on the quick calls that run before a command's own work: probing a saved
+# session, and signing it out. The user's --timeout, if any, takes precedence.
+DEFAULT_SESSION_REQUEST_TIMEOUT = 30
 
 
 class Session:
@@ -78,6 +83,10 @@ class Session:
         self.token_value = args.token_value or self.token_value
 
         self.no_prompt = args.no_prompt  # have to set this on every call?
+        self._update_http_options(args)
+
+    # the connection options shared by every command, including logout
+    def _update_http_options(self, args):
         self.certificate = args.certificate or self.certificate
         self.no_certcheck = args.no_certcheck  # have to set this on every call?
         self.no_proxy = args.no_proxy  # have to set this on every call?
@@ -193,7 +202,12 @@ class Session:
             redacted["proxies"] = {k: Session._redact_proxy(v) for k, v in proxies.items()}
         return redacted
 
-    def _open_connection_with_opts(self) -> TSC.Server:
+    # Callers that can carry on without a connection pass raise_on_failure, so a failure
+    # raises instead of printing an error and exiting. default_timeout applies only when
+    # the user has not set --timeout; without either, requests wait for the server.
+    def _open_connection_with_opts(
+        self, raise_on_failure: bool = False, default_timeout: Optional[int] = None
+    ) -> TSC.Server:
         self.logger.debug("Setting up request options")
         http_options: Dict[str, Any] = {"headers": {"User-Agent": "Tabcmd/{}".format(version)}}
 
@@ -211,8 +225,9 @@ class Session:
             # override any proxy that was set
             http_options["proxies"] = None
 
-        if self.timeout:
-            http_options["timeout"] = self.timeout
+        timeout = self.timeout or default_timeout
+        if timeout:
+            http_options["timeout"] = timeout
 
         if self.certificate:
             http_options["cert"] = self.certificate
@@ -229,6 +244,8 @@ class Session:
                     self.server_url, self.site_name, self._redact_proxy(self.proxy), self.no_proxy, self.certificate
                 )
             )
+            if raise_on_failure:
+                raise
             Errors.exit_with_error(self.logger, "Failed to connect to server", e)
 
         self.logger.debug("Finished setting up connection")
@@ -343,10 +360,10 @@ class Session:
             self.logger.debug("Saved session is for a different server or site; will re-authenticate")
             return None
         try:
-            server = self._open_connection_with_opts()
-        except (Exception, SystemExit) as e:
-            # _open_connection_with_opts reports failures through exit_with_error, which raises
-            # SystemExit, so that has to be caught for the fallback to happen.
+            server = self._open_connection_with_opts(
+                raise_on_failure=True, default_timeout=DEFAULT_SESSION_REQUEST_TIMEOUT
+            )
+        except Exception as e:
             # Log the exception class only; the message can include the request URL and
             # in some code paths downstream would echo request bodies. Class name is
             # enough for a fallback-diagnostic breadcrumb.
@@ -436,11 +453,13 @@ class Session:
         if not (self.auth_token and self.site_id and self.user_id and self.server_url):
             return
         try:
-            server = self._open_connection_with_opts()
+            server = self._open_connection_with_opts(
+                raise_on_failure=True, default_timeout=DEFAULT_SESSION_REQUEST_TIMEOUT
+            )
             server._set_auth(self.site_id, self.user_id, self.auth_token)
             server.use_server_version()
             server.auth.sign_out()
-        except (Exception, SystemExit) as e:
+        except Exception as e:
             self.logger.debug("Could not sign out saved session on the server ({})".format(type(e).__name__))
 
     def _end_session(self):
@@ -603,11 +622,17 @@ class Session:
 
     def _get_server_base_url(self, url: str):
         try:
-            # Without "://", urlparse reads "host:8080" as scheme "host", so add the
-            # default scheme before parsing.
-            if "://" not in url:
+            # Without a scheme, urlparse reads "host:8080" as scheme "host", so add the
+            # default scheme before parsing. Only a "scheme://" at the start counts: a "://"
+            # later in the string (e.g. in a query) is not a scheme.
+            url = url.strip()
+            if url.startswith("//"):
+                url = "https:" + url
+            elif not re.match(r"[A-Za-z][A-Za-z0-9+.-]*://", url):
                 url = "https://" + url
             parsed = urlparse(url)
+            if not parsed.netloc:
+                raise ValueError("no host in server URL")
             # Keep only scheme and host[:port]; any path is discarded
             return urlunparse((parsed.scheme, parsed.netloc, "", "", "", ""))
         except Exception as e:
