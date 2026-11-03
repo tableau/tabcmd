@@ -2,6 +2,7 @@ import argparse
 from unittest.mock import MagicMock
 
 from tabcmd.commands.datasources_and_workbooks.datasources_and_workbooks_command import DatasourcesAndWorkbooks
+from tabcmd.commands.datasources_and_workbooks.export_command import ExportCommand
 import tableauserverclient as tsc
 import unittest
 from unittest import mock
@@ -312,3 +313,61 @@ class MockedServerTests(unittest.TestCase):
         custom_view_id = "cv-id"
         DatasourcesAndWorkbooks.get_custom_view_by_id(mock_logger, mock_server, custom_view_id)
         getter.get_by_id.assert_called()
+
+
+def _filters_from_args(value):
+    request_options = tsc.PDFRequestOptions()
+    ExportCommand.apply_filters_from_args(request_options, argparse.Namespace(filter=value), mock.MagicMock())
+    return request_options.view_filters
+
+
+def _filters_from_url(url, logger=None):
+    request_options = tsc.PDFRequestOptions()
+    DatasourcesAndWorkbooks.apply_values_from_url_params(logger or mock.MagicMock(), request_options, url)
+    return request_options.view_filters
+
+
+class FilterFlagTests(unittest.TestCase):
+    """The --filter flag path, through apply_filters_from_args."""
+
+    def test_equals_in_value_survives_the_flag_path(self):
+        assert _filters_from_args("Notes=x=y") == [("Notes", "x=y")]
+
+    def test_ampersand_separates_filters(self):
+        assert _filters_from_args("Region=West&Product=Widget") == [("Region", "West"), ("Product", "Widget")]
+
+    def test_trailing_ampersand_is_ignored(self):
+        assert _filters_from_args("Region=West&") == [("Region", "West")]
+
+    def test_ampersand_inside_value_exits(self):
+        with self.assertRaises(SystemExit):
+            _filters_from_args("Product=AT&T")
+
+    def test_empty_name_exits(self):
+        with self.assertRaises(SystemExit):
+            DatasourcesAndWorkbooks.apply_filter_value(mock.MagicMock(), tsc.PDFRequestOptions(), "=x")
+
+
+class UrlFilterTests(unittest.TestCase):
+    """Filters embedded in the view URL, through apply_values_from_url_params."""
+
+    def test_parameters_prefix_is_stripped_before_rejoin(self):
+        assert _filters_from_url("?Parameters.Company=A%20&%20B") == [("Company", "A & B")]
+
+    def test_rejoin_logs_a_warning(self):
+        logger = mock.MagicMock()
+        _filters_from_url("?Product=AT&T", logger)
+        logger.warning.assert_called_once()
+
+    def test_bare_url_filter_is_skipped(self):
+        assert _filters_from_url("?Region") == []
+
+    def test_empty_name_in_url_is_skipped(self):
+        assert _filters_from_url("?=x") == []
+
+    def test_value_with_ampersand_and_equals_is_split(self):
+        # Known limitation: "AT&T x=y Combo" is indistinguishable from two filters.
+        assert _filters_from_url("?Product%20Name=AT&T%20x=y%20Combo") == [
+            ("Product Name", "AT"),
+            ("T x", "y Combo"),
+        ]

@@ -135,7 +135,8 @@ class DatasourcesAndWorkbooks(Server):
         # Split on the first '=' only so that filter values containing '=' are
         # preserved intact (e.g. Notes=x=y should filter Notes to the value "x=y").
         parts = value.split("=", maxsplit=1)
-        if len(parts) != 2:
+        # An empty field name ("=x") is as unusable as a missing '='.
+        if len(parts) != 2 or not parts[0]:
             if strict:
                 Errors.exit_with_error(
                     logger,
