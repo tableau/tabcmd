@@ -68,6 +68,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
         group.add_argument(
             "--filter",
             metavar="COLUMN=VALUE",
+            action="append",
             help=_("tabcmd.export.help.filter"),
         )
         group.add_argument(
@@ -102,33 +103,30 @@ class ExportCommand(DatasourcesAndWorkbooks):
             )
             Errors.exit_with_error(logger, message)
 
-        # `content_item` tracks the workbook/view/custom_view we're exporting; used
-        # for the "Saved <content-name> to '<filename>'" success message.
-        content_item = None
         try:
             if args.fullpdf:  # it's a workbook
-                content_item = ExportCommand.get_wb_by_content_url(logger, server, wb_content_url)
-                output = ExportCommand.download_wb_pdf(server, content_item, args, logger)
+                workbook_item = ExportCommand.get_wb_by_content_url(logger, server, wb_content_url)
+                output = ExportCommand.download_wb_pdf(server, workbook_item, args, logger)
 
-                default_filename = "{}.pdf".format(content_item.name)
+                default_filename = "{}.pdf".format(workbook_item.name)
 
             elif args.pdf or args.png or args.csv:  # it's a view or custom_view
                 (
-                    content_item,
+                    export_item,
                     server_content_type,
                 ) = DatasourcesWorkbooksAndViewsUrlParser.get_export_item_and_server_content_type_from_export_url(
                     view_content_url, logger, server, custom_view_id
                 )
 
                 if args.pdf:
-                    output = ExportCommand.download_view_pdf(server_content_type, content_item, args, logger)
-                    default_filename = "{}.pdf".format(content_item.name)
+                    output = ExportCommand.download_view_pdf(server_content_type, export_item, args, logger)
+                    default_filename = "{}.pdf".format(export_item.name)
                 elif args.csv:
-                    output = ExportCommand.download_csv(server_content_type, content_item, args, logger)
-                    default_filename = "{}.csv".format(content_item.name)
+                    output = ExportCommand.download_csv(server_content_type, export_item, args, logger)
+                    default_filename = "{}.csv".format(export_item.name)
                 elif args.png:
-                    output = ExportCommand.download_png(server_content_type, content_item, args, logger)
-                    default_filename = "{}.png".format(content_item.name)
+                    output = ExportCommand.download_png(server_content_type, export_item, args, logger)
+                    default_filename = "{}.png".format(export_item.name)
 
         except TSC.ServerResponseError as e:
             Errors.exit_with_error(logger, _("publish.errors.unexpected_server_response").format(""), exception=e)
@@ -136,24 +134,37 @@ class ExportCommand(DatasourcesAndWorkbooks):
             Errors.exit_with_error(logger, exception=e)
         try:
             save_name = args.filename or default_filename
-            content_name = content_item.name if content_item is not None else None
             if args.csv:
-                ExportCommand.save_to_data_file(logger, output, save_name, content_name=content_name)
+                ExportCommand.save_to_data_file(logger, output, save_name)
             else:
-                ExportCommand.save_to_file(logger, output, save_name, content_name=content_name)
+                ExportCommand.save_to_file(logger, output, save_name)
 
         except Exception as e:
             Errors.exit_with_error(logger, "Error saving to file", exception=e)
 
     @staticmethod
-    def apply_filters_from_args(request_options: RequestOptionsType, args, logger=None) -> None:
-        if args.filter:
-            logger.debug("filter = {}".format(args.filter))
-            params = args.filter.split("&")
-            for value in params:
-                # A trailing or doubled '&' leaves an empty fragment; it is not a filter.
-                if value:
-                    ExportCommand.apply_filter_value(logger, request_options, value)
+    def apply_filters_from_args(request_options: RequestOptionsType, args, logger) -> None:
+        if not args.filter:
+            return
+        logger.debug("filter = {}".format(args.filter))
+        # Back-compat: a single --filter flag historically joined multiple pairs
+        # with '&' (e.g. `--filter "a=1&b=2"`), so that one case still splits on '&'.
+        # Repeated --filter flags each carry exactly one pair — no split — so a
+        # literal '&' or '=' in a value is passed through untouched.
+        # Only treat '&' as a pair delimiter when every resulting segment looks like
+        # COLUMN=VALUE; otherwise the '&' is probably literal (e.g. inside a value like
+        # "Company=AT&T"), so leave it alone and pass the single filter through as-is.
+        if len(args.filter) == 1:
+            # Empty fragments from a trailing or doubled '&' are not filters.
+            candidates = [c for c in args.filter[0].split("&") if c]
+            if candidates and all("=" in c for c in candidates):
+                values = candidates
+            else:
+                values = args.filter
+        else:
+            values = args.filter
+        for value in values:
+            ExportCommand.apply_filter_value(logger, request_options, value)
 
     @staticmethod
     def download_wb_pdf(server, workbook_item, args, logger):
