@@ -155,8 +155,9 @@ class ExportCommand(DatasourcesAndWorkbooks):
         # COLUMN=VALUE; otherwise the '&' is probably literal (e.g. inside a value like
         # "Company=AT&T"), so leave it alone and pass the single filter through as-is.
         if len(args.filter) == 1:
-            candidates = args.filter[0].split("&")
-            if len(candidates) > 1 and all("=" in c for c in candidates):
+            # Empty fragments from a trailing or doubled '&' are not filters.
+            candidates = [c for c in args.filter[0].split("&") if c]
+            if candidates and all("=" in c for c in candidates):
                 values = candidates
             else:
                 values = args.filter

@@ -57,13 +57,10 @@ class DeleteCommand(DatasourcesAndWorkbooks):
         container: TSC.ProjectItem = DeleteCommand.get_project_by_name_and_parent_path(
             logger, server, args.project_name, args.parent_project_path
         )
-        if container:
-            item_name = (args.parent_project_path or "") + "/" + (args.project_name or "default") + "/" + args.name
-        else:
-
+        if not container:
             Errors.exit_with_error(logger, _("tabcmd.errors.parent.not.found"))
-        logger.info(_("delete.status").format(content_type, item_name or args.name))
 
+        item_to_delete = None
         error = None
         if args.workbook or not content_type:
             logger.debug(_("delete.status").format("Workbook", args.workbook))
@@ -82,6 +79,8 @@ class DeleteCommand(DatasourcesAndWorkbooks):
         if not content_type or not item_to_delete:
             logger.debug(error)
             Errors.exit_with_error(logger, _("delete.errors.requires_workbook_datasource"))
+
+        logger.info(_("delete.status").format(content_type, args.name))
 
         try:
             if content_type == "workbook":

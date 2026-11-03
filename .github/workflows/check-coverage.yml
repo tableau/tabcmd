@@ -32,6 +32,8 @@ jobs:
         python -m pip install --upgrade build
         pip install .[versioning]
         doit version
+        pip install .[localize]
+        doit localize
         pip install .
         python -m build
         pip install .[test]
