@@ -151,7 +151,9 @@ class ExportCommand(DatasourcesAndWorkbooks):
             logger.debug("filter = {}".format(args.filter))
             params = args.filter.split("&")
             for value in params:
-                ExportCommand.apply_filter_value(logger, request_options, value)
+                # A trailing or doubled '&' leaves an empty fragment; it is not a filter.
+                if value:
+                    ExportCommand.apply_filter_value(logger, request_options, value)
 
     @staticmethod
     def download_wb_pdf(server, workbook_item, args, logger):
