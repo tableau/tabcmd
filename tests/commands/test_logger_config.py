@@ -155,6 +155,19 @@ class InfoFormatTests(unittest.TestCase):
         self.assertTrue(lines[0].startswith("===== classic line"), lines[0])
         self.assertIn("DEBUG", lines[1])
 
+    def test_plain_info_line_has_no_prefix(self):
+        from tabcmd.execution.logger_config import PLAIN
+
+        fake_out, fake_err = io.StringIO(), io.StringIO()
+        with mock.patch("sys.stdout", fake_out), mock.patch("sys.stderr", fake_err):
+            logger = configure_log("test_info_fmt_plain", "INFO")
+        logger.propagate = False
+        logger.info("data row", extra=PLAIN)
+        logger.info("status line")
+        lines = fake_out.getvalue().splitlines()
+        self.assertEqual(lines[0], "data row")
+        self.assertTrue(lines[1].startswith("===== status line"), lines[1])
+
     def test_classic_output_opt_out(self):
         import importlib
 

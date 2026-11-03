@@ -56,13 +56,27 @@ def add_trace_level():
     FORMATS[trace_level] = FORMATS[logging.ERROR]
 
 
+# Pass as `extra=PLAIN` on an INFO call to print a data line (listing rows, machine-readable
+# output) without the classic "=====" status prefix.
+PLAIN = {"plain": True}
+_PLAIN_FORMAT = "%(message)s"
+
+
 class _PerLevelFormatter(logging.Formatter):
     """Formats each record with FORMATS for its own level, so INFO lines keep the
-    classic prefix even when the configured level is DEBUG."""
+    classic prefix even when the configured level is DEBUG. Records logged with
+    extra=PLAIN get no prefix."""
+
+    def __init__(self):
+        super().__init__()
+        self._plain = logging.Formatter(_PLAIN_FORMAT)
+        self._by_level = {level: logging.Formatter(fmt) for level, fmt in FORMATS.items()}
+        self._default = self._by_level[logging.DEBUG]
 
     def format(self, record):
-        self._style._fmt = FORMATS.get(record.levelno, FORMATS[logging.DEBUG])
-        return super().format(record)
+        if getattr(record, "plain", False):
+            return self._plain.format(record)
+        return self._by_level.get(record.levelno, self._default).format(record)
 
 
 def configure_log(name: str, logging_level_input: str):

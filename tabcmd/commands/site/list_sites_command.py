@@ -5,7 +5,7 @@ from tabcmd.commands.constants import Errors
 from tabcmd.commands.server import Server
 from tabcmd.execution.global_options import *
 from tabcmd.execution.localize import _
-from tabcmd.execution.logger_config import log
+from tabcmd.execution.logger_config import PLAIN, log
 
 
 class ListSiteCommand(Server):
@@ -31,8 +31,8 @@ class ListSiteCommand(Server):
             sites, pagination = server.sites.get()
             logger.info(_("listsites.status").format(session.username))
             for site in sites:
-                logger.info(_("listsites.output").format(" ", site.name, site.content_url))
+                logger.info(_("listsites.output").format(" ", site.name, site.content_url), extra=PLAIN)
                 if args.get_extract_encryption_mode:
-                    logger.info("EXTRACTENCRYPTION: {}".format(site.extract_encryption_mode))
+                    logger.info("EXTRACTENCRYPTION: {}".format(site.extract_encryption_mode), extra=PLAIN)
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
