@@ -287,7 +287,7 @@ class Session:
 
                 return self.tableau_server
         except TSC.ServerResponseError as e:
-            self.logger.info(_("errors.internal_error.request.message").format(e))
+            self.logger.info(_("publish.errors.unexpected_server_response").format(e))
         except Exception as e:
             self.logger.info(_("errors.internal_error.request.message").format(e))
         return None
@@ -344,7 +344,9 @@ class Session:
             return None
         try:
             server = self._open_connection_with_opts()
-        except Exception as e:
+        except (Exception, SystemExit) as e:
+            # _open_connection_with_opts reports failures through exit_with_error, which raises
+            # SystemExit, so that has to be caught for the fallback to happen.
             # Log the exception class only; the message can include the request URL and
             # in some code paths downstream would echo request bodies. Class name is
             # enough for a fallback-diagnostic breadcrumb.
@@ -418,8 +420,12 @@ class Session:
         return signed_in_object
 
     def end_session_and_clear_data(self):
+        # A live connection signs out its own token. Otherwise (the usual case: each command
+        # is a new process) invalidate the token saved on disk.
+        had_live_session = self.tableau_server is not None
         self._end_session()
-        self._sign_out_saved_token()
+        if not had_live_session:
+            self._sign_out_saved_token()
         self.logger.info(_("session.logout"))
         self._clear_data()
 
@@ -427,14 +433,14 @@ class Session:
         # Each command runs in a new process, so the session being logged out is the
         # token saved on disk, not a live connection. Invalidate it on the server too;
         # failing to do so must not stop the local cleanup.
-        if self.tableau_server or not (self.auth_token and self.site_id and self.user_id and self.server_url):
+        if not (self.auth_token and self.site_id and self.user_id and self.server_url):
             return
         try:
             server = self._open_connection_with_opts()
             server._set_auth(self.site_id, self.user_id, self.auth_token)
             server.use_server_version()
             server.auth.sign_out()
-        except Exception as e:
+        except (Exception, SystemExit) as e:
             self.logger.debug("Could not sign out saved session on the server ({})".format(type(e).__name__))
 
     def _end_session(self):
