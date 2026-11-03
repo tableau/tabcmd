@@ -53,6 +53,9 @@ test-output/
 
 # localization intermediate files
 *.po
+tabcmd/locales/**/combined.tmp
+tabcmd/locales/**/*.mo
+tabcmd/locales/codestrings.tmp
 
 # venv
 site-packages
