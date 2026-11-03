@@ -37,7 +37,6 @@ class Session:
         self.site_name: Optional[str] = None  # The site name, e.g 'alpodev'
         self.site_id: Optional[str] = None  # The site id, e.g 'abcd-1234-1234-1244-1234'
         self.server_url: Optional[str] = None
-        self.last_command: Optional[str] = None  # for when we have to renew the session then re-try
         self.last_login_using: Optional[str] = None
         # server and site the saved auth token belongs to; set when the session file is read
         self._saved_server_url: Optional[str] = None
@@ -236,9 +235,6 @@ class Session:
         return tableau_server
 
     def _verify_server_connection_unauthed(self):
-        if not self.tableau_server:
-            Errors.exit_with_error(self.logger, "No server connection available")
-
         assert self.tableau_server is not None  # Type hint for mypy
         try:
             self.tableau_server.use_server_version()
@@ -262,9 +258,6 @@ class Session:
             self.tableau_server = self._open_connection_with_opts()
         except Exception as e:
             Errors.exit_with_error(self.logger, "Failed to connect to server", exception=e)
-
-        if not self.tableau_server:
-            Errors.exit_with_error(self.logger, "Failed to create server connection")
 
         assert self.tableau_server is not None  # Type hint for mypy
         return self.tableau_server
@@ -294,7 +287,7 @@ class Session:
 
                 return self.tableau_server
         except TSC.ServerResponseError as e:
-            self.logger.info(_("publish.errors.unexpected_server_response").format(e))
+            self.logger.info(_("errors.internal_error.request.message").format(e))
         except Exception as e:
             self.logger.info(_("errors.internal_error.request.message").format(e))
         return None
@@ -314,7 +307,7 @@ class Session:
         try:
             self.site_id = self.tableau_server.site_id
             self.user_id = self.tableau_server.user_id
-            self.auth_token = self.tableau_server._auth_token
+            self.auth_token = self.tableau_server.auth_token
             success = self._validate_existing_signin()
         except Exception as e:
             Errors.exit_with_error(self.logger, exception=e)
@@ -465,7 +458,6 @@ class Session:
         self.password_file = None
         self.token_file = None
 
-        self.last_command = None
         self.tableau_server = None
 
         self.certificate = None

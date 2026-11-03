@@ -1018,7 +1018,7 @@ class SignInTests(unittest.TestCase):
 
     def test_sign_in_saves_ids_and_token(self):
         server = mock.MagicMock()
-        server.site_id, server.user_id, server._auth_token = "s", "u", "t"
+        server.site_id, server.user_id, server.auth_token = "s", "u", "t"
         _set_mock_signin_validation_succeeds(server, "me")
         session = self._session(server)
         assert session._sign_in(mock.MagicMock()) is server
@@ -1088,7 +1088,7 @@ class SavedCredentialsTests(unittest.TestCase):
 class NoCookieTests(unittest.TestCase):
     def _run(self, no_cookie):
         server = mock.MagicMock()
-        server.site_id, server.user_id, server._auth_token = "s", "u", "t"
+        server.site_id, server.user_id, server.auth_token = "s", "u", "t"
         _set_mock_signin_validation_succeeds(server, "me")
         args = Namespace(**vars(args_to_mock))
         args.username, args.password, args.server, args.no_cookie = "me", "pw", "http://srvr", no_cookie
@@ -1108,6 +1108,61 @@ class NoCookieTests(unittest.TestCase):
     def test_default_saves_session_file(self):
         mock_save, _ = self._run(no_cookie=False)
         mock_save.assert_called_once()
+
+
+class RemoveAndWipeSessionFileTests(unittest.TestCase):
+    def test_remove_json_deletes_existing_file(self):
+        session = Session()
+        with (
+            mock.patch.object(Session, "_json_exists", return_value=True),
+            mock.patch.object(Session, "_get_file_path", return_value="/tmp/tableau_auth.json"),
+            mock.patch.object(Session, "_save_file") as mock_save,
+            mock.patch("tabcmd.commands.auth.session.os.path.exists", return_value=True),
+            mock.patch("tabcmd.commands.auth.session.os.remove") as mock_remove,
+        ):
+            session._remove_json()
+        mock_save.assert_called_once_with({})
+        mock_remove.assert_called_once_with("/tmp/tableau_auth.json")
+
+    def test_remove_json_does_nothing_when_no_file(self):
+        session = Session()
+        with (
+            mock.patch.object(Session, "_json_exists", return_value=False),
+            mock.patch.object(Session, "_save_file") as mock_save,
+        ):
+            session._remove_json()
+        mock_save.assert_not_called()
+
+    def test_remove_json_logs_error_and_continues_when_it_fails(self):
+        session = Session()
+        with (
+            mock.patch.object(Session, "_json_exists", return_value=True),
+            mock.patch.object(Session, "_get_file_path", return_value="/tmp/tableau_auth.json"),
+            mock.patch.object(Session, "_save_file", side_effect=OSError("locked")),
+            mock.patch.object(session, "logger") as mock_logger,
+        ):
+            session._remove_json()
+        assert "check and remove manually" in mock_logger.error.call_args_list[0][0][0]
+
+    def test_wipe_bad_json_removes_file(self):
+        session = Session()
+        with mock.patch.object(Session, "_remove_json") as mock_remove:
+            session._wipe_bad_json(ValueError("bad"), "Error reading session file")
+        mock_remove.assert_called_once()
+
+    def test_unreadable_json_file_is_wiped(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = os.path.join(directory, "tableau_auth.json")
+            with open(path, "w") as f:
+                f.write("{not json")
+            session = Session()
+            with (
+                mock.patch.object(Session, "_get_file_path", return_value=path),
+                mock.patch.object(Session, "_json_exists", return_value=True),
+                mock.patch.object(Session, "_remove_json") as mock_remove,
+            ):
+                session._read_from_json()
+        mock_remove.assert_called_once()
 
 
 class LogoutTests(unittest.TestCase):
