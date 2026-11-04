@@ -276,6 +276,32 @@ class PublishCommandTests(unittest.TestCase):
         published_datasource = mock_server.datasources.publish.call_args[0][0]
         self.assertEqual(published_datasource.description, "My datasource description")
 
+    def test_publish_workbook_file_empty_description_is_preserved(self, mock_path, mock_glob, mock_session):
+        server = mock.MagicMock()
+        args = mock.MagicMock(
+            thumbnail_group=None, thumbnail_username=None, name="wb", tabbed=False, skip_connection_check=False
+        )
+        args.description = ""
+        PublishCommand.publish_workbook_file(args, mock_logger, server, "proj-id", "f.twbx", "Overwrite", None)
+        assert server.workbooks.publish.call_args[0][0].description == ""
+
+    def test_publish_workbook_file_no_description(self, mock_path, mock_glob, mock_session):
+        server = mock.MagicMock()
+        args = mock.MagicMock(
+            thumbnail_group=None, thumbnail_username=None, name="wb", tabbed=False, skip_connection_check=False
+        )
+        args.description = None
+        PublishCommand.publish_workbook_file(args, mock_logger, server, "proj-id", "f.twbx", "CreateNew", None)
+        assert server.workbooks.publish.call_args[0][0].description is None
+
+    def test_publish_datasource_file_empty_description_is_preserved(self, mock_path, mock_glob, mock_session):
+        server = mock.MagicMock()
+        args = mock.MagicMock(use_tableau_bridge=False)
+        args.name = "ds"
+        args.description = ""
+        PublishCommand.publish_datasource_file(args, mock_logger, server, "proj-id", "f.tdsx", "Overwrite", None)
+        assert server.datasources.publish.call_args[0][0].description == ""
+
     def test_get_files_to_publish_twbx(self, mock_path, mock_glob, mock_session):
         set_up_mock_server(mock_session)
         mock_path = set_up_mock_path(mock_path)
