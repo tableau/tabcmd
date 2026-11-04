@@ -124,5 +124,65 @@ class StdoutStderrSplitTests(unittest.TestCase):
         self.assertEqual(fake_out.getvalue().count("msg from a"), 1, "Message should appear exactly once")
 
 
+class InfoFormatTests(unittest.TestCase):
+    def setUp(self):
+        _clear_handlers()
+
+    def test_configuring_debug_does_not_change_info_format(self):
+        from tabcmd.execution import logger_config
+
+        before = logger_config.FORMATS[logging.INFO]
+        configure_log("test_info_fmt_debug", "DEBUG")
+        self.assertEqual(logger_config.FORMATS[logging.INFO], before)
+
+    def test_info_after_debug_keeps_classic_prefix(self):
+        fake_out, fake_err = io.StringIO(), io.StringIO()
+        with mock.patch("sys.stdout", fake_out), mock.patch("sys.stderr", fake_err):
+            configure_log("test_info_fmt_first", "DEBUG")
+            logger = configure_log("test_info_fmt_second", "INFO")
+        logger.propagate = False
+        logger.info("classic line")
+        self.assertIn("===== classic line", fake_out.getvalue())
+
+    def test_info_line_keeps_classic_prefix_at_debug_level(self):
+        fake_out, fake_err = io.StringIO(), io.StringIO()
+        with mock.patch("sys.stdout", fake_out), mock.patch("sys.stderr", fake_err):
+            logger = configure_log("test_info_fmt_debug_level", "DEBUG")
+            logger.propagate = False
+            logger.info("classic line")
+            logger.debug("debug line")
+        lines = fake_out.getvalue().splitlines()
+        self.assertTrue(lines[0].startswith("===== classic line"), lines[0])
+        self.assertIn("DEBUG", lines[1])
+
+    def test_plain_info_line_has_no_prefix(self):
+        from tabcmd.execution.logger_config import PLAIN
+
+        fake_out, fake_err = io.StringIO(), io.StringIO()
+        with mock.patch("sys.stdout", fake_out), mock.patch("sys.stderr", fake_err):
+            logger = configure_log("test_info_fmt_plain", "INFO")
+        logger.propagate = False
+        logger.info("data row", extra=PLAIN)
+        logger.info("status line")
+        lines = fake_out.getvalue().splitlines()
+        self.assertEqual(lines[0], "data row")
+        self.assertTrue(lines[1].startswith("===== status line"), lines[1])
+
+    def test_classic_output_opt_out(self):
+        import importlib
+
+        from tabcmd.execution import logger_config
+
+        try:
+            with mock.patch.dict("os.environ", {"TABCMD_CLASSIC_OUTPUT": "false"}):
+                importlib.reload(logger_config)
+                self.assertFalse(logger_config.FORMATS[logging.INFO].startswith("====="))
+            with mock.patch.dict("os.environ", {"TABCMD_CLASSIC_OUTPUT": "true"}):
+                importlib.reload(logger_config)
+                self.assertTrue(logger_config.FORMATS[logging.INFO].startswith("====="))
+        finally:
+            importlib.reload(logger_config)
+
+
 if __name__ == "__main__":
     unittest.main()
