@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Shape of a UserImport job response that has rejected rows, per the monolith server code
+  (workgroup/.../tab-api-restapi-all/.../RestApiHelper.getStatusNotesErrors and
+  .../tab-domain-user/.../UserManagementService.getHumanReadableCSVImportSummary):
+
+  - statusNotes does NOT contain one entry per rejected row. When a UserImport job has
+    errors, the server merges each error field (line/username/message/poolname) across
+    ALL failed rows into a single statusNote per field, joining values with ";".
+    The CountOf* aggregate notes are omitted entirely once there are errors.
+  - The actual per-row detail (one line per rejected user) lives in the legacy <notes>
+    element, built by getHumanReadableCSVImportSummary, and is what TSC surfaces as
+    job.notes (a list of strings).
+-->
+<tsResponse xmlns="http://tableau.com/api">
+  <job id="abc-123" type="UserImport" mode="Asynchronous" createdAt="2024-01-01T00:00:00Z" finishCode="0">
+    <statusNotes>
+      <statusNote type="line" value="3;5" />
+      <statusNote type="username" value="bob;alice" />
+      <statusNote type="message" value="invalid role;bad email" />
+    </statusNotes>
+    <notes>processed 5 lines, skipped 0 lines, added 3 users, found 2 errors
+line 3: user bob: invalid role
+line 5: user alice: bad email</notes>
+  </job>
+</tsResponse>
