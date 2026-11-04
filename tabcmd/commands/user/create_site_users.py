@@ -25,7 +25,7 @@ class CreateSiteUsersCommand(UserCommand):
         UserCommand.set_role_arg(args_group)
         set_users_file_positional(args_group)
         set_completeness_options(args_group)
-        UserCommand.set_auth_arg(args_group)
+        UserCommand.set_auth_and_idp_args(args_group)
         set_no_wait_option(args_group)
         set_silent_option(args_group)
         args_group.add_argument("--errors-file", default=None, help=_("createsiteusers.options.errors-file"))
@@ -56,10 +56,7 @@ class CreateSiteUsersCommand(UserCommand):
 
         # Apply command-line overrides to every user object before submitting.
         for user_obj in user_obj_list:
-            if args.role:
-                user_obj.site_role = args.role  # tsc is case sensitive
-            if args.auth_type:
-                user_obj.auth_setting = args.auth_type
+            UserCommand.apply_cli_overrides(user_obj, args)
 
         # Submit as a single bulk import job. Server returns a JobItem tracking
         # the async processing on its side.

@@ -34,6 +34,7 @@ def _base_args(**overrides):
         filename=_mock_open_csv("username,password,fullname,creator,none,yes,email\n"),
         role=None,
         auth_type=None,
+        idp_configuration_id=None,
         require_all_valid=True,
         continue_if_exists=False,
         nowait=False,
