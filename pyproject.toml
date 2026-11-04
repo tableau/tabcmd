@@ -10,8 +10,7 @@ packages = ["tabcmd"]
 tabcmd = ["tabcmd.locales/**/*.mo"]
 [tool.black]
 line-length = 120
-required-version = 22
-target-version = ['py310', 'py311']
+target-version = ['py310', 'py311', 'py312', 'py313', 'py314']
 extend-exclude = '^/bin/*'
 [tool.mypy]
 check_untyped_defs = true
@@ -46,16 +45,17 @@ classifiers = [
 ]
 dependencies = [
     "appdirs",
+    "certifi>=2026.10.19",
     "requests>=2.25,<3.0",
     "setuptools",
-    "tableauserverclient==0.41",
-    "urllib3",
+    "tableauserverclient==0.42",
+    "urllib3>=2.6.0,<3",
 ]
 [project.optional-dependencies]
 test = [
-    "black>=22,<23",
+    "black==26.5.1",
     "mock",
-    "mypy",
+    "mypy==2.3.0",
     "pytest>=7.0",
     "pytest-cov",
     "pytest-order",
@@ -66,8 +66,8 @@ test = [
     "types-requests",
     "types-setuptools"
 ]
-localize = ["doit", "ftfy"]
-package = ["doit", "pyinstaller==5.13.1", "setuptools==81"]
+localize = ["doit", "ftfy", "click"]
+package = ["doit", "pyinstaller==6.22.3", "setuptools==83.0.0"]
 versioning = [
     "doit",
     "pyinstaller_versionfile",
