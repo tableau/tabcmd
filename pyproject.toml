@@ -45,9 +45,10 @@ classifiers = [
 ]
 dependencies = [
     "appdirs",
+    "certifi>=2026.10.19",
     "requests>=2.25,<3.0",
     "setuptools",
-    "tableauserverclient==0.41",
+    "tableauserverclient==0.42",
     "urllib3>=2.6.0,<3",
 ]
 [project.optional-dependencies]
@@ -65,8 +66,8 @@ test = [
     "types-requests",
     "types-setuptools"
 ]
-localize = ["doit", "ftfy"]
-package = ["doit", "pyinstaller==5.13.1", "setuptools==81"]
+localize = ["doit", "ftfy", "click"]
+package = ["doit", "pyinstaller==6.22.3", "setuptools==83.0.0"]
 versioning = [
     "doit",
     "pyinstaller_versionfile",
