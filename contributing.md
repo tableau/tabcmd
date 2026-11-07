@@ -123,7 +123,7 @@ We have three levels of testing.
 Strings should be added/edited in /tabcmd/locales/en/{name}.properties by id and referred to in code as 
 > string = _("string.id")
 
-- regenerate updated strings for packaging as exe
+- regenerate the (uncommitted) .mo bundles to see new strings locally; CI and packaging do this themselves
 > python -m doit properties po mo
 
 
@@ -134,6 +134,7 @@ Versioning is done with setuptools_scm and based on git tags. The version number
 
 The version reflected in the executable (tabcmd -v) is stored in a metadata file created by a .doit script:
 > python -m doit version
+
 
 
 

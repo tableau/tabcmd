@@ -138,3 +138,15 @@ class UserDataTest(unittest.TestCase):
         test_data = self._mock_file_content(UserDataTest.usernames)
         user_list = UserCommand.get_users_from_file(test_data)
         assert user_list[0].name == "valid", user_list
+
+    def test_validate_mixed_case_license(self):
+        # Regression: _validate_item was case-sensitive; tabcmd issue #351
+        UserCommand._validate_user_or_throw("username, pword, fname, Viewer, None, no, email", UserDataTest.logger)
+        UserCommand._validate_user_or_throw("username, pword, fname, Creator, Site, yes, email", UserDataTest.logger)
+        UserCommand._validate_user_or_throw("username, pword, fname, EXPLORER, NONE, YES, email", UserDataTest.logger)
+
+    def test_parse_line_preserves_role(self):
+        # Regression: CreateUsersCommand replaced user_obj with bare TSC.UserItem(name), discarding role/auth
+        user = UserCommand._parse_line("username, pword, fname, creator, none, yes, email")
+        assert user is not None
+        assert user.site_role == "Creator", f"Expected Creator, got {user.site_role}"

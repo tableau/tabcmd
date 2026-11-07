@@ -1,8 +1,9 @@
 name: Draft release on merge to main
 
 # Triggers when a PR is merged into main (push to main covers all merge strategies).
-# Creates a draft GitHub release with auto-generated notes and pushes the version tag.
-# The tag push triggers package.yml to build and attach binaries.
+# Creates a draft GitHub release with auto-generated notes, pushes the version tag,
+# and explicitly dispatches package.yml to build and attach binaries.
+# (Tag pushes from GITHUB_TOKEN do not trigger other workflows, so we dispatch explicitly.)
 # When you publish the draft release, publish-pypi.yml uploads to PyPI automatically.
 
 on:
@@ -58,3 +59,9 @@ jobs:
             --title "$TAG" \
             --generate-notes \
             --notes-start-tag "$LAST_TAG"
+
+      - name: Trigger binary builds
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.version.outputs.tag }}
+        run: gh workflow run package.yml --ref "$TAG"

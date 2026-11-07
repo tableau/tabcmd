@@ -1,5 +1,6 @@
 import getpass
 import json
+import logging
 import os
 
 import requests
@@ -104,13 +105,21 @@ class Session:
         return result or 0
 
     @staticmethod
-    def _read_password_from_file(filename):
+    def _read_password_from_file(filename, logger=None):
+        _logger = logger or logging.getLogger(__name__)
         credential = None
-        with open(str(filename), "r") as file_contents:
-            reader = file_contents.readlines()
-            for row in reader:
-                credential = row
-            return credential
+        try:
+            with open(str(filename), "r") as file_contents:
+                reader = file_contents.readlines()
+                for row in reader:
+                    credential = row
+        except IOError as e:
+            Errors.exit_with_error(
+                _logger,
+                message=_("session.errors.password_file_not_found").format(filename),
+                exception=e,
+            )
+        return credential
 
     def _allow_prompt(self):
         try:
@@ -121,7 +130,14 @@ class Session:
     def _create_new_credential(self, password, credential_type):
         if password is None:
             if self.password_file:
-                password = Session._read_password_from_file(self.password_file)
+                if not os.path.isfile(self.password_file):
+                    Errors.exit_with_error(
+                        self.logger,
+                        message=_("session.errors.password_file_not_found").format(self.password_file),
+                    )
+                password = Session._read_password_from_file(self.password_file, self.logger)
+                if not password:
+                    Errors.exit_with_error(self.logger, _("session.errors.missing_arguments").format(""))
             elif self._allow_prompt():
                 password = getpass.getpass(_("session.password"))
             else:
@@ -141,7 +157,14 @@ class Session:
         if self.token_value:
             token = self.token_value
         elif self.token_file:
-            token = Session._read_password_from_file(self.token_file)
+            if not os.path.isfile(self.token_file):
+                Errors.exit_with_error(
+                    self.logger,
+                    message=_("session.errors.token_file_not_found").format(self.token_file),
+                )
+            token = Session._read_password_from_file(self.token_file, self.logger)
+            if not token:
+                Errors.exit_with_error(self.logger, _("session.errors.missing_arguments").format("token"))
         elif self._allow_prompt():
             token = getpass.getpass("Token:")
         else:
@@ -239,15 +262,15 @@ class Session:
             self._read_from_json()
 
     def _print_server_info(self):
-        self.logger.info("=====   Server: {}".format(self.server_url))
+        self.logger.info("  Server: {}".format(self.server_url))
         if self.proxy:
-            self.logger.info("=====   Proxy: {}".format(self.proxy))
+            self.logger.info("  Proxy: {}".format(self.proxy))
         if self.username:
-            self.logger.info("=====   Username: {}".format(self.username))
+            self.logger.info("  Username: {}".format(self.username))
         if self.certificate:
-            self.logger.info("=====   Certificate: {}".format(self.certificate))
+            self.logger.info("  Certificate: {}".format(self.certificate))
         else:
-            self.logger.info("=====   Token Name: {}".format(self.token_name))
+            self.logger.info("  Token Name: {}".format(self.token_name))
         site_display_name = self.site_name or "Default Site"
         self.logger.info(_("dataconnections.classes.tableau_server_site") + ": {}".format(site_display_name))
 
@@ -258,14 +281,14 @@ class Session:
             if self.tableau_server and self.tableau_server.is_signed_in() and self.user_id:
                 server_user = self.tableau_server.users.get_by_id(self.user_id).name
                 if not self.username:
-                    self.logger.info("Fetched user details from server")
+                    self.logger.debug("Fetched user details from server")
                     self.username = server_user
 
                 return self.tableau_server
         except TSC.ServerResponseError as e:
-            self.logger.info(_("publish.errors.unexpected_server_response"), e)
+            self.logger.info(_("publish.errors.unexpected_server_response").format(e))
         except Exception as e:
-            self.logger.info(_("errors.internal_error.request.message"), e)
+            self.logger.info(_("errors.internal_error.request.message").format(e))
         return None
 
     # server connection created, not yet logged in
@@ -273,6 +296,7 @@ class Session:
         if not self.tableau_server:
             Errors.exit_with_error(self.logger, "No server connection available for sign in")
 
+        self.logger.info(_("session.login"))
         self.logger.debug(_("session.login") + (self.server_url or ""))
         self.logger.debug(_("listsites.output").format("", self.username or self.token_name, self.site_name))
         assert self.tableau_server is not None  # Type hint for mypy

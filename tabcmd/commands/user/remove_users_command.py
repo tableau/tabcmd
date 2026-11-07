@@ -16,7 +16,7 @@ class RemoveUserCommand(UserCommand):
     @staticmethod
     def define_args(remove_users_parser):
         args_group = remove_users_parser.add_argument_group(title=RemoveUserCommand.name)
-        args_group.add_argument("name", help="The group to remove users from.")
+        args_group.add_argument("name", help=_("tabcmd.removeusers.help.group_name"))
         set_users_file_arg(args_group)
         set_completeness_options(args_group)
 
@@ -27,6 +27,6 @@ class RemoveUserCommand(UserCommand):
         session = Session()
         server = session.create_session(args, logger)
 
-        logger.info(_("tabcmd.removeusers.server").format(args.users.name, args.name))
+        logger.info(_("tabcmd.removeusers.group").format(args.users.name, args.name))
 
         UserCommand.act_on_users(logger, server, "removed", server.groups.remove_user, args)

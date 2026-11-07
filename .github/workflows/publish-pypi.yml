@@ -14,11 +14,12 @@ jobs:
   build-n-publish:
     name: Build dist files for PyPi
     runs-on: ubuntu-latest
+    environment: pypi
     steps:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v7
         with:
           python-version: 3.12
       - name: Build dist files
@@ -28,6 +29,8 @@ jobs:
           python -m pip install --upgrade build
           pip install .[versioning]
           doit version
+          pip install .[localize]
+          doit localize
           pip install .
           python -m build
           
