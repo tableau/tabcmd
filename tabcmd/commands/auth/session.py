@@ -382,6 +382,8 @@ class Session:
             # See note above: exception class only, no str(e).
             self.logger.debug("Saved auth token no longer valid ({}); will re-authenticate".format(type(e).__name__))
             return None
+        # the probe's short timeout must not apply to the rest of the command
+        server.add_http_options({"timeout": self.timeout})
         # Match tabcmd classic's on-reuse banner (Continuing previous session + server info)
         # so users retain visual confirmation of which server/site each subcommand hits.
         self.logger.info(_("session.continuing_session"))

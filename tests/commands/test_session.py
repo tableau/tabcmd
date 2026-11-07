@@ -146,6 +146,8 @@ class JsonTests(unittest.TestCase):
 
     def test_json_not_present(self, mock_open, mock_path, mock_json):
         _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
+        mock_path.exists.return_value = False
+        Session()
         mock_open.assert_not_called()
 
     def test_json_invalid(self, mock_open, mock_path, mock_json):
@@ -1509,6 +1511,12 @@ class SessionRequestTimeoutTests(unittest.TestCase):
         ):
             self._saved_session().end_session_and_clear_data()
         assert mock_server_class.call_args.kwargs["http_options"]["timeout"] == DEFAULT_SESSION_REQUEST_TIMEOUT
+
+    def test_restored_session_drops_probe_timeout_when_none_configured(self):
+        with mock.patch("tabcmd.commands.auth.session.TSC.Server") as mock_server_class:
+            server = self._saved_session()._restore_saved_session()
+        server.add_http_options.assert_called_with({"timeout": None})
+        assert server is mock_server_class.return_value
 
     def test_explicit_timeout_wins_over_default(self):
         session = self._saved_session()

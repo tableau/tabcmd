@@ -22,6 +22,8 @@ class LogoutCommand(Server):
         logger = log(cls.__name__, args.logging_level)
         logger.debug(_("tabcmd.launching"))
         session = Session()
+        # Session() reconfigures the root logger to INFO, so reapply the requested level
+        log(cls.__name__, args.logging_level)
         # only the connection options; --server and --site must not redirect the saved token
         session._update_http_options(args)
         session.end_session_and_clear_data()
