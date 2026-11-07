@@ -34,6 +34,8 @@ jobs:
   buildexe:
     name: Build executables
     runs-on: ${{ matrix.os }}
+    permissions:
+      contents: read
     strategy:
       fail-fast: false
       matrix:
