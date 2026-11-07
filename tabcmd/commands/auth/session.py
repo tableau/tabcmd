@@ -81,6 +81,8 @@ class Session:
         self.no_prompt = args.no_prompt  # have to set this on every call?
         self.certificate = args.certificate or self.certificate
         self.no_certcheck = args.no_certcheck  # have to set this on every call?
+        if args.no_proxy and args.proxy:
+            Errors.exit_with_error(self.logger, _("session.errors.proxy_conflict"))
         self.no_proxy = args.no_proxy  # have to set this on every call?
         self.proxy = args.proxy or self.proxy
         self.timeout = self.timeout_as_integer(self.logger, args.timeout, self.timeout)
