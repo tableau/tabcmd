@@ -302,7 +302,7 @@ class UserCommand(Server):
 
         error_list = []
         line_no = 0
-        user_obj_list: List[TSC.UserItem] = UserCommand.get_users_from_file(args.users)
+        user_obj_list: List[TSC.UserItem] = UserCommand.get_users_from_file(args.users, logger)
         logger.debug(_("common.output.succeeded").format(len(user_obj_list)))
         for user_obj in user_obj_list:
             line_no += 1
