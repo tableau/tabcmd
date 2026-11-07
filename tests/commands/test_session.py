@@ -1,10 +1,35 @@
+import json
 import logging
+import os
+import stat
+import tempfile
 from argparse import Namespace
 import unittest
 from unittest import mock
 from unittest.mock import MagicMock
 
-from tabcmd.commands.auth.session import Session
+import tableauserverclient as TSC
+
+from tabcmd.commands.auth.session import DEFAULT_SESSION_REQUEST_TIMEOUT, Session
+
+_isolated_path_patcher = None
+
+
+def setUpModule():
+    # Session() reads ~/tableau_auth.json when constructed, and some tests call
+    # end_session_and_clear_data(); keep every test off the developer's real session file.
+    global _isolated_path_patcher
+    directory = tempfile.mkdtemp()
+    _isolated_path_patcher = mock.patch.object(
+        Session, "_get_file_path", return_value=os.path.join(directory, "tableau_auth.json")
+    )
+    _isolated_path_patcher.start()
+
+
+def tearDownModule():
+    if _isolated_path_patcher:
+        _isolated_path_patcher.stop()
+
 
 args_to_mock = Namespace(
     username=None,
@@ -33,6 +58,7 @@ mock_data_from_json = Namespace(
     site_id=None,
     password=None,
     password_file=None,
+    token_file=None,
     server=None,
     personal_access_token_name=None,
     personal_access_token=None,
@@ -99,21 +125,30 @@ class JsonTests(unittest.TestCase):
         test_session = Session()
         test_session.username = "USN"
         test_session.server = "SRVR"
-        test_session._save_session_to_json()
-        assert mock_json.dump.was_called()
+        with mock.patch.object(Session, "_save_file") as mock_save:
+            test_session._save_session_to_json()
+        mock_save.assert_called_once()
+        saved = mock_save.call_args[0][0]["tableau_auth"][0]
+        assert saved["username"] == "USN"
 
-    def clear_session(self, mock_open, mock_path, mock_json):
+    def test_clear_session(self, mock_open, mock_path, mock_json):
         _set_mocks_for_json_file_exists(mock_path, mock_json)
         test_session = Session()
         test_session.username = "USN"
-        test_session.server = "SRVR"
+        test_session.server_url = "http://srvr"
+        test_session.auth_token = "tok"
+        test_session.token_value = "pat-secret"
         test_session._clear_data()
         assert test_session.username is None
-        assert test_session.server is None
+        assert test_session.server_url is None
+        assert test_session.auth_token is None
+        assert test_session.token_value is None
 
     def test_json_not_present(self, mock_open, mock_path, mock_json):
         _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
-        assert mock_open.was_not_called()
+        mock_path.exists.return_value = False
+        Session()
+        mock_open.assert_not_called()
 
     def test_json_invalid(self, mock_open, mock_path, mock_json):
         _set_mocks_for_json_file_exists(mock_path, mock_json)
@@ -177,7 +212,7 @@ class BuildCredentialsTests(unittest.TestCase):
         active_session.username = "user3"
         active_session.site_id = ""
         auth = active_session._create_new_credential(None, Session.PASSWORD_CRED_TYPE)
-        assert mock_pass.has_been_called()
+        mock_pass.assert_called()
         assert auth is not None
         assert auth.username == "user3", auth
         assert auth.password == mock_pass(), auth
@@ -274,7 +309,7 @@ class CreateSessionTests(unittest.TestCase):
         assert auth is not None, auth
         assert auth.auth_token is not None, auth.auth_token
         assert new_session.username == name, new_session
-        assert mock_tsc.has_been_called()
+        mock_tsc.assert_called()
 
     @mock.patch("tableauserverclient.Server")
     def test_create_session_first_time_with_password_file_as_password(
@@ -296,7 +331,7 @@ class CreateSessionTests(unittest.TestCase):
         assert auth.auth_token is not None, auth.auth_token
         assert new_session.username == username, new_session
         assert new_session.password_file == "filename", new_session
-        assert mock_tsc.has_been_called()
+        mock_tsc.assert_called()
 
     @mock.patch("tableauserverclient.Server")
     def test_create_session_first_time_with_password_file_as_token(
@@ -315,7 +350,7 @@ class CreateSessionTests(unittest.TestCase):
         assert auth is not None, auth
         assert auth.auth_token is not None, auth.auth_token
         assert new_session.token_file == "filename", new_session
-        assert mock_tsc.has_been_called()
+        mock_tsc.assert_called()
 
     @mock.patch("tableauserverclient.Server")
     def test_load_saved_session_data(self, mock_tsc, mock_pass, mock_file, mock_path, mock_json):
@@ -323,12 +358,10 @@ class CreateSessionTests(unittest.TestCase):
         _set_mocks_for_json_file_saved_username(mock_json, "auth_token", "username")
         test_args = Namespace(**vars(args_to_mock))
         new_session = Session()
-        new_session._read_existing_state()
         new_session._update_session_data(test_args)
         assert new_session, new_session
         assert new_session.username == "username", new_session.username
         assert new_session.server_url == fakeserver, new_session.server_url
-        assert mock_tsc.has_been_called()
 
     @mock.patch("tableauserverclient.Server")
     def test_create_session_with_active_session_saved(self, mock_tsc, mock_pass, mock_file, mock_path, mock_json):
@@ -343,7 +376,7 @@ class CreateSessionTests(unittest.TestCase):
         auth = new_session.create_session(test_args, None)
         assert auth is not None, auth
         assert auth.auth_token is not None, auth.auth_token
-        assert mock_tsc.has_been_called()
+        mock_tsc.assert_called()
 
     @mock.patch("tableauserverclient.Server")
     def test_create_session_with_saved_expired_username_session(
@@ -360,12 +393,12 @@ class CreateSessionTests(unittest.TestCase):
         test_args.password = "eqweqwe"
         new_session = Session()
         auth = new_session.create_session(test_args, None)
-        assert mock_pass.has_been_called()
+        mock_pass.assert_not_called()  # the password was passed in, so no prompt
         assert auth is not None, auth
         assert auth.auth_token is not None, auth.auth_token
         assert auth.auth_token == "cookiieeeee"
         assert new_session.username == test_username, new_session
-        assert mock_tsc.use_server_version.has_been_called()
+        server.use_server_version.assert_called()
 
     @mock.patch("tableauserverclient.Server")
     def test_create_session_server_url_with_server_arg(self, mock_tsc, mock_pass, mock_file, mock_path, mock_json):
@@ -529,6 +562,12 @@ class CreateSessionTests(unittest.TestCase):
         assert auth is not None, auth
         mock_pass.assert_not_called()
 
+    def _saved_session_ids(self):
+        """Seed the mocked session file with saved ids; they are reset after the test."""
+        patcher = mock.patch.dict(vars(mock_data_from_json), {"site_id": "site-1", "user_id": "user-1"})
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
     @mock.patch("tabcmd.commands.auth.session.Session._open_connection_with_opts")
     def test_create_session_reuses_saved_auth_token(self, mock_open_conn, mock_pass, mock_file, mock_path, mock_json):
         """After a prior `tabcmd login`, a subsequent no-args command should
@@ -536,9 +575,7 @@ class CreateSessionTests(unittest.TestCase):
         (regression test for #463)."""
         _set_mocks_for_json_file_exists(mock_path, mock_json)
         _set_mocks_for_json_file_saved_username(mock_json, "cookieee", "monster")
-        mock_auth = vars(mock_data_from_json)
-        mock_auth["site_id"] = "site-1"
-        mock_auth["user_id"] = "user-1"
+        self._saved_session_ids()
 
         restored_server = mock.MagicMock(name="restored_tsc_server")
         _set_mock_signin_validation_succeeds(restored_server, "monster")
@@ -558,30 +595,95 @@ class CreateSessionTests(unittest.TestCase):
         self, mock_open_conn, mock_pass, mock_file, mock_path, mock_json
     ):
         """If the saved token is present but no longer accepted by the server,
-        we should fall through to the existing credential-recovery path rather
-        than pretending the reuse succeeded."""
+        we should fall through to the existing credential-recovery path and
+        sign in on a fresh connection."""
         _set_mocks_for_json_file_exists(mock_path, mock_json)
         _set_mocks_for_json_file_saved_username(mock_json, "stale-token", "monster")
-        mock_auth = vars(mock_data_from_json)
-        mock_auth["site_id"] = "site-1"
-        mock_auth["user_id"] = "user-1"
+        self._saved_session_ids()
 
-        restored_server = mock.MagicMock(name="restored_tsc_server")
-        restored_server.users.get_by_id.side_effect = Exception("401 Unauthorized")
-        mock_open_conn.return_value = restored_server
+        stale_server = mock.MagicMock(name="stale_tsc_server")
+        stale_server.users.get_by_id.side_effect = Exception("401 Unauthorized")
+        fresh_server = mock.MagicMock(name="fresh_tsc_server")
+        _set_mock_signin_validation_succeeds(fresh_server, "monster")
+        mock_open_conn.side_effect = [stale_server, fresh_server]
         mock_pass.return_value = "prompted_password"
 
         test_args = Namespace(**vars(args_to_mock))
         new_session = Session()
-        # Expect fallback to _get_saved_credentials -> getpass -> fresh sign-in
-        with self.assertRaises(SystemExit):
-            # sign_in would try to talk to a real server through the mocked _open_connection_with_opts;
-            # we just care that we reached the credential path, which raises via TSC-less setup here.
-            new_session.create_session(test_args, None)
-        # The restore was actually attempted (proves _restore_saved_session ran; fails if the
-        # method is deleted in a future refactor, unlike a getpass-only assertion).
-        restored_server._set_auth.assert_called_once_with("site-1", "user-1", "stale-token")
+        auth = new_session.create_session(test_args, None)
+
+        stale_server._set_auth.assert_called_once_with("site-1", "user-1", "stale-token")
         mock_pass.assert_called()
+        fresh_server.auth.sign_in.assert_called_once()
+        assert auth is fresh_server
+
+    @mock.patch("tabcmd.commands.auth.session.Session._open_connection_with_opts")
+    def test_create_session_falls_back_when_set_auth_raises(
+        self, mock_open_conn, mock_pass, mock_file, mock_path, mock_json
+    ):
+        """A failure attaching the saved token (e.g. TSC dropped the private
+        _set_auth) must fall back to a fresh sign-in, not abort the command."""
+        _set_mocks_for_json_file_exists(mock_path, mock_json)
+        _set_mocks_for_json_file_saved_username(mock_json, "cookieee", "monster")
+        self._saved_session_ids()
+
+        broken_server = mock.MagicMock(name="broken_tsc_server")
+        broken_server._set_auth.side_effect = AttributeError("_set_auth")
+        fresh_server = mock.MagicMock(name="fresh_tsc_server")
+        _set_mock_signin_validation_succeeds(fresh_server, "monster")
+        mock_open_conn.side_effect = [broken_server, fresh_server]
+        mock_pass.return_value = "prompted_password"
+
+        test_args = Namespace(**vars(args_to_mock))
+        auth = Session().create_session(test_args, None)
+
+        fresh_server.auth.sign_in.assert_called_once()
+        assert auth is fresh_server
+
+    @mock.patch("tabcmd.commands.auth.session.Session._open_connection_with_opts")
+    def test_create_session_does_not_reuse_token_for_different_site(
+        self, mock_open_conn, mock_pass, mock_file, mock_path, mock_json
+    ):
+        """--site naming a different site than the saved one must not reattach
+        the saved token, or the command would run against the old site."""
+        _set_mocks_for_json_file_exists(mock_path, mock_json)
+        _set_mocks_for_json_file_saved_username(mock_json, "cookieee", "monster")
+        self._saved_session_ids()
+
+        fresh_server = mock.MagicMock(name="fresh_tsc_server")
+        _set_mock_signin_validation_succeeds(fresh_server, "monster")
+        mock_open_conn.return_value = fresh_server
+        mock_pass.return_value = "prompted_password"
+
+        test_args = Namespace(**vars(args_to_mock))
+        test_args.site_name = "othersite"
+        auth = Session().create_session(test_args, None)
+
+        fresh_server._set_auth.assert_not_called()
+        fresh_server.auth.sign_in.assert_called_once()
+        assert auth is fresh_server
+
+    @mock.patch("tabcmd.commands.auth.session.Session._open_connection_with_opts")
+    def test_create_session_does_not_reuse_token_for_different_server(
+        self, mock_open_conn, mock_pass, mock_file, mock_path, mock_json
+    ):
+        """--server naming a different server than the saved one must not reattach the saved token."""
+        _set_mocks_for_json_file_exists(mock_path, mock_json)
+        _set_mocks_for_json_file_saved_username(mock_json, "cookieee", "monster")
+        self._saved_session_ids()
+
+        fresh_server = mock.MagicMock(name="fresh_tsc_server")
+        _set_mock_signin_validation_succeeds(fresh_server, "monster")
+        mock_open_conn.return_value = fresh_server
+        mock_pass.return_value = "prompted_password"
+
+        test_args = Namespace(**vars(args_to_mock))
+        test_args.server = "http://other-server"
+        auth = Session().create_session(test_args, None)
+
+        fresh_server._set_auth.assert_not_called()
+        fresh_server.auth.sign_in.assert_called_once()
+        assert auth is fresh_server
 
 
 @mock.patch("tabcmd.commands.auth.session.json")
@@ -718,6 +820,467 @@ class RestoreSavedSessionTests(unittest.TestCase):
         assert session._restore_saved_session() is None
 
 
+class SessionFileSecurityTests(unittest.TestCase):
+    """The session file holds the auth token and PAT secret; the proxy URL may hold a password."""
+
+    def _session_with_file(self, directory):
+        session = Session()
+        path = os.path.join(directory, "tableau_auth.json")
+        patcher = mock.patch.object(Session, "_get_file_path", return_value=path)
+        patcher.start()
+        self.addCleanup(patcher.stop)
+        return session, path
+
+    @unittest.skipIf(os.name == "nt", "POSIX file modes")
+    def test_new_session_file_is_owner_only(self):
+        with tempfile.TemporaryDirectory() as directory:
+            session, path = self._session_with_file(directory)
+            session.token_value = "pat-secret"
+            session._save_file(session._serialize_for_save())
+            assert stat.S_IMODE(os.stat(path).st_mode) == 0o600
+
+    @unittest.skipIf(os.name == "nt", "POSIX file modes")
+    def test_existing_loose_session_file_is_tightened(self):
+        with tempfile.TemporaryDirectory() as directory:
+            session, path = self._session_with_file(directory)
+            with open(path, "w") as f:
+                f.write("{}")
+            os.chmod(path, 0o644)
+            session._save_file(session._serialize_for_save())
+            assert stat.S_IMODE(os.stat(path).st_mode) == 0o600
+
+    def test_saved_file_round_trips(self):
+        with tempfile.TemporaryDirectory() as directory:
+            session, path = self._session_with_file(directory)
+            session.token_value = "pat-secret"
+            session.auth_token = "tok"
+            session._save_file(session._serialize_for_save())
+            with open(path) as f:
+                saved = json.load(f)["tableau_auth"][0]
+            assert saved["personal_access_token"] == "pat-secret"
+            assert saved["auth_token"] == "tok"
+
+    def test_redact_proxy_hides_credentials(self):
+        assert Session._redact_proxy("http://user:pw@proxy:8080") == "http://***@proxy:8080"
+        assert Session._redact_proxy("user:pw@proxy:8080") == "***@proxy:8080"
+
+    def test_redact_proxy_leaves_plain_proxy_alone(self):
+        assert Session._redact_proxy("http://proxy:8080") == "http://proxy:8080"
+        assert Session._redact_proxy(None) is None
+
+    def test_redact_http_options_does_not_modify_original(self):
+        options = {"proxies": {"http": "http://u:p@proxy"}, "timeout": 5}
+        redacted = Session._redact_http_options(options)
+        assert redacted["proxies"] == {"http": "http://***@proxy"}
+        assert redacted["timeout"] == 5
+        assert options["proxies"] == {"http": "http://u:p@proxy"}
+
+    def test_proxy_credentials_not_logged_when_connecting(self):
+        session = Session()
+        session.server_url = "fakehost"
+        session.proxy = "http://user:secretpw@proxy:8080"
+        with self.assertLogs(session.logger, level="DEBUG") as logs:
+            session._open_connection_with_opts()
+        assert "secretpw" not in " ".join(logs.output)
+
+
+class SessionLogicFixTests(unittest.TestCase):
+    def test_base_url_keeps_port_without_scheme(self):
+        assert Session()._get_server_base_url("my-server:8080") == "https://my-server:8080"
+        assert Session()._get_server_base_url("localhost:8080/some/path") == "https://localhost:8080"
+
+    def test_base_url_keeps_port_with_scheme(self):
+        assert Session()._get_server_base_url("http://my-server:8080/x") == "http://my-server:8080"
+
+    def test_password_file_trailing_newline_is_stripped(self):
+        for content in ("secret\n", "secret\r\n", "secret"):
+            with tempfile.TemporaryDirectory() as directory:
+                path = os.path.join(directory, "pw.txt")
+                with open(path, "w", newline="") as f:
+                    f.write(content)
+                assert Session._read_password_from_file(path) == "secret", repr(content)
+
+    def test_timeout_zero_and_negative_become_zero(self):
+        assert Session.timeout_as_integer(logger, -5, None) == 0
+        assert Session.timeout_as_integer(logger, 0, None) == 0
+
+    def test_timeout_invalid_new_value_falls_back_to_stored(self):
+        assert Session.timeout_as_integer(logger, -5, 7) == 7
+
+    def test_proxy_applies_to_http_and_https(self):
+        session = Session()
+        session.server_url = "https://fakehost"
+        session.proxy = "proxy:8080"
+        session.no_proxy = False
+        connection = session._open_connection_with_opts()
+        assert connection._http_options["proxies"] == {"http": "proxy:8080", "https": "proxy:8080"}
+
+    def test_no_proxy_overrides_proxy(self):
+        session = Session()
+        session.server_url = "https://fakehost"
+        session.proxy = "proxy:8080"
+        session.no_proxy = True
+        connection = session._open_connection_with_opts()
+        assert connection._http_options["proxies"] is None
+
+    def test_print_server_info_shows_token_name_only_when_set(self):
+        session = Session()
+        session.server_url = "http://srvr"
+        session.username = "me"
+        with self.assertLogs(session.logger, level="INFO") as logs:
+            session._print_server_info()
+        assert "Token Name" not in " ".join(logs.output)
+        session.token_name = "mytoken"
+        session.certificate = "cert.pem"
+        with self.assertLogs(session.logger, level="INFO") as logs:
+            session._print_server_info()
+        output = " ".join(logs.output)
+        assert "Token Name: mytoken" in output
+        assert "Certificate: cert.pem" in output
+
+    def test_clear_data_forgets_server_and_saved_target(self):
+        session = Session()
+        session.server_url = "http://srvr"
+        session._saved_server_url = "http://srvr"
+        session._saved_site_name = "site"
+        with mock.patch.object(Session, "_remove_json"):
+            session._clear_data()
+        assert session.server_url is None
+        assert session._saved_server_url is None
+        assert session._saved_site_name is None
+
+    def test_empty_session_file_is_wiped_once(self):
+        session = Session()
+        with mock.patch.object(Session, "_wipe_bad_json") as mock_wipe:
+            session._save_data_from_json([None])
+        mock_wipe.assert_called_once()
+
+
+class LoadSessionFileTests(unittest.TestCase):
+    def test_file_missing_newer_keys_still_loads(self):
+        session = Session()
+        with mock.patch.object(Session, "_wipe_bad_json") as mock_wipe:
+            session._save_data_from_json([{"auth_token": "tok", "server": "http://srvr", "site_name": "s"}])
+        mock_wipe.assert_not_called()
+        assert session.auth_token == "tok"
+        assert session.server_url == "http://srvr"
+        assert session.token_file is None
+        assert session.no_prompt is False
+        assert session._saved_server_url == "http://srvr"
+        assert session._saved_site_name == "s"
+
+
+class UpdateSessionDataTests(unittest.TestCase):
+    def _args(self, **overrides):
+        args = Namespace(**vars(args_to_mock))
+        for key, value in overrides.items():
+            setattr(args, key, value)
+        return args
+
+    def test_site_default_becomes_empty(self):
+        session = Session()
+        session._update_session_data(self._args(site_name="Default"))
+        assert session.site_name == ""
+
+    def test_site_name_keeps_its_case(self):
+        session = Session()
+        session._update_session_data(self._args(site_name="MySite"))
+        assert session.site_name == "MySite"
+
+    def test_username_is_lowercased(self):
+        session = Session()
+        session._update_session_data(self._args(username="Me"))
+        assert session.username == "me"
+
+    def test_new_server_resets_saved_site(self):
+        session = Session()
+        session.site_name = "oldsite"
+        session._update_session_data(self._args(server="other-server.com"))
+        assert session.server_url == "https://other-server.com"
+        assert session.site_name == ""
+
+    def test_new_server_keeps_explicitly_given_site(self):
+        session = Session()
+        session.site_name = "oldsite"
+        session._update_session_data(self._args(server="other-server.com", site_name="newsite"))
+        assert session.site_name == "newsite"
+
+    def test_no_args_keeps_saved_values(self):
+        session = Session()
+        session.server_url = "https://saved.com"
+        session.site_name = "saved"
+        session.username = "someone"
+        session._update_session_data(self._args())
+        assert (session.server_url, session.site_name, session.username) == ("https://saved.com", "saved", "someone")
+
+
+class SignInTests(unittest.TestCase):
+    def _session(self, server):
+        session = Session()
+        session.tableau_server = server
+        session.server_url = "http://srvr"
+        return session
+
+    def test_sign_in_exits_when_server_rejects_credentials(self):
+        server = mock.MagicMock()
+        server.auth.sign_in.side_effect = Exception("401001")
+        with mock.patch("tabcmd.commands.auth.session.Errors.exit_with_error", side_effect=SystemExit) as mock_exit:
+            with self.assertRaises(SystemExit):
+                self._session(server)._sign_in(mock.MagicMock())
+        assert mock_exit.call_args[1]["exception"] is not None
+
+    def test_sign_in_exits_when_validation_fails(self):
+        server = mock.MagicMock()
+        server.is_signed_in.return_value = False
+        with mock.patch("tabcmd.commands.auth.session.Errors.exit_with_error", side_effect=SystemExit) as mock_exit:
+            with self.assertRaises(SystemExit):
+                self._session(server)._sign_in(mock.MagicMock())
+        assert mock_exit.call_args[1]["message"] == "Sign in failed"
+
+    def test_sign_in_saves_ids_and_token(self):
+        server = mock.MagicMock()
+        server.site_id, server.user_id, server.auth_token = "s", "u", "t"
+        _set_mock_signin_validation_succeeds(server, "me")
+        session = self._session(server)
+        assert session._sign_in(mock.MagicMock()) is server
+        assert (session.site_id, session.user_id, session.auth_token) == ("s", "u", "t")
+
+
+class ValidateExistingSigninTests(unittest.TestCase):
+    def _session(self, server):
+        session = Session()
+        session.tableau_server = server
+        session.user_id = "u"
+        return session
+
+    def test_returns_none_when_not_signed_in(self):
+        server = mock.MagicMock()
+        server.is_signed_in.return_value = False
+        assert self._session(server)._validate_existing_signin() is None
+
+    def test_returns_none_on_server_error(self):
+        server = mock.MagicMock()
+        server.is_signed_in.return_value = True
+        server.users.get_by_id.side_effect = TSC.ServerResponseError("401002", "Unauthorized", "")
+        assert self._session(server)._validate_existing_signin() is None
+
+    def test_returns_none_on_unexpected_error(self):
+        server = mock.MagicMock()
+        server.is_signed_in.return_value = True
+        server.users.get_by_id.side_effect = RuntimeError("boom")
+        assert self._session(server)._validate_existing_signin() is None
+
+    def test_fills_in_username_from_server(self):
+        server = mock.MagicMock()
+        _set_mock_signin_validation_succeeds(server, "fromserver")
+        session = self._session(server)
+        session.username = None
+        assert session._validate_existing_signin() is server
+        assert session.username == "fromserver"
+
+
+class SavedCredentialsTests(unittest.TestCase):
+    def test_no_previous_login_gives_no_credentials(self):
+        session = Session()
+        session.last_login_using = None
+        assert session._get_saved_credentials() is None
+
+    def test_saved_token_login_uses_saved_pat(self):
+        session = Session()
+        session.last_login_using = "token"
+        session.token_name = "tn"
+        session.token_value = "secret"
+        session.site_name = "site"
+        auth = session._get_saved_credentials()
+        assert isinstance(auth, TSC.PersonalAccessTokenAuth)
+        assert (auth.token_name, auth.personal_access_token) == ("tn", "secret")
+
+    @mock.patch("getpass.getpass", return_value="typed")
+    def test_saved_username_login_prompts_for_password(self, mock_pass):
+        session = Session()
+        session.last_login_using = "username"
+        session.username = "me"
+        auth = session._get_saved_credentials()
+        mock_pass.assert_called_once()
+        assert isinstance(auth, TSC.TableauAuth)
+        assert auth.password == "typed"
+
+
+class NoCookieTests(unittest.TestCase):
+    def _run(self, no_cookie):
+        server = mock.MagicMock()
+        server.site_id, server.user_id, server.auth_token = "s", "u", "t"
+        _set_mock_signin_validation_succeeds(server, "me")
+        args = Namespace(**vars(args_to_mock))
+        args.username, args.password, args.server, args.no_cookie = "me", "pw", "http://srvr", no_cookie
+        with (
+            mock.patch.object(Session, "_open_connection_with_opts", return_value=server),
+            mock.patch.object(Session, "_save_session_to_json") as mock_save,
+            mock.patch.object(Session, "_remove_json") as mock_remove,
+        ):
+            Session().create_session(args, None)
+        return mock_save, mock_remove
+
+    def test_no_cookie_removes_session_file_and_does_not_save(self):
+        mock_save, mock_remove = self._run(no_cookie=True)
+        mock_remove.assert_called()
+        mock_save.assert_not_called()
+
+    def test_default_saves_session_file(self):
+        mock_save, _ = self._run(no_cookie=False)
+        mock_save.assert_called_once()
+
+
+class RemoveAndWipeSessionFileTests(unittest.TestCase):
+    def test_remove_json_deletes_existing_file(self):
+        session = Session()
+        with (
+            mock.patch.object(Session, "_json_exists", return_value=True),
+            mock.patch.object(Session, "_get_file_path", return_value="/tmp/tableau_auth.json"),
+            mock.patch.object(Session, "_save_file") as mock_save,
+            mock.patch("tabcmd.commands.auth.session.os.path.exists", return_value=True),
+            mock.patch("tabcmd.commands.auth.session.os.remove") as mock_remove,
+        ):
+            session._remove_json()
+        mock_save.assert_called_once_with({})
+        mock_remove.assert_called_once_with("/tmp/tableau_auth.json")
+
+    def test_remove_json_does_nothing_when_no_file(self):
+        session = Session()
+        with (
+            mock.patch.object(Session, "_json_exists", return_value=False),
+            mock.patch.object(Session, "_save_file") as mock_save,
+        ):
+            session._remove_json()
+        mock_save.assert_not_called()
+
+    def test_remove_json_logs_error_and_continues_when_it_fails(self):
+        session = Session()
+        with (
+            mock.patch.object(Session, "_json_exists", return_value=True),
+            mock.patch.object(Session, "_get_file_path", return_value="/tmp/tableau_auth.json"),
+            mock.patch.object(Session, "_save_file", side_effect=OSError("locked")),
+            mock.patch.object(session, "logger") as mock_logger,
+        ):
+            session._remove_json()
+        assert "check and remove manually" in mock_logger.error.call_args_list[0][0][0]
+
+    def test_wipe_bad_json_removes_file(self):
+        session = Session()
+        with mock.patch.object(Session, "_remove_json") as mock_remove:
+            session._wipe_bad_json(ValueError("bad"), "Error reading session file")
+        mock_remove.assert_called_once()
+
+    def test_unreadable_json_file_is_wiped(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = os.path.join(directory, "tableau_auth.json")
+            with open(path, "w") as f:
+                f.write("{not json")
+            session = Session()
+            with (
+                mock.patch.object(Session, "_get_file_path", return_value=path),
+                mock.patch.object(Session, "_json_exists", return_value=True),
+                mock.patch.object(Session, "_remove_json") as mock_remove,
+            ):
+                session._read_from_json()
+        mock_remove.assert_called_once()
+
+
+class OpenConnectionFailureTests(unittest.TestCase):
+    """_open_connection_with_opts exits the process on failure; callers that fall back must survive that."""
+
+    def _session_with_bad_url(self):
+        session = Session()
+        session.auth_token = "t"
+        session.site_id = "s"
+        session.user_id = "u"
+        session.server_url = "http://[bad"
+        session._saved_server_url = "http://[bad"
+        session._saved_site_name = session.site_name
+        return session
+
+    def test_restore_falls_back_when_connection_cannot_be_opened(self):
+        assert self._session_with_bad_url()._restore_saved_session() is None
+
+    def test_logout_clears_local_data_when_connection_cannot_be_opened(self):
+        session = self._session_with_bad_url()
+        with mock.patch.object(Session, "_remove_json") as mock_remove:
+            session.end_session_and_clear_data()
+        mock_remove.assert_called_once()
+        assert session.auth_token is None
+
+
+class SaveFilePermissionTests(unittest.TestCase):
+    def test_file_is_still_written_when_chmod_fails(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = os.path.join(directory, "tableau_auth.json")
+            session = Session()
+            with (
+                mock.patch.object(Session, "_get_file_path", return_value=path),
+                mock.patch("tabcmd.commands.auth.session.os.chmod", side_effect=OSError("not permitted")),
+            ):
+                session.token_value = "pat-secret"
+                session._save_file(session._serialize_for_save())
+            with open(path) as f:
+                assert json.load(f)["tableau_auth"][0]["personal_access_token"] == "pat-secret"
+
+
+class LogoutTests(unittest.TestCase):
+    def _saved_session(self):
+        session = Session()
+        session.auth_token = "tok"
+        session.site_id = "site-1"
+        session.user_id = "user-1"
+        session.server_url = "http://srvr"
+        return session
+
+    def test_logout_signs_out_saved_token_on_server(self):
+        session = self._saved_session()
+        server = mock.MagicMock(name="saved_session_server")
+        with (
+            mock.patch.object(Session, "_open_connection_with_opts", return_value=server),
+            mock.patch.object(Session, "_remove_json"),
+        ):
+            session.end_session_and_clear_data()
+        server._set_auth.assert_called_once_with("site-1", "user-1", "tok")
+        server.auth.sign_out.assert_called_once()
+        assert session.auth_token is None
+
+    def test_logout_of_live_session_signs_out_once(self):
+        session = self._saved_session()
+        live_server = mock.MagicMock(name="live_server")
+        session.tableau_server = live_server
+        with (
+            mock.patch.object(Session, "_open_connection_with_opts") as mock_open_conn,
+            mock.patch.object(Session, "_remove_json"),
+        ):
+            session.end_session_and_clear_data()
+        live_server.auth.sign_out.assert_called_once()
+        mock_open_conn.assert_not_called()
+
+    def test_logout_still_clears_local_data_when_server_sign_out_fails(self):
+        session = self._saved_session()
+        server = mock.MagicMock(name="saved_session_server")
+        server.auth.sign_out.side_effect = Exception("401 Unauthorized")
+        with (
+            mock.patch.object(Session, "_open_connection_with_opts", return_value=server),
+            mock.patch.object(Session, "_remove_json") as mock_remove,
+        ):
+            session.end_session_and_clear_data()
+        mock_remove.assert_called_once()
+        assert session.auth_token is None
+
+    def test_logout_with_no_saved_session_makes_no_connection(self):
+        session = Session()
+        session.auth_token = None
+        with (
+            mock.patch.object(Session, "_open_connection_with_opts") as mock_open_conn,
+            mock.patch.object(Session, "_remove_json"),
+        ):
+            session.end_session_and_clear_data()
+        mock_open_conn.assert_not_called()
+
+
 def _set_mock_tsc_not_signed_in(mock_tsc):
     tsc_in_test = mock.MagicMock(name="manually mocking tsc")
     tsc_in_test.is_signed_in.return_value = False  # CreateSessionTests.return_False
@@ -791,7 +1354,7 @@ class ConnectionOptionsTest(unittest.TestCase):
         mock_session.user_id = "u"
         mock_session.proxy = "proxy:port"
         connection = mock_session._open_connection_with_opts()
-        assert connection._http_options["proxies"] == {"http": mock_session.proxy}
+        assert connection._http_options["proxies"] == {"http": mock_session.proxy, "https": mock_session.proxy}
 
     def test_timeout(self):
         mock_session = Session()
@@ -832,6 +1395,176 @@ class GetServerBaseUrlTests(unittest.TestCase):
     def test_https_with_path_strips_path(self):
         result = self.session._get_server_base_url("https://my-tableau-server.com/some/path")
         assert result == "https://my-tableau-server.com", result
+
+    def test_scheme_relative_url_gets_https(self):
+        result = self.session._get_server_base_url("//my-tableau-server.com:8080/some/path")
+        assert result == "https://my-tableau-server.com:8080", result
+
+    def test_host_and_port_without_scheme(self):
+        result = self.session._get_server_base_url("my-tableau-server.com:8080")
+        assert result == "https://my-tableau-server.com:8080", result
+
+    def test_scheme_marker_in_query_does_not_count_as_scheme(self):
+        result = self.session._get_server_base_url("my-tableau-server.com/path?next=http://other")
+        assert result == "https://my-tableau-server.com", result
+
+    def test_url_without_host_exits(self):
+        for url in ("https://", "https:///path", "//"):
+            with self.subTest(url=url), self.assertRaises(SystemExit):
+                self.session._get_server_base_url(url)
+
+    def test_unparseable_server_does_not_fall_back_to_saved_server(self):
+        self.session.server_url = "https://saved-server.com"
+        args = Namespace(**vars(args_to_mock))
+        args.server = "https://"
+        with self.assertRaises(SystemExit):
+            self.session._update_session_data(args)
+        assert self.session.server_url == "https://saved-server.com"
+
+
+def _write_saved_session(**overrides):
+    """Write a logged-in session file at the (isolated) session path."""
+    session = Session()
+    session.auth_token = "tok"
+    session.site_id = "site-1"
+    session.user_id = "user-1"
+    session.server_url = "http://srvr"
+    session.site_name = ""
+    for key, value in overrides.items():
+        setattr(session, key, value)
+    session._save_session_to_json()
+
+
+def _logout_args(**overrides):
+    args = Namespace(
+        logging_level="info", proxy=None, no_proxy=False, timeout=None, certificate=None, no_certcheck=False
+    )
+    for key, value in overrides.items():
+        setattr(args, key, value)
+    return args
+
+
+class LogoutCommandOptionTests(unittest.TestCase):
+    """logout accepts the shared connection options, so it has to honour them."""
+
+    def tearDown(self):
+        Session()._remove_json()
+
+    def _run_logout(self, saved=None, **arg_overrides):
+        from tabcmd.commands.auth.logout_command import LogoutCommand
+
+        _write_saved_session(**(saved or {}))
+        with mock.patch("tabcmd.commands.auth.session.TSC.Server") as mock_server_class:
+            LogoutCommand.run_command(_logout_args(**arg_overrides))
+        mock_server_class.assert_called_once()
+        return mock_server_class.call_args, mock_server_class.return_value
+
+    def test_no_proxy_overrides_saved_proxy(self):
+        call, server = self._run_logout(saved={"proxy": "http://dead:3128"}, no_proxy=True)
+        assert call.kwargs["http_options"]["proxies"] is None
+        server.auth.sign_out.assert_called_once()
+
+    def test_proxy_option_overrides_saved_proxy(self):
+        call, _ = self._run_logout(saved={"proxy": "http://dead:3128"}, proxy="http://good:3128")
+        assert call.kwargs["http_options"]["proxies"] == {"http": "http://good:3128", "https": "http://good:3128"}
+
+    def test_timeout_option_is_used(self):
+        call, _ = self._run_logout(timeout="5")
+        assert call.kwargs["http_options"]["timeout"] == 5
+
+    def test_no_certcheck_option_is_used(self):
+        call, _ = self._run_logout(no_certcheck=True)
+        assert call.kwargs["http_options"]["verify"] is False
+
+    def test_server_option_does_not_redirect_the_sign_out(self):
+        # the token on disk belongs to the saved server; --server must not send it elsewhere
+        call, _ = self._run_logout(server="http://elsewhere")
+        assert call.args[0] == "http://srvr"
+
+
+class SessionRequestTimeoutTests(unittest.TestCase):
+    """The restore probe and the logout sign-out must not wait forever on an unresponsive server."""
+
+    def _saved_session(self):
+        session = Session()
+        session.auth_token = "tok"
+        session.site_id = "site-1"
+        session.user_id = "user-1"
+        session.server_url = "http://srvr"
+        session.site_name = ""
+        session._saved_server_url = "http://srvr"
+        session._saved_site_name = ""
+        return session
+
+    def test_default_timeout_is_thirty_seconds(self):
+        assert DEFAULT_SESSION_REQUEST_TIMEOUT == 30
+
+    def test_restore_probe_has_default_timeout(self):
+        with mock.patch("tabcmd.commands.auth.session.TSC.Server") as mock_server_class:
+            self._saved_session()._restore_saved_session()
+        assert mock_server_class.call_args.kwargs["http_options"]["timeout"] == DEFAULT_SESSION_REQUEST_TIMEOUT
+
+    def test_logout_sign_out_has_default_timeout(self):
+        with (
+            mock.patch("tabcmd.commands.auth.session.TSC.Server") as mock_server_class,
+            mock.patch.object(Session, "_remove_json"),
+        ):
+            self._saved_session().end_session_and_clear_data()
+        assert mock_server_class.call_args.kwargs["http_options"]["timeout"] == DEFAULT_SESSION_REQUEST_TIMEOUT
+
+    def test_restored_session_drops_probe_timeout_when_none_configured(self):
+        with mock.patch("tabcmd.commands.auth.session.TSC.Server") as mock_server_class:
+            server = self._saved_session()._restore_saved_session()
+        server.add_http_options.assert_called_with({"timeout": None})
+        assert server is mock_server_class.return_value
+
+    def test_explicit_timeout_wins_over_default(self):
+        session = self._saved_session()
+        session.timeout = 120
+        with mock.patch("tabcmd.commands.auth.session.TSC.Server") as mock_server_class:
+            session._restore_saved_session()
+        assert mock_server_class.call_args.kwargs["http_options"]["timeout"] == 120
+
+    def test_ordinary_commands_keep_waiting_for_the_server(self):
+        # --timeout is documented as "the default is to wait until the server responds"
+        session = self._saved_session()
+        with mock.patch("tabcmd.commands.auth.session.TSC.Server") as mock_server_class:
+            session._open_connection_with_opts()
+        assert "timeout" not in mock_server_class.call_args.kwargs["http_options"]
+
+
+class QuietFallbackOutputTests(unittest.TestCase):
+    """When restore or logout cannot open a connection it falls back silently, without 'Exiting...' output."""
+
+    def _session_with_bad_url(self):
+        session = Session()
+        session.auth_token = "t"
+        session.site_id = "s"
+        session.user_id = "u"
+        session.server_url = "http://[bad"
+        session._saved_server_url = "http://[bad"
+        session._saved_site_name = session.site_name
+        return session
+
+    def test_restore_fallback_does_not_report_an_error(self):
+        with mock.patch("tabcmd.commands.auth.session.Errors.exit_with_error") as mock_exit:
+            assert self._session_with_bad_url()._restore_saved_session() is None
+        mock_exit.assert_not_called()
+
+    def test_logout_with_unusable_saved_server_does_not_report_an_error(self):
+        session = self._session_with_bad_url()
+        with (
+            mock.patch("tabcmd.commands.auth.session.Errors.exit_with_error") as mock_exit,
+            mock.patch.object(Session, "_remove_json"),
+        ):
+            session.end_session_and_clear_data()
+        mock_exit.assert_not_called()
+        assert session.auth_token is None
+
+    def test_ordinary_commands_still_exit_on_connection_failure(self):
+        session = self._session_with_bad_url()
+        with self.assertRaises(SystemExit):
+            session._open_connection_with_opts()
 
 
 """
