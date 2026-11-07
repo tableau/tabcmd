@@ -21,7 +21,10 @@ The arguments for each command must be added to a group for that command.
 """
 
 
-def parent_parser_with_global_options():
+def parent_parser_with_global_options(suppress_defaults: bool = False):
+    """Global options are accepted both before and after the subcommand.
+    The copy used by the subcommand parsers must not set defaults: argparse would otherwise
+    overwrite a value given before the subcommand with the default."""
     parser = argparse.ArgumentParser(usage=argparse.SUPPRESS, add_help=False)
     parser._optionals.title = _("tabcmdparser.global.behaviors")
 
@@ -139,6 +142,9 @@ def parent_parser_with_global_options():
         metavar="<PAGE_SIZE>",
         help=_("tabcmd.global.help.page_size"),
     )
+    if suppress_defaults:
+        for action in parser._actions:
+            action.default = argparse.SUPPRESS
     return parser
 
 
@@ -148,6 +154,7 @@ class ParentParser:
 
     def __init__(self):
         self.global_options = parent_parser_with_global_options()
+        self.subcommand_global_options = parent_parser_with_global_options(suppress_defaults=True)
         self.root = argparse.ArgumentParser(
             prog="tabcmd",
             description="tabcmd <command>      -- " + _("tabcmd.howto"),
@@ -173,7 +180,7 @@ class ParentParser:
 
     def include(self, command):
         additional_parser = self.subparsers.add_parser(
-            command.name, help=command.description, parents=[self.global_options]
+            command.name, help=command.description, parents=[self.subcommand_global_options]
         )
         additional_parser._optionals.title = _("tabcmdparser.global.connections")
         # This line is where we actually set each parser to call the correct command
@@ -184,7 +191,7 @@ class ParentParser:
     # Help isn't added like the others because it has to have access to the rest, to get their args
     def include_help(self):
         additional_parser = self.subparsers.add_parser(
-            "help", help=_("tabcmdparser.help.description"), parents=[self.global_options]
+            "help", help=_("tabcmdparser.help.description"), parents=[self.subcommand_global_options]
         )
         additional_parser._optionals.title = _("tabcmdparser.global.connections")
         additional_parser.set_defaults(func=Help(self))
