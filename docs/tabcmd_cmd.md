@@ -18,6 +18,19 @@ If your password or personal access token contains special characters, the shell
 | PowerShell | `$` `` ` `` `"` `'` `@` | Wrap in single quotes: `--password 'p$ssword'` |
 | Unix/bash | `$` `!` `"` `` ` `` `\` spaces | Wrap in single quotes: `--password 'p$ssword'` |
 
+## Special characters and wildcards in names
+
+When tabcmd looks up a workbook, data source, or project by name, the name is sent to the server as a filter. The rules below describe how special characters in those names behave. We tested wildcards and special characters on a Tableau Cloud site with REST API version 3.30 in November 2026. We did not test them on Tableau Server, and we did not test group, user, or schedule names. We tested letter case on both Tableau Cloud and Tableau Server.
+
+- Spaces and accents must match. A name with a trailing space does not match the same name without it.
+- Letter case is ignored when you look up a workbook, data source, project, or user. If a site has items whose names differ only by case, the lookup returns all of them, and tabcmd uses the first one returned. Group names are the exception: on Tableau Server, a group lookup must match the case of the group name.
+- `*` is a wildcard that matches any run of characters, including none. `Sales*` matches "Sales", "Sales Metrics", and any other name that starts with "Sales". A lone `*` matches every item of that type.
+- A name that contains a comma cannot be looked up as typed. The server returns error 400065, "Error parsing filter query". Backslashes and percent-encoding do not help. Replace the comma with `*` instead. For example, a workbook named "Sales, Q1 & Q2" is found with `Sales* Q1 & Q2`. Check the matches before you act on them, because `*` can match more than one item.
+- The characters `& ? % _ | [ ] ( ) . : ' # + $ < >`, non-ASCII letters, and double spaces match themselves. `?`, `_`, `%`, `.`, and `|` do not act as wildcards, and `[U]` and `.*` do not act as character classes or regular expressions. We did not find a name containing `^` on the test site, so we did not test it as a literal.
+- We could not match a name that contains a literal `*`. Escaping it with a backslash or placing it in brackets returned no matches. The test site had no item with `*` in its name, so the behavior for such a name is not confirmed.
+- tabcmd does not check that a lookup matches exactly. It uses the first item the server returns, so a wildcard or a case-only duplicate can select a different item than the one you named. Confirm the target in the Tableau web interface before running `delete` with a name that contains `*`, or a name that could match a case-only duplicate.
+- Lookups of a workbook or data source inside a project use the project name as a second filter. If the project name contains a comma, that lookup fails with error 400065, even when the project itself is found with `*`. Projects whose names contain a comma cannot be used as the container for a workbook or data source lookup.
+
 ## Running tabcmd as root or with sudo
 
 When tabcmd is run as `root` or with `sudo` on Linux or macOS, the home directory used for the session cookie and log file will be `/root/` rather than your normal home directory. This means:
