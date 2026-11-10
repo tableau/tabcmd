@@ -199,6 +199,31 @@ class BuildCredentialsTests(unittest.TestCase):
         auth = active_session._create_new_credential(test_args.password, Session.PASSWORD_CRED_TYPE)
 
 
+class ProxyOptionTests(unittest.TestCase):
+    def test_proxy_with_no_proxy_is_rejected(self):
+        test_args = Namespace(**vars(args_to_mock))
+        test_args.proxy = "host:1"
+        test_args.no_proxy = True
+        with self.assertRaises(SystemExit):
+            Session()._update_session_data(test_args)
+
+    def test_proxy_alone_is_accepted(self):
+        test_args = Namespace(**vars(args_to_mock))
+        test_args.proxy = "host:1"
+        test_args.no_proxy = False
+        mock_session = Session()
+        mock_session._update_session_data(test_args)
+        assert mock_session.proxy == "host:1"
+
+    def test_no_proxy_alone_is_accepted(self):
+        test_args = Namespace(**vars(args_to_mock))
+        test_args.proxy = None
+        test_args.no_proxy = True
+        mock_session = Session()
+        mock_session._update_session_data(test_args)
+        assert mock_session.no_proxy is True
+
+
 class PromptingTests(unittest.TestCase):
     def test_show_prompt_if_user_didnt_say(self):
         test_args = Namespace(**vars(args_to_mock))
