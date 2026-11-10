@@ -74,7 +74,32 @@ class DatasourcesAndWorkbooks(Server):
                 logger.debug("No query parameters present in url")
                 return
 
-            params = query.split("&")
+            # A filter value that contains a literal '&' (e.g. `Product=AT&T`)
+            # gets split by query.split("&") into ["Product=AT", "T"]. Applying
+            # the first fragment as a filter silently returns rows that match
+            # "AT", which is wrong data with no error signal. Detect the pattern:
+            # if a fragment has no '=' AND isn't an options key (":..."), assume
+            # it's a continuation of the previous fragment's value and rejoin.
+            raw_params = query.split("&")
+            params: list[str] = []
+            for fragment in raw_params:
+                if (
+                    params
+                    and not params[-1].startswith(":")
+                    and not fragment.startswith(":")
+                    and fragment
+                    and "=" not in fragment
+                ):
+                    logger.warning(
+                        "URL contains an unencoded '&' inside a filter value; "
+                        "rejoining '%s&%s' as a single filter. Please URL-encode "
+                        "'&' as '%%26' to avoid ambiguity.",
+                        params[-1],
+                        fragment,
+                    )
+                    params[-1] = params[-1] + "&" + fragment
+                elif fragment:
+                    params.append(fragment)
             logger.debug(params)
             for value in params:
                 if value.startswith(":"):
@@ -83,7 +108,7 @@ class DatasourcesAndWorkbooks(Server):
                     DatasourcesAndWorkbooks.apply_encoded_filter_value(logger, request_options, value)
 
         except Exception as e:
-            logger.warn("Error building filter params", e)
+            logger.warning("Error building filter params: %s", e)
             # ExportCommand.log_stack(logger)  # type: ignore
 
     # this is called from within from_url_params, for each view_filter value
@@ -95,17 +120,37 @@ class DatasourcesAndWorkbooks(Server):
         # so we run url.decode, which will be a no-op if they are not encoded.
         decoded_value = urllib.parse.unquote(value)
         logger.debug("url had `{0}`, saved as `{1}`".format(value, decoded_value))
-        DatasourcesAndWorkbooks.apply_filter_value(logger, request_options, decoded_value)
+        # URL-embedded filters can legitimately contain '&' when a user drops in a
+        # tabcmd Classic script that put `Field=x&y` in the URL. Classic silently
+        # skipped fragments that didn't parse; keep that behavior here so scripts
+        # migrate cleanly. The --filter flag path stays strict (see apply_filter_value).
+        DatasourcesAndWorkbooks.apply_filter_value(logger, request_options, decoded_value, strict=False)
 
     # this is called for each filter value,
     # from apply_options, which expects an un-encoded input,
     # or from apply_url_params via apply_encoded_filter_value which decodes the input
     @staticmethod
-    def apply_filter_value(logger, request_options: RequestOptionsType, value: str) -> None:
+    def apply_filter_value(logger, request_options: RequestOptionsType, value: str, strict: bool = True) -> None:
         logger.debug("handling filter param {}".format(value))
-        data_filter = value.split("=")
+        # Split on the first '=' only so that filter values containing '=' are
+        # preserved intact (e.g. Notes=x=y should filter Notes to the value "x=y").
+        parts = value.split("=", maxsplit=1)
+        # An empty field name ("=x") is as unusable as a missing '='.
+        if len(parts) != 2 or not parts[0]:
+            if strict:
+                Errors.exit_with_error(
+                    logger,
+                    message="Filter clause '{}' must be in name=value form".format(value),
+                )
+            # Non-strict: called from apply_encoded_filter_value on a URL-embedded
+            # fragment. Match tabcmd Classic's silent-skip behavior so drop-in
+            # migration of scripts that contain literal '&' in filter values
+            # (which the parser splits on) doesn't hard-fail.
+            logger.debug("Skipping unparseable filter clause from URL: %r", value)
+            return
+        name, filter_value = parts
         # we should export the _DataExportOptions class from tsc
-        request_options.vf(data_filter[0], data_filter[1])  # type: ignore
+        request_options.vf(name, filter_value)  # type: ignore
 
     # this is called from within from_url_params, for each param value
     # expects either ImageRequestOptions or PDFRequestOptions
@@ -114,7 +159,7 @@ class DatasourcesAndWorkbooks(Server):
         logger.debug("handling url option {}".format(value))
         setting = value.split("=")
         if len(setting) != 2:
-            logger.warn("Unable to read url parameter '{}', skipping".format(value))
+            logger.warning("Unable to read url parameter '{}', skipping".format(value))
             return
         setting_name = setting[0]
         setting_val = setting[1]
@@ -129,12 +174,12 @@ class DatasourcesAndWorkbooks(Server):
         elif ":size" == setting_name:
             if isinstance(request_options, (TSC.ImageRequestOptions, TSC.PDFRequestOptions)):
                 try:
-                    height, width = setting_val.split(",")
-                    request_options.viz_height = int(height)
-                    request_options.viz_width = int(width)
+                    width, height = setting_val.split(",")
+                    w_int, h_int = int(width), int(height)
+                    request_options.viz_width = w_int
+                    request_options.viz_height = h_int
                 except Exception as oops:
-                    logger.warn("Unable to read image size options '{}', skipping".format(setting_val))
-                    logger.warn(oops)
+                    logger.warning("Unable to read image size options: %s", oops)
             else:
                 logger.debug(
                     "Request options are not of type ImageRequestOptions or PDFRequestOptions, skipping size setting"
@@ -179,18 +224,22 @@ class DatasourcesAndWorkbooks(Server):
             request_options.language = args.language
 
     @staticmethod
-    def save_to_data_file(logger, output, filename):
+    def save_to_data_file(logger, output, filename, content_name=None):
         logger.info(_("httputils.found_attachment").format(filename))
         with open(filename, "wb") as f:
             f.writelines(output)
-            logger.info(_("export.success").format("", filename))
+            # export.success renders as 'Saved <content> to "<filename>"' -- content
+            # name is the workbook/view/datasource being exported, filename is the
+            # destination path. Fall back to filename twice if no content name was
+            # threaded through (better than an empty {0}).
+            logger.info(_("export.success").format(content_name or filename, filename))
 
     @staticmethod
-    def save_to_file(logger, output, filename):
+    def save_to_file(logger, output, filename, content_name=None):
         logger.info(_("httputils.found_attachment").format(filename))
         with open(filename, "wb") as f:
             f.write(output)
-            logger.info(_("export.success").format("", filename))
+            logger.info(_("export.success").format(content_name or filename, filename))
 
     @staticmethod
     def get_custom_view_by_id(logger, server, custom_view_id) -> TSC.CustomViewItem:

@@ -91,7 +91,7 @@ class DatasourcesWorkbooksAndViewsUrlParser(Server):
                 logger.debug("filetype from url: {}".format(type_of_file))
                 return type_of_file
 
-        Errors.exit_with_error(logger, _("get.extension.not_found").format(file_name or url))
+        Errors.exit_with_error(logger, _("tabcmd.get.extension.not_found").format(file_name or url))
 
     @staticmethod
     def get_file_extension(path):

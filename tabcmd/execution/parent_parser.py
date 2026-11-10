@@ -137,7 +137,7 @@ def parent_parser_with_global_options():
         type=int,
         default=None,
         metavar="<PAGE_SIZE>",
-        help="Specify the page size for query results.",
+        help=_("tabcmd.global.help.page_size"),
     )
     return parser
 
@@ -198,5 +198,5 @@ class Help:
 
     def run_command(self, args):
         logger = log(__name__, "info")
-        logger.info(f"{_('tabcmd.name')} {version}\n")
-        logger.info(self.parser.root.format_help())
+        print(f"{_('tabcmd.name')} {version}\n")
+        print(self.parser.root.format_help())
