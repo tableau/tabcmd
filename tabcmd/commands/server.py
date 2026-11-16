@@ -8,6 +8,15 @@ from tabcmd.execution.localize import _
 
 
 class Server:
+    @staticmethod
+    def _timeout_seconds(timeout):
+        """--timeout arrives as a string; wait_for_job compares it with elapsed seconds."""
+        try:
+            seconds = int(timeout)
+        except (TypeError, ValueError):
+            return None
+        return seconds if seconds > 0 else None
+
     # syntactic sugar for specific content types
     @staticmethod
     def get_workbook_item(logger, server, workbook_name, container=None):
