@@ -89,6 +89,7 @@ def parent_parser_with_global_options():
     formatting_group5 = parser.add_mutually_exclusive_group()
     formatting_group5.add_argument(
         "--timeout",
+        type=int,
         default=None,  # default is handled in Session class
         metavar="<SECONDS>",  # can't use -t, it's already used for --site
         help=_("session.options.timeout"),

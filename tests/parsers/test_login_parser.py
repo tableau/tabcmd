@@ -36,7 +36,11 @@ class LoginParserTest(ParserTest):
         args = self.parser_under_test.parse_args(mock_args)
         assert args.no_certcheck is True, args
         assert args.proxy == "the-proxy", args
-        assert args.timeout == "10", args
+        assert args.timeout == 10, args
+
+    def test_timeout_must_be_a_number(self):
+        with self.assertRaises(SystemExit):
+            self.parser_under_test.parse_args([commandname, "--timeout", "soon"])
 
     def test_parsing_no_proxy_no_cert(self):
         mock_args = [commandname, "--no-certcheck", "--no-proxy"]

@@ -133,15 +133,6 @@ class CreateSiteUsersCommand(UserCommand):
         cls._report_job_details(logger, job_done, logger.info, False, args.errors_file)
 
     @staticmethod
-    def _timeout_seconds(timeout):
-        """--timeout arrives as a string; wait_for_job compares it with elapsed seconds."""
-        try:
-            seconds = int(timeout)
-        except (TypeError, ValueError):
-            return None
-        return seconds if seconds > 0 else None
-
-    @staticmethod
     def _job_detail_lines(job):
         """Per-row messages for a finished job.
 
