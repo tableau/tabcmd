@@ -702,7 +702,23 @@ class SavedSessionServerBindingTests(unittest.TestCase):
         assert credentials.personal_access_token == "pat-secret-b"
         assert credentials.site_id == "site-b"
 
-    def test_same_site_with_case_and_whitespace_differences_reuses_saved_login(
+    def test_same_site_with_whitespace_differences_reuses_saved_login(
+        self, mock_open_conn, mock_pass, mock_file, mock_path, mock_json
+    ):
+        _set_mocks_for_json_file_exists(mock_path, mock_json)
+        _set_mocks_for_json_file_saved_token(mock_json, "https://a.example")
+        connection = mock.MagicMock(name="tsc_server")
+        _set_mock_signin_validation_succeeds(connection, "u")
+        mock_open_conn.return_value = connection
+
+        test_args = Namespace(**vars(args_to_mock))
+        test_args.site_name = " site-a "
+        new_session = Session()
+        new_session.create_session(test_args, logger)
+
+        connection._set_auth.assert_called_once_with("site-id-a", "user-id-a", "session-token-a")
+
+    def test_site_differing_only_in_case_does_not_receive_saved_token_or_pat(
         self, mock_open_conn, mock_pass, mock_file, mock_path, mock_json
     ):
         _set_mocks_for_json_file_exists(mock_path, mock_json)
@@ -712,17 +728,37 @@ class SavedSessionServerBindingTests(unittest.TestCase):
         mock_open_conn.return_value = connection
 
         test_args = Namespace(**vars(args_to_mock))
-        test_args.site_name = " SITE-A "
+        test_args.site_name = "Site-A"
         new_session = Session()
         with self.assertRaises(SystemExit):
             new_session.create_session(test_args, logger)
 
-        assert new_session.site_name == "site-a"
-        connection._set_auth.assert_called_once_with("site-id-a", "user-id-a", "session-token-a")
+        connection._set_auth.assert_not_called()
+        connection.auth.sign_in.assert_not_called()
+        mock_pass.assert_not_called()
+        assert new_session.site_name == "Site-A"
+        for value in ("session-token-a", "pat-name-a", "pat-secret-a", "site-id-a", "user-id-a"):
+            assert value not in vars(new_session).values(), value
+
+    def test_mixed_case_site_is_sent_and_saved_with_its_case(
+        self, mock_open_conn, mock_pass, mock_file, mock_path, mock_json
+    ):
+        _set_mocks_for_json_file_exists(mock_path, mock_json)
+        _set_mocks_for_json_file_saved_token(mock_json, "https://a.example")
+        connection = mock.MagicMock(name="tsc_server")
+        _set_mock_signin_validation_succeeds(connection, "u")
+        mock_open_conn.return_value = connection
+
+        test_args = Namespace(**vars(args_to_mock))
+        test_args.site_name = "MixedCase-Site"
+        test_args.token_name = "pat-name-b"
+        test_args.token_value = "pat-secret-b"
+        new_session = Session()
+        new_session.create_session(test_args, logger)
+
         credentials = connection.auth.sign_in.call_args.args[0]
-        assert credentials.token_name == "pat-name-a"
-        assert credentials.personal_access_token == "pat-secret-a"
-        assert credentials.site_id == "site-a"
+        assert credentials.site_id == "MixedCase-Site"
+        assert new_session._serialize_for_save()["tableau_auth"][0]["site_name"] == "MixedCase-Site"
 
     def test_omitting_site_keeps_saved_site_and_pat(self, mock_open_conn, mock_pass, mock_file, mock_path, mock_json):
         _set_mocks_for_json_file_exists(mock_path, mock_json)
@@ -767,7 +803,7 @@ class SavedSessionServerBindingTests(unittest.TestCase):
 
         test_args = Namespace(**vars(args_to_mock))
         test_args.server = "A.example/"
-        test_args.site_name = "Site-A"
+        test_args.site_name = "site-a"
         new_session = Session()
         auth = new_session.create_session(test_args, logger)
 
@@ -776,23 +812,25 @@ class SavedSessionServerBindingTests(unittest.TestCase):
         connection.auth.sign_in.assert_not_called()
         mock_pass.assert_not_called()
 
-    def test_same_server_without_site_keeps_saved_site_and_session_token(
+    def test_same_server_without_site_clears_saved_site_and_session_token(
         self, mock_open_conn, mock_pass, mock_file, mock_path, mock_json
     ):
         _set_mocks_for_json_file_exists(mock_path, mock_json)
         _set_mocks_for_json_file_saved_token(mock_json, "https://a.example")
         connection = mock.MagicMock(name="tsc_server")
-        _set_mock_signin_validation_succeeds(connection, "u")
+        connection.users.get_by_id.side_effect = Exception("401 Unauthorized")
         mock_open_conn.return_value = connection
 
         test_args = Namespace(**vars(args_to_mock))
         test_args.server = "https://a.example"
         new_session = Session()
-        new_session.create_session(test_args, logger)
+        with self.assertRaises(SystemExit):
+            new_session.create_session(test_args, logger)
 
-        assert new_session.site_name == "site-a"
-        connection._set_auth.assert_called_once_with("site-id-a", "user-id-a", "session-token-a")
+        assert new_session.site_name == ""
+        connection._set_auth.assert_not_called()
         connection.auth.sign_in.assert_not_called()
+        mock_pass.assert_not_called()
 
 
 @mock.patch("tabcmd.commands.auth.session.json")
