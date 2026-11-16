@@ -97,7 +97,10 @@ class RunCommandsTest(unittest.TestCase):
 
     @patch("tabcmd.commands.auth.session.Session.end_session_and_clear_data")
     def test_logout(self, mock_end_session, mock_create_session, mock_server):
-        logout_command.LogoutCommand.run_command(mock_args)
+        logout_args = argparse.Namespace(
+            logging_level="info", certificate=None, no_certcheck=False, no_proxy=False, proxy=None, timeout=None
+        )
+        logout_command.LogoutCommand.run_command(logout_args)
         mock_create_session.assert_not_called()
         mock_end_session.assert_called()
 
