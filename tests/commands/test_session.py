@@ -124,7 +124,7 @@ class JsonTests(unittest.TestCase):
         _set_mocks_for_json_file_exists(mock_path, mock_json)
         test_session = Session()
         test_session.username = "USN"
-        test_session.server = "SRVR"
+        test_session.server_url = "SRVR"
         with mock.patch.object(Session, "_save_file") as mock_save:
             test_session._save_session_to_json()
         mock_save.assert_called_once()
@@ -1512,11 +1512,27 @@ class SessionRequestTimeoutTests(unittest.TestCase):
             self._saved_session().end_session_and_clear_data()
         assert mock_server_class.call_args.kwargs["http_options"]["timeout"] == DEFAULT_SESSION_REQUEST_TIMEOUT
 
+    def _restore_with_real_server(self, timeout):
+        session = self._saved_session()
+        session.timeout = timeout
+        with (
+            mock.patch.object(TSC.Server, "use_server_version"),
+            mock.patch("tableauserverclient.server.endpoint.users_endpoint.Users.get_by_id"),
+        ):
+            server = session._restore_saved_session()
+        assert server is not None
+        return server
+
     def test_restored_session_drops_probe_timeout_when_none_configured(self):
-        with mock.patch("tabcmd.commands.auth.session.TSC.Server") as mock_server_class:
-            server = self._saved_session()._restore_saved_session()
-        server.add_http_options.assert_called_with({"timeout": None})
-        assert server is mock_server_class.return_value
+        # Session.timeout is 0 when --timeout is not given; requests rejects timeout=0
+        for timeout in (0, None, -5):
+            with self.subTest(timeout=timeout):
+                server = self._restore_with_real_server(timeout)
+                assert "timeout" not in server.http_options
+
+    def test_restored_session_keeps_configured_timeout(self):
+        server = self._restore_with_real_server(120)
+        assert server.http_options["timeout"] == 120
 
     def test_explicit_timeout_wins_over_default(self):
         session = self._saved_session()

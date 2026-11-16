@@ -202,6 +202,9 @@ class Session:
             redacted["proxies"] = {k: Session._redact_proxy(v) for k, v in proxies.items()}
         return redacted
 
+    def _configured_timeout(self) -> Optional[int]:
+        return self.timeout if isinstance(self.timeout, int) and self.timeout > 0 else None
+
     # Callers that can carry on without a connection pass raise_on_failure, so a failure
     # raises instead of printing an error and exiting. default_timeout applies only when
     # the user has not set --timeout; without either, requests wait for the server.
@@ -225,7 +228,7 @@ class Session:
             # override any proxy that was set
             http_options["proxies"] = None
 
-        timeout = self.timeout or default_timeout
+        timeout = self._configured_timeout() or default_timeout
         if timeout:
             http_options["timeout"] = timeout
 
@@ -382,8 +385,10 @@ class Session:
             # See note above: exception class only, no str(e).
             self.logger.debug("Saved auth token no longer valid ({}); will re-authenticate".format(type(e).__name__))
             return None
-        # the probe's short timeout must not apply to the rest of the command
-        server.add_http_options({"timeout": self.timeout})
+        # the probe's short timeout must not apply to the rest of the command; requests
+        # rejects timeout=0, so with no --timeout the key is removed rather than set
+        if not self._configured_timeout():
+            server.http_options.pop("timeout", None)
         # Match tabcmd classic's on-reuse banner (Continuing previous session + server info)
         # so users retain visual confirmation of which server/site each subcommand hits.
         self.logger.info(_("session.continuing_session"))
