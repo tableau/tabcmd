@@ -26,3 +26,18 @@ class TestLoginDoesNotPrintSecrets(unittest.TestCase):
         printed = " ".join(str(arg) for call in fake_print.call_args_list for arg in call.args)
         self.assertNotIn(FAKE_TOKEN, printed)
         self.assertIn(FAKE_TOKEN, check_call.call_args.args[0])
+
+    def test_failed_login_error_does_not_contain_token_value(self):
+        failure = setup_e2e.subprocess.CalledProcessError(1, ["tabcmd", "--token-value", FAKE_TOKEN])
+        with (
+            mock.patch.object(setup_e2e.subprocess, "check_call", side_effect=failure),
+            mock.patch("builtins.print"),
+        ):
+            with self.assertRaises(setup_e2e.subprocess.CalledProcessError) as raised:
+                setup_e2e.login()
+
+        self.assertEqual(1, raised.exception.returncode)
+        self.assertNotIn(FAKE_TOKEN, str(raised.exception))
+        self.assertNotIn(FAKE_TOKEN, str(raised.exception.cmd))
+        self.assertIsNone(raised.exception.__cause__)
+        self.assertTrue(raised.exception.__suppress_context__)
