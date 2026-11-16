@@ -61,17 +61,21 @@ class Session:
         # user id and site id are never passed in as args
         # last_login_using and tableau_server are internal data
         # self.command = args.???
+        server_base_url = self._get_server_base_url(args.server) if args.server else None
+        args_site_name = Session._normalise_site_name(args.site_name) if args.site_name else None
+        # saved login details belong to the saved server and site: don't send them to a different one
+        if server_base_url and self.server_url and not self._is_same_server(server_base_url, self.server_url):
+            self._clear_saved_login()
+        elif args_site_name is not None and args_site_name != Session._normalise_site_name(self.site_name):
+            self._clear_saved_login()
         self.username = args.username or self.username or ""
         self.username = self.username.lower()
-        server_base_url = self._get_server_base_url(args.server) if args.server else None
         self.server_url = server_base_url or self.server_url or "http://localhost"
         self.server_url = self.server_url.lower()
-        if args.server is not None:
-            self.site_name = None
-        self.site_name = args.site_name or self.site_name or ""
-        self.site_name = self.site_name.lower()
-        if self.site_name == "default":
-            self.site_name = ""
+        if args_site_name is not None:
+            self.site_name = args_site_name
+        else:
+            self.site_name = Session._normalise_site_name(self.site_name)
         self.logging_level = args.logging_level or self.logging_level
         self.password_file = args.password_file or self.password_file
         self.token_file = args.token_file or self.token_file
@@ -84,6 +88,32 @@ class Session:
         self.no_proxy = args.no_proxy  # have to set this on every call?
         self.proxy = args.proxy or self.proxy
         self.timeout = self.timeout_as_integer(self.logger, args.timeout, self.timeout)
+
+    @staticmethod
+    def _is_same_server(server_base_url: str, saved_server_url) -> bool:
+        # an unreadable saved value counts as a different server
+        if not isinstance(saved_server_url, str):
+            return False
+        saved = urlparse(saved_server_url)
+        saved_base_url = urlunparse((saved.scheme or "https", saved.netloc or saved.path.split("/")[0], "", "", "", ""))
+        return server_base_url.lower() == saved_base_url.lower()
+
+    @staticmethod
+    def _normalise_site_name(site_name) -> str:
+        site_name = site_name.strip().lower() if isinstance(site_name, str) else ""
+        return "" if site_name == "default" else site_name
+
+    def _clear_saved_login(self):
+        self.username = None
+        self.user_id = None
+        self.auth_token = None
+        self.token_name = None
+        self.token_value = None
+        self.token_file = None
+        self.password_file = None
+        self.site_name = None
+        self.site_id = None
+        self.last_login_using = None
 
     @staticmethod
     def timeout_as_integer(logger, option_1, option_2):
