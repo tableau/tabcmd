@@ -35,7 +35,7 @@ def login(extra="--language", value="en"):
         extra,
         value,
     ]
-    print(args)
+    print(["***" if arg == credentials.token else arg for arg in args])
     return subprocess.check_call(args, stderr=subprocess.STDOUT, shell=True)
 
 
