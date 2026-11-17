@@ -71,11 +71,11 @@ class Errors:
                 logger.info(_("tabcmd.debug.no_exception_or_message"))
 
         except Exception as exc:
-            print(sys.stderr, "Error during log call from exception - {} {}".format(exc.__class__, message))
+            print("Error during log call from exception - {} {}".format(exc.__class__, message), file=sys.stderr)
         try:
             logger.info("Exiting...")
         except Exception:
-            print(sys.stderr, "Exiting...")
+            print("Exiting...", file=sys.stderr)
         sys.exit(1)
 
     @staticmethod
@@ -84,7 +84,7 @@ class Errors:
         # identify any that we can add useful detail for and include them here
         if type(exception) == requests.exceptions.ConnectionError:
             print(exception)
-            exit(1)
+            sys.exit(1)
 
         if Errors.is_expired_session(exception):
             # catch this one so we can attempt to refresh the session before telling them it failed
