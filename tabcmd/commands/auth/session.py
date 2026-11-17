@@ -430,7 +430,7 @@ class Session:
         self.token_value = None
         self.site_name = None
         self.site_id = None
-        self.server = None
+        self.server_url = None
         self.last_login_using = None
         self.password_file = None
         self.token_file = None
@@ -443,6 +443,7 @@ class Session:
         self.no_proxy = False
         self.proxy = None
         self.timeout = None
+        self.no_prompt = False
 
     # json file functions ----------------------------------------------------
     # These should be moved into a separate class
