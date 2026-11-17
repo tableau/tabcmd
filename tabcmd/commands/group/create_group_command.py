@@ -3,6 +3,7 @@ import tableauserverclient as TSC
 from tabcmd.commands.auth.session import Session
 from tabcmd.commands.constants import Errors
 from tabcmd.commands.server import Server
+from tabcmd.commands.user.user_data import UserCommand
 from tabcmd.execution.localize import _
 from tabcmd.execution.logger_config import log
 
@@ -19,6 +20,7 @@ class CreateGroupCommand(Server):
     def define_args(create_group_parser):
         args_group = create_group_parser.add_argument_group(title=CreateGroupCommand.name)
         args_group.add_argument("name")
+        UserCommand.set_role_arg(args_group)
 
     @classmethod
     def run_command(cls, args):
@@ -29,6 +31,10 @@ class CreateGroupCommand(Server):
         try:
             logger.info(_("creategroup.status").format(args.name))
             new_group = TSC.GroupItem(args.name)
+            if getattr(args, "role", None):
+                # Classic parity: --role/-r sets the group's default site role, so
+                # users added later without an explicit role inherit this one.
+                new_group.minimum_site_role = args.role
             server.groups.create(new_group)
             logger.info(_("common.output.succeeded"))
         except Exception as e:
