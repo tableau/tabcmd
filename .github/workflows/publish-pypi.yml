@@ -27,9 +27,9 @@ jobs:
           python --version
           python -m pip install --upgrade pip
           python -m pip install --upgrade build
-          pip install .[versioning]
+          pip install ".[versioning]"
           doit version
-          pip install .[localize]
+          pip install ".[localize]"
           doit localize
           pip install .
           python -m build
@@ -39,7 +39,7 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1  # license BSD-2
         with:
           password: ${{ secrets.TEST_PYPI_API_TOKEN }}
-          repository_url: https://test.pypi.org/legacy/
+          repository-url: https://test.pypi.org/legacy/
       - name: Publish distribution 📦 to PyPI
         if: ${{ github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.is_draft != true) }}
         uses: pypa/gh-action-pypi-publish@release/v1  # license BSD-2
