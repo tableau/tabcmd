@@ -1,7 +1,7 @@
 import inspect
 import requests
 import sys
-from typing import Optional
+from typing import NoReturn, Optional
 
 import tableauserverclient
 
@@ -58,17 +58,17 @@ class Errors:
             logger.info("Error printing stack trace:", e)
 
     @staticmethod
-    def exit_with_error(logger, message: Optional[str] = None, exception: Optional[Exception] = None):
+    def exit_with_error(logger, message: Optional[str] = None, exception: Optional[Exception] = None) -> NoReturn:
         try:
             if message and not exception:
                 logger.error(message)
                 Errors.log_stack(logger)
             elif exception:
                 if message:
-                    logger.info("Error message: " + message)
+                    logger.debug(_("tabcmd.debug.error_message") + message)
                 Errors.check_common_error_codes_and_explain(logger, exception)
             else:
-                logger.info("No exception or message provided")
+                logger.info(_("tabcmd.debug.no_exception_or_message"))
 
         except Exception as exc:
             print(sys.stderr, "Error during log call from exception - {} {}".format(exc.__class__, message))

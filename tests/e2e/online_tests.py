@@ -15,7 +15,6 @@ except ModuleNotFoundError:
 
 from tests.e2e import setup_e2e
 
-
 # to run this suite
 # pytest -q tests/e2e/online_tests.py
 # you can either run setup with a stored credentials file, or simply log in
@@ -40,6 +39,9 @@ use_tabcmd_classic = False  # toggle between testing using tabcmd 2 or tabcmd cl
 
 
 default_project_name = "Personal Work"  # not unique, has to exist already when you run random test cases
+
+OUTPUT_DIR = "test-output"
+os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 
 class TestAssets:
@@ -72,6 +74,8 @@ class TestAssets:
     TDS_FILE_LIVE = "live_mysql.tds"
 
     TWB_FILE_WITH_EMBEDDED_CONNECTION = "EmbeddedCredentials.twb"
+    # server_address baked into the workbook's <connection server=...> element.
+    TWB_FILE_EMBEDDED_CONNECTION_SERVER = "see-internal-slack"
 
     USERS_DETAILS_FILE = "detailed_users.csv"
     USERS_CSVIMPORT_1811_FILE = "users_csvimport_bugs_1811.csv"
@@ -140,7 +144,9 @@ class TabcmdCall:
         return arguments
 
     @staticmethod
-    def _publish_creds_args(arguments, db_user=None, db_pass=None, db_save=None, oauth_user=None, oauth_save=None):
+    def _publish_creds_args(
+        arguments, db_user=None, db_pass=None, db_save=None, oauth_user=None, oauth_save=None, db_server=None
+    ):
         if db_user:
             arguments.append("--db-username")
             arguments.append(db_user)
@@ -154,6 +160,9 @@ class TabcmdCall:
             arguments.append(oauth_user)
         if oauth_save:
             arguments.append("--save-oauth")
+        if db_server:
+            arguments.append("--db-server")
+            arguments.append(db_server)
         return arguments
 
     @staticmethod
@@ -211,15 +220,15 @@ class TabcmdCall:
     def _get_workbook(server_file):
         command = "get"
         server_file = "/workbooks/" + server_file
-        arguments = [command, server_file, "-f", "get_workbook.twbx"]
+        arguments = [command, server_file, "-f", os.path.join(OUTPUT_DIR, "get_workbook.twbx")]
         _test_command(arguments)
-        os.path.exists("get_workbook.twbx")
 
     @staticmethod
     def _get_datasource(server_file):
         command = "get"
         server_file = "/datasources/" + server_file
-        arguments = [command, server_file]
+        out_file = os.path.join(OUTPUT_DIR, os.path.basename(server_file))
+        arguments = [command, server_file, "-f", out_file]
         _test_command(arguments)
 
     @staticmethod
@@ -482,9 +491,13 @@ class OnlineCommandTest(unittest.TestCase):
 
         TabcmdCall._get_view(wb_name_on_server, sheet_name, "get_view_default_size.png")
         url_params = "?:size=100,200"
-        TabcmdCall._get_view(wb_name_on_server, sheet_name + url_params, "get_view_sized_sm.png")
+        TabcmdCall._get_view(
+            wb_name_on_server, sheet_name + url_params, os.path.join(OUTPUT_DIR, "get_view_sized_sm.png")
+        )
         url_params = "?:size=500,700"
-        TabcmdCall._get_view(wb_name_on_server, sheet_name + url_params, "get_view_sized_LARGE.png")
+        TabcmdCall._get_view(
+            wb_name_on_server, sheet_name + url_params, os.path.join(OUTPUT_DIR, "get_view_sized_LARGE.png")
+        )
 
     @pytest.mark.order(11)
     def test_view_get_csv(self):
@@ -500,13 +513,49 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(11)
     def test_wb_publish_embedded(self):
+        # NOTE: This asserts only that publish did not crash. It does NOT verify
+        # that credentials actually embedded on the server side - a mismatched
+        # --db-server would still exit 0 while silently dropping the creds at
+        # TSC's request-factory boundary. A stronger assertion would populate
+        # connections post-publish and check embed_password=True.
         file = os.path.join("tests", "assets", TestAssets.TWB_FILE_WITH_EMBEDDED_CONNECTION)
         name_on_server = TestAssets.get_publishable_name(TestAssets.TWB_FILE_WITH_EMBEDDED_CONNECTION)
         arguments = TabcmdCall._publish_args(file, name_on_server)
-        arguments = TabcmdCall._publish_creds_args(arguments, database_user, database_password, True)
+        arguments = TabcmdCall._publish_creds_args(
+            arguments,
+            database_user,
+            database_password,
+            True,
+            db_server=TestAssets.TWB_FILE_EMBEDDED_CONNECTION_SERVER,
+        )
         arguments.append("--tabbed")
         arguments.append("--skip-connection-check")
         _test_command(arguments)
+
+    @pytest.mark.order(11)
+    def test_wb_publish_embedded_missing_db_server_fails(self):
+        # Publish with --db-username but no --db-server must exit non-zero with our
+        # friendly message rather than a raw tableauserverclient traceback. The guard
+        # short-circuits before any real work, so throwaway credentials are safe here.
+        file = os.path.join("tests", "assets", TestAssets.TWB_FILE_WITH_EMBEDDED_CONNECTION)
+        name_on_server = TestAssets.get_publishable_name(TestAssets.TWB_FILE_WITH_EMBEDDED_CONNECTION) + "-no-server"
+        arguments = TabcmdCall._publish_args(file, name_on_server)
+        arguments = TabcmdCall._publish_creds_args(arguments, "placeholder_user", "placeholder_pass", True)
+        arguments.append("--tabbed")
+        arguments.append("--skip-connection-check")
+
+        login_args = setup_e2e.get_login_args()
+        if login_args is None:
+            pytest.skip("No credentials available (credentials.py not found)")
+        calling_args = ["python", "-m", "tabcmd"] + arguments + login_args + [debug_log] + ["--no-certcheck"]
+        result = subprocess.run(calling_args, capture_output=True, text=True)
+
+        assert result.returncode != 0, "expected non-zero exit for missing --db-server"
+        # Require the rendered English guidance -- accepting the raw msgid would let a
+        # localization regression pass silently. Every locale ships an English placeholder
+        # for this key until real translations arrive.
+        combined = (result.stdout or "") + (result.stderr or "")
+        assert "--db-server is required" in combined, "expected rendered guard message in output; got:\n" + combined
 
     @pytest.mark.order(12)
     def test_publish_ds(self):
@@ -555,39 +604,39 @@ class OnlineCommandTest(unittest.TestCase):
         sheet_name = TestAssets.TWBX_WITH_EXTRACT_SHEET
         friendly_name = wb_name_on_server + "/" + sheet_name
         filters = ["--filter", "Product Type=Tea", "--fullpdf", "--pagelayout", "landscape"]
-        TabcmdCall._export_wb(friendly_name, "filter_a_wb_to_tea_and_two_pages.pdf", filters)
+        TabcmdCall._export_wb(friendly_name, os.path.join(OUTPUT_DIR, "filter_a_wb_to_tea_and_two_pages.pdf"), filters)
         # NOTE: this test needs a visual check on the returned pdf to confirm the expected appearance
 
     @pytest.mark.order(19)
     def test_export_wb_pdf(self):
         wb_name_on_server = TestAssets.get_publishable_name(TestAssets.TWBX_FILE_WITH_EXTRACT)
         friendly_name = wb_name_on_server + "/" + TestAssets.TWBX_WITH_EXTRACT_SHEET
-        filename = "exported_wb.pdf"
+        filename = os.path.join(OUTPUT_DIR, "exported_wb.pdf")
         TabcmdCall._export_wb(friendly_name, filename)
 
     @pytest.mark.order(19)
     def test_export_data_csv(self):
         wb_name_on_server = TestAssets.get_publishable_name(TestAssets.TWBX_FILE_WITH_EXTRACT)
         sheet_name = TestAssets.TWBX_WITH_EXTRACT_SHEET
-        TabcmdCall._export_view(wb_name_on_server, sheet_name, "--csv", "exported_data.csv")
+        TabcmdCall._export_view(wb_name_on_server, sheet_name, "--csv", os.path.join(OUTPUT_DIR, "exported_data.csv"))
 
     @pytest.mark.order(19)
     def test_export_view_png(self):
         wb_name_on_server = TestAssets.get_publishable_name(TestAssets.TWBX_FILE_WITH_EXTRACT)
         sheet_name = TestAssets.TWBX_WITH_EXTRACT_SHEET
-        TabcmdCall._export_view(wb_name_on_server, sheet_name, "--png", "export_view.png")
+        TabcmdCall._export_view(wb_name_on_server, sheet_name, "--png", os.path.join(OUTPUT_DIR, "export_view.png"))
 
     @pytest.mark.order(19)
     def test_export_view_pdf(self):
         wb_name_on_server = TestAssets.get_publishable_name(TestAssets.TWBX_FILE_WITH_EXTRACT)
         sheet_name = TestAssets.TWBX_WITH_EXTRACT_SHEET
-        TabcmdCall._export_view(wb_name_on_server, sheet_name, "--pdf", "export_view_pdf.pdf")
+        TabcmdCall._export_view(wb_name_on_server, sheet_name, "--pdf", os.path.join(OUTPUT_DIR, "export_view_pdf.pdf"))
 
     @pytest.mark.order(19)
     def test_export_view_filtered(self):
         wb_name_on_server = TestAssets.get_publishable_name(TestAssets.TWBX_FILE_WITH_EXTRACT)
         sheet_name = TestAssets.TWBX_WITH_EXTRACT_SHEET
-        filename = "view_with_filters.pdf"
+        filename = os.path.join(OUTPUT_DIR, "view_with_filters.pdf")
 
         filters = ["--filter", "Product Type=Tea"]
         TabcmdCall._export_view(wb_name_on_server, sheet_name, "--pdf", filename, filters)

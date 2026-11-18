@@ -25,7 +25,7 @@ class GetUrl(DatasourcesAndWorkbooks):
     @staticmethod
     def define_args(get_url_parser):
         group = get_url_parser.add_argument_group(title=GetUrl.name)
-        group.add_argument("url", help=_("refreshextracts.options.url"))
+        group.add_argument("url", help=_("tabcmd.options.resource_url"))
         set_destination_filename_arg(group)
         # these don't need arguments, although that would be a good future addition
         # tabcmd get "/views/Finance/InvestmentGrowth.png?:size=640,480" -f growth.png
@@ -62,7 +62,7 @@ class GetUrl(DatasourcesAndWorkbooks):
         for content_type in GetUrl.valid_content_types:
             if url.find(content_type) == 0:
                 return content_type
-        Errors.exit_with_error(logger, message=_("bad_request.detail.invalid_content_type").format(url))
+        Errors.exit_with_error(logger, message=_("tabcmd.error.bad_request.invalid_content_type").format(url))
 
     @staticmethod
     def filename_from_args(file_argument, item_name, filetype):
@@ -95,7 +95,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             elif file_type == "csv":
                 return GetUrl.generate_csv(logger, server_content_type, args, get_url_item)
         # all the known options above will return early. If we get here we are confused.
-        Errors.exit_with_error(logger, message=_("get.extension.not_found"))
+        Errors.exit_with_error(logger, message=_("tabcmd.get.extension.not_found"))
 
     @staticmethod
     def generate_pdf(logger, server_content_type, args, get_url_item):
@@ -106,7 +106,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             DatasourcesAndWorkbooks.apply_values_from_url_params(logger, req_option_pdf, args.url)
             server_content_type.populate_pdf(get_url_item, req_option_pdf)
             filename = GetUrl.filename_from_args(args.filename, get_url_item.name, "pdf")
-            DatasourcesAndWorkbooks.save_to_file(logger, get_url_item.pdf, filename)
+            DatasourcesAndWorkbooks.save_to_file(logger, get_url_item.pdf, filename, content_name=get_url_item.name)
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
 
@@ -119,7 +119,7 @@ class GetUrl(DatasourcesAndWorkbooks):
             DatasourcesAndWorkbooks.apply_values_from_url_params(logger, req_option_png, args.url)
             server_content_type.populate_image(get_url_item, req_option_png)
             filename = GetUrl.filename_from_args(args.filename, get_url_item.name, "png")
-            DatasourcesAndWorkbooks.save_to_file(logger, get_url_item.image, filename)
+            DatasourcesAndWorkbooks.save_to_file(logger, get_url_item.image, filename, content_name=get_url_item.name)
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
 
@@ -132,7 +132,9 @@ class GetUrl(DatasourcesAndWorkbooks):
             DatasourcesAndWorkbooks.apply_values_from_url_params(logger, req_option_csv, args.url)
             server_content_type.populate_csv(get_url_item, req_option_csv)
             file_name_with_path = GetUrl.filename_from_args(args.filename, get_url_item.name, "csv")
-            DatasourcesAndWorkbooks.save_to_data_file(logger, get_url_item.csv, file_name_with_path)
+            DatasourcesAndWorkbooks.save_to_data_file(
+                logger, get_url_item.csv, file_name_with_path, content_name=get_url_item.name
+            )
         except Exception as e:
             Errors.exit_with_error(logger, exception=e)
 

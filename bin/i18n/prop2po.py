@@ -4,6 +4,8 @@ License: MIT
 TO DO: contribute changes back and go back to installing from pypi
 """
 
+import re
+
 import click
 from datetime import datetime
 
@@ -47,7 +49,9 @@ msgstr ""
             parts = line.split('=', 1)
             # TODO it fails on comments/lines with less than two parts after splitting
             try:
-                destination.write('#:\n' + 'msgid "' + parts[0] + '"\n' 'msgstr "' + parts[1][:-1] + '"\n\n')
+                # a bare " would end the .po string early; msgfmt then skips the line and the .mo keeps the wrong text
+                msgstr = re.sub(r'(?<!\\)"', r'\\"', parts[1][:-1])
+                destination.write('#:\n' + 'msgid "' + parts[0] + '"\n' 'msgstr "' + msgstr + '"\n\n')
             except IndexError as e:
                 print("FAILED on line{}".format(line))
 

@@ -448,6 +448,31 @@ class DS_WB_Tests(unittest.TestCase):
         filename = "test_out.csv"
         ExportCommand.save_to_data_file(mock_logger, mock_content, filename)
 
+    def test_save_to_file_uses_content_name_when_supplied(self):
+        # tabcmd 1 prints "Saved <content-name> to '<filename>'" -- the content
+        # name is a distinct value from the destination filename. Passing them
+        # both as the filename was a bug.
+        logger = mock.MagicMock()
+        with mock.patch(
+            "tabcmd.commands.datasources_and_workbooks.datasources_and_workbooks_command._",
+            side_effect=lambda k: "Saved {0} to '{1}'" if k == "export.success" else k,
+        ):
+            ExportCommand.save_to_file(logger, bytes(), "Regional.pdf", content_name="Regional Sales")
+        rendered = [c[0][0] for c in logger.info.call_args_list]
+        assert "Saved Regional Sales to 'Regional.pdf'" in rendered, rendered
+
+    def test_save_to_file_falls_back_to_filename_when_no_content_name(self):
+        # If a caller doesn't supply content_name we still want a usable message;
+        # falling back to filename is better than an empty {0} placeholder.
+        logger = mock.MagicMock()
+        with mock.patch(
+            "tabcmd.commands.datasources_and_workbooks.datasources_and_workbooks_command._",
+            side_effect=lambda k: "Saved {0} to '{1}'" if k == "export.success" else k,
+        ):
+            ExportCommand.save_to_file(logger, bytes(), "test_out.pdf")
+        rendered = [c[0][0] for c in logger.info.call_args_list]
+        assert "Saved test_out.pdf to 'test_out.pdf'" in rendered, rendered
+
 
 class FilenameExtensionTests(unittest.TestCase):
     # get_file_type_from_filename(logger, url, file_name)

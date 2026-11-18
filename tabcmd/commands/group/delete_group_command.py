@@ -29,8 +29,8 @@ class DeleteGroupCommand(Server):
         try:
             logger.info(_("tabcmd.find.group").format(args.name))
             group_id = Server.find_group(logger, server, args.name).id
-            logger.info(_("deletegroup.status").format(group_id))
+            logger.info(_("deletegroup.status").format(args.name))
             server.groups.delete(group_id)
             logger.info(_("common.output.succeeded"))
         except Exception as e:
-            Errors.exit_with_error(logger, _("errors.bad_request.detail.generic_delete_groups_error"), exception=e)
+            Errors.exit_with_error(logger, _("tabcmd.error.delete.group"), exception=e)

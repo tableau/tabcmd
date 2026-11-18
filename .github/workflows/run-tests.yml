@@ -23,7 +23,7 @@ jobs:
     - uses: actions/checkout@v7
 
     - name: Set up Python ${{ matrix.python-version }} on ${{ matrix.os }}
-      uses: actions/setup-python@v6
+      uses: actions/setup-python@v7
       with:
         python-version: ${{ matrix.python-version }}
 
@@ -34,6 +34,8 @@ jobs:
         python -m pip install --upgrade build
         pip install .[versioning]
         doit version
+        pip install .[localize]
+        doit localize
         pip install .
         python -m build
         pip install .[test]
