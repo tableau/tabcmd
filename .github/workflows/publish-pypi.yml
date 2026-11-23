@@ -16,10 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     environment: pypi
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v7
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: 3.12
       - name: Build dist files
@@ -36,12 +36,12 @@ jobs:
           
       - name: Publish distribution 📦 to Test PyPI
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.is_draft == true }}
-        uses: pypa/gh-action-pypi-publish@release/v1  # license BSD-2
+        uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3 (was @release/v1), license BSD-2
         with:
           password: ${{ secrets.TEST_PYPI_API_TOKEN }}
           repository_url: https://test.pypi.org/legacy/
       - name: Publish distribution 📦 to PyPI
         if: ${{ github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.is_draft != true) }}
-        uses: pypa/gh-action-pypi-publish@release/v1  # license BSD-2
+        uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3 (was @release/v1), license BSD-2
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}

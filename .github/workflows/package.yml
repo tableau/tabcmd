@@ -78,9 +78,9 @@ jobs:
             UPLOAD_FILE_NAME: tabcmd
 
     steps:
-    - uses: actions/checkout@v7
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-    - uses: actions/setup-python@v7
+    - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
       with:
         python-version: 3.12
 
@@ -146,7 +146,7 @@ jobs:
     # the shared artifact name `tabcmd-macos` would otherwise collide and each
     # upload would clobber the other in the artifact store.
     - name: Upload build artifact for ${{ matrix.TARGET }}
-      uses: actions/upload-artifact@v7
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
       with:
         name: ${{ matrix.UPLOAD_FILE_NAME }}
         path: ./dist/${{ matrix.TARGET }}/${{ matrix.UPLOAD_FILE_NAME }}
@@ -171,7 +171,7 @@ jobs:
     # download-artifact versions independently of upload-artifact; v7 reads the
     # zipped artifacts that upload-artifact@v7 produces by default
     - name: Download all build artifacts
-      uses: actions/download-artifact@v7
+      uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
       with:
         path: artifacts/
 
@@ -208,7 +208,7 @@ jobs:
         echo "Resolved release tag: $TAG"
 
     - name: Upload tabcmd.exe (Windows) to release
-      uses: svenstaro/upload-release-action@v2
+      uses: svenstaro/upload-release-action@29e53e917877a24fad85510ded594ab3c9ca12de # v2.11.5
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         asset_name: tabcmd.exe
@@ -217,7 +217,7 @@ jobs:
         overwrite: true
 
     - name: Upload tabcmd (Ubuntu) to release
-      uses: svenstaro/upload-release-action@v2
+      uses: svenstaro/upload-release-action@29e53e917877a24fad85510ded594ab3c9ca12de # v2.11.5
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         asset_name: tabcmd
@@ -226,7 +226,7 @@ jobs:
         overwrite: true
 
     - name: Upload tabcmd-x86.app.tar (macOS x86) to release
-      uses: svenstaro/upload-release-action@v2
+      uses: svenstaro/upload-release-action@29e53e917877a24fad85510ded594ab3c9ca12de # v2.11.5
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         asset_name: tabcmd-x86.app.tar
@@ -235,7 +235,7 @@ jobs:
         overwrite: true
 
     - name: Upload tabcmd_arm64.app.tar (macOS ARM64) to release
-      uses: svenstaro/upload-release-action@v2
+      uses: svenstaro/upload-release-action@29e53e917877a24fad85510ded594ab3c9ca12de # v2.11.5
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         asset_name: tabcmd_arm64.app.tar
