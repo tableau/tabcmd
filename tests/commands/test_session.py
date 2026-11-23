@@ -98,7 +98,7 @@ class JsonTests(unittest.TestCase):
         _set_mocks_for_json_file_exists(mock_path, mock_json)
         test_session = Session()
         test_session.username = "USN"
-        test_session.server = "SRVR"
+        test_session.server_url = "SRVR"
         test_session._save_session_to_json()
         assert mock_json.dump.was_called()
 
@@ -106,10 +106,10 @@ class JsonTests(unittest.TestCase):
         _set_mocks_for_json_file_exists(mock_path, mock_json)
         test_session = Session()
         test_session.username = "USN"
-        test_session.server = "SRVR"
+        test_session.server_url = "SRVR"
         test_session._clear_data()
         assert test_session.username is None
-        assert test_session.server is None
+        assert test_session.server_url is None
 
     def test_json_not_present(self, mock_open, mock_path, mock_json):
         _set_mocks_for_json_file_exists(mock_path, mock_json, does_it_exist=False)
@@ -120,6 +120,30 @@ class JsonTests(unittest.TestCase):
         mock_json.load = "just a string"
         test_session = Session()
         assert test_session.username is None
+
+
+@mock.patch("tabcmd.commands.auth.session.Session._remove_json")
+class ClearDataTests(unittest.TestCase):
+    def test_clear_data_resets_server_url(self, mock_remove_json):
+        test_session = Session()
+        test_session.server_url = "https://srvr"
+        test_session._clear_data()
+        assert test_session.server_url is None
+
+    def test_clear_data_resets_no_prompt(self, mock_remove_json):
+        test_session = Session()
+        test_session.no_prompt = True
+        test_session._clear_data()
+        assert test_session.no_prompt is False
+
+    def test_end_session_and_clear_data_resets_server_url_and_no_prompt(self, mock_remove_json):
+        test_session = Session()
+        test_session.server_url = "https://srvr"
+        test_session.no_prompt = True
+        test_session.end_session_and_clear_data()
+        mock_remove_json.assert_called_once()
+        assert test_session.server_url is None
+        assert test_session.no_prompt is False
 
 
 @mock.patch("getpass.getpass")
