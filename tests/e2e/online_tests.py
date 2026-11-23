@@ -1,3 +1,4 @@
+import glob
 import os
 import pytest
 import subprocess
@@ -35,10 +36,11 @@ server_admin = _env_bool("E2E_SERVER_ADMIN")
 site_admin = _env_bool("E2E_SITE_ADMIN")
 project_admin = _env_bool("E2E_PROJECT_ADMIN")
 extract_encryption_enabled = _env_bool("E2E_EXTRACT_ENCRYPTION")
-use_tabcmd_classic = False  # toggle between testing using tabcmd 2 or tabcmd classic
+use_tabcmd_classic = _env_bool("E2E_TABCMD_CLASSIC")  # set E2E_TABCMD_CLASSIC=true to run the suite against tabcmd classic
 
 
-default_project_name = "Personal Work"  # not unique, has to exist already when you run random test cases
+# not unique, has to exist already when you run random test cases; override with E2E_DEFAULT_PROJECT
+default_project_name = os.environ.get("E2E_DEFAULT_PROJECT", "Personal Work")
 
 OUTPUT_DIR = "test-output"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -82,23 +84,50 @@ class TestAssets:
     USERNAMES_FILE = "usernames.csv"
 
 
-def _test_command(test_args: list[str]):
-    # this will raise an exception if it gets a non-zero return code
-    # that will bubble up and fail the test
+def _classic_tabcmd_path() -> str:
+    """The newest tabcmd classic installed with Tableau Server, or the path in E2E_CLASSIC_TABCMD."""
+    override = os.environ.get("E2E_CLASSIC_TABCMD")
+    if override:
+        return override
+    pattern = os.path.join(
+        "C:\\", "Program Files", "Tableau", "Tableau Server", "*", "extras", "Command Line Utility", "tabcmd.exe"
+    )
+
+    def version_key(path):
+        version_dir = os.path.basename(os.path.dirname(os.path.dirname(os.path.dirname(path))))
+        return tuple(int(part) if part.isdigit() else 0 for part in version_dir.split("."))
+
+    found = sorted(glob.glob(pattern), key=version_key)
+    if not found:
+        pytest.skip("tabcmd classic is not installed (set E2E_CLASSIC_TABCMD to its path)")
+    return found[-1]
+
+
+def _calling_args(test_args: list[str]) -> list[str]:
     login_args = setup_e2e.get_login_args()
     if login_args is None:
         pytest.skip("No credentials available (credentials.py not found)")
 
-    # default: run tests using tabcmd 2
-    calling_args = ["python", "-m", "tabcmd"] + test_args + login_args + [debug_log] + ["--no-certcheck"]
-
     # call the executable directly: lets us drop in classic tabcmd
     if use_tabcmd_classic:
-        calling_args = (
-            ["C:\\Program Files\\Tableau\\Tableau Server\\2023.3\\extras\\Command Line Utility\\tabcmd.exe"]
-            + test_args
-            + ["--no-certcheck"]
-        )
+        if "--token-value" in login_args:
+            pytest.skip("tabcmd classic cannot sign in with a personal access token; use a username and password")
+        return [_classic_tabcmd_path()] + test_args + login_args + ["--no-certcheck", "--no-prompt"]
+
+    # default: run tests using tabcmd 2
+    return ["python", "-m", "tabcmd"] + test_args + login_args + [debug_log] + ["--no-certcheck"]
+
+
+def _run_command(test_args: list[str]) -> subprocess.CompletedProcess:
+    """Run a command and return the result without raising on a non-zero exit code."""
+    return subprocess.run(_calling_args(test_args), capture_output=True, text=True)
+
+
+def _test_command(test_args: list[str]):
+    # this will raise an exception if it gets a non-zero return code
+    # that will bubble up and fail the test
+    calling_args = _calling_args(test_args)
+    login_args = setup_e2e.get_login_args()
     safe_to_print = not any(v in calling_args for v in login_args if v not in ("--server", "--site", "--token-name"))
     if safe_to_print:
         print(calling_args)
@@ -513,6 +542,8 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(11)
     def test_wb_publish_embedded(self):
+        if use_tabcmd_classic:
+            pytest.skip("--db-server is a tabcmd 2 option")
         # NOTE: This asserts only that publish did not crash. It does NOT verify
         # that credentials actually embedded on the server side - a mismatched
         # --db-server would still exit 0 while silently dropping the creds at
@@ -534,6 +565,8 @@ class OnlineCommandTest(unittest.TestCase):
 
     @pytest.mark.order(11)
     def test_wb_publish_embedded_missing_db_server_fails(self):
+        if use_tabcmd_classic:
+            pytest.skip("the --db-server guard is a tabcmd 2 behavior")
         # Publish with --db-username but no --db-server must exit non-zero with our
         # friendly message rather than a raw tableauserverclient traceback. The guard
         # short-circuits before any real work, so throwaway credentials are safe here.
@@ -677,3 +710,91 @@ class OnlineCommandTest(unittest.TestCase):
     def test__delete_ds_live(self):
         name_on_server = TestAssets.get_publishable_name(TestAssets.TDS_FILE_LIVE)
         TabcmdCall._delete_ds(name_on_server)
+
+
+# Parity with tabcmd classic. Each test states what tabcmd classic does. Tests for gaps that tabcmd 2 has not closed are
+# marked xfail (strict) when running tabcmd 2, so closing a gap turns the xfail into a failure that says to remove it.
+# Run the suite with E2E_TABCMD_CLASSIC=true to confirm every expectation against tabcmd classic.
+def classic_parity_gap(reason: str, strict: bool = True):
+    return pytest.mark.xfail(not use_tabcmd_classic, reason=reason, strict=strict)
+
+
+class ClassicParityTest(unittest.TestCase):
+    @classic_parity_gap("tabcmd 2 has no help <command>")
+    def test_help_for_a_command(self):
+        _test_command(["help", "publish"])
+
+    @classic_parity_gap("tabcmd 2 has no help commands")
+    def test_help_commands_lists_commands(self):
+        _test_command(["help", "commands"])
+
+    @classic_parity_gap("tabcmd 2 has no version subcommand (only -v)")
+    def test_version_subcommand(self):
+        _test_command(["version"])
+
+    @classic_parity_gap("tabcmd 2 deleteproject takes a single name")
+    def test_delete_several_projects_in_one_call(self):
+        if not project_admin:
+            pytest.skip("Must be project administrator to create projects")
+        names = ["parity-" + TestAssets.unique + suffix for suffix in ("-a", "-b")]
+        try:
+            for name in names:
+                _test_command(["createproject", "--name", name])
+            time.sleep(indexing_sleep_time)
+            _test_command(["deleteproject"] + names)
+        finally:
+            for name in names:  # a no-op when the call above removed them, a cleanup when it did not
+                _run_command(["deleteproject", name])
+
+    # Needs a workbook that has an extract and a connection that already names its database user, so the server can
+    # publish it without reaching the database. Point E2E_DB_WORKBOOK at one.
+    @classic_parity_gap("tabcmd 2 drops --db-password when --db-username is not given")
+    def test_publish_db_password_without_username_is_saved(self):
+        workbook = os.environ.get("E2E_DB_WORKBOOK")
+        if not workbook or not os.path.exists(workbook):
+            pytest.skip("Set E2E_DB_WORKBOOK to a workbook with an extract and a database connection that names its user")
+        import tableauserverclient as TSC
+
+        login = setup_e2e.get_login_args()
+        options = dict(zip(login[::2], login[1::2]))
+        if "--token-value" in options:
+            auth = TSC.PersonalAccessTokenAuth(options["--token-name"], options["--token-value"], site_id=options["--site"])
+        else:
+            auth = TSC.TableauAuth(options["--username"], options["--password"], site_id=options["--site"])
+        server = TSC.Server(options["--server"], use_server_version=True, http_options={"verify": False})
+        name = "parity-dbpw-" + TestAssets.unique
+        arguments = ["publish", workbook, "--name", name, "--project", default_project_name, "--db-password", "x", "--save-db-password"]
+        if not use_tabcmd_classic:
+            arguments.append("--skip-connection-check")
+        try:
+            _test_command(arguments)
+            time.sleep(indexing_sleep_time)
+            with server.auth.sign_in(auth):
+                published = [w for w in TSC.Pager(server.workbooks) if w.name == name]
+                assert published, "the workbook was not published"
+                server.workbooks.populate_connections(published[0])
+                assert any(c.embed_password for c in published[0].connections), "the password was not saved on the connection"
+        finally:
+            _run_command(["delete", "--workbook", name, "-r", default_project_name])
+
+    @pytest.mark.order(19)
+    @classic_parity_gap("tabcmd 2 requires one of --pdf --fullpdf --png --csv")
+    def test_export_without_a_format_writes_csv(self):
+        wb_name_on_server = TestAssets.get_publishable_name(TestAssets.TWBX_FILE_WITH_EXTRACT)
+        sheet_name = TestAssets.TWBX_WITH_EXTRACT_SHEET
+        filename = os.path.join(OUTPUT_DIR, "export_default_format.csv")
+        if os.path.exists(filename):
+            os.remove(filename)
+        _test_command(["export", "/" + wb_name_on_server + "/" + sheet_name, "--filename", filename])
+        assert os.path.getsize(filename) > 0
+
+    @pytest.mark.order(19)
+    # not strict: before PR #449 tabcmd 2 exits 2 here because --country is validated against language codes,
+    # and with it tabcmd 2 warns and exits 0
+    @classic_parity_gap("tabcmd 2 warns and ignores --country without --language", strict=False)
+    def test_export_country_without_language_is_an_error(self):
+        wb_name_on_server = TestAssets.get_publishable_name(TestAssets.TWBX_FILE_WITH_EXTRACT)
+        sheet_name = TestAssets.TWBX_WITH_EXTRACT_SHEET
+        filename = os.path.join(OUTPUT_DIR, "export_country_only.pdf")
+        result = _run_command(["export", "/" + wb_name_on_server + "/" + sheet_name, "--pdf", "--country", "GB", "-f", filename])
+        assert result.returncode != 0, "expected a non-zero exit when --country is given without --language"
