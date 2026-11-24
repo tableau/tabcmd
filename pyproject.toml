@@ -53,7 +53,7 @@ dependencies = [
 ]
 [project.optional-dependencies]
 test = [
-    "black==26.5.1",
+    "black==26.10.1",
     "mock",
     "mypy==2.3.0",
     "pytest>=7.0",
@@ -67,7 +67,7 @@ test = [
     "types-setuptools"
 ]
 localize = ["doit", "ftfy", "click"]
-package = ["doit", "pyinstaller==6.22.3", "setuptools==83.0.0"]
+package = ["doit", "pyinstaller==6.22.3", "setuptools==84.1.0"]
 versioning = [
     "doit",
     "pyinstaller_versionfile",
