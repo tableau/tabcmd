@@ -49,7 +49,12 @@ class CreateSiteUsersCommand(UserCommand):
         if not args.silent_progress:
             logger.info(_("addusers.status").format(args.filename.name, creation_site))
 
-        user_obj_list = UserCommand.get_users_from_file(args.filename, logger)
+        # A --auth-type override replaces any CSV-supplied auth value, so suppress
+        # the CSV-time "Local" remap warning when one is given -- it would describe
+        # a value that's about to be discarded.
+        user_obj_list = UserCommand.get_users_from_file(
+            args.filename, logger, warn_on_local_remap=not getattr(args, "auth_type", None)
+        )
         if not user_obj_list:
             logger.info(_("importcsvsummary.line.processed").format(0))
             return
@@ -59,7 +64,7 @@ class CreateSiteUsersCommand(UserCommand):
             if args.role:
                 user_obj.site_role = args.role  # tsc is case sensitive
             if args.auth_type:
-                user_obj.auth_setting = args.auth_type
+                user_obj.auth_setting = UserCommand.normalize_auth_setting(args.auth_type, user_obj.name, logger)
 
         # Submit as a single bulk import job. Server returns a JobItem tracking
         # the async processing on its side.

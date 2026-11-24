@@ -43,9 +43,6 @@ class Session:
         self.site_id: Optional[str] = None  # The site id, e.g 'abcd-1234-1234-1244-1234'
         self.server_url: Optional[str] = None
         self.last_login_using: Optional[str] = None
-        # server and site the saved auth token belongs to; set when the session file is read
-        self._saved_server_url: Optional[str] = None
-        self._saved_site_name: Optional[str] = None
 
         self.no_prompt: bool = False
         self.certificate: Optional[str] = None
@@ -65,9 +62,15 @@ class Session:
         # user id and site id are never passed in as args
         # last_login_using and tableau_server are internal data
         # self.command = args.???
+        server_base_url = self._get_server_base_url(args.server) if args.server else None
+        new_site_name = args.site_name or ("" if args.server is not None else self.site_name)
+        # saved login details belong to the saved server and site: don't send them to a different one
+        if server_base_url and self.server_url and not self._is_same_server(server_base_url, self.server_url):
+            self._clear_saved_login()
+        elif Session._normalise_site_name(new_site_name) != Session._normalise_site_name(self.site_name):
+            self._clear_saved_login()
         self.username = args.username or self.username or ""
         self.username = self.username.lower()
-        server_base_url = self._get_server_base_url(args.server) if args.server else None
         self.server_url = server_base_url or self.server_url or "http://localhost"
         self.server_url = self.server_url.lower()
         if args.server is not None:
@@ -92,6 +95,32 @@ class Session:
         self.no_proxy = args.no_proxy  # have to set this on every call?
         self.proxy = args.proxy or self.proxy
         self.timeout = self.timeout_as_integer(self.logger, args.timeout, self.timeout)
+
+    @staticmethod
+    def _is_same_server(server_base_url: str, saved_server_url) -> bool:
+        # an unreadable saved value counts as a different server
+        if not isinstance(saved_server_url, str):
+            return False
+        saved = urlparse(saved_server_url)
+        saved_base_url = urlunparse((saved.scheme or "https", saved.netloc or saved.path.split("/")[0], "", "", "", ""))
+        return server_base_url.lower() == saved_base_url.lower()
+
+    @staticmethod
+    def _normalise_site_name(site_name) -> str:
+        site_name = site_name.strip() if isinstance(site_name, str) else ""
+        return "" if site_name.lower() == "default" else site_name
+
+    def _clear_saved_login(self):
+        self.username = None
+        self.user_id = None
+        self.auth_token = None
+        self.token_name = None
+        self.token_value = None
+        self.token_file = None
+        self.password_file = None
+        self.site_name = None
+        self.site_id = None
+        self.last_login_using = None
 
     @staticmethod
     def timeout_as_integer(logger, option_1, option_2):
@@ -355,14 +384,6 @@ class Session:
         # in any non-TTY context. Reattach to the token saved in tableau_auth.json instead.
         if not (self.auth_token and self.site_id and self.user_id and self.server_url):
             return None
-        # The saved token is only valid for the server and site it was issued on. If
-        # --server or --site point elsewhere, reusing it would run the command against
-        # the previously logged-in site.
-        if (self.server_url or "") != (self._saved_server_url or "") or (self.site_name or "") != (
-            self._saved_site_name or ""
-        ):
-            self.logger.debug("Saved session is for a different server or site; will re-authenticate")
-            return None
         try:
             server = self._open_connection_with_opts(
                 raise_on_failure=True, default_timeout=DEFAULT_SESSION_REQUEST_TIMEOUT
@@ -485,8 +506,6 @@ class Session:
         self.site_name = None
         self.site_id = None
         self.server_url = None
-        self._saved_server_url = None
-        self._saved_site_name = None
         self.last_login_using = None
         self.password_file = None
         self.token_file = None
@@ -498,6 +517,7 @@ class Session:
         self.no_proxy = False
         self.proxy = None
         self.timeout = None
+        self.no_prompt = False
 
     # json file functions ----------------------------------------------------
     # These should be moved into a separate class
@@ -539,8 +559,6 @@ class Session:
             self.auth_token = auth.get("auth_token")
             self.server_url = auth.get("server")
             self.site_name = auth.get("site_name")
-            self._saved_server_url = self.server_url
-            self._saved_site_name = self.site_name
             self.site_id = auth.get("site_id")
             self.username = auth.get("username")
             self.user_id = auth.get("user_id")
