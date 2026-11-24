@@ -171,7 +171,7 @@ jobs:
     # download-artifact versions independently of upload-artifact; v7 reads the
     # zipped artifacts that upload-artifact@v7 produces by default
     - name: Download all build artifacts
-      uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+      uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
       with:
         path: artifacts/
 
