@@ -281,6 +281,16 @@ class RunCommandsTest(unittest.TestCase):
         create_group_command.CreateGroupCommand.run_command(mock_args)
         mock_session.assert_called()
 
+    def test_create_group_with_role(self, mock_session, mock_server):
+        RunCommandsTest._set_up_session(mock_session, mock_server)
+        mock_args.name = "name"
+        mock_args.role = "Viewer"
+        create_group_command.CreateGroupCommand.run_command(mock_args)
+        mock_session.assert_called()
+        mock_server.groups.create.assert_called_once()
+        called_group = mock_server.groups.create.call_args[0][0]
+        assert called_group.minimum_site_role == "Viewer"
+
     # groups
     def test_create_group_already_exists(self, mock_session, mock_server):
         RunCommandsTest._set_up_session(mock_session, mock_server)
