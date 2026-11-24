@@ -11,6 +11,7 @@ from unittest.mock import MagicMock
 import tableauserverclient as TSC
 
 from tabcmd.commands.auth.session import DEFAULT_SESSION_REQUEST_TIMEOUT, Session
+from tabcmd.execution.localize import _
 
 _isolated_path_patcher = None
 
@@ -1744,6 +1745,37 @@ class LogoutCommandOptionTests(unittest.TestCase):
     def test_no_certcheck_option_is_used(self):
         call, _ = self._run_logout(no_certcheck=True)
         assert call.kwargs["http_options"]["verify"] is False
+
+    def test_saved_no_certcheck_is_kept(self):
+        call, _ = self._run_logout(saved={"no_certcheck": True})
+        assert call.kwargs["http_options"]["verify"] is False
+
+    def test_saved_no_proxy_is_kept(self):
+        call, _ = self._run_logout(saved={"no_proxy": True, "proxy": "http://dead:3128"})
+        assert call.kwargs["http_options"]["proxies"] is None
+
+    def test_proxy_option_wins_over_saved_no_proxy(self):
+        call, _ = self._run_logout(saved={"no_proxy": True}, proxy="http://good:3128")
+        assert call.kwargs["http_options"]["proxies"] == {"http": "http://good:3128", "https": "http://good:3128"}
+
+    def test_failed_sign_out_warns_that_the_token_may_still_be_valid(self):
+        from tabcmd.commands.auth.logout_command import LogoutCommand
+
+        _write_saved_session()
+        with mock.patch("tabcmd.commands.auth.session.TSC.Server") as mock_server_class:
+            mock_server_class.return_value.auth.sign_out.side_effect = RuntimeError("tls")
+            with self.assertLogs(level="WARNING") as logs:
+                LogoutCommand.run_command(_logout_args())
+        assert any(_("session.logout_not_revoked") in line for line in logs.output), logs.output
+
+    def test_requested_logging_level_applies_to_logout(self):
+        root = logging.getLogger()
+        original = root.level
+        try:
+            self._run_logout(logging_level="debug")
+            assert root.level == logging.DEBUG
+        finally:
+            root.setLevel(original)
 
     def test_server_option_does_not_redirect_the_sign_out(self):
         # the token on disk belongs to the saved server; --server must not send it elsewhere

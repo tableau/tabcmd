@@ -89,10 +89,12 @@ class Session:
         self._update_http_options(args)
 
     # the connection options shared by every command, including logout
-    def _update_http_options(self, args):
+    # keep_saved_flags: logout can't say "check the certificate again" or "use the proxy again",
+    # so it keeps the --no-certcheck and --no-proxy the saved login was made with.
+    def _update_http_options(self, args, keep_saved_flags: bool = False):
         self.certificate = args.certificate or self.certificate
-        self.no_certcheck = args.no_certcheck  # have to set this on every call?
-        self.no_proxy = args.no_proxy  # have to set this on every call?
+        self.no_certcheck = bool(args.no_certcheck or (keep_saved_flags and self.no_certcheck))
+        self.no_proxy = bool(args.no_proxy or (keep_saved_flags and self.no_proxy and not args.proxy))
         self.proxy = args.proxy or self.proxy
         self.timeout = self.timeout_as_integer(self.logger, args.timeout, self.timeout)
 
@@ -490,6 +492,7 @@ class Session:
             server.auth.sign_out()
         except Exception as e:
             self.logger.debug("Could not sign out saved session on the server ({})".format(type(e).__name__))
+            self.logger.warning(_("session.logout_not_revoked"))
 
     def _end_session(self):
         if self.tableau_server:
