@@ -22,6 +22,21 @@ class ExportParserTest(ParserTest):
         with self.assertRaises(SystemExit):
             args = self.parser_under_test.parse_args(mock_args)
 
+    def test_export_parser_country_normalized_to_upper(self):
+        args = self.parser_under_test.parse_args(
+            ["export", "helloworld", "--pdf", "--language", "en", "--country", "gb"]
+        )
+        assert args.country == "GB", args
+        assert args.language == "en", args
+
+    def test_export_parser_country_invalid_rejected(self):
+        for bad in ["USA", "1", "gb-eng", "g", "", "é1"]:
+            with self.subTest(country=bad):
+                with self.assertRaises(SystemExit):
+                    self.parser_under_test.parse_args(
+                        ["export", "helloworld", "--pdf", "--language", "en", "--country", bad]
+                    )
+
     def test_export_parser_single_filter(self):
         args = self.parser_under_test.parse_args([commandname, "helloworld", "--pdf", "--filter", "Region=West"])
         assert args.filter == ["Region=West"]
