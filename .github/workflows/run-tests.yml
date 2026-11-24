@@ -20,10 +20,10 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-    - uses: actions/checkout@v7
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
     - name: Set up Python ${{ matrix.python-version }} on ${{ matrix.os }}
-      uses: actions/setup-python@v6
+      uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
       with:
         python-version: ${{ matrix.python-version }}
 
@@ -34,6 +34,8 @@ jobs:
         python -m pip install --upgrade build
         pip install .[versioning]
         doit version
+        pip install .[localize]
+        doit localize
         pip install .
         python -m build
         pip install .[test]

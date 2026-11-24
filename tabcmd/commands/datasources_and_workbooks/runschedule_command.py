@@ -16,7 +16,7 @@ class RunSchedule(DatasourcesAndWorkbooks):
     @staticmethod
     def define_args(runschedule_parser):
         group = runschedule_parser.add_argument_group(title=RunSchedule.name)
-        group.add_argument("schedule", help="Name of the schedule to run")
+        group.add_argument("schedule", help=_("tabcmd.runschedule.help.schedule_name"))
 
     @classmethod
     def run_command(cls, args):
@@ -26,6 +26,6 @@ class RunSchedule(DatasourcesAndWorkbooks):
         server = session.create_session(args, logger)
         schedule = DatasourcesAndWorkbooks.get_items_by_name(logger, server.schedules, args.schedule)[0]
         logger.info(_("runschedule.status"))
-        Errors.exit_with_error(logger, "Not yet implemented")
+        Errors.exit_with_error(logger, _("tabcmd.error.not_implemented"))
 
         # TODO implement in REST/tsc

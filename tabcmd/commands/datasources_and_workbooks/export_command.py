@@ -25,7 +25,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
     @staticmethod
     def define_args(export_parser):
         group = export_parser.add_argument_group(title=ExportCommand.name)
-        group.add_argument("url", help="url of the workbook or view to export")
+        group.add_argument("url", help=_("tabcmd.export.help.url"))
         export_parser_group = group.add_mutually_exclusive_group(required=True)
         export_parser_group.add_argument("--pdf", action="store_true", help=_("export.options.pdf"))
         export_parser_group.add_argument("--fullpdf", action="store_true", help=_("export.options.fullpdf"))
@@ -37,7 +37,7 @@ class ExportCommand(DatasourcesAndWorkbooks):
             choices=[pageorientation.Landscape, pageorientation.Portrait],
             type=str.lower,
             default=None,
-            help="page orientation (landscape or portrait) of the exported PDF",
+            help=_("tabcmd.export.help.orientation"),
         )
         group.add_argument(
             "--pagesize",
@@ -59,16 +59,17 @@ class ExportCommand(DatasourcesAndWorkbooks):
             ],
             type=str.lower,
             default="letter",
-            help="Set the page size of the exported PDF",
+            help=_("tabcmd.export.help.page_size"),
         )
 
         group.add_argument("--width", default=800, help=_("export.options.width"))
-        group.add_argument("--filename", "-f", help="filename to store the exported data")
+        group.add_argument("--filename", "-f", help=_("tabcmd.export.help.filename"))
         group.add_argument("--height", default=600, help=_("export.options.height"))
         group.add_argument(
             "--filter",
             metavar="COLUMN=VALUE",
-            help="Data filter to apply to the view",
+            action="append",
+            help=_("tabcmd.export.help.filter"),
         )
         group.add_argument(
             "--resolution",
@@ -142,12 +143,28 @@ class ExportCommand(DatasourcesAndWorkbooks):
             Errors.exit_with_error(logger, "Error saving to file", exception=e)
 
     @staticmethod
-    def apply_filters_from_args(request_options: RequestOptionsType, args, logger=None) -> None:
-        if args.filter:
-            logger.debug("filter = {}".format(args.filter))
-            params = args.filter.split("&")
-            for value in params:
-                ExportCommand.apply_filter_value(logger, request_options, value)
+    def apply_filters_from_args(request_options: RequestOptionsType, args, logger) -> None:
+        if not args.filter:
+            return
+        logger.debug("filter = {}".format(args.filter))
+        # Back-compat: a single --filter flag historically joined multiple pairs
+        # with '&' (e.g. `--filter "a=1&b=2"`), so that one case still splits on '&'.
+        # Repeated --filter flags each carry exactly one pair — no split — so a
+        # literal '&' or '=' in a value is passed through untouched.
+        # Only treat '&' as a pair delimiter when every resulting segment looks like
+        # COLUMN=VALUE; otherwise the '&' is probably literal (e.g. inside a value like
+        # "Company=AT&T"), so leave it alone and pass the single filter through as-is.
+        if len(args.filter) == 1:
+            # Empty fragments from a trailing or doubled '&' are not filters.
+            candidates = [c for c in args.filter[0].split("&") if c]
+            if candidates and all("=" in c for c in candidates):
+                values = candidates
+            else:
+                values = args.filter
+        else:
+            values = args.filter
+        for value in values:
+            ExportCommand.apply_filter_value(logger, request_options, value)
 
     @staticmethod
     def download_wb_pdf(server, workbook_item, args, logger):

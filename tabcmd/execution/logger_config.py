@@ -1,15 +1,25 @@
 import logging
 import logging.handlers
 import os
+import sys
+
+from tabcmd.execution.localize import _
 
 path = os.path.dirname(os.path.abspath(__file__))
+
+# tabcmd Classic prefixes every INFO line with "=====". This PR's goal is parity
+# with Classic output, so the prefix is on by default. Users who prefer the
+# plainer tabcmd 2 style can opt out with TABCMD_CLASSIC_OUTPUT=false (or 0/no).
+_CLASSIC_OUTPUT = os.environ.get("TABCMD_CLASSIC_OUTPUT", "true").lower() not in ("0", "false", "no")
+_INFO_FORMAT = "===== %(message)-30s" if _CLASSIC_OUTPUT else "%(message)-30s"
 
 FORMATS = {
     logging.ERROR: "%(asctime)s %(levelname)-5s:(%(name)-10s %(filename)-10s: %(lineno)d): %(message)-30s",
     logging.WARN: "%(asctime)s %(levelname)-5s: (%(name)-10s %(filename)-10s: %(lineno)d): %(message)-30s",
-    logging.INFO: "%(message)-30s",
+    logging.INFO: _INFO_FORMAT,
     logging.DEBUG: "%(asctime)s %(levelname)-5s: (%(name)-10s %(filename)-10s: %(lineno)d): %(message)-30s",
 }
+
 
 # https://stackoverflow.com/questions/2183233/how-to-add-a-custom-loglevel-to-pythons-logging-facility
 def add_log_level(level_name, level_num, method_name=None):
@@ -17,11 +27,11 @@ def add_log_level(level_name, level_num, method_name=None):
         method_name = level_name.lower()
 
     if hasattr(logging, level_name):
-        raise AttributeError("{} already defined in logging module".format(level_name))
+        raise AttributeError(_("tabcmd.logger.error.already_defined").format(level_name, "logging module"))
     if hasattr(logging, method_name):
-        raise AttributeError("{} already defined in logging module".format(method_name))
+        raise AttributeError(_("tabcmd.logger.error.already_defined").format(method_name, "logging module"))
     if hasattr(logging.getLoggerClass(), method_name):
-        raise AttributeError("{} already defined in logger class".format(method_name))
+        raise AttributeError(_("tabcmd.logger.error.already_defined").format(method_name, "logger class"))
 
     def logForLevel(self, message, *args, **kwargs):
         if self.isEnabledFor(level_num):
@@ -36,18 +46,43 @@ def add_log_level(level_name, level_num, method_name=None):
     setattr(logging, method_name, logToRoot)
 
 
+def _below_warning(record: logging.LogRecord) -> bool:
+    return record.levelno < logging.WARNING
+
+
 def add_trace_level():
     trace_level: int = logging.DEBUG - 5
     add_log_level("TRACE", trace_level)
     FORMATS[trace_level] = FORMATS[logging.ERROR]
 
 
+# Pass as `extra=PLAIN` on an INFO call to print a data line (listing rows, machine-readable
+# output) without the classic "=====" status prefix.
+PLAIN = {"plain": True}
+_PLAIN_FORMAT = "%(message)s"
+
+
+class _PerLevelFormatter(logging.Formatter):
+    """Formats each record with FORMATS for its own level, so INFO lines keep the
+    classic prefix even when the configured level is DEBUG. Records logged with
+    extra=PLAIN get no prefix."""
+
+    def __init__(self):
+        super().__init__()
+        self._plain = logging.Formatter(_PLAIN_FORMAT)
+        self._by_level = {level: logging.Formatter(fmt) for level, fmt in FORMATS.items()}
+        self._default = self._by_level[logging.DEBUG]
+
+    def format(self, record):
+        if getattr(record, "plain", False):
+            return self._plain.format(record)
+        return self._by_level.get(record.levelno, self._default).format(record)
+
+
 def configure_log(name: str, logging_level_input: str):
     """function for logging statements to console and logfile"""
     logging_level = getattr(logging, logging_level_input.upper())
     log_format = FORMATS[logging_level]
-    if logging_level is not logging.INFO:
-        FORMATS[logging.INFO] = "%(filename)-10s: %(message)-30s"
 
     root_logger = logging.getLogger()
     root_logger.setLevel(logging_level)
@@ -63,10 +98,18 @@ def configure_log(name: str, logging_level_input: str):
     if not any(
         isinstance(h, logging.StreamHandler) and not isinstance(h, logging.FileHandler) for h in named_logger.handlers
     ):
-        console = logging.StreamHandler()
-        console.setLevel(logging_level)
-        console.setFormatter(logging.Formatter(log_format))
-        named_logger.addHandler(console)
+        # INFO and below → stdout so PowerShell doesn't treat normal output as errors.
+        # WARNING and above → stderr so real errors are still distinguishable.
+        stdout_handler = logging.StreamHandler(sys.stdout)
+        stdout_handler.setLevel(logging_level)
+        stdout_handler.addFilter(_below_warning)
+        stdout_handler.setFormatter(_PerLevelFormatter())
+        named_logger.addHandler(stdout_handler)
+
+        stderr_handler = logging.StreamHandler(sys.stderr)
+        stderr_handler.setLevel(logging.WARNING)
+        stderr_handler.setFormatter(logging.Formatter(FORMATS[logging.ERROR]))
+        named_logger.addHandler(stderr_handler)
 
     return named_logger
 

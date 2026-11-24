@@ -96,6 +96,7 @@ class ListCommandFunctionalTests(unittest.TestCase):
     @patch("tabcmd.execution.logger_config.log")
     def test_show_header_with_all_options(self, mock_log, mock_session, mock_translate):
         """Test header generation with all display options enabled"""
+
         # Mock the translation function to return the actual English strings
         def translate_side_effect(key):
             translations = {

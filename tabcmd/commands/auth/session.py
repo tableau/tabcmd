@@ -1,5 +1,6 @@
 import getpass
 import json
+import logging
 import os
 
 import requests
@@ -60,16 +61,22 @@ class Session:
         # user id and site id are never passed in as args
         # last_login_using and tableau_server are internal data
         # self.command = args.???
+        server_base_url = self._get_server_base_url(args.server) if args.server else None
+        new_site_name = args.site_name or ("" if args.server is not None else self.site_name)
+        # saved login details belong to the saved server and site: don't send them to a different one
+        if server_base_url and self.server_url and not self._is_same_server(server_base_url, self.server_url):
+            self._clear_saved_login()
+        elif Session._normalise_site_name(new_site_name) != Session._normalise_site_name(self.site_name):
+            self._clear_saved_login()
         self.username = args.username or self.username or ""
         self.username = self.username.lower()
-        server_base_url = self._get_server_base_url(args.server) if args.server else None
         self.server_url = server_base_url or self.server_url or "http://localhost"
         self.server_url = self.server_url.lower()
         if args.server is not None:
             self.site_name = None
         self.site_name = args.site_name or self.site_name or ""
-        self.site_name = self.site_name.lower()
-        if self.site_name == "default":
+        # site content URLs are case-sensitive, so the name is kept as given
+        if self.site_name.lower() == "default":
             self.site_name = ""
         self.logging_level = args.logging_level or self.logging_level
         self.password_file = args.password_file or self.password_file
@@ -83,6 +90,32 @@ class Session:
         self.no_proxy = args.no_proxy  # have to set this on every call?
         self.proxy = args.proxy or self.proxy
         self.timeout = self.timeout_as_integer(self.logger, args.timeout, self.timeout)
+
+    @staticmethod
+    def _is_same_server(server_base_url: str, saved_server_url) -> bool:
+        # an unreadable saved value counts as a different server
+        if not isinstance(saved_server_url, str):
+            return False
+        saved = urlparse(saved_server_url)
+        saved_base_url = urlunparse((saved.scheme or "https", saved.netloc or saved.path.split("/")[0], "", "", "", ""))
+        return server_base_url.lower() == saved_base_url.lower()
+
+    @staticmethod
+    def _normalise_site_name(site_name) -> str:
+        site_name = site_name.strip() if isinstance(site_name, str) else ""
+        return "" if site_name.lower() == "default" else site_name
+
+    def _clear_saved_login(self):
+        self.username = None
+        self.user_id = None
+        self.auth_token = None
+        self.token_name = None
+        self.token_value = None
+        self.token_file = None
+        self.password_file = None
+        self.site_name = None
+        self.site_id = None
+        self.last_login_using = None
 
     @staticmethod
     def timeout_as_integer(logger, option_1, option_2):
@@ -104,13 +137,21 @@ class Session:
         return result or 0
 
     @staticmethod
-    def _read_password_from_file(filename):
+    def _read_password_from_file(filename, logger=None):
+        _logger = logger or logging.getLogger(__name__)
         credential = None
-        with open(str(filename), "r") as file_contents:
-            reader = file_contents.readlines()
-            for row in reader:
-                credential = row
-            return credential
+        try:
+            with open(str(filename), "r") as file_contents:
+                reader = file_contents.readlines()
+                for row in reader:
+                    credential = row
+        except IOError as e:
+            Errors.exit_with_error(
+                _logger,
+                message=_("session.errors.password_file_not_found").format(filename),
+                exception=e,
+            )
+        return credential
 
     def _allow_prompt(self):
         try:
@@ -121,7 +162,14 @@ class Session:
     def _create_new_credential(self, password, credential_type):
         if password is None:
             if self.password_file:
-                password = Session._read_password_from_file(self.password_file)
+                if not os.path.isfile(self.password_file):
+                    Errors.exit_with_error(
+                        self.logger,
+                        message=_("session.errors.password_file_not_found").format(self.password_file),
+                    )
+                password = Session._read_password_from_file(self.password_file, self.logger)
+                if not password:
+                    Errors.exit_with_error(self.logger, _("session.errors.missing_arguments").format(""))
             elif self._allow_prompt():
                 password = getpass.getpass(_("session.password"))
             else:
@@ -141,7 +189,14 @@ class Session:
         if self.token_value:
             token = self.token_value
         elif self.token_file:
-            token = Session._read_password_from_file(self.token_file)
+            if not os.path.isfile(self.token_file):
+                Errors.exit_with_error(
+                    self.logger,
+                    message=_("session.errors.token_file_not_found").format(self.token_file),
+                )
+            token = Session._read_password_from_file(self.token_file, self.logger)
+            if not token:
+                Errors.exit_with_error(self.logger, _("session.errors.missing_arguments").format("token"))
         elif self._allow_prompt():
             token = getpass.getpass("Token:")
         else:
@@ -239,15 +294,15 @@ class Session:
             self._read_from_json()
 
     def _print_server_info(self):
-        self.logger.info("=====   Server: {}".format(self.server_url))
+        self.logger.info("  Server: {}".format(self.server_url))
         if self.proxy:
-            self.logger.info("=====   Proxy: {}".format(self.proxy))
+            self.logger.info("  Proxy: {}".format(self.proxy))
         if self.username:
-            self.logger.info("=====   Username: {}".format(self.username))
+            self.logger.info("  Username: {}".format(self.username))
         if self.certificate:
-            self.logger.info("=====   Certificate: {}".format(self.certificate))
+            self.logger.info("  Certificate: {}".format(self.certificate))
         else:
-            self.logger.info("=====   Token Name: {}".format(self.token_name))
+            self.logger.info("  Token Name: {}".format(self.token_name))
         site_display_name = self.site_name or "Default Site"
         self.logger.info(_("dataconnections.classes.tableau_server_site") + ": {}".format(site_display_name))
 
@@ -258,14 +313,14 @@ class Session:
             if self.tableau_server and self.tableau_server.is_signed_in() and self.user_id:
                 server_user = self.tableau_server.users.get_by_id(self.user_id).name
                 if not self.username:
-                    self.logger.info("Fetched user details from server")
+                    self.logger.debug("Fetched user details from server")
                     self.username = server_user
 
                 return self.tableau_server
         except TSC.ServerResponseError as e:
-            self.logger.info(_("publish.errors.unexpected_server_response"), e)
+            self.logger.info(_("publish.errors.unexpected_server_response").format(e))
         except Exception as e:
-            self.logger.info(_("errors.internal_error.request.message"), e)
+            self.logger.info(_("errors.internal_error.request.message").format(e))
         return None
 
     # server connection created, not yet logged in
@@ -273,6 +328,7 @@ class Session:
         if not self.tableau_server:
             Errors.exit_with_error(self.logger, "No server connection available for sign in")
 
+        self.logger.info(_("session.login"))
         self.logger.debug(_("session.login") + (self.server_url or ""))
         self.logger.debug(_("listsites.output").format("", self.username or self.token_name, self.site_name))
         assert self.tableau_server is not None  # Type hint for mypy
@@ -406,7 +462,7 @@ class Session:
         self.token_value = None
         self.site_name = None
         self.site_id = None
-        self.server = None
+        self.server_url = None
         self.last_login_using = None
         self.password_file = None
         self.token_file = None
@@ -419,6 +475,7 @@ class Session:
         self.no_proxy = False
         self.proxy = None
         self.timeout = None
+        self.no_prompt = False
 
     # json file functions ----------------------------------------------------
     # These should be moved into a separate class

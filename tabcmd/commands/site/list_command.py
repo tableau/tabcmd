@@ -2,7 +2,7 @@ from tabcmd.commands.auth.session import Session
 from tabcmd.commands.constants import Errors
 from tabcmd.commands.server import Server
 from tabcmd.execution.localize import _
-from tabcmd.execution.logger_config import log
+from tabcmd.execution.logger_config import PLAIN, log
 
 
 class ListCommand(Server):
@@ -55,7 +55,7 @@ class ListCommand(Server):
                 logger.info(_("tabcmd.listing.none"))
                 exit(0)
 
-            logger.info(ListCommand.show_header(args, content_type))
+            logger.info(ListCommand.show_header(args, content_type), extra=PLAIN)
             for item in items:
                 if args.machine:
                     id = item.id
@@ -82,7 +82,7 @@ class ListCommand(Server):
                         ListCommand.format_children_listing(args, server, content_type, item) if args.details else ""
                     )
 
-                logger.info("{0}{1}{2}{3}{4}".format(id, name, owner, url, children))
+                logger.info("{0}{1}{2}{3}{4}".format(id, name, owner, url, children), extra=PLAIN)
 
             # TODO: do we want this line if it is csv output?
             logger.info(_("tabcmd.listing.summary").format(len(items), content_type))

@@ -3,7 +3,7 @@ import os
 import sys
 
 from .localize import set_client_locale
-from .logger_config import log
+from .logger_config import PLAIN, log
 from .parent_parser import ParentParser
 
 from tabcmd.version import version
@@ -32,11 +32,8 @@ class TabcmdController:
             parser.print_help()
             sys.exit(0)
 
-        if hasattr(namespace, "logging_level") and namespace.logging_level != logging.INFO:
-            print("logging:", namespace.logging_level)
-
-        logger = log(__name__, namespace.logging_level or logging.INFO)
-        logger.info("Tabcmd {}".format(version))
+        logger = log(__name__, namespace.logging_level or "INFO")
+        logger.info("Tabcmd {}".format(version), extra=PLAIN)
         if hasattr(namespace, "password") or hasattr(namespace, "token_value"):
             # don't print whole namespace because it has secrets
             logger.debug(namespace.func)
