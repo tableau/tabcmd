@@ -2,8 +2,8 @@ name: Draft release on merge to main
 
 # Triggers when a PR is merged into main (push to main covers all merge strategies).
 # Pushes the next patch version tag and creates a draft GitHub release with auto-generated notes.
-# Nothing is built here. When you publish the draft release, package.yml builds and attaches
-# the binaries and publish-pypi.yml uploads to PyPI.
+# Nothing is built here. When you publish the draft release, release.yml builds the binaries and the
+# wheel, and after one reviewer approval attaches the binaries and uploads to PyPI.
 
 on:
   push:
