@@ -32,7 +32,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
         )
         group.add_argument(
             "--filetype",
-            metavar="twb|twbx|tdxs|hyper",
+            metavar="twb|twbx|tdsx|hyper|parquet",
             help="If publishing an entire folder, limit files to this filetype.",
         )
         group.add_argument("--recursive", help="If publishing an entire folder, look into subdirectories to find files")
