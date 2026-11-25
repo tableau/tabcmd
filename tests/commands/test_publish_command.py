@@ -221,6 +221,60 @@ class PublishCommandTests(unittest.TestCase):
         mock_session.internal_server.datasources.publish.assert_called()
         mock_session.internal_server.workbooks.publish.assert_not_called()
 
+    def test_publish_parquet_publishes_a_datasource(self, mock_path, mock_glob, mock_session):
+        # Classic tabcmd accepts .parquet and sends it as an extract, like .hyper.
+        set_up_mock_server(mock_session)
+        mock_session.internal_server.datasources = mock.MagicMock()
+        mock_path = set_up_mock_path(mock_path)
+        mock_path.splitext = lambda x: ["file", "parquet"]
+
+        mock_args.overwrite = False
+        mock_args.append = False
+        mock_args.replace = False
+        mock_args.filename = "existing_file.parquet"
+        mock_args.project_name = "project-name"
+        mock_args.parent_project_path = "projects"
+        mock_args.name = ""
+        mock_args.tabbed = True
+        mock_args.db_username = None
+        mock_args.oauth_username = None
+        mock_args.use_tableau_bridge = False
+        mock_args.thumbnail_username = None
+        mock_args.thumbnail_group = None
+        mock_args.skip_connection_check = False
+
+        PublishCommand.run_command(mock_args)
+        mock_session.internal_server.datasources.publish.assert_called()
+        mock_session.internal_server.workbooks.publish.assert_not_called()
+
+    def test_publish_parquet_append_reaches_tsc_as_append(self, mock_path, mock_glob, mock_session):
+        # --append is passed to TSC for .parquet the same way as for .hyper; the server decides whether the
+        # file type can be appended to (the REST API rejects append for parquet).
+        set_up_mock_server(mock_session)
+        mock_session.internal_server.datasources = mock.MagicMock()
+        mock_path = set_up_mock_path(mock_path)
+        mock_path.splitext = lambda x: ["file", "parquet"]
+
+        mock_args.overwrite = False
+        mock_args.append = True
+        mock_args.replace = False
+        mock_args.filename = "existing_file.parquet"
+        mock_args.project_name = "project-name"
+        mock_args.parent_project_path = "projects"
+        mock_args.name = ""
+        mock_args.tabbed = True
+        mock_args.db_username = None
+        mock_args.oauth_username = None
+        mock_args.use_tableau_bridge = False
+        mock_args.thumbnail_username = None
+        mock_args.thumbnail_group = None
+        mock_args.skip_connection_check = False
+
+        PublishCommand.run_command(mock_args)
+        publish_call = mock_session.internal_server.datasources.publish.call_args
+        assert publish_call.args[1] == "existing_file.parquet", publish_call
+        assert publish_call.args[2] == TSC.Server.PublishMode.Append, publish_call
+
     def test_get_files_to_publish_twbx(self, mock_path, mock_glob, mock_session):
         set_up_mock_server(mock_session)
         mock_path = set_up_mock_path(mock_path)
