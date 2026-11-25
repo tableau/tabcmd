@@ -8,7 +8,7 @@ on:
   schedule:
     - cron: 0 11 * * * # Every day at 11AM UTC (7AM EST)
   workflow_run:
-    workflows: ["Publish to PyPi"]
+    workflows: ["Publish release"]
     types: [completed]
 
 permissions:

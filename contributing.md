@@ -144,7 +144,7 @@ Packaging for release is done in a github action and should not need to be done 
 
 - build an executable package with [pyinstaller](https://github.com/pyinstaller/pyinstaller). 
 > [!NOTE]
-> You can only build an executable for the platform you are running pyinstaller on. The spec for each platform is stored in tabcmd-{platform}.spec and the exact build commands for each platform can be checked in [our packaging script](.github/workflows//package.yml).
+> You can only build an executable for the platform you are running pyinstaller on. The spec for each platform is stored in tabcmd-{platform}.spec and the exact build commands for each platform can be checked in [our packaging script](.github/workflows/release.yml).
 
 e.g for Windows
 > pyinstaller tabcmd-windows.spec --clean --distpath .\dist\windows
@@ -164,19 +164,25 @@ Merging into `main` triggers `release-on-merge.yml`, which pushes the next patch
 
 When you then **publish** that draft release in the GitHub UI:
 
-1. `package.yml` fires on the `release: published` event and builds the binaries against the tagged commit.
-2. Before binaries are attached, the workflow **pauses at the `upload_to_release` job** waiting for a reviewer to approve the `release` environment. Go to **Actions → the latest `Package-and-Upload` run → Review deployments → Approve**. The four binaries (Windows `.exe`, Ubuntu `tabcmd`, macOS x86 and arm64 `.app.tar`) get attached after approval.
-3. Separately, `publish-pypi.yml` uploads the wheel to PyPI, gated on the `pypi` environment.
+1. `release.yml` fires on the `release: published` event. It builds the binaries and the Python wheel against the tagged commit.
+2. Before anything is published, the workflow **pauses at the `upload_to_release` and `publish_pypi` jobs**, which use the `release` environment, waiting for a reviewer to approve it. Go to **Actions → the latest `Publish release` run → Review deployments → Approve**. One approval covers both jobs: the four binaries (Windows `.exe`, Ubuntu `tabcmd`, macOS x86 and arm64 `.app.tar`) get attached to the release, and the wheel and sdist are uploaded to PyPI. The person who published the release cannot approve it.
+3. PyPI is only published when the binaries built successfully.
 
-If binaries need to be re-attached to a published release (e.g. one build leg originally failed), dispatch the workflow at the target tag. This doesn't work for a draft release: the upload step looks the release up by tag, and GitHub doesn't return drafts by tag.
+If binaries need to be re-attached to a published release (e.g. one build leg originally failed), dispatch the workflow at the target tag with `target=binaries`. This doesn't work for a draft release: the upload step looks the release up by tag, and GitHub doesn't return drafts by tag.
 
 ```shell
-gh workflow run package.yml --ref v2.1.0
+gh workflow run release.yml --ref v2.1.0 -f target=binaries
 ```
 
-To dispatch from a branch (e.g. to test workflow changes), pass the release to attach to: `gh workflow run package.yml --ref <branch> -f release_tag=v2.1.0`. A branch dispatch without `release_tag` fails at the tag-resolution step.
+To dispatch from a branch (e.g. to test workflow changes), pass the release to attach to: `gh workflow run release.yml --ref <branch> -f target=binaries -f release_tag=v2.1.0`. A branch dispatch without `release_tag` fails at the tag-resolution step.
 
 Same reviewer gate applies.
+
+To try a build on Test PyPI without a release and without any approval, dispatch `target=test-pypi`:
+
+```shell
+gh workflow run release.yml --ref main -f target=test-pypi
+```
 
 
 ## Release process
@@ -187,14 +193,13 @@ Releases are created and published as described in [Publishing a release](#publi
     - include a useful list of changes since the last release
     - include a clear list of remaining non-server-admin functional gaps
 
-1. Publish the release. This triggers `package.yml` and `publish-pypi.yml`:
+1. Publish the release. This triggers `release.yml`:
     - write an updated metadata file with the correct version number.
     - build the python wheel
     - run pyinstaller to create executables on each OS
-    - after a reviewer approves the `release` environment, attach the executables to the release.
-    - upload the wheel to PyPI (after approval of the `pypi` environment).
+    - after a reviewer approves the `release` environment (one approval), attach the executables to the release and upload the wheel to PyPI.
 
-1. To publish to PyPI without a release (or to test on Test PyPI), run the manual `Publish to PyPi` workflow on main.
+1. To publish to PyPI without a release, run the manual `Publish release` workflow on main with `target=pypi`. To test on Test PyPI, use `target=test-pypi`.
 
 1. When the packages are available on pypi, you can run the 'Pypi smoke test action'. This action will also be run every 24 hours to validate doing pip install. (TODO: automate the after-release trigger)
 

@@ -1,8 +1,18 @@
-name: Package-and-Upload
+name: Publish release
 
-# Pyinstaller requires that executables for each OS are built on that OS
-# This action is intended to build on each of the supported OS's: mac (x86 and arm), windows, linux.
-# and then upload all four files to a new release
+# Builds and publishes a release. Runs when a release is published, and can be dispatched by hand.
+#
+#   buildexe           pyinstaller executables: Windows, Ubuntu, macOS x86 and macOS arm64.
+#                      Pyinstaller can only build for the OS it runs on, so one job per OS.
+#   build_dist         the Python wheel and sdist
+#   upload_to_release  attaches the executables to the GitHub release
+#   publish_pypi       uploads the wheel and sdist to PyPI
+#   test_pypi          manual only (target: test-pypi); uploads the same files to Test PyPI
+#
+# upload_to_release and publish_pypi both use the `release` environment, which requires a reviewer.
+# A reviewer approves the `release` environment once on the run page and both jobs continue.
+# Nothing is published until the executables have built: publish_pypi needs buildexe.
+# test_pypi has no environment, so it needs no approval.
 
 # reference material:
 # https://data-dive.com/multi-os-deployment-in-cloud-using-pyinstaller-and-github-actions
@@ -11,28 +21,39 @@ name: Package-and-Upload
 on:
   release:
     types: [published]
-  # Manual repair path for a published release. The release tag is resolved from
-  # the release event, then inputs.release_tag, then github.ref_name when
-  # dispatched at a tag ref. Don't dispatch for a draft release: the upload step
-  # finds the release by tag, drafts can't be found that way, and the action then
-  # creates a second release for the same tag.
+  # Manual path: publish without a release (target: pypi or test-pypi), or repair a published
+  # release (target: binaries). The release tag is resolved from the release event, then
+  # inputs.release_tag, then github.ref_name when dispatched at a tag ref. Don't dispatch for a
+  # draft release: the upload step finds the release by tag, drafts can't be found that way, and
+  # the action then creates a second release for the same tag.
   # There is deliberately no `push: tags` trigger: release-on-merge.yml pushes a
   # tag on every merge to main, and a build should only run once a release is published.
   workflow_dispatch:
     inputs:
+      target:
+        description: 'What to run: all (executables and PyPI), binaries (re-attach executables), pypi, or test-pypi (Test PyPI, no approval)'
+        required: true
+        type: choice
+        default: all
+        options:
+          - all
+          - binaries
+          - pypi
+          - test-pypi
       release_tag:
-        description: 'Release tag to attach binaries to. Required when dispatching from a branch rather than a tag ref.'
+        description: 'Release tag to attach binaries to. Required for all or binaries when dispatching from a branch rather than a tag ref.'
         required: false
         type: string
 
 concurrency:
-  group: package-${{ github.event.release.tag_name || inputs.release_tag || github.ref_name }}
+  group: publish-${{ github.event.release.tag_name || inputs.release_tag || github.ref_name }}
   cancel-in-progress: false
 
 jobs:
 
   buildexe:
     name: Build executables
+    if: ${{ github.event_name == 'release' || inputs.target == 'all' || inputs.target == 'binaries' }}
     runs-on: ${{ matrix.os }}
     permissions:
       contents: read
@@ -155,7 +176,8 @@ jobs:
   # job so we can gate it behind the `release` environment: a required-reviewer
   # protection on that environment means publishing a release triggers a build,
   # but only an approved reviewer can actually attach binaries to that release.
-  # The workflow pauses at this job until a reviewer clicks Approve.
+  # The workflow pauses at this job until a reviewer clicks Approve. The same
+  # approval releases publish_pypi, which uses the same environment.
   #
   # `needs: buildexe` waits for ALL matrix legs to succeed. If any leg fails
   # this job is skipped (default behavior with no `if: always()`), so a partial
@@ -242,3 +264,86 @@ jobs:
         file: artifacts/tabcmd_arm64.app.tar/tabcmd_arm64.app.tar
         tag: ${{ steps.tag.outputs.tag }}
         overwrite: true
+
+  # The Python distribution files. Built before the approval gate, so the reviewer
+  # approves a build that already succeeded.
+  build_dist:
+    name: Build wheel and sdist
+    if: ${{ github.event_name == 'release' || inputs.target == 'all' || inputs.target == 'pypi' || inputs.target == 'test-pypi' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        fetch-depth: 0
+
+    - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+      with:
+        python-version: 3.12
+
+    - name: Build dist files
+      run: |
+        python --version
+        python -m pip install --upgrade pip
+        python -m pip install --upgrade build
+        pip install .[versioning]
+        doit version
+        pip install .[localize]
+        doit localize
+        pip install .
+        python -m build
+
+    - name: Upload dist files
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+      with:
+        name: python-dist
+        path: dist/
+
+  # Upload to PyPI. Same `release` environment as upload_to_release, so one approval covers both.
+  # Runs only when the executables built too (or were not requested), so a release never
+  # reaches PyPI while a binary build is broken.
+  publish_pypi:
+    name: Publish to PyPI
+    needs: [build_dist, buildexe]
+    if: >-
+      ${{ !cancelled()
+      && needs.build_dist.result == 'success'
+      && (needs.buildexe.result == 'success' || needs.buildexe.result == 'skipped')
+      && (github.event_name == 'release' || inputs.target == 'all' || inputs.target == 'pypi') }}
+    runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      contents: read
+    steps:
+    - name: Download dist files
+      uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+      with:
+        name: python-dist
+        path: dist/
+
+    - name: Publish distribution 📦 to PyPI
+      uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3 (was @release/v1), license BSD-2
+      with:
+        password: ${{ secrets.PYPI_API_TOKEN }}
+
+  # Manual only. Uploads the same files to Test PyPI. No environment, so no approval.
+  test_pypi:
+    name: Publish to Test PyPI
+    needs: build_dist
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.target == 'test-pypi' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+    - name: Download dist files
+      uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+      with:
+        name: python-dist
+        path: dist/
+
+    - name: Publish distribution 📦 to Test PyPI
+      uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3 (was @release/v1), license BSD-2
+      with:
+        password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+        repository_url: https://test.pypi.org/legacy/
