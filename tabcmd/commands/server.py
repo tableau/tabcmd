@@ -151,7 +151,7 @@ class Server:
         logger.debug("Filename given: {}".format(filename))
         source_file, source_type = os.path.splitext(filename)  # returns .ext
         source_type = source_type.lstrip(".")
-        possible_types = ["twbx", "twb", "tdsx", "tds", "hyper"]
+        possible_types = ["twbx", "twb", "tdsx", "tds", "hyper", "parquet"]
         if source_type and source_type in possible_types:
             return source_type
         else:

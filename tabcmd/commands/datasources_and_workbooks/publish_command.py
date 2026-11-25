@@ -14,7 +14,7 @@ from .datasources_and_workbooks_command import DatasourcesAndWorkbooks
 class PublishCommand(DatasourcesAndWorkbooks):
     """
     This command publishes the specified workbook (.twb(x)), data source
-    (.tds(x)), or extract (.hyper) to Tableau Server.
+    (.tds(x)), or extract (.hyper, .parquet) to Tableau Server.
     """
 
     name: str = "publish"
@@ -26,9 +26,9 @@ class PublishCommand(DatasourcesAndWorkbooks):
         group.add_argument(
             "filename",
             # this is a string and not actually a File type because we just pass the path to tsc
-            metavar="filename.twbx|tdsx|hyper",
+            metavar="filename.twbx|tdsx|hyper|parquet",
             help="The specified file to publish. If a folder is given, it will publish all files in this folder \
-                that have the extensions twb, twbx, tdsx or hyper. Any other options set will be applied for all files.",
+                that have the extensions twb, twbx, tdsx or hyper. A single .parquet file can be published by name. Any other options set will be applied for all files.",
         )
         group.add_argument(
             "--filetype",
@@ -118,7 +118,7 @@ class PublishCommand(DatasourcesAndWorkbooks):
                     Errors.exit_with_error(logger, exception=e)
                 logger.info(_("publish.success") + "\n{}".format(published_item.webpage_url))
 
-            elif source in ["tds", "tdsx", "hyper"]:
+            elif source in ["tds", "tdsx", "hyper", "parquet"]:
                 try:
                     published_item = PublishCommand.publish_datasource_file(
                         args=args,

@@ -66,6 +66,15 @@ class FileHandling(unittest.TestCase):
         filetype = Server.get_filename_extension_if_tableau_type(mock_logger, filename)
         assert filetype == "twb", filetype
 
+    def test_evaluate_file_name_parquet(self):
+        filetype = Server.get_filename_extension_if_tableau_type(mock_logger, "filename.parquet")
+        assert filetype == "parquet", filetype
+
+    def test_evaluate_file_name_tde_fails(self):
+        # .tde is not supported on Tableau Cloud
+        with self.assertRaises(ValueError):
+            Server.get_filename_extension_if_tableau_type(mock_logger, "filename.tde")
+
     def test_evaluate_file_name_url_pdf_fails(self):
         filename = "filename.pdf"
         with self.assertRaises(ValueError):
