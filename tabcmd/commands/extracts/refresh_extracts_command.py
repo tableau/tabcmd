@@ -56,7 +56,7 @@ class RefreshExtracts(Server):
             # until the background job is done.   <job id="JOB_ID" mode="MODE" type="RefreshExtract" />
             logger.info(_("tabcmd.status.waiting_for_refresh_job"))
             try:
-                job_done = server.jobs.wait_for_job(job_id=job, timeout=args.timeout)
+                job_done = server.jobs.wait_for_job(job_id=job, timeout=cls._timeout_seconds(args.timeout))
                 logger.info(_("tabcmd.status.job_completed"))
                 logger.info(job_done)
             except Exception as je:
