@@ -35,8 +35,13 @@ def login(extra="--language", value="en"):
         extra,
         value,
     ]
-    print(args)
-    return subprocess.check_call(args, stderr=subprocess.STDOUT, shell=True)
+    safe_args = ["***" if arg == credentials.token else arg for arg in args]
+    print(safe_args)
+    try:
+        return subprocess.check_call(args, stderr=subprocess.STDOUT, shell=True)
+    except subprocess.CalledProcessError as err:
+        # the original error carries the command line, token included
+        raise subprocess.CalledProcessError(err.returncode, safe_args) from None
 
 
 def get_executable():
